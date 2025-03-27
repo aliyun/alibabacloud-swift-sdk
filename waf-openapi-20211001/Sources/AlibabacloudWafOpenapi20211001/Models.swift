@@ -886,6 +886,43 @@ public class CreateCloudResourceRequest : Tea.TeaModel {
             }
         }
     }
+    public class Tag : Tea.TeaModel {
+        public var key: String?
+
+        public var value: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.key != nil {
+                map["Key"] = self.key!
+            }
+            if self.value != nil {
+                map["Value"] = self.value!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("Key") {
+                self.key = dict["Key"] as! String
+            }
+            if dict.keys.contains("Value") {
+                self.value = dict["Value"] as! String
+            }
+        }
+    }
     public var instanceId: String?
 
     public var listen: CreateCloudResourceRequest.Listen?
@@ -897,6 +934,8 @@ public class CreateCloudResourceRequest : Tea.TeaModel {
     public var regionId: String?
 
     public var resourceManagerResourceGroupId: String?
+
+    public var tag: [CreateCloudResourceRequest.Tag]?
 
     public override init() {
         super.init()
@@ -932,6 +971,13 @@ public class CreateCloudResourceRequest : Tea.TeaModel {
         if self.resourceManagerResourceGroupId != nil {
             map["ResourceManagerResourceGroupId"] = self.resourceManagerResourceGroupId!
         }
+        if self.tag != nil {
+            var tmp : [Any] = []
+            for k in self.tag! {
+                tmp.append(k.toMap())
+            }
+            map["Tag"] = tmp
+        }
         return map
     }
 
@@ -958,10 +1004,58 @@ public class CreateCloudResourceRequest : Tea.TeaModel {
         if dict.keys.contains("ResourceManagerResourceGroupId") {
             self.resourceManagerResourceGroupId = dict["ResourceManagerResourceGroupId"] as! String
         }
+        if dict.keys.contains("Tag") {
+            var tmp : [CreateCloudResourceRequest.Tag] = []
+            for v in dict["Tag"] as! [Any] {
+                var model = CreateCloudResourceRequest.Tag()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.tag = tmp
+        }
     }
 }
 
 public class CreateCloudResourceShrinkRequest : Tea.TeaModel {
+    public class Tag : Tea.TeaModel {
+        public var key: String?
+
+        public var value: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.key != nil {
+                map["Key"] = self.key!
+            }
+            if self.value != nil {
+                map["Value"] = self.value!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("Key") {
+                self.key = dict["Key"] as! String
+            }
+            if dict.keys.contains("Value") {
+                self.value = dict["Value"] as! String
+            }
+        }
+    }
     public var instanceId: String?
 
     public var listenShrink: String?
@@ -973,6 +1067,8 @@ public class CreateCloudResourceShrinkRequest : Tea.TeaModel {
     public var regionId: String?
 
     public var resourceManagerResourceGroupId: String?
+
+    public var tag: [CreateCloudResourceShrinkRequest.Tag]?
 
     public override init() {
         super.init()
@@ -1006,6 +1102,13 @@ public class CreateCloudResourceShrinkRequest : Tea.TeaModel {
         if self.resourceManagerResourceGroupId != nil {
             map["ResourceManagerResourceGroupId"] = self.resourceManagerResourceGroupId!
         }
+        if self.tag != nil {
+            var tmp : [Any] = []
+            for k in self.tag! {
+                tmp.append(k.toMap())
+            }
+            map["Tag"] = tmp
+        }
         return map
     }
 
@@ -1027,6 +1130,17 @@ public class CreateCloudResourceShrinkRequest : Tea.TeaModel {
         }
         if dict.keys.contains("ResourceManagerResourceGroupId") {
             self.resourceManagerResourceGroupId = dict["ResourceManagerResourceGroupId"] as! String
+        }
+        if dict.keys.contains("Tag") {
+            var tmp : [CreateCloudResourceShrinkRequest.Tag] = []
+            for v in dict["Tag"] as! [Any] {
+                var model = CreateCloudResourceShrinkRequest.Tag()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.tag = tmp
         }
     }
 }
@@ -1803,6 +1917,8 @@ public class CreateDomainRequest : Tea.TeaModel {
         }
         public var backends: [String]?
 
+        public var backupBackends: [String]?
+
         public var cnameEnabled: Bool?
 
         public var connectTimeout: Int32?
@@ -1849,6 +1965,9 @@ public class CreateDomainRequest : Tea.TeaModel {
             var map = super.toMap()
             if self.backends != nil {
                 map["Backends"] = self.backends!
+            }
+            if self.backupBackends != nil {
+                map["BackupBackends"] = self.backupBackends!
             }
             if self.cnameEnabled != nil {
                 map["CnameEnabled"] = self.cnameEnabled!
@@ -1906,6 +2025,9 @@ public class CreateDomainRequest : Tea.TeaModel {
             if dict.keys.contains("Backends") {
                 self.backends = dict["Backends"] as! [String]
             }
+            if dict.keys.contains("BackupBackends") {
+                self.backupBackends = dict["BackupBackends"] as! [String]
+            }
             if dict.keys.contains("CnameEnabled") {
                 self.cnameEnabled = dict["CnameEnabled"] as! Bool
             }
@@ -1961,6 +2083,43 @@ public class CreateDomainRequest : Tea.TeaModel {
             }
         }
     }
+    public class Tag : Tea.TeaModel {
+        public var key: String?
+
+        public var value: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.key != nil {
+                map["Key"] = self.key!
+            }
+            if self.value != nil {
+                map["Value"] = self.value!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("Key") {
+                self.key = dict["Key"] as! String
+            }
+            if dict.keys.contains("Value") {
+                self.value = dict["Value"] as! String
+            }
+        }
+    }
     public var accessType: String?
 
     public var domain: String?
@@ -1974,6 +2133,8 @@ public class CreateDomainRequest : Tea.TeaModel {
     public var regionId: String?
 
     public var resourceManagerResourceGroupId: String?
+
+    public var tag: [CreateDomainRequest.Tag]?
 
     public override init() {
         super.init()
@@ -2012,6 +2173,13 @@ public class CreateDomainRequest : Tea.TeaModel {
         if self.resourceManagerResourceGroupId != nil {
             map["ResourceManagerResourceGroupId"] = self.resourceManagerResourceGroupId!
         }
+        if self.tag != nil {
+            var tmp : [Any] = []
+            for k in self.tag! {
+                tmp.append(k.toMap())
+            }
+            map["Tag"] = tmp
+        }
         return map
     }
 
@@ -2041,10 +2209,58 @@ public class CreateDomainRequest : Tea.TeaModel {
         if dict.keys.contains("ResourceManagerResourceGroupId") {
             self.resourceManagerResourceGroupId = dict["ResourceManagerResourceGroupId"] as! String
         }
+        if dict.keys.contains("Tag") {
+            var tmp : [CreateDomainRequest.Tag] = []
+            for v in dict["Tag"] as! [Any] {
+                var model = CreateDomainRequest.Tag()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.tag = tmp
+        }
     }
 }
 
 public class CreateDomainShrinkRequest : Tea.TeaModel {
+    public class Tag : Tea.TeaModel {
+        public var key: String?
+
+        public var value: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.key != nil {
+                map["Key"] = self.key!
+            }
+            if self.value != nil {
+                map["Value"] = self.value!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("Key") {
+                self.key = dict["Key"] as! String
+            }
+            if dict.keys.contains("Value") {
+                self.value = dict["Value"] as! String
+            }
+        }
+    }
     public var accessType: String?
 
     public var domain: String?
@@ -2058,6 +2274,8 @@ public class CreateDomainShrinkRequest : Tea.TeaModel {
     public var regionId: String?
 
     public var resourceManagerResourceGroupId: String?
+
+    public var tag: [CreateDomainShrinkRequest.Tag]?
 
     public override init() {
         super.init()
@@ -2094,6 +2312,13 @@ public class CreateDomainShrinkRequest : Tea.TeaModel {
         if self.resourceManagerResourceGroupId != nil {
             map["ResourceManagerResourceGroupId"] = self.resourceManagerResourceGroupId!
         }
+        if self.tag != nil {
+            var tmp : [Any] = []
+            for k in self.tag! {
+                tmp.append(k.toMap())
+            }
+            map["Tag"] = tmp
+        }
         return map
     }
 
@@ -2119,6 +2344,17 @@ public class CreateDomainShrinkRequest : Tea.TeaModel {
         if dict.keys.contains("ResourceManagerResourceGroupId") {
             self.resourceManagerResourceGroupId = dict["ResourceManagerResourceGroupId"] as! String
         }
+        if dict.keys.contains("Tag") {
+            var tmp : [CreateDomainShrinkRequest.Tag] = []
+            for v in dict["Tag"] as! [Any] {
+                var model = CreateDomainShrinkRequest.Tag()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.tag = tmp
+        }
     }
 }
 
@@ -2127,6 +2363,8 @@ public class CreateDomainResponseBody : Tea.TeaModel {
         public var cname: String?
 
         public var domain: String?
+
+        public var domainId: String?
 
         public override init() {
             super.init()
@@ -2148,6 +2386,9 @@ public class CreateDomainResponseBody : Tea.TeaModel {
             if self.domain != nil {
                 map["Domain"] = self.domain!
             }
+            if self.domainId != nil {
+                map["DomainId"] = self.domainId!
+            }
             return map
         }
 
@@ -2157,6 +2398,9 @@ public class CreateDomainResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("Domain") {
                 self.domain = dict["Domain"] as! String
+            }
+            if dict.keys.contains("DomainId") {
+                self.domainId = dict["DomainId"] as! String
             }
         }
     }
@@ -5174,6 +5418,8 @@ public class DescribeApisecAbnormalsResponseBody : Tea.TeaModel {
 
         public var lastestTime: Int64?
 
+        public var latestDiscoverTime: Int64?
+
         public var matchedHost: String?
 
         public var note: String?
@@ -5241,6 +5487,9 @@ public class DescribeApisecAbnormalsResponseBody : Tea.TeaModel {
             if self.lastestTime != nil {
                 map["LastestTime"] = self.lastestTime!
             }
+            if self.latestDiscoverTime != nil {
+                map["LatestDiscoverTime"] = self.latestDiscoverTime!
+            }
             if self.matchedHost != nil {
                 map["MatchedHost"] = self.matchedHost!
             }
@@ -5301,6 +5550,9 @@ public class DescribeApisecAbnormalsResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("LastestTime") {
                 self.lastestTime = dict["LastestTime"] as! Int64
+            }
+            if dict.keys.contains("LatestDiscoverTime") {
+                self.latestDiscoverTime = dict["LatestDiscoverTime"] as! Int64
             }
             if dict.keys.contains("MatchedHost") {
                 self.matchedHost = dict["MatchedHost"] as! String
@@ -5674,6 +5926,8 @@ public class DescribeApisecApiResourcesResponseBody : Tea.TeaModel {
 
         public var note: String?
 
+        public var resources: [String]?
+
         public override init() {
             super.init()
         }
@@ -5754,6 +6008,9 @@ public class DescribeApisecApiResourcesResponseBody : Tea.TeaModel {
             if self.note != nil {
                 map["Note"] = self.note!
             }
+            if self.resources != nil {
+                map["Resources"] = self.resources!
+            }
             return map
         }
 
@@ -5823,6 +6080,9 @@ public class DescribeApisecApiResourcesResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("Note") {
                 self.note = dict["Note"] as! String
+            }
+            if dict.keys.contains("Resources") {
+                self.resources = dict["Resources"] as! [String]
             }
         }
     }
@@ -6616,6 +6876,8 @@ public class DescribeApisecEventsResponseBody : Tea.TeaModel {
 
         public var attackIpInfo: String?
 
+        public var attackIps: [String]?
+
         public var endTs: Int64?
 
         public var eventId: String?
@@ -6683,6 +6945,9 @@ public class DescribeApisecEventsResponseBody : Tea.TeaModel {
             }
             if self.attackIpInfo != nil {
                 map["AttackIpInfo"] = self.attackIpInfo!
+            }
+            if self.attackIps != nil {
+                map["AttackIps"] = self.attackIps!
             }
             if self.endTs != nil {
                 map["EndTs"] = self.endTs!
@@ -6756,6 +7021,9 @@ public class DescribeApisecEventsResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("AttackIpInfo") {
                 self.attackIpInfo = dict["AttackIpInfo"] as! String
+            }
+            if dict.keys.contains("AttackIps") {
+                self.attackIps = dict["AttackIps"] as! [String]
             }
             if dict.keys.contains("EndTs") {
                 self.endTs = dict["EndTs"] as! Int64
@@ -8716,6 +8984,8 @@ public class DescribeApisecStatisticsRequest : Tea.TeaModel {
 
 public class DescribeApisecStatisticsResponseBody : Tea.TeaModel {
     public class Data : Tea.TeaModel {
+        public var actioned: Int64?
+
         public var api: Int64?
 
         public var confirmed: Int64?
@@ -8760,6 +9030,9 @@ public class DescribeApisecStatisticsResponseBody : Tea.TeaModel {
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
+            if self.actioned != nil {
+                map["Actioned"] = self.actioned!
+            }
             if self.api != nil {
                 map["Api"] = self.api!
             }
@@ -8809,6 +9082,9 @@ public class DescribeApisecStatisticsResponseBody : Tea.TeaModel {
         }
 
         public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("Actioned") {
+                self.actioned = dict["Actioned"] as! Int64
+            }
             if dict.keys.contains("Api") {
                 self.api = dict["Api"] as! Int64
             }
@@ -11515,6 +11791,43 @@ public class DescribeDefenseResourceRequest : Tea.TeaModel {
 
 public class DescribeDefenseResourceResponseBody : Tea.TeaModel {
     public class Resource : Tea.TeaModel {
+        public class ResponseHeaders : Tea.TeaModel {
+            public var key: String?
+
+            public var value: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.key != nil {
+                    map["Key"] = self.key!
+                }
+                if self.value != nil {
+                    map["Value"] = self.value!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("Key") {
+                    self.key = dict["Key"] as! String
+                }
+                if dict.keys.contains("Value") {
+                    self.value = dict["Value"] as! String
+                }
+            }
+        }
         public var acwCookieStatus: Int32?
 
         public var acwSecureStatus: Int32?
@@ -11544,6 +11857,8 @@ public class DescribeDefenseResourceResponseBody : Tea.TeaModel {
         public var resourceManagerResourceGroupId: String?
 
         public var resourceOrigin: String?
+
+        public var responseHeaders: [DescribeDefenseResourceResponseBody.Resource.ResponseHeaders]?
 
         public var xffStatus: Int32?
 
@@ -11606,6 +11921,13 @@ public class DescribeDefenseResourceResponseBody : Tea.TeaModel {
             if self.resourceOrigin != nil {
                 map["ResourceOrigin"] = self.resourceOrigin!
             }
+            if self.responseHeaders != nil {
+                var tmp : [Any] = []
+                for k in self.responseHeaders! {
+                    tmp.append(k.toMap())
+                }
+                map["ResponseHeaders"] = tmp
+            }
             if self.xffStatus != nil {
                 map["XffStatus"] = self.xffStatus!
             }
@@ -11657,6 +11979,17 @@ public class DescribeDefenseResourceResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("ResourceOrigin") {
                 self.resourceOrigin = dict["ResourceOrigin"] as! String
+            }
+            if dict.keys.contains("ResponseHeaders") {
+                var tmp : [DescribeDefenseResourceResponseBody.Resource.ResponseHeaders] = []
+                for v in dict["ResponseHeaders"] as! [Any] {
+                    var model = DescribeDefenseResourceResponseBody.Resource.ResponseHeaders()
+                    if v != nil {
+                        model.fromMap(v as! [String: Any])
+                    }
+                    tmp.append(model)
+                }
+                self.responseHeaders = tmp
             }
             if dict.keys.contains("XffStatus") {
                 self.xffStatus = dict["XffStatus"] as! Int32
@@ -12546,7 +12879,11 @@ public class DescribeDefenseResourceTemplatesRequest : Tea.TeaModel {
 
     public var ruleId: Int64?
 
+    public var ruleName: String?
+
     public var ruleType: String?
+
+    public var templateName: String?
 
     public override init() {
         super.init()
@@ -12580,8 +12917,14 @@ public class DescribeDefenseResourceTemplatesRequest : Tea.TeaModel {
         if self.ruleId != nil {
             map["RuleId"] = self.ruleId!
         }
+        if self.ruleName != nil {
+            map["RuleName"] = self.ruleName!
+        }
         if self.ruleType != nil {
             map["RuleType"] = self.ruleType!
+        }
+        if self.templateName != nil {
+            map["TemplateName"] = self.templateName!
         }
         return map
     }
@@ -12605,8 +12948,14 @@ public class DescribeDefenseResourceTemplatesRequest : Tea.TeaModel {
         if dict.keys.contains("RuleId") {
             self.ruleId = dict["RuleId"] as! Int64
         }
+        if dict.keys.contains("RuleName") {
+            self.ruleName = dict["RuleName"] as! String
+        }
         if dict.keys.contains("RuleType") {
             self.ruleType = dict["RuleType"] as! String
+        }
+        if dict.keys.contains("TemplateName") {
+            self.templateName = dict["TemplateName"] as! String
         }
     }
 }
@@ -12932,6 +13281,43 @@ public class DescribeDefenseResourcesRequest : Tea.TeaModel {
 
 public class DescribeDefenseResourcesResponseBody : Tea.TeaModel {
     public class Resources : Tea.TeaModel {
+        public class ResponseHeaders : Tea.TeaModel {
+            public var key: String?
+
+            public var value: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.key != nil {
+                    map["Key"] = self.key!
+                }
+                if self.value != nil {
+                    map["Value"] = self.value!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("Key") {
+                    self.key = dict["Key"] as! String
+                }
+                if dict.keys.contains("Value") {
+                    self.value = dict["Value"] as! String
+                }
+            }
+        }
         public var acwCookieStatus: Int32?
 
         public var acwSecureStatus: Int32?
@@ -12961,6 +13347,8 @@ public class DescribeDefenseResourcesResponseBody : Tea.TeaModel {
         public var resourceManagerResourceGroupId: String?
 
         public var resourceOrigin: String?
+
+        public var responseHeaders: [DescribeDefenseResourcesResponseBody.Resources.ResponseHeaders]?
 
         public var xffStatus: Int32?
 
@@ -13023,6 +13411,13 @@ public class DescribeDefenseResourcesResponseBody : Tea.TeaModel {
             if self.resourceOrigin != nil {
                 map["ResourceOrigin"] = self.resourceOrigin!
             }
+            if self.responseHeaders != nil {
+                var tmp : [Any] = []
+                for k in self.responseHeaders! {
+                    tmp.append(k.toMap())
+                }
+                map["ResponseHeaders"] = tmp
+            }
             if self.xffStatus != nil {
                 map["XffStatus"] = self.xffStatus!
             }
@@ -13074,6 +13469,17 @@ public class DescribeDefenseResourcesResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("ResourceOrigin") {
                 self.resourceOrigin = dict["ResourceOrigin"] as! String
+            }
+            if dict.keys.contains("ResponseHeaders") {
+                var tmp : [DescribeDefenseResourcesResponseBody.Resources.ResponseHeaders] = []
+                for v in dict["ResponseHeaders"] as! [Any] {
+                    var model = DescribeDefenseResourcesResponseBody.Resources.ResponseHeaders()
+                    if v != nil {
+                        model.fromMap(v as! [String: Any])
+                    }
+                    tmp.append(model)
+                }
+                self.responseHeaders = tmp
             }
             if dict.keys.contains("XffStatus") {
                 self.xffStatus = dict["XffStatus"] as! Int32
@@ -14132,6 +14538,10 @@ public class DescribeDefenseTemplatesRequest : Tea.TeaModel {
 
     public var templateId: Int64?
 
+    public var templateIds: String?
+
+    public var templateName: String?
+
     public var templateType: String?
 
     public override init() {
@@ -14178,6 +14588,12 @@ public class DescribeDefenseTemplatesRequest : Tea.TeaModel {
         if self.templateId != nil {
             map["TemplateId"] = self.templateId!
         }
+        if self.templateIds != nil {
+            map["TemplateIds"] = self.templateIds!
+        }
+        if self.templateName != nil {
+            map["TemplateName"] = self.templateName!
+        }
         if self.templateType != nil {
             map["TemplateType"] = self.templateType!
         }
@@ -14214,6 +14630,12 @@ public class DescribeDefenseTemplatesRequest : Tea.TeaModel {
         }
         if dict.keys.contains("TemplateId") {
             self.templateId = dict["TemplateId"] as! Int64
+        }
+        if dict.keys.contains("TemplateIds") {
+            self.templateIds = dict["TemplateIds"] as! String
+        }
+        if dict.keys.contains("TemplateName") {
+            self.templateName = dict["TemplateName"] as! String
         }
         if dict.keys.contains("TemplateType") {
             self.templateType = dict["TemplateType"] as! String
@@ -14865,6 +15287,35 @@ public class DescribeDomainDetailResponseBody : Tea.TeaModel {
                 }
             }
         }
+        public class BackupBackends : Tea.TeaModel {
+            public var backend: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.backend != nil {
+                    map["Backend"] = self.backend!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("Backend") {
+                    self.backend = dict["Backend"] as! String
+                }
+            }
+        }
         public class RequestHeaders : Tea.TeaModel {
             public var key: String?
 
@@ -14903,6 +15354,8 @@ public class DescribeDomainDetailResponseBody : Tea.TeaModel {
             }
         }
         public var backends: [DescribeDomainDetailResponseBody.Redirect.Backends]?
+
+        public var backupBackends: [DescribeDomainDetailResponseBody.Redirect.BackupBackends]?
 
         public var connectTimeout: Int32?
 
@@ -14950,6 +15403,13 @@ public class DescribeDomainDetailResponseBody : Tea.TeaModel {
                     tmp.append(k.toMap())
                 }
                 map["Backends"] = tmp
+            }
+            if self.backupBackends != nil {
+                var tmp : [Any] = []
+                for k in self.backupBackends! {
+                    tmp.append(k.toMap())
+                }
+                map["BackupBackends"] = tmp
             }
             if self.connectTimeout != nil {
                 map["ConnectTimeout"] = self.connectTimeout!
@@ -15008,6 +15468,17 @@ public class DescribeDomainDetailResponseBody : Tea.TeaModel {
                     tmp.append(model)
                 }
                 self.backends = tmp
+            }
+            if dict.keys.contains("BackupBackends") {
+                var tmp : [DescribeDomainDetailResponseBody.Redirect.BackupBackends] = []
+                for v in dict["BackupBackends"] as! [Any] {
+                    var model = DescribeDomainDetailResponseBody.Redirect.BackupBackends()
+                    if v != nil {
+                        model.fromMap(v as! [String: Any])
+                    }
+                    tmp.append(model)
+                }
+                self.backupBackends = tmp
             }
             if dict.keys.contains("ConnectTimeout") {
                 self.connectTimeout = dict["ConnectTimeout"] as! Int32
@@ -20460,6 +20931,1016 @@ public class DescribeMemberAccountsResponse : Tea.TeaModel {
     }
 }
 
+public class DescribeNetworkFlowTimeSeriesMetricRequest : Tea.TeaModel {
+    public class Filter : Tea.TeaModel {
+        public class Conditions : Tea.TeaModel {
+            public var key: String?
+
+            public var opValue: String?
+
+            public var values: Any?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.key != nil {
+                    map["Key"] = self.key!
+                }
+                if self.opValue != nil {
+                    map["OpValue"] = self.opValue!
+                }
+                if self.values != nil {
+                    map["Values"] = self.values!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("Key") {
+                    self.key = dict["Key"] as! String
+                }
+                if dict.keys.contains("OpValue") {
+                    self.opValue = dict["OpValue"] as! String
+                }
+                if dict.keys.contains("Values") {
+                    self.values = dict["Values"] as! Any
+                }
+            }
+        }
+        public class DateRange : Tea.TeaModel {
+            public var endDate: Int64?
+
+            public var startDate: Int64?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.endDate != nil {
+                    map["EndDate"] = self.endDate!
+                }
+                if self.startDate != nil {
+                    map["StartDate"] = self.startDate!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("EndDate") {
+                    self.endDate = dict["EndDate"] as! Int64
+                }
+                if dict.keys.contains("StartDate") {
+                    self.startDate = dict["StartDate"] as! Int64
+                }
+            }
+        }
+        public var conditions: [DescribeNetworkFlowTimeSeriesMetricRequest.Filter.Conditions]?
+
+        public var dateRange: DescribeNetworkFlowTimeSeriesMetricRequest.Filter.DateRange?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+            try self.dateRange?.validate()
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.conditions != nil {
+                var tmp : [Any] = []
+                for k in self.conditions! {
+                    tmp.append(k.toMap())
+                }
+                map["Conditions"] = tmp
+            }
+            if self.dateRange != nil {
+                map["DateRange"] = self.dateRange?.toMap()
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("Conditions") {
+                var tmp : [DescribeNetworkFlowTimeSeriesMetricRequest.Filter.Conditions] = []
+                for v in dict["Conditions"] as! [Any] {
+                    var model = DescribeNetworkFlowTimeSeriesMetricRequest.Filter.Conditions()
+                    if v != nil {
+                        model.fromMap(v as! [String: Any])
+                    }
+                    tmp.append(model)
+                }
+                self.conditions = tmp
+            }
+            if dict.keys.contains("DateRange") {
+                var model = DescribeNetworkFlowTimeSeriesMetricRequest.Filter.DateRange()
+                model.fromMap(dict["DateRange"] as! [String: Any])
+                self.dateRange = model
+            }
+        }
+    }
+    public var filter: DescribeNetworkFlowTimeSeriesMetricRequest.Filter?
+
+    public var instanceId: String?
+
+    public var metric: String?
+
+    public var regionId: String?
+
+    public var resourceManagerResourceGroupId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.filter?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.filter != nil {
+            map["Filter"] = self.filter?.toMap()
+        }
+        if self.instanceId != nil {
+            map["InstanceId"] = self.instanceId!
+        }
+        if self.metric != nil {
+            map["Metric"] = self.metric!
+        }
+        if self.regionId != nil {
+            map["RegionId"] = self.regionId!
+        }
+        if self.resourceManagerResourceGroupId != nil {
+            map["ResourceManagerResourceGroupId"] = self.resourceManagerResourceGroupId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("Filter") {
+            var model = DescribeNetworkFlowTimeSeriesMetricRequest.Filter()
+            model.fromMap(dict["Filter"] as! [String: Any])
+            self.filter = model
+        }
+        if dict.keys.contains("InstanceId") {
+            self.instanceId = dict["InstanceId"] as! String
+        }
+        if dict.keys.contains("Metric") {
+            self.metric = dict["Metric"] as! String
+        }
+        if dict.keys.contains("RegionId") {
+            self.regionId = dict["RegionId"] as! String
+        }
+        if dict.keys.contains("ResourceManagerResourceGroupId") {
+            self.resourceManagerResourceGroupId = dict["ResourceManagerResourceGroupId"] as! String
+        }
+    }
+}
+
+public class DescribeNetworkFlowTimeSeriesMetricShrinkRequest : Tea.TeaModel {
+    public var filterShrink: String?
+
+    public var instanceId: String?
+
+    public var metric: String?
+
+    public var regionId: String?
+
+    public var resourceManagerResourceGroupId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.filterShrink != nil {
+            map["Filter"] = self.filterShrink!
+        }
+        if self.instanceId != nil {
+            map["InstanceId"] = self.instanceId!
+        }
+        if self.metric != nil {
+            map["Metric"] = self.metric!
+        }
+        if self.regionId != nil {
+            map["RegionId"] = self.regionId!
+        }
+        if self.resourceManagerResourceGroupId != nil {
+            map["ResourceManagerResourceGroupId"] = self.resourceManagerResourceGroupId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("Filter") {
+            self.filterShrink = dict["Filter"] as! String
+        }
+        if dict.keys.contains("InstanceId") {
+            self.instanceId = dict["InstanceId"] as! String
+        }
+        if dict.keys.contains("Metric") {
+            self.metric = dict["Metric"] as! String
+        }
+        if dict.keys.contains("RegionId") {
+            self.regionId = dict["RegionId"] as! String
+        }
+        if dict.keys.contains("ResourceManagerResourceGroupId") {
+            self.resourceManagerResourceGroupId = dict["ResourceManagerResourceGroupId"] as! String
+        }
+    }
+}
+
+public class DescribeNetworkFlowTimeSeriesMetricResponseBody : Tea.TeaModel {
+    public class NetworkFlowTimeSeries : Tea.TeaModel {
+        public var metric: String?
+
+        public var timestamps: [String]?
+
+        public var values: [Int64]?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.metric != nil {
+                map["Metric"] = self.metric!
+            }
+            if self.timestamps != nil {
+                map["Timestamps"] = self.timestamps!
+            }
+            if self.values != nil {
+                map["Values"] = self.values!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("Metric") {
+                self.metric = dict["Metric"] as! String
+            }
+            if dict.keys.contains("Timestamps") {
+                self.timestamps = dict["Timestamps"] as! [String]
+            }
+            if dict.keys.contains("Values") {
+                self.values = dict["Values"] as! [Int64]
+            }
+        }
+    }
+    public class TimeSeriesMetaData : Tea.TeaModel {
+        public class DateRange : Tea.TeaModel {
+            public var endDate: Int64?
+
+            public var startDate: Int64?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.endDate != nil {
+                    map["EndDate"] = self.endDate!
+                }
+                if self.startDate != nil {
+                    map["StartDate"] = self.startDate!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("EndDate") {
+                    self.endDate = dict["EndDate"] as! Int64
+                }
+                if dict.keys.contains("StartDate") {
+                    self.startDate = dict["StartDate"] as! Int64
+                }
+            }
+        }
+        public var aggregateInterval: String?
+
+        public var dateRange: DescribeNetworkFlowTimeSeriesMetricResponseBody.TimeSeriesMetaData.DateRange?
+
+        public var units: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+            try self.dateRange?.validate()
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.aggregateInterval != nil {
+                map["AggregateInterval"] = self.aggregateInterval!
+            }
+            if self.dateRange != nil {
+                map["DateRange"] = self.dateRange?.toMap()
+            }
+            if self.units != nil {
+                map["Units"] = self.units!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("AggregateInterval") {
+                self.aggregateInterval = dict["AggregateInterval"] as! String
+            }
+            if dict.keys.contains("DateRange") {
+                var model = DescribeNetworkFlowTimeSeriesMetricResponseBody.TimeSeriesMetaData.DateRange()
+                model.fromMap(dict["DateRange"] as! [String: Any])
+                self.dateRange = model
+            }
+            if dict.keys.contains("Units") {
+                self.units = dict["Units"] as! String
+            }
+        }
+    }
+    public var networkFlowTimeSeries: [DescribeNetworkFlowTimeSeriesMetricResponseBody.NetworkFlowTimeSeries]?
+
+    public var requestId: String?
+
+    public var timeSeriesMetaData: DescribeNetworkFlowTimeSeriesMetricResponseBody.TimeSeriesMetaData?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.timeSeriesMetaData?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.networkFlowTimeSeries != nil {
+            var tmp : [Any] = []
+            for k in self.networkFlowTimeSeries! {
+                tmp.append(k.toMap())
+            }
+            map["NetworkFlowTimeSeries"] = tmp
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.timeSeriesMetaData != nil {
+            map["TimeSeriesMetaData"] = self.timeSeriesMetaData?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("NetworkFlowTimeSeries") {
+            var tmp : [DescribeNetworkFlowTimeSeriesMetricResponseBody.NetworkFlowTimeSeries] = []
+            for v in dict["NetworkFlowTimeSeries"] as! [Any] {
+                var model = DescribeNetworkFlowTimeSeriesMetricResponseBody.NetworkFlowTimeSeries()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.networkFlowTimeSeries = tmp
+        }
+        if dict.keys.contains("RequestId") {
+            self.requestId = dict["RequestId"] as! String
+        }
+        if dict.keys.contains("TimeSeriesMetaData") {
+            var model = DescribeNetworkFlowTimeSeriesMetricResponseBody.TimeSeriesMetaData()
+            model.fromMap(dict["TimeSeriesMetaData"] as! [String: Any])
+            self.timeSeriesMetaData = model
+        }
+    }
+}
+
+public class DescribeNetworkFlowTimeSeriesMetricResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: DescribeNetworkFlowTimeSeriesMetricResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") {
+            var model = DescribeNetworkFlowTimeSeriesMetricResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
+public class DescribeNetworkFlowTopNMetricRequest : Tea.TeaModel {
+    public class Filter : Tea.TeaModel {
+        public class Conditions : Tea.TeaModel {
+            public var key: String?
+
+            public var opValue: String?
+
+            public var values: Any?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.key != nil {
+                    map["Key"] = self.key!
+                }
+                if self.opValue != nil {
+                    map["OpValue"] = self.opValue!
+                }
+                if self.values != nil {
+                    map["Values"] = self.values!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("Key") {
+                    self.key = dict["Key"] as! String
+                }
+                if dict.keys.contains("OpValue") {
+                    self.opValue = dict["OpValue"] as! String
+                }
+                if dict.keys.contains("Values") {
+                    self.values = dict["Values"] as! Any
+                }
+            }
+        }
+        public class DateRange : Tea.TeaModel {
+            public var endDate: Int64?
+
+            public var startDate: Int64?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.endDate != nil {
+                    map["EndDate"] = self.endDate!
+                }
+                if self.startDate != nil {
+                    map["StartDate"] = self.startDate!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("EndDate") {
+                    self.endDate = dict["EndDate"] as! Int64
+                }
+                if dict.keys.contains("StartDate") {
+                    self.startDate = dict["StartDate"] as! Int64
+                }
+            }
+        }
+        public var conditions: [DescribeNetworkFlowTopNMetricRequest.Filter.Conditions]?
+
+        public var dateRange: DescribeNetworkFlowTopNMetricRequest.Filter.DateRange?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+            try self.dateRange?.validate()
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.conditions != nil {
+                var tmp : [Any] = []
+                for k in self.conditions! {
+                    tmp.append(k.toMap())
+                }
+                map["Conditions"] = tmp
+            }
+            if self.dateRange != nil {
+                map["DateRange"] = self.dateRange?.toMap()
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("Conditions") {
+                var tmp : [DescribeNetworkFlowTopNMetricRequest.Filter.Conditions] = []
+                for v in dict["Conditions"] as! [Any] {
+                    var model = DescribeNetworkFlowTopNMetricRequest.Filter.Conditions()
+                    if v != nil {
+                        model.fromMap(v as! [String: Any])
+                    }
+                    tmp.append(model)
+                }
+                self.conditions = tmp
+            }
+            if dict.keys.contains("DateRange") {
+                var model = DescribeNetworkFlowTopNMetricRequest.Filter.DateRange()
+                model.fromMap(dict["DateRange"] as! [String: Any])
+                self.dateRange = model
+            }
+        }
+    }
+    public var filter: DescribeNetworkFlowTopNMetricRequest.Filter?
+
+    public var instanceId: String?
+
+    public var limit: Int64?
+
+    public var metric: String?
+
+    public var regionId: String?
+
+    public var resourceManagerResourceGroupId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.filter?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.filter != nil {
+            map["Filter"] = self.filter?.toMap()
+        }
+        if self.instanceId != nil {
+            map["InstanceId"] = self.instanceId!
+        }
+        if self.limit != nil {
+            map["Limit"] = self.limit!
+        }
+        if self.metric != nil {
+            map["Metric"] = self.metric!
+        }
+        if self.regionId != nil {
+            map["RegionId"] = self.regionId!
+        }
+        if self.resourceManagerResourceGroupId != nil {
+            map["ResourceManagerResourceGroupId"] = self.resourceManagerResourceGroupId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("Filter") {
+            var model = DescribeNetworkFlowTopNMetricRequest.Filter()
+            model.fromMap(dict["Filter"] as! [String: Any])
+            self.filter = model
+        }
+        if dict.keys.contains("InstanceId") {
+            self.instanceId = dict["InstanceId"] as! String
+        }
+        if dict.keys.contains("Limit") {
+            self.limit = dict["Limit"] as! Int64
+        }
+        if dict.keys.contains("Metric") {
+            self.metric = dict["Metric"] as! String
+        }
+        if dict.keys.contains("RegionId") {
+            self.regionId = dict["RegionId"] as! String
+        }
+        if dict.keys.contains("ResourceManagerResourceGroupId") {
+            self.resourceManagerResourceGroupId = dict["ResourceManagerResourceGroupId"] as! String
+        }
+    }
+}
+
+public class DescribeNetworkFlowTopNMetricShrinkRequest : Tea.TeaModel {
+    public var filterShrink: String?
+
+    public var instanceId: String?
+
+    public var limit: Int64?
+
+    public var metric: String?
+
+    public var regionId: String?
+
+    public var resourceManagerResourceGroupId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.filterShrink != nil {
+            map["Filter"] = self.filterShrink!
+        }
+        if self.instanceId != nil {
+            map["InstanceId"] = self.instanceId!
+        }
+        if self.limit != nil {
+            map["Limit"] = self.limit!
+        }
+        if self.metric != nil {
+            map["Metric"] = self.metric!
+        }
+        if self.regionId != nil {
+            map["RegionId"] = self.regionId!
+        }
+        if self.resourceManagerResourceGroupId != nil {
+            map["ResourceManagerResourceGroupId"] = self.resourceManagerResourceGroupId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("Filter") {
+            self.filterShrink = dict["Filter"] as! String
+        }
+        if dict.keys.contains("InstanceId") {
+            self.instanceId = dict["InstanceId"] as! String
+        }
+        if dict.keys.contains("Limit") {
+            self.limit = dict["Limit"] as! Int64
+        }
+        if dict.keys.contains("Metric") {
+            self.metric = dict["Metric"] as! String
+        }
+        if dict.keys.contains("RegionId") {
+            self.regionId = dict["RegionId"] as! String
+        }
+        if dict.keys.contains("ResourceManagerResourceGroupId") {
+            self.resourceManagerResourceGroupId = dict["ResourceManagerResourceGroupId"] as! String
+        }
+    }
+}
+
+public class DescribeNetworkFlowTopNMetricResponseBody : Tea.TeaModel {
+    public class NetworkFlowTopNValues : Tea.TeaModel {
+        public var attribute: String?
+
+        public var name: String?
+
+        public var value: Int64?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.attribute != nil {
+                map["Attribute"] = self.attribute!
+            }
+            if self.name != nil {
+                map["Name"] = self.name!
+            }
+            if self.value != nil {
+                map["Value"] = self.value!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("Attribute") {
+                self.attribute = dict["Attribute"] as! String
+            }
+            if dict.keys.contains("Name") {
+                self.name = dict["Name"] as! String
+            }
+            if dict.keys.contains("Value") {
+                self.value = dict["Value"] as! Int64
+            }
+        }
+    }
+    public class TopNMetaData : Tea.TeaModel {
+        public class DateRange : Tea.TeaModel {
+            public var endDate: Int64?
+
+            public var startDate: Int64?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.endDate != nil {
+                    map["EndDate"] = self.endDate!
+                }
+                if self.startDate != nil {
+                    map["StartDate"] = self.startDate!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("EndDate") {
+                    self.endDate = dict["EndDate"] as! Int64
+                }
+                if dict.keys.contains("StartDate") {
+                    self.startDate = dict["StartDate"] as! Int64
+                }
+            }
+        }
+        public var dateRange: DescribeNetworkFlowTopNMetricResponseBody.TopNMetaData.DateRange?
+
+        public var units: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+            try self.dateRange?.validate()
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.dateRange != nil {
+                map["DateRange"] = self.dateRange?.toMap()
+            }
+            if self.units != nil {
+                map["Units"] = self.units!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("DateRange") {
+                var model = DescribeNetworkFlowTopNMetricResponseBody.TopNMetaData.DateRange()
+                model.fromMap(dict["DateRange"] as! [String: Any])
+                self.dateRange = model
+            }
+            if dict.keys.contains("Units") {
+                self.units = dict["Units"] as! String
+            }
+        }
+    }
+    public var networkFlowTopNValues: [DescribeNetworkFlowTopNMetricResponseBody.NetworkFlowTopNValues]?
+
+    public var requestId: String?
+
+    public var topNMetaData: DescribeNetworkFlowTopNMetricResponseBody.TopNMetaData?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.topNMetaData?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.networkFlowTopNValues != nil {
+            var tmp : [Any] = []
+            for k in self.networkFlowTopNValues! {
+                tmp.append(k.toMap())
+            }
+            map["NetworkFlowTopNValues"] = tmp
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.topNMetaData != nil {
+            map["TopNMetaData"] = self.topNMetaData?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("NetworkFlowTopNValues") {
+            var tmp : [DescribeNetworkFlowTopNMetricResponseBody.NetworkFlowTopNValues] = []
+            for v in dict["NetworkFlowTopNValues"] as! [Any] {
+                var model = DescribeNetworkFlowTopNMetricResponseBody.NetworkFlowTopNValues()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.networkFlowTopNValues = tmp
+        }
+        if dict.keys.contains("RequestId") {
+            self.requestId = dict["RequestId"] as! String
+        }
+        if dict.keys.contains("TopNMetaData") {
+            var model = DescribeNetworkFlowTopNMetricResponseBody.TopNMetaData()
+            model.fromMap(dict["TopNMetaData"] as! [String: Any])
+            self.topNMetaData = model
+        }
+    }
+}
+
+public class DescribeNetworkFlowTopNMetricResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: DescribeNetworkFlowTopNMetricResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") {
+            var model = DescribeNetworkFlowTopNMetricResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
 public class DescribePauseProtectionStatusRequest : Tea.TeaModel {
     public var instanceId: String?
 
@@ -21276,6 +22757,8 @@ public class DescribePunishedDomainsRequest : Tea.TeaModel {
 
     public var instanceId: String?
 
+    public var punishType: String?
+
     public var regionId: String?
 
     public var resourceManagerResourceGroupId: String?
@@ -21300,6 +22783,9 @@ public class DescribePunishedDomainsRequest : Tea.TeaModel {
         if self.instanceId != nil {
             map["InstanceId"] = self.instanceId!
         }
+        if self.punishType != nil {
+            map["PunishType"] = self.punishType!
+        }
         if self.regionId != nil {
             map["RegionId"] = self.regionId!
         }
@@ -21315,6 +22801,9 @@ public class DescribePunishedDomainsRequest : Tea.TeaModel {
         }
         if dict.keys.contains("InstanceId") {
             self.instanceId = dict["InstanceId"] as! String
+        }
+        if dict.keys.contains("PunishType") {
+            self.punishType = dict["PunishType"] as! String
         }
         if dict.keys.contains("RegionId") {
             self.regionId = dict["RegionId"] as! String
@@ -24055,6 +25544,1476 @@ public class DescribeRuleHitsTopUrlResponse : Tea.TeaModel {
     }
 }
 
+public class DescribeSecurityEventLogsRequest : Tea.TeaModel {
+    public class Filter : Tea.TeaModel {
+        public class Conditions : Tea.TeaModel {
+            public var key: String?
+
+            public var opValue: String?
+
+            public var values: Any?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.key != nil {
+                    map["Key"] = self.key!
+                }
+                if self.opValue != nil {
+                    map["OpValue"] = self.opValue!
+                }
+                if self.values != nil {
+                    map["Values"] = self.values!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("Key") {
+                    self.key = dict["Key"] as! String
+                }
+                if dict.keys.contains("OpValue") {
+                    self.opValue = dict["OpValue"] as! String
+                }
+                if dict.keys.contains("Values") {
+                    self.values = dict["Values"] as! Any
+                }
+            }
+        }
+        public class DateRange : Tea.TeaModel {
+            public var endDate: Int64?
+
+            public var startDate: Int64?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.endDate != nil {
+                    map["EndDate"] = self.endDate!
+                }
+                if self.startDate != nil {
+                    map["StartDate"] = self.startDate!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("EndDate") {
+                    self.endDate = dict["EndDate"] as! Int64
+                }
+                if dict.keys.contains("StartDate") {
+                    self.startDate = dict["StartDate"] as! Int64
+                }
+            }
+        }
+        public var conditions: [DescribeSecurityEventLogsRequest.Filter.Conditions]?
+
+        public var dateRange: DescribeSecurityEventLogsRequest.Filter.DateRange?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+            try self.dateRange?.validate()
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.conditions != nil {
+                var tmp : [Any] = []
+                for k in self.conditions! {
+                    tmp.append(k.toMap())
+                }
+                map["Conditions"] = tmp
+            }
+            if self.dateRange != nil {
+                map["DateRange"] = self.dateRange?.toMap()
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("Conditions") {
+                var tmp : [DescribeSecurityEventLogsRequest.Filter.Conditions] = []
+                for v in dict["Conditions"] as! [Any] {
+                    var model = DescribeSecurityEventLogsRequest.Filter.Conditions()
+                    if v != nil {
+                        model.fromMap(v as! [String: Any])
+                    }
+                    tmp.append(model)
+                }
+                self.conditions = tmp
+            }
+            if dict.keys.contains("DateRange") {
+                var model = DescribeSecurityEventLogsRequest.Filter.DateRange()
+                model.fromMap(dict["DateRange"] as! [String: Any])
+                self.dateRange = model
+            }
+        }
+    }
+    public var filter: DescribeSecurityEventLogsRequest.Filter?
+
+    public var instanceId: String?
+
+    public var pageNumber: Int64?
+
+    public var pageSize: Int64?
+
+    public var regionId: String?
+
+    public var resourceManagerResourceGroupId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.filter?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.filter != nil {
+            map["Filter"] = self.filter?.toMap()
+        }
+        if self.instanceId != nil {
+            map["InstanceId"] = self.instanceId!
+        }
+        if self.pageNumber != nil {
+            map["PageNumber"] = self.pageNumber!
+        }
+        if self.pageSize != nil {
+            map["PageSize"] = self.pageSize!
+        }
+        if self.regionId != nil {
+            map["RegionId"] = self.regionId!
+        }
+        if self.resourceManagerResourceGroupId != nil {
+            map["ResourceManagerResourceGroupId"] = self.resourceManagerResourceGroupId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("Filter") {
+            var model = DescribeSecurityEventLogsRequest.Filter()
+            model.fromMap(dict["Filter"] as! [String: Any])
+            self.filter = model
+        }
+        if dict.keys.contains("InstanceId") {
+            self.instanceId = dict["InstanceId"] as! String
+        }
+        if dict.keys.contains("PageNumber") {
+            self.pageNumber = dict["PageNumber"] as! Int64
+        }
+        if dict.keys.contains("PageSize") {
+            self.pageSize = dict["PageSize"] as! Int64
+        }
+        if dict.keys.contains("RegionId") {
+            self.regionId = dict["RegionId"] as! String
+        }
+        if dict.keys.contains("ResourceManagerResourceGroupId") {
+            self.resourceManagerResourceGroupId = dict["ResourceManagerResourceGroupId"] as! String
+        }
+    }
+}
+
+public class DescribeSecurityEventLogsShrinkRequest : Tea.TeaModel {
+    public var filterShrink: String?
+
+    public var instanceId: String?
+
+    public var pageNumber: Int64?
+
+    public var pageSize: Int64?
+
+    public var regionId: String?
+
+    public var resourceManagerResourceGroupId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.filterShrink != nil {
+            map["Filter"] = self.filterShrink!
+        }
+        if self.instanceId != nil {
+            map["InstanceId"] = self.instanceId!
+        }
+        if self.pageNumber != nil {
+            map["PageNumber"] = self.pageNumber!
+        }
+        if self.pageSize != nil {
+            map["PageSize"] = self.pageSize!
+        }
+        if self.regionId != nil {
+            map["RegionId"] = self.regionId!
+        }
+        if self.resourceManagerResourceGroupId != nil {
+            map["ResourceManagerResourceGroupId"] = self.resourceManagerResourceGroupId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("Filter") {
+            self.filterShrink = dict["Filter"] as! String
+        }
+        if dict.keys.contains("InstanceId") {
+            self.instanceId = dict["InstanceId"] as! String
+        }
+        if dict.keys.contains("PageNumber") {
+            self.pageNumber = dict["PageNumber"] as! Int64
+        }
+        if dict.keys.contains("PageSize") {
+            self.pageSize = dict["PageSize"] as! Int64
+        }
+        if dict.keys.contains("RegionId") {
+            self.regionId = dict["RegionId"] as! String
+        }
+        if dict.keys.contains("ResourceManagerResourceGroupId") {
+            self.resourceManagerResourceGroupId = dict["ResourceManagerResourceGroupId"] as! String
+        }
+    }
+}
+
+public class DescribeSecurityEventLogsResponseBody : Tea.TeaModel {
+    public class SecurityEventMetaData : Tea.TeaModel {
+        public class DateRange : Tea.TeaModel {
+            public var endDate: Int64?
+
+            public var startDate: Int64?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.endDate != nil {
+                    map["EndDate"] = self.endDate!
+                }
+                if self.startDate != nil {
+                    map["StartDate"] = self.startDate!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("EndDate") {
+                    self.endDate = dict["EndDate"] as! Int64
+                }
+                if dict.keys.contains("StartDate") {
+                    self.startDate = dict["StartDate"] as! Int64
+                }
+            }
+        }
+        public var dateRange: DescribeSecurityEventLogsResponseBody.SecurityEventMetaData.DateRange?
+
+        public var units: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+            try self.dateRange?.validate()
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.dateRange != nil {
+                map["DateRange"] = self.dateRange?.toMap()
+            }
+            if self.units != nil {
+                map["Units"] = self.units!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("DateRange") {
+                var model = DescribeSecurityEventLogsResponseBody.SecurityEventMetaData.DateRange()
+                model.fromMap(dict["DateRange"] as! [String: Any])
+                self.dateRange = model
+            }
+            if dict.keys.contains("Units") {
+                self.units = dict["Units"] as! String
+            }
+        }
+    }
+    public var requestId: String?
+
+    public var securityEventLogs: [Any]?
+
+    public var securityEventLogsTotalCount: Int64?
+
+    public var securityEventMetaData: DescribeSecurityEventLogsResponseBody.SecurityEventMetaData?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.securityEventMetaData?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.securityEventLogs != nil {
+            map["SecurityEventLogs"] = self.securityEventLogs!
+        }
+        if self.securityEventLogsTotalCount != nil {
+            map["SecurityEventLogsTotalCount"] = self.securityEventLogsTotalCount!
+        }
+        if self.securityEventMetaData != nil {
+            map["SecurityEventMetaData"] = self.securityEventMetaData?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("RequestId") {
+            self.requestId = dict["RequestId"] as! String
+        }
+        if dict.keys.contains("SecurityEventLogs") {
+            self.securityEventLogs = dict["SecurityEventLogs"] as! [Any]
+        }
+        if dict.keys.contains("SecurityEventLogsTotalCount") {
+            self.securityEventLogsTotalCount = dict["SecurityEventLogsTotalCount"] as! Int64
+        }
+        if dict.keys.contains("SecurityEventMetaData") {
+            var model = DescribeSecurityEventLogsResponseBody.SecurityEventMetaData()
+            model.fromMap(dict["SecurityEventMetaData"] as! [String: Any])
+            self.securityEventMetaData = model
+        }
+    }
+}
+
+public class DescribeSecurityEventLogsResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: DescribeSecurityEventLogsResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") {
+            var model = DescribeSecurityEventLogsResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
+public class DescribeSecurityEventTimeSeriesMetricRequest : Tea.TeaModel {
+    public class Filter : Tea.TeaModel {
+        public class Conditions : Tea.TeaModel {
+            public var key: String?
+
+            public var opValue: String?
+
+            public var values: Any?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.key != nil {
+                    map["Key"] = self.key!
+                }
+                if self.opValue != nil {
+                    map["OpValue"] = self.opValue!
+                }
+                if self.values != nil {
+                    map["Values"] = self.values!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("Key") {
+                    self.key = dict["Key"] as! String
+                }
+                if dict.keys.contains("OpValue") {
+                    self.opValue = dict["OpValue"] as! String
+                }
+                if dict.keys.contains("Values") {
+                    self.values = dict["Values"] as! Any
+                }
+            }
+        }
+        public class DateRange : Tea.TeaModel {
+            public var endDate: Int64?
+
+            public var startDate: Int64?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.endDate != nil {
+                    map["EndDate"] = self.endDate!
+                }
+                if self.startDate != nil {
+                    map["StartDate"] = self.startDate!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("EndDate") {
+                    self.endDate = dict["EndDate"] as! Int64
+                }
+                if dict.keys.contains("StartDate") {
+                    self.startDate = dict["StartDate"] as! Int64
+                }
+            }
+        }
+        public var conditions: [DescribeSecurityEventTimeSeriesMetricRequest.Filter.Conditions]?
+
+        public var dateRange: DescribeSecurityEventTimeSeriesMetricRequest.Filter.DateRange?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+            try self.dateRange?.validate()
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.conditions != nil {
+                var tmp : [Any] = []
+                for k in self.conditions! {
+                    tmp.append(k.toMap())
+                }
+                map["Conditions"] = tmp
+            }
+            if self.dateRange != nil {
+                map["DateRange"] = self.dateRange?.toMap()
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("Conditions") {
+                var tmp : [DescribeSecurityEventTimeSeriesMetricRequest.Filter.Conditions] = []
+                for v in dict["Conditions"] as! [Any] {
+                    var model = DescribeSecurityEventTimeSeriesMetricRequest.Filter.Conditions()
+                    if v != nil {
+                        model.fromMap(v as! [String: Any])
+                    }
+                    tmp.append(model)
+                }
+                self.conditions = tmp
+            }
+            if dict.keys.contains("DateRange") {
+                var model = DescribeSecurityEventTimeSeriesMetricRequest.Filter.DateRange()
+                model.fromMap(dict["DateRange"] as! [String: Any])
+                self.dateRange = model
+            }
+        }
+    }
+    public var filter: DescribeSecurityEventTimeSeriesMetricRequest.Filter?
+
+    public var instanceId: String?
+
+    public var metric: String?
+
+    public var regionId: String?
+
+    public var resourceManagerResourceGroupId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.filter?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.filter != nil {
+            map["Filter"] = self.filter?.toMap()
+        }
+        if self.instanceId != nil {
+            map["InstanceId"] = self.instanceId!
+        }
+        if self.metric != nil {
+            map["Metric"] = self.metric!
+        }
+        if self.regionId != nil {
+            map["RegionId"] = self.regionId!
+        }
+        if self.resourceManagerResourceGroupId != nil {
+            map["ResourceManagerResourceGroupId"] = self.resourceManagerResourceGroupId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("Filter") {
+            var model = DescribeSecurityEventTimeSeriesMetricRequest.Filter()
+            model.fromMap(dict["Filter"] as! [String: Any])
+            self.filter = model
+        }
+        if dict.keys.contains("InstanceId") {
+            self.instanceId = dict["InstanceId"] as! String
+        }
+        if dict.keys.contains("Metric") {
+            self.metric = dict["Metric"] as! String
+        }
+        if dict.keys.contains("RegionId") {
+            self.regionId = dict["RegionId"] as! String
+        }
+        if dict.keys.contains("ResourceManagerResourceGroupId") {
+            self.resourceManagerResourceGroupId = dict["ResourceManagerResourceGroupId"] as! String
+        }
+    }
+}
+
+public class DescribeSecurityEventTimeSeriesMetricShrinkRequest : Tea.TeaModel {
+    public var filterShrink: String?
+
+    public var instanceId: String?
+
+    public var metric: String?
+
+    public var regionId: String?
+
+    public var resourceManagerResourceGroupId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.filterShrink != nil {
+            map["Filter"] = self.filterShrink!
+        }
+        if self.instanceId != nil {
+            map["InstanceId"] = self.instanceId!
+        }
+        if self.metric != nil {
+            map["Metric"] = self.metric!
+        }
+        if self.regionId != nil {
+            map["RegionId"] = self.regionId!
+        }
+        if self.resourceManagerResourceGroupId != nil {
+            map["ResourceManagerResourceGroupId"] = self.resourceManagerResourceGroupId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("Filter") {
+            self.filterShrink = dict["Filter"] as! String
+        }
+        if dict.keys.contains("InstanceId") {
+            self.instanceId = dict["InstanceId"] as! String
+        }
+        if dict.keys.contains("Metric") {
+            self.metric = dict["Metric"] as! String
+        }
+        if dict.keys.contains("RegionId") {
+            self.regionId = dict["RegionId"] as! String
+        }
+        if dict.keys.contains("ResourceManagerResourceGroupId") {
+            self.resourceManagerResourceGroupId = dict["ResourceManagerResourceGroupId"] as! String
+        }
+    }
+}
+
+public class DescribeSecurityEventTimeSeriesMetricResponseBody : Tea.TeaModel {
+    public class SecurityEventTimeSeries : Tea.TeaModel {
+        public var metric: String?
+
+        public var timestamps: [String]?
+
+        public var values: [Int64]?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.metric != nil {
+                map["Metric"] = self.metric!
+            }
+            if self.timestamps != nil {
+                map["Timestamps"] = self.timestamps!
+            }
+            if self.values != nil {
+                map["Values"] = self.values!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("Metric") {
+                self.metric = dict["Metric"] as! String
+            }
+            if dict.keys.contains("Timestamps") {
+                self.timestamps = dict["Timestamps"] as! [String]
+            }
+            if dict.keys.contains("Values") {
+                self.values = dict["Values"] as! [Int64]
+            }
+        }
+    }
+    public class TimeSeriesMetaData : Tea.TeaModel {
+        public class DateRange : Tea.TeaModel {
+            public var endDate: Int64?
+
+            public var startDate: Int64?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.endDate != nil {
+                    map["EndDate"] = self.endDate!
+                }
+                if self.startDate != nil {
+                    map["StartDate"] = self.startDate!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("EndDate") {
+                    self.endDate = dict["EndDate"] as! Int64
+                }
+                if dict.keys.contains("StartDate") {
+                    self.startDate = dict["StartDate"] as! Int64
+                }
+            }
+        }
+        public var aggregateInterval: String?
+
+        public var dateRange: DescribeSecurityEventTimeSeriesMetricResponseBody.TimeSeriesMetaData.DateRange?
+
+        public var units: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+            try self.dateRange?.validate()
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.aggregateInterval != nil {
+                map["AggregateInterval"] = self.aggregateInterval!
+            }
+            if self.dateRange != nil {
+                map["DateRange"] = self.dateRange?.toMap()
+            }
+            if self.units != nil {
+                map["Units"] = self.units!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("AggregateInterval") {
+                self.aggregateInterval = dict["AggregateInterval"] as! String
+            }
+            if dict.keys.contains("DateRange") {
+                var model = DescribeSecurityEventTimeSeriesMetricResponseBody.TimeSeriesMetaData.DateRange()
+                model.fromMap(dict["DateRange"] as! [String: Any])
+                self.dateRange = model
+            }
+            if dict.keys.contains("Units") {
+                self.units = dict["Units"] as! String
+            }
+        }
+    }
+    public var requestId: String?
+
+    public var securityEventTimeSeries: [DescribeSecurityEventTimeSeriesMetricResponseBody.SecurityEventTimeSeries]?
+
+    public var timeSeriesMetaData: DescribeSecurityEventTimeSeriesMetricResponseBody.TimeSeriesMetaData?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.timeSeriesMetaData?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.securityEventTimeSeries != nil {
+            var tmp : [Any] = []
+            for k in self.securityEventTimeSeries! {
+                tmp.append(k.toMap())
+            }
+            map["SecurityEventTimeSeries"] = tmp
+        }
+        if self.timeSeriesMetaData != nil {
+            map["TimeSeriesMetaData"] = self.timeSeriesMetaData?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("RequestId") {
+            self.requestId = dict["RequestId"] as! String
+        }
+        if dict.keys.contains("SecurityEventTimeSeries") {
+            var tmp : [DescribeSecurityEventTimeSeriesMetricResponseBody.SecurityEventTimeSeries] = []
+            for v in dict["SecurityEventTimeSeries"] as! [Any] {
+                var model = DescribeSecurityEventTimeSeriesMetricResponseBody.SecurityEventTimeSeries()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.securityEventTimeSeries = tmp
+        }
+        if dict.keys.contains("TimeSeriesMetaData") {
+            var model = DescribeSecurityEventTimeSeriesMetricResponseBody.TimeSeriesMetaData()
+            model.fromMap(dict["TimeSeriesMetaData"] as! [String: Any])
+            self.timeSeriesMetaData = model
+        }
+    }
+}
+
+public class DescribeSecurityEventTimeSeriesMetricResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: DescribeSecurityEventTimeSeriesMetricResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") {
+            var model = DescribeSecurityEventTimeSeriesMetricResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
+public class DescribeSecurityEventTopNMetricRequest : Tea.TeaModel {
+    public class Filter : Tea.TeaModel {
+        public class Conditions : Tea.TeaModel {
+            public var key: String?
+
+            public var opValue: String?
+
+            public var values: Any?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.key != nil {
+                    map["Key"] = self.key!
+                }
+                if self.opValue != nil {
+                    map["OpValue"] = self.opValue!
+                }
+                if self.values != nil {
+                    map["Values"] = self.values!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("Key") {
+                    self.key = dict["Key"] as! String
+                }
+                if dict.keys.contains("OpValue") {
+                    self.opValue = dict["OpValue"] as! String
+                }
+                if dict.keys.contains("Values") {
+                    self.values = dict["Values"] as! Any
+                }
+            }
+        }
+        public class DateRange : Tea.TeaModel {
+            public var endDate: Int64?
+
+            public var startDate: Int64?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.endDate != nil {
+                    map["EndDate"] = self.endDate!
+                }
+                if self.startDate != nil {
+                    map["StartDate"] = self.startDate!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("EndDate") {
+                    self.endDate = dict["EndDate"] as! Int64
+                }
+                if dict.keys.contains("StartDate") {
+                    self.startDate = dict["StartDate"] as! Int64
+                }
+            }
+        }
+        public var conditions: [DescribeSecurityEventTopNMetricRequest.Filter.Conditions]?
+
+        public var dateRange: DescribeSecurityEventTopNMetricRequest.Filter.DateRange?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+            try self.dateRange?.validate()
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.conditions != nil {
+                var tmp : [Any] = []
+                for k in self.conditions! {
+                    tmp.append(k.toMap())
+                }
+                map["Conditions"] = tmp
+            }
+            if self.dateRange != nil {
+                map["DateRange"] = self.dateRange?.toMap()
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("Conditions") {
+                var tmp : [DescribeSecurityEventTopNMetricRequest.Filter.Conditions] = []
+                for v in dict["Conditions"] as! [Any] {
+                    var model = DescribeSecurityEventTopNMetricRequest.Filter.Conditions()
+                    if v != nil {
+                        model.fromMap(v as! [String: Any])
+                    }
+                    tmp.append(model)
+                }
+                self.conditions = tmp
+            }
+            if dict.keys.contains("DateRange") {
+                var model = DescribeSecurityEventTopNMetricRequest.Filter.DateRange()
+                model.fromMap(dict["DateRange"] as! [String: Any])
+                self.dateRange = model
+            }
+        }
+    }
+    public var filter: DescribeSecurityEventTopNMetricRequest.Filter?
+
+    public var instanceId: String?
+
+    public var limit: Int64?
+
+    public var metric: String?
+
+    public var regionId: String?
+
+    public var resourceManagerResourceGroupId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.filter?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.filter != nil {
+            map["Filter"] = self.filter?.toMap()
+        }
+        if self.instanceId != nil {
+            map["InstanceId"] = self.instanceId!
+        }
+        if self.limit != nil {
+            map["Limit"] = self.limit!
+        }
+        if self.metric != nil {
+            map["Metric"] = self.metric!
+        }
+        if self.regionId != nil {
+            map["RegionId"] = self.regionId!
+        }
+        if self.resourceManagerResourceGroupId != nil {
+            map["ResourceManagerResourceGroupId"] = self.resourceManagerResourceGroupId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("Filter") {
+            var model = DescribeSecurityEventTopNMetricRequest.Filter()
+            model.fromMap(dict["Filter"] as! [String: Any])
+            self.filter = model
+        }
+        if dict.keys.contains("InstanceId") {
+            self.instanceId = dict["InstanceId"] as! String
+        }
+        if dict.keys.contains("Limit") {
+            self.limit = dict["Limit"] as! Int64
+        }
+        if dict.keys.contains("Metric") {
+            self.metric = dict["Metric"] as! String
+        }
+        if dict.keys.contains("RegionId") {
+            self.regionId = dict["RegionId"] as! String
+        }
+        if dict.keys.contains("ResourceManagerResourceGroupId") {
+            self.resourceManagerResourceGroupId = dict["ResourceManagerResourceGroupId"] as! String
+        }
+    }
+}
+
+public class DescribeSecurityEventTopNMetricShrinkRequest : Tea.TeaModel {
+    public var filterShrink: String?
+
+    public var instanceId: String?
+
+    public var limit: Int64?
+
+    public var metric: String?
+
+    public var regionId: String?
+
+    public var resourceManagerResourceGroupId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.filterShrink != nil {
+            map["Filter"] = self.filterShrink!
+        }
+        if self.instanceId != nil {
+            map["InstanceId"] = self.instanceId!
+        }
+        if self.limit != nil {
+            map["Limit"] = self.limit!
+        }
+        if self.metric != nil {
+            map["Metric"] = self.metric!
+        }
+        if self.regionId != nil {
+            map["RegionId"] = self.regionId!
+        }
+        if self.resourceManagerResourceGroupId != nil {
+            map["ResourceManagerResourceGroupId"] = self.resourceManagerResourceGroupId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("Filter") {
+            self.filterShrink = dict["Filter"] as! String
+        }
+        if dict.keys.contains("InstanceId") {
+            self.instanceId = dict["InstanceId"] as! String
+        }
+        if dict.keys.contains("Limit") {
+            self.limit = dict["Limit"] as! Int64
+        }
+        if dict.keys.contains("Metric") {
+            self.metric = dict["Metric"] as! String
+        }
+        if dict.keys.contains("RegionId") {
+            self.regionId = dict["RegionId"] as! String
+        }
+        if dict.keys.contains("ResourceManagerResourceGroupId") {
+            self.resourceManagerResourceGroupId = dict["ResourceManagerResourceGroupId"] as! String
+        }
+    }
+}
+
+public class DescribeSecurityEventTopNMetricResponseBody : Tea.TeaModel {
+    public class SecurityEventTopNValues : Tea.TeaModel {
+        public var attribute: String?
+
+        public var name: String?
+
+        public var value: Int64?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.attribute != nil {
+                map["Attribute"] = self.attribute!
+            }
+            if self.name != nil {
+                map["Name"] = self.name!
+            }
+            if self.value != nil {
+                map["Value"] = self.value!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("Attribute") {
+                self.attribute = dict["Attribute"] as! String
+            }
+            if dict.keys.contains("Name") {
+                self.name = dict["Name"] as! String
+            }
+            if dict.keys.contains("Value") {
+                self.value = dict["Value"] as! Int64
+            }
+        }
+    }
+    public class TopNMetaData : Tea.TeaModel {
+        public class DateRange : Tea.TeaModel {
+            public var endDate: Int64?
+
+            public var startDate: Int64?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.endDate != nil {
+                    map["EndDate"] = self.endDate!
+                }
+                if self.startDate != nil {
+                    map["StartDate"] = self.startDate!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("EndDate") {
+                    self.endDate = dict["EndDate"] as! Int64
+                }
+                if dict.keys.contains("StartDate") {
+                    self.startDate = dict["StartDate"] as! Int64
+                }
+            }
+        }
+        public var dateRange: DescribeSecurityEventTopNMetricResponseBody.TopNMetaData.DateRange?
+
+        public var units: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+            try self.dateRange?.validate()
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.dateRange != nil {
+                map["DateRange"] = self.dateRange?.toMap()
+            }
+            if self.units != nil {
+                map["Units"] = self.units!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("DateRange") {
+                var model = DescribeSecurityEventTopNMetricResponseBody.TopNMetaData.DateRange()
+                model.fromMap(dict["DateRange"] as! [String: Any])
+                self.dateRange = model
+            }
+            if dict.keys.contains("Units") {
+                self.units = dict["Units"] as! String
+            }
+        }
+    }
+    public var requestId: String?
+
+    public var securityEventTopNValues: [DescribeSecurityEventTopNMetricResponseBody.SecurityEventTopNValues]?
+
+    public var topNMetaData: DescribeSecurityEventTopNMetricResponseBody.TopNMetaData?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.topNMetaData?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.securityEventTopNValues != nil {
+            var tmp : [Any] = []
+            for k in self.securityEventTopNValues! {
+                tmp.append(k.toMap())
+            }
+            map["SecurityEventTopNValues"] = tmp
+        }
+        if self.topNMetaData != nil {
+            map["TopNMetaData"] = self.topNMetaData?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("RequestId") {
+            self.requestId = dict["RequestId"] as! String
+        }
+        if dict.keys.contains("SecurityEventTopNValues") {
+            var tmp : [DescribeSecurityEventTopNMetricResponseBody.SecurityEventTopNValues] = []
+            for v in dict["SecurityEventTopNValues"] as! [Any] {
+                var model = DescribeSecurityEventTopNMetricResponseBody.SecurityEventTopNValues()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.securityEventTopNValues = tmp
+        }
+        if dict.keys.contains("TopNMetaData") {
+            var model = DescribeSecurityEventTopNMetricResponseBody.TopNMetaData()
+            model.fromMap(dict["TopNMetaData"] as! [String: Any])
+            self.topNMetaData = model
+        }
+    }
+}
+
+public class DescribeSecurityEventTopNMetricResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: DescribeSecurityEventTopNMetricResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") {
+            var model = DescribeSecurityEventTopNMetricResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
 public class DescribeSensitiveApiStatisticRequest : Tea.TeaModel {
     public var clusterId: String?
 
@@ -25625,6 +28584,8 @@ public class DescribeSensitiveRequestLogResponseBody : Tea.TeaModel {
 
         public var matchedHost: String?
 
+        public var remoteCountryId: String?
+
         public var requestTime: Int64?
 
         public var sensitiveList: String?
@@ -25660,6 +28621,9 @@ public class DescribeSensitiveRequestLogResponseBody : Tea.TeaModel {
             if self.matchedHost != nil {
                 map["MatchedHost"] = self.matchedHost!
             }
+            if self.remoteCountryId != nil {
+                map["RemoteCountryId"] = self.remoteCountryId!
+            }
             if self.requestTime != nil {
                 map["RequestTime"] = self.requestTime!
             }
@@ -25687,6 +28651,9 @@ public class DescribeSensitiveRequestLogResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("MatchedHost") {
                 self.matchedHost = dict["MatchedHost"] as! String
+            }
+            if dict.keys.contains("RemoteCountryId") {
+                self.remoteCountryId = dict["RemoteCountryId"] as! String
             }
             if dict.keys.contains("RequestTime") {
                 self.requestTime = dict["RequestTime"] as! Int64
@@ -31920,6 +34887,43 @@ public class ModifyDefenseResourceGroupResponse : Tea.TeaModel {
 }
 
 public class ModifyDefenseResourceXffRequest : Tea.TeaModel {
+    public class ResponseHeaders : Tea.TeaModel {
+        public var key: String?
+
+        public var value: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.key != nil {
+                map["Key"] = self.key!
+            }
+            if self.value != nil {
+                map["Value"] = self.value!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("Key") {
+                self.key = dict["Key"] as! String
+            }
+            if dict.keys.contains("Value") {
+                self.value = dict["Value"] as! String
+            }
+        }
+    }
     public var acwCookieStatus: Int32?
 
     public var acwSecureStatus: Int32?
@@ -31935,6 +34939,8 @@ public class ModifyDefenseResourceXffRequest : Tea.TeaModel {
     public var resource: String?
 
     public var resourceManagerResourceGroupId: String?
+
+    public var responseHeaders: [ModifyDefenseResourceXffRequest.ResponseHeaders]?
 
     public var xffStatus: Int32?
 
@@ -31976,6 +34982,13 @@ public class ModifyDefenseResourceXffRequest : Tea.TeaModel {
         if self.resourceManagerResourceGroupId != nil {
             map["ResourceManagerResourceGroupId"] = self.resourceManagerResourceGroupId!
         }
+        if self.responseHeaders != nil {
+            var tmp : [Any] = []
+            for k in self.responseHeaders! {
+                tmp.append(k.toMap())
+            }
+            map["ResponseHeaders"] = tmp
+        }
         if self.xffStatus != nil {
             map["XffStatus"] = self.xffStatus!
         }
@@ -32006,6 +35019,17 @@ public class ModifyDefenseResourceXffRequest : Tea.TeaModel {
         }
         if dict.keys.contains("ResourceManagerResourceGroupId") {
             self.resourceManagerResourceGroupId = dict["ResourceManagerResourceGroupId"] as! String
+        }
+        if dict.keys.contains("ResponseHeaders") {
+            var tmp : [ModifyDefenseResourceXffRequest.ResponseHeaders] = []
+            for v in dict["ResponseHeaders"] as! [Any] {
+                var model = ModifyDefenseResourceXffRequest.ResponseHeaders()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.responseHeaders = tmp
         }
         if dict.keys.contains("XffStatus") {
             self.xffStatus = dict["XffStatus"] as! Int32
@@ -33019,6 +36043,8 @@ public class ModifyDomainRequest : Tea.TeaModel {
         }
         public var backends: [String]?
 
+        public var backupBackends: [String]?
+
         public var cnameEnabled: Bool?
 
         public var connectTimeout: Int32?
@@ -33065,6 +36091,9 @@ public class ModifyDomainRequest : Tea.TeaModel {
             var map = super.toMap()
             if self.backends != nil {
                 map["Backends"] = self.backends!
+            }
+            if self.backupBackends != nil {
+                map["BackupBackends"] = self.backupBackends!
             }
             if self.cnameEnabled != nil {
                 map["CnameEnabled"] = self.cnameEnabled!
@@ -33121,6 +36150,9 @@ public class ModifyDomainRequest : Tea.TeaModel {
         public override func fromMap(_ dict: [String: Any]) -> Void {
             if dict.keys.contains("Backends") {
                 self.backends = dict["Backends"] as! [String]
+            }
+            if dict.keys.contains("BackupBackends") {
+                self.backupBackends = dict["BackupBackends"] as! [String]
             }
             if dict.keys.contains("CnameEnabled") {
                 self.cnameEnabled = dict["CnameEnabled"] as! Bool
@@ -33595,6 +36627,10 @@ public class ModifyHybridCloudClusterBypassStatusRequest : Tea.TeaModel {
 
     public var instanceId: String?
 
+    public var regionId: String?
+
+    public var resourceManagerResourceGroupId: String?
+
     public var ruleStatus: String?
 
     public override init() {
@@ -33617,6 +36653,12 @@ public class ModifyHybridCloudClusterBypassStatusRequest : Tea.TeaModel {
         if self.instanceId != nil {
             map["InstanceId"] = self.instanceId!
         }
+        if self.regionId != nil {
+            map["RegionId"] = self.regionId!
+        }
+        if self.resourceManagerResourceGroupId != nil {
+            map["ResourceManagerResourceGroupId"] = self.resourceManagerResourceGroupId!
+        }
         if self.ruleStatus != nil {
             map["RuleStatus"] = self.ruleStatus!
         }
@@ -33629,6 +36671,12 @@ public class ModifyHybridCloudClusterBypassStatusRequest : Tea.TeaModel {
         }
         if dict.keys.contains("InstanceId") {
             self.instanceId = dict["InstanceId"] as! String
+        }
+        if dict.keys.contains("RegionId") {
+            self.regionId = dict["RegionId"] as! String
+        }
+        if dict.keys.contains("ResourceManagerResourceGroupId") {
+            self.resourceManagerResourceGroupId = dict["ResourceManagerResourceGroupId"] as! String
         }
         if dict.keys.contains("RuleStatus") {
             self.ruleStatus = dict["RuleStatus"] as! String
