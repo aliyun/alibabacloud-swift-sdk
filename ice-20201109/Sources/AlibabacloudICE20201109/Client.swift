@@ -8806,8 +8806,12 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func listSmartVoiceGroupsWithOptions(_ runtime: TeaUtils.RuntimeOptions) async throws -> ListSmartVoiceGroupsResponse {
-        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([:])
+    public func listSmartVoiceGroupsWithOptions(_ request: ListSmartVoiceGroupsRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ListSmartVoiceGroupsResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: String] = AlibabaCloudOpenApiUtil.Client.query(TeaUtils.Client.toMap(request))
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
         var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
             "action": "ListSmartVoiceGroups",
             "version": "2020-11-09",
@@ -8830,9 +8834,9 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func listSmartVoiceGroups() async throws -> ListSmartVoiceGroupsResponse {
+    public func listSmartVoiceGroups(_ request: ListSmartVoiceGroupsRequest) async throws -> ListSmartVoiceGroupsResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
-        return try await listSmartVoiceGroupsWithOptions(runtime as! TeaUtils.RuntimeOptions)
+        return try await listSmartVoiceGroupsWithOptions(request as! ListSmartVoiceGroupsRequest, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)

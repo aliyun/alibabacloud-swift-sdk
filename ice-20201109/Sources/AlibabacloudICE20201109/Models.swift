@@ -60343,6 +60343,36 @@ public class ListSmartSysAvatarModelsResponse : Tea.TeaModel {
     }
 }
 
+public class ListSmartVoiceGroupsRequest : Tea.TeaModel {
+    public var voiceType: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.voiceType != nil {
+            map["VoiceType"] = self.voiceType!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("VoiceType") {
+            self.voiceType = dict["VoiceType"] as! String
+        }
+    }
+}
+
 public class ListSmartVoiceGroupsResponseBody : Tea.TeaModel {
     public class VoiceGroups : Tea.TeaModel {
         public class VoiceList : Tea.TeaModel {
