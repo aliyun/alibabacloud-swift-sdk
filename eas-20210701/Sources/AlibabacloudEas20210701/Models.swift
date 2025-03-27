@@ -1020,6 +1020,8 @@ public class Service : Tea.TeaModel {
 
     public var extraData: String?
 
+    public var gateway: String?
+
     public var gpu: Int32?
 
     public var image: String?
@@ -1041,6 +1043,8 @@ public class Service : Tea.TeaModel {
     public var parentUid: String?
 
     public var pendingInstance: Int32?
+
+    public var quotaId: String?
 
     public var reason: String?
 
@@ -1132,6 +1136,9 @@ public class Service : Tea.TeaModel {
         if self.extraData != nil {
             map["ExtraData"] = self.extraData!
         }
+        if self.gateway != nil {
+            map["Gateway"] = self.gateway!
+        }
         if self.gpu != nil {
             map["Gpu"] = self.gpu!
         }
@@ -1168,6 +1175,9 @@ public class Service : Tea.TeaModel {
         }
         if self.pendingInstance != nil {
             map["PendingInstance"] = self.pendingInstance!
+        }
+        if self.quotaId != nil {
+            map["QuotaId"] = self.quotaId!
         }
         if self.reason != nil {
             map["Reason"] = self.reason!
@@ -1272,6 +1282,9 @@ public class Service : Tea.TeaModel {
         if dict.keys.contains("ExtraData") {
             self.extraData = dict["ExtraData"] as! String
         }
+        if dict.keys.contains("Gateway") {
+            self.gateway = dict["Gateway"] as! String
+        }
         if dict.keys.contains("Gpu") {
             self.gpu = dict["Gpu"] as! Int32
         }
@@ -1312,6 +1325,9 @@ public class Service : Tea.TeaModel {
         }
         if dict.keys.contains("PendingInstance") {
             self.pendingInstance = dict["PendingInstance"] as! Int32
+        }
+        if dict.keys.contains("QuotaId") {
+            self.quotaId = dict["QuotaId"] as! String
         }
         if dict.keys.contains("Reason") {
             self.reason = dict["Reason"] as! String
@@ -2626,6 +2642,8 @@ public class CreateGatewayResponse : Tea.TeaModel {
 }
 
 public class CreateGatewayIntranetLinkedVpcRequest : Tea.TeaModel {
+    public var enableAuthoritativeDns: Bool?
+
     public var vSwitchId: String?
 
     public var vpcId: String?
@@ -2644,6 +2662,9 @@ public class CreateGatewayIntranetLinkedVpcRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.enableAuthoritativeDns != nil {
+            map["EnableAuthoritativeDns"] = self.enableAuthoritativeDns!
+        }
         if self.vSwitchId != nil {
             map["VSwitchId"] = self.vSwitchId!
         }
@@ -2654,6 +2675,9 @@ public class CreateGatewayIntranetLinkedVpcRequest : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("EnableAuthoritativeDns") {
+            self.enableAuthoritativeDns = dict["EnableAuthoritativeDns"] as! Bool
+        }
         if dict.keys.contains("VSwitchId") {
             self.vSwitchId = dict["VSwitchId"] as! String
         }
@@ -7807,6 +7831,142 @@ public class DescribeMachineSpecResponse : Tea.TeaModel {
     }
 }
 
+public class DescribeRegionsResponseBody : Tea.TeaModel {
+    public class Regions : Tea.TeaModel {
+        public var regionId: String?
+
+        public var regionName: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.regionId != nil {
+                map["RegionId"] = self.regionId!
+            }
+            if self.regionName != nil {
+                map["RegionName"] = self.regionName!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("RegionId") {
+                self.regionId = dict["RegionId"] as! String
+            }
+            if dict.keys.contains("RegionName") {
+                self.regionName = dict["RegionName"] as! String
+            }
+        }
+    }
+    public var regions: [DescribeRegionsResponseBody.Regions]?
+
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.regions != nil {
+            var tmp : [Any] = []
+            for k in self.regions! {
+                tmp.append(k.toMap())
+            }
+            map["Regions"] = tmp
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("Regions") {
+            var tmp : [DescribeRegionsResponseBody.Regions] = []
+            for v in dict["Regions"] as! [Any] {
+                var model = DescribeRegionsResponseBody.Regions()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.regions = tmp
+        }
+        if dict.keys.contains("RequestId") {
+            self.requestId = dict["RequestId"] as! String
+        }
+    }
+}
+
+public class DescribeRegionsResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: DescribeRegionsResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") {
+            var model = DescribeRegionsResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
 public class DescribeResourceResponseBody : Tea.TeaModel {
     public var clusterId: String?
 
@@ -11664,6 +11824,8 @@ public class ListGatewayDomainsResponse : Tea.TeaModel {
 
 public class ListGatewayIntranetLinkedVpcResponseBody : Tea.TeaModel {
     public class IntranetLinkedVpcList : Tea.TeaModel {
+        public var authoritativeDnsEnabled: Bool?
+
         public var ip: String?
 
         public var securityGroupId: String?
@@ -11688,6 +11850,9 @@ public class ListGatewayIntranetLinkedVpcResponseBody : Tea.TeaModel {
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
+            if self.authoritativeDnsEnabled != nil {
+                map["AuthoritativeDnsEnabled"] = self.authoritativeDnsEnabled!
+            }
             if self.ip != nil {
                 map["Ip"] = self.ip!
             }
@@ -11707,6 +11872,9 @@ public class ListGatewayIntranetLinkedVpcResponseBody : Tea.TeaModel {
         }
 
         public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("AuthoritativeDnsEnabled") {
+                self.authoritativeDnsEnabled = dict["AuthoritativeDnsEnabled"] as! Bool
+            }
             if dict.keys.contains("Ip") {
                 self.ip = dict["Ip"] as! String
             }
@@ -13806,6 +13974,8 @@ public class ListServicesRequest : Tea.TeaModel {
 
     public var resourceName: String?
 
+    public var resourceType: String?
+
     public var role: String?
 
     public var serviceName: String?
@@ -13864,6 +14034,9 @@ public class ListServicesRequest : Tea.TeaModel {
         if self.resourceName != nil {
             map["ResourceName"] = self.resourceName!
         }
+        if self.resourceType != nil {
+            map["ResourceType"] = self.resourceType!
+        }
         if self.role != nil {
             map["Role"] = self.role!
         }
@@ -13919,6 +14092,9 @@ public class ListServicesRequest : Tea.TeaModel {
         if dict.keys.contains("ResourceName") {
             self.resourceName = dict["ResourceName"] as! String
         }
+        if dict.keys.contains("ResourceType") {
+            self.resourceType = dict["ResourceType"] as! String
+        }
         if dict.keys.contains("Role") {
             self.role = dict["Role"] as! String
         }
@@ -13963,6 +14139,8 @@ public class ListServicesShrinkRequest : Tea.TeaModel {
     public var quotaId: String?
 
     public var resourceName: String?
+
+    public var resourceType: String?
 
     public var role: String?
 
@@ -14022,6 +14200,9 @@ public class ListServicesShrinkRequest : Tea.TeaModel {
         if self.resourceName != nil {
             map["ResourceName"] = self.resourceName!
         }
+        if self.resourceType != nil {
+            map["ResourceType"] = self.resourceType!
+        }
         if self.role != nil {
             map["Role"] = self.role!
         }
@@ -14076,6 +14257,9 @@ public class ListServicesShrinkRequest : Tea.TeaModel {
         }
         if dict.keys.contains("ResourceName") {
             self.resourceName = dict["ResourceName"] as! String
+        }
+        if dict.keys.contains("ResourceType") {
+            self.resourceType = dict["ResourceType"] as! String
         }
         if dict.keys.contains("Role") {
             self.role = dict["Role"] as! String
