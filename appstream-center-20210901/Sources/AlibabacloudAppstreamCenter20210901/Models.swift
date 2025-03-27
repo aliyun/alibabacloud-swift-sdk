@@ -637,6 +637,8 @@ public class AuthorizeInstanceGroupRequest : Tea.TeaModel {
     }
     public var appInstanceGroupId: String?
 
+    public var appInstancePersistentId: String?
+
     public var authorizeUserIds: [String]?
 
     public var productType: String?
@@ -663,6 +665,9 @@ public class AuthorizeInstanceGroupRequest : Tea.TeaModel {
         if self.appInstanceGroupId != nil {
             map["AppInstanceGroupId"] = self.appInstanceGroupId!
         }
+        if self.appInstancePersistentId != nil {
+            map["AppInstancePersistentId"] = self.appInstancePersistentId!
+        }
         if self.authorizeUserIds != nil {
             map["AuthorizeUserIds"] = self.authorizeUserIds!
         }
@@ -681,6 +686,9 @@ public class AuthorizeInstanceGroupRequest : Tea.TeaModel {
     public override func fromMap(_ dict: [String: Any]) -> Void {
         if dict.keys.contains("AppInstanceGroupId") {
             self.appInstanceGroupId = dict["AppInstanceGroupId"] as! String
+        }
+        if dict.keys.contains("AppInstancePersistentId") {
+            self.appInstancePersistentId = dict["AppInstancePersistentId"] as! String
         }
         if dict.keys.contains("AuthorizeUserIds") {
             self.authorizeUserIds = dict["AuthorizeUserIds"] as! [String]
@@ -701,6 +709,8 @@ public class AuthorizeInstanceGroupRequest : Tea.TeaModel {
 
 public class AuthorizeInstanceGroupShrinkRequest : Tea.TeaModel {
     public var appInstanceGroupId: String?
+
+    public var appInstancePersistentId: String?
 
     public var authorizeUserIds: [String]?
 
@@ -727,6 +737,9 @@ public class AuthorizeInstanceGroupShrinkRequest : Tea.TeaModel {
         if self.appInstanceGroupId != nil {
             map["AppInstanceGroupId"] = self.appInstanceGroupId!
         }
+        if self.appInstancePersistentId != nil {
+            map["AppInstancePersistentId"] = self.appInstancePersistentId!
+        }
         if self.authorizeUserIds != nil {
             map["AuthorizeUserIds"] = self.authorizeUserIds!
         }
@@ -745,6 +758,9 @@ public class AuthorizeInstanceGroupShrinkRequest : Tea.TeaModel {
     public override func fromMap(_ dict: [String: Any]) -> Void {
         if dict.keys.contains("AppInstanceGroupId") {
             self.appInstanceGroupId = dict["AppInstanceGroupId"] as! String
+        }
+        if dict.keys.contains("AppInstancePersistentId") {
+            self.appInstancePersistentId = dict["AppInstancePersistentId"] as! String
         }
         if dict.keys.contains("AuthorizeUserIds") {
             self.authorizeUserIds = dict["AuthorizeUserIds"] as! [String]
@@ -1654,6 +1670,8 @@ public class CreateAppInstanceGroupRequest : Tea.TeaModel {
 
         public var perSessionPerApp: Bool?
 
+        public var persistentAppInstanceScheduleMode: String?
+
         public var sessionPreOpen: String?
 
         public var sessionType: String?
@@ -1680,6 +1698,9 @@ public class CreateAppInstanceGroupRequest : Tea.TeaModel {
             if self.perSessionPerApp != nil {
                 map["PerSessionPerApp"] = self.perSessionPerApp!
             }
+            if self.persistentAppInstanceScheduleMode != nil {
+                map["PersistentAppInstanceScheduleMode"] = self.persistentAppInstanceScheduleMode!
+            }
             if self.sessionPreOpen != nil {
                 map["SessionPreOpen"] = self.sessionPreOpen!
             }
@@ -1698,6 +1719,9 @@ public class CreateAppInstanceGroupRequest : Tea.TeaModel {
             }
             if dict.keys.contains("PerSessionPerApp") {
                 self.perSessionPerApp = dict["PerSessionPerApp"] as! Bool
+            }
+            if dict.keys.contains("PersistentAppInstanceScheduleMode") {
+                self.persistentAppInstanceScheduleMode = dict["PersistentAppInstanceScheduleMode"] as! String
             }
             if dict.keys.contains("SessionPreOpen") {
                 self.sessionPreOpen = dict["SessionPreOpen"] as! String
@@ -1967,6 +1991,8 @@ public class CreateAppInstanceGroupRequest : Tea.TeaModel {
 
     public var appPolicyId: String?
 
+    public var authMode: String?
+
     public var autoPay: Bool?
 
     public var autoRenew: Bool?
@@ -2044,6 +2070,9 @@ public class CreateAppInstanceGroupRequest : Tea.TeaModel {
         }
         if self.appPolicyId != nil {
             map["AppPolicyId"] = self.appPolicyId!
+        }
+        if self.authMode != nil {
+            map["AuthMode"] = self.authMode!
         }
         if self.autoPay != nil {
             map["AutoPay"] = self.autoPay!
@@ -2126,6 +2155,9 @@ public class CreateAppInstanceGroupRequest : Tea.TeaModel {
         }
         if dict.keys.contains("AppPolicyId") {
             self.appPolicyId = dict["AppPolicyId"] as! String
+        }
+        if dict.keys.contains("AuthMode") {
+            self.authMode = dict["AuthMode"] as! String
         }
         if dict.keys.contains("AutoPay") {
             self.autoPay = dict["AutoPay"] as! Bool
@@ -2221,6 +2253,8 @@ public class CreateAppInstanceGroupShrinkRequest : Tea.TeaModel {
 
     public var appPolicyId: String?
 
+    public var authMode: String?
+
     public var autoPay: Bool?
 
     public var autoRenew: Bool?
@@ -2290,6 +2324,9 @@ public class CreateAppInstanceGroupShrinkRequest : Tea.TeaModel {
         }
         if self.appPolicyId != nil {
             map["AppPolicyId"] = self.appPolicyId!
+        }
+        if self.authMode != nil {
+            map["AuthMode"] = self.authMode!
         }
         if self.autoPay != nil {
             map["AutoPay"] = self.autoPay!
@@ -2372,6 +2409,9 @@ public class CreateAppInstanceGroupShrinkRequest : Tea.TeaModel {
         }
         if dict.keys.contains("AppPolicyId") {
             self.appPolicyId = dict["AppPolicyId"] as! String
+        }
+        if dict.keys.contains("AuthMode") {
+            self.authMode = dict["AuthMode"] as! String
         }
         if dict.keys.contains("AutoPay") {
             self.autoPay = dict["AutoPay"] as! Bool
