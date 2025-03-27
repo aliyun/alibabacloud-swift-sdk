@@ -5919,6 +5919,157 @@ public class GetAICoachScriptResponseBody : Tea.TeaModel {
     }
     public class Points : Tea.TeaModel {
         public class AnswerList : Tea.TeaModel {
+            public class AnswerValues : Tea.TeaModel {
+                public class KeywordValues : Tea.TeaModel {
+                    public var name: String?
+
+                    public var weight: Int32?
+
+                    public override init() {
+                        super.init()
+                    }
+
+                    public init(_ dict: [String: Any]) {
+                        super.init()
+                        self.fromMap(dict)
+                    }
+
+                    public override func validate() throws -> Void {
+                    }
+
+                    public override func toMap() -> [String : Any] {
+                        var map = super.toMap()
+                        if self.name != nil {
+                            map["name"] = self.name!
+                        }
+                        if self.weight != nil {
+                            map["weight"] = self.weight!
+                        }
+                        return map
+                    }
+
+                    public override func fromMap(_ dict: [String: Any]) -> Void {
+                        if dict.keys.contains("name") {
+                            self.name = dict["name"] as! String
+                        }
+                        if dict.keys.contains("weight") {
+                            self.weight = dict["weight"] as! Int32
+                        }
+                    }
+                }
+                public class ScoringRules : Tea.TeaModel {
+                    public var name: String?
+
+                    public override init() {
+                        super.init()
+                    }
+
+                    public init(_ dict: [String: Any]) {
+                        super.init()
+                        self.fromMap(dict)
+                    }
+
+                    public override func validate() throws -> Void {
+                    }
+
+                    public override func toMap() -> [String : Any] {
+                        var map = super.toMap()
+                        if self.name != nil {
+                            map["name"] = self.name!
+                        }
+                        return map
+                    }
+
+                    public override func fromMap(_ dict: [String: Any]) -> Void {
+                        if dict.keys.contains("name") {
+                            self.name = dict["name"] as! String
+                        }
+                    }
+                }
+                public var answerName: String?
+
+                public var answerWeight: Int32?
+
+                public var keywordValues: [GetAICoachScriptResponseBody.Points.AnswerList.AnswerValues.KeywordValues]?
+
+                public var keywordWeight: Int32?
+
+                public var scoringRules: [GetAICoachScriptResponseBody.Points.AnswerList.AnswerValues.ScoringRules]?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.answerName != nil {
+                        map["answerName"] = self.answerName!
+                    }
+                    if self.answerWeight != nil {
+                        map["answerWeight"] = self.answerWeight!
+                    }
+                    if self.keywordValues != nil {
+                        var tmp : [Any] = []
+                        for k in self.keywordValues! {
+                            tmp.append(k.toMap())
+                        }
+                        map["keywordValues"] = tmp
+                    }
+                    if self.keywordWeight != nil {
+                        map["keywordWeight"] = self.keywordWeight!
+                    }
+                    if self.scoringRules != nil {
+                        var tmp : [Any] = []
+                        for k in self.scoringRules! {
+                            tmp.append(k.toMap())
+                        }
+                        map["scoringRules"] = tmp
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any]) -> Void {
+                    if dict.keys.contains("answerName") {
+                        self.answerName = dict["answerName"] as! String
+                    }
+                    if dict.keys.contains("answerWeight") {
+                        self.answerWeight = dict["answerWeight"] as! Int32
+                    }
+                    if dict.keys.contains("keywordValues") {
+                        var tmp : [GetAICoachScriptResponseBody.Points.AnswerList.AnswerValues.KeywordValues] = []
+                        for v in dict["keywordValues"] as! [Any] {
+                            var model = GetAICoachScriptResponseBody.Points.AnswerList.AnswerValues.KeywordValues()
+                            if v != nil {
+                                model.fromMap(v as! [String: Any])
+                            }
+                            tmp.append(model)
+                        }
+                        self.keywordValues = tmp
+                    }
+                    if dict.keys.contains("keywordWeight") {
+                        self.keywordWeight = dict["keywordWeight"] as! Int32
+                    }
+                    if dict.keys.contains("scoringRules") {
+                        var tmp : [GetAICoachScriptResponseBody.Points.AnswerList.AnswerValues.ScoringRules] = []
+                        for v in dict["scoringRules"] as! [Any] {
+                            var model = GetAICoachScriptResponseBody.Points.AnswerList.AnswerValues.ScoringRules()
+                            if v != nil {
+                                model.fromMap(v as! [String: Any])
+                            }
+                            tmp.append(model)
+                        }
+                        self.scoringRules = tmp
+                    }
+                }
+            }
             public class Parameters : Tea.TeaModel {
                 public var name: String?
 
@@ -5956,6 +6107,10 @@ public class GetAICoachScriptResponseBody : Tea.TeaModel {
                     }
                 }
             }
+            public var answerValues: [GetAICoachScriptResponseBody.Points.AnswerList.AnswerValues]?
+
+            public var enabledKeyword: Bool?
+
             public var name: String?
 
             public var nameList: [String]?
@@ -5982,6 +6137,16 @@ public class GetAICoachScriptResponseBody : Tea.TeaModel {
 
             public override func toMap() -> [String : Any] {
                 var map = super.toMap()
+                if self.answerValues != nil {
+                    var tmp : [Any] = []
+                    for k in self.answerValues! {
+                        tmp.append(k.toMap())
+                    }
+                    map["answerValues"] = tmp
+                }
+                if self.enabledKeyword != nil {
+                    map["enabledKeyword"] = self.enabledKeyword!
+                }
                 if self.name != nil {
                     map["name"] = self.name!
                 }
@@ -6008,6 +6173,20 @@ public class GetAICoachScriptResponseBody : Tea.TeaModel {
             }
 
             public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("answerValues") {
+                    var tmp : [GetAICoachScriptResponseBody.Points.AnswerList.AnswerValues] = []
+                    for v in dict["answerValues"] as! [Any] {
+                        var model = GetAICoachScriptResponseBody.Points.AnswerList.AnswerValues()
+                        if v != nil {
+                            model.fromMap(v as! [String: Any])
+                        }
+                        tmp.append(model)
+                    }
+                    self.answerValues = tmp
+                }
+                if dict.keys.contains("enabledKeyword") {
+                    self.enabledKeyword = dict["enabledKeyword"] as! Bool
+                }
                 if dict.keys.contains("name") {
                     self.name = dict["name"] as! String
                 }
