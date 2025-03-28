@@ -1562,7 +1562,7 @@ public class GetSubPartnerListRequest : Tea.TeaModel {
 }
 
 public class GetSubPartnerListResponseBody : Tea.TeaModel {
-    public class Data : Tea.TeaModel {
+    public class SubPartnerList : Tea.TeaModel {
         public var address: String?
 
         public var agreementStatus: String?
@@ -1679,8 +1679,6 @@ public class GetSubPartnerListResponseBody : Tea.TeaModel {
             }
         }
     }
-    public var data: GetSubPartnerListResponseBody.Data?
-
     public var message: String?
 
     public var pageNo: String?
@@ -1688,6 +1686,8 @@ public class GetSubPartnerListResponseBody : Tea.TeaModel {
     public var pageSize: String?
 
     public var requestId: String?
+
+    public var subPartnerList: [GetSubPartnerListResponseBody.SubPartnerList]?
 
     public var success: Bool?
 
@@ -1703,14 +1703,10 @@ public class GetSubPartnerListResponseBody : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.data?.validate()
     }
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
-        if self.data != nil {
-            map["Data"] = self.data?.toMap()
-        }
         if self.message != nil {
             map["Message"] = self.message!
         }
@@ -1723,6 +1719,13 @@ public class GetSubPartnerListResponseBody : Tea.TeaModel {
         if self.requestId != nil {
             map["RequestId"] = self.requestId!
         }
+        if self.subPartnerList != nil {
+            var tmp : [Any] = []
+            for k in self.subPartnerList! {
+                tmp.append(k.toMap())
+            }
+            map["SubPartnerList"] = tmp
+        }
         if self.success != nil {
             map["Success"] = self.success!
         }
@@ -1733,11 +1736,6 @@ public class GetSubPartnerListResponseBody : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
-        if dict.keys.contains("Data") {
-            var model = GetSubPartnerListResponseBody.Data()
-            model.fromMap(dict["Data"] as! [String: Any])
-            self.data = model
-        }
         if dict.keys.contains("Message") {
             self.message = dict["Message"] as! String
         }
@@ -1749,6 +1747,17 @@ public class GetSubPartnerListResponseBody : Tea.TeaModel {
         }
         if dict.keys.contains("RequestId") {
             self.requestId = dict["RequestId"] as! String
+        }
+        if dict.keys.contains("SubPartnerList") {
+            var tmp : [GetSubPartnerListResponseBody.SubPartnerList] = []
+            for v in dict["SubPartnerList"] as! [Any] {
+                var model = GetSubPartnerListResponseBody.SubPartnerList()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.subPartnerList = tmp
         }
         if dict.keys.contains("Success") {
             self.success = dict["Success"] as! Bool
