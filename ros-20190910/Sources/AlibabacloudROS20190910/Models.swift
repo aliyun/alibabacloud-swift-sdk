@@ -837,6 +837,43 @@ public class CreateChangeSetRequest : Tea.TeaModel {
             }
         }
     }
+    public class Tags : Tea.TeaModel {
+        public var key: String?
+
+        public var value: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.key != nil {
+                map["Key"] = self.key!
+            }
+            if self.value != nil {
+                map["Value"] = self.value!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("Key") {
+                self.key = dict["Key"] as! String
+            }
+            if dict.keys.contains("Value") {
+                self.value = dict["Value"] as! String
+            }
+        }
+    }
     public var changeSetName: String?
 
     public var changeSetType: String?
@@ -859,6 +896,8 @@ public class CreateChangeSetRequest : Tea.TeaModel {
 
     public var replacementOption: String?
 
+    public var resourceGroupId: String?
+
     public var resourcesToImport: [CreateChangeSetRequest.ResourcesToImport]?
 
     public var stackId: String?
@@ -872,6 +911,8 @@ public class CreateChangeSetRequest : Tea.TeaModel {
     public var stackPolicyDuringUpdateURL: String?
 
     public var stackPolicyURL: String?
+
+    public var tags: [CreateChangeSetRequest.Tags]?
 
     public var templateBody: String?
 
@@ -938,6 +979,9 @@ public class CreateChangeSetRequest : Tea.TeaModel {
         if self.replacementOption != nil {
             map["ReplacementOption"] = self.replacementOption!
         }
+        if self.resourceGroupId != nil {
+            map["ResourceGroupId"] = self.resourceGroupId!
+        }
         if self.resourcesToImport != nil {
             var tmp : [Any] = []
             for k in self.resourcesToImport! {
@@ -962,6 +1006,13 @@ public class CreateChangeSetRequest : Tea.TeaModel {
         }
         if self.stackPolicyURL != nil {
             map["StackPolicyURL"] = self.stackPolicyURL!
+        }
+        if self.tags != nil {
+            var tmp : [Any] = []
+            for k in self.tags! {
+                tmp.append(k.toMap())
+            }
+            map["Tags"] = tmp
         }
         if self.templateBody != nil {
             map["TemplateBody"] = self.templateBody!
@@ -1029,6 +1080,9 @@ public class CreateChangeSetRequest : Tea.TeaModel {
         if dict.keys.contains("ReplacementOption") {
             self.replacementOption = dict["ReplacementOption"] as! String
         }
+        if dict.keys.contains("ResourceGroupId") {
+            self.resourceGroupId = dict["ResourceGroupId"] as! String
+        }
         if dict.keys.contains("ResourcesToImport") {
             var tmp : [CreateChangeSetRequest.ResourcesToImport] = []
             for v in dict["ResourcesToImport"] as! [Any] {
@@ -1057,6 +1111,17 @@ public class CreateChangeSetRequest : Tea.TeaModel {
         }
         if dict.keys.contains("StackPolicyURL") {
             self.stackPolicyURL = dict["StackPolicyURL"] as! String
+        }
+        if dict.keys.contains("Tags") {
+            var tmp : [CreateChangeSetRequest.Tags] = []
+            for v in dict["Tags"] as! [Any] {
+                var model = CreateChangeSetRequest.Tags()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.tags = tmp
         }
         if dict.keys.contains("TemplateBody") {
             self.templateBody = dict["TemplateBody"] as! String
@@ -6584,6 +6649,43 @@ public class GetChangeSetResponseBody : Tea.TeaModel {
             }
         }
     }
+    public class Tags : Tea.TeaModel {
+        public var key: String?
+
+        public var value: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.key != nil {
+                map["Key"] = self.key!
+            }
+            if self.value != nil {
+                map["Value"] = self.value!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("Key") {
+                self.key = dict["Key"] as! String
+            }
+            if dict.keys.contains("Value") {
+                self.value = dict["Value"] as! String
+            }
+        }
+    }
     public var changeSetId: String?
 
     public var changeSetName: String?
@@ -6608,6 +6710,8 @@ public class GetChangeSetResponseBody : Tea.TeaModel {
 
     public var requestId: String?
 
+    public var resourceGroupId: String?
+
     public var stackId: String?
 
     public var stackName: String?
@@ -6615,6 +6719,8 @@ public class GetChangeSetResponseBody : Tea.TeaModel {
     public var status: String?
 
     public var statusReason: String?
+
+    public var tags: [GetChangeSetResponseBody.Tags]?
 
     public var templateBody: String?
 
@@ -6675,6 +6781,9 @@ public class GetChangeSetResponseBody : Tea.TeaModel {
         if self.requestId != nil {
             map["RequestId"] = self.requestId!
         }
+        if self.resourceGroupId != nil {
+            map["ResourceGroupId"] = self.resourceGroupId!
+        }
         if self.stackId != nil {
             map["StackId"] = self.stackId!
         }
@@ -6686,6 +6795,13 @@ public class GetChangeSetResponseBody : Tea.TeaModel {
         }
         if self.statusReason != nil {
             map["StatusReason"] = self.statusReason!
+        }
+        if self.tags != nil {
+            var tmp : [Any] = []
+            for k in self.tags! {
+                tmp.append(k.toMap())
+            }
+            map["Tags"] = tmp
         }
         if self.templateBody != nil {
             map["TemplateBody"] = self.templateBody!
@@ -6743,6 +6859,9 @@ public class GetChangeSetResponseBody : Tea.TeaModel {
         if dict.keys.contains("RequestId") {
             self.requestId = dict["RequestId"] as! String
         }
+        if dict.keys.contains("ResourceGroupId") {
+            self.resourceGroupId = dict["ResourceGroupId"] as! String
+        }
         if dict.keys.contains("StackId") {
             self.stackId = dict["StackId"] as! String
         }
@@ -6754,6 +6873,17 @@ public class GetChangeSetResponseBody : Tea.TeaModel {
         }
         if dict.keys.contains("StatusReason") {
             self.statusReason = dict["StatusReason"] as! String
+        }
+        if dict.keys.contains("Tags") {
+            var tmp : [GetChangeSetResponseBody.Tags] = []
+            for v in dict["Tags"] as! [Any] {
+                var model = GetChangeSetResponseBody.Tags()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.tags = tmp
         }
         if dict.keys.contains("TemplateBody") {
             self.templateBody = dict["TemplateBody"] as! String
@@ -15071,6 +15201,43 @@ public class ListChangeSetsRequest : Tea.TeaModel {
 
 public class ListChangeSetsResponseBody : Tea.TeaModel {
     public class ChangeSets : Tea.TeaModel {
+        public class Tags : Tea.TeaModel {
+            public var key: String?
+
+            public var value: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.key != nil {
+                    map["Key"] = self.key!
+                }
+                if self.value != nil {
+                    map["Value"] = self.value!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("Key") {
+                    self.key = dict["Key"] as! String
+                }
+                if dict.keys.contains("Value") {
+                    self.value = dict["Value"] as! String
+                }
+            }
+        }
         public var changeSetId: String?
 
         public var changeSetName: String?
@@ -15085,6 +15252,8 @@ public class ListChangeSetsResponseBody : Tea.TeaModel {
 
         public var regionId: String?
 
+        public var resourceGroupId: String?
+
         public var stackId: String?
 
         public var stackName: String?
@@ -15092,6 +15261,8 @@ public class ListChangeSetsResponseBody : Tea.TeaModel {
         public var status: String?
 
         public var statusReason: String?
+
+        public var tags: [ListChangeSetsResponseBody.ChangeSets.Tags]?
 
         public override init() {
             super.init()
@@ -15128,6 +15299,9 @@ public class ListChangeSetsResponseBody : Tea.TeaModel {
             if self.regionId != nil {
                 map["RegionId"] = self.regionId!
             }
+            if self.resourceGroupId != nil {
+                map["ResourceGroupId"] = self.resourceGroupId!
+            }
             if self.stackId != nil {
                 map["StackId"] = self.stackId!
             }
@@ -15139,6 +15313,13 @@ public class ListChangeSetsResponseBody : Tea.TeaModel {
             }
             if self.statusReason != nil {
                 map["StatusReason"] = self.statusReason!
+            }
+            if self.tags != nil {
+                var tmp : [Any] = []
+                for k in self.tags! {
+                    tmp.append(k.toMap())
+                }
+                map["Tags"] = tmp
             }
             return map
         }
@@ -15165,6 +15346,9 @@ public class ListChangeSetsResponseBody : Tea.TeaModel {
             if dict.keys.contains("RegionId") {
                 self.regionId = dict["RegionId"] as! String
             }
+            if dict.keys.contains("ResourceGroupId") {
+                self.resourceGroupId = dict["ResourceGroupId"] as! String
+            }
             if dict.keys.contains("StackId") {
                 self.stackId = dict["StackId"] as! String
             }
@@ -15176,6 +15360,17 @@ public class ListChangeSetsResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("StatusReason") {
                 self.statusReason = dict["StatusReason"] as! String
+            }
+            if dict.keys.contains("Tags") {
+                var tmp : [ListChangeSetsResponseBody.ChangeSets.Tags] = []
+                for v in dict["Tags"] as! [Any] {
+                    var model = ListChangeSetsResponseBody.ChangeSets.Tags()
+                    if v != nil {
+                        model.fromMap(v as! [String: Any])
+                    }
+                    tmp.append(model)
+                }
+                self.tags = tmp
             }
         }
     }
