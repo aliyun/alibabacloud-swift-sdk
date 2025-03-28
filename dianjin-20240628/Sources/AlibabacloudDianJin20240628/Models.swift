@@ -10284,6 +10284,8 @@ public class RealTimeDialogRequest : Tea.TeaModel {
 
     public var metaData: [String: Any]?
 
+    public var opType: String?
+
     public var recommend: Bool?
 
     public var scriptContentPlayed: String?
@@ -10327,6 +10329,9 @@ public class RealTimeDialogRequest : Tea.TeaModel {
         if self.metaData != nil {
             map["metaData"] = self.metaData!
         }
+        if self.opType != nil {
+            map["opType"] = self.opType!
+        }
         if self.recommend != nil {
             map["recommend"] = self.recommend!
         }
@@ -10368,6 +10373,9 @@ public class RealTimeDialogRequest : Tea.TeaModel {
         }
         if dict.keys.contains("metaData") {
             self.metaData = dict["metaData"] as! [String: Any]
+        }
+        if dict.keys.contains("opType") {
+            self.opType = dict["opType"] as! String
         }
         if dict.keys.contains("recommend") {
             self.recommend = dict["recommend"] as! Bool

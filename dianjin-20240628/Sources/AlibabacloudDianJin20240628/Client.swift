@@ -1459,6 +1459,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.metaData)) {
             body["metaData"] = request.metaData ?? [:];
         }
+        if (!TeaUtils.Client.isUnset(request.opType)) {
+            body["opType"] = request.opType ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.recommend)) {
             body["recommend"] = request.recommend!;
         }
