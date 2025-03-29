@@ -126,6 +126,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func genericSearchWithOptions(_ request: GenericSearchRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> GenericSearchResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.enableRerank)) {
+            query["enableRerank"] = request.enableRerank!;
+        }
         if (!TeaUtils.Client.isUnset(request.industry)) {
             query["industry"] = request.industry ?? "";
         }
@@ -134,6 +137,15 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.query)) {
             query["query"] = request.query ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.returnMainText)) {
+            query["returnMainText"] = request.returnMainText!;
+        }
+        if (!TeaUtils.Client.isUnset(request.returnMarkdownText)) {
+            query["returnMarkdownText"] = request.returnMarkdownText!;
+        }
+        if (!TeaUtils.Client.isUnset(request.returnSummary)) {
+            query["returnSummary"] = request.returnSummary!;
         }
         if (!TeaUtils.Client.isUnset(request.sessionId)) {
             query["sessionId"] = request.sessionId ?? "";

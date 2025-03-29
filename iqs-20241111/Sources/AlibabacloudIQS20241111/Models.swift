@@ -454,6 +454,8 @@ public class ScorePageItem : Tea.TeaModel {
 
     public var snippet: String?
 
+    public var summary: String?
+
     public var title: String?
 
     public override init() {
@@ -522,6 +524,9 @@ public class ScorePageItem : Tea.TeaModel {
         if self.snippet != nil {
             map["snippet"] = self.snippet!
         }
+        if self.summary != nil {
+            map["summary"] = self.summary!
+        }
         if self.title != nil {
             map["title"] = self.title!
         }
@@ -584,6 +589,9 @@ public class ScorePageItem : Tea.TeaModel {
         }
         if dict.keys.contains("snippet") {
             self.snippet = dict["snippet"] as! String
+        }
+        if dict.keys.contains("summary") {
+            self.summary = dict["summary"] as! String
         }
         if dict.keys.contains("title") {
             self.title = dict["title"] as! String
@@ -1160,11 +1168,19 @@ public class GenericAdvancedSearchResponse : Tea.TeaModel {
 }
 
 public class GenericSearchRequest : Tea.TeaModel {
+    public var enableRerank: Bool?
+
     public var industry: String?
 
     public var page: Int32?
 
     public var query: String?
+
+    public var returnMainText: Bool?
+
+    public var returnMarkdownText: Bool?
+
+    public var returnSummary: Bool?
 
     public var sessionId: String?
 
@@ -1184,6 +1200,9 @@ public class GenericSearchRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.enableRerank != nil {
+            map["enableRerank"] = self.enableRerank!
+        }
         if self.industry != nil {
             map["industry"] = self.industry!
         }
@@ -1192,6 +1211,15 @@ public class GenericSearchRequest : Tea.TeaModel {
         }
         if self.query != nil {
             map["query"] = self.query!
+        }
+        if self.returnMainText != nil {
+            map["returnMainText"] = self.returnMainText!
+        }
+        if self.returnMarkdownText != nil {
+            map["returnMarkdownText"] = self.returnMarkdownText!
+        }
+        if self.returnSummary != nil {
+            map["returnSummary"] = self.returnSummary!
         }
         if self.sessionId != nil {
             map["sessionId"] = self.sessionId!
@@ -1203,6 +1231,9 @@ public class GenericSearchRequest : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("enableRerank") {
+            self.enableRerank = dict["enableRerank"] as! Bool
+        }
         if dict.keys.contains("industry") {
             self.industry = dict["industry"] as! String
         }
@@ -1211,6 +1242,15 @@ public class GenericSearchRequest : Tea.TeaModel {
         }
         if dict.keys.contains("query") {
             self.query = dict["query"] as! String
+        }
+        if dict.keys.contains("returnMainText") {
+            self.returnMainText = dict["returnMainText"] as! Bool
+        }
+        if dict.keys.contains("returnMarkdownText") {
+            self.returnMarkdownText = dict["returnMarkdownText"] as! Bool
+        }
+        if dict.keys.contains("returnSummary") {
+            self.returnSummary = dict["returnSummary"] as! Bool
         }
         if dict.keys.contains("sessionId") {
             self.sessionId = dict["sessionId"] as! String
