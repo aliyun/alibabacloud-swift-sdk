@@ -1211,6 +1211,8 @@ public class CreateGroupIdRequest : Tea.TeaModel {
 
     public var instanceId: String?
 
+    public var tags: String?
+
     public override init() {
         super.init()
     }
@@ -1231,6 +1233,9 @@ public class CreateGroupIdRequest : Tea.TeaModel {
         if self.instanceId != nil {
             map["InstanceId"] = self.instanceId!
         }
+        if self.tags != nil {
+            map["Tags"] = self.tags!
+        }
         return map
     }
 
@@ -1240,6 +1245,9 @@ public class CreateGroupIdRequest : Tea.TeaModel {
         }
         if dict.keys.contains("InstanceId") {
             self.instanceId = dict["InstanceId"] as! String
+        }
+        if dict.keys.contains("Tags") {
+            self.tags = dict["Tags"] as! String
         }
     }
 }
@@ -4515,6 +4523,8 @@ public class ListDeviceCredentialClientIdResponse : Tea.TeaModel {
 public class ListGroupIdRequest : Tea.TeaModel {
     public var instanceId: String?
 
+    public var tags: String?
+
     public override init() {
         super.init()
     }
@@ -4532,6 +4542,9 @@ public class ListGroupIdRequest : Tea.TeaModel {
         if self.instanceId != nil {
             map["InstanceId"] = self.instanceId!
         }
+        if self.tags != nil {
+            map["Tags"] = self.tags!
+        }
         return map
     }
 
@@ -4539,11 +4552,51 @@ public class ListGroupIdRequest : Tea.TeaModel {
         if dict.keys.contains("InstanceId") {
             self.instanceId = dict["InstanceId"] as! String
         }
+        if dict.keys.contains("Tags") {
+            self.tags = dict["Tags"] as! String
+        }
     }
 }
 
 public class ListGroupIdResponseBody : Tea.TeaModel {
     public class Data : Tea.TeaModel {
+        public class Tags : Tea.TeaModel {
+            public var tagKey: String?
+
+            public var tagValue: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.tagKey != nil {
+                    map["TagKey"] = self.tagKey!
+                }
+                if self.tagValue != nil {
+                    map["TagValue"] = self.tagValue!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("TagKey") {
+                    self.tagKey = dict["TagKey"] as! String
+                }
+                if dict.keys.contains("TagValue") {
+                    self.tagValue = dict["TagValue"] as! String
+                }
+            }
+        }
         public var createTime: Int64?
 
         public var groupId: String?
@@ -4551,6 +4604,8 @@ public class ListGroupIdResponseBody : Tea.TeaModel {
         public var independentNaming: Bool?
 
         public var instanceId: String?
+
+        public var tags: [ListGroupIdResponseBody.Data.Tags]?
 
         public var updateTime: Int64?
 
@@ -4580,6 +4635,13 @@ public class ListGroupIdResponseBody : Tea.TeaModel {
             if self.instanceId != nil {
                 map["InstanceId"] = self.instanceId!
             }
+            if self.tags != nil {
+                var tmp : [Any] = []
+                for k in self.tags! {
+                    tmp.append(k.toMap())
+                }
+                map["Tags"] = tmp
+            }
             if self.updateTime != nil {
                 map["UpdateTime"] = self.updateTime!
             }
@@ -4598,6 +4660,17 @@ public class ListGroupIdResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("InstanceId") {
                 self.instanceId = dict["InstanceId"] as! String
+            }
+            if dict.keys.contains("Tags") {
+                var tmp : [ListGroupIdResponseBody.Data.Tags] = []
+                for v in dict["Tags"] as! [Any] {
+                    var model = ListGroupIdResponseBody.Data.Tags()
+                    if v != nil {
+                        model.fromMap(v as! [String: Any])
+                    }
+                    tmp.append(model)
+                }
+                self.tags = tmp
             }
             if dict.keys.contains("UpdateTime") {
                 self.updateTime = dict["UpdateTime"] as! Int64
