@@ -9891,7 +9891,11 @@ public class GetDashboardRequest : Tea.TeaModel {
 
     public var pluginClassId: String?
 
+    public var pluginId: String?
+
     public var source: String?
+
+    public var upstreamCluster: String?
 
     public override init() {
         super.init()
@@ -9923,8 +9927,14 @@ public class GetDashboardRequest : Tea.TeaModel {
         if self.pluginClassId != nil {
             map["pluginClassId"] = self.pluginClassId!
         }
+        if self.pluginId != nil {
+            map["pluginId"] = self.pluginId!
+        }
         if self.source != nil {
             map["source"] = self.source!
+        }
+        if self.upstreamCluster != nil {
+            map["upstreamCluster"] = self.upstreamCluster!
         }
         return map
     }
@@ -9947,8 +9957,14 @@ public class GetDashboardRequest : Tea.TeaModel {
         if dict.keys.contains("pluginClassId") {
             self.pluginClassId = dict["pluginClassId"] as! String
         }
+        if dict.keys.contains("pluginId") {
+            self.pluginId = dict["pluginId"] as! String
+        }
         if dict.keys.contains("source") {
             self.source = dict["source"] as! String
+        }
+        if dict.keys.contains("upstreamCluster") {
+            self.upstreamCluster = dict["upstreamCluster"] as! String
         }
     }
 }
@@ -9964,7 +9980,11 @@ public class GetDashboardShrinkRequest : Tea.TeaModel {
 
     public var pluginClassId: String?
 
+    public var pluginId: String?
+
     public var source: String?
+
+    public var upstreamCluster: String?
 
     public override init() {
         super.init()
@@ -9995,8 +10015,14 @@ public class GetDashboardShrinkRequest : Tea.TeaModel {
         if self.pluginClassId != nil {
             map["pluginClassId"] = self.pluginClassId!
         }
+        if self.pluginId != nil {
+            map["pluginId"] = self.pluginId!
+        }
         if self.source != nil {
             map["source"] = self.source!
+        }
+        if self.upstreamCluster != nil {
+            map["upstreamCluster"] = self.upstreamCluster!
         }
         return map
     }
@@ -10017,8 +10043,14 @@ public class GetDashboardShrinkRequest : Tea.TeaModel {
         if dict.keys.contains("pluginClassId") {
             self.pluginClassId = dict["pluginClassId"] as! String
         }
+        if dict.keys.contains("pluginId") {
+            self.pluginId = dict["pluginId"] as! String
+        }
         if dict.keys.contains("source") {
             self.source = dict["source"] as! String
+        }
+        if dict.keys.contains("upstreamCluster") {
+            self.upstreamCluster = dict["upstreamCluster"] as! String
         }
     }
 }
@@ -15450,6 +15482,8 @@ public class ListHttpApisRequest : Tea.TeaModel {
 
     public var types: String?
 
+    public var withAPIsPublishedToEnvironment: Bool?
+
     public var withAuthPolicyInEnvironmentId: String?
 
     public var withAuthPolicyList: Bool?
@@ -15463,6 +15497,8 @@ public class ListHttpApisRequest : Tea.TeaModel {
     public var withIngressInfo: Bool?
 
     public var withPluginAttachmentByPluginId: String?
+
+    public var withPolicyConfigs: Bool?
 
     public override init() {
         super.init()
@@ -15499,6 +15535,9 @@ public class ListHttpApisRequest : Tea.TeaModel {
         if self.types != nil {
             map["types"] = self.types!
         }
+        if self.withAPIsPublishedToEnvironment != nil {
+            map["withAPIsPublishedToEnvironment"] = self.withAPIsPublishedToEnvironment!
+        }
         if self.withAuthPolicyInEnvironmentId != nil {
             map["withAuthPolicyInEnvironmentId"] = self.withAuthPolicyInEnvironmentId!
         }
@@ -15519,6 +15558,9 @@ public class ListHttpApisRequest : Tea.TeaModel {
         }
         if self.withPluginAttachmentByPluginId != nil {
             map["withPluginAttachmentByPluginId"] = self.withPluginAttachmentByPluginId!
+        }
+        if self.withPolicyConfigs != nil {
+            map["withPolicyConfigs"] = self.withPolicyConfigs!
         }
         return map
     }
@@ -15545,6 +15587,9 @@ public class ListHttpApisRequest : Tea.TeaModel {
         if dict.keys.contains("types") {
             self.types = dict["types"] as! String
         }
+        if dict.keys.contains("withAPIsPublishedToEnvironment") {
+            self.withAPIsPublishedToEnvironment = dict["withAPIsPublishedToEnvironment"] as! Bool
+        }
         if dict.keys.contains("withAuthPolicyInEnvironmentId") {
             self.withAuthPolicyInEnvironmentId = dict["withAuthPolicyInEnvironmentId"] as! String
         }
@@ -15565,6 +15610,9 @@ public class ListHttpApisRequest : Tea.TeaModel {
         }
         if dict.keys.contains("withPluginAttachmentByPluginId") {
             self.withPluginAttachmentByPluginId = dict["withPluginAttachmentByPluginId"] as! String
+        }
+        if dict.keys.contains("withPolicyConfigs") {
+            self.withPolicyConfigs = dict["withPolicyConfigs"] as! Bool
         }
     }
 }
