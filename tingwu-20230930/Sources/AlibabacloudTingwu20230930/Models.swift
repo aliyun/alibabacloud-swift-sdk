@@ -1631,7 +1631,11 @@ public class GetTaskInfoResponseBody : Tea.TeaModel {
         public class Result : Tea.TeaModel {
             public var autoChapters: String?
 
+            public var contentExtraction: String?
+
             public var customPrompt: String?
+
+            public var identityRecognition: String?
 
             public var meetingAssistance: String?
 
@@ -1664,8 +1668,14 @@ public class GetTaskInfoResponseBody : Tea.TeaModel {
                 if self.autoChapters != nil {
                     map["AutoChapters"] = self.autoChapters!
                 }
+                if self.contentExtraction != nil {
+                    map["ContentExtraction"] = self.contentExtraction!
+                }
                 if self.customPrompt != nil {
                     map["CustomPrompt"] = self.customPrompt!
+                }
+                if self.identityRecognition != nil {
+                    map["IdentityRecognition"] = self.identityRecognition!
                 }
                 if self.meetingAssistance != nil {
                     map["MeetingAssistance"] = self.meetingAssistance!
@@ -1695,8 +1705,14 @@ public class GetTaskInfoResponseBody : Tea.TeaModel {
                 if dict.keys.contains("AutoChapters") {
                     self.autoChapters = dict["AutoChapters"] as! String
                 }
+                if dict.keys.contains("ContentExtraction") {
+                    self.contentExtraction = dict["ContentExtraction"] as! String
+                }
                 if dict.keys.contains("CustomPrompt") {
                     self.customPrompt = dict["CustomPrompt"] as! String
+                }
+                if dict.keys.contains("IdentityRecognition") {
+                    self.identityRecognition = dict["IdentityRecognition"] as! String
                 }
                 if dict.keys.contains("MeetingAssistance") {
                     self.meetingAssistance = dict["MeetingAssistance"] as! String
