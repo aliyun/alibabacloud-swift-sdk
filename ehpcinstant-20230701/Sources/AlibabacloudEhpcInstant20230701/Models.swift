@@ -462,6 +462,8 @@ public class CreateJobRequest : Tea.TeaModel {
         }
         public var allocationSpec: String?
 
+        public var level: String?
+
         public var network: CreateJobRequest.DeploymentPolicy.Network?
 
         public var tag: [CreateJobRequest.DeploymentPolicy.Tag]?
@@ -484,6 +486,9 @@ public class CreateJobRequest : Tea.TeaModel {
             if self.allocationSpec != nil {
                 map["AllocationSpec"] = self.allocationSpec!
             }
+            if self.level != nil {
+                map["Level"] = self.level!
+            }
             if self.network != nil {
                 map["Network"] = self.network?.toMap()
             }
@@ -500,6 +505,9 @@ public class CreateJobRequest : Tea.TeaModel {
         public override func fromMap(_ dict: [String: Any]) -> Void {
             if dict.keys.contains("AllocationSpec") {
                 self.allocationSpec = dict["AllocationSpec"] as! String
+            }
+            if dict.keys.contains("Level") {
+                self.level = dict["Level"] as! String
             }
             if dict.keys.contains("Network") {
                 var model = CreateJobRequest.DeploymentPolicy.Network()
@@ -3211,6 +3219,8 @@ public class GetJobResponseBody : Tea.TeaModel {
     public class JobInfo : Tea.TeaModel {
         public class DeploymentPolicy : Tea.TeaModel {
             public class Network : Tea.TeaModel {
+                public var enableENIMapping: Bool?
+
                 public var enableExternalIpAddress: Bool?
 
                 public var vswitch: [String]?
@@ -3229,6 +3239,9 @@ public class GetJobResponseBody : Tea.TeaModel {
 
                 public override func toMap() -> [String : Any] {
                     var map = super.toMap()
+                    if self.enableENIMapping != nil {
+                        map["EnableENIMapping"] = self.enableENIMapping!
+                    }
                     if self.enableExternalIpAddress != nil {
                         map["EnableExternalIpAddress"] = self.enableExternalIpAddress!
                     }
@@ -3239,6 +3252,9 @@ public class GetJobResponseBody : Tea.TeaModel {
                 }
 
                 public override func fromMap(_ dict: [String: Any]) -> Void {
+                    if dict.keys.contains("EnableENIMapping") {
+                        self.enableENIMapping = dict["EnableENIMapping"] as! Bool
+                    }
                     if dict.keys.contains("EnableExternalIpAddress") {
                         self.enableExternalIpAddress = dict["EnableExternalIpAddress"] as! Bool
                     }
@@ -3286,6 +3302,8 @@ public class GetJobResponseBody : Tea.TeaModel {
             }
             public var allocationSpec: String?
 
+            public var level: String?
+
             public var network: GetJobResponseBody.JobInfo.DeploymentPolicy.Network?
 
             public var tags: [GetJobResponseBody.JobInfo.DeploymentPolicy.Tags]?
@@ -3308,6 +3326,9 @@ public class GetJobResponseBody : Tea.TeaModel {
                 if self.allocationSpec != nil {
                     map["AllocationSpec"] = self.allocationSpec!
                 }
+                if self.level != nil {
+                    map["Level"] = self.level!
+                }
                 if self.network != nil {
                     map["Network"] = self.network?.toMap()
                 }
@@ -3324,6 +3345,9 @@ public class GetJobResponseBody : Tea.TeaModel {
             public override func fromMap(_ dict: [String: Any]) -> Void {
                 if dict.keys.contains("AllocationSpec") {
                     self.allocationSpec = dict["AllocationSpec"] as! String
+                }
+                if dict.keys.contains("Level") {
+                    self.level = dict["Level"] as! String
                 }
                 if dict.keys.contains("Network") {
                     var model = GetJobResponseBody.JobInfo.DeploymentPolicy.Network()
