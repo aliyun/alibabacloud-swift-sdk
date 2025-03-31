@@ -120,6 +120,8 @@ public class CreateTaskRequest : Tea.TeaModel {
             public class ExtractionContents : Tea.TeaModel {
                 public var content: String?
 
+                public var identity: String?
+
                 public var title: String?
 
                 public override init() {
@@ -139,6 +141,9 @@ public class CreateTaskRequest : Tea.TeaModel {
                     if self.content != nil {
                         map["Content"] = self.content!
                     }
+                    if self.identity != nil {
+                        map["Identity"] = self.identity!
+                    }
                     if self.title != nil {
                         map["Title"] = self.title!
                     }
@@ -148,6 +153,9 @@ public class CreateTaskRequest : Tea.TeaModel {
                 public override func fromMap(_ dict: [String: Any]) -> Void {
                     if dict.keys.contains("Content") {
                         self.content = dict["Content"] as! String
+                    }
+                    if dict.keys.contains("Identity") {
+                        self.identity = dict["Identity"] as! String
                     }
                     if dict.keys.contains("Title") {
                         self.title = dict["Title"] as! String
@@ -362,6 +370,92 @@ public class CreateTaskRequest : Tea.TeaModel {
                 }
                 if dict.keys.contains("TranslateLlmSceneEnabled") {
                     self.translateLlmSceneEnabled = dict["TranslateLlmSceneEnabled"] as! Bool
+                }
+            }
+        }
+        public class IdentityRecognition : Tea.TeaModel {
+            public class IdentityContents : Tea.TeaModel {
+                public var description_: String?
+
+                public var name: String?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.description_ != nil {
+                        map["Description"] = self.description_!
+                    }
+                    if self.name != nil {
+                        map["Name"] = self.name!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any]) -> Void {
+                    if dict.keys.contains("Description") {
+                        self.description_ = dict["Description"] as! String
+                    }
+                    if dict.keys.contains("Name") {
+                        self.name = dict["Name"] as! String
+                    }
+                }
+            }
+            public var identityContents: [CreateTaskRequest.Parameters.IdentityRecognition.IdentityContents]?
+
+            public var sceneIntroduction: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.identityContents != nil {
+                    var tmp : [Any] = []
+                    for k in self.identityContents! {
+                        tmp.append(k.toMap())
+                    }
+                    map["IdentityContents"] = tmp
+                }
+                if self.sceneIntroduction != nil {
+                    map["SceneIntroduction"] = self.sceneIntroduction!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("IdentityContents") {
+                    var tmp : [CreateTaskRequest.Parameters.IdentityRecognition.IdentityContents] = []
+                    for v in dict["IdentityContents"] as! [Any] {
+                        var model = CreateTaskRequest.Parameters.IdentityRecognition.IdentityContents()
+                        if v != nil {
+                            model.fromMap(v as! [String: Any])
+                        }
+                        tmp.append(model)
+                    }
+                    self.identityContents = tmp
+                }
+                if dict.keys.contains("SceneIntroduction") {
+                    self.sceneIntroduction = dict["SceneIntroduction"] as! String
                 }
             }
         }
@@ -752,6 +846,10 @@ public class CreateTaskRequest : Tea.TeaModel {
 
         public var extraParams: CreateTaskRequest.Parameters.ExtraParams?
 
+        public var identityRecognition: CreateTaskRequest.Parameters.IdentityRecognition?
+
+        public var identityRecognitionEnabled: Bool?
+
         public var meetingAssistance: CreateTaskRequest.Parameters.MeetingAssistance?
 
         public var meetingAssistanceEnabled: Bool?
@@ -789,6 +887,7 @@ public class CreateTaskRequest : Tea.TeaModel {
             try self.contentExtraction?.validate()
             try self.customPrompt?.validate()
             try self.extraParams?.validate()
+            try self.identityRecognition?.validate()
             try self.meetingAssistance?.validate()
             try self.serviceInspection?.validate()
             try self.summarization?.validate()
@@ -816,6 +915,12 @@ public class CreateTaskRequest : Tea.TeaModel {
             }
             if self.extraParams != nil {
                 map["ExtraParams"] = self.extraParams?.toMap()
+            }
+            if self.identityRecognition != nil {
+                map["IdentityRecognition"] = self.identityRecognition?.toMap()
+            }
+            if self.identityRecognitionEnabled != nil {
+                map["IdentityRecognitionEnabled"] = self.identityRecognitionEnabled!
             }
             if self.meetingAssistance != nil {
                 map["MeetingAssistance"] = self.meetingAssistance?.toMap()
@@ -880,6 +985,14 @@ public class CreateTaskRequest : Tea.TeaModel {
                 var model = CreateTaskRequest.Parameters.ExtraParams()
                 model.fromMap(dict["ExtraParams"] as! [String: Any])
                 self.extraParams = model
+            }
+            if dict.keys.contains("IdentityRecognition") {
+                var model = CreateTaskRequest.Parameters.IdentityRecognition()
+                model.fromMap(dict["IdentityRecognition"] as! [String: Any])
+                self.identityRecognition = model
+            }
+            if dict.keys.contains("IdentityRecognitionEnabled") {
+                self.identityRecognitionEnabled = dict["IdentityRecognitionEnabled"] as! Bool
             }
             if dict.keys.contains("MeetingAssistance") {
                 var model = CreateTaskRequest.Parameters.MeetingAssistance()

@@ -17,7 +17,7 @@
 要使用 [Carthage](https://github.com/Carthage/Carthage) 将 `AlibabacloudTingwu20230930` 集成到你的 Xcode 项目中，需要在 `Cartfile` 中定义以下内容:
 
 ```ogdl
-github "alibabacloud-sdk-swift/tingwu-20230930" "2.0.20"
+github "alibabacloud-sdk-swift/tingwu-20230930" "2.0.21"
 ```
 
 ### Swift 包管理工具
@@ -26,7 +26,7 @@ github "alibabacloud-sdk-swift/tingwu-20230930" "2.0.20"
 
 ```swift
 dependencies: [
-    .package(url: "https://github.com/alibabacloud-sdk-swift/tingwu-20230930.git", from: "2.0.20")
+    .package(url: "https://github.com/alibabacloud-sdk-swift/tingwu-20230930.git", from: "2.0.21")
 ]
 ```
 
