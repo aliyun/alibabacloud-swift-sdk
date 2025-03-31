@@ -9646,13 +9646,19 @@ public class ListFunctionVersionsResponse : Tea.TeaModel {
 }
 
 public class ListFunctionsRequest : Tea.TeaModel {
+    public var description_: String?
+
     public var fcVersion: String?
+
+    public var gpuType: String?
 
     public var limit: Int32?
 
     public var nextToken: String?
 
     public var prefix_: String?
+
+    public var runtime: String?
 
     public var tags: [Tag]?
 
@@ -9670,8 +9676,14 @@ public class ListFunctionsRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.description_ != nil {
+            map["description"] = self.description_!
+        }
         if self.fcVersion != nil {
             map["fcVersion"] = self.fcVersion!
+        }
+        if self.gpuType != nil {
+            map["gpuType"] = self.gpuType!
         }
         if self.limit != nil {
             map["limit"] = self.limit!
@@ -9681,6 +9693,9 @@ public class ListFunctionsRequest : Tea.TeaModel {
         }
         if self.prefix_ != nil {
             map["prefix"] = self.prefix_!
+        }
+        if self.runtime != nil {
+            map["runtime"] = self.runtime!
         }
         if self.tags != nil {
             var tmp : [Any] = []
@@ -9693,8 +9708,14 @@ public class ListFunctionsRequest : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("description") {
+            self.description_ = dict["description"] as! String
+        }
         if dict.keys.contains("fcVersion") {
             self.fcVersion = dict["fcVersion"] as! String
+        }
+        if dict.keys.contains("gpuType") {
+            self.gpuType = dict["gpuType"] as! String
         }
         if dict.keys.contains("limit") {
             self.limit = dict["limit"] as! Int32
@@ -9704,6 +9725,9 @@ public class ListFunctionsRequest : Tea.TeaModel {
         }
         if dict.keys.contains("prefix") {
             self.prefix_ = dict["prefix"] as! String
+        }
+        if dict.keys.contains("runtime") {
+            self.runtime = dict["runtime"] as! String
         }
         if dict.keys.contains("tags") {
             var tmp : [Tag] = []
@@ -9720,13 +9744,19 @@ public class ListFunctionsRequest : Tea.TeaModel {
 }
 
 public class ListFunctionsShrinkRequest : Tea.TeaModel {
+    public var description_: String?
+
     public var fcVersion: String?
+
+    public var gpuType: String?
 
     public var limit: Int32?
 
     public var nextToken: String?
 
     public var prefix_: String?
+
+    public var runtime: String?
 
     public var tagsShrink: String?
 
@@ -9744,8 +9774,14 @@ public class ListFunctionsShrinkRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.description_ != nil {
+            map["description"] = self.description_!
+        }
         if self.fcVersion != nil {
             map["fcVersion"] = self.fcVersion!
+        }
+        if self.gpuType != nil {
+            map["gpuType"] = self.gpuType!
         }
         if self.limit != nil {
             map["limit"] = self.limit!
@@ -9756,6 +9792,9 @@ public class ListFunctionsShrinkRequest : Tea.TeaModel {
         if self.prefix_ != nil {
             map["prefix"] = self.prefix_!
         }
+        if self.runtime != nil {
+            map["runtime"] = self.runtime!
+        }
         if self.tagsShrink != nil {
             map["tags"] = self.tagsShrink!
         }
@@ -9763,8 +9802,14 @@ public class ListFunctionsShrinkRequest : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("description") {
+            self.description_ = dict["description"] as! String
+        }
         if dict.keys.contains("fcVersion") {
             self.fcVersion = dict["fcVersion"] as! String
+        }
+        if dict.keys.contains("gpuType") {
+            self.gpuType = dict["gpuType"] as! String
         }
         if dict.keys.contains("limit") {
             self.limit = dict["limit"] as! Int32
@@ -9774,6 +9819,9 @@ public class ListFunctionsShrinkRequest : Tea.TeaModel {
         }
         if dict.keys.contains("prefix") {
             self.prefix_ = dict["prefix"] as! String
+        }
+        if dict.keys.contains("runtime") {
+            self.runtime = dict["runtime"] as! String
         }
         if dict.keys.contains("tags") {
             self.tagsShrink = dict["tags"] as! String

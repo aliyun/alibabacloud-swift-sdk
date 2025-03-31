@@ -1326,8 +1326,14 @@ open class Client : AlibabacloudOpenApi.Client {
             request.tagsShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.tags, "tags", "json")
         }
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.description_)) {
+            query["description"] = request.description_ ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.fcVersion)) {
             query["fcVersion"] = request.fcVersion ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.gpuType)) {
+            query["gpuType"] = request.gpuType ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.limit)) {
             query["limit"] = request.limit!;
@@ -1337,6 +1343,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.prefix_)) {
             query["prefix"] = request.prefix_ ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.runtime)) {
+            query["runtime"] = request.runtime ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.tagsShrink)) {
             query["tags"] = request.tagsShrink ?? "";
