@@ -17,7 +17,7 @@
 要使用 [Carthage](https://github.com/Carthage/Carthage) 将 `AlibabacloudDataworksPublic20240518` 集成到你的 Xcode 项目中，需要在 `Cartfile` 中定义以下内容:
 
 ```ogdl
-github "alibabacloud-sdk-swift/dataworks-public-20240518" "6.1.1"
+github "alibabacloud-sdk-swift/dataworks-public-20240518" "6.1.2"
 ```
 
 ### Swift 包管理工具
@@ -26,7 +26,7 @@ github "alibabacloud-sdk-swift/dataworks-public-20240518" "6.1.1"
 
 ```swift
 dependencies: [
-    .package(url: "https://github.com/alibabacloud-sdk-swift/dataworks-public-20240518.git", from: "6.1.1")
+    .package(url: "https://github.com/alibabacloud-sdk-swift/dataworks-public-20240518.git", from: "6.1.2")
 ]
 ```
 

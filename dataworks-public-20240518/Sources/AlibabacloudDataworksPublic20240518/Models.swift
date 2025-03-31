@@ -17973,6 +17973,645 @@ public class GetDataQualityEvaluationTaskInstanceRequest : Tea.TeaModel {
 
 public class GetDataQualityEvaluationTaskInstanceResponseBody : Tea.TeaModel {
     public class DataQualityEvaluationTaskInstance : Tea.TeaModel {
+        public class Results : Tea.TeaModel {
+            public class Details : Tea.TeaModel {
+                public var checkedValue: String?
+
+                public var referencedValue: String?
+
+                public var status: String?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.checkedValue != nil {
+                        map["CheckedValue"] = self.checkedValue!
+                    }
+                    if self.referencedValue != nil {
+                        map["ReferencedValue"] = self.referencedValue!
+                    }
+                    if self.status != nil {
+                        map["Status"] = self.status!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any]) -> Void {
+                    if dict.keys.contains("CheckedValue") {
+                        self.checkedValue = dict["CheckedValue"] as! String
+                    }
+                    if dict.keys.contains("ReferencedValue") {
+                        self.referencedValue = dict["ReferencedValue"] as! String
+                    }
+                    if dict.keys.contains("Status") {
+                        self.status = dict["Status"] as! String
+                    }
+                }
+            }
+            public class Rule : Tea.TeaModel {
+                public class CheckingConfig : Tea.TeaModel {
+                    public class Thresholds : Tea.TeaModel {
+                        public class Critical : Tea.TeaModel {
+                            public var expression: String?
+
+                            public var operator_: String?
+
+                            public var value: String?
+
+                            public override init() {
+                                super.init()
+                            }
+
+                            public init(_ dict: [String: Any]) {
+                                super.init()
+                                self.fromMap(dict)
+                            }
+
+                            public override func validate() throws -> Void {
+                            }
+
+                            public override func toMap() -> [String : Any] {
+                                var map = super.toMap()
+                                if self.expression != nil {
+                                    map["Expression"] = self.expression!
+                                }
+                                if self.operator_ != nil {
+                                    map["Operator"] = self.operator_!
+                                }
+                                if self.value != nil {
+                                    map["Value"] = self.value!
+                                }
+                                return map
+                            }
+
+                            public override func fromMap(_ dict: [String: Any]) -> Void {
+                                if dict.keys.contains("Expression") {
+                                    self.expression = dict["Expression"] as! String
+                                }
+                                if dict.keys.contains("Operator") {
+                                    self.operator_ = dict["Operator"] as! String
+                                }
+                                if dict.keys.contains("Value") {
+                                    self.value = dict["Value"] as! String
+                                }
+                            }
+                        }
+                        public class Expected : Tea.TeaModel {
+                            public var expression: String?
+
+                            public var operator_: String?
+
+                            public var value: String?
+
+                            public override init() {
+                                super.init()
+                            }
+
+                            public init(_ dict: [String: Any]) {
+                                super.init()
+                                self.fromMap(dict)
+                            }
+
+                            public override func validate() throws -> Void {
+                            }
+
+                            public override func toMap() -> [String : Any] {
+                                var map = super.toMap()
+                                if self.expression != nil {
+                                    map["Expression"] = self.expression!
+                                }
+                                if self.operator_ != nil {
+                                    map["Operator"] = self.operator_!
+                                }
+                                if self.value != nil {
+                                    map["Value"] = self.value!
+                                }
+                                return map
+                            }
+
+                            public override func fromMap(_ dict: [String: Any]) -> Void {
+                                if dict.keys.contains("Expression") {
+                                    self.expression = dict["Expression"] as! String
+                                }
+                                if dict.keys.contains("Operator") {
+                                    self.operator_ = dict["Operator"] as! String
+                                }
+                                if dict.keys.contains("Value") {
+                                    self.value = dict["Value"] as! String
+                                }
+                            }
+                        }
+                        public class Warned : Tea.TeaModel {
+                            public var expression: String?
+
+                            public var operator_: String?
+
+                            public var value: String?
+
+                            public override init() {
+                                super.init()
+                            }
+
+                            public init(_ dict: [String: Any]) {
+                                super.init()
+                                self.fromMap(dict)
+                            }
+
+                            public override func validate() throws -> Void {
+                            }
+
+                            public override func toMap() -> [String : Any] {
+                                var map = super.toMap()
+                                if self.expression != nil {
+                                    map["Expression"] = self.expression!
+                                }
+                                if self.operator_ != nil {
+                                    map["Operator"] = self.operator_!
+                                }
+                                if self.value != nil {
+                                    map["Value"] = self.value!
+                                }
+                                return map
+                            }
+
+                            public override func fromMap(_ dict: [String: Any]) -> Void {
+                                if dict.keys.contains("Expression") {
+                                    self.expression = dict["Expression"] as! String
+                                }
+                                if dict.keys.contains("Operator") {
+                                    self.operator_ = dict["Operator"] as! String
+                                }
+                                if dict.keys.contains("Value") {
+                                    self.value = dict["Value"] as! String
+                                }
+                            }
+                        }
+                        public var critical: GetDataQualityEvaluationTaskInstanceResponseBody.DataQualityEvaluationTaskInstance.Results.Rule.CheckingConfig.Thresholds.Critical?
+
+                        public var expected: GetDataQualityEvaluationTaskInstanceResponseBody.DataQualityEvaluationTaskInstance.Results.Rule.CheckingConfig.Thresholds.Expected?
+
+                        public var warned: GetDataQualityEvaluationTaskInstanceResponseBody.DataQualityEvaluationTaskInstance.Results.Rule.CheckingConfig.Thresholds.Warned?
+
+                        public override init() {
+                            super.init()
+                        }
+
+                        public init(_ dict: [String: Any]) {
+                            super.init()
+                            self.fromMap(dict)
+                        }
+
+                        public override func validate() throws -> Void {
+                            try self.critical?.validate()
+                            try self.expected?.validate()
+                            try self.warned?.validate()
+                        }
+
+                        public override func toMap() -> [String : Any] {
+                            var map = super.toMap()
+                            if self.critical != nil {
+                                map["Critical"] = self.critical?.toMap()
+                            }
+                            if self.expected != nil {
+                                map["Expected"] = self.expected?.toMap()
+                            }
+                            if self.warned != nil {
+                                map["Warned"] = self.warned?.toMap()
+                            }
+                            return map
+                        }
+
+                        public override func fromMap(_ dict: [String: Any]) -> Void {
+                            if dict.keys.contains("Critical") {
+                                var model = GetDataQualityEvaluationTaskInstanceResponseBody.DataQualityEvaluationTaskInstance.Results.Rule.CheckingConfig.Thresholds.Critical()
+                                model.fromMap(dict["Critical"] as! [String: Any])
+                                self.critical = model
+                            }
+                            if dict.keys.contains("Expected") {
+                                var model = GetDataQualityEvaluationTaskInstanceResponseBody.DataQualityEvaluationTaskInstance.Results.Rule.CheckingConfig.Thresholds.Expected()
+                                model.fromMap(dict["Expected"] as! [String: Any])
+                                self.expected = model
+                            }
+                            if dict.keys.contains("Warned") {
+                                var model = GetDataQualityEvaluationTaskInstanceResponseBody.DataQualityEvaluationTaskInstance.Results.Rule.CheckingConfig.Thresholds.Warned()
+                                model.fromMap(dict["Warned"] as! [String: Any])
+                                self.warned = model
+                            }
+                        }
+                    }
+                    public var referencedSamplesFilter: String?
+
+                    public var thresholds: GetDataQualityEvaluationTaskInstanceResponseBody.DataQualityEvaluationTaskInstance.Results.Rule.CheckingConfig.Thresholds?
+
+                    public var type: String?
+
+                    public override init() {
+                        super.init()
+                    }
+
+                    public init(_ dict: [String: Any]) {
+                        super.init()
+                        self.fromMap(dict)
+                    }
+
+                    public override func validate() throws -> Void {
+                        try self.thresholds?.validate()
+                    }
+
+                    public override func toMap() -> [String : Any] {
+                        var map = super.toMap()
+                        if self.referencedSamplesFilter != nil {
+                            map["ReferencedSamplesFilter"] = self.referencedSamplesFilter!
+                        }
+                        if self.thresholds != nil {
+                            map["Thresholds"] = self.thresholds?.toMap()
+                        }
+                        if self.type != nil {
+                            map["Type"] = self.type!
+                        }
+                        return map
+                    }
+
+                    public override func fromMap(_ dict: [String: Any]) -> Void {
+                        if dict.keys.contains("ReferencedSamplesFilter") {
+                            self.referencedSamplesFilter = dict["ReferencedSamplesFilter"] as! String
+                        }
+                        if dict.keys.contains("Thresholds") {
+                            var model = GetDataQualityEvaluationTaskInstanceResponseBody.DataQualityEvaluationTaskInstance.Results.Rule.CheckingConfig.Thresholds()
+                            model.fromMap(dict["Thresholds"] as! [String: Any])
+                            self.thresholds = model
+                        }
+                        if dict.keys.contains("Type") {
+                            self.type = dict["Type"] as! String
+                        }
+                    }
+                }
+                public class ErrorHandlers : Tea.TeaModel {
+                    public var errorDataFilter: String?
+
+                    public var type: String?
+
+                    public override init() {
+                        super.init()
+                    }
+
+                    public init(_ dict: [String: Any]) {
+                        super.init()
+                        self.fromMap(dict)
+                    }
+
+                    public override func validate() throws -> Void {
+                    }
+
+                    public override func toMap() -> [String : Any] {
+                        var map = super.toMap()
+                        if self.errorDataFilter != nil {
+                            map["ErrorDataFilter"] = self.errorDataFilter!
+                        }
+                        if self.type != nil {
+                            map["Type"] = self.type!
+                        }
+                        return map
+                    }
+
+                    public override func fromMap(_ dict: [String: Any]) -> Void {
+                        if dict.keys.contains("ErrorDataFilter") {
+                            self.errorDataFilter = dict["ErrorDataFilter"] as! String
+                        }
+                        if dict.keys.contains("Type") {
+                            self.type = dict["Type"] as! String
+                        }
+                    }
+                }
+                public class SamplingConfig : Tea.TeaModel {
+                    public var metric: String?
+
+                    public var metricParameters: String?
+
+                    public var samplingFilter: String?
+
+                    public var settingConfig: String?
+
+                    public override init() {
+                        super.init()
+                    }
+
+                    public init(_ dict: [String: Any]) {
+                        super.init()
+                        self.fromMap(dict)
+                    }
+
+                    public override func validate() throws -> Void {
+                    }
+
+                    public override func toMap() -> [String : Any] {
+                        var map = super.toMap()
+                        if self.metric != nil {
+                            map["Metric"] = self.metric!
+                        }
+                        if self.metricParameters != nil {
+                            map["MetricParameters"] = self.metricParameters!
+                        }
+                        if self.samplingFilter != nil {
+                            map["SamplingFilter"] = self.samplingFilter!
+                        }
+                        if self.settingConfig != nil {
+                            map["SettingConfig"] = self.settingConfig!
+                        }
+                        return map
+                    }
+
+                    public override func fromMap(_ dict: [String: Any]) -> Void {
+                        if dict.keys.contains("Metric") {
+                            self.metric = dict["Metric"] as! String
+                        }
+                        if dict.keys.contains("MetricParameters") {
+                            self.metricParameters = dict["MetricParameters"] as! String
+                        }
+                        if dict.keys.contains("SamplingFilter") {
+                            self.samplingFilter = dict["SamplingFilter"] as! String
+                        }
+                        if dict.keys.contains("SettingConfig") {
+                            self.settingConfig = dict["SettingConfig"] as! String
+                        }
+                    }
+                }
+                public class Target : Tea.TeaModel {
+                    public var databaseType: String?
+
+                    public var tableGuid: String?
+
+                    public var type: String?
+
+                    public override init() {
+                        super.init()
+                    }
+
+                    public init(_ dict: [String: Any]) {
+                        super.init()
+                        self.fromMap(dict)
+                    }
+
+                    public override func validate() throws -> Void {
+                    }
+
+                    public override func toMap() -> [String : Any] {
+                        var map = super.toMap()
+                        if self.databaseType != nil {
+                            map["DatabaseType"] = self.databaseType!
+                        }
+                        if self.tableGuid != nil {
+                            map["TableGuid"] = self.tableGuid!
+                        }
+                        if self.type != nil {
+                            map["Type"] = self.type!
+                        }
+                        return map
+                    }
+
+                    public override func fromMap(_ dict: [String: Any]) -> Void {
+                        if dict.keys.contains("DatabaseType") {
+                            self.databaseType = dict["DatabaseType"] as! String
+                        }
+                        if dict.keys.contains("TableGuid") {
+                            self.tableGuid = dict["TableGuid"] as! String
+                        }
+                        if dict.keys.contains("Type") {
+                            self.type = dict["Type"] as! String
+                        }
+                    }
+                }
+                public var checkingConfig: GetDataQualityEvaluationTaskInstanceResponseBody.DataQualityEvaluationTaskInstance.Results.Rule.CheckingConfig?
+
+                public var description_: String?
+
+                public var enabled: Bool?
+
+                public var errorHandlers: [GetDataQualityEvaluationTaskInstanceResponseBody.DataQualityEvaluationTaskInstance.Results.Rule.ErrorHandlers]?
+
+                public var id: Int64?
+
+                public var name: String?
+
+                public var projectId: Int64?
+
+                public var samplingConfig: GetDataQualityEvaluationTaskInstanceResponseBody.DataQualityEvaluationTaskInstance.Results.Rule.SamplingConfig?
+
+                public var severity: String?
+
+                public var target: GetDataQualityEvaluationTaskInstanceResponseBody.DataQualityEvaluationTaskInstance.Results.Rule.Target?
+
+                public var templateCode: String?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                    try self.checkingConfig?.validate()
+                    try self.samplingConfig?.validate()
+                    try self.target?.validate()
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.checkingConfig != nil {
+                        map["CheckingConfig"] = self.checkingConfig?.toMap()
+                    }
+                    if self.description_ != nil {
+                        map["Description"] = self.description_!
+                    }
+                    if self.enabled != nil {
+                        map["Enabled"] = self.enabled!
+                    }
+                    if self.errorHandlers != nil {
+                        var tmp : [Any] = []
+                        for k in self.errorHandlers! {
+                            tmp.append(k.toMap())
+                        }
+                        map["ErrorHandlers"] = tmp
+                    }
+                    if self.id != nil {
+                        map["Id"] = self.id!
+                    }
+                    if self.name != nil {
+                        map["Name"] = self.name!
+                    }
+                    if self.projectId != nil {
+                        map["ProjectId"] = self.projectId!
+                    }
+                    if self.samplingConfig != nil {
+                        map["SamplingConfig"] = self.samplingConfig?.toMap()
+                    }
+                    if self.severity != nil {
+                        map["Severity"] = self.severity!
+                    }
+                    if self.target != nil {
+                        map["Target"] = self.target?.toMap()
+                    }
+                    if self.templateCode != nil {
+                        map["TemplateCode"] = self.templateCode!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any]) -> Void {
+                    if dict.keys.contains("CheckingConfig") {
+                        var model = GetDataQualityEvaluationTaskInstanceResponseBody.DataQualityEvaluationTaskInstance.Results.Rule.CheckingConfig()
+                        model.fromMap(dict["CheckingConfig"] as! [String: Any])
+                        self.checkingConfig = model
+                    }
+                    if dict.keys.contains("Description") {
+                        self.description_ = dict["Description"] as! String
+                    }
+                    if dict.keys.contains("Enabled") {
+                        self.enabled = dict["Enabled"] as! Bool
+                    }
+                    if dict.keys.contains("ErrorHandlers") {
+                        var tmp : [GetDataQualityEvaluationTaskInstanceResponseBody.DataQualityEvaluationTaskInstance.Results.Rule.ErrorHandlers] = []
+                        for v in dict["ErrorHandlers"] as! [Any] {
+                            var model = GetDataQualityEvaluationTaskInstanceResponseBody.DataQualityEvaluationTaskInstance.Results.Rule.ErrorHandlers()
+                            if v != nil {
+                                model.fromMap(v as! [String: Any])
+                            }
+                            tmp.append(model)
+                        }
+                        self.errorHandlers = tmp
+                    }
+                    if dict.keys.contains("Id") {
+                        self.id = dict["Id"] as! Int64
+                    }
+                    if dict.keys.contains("Name") {
+                        self.name = dict["Name"] as! String
+                    }
+                    if dict.keys.contains("ProjectId") {
+                        self.projectId = dict["ProjectId"] as! Int64
+                    }
+                    if dict.keys.contains("SamplingConfig") {
+                        var model = GetDataQualityEvaluationTaskInstanceResponseBody.DataQualityEvaluationTaskInstance.Results.Rule.SamplingConfig()
+                        model.fromMap(dict["SamplingConfig"] as! [String: Any])
+                        self.samplingConfig = model
+                    }
+                    if dict.keys.contains("Severity") {
+                        self.severity = dict["Severity"] as! String
+                    }
+                    if dict.keys.contains("Target") {
+                        var model = GetDataQualityEvaluationTaskInstanceResponseBody.DataQualityEvaluationTaskInstance.Results.Rule.Target()
+                        model.fromMap(dict["Target"] as! [String: Any])
+                        self.target = model
+                    }
+                    if dict.keys.contains("TemplateCode") {
+                        self.templateCode = dict["TemplateCode"] as! String
+                    }
+                }
+            }
+            public var createTime: Int64?
+
+            public var details: [GetDataQualityEvaluationTaskInstanceResponseBody.DataQualityEvaluationTaskInstance.Results.Details]?
+
+            public var id: Int64?
+
+            public var rule: GetDataQualityEvaluationTaskInstanceResponseBody.DataQualityEvaluationTaskInstance.Results.Rule?
+
+            public var sample: String?
+
+            public var status: String?
+
+            public var taskInstanceId: Int64?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+                try self.rule?.validate()
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.createTime != nil {
+                    map["CreateTime"] = self.createTime!
+                }
+                if self.details != nil {
+                    var tmp : [Any] = []
+                    for k in self.details! {
+                        tmp.append(k.toMap())
+                    }
+                    map["Details"] = tmp
+                }
+                if self.id != nil {
+                    map["Id"] = self.id!
+                }
+                if self.rule != nil {
+                    map["Rule"] = self.rule?.toMap()
+                }
+                if self.sample != nil {
+                    map["Sample"] = self.sample!
+                }
+                if self.status != nil {
+                    map["Status"] = self.status!
+                }
+                if self.taskInstanceId != nil {
+                    map["TaskInstanceId"] = self.taskInstanceId!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("CreateTime") {
+                    self.createTime = dict["CreateTime"] as! Int64
+                }
+                if dict.keys.contains("Details") {
+                    var tmp : [GetDataQualityEvaluationTaskInstanceResponseBody.DataQualityEvaluationTaskInstance.Results.Details] = []
+                    for v in dict["Details"] as! [Any] {
+                        var model = GetDataQualityEvaluationTaskInstanceResponseBody.DataQualityEvaluationTaskInstance.Results.Details()
+                        if v != nil {
+                            model.fromMap(v as! [String: Any])
+                        }
+                        tmp.append(model)
+                    }
+                    self.details = tmp
+                }
+                if dict.keys.contains("Id") {
+                    self.id = dict["Id"] as! Int64
+                }
+                if dict.keys.contains("Rule") {
+                    var model = GetDataQualityEvaluationTaskInstanceResponseBody.DataQualityEvaluationTaskInstance.Results.Rule()
+                    model.fromMap(dict["Rule"] as! [String: Any])
+                    self.rule = model
+                }
+                if dict.keys.contains("Sample") {
+                    self.sample = dict["Sample"] as! String
+                }
+                if dict.keys.contains("Status") {
+                    self.status = dict["Status"] as! String
+                }
+                if dict.keys.contains("TaskInstanceId") {
+                    self.taskInstanceId = dict["TaskInstanceId"] as! Int64
+                }
+            }
+        }
         public class Task : Tea.TeaModel {
             public class Hooks : Tea.TeaModel {
                 public var condition: String?
@@ -18408,6 +19047,8 @@ public class GetDataQualityEvaluationTaskInstanceResponseBody : Tea.TeaModel {
 
         public var projectId: Int64?
 
+        public var results: [GetDataQualityEvaluationTaskInstanceResponseBody.DataQualityEvaluationTaskInstance.Results]?
+
         public var status: String?
 
         public var task: GetDataQualityEvaluationTaskInstanceResponseBody.DataQualityEvaluationTaskInstance.Task?
@@ -18444,6 +19085,13 @@ public class GetDataQualityEvaluationTaskInstanceResponseBody : Tea.TeaModel {
             if self.projectId != nil {
                 map["ProjectId"] = self.projectId!
             }
+            if self.results != nil {
+                var tmp : [Any] = []
+                for k in self.results! {
+                    tmp.append(k.toMap())
+                }
+                map["Results"] = tmp
+            }
             if self.status != nil {
                 map["Status"] = self.status!
             }
@@ -18471,6 +19119,17 @@ public class GetDataQualityEvaluationTaskInstanceResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("ProjectId") {
                 self.projectId = dict["ProjectId"] as! Int64
+            }
+            if dict.keys.contains("Results") {
+                var tmp : [GetDataQualityEvaluationTaskInstanceResponseBody.DataQualityEvaluationTaskInstance.Results] = []
+                for v in dict["Results"] as! [Any] {
+                    var model = GetDataQualityEvaluationTaskInstanceResponseBody.DataQualityEvaluationTaskInstance.Results()
+                    if v != nil {
+                        model.fromMap(v as! [String: Any])
+                    }
+                    tmp.append(model)
+                }
+                self.results = tmp
             }
             if dict.keys.contains("Status") {
                 self.status = dict["Status"] as! String
@@ -31505,6 +32164,8 @@ public class ListDataQualityEvaluationTasksResponseBody : Tea.TeaModel {
                     }
                 }
             }
+            public var dataSourceId: Int64?
+
             public var description_: String?
 
             public var hooks: [ListDataQualityEvaluationTasksResponseBody.PagingInfo.DataQualityEvaluationTasks.Hooks]?
@@ -31540,6 +32201,9 @@ public class ListDataQualityEvaluationTasksResponseBody : Tea.TeaModel {
 
             public override func toMap() -> [String : Any] {
                 var map = super.toMap()
+                if self.dataSourceId != nil {
+                    map["DataSourceId"] = self.dataSourceId!
+                }
                 if self.description_ != nil {
                     map["Description"] = self.description_!
                 }
@@ -31575,6 +32239,9 @@ public class ListDataQualityEvaluationTasksResponseBody : Tea.TeaModel {
             }
 
             public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("DataSourceId") {
+                    self.dataSourceId = dict["DataSourceId"] as! Int64
+                }
                 if dict.keys.contains("Description") {
                     self.description_ = dict["Description"] as! String
                 }
