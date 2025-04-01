@@ -3700,6 +3700,8 @@ public class CreateARMServerInstancesRequest : Tea.TeaModel {
 
     public var autoUseCoupon: Bool?
 
+    public var cidr: String?
+
     public var ensRegionId: String?
 
     public var environmentVar: String?
@@ -3748,6 +3750,9 @@ public class CreateARMServerInstancesRequest : Tea.TeaModel {
         }
         if self.autoUseCoupon != nil {
             map["AutoUseCoupon"] = self.autoUseCoupon!
+        }
+        if self.cidr != nil {
+            map["Cidr"] = self.cidr!
         }
         if self.ensRegionId != nil {
             map["EnsRegionId"] = self.ensRegionId!
@@ -3800,6 +3805,9 @@ public class CreateARMServerInstancesRequest : Tea.TeaModel {
         }
         if dict.keys.contains("AutoUseCoupon") {
             self.autoUseCoupon = dict["AutoUseCoupon"] as! Bool
+        }
+        if dict.keys.contains("Cidr") {
+            self.cidr = dict["Cidr"] as! String
         }
         if dict.keys.contains("EnsRegionId") {
             self.ensRegionId = dict["EnsRegionId"] as! String
@@ -28288,6 +28296,8 @@ public class DescribeFileSystemsResponseBody : Tea.TeaModel {
 
         public var creationTime: String?
 
+        public var description_: String?
+
         public var ensRegionId: String?
 
         public var fileSystemId: String?
@@ -28325,6 +28335,9 @@ public class DescribeFileSystemsResponseBody : Tea.TeaModel {
             }
             if self.creationTime != nil {
                 map["CreationTime"] = self.creationTime!
+            }
+            if self.description_ != nil {
+                map["Description"] = self.description_!
             }
             if self.ensRegionId != nil {
                 map["EnsRegionId"] = self.ensRegionId!
@@ -28366,6 +28379,9 @@ public class DescribeFileSystemsResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("CreationTime") {
                 self.creationTime = dict["CreationTime"] as! String
+            }
+            if dict.keys.contains("Description") {
+                self.description_ = dict["Description"] as! String
             }
             if dict.keys.contains("EnsRegionId") {
                 self.ensRegionId = dict["EnsRegionId"] as! String
