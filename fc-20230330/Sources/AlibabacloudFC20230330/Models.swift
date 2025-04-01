@@ -2201,6 +2201,8 @@ public class Function : Tea.TeaModel {
 
     public var internetAccess: Bool?
 
+    public var invocationRestriction: OpenStructFunctionRestriction?
+
     public var lastModifiedTime: String?
 
     public var lastUpdateStatus: String?
@@ -2252,6 +2254,7 @@ public class Function : Tea.TeaModel {
         try self.customRuntimeConfig?.validate()
         try self.gpuConfig?.validate()
         try self.instanceLifecycleConfig?.validate()
+        try self.invocationRestriction?.validate()
         try self.logConfig?.validate()
         try self.nasConfig?.validate()
         try self.ossMountConfig?.validate()
@@ -2317,6 +2320,9 @@ public class Function : Tea.TeaModel {
         }
         if self.internetAccess != nil {
             map["internetAccess"] = self.internetAccess!
+        }
+        if self.invocationRestriction != nil {
+            map["invocationRestriction"] = self.invocationRestriction?.toMap()
         }
         if self.lastModifiedTime != nil {
             map["lastModifiedTime"] = self.lastModifiedTime!
@@ -2450,6 +2456,11 @@ public class Function : Tea.TeaModel {
         }
         if dict.keys.contains("internetAccess") {
             self.internetAccess = dict["internetAccess"] as! Bool
+        }
+        if dict.keys.contains("invocationRestriction") {
+            var model = OpenStructFunctionRestriction()
+            model.fromMap(dict["invocationRestriction"] as! [String: Any])
+            self.invocationRestriction = model
         }
         if dict.keys.contains("lastModifiedTime") {
             self.lastModifiedTime = dict["lastModifiedTime"] as! String
@@ -7279,6 +7290,52 @@ public class OpenStructDescribeRegionsOutput : Tea.TeaModel {
     }
 }
 
+public class OpenStructFunctionRestriction : Tea.TeaModel {
+    public var disable: Bool?
+
+    public var lastModifiedTime: String?
+
+    public var reason: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.disable != nil {
+            map["disable"] = self.disable!
+        }
+        if self.lastModifiedTime != nil {
+            map["lastModifiedTime"] = self.lastModifiedTime!
+        }
+        if self.reason != nil {
+            map["reason"] = self.reason!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("disable") {
+            self.disable = dict["disable"] as! Bool
+        }
+        if dict.keys.contains("lastModifiedTime") {
+            self.lastModifiedTime = dict["lastModifiedTime"] as! String
+        }
+        if dict.keys.contains("reason") {
+            self.reason = dict["reason"] as! String
+        }
+    }
+}
+
 public class CreateAliasRequest : Tea.TeaModel {
     public var body: CreateAliasInput?
 
@@ -8196,6 +8253,202 @@ public class DeleteVpcBindingResponse : Tea.TeaModel {
         }
         if dict.keys.contains("statusCode") {
             self.statusCode = dict["statusCode"] as! Int32
+        }
+    }
+}
+
+public class DisableFunctionInvocationRequest : Tea.TeaModel {
+    public var abortOngoingRequest: Bool?
+
+    public var reason: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.abortOngoingRequest != nil {
+            map["abortOngoingRequest"] = self.abortOngoingRequest!
+        }
+        if self.reason != nil {
+            map["reason"] = self.reason!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("abortOngoingRequest") {
+            self.abortOngoingRequest = dict["abortOngoingRequest"] as! Bool
+        }
+        if dict.keys.contains("reason") {
+            self.reason = dict["reason"] as! String
+        }
+    }
+}
+
+public class DisableFunctionInvocationResponseBody : Tea.TeaModel {
+    public var success: Bool?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.success != nil {
+            map["success"] = self.success!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("success") {
+            self.success = dict["success"] as! Bool
+        }
+    }
+}
+
+public class DisableFunctionInvocationResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: DisableFunctionInvocationResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") {
+            var model = DisableFunctionInvocationResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
+public class EnableFunctionInvocationResponseBody : Tea.TeaModel {
+    public var success: Bool?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.success != nil {
+            map["success"] = self.success!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("success") {
+            self.success = dict["success"] as! Bool
+        }
+    }
+}
+
+public class EnableFunctionInvocationResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: EnableFunctionInvocationResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") {
+            var model = EnableFunctionInvocationResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
         }
     }
 }

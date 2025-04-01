@@ -576,6 +576,81 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func disableFunctionInvocationWithOptions(_ functionName: String, _ request: DisableFunctionInvocationRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> DisableFunctionInvocationResponse {
+        try TeaUtils.Client.validateModel(request)
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.abortOngoingRequest)) {
+            body["abortOngoingRequest"] = request.abortOngoingRequest!;
+        }
+        if (!TeaUtils.Client.isUnset(request.reason)) {
+            body["reason"] = request.reason ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String],
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "DisableFunctionInvocation",
+            "version": "2023-03-30",
+            "protocol": "HTTPS",
+            "pathname": "/2023-03-30/functions/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(functionName)) + "/invoke/disable",
+            "method": "POST",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        if (TeaUtils.Client.isUnset(self._signatureVersion) || !TeaUtils.Client.equalString(self._signatureVersion, "v4")) {
+            var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+            return Tea.TeaConverter.fromMap(DisableFunctionInvocationResponse(), tmp)
+        }
+        else {
+            var tmp: [String: Any] = try await execute(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+            return Tea.TeaConverter.fromMap(DisableFunctionInvocationResponse(), tmp)
+        }
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func disableFunctionInvocation(_ functionName: String, _ request: DisableFunctionInvocationRequest) async throws -> DisableFunctionInvocationResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await disableFunctionInvocationWithOptions(functionName as! String, request as! DisableFunctionInvocationRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func enableFunctionInvocationWithOptions(_ functionName: String, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> EnableFunctionInvocationResponse {
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String]
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "EnableFunctionInvocation",
+            "version": "2023-03-30",
+            "protocol": "HTTPS",
+            "pathname": "/2023-03-30/functions/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(functionName)) + "/invoke/enable",
+            "method": "POST",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        if (TeaUtils.Client.isUnset(self._signatureVersion) || !TeaUtils.Client.equalString(self._signatureVersion, "v4")) {
+            var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+            return Tea.TeaConverter.fromMap(EnableFunctionInvocationResponse(), tmp)
+        }
+        else {
+            var tmp: [String: Any] = try await execute(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+            return Tea.TeaConverter.fromMap(EnableFunctionInvocationResponse(), tmp)
+        }
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func enableFunctionInvocation(_ functionName: String) async throws -> EnableFunctionInvocationResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await enableFunctionInvocationWithOptions(functionName as! String, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func getAliasWithOptions(_ functionName: String, _ aliasName: String, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> GetAliasResponse {
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "headers": headers as! [String: String]
