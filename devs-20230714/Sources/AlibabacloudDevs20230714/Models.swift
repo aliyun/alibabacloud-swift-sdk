@@ -11188,6 +11188,8 @@ public class ServicePluginStep : Tea.TeaModel {
 }
 
 public class SourceConfig : Tea.TeaModel {
+    public var oss: OpenStructOssSourceConfig?
+
     public var repository: RepositorySourceConfig?
 
     public var template: TemplateSourceConfig?
@@ -11202,12 +11204,16 @@ public class SourceConfig : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
+        try self.oss?.validate()
         try self.repository?.validate()
         try self.template?.validate()
     }
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.oss != nil {
+            map["oss"] = self.oss?.toMap()
+        }
         if self.repository != nil {
             map["repository"] = self.repository?.toMap()
         }
@@ -11218,6 +11224,11 @@ public class SourceConfig : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("oss") {
+            var model = OpenStructOssSourceConfig()
+            model.fromMap(dict["oss"] as! [String: Any])
+            self.oss = model
+        }
         if dict.keys.contains("repository") {
             var model = RepositorySourceConfig()
             model.fromMap(dict["repository"] as! [String: Any])
@@ -13223,6 +13234,137 @@ public class WebhookCodeContext : Tea.TeaModel {
     }
 }
 
+public class OpenStructOssSourceConfig : Tea.TeaModel {
+    public var bucket: String?
+
+    public var object: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.bucket != nil {
+            map["bucket"] = self.bucket!
+        }
+        if self.object != nil {
+            map["object"] = self.object!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("bucket") {
+            self.bucket = dict["bucket"] as! String
+        }
+        if dict.keys.contains("object") {
+            self.object = dict["object"] as! String
+        }
+    }
+}
+
+public class ActivateConnectionRequest : Tea.TeaModel {
+    public var account: GitAccount?
+
+    public var credential: OAuthCredential?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.account?.validate()
+        try self.credential?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.account != nil {
+            map["account"] = self.account?.toMap()
+        }
+        if self.credential != nil {
+            map["credential"] = self.credential?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("account") {
+            var model = GitAccount()
+            model.fromMap(dict["account"] as! [String: Any])
+            self.account = model
+        }
+        if dict.keys.contains("credential") {
+            var model = OAuthCredential()
+            model.fromMap(dict["credential"] as! [String: Any])
+            self.credential = model
+        }
+    }
+}
+
+public class ActivateConnectionResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: Connection?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") {
+            var model = Connection()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
 public class CancelPipelineResponse : Tea.TeaModel {
     public var headers: [String: String]?
 
@@ -13769,6 +13911,115 @@ public class DeleteArtifactResponse : Tea.TeaModel {
     }
 }
 
+public class DeleteConnectionRequest : Tea.TeaModel {
+    public var force: Bool?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.force != nil {
+            map["force"] = self.force!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("force") {
+            self.force = dict["force"] as! Bool
+        }
+    }
+}
+
+public class DeleteConnectionResponseBody : Tea.TeaModel {
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.requestId != nil {
+            map["requestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("requestId") {
+            self.requestId = dict["requestId"] as! String
+        }
+    }
+}
+
+public class DeleteConnectionResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: DeleteConnectionResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") {
+            var model = DeleteConnectionResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
 public class DeleteEnvironmentResponse : Tea.TeaModel {
     public var headers: [String: String]?
 
@@ -14049,6 +14300,55 @@ public class FetchArtifactTempBucketTokenResponse : Tea.TeaModel {
         }
         if dict.keys.contains("body") {
             var model = ArtifactTempBucketToken()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
+public class FetchConnectionCredentialResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: OAuthCredential?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") {
+            var model = OAuthCredential()
             model.fromMap(dict["body"] as! [String: Any])
             self.body = model
         }
@@ -14441,6 +14741,229 @@ public class GetTaskResponse : Tea.TeaModel {
         }
         if dict.keys.contains("body") {
             var model = Task()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
+public class ListConnectionsRequest : Tea.TeaModel {
+    public var keyword: String?
+
+    public var labelSelector: [String]?
+
+    public var pageNumber: Int64?
+
+    public var pageSize: Int64?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.keyword != nil {
+            map["keyword"] = self.keyword!
+        }
+        if self.labelSelector != nil {
+            map["labelSelector"] = self.labelSelector!
+        }
+        if self.pageNumber != nil {
+            map["pageNumber"] = self.pageNumber!
+        }
+        if self.pageSize != nil {
+            map["pageSize"] = self.pageSize!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("keyword") {
+            self.keyword = dict["keyword"] as! String
+        }
+        if dict.keys.contains("labelSelector") {
+            self.labelSelector = dict["labelSelector"] as! [String]
+        }
+        if dict.keys.contains("pageNumber") {
+            self.pageNumber = dict["pageNumber"] as! Int64
+        }
+        if dict.keys.contains("pageSize") {
+            self.pageSize = dict["pageSize"] as! Int64
+        }
+    }
+}
+
+public class ListConnectionsShrinkRequest : Tea.TeaModel {
+    public var keyword: String?
+
+    public var labelSelectorShrink: String?
+
+    public var pageNumber: Int64?
+
+    public var pageSize: Int64?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.keyword != nil {
+            map["keyword"] = self.keyword!
+        }
+        if self.labelSelectorShrink != nil {
+            map["labelSelector"] = self.labelSelectorShrink!
+        }
+        if self.pageNumber != nil {
+            map["pageNumber"] = self.pageNumber!
+        }
+        if self.pageSize != nil {
+            map["pageSize"] = self.pageSize!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("keyword") {
+            self.keyword = dict["keyword"] as! String
+        }
+        if dict.keys.contains("labelSelector") {
+            self.labelSelectorShrink = dict["labelSelector"] as! String
+        }
+        if dict.keys.contains("pageNumber") {
+            self.pageNumber = dict["pageNumber"] as! Int64
+        }
+        if dict.keys.contains("pageSize") {
+            self.pageSize = dict["pageSize"] as! Int64
+        }
+    }
+}
+
+public class ListConnectionsResponseBody : Tea.TeaModel {
+    public var data: [Connection]?
+
+    public var pageNumber: Int64?
+
+    public var pageSize: Int64?
+
+    public var totalCount: Int64?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.data != nil {
+            var tmp : [Any] = []
+            for k in self.data! {
+                tmp.append(k.toMap())
+            }
+            map["data"] = tmp
+        }
+        if self.pageNumber != nil {
+            map["pageNumber"] = self.pageNumber!
+        }
+        if self.pageSize != nil {
+            map["pageSize"] = self.pageSize!
+        }
+        if self.totalCount != nil {
+            map["totalCount"] = self.totalCount!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("data") {
+            var tmp : [Connection] = []
+            for v in dict["data"] as! [Any] {
+                var model = Connection()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.data = tmp
+        }
+        if dict.keys.contains("pageNumber") {
+            self.pageNumber = dict["pageNumber"] as! Int64
+        }
+        if dict.keys.contains("pageSize") {
+            self.pageSize = dict["pageSize"] as! Int64
+        }
+        if dict.keys.contains("totalCount") {
+            self.totalCount = dict["totalCount"] as! Int64
+        }
+    }
+}
+
+public class ListConnectionsResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: ListConnectionsResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") {
+            var model = ListConnectionsResponseBody()
             model.fromMap(dict["body"] as! [String: Any])
             self.body = model
         }
