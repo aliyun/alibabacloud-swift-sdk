@@ -9712,6 +9712,44 @@ public class OperationModelFileAction : Tea.TeaModel {
     }
 }
 
+public class OssSourceConfig : Tea.TeaModel {
+    public var bucket: String?
+
+    public var object: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.bucket != nil {
+            map["bucket"] = self.bucket!
+        }
+        if self.object != nil {
+            map["object"] = self.object!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("bucket") {
+            self.bucket = dict["bucket"] as! String
+        }
+        if dict.keys.contains("object") {
+            self.object = dict["object"] as! String
+        }
+    }
+}
+
 public class Pipeline : Tea.TeaModel {
     public var createdTime: String?
 
@@ -11188,7 +11226,7 @@ public class ServicePluginStep : Tea.TeaModel {
 }
 
 public class SourceConfig : Tea.TeaModel {
-    public var oss: OpenStructOssSourceConfig?
+    public var oss: OssSourceConfig?
 
     public var repository: RepositorySourceConfig?
 
@@ -11225,7 +11263,7 @@ public class SourceConfig : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
         if dict.keys.contains("oss") {
-            var model = OpenStructOssSourceConfig()
+            var model = OssSourceConfig()
             model.fromMap(dict["oss"] as! [String: Any])
             self.oss = model
         }
