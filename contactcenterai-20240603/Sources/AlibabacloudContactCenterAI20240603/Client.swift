@@ -147,6 +147,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func createTaskWithOptions(_ workspaceId: String, _ appId: String, _ request: CreateTaskRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> CreateTaskResponse {
         try TeaUtils.Client.validateModel(request)
         var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.categoryTags)) {
+            body["categoryTags"] = request.categoryTags ?? [];
+        }
         if (!TeaUtils.Client.isUnset(request.customPrompt)) {
             body["customPrompt"] = request.customPrompt ?? "";
         }
@@ -176,6 +179,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.transcription)) {
             body["transcription"] = request.transcription!;
+        }
+        if (!TeaUtils.Client.isUnset(request.variables)) {
+            body["variables"] = request.variables ?? [];
         }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "headers": headers as! [String: String],
@@ -451,6 +457,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.templateIds)) {
             body["TemplateIds"] = request.templateIds ?? [];
+        }
+        if (!TeaUtils.Client.isUnset(request.variables)) {
+            body["variables"] = request.variables ?? [];
         }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "headers": headers as! [String: String],

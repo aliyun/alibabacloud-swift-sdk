@@ -952,6 +952,43 @@ public class AnalyzeImageResponse : Tea.TeaModel {
 }
 
 public class CreateTaskRequest : Tea.TeaModel {
+    public class CategoryTags : Tea.TeaModel {
+        public var tagDesc: String?
+
+        public var tagName: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.tagDesc != nil {
+                map["tagDesc"] = self.tagDesc!
+            }
+            if self.tagName != nil {
+                map["tagName"] = self.tagName!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("tagDesc") {
+                self.tagDesc = dict["tagDesc"] as! String
+            }
+            if dict.keys.contains("tagName") {
+                self.tagName = dict["tagName"] as! String
+            }
+        }
+    }
     public class Dialogue : Tea.TeaModel {
         public class Sentences : Tea.TeaModel {
             public var role: String?
@@ -1413,6 +1450,45 @@ public class CreateTaskRequest : Tea.TeaModel {
             }
         }
     }
+    public class Variables : Tea.TeaModel {
+        public var variableCode: String?
+
+        public var variableValue: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.variableCode != nil {
+                map["variableCode"] = self.variableCode!
+            }
+            if self.variableValue != nil {
+                map["variableValue"] = self.variableValue!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("variableCode") {
+                self.variableCode = dict["variableCode"] as! String
+            }
+            if dict.keys.contains("variableValue") {
+                self.variableValue = dict["variableValue"] as! String
+            }
+        }
+    }
+    public var categoryTags: [CreateTaskRequest.CategoryTags]?
+
     public var customPrompt: String?
 
     public var dialogue: CreateTaskRequest.Dialogue?
@@ -1433,6 +1509,8 @@ public class CreateTaskRequest : Tea.TeaModel {
 
     public var transcription: CreateTaskRequest.Transcription?
 
+    public var variables: [CreateTaskRequest.Variables]?
+
     public override init() {
         super.init()
     }
@@ -1451,6 +1529,13 @@ public class CreateTaskRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.categoryTags != nil {
+            var tmp : [Any] = []
+            for k in self.categoryTags! {
+                tmp.append(k.toMap())
+            }
+            map["categoryTags"] = tmp
+        }
         if self.customPrompt != nil {
             map["customPrompt"] = self.customPrompt!
         }
@@ -1485,10 +1570,28 @@ public class CreateTaskRequest : Tea.TeaModel {
         if self.transcription != nil {
             map["transcription"] = self.transcription?.toMap()
         }
+        if self.variables != nil {
+            var tmp : [Any] = []
+            for k in self.variables! {
+                tmp.append(k.toMap())
+            }
+            map["variables"] = tmp
+        }
         return map
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("categoryTags") {
+            var tmp : [CreateTaskRequest.CategoryTags] = []
+            for v in dict["categoryTags"] as! [Any] {
+                var model = CreateTaskRequest.CategoryTags()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.categoryTags = tmp
+        }
         if dict.keys.contains("customPrompt") {
             self.customPrompt = dict["customPrompt"] as! String
         }
@@ -1534,6 +1637,17 @@ public class CreateTaskRequest : Tea.TeaModel {
             var model = CreateTaskRequest.Transcription()
             model.fromMap(dict["transcription"] as! [String: Any])
             self.transcription = model
+        }
+        if dict.keys.contains("variables") {
+            var tmp : [CreateTaskRequest.Variables] = []
+            for v in dict["variables"] as! [Any] {
+                var model = CreateTaskRequest.Variables()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.variables = tmp
         }
     }
 }
@@ -3144,6 +3258,43 @@ public class RunCompletionRequest : Tea.TeaModel {
             }
         }
     }
+    public class Variables : Tea.TeaModel {
+        public var variableCode: String?
+
+        public var variableValue: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.variableCode != nil {
+                map["variableCode"] = self.variableCode!
+            }
+            if self.variableValue != nil {
+                map["variableValue"] = self.variableValue!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("variableCode") {
+                self.variableCode = dict["variableCode"] as! String
+            }
+            if dict.keys.contains("variableValue") {
+                self.variableValue = dict["variableValue"] as! String
+            }
+        }
+    }
     public var dialogue: RunCompletionRequest.Dialogue?
 
     public var fields: [RunCompletionRequest.Fields]?
@@ -3155,6 +3306,8 @@ public class RunCompletionRequest : Tea.TeaModel {
     public var stream: Bool?
 
     public var templateIds: [Int64]?
+
+    public var variables: [RunCompletionRequest.Variables]?
 
     public override init() {
         super.init()
@@ -3194,6 +3347,13 @@ public class RunCompletionRequest : Tea.TeaModel {
         if self.templateIds != nil {
             map["TemplateIds"] = self.templateIds!
         }
+        if self.variables != nil {
+            var tmp : [Any] = []
+            for k in self.variables! {
+                tmp.append(k.toMap())
+            }
+            map["variables"] = tmp
+        }
         return map
     }
 
@@ -3227,6 +3387,17 @@ public class RunCompletionRequest : Tea.TeaModel {
         }
         if dict.keys.contains("TemplateIds") {
             self.templateIds = dict["TemplateIds"] as! [Int64]
+        }
+        if dict.keys.contains("variables") {
+            var tmp : [RunCompletionRequest.Variables] = []
+            for v in dict["variables"] as! [Any] {
+                var model = RunCompletionRequest.Variables()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.variables = tmp
         }
     }
 }
