@@ -1453,7 +1453,7 @@ public class CreateDBResponse : Tea.TeaModel {
 public class CreateDBInstanceRequest : Tea.TeaModel {
     public var autoRenew: Bool?
 
-    public var CNNodeCount: String?
+    public var CNNodeCount: Int32?
 
     public var clientToken: String?
 
@@ -1463,7 +1463,7 @@ public class CreateDBInstanceRequest : Tea.TeaModel {
 
     public var DBNodeCount: Int32?
 
-    public var DNNodeCount: String?
+    public var DNNodeCount: Int32?
 
     public var dnClass: String?
 
@@ -1613,7 +1613,7 @@ public class CreateDBInstanceRequest : Tea.TeaModel {
             self.autoRenew = dict["AutoRenew"] as! Bool
         }
         if dict.keys.contains("CNNodeCount") {
-            self.CNNodeCount = dict["CNNodeCount"] as! String
+            self.CNNodeCount = dict["CNNodeCount"] as! Int32
         }
         if dict.keys.contains("ClientToken") {
             self.clientToken = dict["ClientToken"] as! String
@@ -1628,7 +1628,7 @@ public class CreateDBInstanceRequest : Tea.TeaModel {
             self.DBNodeCount = dict["DBNodeCount"] as! Int32
         }
         if dict.keys.contains("DNNodeCount") {
-            self.DNNodeCount = dict["DNNodeCount"] as! String
+            self.DNNodeCount = dict["DNNodeCount"] as! Int32
         }
         if dict.keys.contains("DnClass") {
             self.dnClass = dict["DnClass"] as! String
@@ -1699,7 +1699,7 @@ public class CreateDBInstanceRequest : Tea.TeaModel {
 public class CreateDBInstanceShrinkRequest : Tea.TeaModel {
     public var autoRenew: Bool?
 
-    public var CNNodeCount: String?
+    public var CNNodeCount: Int32?
 
     public var clientToken: String?
 
@@ -1709,7 +1709,7 @@ public class CreateDBInstanceShrinkRequest : Tea.TeaModel {
 
     public var DBNodeCount: Int32?
 
-    public var DNNodeCount: String?
+    public var DNNodeCount: Int32?
 
     public var dnClass: String?
 
@@ -1859,7 +1859,7 @@ public class CreateDBInstanceShrinkRequest : Tea.TeaModel {
             self.autoRenew = dict["AutoRenew"] as! Bool
         }
         if dict.keys.contains("CNNodeCount") {
-            self.CNNodeCount = dict["CNNodeCount"] as! String
+            self.CNNodeCount = dict["CNNodeCount"] as! Int32
         }
         if dict.keys.contains("ClientToken") {
             self.clientToken = dict["ClientToken"] as! String
@@ -1874,7 +1874,7 @@ public class CreateDBInstanceShrinkRequest : Tea.TeaModel {
             self.DBNodeCount = dict["DBNodeCount"] as! Int32
         }
         if dict.keys.contains("DNNodeCount") {
-            self.DNNodeCount = dict["DNNodeCount"] as! String
+            self.DNNodeCount = dict["DNNodeCount"] as! Int32
         }
         if dict.keys.contains("DnClass") {
             self.dnClass = dict["DnClass"] as! String
@@ -5231,6 +5231,413 @@ public class DescribeBinaryLogListResponse : Tea.TeaModel {
         }
         if dict.keys.contains("body") {
             var model = DescribeBinaryLogListResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
+public class DescribeCdcInfoRequest : Tea.TeaModel {
+    public var DBInstanceName: String?
+
+    public var regionId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.DBInstanceName != nil {
+            map["DBInstanceName"] = self.DBInstanceName!
+        }
+        if self.regionId != nil {
+            map["RegionId"] = self.regionId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("DBInstanceName") {
+            self.DBInstanceName = dict["DBInstanceName"] as! String
+        }
+        if dict.keys.contains("RegionId") {
+            self.regionId = dict["RegionId"] as! String
+        }
+    }
+}
+
+public class DescribeCdcInfoResponseBody : Tea.TeaModel {
+    public class Data : Tea.TeaModel {
+        public class InstanceTopologyList : Tea.TeaModel {
+            public class PhysicalNodes : Tea.TeaModel {
+                public var AZone: String?
+
+                public var disk: Int32?
+
+                public var nodeClass: String?
+
+                public var nodeId: String?
+
+                public var nodeName: String?
+
+                public var status: String?
+
+                public var version: String?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.AZone != nil {
+                        map["AZone"] = self.AZone!
+                    }
+                    if self.disk != nil {
+                        map["Disk"] = self.disk!
+                    }
+                    if self.nodeClass != nil {
+                        map["NodeClass"] = self.nodeClass!
+                    }
+                    if self.nodeId != nil {
+                        map["NodeId"] = self.nodeId!
+                    }
+                    if self.nodeName != nil {
+                        map["NodeName"] = self.nodeName!
+                    }
+                    if self.status != nil {
+                        map["Status"] = self.status!
+                    }
+                    if self.version != nil {
+                        map["Version"] = self.version!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any]) -> Void {
+                    if dict.keys.contains("AZone") {
+                        self.AZone = dict["AZone"] as! String
+                    }
+                    if dict.keys.contains("Disk") {
+                        self.disk = dict["Disk"] as! Int32
+                    }
+                    if dict.keys.contains("NodeClass") {
+                        self.nodeClass = dict["NodeClass"] as! String
+                    }
+                    if dict.keys.contains("NodeId") {
+                        self.nodeId = dict["NodeId"] as! String
+                    }
+                    if dict.keys.contains("NodeName") {
+                        self.nodeName = dict["NodeName"] as! String
+                    }
+                    if dict.keys.contains("Status") {
+                        self.status = dict["Status"] as! String
+                    }
+                    if dict.keys.contains("Version") {
+                        self.version = dict["Version"] as! String
+                    }
+                }
+            }
+            public var clusterType: String?
+
+            public var comment: String?
+
+            public var groupName: String?
+
+            public var hashLevel: String?
+
+            public var instanceName: String?
+
+            public var physicalNodes: [DescribeCdcInfoResponseBody.Data.InstanceTopologyList.PhysicalNodes]?
+
+            public var streamNum: Int32?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.clusterType != nil {
+                    map["ClusterType"] = self.clusterType!
+                }
+                if self.comment != nil {
+                    map["Comment"] = self.comment!
+                }
+                if self.groupName != nil {
+                    map["GroupName"] = self.groupName!
+                }
+                if self.hashLevel != nil {
+                    map["HashLevel"] = self.hashLevel!
+                }
+                if self.instanceName != nil {
+                    map["InstanceName"] = self.instanceName!
+                }
+                if self.physicalNodes != nil {
+                    var tmp : [Any] = []
+                    for k in self.physicalNodes! {
+                        tmp.append(k.toMap())
+                    }
+                    map["PhysicalNodes"] = tmp
+                }
+                if self.streamNum != nil {
+                    map["StreamNum"] = self.streamNum!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("ClusterType") {
+                    self.clusterType = dict["ClusterType"] as! String
+                }
+                if dict.keys.contains("Comment") {
+                    self.comment = dict["Comment"] as! String
+                }
+                if dict.keys.contains("GroupName") {
+                    self.groupName = dict["GroupName"] as! String
+                }
+                if dict.keys.contains("HashLevel") {
+                    self.hashLevel = dict["HashLevel"] as! String
+                }
+                if dict.keys.contains("InstanceName") {
+                    self.instanceName = dict["InstanceName"] as! String
+                }
+                if dict.keys.contains("PhysicalNodes") {
+                    var tmp : [DescribeCdcInfoResponseBody.Data.InstanceTopologyList.PhysicalNodes] = []
+                    for v in dict["PhysicalNodes"] as! [Any] {
+                        var model = DescribeCdcInfoResponseBody.Data.InstanceTopologyList.PhysicalNodes()
+                        if v != nil {
+                            model.fromMap(v as! [String: Any])
+                        }
+                        tmp.append(model)
+                    }
+                    self.physicalNodes = tmp
+                }
+                if dict.keys.contains("StreamNum") {
+                    self.streamNum = dict["StreamNum"] as! Int32
+                }
+            }
+        }
+        public var binlogPersistTime: Int32?
+
+        public var binlogSize: Int32?
+
+        public var cdcNewVersion: String?
+
+        public var checkSumSwitch: String?
+
+        public var enableCyclicReplication: Bool?
+
+        public var instanceTopologyList: [DescribeCdcInfoResponseBody.Data.InstanceTopologyList]?
+
+        public var serverId: Int32?
+
+        public var versionSupportMultiCdc: Bool?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.binlogPersistTime != nil {
+                map["BinlogPersistTime"] = self.binlogPersistTime!
+            }
+            if self.binlogSize != nil {
+                map["BinlogSize"] = self.binlogSize!
+            }
+            if self.cdcNewVersion != nil {
+                map["CdcNewVersion"] = self.cdcNewVersion!
+            }
+            if self.checkSumSwitch != nil {
+                map["CheckSumSwitch"] = self.checkSumSwitch!
+            }
+            if self.enableCyclicReplication != nil {
+                map["EnableCyclicReplication"] = self.enableCyclicReplication!
+            }
+            if self.instanceTopologyList != nil {
+                var tmp : [Any] = []
+                for k in self.instanceTopologyList! {
+                    tmp.append(k.toMap())
+                }
+                map["InstanceTopologyList"] = tmp
+            }
+            if self.serverId != nil {
+                map["ServerId"] = self.serverId!
+            }
+            if self.versionSupportMultiCdc != nil {
+                map["VersionSupportMultiCdc"] = self.versionSupportMultiCdc!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("BinlogPersistTime") {
+                self.binlogPersistTime = dict["BinlogPersistTime"] as! Int32
+            }
+            if dict.keys.contains("BinlogSize") {
+                self.binlogSize = dict["BinlogSize"] as! Int32
+            }
+            if dict.keys.contains("CdcNewVersion") {
+                self.cdcNewVersion = dict["CdcNewVersion"] as! String
+            }
+            if dict.keys.contains("CheckSumSwitch") {
+                self.checkSumSwitch = dict["CheckSumSwitch"] as! String
+            }
+            if dict.keys.contains("EnableCyclicReplication") {
+                self.enableCyclicReplication = dict["EnableCyclicReplication"] as! Bool
+            }
+            if dict.keys.contains("InstanceTopologyList") {
+                var tmp : [DescribeCdcInfoResponseBody.Data.InstanceTopologyList] = []
+                for v in dict["InstanceTopologyList"] as! [Any] {
+                    var model = DescribeCdcInfoResponseBody.Data.InstanceTopologyList()
+                    if v != nil {
+                        model.fromMap(v as! [String: Any])
+                    }
+                    tmp.append(model)
+                }
+                self.instanceTopologyList = tmp
+            }
+            if dict.keys.contains("ServerId") {
+                self.serverId = dict["ServerId"] as! Int32
+            }
+            if dict.keys.contains("VersionSupportMultiCdc") {
+                self.versionSupportMultiCdc = dict["VersionSupportMultiCdc"] as! Bool
+            }
+        }
+    }
+    public var data: DescribeCdcInfoResponseBody.Data?
+
+    public var httpStatusCode: Int32?
+
+    public var requestId: String?
+
+    public var success: Bool?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.data?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.data != nil {
+            map["Data"] = self.data?.toMap()
+        }
+        if self.httpStatusCode != nil {
+            map["HttpStatusCode"] = self.httpStatusCode!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.success != nil {
+            map["Success"] = self.success!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("Data") {
+            var model = DescribeCdcInfoResponseBody.Data()
+            model.fromMap(dict["Data"] as! [String: Any])
+            self.data = model
+        }
+        if dict.keys.contains("HttpStatusCode") {
+            self.httpStatusCode = dict["HttpStatusCode"] as! Int32
+        }
+        if dict.keys.contains("RequestId") {
+            self.requestId = dict["RequestId"] as! String
+        }
+        if dict.keys.contains("Success") {
+            self.success = dict["Success"] as! Bool
+        }
+    }
+}
+
+public class DescribeCdcInfoResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: DescribeCdcInfoResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") {
+            var model = DescribeCdcInfoResponseBody()
             model.fromMap(dict["body"] as! [String: Any])
             self.body = model
         }
@@ -12660,6 +13067,8 @@ public class DescribeSlowLogRecordsResponseBody : Tea.TeaModel {
 
         public var sqlType: String?
 
+        public var templateId: String?
+
         public var tooLong: String?
 
         public var traceId: String?
@@ -12744,6 +13153,9 @@ public class DescribeSlowLogRecordsResponseBody : Tea.TeaModel {
             if self.sqlType != nil {
                 map["SqlType"] = self.sqlType!
             }
+            if self.templateId != nil {
+                map["TemplateId"] = self.templateId!
+            }
             if self.tooLong != nil {
                 map["TooLong"] = self.tooLong!
             }
@@ -12822,6 +13234,9 @@ public class DescribeSlowLogRecordsResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("SqlType") {
                 self.sqlType = dict["SqlType"] as! String
+            }
+            if dict.keys.contains("TemplateId") {
+                self.templateId = dict["TemplateId"] as! String
             }
             if dict.keys.contains("TooLong") {
                 self.tooLong = dict["TooLong"] as! String
@@ -18046,15 +18461,15 @@ public class UpdateDBInstanceTDEResponse : Tea.TeaModel {
 public class UpdatePolarDBXInstanceNodeRequest : Tea.TeaModel {
     public var addDNSpec: String?
 
-    public var CNNodeCount: String?
+    public var CNNodeCount: Int32?
 
     public var clientToken: String?
 
     public var DBInstanceName: String?
 
-    public var DNNodeCount: String?
+    public var DNNodeCount: Int32?
 
-    public var dbInstanceNodeCount: String?
+    public var dbInstanceNodeCount: Int32?
 
     public var deleteDNIds: String?
 
@@ -18111,7 +18526,7 @@ public class UpdatePolarDBXInstanceNodeRequest : Tea.TeaModel {
             self.addDNSpec = dict["AddDNSpec"] as! String
         }
         if dict.keys.contains("CNNodeCount") {
-            self.CNNodeCount = dict["CNNodeCount"] as! String
+            self.CNNodeCount = dict["CNNodeCount"] as! Int32
         }
         if dict.keys.contains("ClientToken") {
             self.clientToken = dict["ClientToken"] as! String
@@ -18120,10 +18535,10 @@ public class UpdatePolarDBXInstanceNodeRequest : Tea.TeaModel {
             self.DBInstanceName = dict["DBInstanceName"] as! String
         }
         if dict.keys.contains("DNNodeCount") {
-            self.DNNodeCount = dict["DNNodeCount"] as! String
+            self.DNNodeCount = dict["DNNodeCount"] as! Int32
         }
         if dict.keys.contains("DbInstanceNodeCount") {
-            self.dbInstanceNodeCount = dict["DbInstanceNodeCount"] as! String
+            self.dbInstanceNodeCount = dict["DbInstanceNodeCount"] as! Int32
         }
         if dict.keys.contains("DeleteDNIds") {
             self.deleteDNIds = dict["DeleteDNIds"] as! String

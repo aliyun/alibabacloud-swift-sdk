@@ -524,7 +524,7 @@ open class Client : AlibabacloudOpenApi.Client {
             query["AutoRenew"] = request.autoRenew!;
         }
         if (!TeaUtils.Client.isUnset(request.CNNodeCount)) {
-            query["CNNodeCount"] = request.CNNodeCount ?? "";
+            query["CNNodeCount"] = request.CNNodeCount!;
         }
         if (!TeaUtils.Client.isUnset(request.clientToken)) {
             query["ClientToken"] = request.clientToken ?? "";
@@ -539,7 +539,7 @@ open class Client : AlibabacloudOpenApi.Client {
             query["DBNodeCount"] = request.DBNodeCount!;
         }
         if (!TeaUtils.Client.isUnset(request.DNNodeCount)) {
-            query["DNNodeCount"] = request.DNNodeCount ?? "";
+            query["DNNodeCount"] = request.DNNodeCount!;
         }
         if (!TeaUtils.Client.isUnset(request.dnClass)) {
             query["DnClass"] = request.dnClass ?? "";
@@ -1194,6 +1194,46 @@ open class Client : AlibabacloudOpenApi.Client {
     public func describeBinaryLogList(_ request: DescribeBinaryLogListRequest) async throws -> DescribeBinaryLogListResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         return try await describeBinaryLogListWithOptions(request as! DescribeBinaryLogListRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func describeCdcInfoWithOptions(_ request: DescribeCdcInfoRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DescribeCdcInfoResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.DBInstanceName)) {
+            query["DBInstanceName"] = request.DBInstanceName ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.regionId)) {
+            query["RegionId"] = request.regionId ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "DescribeCdcInfo",
+            "version": "2020-02-02",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        if (TeaUtils.Client.isUnset(self._signatureVersion) || !TeaUtils.Client.equalString(self._signatureVersion, "v4")) {
+            var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+            return Tea.TeaConverter.fromMap(DescribeCdcInfoResponse(), tmp)
+        }
+        else {
+            var tmp: [String: Any] = try await execute(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+            return Tea.TeaConverter.fromMap(DescribeCdcInfoResponse(), tmp)
+        }
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func describeCdcInfo(_ request: DescribeCdcInfoRequest) async throws -> DescribeCdcInfoResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await describeCdcInfoWithOptions(request as! DescribeCdcInfoRequest, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -3569,7 +3609,7 @@ open class Client : AlibabacloudOpenApi.Client {
             query["AddDNSpec"] = request.addDNSpec ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.CNNodeCount)) {
-            query["CNNodeCount"] = request.CNNodeCount ?? "";
+            query["CNNodeCount"] = request.CNNodeCount!;
         }
         if (!TeaUtils.Client.isUnset(request.clientToken)) {
             query["ClientToken"] = request.clientToken ?? "";
@@ -3578,10 +3618,10 @@ open class Client : AlibabacloudOpenApi.Client {
             query["DBInstanceName"] = request.DBInstanceName ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.DNNodeCount)) {
-            query["DNNodeCount"] = request.DNNodeCount ?? "";
+            query["DNNodeCount"] = request.DNNodeCount!;
         }
         if (!TeaUtils.Client.isUnset(request.dbInstanceNodeCount)) {
-            query["DbInstanceNodeCount"] = request.dbInstanceNodeCount ?? "";
+            query["DbInstanceNodeCount"] = request.dbInstanceNodeCount!;
         }
         if (!TeaUtils.Client.isUnset(request.deleteDNIds)) {
             query["DeleteDNIds"] = request.deleteDNIds ?? "";
