@@ -9327,6 +9327,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func deleteVSwitchWithOptions(_ request: DeleteVSwitchRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DeleteVSwitchResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.dryRun)) {
+            query["DryRun"] = request.dryRun!;
+        }
         if (!TeaUtils.Client.isUnset(request.ownerAccount)) {
             query["OwnerAccount"] = request.ownerAccount ?? "";
         }

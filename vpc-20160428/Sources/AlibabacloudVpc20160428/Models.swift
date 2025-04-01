@@ -31283,6 +31283,8 @@ public class DeleteTrafficMirrorSessionResponse : Tea.TeaModel {
 }
 
 public class DeleteVSwitchRequest : Tea.TeaModel {
+    public var dryRun: Bool?
+
     public var ownerAccount: String?
 
     public var ownerId: Int64?
@@ -31309,6 +31311,9 @@ public class DeleteVSwitchRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.dryRun != nil {
+            map["DryRun"] = self.dryRun!
+        }
         if self.ownerAccount != nil {
             map["OwnerAccount"] = self.ownerAccount!
         }
@@ -31331,6 +31336,9 @@ public class DeleteVSwitchRequest : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("DryRun") {
+            self.dryRun = dict["DryRun"] as! Bool
+        }
         if dict.keys.contains("OwnerAccount") {
             self.ownerAccount = dict["OwnerAccount"] as! String
         }
