@@ -49,19 +49,19 @@ public class AssumeRoleRequest : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
-        if dict.keys.contains("DurationSeconds") && dict["DurationSeconds"] != nil {
+        if dict.keys.contains("DurationSeconds") {
             self.durationSeconds = dict["DurationSeconds"] as! Int64
         }
-        if dict.keys.contains("ExternalId") && dict["ExternalId"] != nil {
+        if dict.keys.contains("ExternalId") {
             self.externalId = dict["ExternalId"] as! String
         }
-        if dict.keys.contains("Policy") && dict["Policy"] != nil {
+        if dict.keys.contains("Policy") {
             self.policy = dict["Policy"] as! String
         }
-        if dict.keys.contains("RoleArn") && dict["RoleArn"] != nil {
+        if dict.keys.contains("RoleArn") {
             self.roleArn = dict["RoleArn"] as! String
         }
-        if dict.keys.contains("RoleSessionName") && dict["RoleSessionName"] != nil {
+        if dict.keys.contains("RoleSessionName") {
             self.roleSessionName = dict["RoleSessionName"] as! String
         }
     }
@@ -97,10 +97,10 @@ public class AssumeRoleResponseBody : Tea.TeaModel {
         }
 
         public override func fromMap(_ dict: [String: Any]) -> Void {
-            if dict.keys.contains("Arn") && dict["Arn"] != nil {
+            if dict.keys.contains("Arn") {
                 self.arn = dict["Arn"] as! String
             }
-            if dict.keys.contains("AssumedRoleId") && dict["AssumedRoleId"] != nil {
+            if dict.keys.contains("AssumedRoleId") {
                 self.assumedRoleId = dict["AssumedRoleId"] as! String
             }
         }
@@ -144,16 +144,16 @@ public class AssumeRoleResponseBody : Tea.TeaModel {
         }
 
         public override func fromMap(_ dict: [String: Any]) -> Void {
-            if dict.keys.contains("AccessKeyId") && dict["AccessKeyId"] != nil {
+            if dict.keys.contains("AccessKeyId") {
                 self.accessKeyId = dict["AccessKeyId"] as! String
             }
-            if dict.keys.contains("AccessKeySecret") && dict["AccessKeySecret"] != nil {
+            if dict.keys.contains("AccessKeySecret") {
                 self.accessKeySecret = dict["AccessKeySecret"] as! String
             }
-            if dict.keys.contains("Expiration") && dict["Expiration"] != nil {
+            if dict.keys.contains("Expiration") {
                 self.expiration = dict["Expiration"] as! String
             }
-            if dict.keys.contains("SecurityToken") && dict["SecurityToken"] != nil {
+            if dict.keys.contains("SecurityToken") {
                 self.securityToken = dict["SecurityToken"] as! String
             }
         }
@@ -193,17 +193,17 @@ public class AssumeRoleResponseBody : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
-        if dict.keys.contains("AssumedRoleUser") && dict["AssumedRoleUser"] != nil {
+        if dict.keys.contains("AssumedRoleUser") {
             var model = AssumeRoleResponseBody.AssumedRoleUser()
             model.fromMap(dict["AssumedRoleUser"] as! [String: Any])
             self.assumedRoleUser = model
         }
-        if dict.keys.contains("Credentials") && dict["Credentials"] != nil {
+        if dict.keys.contains("Credentials") {
             var model = AssumeRoleResponseBody.Credentials()
             model.fromMap(dict["Credentials"] as! [String: Any])
             self.credentials = model
         }
-        if dict.keys.contains("RequestId") && dict["RequestId"] != nil {
+        if dict.keys.contains("RequestId") {
             self.requestId = dict["RequestId"] as! String
         }
     }
@@ -226,9 +226,6 @@ public class AssumeRoleResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -247,13 +244,13 @@ public class AssumeRoleResponse : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
-        if dict.keys.contains("headers") && dict["headers"] != nil {
+        if dict.keys.contains("headers") {
             self.headers = dict["headers"] as! [String: String]
         }
-        if dict.keys.contains("statusCode") && dict["statusCode"] != nil {
+        if dict.keys.contains("statusCode") {
             self.statusCode = dict["statusCode"] as! Int32
         }
-        if dict.keys.contains("body") && dict["body"] != nil {
+        if dict.keys.contains("body") {
             var model = AssumeRoleResponseBody()
             model.fromMap(dict["body"] as! [String: Any])
             self.body = model
@@ -310,22 +307,22 @@ public class AssumeRoleWithOIDCRequest : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
-        if dict.keys.contains("DurationSeconds") && dict["DurationSeconds"] != nil {
+        if dict.keys.contains("DurationSeconds") {
             self.durationSeconds = dict["DurationSeconds"] as! Int64
         }
-        if dict.keys.contains("OIDCProviderArn") && dict["OIDCProviderArn"] != nil {
+        if dict.keys.contains("OIDCProviderArn") {
             self.OIDCProviderArn = dict["OIDCProviderArn"] as! String
         }
-        if dict.keys.contains("OIDCToken") && dict["OIDCToken"] != nil {
+        if dict.keys.contains("OIDCToken") {
             self.OIDCToken = dict["OIDCToken"] as! String
         }
-        if dict.keys.contains("Policy") && dict["Policy"] != nil {
+        if dict.keys.contains("Policy") {
             self.policy = dict["Policy"] as! String
         }
-        if dict.keys.contains("RoleArn") && dict["RoleArn"] != nil {
+        if dict.keys.contains("RoleArn") {
             self.roleArn = dict["RoleArn"] as! String
         }
-        if dict.keys.contains("RoleSessionName") && dict["RoleSessionName"] != nil {
+        if dict.keys.contains("RoleSessionName") {
             self.roleSessionName = dict["RoleSessionName"] as! String
         }
     }
@@ -361,10 +358,10 @@ public class AssumeRoleWithOIDCResponseBody : Tea.TeaModel {
         }
 
         public override func fromMap(_ dict: [String: Any]) -> Void {
-            if dict.keys.contains("Arn") && dict["Arn"] != nil {
+            if dict.keys.contains("Arn") {
                 self.arn = dict["Arn"] as! String
             }
-            if dict.keys.contains("AssumedRoleId") && dict["AssumedRoleId"] != nil {
+            if dict.keys.contains("AssumedRoleId") {
                 self.assumedRoleId = dict["AssumedRoleId"] as! String
             }
         }
@@ -408,16 +405,16 @@ public class AssumeRoleWithOIDCResponseBody : Tea.TeaModel {
         }
 
         public override func fromMap(_ dict: [String: Any]) -> Void {
-            if dict.keys.contains("AccessKeyId") && dict["AccessKeyId"] != nil {
+            if dict.keys.contains("AccessKeyId") {
                 self.accessKeyId = dict["AccessKeyId"] as! String
             }
-            if dict.keys.contains("AccessKeySecret") && dict["AccessKeySecret"] != nil {
+            if dict.keys.contains("AccessKeySecret") {
                 self.accessKeySecret = dict["AccessKeySecret"] as! String
             }
-            if dict.keys.contains("Expiration") && dict["Expiration"] != nil {
+            if dict.keys.contains("Expiration") {
                 self.expiration = dict["Expiration"] as! String
             }
-            if dict.keys.contains("SecurityToken") && dict["SecurityToken"] != nil {
+            if dict.keys.contains("SecurityToken") {
                 self.securityToken = dict["SecurityToken"] as! String
             }
         }
@@ -471,22 +468,22 @@ public class AssumeRoleWithOIDCResponseBody : Tea.TeaModel {
         }
 
         public override func fromMap(_ dict: [String: Any]) -> Void {
-            if dict.keys.contains("ClientIds") && dict["ClientIds"] != nil {
+            if dict.keys.contains("ClientIds") {
                 self.clientIds = dict["ClientIds"] as! String
             }
-            if dict.keys.contains("ExpirationTime") && dict["ExpirationTime"] != nil {
+            if dict.keys.contains("ExpirationTime") {
                 self.expirationTime = dict["ExpirationTime"] as! String
             }
-            if dict.keys.contains("IssuanceTime") && dict["IssuanceTime"] != nil {
+            if dict.keys.contains("IssuanceTime") {
                 self.issuanceTime = dict["IssuanceTime"] as! String
             }
-            if dict.keys.contains("Issuer") && dict["Issuer"] != nil {
+            if dict.keys.contains("Issuer") {
                 self.issuer = dict["Issuer"] as! String
             }
-            if dict.keys.contains("Subject") && dict["Subject"] != nil {
+            if dict.keys.contains("Subject") {
                 self.subject = dict["Subject"] as! String
             }
-            if dict.keys.contains("VerificationInfo") && dict["VerificationInfo"] != nil {
+            if dict.keys.contains("VerificationInfo") {
                 self.verificationInfo = dict["VerificationInfo"] as! String
             }
         }
@@ -532,22 +529,22 @@ public class AssumeRoleWithOIDCResponseBody : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
-        if dict.keys.contains("AssumedRoleUser") && dict["AssumedRoleUser"] != nil {
+        if dict.keys.contains("AssumedRoleUser") {
             var model = AssumeRoleWithOIDCResponseBody.AssumedRoleUser()
             model.fromMap(dict["AssumedRoleUser"] as! [String: Any])
             self.assumedRoleUser = model
         }
-        if dict.keys.contains("Credentials") && dict["Credentials"] != nil {
+        if dict.keys.contains("Credentials") {
             var model = AssumeRoleWithOIDCResponseBody.Credentials()
             model.fromMap(dict["Credentials"] as! [String: Any])
             self.credentials = model
         }
-        if dict.keys.contains("OIDCTokenInfo") && dict["OIDCTokenInfo"] != nil {
+        if dict.keys.contains("OIDCTokenInfo") {
             var model = AssumeRoleWithOIDCResponseBody.OIDCTokenInfo()
             model.fromMap(dict["OIDCTokenInfo"] as! [String: Any])
             self.OIDCTokenInfo = model
         }
-        if dict.keys.contains("RequestId") && dict["RequestId"] != nil {
+        if dict.keys.contains("RequestId") {
             self.requestId = dict["RequestId"] as! String
         }
     }
@@ -570,9 +567,6 @@ public class AssumeRoleWithOIDCResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -591,13 +585,13 @@ public class AssumeRoleWithOIDCResponse : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
-        if dict.keys.contains("headers") && dict["headers"] != nil {
+        if dict.keys.contains("headers") {
             self.headers = dict["headers"] as! [String: String]
         }
-        if dict.keys.contains("statusCode") && dict["statusCode"] != nil {
+        if dict.keys.contains("statusCode") {
             self.statusCode = dict["statusCode"] as! Int32
         }
-        if dict.keys.contains("body") && dict["body"] != nil {
+        if dict.keys.contains("body") {
             var model = AssumeRoleWithOIDCResponseBody()
             model.fromMap(dict["body"] as! [String: Any])
             self.body = model
@@ -649,19 +643,19 @@ public class AssumeRoleWithSAMLRequest : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
-        if dict.keys.contains("DurationSeconds") && dict["DurationSeconds"] != nil {
+        if dict.keys.contains("DurationSeconds") {
             self.durationSeconds = dict["DurationSeconds"] as! Int64
         }
-        if dict.keys.contains("Policy") && dict["Policy"] != nil {
+        if dict.keys.contains("Policy") {
             self.policy = dict["Policy"] as! String
         }
-        if dict.keys.contains("RoleArn") && dict["RoleArn"] != nil {
+        if dict.keys.contains("RoleArn") {
             self.roleArn = dict["RoleArn"] as! String
         }
-        if dict.keys.contains("SAMLAssertion") && dict["SAMLAssertion"] != nil {
+        if dict.keys.contains("SAMLAssertion") {
             self.SAMLAssertion = dict["SAMLAssertion"] as! String
         }
-        if dict.keys.contains("SAMLProviderArn") && dict["SAMLProviderArn"] != nil {
+        if dict.keys.contains("SAMLProviderArn") {
             self.SAMLProviderArn = dict["SAMLProviderArn"] as! String
         }
     }
@@ -697,10 +691,10 @@ public class AssumeRoleWithSAMLResponseBody : Tea.TeaModel {
         }
 
         public override func fromMap(_ dict: [String: Any]) -> Void {
-            if dict.keys.contains("Arn") && dict["Arn"] != nil {
+            if dict.keys.contains("Arn") {
                 self.arn = dict["Arn"] as! String
             }
-            if dict.keys.contains("AssumedRoleId") && dict["AssumedRoleId"] != nil {
+            if dict.keys.contains("AssumedRoleId") {
                 self.assumedRoleId = dict["AssumedRoleId"] as! String
             }
         }
@@ -744,16 +738,16 @@ public class AssumeRoleWithSAMLResponseBody : Tea.TeaModel {
         }
 
         public override func fromMap(_ dict: [String: Any]) -> Void {
-            if dict.keys.contains("AccessKeyId") && dict["AccessKeyId"] != nil {
+            if dict.keys.contains("AccessKeyId") {
                 self.accessKeyId = dict["AccessKeyId"] as! String
             }
-            if dict.keys.contains("AccessKeySecret") && dict["AccessKeySecret"] != nil {
+            if dict.keys.contains("AccessKeySecret") {
                 self.accessKeySecret = dict["AccessKeySecret"] as! String
             }
-            if dict.keys.contains("Expiration") && dict["Expiration"] != nil {
+            if dict.keys.contains("Expiration") {
                 self.expiration = dict["Expiration"] as! String
             }
-            if dict.keys.contains("SecurityToken") && dict["SecurityToken"] != nil {
+            if dict.keys.contains("SecurityToken") {
                 self.securityToken = dict["SecurityToken"] as! String
             }
         }
@@ -797,16 +791,16 @@ public class AssumeRoleWithSAMLResponseBody : Tea.TeaModel {
         }
 
         public override func fromMap(_ dict: [String: Any]) -> Void {
-            if dict.keys.contains("Issuer") && dict["Issuer"] != nil {
+            if dict.keys.contains("Issuer") {
                 self.issuer = dict["Issuer"] as! String
             }
-            if dict.keys.contains("Recipient") && dict["Recipient"] != nil {
+            if dict.keys.contains("Recipient") {
                 self.recipient = dict["Recipient"] as! String
             }
-            if dict.keys.contains("Subject") && dict["Subject"] != nil {
+            if dict.keys.contains("Subject") {
                 self.subject = dict["Subject"] as! String
             }
-            if dict.keys.contains("SubjectType") && dict["SubjectType"] != nil {
+            if dict.keys.contains("SubjectType") {
                 self.subjectType = dict["SubjectType"] as! String
             }
         }
@@ -852,20 +846,20 @@ public class AssumeRoleWithSAMLResponseBody : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
-        if dict.keys.contains("AssumedRoleUser") && dict["AssumedRoleUser"] != nil {
+        if dict.keys.contains("AssumedRoleUser") {
             var model = AssumeRoleWithSAMLResponseBody.AssumedRoleUser()
             model.fromMap(dict["AssumedRoleUser"] as! [String: Any])
             self.assumedRoleUser = model
         }
-        if dict.keys.contains("Credentials") && dict["Credentials"] != nil {
+        if dict.keys.contains("Credentials") {
             var model = AssumeRoleWithSAMLResponseBody.Credentials()
             model.fromMap(dict["Credentials"] as! [String: Any])
             self.credentials = model
         }
-        if dict.keys.contains("RequestId") && dict["RequestId"] != nil {
+        if dict.keys.contains("RequestId") {
             self.requestId = dict["RequestId"] as! String
         }
-        if dict.keys.contains("SAMLAssertionInfo") && dict["SAMLAssertionInfo"] != nil {
+        if dict.keys.contains("SAMLAssertionInfo") {
             var model = AssumeRoleWithSAMLResponseBody.SAMLAssertionInfo()
             model.fromMap(dict["SAMLAssertionInfo"] as! [String: Any])
             self.SAMLAssertionInfo = model
@@ -890,9 +884,6 @@ public class AssumeRoleWithSAMLResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -911,13 +902,13 @@ public class AssumeRoleWithSAMLResponse : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
-        if dict.keys.contains("headers") && dict["headers"] != nil {
+        if dict.keys.contains("headers") {
             self.headers = dict["headers"] as! [String: String]
         }
-        if dict.keys.contains("statusCode") && dict["statusCode"] != nil {
+        if dict.keys.contains("statusCode") {
             self.statusCode = dict["statusCode"] as! Int32
         }
-        if dict.keys.contains("body") && dict["body"] != nil {
+        if dict.keys.contains("body") {
             var model = AssumeRoleWithSAMLResponseBody()
             model.fromMap(dict["body"] as! [String: Any])
             self.body = model
@@ -979,25 +970,25 @@ public class GetCallerIdentityResponseBody : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
-        if dict.keys.contains("AccountId") && dict["AccountId"] != nil {
+        if dict.keys.contains("AccountId") {
             self.accountId = dict["AccountId"] as! String
         }
-        if dict.keys.contains("Arn") && dict["Arn"] != nil {
+        if dict.keys.contains("Arn") {
             self.arn = dict["Arn"] as! String
         }
-        if dict.keys.contains("IdentityType") && dict["IdentityType"] != nil {
+        if dict.keys.contains("IdentityType") {
             self.identityType = dict["IdentityType"] as! String
         }
-        if dict.keys.contains("PrincipalId") && dict["PrincipalId"] != nil {
+        if dict.keys.contains("PrincipalId") {
             self.principalId = dict["PrincipalId"] as! String
         }
-        if dict.keys.contains("RequestId") && dict["RequestId"] != nil {
+        if dict.keys.contains("RequestId") {
             self.requestId = dict["RequestId"] as! String
         }
-        if dict.keys.contains("RoleId") && dict["RoleId"] != nil {
+        if dict.keys.contains("RoleId") {
             self.roleId = dict["RoleId"] as! String
         }
-        if dict.keys.contains("UserId") && dict["UserId"] != nil {
+        if dict.keys.contains("UserId") {
             self.userId = dict["UserId"] as! String
         }
     }
@@ -1020,9 +1011,6 @@ public class GetCallerIdentityResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -1041,13 +1029,13 @@ public class GetCallerIdentityResponse : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
-        if dict.keys.contains("headers") && dict["headers"] != nil {
+        if dict.keys.contains("headers") {
             self.headers = dict["headers"] as! [String: String]
         }
-        if dict.keys.contains("statusCode") && dict["statusCode"] != nil {
+        if dict.keys.contains("statusCode") {
             self.statusCode = dict["statusCode"] as! Int32
         }
-        if dict.keys.contains("body") && dict["body"] != nil {
+        if dict.keys.contains("body") {
             var model = GetCallerIdentityResponseBody()
             model.fromMap(dict["body"] as! [String: Any])
             self.body = model
