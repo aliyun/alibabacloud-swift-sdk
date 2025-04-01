@@ -4573,6 +4573,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func modifySqlLogConfigWithOptions(_ request: ModifySqlLogConfigRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ModifySqlLogConfigResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.enableAudit)) {
+            query["EnableAudit"] = request.enableAudit!;
+        }
         if (!TeaUtils.Client.isUnset(request.filters)) {
             query["Filters"] = request.filters ?? [];
         }

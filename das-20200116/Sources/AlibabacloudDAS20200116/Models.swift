@@ -9395,6 +9395,8 @@ public class DescribeSlowLogStatisticResponseBody : Tea.TeaModel {
 
                 public var rowsSent: Int64?
 
+                public var ruleId: String?
+
                 public var SQLText: String?
 
                 public var scheme: String?
@@ -9668,6 +9670,9 @@ public class DescribeSlowLogStatisticResponseBody : Tea.TeaModel {
                     }
                     if self.rowsSent != nil {
                         map["RowsSent"] = self.rowsSent!
+                    }
+                    if self.ruleId != nil {
+                        map["RuleId"] = self.ruleId!
                     }
                     if self.SQLText != nil {
                         map["SQLText"] = self.SQLText!
@@ -9948,6 +9953,9 @@ public class DescribeSlowLogStatisticResponseBody : Tea.TeaModel {
                     }
                     if dict.keys.contains("RowsSent") {
                         self.rowsSent = dict["RowsSent"] as! Int64
+                    }
+                    if dict.keys.contains("RuleId") {
+                        self.ruleId = dict["RuleId"] as! String
                     }
                     if dict.keys.contains("SQLText") {
                         self.SQLText = dict["SQLText"] as! String
@@ -11624,6 +11632,8 @@ public class DescribeSqlLogTaskResponseBody : Tea.TeaModel {
 
             public var scnt: Int64?
 
+            public var sqlCommand: Int64?
+
             public var sqlId: String?
 
             public var sqlText: String?
@@ -11725,6 +11735,9 @@ public class DescribeSqlLogTaskResponseBody : Tea.TeaModel {
                 }
                 if self.scnt != nil {
                     map["Scnt"] = self.scnt!
+                }
+                if self.sqlCommand != nil {
+                    map["SqlCommand"] = self.sqlCommand!
                 }
                 if self.sqlId != nil {
                     map["SqlId"] = self.sqlId!
@@ -11828,6 +11841,9 @@ public class DescribeSqlLogTaskResponseBody : Tea.TeaModel {
                 }
                 if dict.keys.contains("Scnt") {
                     self.scnt = dict["Scnt"] as! Int64
+                }
+                if dict.keys.contains("SqlCommand") {
+                    self.sqlCommand = dict["SqlCommand"] as! Int64
                 }
                 if dict.keys.contains("SqlId") {
                     self.sqlId = dict["SqlId"] as! String
@@ -34340,6 +34356,8 @@ public class ModifySqlLogConfigRequest : Tea.TeaModel {
     }
     public var enable: Bool?
 
+    public var enableAudit: Bool?
+
     public var filters: [ModifySqlLogConfigRequest.Filters]?
 
     public var hotRetention: Int32?
@@ -34367,6 +34385,9 @@ public class ModifySqlLogConfigRequest : Tea.TeaModel {
         if self.enable != nil {
             map["Enable"] = self.enable!
         }
+        if self.enableAudit != nil {
+            map["EnableAudit"] = self.enableAudit!
+        }
         if self.filters != nil {
             var tmp : [Any] = []
             for k in self.filters! {
@@ -34392,6 +34413,9 @@ public class ModifySqlLogConfigRequest : Tea.TeaModel {
     public override func fromMap(_ dict: [String: Any]) -> Void {
         if dict.keys.contains("Enable") {
             self.enable = dict["Enable"] as! Bool
+        }
+        if dict.keys.contains("EnableAudit") {
+            self.enableAudit = dict["EnableAudit"] as! Bool
         }
         if dict.keys.contains("Filters") {
             var tmp : [ModifySqlLogConfigRequest.Filters] = []
