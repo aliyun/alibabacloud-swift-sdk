@@ -10980,6 +10980,8 @@ public class CreateOriginRuleRequest : Tea.TeaModel {
 
     public var originMtls: String?
 
+    public var originReadTimeout: String?
+
     public var originScheme: String?
 
     public var originSni: String?
@@ -11030,6 +11032,9 @@ public class CreateOriginRuleRequest : Tea.TeaModel {
         }
         if self.originMtls != nil {
             map["OriginMtls"] = self.originMtls!
+        }
+        if self.originReadTimeout != nil {
+            map["OriginReadTimeout"] = self.originReadTimeout!
         }
         if self.originScheme != nil {
             map["OriginScheme"] = self.originScheme!
@@ -11082,6 +11087,9 @@ public class CreateOriginRuleRequest : Tea.TeaModel {
         }
         if dict.keys.contains("OriginMtls") {
             self.originMtls = dict["OriginMtls"] as! String
+        }
+        if dict.keys.contains("OriginReadTimeout") {
+            self.originReadTimeout = dict["OriginReadTimeout"] as! String
         }
         if dict.keys.contains("OriginScheme") {
             self.originScheme = dict["OriginScheme"] as! String
@@ -28161,6 +28169,188 @@ public class GetEdgeContainerAppResourceReserveResponse : Tea.TeaModel {
     }
 }
 
+public class GetEdgeContainerAppResourceStatusRequest : Tea.TeaModel {
+    public var appId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.appId != nil {
+            map["AppId"] = self.appId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("AppId") {
+            self.appId = dict["AppId"] as! String
+        }
+    }
+}
+
+public class GetEdgeContainerAppResourceStatusResponseBody : Tea.TeaModel {
+    public class Regions : Tea.TeaModel {
+        public var isp: String?
+
+        public var ready: Int32?
+
+        public var region: String?
+
+        public var total: Int32?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.isp != nil {
+                map["Isp"] = self.isp!
+            }
+            if self.ready != nil {
+                map["Ready"] = self.ready!
+            }
+            if self.region != nil {
+                map["Region"] = self.region!
+            }
+            if self.total != nil {
+                map["Total"] = self.total!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("Isp") {
+                self.isp = dict["Isp"] as! String
+            }
+            if dict.keys.contains("Ready") {
+                self.ready = dict["Ready"] as! Int32
+            }
+            if dict.keys.contains("Region") {
+                self.region = dict["Region"] as! String
+            }
+            if dict.keys.contains("Total") {
+                self.total = dict["Total"] as! Int32
+            }
+        }
+    }
+    public var regions: [GetEdgeContainerAppResourceStatusResponseBody.Regions]?
+
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.regions != nil {
+            var tmp : [Any] = []
+            for k in self.regions! {
+                tmp.append(k.toMap())
+            }
+            map["Regions"] = tmp
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("Regions") {
+            var tmp : [GetEdgeContainerAppResourceStatusResponseBody.Regions] = []
+            for v in dict["Regions"] as! [Any] {
+                var model = GetEdgeContainerAppResourceStatusResponseBody.Regions()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.regions = tmp
+        }
+        if dict.keys.contains("RequestId") {
+            self.requestId = dict["RequestId"] as! String
+        }
+    }
+}
+
+public class GetEdgeContainerAppResourceStatusResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: GetEdgeContainerAppResourceStatusResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") {
+            var model = GetEdgeContainerAppResourceStatusResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
 public class GetEdgeContainerAppStatusRequest : Tea.TeaModel {
     public var appId: String?
 
@@ -34329,6 +34519,8 @@ public class GetOriginRuleResponseBody : Tea.TeaModel {
 
     public var originMtls: String?
 
+    public var originReadTimeout: String?
+
     public var originScheme: String?
 
     public var originSni: String?
@@ -34385,6 +34577,9 @@ public class GetOriginRuleResponseBody : Tea.TeaModel {
         }
         if self.originMtls != nil {
             map["OriginMtls"] = self.originMtls!
+        }
+        if self.originReadTimeout != nil {
+            map["OriginReadTimeout"] = self.originReadTimeout!
         }
         if self.originScheme != nil {
             map["OriginScheme"] = self.originScheme!
@@ -34443,6 +34638,9 @@ public class GetOriginRuleResponseBody : Tea.TeaModel {
         }
         if dict.keys.contains("OriginMtls") {
             self.originMtls = dict["OriginMtls"] as! String
+        }
+        if dict.keys.contains("OriginReadTimeout") {
+            self.originReadTimeout = dict["OriginReadTimeout"] as! String
         }
         if dict.keys.contains("OriginScheme") {
             self.originScheme = dict["OriginScheme"] as! String
@@ -50487,6 +50685,8 @@ public class ListOriginRulesResponseBody : Tea.TeaModel {
 
         public var originMtls: String?
 
+        public var originReadTimeout: String?
+
         public var originScheme: String?
 
         public var originSni: String?
@@ -50542,6 +50742,9 @@ public class ListOriginRulesResponseBody : Tea.TeaModel {
             if self.originMtls != nil {
                 map["OriginMtls"] = self.originMtls!
             }
+            if self.originReadTimeout != nil {
+                map["OriginReadTimeout"] = self.originReadTimeout!
+            }
             if self.originScheme != nil {
                 map["OriginScheme"] = self.originScheme!
             }
@@ -50596,6 +50799,9 @@ public class ListOriginRulesResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("OriginMtls") {
                 self.originMtls = dict["OriginMtls"] as! String
+            }
+            if dict.keys.contains("OriginReadTimeout") {
+                self.originReadTimeout = dict["OriginReadTimeout"] as! String
             }
             if dict.keys.contains("OriginScheme") {
                 self.originScheme = dict["OriginScheme"] as! String
@@ -66678,6 +66884,8 @@ public class UpdateOriginRuleRequest : Tea.TeaModel {
 
     public var originMtls: String?
 
+    public var originReadTimeout: String?
+
     public var originScheme: String?
 
     public var originSni: String?
@@ -66730,6 +66938,9 @@ public class UpdateOriginRuleRequest : Tea.TeaModel {
         if self.originMtls != nil {
             map["OriginMtls"] = self.originMtls!
         }
+        if self.originReadTimeout != nil {
+            map["OriginReadTimeout"] = self.originReadTimeout!
+        }
         if self.originScheme != nil {
             map["OriginScheme"] = self.originScheme!
         }
@@ -66781,6 +66992,9 @@ public class UpdateOriginRuleRequest : Tea.TeaModel {
         }
         if dict.keys.contains("OriginMtls") {
             self.originMtls = dict["OriginMtls"] as! String
+        }
+        if dict.keys.contains("OriginReadTimeout") {
+            self.originReadTimeout = dict["OriginReadTimeout"] as! String
         }
         if dict.keys.contains("OriginScheme") {
             self.originScheme = dict["OriginScheme"] as! String

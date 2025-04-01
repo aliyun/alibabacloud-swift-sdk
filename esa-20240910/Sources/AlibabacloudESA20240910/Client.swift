@@ -2035,6 +2035,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.originMtls)) {
             query["OriginMtls"] = request.originMtls ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.originReadTimeout)) {
+            query["OriginReadTimeout"] = request.originReadTimeout ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.originScheme)) {
             query["OriginScheme"] = request.originScheme ?? "";
         }
@@ -6023,6 +6026,43 @@ open class Client : AlibabacloudOpenApi.Client {
     public func getEdgeContainerAppResourceReserve(_ request: GetEdgeContainerAppResourceReserveRequest) async throws -> GetEdgeContainerAppResourceReserveResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         return try await getEdgeContainerAppResourceReserveWithOptions(request as! GetEdgeContainerAppResourceReserveRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getEdgeContainerAppResourceStatusWithOptions(_ request: GetEdgeContainerAppResourceStatusRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> GetEdgeContainerAppResourceStatusResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.appId)) {
+            query["AppId"] = request.appId ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "GetEdgeContainerAppResourceStatus",
+            "version": "2024-09-10",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        if (TeaUtils.Client.isUnset(self._signatureVersion) || !TeaUtils.Client.equalString(self._signatureVersion, "v4")) {
+            var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+            return Tea.TeaConverter.fromMap(GetEdgeContainerAppResourceStatusResponse(), tmp)
+        }
+        else {
+            var tmp: [String: Any] = try await execute(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+            return Tea.TeaConverter.fromMap(GetEdgeContainerAppResourceStatusResponse(), tmp)
+        }
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getEdgeContainerAppResourceStatus(_ request: GetEdgeContainerAppResourceStatusRequest) async throws -> GetEdgeContainerAppResourceStatusResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await getEdgeContainerAppResourceStatusWithOptions(request as! GetEdgeContainerAppResourceStatusRequest, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -12317,6 +12357,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.originMtls)) {
             query["OriginMtls"] = request.originMtls ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.originReadTimeout)) {
+            query["OriginReadTimeout"] = request.originReadTimeout ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.originScheme)) {
             query["OriginScheme"] = request.originScheme ?? "";
