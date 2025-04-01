@@ -2850,6 +2850,10 @@ public class AddImageRequest : Tea.TeaModel {
 
     public var size: Int32?
 
+    public var sourceId: String?
+
+    public var sourceType: String?
+
     public var workspaceId: String?
 
     public override init() {
@@ -2891,6 +2895,12 @@ public class AddImageRequest : Tea.TeaModel {
         if self.size != nil {
             map["Size"] = self.size!
         }
+        if self.sourceId != nil {
+            map["SourceId"] = self.sourceId!
+        }
+        if self.sourceType != nil {
+            map["SourceType"] = self.sourceType!
+        }
         if self.workspaceId != nil {
             map["WorkspaceId"] = self.workspaceId!
         }
@@ -2926,6 +2936,12 @@ public class AddImageRequest : Tea.TeaModel {
         }
         if dict.keys.contains("Size") {
             self.size = dict["Size"] as! Int32
+        }
+        if dict.keys.contains("SourceId") {
+            self.sourceId = dict["SourceId"] as! String
+        }
+        if dict.keys.contains("SourceType") {
+            self.sourceType = dict["SourceType"] as! String
         }
         if dict.keys.contains("WorkspaceId") {
             self.workspaceId = dict["WorkspaceId"] as! String
@@ -10460,6 +10476,10 @@ public class GetImageResponseBody : Tea.TeaModel {
 
     public var size: Int32?
 
+    public var sourceId: String?
+
+    public var sourceType: String?
+
     public var userId: String?
 
     public var workspaceId: String?
@@ -10512,6 +10532,12 @@ public class GetImageResponseBody : Tea.TeaModel {
         if self.size != nil {
             map["Size"] = self.size!
         }
+        if self.sourceId != nil {
+            map["SourceId"] = self.sourceId!
+        }
+        if self.sourceType != nil {
+            map["SourceType"] = self.sourceType!
+        }
         if self.userId != nil {
             map["UserId"] = self.userId!
         }
@@ -10559,6 +10585,12 @@ public class GetImageResponseBody : Tea.TeaModel {
         }
         if dict.keys.contains("Size") {
             self.size = dict["Size"] as! Int32
+        }
+        if dict.keys.contains("SourceId") {
+            self.sourceId = dict["SourceId"] as! String
+        }
+        if dict.keys.contains("SourceType") {
+            self.sourceType = dict["SourceType"] as! String
         }
         if dict.keys.contains("UserId") {
             self.userId = dict["UserId"] as! String
@@ -13884,6 +13916,10 @@ public class ListImagesResponseBody : Tea.TeaModel {
 
         public var size: Int32?
 
+        public var sourceId: String?
+
+        public var sourceType: String?
+
         public var userId: String?
 
         public var workspaceId: String?
@@ -13936,6 +13972,12 @@ public class ListImagesResponseBody : Tea.TeaModel {
             if self.size != nil {
                 map["Size"] = self.size!
             }
+            if self.sourceId != nil {
+                map["SourceId"] = self.sourceId!
+            }
+            if self.sourceType != nil {
+                map["SourceType"] = self.sourceType!
+            }
             if self.userId != nil {
                 map["UserId"] = self.userId!
             }
@@ -13983,6 +14025,12 @@ public class ListImagesResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("Size") {
                 self.size = dict["Size"] as! Int32
+            }
+            if dict.keys.contains("SourceId") {
+                self.sourceId = dict["SourceId"] as! String
+            }
+            if dict.keys.contains("SourceType") {
+                self.sourceType = dict["SourceType"] as! String
             }
             if dict.keys.contains("UserId") {
                 self.userId = dict["UserId"] as! String

@@ -90,6 +90,12 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.size)) {
             body["Size"] = request.size!;
         }
+        if (!TeaUtils.Client.isUnset(request.sourceId)) {
+            body["SourceId"] = request.sourceId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.sourceType)) {
+            body["SourceType"] = request.sourceType ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.workspaceId)) {
             body["WorkspaceId"] = request.workspaceId ?? "";
         }
