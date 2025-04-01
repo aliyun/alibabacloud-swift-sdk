@@ -7403,7 +7403,7 @@ public class DescribeGroupEndpointsResponseBody : Tea.TeaModel {
     }
     public var accessToken: String?
 
-    public var endpoints: DescribeGroupEndpointsResponseBody.Endpoints?
+    public var endpoints: [DescribeGroupEndpointsResponseBody.Endpoints]?
 
     public var message: String?
 
@@ -7419,7 +7419,6 @@ public class DescribeGroupEndpointsResponseBody : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.endpoints?.validate()
     }
 
     public override func toMap() -> [String : Any] {
@@ -7428,7 +7427,11 @@ public class DescribeGroupEndpointsResponseBody : Tea.TeaModel {
             map["AccessToken"] = self.accessToken!
         }
         if self.endpoints != nil {
-            map["Endpoints"] = self.endpoints?.toMap()
+            var tmp : [Any] = []
+            for k in self.endpoints! {
+                tmp.append(k.toMap())
+            }
+            map["Endpoints"] = tmp
         }
         if self.message != nil {
             map["Message"] = self.message!
@@ -7444,9 +7447,15 @@ public class DescribeGroupEndpointsResponseBody : Tea.TeaModel {
             self.accessToken = dict["AccessToken"] as! String
         }
         if dict.keys.contains("Endpoints") {
-            var model = DescribeGroupEndpointsResponseBody.Endpoints()
-            model.fromMap(dict["Endpoints"] as! [String: Any])
-            self.endpoints = model
+            var tmp : [DescribeGroupEndpointsResponseBody.Endpoints] = []
+            for v in dict["Endpoints"] as! [Any] {
+                var model = DescribeGroupEndpointsResponseBody.Endpoints()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.endpoints = tmp
         }
         if dict.keys.contains("Message") {
             self.message = dict["Message"] as! String
@@ -9126,7 +9135,7 @@ public class DescribeServiceEndpointsResponseBody : Tea.TeaModel {
     }
     public var accessToken: String?
 
-    public var endpoints: DescribeServiceEndpointsResponseBody.Endpoints?
+    public var endpoints: [DescribeServiceEndpointsResponseBody.Endpoints]?
 
     public var message: String?
 
@@ -9142,7 +9151,6 @@ public class DescribeServiceEndpointsResponseBody : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.endpoints?.validate()
     }
 
     public override func toMap() -> [String : Any] {
@@ -9151,7 +9159,11 @@ public class DescribeServiceEndpointsResponseBody : Tea.TeaModel {
             map["AccessToken"] = self.accessToken!
         }
         if self.endpoints != nil {
-            map["Endpoints"] = self.endpoints?.toMap()
+            var tmp : [Any] = []
+            for k in self.endpoints! {
+                tmp.append(k.toMap())
+            }
+            map["Endpoints"] = tmp
         }
         if self.message != nil {
             map["Message"] = self.message!
@@ -9167,9 +9179,15 @@ public class DescribeServiceEndpointsResponseBody : Tea.TeaModel {
             self.accessToken = dict["AccessToken"] as! String
         }
         if dict.keys.contains("Endpoints") {
-            var model = DescribeServiceEndpointsResponseBody.Endpoints()
-            model.fromMap(dict["Endpoints"] as! [String: Any])
-            self.endpoints = model
+            var tmp : [DescribeServiceEndpointsResponseBody.Endpoints] = []
+            for v in dict["Endpoints"] as! [Any] {
+                var model = DescribeServiceEndpointsResponseBody.Endpoints()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.endpoints = tmp
         }
         if dict.keys.contains("Message") {
             self.message = dict["Message"] as! String
