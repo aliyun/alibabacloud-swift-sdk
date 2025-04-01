@@ -6438,9 +6438,2795 @@ public class CreateProjectModifyRecordsRequest : Tea.TeaModel {
             }
         }
     }
+    public class TransferMapping : Tea.TeaModel {
+        public class BlackTableRules : Tea.TeaModel {
+            public class ObjectMapping : Tea.TeaModel {
+                public var mappedName: String?
+
+                public var name: String?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.mappedName != nil {
+                        map["MappedName"] = self.mappedName!
+                    }
+                    if self.name != nil {
+                        map["Name"] = self.name!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any]) -> Void {
+                    if dict.keys.contains("MappedName") {
+                        self.mappedName = dict["MappedName"] as! String
+                    }
+                    if dict.keys.contains("Name") {
+                        self.name = dict["Name"] as! String
+                    }
+                }
+            }
+            public class SchemaMapping : Tea.TeaModel {
+                public var mappedName: String?
+
+                public var name: String?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.mappedName != nil {
+                        map["MappedName"] = self.mappedName!
+                    }
+                    if self.name != nil {
+                        map["Name"] = self.name!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any]) -> Void {
+                    if dict.keys.contains("MappedName") {
+                        self.mappedName = dict["MappedName"] as! String
+                    }
+                    if dict.keys.contains("Name") {
+                        self.name = dict["Name"] as! String
+                    }
+                }
+            }
+            public var objectMapping: CreateProjectModifyRecordsRequest.TransferMapping.BlackTableRules.ObjectMapping?
+
+            public var schemaMapping: CreateProjectModifyRecordsRequest.TransferMapping.BlackTableRules.SchemaMapping?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+                try self.objectMapping?.validate()
+                try self.schemaMapping?.validate()
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.objectMapping != nil {
+                    map["ObjectMapping"] = self.objectMapping?.toMap()
+                }
+                if self.schemaMapping != nil {
+                    map["SchemaMapping"] = self.schemaMapping?.toMap()
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("ObjectMapping") {
+                    var model = CreateProjectModifyRecordsRequest.TransferMapping.BlackTableRules.ObjectMapping()
+                    model.fromMap(dict["ObjectMapping"] as! [String: Any])
+                    self.objectMapping = model
+                }
+                if dict.keys.contains("SchemaMapping") {
+                    var model = CreateProjectModifyRecordsRequest.TransferMapping.BlackTableRules.SchemaMapping()
+                    model.fromMap(dict["SchemaMapping"] as! [String: Any])
+                    self.schemaMapping = model
+                }
+            }
+        }
+        public class BlackViewRules : Tea.TeaModel {
+            public class ObjectMapping : Tea.TeaModel {
+                public var mappedName: String?
+
+                public var name: String?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.mappedName != nil {
+                        map["MappedName"] = self.mappedName!
+                    }
+                    if self.name != nil {
+                        map["Name"] = self.name!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any]) -> Void {
+                    if dict.keys.contains("MappedName") {
+                        self.mappedName = dict["MappedName"] as! String
+                    }
+                    if dict.keys.contains("Name") {
+                        self.name = dict["Name"] as! String
+                    }
+                }
+            }
+            public class SchemaMapping : Tea.TeaModel {
+                public var mappedName: String?
+
+                public var name: String?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.mappedName != nil {
+                        map["MappedName"] = self.mappedName!
+                    }
+                    if self.name != nil {
+                        map["Name"] = self.name!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any]) -> Void {
+                    if dict.keys.contains("MappedName") {
+                        self.mappedName = dict["MappedName"] as! String
+                    }
+                    if dict.keys.contains("Name") {
+                        self.name = dict["Name"] as! String
+                    }
+                }
+            }
+            public var objectMapping: CreateProjectModifyRecordsRequest.TransferMapping.BlackViewRules.ObjectMapping?
+
+            public var schemaMapping: CreateProjectModifyRecordsRequest.TransferMapping.BlackViewRules.SchemaMapping?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+                try self.objectMapping?.validate()
+                try self.schemaMapping?.validate()
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.objectMapping != nil {
+                    map["ObjectMapping"] = self.objectMapping?.toMap()
+                }
+                if self.schemaMapping != nil {
+                    map["SchemaMapping"] = self.schemaMapping?.toMap()
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("ObjectMapping") {
+                    var model = CreateProjectModifyRecordsRequest.TransferMapping.BlackViewRules.ObjectMapping()
+                    model.fromMap(dict["ObjectMapping"] as! [String: Any])
+                    self.objectMapping = model
+                }
+                if dict.keys.contains("SchemaMapping") {
+                    var model = CreateProjectModifyRecordsRequest.TransferMapping.BlackViewRules.SchemaMapping()
+                    model.fromMap(dict["SchemaMapping"] as! [String: Any])
+                    self.schemaMapping = model
+                }
+            }
+        }
+        public class Databases : Tea.TeaModel {
+            public class SpecificTables : Tea.TeaModel {
+                public class AdbTableSchema : Tea.TeaModel {
+                    public var distributedKeys: [String]?
+
+                    public var partitionLifeCycle: String?
+
+                    public var partitionStatement: String?
+
+                    public var primaryKeys: [String]?
+
+                    public override init() {
+                        super.init()
+                    }
+
+                    public init(_ dict: [String: Any]) {
+                        super.init()
+                        self.fromMap(dict)
+                    }
+
+                    public override func validate() throws -> Void {
+                    }
+
+                    public override func toMap() -> [String : Any] {
+                        var map = super.toMap()
+                        if self.distributedKeys != nil {
+                            map["DistributedKeys"] = self.distributedKeys!
+                        }
+                        if self.partitionLifeCycle != nil {
+                            map["PartitionLifeCycle"] = self.partitionLifeCycle!
+                        }
+                        if self.partitionStatement != nil {
+                            map["PartitionStatement"] = self.partitionStatement!
+                        }
+                        if self.primaryKeys != nil {
+                            map["PrimaryKeys"] = self.primaryKeys!
+                        }
+                        return map
+                    }
+
+                    public override func fromMap(_ dict: [String: Any]) -> Void {
+                        if dict.keys.contains("DistributedKeys") {
+                            self.distributedKeys = dict["DistributedKeys"] as! [String]
+                        }
+                        if dict.keys.contains("PartitionLifeCycle") {
+                            self.partitionLifeCycle = dict["PartitionLifeCycle"] as! String
+                        }
+                        if dict.keys.contains("PartitionStatement") {
+                            self.partitionStatement = dict["PartitionStatement"] as! String
+                        }
+                        if dict.keys.contains("PrimaryKeys") {
+                            self.primaryKeys = dict["PrimaryKeys"] as! [String]
+                        }
+                    }
+                }
+                public var adbTableSchema: CreateProjectModifyRecordsRequest.TransferMapping.Databases.SpecificTables.AdbTableSchema?
+
+                public var filterColumns: [String]?
+
+                public var id: String?
+
+                public var mappedName: String?
+
+                public var name: String?
+
+                public var shardColumns: [String]?
+
+                public var whereClause: String?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                    try self.adbTableSchema?.validate()
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.adbTableSchema != nil {
+                        map["AdbTableSchema"] = self.adbTableSchema?.toMap()
+                    }
+                    if self.filterColumns != nil {
+                        map["FilterColumns"] = self.filterColumns!
+                    }
+                    if self.id != nil {
+                        map["Id"] = self.id!
+                    }
+                    if self.mappedName != nil {
+                        map["MappedName"] = self.mappedName!
+                    }
+                    if self.name != nil {
+                        map["Name"] = self.name!
+                    }
+                    if self.shardColumns != nil {
+                        map["ShardColumns"] = self.shardColumns!
+                    }
+                    if self.whereClause != nil {
+                        map["WhereClause"] = self.whereClause!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any]) -> Void {
+                    if dict.keys.contains("AdbTableSchema") {
+                        var model = CreateProjectModifyRecordsRequest.TransferMapping.Databases.SpecificTables.AdbTableSchema()
+                        model.fromMap(dict["AdbTableSchema"] as! [String: Any])
+                        self.adbTableSchema = model
+                    }
+                    if dict.keys.contains("FilterColumns") {
+                        self.filterColumns = dict["FilterColumns"] as! [String]
+                    }
+                    if dict.keys.contains("Id") {
+                        self.id = dict["Id"] as! String
+                    }
+                    if dict.keys.contains("MappedName") {
+                        self.mappedName = dict["MappedName"] as! String
+                    }
+                    if dict.keys.contains("Name") {
+                        self.name = dict["Name"] as! String
+                    }
+                    if dict.keys.contains("ShardColumns") {
+                        self.shardColumns = dict["ShardColumns"] as! [String]
+                    }
+                    if dict.keys.contains("WhereClause") {
+                        self.whereClause = dict["WhereClause"] as! String
+                    }
+                }
+            }
+            public class SpecificViews : Tea.TeaModel {
+                public class AdbTableSchema : Tea.TeaModel {
+                    public var distributedKeys: [String]?
+
+                    public var partitionLifeCycle: String?
+
+                    public var partitionStatement: String?
+
+                    public var primaryKeys: [String]?
+
+                    public override init() {
+                        super.init()
+                    }
+
+                    public init(_ dict: [String: Any]) {
+                        super.init()
+                        self.fromMap(dict)
+                    }
+
+                    public override func validate() throws -> Void {
+                    }
+
+                    public override func toMap() -> [String : Any] {
+                        var map = super.toMap()
+                        if self.distributedKeys != nil {
+                            map["DistributedKeys"] = self.distributedKeys!
+                        }
+                        if self.partitionLifeCycle != nil {
+                            map["PartitionLifeCycle"] = self.partitionLifeCycle!
+                        }
+                        if self.partitionStatement != nil {
+                            map["PartitionStatement"] = self.partitionStatement!
+                        }
+                        if self.primaryKeys != nil {
+                            map["PrimaryKeys"] = self.primaryKeys!
+                        }
+                        return map
+                    }
+
+                    public override func fromMap(_ dict: [String: Any]) -> Void {
+                        if dict.keys.contains("DistributedKeys") {
+                            self.distributedKeys = dict["DistributedKeys"] as! [String]
+                        }
+                        if dict.keys.contains("PartitionLifeCycle") {
+                            self.partitionLifeCycle = dict["PartitionLifeCycle"] as! String
+                        }
+                        if dict.keys.contains("PartitionStatement") {
+                            self.partitionStatement = dict["PartitionStatement"] as! String
+                        }
+                        if dict.keys.contains("PrimaryKeys") {
+                            self.primaryKeys = dict["PrimaryKeys"] as! [String]
+                        }
+                    }
+                }
+                public var adbTableSchema: CreateProjectModifyRecordsRequest.TransferMapping.Databases.SpecificViews.AdbTableSchema?
+
+                public var filterColumns: [String]?
+
+                public var id: String?
+
+                public var mappedName: String?
+
+                public var name: String?
+
+                public var shardColumns: [String]?
+
+                public var whereClause: String?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                    try self.adbTableSchema?.validate()
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.adbTableSchema != nil {
+                        map["AdbTableSchema"] = self.adbTableSchema?.toMap()
+                    }
+                    if self.filterColumns != nil {
+                        map["FilterColumns"] = self.filterColumns!
+                    }
+                    if self.id != nil {
+                        map["Id"] = self.id!
+                    }
+                    if self.mappedName != nil {
+                        map["MappedName"] = self.mappedName!
+                    }
+                    if self.name != nil {
+                        map["Name"] = self.name!
+                    }
+                    if self.shardColumns != nil {
+                        map["ShardColumns"] = self.shardColumns!
+                    }
+                    if self.whereClause != nil {
+                        map["WhereClause"] = self.whereClause!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any]) -> Void {
+                    if dict.keys.contains("AdbTableSchema") {
+                        var model = CreateProjectModifyRecordsRequest.TransferMapping.Databases.SpecificViews.AdbTableSchema()
+                        model.fromMap(dict["AdbTableSchema"] as! [String: Any])
+                        self.adbTableSchema = model
+                    }
+                    if dict.keys.contains("FilterColumns") {
+                        self.filterColumns = dict["FilterColumns"] as! [String]
+                    }
+                    if dict.keys.contains("Id") {
+                        self.id = dict["Id"] as! String
+                    }
+                    if dict.keys.contains("MappedName") {
+                        self.mappedName = dict["MappedName"] as! String
+                    }
+                    if dict.keys.contains("Name") {
+                        self.name = dict["Name"] as! String
+                    }
+                    if dict.keys.contains("ShardColumns") {
+                        self.shardColumns = dict["ShardColumns"] as! [String]
+                    }
+                    if dict.keys.contains("WhereClause") {
+                        self.whereClause = dict["WhereClause"] as! String
+                    }
+                }
+            }
+            public class Tables : Tea.TeaModel {
+                public class AdbTableSchema : Tea.TeaModel {
+                    public var distributedKeys: [String]?
+
+                    public var partitionLifeCycle: String?
+
+                    public var partitionStatement: String?
+
+                    public var primaryKeys: [String]?
+
+                    public override init() {
+                        super.init()
+                    }
+
+                    public init(_ dict: [String: Any]) {
+                        super.init()
+                        self.fromMap(dict)
+                    }
+
+                    public override func validate() throws -> Void {
+                    }
+
+                    public override func toMap() -> [String : Any] {
+                        var map = super.toMap()
+                        if self.distributedKeys != nil {
+                            map["DistributedKeys"] = self.distributedKeys!
+                        }
+                        if self.partitionLifeCycle != nil {
+                            map["PartitionLifeCycle"] = self.partitionLifeCycle!
+                        }
+                        if self.partitionStatement != nil {
+                            map["PartitionStatement"] = self.partitionStatement!
+                        }
+                        if self.primaryKeys != nil {
+                            map["PrimaryKeys"] = self.primaryKeys!
+                        }
+                        return map
+                    }
+
+                    public override func fromMap(_ dict: [String: Any]) -> Void {
+                        if dict.keys.contains("DistributedKeys") {
+                            self.distributedKeys = dict["DistributedKeys"] as! [String]
+                        }
+                        if dict.keys.contains("PartitionLifeCycle") {
+                            self.partitionLifeCycle = dict["PartitionLifeCycle"] as! String
+                        }
+                        if dict.keys.contains("PartitionStatement") {
+                            self.partitionStatement = dict["PartitionStatement"] as! String
+                        }
+                        if dict.keys.contains("PrimaryKeys") {
+                            self.primaryKeys = dict["PrimaryKeys"] as! [String]
+                        }
+                    }
+                }
+                public class ObkvPartitionConfig : Tea.TeaModel {
+                    public var partitionSize: Int32?
+
+                    public var partitionType: String?
+
+                    public var virtualColumn: String?
+
+                    public override init() {
+                        super.init()
+                    }
+
+                    public init(_ dict: [String: Any]) {
+                        super.init()
+                        self.fromMap(dict)
+                    }
+
+                    public override func validate() throws -> Void {
+                    }
+
+                    public override func toMap() -> [String : Any] {
+                        var map = super.toMap()
+                        if self.partitionSize != nil {
+                            map["PartitionSize"] = self.partitionSize!
+                        }
+                        if self.partitionType != nil {
+                            map["PartitionType"] = self.partitionType!
+                        }
+                        if self.virtualColumn != nil {
+                            map["VirtualColumn"] = self.virtualColumn!
+                        }
+                        return map
+                    }
+
+                    public override func fromMap(_ dict: [String: Any]) -> Void {
+                        if dict.keys.contains("PartitionSize") {
+                            self.partitionSize = dict["PartitionSize"] as! Int32
+                        }
+                        if dict.keys.contains("PartitionType") {
+                            self.partitionType = dict["PartitionType"] as! String
+                        }
+                        if dict.keys.contains("VirtualColumn") {
+                            self.virtualColumn = dict["VirtualColumn"] as! String
+                        }
+                    }
+                }
+                public var adbTableSchema: CreateProjectModifyRecordsRequest.TransferMapping.Databases.Tables.AdbTableSchema?
+
+                public var filterColumns: [String]?
+
+                public var id: String?
+
+                public var mappedName: String?
+
+                public var name: String?
+
+                public var obkvPartitionConfig: CreateProjectModifyRecordsRequest.TransferMapping.Databases.Tables.ObkvPartitionConfig?
+
+                public var shardColumns: [String]?
+
+                public var whereClause: String?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                    try self.adbTableSchema?.validate()
+                    try self.obkvPartitionConfig?.validate()
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.adbTableSchema != nil {
+                        map["AdbTableSchema"] = self.adbTableSchema?.toMap()
+                    }
+                    if self.filterColumns != nil {
+                        map["FilterColumns"] = self.filterColumns!
+                    }
+                    if self.id != nil {
+                        map["Id"] = self.id!
+                    }
+                    if self.mappedName != nil {
+                        map["MappedName"] = self.mappedName!
+                    }
+                    if self.name != nil {
+                        map["Name"] = self.name!
+                    }
+                    if self.obkvPartitionConfig != nil {
+                        map["ObkvPartitionConfig"] = self.obkvPartitionConfig?.toMap()
+                    }
+                    if self.shardColumns != nil {
+                        map["ShardColumns"] = self.shardColumns!
+                    }
+                    if self.whereClause != nil {
+                        map["WhereClause"] = self.whereClause!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any]) -> Void {
+                    if dict.keys.contains("AdbTableSchema") {
+                        var model = CreateProjectModifyRecordsRequest.TransferMapping.Databases.Tables.AdbTableSchema()
+                        model.fromMap(dict["AdbTableSchema"] as! [String: Any])
+                        self.adbTableSchema = model
+                    }
+                    if dict.keys.contains("FilterColumns") {
+                        self.filterColumns = dict["FilterColumns"] as! [String]
+                    }
+                    if dict.keys.contains("Id") {
+                        self.id = dict["Id"] as! String
+                    }
+                    if dict.keys.contains("MappedName") {
+                        self.mappedName = dict["MappedName"] as! String
+                    }
+                    if dict.keys.contains("Name") {
+                        self.name = dict["Name"] as! String
+                    }
+                    if dict.keys.contains("ObkvPartitionConfig") {
+                        var model = CreateProjectModifyRecordsRequest.TransferMapping.Databases.Tables.ObkvPartitionConfig()
+                        model.fromMap(dict["ObkvPartitionConfig"] as! [String: Any])
+                        self.obkvPartitionConfig = model
+                    }
+                    if dict.keys.contains("ShardColumns") {
+                        self.shardColumns = dict["ShardColumns"] as! [String]
+                    }
+                    if dict.keys.contains("WhereClause") {
+                        self.whereClause = dict["WhereClause"] as! String
+                    }
+                }
+            }
+            public class Views : Tea.TeaModel {
+                public class AdbTableSchema : Tea.TeaModel {
+                    public var distributedKeys: [String]?
+
+                    public var partitionLifeCycle: String?
+
+                    public var partitionStatement: String?
+
+                    public var primaryKeys: [String]?
+
+                    public override init() {
+                        super.init()
+                    }
+
+                    public init(_ dict: [String: Any]) {
+                        super.init()
+                        self.fromMap(dict)
+                    }
+
+                    public override func validate() throws -> Void {
+                    }
+
+                    public override func toMap() -> [String : Any] {
+                        var map = super.toMap()
+                        if self.distributedKeys != nil {
+                            map["DistributedKeys"] = self.distributedKeys!
+                        }
+                        if self.partitionLifeCycle != nil {
+                            map["PartitionLifeCycle"] = self.partitionLifeCycle!
+                        }
+                        if self.partitionStatement != nil {
+                            map["PartitionStatement"] = self.partitionStatement!
+                        }
+                        if self.primaryKeys != nil {
+                            map["PrimaryKeys"] = self.primaryKeys!
+                        }
+                        return map
+                    }
+
+                    public override func fromMap(_ dict: [String: Any]) -> Void {
+                        if dict.keys.contains("DistributedKeys") {
+                            self.distributedKeys = dict["DistributedKeys"] as! [String]
+                        }
+                        if dict.keys.contains("PartitionLifeCycle") {
+                            self.partitionLifeCycle = dict["PartitionLifeCycle"] as! String
+                        }
+                        if dict.keys.contains("PartitionStatement") {
+                            self.partitionStatement = dict["PartitionStatement"] as! String
+                        }
+                        if dict.keys.contains("PrimaryKeys") {
+                            self.primaryKeys = dict["PrimaryKeys"] as! [String]
+                        }
+                    }
+                }
+                public var adbTableSchema: CreateProjectModifyRecordsRequest.TransferMapping.Databases.Views.AdbTableSchema?
+
+                public var filterColumns: [String]?
+
+                public var id: String?
+
+                public var mappedName: String?
+
+                public var name: String?
+
+                public var shardColumns: [String]?
+
+                public var whereClause: String?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                    try self.adbTableSchema?.validate()
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.adbTableSchema != nil {
+                        map["AdbTableSchema"] = self.adbTableSchema?.toMap()
+                    }
+                    if self.filterColumns != nil {
+                        map["FilterColumns"] = self.filterColumns!
+                    }
+                    if self.id != nil {
+                        map["Id"] = self.id!
+                    }
+                    if self.mappedName != nil {
+                        map["MappedName"] = self.mappedName!
+                    }
+                    if self.name != nil {
+                        map["Name"] = self.name!
+                    }
+                    if self.shardColumns != nil {
+                        map["ShardColumns"] = self.shardColumns!
+                    }
+                    if self.whereClause != nil {
+                        map["WhereClause"] = self.whereClause!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any]) -> Void {
+                    if dict.keys.contains("AdbTableSchema") {
+                        var model = CreateProjectModifyRecordsRequest.TransferMapping.Databases.Views.AdbTableSchema()
+                        model.fromMap(dict["AdbTableSchema"] as! [String: Any])
+                        self.adbTableSchema = model
+                    }
+                    if dict.keys.contains("FilterColumns") {
+                        self.filterColumns = dict["FilterColumns"] as! [String]
+                    }
+                    if dict.keys.contains("Id") {
+                        self.id = dict["Id"] as! String
+                    }
+                    if dict.keys.contains("MappedName") {
+                        self.mappedName = dict["MappedName"] as! String
+                    }
+                    if dict.keys.contains("Name") {
+                        self.name = dict["Name"] as! String
+                    }
+                    if dict.keys.contains("ShardColumns") {
+                        self.shardColumns = dict["ShardColumns"] as! [String]
+                    }
+                    if dict.keys.contains("WhereClause") {
+                        self.whereClause = dict["WhereClause"] as! String
+                    }
+                }
+            }
+            public var clusterName: String?
+
+            public var id: String?
+
+            public var mappedName: String?
+
+            public var name: String?
+
+            public var specificTables: [CreateProjectModifyRecordsRequest.TransferMapping.Databases.SpecificTables]?
+
+            public var specificViews: [CreateProjectModifyRecordsRequest.TransferMapping.Databases.SpecificViews]?
+
+            public var tables: [CreateProjectModifyRecordsRequest.TransferMapping.Databases.Tables]?
+
+            public var tenantName: String?
+
+            public var views: [CreateProjectModifyRecordsRequest.TransferMapping.Databases.Views]?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.clusterName != nil {
+                    map["ClusterName"] = self.clusterName!
+                }
+                if self.id != nil {
+                    map["Id"] = self.id!
+                }
+                if self.mappedName != nil {
+                    map["MappedName"] = self.mappedName!
+                }
+                if self.name != nil {
+                    map["Name"] = self.name!
+                }
+                if self.specificTables != nil {
+                    var tmp : [Any] = []
+                    for k in self.specificTables! {
+                        tmp.append(k.toMap())
+                    }
+                    map["SpecificTables"] = tmp
+                }
+                if self.specificViews != nil {
+                    var tmp : [Any] = []
+                    for k in self.specificViews! {
+                        tmp.append(k.toMap())
+                    }
+                    map["SpecificViews"] = tmp
+                }
+                if self.tables != nil {
+                    var tmp : [Any] = []
+                    for k in self.tables! {
+                        tmp.append(k.toMap())
+                    }
+                    map["Tables"] = tmp
+                }
+                if self.tenantName != nil {
+                    map["TenantName"] = self.tenantName!
+                }
+                if self.views != nil {
+                    var tmp : [Any] = []
+                    for k in self.views! {
+                        tmp.append(k.toMap())
+                    }
+                    map["Views"] = tmp
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("ClusterName") {
+                    self.clusterName = dict["ClusterName"] as! String
+                }
+                if dict.keys.contains("Id") {
+                    self.id = dict["Id"] as! String
+                }
+                if dict.keys.contains("MappedName") {
+                    self.mappedName = dict["MappedName"] as! String
+                }
+                if dict.keys.contains("Name") {
+                    self.name = dict["Name"] as! String
+                }
+                if dict.keys.contains("SpecificTables") {
+                    var tmp : [CreateProjectModifyRecordsRequest.TransferMapping.Databases.SpecificTables] = []
+                    for v in dict["SpecificTables"] as! [Any] {
+                        var model = CreateProjectModifyRecordsRequest.TransferMapping.Databases.SpecificTables()
+                        if v != nil {
+                            model.fromMap(v as! [String: Any])
+                        }
+                        tmp.append(model)
+                    }
+                    self.specificTables = tmp
+                }
+                if dict.keys.contains("SpecificViews") {
+                    var tmp : [CreateProjectModifyRecordsRequest.TransferMapping.Databases.SpecificViews] = []
+                    for v in dict["SpecificViews"] as! [Any] {
+                        var model = CreateProjectModifyRecordsRequest.TransferMapping.Databases.SpecificViews()
+                        if v != nil {
+                            model.fromMap(v as! [String: Any])
+                        }
+                        tmp.append(model)
+                    }
+                    self.specificViews = tmp
+                }
+                if dict.keys.contains("Tables") {
+                    var tmp : [CreateProjectModifyRecordsRequest.TransferMapping.Databases.Tables] = []
+                    for v in dict["Tables"] as! [Any] {
+                        var model = CreateProjectModifyRecordsRequest.TransferMapping.Databases.Tables()
+                        if v != nil {
+                            model.fromMap(v as! [String: Any])
+                        }
+                        tmp.append(model)
+                    }
+                    self.tables = tmp
+                }
+                if dict.keys.contains("TenantName") {
+                    self.tenantName = dict["TenantName"] as! String
+                }
+                if dict.keys.contains("Views") {
+                    var tmp : [CreateProjectModifyRecordsRequest.TransferMapping.Databases.Views] = []
+                    for v in dict["Views"] as! [Any] {
+                        var model = CreateProjectModifyRecordsRequest.TransferMapping.Databases.Views()
+                        if v != nil {
+                            model.fromMap(v as! [String: Any])
+                        }
+                        tmp.append(model)
+                    }
+                    self.views = tmp
+                }
+            }
+        }
+        public class DatabasesBlack : Tea.TeaModel {
+            public class SpecificTables : Tea.TeaModel {
+                public class AdbTableSchema : Tea.TeaModel {
+                    public var distributedKeys: [String]?
+
+                    public var partitionLifeCycle: String?
+
+                    public var partitionStatement: String?
+
+                    public var primaryKeys: [String]?
+
+                    public override init() {
+                        super.init()
+                    }
+
+                    public init(_ dict: [String: Any]) {
+                        super.init()
+                        self.fromMap(dict)
+                    }
+
+                    public override func validate() throws -> Void {
+                    }
+
+                    public override func toMap() -> [String : Any] {
+                        var map = super.toMap()
+                        if self.distributedKeys != nil {
+                            map["DistributedKeys"] = self.distributedKeys!
+                        }
+                        if self.partitionLifeCycle != nil {
+                            map["PartitionLifeCycle"] = self.partitionLifeCycle!
+                        }
+                        if self.partitionStatement != nil {
+                            map["PartitionStatement"] = self.partitionStatement!
+                        }
+                        if self.primaryKeys != nil {
+                            map["PrimaryKeys"] = self.primaryKeys!
+                        }
+                        return map
+                    }
+
+                    public override func fromMap(_ dict: [String: Any]) -> Void {
+                        if dict.keys.contains("DistributedKeys") {
+                            self.distributedKeys = dict["DistributedKeys"] as! [String]
+                        }
+                        if dict.keys.contains("PartitionLifeCycle") {
+                            self.partitionLifeCycle = dict["PartitionLifeCycle"] as! String
+                        }
+                        if dict.keys.contains("PartitionStatement") {
+                            self.partitionStatement = dict["PartitionStatement"] as! String
+                        }
+                        if dict.keys.contains("PrimaryKeys") {
+                            self.primaryKeys = dict["PrimaryKeys"] as! [String]
+                        }
+                    }
+                }
+                public var adbTableSchema: CreateProjectModifyRecordsRequest.TransferMapping.DatabasesBlack.SpecificTables.AdbTableSchema?
+
+                public var filterColumns: [String]?
+
+                public var id: String?
+
+                public var mappedName: String?
+
+                public var name: String?
+
+                public var shardColumns: [String]?
+
+                public var whereClause: String?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                    try self.adbTableSchema?.validate()
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.adbTableSchema != nil {
+                        map["AdbTableSchema"] = self.adbTableSchema?.toMap()
+                    }
+                    if self.filterColumns != nil {
+                        map["FilterColumns"] = self.filterColumns!
+                    }
+                    if self.id != nil {
+                        map["Id"] = self.id!
+                    }
+                    if self.mappedName != nil {
+                        map["MappedName"] = self.mappedName!
+                    }
+                    if self.name != nil {
+                        map["Name"] = self.name!
+                    }
+                    if self.shardColumns != nil {
+                        map["ShardColumns"] = self.shardColumns!
+                    }
+                    if self.whereClause != nil {
+                        map["WhereClause"] = self.whereClause!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any]) -> Void {
+                    if dict.keys.contains("AdbTableSchema") {
+                        var model = CreateProjectModifyRecordsRequest.TransferMapping.DatabasesBlack.SpecificTables.AdbTableSchema()
+                        model.fromMap(dict["AdbTableSchema"] as! [String: Any])
+                        self.adbTableSchema = model
+                    }
+                    if dict.keys.contains("FilterColumns") {
+                        self.filterColumns = dict["FilterColumns"] as! [String]
+                    }
+                    if dict.keys.contains("Id") {
+                        self.id = dict["Id"] as! String
+                    }
+                    if dict.keys.contains("MappedName") {
+                        self.mappedName = dict["MappedName"] as! String
+                    }
+                    if dict.keys.contains("Name") {
+                        self.name = dict["Name"] as! String
+                    }
+                    if dict.keys.contains("ShardColumns") {
+                        self.shardColumns = dict["ShardColumns"] as! [String]
+                    }
+                    if dict.keys.contains("WhereClause") {
+                        self.whereClause = dict["WhereClause"] as! String
+                    }
+                }
+            }
+            public class SpecificViews : Tea.TeaModel {
+                public class AdbTableSchema : Tea.TeaModel {
+                    public var distributedKeys: [String]?
+
+                    public var partitionLifeCycle: String?
+
+                    public var partitionStatement: String?
+
+                    public var primaryKeys: [String]?
+
+                    public override init() {
+                        super.init()
+                    }
+
+                    public init(_ dict: [String: Any]) {
+                        super.init()
+                        self.fromMap(dict)
+                    }
+
+                    public override func validate() throws -> Void {
+                    }
+
+                    public override func toMap() -> [String : Any] {
+                        var map = super.toMap()
+                        if self.distributedKeys != nil {
+                            map["DistributedKeys"] = self.distributedKeys!
+                        }
+                        if self.partitionLifeCycle != nil {
+                            map["PartitionLifeCycle"] = self.partitionLifeCycle!
+                        }
+                        if self.partitionStatement != nil {
+                            map["PartitionStatement"] = self.partitionStatement!
+                        }
+                        if self.primaryKeys != nil {
+                            map["PrimaryKeys"] = self.primaryKeys!
+                        }
+                        return map
+                    }
+
+                    public override func fromMap(_ dict: [String: Any]) -> Void {
+                        if dict.keys.contains("DistributedKeys") {
+                            self.distributedKeys = dict["DistributedKeys"] as! [String]
+                        }
+                        if dict.keys.contains("PartitionLifeCycle") {
+                            self.partitionLifeCycle = dict["PartitionLifeCycle"] as! String
+                        }
+                        if dict.keys.contains("PartitionStatement") {
+                            self.partitionStatement = dict["PartitionStatement"] as! String
+                        }
+                        if dict.keys.contains("PrimaryKeys") {
+                            self.primaryKeys = dict["PrimaryKeys"] as! [String]
+                        }
+                    }
+                }
+                public var adbTableSchema: CreateProjectModifyRecordsRequest.TransferMapping.DatabasesBlack.SpecificViews.AdbTableSchema?
+
+                public var filterColumns: [String]?
+
+                public var id: String?
+
+                public var mappedName: String?
+
+                public var name: String?
+
+                public var shardColumns: [String]?
+
+                public var whereClause: String?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                    try self.adbTableSchema?.validate()
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.adbTableSchema != nil {
+                        map["AdbTableSchema"] = self.adbTableSchema?.toMap()
+                    }
+                    if self.filterColumns != nil {
+                        map["FilterColumns"] = self.filterColumns!
+                    }
+                    if self.id != nil {
+                        map["Id"] = self.id!
+                    }
+                    if self.mappedName != nil {
+                        map["MappedName"] = self.mappedName!
+                    }
+                    if self.name != nil {
+                        map["Name"] = self.name!
+                    }
+                    if self.shardColumns != nil {
+                        map["ShardColumns"] = self.shardColumns!
+                    }
+                    if self.whereClause != nil {
+                        map["WhereClause"] = self.whereClause!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any]) -> Void {
+                    if dict.keys.contains("AdbTableSchema") {
+                        var model = CreateProjectModifyRecordsRequest.TransferMapping.DatabasesBlack.SpecificViews.AdbTableSchema()
+                        model.fromMap(dict["AdbTableSchema"] as! [String: Any])
+                        self.adbTableSchema = model
+                    }
+                    if dict.keys.contains("FilterColumns") {
+                        self.filterColumns = dict["FilterColumns"] as! [String]
+                    }
+                    if dict.keys.contains("Id") {
+                        self.id = dict["Id"] as! String
+                    }
+                    if dict.keys.contains("MappedName") {
+                        self.mappedName = dict["MappedName"] as! String
+                    }
+                    if dict.keys.contains("Name") {
+                        self.name = dict["Name"] as! String
+                    }
+                    if dict.keys.contains("ShardColumns") {
+                        self.shardColumns = dict["ShardColumns"] as! [String]
+                    }
+                    if dict.keys.contains("WhereClause") {
+                        self.whereClause = dict["WhereClause"] as! String
+                    }
+                }
+            }
+            public class Tables : Tea.TeaModel {
+                public class AdbTableSchema : Tea.TeaModel {
+                    public var distributedKeys: [String]?
+
+                    public var partitionLifeCycle: String?
+
+                    public var partitionStatement: String?
+
+                    public var primaryKeys: [String]?
+
+                    public override init() {
+                        super.init()
+                    }
+
+                    public init(_ dict: [String: Any]) {
+                        super.init()
+                        self.fromMap(dict)
+                    }
+
+                    public override func validate() throws -> Void {
+                    }
+
+                    public override func toMap() -> [String : Any] {
+                        var map = super.toMap()
+                        if self.distributedKeys != nil {
+                            map["DistributedKeys"] = self.distributedKeys!
+                        }
+                        if self.partitionLifeCycle != nil {
+                            map["PartitionLifeCycle"] = self.partitionLifeCycle!
+                        }
+                        if self.partitionStatement != nil {
+                            map["PartitionStatement"] = self.partitionStatement!
+                        }
+                        if self.primaryKeys != nil {
+                            map["PrimaryKeys"] = self.primaryKeys!
+                        }
+                        return map
+                    }
+
+                    public override func fromMap(_ dict: [String: Any]) -> Void {
+                        if dict.keys.contains("DistributedKeys") {
+                            self.distributedKeys = dict["DistributedKeys"] as! [String]
+                        }
+                        if dict.keys.contains("PartitionLifeCycle") {
+                            self.partitionLifeCycle = dict["PartitionLifeCycle"] as! String
+                        }
+                        if dict.keys.contains("PartitionStatement") {
+                            self.partitionStatement = dict["PartitionStatement"] as! String
+                        }
+                        if dict.keys.contains("PrimaryKeys") {
+                            self.primaryKeys = dict["PrimaryKeys"] as! [String]
+                        }
+                    }
+                }
+                public var adbTableSchema: CreateProjectModifyRecordsRequest.TransferMapping.DatabasesBlack.Tables.AdbTableSchema?
+
+                public var filterColumns: [String]?
+
+                public var id: String?
+
+                public var mappedName: String?
+
+                public var name: String?
+
+                public var shardColumns: [String]?
+
+                public var whereClause: String?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                    try self.adbTableSchema?.validate()
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.adbTableSchema != nil {
+                        map["AdbTableSchema"] = self.adbTableSchema?.toMap()
+                    }
+                    if self.filterColumns != nil {
+                        map["FilterColumns"] = self.filterColumns!
+                    }
+                    if self.id != nil {
+                        map["Id"] = self.id!
+                    }
+                    if self.mappedName != nil {
+                        map["MappedName"] = self.mappedName!
+                    }
+                    if self.name != nil {
+                        map["Name"] = self.name!
+                    }
+                    if self.shardColumns != nil {
+                        map["ShardColumns"] = self.shardColumns!
+                    }
+                    if self.whereClause != nil {
+                        map["WhereClause"] = self.whereClause!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any]) -> Void {
+                    if dict.keys.contains("AdbTableSchema") {
+                        var model = CreateProjectModifyRecordsRequest.TransferMapping.DatabasesBlack.Tables.AdbTableSchema()
+                        model.fromMap(dict["AdbTableSchema"] as! [String: Any])
+                        self.adbTableSchema = model
+                    }
+                    if dict.keys.contains("FilterColumns") {
+                        self.filterColumns = dict["FilterColumns"] as! [String]
+                    }
+                    if dict.keys.contains("Id") {
+                        self.id = dict["Id"] as! String
+                    }
+                    if dict.keys.contains("MappedName") {
+                        self.mappedName = dict["MappedName"] as! String
+                    }
+                    if dict.keys.contains("Name") {
+                        self.name = dict["Name"] as! String
+                    }
+                    if dict.keys.contains("ShardColumns") {
+                        self.shardColumns = dict["ShardColumns"] as! [String]
+                    }
+                    if dict.keys.contains("WhereClause") {
+                        self.whereClause = dict["WhereClause"] as! String
+                    }
+                }
+            }
+            public class Views : Tea.TeaModel {
+                public class AdbTableSchema : Tea.TeaModel {
+                    public var distributedKeys: [String]?
+
+                    public var partitionLifeCycle: String?
+
+                    public var partitionStatement: String?
+
+                    public var primaryKeys: [String]?
+
+                    public override init() {
+                        super.init()
+                    }
+
+                    public init(_ dict: [String: Any]) {
+                        super.init()
+                        self.fromMap(dict)
+                    }
+
+                    public override func validate() throws -> Void {
+                    }
+
+                    public override func toMap() -> [String : Any] {
+                        var map = super.toMap()
+                        if self.distributedKeys != nil {
+                            map["DistributedKeys"] = self.distributedKeys!
+                        }
+                        if self.partitionLifeCycle != nil {
+                            map["PartitionLifeCycle"] = self.partitionLifeCycle!
+                        }
+                        if self.partitionStatement != nil {
+                            map["PartitionStatement"] = self.partitionStatement!
+                        }
+                        if self.primaryKeys != nil {
+                            map["PrimaryKeys"] = self.primaryKeys!
+                        }
+                        return map
+                    }
+
+                    public override func fromMap(_ dict: [String: Any]) -> Void {
+                        if dict.keys.contains("DistributedKeys") {
+                            self.distributedKeys = dict["DistributedKeys"] as! [String]
+                        }
+                        if dict.keys.contains("PartitionLifeCycle") {
+                            self.partitionLifeCycle = dict["PartitionLifeCycle"] as! String
+                        }
+                        if dict.keys.contains("PartitionStatement") {
+                            self.partitionStatement = dict["PartitionStatement"] as! String
+                        }
+                        if dict.keys.contains("PrimaryKeys") {
+                            self.primaryKeys = dict["PrimaryKeys"] as! [String]
+                        }
+                    }
+                }
+                public var adbTableSchema: CreateProjectModifyRecordsRequest.TransferMapping.DatabasesBlack.Views.AdbTableSchema?
+
+                public var filterColumns: [String]?
+
+                public var id: String?
+
+                public var mappedName: String?
+
+                public var name: String?
+
+                public var shardColumns: [String]?
+
+                public var whereClause: String?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                    try self.adbTableSchema?.validate()
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.adbTableSchema != nil {
+                        map["AdbTableSchema"] = self.adbTableSchema?.toMap()
+                    }
+                    if self.filterColumns != nil {
+                        map["FilterColumns"] = self.filterColumns!
+                    }
+                    if self.id != nil {
+                        map["Id"] = self.id!
+                    }
+                    if self.mappedName != nil {
+                        map["MappedName"] = self.mappedName!
+                    }
+                    if self.name != nil {
+                        map["Name"] = self.name!
+                    }
+                    if self.shardColumns != nil {
+                        map["ShardColumns"] = self.shardColumns!
+                    }
+                    if self.whereClause != nil {
+                        map["WhereClause"] = self.whereClause!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any]) -> Void {
+                    if dict.keys.contains("AdbTableSchema") {
+                        var model = CreateProjectModifyRecordsRequest.TransferMapping.DatabasesBlack.Views.AdbTableSchema()
+                        model.fromMap(dict["AdbTableSchema"] as! [String: Any])
+                        self.adbTableSchema = model
+                    }
+                    if dict.keys.contains("FilterColumns") {
+                        self.filterColumns = dict["FilterColumns"] as! [String]
+                    }
+                    if dict.keys.contains("Id") {
+                        self.id = dict["Id"] as! String
+                    }
+                    if dict.keys.contains("MappedName") {
+                        self.mappedName = dict["MappedName"] as! String
+                    }
+                    if dict.keys.contains("Name") {
+                        self.name = dict["Name"] as! String
+                    }
+                    if dict.keys.contains("ShardColumns") {
+                        self.shardColumns = dict["ShardColumns"] as! [String]
+                    }
+                    if dict.keys.contains("WhereClause") {
+                        self.whereClause = dict["WhereClause"] as! String
+                    }
+                }
+            }
+            public var clusterName: String?
+
+            public var id: String?
+
+            public var mappedName: String?
+
+            public var name: String?
+
+            public var specificTables: [CreateProjectModifyRecordsRequest.TransferMapping.DatabasesBlack.SpecificTables]?
+
+            public var specificViews: [CreateProjectModifyRecordsRequest.TransferMapping.DatabasesBlack.SpecificViews]?
+
+            public var tables: [CreateProjectModifyRecordsRequest.TransferMapping.DatabasesBlack.Tables]?
+
+            public var tenantName: String?
+
+            public var views: [CreateProjectModifyRecordsRequest.TransferMapping.DatabasesBlack.Views]?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.clusterName != nil {
+                    map["ClusterName"] = self.clusterName!
+                }
+                if self.id != nil {
+                    map["Id"] = self.id!
+                }
+                if self.mappedName != nil {
+                    map["MappedName"] = self.mappedName!
+                }
+                if self.name != nil {
+                    map["Name"] = self.name!
+                }
+                if self.specificTables != nil {
+                    var tmp : [Any] = []
+                    for k in self.specificTables! {
+                        tmp.append(k.toMap())
+                    }
+                    map["SpecificTables"] = tmp
+                }
+                if self.specificViews != nil {
+                    var tmp : [Any] = []
+                    for k in self.specificViews! {
+                        tmp.append(k.toMap())
+                    }
+                    map["SpecificViews"] = tmp
+                }
+                if self.tables != nil {
+                    var tmp : [Any] = []
+                    for k in self.tables! {
+                        tmp.append(k.toMap())
+                    }
+                    map["Tables"] = tmp
+                }
+                if self.tenantName != nil {
+                    map["TenantName"] = self.tenantName!
+                }
+                if self.views != nil {
+                    var tmp : [Any] = []
+                    for k in self.views! {
+                        tmp.append(k.toMap())
+                    }
+                    map["Views"] = tmp
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("ClusterName") {
+                    self.clusterName = dict["ClusterName"] as! String
+                }
+                if dict.keys.contains("Id") {
+                    self.id = dict["Id"] as! String
+                }
+                if dict.keys.contains("MappedName") {
+                    self.mappedName = dict["MappedName"] as! String
+                }
+                if dict.keys.contains("Name") {
+                    self.name = dict["Name"] as! String
+                }
+                if dict.keys.contains("SpecificTables") {
+                    var tmp : [CreateProjectModifyRecordsRequest.TransferMapping.DatabasesBlack.SpecificTables] = []
+                    for v in dict["SpecificTables"] as! [Any] {
+                        var model = CreateProjectModifyRecordsRequest.TransferMapping.DatabasesBlack.SpecificTables()
+                        if v != nil {
+                            model.fromMap(v as! [String: Any])
+                        }
+                        tmp.append(model)
+                    }
+                    self.specificTables = tmp
+                }
+                if dict.keys.contains("SpecificViews") {
+                    var tmp : [CreateProjectModifyRecordsRequest.TransferMapping.DatabasesBlack.SpecificViews] = []
+                    for v in dict["SpecificViews"] as! [Any] {
+                        var model = CreateProjectModifyRecordsRequest.TransferMapping.DatabasesBlack.SpecificViews()
+                        if v != nil {
+                            model.fromMap(v as! [String: Any])
+                        }
+                        tmp.append(model)
+                    }
+                    self.specificViews = tmp
+                }
+                if dict.keys.contains("Tables") {
+                    var tmp : [CreateProjectModifyRecordsRequest.TransferMapping.DatabasesBlack.Tables] = []
+                    for v in dict["Tables"] as! [Any] {
+                        var model = CreateProjectModifyRecordsRequest.TransferMapping.DatabasesBlack.Tables()
+                        if v != nil {
+                            model.fromMap(v as! [String: Any])
+                        }
+                        tmp.append(model)
+                    }
+                    self.tables = tmp
+                }
+                if dict.keys.contains("TenantName") {
+                    self.tenantName = dict["TenantName"] as! String
+                }
+                if dict.keys.contains("Views") {
+                    var tmp : [CreateProjectModifyRecordsRequest.TransferMapping.DatabasesBlack.Views] = []
+                    for v in dict["Views"] as! [Any] {
+                        var model = CreateProjectModifyRecordsRequest.TransferMapping.DatabasesBlack.Views()
+                        if v != nil {
+                            model.fromMap(v as! [String: Any])
+                        }
+                        tmp.append(model)
+                    }
+                    self.views = tmp
+                }
+            }
+        }
+        public class Schemas : Tea.TeaModel {
+            public class SpecificTables : Tea.TeaModel {
+                public class AdbTableSchema : Tea.TeaModel {
+                    public var distributedKeys: [String]?
+
+                    public var partitionLifeCycle: String?
+
+                    public var partitionStatement: String?
+
+                    public var primaryKeys: [String]?
+
+                    public override init() {
+                        super.init()
+                    }
+
+                    public init(_ dict: [String: Any]) {
+                        super.init()
+                        self.fromMap(dict)
+                    }
+
+                    public override func validate() throws -> Void {
+                    }
+
+                    public override func toMap() -> [String : Any] {
+                        var map = super.toMap()
+                        if self.distributedKeys != nil {
+                            map["DistributedKeys"] = self.distributedKeys!
+                        }
+                        if self.partitionLifeCycle != nil {
+                            map["PartitionLifeCycle"] = self.partitionLifeCycle!
+                        }
+                        if self.partitionStatement != nil {
+                            map["PartitionStatement"] = self.partitionStatement!
+                        }
+                        if self.primaryKeys != nil {
+                            map["PrimaryKeys"] = self.primaryKeys!
+                        }
+                        return map
+                    }
+
+                    public override func fromMap(_ dict: [String: Any]) -> Void {
+                        if dict.keys.contains("DistributedKeys") {
+                            self.distributedKeys = dict["DistributedKeys"] as! [String]
+                        }
+                        if dict.keys.contains("PartitionLifeCycle") {
+                            self.partitionLifeCycle = dict["PartitionLifeCycle"] as! String
+                        }
+                        if dict.keys.contains("PartitionStatement") {
+                            self.partitionStatement = dict["PartitionStatement"] as! String
+                        }
+                        if dict.keys.contains("PrimaryKeys") {
+                            self.primaryKeys = dict["PrimaryKeys"] as! [String]
+                        }
+                    }
+                }
+                public var adbTableSchema: CreateProjectModifyRecordsRequest.TransferMapping.Schemas.SpecificTables.AdbTableSchema?
+
+                public var filterColumns: [String]?
+
+                public var id: String?
+
+                public var mappedName: String?
+
+                public var name: String?
+
+                public var shardColumns: [String]?
+
+                public var whereClause: String?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                    try self.adbTableSchema?.validate()
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.adbTableSchema != nil {
+                        map["AdbTableSchema"] = self.adbTableSchema?.toMap()
+                    }
+                    if self.filterColumns != nil {
+                        map["FilterColumns"] = self.filterColumns!
+                    }
+                    if self.id != nil {
+                        map["Id"] = self.id!
+                    }
+                    if self.mappedName != nil {
+                        map["MappedName"] = self.mappedName!
+                    }
+                    if self.name != nil {
+                        map["Name"] = self.name!
+                    }
+                    if self.shardColumns != nil {
+                        map["ShardColumns"] = self.shardColumns!
+                    }
+                    if self.whereClause != nil {
+                        map["WhereClause"] = self.whereClause!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any]) -> Void {
+                    if dict.keys.contains("AdbTableSchema") {
+                        var model = CreateProjectModifyRecordsRequest.TransferMapping.Schemas.SpecificTables.AdbTableSchema()
+                        model.fromMap(dict["AdbTableSchema"] as! [String: Any])
+                        self.adbTableSchema = model
+                    }
+                    if dict.keys.contains("FilterColumns") {
+                        self.filterColumns = dict["FilterColumns"] as! [String]
+                    }
+                    if dict.keys.contains("Id") {
+                        self.id = dict["Id"] as! String
+                    }
+                    if dict.keys.contains("MappedName") {
+                        self.mappedName = dict["MappedName"] as! String
+                    }
+                    if dict.keys.contains("Name") {
+                        self.name = dict["Name"] as! String
+                    }
+                    if dict.keys.contains("ShardColumns") {
+                        self.shardColumns = dict["ShardColumns"] as! [String]
+                    }
+                    if dict.keys.contains("WhereClause") {
+                        self.whereClause = dict["WhereClause"] as! String
+                    }
+                }
+            }
+            public class SpecificViews : Tea.TeaModel {
+                public class AdbTableSchema : Tea.TeaModel {
+                    public var distributedKeys: [String]?
+
+                    public var partitionLifeCycle: String?
+
+                    public var partitionStatement: String?
+
+                    public var primaryKeys: [String]?
+
+                    public override init() {
+                        super.init()
+                    }
+
+                    public init(_ dict: [String: Any]) {
+                        super.init()
+                        self.fromMap(dict)
+                    }
+
+                    public override func validate() throws -> Void {
+                    }
+
+                    public override func toMap() -> [String : Any] {
+                        var map = super.toMap()
+                        if self.distributedKeys != nil {
+                            map["DistributedKeys"] = self.distributedKeys!
+                        }
+                        if self.partitionLifeCycle != nil {
+                            map["PartitionLifeCycle"] = self.partitionLifeCycle!
+                        }
+                        if self.partitionStatement != nil {
+                            map["PartitionStatement"] = self.partitionStatement!
+                        }
+                        if self.primaryKeys != nil {
+                            map["PrimaryKeys"] = self.primaryKeys!
+                        }
+                        return map
+                    }
+
+                    public override func fromMap(_ dict: [String: Any]) -> Void {
+                        if dict.keys.contains("DistributedKeys") {
+                            self.distributedKeys = dict["DistributedKeys"] as! [String]
+                        }
+                        if dict.keys.contains("PartitionLifeCycle") {
+                            self.partitionLifeCycle = dict["PartitionLifeCycle"] as! String
+                        }
+                        if dict.keys.contains("PartitionStatement") {
+                            self.partitionStatement = dict["PartitionStatement"] as! String
+                        }
+                        if dict.keys.contains("PrimaryKeys") {
+                            self.primaryKeys = dict["PrimaryKeys"] as! [String]
+                        }
+                    }
+                }
+                public var adbTableSchema: CreateProjectModifyRecordsRequest.TransferMapping.Schemas.SpecificViews.AdbTableSchema?
+
+                public var filterColumns: [String]?
+
+                public var id: String?
+
+                public var mappedName: String?
+
+                public var name: String?
+
+                public var shardColumns: [String]?
+
+                public var whereClause: String?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                    try self.adbTableSchema?.validate()
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.adbTableSchema != nil {
+                        map["AdbTableSchema"] = self.adbTableSchema?.toMap()
+                    }
+                    if self.filterColumns != nil {
+                        map["FilterColumns"] = self.filterColumns!
+                    }
+                    if self.id != nil {
+                        map["Id"] = self.id!
+                    }
+                    if self.mappedName != nil {
+                        map["MappedName"] = self.mappedName!
+                    }
+                    if self.name != nil {
+                        map["Name"] = self.name!
+                    }
+                    if self.shardColumns != nil {
+                        map["ShardColumns"] = self.shardColumns!
+                    }
+                    if self.whereClause != nil {
+                        map["WhereClause"] = self.whereClause!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any]) -> Void {
+                    if dict.keys.contains("AdbTableSchema") {
+                        var model = CreateProjectModifyRecordsRequest.TransferMapping.Schemas.SpecificViews.AdbTableSchema()
+                        model.fromMap(dict["AdbTableSchema"] as! [String: Any])
+                        self.adbTableSchema = model
+                    }
+                    if dict.keys.contains("FilterColumns") {
+                        self.filterColumns = dict["FilterColumns"] as! [String]
+                    }
+                    if dict.keys.contains("Id") {
+                        self.id = dict["Id"] as! String
+                    }
+                    if dict.keys.contains("MappedName") {
+                        self.mappedName = dict["MappedName"] as! String
+                    }
+                    if dict.keys.contains("Name") {
+                        self.name = dict["Name"] as! String
+                    }
+                    if dict.keys.contains("ShardColumns") {
+                        self.shardColumns = dict["ShardColumns"] as! [String]
+                    }
+                    if dict.keys.contains("WhereClause") {
+                        self.whereClause = dict["WhereClause"] as! String
+                    }
+                }
+            }
+            public class Tables : Tea.TeaModel {
+                public class AdbTableSchema : Tea.TeaModel {
+                    public var distributedKeys: [String]?
+
+                    public var partitionLifeCycle: String?
+
+                    public var partitionStatement: String?
+
+                    public var primaryKeys: [String]?
+
+                    public override init() {
+                        super.init()
+                    }
+
+                    public init(_ dict: [String: Any]) {
+                        super.init()
+                        self.fromMap(dict)
+                    }
+
+                    public override func validate() throws -> Void {
+                    }
+
+                    public override func toMap() -> [String : Any] {
+                        var map = super.toMap()
+                        if self.distributedKeys != nil {
+                            map["DistributedKeys"] = self.distributedKeys!
+                        }
+                        if self.partitionLifeCycle != nil {
+                            map["PartitionLifeCycle"] = self.partitionLifeCycle!
+                        }
+                        if self.partitionStatement != nil {
+                            map["PartitionStatement"] = self.partitionStatement!
+                        }
+                        if self.primaryKeys != nil {
+                            map["PrimaryKeys"] = self.primaryKeys!
+                        }
+                        return map
+                    }
+
+                    public override func fromMap(_ dict: [String: Any]) -> Void {
+                        if dict.keys.contains("DistributedKeys") {
+                            self.distributedKeys = dict["DistributedKeys"] as! [String]
+                        }
+                        if dict.keys.contains("PartitionLifeCycle") {
+                            self.partitionLifeCycle = dict["PartitionLifeCycle"] as! String
+                        }
+                        if dict.keys.contains("PartitionStatement") {
+                            self.partitionStatement = dict["PartitionStatement"] as! String
+                        }
+                        if dict.keys.contains("PrimaryKeys") {
+                            self.primaryKeys = dict["PrimaryKeys"] as! [String]
+                        }
+                    }
+                }
+                public class ObkvPartitionConfig : Tea.TeaModel {
+                    public var partitionSize: Int32?
+
+                    public var partitionType: String?
+
+                    public var virtualColumn: String?
+
+                    public override init() {
+                        super.init()
+                    }
+
+                    public init(_ dict: [String: Any]) {
+                        super.init()
+                        self.fromMap(dict)
+                    }
+
+                    public override func validate() throws -> Void {
+                    }
+
+                    public override func toMap() -> [String : Any] {
+                        var map = super.toMap()
+                        if self.partitionSize != nil {
+                            map["PartitionSize"] = self.partitionSize!
+                        }
+                        if self.partitionType != nil {
+                            map["PartitionType"] = self.partitionType!
+                        }
+                        if self.virtualColumn != nil {
+                            map["VirtualColumn"] = self.virtualColumn!
+                        }
+                        return map
+                    }
+
+                    public override func fromMap(_ dict: [String: Any]) -> Void {
+                        if dict.keys.contains("PartitionSize") {
+                            self.partitionSize = dict["PartitionSize"] as! Int32
+                        }
+                        if dict.keys.contains("PartitionType") {
+                            self.partitionType = dict["PartitionType"] as! String
+                        }
+                        if dict.keys.contains("VirtualColumn") {
+                            self.virtualColumn = dict["VirtualColumn"] as! String
+                        }
+                    }
+                }
+                public var adbTableSchema: CreateProjectModifyRecordsRequest.TransferMapping.Schemas.Tables.AdbTableSchema?
+
+                public var filterColumns: [String]?
+
+                public var id: String?
+
+                public var mappedName: String?
+
+                public var name: String?
+
+                public var obkvPartitionConfig: CreateProjectModifyRecordsRequest.TransferMapping.Schemas.Tables.ObkvPartitionConfig?
+
+                public var shardColumns: [String]?
+
+                public var whereClause: String?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                    try self.adbTableSchema?.validate()
+                    try self.obkvPartitionConfig?.validate()
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.adbTableSchema != nil {
+                        map["AdbTableSchema"] = self.adbTableSchema?.toMap()
+                    }
+                    if self.filterColumns != nil {
+                        map["FilterColumns"] = self.filterColumns!
+                    }
+                    if self.id != nil {
+                        map["Id"] = self.id!
+                    }
+                    if self.mappedName != nil {
+                        map["MappedName"] = self.mappedName!
+                    }
+                    if self.name != nil {
+                        map["Name"] = self.name!
+                    }
+                    if self.obkvPartitionConfig != nil {
+                        map["ObkvPartitionConfig"] = self.obkvPartitionConfig?.toMap()
+                    }
+                    if self.shardColumns != nil {
+                        map["ShardColumns"] = self.shardColumns!
+                    }
+                    if self.whereClause != nil {
+                        map["WhereClause"] = self.whereClause!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any]) -> Void {
+                    if dict.keys.contains("AdbTableSchema") {
+                        var model = CreateProjectModifyRecordsRequest.TransferMapping.Schemas.Tables.AdbTableSchema()
+                        model.fromMap(dict["AdbTableSchema"] as! [String: Any])
+                        self.adbTableSchema = model
+                    }
+                    if dict.keys.contains("FilterColumns") {
+                        self.filterColumns = dict["FilterColumns"] as! [String]
+                    }
+                    if dict.keys.contains("Id") {
+                        self.id = dict["Id"] as! String
+                    }
+                    if dict.keys.contains("MappedName") {
+                        self.mappedName = dict["MappedName"] as! String
+                    }
+                    if dict.keys.contains("Name") {
+                        self.name = dict["Name"] as! String
+                    }
+                    if dict.keys.contains("ObkvPartitionConfig") {
+                        var model = CreateProjectModifyRecordsRequest.TransferMapping.Schemas.Tables.ObkvPartitionConfig()
+                        model.fromMap(dict["ObkvPartitionConfig"] as! [String: Any])
+                        self.obkvPartitionConfig = model
+                    }
+                    if dict.keys.contains("ShardColumns") {
+                        self.shardColumns = dict["ShardColumns"] as! [String]
+                    }
+                    if dict.keys.contains("WhereClause") {
+                        self.whereClause = dict["WhereClause"] as! String
+                    }
+                }
+            }
+            public class Views : Tea.TeaModel {
+                public class AdbTableSchema : Tea.TeaModel {
+                    public var distributedKeys: [String]?
+
+                    public var partitionLifeCycle: String?
+
+                    public var partitionStatement: String?
+
+                    public var primaryKeys: [String]?
+
+                    public override init() {
+                        super.init()
+                    }
+
+                    public init(_ dict: [String: Any]) {
+                        super.init()
+                        self.fromMap(dict)
+                    }
+
+                    public override func validate() throws -> Void {
+                    }
+
+                    public override func toMap() -> [String : Any] {
+                        var map = super.toMap()
+                        if self.distributedKeys != nil {
+                            map["DistributedKeys"] = self.distributedKeys!
+                        }
+                        if self.partitionLifeCycle != nil {
+                            map["PartitionLifeCycle"] = self.partitionLifeCycle!
+                        }
+                        if self.partitionStatement != nil {
+                            map["PartitionStatement"] = self.partitionStatement!
+                        }
+                        if self.primaryKeys != nil {
+                            map["PrimaryKeys"] = self.primaryKeys!
+                        }
+                        return map
+                    }
+
+                    public override func fromMap(_ dict: [String: Any]) -> Void {
+                        if dict.keys.contains("DistributedKeys") {
+                            self.distributedKeys = dict["DistributedKeys"] as! [String]
+                        }
+                        if dict.keys.contains("PartitionLifeCycle") {
+                            self.partitionLifeCycle = dict["PartitionLifeCycle"] as! String
+                        }
+                        if dict.keys.contains("PartitionStatement") {
+                            self.partitionStatement = dict["PartitionStatement"] as! String
+                        }
+                        if dict.keys.contains("PrimaryKeys") {
+                            self.primaryKeys = dict["PrimaryKeys"] as! [String]
+                        }
+                    }
+                }
+                public var adbTableSchema: CreateProjectModifyRecordsRequest.TransferMapping.Schemas.Views.AdbTableSchema?
+
+                public var filterColumns: [String]?
+
+                public var id: String?
+
+                public var mappedName: String?
+
+                public var name: String?
+
+                public var shardColumns: [String]?
+
+                public var whereClause: String?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                    try self.adbTableSchema?.validate()
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.adbTableSchema != nil {
+                        map["AdbTableSchema"] = self.adbTableSchema?.toMap()
+                    }
+                    if self.filterColumns != nil {
+                        map["FilterColumns"] = self.filterColumns!
+                    }
+                    if self.id != nil {
+                        map["Id"] = self.id!
+                    }
+                    if self.mappedName != nil {
+                        map["MappedName"] = self.mappedName!
+                    }
+                    if self.name != nil {
+                        map["Name"] = self.name!
+                    }
+                    if self.shardColumns != nil {
+                        map["ShardColumns"] = self.shardColumns!
+                    }
+                    if self.whereClause != nil {
+                        map["WhereClause"] = self.whereClause!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any]) -> Void {
+                    if dict.keys.contains("AdbTableSchema") {
+                        var model = CreateProjectModifyRecordsRequest.TransferMapping.Schemas.Views.AdbTableSchema()
+                        model.fromMap(dict["AdbTableSchema"] as! [String: Any])
+                        self.adbTableSchema = model
+                    }
+                    if dict.keys.contains("FilterColumns") {
+                        self.filterColumns = dict["FilterColumns"] as! [String]
+                    }
+                    if dict.keys.contains("Id") {
+                        self.id = dict["Id"] as! String
+                    }
+                    if dict.keys.contains("MappedName") {
+                        self.mappedName = dict["MappedName"] as! String
+                    }
+                    if dict.keys.contains("Name") {
+                        self.name = dict["Name"] as! String
+                    }
+                    if dict.keys.contains("ShardColumns") {
+                        self.shardColumns = dict["ShardColumns"] as! [String]
+                    }
+                    if dict.keys.contains("WhereClause") {
+                        self.whereClause = dict["WhereClause"] as! String
+                    }
+                }
+            }
+            public var clusterName: String?
+
+            public var id: String?
+
+            public var mappedName: String?
+
+            public var name: String?
+
+            public var specificTables: [CreateProjectModifyRecordsRequest.TransferMapping.Schemas.SpecificTables]?
+
+            public var specificViews: [CreateProjectModifyRecordsRequest.TransferMapping.Schemas.SpecificViews]?
+
+            public var tables: [CreateProjectModifyRecordsRequest.TransferMapping.Schemas.Tables]?
+
+            public var tenantName: String?
+
+            public var views: [CreateProjectModifyRecordsRequest.TransferMapping.Schemas.Views]?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.clusterName != nil {
+                    map["ClusterName"] = self.clusterName!
+                }
+                if self.id != nil {
+                    map["Id"] = self.id!
+                }
+                if self.mappedName != nil {
+                    map["MappedName"] = self.mappedName!
+                }
+                if self.name != nil {
+                    map["Name"] = self.name!
+                }
+                if self.specificTables != nil {
+                    var tmp : [Any] = []
+                    for k in self.specificTables! {
+                        tmp.append(k.toMap())
+                    }
+                    map["SpecificTables"] = tmp
+                }
+                if self.specificViews != nil {
+                    var tmp : [Any] = []
+                    for k in self.specificViews! {
+                        tmp.append(k.toMap())
+                    }
+                    map["SpecificViews"] = tmp
+                }
+                if self.tables != nil {
+                    var tmp : [Any] = []
+                    for k in self.tables! {
+                        tmp.append(k.toMap())
+                    }
+                    map["Tables"] = tmp
+                }
+                if self.tenantName != nil {
+                    map["TenantName"] = self.tenantName!
+                }
+                if self.views != nil {
+                    var tmp : [Any] = []
+                    for k in self.views! {
+                        tmp.append(k.toMap())
+                    }
+                    map["Views"] = tmp
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("ClusterName") {
+                    self.clusterName = dict["ClusterName"] as! String
+                }
+                if dict.keys.contains("Id") {
+                    self.id = dict["Id"] as! String
+                }
+                if dict.keys.contains("MappedName") {
+                    self.mappedName = dict["MappedName"] as! String
+                }
+                if dict.keys.contains("Name") {
+                    self.name = dict["Name"] as! String
+                }
+                if dict.keys.contains("SpecificTables") {
+                    var tmp : [CreateProjectModifyRecordsRequest.TransferMapping.Schemas.SpecificTables] = []
+                    for v in dict["SpecificTables"] as! [Any] {
+                        var model = CreateProjectModifyRecordsRequest.TransferMapping.Schemas.SpecificTables()
+                        if v != nil {
+                            model.fromMap(v as! [String: Any])
+                        }
+                        tmp.append(model)
+                    }
+                    self.specificTables = tmp
+                }
+                if dict.keys.contains("SpecificViews") {
+                    var tmp : [CreateProjectModifyRecordsRequest.TransferMapping.Schemas.SpecificViews] = []
+                    for v in dict["SpecificViews"] as! [Any] {
+                        var model = CreateProjectModifyRecordsRequest.TransferMapping.Schemas.SpecificViews()
+                        if v != nil {
+                            model.fromMap(v as! [String: Any])
+                        }
+                        tmp.append(model)
+                    }
+                    self.specificViews = tmp
+                }
+                if dict.keys.contains("Tables") {
+                    var tmp : [CreateProjectModifyRecordsRequest.TransferMapping.Schemas.Tables] = []
+                    for v in dict["Tables"] as! [Any] {
+                        var model = CreateProjectModifyRecordsRequest.TransferMapping.Schemas.Tables()
+                        if v != nil {
+                            model.fromMap(v as! [String: Any])
+                        }
+                        tmp.append(model)
+                    }
+                    self.tables = tmp
+                }
+                if dict.keys.contains("TenantName") {
+                    self.tenantName = dict["TenantName"] as! String
+                }
+                if dict.keys.contains("Views") {
+                    var tmp : [CreateProjectModifyRecordsRequest.TransferMapping.Schemas.Views] = []
+                    for v in dict["Views"] as! [Any] {
+                        var model = CreateProjectModifyRecordsRequest.TransferMapping.Schemas.Views()
+                        if v != nil {
+                            model.fromMap(v as! [String: Any])
+                        }
+                        tmp.append(model)
+                    }
+                    self.views = tmp
+                }
+            }
+        }
+        public class WhiteTableRules : Tea.TeaModel {
+            public class ObjectMapping : Tea.TeaModel {
+                public var mappedName: String?
+
+                public var name: String?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.mappedName != nil {
+                        map["MappedName"] = self.mappedName!
+                    }
+                    if self.name != nil {
+                        map["Name"] = self.name!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any]) -> Void {
+                    if dict.keys.contains("MappedName") {
+                        self.mappedName = dict["MappedName"] as! String
+                    }
+                    if dict.keys.contains("Name") {
+                        self.name = dict["Name"] as! String
+                    }
+                }
+            }
+            public class SchemaMapping : Tea.TeaModel {
+                public var mappedName: String?
+
+                public var name: String?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.mappedName != nil {
+                        map["MappedName"] = self.mappedName!
+                    }
+                    if self.name != nil {
+                        map["Name"] = self.name!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any]) -> Void {
+                    if dict.keys.contains("MappedName") {
+                        self.mappedName = dict["MappedName"] as! String
+                    }
+                    if dict.keys.contains("Name") {
+                        self.name = dict["Name"] as! String
+                    }
+                }
+            }
+            public var objectMapping: CreateProjectModifyRecordsRequest.TransferMapping.WhiteTableRules.ObjectMapping?
+
+            public var schemaMapping: CreateProjectModifyRecordsRequest.TransferMapping.WhiteTableRules.SchemaMapping?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+                try self.objectMapping?.validate()
+                try self.schemaMapping?.validate()
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.objectMapping != nil {
+                    map["ObjectMapping"] = self.objectMapping?.toMap()
+                }
+                if self.schemaMapping != nil {
+                    map["SchemaMapping"] = self.schemaMapping?.toMap()
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("ObjectMapping") {
+                    var model = CreateProjectModifyRecordsRequest.TransferMapping.WhiteTableRules.ObjectMapping()
+                    model.fromMap(dict["ObjectMapping"] as! [String: Any])
+                    self.objectMapping = model
+                }
+                if dict.keys.contains("SchemaMapping") {
+                    var model = CreateProjectModifyRecordsRequest.TransferMapping.WhiteTableRules.SchemaMapping()
+                    model.fromMap(dict["SchemaMapping"] as! [String: Any])
+                    self.schemaMapping = model
+                }
+            }
+        }
+        public class WhiteViewRules : Tea.TeaModel {
+            public class ObjectMapping : Tea.TeaModel {
+                public var mappedName: String?
+
+                public var name: String?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.mappedName != nil {
+                        map["MappedName"] = self.mappedName!
+                    }
+                    if self.name != nil {
+                        map["Name"] = self.name!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any]) -> Void {
+                    if dict.keys.contains("MappedName") {
+                        self.mappedName = dict["MappedName"] as! String
+                    }
+                    if dict.keys.contains("Name") {
+                        self.name = dict["Name"] as! String
+                    }
+                }
+            }
+            public class SchemaMapping : Tea.TeaModel {
+                public var mappedName: String?
+
+                public var name: String?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.mappedName != nil {
+                        map["MappedName"] = self.mappedName!
+                    }
+                    if self.name != nil {
+                        map["Name"] = self.name!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any]) -> Void {
+                    if dict.keys.contains("MappedName") {
+                        self.mappedName = dict["MappedName"] as! String
+                    }
+                    if dict.keys.contains("Name") {
+                        self.name = dict["Name"] as! String
+                    }
+                }
+            }
+            public var objectMapping: CreateProjectModifyRecordsRequest.TransferMapping.WhiteViewRules.ObjectMapping?
+
+            public var schemaMapping: CreateProjectModifyRecordsRequest.TransferMapping.WhiteViewRules.SchemaMapping?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+                try self.objectMapping?.validate()
+                try self.schemaMapping?.validate()
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.objectMapping != nil {
+                    map["ObjectMapping"] = self.objectMapping?.toMap()
+                }
+                if self.schemaMapping != nil {
+                    map["SchemaMapping"] = self.schemaMapping?.toMap()
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("ObjectMapping") {
+                    var model = CreateProjectModifyRecordsRequest.TransferMapping.WhiteViewRules.ObjectMapping()
+                    model.fromMap(dict["ObjectMapping"] as! [String: Any])
+                    self.objectMapping = model
+                }
+                if dict.keys.contains("SchemaMapping") {
+                    var model = CreateProjectModifyRecordsRequest.TransferMapping.WhiteViewRules.SchemaMapping()
+                    model.fromMap(dict["SchemaMapping"] as! [String: Any])
+                    self.schemaMapping = model
+                }
+            }
+        }
+        public var blackTableRules: [CreateProjectModifyRecordsRequest.TransferMapping.BlackTableRules]?
+
+        public var blackViewRules: [CreateProjectModifyRecordsRequest.TransferMapping.BlackViewRules]?
+
+        public var databases: [CreateProjectModifyRecordsRequest.TransferMapping.Databases]?
+
+        public var databasesBlack: [CreateProjectModifyRecordsRequest.TransferMapping.DatabasesBlack]?
+
+        public var mode: String?
+
+        public var schemas: [CreateProjectModifyRecordsRequest.TransferMapping.Schemas]?
+
+        public var tableAndViewBlackList: [String]?
+
+        public var tableAndViewWhiteList: [String]?
+
+        public var whiteTableRules: [CreateProjectModifyRecordsRequest.TransferMapping.WhiteTableRules]?
+
+        public var whiteViewRules: [CreateProjectModifyRecordsRequest.TransferMapping.WhiteViewRules]?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.blackTableRules != nil {
+                var tmp : [Any] = []
+                for k in self.blackTableRules! {
+                    tmp.append(k.toMap())
+                }
+                map["BlackTableRules"] = tmp
+            }
+            if self.blackViewRules != nil {
+                var tmp : [Any] = []
+                for k in self.blackViewRules! {
+                    tmp.append(k.toMap())
+                }
+                map["BlackViewRules"] = tmp
+            }
+            if self.databases != nil {
+                var tmp : [Any] = []
+                for k in self.databases! {
+                    tmp.append(k.toMap())
+                }
+                map["Databases"] = tmp
+            }
+            if self.databasesBlack != nil {
+                var tmp : [Any] = []
+                for k in self.databasesBlack! {
+                    tmp.append(k.toMap())
+                }
+                map["DatabasesBlack"] = tmp
+            }
+            if self.mode != nil {
+                map["Mode"] = self.mode!
+            }
+            if self.schemas != nil {
+                var tmp : [Any] = []
+                for k in self.schemas! {
+                    tmp.append(k.toMap())
+                }
+                map["Schemas"] = tmp
+            }
+            if self.tableAndViewBlackList != nil {
+                map["TableAndViewBlackList"] = self.tableAndViewBlackList!
+            }
+            if self.tableAndViewWhiteList != nil {
+                map["TableAndViewWhiteList"] = self.tableAndViewWhiteList!
+            }
+            if self.whiteTableRules != nil {
+                var tmp : [Any] = []
+                for k in self.whiteTableRules! {
+                    tmp.append(k.toMap())
+                }
+                map["WhiteTableRules"] = tmp
+            }
+            if self.whiteViewRules != nil {
+                var tmp : [Any] = []
+                for k in self.whiteViewRules! {
+                    tmp.append(k.toMap())
+                }
+                map["WhiteViewRules"] = tmp
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("BlackTableRules") {
+                var tmp : [CreateProjectModifyRecordsRequest.TransferMapping.BlackTableRules] = []
+                for v in dict["BlackTableRules"] as! [Any] {
+                    var model = CreateProjectModifyRecordsRequest.TransferMapping.BlackTableRules()
+                    if v != nil {
+                        model.fromMap(v as! [String: Any])
+                    }
+                    tmp.append(model)
+                }
+                self.blackTableRules = tmp
+            }
+            if dict.keys.contains("BlackViewRules") {
+                var tmp : [CreateProjectModifyRecordsRequest.TransferMapping.BlackViewRules] = []
+                for v in dict["BlackViewRules"] as! [Any] {
+                    var model = CreateProjectModifyRecordsRequest.TransferMapping.BlackViewRules()
+                    if v != nil {
+                        model.fromMap(v as! [String: Any])
+                    }
+                    tmp.append(model)
+                }
+                self.blackViewRules = tmp
+            }
+            if dict.keys.contains("Databases") {
+                var tmp : [CreateProjectModifyRecordsRequest.TransferMapping.Databases] = []
+                for v in dict["Databases"] as! [Any] {
+                    var model = CreateProjectModifyRecordsRequest.TransferMapping.Databases()
+                    if v != nil {
+                        model.fromMap(v as! [String: Any])
+                    }
+                    tmp.append(model)
+                }
+                self.databases = tmp
+            }
+            if dict.keys.contains("DatabasesBlack") {
+                var tmp : [CreateProjectModifyRecordsRequest.TransferMapping.DatabasesBlack] = []
+                for v in dict["DatabasesBlack"] as! [Any] {
+                    var model = CreateProjectModifyRecordsRequest.TransferMapping.DatabasesBlack()
+                    if v != nil {
+                        model.fromMap(v as! [String: Any])
+                    }
+                    tmp.append(model)
+                }
+                self.databasesBlack = tmp
+            }
+            if dict.keys.contains("Mode") {
+                self.mode = dict["Mode"] as! String
+            }
+            if dict.keys.contains("Schemas") {
+                var tmp : [CreateProjectModifyRecordsRequest.TransferMapping.Schemas] = []
+                for v in dict["Schemas"] as! [Any] {
+                    var model = CreateProjectModifyRecordsRequest.TransferMapping.Schemas()
+                    if v != nil {
+                        model.fromMap(v as! [String: Any])
+                    }
+                    tmp.append(model)
+                }
+                self.schemas = tmp
+            }
+            if dict.keys.contains("TableAndViewBlackList") {
+                self.tableAndViewBlackList = dict["TableAndViewBlackList"] as! [String]
+            }
+            if dict.keys.contains("TableAndViewWhiteList") {
+                self.tableAndViewWhiteList = dict["TableAndViewWhiteList"] as! [String]
+            }
+            if dict.keys.contains("WhiteTableRules") {
+                var tmp : [CreateProjectModifyRecordsRequest.TransferMapping.WhiteTableRules] = []
+                for v in dict["WhiteTableRules"] as! [Any] {
+                    var model = CreateProjectModifyRecordsRequest.TransferMapping.WhiteTableRules()
+                    if v != nil {
+                        model.fromMap(v as! [String: Any])
+                    }
+                    tmp.append(model)
+                }
+                self.whiteTableRules = tmp
+            }
+            if dict.keys.contains("WhiteViewRules") {
+                var tmp : [CreateProjectModifyRecordsRequest.TransferMapping.WhiteViewRules] = []
+                for v in dict["WhiteViewRules"] as! [Any] {
+                    var model = CreateProjectModifyRecordsRequest.TransferMapping.WhiteViewRules()
+                    if v != nil {
+                        model.fromMap(v as! [String: Any])
+                    }
+                    tmp.append(model)
+                }
+                self.whiteViewRules = tmp
+            }
+        }
+    }
     public var databases: [CreateProjectModifyRecordsRequest.Databases]?
 
     public var id: String?
+
+    public var transferMapping: CreateProjectModifyRecordsRequest.TransferMapping?
 
     public override init() {
         super.init()
@@ -6452,6 +9238,7 @@ public class CreateProjectModifyRecordsRequest : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
+        try self.transferMapping?.validate()
     }
 
     public override func toMap() -> [String : Any] {
@@ -6465,6 +9252,9 @@ public class CreateProjectModifyRecordsRequest : Tea.TeaModel {
         }
         if self.id != nil {
             map["Id"] = self.id!
+        }
+        if self.transferMapping != nil {
+            map["TransferMapping"] = self.transferMapping?.toMap()
         }
         return map
     }
@@ -6484,6 +9274,11 @@ public class CreateProjectModifyRecordsRequest : Tea.TeaModel {
         if dict.keys.contains("Id") {
             self.id = dict["Id"] as! String
         }
+        if dict.keys.contains("TransferMapping") {
+            var model = CreateProjectModifyRecordsRequest.TransferMapping()
+            model.fromMap(dict["TransferMapping"] as! [String: Any])
+            self.transferMapping = model
+        }
     }
 }
 
@@ -6491,6 +9286,8 @@ public class CreateProjectModifyRecordsShrinkRequest : Tea.TeaModel {
     public var databasesShrink: String?
 
     public var id: String?
+
+    public var transferMappingShrink: String?
 
     public override init() {
         super.init()
@@ -6512,6 +9309,9 @@ public class CreateProjectModifyRecordsShrinkRequest : Tea.TeaModel {
         if self.id != nil {
             map["Id"] = self.id!
         }
+        if self.transferMappingShrink != nil {
+            map["TransferMapping"] = self.transferMappingShrink!
+        }
         return map
     }
 
@@ -6521,6 +9321,9 @@ public class CreateProjectModifyRecordsShrinkRequest : Tea.TeaModel {
         }
         if dict.keys.contains("Id") {
             self.id = dict["Id"] as! String
+        }
+        if dict.keys.contains("TransferMapping") {
+            self.transferMappingShrink = dict["TransferMapping"] as! String
         }
     }
 }
@@ -38027,6 +40830,332 @@ public class DescribeSlowSQLListResponse : Tea.TeaModel {
         }
         if dict.keys.contains("body") {
             var model = DescribeSlowSQLListResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
+public class DescribeSqlAuditStatRequest : Tea.TeaModel {
+    public var endTime: String?
+
+    public var instanceId: String?
+
+    public var pageNumber: Int32?
+
+    public var pageSize: Int32?
+
+    public var startTime: String?
+
+    public var tenantId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.endTime != nil {
+            map["EndTime"] = self.endTime!
+        }
+        if self.instanceId != nil {
+            map["InstanceId"] = self.instanceId!
+        }
+        if self.pageNumber != nil {
+            map["PageNumber"] = self.pageNumber!
+        }
+        if self.pageSize != nil {
+            map["PageSize"] = self.pageSize!
+        }
+        if self.startTime != nil {
+            map["StartTime"] = self.startTime!
+        }
+        if self.tenantId != nil {
+            map["TenantId"] = self.tenantId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("EndTime") {
+            self.endTime = dict["EndTime"] as! String
+        }
+        if dict.keys.contains("InstanceId") {
+            self.instanceId = dict["InstanceId"] as! String
+        }
+        if dict.keys.contains("PageNumber") {
+            self.pageNumber = dict["PageNumber"] as! Int32
+        }
+        if dict.keys.contains("PageSize") {
+            self.pageSize = dict["PageSize"] as! Int32
+        }
+        if dict.keys.contains("StartTime") {
+            self.startTime = dict["StartTime"] as! String
+        }
+        if dict.keys.contains("TenantId") {
+            self.tenantId = dict["TenantId"] as! String
+        }
+    }
+}
+
+public class DescribeSqlAuditStatResponseBody : Tea.TeaModel {
+    public class Data : Tea.TeaModel {
+        public var affectRows: Double?
+
+        public var databaseName: String?
+
+        public var executeTime: Double?
+
+        public var instanceId: String?
+
+        public var operatorType: String?
+
+        public var returnRows: Double?
+
+        public var scanRows: Double?
+
+        public var sqlId: String?
+
+        public var sqlStatement: String?
+
+        public var tenantId: String?
+
+        public var totalAffectRows: Int64?
+
+        public var totalFailed: Int64?
+
+        public var totalReturnRows: Int64?
+
+        public var totalScanRows: Int64?
+
+        public var totalSucceed: Int64?
+
+        public var userClientIp: String?
+
+        public var userName: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.affectRows != nil {
+                map["AffectRows"] = self.affectRows!
+            }
+            if self.databaseName != nil {
+                map["DatabaseName"] = self.databaseName!
+            }
+            if self.executeTime != nil {
+                map["ExecuteTime"] = self.executeTime!
+            }
+            if self.instanceId != nil {
+                map["InstanceId"] = self.instanceId!
+            }
+            if self.operatorType != nil {
+                map["OperatorType"] = self.operatorType!
+            }
+            if self.returnRows != nil {
+                map["ReturnRows"] = self.returnRows!
+            }
+            if self.scanRows != nil {
+                map["ScanRows"] = self.scanRows!
+            }
+            if self.sqlId != nil {
+                map["SqlId"] = self.sqlId!
+            }
+            if self.sqlStatement != nil {
+                map["SqlStatement"] = self.sqlStatement!
+            }
+            if self.tenantId != nil {
+                map["TenantId"] = self.tenantId!
+            }
+            if self.totalAffectRows != nil {
+                map["TotalAffectRows"] = self.totalAffectRows!
+            }
+            if self.totalFailed != nil {
+                map["TotalFailed"] = self.totalFailed!
+            }
+            if self.totalReturnRows != nil {
+                map["TotalReturnRows"] = self.totalReturnRows!
+            }
+            if self.totalScanRows != nil {
+                map["TotalScanRows"] = self.totalScanRows!
+            }
+            if self.totalSucceed != nil {
+                map["TotalSucceed"] = self.totalSucceed!
+            }
+            if self.userClientIp != nil {
+                map["UserClientIp"] = self.userClientIp!
+            }
+            if self.userName != nil {
+                map["UserName"] = self.userName!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("AffectRows") {
+                self.affectRows = dict["AffectRows"] as! Double
+            }
+            if dict.keys.contains("DatabaseName") {
+                self.databaseName = dict["DatabaseName"] as! String
+            }
+            if dict.keys.contains("ExecuteTime") {
+                self.executeTime = dict["ExecuteTime"] as! Double
+            }
+            if dict.keys.contains("InstanceId") {
+                self.instanceId = dict["InstanceId"] as! String
+            }
+            if dict.keys.contains("OperatorType") {
+                self.operatorType = dict["OperatorType"] as! String
+            }
+            if dict.keys.contains("ReturnRows") {
+                self.returnRows = dict["ReturnRows"] as! Double
+            }
+            if dict.keys.contains("ScanRows") {
+                self.scanRows = dict["ScanRows"] as! Double
+            }
+            if dict.keys.contains("SqlId") {
+                self.sqlId = dict["SqlId"] as! String
+            }
+            if dict.keys.contains("SqlStatement") {
+                self.sqlStatement = dict["SqlStatement"] as! String
+            }
+            if dict.keys.contains("TenantId") {
+                self.tenantId = dict["TenantId"] as! String
+            }
+            if dict.keys.contains("TotalAffectRows") {
+                self.totalAffectRows = dict["TotalAffectRows"] as! Int64
+            }
+            if dict.keys.contains("TotalFailed") {
+                self.totalFailed = dict["TotalFailed"] as! Int64
+            }
+            if dict.keys.contains("TotalReturnRows") {
+                self.totalReturnRows = dict["TotalReturnRows"] as! Int64
+            }
+            if dict.keys.contains("TotalScanRows") {
+                self.totalScanRows = dict["TotalScanRows"] as! Int64
+            }
+            if dict.keys.contains("TotalSucceed") {
+                self.totalSucceed = dict["TotalSucceed"] as! Int64
+            }
+            if dict.keys.contains("UserClientIp") {
+                self.userClientIp = dict["UserClientIp"] as! String
+            }
+            if dict.keys.contains("UserName") {
+                self.userName = dict["UserName"] as! String
+            }
+        }
+    }
+    public var data: [DescribeSqlAuditStatResponseBody.Data]?
+
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.data != nil {
+            var tmp : [Any] = []
+            for k in self.data! {
+                tmp.append(k.toMap())
+            }
+            map["Data"] = tmp
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("Data") {
+            var tmp : [DescribeSqlAuditStatResponseBody.Data] = []
+            for v in dict["Data"] as! [Any] {
+                var model = DescribeSqlAuditStatResponseBody.Data()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.data = tmp
+        }
+        if dict.keys.contains("RequestId") {
+            self.requestId = dict["RequestId"] as! String
+        }
+    }
+}
+
+public class DescribeSqlAuditStatResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: DescribeSqlAuditStatResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") {
+            var model = DescribeSqlAuditStatResponseBody()
             model.fromMap(dict["body"] as! [String: Any])
             self.body = model
         }
