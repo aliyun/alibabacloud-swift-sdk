@@ -4201,6 +4201,10 @@ public class GetDialogAnalysisResultResponseBody : Tea.TeaModel {
 
                 public var dialogLabels: [GetDialogAnalysisResultResponseBody.Data.DialogAnalysisRespList.AnalysisResp.DialogLabels]?
 
+                public var dialogOpenAnalysis: [String: Any]?
+
+                public var dialogProcessAnalysis: [String: Any]?
+
                 public var dialogSop: String?
 
                 public var dialogSummary: String?
@@ -4229,6 +4233,12 @@ public class GetDialogAnalysisResultResponseBody : Tea.TeaModel {
                         }
                         map["dialogLabels"] = tmp
                     }
+                    if self.dialogOpenAnalysis != nil {
+                        map["dialogOpenAnalysis"] = self.dialogOpenAnalysis!
+                    }
+                    if self.dialogProcessAnalysis != nil {
+                        map["dialogProcessAnalysis"] = self.dialogProcessAnalysis!
+                    }
                     if self.dialogSop != nil {
                         map["dialogSop"] = self.dialogSop!
                     }
@@ -4252,6 +4262,12 @@ public class GetDialogAnalysisResultResponseBody : Tea.TeaModel {
                             tmp.append(model)
                         }
                         self.dialogLabels = tmp
+                    }
+                    if dict.keys.contains("dialogOpenAnalysis") {
+                        self.dialogOpenAnalysis = dict["dialogOpenAnalysis"] as! [String: Any]
+                    }
+                    if dict.keys.contains("dialogProcessAnalysis") {
+                        self.dialogProcessAnalysis = dict["dialogProcessAnalysis"] as! [String: Any]
                     }
                     if dict.keys.contains("dialogSop") {
                         self.dialogSop = dict["dialogSop"] as! String
