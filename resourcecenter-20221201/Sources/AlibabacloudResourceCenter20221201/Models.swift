@@ -3519,6 +3519,341 @@ public class ListMultiAccountResourceGroupsResponse : Tea.TeaModel {
     }
 }
 
+public class ListMultiAccountResourceRelationshipsRequest : Tea.TeaModel {
+    public class RelatedResourceFilter : Tea.TeaModel {
+        public var key: String?
+
+        public var matchType: String?
+
+        public var value: [String]?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.key != nil {
+                map["Key"] = self.key!
+            }
+            if self.matchType != nil {
+                map["MatchType"] = self.matchType!
+            }
+            if self.value != nil {
+                map["Value"] = self.value!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("Key") {
+                self.key = dict["Key"] as! String
+            }
+            if dict.keys.contains("MatchType") {
+                self.matchType = dict["MatchType"] as! String
+            }
+            if dict.keys.contains("Value") {
+                self.value = dict["Value"] as! [String]
+            }
+        }
+    }
+    public var maxResults: Int32?
+
+    public var nextToken: String?
+
+    public var regionId: String?
+
+    public var relatedResourceFilter: [ListMultiAccountResourceRelationshipsRequest.RelatedResourceFilter]?
+
+    public var resourceId: String?
+
+    public var resourceType: String?
+
+    public var scope: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.maxResults != nil {
+            map["MaxResults"] = self.maxResults!
+        }
+        if self.nextToken != nil {
+            map["NextToken"] = self.nextToken!
+        }
+        if self.regionId != nil {
+            map["RegionId"] = self.regionId!
+        }
+        if self.relatedResourceFilter != nil {
+            var tmp : [Any] = []
+            for k in self.relatedResourceFilter! {
+                tmp.append(k.toMap())
+            }
+            map["RelatedResourceFilter"] = tmp
+        }
+        if self.resourceId != nil {
+            map["ResourceId"] = self.resourceId!
+        }
+        if self.resourceType != nil {
+            map["ResourceType"] = self.resourceType!
+        }
+        if self.scope != nil {
+            map["Scope"] = self.scope!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("MaxResults") {
+            self.maxResults = dict["MaxResults"] as! Int32
+        }
+        if dict.keys.contains("NextToken") {
+            self.nextToken = dict["NextToken"] as! String
+        }
+        if dict.keys.contains("RegionId") {
+            self.regionId = dict["RegionId"] as! String
+        }
+        if dict.keys.contains("RelatedResourceFilter") {
+            var tmp : [ListMultiAccountResourceRelationshipsRequest.RelatedResourceFilter] = []
+            for v in dict["RelatedResourceFilter"] as! [Any] {
+                var model = ListMultiAccountResourceRelationshipsRequest.RelatedResourceFilter()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.relatedResourceFilter = tmp
+        }
+        if dict.keys.contains("ResourceId") {
+            self.resourceId = dict["ResourceId"] as! String
+        }
+        if dict.keys.contains("ResourceType") {
+            self.resourceType = dict["ResourceType"] as! String
+        }
+        if dict.keys.contains("Scope") {
+            self.scope = dict["Scope"] as! String
+        }
+    }
+}
+
+public class ListMultiAccountResourceRelationshipsResponseBody : Tea.TeaModel {
+    public class ResourceRelationships : Tea.TeaModel {
+        public var accountId: String?
+
+        public var regionId: String?
+
+        public var relatedResourceId: String?
+
+        public var relatedResourceRegionId: String?
+
+        public var relatedResourceType: String?
+
+        public var resourceId: String?
+
+        public var resourceType: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.accountId != nil {
+                map["AccountId"] = self.accountId!
+            }
+            if self.regionId != nil {
+                map["RegionId"] = self.regionId!
+            }
+            if self.relatedResourceId != nil {
+                map["RelatedResourceId"] = self.relatedResourceId!
+            }
+            if self.relatedResourceRegionId != nil {
+                map["RelatedResourceRegionId"] = self.relatedResourceRegionId!
+            }
+            if self.relatedResourceType != nil {
+                map["RelatedResourceType"] = self.relatedResourceType!
+            }
+            if self.resourceId != nil {
+                map["ResourceId"] = self.resourceId!
+            }
+            if self.resourceType != nil {
+                map["ResourceType"] = self.resourceType!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("AccountId") {
+                self.accountId = dict["AccountId"] as! String
+            }
+            if dict.keys.contains("RegionId") {
+                self.regionId = dict["RegionId"] as! String
+            }
+            if dict.keys.contains("RelatedResourceId") {
+                self.relatedResourceId = dict["RelatedResourceId"] as! String
+            }
+            if dict.keys.contains("RelatedResourceRegionId") {
+                self.relatedResourceRegionId = dict["RelatedResourceRegionId"] as! String
+            }
+            if dict.keys.contains("RelatedResourceType") {
+                self.relatedResourceType = dict["RelatedResourceType"] as! String
+            }
+            if dict.keys.contains("ResourceId") {
+                self.resourceId = dict["ResourceId"] as! String
+            }
+            if dict.keys.contains("ResourceType") {
+                self.resourceType = dict["ResourceType"] as! String
+            }
+        }
+    }
+    public var maxResults: Int32?
+
+    public var nextToken: String?
+
+    public var requestId: String?
+
+    public var resourceRelationships: [ListMultiAccountResourceRelationshipsResponseBody.ResourceRelationships]?
+
+    public var scope: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.maxResults != nil {
+            map["MaxResults"] = self.maxResults!
+        }
+        if self.nextToken != nil {
+            map["NextToken"] = self.nextToken!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.resourceRelationships != nil {
+            var tmp : [Any] = []
+            for k in self.resourceRelationships! {
+                tmp.append(k.toMap())
+            }
+            map["ResourceRelationships"] = tmp
+        }
+        if self.scope != nil {
+            map["Scope"] = self.scope!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("MaxResults") {
+            self.maxResults = dict["MaxResults"] as! Int32
+        }
+        if dict.keys.contains("NextToken") {
+            self.nextToken = dict["NextToken"] as! String
+        }
+        if dict.keys.contains("RequestId") {
+            self.requestId = dict["RequestId"] as! String
+        }
+        if dict.keys.contains("ResourceRelationships") {
+            var tmp : [ListMultiAccountResourceRelationshipsResponseBody.ResourceRelationships] = []
+            for v in dict["ResourceRelationships"] as! [Any] {
+                var model = ListMultiAccountResourceRelationshipsResponseBody.ResourceRelationships()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.resourceRelationships = tmp
+        }
+        if dict.keys.contains("Scope") {
+            self.scope = dict["Scope"] as! String
+        }
+    }
+}
+
+public class ListMultiAccountResourceRelationshipsResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: ListMultiAccountResourceRelationshipsResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") {
+            var model = ListMultiAccountResourceRelationshipsResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
 public class ListMultiAccountTagKeysRequest : Tea.TeaModel {
     public var matchType: String?
 
@@ -3841,6 +4176,317 @@ public class ListMultiAccountTagValuesResponse : Tea.TeaModel {
     }
 }
 
+public class ListResourceRelationshipsRequest : Tea.TeaModel {
+    public class RelatedResourceFilter : Tea.TeaModel {
+        public var key: String?
+
+        public var matchType: String?
+
+        public var value: [String]?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.key != nil {
+                map["Key"] = self.key!
+            }
+            if self.matchType != nil {
+                map["MatchType"] = self.matchType!
+            }
+            if self.value != nil {
+                map["Value"] = self.value!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("Key") {
+                self.key = dict["Key"] as! String
+            }
+            if dict.keys.contains("MatchType") {
+                self.matchType = dict["MatchType"] as! String
+            }
+            if dict.keys.contains("Value") {
+                self.value = dict["Value"] as! [String]
+            }
+        }
+    }
+    public var maxResults: Int32?
+
+    public var nextToken: String?
+
+    public var regionId: String?
+
+    public var relatedResourceFilter: [ListResourceRelationshipsRequest.RelatedResourceFilter]?
+
+    public var resourceId: String?
+
+    public var resourceType: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.maxResults != nil {
+            map["MaxResults"] = self.maxResults!
+        }
+        if self.nextToken != nil {
+            map["NextToken"] = self.nextToken!
+        }
+        if self.regionId != nil {
+            map["RegionId"] = self.regionId!
+        }
+        if self.relatedResourceFilter != nil {
+            var tmp : [Any] = []
+            for k in self.relatedResourceFilter! {
+                tmp.append(k.toMap())
+            }
+            map["RelatedResourceFilter"] = tmp
+        }
+        if self.resourceId != nil {
+            map["ResourceId"] = self.resourceId!
+        }
+        if self.resourceType != nil {
+            map["ResourceType"] = self.resourceType!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("MaxResults") {
+            self.maxResults = dict["MaxResults"] as! Int32
+        }
+        if dict.keys.contains("NextToken") {
+            self.nextToken = dict["NextToken"] as! String
+        }
+        if dict.keys.contains("RegionId") {
+            self.regionId = dict["RegionId"] as! String
+        }
+        if dict.keys.contains("RelatedResourceFilter") {
+            var tmp : [ListResourceRelationshipsRequest.RelatedResourceFilter] = []
+            for v in dict["RelatedResourceFilter"] as! [Any] {
+                var model = ListResourceRelationshipsRequest.RelatedResourceFilter()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.relatedResourceFilter = tmp
+        }
+        if dict.keys.contains("ResourceId") {
+            self.resourceId = dict["ResourceId"] as! String
+        }
+        if dict.keys.contains("ResourceType") {
+            self.resourceType = dict["ResourceType"] as! String
+        }
+    }
+}
+
+public class ListResourceRelationshipsResponseBody : Tea.TeaModel {
+    public class ResourceRelationships : Tea.TeaModel {
+        public var regionId: String?
+
+        public var relatedResourceId: String?
+
+        public var relatedResourceRegionId: String?
+
+        public var relatedResourceType: String?
+
+        public var resourceId: String?
+
+        public var resourceType: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.regionId != nil {
+                map["RegionId"] = self.regionId!
+            }
+            if self.relatedResourceId != nil {
+                map["RelatedResourceId"] = self.relatedResourceId!
+            }
+            if self.relatedResourceRegionId != nil {
+                map["RelatedResourceRegionId"] = self.relatedResourceRegionId!
+            }
+            if self.relatedResourceType != nil {
+                map["RelatedResourceType"] = self.relatedResourceType!
+            }
+            if self.resourceId != nil {
+                map["ResourceId"] = self.resourceId!
+            }
+            if self.resourceType != nil {
+                map["ResourceType"] = self.resourceType!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("RegionId") {
+                self.regionId = dict["RegionId"] as! String
+            }
+            if dict.keys.contains("RelatedResourceId") {
+                self.relatedResourceId = dict["RelatedResourceId"] as! String
+            }
+            if dict.keys.contains("RelatedResourceRegionId") {
+                self.relatedResourceRegionId = dict["RelatedResourceRegionId"] as! String
+            }
+            if dict.keys.contains("RelatedResourceType") {
+                self.relatedResourceType = dict["RelatedResourceType"] as! String
+            }
+            if dict.keys.contains("ResourceId") {
+                self.resourceId = dict["ResourceId"] as! String
+            }
+            if dict.keys.contains("ResourceType") {
+                self.resourceType = dict["ResourceType"] as! String
+            }
+        }
+    }
+    public var maxResults: Int32?
+
+    public var nextToken: String?
+
+    public var requestId: String?
+
+    public var resourceRelationships: [ListResourceRelationshipsResponseBody.ResourceRelationships]?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.maxResults != nil {
+            map["MaxResults"] = self.maxResults!
+        }
+        if self.nextToken != nil {
+            map["NextToken"] = self.nextToken!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.resourceRelationships != nil {
+            var tmp : [Any] = []
+            for k in self.resourceRelationships! {
+                tmp.append(k.toMap())
+            }
+            map["ResourceRelationships"] = tmp
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("MaxResults") {
+            self.maxResults = dict["MaxResults"] as! Int32
+        }
+        if dict.keys.contains("NextToken") {
+            self.nextToken = dict["NextToken"] as! String
+        }
+        if dict.keys.contains("RequestId") {
+            self.requestId = dict["RequestId"] as! String
+        }
+        if dict.keys.contains("ResourceRelationships") {
+            var tmp : [ListResourceRelationshipsResponseBody.ResourceRelationships] = []
+            for v in dict["ResourceRelationships"] as! [Any] {
+                var model = ListResourceRelationshipsResponseBody.ResourceRelationships()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.resourceRelationships = tmp
+        }
+    }
+}
+
+public class ListResourceRelationshipsResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: ListResourceRelationshipsResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") {
+            var model = ListResourceRelationshipsResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
 public class ListResourceTypesRequest : Tea.TeaModel {
     public var acceptLanguage: String?
 
@@ -3926,13 +4572,13 @@ public class ListResourceTypesResponseBody : Tea.TeaModel {
                 }
             }
         }
-        public var authorized: Bool?
-
         public var codeMapping: ListResourceTypesResponseBody.ResourceTypes.CodeMapping?
 
         public var filterKeys: [String]?
 
         public var productName: String?
+
+        public var relatedResourceTypes: [String]?
 
         public var resourceType: String?
 
@@ -3953,9 +4599,6 @@ public class ListResourceTypesResponseBody : Tea.TeaModel {
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
-            if self.authorized != nil {
-                map["Authorized"] = self.authorized!
-            }
             if self.codeMapping != nil {
                 map["CodeMapping"] = self.codeMapping?.toMap()
             }
@@ -3964,6 +4607,9 @@ public class ListResourceTypesResponseBody : Tea.TeaModel {
             }
             if self.productName != nil {
                 map["ProductName"] = self.productName!
+            }
+            if self.relatedResourceTypes != nil {
+                map["RelatedResourceTypes"] = self.relatedResourceTypes!
             }
             if self.resourceType != nil {
                 map["ResourceType"] = self.resourceType!
@@ -3975,9 +4621,6 @@ public class ListResourceTypesResponseBody : Tea.TeaModel {
         }
 
         public override func fromMap(_ dict: [String: Any]) -> Void {
-            if dict.keys.contains("Authorized") {
-                self.authorized = dict["Authorized"] as! Bool
-            }
             if dict.keys.contains("CodeMapping") {
                 var model = ListResourceTypesResponseBody.ResourceTypes.CodeMapping()
                 model.fromMap(dict["CodeMapping"] as! [String: Any])
@@ -3988,6 +4631,9 @@ public class ListResourceTypesResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("ProductName") {
                 self.productName = dict["ProductName"] as! String
+            }
+            if dict.keys.contains("RelatedResourceTypes") {
+                self.relatedResourceTypes = dict["RelatedResourceTypes"] as! [String]
             }
             if dict.keys.contains("ResourceType") {
                 self.resourceType = dict["ResourceType"] as! String
