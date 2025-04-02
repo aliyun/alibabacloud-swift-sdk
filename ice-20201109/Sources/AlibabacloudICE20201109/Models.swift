@@ -2335,21 +2335,17 @@ public class LiveManifestConfig : Tea.TeaModel {
 
     public var dateTimeInterval: Int32?
 
-    public var manifestName: String?
-
     public var maxVideoBitrate: Int32?
 
     public var minBufferTime: Int32?
 
+    public var minUpdatePeriod: Int32?
+
     public var minVideoBitrate: Int32?
 
-    public var protocol_: String?
-
-    public var segmentNum: Int32?
+    public var segmentCount: Int32?
 
     public var streamOrder: String?
-
-    public var useAudioRenditionGroups: Bool?
 
     public override init() {
         super.init()
@@ -2371,29 +2367,23 @@ public class LiveManifestConfig : Tea.TeaModel {
         if self.dateTimeInterval != nil {
             map["DateTimeInterval"] = self.dateTimeInterval!
         }
-        if self.manifestName != nil {
-            map["ManifestName"] = self.manifestName!
-        }
         if self.maxVideoBitrate != nil {
             map["MaxVideoBitrate"] = self.maxVideoBitrate!
         }
         if self.minBufferTime != nil {
             map["MinBufferTime"] = self.minBufferTime!
         }
+        if self.minUpdatePeriod != nil {
+            map["MinUpdatePeriod"] = self.minUpdatePeriod!
+        }
         if self.minVideoBitrate != nil {
             map["MinVideoBitrate"] = self.minVideoBitrate!
         }
-        if self.protocol_ != nil {
-            map["Protocol"] = self.protocol_!
-        }
-        if self.segmentNum != nil {
-            map["SegmentNum"] = self.segmentNum!
+        if self.segmentCount != nil {
+            map["SegmentCount"] = self.segmentCount!
         }
         if self.streamOrder != nil {
             map["StreamOrder"] = self.streamOrder!
-        }
-        if self.useAudioRenditionGroups != nil {
-            map["UseAudioRenditionGroups"] = self.useAudioRenditionGroups!
         }
         return map
     }
@@ -2405,29 +2395,23 @@ public class LiveManifestConfig : Tea.TeaModel {
         if dict.keys.contains("DateTimeInterval") {
             self.dateTimeInterval = dict["DateTimeInterval"] as! Int32
         }
-        if dict.keys.contains("ManifestName") {
-            self.manifestName = dict["ManifestName"] as! String
-        }
         if dict.keys.contains("MaxVideoBitrate") {
             self.maxVideoBitrate = dict["MaxVideoBitrate"] as! Int32
         }
         if dict.keys.contains("MinBufferTime") {
             self.minBufferTime = dict["MinBufferTime"] as! Int32
         }
+        if dict.keys.contains("MinUpdatePeriod") {
+            self.minUpdatePeriod = dict["MinUpdatePeriod"] as! Int32
+        }
         if dict.keys.contains("MinVideoBitrate") {
             self.minVideoBitrate = dict["MinVideoBitrate"] as! Int32
         }
-        if dict.keys.contains("Protocol") {
-            self.protocol_ = dict["Protocol"] as! String
-        }
-        if dict.keys.contains("SegmentNum") {
-            self.segmentNum = dict["SegmentNum"] as! Int32
+        if dict.keys.contains("SegmentCount") {
+            self.segmentCount = dict["SegmentCount"] as! Int32
         }
         if dict.keys.contains("StreamOrder") {
             self.streamOrder = dict["StreamOrder"] as! String
-        }
-        if dict.keys.contains("UseAudioRenditionGroups") {
-            self.useAudioRenditionGroups = dict["UseAudioRenditionGroups"] as! Bool
         }
     }
 }
@@ -2437,6 +2421,8 @@ public class LivePackagingConfig : Tea.TeaModel {
         public var encryptionMethod: String?
 
         public var IV: String?
+
+        public var rotatePeriod: Int32?
 
         public var systemIds: [String]?
 
@@ -2462,6 +2448,9 @@ public class LivePackagingConfig : Tea.TeaModel {
             if self.IV != nil {
                 map["IV"] = self.IV!
             }
+            if self.rotatePeriod != nil {
+                map["RotatePeriod"] = self.rotatePeriod!
+            }
             if self.systemIds != nil {
                 map["SystemIds"] = self.systemIds!
             }
@@ -2477,6 +2466,9 @@ public class LivePackagingConfig : Tea.TeaModel {
             }
             if dict.keys.contains("IV") {
                 self.IV = dict["IV"] as! String
+            }
+            if dict.keys.contains("RotatePeriod") {
+                self.rotatePeriod = dict["RotatePeriod"] as! Int32
             }
             if dict.keys.contains("SystemIds") {
                 self.systemIds = dict["SystemIds"] as! [String]
@@ -65540,7 +65532,11 @@ public class QueryIProductionJobResponseBody : Tea.TeaModel {
         }
     }
     public class Output : Tea.TeaModel {
+        public var biz: String?
+
         public var media: String?
+
+        public var outputUrl: String?
 
         public var type: String?
 
@@ -65558,8 +65554,14 @@ public class QueryIProductionJobResponseBody : Tea.TeaModel {
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
+            if self.biz != nil {
+                map["Biz"] = self.biz!
+            }
             if self.media != nil {
                 map["Media"] = self.media!
+            }
+            if self.outputUrl != nil {
+                map["OutputUrl"] = self.outputUrl!
             }
             if self.type != nil {
                 map["Type"] = self.type!
@@ -65568,8 +65570,14 @@ public class QueryIProductionJobResponseBody : Tea.TeaModel {
         }
 
         public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("Biz") {
+                self.biz = dict["Biz"] as! String
+            }
             if dict.keys.contains("Media") {
                 self.media = dict["Media"] as! String
+            }
+            if dict.keys.contains("OutputUrl") {
+                self.outputUrl = dict["OutputUrl"] as! String
             }
             if dict.keys.contains("Type") {
                 self.type = dict["Type"] as! String
@@ -65631,6 +65639,8 @@ public class QueryIProductionJobResponseBody : Tea.TeaModel {
 
     public var outputFiles: [String]?
 
+    public var outputMediaIds: [String]?
+
     public var outputUrls: [String]?
 
     public var requestId: String?
@@ -65689,6 +65699,9 @@ public class QueryIProductionJobResponseBody : Tea.TeaModel {
         if self.outputFiles != nil {
             map["OutputFiles"] = self.outputFiles!
         }
+        if self.outputMediaIds != nil {
+            map["OutputMediaIds"] = self.outputMediaIds!
+        }
         if self.outputUrls != nil {
             map["OutputUrls"] = self.outputUrls!
         }
@@ -65744,6 +65757,9 @@ public class QueryIProductionJobResponseBody : Tea.TeaModel {
         }
         if dict.keys.contains("OutputFiles") {
             self.outputFiles = dict["OutputFiles"] as! [String]
+        }
+        if dict.keys.contains("OutputMediaIds") {
+            self.outputMediaIds = dict["OutputMediaIds"] as! [String]
         }
         if dict.keys.contains("OutputUrls") {
             self.outputUrls = dict["OutputUrls"] as! [String]
@@ -80438,7 +80454,11 @@ public class SubmitIProductionJobRequest : Tea.TeaModel {
         }
     }
     public class Output : Tea.TeaModel {
+        public var biz: String?
+
         public var media: String?
+
+        public var outputUrl: String?
 
         public var type: String?
 
@@ -80456,8 +80476,14 @@ public class SubmitIProductionJobRequest : Tea.TeaModel {
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
+            if self.biz != nil {
+                map["Biz"] = self.biz!
+            }
             if self.media != nil {
                 map["Media"] = self.media!
+            }
+            if self.outputUrl != nil {
+                map["OutputUrl"] = self.outputUrl!
             }
             if self.type != nil {
                 map["Type"] = self.type!
@@ -80466,8 +80492,14 @@ public class SubmitIProductionJobRequest : Tea.TeaModel {
         }
 
         public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("Biz") {
+                self.biz = dict["Biz"] as! String
+            }
             if dict.keys.contains("Media") {
                 self.media = dict["Media"] as! String
+            }
+            if dict.keys.contains("OutputUrl") {
+                self.outputUrl = dict["OutputUrl"] as! String
             }
             if dict.keys.contains("Type") {
                 self.type = dict["Type"] as! String
