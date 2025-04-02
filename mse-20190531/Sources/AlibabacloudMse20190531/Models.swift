@@ -41510,6 +41510,8 @@ public class ListClustersResponseBody : Tea.TeaModel {
 
         public var versionCode: String?
 
+        public var versionLifecycle: String?
+
         public var vpcId: String?
 
         public override init() {
@@ -41587,6 +41589,9 @@ public class ListClustersResponseBody : Tea.TeaModel {
             if self.versionCode != nil {
                 map["VersionCode"] = self.versionCode!
             }
+            if self.versionLifecycle != nil {
+                map["VersionLifecycle"] = self.versionLifecycle!
+            }
             if self.vpcId != nil {
                 map["VpcId"] = self.vpcId!
             }
@@ -41655,6 +41660,9 @@ public class ListClustersResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("VersionCode") {
                 self.versionCode = dict["VersionCode"] as! String
+            }
+            if dict.keys.contains("VersionLifecycle") {
+                self.versionLifecycle = dict["VersionLifecycle"] as! String
             }
             if dict.keys.contains("VpcId") {
                 self.vpcId = dict["VpcId"] as! String
@@ -44217,6 +44225,67 @@ public class ListGatewayResponseBody : Tea.TeaModel {
                     }
                 }
             }
+            public class GatewayEntry : Tea.TeaModel {
+                public var entryDomain: String?
+
+                public var httpPorts: [Int32]?
+
+                public var httpsPorts: [Int32]?
+
+                public var ipList: [String]?
+
+                public var netType: String?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.entryDomain != nil {
+                        map["EntryDomain"] = self.entryDomain!
+                    }
+                    if self.httpPorts != nil {
+                        map["HttpPorts"] = self.httpPorts!
+                    }
+                    if self.httpsPorts != nil {
+                        map["HttpsPorts"] = self.httpsPorts!
+                    }
+                    if self.ipList != nil {
+                        map["IpList"] = self.ipList!
+                    }
+                    if self.netType != nil {
+                        map["NetType"] = self.netType!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any]) -> Void {
+                    if dict.keys.contains("EntryDomain") {
+                        self.entryDomain = dict["EntryDomain"] as! String
+                    }
+                    if dict.keys.contains("HttpPorts") {
+                        self.httpPorts = dict["HttpPorts"] as! [Int32]
+                    }
+                    if dict.keys.contains("HttpsPorts") {
+                        self.httpsPorts = dict["HttpsPorts"] as! [Int32]
+                    }
+                    if dict.keys.contains("IpList") {
+                        self.ipList = dict["IpList"] as! [String]
+                    }
+                    if dict.keys.contains("NetType") {
+                        self.netType = dict["NetType"] as! String
+                    }
+                }
+            }
             public class InitConfig : Tea.TeaModel {
                 public var enableWaf: Bool?
 
@@ -44499,6 +44568,8 @@ public class ListGatewayResponseBody : Tea.TeaModel {
 
             public var endDate: String?
 
+            public var gatewayEntry: [ListGatewayResponseBody.Data.Result.GatewayEntry]?
+
             public var gatewayType: String?
 
             public var gatewayUniqueId: String?
@@ -44555,6 +44626,8 @@ public class ListGatewayResponseBody : Tea.TeaModel {
 
             public var upgrade: Bool?
 
+            public var versionLifecycle: String?
+
             public var vpcId: String?
 
             public var vswitch2: String?
@@ -44608,6 +44681,13 @@ public class ListGatewayResponseBody : Tea.TeaModel {
                 }
                 if self.endDate != nil {
                     map["EndDate"] = self.endDate!
+                }
+                if self.gatewayEntry != nil {
+                    var tmp : [Any] = []
+                    for k in self.gatewayEntry! {
+                        tmp.append(k.toMap())
+                    }
+                    map["GatewayEntry"] = tmp
                 }
                 if self.gatewayType != nil {
                     map["GatewayType"] = self.gatewayType!
@@ -44701,6 +44781,9 @@ public class ListGatewayResponseBody : Tea.TeaModel {
                 if self.upgrade != nil {
                     map["Upgrade"] = self.upgrade!
                 }
+                if self.versionLifecycle != nil {
+                    map["VersionLifecycle"] = self.versionLifecycle!
+                }
                 if self.vpcId != nil {
                     map["VpcId"] = self.vpcId!
                 }
@@ -44745,6 +44828,17 @@ public class ListGatewayResponseBody : Tea.TeaModel {
                 }
                 if dict.keys.contains("EndDate") {
                     self.endDate = dict["EndDate"] as! String
+                }
+                if dict.keys.contains("GatewayEntry") {
+                    var tmp : [ListGatewayResponseBody.Data.Result.GatewayEntry] = []
+                    for v in dict["GatewayEntry"] as! [Any] {
+                        var model = ListGatewayResponseBody.Data.Result.GatewayEntry()
+                        if v != nil {
+                            model.fromMap(v as! [String: Any])
+                        }
+                        tmp.append(model)
+                    }
+                    self.gatewayEntry = tmp
                 }
                 if dict.keys.contains("GatewayType") {
                     self.gatewayType = dict["GatewayType"] as! String
@@ -44849,6 +44943,9 @@ public class ListGatewayResponseBody : Tea.TeaModel {
                 }
                 if dict.keys.contains("Upgrade") {
                     self.upgrade = dict["Upgrade"] as! Bool
+                }
+                if dict.keys.contains("VersionLifecycle") {
+                    self.versionLifecycle = dict["VersionLifecycle"] as! String
                 }
                 if dict.keys.contains("VpcId") {
                     self.vpcId = dict["VpcId"] as! String
@@ -59902,6 +59999,8 @@ public class QueryClusterDetailResponseBody : Tea.TeaModel {
 
         public var vSwitchId: String?
 
+        public var versionLifecycle: String?
+
         public var vpcId: String?
 
         public override init() {
@@ -60030,6 +60129,9 @@ public class QueryClusterDetailResponseBody : Tea.TeaModel {
             if self.vSwitchId != nil {
                 map["VSwitchId"] = self.vSwitchId!
             }
+            if self.versionLifecycle != nil {
+                map["VersionLifecycle"] = self.versionLifecycle!
+            }
             if self.vpcId != nil {
                 map["VpcId"] = self.vpcId!
             }
@@ -60152,6 +60254,9 @@ public class QueryClusterDetailResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("VSwitchId") {
                 self.vSwitchId = dict["VSwitchId"] as! String
+            }
+            if dict.keys.contains("VersionLifecycle") {
+                self.versionLifecycle = dict["VersionLifecycle"] as! String
             }
             if dict.keys.contains("VpcId") {
                 self.vpcId = dict["VpcId"] as! String
@@ -60778,6 +60883,8 @@ public class QueryClusterInfoResponseBody : Tea.TeaModel {
 
         public var versionCode: String?
 
+        public var versionLifecycle: String?
+
         public var vpcId: String?
 
         public override init() {
@@ -60925,6 +61032,9 @@ public class QueryClusterInfoResponseBody : Tea.TeaModel {
             if self.versionCode != nil {
                 map["VersionCode"] = self.versionCode!
             }
+            if self.versionLifecycle != nil {
+                map["VersionLifecycle"] = self.versionLifecycle!
+            }
             if self.vpcId != nil {
                 map["VpcId"] = self.vpcId!
             }
@@ -61067,6 +61177,9 @@ public class QueryClusterInfoResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("VersionCode") {
                 self.versionCode = dict["VersionCode"] as! String
+            }
+            if dict.keys.contains("VersionLifecycle") {
+                self.versionLifecycle = dict["VersionLifecycle"] as! String
             }
             if dict.keys.contains("VpcId") {
                 self.vpcId = dict["VpcId"] as! String
