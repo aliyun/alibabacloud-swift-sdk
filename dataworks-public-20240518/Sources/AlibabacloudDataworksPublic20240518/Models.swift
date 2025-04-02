@@ -40315,6 +40315,8 @@ public class ListNodesResponseBody : Tea.TeaModel {
                 }
             }
             public class RuntimeResource : Tea.TeaModel {
+                public var resourceGroup: String?
+
                 public var resourceGroupId: String?
 
                 public override init() {
@@ -40331,6 +40333,9 @@ public class ListNodesResponseBody : Tea.TeaModel {
 
                 public override func toMap() -> [String : Any] {
                     var map = super.toMap()
+                    if self.resourceGroup != nil {
+                        map["ResourceGroup"] = self.resourceGroup!
+                    }
                     if self.resourceGroupId != nil {
                         map["ResourceGroupId"] = self.resourceGroupId!
                     }
@@ -40338,6 +40343,9 @@ public class ListNodesResponseBody : Tea.TeaModel {
                 }
 
                 public override func fromMap(_ dict: [String: Any]) -> Void {
+                    if dict.keys.contains("ResourceGroup") {
+                        self.resourceGroup = dict["ResourceGroup"] as! String
+                    }
                     if dict.keys.contains("ResourceGroupId") {
                         self.resourceGroupId = dict["ResourceGroupId"] as! String
                     }
