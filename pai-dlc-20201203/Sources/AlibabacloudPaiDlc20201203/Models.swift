@@ -3144,6 +3144,8 @@ public class LogInfo : Tea.TeaModel {
 
     public var id: String?
 
+    public var isTruncated: Bool?
+
     public var podId: String?
 
     public var podUid: String?
@@ -3172,6 +3174,9 @@ public class LogInfo : Tea.TeaModel {
         if self.id != nil {
             map["Id"] = self.id!
         }
+        if self.isTruncated != nil {
+            map["IsTruncated"] = self.isTruncated!
+        }
         if self.podId != nil {
             map["PodId"] = self.podId!
         }
@@ -3193,6 +3198,9 @@ public class LogInfo : Tea.TeaModel {
         }
         if dict.keys.contains("Id") {
             self.id = dict["Id"] as! String
+        }
+        if dict.keys.contains("IsTruncated") {
+            self.isTruncated = dict["IsTruncated"] as! Bool
         }
         if dict.keys.contains("PodId") {
             self.podId = dict["PodId"] as! String
@@ -3346,11 +3354,15 @@ public class PodItem : Tea.TeaModel {
 
     public var ip: String?
 
+    public var nodeName: String?
+
     public var podId: String?
 
     public var podUid: String?
 
     public var status: String?
+
+    public var subStatus: String?
 
     public var type: String?
 
@@ -3387,6 +3399,9 @@ public class PodItem : Tea.TeaModel {
         if self.ip != nil {
             map["Ip"] = self.ip!
         }
+        if self.nodeName != nil {
+            map["NodeName"] = self.nodeName!
+        }
         if self.podId != nil {
             map["PodId"] = self.podId!
         }
@@ -3395,6 +3410,9 @@ public class PodItem : Tea.TeaModel {
         }
         if self.status != nil {
             map["Status"] = self.status!
+        }
+        if self.subStatus != nil {
+            map["SubStatus"] = self.subStatus!
         }
         if self.type != nil {
             map["Type"] = self.type!
@@ -3426,6 +3444,9 @@ public class PodItem : Tea.TeaModel {
         if dict.keys.contains("Ip") {
             self.ip = dict["Ip"] as! String
         }
+        if dict.keys.contains("NodeName") {
+            self.nodeName = dict["NodeName"] as! String
+        }
         if dict.keys.contains("PodId") {
             self.podId = dict["PodId"] as! String
         }
@@ -3434,6 +3455,9 @@ public class PodItem : Tea.TeaModel {
         }
         if dict.keys.contains("Status") {
             self.status = dict["Status"] as! String
+        }
+        if dict.keys.contains("SubStatus") {
+            self.subStatus = dict["SubStatus"] as! String
         }
         if dict.keys.contains("Type") {
             self.type = dict["Type"] as! String
@@ -3964,6 +3988,93 @@ public class SanityCheckResultItem : Tea.TeaModel {
         }
         if dict.keys.contains("Status") {
             self.status = dict["Status"] as! String
+        }
+    }
+}
+
+public class SeccompProfile : Tea.TeaModel {
+    public var localhostProfile: String?
+
+    public var type: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.localhostProfile != nil {
+            map["LocalhostProfile"] = self.localhostProfile!
+        }
+        if self.type != nil {
+            map["Type"] = self.type!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("LocalhostProfile") {
+            self.localhostProfile = dict["LocalhostProfile"] as! String
+        }
+        if dict.keys.contains("Type") {
+            self.type = dict["Type"] as! String
+        }
+    }
+}
+
+public class SecurityContext : Tea.TeaModel {
+    public var runAsGroup: Int64?
+
+    public var runAsUser: Int64?
+
+    public var seccompProfile: SeccompProfile?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.seccompProfile?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.runAsGroup != nil {
+            map["RunAsGroup"] = self.runAsGroup!
+        }
+        if self.runAsUser != nil {
+            map["RunAsUser"] = self.runAsUser!
+        }
+        if self.seccompProfile != nil {
+            map["SeccompProfile"] = self.seccompProfile?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("RunAsGroup") {
+            self.runAsGroup = dict["RunAsGroup"] as! Int64
+        }
+        if dict.keys.contains("RunAsUser") {
+            self.runAsUser = dict["RunAsUser"] as! Int64
+        }
+        if dict.keys.contains("SeccompProfile") {
+            var model = SeccompProfile()
+            model.fromMap(dict["SeccompProfile"] as! [String: Any])
+            self.seccompProfile = model
         }
     }
 }
@@ -4835,6 +4946,8 @@ public class CreateJobRequest : Tea.TeaModel {
 
         public var dataSourceVersion: String?
 
+        public var mountAccess: String?
+
         public var mountPath: String?
 
         public var options: String?
@@ -4861,6 +4974,9 @@ public class CreateJobRequest : Tea.TeaModel {
             if self.dataSourceVersion != nil {
                 map["DataSourceVersion"] = self.dataSourceVersion!
             }
+            if self.mountAccess != nil {
+                map["MountAccess"] = self.mountAccess!
+            }
             if self.mountPath != nil {
                 map["MountPath"] = self.mountPath!
             }
@@ -4879,6 +4995,9 @@ public class CreateJobRequest : Tea.TeaModel {
             }
             if dict.keys.contains("DataSourceVersion") {
                 self.dataSourceVersion = dict["DataSourceVersion"] as! String
+            }
+            if dict.keys.contains("MountAccess") {
+                self.mountAccess = dict["MountAccess"] as! String
             }
             if dict.keys.contains("MountPath") {
                 self.mountPath = dict["MountPath"] as! String

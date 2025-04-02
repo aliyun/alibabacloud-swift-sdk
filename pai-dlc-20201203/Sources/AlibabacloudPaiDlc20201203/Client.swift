@@ -10,12 +10,9 @@ open class Client : AlibabacloudOpenApi.Client {
         try super.init(config)
         self._endpointRule = "regional"
         self._endpointMap = [
-            "ap-northeast-1": "pai-dlc.aliyuncs.com",
             "ap-northeast-2-pop": "pai-dlc.aliyuncs.com",
             "ap-south-1": "pai-dlc.aliyuncs.com",
             "ap-southeast-2": "pai-dlc.aliyuncs.com",
-            "ap-southeast-3": "pai-dlc.aliyuncs.com",
-            "ap-southeast-5": "pai-dlc.aliyuncs.com",
             "cn-beijing-finance-1": "pai-dlc.aliyuncs.com",
             "cn-beijing-finance-pop": "pai-dlc.aliyuncs.com",
             "cn-beijing-gov-1": "pai-dlc.aliyuncs.com",
@@ -46,7 +43,6 @@ open class Client : AlibabacloudOpenApi.Client {
             "cn-shenzhen-st4-d01": "pai-dlc.aliyuncs.com",
             "cn-shenzhen-su18-b01": "pai-dlc.aliyuncs.com",
             "cn-wuhan": "pai-dlc.aliyuncs.com",
-            "cn-wulanchabu": "pai-dlc.aliyuncs.com",
             "cn-yushanfang": "pai-dlc.aliyuncs.com",
             "cn-zhangbei": "pai-dlc.aliyuncs.com",
             "cn-zhangbei-na61-b01": "pai-dlc.aliyuncs.com",
@@ -56,9 +52,7 @@ open class Client : AlibabacloudOpenApi.Client {
             "eu-west-1": "pai-dlc.aliyuncs.com",
             "eu-west-1-oxs": "pai-dlc.aliyuncs.com",
             "me-east-1": "pai-dlc.aliyuncs.com",
-            "rus-west-1-pop": "pai-dlc.aliyuncs.com",
-            "us-east-1": "pai-dlc.aliyuncs.com",
-            "us-west-1": "pai-dlc.aliyuncs.com"
+            "rus-west-1-pop": "pai-dlc.aliyuncs.com"
         ]
         try checkConfig(config as! AlibabacloudOpenApi.Config)
         self._endpoint = try getEndpoint("pai-dlc", self._regionId ?? "", self._endpointRule ?? "", self._network ?? "", self._suffix ?? "", self._endpointMap ?? [:], self._endpoint ?? "")
