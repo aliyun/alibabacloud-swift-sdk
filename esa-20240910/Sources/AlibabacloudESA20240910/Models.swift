@@ -24460,6 +24460,899 @@ public class DescribeRatePlanInstanceStatusResponse : Tea.TeaModel {
     }
 }
 
+public class DescribeSiteTimeSeriesDataRequest : Tea.TeaModel {
+    public class Fields : Tea.TeaModel {
+        public var dimension: [String]?
+
+        public var fieldName: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.dimension != nil {
+                map["Dimension"] = self.dimension!
+            }
+            if self.fieldName != nil {
+                map["FieldName"] = self.fieldName!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("Dimension") {
+                self.dimension = dict["Dimension"] as! [String]
+            }
+            if dict.keys.contains("FieldName") {
+                self.fieldName = dict["FieldName"] as! String
+            }
+        }
+    }
+    public var endTime: String?
+
+    public var fields: [DescribeSiteTimeSeriesDataRequest.Fields]?
+
+    public var interval: String?
+
+    public var siteId: String?
+
+    public var startTime: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.endTime != nil {
+            map["EndTime"] = self.endTime!
+        }
+        if self.fields != nil {
+            var tmp : [Any] = []
+            for k in self.fields! {
+                tmp.append(k.toMap())
+            }
+            map["Fields"] = tmp
+        }
+        if self.interval != nil {
+            map["Interval"] = self.interval!
+        }
+        if self.siteId != nil {
+            map["SiteId"] = self.siteId!
+        }
+        if self.startTime != nil {
+            map["StartTime"] = self.startTime!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("EndTime") {
+            self.endTime = dict["EndTime"] as! String
+        }
+        if dict.keys.contains("Fields") {
+            var tmp : [DescribeSiteTimeSeriesDataRequest.Fields] = []
+            for v in dict["Fields"] as! [Any] {
+                var model = DescribeSiteTimeSeriesDataRequest.Fields()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.fields = tmp
+        }
+        if dict.keys.contains("Interval") {
+            self.interval = dict["Interval"] as! String
+        }
+        if dict.keys.contains("SiteId") {
+            self.siteId = dict["SiteId"] as! String
+        }
+        if dict.keys.contains("StartTime") {
+            self.startTime = dict["StartTime"] as! String
+        }
+    }
+}
+
+public class DescribeSiteTimeSeriesDataShrinkRequest : Tea.TeaModel {
+    public var endTime: String?
+
+    public var fieldsShrink: String?
+
+    public var interval: String?
+
+    public var siteId: String?
+
+    public var startTime: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.endTime != nil {
+            map["EndTime"] = self.endTime!
+        }
+        if self.fieldsShrink != nil {
+            map["Fields"] = self.fieldsShrink!
+        }
+        if self.interval != nil {
+            map["Interval"] = self.interval!
+        }
+        if self.siteId != nil {
+            map["SiteId"] = self.siteId!
+        }
+        if self.startTime != nil {
+            map["StartTime"] = self.startTime!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("EndTime") {
+            self.endTime = dict["EndTime"] as! String
+        }
+        if dict.keys.contains("Fields") {
+            self.fieldsShrink = dict["Fields"] as! String
+        }
+        if dict.keys.contains("Interval") {
+            self.interval = dict["Interval"] as! String
+        }
+        if dict.keys.contains("SiteId") {
+            self.siteId = dict["SiteId"] as! String
+        }
+        if dict.keys.contains("StartTime") {
+            self.startTime = dict["StartTime"] as! String
+        }
+    }
+}
+
+public class DescribeSiteTimeSeriesDataResponseBody : Tea.TeaModel {
+    public class Data : Tea.TeaModel {
+        public class DetailData : Tea.TeaModel {
+            public var timeStamp: String?
+
+            public var value: Any?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.timeStamp != nil {
+                    map["TimeStamp"] = self.timeStamp!
+                }
+                if self.value != nil {
+                    map["Value"] = self.value!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("TimeStamp") {
+                    self.timeStamp = dict["TimeStamp"] as! String
+                }
+                if dict.keys.contains("Value") {
+                    self.value = dict["Value"] as! Any
+                }
+            }
+        }
+        public var detailData: [DescribeSiteTimeSeriesDataResponseBody.Data.DetailData]?
+
+        public var dimensionName: String?
+
+        public var dimensionValue: String?
+
+        public var fieldName: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.detailData != nil {
+                var tmp : [Any] = []
+                for k in self.detailData! {
+                    tmp.append(k.toMap())
+                }
+                map["DetailData"] = tmp
+            }
+            if self.dimensionName != nil {
+                map["DimensionName"] = self.dimensionName!
+            }
+            if self.dimensionValue != nil {
+                map["DimensionValue"] = self.dimensionValue!
+            }
+            if self.fieldName != nil {
+                map["FieldName"] = self.fieldName!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("DetailData") {
+                var tmp : [DescribeSiteTimeSeriesDataResponseBody.Data.DetailData] = []
+                for v in dict["DetailData"] as! [Any] {
+                    var model = DescribeSiteTimeSeriesDataResponseBody.Data.DetailData()
+                    if v != nil {
+                        model.fromMap(v as! [String: Any])
+                    }
+                    tmp.append(model)
+                }
+                self.detailData = tmp
+            }
+            if dict.keys.contains("DimensionName") {
+                self.dimensionName = dict["DimensionName"] as! String
+            }
+            if dict.keys.contains("DimensionValue") {
+                self.dimensionValue = dict["DimensionValue"] as! String
+            }
+            if dict.keys.contains("FieldName") {
+                self.fieldName = dict["FieldName"] as! String
+            }
+        }
+    }
+    public class SummarizedData : Tea.TeaModel {
+        public var aggMethod: String?
+
+        public var dimensionName: String?
+
+        public var dimensionValue: String?
+
+        public var fieldName: String?
+
+        public var value: Any?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.aggMethod != nil {
+                map["AggMethod"] = self.aggMethod!
+            }
+            if self.dimensionName != nil {
+                map["DimensionName"] = self.dimensionName!
+            }
+            if self.dimensionValue != nil {
+                map["DimensionValue"] = self.dimensionValue!
+            }
+            if self.fieldName != nil {
+                map["FieldName"] = self.fieldName!
+            }
+            if self.value != nil {
+                map["Value"] = self.value!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("AggMethod") {
+                self.aggMethod = dict["AggMethod"] as! String
+            }
+            if dict.keys.contains("DimensionName") {
+                self.dimensionName = dict["DimensionName"] as! String
+            }
+            if dict.keys.contains("DimensionValue") {
+                self.dimensionValue = dict["DimensionValue"] as! String
+            }
+            if dict.keys.contains("FieldName") {
+                self.fieldName = dict["FieldName"] as! String
+            }
+            if dict.keys.contains("Value") {
+                self.value = dict["Value"] as! Any
+            }
+        }
+    }
+    public var data: [DescribeSiteTimeSeriesDataResponseBody.Data]?
+
+    public var endTime: String?
+
+    public var interval: Int64?
+
+    public var requestId: String?
+
+    public var samplingRate: Double?
+
+    public var startTime: String?
+
+    public var summarizedData: [DescribeSiteTimeSeriesDataResponseBody.SummarizedData]?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.data != nil {
+            var tmp : [Any] = []
+            for k in self.data! {
+                tmp.append(k.toMap())
+            }
+            map["Data"] = tmp
+        }
+        if self.endTime != nil {
+            map["EndTime"] = self.endTime!
+        }
+        if self.interval != nil {
+            map["Interval"] = self.interval!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.samplingRate != nil {
+            map["SamplingRate"] = self.samplingRate!
+        }
+        if self.startTime != nil {
+            map["StartTime"] = self.startTime!
+        }
+        if self.summarizedData != nil {
+            var tmp : [Any] = []
+            for k in self.summarizedData! {
+                tmp.append(k.toMap())
+            }
+            map["SummarizedData"] = tmp
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("Data") {
+            var tmp : [DescribeSiteTimeSeriesDataResponseBody.Data] = []
+            for v in dict["Data"] as! [Any] {
+                var model = DescribeSiteTimeSeriesDataResponseBody.Data()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.data = tmp
+        }
+        if dict.keys.contains("EndTime") {
+            self.endTime = dict["EndTime"] as! String
+        }
+        if dict.keys.contains("Interval") {
+            self.interval = dict["Interval"] as! Int64
+        }
+        if dict.keys.contains("RequestId") {
+            self.requestId = dict["RequestId"] as! String
+        }
+        if dict.keys.contains("SamplingRate") {
+            self.samplingRate = dict["SamplingRate"] as! Double
+        }
+        if dict.keys.contains("StartTime") {
+            self.startTime = dict["StartTime"] as! String
+        }
+        if dict.keys.contains("SummarizedData") {
+            var tmp : [DescribeSiteTimeSeriesDataResponseBody.SummarizedData] = []
+            for v in dict["SummarizedData"] as! [Any] {
+                var model = DescribeSiteTimeSeriesDataResponseBody.SummarizedData()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.summarizedData = tmp
+        }
+    }
+}
+
+public class DescribeSiteTimeSeriesDataResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: DescribeSiteTimeSeriesDataResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") {
+            var model = DescribeSiteTimeSeriesDataResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
+public class DescribeSiteTopDataRequest : Tea.TeaModel {
+    public class Fields : Tea.TeaModel {
+        public var dimension: [String]?
+
+        public var fieldName: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.dimension != nil {
+                map["Dimension"] = self.dimension!
+            }
+            if self.fieldName != nil {
+                map["FieldName"] = self.fieldName!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("Dimension") {
+                self.dimension = dict["Dimension"] as! [String]
+            }
+            if dict.keys.contains("FieldName") {
+                self.fieldName = dict["FieldName"] as! String
+            }
+        }
+    }
+    public var endTime: String?
+
+    public var fields: [DescribeSiteTopDataRequest.Fields]?
+
+    public var interval: String?
+
+    public var limit: String?
+
+    public var siteId: String?
+
+    public var startTime: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.endTime != nil {
+            map["EndTime"] = self.endTime!
+        }
+        if self.fields != nil {
+            var tmp : [Any] = []
+            for k in self.fields! {
+                tmp.append(k.toMap())
+            }
+            map["Fields"] = tmp
+        }
+        if self.interval != nil {
+            map["Interval"] = self.interval!
+        }
+        if self.limit != nil {
+            map["Limit"] = self.limit!
+        }
+        if self.siteId != nil {
+            map["SiteId"] = self.siteId!
+        }
+        if self.startTime != nil {
+            map["StartTime"] = self.startTime!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("EndTime") {
+            self.endTime = dict["EndTime"] as! String
+        }
+        if dict.keys.contains("Fields") {
+            var tmp : [DescribeSiteTopDataRequest.Fields] = []
+            for v in dict["Fields"] as! [Any] {
+                var model = DescribeSiteTopDataRequest.Fields()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.fields = tmp
+        }
+        if dict.keys.contains("Interval") {
+            self.interval = dict["Interval"] as! String
+        }
+        if dict.keys.contains("Limit") {
+            self.limit = dict["Limit"] as! String
+        }
+        if dict.keys.contains("SiteId") {
+            self.siteId = dict["SiteId"] as! String
+        }
+        if dict.keys.contains("StartTime") {
+            self.startTime = dict["StartTime"] as! String
+        }
+    }
+}
+
+public class DescribeSiteTopDataShrinkRequest : Tea.TeaModel {
+    public var endTime: String?
+
+    public var fieldsShrink: String?
+
+    public var interval: String?
+
+    public var limit: String?
+
+    public var siteId: String?
+
+    public var startTime: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.endTime != nil {
+            map["EndTime"] = self.endTime!
+        }
+        if self.fieldsShrink != nil {
+            map["Fields"] = self.fieldsShrink!
+        }
+        if self.interval != nil {
+            map["Interval"] = self.interval!
+        }
+        if self.limit != nil {
+            map["Limit"] = self.limit!
+        }
+        if self.siteId != nil {
+            map["SiteId"] = self.siteId!
+        }
+        if self.startTime != nil {
+            map["StartTime"] = self.startTime!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("EndTime") {
+            self.endTime = dict["EndTime"] as! String
+        }
+        if dict.keys.contains("Fields") {
+            self.fieldsShrink = dict["Fields"] as! String
+        }
+        if dict.keys.contains("Interval") {
+            self.interval = dict["Interval"] as! String
+        }
+        if dict.keys.contains("Limit") {
+            self.limit = dict["Limit"] as! String
+        }
+        if dict.keys.contains("SiteId") {
+            self.siteId = dict["SiteId"] as! String
+        }
+        if dict.keys.contains("StartTime") {
+            self.startTime = dict["StartTime"] as! String
+        }
+    }
+}
+
+public class DescribeSiteTopDataResponseBody : Tea.TeaModel {
+    public class Data : Tea.TeaModel {
+        public class DetailData : Tea.TeaModel {
+            public var dimensionValue: String?
+
+            public var value: Any?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.dimensionValue != nil {
+                    map["DimensionValue"] = self.dimensionValue!
+                }
+                if self.value != nil {
+                    map["Value"] = self.value!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("DimensionValue") {
+                    self.dimensionValue = dict["DimensionValue"] as! String
+                }
+                if dict.keys.contains("Value") {
+                    self.value = dict["Value"] as! Any
+                }
+            }
+        }
+        public var detailData: [DescribeSiteTopDataResponseBody.Data.DetailData]?
+
+        public var dimensionName: String?
+
+        public var fieldName: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.detailData != nil {
+                var tmp : [Any] = []
+                for k in self.detailData! {
+                    tmp.append(k.toMap())
+                }
+                map["DetailData"] = tmp
+            }
+            if self.dimensionName != nil {
+                map["DimensionName"] = self.dimensionName!
+            }
+            if self.fieldName != nil {
+                map["FieldName"] = self.fieldName!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("DetailData") {
+                var tmp : [DescribeSiteTopDataResponseBody.Data.DetailData] = []
+                for v in dict["DetailData"] as! [Any] {
+                    var model = DescribeSiteTopDataResponseBody.Data.DetailData()
+                    if v != nil {
+                        model.fromMap(v as! [String: Any])
+                    }
+                    tmp.append(model)
+                }
+                self.detailData = tmp
+            }
+            if dict.keys.contains("DimensionName") {
+                self.dimensionName = dict["DimensionName"] as! String
+            }
+            if dict.keys.contains("FieldName") {
+                self.fieldName = dict["FieldName"] as! String
+            }
+        }
+    }
+    public var data: [DescribeSiteTopDataResponseBody.Data]?
+
+    public var endTime: String?
+
+    public var requestId: String?
+
+    public var samplingRate: Double?
+
+    public var startTime: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.data != nil {
+            var tmp : [Any] = []
+            for k in self.data! {
+                tmp.append(k.toMap())
+            }
+            map["Data"] = tmp
+        }
+        if self.endTime != nil {
+            map["EndTime"] = self.endTime!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.samplingRate != nil {
+            map["SamplingRate"] = self.samplingRate!
+        }
+        if self.startTime != nil {
+            map["StartTime"] = self.startTime!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("Data") {
+            var tmp : [DescribeSiteTopDataResponseBody.Data] = []
+            for v in dict["Data"] as! [Any] {
+                var model = DescribeSiteTopDataResponseBody.Data()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.data = tmp
+        }
+        if dict.keys.contains("EndTime") {
+            self.endTime = dict["EndTime"] as! String
+        }
+        if dict.keys.contains("RequestId") {
+            self.requestId = dict["RequestId"] as! String
+        }
+        if dict.keys.contains("SamplingRate") {
+            self.samplingRate = dict["SamplingRate"] as! Double
+        }
+        if dict.keys.contains("StartTime") {
+            self.startTime = dict["StartTime"] as! String
+        }
+    }
+}
+
+public class DescribeSiteTopDataResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: DescribeSiteTopDataResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") {
+            var model = DescribeSiteTopDataResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
 public class DisableCustomScenePolicyRequest : Tea.TeaModel {
     public var policyId: Int64?
 
