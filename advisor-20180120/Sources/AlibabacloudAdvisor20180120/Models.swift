@@ -1833,6 +1833,8 @@ public class DescribeAdvisorChecksFoPagesResponseBody : Tea.TeaModel {
 
             public var product: String?
 
+            public var riskLevel: Int64?
+
             public var source: String?
 
             public var status: String?
@@ -1881,6 +1883,9 @@ public class DescribeAdvisorChecksFoPagesResponseBody : Tea.TeaModel {
                 if self.product != nil {
                     map["Product"] = self.product!
                 }
+                if self.riskLevel != nil {
+                    map["RiskLevel"] = self.riskLevel!
+                }
                 if self.source != nil {
                     map["Source"] = self.source!
                 }
@@ -1923,6 +1928,9 @@ public class DescribeAdvisorChecksFoPagesResponseBody : Tea.TeaModel {
                 }
                 if dict.keys.contains("Product") {
                     self.product = dict["Product"] as! String
+                }
+                if dict.keys.contains("RiskLevel") {
+                    self.riskLevel = dict["RiskLevel"] as! Int64
                 }
                 if dict.keys.contains("Source") {
                     self.source = dict["Source"] as! String
