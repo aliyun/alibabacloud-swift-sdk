@@ -23213,6 +23213,8 @@ public class CreateWorkspaceDocShrinkRequest : Tea.TeaModel {
 }
 
 public class CreateWorkspaceDocResponseBody : Tea.TeaModel {
+    public var dentryUuid: String?
+
     public var docKey: String?
 
     public var nodeId: String?
@@ -23220,6 +23222,10 @@ public class CreateWorkspaceDocResponseBody : Tea.TeaModel {
     public var requestId: String?
 
     public var url: String?
+
+    public var vendorRequestId: String?
+
+    public var vendorType: String?
 
     public var workspaceId: String?
 
@@ -23237,6 +23243,9 @@ public class CreateWorkspaceDocResponseBody : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.dentryUuid != nil {
+            map["dentryUuid"] = self.dentryUuid!
+        }
         if self.docKey != nil {
             map["docKey"] = self.docKey!
         }
@@ -23249,6 +23258,12 @@ public class CreateWorkspaceDocResponseBody : Tea.TeaModel {
         if self.url != nil {
             map["url"] = self.url!
         }
+        if self.vendorRequestId != nil {
+            map["vendorRequestId"] = self.vendorRequestId!
+        }
+        if self.vendorType != nil {
+            map["vendorType"] = self.vendorType!
+        }
         if self.workspaceId != nil {
             map["workspaceId"] = self.workspaceId!
         }
@@ -23256,6 +23271,9 @@ public class CreateWorkspaceDocResponseBody : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("dentryUuid") {
+            self.dentryUuid = dict["dentryUuid"] as! String
+        }
         if dict.keys.contains("docKey") {
             self.docKey = dict["docKey"] as! String
         }
@@ -23267,6 +23285,12 @@ public class CreateWorkspaceDocResponseBody : Tea.TeaModel {
         }
         if dict.keys.contains("url") {
             self.url = dict["url"] as! String
+        }
+        if dict.keys.contains("vendorRequestId") {
+            self.vendorRequestId = dict["vendorRequestId"] as! String
+        }
+        if dict.keys.contains("vendorType") {
+            self.vendorType = dict["vendorType"] as! String
         }
         if dict.keys.contains("workspaceId") {
             self.workspaceId = dict["workspaceId"] as! String
