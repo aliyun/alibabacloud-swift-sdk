@@ -1811,6 +1811,51 @@ public class CreateAppResponse : Tea.TeaModel {
 }
 
 public class CreateCloudPhoneNodeRequest : Tea.TeaModel {
+    public class DisplayConfig : Tea.TeaModel {
+        public var dpi: Int32?
+
+        public var fps: Int32?
+
+        public var lockResolution: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.dpi != nil {
+                map["Dpi"] = self.dpi!
+            }
+            if self.fps != nil {
+                map["Fps"] = self.fps!
+            }
+            if self.lockResolution != nil {
+                map["LockResolution"] = self.lockResolution!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("Dpi") {
+                self.dpi = dict["Dpi"] as! Int32
+            }
+            if dict.keys.contains("Fps") {
+                self.fps = dict["Fps"] as! Int32
+            }
+            if dict.keys.contains("LockResolution") {
+                self.lockResolution = dict["LockResolution"] as! String
+            }
+        }
+    }
     public class Tag : Tea.TeaModel {
         public var key: String?
 
@@ -1858,6 +1903,8 @@ public class CreateCloudPhoneNodeRequest : Tea.TeaModel {
 
     public var count: String?
 
+    public var displayConfig: CreateCloudPhoneNodeRequest.DisplayConfig?
+
     public var imageId: String?
 
     public var instanceType: String?
@@ -1894,6 +1941,7 @@ public class CreateCloudPhoneNodeRequest : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
+        try self.displayConfig?.validate()
     }
 
     public override func toMap() -> [String : Any] {
@@ -1912,6 +1960,9 @@ public class CreateCloudPhoneNodeRequest : Tea.TeaModel {
         }
         if self.count != nil {
             map["Count"] = self.count!
+        }
+        if self.displayConfig != nil {
+            map["DisplayConfig"] = self.displayConfig?.toMap()
         }
         if self.imageId != nil {
             map["ImageId"] = self.imageId!
@@ -1975,6 +2026,11 @@ public class CreateCloudPhoneNodeRequest : Tea.TeaModel {
         if dict.keys.contains("Count") {
             self.count = dict["Count"] as! String
         }
+        if dict.keys.contains("DisplayConfig") {
+            var model = CreateCloudPhoneNodeRequest.DisplayConfig()
+            model.fromMap(dict["DisplayConfig"] as! [String: Any])
+            self.displayConfig = model
+        }
         if dict.keys.contains("ImageId") {
             self.imageId = dict["ImageId"] as! String
         }
@@ -2012,6 +2068,229 @@ public class CreateCloudPhoneNodeRequest : Tea.TeaModel {
             var tmp : [CreateCloudPhoneNodeRequest.Tag] = []
             for v in dict["Tag"] as! [Any] {
                 var model = CreateCloudPhoneNodeRequest.Tag()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.tag = tmp
+        }
+        if dict.keys.contains("VSwitchId") {
+            self.vSwitchId = dict["VSwitchId"] as! String
+        }
+    }
+}
+
+public class CreateCloudPhoneNodeShrinkRequest : Tea.TeaModel {
+    public class Tag : Tea.TeaModel {
+        public var key: String?
+
+        public var value: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.key != nil {
+                map["Key"] = self.key!
+            }
+            if self.value != nil {
+                map["Value"] = self.value!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("Key") {
+                self.key = dict["Key"] as! String
+            }
+            if dict.keys.contains("Value") {
+                self.value = dict["Value"] as! String
+            }
+        }
+    }
+    public var autoPay: Bool?
+
+    public var autoRenew: Bool?
+
+    public var bizRegionId: String?
+
+    public var chargeType: String?
+
+    public var count: String?
+
+    public var displayConfigShrink: String?
+
+    public var imageId: String?
+
+    public var instanceType: String?
+
+    public var networkId: String?
+
+    public var nodeName: String?
+
+    public var period: Int32?
+
+    public var periodUnit: String?
+
+    public var phoneCount: Int32?
+
+    public var resolutionHeight: Int32?
+
+    public var resolutionWidth: Int32?
+
+    public var serverShareDataVolume: Int32?
+
+    public var serverType: String?
+
+    public var tag: [CreateCloudPhoneNodeShrinkRequest.Tag]?
+
+    public var vSwitchId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.autoPay != nil {
+            map["AutoPay"] = self.autoPay!
+        }
+        if self.autoRenew != nil {
+            map["AutoRenew"] = self.autoRenew!
+        }
+        if self.bizRegionId != nil {
+            map["BizRegionId"] = self.bizRegionId!
+        }
+        if self.chargeType != nil {
+            map["ChargeType"] = self.chargeType!
+        }
+        if self.count != nil {
+            map["Count"] = self.count!
+        }
+        if self.displayConfigShrink != nil {
+            map["DisplayConfig"] = self.displayConfigShrink!
+        }
+        if self.imageId != nil {
+            map["ImageId"] = self.imageId!
+        }
+        if self.instanceType != nil {
+            map["InstanceType"] = self.instanceType!
+        }
+        if self.networkId != nil {
+            map["NetworkId"] = self.networkId!
+        }
+        if self.nodeName != nil {
+            map["NodeName"] = self.nodeName!
+        }
+        if self.period != nil {
+            map["Period"] = self.period!
+        }
+        if self.periodUnit != nil {
+            map["PeriodUnit"] = self.periodUnit!
+        }
+        if self.phoneCount != nil {
+            map["PhoneCount"] = self.phoneCount!
+        }
+        if self.resolutionHeight != nil {
+            map["ResolutionHeight"] = self.resolutionHeight!
+        }
+        if self.resolutionWidth != nil {
+            map["ResolutionWidth"] = self.resolutionWidth!
+        }
+        if self.serverShareDataVolume != nil {
+            map["ServerShareDataVolume"] = self.serverShareDataVolume!
+        }
+        if self.serverType != nil {
+            map["ServerType"] = self.serverType!
+        }
+        if self.tag != nil {
+            var tmp : [Any] = []
+            for k in self.tag! {
+                tmp.append(k.toMap())
+            }
+            map["Tag"] = tmp
+        }
+        if self.vSwitchId != nil {
+            map["VSwitchId"] = self.vSwitchId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("AutoPay") {
+            self.autoPay = dict["AutoPay"] as! Bool
+        }
+        if dict.keys.contains("AutoRenew") {
+            self.autoRenew = dict["AutoRenew"] as! Bool
+        }
+        if dict.keys.contains("BizRegionId") {
+            self.bizRegionId = dict["BizRegionId"] as! String
+        }
+        if dict.keys.contains("ChargeType") {
+            self.chargeType = dict["ChargeType"] as! String
+        }
+        if dict.keys.contains("Count") {
+            self.count = dict["Count"] as! String
+        }
+        if dict.keys.contains("DisplayConfig") {
+            self.displayConfigShrink = dict["DisplayConfig"] as! String
+        }
+        if dict.keys.contains("ImageId") {
+            self.imageId = dict["ImageId"] as! String
+        }
+        if dict.keys.contains("InstanceType") {
+            self.instanceType = dict["InstanceType"] as! String
+        }
+        if dict.keys.contains("NetworkId") {
+            self.networkId = dict["NetworkId"] as! String
+        }
+        if dict.keys.contains("NodeName") {
+            self.nodeName = dict["NodeName"] as! String
+        }
+        if dict.keys.contains("Period") {
+            self.period = dict["Period"] as! Int32
+        }
+        if dict.keys.contains("PeriodUnit") {
+            self.periodUnit = dict["PeriodUnit"] as! String
+        }
+        if dict.keys.contains("PhoneCount") {
+            self.phoneCount = dict["PhoneCount"] as! Int32
+        }
+        if dict.keys.contains("ResolutionHeight") {
+            self.resolutionHeight = dict["ResolutionHeight"] as! Int32
+        }
+        if dict.keys.contains("ResolutionWidth") {
+            self.resolutionWidth = dict["ResolutionWidth"] as! Int32
+        }
+        if dict.keys.contains("ServerShareDataVolume") {
+            self.serverShareDataVolume = dict["ServerShareDataVolume"] as! Int32
+        }
+        if dict.keys.contains("ServerType") {
+            self.serverType = dict["ServerType"] as! String
+        }
+        if dict.keys.contains("Tag") {
+            var tmp : [CreateCloudPhoneNodeShrinkRequest.Tag] = []
+            for v in dict["Tag"] as! [Any] {
+                var model = CreateCloudPhoneNodeShrinkRequest.Tag()
                 if v != nil {
                     model.fromMap(v as! [String: Any])
                 }
@@ -2632,6 +2911,8 @@ public class CreatePolicyGroupRequest : Tea.TeaModel {
 
     public var policyGroupName: String?
 
+    public var policyType: String?
+
     public var resolutionHeight: Int32?
 
     public var resolutionWidth: Int32?
@@ -2672,6 +2953,9 @@ public class CreatePolicyGroupRequest : Tea.TeaModel {
         if self.policyGroupName != nil {
             map["PolicyGroupName"] = self.policyGroupName!
         }
+        if self.policyType != nil {
+            map["PolicyType"] = self.policyType!
+        }
         if self.resolutionHeight != nil {
             map["ResolutionHeight"] = self.resolutionHeight!
         }
@@ -2705,6 +2989,9 @@ public class CreatePolicyGroupRequest : Tea.TeaModel {
         if dict.keys.contains("PolicyGroupName") {
             self.policyGroupName = dict["PolicyGroupName"] as! String
         }
+        if dict.keys.contains("PolicyType") {
+            self.policyType = dict["PolicyType"] as! String
+        }
         if dict.keys.contains("ResolutionHeight") {
             self.resolutionHeight = dict["ResolutionHeight"] as! Int32
         }
@@ -2728,6 +3015,8 @@ public class CreatePolicyGroupShrinkRequest : Tea.TeaModel {
     public var netRedirectPolicyShrink: String?
 
     public var policyGroupName: String?
+
+    public var policyType: String?
 
     public var resolutionHeight: Int32?
 
@@ -2768,6 +3057,9 @@ public class CreatePolicyGroupShrinkRequest : Tea.TeaModel {
         if self.policyGroupName != nil {
             map["PolicyGroupName"] = self.policyGroupName!
         }
+        if self.policyType != nil {
+            map["PolicyType"] = self.policyType!
+        }
         if self.resolutionHeight != nil {
             map["ResolutionHeight"] = self.resolutionHeight!
         }
@@ -2798,6 +3090,9 @@ public class CreatePolicyGroupShrinkRequest : Tea.TeaModel {
         }
         if dict.keys.contains("PolicyGroupName") {
             self.policyGroupName = dict["PolicyGroupName"] as! String
+        }
+        if dict.keys.contains("PolicyType") {
+            self.policyType = dict["PolicyType"] as! String
         }
         if dict.keys.contains("ResolutionHeight") {
             self.resolutionHeight = dict["ResolutionHeight"] as! Int32
@@ -4566,6 +4861,67 @@ public class DescribeAndroidInstancesResponseBody : Tea.TeaModel {
                 }
             }
         }
+        public class DisplayConfig : Tea.TeaModel {
+            public var dpi: Int32?
+
+            public var fps: Int32?
+
+            public var lockResolution: String?
+
+            public var resolutionHeight: Int32?
+
+            public var resolutionWidth: Int32?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.dpi != nil {
+                    map["Dpi"] = self.dpi!
+                }
+                if self.fps != nil {
+                    map["Fps"] = self.fps!
+                }
+                if self.lockResolution != nil {
+                    map["LockResolution"] = self.lockResolution!
+                }
+                if self.resolutionHeight != nil {
+                    map["ResolutionHeight"] = self.resolutionHeight!
+                }
+                if self.resolutionWidth != nil {
+                    map["ResolutionWidth"] = self.resolutionWidth!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("Dpi") {
+                    self.dpi = dict["Dpi"] as! Int32
+                }
+                if dict.keys.contains("Fps") {
+                    self.fps = dict["Fps"] as! Int32
+                }
+                if dict.keys.contains("LockResolution") {
+                    self.lockResolution = dict["LockResolution"] as! String
+                }
+                if dict.keys.contains("ResolutionHeight") {
+                    self.resolutionHeight = dict["ResolutionHeight"] as! Int32
+                }
+                if dict.keys.contains("ResolutionWidth") {
+                    self.resolutionWidth = dict["ResolutionWidth"] as! Int32
+                }
+            }
+        }
         public class Tags : Tea.TeaModel {
             public var key: String?
 
@@ -4627,6 +4983,8 @@ public class DescribeAndroidInstancesResponseBody : Tea.TeaModel {
 
         public var disks: [DescribeAndroidInstancesResponseBody.InstanceModel.Disks]?
 
+        public var displayConfig: DescribeAndroidInstancesResponseBody.InstanceModel.DisplayConfig?
+
         public var errorCode: String?
 
         public var gmtCreate: String?
@@ -4679,6 +5037,7 @@ public class DescribeAndroidInstancesResponseBody : Tea.TeaModel {
         }
 
         public override func validate() throws -> Void {
+            try self.displayConfig?.validate()
         }
 
         public override func toMap() -> [String : Any] {
@@ -4722,6 +5081,9 @@ public class DescribeAndroidInstancesResponseBody : Tea.TeaModel {
                     tmp.append(k.toMap())
                 }
                 map["Disks"] = tmp
+            }
+            if self.displayConfig != nil {
+                map["DisplayConfig"] = self.displayConfig?.toMap()
             }
             if self.errorCode != nil {
                 map["ErrorCode"] = self.errorCode!
@@ -4837,6 +5199,11 @@ public class DescribeAndroidInstancesResponseBody : Tea.TeaModel {
                     tmp.append(model)
                 }
                 self.disks = tmp
+            }
+            if dict.keys.contains("DisplayConfig") {
+                var model = DescribeAndroidInstancesResponseBody.InstanceModel.DisplayConfig()
+                model.fromMap(dict["DisplayConfig"] as! [String: Any])
+                self.displayConfig = model
             }
             if dict.keys.contains("ErrorCode") {
                 self.errorCode = dict["ErrorCode"] as! String
@@ -5879,6 +6246,8 @@ public class DescribeCloudPhoneNodesResponseBody : Tea.TeaModel {
 
         public var gmtModified: String?
 
+        public var instanceType: String?
+
         public var memory: Int32?
 
         public var networkId: String?
@@ -5931,6 +6300,9 @@ public class DescribeCloudPhoneNodesResponseBody : Tea.TeaModel {
             }
             if self.gmtModified != nil {
                 map["GmtModified"] = self.gmtModified!
+            }
+            if self.instanceType != nil {
+                map["InstanceType"] = self.instanceType!
             }
             if self.memory != nil {
                 map["Memory"] = self.memory!
@@ -5986,6 +6358,9 @@ public class DescribeCloudPhoneNodesResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("GmtModified") {
                 self.gmtModified = dict["GmtModified"] as! String
+            }
+            if dict.keys.contains("InstanceType") {
+                self.instanceType = dict["InstanceType"] as! String
             }
             if dict.keys.contains("Memory") {
                 self.memory = dict["Memory"] as! Int32
@@ -9154,6 +9529,8 @@ public class ListPolicyGroupsRequest : Tea.TeaModel {
 
     public var policyGroupName: String?
 
+    public var policyType: String?
+
     public override init() {
         super.init()
     }
@@ -9180,6 +9557,9 @@ public class ListPolicyGroupsRequest : Tea.TeaModel {
         if self.policyGroupName != nil {
             map["PolicyGroupName"] = self.policyGroupName!
         }
+        if self.policyType != nil {
+            map["PolicyType"] = self.policyType!
+        }
         return map
     }
 
@@ -9195,6 +9575,9 @@ public class ListPolicyGroupsRequest : Tea.TeaModel {
         }
         if dict.keys.contains("PolicyGroupName") {
             self.policyGroupName = dict["PolicyGroupName"] as! String
+        }
+        if dict.keys.contains("PolicyType") {
+            self.policyType = dict["PolicyType"] as! String
         }
     }
 }
