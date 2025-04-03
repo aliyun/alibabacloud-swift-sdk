@@ -6675,6 +6675,8 @@ public class ExtendClusterRequest : Tea.TeaModel {
             }
             public var bonds: [ExtendClusterRequest.IpAllocationPolicy.NodePolicy.Bonds]?
 
+            public var hostname: String?
+
             public var nodeId: String?
 
             public override init() {
@@ -6698,6 +6700,9 @@ public class ExtendClusterRequest : Tea.TeaModel {
                     }
                     map["Bonds"] = tmp
                 }
+                if self.hostname != nil {
+                    map["Hostname"] = self.hostname!
+                }
                 if self.nodeId != nil {
                     map["NodeId"] = self.nodeId!
                 }
@@ -6715,6 +6720,9 @@ public class ExtendClusterRequest : Tea.TeaModel {
                         tmp.append(model)
                     }
                     self.bonds = tmp
+                }
+                if dict.keys.contains("Hostname") {
+                    self.hostname = dict["Hostname"] as! String
                 }
                 if dict.keys.contains("NodeId") {
                     self.nodeId = dict["NodeId"] as! String
@@ -6793,6 +6801,43 @@ public class ExtendClusterRequest : Tea.TeaModel {
         }
     }
     public class NodeGroups : Tea.TeaModel {
+        public class NodeTag : Tea.TeaModel {
+            public var key: String?
+
+            public var value: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.key != nil {
+                    map["Key"] = self.key!
+                }
+                if self.value != nil {
+                    map["Value"] = self.value!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("Key") {
+                    self.key = dict["Key"] as! String
+                }
+                if dict.keys.contains("Value") {
+                    self.value = dict["Value"] as! String
+                }
+            }
+        }
         public class Nodes : Tea.TeaModel {
             public var hostname: String?
 
@@ -6854,11 +6899,29 @@ public class ExtendClusterRequest : Tea.TeaModel {
                 }
             }
         }
+        public var amount: Int64?
+
+        public var autoRenew: Bool?
+
+        public var chargeType: String?
+
+        public var hostnames: [String]?
+
+        public var loginPassword: String?
+
         public var nodeGroupId: String?
+
+        public var nodeTag: [ExtendClusterRequest.NodeGroups.NodeTag]?
 
         public var nodes: [ExtendClusterRequest.NodeGroups.Nodes]?
 
+        public var period: Int64?
+
         public var userData: String?
+
+        public var vSwitchId: String?
+
+        public var vpcId: String?
 
         public var zoneId: String?
 
@@ -6876,8 +6939,30 @@ public class ExtendClusterRequest : Tea.TeaModel {
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
+            if self.amount != nil {
+                map["Amount"] = self.amount!
+            }
+            if self.autoRenew != nil {
+                map["AutoRenew"] = self.autoRenew!
+            }
+            if self.chargeType != nil {
+                map["ChargeType"] = self.chargeType!
+            }
+            if self.hostnames != nil {
+                map["Hostnames"] = self.hostnames!
+            }
+            if self.loginPassword != nil {
+                map["LoginPassword"] = self.loginPassword!
+            }
             if self.nodeGroupId != nil {
                 map["NodeGroupId"] = self.nodeGroupId!
+            }
+            if self.nodeTag != nil {
+                var tmp : [Any] = []
+                for k in self.nodeTag! {
+                    tmp.append(k.toMap())
+                }
+                map["NodeTag"] = tmp
             }
             if self.nodes != nil {
                 var tmp : [Any] = []
@@ -6886,8 +6971,17 @@ public class ExtendClusterRequest : Tea.TeaModel {
                 }
                 map["Nodes"] = tmp
             }
+            if self.period != nil {
+                map["Period"] = self.period!
+            }
             if self.userData != nil {
                 map["UserData"] = self.userData!
+            }
+            if self.vSwitchId != nil {
+                map["VSwitchId"] = self.vSwitchId!
+            }
+            if self.vpcId != nil {
+                map["VpcId"] = self.vpcId!
             }
             if self.zoneId != nil {
                 map["ZoneId"] = self.zoneId!
@@ -6896,8 +6990,34 @@ public class ExtendClusterRequest : Tea.TeaModel {
         }
 
         public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("Amount") {
+                self.amount = dict["Amount"] as! Int64
+            }
+            if dict.keys.contains("AutoRenew") {
+                self.autoRenew = dict["AutoRenew"] as! Bool
+            }
+            if dict.keys.contains("ChargeType") {
+                self.chargeType = dict["ChargeType"] as! String
+            }
+            if dict.keys.contains("Hostnames") {
+                self.hostnames = dict["Hostnames"] as! [String]
+            }
+            if dict.keys.contains("LoginPassword") {
+                self.loginPassword = dict["LoginPassword"] as! String
+            }
             if dict.keys.contains("NodeGroupId") {
                 self.nodeGroupId = dict["NodeGroupId"] as! String
+            }
+            if dict.keys.contains("NodeTag") {
+                var tmp : [ExtendClusterRequest.NodeGroups.NodeTag] = []
+                for v in dict["NodeTag"] as! [Any] {
+                    var model = ExtendClusterRequest.NodeGroups.NodeTag()
+                    if v != nil {
+                        model.fromMap(v as! [String: Any])
+                    }
+                    tmp.append(model)
+                }
+                self.nodeTag = tmp
             }
             if dict.keys.contains("Nodes") {
                 var tmp : [ExtendClusterRequest.NodeGroups.Nodes] = []
@@ -6910,8 +7030,17 @@ public class ExtendClusterRequest : Tea.TeaModel {
                 }
                 self.nodes = tmp
             }
+            if dict.keys.contains("Period") {
+                self.period = dict["Period"] as! Int64
+            }
             if dict.keys.contains("UserData") {
                 self.userData = dict["UserData"] as! String
+            }
+            if dict.keys.contains("VSwitchId") {
+                self.vSwitchId = dict["VSwitchId"] as! String
+            }
+            if dict.keys.contains("VpcId") {
+                self.vpcId = dict["VpcId"] as! String
             }
             if dict.keys.contains("ZoneId") {
                 self.zoneId = dict["ZoneId"] as! String
