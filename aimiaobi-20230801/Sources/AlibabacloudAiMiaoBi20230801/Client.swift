@@ -1733,6 +1733,9 @@ open class Client : AlibabacloudOpenApi.Client {
         try TeaUtils.Client.validateModel(tmpReq)
         var request: GetHotTopicBroadcastShrinkRequest = GetHotTopicBroadcastShrinkRequest([:])
         AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.locations)) {
+            request.locationsShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.locations, "Locations", "json")
+        }
         if (!TeaUtils.Client.isUnset(tmpReq.stepForCustomSummaryStyleConfig)) {
             request.stepForCustomSummaryStyleConfigShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.stepForCustomSummaryStyleConfig, "StepForCustomSummaryStyleConfig", "json")
         }
@@ -1754,6 +1757,15 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.hotTopicVersion)) {
             body["HotTopicVersion"] = request.hotTopicVersion ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.locationQuery)) {
+            body["LocationQuery"] = request.locationQuery ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.locationsShrink)) {
+            body["Locations"] = request.locationsShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.query)) {
+            body["Query"] = request.query ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.size)) {
             body["Size"] = request.size!;
@@ -5385,15 +5397,24 @@ open class Client : AlibabacloudOpenApi.Client {
         try TeaUtils.Client.validateModel(tmpReq)
         var request: RunTitleGenerationShrinkRequest = RunTitleGenerationShrinkRequest([:])
         AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.deduplicatedTitles)) {
+            request.deduplicatedTitlesShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.deduplicatedTitles, "DeduplicatedTitles", "json")
+        }
         if (!TeaUtils.Client.isUnset(tmpReq.referenceData)) {
             request.referenceDataShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.referenceData, "ReferenceData", "json")
         }
         var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.deduplicatedTitlesShrink)) {
+            body["DeduplicatedTitles"] = request.deduplicatedTitlesShrink ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.referenceDataShrink)) {
             body["ReferenceData"] = request.referenceDataShrink ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.taskId)) {
             body["TaskId"] = request.taskId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.titleCount)) {
+            body["TitleCount"] = request.titleCount ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.workspaceId)) {
             body["WorkspaceId"] = request.workspaceId ?? "";

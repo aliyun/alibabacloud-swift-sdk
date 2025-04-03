@@ -10520,6 +10520,12 @@ public class GetHotTopicBroadcastRequest : Tea.TeaModel {
 
     public var hotTopicVersion: String?
 
+    public var locationQuery: String?
+
+    public var locations: [String]?
+
+    public var query: String?
+
     public var size: Int32?
 
     public var stepForCustomSummaryStyleConfig: GetHotTopicBroadcastRequest.StepForCustomSummaryStyleConfig?
@@ -10558,6 +10564,15 @@ public class GetHotTopicBroadcastRequest : Tea.TeaModel {
         if self.hotTopicVersion != nil {
             map["HotTopicVersion"] = self.hotTopicVersion!
         }
+        if self.locationQuery != nil {
+            map["LocationQuery"] = self.locationQuery!
+        }
+        if self.locations != nil {
+            map["Locations"] = self.locations!
+        }
+        if self.query != nil {
+            map["Query"] = self.query!
+        }
         if self.size != nil {
             map["Size"] = self.size!
         }
@@ -10589,6 +10604,15 @@ public class GetHotTopicBroadcastRequest : Tea.TeaModel {
         if dict.keys.contains("HotTopicVersion") {
             self.hotTopicVersion = dict["HotTopicVersion"] as! String
         }
+        if dict.keys.contains("LocationQuery") {
+            self.locationQuery = dict["LocationQuery"] as! String
+        }
+        if dict.keys.contains("Locations") {
+            self.locations = dict["Locations"] as! [String]
+        }
+        if dict.keys.contains("Query") {
+            self.query = dict["Query"] as! String
+        }
         if dict.keys.contains("Size") {
             self.size = dict["Size"] as! Int32
         }
@@ -10619,6 +10643,12 @@ public class GetHotTopicBroadcastShrinkRequest : Tea.TeaModel {
     public var current: Int32?
 
     public var hotTopicVersion: String?
+
+    public var locationQuery: String?
+
+    public var locationsShrink: String?
+
+    public var query: String?
 
     public var size: Int32?
 
@@ -10656,6 +10686,15 @@ public class GetHotTopicBroadcastShrinkRequest : Tea.TeaModel {
         if self.hotTopicVersion != nil {
             map["HotTopicVersion"] = self.hotTopicVersion!
         }
+        if self.locationQuery != nil {
+            map["LocationQuery"] = self.locationQuery!
+        }
+        if self.locationsShrink != nil {
+            map["Locations"] = self.locationsShrink!
+        }
+        if self.query != nil {
+            map["Query"] = self.query!
+        }
         if self.size != nil {
             map["Size"] = self.size!
         }
@@ -10686,6 +10725,15 @@ public class GetHotTopicBroadcastShrinkRequest : Tea.TeaModel {
         }
         if dict.keys.contains("HotTopicVersion") {
             self.hotTopicVersion = dict["HotTopicVersion"] as! String
+        }
+        if dict.keys.contains("LocationQuery") {
+            self.locationQuery = dict["LocationQuery"] as! String
+        }
+        if dict.keys.contains("Locations") {
+            self.locationsShrink = dict["Locations"] as! String
+        }
+        if dict.keys.contains("Query") {
+            self.query = dict["Query"] as! String
         }
         if dict.keys.contains("Size") {
             self.size = dict["Size"] as! Int32
@@ -11065,6 +11113,8 @@ public class GetHotTopicBroadcastResponseBody : Tea.TeaModel {
 
             public var inputToken: Int32?
 
+            public var locations: [String]?
+
             public var news: [GetHotTopicBroadcastResponseBody.Data.Data.News]?
 
             public var outputToken: Int32?
@@ -11121,6 +11171,9 @@ public class GetHotTopicBroadcastResponseBody : Tea.TeaModel {
                 }
                 if self.inputToken != nil {
                     map["InputToken"] = self.inputToken!
+                }
+                if self.locations != nil {
+                    map["Locations"] = self.locations!
                 }
                 if self.news != nil {
                     var tmp : [Any] = []
@@ -11179,6 +11232,9 @@ public class GetHotTopicBroadcastResponseBody : Tea.TeaModel {
                 }
                 if dict.keys.contains("InputToken") {
                     self.inputToken = dict["InputToken"] as! Int32
+                }
+                if dict.keys.contains("Locations") {
+                    self.locations = dict["Locations"] as! [String]
                 }
                 if dict.keys.contains("News") {
                     var tmp : [GetHotTopicBroadcastResponseBody.Data.Data.News] = []
@@ -40078,6 +40134,172 @@ public class RunSearchGenerationResponseBody : Tea.TeaModel {
                                 }
                             }
                         }
+                        public class TextSearchResult : Tea.TeaModel {
+                            public class SearchResult : Tea.TeaModel {
+                                public var content: String?
+
+                                public var docId: String?
+
+                                public var docUuid: String?
+
+                                public var pubTime: String?
+
+                                public var searchSource: String?
+
+                                public var searchSourceName: String?
+
+                                public var searchSourceType: String?
+
+                                public var summary: String?
+
+                                public var title: String?
+
+                                public var url: String?
+
+                                public override init() {
+                                    super.init()
+                                }
+
+                                public init(_ dict: [String: Any]) {
+                                    super.init()
+                                    self.fromMap(dict)
+                                }
+
+                                public override func validate() throws -> Void {
+                                }
+
+                                public override func toMap() -> [String : Any] {
+                                    var map = super.toMap()
+                                    if self.content != nil {
+                                        map["Content"] = self.content!
+                                    }
+                                    if self.docId != nil {
+                                        map["DocId"] = self.docId!
+                                    }
+                                    if self.docUuid != nil {
+                                        map["DocUuid"] = self.docUuid!
+                                    }
+                                    if self.pubTime != nil {
+                                        map["PubTime"] = self.pubTime!
+                                    }
+                                    if self.searchSource != nil {
+                                        map["SearchSource"] = self.searchSource!
+                                    }
+                                    if self.searchSourceName != nil {
+                                        map["SearchSourceName"] = self.searchSourceName!
+                                    }
+                                    if self.searchSourceType != nil {
+                                        map["SearchSourceType"] = self.searchSourceType!
+                                    }
+                                    if self.summary != nil {
+                                        map["Summary"] = self.summary!
+                                    }
+                                    if self.title != nil {
+                                        map["Title"] = self.title!
+                                    }
+                                    if self.url != nil {
+                                        map["Url"] = self.url!
+                                    }
+                                    return map
+                                }
+
+                                public override func fromMap(_ dict: [String: Any]) -> Void {
+                                    if dict.keys.contains("Content") {
+                                        self.content = dict["Content"] as! String
+                                    }
+                                    if dict.keys.contains("DocId") {
+                                        self.docId = dict["DocId"] as! String
+                                    }
+                                    if dict.keys.contains("DocUuid") {
+                                        self.docUuid = dict["DocUuid"] as! String
+                                    }
+                                    if dict.keys.contains("PubTime") {
+                                        self.pubTime = dict["PubTime"] as! String
+                                    }
+                                    if dict.keys.contains("SearchSource") {
+                                        self.searchSource = dict["SearchSource"] as! String
+                                    }
+                                    if dict.keys.contains("SearchSourceName") {
+                                        self.searchSourceName = dict["SearchSourceName"] as! String
+                                    }
+                                    if dict.keys.contains("SearchSourceType") {
+                                        self.searchSourceType = dict["SearchSourceType"] as! String
+                                    }
+                                    if dict.keys.contains("Summary") {
+                                        self.summary = dict["Summary"] as! String
+                                    }
+                                    if dict.keys.contains("Title") {
+                                        self.title = dict["Title"] as! String
+                                    }
+                                    if dict.keys.contains("Url") {
+                                        self.url = dict["Url"] as! String
+                                    }
+                                }
+                            }
+                            public var current: Int32?
+
+                            public var searchResult: [RunSearchGenerationResponseBody.Payload.Output.AgentContext.BizContext.GeneratedContent.TextSearchResult.SearchResult]?
+
+                            public var size: Int32?
+
+                            public var total: Int32?
+
+                            public override init() {
+                                super.init()
+                            }
+
+                            public init(_ dict: [String: Any]) {
+                                super.init()
+                                self.fromMap(dict)
+                            }
+
+                            public override func validate() throws -> Void {
+                            }
+
+                            public override func toMap() -> [String : Any] {
+                                var map = super.toMap()
+                                if self.current != nil {
+                                    map["Current"] = self.current!
+                                }
+                                if self.searchResult != nil {
+                                    var tmp : [Any] = []
+                                    for k in self.searchResult! {
+                                        tmp.append(k.toMap())
+                                    }
+                                    map["SearchResult"] = tmp
+                                }
+                                if self.size != nil {
+                                    map["Size"] = self.size!
+                                }
+                                if self.total != nil {
+                                    map["Total"] = self.total!
+                                }
+                                return map
+                            }
+
+                            public override func fromMap(_ dict: [String: Any]) -> Void {
+                                if dict.keys.contains("Current") {
+                                    self.current = dict["Current"] as! Int32
+                                }
+                                if dict.keys.contains("SearchResult") {
+                                    var tmp : [RunSearchGenerationResponseBody.Payload.Output.AgentContext.BizContext.GeneratedContent.TextSearchResult.SearchResult] = []
+                                    for v in dict["SearchResult"] as! [Any] {
+                                        var model = RunSearchGenerationResponseBody.Payload.Output.AgentContext.BizContext.GeneratedContent.TextSearchResult.SearchResult()
+                                        if v != nil {
+                                            model.fromMap(v as! [String: Any])
+                                        }
+                                        tmp.append(model)
+                                    }
+                                    self.searchResult = tmp
+                                }
+                                if dict.keys.contains("Size") {
+                                    self.size = dict["Size"] as! Int32
+                                }
+                                if dict.keys.contains("Total") {
+                                    self.total = dict["Total"] as! Int32
+                                }
+                            }
+                        }
                         public class TimelineResult : Tea.TeaModel {
                             public class GenerateTraceability : Tea.TeaModel {
                                 public class Coordinates : Tea.TeaModel {
@@ -41195,6 +41417,8 @@ public class RunSearchGenerationResponseBody : Tea.TeaModel {
 
                         public var textGenerateResult: RunSearchGenerationResponseBody.Payload.Output.AgentContext.BizContext.GeneratedContent.TextGenerateResult?
 
+                        public var textSearchResult: RunSearchGenerationResponseBody.Payload.Output.AgentContext.BizContext.GeneratedContent.TextSearchResult?
+
                         public var timelineResult: RunSearchGenerationResponseBody.Payload.Output.AgentContext.BizContext.GeneratedContent.TimelineResult?
 
                         public var videoSearchResult: RunSearchGenerationResponseBody.Payload.Output.AgentContext.BizContext.GeneratedContent.VideoSearchResult?
@@ -41214,6 +41438,7 @@ public class RunSearchGenerationResponseBody : Tea.TeaModel {
                             try self.imageSearchResult?.validate()
                             try self.newsElementResult?.validate()
                             try self.textGenerateResult?.validate()
+                            try self.textSearchResult?.validate()
                             try self.timelineResult?.validate()
                             try self.videoSearchResult?.validate()
                         }
@@ -41234,6 +41459,9 @@ public class RunSearchGenerationResponseBody : Tea.TeaModel {
                             }
                             if self.textGenerateResult != nil {
                                 map["TextGenerateResult"] = self.textGenerateResult?.toMap()
+                            }
+                            if self.textSearchResult != nil {
+                                map["TextSearchResult"] = self.textSearchResult?.toMap()
                             }
                             if self.timelineResult != nil {
                                 map["TimelineResult"] = self.timelineResult?.toMap()
@@ -41269,6 +41497,11 @@ public class RunSearchGenerationResponseBody : Tea.TeaModel {
                                 var model = RunSearchGenerationResponseBody.Payload.Output.AgentContext.BizContext.GeneratedContent.TextGenerateResult()
                                 model.fromMap(dict["TextGenerateResult"] as! [String: Any])
                                 self.textGenerateResult = model
+                            }
+                            if dict.keys.contains("TextSearchResult") {
+                                var model = RunSearchGenerationResponseBody.Payload.Output.AgentContext.BizContext.GeneratedContent.TextSearchResult()
+                                model.fromMap(dict["TextSearchResult"] as! [String: Any])
+                                self.textSearchResult = model
                             }
                             if dict.keys.contains("TimelineResult") {
                                 var model = RunSearchGenerationResponseBody.Payload.Output.AgentContext.BizContext.GeneratedContent.TimelineResult()
@@ -44466,9 +44699,13 @@ public class RunTitleGenerationRequest : Tea.TeaModel {
             }
         }
     }
+    public var deduplicatedTitles: [String]?
+
     public var referenceData: RunTitleGenerationRequest.ReferenceData?
 
     public var taskId: String?
+
+    public var titleCount: String?
 
     public var workspaceId: String?
 
@@ -44487,11 +44724,17 @@ public class RunTitleGenerationRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.deduplicatedTitles != nil {
+            map["DeduplicatedTitles"] = self.deduplicatedTitles!
+        }
         if self.referenceData != nil {
             map["ReferenceData"] = self.referenceData?.toMap()
         }
         if self.taskId != nil {
             map["TaskId"] = self.taskId!
+        }
+        if self.titleCount != nil {
+            map["TitleCount"] = self.titleCount!
         }
         if self.workspaceId != nil {
             map["WorkspaceId"] = self.workspaceId!
@@ -44500,6 +44743,9 @@ public class RunTitleGenerationRequest : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("DeduplicatedTitles") {
+            self.deduplicatedTitles = dict["DeduplicatedTitles"] as! [String]
+        }
         if dict.keys.contains("ReferenceData") {
             var model = RunTitleGenerationRequest.ReferenceData()
             model.fromMap(dict["ReferenceData"] as! [String: Any])
@@ -44508,6 +44754,9 @@ public class RunTitleGenerationRequest : Tea.TeaModel {
         if dict.keys.contains("TaskId") {
             self.taskId = dict["TaskId"] as! String
         }
+        if dict.keys.contains("TitleCount") {
+            self.titleCount = dict["TitleCount"] as! String
+        }
         if dict.keys.contains("WorkspaceId") {
             self.workspaceId = dict["WorkspaceId"] as! String
         }
@@ -44515,9 +44764,13 @@ public class RunTitleGenerationRequest : Tea.TeaModel {
 }
 
 public class RunTitleGenerationShrinkRequest : Tea.TeaModel {
+    public var deduplicatedTitlesShrink: String?
+
     public var referenceDataShrink: String?
 
     public var taskId: String?
+
+    public var titleCount: String?
 
     public var workspaceId: String?
 
@@ -44535,11 +44788,17 @@ public class RunTitleGenerationShrinkRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.deduplicatedTitlesShrink != nil {
+            map["DeduplicatedTitles"] = self.deduplicatedTitlesShrink!
+        }
         if self.referenceDataShrink != nil {
             map["ReferenceData"] = self.referenceDataShrink!
         }
         if self.taskId != nil {
             map["TaskId"] = self.taskId!
+        }
+        if self.titleCount != nil {
+            map["TitleCount"] = self.titleCount!
         }
         if self.workspaceId != nil {
             map["WorkspaceId"] = self.workspaceId!
@@ -44548,11 +44807,17 @@ public class RunTitleGenerationShrinkRequest : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("DeduplicatedTitles") {
+            self.deduplicatedTitlesShrink = dict["DeduplicatedTitles"] as! String
+        }
         if dict.keys.contains("ReferenceData") {
             self.referenceDataShrink = dict["ReferenceData"] as! String
         }
         if dict.keys.contains("TaskId") {
             self.taskId = dict["TaskId"] as! String
+        }
+        if dict.keys.contains("TitleCount") {
+            self.titleCount = dict["TitleCount"] as! String
         }
         if dict.keys.contains("WorkspaceId") {
             self.workspaceId = dict["WorkspaceId"] as! String
