@@ -8427,6 +8427,8 @@ public class CreateNatGatewayRequest : Tea.TeaModel {
     }
     public var ensRegionId: String?
 
+    public var instanceBillingCycle: String?
+
     public var instanceType: String?
 
     public var name: String?
@@ -8454,6 +8456,9 @@ public class CreateNatGatewayRequest : Tea.TeaModel {
         if self.ensRegionId != nil {
             map["EnsRegionId"] = self.ensRegionId!
         }
+        if self.instanceBillingCycle != nil {
+            map["InstanceBillingCycle"] = self.instanceBillingCycle!
+        }
         if self.instanceType != nil {
             map["InstanceType"] = self.instanceType!
         }
@@ -8479,6 +8484,9 @@ public class CreateNatGatewayRequest : Tea.TeaModel {
     public override func fromMap(_ dict: [String: Any]) -> Void {
         if dict.keys.contains("EnsRegionId") {
             self.ensRegionId = dict["EnsRegionId"] as! String
+        }
+        if dict.keys.contains("InstanceBillingCycle") {
+            self.instanceBillingCycle = dict["InstanceBillingCycle"] as! String
         }
         if dict.keys.contains("InstanceType") {
             self.instanceType = dict["InstanceType"] as! String

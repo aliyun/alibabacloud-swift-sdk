@@ -2111,6 +2111,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.ensRegionId)) {
             query["EnsRegionId"] = request.ensRegionId ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.instanceBillingCycle)) {
+            query["InstanceBillingCycle"] = request.instanceBillingCycle ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.instanceType)) {
             query["InstanceType"] = request.instanceType ?? "";
         }
