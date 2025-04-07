@@ -28,6 +28,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func getConnectionTicketWithOptions(_ request: GetConnectionTicketRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> GetConnectionTicketResponse {
         try TeaUtils.Client.validateModel(request)
         var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.accessType)) {
+            body["AccessType"] = request.accessType ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.appId)) {
             body["AppId"] = request.appId ?? "";
         }
