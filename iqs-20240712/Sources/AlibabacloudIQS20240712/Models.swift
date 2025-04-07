@@ -36,9 +36,13 @@ public class AgentBaseQuery : Tea.TeaModel {
 }
 
 public class CommonAgentQuery : Tea.TeaModel {
+    public var limit: Int32?
+
     public var query: String?
 
     public var querySceneEnumCode: String?
+
+    public var searchModel: String?
 
     public override init() {
         super.init()
@@ -54,21 +58,33 @@ public class CommonAgentQuery : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.limit != nil {
+            map["limit"] = self.limit!
+        }
         if self.query != nil {
             map["query"] = self.query!
         }
         if self.querySceneEnumCode != nil {
             map["querySceneEnumCode"] = self.querySceneEnumCode!
         }
+        if self.searchModel != nil {
+            map["searchModel"] = self.searchModel!
+        }
         return map
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("limit") {
+            self.limit = dict["limit"] as! Int32
+        }
         if dict.keys.contains("query") {
             self.query = dict["query"] as! String
         }
         if dict.keys.contains("querySceneEnumCode") {
             self.querySceneEnumCode = dict["querySceneEnumCode"] as! String
+        }
+        if dict.keys.contains("searchModel") {
+            self.searchModel = dict["searchModel"] as! String
         }
     }
 }
