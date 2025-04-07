@@ -9564,6 +9564,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func listFilesWithOptions(_ request: ListFilesRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ListFilesResponse {
         try TeaUtils.Client.validateModel(request)
         var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.commitStatus)) {
+            body["CommitStatus"] = request.commitStatus!;
+        }
         if (!TeaUtils.Client.isUnset(request.exactFileName)) {
             body["ExactFileName"] = request.exactFileName ?? "";
         }
