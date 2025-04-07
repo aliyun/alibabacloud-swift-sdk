@@ -4229,6 +4229,8 @@ public class GetAppInstanceGroupResponse : Tea.TeaModel {
 }
 
 public class GetConnectionTicketRequest : Tea.TeaModel {
+    public var accessType: String?
+
     public var appId: String?
 
     public var appInstanceGroupIdList: [String]?
@@ -4263,6 +4265,9 @@ public class GetConnectionTicketRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.accessType != nil {
+            map["AccessType"] = self.accessType!
+        }
         if self.appId != nil {
             map["AppId"] = self.appId!
         }
@@ -4297,6 +4302,9 @@ public class GetConnectionTicketRequest : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("AccessType") {
+            self.accessType = dict["AccessType"] as! String
+        }
         if dict.keys.contains("AppId") {
             self.appId = dict["AppId"] as! String
         }
