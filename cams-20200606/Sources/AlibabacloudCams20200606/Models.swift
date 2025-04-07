@@ -2550,6 +2550,8 @@ public class ChatappSyncPhoneNumberResponseBody : Tea.TeaModel {
     public class PhoneNumbers : Tea.TeaModel {
         public var codeVerificationStatus: String?
 
+        public var isOfficial: String?
+
         public var messagingLimitTier: String?
 
         public var nameStatus: String?
@@ -2588,6 +2590,9 @@ public class ChatappSyncPhoneNumberResponseBody : Tea.TeaModel {
             var map = super.toMap()
             if self.codeVerificationStatus != nil {
                 map["CodeVerificationStatus"] = self.codeVerificationStatus!
+            }
+            if self.isOfficial != nil {
+                map["IsOfficial"] = self.isOfficial!
             }
             if self.messagingLimitTier != nil {
                 map["MessagingLimitTier"] = self.messagingLimitTier!
@@ -2628,6 +2633,9 @@ public class ChatappSyncPhoneNumberResponseBody : Tea.TeaModel {
         public override func fromMap(_ dict: [String: Any]) -> Void {
             if dict.keys.contains("CodeVerificationStatus") {
                 self.codeVerificationStatus = dict["CodeVerificationStatus"] as! String
+            }
+            if dict.keys.contains("IsOfficial") {
+                self.isOfficial = dict["IsOfficial"] as! String
             }
             if dict.keys.contains("MessagingLimitTier") {
                 self.messagingLimitTier = dict["MessagingLimitTier"] as! String
@@ -13608,6 +13616,12 @@ public class QueryChatappPhoneNumbersRequest : Tea.TeaModel {
 
     public var isvCode: String?
 
+    public var ownerId: Int64?
+
+    public var resourceOwnerAccount: String?
+
+    public var resourceOwnerId: Int64?
+
     public var status: String?
 
     public override init() {
@@ -13630,6 +13644,15 @@ public class QueryChatappPhoneNumbersRequest : Tea.TeaModel {
         if self.isvCode != nil {
             map["IsvCode"] = self.isvCode!
         }
+        if self.ownerId != nil {
+            map["OwnerId"] = self.ownerId!
+        }
+        if self.resourceOwnerAccount != nil {
+            map["ResourceOwnerAccount"] = self.resourceOwnerAccount!
+        }
+        if self.resourceOwnerId != nil {
+            map["ResourceOwnerId"] = self.resourceOwnerId!
+        }
         if self.status != nil {
             map["Status"] = self.status!
         }
@@ -13643,6 +13666,15 @@ public class QueryChatappPhoneNumbersRequest : Tea.TeaModel {
         if dict.keys.contains("IsvCode") {
             self.isvCode = dict["IsvCode"] as! String
         }
+        if dict.keys.contains("OwnerId") {
+            self.ownerId = dict["OwnerId"] as! Int64
+        }
+        if dict.keys.contains("ResourceOwnerAccount") {
+            self.resourceOwnerAccount = dict["ResourceOwnerAccount"] as! String
+        }
+        if dict.keys.contains("ResourceOwnerId") {
+            self.resourceOwnerId = dict["ResourceOwnerId"] as! Int64
+        }
         if dict.keys.contains("Status") {
             self.status = dict["Status"] as! String
         }
@@ -13652,6 +13684,8 @@ public class QueryChatappPhoneNumbersRequest : Tea.TeaModel {
 public class QueryChatappPhoneNumbersResponseBody : Tea.TeaModel {
     public class PhoneNumbers : Tea.TeaModel {
         public var codeVerificationStatus: String?
+
+        public var isOfficial: String?
 
         public var messagingLimitTier: String?
 
@@ -13692,6 +13726,9 @@ public class QueryChatappPhoneNumbersResponseBody : Tea.TeaModel {
             if self.codeVerificationStatus != nil {
                 map["CodeVerificationStatus"] = self.codeVerificationStatus!
             }
+            if self.isOfficial != nil {
+                map["IsOfficial"] = self.isOfficial!
+            }
             if self.messagingLimitTier != nil {
                 map["MessagingLimitTier"] = self.messagingLimitTier!
             }
@@ -13731,6 +13768,9 @@ public class QueryChatappPhoneNumbersResponseBody : Tea.TeaModel {
         public override func fromMap(_ dict: [String: Any]) -> Void {
             if dict.keys.contains("CodeVerificationStatus") {
                 self.codeVerificationStatus = dict["CodeVerificationStatus"] as! String
+            }
+            if dict.keys.contains("IsOfficial") {
+                self.isOfficial = dict["IsOfficial"] as! String
             }
             if dict.keys.contains("MessagingLimitTier") {
                 self.messagingLimitTier = dict["MessagingLimitTier"] as! String
@@ -13777,6 +13817,8 @@ public class QueryChatappPhoneNumbersResponseBody : Tea.TeaModel {
 
     public var requestId: String?
 
+    public var success: Bool?
+
     public override init() {
         super.init()
     }
@@ -13810,6 +13852,9 @@ public class QueryChatappPhoneNumbersResponseBody : Tea.TeaModel {
         if self.requestId != nil {
             map["RequestId"] = self.requestId!
         }
+        if self.success != nil {
+            map["Success"] = self.success!
+        }
         return map
     }
 
@@ -13836,6 +13881,9 @@ public class QueryChatappPhoneNumbersResponseBody : Tea.TeaModel {
         }
         if dict.keys.contains("RequestId") {
             self.requestId = dict["RequestId"] as! String
+        }
+        if dict.keys.contains("Success") {
+            self.success = dict["Success"] as! Bool
         }
     }
 }
