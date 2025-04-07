@@ -6546,6 +6546,8 @@ public class GetServiceResponseBody : Tea.TeaModel {
 
     public var buildInfo: String?
 
+    public var buildParameters: String?
+
     public var categories: String?
 
     public var commodity: GetServiceResponseBody.Commodity?
@@ -6671,6 +6673,9 @@ public class GetServiceResponseBody : Tea.TeaModel {
         }
         if self.buildInfo != nil {
             map["BuildInfo"] = self.buildInfo!
+        }
+        if self.buildParameters != nil {
+            map["BuildParameters"] = self.buildParameters!
         }
         if self.categories != nil {
             map["Categories"] = self.categories!
@@ -6846,6 +6851,9 @@ public class GetServiceResponseBody : Tea.TeaModel {
         }
         if dict.keys.contains("BuildInfo") {
             self.buildInfo = dict["BuildInfo"] as! String
+        }
+        if dict.keys.contains("BuildParameters") {
+            self.buildParameters = dict["BuildParameters"] as! String
         }
         if dict.keys.contains("Categories") {
             self.categories = dict["Categories"] as! String
