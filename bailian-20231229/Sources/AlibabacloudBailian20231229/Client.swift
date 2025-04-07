@@ -140,6 +140,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.sizeInBytes)) {
             body["SizeInBytes"] = request.sizeInBytes ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.useInternalEndpoint)) {
+            body["UseInternalEndpoint"] = request.useInternalEndpoint!;
+        }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "headers": headers as! [String: String],
             "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)

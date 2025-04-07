@@ -502,6 +502,8 @@ public class ApplyFileUploadLeaseRequest : Tea.TeaModel {
 
     public var sizeInBytes: String?
 
+    public var useInternalEndpoint: Bool?
+
     public override init() {
         super.init()
     }
@@ -528,6 +530,9 @@ public class ApplyFileUploadLeaseRequest : Tea.TeaModel {
         if self.sizeInBytes != nil {
             map["SizeInBytes"] = self.sizeInBytes!
         }
+        if self.useInternalEndpoint != nil {
+            map["UseInternalEndpoint"] = self.useInternalEndpoint!
+        }
         return map
     }
 
@@ -543,6 +548,9 @@ public class ApplyFileUploadLeaseRequest : Tea.TeaModel {
         }
         if dict.keys.contains("SizeInBytes") {
             self.sizeInBytes = dict["SizeInBytes"] as! String
+        }
+        if dict.keys.contains("UseInternalEndpoint") {
+            self.useInternalEndpoint = dict["UseInternalEndpoint"] as! Bool
         }
     }
 }
