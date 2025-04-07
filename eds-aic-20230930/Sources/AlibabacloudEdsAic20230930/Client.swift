@@ -2393,6 +2393,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.forceStop)) {
             query["ForceStop"] = request.forceStop!;
         }
+        if (!TeaUtils.Client.isUnset(request.saleMode)) {
+            query["SaleMode"] = request.saleMode ?? "";
+        }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "query": AlibabaCloudOpenApiUtil.Client.query(query)
         ])
@@ -2574,6 +2577,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.androidInstanceIds)) {
             query["AndroidInstanceIds"] = request.androidInstanceIds ?? [];
         }
+        if (!TeaUtils.Client.isUnset(request.saleMode)) {
+            query["SaleMode"] = request.saleMode ?? "";
+        }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "query": AlibabaCloudOpenApiUtil.Client.query(query)
         ])
@@ -2749,6 +2755,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.androidInstanceIds)) {
             query["AndroidInstanceIds"] = request.androidInstanceIds ?? [];
         }
+        if (!TeaUtils.Client.isUnset(request.saleMode)) {
+            query["SaleMode"] = request.saleMode ?? "";
+        }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "query": AlibabaCloudOpenApiUtil.Client.query(query)
         ])
@@ -2788,6 +2797,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.forceStop)) {
             query["ForceStop"] = request.forceStop!;
+        }
+        if (!TeaUtils.Client.isUnset(request.saleMode)) {
+            query["SaleMode"] = request.saleMode ?? "";
         }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "query": AlibabaCloudOpenApiUtil.Client.query(query)

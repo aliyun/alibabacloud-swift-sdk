@@ -11218,6 +11218,8 @@ public class RebootAndroidInstancesInGroupRequest : Tea.TeaModel {
 
     public var forceStop: Bool?
 
+    public var saleMode: String?
+
     public override init() {
         super.init()
     }
@@ -11238,6 +11240,9 @@ public class RebootAndroidInstancesInGroupRequest : Tea.TeaModel {
         if self.forceStop != nil {
             map["ForceStop"] = self.forceStop!
         }
+        if self.saleMode != nil {
+            map["SaleMode"] = self.saleMode!
+        }
         return map
     }
 
@@ -11247,6 +11252,9 @@ public class RebootAndroidInstancesInGroupRequest : Tea.TeaModel {
         }
         if dict.keys.contains("ForceStop") {
             self.forceStop = dict["ForceStop"] as! Bool
+        }
+        if dict.keys.contains("SaleMode") {
+            self.saleMode = dict["SaleMode"] as! String
         }
     }
 }
@@ -11837,6 +11845,8 @@ public class RenewCloudPhoneNodesResponse : Tea.TeaModel {
 public class ResetAndroidInstancesInGroupRequest : Tea.TeaModel {
     public var androidInstanceIds: [String]?
 
+    public var saleMode: String?
+
     public override init() {
         super.init()
     }
@@ -11854,12 +11864,18 @@ public class ResetAndroidInstancesInGroupRequest : Tea.TeaModel {
         if self.androidInstanceIds != nil {
             map["AndroidInstanceIds"] = self.androidInstanceIds!
         }
+        if self.saleMode != nil {
+            map["SaleMode"] = self.saleMode!
+        }
         return map
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
         if dict.keys.contains("AndroidInstanceIds") {
             self.androidInstanceIds = dict["AndroidInstanceIds"] as! [String]
+        }
+        if dict.keys.contains("SaleMode") {
+            self.saleMode = dict["SaleMode"] as! String
         }
     }
 }
@@ -12474,6 +12490,8 @@ public class SetAdbSecureResponse : Tea.TeaModel {
 public class StartAndroidInstanceRequest : Tea.TeaModel {
     public var androidInstanceIds: [String]?
 
+    public var saleMode: String?
+
     public override init() {
         super.init()
     }
@@ -12491,12 +12509,18 @@ public class StartAndroidInstanceRequest : Tea.TeaModel {
         if self.androidInstanceIds != nil {
             map["AndroidInstanceIds"] = self.androidInstanceIds!
         }
+        if self.saleMode != nil {
+            map["SaleMode"] = self.saleMode!
+        }
         return map
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
         if dict.keys.contains("AndroidInstanceIds") {
             self.androidInstanceIds = dict["AndroidInstanceIds"] as! [String]
+        }
+        if dict.keys.contains("SaleMode") {
+            self.saleMode = dict["SaleMode"] as! String
         }
     }
 }
@@ -12585,6 +12609,8 @@ public class StopAndroidInstanceRequest : Tea.TeaModel {
 
     public var forceStop: Bool?
 
+    public var saleMode: String?
+
     public override init() {
         super.init()
     }
@@ -12605,6 +12631,9 @@ public class StopAndroidInstanceRequest : Tea.TeaModel {
         if self.forceStop != nil {
             map["ForceStop"] = self.forceStop!
         }
+        if self.saleMode != nil {
+            map["SaleMode"] = self.saleMode!
+        }
         return map
     }
 
@@ -12614,6 +12643,9 @@ public class StopAndroidInstanceRequest : Tea.TeaModel {
         }
         if dict.keys.contains("ForceStop") {
             self.forceStop = dict["ForceStop"] as! Bool
+        }
+        if dict.keys.contains("SaleMode") {
+            self.saleMode = dict["SaleMode"] as! String
         }
     }
 }
