@@ -1764,6 +1764,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.crossAccountUserId)) {
             query["CrossAccountUserId"] = request.crossAccountUserId!;
         }
+        if (!TeaUtils.Client.isUnset(request.filters)) {
+            query["Filters"] = request.filters ?? [];
+        }
         if (!TeaUtils.Client.isUnset(request.pageNumber)) {
             query["PageNumber"] = request.pageNumber!;
         }

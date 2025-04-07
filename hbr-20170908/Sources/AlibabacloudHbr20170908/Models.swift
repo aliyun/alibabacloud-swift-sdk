@@ -7714,6 +7714,43 @@ public class DeleteVaultResponse : Tea.TeaModel {
 }
 
 public class DescribeBackupClientsRequest : Tea.TeaModel {
+    public class Filters : Tea.TeaModel {
+        public var key: String?
+
+        public var values: [String]?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.key != nil {
+                map["Key"] = self.key!
+            }
+            if self.values != nil {
+                map["Values"] = self.values!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("Key") {
+                self.key = dict["Key"] as! String
+            }
+            if dict.keys.contains("Values") {
+                self.values = dict["Values"] as! [String]
+            }
+        }
+    }
     public class Tag : Tea.TeaModel {
         public var key: String?
 
@@ -7763,6 +7800,8 @@ public class DescribeBackupClientsRequest : Tea.TeaModel {
 
     public var crossAccountUserId: Int64?
 
+    public var filters: [DescribeBackupClientsRequest.Filters]?
+
     public var instanceIds: [String]?
 
     public var pageNumber: Int32?
@@ -7803,6 +7842,13 @@ public class DescribeBackupClientsRequest : Tea.TeaModel {
         if self.crossAccountUserId != nil {
             map["CrossAccountUserId"] = self.crossAccountUserId!
         }
+        if self.filters != nil {
+            var tmp : [Any] = []
+            for k in self.filters! {
+                tmp.append(k.toMap())
+            }
+            map["Filters"] = tmp
+        }
         if self.instanceIds != nil {
             map["InstanceIds"] = self.instanceIds!
         }
@@ -7841,6 +7887,17 @@ public class DescribeBackupClientsRequest : Tea.TeaModel {
         if dict.keys.contains("CrossAccountUserId") {
             self.crossAccountUserId = dict["CrossAccountUserId"] as! Int64
         }
+        if dict.keys.contains("Filters") {
+            var tmp : [DescribeBackupClientsRequest.Filters] = []
+            for v in dict["Filters"] as! [Any] {
+                var model = DescribeBackupClientsRequest.Filters()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.filters = tmp
+        }
         if dict.keys.contains("InstanceIds") {
             self.instanceIds = dict["InstanceIds"] as! [String]
         }
@@ -7865,6 +7922,43 @@ public class DescribeBackupClientsRequest : Tea.TeaModel {
 }
 
 public class DescribeBackupClientsShrinkRequest : Tea.TeaModel {
+    public class Filters : Tea.TeaModel {
+        public var key: String?
+
+        public var values: [String]?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.key != nil {
+                map["Key"] = self.key!
+            }
+            if self.values != nil {
+                map["Values"] = self.values!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("Key") {
+                self.key = dict["Key"] as! String
+            }
+            if dict.keys.contains("Values") {
+                self.values = dict["Values"] as! [String]
+            }
+        }
+    }
     public class Tag : Tea.TeaModel {
         public var key: String?
 
@@ -7914,6 +8008,8 @@ public class DescribeBackupClientsShrinkRequest : Tea.TeaModel {
 
     public var crossAccountUserId: Int64?
 
+    public var filters: [DescribeBackupClientsShrinkRequest.Filters]?
+
     public var instanceIdsShrink: String?
 
     public var pageNumber: Int32?
@@ -7954,6 +8050,13 @@ public class DescribeBackupClientsShrinkRequest : Tea.TeaModel {
         if self.crossAccountUserId != nil {
             map["CrossAccountUserId"] = self.crossAccountUserId!
         }
+        if self.filters != nil {
+            var tmp : [Any] = []
+            for k in self.filters! {
+                tmp.append(k.toMap())
+            }
+            map["Filters"] = tmp
+        }
         if self.instanceIdsShrink != nil {
             map["InstanceIds"] = self.instanceIdsShrink!
         }
@@ -7991,6 +8094,17 @@ public class DescribeBackupClientsShrinkRequest : Tea.TeaModel {
         }
         if dict.keys.contains("CrossAccountUserId") {
             self.crossAccountUserId = dict["CrossAccountUserId"] as! Int64
+        }
+        if dict.keys.contains("Filters") {
+            var tmp : [DescribeBackupClientsShrinkRequest.Filters] = []
+            for v in dict["Filters"] as! [Any] {
+                var model = DescribeBackupClientsShrinkRequest.Filters()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.filters = tmp
         }
         if dict.keys.contains("InstanceIds") {
             self.instanceIdsShrink = dict["InstanceIds"] as! String
