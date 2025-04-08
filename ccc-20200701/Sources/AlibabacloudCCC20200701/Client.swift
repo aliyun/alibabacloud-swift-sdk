@@ -8202,6 +8202,67 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func listVisitorChatMessagesWithOptions(_ request: ListVisitorChatMessagesRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ListVisitorChatMessagesResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.accessChannelId)) {
+            query["AccessChannelId"] = request.accessChannelId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.accessToken)) {
+            query["AccessToken"] = request.accessToken ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.endTime)) {
+            query["EndTime"] = request.endTime ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.instanceId)) {
+            query["InstanceId"] = request.instanceId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.nextPageToken)) {
+            query["NextPageToken"] = request.nextPageToken ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.pageSize)) {
+            query["PageSize"] = request.pageSize!;
+        }
+        if (!TeaUtils.Client.isUnset(request.sortOrder)) {
+            query["SortOrder"] = request.sortOrder ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.startTime)) {
+            query["StartTime"] = request.startTime!;
+        }
+        if (!TeaUtils.Client.isUnset(request.visitorId)) {
+            query["VisitorId"] = request.visitorId ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "ListVisitorChatMessages",
+            "version": "2020-07-01",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        if (TeaUtils.Client.isUnset(self._signatureVersion) || !TeaUtils.Client.equalString(self._signatureVersion, "v4")) {
+            var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+            return Tea.TeaConverter.fromMap(ListVisitorChatMessagesResponse(), tmp)
+        }
+        else {
+            var tmp: [String: Any] = try await execute(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+            return Tea.TeaConverter.fromMap(ListVisitorChatMessagesResponse(), tmp)
+        }
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func listVisitorChatMessages(_ request: ListVisitorChatMessagesRequest) async throws -> ListVisitorChatMessagesResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await listVisitorChatMessagesWithOptions(request as! ListVisitorChatMessagesRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func listVoicemailsWithOptions(_ request: ListVoicemailsRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ListVoicemailsResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
