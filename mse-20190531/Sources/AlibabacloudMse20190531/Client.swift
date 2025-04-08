@@ -251,6 +251,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.internetSlbSpec)) {
             query["InternetSlbSpec"] = request.internetSlbSpec ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.managedEntryNetworkType)) {
+            query["ManagedEntryNetworkType"] = request.managedEntryNetworkType ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.mserVersion)) {
             query["MserVersion"] = request.mserVersion ?? "";
         }

@@ -2129,6 +2129,8 @@ public class AddGatewayRequest : Tea.TeaModel {
 
     public var internetSlbSpec: String?
 
+    public var managedEntryNetworkType: String?
+
     public var mserVersion: String?
 
     public var name: String?
@@ -2196,6 +2198,9 @@ public class AddGatewayRequest : Tea.TeaModel {
         }
         if self.internetSlbSpec != nil {
             map["InternetSlbSpec"] = self.internetSlbSpec!
+        }
+        if self.managedEntryNetworkType != nil {
+            map["ManagedEntryNetworkType"] = self.managedEntryNetworkType!
         }
         if self.mserVersion != nil {
             map["MserVersion"] = self.mserVersion!
@@ -2277,6 +2282,9 @@ public class AddGatewayRequest : Tea.TeaModel {
         }
         if dict.keys.contains("InternetSlbSpec") {
             self.internetSlbSpec = dict["InternetSlbSpec"] as! String
+        }
+        if dict.keys.contains("ManagedEntryNetworkType") {
+            self.managedEntryNetworkType = dict["ManagedEntryNetworkType"] as! String
         }
         if dict.keys.contains("MserVersion") {
             self.mserVersion = dict["MserVersion"] as! String
@@ -2396,6 +2404,8 @@ public class AddGatewayShrinkRequest : Tea.TeaModel {
 
     public var internetSlbSpec: String?
 
+    public var managedEntryNetworkType: String?
+
     public var mserVersion: String?
 
     public var name: String?
@@ -2463,6 +2473,9 @@ public class AddGatewayShrinkRequest : Tea.TeaModel {
         }
         if self.internetSlbSpec != nil {
             map["InternetSlbSpec"] = self.internetSlbSpec!
+        }
+        if self.managedEntryNetworkType != nil {
+            map["ManagedEntryNetworkType"] = self.managedEntryNetworkType!
         }
         if self.mserVersion != nil {
             map["MserVersion"] = self.mserVersion!
@@ -2540,6 +2553,9 @@ public class AddGatewayShrinkRequest : Tea.TeaModel {
         }
         if dict.keys.contains("InternetSlbSpec") {
             self.internetSlbSpec = dict["InternetSlbSpec"] as! String
+        }
+        if dict.keys.contains("ManagedEntryNetworkType") {
+            self.managedEntryNetworkType = dict["ManagedEntryNetworkType"] as! String
         }
         if dict.keys.contains("MserVersion") {
             self.mserVersion = dict["MserVersion"] as! String
@@ -26444,6 +26460,8 @@ public class GetGatewayConfigResponseBody : Tea.TeaModel {
 
         public var enableGzip: Bool?
 
+        public var enableGzipHardwareAccelerate: Bool?
+
         public var enableHardwareAccelerate: Bool?
 
         public var enableHttp2: Bool?
@@ -26528,6 +26546,9 @@ public class GetGatewayConfigResponseBody : Tea.TeaModel {
             }
             if self.enableGzip != nil {
                 map["EnableGzip"] = self.enableGzip!
+            }
+            if self.enableGzipHardwareAccelerate != nil {
+                map["EnableGzipHardwareAccelerate"] = self.enableGzipHardwareAccelerate!
             }
             if self.enableHardwareAccelerate != nil {
                 map["EnableHardwareAccelerate"] = self.enableHardwareAccelerate!
@@ -26622,6 +26643,9 @@ public class GetGatewayConfigResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("EnableGzip") {
                 self.enableGzip = dict["EnableGzip"] as! Bool
+            }
+            if dict.keys.contains("EnableGzipHardwareAccelerate") {
+                self.enableGzipHardwareAccelerate = dict["EnableGzipHardwareAccelerate"] as! Bool
             }
             if dict.keys.contains("EnableHardwareAccelerate") {
                 self.enableHardwareAccelerate = dict["EnableHardwareAccelerate"] as! Bool
@@ -26923,6 +26947,8 @@ public class GetGatewayDomainDetailResponseBody : Tea.TeaModel {
 
         public var id: Int64?
 
+        public var isManaged: Bool?
+
         public var issuer: String?
 
         public var mustHttps: Bool?
@@ -26993,6 +27019,9 @@ public class GetGatewayDomainDetailResponseBody : Tea.TeaModel {
             if self.id != nil {
                 map["Id"] = self.id!
             }
+            if self.isManaged != nil {
+                map["IsManaged"] = self.isManaged!
+            }
             if self.issuer != nil {
                 map["Issuer"] = self.issuer!
             }
@@ -27059,6 +27088,9 @@ public class GetGatewayDomainDetailResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("Id") {
                 self.id = dict["Id"] as! Int64
+            }
+            if dict.keys.contains("IsManaged") {
+                self.isManaged = dict["IsManaged"] as! Bool
             }
             if dict.keys.contains("Issuer") {
                 self.issuer = dict["Issuer"] as! String
@@ -46572,6 +46604,8 @@ public class ListGatewayDomainResponseBody : Tea.TeaModel {
 
         public var id: Int64?
 
+        public var isManaged: Bool?
+
         public var mustHttps: Bool?
 
         public var name: String?
@@ -46625,6 +46659,9 @@ public class ListGatewayDomainResponseBody : Tea.TeaModel {
             if self.id != nil {
                 map["Id"] = self.id!
             }
+            if self.isManaged != nil {
+                map["IsManaged"] = self.isManaged!
+            }
             if self.mustHttps != nil {
                 map["MustHttps"] = self.mustHttps!
             }
@@ -46675,6 +46712,9 @@ public class ListGatewayDomainResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("Id") {
                 self.id = dict["Id"] as! Int64
+            }
+            if dict.keys.contains("IsManaged") {
+                self.isManaged = dict["IsManaged"] as! Bool
             }
             if dict.keys.contains("MustHttps") {
                 self.mustHttps = dict["MustHttps"] as! Bool
@@ -51049,6 +51089,8 @@ public class ListGatewayZoneResponseBody : Tea.TeaModel {
     public class Data : Tea.TeaModel {
         public var localName: String?
 
+        public var supportQat: Bool?
+
         public var zoneId: String?
 
         public override init() {
@@ -51068,6 +51110,9 @@ public class ListGatewayZoneResponseBody : Tea.TeaModel {
             if self.localName != nil {
                 map["LocalName"] = self.localName!
             }
+            if self.supportQat != nil {
+                map["SupportQat"] = self.supportQat!
+            }
             if self.zoneId != nil {
                 map["ZoneId"] = self.zoneId!
             }
@@ -51077,6 +51122,9 @@ public class ListGatewayZoneResponseBody : Tea.TeaModel {
         public override func fromMap(_ dict: [String: Any]) -> Void {
             if dict.keys.contains("LocalName") {
                 self.localName = dict["LocalName"] as! String
+            }
+            if dict.keys.contains("SupportQat") {
+                self.supportQat = dict["SupportQat"] as! Bool
             }
             if dict.keys.contains("ZoneId") {
                 self.zoneId = dict["ZoneId"] as! String
