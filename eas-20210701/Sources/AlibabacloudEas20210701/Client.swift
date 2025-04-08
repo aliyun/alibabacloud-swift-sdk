@@ -3114,6 +3114,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.groupName)) {
             query["GroupName"] = request.groupName ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.includeNoWorkspace)) {
+            query["IncludeNoWorkspace"] = request.includeNoWorkspace!;
+        }
         if (!TeaUtils.Client.isUnset(request.labelShrink)) {
             query["Label"] = request.labelShrink ?? "";
         }

@@ -13978,6 +13978,8 @@ public class ListServicesRequest : Tea.TeaModel {
 
     public var groupName: String?
 
+    public var includeNoWorkspace: Bool?
+
     public var label: [String: String]?
 
     public var order: String?
@@ -14030,6 +14032,9 @@ public class ListServicesRequest : Tea.TeaModel {
         }
         if self.groupName != nil {
             map["GroupName"] = self.groupName!
+        }
+        if self.includeNoWorkspace != nil {
+            map["IncludeNoWorkspace"] = self.includeNoWorkspace!
         }
         if self.label != nil {
             map["Label"] = self.label!
@@ -14089,6 +14094,9 @@ public class ListServicesRequest : Tea.TeaModel {
         if dict.keys.contains("GroupName") {
             self.groupName = dict["GroupName"] as! String
         }
+        if dict.keys.contains("IncludeNoWorkspace") {
+            self.includeNoWorkspace = dict["IncludeNoWorkspace"] as! Bool
+        }
         if dict.keys.contains("Label") {
             self.label = dict["Label"] as! [String: String]
         }
@@ -14144,6 +14152,8 @@ public class ListServicesShrinkRequest : Tea.TeaModel {
 
     public var groupName: String?
 
+    public var includeNoWorkspace: Bool?
+
     public var labelShrink: String?
 
     public var order: String?
@@ -14196,6 +14206,9 @@ public class ListServicesShrinkRequest : Tea.TeaModel {
         }
         if self.groupName != nil {
             map["GroupName"] = self.groupName!
+        }
+        if self.includeNoWorkspace != nil {
+            map["IncludeNoWorkspace"] = self.includeNoWorkspace!
         }
         if self.labelShrink != nil {
             map["Label"] = self.labelShrink!
@@ -14254,6 +14267,9 @@ public class ListServicesShrinkRequest : Tea.TeaModel {
         }
         if dict.keys.contains("GroupName") {
             self.groupName = dict["GroupName"] as! String
+        }
+        if dict.keys.contains("IncludeNoWorkspace") {
+            self.includeNoWorkspace = dict["IncludeNoWorkspace"] as! Bool
         }
         if dict.keys.contains("Label") {
             self.labelShrink = dict["Label"] as! String
