@@ -7534,7 +7534,9 @@ public class SearchProductsResponseBody : Tea.TeaModel {
         public class CategoryChain : Tea.TeaModel {
             public var categoryId: Int64?
 
-            public var level: Bool?
+            public var isLeaf: Bool?
+
+            public var level: Int32?
 
             public var name: String?
 
@@ -7557,6 +7559,9 @@ public class SearchProductsResponseBody : Tea.TeaModel {
                 if self.categoryId != nil {
                     map["categoryId"] = self.categoryId!
                 }
+                if self.isLeaf != nil {
+                    map["isLeaf"] = self.isLeaf!
+                }
                 if self.level != nil {
                     map["level"] = self.level!
                 }
@@ -7573,8 +7578,11 @@ public class SearchProductsResponseBody : Tea.TeaModel {
                 if dict.keys.contains("categoryId") {
                     self.categoryId = dict["categoryId"] as! Int64
                 }
+                if dict.keys.contains("isLeaf") {
+                    self.isLeaf = dict["isLeaf"] as! Bool
+                }
                 if dict.keys.contains("level") {
-                    self.level = dict["level"] as! Bool
+                    self.level = dict["level"] as! Int32
                 }
                 if dict.keys.contains("name") {
                     self.name = dict["name"] as! String
