@@ -1,7 +1,7 @@
 Pod::Spec.new do |spec|
 
   spec.name         = "AlibabacloudImageSearch20201214"
-  spec.version      = "1.0.0"
+  spec.version      = "1.1.0"
   spec.license      = "Apache 2.0"
   spec.summary      = "Alibaba Cloud image search (20201214) SDK Library for Swift"
   spec.homepage     = "https://github.com/alibabacloud-sdk-swift/imagesearch-20201214" 
