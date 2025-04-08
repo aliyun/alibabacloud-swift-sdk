@@ -32305,6 +32305,8 @@ public class ModifyInstanceAttributeRequest : Tea.TeaModel {
 
     public var instanceId: String?
 
+    public var instanceIds: [String]?
+
     public var ownerId: Int64?
 
     public var regionId: String?
@@ -32333,6 +32335,9 @@ public class ModifyInstanceAttributeRequest : Tea.TeaModel {
         if self.instanceId != nil {
             map["InstanceId"] = self.instanceId!
         }
+        if self.instanceIds != nil {
+            map["InstanceIds"] = self.instanceIds!
+        }
         if self.ownerId != nil {
             map["OwnerId"] = self.ownerId!
         }
@@ -32354,6 +32359,9 @@ public class ModifyInstanceAttributeRequest : Tea.TeaModel {
         }
         if dict.keys.contains("InstanceId") {
             self.instanceId = dict["InstanceId"] as! String
+        }
+        if dict.keys.contains("InstanceIds") {
+            self.instanceIds = dict["InstanceIds"] as! [String]
         }
         if dict.keys.contains("OwnerId") {
             self.ownerId = dict["OwnerId"] as! Int64
