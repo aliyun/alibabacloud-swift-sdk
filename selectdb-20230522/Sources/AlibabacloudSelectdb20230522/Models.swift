@@ -794,6 +794,43 @@ public class CreateDBClusterResponse : Tea.TeaModel {
 }
 
 public class CreateDBInstanceRequest : Tea.TeaModel {
+    public class MultiZone : Tea.TeaModel {
+        public var vSwitchIds: [String]?
+
+        public var zoneId: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.vSwitchIds != nil {
+                map["VSwitchIds"] = self.vSwitchIds!
+            }
+            if self.zoneId != nil {
+                map["ZoneId"] = self.zoneId!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("VSwitchIds") {
+                self.vSwitchIds = dict["VSwitchIds"] as! [String]
+            }
+            if dict.keys.contains("ZoneId") {
+                self.zoneId = dict["ZoneId"] as! String
+            }
+        }
+    }
     public class Tag : Tea.TeaModel {
         public var key: String?
 
@@ -843,9 +880,13 @@ public class CreateDBInstanceRequest : Tea.TeaModel {
 
     public var DBInstanceDescription: String?
 
+    public var deployScheme: String?
+
     public var engine: String?
 
     public var engineVersion: String?
+
+    public var multiZone: [CreateDBInstanceRequest.MultiZone]?
 
     public var period: String?
 
@@ -899,11 +940,21 @@ public class CreateDBInstanceRequest : Tea.TeaModel {
         if self.DBInstanceDescription != nil {
             map["DBInstanceDescription"] = self.DBInstanceDescription!
         }
+        if self.deployScheme != nil {
+            map["DeployScheme"] = self.deployScheme!
+        }
         if self.engine != nil {
             map["Engine"] = self.engine!
         }
         if self.engineVersion != nil {
             map["EngineVersion"] = self.engineVersion!
+        }
+        if self.multiZone != nil {
+            var tmp : [Any] = []
+            for k in self.multiZone! {
+                tmp.append(k.toMap())
+            }
+            map["MultiZone"] = tmp
         }
         if self.period != nil {
             map["Period"] = self.period!
@@ -961,11 +1012,25 @@ public class CreateDBInstanceRequest : Tea.TeaModel {
         if dict.keys.contains("DBInstanceDescription") {
             self.DBInstanceDescription = dict["DBInstanceDescription"] as! String
         }
+        if dict.keys.contains("DeployScheme") {
+            self.deployScheme = dict["DeployScheme"] as! String
+        }
         if dict.keys.contains("Engine") {
             self.engine = dict["Engine"] as! String
         }
         if dict.keys.contains("EngineVersion") {
             self.engineVersion = dict["EngineVersion"] as! String
+        }
+        if dict.keys.contains("MultiZone") {
+            var tmp : [CreateDBInstanceRequest.MultiZone] = []
+            for v in dict["MultiZone"] as! [Any] {
+                var model = CreateDBInstanceRequest.MultiZone()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.multiZone = tmp
         }
         if dict.keys.contains("Period") {
             self.period = dict["Period"] as! String
@@ -1021,9 +1086,13 @@ public class CreateDBInstanceShrinkRequest : Tea.TeaModel {
 
     public var DBInstanceDescription: String?
 
+    public var deployScheme: String?
+
     public var engine: String?
 
     public var engineVersion: String?
+
+    public var multiZoneShrink: String?
 
     public var period: String?
 
@@ -1077,11 +1146,17 @@ public class CreateDBInstanceShrinkRequest : Tea.TeaModel {
         if self.DBInstanceDescription != nil {
             map["DBInstanceDescription"] = self.DBInstanceDescription!
         }
+        if self.deployScheme != nil {
+            map["DeployScheme"] = self.deployScheme!
+        }
         if self.engine != nil {
             map["Engine"] = self.engine!
         }
         if self.engineVersion != nil {
             map["EngineVersion"] = self.engineVersion!
+        }
+        if self.multiZoneShrink != nil {
+            map["MultiZone"] = self.multiZoneShrink!
         }
         if self.period != nil {
             map["Period"] = self.period!
@@ -1135,11 +1210,17 @@ public class CreateDBInstanceShrinkRequest : Tea.TeaModel {
         if dict.keys.contains("DBInstanceDescription") {
             self.DBInstanceDescription = dict["DBInstanceDescription"] as! String
         }
+        if dict.keys.contains("DeployScheme") {
+            self.deployScheme = dict["DeployScheme"] as! String
+        }
         if dict.keys.contains("Engine") {
             self.engine = dict["Engine"] as! String
         }
         if dict.keys.contains("EngineVersion") {
             self.engineVersion = dict["EngineVersion"] as! String
+        }
+        if dict.keys.contains("MultiZone") {
+            self.multiZoneShrink = dict["MultiZone"] as! String
         }
         if dict.keys.contains("Period") {
             self.period = dict["Period"] as! String
@@ -1295,6 +1376,243 @@ public class CreateDBInstanceResponse : Tea.TeaModel {
         }
         if dict.keys.contains("body") {
             var model = CreateDBInstanceResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
+public class CreateElasticRuleRequest : Tea.TeaModel {
+    public var clusterClass: String?
+
+    public var clusterId: String?
+
+    public var dbInstanceId: String?
+
+    public var elasticRuleStartTime: String?
+
+    public var executionPeriod: String?
+
+    public var regionId: String?
+
+    public var resourceOwnerId: Int64?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.clusterClass != nil {
+            map["ClusterClass"] = self.clusterClass!
+        }
+        if self.clusterId != nil {
+            map["ClusterId"] = self.clusterId!
+        }
+        if self.dbInstanceId != nil {
+            map["DbInstanceId"] = self.dbInstanceId!
+        }
+        if self.elasticRuleStartTime != nil {
+            map["ElasticRuleStartTime"] = self.elasticRuleStartTime!
+        }
+        if self.executionPeriod != nil {
+            map["ExecutionPeriod"] = self.executionPeriod!
+        }
+        if self.regionId != nil {
+            map["RegionId"] = self.regionId!
+        }
+        if self.resourceOwnerId != nil {
+            map["ResourceOwnerId"] = self.resourceOwnerId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("ClusterClass") {
+            self.clusterClass = dict["ClusterClass"] as! String
+        }
+        if dict.keys.contains("ClusterId") {
+            self.clusterId = dict["ClusterId"] as! String
+        }
+        if dict.keys.contains("DbInstanceId") {
+            self.dbInstanceId = dict["DbInstanceId"] as! String
+        }
+        if dict.keys.contains("ElasticRuleStartTime") {
+            self.elasticRuleStartTime = dict["ElasticRuleStartTime"] as! String
+        }
+        if dict.keys.contains("ExecutionPeriod") {
+            self.executionPeriod = dict["ExecutionPeriod"] as! String
+        }
+        if dict.keys.contains("RegionId") {
+            self.regionId = dict["RegionId"] as! String
+        }
+        if dict.keys.contains("ResourceOwnerId") {
+            self.resourceOwnerId = dict["ResourceOwnerId"] as! Int64
+        }
+    }
+}
+
+public class CreateElasticRuleResponseBody : Tea.TeaModel {
+    public class Data : Tea.TeaModel {
+        public var clusterClass: String?
+
+        public var clusterId: String?
+
+        public var dbInstanceId: String?
+
+        public var elasticRuleStartTime: String?
+
+        public var executionPeriod: String?
+
+        public var ruleId: Int64?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.clusterClass != nil {
+                map["ClusterClass"] = self.clusterClass!
+            }
+            if self.clusterId != nil {
+                map["ClusterId"] = self.clusterId!
+            }
+            if self.dbInstanceId != nil {
+                map["DbInstanceId"] = self.dbInstanceId!
+            }
+            if self.elasticRuleStartTime != nil {
+                map["ElasticRuleStartTime"] = self.elasticRuleStartTime!
+            }
+            if self.executionPeriod != nil {
+                map["ExecutionPeriod"] = self.executionPeriod!
+            }
+            if self.ruleId != nil {
+                map["RuleId"] = self.ruleId!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("ClusterClass") {
+                self.clusterClass = dict["ClusterClass"] as! String
+            }
+            if dict.keys.contains("ClusterId") {
+                self.clusterId = dict["ClusterId"] as! String
+            }
+            if dict.keys.contains("DbInstanceId") {
+                self.dbInstanceId = dict["DbInstanceId"] as! String
+            }
+            if dict.keys.contains("ElasticRuleStartTime") {
+                self.elasticRuleStartTime = dict["ElasticRuleStartTime"] as! String
+            }
+            if dict.keys.contains("ExecutionPeriod") {
+                self.executionPeriod = dict["ExecutionPeriod"] as! String
+            }
+            if dict.keys.contains("RuleId") {
+                self.ruleId = dict["RuleId"] as! Int64
+            }
+        }
+    }
+    public var data: CreateElasticRuleResponseBody.Data?
+
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.data?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.data != nil {
+            map["Data"] = self.data?.toMap()
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("Data") {
+            var model = CreateElasticRuleResponseBody.Data()
+            model.fromMap(dict["Data"] as! [String: Any])
+            self.data = model
+        }
+        if dict.keys.contains("RequestId") {
+            self.requestId = dict["RequestId"] as! String
+        }
+    }
+}
+
+public class CreateElasticRuleResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: CreateElasticRuleResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") {
+            var model = CreateElasticRuleResponseBody()
             model.fromMap(dict["body"] as! [String: Any])
             self.body = model
         }
@@ -1726,6 +2044,163 @@ public class DeleteDBInstanceResponse : Tea.TeaModel {
         }
         if dict.keys.contains("body") {
             var model = DeleteDBInstanceResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
+public class DeleteElasticRuleRequest : Tea.TeaModel {
+    public var clusterId: String?
+
+    public var dbInstanceId: String?
+
+    public var product: String?
+
+    public var regionId: String?
+
+    public var resourceOwnerId: Int64?
+
+    public var ruleId: Int64?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.clusterId != nil {
+            map["ClusterId"] = self.clusterId!
+        }
+        if self.dbInstanceId != nil {
+            map["DbInstanceId"] = self.dbInstanceId!
+        }
+        if self.product != nil {
+            map["Product"] = self.product!
+        }
+        if self.regionId != nil {
+            map["RegionId"] = self.regionId!
+        }
+        if self.resourceOwnerId != nil {
+            map["ResourceOwnerId"] = self.resourceOwnerId!
+        }
+        if self.ruleId != nil {
+            map["RuleId"] = self.ruleId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("ClusterId") {
+            self.clusterId = dict["ClusterId"] as! String
+        }
+        if dict.keys.contains("DbInstanceId") {
+            self.dbInstanceId = dict["DbInstanceId"] as! String
+        }
+        if dict.keys.contains("Product") {
+            self.product = dict["Product"] as! String
+        }
+        if dict.keys.contains("RegionId") {
+            self.regionId = dict["RegionId"] as! String
+        }
+        if dict.keys.contains("ResourceOwnerId") {
+            self.resourceOwnerId = dict["ResourceOwnerId"] as! Int64
+        }
+        if dict.keys.contains("RuleId") {
+            self.ruleId = dict["RuleId"] as! Int64
+        }
+    }
+}
+
+public class DeleteElasticRuleResponseBody : Tea.TeaModel {
+    public var requestId: String?
+
+    public var success: Bool?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.success != nil {
+            map["Success"] = self.success!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("RequestId") {
+            self.requestId = dict["RequestId"] as! String
+        }
+        if dict.keys.contains("Success") {
+            self.success = dict["Success"] as! Bool
+        }
+    }
+}
+
+public class DeleteElasticRuleResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: DeleteElasticRuleResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") {
+            var model = DeleteElasticRuleResponseBody()
             model.fromMap(dict["body"] as! [String: Any])
             self.body = model
         }
@@ -2660,6 +3135,8 @@ public class DescribeDBInstanceAttributeResponseBody : Tea.TeaModel {
 
         public var chargeType: String?
 
+        public var clusterBinding: String?
+
         public var cpuCores: Int64?
 
         public var createdTime: String?
@@ -2678,9 +3155,17 @@ public class DescribeDBInstanceAttributeResponseBody : Tea.TeaModel {
 
         public var performanceLevel: String?
 
+        public var scalingRulesEnable: Bool?
+
         public var startTime: String?
 
         public var status: String?
+
+        public var subDomain: String?
+
+        public var vSwitchId: String?
+
+        public var zoneId: String?
 
         public override init() {
             super.init()
@@ -2704,6 +3189,9 @@ public class DescribeDBInstanceAttributeResponseBody : Tea.TeaModel {
             }
             if self.chargeType != nil {
                 map["ChargeType"] = self.chargeType!
+            }
+            if self.clusterBinding != nil {
+                map["ClusterBinding"] = self.clusterBinding!
             }
             if self.cpuCores != nil {
                 map["CpuCores"] = self.cpuCores!
@@ -2732,11 +3220,23 @@ public class DescribeDBInstanceAttributeResponseBody : Tea.TeaModel {
             if self.performanceLevel != nil {
                 map["PerformanceLevel"] = self.performanceLevel!
             }
+            if self.scalingRulesEnable != nil {
+                map["ScalingRulesEnable"] = self.scalingRulesEnable!
+            }
             if self.startTime != nil {
                 map["StartTime"] = self.startTime!
             }
             if self.status != nil {
                 map["Status"] = self.status!
+            }
+            if self.subDomain != nil {
+                map["SubDomain"] = self.subDomain!
+            }
+            if self.vSwitchId != nil {
+                map["VSwitchId"] = self.vSwitchId!
+            }
+            if self.zoneId != nil {
+                map["ZoneId"] = self.zoneId!
             }
             return map
         }
@@ -2750,6 +3250,9 @@ public class DescribeDBInstanceAttributeResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("ChargeType") {
                 self.chargeType = dict["ChargeType"] as! String
+            }
+            if dict.keys.contains("ClusterBinding") {
+                self.clusterBinding = dict["ClusterBinding"] as! String
             }
             if dict.keys.contains("CpuCores") {
                 self.cpuCores = dict["CpuCores"] as! Int64
@@ -2778,11 +3281,76 @@ public class DescribeDBInstanceAttributeResponseBody : Tea.TeaModel {
             if dict.keys.contains("PerformanceLevel") {
                 self.performanceLevel = dict["PerformanceLevel"] as! String
             }
+            if dict.keys.contains("ScalingRulesEnable") {
+                self.scalingRulesEnable = dict["ScalingRulesEnable"] as! Bool
+            }
             if dict.keys.contains("StartTime") {
                 self.startTime = dict["StartTime"] as! String
             }
             if dict.keys.contains("Status") {
                 self.status = dict["Status"] as! String
+            }
+            if dict.keys.contains("SubDomain") {
+                self.subDomain = dict["SubDomain"] as! String
+            }
+            if dict.keys.contains("VSwitchId") {
+                self.vSwitchId = dict["VSwitchId"] as! String
+            }
+            if dict.keys.contains("ZoneId") {
+                self.zoneId = dict["ZoneId"] as! String
+            }
+        }
+    }
+    public class MultiZone : Tea.TeaModel {
+        public var availableIpCount: Int64?
+
+        public var cidr: String?
+
+        public var vSwitchIds: [String]?
+
+        public var zoneId: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.availableIpCount != nil {
+                map["AvailableIpCount"] = self.availableIpCount!
+            }
+            if self.cidr != nil {
+                map["Cidr"] = self.cidr!
+            }
+            if self.vSwitchIds != nil {
+                map["VSwitchIds"] = self.vSwitchIds!
+            }
+            if self.zoneId != nil {
+                map["ZoneId"] = self.zoneId!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("AvailableIpCount") {
+                self.availableIpCount = dict["AvailableIpCount"] as! Int64
+            }
+            if dict.keys.contains("Cidr") {
+                self.cidr = dict["Cidr"] as! String
+            }
+            if dict.keys.contains("VSwitchIds") {
+                self.vSwitchIds = dict["VSwitchIds"] as! [String]
+            }
+            if dict.keys.contains("ZoneId") {
+                self.zoneId = dict["ZoneId"] as! String
             }
         }
     }
@@ -2833,6 +3401,8 @@ public class DescribeDBInstanceAttributeResponseBody : Tea.TeaModel {
 
     public var DBInstanceId: String?
 
+    public var deployScheme: String?
+
     public var description_: String?
 
     public var engine: String?
@@ -2853,6 +3423,8 @@ public class DescribeDBInstanceAttributeResponseBody : Tea.TeaModel {
 
     public var maintainStarttime: String?
 
+    public var multiZone: [DescribeDBInstanceAttributeResponseBody.MultiZone]?
+
     public var objectStoreSize: Int64?
 
     public var regionId: String?
@@ -2870,6 +3442,8 @@ public class DescribeDBInstanceAttributeResponseBody : Tea.TeaModel {
     public var subDomain: String?
 
     public var tags: [DescribeDBInstanceAttributeResponseBody.Tags]?
+
+    public var vSwitchId: String?
 
     public var vpcId: String?
 
@@ -2908,6 +3482,9 @@ public class DescribeDBInstanceAttributeResponseBody : Tea.TeaModel {
         if self.DBInstanceId != nil {
             map["DBInstanceId"] = self.DBInstanceId!
         }
+        if self.deployScheme != nil {
+            map["DeployScheme"] = self.deployScheme!
+        }
         if self.description_ != nil {
             map["Description"] = self.description_!
         }
@@ -2937,6 +3514,13 @@ public class DescribeDBInstanceAttributeResponseBody : Tea.TeaModel {
         }
         if self.maintainStarttime != nil {
             map["MaintainStarttime"] = self.maintainStarttime!
+        }
+        if self.multiZone != nil {
+            var tmp : [Any] = []
+            for k in self.multiZone! {
+                tmp.append(k.toMap())
+            }
+            map["MultiZone"] = tmp
         }
         if self.objectStoreSize != nil {
             map["ObjectStoreSize"] = self.objectStoreSize!
@@ -2968,6 +3552,9 @@ public class DescribeDBInstanceAttributeResponseBody : Tea.TeaModel {
                 tmp.append(k.toMap())
             }
             map["Tags"] = tmp
+        }
+        if self.vSwitchId != nil {
+            map["VSwitchId"] = self.vSwitchId!
         }
         if self.vpcId != nil {
             map["VpcId"] = self.vpcId!
@@ -3002,6 +3589,9 @@ public class DescribeDBInstanceAttributeResponseBody : Tea.TeaModel {
         if dict.keys.contains("DBInstanceId") {
             self.DBInstanceId = dict["DBInstanceId"] as! String
         }
+        if dict.keys.contains("DeployScheme") {
+            self.deployScheme = dict["DeployScheme"] as! String
+        }
         if dict.keys.contains("Description") {
             self.description_ = dict["Description"] as! String
         }
@@ -3031,6 +3621,17 @@ public class DescribeDBInstanceAttributeResponseBody : Tea.TeaModel {
         }
         if dict.keys.contains("MaintainStarttime") {
             self.maintainStarttime = dict["MaintainStarttime"] as! String
+        }
+        if dict.keys.contains("MultiZone") {
+            var tmp : [DescribeDBInstanceAttributeResponseBody.MultiZone] = []
+            for v in dict["MultiZone"] as! [Any] {
+                var model = DescribeDBInstanceAttributeResponseBody.MultiZone()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.multiZone = tmp
         }
         if dict.keys.contains("ObjectStoreSize") {
             self.objectStoreSize = dict["ObjectStoreSize"] as! Int64
@@ -3066,6 +3667,9 @@ public class DescribeDBInstanceAttributeResponseBody : Tea.TeaModel {
                 tmp.append(model)
             }
             self.tags = tmp
+        }
+        if dict.keys.contains("VSwitchId") {
+            self.vSwitchId = dict["VSwitchId"] as! String
         }
         if dict.keys.contains("VpcId") {
             self.vpcId = dict["VpcId"] as! String
@@ -3813,6 +4417,43 @@ public class DescribeDBInstancesShrinkRequest : Tea.TeaModel {
 
 public class DescribeDBInstancesResponseBody : Tea.TeaModel {
     public class Items : Tea.TeaModel {
+        public class MultiZone : Tea.TeaModel {
+            public var vSwitchIds: [String]?
+
+            public var zoneId: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.vSwitchIds != nil {
+                    map["VSwitchIds"] = self.vSwitchIds!
+                }
+                if self.zoneId != nil {
+                    map["ZoneId"] = self.zoneId!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("VSwitchIds") {
+                    self.vSwitchIds = dict["VSwitchIds"] as! [String]
+                }
+                if dict.keys.contains("ZoneId") {
+                    self.zoneId = dict["ZoneId"] as! String
+                }
+            }
+        }
         public class Tags : Tea.TeaModel {
             public var tagKey: String?
 
@@ -3858,9 +4499,13 @@ public class DescribeDBInstancesResponseBody : Tea.TeaModel {
 
         public var DBInstanceId: String?
 
+        public var deployScheme: String?
+
         public var description_: String?
 
         public var engine: String?
+
+        public var engineMinorVersion: String?
 
         public var engineVersion: String?
 
@@ -3885,6 +4530,8 @@ public class DescribeDBInstancesResponseBody : Tea.TeaModel {
         public var maintainStartTimeStr: String?
 
         public var maintainStarttime: String?
+
+        public var multiZone: [DescribeDBInstancesResponseBody.Items.MultiZone]?
 
         public var objectStoreSize: Int64?
 
@@ -3952,11 +4599,17 @@ public class DescribeDBInstancesResponseBody : Tea.TeaModel {
             if self.DBInstanceId != nil {
                 map["DBInstanceId"] = self.DBInstanceId!
             }
+            if self.deployScheme != nil {
+                map["DeployScheme"] = self.deployScheme!
+            }
             if self.description_ != nil {
                 map["Description"] = self.description_!
             }
             if self.engine != nil {
                 map["Engine"] = self.engine!
+            }
+            if self.engineMinorVersion != nil {
+                map["EngineMinorVersion"] = self.engineMinorVersion!
             }
             if self.engineVersion != nil {
                 map["EngineVersion"] = self.engineVersion!
@@ -3993,6 +4646,13 @@ public class DescribeDBInstancesResponseBody : Tea.TeaModel {
             }
             if self.maintainStarttime != nil {
                 map["MaintainStarttime"] = self.maintainStarttime!
+            }
+            if self.multiZone != nil {
+                var tmp : [Any] = []
+                for k in self.multiZone! {
+                    tmp.append(k.toMap())
+                }
+                map["MultiZone"] = tmp
             }
             if self.objectStoreSize != nil {
                 map["ObjectStoreSize"] = self.objectStoreSize!
@@ -4074,11 +4734,17 @@ public class DescribeDBInstancesResponseBody : Tea.TeaModel {
             if dict.keys.contains("DBInstanceId") {
                 self.DBInstanceId = dict["DBInstanceId"] as! String
             }
+            if dict.keys.contains("DeployScheme") {
+                self.deployScheme = dict["DeployScheme"] as! String
+            }
             if dict.keys.contains("Description") {
                 self.description_ = dict["Description"] as! String
             }
             if dict.keys.contains("Engine") {
                 self.engine = dict["Engine"] as! String
+            }
+            if dict.keys.contains("EngineMinorVersion") {
+                self.engineMinorVersion = dict["EngineMinorVersion"] as! String
             }
             if dict.keys.contains("EngineVersion") {
                 self.engineVersion = dict["EngineVersion"] as! String
@@ -4115,6 +4781,17 @@ public class DescribeDBInstancesResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("MaintainStarttime") {
                 self.maintainStarttime = dict["MaintainStarttime"] as! String
+            }
+            if dict.keys.contains("MultiZone") {
+                var tmp : [DescribeDBInstancesResponseBody.Items.MultiZone] = []
+                for v in dict["MultiZone"] as! [Any] {
+                    var model = DescribeDBInstancesResponseBody.Items.MultiZone()
+                    if v != nil {
+                        model.fromMap(v as! [String: Any])
+                    }
+                    tmp.append(model)
+                }
+                self.multiZone = tmp
             }
             if dict.keys.contains("ObjectStoreSize") {
                 self.objectStoreSize = dict["ObjectStoreSize"] as! Int64
@@ -4302,6 +4979,539 @@ public class DescribeDBInstancesResponse : Tea.TeaModel {
         }
         if dict.keys.contains("body") {
             var model = DescribeDBInstancesResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
+public class DescribeElasticRulesRequest : Tea.TeaModel {
+    public var clusterId: String?
+
+    public var dbInstanceId: String?
+
+    public var product: String?
+
+    public var regionId: String?
+
+    public var resourceOwnerId: Int64?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.clusterId != nil {
+            map["ClusterId"] = self.clusterId!
+        }
+        if self.dbInstanceId != nil {
+            map["DbInstanceId"] = self.dbInstanceId!
+        }
+        if self.product != nil {
+            map["Product"] = self.product!
+        }
+        if self.regionId != nil {
+            map["RegionId"] = self.regionId!
+        }
+        if self.resourceOwnerId != nil {
+            map["ResourceOwnerId"] = self.resourceOwnerId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("ClusterId") {
+            self.clusterId = dict["ClusterId"] as! String
+        }
+        if dict.keys.contains("DbInstanceId") {
+            self.dbInstanceId = dict["DbInstanceId"] as! String
+        }
+        if dict.keys.contains("Product") {
+            self.product = dict["Product"] as! String
+        }
+        if dict.keys.contains("RegionId") {
+            self.regionId = dict["RegionId"] as! String
+        }
+        if dict.keys.contains("ResourceOwnerId") {
+            self.resourceOwnerId = dict["ResourceOwnerId"] as! Int64
+        }
+    }
+}
+
+public class DescribeElasticRulesResponseBody : Tea.TeaModel {
+    public class Data : Tea.TeaModel {
+        public class Rules : Tea.TeaModel {
+            public var clusterClass: String?
+
+            public var elasticRuleStartTime: String?
+
+            public var executionPeriod: String?
+
+            public var ruleId: Int64?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.clusterClass != nil {
+                    map["ClusterClass"] = self.clusterClass!
+                }
+                if self.elasticRuleStartTime != nil {
+                    map["ElasticRuleStartTime"] = self.elasticRuleStartTime!
+                }
+                if self.executionPeriod != nil {
+                    map["ExecutionPeriod"] = self.executionPeriod!
+                }
+                if self.ruleId != nil {
+                    map["RuleId"] = self.ruleId!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("ClusterClass") {
+                    self.clusterClass = dict["ClusterClass"] as! String
+                }
+                if dict.keys.contains("ElasticRuleStartTime") {
+                    self.elasticRuleStartTime = dict["ElasticRuleStartTime"] as! String
+                }
+                if dict.keys.contains("ExecutionPeriod") {
+                    self.executionPeriod = dict["ExecutionPeriod"] as! String
+                }
+                if dict.keys.contains("RuleId") {
+                    self.ruleId = dict["RuleId"] as! Int64
+                }
+            }
+        }
+        public var clusterId: String?
+
+        public var dbInstanceId: String?
+
+        public var rules: [DescribeElasticRulesResponseBody.Data.Rules]?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.clusterId != nil {
+                map["ClusterId"] = self.clusterId!
+            }
+            if self.dbInstanceId != nil {
+                map["DbInstanceId"] = self.dbInstanceId!
+            }
+            if self.rules != nil {
+                var tmp : [Any] = []
+                for k in self.rules! {
+                    tmp.append(k.toMap())
+                }
+                map["Rules"] = tmp
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("ClusterId") {
+                self.clusterId = dict["ClusterId"] as! String
+            }
+            if dict.keys.contains("DbInstanceId") {
+                self.dbInstanceId = dict["DbInstanceId"] as! String
+            }
+            if dict.keys.contains("Rules") {
+                var tmp : [DescribeElasticRulesResponseBody.Data.Rules] = []
+                for v in dict["Rules"] as! [Any] {
+                    var model = DescribeElasticRulesResponseBody.Data.Rules()
+                    if v != nil {
+                        model.fromMap(v as! [String: Any])
+                    }
+                    tmp.append(model)
+                }
+                self.rules = tmp
+            }
+        }
+    }
+    public var data: DescribeElasticRulesResponseBody.Data?
+
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.data?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.data != nil {
+            map["Data"] = self.data?.toMap()
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("Data") {
+            var model = DescribeElasticRulesResponseBody.Data()
+            model.fromMap(dict["Data"] as! [String: Any])
+            self.data = model
+        }
+        if dict.keys.contains("RequestId") {
+            self.requestId = dict["RequestId"] as! String
+        }
+    }
+}
+
+public class DescribeElasticRulesResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: DescribeElasticRulesResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") {
+            var model = DescribeElasticRulesResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
+public class DescribeRegionsRequest : Tea.TeaModel {
+    public var region: String?
+
+    public var zoneId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.region != nil {
+            map["Region"] = self.region!
+        }
+        if self.zoneId != nil {
+            map["ZoneId"] = self.zoneId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("Region") {
+            self.region = dict["Region"] as! String
+        }
+        if dict.keys.contains("ZoneId") {
+            self.zoneId = dict["ZoneId"] as! String
+        }
+    }
+}
+
+public class DescribeRegionsResponseBody : Tea.TeaModel {
+    public class RegionModelList : Tea.TeaModel {
+        public class Zones : Tea.TeaModel {
+            public var description_: String?
+
+            public var disabled: Bool?
+
+            public var label: String?
+
+            public var name: String?
+
+            public var regionId: String?
+
+            public var subDomain: String?
+
+            public var vpcEnabled: Bool?
+
+            public var zoneId: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.description_ != nil {
+                    map["Description"] = self.description_!
+                }
+                if self.disabled != nil {
+                    map["Disabled"] = self.disabled!
+                }
+                if self.label != nil {
+                    map["Label"] = self.label!
+                }
+                if self.name != nil {
+                    map["Name"] = self.name!
+                }
+                if self.regionId != nil {
+                    map["RegionId"] = self.regionId!
+                }
+                if self.subDomain != nil {
+                    map["SubDomain"] = self.subDomain!
+                }
+                if self.vpcEnabled != nil {
+                    map["VpcEnabled"] = self.vpcEnabled!
+                }
+                if self.zoneId != nil {
+                    map["ZoneId"] = self.zoneId!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("Description") {
+                    self.description_ = dict["Description"] as! String
+                }
+                if dict.keys.contains("Disabled") {
+                    self.disabled = dict["Disabled"] as! Bool
+                }
+                if dict.keys.contains("Label") {
+                    self.label = dict["Label"] as! String
+                }
+                if dict.keys.contains("Name") {
+                    self.name = dict["Name"] as! String
+                }
+                if dict.keys.contains("RegionId") {
+                    self.regionId = dict["RegionId"] as! String
+                }
+                if dict.keys.contains("SubDomain") {
+                    self.subDomain = dict["SubDomain"] as! String
+                }
+                if dict.keys.contains("VpcEnabled") {
+                    self.vpcEnabled = dict["VpcEnabled"] as! Bool
+                }
+                if dict.keys.contains("ZoneId") {
+                    self.zoneId = dict["ZoneId"] as! String
+                }
+            }
+        }
+        public var regionId: String?
+
+        public var zones: [DescribeRegionsResponseBody.RegionModelList.Zones]?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.regionId != nil {
+                map["RegionId"] = self.regionId!
+            }
+            if self.zones != nil {
+                var tmp : [Any] = []
+                for k in self.zones! {
+                    tmp.append(k.toMap())
+                }
+                map["Zones"] = tmp
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("RegionId") {
+                self.regionId = dict["RegionId"] as! String
+            }
+            if dict.keys.contains("Zones") {
+                var tmp : [DescribeRegionsResponseBody.RegionModelList.Zones] = []
+                for v in dict["Zones"] as! [Any] {
+                    var model = DescribeRegionsResponseBody.RegionModelList.Zones()
+                    if v != nil {
+                        model.fromMap(v as! [String: Any])
+                    }
+                    tmp.append(model)
+                }
+                self.zones = tmp
+            }
+        }
+    }
+    public var regionModelList: [DescribeRegionsResponseBody.RegionModelList]?
+
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.regionModelList != nil {
+            var tmp : [Any] = []
+            for k in self.regionModelList! {
+                tmp.append(k.toMap())
+            }
+            map["RegionModelList"] = tmp
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("RegionModelList") {
+            var tmp : [DescribeRegionsResponseBody.RegionModelList] = []
+            for v in dict["RegionModelList"] as! [Any] {
+                var model = DescribeRegionsResponseBody.RegionModelList()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.regionModelList = tmp
+        }
+        if dict.keys.contains("RequestId") {
+            self.requestId = dict["RequestId"] as! String
+        }
+    }
+}
+
+public class DescribeRegionsResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: DescribeRegionsResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") {
+            var model = DescribeRegionsResponseBody()
             model.fromMap(dict["body"] as! [String: Any])
             self.body = model
         }
@@ -4516,6 +5726,211 @@ public class DescribeSecurityIPListResponse : Tea.TeaModel {
         }
         if dict.keys.contains("body") {
             var model = DescribeSecurityIPListResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
+public class EnDisableScalingRulesRequest : Tea.TeaModel {
+    public var clusterId: String?
+
+    public var dbInstanceId: String?
+
+    public var product: String?
+
+    public var regionId: String?
+
+    public var resourceOwnerId: Int64?
+
+    public var scalingRulesEnable: Bool?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.clusterId != nil {
+            map["ClusterId"] = self.clusterId!
+        }
+        if self.dbInstanceId != nil {
+            map["DbInstanceId"] = self.dbInstanceId!
+        }
+        if self.product != nil {
+            map["Product"] = self.product!
+        }
+        if self.regionId != nil {
+            map["RegionId"] = self.regionId!
+        }
+        if self.resourceOwnerId != nil {
+            map["ResourceOwnerId"] = self.resourceOwnerId!
+        }
+        if self.scalingRulesEnable != nil {
+            map["ScalingRulesEnable"] = self.scalingRulesEnable!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("ClusterId") {
+            self.clusterId = dict["ClusterId"] as! String
+        }
+        if dict.keys.contains("DbInstanceId") {
+            self.dbInstanceId = dict["DbInstanceId"] as! String
+        }
+        if dict.keys.contains("Product") {
+            self.product = dict["Product"] as! String
+        }
+        if dict.keys.contains("RegionId") {
+            self.regionId = dict["RegionId"] as! String
+        }
+        if dict.keys.contains("ResourceOwnerId") {
+            self.resourceOwnerId = dict["ResourceOwnerId"] as! Int64
+        }
+        if dict.keys.contains("ScalingRulesEnable") {
+            self.scalingRulesEnable = dict["ScalingRulesEnable"] as! Bool
+        }
+    }
+}
+
+public class EnDisableScalingRulesResponseBody : Tea.TeaModel {
+    public class Data : Tea.TeaModel {
+        public var clusterId: String?
+
+        public var dbInstanceId: String?
+
+        public var scalingRulesEnable: Bool?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.clusterId != nil {
+                map["ClusterId"] = self.clusterId!
+            }
+            if self.dbInstanceId != nil {
+                map["DbInstanceId"] = self.dbInstanceId!
+            }
+            if self.scalingRulesEnable != nil {
+                map["ScalingRulesEnable"] = self.scalingRulesEnable!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("ClusterId") {
+                self.clusterId = dict["ClusterId"] as! String
+            }
+            if dict.keys.contains("DbInstanceId") {
+                self.dbInstanceId = dict["DbInstanceId"] as! String
+            }
+            if dict.keys.contains("ScalingRulesEnable") {
+                self.scalingRulesEnable = dict["ScalingRulesEnable"] as! Bool
+            }
+        }
+    }
+    public var data: EnDisableScalingRulesResponseBody.Data?
+
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.data?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.data != nil {
+            map["Data"] = self.data?.toMap()
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("Data") {
+            var model = EnDisableScalingRulesResponseBody.Data()
+            model.fromMap(dict["Data"] as! [String: Any])
+            self.data = model
+        }
+        if dict.keys.contains("RequestId") {
+            self.requestId = dict["RequestId"] as! String
+        }
+    }
+}
+
+public class EnDisableScalingRulesResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: EnDisableScalingRulesResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") {
+            var model = EnDisableScalingRulesResponseBody()
             model.fromMap(dict["body"] as! [String: Any])
             self.body = model
         }
@@ -5381,6 +6796,8 @@ public class ModifyDBClusterConfigRequest : Tea.TeaModel {
 
     public var DBInstanceId: String?
 
+    public var parallelOperation: Bool?
+
     public var parameters: String?
 
     public var regionId: String?
@@ -5410,6 +6827,9 @@ public class ModifyDBClusterConfigRequest : Tea.TeaModel {
         if self.DBInstanceId != nil {
             map["DBInstanceId"] = self.DBInstanceId!
         }
+        if self.parallelOperation != nil {
+            map["ParallelOperation"] = self.parallelOperation!
+        }
         if self.parameters != nil {
             map["Parameters"] = self.parameters!
         }
@@ -5431,6 +6851,9 @@ public class ModifyDBClusterConfigRequest : Tea.TeaModel {
         }
         if dict.keys.contains("DBInstanceId") {
             self.DBInstanceId = dict["DBInstanceId"] as! String
+        }
+        if dict.keys.contains("ParallelOperation") {
+            self.parallelOperation = dict["ParallelOperation"] as! Bool
         }
         if dict.keys.contains("Parameters") {
             self.parameters = dict["Parameters"] as! String
@@ -5746,6 +7169,259 @@ public class ModifyDBInstanceAttributeResponse : Tea.TeaModel {
         }
         if dict.keys.contains("body") {
             var model = ModifyDBInstanceAttributeResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
+public class ModifyElasticRuleRequest : Tea.TeaModel {
+    public var clusterClass: String?
+
+    public var clusterId: String?
+
+    public var dbInstanceId: String?
+
+    public var elasticRuleStartTime: String?
+
+    public var executionPeriod: String?
+
+    public var product: String?
+
+    public var regionId: String?
+
+    public var resourceOwnerId: Int64?
+
+    public var ruleId: Int64?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.clusterClass != nil {
+            map["ClusterClass"] = self.clusterClass!
+        }
+        if self.clusterId != nil {
+            map["ClusterId"] = self.clusterId!
+        }
+        if self.dbInstanceId != nil {
+            map["DbInstanceId"] = self.dbInstanceId!
+        }
+        if self.elasticRuleStartTime != nil {
+            map["ElasticRuleStartTime"] = self.elasticRuleStartTime!
+        }
+        if self.executionPeriod != nil {
+            map["ExecutionPeriod"] = self.executionPeriod!
+        }
+        if self.product != nil {
+            map["Product"] = self.product!
+        }
+        if self.regionId != nil {
+            map["RegionId"] = self.regionId!
+        }
+        if self.resourceOwnerId != nil {
+            map["ResourceOwnerId"] = self.resourceOwnerId!
+        }
+        if self.ruleId != nil {
+            map["RuleId"] = self.ruleId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("ClusterClass") {
+            self.clusterClass = dict["ClusterClass"] as! String
+        }
+        if dict.keys.contains("ClusterId") {
+            self.clusterId = dict["ClusterId"] as! String
+        }
+        if dict.keys.contains("DbInstanceId") {
+            self.dbInstanceId = dict["DbInstanceId"] as! String
+        }
+        if dict.keys.contains("ElasticRuleStartTime") {
+            self.elasticRuleStartTime = dict["ElasticRuleStartTime"] as! String
+        }
+        if dict.keys.contains("ExecutionPeriod") {
+            self.executionPeriod = dict["ExecutionPeriod"] as! String
+        }
+        if dict.keys.contains("Product") {
+            self.product = dict["Product"] as! String
+        }
+        if dict.keys.contains("RegionId") {
+            self.regionId = dict["RegionId"] as! String
+        }
+        if dict.keys.contains("ResourceOwnerId") {
+            self.resourceOwnerId = dict["ResourceOwnerId"] as! Int64
+        }
+        if dict.keys.contains("RuleId") {
+            self.ruleId = dict["RuleId"] as! Int64
+        }
+    }
+}
+
+public class ModifyElasticRuleResponseBody : Tea.TeaModel {
+    public class Data : Tea.TeaModel {
+        public var clusterClass: String?
+
+        public var clusterId: String?
+
+        public var dbInstanceId: String?
+
+        public var elasticRuleStartTime: String?
+
+        public var executionPeriod: String?
+
+        public var ruleId: Int64?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.clusterClass != nil {
+                map["ClusterClass"] = self.clusterClass!
+            }
+            if self.clusterId != nil {
+                map["ClusterId"] = self.clusterId!
+            }
+            if self.dbInstanceId != nil {
+                map["DbInstanceId"] = self.dbInstanceId!
+            }
+            if self.elasticRuleStartTime != nil {
+                map["ElasticRuleStartTime"] = self.elasticRuleStartTime!
+            }
+            if self.executionPeriod != nil {
+                map["ExecutionPeriod"] = self.executionPeriod!
+            }
+            if self.ruleId != nil {
+                map["RuleId"] = self.ruleId!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("ClusterClass") {
+                self.clusterClass = dict["ClusterClass"] as! String
+            }
+            if dict.keys.contains("ClusterId") {
+                self.clusterId = dict["ClusterId"] as! String
+            }
+            if dict.keys.contains("DbInstanceId") {
+                self.dbInstanceId = dict["DbInstanceId"] as! String
+            }
+            if dict.keys.contains("ElasticRuleStartTime") {
+                self.elasticRuleStartTime = dict["ElasticRuleStartTime"] as! String
+            }
+            if dict.keys.contains("ExecutionPeriod") {
+                self.executionPeriod = dict["ExecutionPeriod"] as! String
+            }
+            if dict.keys.contains("RuleId") {
+                self.ruleId = dict["RuleId"] as! Int64
+            }
+        }
+    }
+    public var data: ModifyElasticRuleResponseBody.Data?
+
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.data?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.data != nil {
+            map["Data"] = self.data?.toMap()
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("Data") {
+            var model = ModifyElasticRuleResponseBody.Data()
+            model.fromMap(dict["Data"] as! [String: Any])
+            self.data = model
+        }
+        if dict.keys.contains("RequestId") {
+            self.requestId = dict["RequestId"] as! String
+        }
+    }
+}
+
+public class ModifyElasticRuleResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: ModifyElasticRuleResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") {
+            var model = ModifyElasticRuleResponseBody()
             model.fromMap(dict["body"] as! [String: Any])
             self.body = model
         }
@@ -6236,6 +7912,8 @@ public class RestartDBClusterRequest : Tea.TeaModel {
 
     public var DBInstanceId: String?
 
+    public var parallelOperation: Bool?
+
     public var regionId: String?
 
     public var resourceGroupId: String?
@@ -6262,6 +7940,9 @@ public class RestartDBClusterRequest : Tea.TeaModel {
         if self.DBInstanceId != nil {
             map["DBInstanceId"] = self.DBInstanceId!
         }
+        if self.parallelOperation != nil {
+            map["ParallelOperation"] = self.parallelOperation!
+        }
         if self.regionId != nil {
             map["RegionId"] = self.regionId!
         }
@@ -6280,6 +7961,9 @@ public class RestartDBClusterRequest : Tea.TeaModel {
         }
         if dict.keys.contains("DBInstanceId") {
             self.DBInstanceId = dict["DBInstanceId"] as! String
+        }
+        if dict.keys.contains("ParallelOperation") {
+            self.parallelOperation = dict["ParallelOperation"] as! Bool
         }
         if dict.keys.contains("RegionId") {
             self.regionId = dict["RegionId"] as! String
@@ -6691,6 +8375,8 @@ public class UpgradeDBInstanceEngineVersionRequest : Tea.TeaModel {
 
     public var engineVersion: String?
 
+    public var parallelOperation: Bool?
+
     public var regionId: String?
 
     public var resourceOwnerId: Int64?
@@ -6717,6 +8403,9 @@ public class UpgradeDBInstanceEngineVersionRequest : Tea.TeaModel {
         if self.engineVersion != nil {
             map["EngineVersion"] = self.engineVersion!
         }
+        if self.parallelOperation != nil {
+            map["ParallelOperation"] = self.parallelOperation!
+        }
         if self.regionId != nil {
             map["RegionId"] = self.regionId!
         }
@@ -6735,6 +8424,9 @@ public class UpgradeDBInstanceEngineVersionRequest : Tea.TeaModel {
         }
         if dict.keys.contains("EngineVersion") {
             self.engineVersion = dict["EngineVersion"] as! String
+        }
+        if dict.keys.contains("ParallelOperation") {
+            self.parallelOperation = dict["ParallelOperation"] as! Bool
         }
         if dict.keys.contains("RegionId") {
             self.regionId = dict["RegionId"] as! String
