@@ -10996,8 +10996,14 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.AIAgentId)) {
             query["AIAgentId"] = request.AIAgentId ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.audioOssPath)) {
+            query["AudioOssPath"] = request.audioOssPath ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.callbackUrl)) {
             query["CallbackUrl"] = request.callbackUrl ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.enableAudioRecording)) {
+            query["EnableAudioRecording"] = request.enableAudioRecording!;
         }
         if (!TeaUtils.Client.isUnset(request.enableNotify)) {
             query["EnableNotify"] = request.enableNotify!;

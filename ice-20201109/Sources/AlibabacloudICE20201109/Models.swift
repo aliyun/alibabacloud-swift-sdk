@@ -21056,7 +21056,11 @@ public class DescribeNotifyConfigRequest : Tea.TeaModel {
 }
 
 public class DescribeNotifyConfigResponseBody : Tea.TeaModel {
+    public var audioOssPath: String?
+
     public var callbackUrl: String?
+
+    public var enableAudioRecording: Bool?
 
     public var enableNotify: Bool?
 
@@ -21080,8 +21084,14 @@ public class DescribeNotifyConfigResponseBody : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.audioOssPath != nil {
+            map["AudioOssPath"] = self.audioOssPath!
+        }
         if self.callbackUrl != nil {
             map["CallbackUrl"] = self.callbackUrl!
+        }
+        if self.enableAudioRecording != nil {
+            map["EnableAudioRecording"] = self.enableAudioRecording!
         }
         if self.enableNotify != nil {
             map["EnableNotify"] = self.enableNotify!
@@ -21099,8 +21109,14 @@ public class DescribeNotifyConfigResponseBody : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("AudioOssPath") {
+            self.audioOssPath = dict["AudioOssPath"] as! String
+        }
         if dict.keys.contains("CallbackUrl") {
             self.callbackUrl = dict["CallbackUrl"] as! String
+        }
+        if dict.keys.contains("EnableAudioRecording") {
+            self.enableAudioRecording = dict["EnableAudioRecording"] as! Bool
         }
         if dict.keys.contains("EnableNotify") {
             self.enableNotify = dict["EnableNotify"] as! Bool
@@ -45653,6 +45669,69 @@ public class ListAIAgentDialoguesRequest : Tea.TeaModel {
 
 public class ListAIAgentDialoguesResponseBody : Tea.TeaModel {
     public class Dialogues : Tea.TeaModel {
+        public class AttachedFileList : Tea.TeaModel {
+            public var format: String?
+
+            public var id: String?
+
+            public var name: String?
+
+            public var type: Int32?
+
+            public var url: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.format != nil {
+                    map["Format"] = self.format!
+                }
+                if self.id != nil {
+                    map["Id"] = self.id!
+                }
+                if self.name != nil {
+                    map["Name"] = self.name!
+                }
+                if self.type != nil {
+                    map["Type"] = self.type!
+                }
+                if self.url != nil {
+                    map["Url"] = self.url!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("Format") {
+                    self.format = dict["Format"] as! String
+                }
+                if dict.keys.contains("Id") {
+                    self.id = dict["Id"] as! String
+                }
+                if dict.keys.contains("Name") {
+                    self.name = dict["Name"] as! String
+                }
+                if dict.keys.contains("Type") {
+                    self.type = dict["Type"] as! Int32
+                }
+                if dict.keys.contains("Url") {
+                    self.url = dict["Url"] as! String
+                }
+            }
+        }
+        public var attachedFileList: [ListAIAgentDialoguesResponseBody.Dialogues.AttachedFileList]?
+
         public var dialogueId: String?
 
         public var producer: String?
@@ -45683,6 +45762,13 @@ public class ListAIAgentDialoguesResponseBody : Tea.TeaModel {
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
+            if self.attachedFileList != nil {
+                var tmp : [Any] = []
+                for k in self.attachedFileList! {
+                    tmp.append(k.toMap())
+                }
+                map["AttachedFileList"] = tmp
+            }
             if self.dialogueId != nil {
                 map["DialogueId"] = self.dialogueId!
             }
@@ -45711,6 +45797,17 @@ public class ListAIAgentDialoguesResponseBody : Tea.TeaModel {
         }
 
         public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("AttachedFileList") {
+                var tmp : [ListAIAgentDialoguesResponseBody.Dialogues.AttachedFileList] = []
+                for v in dict["AttachedFileList"] as! [Any] {
+                    var model = ListAIAgentDialoguesResponseBody.Dialogues.AttachedFileList()
+                    if v != nil {
+                        model.fromMap(v as! [String: Any])
+                    }
+                    tmp.append(model)
+                }
+                self.attachedFileList = tmp
+            }
             if dict.keys.contains("DialogueId") {
                 self.dialogueId = dict["DialogueId"] as! String
             }
@@ -75986,7 +76083,11 @@ public class SetEventCallbackResponse : Tea.TeaModel {
 public class SetNotifyConfigRequest : Tea.TeaModel {
     public var AIAgentId: String?
 
+    public var audioOssPath: String?
+
     public var callbackUrl: String?
+
+    public var enableAudioRecording: Bool?
 
     public var enableNotify: Bool?
 
@@ -76011,8 +76112,14 @@ public class SetNotifyConfigRequest : Tea.TeaModel {
         if self.AIAgentId != nil {
             map["AIAgentId"] = self.AIAgentId!
         }
+        if self.audioOssPath != nil {
+            map["AudioOssPath"] = self.audioOssPath!
+        }
         if self.callbackUrl != nil {
             map["CallbackUrl"] = self.callbackUrl!
+        }
+        if self.enableAudioRecording != nil {
+            map["EnableAudioRecording"] = self.enableAudioRecording!
         }
         if self.enableNotify != nil {
             map["EnableNotify"] = self.enableNotify!
@@ -76030,8 +76137,14 @@ public class SetNotifyConfigRequest : Tea.TeaModel {
         if dict.keys.contains("AIAgentId") {
             self.AIAgentId = dict["AIAgentId"] as! String
         }
+        if dict.keys.contains("AudioOssPath") {
+            self.audioOssPath = dict["AudioOssPath"] as! String
+        }
         if dict.keys.contains("CallbackUrl") {
             self.callbackUrl = dict["CallbackUrl"] as! String
+        }
+        if dict.keys.contains("EnableAudioRecording") {
+            self.enableAudioRecording = dict["EnableAudioRecording"] as! Bool
         }
         if dict.keys.contains("EnableNotify") {
             self.enableNotify = dict["EnableNotify"] as! Bool
