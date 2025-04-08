@@ -2003,11 +2003,50 @@ public class BatchAddDocumentResponse : Tea.TeaModel {
 }
 
 public class BatchCreateAICoachTaskRequest : Tea.TeaModel {
+    public class StudentList : Tea.TeaModel {
+        public var studentAudioUrl: String?
+
+        public var studentId: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.studentAudioUrl != nil {
+                map["studentAudioUrl"] = self.studentAudioUrl!
+            }
+            if self.studentId != nil {
+                map["studentId"] = self.studentId!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("studentAudioUrl") {
+                self.studentAudioUrl = dict["studentAudioUrl"] as! String
+            }
+            if dict.keys.contains("studentId") {
+                self.studentId = dict["studentId"] as! String
+            }
+        }
+    }
     public var requestId: String?
 
     public var scriptRecordId: String?
 
     public var studentIds: [String]?
+
+    public var studentList: [BatchCreateAICoachTaskRequest.StudentList]?
 
     public override init() {
         super.init()
@@ -2032,6 +2071,13 @@ public class BatchCreateAICoachTaskRequest : Tea.TeaModel {
         if self.studentIds != nil {
             map["studentIds"] = self.studentIds!
         }
+        if self.studentList != nil {
+            var tmp : [Any] = []
+            for k in self.studentList! {
+                tmp.append(k.toMap())
+            }
+            map["studentList"] = tmp
+        }
         return map
     }
 
@@ -2044,6 +2090,17 @@ public class BatchCreateAICoachTaskRequest : Tea.TeaModel {
         }
         if dict.keys.contains("studentIds") {
             self.studentIds = dict["studentIds"] as! [String]
+        }
+        if dict.keys.contains("studentList") {
+            var tmp : [BatchCreateAICoachTaskRequest.StudentList] = []
+            for v in dict["studentList"] as! [Any] {
+                var model = BatchCreateAICoachTaskRequest.StudentList()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.studentList = tmp
         }
     }
 }
@@ -3733,6 +3790,8 @@ public class CreateAICoachTaskRequest : Tea.TeaModel {
 
     public var scriptRecordId: String?
 
+    public var studentAudioUrl: String?
+
     public var studentId: String?
 
     public override init() {
@@ -3755,6 +3814,9 @@ public class CreateAICoachTaskRequest : Tea.TeaModel {
         if self.scriptRecordId != nil {
             map["scriptRecordId"] = self.scriptRecordId!
         }
+        if self.studentAudioUrl != nil {
+            map["studentAudioUrl"] = self.studentAudioUrl!
+        }
         if self.studentId != nil {
             map["studentId"] = self.studentId!
         }
@@ -3767,6 +3829,9 @@ public class CreateAICoachTaskRequest : Tea.TeaModel {
         }
         if dict.keys.contains("scriptRecordId") {
             self.scriptRecordId = dict["scriptRecordId"] as! String
+        }
+        if dict.keys.contains("studentAudioUrl") {
+            self.studentAudioUrl = dict["studentAudioUrl"] as! String
         }
         if dict.keys.contains("studentId") {
             self.studentId = dict["studentId"] as! String
@@ -5795,6 +5860,43 @@ public class GetAICoachScriptRequest : Tea.TeaModel {
 }
 
 public class GetAICoachScriptResponseBody : Tea.TeaModel {
+    public class CheckCheatConfig : Tea.TeaModel {
+        public var checkImage: Bool?
+
+        public var checkVoice: Bool?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.checkImage != nil {
+                map["checkImage"] = self.checkImage!
+            }
+            if self.checkVoice != nil {
+                map["checkVoice"] = self.checkVoice!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("checkImage") {
+                self.checkImage = dict["checkImage"] as! Bool
+            }
+            if dict.keys.contains("checkVoice") {
+                self.checkVoice = dict["checkVoice"] as! Bool
+            }
+        }
+    }
     public class CompleteStrategy : Tea.TeaModel {
         public var abnormalQuitSessionExpired: Int32?
 
@@ -6433,7 +6535,11 @@ public class GetAICoachScriptResponseBody : Tea.TeaModel {
             }
         }
     }
+    public var appendQuestionFlag: Bool?
+
     public var assessmentScope: String?
+
+    public var checkCheatConfig: GetAICoachScriptResponseBody.CheckCheatConfig?
 
     public var completeStrategy: GetAICoachScriptResponseBody.CompleteStrategy?
 
@@ -6501,14 +6607,21 @@ public class GetAICoachScriptResponseBody : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
+        try self.checkCheatConfig?.validate()
         try self.completeStrategy?.validate()
         try self.weights?.validate()
     }
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.appendQuestionFlag != nil {
+            map["appendQuestionFlag"] = self.appendQuestionFlag!
+        }
         if self.assessmentScope != nil {
             map["assessmentScope"] = self.assessmentScope!
+        }
+        if self.checkCheatConfig != nil {
+            map["checkCheatConfig"] = self.checkCheatConfig?.toMap()
         }
         if self.completeStrategy != nil {
             map["completeStrategy"] = self.completeStrategy?.toMap()
@@ -6610,8 +6723,16 @@ public class GetAICoachScriptResponseBody : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("appendQuestionFlag") {
+            self.appendQuestionFlag = dict["appendQuestionFlag"] as! Bool
+        }
         if dict.keys.contains("assessmentScope") {
             self.assessmentScope = dict["assessmentScope"] as! String
+        }
+        if dict.keys.contains("checkCheatConfig") {
+            var model = GetAICoachScriptResponseBody.CheckCheatConfig()
+            model.fromMap(dict["checkCheatConfig"] as! [String: Any])
+            self.checkCheatConfig = model
         }
         if dict.keys.contains("completeStrategy") {
             var model = GetAICoachScriptResponseBody.CompleteStrategy()
