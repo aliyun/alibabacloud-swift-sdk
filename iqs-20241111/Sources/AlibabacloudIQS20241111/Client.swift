@@ -184,4 +184,52 @@ open class Client : AlibabacloudOpenApi.Client {
         var headers: [String: String] = [:]
         return try await genericSearchWithOptions(request as! GenericSearchRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
     }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func globalSearchWithOptions(_ request: GlobalSearchRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> GlobalSearchResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.page)) {
+            query["page"] = request.page!;
+        }
+        if (!TeaUtils.Client.isUnset(request.pageSize)) {
+            query["pageSize"] = request.pageSize!;
+        }
+        if (!TeaUtils.Client.isUnset(request.query)) {
+            query["query"] = request.query ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.timeRange)) {
+            query["timeRange"] = request.timeRange ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String],
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "GlobalSearch",
+            "version": "2024-11-11",
+            "protocol": "HTTPS",
+            "pathname": "/linked-retrieval/linked-retrieval-entry/v1/iqs/search/global",
+            "method": "GET",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        if (TeaUtils.Client.isUnset(self._signatureVersion) || !TeaUtils.Client.equalString(self._signatureVersion, "v4")) {
+            var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+            return Tea.TeaConverter.fromMap(GlobalSearchResponse(), tmp)
+        }
+        else {
+            var tmp: [String: Any] = try await execute(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+            return Tea.TeaConverter.fromMap(GlobalSearchResponse(), tmp)
+        }
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func globalSearch(_ request: GlobalSearchRequest) async throws -> GlobalSearchResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await globalSearchWithOptions(request as! GlobalSearchRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
 }

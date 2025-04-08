@@ -203,6 +203,298 @@ public class GenericSearchResult : Tea.TeaModel {
     }
 }
 
+public class GlobalPageItem : Tea.TeaModel {
+    public var link: String?
+
+    public var snippet: String?
+
+    public var title: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.link != nil {
+            map["link"] = self.link!
+        }
+        if self.snippet != nil {
+            map["snippet"] = self.snippet!
+        }
+        if self.title != nil {
+            map["title"] = self.title!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("link") {
+            self.link = dict["link"] as! String
+        }
+        if dict.keys.contains("snippet") {
+            self.snippet = dict["snippet"] as! String
+        }
+        if dict.keys.contains("title") {
+            self.title = dict["title"] as! String
+        }
+    }
+}
+
+public class GlobalQueryContext : Tea.TeaModel {
+    public class OriginalQuery : Tea.TeaModel {
+        public var page: String?
+
+        public var query: String?
+
+        public var timeRange: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.page != nil {
+                map["page"] = self.page!
+            }
+            if self.query != nil {
+                map["query"] = self.query!
+            }
+            if self.timeRange != nil {
+                map["timeRange"] = self.timeRange!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("page") {
+                self.page = dict["page"] as! String
+            }
+            if dict.keys.contains("query") {
+                self.query = dict["query"] as! String
+            }
+            if dict.keys.contains("timeRange") {
+                self.timeRange = dict["timeRange"] as! String
+            }
+        }
+    }
+    public var originalQuery: GlobalQueryContext.OriginalQuery?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.originalQuery?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.originalQuery != nil {
+            map["originalQuery"] = self.originalQuery?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("originalQuery") {
+            var model = GlobalQueryContext.OriginalQuery()
+            model.fromMap(dict["originalQuery"] as! [String: Any])
+            self.originalQuery = model
+        }
+    }
+}
+
+public class GlobalSceneItem : Tea.TeaModel {
+    public var detail: String?
+
+    public var type: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.detail != nil {
+            map["detail"] = self.detail!
+        }
+        if self.type != nil {
+            map["type"] = self.type!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("detail") {
+            self.detail = dict["detail"] as! String
+        }
+        if dict.keys.contains("type") {
+            self.type = dict["type"] as! String
+        }
+    }
+}
+
+public class GlobalSearchInformation : Tea.TeaModel {
+    public var searchTime: Int64?
+
+    public var total: Int64?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.searchTime != nil {
+            map["searchTime"] = self.searchTime!
+        }
+        if self.total != nil {
+            map["total"] = self.total!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("searchTime") {
+            self.searchTime = dict["searchTime"] as! Int64
+        }
+        if dict.keys.contains("total") {
+            self.total = dict["total"] as! Int64
+        }
+    }
+}
+
+public class GlobalSearchResult : Tea.TeaModel {
+    public var pageItems: [GlobalPageItem]?
+
+    public var queryContext: GlobalQueryContext?
+
+    public var requestId: String?
+
+    public var sceneItems: [GlobalSceneItem]?
+
+    public var searchInformation: GlobalSearchInformation?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.queryContext?.validate()
+        try self.searchInformation?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.pageItems != nil {
+            var tmp : [Any] = []
+            for k in self.pageItems! {
+                tmp.append(k.toMap())
+            }
+            map["pageItems"] = tmp
+        }
+        if self.queryContext != nil {
+            map["queryContext"] = self.queryContext?.toMap()
+        }
+        if self.requestId != nil {
+            map["requestId"] = self.requestId!
+        }
+        if self.sceneItems != nil {
+            var tmp : [Any] = []
+            for k in self.sceneItems! {
+                tmp.append(k.toMap())
+            }
+            map["sceneItems"] = tmp
+        }
+        if self.searchInformation != nil {
+            map["searchInformation"] = self.searchInformation?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("pageItems") {
+            var tmp : [GlobalPageItem] = []
+            for v in dict["pageItems"] as! [Any] {
+                var model = GlobalPageItem()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.pageItems = tmp
+        }
+        if dict.keys.contains("queryContext") {
+            var model = GlobalQueryContext()
+            model.fromMap(dict["queryContext"] as! [String: Any])
+            self.queryContext = model
+        }
+        if dict.keys.contains("requestId") {
+            self.requestId = dict["requestId"] as! String
+        }
+        if dict.keys.contains("sceneItems") {
+            var tmp : [GlobalSceneItem] = []
+            for v in dict["sceneItems"] as! [Any] {
+                var model = GlobalSceneItem()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.sceneItems = tmp
+        }
+        if dict.keys.contains("searchInformation") {
+            var model = GlobalSearchInformation()
+            model.fromMap(dict["searchInformation"] as! [String: Any])
+            self.searchInformation = model
+        }
+    }
+}
+
 public class IncludeImage : Tea.TeaModel {
     public var height: Int32?
 
@@ -1304,6 +1596,109 @@ public class GenericSearchResponse : Tea.TeaModel {
         }
         if dict.keys.contains("body") {
             var model = GenericSearchResult()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
+public class GlobalSearchRequest : Tea.TeaModel {
+    public var page: Int32?
+
+    public var pageSize: Int32?
+
+    public var query: String?
+
+    public var timeRange: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.page != nil {
+            map["page"] = self.page!
+        }
+        if self.pageSize != nil {
+            map["pageSize"] = self.pageSize!
+        }
+        if self.query != nil {
+            map["query"] = self.query!
+        }
+        if self.timeRange != nil {
+            map["timeRange"] = self.timeRange!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("page") {
+            self.page = dict["page"] as! Int32
+        }
+        if dict.keys.contains("pageSize") {
+            self.pageSize = dict["pageSize"] as! Int32
+        }
+        if dict.keys.contains("query") {
+            self.query = dict["query"] as! String
+        }
+        if dict.keys.contains("timeRange") {
+            self.timeRange = dict["timeRange"] as! String
+        }
+    }
+}
+
+public class GlobalSearchResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: GlobalSearchResult?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") {
+            var model = GlobalSearchResult()
             model.fromMap(dict["body"] as! [String: Any])
             self.body = model
         }
