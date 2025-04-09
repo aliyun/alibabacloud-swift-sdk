@@ -577,6 +577,8 @@ public class CreateAppRequest : Tea.TeaModel {
 
 public class CreateAppResponseBody : Tea.TeaModel {
     public class Result : Tea.TeaModel {
+        public var appId: String?
+
         public var instaneId: String?
 
         public override init() {
@@ -593,6 +595,9 @@ public class CreateAppResponseBody : Tea.TeaModel {
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
+            if self.appId != nil {
+                map["appId"] = self.appId!
+            }
             if self.instaneId != nil {
                 map["instaneId"] = self.instaneId!
             }
@@ -600,6 +605,9 @@ public class CreateAppResponseBody : Tea.TeaModel {
         }
 
         public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("appId") {
+                self.appId = dict["appId"] as! String
+            }
             if dict.keys.contains("instaneId") {
                 self.instaneId = dict["instaneId"] as! String
             }
