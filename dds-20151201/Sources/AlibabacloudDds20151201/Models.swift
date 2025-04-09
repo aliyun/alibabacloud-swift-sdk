@@ -4943,6 +4943,8 @@ public class DescribeActiveOperationTasksRequest : Tea.TeaModel {
 
     public var region: String?
 
+    public var resourceGroupId: String?
+
     public var resourceOwnerAccount: String?
 
     public var resourceOwnerId: Int64?
@@ -4998,6 +5000,9 @@ public class DescribeActiveOperationTasksRequest : Tea.TeaModel {
         if self.region != nil {
             map["Region"] = self.region!
         }
+        if self.resourceGroupId != nil {
+            map["ResourceGroupId"] = self.resourceGroupId!
+        }
         if self.resourceOwnerAccount != nil {
             map["ResourceOwnerAccount"] = self.resourceOwnerAccount!
         }
@@ -5046,6 +5051,9 @@ public class DescribeActiveOperationTasksRequest : Tea.TeaModel {
         }
         if dict.keys.contains("Region") {
             self.region = dict["Region"] as! String
+        }
+        if dict.keys.contains("ResourceGroupId") {
+            self.resourceGroupId = dict["ResourceGroupId"] as! String
         }
         if dict.keys.contains("ResourceOwnerAccount") {
             self.resourceOwnerAccount = dict["ResourceOwnerAccount"] as! String
@@ -6141,6 +6149,8 @@ public class DescribeAvailabilityZonesRequest : Tea.TeaModel {
 
     public var instanceChargeType: String?
 
+    public var instanceType: String?
+
     public var mongoType: String?
 
     public var ownerAccount: String?
@@ -6197,6 +6207,9 @@ public class DescribeAvailabilityZonesRequest : Tea.TeaModel {
         }
         if self.instanceChargeType != nil {
             map["InstanceChargeType"] = self.instanceChargeType!
+        }
+        if self.instanceType != nil {
+            map["InstanceType"] = self.instanceType!
         }
         if self.mongoType != nil {
             map["MongoType"] = self.mongoType!
@@ -6255,6 +6268,9 @@ public class DescribeAvailabilityZonesRequest : Tea.TeaModel {
         }
         if dict.keys.contains("InstanceChargeType") {
             self.instanceChargeType = dict["InstanceChargeType"] as! String
+        }
+        if dict.keys.contains("InstanceType") {
+            self.instanceType = dict["InstanceType"] as! String
         }
         if dict.keys.contains("MongoType") {
             self.mongoType = dict["MongoType"] as! String
@@ -11902,6 +11918,179 @@ public class DescribeDBInstanceSSLResponse : Tea.TeaModel {
     }
 }
 
+public class DescribeDBInstanceSpecInfoRequest : Tea.TeaModel {
+    public var instanceClass: String?
+
+    public var ownerAccount: String?
+
+    public var ownerId: Int64?
+
+    public var resourceOwnerAccount: String?
+
+    public var resourceOwnerId: Int64?
+
+    public var securityToken: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.instanceClass != nil {
+            map["InstanceClass"] = self.instanceClass!
+        }
+        if self.ownerAccount != nil {
+            map["OwnerAccount"] = self.ownerAccount!
+        }
+        if self.ownerId != nil {
+            map["OwnerId"] = self.ownerId!
+        }
+        if self.resourceOwnerAccount != nil {
+            map["ResourceOwnerAccount"] = self.resourceOwnerAccount!
+        }
+        if self.resourceOwnerId != nil {
+            map["ResourceOwnerId"] = self.resourceOwnerId!
+        }
+        if self.securityToken != nil {
+            map["SecurityToken"] = self.securityToken!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("InstanceClass") {
+            self.instanceClass = dict["InstanceClass"] as! String
+        }
+        if dict.keys.contains("OwnerAccount") {
+            self.ownerAccount = dict["OwnerAccount"] as! String
+        }
+        if dict.keys.contains("OwnerId") {
+            self.ownerId = dict["OwnerId"] as! Int64
+        }
+        if dict.keys.contains("ResourceOwnerAccount") {
+            self.resourceOwnerAccount = dict["ResourceOwnerAccount"] as! String
+        }
+        if dict.keys.contains("ResourceOwnerId") {
+            self.resourceOwnerId = dict["ResourceOwnerId"] as! Int64
+        }
+        if dict.keys.contains("SecurityToken") {
+            self.securityToken = dict["SecurityToken"] as! String
+        }
+    }
+}
+
+public class DescribeDBInstanceSpecInfoResponseBody : Tea.TeaModel {
+    public var CPU: String?
+
+    public var description_: String?
+
+    public var memory: String?
+
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.CPU != nil {
+            map["CPU"] = self.CPU!
+        }
+        if self.description_ != nil {
+            map["Description"] = self.description_!
+        }
+        if self.memory != nil {
+            map["Memory"] = self.memory!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("CPU") {
+            self.CPU = dict["CPU"] as! String
+        }
+        if dict.keys.contains("Description") {
+            self.description_ = dict["Description"] as! String
+        }
+        if dict.keys.contains("Memory") {
+            self.memory = dict["Memory"] as! String
+        }
+        if dict.keys.contains("RequestId") {
+            self.requestId = dict["RequestId"] as! String
+        }
+    }
+}
+
+public class DescribeDBInstanceSpecInfoResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: DescribeDBInstanceSpecInfoResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") {
+            var model = DescribeDBInstanceSpecInfoResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
 public class DescribeDBInstanceSwitchLogRequest : Tea.TeaModel {
     public var DBInstanceId: String?
 
@@ -14805,6 +14994,8 @@ public class DescribeHistoryTasksRequest : Tea.TeaModel {
 
     public var regionId: String?
 
+    public var resourceGroupId: String?
+
     public var resourceOwnerAccount: String?
 
     public var resourceOwnerId: Int64?
@@ -14854,6 +15045,9 @@ public class DescribeHistoryTasksRequest : Tea.TeaModel {
         if self.regionId != nil {
             map["RegionId"] = self.regionId!
         }
+        if self.resourceGroupId != nil {
+            map["ResourceGroupId"] = self.resourceGroupId!
+        }
         if self.resourceOwnerAccount != nil {
             map["ResourceOwnerAccount"] = self.resourceOwnerAccount!
         }
@@ -14899,6 +15093,9 @@ public class DescribeHistoryTasksRequest : Tea.TeaModel {
         }
         if dict.keys.contains("RegionId") {
             self.regionId = dict["RegionId"] as! String
+        }
+        if dict.keys.contains("ResourceGroupId") {
+            self.resourceGroupId = dict["ResourceGroupId"] as! String
         }
         if dict.keys.contains("ResourceOwnerAccount") {
             self.resourceOwnerAccount = dict["ResourceOwnerAccount"] as! String
@@ -14956,7 +15153,7 @@ public class DescribeHistoryTasksResponseBody : Tea.TeaModel {
 
         public var startTime: String?
 
-        public var status: Int32?
+        public var status: String?
 
         public var taskDetail: String?
 
@@ -15090,7 +15287,7 @@ public class DescribeHistoryTasksResponseBody : Tea.TeaModel {
                 self.startTime = dict["StartTime"] as! String
             }
             if dict.keys.contains("Status") {
-                self.status = dict["Status"] as! Int32
+                self.status = dict["Status"] as! String
             }
             if dict.keys.contains("TaskDetail") {
                 self.taskDetail = dict["TaskDetail"] as! String
@@ -15237,6 +15434,8 @@ public class DescribeHistoryTasksStatRequest : Tea.TeaModel {
 
     public var regionId: String?
 
+    public var resourceGroupId: String?
+
     public var resourceOwnerAccount: String?
 
     public var resourceOwnerId: Int64?
@@ -15277,6 +15476,9 @@ public class DescribeHistoryTasksStatRequest : Tea.TeaModel {
         if self.regionId != nil {
             map["RegionId"] = self.regionId!
         }
+        if self.resourceGroupId != nil {
+            map["ResourceGroupId"] = self.resourceGroupId!
+        }
         if self.resourceOwnerAccount != nil {
             map["ResourceOwnerAccount"] = self.resourceOwnerAccount!
         }
@@ -15313,6 +15515,9 @@ public class DescribeHistoryTasksStatRequest : Tea.TeaModel {
         }
         if dict.keys.contains("RegionId") {
             self.regionId = dict["RegionId"] as! String
+        }
+        if dict.keys.contains("ResourceGroupId") {
+            self.resourceGroupId = dict["ResourceGroupId"] as! String
         }
         if dict.keys.contains("ResourceOwnerAccount") {
             self.resourceOwnerAccount = dict["ResourceOwnerAccount"] as! String
@@ -25091,6 +25296,8 @@ public class ModifyActiveOperationTasksRequest : Tea.TeaModel {
 
     public var ownerId: Int64?
 
+    public var resourceGroupId: String?
+
     public var resourceOwnerAccount: String?
 
     public var resourceOwnerId: Int64?
@@ -25123,6 +25330,9 @@ public class ModifyActiveOperationTasksRequest : Tea.TeaModel {
         if self.ownerId != nil {
             map["OwnerId"] = self.ownerId!
         }
+        if self.resourceGroupId != nil {
+            map["ResourceGroupId"] = self.resourceGroupId!
+        }
         if self.resourceOwnerAccount != nil {
             map["ResourceOwnerAccount"] = self.resourceOwnerAccount!
         }
@@ -25147,6 +25357,9 @@ public class ModifyActiveOperationTasksRequest : Tea.TeaModel {
         }
         if dict.keys.contains("OwnerId") {
             self.ownerId = dict["OwnerId"] as! Int64
+        }
+        if dict.keys.contains("ResourceGroupId") {
+            self.resourceGroupId = dict["ResourceGroupId"] as! String
         }
         if dict.keys.contains("ResourceOwnerAccount") {
             self.resourceOwnerAccount = dict["ResourceOwnerAccount"] as! String

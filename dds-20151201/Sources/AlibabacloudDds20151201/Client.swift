@@ -17,33 +17,26 @@ open class Client : AlibabacloudOpenApi.Client {
             "cn-wulanchabu": "mongodb.aliyuncs.com",
             "cn-hangzhou": "mongodb.aliyuncs.com",
             "cn-shanghai": "mongodb.aliyuncs.com",
-            "cn-nanjing": "mongodb.cn-nanjing.aliyuncs.com",
-            "cn-fuzhou": "mongodb.cn-fuzhou.aliyuncs.com",
             "cn-shenzhen": "mongodb.aliyuncs.com",
             "cn-heyuan": "mongodb.aliyuncs.com",
             "cn-guangzhou": "mongodb.aliyuncs.com",
             "cn-chengdu": "mongodb.cn-chengdu.aliyuncs.com",
             "cn-hongkong": "mongodb.cn-hongkong.aliyuncs.com",
             "ap-northeast-1": "mongodb.ap-northeast-1.aliyuncs.com",
-            "ap-northeast-2": "mongodb.ap-northeast-2.aliyuncs.com",
             "ap-southeast-1": "mongodb.ap-southeast-1.aliyuncs.com",
             "ap-southeast-2": "mongodb.ap-southeast-2.aliyuncs.com",
             "ap-southeast-3": "mongodb.ap-southeast-3.aliyuncs.com",
             "ap-southeast-5": "mongodb.ap-southeast-5.aliyuncs.com",
-            "ap-southeast-6": "mongodb.ap-southeast-6.aliyuncs.com",
-            "ap-southeast-7": "mongodb.ap-southeast-7.aliyuncs.com",
-            "cn-zhengzhou-jva": "mongodb.cn-zhengzhou-jva.aliyuncs.com",
             "us-east-1": "mongodb.us-east-1.aliyuncs.com",
             "us-west-1": "mongodb.us-west-1.aliyuncs.com",
             "eu-west-1": "mongodb.eu-west-1.aliyuncs.com",
             "eu-central-1": "mongodb.eu-central-1.aliyuncs.com",
             "ap-south-1": "mongodb.ap-south-1.aliyuncs.com",
             "me-east-1": "mongodb.me-east-1.aliyuncs.com",
-            "me-central-1": "mongodb.me-central-1.aliyuncs.com",
             "cn-hangzhou-finance": "mongodb.aliyuncs.com",
             "cn-shanghai-finance-1": "mongodb.aliyuncs.com",
             "cn-shenzhen-finance-1": "mongodb.aliyuncs.com",
-            "cn-north-2-gov-1": "mongodb.aliyuncs.com",
+            "cn-north-2-gov-1": "mongodb.cn-north-2-gov-1.aliyuncs.com",
             "ap-northeast-2-pop": "mongodb.aliyuncs.com",
             "cn-beijing-finance-1": "mongodb.aliyuncs.com",
             "cn-beijing-finance-pop": "mongodb.aliyuncs.com",
@@ -1526,6 +1519,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.region)) {
             query["Region"] = request.region ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.resourceGroupId)) {
+            query["ResourceGroupId"] = request.resourceGroupId ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.resourceOwnerAccount)) {
             query["ResourceOwnerAccount"] = request.resourceOwnerAccount ?? "";
         }
@@ -1775,6 +1771,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.instanceChargeType)) {
             query["InstanceChargeType"] = request.instanceChargeType ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.instanceType)) {
+            query["InstanceType"] = request.instanceType ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.mongoType)) {
             query["MongoType"] = request.mongoType ?? "";
@@ -2616,6 +2615,58 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func describeDBInstanceSpecInfoWithOptions(_ request: DescribeDBInstanceSpecInfoRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DescribeDBInstanceSpecInfoResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.instanceClass)) {
+            query["InstanceClass"] = request.instanceClass ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.ownerAccount)) {
+            query["OwnerAccount"] = request.ownerAccount ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.ownerId)) {
+            query["OwnerId"] = request.ownerId!;
+        }
+        if (!TeaUtils.Client.isUnset(request.resourceOwnerAccount)) {
+            query["ResourceOwnerAccount"] = request.resourceOwnerAccount ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.resourceOwnerId)) {
+            query["ResourceOwnerId"] = request.resourceOwnerId!;
+        }
+        if (!TeaUtils.Client.isUnset(request.securityToken)) {
+            query["SecurityToken"] = request.securityToken ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "DescribeDBInstanceSpecInfo",
+            "version": "2015-12-01",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        if (TeaUtils.Client.isUnset(self._signatureVersion) || !TeaUtils.Client.equalString(self._signatureVersion, "v4")) {
+            var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+            return Tea.TeaConverter.fromMap(DescribeDBInstanceSpecInfoResponse(), tmp)
+        }
+        else {
+            var tmp: [String: Any] = try await execute(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+            return Tea.TeaConverter.fromMap(DescribeDBInstanceSpecInfoResponse(), tmp)
+        }
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func describeDBInstanceSpecInfo(_ request: DescribeDBInstanceSpecInfoRequest) async throws -> DescribeDBInstanceSpecInfoResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await describeDBInstanceSpecInfoWithOptions(request as! DescribeDBInstanceSpecInfoRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func describeDBInstanceSwitchLogWithOptions(_ request: DescribeDBInstanceSwitchLogRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DescribeDBInstanceSwitchLogResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
@@ -3085,6 +3136,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.regionId)) {
             query["RegionId"] = request.regionId ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.resourceGroupId)) {
+            query["ResourceGroupId"] = request.resourceGroupId ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.resourceOwnerAccount)) {
             query["ResourceOwnerAccount"] = request.resourceOwnerAccount ?? "";
         }
@@ -3151,6 +3205,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.regionId)) {
             query["RegionId"] = request.regionId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.resourceGroupId)) {
+            query["ResourceGroupId"] = request.resourceGroupId ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.resourceOwnerAccount)) {
             query["ResourceOwnerAccount"] = request.resourceOwnerAccount ?? "";
@@ -4772,6 +4829,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.ownerId)) {
             query["OwnerId"] = request.ownerId!;
+        }
+        if (!TeaUtils.Client.isUnset(request.resourceGroupId)) {
+            query["ResourceGroupId"] = request.resourceGroupId ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.resourceOwnerAccount)) {
             query["ResourceOwnerAccount"] = request.resourceOwnerAccount ?? "";
