@@ -595,6 +595,8 @@ public class CreateDBInstanceRequest : Tea.TeaModel {
 
     public var regionId: String?
 
+    public var resourceGroupId: String?
+
     public var scaleMax: String?
 
     public var scaleMin: String?
@@ -648,6 +650,9 @@ public class CreateDBInstanceRequest : Tea.TeaModel {
         }
         if self.regionId != nil {
             map["RegionId"] = self.regionId!
+        }
+        if self.resourceGroupId != nil {
+            map["ResourceGroupId"] = self.resourceGroupId!
         }
         if self.scaleMax != nil {
             map["ScaleMax"] = self.scaleMax!
@@ -703,6 +708,9 @@ public class CreateDBInstanceRequest : Tea.TeaModel {
         if dict.keys.contains("RegionId") {
             self.regionId = dict["RegionId"] as! String
         }
+        if dict.keys.contains("ResourceGroupId") {
+            self.resourceGroupId = dict["ResourceGroupId"] as! String
+        }
         if dict.keys.contains("ScaleMax") {
             self.scaleMax = dict["ScaleMax"] as! String
         }
@@ -740,6 +748,8 @@ public class CreateDBInstanceShrinkRequest : Tea.TeaModel {
     public var multiZoneShrink: String?
 
     public var regionId: String?
+
+    public var resourceGroupId: String?
 
     public var scaleMax: String?
 
@@ -791,6 +801,9 @@ public class CreateDBInstanceShrinkRequest : Tea.TeaModel {
         if self.regionId != nil {
             map["RegionId"] = self.regionId!
         }
+        if self.resourceGroupId != nil {
+            map["ResourceGroupId"] = self.resourceGroupId!
+        }
         if self.scaleMax != nil {
             map["ScaleMax"] = self.scaleMax!
         }
@@ -836,6 +849,9 @@ public class CreateDBInstanceShrinkRequest : Tea.TeaModel {
         }
         if dict.keys.contains("RegionId") {
             self.regionId = dict["RegionId"] as! String
+        }
+        if dict.keys.contains("ResourceGroupId") {
+            self.resourceGroupId = dict["ResourceGroupId"] as! String
         }
         if dict.keys.contains("ScaleMax") {
             self.scaleMax = dict["ScaleMax"] as! String
