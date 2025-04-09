@@ -10944,6 +10944,8 @@ public class CreateDiskEncryptionServiceResponse : Tea.TeaModel {
 public class CreateImageRequest : Tea.TeaModel {
     public var autoCleanUserdata: Bool?
 
+    public var dataSnapshotIds: [String]?
+
     public var description_: String?
 
     public var desktopId: String?
@@ -10977,6 +10979,9 @@ public class CreateImageRequest : Tea.TeaModel {
         if self.autoCleanUserdata != nil {
             map["AutoCleanUserdata"] = self.autoCleanUserdata!
         }
+        if self.dataSnapshotIds != nil {
+            map["DataSnapshotIds"] = self.dataSnapshotIds!
+        }
         if self.description_ != nil {
             map["Description"] = self.description_!
         }
@@ -11007,6 +11012,9 @@ public class CreateImageRequest : Tea.TeaModel {
     public override func fromMap(_ dict: [String: Any]) -> Void {
         if dict.keys.contains("AutoCleanUserdata") {
             self.autoCleanUserdata = dict["AutoCleanUserdata"] as! Bool
+        }
+        if dict.keys.contains("DataSnapshotIds") {
+            self.dataSnapshotIds = dict["DataSnapshotIds"] as! [String]
         }
         if dict.keys.contains("Description") {
             self.description_ = dict["Description"] as! String
@@ -21080,6 +21088,8 @@ public class DescribeDesktopGroupsResponseBody : Tea.TeaModel {
 
         public var imageId: String?
 
+        public var isLdap: Bool?
+
         public var keepDuration: Int64?
 
         public var loadPolicy: Int64?
@@ -21216,6 +21226,9 @@ public class DescribeDesktopGroupsResponseBody : Tea.TeaModel {
             }
             if self.imageId != nil {
                 map["ImageId"] = self.imageId!
+            }
+            if self.isLdap != nil {
+                map["IsLdap"] = self.isLdap!
             }
             if self.keepDuration != nil {
                 map["KeepDuration"] = self.keepDuration!
@@ -21379,6 +21392,9 @@ public class DescribeDesktopGroupsResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("ImageId") {
                 self.imageId = dict["ImageId"] as! String
+            }
+            if dict.keys.contains("IsLdap") {
+                self.isLdap = dict["IsLdap"] as! Bool
             }
             if dict.keys.contains("KeepDuration") {
                 self.keepDuration = dict["KeepDuration"] as! Int64
@@ -24315,6 +24331,8 @@ public class DescribeDesktopsResponseBody : Tea.TeaModel {
 
         public var imageId: String?
 
+        public var isLdap: Bool?
+
         public var managementFlag: String?
 
         public var managementFlags: [String]?
@@ -24495,6 +24513,9 @@ public class DescribeDesktopsResponseBody : Tea.TeaModel {
             }
             if self.imageId != nil {
                 map["ImageId"] = self.imageId!
+            }
+            if self.isLdap != nil {
+                map["IsLdap"] = self.isLdap!
             }
             if self.managementFlag != nil {
                 map["ManagementFlag"] = self.managementFlag!
@@ -24718,6 +24739,9 @@ public class DescribeDesktopsResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("ImageId") {
                 self.imageId = dict["ImageId"] as! String
+            }
+            if dict.keys.contains("IsLdap") {
+                self.isLdap = dict["IsLdap"] as! Bool
             }
             if dict.keys.contains("ManagementFlag") {
                 self.managementFlag = dict["ManagementFlag"] as! String
@@ -37634,6 +37658,8 @@ public class DescribeUsersInGroupResponseBody : Tea.TeaModel {
 
         public var displayName: String?
 
+        public var displayNameNew: String?
+
         public var endUserEmail: String?
 
         public var endUserId: String?
@@ -37649,6 +37675,8 @@ public class DescribeUsersInGroupResponseBody : Tea.TeaModel {
         public var externalInfo: DescribeUsersInGroupResponseBody.EndUsers.ExternalInfo?
 
         public var userDesktopId: String?
+
+        public var userPrincipalName: String?
 
         public var userSetPropertiesModels: [DescribeUsersInGroupResponseBody.EndUsers.UserSetPropertiesModels]?
 
@@ -37679,6 +37707,9 @@ public class DescribeUsersInGroupResponseBody : Tea.TeaModel {
             if self.displayName != nil {
                 map["DisplayName"] = self.displayName!
             }
+            if self.displayNameNew != nil {
+                map["DisplayNameNew"] = self.displayNameNew!
+            }
             if self.endUserEmail != nil {
                 map["EndUserEmail"] = self.endUserEmail!
             }
@@ -37703,6 +37734,9 @@ public class DescribeUsersInGroupResponseBody : Tea.TeaModel {
             if self.userDesktopId != nil {
                 map["UserDesktopId"] = self.userDesktopId!
             }
+            if self.userPrincipalName != nil {
+                map["UserPrincipalName"] = self.userPrincipalName!
+            }
             if self.userSetPropertiesModels != nil {
                 var tmp : [Any] = []
                 for k in self.userSetPropertiesModels! {
@@ -37725,6 +37759,9 @@ public class DescribeUsersInGroupResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("DisplayName") {
                 self.displayName = dict["DisplayName"] as! String
+            }
+            if dict.keys.contains("DisplayNameNew") {
+                self.displayNameNew = dict["DisplayNameNew"] as! String
             }
             if dict.keys.contains("EndUserEmail") {
                 self.endUserEmail = dict["EndUserEmail"] as! String
@@ -37751,6 +37788,9 @@ public class DescribeUsersInGroupResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("UserDesktopId") {
                 self.userDesktopId = dict["UserDesktopId"] as! String
+            }
+            if dict.keys.contains("UserPrincipalName") {
+                self.userPrincipalName = dict["UserPrincipalName"] as! String
             }
             if dict.keys.contains("UserSetPropertiesModels") {
                 var tmp : [DescribeUsersInGroupResponseBody.EndUsers.UserSetPropertiesModels] = []
@@ -42559,11 +42599,15 @@ public class ListDirectoryUsersResponseBody : Tea.TeaModel {
 
         public var displayName: String?
 
+        public var displayNameNew: String?
+
         public var email: String?
 
         public var endUser: String?
 
         public var phone: String?
+
+        public var userPrincipalName: String?
 
         public override init() {
             super.init()
@@ -42585,6 +42629,9 @@ public class ListDirectoryUsersResponseBody : Tea.TeaModel {
             if self.displayName != nil {
                 map["DisplayName"] = self.displayName!
             }
+            if self.displayNameNew != nil {
+                map["DisplayNameNew"] = self.displayNameNew!
+            }
             if self.email != nil {
                 map["Email"] = self.email!
             }
@@ -42593,6 +42640,9 @@ public class ListDirectoryUsersResponseBody : Tea.TeaModel {
             }
             if self.phone != nil {
                 map["Phone"] = self.phone!
+            }
+            if self.userPrincipalName != nil {
+                map["UserPrincipalName"] = self.userPrincipalName!
             }
             return map
         }
@@ -42604,6 +42654,9 @@ public class ListDirectoryUsersResponseBody : Tea.TeaModel {
             if dict.keys.contains("DisplayName") {
                 self.displayName = dict["DisplayName"] as! String
             }
+            if dict.keys.contains("DisplayNameNew") {
+                self.displayNameNew = dict["DisplayNameNew"] as! String
+            }
             if dict.keys.contains("Email") {
                 self.email = dict["Email"] as! String
             }
@@ -42612,6 +42665,9 @@ public class ListDirectoryUsersResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("Phone") {
                 self.phone = dict["Phone"] as! String
+            }
+            if dict.keys.contains("UserPrincipalName") {
+                self.userPrincipalName = dict["UserPrincipalName"] as! String
             }
         }
     }
@@ -43284,11 +43340,15 @@ public class ListOfficeSiteUsersResponseBody : Tea.TeaModel {
 
         public var displayName: String?
 
+        public var displayNameNew: String?
+
         public var email: String?
 
         public var endUser: String?
 
         public var phone: String?
+
+        public var userPrincipalName: String?
 
         public override init() {
             super.init()
@@ -43310,6 +43370,9 @@ public class ListOfficeSiteUsersResponseBody : Tea.TeaModel {
             if self.displayName != nil {
                 map["DisplayName"] = self.displayName!
             }
+            if self.displayNameNew != nil {
+                map["DisplayNameNew"] = self.displayNameNew!
+            }
             if self.email != nil {
                 map["Email"] = self.email!
             }
@@ -43318,6 +43381,9 @@ public class ListOfficeSiteUsersResponseBody : Tea.TeaModel {
             }
             if self.phone != nil {
                 map["Phone"] = self.phone!
+            }
+            if self.userPrincipalName != nil {
+                map["UserPrincipalName"] = self.userPrincipalName!
             }
             return map
         }
@@ -43329,6 +43395,9 @@ public class ListOfficeSiteUsersResponseBody : Tea.TeaModel {
             if dict.keys.contains("DisplayName") {
                 self.displayName = dict["DisplayName"] as! String
             }
+            if dict.keys.contains("DisplayNameNew") {
+                self.displayNameNew = dict["DisplayNameNew"] as! String
+            }
             if dict.keys.contains("Email") {
                 self.email = dict["Email"] as! String
             }
@@ -43337,6 +43406,9 @@ public class ListOfficeSiteUsersResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("Phone") {
                 self.phone = dict["Phone"] as! String
+            }
+            if dict.keys.contains("UserPrincipalName") {
+                self.userPrincipalName = dict["UserPrincipalName"] as! String
             }
         }
     }
@@ -53716,6 +53788,8 @@ public class RebootDesktopsResponse : Tea.TeaModel {
 }
 
 public class RebuildDesktopsRequest : Tea.TeaModel {
+    public var afterStatus: String?
+
     public var desktopId: [String]?
 
     public var imageId: String?
@@ -53740,6 +53814,9 @@ public class RebuildDesktopsRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.afterStatus != nil {
+            map["AfterStatus"] = self.afterStatus!
+        }
         if self.desktopId != nil {
             map["DesktopId"] = self.desktopId!
         }
@@ -53759,6 +53836,9 @@ public class RebuildDesktopsRequest : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("AfterStatus") {
+            self.afterStatus = dict["AfterStatus"] as! String
+        }
         if dict.keys.contains("DesktopId") {
             self.desktopId = dict["DesktopId"] as! [String]
         }

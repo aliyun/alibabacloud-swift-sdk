@@ -2731,6 +2731,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.autoCleanUserdata)) {
             query["AutoCleanUserdata"] = request.autoCleanUserdata!;
         }
+        if (!TeaUtils.Client.isUnset(request.dataSnapshotIds)) {
+            query["DataSnapshotIds"] = request.dataSnapshotIds ?? [];
+        }
         if (!TeaUtils.Client.isUnset(request.description_)) {
             query["Description"] = request.description_ ?? "";
         }
@@ -11296,6 +11299,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func rebuildDesktopsWithOptions(_ request: RebuildDesktopsRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> RebuildDesktopsResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.afterStatus)) {
+            query["AfterStatus"] = request.afterStatus ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.desktopId)) {
             query["DesktopId"] = request.desktopId ?? [];
         }
