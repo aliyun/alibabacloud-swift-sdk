@@ -2115,6 +2115,8 @@ public class CreateServerGroupRequest : Tea.TeaModel {
 
         public var healthCheckHttpCode: [String]?
 
+        public var healthCheckHttpVersion: String?
+
         public var healthCheckInterval: Int32?
 
         public var healthCheckReq: String?
@@ -2161,6 +2163,9 @@ public class CreateServerGroupRequest : Tea.TeaModel {
             if self.healthCheckHttpCode != nil {
                 map["HealthCheckHttpCode"] = self.healthCheckHttpCode!
             }
+            if self.healthCheckHttpVersion != nil {
+                map["HealthCheckHttpVersion"] = self.healthCheckHttpVersion!
+            }
             if self.healthCheckInterval != nil {
                 map["HealthCheckInterval"] = self.healthCheckInterval!
             }
@@ -2203,6 +2208,9 @@ public class CreateServerGroupRequest : Tea.TeaModel {
             }
             if dict.keys.contains("HealthCheckHttpCode") {
                 self.healthCheckHttpCode = dict["HealthCheckHttpCode"] as! [String]
+            }
+            if dict.keys.contains("HealthCheckHttpVersion") {
+                self.healthCheckHttpVersion = dict["HealthCheckHttpVersion"] as! String
             }
             if dict.keys.contains("HealthCheckInterval") {
                 self.healthCheckInterval = dict["HealthCheckInterval"] as! Int32
@@ -8398,6 +8406,8 @@ public class ListServerGroupsResponseBody : Tea.TeaModel {
 
             public var healthCheckHttpCode: [String]?
 
+            public var healthCheckHttpVersion: String?
+
             public var healthCheckInterval: Int32?
 
             public var healthCheckReq: String?
@@ -8444,6 +8454,9 @@ public class ListServerGroupsResponseBody : Tea.TeaModel {
                 if self.healthCheckHttpCode != nil {
                     map["HealthCheckHttpCode"] = self.healthCheckHttpCode!
                 }
+                if self.healthCheckHttpVersion != nil {
+                    map["HealthCheckHttpVersion"] = self.healthCheckHttpVersion!
+                }
                 if self.healthCheckInterval != nil {
                     map["HealthCheckInterval"] = self.healthCheckInterval!
                 }
@@ -8486,6 +8499,9 @@ public class ListServerGroupsResponseBody : Tea.TeaModel {
                 }
                 if dict.keys.contains("HealthCheckHttpCode") {
                     self.healthCheckHttpCode = dict["HealthCheckHttpCode"] as! [String]
+                }
+                if dict.keys.contains("HealthCheckHttpVersion") {
+                    self.healthCheckHttpVersion = dict["HealthCheckHttpVersion"] as! String
                 }
                 if dict.keys.contains("HealthCheckInterval") {
                     self.healthCheckInterval = dict["HealthCheckInterval"] as! Int32
@@ -12478,6 +12494,8 @@ public class UpdateServerGroupAttributeRequest : Tea.TeaModel {
 
         public var healthCheckHttpCode: [String]?
 
+        public var healthCheckHttpVersion: String?
+
         public var healthCheckInterval: Int32?
 
         public var healthCheckReq: String?
@@ -12524,6 +12542,9 @@ public class UpdateServerGroupAttributeRequest : Tea.TeaModel {
             if self.healthCheckHttpCode != nil {
                 map["HealthCheckHttpCode"] = self.healthCheckHttpCode!
             }
+            if self.healthCheckHttpVersion != nil {
+                map["HealthCheckHttpVersion"] = self.healthCheckHttpVersion!
+            }
             if self.healthCheckInterval != nil {
                 map["HealthCheckInterval"] = self.healthCheckInterval!
             }
@@ -12566,6 +12587,9 @@ public class UpdateServerGroupAttributeRequest : Tea.TeaModel {
             }
             if dict.keys.contains("HealthCheckHttpCode") {
                 self.healthCheckHttpCode = dict["HealthCheckHttpCode"] as! [String]
+            }
+            if dict.keys.contains("HealthCheckHttpVersion") {
+                self.healthCheckHttpVersion = dict["HealthCheckHttpVersion"] as! String
             }
             if dict.keys.contains("HealthCheckInterval") {
                 self.healthCheckInterval = dict["HealthCheckInterval"] as! Int32
