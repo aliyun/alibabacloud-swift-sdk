@@ -497,6 +497,10 @@ public class GetAccountInfoResponseBody : Tea.TeaModel {
 
         public var monthFreeCount: Int32?
 
+        public var monthHttpAesResolveCount: Int64?
+
+        public var monthHttpsAesResolveCount: Int64?
+
         public var monthHttpsResolveCount: Int32?
 
         public var monthResolveCount: Int32?
@@ -542,6 +546,12 @@ public class GetAccountInfoResponseBody : Tea.TeaModel {
             if self.monthFreeCount != nil {
                 map["MonthFreeCount"] = self.monthFreeCount!
             }
+            if self.monthHttpAesResolveCount != nil {
+                map["MonthHttpAesResolveCount"] = self.monthHttpAesResolveCount!
+            }
+            if self.monthHttpsAesResolveCount != nil {
+                map["MonthHttpsAesResolveCount"] = self.monthHttpsAesResolveCount!
+            }
             if self.monthHttpsResolveCount != nil {
                 map["MonthHttpsResolveCount"] = self.monthHttpsResolveCount!
             }
@@ -584,6 +594,12 @@ public class GetAccountInfoResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("MonthFreeCount") {
                 self.monthFreeCount = dict["MonthFreeCount"] as! Int32
+            }
+            if dict.keys.contains("MonthHttpAesResolveCount") {
+                self.monthHttpAesResolveCount = dict["MonthHttpAesResolveCount"] as! Int64
+            }
+            if dict.keys.contains("MonthHttpsAesResolveCount") {
+                self.monthHttpsAesResolveCount = dict["MonthHttpsAesResolveCount"] as! Int64
             }
             if dict.keys.contains("MonthHttpsResolveCount") {
                 self.monthHttpsResolveCount = dict["MonthHttpsResolveCount"] as! Int32
@@ -746,9 +762,13 @@ public class GetResolveCountSummaryResponseBody : Tea.TeaModel {
 
         public var http6: Int64?
 
+        public var httpAes: String?
+
         public var https: Int64?
 
         public var https6: Int64?
+
+        public var httpsAes: String?
 
         public override init() {
             super.init()
@@ -773,11 +793,17 @@ public class GetResolveCountSummaryResponseBody : Tea.TeaModel {
             if self.http6 != nil {
                 map["Http6"] = self.http6!
             }
+            if self.httpAes != nil {
+                map["HttpAes"] = self.httpAes!
+            }
             if self.https != nil {
                 map["Https"] = self.https!
             }
             if self.https6 != nil {
                 map["Https6"] = self.https6!
+            }
+            if self.httpsAes != nil {
+                map["HttpsAes"] = self.httpsAes!
             }
             return map
         }
@@ -792,11 +818,17 @@ public class GetResolveCountSummaryResponseBody : Tea.TeaModel {
             if dict.keys.contains("Http6") {
                 self.http6 = dict["Http6"] as! Int64
             }
+            if dict.keys.contains("HttpAes") {
+                self.httpAes = dict["HttpAes"] as! String
+            }
             if dict.keys.contains("Https") {
                 self.https = dict["Https"] as! Int64
             }
             if dict.keys.contains("Https6") {
                 self.https6 = dict["Https6"] as! Int64
+            }
+            if dict.keys.contains("HttpsAes") {
+                self.httpsAes = dict["HttpsAes"] as! String
             }
         }
     }
@@ -1170,6 +1202,10 @@ public class ListDomainsResponseBody : Tea.TeaModel {
         public class DomainInfo : Tea.TeaModel {
             public var domainName: String?
 
+            public var resolveHttpAes: Int64?
+
+            public var resolveHttpsAes: Int64?
+
             public var resolved: Int64?
 
             public var resolved6: Int64?
@@ -1199,6 +1235,12 @@ public class ListDomainsResponseBody : Tea.TeaModel {
                 if self.domainName != nil {
                     map["DomainName"] = self.domainName!
                 }
+                if self.resolveHttpAes != nil {
+                    map["ResolveHttpAes"] = self.resolveHttpAes!
+                }
+                if self.resolveHttpsAes != nil {
+                    map["ResolveHttpsAes"] = self.resolveHttpsAes!
+                }
                 if self.resolved != nil {
                     map["Resolved"] = self.resolved!
                 }
@@ -1223,6 +1265,12 @@ public class ListDomainsResponseBody : Tea.TeaModel {
             public override func fromMap(_ dict: [String: Any]) -> Void {
                 if dict.keys.contains("DomainName") {
                     self.domainName = dict["DomainName"] as! String
+                }
+                if dict.keys.contains("ResolveHttpAes") {
+                    self.resolveHttpAes = dict["ResolveHttpAes"] as! Int64
+                }
+                if dict.keys.contains("ResolveHttpsAes") {
+                    self.resolveHttpsAes = dict["ResolveHttpsAes"] as! Int64
                 }
                 if dict.keys.contains("Resolved") {
                     self.resolved = dict["Resolved"] as! Int64
