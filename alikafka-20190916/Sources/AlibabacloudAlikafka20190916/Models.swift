@@ -6119,7 +6119,15 @@ public class GetAllowedIpListResponseBody : Tea.TeaModel {
 
             public var allowedIpList: [String]?
 
+            public var blackIPList: [String]?
+
+            public var blackIPMap: [String: String]?
+
             public var portRange: String?
+
+            public var securityGroupId: String?
+
+            public var userDefinedSharedSecurityGroup: Bool?
 
             public override init() {
                 super.init()
@@ -6141,8 +6149,20 @@ public class GetAllowedIpListResponseBody : Tea.TeaModel {
                 if self.allowedIpList != nil {
                     map["AllowedIpList"] = self.allowedIpList!
                 }
+                if self.blackIPList != nil {
+                    map["BlackIPList"] = self.blackIPList!
+                }
+                if self.blackIPMap != nil {
+                    map["BlackIPMap"] = self.blackIPMap!
+                }
                 if self.portRange != nil {
                     map["PortRange"] = self.portRange!
+                }
+                if self.securityGroupId != nil {
+                    map["SecurityGroupId"] = self.securityGroupId!
+                }
+                if self.userDefinedSharedSecurityGroup != nil {
+                    map["UserDefinedSharedSecurityGroup"] = self.userDefinedSharedSecurityGroup!
                 }
                 return map
             }
@@ -6154,8 +6174,20 @@ public class GetAllowedIpListResponseBody : Tea.TeaModel {
                 if dict.keys.contains("AllowedIpList") {
                     self.allowedIpList = dict["AllowedIpList"] as! [String]
                 }
+                if dict.keys.contains("BlackIPList") {
+                    self.blackIPList = dict["BlackIPList"] as! [String]
+                }
+                if dict.keys.contains("BlackIPMap") {
+                    self.blackIPMap = dict["BlackIPMap"] as! [String: String]
+                }
                 if dict.keys.contains("PortRange") {
                     self.portRange = dict["PortRange"] as! String
+                }
+                if dict.keys.contains("SecurityGroupId") {
+                    self.securityGroupId = dict["SecurityGroupId"] as! String
+                }
+                if dict.keys.contains("UserDefinedSharedSecurityGroup") {
+                    self.userDefinedSharedSecurityGroup = dict["UserDefinedSharedSecurityGroup"] as! Bool
                 }
             }
         }
@@ -6164,7 +6196,15 @@ public class GetAllowedIpListResponseBody : Tea.TeaModel {
 
             public var allowedIpList: [String]?
 
+            public var blackIPList: [String]?
+
+            public var blackIPMap: [String: String]?
+
             public var portRange: String?
+
+            public var securityGroupId: String?
+
+            public var userDefinedSharedSecurityGroup: Bool?
 
             public override init() {
                 super.init()
@@ -6186,8 +6226,20 @@ public class GetAllowedIpListResponseBody : Tea.TeaModel {
                 if self.allowedIpList != nil {
                     map["AllowedIpList"] = self.allowedIpList!
                 }
+                if self.blackIPList != nil {
+                    map["BlackIPList"] = self.blackIPList!
+                }
+                if self.blackIPMap != nil {
+                    map["BlackIPMap"] = self.blackIPMap!
+                }
                 if self.portRange != nil {
                     map["PortRange"] = self.portRange!
+                }
+                if self.securityGroupId != nil {
+                    map["SecurityGroupId"] = self.securityGroupId!
+                }
+                if self.userDefinedSharedSecurityGroup != nil {
+                    map["UserDefinedSharedSecurityGroup"] = self.userDefinedSharedSecurityGroup!
                 }
                 return map
             }
@@ -6199,8 +6251,20 @@ public class GetAllowedIpListResponseBody : Tea.TeaModel {
                 if dict.keys.contains("AllowedIpList") {
                     self.allowedIpList = dict["AllowedIpList"] as! [String]
                 }
+                if dict.keys.contains("BlackIPList") {
+                    self.blackIPList = dict["BlackIPList"] as! [String]
+                }
+                if dict.keys.contains("BlackIPMap") {
+                    self.blackIPMap = dict["BlackIPMap"] as! [String: String]
+                }
                 if dict.keys.contains("PortRange") {
                     self.portRange = dict["PortRange"] as! String
+                }
+                if dict.keys.contains("SecurityGroupId") {
+                    self.securityGroupId = dict["SecurityGroupId"] as! String
+                }
+                if dict.keys.contains("UserDefinedSharedSecurityGroup") {
+                    self.userDefinedSharedSecurityGroup = dict["UserDefinedSharedSecurityGroup"] as! Bool
                 }
             }
         }
