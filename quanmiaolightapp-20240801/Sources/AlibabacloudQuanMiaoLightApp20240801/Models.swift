@@ -7863,6 +7863,8 @@ public class RunTagMiningAnalysisRequest : Tea.TeaModel {
             }
         }
     }
+    public var apiKey: String?
+
     public var businessType: String?
 
     public var content: String?
@@ -7891,6 +7893,9 @@ public class RunTagMiningAnalysisRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.apiKey != nil {
+            map["apiKey"] = self.apiKey!
+        }
         if self.businessType != nil {
             map["businessType"] = self.businessType!
         }
@@ -7920,6 +7925,9 @@ public class RunTagMiningAnalysisRequest : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("apiKey") {
+            self.apiKey = dict["apiKey"] as! String
+        }
         if dict.keys.contains("businessType") {
             self.businessType = dict["businessType"] as! String
         }
@@ -7953,6 +7961,8 @@ public class RunTagMiningAnalysisRequest : Tea.TeaModel {
 }
 
 public class RunTagMiningAnalysisShrinkRequest : Tea.TeaModel {
+    public var apiKey: String?
+
     public var businessType: String?
 
     public var content: String?
@@ -7981,6 +7991,9 @@ public class RunTagMiningAnalysisShrinkRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.apiKey != nil {
+            map["apiKey"] = self.apiKey!
+        }
         if self.businessType != nil {
             map["businessType"] = self.businessType!
         }
@@ -8006,6 +8019,9 @@ public class RunTagMiningAnalysisShrinkRequest : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("apiKey") {
+            self.apiKey = dict["apiKey"] as! String
+        }
         if dict.keys.contains("businessType") {
             self.businessType = dict["businessType"] as! String
         }
@@ -10272,6 +10288,8 @@ public class SubmitTagMiningAnalysisTaskRequest : Tea.TeaModel {
             }
         }
     }
+    public var apiKey: String?
+
     public var businessType: String?
 
     public var contents: [String]?
@@ -10302,6 +10320,9 @@ public class SubmitTagMiningAnalysisTaskRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.apiKey != nil {
+            map["apiKey"] = self.apiKey!
+        }
         if self.businessType != nil {
             map["businessType"] = self.businessType!
         }
@@ -10334,6 +10355,9 @@ public class SubmitTagMiningAnalysisTaskRequest : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("apiKey") {
+            self.apiKey = dict["apiKey"] as! String
+        }
         if dict.keys.contains("businessType") {
             self.businessType = dict["businessType"] as! String
         }
@@ -10370,6 +10394,8 @@ public class SubmitTagMiningAnalysisTaskRequest : Tea.TeaModel {
 }
 
 public class SubmitTagMiningAnalysisTaskShrinkRequest : Tea.TeaModel {
+    public var apiKey: String?
+
     public var businessType: String?
 
     public var contentsShrink: String?
@@ -10400,6 +10426,9 @@ public class SubmitTagMiningAnalysisTaskShrinkRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.apiKey != nil {
+            map["apiKey"] = self.apiKey!
+        }
         if self.businessType != nil {
             map["businessType"] = self.businessType!
         }
@@ -10428,6 +10457,9 @@ public class SubmitTagMiningAnalysisTaskShrinkRequest : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("apiKey") {
+            self.apiKey = dict["apiKey"] as! String
+        }
         if dict.keys.contains("businessType") {
             self.businessType = dict["businessType"] as! String
         }

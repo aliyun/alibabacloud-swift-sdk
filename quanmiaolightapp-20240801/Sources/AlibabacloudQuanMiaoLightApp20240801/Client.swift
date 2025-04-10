@@ -845,6 +845,9 @@ open class Client : AlibabacloudOpenApi.Client {
             request.tagsShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.tags, "tags", "json")
         }
         var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.apiKey)) {
+            body["apiKey"] = request.apiKey ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.businessType)) {
             body["businessType"] = request.businessType ?? "";
         }
@@ -1020,6 +1023,9 @@ open class Client : AlibabacloudOpenApi.Client {
             request.tagsShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.tags, "tags", "json")
         }
         var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.apiKey)) {
+            body["apiKey"] = request.apiKey ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.businessType)) {
             body["businessType"] = request.businessType ?? "";
         }
