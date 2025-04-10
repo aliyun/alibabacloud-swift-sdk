@@ -3213,6 +3213,8 @@ public class ListEvaluationMetricDetailsRequest : Tea.TeaModel {
 
     public var regionId: String?
 
+    public var snapshotId: String?
+
     public override init() {
         super.init()
     }
@@ -3242,6 +3244,9 @@ public class ListEvaluationMetricDetailsRequest : Tea.TeaModel {
         if self.regionId != nil {
             map["RegionId"] = self.regionId!
         }
+        if self.snapshotId != nil {
+            map["SnapshotId"] = self.snapshotId!
+        }
         return map
     }
 
@@ -3260,6 +3265,9 @@ public class ListEvaluationMetricDetailsRequest : Tea.TeaModel {
         }
         if dict.keys.contains("RegionId") {
             self.regionId = dict["RegionId"] as! String
+        }
+        if dict.keys.contains("SnapshotId") {
+            self.snapshotId = dict["SnapshotId"] as! String
         }
     }
 }
@@ -3506,9 +3514,50 @@ public class ListEvaluationMetricDetailsResponse : Tea.TeaModel {
 }
 
 public class ListEvaluationResultsRequest : Tea.TeaModel {
+    public class Filters : Tea.TeaModel {
+        public var key: String?
+
+        public var values: [String]?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.key != nil {
+                map["Key"] = self.key!
+            }
+            if self.values != nil {
+                map["Values"] = self.values!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("Key") {
+                self.key = dict["Key"] as! String
+            }
+            if dict.keys.contains("Values") {
+                self.values = dict["Values"] as! [String]
+            }
+        }
+    }
     public var accountId: Int64?
 
+    public var filters: [ListEvaluationResultsRequest.Filters]?
+
     public var regionId: String?
+
+    public var snapshotId: String?
 
     public override init() {
         super.init()
@@ -3527,8 +3576,18 @@ public class ListEvaluationResultsRequest : Tea.TeaModel {
         if self.accountId != nil {
             map["AccountId"] = self.accountId!
         }
+        if self.filters != nil {
+            var tmp : [Any] = []
+            for k in self.filters! {
+                tmp.append(k.toMap())
+            }
+            map["Filters"] = tmp
+        }
         if self.regionId != nil {
             map["RegionId"] = self.regionId!
+        }
+        if self.snapshotId != nil {
+            map["SnapshotId"] = self.snapshotId!
         }
         return map
     }
@@ -3537,8 +3596,22 @@ public class ListEvaluationResultsRequest : Tea.TeaModel {
         if dict.keys.contains("AccountId") {
             self.accountId = dict["AccountId"] as! Int64
         }
+        if dict.keys.contains("Filters") {
+            var tmp : [ListEvaluationResultsRequest.Filters] = []
+            for v in dict["Filters"] as! [Any] {
+                var model = ListEvaluationResultsRequest.Filters()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.filters = tmp
+        }
         if dict.keys.contains("RegionId") {
             self.regionId = dict["RegionId"] as! String
+        }
+        if dict.keys.contains("SnapshotId") {
+            self.snapshotId = dict["SnapshotId"] as! String
         }
     }
 }
