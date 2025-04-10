@@ -1090,6 +1090,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.nodeName)) {
             query["NodeName"] = request.nodeName ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.officeSiteIds)) {
+            query["OfficeSiteIds"] = request.officeSiteIds ?? [];
+        }
         if (!TeaUtils.Client.isUnset(request.saleMode)) {
             query["SaleMode"] = request.saleMode ?? "";
         }

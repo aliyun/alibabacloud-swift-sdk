@@ -4916,6 +4916,8 @@ public class DescribeAndroidInstancesRequest : Tea.TeaModel {
 
     public var nodeName: String?
 
+    public var officeSiteIds: [String]?
+
     public var saleMode: String?
 
     public var status: String?
@@ -4972,6 +4974,9 @@ public class DescribeAndroidInstancesRequest : Tea.TeaModel {
         if self.nodeName != nil {
             map["NodeName"] = self.nodeName!
         }
+        if self.officeSiteIds != nil {
+            map["OfficeSiteIds"] = self.officeSiteIds!
+        }
         if self.saleMode != nil {
             map["SaleMode"] = self.saleMode!
         }
@@ -5024,6 +5029,9 @@ public class DescribeAndroidInstancesRequest : Tea.TeaModel {
         }
         if dict.keys.contains("NodeName") {
             self.nodeName = dict["NodeName"] as! String
+        }
+        if dict.keys.contains("OfficeSiteIds") {
+            self.officeSiteIds = dict["OfficeSiteIds"] as! [String]
         }
         if dict.keys.contains("SaleMode") {
             self.saleMode = dict["SaleMode"] as! String
