@@ -177,14 +177,22 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func configLayer4RuleWithOptions(_ request: ConfigLayer4RuleRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ConfigLayer4RuleResponse {
-        try TeaUtils.Client.validateModel(request)
+    public func configLayer4RuleWithOptions(_ tmpReq: ConfigLayer4RuleRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ConfigLayer4RuleResponse {
+        try TeaUtils.Client.validateModel(tmpReq)
+        var request: ConfigLayer4RuleShrinkRequest = ConfigLayer4RuleShrinkRequest([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.usTimeout)) {
+            request.usTimeoutShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.usTimeout, "UsTimeout", "json")
+        }
         var query: [String: Any] = [:]
         if (!TeaUtils.Client.isUnset(request.listeners)) {
             query["Listeners"] = request.listeners ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.proxyEnable)) {
             query["ProxyEnable"] = request.proxyEnable!;
+        }
+        if (!TeaUtils.Client.isUnset(request.usTimeoutShrink)) {
+            query["UsTimeout"] = request.usTimeoutShrink ?? "";
         }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "query": AlibabaCloudOpenApiUtil.Client.query(query)
@@ -569,14 +577,22 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func createLayer4RuleWithOptions(_ request: CreateLayer4RuleRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> CreateLayer4RuleResponse {
-        try TeaUtils.Client.validateModel(request)
+    public func createLayer4RuleWithOptions(_ tmpReq: CreateLayer4RuleRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> CreateLayer4RuleResponse {
+        try TeaUtils.Client.validateModel(tmpReq)
+        var request: CreateLayer4RuleShrinkRequest = CreateLayer4RuleShrinkRequest([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.usTimeout)) {
+            request.usTimeoutShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.usTimeout, "UsTimeout", "json")
+        }
         var query: [String: Any] = [:]
         if (!TeaUtils.Client.isUnset(request.listeners)) {
             query["Listeners"] = request.listeners ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.proxyEnable)) {
             query["ProxyEnable"] = request.proxyEnable!;
+        }
+        if (!TeaUtils.Client.isUnset(request.usTimeoutShrink)) {
+            query["UsTimeout"] = request.usTimeoutShrink ?? "";
         }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "query": AlibabaCloudOpenApiUtil.Client.query(query)

@@ -445,9 +445,97 @@ public class ConfigHealthCheckResponse : Tea.TeaModel {
 }
 
 public class ConfigLayer4RuleRequest : Tea.TeaModel {
+    public class UsTimeout : Tea.TeaModel {
+        public var connectTimeout: Int64?
+
+        public var rsTimeout: Int64?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.connectTimeout != nil {
+                map["ConnectTimeout"] = self.connectTimeout!
+            }
+            if self.rsTimeout != nil {
+                map["RsTimeout"] = self.rsTimeout!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("ConnectTimeout") {
+                self.connectTimeout = dict["ConnectTimeout"] as! Int64
+            }
+            if dict.keys.contains("RsTimeout") {
+                self.rsTimeout = dict["RsTimeout"] as! Int64
+            }
+        }
+    }
     public var listeners: String?
 
     public var proxyEnable: Int64?
+
+    public var usTimeout: ConfigLayer4RuleRequest.UsTimeout?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.usTimeout?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.listeners != nil {
+            map["Listeners"] = self.listeners!
+        }
+        if self.proxyEnable != nil {
+            map["ProxyEnable"] = self.proxyEnable!
+        }
+        if self.usTimeout != nil {
+            map["UsTimeout"] = self.usTimeout?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("Listeners") {
+            self.listeners = dict["Listeners"] as! String
+        }
+        if dict.keys.contains("ProxyEnable") {
+            self.proxyEnable = dict["ProxyEnable"] as! Int64
+        }
+        if dict.keys.contains("UsTimeout") {
+            var model = ConfigLayer4RuleRequest.UsTimeout()
+            model.fromMap(dict["UsTimeout"] as! [String: Any])
+            self.usTimeout = model
+        }
+    }
+}
+
+public class ConfigLayer4RuleShrinkRequest : Tea.TeaModel {
+    public var listeners: String?
+
+    public var proxyEnable: Int64?
+
+    public var usTimeoutShrink: String?
 
     public override init() {
         super.init()
@@ -469,6 +557,9 @@ public class ConfigLayer4RuleRequest : Tea.TeaModel {
         if self.proxyEnable != nil {
             map["ProxyEnable"] = self.proxyEnable!
         }
+        if self.usTimeoutShrink != nil {
+            map["UsTimeout"] = self.usTimeoutShrink!
+        }
         return map
     }
 
@@ -478,6 +569,9 @@ public class ConfigLayer4RuleRequest : Tea.TeaModel {
         }
         if dict.keys.contains("ProxyEnable") {
             self.proxyEnable = dict["ProxyEnable"] as! Int64
+        }
+        if dict.keys.contains("UsTimeout") {
+            self.usTimeoutShrink = dict["UsTimeout"] as! String
         }
     }
 }
@@ -1573,9 +1667,97 @@ public class CreateAsyncTaskResponse : Tea.TeaModel {
 }
 
 public class CreateLayer4RuleRequest : Tea.TeaModel {
+    public class UsTimeout : Tea.TeaModel {
+        public var connectTimeout: Int64?
+
+        public var rsTimeout: Int64?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.connectTimeout != nil {
+                map["ConnectTimeout"] = self.connectTimeout!
+            }
+            if self.rsTimeout != nil {
+                map["RsTimeout"] = self.rsTimeout!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("ConnectTimeout") {
+                self.connectTimeout = dict["ConnectTimeout"] as! Int64
+            }
+            if dict.keys.contains("RsTimeout") {
+                self.rsTimeout = dict["RsTimeout"] as! Int64
+            }
+        }
+    }
     public var listeners: String?
 
     public var proxyEnable: Int32?
+
+    public var usTimeout: CreateLayer4RuleRequest.UsTimeout?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.usTimeout?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.listeners != nil {
+            map["Listeners"] = self.listeners!
+        }
+        if self.proxyEnable != nil {
+            map["ProxyEnable"] = self.proxyEnable!
+        }
+        if self.usTimeout != nil {
+            map["UsTimeout"] = self.usTimeout?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("Listeners") {
+            self.listeners = dict["Listeners"] as! String
+        }
+        if dict.keys.contains("ProxyEnable") {
+            self.proxyEnable = dict["ProxyEnable"] as! Int32
+        }
+        if dict.keys.contains("UsTimeout") {
+            var model = CreateLayer4RuleRequest.UsTimeout()
+            model.fromMap(dict["UsTimeout"] as! [String: Any])
+            self.usTimeout = model
+        }
+    }
+}
+
+public class CreateLayer4RuleShrinkRequest : Tea.TeaModel {
+    public var listeners: String?
+
+    public var proxyEnable: Int32?
+
+    public var usTimeoutShrink: String?
 
     public override init() {
         super.init()
@@ -1597,6 +1779,9 @@ public class CreateLayer4RuleRequest : Tea.TeaModel {
         if self.proxyEnable != nil {
             map["ProxyEnable"] = self.proxyEnable!
         }
+        if self.usTimeoutShrink != nil {
+            map["UsTimeout"] = self.usTimeoutShrink!
+        }
         return map
     }
 
@@ -1606,6 +1791,9 @@ public class CreateLayer4RuleRequest : Tea.TeaModel {
         }
         if dict.keys.contains("ProxyEnable") {
             self.proxyEnable = dict["ProxyEnable"] as! Int32
+        }
+        if dict.keys.contains("UsTimeout") {
+            self.usTimeoutShrink = dict["UsTimeout"] as! String
         }
     }
 }
@@ -7923,6 +8111,43 @@ public class DescribeLayer4RulesRequest : Tea.TeaModel {
 
 public class DescribeLayer4RulesResponseBody : Tea.TeaModel {
     public class Listeners : Tea.TeaModel {
+        public class UsTimeout : Tea.TeaModel {
+            public var connectTimeout: Int64?
+
+            public var rsTimeout: Int64?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.connectTimeout != nil {
+                    map["ConnectTimeout"] = self.connectTimeout!
+                }
+                if self.rsTimeout != nil {
+                    map["RsTimeout"] = self.rsTimeout!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("ConnectTimeout") {
+                    self.connectTimeout = dict["ConnectTimeout"] as! Int64
+                }
+                if dict.keys.contains("RsTimeout") {
+                    self.rsTimeout = dict["RsTimeout"] as! Int64
+                }
+            }
+        }
         public var backendPort: Int32?
 
         public var bakMode: Int32?
@@ -7949,6 +8174,8 @@ public class DescribeLayer4RulesResponseBody : Tea.TeaModel {
 
         public var remark: String?
 
+        public var usTimeout: DescribeLayer4RulesResponseBody.Listeners.UsTimeout?
+
         public override init() {
             super.init()
         }
@@ -7959,6 +8186,7 @@ public class DescribeLayer4RulesResponseBody : Tea.TeaModel {
         }
 
         public override func validate() throws -> Void {
+            try self.usTimeout?.validate()
         }
 
         public override func toMap() -> [String : Any] {
@@ -8002,6 +8230,9 @@ public class DescribeLayer4RulesResponseBody : Tea.TeaModel {
             if self.remark != nil {
                 map["Remark"] = self.remark!
             }
+            if self.usTimeout != nil {
+                map["UsTimeout"] = self.usTimeout?.toMap()
+            }
             return map
         }
 
@@ -8044,6 +8275,11 @@ public class DescribeLayer4RulesResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("Remark") {
                 self.remark = dict["Remark"] as! String
+            }
+            if dict.keys.contains("UsTimeout") {
+                var model = DescribeLayer4RulesResponseBody.Listeners.UsTimeout()
+                model.fromMap(dict["UsTimeout"] as! [String: Any])
+                self.usTimeout = model
             }
         }
     }
