@@ -1140,6 +1140,51 @@ public class CreateClusterRequest : Tea.TeaModel {
                 }
             }
         }
+        public class SystemDisk : Tea.TeaModel {
+            public var category: String?
+
+            public var performanceLevel: String?
+
+            public var size: Int32?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.category != nil {
+                    map["Category"] = self.category!
+                }
+                if self.performanceLevel != nil {
+                    map["PerformanceLevel"] = self.performanceLevel!
+                }
+                if self.size != nil {
+                    map["Size"] = self.size!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("Category") {
+                    self.category = dict["Category"] as! String
+                }
+                if dict.keys.contains("PerformanceLevel") {
+                    self.performanceLevel = dict["PerformanceLevel"] as! String
+                }
+                if dict.keys.contains("Size") {
+                    self.size = dict["Size"] as! Int32
+                }
+            }
+        }
         public var imageId: String?
 
         public var machineType: String?
@@ -1149,6 +1194,8 @@ public class CreateClusterRequest : Tea.TeaModel {
         public var nodeGroupName: String?
 
         public var nodes: [CreateClusterRequest.NodeGroups.Nodes]?
+
+        public var systemDisk: CreateClusterRequest.NodeGroups.SystemDisk?
 
         public var userData: String?
 
@@ -1164,6 +1211,7 @@ public class CreateClusterRequest : Tea.TeaModel {
         }
 
         public override func validate() throws -> Void {
+            try self.systemDisk?.validate()
         }
 
         public override func toMap() -> [String : Any] {
@@ -1186,6 +1234,9 @@ public class CreateClusterRequest : Tea.TeaModel {
                     tmp.append(k.toMap())
                 }
                 map["Nodes"] = tmp
+            }
+            if self.systemDisk != nil {
+                map["SystemDisk"] = self.systemDisk?.toMap()
             }
             if self.userData != nil {
                 map["UserData"] = self.userData!
@@ -1219,6 +1270,11 @@ public class CreateClusterRequest : Tea.TeaModel {
                     tmp.append(model)
                 }
                 self.nodes = tmp
+            }
+            if dict.keys.contains("SystemDisk") {
+                var model = CreateClusterRequest.NodeGroups.SystemDisk()
+                model.fromMap(dict["SystemDisk"] as! [String: Any])
+                self.systemDisk = model
             }
             if dict.keys.contains("UserData") {
                 self.userData = dict["UserData"] as! String
@@ -2745,6 +2801,51 @@ public class CreateNetTestTaskResponse : Tea.TeaModel {
 
 public class CreateNodeGroupRequest : Tea.TeaModel {
     public class NodeGroup : Tea.TeaModel {
+        public class SystemDisk : Tea.TeaModel {
+            public var category: String?
+
+            public var performanceLevel: String?
+
+            public var size: Int32?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.category != nil {
+                    map["Category"] = self.category!
+                }
+                if self.performanceLevel != nil {
+                    map["PerformanceLevel"] = self.performanceLevel!
+                }
+                if self.size != nil {
+                    map["Size"] = self.size!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("Category") {
+                    self.category = dict["Category"] as! String
+                }
+                if dict.keys.contains("PerformanceLevel") {
+                    self.performanceLevel = dict["PerformanceLevel"] as! String
+                }
+                if dict.keys.contains("Size") {
+                    self.size = dict["Size"] as! Int32
+                }
+            }
+        }
         public var az: String?
 
         public var imageId: String?
@@ -2754,6 +2855,8 @@ public class CreateNodeGroupRequest : Tea.TeaModel {
         public var nodeGroupDescription: String?
 
         public var nodeGroupName: String?
+
+        public var systemDisk: CreateNodeGroupRequest.NodeGroup.SystemDisk?
 
         public var userData: String?
 
@@ -2767,6 +2870,7 @@ public class CreateNodeGroupRequest : Tea.TeaModel {
         }
 
         public override func validate() throws -> Void {
+            try self.systemDisk?.validate()
         }
 
         public override func toMap() -> [String : Any] {
@@ -2785,6 +2889,9 @@ public class CreateNodeGroupRequest : Tea.TeaModel {
             }
             if self.nodeGroupName != nil {
                 map["NodeGroupName"] = self.nodeGroupName!
+            }
+            if self.systemDisk != nil {
+                map["SystemDisk"] = self.systemDisk?.toMap()
             }
             if self.userData != nil {
                 map["UserData"] = self.userData!
@@ -2807,6 +2914,11 @@ public class CreateNodeGroupRequest : Tea.TeaModel {
             }
             if dict.keys.contains("NodeGroupName") {
                 self.nodeGroupName = dict["NodeGroupName"] as! String
+            }
+            if dict.keys.contains("SystemDisk") {
+                var model = CreateNodeGroupRequest.NodeGroup.SystemDisk()
+                model.fromMap(dict["SystemDisk"] as! [String: Any])
+                self.systemDisk = model
             }
             if dict.keys.contains("UserData") {
                 self.userData = dict["UserData"] as! String
@@ -5052,6 +5164,67 @@ public class DescribeNodeRequest : Tea.TeaModel {
 }
 
 public class DescribeNodeResponseBody : Tea.TeaModel {
+    public class Disks : Tea.TeaModel {
+        public var category: String?
+
+        public var diskId: String?
+
+        public var performanceLevel: String?
+
+        public var size: Int32?
+
+        public var type: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.category != nil {
+                map["Category"] = self.category!
+            }
+            if self.diskId != nil {
+                map["DiskId"] = self.diskId!
+            }
+            if self.performanceLevel != nil {
+                map["PerformanceLevel"] = self.performanceLevel!
+            }
+            if self.size != nil {
+                map["Size"] = self.size!
+            }
+            if self.type != nil {
+                map["Type"] = self.type!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("Category") {
+                self.category = dict["Category"] as! String
+            }
+            if dict.keys.contains("DiskId") {
+                self.diskId = dict["DiskId"] as! String
+            }
+            if dict.keys.contains("PerformanceLevel") {
+                self.performanceLevel = dict["PerformanceLevel"] as! String
+            }
+            if dict.keys.contains("Size") {
+                self.size = dict["Size"] as! Int32
+            }
+            if dict.keys.contains("Type") {
+                self.type = dict["Type"] as! String
+            }
+        }
+    }
     public class Networks : Tea.TeaModel {
         public var bondName: String?
 
@@ -5111,6 +5284,8 @@ public class DescribeNodeResponseBody : Tea.TeaModel {
 
     public var createTime: String?
 
+    public var disks: [DescribeNodeResponseBody.Disks]?
+
     public var expiredTime: String?
 
     public var hostname: String?
@@ -5165,6 +5340,13 @@ public class DescribeNodeResponseBody : Tea.TeaModel {
         }
         if self.createTime != nil {
             map["CreateTime"] = self.createTime!
+        }
+        if self.disks != nil {
+            var tmp : [Any] = []
+            for k in self.disks! {
+                tmp.append(k.toMap())
+            }
+            map["Disks"] = tmp
         }
         if self.expiredTime != nil {
             map["ExpiredTime"] = self.expiredTime!
@@ -5230,6 +5412,17 @@ public class DescribeNodeResponseBody : Tea.TeaModel {
         }
         if dict.keys.contains("CreateTime") {
             self.createTime = dict["CreateTime"] as! String
+        }
+        if dict.keys.contains("Disks") {
+            var tmp : [DescribeNodeResponseBody.Disks] = []
+            for v in dict["Disks"] as! [Any] {
+                var model = DescribeNodeResponseBody.Disks()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.disks = tmp
         }
         if dict.keys.contains("ExpiredTime") {
             self.expiredTime = dict["ExpiredTime"] as! String
