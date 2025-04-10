@@ -5829,6 +5829,422 @@ public class FinishAICoachTaskSessionResponse : Tea.TeaModel {
     }
 }
 
+public class GetAICoachCheatDetectionRequest : Tea.TeaModel {
+    public var sessionId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.sessionId != nil {
+            map["sessionId"] = self.sessionId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("sessionId") {
+            self.sessionId = dict["sessionId"] as! String
+        }
+    }
+}
+
+public class GetAICoachCheatDetectionResponseBody : Tea.TeaModel {
+    public class ImageCheat : Tea.TeaModel {
+        public class List : Tea.TeaModel {
+            public var time: String?
+
+            public var url: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.time != nil {
+                    map["time"] = self.time!
+                }
+                if self.url != nil {
+                    map["url"] = self.url!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("time") {
+                    self.time = dict["time"] as! String
+                }
+                if dict.keys.contains("url") {
+                    self.url = dict["url"] as! String
+                }
+            }
+        }
+        public var desc: String?
+
+        public var list: [GetAICoachCheatDetectionResponseBody.ImageCheat.List]?
+
+        public var status: Int32?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.desc != nil {
+                map["desc"] = self.desc!
+            }
+            if self.list != nil {
+                var tmp : [Any] = []
+                for k in self.list! {
+                    tmp.append(k.toMap())
+                }
+                map["list"] = tmp
+            }
+            if self.status != nil {
+                map["status"] = self.status!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("desc") {
+                self.desc = dict["desc"] as! String
+            }
+            if dict.keys.contains("list") {
+                var tmp : [GetAICoachCheatDetectionResponseBody.ImageCheat.List] = []
+                for v in dict["list"] as! [Any] {
+                    var model = GetAICoachCheatDetectionResponseBody.ImageCheat.List()
+                    if v != nil {
+                        model.fromMap(v as! [String: Any])
+                    }
+                    tmp.append(model)
+                }
+                self.list = tmp
+            }
+            if dict.keys.contains("status") {
+                self.status = dict["status"] as! Int32
+            }
+        }
+    }
+    public class VoiceCheat : Tea.TeaModel {
+        public class ComparisonList : Tea.TeaModel {
+            public var time: String?
+
+            public var url: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.time != nil {
+                    map["time"] = self.time!
+                }
+                if self.url != nil {
+                    map["url"] = self.url!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("time") {
+                    self.time = dict["time"] as! String
+                }
+                if dict.keys.contains("url") {
+                    self.url = dict["url"] as! String
+                }
+            }
+        }
+        public class OriginalList : Tea.TeaModel {
+            public var url: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.url != nil {
+                    map["url"] = self.url!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("url") {
+                    self.url = dict["url"] as! String
+                }
+            }
+        }
+        public var comparisonList: [GetAICoachCheatDetectionResponseBody.VoiceCheat.ComparisonList]?
+
+        public var desc: String?
+
+        public var originalList: [GetAICoachCheatDetectionResponseBody.VoiceCheat.OriginalList]?
+
+        public var status: Int32?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.comparisonList != nil {
+                var tmp : [Any] = []
+                for k in self.comparisonList! {
+                    tmp.append(k.toMap())
+                }
+                map["comparisonList"] = tmp
+            }
+            if self.desc != nil {
+                map["desc"] = self.desc!
+            }
+            if self.originalList != nil {
+                var tmp : [Any] = []
+                for k in self.originalList! {
+                    tmp.append(k.toMap())
+                }
+                map["originalList"] = tmp
+            }
+            if self.status != nil {
+                map["status"] = self.status!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("comparisonList") {
+                var tmp : [GetAICoachCheatDetectionResponseBody.VoiceCheat.ComparisonList] = []
+                for v in dict["comparisonList"] as! [Any] {
+                    var model = GetAICoachCheatDetectionResponseBody.VoiceCheat.ComparisonList()
+                    if v != nil {
+                        model.fromMap(v as! [String: Any])
+                    }
+                    tmp.append(model)
+                }
+                self.comparisonList = tmp
+            }
+            if dict.keys.contains("desc") {
+                self.desc = dict["desc"] as! String
+            }
+            if dict.keys.contains("originalList") {
+                var tmp : [GetAICoachCheatDetectionResponseBody.VoiceCheat.OriginalList] = []
+                for v in dict["originalList"] as! [Any] {
+                    var model = GetAICoachCheatDetectionResponseBody.VoiceCheat.OriginalList()
+                    if v != nil {
+                        model.fromMap(v as! [String: Any])
+                    }
+                    tmp.append(model)
+                }
+                self.originalList = tmp
+            }
+            if dict.keys.contains("status") {
+                self.status = dict["status"] as! Int32
+            }
+        }
+    }
+    public var cheatId: String?
+
+    public var errorCode: String?
+
+    public var errorMessage: String?
+
+    public var gmtCreate: String?
+
+    public var imageCheat: GetAICoachCheatDetectionResponseBody.ImageCheat?
+
+    public var requestId: String?
+
+    public var status: Int32?
+
+    public var success: Bool?
+
+    public var voiceCheat: GetAICoachCheatDetectionResponseBody.VoiceCheat?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.imageCheat?.validate()
+        try self.voiceCheat?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.cheatId != nil {
+            map["cheatId"] = self.cheatId!
+        }
+        if self.errorCode != nil {
+            map["errorCode"] = self.errorCode!
+        }
+        if self.errorMessage != nil {
+            map["errorMessage"] = self.errorMessage!
+        }
+        if self.gmtCreate != nil {
+            map["gmtCreate"] = self.gmtCreate!
+        }
+        if self.imageCheat != nil {
+            map["imageCheat"] = self.imageCheat?.toMap()
+        }
+        if self.requestId != nil {
+            map["requestId"] = self.requestId!
+        }
+        if self.status != nil {
+            map["status"] = self.status!
+        }
+        if self.success != nil {
+            map["success"] = self.success!
+        }
+        if self.voiceCheat != nil {
+            map["voiceCheat"] = self.voiceCheat?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("cheatId") {
+            self.cheatId = dict["cheatId"] as! String
+        }
+        if dict.keys.contains("errorCode") {
+            self.errorCode = dict["errorCode"] as! String
+        }
+        if dict.keys.contains("errorMessage") {
+            self.errorMessage = dict["errorMessage"] as! String
+        }
+        if dict.keys.contains("gmtCreate") {
+            self.gmtCreate = dict["gmtCreate"] as! String
+        }
+        if dict.keys.contains("imageCheat") {
+            var model = GetAICoachCheatDetectionResponseBody.ImageCheat()
+            model.fromMap(dict["imageCheat"] as! [String: Any])
+            self.imageCheat = model
+        }
+        if dict.keys.contains("requestId") {
+            self.requestId = dict["requestId"] as! String
+        }
+        if dict.keys.contains("status") {
+            self.status = dict["status"] as! Int32
+        }
+        if dict.keys.contains("success") {
+            self.success = dict["success"] as! Bool
+        }
+        if dict.keys.contains("voiceCheat") {
+            var model = GetAICoachCheatDetectionResponseBody.VoiceCheat()
+            model.fromMap(dict["voiceCheat"] as! [String: Any])
+            self.voiceCheat = model
+        }
+    }
+}
+
+public class GetAICoachCheatDetectionResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: GetAICoachCheatDetectionResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") {
+            var model = GetAICoachCheatDetectionResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
 public class GetAICoachScriptRequest : Tea.TeaModel {
     public var scriptRecordId: String?
 
@@ -12413,6 +12829,8 @@ public class SelectResourceResponseBody : Tea.TeaModel {
             }
         }
     }
+    public var aliyunUid: String?
+
     public var requestId: String?
 
     public var resourceInfoList: [SelectResourceResponseBody.ResourceInfoList]?
@@ -12431,6 +12849,9 @@ public class SelectResourceResponseBody : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.aliyunUid != nil {
+            map["aliyunUid"] = self.aliyunUid!
+        }
         if self.requestId != nil {
             map["requestId"] = self.requestId!
         }
@@ -12445,6 +12866,9 @@ public class SelectResourceResponseBody : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("aliyunUid") {
+            self.aliyunUid = dict["aliyunUid"] as! String
+        }
         if dict.keys.contains("requestId") {
             self.requestId = dict["requestId"] as! String
         }
