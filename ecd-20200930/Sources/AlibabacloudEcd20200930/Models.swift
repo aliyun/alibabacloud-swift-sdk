@@ -30923,6 +30923,10 @@ public class DescribeOfficeSitesResponseBody : Tea.TeaModel {
 
         public var fileSystemIds: [String]?
 
+        public var isLdap: Bool?
+
+        public var ldapUrl: String?
+
         public var logs: [DescribeOfficeSitesResponseBody.OfficeSites.Logs]?
 
         public var mfaEnabled: Bool?
@@ -31079,6 +31083,12 @@ public class DescribeOfficeSitesResponseBody : Tea.TeaModel {
             }
             if self.fileSystemIds != nil {
                 map["FileSystemIds"] = self.fileSystemIds!
+            }
+            if self.isLdap != nil {
+                map["IsLdap"] = self.isLdap!
+            }
+            if self.ldapUrl != nil {
+                map["LdapUrl"] = self.ldapUrl!
             }
             if self.logs != nil {
                 var tmp : [Any] = []
@@ -31267,6 +31277,12 @@ public class DescribeOfficeSitesResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("FileSystemIds") {
                 self.fileSystemIds = dict["FileSystemIds"] as! [String]
+            }
+            if dict.keys.contains("IsLdap") {
+                self.isLdap = dict["IsLdap"] as! Bool
+            }
+            if dict.keys.contains("LdapUrl") {
+                self.ldapUrl = dict["LdapUrl"] as! String
             }
             if dict.keys.contains("Logs") {
                 var tmp : [DescribeOfficeSitesResponseBody.OfficeSites.Logs] = []
@@ -35773,6 +35789,8 @@ public class DescribeSnapshotsRequest : Tea.TeaModel {
 
     public var nextToken: String?
 
+    public var osType: String?
+
     public var regionId: String?
 
     public var snapshotId: String?
@@ -35817,6 +35835,9 @@ public class DescribeSnapshotsRequest : Tea.TeaModel {
         if self.nextToken != nil {
             map["NextToken"] = self.nextToken!
         }
+        if self.osType != nil {
+            map["OsType"] = self.osType!
+        }
         if self.regionId != nil {
             map["RegionId"] = self.regionId!
         }
@@ -35857,6 +35878,9 @@ public class DescribeSnapshotsRequest : Tea.TeaModel {
         if dict.keys.contains("NextToken") {
             self.nextToken = dict["NextToken"] as! String
         }
+        if dict.keys.contains("OsType") {
+            self.osType = dict["OsType"] as! String
+        }
         if dict.keys.contains("RegionId") {
             self.regionId = dict["RegionId"] as! String
         }
@@ -35893,6 +35917,10 @@ public class DescribeSnapshotsResponseBody : Tea.TeaModel {
         public var desktopName: String?
 
         public var desktopStatus: String?
+
+        public var diskStatus: String?
+
+        public var osType: String?
 
         public var progress: String?
 
@@ -35954,6 +35982,12 @@ public class DescribeSnapshotsResponseBody : Tea.TeaModel {
             }
             if self.desktopStatus != nil {
                 map["DesktopStatus"] = self.desktopStatus!
+            }
+            if self.diskStatus != nil {
+                map["DiskStatus"] = self.diskStatus!
+            }
+            if self.osType != nil {
+                map["OsType"] = self.osType!
             }
             if self.progress != nil {
                 map["Progress"] = self.progress!
@@ -36018,6 +36052,12 @@ public class DescribeSnapshotsResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("DesktopStatus") {
                 self.desktopStatus = dict["DesktopStatus"] as! String
+            }
+            if dict.keys.contains("DiskStatus") {
+                self.diskStatus = dict["DiskStatus"] as! String
+            }
+            if dict.keys.contains("OsType") {
+                self.osType = dict["OsType"] as! String
             }
             if dict.keys.contains("Progress") {
                 self.progress = dict["Progress"] as! String
