@@ -436,6 +436,43 @@ public class CreateAppRequest : Tea.TeaModel {
             }
         }
     }
+    public class Tags : Tea.TeaModel {
+        public var key: String?
+
+        public var value: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.key != nil {
+                map["key"] = self.key!
+            }
+            if self.value != nil {
+                map["value"] = self.value!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("key") {
+                self.key = dict["key"] as! String
+            }
+            if dict.keys.contains("value") {
+                self.value = dict["value"] as! String
+            }
+        }
+    }
     public var appName: String?
 
     public var authentication: CreateAppRequest.Authentication?
@@ -454,7 +491,11 @@ public class CreateAppRequest : Tea.TeaModel {
 
     public var scenario: String?
 
+    public var tags: [CreateAppRequest.Tags]?
+
     public var version: String?
+
+    public var clientToken: String?
 
     public var dryRun: Bool?
 
@@ -509,8 +550,18 @@ public class CreateAppRequest : Tea.TeaModel {
         if self.scenario != nil {
             map["scenario"] = self.scenario!
         }
+        if self.tags != nil {
+            var tmp : [Any] = []
+            for k in self.tags! {
+                tmp.append(k.toMap())
+            }
+            map["tags"] = tmp
+        }
         if self.version != nil {
             map["version"] = self.version!
+        }
+        if self.clientToken != nil {
+            map["clientToken"] = self.clientToken!
         }
         if self.dryRun != nil {
             map["dryRun"] = self.dryRun!
@@ -566,8 +617,22 @@ public class CreateAppRequest : Tea.TeaModel {
         if dict.keys.contains("scenario") {
             self.scenario = dict["scenario"] as! String
         }
+        if dict.keys.contains("tags") {
+            var tmp : [CreateAppRequest.Tags] = []
+            for v in dict["tags"] as! [Any] {
+                var model = CreateAppRequest.Tags()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.tags = tmp
+        }
         if dict.keys.contains("version") {
             self.version = dict["version"] as! String
+        }
+        if dict.keys.contains("clientToken") {
+            self.clientToken = dict["clientToken"] as! String
         }
         if dict.keys.contains("dryRun") {
             self.dryRun = dict["dryRun"] as! Bool
@@ -1743,11 +1808,50 @@ public class GetAppResponseBody : Tea.TeaModel {
                 }
             }
         }
+        public class Tags : Tea.TeaModel {
+            public var key: String?
+
+            public var value: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.key != nil {
+                    map["key"] = self.key!
+                }
+                if self.value != nil {
+                    map["value"] = self.value!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("key") {
+                    self.key = dict["key"] as! String
+                }
+                if dict.keys.contains("value") {
+                    self.value = dict["value"] as! String
+                }
+            }
+        }
         public var appId: String?
 
         public var appName: String?
 
         public var appType: String?
+
+        public var chargeType: String?
 
         public var createTime: String?
 
@@ -1765,7 +1869,11 @@ public class GetAppResponseBody : Tea.TeaModel {
 
         public var regionId: String?
 
+        public var scenario: String?
+
         public var status: String?
+
+        public var tags: [GetAppResponseBody.Result.Tags]?
 
         public var version: String?
 
@@ -1791,6 +1899,9 @@ public class GetAppResponseBody : Tea.TeaModel {
             }
             if self.appType != nil {
                 map["appType"] = self.appType!
+            }
+            if self.chargeType != nil {
+                map["chargeType"] = self.chargeType!
             }
             if self.createTime != nil {
                 map["createTime"] = self.createTime!
@@ -1824,8 +1935,18 @@ public class GetAppResponseBody : Tea.TeaModel {
             if self.regionId != nil {
                 map["regionId"] = self.regionId!
             }
+            if self.scenario != nil {
+                map["scenario"] = self.scenario!
+            }
             if self.status != nil {
                 map["status"] = self.status!
+            }
+            if self.tags != nil {
+                var tmp : [Any] = []
+                for k in self.tags! {
+                    tmp.append(k.toMap())
+                }
+                map["tags"] = tmp
             }
             if self.version != nil {
                 map["version"] = self.version!
@@ -1842,6 +1963,9 @@ public class GetAppResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("appType") {
                 self.appType = dict["appType"] as! String
+            }
+            if dict.keys.contains("chargeType") {
+                self.chargeType = dict["chargeType"] as! String
             }
             if dict.keys.contains("createTime") {
                 self.createTime = dict["createTime"] as! String
@@ -1883,8 +2007,22 @@ public class GetAppResponseBody : Tea.TeaModel {
             if dict.keys.contains("regionId") {
                 self.regionId = dict["regionId"] as! String
             }
+            if dict.keys.contains("scenario") {
+                self.scenario = dict["scenario"] as! String
+            }
             if dict.keys.contains("status") {
                 self.status = dict["status"] as! String
+            }
+            if dict.keys.contains("tags") {
+                var tmp : [GetAppResponseBody.Result.Tags] = []
+                for v in dict["tags"] as! [Any] {
+                    var model = GetAppResponseBody.Result.Tags()
+                    if v != nil {
+                        model.fromMap(v as! [String: Any])
+                    }
+                    tmp.append(model)
+                }
+                self.tags = tmp
             }
             if dict.keys.contains("version") {
                 self.version = dict["version"] as! String
@@ -2791,6 +2929,8 @@ public class ListAppsRequest : Tea.TeaModel {
 
     public var status: String?
 
+    public var tags: String?
+
     public override init() {
         super.init()
     }
@@ -2826,6 +2966,9 @@ public class ListAppsRequest : Tea.TeaModel {
         if self.status != nil {
             map["status"] = self.status!
         }
+        if self.tags != nil {
+            map["tags"] = self.tags!
+        }
         return map
     }
 
@@ -2850,6 +2993,9 @@ public class ListAppsRequest : Tea.TeaModel {
         }
         if dict.keys.contains("status") {
             self.status = dict["status"] as! String
+        }
+        if dict.keys.contains("tags") {
+            self.tags = dict["tags"] as! String
         }
     }
 }
