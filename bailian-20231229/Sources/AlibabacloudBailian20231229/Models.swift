@@ -8081,6 +8081,43 @@ public class ListPublishedAgentResponse : Tea.TeaModel {
 }
 
 public class RetrieveRequest : Tea.TeaModel {
+    public class QueryHistory : Tea.TeaModel {
+        public var content: String?
+
+        public var role: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.content != nil {
+                map["content"] = self.content!
+            }
+            if self.role != nil {
+                map["role"] = self.role!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("content") {
+                self.content = dict["content"] as! String
+            }
+            if dict.keys.contains("role") {
+                self.role = dict["role"] as! String
+            }
+        }
+    }
     public class Rerank : Tea.TeaModel {
         public var modelName: String?
 
@@ -8151,6 +8188,8 @@ public class RetrieveRequest : Tea.TeaModel {
 
     public var query: String?
 
+    public var queryHistory: [RetrieveRequest.QueryHistory]?
+
     public var rerank: [RetrieveRequest.Rerank]?
 
     public var rerankMinScore: Double?
@@ -8196,6 +8235,13 @@ public class RetrieveRequest : Tea.TeaModel {
         }
         if self.query != nil {
             map["Query"] = self.query!
+        }
+        if self.queryHistory != nil {
+            var tmp : [Any] = []
+            for k in self.queryHistory! {
+                tmp.append(k.toMap())
+            }
+            map["QueryHistory"] = tmp
         }
         if self.rerank != nil {
             var tmp : [Any] = []
@@ -8247,6 +8293,17 @@ public class RetrieveRequest : Tea.TeaModel {
         }
         if dict.keys.contains("Query") {
             self.query = dict["Query"] as! String
+        }
+        if dict.keys.contains("QueryHistory") {
+            var tmp : [RetrieveRequest.QueryHistory] = []
+            for v in dict["QueryHistory"] as! [Any] {
+                var model = RetrieveRequest.QueryHistory()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.queryHistory = tmp
         }
         if dict.keys.contains("Rerank") {
             var tmp : [RetrieveRequest.Rerank] = []
@@ -8301,6 +8358,8 @@ public class RetrieveShrinkRequest : Tea.TeaModel {
 
     public var query: String?
 
+    public var queryHistoryShrink: String?
+
     public var rerankShrink: String?
 
     public var rerankMinScore: Double?
@@ -8347,6 +8406,9 @@ public class RetrieveShrinkRequest : Tea.TeaModel {
         if self.query != nil {
             map["Query"] = self.query!
         }
+        if self.queryHistoryShrink != nil {
+            map["QueryHistory"] = self.queryHistoryShrink!
+        }
         if self.rerankShrink != nil {
             map["Rerank"] = self.rerankShrink!
         }
@@ -8389,6 +8451,9 @@ public class RetrieveShrinkRequest : Tea.TeaModel {
         }
         if dict.keys.contains("Query") {
             self.query = dict["Query"] as! String
+        }
+        if dict.keys.contains("QueryHistory") {
+            self.queryHistoryShrink = dict["QueryHistory"] as! String
         }
         if dict.keys.contains("Rerank") {
             self.rerankShrink = dict["Rerank"] as! String
