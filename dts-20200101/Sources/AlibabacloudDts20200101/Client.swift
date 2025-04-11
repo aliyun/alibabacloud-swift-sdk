@@ -5402,6 +5402,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.username)) {
             query["Username"] = request.username ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.zeroEtlJob)) {
+            query["ZeroEtlJob"] = request.zeroEtlJob!;
+        }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "query": AlibabaCloudOpenApiUtil.Client.query(query)
         ])

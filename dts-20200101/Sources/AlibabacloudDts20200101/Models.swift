@@ -12291,6 +12291,8 @@ public class DescribeDtsJobDetailResponseBody : Tea.TeaModel {
         }
     }
     public class DestinationEndpoint : Tea.TeaModel {
+        public var aliyunUid: String?
+
         public var canModifyPassword: Bool?
 
         public var databaseName: String?
@@ -12308,6 +12310,8 @@ public class DescribeDtsJobDetailResponseBody : Tea.TeaModel {
         public var port: String?
 
         public var region: String?
+
+        public var roleName: String?
 
         public var sslSolutionEnum: String?
 
@@ -12327,6 +12331,9 @@ public class DescribeDtsJobDetailResponseBody : Tea.TeaModel {
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
+            if self.aliyunUid != nil {
+                map["AliyunUid"] = self.aliyunUid!
+            }
             if self.canModifyPassword != nil {
                 map["CanModifyPassword"] = self.canModifyPassword!
             }
@@ -12354,6 +12361,9 @@ public class DescribeDtsJobDetailResponseBody : Tea.TeaModel {
             if self.region != nil {
                 map["Region"] = self.region!
             }
+            if self.roleName != nil {
+                map["RoleName"] = self.roleName!
+            }
             if self.sslSolutionEnum != nil {
                 map["SslSolutionEnum"] = self.sslSolutionEnum!
             }
@@ -12364,6 +12374,9 @@ public class DescribeDtsJobDetailResponseBody : Tea.TeaModel {
         }
 
         public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("AliyunUid") {
+                self.aliyunUid = dict["AliyunUid"] as! String
+            }
             if dict.keys.contains("CanModifyPassword") {
                 self.canModifyPassword = dict["CanModifyPassword"] as! Bool
             }
@@ -12390,6 +12403,9 @@ public class DescribeDtsJobDetailResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("Region") {
                 self.region = dict["Region"] as! String
+            }
+            if dict.keys.contains("RoleName") {
+                self.roleName = dict["RoleName"] as! String
             }
             if dict.keys.contains("SslSolutionEnum") {
                 self.sslSolutionEnum = dict["SslSolutionEnum"] as! String
@@ -40828,6 +40844,8 @@ public class ModifyDtsJobEndpointRequest : Tea.TeaModel {
 
     public var username: String?
 
+    public var zeroEtlJob: Bool?
+
     public override init() {
         super.init()
     }
@@ -40902,6 +40920,9 @@ public class ModifyDtsJobEndpointRequest : Tea.TeaModel {
         if self.username != nil {
             map["Username"] = self.username!
         }
+        if self.zeroEtlJob != nil {
+            map["ZeroEtlJob"] = self.zeroEtlJob!
+        }
         return map
     }
 
@@ -40965,6 +40986,9 @@ public class ModifyDtsJobEndpointRequest : Tea.TeaModel {
         }
         if dict.keys.contains("Username") {
             self.username = dict["Username"] as! String
+        }
+        if dict.keys.contains("ZeroEtlJob") {
+            self.zeroEtlJob = dict["ZeroEtlJob"] as! Bool
         }
     }
 }
