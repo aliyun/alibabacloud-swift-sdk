@@ -4868,6 +4868,73 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getAssistantCapabilityWithOptions(_ request: GetAssistantCapabilityRequest, _ headers: GetAssistantCapabilityHeaders, _ runtime: TeaUtils.RuntimeOptions) async throws -> GetAssistantCapabilityResponse {
+        try TeaUtils.Client.validateModel(request)
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.assistantId)) {
+            body["assistantId"] = request.assistantId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.content)) {
+            body["content"] = request.content ?? [];
+        }
+        if (!TeaUtils.Client.isUnset(request.id)) {
+            body["id"] = request.id ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.metadata)) {
+            body["metadata"] = request.metadata ?? [:];
+        }
+        if (!TeaUtils.Client.isUnset(request.originalAssistantId)) {
+            body["originalAssistantId"] = request.originalAssistantId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.protocol_)) {
+            body["protocol"] = request.protocol_ ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.threadId)) {
+            body["threadId"] = request.threadId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.timeout)) {
+            body["timeout"] = request.timeout!;
+        }
+        var realHeaders: [String: String] = [:]
+        if (!TeaUtils.Client.isUnset(headers.commonHeaders)) {
+            realHeaders = headers.commonHeaders ?? [:]
+        }
+        if (!TeaUtils.Client.isUnset(headers.accountId)) {
+            realHeaders["accountId"] = TeaUtils.Client.toJSONString(headers.accountId);
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": realHeaders as! [String: String],
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "GetAssistantCapability",
+            "version": "2023-04-26",
+            "protocol": "HTTPS",
+            "pathname": "/ai/v1/assistant/getAssistantCapability",
+            "method": "POST",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        if (TeaUtils.Client.isUnset(self._signatureVersion) || !TeaUtils.Client.equalString(self._signatureVersion, "v4")) {
+            var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+            return Tea.TeaConverter.fromMap(GetAssistantCapabilityResponse(), tmp)
+        }
+        else {
+            var tmp: [String: Any] = try await execute(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+            return Tea.TeaConverter.fromMap(GetAssistantCapabilityResponse(), tmp)
+        }
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getAssistantCapability(_ request: GetAssistantCapabilityRequest) async throws -> GetAssistantCapabilityResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: GetAssistantCapabilityHeaders = GetAssistantCapabilityHeaders([:])
+        return try await getAssistantCapabilityWithOptions(request as! GetAssistantCapabilityRequest, headers as! GetAssistantCapabilityHeaders, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func getConversaionSpaceWithOptions(_ tmpReq: GetConversaionSpaceRequest, _ tmpHeader: GetConversaionSpaceHeaders, _ runtime: TeaUtils.RuntimeOptions) async throws -> GetConversaionSpaceResponse {
         try TeaUtils.Client.validateModel(tmpReq)
         var request: GetConversaionSpaceShrinkRequest = GetConversaionSpaceShrinkRequest([:])
