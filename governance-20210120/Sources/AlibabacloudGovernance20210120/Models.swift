@@ -3213,6 +3213,8 @@ public class ListEvaluationMetricDetailsRequest : Tea.TeaModel {
 
     public var regionId: String?
 
+    public var scope: String?
+
     public var snapshotId: String?
 
     public override init() {
@@ -3244,6 +3246,9 @@ public class ListEvaluationMetricDetailsRequest : Tea.TeaModel {
         if self.regionId != nil {
             map["RegionId"] = self.regionId!
         }
+        if self.scope != nil {
+            map["Scope"] = self.scope!
+        }
         if self.snapshotId != nil {
             map["SnapshotId"] = self.snapshotId!
         }
@@ -3265,6 +3270,9 @@ public class ListEvaluationMetricDetailsRequest : Tea.TeaModel {
         }
         if dict.keys.contains("RegionId") {
             self.regionId = dict["RegionId"] as! String
+        }
+        if dict.keys.contains("Scope") {
+            self.scope = dict["Scope"] as! String
         }
         if dict.keys.contains("SnapshotId") {
             self.snapshotId = dict["SnapshotId"] as! String
@@ -3557,6 +3565,8 @@ public class ListEvaluationResultsRequest : Tea.TeaModel {
 
     public var regionId: String?
 
+    public var scope: String?
+
     public var snapshotId: String?
 
     public override init() {
@@ -3586,6 +3596,9 @@ public class ListEvaluationResultsRequest : Tea.TeaModel {
         if self.regionId != nil {
             map["RegionId"] = self.regionId!
         }
+        if self.scope != nil {
+            map["Scope"] = self.scope!
+        }
         if self.snapshotId != nil {
             map["SnapshotId"] = self.snapshotId!
         }
@@ -3610,6 +3623,9 @@ public class ListEvaluationResultsRequest : Tea.TeaModel {
         if dict.keys.contains("RegionId") {
             self.regionId = dict["RegionId"] as! String
         }
+        if dict.keys.contains("Scope") {
+            self.scope = dict["Scope"] as! String
+        }
         if dict.keys.contains("SnapshotId") {
             self.snapshotId = dict["SnapshotId"] as! String
         }
@@ -3619,6 +3635,35 @@ public class ListEvaluationResultsRequest : Tea.TeaModel {
 public class ListEvaluationResultsResponseBody : Tea.TeaModel {
     public class Results : Tea.TeaModel {
         public class MetricResults : Tea.TeaModel {
+            public class AccountSummary : Tea.TeaModel {
+                public var nonCompliant: Int32?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.nonCompliant != nil {
+                        map["NonCompliant"] = self.nonCompliant!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any]) -> Void {
+                    if dict.keys.contains("NonCompliant") {
+                        self.nonCompliant = dict["NonCompliant"] as! Int32
+                    }
+                }
+            }
             public class ErrorInfo : Tea.TeaModel {
                 public var code: String?
 
@@ -3685,6 +3730,8 @@ public class ListEvaluationResultsResponseBody : Tea.TeaModel {
                     }
                 }
             }
+            public var accountSummary: ListEvaluationResultsResponseBody.Results.MetricResults.AccountSummary?
+
             public var errorInfo: ListEvaluationResultsResponseBody.Results.MetricResults.ErrorInfo?
 
             public var evaluationTime: String?
@@ -3709,12 +3756,16 @@ public class ListEvaluationResultsResponseBody : Tea.TeaModel {
             }
 
             public override func validate() throws -> Void {
+                try self.accountSummary?.validate()
                 try self.errorInfo?.validate()
                 try self.resourcesSummary?.validate()
             }
 
             public override func toMap() -> [String : Any] {
                 var map = super.toMap()
+                if self.accountSummary != nil {
+                    map["AccountSummary"] = self.accountSummary?.toMap()
+                }
                 if self.errorInfo != nil {
                     map["ErrorInfo"] = self.errorInfo?.toMap()
                 }
@@ -3740,6 +3791,11 @@ public class ListEvaluationResultsResponseBody : Tea.TeaModel {
             }
 
             public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("AccountSummary") {
+                    var model = ListEvaluationResultsResponseBody.Results.MetricResults.AccountSummary()
+                    model.fromMap(dict["AccountSummary"] as! [String: Any])
+                    self.accountSummary = model
+                }
                 if dict.keys.contains("ErrorInfo") {
                     var model = ListEvaluationResultsResponseBody.Results.MetricResults.ErrorInfo()
                     model.fromMap(dict["ErrorInfo"] as! [String: Any])
