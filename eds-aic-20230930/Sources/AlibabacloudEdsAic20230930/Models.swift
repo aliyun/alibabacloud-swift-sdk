@@ -1774,6 +1774,8 @@ public class CreateAppRequest : Tea.TeaModel {
 
     public var ossAppUrl: String?
 
+    public var signApk: String?
+
     public override init() {
         super.init()
     }
@@ -1816,6 +1818,9 @@ public class CreateAppRequest : Tea.TeaModel {
         if self.ossAppUrl != nil {
             map["OssAppUrl"] = self.ossAppUrl!
         }
+        if self.signApk != nil {
+            map["SignApk"] = self.signApk!
+        }
         return map
     }
 
@@ -1849,6 +1854,9 @@ public class CreateAppRequest : Tea.TeaModel {
         if dict.keys.contains("OssAppUrl") {
             self.ossAppUrl = dict["OssAppUrl"] as! String
         }
+        if dict.keys.contains("SignApk") {
+            self.signApk = dict["SignApk"] as! String
+        }
     }
 }
 
@@ -1870,6 +1878,8 @@ public class CreateAppShrinkRequest : Tea.TeaModel {
     public var installParam: String?
 
     public var ossAppUrl: String?
+
+    public var signApk: String?
 
     public override init() {
         super.init()
@@ -1912,6 +1922,9 @@ public class CreateAppShrinkRequest : Tea.TeaModel {
         if self.ossAppUrl != nil {
             map["OssAppUrl"] = self.ossAppUrl!
         }
+        if self.signApk != nil {
+            map["SignApk"] = self.signApk!
+        }
         return map
     }
 
@@ -1942,6 +1955,9 @@ public class CreateAppShrinkRequest : Tea.TeaModel {
         }
         if dict.keys.contains("OssAppUrl") {
             self.ossAppUrl = dict["OssAppUrl"] as! String
+        }
+        if dict.keys.contains("SignApk") {
+            self.signApk = dict["SignApk"] as! String
         }
     }
 }
@@ -5628,6 +5644,8 @@ public class DescribeAppsRequest : Tea.TeaModel {
 
     public var appName: String?
 
+    public var appType: String?
+
     public var bizRegionId: String?
 
     public var installationStatus: String?
@@ -5660,6 +5678,9 @@ public class DescribeAppsRequest : Tea.TeaModel {
         if self.appName != nil {
             map["AppName"] = self.appName!
         }
+        if self.appType != nil {
+            map["AppType"] = self.appType!
+        }
         if self.bizRegionId != nil {
             map["BizRegionId"] = self.bizRegionId!
         }
@@ -5687,6 +5708,9 @@ public class DescribeAppsRequest : Tea.TeaModel {
         }
         if dict.keys.contains("AppName") {
             self.appName = dict["AppName"] as! String
+        }
+        if dict.keys.contains("AppType") {
+            self.appType = dict["AppType"] as! String
         }
         if dict.keys.contains("BizRegionId") {
             self.bizRegionId = dict["BizRegionId"] as! String
@@ -5718,6 +5742,8 @@ public class DescribeAppsResponseBody : Tea.TeaModel {
         public var appId: Int32?
 
         public var appName: String?
+
+        public var appType: String?
 
         public var bizRegionId: String?
 
@@ -5765,6 +5791,9 @@ public class DescribeAppsResponseBody : Tea.TeaModel {
             if self.appName != nil {
                 map["AppName"] = self.appName!
             }
+            if self.appType != nil {
+                map["AppType"] = self.appType!
+            }
             if self.bizRegionId != nil {
                 map["BizRegionId"] = self.bizRegionId!
             }
@@ -5810,6 +5839,9 @@ public class DescribeAppsResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("AppName") {
                 self.appName = dict["AppName"] as! String
+            }
+            if dict.keys.contains("AppType") {
+                self.appType = dict["AppType"] as! String
             }
             if dict.keys.contains("BizRegionId") {
                 self.bizRegionId = dict["BizRegionId"] as! String
