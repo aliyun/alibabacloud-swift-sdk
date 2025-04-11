@@ -8046,6 +8046,8 @@ public class CreateHttpRequestHeaderModificationRuleRequest : Tea.TeaModel {
 
         public var operation: String?
 
+        public var type: String?
+
         public var value: String?
 
         public override init() {
@@ -8068,6 +8070,9 @@ public class CreateHttpRequestHeaderModificationRuleRequest : Tea.TeaModel {
             if self.operation != nil {
                 map["Operation"] = self.operation!
             }
+            if self.type != nil {
+                map["Type"] = self.type!
+            }
             if self.value != nil {
                 map["Value"] = self.value!
             }
@@ -8080,6 +8085,9 @@ public class CreateHttpRequestHeaderModificationRuleRequest : Tea.TeaModel {
             }
             if dict.keys.contains("Operation") {
                 self.operation = dict["Operation"] as! String
+            }
+            if dict.keys.contains("Type") {
+                self.type = dict["Type"] as! String
             }
             if dict.keys.contains("Value") {
                 self.value = dict["Value"] as! String
@@ -8346,6 +8354,8 @@ public class CreateHttpResponseHeaderModificationRuleRequest : Tea.TeaModel {
 
         public var operation: String?
 
+        public var type: String?
+
         public var value: String?
 
         public override init() {
@@ -8368,6 +8378,9 @@ public class CreateHttpResponseHeaderModificationRuleRequest : Tea.TeaModel {
             if self.operation != nil {
                 map["Operation"] = self.operation!
             }
+            if self.type != nil {
+                map["Type"] = self.type!
+            }
             if self.value != nil {
                 map["Value"] = self.value!
             }
@@ -8380,6 +8393,9 @@ public class CreateHttpResponseHeaderModificationRuleRequest : Tea.TeaModel {
             }
             if dict.keys.contains("Operation") {
                 self.operation = dict["Operation"] as! String
+            }
+            if dict.keys.contains("Type") {
+                self.type = dict["Type"] as! String
             }
             if dict.keys.contains("Value") {
                 self.value = dict["Value"] as! String
@@ -31049,6 +31065,8 @@ public class GetHttpRequestHeaderModificationRuleResponseBody : Tea.TeaModel {
 
         public var operation: String?
 
+        public var type: String?
+
         public var value: String?
 
         public override init() {
@@ -31071,6 +31089,9 @@ public class GetHttpRequestHeaderModificationRuleResponseBody : Tea.TeaModel {
             if self.operation != nil {
                 map["Operation"] = self.operation!
             }
+            if self.type != nil {
+                map["Type"] = self.type!
+            }
             if self.value != nil {
                 map["Value"] = self.value!
             }
@@ -31083,6 +31104,9 @@ public class GetHttpRequestHeaderModificationRuleResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("Operation") {
                 self.operation = dict["Operation"] as! String
+            }
+            if dict.keys.contains("Type") {
+                self.type = dict["Type"] as! String
             }
             if dict.keys.contains("Value") {
                 self.value = dict["Value"] as! String
@@ -31287,6 +31311,8 @@ public class GetHttpResponseHeaderModificationRuleResponseBody : Tea.TeaModel {
 
         public var operation: String?
 
+        public var type: String?
+
         public var value: String?
 
         public override init() {
@@ -31309,6 +31335,9 @@ public class GetHttpResponseHeaderModificationRuleResponseBody : Tea.TeaModel {
             if self.operation != nil {
                 map["Operation"] = self.operation!
             }
+            if self.type != nil {
+                map["Type"] = self.type!
+            }
             if self.value != nil {
                 map["Value"] = self.value!
             }
@@ -31321,6 +31350,9 @@ public class GetHttpResponseHeaderModificationRuleResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("Operation") {
                 self.operation = dict["Operation"] as! String
+            }
+            if dict.keys.contains("Type") {
+                self.type = dict["Type"] as! String
             }
             if dict.keys.contains("Value") {
                 self.value = dict["Value"] as! String
@@ -43104,6 +43136,421 @@ public class ListCertificatesResponse : Tea.TeaModel {
     }
 }
 
+public class ListCertificatesByRecordRequest : Tea.TeaModel {
+    public var detail: Bool?
+
+    public var recordName: String?
+
+    public var siteId: Int64?
+
+    public var validOnly: Bool?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.detail != nil {
+            map["Detail"] = self.detail!
+        }
+        if self.recordName != nil {
+            map["RecordName"] = self.recordName!
+        }
+        if self.siteId != nil {
+            map["SiteId"] = self.siteId!
+        }
+        if self.validOnly != nil {
+            map["ValidOnly"] = self.validOnly!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("Detail") {
+            self.detail = dict["Detail"] as! Bool
+        }
+        if dict.keys.contains("RecordName") {
+            self.recordName = dict["RecordName"] as! String
+        }
+        if dict.keys.contains("SiteId") {
+            self.siteId = dict["SiteId"] as! Int64
+        }
+        if dict.keys.contains("ValidOnly") {
+            self.validOnly = dict["ValidOnly"] as! Bool
+        }
+    }
+}
+
+public class ListCertificatesByRecordResponseBody : Tea.TeaModel {
+    public class Result : Tea.TeaModel {
+        public class Certificates : Tea.TeaModel {
+            public var casId: String?
+
+            public var commonName: String?
+
+            public var createTime: String?
+
+            public var fingerprintSha256: String?
+
+            public var id: String?
+
+            public var issuer: String?
+
+            public var issuerCN: String?
+
+            public var name: String?
+
+            public var notAfter: String?
+
+            public var notBefore: String?
+
+            public var pubAlg: String?
+
+            public var region: String?
+
+            public var SAN: String?
+
+            public var serialNumber: String?
+
+            public var sigAlg: String?
+
+            public var status: String?
+
+            public var type: String?
+
+            public var updateTime: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.casId != nil {
+                    map["CasId"] = self.casId!
+                }
+                if self.commonName != nil {
+                    map["CommonName"] = self.commonName!
+                }
+                if self.createTime != nil {
+                    map["CreateTime"] = self.createTime!
+                }
+                if self.fingerprintSha256 != nil {
+                    map["FingerprintSha256"] = self.fingerprintSha256!
+                }
+                if self.id != nil {
+                    map["Id"] = self.id!
+                }
+                if self.issuer != nil {
+                    map["Issuer"] = self.issuer!
+                }
+                if self.issuerCN != nil {
+                    map["IssuerCN"] = self.issuerCN!
+                }
+                if self.name != nil {
+                    map["Name"] = self.name!
+                }
+                if self.notAfter != nil {
+                    map["NotAfter"] = self.notAfter!
+                }
+                if self.notBefore != nil {
+                    map["NotBefore"] = self.notBefore!
+                }
+                if self.pubAlg != nil {
+                    map["PubAlg"] = self.pubAlg!
+                }
+                if self.region != nil {
+                    map["Region"] = self.region!
+                }
+                if self.SAN != nil {
+                    map["SAN"] = self.SAN!
+                }
+                if self.serialNumber != nil {
+                    map["SerialNumber"] = self.serialNumber!
+                }
+                if self.sigAlg != nil {
+                    map["SigAlg"] = self.sigAlg!
+                }
+                if self.status != nil {
+                    map["Status"] = self.status!
+                }
+                if self.type != nil {
+                    map["Type"] = self.type!
+                }
+                if self.updateTime != nil {
+                    map["UpdateTime"] = self.updateTime!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("CasId") {
+                    self.casId = dict["CasId"] as! String
+                }
+                if dict.keys.contains("CommonName") {
+                    self.commonName = dict["CommonName"] as! String
+                }
+                if dict.keys.contains("CreateTime") {
+                    self.createTime = dict["CreateTime"] as! String
+                }
+                if dict.keys.contains("FingerprintSha256") {
+                    self.fingerprintSha256 = dict["FingerprintSha256"] as! String
+                }
+                if dict.keys.contains("Id") {
+                    self.id = dict["Id"] as! String
+                }
+                if dict.keys.contains("Issuer") {
+                    self.issuer = dict["Issuer"] as! String
+                }
+                if dict.keys.contains("IssuerCN") {
+                    self.issuerCN = dict["IssuerCN"] as! String
+                }
+                if dict.keys.contains("Name") {
+                    self.name = dict["Name"] as! String
+                }
+                if dict.keys.contains("NotAfter") {
+                    self.notAfter = dict["NotAfter"] as! String
+                }
+                if dict.keys.contains("NotBefore") {
+                    self.notBefore = dict["NotBefore"] as! String
+                }
+                if dict.keys.contains("PubAlg") {
+                    self.pubAlg = dict["PubAlg"] as! String
+                }
+                if dict.keys.contains("Region") {
+                    self.region = dict["Region"] as! String
+                }
+                if dict.keys.contains("SAN") {
+                    self.SAN = dict["SAN"] as! String
+                }
+                if dict.keys.contains("SerialNumber") {
+                    self.serialNumber = dict["SerialNumber"] as! String
+                }
+                if dict.keys.contains("SigAlg") {
+                    self.sigAlg = dict["SigAlg"] as! String
+                }
+                if dict.keys.contains("Status") {
+                    self.status = dict["Status"] as! String
+                }
+                if dict.keys.contains("Type") {
+                    self.type = dict["Type"] as! String
+                }
+                if dict.keys.contains("UpdateTime") {
+                    self.updateTime = dict["UpdateTime"] as! String
+                }
+            }
+        }
+        public var applylingCount: Int64?
+
+        public var certificates: [ListCertificatesByRecordResponseBody.Result.Certificates]?
+
+        public var count: Int64?
+
+        public var recordName: String?
+
+        public var status: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.applylingCount != nil {
+                map["ApplylingCount"] = self.applylingCount!
+            }
+            if self.certificates != nil {
+                var tmp : [Any] = []
+                for k in self.certificates! {
+                    tmp.append(k.toMap())
+                }
+                map["Certificates"] = tmp
+            }
+            if self.count != nil {
+                map["Count"] = self.count!
+            }
+            if self.recordName != nil {
+                map["RecordName"] = self.recordName!
+            }
+            if self.status != nil {
+                map["Status"] = self.status!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("ApplylingCount") {
+                self.applylingCount = dict["ApplylingCount"] as! Int64
+            }
+            if dict.keys.contains("Certificates") {
+                var tmp : [ListCertificatesByRecordResponseBody.Result.Certificates] = []
+                for v in dict["Certificates"] as! [Any] {
+                    var model = ListCertificatesByRecordResponseBody.Result.Certificates()
+                    if v != nil {
+                        model.fromMap(v as! [String: Any])
+                    }
+                    tmp.append(model)
+                }
+                self.certificates = tmp
+            }
+            if dict.keys.contains("Count") {
+                self.count = dict["Count"] as! Int64
+            }
+            if dict.keys.contains("RecordName") {
+                self.recordName = dict["RecordName"] as! String
+            }
+            if dict.keys.contains("Status") {
+                self.status = dict["Status"] as! String
+            }
+        }
+    }
+    public var requestId: String?
+
+    public var result: [ListCertificatesByRecordResponseBody.Result]?
+
+    public var siteId: Int64?
+
+    public var siteName: String?
+
+    public var totalCount: Int64?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.result != nil {
+            var tmp : [Any] = []
+            for k in self.result! {
+                tmp.append(k.toMap())
+            }
+            map["Result"] = tmp
+        }
+        if self.siteId != nil {
+            map["SiteId"] = self.siteId!
+        }
+        if self.siteName != nil {
+            map["SiteName"] = self.siteName!
+        }
+        if self.totalCount != nil {
+            map["TotalCount"] = self.totalCount!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("RequestId") {
+            self.requestId = dict["RequestId"] as! String
+        }
+        if dict.keys.contains("Result") {
+            var tmp : [ListCertificatesByRecordResponseBody.Result] = []
+            for v in dict["Result"] as! [Any] {
+                var model = ListCertificatesByRecordResponseBody.Result()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.result = tmp
+        }
+        if dict.keys.contains("SiteId") {
+            self.siteId = dict["SiteId"] as! Int64
+        }
+        if dict.keys.contains("SiteName") {
+            self.siteName = dict["SiteName"] as! String
+        }
+        if dict.keys.contains("TotalCount") {
+            self.totalCount = dict["TotalCount"] as! Int64
+        }
+    }
+}
+
+public class ListCertificatesByRecordResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: ListCertificatesByRecordResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") {
+            var model = ListCertificatesByRecordResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
 public class ListCiphersRequest : Tea.TeaModel {
     public var ciphersGroup: String?
 
@@ -46243,6 +46690,8 @@ public class ListHttpRequestHeaderModificationRulesResponseBody : Tea.TeaModel {
 
             public var operation: String?
 
+            public var type: String?
+
             public var value: String?
 
             public override init() {
@@ -46265,6 +46714,9 @@ public class ListHttpRequestHeaderModificationRulesResponseBody : Tea.TeaModel {
                 if self.operation != nil {
                     map["Operation"] = self.operation!
                 }
+                if self.type != nil {
+                    map["Type"] = self.type!
+                }
                 if self.value != nil {
                     map["Value"] = self.value!
                 }
@@ -46277,6 +46729,9 @@ public class ListHttpRequestHeaderModificationRulesResponseBody : Tea.TeaModel {
                 }
                 if dict.keys.contains("Operation") {
                     self.operation = dict["Operation"] as! String
+                }
+                if dict.keys.contains("Type") {
+                    self.type = dict["Type"] as! String
                 }
                 if dict.keys.contains("Value") {
                     self.value = dict["Value"] as! String
@@ -46594,6 +47049,8 @@ public class ListHttpResponseHeaderModificationRulesResponseBody : Tea.TeaModel 
 
             public var operation: String?
 
+            public var type: String?
+
             public var value: String?
 
             public override init() {
@@ -46616,6 +47073,9 @@ public class ListHttpResponseHeaderModificationRulesResponseBody : Tea.TeaModel 
                 if self.operation != nil {
                     map["Operation"] = self.operation!
                 }
+                if self.type != nil {
+                    map["Type"] = self.type!
+                }
                 if self.value != nil {
                     map["Value"] = self.value!
                 }
@@ -46628,6 +47088,9 @@ public class ListHttpResponseHeaderModificationRulesResponseBody : Tea.TeaModel 
                 }
                 if dict.keys.contains("Operation") {
                     self.operation = dict["Operation"] as! String
+                }
+                if dict.keys.contains("Type") {
+                    self.type = dict["Type"] as! String
                 }
                 if dict.keys.contains("Value") {
                     self.value = dict["Value"] as! String
@@ -59209,6 +59672,8 @@ public class ListWafRulesetsResponse : Tea.TeaModel {
 
 public class ListWafTemplateRulesRequest : Tea.TeaModel {
     public class QueryArgs : Tea.TeaModel {
+        public var kinds: [String]?
+
         public var type: String?
 
         public override init() {
@@ -59225,6 +59690,9 @@ public class ListWafTemplateRulesRequest : Tea.TeaModel {
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
+            if self.kinds != nil {
+                map["Kinds"] = self.kinds!
+            }
             if self.type != nil {
                 map["Type"] = self.type!
             }
@@ -59232,6 +59700,9 @@ public class ListWafTemplateRulesRequest : Tea.TeaModel {
         }
 
         public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("Kinds") {
+                self.kinds = dict["Kinds"] as! [String]
+            }
             if dict.keys.contains("Type") {
                 self.type = dict["Type"] as! String
             }
@@ -65992,6 +66463,8 @@ public class UpdateHttpRequestHeaderModificationRuleRequest : Tea.TeaModel {
 
         public var operation: String?
 
+        public var type: String?
+
         public var value: String?
 
         public override init() {
@@ -66014,6 +66487,9 @@ public class UpdateHttpRequestHeaderModificationRuleRequest : Tea.TeaModel {
             if self.operation != nil {
                 map["Operation"] = self.operation!
             }
+            if self.type != nil {
+                map["Type"] = self.type!
+            }
             if self.value != nil {
                 map["Value"] = self.value!
             }
@@ -66026,6 +66502,9 @@ public class UpdateHttpRequestHeaderModificationRuleRequest : Tea.TeaModel {
             }
             if dict.keys.contains("Operation") {
                 self.operation = dict["Operation"] as! String
+            }
+            if dict.keys.contains("Type") {
+                self.type = dict["Type"] as! String
             }
             if dict.keys.contains("Value") {
                 self.value = dict["Value"] as! String
@@ -66284,6 +66763,8 @@ public class UpdateHttpResponseHeaderModificationRuleRequest : Tea.TeaModel {
 
         public var operation: String?
 
+        public var type: String?
+
         public var value: String?
 
         public override init() {
@@ -66306,6 +66787,9 @@ public class UpdateHttpResponseHeaderModificationRuleRequest : Tea.TeaModel {
             if self.operation != nil {
                 map["Operation"] = self.operation!
             }
+            if self.type != nil {
+                map["Type"] = self.type!
+            }
             if self.value != nil {
                 map["Value"] = self.value!
             }
@@ -66318,6 +66802,9 @@ public class UpdateHttpResponseHeaderModificationRuleRequest : Tea.TeaModel {
             }
             if dict.keys.contains("Operation") {
                 self.operation = dict["Operation"] as! String
+            }
+            if dict.keys.contains("Type") {
+                self.type = dict["Type"] as! String
             }
             if dict.keys.contains("Value") {
                 self.value = dict["Value"] as! String
