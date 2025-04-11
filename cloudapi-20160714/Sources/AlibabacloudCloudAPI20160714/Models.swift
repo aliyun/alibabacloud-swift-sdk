@@ -53884,6 +53884,8 @@ public class SetDomainCertificateRequest : Tea.TeaModel {
 
     public var securityToken: String?
 
+    public var sslOcspCacheEnable: Bool?
+
     public var sslOcspEnable: Bool?
 
     public var sslVerifyDepth: String?
@@ -53926,6 +53928,9 @@ public class SetDomainCertificateRequest : Tea.TeaModel {
         if self.securityToken != nil {
             map["SecurityToken"] = self.securityToken!
         }
+        if self.sslOcspCacheEnable != nil {
+            map["SslOcspCacheEnable"] = self.sslOcspCacheEnable!
+        }
         if self.sslOcspEnable != nil {
             map["SslOcspEnable"] = self.sslOcspEnable!
         }
@@ -53959,6 +53964,9 @@ public class SetDomainCertificateRequest : Tea.TeaModel {
         }
         if dict.keys.contains("SecurityToken") {
             self.securityToken = dict["SecurityToken"] as! String
+        }
+        if dict.keys.contains("SslOcspCacheEnable") {
+            self.sslOcspCacheEnable = dict["SslOcspCacheEnable"] as! Bool
         }
         if dict.keys.contains("SslOcspEnable") {
             self.sslOcspEnable = dict["SslOcspEnable"] as! Bool
