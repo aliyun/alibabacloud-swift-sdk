@@ -46952,6 +46952,8 @@ public class DescribeIpv6GatewayAttributeResponseBody : Tea.TeaModel {
 
     public var name: String?
 
+    public var ownerId: String?
+
     public var regionId: String?
 
     public var requestId: String?
@@ -47003,6 +47005,9 @@ public class DescribeIpv6GatewayAttributeResponseBody : Tea.TeaModel {
         if self.name != nil {
             map["Name"] = self.name!
         }
+        if self.ownerId != nil {
+            map["OwnerId"] = self.ownerId!
+        }
         if self.regionId != nil {
             map["RegionId"] = self.regionId!
         }
@@ -47048,6 +47053,9 @@ public class DescribeIpv6GatewayAttributeResponseBody : Tea.TeaModel {
         }
         if dict.keys.contains("Name") {
             self.name = dict["Name"] as! String
+        }
+        if dict.keys.contains("OwnerId") {
+            self.ownerId = dict["OwnerId"] as! String
         }
         if dict.keys.contains("RegionId") {
             self.regionId = dict["RegionId"] as! String
@@ -47383,6 +47391,8 @@ public class DescribeIpv6GatewaysResponseBody : Tea.TeaModel {
 
             public var name: String?
 
+            public var ownerId: String?
+
             public var regionId: String?
 
             public var resourceGroupId: String?
@@ -47429,6 +47439,9 @@ public class DescribeIpv6GatewaysResponseBody : Tea.TeaModel {
                 if self.name != nil {
                     map["Name"] = self.name!
                 }
+                if self.ownerId != nil {
+                    map["OwnerId"] = self.ownerId!
+                }
                 if self.regionId != nil {
                     map["RegionId"] = self.regionId!
                 }
@@ -47468,6 +47481,9 @@ public class DescribeIpv6GatewaysResponseBody : Tea.TeaModel {
                 }
                 if dict.keys.contains("Name") {
                     self.name = dict["Name"] as! String
+                }
+                if dict.keys.contains("OwnerId") {
+                    self.ownerId = dict["OwnerId"] as! String
                 }
                 if dict.keys.contains("RegionId") {
                     self.regionId = dict["RegionId"] as! String
