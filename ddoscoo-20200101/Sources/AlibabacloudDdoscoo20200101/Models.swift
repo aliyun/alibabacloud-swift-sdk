@@ -670,6 +670,123 @@ public class ConfigDomainSecurityProfileResponse : Tea.TeaModel {
     }
 }
 
+public class ConfigL7GlobalRuleRequest : Tea.TeaModel {
+    public var domain: String?
+
+    public var ruleAttr: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.domain != nil {
+            map["Domain"] = self.domain!
+        }
+        if self.ruleAttr != nil {
+            map["RuleAttr"] = self.ruleAttr!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("Domain") {
+            self.domain = dict["Domain"] as! String
+        }
+        if dict.keys.contains("RuleAttr") {
+            self.ruleAttr = dict["RuleAttr"] as! String
+        }
+    }
+}
+
+public class ConfigL7GlobalRuleResponseBody : Tea.TeaModel {
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("RequestId") {
+            self.requestId = dict["RequestId"] as! String
+        }
+    }
+}
+
+public class ConfigL7GlobalRuleResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: ConfigL7GlobalRuleResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") {
+            var model = ConfigL7GlobalRuleResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
 public class ConfigL7RsPolicyRequest : Tea.TeaModel {
     public var domain: String?
 
@@ -12957,6 +13074,8 @@ public class DescribeDomainViewTopUrlRequest : Tea.TeaModel {
 
     public var endTime: Int64?
 
+    public var inerval: Int64?
+
     public var resourceGroupId: String?
 
     public var startTime: Int64?
@@ -12983,6 +13102,9 @@ public class DescribeDomainViewTopUrlRequest : Tea.TeaModel {
         if self.endTime != nil {
             map["EndTime"] = self.endTime!
         }
+        if self.inerval != nil {
+            map["Inerval"] = self.inerval!
+        }
         if self.resourceGroupId != nil {
             map["ResourceGroupId"] = self.resourceGroupId!
         }
@@ -13001,6 +13123,9 @@ public class DescribeDomainViewTopUrlRequest : Tea.TeaModel {
         }
         if dict.keys.contains("EndTime") {
             self.endTime = dict["EndTime"] as! Int64
+        }
+        if dict.keys.contains("Inerval") {
+            self.inerval = dict["Inerval"] as! Int64
         }
         if dict.keys.contains("ResourceGroupId") {
             self.resourceGroupId = dict["ResourceGroupId"] as! String
@@ -16259,6 +16384,212 @@ public class DescribeInstancesResponse : Tea.TeaModel {
         }
         if dict.keys.contains("body") {
             var model = DescribeInstancesResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
+public class DescribeL7GlobalRuleRequest : Tea.TeaModel {
+    public var domain: String?
+
+    public var lang: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.domain != nil {
+            map["Domain"] = self.domain!
+        }
+        if self.lang != nil {
+            map["Lang"] = self.lang!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("Domain") {
+            self.domain = dict["Domain"] as! String
+        }
+        if dict.keys.contains("Lang") {
+            self.lang = dict["Lang"] as! String
+        }
+    }
+}
+
+public class DescribeL7GlobalRuleResponseBody : Tea.TeaModel {
+    public class GlobalRules : Tea.TeaModel {
+        public var action: String?
+
+        public var actionDefault: String?
+
+        public var description_: String?
+
+        public var enabled: Int64?
+
+        public var ruleId: String?
+
+        public var ruleName: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.action != nil {
+                map["Action"] = self.action!
+            }
+            if self.actionDefault != nil {
+                map["ActionDefault"] = self.actionDefault!
+            }
+            if self.description_ != nil {
+                map["Description"] = self.description_!
+            }
+            if self.enabled != nil {
+                map["Enabled"] = self.enabled!
+            }
+            if self.ruleId != nil {
+                map["RuleId"] = self.ruleId!
+            }
+            if self.ruleName != nil {
+                map["RuleName"] = self.ruleName!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("Action") {
+                self.action = dict["Action"] as! String
+            }
+            if dict.keys.contains("ActionDefault") {
+                self.actionDefault = dict["ActionDefault"] as! String
+            }
+            if dict.keys.contains("Description") {
+                self.description_ = dict["Description"] as! String
+            }
+            if dict.keys.contains("Enabled") {
+                self.enabled = dict["Enabled"] as! Int64
+            }
+            if dict.keys.contains("RuleId") {
+                self.ruleId = dict["RuleId"] as! String
+            }
+            if dict.keys.contains("RuleName") {
+                self.ruleName = dict["RuleName"] as! String
+            }
+        }
+    }
+    public var globalRules: [DescribeL7GlobalRuleResponseBody.GlobalRules]?
+
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.globalRules != nil {
+            var tmp : [Any] = []
+            for k in self.globalRules! {
+                tmp.append(k.toMap())
+            }
+            map["GlobalRules"] = tmp
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("GlobalRules") {
+            var tmp : [DescribeL7GlobalRuleResponseBody.GlobalRules] = []
+            for v in dict["GlobalRules"] as! [Any] {
+                var model = DescribeL7GlobalRuleResponseBody.GlobalRules()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.globalRules = tmp
+        }
+        if dict.keys.contains("RequestId") {
+            self.requestId = dict["RequestId"] as! String
+        }
+    }
+}
+
+public class DescribeL7GlobalRuleResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: DescribeL7GlobalRuleResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") {
+            var model = DescribeL7GlobalRuleResponseBody()
             model.fromMap(dict["body"] as! [String: Any])
             self.body = model
         }
