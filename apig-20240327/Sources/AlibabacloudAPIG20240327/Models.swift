@@ -16034,6 +16034,8 @@ public class ListServicesRequest : Tea.TeaModel {
 
     public var sourceType: String?
 
+    public var sourceTypes: String?
+
     public override init() {
         super.init()
     }
@@ -16066,6 +16068,9 @@ public class ListServicesRequest : Tea.TeaModel {
         if self.sourceType != nil {
             map["sourceType"] = self.sourceType!
         }
+        if self.sourceTypes != nil {
+            map["sourceTypes"] = self.sourceTypes!
+        }
         return map
     }
 
@@ -16087,6 +16092,9 @@ public class ListServicesRequest : Tea.TeaModel {
         }
         if dict.keys.contains("sourceType") {
             self.sourceType = dict["sourceType"] as! String
+        }
+        if dict.keys.contains("sourceTypes") {
+            self.sourceTypes = dict["sourceTypes"] as! String
         }
     }
 }

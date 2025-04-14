@@ -1912,6 +1912,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.sourceType)) {
             query["sourceType"] = request.sourceType ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.sourceTypes)) {
+            query["sourceTypes"] = request.sourceTypes ?? "";
+        }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "headers": headers as! [String: String],
             "query": AlibabaCloudOpenApiUtil.Client.query(query)
