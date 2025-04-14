@@ -23222,6 +23222,10 @@ public class SmartqQueryAbilityResponseBody : Tea.TeaModel {
         }
         public var chartType: String?
 
+        public var conclusionText: String?
+
+        public var logicSql: String?
+
         public var metaType: [SmartqQueryAbilityResponseBody.Result.MetaType]?
 
         public var values: [SmartqQueryAbilityResponseBody.Result.Values]?
@@ -23243,6 +23247,12 @@ public class SmartqQueryAbilityResponseBody : Tea.TeaModel {
             if self.chartType != nil {
                 map["ChartType"] = self.chartType!
             }
+            if self.conclusionText != nil {
+                map["ConclusionText"] = self.conclusionText!
+            }
+            if self.logicSql != nil {
+                map["LogicSql"] = self.logicSql!
+            }
             if self.metaType != nil {
                 var tmp : [Any] = []
                 for k in self.metaType! {
@@ -23263,6 +23273,12 @@ public class SmartqQueryAbilityResponseBody : Tea.TeaModel {
         public override func fromMap(_ dict: [String: Any]) -> Void {
             if dict.keys.contains("ChartType") {
                 self.chartType = dict["ChartType"] as! String
+            }
+            if dict.keys.contains("ConclusionText") {
+                self.conclusionText = dict["ConclusionText"] as! String
+            }
+            if dict.keys.contains("LogicSql") {
+                self.logicSql = dict["LogicSql"] as! String
             }
             if dict.keys.contains("MetaType") {
                 var tmp : [SmartqQueryAbilityResponseBody.Result.MetaType] = []
