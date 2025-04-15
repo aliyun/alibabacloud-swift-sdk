@@ -21672,6 +21672,75 @@ public class StartCloudNoteRequest : Tea.TeaModel {
             }
         }
     }
+    public class RealtimeSubtitle : Tea.TeaModel {
+        public class Translation : Tea.TeaModel {
+            public var translateLevel: Int32?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.translateLevel != nil {
+                    map["TranslateLevel"] = self.translateLevel!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("TranslateLevel") {
+                    self.translateLevel = dict["TranslateLevel"] as! Int32
+                }
+            }
+        }
+        public var enabled: Bool?
+
+        public var translation: StartCloudNoteRequest.RealtimeSubtitle.Translation?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+            try self.translation?.validate()
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.enabled != nil {
+                map["Enabled"] = self.enabled!
+            }
+            if self.translation != nil {
+                map["Translation"] = self.translation?.toMap()
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("Enabled") {
+                self.enabled = dict["Enabled"] as! Bool
+            }
+            if dict.keys.contains("Translation") {
+                var model = StartCloudNoteRequest.RealtimeSubtitle.Translation()
+                model.fromMap(dict["Translation"] as! [String: Any])
+                self.translation = model
+            }
+        }
+    }
     public class ServiceInspection : Tea.TeaModel {
         public class InspectionContents : Tea.TeaModel {
             public var content: String?
@@ -21901,6 +21970,51 @@ public class StartCloudNoteRequest : Tea.TeaModel {
             }
         }
     }
+    public class Transcription : Tea.TeaModel {
+        public var diarizationEnabled: Bool?
+
+        public var speakerCount: Int32?
+
+        public var transcriptionLevel: Int32?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.diarizationEnabled != nil {
+                map["DiarizationEnabled"] = self.diarizationEnabled!
+            }
+            if self.speakerCount != nil {
+                map["SpeakerCount"] = self.speakerCount!
+            }
+            if self.transcriptionLevel != nil {
+                map["TranscriptionLevel"] = self.transcriptionLevel!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("DiarizationEnabled") {
+                self.diarizationEnabled = dict["DiarizationEnabled"] as! Bool
+            }
+            if dict.keys.contains("SpeakerCount") {
+                self.speakerCount = dict["SpeakerCount"] as! Int32
+            }
+            if dict.keys.contains("TranscriptionLevel") {
+                self.transcriptionLevel = dict["TranscriptionLevel"] as! Int32
+            }
+        }
+    }
     public var appId: String?
 
     public var autoChapters: StartCloudNoteRequest.AutoChapters?
@@ -21913,6 +22027,8 @@ public class StartCloudNoteRequest : Tea.TeaModel {
 
     public var meetingAssistance: StartCloudNoteRequest.MeetingAssistance?
 
+    public var realtimeSubtitle: StartCloudNoteRequest.RealtimeSubtitle?
+
     public var serviceInspection: StartCloudNoteRequest.ServiceInspection?
 
     public var sourceLanguage: String?
@@ -21924,6 +22040,8 @@ public class StartCloudNoteRequest : Tea.TeaModel {
     public var taskId: String?
 
     public var textPolish: StartCloudNoteRequest.TextPolish?
+
+    public var transcription: StartCloudNoteRequest.Transcription?
 
     public override init() {
         super.init()
@@ -21938,10 +22056,12 @@ public class StartCloudNoteRequest : Tea.TeaModel {
         try self.autoChapters?.validate()
         try self.customPrompt?.validate()
         try self.meetingAssistance?.validate()
+        try self.realtimeSubtitle?.validate()
         try self.serviceInspection?.validate()
         try self.storageConfig?.validate()
         try self.summarization?.validate()
         try self.textPolish?.validate()
+        try self.transcription?.validate()
     }
 
     public override func toMap() -> [String : Any] {
@@ -21964,6 +22084,9 @@ public class StartCloudNoteRequest : Tea.TeaModel {
         if self.meetingAssistance != nil {
             map["MeetingAssistance"] = self.meetingAssistance?.toMap()
         }
+        if self.realtimeSubtitle != nil {
+            map["RealtimeSubtitle"] = self.realtimeSubtitle?.toMap()
+        }
         if self.serviceInspection != nil {
             map["ServiceInspection"] = self.serviceInspection?.toMap()
         }
@@ -21981,6 +22104,9 @@ public class StartCloudNoteRequest : Tea.TeaModel {
         }
         if self.textPolish != nil {
             map["TextPolish"] = self.textPolish?.toMap()
+        }
+        if self.transcription != nil {
+            map["Transcription"] = self.transcription?.toMap()
         }
         return map
     }
@@ -22010,6 +22136,11 @@ public class StartCloudNoteRequest : Tea.TeaModel {
             model.fromMap(dict["MeetingAssistance"] as! [String: Any])
             self.meetingAssistance = model
         }
+        if dict.keys.contains("RealtimeSubtitle") {
+            var model = StartCloudNoteRequest.RealtimeSubtitle()
+            model.fromMap(dict["RealtimeSubtitle"] as! [String: Any])
+            self.realtimeSubtitle = model
+        }
         if dict.keys.contains("ServiceInspection") {
             var model = StartCloudNoteRequest.ServiceInspection()
             model.fromMap(dict["ServiceInspection"] as! [String: Any])
@@ -22035,6 +22166,11 @@ public class StartCloudNoteRequest : Tea.TeaModel {
             var model = StartCloudNoteRequest.TextPolish()
             model.fromMap(dict["TextPolish"] as! [String: Any])
             self.textPolish = model
+        }
+        if dict.keys.contains("Transcription") {
+            var model = StartCloudNoteRequest.Transcription()
+            model.fromMap(dict["Transcription"] as! [String: Any])
+            self.transcription = model
         }
     }
 }
@@ -22113,6 +22249,8 @@ public class StartCloudNoteShrinkRequest : Tea.TeaModel {
 
     public var meetingAssistanceShrink: String?
 
+    public var realtimeSubtitleShrink: String?
+
     public var serviceInspectionShrink: String?
 
     public var sourceLanguage: String?
@@ -22124,6 +22262,8 @@ public class StartCloudNoteShrinkRequest : Tea.TeaModel {
     public var taskId: String?
 
     public var textPolishShrink: String?
+
+    public var transcriptionShrink: String?
 
     public override init() {
         super.init()
@@ -22158,6 +22298,9 @@ public class StartCloudNoteShrinkRequest : Tea.TeaModel {
         if self.meetingAssistanceShrink != nil {
             map["MeetingAssistance"] = self.meetingAssistanceShrink!
         }
+        if self.realtimeSubtitleShrink != nil {
+            map["RealtimeSubtitle"] = self.realtimeSubtitleShrink!
+        }
         if self.serviceInspectionShrink != nil {
             map["ServiceInspection"] = self.serviceInspectionShrink!
         }
@@ -22175,6 +22318,9 @@ public class StartCloudNoteShrinkRequest : Tea.TeaModel {
         }
         if self.textPolishShrink != nil {
             map["TextPolish"] = self.textPolishShrink!
+        }
+        if self.transcriptionShrink != nil {
+            map["Transcription"] = self.transcriptionShrink!
         }
         return map
     }
@@ -22198,6 +22344,9 @@ public class StartCloudNoteShrinkRequest : Tea.TeaModel {
         if dict.keys.contains("MeetingAssistance") {
             self.meetingAssistanceShrink = dict["MeetingAssistance"] as! String
         }
+        if dict.keys.contains("RealtimeSubtitle") {
+            self.realtimeSubtitleShrink = dict["RealtimeSubtitle"] as! String
+        }
         if dict.keys.contains("ServiceInspection") {
             self.serviceInspectionShrink = dict["ServiceInspection"] as! String
         }
@@ -22217,6 +22366,9 @@ public class StartCloudNoteShrinkRequest : Tea.TeaModel {
         }
         if dict.keys.contains("TextPolish") {
             self.textPolishShrink = dict["TextPolish"] as! String
+        }
+        if dict.keys.contains("Transcription") {
+            self.transcriptionShrink = dict["Transcription"] as! String
         }
     }
 }
@@ -22730,8 +22882,103 @@ public class StartCloudRecordRequest : Tea.TeaModel {
         }
     }
     public class Panes : Tea.TeaModel {
+        public class Backgrounds : Tea.TeaModel {
+            public var alpha: Double?
+
+            public var display: String?
+
+            public var height: Double?
+
+            public var layer: Int32?
+
+            public var paneBackgroundCropMode: Int32?
+
+            public var url: String?
+
+            public var width: Double?
+
+            public var x: Double?
+
+            public var y: Double?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.alpha != nil {
+                    map["Alpha"] = self.alpha!
+                }
+                if self.display != nil {
+                    map["Display"] = self.display!
+                }
+                if self.height != nil {
+                    map["Height"] = self.height!
+                }
+                if self.layer != nil {
+                    map["Layer"] = self.layer!
+                }
+                if self.paneBackgroundCropMode != nil {
+                    map["PaneBackgroundCropMode"] = self.paneBackgroundCropMode!
+                }
+                if self.url != nil {
+                    map["Url"] = self.url!
+                }
+                if self.width != nil {
+                    map["Width"] = self.width!
+                }
+                if self.x != nil {
+                    map["X"] = self.x!
+                }
+                if self.y != nil {
+                    map["Y"] = self.y!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("Alpha") {
+                    self.alpha = dict["Alpha"] as! Double
+                }
+                if dict.keys.contains("Display") {
+                    self.display = dict["Display"] as! String
+                }
+                if dict.keys.contains("Height") {
+                    self.height = dict["Height"] as! Double
+                }
+                if dict.keys.contains("Layer") {
+                    self.layer = dict["Layer"] as! Int32
+                }
+                if dict.keys.contains("PaneBackgroundCropMode") {
+                    self.paneBackgroundCropMode = dict["PaneBackgroundCropMode"] as! Int32
+                }
+                if dict.keys.contains("Url") {
+                    self.url = dict["Url"] as! String
+                }
+                if dict.keys.contains("Width") {
+                    self.width = dict["Width"] as! Double
+                }
+                if dict.keys.contains("X") {
+                    self.x = dict["X"] as! Double
+                }
+                if dict.keys.contains("Y") {
+                    self.y = dict["Y"] as! Double
+                }
+            }
+        }
         public class Images : Tea.TeaModel {
             public var alpha: Double?
+
+            public var display: String?
 
             public var height: Double?
 
@@ -22764,6 +23011,9 @@ public class StartCloudRecordRequest : Tea.TeaModel {
                 if self.alpha != nil {
                     map["Alpha"] = self.alpha!
                 }
+                if self.display != nil {
+                    map["Display"] = self.display!
+                }
                 if self.height != nil {
                     map["Height"] = self.height!
                 }
@@ -22791,6 +23041,9 @@ public class StartCloudRecordRequest : Tea.TeaModel {
             public override func fromMap(_ dict: [String: Any]) -> Void {
                 if dict.keys.contains("Alpha") {
                     self.alpha = dict["Alpha"] as! Double
+                }
+                if dict.keys.contains("Display") {
+                    self.display = dict["Display"] as! String
                 }
                 if dict.keys.contains("Height") {
                     self.height = dict["Height"] as! Double
@@ -22914,6 +23167,8 @@ public class StartCloudRecordRequest : Tea.TeaModel {
 
             public var boxColor: StartCloudRecordRequest.Panes.Texts.BoxColor?
 
+            public var display: String?
+
             public var font: Int32?
 
             public var fontColor: StartCloudRecordRequest.Panes.Texts.FontColor?
@@ -22958,6 +23213,9 @@ public class StartCloudRecordRequest : Tea.TeaModel {
                 if self.boxColor != nil {
                     map["BoxColor"] = self.boxColor?.toMap()
                 }
+                if self.display != nil {
+                    map["Display"] = self.display!
+                }
                 if self.font != nil {
                     map["Font"] = self.font!
                 }
@@ -22999,6 +23257,9 @@ public class StartCloudRecordRequest : Tea.TeaModel {
                     var model = StartCloudRecordRequest.Panes.Texts.BoxColor()
                     model.fromMap(dict["BoxColor"] as! [String: Any])
                     self.boxColor = model
+                }
+                if dict.keys.contains("Display") {
+                    self.display = dict["Display"] as! String
                 }
                 if dict.keys.contains("Font") {
                     self.font = dict["Font"] as! Int32
@@ -23057,6 +23318,8 @@ public class StartCloudRecordRequest : Tea.TeaModel {
                 }
             }
         }
+        public var backgrounds: [StartCloudRecordRequest.Panes.Backgrounds]?
+
         public var images: [StartCloudRecordRequest.Panes.Images]?
 
         public var paneCropMode: Int32?
@@ -23090,6 +23353,13 @@ public class StartCloudRecordRequest : Tea.TeaModel {
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
+            if self.backgrounds != nil {
+                var tmp : [Any] = []
+                for k in self.backgrounds! {
+                    tmp.append(k.toMap())
+                }
+                map["Backgrounds"] = tmp
+            }
             if self.images != nil {
                 var tmp : [Any] = []
                 for k in self.images! {
@@ -23129,6 +23399,17 @@ public class StartCloudRecordRequest : Tea.TeaModel {
         }
 
         public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("Backgrounds") {
+                var tmp : [StartCloudRecordRequest.Panes.Backgrounds] = []
+                for v in dict["Backgrounds"] as! [Any] {
+                    var model = StartCloudRecordRequest.Panes.Backgrounds()
+                    if v != nil {
+                        model.fromMap(v as! [String: Any])
+                    }
+                    tmp.append(model)
+                }
+                self.backgrounds = tmp
+            }
             if dict.keys.contains("Images") {
                 var tmp : [StartCloudRecordRequest.Panes.Images] = []
                 for v in dict["Images"] as! [Any] {
@@ -23523,6 +23804,8 @@ public class StartCloudRecordRequest : Tea.TeaModel {
 
     public var reservePaneForNoCameraUser: Bool?
 
+    public var showDefaultBackgroundOnMute: Bool?
+
     public var storageConfig: StartCloudRecordRequest.StorageConfig?
 
     public var taskId: String?
@@ -23593,6 +23876,9 @@ public class StartCloudRecordRequest : Tea.TeaModel {
         }
         if self.reservePaneForNoCameraUser != nil {
             map["ReservePaneForNoCameraUser"] = self.reservePaneForNoCameraUser!
+        }
+        if self.showDefaultBackgroundOnMute != nil {
+            map["ShowDefaultBackgroundOnMute"] = self.showDefaultBackgroundOnMute!
         }
         if self.storageConfig != nil {
             map["StorageConfig"] = self.storageConfig?.toMap()
@@ -23679,6 +23965,9 @@ public class StartCloudRecordRequest : Tea.TeaModel {
         }
         if dict.keys.contains("ReservePaneForNoCameraUser") {
             self.reservePaneForNoCameraUser = dict["ReservePaneForNoCameraUser"] as! Bool
+        }
+        if dict.keys.contains("ShowDefaultBackgroundOnMute") {
+            self.showDefaultBackgroundOnMute = dict["ShowDefaultBackgroundOnMute"] as! Bool
         }
         if dict.keys.contains("StorageConfig") {
             var model = StartCloudRecordRequest.StorageConfig()
@@ -24090,8 +24379,103 @@ public class StartCloudRecordShrinkRequest : Tea.TeaModel {
         }
     }
     public class Panes : Tea.TeaModel {
+        public class Backgrounds : Tea.TeaModel {
+            public var alpha: Double?
+
+            public var display: String?
+
+            public var height: Double?
+
+            public var layer: Int32?
+
+            public var paneBackgroundCropMode: Int32?
+
+            public var url: String?
+
+            public var width: Double?
+
+            public var x: Double?
+
+            public var y: Double?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.alpha != nil {
+                    map["Alpha"] = self.alpha!
+                }
+                if self.display != nil {
+                    map["Display"] = self.display!
+                }
+                if self.height != nil {
+                    map["Height"] = self.height!
+                }
+                if self.layer != nil {
+                    map["Layer"] = self.layer!
+                }
+                if self.paneBackgroundCropMode != nil {
+                    map["PaneBackgroundCropMode"] = self.paneBackgroundCropMode!
+                }
+                if self.url != nil {
+                    map["Url"] = self.url!
+                }
+                if self.width != nil {
+                    map["Width"] = self.width!
+                }
+                if self.x != nil {
+                    map["X"] = self.x!
+                }
+                if self.y != nil {
+                    map["Y"] = self.y!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("Alpha") {
+                    self.alpha = dict["Alpha"] as! Double
+                }
+                if dict.keys.contains("Display") {
+                    self.display = dict["Display"] as! String
+                }
+                if dict.keys.contains("Height") {
+                    self.height = dict["Height"] as! Double
+                }
+                if dict.keys.contains("Layer") {
+                    self.layer = dict["Layer"] as! Int32
+                }
+                if dict.keys.contains("PaneBackgroundCropMode") {
+                    self.paneBackgroundCropMode = dict["PaneBackgroundCropMode"] as! Int32
+                }
+                if dict.keys.contains("Url") {
+                    self.url = dict["Url"] as! String
+                }
+                if dict.keys.contains("Width") {
+                    self.width = dict["Width"] as! Double
+                }
+                if dict.keys.contains("X") {
+                    self.x = dict["X"] as! Double
+                }
+                if dict.keys.contains("Y") {
+                    self.y = dict["Y"] as! Double
+                }
+            }
+        }
         public class Images : Tea.TeaModel {
             public var alpha: Double?
+
+            public var display: String?
 
             public var height: Double?
 
@@ -24124,6 +24508,9 @@ public class StartCloudRecordShrinkRequest : Tea.TeaModel {
                 if self.alpha != nil {
                     map["Alpha"] = self.alpha!
                 }
+                if self.display != nil {
+                    map["Display"] = self.display!
+                }
                 if self.height != nil {
                     map["Height"] = self.height!
                 }
@@ -24151,6 +24538,9 @@ public class StartCloudRecordShrinkRequest : Tea.TeaModel {
             public override func fromMap(_ dict: [String: Any]) -> Void {
                 if dict.keys.contains("Alpha") {
                     self.alpha = dict["Alpha"] as! Double
+                }
+                if dict.keys.contains("Display") {
+                    self.display = dict["Display"] as! String
                 }
                 if dict.keys.contains("Height") {
                     self.height = dict["Height"] as! Double
@@ -24274,6 +24664,8 @@ public class StartCloudRecordShrinkRequest : Tea.TeaModel {
 
             public var boxColor: StartCloudRecordShrinkRequest.Panes.Texts.BoxColor?
 
+            public var display: String?
+
             public var font: Int32?
 
             public var fontColor: StartCloudRecordShrinkRequest.Panes.Texts.FontColor?
@@ -24318,6 +24710,9 @@ public class StartCloudRecordShrinkRequest : Tea.TeaModel {
                 if self.boxColor != nil {
                     map["BoxColor"] = self.boxColor?.toMap()
                 }
+                if self.display != nil {
+                    map["Display"] = self.display!
+                }
                 if self.font != nil {
                     map["Font"] = self.font!
                 }
@@ -24359,6 +24754,9 @@ public class StartCloudRecordShrinkRequest : Tea.TeaModel {
                     var model = StartCloudRecordShrinkRequest.Panes.Texts.BoxColor()
                     model.fromMap(dict["BoxColor"] as! [String: Any])
                     self.boxColor = model
+                }
+                if dict.keys.contains("Display") {
+                    self.display = dict["Display"] as! String
                 }
                 if dict.keys.contains("Font") {
                     self.font = dict["Font"] as! Int32
@@ -24417,6 +24815,8 @@ public class StartCloudRecordShrinkRequest : Tea.TeaModel {
                 }
             }
         }
+        public var backgrounds: [StartCloudRecordShrinkRequest.Panes.Backgrounds]?
+
         public var images: [StartCloudRecordShrinkRequest.Panes.Images]?
 
         public var paneCropMode: Int32?
@@ -24450,6 +24850,13 @@ public class StartCloudRecordShrinkRequest : Tea.TeaModel {
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
+            if self.backgrounds != nil {
+                var tmp : [Any] = []
+                for k in self.backgrounds! {
+                    tmp.append(k.toMap())
+                }
+                map["Backgrounds"] = tmp
+            }
             if self.images != nil {
                 var tmp : [Any] = []
                 for k in self.images! {
@@ -24489,6 +24896,17 @@ public class StartCloudRecordShrinkRequest : Tea.TeaModel {
         }
 
         public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("Backgrounds") {
+                var tmp : [StartCloudRecordShrinkRequest.Panes.Backgrounds] = []
+                for v in dict["Backgrounds"] as! [Any] {
+                    var model = StartCloudRecordShrinkRequest.Panes.Backgrounds()
+                    if v != nil {
+                        model.fromMap(v as! [String: Any])
+                    }
+                    tmp.append(model)
+                }
+                self.backgrounds = tmp
+            }
             if dict.keys.contains("Images") {
                 var tmp : [StartCloudRecordShrinkRequest.Panes.Images] = []
                 for v in dict["Images"] as! [Any] {
@@ -24883,6 +25301,8 @@ public class StartCloudRecordShrinkRequest : Tea.TeaModel {
 
     public var reservePaneForNoCameraUser: Bool?
 
+    public var showDefaultBackgroundOnMute: Bool?
+
     public var storageConfig: StartCloudRecordShrinkRequest.StorageConfig?
 
     public var taskId: String?
@@ -24952,6 +25372,9 @@ public class StartCloudRecordShrinkRequest : Tea.TeaModel {
         }
         if self.reservePaneForNoCameraUser != nil {
             map["ReservePaneForNoCameraUser"] = self.reservePaneForNoCameraUser!
+        }
+        if self.showDefaultBackgroundOnMute != nil {
+            map["ShowDefaultBackgroundOnMute"] = self.showDefaultBackgroundOnMute!
         }
         if self.storageConfig != nil {
             map["StorageConfig"] = self.storageConfig?.toMap()
@@ -25036,6 +25459,9 @@ public class StartCloudRecordShrinkRequest : Tea.TeaModel {
         }
         if dict.keys.contains("ReservePaneForNoCameraUser") {
             self.reservePaneForNoCameraUser = dict["ReservePaneForNoCameraUser"] as! Bool
+        }
+        if dict.keys.contains("ShowDefaultBackgroundOnMute") {
+            self.showDefaultBackgroundOnMute = dict["ShowDefaultBackgroundOnMute"] as! Bool
         }
         if dict.keys.contains("StorageConfig") {
             var model = StartCloudRecordShrinkRequest.StorageConfig()
@@ -27078,8 +27504,103 @@ public class StartStreamingOutRequest : Tea.TeaModel {
         }
     }
     public class Panes : Tea.TeaModel {
+        public class Backgrounds : Tea.TeaModel {
+            public var alpha: Double?
+
+            public var display: String?
+
+            public var height: Double?
+
+            public var layer: Int32?
+
+            public var paneBackgroundCropMode: Int32?
+
+            public var url: String?
+
+            public var width: Double?
+
+            public var x: Double?
+
+            public var y: Double?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.alpha != nil {
+                    map["Alpha"] = self.alpha!
+                }
+                if self.display != nil {
+                    map["Display"] = self.display!
+                }
+                if self.height != nil {
+                    map["Height"] = self.height!
+                }
+                if self.layer != nil {
+                    map["Layer"] = self.layer!
+                }
+                if self.paneBackgroundCropMode != nil {
+                    map["PaneBackgroundCropMode"] = self.paneBackgroundCropMode!
+                }
+                if self.url != nil {
+                    map["Url"] = self.url!
+                }
+                if self.width != nil {
+                    map["Width"] = self.width!
+                }
+                if self.x != nil {
+                    map["X"] = self.x!
+                }
+                if self.y != nil {
+                    map["Y"] = self.y!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("Alpha") {
+                    self.alpha = dict["Alpha"] as! Double
+                }
+                if dict.keys.contains("Display") {
+                    self.display = dict["Display"] as! String
+                }
+                if dict.keys.contains("Height") {
+                    self.height = dict["Height"] as! Double
+                }
+                if dict.keys.contains("Layer") {
+                    self.layer = dict["Layer"] as! Int32
+                }
+                if dict.keys.contains("PaneBackgroundCropMode") {
+                    self.paneBackgroundCropMode = dict["PaneBackgroundCropMode"] as! Int32
+                }
+                if dict.keys.contains("Url") {
+                    self.url = dict["Url"] as! String
+                }
+                if dict.keys.contains("Width") {
+                    self.width = dict["Width"] as! Double
+                }
+                if dict.keys.contains("X") {
+                    self.x = dict["X"] as! Double
+                }
+                if dict.keys.contains("Y") {
+                    self.y = dict["Y"] as! Double
+                }
+            }
+        }
         public class Images : Tea.TeaModel {
             public var alpha: Double?
+
+            public var display: String?
 
             public var height: Double?
 
@@ -27112,6 +27633,9 @@ public class StartStreamingOutRequest : Tea.TeaModel {
                 if self.alpha != nil {
                     map["Alpha"] = self.alpha!
                 }
+                if self.display != nil {
+                    map["Display"] = self.display!
+                }
                 if self.height != nil {
                     map["Height"] = self.height!
                 }
@@ -27139,6 +27663,9 @@ public class StartStreamingOutRequest : Tea.TeaModel {
             public override func fromMap(_ dict: [String: Any]) -> Void {
                 if dict.keys.contains("Alpha") {
                     self.alpha = dict["Alpha"] as! Double
+                }
+                if dict.keys.contains("Display") {
+                    self.display = dict["Display"] as! String
                 }
                 if dict.keys.contains("Height") {
                     self.height = dict["Height"] as! Double
@@ -27262,6 +27789,8 @@ public class StartStreamingOutRequest : Tea.TeaModel {
 
             public var boxColor: StartStreamingOutRequest.Panes.Texts.BoxColor?
 
+            public var display: String?
+
             public var font: Int32?
 
             public var fontColor: StartStreamingOutRequest.Panes.Texts.FontColor?
@@ -27306,6 +27835,9 @@ public class StartStreamingOutRequest : Tea.TeaModel {
                 if self.boxColor != nil {
                     map["BoxColor"] = self.boxColor?.toMap()
                 }
+                if self.display != nil {
+                    map["Display"] = self.display!
+                }
                 if self.font != nil {
                     map["Font"] = self.font!
                 }
@@ -27347,6 +27879,9 @@ public class StartStreamingOutRequest : Tea.TeaModel {
                     var model = StartStreamingOutRequest.Panes.Texts.BoxColor()
                     model.fromMap(dict["BoxColor"] as! [String: Any])
                     self.boxColor = model
+                }
+                if dict.keys.contains("Display") {
+                    self.display = dict["Display"] as! String
                 }
                 if dict.keys.contains("Font") {
                     self.font = dict["Font"] as! Int32
@@ -27405,6 +27940,8 @@ public class StartStreamingOutRequest : Tea.TeaModel {
                 }
             }
         }
+        public var backgrounds: [StartStreamingOutRequest.Panes.Backgrounds]?
+
         public var images: [StartStreamingOutRequest.Panes.Images]?
 
         public var paneCropMode: Int32?
@@ -27438,6 +27975,13 @@ public class StartStreamingOutRequest : Tea.TeaModel {
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
+            if self.backgrounds != nil {
+                var tmp : [Any] = []
+                for k in self.backgrounds! {
+                    tmp.append(k.toMap())
+                }
+                map["Backgrounds"] = tmp
+            }
             if self.images != nil {
                 var tmp : [Any] = []
                 for k in self.images! {
@@ -27477,6 +28021,17 @@ public class StartStreamingOutRequest : Tea.TeaModel {
         }
 
         public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("Backgrounds") {
+                var tmp : [StartStreamingOutRequest.Panes.Backgrounds] = []
+                for v in dict["Backgrounds"] as! [Any] {
+                    var model = StartStreamingOutRequest.Panes.Backgrounds()
+                    if v != nil {
+                        model.fromMap(v as! [String: Any])
+                    }
+                    tmp.append(model)
+                }
+                self.backgrounds = tmp
+            }
             if dict.keys.contains("Images") {
                 var tmp : [StartStreamingOutRequest.Panes.Images] = []
                 for v in dict["Images"] as! [Any] {
@@ -27802,6 +28357,8 @@ public class StartStreamingOutRequest : Tea.TeaModel {
 
     public var reservePaneForNoCameraUser: Bool?
 
+    public var showDefaultBackgroundOnMute: Bool?
+
     public var startWithoutChannel: Bool?
 
     public var startWithoutChannelWaitTime: Int32?
@@ -27875,6 +28432,9 @@ public class StartStreamingOutRequest : Tea.TeaModel {
         }
         if self.reservePaneForNoCameraUser != nil {
             map["ReservePaneForNoCameraUser"] = self.reservePaneForNoCameraUser!
+        }
+        if self.showDefaultBackgroundOnMute != nil {
+            map["ShowDefaultBackgroundOnMute"] = self.showDefaultBackgroundOnMute!
         }
         if self.startWithoutChannel != nil {
             map["StartWithoutChannel"] = self.startWithoutChannel!
@@ -27967,6 +28527,9 @@ public class StartStreamingOutRequest : Tea.TeaModel {
         }
         if dict.keys.contains("ReservePaneForNoCameraUser") {
             self.reservePaneForNoCameraUser = dict["ReservePaneForNoCameraUser"] as! Bool
+        }
+        if dict.keys.contains("ShowDefaultBackgroundOnMute") {
+            self.showDefaultBackgroundOnMute = dict["ShowDefaultBackgroundOnMute"] as! Bool
         }
         if dict.keys.contains("StartWithoutChannel") {
             self.startWithoutChannel = dict["StartWithoutChannel"] as! Bool
@@ -28382,8 +28945,103 @@ public class StartStreamingOutShrinkRequest : Tea.TeaModel {
         }
     }
     public class Panes : Tea.TeaModel {
+        public class Backgrounds : Tea.TeaModel {
+            public var alpha: Double?
+
+            public var display: String?
+
+            public var height: Double?
+
+            public var layer: Int32?
+
+            public var paneBackgroundCropMode: Int32?
+
+            public var url: String?
+
+            public var width: Double?
+
+            public var x: Double?
+
+            public var y: Double?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.alpha != nil {
+                    map["Alpha"] = self.alpha!
+                }
+                if self.display != nil {
+                    map["Display"] = self.display!
+                }
+                if self.height != nil {
+                    map["Height"] = self.height!
+                }
+                if self.layer != nil {
+                    map["Layer"] = self.layer!
+                }
+                if self.paneBackgroundCropMode != nil {
+                    map["PaneBackgroundCropMode"] = self.paneBackgroundCropMode!
+                }
+                if self.url != nil {
+                    map["Url"] = self.url!
+                }
+                if self.width != nil {
+                    map["Width"] = self.width!
+                }
+                if self.x != nil {
+                    map["X"] = self.x!
+                }
+                if self.y != nil {
+                    map["Y"] = self.y!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("Alpha") {
+                    self.alpha = dict["Alpha"] as! Double
+                }
+                if dict.keys.contains("Display") {
+                    self.display = dict["Display"] as! String
+                }
+                if dict.keys.contains("Height") {
+                    self.height = dict["Height"] as! Double
+                }
+                if dict.keys.contains("Layer") {
+                    self.layer = dict["Layer"] as! Int32
+                }
+                if dict.keys.contains("PaneBackgroundCropMode") {
+                    self.paneBackgroundCropMode = dict["PaneBackgroundCropMode"] as! Int32
+                }
+                if dict.keys.contains("Url") {
+                    self.url = dict["Url"] as! String
+                }
+                if dict.keys.contains("Width") {
+                    self.width = dict["Width"] as! Double
+                }
+                if dict.keys.contains("X") {
+                    self.x = dict["X"] as! Double
+                }
+                if dict.keys.contains("Y") {
+                    self.y = dict["Y"] as! Double
+                }
+            }
+        }
         public class Images : Tea.TeaModel {
             public var alpha: Double?
+
+            public var display: String?
 
             public var height: Double?
 
@@ -28416,6 +29074,9 @@ public class StartStreamingOutShrinkRequest : Tea.TeaModel {
                 if self.alpha != nil {
                     map["Alpha"] = self.alpha!
                 }
+                if self.display != nil {
+                    map["Display"] = self.display!
+                }
                 if self.height != nil {
                     map["Height"] = self.height!
                 }
@@ -28443,6 +29104,9 @@ public class StartStreamingOutShrinkRequest : Tea.TeaModel {
             public override func fromMap(_ dict: [String: Any]) -> Void {
                 if dict.keys.contains("Alpha") {
                     self.alpha = dict["Alpha"] as! Double
+                }
+                if dict.keys.contains("Display") {
+                    self.display = dict["Display"] as! String
                 }
                 if dict.keys.contains("Height") {
                     self.height = dict["Height"] as! Double
@@ -28566,6 +29230,8 @@ public class StartStreamingOutShrinkRequest : Tea.TeaModel {
 
             public var boxColor: StartStreamingOutShrinkRequest.Panes.Texts.BoxColor?
 
+            public var display: String?
+
             public var font: Int32?
 
             public var fontColor: StartStreamingOutShrinkRequest.Panes.Texts.FontColor?
@@ -28610,6 +29276,9 @@ public class StartStreamingOutShrinkRequest : Tea.TeaModel {
                 if self.boxColor != nil {
                     map["BoxColor"] = self.boxColor?.toMap()
                 }
+                if self.display != nil {
+                    map["Display"] = self.display!
+                }
                 if self.font != nil {
                     map["Font"] = self.font!
                 }
@@ -28651,6 +29320,9 @@ public class StartStreamingOutShrinkRequest : Tea.TeaModel {
                     var model = StartStreamingOutShrinkRequest.Panes.Texts.BoxColor()
                     model.fromMap(dict["BoxColor"] as! [String: Any])
                     self.boxColor = model
+                }
+                if dict.keys.contains("Display") {
+                    self.display = dict["Display"] as! String
                 }
                 if dict.keys.contains("Font") {
                     self.font = dict["Font"] as! Int32
@@ -28709,6 +29381,8 @@ public class StartStreamingOutShrinkRequest : Tea.TeaModel {
                 }
             }
         }
+        public var backgrounds: [StartStreamingOutShrinkRequest.Panes.Backgrounds]?
+
         public var images: [StartStreamingOutShrinkRequest.Panes.Images]?
 
         public var paneCropMode: Int32?
@@ -28742,6 +29416,13 @@ public class StartStreamingOutShrinkRequest : Tea.TeaModel {
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
+            if self.backgrounds != nil {
+                var tmp : [Any] = []
+                for k in self.backgrounds! {
+                    tmp.append(k.toMap())
+                }
+                map["Backgrounds"] = tmp
+            }
             if self.images != nil {
                 var tmp : [Any] = []
                 for k in self.images! {
@@ -28781,6 +29462,17 @@ public class StartStreamingOutShrinkRequest : Tea.TeaModel {
         }
 
         public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("Backgrounds") {
+                var tmp : [StartStreamingOutShrinkRequest.Panes.Backgrounds] = []
+                for v in dict["Backgrounds"] as! [Any] {
+                    var model = StartStreamingOutShrinkRequest.Panes.Backgrounds()
+                    if v != nil {
+                        model.fromMap(v as! [String: Any])
+                    }
+                    tmp.append(model)
+                }
+                self.backgrounds = tmp
+            }
             if dict.keys.contains("Images") {
                 var tmp : [StartStreamingOutShrinkRequest.Panes.Images] = []
                 for v in dict["Images"] as! [Any] {
@@ -29106,6 +29798,8 @@ public class StartStreamingOutShrinkRequest : Tea.TeaModel {
 
     public var reservePaneForNoCameraUser: Bool?
 
+    public var showDefaultBackgroundOnMute: Bool?
+
     public var startWithoutChannel: Bool?
 
     public var startWithoutChannelWaitTime: Int32?
@@ -29178,6 +29872,9 @@ public class StartStreamingOutShrinkRequest : Tea.TeaModel {
         }
         if self.reservePaneForNoCameraUser != nil {
             map["ReservePaneForNoCameraUser"] = self.reservePaneForNoCameraUser!
+        }
+        if self.showDefaultBackgroundOnMute != nil {
+            map["ShowDefaultBackgroundOnMute"] = self.showDefaultBackgroundOnMute!
         }
         if self.startWithoutChannel != nil {
             map["StartWithoutChannel"] = self.startWithoutChannel!
@@ -29268,6 +29965,9 @@ public class StartStreamingOutShrinkRequest : Tea.TeaModel {
         }
         if dict.keys.contains("ReservePaneForNoCameraUser") {
             self.reservePaneForNoCameraUser = dict["ReservePaneForNoCameraUser"] as! Bool
+        }
+        if dict.keys.contains("ShowDefaultBackgroundOnMute") {
+            self.showDefaultBackgroundOnMute = dict["ShowDefaultBackgroundOnMute"] as! Bool
         }
         if dict.keys.contains("StartWithoutChannel") {
             self.startWithoutChannel = dict["StartWithoutChannel"] as! Bool
@@ -30941,8 +31641,103 @@ public class UpdateCloudRecordRequest : Tea.TeaModel {
         }
     }
     public class Panes : Tea.TeaModel {
+        public class Backgrounds : Tea.TeaModel {
+            public var alpha: Double?
+
+            public var display: String?
+
+            public var height: Double?
+
+            public var layer: Int32?
+
+            public var paneBackgroundCropMode: Int32?
+
+            public var url: String?
+
+            public var width: Double?
+
+            public var x: Double?
+
+            public var y: Double?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.alpha != nil {
+                    map["Alpha"] = self.alpha!
+                }
+                if self.display != nil {
+                    map["Display"] = self.display!
+                }
+                if self.height != nil {
+                    map["Height"] = self.height!
+                }
+                if self.layer != nil {
+                    map["Layer"] = self.layer!
+                }
+                if self.paneBackgroundCropMode != nil {
+                    map["PaneBackgroundCropMode"] = self.paneBackgroundCropMode!
+                }
+                if self.url != nil {
+                    map["Url"] = self.url!
+                }
+                if self.width != nil {
+                    map["Width"] = self.width!
+                }
+                if self.x != nil {
+                    map["X"] = self.x!
+                }
+                if self.y != nil {
+                    map["Y"] = self.y!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("Alpha") {
+                    self.alpha = dict["Alpha"] as! Double
+                }
+                if dict.keys.contains("Display") {
+                    self.display = dict["Display"] as! String
+                }
+                if dict.keys.contains("Height") {
+                    self.height = dict["Height"] as! Double
+                }
+                if dict.keys.contains("Layer") {
+                    self.layer = dict["Layer"] as! Int32
+                }
+                if dict.keys.contains("PaneBackgroundCropMode") {
+                    self.paneBackgroundCropMode = dict["PaneBackgroundCropMode"] as! Int32
+                }
+                if dict.keys.contains("Url") {
+                    self.url = dict["Url"] as! String
+                }
+                if dict.keys.contains("Width") {
+                    self.width = dict["Width"] as! Double
+                }
+                if dict.keys.contains("X") {
+                    self.x = dict["X"] as! Double
+                }
+                if dict.keys.contains("Y") {
+                    self.y = dict["Y"] as! Double
+                }
+            }
+        }
         public class Images : Tea.TeaModel {
             public var alpha: Double?
+
+            public var display: String?
 
             public var height: Double?
 
@@ -30975,6 +31770,9 @@ public class UpdateCloudRecordRequest : Tea.TeaModel {
                 if self.alpha != nil {
                     map["Alpha"] = self.alpha!
                 }
+                if self.display != nil {
+                    map["Display"] = self.display!
+                }
                 if self.height != nil {
                     map["Height"] = self.height!
                 }
@@ -31002,6 +31800,9 @@ public class UpdateCloudRecordRequest : Tea.TeaModel {
             public override func fromMap(_ dict: [String: Any]) -> Void {
                 if dict.keys.contains("Alpha") {
                     self.alpha = dict["Alpha"] as! Double
+                }
+                if dict.keys.contains("Display") {
+                    self.display = dict["Display"] as! String
                 }
                 if dict.keys.contains("Height") {
                     self.height = dict["Height"] as! Double
@@ -31125,6 +31926,8 @@ public class UpdateCloudRecordRequest : Tea.TeaModel {
 
             public var boxColor: UpdateCloudRecordRequest.Panes.Texts.BoxColor?
 
+            public var display: String?
+
             public var font: Int32?
 
             public var fontColor: UpdateCloudRecordRequest.Panes.Texts.FontColor?
@@ -31169,6 +31972,9 @@ public class UpdateCloudRecordRequest : Tea.TeaModel {
                 if self.boxColor != nil {
                     map["BoxColor"] = self.boxColor?.toMap()
                 }
+                if self.display != nil {
+                    map["Display"] = self.display!
+                }
                 if self.font != nil {
                     map["Font"] = self.font!
                 }
@@ -31210,6 +32016,9 @@ public class UpdateCloudRecordRequest : Tea.TeaModel {
                     var model = UpdateCloudRecordRequest.Panes.Texts.BoxColor()
                     model.fromMap(dict["BoxColor"] as! [String: Any])
                     self.boxColor = model
+                }
+                if dict.keys.contains("Display") {
+                    self.display = dict["Display"] as! String
                 }
                 if dict.keys.contains("Font") {
                     self.font = dict["Font"] as! Int32
@@ -31268,6 +32077,8 @@ public class UpdateCloudRecordRequest : Tea.TeaModel {
                 }
             }
         }
+        public var backgrounds: [UpdateCloudRecordRequest.Panes.Backgrounds]?
+
         public var images: [UpdateCloudRecordRequest.Panes.Images]?
 
         public var paneCropMode: Int32?
@@ -31301,6 +32112,13 @@ public class UpdateCloudRecordRequest : Tea.TeaModel {
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
+            if self.backgrounds != nil {
+                var tmp : [Any] = []
+                for k in self.backgrounds! {
+                    tmp.append(k.toMap())
+                }
+                map["Backgrounds"] = tmp
+            }
             if self.images != nil {
                 var tmp : [Any] = []
                 for k in self.images! {
@@ -31340,6 +32158,17 @@ public class UpdateCloudRecordRequest : Tea.TeaModel {
         }
 
         public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("Backgrounds") {
+                var tmp : [UpdateCloudRecordRequest.Panes.Backgrounds] = []
+                for v in dict["Backgrounds"] as! [Any] {
+                    var model = UpdateCloudRecordRequest.Panes.Backgrounds()
+                    if v != nil {
+                        model.fromMap(v as! [String: Any])
+                    }
+                    tmp.append(model)
+                }
+                self.backgrounds = tmp
+            }
             if dict.keys.contains("Images") {
                 var tmp : [UpdateCloudRecordRequest.Panes.Images] = []
                 for v in dict["Images"] as! [Any] {
@@ -32149,8 +32978,103 @@ public class UpdateCloudRecordShrinkRequest : Tea.TeaModel {
         }
     }
     public class Panes : Tea.TeaModel {
+        public class Backgrounds : Tea.TeaModel {
+            public var alpha: Double?
+
+            public var display: String?
+
+            public var height: Double?
+
+            public var layer: Int32?
+
+            public var paneBackgroundCropMode: Int32?
+
+            public var url: String?
+
+            public var width: Double?
+
+            public var x: Double?
+
+            public var y: Double?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.alpha != nil {
+                    map["Alpha"] = self.alpha!
+                }
+                if self.display != nil {
+                    map["Display"] = self.display!
+                }
+                if self.height != nil {
+                    map["Height"] = self.height!
+                }
+                if self.layer != nil {
+                    map["Layer"] = self.layer!
+                }
+                if self.paneBackgroundCropMode != nil {
+                    map["PaneBackgroundCropMode"] = self.paneBackgroundCropMode!
+                }
+                if self.url != nil {
+                    map["Url"] = self.url!
+                }
+                if self.width != nil {
+                    map["Width"] = self.width!
+                }
+                if self.x != nil {
+                    map["X"] = self.x!
+                }
+                if self.y != nil {
+                    map["Y"] = self.y!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("Alpha") {
+                    self.alpha = dict["Alpha"] as! Double
+                }
+                if dict.keys.contains("Display") {
+                    self.display = dict["Display"] as! String
+                }
+                if dict.keys.contains("Height") {
+                    self.height = dict["Height"] as! Double
+                }
+                if dict.keys.contains("Layer") {
+                    self.layer = dict["Layer"] as! Int32
+                }
+                if dict.keys.contains("PaneBackgroundCropMode") {
+                    self.paneBackgroundCropMode = dict["PaneBackgroundCropMode"] as! Int32
+                }
+                if dict.keys.contains("Url") {
+                    self.url = dict["Url"] as! String
+                }
+                if dict.keys.contains("Width") {
+                    self.width = dict["Width"] as! Double
+                }
+                if dict.keys.contains("X") {
+                    self.x = dict["X"] as! Double
+                }
+                if dict.keys.contains("Y") {
+                    self.y = dict["Y"] as! Double
+                }
+            }
+        }
         public class Images : Tea.TeaModel {
             public var alpha: Double?
+
+            public var display: String?
 
             public var height: Double?
 
@@ -32183,6 +33107,9 @@ public class UpdateCloudRecordShrinkRequest : Tea.TeaModel {
                 if self.alpha != nil {
                     map["Alpha"] = self.alpha!
                 }
+                if self.display != nil {
+                    map["Display"] = self.display!
+                }
                 if self.height != nil {
                     map["Height"] = self.height!
                 }
@@ -32210,6 +33137,9 @@ public class UpdateCloudRecordShrinkRequest : Tea.TeaModel {
             public override func fromMap(_ dict: [String: Any]) -> Void {
                 if dict.keys.contains("Alpha") {
                     self.alpha = dict["Alpha"] as! Double
+                }
+                if dict.keys.contains("Display") {
+                    self.display = dict["Display"] as! String
                 }
                 if dict.keys.contains("Height") {
                     self.height = dict["Height"] as! Double
@@ -32333,6 +33263,8 @@ public class UpdateCloudRecordShrinkRequest : Tea.TeaModel {
 
             public var boxColor: UpdateCloudRecordShrinkRequest.Panes.Texts.BoxColor?
 
+            public var display: String?
+
             public var font: Int32?
 
             public var fontColor: UpdateCloudRecordShrinkRequest.Panes.Texts.FontColor?
@@ -32377,6 +33309,9 @@ public class UpdateCloudRecordShrinkRequest : Tea.TeaModel {
                 if self.boxColor != nil {
                     map["BoxColor"] = self.boxColor?.toMap()
                 }
+                if self.display != nil {
+                    map["Display"] = self.display!
+                }
                 if self.font != nil {
                     map["Font"] = self.font!
                 }
@@ -32418,6 +33353,9 @@ public class UpdateCloudRecordShrinkRequest : Tea.TeaModel {
                     var model = UpdateCloudRecordShrinkRequest.Panes.Texts.BoxColor()
                     model.fromMap(dict["BoxColor"] as! [String: Any])
                     self.boxColor = model
+                }
+                if dict.keys.contains("Display") {
+                    self.display = dict["Display"] as! String
                 }
                 if dict.keys.contains("Font") {
                     self.font = dict["Font"] as! Int32
@@ -32476,6 +33414,8 @@ public class UpdateCloudRecordShrinkRequest : Tea.TeaModel {
                 }
             }
         }
+        public var backgrounds: [UpdateCloudRecordShrinkRequest.Panes.Backgrounds]?
+
         public var images: [UpdateCloudRecordShrinkRequest.Panes.Images]?
 
         public var paneCropMode: Int32?
@@ -32509,6 +33449,13 @@ public class UpdateCloudRecordShrinkRequest : Tea.TeaModel {
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
+            if self.backgrounds != nil {
+                var tmp : [Any] = []
+                for k in self.backgrounds! {
+                    tmp.append(k.toMap())
+                }
+                map["Backgrounds"] = tmp
+            }
             if self.images != nil {
                 var tmp : [Any] = []
                 for k in self.images! {
@@ -32548,6 +33495,17 @@ public class UpdateCloudRecordShrinkRequest : Tea.TeaModel {
         }
 
         public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("Backgrounds") {
+                var tmp : [UpdateCloudRecordShrinkRequest.Panes.Backgrounds] = []
+                for v in dict["Backgrounds"] as! [Any] {
+                    var model = UpdateCloudRecordShrinkRequest.Panes.Backgrounds()
+                    if v != nil {
+                        model.fromMap(v as! [String: Any])
+                    }
+                    tmp.append(model)
+                }
+                self.backgrounds = tmp
+            }
             if dict.keys.contains("Images") {
                 var tmp : [UpdateCloudRecordShrinkRequest.Panes.Images] = []
                 for v in dict["Images"] as! [Any] {
@@ -35393,8 +36351,103 @@ public class UpdateStreamingOutRequest : Tea.TeaModel {
         }
     }
     public class Panes : Tea.TeaModel {
+        public class Backgrounds : Tea.TeaModel {
+            public var alpha: Double?
+
+            public var display: String?
+
+            public var height: Double?
+
+            public var layer: Int32?
+
+            public var paneBackgroundCropMode: Int32?
+
+            public var url: String?
+
+            public var width: Double?
+
+            public var x: Double?
+
+            public var y: Double?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.alpha != nil {
+                    map["Alpha"] = self.alpha!
+                }
+                if self.display != nil {
+                    map["Display"] = self.display!
+                }
+                if self.height != nil {
+                    map["Height"] = self.height!
+                }
+                if self.layer != nil {
+                    map["Layer"] = self.layer!
+                }
+                if self.paneBackgroundCropMode != nil {
+                    map["PaneBackgroundCropMode"] = self.paneBackgroundCropMode!
+                }
+                if self.url != nil {
+                    map["Url"] = self.url!
+                }
+                if self.width != nil {
+                    map["Width"] = self.width!
+                }
+                if self.x != nil {
+                    map["X"] = self.x!
+                }
+                if self.y != nil {
+                    map["Y"] = self.y!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("Alpha") {
+                    self.alpha = dict["Alpha"] as! Double
+                }
+                if dict.keys.contains("Display") {
+                    self.display = dict["Display"] as! String
+                }
+                if dict.keys.contains("Height") {
+                    self.height = dict["Height"] as! Double
+                }
+                if dict.keys.contains("Layer") {
+                    self.layer = dict["Layer"] as! Int32
+                }
+                if dict.keys.contains("PaneBackgroundCropMode") {
+                    self.paneBackgroundCropMode = dict["PaneBackgroundCropMode"] as! Int32
+                }
+                if dict.keys.contains("Url") {
+                    self.url = dict["Url"] as! String
+                }
+                if dict.keys.contains("Width") {
+                    self.width = dict["Width"] as! Double
+                }
+                if dict.keys.contains("X") {
+                    self.x = dict["X"] as! Double
+                }
+                if dict.keys.contains("Y") {
+                    self.y = dict["Y"] as! Double
+                }
+            }
+        }
         public class Images : Tea.TeaModel {
             public var alpha: Double?
+
+            public var display: String?
 
             public var height: Double?
 
@@ -35427,6 +36480,9 @@ public class UpdateStreamingOutRequest : Tea.TeaModel {
                 if self.alpha != nil {
                     map["Alpha"] = self.alpha!
                 }
+                if self.display != nil {
+                    map["Display"] = self.display!
+                }
                 if self.height != nil {
                     map["Height"] = self.height!
                 }
@@ -35454,6 +36510,9 @@ public class UpdateStreamingOutRequest : Tea.TeaModel {
             public override func fromMap(_ dict: [String: Any]) -> Void {
                 if dict.keys.contains("Alpha") {
                     self.alpha = dict["Alpha"] as! Double
+                }
+                if dict.keys.contains("Display") {
+                    self.display = dict["Display"] as! String
                 }
                 if dict.keys.contains("Height") {
                     self.height = dict["Height"] as! Double
@@ -35577,6 +36636,8 @@ public class UpdateStreamingOutRequest : Tea.TeaModel {
 
             public var boxColor: UpdateStreamingOutRequest.Panes.Texts.BoxColor?
 
+            public var display: String?
+
             public var font: Int32?
 
             public var fontColor: UpdateStreamingOutRequest.Panes.Texts.FontColor?
@@ -35621,6 +36682,9 @@ public class UpdateStreamingOutRequest : Tea.TeaModel {
                 if self.boxColor != nil {
                     map["BoxColor"] = self.boxColor?.toMap()
                 }
+                if self.display != nil {
+                    map["Display"] = self.display!
+                }
                 if self.font != nil {
                     map["Font"] = self.font!
                 }
@@ -35662,6 +36726,9 @@ public class UpdateStreamingOutRequest : Tea.TeaModel {
                     var model = UpdateStreamingOutRequest.Panes.Texts.BoxColor()
                     model.fromMap(dict["BoxColor"] as! [String: Any])
                     self.boxColor = model
+                }
+                if dict.keys.contains("Display") {
+                    self.display = dict["Display"] as! String
                 }
                 if dict.keys.contains("Font") {
                     self.font = dict["Font"] as! Int32
@@ -35720,6 +36787,8 @@ public class UpdateStreamingOutRequest : Tea.TeaModel {
                 }
             }
         }
+        public var backgrounds: [UpdateStreamingOutRequest.Panes.Backgrounds]?
+
         public var images: [UpdateStreamingOutRequest.Panes.Images]?
 
         public var paneCropMode: Int32?
@@ -35753,6 +36822,13 @@ public class UpdateStreamingOutRequest : Tea.TeaModel {
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
+            if self.backgrounds != nil {
+                var tmp : [Any] = []
+                for k in self.backgrounds! {
+                    tmp.append(k.toMap())
+                }
+                map["Backgrounds"] = tmp
+            }
             if self.images != nil {
                 var tmp : [Any] = []
                 for k in self.images! {
@@ -35792,6 +36868,17 @@ public class UpdateStreamingOutRequest : Tea.TeaModel {
         }
 
         public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("Backgrounds") {
+                var tmp : [UpdateStreamingOutRequest.Panes.Backgrounds] = []
+                for v in dict["Backgrounds"] as! [Any] {
+                    var model = UpdateStreamingOutRequest.Panes.Backgrounds()
+                    if v != nil {
+                        model.fromMap(v as! [String: Any])
+                    }
+                    tmp.append(model)
+                }
+                self.backgrounds = tmp
+            }
             if dict.keys.contains("Images") {
                 var tmp : [UpdateStreamingOutRequest.Panes.Images] = []
                 for v in dict["Images"] as! [Any] {
@@ -36601,8 +37688,103 @@ public class UpdateStreamingOutShrinkRequest : Tea.TeaModel {
         }
     }
     public class Panes : Tea.TeaModel {
+        public class Backgrounds : Tea.TeaModel {
+            public var alpha: Double?
+
+            public var display: String?
+
+            public var height: Double?
+
+            public var layer: Int32?
+
+            public var paneBackgroundCropMode: Int32?
+
+            public var url: String?
+
+            public var width: Double?
+
+            public var x: Double?
+
+            public var y: Double?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.alpha != nil {
+                    map["Alpha"] = self.alpha!
+                }
+                if self.display != nil {
+                    map["Display"] = self.display!
+                }
+                if self.height != nil {
+                    map["Height"] = self.height!
+                }
+                if self.layer != nil {
+                    map["Layer"] = self.layer!
+                }
+                if self.paneBackgroundCropMode != nil {
+                    map["PaneBackgroundCropMode"] = self.paneBackgroundCropMode!
+                }
+                if self.url != nil {
+                    map["Url"] = self.url!
+                }
+                if self.width != nil {
+                    map["Width"] = self.width!
+                }
+                if self.x != nil {
+                    map["X"] = self.x!
+                }
+                if self.y != nil {
+                    map["Y"] = self.y!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("Alpha") {
+                    self.alpha = dict["Alpha"] as! Double
+                }
+                if dict.keys.contains("Display") {
+                    self.display = dict["Display"] as! String
+                }
+                if dict.keys.contains("Height") {
+                    self.height = dict["Height"] as! Double
+                }
+                if dict.keys.contains("Layer") {
+                    self.layer = dict["Layer"] as! Int32
+                }
+                if dict.keys.contains("PaneBackgroundCropMode") {
+                    self.paneBackgroundCropMode = dict["PaneBackgroundCropMode"] as! Int32
+                }
+                if dict.keys.contains("Url") {
+                    self.url = dict["Url"] as! String
+                }
+                if dict.keys.contains("Width") {
+                    self.width = dict["Width"] as! Double
+                }
+                if dict.keys.contains("X") {
+                    self.x = dict["X"] as! Double
+                }
+                if dict.keys.contains("Y") {
+                    self.y = dict["Y"] as! Double
+                }
+            }
+        }
         public class Images : Tea.TeaModel {
             public var alpha: Double?
+
+            public var display: String?
 
             public var height: Double?
 
@@ -36635,6 +37817,9 @@ public class UpdateStreamingOutShrinkRequest : Tea.TeaModel {
                 if self.alpha != nil {
                     map["Alpha"] = self.alpha!
                 }
+                if self.display != nil {
+                    map["Display"] = self.display!
+                }
                 if self.height != nil {
                     map["Height"] = self.height!
                 }
@@ -36662,6 +37847,9 @@ public class UpdateStreamingOutShrinkRequest : Tea.TeaModel {
             public override func fromMap(_ dict: [String: Any]) -> Void {
                 if dict.keys.contains("Alpha") {
                     self.alpha = dict["Alpha"] as! Double
+                }
+                if dict.keys.contains("Display") {
+                    self.display = dict["Display"] as! String
                 }
                 if dict.keys.contains("Height") {
                     self.height = dict["Height"] as! Double
@@ -36785,6 +37973,8 @@ public class UpdateStreamingOutShrinkRequest : Tea.TeaModel {
 
             public var boxColor: UpdateStreamingOutShrinkRequest.Panes.Texts.BoxColor?
 
+            public var display: String?
+
             public var font: Int32?
 
             public var fontColor: UpdateStreamingOutShrinkRequest.Panes.Texts.FontColor?
@@ -36829,6 +38019,9 @@ public class UpdateStreamingOutShrinkRequest : Tea.TeaModel {
                 if self.boxColor != nil {
                     map["BoxColor"] = self.boxColor?.toMap()
                 }
+                if self.display != nil {
+                    map["Display"] = self.display!
+                }
                 if self.font != nil {
                     map["Font"] = self.font!
                 }
@@ -36870,6 +38063,9 @@ public class UpdateStreamingOutShrinkRequest : Tea.TeaModel {
                     var model = UpdateStreamingOutShrinkRequest.Panes.Texts.BoxColor()
                     model.fromMap(dict["BoxColor"] as! [String: Any])
                     self.boxColor = model
+                }
+                if dict.keys.contains("Display") {
+                    self.display = dict["Display"] as! String
                 }
                 if dict.keys.contains("Font") {
                     self.font = dict["Font"] as! Int32
@@ -36928,6 +38124,8 @@ public class UpdateStreamingOutShrinkRequest : Tea.TeaModel {
                 }
             }
         }
+        public var backgrounds: [UpdateStreamingOutShrinkRequest.Panes.Backgrounds]?
+
         public var images: [UpdateStreamingOutShrinkRequest.Panes.Images]?
 
         public var paneCropMode: Int32?
@@ -36961,6 +38159,13 @@ public class UpdateStreamingOutShrinkRequest : Tea.TeaModel {
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
+            if self.backgrounds != nil {
+                var tmp : [Any] = []
+                for k in self.backgrounds! {
+                    tmp.append(k.toMap())
+                }
+                map["Backgrounds"] = tmp
+            }
             if self.images != nil {
                 var tmp : [Any] = []
                 for k in self.images! {
@@ -37000,6 +38205,17 @@ public class UpdateStreamingOutShrinkRequest : Tea.TeaModel {
         }
 
         public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("Backgrounds") {
+                var tmp : [UpdateStreamingOutShrinkRequest.Panes.Backgrounds] = []
+                for v in dict["Backgrounds"] as! [Any] {
+                    var model = UpdateStreamingOutShrinkRequest.Panes.Backgrounds()
+                    if v != nil {
+                        model.fromMap(v as! [String: Any])
+                    }
+                    tmp.append(model)
+                }
+                self.backgrounds = tmp
+            }
             if dict.keys.contains("Images") {
                 var tmp : [UpdateStreamingOutShrinkRequest.Panes.Images] = []
                 for v in dict["Images"] as! [Any] {
