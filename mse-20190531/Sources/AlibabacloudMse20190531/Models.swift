@@ -29873,9 +29873,13 @@ public class GetGovernanceKubernetesClusterResponseBody : Tea.TeaModel {
 
         public var pilotStartTime: String?
 
+        public var pilotVersion: String?
+
         public var region: String?
 
         public var updateTime: String?
+
+        public var versionLifeCycle: String?
 
         public override init() {
             super.init()
@@ -29913,11 +29917,17 @@ public class GetGovernanceKubernetesClusterResponseBody : Tea.TeaModel {
             if self.pilotStartTime != nil {
                 map["PilotStartTime"] = self.pilotStartTime!
             }
+            if self.pilotVersion != nil {
+                map["PilotVersion"] = self.pilotVersion!
+            }
             if self.region != nil {
                 map["Region"] = self.region!
             }
             if self.updateTime != nil {
                 map["UpdateTime"] = self.updateTime!
+            }
+            if self.versionLifeCycle != nil {
+                map["VersionLifeCycle"] = self.versionLifeCycle!
             }
             return map
         }
@@ -29949,11 +29959,17 @@ public class GetGovernanceKubernetesClusterResponseBody : Tea.TeaModel {
             if dict.keys.contains("PilotStartTime") {
                 self.pilotStartTime = dict["PilotStartTime"] as! String
             }
+            if dict.keys.contains("PilotVersion") {
+                self.pilotVersion = dict["PilotVersion"] as! String
+            }
             if dict.keys.contains("Region") {
                 self.region = dict["Region"] as! String
             }
             if dict.keys.contains("UpdateTime") {
                 self.updateTime = dict["UpdateTime"] as! String
+            }
+            if dict.keys.contains("VersionLifeCycle") {
+                self.versionLifeCycle = dict["VersionLifeCycle"] as! String
             }
         }
     }
@@ -62459,7 +62475,11 @@ public class QueryGovernanceKubernetesClusterResponseBody : Tea.TeaModel {
 
             public var pilotStartTime: String?
 
+            public var pilotVersion: String?
+
             public var region: String?
+
+            public var versionLifeCycle: String?
 
             public override init() {
                 super.init()
@@ -62490,8 +62510,14 @@ public class QueryGovernanceKubernetesClusterResponseBody : Tea.TeaModel {
                 if self.pilotStartTime != nil {
                     map["PilotStartTime"] = self.pilotStartTime!
                 }
+                if self.pilotVersion != nil {
+                    map["PilotVersion"] = self.pilotVersion!
+                }
                 if self.region != nil {
                     map["Region"] = self.region!
+                }
+                if self.versionLifeCycle != nil {
+                    map["VersionLifeCycle"] = self.versionLifeCycle!
                 }
                 return map
             }
@@ -62512,8 +62538,14 @@ public class QueryGovernanceKubernetesClusterResponseBody : Tea.TeaModel {
                 if dict.keys.contains("PilotStartTime") {
                     self.pilotStartTime = dict["PilotStartTime"] as! String
                 }
+                if dict.keys.contains("PilotVersion") {
+                    self.pilotVersion = dict["PilotVersion"] as! String
+                }
                 if dict.keys.contains("Region") {
                     self.region = dict["Region"] as! String
+                }
+                if dict.keys.contains("VersionLifeCycle") {
+                    self.versionLifeCycle = dict["VersionLifeCycle"] as! String
                 }
             }
         }
