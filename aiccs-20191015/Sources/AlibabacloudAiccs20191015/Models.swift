@@ -28598,6 +28598,345 @@ public class LlmSmartCallResponse : Tea.TeaModel {
     }
 }
 
+public class LlmSmartCallEncryptRequest : Tea.TeaModel {
+    public var applicationCode: String?
+
+    public var callerNumber: String?
+
+    public var encryptCalledNumber: String?
+
+    public var outId: String?
+
+    public var ownerId: Int64?
+
+    public var promptParam: [String: Any]?
+
+    public var resourceOwnerAccount: String?
+
+    public var resourceOwnerId: Int64?
+
+    public var startWordParam: [String: Any]?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.applicationCode != nil {
+            map["ApplicationCode"] = self.applicationCode!
+        }
+        if self.callerNumber != nil {
+            map["CallerNumber"] = self.callerNumber!
+        }
+        if self.encryptCalledNumber != nil {
+            map["EncryptCalledNumber"] = self.encryptCalledNumber!
+        }
+        if self.outId != nil {
+            map["OutId"] = self.outId!
+        }
+        if self.ownerId != nil {
+            map["OwnerId"] = self.ownerId!
+        }
+        if self.promptParam != nil {
+            map["PromptParam"] = self.promptParam!
+        }
+        if self.resourceOwnerAccount != nil {
+            map["ResourceOwnerAccount"] = self.resourceOwnerAccount!
+        }
+        if self.resourceOwnerId != nil {
+            map["ResourceOwnerId"] = self.resourceOwnerId!
+        }
+        if self.startWordParam != nil {
+            map["StartWordParam"] = self.startWordParam!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("ApplicationCode") {
+            self.applicationCode = dict["ApplicationCode"] as! String
+        }
+        if dict.keys.contains("CallerNumber") {
+            self.callerNumber = dict["CallerNumber"] as! String
+        }
+        if dict.keys.contains("EncryptCalledNumber") {
+            self.encryptCalledNumber = dict["EncryptCalledNumber"] as! String
+        }
+        if dict.keys.contains("OutId") {
+            self.outId = dict["OutId"] as! String
+        }
+        if dict.keys.contains("OwnerId") {
+            self.ownerId = dict["OwnerId"] as! Int64
+        }
+        if dict.keys.contains("PromptParam") {
+            self.promptParam = dict["PromptParam"] as! [String: Any]
+        }
+        if dict.keys.contains("ResourceOwnerAccount") {
+            self.resourceOwnerAccount = dict["ResourceOwnerAccount"] as! String
+        }
+        if dict.keys.contains("ResourceOwnerId") {
+            self.resourceOwnerId = dict["ResourceOwnerId"] as! Int64
+        }
+        if dict.keys.contains("StartWordParam") {
+            self.startWordParam = dict["StartWordParam"] as! [String: Any]
+        }
+    }
+}
+
+public class LlmSmartCallEncryptShrinkRequest : Tea.TeaModel {
+    public var applicationCode: String?
+
+    public var callerNumber: String?
+
+    public var encryptCalledNumber: String?
+
+    public var outId: String?
+
+    public var ownerId: Int64?
+
+    public var promptParamShrink: String?
+
+    public var resourceOwnerAccount: String?
+
+    public var resourceOwnerId: Int64?
+
+    public var startWordParamShrink: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.applicationCode != nil {
+            map["ApplicationCode"] = self.applicationCode!
+        }
+        if self.callerNumber != nil {
+            map["CallerNumber"] = self.callerNumber!
+        }
+        if self.encryptCalledNumber != nil {
+            map["EncryptCalledNumber"] = self.encryptCalledNumber!
+        }
+        if self.outId != nil {
+            map["OutId"] = self.outId!
+        }
+        if self.ownerId != nil {
+            map["OwnerId"] = self.ownerId!
+        }
+        if self.promptParamShrink != nil {
+            map["PromptParam"] = self.promptParamShrink!
+        }
+        if self.resourceOwnerAccount != nil {
+            map["ResourceOwnerAccount"] = self.resourceOwnerAccount!
+        }
+        if self.resourceOwnerId != nil {
+            map["ResourceOwnerId"] = self.resourceOwnerId!
+        }
+        if self.startWordParamShrink != nil {
+            map["StartWordParam"] = self.startWordParamShrink!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("ApplicationCode") {
+            self.applicationCode = dict["ApplicationCode"] as! String
+        }
+        if dict.keys.contains("CallerNumber") {
+            self.callerNumber = dict["CallerNumber"] as! String
+        }
+        if dict.keys.contains("EncryptCalledNumber") {
+            self.encryptCalledNumber = dict["EncryptCalledNumber"] as! String
+        }
+        if dict.keys.contains("OutId") {
+            self.outId = dict["OutId"] as! String
+        }
+        if dict.keys.contains("OwnerId") {
+            self.ownerId = dict["OwnerId"] as! Int64
+        }
+        if dict.keys.contains("PromptParam") {
+            self.promptParamShrink = dict["PromptParam"] as! String
+        }
+        if dict.keys.contains("ResourceOwnerAccount") {
+            self.resourceOwnerAccount = dict["ResourceOwnerAccount"] as! String
+        }
+        if dict.keys.contains("ResourceOwnerId") {
+            self.resourceOwnerId = dict["ResourceOwnerId"] as! Int64
+        }
+        if dict.keys.contains("StartWordParam") {
+            self.startWordParamShrink = dict["StartWordParam"] as! String
+        }
+    }
+}
+
+public class LlmSmartCallEncryptResponseBody : Tea.TeaModel {
+    public class Data : Tea.TeaModel {
+        public var callId: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.callId != nil {
+                map["CallId"] = self.callId!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("CallId") {
+                self.callId = dict["CallId"] as! String
+            }
+        }
+    }
+    public var accessDeniedDetail: String?
+
+    public var code: String?
+
+    public var data: LlmSmartCallEncryptResponseBody.Data?
+
+    public var message: String?
+
+    public var requestId: String?
+
+    public var success: Bool?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.data?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.accessDeniedDetail != nil {
+            map["AccessDeniedDetail"] = self.accessDeniedDetail!
+        }
+        if self.code != nil {
+            map["Code"] = self.code!
+        }
+        if self.data != nil {
+            map["Data"] = self.data?.toMap()
+        }
+        if self.message != nil {
+            map["Message"] = self.message!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.success != nil {
+            map["Success"] = self.success!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("AccessDeniedDetail") {
+            self.accessDeniedDetail = dict["AccessDeniedDetail"] as! String
+        }
+        if dict.keys.contains("Code") {
+            self.code = dict["Code"] as! String
+        }
+        if dict.keys.contains("Data") {
+            var model = LlmSmartCallEncryptResponseBody.Data()
+            model.fromMap(dict["Data"] as! [String: Any])
+            self.data = model
+        }
+        if dict.keys.contains("Message") {
+            self.message = dict["Message"] as! String
+        }
+        if dict.keys.contains("RequestId") {
+            self.requestId = dict["RequestId"] as! String
+        }
+        if dict.keys.contains("Success") {
+            self.success = dict["Success"] as! Bool
+        }
+    }
+}
+
+public class LlmSmartCallEncryptResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: LlmSmartCallEncryptResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") {
+            var model = LlmSmartCallEncryptResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
 public class MakeCallRequest : Tea.TeaModel {
     public var calledNumber: String?
 
