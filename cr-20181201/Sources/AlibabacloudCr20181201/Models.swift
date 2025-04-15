@@ -3706,6 +3706,8 @@ public class CreateRepoTagScanTaskRequest : Tea.TeaModel {
 
     public var scanService: String?
 
+    public var scanType: String?
+
     public var tag: String?
 
     public override init() {
@@ -3734,6 +3736,9 @@ public class CreateRepoTagScanTaskRequest : Tea.TeaModel {
         if self.scanService != nil {
             map["ScanService"] = self.scanService!
         }
+        if self.scanType != nil {
+            map["ScanType"] = self.scanType!
+        }
         if self.tag != nil {
             map["Tag"] = self.tag!
         }
@@ -3752,6 +3757,9 @@ public class CreateRepoTagScanTaskRequest : Tea.TeaModel {
         }
         if dict.keys.contains("ScanService") {
             self.scanService = dict["ScanService"] as! String
+        }
+        if dict.keys.contains("ScanType") {
+            self.scanType = dict["ScanType"] as! String
         }
         if dict.keys.contains("Tag") {
             self.tag = dict["Tag"] as! String
@@ -11495,6 +11503,8 @@ public class GetRepoTagScanStatusRequest : Tea.TeaModel {
 
     public var scanTaskId: String?
 
+    public var scanType: String?
+
     public var tag: String?
 
     public override init() {
@@ -11523,6 +11533,9 @@ public class GetRepoTagScanStatusRequest : Tea.TeaModel {
         if self.scanTaskId != nil {
             map["ScanTaskId"] = self.scanTaskId!
         }
+        if self.scanType != nil {
+            map["ScanType"] = self.scanType!
+        }
         if self.tag != nil {
             map["Tag"] = self.tag!
         }
@@ -11541,6 +11554,9 @@ public class GetRepoTagScanStatusRequest : Tea.TeaModel {
         }
         if dict.keys.contains("ScanTaskId") {
             self.scanTaskId = dict["ScanTaskId"] as! String
+        }
+        if dict.keys.contains("ScanType") {
+            self.scanType = dict["ScanType"] as! String
         }
         if dict.keys.contains("Tag") {
             self.tag = dict["Tag"] as! String
