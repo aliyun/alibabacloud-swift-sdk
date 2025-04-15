@@ -8727,6 +8727,8 @@ public class ListFreeNodesRequest : Tea.TeaModel {
 
     public var nextToken: String?
 
+    public var operatingStates: [String]?
+
     public var resourceGroupId: String?
 
     public var tags: [ListFreeNodesRequest.Tags]?
@@ -8757,6 +8759,9 @@ public class ListFreeNodesRequest : Tea.TeaModel {
         if self.nextToken != nil {
             map["NextToken"] = self.nextToken!
         }
+        if self.operatingStates != nil {
+            map["OperatingStates"] = self.operatingStates!
+        }
         if self.resourceGroupId != nil {
             map["ResourceGroupId"] = self.resourceGroupId!
         }
@@ -8782,6 +8787,9 @@ public class ListFreeNodesRequest : Tea.TeaModel {
         }
         if dict.keys.contains("NextToken") {
             self.nextToken = dict["NextToken"] as! String
+        }
+        if dict.keys.contains("OperatingStates") {
+            self.operatingStates = dict["OperatingStates"] as! [String]
         }
         if dict.keys.contains("ResourceGroupId") {
             self.resourceGroupId = dict["ResourceGroupId"] as! String
