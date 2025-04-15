@@ -124,6 +124,40 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func checkVerifyLogWithOptions(_ request: CheckVerifyLogRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> CheckVerifyLogResponse {
+        try TeaUtils.Client.validateModel(request)
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.merchantBizId)) {
+            body["MerchantBizId"] = request.merchantBizId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.transactionId)) {
+            body["TransactionId"] = request.transactionId ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "CheckVerifyLog",
+            "version": "2022-08-09",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(CheckVerifyLogResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func checkVerifyLog(_ request: CheckVerifyLogRequest) async throws -> CheckVerifyLogResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await checkVerifyLogWithOptions(request as! CheckVerifyLogRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func deleteVerifyResultWithOptions(_ request: DeleteVerifyResultRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DeleteVerifyResultResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
@@ -469,6 +503,61 @@ open class Client : AlibabacloudOpenApi.Client {
     public func fraudResultCallBack(_ request: FraudResultCallBackRequest) async throws -> FraudResultCallBackResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         return try await fraudResultCallBackWithOptions(request as! FraudResultCallBackRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func id2MetaPeriodVerifyIntlWithOptions(_ request: Id2MetaPeriodVerifyIntlRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> Id2MetaPeriodVerifyIntlResponse {
+        try TeaUtils.Client.validateModel(request)
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.docName)) {
+            body["DocName"] = request.docName ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.docNo)) {
+            body["DocNo"] = request.docNo ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.docType)) {
+            body["DocType"] = request.docType ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.merchantBizId)) {
+            body["MerchantBizId"] = request.merchantBizId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.merchantUserId)) {
+            body["MerchantUserId"] = request.merchantUserId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.productCode)) {
+            body["ProductCode"] = request.productCode ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.sceneCode)) {
+            body["SceneCode"] = request.sceneCode ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.validityEndDate)) {
+            body["ValidityEndDate"] = request.validityEndDate ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.validityStartDate)) {
+            body["ValidityStartDate"] = request.validityStartDate ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "Id2MetaPeriodVerifyIntl",
+            "version": "2022-08-09",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(Id2MetaPeriodVerifyIntlResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func id2MetaPeriodVerifyIntl(_ request: Id2MetaPeriodVerifyIntlRequest) async throws -> Id2MetaPeriodVerifyIntlResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await id2MetaPeriodVerifyIntlWithOptions(request as! Id2MetaPeriodVerifyIntlRequest, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
