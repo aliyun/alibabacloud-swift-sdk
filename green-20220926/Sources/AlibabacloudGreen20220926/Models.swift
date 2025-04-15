@@ -6282,6 +6282,51 @@ public class GetCipStatsResponseBody : Tea.TeaModel {
                     }
                 }
             }
+            public class TextTreeChart : Tea.TeaModel {
+                public var description_: String?
+
+                public var name: String?
+
+                public var value: String?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.description_ != nil {
+                        map["Description"] = self.description_!
+                    }
+                    if self.name != nil {
+                        map["Name"] = self.name!
+                    }
+                    if self.value != nil {
+                        map["Value"] = self.value!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any]) -> Void {
+                    if dict.keys.contains("Description") {
+                        self.description_ = dict["Description"] as! String
+                    }
+                    if dict.keys.contains("Name") {
+                        self.name = dict["Name"] as! String
+                    }
+                    if dict.keys.contains("Value") {
+                        self.value = dict["Value"] as! String
+                    }
+                }
+            }
             public class TreeChart : Tea.TeaModel {
                 public var description_: String?
 
@@ -6413,6 +6458,8 @@ public class GetCipStatsResponseBody : Tea.TeaModel {
 
             public var serviceCode: String?
 
+            public var textTreeChart: [GetCipStatsResponseBody.Data.LabelStatChart.TextTreeChart]?
+
             public var totalCount: Int64?
 
             public var treeChart: [GetCipStatsResponseBody.Data.LabelStatChart.TreeChart]?
@@ -6446,6 +6493,13 @@ public class GetCipStatsResponseBody : Tea.TeaModel {
                 }
                 if self.serviceCode != nil {
                     map["ServiceCode"] = self.serviceCode!
+                }
+                if self.textTreeChart != nil {
+                    var tmp : [Any] = []
+                    for k in self.textTreeChart! {
+                        tmp.append(k.toMap())
+                    }
+                    map["TextTreeChart"] = tmp
                 }
                 if self.totalCount != nil {
                     map["TotalCount"] = self.totalCount!
@@ -6491,6 +6545,17 @@ public class GetCipStatsResponseBody : Tea.TeaModel {
                 }
                 if dict.keys.contains("ServiceCode") {
                     self.serviceCode = dict["ServiceCode"] as! String
+                }
+                if dict.keys.contains("TextTreeChart") {
+                    var tmp : [GetCipStatsResponseBody.Data.LabelStatChart.TextTreeChart] = []
+                    for v in dict["TextTreeChart"] as! [Any] {
+                        var model = GetCipStatsResponseBody.Data.LabelStatChart.TextTreeChart()
+                        if v != nil {
+                            model.fromMap(v as! [String: Any])
+                        }
+                        tmp.append(model)
+                    }
+                    self.textTreeChart = tmp
                 }
                 if dict.keys.contains("TotalCount") {
                     self.totalCount = dict["TotalCount"] as! Int64
