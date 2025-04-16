@@ -11123,6 +11123,43 @@ public class ModifyKeyPairNameResponse : Tea.TeaModel {
 
 public class ModifyPolicyGroupRequest : Tea.TeaModel {
     public class NetRedirectPolicy : Tea.TeaModel {
+        public class Rules : Tea.TeaModel {
+            public var ruleType: String?
+
+            public var target: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.ruleType != nil {
+                    map["RuleType"] = self.ruleType!
+                }
+                if self.target != nil {
+                    map["Target"] = self.target!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("RuleType") {
+                    self.ruleType = dict["RuleType"] as! String
+                }
+                if dict.keys.contains("Target") {
+                    self.target = dict["Target"] as! String
+                }
+            }
+        }
         public var customProxy: String?
 
         public var hostAddr: String?
@@ -11136,6 +11173,8 @@ public class ModifyPolicyGroupRequest : Tea.TeaModel {
         public var proxyType: String?
 
         public var proxyUserName: String?
+
+        public var rules: [ModifyPolicyGroupRequest.NetRedirectPolicy.Rules]?
 
         public override init() {
             super.init()
@@ -11172,6 +11211,13 @@ public class ModifyPolicyGroupRequest : Tea.TeaModel {
             if self.proxyUserName != nil {
                 map["ProxyUserName"] = self.proxyUserName!
             }
+            if self.rules != nil {
+                var tmp : [Any] = []
+                for k in self.rules! {
+                    tmp.append(k.toMap())
+                }
+                map["Rules"] = tmp
+            }
             return map
         }
 
@@ -11196,6 +11242,17 @@ public class ModifyPolicyGroupRequest : Tea.TeaModel {
             }
             if dict.keys.contains("ProxyUserName") {
                 self.proxyUserName = dict["ProxyUserName"] as! String
+            }
+            if dict.keys.contains("Rules") {
+                var tmp : [ModifyPolicyGroupRequest.NetRedirectPolicy.Rules] = []
+                for v in dict["Rules"] as! [Any] {
+                    var model = ModifyPolicyGroupRequest.NetRedirectPolicy.Rules()
+                    if v != nil {
+                        model.fromMap(v as! [String: Any])
+                    }
+                    tmp.append(model)
+                }
+                self.rules = tmp
             }
         }
     }
