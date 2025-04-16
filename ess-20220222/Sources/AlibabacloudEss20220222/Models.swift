@@ -37145,6 +37145,43 @@ public class RecordLifecycleActionHeartbeatResponse : Tea.TeaModel {
 }
 
 public class RemoveInstancesRequest : Tea.TeaModel {
+    public class LifecycleHookContext : Tea.TeaModel {
+        public var disableLifecycleHook: Bool?
+
+        public var ignoredLifecycleHookIds: [String]?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.disableLifecycleHook != nil {
+                map["DisableLifecycleHook"] = self.disableLifecycleHook!
+            }
+            if self.ignoredLifecycleHookIds != nil {
+                map["IgnoredLifecycleHookIds"] = self.ignoredLifecycleHookIds!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("DisableLifecycleHook") {
+                self.disableLifecycleHook = dict["DisableLifecycleHook"] as! Bool
+            }
+            if dict.keys.contains("IgnoredLifecycleHookIds") {
+                self.ignoredLifecycleHookIds = dict["IgnoredLifecycleHookIds"] as! [String]
+            }
+        }
+    }
     public var clientToken: String?
 
     public var decreaseDesiredCapacity: Bool?
@@ -37152,6 +37189,137 @@ public class RemoveInstancesRequest : Tea.TeaModel {
     public var ignoreInvalidInstance: Bool?
 
     public var instanceIds: [String]?
+
+    public var lifecycleHookContext: RemoveInstancesRequest.LifecycleHookContext?
+
+    public var ownerAccount: String?
+
+    public var ownerId: Int64?
+
+    public var regionId: String?
+
+    public var removePolicy: String?
+
+    public var resourceOwnerAccount: String?
+
+    public var resourceOwnerId: Int64?
+
+    public var scalingGroupId: String?
+
+    public var stopInstanceTimeout: Int32?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.lifecycleHookContext?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.clientToken != nil {
+            map["ClientToken"] = self.clientToken!
+        }
+        if self.decreaseDesiredCapacity != nil {
+            map["DecreaseDesiredCapacity"] = self.decreaseDesiredCapacity!
+        }
+        if self.ignoreInvalidInstance != nil {
+            map["IgnoreInvalidInstance"] = self.ignoreInvalidInstance!
+        }
+        if self.instanceIds != nil {
+            map["InstanceIds"] = self.instanceIds!
+        }
+        if self.lifecycleHookContext != nil {
+            map["LifecycleHookContext"] = self.lifecycleHookContext?.toMap()
+        }
+        if self.ownerAccount != nil {
+            map["OwnerAccount"] = self.ownerAccount!
+        }
+        if self.ownerId != nil {
+            map["OwnerId"] = self.ownerId!
+        }
+        if self.regionId != nil {
+            map["RegionId"] = self.regionId!
+        }
+        if self.removePolicy != nil {
+            map["RemovePolicy"] = self.removePolicy!
+        }
+        if self.resourceOwnerAccount != nil {
+            map["ResourceOwnerAccount"] = self.resourceOwnerAccount!
+        }
+        if self.resourceOwnerId != nil {
+            map["ResourceOwnerId"] = self.resourceOwnerId!
+        }
+        if self.scalingGroupId != nil {
+            map["ScalingGroupId"] = self.scalingGroupId!
+        }
+        if self.stopInstanceTimeout != nil {
+            map["StopInstanceTimeout"] = self.stopInstanceTimeout!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("ClientToken") {
+            self.clientToken = dict["ClientToken"] as! String
+        }
+        if dict.keys.contains("DecreaseDesiredCapacity") {
+            self.decreaseDesiredCapacity = dict["DecreaseDesiredCapacity"] as! Bool
+        }
+        if dict.keys.contains("IgnoreInvalidInstance") {
+            self.ignoreInvalidInstance = dict["IgnoreInvalidInstance"] as! Bool
+        }
+        if dict.keys.contains("InstanceIds") {
+            self.instanceIds = dict["InstanceIds"] as! [String]
+        }
+        if dict.keys.contains("LifecycleHookContext") {
+            var model = RemoveInstancesRequest.LifecycleHookContext()
+            model.fromMap(dict["LifecycleHookContext"] as! [String: Any])
+            self.lifecycleHookContext = model
+        }
+        if dict.keys.contains("OwnerAccount") {
+            self.ownerAccount = dict["OwnerAccount"] as! String
+        }
+        if dict.keys.contains("OwnerId") {
+            self.ownerId = dict["OwnerId"] as! Int64
+        }
+        if dict.keys.contains("RegionId") {
+            self.regionId = dict["RegionId"] as! String
+        }
+        if dict.keys.contains("RemovePolicy") {
+            self.removePolicy = dict["RemovePolicy"] as! String
+        }
+        if dict.keys.contains("ResourceOwnerAccount") {
+            self.resourceOwnerAccount = dict["ResourceOwnerAccount"] as! String
+        }
+        if dict.keys.contains("ResourceOwnerId") {
+            self.resourceOwnerId = dict["ResourceOwnerId"] as! Int64
+        }
+        if dict.keys.contains("ScalingGroupId") {
+            self.scalingGroupId = dict["ScalingGroupId"] as! String
+        }
+        if dict.keys.contains("StopInstanceTimeout") {
+            self.stopInstanceTimeout = dict["StopInstanceTimeout"] as! Int32
+        }
+    }
+}
+
+public class RemoveInstancesShrinkRequest : Tea.TeaModel {
+    public var clientToken: String?
+
+    public var decreaseDesiredCapacity: Bool?
+
+    public var ignoreInvalidInstance: Bool?
+
+    public var instanceIds: [String]?
+
+    public var lifecycleHookContextShrink: String?
 
     public var ownerAccount: String?
 
@@ -37195,6 +37363,9 @@ public class RemoveInstancesRequest : Tea.TeaModel {
         if self.instanceIds != nil {
             map["InstanceIds"] = self.instanceIds!
         }
+        if self.lifecycleHookContextShrink != nil {
+            map["LifecycleHookContext"] = self.lifecycleHookContextShrink!
+        }
         if self.ownerAccount != nil {
             map["OwnerAccount"] = self.ownerAccount!
         }
@@ -37234,6 +37405,9 @@ public class RemoveInstancesRequest : Tea.TeaModel {
         }
         if dict.keys.contains("InstanceIds") {
             self.instanceIds = dict["InstanceIds"] as! [String]
+        }
+        if dict.keys.contains("LifecycleHookContext") {
+            self.lifecycleHookContextShrink = dict["LifecycleHookContext"] as! String
         }
         if dict.keys.contains("OwnerAccount") {
             self.ownerAccount = dict["OwnerAccount"] as! String
