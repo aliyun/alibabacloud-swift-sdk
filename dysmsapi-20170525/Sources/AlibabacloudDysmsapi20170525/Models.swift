@@ -1697,6 +1697,8 @@ public class CreateSmartShortUrlResponse : Tea.TeaModel {
 public class CreateSmsSignRequest : Tea.TeaModel {
     public var applySceneContent: String?
 
+    public var authorizationLetterId: String?
+
     public var moreData: [String]?
 
     public var ownerId: Int64?
@@ -1733,6 +1735,9 @@ public class CreateSmsSignRequest : Tea.TeaModel {
         var map = super.toMap()
         if self.applySceneContent != nil {
             map["ApplySceneContent"] = self.applySceneContent!
+        }
+        if self.authorizationLetterId != nil {
+            map["AuthorizationLetterId"] = self.authorizationLetterId!
         }
         if self.moreData != nil {
             map["MoreData"] = self.moreData!
@@ -1771,6 +1776,9 @@ public class CreateSmsSignRequest : Tea.TeaModel {
         if dict.keys.contains("ApplySceneContent") {
             self.applySceneContent = dict["ApplySceneContent"] as! String
         }
+        if dict.keys.contains("AuthorizationLetterId") {
+            self.authorizationLetterId = dict["AuthorizationLetterId"] as! String
+        }
         if dict.keys.contains("MoreData") {
             self.moreData = dict["MoreData"] as! [String]
         }
@@ -1806,6 +1814,8 @@ public class CreateSmsSignRequest : Tea.TeaModel {
 
 public class CreateSmsSignShrinkRequest : Tea.TeaModel {
     public var applySceneContent: String?
+
+    public var authorizationLetterId: String?
 
     public var moreDataShrink: String?
 
@@ -1844,6 +1854,9 @@ public class CreateSmsSignShrinkRequest : Tea.TeaModel {
         if self.applySceneContent != nil {
             map["ApplySceneContent"] = self.applySceneContent!
         }
+        if self.authorizationLetterId != nil {
+            map["AuthorizationLetterId"] = self.authorizationLetterId!
+        }
         if self.moreDataShrink != nil {
             map["MoreData"] = self.moreDataShrink!
         }
@@ -1880,6 +1893,9 @@ public class CreateSmsSignShrinkRequest : Tea.TeaModel {
     public override func fromMap(_ dict: [String: Any]) -> Void {
         if dict.keys.contains("ApplySceneContent") {
             self.applySceneContent = dict["ApplySceneContent"] as! String
+        }
+        if dict.keys.contains("AuthorizationLetterId") {
+            self.authorizationLetterId = dict["AuthorizationLetterId"] as! String
         }
         if dict.keys.contains("MoreData") {
             self.moreDataShrink = dict["MoreData"] as! String
@@ -4404,6 +4420,10 @@ public class GetSmsSignResponseBody : Tea.TeaModel {
 
     public var auditInfo: GetSmsSignResponseBody.AuditInfo?
 
+    public var authorizationLetterAuditPass: Bool?
+
+    public var authorizationLetterId: String?
+
     public var code: String?
 
     public var createDate: String?
@@ -4454,6 +4474,12 @@ public class GetSmsSignResponseBody : Tea.TeaModel {
         }
         if self.auditInfo != nil {
             map["AuditInfo"] = self.auditInfo?.toMap()
+        }
+        if self.authorizationLetterAuditPass != nil {
+            map["AuthorizationLetterAuditPass"] = self.authorizationLetterAuditPass!
+        }
+        if self.authorizationLetterId != nil {
+            map["AuthorizationLetterId"] = self.authorizationLetterId!
         }
         if self.code != nil {
             map["Code"] = self.code!
@@ -4511,6 +4537,12 @@ public class GetSmsSignResponseBody : Tea.TeaModel {
             var model = GetSmsSignResponseBody.AuditInfo()
             model.fromMap(dict["AuditInfo"] as! [String: Any])
             self.auditInfo = model
+        }
+        if dict.keys.contains("AuthorizationLetterAuditPass") {
+            self.authorizationLetterAuditPass = dict["AuthorizationLetterAuditPass"] as! Bool
+        }
+        if dict.keys.contains("AuthorizationLetterId") {
+            self.authorizationLetterId = dict["AuthorizationLetterId"] as! String
         }
         if dict.keys.contains("Code") {
             self.code = dict["Code"] as! String
@@ -8239,6 +8271,8 @@ public class QuerySmsSignListResponseBody : Tea.TeaModel {
         }
         public var auditStatus: String?
 
+        public var authorizationLetterId: String?
+
         public var businessType: String?
 
         public var createDate: String?
@@ -8248,6 +8282,8 @@ public class QuerySmsSignListResponseBody : Tea.TeaModel {
         public var reason: QuerySmsSignListResponseBody.SmsSignList.Reason?
 
         public var signName: String?
+
+        public var authorizationLetterAuditPass: Bool?
 
         public override init() {
             super.init()
@@ -8267,6 +8303,9 @@ public class QuerySmsSignListResponseBody : Tea.TeaModel {
             if self.auditStatus != nil {
                 map["AuditStatus"] = self.auditStatus!
             }
+            if self.authorizationLetterId != nil {
+                map["AuthorizationLetterId"] = self.authorizationLetterId!
+            }
             if self.businessType != nil {
                 map["BusinessType"] = self.businessType!
             }
@@ -8282,12 +8321,18 @@ public class QuerySmsSignListResponseBody : Tea.TeaModel {
             if self.signName != nil {
                 map["SignName"] = self.signName!
             }
+            if self.authorizationLetterAuditPass != nil {
+                map["authorizationLetterAuditPass"] = self.authorizationLetterAuditPass!
+            }
             return map
         }
 
         public override func fromMap(_ dict: [String: Any]) -> Void {
             if dict.keys.contains("AuditStatus") {
                 self.auditStatus = dict["AuditStatus"] as! String
+            }
+            if dict.keys.contains("AuthorizationLetterId") {
+                self.authorizationLetterId = dict["AuthorizationLetterId"] as! String
             }
             if dict.keys.contains("BusinessType") {
                 self.businessType = dict["BusinessType"] as! String
@@ -8305,6 +8350,9 @@ public class QuerySmsSignListResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("SignName") {
                 self.signName = dict["SignName"] as! String
+            }
+            if dict.keys.contains("authorizationLetterAuditPass") {
+                self.authorizationLetterAuditPass = dict["authorizationLetterAuditPass"] as! Bool
             }
         }
     }
@@ -10814,6 +10862,8 @@ public class UpdateExtCodeSignResponse : Tea.TeaModel {
 public class UpdateSmsSignRequest : Tea.TeaModel {
     public var applySceneContent: String?
 
+    public var authorizationLetterId: String?
+
     public var moreData: [String]?
 
     public var ownerId: Int64?
@@ -10850,6 +10900,9 @@ public class UpdateSmsSignRequest : Tea.TeaModel {
         var map = super.toMap()
         if self.applySceneContent != nil {
             map["ApplySceneContent"] = self.applySceneContent!
+        }
+        if self.authorizationLetterId != nil {
+            map["AuthorizationLetterId"] = self.authorizationLetterId!
         }
         if self.moreData != nil {
             map["MoreData"] = self.moreData!
@@ -10888,6 +10941,9 @@ public class UpdateSmsSignRequest : Tea.TeaModel {
         if dict.keys.contains("ApplySceneContent") {
             self.applySceneContent = dict["ApplySceneContent"] as! String
         }
+        if dict.keys.contains("AuthorizationLetterId") {
+            self.authorizationLetterId = dict["AuthorizationLetterId"] as! String
+        }
         if dict.keys.contains("MoreData") {
             self.moreData = dict["MoreData"] as! [String]
         }
@@ -10923,6 +10979,8 @@ public class UpdateSmsSignRequest : Tea.TeaModel {
 
 public class UpdateSmsSignShrinkRequest : Tea.TeaModel {
     public var applySceneContent: String?
+
+    public var authorizationLetterId: String?
 
     public var moreDataShrink: String?
 
@@ -10961,6 +11019,9 @@ public class UpdateSmsSignShrinkRequest : Tea.TeaModel {
         if self.applySceneContent != nil {
             map["ApplySceneContent"] = self.applySceneContent!
         }
+        if self.authorizationLetterId != nil {
+            map["AuthorizationLetterId"] = self.authorizationLetterId!
+        }
         if self.moreDataShrink != nil {
             map["MoreData"] = self.moreDataShrink!
         }
@@ -10997,6 +11058,9 @@ public class UpdateSmsSignShrinkRequest : Tea.TeaModel {
     public override func fromMap(_ dict: [String: Any]) -> Void {
         if dict.keys.contains("ApplySceneContent") {
             self.applySceneContent = dict["ApplySceneContent"] as! String
+        }
+        if dict.keys.contains("AuthorizationLetterId") {
+            self.authorizationLetterId = dict["AuthorizationLetterId"] as! String
         }
         if dict.keys.contains("MoreData") {
             self.moreDataShrink = dict["MoreData"] as! String
