@@ -748,6 +748,227 @@ public class CheckVerifyLogResponse : Tea.TeaModel {
     }
 }
 
+public class DeepfakeDetectIntlRequest : Tea.TeaModel {
+    public var faceBase64: String?
+
+    public var faceInputType: String?
+
+    public var faceUrl: String?
+
+    public var merchantBizId: String?
+
+    public var productCode: String?
+
+    public var sceneCode: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.faceBase64 != nil {
+            map["FaceBase64"] = self.faceBase64!
+        }
+        if self.faceInputType != nil {
+            map["FaceInputType"] = self.faceInputType!
+        }
+        if self.faceUrl != nil {
+            map["FaceUrl"] = self.faceUrl!
+        }
+        if self.merchantBizId != nil {
+            map["MerchantBizId"] = self.merchantBizId!
+        }
+        if self.productCode != nil {
+            map["ProductCode"] = self.productCode!
+        }
+        if self.sceneCode != nil {
+            map["SceneCode"] = self.sceneCode!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("FaceBase64") {
+            self.faceBase64 = dict["FaceBase64"] as! String
+        }
+        if dict.keys.contains("FaceInputType") {
+            self.faceInputType = dict["FaceInputType"] as! String
+        }
+        if dict.keys.contains("FaceUrl") {
+            self.faceUrl = dict["FaceUrl"] as! String
+        }
+        if dict.keys.contains("MerchantBizId") {
+            self.merchantBizId = dict["MerchantBizId"] as! String
+        }
+        if dict.keys.contains("ProductCode") {
+            self.productCode = dict["ProductCode"] as! String
+        }
+        if dict.keys.contains("SceneCode") {
+            self.sceneCode = dict["SceneCode"] as! String
+        }
+    }
+}
+
+public class DeepfakeDetectIntlResponseBody : Tea.TeaModel {
+    public class ResultObject : Tea.TeaModel {
+        public var result: String?
+
+        public var riskScore: [String: String]?
+
+        public var riskTag: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.result != nil {
+                map["Result"] = self.result!
+            }
+            if self.riskScore != nil {
+                map["RiskScore"] = self.riskScore!
+            }
+            if self.riskTag != nil {
+                map["RiskTag"] = self.riskTag!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("Result") {
+                self.result = dict["Result"] as! String
+            }
+            if dict.keys.contains("RiskScore") {
+                self.riskScore = dict["RiskScore"] as! [String: String]
+            }
+            if dict.keys.contains("RiskTag") {
+                self.riskTag = dict["RiskTag"] as! String
+            }
+        }
+    }
+    public var code: String?
+
+    public var message: String?
+
+    public var requestId: String?
+
+    public var resultObject: DeepfakeDetectIntlResponseBody.ResultObject?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.resultObject?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.code != nil {
+            map["Code"] = self.code!
+        }
+        if self.message != nil {
+            map["Message"] = self.message!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.resultObject != nil {
+            map["ResultObject"] = self.resultObject?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("Code") {
+            self.code = dict["Code"] as! String
+        }
+        if dict.keys.contains("Message") {
+            self.message = dict["Message"] as! String
+        }
+        if dict.keys.contains("RequestId") {
+            self.requestId = dict["RequestId"] as! String
+        }
+        if dict.keys.contains("ResultObject") {
+            var model = DeepfakeDetectIntlResponseBody.ResultObject()
+            model.fromMap(dict["ResultObject"] as! [String: Any])
+            self.resultObject = model
+        }
+    }
+}
+
+public class DeepfakeDetectIntlResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: DeepfakeDetectIntlResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") {
+            var model = DeepfakeDetectIntlResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
 public class DeleteVerifyResultRequest : Tea.TeaModel {
     public var deleteAfterQuery: String?
 

@@ -158,6 +158,54 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func deepfakeDetectIntlWithOptions(_ request: DeepfakeDetectIntlRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DeepfakeDetectIntlResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.faceInputType)) {
+            query["FaceInputType"] = request.faceInputType ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.faceUrl)) {
+            query["FaceUrl"] = request.faceUrl ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.merchantBizId)) {
+            query["MerchantBizId"] = request.merchantBizId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.productCode)) {
+            query["ProductCode"] = request.productCode ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.sceneCode)) {
+            query["SceneCode"] = request.sceneCode ?? "";
+        }
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.faceBase64)) {
+            body["FaceBase64"] = request.faceBase64 ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query),
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "DeepfakeDetectIntl",
+            "version": "2022-08-09",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(DeepfakeDetectIntlResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func deepfakeDetectIntl(_ request: DeepfakeDetectIntlRequest) async throws -> DeepfakeDetectIntlResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await deepfakeDetectIntlWithOptions(request as! DeepfakeDetectIntlRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func deleteVerifyResultWithOptions(_ request: DeleteVerifyResultRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DeleteVerifyResultResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
