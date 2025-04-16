@@ -2368,6 +2368,8 @@ public class CreateVpcFirewallCenConfigureRequest : Tea.TeaModel {
 
     public var firewallVpcCidrBlock: String?
 
+    public var firewallVpcStandbyZoneId: String?
+
     public var firewallVpcZoneId: String?
 
     public var lang: String?
@@ -2408,6 +2410,9 @@ public class CreateVpcFirewallCenConfigureRequest : Tea.TeaModel {
         if self.firewallVpcCidrBlock != nil {
             map["FirewallVpcCidrBlock"] = self.firewallVpcCidrBlock!
         }
+        if self.firewallVpcStandbyZoneId != nil {
+            map["FirewallVpcStandbyZoneId"] = self.firewallVpcStandbyZoneId!
+        }
         if self.firewallVpcZoneId != nil {
             map["FirewallVpcZoneId"] = self.firewallVpcZoneId!
         }
@@ -2444,6 +2449,9 @@ public class CreateVpcFirewallCenConfigureRequest : Tea.TeaModel {
         }
         if dict.keys.contains("FirewallVpcCidrBlock") {
             self.firewallVpcCidrBlock = dict["FirewallVpcCidrBlock"] as! String
+        }
+        if dict.keys.contains("FirewallVpcStandbyZoneId") {
+            self.firewallVpcStandbyZoneId = dict["FirewallVpcStandbyZoneId"] as! String
         }
         if dict.keys.contains("FirewallVpcZoneId") {
             self.firewallVpcZoneId = dict["FirewallVpcZoneId"] as! String
@@ -6925,8 +6933,6 @@ public class DescribeDefaultIPSConfigResponseBody : Tea.TeaModel {
 
     public var ctiRules: Int32?
 
-    public var freeTrailStatus: String?
-
     public var maxSdl: Int64?
 
     public var patchRules: Int32?
@@ -6957,9 +6963,6 @@ public class DescribeDefaultIPSConfigResponseBody : Tea.TeaModel {
         if self.ctiRules != nil {
             map["CtiRules"] = self.ctiRules!
         }
-        if self.freeTrailStatus != nil {
-            map["FreeTrailStatus"] = self.freeTrailStatus!
-        }
         if self.maxSdl != nil {
             map["MaxSdl"] = self.maxSdl!
         }
@@ -6984,9 +6987,6 @@ public class DescribeDefaultIPSConfigResponseBody : Tea.TeaModel {
         }
         if dict.keys.contains("CtiRules") {
             self.ctiRules = dict["CtiRules"] as! Int32
-        }
-        if dict.keys.contains("FreeTrailStatus") {
-            self.freeTrailStatus = dict["FreeTrailStatus"] as! String
         }
         if dict.keys.contains("MaxSdl") {
             self.maxSdl = dict["MaxSdl"] as! Int64
@@ -14002,6 +14002,8 @@ public class DescribeSignatureLibVersionResponseBody : Tea.TeaModel {
     public class Version : Tea.TeaModel {
         public var type: String?
 
+        public var updateTime: Int64?
+
         public var version: String?
 
         public override init() {
@@ -14021,6 +14023,9 @@ public class DescribeSignatureLibVersionResponseBody : Tea.TeaModel {
             if self.type != nil {
                 map["Type"] = self.type!
             }
+            if self.updateTime != nil {
+                map["UpdateTime"] = self.updateTime!
+            }
             if self.version != nil {
                 map["Version"] = self.version!
             }
@@ -14030,6 +14035,9 @@ public class DescribeSignatureLibVersionResponseBody : Tea.TeaModel {
         public override func fromMap(_ dict: [String: Any]) -> Void {
             if dict.keys.contains("Type") {
                 self.type = dict["Type"] as! String
+            }
+            if dict.keys.contains("UpdateTime") {
+                self.updateTime = dict["UpdateTime"] as! Int64
             }
             if dict.keys.contains("Version") {
                 self.version = dict["Version"] as! String
@@ -14872,7 +14880,11 @@ public class DescribeTrFirewallsV2DetailResponseBody : Tea.TeaModel {
 
     public var trAttachmentMasterCidr: String?
 
+    public var trAttachmentMasterZone: String?
+
     public var trAttachmentSlaveCidr: String?
+
+    public var trAttachmentSlaveZone: String?
 
     public var transitRouterId: String?
 
@@ -14935,8 +14947,14 @@ public class DescribeTrFirewallsV2DetailResponseBody : Tea.TeaModel {
         if self.trAttachmentMasterCidr != nil {
             map["TrAttachmentMasterCidr"] = self.trAttachmentMasterCidr!
         }
+        if self.trAttachmentMasterZone != nil {
+            map["TrAttachmentMasterZone"] = self.trAttachmentMasterZone!
+        }
         if self.trAttachmentSlaveCidr != nil {
             map["TrAttachmentSlaveCidr"] = self.trAttachmentSlaveCidr!
+        }
+        if self.trAttachmentSlaveZone != nil {
+            map["TrAttachmentSlaveZone"] = self.trAttachmentSlaveZone!
         }
         if self.transitRouterId != nil {
             map["TransitRouterId"] = self.transitRouterId!
@@ -14990,8 +15008,14 @@ public class DescribeTrFirewallsV2DetailResponseBody : Tea.TeaModel {
         if dict.keys.contains("TrAttachmentMasterCidr") {
             self.trAttachmentMasterCidr = dict["TrAttachmentMasterCidr"] as! String
         }
+        if dict.keys.contains("TrAttachmentMasterZone") {
+            self.trAttachmentMasterZone = dict["TrAttachmentMasterZone"] as! String
+        }
         if dict.keys.contains("TrAttachmentSlaveCidr") {
             self.trAttachmentSlaveCidr = dict["TrAttachmentSlaveCidr"] as! String
+        }
+        if dict.keys.contains("TrAttachmentSlaveZone") {
+            self.trAttachmentSlaveZone = dict["TrAttachmentSlaveZone"] as! String
         }
         if dict.keys.contains("TransitRouterId") {
             self.transitRouterId = dict["TransitRouterId"] as! String
@@ -15160,6 +15184,35 @@ public class DescribeTrFirewallsV2ListRequest : Tea.TeaModel {
 
 public class DescribeTrFirewallsV2ListResponseBody : Tea.TeaModel {
     public class VpcTrFirewalls : Tea.TeaModel {
+        public class AclConfig : Tea.TeaModel {
+            public var strictMode: Int32?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.strictMode != nil {
+                    map["StrictMode"] = self.strictMode!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("StrictMode") {
+                    self.strictMode = dict["StrictMode"] as! Int32
+                }
+            }
+        }
         public class IpsConfig : Tea.TeaModel {
             public var basicRules: Int32?
 
@@ -15351,6 +15404,8 @@ public class DescribeTrFirewallsV2ListResponseBody : Tea.TeaModel {
                 }
             }
         }
+        public var aclConfig: DescribeTrFirewallsV2ListResponseBody.VpcTrFirewalls.AclConfig?
+
         public var cenId: String?
 
         public var cenName: String?
@@ -15393,6 +15448,7 @@ public class DescribeTrFirewallsV2ListResponseBody : Tea.TeaModel {
         }
 
         public override func validate() throws -> Void {
+            try self.aclConfig?.validate()
             try self.ipsConfig?.validate()
             try self.protectedResource?.validate()
             try self.unprotectedResource?.validate()
@@ -15400,6 +15456,9 @@ public class DescribeTrFirewallsV2ListResponseBody : Tea.TeaModel {
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
+            if self.aclConfig != nil {
+                map["AclConfig"] = self.aclConfig?.toMap()
+            }
             if self.cenId != nil {
                 map["CenId"] = self.cenId!
             }
@@ -15452,6 +15511,11 @@ public class DescribeTrFirewallsV2ListResponseBody : Tea.TeaModel {
         }
 
         public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("AclConfig") {
+                var model = DescribeTrFirewallsV2ListResponseBody.VpcTrFirewalls.AclConfig()
+                model.fromMap(dict["AclConfig"] as! [String: Any])
+                self.aclConfig = model
+            }
             if dict.keys.contains("CenId") {
                 self.cenId = dict["CenId"] as! String
             }
@@ -16530,6 +16594,8 @@ public class DescribeVpcFirewallAclGroupListRequest : Tea.TeaModel {
 
     public var firewallConfigureStatus: String?
 
+    public var firewallId: String?
+
     public var lang: String?
 
     public var pageSize: String?
@@ -16554,6 +16620,9 @@ public class DescribeVpcFirewallAclGroupListRequest : Tea.TeaModel {
         if self.firewallConfigureStatus != nil {
             map["FirewallConfigureStatus"] = self.firewallConfigureStatus!
         }
+        if self.firewallId != nil {
+            map["FirewallId"] = self.firewallId!
+        }
         if self.lang != nil {
             map["Lang"] = self.lang!
         }
@@ -16570,6 +16639,9 @@ public class DescribeVpcFirewallAclGroupListRequest : Tea.TeaModel {
         if dict.keys.contains("FirewallConfigureStatus") {
             self.firewallConfigureStatus = dict["FirewallConfigureStatus"] as! String
         }
+        if dict.keys.contains("FirewallId") {
+            self.firewallId = dict["FirewallId"] as! String
+        }
         if dict.keys.contains("Lang") {
             self.lang = dict["Lang"] as! String
         }
@@ -16581,6 +16653,37 @@ public class DescribeVpcFirewallAclGroupListRequest : Tea.TeaModel {
 
 public class DescribeVpcFirewallAclGroupListResponseBody : Tea.TeaModel {
     public class AclGroupList : Tea.TeaModel {
+        public class AclConfig : Tea.TeaModel {
+            public var strictMode: Int32?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.strictMode != nil {
+                    map["StrictMode"] = self.strictMode!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("StrictMode") {
+                    self.strictMode = dict["StrictMode"] as! Int32
+                }
+            }
+        }
+        public var aclConfig: DescribeVpcFirewallAclGroupListResponseBody.AclGroupList.AclConfig?
+
         public var aclGroupId: String?
 
         public var aclGroupName: String?
@@ -16601,10 +16704,14 @@ public class DescribeVpcFirewallAclGroupListResponseBody : Tea.TeaModel {
         }
 
         public override func validate() throws -> Void {
+            try self.aclConfig?.validate()
         }
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
+            if self.aclConfig != nil {
+                map["AclConfig"] = self.aclConfig?.toMap()
+            }
             if self.aclGroupId != nil {
                 map["AclGroupId"] = self.aclGroupId!
             }
@@ -16624,6 +16731,11 @@ public class DescribeVpcFirewallAclGroupListResponseBody : Tea.TeaModel {
         }
 
         public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("AclConfig") {
+                var model = DescribeVpcFirewallAclGroupListResponseBody.AclGroupList.AclConfig()
+                model.fromMap(dict["AclConfig"] as! [String: Any])
+                self.aclConfig = model
+            }
             if dict.keys.contains("AclGroupId") {
                 self.aclGroupId = dict["AclGroupId"] as! String
             }
@@ -16797,6 +16909,8 @@ public class DescribeVpcFirewallCenDetailResponseBody : Tea.TeaModel {
     public class FirewallVpc : Tea.TeaModel {
         public var allowConfiguration: Int32?
 
+        public var standbyZoneId: String?
+
         public var vpcCidr: String?
 
         public var vpcId: String?
@@ -16804,6 +16918,8 @@ public class DescribeVpcFirewallCenDetailResponseBody : Tea.TeaModel {
         public var vswitchCidr: String?
 
         public var vswitchId: String?
+
+        public var vswitchZoneId: String?
 
         public var zoneId: String?
 
@@ -16824,6 +16940,9 @@ public class DescribeVpcFirewallCenDetailResponseBody : Tea.TeaModel {
             if self.allowConfiguration != nil {
                 map["AllowConfiguration"] = self.allowConfiguration!
             }
+            if self.standbyZoneId != nil {
+                map["StandbyZoneId"] = self.standbyZoneId!
+            }
             if self.vpcCidr != nil {
                 map["VpcCidr"] = self.vpcCidr!
             }
@@ -16836,6 +16955,9 @@ public class DescribeVpcFirewallCenDetailResponseBody : Tea.TeaModel {
             if self.vswitchId != nil {
                 map["VswitchId"] = self.vswitchId!
             }
+            if self.vswitchZoneId != nil {
+                map["VswitchZoneId"] = self.vswitchZoneId!
+            }
             if self.zoneId != nil {
                 map["ZoneId"] = self.zoneId!
             }
@@ -16845,6 +16967,9 @@ public class DescribeVpcFirewallCenDetailResponseBody : Tea.TeaModel {
         public override func fromMap(_ dict: [String: Any]) -> Void {
             if dict.keys.contains("AllowConfiguration") {
                 self.allowConfiguration = dict["AllowConfiguration"] as! Int32
+            }
+            if dict.keys.contains("StandbyZoneId") {
+                self.standbyZoneId = dict["StandbyZoneId"] as! String
             }
             if dict.keys.contains("VpcCidr") {
                 self.vpcCidr = dict["VpcCidr"] as! String
@@ -16857,6 +16982,9 @@ public class DescribeVpcFirewallCenDetailResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("VswitchId") {
                 self.vswitchId = dict["VswitchId"] as! String
+            }
+            if dict.keys.contains("VswitchZoneId") {
+                self.vswitchZoneId = dict["VswitchZoneId"] as! String
             }
             if dict.keys.contains("ZoneId") {
                 self.zoneId = dict["ZoneId"] as! String
@@ -17435,6 +17563,35 @@ public class DescribeVpcFirewallCenListRequest : Tea.TeaModel {
 
 public class DescribeVpcFirewallCenListResponseBody : Tea.TeaModel {
     public class VpcFirewalls : Tea.TeaModel {
+        public class AclConfig : Tea.TeaModel {
+            public var strictMode: Int32?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.strictMode != nil {
+                    map["StrictMode"] = self.strictMode!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("StrictMode") {
+                    self.strictMode = dict["StrictMode"] as! Int32
+                }
+            }
+        }
         public class IpsConfig : Tea.TeaModel {
             public var basicRules: Int32?
 
@@ -17719,6 +17876,8 @@ public class DescribeVpcFirewallCenListResponseBody : Tea.TeaModel {
                 }
             }
         }
+        public var aclConfig: DescribeVpcFirewallCenListResponseBody.VpcFirewalls.AclConfig?
+
         public var cenId: String?
 
         public var cenName: String?
@@ -17753,12 +17912,16 @@ public class DescribeVpcFirewallCenListResponseBody : Tea.TeaModel {
         }
 
         public override func validate() throws -> Void {
+            try self.aclConfig?.validate()
             try self.ipsConfig?.validate()
             try self.localVpc?.validate()
         }
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
+            if self.aclConfig != nil {
+                map["AclConfig"] = self.aclConfig?.toMap()
+            }
             if self.cenId != nil {
                 map["CenId"] = self.cenId!
             }
@@ -17799,6 +17962,11 @@ public class DescribeVpcFirewallCenListResponseBody : Tea.TeaModel {
         }
 
         public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("AclConfig") {
+                var model = DescribeVpcFirewallCenListResponseBody.VpcFirewalls.AclConfig()
+                model.fromMap(dict["AclConfig"] as! [String: Any])
+                self.aclConfig = model
+            }
             if dict.keys.contains("CenId") {
                 self.cenId = dict["CenId"] as! String
             }
@@ -19493,6 +19661,35 @@ public class DescribeVpcFirewallListRequest : Tea.TeaModel {
 
 public class DescribeVpcFirewallListResponseBody : Tea.TeaModel {
     public class VpcFirewalls : Tea.TeaModel {
+        public class AclConfig : Tea.TeaModel {
+            public var strictMode: Int32?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.strictMode != nil {
+                    map["StrictMode"] = self.strictMode!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("StrictMode") {
+                    self.strictMode = dict["StrictMode"] as! Int32
+                }
+            }
+        }
         public class IpsConfig : Tea.TeaModel {
             public var basicRules: Int32?
 
@@ -19880,6 +20077,8 @@ public class DescribeVpcFirewallListResponseBody : Tea.TeaModel {
                 }
             }
         }
+        public var aclConfig: DescribeVpcFirewallListResponseBody.VpcFirewalls.AclConfig?
+
         public var bandwidth: Int32?
 
         public var connectSubType: String?
@@ -19914,6 +20113,7 @@ public class DescribeVpcFirewallListResponseBody : Tea.TeaModel {
         }
 
         public override func validate() throws -> Void {
+            try self.aclConfig?.validate()
             try self.ipsConfig?.validate()
             try self.localVpc?.validate()
             try self.peerVpc?.validate()
@@ -19921,6 +20121,9 @@ public class DescribeVpcFirewallListResponseBody : Tea.TeaModel {
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
+            if self.aclConfig != nil {
+                map["AclConfig"] = self.aclConfig?.toMap()
+            }
             if self.bandwidth != nil {
                 map["Bandwidth"] = self.bandwidth!
             }
@@ -19961,6 +20164,11 @@ public class DescribeVpcFirewallListResponseBody : Tea.TeaModel {
         }
 
         public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("AclConfig") {
+                var model = DescribeVpcFirewallListResponseBody.VpcFirewalls.AclConfig()
+                model.fromMap(dict["AclConfig"] as! [String: Any])
+                self.aclConfig = model
+            }
             if dict.keys.contains("Bandwidth") {
                 self.bandwidth = dict["Bandwidth"] as! Int32
             }
@@ -21872,19 +22080,19 @@ public class ModifyControlPolicyPositionResponse : Tea.TeaModel {
 }
 
 public class ModifyDefaultIPSConfigRequest : Tea.TeaModel {
-    public var basicRules: String?
+    public var basicRules: Int32?
 
-    public var ctiRules: String?
+    public var ctiRules: Int32?
 
     public var lang: String?
 
     public var maxSdl: Int64?
 
-    public var patchRules: String?
+    public var patchRules: Int32?
 
-    public var ruleClass: String?
+    public var ruleClass: Int32?
 
-    public var runMode: String?
+    public var runMode: Int32?
 
     public override init() {
         super.init()
@@ -21926,10 +22134,10 @@ public class ModifyDefaultIPSConfigRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
         if dict.keys.contains("BasicRules") {
-            self.basicRules = dict["BasicRules"] as! String
+            self.basicRules = dict["BasicRules"] as! Int32
         }
         if dict.keys.contains("CtiRules") {
-            self.ctiRules = dict["CtiRules"] as! String
+            self.ctiRules = dict["CtiRules"] as! Int32
         }
         if dict.keys.contains("Lang") {
             self.lang = dict["Lang"] as! String
@@ -21938,13 +22146,13 @@ public class ModifyDefaultIPSConfigRequest : Tea.TeaModel {
             self.maxSdl = dict["MaxSdl"] as! Int64
         }
         if dict.keys.contains("PatchRules") {
-            self.patchRules = dict["PatchRules"] as! String
+            self.patchRules = dict["PatchRules"] as! Int32
         }
         if dict.keys.contains("RuleClass") {
-            self.ruleClass = dict["RuleClass"] as! String
+            self.ruleClass = dict["RuleClass"] as! Int32
         }
         if dict.keys.contains("RunMode") {
-            self.runMode = dict["RunMode"] as! String
+            self.runMode = dict["RunMode"] as! Int32
         }
     }
 }
@@ -22911,6 +23119,8 @@ public class ModifyObjectGroupOperationResponse : Tea.TeaModel {
 }
 
 public class ModifyPolicyAdvancedConfigRequest : Tea.TeaModel {
+    public var eips: [String]?
+
     public var internetSwitch: String?
 
     public var lang: String?
@@ -22931,6 +23141,9 @@ public class ModifyPolicyAdvancedConfigRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.eips != nil {
+            map["Eips"] = self.eips!
+        }
         if self.internetSwitch != nil {
             map["InternetSwitch"] = self.internetSwitch!
         }
@@ -22944,6 +23157,9 @@ public class ModifyPolicyAdvancedConfigRequest : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("Eips") {
+            self.eips = dict["Eips"] as! [String]
+        }
         if dict.keys.contains("InternetSwitch") {
             self.internetSwitch = dict["InternetSwitch"] as! String
         }

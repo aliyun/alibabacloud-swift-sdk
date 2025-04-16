@@ -671,6 +671,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.firewallVpcCidrBlock)) {
             query["FirewallVpcCidrBlock"] = request.firewallVpcCidrBlock ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.firewallVpcStandbyZoneId)) {
+            query["FirewallVpcStandbyZoneId"] = request.firewallVpcStandbyZoneId ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.firewallVpcZoneId)) {
             query["FirewallVpcZoneId"] = request.firewallVpcZoneId ?? "";
         }
@@ -3162,6 +3165,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.firewallConfigureStatus)) {
             query["FirewallConfigureStatus"] = request.firewallConfigureStatus ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.firewallId)) {
+            query["FirewallId"] = request.firewallId ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.lang)) {
             query["Lang"] = request.lang ?? "";
         }
@@ -3949,10 +3955,10 @@ open class Client : AlibabacloudOpenApi.Client {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
         if (!TeaUtils.Client.isUnset(request.basicRules)) {
-            query["BasicRules"] = request.basicRules ?? "";
+            query["BasicRules"] = request.basicRules!;
         }
         if (!TeaUtils.Client.isUnset(request.ctiRules)) {
-            query["CtiRules"] = request.ctiRules ?? "";
+            query["CtiRules"] = request.ctiRules!;
         }
         if (!TeaUtils.Client.isUnset(request.lang)) {
             query["Lang"] = request.lang ?? "";
@@ -3961,13 +3967,13 @@ open class Client : AlibabacloudOpenApi.Client {
             query["MaxSdl"] = request.maxSdl!;
         }
         if (!TeaUtils.Client.isUnset(request.patchRules)) {
-            query["PatchRules"] = request.patchRules ?? "";
+            query["PatchRules"] = request.patchRules!;
         }
         if (!TeaUtils.Client.isUnset(request.ruleClass)) {
-            query["RuleClass"] = request.ruleClass ?? "";
+            query["RuleClass"] = request.ruleClass!;
         }
         if (!TeaUtils.Client.isUnset(request.runMode)) {
-            query["RunMode"] = request.runMode ?? "";
+            query["RunMode"] = request.runMode!;
         }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "query": AlibabaCloudOpenApiUtil.Client.query(query)
@@ -4260,6 +4266,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func modifyPolicyAdvancedConfigWithOptions(_ request: ModifyPolicyAdvancedConfigRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ModifyPolicyAdvancedConfigResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.eips)) {
+            query["Eips"] = request.eips ?? [];
+        }
         if (!TeaUtils.Client.isUnset(request.internetSwitch)) {
             query["InternetSwitch"] = request.internetSwitch ?? "";
         }
