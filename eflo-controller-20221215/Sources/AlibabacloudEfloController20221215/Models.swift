@@ -3610,7 +3610,7 @@ public class DescribeClusterResponseBody : Tea.TeaModel {
 
     public var hpnZone: String?
 
-    public var networks: [DescribeClusterResponseBody.Networks]?
+    public var networks: DescribeClusterResponseBody.Networks?
 
     public var nodeCount: Int64?
 
@@ -3640,6 +3640,7 @@ public class DescribeClusterResponseBody : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
+        try self.networks?.validate()
     }
 
     public override func toMap() -> [String : Any] {
@@ -3673,11 +3674,7 @@ public class DescribeClusterResponseBody : Tea.TeaModel {
             map["HpnZone"] = self.hpnZone!
         }
         if self.networks != nil {
-            var tmp : [Any] = []
-            for k in self.networks! {
-                tmp.append(k.toMap())
-            }
-            map["Networks"] = tmp
+            map["Networks"] = self.networks?.toMap()
         }
         if self.nodeCount != nil {
             map["NodeCount"] = self.nodeCount!
@@ -3743,15 +3740,9 @@ public class DescribeClusterResponseBody : Tea.TeaModel {
             self.hpnZone = dict["HpnZone"] as! String
         }
         if dict.keys.contains("Networks") {
-            var tmp : [DescribeClusterResponseBody.Networks] = []
-            for v in dict["Networks"] as! [Any] {
-                var model = DescribeClusterResponseBody.Networks()
-                if v != nil {
-                    model.fromMap(v as! [String: Any])
-                }
-                tmp.append(model)
-            }
-            self.networks = tmp
+            var model = DescribeClusterResponseBody.Networks()
+            model.fromMap(dict["Networks"] as! [String: Any])
+            self.networks = model
         }
         if dict.keys.contains("NodeCount") {
             self.nodeCount = dict["NodeCount"] as! Int64
@@ -9137,7 +9128,7 @@ public class ListImagesResponseBody : Tea.TeaModel {
 
         public var releaseFileMd5: String?
 
-        public var releaseFileSize: Int64?
+        public var releaseFileSize: String?
 
         public var type: String?
 
@@ -9214,7 +9205,7 @@ public class ListImagesResponseBody : Tea.TeaModel {
                 self.releaseFileMd5 = dict["ReleaseFileMd5"] as! String
             }
             if dict.keys.contains("ReleaseFileSize") {
-                self.releaseFileSize = dict["ReleaseFileSize"] as! Int64
+                self.releaseFileSize = dict["ReleaseFileSize"] as! String
             }
             if dict.keys.contains("Type") {
                 self.type = dict["Type"] as! String
