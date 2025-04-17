@@ -31673,6 +31673,8 @@ public class RunDocBrainmapRequest : Tea.TeaModel {
 
     public var workspaceId: String?
 
+    public var referenceContent: String?
+
     public override init() {
         super.init()
     }
@@ -31708,6 +31710,9 @@ public class RunDocBrainmapRequest : Tea.TeaModel {
         if self.workspaceId != nil {
             map["WorkspaceId"] = self.workspaceId!
         }
+        if self.referenceContent != nil {
+            map["referenceContent"] = self.referenceContent!
+        }
         return map
     }
 
@@ -31732,6 +31737,9 @@ public class RunDocBrainmapRequest : Tea.TeaModel {
         }
         if dict.keys.contains("WorkspaceId") {
             self.workspaceId = dict["WorkspaceId"] as! String
+        }
+        if dict.keys.contains("referenceContent") {
+            self.referenceContent = dict["referenceContent"] as! String
         }
     }
 }
@@ -32046,6 +32054,8 @@ public class RunDocIntroductionRequest : Tea.TeaModel {
 
     public var workspaceId: String?
 
+    public var referenceContent: String?
+
     public override init() {
         super.init()
     }
@@ -32081,6 +32091,9 @@ public class RunDocIntroductionRequest : Tea.TeaModel {
         if self.workspaceId != nil {
             map["WorkspaceId"] = self.workspaceId!
         }
+        if self.referenceContent != nil {
+            map["referenceContent"] = self.referenceContent!
+        }
         return map
     }
 
@@ -32105,6 +32118,9 @@ public class RunDocIntroductionRequest : Tea.TeaModel {
         }
         if dict.keys.contains("WorkspaceId") {
             self.workspaceId = dict["WorkspaceId"] as! String
+        }
+        if dict.keys.contains("referenceContent") {
+            self.referenceContent = dict["referenceContent"] as! String
         }
     }
 }
