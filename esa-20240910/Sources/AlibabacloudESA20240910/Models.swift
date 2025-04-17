@@ -10988,6 +10988,16 @@ public class CreateOriginProtectionResponse : Tea.TeaModel {
 public class CreateOriginRuleRequest : Tea.TeaModel {
     public var dnsRecord: String?
 
+    public var follow302Enable: String?
+
+    public var follow302MaxTries: String?
+
+    public var follow302RetainArgs: String?
+
+    public var follow302RetainHeader: String?
+
+    public var follow302TargetHost: String?
+
     public var originHost: String?
 
     public var originHttpPort: String?
@@ -11036,6 +11046,21 @@ public class CreateOriginRuleRequest : Tea.TeaModel {
         var map = super.toMap()
         if self.dnsRecord != nil {
             map["DnsRecord"] = self.dnsRecord!
+        }
+        if self.follow302Enable != nil {
+            map["Follow302Enable"] = self.follow302Enable!
+        }
+        if self.follow302MaxTries != nil {
+            map["Follow302MaxTries"] = self.follow302MaxTries!
+        }
+        if self.follow302RetainArgs != nil {
+            map["Follow302RetainArgs"] = self.follow302RetainArgs!
+        }
+        if self.follow302RetainHeader != nil {
+            map["Follow302RetainHeader"] = self.follow302RetainHeader!
+        }
+        if self.follow302TargetHost != nil {
+            map["Follow302TargetHost"] = self.follow302TargetHost!
         }
         if self.originHost != nil {
             map["OriginHost"] = self.originHost!
@@ -11091,6 +11116,21 @@ public class CreateOriginRuleRequest : Tea.TeaModel {
     public override func fromMap(_ dict: [String: Any]) -> Void {
         if dict.keys.contains("DnsRecord") {
             self.dnsRecord = dict["DnsRecord"] as! String
+        }
+        if dict.keys.contains("Follow302Enable") {
+            self.follow302Enable = dict["Follow302Enable"] as! String
+        }
+        if dict.keys.contains("Follow302MaxTries") {
+            self.follow302MaxTries = dict["Follow302MaxTries"] as! String
+        }
+        if dict.keys.contains("Follow302RetainArgs") {
+            self.follow302RetainArgs = dict["Follow302RetainArgs"] as! String
+        }
+        if dict.keys.contains("Follow302RetainHeader") {
+            self.follow302RetainHeader = dict["Follow302RetainHeader"] as! String
+        }
+        if dict.keys.contains("Follow302TargetHost") {
+            self.follow302TargetHost = dict["Follow302TargetHost"] as! String
         }
         if dict.keys.contains("OriginHost") {
             self.originHost = dict["OriginHost"] as! String
@@ -35843,6 +35883,16 @@ public class GetOriginRuleResponseBody : Tea.TeaModel {
 
     public var dnsRecord: String?
 
+    public var follow302Enable: String?
+
+    public var follow302MaxTries: String?
+
+    public var follow302RetainArgs: String?
+
+    public var follow302RetainHeader: String?
+
+    public var follow302TargetHost: String?
+
     public var originHost: String?
 
     public var originHttpPort: String?
@@ -35897,6 +35947,21 @@ public class GetOriginRuleResponseBody : Tea.TeaModel {
         }
         if self.dnsRecord != nil {
             map["DnsRecord"] = self.dnsRecord!
+        }
+        if self.follow302Enable != nil {
+            map["Follow302Enable"] = self.follow302Enable!
+        }
+        if self.follow302MaxTries != nil {
+            map["Follow302MaxTries"] = self.follow302MaxTries!
+        }
+        if self.follow302RetainArgs != nil {
+            map["Follow302RetainArgs"] = self.follow302RetainArgs!
+        }
+        if self.follow302RetainHeader != nil {
+            map["Follow302RetainHeader"] = self.follow302RetainHeader!
+        }
+        if self.follow302TargetHost != nil {
+            map["Follow302TargetHost"] = self.follow302TargetHost!
         }
         if self.originHost != nil {
             map["OriginHost"] = self.originHost!
@@ -35958,6 +36023,21 @@ public class GetOriginRuleResponseBody : Tea.TeaModel {
         }
         if dict.keys.contains("DnsRecord") {
             self.dnsRecord = dict["DnsRecord"] as! String
+        }
+        if dict.keys.contains("Follow302Enable") {
+            self.follow302Enable = dict["Follow302Enable"] as! String
+        }
+        if dict.keys.contains("Follow302MaxTries") {
+            self.follow302MaxTries = dict["Follow302MaxTries"] as! String
+        }
+        if dict.keys.contains("Follow302RetainArgs") {
+            self.follow302RetainArgs = dict["Follow302RetainArgs"] as! String
+        }
+        if dict.keys.contains("Follow302RetainHeader") {
+            self.follow302RetainHeader = dict["Follow302RetainHeader"] as! String
+        }
+        if dict.keys.contains("Follow302TargetHost") {
+            self.follow302TargetHost = dict["Follow302TargetHost"] as! String
         }
         if dict.keys.contains("OriginHost") {
             self.originHost = dict["OriginHost"] as! String
@@ -41753,6 +41833,8 @@ public class GetWafRuleResponseBody : Tea.TeaModel {
 
     public var requestId: String?
 
+    public var rulesetId: Int64?
+
     public var status: String?
 
     public var updateTime: String?
@@ -41790,6 +41872,9 @@ public class GetWafRuleResponseBody : Tea.TeaModel {
         if self.requestId != nil {
             map["RequestId"] = self.requestId!
         }
+        if self.rulesetId != nil {
+            map["RulesetId"] = self.rulesetId!
+        }
         if self.status != nil {
             map["Status"] = self.status!
         }
@@ -41819,6 +41904,9 @@ public class GetWafRuleResponseBody : Tea.TeaModel {
         }
         if dict.keys.contains("RequestId") {
             self.requestId = dict["RequestId"] as! String
+        }
+        if dict.keys.contains("RulesetId") {
+            self.rulesetId = dict["RulesetId"] as! Int64
         }
         if dict.keys.contains("Status") {
             self.status = dict["Status"] as! String
@@ -52629,6 +52717,16 @@ public class ListOriginRulesResponseBody : Tea.TeaModel {
 
         public var dnsRecord: String?
 
+        public var follow302Enable: String?
+
+        public var follow302MaxTries: String?
+
+        public var follow302RetainArgs: String?
+
+        public var follow302RetainHeader: String?
+
+        public var follow302TargetHost: String?
+
         public var originHost: String?
 
         public var originHttpPort: String?
@@ -52681,6 +52779,21 @@ public class ListOriginRulesResponseBody : Tea.TeaModel {
             }
             if self.dnsRecord != nil {
                 map["DnsRecord"] = self.dnsRecord!
+            }
+            if self.follow302Enable != nil {
+                map["Follow302Enable"] = self.follow302Enable!
+            }
+            if self.follow302MaxTries != nil {
+                map["Follow302MaxTries"] = self.follow302MaxTries!
+            }
+            if self.follow302RetainArgs != nil {
+                map["Follow302RetainArgs"] = self.follow302RetainArgs!
+            }
+            if self.follow302RetainHeader != nil {
+                map["Follow302RetainHeader"] = self.follow302RetainHeader!
+            }
+            if self.follow302TargetHost != nil {
+                map["Follow302TargetHost"] = self.follow302TargetHost!
             }
             if self.originHost != nil {
                 map["OriginHost"] = self.originHost!
@@ -52739,6 +52852,21 @@ public class ListOriginRulesResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("DnsRecord") {
                 self.dnsRecord = dict["DnsRecord"] as! String
+            }
+            if dict.keys.contains("Follow302Enable") {
+                self.follow302Enable = dict["Follow302Enable"] as! String
+            }
+            if dict.keys.contains("Follow302MaxTries") {
+                self.follow302MaxTries = dict["Follow302MaxTries"] as! String
+            }
+            if dict.keys.contains("Follow302RetainArgs") {
+                self.follow302RetainArgs = dict["Follow302RetainArgs"] as! String
+            }
+            if dict.keys.contains("Follow302RetainHeader") {
+                self.follow302RetainHeader = dict["Follow302RetainHeader"] as! String
+            }
+            if dict.keys.contains("Follow302TargetHost") {
+                self.follow302TargetHost = dict["Follow302TargetHost"] as! String
             }
             if dict.keys.contains("OriginHost") {
                 self.originHost = dict["OriginHost"] as! String
@@ -69710,6 +69838,16 @@ public class UpdateOriginRuleRequest : Tea.TeaModel {
 
     public var dnsRecord: String?
 
+    public var follow302Enable: String?
+
+    public var follow302MaxTries: String?
+
+    public var follow302RetainArgs: String?
+
+    public var follow302RetainHeader: String?
+
+    public var follow302TargetHost: String?
+
     public var originHost: String?
 
     public var originHttpPort: String?
@@ -69759,6 +69897,21 @@ public class UpdateOriginRuleRequest : Tea.TeaModel {
         }
         if self.dnsRecord != nil {
             map["DnsRecord"] = self.dnsRecord!
+        }
+        if self.follow302Enable != nil {
+            map["Follow302Enable"] = self.follow302Enable!
+        }
+        if self.follow302MaxTries != nil {
+            map["Follow302MaxTries"] = self.follow302MaxTries!
+        }
+        if self.follow302RetainArgs != nil {
+            map["Follow302RetainArgs"] = self.follow302RetainArgs!
+        }
+        if self.follow302RetainHeader != nil {
+            map["Follow302RetainHeader"] = self.follow302RetainHeader!
+        }
+        if self.follow302TargetHost != nil {
+            map["Follow302TargetHost"] = self.follow302TargetHost!
         }
         if self.originHost != nil {
             map["OriginHost"] = self.originHost!
@@ -69814,6 +69967,21 @@ public class UpdateOriginRuleRequest : Tea.TeaModel {
         }
         if dict.keys.contains("DnsRecord") {
             self.dnsRecord = dict["DnsRecord"] as! String
+        }
+        if dict.keys.contains("Follow302Enable") {
+            self.follow302Enable = dict["Follow302Enable"] as! String
+        }
+        if dict.keys.contains("Follow302MaxTries") {
+            self.follow302MaxTries = dict["Follow302MaxTries"] as! String
+        }
+        if dict.keys.contains("Follow302RetainArgs") {
+            self.follow302RetainArgs = dict["Follow302RetainArgs"] as! String
+        }
+        if dict.keys.contains("Follow302RetainHeader") {
+            self.follow302RetainHeader = dict["Follow302RetainHeader"] as! String
+        }
+        if dict.keys.contains("Follow302TargetHost") {
+            self.follow302TargetHost = dict["Follow302TargetHost"] as! String
         }
         if dict.keys.contains("OriginHost") {
             self.originHost = dict["OriginHost"] as! String
