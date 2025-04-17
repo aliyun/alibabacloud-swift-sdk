@@ -43627,6 +43627,8 @@ public class SubmitWorkflowJobRequest : Tea.TeaModel {
 public class SubmitWorkflowJobResponseBody : Tea.TeaModel {
     public var requestId: String?
 
+    public var taskId: String?
+
     public override init() {
         super.init()
     }
@@ -43644,12 +43646,18 @@ public class SubmitWorkflowJobResponseBody : Tea.TeaModel {
         if self.requestId != nil {
             map["RequestId"] = self.requestId!
         }
+        if self.taskId != nil {
+            map["TaskId"] = self.taskId!
+        }
         return map
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
         if dict.keys.contains("RequestId") {
             self.requestId = dict["RequestId"] as! String
+        }
+        if dict.keys.contains("TaskId") {
+            self.taskId = dict["TaskId"] as! String
         }
     }
 }
