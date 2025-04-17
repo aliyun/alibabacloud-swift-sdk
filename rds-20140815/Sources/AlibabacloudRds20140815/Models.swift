@@ -38969,6 +38969,8 @@ public class DescribeDBProxyPerformanceResponseBody : Tea.TeaModel {
             }
             public var key: String?
 
+            public var node: String?
+
             public var service: String?
 
             public var valueFormat: String?
@@ -38993,6 +38995,9 @@ public class DescribeDBProxyPerformanceResponseBody : Tea.TeaModel {
                 if self.key != nil {
                     map["Key"] = self.key!
                 }
+                if self.node != nil {
+                    map["Node"] = self.node!
+                }
                 if self.service != nil {
                     map["Service"] = self.service!
                 }
@@ -39008,6 +39013,9 @@ public class DescribeDBProxyPerformanceResponseBody : Tea.TeaModel {
             public override func fromMap(_ dict: [String: Any]) -> Void {
                 if dict.keys.contains("Key") {
                     self.key = dict["Key"] as! String
+                }
+                if dict.keys.contains("Node") {
+                    self.node = dict["Node"] as! String
                 }
                 if dict.keys.contains("Service") {
                     self.service = dict["Service"] as! String
@@ -66151,6 +66159,8 @@ public class DescribeUpgradeMajorVersionPrecheckTaskResponseBody : Tea.TeaModel 
 
         public var taskId: Int32?
 
+        public var upgradeMode: String?
+
         public override init() {
             super.init()
         }
@@ -66195,6 +66205,9 @@ public class DescribeUpgradeMajorVersionPrecheckTaskResponseBody : Tea.TeaModel 
             if self.taskId != nil {
                 map["TaskId"] = self.taskId!
             }
+            if self.upgradeMode != nil {
+                map["UpgradeMode"] = self.upgradeMode!
+            }
             return map
         }
 
@@ -66228,6 +66241,9 @@ public class DescribeUpgradeMajorVersionPrecheckTaskResponseBody : Tea.TeaModel 
             }
             if dict.keys.contains("TaskId") {
                 self.taskId = dict["TaskId"] as! Int32
+            }
+            if dict.keys.contains("UpgradeMode") {
+                self.upgradeMode = dict["UpgradeMode"] as! String
             }
         }
     }
@@ -66475,6 +66491,16 @@ public class DescribeUpgradeMajorVersionTasksResponseBody : Tea.TeaModel {
 
         public var upgradeMode: String?
 
+        public var cutOver: Bool?
+
+        public var totalLogicRepDelayTime: Int32?
+
+        public var totalLogicRepLatencyMB: Int32?
+
+        public var zeroDownTimeConnectionString: String?
+
+        public var zeroDownTimePort: Int32?
+
         public override init() {
             super.init()
         }
@@ -66528,6 +66554,21 @@ public class DescribeUpgradeMajorVersionTasksResponseBody : Tea.TeaModel {
             if self.upgradeMode != nil {
                 map["UpgradeMode"] = self.upgradeMode!
             }
+            if self.cutOver != nil {
+                map["cutOver"] = self.cutOver!
+            }
+            if self.totalLogicRepDelayTime != nil {
+                map["totalLogicRepDelayTime"] = self.totalLogicRepDelayTime!
+            }
+            if self.totalLogicRepLatencyMB != nil {
+                map["totalLogicRepLatencyMB"] = self.totalLogicRepLatencyMB!
+            }
+            if self.zeroDownTimeConnectionString != nil {
+                map["zeroDownTimeConnectionString"] = self.zeroDownTimeConnectionString!
+            }
+            if self.zeroDownTimePort != nil {
+                map["zeroDownTimePort"] = self.zeroDownTimePort!
+            }
             return map
         }
 
@@ -66570,6 +66611,21 @@ public class DescribeUpgradeMajorVersionTasksResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("UpgradeMode") {
                 self.upgradeMode = dict["UpgradeMode"] as! String
+            }
+            if dict.keys.contains("cutOver") {
+                self.cutOver = dict["cutOver"] as! Bool
+            }
+            if dict.keys.contains("totalLogicRepDelayTime") {
+                self.totalLogicRepDelayTime = dict["totalLogicRepDelayTime"] as! Int32
+            }
+            if dict.keys.contains("totalLogicRepLatencyMB") {
+                self.totalLogicRepLatencyMB = dict["totalLogicRepLatencyMB"] as! Int32
+            }
+            if dict.keys.contains("zeroDownTimeConnectionString") {
+                self.zeroDownTimeConnectionString = dict["zeroDownTimeConnectionString"] as! String
+            }
+            if dict.keys.contains("zeroDownTimePort") {
+                self.zeroDownTimePort = dict["zeroDownTimePort"] as! Int32
             }
         }
     }
@@ -82499,6 +82555,10 @@ public class ModifyRCInstanceRequest : Tea.TeaModel {
 
     public var instanceType: String?
 
+    public var rebootTime: String?
+
+    public var rebootWhenFinished: Bool?
+
     public var regionId: String?
 
     public override init() {
@@ -82530,6 +82590,12 @@ public class ModifyRCInstanceRequest : Tea.TeaModel {
         if self.instanceType != nil {
             map["InstanceType"] = self.instanceType!
         }
+        if self.rebootTime != nil {
+            map["RebootTime"] = self.rebootTime!
+        }
+        if self.rebootWhenFinished != nil {
+            map["RebootWhenFinished"] = self.rebootWhenFinished!
+        }
         if self.regionId != nil {
             map["RegionId"] = self.regionId!
         }
@@ -82551,6 +82617,12 @@ public class ModifyRCInstanceRequest : Tea.TeaModel {
         }
         if dict.keys.contains("InstanceType") {
             self.instanceType = dict["InstanceType"] as! String
+        }
+        if dict.keys.contains("RebootTime") {
+            self.rebootTime = dict["RebootTime"] as! String
+        }
+        if dict.keys.contains("RebootWhenFinished") {
+            self.rebootWhenFinished = dict["RebootWhenFinished"] as! Bool
         }
         if dict.keys.contains("RegionId") {
             self.regionId = dict["RegionId"] as! String
@@ -92800,6 +92872,147 @@ public class SwitchDBInstanceVpcResponse : Tea.TeaModel {
     }
 }
 
+public class SwitchOverMajorVersionUpgradeRequest : Tea.TeaModel {
+    public var DBInstanceName: String?
+
+    public var ownerId: Int64?
+
+    public var regionId: [UInt8]?
+
+    public var switchoverTimeout: Int32?
+
+    public var type: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.DBInstanceName != nil {
+            map["DBInstanceName"] = self.DBInstanceName!
+        }
+        if self.ownerId != nil {
+            map["OwnerId"] = self.ownerId!
+        }
+        if self.regionId != nil {
+            map["RegionId"] = self.regionId!
+        }
+        if self.switchoverTimeout != nil {
+            map["SwitchoverTimeout"] = self.switchoverTimeout!
+        }
+        if self.type != nil {
+            map["Type"] = self.type!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("DBInstanceName") {
+            self.DBInstanceName = dict["DBInstanceName"] as! String
+        }
+        if dict.keys.contains("OwnerId") {
+            self.ownerId = dict["OwnerId"] as! Int64
+        }
+        if dict.keys.contains("RegionId") {
+            self.regionId = dict["RegionId"] as! [UInt8]
+        }
+        if dict.keys.contains("SwitchoverTimeout") {
+            self.switchoverTimeout = dict["SwitchoverTimeout"] as! Int32
+        }
+        if dict.keys.contains("Type") {
+            self.type = dict["Type"] as! String
+        }
+    }
+}
+
+public class SwitchOverMajorVersionUpgradeResponseBody : Tea.TeaModel {
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("RequestId") {
+            self.requestId = dict["RequestId"] as! String
+        }
+    }
+}
+
+public class SwitchOverMajorVersionUpgradeResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: SwitchOverMajorVersionUpgradeResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") {
+            var model = SwitchOverMajorVersionUpgradeResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
 public class SwitchReplicationLinkRequest : Tea.TeaModel {
     public var DBInstanceId: String?
 
@@ -95262,6 +95475,8 @@ public class UpgradeDBInstanceMajorVersionPrecheckRequest : Tea.TeaModel {
 
     public var targetMajorVersion: String?
 
+    public var upgradeMode: String?
+
     public override init() {
         super.init()
     }
@@ -95285,6 +95500,9 @@ public class UpgradeDBInstanceMajorVersionPrecheckRequest : Tea.TeaModel {
         if self.targetMajorVersion != nil {
             map["TargetMajorVersion"] = self.targetMajorVersion!
         }
+        if self.upgradeMode != nil {
+            map["UpgradeMode"] = self.upgradeMode!
+        }
         return map
     }
 
@@ -95297,6 +95515,9 @@ public class UpgradeDBInstanceMajorVersionPrecheckRequest : Tea.TeaModel {
         }
         if dict.keys.contains("TargetMajorVersion") {
             self.targetMajorVersion = dict["TargetMajorVersion"] as! String
+        }
+        if dict.keys.contains("UpgradeMode") {
+            self.upgradeMode = dict["UpgradeMode"] as! String
         }
     }
 }
