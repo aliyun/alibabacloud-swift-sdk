@@ -943,6 +943,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.androidInstanceName)) {
             query["AndroidInstanceName"] = request.androidInstanceName ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.authorizedUserId)) {
+            query["AuthorizedUserId"] = request.authorizedUserId ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.bizRegionId)) {
             query["BizRegionId"] = request.bizRegionId ?? "";
         }

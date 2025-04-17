@@ -4912,6 +4912,8 @@ public class DescribeAndroidInstancesRequest : Tea.TeaModel {
 
     public var androidInstanceName: String?
 
+    public var authorizedUserId: String?
+
     public var bizRegionId: String?
 
     public var chargeType: String?
@@ -4959,6 +4961,9 @@ public class DescribeAndroidInstancesRequest : Tea.TeaModel {
         }
         if self.androidInstanceName != nil {
             map["AndroidInstanceName"] = self.androidInstanceName!
+        }
+        if self.authorizedUserId != nil {
+            map["AuthorizedUserId"] = self.authorizedUserId!
         }
         if self.bizRegionId != nil {
             map["BizRegionId"] = self.bizRegionId!
@@ -5015,6 +5020,9 @@ public class DescribeAndroidInstancesRequest : Tea.TeaModel {
         }
         if dict.keys.contains("AndroidInstanceName") {
             self.androidInstanceName = dict["AndroidInstanceName"] as! String
+        }
+        if dict.keys.contains("AuthorizedUserId") {
+            self.authorizedUserId = dict["AuthorizedUserId"] as! String
         }
         if dict.keys.contains("BizRegionId") {
             self.bizRegionId = dict["BizRegionId"] as! String
@@ -10122,6 +10130,43 @@ public class ListPolicyGroupsResponseBody : Tea.TeaModel {
                 }
             }
         }
+        public class PolicyRelatedResources : Tea.TeaModel {
+            public var androidInstanceGroupIds: [String]?
+
+            public var cloudPhoneMatrixIds: [String]?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.androidInstanceGroupIds != nil {
+                    map["AndroidInstanceGroupIds"] = self.androidInstanceGroupIds!
+                }
+                if self.cloudPhoneMatrixIds != nil {
+                    map["CloudPhoneMatrixIds"] = self.cloudPhoneMatrixIds!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("AndroidInstanceGroupIds") {
+                    self.androidInstanceGroupIds = dict["AndroidInstanceGroupIds"] as! [String]
+                }
+                if dict.keys.contains("CloudPhoneMatrixIds") {
+                    self.cloudPhoneMatrixIds = dict["CloudPhoneMatrixIds"] as! [String]
+                }
+            }
+        }
         public var cameraRedirect: String?
 
         public var clipboard: String?
@@ -10140,6 +10185,8 @@ public class ListPolicyGroupsResponseBody : Tea.TeaModel {
 
         public var policyGroupName: String?
 
+        public var policyRelatedResources: ListPolicyGroupsResponseBody.PolicyGroupModel.PolicyRelatedResources?
+
         public var sessionResolutionHeight: Int32?
 
         public var sessionResolutionWidth: Int32?
@@ -10155,6 +10202,7 @@ public class ListPolicyGroupsResponseBody : Tea.TeaModel {
 
         public override func validate() throws -> Void {
             try self.netRedirectPolicy?.validate()
+            try self.policyRelatedResources?.validate()
         }
 
         public override func toMap() -> [String : Any] {
@@ -10185,6 +10233,9 @@ public class ListPolicyGroupsResponseBody : Tea.TeaModel {
             }
             if self.policyGroupName != nil {
                 map["PolicyGroupName"] = self.policyGroupName!
+            }
+            if self.policyRelatedResources != nil {
+                map["PolicyRelatedResources"] = self.policyRelatedResources?.toMap()
             }
             if self.sessionResolutionHeight != nil {
                 map["SessionResolutionHeight"] = self.sessionResolutionHeight!
@@ -10224,6 +10275,11 @@ public class ListPolicyGroupsResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("PolicyGroupName") {
                 self.policyGroupName = dict["PolicyGroupName"] as! String
+            }
+            if dict.keys.contains("PolicyRelatedResources") {
+                var model = ListPolicyGroupsResponseBody.PolicyGroupModel.PolicyRelatedResources()
+                model.fromMap(dict["PolicyRelatedResources"] as! [String: Any])
+                self.policyRelatedResources = model
             }
             if dict.keys.contains("SessionResolutionHeight") {
                 self.sessionResolutionHeight = dict["SessionResolutionHeight"] as! Int32
