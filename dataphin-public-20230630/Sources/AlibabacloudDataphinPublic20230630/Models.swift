@@ -25331,6 +25331,1488 @@ public class ListAlertNotificationsResponse : Tea.TeaModel {
     }
 }
 
+public class ListApiByAppRequest : Tea.TeaModel {
+    public class PageQuery : Tea.TeaModel {
+        public var appKey: Int64?
+
+        public var keyword: String?
+
+        public var pageNum: Int32?
+
+        public var pageSize: Int32?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.appKey != nil {
+                map["AppKey"] = self.appKey!
+            }
+            if self.keyword != nil {
+                map["Keyword"] = self.keyword!
+            }
+            if self.pageNum != nil {
+                map["PageNum"] = self.pageNum!
+            }
+            if self.pageSize != nil {
+                map["PageSize"] = self.pageSize!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("AppKey") {
+                self.appKey = dict["AppKey"] as! Int64
+            }
+            if dict.keys.contains("Keyword") {
+                self.keyword = dict["Keyword"] as! String
+            }
+            if dict.keys.contains("PageNum") {
+                self.pageNum = dict["PageNum"] as! Int32
+            }
+            if dict.keys.contains("PageSize") {
+                self.pageSize = dict["PageSize"] as! Int32
+            }
+        }
+    }
+    public var opTenantId: Int64?
+
+    public var pageQuery: ListApiByAppRequest.PageQuery?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.pageQuery?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.opTenantId != nil {
+            map["OpTenantId"] = self.opTenantId!
+        }
+        if self.pageQuery != nil {
+            map["PageQuery"] = self.pageQuery?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("OpTenantId") {
+            self.opTenantId = dict["OpTenantId"] as! Int64
+        }
+        if dict.keys.contains("PageQuery") {
+            var model = ListApiByAppRequest.PageQuery()
+            model.fromMap(dict["PageQuery"] as! [String: Any])
+            self.pageQuery = model
+        }
+    }
+}
+
+public class ListApiByAppShrinkRequest : Tea.TeaModel {
+    public var opTenantId: Int64?
+
+    public var pageQueryShrink: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.opTenantId != nil {
+            map["OpTenantId"] = self.opTenantId!
+        }
+        if self.pageQueryShrink != nil {
+            map["PageQuery"] = self.pageQueryShrink!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("OpTenantId") {
+            self.opTenantId = dict["OpTenantId"] as! Int64
+        }
+        if dict.keys.contains("PageQuery") {
+            self.pageQueryShrink = dict["PageQuery"] as! String
+        }
+    }
+}
+
+public class ListApiByAppResponseBody : Tea.TeaModel {
+    public class ListResult : Tea.TeaModel {
+        public class Data : Tea.TeaModel {
+            public class PublicParamList : Tea.TeaModel {
+                public class TableAndDsList : Tea.TeaModel {
+                    public var datasourceId: String?
+
+                    public var datasourceName: String?
+
+                    public var datasourceType: Int64?
+
+                    public var datasourceUrl: String?
+
+                    public var tableName: String?
+
+                    public override init() {
+                        super.init()
+                    }
+
+                    public init(_ dict: [String: Any]) {
+                        super.init()
+                        self.fromMap(dict)
+                    }
+
+                    public override func validate() throws -> Void {
+                    }
+
+                    public override func toMap() -> [String : Any] {
+                        var map = super.toMap()
+                        if self.datasourceId != nil {
+                            map["DatasourceId"] = self.datasourceId!
+                        }
+                        if self.datasourceName != nil {
+                            map["DatasourceName"] = self.datasourceName!
+                        }
+                        if self.datasourceType != nil {
+                            map["DatasourceType"] = self.datasourceType!
+                        }
+                        if self.datasourceUrl != nil {
+                            map["DatasourceUrl"] = self.datasourceUrl!
+                        }
+                        if self.tableName != nil {
+                            map["TableName"] = self.tableName!
+                        }
+                        return map
+                    }
+
+                    public override func fromMap(_ dict: [String: Any]) -> Void {
+                        if dict.keys.contains("DatasourceId") {
+                            self.datasourceId = dict["DatasourceId"] as! String
+                        }
+                        if dict.keys.contains("DatasourceName") {
+                            self.datasourceName = dict["DatasourceName"] as! String
+                        }
+                        if dict.keys.contains("DatasourceType") {
+                            self.datasourceType = dict["DatasourceType"] as! Int64
+                        }
+                        if dict.keys.contains("DatasourceUrl") {
+                            self.datasourceUrl = dict["DatasourceUrl"] as! String
+                        }
+                        if dict.keys.contains("TableName") {
+                            self.tableName = dict["TableName"] as! String
+                        }
+                    }
+                }
+                public var dateFormat: String?
+
+                public var defaultValue: String?
+
+                public var description_: String?
+
+                public var descriptionCode: String?
+
+                public var id: Int64?
+
+                public var initialValue: String?
+
+                public var mappingColumn: String?
+
+                public var must: Int64?
+
+                public var operator_: String?
+
+                public var optional_: Int64?
+
+                public var originalColumn: String?
+
+                public var paramName: String?
+
+                public var paramType: String?
+
+                public var parameterLocation: String?
+
+                public var sample: String?
+
+                public var tableAndDsList: [ListApiByAppResponseBody.ListResult.Data.PublicParamList.TableAndDsList]?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.dateFormat != nil {
+                        map["DateFormat"] = self.dateFormat!
+                    }
+                    if self.defaultValue != nil {
+                        map["DefaultValue"] = self.defaultValue!
+                    }
+                    if self.description_ != nil {
+                        map["Description"] = self.description_!
+                    }
+                    if self.descriptionCode != nil {
+                        map["DescriptionCode"] = self.descriptionCode!
+                    }
+                    if self.id != nil {
+                        map["Id"] = self.id!
+                    }
+                    if self.initialValue != nil {
+                        map["InitialValue"] = self.initialValue!
+                    }
+                    if self.mappingColumn != nil {
+                        map["MappingColumn"] = self.mappingColumn!
+                    }
+                    if self.must != nil {
+                        map["Must"] = self.must!
+                    }
+                    if self.operator_ != nil {
+                        map["Operator"] = self.operator_!
+                    }
+                    if self.optional_ != nil {
+                        map["Optional"] = self.optional_!
+                    }
+                    if self.originalColumn != nil {
+                        map["OriginalColumn"] = self.originalColumn!
+                    }
+                    if self.paramName != nil {
+                        map["ParamName"] = self.paramName!
+                    }
+                    if self.paramType != nil {
+                        map["ParamType"] = self.paramType!
+                    }
+                    if self.parameterLocation != nil {
+                        map["ParameterLocation"] = self.parameterLocation!
+                    }
+                    if self.sample != nil {
+                        map["Sample"] = self.sample!
+                    }
+                    if self.tableAndDsList != nil {
+                        var tmp : [Any] = []
+                        for k in self.tableAndDsList! {
+                            tmp.append(k.toMap())
+                        }
+                        map["TableAndDsList"] = tmp
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any]) -> Void {
+                    if dict.keys.contains("DateFormat") {
+                        self.dateFormat = dict["DateFormat"] as! String
+                    }
+                    if dict.keys.contains("DefaultValue") {
+                        self.defaultValue = dict["DefaultValue"] as! String
+                    }
+                    if dict.keys.contains("Description") {
+                        self.description_ = dict["Description"] as! String
+                    }
+                    if dict.keys.contains("DescriptionCode") {
+                        self.descriptionCode = dict["DescriptionCode"] as! String
+                    }
+                    if dict.keys.contains("Id") {
+                        self.id = dict["Id"] as! Int64
+                    }
+                    if dict.keys.contains("InitialValue") {
+                        self.initialValue = dict["InitialValue"] as! String
+                    }
+                    if dict.keys.contains("MappingColumn") {
+                        self.mappingColumn = dict["MappingColumn"] as! String
+                    }
+                    if dict.keys.contains("Must") {
+                        self.must = dict["Must"] as! Int64
+                    }
+                    if dict.keys.contains("Operator") {
+                        self.operator_ = dict["Operator"] as! String
+                    }
+                    if dict.keys.contains("Optional") {
+                        self.optional_ = dict["Optional"] as! Int64
+                    }
+                    if dict.keys.contains("OriginalColumn") {
+                        self.originalColumn = dict["OriginalColumn"] as! String
+                    }
+                    if dict.keys.contains("ParamName") {
+                        self.paramName = dict["ParamName"] as! String
+                    }
+                    if dict.keys.contains("ParamType") {
+                        self.paramType = dict["ParamType"] as! String
+                    }
+                    if dict.keys.contains("ParameterLocation") {
+                        self.parameterLocation = dict["ParameterLocation"] as! String
+                    }
+                    if dict.keys.contains("Sample") {
+                        self.sample = dict["Sample"] as! String
+                    }
+                    if dict.keys.contains("TableAndDsList") {
+                        var tmp : [ListApiByAppResponseBody.ListResult.Data.PublicParamList.TableAndDsList] = []
+                        for v in dict["TableAndDsList"] as! [Any] {
+                            var model = ListApiByAppResponseBody.ListResult.Data.PublicParamList.TableAndDsList()
+                            if v != nil {
+                                model.fromMap(v as! [String: Any])
+                            }
+                            tmp.append(model)
+                        }
+                        self.tableAndDsList = tmp
+                    }
+                }
+            }
+            public class RegisterApi : Tea.TeaModel {
+                public var apiId: Int64?
+
+                public var authenticationMode: String?
+
+                public var datasourceId: String?
+
+                public var datasourceName: String?
+
+                public var failExample: String?
+
+                public var httpMethod: Int64?
+
+                public var modelType: Int64?
+
+                public var path: String?
+
+                public var protocol_: String?
+
+                public var successExample: String?
+
+                public var timeout: Int64?
+
+                public var url: String?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.apiId != nil {
+                        map["ApiId"] = self.apiId!
+                    }
+                    if self.authenticationMode != nil {
+                        map["AuthenticationMode"] = self.authenticationMode!
+                    }
+                    if self.datasourceId != nil {
+                        map["DatasourceId"] = self.datasourceId!
+                    }
+                    if self.datasourceName != nil {
+                        map["DatasourceName"] = self.datasourceName!
+                    }
+                    if self.failExample != nil {
+                        map["FailExample"] = self.failExample!
+                    }
+                    if self.httpMethod != nil {
+                        map["HttpMethod"] = self.httpMethod!
+                    }
+                    if self.modelType != nil {
+                        map["ModelType"] = self.modelType!
+                    }
+                    if self.path != nil {
+                        map["Path"] = self.path!
+                    }
+                    if self.protocol_ != nil {
+                        map["Protocol"] = self.protocol_!
+                    }
+                    if self.successExample != nil {
+                        map["SuccessExample"] = self.successExample!
+                    }
+                    if self.timeout != nil {
+                        map["Timeout"] = self.timeout!
+                    }
+                    if self.url != nil {
+                        map["Url"] = self.url!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any]) -> Void {
+                    if dict.keys.contains("ApiId") {
+                        self.apiId = dict["ApiId"] as! Int64
+                    }
+                    if dict.keys.contains("AuthenticationMode") {
+                        self.authenticationMode = dict["AuthenticationMode"] as! String
+                    }
+                    if dict.keys.contains("DatasourceId") {
+                        self.datasourceId = dict["DatasourceId"] as! String
+                    }
+                    if dict.keys.contains("DatasourceName") {
+                        self.datasourceName = dict["DatasourceName"] as! String
+                    }
+                    if dict.keys.contains("FailExample") {
+                        self.failExample = dict["FailExample"] as! String
+                    }
+                    if dict.keys.contains("HttpMethod") {
+                        self.httpMethod = dict["HttpMethod"] as! Int64
+                    }
+                    if dict.keys.contains("ModelType") {
+                        self.modelType = dict["ModelType"] as! Int64
+                    }
+                    if dict.keys.contains("Path") {
+                        self.path = dict["Path"] as! String
+                    }
+                    if dict.keys.contains("Protocol") {
+                        self.protocol_ = dict["Protocol"] as! String
+                    }
+                    if dict.keys.contains("SuccessExample") {
+                        self.successExample = dict["SuccessExample"] as! String
+                    }
+                    if dict.keys.contains("Timeout") {
+                        self.timeout = dict["Timeout"] as! Int64
+                    }
+                    if dict.keys.contains("Url") {
+                        self.url = dict["Url"] as! String
+                    }
+                }
+            }
+            public class RequestParamList : Tea.TeaModel {
+                public class TableAndDsList : Tea.TeaModel {
+                    public var datasourceId: String?
+
+                    public var datasourceName: String?
+
+                    public var datasourceType: Int64?
+
+                    public var datasourceUrl: String?
+
+                    public var tableName: String?
+
+                    public override init() {
+                        super.init()
+                    }
+
+                    public init(_ dict: [String: Any]) {
+                        super.init()
+                        self.fromMap(dict)
+                    }
+
+                    public override func validate() throws -> Void {
+                    }
+
+                    public override func toMap() -> [String : Any] {
+                        var map = super.toMap()
+                        if self.datasourceId != nil {
+                            map["DatasourceId"] = self.datasourceId!
+                        }
+                        if self.datasourceName != nil {
+                            map["DatasourceName"] = self.datasourceName!
+                        }
+                        if self.datasourceType != nil {
+                            map["DatasourceType"] = self.datasourceType!
+                        }
+                        if self.datasourceUrl != nil {
+                            map["DatasourceUrl"] = self.datasourceUrl!
+                        }
+                        if self.tableName != nil {
+                            map["TableName"] = self.tableName!
+                        }
+                        return map
+                    }
+
+                    public override func fromMap(_ dict: [String: Any]) -> Void {
+                        if dict.keys.contains("DatasourceId") {
+                            self.datasourceId = dict["DatasourceId"] as! String
+                        }
+                        if dict.keys.contains("DatasourceName") {
+                            self.datasourceName = dict["DatasourceName"] as! String
+                        }
+                        if dict.keys.contains("DatasourceType") {
+                            self.datasourceType = dict["DatasourceType"] as! Int64
+                        }
+                        if dict.keys.contains("DatasourceUrl") {
+                            self.datasourceUrl = dict["DatasourceUrl"] as! String
+                        }
+                        if dict.keys.contains("TableName") {
+                            self.tableName = dict["TableName"] as! String
+                        }
+                    }
+                }
+                public var dateFormat: String?
+
+                public var defaultValue: String?
+
+                public var description_: String?
+
+                public var descriptionCode: String?
+
+                public var id: Int64?
+
+                public var initialValue: String?
+
+                public var mappingColumn: String?
+
+                public var must: Int64?
+
+                public var operator_: String?
+
+                public var optional_: Int64?
+
+                public var originalColumn: String?
+
+                public var paramName: String?
+
+                public var paramType: String?
+
+                public var parameterLocation: String?
+
+                public var sample: String?
+
+                public var tableAndDsList: [ListApiByAppResponseBody.ListResult.Data.RequestParamList.TableAndDsList]?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.dateFormat != nil {
+                        map["DateFormat"] = self.dateFormat!
+                    }
+                    if self.defaultValue != nil {
+                        map["DefaultValue"] = self.defaultValue!
+                    }
+                    if self.description_ != nil {
+                        map["Description"] = self.description_!
+                    }
+                    if self.descriptionCode != nil {
+                        map["DescriptionCode"] = self.descriptionCode!
+                    }
+                    if self.id != nil {
+                        map["Id"] = self.id!
+                    }
+                    if self.initialValue != nil {
+                        map["InitialValue"] = self.initialValue!
+                    }
+                    if self.mappingColumn != nil {
+                        map["MappingColumn"] = self.mappingColumn!
+                    }
+                    if self.must != nil {
+                        map["Must"] = self.must!
+                    }
+                    if self.operator_ != nil {
+                        map["Operator"] = self.operator_!
+                    }
+                    if self.optional_ != nil {
+                        map["Optional"] = self.optional_!
+                    }
+                    if self.originalColumn != nil {
+                        map["OriginalColumn"] = self.originalColumn!
+                    }
+                    if self.paramName != nil {
+                        map["ParamName"] = self.paramName!
+                    }
+                    if self.paramType != nil {
+                        map["ParamType"] = self.paramType!
+                    }
+                    if self.parameterLocation != nil {
+                        map["ParameterLocation"] = self.parameterLocation!
+                    }
+                    if self.sample != nil {
+                        map["Sample"] = self.sample!
+                    }
+                    if self.tableAndDsList != nil {
+                        var tmp : [Any] = []
+                        for k in self.tableAndDsList! {
+                            tmp.append(k.toMap())
+                        }
+                        map["TableAndDsList"] = tmp
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any]) -> Void {
+                    if dict.keys.contains("DateFormat") {
+                        self.dateFormat = dict["DateFormat"] as! String
+                    }
+                    if dict.keys.contains("DefaultValue") {
+                        self.defaultValue = dict["DefaultValue"] as! String
+                    }
+                    if dict.keys.contains("Description") {
+                        self.description_ = dict["Description"] as! String
+                    }
+                    if dict.keys.contains("DescriptionCode") {
+                        self.descriptionCode = dict["DescriptionCode"] as! String
+                    }
+                    if dict.keys.contains("Id") {
+                        self.id = dict["Id"] as! Int64
+                    }
+                    if dict.keys.contains("InitialValue") {
+                        self.initialValue = dict["InitialValue"] as! String
+                    }
+                    if dict.keys.contains("MappingColumn") {
+                        self.mappingColumn = dict["MappingColumn"] as! String
+                    }
+                    if dict.keys.contains("Must") {
+                        self.must = dict["Must"] as! Int64
+                    }
+                    if dict.keys.contains("Operator") {
+                        self.operator_ = dict["Operator"] as! String
+                    }
+                    if dict.keys.contains("Optional") {
+                        self.optional_ = dict["Optional"] as! Int64
+                    }
+                    if dict.keys.contains("OriginalColumn") {
+                        self.originalColumn = dict["OriginalColumn"] as! String
+                    }
+                    if dict.keys.contains("ParamName") {
+                        self.paramName = dict["ParamName"] as! String
+                    }
+                    if dict.keys.contains("ParamType") {
+                        self.paramType = dict["ParamType"] as! String
+                    }
+                    if dict.keys.contains("ParameterLocation") {
+                        self.parameterLocation = dict["ParameterLocation"] as! String
+                    }
+                    if dict.keys.contains("Sample") {
+                        self.sample = dict["Sample"] as! String
+                    }
+                    if dict.keys.contains("TableAndDsList") {
+                        var tmp : [ListApiByAppResponseBody.ListResult.Data.RequestParamList.TableAndDsList] = []
+                        for v in dict["TableAndDsList"] as! [Any] {
+                            var model = ListApiByAppResponseBody.ListResult.Data.RequestParamList.TableAndDsList()
+                            if v != nil {
+                                model.fromMap(v as! [String: Any])
+                            }
+                            tmp.append(model)
+                        }
+                        self.tableAndDsList = tmp
+                    }
+                }
+            }
+            public class ResponseParamList : Tea.TeaModel {
+                public class TableAndDsList : Tea.TeaModel {
+                    public var datasourceId: String?
+
+                    public var datasourceName: String?
+
+                    public var datasourceType: Int64?
+
+                    public var datasourceUrl: String?
+
+                    public var tableName: String?
+
+                    public override init() {
+                        super.init()
+                    }
+
+                    public init(_ dict: [String: Any]) {
+                        super.init()
+                        self.fromMap(dict)
+                    }
+
+                    public override func validate() throws -> Void {
+                    }
+
+                    public override func toMap() -> [String : Any] {
+                        var map = super.toMap()
+                        if self.datasourceId != nil {
+                            map["DatasourceId"] = self.datasourceId!
+                        }
+                        if self.datasourceName != nil {
+                            map["DatasourceName"] = self.datasourceName!
+                        }
+                        if self.datasourceType != nil {
+                            map["DatasourceType"] = self.datasourceType!
+                        }
+                        if self.datasourceUrl != nil {
+                            map["DatasourceUrl"] = self.datasourceUrl!
+                        }
+                        if self.tableName != nil {
+                            map["TableName"] = self.tableName!
+                        }
+                        return map
+                    }
+
+                    public override func fromMap(_ dict: [String: Any]) -> Void {
+                        if dict.keys.contains("DatasourceId") {
+                            self.datasourceId = dict["DatasourceId"] as! String
+                        }
+                        if dict.keys.contains("DatasourceName") {
+                            self.datasourceName = dict["DatasourceName"] as! String
+                        }
+                        if dict.keys.contains("DatasourceType") {
+                            self.datasourceType = dict["DatasourceType"] as! Int64
+                        }
+                        if dict.keys.contains("DatasourceUrl") {
+                            self.datasourceUrl = dict["DatasourceUrl"] as! String
+                        }
+                        if dict.keys.contains("TableName") {
+                            self.tableName = dict["TableName"] as! String
+                        }
+                    }
+                }
+                public var dateFormat: String?
+
+                public var defaultValue: String?
+
+                public var description_: String?
+
+                public var descriptionCode: String?
+
+                public var id: Int64?
+
+                public var initialValue: String?
+
+                public var mappingColumn: String?
+
+                public var must: Int64?
+
+                public var operator_: String?
+
+                public var optional_: Int64?
+
+                public var originalColumn: String?
+
+                public var paramName: String?
+
+                public var paramType: String?
+
+                public var parameterLocation: String?
+
+                public var sample: String?
+
+                public var tableAndDsList: [ListApiByAppResponseBody.ListResult.Data.ResponseParamList.TableAndDsList]?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.dateFormat != nil {
+                        map["DateFormat"] = self.dateFormat!
+                    }
+                    if self.defaultValue != nil {
+                        map["DefaultValue"] = self.defaultValue!
+                    }
+                    if self.description_ != nil {
+                        map["Description"] = self.description_!
+                    }
+                    if self.descriptionCode != nil {
+                        map["DescriptionCode"] = self.descriptionCode!
+                    }
+                    if self.id != nil {
+                        map["Id"] = self.id!
+                    }
+                    if self.initialValue != nil {
+                        map["InitialValue"] = self.initialValue!
+                    }
+                    if self.mappingColumn != nil {
+                        map["MappingColumn"] = self.mappingColumn!
+                    }
+                    if self.must != nil {
+                        map["Must"] = self.must!
+                    }
+                    if self.operator_ != nil {
+                        map["Operator"] = self.operator_!
+                    }
+                    if self.optional_ != nil {
+                        map["Optional"] = self.optional_!
+                    }
+                    if self.originalColumn != nil {
+                        map["OriginalColumn"] = self.originalColumn!
+                    }
+                    if self.paramName != nil {
+                        map["ParamName"] = self.paramName!
+                    }
+                    if self.paramType != nil {
+                        map["ParamType"] = self.paramType!
+                    }
+                    if self.parameterLocation != nil {
+                        map["ParameterLocation"] = self.parameterLocation!
+                    }
+                    if self.sample != nil {
+                        map["Sample"] = self.sample!
+                    }
+                    if self.tableAndDsList != nil {
+                        var tmp : [Any] = []
+                        for k in self.tableAndDsList! {
+                            tmp.append(k.toMap())
+                        }
+                        map["TableAndDsList"] = tmp
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any]) -> Void {
+                    if dict.keys.contains("DateFormat") {
+                        self.dateFormat = dict["DateFormat"] as! String
+                    }
+                    if dict.keys.contains("DefaultValue") {
+                        self.defaultValue = dict["DefaultValue"] as! String
+                    }
+                    if dict.keys.contains("Description") {
+                        self.description_ = dict["Description"] as! String
+                    }
+                    if dict.keys.contains("DescriptionCode") {
+                        self.descriptionCode = dict["DescriptionCode"] as! String
+                    }
+                    if dict.keys.contains("Id") {
+                        self.id = dict["Id"] as! Int64
+                    }
+                    if dict.keys.contains("InitialValue") {
+                        self.initialValue = dict["InitialValue"] as! String
+                    }
+                    if dict.keys.contains("MappingColumn") {
+                        self.mappingColumn = dict["MappingColumn"] as! String
+                    }
+                    if dict.keys.contains("Must") {
+                        self.must = dict["Must"] as! Int64
+                    }
+                    if dict.keys.contains("Operator") {
+                        self.operator_ = dict["Operator"] as! String
+                    }
+                    if dict.keys.contains("Optional") {
+                        self.optional_ = dict["Optional"] as! Int64
+                    }
+                    if dict.keys.contains("OriginalColumn") {
+                        self.originalColumn = dict["OriginalColumn"] as! String
+                    }
+                    if dict.keys.contains("ParamName") {
+                        self.paramName = dict["ParamName"] as! String
+                    }
+                    if dict.keys.contains("ParamType") {
+                        self.paramType = dict["ParamType"] as! String
+                    }
+                    if dict.keys.contains("ParameterLocation") {
+                        self.parameterLocation = dict["ParameterLocation"] as! String
+                    }
+                    if dict.keys.contains("Sample") {
+                        self.sample = dict["Sample"] as! String
+                    }
+                    if dict.keys.contains("TableAndDsList") {
+                        var tmp : [ListApiByAppResponseBody.ListResult.Data.ResponseParamList.TableAndDsList] = []
+                        for v in dict["TableAndDsList"] as! [Any] {
+                            var model = ListApiByAppResponseBody.ListResult.Data.ResponseParamList.TableAndDsList()
+                            if v != nil {
+                                model.fromMap(v as! [String: Any])
+                            }
+                            tmp.append(model)
+                        }
+                        self.tableAndDsList = tmp
+                    }
+                }
+            }
+            public var apiNo: Int64?
+
+            public var apiTimeout: Int64?
+
+            public var appName: String?
+
+            public var bizModuleEnName: String?
+
+            public var cacheSwitch: String?
+
+            public var cacheTime: String?
+
+            public var createType: Int64?
+
+            public var dbEnv: Int64?
+
+            public var description_: String?
+
+            public var directDatasourceId: Int64?
+
+            public var directDatasourceName: String?
+
+            public var groupId: Int64?
+
+            public var groupName: String?
+
+            public var id: Int64?
+
+            public var isLogicalTable: Bool?
+
+            public var isPagedQuery: Int64?
+
+            public var maxReturnNum: Int64?
+
+            public var modelType: Int64?
+
+            public var name: String?
+
+            public var projId: Int64?
+
+            public var projName: String?
+
+            public var protocol_: Int64?
+
+            public var protocolName: String?
+
+            public var publicParamList: [ListApiByAppResponseBody.ListResult.Data.PublicParamList]?
+
+            public var registerApi: ListApiByAppResponseBody.ListResult.Data.RegisterApi?
+
+            public var requestMethod: Int64?
+
+            public var requestMethodName: String?
+
+            public var requestParamList: [ListApiByAppResponseBody.ListResult.Data.RequestParamList]?
+
+            public var resourceGroupName: String?
+
+            public var responseParamList: [ListApiByAppResponseBody.ListResult.Data.ResponseParamList]?
+
+            public var resultSample: String?
+
+            public var returnType: Int64?
+
+            public var returnTypeName: String?
+
+            public var rsGrpId: String?
+
+            public var scriptType: String?
+
+            public var specialSql: Int64?
+
+            public var sqlStatement: String?
+
+            public var tableName: String?
+
+            public var timeout: String?
+
+            public var updateRate: Int64?
+
+            public var updateRateName: String?
+
+            public var version: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+                try self.registerApi?.validate()
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.apiNo != nil {
+                    map["ApiNo"] = self.apiNo!
+                }
+                if self.apiTimeout != nil {
+                    map["ApiTimeout"] = self.apiTimeout!
+                }
+                if self.appName != nil {
+                    map["AppName"] = self.appName!
+                }
+                if self.bizModuleEnName != nil {
+                    map["BizModuleEnName"] = self.bizModuleEnName!
+                }
+                if self.cacheSwitch != nil {
+                    map["CacheSwitch"] = self.cacheSwitch!
+                }
+                if self.cacheTime != nil {
+                    map["CacheTime"] = self.cacheTime!
+                }
+                if self.createType != nil {
+                    map["CreateType"] = self.createType!
+                }
+                if self.dbEnv != nil {
+                    map["DbEnv"] = self.dbEnv!
+                }
+                if self.description_ != nil {
+                    map["Description"] = self.description_!
+                }
+                if self.directDatasourceId != nil {
+                    map["DirectDatasourceId"] = self.directDatasourceId!
+                }
+                if self.directDatasourceName != nil {
+                    map["DirectDatasourceName"] = self.directDatasourceName!
+                }
+                if self.groupId != nil {
+                    map["GroupId"] = self.groupId!
+                }
+                if self.groupName != nil {
+                    map["GroupName"] = self.groupName!
+                }
+                if self.id != nil {
+                    map["Id"] = self.id!
+                }
+                if self.isLogicalTable != nil {
+                    map["IsLogicalTable"] = self.isLogicalTable!
+                }
+                if self.isPagedQuery != nil {
+                    map["IsPagedQuery"] = self.isPagedQuery!
+                }
+                if self.maxReturnNum != nil {
+                    map["MaxReturnNum"] = self.maxReturnNum!
+                }
+                if self.modelType != nil {
+                    map["ModelType"] = self.modelType!
+                }
+                if self.name != nil {
+                    map["Name"] = self.name!
+                }
+                if self.projId != nil {
+                    map["ProjId"] = self.projId!
+                }
+                if self.projName != nil {
+                    map["ProjName"] = self.projName!
+                }
+                if self.protocol_ != nil {
+                    map["Protocol"] = self.protocol_!
+                }
+                if self.protocolName != nil {
+                    map["ProtocolName"] = self.protocolName!
+                }
+                if self.publicParamList != nil {
+                    var tmp : [Any] = []
+                    for k in self.publicParamList! {
+                        tmp.append(k.toMap())
+                    }
+                    map["PublicParamList"] = tmp
+                }
+                if self.registerApi != nil {
+                    map["RegisterApi"] = self.registerApi?.toMap()
+                }
+                if self.requestMethod != nil {
+                    map["RequestMethod"] = self.requestMethod!
+                }
+                if self.requestMethodName != nil {
+                    map["RequestMethodName"] = self.requestMethodName!
+                }
+                if self.requestParamList != nil {
+                    var tmp : [Any] = []
+                    for k in self.requestParamList! {
+                        tmp.append(k.toMap())
+                    }
+                    map["RequestParamList"] = tmp
+                }
+                if self.resourceGroupName != nil {
+                    map["ResourceGroupName"] = self.resourceGroupName!
+                }
+                if self.responseParamList != nil {
+                    var tmp : [Any] = []
+                    for k in self.responseParamList! {
+                        tmp.append(k.toMap())
+                    }
+                    map["ResponseParamList"] = tmp
+                }
+                if self.resultSample != nil {
+                    map["ResultSample"] = self.resultSample!
+                }
+                if self.returnType != nil {
+                    map["ReturnType"] = self.returnType!
+                }
+                if self.returnTypeName != nil {
+                    map["ReturnTypeName"] = self.returnTypeName!
+                }
+                if self.rsGrpId != nil {
+                    map["RsGrpId"] = self.rsGrpId!
+                }
+                if self.scriptType != nil {
+                    map["ScriptType"] = self.scriptType!
+                }
+                if self.specialSql != nil {
+                    map["SpecialSql"] = self.specialSql!
+                }
+                if self.sqlStatement != nil {
+                    map["SqlStatement"] = self.sqlStatement!
+                }
+                if self.tableName != nil {
+                    map["TableName"] = self.tableName!
+                }
+                if self.timeout != nil {
+                    map["Timeout"] = self.timeout!
+                }
+                if self.updateRate != nil {
+                    map["UpdateRate"] = self.updateRate!
+                }
+                if self.updateRateName != nil {
+                    map["UpdateRateName"] = self.updateRateName!
+                }
+                if self.version != nil {
+                    map["Version"] = self.version!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("ApiNo") {
+                    self.apiNo = dict["ApiNo"] as! Int64
+                }
+                if dict.keys.contains("ApiTimeout") {
+                    self.apiTimeout = dict["ApiTimeout"] as! Int64
+                }
+                if dict.keys.contains("AppName") {
+                    self.appName = dict["AppName"] as! String
+                }
+                if dict.keys.contains("BizModuleEnName") {
+                    self.bizModuleEnName = dict["BizModuleEnName"] as! String
+                }
+                if dict.keys.contains("CacheSwitch") {
+                    self.cacheSwitch = dict["CacheSwitch"] as! String
+                }
+                if dict.keys.contains("CacheTime") {
+                    self.cacheTime = dict["CacheTime"] as! String
+                }
+                if dict.keys.contains("CreateType") {
+                    self.createType = dict["CreateType"] as! Int64
+                }
+                if dict.keys.contains("DbEnv") {
+                    self.dbEnv = dict["DbEnv"] as! Int64
+                }
+                if dict.keys.contains("Description") {
+                    self.description_ = dict["Description"] as! String
+                }
+                if dict.keys.contains("DirectDatasourceId") {
+                    self.directDatasourceId = dict["DirectDatasourceId"] as! Int64
+                }
+                if dict.keys.contains("DirectDatasourceName") {
+                    self.directDatasourceName = dict["DirectDatasourceName"] as! String
+                }
+                if dict.keys.contains("GroupId") {
+                    self.groupId = dict["GroupId"] as! Int64
+                }
+                if dict.keys.contains("GroupName") {
+                    self.groupName = dict["GroupName"] as! String
+                }
+                if dict.keys.contains("Id") {
+                    self.id = dict["Id"] as! Int64
+                }
+                if dict.keys.contains("IsLogicalTable") {
+                    self.isLogicalTable = dict["IsLogicalTable"] as! Bool
+                }
+                if dict.keys.contains("IsPagedQuery") {
+                    self.isPagedQuery = dict["IsPagedQuery"] as! Int64
+                }
+                if dict.keys.contains("MaxReturnNum") {
+                    self.maxReturnNum = dict["MaxReturnNum"] as! Int64
+                }
+                if dict.keys.contains("ModelType") {
+                    self.modelType = dict["ModelType"] as! Int64
+                }
+                if dict.keys.contains("Name") {
+                    self.name = dict["Name"] as! String
+                }
+                if dict.keys.contains("ProjId") {
+                    self.projId = dict["ProjId"] as! Int64
+                }
+                if dict.keys.contains("ProjName") {
+                    self.projName = dict["ProjName"] as! String
+                }
+                if dict.keys.contains("Protocol") {
+                    self.protocol_ = dict["Protocol"] as! Int64
+                }
+                if dict.keys.contains("ProtocolName") {
+                    self.protocolName = dict["ProtocolName"] as! String
+                }
+                if dict.keys.contains("PublicParamList") {
+                    var tmp : [ListApiByAppResponseBody.ListResult.Data.PublicParamList] = []
+                    for v in dict["PublicParamList"] as! [Any] {
+                        var model = ListApiByAppResponseBody.ListResult.Data.PublicParamList()
+                        if v != nil {
+                            model.fromMap(v as! [String: Any])
+                        }
+                        tmp.append(model)
+                    }
+                    self.publicParamList = tmp
+                }
+                if dict.keys.contains("RegisterApi") {
+                    var model = ListApiByAppResponseBody.ListResult.Data.RegisterApi()
+                    model.fromMap(dict["RegisterApi"] as! [String: Any])
+                    self.registerApi = model
+                }
+                if dict.keys.contains("RequestMethod") {
+                    self.requestMethod = dict["RequestMethod"] as! Int64
+                }
+                if dict.keys.contains("RequestMethodName") {
+                    self.requestMethodName = dict["RequestMethodName"] as! String
+                }
+                if dict.keys.contains("RequestParamList") {
+                    var tmp : [ListApiByAppResponseBody.ListResult.Data.RequestParamList] = []
+                    for v in dict["RequestParamList"] as! [Any] {
+                        var model = ListApiByAppResponseBody.ListResult.Data.RequestParamList()
+                        if v != nil {
+                            model.fromMap(v as! [String: Any])
+                        }
+                        tmp.append(model)
+                    }
+                    self.requestParamList = tmp
+                }
+                if dict.keys.contains("ResourceGroupName") {
+                    self.resourceGroupName = dict["ResourceGroupName"] as! String
+                }
+                if dict.keys.contains("ResponseParamList") {
+                    var tmp : [ListApiByAppResponseBody.ListResult.Data.ResponseParamList] = []
+                    for v in dict["ResponseParamList"] as! [Any] {
+                        var model = ListApiByAppResponseBody.ListResult.Data.ResponseParamList()
+                        if v != nil {
+                            model.fromMap(v as! [String: Any])
+                        }
+                        tmp.append(model)
+                    }
+                    self.responseParamList = tmp
+                }
+                if dict.keys.contains("ResultSample") {
+                    self.resultSample = dict["ResultSample"] as! String
+                }
+                if dict.keys.contains("ReturnType") {
+                    self.returnType = dict["ReturnType"] as! Int64
+                }
+                if dict.keys.contains("ReturnTypeName") {
+                    self.returnTypeName = dict["ReturnTypeName"] as! String
+                }
+                if dict.keys.contains("RsGrpId") {
+                    self.rsGrpId = dict["RsGrpId"] as! String
+                }
+                if dict.keys.contains("ScriptType") {
+                    self.scriptType = dict["ScriptType"] as! String
+                }
+                if dict.keys.contains("SpecialSql") {
+                    self.specialSql = dict["SpecialSql"] as! Int64
+                }
+                if dict.keys.contains("SqlStatement") {
+                    self.sqlStatement = dict["SqlStatement"] as! String
+                }
+                if dict.keys.contains("TableName") {
+                    self.tableName = dict["TableName"] as! String
+                }
+                if dict.keys.contains("Timeout") {
+                    self.timeout = dict["Timeout"] as! String
+                }
+                if dict.keys.contains("UpdateRate") {
+                    self.updateRate = dict["UpdateRate"] as! Int64
+                }
+                if dict.keys.contains("UpdateRateName") {
+                    self.updateRateName = dict["UpdateRateName"] as! String
+                }
+                if dict.keys.contains("Version") {
+                    self.version = dict["Version"] as! String
+                }
+            }
+        }
+        public var data: [ListApiByAppResponseBody.ListResult.Data]?
+
+        public var totalCount: Int32?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.data != nil {
+                var tmp : [Any] = []
+                for k in self.data! {
+                    tmp.append(k.toMap())
+                }
+                map["Data"] = tmp
+            }
+            if self.totalCount != nil {
+                map["TotalCount"] = self.totalCount!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("Data") {
+                var tmp : [ListApiByAppResponseBody.ListResult.Data] = []
+                for v in dict["Data"] as! [Any] {
+                    var model = ListApiByAppResponseBody.ListResult.Data()
+                    if v != nil {
+                        model.fromMap(v as! [String: Any])
+                    }
+                    tmp.append(model)
+                }
+                self.data = tmp
+            }
+            if dict.keys.contains("TotalCount") {
+                self.totalCount = dict["TotalCount"] as! Int32
+            }
+        }
+    }
+    public var code: String?
+
+    public var httpStatusCode: Int32?
+
+    public var listResult: ListApiByAppResponseBody.ListResult?
+
+    public var message: String?
+
+    public var requestId: String?
+
+    public var success: Bool?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.listResult?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.code != nil {
+            map["Code"] = self.code!
+        }
+        if self.httpStatusCode != nil {
+            map["HttpStatusCode"] = self.httpStatusCode!
+        }
+        if self.listResult != nil {
+            map["ListResult"] = self.listResult?.toMap()
+        }
+        if self.message != nil {
+            map["Message"] = self.message!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.success != nil {
+            map["Success"] = self.success!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("Code") {
+            self.code = dict["Code"] as! String
+        }
+        if dict.keys.contains("HttpStatusCode") {
+            self.httpStatusCode = dict["HttpStatusCode"] as! Int32
+        }
+        if dict.keys.contains("ListResult") {
+            var model = ListApiByAppResponseBody.ListResult()
+            model.fromMap(dict["ListResult"] as! [String: Any])
+            self.listResult = model
+        }
+        if dict.keys.contains("Message") {
+            self.message = dict["Message"] as! String
+        }
+        if dict.keys.contains("RequestId") {
+            self.requestId = dict["RequestId"] as! String
+        }
+        if dict.keys.contains("Success") {
+            self.success = dict["Success"] as! Bool
+        }
+    }
+}
+
+public class ListApiByAppResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: ListApiByAppResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") {
+            var model = ListApiByAppResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
 public class ListAuthorizedDataServiceApiDetailsRequest : Tea.TeaModel {
     public class ListQuery : Tea.TeaModel {
         public var appKey: Int64?
