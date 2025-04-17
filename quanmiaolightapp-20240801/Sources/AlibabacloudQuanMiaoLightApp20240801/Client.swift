@@ -366,6 +366,12 @@ open class Client : AlibabacloudOpenApi.Client {
             request.tagsShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.tags, "tags", "json")
         }
         var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.akProxy)) {
+            body["akProxy"] = request.akProxy ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.apiKey)) {
+            body["apiKey"] = request.apiKey ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.content)) {
             body["content"] = request.content ?? "";
         }
@@ -591,6 +597,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func runMarketingInformationWritingWithOptions(_ workspaceId: String, _ request: RunMarketingInformationWritingRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> RunMarketingInformationWritingResponse {
         try TeaUtils.Client.validateModel(request)
         var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.apiKey)) {
+            body["apiKey"] = request.apiKey ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.customLimitation)) {
             body["customLimitation"] = request.customLimitation ?? "";
         }
@@ -647,6 +656,9 @@ open class Client : AlibabacloudOpenApi.Client {
             request.tagsShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.tags, "tags", "json")
         }
         var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.apiKey)) {
+            body["apiKey"] = request.apiKey ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.businessType)) {
             body["businessType"] = request.businessType ?? "";
         }
@@ -1087,6 +1099,9 @@ open class Client : AlibabacloudOpenApi.Client {
             request.tagsShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.tags, "tags", "json")
         }
         var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.apiKey)) {
+            body["apiKey"] = request.apiKey ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.contentsShrink)) {
             body["contents"] = request.contentsShrink ?? "";
         }

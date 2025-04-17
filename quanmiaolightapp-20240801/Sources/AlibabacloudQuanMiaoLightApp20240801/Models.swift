@@ -4083,6 +4083,10 @@ public class RunEnterpriseVocAnalysisRequest : Tea.TeaModel {
             }
         }
     }
+    public var akProxy: String?
+
+    public var apiKey: String?
+
     public var content: String?
 
     public var extraInfo: String?
@@ -4111,6 +4115,12 @@ public class RunEnterpriseVocAnalysisRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.akProxy != nil {
+            map["akProxy"] = self.akProxy!
+        }
+        if self.apiKey != nil {
+            map["apiKey"] = self.apiKey!
+        }
         if self.content != nil {
             map["content"] = self.content!
         }
@@ -4144,6 +4154,12 @@ public class RunEnterpriseVocAnalysisRequest : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("akProxy") {
+            self.akProxy = dict["akProxy"] as! String
+        }
+        if dict.keys.contains("apiKey") {
+            self.apiKey = dict["apiKey"] as! String
+        }
         if dict.keys.contains("content") {
             self.content = dict["content"] as! String
         }
@@ -4185,6 +4201,10 @@ public class RunEnterpriseVocAnalysisRequest : Tea.TeaModel {
 }
 
 public class RunEnterpriseVocAnalysisShrinkRequest : Tea.TeaModel {
+    public var akProxy: String?
+
+    public var apiKey: String?
+
     public var content: String?
 
     public var extraInfo: String?
@@ -4213,6 +4233,12 @@ public class RunEnterpriseVocAnalysisShrinkRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.akProxy != nil {
+            map["akProxy"] = self.akProxy!
+        }
+        if self.apiKey != nil {
+            map["apiKey"] = self.apiKey!
+        }
         if self.content != nil {
             map["content"] = self.content!
         }
@@ -4238,6 +4264,12 @@ public class RunEnterpriseVocAnalysisShrinkRequest : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("akProxy") {
+            self.akProxy = dict["akProxy"] as! String
+        }
+        if dict.keys.contains("apiKey") {
+            self.apiKey = dict["apiKey"] as! String
+        }
         if dict.keys.contains("content") {
             self.content = dict["content"] as! String
         }
@@ -6543,6 +6575,8 @@ public class RunMarketingInformationExtractResponse : Tea.TeaModel {
 }
 
 public class RunMarketingInformationWritingRequest : Tea.TeaModel {
+    public var apiKey: String?
+
     public var customLimitation: String?
 
     public var customPrompt: String?
@@ -6571,6 +6605,9 @@ public class RunMarketingInformationWritingRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.apiKey != nil {
+            map["apiKey"] = self.apiKey!
+        }
         if self.customLimitation != nil {
             map["customLimitation"] = self.customLimitation!
         }
@@ -6596,6 +6633,9 @@ public class RunMarketingInformationWritingRequest : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("apiKey") {
+            self.apiKey = dict["apiKey"] as! String
+        }
         if dict.keys.contains("customLimitation") {
             self.customLimitation = dict["customLimitation"] as! String
         }
@@ -6622,6 +6662,8 @@ public class RunMarketingInformationWritingRequest : Tea.TeaModel {
 
 public class RunMarketingInformationWritingResponseBody : Tea.TeaModel {
     public class Header : Tea.TeaModel {
+        public var errorMessage: String?
+
         public var event: String?
 
         public var eventInfo: String?
@@ -6648,6 +6690,9 @@ public class RunMarketingInformationWritingResponseBody : Tea.TeaModel {
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
+            if self.errorMessage != nil {
+                map["errorMessage"] = self.errorMessage!
+            }
             if self.event != nil {
                 map["event"] = self.event!
             }
@@ -6670,6 +6715,9 @@ public class RunMarketingInformationWritingResponseBody : Tea.TeaModel {
         }
 
         public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("errorMessage") {
+                self.errorMessage = dict["errorMessage"] as! String
+            }
             if dict.keys.contains("event") {
                 self.event = dict["event"] as! String
             }
@@ -6945,6 +6993,8 @@ public class RunNetworkContentAuditRequest : Tea.TeaModel {
             }
         }
     }
+    public var apiKey: String?
+
     public var businessType: String?
 
     public var content: String?
@@ -6973,6 +7023,9 @@ public class RunNetworkContentAuditRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.apiKey != nil {
+            map["apiKey"] = self.apiKey!
+        }
         if self.businessType != nil {
             map["businessType"] = self.businessType!
         }
@@ -7002,6 +7055,9 @@ public class RunNetworkContentAuditRequest : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("apiKey") {
+            self.apiKey = dict["apiKey"] as! String
+        }
         if dict.keys.contains("businessType") {
             self.businessType = dict["businessType"] as! String
         }
@@ -7035,6 +7091,8 @@ public class RunNetworkContentAuditRequest : Tea.TeaModel {
 }
 
 public class RunNetworkContentAuditShrinkRequest : Tea.TeaModel {
+    public var apiKey: String?
+
     public var businessType: String?
 
     public var content: String?
@@ -7063,6 +7121,9 @@ public class RunNetworkContentAuditShrinkRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.apiKey != nil {
+            map["apiKey"] = self.apiKey!
+        }
         if self.businessType != nil {
             map["businessType"] = self.businessType!
         }
@@ -7088,6 +7149,9 @@ public class RunNetworkContentAuditShrinkRequest : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("apiKey") {
+            self.apiKey = dict["apiKey"] as! String
+        }
         if dict.keys.contains("businessType") {
             self.businessType = dict["businessType"] as! String
         }
@@ -11823,6 +11887,8 @@ public class SubmitEnterpriseVocAnalysisTaskRequest : Tea.TeaModel {
             }
         }
     }
+    public var apiKey: String?
+
     public var contents: [SubmitEnterpriseVocAnalysisTaskRequest.Contents]?
 
     public var extraInfo: String?
@@ -11855,6 +11921,9 @@ public class SubmitEnterpriseVocAnalysisTaskRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.apiKey != nil {
+            map["apiKey"] = self.apiKey!
+        }
         if self.contents != nil {
             var tmp : [Any] = []
             for k in self.contents! {
@@ -11898,6 +11967,9 @@ public class SubmitEnterpriseVocAnalysisTaskRequest : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("apiKey") {
+            self.apiKey = dict["apiKey"] as! String
+        }
         if dict.keys.contains("contents") {
             var tmp : [SubmitEnterpriseVocAnalysisTaskRequest.Contents] = []
             for v in dict["contents"] as! [Any] {
@@ -11953,6 +12025,8 @@ public class SubmitEnterpriseVocAnalysisTaskRequest : Tea.TeaModel {
 }
 
 public class SubmitEnterpriseVocAnalysisTaskShrinkRequest : Tea.TeaModel {
+    public var apiKey: String?
+
     public var contentsShrink: String?
 
     public var extraInfo: String?
@@ -11985,6 +12059,9 @@ public class SubmitEnterpriseVocAnalysisTaskShrinkRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.apiKey != nil {
+            map["apiKey"] = self.apiKey!
+        }
         if self.contentsShrink != nil {
             map["contents"] = self.contentsShrink!
         }
@@ -12016,6 +12093,9 @@ public class SubmitEnterpriseVocAnalysisTaskShrinkRequest : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("apiKey") {
+            self.apiKey = dict["apiKey"] as! String
+        }
         if dict.keys.contains("contents") {
             self.contentsShrink = dict["contents"] as! String
         }
