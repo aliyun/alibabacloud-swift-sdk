@@ -7576,6 +7576,131 @@ public class GetPodLogsResponse : Tea.TeaModel {
     }
 }
 
+public class GetRayDashboardRequest : Tea.TeaModel {
+    public var isShared: Bool?
+
+    public var token: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.isShared != nil {
+            map["isShared"] = self.isShared!
+        }
+        if self.token != nil {
+            map["token"] = self.token!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("isShared") {
+            self.isShared = dict["isShared"] as! Bool
+        }
+        if dict.keys.contains("token") {
+            self.token = dict["token"] as! String
+        }
+    }
+}
+
+public class GetRayDashboardResponseBody : Tea.TeaModel {
+    public var metricsEnabled: String?
+
+    public var url: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.metricsEnabled != nil {
+            map["metricsEnabled"] = self.metricsEnabled!
+        }
+        if self.url != nil {
+            map["url"] = self.url!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("metricsEnabled") {
+            self.metricsEnabled = dict["metricsEnabled"] as! String
+        }
+        if dict.keys.contains("url") {
+            self.url = dict["url"] as! String
+        }
+    }
+}
+
+public class GetRayDashboardResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: GetRayDashboardResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") {
+            var model = GetRayDashboardResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
 public class GetTensorboardRequest : Tea.TeaModel {
     public var jodId: String?
 
