@@ -8,6 +8,18 @@ import AlibabacloudEndpointUtil
 public class GetBillDetailFileListRequest : Tea.TeaModel {
     public var billMonth: String?
 
+    public var ossAccessKeyId: String?
+
+    public var ossAccessKeySecret: String?
+
+    public var ossBucketName: String?
+
+    public var ossEndpoint: String?
+
+    public var ossRegion: String?
+
+    public var ossSecurityToken: String?
+
     public override init() {
         super.init()
     }
@@ -25,12 +37,48 @@ public class GetBillDetailFileListRequest : Tea.TeaModel {
         if self.billMonth != nil {
             map["BillMonth"] = self.billMonth!
         }
+        if self.ossAccessKeyId != nil {
+            map["OssAccessKeyId"] = self.ossAccessKeyId!
+        }
+        if self.ossAccessKeySecret != nil {
+            map["OssAccessKeySecret"] = self.ossAccessKeySecret!
+        }
+        if self.ossBucketName != nil {
+            map["OssBucketName"] = self.ossBucketName!
+        }
+        if self.ossEndpoint != nil {
+            map["OssEndpoint"] = self.ossEndpoint!
+        }
+        if self.ossRegion != nil {
+            map["OssRegion"] = self.ossRegion!
+        }
+        if self.ossSecurityToken != nil {
+            map["OssSecurityToken"] = self.ossSecurityToken!
+        }
         return map
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
         if dict.keys.contains("BillMonth") {
             self.billMonth = dict["BillMonth"] as! String
+        }
+        if dict.keys.contains("OssAccessKeyId") {
+            self.ossAccessKeyId = dict["OssAccessKeyId"] as! String
+        }
+        if dict.keys.contains("OssAccessKeySecret") {
+            self.ossAccessKeySecret = dict["OssAccessKeySecret"] as! String
+        }
+        if dict.keys.contains("OssBucketName") {
+            self.ossBucketName = dict["OssBucketName"] as! String
+        }
+        if dict.keys.contains("OssEndpoint") {
+            self.ossEndpoint = dict["OssEndpoint"] as! String
+        }
+        if dict.keys.contains("OssRegion") {
+            self.ossRegion = dict["OssRegion"] as! String
+        }
+        if dict.keys.contains("OssSecurityToken") {
+            self.ossSecurityToken = dict["OssSecurityToken"] as! String
         }
     }
 }
@@ -42,6 +90,8 @@ public class GetBillDetailFileListResponseBody : Tea.TeaModel {
         public var fileName: String?
 
         public var fileUrl: String?
+
+        public var status: String?
 
         public var type: String?
 
@@ -68,6 +118,9 @@ public class GetBillDetailFileListResponseBody : Tea.TeaModel {
             if self.fileUrl != nil {
                 map["FileUrl"] = self.fileUrl!
             }
+            if self.status != nil {
+                map["Status"] = self.status!
+            }
             if self.type != nil {
                 map["Type"] = self.type!
             }
@@ -83,6 +136,9 @@ public class GetBillDetailFileListResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("FileUrl") {
                 self.fileUrl = dict["FileUrl"] as! String
+            }
+            if dict.keys.contains("Status") {
+                self.status = dict["Status"] as! String
             }
             if dict.keys.contains("Type") {
                 self.type = dict["Type"] as! String
