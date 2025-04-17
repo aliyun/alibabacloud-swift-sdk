@@ -6503,6 +6503,43 @@ public class GetServiceResponseBody : Tea.TeaModel {
             }
         }
     }
+    public class SupportContacts : Tea.TeaModel {
+        public var type: String?
+
+        public var value: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.type != nil {
+                map["Type"] = self.type!
+            }
+            if self.value != nil {
+                map["Value"] = self.value!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("Type") {
+                self.type = dict["Type"] as! String
+            }
+            if dict.keys.contains("Value") {
+                self.value = dict["Value"] as! String
+            }
+        }
+    }
     public class Tags : Tea.TeaModel {
         public var key: String?
 
@@ -6625,6 +6662,8 @@ public class GetServiceResponseBody : Tea.TeaModel {
     public var supplierName: String?
 
     public var supplierUrl: String?
+
+    public var supportContacts: [GetServiceResponseBody.SupportContacts]?
 
     public var tags: [GetServiceResponseBody.Tags]?
 
@@ -6801,6 +6840,13 @@ public class GetServiceResponseBody : Tea.TeaModel {
         }
         if self.supplierUrl != nil {
             map["SupplierUrl"] = self.supplierUrl!
+        }
+        if self.supportContacts != nil {
+            var tmp : [Any] = []
+            for k in self.supportContacts! {
+                tmp.append(k.toMap())
+            }
+            map["SupportContacts"] = tmp
         }
         if self.tags != nil {
             var tmp : [Any] = []
@@ -6993,6 +7039,17 @@ public class GetServiceResponseBody : Tea.TeaModel {
         }
         if dict.keys.contains("SupplierUrl") {
             self.supplierUrl = dict["SupplierUrl"] as! String
+        }
+        if dict.keys.contains("SupportContacts") {
+            var tmp : [GetServiceResponseBody.SupportContacts] = []
+            for v in dict["SupportContacts"] as! [Any] {
+                var model = GetServiceResponseBody.SupportContacts()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.supportContacts = tmp
         }
         if dict.keys.contains("Tags") {
             var tmp : [GetServiceResponseBody.Tags] = []
@@ -9801,6 +9858,43 @@ public class GetSupplierInformationResponseBody : Tea.TeaModel {
             }
         }
     }
+    public class SupportContacts : Tea.TeaModel {
+        public var type: String?
+
+        public var value: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.type != nil {
+                map["Type"] = self.type!
+            }
+            if self.value != nil {
+                map["Value"] = self.value!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("Type") {
+                self.type = dict["Type"] as! String
+            }
+            if dict.keys.contains("Value") {
+                self.value = dict["Value"] as! String
+            }
+        }
+    }
     public var acrNamespace: String?
 
     public var deliverySettings: GetSupplierInformationResponseBody.DeliverySettings?
@@ -9820,6 +9914,8 @@ public class GetSupplierInformationResponseBody : Tea.TeaModel {
     public var supplierName: String?
 
     public var supplierUrl: String?
+
+    public var supportContacts: [GetSupplierInformationResponseBody.SupportContacts]?
 
     public override init() {
         super.init()
@@ -9866,6 +9962,13 @@ public class GetSupplierInformationResponseBody : Tea.TeaModel {
         if self.supplierUrl != nil {
             map["SupplierUrl"] = self.supplierUrl!
         }
+        if self.supportContacts != nil {
+            var tmp : [Any] = []
+            for k in self.supportContacts! {
+                tmp.append(k.toMap())
+            }
+            map["SupportContacts"] = tmp
+        }
         return map
     }
 
@@ -9901,6 +10004,17 @@ public class GetSupplierInformationResponseBody : Tea.TeaModel {
         }
         if dict.keys.contains("SupplierUrl") {
             self.supplierUrl = dict["SupplierUrl"] as! String
+        }
+        if dict.keys.contains("SupportContacts") {
+            var tmp : [GetSupplierInformationResponseBody.SupportContacts] = []
+            for v in dict["SupportContacts"] as! [Any] {
+                var model = GetSupplierInformationResponseBody.SupportContacts()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.supportContacts = tmp
         }
     }
 }
@@ -22510,6 +22624,43 @@ public class UpdateSupplierInformationRequest : Tea.TeaModel {
             }
         }
     }
+    public class SupportContacts : Tea.TeaModel {
+        public var type: String?
+
+        public var value: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.type != nil {
+                map["Type"] = self.type!
+            }
+            if self.value != nil {
+                map["Value"] = self.value!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("Type") {
+                self.type = dict["Type"] as! String
+            }
+            if dict.keys.contains("Value") {
+                self.value = dict["Value"] as! String
+            }
+        }
+    }
     public var deliverySettings: UpdateSupplierInformationRequest.DeliverySettings?
 
     public var operationIp: String?
@@ -22523,6 +22674,8 @@ public class UpdateSupplierInformationRequest : Tea.TeaModel {
     public var supplierLogo: String?
 
     public var supplierUrl: String?
+
+    public var supportContacts: [UpdateSupplierInformationRequest.SupportContacts]?
 
     public override init() {
         super.init()
@@ -22560,6 +22713,13 @@ public class UpdateSupplierInformationRequest : Tea.TeaModel {
         if self.supplierUrl != nil {
             map["SupplierUrl"] = self.supplierUrl!
         }
+        if self.supportContacts != nil {
+            var tmp : [Any] = []
+            for k in self.supportContacts! {
+                tmp.append(k.toMap())
+            }
+            map["SupportContacts"] = tmp
+        }
         return map
     }
 
@@ -22586,6 +22746,17 @@ public class UpdateSupplierInformationRequest : Tea.TeaModel {
         }
         if dict.keys.contains("SupplierUrl") {
             self.supplierUrl = dict["SupplierUrl"] as! String
+        }
+        if dict.keys.contains("SupportContacts") {
+            var tmp : [UpdateSupplierInformationRequest.SupportContacts] = []
+            for v in dict["SupportContacts"] as! [Any] {
+                var model = UpdateSupplierInformationRequest.SupportContacts()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.supportContacts = tmp
         }
     }
 }
