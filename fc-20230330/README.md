@@ -17,7 +17,7 @@ English | [简体中文](README-CN.md)
 To integrate `AlibabacloudFC20230330` into your Xcode project using [Carthage](https://github.com/Carthage/Carthage), specify it in your `Cartfile`:
 
 ```ogdl
-github "alibabacloud-sdk-swift/fc-20230330" "4.3.1"
+github "alibabacloud-sdk-swift/fc-20230330" "4.3.2"
 ```
 
 ### Swift Package Manager
@@ -26,7 +26,7 @@ To integrate `AlibabacloudFC20230330` into your Xcode project using [Swift Packa
 
 ```swift
 dependencies: [
-    .package(url: "https://github.com/alibabacloud-sdk-swift/fc-20230330.git", from: "4.3.1")
+    .package(url: "https://github.com/alibabacloud-sdk-swift/fc-20230330.git", from: "4.3.2")
 ]
 ```
 

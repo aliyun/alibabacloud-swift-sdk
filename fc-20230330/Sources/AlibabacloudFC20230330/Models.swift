@@ -1730,6 +1730,117 @@ public class DeliveryOption : Tea.TeaModel {
     }
 }
 
+public class DescribeRegionsOutput : Tea.TeaModel {
+    public class Regions : Tea.TeaModel {
+        public class Region : Tea.TeaModel {
+            public var localName: String?
+
+            public var regionId: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.localName != nil {
+                    map["LocalName"] = self.localName!
+                }
+                if self.regionId != nil {
+                    map["RegionId"] = self.regionId!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("LocalName") {
+                    self.localName = dict["LocalName"] as! String
+                }
+                if dict.keys.contains("RegionId") {
+                    self.regionId = dict["RegionId"] as! String
+                }
+            }
+        }
+        public var region: [DescribeRegionsOutput.Regions.Region]?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.region != nil {
+                var tmp : [Any] = []
+                for k in self.region! {
+                    tmp.append(k.toMap())
+                }
+                map["Region"] = tmp
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("Region") {
+                var tmp : [DescribeRegionsOutput.Regions.Region] = []
+                for v in dict["Region"] as! [Any] {
+                    var model = DescribeRegionsOutput.Regions.Region()
+                    if v != nil {
+                        model.fromMap(v as! [String: Any])
+                    }
+                    tmp.append(model)
+                }
+                self.region = tmp
+            }
+        }
+    }
+    public var regions: DescribeRegionsOutput.Regions?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.regions?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.regions != nil {
+            map["Regions"] = self.regions?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("Regions") {
+            var model = DescribeRegionsOutput.Regions()
+            model.fromMap(dict["Regions"] as! [String: Any])
+            self.regions = model
+        }
+    }
+}
+
 public class Destination : Tea.TeaModel {
     public var destination: String?
 
@@ -2201,7 +2312,7 @@ public class Function : Tea.TeaModel {
 
     public var internetAccess: Bool?
 
-    public var invocationRestriction: OpenStructFunctionRestriction?
+    public var invocationRestriction: FunctionRestriction?
 
     public var lastModifiedTime: String?
 
@@ -2458,7 +2569,7 @@ public class Function : Tea.TeaModel {
             self.internetAccess = dict["internetAccess"] as! Bool
         }
         if dict.keys.contains("invocationRestriction") {
-            var model = OpenStructFunctionRestriction()
+            var model = FunctionRestriction()
             model.fromMap(dict["invocationRestriction"] as! [String: Any])
             self.invocationRestriction = model
         }
@@ -2579,6 +2690,52 @@ public class FunctionLayer : Tea.TeaModel {
         }
         if dict.keys.contains("size") {
             self.size = dict["size"] as! Int64
+        }
+    }
+}
+
+public class FunctionRestriction : Tea.TeaModel {
+    public var disable: Bool?
+
+    public var lastModifiedTime: String?
+
+    public var reason: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.disable != nil {
+            map["disable"] = self.disable!
+        }
+        if self.lastModifiedTime != nil {
+            map["lastModifiedTime"] = self.lastModifiedTime!
+        }
+        if self.reason != nil {
+            map["reason"] = self.reason!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("disable") {
+            self.disable = dict["disable"] as! Bool
+        }
+        if dict.keys.contains("lastModifiedTime") {
+            self.lastModifiedTime = dict["lastModifiedTime"] as! String
+        }
+        if dict.keys.contains("reason") {
+            self.reason = dict["reason"] as! String
         }
     }
 }
@@ -7179,163 +7336,6 @@ public class WildcardRule : Tea.TeaModel {
     }
 }
 
-public class OpenStructDescribeRegionsOutput : Tea.TeaModel {
-    public class Regions : Tea.TeaModel {
-        public class Region : Tea.TeaModel {
-            public var localName: String?
-
-            public var regionId: String?
-
-            public override init() {
-                super.init()
-            }
-
-            public init(_ dict: [String: Any]) {
-                super.init()
-                self.fromMap(dict)
-            }
-
-            public override func validate() throws -> Void {
-            }
-
-            public override func toMap() -> [String : Any] {
-                var map = super.toMap()
-                if self.localName != nil {
-                    map["LocalName"] = self.localName!
-                }
-                if self.regionId != nil {
-                    map["RegionId"] = self.regionId!
-                }
-                return map
-            }
-
-            public override func fromMap(_ dict: [String: Any]) -> Void {
-                if dict.keys.contains("LocalName") {
-                    self.localName = dict["LocalName"] as! String
-                }
-                if dict.keys.contains("RegionId") {
-                    self.regionId = dict["RegionId"] as! String
-                }
-            }
-        }
-        public var region: [OpenStructDescribeRegionsOutput.Regions.Region]?
-
-        public override init() {
-            super.init()
-        }
-
-        public init(_ dict: [String: Any]) {
-            super.init()
-            self.fromMap(dict)
-        }
-
-        public override func validate() throws -> Void {
-        }
-
-        public override func toMap() -> [String : Any] {
-            var map = super.toMap()
-            if self.region != nil {
-                var tmp : [Any] = []
-                for k in self.region! {
-                    tmp.append(k.toMap())
-                }
-                map["Region"] = tmp
-            }
-            return map
-        }
-
-        public override func fromMap(_ dict: [String: Any]) -> Void {
-            if dict.keys.contains("Region") {
-                var tmp : [OpenStructDescribeRegionsOutput.Regions.Region] = []
-                for v in dict["Region"] as! [Any] {
-                    var model = OpenStructDescribeRegionsOutput.Regions.Region()
-                    if v != nil {
-                        model.fromMap(v as! [String: Any])
-                    }
-                    tmp.append(model)
-                }
-                self.region = tmp
-            }
-        }
-    }
-    public var regions: OpenStructDescribeRegionsOutput.Regions?
-
-    public override init() {
-        super.init()
-    }
-
-    public init(_ dict: [String: Any]) {
-        super.init()
-        self.fromMap(dict)
-    }
-
-    public override func validate() throws -> Void {
-        try self.regions?.validate()
-    }
-
-    public override func toMap() -> [String : Any] {
-        var map = super.toMap()
-        if self.regions != nil {
-            map["Regions"] = self.regions?.toMap()
-        }
-        return map
-    }
-
-    public override func fromMap(_ dict: [String: Any]) -> Void {
-        if dict.keys.contains("Regions") {
-            var model = OpenStructDescribeRegionsOutput.Regions()
-            model.fromMap(dict["Regions"] as! [String: Any])
-            self.regions = model
-        }
-    }
-}
-
-public class OpenStructFunctionRestriction : Tea.TeaModel {
-    public var disable: Bool?
-
-    public var lastModifiedTime: String?
-
-    public var reason: String?
-
-    public override init() {
-        super.init()
-    }
-
-    public init(_ dict: [String: Any]) {
-        super.init()
-        self.fromMap(dict)
-    }
-
-    public override func validate() throws -> Void {
-    }
-
-    public override func toMap() -> [String : Any] {
-        var map = super.toMap()
-        if self.disable != nil {
-            map["disable"] = self.disable!
-        }
-        if self.lastModifiedTime != nil {
-            map["lastModifiedTime"] = self.lastModifiedTime!
-        }
-        if self.reason != nil {
-            map["reason"] = self.reason!
-        }
-        return map
-    }
-
-    public override func fromMap(_ dict: [String: Any]) -> Void {
-        if dict.keys.contains("disable") {
-            self.disable = dict["disable"] as! Bool
-        }
-        if dict.keys.contains("lastModifiedTime") {
-            self.lastModifiedTime = dict["lastModifiedTime"] as! String
-        }
-        if dict.keys.contains("reason") {
-            self.reason = dict["reason"] as! String
-        }
-    }
-}
-
 public class CreateAliasRequest : Tea.TeaModel {
     public var body: CreateAliasInput?
 
@@ -8292,7 +8292,7 @@ public class DescribeRegionsResponse : Tea.TeaModel {
 
     public var statusCode: Int32?
 
-    public var body: OpenStructDescribeRegionsOutput?
+    public var body: DescribeRegionsOutput?
 
     public override init() {
         super.init()
@@ -8329,7 +8329,7 @@ public class DescribeRegionsResponse : Tea.TeaModel {
             self.statusCode = dict["statusCode"] as! Int32
         }
         if dict.keys.contains("body") {
-            var model = OpenStructDescribeRegionsOutput()
+            var model = DescribeRegionsOutput()
             model.fromMap(dict["body"] as! [String: Any])
             self.body = model
         }
