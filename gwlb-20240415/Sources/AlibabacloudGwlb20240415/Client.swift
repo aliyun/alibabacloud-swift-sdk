@@ -8,7 +8,7 @@ import AlibabacloudEndpointUtil
 open class Client : AlibabacloudOpenApi.Client {
     public override init(_ config: AlibabacloudOpenApi.Config) throws {
         try super.init(config)
-        self._endpointRule = ""
+        self._endpointRule = "regional"
         try checkConfig(config as! AlibabacloudOpenApi.Config)
         self._endpoint = try getEndpoint("gwlb", self._regionId ?? "", self._endpointRule ?? "", self._network ?? "", self._suffix ?? "", self._endpointMap ?? [:], self._endpoint ?? "")
     }
@@ -192,6 +192,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.scheduler)) {
             body["Scheduler"] = request.scheduler ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.serverFailoverMode)) {
+            body["ServerFailoverMode"] = request.serverFailoverMode ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.serverGroupName)) {
             body["ServerGroupName"] = request.serverGroupName ?? "";
@@ -592,6 +595,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.tag)) {
             bodyFlat["Tag"] = request.tag ?? [];
+        }
+        if (!TeaUtils.Client.isUnset(request.trafficMode)) {
+            body["TrafficMode"] = request.trafficMode ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.vpcIds)) {
             bodyFlat["VpcIds"] = request.vpcIds ?? [];
@@ -1011,6 +1017,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.loadBalancerName)) {
             body["LoadBalancerName"] = request.loadBalancerName ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.trafficMode)) {
+            body["TrafficMode"] = request.trafficMode ?? "";
+        }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
         ])
@@ -1096,6 +1105,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.scheduler)) {
             body["Scheduler"] = request.scheduler ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.serverFailoverMode)) {
+            body["ServerFailoverMode"] = request.serverFailoverMode ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.serverGroupId)) {
             body["ServerGroupId"] = request.serverGroupId ?? "";

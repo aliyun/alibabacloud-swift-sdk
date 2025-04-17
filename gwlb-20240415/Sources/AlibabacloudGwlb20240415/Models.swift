@@ -870,6 +870,8 @@ public class CreateServerGroupRequest : Tea.TeaModel {
 
     public var scheduler: String?
 
+    public var serverFailoverMode: String?
+
     public var serverGroupName: String?
 
     public var serverGroupType: String?
@@ -915,6 +917,9 @@ public class CreateServerGroupRequest : Tea.TeaModel {
         if self.scheduler != nil {
             map["Scheduler"] = self.scheduler!
         }
+        if self.serverFailoverMode != nil {
+            map["ServerFailoverMode"] = self.serverFailoverMode!
+        }
         if self.serverGroupName != nil {
             map["ServerGroupName"] = self.serverGroupName!
         }
@@ -959,6 +964,9 @@ public class CreateServerGroupRequest : Tea.TeaModel {
         }
         if dict.keys.contains("Scheduler") {
             self.scheduler = dict["Scheduler"] as! String
+        }
+        if dict.keys.contains("ServerFailoverMode") {
+            self.serverFailoverMode = dict["ServerFailoverMode"] as! String
         }
         if dict.keys.contains("ServerGroupName") {
             self.serverGroupName = dict["ServerGroupName"] as! String
@@ -2612,6 +2620,8 @@ public class GetLoadBalancerAttributeResponseBody : Tea.TeaModel {
 
     public var tags: [GetLoadBalancerAttributeResponseBody.Tags]?
 
+    public var trafficMode: String?
+
     public var vpcId: String?
 
     public var zoneMappings: [GetLoadBalancerAttributeResponseBody.ZoneMappings]?
@@ -2661,6 +2671,9 @@ public class GetLoadBalancerAttributeResponseBody : Tea.TeaModel {
             }
             map["Tags"] = tmp
         }
+        if self.trafficMode != nil {
+            map["TrafficMode"] = self.trafficMode!
+        }
         if self.vpcId != nil {
             map["VpcId"] = self.vpcId!
         }
@@ -2709,6 +2722,9 @@ public class GetLoadBalancerAttributeResponseBody : Tea.TeaModel {
                 tmp.append(model)
             }
             self.tags = tmp
+        }
+        if dict.keys.contains("TrafficMode") {
+            self.trafficMode = dict["TrafficMode"] as! String
         }
         if dict.keys.contains("VpcId") {
             self.vpcId = dict["VpcId"] as! String
@@ -3194,6 +3210,8 @@ public class ListLoadBalancersRequest : Tea.TeaModel {
 
     public var tag: [ListLoadBalancersRequest.Tag]?
 
+    public var trafficMode: String?
+
     public var vpcIds: [String]?
 
     public var zoneIds: [String]?
@@ -3246,6 +3264,9 @@ public class ListLoadBalancersRequest : Tea.TeaModel {
             }
             map["Tag"] = tmp
         }
+        if self.trafficMode != nil {
+            map["TrafficMode"] = self.trafficMode!
+        }
         if self.vpcIds != nil {
             map["VpcIds"] = self.vpcIds!
         }
@@ -3293,6 +3314,9 @@ public class ListLoadBalancersRequest : Tea.TeaModel {
                 tmp.append(model)
             }
             self.tag = tmp
+        }
+        if dict.keys.contains("TrafficMode") {
+            self.trafficMode = dict["TrafficMode"] as! String
         }
         if dict.keys.contains("VpcIds") {
             self.vpcIds = dict["VpcIds"] as! [String]
@@ -4280,6 +4304,8 @@ public class ListServerGroupsResponseBody : Tea.TeaModel {
 
         public var serverCount: Int32?
 
+        public var serverFailoverMode: String?
+
         public var serverGroupId: String?
 
         public var serverGroupName: String?
@@ -4331,6 +4357,9 @@ public class ListServerGroupsResponseBody : Tea.TeaModel {
             }
             if self.serverCount != nil {
                 map["ServerCount"] = self.serverCount!
+            }
+            if self.serverFailoverMode != nil {
+                map["ServerFailoverMode"] = self.serverFailoverMode!
             }
             if self.serverGroupId != nil {
                 map["ServerGroupId"] = self.serverGroupId!
@@ -4385,6 +4414,9 @@ public class ListServerGroupsResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("ServerCount") {
                 self.serverCount = dict["ServerCount"] as! Int32
+            }
+            if dict.keys.contains("ServerFailoverMode") {
+                self.serverFailoverMode = dict["ServerFailoverMode"] as! String
             }
             if dict.keys.contains("ServerGroupId") {
                 self.serverGroupId = dict["ServerGroupId"] as! String
@@ -5635,6 +5667,8 @@ public class UpdateLoadBalancerAttributeRequest : Tea.TeaModel {
 
     public var loadBalancerName: String?
 
+    public var trafficMode: String?
+
     public override init() {
         super.init()
     }
@@ -5661,6 +5695,9 @@ public class UpdateLoadBalancerAttributeRequest : Tea.TeaModel {
         if self.loadBalancerName != nil {
             map["LoadBalancerName"] = self.loadBalancerName!
         }
+        if self.trafficMode != nil {
+            map["TrafficMode"] = self.trafficMode!
+        }
         return map
     }
 
@@ -5676,6 +5713,9 @@ public class UpdateLoadBalancerAttributeRequest : Tea.TeaModel {
         }
         if dict.keys.contains("LoadBalancerName") {
             self.loadBalancerName = dict["LoadBalancerName"] as! String
+        }
+        if dict.keys.contains("TrafficMode") {
+            self.trafficMode = dict["TrafficMode"] as! String
         }
     }
 }
@@ -6090,6 +6130,8 @@ public class UpdateServerGroupAttributeRequest : Tea.TeaModel {
 
     public var scheduler: String?
 
+    public var serverFailoverMode: String?
+
     public var serverGroupId: String?
 
     public var serverGroupName: String?
@@ -6125,6 +6167,9 @@ public class UpdateServerGroupAttributeRequest : Tea.TeaModel {
         if self.scheduler != nil {
             map["Scheduler"] = self.scheduler!
         }
+        if self.serverFailoverMode != nil {
+            map["ServerFailoverMode"] = self.serverFailoverMode!
+        }
         if self.serverGroupId != nil {
             map["ServerGroupId"] = self.serverGroupId!
         }
@@ -6153,6 +6198,9 @@ public class UpdateServerGroupAttributeRequest : Tea.TeaModel {
         }
         if dict.keys.contains("Scheduler") {
             self.scheduler = dict["Scheduler"] as! String
+        }
+        if dict.keys.contains("ServerFailoverMode") {
+            self.serverFailoverMode = dict["ServerFailoverMode"] as! String
         }
         if dict.keys.contains("ServerGroupId") {
             self.serverGroupId = dict["ServerGroupId"] as! String
