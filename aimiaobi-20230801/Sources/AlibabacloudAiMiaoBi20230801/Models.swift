@@ -50043,6 +50043,8 @@ public class SubmitEnterpriseVocAnalysisTaskRequest : Tea.TeaModel {
             }
         }
     }
+    public var apiKey: String?
+
     public var contentTags: [SubmitEnterpriseVocAnalysisTaskRequest.ContentTags]?
 
     public var contents: [SubmitEnterpriseVocAnalysisTaskRequest.Contents]?
@@ -50077,6 +50079,9 @@ public class SubmitEnterpriseVocAnalysisTaskRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.apiKey != nil {
+            map["ApiKey"] = self.apiKey!
+        }
         if self.contentTags != nil {
             var tmp : [Any] = []
             for k in self.contentTags! {
@@ -50123,6 +50128,9 @@ public class SubmitEnterpriseVocAnalysisTaskRequest : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("ApiKey") {
+            self.apiKey = dict["ApiKey"] as! String
+        }
         if dict.keys.contains("ContentTags") {
             var tmp : [SubmitEnterpriseVocAnalysisTaskRequest.ContentTags] = []
             for v in dict["ContentTags"] as! [Any] {
@@ -50181,6 +50189,8 @@ public class SubmitEnterpriseVocAnalysisTaskRequest : Tea.TeaModel {
 }
 
 public class SubmitEnterpriseVocAnalysisTaskShrinkRequest : Tea.TeaModel {
+    public var apiKey: String?
+
     public var contentTagsShrink: String?
 
     public var contentsShrink: String?
@@ -50215,6 +50225,9 @@ public class SubmitEnterpriseVocAnalysisTaskShrinkRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.apiKey != nil {
+            map["ApiKey"] = self.apiKey!
+        }
         if self.contentTagsShrink != nil {
             map["ContentTags"] = self.contentTagsShrink!
         }
@@ -50249,6 +50262,9 @@ public class SubmitEnterpriseVocAnalysisTaskShrinkRequest : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("ApiKey") {
+            self.apiKey = dict["ApiKey"] as! String
+        }
         if dict.keys.contains("ContentTags") {
             self.contentTagsShrink = dict["ContentTags"] as! String
         }

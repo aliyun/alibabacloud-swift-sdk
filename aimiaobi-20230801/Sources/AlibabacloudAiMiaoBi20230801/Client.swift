@@ -5425,6 +5425,9 @@ open class Client : AlibabacloudOpenApi.Client {
             request.filterTagsShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.filterTags, "FilterTags", "json")
         }
         var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.apiKey)) {
+            body["ApiKey"] = request.apiKey ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.contentTagsShrink)) {
             body["ContentTags"] = request.contentTagsShrink ?? "";
         }
