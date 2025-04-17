@@ -6674,7 +6674,7 @@ public class GetCipStatsResponseBody : Tea.TeaModel {
         }
         public var labelStatChart: [GetCipStatsResponseBody.Data.LabelStatChart]?
 
-        public var totalStat: [String: Any]?
+        public var totalStat: [String: [String: Any]]?
 
         public var uids: [String]?
 
@@ -6744,7 +6744,7 @@ public class GetCipStatsResponseBody : Tea.TeaModel {
                 self.labelStatChart = tmp
             }
             if dict.keys.contains("TotalStat") {
-                self.totalStat = dict["TotalStat"] as! [String: Any]
+                self.totalStat = dict["TotalStat"] as! [String: [String: Any]]
             }
             if dict.keys.contains("Uids") {
                 self.uids = dict["Uids"] as! [String]
