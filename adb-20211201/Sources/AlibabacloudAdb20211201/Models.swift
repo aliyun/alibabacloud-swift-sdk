@@ -25231,6 +25231,8 @@ public class DescribeDiagnosisSQLInfoRequest : Tea.TeaModel {
 
 public class DescribeDiagnosisSQLInfoResponseBody : Tea.TeaModel {
     public class StageInfos : Tea.TeaModel {
+        public var executionType: String?
+
         public var inputDataSize: Int64?
 
         public var inputRows: Int64?
@@ -25263,6 +25265,9 @@ public class DescribeDiagnosisSQLInfoResponseBody : Tea.TeaModel {
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
+            if self.executionType != nil {
+                map["ExecutionType"] = self.executionType!
+            }
             if self.inputDataSize != nil {
                 map["InputDataSize"] = self.inputDataSize!
             }
@@ -25294,6 +25299,9 @@ public class DescribeDiagnosisSQLInfoResponseBody : Tea.TeaModel {
         }
 
         public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("ExecutionType") {
+                self.executionType = dict["ExecutionType"] as! String
+            }
             if dict.keys.contains("InputDataSize") {
                 self.inputDataSize = dict["InputDataSize"] as! Int64
             }
