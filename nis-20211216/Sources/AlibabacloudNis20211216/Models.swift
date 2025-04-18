@@ -1718,11 +1718,15 @@ public class DescribeNisInspectionReportCheckItemsResponseBody : Tea.TeaModel {
 
             public var reason: String?
 
+            public var reasonCode: String?
+
             public var recommendationCode: String?
 
             public var riskLevel: String?
 
             public var suggestion: String?
+
+            public var suggestionCode: String?
 
             public override init() {
                 super.init()
@@ -1747,6 +1751,9 @@ public class DescribeNisInspectionReportCheckItemsResponseBody : Tea.TeaModel {
                 if self.reason != nil {
                     map["Reason"] = self.reason!
                 }
+                if self.reasonCode != nil {
+                    map["ReasonCode"] = self.reasonCode!
+                }
                 if self.recommendationCode != nil {
                     map["RecommendationCode"] = self.recommendationCode!
                 }
@@ -1755,6 +1762,9 @@ public class DescribeNisInspectionReportCheckItemsResponseBody : Tea.TeaModel {
                 }
                 if self.suggestion != nil {
                     map["Suggestion"] = self.suggestion!
+                }
+                if self.suggestionCode != nil {
+                    map["SuggestionCode"] = self.suggestionCode!
                 }
                 return map
             }
@@ -1769,6 +1779,9 @@ public class DescribeNisInspectionReportCheckItemsResponseBody : Tea.TeaModel {
                 if dict.keys.contains("Reason") {
                     self.reason = dict["Reason"] as! String
                 }
+                if dict.keys.contains("ReasonCode") {
+                    self.reasonCode = dict["ReasonCode"] as! String
+                }
                 if dict.keys.contains("RecommendationCode") {
                     self.recommendationCode = dict["RecommendationCode"] as! String
                 }
@@ -1777,6 +1790,9 @@ public class DescribeNisInspectionReportCheckItemsResponseBody : Tea.TeaModel {
                 }
                 if dict.keys.contains("Suggestion") {
                     self.suggestion = dict["Suggestion"] as! String
+                }
+                if dict.keys.contains("SuggestionCode") {
+                    self.suggestionCode = dict["SuggestionCode"] as! String
                 }
             }
         }
