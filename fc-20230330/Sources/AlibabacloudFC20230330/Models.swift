@@ -9982,6 +9982,8 @@ public class ListFunctionsRequest : Tea.TeaModel {
 
     public var fcVersion: String?
 
+    public var functionName: String?
+
     public var gpuType: String?
 
     public var limit: Int32?
@@ -10014,6 +10016,9 @@ public class ListFunctionsRequest : Tea.TeaModel {
         if self.fcVersion != nil {
             map["fcVersion"] = self.fcVersion!
         }
+        if self.functionName != nil {
+            map["functionName"] = self.functionName!
+        }
         if self.gpuType != nil {
             map["gpuType"] = self.gpuType!
         }
@@ -10045,6 +10050,9 @@ public class ListFunctionsRequest : Tea.TeaModel {
         }
         if dict.keys.contains("fcVersion") {
             self.fcVersion = dict["fcVersion"] as! String
+        }
+        if dict.keys.contains("functionName") {
+            self.functionName = dict["functionName"] as! String
         }
         if dict.keys.contains("gpuType") {
             self.gpuType = dict["gpuType"] as! String
@@ -10080,6 +10088,8 @@ public class ListFunctionsShrinkRequest : Tea.TeaModel {
 
     public var fcVersion: String?
 
+    public var functionName: String?
+
     public var gpuType: String?
 
     public var limit: Int32?
@@ -10112,6 +10122,9 @@ public class ListFunctionsShrinkRequest : Tea.TeaModel {
         if self.fcVersion != nil {
             map["fcVersion"] = self.fcVersion!
         }
+        if self.functionName != nil {
+            map["functionName"] = self.functionName!
+        }
         if self.gpuType != nil {
             map["gpuType"] = self.gpuType!
         }
@@ -10139,6 +10152,9 @@ public class ListFunctionsShrinkRequest : Tea.TeaModel {
         }
         if dict.keys.contains("fcVersion") {
             self.fcVersion = dict["fcVersion"] as! String
+        }
+        if dict.keys.contains("functionName") {
+            self.functionName = dict["functionName"] as! String
         }
         if dict.keys.contains("gpuType") {
             self.gpuType = dict["gpuType"] as! String

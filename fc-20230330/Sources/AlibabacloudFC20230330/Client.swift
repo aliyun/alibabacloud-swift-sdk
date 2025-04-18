@@ -1230,6 +1230,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.fcVersion)) {
             query["fcVersion"] = request.fcVersion ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.functionName)) {
+            query["functionName"] = request.functionName ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.gpuType)) {
             query["gpuType"] = request.gpuType ?? "";
         }
