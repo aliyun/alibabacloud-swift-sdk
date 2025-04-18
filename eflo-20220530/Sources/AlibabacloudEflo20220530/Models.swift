@@ -812,6 +812,8 @@ public class CreateElasticNetworkInterfaceRequest : Tea.TeaModel {
 
     public var regionId: String?
 
+    public var resourceGroupId: String?
+
     public var securityGroupId: String?
 
     public var vSwitchId: String?
@@ -849,6 +851,9 @@ public class CreateElasticNetworkInterfaceRequest : Tea.TeaModel {
         if self.regionId != nil {
             map["RegionId"] = self.regionId!
         }
+        if self.resourceGroupId != nil {
+            map["ResourceGroupId"] = self.resourceGroupId!
+        }
         if self.securityGroupId != nil {
             map["SecurityGroupId"] = self.securityGroupId!
         }
@@ -879,6 +884,9 @@ public class CreateElasticNetworkInterfaceRequest : Tea.TeaModel {
         }
         if dict.keys.contains("RegionId") {
             self.regionId = dict["RegionId"] as! String
+        }
+        if dict.keys.contains("ResourceGroupId") {
+            self.resourceGroupId = dict["ResourceGroupId"] as! String
         }
         if dict.keys.contains("SecurityGroupId") {
             self.securityGroupId = dict["SecurityGroupId"] as! String
@@ -5513,6 +5521,8 @@ public class GetElasticNetworkInterfaceResponseBody : Tea.TeaModel {
 
         public var regionId: String?
 
+        public var resourceGroupId: String?
+
         public var securityGroupId: String?
 
         public var status: String?
@@ -5588,6 +5598,9 @@ public class GetElasticNetworkInterfaceResponseBody : Tea.TeaModel {
             }
             if self.regionId != nil {
                 map["RegionId"] = self.regionId!
+            }
+            if self.resourceGroupId != nil {
+                map["ResourceGroupId"] = self.resourceGroupId!
             }
             if self.securityGroupId != nil {
                 map["SecurityGroupId"] = self.securityGroupId!
@@ -5668,6 +5681,9 @@ public class GetElasticNetworkInterfaceResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("RegionId") {
                 self.regionId = dict["RegionId"] as! String
+            }
+            if dict.keys.contains("ResourceGroupId") {
+                self.resourceGroupId = dict["ResourceGroupId"] as! String
             }
             if dict.keys.contains("SecurityGroupId") {
                 self.securityGroupId = dict["SecurityGroupId"] as! String
@@ -7887,6 +7903,8 @@ public class GetLeniPrivateIpAddressResponseBody : Tea.TeaModel {
 
         public var regionId: String?
 
+        public var resourceGroupId: String?
+
         public var status: String?
 
         public override init() {
@@ -7927,6 +7945,9 @@ public class GetLeniPrivateIpAddressResponseBody : Tea.TeaModel {
             if self.regionId != nil {
                 map["RegionId"] = self.regionId!
             }
+            if self.resourceGroupId != nil {
+                map["ResourceGroupId"] = self.resourceGroupId!
+            }
             if self.status != nil {
                 map["Status"] = self.status!
             }
@@ -7957,6 +7978,9 @@ public class GetLeniPrivateIpAddressResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("RegionId") {
                 self.regionId = dict["RegionId"] as! String
+            }
+            if dict.keys.contains("ResourceGroupId") {
+                self.resourceGroupId = dict["ResourceGroupId"] as! String
             }
             if dict.keys.contains("Status") {
                 self.status = dict["Status"] as! String
@@ -8140,6 +8164,8 @@ public class GetLniPrivateIpAddressResponseBody : Tea.TeaModel {
 
         public var regionId: String?
 
+        public var resourceGroupId: String?
+
         public var status: String?
 
         public var subnetId: String?
@@ -8182,6 +8208,9 @@ public class GetLniPrivateIpAddressResponseBody : Tea.TeaModel {
             if self.regionId != nil {
                 map["RegionId"] = self.regionId!
             }
+            if self.resourceGroupId != nil {
+                map["ResourceGroupId"] = self.resourceGroupId!
+            }
             if self.status != nil {
                 map["Status"] = self.status!
             }
@@ -8215,6 +8244,9 @@ public class GetLniPrivateIpAddressResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("RegionId") {
                 self.regionId = dict["RegionId"] as! String
+            }
+            if dict.keys.contains("ResourceGroupId") {
+                self.resourceGroupId = dict["ResourceGroupId"] as! String
             }
             if dict.keys.contains("Status") {
                 self.status = dict["Status"] as! String
@@ -8582,6 +8614,8 @@ public class GetNetworkInterfaceResponseBody : Tea.TeaModel {
 
         public var regionId: String?
 
+        public var resourceGroupId: String?
+
         public var serviceMac: String?
 
         public var status: String?
@@ -8647,6 +8681,9 @@ public class GetNetworkInterfaceResponseBody : Tea.TeaModel {
             if self.regionId != nil {
                 map["RegionId"] = self.regionId!
             }
+            if self.resourceGroupId != nil {
+                map["ResourceGroupId"] = self.resourceGroupId!
+            }
             if self.serviceMac != nil {
                 map["ServiceMac"] = self.serviceMac!
             }
@@ -8709,6 +8746,9 @@ public class GetNetworkInterfaceResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("RegionId") {
                 self.regionId = dict["RegionId"] as! String
+            }
+            if dict.keys.contains("ResourceGroupId") {
+                self.resourceGroupId = dict["ResourceGroupId"] as! String
             }
             if dict.keys.contains("ServiceMac") {
                 self.serviceMac = dict["ServiceMac"] as! String
@@ -12477,6 +12517,8 @@ public class ListElasticNetworkInterfacesRequest : Tea.TeaModel {
 
     public var regionId: String?
 
+    public var resourceGroupId: String?
+
     public var status: String?
 
     public var type: String?
@@ -12522,6 +12564,9 @@ public class ListElasticNetworkInterfacesRequest : Tea.TeaModel {
         if self.regionId != nil {
             map["RegionId"] = self.regionId!
         }
+        if self.resourceGroupId != nil {
+            map["ResourceGroupId"] = self.resourceGroupId!
+        }
         if self.status != nil {
             map["Status"] = self.status!
         }
@@ -12561,6 +12606,9 @@ public class ListElasticNetworkInterfacesRequest : Tea.TeaModel {
         }
         if dict.keys.contains("RegionId") {
             self.regionId = dict["RegionId"] as! String
+        }
+        if dict.keys.contains("ResourceGroupId") {
+            self.resourceGroupId = dict["ResourceGroupId"] as! String
         }
         if dict.keys.contains("Status") {
             self.status = dict["Status"] as! String
@@ -12604,6 +12652,8 @@ public class ListElasticNetworkInterfacesResponseBody : Tea.TeaModel {
             public var nodeId: String?
 
             public var regionId: String?
+
+            public var resourceGroupId: String?
 
             public var securityGroupId: String?
 
@@ -12664,6 +12714,9 @@ public class ListElasticNetworkInterfacesResponseBody : Tea.TeaModel {
                 if self.regionId != nil {
                     map["RegionId"] = self.regionId!
                 }
+                if self.resourceGroupId != nil {
+                    map["ResourceGroupId"] = self.resourceGroupId!
+                }
                 if self.securityGroupId != nil {
                     map["SecurityGroupId"] = self.securityGroupId!
                 }
@@ -12718,6 +12771,9 @@ public class ListElasticNetworkInterfacesResponseBody : Tea.TeaModel {
                 }
                 if dict.keys.contains("RegionId") {
                     self.regionId = dict["RegionId"] as! String
+                }
+                if dict.keys.contains("ResourceGroupId") {
+                    self.resourceGroupId = dict["ResourceGroupId"] as! String
                 }
                 if dict.keys.contains("SecurityGroupId") {
                     self.securityGroupId = dict["SecurityGroupId"] as! String
@@ -14919,6 +14975,8 @@ public class ListLeniPrivateIpAddressesRequest : Tea.TeaModel {
 
     public var regionId: String?
 
+    public var resourceGroupId: String?
+
     public var status: String?
 
     public override init() {
@@ -14953,6 +15011,9 @@ public class ListLeniPrivateIpAddressesRequest : Tea.TeaModel {
         if self.regionId != nil {
             map["RegionId"] = self.regionId!
         }
+        if self.resourceGroupId != nil {
+            map["ResourceGroupId"] = self.resourceGroupId!
+        }
         if self.status != nil {
             map["Status"] = self.status!
         }
@@ -14977,6 +15038,9 @@ public class ListLeniPrivateIpAddressesRequest : Tea.TeaModel {
         }
         if dict.keys.contains("RegionId") {
             self.regionId = dict["RegionId"] as! String
+        }
+        if dict.keys.contains("ResourceGroupId") {
+            self.resourceGroupId = dict["ResourceGroupId"] as! String
         }
         if dict.keys.contains("Status") {
             self.status = dict["Status"] as! String
@@ -15081,6 +15145,8 @@ public class ListLeniPrivateIpAddressesResponseBody : Tea.TeaModel {
         }
         public var data: [ListLeniPrivateIpAddressesResponseBody.Content.Data]?
 
+        public var resourceGroupId: String?
+
         public var total: Int64?
 
         public override init() {
@@ -15104,6 +15170,9 @@ public class ListLeniPrivateIpAddressesResponseBody : Tea.TeaModel {
                 }
                 map["Data"] = tmp
             }
+            if self.resourceGroupId != nil {
+                map["ResourceGroupId"] = self.resourceGroupId!
+            }
             if self.total != nil {
                 map["Total"] = self.total!
             }
@@ -15121,6 +15190,9 @@ public class ListLeniPrivateIpAddressesResponseBody : Tea.TeaModel {
                     tmp.append(model)
                 }
                 self.data = tmp
+            }
+            if dict.keys.contains("ResourceGroupId") {
+                self.resourceGroupId = dict["ResourceGroupId"] as! String
             }
             if dict.keys.contains("Total") {
                 self.total = dict["Total"] as! Int64
@@ -15257,6 +15329,8 @@ public class ListLniPrivateIpAddressRequest : Tea.TeaModel {
 
     public var regionId: String?
 
+    public var resourceGroupId: String?
+
     public override init() {
         super.init()
     }
@@ -15295,6 +15369,9 @@ public class ListLniPrivateIpAddressRequest : Tea.TeaModel {
         if self.regionId != nil {
             map["RegionId"] = self.regionId!
         }
+        if self.resourceGroupId != nil {
+            map["ResourceGroupId"] = self.resourceGroupId!
+        }
         return map
     }
 
@@ -15322,6 +15399,9 @@ public class ListLniPrivateIpAddressRequest : Tea.TeaModel {
         }
         if dict.keys.contains("RegionId") {
             self.regionId = dict["RegionId"] as! String
+        }
+        if dict.keys.contains("ResourceGroupId") {
+            self.resourceGroupId = dict["ResourceGroupId"] as! String
         }
     }
 }
@@ -15423,6 +15503,8 @@ public class ListLniPrivateIpAddressResponseBody : Tea.TeaModel {
         }
         public var data: [ListLniPrivateIpAddressResponseBody.Content.Data]?
 
+        public var resourceGroupId: String?
+
         public var total: Int64?
 
         public override init() {
@@ -15446,6 +15528,9 @@ public class ListLniPrivateIpAddressResponseBody : Tea.TeaModel {
                 }
                 map["Data"] = tmp
             }
+            if self.resourceGroupId != nil {
+                map["ResourceGroupId"] = self.resourceGroupId!
+            }
             if self.total != nil {
                 map["Total"] = self.total!
             }
@@ -15463,6 +15548,9 @@ public class ListLniPrivateIpAddressResponseBody : Tea.TeaModel {
                     tmp.append(model)
                 }
                 self.data = tmp
+            }
+            if dict.keys.contains("ResourceGroupId") {
+                self.resourceGroupId = dict["ResourceGroupId"] as! String
             }
             if dict.keys.contains("Total") {
                 self.total = dict["Total"] as! Int64
@@ -15597,6 +15685,8 @@ public class ListNetworkInterfacesRequest : Tea.TeaModel {
 
     public var regionId: String?
 
+    public var resourceGroupId: String?
+
     public var subnetId: String?
 
     public var vpdId: String?
@@ -15636,6 +15726,9 @@ public class ListNetworkInterfacesRequest : Tea.TeaModel {
         if self.regionId != nil {
             map["RegionId"] = self.regionId!
         }
+        if self.resourceGroupId != nil {
+            map["ResourceGroupId"] = self.resourceGroupId!
+        }
         if self.subnetId != nil {
             map["SubnetId"] = self.subnetId!
         }
@@ -15666,6 +15759,9 @@ public class ListNetworkInterfacesRequest : Tea.TeaModel {
         }
         if dict.keys.contains("RegionId") {
             self.regionId = dict["RegionId"] as! String
+        }
+        if dict.keys.contains("ResourceGroupId") {
+            self.resourceGroupId = dict["ResourceGroupId"] as! String
         }
         if dict.keys.contains("SubnetId") {
             self.subnetId = dict["SubnetId"] as! String
@@ -15876,6 +15972,8 @@ public class ListNetworkInterfacesResponseBody : Tea.TeaModel {
 
             public var regionId: String?
 
+            public var resourceGroupId: String?
+
             public var serviceMac: String?
 
             public var status: String?
@@ -15941,6 +16039,9 @@ public class ListNetworkInterfacesResponseBody : Tea.TeaModel {
                 if self.regionId != nil {
                     map["RegionId"] = self.regionId!
                 }
+                if self.resourceGroupId != nil {
+                    map["ResourceGroupId"] = self.resourceGroupId!
+                }
                 if self.serviceMac != nil {
                     map["ServiceMac"] = self.serviceMac!
                 }
@@ -16003,6 +16104,9 @@ public class ListNetworkInterfacesResponseBody : Tea.TeaModel {
                 }
                 if dict.keys.contains("RegionId") {
                     self.regionId = dict["RegionId"] as! String
+                }
+                if dict.keys.contains("ResourceGroupId") {
+                    self.resourceGroupId = dict["ResourceGroupId"] as! String
                 }
                 if dict.keys.contains("ServiceMac") {
                     self.serviceMac = dict["ServiceMac"] as! String
