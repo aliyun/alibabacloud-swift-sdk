@@ -12742,7 +12742,11 @@ public class GetTemplateParameterConstraintsResponseBody : Tea.TeaModel {
 
             public var behaviorReason: String?
 
+            public var propertiesData: String?
+
             public var propertyName: String?
+
+            public var requestInfo: String?
 
             public var resourceName: String?
 
@@ -12771,8 +12775,14 @@ public class GetTemplateParameterConstraintsResponseBody : Tea.TeaModel {
                 if self.behaviorReason != nil {
                     map["BehaviorReason"] = self.behaviorReason!
                 }
+                if self.propertiesData != nil {
+                    map["PropertiesData"] = self.propertiesData!
+                }
                 if self.propertyName != nil {
                     map["PropertyName"] = self.propertyName!
+                }
+                if self.requestInfo != nil {
+                    map["RequestInfo"] = self.requestInfo!
                 }
                 if self.resourceName != nil {
                     map["ResourceName"] = self.resourceName!
@@ -12793,8 +12803,14 @@ public class GetTemplateParameterConstraintsResponseBody : Tea.TeaModel {
                 if dict.keys.contains("BehaviorReason") {
                     self.behaviorReason = dict["BehaviorReason"] as! String
                 }
+                if dict.keys.contains("PropertiesData") {
+                    self.propertiesData = dict["PropertiesData"] as! String
+                }
                 if dict.keys.contains("PropertyName") {
                     self.propertyName = dict["PropertyName"] as! String
+                }
+                if dict.keys.contains("RequestInfo") {
+                    self.requestInfo = dict["RequestInfo"] as! String
                 }
                 if dict.keys.contains("ResourceName") {
                     self.resourceName = dict["ResourceName"] as! String
