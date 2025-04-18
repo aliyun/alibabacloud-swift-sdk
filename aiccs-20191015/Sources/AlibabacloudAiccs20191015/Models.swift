@@ -28358,6 +28358,8 @@ public class ListTaskDetailResponse : Tea.TeaModel {
 public class LlmSmartCallRequest : Tea.TeaModel {
     public var applicationCode: String?
 
+    public var bizParam: [String: Any]?
+
     public var calledNumber: String?
 
     public var callerNumber: String?
@@ -28385,6 +28387,9 @@ public class LlmSmartCallRequest : Tea.TeaModel {
         if self.applicationCode != nil {
             map["ApplicationCode"] = self.applicationCode!
         }
+        if self.bizParam != nil {
+            map["BizParam"] = self.bizParam!
+        }
         if self.calledNumber != nil {
             map["CalledNumber"] = self.calledNumber!
         }
@@ -28407,6 +28412,9 @@ public class LlmSmartCallRequest : Tea.TeaModel {
         if dict.keys.contains("ApplicationCode") {
             self.applicationCode = dict["ApplicationCode"] as! String
         }
+        if dict.keys.contains("BizParam") {
+            self.bizParam = dict["BizParam"] as! [String: Any]
+        }
         if dict.keys.contains("CalledNumber") {
             self.calledNumber = dict["CalledNumber"] as! String
         }
@@ -28427,6 +28435,8 @@ public class LlmSmartCallRequest : Tea.TeaModel {
 
 public class LlmSmartCallShrinkRequest : Tea.TeaModel {
     public var applicationCode: String?
+
+    public var bizParamShrink: String?
 
     public var calledNumber: String?
 
@@ -28455,6 +28465,9 @@ public class LlmSmartCallShrinkRequest : Tea.TeaModel {
         if self.applicationCode != nil {
             map["ApplicationCode"] = self.applicationCode!
         }
+        if self.bizParamShrink != nil {
+            map["BizParam"] = self.bizParamShrink!
+        }
         if self.calledNumber != nil {
             map["CalledNumber"] = self.calledNumber!
         }
@@ -28476,6 +28489,9 @@ public class LlmSmartCallShrinkRequest : Tea.TeaModel {
     public override func fromMap(_ dict: [String: Any]) -> Void {
         if dict.keys.contains("ApplicationCode") {
             self.applicationCode = dict["ApplicationCode"] as! String
+        }
+        if dict.keys.contains("BizParam") {
+            self.bizParamShrink = dict["BizParam"] as! String
         }
         if dict.keys.contains("CalledNumber") {
             self.calledNumber = dict["CalledNumber"] as! String

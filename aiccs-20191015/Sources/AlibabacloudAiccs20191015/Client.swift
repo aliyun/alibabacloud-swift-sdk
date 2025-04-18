@@ -4544,6 +4544,9 @@ open class Client : AlibabacloudOpenApi.Client {
         try TeaUtils.Client.validateModel(tmpReq)
         var request: LlmSmartCallShrinkRequest = LlmSmartCallShrinkRequest([:])
         AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.bizParam)) {
+            request.bizParamShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.bizParam, "BizParam", "json")
+        }
         if (!TeaUtils.Client.isUnset(tmpReq.promptParam)) {
             request.promptParamShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.promptParam, "PromptParam", "json")
         }
@@ -4553,6 +4556,9 @@ open class Client : AlibabacloudOpenApi.Client {
         var query: [String: Any] = [:]
         if (!TeaUtils.Client.isUnset(request.applicationCode)) {
             query["ApplicationCode"] = request.applicationCode ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.bizParamShrink)) {
+            query["BizParam"] = request.bizParamShrink ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.calledNumber)) {
             query["CalledNumber"] = request.calledNumber ?? "";
