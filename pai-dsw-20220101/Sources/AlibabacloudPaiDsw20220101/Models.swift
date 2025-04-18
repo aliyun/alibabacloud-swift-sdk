@@ -5,6 +5,60 @@ import AlibabacloudOpenApi
 import AlibabaCloudOpenApiUtil
 import AlibabacloudEndpointUtil
 
+public class BandwidthLimit : Tea.TeaModel {
+    public var egressRate: String?
+
+    public var egressWhitelists: [String]?
+
+    public var ingressRate: String?
+
+    public var ingressWhitelists: [String]?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.egressRate != nil {
+            map["EgressRate"] = self.egressRate!
+        }
+        if self.egressWhitelists != nil {
+            map["EgressWhitelists"] = self.egressWhitelists!
+        }
+        if self.ingressRate != nil {
+            map["IngressRate"] = self.ingressRate!
+        }
+        if self.ingressWhitelists != nil {
+            map["IngressWhitelists"] = self.ingressWhitelists!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("EgressRate") {
+            self.egressRate = dict["EgressRate"] as! String
+        }
+        if dict.keys.contains("EgressWhitelists") {
+            self.egressWhitelists = dict["EgressWhitelists"] as! [String]
+        }
+        if dict.keys.contains("IngressRate") {
+            self.ingressRate = dict["IngressRate"] as! String
+        }
+        if dict.keys.contains("IngressWhitelists") {
+            self.ingressWhitelists = dict["IngressWhitelists"] as! [String]
+        }
+    }
+}
+
 public class CredentialConfig : Tea.TeaModel {
     public class Configs : Tea.TeaModel {
         public class Roles : Tea.TeaModel {
@@ -299,6 +353,94 @@ public class DemoCategory : Tea.TeaModel {
                 tmp.append(model)
             }
             self.subCategories = tmp
+        }
+    }
+}
+
+public class DynamicMount : Tea.TeaModel {
+    public var enable: Bool?
+
+    public var mountPoints: [DynamicMountPoint]?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.enable != nil {
+            map["Enable"] = self.enable!
+        }
+        if self.mountPoints != nil {
+            var tmp : [Any] = []
+            for k in self.mountPoints! {
+                tmp.append(k.toMap())
+            }
+            map["MountPoints"] = tmp
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("Enable") {
+            self.enable = dict["Enable"] as! Bool
+        }
+        if dict.keys.contains("MountPoints") {
+            var tmp : [DynamicMountPoint] = []
+            for v in dict["MountPoints"] as! [Any] {
+                var model = DynamicMountPoint()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.mountPoints = tmp
+        }
+    }
+}
+
+public class DynamicMountPoint : Tea.TeaModel {
+    public var options: String?
+
+    public var rootPath: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.options != nil {
+            map["Options"] = self.options!
+        }
+        if self.rootPath != nil {
+            map["RootPath"] = self.rootPath!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("Options") {
+            self.options = dict["Options"] as! String
+        }
+        if dict.keys.contains("RootPath") {
+            self.rootPath = dict["RootPath"] as! String
         }
     }
 }
@@ -968,6 +1110,8 @@ public class CreateInstanceRequest : Tea.TeaModel {
 
         public var datasetVersion: String?
 
+        public var dynamic_: Bool?
+
         public var mountAccess: String?
 
         public var mountPath: String?
@@ -998,6 +1142,9 @@ public class CreateInstanceRequest : Tea.TeaModel {
             if self.datasetVersion != nil {
                 map["DatasetVersion"] = self.datasetVersion!
             }
+            if self.dynamic_ != nil {
+                map["Dynamic"] = self.dynamic_!
+            }
             if self.mountAccess != nil {
                 map["MountAccess"] = self.mountAccess!
             }
@@ -1022,6 +1169,9 @@ public class CreateInstanceRequest : Tea.TeaModel {
             }
             if dict.keys.contains("DatasetVersion") {
                 self.datasetVersion = dict["DatasetVersion"] as! String
+            }
+            if dict.keys.contains("Dynamic") {
+                self.dynamic_ = dict["Dynamic"] as! Bool
             }
             if dict.keys.contains("MountAccess") {
                 self.mountAccess = dict["MountAccess"] as! String
@@ -1176,6 +1326,8 @@ public class CreateInstanceRequest : Tea.TeaModel {
         }
     }
     public class UserVpc : Tea.TeaModel {
+        public var bandwidthLimit: BandwidthLimit?
+
         public var defaultRoute: String?
 
         public var extendedCIDRs: [String]?
@@ -1198,10 +1350,14 @@ public class CreateInstanceRequest : Tea.TeaModel {
         }
 
         public override func validate() throws -> Void {
+            try self.bandwidthLimit?.validate()
         }
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
+            if self.bandwidthLimit != nil {
+                map["BandwidthLimit"] = self.bandwidthLimit?.toMap()
+            }
             if self.defaultRoute != nil {
                 map["DefaultRoute"] = self.defaultRoute!
             }
@@ -1228,6 +1384,11 @@ public class CreateInstanceRequest : Tea.TeaModel {
         }
 
         public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("BandwidthLimit") {
+                var model = BandwidthLimit()
+                model.fromMap(dict["BandwidthLimit"] as! [String: Any])
+                self.bandwidthLimit = model
+            }
             if dict.keys.contains("DefaultRoute") {
                 self.defaultRoute = dict["DefaultRoute"] as! String
             }
@@ -1267,6 +1428,8 @@ public class CreateInstanceRequest : Tea.TeaModel {
     public var datasets: [CreateInstanceRequest.Datasets]?
 
     public var driver: String?
+
+    public var dynamicMount: DynamicMount?
 
     public var ecsSpec: String?
 
@@ -1310,6 +1473,7 @@ public class CreateInstanceRequest : Tea.TeaModel {
     public override func validate() throws -> Void {
         try self.affinity?.validate()
         try self.credentialConfig?.validate()
+        try self.dynamicMount?.validate()
         try self.requestedResource?.validate()
         try self.userVpc?.validate()
     }
@@ -1341,6 +1505,9 @@ public class CreateInstanceRequest : Tea.TeaModel {
         }
         if self.driver != nil {
             map["Driver"] = self.driver!
+        }
+        if self.dynamicMount != nil {
+            map["DynamicMount"] = self.dynamicMount?.toMap()
         }
         if self.ecsSpec != nil {
             map["EcsSpec"] = self.ecsSpec!
@@ -1436,6 +1603,11 @@ public class CreateInstanceRequest : Tea.TeaModel {
         }
         if dict.keys.contains("Driver") {
             self.driver = dict["Driver"] as! String
+        }
+        if dict.keys.contains("DynamicMount") {
+            var model = DynamicMount()
+            model.fromMap(dict["DynamicMount"] as! [String: Any])
+            self.dynamicMount = model
         }
         if dict.keys.contains("EcsSpec") {
             self.ecsSpec = dict["EcsSpec"] as! String
@@ -2905,6 +3077,8 @@ public class GetInstanceResponseBody : Tea.TeaModel {
 
         public var datasetVersion: String?
 
+        public var dynamic_: Bool?
+
         public var mountAccess: String?
 
         public var mountPath: String?
@@ -2935,6 +3109,9 @@ public class GetInstanceResponseBody : Tea.TeaModel {
             if self.datasetVersion != nil {
                 map["DatasetVersion"] = self.datasetVersion!
             }
+            if self.dynamic_ != nil {
+                map["Dynamic"] = self.dynamic_!
+            }
             if self.mountAccess != nil {
                 map["MountAccess"] = self.mountAccess!
             }
@@ -2959,6 +3136,9 @@ public class GetInstanceResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("DatasetVersion") {
                 self.datasetVersion = dict["DatasetVersion"] as! String
+            }
+            if dict.keys.contains("Dynamic") {
+                self.dynamic_ = dict["Dynamic"] as! Bool
             }
             if dict.keys.contains("MountAccess") {
                 self.mountAccess = dict["MountAccess"] as! String
@@ -3466,6 +3646,8 @@ public class GetInstanceResponseBody : Tea.TeaModel {
         }
     }
     public class UserVpc : Tea.TeaModel {
+        public var bandwidthLimit: BandwidthLimit?
+
         public var defaultRoute: String?
 
         public var extendedCIDRs: [String]?
@@ -3488,10 +3670,14 @@ public class GetInstanceResponseBody : Tea.TeaModel {
         }
 
         public override func validate() throws -> Void {
+            try self.bandwidthLimit?.validate()
         }
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
+            if self.bandwidthLimit != nil {
+                map["BandwidthLimit"] = self.bandwidthLimit?.toMap()
+            }
             if self.defaultRoute != nil {
                 map["DefaultRoute"] = self.defaultRoute!
             }
@@ -3518,6 +3704,11 @@ public class GetInstanceResponseBody : Tea.TeaModel {
         }
 
         public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("BandwidthLimit") {
+                var model = BandwidthLimit()
+                model.fromMap(dict["BandwidthLimit"] as! [String: Any])
+                self.bandwidthLimit = model
+            }
             if dict.keys.contains("DefaultRoute") {
                 self.defaultRoute = dict["DefaultRoute"] as! String
             }
@@ -3563,6 +3754,8 @@ public class GetInstanceResponseBody : Tea.TeaModel {
     public var datasets: [GetInstanceResponseBody.Datasets]?
 
     public var driver: String?
+
+    public var dynamicMount: DynamicMount?
 
     public var ecsSpec: String?
 
@@ -3656,6 +3849,7 @@ public class GetInstanceResponseBody : Tea.TeaModel {
     public override func validate() throws -> Void {
         try self.affinity?.validate()
         try self.credentialConfig?.validate()
+        try self.dynamicMount?.validate()
         try self.idleInstanceCuller?.validate()
         try self.instanceShutdownTimer?.validate()
         try self.latestSnapshot?.validate()
@@ -3700,6 +3894,9 @@ public class GetInstanceResponseBody : Tea.TeaModel {
         }
         if self.driver != nil {
             map["Driver"] = self.driver!
+        }
+        if self.dynamicMount != nil {
+            map["DynamicMount"] = self.dynamicMount?.toMap()
         }
         if self.ecsSpec != nil {
             map["EcsSpec"] = self.ecsSpec!
@@ -3883,6 +4080,11 @@ public class GetInstanceResponseBody : Tea.TeaModel {
         }
         if dict.keys.contains("Driver") {
             self.driver = dict["Driver"] as! String
+        }
+        if dict.keys.contains("DynamicMount") {
+            var model = DynamicMount()
+            model.fromMap(dict["DynamicMount"] as! [String: Any])
+            self.dynamicMount = model
         }
         if dict.keys.contains("EcsSpec") {
             self.ecsSpec = dict["EcsSpec"] as! String
@@ -6966,6 +7168,10 @@ public class ListInstancesRequest : Tea.TeaModel {
 
     public var order: String?
 
+    public var oversoldInfo: String?
+
+    public var oversoldType: String?
+
     public var pageNumber: Int64?
 
     public var pageSize: Int64?
@@ -7046,6 +7252,12 @@ public class ListInstancesRequest : Tea.TeaModel {
         }
         if self.order != nil {
             map["Order"] = self.order!
+        }
+        if self.oversoldInfo != nil {
+            map["OversoldInfo"] = self.oversoldInfo!
+        }
+        if self.oversoldType != nil {
+            map["OversoldType"] = self.oversoldType!
         }
         if self.pageNumber != nil {
             map["PageNumber"] = self.pageNumber!
@@ -7130,6 +7342,12 @@ public class ListInstancesRequest : Tea.TeaModel {
         if dict.keys.contains("Order") {
             self.order = dict["Order"] as! String
         }
+        if dict.keys.contains("OversoldInfo") {
+            self.oversoldInfo = dict["OversoldInfo"] as! String
+        }
+        if dict.keys.contains("OversoldType") {
+            self.oversoldType = dict["OversoldType"] as! String
+        }
         if dict.keys.contains("PageNumber") {
             self.pageNumber = dict["PageNumber"] as! Int64
         }
@@ -7199,6 +7417,10 @@ public class ListInstancesShrinkRequest : Tea.TeaModel {
     public var minMemory: String?
 
     public var order: String?
+
+    public var oversoldInfo: String?
+
+    public var oversoldType: String?
 
     public var pageNumber: Int64?
 
@@ -7281,6 +7503,12 @@ public class ListInstancesShrinkRequest : Tea.TeaModel {
         if self.order != nil {
             map["Order"] = self.order!
         }
+        if self.oversoldInfo != nil {
+            map["OversoldInfo"] = self.oversoldInfo!
+        }
+        if self.oversoldType != nil {
+            map["OversoldType"] = self.oversoldType!
+        }
         if self.pageNumber != nil {
             map["PageNumber"] = self.pageNumber!
         }
@@ -7359,6 +7587,12 @@ public class ListInstancesShrinkRequest : Tea.TeaModel {
         }
         if dict.keys.contains("Order") {
             self.order = dict["Order"] as! String
+        }
+        if dict.keys.contains("OversoldInfo") {
+            self.oversoldInfo = dict["OversoldInfo"] as! String
+        }
+        if dict.keys.contains("OversoldType") {
+            self.oversoldType = dict["OversoldType"] as! String
         }
         if dict.keys.contains("PageNumber") {
             self.pageNumber = dict["PageNumber"] as! Int64
@@ -7508,6 +7742,8 @@ public class ListInstancesResponseBody : Tea.TeaModel {
 
             public var datasetVersion: String?
 
+            public var dynamic_: Bool?
+
             public var mountAccess: String?
 
             public var mountPath: String?
@@ -7538,6 +7774,9 @@ public class ListInstancesResponseBody : Tea.TeaModel {
                 if self.datasetVersion != nil {
                     map["DatasetVersion"] = self.datasetVersion!
                 }
+                if self.dynamic_ != nil {
+                    map["Dynamic"] = self.dynamic_!
+                }
                 if self.mountAccess != nil {
                     map["MountAccess"] = self.mountAccess!
                 }
@@ -7562,6 +7801,9 @@ public class ListInstancesResponseBody : Tea.TeaModel {
                 }
                 if dict.keys.contains("DatasetVersion") {
                     self.datasetVersion = dict["DatasetVersion"] as! String
+                }
+                if dict.keys.contains("Dynamic") {
+                    self.dynamic_ = dict["Dynamic"] as! Bool
                 }
                 if dict.keys.contains("MountAccess") {
                     self.mountAccess = dict["MountAccess"] as! String
@@ -8024,6 +8266,8 @@ public class ListInstancesResponseBody : Tea.TeaModel {
             }
         }
         public class UserVpc : Tea.TeaModel {
+            public var bandwidthLimit: BandwidthLimit?
+
             public var defaultRoute: String?
 
             public var extendedCIDRs: [String]?
@@ -8046,10 +8290,14 @@ public class ListInstancesResponseBody : Tea.TeaModel {
             }
 
             public override func validate() throws -> Void {
+                try self.bandwidthLimit?.validate()
             }
 
             public override func toMap() -> [String : Any] {
                 var map = super.toMap()
+                if self.bandwidthLimit != nil {
+                    map["BandwidthLimit"] = self.bandwidthLimit?.toMap()
+                }
                 if self.defaultRoute != nil {
                     map["DefaultRoute"] = self.defaultRoute!
                 }
@@ -8076,6 +8324,11 @@ public class ListInstancesResponseBody : Tea.TeaModel {
             }
 
             public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("BandwidthLimit") {
+                    var model = BandwidthLimit()
+                    model.fromMap(dict["BandwidthLimit"] as! [String: Any])
+                    self.bandwidthLimit = model
+                }
                 if dict.keys.contains("DefaultRoute") {
                     self.defaultRoute = dict["DefaultRoute"] as! String
                 }
@@ -8120,6 +8373,8 @@ public class ListInstancesResponseBody : Tea.TeaModel {
 
         public var driver: String?
 
+        public var dynamicMount: DynamicMount?
+
         public var ecsSpec: String?
 
         public var environmentVariables: [String: String]?
@@ -8153,6 +8408,10 @@ public class ListInstancesResponseBody : Tea.TeaModel {
         public var labels: [ListInstancesResponseBody.Instances.Labels]?
 
         public var latestSnapshot: ListInstancesResponseBody.Instances.LatestSnapshot?
+
+        public var oversoldInfo: String?
+
+        public var oversoldType: String?
 
         public var paymentType: String?
 
@@ -8200,6 +8459,7 @@ public class ListInstancesResponseBody : Tea.TeaModel {
         public override func validate() throws -> Void {
             try self.affinity?.validate()
             try self.credentialConfig?.validate()
+            try self.dynamicMount?.validate()
             try self.idleInstanceCuller?.validate()
             try self.instanceShutdownTimer?.validate()
             try self.latestSnapshot?.validate()
@@ -8240,6 +8500,9 @@ public class ListInstancesResponseBody : Tea.TeaModel {
             }
             if self.driver != nil {
                 map["Driver"] = self.driver!
+            }
+            if self.dynamicMount != nil {
+                map["DynamicMount"] = self.dynamicMount?.toMap()
             }
             if self.ecsSpec != nil {
                 map["EcsSpec"] = self.ecsSpec!
@@ -8299,6 +8562,12 @@ public class ListInstancesResponseBody : Tea.TeaModel {
             }
             if self.latestSnapshot != nil {
                 map["LatestSnapshot"] = self.latestSnapshot?.toMap()
+            }
+            if self.oversoldInfo != nil {
+                map["OversoldInfo"] = self.oversoldInfo!
+            }
+            if self.oversoldType != nil {
+                map["OversoldType"] = self.oversoldType!
             }
             if self.paymentType != nil {
                 map["PaymentType"] = self.paymentType!
@@ -8403,6 +8672,11 @@ public class ListInstancesResponseBody : Tea.TeaModel {
             if dict.keys.contains("Driver") {
                 self.driver = dict["Driver"] as! String
             }
+            if dict.keys.contains("DynamicMount") {
+                var model = DynamicMount()
+                model.fromMap(dict["DynamicMount"] as! [String: Any])
+                self.dynamicMount = model
+            }
             if dict.keys.contains("EcsSpec") {
                 self.ecsSpec = dict["EcsSpec"] as! String
             }
@@ -8475,6 +8749,12 @@ public class ListInstancesResponseBody : Tea.TeaModel {
                 var model = ListInstancesResponseBody.Instances.LatestSnapshot()
                 model.fromMap(dict["LatestSnapshot"] as! [String: Any])
                 self.latestSnapshot = model
+            }
+            if dict.keys.contains("OversoldInfo") {
+                self.oversoldInfo = dict["OversoldInfo"] as! String
+            }
+            if dict.keys.contains("OversoldType") {
+                self.oversoldType = dict["OversoldType"] as! String
             }
             if dict.keys.contains("PaymentType") {
                 self.paymentType = dict["PaymentType"] as! String
@@ -9051,6 +9331,8 @@ public class UpdateInstanceRequest : Tea.TeaModel {
 
         public var datasetVersion: String?
 
+        public var dynamic_: Bool?
+
         public var mountAccess: String?
 
         public var mountPath: String?
@@ -9081,6 +9363,9 @@ public class UpdateInstanceRequest : Tea.TeaModel {
             if self.datasetVersion != nil {
                 map["DatasetVersion"] = self.datasetVersion!
             }
+            if self.dynamic_ != nil {
+                map["Dynamic"] = self.dynamic_!
+            }
             if self.mountAccess != nil {
                 map["MountAccess"] = self.mountAccess!
             }
@@ -9105,6 +9390,9 @@ public class UpdateInstanceRequest : Tea.TeaModel {
             }
             if dict.keys.contains("DatasetVersion") {
                 self.datasetVersion = dict["DatasetVersion"] as! String
+            }
+            if dict.keys.contains("Dynamic") {
+                self.dynamic_ = dict["Dynamic"] as! Bool
             }
             if dict.keys.contains("MountAccess") {
                 self.mountAccess = dict["MountAccess"] as! String
@@ -9185,6 +9473,8 @@ public class UpdateInstanceRequest : Tea.TeaModel {
         }
     }
     public class UserVpc : Tea.TeaModel {
+        public var bandwidthLimit: BandwidthLimit?
+
         public var defaultRoute: String?
 
         public var extendedCIDRs: [String]?
@@ -9207,10 +9497,14 @@ public class UpdateInstanceRequest : Tea.TeaModel {
         }
 
         public override func validate() throws -> Void {
+            try self.bandwidthLimit?.validate()
         }
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
+            if self.bandwidthLimit != nil {
+                map["BandwidthLimit"] = self.bandwidthLimit?.toMap()
+            }
             if self.defaultRoute != nil {
                 map["DefaultRoute"] = self.defaultRoute!
             }
@@ -9237,6 +9531,11 @@ public class UpdateInstanceRequest : Tea.TeaModel {
         }
 
         public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("BandwidthLimit") {
+                var model = BandwidthLimit()
+                model.fromMap(dict["BandwidthLimit"] as! [String: Any])
+                self.bandwidthLimit = model
+            }
             if dict.keys.contains("DefaultRoute") {
                 self.defaultRoute = dict["DefaultRoute"] as! String
             }
@@ -9287,6 +9586,8 @@ public class UpdateInstanceRequest : Tea.TeaModel {
 
     public var driver: String?
 
+    public var dynamicMount: DynamicMount?
+
     public var ecsSpec: String?
 
     public var imageAuth: String?
@@ -9319,6 +9620,7 @@ public class UpdateInstanceRequest : Tea.TeaModel {
     public override func validate() throws -> Void {
         try self.affinity?.validate()
         try self.credentialConfig?.validate()
+        try self.dynamicMount?.validate()
         try self.requestedResource?.validate()
         try self.userVpc?.validate()
     }
@@ -9365,6 +9667,9 @@ public class UpdateInstanceRequest : Tea.TeaModel {
         }
         if self.driver != nil {
             map["Driver"] = self.driver!
+        }
+        if self.dynamicMount != nil {
+            map["DynamicMount"] = self.dynamicMount?.toMap()
         }
         if self.ecsSpec != nil {
             map["EcsSpec"] = self.ecsSpec!
@@ -9452,6 +9757,11 @@ public class UpdateInstanceRequest : Tea.TeaModel {
         }
         if dict.keys.contains("Driver") {
             self.driver = dict["Driver"] as! String
+        }
+        if dict.keys.contains("DynamicMount") {
+            var model = DynamicMount()
+            model.fromMap(dict["DynamicMount"] as! [String: Any])
+            self.dynamicMount = model
         }
         if dict.keys.contains("EcsSpec") {
             self.ecsSpec = dict["EcsSpec"] as! String
