@@ -7344,6 +7344,8 @@ public class StopDesktopsRequest : Tea.TeaModel {
 
     public var sessionToken: String?
 
+    public var uuid: String?
+
     public override init() {
         super.init()
     }
@@ -7388,6 +7390,9 @@ public class StopDesktopsRequest : Tea.TeaModel {
         if self.sessionToken != nil {
             map["SessionToken"] = self.sessionToken!
         }
+        if self.uuid != nil {
+            map["Uuid"] = self.uuid!
+        }
         return map
     }
 
@@ -7421,6 +7426,9 @@ public class StopDesktopsRequest : Tea.TeaModel {
         }
         if dict.keys.contains("SessionToken") {
             self.sessionToken = dict["SessionToken"] as! String
+        }
+        if dict.keys.contains("Uuid") {
+            self.uuid = dict["Uuid"] as! String
         }
     }
 }
