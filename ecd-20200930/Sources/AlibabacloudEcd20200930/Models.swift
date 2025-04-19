@@ -18585,6 +18585,10 @@ public class DescribeClientEventsRequest : Tea.TeaModel {
 
     public var eventTypes: [String]?
 
+    public var fillHardwareInfo: Bool?
+
+    public var language: String?
+
     public var maxResults: Int32?
 
     public var nextToken: String?
@@ -18635,6 +18639,12 @@ public class DescribeClientEventsRequest : Tea.TeaModel {
         if self.eventTypes != nil {
             map["EventTypes"] = self.eventTypes!
         }
+        if self.fillHardwareInfo != nil {
+            map["FillHardwareInfo"] = self.fillHardwareInfo!
+        }
+        if self.language != nil {
+            map["Language"] = self.language!
+        }
         if self.maxResults != nil {
             map["MaxResults"] = self.maxResults!
         }
@@ -18681,6 +18691,12 @@ public class DescribeClientEventsRequest : Tea.TeaModel {
         if dict.keys.contains("EventTypes") {
             self.eventTypes = dict["EventTypes"] as! [String]
         }
+        if dict.keys.contains("FillHardwareInfo") {
+            self.fillHardwareInfo = dict["FillHardwareInfo"] as! Bool
+        }
+        if dict.keys.contains("Language") {
+            self.language = dict["Language"] as! String
+        }
         if dict.keys.contains("MaxResults") {
             self.maxResults = dict["MaxResults"] as! Int32
         }
@@ -18704,6 +18720,51 @@ public class DescribeClientEventsRequest : Tea.TeaModel {
 
 public class DescribeClientEventsResponseBody : Tea.TeaModel {
     public class Events : Tea.TeaModel {
+        public class TerminalInfo : Tea.TeaModel {
+            public var model: String?
+
+            public var productName: String?
+
+            public var serialNumber: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.model != nil {
+                    map["Model"] = self.model!
+                }
+                if self.productName != nil {
+                    map["ProductName"] = self.productName!
+                }
+                if self.serialNumber != nil {
+                    map["SerialNumber"] = self.serialNumber!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("Model") {
+                    self.model = dict["Model"] as! String
+                }
+                if dict.keys.contains("ProductName") {
+                    self.productName = dict["ProductName"] as! String
+                }
+                if dict.keys.contains("SerialNumber") {
+                    self.serialNumber = dict["SerialNumber"] as! String
+                }
+            }
+        }
         public var aliUid: String?
 
         public var bytesReceived: String?
@@ -18750,6 +18811,8 @@ public class DescribeClientEventsResponseBody : Tea.TeaModel {
 
         public var status: String?
 
+        public var terminalInfo: DescribeClientEventsResponseBody.Events.TerminalInfo?
+
         public override init() {
             super.init()
         }
@@ -18760,6 +18823,7 @@ public class DescribeClientEventsResponseBody : Tea.TeaModel {
         }
 
         public override func validate() throws -> Void {
+            try self.terminalInfo?.validate()
         }
 
         public override func toMap() -> [String : Any] {
@@ -18833,6 +18897,9 @@ public class DescribeClientEventsResponseBody : Tea.TeaModel {
             if self.status != nil {
                 map["Status"] = self.status!
             }
+            if self.terminalInfo != nil {
+                map["TerminalInfo"] = self.terminalInfo?.toMap()
+            }
             return map
         }
 
@@ -18905,6 +18972,11 @@ public class DescribeClientEventsResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("Status") {
                 self.status = dict["Status"] as! String
+            }
+            if dict.keys.contains("TerminalInfo") {
+                var model = DescribeClientEventsResponseBody.Events.TerminalInfo()
+                model.fromMap(dict["TerminalInfo"] as! [String: Any])
+                self.terminalInfo = model
             }
         }
     }
