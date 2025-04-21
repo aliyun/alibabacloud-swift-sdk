@@ -2335,6 +2335,8 @@ public class LiveManifestConfig : Tea.TeaModel {
 
     public var dateTimeInterval: Int32?
 
+    public var manifestDuration: Int32?
+
     public var maxVideoBitrate: Int32?
 
     public var minBufferTime: Int32?
@@ -2343,7 +2345,11 @@ public class LiveManifestConfig : Tea.TeaModel {
 
     public var minVideoBitrate: Int32?
 
+    public var presentationDelay: Int32?
+
     public var segmentCount: Int32?
+
+    public var segmentTemplateFormat: String?
 
     public var streamOrder: String?
 
@@ -2367,6 +2373,9 @@ public class LiveManifestConfig : Tea.TeaModel {
         if self.dateTimeInterval != nil {
             map["DateTimeInterval"] = self.dateTimeInterval!
         }
+        if self.manifestDuration != nil {
+            map["ManifestDuration"] = self.manifestDuration!
+        }
         if self.maxVideoBitrate != nil {
             map["MaxVideoBitrate"] = self.maxVideoBitrate!
         }
@@ -2379,8 +2388,14 @@ public class LiveManifestConfig : Tea.TeaModel {
         if self.minVideoBitrate != nil {
             map["MinVideoBitrate"] = self.minVideoBitrate!
         }
+        if self.presentationDelay != nil {
+            map["PresentationDelay"] = self.presentationDelay!
+        }
         if self.segmentCount != nil {
             map["SegmentCount"] = self.segmentCount!
+        }
+        if self.segmentTemplateFormat != nil {
+            map["SegmentTemplateFormat"] = self.segmentTemplateFormat!
         }
         if self.streamOrder != nil {
             map["StreamOrder"] = self.streamOrder!
@@ -2395,6 +2410,9 @@ public class LiveManifestConfig : Tea.TeaModel {
         if dict.keys.contains("DateTimeInterval") {
             self.dateTimeInterval = dict["DateTimeInterval"] as! Int32
         }
+        if dict.keys.contains("ManifestDuration") {
+            self.manifestDuration = dict["ManifestDuration"] as! Int32
+        }
         if dict.keys.contains("MaxVideoBitrate") {
             self.maxVideoBitrate = dict["MaxVideoBitrate"] as! Int32
         }
@@ -2407,8 +2425,14 @@ public class LiveManifestConfig : Tea.TeaModel {
         if dict.keys.contains("MinVideoBitrate") {
             self.minVideoBitrate = dict["MinVideoBitrate"] as! Int32
         }
+        if dict.keys.contains("PresentationDelay") {
+            self.presentationDelay = dict["PresentationDelay"] as! Int32
+        }
         if dict.keys.contains("SegmentCount") {
             self.segmentCount = dict["SegmentCount"] as! Int32
+        }
+        if dict.keys.contains("SegmentTemplateFormat") {
+            self.segmentTemplateFormat = dict["SegmentTemplateFormat"] as! String
         }
         if dict.keys.contains("StreamOrder") {
             self.streamOrder = dict["StreamOrder"] as! String
@@ -2418,6 +2442,8 @@ public class LiveManifestConfig : Tea.TeaModel {
 
 public class LivePackagingConfig : Tea.TeaModel {
     public class DrmConfig : Tea.TeaModel {
+        public var contentId: String?
+
         public var encryptionMethod: String?
 
         public var IV: String?
@@ -2442,6 +2468,9 @@ public class LivePackagingConfig : Tea.TeaModel {
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
+            if self.contentId != nil {
+                map["ContentId"] = self.contentId!
+            }
             if self.encryptionMethod != nil {
                 map["EncryptionMethod"] = self.encryptionMethod!
             }
@@ -2461,6 +2490,9 @@ public class LivePackagingConfig : Tea.TeaModel {
         }
 
         public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("ContentId") {
+                self.contentId = dict["ContentId"] as! String
+            }
             if dict.keys.contains("EncryptionMethod") {
                 self.encryptionMethod = dict["EncryptionMethod"] as! String
             }
@@ -23658,6 +23690,8 @@ public class GetBatchMediaProducingJobRequest : Tea.TeaModel {
 public class GetBatchMediaProducingJobResponseBody : Tea.TeaModel {
     public class EditingBatchJob : Tea.TeaModel {
         public class SubJobList : Tea.TeaModel {
+            public var duration: Double?
+
             public var errorCode: String?
 
             public var errorMessage: String?
@@ -23686,6 +23720,9 @@ public class GetBatchMediaProducingJobResponseBody : Tea.TeaModel {
 
             public override func toMap() -> [String : Any] {
                 var map = super.toMap()
+                if self.duration != nil {
+                    map["Duration"] = self.duration!
+                }
                 if self.errorCode != nil {
                     map["ErrorCode"] = self.errorCode!
                 }
@@ -23711,6 +23748,9 @@ public class GetBatchMediaProducingJobResponseBody : Tea.TeaModel {
             }
 
             public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("Duration") {
+                    self.duration = dict["Duration"] as! Double
+                }
                 if dict.keys.contains("ErrorCode") {
                     self.errorCode = dict["ErrorCode"] as! String
                 }
