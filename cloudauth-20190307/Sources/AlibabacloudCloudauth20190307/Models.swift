@@ -2342,6 +2342,737 @@ public class CredentialVerifyResponse : Tea.TeaModel {
     }
 }
 
+public class CredentialVerifyV2Request : Tea.TeaModel {
+    public class MerchantDetail : Tea.TeaModel {
+        public var key: String?
+
+        public var value: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.key != nil {
+                map["Key"] = self.key!
+            }
+            if self.value != nil {
+                map["Value"] = self.value!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("Key") {
+                self.key = dict["Key"] as! String
+            }
+            if dict.keys.contains("Value") {
+                self.value = dict["Value"] as! String
+            }
+        }
+    }
+    public var certNum: String?
+
+    public var credName: String?
+
+    public var credType: String?
+
+    public var identifyNum: String?
+
+    public var imageFile: String?
+
+    public var imageUrl: String?
+
+    public var isCheck: String?
+
+    public var isOcr: String?
+
+    public var merchantDetail: [CredentialVerifyV2Request.MerchantDetail]?
+
+    public var merchantId: String?
+
+    public var productCode: String?
+
+    public var prompt: String?
+
+    public var promptModel: String?
+
+    public var userName: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.certNum != nil {
+            map["CertNum"] = self.certNum!
+        }
+        if self.credName != nil {
+            map["CredName"] = self.credName!
+        }
+        if self.credType != nil {
+            map["CredType"] = self.credType!
+        }
+        if self.identifyNum != nil {
+            map["IdentifyNum"] = self.identifyNum!
+        }
+        if self.imageFile != nil {
+            map["ImageFile"] = self.imageFile!
+        }
+        if self.imageUrl != nil {
+            map["ImageUrl"] = self.imageUrl!
+        }
+        if self.isCheck != nil {
+            map["IsCheck"] = self.isCheck!
+        }
+        if self.isOcr != nil {
+            map["IsOcr"] = self.isOcr!
+        }
+        if self.merchantDetail != nil {
+            var tmp : [Any] = []
+            for k in self.merchantDetail! {
+                tmp.append(k.toMap())
+            }
+            map["MerchantDetail"] = tmp
+        }
+        if self.merchantId != nil {
+            map["MerchantId"] = self.merchantId!
+        }
+        if self.productCode != nil {
+            map["ProductCode"] = self.productCode!
+        }
+        if self.prompt != nil {
+            map["Prompt"] = self.prompt!
+        }
+        if self.promptModel != nil {
+            map["PromptModel"] = self.promptModel!
+        }
+        if self.userName != nil {
+            map["UserName"] = self.userName!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("CertNum") {
+            self.certNum = dict["CertNum"] as! String
+        }
+        if dict.keys.contains("CredName") {
+            self.credName = dict["CredName"] as! String
+        }
+        if dict.keys.contains("CredType") {
+            self.credType = dict["CredType"] as! String
+        }
+        if dict.keys.contains("IdentifyNum") {
+            self.identifyNum = dict["IdentifyNum"] as! String
+        }
+        if dict.keys.contains("ImageFile") {
+            self.imageFile = dict["ImageFile"] as! String
+        }
+        if dict.keys.contains("ImageUrl") {
+            self.imageUrl = dict["ImageUrl"] as! String
+        }
+        if dict.keys.contains("IsCheck") {
+            self.isCheck = dict["IsCheck"] as! String
+        }
+        if dict.keys.contains("IsOcr") {
+            self.isOcr = dict["IsOcr"] as! String
+        }
+        if dict.keys.contains("MerchantDetail") {
+            var tmp : [CredentialVerifyV2Request.MerchantDetail] = []
+            for v in dict["MerchantDetail"] as! [Any] {
+                var model = CredentialVerifyV2Request.MerchantDetail()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.merchantDetail = tmp
+        }
+        if dict.keys.contains("MerchantId") {
+            self.merchantId = dict["MerchantId"] as! String
+        }
+        if dict.keys.contains("ProductCode") {
+            self.productCode = dict["ProductCode"] as! String
+        }
+        if dict.keys.contains("Prompt") {
+            self.prompt = dict["Prompt"] as! String
+        }
+        if dict.keys.contains("PromptModel") {
+            self.promptModel = dict["PromptModel"] as! String
+        }
+        if dict.keys.contains("UserName") {
+            self.userName = dict["UserName"] as! String
+        }
+    }
+}
+
+public class CredentialVerifyV2AdvanceRequest : Tea.TeaModel {
+    public class MerchantDetail : Tea.TeaModel {
+        public var key: String?
+
+        public var value: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.key != nil {
+                map["Key"] = self.key!
+            }
+            if self.value != nil {
+                map["Value"] = self.value!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("Key") {
+                self.key = dict["Key"] as! String
+            }
+            if dict.keys.contains("Value") {
+                self.value = dict["Value"] as! String
+            }
+        }
+    }
+    public var certNum: String?
+
+    public var credName: String?
+
+    public var credType: String?
+
+    public var identifyNum: String?
+
+    public var imageFileObject: InputStream?
+
+    public var imageUrl: String?
+
+    public var isCheck: String?
+
+    public var isOcr: String?
+
+    public var merchantDetail: [CredentialVerifyV2AdvanceRequest.MerchantDetail]?
+
+    public var merchantId: String?
+
+    public var productCode: String?
+
+    public var prompt: String?
+
+    public var promptModel: String?
+
+    public var userName: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.certNum != nil {
+            map["CertNum"] = self.certNum!
+        }
+        if self.credName != nil {
+            map["CredName"] = self.credName!
+        }
+        if self.credType != nil {
+            map["CredType"] = self.credType!
+        }
+        if self.identifyNum != nil {
+            map["IdentifyNum"] = self.identifyNum!
+        }
+        if self.imageFileObject != nil {
+            map["ImageFile"] = self.imageFileObject!
+        }
+        if self.imageUrl != nil {
+            map["ImageUrl"] = self.imageUrl!
+        }
+        if self.isCheck != nil {
+            map["IsCheck"] = self.isCheck!
+        }
+        if self.isOcr != nil {
+            map["IsOcr"] = self.isOcr!
+        }
+        if self.merchantDetail != nil {
+            var tmp : [Any] = []
+            for k in self.merchantDetail! {
+                tmp.append(k.toMap())
+            }
+            map["MerchantDetail"] = tmp
+        }
+        if self.merchantId != nil {
+            map["MerchantId"] = self.merchantId!
+        }
+        if self.productCode != nil {
+            map["ProductCode"] = self.productCode!
+        }
+        if self.prompt != nil {
+            map["Prompt"] = self.prompt!
+        }
+        if self.promptModel != nil {
+            map["PromptModel"] = self.promptModel!
+        }
+        if self.userName != nil {
+            map["UserName"] = self.userName!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("CertNum") {
+            self.certNum = dict["CertNum"] as! String
+        }
+        if dict.keys.contains("CredName") {
+            self.credName = dict["CredName"] as! String
+        }
+        if dict.keys.contains("CredType") {
+            self.credType = dict["CredType"] as! String
+        }
+        if dict.keys.contains("IdentifyNum") {
+            self.identifyNum = dict["IdentifyNum"] as! String
+        }
+        if dict.keys.contains("ImageFile") {
+            self.imageFileObject = dict["ImageFile"] as! InputStream
+        }
+        if dict.keys.contains("ImageUrl") {
+            self.imageUrl = dict["ImageUrl"] as! String
+        }
+        if dict.keys.contains("IsCheck") {
+            self.isCheck = dict["IsCheck"] as! String
+        }
+        if dict.keys.contains("IsOcr") {
+            self.isOcr = dict["IsOcr"] as! String
+        }
+        if dict.keys.contains("MerchantDetail") {
+            var tmp : [CredentialVerifyV2AdvanceRequest.MerchantDetail] = []
+            for v in dict["MerchantDetail"] as! [Any] {
+                var model = CredentialVerifyV2AdvanceRequest.MerchantDetail()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.merchantDetail = tmp
+        }
+        if dict.keys.contains("MerchantId") {
+            self.merchantId = dict["MerchantId"] as! String
+        }
+        if dict.keys.contains("ProductCode") {
+            self.productCode = dict["ProductCode"] as! String
+        }
+        if dict.keys.contains("Prompt") {
+            self.prompt = dict["Prompt"] as! String
+        }
+        if dict.keys.contains("PromptModel") {
+            self.promptModel = dict["PromptModel"] as! String
+        }
+        if dict.keys.contains("UserName") {
+            self.userName = dict["UserName"] as! String
+        }
+    }
+}
+
+public class CredentialVerifyV2ShrinkRequest : Tea.TeaModel {
+    public var certNum: String?
+
+    public var credName: String?
+
+    public var credType: String?
+
+    public var identifyNum: String?
+
+    public var imageFile: String?
+
+    public var imageUrl: String?
+
+    public var isCheck: String?
+
+    public var isOcr: String?
+
+    public var merchantDetailShrink: String?
+
+    public var merchantId: String?
+
+    public var productCode: String?
+
+    public var prompt: String?
+
+    public var promptModel: String?
+
+    public var userName: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.certNum != nil {
+            map["CertNum"] = self.certNum!
+        }
+        if self.credName != nil {
+            map["CredName"] = self.credName!
+        }
+        if self.credType != nil {
+            map["CredType"] = self.credType!
+        }
+        if self.identifyNum != nil {
+            map["IdentifyNum"] = self.identifyNum!
+        }
+        if self.imageFile != nil {
+            map["ImageFile"] = self.imageFile!
+        }
+        if self.imageUrl != nil {
+            map["ImageUrl"] = self.imageUrl!
+        }
+        if self.isCheck != nil {
+            map["IsCheck"] = self.isCheck!
+        }
+        if self.isOcr != nil {
+            map["IsOcr"] = self.isOcr!
+        }
+        if self.merchantDetailShrink != nil {
+            map["MerchantDetail"] = self.merchantDetailShrink!
+        }
+        if self.merchantId != nil {
+            map["MerchantId"] = self.merchantId!
+        }
+        if self.productCode != nil {
+            map["ProductCode"] = self.productCode!
+        }
+        if self.prompt != nil {
+            map["Prompt"] = self.prompt!
+        }
+        if self.promptModel != nil {
+            map["PromptModel"] = self.promptModel!
+        }
+        if self.userName != nil {
+            map["UserName"] = self.userName!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("CertNum") {
+            self.certNum = dict["CertNum"] as! String
+        }
+        if dict.keys.contains("CredName") {
+            self.credName = dict["CredName"] as! String
+        }
+        if dict.keys.contains("CredType") {
+            self.credType = dict["CredType"] as! String
+        }
+        if dict.keys.contains("IdentifyNum") {
+            self.identifyNum = dict["IdentifyNum"] as! String
+        }
+        if dict.keys.contains("ImageFile") {
+            self.imageFile = dict["ImageFile"] as! String
+        }
+        if dict.keys.contains("ImageUrl") {
+            self.imageUrl = dict["ImageUrl"] as! String
+        }
+        if dict.keys.contains("IsCheck") {
+            self.isCheck = dict["IsCheck"] as! String
+        }
+        if dict.keys.contains("IsOcr") {
+            self.isOcr = dict["IsOcr"] as! String
+        }
+        if dict.keys.contains("MerchantDetail") {
+            self.merchantDetailShrink = dict["MerchantDetail"] as! String
+        }
+        if dict.keys.contains("MerchantId") {
+            self.merchantId = dict["MerchantId"] as! String
+        }
+        if dict.keys.contains("ProductCode") {
+            self.productCode = dict["ProductCode"] as! String
+        }
+        if dict.keys.contains("Prompt") {
+            self.prompt = dict["Prompt"] as! String
+        }
+        if dict.keys.contains("PromptModel") {
+            self.promptModel = dict["PromptModel"] as! String
+        }
+        if dict.keys.contains("UserName") {
+            self.userName = dict["UserName"] as! String
+        }
+    }
+}
+
+public class CredentialVerifyV2ResponseBody : Tea.TeaModel {
+    public class ResultObject : Tea.TeaModel {
+        public class VlResult : Tea.TeaModel {
+            public var success: Bool?
+
+            public var vlContent: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.success != nil {
+                    map["Success"] = self.success!
+                }
+                if self.vlContent != nil {
+                    map["VlContent"] = self.vlContent!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("Success") {
+                    self.success = dict["Success"] as! Bool
+                }
+                if dict.keys.contains("VlContent") {
+                    self.vlContent = dict["VlContent"] as! String
+                }
+            }
+        }
+        public var materialInfo: String?
+
+        public var ocrInfo: String?
+
+        public var result: String?
+
+        public var riskScore: [String: String]?
+
+        public var riskTag: String?
+
+        public var verifyDetail: String?
+
+        public var verifyResult: String?
+
+        public var vlResult: CredentialVerifyV2ResponseBody.ResultObject.VlResult?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+            try self.vlResult?.validate()
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.materialInfo != nil {
+                map["MaterialInfo"] = self.materialInfo!
+            }
+            if self.ocrInfo != nil {
+                map["OcrInfo"] = self.ocrInfo!
+            }
+            if self.result != nil {
+                map["Result"] = self.result!
+            }
+            if self.riskScore != nil {
+                map["RiskScore"] = self.riskScore!
+            }
+            if self.riskTag != nil {
+                map["RiskTag"] = self.riskTag!
+            }
+            if self.verifyDetail != nil {
+                map["VerifyDetail"] = self.verifyDetail!
+            }
+            if self.verifyResult != nil {
+                map["VerifyResult"] = self.verifyResult!
+            }
+            if self.vlResult != nil {
+                map["VlResult"] = self.vlResult?.toMap()
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("MaterialInfo") {
+                self.materialInfo = dict["MaterialInfo"] as! String
+            }
+            if dict.keys.contains("OcrInfo") {
+                self.ocrInfo = dict["OcrInfo"] as! String
+            }
+            if dict.keys.contains("Result") {
+                self.result = dict["Result"] as! String
+            }
+            if dict.keys.contains("RiskScore") {
+                self.riskScore = dict["RiskScore"] as! [String: String]
+            }
+            if dict.keys.contains("RiskTag") {
+                self.riskTag = dict["RiskTag"] as! String
+            }
+            if dict.keys.contains("VerifyDetail") {
+                self.verifyDetail = dict["VerifyDetail"] as! String
+            }
+            if dict.keys.contains("VerifyResult") {
+                self.verifyResult = dict["VerifyResult"] as! String
+            }
+            if dict.keys.contains("VlResult") {
+                var model = CredentialVerifyV2ResponseBody.ResultObject.VlResult()
+                model.fromMap(dict["VlResult"] as! [String: Any])
+                self.vlResult = model
+            }
+        }
+    }
+    public var code: String?
+
+    public var message: String?
+
+    public var requestId: String?
+
+    public var resultObject: CredentialVerifyV2ResponseBody.ResultObject?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.resultObject?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.code != nil {
+            map["Code"] = self.code!
+        }
+        if self.message != nil {
+            map["Message"] = self.message!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.resultObject != nil {
+            map["ResultObject"] = self.resultObject?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("Code") {
+            self.code = dict["Code"] as! String
+        }
+        if dict.keys.contains("Message") {
+            self.message = dict["Message"] as! String
+        }
+        if dict.keys.contains("RequestId") {
+            self.requestId = dict["RequestId"] as! String
+        }
+        if dict.keys.contains("ResultObject") {
+            var model = CredentialVerifyV2ResponseBody.ResultObject()
+            model.fromMap(dict["ResultObject"] as! [String: Any])
+            self.resultObject = model
+        }
+    }
+}
+
+public class CredentialVerifyV2Response : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: CredentialVerifyV2ResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") {
+            var model = CredentialVerifyV2ResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
 public class DeepfakeDetectRequest : Tea.TeaModel {
     public var faceBase64: String?
 
