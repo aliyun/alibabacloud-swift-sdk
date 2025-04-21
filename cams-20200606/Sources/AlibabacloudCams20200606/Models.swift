@@ -10122,6 +10122,8 @@ public class ListChatappTemplateRequest : Tea.TeaModel {
     }
     public var auditStatus: String?
 
+    public var category: String?
+
     public var code: String?
 
     public var custSpaceId: String?
@@ -10134,7 +10136,13 @@ public class ListChatappTemplateRequest : Tea.TeaModel {
 
     public var name: String?
 
+    public var ownerId: Int64?
+
     public var page: ListChatappTemplateRequest.Page?
+
+    public var resourceOwnerAccount: String?
+
+    public var resourceOwnerId: Int64?
 
     public var templateType: String?
 
@@ -10156,6 +10164,9 @@ public class ListChatappTemplateRequest : Tea.TeaModel {
         if self.auditStatus != nil {
             map["AuditStatus"] = self.auditStatus!
         }
+        if self.category != nil {
+            map["Category"] = self.category!
+        }
         if self.code != nil {
             map["Code"] = self.code!
         }
@@ -10174,8 +10185,17 @@ public class ListChatappTemplateRequest : Tea.TeaModel {
         if self.name != nil {
             map["Name"] = self.name!
         }
+        if self.ownerId != nil {
+            map["OwnerId"] = self.ownerId!
+        }
         if self.page != nil {
             map["Page"] = self.page?.toMap()
+        }
+        if self.resourceOwnerAccount != nil {
+            map["ResourceOwnerAccount"] = self.resourceOwnerAccount!
+        }
+        if self.resourceOwnerId != nil {
+            map["ResourceOwnerId"] = self.resourceOwnerId!
         }
         if self.templateType != nil {
             map["TemplateType"] = self.templateType!
@@ -10186,6 +10206,9 @@ public class ListChatappTemplateRequest : Tea.TeaModel {
     public override func fromMap(_ dict: [String: Any]) -> Void {
         if dict.keys.contains("AuditStatus") {
             self.auditStatus = dict["AuditStatus"] as! String
+        }
+        if dict.keys.contains("Category") {
+            self.category = dict["Category"] as! String
         }
         if dict.keys.contains("Code") {
             self.code = dict["Code"] as! String
@@ -10205,10 +10228,19 @@ public class ListChatappTemplateRequest : Tea.TeaModel {
         if dict.keys.contains("Name") {
             self.name = dict["Name"] as! String
         }
+        if dict.keys.contains("OwnerId") {
+            self.ownerId = dict["OwnerId"] as! Int64
+        }
         if dict.keys.contains("Page") {
             var model = ListChatappTemplateRequest.Page()
             model.fromMap(dict["Page"] as! [String: Any])
             self.page = model
+        }
+        if dict.keys.contains("ResourceOwnerAccount") {
+            self.resourceOwnerAccount = dict["ResourceOwnerAccount"] as! String
+        }
+        if dict.keys.contains("ResourceOwnerId") {
+            self.resourceOwnerId = dict["ResourceOwnerId"] as! Int64
         }
         if dict.keys.contains("TemplateType") {
             self.templateType = dict["TemplateType"] as! String
@@ -10218,6 +10250,8 @@ public class ListChatappTemplateRequest : Tea.TeaModel {
 
 public class ListChatappTemplateShrinkRequest : Tea.TeaModel {
     public var auditStatus: String?
+
+    public var category: String?
 
     public var code: String?
 
@@ -10231,7 +10265,13 @@ public class ListChatappTemplateShrinkRequest : Tea.TeaModel {
 
     public var name: String?
 
+    public var ownerId: Int64?
+
     public var pageShrink: String?
+
+    public var resourceOwnerAccount: String?
+
+    public var resourceOwnerId: Int64?
 
     public var templateType: String?
 
@@ -10252,6 +10292,9 @@ public class ListChatappTemplateShrinkRequest : Tea.TeaModel {
         if self.auditStatus != nil {
             map["AuditStatus"] = self.auditStatus!
         }
+        if self.category != nil {
+            map["Category"] = self.category!
+        }
         if self.code != nil {
             map["Code"] = self.code!
         }
@@ -10270,8 +10313,17 @@ public class ListChatappTemplateShrinkRequest : Tea.TeaModel {
         if self.name != nil {
             map["Name"] = self.name!
         }
+        if self.ownerId != nil {
+            map["OwnerId"] = self.ownerId!
+        }
         if self.pageShrink != nil {
             map["Page"] = self.pageShrink!
+        }
+        if self.resourceOwnerAccount != nil {
+            map["ResourceOwnerAccount"] = self.resourceOwnerAccount!
+        }
+        if self.resourceOwnerId != nil {
+            map["ResourceOwnerId"] = self.resourceOwnerId!
         }
         if self.templateType != nil {
             map["TemplateType"] = self.templateType!
@@ -10282,6 +10334,9 @@ public class ListChatappTemplateShrinkRequest : Tea.TeaModel {
     public override func fromMap(_ dict: [String: Any]) -> Void {
         if dict.keys.contains("AuditStatus") {
             self.auditStatus = dict["AuditStatus"] as! String
+        }
+        if dict.keys.contains("Category") {
+            self.category = dict["Category"] as! String
         }
         if dict.keys.contains("Code") {
             self.code = dict["Code"] as! String
@@ -10301,8 +10356,17 @@ public class ListChatappTemplateShrinkRequest : Tea.TeaModel {
         if dict.keys.contains("Name") {
             self.name = dict["Name"] as! String
         }
+        if dict.keys.contains("OwnerId") {
+            self.ownerId = dict["OwnerId"] as! Int64
+        }
         if dict.keys.contains("Page") {
             self.pageShrink = dict["Page"] as! String
+        }
+        if dict.keys.contains("ResourceOwnerAccount") {
+            self.resourceOwnerAccount = dict["ResourceOwnerAccount"] as! String
+        }
+        if dict.keys.contains("ResourceOwnerId") {
+            self.resourceOwnerId = dict["ResourceOwnerId"] as! Int64
         }
         if dict.keys.contains("TemplateType") {
             self.templateType = dict["TemplateType"] as! String
@@ -10406,6 +10470,8 @@ public class ListChatappTemplateResponseBody : Tea.TeaModel {
 
     public var requestId: String?
 
+    public var success: Bool?
+
     public var total: Int32?
 
     public override init() {
@@ -10441,6 +10507,9 @@ public class ListChatappTemplateResponseBody : Tea.TeaModel {
         if self.requestId != nil {
             map["RequestId"] = self.requestId!
         }
+        if self.success != nil {
+            map["Success"] = self.success!
+        }
         if self.total != nil {
             map["Total"] = self.total!
         }
@@ -10470,6 +10539,9 @@ public class ListChatappTemplateResponseBody : Tea.TeaModel {
         }
         if dict.keys.contains("RequestId") {
             self.requestId = dict["RequestId"] as! String
+        }
+        if dict.keys.contains("Success") {
+            self.success = dict["Success"] as! Bool
         }
         if dict.keys.contains("Total") {
             self.total = dict["Total"] as! Int32
@@ -14438,7 +14510,7 @@ public class QueryWabaBusinessInfoResponse : Tea.TeaModel {
 public class SendChatappMassMessageRequest : Tea.TeaModel {
     public class SenderList : Tea.TeaModel {
         public class FlowAction : Tea.TeaModel {
-            public var flowActionData: [String: String]?
+            public var flowActionData: [String: Any]?
 
             public var flowToken: String?
 
@@ -14467,7 +14539,7 @@ public class SendChatappMassMessageRequest : Tea.TeaModel {
 
             public override func fromMap(_ dict: [String: Any]) -> Void {
                 if dict.keys.contains("FlowActionData") {
-                    self.flowActionData = dict["FlowActionData"] as! [String: String]
+                    self.flowActionData = dict["FlowActionData"] as! [String: Any]
                 }
                 if dict.keys.contains("FlowToken") {
                     self.flowToken = dict["FlowToken"] as! String
@@ -15107,7 +15179,7 @@ public class SendChatappMassMessageResponse : Tea.TeaModel {
 
 public class SendChatappMessageRequest : Tea.TeaModel {
     public class FlowAction : Tea.TeaModel {
-        public var flowActionData: [String: String]?
+        public var flowActionData: [String: Any]?
 
         public var flowToken: String?
 
@@ -15136,7 +15208,7 @@ public class SendChatappMessageRequest : Tea.TeaModel {
 
         public override func fromMap(_ dict: [String: Any]) -> Void {
             if dict.keys.contains("FlowActionData") {
-                self.flowActionData = dict["FlowActionData"] as! [String: String]
+                self.flowActionData = dict["FlowActionData"] as! [String: Any]
             }
             if dict.keys.contains("FlowToken") {
                 self.flowToken = dict["FlowToken"] as! String
