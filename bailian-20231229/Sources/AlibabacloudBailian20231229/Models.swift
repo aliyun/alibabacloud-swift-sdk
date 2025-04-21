@@ -1785,6 +1785,8 @@ public class CreateIndexRequest : Tea.TeaModel {
 
     public var structureType: String?
 
+    public var chunkMode: String?
+
     public var enableHeaders: Bool?
 
     public var metaExtractColumns: [CreateIndexRequest.MetaExtractColumns]?
@@ -1858,6 +1860,9 @@ public class CreateIndexRequest : Tea.TeaModel {
         }
         if self.structureType != nil {
             map["StructureType"] = self.structureType!
+        }
+        if self.chunkMode != nil {
+            map["chunkMode"] = self.chunkMode!
         }
         if self.enableHeaders != nil {
             map["enableHeaders"] = self.enableHeaders!
@@ -1934,6 +1939,9 @@ public class CreateIndexRequest : Tea.TeaModel {
         if dict.keys.contains("StructureType") {
             self.structureType = dict["StructureType"] as! String
         }
+        if dict.keys.contains("chunkMode") {
+            self.chunkMode = dict["chunkMode"] as! String
+        }
         if dict.keys.contains("enableHeaders") {
             self.enableHeaders = dict["enableHeaders"] as! Bool
         }
@@ -1985,6 +1993,8 @@ public class CreateIndexShrinkRequest : Tea.TeaModel {
     public var sourceType: String?
 
     public var structureType: String?
+
+    public var chunkMode: String?
 
     public var enableHeaders: Bool?
 
@@ -2055,6 +2065,9 @@ public class CreateIndexShrinkRequest : Tea.TeaModel {
         if self.structureType != nil {
             map["StructureType"] = self.structureType!
         }
+        if self.chunkMode != nil {
+            map["chunkMode"] = self.chunkMode!
+        }
         if self.enableHeaders != nil {
             map["enableHeaders"] = self.enableHeaders!
         }
@@ -2115,6 +2128,9 @@ public class CreateIndexShrinkRequest : Tea.TeaModel {
         }
         if dict.keys.contains("StructureType") {
             self.structureType = dict["StructureType"] as! String
+        }
+        if dict.keys.contains("chunkMode") {
+            self.chunkMode = dict["chunkMode"] as! String
         }
         if dict.keys.contains("enableHeaders") {
             self.enableHeaders = dict["enableHeaders"] as! Bool
