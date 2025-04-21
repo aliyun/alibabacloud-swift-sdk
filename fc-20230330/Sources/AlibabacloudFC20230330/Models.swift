@@ -800,6 +800,8 @@ public class CreateFunctionInput : Tea.TeaModel {
 
     public var runtime: String?
 
+    public var sessionAffinity: String?
+
     public var tags: [Tag]?
 
     public var timeout: Int32?
@@ -898,6 +900,9 @@ public class CreateFunctionInput : Tea.TeaModel {
         }
         if self.runtime != nil {
             map["runtime"] = self.runtime!
+        }
+        if self.sessionAffinity != nil {
+            map["sessionAffinity"] = self.sessionAffinity!
         }
         if self.tags != nil {
             var tmp : [Any] = []
@@ -1002,6 +1007,9 @@ public class CreateFunctionInput : Tea.TeaModel {
         }
         if dict.keys.contains("runtime") {
             self.runtime = dict["runtime"] as! String
+        }
+        if dict.keys.contains("sessionAffinity") {
+            self.sessionAffinity = dict["sessionAffinity"] as! String
         }
         if dict.keys.contains("tags") {
             var tmp : [Tag] = []
@@ -2336,6 +2344,8 @@ public class Function : Tea.TeaModel {
 
     public var runtime: String?
 
+    public var sessionAffinity: String?
+
     public var state: String?
 
     public var stateReason: String?
@@ -2471,6 +2481,9 @@ public class Function : Tea.TeaModel {
         }
         if self.runtime != nil {
             map["runtime"] = self.runtime!
+        }
+        if self.sessionAffinity != nil {
+            map["sessionAffinity"] = self.sessionAffinity!
         }
         if self.state != nil {
             map["state"] = self.state!
@@ -2619,6 +2632,9 @@ public class Function : Tea.TeaModel {
         }
         if dict.keys.contains("runtime") {
             self.runtime = dict["runtime"] as! String
+        }
+        if dict.keys.contains("sessionAffinity") {
+            self.sessionAffinity = dict["sessionAffinity"] as! String
         }
         if dict.keys.contains("state") {
             self.state = dict["state"] as! String
@@ -3398,6 +3414,8 @@ public class Layer : Tea.TeaModel {
 }
 
 public class LifecycleHook : Tea.TeaModel {
+    public var command: [String]?
+
     public var handler: String?
 
     public var timeout: Int32?
@@ -3416,6 +3434,9 @@ public class LifecycleHook : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.command != nil {
+            map["command"] = self.command!
+        }
         if self.handler != nil {
             map["handler"] = self.handler!
         }
@@ -3426,6 +3447,9 @@ public class LifecycleHook : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("command") {
+            self.command = dict["command"] as! [String]
+        }
         if dict.keys.contains("handler") {
             self.handler = dict["handler"] as! String
         }
@@ -6902,6 +6926,8 @@ public class UpdateFunctionInput : Tea.TeaModel {
 
     public var runtime: String?
 
+    public var sessionAffinity: String?
+
     public var timeout: Int32?
 
     public var tracingConfig: TracingConfig?
@@ -6996,6 +7022,9 @@ public class UpdateFunctionInput : Tea.TeaModel {
         if self.runtime != nil {
             map["runtime"] = self.runtime!
         }
+        if self.sessionAffinity != nil {
+            map["sessionAffinity"] = self.sessionAffinity!
+        }
         if self.timeout != nil {
             map["timeout"] = self.timeout!
         }
@@ -7089,6 +7118,9 @@ public class UpdateFunctionInput : Tea.TeaModel {
         }
         if dict.keys.contains("runtime") {
             self.runtime = dict["runtime"] as! String
+        }
+        if dict.keys.contains("sessionAffinity") {
+            self.sessionAffinity = dict["sessionAffinity"] as! String
         }
         if dict.keys.contains("timeout") {
             self.timeout = dict["timeout"] as! Int32
