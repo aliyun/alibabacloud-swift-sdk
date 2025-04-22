@@ -13273,6 +13273,59 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func switchMainOrgWithOptions(_ tmpReq: SwitchMainOrgRequest, _ tmpHeader: SwitchMainOrgHeaders, _ runtime: TeaUtils.RuntimeOptions) async throws -> SwitchMainOrgResponse {
+        try TeaUtils.Client.validateModel(tmpReq)
+        var request: SwitchMainOrgShrinkRequest = SwitchMainOrgShrinkRequest([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        var headers: SwitchMainOrgShrinkHeaders = SwitchMainOrgShrinkHeaders([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpHeader, headers)
+        if (!TeaUtils.Client.isUnset(tmpHeader.accountContext)) {
+            headers.accountContextShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpHeader.accountContext, "AccountContext", "json")
+        }
+        if (!TeaUtils.Client.isUnset(tmpReq.tenantContext)) {
+            request.tenantContextShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.tenantContext, "TenantContext", "json")
+        }
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.targetOrgId)) {
+            body["TargetOrgId"] = request.targetOrgId!;
+        }
+        if (!TeaUtils.Client.isUnset(request.tenantContextShrink)) {
+            body["TenantContext"] = request.tenantContextShrink ?? "";
+        }
+        var realHeaders: [String: String] = [:]
+        if (!TeaUtils.Client.isUnset(headers.commonHeaders)) {
+            realHeaders = headers.commonHeaders ?? [:]
+        }
+        if (!TeaUtils.Client.isUnset(headers.accountContextShrink)) {
+            realHeaders["AccountContext"] = TeaUtils.Client.toJSONString(headers.accountContextShrink);
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": realHeaders as! [String: String],
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "SwitchMainOrg",
+            "version": "2023-04-26",
+            "protocol": "HTTPS",
+            "pathname": "/aliding/v1/user/switchMainOrg",
+            "method": "POST",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(SwitchMainOrgResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func switchMainOrg(_ request: SwitchMainOrgRequest) async throws -> SwitchMainOrgResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: SwitchMainOrgHeaders = SwitchMainOrgHeaders([:])
+        return try await switchMainOrgWithOptions(request as! SwitchMainOrgRequest, headers as! SwitchMainOrgHeaders, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func syncDingTypeWithOptions(_ tmpReq: SyncDingTypeRequest, _ tmpHeader: SyncDingTypeHeaders, _ runtime: TeaUtils.RuntimeOptions) async throws -> SyncDingTypeResponse {
         try TeaUtils.Client.validateModel(tmpReq)
         var request: SyncDingTypeShrinkRequest = SyncDingTypeShrinkRequest([:])
