@@ -6330,6 +6330,8 @@ public class ListEcsSpecsResponseBody : Tea.TeaModel {
 
         public var GPU: Int64?
 
+        public var GPUMemorySize: Double?
+
         public var GPUType: String?
 
         public var instanceBandwidthRx: Int64?
@@ -6343,6 +6345,8 @@ public class ListEcsSpecsResponseBody : Tea.TeaModel {
         public var memory: Double?
 
         public var price: Double?
+
+        public var spotStockStatus: String?
 
         public var systemDiskCapacity: Int64?
 
@@ -6372,6 +6376,9 @@ public class ListEcsSpecsResponseBody : Tea.TeaModel {
             if self.GPU != nil {
                 map["GPU"] = self.GPU!
             }
+            if self.GPUMemorySize != nil {
+                map["GPUMemorySize"] = self.GPUMemorySize!
+            }
             if self.GPUType != nil {
                 map["GPUType"] = self.GPUType!
             }
@@ -6397,6 +6404,9 @@ public class ListEcsSpecsResponseBody : Tea.TeaModel {
             if self.price != nil {
                 map["Price"] = self.price!
             }
+            if self.spotStockStatus != nil {
+                map["SpotStockStatus"] = self.spotStockStatus!
+            }
             if self.systemDiskCapacity != nil {
                 map["SystemDiskCapacity"] = self.systemDiskCapacity!
             }
@@ -6415,6 +6425,9 @@ public class ListEcsSpecsResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("GPU") {
                 self.GPU = dict["GPU"] as! Int64
+            }
+            if dict.keys.contains("GPUMemorySize") {
+                self.GPUMemorySize = dict["GPUMemorySize"] as! Double
             }
             if dict.keys.contains("GPUType") {
                 self.GPUType = dict["GPUType"] as! String
@@ -6444,6 +6457,9 @@ public class ListEcsSpecsResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("Price") {
                 self.price = dict["Price"] as! Double
+            }
+            if dict.keys.contains("SpotStockStatus") {
+                self.spotStockStatus = dict["SpotStockStatus"] as! String
             }
             if dict.keys.contains("SystemDiskCapacity") {
                 self.systemDiskCapacity = dict["SystemDiskCapacity"] as! Int64
