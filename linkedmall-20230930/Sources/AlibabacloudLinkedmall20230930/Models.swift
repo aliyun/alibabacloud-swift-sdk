@@ -2785,6 +2785,8 @@ public class Product : Tea.TeaModel {
 
     public var requestId: String?
 
+    public var servicePromises: [String]?
+
     public var shopId: String?
 
     public var skus: [Sku]?
@@ -2890,6 +2892,9 @@ public class Product : Tea.TeaModel {
         }
         if self.requestId != nil {
             map["requestId"] = self.requestId!
+        }
+        if self.servicePromises != nil {
+            map["servicePromises"] = self.servicePromises!
         }
         if self.shopId != nil {
             map["shopId"] = self.shopId!
@@ -3016,6 +3021,9 @@ public class Product : Tea.TeaModel {
         }
         if dict.keys.contains("requestId") {
             self.requestId = dict["requestId"] as! String
+        }
+        if dict.keys.contains("servicePromises") {
+            self.servicePromises = dict["servicePromises"] as! [String]
         }
         if dict.keys.contains("shopId") {
             self.shopId = dict["shopId"] as! String
