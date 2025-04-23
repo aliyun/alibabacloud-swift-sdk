@@ -12,20 +12,12 @@
 
 ## 安装
 
-### CocoaPods
-
-[CocoaPods](https://cocoapods.org) 是 Cocoa 项目管理工具。请访问其官方网站获取关于 CocoaPods 的使用和安装说明。要使用 CocoaPods 将 `AlibabacloudIaCService20210806` 集成到你的 Xcode 项目中，需要在 `Podfile` 中定义以下内容:
-
-```ruby
-pod 'AlibabacloudIaCService20210806', '~> 1.0.0'
-```
-
 ### Carthage
 
 要使用 [Carthage](https://github.com/Carthage/Carthage) 将 `AlibabacloudIaCService20210806` 集成到你的 Xcode 项目中，需要在 `Cartfile` 中定义以下内容:
 
 ```ogdl
-github "alibabacloud-sdk-swift/iacservice-20210806" "1.0.0"
+github "alibabacloud-sdk-swift/iacservice-20210806" "1.0.1"
 ```
 
 ### Swift 包管理工具
@@ -34,7 +26,7 @@ github "alibabacloud-sdk-swift/iacservice-20210806" "1.0.0"
 
 ```swift
 dependencies: [
-    .package(url: "https://github.com/alibabacloud-sdk-swift/iacservice-20210806.git", from: "1.0.0")
+    .package(url: "https://github.com/alibabacloud-sdk-swift/iacservice-20210806.git", from: "1.0.1")
 ]
 ```
 
@@ -58,6 +50,7 @@ dependencies: [
 
 ## 相关
 
+* [开发者门户](https://next.api.aliyun.com/home)
 * [最新源码](https://github.com/alibabacloud-sdk-swift/iacservice-20210806)
 
 ## 许可证
