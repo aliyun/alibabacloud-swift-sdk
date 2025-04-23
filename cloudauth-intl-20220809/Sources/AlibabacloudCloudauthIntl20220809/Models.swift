@@ -3049,11 +3049,19 @@ public class InitializeRequest : Tea.TeaModel {
 
     public var crop: String?
 
+    public var dateOfBirth: String?
+
+    public var dateOfExpiry: String?
+
+    public var docPageConfig: [String]?
+
     public var docScanMode: String?
 
     public var docType: String?
 
     public var docVideo: String?
+
+    public var documentNumber: String?
 
     public var experienceCode: String?
 
@@ -3068,6 +3076,8 @@ public class InitializeRequest : Tea.TeaModel {
     public var idThreshold: String?
 
     public var languageConfig: String?
+
+    public var MRTDInput: String?
 
     public var merchantBizId: String?
 
@@ -3099,6 +3109,8 @@ public class InitializeRequest : Tea.TeaModel {
 
     public var styleConfig: String?
 
+    public var useNFC: String?
+
     public override init() {
         super.init()
     }
@@ -3128,6 +3140,15 @@ public class InitializeRequest : Tea.TeaModel {
         if self.crop != nil {
             map["Crop"] = self.crop!
         }
+        if self.dateOfBirth != nil {
+            map["DateOfBirth"] = self.dateOfBirth!
+        }
+        if self.dateOfExpiry != nil {
+            map["DateOfExpiry"] = self.dateOfExpiry!
+        }
+        if self.docPageConfig != nil {
+            map["DocPageConfig"] = self.docPageConfig!
+        }
         if self.docScanMode != nil {
             map["DocScanMode"] = self.docScanMode!
         }
@@ -3136,6 +3157,9 @@ public class InitializeRequest : Tea.TeaModel {
         }
         if self.docVideo != nil {
             map["DocVideo"] = self.docVideo!
+        }
+        if self.documentNumber != nil {
+            map["DocumentNumber"] = self.documentNumber!
         }
         if self.experienceCode != nil {
             map["ExperienceCode"] = self.experienceCode!
@@ -3157,6 +3181,9 @@ public class InitializeRequest : Tea.TeaModel {
         }
         if self.languageConfig != nil {
             map["LanguageConfig"] = self.languageConfig!
+        }
+        if self.MRTDInput != nil {
+            map["MRTDInput"] = self.MRTDInput!
         }
         if self.merchantBizId != nil {
             map["MerchantBizId"] = self.merchantBizId!
@@ -3203,6 +3230,9 @@ public class InitializeRequest : Tea.TeaModel {
         if self.styleConfig != nil {
             map["StyleConfig"] = self.styleConfig!
         }
+        if self.useNFC != nil {
+            map["UseNFC"] = self.useNFC!
+        }
         return map
     }
 
@@ -3222,6 +3252,15 @@ public class InitializeRequest : Tea.TeaModel {
         if dict.keys.contains("Crop") {
             self.crop = dict["Crop"] as! String
         }
+        if dict.keys.contains("DateOfBirth") {
+            self.dateOfBirth = dict["DateOfBirth"] as! String
+        }
+        if dict.keys.contains("DateOfExpiry") {
+            self.dateOfExpiry = dict["DateOfExpiry"] as! String
+        }
+        if dict.keys.contains("DocPageConfig") {
+            self.docPageConfig = dict["DocPageConfig"] as! [String]
+        }
         if dict.keys.contains("DocScanMode") {
             self.docScanMode = dict["DocScanMode"] as! String
         }
@@ -3230,6 +3269,9 @@ public class InitializeRequest : Tea.TeaModel {
         }
         if dict.keys.contains("DocVideo") {
             self.docVideo = dict["DocVideo"] as! String
+        }
+        if dict.keys.contains("DocumentNumber") {
+            self.documentNumber = dict["DocumentNumber"] as! String
         }
         if dict.keys.contains("ExperienceCode") {
             self.experienceCode = dict["ExperienceCode"] as! String
@@ -3251,6 +3293,9 @@ public class InitializeRequest : Tea.TeaModel {
         }
         if dict.keys.contains("LanguageConfig") {
             self.languageConfig = dict["LanguageConfig"] as! String
+        }
+        if dict.keys.contains("MRTDInput") {
+            self.MRTDInput = dict["MRTDInput"] as! String
         }
         if dict.keys.contains("MerchantBizId") {
             self.merchantBizId = dict["MerchantBizId"] as! String
@@ -3296,6 +3341,319 @@ public class InitializeRequest : Tea.TeaModel {
         }
         if dict.keys.contains("StyleConfig") {
             self.styleConfig = dict["StyleConfig"] as! String
+        }
+        if dict.keys.contains("UseNFC") {
+            self.useNFC = dict["UseNFC"] as! String
+        }
+    }
+}
+
+public class InitializeShrinkRequest : Tea.TeaModel {
+    public var appQualityCheck: String?
+
+    public var authorize: String?
+
+    public var callbackToken: String?
+
+    public var callbackUrl: String?
+
+    public var crop: String?
+
+    public var dateOfBirth: String?
+
+    public var dateOfExpiry: String?
+
+    public var docPageConfigShrink: String?
+
+    public var docScanMode: String?
+
+    public var docType: String?
+
+    public var docVideo: String?
+
+    public var documentNumber: String?
+
+    public var experienceCode: String?
+
+    public var facePictureBase64: String?
+
+    public var facePictureUrl: String?
+
+    public var idFaceQuality: String?
+
+    public var idSpoof: String?
+
+    public var idThreshold: String?
+
+    public var languageConfig: String?
+
+    public var MRTDInput: String?
+
+    public var merchantBizId: String?
+
+    public var merchantUserId: String?
+
+    public var metaInfo: String?
+
+    public var model: String?
+
+    public var ocr: String?
+
+    public var procedurePriority: String?
+
+    public var productCode: String?
+
+    public var productFlow: String?
+
+    public var returnUrl: String?
+
+    public var sceneCode: String?
+
+    public var securityLevel: String?
+
+    public var showAlbumIcon: String?
+
+    public var showGuidePage: String?
+
+    public var showOcrResult: String?
+
+    public var styleConfig: String?
+
+    public var useNFC: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.appQualityCheck != nil {
+            map["AppQualityCheck"] = self.appQualityCheck!
+        }
+        if self.authorize != nil {
+            map["Authorize"] = self.authorize!
+        }
+        if self.callbackToken != nil {
+            map["CallbackToken"] = self.callbackToken!
+        }
+        if self.callbackUrl != nil {
+            map["CallbackUrl"] = self.callbackUrl!
+        }
+        if self.crop != nil {
+            map["Crop"] = self.crop!
+        }
+        if self.dateOfBirth != nil {
+            map["DateOfBirth"] = self.dateOfBirth!
+        }
+        if self.dateOfExpiry != nil {
+            map["DateOfExpiry"] = self.dateOfExpiry!
+        }
+        if self.docPageConfigShrink != nil {
+            map["DocPageConfig"] = self.docPageConfigShrink!
+        }
+        if self.docScanMode != nil {
+            map["DocScanMode"] = self.docScanMode!
+        }
+        if self.docType != nil {
+            map["DocType"] = self.docType!
+        }
+        if self.docVideo != nil {
+            map["DocVideo"] = self.docVideo!
+        }
+        if self.documentNumber != nil {
+            map["DocumentNumber"] = self.documentNumber!
+        }
+        if self.experienceCode != nil {
+            map["ExperienceCode"] = self.experienceCode!
+        }
+        if self.facePictureBase64 != nil {
+            map["FacePictureBase64"] = self.facePictureBase64!
+        }
+        if self.facePictureUrl != nil {
+            map["FacePictureUrl"] = self.facePictureUrl!
+        }
+        if self.idFaceQuality != nil {
+            map["IdFaceQuality"] = self.idFaceQuality!
+        }
+        if self.idSpoof != nil {
+            map["IdSpoof"] = self.idSpoof!
+        }
+        if self.idThreshold != nil {
+            map["IdThreshold"] = self.idThreshold!
+        }
+        if self.languageConfig != nil {
+            map["LanguageConfig"] = self.languageConfig!
+        }
+        if self.MRTDInput != nil {
+            map["MRTDInput"] = self.MRTDInput!
+        }
+        if self.merchantBizId != nil {
+            map["MerchantBizId"] = self.merchantBizId!
+        }
+        if self.merchantUserId != nil {
+            map["MerchantUserId"] = self.merchantUserId!
+        }
+        if self.metaInfo != nil {
+            map["MetaInfo"] = self.metaInfo!
+        }
+        if self.model != nil {
+            map["Model"] = self.model!
+        }
+        if self.ocr != nil {
+            map["Ocr"] = self.ocr!
+        }
+        if self.procedurePriority != nil {
+            map["ProcedurePriority"] = self.procedurePriority!
+        }
+        if self.productCode != nil {
+            map["ProductCode"] = self.productCode!
+        }
+        if self.productFlow != nil {
+            map["ProductFlow"] = self.productFlow!
+        }
+        if self.returnUrl != nil {
+            map["ReturnUrl"] = self.returnUrl!
+        }
+        if self.sceneCode != nil {
+            map["SceneCode"] = self.sceneCode!
+        }
+        if self.securityLevel != nil {
+            map["SecurityLevel"] = self.securityLevel!
+        }
+        if self.showAlbumIcon != nil {
+            map["ShowAlbumIcon"] = self.showAlbumIcon!
+        }
+        if self.showGuidePage != nil {
+            map["ShowGuidePage"] = self.showGuidePage!
+        }
+        if self.showOcrResult != nil {
+            map["ShowOcrResult"] = self.showOcrResult!
+        }
+        if self.styleConfig != nil {
+            map["StyleConfig"] = self.styleConfig!
+        }
+        if self.useNFC != nil {
+            map["UseNFC"] = self.useNFC!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("AppQualityCheck") {
+            self.appQualityCheck = dict["AppQualityCheck"] as! String
+        }
+        if dict.keys.contains("Authorize") {
+            self.authorize = dict["Authorize"] as! String
+        }
+        if dict.keys.contains("CallbackToken") {
+            self.callbackToken = dict["CallbackToken"] as! String
+        }
+        if dict.keys.contains("CallbackUrl") {
+            self.callbackUrl = dict["CallbackUrl"] as! String
+        }
+        if dict.keys.contains("Crop") {
+            self.crop = dict["Crop"] as! String
+        }
+        if dict.keys.contains("DateOfBirth") {
+            self.dateOfBirth = dict["DateOfBirth"] as! String
+        }
+        if dict.keys.contains("DateOfExpiry") {
+            self.dateOfExpiry = dict["DateOfExpiry"] as! String
+        }
+        if dict.keys.contains("DocPageConfig") {
+            self.docPageConfigShrink = dict["DocPageConfig"] as! String
+        }
+        if dict.keys.contains("DocScanMode") {
+            self.docScanMode = dict["DocScanMode"] as! String
+        }
+        if dict.keys.contains("DocType") {
+            self.docType = dict["DocType"] as! String
+        }
+        if dict.keys.contains("DocVideo") {
+            self.docVideo = dict["DocVideo"] as! String
+        }
+        if dict.keys.contains("DocumentNumber") {
+            self.documentNumber = dict["DocumentNumber"] as! String
+        }
+        if dict.keys.contains("ExperienceCode") {
+            self.experienceCode = dict["ExperienceCode"] as! String
+        }
+        if dict.keys.contains("FacePictureBase64") {
+            self.facePictureBase64 = dict["FacePictureBase64"] as! String
+        }
+        if dict.keys.contains("FacePictureUrl") {
+            self.facePictureUrl = dict["FacePictureUrl"] as! String
+        }
+        if dict.keys.contains("IdFaceQuality") {
+            self.idFaceQuality = dict["IdFaceQuality"] as! String
+        }
+        if dict.keys.contains("IdSpoof") {
+            self.idSpoof = dict["IdSpoof"] as! String
+        }
+        if dict.keys.contains("IdThreshold") {
+            self.idThreshold = dict["IdThreshold"] as! String
+        }
+        if dict.keys.contains("LanguageConfig") {
+            self.languageConfig = dict["LanguageConfig"] as! String
+        }
+        if dict.keys.contains("MRTDInput") {
+            self.MRTDInput = dict["MRTDInput"] as! String
+        }
+        if dict.keys.contains("MerchantBizId") {
+            self.merchantBizId = dict["MerchantBizId"] as! String
+        }
+        if dict.keys.contains("MerchantUserId") {
+            self.merchantUserId = dict["MerchantUserId"] as! String
+        }
+        if dict.keys.contains("MetaInfo") {
+            self.metaInfo = dict["MetaInfo"] as! String
+        }
+        if dict.keys.contains("Model") {
+            self.model = dict["Model"] as! String
+        }
+        if dict.keys.contains("Ocr") {
+            self.ocr = dict["Ocr"] as! String
+        }
+        if dict.keys.contains("ProcedurePriority") {
+            self.procedurePriority = dict["ProcedurePriority"] as! String
+        }
+        if dict.keys.contains("ProductCode") {
+            self.productCode = dict["ProductCode"] as! String
+        }
+        if dict.keys.contains("ProductFlow") {
+            self.productFlow = dict["ProductFlow"] as! String
+        }
+        if dict.keys.contains("ReturnUrl") {
+            self.returnUrl = dict["ReturnUrl"] as! String
+        }
+        if dict.keys.contains("SceneCode") {
+            self.sceneCode = dict["SceneCode"] as! String
+        }
+        if dict.keys.contains("SecurityLevel") {
+            self.securityLevel = dict["SecurityLevel"] as! String
+        }
+        if dict.keys.contains("ShowAlbumIcon") {
+            self.showAlbumIcon = dict["ShowAlbumIcon"] as! String
+        }
+        if dict.keys.contains("ShowGuidePage") {
+            self.showGuidePage = dict["ShowGuidePage"] as! String
+        }
+        if dict.keys.contains("ShowOcrResult") {
+            self.showOcrResult = dict["ShowOcrResult"] as! String
+        }
+        if dict.keys.contains("StyleConfig") {
+            self.styleConfig = dict["StyleConfig"] as! String
+        }
+        if dict.keys.contains("UseNFC") {
+            self.useNFC = dict["UseNFC"] as! String
         }
     }
 }
