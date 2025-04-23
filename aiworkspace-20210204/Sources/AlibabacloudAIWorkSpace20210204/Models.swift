@@ -1842,6 +1842,8 @@ public class Model : Tea.TeaModel {
 
     public var provider: String?
 
+    public var tags: [Label]?
+
     public var task: String?
 
     public var userId: String?
@@ -1915,6 +1917,13 @@ public class Model : Tea.TeaModel {
         if self.provider != nil {
             map["Provider"] = self.provider!
         }
+        if self.tags != nil {
+            var tmp : [Any] = []
+            for k in self.tags! {
+                tmp.append(k.toMap())
+            }
+            map["Tags"] = tmp
+        }
         if self.task != nil {
             map["Task"] = self.task!
         }
@@ -1985,6 +1994,17 @@ public class Model : Tea.TeaModel {
         }
         if dict.keys.contains("Provider") {
             self.provider = dict["Provider"] as! String
+        }
+        if dict.keys.contains("Tags") {
+            var tmp : [Label] = []
+            for v in dict["Tags"] as! [Any] {
+                var model = Label()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.tags = tmp
         }
         if dict.keys.contains("Task") {
             self.task = dict["Task"] as! String
@@ -5369,6 +5389,8 @@ public class CreateModelRequest : Tea.TeaModel {
 
     public var origin: String?
 
+    public var tag: [Label]?
+
     public var task: String?
 
     public var workspaceId: String?
@@ -5421,6 +5443,13 @@ public class CreateModelRequest : Tea.TeaModel {
         if self.origin != nil {
             map["Origin"] = self.origin!
         }
+        if self.tag != nil {
+            var tmp : [Any] = []
+            for k in self.tag! {
+                tmp.append(k.toMap())
+            }
+            map["Tag"] = tmp
+        }
         if self.task != nil {
             map["Task"] = self.task!
         }
@@ -5468,6 +5497,17 @@ public class CreateModelRequest : Tea.TeaModel {
         }
         if dict.keys.contains("Origin") {
             self.origin = dict["Origin"] as! String
+        }
+        if dict.keys.contains("Tag") {
+            var tmp : [Label] = []
+            for v in dict["Tag"] as! [Any] {
+                var model = Label()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.tag = tmp
         }
         if dict.keys.contains("Task") {
             self.task = dict["Task"] as! String
@@ -9655,6 +9695,167 @@ public class GetDatasetFileMetaResponse : Tea.TeaModel {
         }
         if dict.keys.contains("body") {
             var model = GetDatasetFileMetaResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
+public class GetDatasetFileMetasStatisticsRequest : Tea.TeaModel {
+    public var aggregateBy: String?
+
+    public var datasetVersion: String?
+
+    public var maxResults: Int32?
+
+    public var workspaceId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.aggregateBy != nil {
+            map["AggregateBy"] = self.aggregateBy!
+        }
+        if self.datasetVersion != nil {
+            map["DatasetVersion"] = self.datasetVersion!
+        }
+        if self.maxResults != nil {
+            map["MaxResults"] = self.maxResults!
+        }
+        if self.workspaceId != nil {
+            map["WorkspaceId"] = self.workspaceId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("AggregateBy") {
+            self.aggregateBy = dict["AggregateBy"] as! String
+        }
+        if dict.keys.contains("DatasetVersion") {
+            self.datasetVersion = dict["DatasetVersion"] as! String
+        }
+        if dict.keys.contains("MaxResults") {
+            self.maxResults = dict["MaxResults"] as! Int32
+        }
+        if dict.keys.contains("WorkspaceId") {
+            self.workspaceId = dict["WorkspaceId"] as! String
+        }
+    }
+}
+
+public class GetDatasetFileMetasStatisticsResponseBody : Tea.TeaModel {
+    public var datasetFileMetasStats: [DatasetFileMetasStat]?
+
+    public var totalCount: Int32?
+
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.datasetFileMetasStats != nil {
+            var tmp : [Any] = []
+            for k in self.datasetFileMetasStats! {
+                tmp.append(k.toMap())
+            }
+            map["DatasetFileMetasStats"] = tmp
+        }
+        if self.totalCount != nil {
+            map["TotalCount"] = self.totalCount!
+        }
+        if self.requestId != nil {
+            map["requestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("DatasetFileMetasStats") {
+            var tmp : [DatasetFileMetasStat] = []
+            for v in dict["DatasetFileMetasStats"] as! [Any] {
+                var model = DatasetFileMetasStat()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.datasetFileMetasStats = tmp
+        }
+        if dict.keys.contains("TotalCount") {
+            self.totalCount = dict["TotalCount"] as! Int32
+        }
+        if dict.keys.contains("requestId") {
+            self.requestId = dict["requestId"] as! String
+        }
+    }
+}
+
+public class GetDatasetFileMetasStatisticsResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: GetDatasetFileMetasStatisticsResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") {
+            var model = GetDatasetFileMetasStatisticsResponseBody()
             model.fromMap(dict["body"] as! [String: Any])
             self.body = model
         }
@@ -15139,6 +15340,43 @@ public class ListModelVersionsResponse : Tea.TeaModel {
 }
 
 public class ListModelsRequest : Tea.TeaModel {
+    public class Tag : Tea.TeaModel {
+        public var key: String?
+
+        public var value: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.key != nil {
+                map["Key"] = self.key!
+            }
+            if self.value != nil {
+                map["Value"] = self.value!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("Key") {
+                self.key = dict["Key"] as! String
+            }
+            if dict.keys.contains("Value") {
+                self.value = dict["Value"] as! String
+            }
+        }
+    }
     public var collections: String?
 
     public var domain: String?
@@ -15162,6 +15400,8 @@ public class ListModelsRequest : Tea.TeaModel {
     public var query: String?
 
     public var sortBy: String?
+
+    public var tag: [ListModelsRequest.Tag]?
 
     public var task: String?
 
@@ -15217,6 +15457,13 @@ public class ListModelsRequest : Tea.TeaModel {
         if self.sortBy != nil {
             map["SortBy"] = self.sortBy!
         }
+        if self.tag != nil {
+            var tmp : [Any] = []
+            for k in self.tag! {
+                tmp.append(k.toMap())
+            }
+            map["Tag"] = tmp
+        }
         if self.task != nil {
             map["Task"] = self.task!
         }
@@ -15262,6 +15509,159 @@ public class ListModelsRequest : Tea.TeaModel {
         }
         if dict.keys.contains("SortBy") {
             self.sortBy = dict["SortBy"] as! String
+        }
+        if dict.keys.contains("Tag") {
+            var tmp : [ListModelsRequest.Tag] = []
+            for v in dict["Tag"] as! [Any] {
+                var model = ListModelsRequest.Tag()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.tag = tmp
+        }
+        if dict.keys.contains("Task") {
+            self.task = dict["Task"] as! String
+        }
+        if dict.keys.contains("WorkspaceId") {
+            self.workspaceId = dict["WorkspaceId"] as! String
+        }
+    }
+}
+
+public class ListModelsShrinkRequest : Tea.TeaModel {
+    public var collections: String?
+
+    public var domain: String?
+
+    public var label: String?
+
+    public var modelName: String?
+
+    public var modelType: String?
+
+    public var order: String?
+
+    public var origin: String?
+
+    public var pageNumber: Int32?
+
+    public var pageSize: Int32?
+
+    public var provider: String?
+
+    public var query: String?
+
+    public var sortBy: String?
+
+    public var tagShrink: String?
+
+    public var task: String?
+
+    public var workspaceId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.collections != nil {
+            map["Collections"] = self.collections!
+        }
+        if self.domain != nil {
+            map["Domain"] = self.domain!
+        }
+        if self.label != nil {
+            map["Label"] = self.label!
+        }
+        if self.modelName != nil {
+            map["ModelName"] = self.modelName!
+        }
+        if self.modelType != nil {
+            map["ModelType"] = self.modelType!
+        }
+        if self.order != nil {
+            map["Order"] = self.order!
+        }
+        if self.origin != nil {
+            map["Origin"] = self.origin!
+        }
+        if self.pageNumber != nil {
+            map["PageNumber"] = self.pageNumber!
+        }
+        if self.pageSize != nil {
+            map["PageSize"] = self.pageSize!
+        }
+        if self.provider != nil {
+            map["Provider"] = self.provider!
+        }
+        if self.query != nil {
+            map["Query"] = self.query!
+        }
+        if self.sortBy != nil {
+            map["SortBy"] = self.sortBy!
+        }
+        if self.tagShrink != nil {
+            map["Tag"] = self.tagShrink!
+        }
+        if self.task != nil {
+            map["Task"] = self.task!
+        }
+        if self.workspaceId != nil {
+            map["WorkspaceId"] = self.workspaceId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("Collections") {
+            self.collections = dict["Collections"] as! String
+        }
+        if dict.keys.contains("Domain") {
+            self.domain = dict["Domain"] as! String
+        }
+        if dict.keys.contains("Label") {
+            self.label = dict["Label"] as! String
+        }
+        if dict.keys.contains("ModelName") {
+            self.modelName = dict["ModelName"] as! String
+        }
+        if dict.keys.contains("ModelType") {
+            self.modelType = dict["ModelType"] as! String
+        }
+        if dict.keys.contains("Order") {
+            self.order = dict["Order"] as! String
+        }
+        if dict.keys.contains("Origin") {
+            self.origin = dict["Origin"] as! String
+        }
+        if dict.keys.contains("PageNumber") {
+            self.pageNumber = dict["PageNumber"] as! Int32
+        }
+        if dict.keys.contains("PageSize") {
+            self.pageSize = dict["PageSize"] as! Int32
+        }
+        if dict.keys.contains("Provider") {
+            self.provider = dict["Provider"] as! String
+        }
+        if dict.keys.contains("Query") {
+            self.query = dict["Query"] as! String
+        }
+        if dict.keys.contains("SortBy") {
+            self.sortBy = dict["SortBy"] as! String
+        }
+        if dict.keys.contains("Tag") {
+            self.tagShrink = dict["Tag"] as! String
         }
         if dict.keys.contains("Task") {
             self.task = dict["Task"] as! String
