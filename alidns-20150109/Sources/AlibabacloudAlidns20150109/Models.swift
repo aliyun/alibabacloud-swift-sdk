@@ -11380,9 +11380,48 @@ public class DescribeCustomLinesRequest : Tea.TeaModel {
 
 public class DescribeCustomLinesResponseBody : Tea.TeaModel {
     public class CustomLines : Tea.TeaModel {
+        public class IpSegmentList : Tea.TeaModel {
+            public var endIp: String?
+
+            public var startIp: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.endIp != nil {
+                    map["EndIp"] = self.endIp!
+                }
+                if self.startIp != nil {
+                    map["StartIp"] = self.startIp!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("EndIp") {
+                    self.endIp = dict["EndIp"] as! String
+                }
+                if dict.keys.contains("StartIp") {
+                    self.startIp = dict["StartIp"] as! String
+                }
+            }
+        }
         public var code: String?
 
         public var id: Int64?
+
+        public var ipSegmentList: [DescribeCustomLinesResponseBody.CustomLines.IpSegmentList]?
 
         public var name: String?
 
@@ -11406,6 +11445,13 @@ public class DescribeCustomLinesResponseBody : Tea.TeaModel {
             if self.id != nil {
                 map["Id"] = self.id!
             }
+            if self.ipSegmentList != nil {
+                var tmp : [Any] = []
+                for k in self.ipSegmentList! {
+                    tmp.append(k.toMap())
+                }
+                map["IpSegmentList"] = tmp
+            }
             if self.name != nil {
                 map["Name"] = self.name!
             }
@@ -11418,6 +11464,17 @@ public class DescribeCustomLinesResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("Id") {
                 self.id = dict["Id"] as! Int64
+            }
+            if dict.keys.contains("IpSegmentList") {
+                var tmp : [DescribeCustomLinesResponseBody.CustomLines.IpSegmentList] = []
+                for v in dict["IpSegmentList"] as! [Any] {
+                    var model = DescribeCustomLinesResponseBody.CustomLines.IpSegmentList()
+                    if v != nil {
+                        model.fromMap(v as! [String: Any])
+                    }
+                    tmp.append(model)
+                }
+                self.ipSegmentList = tmp
             }
             if dict.keys.contains("Name") {
                 self.name = dict["Name"] as! String
