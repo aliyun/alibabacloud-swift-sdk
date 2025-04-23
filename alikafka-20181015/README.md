@@ -17,7 +17,7 @@ English | [简体中文](README-CN.md)
 To integrate `AlibabacloudAlikafka20181015` into your Xcode project using [Carthage](https://github.com/Carthage/Carthage), specify it in your `Cartfile`:
 
 ```ogdl
-github "alibabacloud-sdk-swift/alikafka-20181015" "1.0.1"
+github "alibabacloud-sdk-swift/alikafka-20181015" "1.0.2"
 ```
 
 ### Swift Package Manager
@@ -26,7 +26,7 @@ To integrate `AlibabacloudAlikafka20181015` into your Xcode project using [Swift
 
 ```swift
 dependencies: [
-    .package(url: "https://github.com/alibabacloud-sdk-swift/alikafka-20181015.git", from: "1.0.1")
+    .package(url: "https://github.com/alibabacloud-sdk-swift/alikafka-20181015.git", from: "1.0.2")
 ]
 ```
 
