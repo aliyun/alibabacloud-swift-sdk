@@ -7280,6 +7280,8 @@ public class BatchGetMediaInfosResponseBody : Tea.TeaModel {
             }
         }
         public class MediaBasicInfo : Tea.TeaModel {
+            public var biz: String?
+
             public var businessType: String?
 
             public var category: String?
@@ -7330,6 +7332,9 @@ public class BatchGetMediaInfosResponseBody : Tea.TeaModel {
 
             public override func toMap() -> [String : Any] {
                 var map = super.toMap()
+                if self.biz != nil {
+                    map["Biz"] = self.biz!
+                }
                 if self.businessType != nil {
                     map["BusinessType"] = self.businessType!
                 }
@@ -7388,6 +7393,9 @@ public class BatchGetMediaInfosResponseBody : Tea.TeaModel {
             }
 
             public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("Biz") {
+                    self.biz = dict["Biz"] as! String
+                }
                 if dict.keys.contains("BusinessType") {
                     self.businessType = dict["BusinessType"] as! String
                 }
