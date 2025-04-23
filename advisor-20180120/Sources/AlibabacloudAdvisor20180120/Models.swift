@@ -2495,6 +2495,8 @@ public class DescribeCostCheckAdvicesRequest : Tea.TeaModel {
 
     public var checkId: String?
 
+    public var checkPlanId: Int64?
+
     public var language: String?
 
     public var pageNumber: Int32?
@@ -2502,6 +2504,10 @@ public class DescribeCostCheckAdvicesRequest : Tea.TeaModel {
     public var pageSize: Int32?
 
     public var regionIds: [String]?
+
+    public var resourceGroupIdList: [String]?
+
+    public var resourceId: String?
 
     public var resourceIds: [String]?
 
@@ -2535,6 +2541,9 @@ public class DescribeCostCheckAdvicesRequest : Tea.TeaModel {
         if self.checkId != nil {
             map["CheckId"] = self.checkId!
         }
+        if self.checkPlanId != nil {
+            map["CheckPlanId"] = self.checkPlanId!
+        }
         if self.language != nil {
             map["Language"] = self.language!
         }
@@ -2546,6 +2555,12 @@ public class DescribeCostCheckAdvicesRequest : Tea.TeaModel {
         }
         if self.regionIds != nil {
             map["RegionIds"] = self.regionIds!
+        }
+        if self.resourceGroupIdList != nil {
+            map["ResourceGroupIdList"] = self.resourceGroupIdList!
+        }
+        if self.resourceId != nil {
+            map["ResourceId"] = self.resourceId!
         }
         if self.resourceIds != nil {
             map["ResourceIds"] = self.resourceIds!
@@ -2579,6 +2594,9 @@ public class DescribeCostCheckAdvicesRequest : Tea.TeaModel {
         if dict.keys.contains("CheckId") {
             self.checkId = dict["CheckId"] as! String
         }
+        if dict.keys.contains("CheckPlanId") {
+            self.checkPlanId = dict["CheckPlanId"] as! Int64
+        }
         if dict.keys.contains("Language") {
             self.language = dict["Language"] as! String
         }
@@ -2590,6 +2608,12 @@ public class DescribeCostCheckAdvicesRequest : Tea.TeaModel {
         }
         if dict.keys.contains("RegionIds") {
             self.regionIds = dict["RegionIds"] as! [String]
+        }
+        if dict.keys.contains("ResourceGroupIdList") {
+            self.resourceGroupIdList = dict["ResourceGroupIdList"] as! [String]
+        }
+        if dict.keys.contains("ResourceId") {
+            self.resourceId = dict["ResourceId"] as! String
         }
         if dict.keys.contains("ResourceIds") {
             self.resourceIds = dict["ResourceIds"] as! [String]
@@ -2625,6 +2649,8 @@ public class DescribeCostCheckAdvicesShrinkRequest : Tea.TeaModel {
 
     public var checkId: String?
 
+    public var checkPlanId: Int64?
+
     public var language: String?
 
     public var pageNumber: Int32?
@@ -2632,6 +2658,10 @@ public class DescribeCostCheckAdvicesShrinkRequest : Tea.TeaModel {
     public var pageSize: Int32?
 
     public var regionIdsShrink: String?
+
+    public var resourceGroupIdListShrink: String?
+
+    public var resourceId: String?
 
     public var resourceIdsShrink: String?
 
@@ -2665,6 +2695,9 @@ public class DescribeCostCheckAdvicesShrinkRequest : Tea.TeaModel {
         if self.checkId != nil {
             map["CheckId"] = self.checkId!
         }
+        if self.checkPlanId != nil {
+            map["CheckPlanId"] = self.checkPlanId!
+        }
         if self.language != nil {
             map["Language"] = self.language!
         }
@@ -2676,6 +2709,12 @@ public class DescribeCostCheckAdvicesShrinkRequest : Tea.TeaModel {
         }
         if self.regionIdsShrink != nil {
             map["RegionIds"] = self.regionIdsShrink!
+        }
+        if self.resourceGroupIdListShrink != nil {
+            map["ResourceGroupIdList"] = self.resourceGroupIdListShrink!
+        }
+        if self.resourceId != nil {
+            map["ResourceId"] = self.resourceId!
         }
         if self.resourceIdsShrink != nil {
             map["ResourceIds"] = self.resourceIdsShrink!
@@ -2705,6 +2744,9 @@ public class DescribeCostCheckAdvicesShrinkRequest : Tea.TeaModel {
         if dict.keys.contains("CheckId") {
             self.checkId = dict["CheckId"] as! String
         }
+        if dict.keys.contains("CheckPlanId") {
+            self.checkPlanId = dict["CheckPlanId"] as! Int64
+        }
         if dict.keys.contains("Language") {
             self.language = dict["Language"] as! String
         }
@@ -2716,6 +2758,12 @@ public class DescribeCostCheckAdvicesShrinkRequest : Tea.TeaModel {
         }
         if dict.keys.contains("RegionIds") {
             self.regionIdsShrink = dict["RegionIds"] as! String
+        }
+        if dict.keys.contains("ResourceGroupIdList") {
+            self.resourceGroupIdListShrink = dict["ResourceGroupIdList"] as! String
+        }
+        if dict.keys.contains("ResourceId") {
+            self.resourceId = dict["ResourceId"] as! String
         }
         if dict.keys.contains("ResourceIds") {
             self.resourceIdsShrink = dict["ResourceIds"] as! String
@@ -3173,6 +3221,8 @@ public class DescribeCostCheckResultsRequest : Tea.TeaModel {
 
     public var checkIds: [String]?
 
+    public var checkPlanId: Int64?
+
     public var groupBy: String?
 
     public var product: String?
@@ -3180,6 +3230,8 @@ public class DescribeCostCheckResultsRequest : Tea.TeaModel {
     public var regionIds: [String]?
 
     public var resourceGroupIdList: [String]?
+
+    public var resourceId: String?
 
     public var resourceIds: [String]?
 
@@ -3213,6 +3265,9 @@ public class DescribeCostCheckResultsRequest : Tea.TeaModel {
         if self.checkIds != nil {
             map["CheckIds"] = self.checkIds!
         }
+        if self.checkPlanId != nil {
+            map["CheckPlanId"] = self.checkPlanId!
+        }
         if self.groupBy != nil {
             map["GroupBy"] = self.groupBy!
         }
@@ -3224,6 +3279,9 @@ public class DescribeCostCheckResultsRequest : Tea.TeaModel {
         }
         if self.resourceGroupIdList != nil {
             map["ResourceGroupIdList"] = self.resourceGroupIdList!
+        }
+        if self.resourceId != nil {
+            map["ResourceId"] = self.resourceId!
         }
         if self.resourceIds != nil {
             map["ResourceIds"] = self.resourceIds!
@@ -3257,6 +3315,9 @@ public class DescribeCostCheckResultsRequest : Tea.TeaModel {
         if dict.keys.contains("CheckIds") {
             self.checkIds = dict["CheckIds"] as! [String]
         }
+        if dict.keys.contains("CheckPlanId") {
+            self.checkPlanId = dict["CheckPlanId"] as! Int64
+        }
         if dict.keys.contains("GroupBy") {
             self.groupBy = dict["GroupBy"] as! String
         }
@@ -3268,6 +3329,9 @@ public class DescribeCostCheckResultsRequest : Tea.TeaModel {
         }
         if dict.keys.contains("ResourceGroupIdList") {
             self.resourceGroupIdList = dict["ResourceGroupIdList"] as! [String]
+        }
+        if dict.keys.contains("ResourceId") {
+            self.resourceId = dict["ResourceId"] as! String
         }
         if dict.keys.contains("ResourceIds") {
             self.resourceIds = dict["ResourceIds"] as! [String]
@@ -3303,6 +3367,8 @@ public class DescribeCostCheckResultsShrinkRequest : Tea.TeaModel {
 
     public var checkIdsShrink: String?
 
+    public var checkPlanId: Int64?
+
     public var groupBy: String?
 
     public var product: String?
@@ -3310,6 +3376,8 @@ public class DescribeCostCheckResultsShrinkRequest : Tea.TeaModel {
     public var regionIdsShrink: String?
 
     public var resourceGroupIdListShrink: String?
+
+    public var resourceId: String?
 
     public var resourceIdsShrink: String?
 
@@ -3343,6 +3411,9 @@ public class DescribeCostCheckResultsShrinkRequest : Tea.TeaModel {
         if self.checkIdsShrink != nil {
             map["CheckIds"] = self.checkIdsShrink!
         }
+        if self.checkPlanId != nil {
+            map["CheckPlanId"] = self.checkPlanId!
+        }
         if self.groupBy != nil {
             map["GroupBy"] = self.groupBy!
         }
@@ -3354,6 +3425,9 @@ public class DescribeCostCheckResultsShrinkRequest : Tea.TeaModel {
         }
         if self.resourceGroupIdListShrink != nil {
             map["ResourceGroupIdList"] = self.resourceGroupIdListShrink!
+        }
+        if self.resourceId != nil {
+            map["ResourceId"] = self.resourceId!
         }
         if self.resourceIdsShrink != nil {
             map["ResourceIds"] = self.resourceIdsShrink!
@@ -3383,6 +3457,9 @@ public class DescribeCostCheckResultsShrinkRequest : Tea.TeaModel {
         if dict.keys.contains("CheckIds") {
             self.checkIdsShrink = dict["CheckIds"] as! String
         }
+        if dict.keys.contains("CheckPlanId") {
+            self.checkPlanId = dict["CheckPlanId"] as! Int64
+        }
         if dict.keys.contains("GroupBy") {
             self.groupBy = dict["GroupBy"] as! String
         }
@@ -3394,6 +3471,9 @@ public class DescribeCostCheckResultsShrinkRequest : Tea.TeaModel {
         }
         if dict.keys.contains("ResourceGroupIdList") {
             self.resourceGroupIdListShrink = dict["ResourceGroupIdList"] as! String
+        }
+        if dict.keys.contains("ResourceId") {
+            self.resourceId = dict["ResourceId"] as! String
         }
         if dict.keys.contains("ResourceIds") {
             self.resourceIdsShrink = dict["ResourceIds"] as! String
@@ -3822,6 +3902,8 @@ public class DescribeCostOptimizationOverviewRequest : Tea.TeaModel {
 
     public var assumeAliyunIdList: [Int64]?
 
+    public var checkPlanId: Int64?
+
     public var token: String?
 
     public override init() {
@@ -3844,6 +3926,9 @@ public class DescribeCostOptimizationOverviewRequest : Tea.TeaModel {
         if self.assumeAliyunIdList != nil {
             map["AssumeAliyunIdList"] = self.assumeAliyunIdList!
         }
+        if self.checkPlanId != nil {
+            map["CheckPlanId"] = self.checkPlanId!
+        }
         if self.token != nil {
             map["Token"] = self.token!
         }
@@ -3857,6 +3942,9 @@ public class DescribeCostOptimizationOverviewRequest : Tea.TeaModel {
         if dict.keys.contains("AssumeAliyunIdList") {
             self.assumeAliyunIdList = dict["AssumeAliyunIdList"] as! [Int64]
         }
+        if dict.keys.contains("CheckPlanId") {
+            self.checkPlanId = dict["CheckPlanId"] as! Int64
+        }
         if dict.keys.contains("Token") {
             self.token = dict["Token"] as! String
         }
@@ -3867,6 +3955,8 @@ public class DescribeCostOptimizationOverviewShrinkRequest : Tea.TeaModel {
     public var assumeAliyunId: Int64?
 
     public var assumeAliyunIdListShrink: String?
+
+    public var checkPlanId: Int64?
 
     public var token: String?
 
@@ -3890,6 +3980,9 @@ public class DescribeCostOptimizationOverviewShrinkRequest : Tea.TeaModel {
         if self.assumeAliyunIdListShrink != nil {
             map["AssumeAliyunIdList"] = self.assumeAliyunIdListShrink!
         }
+        if self.checkPlanId != nil {
+            map["CheckPlanId"] = self.checkPlanId!
+        }
         if self.token != nil {
             map["Token"] = self.token!
         }
@@ -3902,6 +3995,9 @@ public class DescribeCostOptimizationOverviewShrinkRequest : Tea.TeaModel {
         }
         if dict.keys.contains("AssumeAliyunIdList") {
             self.assumeAliyunIdListShrink = dict["AssumeAliyunIdList"] as! String
+        }
+        if dict.keys.contains("CheckPlanId") {
+            self.checkPlanId = dict["CheckPlanId"] as! Int64
         }
         if dict.keys.contains("Token") {
             self.token = dict["Token"] as! String
@@ -4000,7 +4096,13 @@ public class DescribeCostOptimizationOverviewResponseBody : Tea.TeaModel {
 
         public var optResourceNum: String?
 
+        public var processedResourceCount: String?
+
+        public var processedSaveAmount: String?
+
         public var taskId: Int64?
+
+        public var waitProcessResourceCount: String?
 
         public override init() {
             super.init()
@@ -4034,8 +4136,17 @@ public class DescribeCostOptimizationOverviewResponseBody : Tea.TeaModel {
             if self.optResourceNum != nil {
                 map["OptResourceNum"] = self.optResourceNum!
             }
+            if self.processedResourceCount != nil {
+                map["ProcessedResourceCount"] = self.processedResourceCount!
+            }
+            if self.processedSaveAmount != nil {
+                map["ProcessedSaveAmount"] = self.processedSaveAmount!
+            }
             if self.taskId != nil {
                 map["TaskId"] = self.taskId!
+            }
+            if self.waitProcessResourceCount != nil {
+                map["WaitProcessResourceCount"] = self.waitProcessResourceCount!
             }
             return map
         }
@@ -4059,8 +4170,17 @@ public class DescribeCostOptimizationOverviewResponseBody : Tea.TeaModel {
             if dict.keys.contains("OptResourceNum") {
                 self.optResourceNum = dict["OptResourceNum"] as! String
             }
+            if dict.keys.contains("ProcessedResourceCount") {
+                self.processedResourceCount = dict["ProcessedResourceCount"] as! String
+            }
+            if dict.keys.contains("ProcessedSaveAmount") {
+                self.processedSaveAmount = dict["ProcessedSaveAmount"] as! String
+            }
             if dict.keys.contains("TaskId") {
                 self.taskId = dict["TaskId"] as! Int64
+            }
+            if dict.keys.contains("WaitProcessResourceCount") {
+                self.waitProcessResourceCount = dict["WaitProcessResourceCount"] as! String
             }
         }
     }
@@ -5644,6 +5764,8 @@ public class RefreshAdvisorCostCheckRequest : Tea.TeaModel {
 
     public var checkIds: [String]?
 
+    public var checkPlanId: Int64?
+
     public var product: String?
 
     public var refreshResource: Bool?
@@ -5670,6 +5792,9 @@ public class RefreshAdvisorCostCheckRequest : Tea.TeaModel {
         if self.checkIds != nil {
             map["CheckIds"] = self.checkIds!
         }
+        if self.checkPlanId != nil {
+            map["CheckPlanId"] = self.checkPlanId!
+        }
         if self.product != nil {
             map["Product"] = self.product!
         }
@@ -5689,6 +5814,9 @@ public class RefreshAdvisorCostCheckRequest : Tea.TeaModel {
         if dict.keys.contains("CheckIds") {
             self.checkIds = dict["CheckIds"] as! [String]
         }
+        if dict.keys.contains("CheckPlanId") {
+            self.checkPlanId = dict["CheckPlanId"] as! Int64
+        }
         if dict.keys.contains("Product") {
             self.product = dict["Product"] as! String
         }
@@ -5705,6 +5833,8 @@ public class RefreshAdvisorCostCheckShrinkRequest : Tea.TeaModel {
     public var assumeAliyunIdListShrink: String?
 
     public var checkIdsShrink: String?
+
+    public var checkPlanId: Int64?
 
     public var product: String?
 
@@ -5732,6 +5862,9 @@ public class RefreshAdvisorCostCheckShrinkRequest : Tea.TeaModel {
         if self.checkIdsShrink != nil {
             map["CheckIds"] = self.checkIdsShrink!
         }
+        if self.checkPlanId != nil {
+            map["CheckPlanId"] = self.checkPlanId!
+        }
         if self.product != nil {
             map["Product"] = self.product!
         }
@@ -5750,6 +5883,9 @@ public class RefreshAdvisorCostCheckShrinkRequest : Tea.TeaModel {
         }
         if dict.keys.contains("CheckIds") {
             self.checkIdsShrink = dict["CheckIds"] as! String
+        }
+        if dict.keys.contains("CheckPlanId") {
+            self.checkPlanId = dict["CheckPlanId"] as! Int64
         }
         if dict.keys.contains("Product") {
             self.product = dict["Product"] as! String
