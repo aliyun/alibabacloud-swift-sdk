@@ -10647,6 +10647,8 @@ public class GetUserDeviceResponseBody : Tea.TeaModel {
 
         public var username: String?
 
+        public var workshop: String?
+
         public override init() {
             super.init()
         }
@@ -10753,6 +10755,9 @@ public class GetUserDeviceResponseBody : Tea.TeaModel {
             if self.username != nil {
                 map["Username"] = self.username!
             }
+            if self.workshop != nil {
+                map["Workshop"] = self.workshop!
+            }
             return map
         }
 
@@ -10856,6 +10861,9 @@ public class GetUserDeviceResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("Username") {
                 self.username = dict["Username"] as! String
+            }
+            if dict.keys.contains("Workshop") {
+                self.workshop = dict["Workshop"] as! String
             }
         }
     }
@@ -21970,6 +21978,8 @@ public class ListUserDevicesRequest : Tea.TeaModel {
 
     public var username: String?
 
+    public var workshop: String?
+
     public override init() {
         super.init()
     }
@@ -22044,6 +22054,9 @@ public class ListUserDevicesRequest : Tea.TeaModel {
         if self.username != nil {
             map["Username"] = self.username!
         }
+        if self.workshop != nil {
+            map["Workshop"] = self.workshop!
+        }
         return map
     }
 
@@ -22107,6 +22120,9 @@ public class ListUserDevicesRequest : Tea.TeaModel {
         }
         if dict.keys.contains("Username") {
             self.username = dict["Username"] as! String
+        }
+        if dict.keys.contains("Workshop") {
+            self.workshop = dict["Workshop"] as! String
         }
     }
 }
@@ -22203,6 +22219,8 @@ public class ListUserDevicesResponseBody : Tea.TeaModel {
         public var updateTime: String?
 
         public var username: String?
+
+        public var workshop: String?
 
         public override init() {
             super.init()
@@ -22303,6 +22321,9 @@ public class ListUserDevicesResponseBody : Tea.TeaModel {
             if self.username != nil {
                 map["Username"] = self.username!
             }
+            if self.workshop != nil {
+                map["Workshop"] = self.workshop!
+            }
             return map
         }
 
@@ -22395,6 +22416,9 @@ public class ListUserDevicesResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("Username") {
                 self.username = dict["Username"] as! String
+            }
+            if dict.keys.contains("Workshop") {
+                self.workshop = dict["Workshop"] as! String
             }
         }
     }
