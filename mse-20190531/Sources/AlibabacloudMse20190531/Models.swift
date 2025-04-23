@@ -61668,6 +61668,8 @@ public class QueryConfigResponseBody : Tea.TeaModel {
         public class NacosRunningEnv : Tea.TeaModel {
             public var emptyProtect: Bool?
 
+            public var grayAuth: String?
+
             public override init() {
                 super.init()
             }
@@ -61685,12 +61687,18 @@ public class QueryConfigResponseBody : Tea.TeaModel {
                 if self.emptyProtect != nil {
                     map["emptyProtect"] = self.emptyProtect!
                 }
+                if self.grayAuth != nil {
+                    map["grayAuth"] = self.grayAuth!
+                }
                 return map
             }
 
             public override func fromMap(_ dict: [String: Any]) -> Void {
                 if dict.keys.contains("emptyProtect") {
                     self.emptyProtect = dict["emptyProtect"] as! Bool
+                }
+                if dict.keys.contains("grayAuth") {
+                    self.grayAuth = dict["grayAuth"] as! String
                 }
             }
         }
