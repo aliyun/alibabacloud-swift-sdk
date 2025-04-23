@@ -25189,6 +25189,171 @@ public class GetJobDetailResponseBody : Tea.TeaModel {
             }
         }
     }
+    public class WorkflowTaskDetail : Tea.TeaModel {
+        public class Workflow : Tea.TeaModel {
+            public var appId: String?
+
+            public var createTime: String?
+
+            public var modifiedTime: String?
+
+            public var name: String?
+
+            public var status: String?
+
+            public var type: String?
+
+            public var workflowId: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.appId != nil {
+                    map["AppId"] = self.appId!
+                }
+                if self.createTime != nil {
+                    map["CreateTime"] = self.createTime!
+                }
+                if self.modifiedTime != nil {
+                    map["ModifiedTime"] = self.modifiedTime!
+                }
+                if self.name != nil {
+                    map["Name"] = self.name!
+                }
+                if self.status != nil {
+                    map["Status"] = self.status!
+                }
+                if self.type != nil {
+                    map["Type"] = self.type!
+                }
+                if self.workflowId != nil {
+                    map["WorkflowId"] = self.workflowId!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("AppId") {
+                    self.appId = dict["AppId"] as! String
+                }
+                if dict.keys.contains("CreateTime") {
+                    self.createTime = dict["CreateTime"] as! String
+                }
+                if dict.keys.contains("ModifiedTime") {
+                    self.modifiedTime = dict["ModifiedTime"] as! String
+                }
+                if dict.keys.contains("Name") {
+                    self.name = dict["Name"] as! String
+                }
+                if dict.keys.contains("Status") {
+                    self.status = dict["Status"] as! String
+                }
+                if dict.keys.contains("Type") {
+                    self.type = dict["Type"] as! String
+                }
+                if dict.keys.contains("WorkflowId") {
+                    self.workflowId = dict["WorkflowId"] as! String
+                }
+            }
+        }
+        public var activityResults: String?
+
+        public var createTime: String?
+
+        public var finishTime: String?
+
+        public var status: String?
+
+        public var taskId: String?
+
+        public var taskInput: String?
+
+        public var userData: String?
+
+        public var workflow: GetJobDetailResponseBody.WorkflowTaskDetail.Workflow?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+            try self.workflow?.validate()
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.activityResults != nil {
+                map["ActivityResults"] = self.activityResults!
+            }
+            if self.createTime != nil {
+                map["CreateTime"] = self.createTime!
+            }
+            if self.finishTime != nil {
+                map["FinishTime"] = self.finishTime!
+            }
+            if self.status != nil {
+                map["Status"] = self.status!
+            }
+            if self.taskId != nil {
+                map["TaskId"] = self.taskId!
+            }
+            if self.taskInput != nil {
+                map["TaskInput"] = self.taskInput!
+            }
+            if self.userData != nil {
+                map["UserData"] = self.userData!
+            }
+            if self.workflow != nil {
+                map["Workflow"] = self.workflow?.toMap()
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("ActivityResults") {
+                self.activityResults = dict["ActivityResults"] as! String
+            }
+            if dict.keys.contains("CreateTime") {
+                self.createTime = dict["CreateTime"] as! String
+            }
+            if dict.keys.contains("FinishTime") {
+                self.finishTime = dict["FinishTime"] as! String
+            }
+            if dict.keys.contains("Status") {
+                self.status = dict["Status"] as! String
+            }
+            if dict.keys.contains("TaskId") {
+                self.taskId = dict["TaskId"] as! String
+            }
+            if dict.keys.contains("TaskInput") {
+                self.taskInput = dict["TaskInput"] as! String
+            }
+            if dict.keys.contains("UserData") {
+                self.userData = dict["UserData"] as! String
+            }
+            if dict.keys.contains("Workflow") {
+                var model = GetJobDetailResponseBody.WorkflowTaskDetail.Workflow()
+                model.fromMap(dict["Workflow"] as! [String: Any])
+                self.workflow = model
+            }
+        }
+    }
     public var AIJobDetail: GetJobDetailResponseBody.AIJobDetail?
 
     public var jobType: String?
@@ -25198,6 +25363,8 @@ public class GetJobDetailResponseBody : Tea.TeaModel {
     public var snapshotJobDetail: GetJobDetailResponseBody.SnapshotJobDetail?
 
     public var transcodeJobDetail: GetJobDetailResponseBody.TranscodeJobDetail?
+
+    public var workflowTaskDetail: GetJobDetailResponseBody.WorkflowTaskDetail?
 
     public override init() {
         super.init()
@@ -25212,6 +25379,7 @@ public class GetJobDetailResponseBody : Tea.TeaModel {
         try self.AIJobDetail?.validate()
         try self.snapshotJobDetail?.validate()
         try self.transcodeJobDetail?.validate()
+        try self.workflowTaskDetail?.validate()
     }
 
     public override func toMap() -> [String : Any] {
@@ -25230,6 +25398,9 @@ public class GetJobDetailResponseBody : Tea.TeaModel {
         }
         if self.transcodeJobDetail != nil {
             map["TranscodeJobDetail"] = self.transcodeJobDetail?.toMap()
+        }
+        if self.workflowTaskDetail != nil {
+            map["WorkflowTaskDetail"] = self.workflowTaskDetail?.toMap()
         }
         return map
     }
@@ -25255,6 +25426,11 @@ public class GetJobDetailResponseBody : Tea.TeaModel {
             var model = GetJobDetailResponseBody.TranscodeJobDetail()
             model.fromMap(dict["TranscodeJobDetail"] as! [String: Any])
             self.transcodeJobDetail = model
+        }
+        if dict.keys.contains("WorkflowTaskDetail") {
+            var model = GetJobDetailResponseBody.WorkflowTaskDetail()
+            model.fromMap(dict["WorkflowTaskDetail"] as! [String: Any])
+            self.workflowTaskDetail = model
         }
     }
 }
