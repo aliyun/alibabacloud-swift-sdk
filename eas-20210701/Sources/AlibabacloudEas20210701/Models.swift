@@ -3139,6 +3139,8 @@ public class CreateResourceRequest : Tea.TeaModel {
 
     public var labels: [String: String]?
 
+    public var resourceName: String?
+
     public var resourceType: String?
 
     public var selfManagedResourceOptions: CreateResourceRequest.SelfManagedResourceOptions?
@@ -3177,6 +3179,9 @@ public class CreateResourceRequest : Tea.TeaModel {
         if self.labels != nil {
             map["Labels"] = self.labels!
         }
+        if self.resourceName != nil {
+            map["ResourceName"] = self.resourceName!
+        }
         if self.resourceType != nil {
             map["ResourceType"] = self.resourceType!
         }
@@ -3207,6 +3212,9 @@ public class CreateResourceRequest : Tea.TeaModel {
         }
         if dict.keys.contains("Labels") {
             self.labels = dict["Labels"] as! [String: String]
+        }
+        if dict.keys.contains("ResourceName") {
+            self.resourceName = dict["ResourceName"] as! String
         }
         if dict.keys.contains("ResourceType") {
             self.resourceType = dict["ResourceType"] as! String

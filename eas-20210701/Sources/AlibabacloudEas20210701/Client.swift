@@ -428,6 +428,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.labels)) {
             body["Labels"] = request.labels ?? [:];
         }
+        if (!TeaUtils.Client.isUnset(request.resourceName)) {
+            body["ResourceName"] = request.resourceName ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.resourceType)) {
             body["ResourceType"] = request.resourceType ?? "";
         }
