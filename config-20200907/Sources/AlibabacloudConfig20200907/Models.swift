@@ -24553,9 +24553,13 @@ public class ListAggregateConfigRuleEvaluationResultsResponseBody : Tea.TeaModel
 
             public var configRuleInvokedTimestamp: Int64?
 
+            public var evaluationId: String?
+
             public var evaluationResultIdentifier: ListAggregateConfigRuleEvaluationResultsResponseBody.EvaluationResults.EvaluationResultList.EvaluationResultIdentifier?
 
             public var invokingEventMessageType: String?
+
+            public var lastNonCompliantRecordTimestamp: Int64?
 
             public var remediationEnabled: Bool?
 
@@ -24587,11 +24591,17 @@ public class ListAggregateConfigRuleEvaluationResultsResponseBody : Tea.TeaModel
                 if self.configRuleInvokedTimestamp != nil {
                     map["ConfigRuleInvokedTimestamp"] = self.configRuleInvokedTimestamp!
                 }
+                if self.evaluationId != nil {
+                    map["EvaluationId"] = self.evaluationId!
+                }
                 if self.evaluationResultIdentifier != nil {
                     map["EvaluationResultIdentifier"] = self.evaluationResultIdentifier?.toMap()
                 }
                 if self.invokingEventMessageType != nil {
                     map["InvokingEventMessageType"] = self.invokingEventMessageType!
+                }
+                if self.lastNonCompliantRecordTimestamp != nil {
+                    map["LastNonCompliantRecordTimestamp"] = self.lastNonCompliantRecordTimestamp!
                 }
                 if self.remediationEnabled != nil {
                     map["RemediationEnabled"] = self.remediationEnabled!
@@ -24615,6 +24625,9 @@ public class ListAggregateConfigRuleEvaluationResultsResponseBody : Tea.TeaModel
                 if dict.keys.contains("ConfigRuleInvokedTimestamp") {
                     self.configRuleInvokedTimestamp = dict["ConfigRuleInvokedTimestamp"] as! Int64
                 }
+                if dict.keys.contains("EvaluationId") {
+                    self.evaluationId = dict["EvaluationId"] as! String
+                }
                 if dict.keys.contains("EvaluationResultIdentifier") {
                     var model = ListAggregateConfigRuleEvaluationResultsResponseBody.EvaluationResults.EvaluationResultList.EvaluationResultIdentifier()
                     model.fromMap(dict["EvaluationResultIdentifier"] as! [String: Any])
@@ -24622,6 +24635,9 @@ public class ListAggregateConfigRuleEvaluationResultsResponseBody : Tea.TeaModel
                 }
                 if dict.keys.contains("InvokingEventMessageType") {
                     self.invokingEventMessageType = dict["InvokingEventMessageType"] as! String
+                }
+                if dict.keys.contains("LastNonCompliantRecordTimestamp") {
+                    self.lastNonCompliantRecordTimestamp = dict["LastNonCompliantRecordTimestamp"] as! Int64
                 }
                 if dict.keys.contains("RemediationEnabled") {
                     self.remediationEnabled = dict["RemediationEnabled"] as! Bool
@@ -26853,9 +26869,13 @@ public class ListAggregateResourceEvaluationResultsResponseBody : Tea.TeaModel {
 
             public var configRuleInvokedTimestamp: Int64?
 
+            public var evaluationId: String?
+
             public var evaluationResultIdentifier: ListAggregateResourceEvaluationResultsResponseBody.EvaluationResults.EvaluationResultList.EvaluationResultIdentifier?
 
             public var invokingEventMessageType: String?
+
+            public var lastNonCompliantRecordTimestamp: Int64?
 
             public var remediationEnabled: Bool?
 
@@ -26887,11 +26907,17 @@ public class ListAggregateResourceEvaluationResultsResponseBody : Tea.TeaModel {
                 if self.configRuleInvokedTimestamp != nil {
                     map["ConfigRuleInvokedTimestamp"] = self.configRuleInvokedTimestamp!
                 }
+                if self.evaluationId != nil {
+                    map["EvaluationId"] = self.evaluationId!
+                }
                 if self.evaluationResultIdentifier != nil {
                     map["EvaluationResultIdentifier"] = self.evaluationResultIdentifier?.toMap()
                 }
                 if self.invokingEventMessageType != nil {
                     map["InvokingEventMessageType"] = self.invokingEventMessageType!
+                }
+                if self.lastNonCompliantRecordTimestamp != nil {
+                    map["LastNonCompliantRecordTimestamp"] = self.lastNonCompliantRecordTimestamp!
                 }
                 if self.remediationEnabled != nil {
                     map["RemediationEnabled"] = self.remediationEnabled!
@@ -26915,6 +26941,9 @@ public class ListAggregateResourceEvaluationResultsResponseBody : Tea.TeaModel {
                 if dict.keys.contains("ConfigRuleInvokedTimestamp") {
                     self.configRuleInvokedTimestamp = dict["ConfigRuleInvokedTimestamp"] as! Int64
                 }
+                if dict.keys.contains("EvaluationId") {
+                    self.evaluationId = dict["EvaluationId"] as! String
+                }
                 if dict.keys.contains("EvaluationResultIdentifier") {
                     var model = ListAggregateResourceEvaluationResultsResponseBody.EvaluationResults.EvaluationResultList.EvaluationResultIdentifier()
                     model.fromMap(dict["EvaluationResultIdentifier"] as! [String: Any])
@@ -26922,6 +26951,9 @@ public class ListAggregateResourceEvaluationResultsResponseBody : Tea.TeaModel {
                 }
                 if dict.keys.contains("InvokingEventMessageType") {
                     self.invokingEventMessageType = dict["InvokingEventMessageType"] as! String
+                }
+                if dict.keys.contains("LastNonCompliantRecordTimestamp") {
+                    self.lastNonCompliantRecordTimestamp = dict["LastNonCompliantRecordTimestamp"] as! Int64
                 }
                 if dict.keys.contains("RemediationEnabled") {
                     self.remediationEnabled = dict["RemediationEnabled"] as! Bool
@@ -29440,9 +29472,13 @@ public class ListConfigRuleEvaluationResultsResponseBody : Tea.TeaModel {
 
             public var configRuleInvokedTimestamp: Int64?
 
+            public var evaluationId: String?
+
             public var evaluationResultIdentifier: ListConfigRuleEvaluationResultsResponseBody.EvaluationResults.EvaluationResultList.EvaluationResultIdentifier?
 
             public var invokingEventMessageType: String?
+
+            public var lastNonCompliantRecordTimestamp: Int64?
 
             public var remediationEnabled: Bool?
 
@@ -29474,11 +29510,17 @@ public class ListConfigRuleEvaluationResultsResponseBody : Tea.TeaModel {
                 if self.configRuleInvokedTimestamp != nil {
                     map["ConfigRuleInvokedTimestamp"] = self.configRuleInvokedTimestamp!
                 }
+                if self.evaluationId != nil {
+                    map["EvaluationId"] = self.evaluationId!
+                }
                 if self.evaluationResultIdentifier != nil {
                     map["EvaluationResultIdentifier"] = self.evaluationResultIdentifier?.toMap()
                 }
                 if self.invokingEventMessageType != nil {
                     map["InvokingEventMessageType"] = self.invokingEventMessageType!
+                }
+                if self.lastNonCompliantRecordTimestamp != nil {
+                    map["LastNonCompliantRecordTimestamp"] = self.lastNonCompliantRecordTimestamp!
                 }
                 if self.remediationEnabled != nil {
                     map["RemediationEnabled"] = self.remediationEnabled!
@@ -29502,6 +29544,9 @@ public class ListConfigRuleEvaluationResultsResponseBody : Tea.TeaModel {
                 if dict.keys.contains("ConfigRuleInvokedTimestamp") {
                     self.configRuleInvokedTimestamp = dict["ConfigRuleInvokedTimestamp"] as! Int64
                 }
+                if dict.keys.contains("EvaluationId") {
+                    self.evaluationId = dict["EvaluationId"] as! String
+                }
                 if dict.keys.contains("EvaluationResultIdentifier") {
                     var model = ListConfigRuleEvaluationResultsResponseBody.EvaluationResults.EvaluationResultList.EvaluationResultIdentifier()
                     model.fromMap(dict["EvaluationResultIdentifier"] as! [String: Any])
@@ -29509,6 +29554,9 @@ public class ListConfigRuleEvaluationResultsResponseBody : Tea.TeaModel {
                 }
                 if dict.keys.contains("InvokingEventMessageType") {
                     self.invokingEventMessageType = dict["InvokingEventMessageType"] as! String
+                }
+                if dict.keys.contains("LastNonCompliantRecordTimestamp") {
+                    self.lastNonCompliantRecordTimestamp = dict["LastNonCompliantRecordTimestamp"] as! Int64
                 }
                 if dict.keys.contains("RemediationEnabled") {
                     self.remediationEnabled = dict["RemediationEnabled"] as! Bool
@@ -32654,9 +32702,13 @@ public class ListResourceEvaluationResultsResponseBody : Tea.TeaModel {
 
             public var configRuleInvokedTimestamp: Int64?
 
+            public var evaluationId: String?
+
             public var evaluationResultIdentifier: ListResourceEvaluationResultsResponseBody.EvaluationResults.EvaluationResultList.EvaluationResultIdentifier?
 
             public var invokingEventMessageType: String?
+
+            public var lastNonCompliantRecordTimestamp: Int64?
 
             public var remediationEnabled: Bool?
 
@@ -32688,11 +32740,17 @@ public class ListResourceEvaluationResultsResponseBody : Tea.TeaModel {
                 if self.configRuleInvokedTimestamp != nil {
                     map["ConfigRuleInvokedTimestamp"] = self.configRuleInvokedTimestamp!
                 }
+                if self.evaluationId != nil {
+                    map["EvaluationId"] = self.evaluationId!
+                }
                 if self.evaluationResultIdentifier != nil {
                     map["EvaluationResultIdentifier"] = self.evaluationResultIdentifier?.toMap()
                 }
                 if self.invokingEventMessageType != nil {
                     map["InvokingEventMessageType"] = self.invokingEventMessageType!
+                }
+                if self.lastNonCompliantRecordTimestamp != nil {
+                    map["LastNonCompliantRecordTimestamp"] = self.lastNonCompliantRecordTimestamp!
                 }
                 if self.remediationEnabled != nil {
                     map["RemediationEnabled"] = self.remediationEnabled!
@@ -32716,6 +32774,9 @@ public class ListResourceEvaluationResultsResponseBody : Tea.TeaModel {
                 if dict.keys.contains("ConfigRuleInvokedTimestamp") {
                     self.configRuleInvokedTimestamp = dict["ConfigRuleInvokedTimestamp"] as! Int64
                 }
+                if dict.keys.contains("EvaluationId") {
+                    self.evaluationId = dict["EvaluationId"] as! String
+                }
                 if dict.keys.contains("EvaluationResultIdentifier") {
                     var model = ListResourceEvaluationResultsResponseBody.EvaluationResults.EvaluationResultList.EvaluationResultIdentifier()
                     model.fromMap(dict["EvaluationResultIdentifier"] as! [String: Any])
@@ -32723,6 +32784,9 @@ public class ListResourceEvaluationResultsResponseBody : Tea.TeaModel {
                 }
                 if dict.keys.contains("InvokingEventMessageType") {
                     self.invokingEventMessageType = dict["InvokingEventMessageType"] as! String
+                }
+                if dict.keys.contains("LastNonCompliantRecordTimestamp") {
+                    self.lastNonCompliantRecordTimestamp = dict["LastNonCompliantRecordTimestamp"] as! Int64
                 }
                 if dict.keys.contains("RemediationEnabled") {
                     self.remediationEnabled = dict["RemediationEnabled"] as! Bool
