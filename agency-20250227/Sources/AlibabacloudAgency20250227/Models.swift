@@ -278,6 +278,18 @@ public class GetBillDetailFileListResponse : Tea.TeaModel {
 public class GetCommissionDetailFileListRequest : Tea.TeaModel {
     public var billMonth: String?
 
+    public var ossAccessKeyId: String?
+
+    public var ossAccessKeySecret: String?
+
+    public var ossBucketName: String?
+
+    public var ossEndpoint: String?
+
+    public var ossRegion: String?
+
+    public var ossSecurityToken: String?
+
     public override init() {
         super.init()
     }
@@ -295,6 +307,24 @@ public class GetCommissionDetailFileListRequest : Tea.TeaModel {
         if self.billMonth != nil {
             map["BillMonth"] = self.billMonth!
         }
+        if self.ossAccessKeyId != nil {
+            map["OssAccessKeyId"] = self.ossAccessKeyId!
+        }
+        if self.ossAccessKeySecret != nil {
+            map["OssAccessKeySecret"] = self.ossAccessKeySecret!
+        }
+        if self.ossBucketName != nil {
+            map["OssBucketName"] = self.ossBucketName!
+        }
+        if self.ossEndpoint != nil {
+            map["OssEndpoint"] = self.ossEndpoint!
+        }
+        if self.ossRegion != nil {
+            map["OssRegion"] = self.ossRegion!
+        }
+        if self.ossSecurityToken != nil {
+            map["OssSecurityToken"] = self.ossSecurityToken!
+        }
         return map
     }
 
@@ -302,13 +332,35 @@ public class GetCommissionDetailFileListRequest : Tea.TeaModel {
         if dict.keys.contains("BillMonth") {
             self.billMonth = dict["BillMonth"] as! String
         }
+        if dict.keys.contains("OssAccessKeyId") {
+            self.ossAccessKeyId = dict["OssAccessKeyId"] as! String
+        }
+        if dict.keys.contains("OssAccessKeySecret") {
+            self.ossAccessKeySecret = dict["OssAccessKeySecret"] as! String
+        }
+        if dict.keys.contains("OssBucketName") {
+            self.ossBucketName = dict["OssBucketName"] as! String
+        }
+        if dict.keys.contains("OssEndpoint") {
+            self.ossEndpoint = dict["OssEndpoint"] as! String
+        }
+        if dict.keys.contains("OssRegion") {
+            self.ossRegion = dict["OssRegion"] as! String
+        }
+        if dict.keys.contains("OssSecurityToken") {
+            self.ossSecurityToken = dict["OssSecurityToken"] as! String
+        }
     }
 }
 
 public class GetCommissionDetailFileListResponseBody : Tea.TeaModel {
     public class Data : Tea.TeaModel {
         public class FileList : Tea.TeaModel {
+            public var bucketSyncStatus: String?
+
             public var commissionPolicyName: String?
+
+            public var fileName: String?
 
             public var fileType: String?
 
@@ -328,8 +380,14 @@ public class GetCommissionDetailFileListResponseBody : Tea.TeaModel {
 
             public override func toMap() -> [String : Any] {
                 var map = super.toMap()
+                if self.bucketSyncStatus != nil {
+                    map["BucketSyncStatus"] = self.bucketSyncStatus!
+                }
                 if self.commissionPolicyName != nil {
                     map["CommissionPolicyName"] = self.commissionPolicyName!
+                }
+                if self.fileName != nil {
+                    map["FileName"] = self.fileName!
                 }
                 if self.fileType != nil {
                     map["FileType"] = self.fileType!
@@ -341,8 +399,14 @@ public class GetCommissionDetailFileListResponseBody : Tea.TeaModel {
             }
 
             public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("BucketSyncStatus") {
+                    self.bucketSyncStatus = dict["BucketSyncStatus"] as! String
+                }
                 if dict.keys.contains("CommissionPolicyName") {
                     self.commissionPolicyName = dict["CommissionPolicyName"] as! String
+                }
+                if dict.keys.contains("FileName") {
+                    self.fileName = dict["FileName"] as! String
                 }
                 if dict.keys.contains("FileType") {
                     self.fileType = dict["FileType"] as! String

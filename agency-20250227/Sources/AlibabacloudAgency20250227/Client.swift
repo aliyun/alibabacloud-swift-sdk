@@ -137,6 +137,24 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.billMonth)) {
             query["BillMonth"] = request.billMonth ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.ossAccessKeyId)) {
+            query["OssAccessKeyId"] = request.ossAccessKeyId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.ossAccessKeySecret)) {
+            query["OssAccessKeySecret"] = request.ossAccessKeySecret ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.ossBucketName)) {
+            query["OssBucketName"] = request.ossBucketName ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.ossEndpoint)) {
+            query["OssEndpoint"] = request.ossEndpoint ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.ossRegion)) {
+            query["OssRegion"] = request.ossRegion ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.ossSecurityToken)) {
+            query["OssSecurityToken"] = request.ossSecurityToken ?? "";
+        }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "query": AlibabaCloudOpenApiUtil.Client.query(query)
         ])
