@@ -2642,6 +2642,8 @@ public class CreateGatewayResponse : Tea.TeaModel {
 }
 
 public class CreateGatewayIntranetLinkedVpcRequest : Tea.TeaModel {
+    public var accountId: String?
+
     public var enableAuthoritativeDns: Bool?
 
     public var vSwitchId: String?
@@ -2662,6 +2664,9 @@ public class CreateGatewayIntranetLinkedVpcRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.accountId != nil {
+            map["AccountId"] = self.accountId!
+        }
         if self.enableAuthoritativeDns != nil {
             map["EnableAuthoritativeDns"] = self.enableAuthoritativeDns!
         }
@@ -2675,6 +2680,9 @@ public class CreateGatewayIntranetLinkedVpcRequest : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("AccountId") {
+            self.accountId = dict["AccountId"] as! String
+        }
         if dict.keys.contains("EnableAuthoritativeDns") {
             self.enableAuthoritativeDns = dict["EnableAuthoritativeDns"] as! Bool
         }
@@ -11842,6 +11850,8 @@ public class ListGatewayDomainsResponse : Tea.TeaModel {
 
 public class ListGatewayIntranetLinkedVpcResponseBody : Tea.TeaModel {
     public class IntranetLinkedVpcList : Tea.TeaModel {
+        public var accountId: String?
+
         public var authoritativeDnsEnabled: Bool?
 
         public var ip: String?
@@ -11868,6 +11878,9 @@ public class ListGatewayIntranetLinkedVpcResponseBody : Tea.TeaModel {
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
+            if self.accountId != nil {
+                map["AccountId"] = self.accountId!
+            }
             if self.authoritativeDnsEnabled != nil {
                 map["AuthoritativeDnsEnabled"] = self.authoritativeDnsEnabled!
             }
@@ -11890,6 +11903,9 @@ public class ListGatewayIntranetLinkedVpcResponseBody : Tea.TeaModel {
         }
 
         public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("AccountId") {
+                self.accountId = dict["AccountId"] as! String
+            }
             if dict.keys.contains("AuthoritativeDnsEnabled") {
                 self.authoritativeDnsEnabled = dict["AuthoritativeDnsEnabled"] as! Bool
             }
