@@ -10854,6 +10854,8 @@ public class GetInstanceResponseBody : Tea.TeaModel {
 
         public var version: String?
 
+        public var zoneCount: Int32?
+
         public override init() {
             super.init()
         }
@@ -10934,6 +10936,9 @@ public class GetInstanceResponseBody : Tea.TeaModel {
             if self.version != nil {
                 map["version"] = self.version!
             }
+            if self.zoneCount != nil {
+                map["zoneCount"] = self.zoneCount!
+            }
             return map
         }
 
@@ -11009,6 +11014,9 @@ public class GetInstanceResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("version") {
                 self.version = dict["version"] as! String
+            }
+            if dict.keys.contains("zoneCount") {
+                self.zoneCount = dict["zoneCount"] as! Int32
             }
         }
     }
@@ -23983,6 +23991,131 @@ public class ModifyPublicUrlIpListResponse : Tea.TeaModel {
         }
         if dict.keys.contains("body") {
             var model = ModifyPublicUrlIpListResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
+public class ModifySearcherReplicaRequest : Tea.TeaModel {
+    public var partition: Int32?
+
+    public var replica: Int32?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.partition != nil {
+            map["partition"] = self.partition!
+        }
+        if self.replica != nil {
+            map["replica"] = self.replica!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("partition") {
+            self.partition = dict["partition"] as! Int32
+        }
+        if dict.keys.contains("replica") {
+            self.replica = dict["replica"] as! Int32
+        }
+    }
+}
+
+public class ModifySearcherReplicaResponseBody : Tea.TeaModel {
+    public var requestId: String?
+
+    public var result: [String: Any]?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.requestId != nil {
+            map["requestId"] = self.requestId!
+        }
+        if self.result != nil {
+            map["result"] = self.result!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("requestId") {
+            self.requestId = dict["requestId"] as! String
+        }
+        if dict.keys.contains("result") {
+            self.result = dict["result"] as! [String: Any]
+        }
+    }
+}
+
+public class ModifySearcherReplicaResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: ModifySearcherReplicaResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") {
+            var model = ModifySearcherReplicaResponseBody()
             model.fromMap(dict["body"] as! [String: Any])
             self.body = model
         }
