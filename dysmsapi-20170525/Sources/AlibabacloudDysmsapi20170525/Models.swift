@@ -3294,6 +3294,187 @@ public class DeleteShortUrlResponse : Tea.TeaModel {
     }
 }
 
+public class DeleteSmsQualificationRequest : Tea.TeaModel {
+    public var orderId: Int64?
+
+    public var ownerId: Int64?
+
+    public var qualificationGroupId: Int64?
+
+    public var resourceOwnerAccount: String?
+
+    public var resourceOwnerId: Int64?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.orderId != nil {
+            map["OrderId"] = self.orderId!
+        }
+        if self.ownerId != nil {
+            map["OwnerId"] = self.ownerId!
+        }
+        if self.qualificationGroupId != nil {
+            map["QualificationGroupId"] = self.qualificationGroupId!
+        }
+        if self.resourceOwnerAccount != nil {
+            map["ResourceOwnerAccount"] = self.resourceOwnerAccount!
+        }
+        if self.resourceOwnerId != nil {
+            map["ResourceOwnerId"] = self.resourceOwnerId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("OrderId") {
+            self.orderId = dict["OrderId"] as! Int64
+        }
+        if dict.keys.contains("OwnerId") {
+            self.ownerId = dict["OwnerId"] as! Int64
+        }
+        if dict.keys.contains("QualificationGroupId") {
+            self.qualificationGroupId = dict["QualificationGroupId"] as! Int64
+        }
+        if dict.keys.contains("ResourceOwnerAccount") {
+            self.resourceOwnerAccount = dict["ResourceOwnerAccount"] as! String
+        }
+        if dict.keys.contains("ResourceOwnerId") {
+            self.resourceOwnerId = dict["ResourceOwnerId"] as! Int64
+        }
+    }
+}
+
+public class DeleteSmsQualificationResponseBody : Tea.TeaModel {
+    public var accessDeniedDetail: String?
+
+    public var code: String?
+
+    public var data: Bool?
+
+    public var message: String?
+
+    public var requestId: String?
+
+    public var success: Bool?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.accessDeniedDetail != nil {
+            map["AccessDeniedDetail"] = self.accessDeniedDetail!
+        }
+        if self.code != nil {
+            map["Code"] = self.code!
+        }
+        if self.data != nil {
+            map["Data"] = self.data!
+        }
+        if self.message != nil {
+            map["Message"] = self.message!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.success != nil {
+            map["Success"] = self.success!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("AccessDeniedDetail") {
+            self.accessDeniedDetail = dict["AccessDeniedDetail"] as! String
+        }
+        if dict.keys.contains("Code") {
+            self.code = dict["Code"] as! String
+        }
+        if dict.keys.contains("Data") {
+            self.data = dict["Data"] as! Bool
+        }
+        if dict.keys.contains("Message") {
+            self.message = dict["Message"] as! String
+        }
+        if dict.keys.contains("RequestId") {
+            self.requestId = dict["RequestId"] as! String
+        }
+        if dict.keys.contains("Success") {
+            self.success = dict["Success"] as! Bool
+        }
+    }
+}
+
+public class DeleteSmsQualificationResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: DeleteSmsQualificationResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") {
+            var model = DeleteSmsQualificationResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
 public class DeleteSmsSignRequest : Tea.TeaModel {
     public var ownerId: Int64?
 
@@ -8792,6 +8973,517 @@ public class QueryShortUrlResponse : Tea.TeaModel {
     }
 }
 
+public class QuerySingleSmsQualificationRequest : Tea.TeaModel {
+    public var orderId: Int64?
+
+    public var ownerId: Int64?
+
+    public var qualificationGroupId: Int64?
+
+    public var resourceOwnerAccount: String?
+
+    public var resourceOwnerId: Int64?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.orderId != nil {
+            map["OrderId"] = self.orderId!
+        }
+        if self.ownerId != nil {
+            map["OwnerId"] = self.ownerId!
+        }
+        if self.qualificationGroupId != nil {
+            map["QualificationGroupId"] = self.qualificationGroupId!
+        }
+        if self.resourceOwnerAccount != nil {
+            map["ResourceOwnerAccount"] = self.resourceOwnerAccount!
+        }
+        if self.resourceOwnerId != nil {
+            map["ResourceOwnerId"] = self.resourceOwnerId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("OrderId") {
+            self.orderId = dict["OrderId"] as! Int64
+        }
+        if dict.keys.contains("OwnerId") {
+            self.ownerId = dict["OwnerId"] as! Int64
+        }
+        if dict.keys.contains("QualificationGroupId") {
+            self.qualificationGroupId = dict["QualificationGroupId"] as! Int64
+        }
+        if dict.keys.contains("ResourceOwnerAccount") {
+            self.resourceOwnerAccount = dict["ResourceOwnerAccount"] as! String
+        }
+        if dict.keys.contains("ResourceOwnerId") {
+            self.resourceOwnerId = dict["ResourceOwnerId"] as! Int64
+        }
+    }
+}
+
+public class QuerySingleSmsQualificationResponseBody : Tea.TeaModel {
+    public class Data : Tea.TeaModel {
+        public class BusinessLicensePics : Tea.TeaModel {
+            public var licensePic: String?
+
+            public var picUrl: String?
+
+            public var type: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.licensePic != nil {
+                    map["LicensePic"] = self.licensePic!
+                }
+                if self.picUrl != nil {
+                    map["PicUrl"] = self.picUrl!
+                }
+                if self.type != nil {
+                    map["Type"] = self.type!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("LicensePic") {
+                    self.licensePic = dict["LicensePic"] as! String
+                }
+                if dict.keys.contains("PicUrl") {
+                    self.picUrl = dict["PicUrl"] as! String
+                }
+                if dict.keys.contains("Type") {
+                    self.type = dict["Type"] as! String
+                }
+            }
+        }
+        public class OtherFiles : Tea.TeaModel {
+            public var licensePic: String?
+
+            public var picUrl: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.licensePic != nil {
+                    map["LicensePic"] = self.licensePic!
+                }
+                if self.picUrl != nil {
+                    map["PicUrl"] = self.picUrl!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("LicensePic") {
+                    self.licensePic = dict["LicensePic"] as! String
+                }
+                if dict.keys.contains("PicUrl") {
+                    self.picUrl = dict["PicUrl"] as! String
+                }
+            }
+        }
+        public var adminIDCardExpDate: String?
+
+        public var adminIDCardFrontFace: String?
+
+        public var adminIDCardNo: String?
+
+        public var adminIDCardPic: String?
+
+        public var adminIDCardType: String?
+
+        public var adminName: String?
+
+        public var adminPhoneNo: String?
+
+        public var businessLicensePics: [QuerySingleSmsQualificationResponseBody.Data.BusinessLicensePics]?
+
+        public var businessType: String?
+
+        public var companyName: String?
+
+        public var companyType: String?
+
+        public var effTimeStr: String?
+
+        public var legalPersonIDCardNo: String?
+
+        public var legalPersonIDCardType: String?
+
+        public var legalPersonIdCardEffTime: String?
+
+        public var legalPersonName: String?
+
+        public var organizationCode: String?
+
+        public var otherFiles: [QuerySingleSmsQualificationResponseBody.Data.OtherFiles]?
+
+        public var qualificationGroupId: Int64?
+
+        public var qualificationName: String?
+
+        public var remark: String?
+
+        public var state: String?
+
+        public var useBySelf: Bool?
+
+        public var whetherShare: Bool?
+
+        public var workOrderId: Int64?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.adminIDCardExpDate != nil {
+                map["AdminIDCardExpDate"] = self.adminIDCardExpDate!
+            }
+            if self.adminIDCardFrontFace != nil {
+                map["AdminIDCardFrontFace"] = self.adminIDCardFrontFace!
+            }
+            if self.adminIDCardNo != nil {
+                map["AdminIDCardNo"] = self.adminIDCardNo!
+            }
+            if self.adminIDCardPic != nil {
+                map["AdminIDCardPic"] = self.adminIDCardPic!
+            }
+            if self.adminIDCardType != nil {
+                map["AdminIDCardType"] = self.adminIDCardType!
+            }
+            if self.adminName != nil {
+                map["AdminName"] = self.adminName!
+            }
+            if self.adminPhoneNo != nil {
+                map["AdminPhoneNo"] = self.adminPhoneNo!
+            }
+            if self.businessLicensePics != nil {
+                var tmp : [Any] = []
+                for k in self.businessLicensePics! {
+                    tmp.append(k.toMap())
+                }
+                map["BusinessLicensePics"] = tmp
+            }
+            if self.businessType != nil {
+                map["BusinessType"] = self.businessType!
+            }
+            if self.companyName != nil {
+                map["CompanyName"] = self.companyName!
+            }
+            if self.companyType != nil {
+                map["CompanyType"] = self.companyType!
+            }
+            if self.effTimeStr != nil {
+                map["EffTimeStr"] = self.effTimeStr!
+            }
+            if self.legalPersonIDCardNo != nil {
+                map["LegalPersonIDCardNo"] = self.legalPersonIDCardNo!
+            }
+            if self.legalPersonIDCardType != nil {
+                map["LegalPersonIDCardType"] = self.legalPersonIDCardType!
+            }
+            if self.legalPersonIdCardEffTime != nil {
+                map["LegalPersonIdCardEffTime"] = self.legalPersonIdCardEffTime!
+            }
+            if self.legalPersonName != nil {
+                map["LegalPersonName"] = self.legalPersonName!
+            }
+            if self.organizationCode != nil {
+                map["OrganizationCode"] = self.organizationCode!
+            }
+            if self.otherFiles != nil {
+                var tmp : [Any] = []
+                for k in self.otherFiles! {
+                    tmp.append(k.toMap())
+                }
+                map["OtherFiles"] = tmp
+            }
+            if self.qualificationGroupId != nil {
+                map["QualificationGroupId"] = self.qualificationGroupId!
+            }
+            if self.qualificationName != nil {
+                map["QualificationName"] = self.qualificationName!
+            }
+            if self.remark != nil {
+                map["Remark"] = self.remark!
+            }
+            if self.state != nil {
+                map["State"] = self.state!
+            }
+            if self.useBySelf != nil {
+                map["UseBySelf"] = self.useBySelf!
+            }
+            if self.whetherShare != nil {
+                map["WhetherShare"] = self.whetherShare!
+            }
+            if self.workOrderId != nil {
+                map["WorkOrderId"] = self.workOrderId!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("AdminIDCardExpDate") {
+                self.adminIDCardExpDate = dict["AdminIDCardExpDate"] as! String
+            }
+            if dict.keys.contains("AdminIDCardFrontFace") {
+                self.adminIDCardFrontFace = dict["AdminIDCardFrontFace"] as! String
+            }
+            if dict.keys.contains("AdminIDCardNo") {
+                self.adminIDCardNo = dict["AdminIDCardNo"] as! String
+            }
+            if dict.keys.contains("AdminIDCardPic") {
+                self.adminIDCardPic = dict["AdminIDCardPic"] as! String
+            }
+            if dict.keys.contains("AdminIDCardType") {
+                self.adminIDCardType = dict["AdminIDCardType"] as! String
+            }
+            if dict.keys.contains("AdminName") {
+                self.adminName = dict["AdminName"] as! String
+            }
+            if dict.keys.contains("AdminPhoneNo") {
+                self.adminPhoneNo = dict["AdminPhoneNo"] as! String
+            }
+            if dict.keys.contains("BusinessLicensePics") {
+                var tmp : [QuerySingleSmsQualificationResponseBody.Data.BusinessLicensePics] = []
+                for v in dict["BusinessLicensePics"] as! [Any] {
+                    var model = QuerySingleSmsQualificationResponseBody.Data.BusinessLicensePics()
+                    if v != nil {
+                        model.fromMap(v as! [String: Any])
+                    }
+                    tmp.append(model)
+                }
+                self.businessLicensePics = tmp
+            }
+            if dict.keys.contains("BusinessType") {
+                self.businessType = dict["BusinessType"] as! String
+            }
+            if dict.keys.contains("CompanyName") {
+                self.companyName = dict["CompanyName"] as! String
+            }
+            if dict.keys.contains("CompanyType") {
+                self.companyType = dict["CompanyType"] as! String
+            }
+            if dict.keys.contains("EffTimeStr") {
+                self.effTimeStr = dict["EffTimeStr"] as! String
+            }
+            if dict.keys.contains("LegalPersonIDCardNo") {
+                self.legalPersonIDCardNo = dict["LegalPersonIDCardNo"] as! String
+            }
+            if dict.keys.contains("LegalPersonIDCardType") {
+                self.legalPersonIDCardType = dict["LegalPersonIDCardType"] as! String
+            }
+            if dict.keys.contains("LegalPersonIdCardEffTime") {
+                self.legalPersonIdCardEffTime = dict["LegalPersonIdCardEffTime"] as! String
+            }
+            if dict.keys.contains("LegalPersonName") {
+                self.legalPersonName = dict["LegalPersonName"] as! String
+            }
+            if dict.keys.contains("OrganizationCode") {
+                self.organizationCode = dict["OrganizationCode"] as! String
+            }
+            if dict.keys.contains("OtherFiles") {
+                var tmp : [QuerySingleSmsQualificationResponseBody.Data.OtherFiles] = []
+                for v in dict["OtherFiles"] as! [Any] {
+                    var model = QuerySingleSmsQualificationResponseBody.Data.OtherFiles()
+                    if v != nil {
+                        model.fromMap(v as! [String: Any])
+                    }
+                    tmp.append(model)
+                }
+                self.otherFiles = tmp
+            }
+            if dict.keys.contains("QualificationGroupId") {
+                self.qualificationGroupId = dict["QualificationGroupId"] as! Int64
+            }
+            if dict.keys.contains("QualificationName") {
+                self.qualificationName = dict["QualificationName"] as! String
+            }
+            if dict.keys.contains("Remark") {
+                self.remark = dict["Remark"] as! String
+            }
+            if dict.keys.contains("State") {
+                self.state = dict["State"] as! String
+            }
+            if dict.keys.contains("UseBySelf") {
+                self.useBySelf = dict["UseBySelf"] as! Bool
+            }
+            if dict.keys.contains("WhetherShare") {
+                self.whetherShare = dict["WhetherShare"] as! Bool
+            }
+            if dict.keys.contains("WorkOrderId") {
+                self.workOrderId = dict["WorkOrderId"] as! Int64
+            }
+        }
+    }
+    public var accessDeniedDetail: String?
+
+    public var code: String?
+
+    public var data: QuerySingleSmsQualificationResponseBody.Data?
+
+    public var message: String?
+
+    public var requestId: String?
+
+    public var success: Bool?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.data?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.accessDeniedDetail != nil {
+            map["AccessDeniedDetail"] = self.accessDeniedDetail!
+        }
+        if self.code != nil {
+            map["Code"] = self.code!
+        }
+        if self.data != nil {
+            map["Data"] = self.data?.toMap()
+        }
+        if self.message != nil {
+            map["Message"] = self.message!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.success != nil {
+            map["Success"] = self.success!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("AccessDeniedDetail") {
+            self.accessDeniedDetail = dict["AccessDeniedDetail"] as! String
+        }
+        if dict.keys.contains("Code") {
+            self.code = dict["Code"] as! String
+        }
+        if dict.keys.contains("Data") {
+            var model = QuerySingleSmsQualificationResponseBody.Data()
+            model.fromMap(dict["Data"] as! [String: Any])
+            self.data = model
+        }
+        if dict.keys.contains("Message") {
+            self.message = dict["Message"] as! String
+        }
+        if dict.keys.contains("RequestId") {
+            self.requestId = dict["RequestId"] as! String
+        }
+        if dict.keys.contains("Success") {
+            self.success = dict["Success"] as! Bool
+        }
+    }
+}
+
+public class QuerySingleSmsQualificationResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: QuerySingleSmsQualificationResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") {
+            var model = QuerySingleSmsQualificationResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
 public class QuerySmsAuthorizationLetterRequest : Tea.TeaModel {
     public var authorizationLetterIdList: [Int64]?
 
@@ -9190,6 +9882,404 @@ public class QuerySmsAuthorizationLetterResponse : Tea.TeaModel {
         }
         if dict.keys.contains("body") {
             var model = QuerySmsAuthorizationLetterResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
+public class QuerySmsQualificationRecordRequest : Tea.TeaModel {
+    public var companyName: String?
+
+    public var legalPersonName: String?
+
+    public var ownerId: Int64?
+
+    public var pageNo: Int64?
+
+    public var pageSize: Int64?
+
+    public var qualificationGroupName: String?
+
+    public var resourceOwnerAccount: String?
+
+    public var resourceOwnerId: Int64?
+
+    public var state: String?
+
+    public var useBySelf: Bool?
+
+    public var workOrderId: Int64?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.companyName != nil {
+            map["CompanyName"] = self.companyName!
+        }
+        if self.legalPersonName != nil {
+            map["LegalPersonName"] = self.legalPersonName!
+        }
+        if self.ownerId != nil {
+            map["OwnerId"] = self.ownerId!
+        }
+        if self.pageNo != nil {
+            map["PageNo"] = self.pageNo!
+        }
+        if self.pageSize != nil {
+            map["PageSize"] = self.pageSize!
+        }
+        if self.qualificationGroupName != nil {
+            map["QualificationGroupName"] = self.qualificationGroupName!
+        }
+        if self.resourceOwnerAccount != nil {
+            map["ResourceOwnerAccount"] = self.resourceOwnerAccount!
+        }
+        if self.resourceOwnerId != nil {
+            map["ResourceOwnerId"] = self.resourceOwnerId!
+        }
+        if self.state != nil {
+            map["State"] = self.state!
+        }
+        if self.useBySelf != nil {
+            map["UseBySelf"] = self.useBySelf!
+        }
+        if self.workOrderId != nil {
+            map["WorkOrderId"] = self.workOrderId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("CompanyName") {
+            self.companyName = dict["CompanyName"] as! String
+        }
+        if dict.keys.contains("LegalPersonName") {
+            self.legalPersonName = dict["LegalPersonName"] as! String
+        }
+        if dict.keys.contains("OwnerId") {
+            self.ownerId = dict["OwnerId"] as! Int64
+        }
+        if dict.keys.contains("PageNo") {
+            self.pageNo = dict["PageNo"] as! Int64
+        }
+        if dict.keys.contains("PageSize") {
+            self.pageSize = dict["PageSize"] as! Int64
+        }
+        if dict.keys.contains("QualificationGroupName") {
+            self.qualificationGroupName = dict["QualificationGroupName"] as! String
+        }
+        if dict.keys.contains("ResourceOwnerAccount") {
+            self.resourceOwnerAccount = dict["ResourceOwnerAccount"] as! String
+        }
+        if dict.keys.contains("ResourceOwnerId") {
+            self.resourceOwnerId = dict["ResourceOwnerId"] as! Int64
+        }
+        if dict.keys.contains("State") {
+            self.state = dict["State"] as! String
+        }
+        if dict.keys.contains("UseBySelf") {
+            self.useBySelf = dict["UseBySelf"] as! Bool
+        }
+        if dict.keys.contains("WorkOrderId") {
+            self.workOrderId = dict["WorkOrderId"] as! Int64
+        }
+    }
+}
+
+public class QuerySmsQualificationRecordResponseBody : Tea.TeaModel {
+    public class Data : Tea.TeaModel {
+        public class List : Tea.TeaModel {
+            public var auditRemark: String?
+
+            public var auditTime: String?
+
+            public var companyName: String?
+
+            public var createDate: String?
+
+            public var groupId: Int64?
+
+            public var legalPersonName: String?
+
+            public var qualificationGroupName: String?
+
+            public var stateName: String?
+
+            public var useBySelf: String?
+
+            public var workOrderId: Int64?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.auditRemark != nil {
+                    map["AuditRemark"] = self.auditRemark!
+                }
+                if self.auditTime != nil {
+                    map["AuditTime"] = self.auditTime!
+                }
+                if self.companyName != nil {
+                    map["CompanyName"] = self.companyName!
+                }
+                if self.createDate != nil {
+                    map["CreateDate"] = self.createDate!
+                }
+                if self.groupId != nil {
+                    map["GroupId"] = self.groupId!
+                }
+                if self.legalPersonName != nil {
+                    map["LegalPersonName"] = self.legalPersonName!
+                }
+                if self.qualificationGroupName != nil {
+                    map["QualificationGroupName"] = self.qualificationGroupName!
+                }
+                if self.stateName != nil {
+                    map["StateName"] = self.stateName!
+                }
+                if self.useBySelf != nil {
+                    map["UseBySelf"] = self.useBySelf!
+                }
+                if self.workOrderId != nil {
+                    map["WorkOrderId"] = self.workOrderId!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("AuditRemark") {
+                    self.auditRemark = dict["AuditRemark"] as! String
+                }
+                if dict.keys.contains("AuditTime") {
+                    self.auditTime = dict["AuditTime"] as! String
+                }
+                if dict.keys.contains("CompanyName") {
+                    self.companyName = dict["CompanyName"] as! String
+                }
+                if dict.keys.contains("CreateDate") {
+                    self.createDate = dict["CreateDate"] as! String
+                }
+                if dict.keys.contains("GroupId") {
+                    self.groupId = dict["GroupId"] as! Int64
+                }
+                if dict.keys.contains("LegalPersonName") {
+                    self.legalPersonName = dict["LegalPersonName"] as! String
+                }
+                if dict.keys.contains("QualificationGroupName") {
+                    self.qualificationGroupName = dict["QualificationGroupName"] as! String
+                }
+                if dict.keys.contains("StateName") {
+                    self.stateName = dict["StateName"] as! String
+                }
+                if dict.keys.contains("UseBySelf") {
+                    self.useBySelf = dict["UseBySelf"] as! String
+                }
+                if dict.keys.contains("WorkOrderId") {
+                    self.workOrderId = dict["WorkOrderId"] as! Int64
+                }
+            }
+        }
+        public var list: [QuerySmsQualificationRecordResponseBody.Data.List]?
+
+        public var pageNo: Int64?
+
+        public var pageSize: Int64?
+
+        public var total: Int64?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.list != nil {
+                var tmp : [Any] = []
+                for k in self.list! {
+                    tmp.append(k.toMap())
+                }
+                map["List"] = tmp
+            }
+            if self.pageNo != nil {
+                map["PageNo"] = self.pageNo!
+            }
+            if self.pageSize != nil {
+                map["PageSize"] = self.pageSize!
+            }
+            if self.total != nil {
+                map["Total"] = self.total!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("List") {
+                var tmp : [QuerySmsQualificationRecordResponseBody.Data.List] = []
+                for v in dict["List"] as! [Any] {
+                    var model = QuerySmsQualificationRecordResponseBody.Data.List()
+                    if v != nil {
+                        model.fromMap(v as! [String: Any])
+                    }
+                    tmp.append(model)
+                }
+                self.list = tmp
+            }
+            if dict.keys.contains("PageNo") {
+                self.pageNo = dict["PageNo"] as! Int64
+            }
+            if dict.keys.contains("PageSize") {
+                self.pageSize = dict["PageSize"] as! Int64
+            }
+            if dict.keys.contains("Total") {
+                self.total = dict["Total"] as! Int64
+            }
+        }
+    }
+    public var accessDeniedDetail: String?
+
+    public var code: String?
+
+    public var data: QuerySmsQualificationRecordResponseBody.Data?
+
+    public var message: String?
+
+    public var requestId: String?
+
+    public var success: Bool?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.data?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.accessDeniedDetail != nil {
+            map["AccessDeniedDetail"] = self.accessDeniedDetail!
+        }
+        if self.code != nil {
+            map["Code"] = self.code!
+        }
+        if self.data != nil {
+            map["Data"] = self.data?.toMap()
+        }
+        if self.message != nil {
+            map["Message"] = self.message!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.success != nil {
+            map["Success"] = self.success!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("AccessDeniedDetail") {
+            self.accessDeniedDetail = dict["AccessDeniedDetail"] as! String
+        }
+        if dict.keys.contains("Code") {
+            self.code = dict["Code"] as! String
+        }
+        if dict.keys.contains("Data") {
+            var model = QuerySmsQualificationRecordResponseBody.Data()
+            model.fromMap(dict["Data"] as! [String: Any])
+            self.data = model
+        }
+        if dict.keys.contains("Message") {
+            self.message = dict["Message"] as! String
+        }
+        if dict.keys.contains("RequestId") {
+            self.requestId = dict["RequestId"] as! String
+        }
+        if dict.keys.contains("Success") {
+            self.success = dict["Success"] as! Bool
+        }
+    }
+}
+
+public class QuerySmsQualificationRecordResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: QuerySmsQualificationRecordResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") {
+            var model = QuerySmsQualificationRecordResponseBody()
             model.fromMap(dict["body"] as! [String: Any])
             self.body = model
         }
@@ -10252,6 +11342,179 @@ public class QuerySmsTemplateListResponse : Tea.TeaModel {
         }
         if dict.keys.contains("body") {
             var model = QuerySmsTemplateListResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
+public class RequiredPhoneCodeRequest : Tea.TeaModel {
+    public var ownerId: Int64?
+
+    public var phoneNo: String?
+
+    public var resourceOwnerAccount: String?
+
+    public var resourceOwnerId: Int64?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.ownerId != nil {
+            map["OwnerId"] = self.ownerId!
+        }
+        if self.phoneNo != nil {
+            map["PhoneNo"] = self.phoneNo!
+        }
+        if self.resourceOwnerAccount != nil {
+            map["ResourceOwnerAccount"] = self.resourceOwnerAccount!
+        }
+        if self.resourceOwnerId != nil {
+            map["ResourceOwnerId"] = self.resourceOwnerId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("OwnerId") {
+            self.ownerId = dict["OwnerId"] as! Int64
+        }
+        if dict.keys.contains("PhoneNo") {
+            self.phoneNo = dict["PhoneNo"] as! String
+        }
+        if dict.keys.contains("ResourceOwnerAccount") {
+            self.resourceOwnerAccount = dict["ResourceOwnerAccount"] as! String
+        }
+        if dict.keys.contains("ResourceOwnerId") {
+            self.resourceOwnerId = dict["ResourceOwnerId"] as! Int64
+        }
+    }
+}
+
+public class RequiredPhoneCodeResponseBody : Tea.TeaModel {
+    public var accessDeniedDetail: String?
+
+    public var code: String?
+
+    public var data: String?
+
+    public var message: String?
+
+    public var requestId: String?
+
+    public var success: Bool?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.accessDeniedDetail != nil {
+            map["AccessDeniedDetail"] = self.accessDeniedDetail!
+        }
+        if self.code != nil {
+            map["Code"] = self.code!
+        }
+        if self.data != nil {
+            map["Data"] = self.data!
+        }
+        if self.message != nil {
+            map["Message"] = self.message!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.success != nil {
+            map["Success"] = self.success!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("AccessDeniedDetail") {
+            self.accessDeniedDetail = dict["AccessDeniedDetail"] as! String
+        }
+        if dict.keys.contains("Code") {
+            self.code = dict["Code"] as! String
+        }
+        if dict.keys.contains("Data") {
+            self.data = dict["Data"] as! String
+        }
+        if dict.keys.contains("Message") {
+            self.message = dict["Message"] as! String
+        }
+        if dict.keys.contains("RequestId") {
+            self.requestId = dict["RequestId"] as! String
+        }
+        if dict.keys.contains("Success") {
+            self.success = dict["Success"] as! Bool
+        }
+    }
+}
+
+public class RequiredPhoneCodeResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: RequiredPhoneCodeResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") {
+            var model = RequiredPhoneCodeResponseBody()
             model.fromMap(dict["body"] as! [String: Any])
             self.body = model
         }
@@ -11468,6 +12731,691 @@ public class SmsConversionIntlResponse : Tea.TeaModel {
     }
 }
 
+public class SubmitSmsQualificationRequest : Tea.TeaModel {
+    public class BusinessLicensePics : Tea.TeaModel {
+        public var licensePic: String?
+
+        public var type: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.licensePic != nil {
+                map["LicensePic"] = self.licensePic!
+            }
+            if self.type != nil {
+                map["Type"] = self.type!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("LicensePic") {
+                self.licensePic = dict["LicensePic"] as! String
+            }
+            if dict.keys.contains("Type") {
+                self.type = dict["Type"] as! String
+            }
+        }
+    }
+    public class OtherFiles : Tea.TeaModel {
+        public var licensePic: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.licensePic != nil {
+                map["LicensePic"] = self.licensePic!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("LicensePic") {
+                self.licensePic = dict["LicensePic"] as! String
+            }
+        }
+    }
+    public var adminIDCardExpDate: String?
+
+    public var adminIDCardFrontFace: String?
+
+    public var adminIDCardNo: String?
+
+    public var adminIDCardPic: String?
+
+    public var adminIDCardType: String?
+
+    public var adminName: String?
+
+    public var adminPhoneNo: String?
+
+    public var businessLicensePics: [SubmitSmsQualificationRequest.BusinessLicensePics]?
+
+    public var bussinessLicenseExpDate: String?
+
+    public var certifyCode: String?
+
+    public var companyName: String?
+
+    public var companyType: String?
+
+    public var legalPersonIDCardNo: String?
+
+    public var legalPersonIDCardType: String?
+
+    public var legalPersonIdCardBackSide: String?
+
+    public var legalPersonIdCardEffTime: String?
+
+    public var legalPersonIdCardFrontSide: String?
+
+    public var legalPersonName: String?
+
+    public var organizationCode: String?
+
+    public var otherFiles: [SubmitSmsQualificationRequest.OtherFiles]?
+
+    public var ownerId: Int64?
+
+    public var qualificationName: String?
+
+    public var remark: String?
+
+    public var resourceOwnerAccount: String?
+
+    public var resourceOwnerId: Int64?
+
+    public var useBySelf: Bool?
+
+    public var whetherShare: Bool?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.adminIDCardExpDate != nil {
+            map["AdminIDCardExpDate"] = self.adminIDCardExpDate!
+        }
+        if self.adminIDCardFrontFace != nil {
+            map["AdminIDCardFrontFace"] = self.adminIDCardFrontFace!
+        }
+        if self.adminIDCardNo != nil {
+            map["AdminIDCardNo"] = self.adminIDCardNo!
+        }
+        if self.adminIDCardPic != nil {
+            map["AdminIDCardPic"] = self.adminIDCardPic!
+        }
+        if self.adminIDCardType != nil {
+            map["AdminIDCardType"] = self.adminIDCardType!
+        }
+        if self.adminName != nil {
+            map["AdminName"] = self.adminName!
+        }
+        if self.adminPhoneNo != nil {
+            map["AdminPhoneNo"] = self.adminPhoneNo!
+        }
+        if self.businessLicensePics != nil {
+            var tmp : [Any] = []
+            for k in self.businessLicensePics! {
+                tmp.append(k.toMap())
+            }
+            map["BusinessLicensePics"] = tmp
+        }
+        if self.bussinessLicenseExpDate != nil {
+            map["BussinessLicenseExpDate"] = self.bussinessLicenseExpDate!
+        }
+        if self.certifyCode != nil {
+            map["CertifyCode"] = self.certifyCode!
+        }
+        if self.companyName != nil {
+            map["CompanyName"] = self.companyName!
+        }
+        if self.companyType != nil {
+            map["CompanyType"] = self.companyType!
+        }
+        if self.legalPersonIDCardNo != nil {
+            map["LegalPersonIDCardNo"] = self.legalPersonIDCardNo!
+        }
+        if self.legalPersonIDCardType != nil {
+            map["LegalPersonIDCardType"] = self.legalPersonIDCardType!
+        }
+        if self.legalPersonIdCardBackSide != nil {
+            map["LegalPersonIdCardBackSide"] = self.legalPersonIdCardBackSide!
+        }
+        if self.legalPersonIdCardEffTime != nil {
+            map["LegalPersonIdCardEffTime"] = self.legalPersonIdCardEffTime!
+        }
+        if self.legalPersonIdCardFrontSide != nil {
+            map["LegalPersonIdCardFrontSide"] = self.legalPersonIdCardFrontSide!
+        }
+        if self.legalPersonName != nil {
+            map["LegalPersonName"] = self.legalPersonName!
+        }
+        if self.organizationCode != nil {
+            map["OrganizationCode"] = self.organizationCode!
+        }
+        if self.otherFiles != nil {
+            var tmp : [Any] = []
+            for k in self.otherFiles! {
+                tmp.append(k.toMap())
+            }
+            map["OtherFiles"] = tmp
+        }
+        if self.ownerId != nil {
+            map["OwnerId"] = self.ownerId!
+        }
+        if self.qualificationName != nil {
+            map["QualificationName"] = self.qualificationName!
+        }
+        if self.remark != nil {
+            map["Remark"] = self.remark!
+        }
+        if self.resourceOwnerAccount != nil {
+            map["ResourceOwnerAccount"] = self.resourceOwnerAccount!
+        }
+        if self.resourceOwnerId != nil {
+            map["ResourceOwnerId"] = self.resourceOwnerId!
+        }
+        if self.useBySelf != nil {
+            map["UseBySelf"] = self.useBySelf!
+        }
+        if self.whetherShare != nil {
+            map["WhetherShare"] = self.whetherShare!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("AdminIDCardExpDate") {
+            self.adminIDCardExpDate = dict["AdminIDCardExpDate"] as! String
+        }
+        if dict.keys.contains("AdminIDCardFrontFace") {
+            self.adminIDCardFrontFace = dict["AdminIDCardFrontFace"] as! String
+        }
+        if dict.keys.contains("AdminIDCardNo") {
+            self.adminIDCardNo = dict["AdminIDCardNo"] as! String
+        }
+        if dict.keys.contains("AdminIDCardPic") {
+            self.adminIDCardPic = dict["AdminIDCardPic"] as! String
+        }
+        if dict.keys.contains("AdminIDCardType") {
+            self.adminIDCardType = dict["AdminIDCardType"] as! String
+        }
+        if dict.keys.contains("AdminName") {
+            self.adminName = dict["AdminName"] as! String
+        }
+        if dict.keys.contains("AdminPhoneNo") {
+            self.adminPhoneNo = dict["AdminPhoneNo"] as! String
+        }
+        if dict.keys.contains("BusinessLicensePics") {
+            var tmp : [SubmitSmsQualificationRequest.BusinessLicensePics] = []
+            for v in dict["BusinessLicensePics"] as! [Any] {
+                var model = SubmitSmsQualificationRequest.BusinessLicensePics()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.businessLicensePics = tmp
+        }
+        if dict.keys.contains("BussinessLicenseExpDate") {
+            self.bussinessLicenseExpDate = dict["BussinessLicenseExpDate"] as! String
+        }
+        if dict.keys.contains("CertifyCode") {
+            self.certifyCode = dict["CertifyCode"] as! String
+        }
+        if dict.keys.contains("CompanyName") {
+            self.companyName = dict["CompanyName"] as! String
+        }
+        if dict.keys.contains("CompanyType") {
+            self.companyType = dict["CompanyType"] as! String
+        }
+        if dict.keys.contains("LegalPersonIDCardNo") {
+            self.legalPersonIDCardNo = dict["LegalPersonIDCardNo"] as! String
+        }
+        if dict.keys.contains("LegalPersonIDCardType") {
+            self.legalPersonIDCardType = dict["LegalPersonIDCardType"] as! String
+        }
+        if dict.keys.contains("LegalPersonIdCardBackSide") {
+            self.legalPersonIdCardBackSide = dict["LegalPersonIdCardBackSide"] as! String
+        }
+        if dict.keys.contains("LegalPersonIdCardEffTime") {
+            self.legalPersonIdCardEffTime = dict["LegalPersonIdCardEffTime"] as! String
+        }
+        if dict.keys.contains("LegalPersonIdCardFrontSide") {
+            self.legalPersonIdCardFrontSide = dict["LegalPersonIdCardFrontSide"] as! String
+        }
+        if dict.keys.contains("LegalPersonName") {
+            self.legalPersonName = dict["LegalPersonName"] as! String
+        }
+        if dict.keys.contains("OrganizationCode") {
+            self.organizationCode = dict["OrganizationCode"] as! String
+        }
+        if dict.keys.contains("OtherFiles") {
+            var tmp : [SubmitSmsQualificationRequest.OtherFiles] = []
+            for v in dict["OtherFiles"] as! [Any] {
+                var model = SubmitSmsQualificationRequest.OtherFiles()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.otherFiles = tmp
+        }
+        if dict.keys.contains("OwnerId") {
+            self.ownerId = dict["OwnerId"] as! Int64
+        }
+        if dict.keys.contains("QualificationName") {
+            self.qualificationName = dict["QualificationName"] as! String
+        }
+        if dict.keys.contains("Remark") {
+            self.remark = dict["Remark"] as! String
+        }
+        if dict.keys.contains("ResourceOwnerAccount") {
+            self.resourceOwnerAccount = dict["ResourceOwnerAccount"] as! String
+        }
+        if dict.keys.contains("ResourceOwnerId") {
+            self.resourceOwnerId = dict["ResourceOwnerId"] as! Int64
+        }
+        if dict.keys.contains("UseBySelf") {
+            self.useBySelf = dict["UseBySelf"] as! Bool
+        }
+        if dict.keys.contains("WhetherShare") {
+            self.whetherShare = dict["WhetherShare"] as! Bool
+        }
+    }
+}
+
+public class SubmitSmsQualificationShrinkRequest : Tea.TeaModel {
+    public var adminIDCardExpDate: String?
+
+    public var adminIDCardFrontFace: String?
+
+    public var adminIDCardNo: String?
+
+    public var adminIDCardPic: String?
+
+    public var adminIDCardType: String?
+
+    public var adminName: String?
+
+    public var adminPhoneNo: String?
+
+    public var businessLicensePicsShrink: String?
+
+    public var bussinessLicenseExpDate: String?
+
+    public var certifyCode: String?
+
+    public var companyName: String?
+
+    public var companyType: String?
+
+    public var legalPersonIDCardNo: String?
+
+    public var legalPersonIDCardType: String?
+
+    public var legalPersonIdCardBackSide: String?
+
+    public var legalPersonIdCardEffTime: String?
+
+    public var legalPersonIdCardFrontSide: String?
+
+    public var legalPersonName: String?
+
+    public var organizationCode: String?
+
+    public var otherFilesShrink: String?
+
+    public var ownerId: Int64?
+
+    public var qualificationName: String?
+
+    public var remark: String?
+
+    public var resourceOwnerAccount: String?
+
+    public var resourceOwnerId: Int64?
+
+    public var useBySelf: Bool?
+
+    public var whetherShare: Bool?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.adminIDCardExpDate != nil {
+            map["AdminIDCardExpDate"] = self.adminIDCardExpDate!
+        }
+        if self.adminIDCardFrontFace != nil {
+            map["AdminIDCardFrontFace"] = self.adminIDCardFrontFace!
+        }
+        if self.adminIDCardNo != nil {
+            map["AdminIDCardNo"] = self.adminIDCardNo!
+        }
+        if self.adminIDCardPic != nil {
+            map["AdminIDCardPic"] = self.adminIDCardPic!
+        }
+        if self.adminIDCardType != nil {
+            map["AdminIDCardType"] = self.adminIDCardType!
+        }
+        if self.adminName != nil {
+            map["AdminName"] = self.adminName!
+        }
+        if self.adminPhoneNo != nil {
+            map["AdminPhoneNo"] = self.adminPhoneNo!
+        }
+        if self.businessLicensePicsShrink != nil {
+            map["BusinessLicensePics"] = self.businessLicensePicsShrink!
+        }
+        if self.bussinessLicenseExpDate != nil {
+            map["BussinessLicenseExpDate"] = self.bussinessLicenseExpDate!
+        }
+        if self.certifyCode != nil {
+            map["CertifyCode"] = self.certifyCode!
+        }
+        if self.companyName != nil {
+            map["CompanyName"] = self.companyName!
+        }
+        if self.companyType != nil {
+            map["CompanyType"] = self.companyType!
+        }
+        if self.legalPersonIDCardNo != nil {
+            map["LegalPersonIDCardNo"] = self.legalPersonIDCardNo!
+        }
+        if self.legalPersonIDCardType != nil {
+            map["LegalPersonIDCardType"] = self.legalPersonIDCardType!
+        }
+        if self.legalPersonIdCardBackSide != nil {
+            map["LegalPersonIdCardBackSide"] = self.legalPersonIdCardBackSide!
+        }
+        if self.legalPersonIdCardEffTime != nil {
+            map["LegalPersonIdCardEffTime"] = self.legalPersonIdCardEffTime!
+        }
+        if self.legalPersonIdCardFrontSide != nil {
+            map["LegalPersonIdCardFrontSide"] = self.legalPersonIdCardFrontSide!
+        }
+        if self.legalPersonName != nil {
+            map["LegalPersonName"] = self.legalPersonName!
+        }
+        if self.organizationCode != nil {
+            map["OrganizationCode"] = self.organizationCode!
+        }
+        if self.otherFilesShrink != nil {
+            map["OtherFiles"] = self.otherFilesShrink!
+        }
+        if self.ownerId != nil {
+            map["OwnerId"] = self.ownerId!
+        }
+        if self.qualificationName != nil {
+            map["QualificationName"] = self.qualificationName!
+        }
+        if self.remark != nil {
+            map["Remark"] = self.remark!
+        }
+        if self.resourceOwnerAccount != nil {
+            map["ResourceOwnerAccount"] = self.resourceOwnerAccount!
+        }
+        if self.resourceOwnerId != nil {
+            map["ResourceOwnerId"] = self.resourceOwnerId!
+        }
+        if self.useBySelf != nil {
+            map["UseBySelf"] = self.useBySelf!
+        }
+        if self.whetherShare != nil {
+            map["WhetherShare"] = self.whetherShare!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("AdminIDCardExpDate") {
+            self.adminIDCardExpDate = dict["AdminIDCardExpDate"] as! String
+        }
+        if dict.keys.contains("AdminIDCardFrontFace") {
+            self.adminIDCardFrontFace = dict["AdminIDCardFrontFace"] as! String
+        }
+        if dict.keys.contains("AdminIDCardNo") {
+            self.adminIDCardNo = dict["AdminIDCardNo"] as! String
+        }
+        if dict.keys.contains("AdminIDCardPic") {
+            self.adminIDCardPic = dict["AdminIDCardPic"] as! String
+        }
+        if dict.keys.contains("AdminIDCardType") {
+            self.adminIDCardType = dict["AdminIDCardType"] as! String
+        }
+        if dict.keys.contains("AdminName") {
+            self.adminName = dict["AdminName"] as! String
+        }
+        if dict.keys.contains("AdminPhoneNo") {
+            self.adminPhoneNo = dict["AdminPhoneNo"] as! String
+        }
+        if dict.keys.contains("BusinessLicensePics") {
+            self.businessLicensePicsShrink = dict["BusinessLicensePics"] as! String
+        }
+        if dict.keys.contains("BussinessLicenseExpDate") {
+            self.bussinessLicenseExpDate = dict["BussinessLicenseExpDate"] as! String
+        }
+        if dict.keys.contains("CertifyCode") {
+            self.certifyCode = dict["CertifyCode"] as! String
+        }
+        if dict.keys.contains("CompanyName") {
+            self.companyName = dict["CompanyName"] as! String
+        }
+        if dict.keys.contains("CompanyType") {
+            self.companyType = dict["CompanyType"] as! String
+        }
+        if dict.keys.contains("LegalPersonIDCardNo") {
+            self.legalPersonIDCardNo = dict["LegalPersonIDCardNo"] as! String
+        }
+        if dict.keys.contains("LegalPersonIDCardType") {
+            self.legalPersonIDCardType = dict["LegalPersonIDCardType"] as! String
+        }
+        if dict.keys.contains("LegalPersonIdCardBackSide") {
+            self.legalPersonIdCardBackSide = dict["LegalPersonIdCardBackSide"] as! String
+        }
+        if dict.keys.contains("LegalPersonIdCardEffTime") {
+            self.legalPersonIdCardEffTime = dict["LegalPersonIdCardEffTime"] as! String
+        }
+        if dict.keys.contains("LegalPersonIdCardFrontSide") {
+            self.legalPersonIdCardFrontSide = dict["LegalPersonIdCardFrontSide"] as! String
+        }
+        if dict.keys.contains("LegalPersonName") {
+            self.legalPersonName = dict["LegalPersonName"] as! String
+        }
+        if dict.keys.contains("OrganizationCode") {
+            self.organizationCode = dict["OrganizationCode"] as! String
+        }
+        if dict.keys.contains("OtherFiles") {
+            self.otherFilesShrink = dict["OtherFiles"] as! String
+        }
+        if dict.keys.contains("OwnerId") {
+            self.ownerId = dict["OwnerId"] as! Int64
+        }
+        if dict.keys.contains("QualificationName") {
+            self.qualificationName = dict["QualificationName"] as! String
+        }
+        if dict.keys.contains("Remark") {
+            self.remark = dict["Remark"] as! String
+        }
+        if dict.keys.contains("ResourceOwnerAccount") {
+            self.resourceOwnerAccount = dict["ResourceOwnerAccount"] as! String
+        }
+        if dict.keys.contains("ResourceOwnerId") {
+            self.resourceOwnerId = dict["ResourceOwnerId"] as! Int64
+        }
+        if dict.keys.contains("UseBySelf") {
+            self.useBySelf = dict["UseBySelf"] as! Bool
+        }
+        if dict.keys.contains("WhetherShare") {
+            self.whetherShare = dict["WhetherShare"] as! Bool
+        }
+    }
+}
+
+public class SubmitSmsQualificationResponseBody : Tea.TeaModel {
+    public var accessDeniedDetail: String?
+
+    public var code: String?
+
+    public var data: String?
+
+    public var message: String?
+
+    public var requestId: String?
+
+    public var success: Bool?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.accessDeniedDetail != nil {
+            map["AccessDeniedDetail"] = self.accessDeniedDetail!
+        }
+        if self.code != nil {
+            map["Code"] = self.code!
+        }
+        if self.data != nil {
+            map["Data"] = self.data!
+        }
+        if self.message != nil {
+            map["Message"] = self.message!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.success != nil {
+            map["Success"] = self.success!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("AccessDeniedDetail") {
+            self.accessDeniedDetail = dict["AccessDeniedDetail"] as! String
+        }
+        if dict.keys.contains("Code") {
+            self.code = dict["Code"] as! String
+        }
+        if dict.keys.contains("Data") {
+            self.data = dict["Data"] as! String
+        }
+        if dict.keys.contains("Message") {
+            self.message = dict["Message"] as! String
+        }
+        if dict.keys.contains("RequestId") {
+            self.requestId = dict["RequestId"] as! String
+        }
+        if dict.keys.contains("Success") {
+            self.success = dict["Success"] as! Bool
+        }
+    }
+}
+
+public class SubmitSmsQualificationResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: SubmitSmsQualificationResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") {
+            var model = SubmitSmsQualificationResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
 public class TagResourcesRequest : Tea.TeaModel {
     public class Tag : Tea.TeaModel {
         public var key: String?
@@ -12070,6 +14018,627 @@ public class UpdateExtCodeSignResponse : Tea.TeaModel {
         }
         if dict.keys.contains("body") {
             var model = UpdateExtCodeSignResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
+public class UpdateSmsQualificationRequest : Tea.TeaModel {
+    public class BusinessLicensePics : Tea.TeaModel {
+        public var licensePic: String?
+
+        public var type: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.licensePic != nil {
+                map["LicensePic"] = self.licensePic!
+            }
+            if self.type != nil {
+                map["Type"] = self.type!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("LicensePic") {
+                self.licensePic = dict["LicensePic"] as! String
+            }
+            if dict.keys.contains("Type") {
+                self.type = dict["Type"] as! String
+            }
+        }
+    }
+    public class OtherFiles : Tea.TeaModel {
+        public var licensePic: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.licensePic != nil {
+                map["LicensePic"] = self.licensePic!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("LicensePic") {
+                self.licensePic = dict["LicensePic"] as! String
+            }
+        }
+    }
+    public var adminIDCardExpDate: String?
+
+    public var adminIDCardFrontFace: String?
+
+    public var adminIDCardNo: String?
+
+    public var adminIDCardPic: String?
+
+    public var adminIDCardType: String?
+
+    public var adminName: String?
+
+    public var adminPhoneNo: String?
+
+    public var businessLicensePics: [UpdateSmsQualificationRequest.BusinessLicensePics]?
+
+    public var bussinessLicenseExpDate: String?
+
+    public var certifyCode: String?
+
+    public var companyName: String?
+
+    public var legalPersonIDCardNo: String?
+
+    public var legalPersonIDCardType: String?
+
+    public var legalPersonIdCardBackSide: String?
+
+    public var legalPersonIdCardEffTime: String?
+
+    public var legalPersonIdCardFrontSide: String?
+
+    public var legalPersonName: String?
+
+    public var orderId: Int64?
+
+    public var otherFiles: [UpdateSmsQualificationRequest.OtherFiles]?
+
+    public var ownerId: Int64?
+
+    public var qualificationGroupId: Int64?
+
+    public var resourceOwnerAccount: String?
+
+    public var resourceOwnerId: Int64?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.adminIDCardExpDate != nil {
+            map["AdminIDCardExpDate"] = self.adminIDCardExpDate!
+        }
+        if self.adminIDCardFrontFace != nil {
+            map["AdminIDCardFrontFace"] = self.adminIDCardFrontFace!
+        }
+        if self.adminIDCardNo != nil {
+            map["AdminIDCardNo"] = self.adminIDCardNo!
+        }
+        if self.adminIDCardPic != nil {
+            map["AdminIDCardPic"] = self.adminIDCardPic!
+        }
+        if self.adminIDCardType != nil {
+            map["AdminIDCardType"] = self.adminIDCardType!
+        }
+        if self.adminName != nil {
+            map["AdminName"] = self.adminName!
+        }
+        if self.adminPhoneNo != nil {
+            map["AdminPhoneNo"] = self.adminPhoneNo!
+        }
+        if self.businessLicensePics != nil {
+            var tmp : [Any] = []
+            for k in self.businessLicensePics! {
+                tmp.append(k.toMap())
+            }
+            map["BusinessLicensePics"] = tmp
+        }
+        if self.bussinessLicenseExpDate != nil {
+            map["BussinessLicenseExpDate"] = self.bussinessLicenseExpDate!
+        }
+        if self.certifyCode != nil {
+            map["CertifyCode"] = self.certifyCode!
+        }
+        if self.companyName != nil {
+            map["CompanyName"] = self.companyName!
+        }
+        if self.legalPersonIDCardNo != nil {
+            map["LegalPersonIDCardNo"] = self.legalPersonIDCardNo!
+        }
+        if self.legalPersonIDCardType != nil {
+            map["LegalPersonIDCardType"] = self.legalPersonIDCardType!
+        }
+        if self.legalPersonIdCardBackSide != nil {
+            map["LegalPersonIdCardBackSide"] = self.legalPersonIdCardBackSide!
+        }
+        if self.legalPersonIdCardEffTime != nil {
+            map["LegalPersonIdCardEffTime"] = self.legalPersonIdCardEffTime!
+        }
+        if self.legalPersonIdCardFrontSide != nil {
+            map["LegalPersonIdCardFrontSide"] = self.legalPersonIdCardFrontSide!
+        }
+        if self.legalPersonName != nil {
+            map["LegalPersonName"] = self.legalPersonName!
+        }
+        if self.orderId != nil {
+            map["OrderId"] = self.orderId!
+        }
+        if self.otherFiles != nil {
+            var tmp : [Any] = []
+            for k in self.otherFiles! {
+                tmp.append(k.toMap())
+            }
+            map["OtherFiles"] = tmp
+        }
+        if self.ownerId != nil {
+            map["OwnerId"] = self.ownerId!
+        }
+        if self.qualificationGroupId != nil {
+            map["QualificationGroupId"] = self.qualificationGroupId!
+        }
+        if self.resourceOwnerAccount != nil {
+            map["ResourceOwnerAccount"] = self.resourceOwnerAccount!
+        }
+        if self.resourceOwnerId != nil {
+            map["ResourceOwnerId"] = self.resourceOwnerId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("AdminIDCardExpDate") {
+            self.adminIDCardExpDate = dict["AdminIDCardExpDate"] as! String
+        }
+        if dict.keys.contains("AdminIDCardFrontFace") {
+            self.adminIDCardFrontFace = dict["AdminIDCardFrontFace"] as! String
+        }
+        if dict.keys.contains("AdminIDCardNo") {
+            self.adminIDCardNo = dict["AdminIDCardNo"] as! String
+        }
+        if dict.keys.contains("AdminIDCardPic") {
+            self.adminIDCardPic = dict["AdminIDCardPic"] as! String
+        }
+        if dict.keys.contains("AdminIDCardType") {
+            self.adminIDCardType = dict["AdminIDCardType"] as! String
+        }
+        if dict.keys.contains("AdminName") {
+            self.adminName = dict["AdminName"] as! String
+        }
+        if dict.keys.contains("AdminPhoneNo") {
+            self.adminPhoneNo = dict["AdminPhoneNo"] as! String
+        }
+        if dict.keys.contains("BusinessLicensePics") {
+            var tmp : [UpdateSmsQualificationRequest.BusinessLicensePics] = []
+            for v in dict["BusinessLicensePics"] as! [Any] {
+                var model = UpdateSmsQualificationRequest.BusinessLicensePics()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.businessLicensePics = tmp
+        }
+        if dict.keys.contains("BussinessLicenseExpDate") {
+            self.bussinessLicenseExpDate = dict["BussinessLicenseExpDate"] as! String
+        }
+        if dict.keys.contains("CertifyCode") {
+            self.certifyCode = dict["CertifyCode"] as! String
+        }
+        if dict.keys.contains("CompanyName") {
+            self.companyName = dict["CompanyName"] as! String
+        }
+        if dict.keys.contains("LegalPersonIDCardNo") {
+            self.legalPersonIDCardNo = dict["LegalPersonIDCardNo"] as! String
+        }
+        if dict.keys.contains("LegalPersonIDCardType") {
+            self.legalPersonIDCardType = dict["LegalPersonIDCardType"] as! String
+        }
+        if dict.keys.contains("LegalPersonIdCardBackSide") {
+            self.legalPersonIdCardBackSide = dict["LegalPersonIdCardBackSide"] as! String
+        }
+        if dict.keys.contains("LegalPersonIdCardEffTime") {
+            self.legalPersonIdCardEffTime = dict["LegalPersonIdCardEffTime"] as! String
+        }
+        if dict.keys.contains("LegalPersonIdCardFrontSide") {
+            self.legalPersonIdCardFrontSide = dict["LegalPersonIdCardFrontSide"] as! String
+        }
+        if dict.keys.contains("LegalPersonName") {
+            self.legalPersonName = dict["LegalPersonName"] as! String
+        }
+        if dict.keys.contains("OrderId") {
+            self.orderId = dict["OrderId"] as! Int64
+        }
+        if dict.keys.contains("OtherFiles") {
+            var tmp : [UpdateSmsQualificationRequest.OtherFiles] = []
+            for v in dict["OtherFiles"] as! [Any] {
+                var model = UpdateSmsQualificationRequest.OtherFiles()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.otherFiles = tmp
+        }
+        if dict.keys.contains("OwnerId") {
+            self.ownerId = dict["OwnerId"] as! Int64
+        }
+        if dict.keys.contains("QualificationGroupId") {
+            self.qualificationGroupId = dict["QualificationGroupId"] as! Int64
+        }
+        if dict.keys.contains("ResourceOwnerAccount") {
+            self.resourceOwnerAccount = dict["ResourceOwnerAccount"] as! String
+        }
+        if dict.keys.contains("ResourceOwnerId") {
+            self.resourceOwnerId = dict["ResourceOwnerId"] as! Int64
+        }
+    }
+}
+
+public class UpdateSmsQualificationShrinkRequest : Tea.TeaModel {
+    public var adminIDCardExpDate: String?
+
+    public var adminIDCardFrontFace: String?
+
+    public var adminIDCardNo: String?
+
+    public var adminIDCardPic: String?
+
+    public var adminIDCardType: String?
+
+    public var adminName: String?
+
+    public var adminPhoneNo: String?
+
+    public var businessLicensePicsShrink: String?
+
+    public var bussinessLicenseExpDate: String?
+
+    public var certifyCode: String?
+
+    public var companyName: String?
+
+    public var legalPersonIDCardNo: String?
+
+    public var legalPersonIDCardType: String?
+
+    public var legalPersonIdCardBackSide: String?
+
+    public var legalPersonIdCardEffTime: String?
+
+    public var legalPersonIdCardFrontSide: String?
+
+    public var legalPersonName: String?
+
+    public var orderId: Int64?
+
+    public var otherFilesShrink: String?
+
+    public var ownerId: Int64?
+
+    public var qualificationGroupId: Int64?
+
+    public var resourceOwnerAccount: String?
+
+    public var resourceOwnerId: Int64?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.adminIDCardExpDate != nil {
+            map["AdminIDCardExpDate"] = self.adminIDCardExpDate!
+        }
+        if self.adminIDCardFrontFace != nil {
+            map["AdminIDCardFrontFace"] = self.adminIDCardFrontFace!
+        }
+        if self.adminIDCardNo != nil {
+            map["AdminIDCardNo"] = self.adminIDCardNo!
+        }
+        if self.adminIDCardPic != nil {
+            map["AdminIDCardPic"] = self.adminIDCardPic!
+        }
+        if self.adminIDCardType != nil {
+            map["AdminIDCardType"] = self.adminIDCardType!
+        }
+        if self.adminName != nil {
+            map["AdminName"] = self.adminName!
+        }
+        if self.adminPhoneNo != nil {
+            map["AdminPhoneNo"] = self.adminPhoneNo!
+        }
+        if self.businessLicensePicsShrink != nil {
+            map["BusinessLicensePics"] = self.businessLicensePicsShrink!
+        }
+        if self.bussinessLicenseExpDate != nil {
+            map["BussinessLicenseExpDate"] = self.bussinessLicenseExpDate!
+        }
+        if self.certifyCode != nil {
+            map["CertifyCode"] = self.certifyCode!
+        }
+        if self.companyName != nil {
+            map["CompanyName"] = self.companyName!
+        }
+        if self.legalPersonIDCardNo != nil {
+            map["LegalPersonIDCardNo"] = self.legalPersonIDCardNo!
+        }
+        if self.legalPersonIDCardType != nil {
+            map["LegalPersonIDCardType"] = self.legalPersonIDCardType!
+        }
+        if self.legalPersonIdCardBackSide != nil {
+            map["LegalPersonIdCardBackSide"] = self.legalPersonIdCardBackSide!
+        }
+        if self.legalPersonIdCardEffTime != nil {
+            map["LegalPersonIdCardEffTime"] = self.legalPersonIdCardEffTime!
+        }
+        if self.legalPersonIdCardFrontSide != nil {
+            map["LegalPersonIdCardFrontSide"] = self.legalPersonIdCardFrontSide!
+        }
+        if self.legalPersonName != nil {
+            map["LegalPersonName"] = self.legalPersonName!
+        }
+        if self.orderId != nil {
+            map["OrderId"] = self.orderId!
+        }
+        if self.otherFilesShrink != nil {
+            map["OtherFiles"] = self.otherFilesShrink!
+        }
+        if self.ownerId != nil {
+            map["OwnerId"] = self.ownerId!
+        }
+        if self.qualificationGroupId != nil {
+            map["QualificationGroupId"] = self.qualificationGroupId!
+        }
+        if self.resourceOwnerAccount != nil {
+            map["ResourceOwnerAccount"] = self.resourceOwnerAccount!
+        }
+        if self.resourceOwnerId != nil {
+            map["ResourceOwnerId"] = self.resourceOwnerId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("AdminIDCardExpDate") {
+            self.adminIDCardExpDate = dict["AdminIDCardExpDate"] as! String
+        }
+        if dict.keys.contains("AdminIDCardFrontFace") {
+            self.adminIDCardFrontFace = dict["AdminIDCardFrontFace"] as! String
+        }
+        if dict.keys.contains("AdminIDCardNo") {
+            self.adminIDCardNo = dict["AdminIDCardNo"] as! String
+        }
+        if dict.keys.contains("AdminIDCardPic") {
+            self.adminIDCardPic = dict["AdminIDCardPic"] as! String
+        }
+        if dict.keys.contains("AdminIDCardType") {
+            self.adminIDCardType = dict["AdminIDCardType"] as! String
+        }
+        if dict.keys.contains("AdminName") {
+            self.adminName = dict["AdminName"] as! String
+        }
+        if dict.keys.contains("AdminPhoneNo") {
+            self.adminPhoneNo = dict["AdminPhoneNo"] as! String
+        }
+        if dict.keys.contains("BusinessLicensePics") {
+            self.businessLicensePicsShrink = dict["BusinessLicensePics"] as! String
+        }
+        if dict.keys.contains("BussinessLicenseExpDate") {
+            self.bussinessLicenseExpDate = dict["BussinessLicenseExpDate"] as! String
+        }
+        if dict.keys.contains("CertifyCode") {
+            self.certifyCode = dict["CertifyCode"] as! String
+        }
+        if dict.keys.contains("CompanyName") {
+            self.companyName = dict["CompanyName"] as! String
+        }
+        if dict.keys.contains("LegalPersonIDCardNo") {
+            self.legalPersonIDCardNo = dict["LegalPersonIDCardNo"] as! String
+        }
+        if dict.keys.contains("LegalPersonIDCardType") {
+            self.legalPersonIDCardType = dict["LegalPersonIDCardType"] as! String
+        }
+        if dict.keys.contains("LegalPersonIdCardBackSide") {
+            self.legalPersonIdCardBackSide = dict["LegalPersonIdCardBackSide"] as! String
+        }
+        if dict.keys.contains("LegalPersonIdCardEffTime") {
+            self.legalPersonIdCardEffTime = dict["LegalPersonIdCardEffTime"] as! String
+        }
+        if dict.keys.contains("LegalPersonIdCardFrontSide") {
+            self.legalPersonIdCardFrontSide = dict["LegalPersonIdCardFrontSide"] as! String
+        }
+        if dict.keys.contains("LegalPersonName") {
+            self.legalPersonName = dict["LegalPersonName"] as! String
+        }
+        if dict.keys.contains("OrderId") {
+            self.orderId = dict["OrderId"] as! Int64
+        }
+        if dict.keys.contains("OtherFiles") {
+            self.otherFilesShrink = dict["OtherFiles"] as! String
+        }
+        if dict.keys.contains("OwnerId") {
+            self.ownerId = dict["OwnerId"] as! Int64
+        }
+        if dict.keys.contains("QualificationGroupId") {
+            self.qualificationGroupId = dict["QualificationGroupId"] as! Int64
+        }
+        if dict.keys.contains("ResourceOwnerAccount") {
+            self.resourceOwnerAccount = dict["ResourceOwnerAccount"] as! String
+        }
+        if dict.keys.contains("ResourceOwnerId") {
+            self.resourceOwnerId = dict["ResourceOwnerId"] as! Int64
+        }
+    }
+}
+
+public class UpdateSmsQualificationResponseBody : Tea.TeaModel {
+    public var accessDeniedDetail: String?
+
+    public var code: String?
+
+    public var data: String?
+
+    public var message: String?
+
+    public var requestId: String?
+
+    public var success: Bool?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.accessDeniedDetail != nil {
+            map["AccessDeniedDetail"] = self.accessDeniedDetail!
+        }
+        if self.code != nil {
+            map["Code"] = self.code!
+        }
+        if self.data != nil {
+            map["Data"] = self.data!
+        }
+        if self.message != nil {
+            map["Message"] = self.message!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.success != nil {
+            map["Success"] = self.success!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("AccessDeniedDetail") {
+            self.accessDeniedDetail = dict["AccessDeniedDetail"] as! String
+        }
+        if dict.keys.contains("Code") {
+            self.code = dict["Code"] as! String
+        }
+        if dict.keys.contains("Data") {
+            self.data = dict["Data"] as! String
+        }
+        if dict.keys.contains("Message") {
+            self.message = dict["Message"] as! String
+        }
+        if dict.keys.contains("RequestId") {
+            self.requestId = dict["RequestId"] as! String
+        }
+        if dict.keys.contains("Success") {
+            self.success = dict["Success"] as! Bool
+        }
+    }
+}
+
+public class UpdateSmsQualificationResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: UpdateSmsQualificationResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") {
+            var model = UpdateSmsQualificationResponseBody()
             model.fromMap(dict["body"] as! [String: Any])
             self.body = model
         }
@@ -12788,6 +15357,187 @@ public class UpdateSmsTemplateResponse : Tea.TeaModel {
         }
         if dict.keys.contains("body") {
             var model = UpdateSmsTemplateResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
+public class ValidPhoneCodeRequest : Tea.TeaModel {
+    public var certifyCode: String?
+
+    public var ownerId: Int64?
+
+    public var phoneNo: String?
+
+    public var resourceOwnerAccount: String?
+
+    public var resourceOwnerId: Int64?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.certifyCode != nil {
+            map["CertifyCode"] = self.certifyCode!
+        }
+        if self.ownerId != nil {
+            map["OwnerId"] = self.ownerId!
+        }
+        if self.phoneNo != nil {
+            map["PhoneNo"] = self.phoneNo!
+        }
+        if self.resourceOwnerAccount != nil {
+            map["ResourceOwnerAccount"] = self.resourceOwnerAccount!
+        }
+        if self.resourceOwnerId != nil {
+            map["ResourceOwnerId"] = self.resourceOwnerId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("CertifyCode") {
+            self.certifyCode = dict["CertifyCode"] as! String
+        }
+        if dict.keys.contains("OwnerId") {
+            self.ownerId = dict["OwnerId"] as! Int64
+        }
+        if dict.keys.contains("PhoneNo") {
+            self.phoneNo = dict["PhoneNo"] as! String
+        }
+        if dict.keys.contains("ResourceOwnerAccount") {
+            self.resourceOwnerAccount = dict["ResourceOwnerAccount"] as! String
+        }
+        if dict.keys.contains("ResourceOwnerId") {
+            self.resourceOwnerId = dict["ResourceOwnerId"] as! Int64
+        }
+    }
+}
+
+public class ValidPhoneCodeResponseBody : Tea.TeaModel {
+    public var accessDeniedDetail: String?
+
+    public var code: String?
+
+    public var data: Bool?
+
+    public var message: String?
+
+    public var requestId: String?
+
+    public var success: Bool?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.accessDeniedDetail != nil {
+            map["AccessDeniedDetail"] = self.accessDeniedDetail!
+        }
+        if self.code != nil {
+            map["Code"] = self.code!
+        }
+        if self.data != nil {
+            map["Data"] = self.data!
+        }
+        if self.message != nil {
+            map["Message"] = self.message!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.success != nil {
+            map["Success"] = self.success!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("AccessDeniedDetail") {
+            self.accessDeniedDetail = dict["AccessDeniedDetail"] as! String
+        }
+        if dict.keys.contains("Code") {
+            self.code = dict["Code"] as! String
+        }
+        if dict.keys.contains("Data") {
+            self.data = dict["Data"] as! Bool
+        }
+        if dict.keys.contains("Message") {
+            self.message = dict["Message"] as! String
+        }
+        if dict.keys.contains("RequestId") {
+            self.requestId = dict["RequestId"] as! String
+        }
+        if dict.keys.contains("Success") {
+            self.success = dict["Success"] as! Bool
+        }
+    }
+}
+
+public class ValidPhoneCodeResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: ValidPhoneCodeResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") {
+            var model = ValidPhoneCodeResponseBody()
             model.fromMap(dict["body"] as! [String: Any])
             self.body = model
         }
