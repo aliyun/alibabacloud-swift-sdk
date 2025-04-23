@@ -7619,6 +7619,8 @@ public class GetConsumerProgressResponseBody : Tea.TeaModel {
 
         public var totalDiff: Int64?
 
+        public var state: String?
+
         public override init() {
             super.init()
         }
@@ -7647,6 +7649,9 @@ public class GetConsumerProgressResponseBody : Tea.TeaModel {
             if self.totalDiff != nil {
                 map["TotalDiff"] = self.totalDiff!
             }
+            if self.state != nil {
+                map["state"] = self.state!
+            }
             return map
         }
 
@@ -7666,6 +7671,9 @@ public class GetConsumerProgressResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("TotalDiff") {
                 self.totalDiff = dict["TotalDiff"] as! Int64
+            }
+            if dict.keys.contains("state") {
+                self.state = dict["state"] as! String
             }
         }
     }
