@@ -772,6 +772,8 @@ public class CreateFunctionInput : Tea.TeaModel {
 
     public var diskSize: Int32?
 
+    public var enableLongLiving: Bool?
+
     public var environmentVariables: [String: String]?
 
     public var functionName: String?
@@ -858,6 +860,9 @@ public class CreateFunctionInput : Tea.TeaModel {
         }
         if self.diskSize != nil {
             map["diskSize"] = self.diskSize!
+        }
+        if self.enableLongLiving != nil {
+            map["enableLongLiving"] = self.enableLongLiving!
         }
         if self.environmentVariables != nil {
             map["environmentVariables"] = self.environmentVariables!
@@ -955,6 +960,9 @@ public class CreateFunctionInput : Tea.TeaModel {
         }
         if dict.keys.contains("diskSize") {
             self.diskSize = dict["diskSize"] as! Int32
+        }
+        if dict.keys.contains("enableLongLiving") {
+            self.enableLongLiving = dict["enableLongLiving"] as! Bool
         }
         if dict.keys.contains("environmentVariables") {
             self.environmentVariables = dict["environmentVariables"] as! [String: String]
@@ -2302,6 +2310,8 @@ public class Function : Tea.TeaModel {
 
     public var diskSize: Int32?
 
+    public var enableLongLiving: Bool?
+
     public var environmentVariables: [String: String]?
 
     public var functionArn: String?
@@ -2414,6 +2424,9 @@ public class Function : Tea.TeaModel {
         }
         if self.diskSize != nil {
             map["diskSize"] = self.diskSize!
+        }
+        if self.enableLongLiving != nil {
+            map["enableLongLiving"] = self.enableLongLiving!
         }
         if self.environmentVariables != nil {
             map["environmentVariables"] = self.environmentVariables!
@@ -2549,6 +2562,9 @@ public class Function : Tea.TeaModel {
         }
         if dict.keys.contains("diskSize") {
             self.diskSize = dict["diskSize"] as! Int32
+        }
+        if dict.keys.contains("enableLongLiving") {
+            self.enableLongLiving = dict["enableLongLiving"] as! Bool
         }
         if dict.keys.contains("environmentVariables") {
             self.environmentVariables = dict["environmentVariables"] as! [String: String]
@@ -6900,6 +6916,8 @@ public class UpdateFunctionInput : Tea.TeaModel {
 
     public var diskSize: Int32?
 
+    public var enableLongLiving: Bool?
+
     public var environmentVariables: [String: String]?
 
     public var gpuConfig: GPUConfig?
@@ -6982,6 +7000,9 @@ public class UpdateFunctionInput : Tea.TeaModel {
         }
         if self.diskSize != nil {
             map["diskSize"] = self.diskSize!
+        }
+        if self.enableLongLiving != nil {
+            map["enableLongLiving"] = self.enableLongLiving!
         }
         if self.environmentVariables != nil {
             map["environmentVariables"] = self.environmentVariables!
@@ -7069,6 +7090,9 @@ public class UpdateFunctionInput : Tea.TeaModel {
         }
         if dict.keys.contains("diskSize") {
             self.diskSize = dict["diskSize"] as! Int32
+        }
+        if dict.keys.contains("enableLongLiving") {
+            self.enableLongLiving = dict["enableLongLiving"] as! Bool
         }
         if dict.keys.contains("environmentVariables") {
             self.environmentVariables = dict["environmentVariables"] as! [String: String]
