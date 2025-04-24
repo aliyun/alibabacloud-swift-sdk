@@ -1,6 +1,10 @@
 import Foundation
 import Tea
 import TeaUtils
+import AlibabaCloudOssSdk
+import AlibabacloudOpenPlatform20191219
+import AlibabaCloudOSSUtil
+import TeaFileForm
 import AlibabacloudOpenApi
 import AlibabaCloudOpenApiUtil
 import AlibabacloudEndpointUtil
@@ -742,6 +746,289 @@ public class CheckVerifyLogResponse : Tea.TeaModel {
         }
         if dict.keys.contains("body") {
             var model = CheckVerifyLogResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
+public class CredentialVerifyIntlRequest : Tea.TeaModel {
+    public var credName: String?
+
+    public var credType: String?
+
+    public var imageFile: String?
+
+    public var imageUrl: String?
+
+    public var productCode: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.credName != nil {
+            map["CredName"] = self.credName!
+        }
+        if self.credType != nil {
+            map["CredType"] = self.credType!
+        }
+        if self.imageFile != nil {
+            map["ImageFile"] = self.imageFile!
+        }
+        if self.imageUrl != nil {
+            map["ImageUrl"] = self.imageUrl!
+        }
+        if self.productCode != nil {
+            map["ProductCode"] = self.productCode!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("CredName") {
+            self.credName = dict["CredName"] as! String
+        }
+        if dict.keys.contains("CredType") {
+            self.credType = dict["CredType"] as! String
+        }
+        if dict.keys.contains("ImageFile") {
+            self.imageFile = dict["ImageFile"] as! String
+        }
+        if dict.keys.contains("ImageUrl") {
+            self.imageUrl = dict["ImageUrl"] as! String
+        }
+        if dict.keys.contains("ProductCode") {
+            self.productCode = dict["ProductCode"] as! String
+        }
+    }
+}
+
+public class CredentialVerifyIntlAdvanceRequest : Tea.TeaModel {
+    public var credName: String?
+
+    public var credType: String?
+
+    public var imageFileObject: InputStream?
+
+    public var imageUrl: String?
+
+    public var productCode: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.credName != nil {
+            map["CredName"] = self.credName!
+        }
+        if self.credType != nil {
+            map["CredType"] = self.credType!
+        }
+        if self.imageFileObject != nil {
+            map["ImageFile"] = self.imageFileObject!
+        }
+        if self.imageUrl != nil {
+            map["ImageUrl"] = self.imageUrl!
+        }
+        if self.productCode != nil {
+            map["ProductCode"] = self.productCode!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("CredName") {
+            self.credName = dict["CredName"] as! String
+        }
+        if dict.keys.contains("CredType") {
+            self.credType = dict["CredType"] as! String
+        }
+        if dict.keys.contains("ImageFile") {
+            self.imageFileObject = dict["ImageFile"] as! InputStream
+        }
+        if dict.keys.contains("ImageUrl") {
+            self.imageUrl = dict["ImageUrl"] as! String
+        }
+        if dict.keys.contains("ProductCode") {
+            self.productCode = dict["ProductCode"] as! String
+        }
+    }
+}
+
+public class CredentialVerifyIntlResponseBody : Tea.TeaModel {
+    public class ResultObject : Tea.TeaModel {
+        public var materialInfo: String?
+
+        public var result: String?
+
+        public var riskScore: [String: String]?
+
+        public var riskTag: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.materialInfo != nil {
+                map["MaterialInfo"] = self.materialInfo!
+            }
+            if self.result != nil {
+                map["Result"] = self.result!
+            }
+            if self.riskScore != nil {
+                map["RiskScore"] = self.riskScore!
+            }
+            if self.riskTag != nil {
+                map["RiskTag"] = self.riskTag!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("MaterialInfo") {
+                self.materialInfo = dict["MaterialInfo"] as! String
+            }
+            if dict.keys.contains("Result") {
+                self.result = dict["Result"] as! String
+            }
+            if dict.keys.contains("RiskScore") {
+                self.riskScore = dict["RiskScore"] as! [String: String]
+            }
+            if dict.keys.contains("RiskTag") {
+                self.riskTag = dict["RiskTag"] as! String
+            }
+        }
+    }
+    public var code: String?
+
+    public var message: String?
+
+    public var requestId: String?
+
+    public var resultObject: CredentialVerifyIntlResponseBody.ResultObject?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.resultObject?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.code != nil {
+            map["Code"] = self.code!
+        }
+        if self.message != nil {
+            map["Message"] = self.message!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.resultObject != nil {
+            map["ResultObject"] = self.resultObject?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("Code") {
+            self.code = dict["Code"] as! String
+        }
+        if dict.keys.contains("Message") {
+            self.message = dict["Message"] as! String
+        }
+        if dict.keys.contains("RequestId") {
+            self.requestId = dict["RequestId"] as! String
+        }
+        if dict.keys.contains("ResultObject") {
+            var model = CredentialVerifyIntlResponseBody.ResultObject()
+            model.fromMap(dict["ResultObject"] as! [String: Any])
+            self.resultObject = model
+        }
+    }
+}
+
+public class CredentialVerifyIntlResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: CredentialVerifyIntlResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") {
+            var model = CredentialVerifyIntlResponseBody()
             model.fromMap(dict["body"] as! [String: Any])
             self.body = model
         }
