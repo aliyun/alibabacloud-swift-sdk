@@ -1490,6 +1490,69 @@ public class GetMcpResourceRequest : Tea.TeaModel {
 
 public class GetMcpResourceResponseBody : Tea.TeaModel {
     public class Data : Tea.TeaModel {
+        public class DesktopInfo : Tea.TeaModel {
+            public var appId: String?
+
+            public var authCode: String?
+
+            public var connectionProperties: String?
+
+            public var resourceId: String?
+
+            public var resourceType: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.appId != nil {
+                    map["AppId"] = self.appId!
+                }
+                if self.authCode != nil {
+                    map["AuthCode"] = self.authCode!
+                }
+                if self.connectionProperties != nil {
+                    map["ConnectionProperties"] = self.connectionProperties!
+                }
+                if self.resourceId != nil {
+                    map["ResourceId"] = self.resourceId!
+                }
+                if self.resourceType != nil {
+                    map["ResourceType"] = self.resourceType!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("AppId") {
+                    self.appId = dict["AppId"] as! String
+                }
+                if dict.keys.contains("AuthCode") {
+                    self.authCode = dict["AuthCode"] as! String
+                }
+                if dict.keys.contains("ConnectionProperties") {
+                    self.connectionProperties = dict["ConnectionProperties"] as! String
+                }
+                if dict.keys.contains("ResourceId") {
+                    self.resourceId = dict["ResourceId"] as! String
+                }
+                if dict.keys.contains("ResourceType") {
+                    self.resourceType = dict["ResourceType"] as! String
+                }
+            }
+        }
+        public var desktopInfo: GetMcpResourceResponseBody.Data.DesktopInfo?
+
         public var resourceUrl: String?
 
         public var sessionId: String?
@@ -1504,10 +1567,14 @@ public class GetMcpResourceResponseBody : Tea.TeaModel {
         }
 
         public override func validate() throws -> Void {
+            try self.desktopInfo?.validate()
         }
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
+            if self.desktopInfo != nil {
+                map["DesktopInfo"] = self.desktopInfo?.toMap()
+            }
             if self.resourceUrl != nil {
                 map["ResourceUrl"] = self.resourceUrl!
             }
@@ -1518,6 +1585,11 @@ public class GetMcpResourceResponseBody : Tea.TeaModel {
         }
 
         public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("DesktopInfo") {
+                var model = GetMcpResourceResponseBody.Data.DesktopInfo()
+                model.fromMap(dict["DesktopInfo"] as! [String: Any])
+                self.desktopInfo = model
+            }
             if dict.keys.contains("ResourceUrl") {
                 self.resourceUrl = dict["ResourceUrl"] as! String
             }
