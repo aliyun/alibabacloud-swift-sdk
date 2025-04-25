@@ -3136,6 +3136,75 @@ public class CreatePolicyGroupRequest : Tea.TeaModel {
             }
         }
     }
+    public class Watermark : Tea.TeaModel {
+        public var watermarkColor: Int32?
+
+        public var watermarkCustomText: String?
+
+        public var watermarkFontSize: Int32?
+
+        public var watermarkSwitch: String?
+
+        public var watermarkTransparencyValue: Int32?
+
+        public var watermarkTypes: [String]?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.watermarkColor != nil {
+                map["WatermarkColor"] = self.watermarkColor!
+            }
+            if self.watermarkCustomText != nil {
+                map["WatermarkCustomText"] = self.watermarkCustomText!
+            }
+            if self.watermarkFontSize != nil {
+                map["WatermarkFontSize"] = self.watermarkFontSize!
+            }
+            if self.watermarkSwitch != nil {
+                map["WatermarkSwitch"] = self.watermarkSwitch!
+            }
+            if self.watermarkTransparencyValue != nil {
+                map["WatermarkTransparencyValue"] = self.watermarkTransparencyValue!
+            }
+            if self.watermarkTypes != nil {
+                map["WatermarkTypes"] = self.watermarkTypes!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("WatermarkColor") {
+                self.watermarkColor = dict["WatermarkColor"] as! Int32
+            }
+            if dict.keys.contains("WatermarkCustomText") {
+                self.watermarkCustomText = dict["WatermarkCustomText"] as! String
+            }
+            if dict.keys.contains("WatermarkFontSize") {
+                self.watermarkFontSize = dict["WatermarkFontSize"] as! Int32
+            }
+            if dict.keys.contains("WatermarkSwitch") {
+                self.watermarkSwitch = dict["WatermarkSwitch"] as! String
+            }
+            if dict.keys.contains("WatermarkTransparencyValue") {
+                self.watermarkTransparencyValue = dict["WatermarkTransparencyValue"] as! Int32
+            }
+            if dict.keys.contains("WatermarkTypes") {
+                self.watermarkTypes = dict["WatermarkTypes"] as! [String]
+            }
+        }
+    }
     public var cameraRedirect: String?
 
     public var clipboard: String?
@@ -3156,6 +3225,8 @@ public class CreatePolicyGroupRequest : Tea.TeaModel {
 
     public var resolutionWidth: Int32?
 
+    public var watermark: CreatePolicyGroupRequest.Watermark?
+
     public override init() {
         super.init()
     }
@@ -3167,6 +3238,7 @@ public class CreatePolicyGroupRequest : Tea.TeaModel {
 
     public override func validate() throws -> Void {
         try self.netRedirectPolicy?.validate()
+        try self.watermark?.validate()
     }
 
     public override func toMap() -> [String : Any] {
@@ -3200,6 +3272,9 @@ public class CreatePolicyGroupRequest : Tea.TeaModel {
         }
         if self.resolutionWidth != nil {
             map["ResolutionWidth"] = self.resolutionWidth!
+        }
+        if self.watermark != nil {
+            map["Watermark"] = self.watermark?.toMap()
         }
         return map
     }
@@ -3237,6 +3312,11 @@ public class CreatePolicyGroupRequest : Tea.TeaModel {
         if dict.keys.contains("ResolutionWidth") {
             self.resolutionWidth = dict["ResolutionWidth"] as! Int32
         }
+        if dict.keys.contains("Watermark") {
+            var model = CreatePolicyGroupRequest.Watermark()
+            model.fromMap(dict["Watermark"] as! [String: Any])
+            self.watermark = model
+        }
     }
 }
 
@@ -3260,6 +3340,8 @@ public class CreatePolicyGroupShrinkRequest : Tea.TeaModel {
     public var resolutionHeight: Int32?
 
     public var resolutionWidth: Int32?
+
+    public var watermarkShrink: String?
 
     public override init() {
         super.init()
@@ -3305,6 +3387,9 @@ public class CreatePolicyGroupShrinkRequest : Tea.TeaModel {
         if self.resolutionWidth != nil {
             map["ResolutionWidth"] = self.resolutionWidth!
         }
+        if self.watermarkShrink != nil {
+            map["Watermark"] = self.watermarkShrink!
+        }
         return map
     }
 
@@ -3338,6 +3423,9 @@ public class CreatePolicyGroupShrinkRequest : Tea.TeaModel {
         }
         if dict.keys.contains("ResolutionWidth") {
             self.resolutionWidth = dict["ResolutionWidth"] as! Int32
+        }
+        if dict.keys.contains("Watermark") {
+            self.watermarkShrink = dict["Watermark"] as! String
         }
     }
 }
@@ -10167,6 +10255,75 @@ public class ListPolicyGroupsResponseBody : Tea.TeaModel {
                 }
             }
         }
+        public class Watermark : Tea.TeaModel {
+            public var watermarkColor: Int32?
+
+            public var watermarkCustomText: String?
+
+            public var watermarkFontSize: Int32?
+
+            public var watermarkSwitch: String?
+
+            public var watermarkTransparencyValue: Int32?
+
+            public var watermarkTypes: [String]?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.watermarkColor != nil {
+                    map["WatermarkColor"] = self.watermarkColor!
+                }
+                if self.watermarkCustomText != nil {
+                    map["WatermarkCustomText"] = self.watermarkCustomText!
+                }
+                if self.watermarkFontSize != nil {
+                    map["WatermarkFontSize"] = self.watermarkFontSize!
+                }
+                if self.watermarkSwitch != nil {
+                    map["WatermarkSwitch"] = self.watermarkSwitch!
+                }
+                if self.watermarkTransparencyValue != nil {
+                    map["WatermarkTransparencyValue"] = self.watermarkTransparencyValue!
+                }
+                if self.watermarkTypes != nil {
+                    map["WatermarkTypes"] = self.watermarkTypes!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("WatermarkColor") {
+                    self.watermarkColor = dict["WatermarkColor"] as! Int32
+                }
+                if dict.keys.contains("WatermarkCustomText") {
+                    self.watermarkCustomText = dict["WatermarkCustomText"] as! String
+                }
+                if dict.keys.contains("WatermarkFontSize") {
+                    self.watermarkFontSize = dict["WatermarkFontSize"] as! Int32
+                }
+                if dict.keys.contains("WatermarkSwitch") {
+                    self.watermarkSwitch = dict["WatermarkSwitch"] as! String
+                }
+                if dict.keys.contains("WatermarkTransparencyValue") {
+                    self.watermarkTransparencyValue = dict["WatermarkTransparencyValue"] as! Int32
+                }
+                if dict.keys.contains("WatermarkTypes") {
+                    self.watermarkTypes = dict["WatermarkTypes"] as! [String]
+                }
+            }
+        }
         public var cameraRedirect: String?
 
         public var clipboard: String?
@@ -10191,6 +10348,8 @@ public class ListPolicyGroupsResponseBody : Tea.TeaModel {
 
         public var sessionResolutionWidth: Int32?
 
+        public var watermark: ListPolicyGroupsResponseBody.PolicyGroupModel.Watermark?
+
         public override init() {
             super.init()
         }
@@ -10203,6 +10362,7 @@ public class ListPolicyGroupsResponseBody : Tea.TeaModel {
         public override func validate() throws -> Void {
             try self.netRedirectPolicy?.validate()
             try self.policyRelatedResources?.validate()
+            try self.watermark?.validate()
         }
 
         public override func toMap() -> [String : Any] {
@@ -10242,6 +10402,9 @@ public class ListPolicyGroupsResponseBody : Tea.TeaModel {
             }
             if self.sessionResolutionWidth != nil {
                 map["SessionResolutionWidth"] = self.sessionResolutionWidth!
+            }
+            if self.watermark != nil {
+                map["Watermark"] = self.watermark?.toMap()
             }
             return map
         }
@@ -10286,6 +10449,11 @@ public class ListPolicyGroupsResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("SessionResolutionWidth") {
                 self.sessionResolutionWidth = dict["SessionResolutionWidth"] as! Int32
+            }
+            if dict.keys.contains("Watermark") {
+                var model = ListPolicyGroupsResponseBody.PolicyGroupModel.Watermark()
+                model.fromMap(dict["Watermark"] as! [String: Any])
+                self.watermark = model
             }
         }
     }
@@ -11312,6 +11480,75 @@ public class ModifyPolicyGroupRequest : Tea.TeaModel {
             }
         }
     }
+    public class Watermark : Tea.TeaModel {
+        public var watermarkColor: Int32?
+
+        public var watermarkCustomText: String?
+
+        public var watermarkFontSize: Int32?
+
+        public var watermarkSwitch: String?
+
+        public var watermarkTransparencyValue: Int32?
+
+        public var watermarkTypes: [String]?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.watermarkColor != nil {
+                map["WatermarkColor"] = self.watermarkColor!
+            }
+            if self.watermarkCustomText != nil {
+                map["WatermarkCustomText"] = self.watermarkCustomText!
+            }
+            if self.watermarkFontSize != nil {
+                map["WatermarkFontSize"] = self.watermarkFontSize!
+            }
+            if self.watermarkSwitch != nil {
+                map["WatermarkSwitch"] = self.watermarkSwitch!
+            }
+            if self.watermarkTransparencyValue != nil {
+                map["WatermarkTransparencyValue"] = self.watermarkTransparencyValue!
+            }
+            if self.watermarkTypes != nil {
+                map["WatermarkTypes"] = self.watermarkTypes!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("WatermarkColor") {
+                self.watermarkColor = dict["WatermarkColor"] as! Int32
+            }
+            if dict.keys.contains("WatermarkCustomText") {
+                self.watermarkCustomText = dict["WatermarkCustomText"] as! String
+            }
+            if dict.keys.contains("WatermarkFontSize") {
+                self.watermarkFontSize = dict["WatermarkFontSize"] as! Int32
+            }
+            if dict.keys.contains("WatermarkSwitch") {
+                self.watermarkSwitch = dict["WatermarkSwitch"] as! String
+            }
+            if dict.keys.contains("WatermarkTransparencyValue") {
+                self.watermarkTransparencyValue = dict["WatermarkTransparencyValue"] as! Int32
+            }
+            if dict.keys.contains("WatermarkTypes") {
+                self.watermarkTypes = dict["WatermarkTypes"] as! [String]
+            }
+        }
+    }
     public var cameraRedirect: String?
 
     public var clipboard: String?
@@ -11332,6 +11569,8 @@ public class ModifyPolicyGroupRequest : Tea.TeaModel {
 
     public var resolutionWidth: Int32?
 
+    public var watermark: ModifyPolicyGroupRequest.Watermark?
+
     public override init() {
         super.init()
     }
@@ -11343,6 +11582,7 @@ public class ModifyPolicyGroupRequest : Tea.TeaModel {
 
     public override func validate() throws -> Void {
         try self.netRedirectPolicy?.validate()
+        try self.watermark?.validate()
     }
 
     public override func toMap() -> [String : Any] {
@@ -11376,6 +11616,9 @@ public class ModifyPolicyGroupRequest : Tea.TeaModel {
         }
         if self.resolutionWidth != nil {
             map["ResolutionWidth"] = self.resolutionWidth!
+        }
+        if self.watermark != nil {
+            map["Watermark"] = self.watermark?.toMap()
         }
         return map
     }
@@ -11413,6 +11656,11 @@ public class ModifyPolicyGroupRequest : Tea.TeaModel {
         if dict.keys.contains("ResolutionWidth") {
             self.resolutionWidth = dict["ResolutionWidth"] as! Int32
         }
+        if dict.keys.contains("Watermark") {
+            var model = ModifyPolicyGroupRequest.Watermark()
+            model.fromMap(dict["Watermark"] as! [String: Any])
+            self.watermark = model
+        }
     }
 }
 
@@ -11436,6 +11684,8 @@ public class ModifyPolicyGroupShrinkRequest : Tea.TeaModel {
     public var resolutionHeight: Int32?
 
     public var resolutionWidth: Int32?
+
+    public var watermarkShrink: String?
 
     public override init() {
         super.init()
@@ -11481,6 +11731,9 @@ public class ModifyPolicyGroupShrinkRequest : Tea.TeaModel {
         if self.resolutionWidth != nil {
             map["ResolutionWidth"] = self.resolutionWidth!
         }
+        if self.watermarkShrink != nil {
+            map["Watermark"] = self.watermarkShrink!
+        }
         return map
     }
 
@@ -11514,6 +11767,9 @@ public class ModifyPolicyGroupShrinkRequest : Tea.TeaModel {
         }
         if dict.keys.contains("ResolutionWidth") {
             self.resolutionWidth = dict["ResolutionWidth"] as! Int32
+        }
+        if dict.keys.contains("Watermark") {
+            self.watermarkShrink = dict["Watermark"] as! String
         }
     }
 }
@@ -12219,6 +12475,8 @@ public class RenewAndroidInstanceGroupsResponse : Tea.TeaModel {
 }
 
 public class RenewCloudPhoneNodesRequest : Tea.TeaModel {
+    public var autoPay: Bool?
+
     public var autoRenew: Bool?
 
     public var nodeIds: [String]?
@@ -12241,6 +12499,9 @@ public class RenewCloudPhoneNodesRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.autoPay != nil {
+            map["AutoPay"] = self.autoPay!
+        }
         if self.autoRenew != nil {
             map["AutoRenew"] = self.autoRenew!
         }
@@ -12257,6 +12518,9 @@ public class RenewCloudPhoneNodesRequest : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("AutoPay") {
+            self.autoPay = dict["AutoPay"] as! Bool
+        }
         if dict.keys.contains("AutoRenew") {
             self.autoRenew = dict["AutoRenew"] as! Bool
         }
@@ -13607,6 +13871,131 @@ public class UpdateInstanceGroupImageResponse : Tea.TeaModel {
         }
         if dict.keys.contains("body") {
             var model = UpdateInstanceGroupImageResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
+public class UpdateInstanceImageRequest : Tea.TeaModel {
+    public var imageId: String?
+
+    public var instanceIdList: [String]?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.imageId != nil {
+            map["ImageId"] = self.imageId!
+        }
+        if self.instanceIdList != nil {
+            map["InstanceIdList"] = self.instanceIdList!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("ImageId") {
+            self.imageId = dict["ImageId"] as! String
+        }
+        if dict.keys.contains("InstanceIdList") {
+            self.instanceIdList = dict["InstanceIdList"] as! [String]
+        }
+    }
+}
+
+public class UpdateInstanceImageResponseBody : Tea.TeaModel {
+    public var requestId: String?
+
+    public var taskId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.taskId != nil {
+            map["TaskId"] = self.taskId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("RequestId") {
+            self.requestId = dict["RequestId"] as! String
+        }
+        if dict.keys.contains("TaskId") {
+            self.taskId = dict["TaskId"] as! String
+        }
+    }
+}
+
+public class UpdateInstanceImageResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: UpdateInstanceImageResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") {
+            var model = UpdateInstanceImageResponseBody()
             model.fromMap(dict["body"] as! [String: Any])
             self.body = model
         }

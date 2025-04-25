@@ -592,6 +592,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(tmpReq.netRedirectPolicy)) {
             request.netRedirectPolicyShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.netRedirectPolicy, "NetRedirectPolicy", "json")
         }
+        if (!TeaUtils.Client.isUnset(tmpReq.watermark)) {
+            request.watermarkShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.watermark, "Watermark", "json")
+        }
         var body: [String: Any] = [:]
         if (!TeaUtils.Client.isUnset(request.cameraRedirect)) {
             body["CameraRedirect"] = request.cameraRedirect ?? "";
@@ -622,6 +625,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.resolutionWidth)) {
             body["ResolutionWidth"] = request.resolutionWidth!;
+        }
+        if (!TeaUtils.Client.isUnset(request.watermarkShrink)) {
+            body["Watermark"] = request.watermarkShrink ?? "";
         }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
@@ -2098,6 +2104,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(tmpReq.netRedirectPolicy)) {
             request.netRedirectPolicyShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.netRedirectPolicy, "NetRedirectPolicy", "json")
         }
+        if (!TeaUtils.Client.isUnset(tmpReq.watermark)) {
+            request.watermarkShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.watermark, "Watermark", "json")
+        }
         var body: [String: Any] = [:]
         if (!TeaUtils.Client.isUnset(request.cameraRedirect)) {
             body["CameraRedirect"] = request.cameraRedirect ?? "";
@@ -2128,6 +2137,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.resolutionWidth)) {
             body["ResolutionWidth"] = request.resolutionWidth!;
+        }
+        if (!TeaUtils.Client.isUnset(request.watermarkShrink)) {
+            body["Watermark"] = request.watermarkShrink ?? "";
         }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
@@ -2316,6 +2328,10 @@ open class Client : AlibabacloudOpenApi.Client {
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func renewCloudPhoneNodesWithOptions(_ request: RenewCloudPhoneNodesRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> RenewCloudPhoneNodesResponse {
         try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.autoPay)) {
+            query["AutoPay"] = request.autoPay!;
+        }
         var body: [String: Any] = [:]
         if (!TeaUtils.Client.isUnset(request.autoRenew)) {
             body["AutoRenew"] = request.autoRenew!;
@@ -2330,6 +2346,7 @@ open class Client : AlibabacloudOpenApi.Client {
             body["PeriodUnit"] = request.periodUnit ?? "";
         }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query),
             "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
         ])
         var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
@@ -2681,6 +2698,40 @@ open class Client : AlibabacloudOpenApi.Client {
     public func updateInstanceGroupImage(_ request: UpdateInstanceGroupImageRequest) async throws -> UpdateInstanceGroupImageResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         return try await updateInstanceGroupImageWithOptions(request as! UpdateInstanceGroupImageRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func updateInstanceImageWithOptions(_ request: UpdateInstanceImageRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> UpdateInstanceImageResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.imageId)) {
+            query["ImageId"] = request.imageId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.instanceIdList)) {
+            query["InstanceIdList"] = request.instanceIdList ?? [];
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "UpdateInstanceImage",
+            "version": "2023-09-30",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(UpdateInstanceImageResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func updateInstanceImage(_ request: UpdateInstanceImageRequest) async throws -> UpdateInstanceImageResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await updateInstanceImageWithOptions(request as! UpdateInstanceImageRequest, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
