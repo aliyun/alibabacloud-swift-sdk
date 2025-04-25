@@ -8489,6 +8489,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.autoRenew)) {
             query["AutoRenew"] = request.autoRenew!;
         }
+        if (!TeaUtils.Client.isUnset(request.billingCycle)) {
+            query["BillingCycle"] = request.billingCycle ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.includeDataDisks)) {
             query["IncludeDataDisks"] = request.includeDataDisks!;
         }

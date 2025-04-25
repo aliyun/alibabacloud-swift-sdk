@@ -57599,6 +57599,8 @@ public class ModifyInstanceChargeTypeRequest : Tea.TeaModel {
 
     public var autoRenew: Bool?
 
+    public var billingCycle: String?
+
     public var includeDataDisks: Bool?
 
     public var instanceChargeType: String?
@@ -57629,6 +57631,9 @@ public class ModifyInstanceChargeTypeRequest : Tea.TeaModel {
         if self.autoRenew != nil {
             map["AutoRenew"] = self.autoRenew!
         }
+        if self.billingCycle != nil {
+            map["BillingCycle"] = self.billingCycle!
+        }
         if self.includeDataDisks != nil {
             map["IncludeDataDisks"] = self.includeDataDisks!
         }
@@ -57654,6 +57659,9 @@ public class ModifyInstanceChargeTypeRequest : Tea.TeaModel {
         if dict.keys.contains("AutoRenew") {
             self.autoRenew = dict["AutoRenew"] as! Bool
         }
+        if dict.keys.contains("BillingCycle") {
+            self.billingCycle = dict["BillingCycle"] as! String
+        }
         if dict.keys.contains("IncludeDataDisks") {
             self.includeDataDisks = dict["IncludeDataDisks"] as! Bool
         }
@@ -57676,6 +57684,8 @@ public class ModifyInstanceChargeTypeShrinkRequest : Tea.TeaModel {
     public var autoPay: Bool?
 
     public var autoRenew: Bool?
+
+    public var billingCycle: String?
 
     public var includeDataDisks: Bool?
 
@@ -57707,6 +57717,9 @@ public class ModifyInstanceChargeTypeShrinkRequest : Tea.TeaModel {
         if self.autoRenew != nil {
             map["AutoRenew"] = self.autoRenew!
         }
+        if self.billingCycle != nil {
+            map["BillingCycle"] = self.billingCycle!
+        }
         if self.includeDataDisks != nil {
             map["IncludeDataDisks"] = self.includeDataDisks!
         }
@@ -57731,6 +57744,9 @@ public class ModifyInstanceChargeTypeShrinkRequest : Tea.TeaModel {
         }
         if dict.keys.contains("AutoRenew") {
             self.autoRenew = dict["AutoRenew"] as! Bool
+        }
+        if dict.keys.contains("BillingCycle") {
+            self.billingCycle = dict["BillingCycle"] as! String
         }
         if dict.keys.contains("IncludeDataDisks") {
             self.includeDataDisks = dict["IncludeDataDisks"] as! Bool
