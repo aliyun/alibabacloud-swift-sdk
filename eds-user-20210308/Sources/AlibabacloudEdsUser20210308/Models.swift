@@ -1699,6 +1699,8 @@ public class CreateUsersResponseBody : Tea.TeaModel {
             }
         }
     }
+    public var allSucceed: Bool?
+
     public var createResult: CreateUsersResponseBody.CreateResult?
 
     public var requestId: String?
@@ -1718,6 +1720,9 @@ public class CreateUsersResponseBody : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.allSucceed != nil {
+            map["AllSucceed"] = self.allSucceed!
+        }
         if self.createResult != nil {
             map["CreateResult"] = self.createResult?.toMap()
         }
@@ -1728,6 +1733,9 @@ public class CreateUsersResponseBody : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("AllSucceed") {
+            self.allSucceed = dict["AllSucceed"] as! Bool
+        }
         if dict.keys.contains("CreateResult") {
             var model = CreateUsersResponseBody.CreateResult()
             model.fromMap(dict["CreateResult"] as! [String: Any])
