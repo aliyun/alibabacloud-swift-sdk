@@ -3988,6 +3988,10 @@ public class ListQueueResponse : Tea.TeaModel {
 }
 
 public class ListSubscriptionByTopicRequest : Tea.TeaModel {
+    public var endpointType: String?
+
+    public var endpointValue: String?
+
     public var pageNum: Int64?
 
     public var pageSize: Int64?
@@ -4010,6 +4014,12 @@ public class ListSubscriptionByTopicRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.endpointType != nil {
+            map["EndpointType"] = self.endpointType!
+        }
+        if self.endpointValue != nil {
+            map["EndpointValue"] = self.endpointValue!
+        }
         if self.pageNum != nil {
             map["PageNum"] = self.pageNum!
         }
@@ -4026,6 +4036,12 @@ public class ListSubscriptionByTopicRequest : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("EndpointType") {
+            self.endpointType = dict["EndpointType"] as! String
+        }
+        if dict.keys.contains("EndpointValue") {
+            self.endpointValue = dict["EndpointValue"] as! String
+        }
         if dict.keys.contains("PageNum") {
             self.pageNum = dict["PageNum"] as! Int64
         }
