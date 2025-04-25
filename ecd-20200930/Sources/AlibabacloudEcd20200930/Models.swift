@@ -6395,6 +6395,8 @@ public class CreateCenterPolicyRequest : Tea.TeaModel {
 
         public var optCommand: String?
 
+        public var platforms: String?
+
         public var redirectType: String?
 
         public override init() {
@@ -6426,6 +6428,9 @@ public class CreateCenterPolicyRequest : Tea.TeaModel {
             if self.optCommand != nil {
                 map["OptCommand"] = self.optCommand!
             }
+            if self.platforms != nil {
+                map["Platforms"] = self.platforms!
+            }
             if self.redirectType != nil {
                 map["RedirectType"] = self.redirectType!
             }
@@ -6447,6 +6452,9 @@ public class CreateCenterPolicyRequest : Tea.TeaModel {
             }
             if dict.keys.contains("OptCommand") {
                 self.optCommand = dict["OptCommand"] as! String
+            }
+            if dict.keys.contains("Platforms") {
+                self.platforms = dict["Platforms"] as! String
             }
             if dict.keys.contains("RedirectType") {
                 self.redirectType = dict["RedirectType"] as! String
@@ -6664,6 +6672,8 @@ public class CreateCenterPolicyRequest : Tea.TeaModel {
 
     public var internetCommunicationProtocol: String?
 
+    public var internetPrinter: String?
+
     public var localDrive: String?
 
     public var maxReconnectTime: Int32?
@@ -6737,6 +6747,8 @@ public class CreateCenterPolicyRequest : Tea.TeaModel {
     public var resolutionWidth: Int32?
 
     public var resourceType: String?
+
+    public var safeMenu: String?
 
     public var scope: String?
 
@@ -6930,6 +6942,9 @@ public class CreateCenterPolicyRequest : Tea.TeaModel {
         if self.internetCommunicationProtocol != nil {
             map["InternetCommunicationProtocol"] = self.internetCommunicationProtocol!
         }
+        if self.internetPrinter != nil {
+            map["InternetPrinter"] = self.internetPrinter!
+        }
         if self.localDrive != nil {
             map["LocalDrive"] = self.localDrive!
         }
@@ -7044,6 +7059,9 @@ public class CreateCenterPolicyRequest : Tea.TeaModel {
         }
         if self.resourceType != nil {
             map["ResourceType"] = self.resourceType!
+        }
+        if self.safeMenu != nil {
+            map["SafeMenu"] = self.safeMenu!
         }
         if self.scope != nil {
             map["Scope"] = self.scope!
@@ -7287,6 +7305,9 @@ public class CreateCenterPolicyRequest : Tea.TeaModel {
         if dict.keys.contains("InternetCommunicationProtocol") {
             self.internetCommunicationProtocol = dict["InternetCommunicationProtocol"] as! String
         }
+        if dict.keys.contains("InternetPrinter") {
+            self.internetPrinter = dict["InternetPrinter"] as! String
+        }
         if dict.keys.contains("LocalDrive") {
             self.localDrive = dict["LocalDrive"] as! String
         }
@@ -7405,6 +7426,9 @@ public class CreateCenterPolicyRequest : Tea.TeaModel {
         }
         if dict.keys.contains("ResourceType") {
             self.resourceType = dict["ResourceType"] as! String
+        }
+        if dict.keys.contains("SafeMenu") {
+            self.safeMenu = dict["SafeMenu"] as! String
         }
         if dict.keys.contains("Scope") {
             self.scope = dict["Scope"] as! String
@@ -11708,6 +11732,8 @@ public class CreatePolicyGroupRequest : Tea.TeaModel {
 
         public var optCommand: String?
 
+        public var platforms: String?
+
         public var redirectType: String?
 
         public override init() {
@@ -11739,6 +11765,9 @@ public class CreatePolicyGroupRequest : Tea.TeaModel {
             if self.optCommand != nil {
                 map["OptCommand"] = self.optCommand!
             }
+            if self.platforms != nil {
+                map["Platforms"] = self.platforms!
+            }
             if self.redirectType != nil {
                 map["RedirectType"] = self.redirectType!
             }
@@ -11760,6 +11789,9 @@ public class CreatePolicyGroupRequest : Tea.TeaModel {
             }
             if dict.keys.contains("OptCommand") {
                 self.optCommand = dict["OptCommand"] as! String
+            }
+            if dict.keys.contains("Platforms") {
+                self.platforms = dict["Platforms"] as! String
             }
             if dict.keys.contains("RedirectType") {
                 self.redirectType = dict["RedirectType"] as! String
@@ -17353,6 +17385,8 @@ public class DescribeCenterPolicyListResponseBody : Tea.TeaModel {
 
             public var optCommand: String?
 
+            public var platforms: String?
+
             public var redirectType: String?
 
             public override init() {
@@ -17384,6 +17418,9 @@ public class DescribeCenterPolicyListResponseBody : Tea.TeaModel {
                 if self.optCommand != nil {
                     map["OptCommand"] = self.optCommand!
                 }
+                if self.platforms != nil {
+                    map["Platforms"] = self.platforms!
+                }
                 if self.redirectType != nil {
                     map["RedirectType"] = self.redirectType!
                 }
@@ -17405,6 +17442,9 @@ public class DescribeCenterPolicyListResponseBody : Tea.TeaModel {
                 }
                 if dict.keys.contains("OptCommand") {
                     self.optCommand = dict["OptCommand"] as! String
+                }
+                if dict.keys.contains("Platforms") {
+                    self.platforms = dict["Platforms"] as! String
                 }
                 if dict.keys.contains("RedirectType") {
                     self.redirectType = dict["RedirectType"] as! String
@@ -17622,6 +17662,8 @@ public class DescribeCenterPolicyListResponseBody : Tea.TeaModel {
 
         public var internetCommunicationProtocol: String?
 
+        public var internetPrinter: String?
+
         public var localDrive: String?
 
         public var maxReconnectTime: Int32?
@@ -17699,6 +17741,8 @@ public class DescribeCenterPolicyListResponseBody : Tea.TeaModel {
         public var resolutionWidth: Int32?
 
         public var resourceGroupCount: Int32?
+
+        public var safeMenu: String?
 
         public var scope: String?
 
@@ -17886,6 +17930,9 @@ public class DescribeCenterPolicyListResponseBody : Tea.TeaModel {
             if self.internetCommunicationProtocol != nil {
                 map["InternetCommunicationProtocol"] = self.internetCommunicationProtocol!
             }
+            if self.internetPrinter != nil {
+                map["InternetPrinter"] = self.internetPrinter!
+            }
             if self.localDrive != nil {
                 map["LocalDrive"] = self.localDrive!
             }
@@ -18006,6 +18053,9 @@ public class DescribeCenterPolicyListResponseBody : Tea.TeaModel {
             }
             if self.resourceGroupCount != nil {
                 map["ResourceGroupCount"] = self.resourceGroupCount!
+            }
+            if self.safeMenu != nil {
+                map["SafeMenu"] = self.safeMenu!
             }
             if self.scope != nil {
                 map["Scope"] = self.scope!
@@ -18240,6 +18290,9 @@ public class DescribeCenterPolicyListResponseBody : Tea.TeaModel {
             if dict.keys.contains("InternetCommunicationProtocol") {
                 self.internetCommunicationProtocol = dict["InternetCommunicationProtocol"] as! String
             }
+            if dict.keys.contains("InternetPrinter") {
+                self.internetPrinter = dict["InternetPrinter"] as! String
+            }
             if dict.keys.contains("LocalDrive") {
                 self.localDrive = dict["LocalDrive"] as! String
             }
@@ -18364,6 +18417,9 @@ public class DescribeCenterPolicyListResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("ResourceGroupCount") {
                 self.resourceGroupCount = dict["ResourceGroupCount"] as! Int32
+            }
+            if dict.keys.contains("SafeMenu") {
+                self.safeMenu = dict["SafeMenu"] as! String
             }
             if dict.keys.contains("Scope") {
                 self.scope = dict["Scope"] as! String
@@ -28066,6 +28122,8 @@ public class DescribeImageModifiedRecordsResponseBody : Tea.TeaModel {
 
         public var newImageName: String?
 
+        public var reason: String?
+
         public var status: Int32?
 
         public var updateTime: String?
@@ -28096,6 +28154,9 @@ public class DescribeImageModifiedRecordsResponseBody : Tea.TeaModel {
             if self.newImageName != nil {
                 map["NewImageName"] = self.newImageName!
             }
+            if self.reason != nil {
+                map["Reason"] = self.reason!
+            }
             if self.status != nil {
                 map["Status"] = self.status!
             }
@@ -28117,6 +28178,9 @@ public class DescribeImageModifiedRecordsResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("NewImageName") {
                 self.newImageName = dict["NewImageName"] as! String
+            }
+            if dict.keys.contains("Reason") {
+                self.reason = dict["Reason"] as! String
             }
             if dict.keys.contains("Status") {
                 self.status = dict["Status"] as! Int32
@@ -31862,6 +31926,8 @@ public class DescribePolicyGroupsResponseBody : Tea.TeaModel {
 
             public var optCommand: String?
 
+            public var platforms: String?
+
             public var redirectType: String?
 
             public override init() {
@@ -31893,6 +31959,9 @@ public class DescribePolicyGroupsResponseBody : Tea.TeaModel {
                 if self.optCommand != nil {
                     map["OptCommand"] = self.optCommand!
                 }
+                if self.platforms != nil {
+                    map["Platforms"] = self.platforms!
+                }
                 if self.redirectType != nil {
                     map["RedirectType"] = self.redirectType!
                 }
@@ -31914,6 +31983,9 @@ public class DescribePolicyGroupsResponseBody : Tea.TeaModel {
                 }
                 if dict.keys.contains("OptCommand") {
                     self.optCommand = dict["OptCommand"] as! String
+                }
+                if dict.keys.contains("Platforms") {
+                    self.platforms = dict["Platforms"] as! String
                 }
                 if dict.keys.contains("RedirectType") {
                     self.redirectType = dict["RedirectType"] as! String
@@ -32151,6 +32223,8 @@ public class DescribePolicyGroupsResponseBody : Tea.TeaModel {
 
         public var internetCommunicationProtocol: String?
 
+        public var internetPrinter: String?
+
         public var localDrive: String?
 
         public var maxReconnectTime: Int32?
@@ -32232,6 +32306,8 @@ public class DescribePolicyGroupsResponseBody : Tea.TeaModel {
         public var resourceGroupCount: Int32?
 
         public var resourceRegionId: String?
+
+        public var safeMenu: String?
 
         public var scope: String?
 
@@ -32427,6 +32503,9 @@ public class DescribePolicyGroupsResponseBody : Tea.TeaModel {
             if self.internetCommunicationProtocol != nil {
                 map["InternetCommunicationProtocol"] = self.internetCommunicationProtocol!
             }
+            if self.internetPrinter != nil {
+                map["InternetPrinter"] = self.internetPrinter!
+            }
             if self.localDrive != nil {
                 map["LocalDrive"] = self.localDrive!
             }
@@ -32553,6 +32632,9 @@ public class DescribePolicyGroupsResponseBody : Tea.TeaModel {
             }
             if self.resourceRegionId != nil {
                 map["ResourceRegionId"] = self.resourceRegionId!
+            }
+            if self.safeMenu != nil {
+                map["SafeMenu"] = self.safeMenu!
             }
             if self.scope != nil {
                 map["Scope"] = self.scope!
@@ -32796,6 +32878,9 @@ public class DescribePolicyGroupsResponseBody : Tea.TeaModel {
             if dict.keys.contains("InternetCommunicationProtocol") {
                 self.internetCommunicationProtocol = dict["InternetCommunicationProtocol"] as! String
             }
+            if dict.keys.contains("InternetPrinter") {
+                self.internetPrinter = dict["InternetPrinter"] as! String
+            }
             if dict.keys.contains("LocalDrive") {
                 self.localDrive = dict["LocalDrive"] as! String
             }
@@ -32926,6 +33011,9 @@ public class DescribePolicyGroupsResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("ResourceRegionId") {
                 self.resourceRegionId = dict["ResourceRegionId"] as! String
+            }
+            if dict.keys.contains("SafeMenu") {
+                self.safeMenu = dict["SafeMenu"] as! String
             }
             if dict.keys.contains("Scope") {
                 self.scope = dict["Scope"] as! String
@@ -46000,6 +46088,8 @@ public class ModifyCenterPolicyRequest : Tea.TeaModel {
 
         public var optCommand: String?
 
+        public var platforms: String?
+
         public var redirectType: String?
 
         public override init() {
@@ -46031,6 +46121,9 @@ public class ModifyCenterPolicyRequest : Tea.TeaModel {
             if self.optCommand != nil {
                 map["OptCommand"] = self.optCommand!
             }
+            if self.platforms != nil {
+                map["Platforms"] = self.platforms!
+            }
             if self.redirectType != nil {
                 map["RedirectType"] = self.redirectType!
             }
@@ -46052,6 +46145,9 @@ public class ModifyCenterPolicyRequest : Tea.TeaModel {
             }
             if dict.keys.contains("OptCommand") {
                 self.optCommand = dict["OptCommand"] as! String
+            }
+            if dict.keys.contains("Platforms") {
+                self.platforms = dict["Platforms"] as! String
             }
             if dict.keys.contains("RedirectType") {
                 self.redirectType = dict["RedirectType"] as! String
@@ -46383,6 +46479,8 @@ public class ModifyCenterPolicyRequest : Tea.TeaModel {
 
     public var internetCommunicationProtocol: String?
 
+    public var internetPrinter: String?
+
     public var localDrive: String?
 
     public var maxReconnectTime: Int32?
@@ -46462,6 +46560,8 @@ public class ModifyCenterPolicyRequest : Tea.TeaModel {
     public var revokeAccessPolicyRule: [ModifyCenterPolicyRequest.RevokeAccessPolicyRule]?
 
     public var revokeSecurityPolicyRule: [ModifyCenterPolicyRequest.RevokeSecurityPolicyRule]?
+
+    public var safeMenu: String?
 
     public var scope: String?
 
@@ -46655,6 +46755,9 @@ public class ModifyCenterPolicyRequest : Tea.TeaModel {
         if self.internetCommunicationProtocol != nil {
             map["InternetCommunicationProtocol"] = self.internetCommunicationProtocol!
         }
+        if self.internetPrinter != nil {
+            map["InternetPrinter"] = self.internetPrinter!
+        }
         if self.localDrive != nil {
             map["LocalDrive"] = self.localDrive!
         }
@@ -46786,6 +46889,9 @@ public class ModifyCenterPolicyRequest : Tea.TeaModel {
                 tmp.append(k.toMap())
             }
             map["RevokeSecurityPolicyRule"] = tmp
+        }
+        if self.safeMenu != nil {
+            map["SafeMenu"] = self.safeMenu!
         }
         if self.scope != nil {
             map["Scope"] = self.scope!
@@ -47029,6 +47135,9 @@ public class ModifyCenterPolicyRequest : Tea.TeaModel {
         if dict.keys.contains("InternetCommunicationProtocol") {
             self.internetCommunicationProtocol = dict["InternetCommunicationProtocol"] as! String
         }
+        if dict.keys.contains("InternetPrinter") {
+            self.internetPrinter = dict["InternetPrinter"] as! String
+        }
         if dict.keys.contains("LocalDrive") {
             self.localDrive = dict["LocalDrive"] as! String
         }
@@ -47172,6 +47281,9 @@ public class ModifyCenterPolicyRequest : Tea.TeaModel {
                 tmp.append(model)
             }
             self.revokeSecurityPolicyRule = tmp
+        }
+        if dict.keys.contains("SafeMenu") {
+            self.safeMenu = dict["SafeMenu"] as! String
         }
         if dict.keys.contains("Scope") {
             self.scope = dict["Scope"] as! String
@@ -51821,6 +51933,8 @@ public class ModifyPolicyGroupRequest : Tea.TeaModel {
 
         public var optCommand: String?
 
+        public var platforms: String?
+
         public var redirectType: String?
 
         public override init() {
@@ -51852,6 +51966,9 @@ public class ModifyPolicyGroupRequest : Tea.TeaModel {
             if self.optCommand != nil {
                 map["OptCommand"] = self.optCommand!
             }
+            if self.platforms != nil {
+                map["Platforms"] = self.platforms!
+            }
             if self.redirectType != nil {
                 map["RedirectType"] = self.redirectType!
             }
@@ -51873,6 +51990,9 @@ public class ModifyPolicyGroupRequest : Tea.TeaModel {
             }
             if dict.keys.contains("OptCommand") {
                 self.optCommand = dict["OptCommand"] as! String
+            }
+            if dict.keys.contains("Platforms") {
+                self.platforms = dict["Platforms"] as! String
             }
             if dict.keys.contains("RedirectType") {
                 self.redirectType = dict["RedirectType"] as! String
