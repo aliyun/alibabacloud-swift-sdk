@@ -2396,6 +2396,783 @@ public class CreateBatchRepeatJobResponse : Tea.TeaModel {
     }
 }
 
+public class CreateBeebotIntentRequest : Tea.TeaModel {
+    public class IntentDefinition : Tea.TeaModel {
+        public var aliasName: String?
+
+        public var intentName: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.aliasName != nil {
+                map["AliasName"] = self.aliasName!
+            }
+            if self.intentName != nil {
+                map["IntentName"] = self.intentName!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("AliasName") {
+                self.aliasName = dict["AliasName"] as! String
+            }
+            if dict.keys.contains("IntentName") {
+                self.intentName = dict["IntentName"] as! String
+            }
+        }
+    }
+    public var instanceId: String?
+
+    public var intentDefinition: CreateBeebotIntentRequest.IntentDefinition?
+
+    public var scriptId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.intentDefinition?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.instanceId != nil {
+            map["InstanceId"] = self.instanceId!
+        }
+        if self.intentDefinition != nil {
+            map["IntentDefinition"] = self.intentDefinition?.toMap()
+        }
+        if self.scriptId != nil {
+            map["ScriptId"] = self.scriptId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("InstanceId") {
+            self.instanceId = dict["InstanceId"] as! String
+        }
+        if dict.keys.contains("IntentDefinition") {
+            var model = CreateBeebotIntentRequest.IntentDefinition()
+            model.fromMap(dict["IntentDefinition"] as! [String: Any])
+            self.intentDefinition = model
+        }
+        if dict.keys.contains("ScriptId") {
+            self.scriptId = dict["ScriptId"] as! String
+        }
+    }
+}
+
+public class CreateBeebotIntentShrinkRequest : Tea.TeaModel {
+    public var instanceId: String?
+
+    public var intentDefinitionShrink: String?
+
+    public var scriptId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.instanceId != nil {
+            map["InstanceId"] = self.instanceId!
+        }
+        if self.intentDefinitionShrink != nil {
+            map["IntentDefinition"] = self.intentDefinitionShrink!
+        }
+        if self.scriptId != nil {
+            map["ScriptId"] = self.scriptId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("InstanceId") {
+            self.instanceId = dict["InstanceId"] as! String
+        }
+        if dict.keys.contains("IntentDefinition") {
+            self.intentDefinitionShrink = dict["IntentDefinition"] as! String
+        }
+        if dict.keys.contains("ScriptId") {
+            self.scriptId = dict["ScriptId"] as! String
+        }
+    }
+}
+
+public class CreateBeebotIntentResponseBody : Tea.TeaModel {
+    public var beebotRequestId: String?
+
+    public var code: String?
+
+    public var httpStatusCode: Int32?
+
+    public var intentId: Int64?
+
+    public var message: String?
+
+    public var requestId: String?
+
+    public var success: Bool?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.beebotRequestId != nil {
+            map["BeebotRequestId"] = self.beebotRequestId!
+        }
+        if self.code != nil {
+            map["Code"] = self.code!
+        }
+        if self.httpStatusCode != nil {
+            map["HttpStatusCode"] = self.httpStatusCode!
+        }
+        if self.intentId != nil {
+            map["IntentId"] = self.intentId!
+        }
+        if self.message != nil {
+            map["Message"] = self.message!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.success != nil {
+            map["Success"] = self.success!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("BeebotRequestId") {
+            self.beebotRequestId = dict["BeebotRequestId"] as! String
+        }
+        if dict.keys.contains("Code") {
+            self.code = dict["Code"] as! String
+        }
+        if dict.keys.contains("HttpStatusCode") {
+            self.httpStatusCode = dict["HttpStatusCode"] as! Int32
+        }
+        if dict.keys.contains("IntentId") {
+            self.intentId = dict["IntentId"] as! Int64
+        }
+        if dict.keys.contains("Message") {
+            self.message = dict["Message"] as! String
+        }
+        if dict.keys.contains("RequestId") {
+            self.requestId = dict["RequestId"] as! String
+        }
+        if dict.keys.contains("Success") {
+            self.success = dict["Success"] as! Bool
+        }
+    }
+}
+
+public class CreateBeebotIntentResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: CreateBeebotIntentResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") {
+            var model = CreateBeebotIntentResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
+public class CreateBeebotIntentLgfRequest : Tea.TeaModel {
+    public class LgfDefinition : Tea.TeaModel {
+        public var intentId: Int64?
+
+        public var ruleText: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.intentId != nil {
+                map["IntentId"] = self.intentId!
+            }
+            if self.ruleText != nil {
+                map["RuleText"] = self.ruleText!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("IntentId") {
+                self.intentId = dict["IntentId"] as! Int64
+            }
+            if dict.keys.contains("RuleText") {
+                self.ruleText = dict["RuleText"] as! String
+            }
+        }
+    }
+    public var instanceId: String?
+
+    public var lgfDefinition: CreateBeebotIntentLgfRequest.LgfDefinition?
+
+    public var scriptId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.lgfDefinition?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.instanceId != nil {
+            map["InstanceId"] = self.instanceId!
+        }
+        if self.lgfDefinition != nil {
+            map["LgfDefinition"] = self.lgfDefinition?.toMap()
+        }
+        if self.scriptId != nil {
+            map["ScriptId"] = self.scriptId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("InstanceId") {
+            self.instanceId = dict["InstanceId"] as! String
+        }
+        if dict.keys.contains("LgfDefinition") {
+            var model = CreateBeebotIntentLgfRequest.LgfDefinition()
+            model.fromMap(dict["LgfDefinition"] as! [String: Any])
+            self.lgfDefinition = model
+        }
+        if dict.keys.contains("ScriptId") {
+            self.scriptId = dict["ScriptId"] as! String
+        }
+    }
+}
+
+public class CreateBeebotIntentLgfShrinkRequest : Tea.TeaModel {
+    public var instanceId: String?
+
+    public var lgfDefinitionShrink: String?
+
+    public var scriptId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.instanceId != nil {
+            map["InstanceId"] = self.instanceId!
+        }
+        if self.lgfDefinitionShrink != nil {
+            map["LgfDefinition"] = self.lgfDefinitionShrink!
+        }
+        if self.scriptId != nil {
+            map["ScriptId"] = self.scriptId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("InstanceId") {
+            self.instanceId = dict["InstanceId"] as! String
+        }
+        if dict.keys.contains("LgfDefinition") {
+            self.lgfDefinitionShrink = dict["LgfDefinition"] as! String
+        }
+        if dict.keys.contains("ScriptId") {
+            self.scriptId = dict["ScriptId"] as! String
+        }
+    }
+}
+
+public class CreateBeebotIntentLgfResponseBody : Tea.TeaModel {
+    public var beebotRequestId: String?
+
+    public var code: String?
+
+    public var httpStatusCode: Int32?
+
+    public var lgfId: Int64?
+
+    public var message: String?
+
+    public var requestId: String?
+
+    public var success: Bool?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.beebotRequestId != nil {
+            map["BeebotRequestId"] = self.beebotRequestId!
+        }
+        if self.code != nil {
+            map["Code"] = self.code!
+        }
+        if self.httpStatusCode != nil {
+            map["HttpStatusCode"] = self.httpStatusCode!
+        }
+        if self.lgfId != nil {
+            map["LgfId"] = self.lgfId!
+        }
+        if self.message != nil {
+            map["Message"] = self.message!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.success != nil {
+            map["Success"] = self.success!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("BeebotRequestId") {
+            self.beebotRequestId = dict["BeebotRequestId"] as! String
+        }
+        if dict.keys.contains("Code") {
+            self.code = dict["Code"] as! String
+        }
+        if dict.keys.contains("HttpStatusCode") {
+            self.httpStatusCode = dict["HttpStatusCode"] as! Int32
+        }
+        if dict.keys.contains("LgfId") {
+            self.lgfId = dict["LgfId"] as! Int64
+        }
+        if dict.keys.contains("Message") {
+            self.message = dict["Message"] as! String
+        }
+        if dict.keys.contains("RequestId") {
+            self.requestId = dict["RequestId"] as! String
+        }
+        if dict.keys.contains("Success") {
+            self.success = dict["Success"] as! Bool
+        }
+    }
+}
+
+public class CreateBeebotIntentLgfResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: CreateBeebotIntentLgfResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") {
+            var model = CreateBeebotIntentLgfResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
+public class CreateBeebotIntentUserSayRequest : Tea.TeaModel {
+    public class UserSayDefinition : Tea.TeaModel {
+        public var content: String?
+
+        public var intentId: Int64?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.content != nil {
+                map["Content"] = self.content!
+            }
+            if self.intentId != nil {
+                map["IntentId"] = self.intentId!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("Content") {
+                self.content = dict["Content"] as! String
+            }
+            if dict.keys.contains("IntentId") {
+                self.intentId = dict["IntentId"] as! Int64
+            }
+        }
+    }
+    public var instanceId: String?
+
+    public var scriptId: String?
+
+    public var userSayDefinition: CreateBeebotIntentUserSayRequest.UserSayDefinition?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.userSayDefinition?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.instanceId != nil {
+            map["InstanceId"] = self.instanceId!
+        }
+        if self.scriptId != nil {
+            map["ScriptId"] = self.scriptId!
+        }
+        if self.userSayDefinition != nil {
+            map["UserSayDefinition"] = self.userSayDefinition?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("InstanceId") {
+            self.instanceId = dict["InstanceId"] as! String
+        }
+        if dict.keys.contains("ScriptId") {
+            self.scriptId = dict["ScriptId"] as! String
+        }
+        if dict.keys.contains("UserSayDefinition") {
+            var model = CreateBeebotIntentUserSayRequest.UserSayDefinition()
+            model.fromMap(dict["UserSayDefinition"] as! [String: Any])
+            self.userSayDefinition = model
+        }
+    }
+}
+
+public class CreateBeebotIntentUserSayShrinkRequest : Tea.TeaModel {
+    public var instanceId: String?
+
+    public var scriptId: String?
+
+    public var userSayDefinitionShrink: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.instanceId != nil {
+            map["InstanceId"] = self.instanceId!
+        }
+        if self.scriptId != nil {
+            map["ScriptId"] = self.scriptId!
+        }
+        if self.userSayDefinitionShrink != nil {
+            map["UserSayDefinition"] = self.userSayDefinitionShrink!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("InstanceId") {
+            self.instanceId = dict["InstanceId"] as! String
+        }
+        if dict.keys.contains("ScriptId") {
+            self.scriptId = dict["ScriptId"] as! String
+        }
+        if dict.keys.contains("UserSayDefinition") {
+            self.userSayDefinitionShrink = dict["UserSayDefinition"] as! String
+        }
+    }
+}
+
+public class CreateBeebotIntentUserSayResponseBody : Tea.TeaModel {
+    public var beebotRequestId: String?
+
+    public var code: String?
+
+    public var httpStatusCode: Int32?
+
+    public var message: String?
+
+    public var requestId: String?
+
+    public var success: Bool?
+
+    public var userSayId: Int64?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.beebotRequestId != nil {
+            map["BeebotRequestId"] = self.beebotRequestId!
+        }
+        if self.code != nil {
+            map["Code"] = self.code!
+        }
+        if self.httpStatusCode != nil {
+            map["HttpStatusCode"] = self.httpStatusCode!
+        }
+        if self.message != nil {
+            map["Message"] = self.message!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.success != nil {
+            map["Success"] = self.success!
+        }
+        if self.userSayId != nil {
+            map["UserSayId"] = self.userSayId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("BeebotRequestId") {
+            self.beebotRequestId = dict["BeebotRequestId"] as! String
+        }
+        if dict.keys.contains("Code") {
+            self.code = dict["Code"] as! String
+        }
+        if dict.keys.contains("HttpStatusCode") {
+            self.httpStatusCode = dict["HttpStatusCode"] as! Int32
+        }
+        if dict.keys.contains("Message") {
+            self.message = dict["Message"] as! String
+        }
+        if dict.keys.contains("RequestId") {
+            self.requestId = dict["RequestId"] as! String
+        }
+        if dict.keys.contains("Success") {
+            self.success = dict["Success"] as! Bool
+        }
+        if dict.keys.contains("UserSayId") {
+            self.userSayId = dict["UserSayId"] as! Int64
+        }
+    }
+}
+
+public class CreateBeebotIntentUserSayResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: CreateBeebotIntentUserSayResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") {
+            var model = CreateBeebotIntentUserSayResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
 public class CreateDialogueFlowRequest : Tea.TeaModel {
     public var dialogueFlowType: String?
 
@@ -5165,6 +5942,8 @@ public class CreateScriptRequest : Tea.TeaModel {
 
     public var scriptName: String?
 
+    public var scriptNluProfileJsonString: String?
+
     public var scriptWaveform: [String]?
 
     public var ttsConfig: String?
@@ -5234,6 +6013,9 @@ public class CreateScriptRequest : Tea.TeaModel {
         if self.scriptName != nil {
             map["ScriptName"] = self.scriptName!
         }
+        if self.scriptNluProfileJsonString != nil {
+            map["ScriptNluProfileJsonString"] = self.scriptNluProfileJsonString!
+        }
         if self.scriptWaveform != nil {
             map["ScriptWaveform"] = self.scriptWaveform!
         }
@@ -5294,6 +6076,9 @@ public class CreateScriptRequest : Tea.TeaModel {
         }
         if dict.keys.contains("ScriptName") {
             self.scriptName = dict["ScriptName"] as! String
+        }
+        if dict.keys.contains("ScriptNluProfileJsonString") {
+            self.scriptNluProfileJsonString = dict["ScriptNluProfileJsonString"] as! String
         }
         if dict.keys.contains("ScriptWaveform") {
             self.scriptWaveform = dict["ScriptWaveform"] as! [String]
@@ -6546,6 +7331,541 @@ public class DeleteAllNumberDistrictInfoResponse : Tea.TeaModel {
         }
         if dict.keys.contains("body") {
             var model = DeleteAllNumberDistrictInfoResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
+public class DeleteBeebotIntentRequest : Tea.TeaModel {
+    public var instanceId: String?
+
+    public var intentId: Int64?
+
+    public var scriptId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.instanceId != nil {
+            map["InstanceId"] = self.instanceId!
+        }
+        if self.intentId != nil {
+            map["IntentId"] = self.intentId!
+        }
+        if self.scriptId != nil {
+            map["ScriptId"] = self.scriptId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("InstanceId") {
+            self.instanceId = dict["InstanceId"] as! String
+        }
+        if dict.keys.contains("IntentId") {
+            self.intentId = dict["IntentId"] as! Int64
+        }
+        if dict.keys.contains("ScriptId") {
+            self.scriptId = dict["ScriptId"] as! String
+        }
+    }
+}
+
+public class DeleteBeebotIntentResponseBody : Tea.TeaModel {
+    public var beebotRequestId: String?
+
+    public var code: String?
+
+    public var httpStatusCode: Int32?
+
+    public var intentId: Int64?
+
+    public var message: String?
+
+    public var requestId: String?
+
+    public var success: Bool?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.beebotRequestId != nil {
+            map["BeebotRequestId"] = self.beebotRequestId!
+        }
+        if self.code != nil {
+            map["Code"] = self.code!
+        }
+        if self.httpStatusCode != nil {
+            map["HttpStatusCode"] = self.httpStatusCode!
+        }
+        if self.intentId != nil {
+            map["IntentId"] = self.intentId!
+        }
+        if self.message != nil {
+            map["Message"] = self.message!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.success != nil {
+            map["Success"] = self.success!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("BeebotRequestId") {
+            self.beebotRequestId = dict["BeebotRequestId"] as! String
+        }
+        if dict.keys.contains("Code") {
+            self.code = dict["Code"] as! String
+        }
+        if dict.keys.contains("HttpStatusCode") {
+            self.httpStatusCode = dict["HttpStatusCode"] as! Int32
+        }
+        if dict.keys.contains("IntentId") {
+            self.intentId = dict["IntentId"] as! Int64
+        }
+        if dict.keys.contains("Message") {
+            self.message = dict["Message"] as! String
+        }
+        if dict.keys.contains("RequestId") {
+            self.requestId = dict["RequestId"] as! String
+        }
+        if dict.keys.contains("Success") {
+            self.success = dict["Success"] as! Bool
+        }
+    }
+}
+
+public class DeleteBeebotIntentResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: DeleteBeebotIntentResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") {
+            var model = DeleteBeebotIntentResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
+public class DeleteBeebotIntentLgfRequest : Tea.TeaModel {
+    public var instanceId: String?
+
+    public var intentId: Int64?
+
+    public var lgfId: Int64?
+
+    public var scriptId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.instanceId != nil {
+            map["InstanceId"] = self.instanceId!
+        }
+        if self.intentId != nil {
+            map["IntentId"] = self.intentId!
+        }
+        if self.lgfId != nil {
+            map["LgfId"] = self.lgfId!
+        }
+        if self.scriptId != nil {
+            map["ScriptId"] = self.scriptId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("InstanceId") {
+            self.instanceId = dict["InstanceId"] as! String
+        }
+        if dict.keys.contains("IntentId") {
+            self.intentId = dict["IntentId"] as! Int64
+        }
+        if dict.keys.contains("LgfId") {
+            self.lgfId = dict["LgfId"] as! Int64
+        }
+        if dict.keys.contains("ScriptId") {
+            self.scriptId = dict["ScriptId"] as! String
+        }
+    }
+}
+
+public class DeleteBeebotIntentLgfResponseBody : Tea.TeaModel {
+    public var beebotRequestId: String?
+
+    public var code: String?
+
+    public var httpStatusCode: Int32?
+
+    public var lgfId: Int64?
+
+    public var message: String?
+
+    public var requestId: String?
+
+    public var success: Bool?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.beebotRequestId != nil {
+            map["BeebotRequestId"] = self.beebotRequestId!
+        }
+        if self.code != nil {
+            map["Code"] = self.code!
+        }
+        if self.httpStatusCode != nil {
+            map["HttpStatusCode"] = self.httpStatusCode!
+        }
+        if self.lgfId != nil {
+            map["LgfId"] = self.lgfId!
+        }
+        if self.message != nil {
+            map["Message"] = self.message!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.success != nil {
+            map["Success"] = self.success!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("BeebotRequestId") {
+            self.beebotRequestId = dict["BeebotRequestId"] as! String
+        }
+        if dict.keys.contains("Code") {
+            self.code = dict["Code"] as! String
+        }
+        if dict.keys.contains("HttpStatusCode") {
+            self.httpStatusCode = dict["HttpStatusCode"] as! Int32
+        }
+        if dict.keys.contains("LgfId") {
+            self.lgfId = dict["LgfId"] as! Int64
+        }
+        if dict.keys.contains("Message") {
+            self.message = dict["Message"] as! String
+        }
+        if dict.keys.contains("RequestId") {
+            self.requestId = dict["RequestId"] as! String
+        }
+        if dict.keys.contains("Success") {
+            self.success = dict["Success"] as! Bool
+        }
+    }
+}
+
+public class DeleteBeebotIntentLgfResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: DeleteBeebotIntentLgfResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") {
+            var model = DeleteBeebotIntentLgfResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
+public class DeleteBeebotIntentUserSayRequest : Tea.TeaModel {
+    public var instanceId: String?
+
+    public var intentId: String?
+
+    public var scriptId: String?
+
+    public var userSayId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.instanceId != nil {
+            map["InstanceId"] = self.instanceId!
+        }
+        if self.intentId != nil {
+            map["IntentId"] = self.intentId!
+        }
+        if self.scriptId != nil {
+            map["ScriptId"] = self.scriptId!
+        }
+        if self.userSayId != nil {
+            map["UserSayId"] = self.userSayId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("InstanceId") {
+            self.instanceId = dict["InstanceId"] as! String
+        }
+        if dict.keys.contains("IntentId") {
+            self.intentId = dict["IntentId"] as! String
+        }
+        if dict.keys.contains("ScriptId") {
+            self.scriptId = dict["ScriptId"] as! String
+        }
+        if dict.keys.contains("UserSayId") {
+            self.userSayId = dict["UserSayId"] as! String
+        }
+    }
+}
+
+public class DeleteBeebotIntentUserSayResponseBody : Tea.TeaModel {
+    public var beebotRequestId: String?
+
+    public var code: String?
+
+    public var httpStatusCode: Int32?
+
+    public var message: String?
+
+    public var requestId: String?
+
+    public var success: Bool?
+
+    public var userSayId: Int64?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.beebotRequestId != nil {
+            map["BeebotRequestId"] = self.beebotRequestId!
+        }
+        if self.code != nil {
+            map["Code"] = self.code!
+        }
+        if self.httpStatusCode != nil {
+            map["HttpStatusCode"] = self.httpStatusCode!
+        }
+        if self.message != nil {
+            map["Message"] = self.message!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.success != nil {
+            map["Success"] = self.success!
+        }
+        if self.userSayId != nil {
+            map["UserSayId"] = self.userSayId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("BeebotRequestId") {
+            self.beebotRequestId = dict["BeebotRequestId"] as! String
+        }
+        if dict.keys.contains("Code") {
+            self.code = dict["Code"] as! String
+        }
+        if dict.keys.contains("HttpStatusCode") {
+            self.httpStatusCode = dict["HttpStatusCode"] as! Int32
+        }
+        if dict.keys.contains("Message") {
+            self.message = dict["Message"] as! String
+        }
+        if dict.keys.contains("RequestId") {
+            self.requestId = dict["RequestId"] as! String
+        }
+        if dict.keys.contains("Success") {
+            self.success = dict["Success"] as! Bool
+        }
+        if dict.keys.contains("UserSayId") {
+            self.userSayId = dict["UserSayId"] as! Int64
+        }
+    }
+}
+
+public class DeleteBeebotIntentUserSayResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: DeleteBeebotIntentUserSayResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") {
+            var model = DeleteBeebotIntentUserSayResponseBody()
             model.fromMap(dict["body"] as! [String: Any])
             self.body = model
         }
@@ -8249,6 +9569,283 @@ public class DeleteScriptWaveformResponse : Tea.TeaModel {
         }
         if dict.keys.contains("body") {
             var model = DeleteScriptWaveformResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
+public class DescribeBeebotIntentRequest : Tea.TeaModel {
+    public var instanceId: String?
+
+    public var intentId: Int64?
+
+    public var scriptId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.instanceId != nil {
+            map["InstanceId"] = self.instanceId!
+        }
+        if self.intentId != nil {
+            map["IntentId"] = self.intentId!
+        }
+        if self.scriptId != nil {
+            map["ScriptId"] = self.scriptId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("InstanceId") {
+            self.instanceId = dict["InstanceId"] as! String
+        }
+        if dict.keys.contains("IntentId") {
+            self.intentId = dict["IntentId"] as! Int64
+        }
+        if dict.keys.contains("ScriptId") {
+            self.scriptId = dict["ScriptId"] as! String
+        }
+    }
+}
+
+public class DescribeBeebotIntentResponseBody : Tea.TeaModel {
+    public class Intent : Tea.TeaModel {
+        public var aliasName: String?
+
+        public var createTime: String?
+
+        public var createUserId: String?
+
+        public var createUserName: String?
+
+        public var intentId: Int64?
+
+        public var intentName: String?
+
+        public var modifyTime: String?
+
+        public var modifyUserId: String?
+
+        public var modifyUserName: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.aliasName != nil {
+                map["AliasName"] = self.aliasName!
+            }
+            if self.createTime != nil {
+                map["CreateTime"] = self.createTime!
+            }
+            if self.createUserId != nil {
+                map["CreateUserId"] = self.createUserId!
+            }
+            if self.createUserName != nil {
+                map["CreateUserName"] = self.createUserName!
+            }
+            if self.intentId != nil {
+                map["IntentId"] = self.intentId!
+            }
+            if self.intentName != nil {
+                map["IntentName"] = self.intentName!
+            }
+            if self.modifyTime != nil {
+                map["ModifyTime"] = self.modifyTime!
+            }
+            if self.modifyUserId != nil {
+                map["ModifyUserId"] = self.modifyUserId!
+            }
+            if self.modifyUserName != nil {
+                map["ModifyUserName"] = self.modifyUserName!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("AliasName") {
+                self.aliasName = dict["AliasName"] as! String
+            }
+            if dict.keys.contains("CreateTime") {
+                self.createTime = dict["CreateTime"] as! String
+            }
+            if dict.keys.contains("CreateUserId") {
+                self.createUserId = dict["CreateUserId"] as! String
+            }
+            if dict.keys.contains("CreateUserName") {
+                self.createUserName = dict["CreateUserName"] as! String
+            }
+            if dict.keys.contains("IntentId") {
+                self.intentId = dict["IntentId"] as! Int64
+            }
+            if dict.keys.contains("IntentName") {
+                self.intentName = dict["IntentName"] as! String
+            }
+            if dict.keys.contains("ModifyTime") {
+                self.modifyTime = dict["ModifyTime"] as! String
+            }
+            if dict.keys.contains("ModifyUserId") {
+                self.modifyUserId = dict["ModifyUserId"] as! String
+            }
+            if dict.keys.contains("ModifyUserName") {
+                self.modifyUserName = dict["ModifyUserName"] as! String
+            }
+        }
+    }
+    public var beebotRequestId: String?
+
+    public var code: String?
+
+    public var httpStatusCode: Int32?
+
+    public var intent: DescribeBeebotIntentResponseBody.Intent?
+
+    public var intentId: Int64?
+
+    public var message: String?
+
+    public var requestId: String?
+
+    public var success: Bool?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.intent?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.beebotRequestId != nil {
+            map["BeebotRequestId"] = self.beebotRequestId!
+        }
+        if self.code != nil {
+            map["Code"] = self.code!
+        }
+        if self.httpStatusCode != nil {
+            map["HttpStatusCode"] = self.httpStatusCode!
+        }
+        if self.intent != nil {
+            map["Intent"] = self.intent?.toMap()
+        }
+        if self.intentId != nil {
+            map["IntentId"] = self.intentId!
+        }
+        if self.message != nil {
+            map["Message"] = self.message!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.success != nil {
+            map["Success"] = self.success!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("BeebotRequestId") {
+            self.beebotRequestId = dict["BeebotRequestId"] as! String
+        }
+        if dict.keys.contains("Code") {
+            self.code = dict["Code"] as! String
+        }
+        if dict.keys.contains("HttpStatusCode") {
+            self.httpStatusCode = dict["HttpStatusCode"] as! Int32
+        }
+        if dict.keys.contains("Intent") {
+            var model = DescribeBeebotIntentResponseBody.Intent()
+            model.fromMap(dict["Intent"] as! [String: Any])
+            self.intent = model
+        }
+        if dict.keys.contains("IntentId") {
+            self.intentId = dict["IntentId"] as! Int64
+        }
+        if dict.keys.contains("Message") {
+            self.message = dict["Message"] as! String
+        }
+        if dict.keys.contains("RequestId") {
+            self.requestId = dict["RequestId"] as! String
+        }
+        if dict.keys.contains("Success") {
+            self.success = dict["Success"] as! Bool
+        }
+    }
+}
+
+public class DescribeBeebotIntentResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: DescribeBeebotIntentResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") {
+            var model = DescribeBeebotIntentResponseBody()
             model.fromMap(dict["body"] as! [String: Any])
             self.body = model
         }
@@ -13155,6 +14752,51 @@ public class DescribeScriptRequest : Tea.TeaModel {
 
 public class DescribeScriptResponseBody : Tea.TeaModel {
     public class Script : Tea.TeaModel {
+        public class NluProfile : Tea.TeaModel {
+            public var fcFunction: String?
+
+            public var fcHttpTriggerUrl: String?
+
+            public var fcRegion: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.fcFunction != nil {
+                    map["FcFunction"] = self.fcFunction!
+                }
+                if self.fcHttpTriggerUrl != nil {
+                    map["FcHttpTriggerUrl"] = self.fcHttpTriggerUrl!
+                }
+                if self.fcRegion != nil {
+                    map["FcRegion"] = self.fcRegion!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("FcFunction") {
+                    self.fcFunction = dict["FcFunction"] as! String
+                }
+                if dict.keys.contains("FcHttpTriggerUrl") {
+                    self.fcHttpTriggerUrl = dict["FcHttpTriggerUrl"] as! String
+                }
+                if dict.keys.contains("FcRegion") {
+                    self.fcRegion = dict["FcRegion"] as! String
+                }
+            }
+        }
         public var agentId: Int64?
 
         public var agentKey: String?
@@ -13183,6 +14825,10 @@ public class DescribeScriptResponseBody : Tea.TeaModel {
 
         public var newBargeInEnable: Bool?
 
+        public var nluEngine: String?
+
+        public var nluProfile: DescribeScriptResponseBody.Script.NluProfile?
+
         public var scene: String?
 
         public var scriptDescription: String?
@@ -13207,6 +14853,7 @@ public class DescribeScriptResponseBody : Tea.TeaModel {
         }
 
         public override func validate() throws -> Void {
+            try self.nluProfile?.validate()
         }
 
         public override func toMap() -> [String : Any] {
@@ -13252,6 +14899,12 @@ public class DescribeScriptResponseBody : Tea.TeaModel {
             }
             if self.newBargeInEnable != nil {
                 map["NewBargeInEnable"] = self.newBargeInEnable!
+            }
+            if self.nluEngine != nil {
+                map["NluEngine"] = self.nluEngine!
+            }
+            if self.nluProfile != nil {
+                map["NluProfile"] = self.nluProfile?.toMap()
             }
             if self.scene != nil {
                 map["Scene"] = self.scene!
@@ -13319,6 +14972,14 @@ public class DescribeScriptResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("NewBargeInEnable") {
                 self.newBargeInEnable = dict["NewBargeInEnable"] as! Bool
+            }
+            if dict.keys.contains("NluEngine") {
+                self.nluEngine = dict["NluEngine"] as! String
+            }
+            if dict.keys.contains("NluProfile") {
+                var model = DescribeScriptResponseBody.Script.NluProfile()
+                model.fromMap(dict["NluProfile"] as! [String: Any])
+                self.nluProfile = model
             }
             if dict.keys.contains("Scene") {
                 self.scene = dict["Scene"] as! String
@@ -23680,6 +25341,912 @@ public class ListApiPluginsResponse : Tea.TeaModel {
     }
 }
 
+public class ListBeebotIntentRequest : Tea.TeaModel {
+    public var instanceId: String?
+
+    public var intentName: String?
+
+    public var pageNumber: Int32?
+
+    public var pageSize: Int32?
+
+    public var scriptId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.instanceId != nil {
+            map["InstanceId"] = self.instanceId!
+        }
+        if self.intentName != nil {
+            map["IntentName"] = self.intentName!
+        }
+        if self.pageNumber != nil {
+            map["PageNumber"] = self.pageNumber!
+        }
+        if self.pageSize != nil {
+            map["PageSize"] = self.pageSize!
+        }
+        if self.scriptId != nil {
+            map["ScriptId"] = self.scriptId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("InstanceId") {
+            self.instanceId = dict["InstanceId"] as! String
+        }
+        if dict.keys.contains("IntentName") {
+            self.intentName = dict["IntentName"] as! String
+        }
+        if dict.keys.contains("PageNumber") {
+            self.pageNumber = dict["PageNumber"] as! Int32
+        }
+        if dict.keys.contains("PageSize") {
+            self.pageSize = dict["PageSize"] as! Int32
+        }
+        if dict.keys.contains("ScriptId") {
+            self.scriptId = dict["ScriptId"] as! String
+        }
+    }
+}
+
+public class ListBeebotIntentResponseBody : Tea.TeaModel {
+    public class Intents : Tea.TeaModel {
+        public var aliasName: String?
+
+        public var createTime: String?
+
+        public var createUserId: String?
+
+        public var createUserName: String?
+
+        public var intentId: Int64?
+
+        public var intentName: String?
+
+        public var modifyTime: String?
+
+        public var modifyUserId: String?
+
+        public var modifyUserName: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.aliasName != nil {
+                map["AliasName"] = self.aliasName!
+            }
+            if self.createTime != nil {
+                map["CreateTime"] = self.createTime!
+            }
+            if self.createUserId != nil {
+                map["CreateUserId"] = self.createUserId!
+            }
+            if self.createUserName != nil {
+                map["CreateUserName"] = self.createUserName!
+            }
+            if self.intentId != nil {
+                map["IntentId"] = self.intentId!
+            }
+            if self.intentName != nil {
+                map["IntentName"] = self.intentName!
+            }
+            if self.modifyTime != nil {
+                map["ModifyTime"] = self.modifyTime!
+            }
+            if self.modifyUserId != nil {
+                map["ModifyUserId"] = self.modifyUserId!
+            }
+            if self.modifyUserName != nil {
+                map["ModifyUserName"] = self.modifyUserName!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("AliasName") {
+                self.aliasName = dict["AliasName"] as! String
+            }
+            if dict.keys.contains("CreateTime") {
+                self.createTime = dict["CreateTime"] as! String
+            }
+            if dict.keys.contains("CreateUserId") {
+                self.createUserId = dict["CreateUserId"] as! String
+            }
+            if dict.keys.contains("CreateUserName") {
+                self.createUserName = dict["CreateUserName"] as! String
+            }
+            if dict.keys.contains("IntentId") {
+                self.intentId = dict["IntentId"] as! Int64
+            }
+            if dict.keys.contains("IntentName") {
+                self.intentName = dict["IntentName"] as! String
+            }
+            if dict.keys.contains("ModifyTime") {
+                self.modifyTime = dict["ModifyTime"] as! String
+            }
+            if dict.keys.contains("ModifyUserId") {
+                self.modifyUserId = dict["ModifyUserId"] as! String
+            }
+            if dict.keys.contains("ModifyUserName") {
+                self.modifyUserName = dict["ModifyUserName"] as! String
+            }
+        }
+    }
+    public var beebotRequestId: String?
+
+    public var code: String?
+
+    public var httpStatusCode: Int32?
+
+    public var intents: [ListBeebotIntentResponseBody.Intents]?
+
+    public var message: String?
+
+    public var pageNumber: Int32?
+
+    public var pageSize: Int32?
+
+    public var requestId: String?
+
+    public var success: Bool?
+
+    public var totalCount: Int32?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.beebotRequestId != nil {
+            map["BeebotRequestId"] = self.beebotRequestId!
+        }
+        if self.code != nil {
+            map["Code"] = self.code!
+        }
+        if self.httpStatusCode != nil {
+            map["HttpStatusCode"] = self.httpStatusCode!
+        }
+        if self.intents != nil {
+            var tmp : [Any] = []
+            for k in self.intents! {
+                tmp.append(k.toMap())
+            }
+            map["Intents"] = tmp
+        }
+        if self.message != nil {
+            map["Message"] = self.message!
+        }
+        if self.pageNumber != nil {
+            map["PageNumber"] = self.pageNumber!
+        }
+        if self.pageSize != nil {
+            map["PageSize"] = self.pageSize!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.success != nil {
+            map["Success"] = self.success!
+        }
+        if self.totalCount != nil {
+            map["TotalCount"] = self.totalCount!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("BeebotRequestId") {
+            self.beebotRequestId = dict["BeebotRequestId"] as! String
+        }
+        if dict.keys.contains("Code") {
+            self.code = dict["Code"] as! String
+        }
+        if dict.keys.contains("HttpStatusCode") {
+            self.httpStatusCode = dict["HttpStatusCode"] as! Int32
+        }
+        if dict.keys.contains("Intents") {
+            var tmp : [ListBeebotIntentResponseBody.Intents] = []
+            for v in dict["Intents"] as! [Any] {
+                var model = ListBeebotIntentResponseBody.Intents()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.intents = tmp
+        }
+        if dict.keys.contains("Message") {
+            self.message = dict["Message"] as! String
+        }
+        if dict.keys.contains("PageNumber") {
+            self.pageNumber = dict["PageNumber"] as! Int32
+        }
+        if dict.keys.contains("PageSize") {
+            self.pageSize = dict["PageSize"] as! Int32
+        }
+        if dict.keys.contains("RequestId") {
+            self.requestId = dict["RequestId"] as! String
+        }
+        if dict.keys.contains("Success") {
+            self.success = dict["Success"] as! Bool
+        }
+        if dict.keys.contains("TotalCount") {
+            self.totalCount = dict["TotalCount"] as! Int32
+        }
+    }
+}
+
+public class ListBeebotIntentResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: ListBeebotIntentResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") {
+            var model = ListBeebotIntentResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
+public class ListBeebotIntentLgfRequest : Tea.TeaModel {
+    public var instanceId: String?
+
+    public var intentId: String?
+
+    public var lgfText: String?
+
+    public var pageNumber: Int32?
+
+    public var pageSize: Int32?
+
+    public var scriptId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.instanceId != nil {
+            map["InstanceId"] = self.instanceId!
+        }
+        if self.intentId != nil {
+            map["IntentId"] = self.intentId!
+        }
+        if self.lgfText != nil {
+            map["LgfText"] = self.lgfText!
+        }
+        if self.pageNumber != nil {
+            map["PageNumber"] = self.pageNumber!
+        }
+        if self.pageSize != nil {
+            map["PageSize"] = self.pageSize!
+        }
+        if self.scriptId != nil {
+            map["ScriptId"] = self.scriptId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("InstanceId") {
+            self.instanceId = dict["InstanceId"] as! String
+        }
+        if dict.keys.contains("IntentId") {
+            self.intentId = dict["IntentId"] as! String
+        }
+        if dict.keys.contains("LgfText") {
+            self.lgfText = dict["LgfText"] as! String
+        }
+        if dict.keys.contains("PageNumber") {
+            self.pageNumber = dict["PageNumber"] as! Int32
+        }
+        if dict.keys.contains("PageSize") {
+            self.pageSize = dict["PageSize"] as! Int32
+        }
+        if dict.keys.contains("ScriptId") {
+            self.scriptId = dict["ScriptId"] as! String
+        }
+    }
+}
+
+public class ListBeebotIntentLgfResponseBody : Tea.TeaModel {
+    public class Lgfs : Tea.TeaModel {
+        public var createTime: String?
+
+        public var intentId: Int64?
+
+        public var lgfId: Int64?
+
+        public var modifyTime: String?
+
+        public var ruleText: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.createTime != nil {
+                map["CreateTime"] = self.createTime!
+            }
+            if self.intentId != nil {
+                map["IntentId"] = self.intentId!
+            }
+            if self.lgfId != nil {
+                map["LgfId"] = self.lgfId!
+            }
+            if self.modifyTime != nil {
+                map["ModifyTime"] = self.modifyTime!
+            }
+            if self.ruleText != nil {
+                map["RuleText"] = self.ruleText!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("CreateTime") {
+                self.createTime = dict["CreateTime"] as! String
+            }
+            if dict.keys.contains("IntentId") {
+                self.intentId = dict["IntentId"] as! Int64
+            }
+            if dict.keys.contains("LgfId") {
+                self.lgfId = dict["LgfId"] as! Int64
+            }
+            if dict.keys.contains("ModifyTime") {
+                self.modifyTime = dict["ModifyTime"] as! String
+            }
+            if dict.keys.contains("RuleText") {
+                self.ruleText = dict["RuleText"] as! String
+            }
+        }
+    }
+    public var beebotRequestId: String?
+
+    public var code: String?
+
+    public var httpStatusCode: Int32?
+
+    public var lgfs: [ListBeebotIntentLgfResponseBody.Lgfs]?
+
+    public var message: String?
+
+    public var pageNumber: Int32?
+
+    public var pageSize: Int32?
+
+    public var requestId: String?
+
+    public var success: Bool?
+
+    public var totalCount: Int32?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.beebotRequestId != nil {
+            map["BeebotRequestId"] = self.beebotRequestId!
+        }
+        if self.code != nil {
+            map["Code"] = self.code!
+        }
+        if self.httpStatusCode != nil {
+            map["HttpStatusCode"] = self.httpStatusCode!
+        }
+        if self.lgfs != nil {
+            var tmp : [Any] = []
+            for k in self.lgfs! {
+                tmp.append(k.toMap())
+            }
+            map["Lgfs"] = tmp
+        }
+        if self.message != nil {
+            map["Message"] = self.message!
+        }
+        if self.pageNumber != nil {
+            map["PageNumber"] = self.pageNumber!
+        }
+        if self.pageSize != nil {
+            map["PageSize"] = self.pageSize!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.success != nil {
+            map["Success"] = self.success!
+        }
+        if self.totalCount != nil {
+            map["TotalCount"] = self.totalCount!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("BeebotRequestId") {
+            self.beebotRequestId = dict["BeebotRequestId"] as! String
+        }
+        if dict.keys.contains("Code") {
+            self.code = dict["Code"] as! String
+        }
+        if dict.keys.contains("HttpStatusCode") {
+            self.httpStatusCode = dict["HttpStatusCode"] as! Int32
+        }
+        if dict.keys.contains("Lgfs") {
+            var tmp : [ListBeebotIntentLgfResponseBody.Lgfs] = []
+            for v in dict["Lgfs"] as! [Any] {
+                var model = ListBeebotIntentLgfResponseBody.Lgfs()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.lgfs = tmp
+        }
+        if dict.keys.contains("Message") {
+            self.message = dict["Message"] as! String
+        }
+        if dict.keys.contains("PageNumber") {
+            self.pageNumber = dict["PageNumber"] as! Int32
+        }
+        if dict.keys.contains("PageSize") {
+            self.pageSize = dict["PageSize"] as! Int32
+        }
+        if dict.keys.contains("RequestId") {
+            self.requestId = dict["RequestId"] as! String
+        }
+        if dict.keys.contains("Success") {
+            self.success = dict["Success"] as! Bool
+        }
+        if dict.keys.contains("TotalCount") {
+            self.totalCount = dict["TotalCount"] as! Int32
+        }
+    }
+}
+
+public class ListBeebotIntentLgfResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: ListBeebotIntentLgfResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") {
+            var model = ListBeebotIntentLgfResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
+public class ListBeebotIntentUserSayRequest : Tea.TeaModel {
+    public var content: String?
+
+    public var instanceId: String?
+
+    public var intentId: String?
+
+    public var pageNumber: Int32?
+
+    public var pageSize: Int32?
+
+    public var scriptId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.content != nil {
+            map["Content"] = self.content!
+        }
+        if self.instanceId != nil {
+            map["InstanceId"] = self.instanceId!
+        }
+        if self.intentId != nil {
+            map["IntentId"] = self.intentId!
+        }
+        if self.pageNumber != nil {
+            map["PageNumber"] = self.pageNumber!
+        }
+        if self.pageSize != nil {
+            map["PageSize"] = self.pageSize!
+        }
+        if self.scriptId != nil {
+            map["ScriptId"] = self.scriptId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("Content") {
+            self.content = dict["Content"] as! String
+        }
+        if dict.keys.contains("InstanceId") {
+            self.instanceId = dict["InstanceId"] as! String
+        }
+        if dict.keys.contains("IntentId") {
+            self.intentId = dict["IntentId"] as! String
+        }
+        if dict.keys.contains("PageNumber") {
+            self.pageNumber = dict["PageNumber"] as! Int32
+        }
+        if dict.keys.contains("PageSize") {
+            self.pageSize = dict["PageSize"] as! Int32
+        }
+        if dict.keys.contains("ScriptId") {
+            self.scriptId = dict["ScriptId"] as! String
+        }
+    }
+}
+
+public class ListBeebotIntentUserSayResponseBody : Tea.TeaModel {
+    public class UserSays : Tea.TeaModel {
+        public var content: String?
+
+        public var createTime: String?
+
+        public var intentId: Int64?
+
+        public var modifyTime: String?
+
+        public var userSayId: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.content != nil {
+                map["Content"] = self.content!
+            }
+            if self.createTime != nil {
+                map["CreateTime"] = self.createTime!
+            }
+            if self.intentId != nil {
+                map["IntentId"] = self.intentId!
+            }
+            if self.modifyTime != nil {
+                map["ModifyTime"] = self.modifyTime!
+            }
+            if self.userSayId != nil {
+                map["UserSayId"] = self.userSayId!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("Content") {
+                self.content = dict["Content"] as! String
+            }
+            if dict.keys.contains("CreateTime") {
+                self.createTime = dict["CreateTime"] as! String
+            }
+            if dict.keys.contains("IntentId") {
+                self.intentId = dict["IntentId"] as! Int64
+            }
+            if dict.keys.contains("ModifyTime") {
+                self.modifyTime = dict["ModifyTime"] as! String
+            }
+            if dict.keys.contains("UserSayId") {
+                self.userSayId = dict["UserSayId"] as! String
+            }
+        }
+    }
+    public var beebotRequestId: String?
+
+    public var code: String?
+
+    public var httpStatusCode: Int32?
+
+    public var message: String?
+
+    public var pageNumber: Int32?
+
+    public var pageSize: Int32?
+
+    public var requestId: String?
+
+    public var success: Bool?
+
+    public var totalCount: Int32?
+
+    public var userSays: [ListBeebotIntentUserSayResponseBody.UserSays]?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.beebotRequestId != nil {
+            map["BeebotRequestId"] = self.beebotRequestId!
+        }
+        if self.code != nil {
+            map["Code"] = self.code!
+        }
+        if self.httpStatusCode != nil {
+            map["HttpStatusCode"] = self.httpStatusCode!
+        }
+        if self.message != nil {
+            map["Message"] = self.message!
+        }
+        if self.pageNumber != nil {
+            map["PageNumber"] = self.pageNumber!
+        }
+        if self.pageSize != nil {
+            map["PageSize"] = self.pageSize!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.success != nil {
+            map["Success"] = self.success!
+        }
+        if self.totalCount != nil {
+            map["TotalCount"] = self.totalCount!
+        }
+        if self.userSays != nil {
+            var tmp : [Any] = []
+            for k in self.userSays! {
+                tmp.append(k.toMap())
+            }
+            map["UserSays"] = tmp
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("BeebotRequestId") {
+            self.beebotRequestId = dict["BeebotRequestId"] as! String
+        }
+        if dict.keys.contains("Code") {
+            self.code = dict["Code"] as! String
+        }
+        if dict.keys.contains("HttpStatusCode") {
+            self.httpStatusCode = dict["HttpStatusCode"] as! Int32
+        }
+        if dict.keys.contains("Message") {
+            self.message = dict["Message"] as! String
+        }
+        if dict.keys.contains("PageNumber") {
+            self.pageNumber = dict["PageNumber"] as! Int32
+        }
+        if dict.keys.contains("PageSize") {
+            self.pageSize = dict["PageSize"] as! Int32
+        }
+        if dict.keys.contains("RequestId") {
+            self.requestId = dict["RequestId"] as! String
+        }
+        if dict.keys.contains("Success") {
+            self.success = dict["Success"] as! Bool
+        }
+        if dict.keys.contains("TotalCount") {
+            self.totalCount = dict["TotalCount"] as! Int32
+        }
+        if dict.keys.contains("UserSays") {
+            var tmp : [ListBeebotIntentUserSayResponseBody.UserSays] = []
+            for v in dict["UserSays"] as! [Any] {
+                var model = ListBeebotIntentUserSayResponseBody.UserSays()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.userSays = tmp
+        }
+    }
+}
+
+public class ListBeebotIntentUserSayResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: ListBeebotIntentUserSayResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") {
+            var model = ListBeebotIntentUserSayResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
 public class ListChatbotInstancesRequest : Tea.TeaModel {
     public var agentKey: String?
 
@@ -25505,6 +28072,947 @@ public class ListInstancesResponse : Tea.TeaModel {
         }
         if dict.keys.contains("body") {
             var model = ListInstancesResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
+public class ListIntentionsRequest : Tea.TeaModel {
+    public var annotationMissionDataSourceType: Int64?
+
+    public var botId: String?
+
+    public var environment: Int64?
+
+    public var instanceId: String?
+
+    public var intentId: Int64?
+
+    public var pageIndex: Int32?
+
+    public var pageSize: Int32?
+
+    public var scriptId: String?
+
+    public var userNick: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.annotationMissionDataSourceType != nil {
+            map["AnnotationMissionDataSourceType"] = self.annotationMissionDataSourceType!
+        }
+        if self.botId != nil {
+            map["BotId"] = self.botId!
+        }
+        if self.environment != nil {
+            map["Environment"] = self.environment!
+        }
+        if self.instanceId != nil {
+            map["InstanceId"] = self.instanceId!
+        }
+        if self.intentId != nil {
+            map["IntentId"] = self.intentId!
+        }
+        if self.pageIndex != nil {
+            map["PageIndex"] = self.pageIndex!
+        }
+        if self.pageSize != nil {
+            map["PageSize"] = self.pageSize!
+        }
+        if self.scriptId != nil {
+            map["ScriptId"] = self.scriptId!
+        }
+        if self.userNick != nil {
+            map["UserNick"] = self.userNick!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("AnnotationMissionDataSourceType") {
+            self.annotationMissionDataSourceType = dict["AnnotationMissionDataSourceType"] as! Int64
+        }
+        if dict.keys.contains("BotId") {
+            self.botId = dict["BotId"] as! String
+        }
+        if dict.keys.contains("Environment") {
+            self.environment = dict["Environment"] as! Int64
+        }
+        if dict.keys.contains("InstanceId") {
+            self.instanceId = dict["InstanceId"] as! String
+        }
+        if dict.keys.contains("IntentId") {
+            self.intentId = dict["IntentId"] as! Int64
+        }
+        if dict.keys.contains("PageIndex") {
+            self.pageIndex = dict["PageIndex"] as! Int32
+        }
+        if dict.keys.contains("PageSize") {
+            self.pageSize = dict["PageSize"] as! Int32
+        }
+        if dict.keys.contains("ScriptId") {
+            self.scriptId = dict["ScriptId"] as! String
+        }
+        if dict.keys.contains("UserNick") {
+            self.userNick = dict["UserNick"] as! String
+        }
+    }
+}
+
+public class ListIntentionsResponseBody : Tea.TeaModel {
+    public class Data : Tea.TeaModel {
+        public class IntentList : Tea.TeaModel {
+            public class RuleCheck : Tea.TeaModel {
+                public var error: [String]?
+
+                public var strict: Bool?
+
+                public var text: String?
+
+                public var warning: [String]?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.error != nil {
+                        map["Error"] = self.error!
+                    }
+                    if self.strict != nil {
+                        map["Strict"] = self.strict!
+                    }
+                    if self.text != nil {
+                        map["Text"] = self.text!
+                    }
+                    if self.warning != nil {
+                        map["Warning"] = self.warning!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any]) -> Void {
+                    if dict.keys.contains("Error") {
+                        self.error = dict["Error"] as! [String]
+                    }
+                    if dict.keys.contains("Strict") {
+                        self.strict = dict["Strict"] as! Bool
+                    }
+                    if dict.keys.contains("Text") {
+                        self.text = dict["Text"] as! String
+                    }
+                    if dict.keys.contains("Warning") {
+                        self.warning = dict["Warning"] as! [String]
+                    }
+                }
+            }
+            public class Slot : Tea.TeaModel {
+                public class FeedbackFunctions : Tea.TeaModel {
+                    public class Switch_ : Tea.TeaModel {
+                        public var id: String?
+
+                        public var label: String?
+
+                        public var name: String?
+
+                        public var type: String?
+
+                        public var value: String?
+
+                        public override init() {
+                            super.init()
+                        }
+
+                        public init(_ dict: [String: Any]) {
+                            super.init()
+                            self.fromMap(dict)
+                        }
+
+                        public override func validate() throws -> Void {
+                        }
+
+                        public override func toMap() -> [String : Any] {
+                            var map = super.toMap()
+                            if self.id != nil {
+                                map["Id"] = self.id!
+                            }
+                            if self.label != nil {
+                                map["Label"] = self.label!
+                            }
+                            if self.name != nil {
+                                map["Name"] = self.name!
+                            }
+                            if self.type != nil {
+                                map["Type"] = self.type!
+                            }
+                            if self.value != nil {
+                                map["Value"] = self.value!
+                            }
+                            return map
+                        }
+
+                        public override func fromMap(_ dict: [String: Any]) -> Void {
+                            if dict.keys.contains("Id") {
+                                self.id = dict["Id"] as! String
+                            }
+                            if dict.keys.contains("Label") {
+                                self.label = dict["Label"] as! String
+                            }
+                            if dict.keys.contains("Name") {
+                                self.name = dict["Name"] as! String
+                            }
+                            if dict.keys.contains("Type") {
+                                self.type = dict["Type"] as! String
+                            }
+                            if dict.keys.contains("Value") {
+                                self.value = dict["Value"] as! String
+                            }
+                        }
+                    }
+                    public var aliyunFunction: String?
+
+                    public var aliyunService: String?
+
+                    public var code: String?
+
+                    public var description_: String?
+
+                    public var endPoint: String?
+
+                    public var function: String?
+
+                    public var name: String?
+
+                    public var params: [String: Any]?
+
+                    public var switch_: [ListIntentionsResponseBody.Data.IntentList.Slot.FeedbackFunctions.Switch_]?
+
+                    public var type: String?
+
+                    public override init() {
+                        super.init()
+                    }
+
+                    public init(_ dict: [String: Any]) {
+                        super.init()
+                        self.fromMap(dict)
+                    }
+
+                    public override func validate() throws -> Void {
+                    }
+
+                    public override func toMap() -> [String : Any] {
+                        var map = super.toMap()
+                        if self.aliyunFunction != nil {
+                            map["AliyunFunction"] = self.aliyunFunction!
+                        }
+                        if self.aliyunService != nil {
+                            map["AliyunService"] = self.aliyunService!
+                        }
+                        if self.code != nil {
+                            map["Code"] = self.code!
+                        }
+                        if self.description_ != nil {
+                            map["Description"] = self.description_!
+                        }
+                        if self.endPoint != nil {
+                            map["EndPoint"] = self.endPoint!
+                        }
+                        if self.function != nil {
+                            map["Function"] = self.function!
+                        }
+                        if self.name != nil {
+                            map["Name"] = self.name!
+                        }
+                        if self.params != nil {
+                            map["Params"] = self.params!
+                        }
+                        if self.switch_ != nil {
+                            var tmp : [Any] = []
+                            for k in self.switch_! {
+                                tmp.append(k.toMap())
+                            }
+                            map["Switch"] = tmp
+                        }
+                        if self.type != nil {
+                            map["Type"] = self.type!
+                        }
+                        return map
+                    }
+
+                    public override func fromMap(_ dict: [String: Any]) -> Void {
+                        if dict.keys.contains("AliyunFunction") {
+                            self.aliyunFunction = dict["AliyunFunction"] as! String
+                        }
+                        if dict.keys.contains("AliyunService") {
+                            self.aliyunService = dict["AliyunService"] as! String
+                        }
+                        if dict.keys.contains("Code") {
+                            self.code = dict["Code"] as! String
+                        }
+                        if dict.keys.contains("Description") {
+                            self.description_ = dict["Description"] as! String
+                        }
+                        if dict.keys.contains("EndPoint") {
+                            self.endPoint = dict["EndPoint"] as! String
+                        }
+                        if dict.keys.contains("Function") {
+                            self.function = dict["Function"] as! String
+                        }
+                        if dict.keys.contains("Name") {
+                            self.name = dict["Name"] as! String
+                        }
+                        if dict.keys.contains("Params") {
+                            self.params = dict["Params"] as! [String: Any]
+                        }
+                        if dict.keys.contains("Switch") {
+                            var tmp : [ListIntentionsResponseBody.Data.IntentList.Slot.FeedbackFunctions.Switch_] = []
+                            for v in dict["Switch"] as! [Any] {
+                                var model = ListIntentionsResponseBody.Data.IntentList.Slot.FeedbackFunctions.Switch_()
+                                if v != nil {
+                                    model.fromMap(v as! [String: Any])
+                                }
+                                tmp.append(model)
+                            }
+                            self.switch_ = tmp
+                        }
+                        if dict.keys.contains("Type") {
+                            self.type = dict["Type"] as! String
+                        }
+                    }
+                }
+                public class Tags : Tea.TeaModel {
+                    public var userSayId: String?
+
+                    public var value: String?
+
+                    public override init() {
+                        super.init()
+                    }
+
+                    public init(_ dict: [String: Any]) {
+                        super.init()
+                        self.fromMap(dict)
+                    }
+
+                    public override func validate() throws -> Void {
+                    }
+
+                    public override func toMap() -> [String : Any] {
+                        var map = super.toMap()
+                        if self.userSayId != nil {
+                            map["UserSayId"] = self.userSayId!
+                        }
+                        if self.value != nil {
+                            map["Value"] = self.value!
+                        }
+                        return map
+                    }
+
+                    public override func fromMap(_ dict: [String: Any]) -> Void {
+                        if dict.keys.contains("UserSayId") {
+                            self.userSayId = dict["UserSayId"] as! String
+                        }
+                        if dict.keys.contains("Value") {
+                            self.value = dict["Value"] as! String
+                        }
+                    }
+                }
+                public var feedbackFunctions: [ListIntentionsResponseBody.Data.IntentList.Slot.FeedbackFunctions]?
+
+                public var feedbackType: String?
+
+                public var id: String?
+
+                public var isArray: Bool?
+
+                public var isEncrypt: Bool?
+
+                public var isInteractive: Bool?
+
+                public var isNecessary: Bool?
+
+                public var lifeSpan: Int32?
+
+                public var name: String?
+
+                public var question: [String]?
+
+                public var tags: [ListIntentionsResponseBody.Data.IntentList.Slot.Tags]?
+
+                public var value: String?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.feedbackFunctions != nil {
+                        var tmp : [Any] = []
+                        for k in self.feedbackFunctions! {
+                            tmp.append(k.toMap())
+                        }
+                        map["FeedbackFunctions"] = tmp
+                    }
+                    if self.feedbackType != nil {
+                        map["FeedbackType"] = self.feedbackType!
+                    }
+                    if self.id != nil {
+                        map["Id"] = self.id!
+                    }
+                    if self.isArray != nil {
+                        map["IsArray"] = self.isArray!
+                    }
+                    if self.isEncrypt != nil {
+                        map["IsEncrypt"] = self.isEncrypt!
+                    }
+                    if self.isInteractive != nil {
+                        map["IsInteractive"] = self.isInteractive!
+                    }
+                    if self.isNecessary != nil {
+                        map["IsNecessary"] = self.isNecessary!
+                    }
+                    if self.lifeSpan != nil {
+                        map["LifeSpan"] = self.lifeSpan!
+                    }
+                    if self.name != nil {
+                        map["Name"] = self.name!
+                    }
+                    if self.question != nil {
+                        map["Question"] = self.question!
+                    }
+                    if self.tags != nil {
+                        var tmp : [Any] = []
+                        for k in self.tags! {
+                            tmp.append(k.toMap())
+                        }
+                        map["Tags"] = tmp
+                    }
+                    if self.value != nil {
+                        map["Value"] = self.value!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any]) -> Void {
+                    if dict.keys.contains("FeedbackFunctions") {
+                        var tmp : [ListIntentionsResponseBody.Data.IntentList.Slot.FeedbackFunctions] = []
+                        for v in dict["FeedbackFunctions"] as! [Any] {
+                            var model = ListIntentionsResponseBody.Data.IntentList.Slot.FeedbackFunctions()
+                            if v != nil {
+                                model.fromMap(v as! [String: Any])
+                            }
+                            tmp.append(model)
+                        }
+                        self.feedbackFunctions = tmp
+                    }
+                    if dict.keys.contains("FeedbackType") {
+                        self.feedbackType = dict["FeedbackType"] as! String
+                    }
+                    if dict.keys.contains("Id") {
+                        self.id = dict["Id"] as! String
+                    }
+                    if dict.keys.contains("IsArray") {
+                        self.isArray = dict["IsArray"] as! Bool
+                    }
+                    if dict.keys.contains("IsEncrypt") {
+                        self.isEncrypt = dict["IsEncrypt"] as! Bool
+                    }
+                    if dict.keys.contains("IsInteractive") {
+                        self.isInteractive = dict["IsInteractive"] as! Bool
+                    }
+                    if dict.keys.contains("IsNecessary") {
+                        self.isNecessary = dict["IsNecessary"] as! Bool
+                    }
+                    if dict.keys.contains("LifeSpan") {
+                        self.lifeSpan = dict["LifeSpan"] as! Int32
+                    }
+                    if dict.keys.contains("Name") {
+                        self.name = dict["Name"] as! String
+                    }
+                    if dict.keys.contains("Question") {
+                        self.question = dict["Question"] as! [String]
+                    }
+                    if dict.keys.contains("Tags") {
+                        var tmp : [ListIntentionsResponseBody.Data.IntentList.Slot.Tags] = []
+                        for v in dict["Tags"] as! [Any] {
+                            var model = ListIntentionsResponseBody.Data.IntentList.Slot.Tags()
+                            if v != nil {
+                                model.fromMap(v as! [String: Any])
+                            }
+                            tmp.append(model)
+                        }
+                        self.tags = tmp
+                    }
+                    if dict.keys.contains("Value") {
+                        self.value = dict["Value"] as! String
+                    }
+                }
+            }
+            public class UserSay : Tea.TeaModel {
+                public class UserSayData : Tea.TeaModel {
+                    public var slotId: String?
+
+                    public var text: String?
+
+                    public override init() {
+                        super.init()
+                    }
+
+                    public init(_ dict: [String: Any]) {
+                        super.init()
+                        self.fromMap(dict)
+                    }
+
+                    public override func validate() throws -> Void {
+                    }
+
+                    public override func toMap() -> [String : Any] {
+                        var map = super.toMap()
+                        if self.slotId != nil {
+                            map["SlotId"] = self.slotId!
+                        }
+                        if self.text != nil {
+                            map["Text"] = self.text!
+                        }
+                        return map
+                    }
+
+                    public override func fromMap(_ dict: [String: Any]) -> Void {
+                        if dict.keys.contains("SlotId") {
+                            self.slotId = dict["SlotId"] as! String
+                        }
+                        if dict.keys.contains("Text") {
+                            self.text = dict["Text"] as! String
+                        }
+                    }
+                }
+                public var fromId: String?
+
+                public var id: String?
+
+                public var strict: Bool?
+
+                public var userSayData: [ListIntentionsResponseBody.Data.IntentList.UserSay.UserSayData]?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.fromId != nil {
+                        map["FromId"] = self.fromId!
+                    }
+                    if self.id != nil {
+                        map["Id"] = self.id!
+                    }
+                    if self.strict != nil {
+                        map["Strict"] = self.strict!
+                    }
+                    if self.userSayData != nil {
+                        var tmp : [Any] = []
+                        for k in self.userSayData! {
+                            tmp.append(k.toMap())
+                        }
+                        map["UserSayData"] = tmp
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any]) -> Void {
+                    if dict.keys.contains("FromId") {
+                        self.fromId = dict["FromId"] as! String
+                    }
+                    if dict.keys.contains("Id") {
+                        self.id = dict["Id"] as! String
+                    }
+                    if dict.keys.contains("Strict") {
+                        self.strict = dict["Strict"] as! Bool
+                    }
+                    if dict.keys.contains("UserSayData") {
+                        var tmp : [ListIntentionsResponseBody.Data.IntentList.UserSay.UserSayData] = []
+                        for v in dict["UserSayData"] as! [Any] {
+                            var model = ListIntentionsResponseBody.Data.IntentList.UserSay.UserSayData()
+                            if v != nil {
+                                model.fromMap(v as! [String: Any])
+                            }
+                            tmp.append(model)
+                        }
+                        self.userSayData = tmp
+                    }
+                }
+            }
+            public var alias: [String]?
+
+            public var botId: Int64?
+
+            public var botName: String?
+
+            public var dialogId: String?
+
+            public var id: Int64?
+
+            public var language: String?
+
+            public var name: String?
+
+            public var ruleCheck: [ListIntentionsResponseBody.Data.IntentList.RuleCheck]?
+
+            public var slot: [ListIntentionsResponseBody.Data.IntentList.Slot]?
+
+            public var tableId: Int64?
+
+            public var type: Int32?
+
+            public var userSay: [ListIntentionsResponseBody.Data.IntentList.UserSay]?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.alias != nil {
+                    map["Alias"] = self.alias!
+                }
+                if self.botId != nil {
+                    map["BotId"] = self.botId!
+                }
+                if self.botName != nil {
+                    map["BotName"] = self.botName!
+                }
+                if self.dialogId != nil {
+                    map["DialogId"] = self.dialogId!
+                }
+                if self.id != nil {
+                    map["Id"] = self.id!
+                }
+                if self.language != nil {
+                    map["Language"] = self.language!
+                }
+                if self.name != nil {
+                    map["Name"] = self.name!
+                }
+                if self.ruleCheck != nil {
+                    var tmp : [Any] = []
+                    for k in self.ruleCheck! {
+                        tmp.append(k.toMap())
+                    }
+                    map["RuleCheck"] = tmp
+                }
+                if self.slot != nil {
+                    var tmp : [Any] = []
+                    for k in self.slot! {
+                        tmp.append(k.toMap())
+                    }
+                    map["Slot"] = tmp
+                }
+                if self.tableId != nil {
+                    map["TableId"] = self.tableId!
+                }
+                if self.type != nil {
+                    map["Type"] = self.type!
+                }
+                if self.userSay != nil {
+                    var tmp : [Any] = []
+                    for k in self.userSay! {
+                        tmp.append(k.toMap())
+                    }
+                    map["UserSay"] = tmp
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("Alias") {
+                    self.alias = dict["Alias"] as! [String]
+                }
+                if dict.keys.contains("BotId") {
+                    self.botId = dict["BotId"] as! Int64
+                }
+                if dict.keys.contains("BotName") {
+                    self.botName = dict["BotName"] as! String
+                }
+                if dict.keys.contains("DialogId") {
+                    self.dialogId = dict["DialogId"] as! String
+                }
+                if dict.keys.contains("Id") {
+                    self.id = dict["Id"] as! Int64
+                }
+                if dict.keys.contains("Language") {
+                    self.language = dict["Language"] as! String
+                }
+                if dict.keys.contains("Name") {
+                    self.name = dict["Name"] as! String
+                }
+                if dict.keys.contains("RuleCheck") {
+                    var tmp : [ListIntentionsResponseBody.Data.IntentList.RuleCheck] = []
+                    for v in dict["RuleCheck"] as! [Any] {
+                        var model = ListIntentionsResponseBody.Data.IntentList.RuleCheck()
+                        if v != nil {
+                            model.fromMap(v as! [String: Any])
+                        }
+                        tmp.append(model)
+                    }
+                    self.ruleCheck = tmp
+                }
+                if dict.keys.contains("Slot") {
+                    var tmp : [ListIntentionsResponseBody.Data.IntentList.Slot] = []
+                    for v in dict["Slot"] as! [Any] {
+                        var model = ListIntentionsResponseBody.Data.IntentList.Slot()
+                        if v != nil {
+                            model.fromMap(v as! [String: Any])
+                        }
+                        tmp.append(model)
+                    }
+                    self.slot = tmp
+                }
+                if dict.keys.contains("TableId") {
+                    self.tableId = dict["TableId"] as! Int64
+                }
+                if dict.keys.contains("Type") {
+                    self.type = dict["Type"] as! Int32
+                }
+                if dict.keys.contains("UserSay") {
+                    var tmp : [ListIntentionsResponseBody.Data.IntentList.UserSay] = []
+                    for v in dict["UserSay"] as! [Any] {
+                        var model = ListIntentionsResponseBody.Data.IntentList.UserSay()
+                        if v != nil {
+                            model.fromMap(v as! [String: Any])
+                        }
+                        tmp.append(model)
+                    }
+                    self.userSay = tmp
+                }
+            }
+        }
+        public var botId: String?
+
+        public var intentList: [ListIntentionsResponseBody.Data.IntentList]?
+
+        public var message: String?
+
+        public var success: Bool?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.botId != nil {
+                map["BotId"] = self.botId!
+            }
+            if self.intentList != nil {
+                var tmp : [Any] = []
+                for k in self.intentList! {
+                    tmp.append(k.toMap())
+                }
+                map["IntentList"] = tmp
+            }
+            if self.message != nil {
+                map["Message"] = self.message!
+            }
+            if self.success != nil {
+                map["Success"] = self.success!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("BotId") {
+                self.botId = dict["BotId"] as! String
+            }
+            if dict.keys.contains("IntentList") {
+                var tmp : [ListIntentionsResponseBody.Data.IntentList] = []
+                for v in dict["IntentList"] as! [Any] {
+                    var model = ListIntentionsResponseBody.Data.IntentList()
+                    if v != nil {
+                        model.fromMap(v as! [String: Any])
+                    }
+                    tmp.append(model)
+                }
+                self.intentList = tmp
+            }
+            if dict.keys.contains("Message") {
+                self.message = dict["Message"] as! String
+            }
+            if dict.keys.contains("Success") {
+                self.success = dict["Success"] as! Bool
+            }
+        }
+    }
+    public var code: String?
+
+    public var data: ListIntentionsResponseBody.Data?
+
+    public var httpStatusCode: Int32?
+
+    public var message: String?
+
+    public var requestId: String?
+
+    public var success: Bool?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.data?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.code != nil {
+            map["Code"] = self.code!
+        }
+        if self.data != nil {
+            map["Data"] = self.data?.toMap()
+        }
+        if self.httpStatusCode != nil {
+            map["HttpStatusCode"] = self.httpStatusCode!
+        }
+        if self.message != nil {
+            map["Message"] = self.message!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.success != nil {
+            map["Success"] = self.success!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("Code") {
+            self.code = dict["Code"] as! String
+        }
+        if dict.keys.contains("Data") {
+            var model = ListIntentionsResponseBody.Data()
+            model.fromMap(dict["Data"] as! [String: Any])
+            self.data = model
+        }
+        if dict.keys.contains("HttpStatusCode") {
+            self.httpStatusCode = dict["HttpStatusCode"] as! Int32
+        }
+        if dict.keys.contains("Message") {
+            self.message = dict["Message"] as! String
+        }
+        if dict.keys.contains("RequestId") {
+            self.requestId = dict["RequestId"] as! String
+        }
+        if dict.keys.contains("Success") {
+            self.success = dict["Success"] as! Bool
+        }
+    }
+}
+
+public class ListIntentionsResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: ListIntentionsResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") {
+            var model = ListIntentionsResponseBody()
             model.fromMap(dict["body"] as! [String: Any])
             self.body = model
         }
@@ -30339,6 +33847,51 @@ public class ListScriptsRequest : Tea.TeaModel {
 public class ListScriptsResponseBody : Tea.TeaModel {
     public class Scripts : Tea.TeaModel {
         public class List : Tea.TeaModel {
+            public class NluProfile : Tea.TeaModel {
+                public var fcFunction: String?
+
+                public var fcHttpTriggerUrl: String?
+
+                public var fcRegion: String?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.fcFunction != nil {
+                        map["FcFunction"] = self.fcFunction!
+                    }
+                    if self.fcHttpTriggerUrl != nil {
+                        map["FcHttpTriggerUrl"] = self.fcHttpTriggerUrl!
+                    }
+                    if self.fcRegion != nil {
+                        map["FcRegion"] = self.fcRegion!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any]) -> Void {
+                    if dict.keys.contains("FcFunction") {
+                        self.fcFunction = dict["FcFunction"] as! String
+                    }
+                    if dict.keys.contains("FcHttpTriggerUrl") {
+                        self.fcHttpTriggerUrl = dict["FcHttpTriggerUrl"] as! String
+                    }
+                    if dict.keys.contains("FcRegion") {
+                        self.fcRegion = dict["FcRegion"] as! String
+                    }
+                }
+            }
             public var agentKey: String?
 
             public var agentLlm: Bool?
@@ -30367,6 +33920,8 @@ public class ListScriptsResponseBody : Tea.TeaModel {
 
             public var nluEngine: String?
 
+            public var nluProfile: ListScriptsResponseBody.Scripts.List.NluProfile?
+
             public var rejectReason: String?
 
             public var scene: String?
@@ -30393,6 +33948,7 @@ public class ListScriptsResponseBody : Tea.TeaModel {
             }
 
             public override func validate() throws -> Void {
+                try self.nluProfile?.validate()
             }
 
             public override func toMap() -> [String : Any] {
@@ -30438,6 +33994,9 @@ public class ListScriptsResponseBody : Tea.TeaModel {
                 }
                 if self.nluEngine != nil {
                     map["NluEngine"] = self.nluEngine!
+                }
+                if self.nluProfile != nil {
+                    map["NluProfile"] = self.nluProfile?.toMap()
                 }
                 if self.rejectReason != nil {
                     map["RejectReason"] = self.rejectReason!
@@ -30508,6 +34067,11 @@ public class ListScriptsResponseBody : Tea.TeaModel {
                 }
                 if dict.keys.contains("NluEngine") {
                     self.nluEngine = dict["NluEngine"] as! String
+                }
+                if dict.keys.contains("NluProfile") {
+                    var model = ListScriptsResponseBody.Scripts.List.NluProfile()
+                    model.fromMap(dict["NluProfile"] as! [String: Any])
+                    self.nluProfile = model
                 }
                 if dict.keys.contains("RejectReason") {
                     self.rejectReason = dict["RejectReason"] as! String
@@ -32582,6 +36146,831 @@ public class ModifyBatchJobsResponse : Tea.TeaModel {
         }
         if dict.keys.contains("body") {
             var model = ModifyBatchJobsResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
+public class ModifyBeebotIntentRequest : Tea.TeaModel {
+    public class IntentDefinition : Tea.TeaModel {
+        public var aliasName: String?
+
+        public var intentName: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.aliasName != nil {
+                map["AliasName"] = self.aliasName!
+            }
+            if self.intentName != nil {
+                map["IntentName"] = self.intentName!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("AliasName") {
+                self.aliasName = dict["AliasName"] as! String
+            }
+            if dict.keys.contains("IntentName") {
+                self.intentName = dict["IntentName"] as! String
+            }
+        }
+    }
+    public var instanceId: String?
+
+    public var intentDefinition: ModifyBeebotIntentRequest.IntentDefinition?
+
+    public var intentId: Int64?
+
+    public var scriptId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.intentDefinition?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.instanceId != nil {
+            map["InstanceId"] = self.instanceId!
+        }
+        if self.intentDefinition != nil {
+            map["IntentDefinition"] = self.intentDefinition?.toMap()
+        }
+        if self.intentId != nil {
+            map["IntentId"] = self.intentId!
+        }
+        if self.scriptId != nil {
+            map["ScriptId"] = self.scriptId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("InstanceId") {
+            self.instanceId = dict["InstanceId"] as! String
+        }
+        if dict.keys.contains("IntentDefinition") {
+            var model = ModifyBeebotIntentRequest.IntentDefinition()
+            model.fromMap(dict["IntentDefinition"] as! [String: Any])
+            self.intentDefinition = model
+        }
+        if dict.keys.contains("IntentId") {
+            self.intentId = dict["IntentId"] as! Int64
+        }
+        if dict.keys.contains("ScriptId") {
+            self.scriptId = dict["ScriptId"] as! String
+        }
+    }
+}
+
+public class ModifyBeebotIntentShrinkRequest : Tea.TeaModel {
+    public var instanceId: String?
+
+    public var intentDefinitionShrink: String?
+
+    public var intentId: Int64?
+
+    public var scriptId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.instanceId != nil {
+            map["InstanceId"] = self.instanceId!
+        }
+        if self.intentDefinitionShrink != nil {
+            map["IntentDefinition"] = self.intentDefinitionShrink!
+        }
+        if self.intentId != nil {
+            map["IntentId"] = self.intentId!
+        }
+        if self.scriptId != nil {
+            map["ScriptId"] = self.scriptId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("InstanceId") {
+            self.instanceId = dict["InstanceId"] as! String
+        }
+        if dict.keys.contains("IntentDefinition") {
+            self.intentDefinitionShrink = dict["IntentDefinition"] as! String
+        }
+        if dict.keys.contains("IntentId") {
+            self.intentId = dict["IntentId"] as! Int64
+        }
+        if dict.keys.contains("ScriptId") {
+            self.scriptId = dict["ScriptId"] as! String
+        }
+    }
+}
+
+public class ModifyBeebotIntentResponseBody : Tea.TeaModel {
+    public var beebotRequestId: String?
+
+    public var code: String?
+
+    public var httpStatusCode: Int32?
+
+    public var intentId: Int64?
+
+    public var message: String?
+
+    public var requestId: String?
+
+    public var success: Bool?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.beebotRequestId != nil {
+            map["BeebotRequestId"] = self.beebotRequestId!
+        }
+        if self.code != nil {
+            map["Code"] = self.code!
+        }
+        if self.httpStatusCode != nil {
+            map["HttpStatusCode"] = self.httpStatusCode!
+        }
+        if self.intentId != nil {
+            map["IntentId"] = self.intentId!
+        }
+        if self.message != nil {
+            map["Message"] = self.message!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.success != nil {
+            map["Success"] = self.success!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("BeebotRequestId") {
+            self.beebotRequestId = dict["BeebotRequestId"] as! String
+        }
+        if dict.keys.contains("Code") {
+            self.code = dict["Code"] as! String
+        }
+        if dict.keys.contains("HttpStatusCode") {
+            self.httpStatusCode = dict["HttpStatusCode"] as! Int32
+        }
+        if dict.keys.contains("IntentId") {
+            self.intentId = dict["IntentId"] as! Int64
+        }
+        if dict.keys.contains("Message") {
+            self.message = dict["Message"] as! String
+        }
+        if dict.keys.contains("RequestId") {
+            self.requestId = dict["RequestId"] as! String
+        }
+        if dict.keys.contains("Success") {
+            self.success = dict["Success"] as! Bool
+        }
+    }
+}
+
+public class ModifyBeebotIntentResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: ModifyBeebotIntentResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") {
+            var model = ModifyBeebotIntentResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
+public class ModifyBeebotIntentLgfRequest : Tea.TeaModel {
+    public class LgfDefinition : Tea.TeaModel {
+        public var intentId: Int64?
+
+        public var ruleText: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.intentId != nil {
+                map["IntentId"] = self.intentId!
+            }
+            if self.ruleText != nil {
+                map["RuleText"] = self.ruleText!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("IntentId") {
+                self.intentId = dict["IntentId"] as! Int64
+            }
+            if dict.keys.contains("RuleText") {
+                self.ruleText = dict["RuleText"] as! String
+            }
+        }
+    }
+    public var instanceId: String?
+
+    public var lgfDefinition: ModifyBeebotIntentLgfRequest.LgfDefinition?
+
+    public var lgfId: Int64?
+
+    public var scriptId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.lgfDefinition?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.instanceId != nil {
+            map["InstanceId"] = self.instanceId!
+        }
+        if self.lgfDefinition != nil {
+            map["LgfDefinition"] = self.lgfDefinition?.toMap()
+        }
+        if self.lgfId != nil {
+            map["LgfId"] = self.lgfId!
+        }
+        if self.scriptId != nil {
+            map["ScriptId"] = self.scriptId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("InstanceId") {
+            self.instanceId = dict["InstanceId"] as! String
+        }
+        if dict.keys.contains("LgfDefinition") {
+            var model = ModifyBeebotIntentLgfRequest.LgfDefinition()
+            model.fromMap(dict["LgfDefinition"] as! [String: Any])
+            self.lgfDefinition = model
+        }
+        if dict.keys.contains("LgfId") {
+            self.lgfId = dict["LgfId"] as! Int64
+        }
+        if dict.keys.contains("ScriptId") {
+            self.scriptId = dict["ScriptId"] as! String
+        }
+    }
+}
+
+public class ModifyBeebotIntentLgfShrinkRequest : Tea.TeaModel {
+    public var instanceId: String?
+
+    public var lgfDefinitionShrink: String?
+
+    public var lgfId: Int64?
+
+    public var scriptId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.instanceId != nil {
+            map["InstanceId"] = self.instanceId!
+        }
+        if self.lgfDefinitionShrink != nil {
+            map["LgfDefinition"] = self.lgfDefinitionShrink!
+        }
+        if self.lgfId != nil {
+            map["LgfId"] = self.lgfId!
+        }
+        if self.scriptId != nil {
+            map["ScriptId"] = self.scriptId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("InstanceId") {
+            self.instanceId = dict["InstanceId"] as! String
+        }
+        if dict.keys.contains("LgfDefinition") {
+            self.lgfDefinitionShrink = dict["LgfDefinition"] as! String
+        }
+        if dict.keys.contains("LgfId") {
+            self.lgfId = dict["LgfId"] as! Int64
+        }
+        if dict.keys.contains("ScriptId") {
+            self.scriptId = dict["ScriptId"] as! String
+        }
+    }
+}
+
+public class ModifyBeebotIntentLgfResponseBody : Tea.TeaModel {
+    public var beebotRequestId: String?
+
+    public var code: String?
+
+    public var httpStatusCode: Int32?
+
+    public var lgfId: Int64?
+
+    public var message: String?
+
+    public var requestId: String?
+
+    public var success: Bool?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.beebotRequestId != nil {
+            map["BeebotRequestId"] = self.beebotRequestId!
+        }
+        if self.code != nil {
+            map["Code"] = self.code!
+        }
+        if self.httpStatusCode != nil {
+            map["HttpStatusCode"] = self.httpStatusCode!
+        }
+        if self.lgfId != nil {
+            map["LgfId"] = self.lgfId!
+        }
+        if self.message != nil {
+            map["Message"] = self.message!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.success != nil {
+            map["Success"] = self.success!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("BeebotRequestId") {
+            self.beebotRequestId = dict["BeebotRequestId"] as! String
+        }
+        if dict.keys.contains("Code") {
+            self.code = dict["Code"] as! String
+        }
+        if dict.keys.contains("HttpStatusCode") {
+            self.httpStatusCode = dict["HttpStatusCode"] as! Int32
+        }
+        if dict.keys.contains("LgfId") {
+            self.lgfId = dict["LgfId"] as! Int64
+        }
+        if dict.keys.contains("Message") {
+            self.message = dict["Message"] as! String
+        }
+        if dict.keys.contains("RequestId") {
+            self.requestId = dict["RequestId"] as! String
+        }
+        if dict.keys.contains("Success") {
+            self.success = dict["Success"] as! Bool
+        }
+    }
+}
+
+public class ModifyBeebotIntentLgfResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: ModifyBeebotIntentLgfResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") {
+            var model = ModifyBeebotIntentLgfResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
+public class ModifyBeebotIntentUserSayRequest : Tea.TeaModel {
+    public class UserSayDefinition : Tea.TeaModel {
+        public var content: String?
+
+        public var intentId: Int64?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.content != nil {
+                map["Content"] = self.content!
+            }
+            if self.intentId != nil {
+                map["IntentId"] = self.intentId!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("Content") {
+                self.content = dict["Content"] as! String
+            }
+            if dict.keys.contains("IntentId") {
+                self.intentId = dict["IntentId"] as! Int64
+            }
+        }
+    }
+    public var instanceId: String?
+
+    public var scriptId: String?
+
+    public var userSayDefinition: ModifyBeebotIntentUserSayRequest.UserSayDefinition?
+
+    public var userSayId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.userSayDefinition?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.instanceId != nil {
+            map["InstanceId"] = self.instanceId!
+        }
+        if self.scriptId != nil {
+            map["ScriptId"] = self.scriptId!
+        }
+        if self.userSayDefinition != nil {
+            map["UserSayDefinition"] = self.userSayDefinition?.toMap()
+        }
+        if self.userSayId != nil {
+            map["UserSayId"] = self.userSayId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("InstanceId") {
+            self.instanceId = dict["InstanceId"] as! String
+        }
+        if dict.keys.contains("ScriptId") {
+            self.scriptId = dict["ScriptId"] as! String
+        }
+        if dict.keys.contains("UserSayDefinition") {
+            var model = ModifyBeebotIntentUserSayRequest.UserSayDefinition()
+            model.fromMap(dict["UserSayDefinition"] as! [String: Any])
+            self.userSayDefinition = model
+        }
+        if dict.keys.contains("UserSayId") {
+            self.userSayId = dict["UserSayId"] as! String
+        }
+    }
+}
+
+public class ModifyBeebotIntentUserSayShrinkRequest : Tea.TeaModel {
+    public var instanceId: String?
+
+    public var scriptId: String?
+
+    public var userSayDefinitionShrink: String?
+
+    public var userSayId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.instanceId != nil {
+            map["InstanceId"] = self.instanceId!
+        }
+        if self.scriptId != nil {
+            map["ScriptId"] = self.scriptId!
+        }
+        if self.userSayDefinitionShrink != nil {
+            map["UserSayDefinition"] = self.userSayDefinitionShrink!
+        }
+        if self.userSayId != nil {
+            map["UserSayId"] = self.userSayId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("InstanceId") {
+            self.instanceId = dict["InstanceId"] as! String
+        }
+        if dict.keys.contains("ScriptId") {
+            self.scriptId = dict["ScriptId"] as! String
+        }
+        if dict.keys.contains("UserSayDefinition") {
+            self.userSayDefinitionShrink = dict["UserSayDefinition"] as! String
+        }
+        if dict.keys.contains("UserSayId") {
+            self.userSayId = dict["UserSayId"] as! String
+        }
+    }
+}
+
+public class ModifyBeebotIntentUserSayResponseBody : Tea.TeaModel {
+    public var beebotRequestId: String?
+
+    public var code: String?
+
+    public var httpStatusCode: Int32?
+
+    public var message: String?
+
+    public var requestId: String?
+
+    public var success: Bool?
+
+    public var userSayId: Int64?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.beebotRequestId != nil {
+            map["BeebotRequestId"] = self.beebotRequestId!
+        }
+        if self.code != nil {
+            map["Code"] = self.code!
+        }
+        if self.httpStatusCode != nil {
+            map["HttpStatusCode"] = self.httpStatusCode!
+        }
+        if self.message != nil {
+            map["Message"] = self.message!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.success != nil {
+            map["Success"] = self.success!
+        }
+        if self.userSayId != nil {
+            map["UserSayId"] = self.userSayId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("BeebotRequestId") {
+            self.beebotRequestId = dict["BeebotRequestId"] as! String
+        }
+        if dict.keys.contains("Code") {
+            self.code = dict["Code"] as! String
+        }
+        if dict.keys.contains("HttpStatusCode") {
+            self.httpStatusCode = dict["HttpStatusCode"] as! Int32
+        }
+        if dict.keys.contains("Message") {
+            self.message = dict["Message"] as! String
+        }
+        if dict.keys.contains("RequestId") {
+            self.requestId = dict["RequestId"] as! String
+        }
+        if dict.keys.contains("Success") {
+            self.success = dict["Success"] as! Bool
+        }
+        if dict.keys.contains("UserSayId") {
+            self.userSayId = dict["UserSayId"] as! Int64
+        }
+    }
+}
+
+public class ModifyBeebotIntentUserSayResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: ModifyBeebotIntentUserSayResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") {
+            var model = ModifyBeebotIntentUserSayResponseBody()
             model.fromMap(dict["body"] as! [String: Any])
             self.body = model
         }
