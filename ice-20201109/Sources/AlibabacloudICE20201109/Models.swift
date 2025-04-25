@@ -17633,6 +17633,8 @@ public class DeleteMediaConnectFlowResponse : Tea.TeaModel {
 public class DeleteMediaConnectFlowInputRequest : Tea.TeaModel {
     public var flowId: String?
 
+    public var inputName: String?
+
     public override init() {
         super.init()
     }
@@ -17650,12 +17652,18 @@ public class DeleteMediaConnectFlowInputRequest : Tea.TeaModel {
         if self.flowId != nil {
             map["FlowId"] = self.flowId!
         }
+        if self.inputName != nil {
+            map["InputName"] = self.inputName!
+        }
         return map
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
         if dict.keys.contains("FlowId") {
             self.flowId = dict["FlowId"] as! String
+        }
+        if dict.keys.contains("InputName") {
+            self.inputName = dict["InputName"] as! String
         }
     }
 }
@@ -30293,6 +30301,8 @@ public class GetMediaConnectFlowResponseBody : Tea.TeaModel {
     public class Content : Tea.TeaModel {
         public var createTime: String?
 
+        public var flowFailover: String?
+
         public var flowId: String?
 
         public var flowName: String?
@@ -30318,6 +30328,9 @@ public class GetMediaConnectFlowResponseBody : Tea.TeaModel {
             if self.createTime != nil {
                 map["CreateTime"] = self.createTime!
             }
+            if self.flowFailover != nil {
+                map["FlowFailover"] = self.flowFailover!
+            }
             if self.flowId != nil {
                 map["FlowId"] = self.flowId!
             }
@@ -30336,6 +30349,9 @@ public class GetMediaConnectFlowResponseBody : Tea.TeaModel {
         public override func fromMap(_ dict: [String: Any]) -> Void {
             if dict.keys.contains("CreateTime") {
                 self.createTime = dict["CreateTime"] as! String
+            }
+            if dict.keys.contains("FlowFailover") {
+                self.flowFailover = dict["FlowFailover"] as! String
             }
             if dict.keys.contains("FlowId") {
                 self.flowId = dict["FlowId"] as! String
@@ -30488,6 +30504,24 @@ public class GetMediaConnectFlowInputRequest : Tea.TeaModel {
 
 public class GetMediaConnectFlowInputResponseBody : Tea.TeaModel {
     public class Content : Tea.TeaModel {
+        public var backupCidrs: String?
+
+        public var backupCreateTime: String?
+
+        public var backupInputName: String?
+
+        public var backupInputStatus: String?
+
+        public var backupInputUrl: String?
+
+        public var backupMaxBitrate: Int32?
+
+        public var backupSrtLatency: Int32?
+
+        public var backupSrtPassphrase: String?
+
+        public var backupSrtPbkeyLen: Int32?
+
         public var cidrs: String?
 
         public var createTime: String?
@@ -30495,6 +30529,8 @@ public class GetMediaConnectFlowInputResponseBody : Tea.TeaModel {
         public var inputName: String?
 
         public var inputProtocol: String?
+
+        public var inputStatus: String?
 
         public var inputUrl: String?
 
@@ -30524,6 +30560,33 @@ public class GetMediaConnectFlowInputResponseBody : Tea.TeaModel {
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
+            if self.backupCidrs != nil {
+                map["BackupCidrs"] = self.backupCidrs!
+            }
+            if self.backupCreateTime != nil {
+                map["BackupCreateTime"] = self.backupCreateTime!
+            }
+            if self.backupInputName != nil {
+                map["BackupInputName"] = self.backupInputName!
+            }
+            if self.backupInputStatus != nil {
+                map["BackupInputStatus"] = self.backupInputStatus!
+            }
+            if self.backupInputUrl != nil {
+                map["BackupInputUrl"] = self.backupInputUrl!
+            }
+            if self.backupMaxBitrate != nil {
+                map["BackupMaxBitrate"] = self.backupMaxBitrate!
+            }
+            if self.backupSrtLatency != nil {
+                map["BackupSrtLatency"] = self.backupSrtLatency!
+            }
+            if self.backupSrtPassphrase != nil {
+                map["BackupSrtPassphrase"] = self.backupSrtPassphrase!
+            }
+            if self.backupSrtPbkeyLen != nil {
+                map["BackupSrtPbkeyLen"] = self.backupSrtPbkeyLen!
+            }
             if self.cidrs != nil {
                 map["Cidrs"] = self.cidrs!
             }
@@ -30535,6 +30598,9 @@ public class GetMediaConnectFlowInputResponseBody : Tea.TeaModel {
             }
             if self.inputProtocol != nil {
                 map["InputProtocol"] = self.inputProtocol!
+            }
+            if self.inputStatus != nil {
+                map["InputStatus"] = self.inputStatus!
             }
             if self.inputUrl != nil {
                 map["InputUrl"] = self.inputUrl!
@@ -30561,6 +30627,33 @@ public class GetMediaConnectFlowInputResponseBody : Tea.TeaModel {
         }
 
         public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("BackupCidrs") {
+                self.backupCidrs = dict["BackupCidrs"] as! String
+            }
+            if dict.keys.contains("BackupCreateTime") {
+                self.backupCreateTime = dict["BackupCreateTime"] as! String
+            }
+            if dict.keys.contains("BackupInputName") {
+                self.backupInputName = dict["BackupInputName"] as! String
+            }
+            if dict.keys.contains("BackupInputStatus") {
+                self.backupInputStatus = dict["BackupInputStatus"] as! String
+            }
+            if dict.keys.contains("BackupInputUrl") {
+                self.backupInputUrl = dict["BackupInputUrl"] as! String
+            }
+            if dict.keys.contains("BackupMaxBitrate") {
+                self.backupMaxBitrate = dict["BackupMaxBitrate"] as! Int32
+            }
+            if dict.keys.contains("BackupSrtLatency") {
+                self.backupSrtLatency = dict["BackupSrtLatency"] as! Int32
+            }
+            if dict.keys.contains("BackupSrtPassphrase") {
+                self.backupSrtPassphrase = dict["BackupSrtPassphrase"] as! String
+            }
+            if dict.keys.contains("BackupSrtPbkeyLen") {
+                self.backupSrtPbkeyLen = dict["BackupSrtPbkeyLen"] as! Int32
+            }
             if dict.keys.contains("Cidrs") {
                 self.cidrs = dict["Cidrs"] as! String
             }
@@ -30572,6 +30665,9 @@ public class GetMediaConnectFlowInputResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("InputProtocol") {
                 self.inputProtocol = dict["InputProtocol"] as! String
+            }
+            if dict.keys.contains("InputStatus") {
+                self.inputStatus = dict["InputStatus"] as! String
             }
             if dict.keys.contains("InputUrl") {
                 self.inputUrl = dict["InputUrl"] as! String
@@ -30745,6 +30841,8 @@ public class GetMediaConnectFlowOutputResponseBody : Tea.TeaModel {
 
         public var createTime: String?
 
+        public var forbid: String?
+
         public var outputName: String?
 
         public var outputProtocol: String?
@@ -30783,6 +30881,9 @@ public class GetMediaConnectFlowOutputResponseBody : Tea.TeaModel {
             if self.createTime != nil {
                 map["CreateTime"] = self.createTime!
             }
+            if self.forbid != nil {
+                map["Forbid"] = self.forbid!
+            }
             if self.outputName != nil {
                 map["OutputName"] = self.outputName!
             }
@@ -30819,6 +30920,9 @@ public class GetMediaConnectFlowOutputResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("CreateTime") {
                 self.createTime = dict["CreateTime"] as! String
+            }
+            if dict.keys.contains("Forbid") {
+                self.forbid = dict["Forbid"] as! String
             }
             if dict.keys.contains("OutputName") {
                 self.outputName = dict["OutputName"] as! String
@@ -97827,6 +97931,8 @@ public class UpdateMediaConnectFlowInputRequest : Tea.TeaModel {
 
     public var inputFromUrl: String?
 
+    public var inputName: String?
+
     public var maxBitrate: Int32?
 
     public var srtLatency: Int32?
@@ -97858,6 +97964,9 @@ public class UpdateMediaConnectFlowInputRequest : Tea.TeaModel {
         if self.inputFromUrl != nil {
             map["InputFromUrl"] = self.inputFromUrl!
         }
+        if self.inputName != nil {
+            map["InputName"] = self.inputName!
+        }
         if self.maxBitrate != nil {
             map["MaxBitrate"] = self.maxBitrate!
         }
@@ -97882,6 +97991,9 @@ public class UpdateMediaConnectFlowInputRequest : Tea.TeaModel {
         }
         if dict.keys.contains("InputFromUrl") {
             self.inputFromUrl = dict["InputFromUrl"] as! String
+        }
+        if dict.keys.contains("InputName") {
+            self.inputName = dict["InputName"] as! String
         }
         if dict.keys.contains("MaxBitrate") {
             self.maxBitrate = dict["MaxBitrate"] as! Int32
