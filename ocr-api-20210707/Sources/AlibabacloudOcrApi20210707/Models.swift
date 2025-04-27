@@ -837,6 +837,8 @@ public class RecognizeAllTextRequest : Tea.TeaModel {
         }
     }
     public class IdCardConfig : Tea.TeaModel {
+        public var llmRec: Bool?
+
         public var outputIdCardQuality: Bool?
 
         public override init() {
@@ -853,6 +855,9 @@ public class RecognizeAllTextRequest : Tea.TeaModel {
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
+            if self.llmRec != nil {
+                map["Llm_rec"] = self.llmRec!
+            }
             if self.outputIdCardQuality != nil {
                 map["OutputIdCardQuality"] = self.outputIdCardQuality!
             }
@@ -860,6 +865,9 @@ public class RecognizeAllTextRequest : Tea.TeaModel {
         }
 
         public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("Llm_rec") {
+                self.llmRec = dict["Llm_rec"] as! Bool
+            }
             if dict.keys.contains("OutputIdCardQuality") {
                 self.outputIdCardQuality = dict["OutputIdCardQuality"] as! Bool
             }
@@ -9391,6 +9399,8 @@ public class RecognizeHouseholdResponse : Tea.TeaModel {
 }
 
 public class RecognizeIdcardRequest : Tea.TeaModel {
+    public var llmRec: Bool?
+
     public var outputFigure: Bool?
 
     public var outputQualityInfo: Bool?
@@ -9413,6 +9423,9 @@ public class RecognizeIdcardRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.llmRec != nil {
+            map["Llm_rec"] = self.llmRec!
+        }
         if self.outputFigure != nil {
             map["OutputFigure"] = self.outputFigure!
         }
@@ -9429,6 +9442,9 @@ public class RecognizeIdcardRequest : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("Llm_rec") {
+            self.llmRec = dict["Llm_rec"] as! Bool
+        }
         if dict.keys.contains("OutputFigure") {
             self.outputFigure = dict["OutputFigure"] as! Bool
         }

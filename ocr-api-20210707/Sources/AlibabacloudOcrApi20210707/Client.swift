@@ -1510,6 +1510,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func recognizeIdcardWithOptions(_ request: RecognizeIdcardRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> RecognizeIdcardResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.llmRec)) {
+            query["Llm_rec"] = request.llmRec!;
+        }
         if (!TeaUtils.Client.isUnset(request.outputFigure)) {
             query["OutputFigure"] = request.outputFigure!;
         }
