@@ -6802,6 +6802,257 @@ public class Id2MetaVerifyResponse : Tea.TeaModel {
     }
 }
 
+public class Id2MetaVerifyWithOCRRequest : Tea.TeaModel {
+    public var certFile: String?
+
+    public var certNationalFile: String?
+
+    public var certNationalUrl: String?
+
+    public var certUrl: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.certFile != nil {
+            map["CertFile"] = self.certFile!
+        }
+        if self.certNationalFile != nil {
+            map["CertNationalFile"] = self.certNationalFile!
+        }
+        if self.certNationalUrl != nil {
+            map["CertNationalUrl"] = self.certNationalUrl!
+        }
+        if self.certUrl != nil {
+            map["CertUrl"] = self.certUrl!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("CertFile") {
+            self.certFile = dict["CertFile"] as! String
+        }
+        if dict.keys.contains("CertNationalFile") {
+            self.certNationalFile = dict["CertNationalFile"] as! String
+        }
+        if dict.keys.contains("CertNationalUrl") {
+            self.certNationalUrl = dict["CertNationalUrl"] as! String
+        }
+        if dict.keys.contains("CertUrl") {
+            self.certUrl = dict["CertUrl"] as! String
+        }
+    }
+}
+
+public class Id2MetaVerifyWithOCRAdvanceRequest : Tea.TeaModel {
+    public var certFileObject: InputStream?
+
+    public var certNationalFileObject: InputStream?
+
+    public var certNationalUrl: String?
+
+    public var certUrl: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.certFileObject != nil {
+            map["CertFile"] = self.certFileObject!
+        }
+        if self.certNationalFileObject != nil {
+            map["CertNationalFile"] = self.certNationalFileObject!
+        }
+        if self.certNationalUrl != nil {
+            map["CertNationalUrl"] = self.certNationalUrl!
+        }
+        if self.certUrl != nil {
+            map["CertUrl"] = self.certUrl!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("CertFile") {
+            self.certFileObject = dict["CertFile"] as! InputStream
+        }
+        if dict.keys.contains("CertNationalFile") {
+            self.certNationalFileObject = dict["CertNationalFile"] as! InputStream
+        }
+        if dict.keys.contains("CertNationalUrl") {
+            self.certNationalUrl = dict["CertNationalUrl"] as! String
+        }
+        if dict.keys.contains("CertUrl") {
+            self.certUrl = dict["CertUrl"] as! String
+        }
+    }
+}
+
+public class Id2MetaVerifyWithOCRResponseBody : Tea.TeaModel {
+    public class ResultObject : Tea.TeaModel {
+        public var bizCode: String?
+
+        public var cardInfo: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.bizCode != nil {
+                map["BizCode"] = self.bizCode!
+            }
+            if self.cardInfo != nil {
+                map["CardInfo"] = self.cardInfo!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("BizCode") {
+                self.bizCode = dict["BizCode"] as! String
+            }
+            if dict.keys.contains("CardInfo") {
+                self.cardInfo = dict["CardInfo"] as! String
+            }
+        }
+    }
+    public var code: String?
+
+    public var message: String?
+
+    public var requestId: String?
+
+    public var resultObject: Id2MetaVerifyWithOCRResponseBody.ResultObject?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.resultObject?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.code != nil {
+            map["Code"] = self.code!
+        }
+        if self.message != nil {
+            map["Message"] = self.message!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.resultObject != nil {
+            map["ResultObject"] = self.resultObject?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("Code") {
+            self.code = dict["Code"] as! String
+        }
+        if dict.keys.contains("Message") {
+            self.message = dict["Message"] as! String
+        }
+        if dict.keys.contains("RequestId") {
+            self.requestId = dict["RequestId"] as! String
+        }
+        if dict.keys.contains("ResultObject") {
+            var model = Id2MetaVerifyWithOCRResponseBody.ResultObject()
+            model.fromMap(dict["ResultObject"] as! [String: Any])
+            self.resultObject = model
+        }
+    }
+}
+
+public class Id2MetaVerifyWithOCRResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: Id2MetaVerifyWithOCRResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") {
+            var model = Id2MetaVerifyWithOCRResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
 public class InitFaceVerifyRequest : Tea.TeaModel {
     public var appQualityCheck: String?
 

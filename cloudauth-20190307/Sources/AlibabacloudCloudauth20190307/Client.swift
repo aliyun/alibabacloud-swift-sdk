@@ -1319,6 +1319,143 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func id2MetaVerifyWithOCRWithOptions(_ request: Id2MetaVerifyWithOCRRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> Id2MetaVerifyWithOCRResponse {
+        try TeaUtils.Client.validateModel(request)
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.certFile)) {
+            body["CertFile"] = request.certFile ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.certNationalFile)) {
+            body["CertNationalFile"] = request.certNationalFile ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.certNationalUrl)) {
+            body["CertNationalUrl"] = request.certNationalUrl ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.certUrl)) {
+            body["CertUrl"] = request.certUrl ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "Id2MetaVerifyWithOCR",
+            "version": "2019-03-07",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(Id2MetaVerifyWithOCRResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func id2MetaVerifyWithOCR(_ request: Id2MetaVerifyWithOCRRequest) async throws -> Id2MetaVerifyWithOCRResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await id2MetaVerifyWithOCRWithOptions(request as! Id2MetaVerifyWithOCRRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func id2MetaVerifyWithOCRAdvance(_ request: Id2MetaVerifyWithOCRAdvanceRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> Id2MetaVerifyWithOCRResponse {
+        var accessKeyId: String = try await self._credential!.getAccessKeyId()
+        var accessKeySecret: String = try await self._credential!.getAccessKeySecret()
+        var securityToken: String = try await self._credential!.getSecurityToken()
+        var credentialType: String = self._credential!.getType()
+        var openPlatformEndpoint: String = self._openPlatformEndpoint ?? ""
+        if (TeaUtils.Client.empty(openPlatformEndpoint)) {
+            openPlatformEndpoint = "openplatform.aliyuncs.com"
+        }
+        if (TeaUtils.Client.isUnset(credentialType)) {
+            credentialType = "access_key"
+        }
+        var authConfig: AlibabacloudOpenApi.Config = AlibabacloudOpenApi.Config([
+            "accessKeyId": accessKeyId as! String,
+            "accessKeySecret": accessKeySecret as! String,
+            "securityToken": securityToken as! String,
+            "type": credentialType as! String,
+            "endpoint": openPlatformEndpoint as! String,
+            "protocol": self._protocol ?? "",
+            "regionId": self._regionId ?? ""
+        ])
+        var authClient: AlibabacloudOpenPlatform20191219.Client = try AlibabacloudOpenPlatform20191219.Client(authConfig)
+        var authRequest: AlibabacloudOpenPlatform20191219.AuthorizeFileUploadRequest = AlibabacloudOpenPlatform20191219.AuthorizeFileUploadRequest([
+            "product": "Cloudauth",
+            "regionId": self._regionId ?? ""
+        ])
+        var authResponse: AlibabacloudOpenPlatform20191219.AuthorizeFileUploadResponse = AlibabacloudOpenPlatform20191219.AuthorizeFileUploadResponse([:])
+        var ossConfig: AlibabaCloudOssSdk.Config = AlibabaCloudOssSdk.Config([
+            "accessKeyId": accessKeyId as! String,
+            "accessKeySecret": accessKeySecret as! String,
+            "type": "access_key",
+            "protocol": self._protocol ?? "",
+            "regionId": self._regionId ?? ""
+        ])
+        var ossClient: AlibabaCloudOssSdk.Client = try AlibabaCloudOssSdk.Client(ossConfig)
+        var fileObj: TeaFileForm.FileField = TeaFileForm.FileField([:])
+        var ossHeader: AlibabaCloudOssSdk.PostObjectRequest.Header = AlibabaCloudOssSdk.PostObjectRequest.Header([:])
+        var uploadRequest: AlibabaCloudOssSdk.PostObjectRequest = AlibabaCloudOssSdk.PostObjectRequest([:])
+        var ossRuntime: AlibabaCloudOSSUtil.RuntimeOptions = AlibabaCloudOSSUtil.RuntimeOptions([:])
+        AlibabaCloudOpenApiUtil.Client.convert(runtime, ossRuntime)
+        var id2MetaVerifyWithOCRReq: Id2MetaVerifyWithOCRRequest = Id2MetaVerifyWithOCRRequest([:])
+        AlibabaCloudOpenApiUtil.Client.convert(request, id2MetaVerifyWithOCRReq)
+        if (!TeaUtils.Client.isUnset(request.certFileObject)) {
+            authResponse = try await authClient.authorizeFileUploadWithOptions(authRequest as! AlibabacloudOpenPlatform20191219.AuthorizeFileUploadRequest, runtime as! TeaUtils.RuntimeOptions)
+            ossConfig.accessKeyId = authResponse.body!.accessKeyId
+            ossConfig.endpoint = AlibabaCloudOpenApiUtil.Client.getEndpoint(authResponse.body!.endpoint, authResponse.body!.useAccelerate, self._endpointType)
+            ossClient = try AlibabaCloudOssSdk.Client(ossConfig)
+            fileObj = TeaFileForm.FileField([
+                "filename": authResponse.body!.objectKey ?? "",
+                "content": request.certFileObject!,
+                "contentType": ""
+            ])
+            ossHeader = AlibabaCloudOssSdk.PostObjectRequest.Header([
+                "accessKeyId": authResponse.body!.accessKeyId ?? "",
+                "policy": authResponse.body!.encodedPolicy ?? "",
+                "signature": authResponse.body!.signature ?? "",
+                "key": authResponse.body!.objectKey ?? "",
+                "file": fileObj as! TeaFileForm.FileField,
+                "successActionStatus": "201"
+            ])
+            uploadRequest = AlibabaCloudOssSdk.PostObjectRequest([
+                "bucketName": authResponse.body!.bucket ?? "",
+                "header": ossHeader as! AlibabaCloudOssSdk.PostObjectRequest.Header
+            ])
+            try await ossClient.postObject(uploadRequest as! AlibabaCloudOssSdk.PostObjectRequest, ossRuntime as! AlibabaCloudOSSUtil.RuntimeOptions)
+            id2MetaVerifyWithOCRReq.certFile = "http://" + (authResponse.body!.bucket ?? "") + "." + (authResponse.body!.endpoint ?? "") + "/" + (authResponse.body!.objectKey ?? "")
+        }
+        if (!TeaUtils.Client.isUnset(request.certNationalFileObject)) {
+            authResponse = try await authClient.authorizeFileUploadWithOptions(authRequest as! AlibabacloudOpenPlatform20191219.AuthorizeFileUploadRequest, runtime as! TeaUtils.RuntimeOptions)
+            ossConfig.accessKeyId = authResponse.body!.accessKeyId
+            ossConfig.endpoint = AlibabaCloudOpenApiUtil.Client.getEndpoint(authResponse.body!.endpoint, authResponse.body!.useAccelerate, self._endpointType)
+            ossClient = try AlibabaCloudOssSdk.Client(ossConfig)
+            fileObj = TeaFileForm.FileField([
+                "filename": authResponse.body!.objectKey ?? "",
+                "content": request.certNationalFileObject!,
+                "contentType": ""
+            ])
+            ossHeader = AlibabaCloudOssSdk.PostObjectRequest.Header([
+                "accessKeyId": authResponse.body!.accessKeyId ?? "",
+                "policy": authResponse.body!.encodedPolicy ?? "",
+                "signature": authResponse.body!.signature ?? "",
+                "key": authResponse.body!.objectKey ?? "",
+                "file": fileObj as! TeaFileForm.FileField,
+                "successActionStatus": "201"
+            ])
+            uploadRequest = AlibabaCloudOssSdk.PostObjectRequest([
+                "bucketName": authResponse.body!.bucket ?? "",
+                "header": ossHeader as! AlibabaCloudOssSdk.PostObjectRequest.Header
+            ])
+            try await ossClient.postObject(uploadRequest as! AlibabaCloudOssSdk.PostObjectRequest, ossRuntime as! AlibabaCloudOSSUtil.RuntimeOptions)
+            id2MetaVerifyWithOCRReq.certNationalFile = "http://" + (authResponse.body!.bucket ?? "") + "." + (authResponse.body!.endpoint ?? "") + "/" + (authResponse.body!.objectKey ?? "")
+        }
+        var id2MetaVerifyWithOCRResp: Id2MetaVerifyWithOCRResponse = try await id2MetaVerifyWithOCRWithOptions(id2MetaVerifyWithOCRReq as! Id2MetaVerifyWithOCRRequest, runtime as! TeaUtils.RuntimeOptions)
+        return id2MetaVerifyWithOCRResp as! Id2MetaVerifyWithOCRResponse
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func initFaceVerifyWithOptions(_ request: InitFaceVerifyRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> InitFaceVerifyResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
