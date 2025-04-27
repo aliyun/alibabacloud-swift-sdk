@@ -5,6 +5,131 @@ import AlibabacloudOpenApi
 import AlibabaCloudOpenApiUtil
 import AlibabacloudEndpointUtil
 
+public class AcceptRCInquiredSystemEventRequest : Tea.TeaModel {
+    public var eventId: String?
+
+    public var regionId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.eventId != nil {
+            map["EventId"] = self.eventId!
+        }
+        if self.regionId != nil {
+            map["RegionId"] = self.regionId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("EventId") {
+            self.eventId = dict["EventId"] as! String
+        }
+        if dict.keys.contains("RegionId") {
+            self.regionId = dict["RegionId"] as! String
+        }
+    }
+}
+
+public class AcceptRCInquiredSystemEventResponseBody : Tea.TeaModel {
+    public var orderId: String?
+
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.orderId != nil {
+            map["OrderId"] = self.orderId!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("OrderId") {
+            self.orderId = dict["OrderId"] as! String
+        }
+        if dict.keys.contains("RequestId") {
+            self.requestId = dict["RequestId"] as! String
+        }
+    }
+}
+
+public class AcceptRCInquiredSystemEventResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: AcceptRCInquiredSystemEventResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") {
+            var model = AcceptRCInquiredSystemEventResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
 public class ActivateMigrationTargetInstanceRequest : Tea.TeaModel {
     public var DBInstanceName: String?
 
@@ -56097,6 +56222,1386 @@ public class DescribeRCInstanceAttributeResponse : Tea.TeaModel {
         }
         if dict.keys.contains("body") {
             var model = DescribeRCInstanceAttributeResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
+public class DescribeRCInstanceDdosCountRequest : Tea.TeaModel {
+    public var ddosRegionId: String?
+
+    public var instanceType: String?
+
+    public var regionId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.ddosRegionId != nil {
+            map["DdosRegionId"] = self.ddosRegionId!
+        }
+        if self.instanceType != nil {
+            map["InstanceType"] = self.instanceType!
+        }
+        if self.regionId != nil {
+            map["RegionId"] = self.regionId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("DdosRegionId") {
+            self.ddosRegionId = dict["DdosRegionId"] as! String
+        }
+        if dict.keys.contains("InstanceType") {
+            self.instanceType = dict["InstanceType"] as! String
+        }
+        if dict.keys.contains("RegionId") {
+            self.regionId = dict["RegionId"] as! String
+        }
+    }
+}
+
+public class DescribeRCInstanceDdosCountResponseBody : Tea.TeaModel {
+    public class DdosCount : Tea.TeaModel {
+        public var blackholeCount: String?
+
+        public var defenseCount: String?
+
+        public var instacenCount: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.blackholeCount != nil {
+                map["BlackholeCount"] = self.blackholeCount!
+            }
+            if self.defenseCount != nil {
+                map["DefenseCount"] = self.defenseCount!
+            }
+            if self.instacenCount != nil {
+                map["InstacenCount"] = self.instacenCount!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("BlackholeCount") {
+                self.blackholeCount = dict["BlackholeCount"] as! String
+            }
+            if dict.keys.contains("DefenseCount") {
+                self.defenseCount = dict["DefenseCount"] as! String
+            }
+            if dict.keys.contains("InstacenCount") {
+                self.instacenCount = dict["InstacenCount"] as! String
+            }
+        }
+    }
+    public var ddosCount: DescribeRCInstanceDdosCountResponseBody.DdosCount?
+
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.ddosCount?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.ddosCount != nil {
+            map["DdosCount"] = self.ddosCount?.toMap()
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("DdosCount") {
+            var model = DescribeRCInstanceDdosCountResponseBody.DdosCount()
+            model.fromMap(dict["DdosCount"] as! [String: Any])
+            self.ddosCount = model
+        }
+        if dict.keys.contains("RequestId") {
+            self.requestId = dict["RequestId"] as! String
+        }
+    }
+}
+
+public class DescribeRCInstanceDdosCountResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: DescribeRCInstanceDdosCountResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") {
+            var model = DescribeRCInstanceDdosCountResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
+public class DescribeRCInstanceHistoryEventsRequest : Tea.TeaModel {
+    public class EventPublishTime : Tea.TeaModel {
+        public var end: String?
+
+        public var start: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.end != nil {
+                map["End"] = self.end!
+            }
+            if self.start != nil {
+                map["Start"] = self.start!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("End") {
+                self.end = dict["End"] as! String
+            }
+            if dict.keys.contains("Start") {
+                self.start = dict["Start"] as! String
+            }
+        }
+    }
+    public class NotBefore : Tea.TeaModel {
+        public var end: String?
+
+        public var start: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.end != nil {
+                map["End"] = self.end!
+            }
+            if self.start != nil {
+                map["Start"] = self.start!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("End") {
+                self.end = dict["End"] as! String
+            }
+            if dict.keys.contains("Start") {
+                self.start = dict["Start"] as! String
+            }
+        }
+    }
+    public class Tag : Tea.TeaModel {
+        public var key: String?
+
+        public var value: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.key != nil {
+                map["Key"] = self.key!
+            }
+            if self.value != nil {
+                map["Value"] = self.value!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("Key") {
+                self.key = dict["Key"] as! String
+            }
+            if dict.keys.contains("Value") {
+                self.value = dict["Value"] as! String
+            }
+        }
+    }
+    public var eventPublishTime: DescribeRCInstanceHistoryEventsRequest.EventPublishTime?
+
+    public var notBefore: DescribeRCInstanceHistoryEventsRequest.NotBefore?
+
+    public var eventCycleStatus: String?
+
+    public var eventId: [String]?
+
+    public var eventType: String?
+
+    public var impactLevel: String?
+
+    public var instanceEventCycleStatus: [String]?
+
+    public var instanceEventType: [String]?
+
+    public var instanceId: String?
+
+    public var maxResults: String?
+
+    public var pageNumber: String?
+
+    public var pageSize: String?
+
+    public var regionId: String?
+
+    public var resourceGroupId: String?
+
+    public var resourceId: [String]?
+
+    public var tag: [DescribeRCInstanceHistoryEventsRequest.Tag]?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.eventPublishTime?.validate()
+        try self.notBefore?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.eventPublishTime != nil {
+            map["EventPublishTime"] = self.eventPublishTime?.toMap()
+        }
+        if self.notBefore != nil {
+            map["NotBefore"] = self.notBefore?.toMap()
+        }
+        if self.eventCycleStatus != nil {
+            map["EventCycleStatus"] = self.eventCycleStatus!
+        }
+        if self.eventId != nil {
+            map["EventId"] = self.eventId!
+        }
+        if self.eventType != nil {
+            map["EventType"] = self.eventType!
+        }
+        if self.impactLevel != nil {
+            map["ImpactLevel"] = self.impactLevel!
+        }
+        if self.instanceEventCycleStatus != nil {
+            map["InstanceEventCycleStatus"] = self.instanceEventCycleStatus!
+        }
+        if self.instanceEventType != nil {
+            map["InstanceEventType"] = self.instanceEventType!
+        }
+        if self.instanceId != nil {
+            map["InstanceId"] = self.instanceId!
+        }
+        if self.maxResults != nil {
+            map["MaxResults"] = self.maxResults!
+        }
+        if self.pageNumber != nil {
+            map["PageNumber"] = self.pageNumber!
+        }
+        if self.pageSize != nil {
+            map["PageSize"] = self.pageSize!
+        }
+        if self.regionId != nil {
+            map["RegionId"] = self.regionId!
+        }
+        if self.resourceGroupId != nil {
+            map["ResourceGroupId"] = self.resourceGroupId!
+        }
+        if self.resourceId != nil {
+            map["ResourceId"] = self.resourceId!
+        }
+        if self.tag != nil {
+            var tmp : [Any] = []
+            for k in self.tag! {
+                tmp.append(k.toMap())
+            }
+            map["Tag"] = tmp
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("EventPublishTime") {
+            var model = DescribeRCInstanceHistoryEventsRequest.EventPublishTime()
+            model.fromMap(dict["EventPublishTime"] as! [String: Any])
+            self.eventPublishTime = model
+        }
+        if dict.keys.contains("NotBefore") {
+            var model = DescribeRCInstanceHistoryEventsRequest.NotBefore()
+            model.fromMap(dict["NotBefore"] as! [String: Any])
+            self.notBefore = model
+        }
+        if dict.keys.contains("EventCycleStatus") {
+            self.eventCycleStatus = dict["EventCycleStatus"] as! String
+        }
+        if dict.keys.contains("EventId") {
+            self.eventId = dict["EventId"] as! [String]
+        }
+        if dict.keys.contains("EventType") {
+            self.eventType = dict["EventType"] as! String
+        }
+        if dict.keys.contains("ImpactLevel") {
+            self.impactLevel = dict["ImpactLevel"] as! String
+        }
+        if dict.keys.contains("InstanceEventCycleStatus") {
+            self.instanceEventCycleStatus = dict["InstanceEventCycleStatus"] as! [String]
+        }
+        if dict.keys.contains("InstanceEventType") {
+            self.instanceEventType = dict["InstanceEventType"] as! [String]
+        }
+        if dict.keys.contains("InstanceId") {
+            self.instanceId = dict["InstanceId"] as! String
+        }
+        if dict.keys.contains("MaxResults") {
+            self.maxResults = dict["MaxResults"] as! String
+        }
+        if dict.keys.contains("PageNumber") {
+            self.pageNumber = dict["PageNumber"] as! String
+        }
+        if dict.keys.contains("PageSize") {
+            self.pageSize = dict["PageSize"] as! String
+        }
+        if dict.keys.contains("RegionId") {
+            self.regionId = dict["RegionId"] as! String
+        }
+        if dict.keys.contains("ResourceGroupId") {
+            self.resourceGroupId = dict["ResourceGroupId"] as! String
+        }
+        if dict.keys.contains("ResourceId") {
+            self.resourceId = dict["ResourceId"] as! [String]
+        }
+        if dict.keys.contains("Tag") {
+            var tmp : [DescribeRCInstanceHistoryEventsRequest.Tag] = []
+            for v in dict["Tag"] as! [Any] {
+                var model = DescribeRCInstanceHistoryEventsRequest.Tag()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.tag = tmp
+        }
+    }
+}
+
+public class DescribeRCInstanceHistoryEventsResponseBody : Tea.TeaModel {
+    public class InstanceSystemEventSet : Tea.TeaModel {
+        public class EventCycleStatus : Tea.TeaModel {
+            public var code: String?
+
+            public var name: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.code != nil {
+                    map["Code"] = self.code!
+                }
+                if self.name != nil {
+                    map["Name"] = self.name!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("Code") {
+                    self.code = dict["Code"] as! String
+                }
+                if dict.keys.contains("Name") {
+                    self.name = dict["Name"] as! String
+                }
+            }
+        }
+        public class EventType : Tea.TeaModel {
+            public var code: String?
+
+            public var name: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.code != nil {
+                    map["Code"] = self.code!
+                }
+                if self.name != nil {
+                    map["Name"] = self.name!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("Code") {
+                    self.code = dict["Code"] as! String
+                }
+                if dict.keys.contains("Name") {
+                    self.name = dict["Name"] as! String
+                }
+            }
+        }
+        public class ExtendedAttribute : Tea.TeaModel {
+            public class InactiveDisks : Tea.TeaModel {
+                public var creationTime: String?
+
+                public var deviceCategory: String?
+
+                public var deviceSize: String?
+
+                public var deviceType: String?
+
+                public var releaseTime: String?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.creationTime != nil {
+                        map["CreationTime"] = self.creationTime!
+                    }
+                    if self.deviceCategory != nil {
+                        map["DeviceCategory"] = self.deviceCategory!
+                    }
+                    if self.deviceSize != nil {
+                        map["DeviceSize"] = self.deviceSize!
+                    }
+                    if self.deviceType != nil {
+                        map["DeviceType"] = self.deviceType!
+                    }
+                    if self.releaseTime != nil {
+                        map["ReleaseTime"] = self.releaseTime!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any]) -> Void {
+                    if dict.keys.contains("CreationTime") {
+                        self.creationTime = dict["CreationTime"] as! String
+                    }
+                    if dict.keys.contains("DeviceCategory") {
+                        self.deviceCategory = dict["DeviceCategory"] as! String
+                    }
+                    if dict.keys.contains("DeviceSize") {
+                        self.deviceSize = dict["DeviceSize"] as! String
+                    }
+                    if dict.keys.contains("DeviceType") {
+                        self.deviceType = dict["DeviceType"] as! String
+                    }
+                    if dict.keys.contains("ReleaseTime") {
+                        self.releaseTime = dict["ReleaseTime"] as! String
+                    }
+                }
+            }
+            public var canAccept: String?
+
+            public var code: String?
+
+            public var device: String?
+
+            public var diskId: String?
+
+            public var hostId: String?
+
+            public var hostType: String?
+
+            public var inactiveDisks: [DescribeRCInstanceHistoryEventsResponseBody.InstanceSystemEventSet.ExtendedAttribute.InactiveDisks]?
+
+            public var migrationOptions: [String]?
+
+            public var onlineRepairPolicy: String?
+
+            public var punishDomain: String?
+
+            public var punishType: String?
+
+            public var punishUrl: String?
+
+            public var rack: String?
+
+            public var responseResult: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.canAccept != nil {
+                    map["CanAccept"] = self.canAccept!
+                }
+                if self.code != nil {
+                    map["Code"] = self.code!
+                }
+                if self.device != nil {
+                    map["Device"] = self.device!
+                }
+                if self.diskId != nil {
+                    map["DiskId"] = self.diskId!
+                }
+                if self.hostId != nil {
+                    map["HostId"] = self.hostId!
+                }
+                if self.hostType != nil {
+                    map["HostType"] = self.hostType!
+                }
+                if self.inactiveDisks != nil {
+                    var tmp : [Any] = []
+                    for k in self.inactiveDisks! {
+                        tmp.append(k.toMap())
+                    }
+                    map["InactiveDisks"] = tmp
+                }
+                if self.migrationOptions != nil {
+                    map["MigrationOptions"] = self.migrationOptions!
+                }
+                if self.onlineRepairPolicy != nil {
+                    map["OnlineRepairPolicy"] = self.onlineRepairPolicy!
+                }
+                if self.punishDomain != nil {
+                    map["PunishDomain"] = self.punishDomain!
+                }
+                if self.punishType != nil {
+                    map["PunishType"] = self.punishType!
+                }
+                if self.punishUrl != nil {
+                    map["PunishUrl"] = self.punishUrl!
+                }
+                if self.rack != nil {
+                    map["Rack"] = self.rack!
+                }
+                if self.responseResult != nil {
+                    map["ResponseResult"] = self.responseResult!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("CanAccept") {
+                    self.canAccept = dict["CanAccept"] as! String
+                }
+                if dict.keys.contains("Code") {
+                    self.code = dict["Code"] as! String
+                }
+                if dict.keys.contains("Device") {
+                    self.device = dict["Device"] as! String
+                }
+                if dict.keys.contains("DiskId") {
+                    self.diskId = dict["DiskId"] as! String
+                }
+                if dict.keys.contains("HostId") {
+                    self.hostId = dict["HostId"] as! String
+                }
+                if dict.keys.contains("HostType") {
+                    self.hostType = dict["HostType"] as! String
+                }
+                if dict.keys.contains("InactiveDisks") {
+                    var tmp : [DescribeRCInstanceHistoryEventsResponseBody.InstanceSystemEventSet.ExtendedAttribute.InactiveDisks] = []
+                    for v in dict["InactiveDisks"] as! [Any] {
+                        var model = DescribeRCInstanceHistoryEventsResponseBody.InstanceSystemEventSet.ExtendedAttribute.InactiveDisks()
+                        if v != nil {
+                            model.fromMap(v as! [String: Any])
+                        }
+                        tmp.append(model)
+                    }
+                    self.inactiveDisks = tmp
+                }
+                if dict.keys.contains("MigrationOptions") {
+                    self.migrationOptions = dict["MigrationOptions"] as! [String]
+                }
+                if dict.keys.contains("OnlineRepairPolicy") {
+                    self.onlineRepairPolicy = dict["OnlineRepairPolicy"] as! String
+                }
+                if dict.keys.contains("PunishDomain") {
+                    self.punishDomain = dict["PunishDomain"] as! String
+                }
+                if dict.keys.contains("PunishType") {
+                    self.punishType = dict["PunishType"] as! String
+                }
+                if dict.keys.contains("PunishUrl") {
+                    self.punishUrl = dict["PunishUrl"] as! String
+                }
+                if dict.keys.contains("Rack") {
+                    self.rack = dict["Rack"] as! String
+                }
+                if dict.keys.contains("ResponseResult") {
+                    self.responseResult = dict["ResponseResult"] as! String
+                }
+            }
+        }
+        public var eventCycleStatus: DescribeRCInstanceHistoryEventsResponseBody.InstanceSystemEventSet.EventCycleStatus?
+
+        public var eventFinishTime: String?
+
+        public var eventId: String?
+
+        public var eventPublishTime: String?
+
+        public var eventType: DescribeRCInstanceHistoryEventsResponseBody.InstanceSystemEventSet.EventType?
+
+        public var extendedAttribute: DescribeRCInstanceHistoryEventsResponseBody.InstanceSystemEventSet.ExtendedAttribute?
+
+        public var impactLevel: String?
+
+        public var instanceId: String?
+
+        public var notBefore: String?
+
+        public var reason: String?
+
+        public var reasonCode: String?
+
+        public var resourceType: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+            try self.eventCycleStatus?.validate()
+            try self.eventType?.validate()
+            try self.extendedAttribute?.validate()
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.eventCycleStatus != nil {
+                map["EventCycleStatus"] = self.eventCycleStatus?.toMap()
+            }
+            if self.eventFinishTime != nil {
+                map["EventFinishTime"] = self.eventFinishTime!
+            }
+            if self.eventId != nil {
+                map["EventId"] = self.eventId!
+            }
+            if self.eventPublishTime != nil {
+                map["EventPublishTime"] = self.eventPublishTime!
+            }
+            if self.eventType != nil {
+                map["EventType"] = self.eventType?.toMap()
+            }
+            if self.extendedAttribute != nil {
+                map["ExtendedAttribute"] = self.extendedAttribute?.toMap()
+            }
+            if self.impactLevel != nil {
+                map["ImpactLevel"] = self.impactLevel!
+            }
+            if self.instanceId != nil {
+                map["InstanceId"] = self.instanceId!
+            }
+            if self.notBefore != nil {
+                map["NotBefore"] = self.notBefore!
+            }
+            if self.reason != nil {
+                map["Reason"] = self.reason!
+            }
+            if self.reasonCode != nil {
+                map["ReasonCode"] = self.reasonCode!
+            }
+            if self.resourceType != nil {
+                map["ResourceType"] = self.resourceType!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("EventCycleStatus") {
+                var model = DescribeRCInstanceHistoryEventsResponseBody.InstanceSystemEventSet.EventCycleStatus()
+                model.fromMap(dict["EventCycleStatus"] as! [String: Any])
+                self.eventCycleStatus = model
+            }
+            if dict.keys.contains("EventFinishTime") {
+                self.eventFinishTime = dict["EventFinishTime"] as! String
+            }
+            if dict.keys.contains("EventId") {
+                self.eventId = dict["EventId"] as! String
+            }
+            if dict.keys.contains("EventPublishTime") {
+                self.eventPublishTime = dict["EventPublishTime"] as! String
+            }
+            if dict.keys.contains("EventType") {
+                var model = DescribeRCInstanceHistoryEventsResponseBody.InstanceSystemEventSet.EventType()
+                model.fromMap(dict["EventType"] as! [String: Any])
+                self.eventType = model
+            }
+            if dict.keys.contains("ExtendedAttribute") {
+                var model = DescribeRCInstanceHistoryEventsResponseBody.InstanceSystemEventSet.ExtendedAttribute()
+                model.fromMap(dict["ExtendedAttribute"] as! [String: Any])
+                self.extendedAttribute = model
+            }
+            if dict.keys.contains("ImpactLevel") {
+                self.impactLevel = dict["ImpactLevel"] as! String
+            }
+            if dict.keys.contains("InstanceId") {
+                self.instanceId = dict["InstanceId"] as! String
+            }
+            if dict.keys.contains("NotBefore") {
+                self.notBefore = dict["NotBefore"] as! String
+            }
+            if dict.keys.contains("Reason") {
+                self.reason = dict["Reason"] as! String
+            }
+            if dict.keys.contains("ReasonCode") {
+                self.reasonCode = dict["ReasonCode"] as! String
+            }
+            if dict.keys.contains("ResourceType") {
+                self.resourceType = dict["ResourceType"] as! String
+            }
+        }
+    }
+    public var instanceSystemEventSet: [DescribeRCInstanceHistoryEventsResponseBody.InstanceSystemEventSet]?
+
+    public var nextToken: String?
+
+    public var pageNumber: Int32?
+
+    public var pageSize: Int32?
+
+    public var requestId: String?
+
+    public var totalCount: Int32?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.instanceSystemEventSet != nil {
+            var tmp : [Any] = []
+            for k in self.instanceSystemEventSet! {
+                tmp.append(k.toMap())
+            }
+            map["InstanceSystemEventSet"] = tmp
+        }
+        if self.nextToken != nil {
+            map["NextToken"] = self.nextToken!
+        }
+        if self.pageNumber != nil {
+            map["PageNumber"] = self.pageNumber!
+        }
+        if self.pageSize != nil {
+            map["PageSize"] = self.pageSize!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.totalCount != nil {
+            map["TotalCount"] = self.totalCount!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("InstanceSystemEventSet") {
+            var tmp : [DescribeRCInstanceHistoryEventsResponseBody.InstanceSystemEventSet] = []
+            for v in dict["InstanceSystemEventSet"] as! [Any] {
+                var model = DescribeRCInstanceHistoryEventsResponseBody.InstanceSystemEventSet()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.instanceSystemEventSet = tmp
+        }
+        if dict.keys.contains("NextToken") {
+            self.nextToken = dict["NextToken"] as! String
+        }
+        if dict.keys.contains("PageNumber") {
+            self.pageNumber = dict["PageNumber"] as! Int32
+        }
+        if dict.keys.contains("PageSize") {
+            self.pageSize = dict["PageSize"] as! Int32
+        }
+        if dict.keys.contains("RequestId") {
+            self.requestId = dict["RequestId"] as! String
+        }
+        if dict.keys.contains("TotalCount") {
+            self.totalCount = dict["TotalCount"] as! Int32
+        }
+    }
+}
+
+public class DescribeRCInstanceHistoryEventsResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: DescribeRCInstanceHistoryEventsResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") {
+            var model = DescribeRCInstanceHistoryEventsResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
+public class DescribeRCInstanceIpAddressRequest : Tea.TeaModel {
+    public var currentPage: Int32?
+
+    public var ddosRegionId: String?
+
+    public var ddosStatus: String?
+
+    public var instanceId: String?
+
+    public var instanceIp: String?
+
+    public var instanceName: String?
+
+    public var instanceType: String?
+
+    public var pageSize: Int32?
+
+    public var regionId: String?
+
+    public var resourceType: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.currentPage != nil {
+            map["CurrentPage"] = self.currentPage!
+        }
+        if self.ddosRegionId != nil {
+            map["DdosRegionId"] = self.ddosRegionId!
+        }
+        if self.ddosStatus != nil {
+            map["DdosStatus"] = self.ddosStatus!
+        }
+        if self.instanceId != nil {
+            map["InstanceId"] = self.instanceId!
+        }
+        if self.instanceIp != nil {
+            map["InstanceIp"] = self.instanceIp!
+        }
+        if self.instanceName != nil {
+            map["InstanceName"] = self.instanceName!
+        }
+        if self.instanceType != nil {
+            map["InstanceType"] = self.instanceType!
+        }
+        if self.pageSize != nil {
+            map["PageSize"] = self.pageSize!
+        }
+        if self.regionId != nil {
+            map["RegionId"] = self.regionId!
+        }
+        if self.resourceType != nil {
+            map["ResourceType"] = self.resourceType!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("CurrentPage") {
+            self.currentPage = dict["CurrentPage"] as! Int32
+        }
+        if dict.keys.contains("DdosRegionId") {
+            self.ddosRegionId = dict["DdosRegionId"] as! String
+        }
+        if dict.keys.contains("DdosStatus") {
+            self.ddosStatus = dict["DdosStatus"] as! String
+        }
+        if dict.keys.contains("InstanceId") {
+            self.instanceId = dict["InstanceId"] as! String
+        }
+        if dict.keys.contains("InstanceIp") {
+            self.instanceIp = dict["InstanceIp"] as! String
+        }
+        if dict.keys.contains("InstanceName") {
+            self.instanceName = dict["InstanceName"] as! String
+        }
+        if dict.keys.contains("InstanceType") {
+            self.instanceType = dict["InstanceType"] as! String
+        }
+        if dict.keys.contains("PageSize") {
+            self.pageSize = dict["PageSize"] as! Int32
+        }
+        if dict.keys.contains("RegionId") {
+            self.regionId = dict["RegionId"] as! String
+        }
+        if dict.keys.contains("ResourceType") {
+            self.resourceType = dict["ResourceType"] as! String
+        }
+    }
+}
+
+public class DescribeRCInstanceIpAddressResponseBody : Tea.TeaModel {
+    public class RCInstanceList : Tea.TeaModel {
+        public class IpAddressConfig : Tea.TeaModel {
+            public var blackholeThreshold: Int32?
+
+            public var defenseBpsThreshold: Int32?
+
+            public var defensePpsThreshold: Int32?
+
+            public var elasticThreshold: Int32?
+
+            public var instanceIp: String?
+
+            public var ipStatus: String?
+
+            public var ipVersion: String?
+
+            public var isBgppack: Bool?
+
+            public var isFullProtection: Int32?
+
+            public var regionId: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.blackholeThreshold != nil {
+                    map["BlackholeThreshold"] = self.blackholeThreshold!
+                }
+                if self.defenseBpsThreshold != nil {
+                    map["DefenseBpsThreshold"] = self.defenseBpsThreshold!
+                }
+                if self.defensePpsThreshold != nil {
+                    map["DefensePpsThreshold"] = self.defensePpsThreshold!
+                }
+                if self.elasticThreshold != nil {
+                    map["ElasticThreshold"] = self.elasticThreshold!
+                }
+                if self.instanceIp != nil {
+                    map["InstanceIp"] = self.instanceIp!
+                }
+                if self.ipStatus != nil {
+                    map["IpStatus"] = self.ipStatus!
+                }
+                if self.ipVersion != nil {
+                    map["IpVersion"] = self.ipVersion!
+                }
+                if self.isBgppack != nil {
+                    map["IsBgppack"] = self.isBgppack!
+                }
+                if self.isFullProtection != nil {
+                    map["IsFullProtection"] = self.isFullProtection!
+                }
+                if self.regionId != nil {
+                    map["RegionId"] = self.regionId!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("BlackholeThreshold") {
+                    self.blackholeThreshold = dict["BlackholeThreshold"] as! Int32
+                }
+                if dict.keys.contains("DefenseBpsThreshold") {
+                    self.defenseBpsThreshold = dict["DefenseBpsThreshold"] as! Int32
+                }
+                if dict.keys.contains("DefensePpsThreshold") {
+                    self.defensePpsThreshold = dict["DefensePpsThreshold"] as! Int32
+                }
+                if dict.keys.contains("ElasticThreshold") {
+                    self.elasticThreshold = dict["ElasticThreshold"] as! Int32
+                }
+                if dict.keys.contains("InstanceIp") {
+                    self.instanceIp = dict["InstanceIp"] as! String
+                }
+                if dict.keys.contains("IpStatus") {
+                    self.ipStatus = dict["IpStatus"] as! String
+                }
+                if dict.keys.contains("IpVersion") {
+                    self.ipVersion = dict["IpVersion"] as! String
+                }
+                if dict.keys.contains("IsBgppack") {
+                    self.isBgppack = dict["IsBgppack"] as! Bool
+                }
+                if dict.keys.contains("IsFullProtection") {
+                    self.isFullProtection = dict["IsFullProtection"] as! Int32
+                }
+                if dict.keys.contains("RegionId") {
+                    self.regionId = dict["RegionId"] as! String
+                }
+            }
+        }
+        public var instanceId: String?
+
+        public var instanceName: String?
+
+        public var instanceStatus: String?
+
+        public var instanceType: String?
+
+        public var ipAddressConfig: [DescribeRCInstanceIpAddressResponseBody.RCInstanceList.IpAddressConfig]?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.instanceId != nil {
+                map["InstanceId"] = self.instanceId!
+            }
+            if self.instanceName != nil {
+                map["InstanceName"] = self.instanceName!
+            }
+            if self.instanceStatus != nil {
+                map["InstanceStatus"] = self.instanceStatus!
+            }
+            if self.instanceType != nil {
+                map["InstanceType"] = self.instanceType!
+            }
+            if self.ipAddressConfig != nil {
+                var tmp : [Any] = []
+                for k in self.ipAddressConfig! {
+                    tmp.append(k.toMap())
+                }
+                map["IpAddressConfig"] = tmp
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("InstanceId") {
+                self.instanceId = dict["InstanceId"] as! String
+            }
+            if dict.keys.contains("InstanceName") {
+                self.instanceName = dict["InstanceName"] as! String
+            }
+            if dict.keys.contains("InstanceStatus") {
+                self.instanceStatus = dict["InstanceStatus"] as! String
+            }
+            if dict.keys.contains("InstanceType") {
+                self.instanceType = dict["InstanceType"] as! String
+            }
+            if dict.keys.contains("IpAddressConfig") {
+                var tmp : [DescribeRCInstanceIpAddressResponseBody.RCInstanceList.IpAddressConfig] = []
+                for v in dict["IpAddressConfig"] as! [Any] {
+                    var model = DescribeRCInstanceIpAddressResponseBody.RCInstanceList.IpAddressConfig()
+                    if v != nil {
+                        model.fromMap(v as! [String: Any])
+                    }
+                    tmp.append(model)
+                }
+                self.ipAddressConfig = tmp
+            }
+        }
+    }
+    public var RCInstanceList: [DescribeRCInstanceIpAddressResponseBody.RCInstanceList]?
+
+    public var requestId: String?
+
+    public var total: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.RCInstanceList != nil {
+            var tmp : [Any] = []
+            for k in self.RCInstanceList! {
+                tmp.append(k.toMap())
+            }
+            map["RCInstanceList"] = tmp
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.total != nil {
+            map["Total"] = self.total!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("RCInstanceList") {
+            var tmp : [DescribeRCInstanceIpAddressResponseBody.RCInstanceList] = []
+            for v in dict["RCInstanceList"] as! [Any] {
+                var model = DescribeRCInstanceIpAddressResponseBody.RCInstanceList()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.RCInstanceList = tmp
+        }
+        if dict.keys.contains("RequestId") {
+            self.requestId = dict["RequestId"] as! String
+        }
+        if dict.keys.contains("Total") {
+            self.total = dict["Total"] as! String
+        }
+    }
+}
+
+public class DescribeRCInstanceIpAddressResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: DescribeRCInstanceIpAddressResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") {
+            var model = DescribeRCInstanceIpAddressResponseBody()
             model.fromMap(dict["body"] as! [String: Any])
             self.body = model
         }
