@@ -8706,9 +8706,17 @@ public class RetrieveResponse : Tea.TeaModel {
 public class SubmitIndexAddDocumentsJobRequest : Tea.TeaModel {
     public var categoryIds: [String]?
 
+    public var chunkMode: String?
+
+    public var chunkSize: Int32?
+
     public var documentIds: [String]?
 
     public var indexId: String?
+
+    public var overlapSize: Int32?
+
+    public var separator: String?
 
     public var sourceType: String?
 
@@ -8729,11 +8737,23 @@ public class SubmitIndexAddDocumentsJobRequest : Tea.TeaModel {
         if self.categoryIds != nil {
             map["CategoryIds"] = self.categoryIds!
         }
+        if self.chunkMode != nil {
+            map["ChunkMode"] = self.chunkMode!
+        }
+        if self.chunkSize != nil {
+            map["ChunkSize"] = self.chunkSize!
+        }
         if self.documentIds != nil {
             map["DocumentIds"] = self.documentIds!
         }
         if self.indexId != nil {
             map["IndexId"] = self.indexId!
+        }
+        if self.overlapSize != nil {
+            map["OverlapSize"] = self.overlapSize!
+        }
+        if self.separator != nil {
+            map["Separator"] = self.separator!
         }
         if self.sourceType != nil {
             map["SourceType"] = self.sourceType!
@@ -8745,11 +8765,23 @@ public class SubmitIndexAddDocumentsJobRequest : Tea.TeaModel {
         if dict.keys.contains("CategoryIds") {
             self.categoryIds = dict["CategoryIds"] as! [String]
         }
+        if dict.keys.contains("ChunkMode") {
+            self.chunkMode = dict["ChunkMode"] as! String
+        }
+        if dict.keys.contains("ChunkSize") {
+            self.chunkSize = dict["ChunkSize"] as! Int32
+        }
         if dict.keys.contains("DocumentIds") {
             self.documentIds = dict["DocumentIds"] as! [String]
         }
         if dict.keys.contains("IndexId") {
             self.indexId = dict["IndexId"] as! String
+        }
+        if dict.keys.contains("OverlapSize") {
+            self.overlapSize = dict["OverlapSize"] as! Int32
+        }
+        if dict.keys.contains("Separator") {
+            self.separator = dict["Separator"] as! String
         }
         if dict.keys.contains("SourceType") {
             self.sourceType = dict["SourceType"] as! String
@@ -8760,9 +8792,17 @@ public class SubmitIndexAddDocumentsJobRequest : Tea.TeaModel {
 public class SubmitIndexAddDocumentsJobShrinkRequest : Tea.TeaModel {
     public var categoryIdsShrink: String?
 
+    public var chunkMode: String?
+
+    public var chunkSize: Int32?
+
     public var documentIdsShrink: String?
 
     public var indexId: String?
+
+    public var overlapSize: Int32?
+
+    public var separator: String?
 
     public var sourceType: String?
 
@@ -8783,11 +8823,23 @@ public class SubmitIndexAddDocumentsJobShrinkRequest : Tea.TeaModel {
         if self.categoryIdsShrink != nil {
             map["CategoryIds"] = self.categoryIdsShrink!
         }
+        if self.chunkMode != nil {
+            map["ChunkMode"] = self.chunkMode!
+        }
+        if self.chunkSize != nil {
+            map["ChunkSize"] = self.chunkSize!
+        }
         if self.documentIdsShrink != nil {
             map["DocumentIds"] = self.documentIdsShrink!
         }
         if self.indexId != nil {
             map["IndexId"] = self.indexId!
+        }
+        if self.overlapSize != nil {
+            map["OverlapSize"] = self.overlapSize!
+        }
+        if self.separator != nil {
+            map["Separator"] = self.separator!
         }
         if self.sourceType != nil {
             map["SourceType"] = self.sourceType!
@@ -8799,11 +8851,23 @@ public class SubmitIndexAddDocumentsJobShrinkRequest : Tea.TeaModel {
         if dict.keys.contains("CategoryIds") {
             self.categoryIdsShrink = dict["CategoryIds"] as! String
         }
+        if dict.keys.contains("ChunkMode") {
+            self.chunkMode = dict["ChunkMode"] as! String
+        }
+        if dict.keys.contains("ChunkSize") {
+            self.chunkSize = dict["ChunkSize"] as! Int32
+        }
         if dict.keys.contains("DocumentIds") {
             self.documentIdsShrink = dict["DocumentIds"] as! String
         }
         if dict.keys.contains("IndexId") {
             self.indexId = dict["IndexId"] as! String
+        }
+        if dict.keys.contains("OverlapSize") {
+            self.overlapSize = dict["OverlapSize"] as! Int32
+        }
+        if dict.keys.contains("Separator") {
+            self.separator = dict["Separator"] as! String
         }
         if dict.keys.contains("SourceType") {
             self.sourceType = dict["SourceType"] as! String

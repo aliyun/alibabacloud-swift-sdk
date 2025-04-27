@@ -1302,11 +1302,23 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.categoryIdsShrink)) {
             query["CategoryIds"] = request.categoryIdsShrink ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.chunkMode)) {
+            query["ChunkMode"] = request.chunkMode ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.chunkSize)) {
+            query["ChunkSize"] = request.chunkSize!;
+        }
         if (!TeaUtils.Client.isUnset(request.documentIdsShrink)) {
             query["DocumentIds"] = request.documentIdsShrink ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.indexId)) {
             query["IndexId"] = request.indexId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.overlapSize)) {
+            query["OverlapSize"] = request.overlapSize!;
+        }
+        if (!TeaUtils.Client.isUnset(request.separator)) {
+            query["Separator"] = request.separator ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.sourceType)) {
             query["SourceType"] = request.sourceType ?? "";
