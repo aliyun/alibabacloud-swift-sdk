@@ -7646,6 +7646,43 @@ public class GetAICoachScriptResponseBody : Tea.TeaModel {
             }
         }
     }
+    public class ScoreConfig : Tea.TeaModel {
+        public var enabled: Bool?
+
+        public var passScore: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.enabled != nil {
+                map["enabled"] = self.enabled!
+            }
+            if self.passScore != nil {
+                map["passScore"] = self.passScore!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("enabled") {
+                self.enabled = dict["enabled"] as! Bool
+            }
+            if dict.keys.contains("passScore") {
+                self.passScore = dict["passScore"] as! String
+            }
+        }
+    }
     public class Weights : Tea.TeaModel {
         public var abilityEvaluation: Int32?
 
@@ -7803,6 +7840,8 @@ public class GetAICoachScriptResponseBody : Tea.TeaModel {
 
     public var sampleDialogueList: [GetAICoachScriptResponseBody.SampleDialogueList]?
 
+    public var scoreConfig: GetAICoachScriptResponseBody.ScoreConfig?
+
     public var scriptRecordId: String?
 
     public var sparringTipContent: String?
@@ -7831,6 +7870,7 @@ public class GetAICoachScriptResponseBody : Tea.TeaModel {
     public override func validate() throws -> Void {
         try self.checkCheatConfig?.validate()
         try self.completeStrategy?.validate()
+        try self.scoreConfig?.validate()
         try self.weights?.validate()
     }
 
@@ -7935,6 +7975,9 @@ public class GetAICoachScriptResponseBody : Tea.TeaModel {
                 tmp.append(k.toMap())
             }
             map["sampleDialogueList"] = tmp
+        }
+        if self.scoreConfig != nil {
+            map["scoreConfig"] = self.scoreConfig?.toMap()
         }
         if self.scriptRecordId != nil {
             map["scriptRecordId"] = self.scriptRecordId!
@@ -8083,6 +8126,11 @@ public class GetAICoachScriptResponseBody : Tea.TeaModel {
                 tmp.append(model)
             }
             self.sampleDialogueList = tmp
+        }
+        if dict.keys.contains("scoreConfig") {
+            var model = GetAICoachScriptResponseBody.ScoreConfig()
+            model.fromMap(dict["scoreConfig"] as! [String: Any])
+            self.scoreConfig = model
         }
         if dict.keys.contains("scriptRecordId") {
             self.scriptRecordId = dict["scriptRecordId"] as! String
