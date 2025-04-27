@@ -528,6 +528,8 @@ public class GetLoginTokenRequest : Tea.TeaModel {
 
     public var clientId: String?
 
+    public var clientName: String?
+
     public var clientOS: String?
 
     public var clientType: String?
@@ -575,6 +577,8 @@ public class GetLoginTokenRequest : Tea.TeaModel {
     public var phone: String?
 
     public var phoneVerifyCode: String?
+
+    public var profileRegion: String?
 
     public var regionId: String?
 
@@ -613,6 +617,9 @@ public class GetLoginTokenRequest : Tea.TeaModel {
         if self.clientId != nil {
             map["ClientId"] = self.clientId!
         }
+        if self.clientName != nil {
+            map["ClientName"] = self.clientName!
+        }
         if self.clientOS != nil {
             map["ClientOS"] = self.clientOS!
         }
@@ -685,6 +692,9 @@ public class GetLoginTokenRequest : Tea.TeaModel {
         if self.phoneVerifyCode != nil {
             map["PhoneVerifyCode"] = self.phoneVerifyCode!
         }
+        if self.profileRegion != nil {
+            map["ProfileRegion"] = self.profileRegion!
+        }
         if self.regionId != nil {
             map["RegionId"] = self.regionId!
         }
@@ -718,6 +728,9 @@ public class GetLoginTokenRequest : Tea.TeaModel {
         }
         if dict.keys.contains("ClientId") {
             self.clientId = dict["ClientId"] as! String
+        }
+        if dict.keys.contains("ClientName") {
+            self.clientName = dict["ClientName"] as! String
         }
         if dict.keys.contains("ClientOS") {
             self.clientOS = dict["ClientOS"] as! String
@@ -791,6 +804,9 @@ public class GetLoginTokenRequest : Tea.TeaModel {
         if dict.keys.contains("PhoneVerifyCode") {
             self.phoneVerifyCode = dict["PhoneVerifyCode"] as! String
         }
+        if dict.keys.contains("ProfileRegion") {
+            self.profileRegion = dict["ProfileRegion"] as! String
+        }
         if dict.keys.contains("RegionId") {
             self.regionId = dict["RegionId"] as! String
         }
@@ -821,6 +837,8 @@ public class GetLoginTokenShrinkRequest : Tea.TeaModel {
     public var availableFeaturesShrink: String?
 
     public var clientId: String?
+
+    public var clientName: String?
 
     public var clientOS: String?
 
@@ -870,6 +888,8 @@ public class GetLoginTokenShrinkRequest : Tea.TeaModel {
 
     public var phoneVerifyCode: String?
 
+    public var profileRegion: String?
+
     public var regionId: String?
 
     public var sessionId: String?
@@ -906,6 +926,9 @@ public class GetLoginTokenShrinkRequest : Tea.TeaModel {
         }
         if self.clientId != nil {
             map["ClientId"] = self.clientId!
+        }
+        if self.clientName != nil {
+            map["ClientName"] = self.clientName!
         }
         if self.clientOS != nil {
             map["ClientOS"] = self.clientOS!
@@ -979,6 +1002,9 @@ public class GetLoginTokenShrinkRequest : Tea.TeaModel {
         if self.phoneVerifyCode != nil {
             map["PhoneVerifyCode"] = self.phoneVerifyCode!
         }
+        if self.profileRegion != nil {
+            map["ProfileRegion"] = self.profileRegion!
+        }
         if self.regionId != nil {
             map["RegionId"] = self.regionId!
         }
@@ -1012,6 +1038,9 @@ public class GetLoginTokenShrinkRequest : Tea.TeaModel {
         }
         if dict.keys.contains("ClientId") {
             self.clientId = dict["ClientId"] as! String
+        }
+        if dict.keys.contains("ClientName") {
+            self.clientName = dict["ClientName"] as! String
         }
         if dict.keys.contains("ClientOS") {
             self.clientOS = dict["ClientOS"] as! String
@@ -1084,6 +1113,9 @@ public class GetLoginTokenShrinkRequest : Tea.TeaModel {
         }
         if dict.keys.contains("PhoneVerifyCode") {
             self.phoneVerifyCode = dict["PhoneVerifyCode"] as! String
+        }
+        if dict.keys.contains("ProfileRegion") {
+            self.profileRegion = dict["ProfileRegion"] as! String
         }
         if dict.keys.contains("RegionId") {
             self.regionId = dict["RegionId"] as! String
@@ -1298,6 +1330,8 @@ public class GetLoginTokenResponseBody : Tea.TeaModel {
 
     public var nextStage: String?
 
+    public var nickName: String?
+
     public var officeSites: [String]?
 
     public var passwordStrategy: GetLoginTokenResponseBody.PasswordStrategy?
@@ -1385,6 +1419,9 @@ public class GetLoginTokenResponseBody : Tea.TeaModel {
         }
         if self.nextStage != nil {
             map["NextStage"] = self.nextStage!
+        }
+        if self.nickName != nil {
+            map["NickName"] = self.nickName!
         }
         if self.officeSites != nil {
             map["OfficeSites"] = self.officeSites!
@@ -1485,6 +1522,9 @@ public class GetLoginTokenResponseBody : Tea.TeaModel {
         }
         if dict.keys.contains("NextStage") {
             self.nextStage = dict["NextStage"] as! String
+        }
+        if dict.keys.contains("NickName") {
+            self.nickName = dict["NickName"] as! String
         }
         if dict.keys.contains("OfficeSites") {
             self.officeSites = dict["OfficeSites"] as! [String]
