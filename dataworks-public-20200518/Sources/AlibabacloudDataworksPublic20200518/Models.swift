@@ -59801,8 +59801,6 @@ public class ListFileVersionsResponse : Tea.TeaModel {
 }
 
 public class ListFilesRequest : Tea.TeaModel {
-    public var commitStatus: Int32?
-
     public var exactFileName: String?
 
     public var fileFolderPath: String?
@@ -59847,9 +59845,6 @@ public class ListFilesRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
-        if self.commitStatus != nil {
-            map["CommitStatus"] = self.commitStatus!
-        }
         if self.exactFileName != nil {
             map["ExactFileName"] = self.exactFileName!
         }
@@ -59899,9 +59894,6 @@ public class ListFilesRequest : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
-        if dict.keys.contains("CommitStatus") {
-            self.commitStatus = dict["CommitStatus"] as! Int32
-        }
         if dict.keys.contains("ExactFileName") {
             self.exactFileName = dict["ExactFileName"] as! String
         }
