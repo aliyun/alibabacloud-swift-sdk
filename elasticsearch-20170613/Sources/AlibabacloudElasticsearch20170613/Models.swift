@@ -1969,6 +1969,8 @@ public class NodeSpec : Tea.TeaModel {
 
     public var diskEncryption: Bool?
 
+    public var diskPreference: String?
+
     public var diskType: String?
 
     public var performanceLevel: String?
@@ -1995,6 +1997,9 @@ public class NodeSpec : Tea.TeaModel {
         if self.diskEncryption != nil {
             map["diskEncryption"] = self.diskEncryption!
         }
+        if self.diskPreference != nil {
+            map["diskPreference"] = self.diskPreference!
+        }
         if self.diskType != nil {
             map["diskType"] = self.diskType!
         }
@@ -2013,6 +2018,9 @@ public class NodeSpec : Tea.TeaModel {
         }
         if dict.keys.contains("diskEncryption") {
             self.diskEncryption = dict["diskEncryption"] as! Bool
+        }
+        if dict.keys.contains("diskPreference") {
+            self.diskPreference = dict["diskPreference"] as! String
         }
         if dict.keys.contains("diskType") {
             self.diskType = dict["diskType"] as! String
@@ -18910,112 +18918,112 @@ public class ListActionRecordsResponseBody : Tea.TeaModel {
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
             if self.actionName != nil {
-                map["ActionName"] = self.actionName!
+                map["actionName"] = self.actionName!
             }
             if self.actionParams != nil {
-                map["ActionParams"] = self.actionParams!
+                map["actionParams"] = self.actionParams!
             }
             if self.actionResultAccessList != nil {
-                map["ActionResultAccessList"] = self.actionResultAccessList!
+                map["actionResultAccessList"] = self.actionResultAccessList!
             }
             if self.endTime != nil {
-                map["EndTime"] = self.endTime!
+                map["endTime"] = self.endTime!
             }
             if self.instanceId != nil {
-                map["InstanceId"] = self.instanceId!
+                map["instanceId"] = self.instanceId!
             }
             if self.metaNow != nil {
-                map["MetaNow"] = self.metaNow!
+                map["metaNow"] = self.metaNow!
             }
             if self.metaOld != nil {
-                map["MetaOld"] = self.metaOld!
+                map["metaOld"] = self.metaOld!
             }
             if self.ownerId != nil {
-                map["OwnerId"] = self.ownerId!
+                map["ownerId"] = self.ownerId!
             }
             if self.process != nil {
-                map["Process"] = self.process!
+                map["process"] = self.process!
             }
             if self.recordDiff != nil {
-                map["RecordDiff"] = self.recordDiff!
+                map["recordDiff"] = self.recordDiff!
             }
             if self.recordIds != nil {
-                map["RecordIds"] = self.recordIds!
+                map["recordIds"] = self.recordIds!
             }
             if self.requestId != nil {
-                map["RequestId"] = self.requestId!
+                map["requestId"] = self.requestId!
             }
             if self.startTime != nil {
-                map["StartTime"] = self.startTime!
+                map["startTime"] = self.startTime!
             }
             if self.stateType != nil {
-                map["StateType"] = self.stateType!
+                map["stateType"] = self.stateType!
             }
             if self.statusInfo != nil {
                 var tmp : [Any] = []
                 for k in self.statusInfo! {
                     tmp.append(k.toMap())
                 }
-                map["StatusInfo"] = tmp
+                map["statusInfo"] = tmp
             }
             if self.userId != nil {
-                map["UserId"] = self.userId!
+                map["userId"] = self.userId!
             }
             if self.userInfo != nil {
-                map["UserInfo"] = self.userInfo!
+                map["userInfo"] = self.userInfo!
             }
             if self.userType != nil {
-                map["UserType"] = self.userType!
+                map["userType"] = self.userType!
             }
             return map
         }
 
         public override func fromMap(_ dict: [String: Any]) -> Void {
-            if dict.keys.contains("ActionName") {
-                self.actionName = dict["ActionName"] as! String
+            if dict.keys.contains("actionName") {
+                self.actionName = dict["actionName"] as! String
             }
-            if dict.keys.contains("ActionParams") {
-                self.actionParams = dict["ActionParams"] as! [String: Any]
+            if dict.keys.contains("actionParams") {
+                self.actionParams = dict["actionParams"] as! [String: Any]
             }
-            if dict.keys.contains("ActionResultAccessList") {
-                self.actionResultAccessList = dict["ActionResultAccessList"] as! [String]
+            if dict.keys.contains("actionResultAccessList") {
+                self.actionResultAccessList = dict["actionResultAccessList"] as! [String]
             }
-            if dict.keys.contains("EndTime") {
-                self.endTime = dict["EndTime"] as! Int64
+            if dict.keys.contains("endTime") {
+                self.endTime = dict["endTime"] as! Int64
             }
-            if dict.keys.contains("InstanceId") {
-                self.instanceId = dict["InstanceId"] as! String
+            if dict.keys.contains("instanceId") {
+                self.instanceId = dict["instanceId"] as! String
             }
-            if dict.keys.contains("MetaNow") {
-                self.metaNow = dict["MetaNow"] as! String
+            if dict.keys.contains("metaNow") {
+                self.metaNow = dict["metaNow"] as! String
             }
-            if dict.keys.contains("MetaOld") {
-                self.metaOld = dict["MetaOld"] as! String
+            if dict.keys.contains("metaOld") {
+                self.metaOld = dict["metaOld"] as! String
             }
-            if dict.keys.contains("OwnerId") {
-                self.ownerId = dict["OwnerId"] as! String
+            if dict.keys.contains("ownerId") {
+                self.ownerId = dict["ownerId"] as! String
             }
-            if dict.keys.contains("Process") {
-                self.process = dict["Process"] as! String
+            if dict.keys.contains("process") {
+                self.process = dict["process"] as! String
             }
-            if dict.keys.contains("RecordDiff") {
-                self.recordDiff = dict["RecordDiff"] as! [String: Any]
+            if dict.keys.contains("recordDiff") {
+                self.recordDiff = dict["recordDiff"] as! [String: Any]
             }
-            if dict.keys.contains("RecordIds") {
-                self.recordIds = dict["RecordIds"] as! [String]
+            if dict.keys.contains("recordIds") {
+                self.recordIds = dict["recordIds"] as! [String]
             }
-            if dict.keys.contains("RequestId") {
-                self.requestId = dict["RequestId"] as! String
+            if dict.keys.contains("requestId") {
+                self.requestId = dict["requestId"] as! String
             }
-            if dict.keys.contains("StartTime") {
-                self.startTime = dict["StartTime"] as! Int64
+            if dict.keys.contains("startTime") {
+                self.startTime = dict["startTime"] as! Int64
             }
-            if dict.keys.contains("StateType") {
-                self.stateType = dict["StateType"] as! String
+            if dict.keys.contains("stateType") {
+                self.stateType = dict["stateType"] as! String
             }
-            if dict.keys.contains("StatusInfo") {
+            if dict.keys.contains("statusInfo") {
                 var tmp : [ListActionRecordsResponseBody.Result.StatusInfo] = []
-                for v in dict["StatusInfo"] as! [Any] {
+                for v in dict["statusInfo"] as! [Any] {
                     var model = ListActionRecordsResponseBody.Result.StatusInfo()
                     if v != nil {
                         model.fromMap(v as! [String: Any])
@@ -19024,14 +19032,14 @@ public class ListActionRecordsResponseBody : Tea.TeaModel {
                 }
                 self.statusInfo = tmp
             }
-            if dict.keys.contains("UserId") {
-                self.userId = dict["UserId"] as! String
+            if dict.keys.contains("userId") {
+                self.userId = dict["userId"] as! String
             }
-            if dict.keys.contains("UserInfo") {
-                self.userInfo = dict["UserInfo"] as! String
+            if dict.keys.contains("userInfo") {
+                self.userInfo = dict["userInfo"] as! String
             }
-            if dict.keys.contains("UserType") {
-                self.userType = dict["UserType"] as! String
+            if dict.keys.contains("userType") {
+                self.userType = dict["userType"] as! String
             }
         }
     }
@@ -25629,9 +25637,13 @@ public class ListInstanceResponseBody : Tea.TeaModel {
 
         public var paymentType: String?
 
+        public var port: String?
+
         public var postpaidServiceStatus: String?
 
         public var privateNetworkIpWhiteList: [String]?
+
+        public var protocol_: String?
 
         public var publicIpWhitelist: [String]?
 
@@ -25730,11 +25742,17 @@ public class ListInstanceResponseBody : Tea.TeaModel {
             if self.paymentType != nil {
                 map["paymentType"] = self.paymentType!
             }
+            if self.port != nil {
+                map["port"] = self.port!
+            }
             if self.postpaidServiceStatus != nil {
                 map["postpaidServiceStatus"] = self.postpaidServiceStatus!
             }
             if self.privateNetworkIpWhiteList != nil {
                 map["privateNetworkIpWhiteList"] = self.privateNetworkIpWhiteList!
+            }
+            if self.protocol_ != nil {
+                map["protocol"] = self.protocol_!
             }
             if self.publicIpWhitelist != nil {
                 map["publicIpWhitelist"] = self.publicIpWhitelist!
@@ -25840,11 +25858,17 @@ public class ListInstanceResponseBody : Tea.TeaModel {
             if dict.keys.contains("paymentType") {
                 self.paymentType = dict["paymentType"] as! String
             }
+            if dict.keys.contains("port") {
+                self.port = dict["port"] as! String
+            }
             if dict.keys.contains("postpaidServiceStatus") {
                 self.postpaidServiceStatus = dict["postpaidServiceStatus"] as! String
             }
             if dict.keys.contains("privateNetworkIpWhiteList") {
                 self.privateNetworkIpWhiteList = dict["privateNetworkIpWhiteList"] as! [String]
+            }
+            if dict.keys.contains("protocol") {
+                self.protocol_ = dict["protocol"] as! String
             }
             if dict.keys.contains("publicIpWhitelist") {
                 self.publicIpWhitelist = dict["publicIpWhitelist"] as! [String]
@@ -40427,6 +40451,8 @@ public class UpdateInstanceSettingsRequest : Tea.TeaModel {
 
     public var clientToken: String?
 
+    public var updateStrategy: String?
+
     public override init() {
         super.init()
     }
@@ -40447,6 +40473,9 @@ public class UpdateInstanceSettingsRequest : Tea.TeaModel {
         if self.clientToken != nil {
             map["clientToken"] = self.clientToken!
         }
+        if self.updateStrategy != nil {
+            map["updateStrategy"] = self.updateStrategy!
+        }
         return map
     }
 
@@ -40456,6 +40485,9 @@ public class UpdateInstanceSettingsRequest : Tea.TeaModel {
         }
         if dict.keys.contains("clientToken") {
             self.clientToken = dict["clientToken"] as! String
+        }
+        if dict.keys.contains("updateStrategy") {
+            self.updateStrategy = dict["updateStrategy"] as! String
         }
     }
 }
