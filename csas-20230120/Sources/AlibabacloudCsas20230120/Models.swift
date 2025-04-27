@@ -1213,9 +1213,13 @@ public class CreateApprovalProcessRequest : Tea.TeaModel {
 
         public var domainWhitelistSchemaId: String?
 
+        public var endpointHardeningSchemaId: String?
+
         public var peripheralBlockSchemaId: String?
 
         public var softwareBlockSchemaId: String?
+
+        public var softwareHardeningSchemaId: String?
 
         public override init() {
             super.init()
@@ -1246,11 +1250,17 @@ public class CreateApprovalProcessRequest : Tea.TeaModel {
             if self.domainWhitelistSchemaId != nil {
                 map["DomainWhitelistSchemaId"] = self.domainWhitelistSchemaId!
             }
+            if self.endpointHardeningSchemaId != nil {
+                map["EndpointHardeningSchemaId"] = self.endpointHardeningSchemaId!
+            }
             if self.peripheralBlockSchemaId != nil {
                 map["PeripheralBlockSchemaId"] = self.peripheralBlockSchemaId!
             }
             if self.softwareBlockSchemaId != nil {
                 map["SoftwareBlockSchemaId"] = self.softwareBlockSchemaId!
+            }
+            if self.softwareHardeningSchemaId != nil {
+                map["SoftwareHardeningSchemaId"] = self.softwareHardeningSchemaId!
             }
             return map
         }
@@ -1271,11 +1281,17 @@ public class CreateApprovalProcessRequest : Tea.TeaModel {
             if dict.keys.contains("DomainWhitelistSchemaId") {
                 self.domainWhitelistSchemaId = dict["DomainWhitelistSchemaId"] as! String
             }
+            if dict.keys.contains("EndpointHardeningSchemaId") {
+                self.endpointHardeningSchemaId = dict["EndpointHardeningSchemaId"] as! String
+            }
             if dict.keys.contains("PeripheralBlockSchemaId") {
                 self.peripheralBlockSchemaId = dict["PeripheralBlockSchemaId"] as! String
             }
             if dict.keys.contains("SoftwareBlockSchemaId") {
                 self.softwareBlockSchemaId = dict["SoftwareBlockSchemaId"] as! String
+            }
+            if dict.keys.contains("SoftwareHardeningSchemaId") {
+                self.softwareHardeningSchemaId = dict["SoftwareHardeningSchemaId"] as! String
             }
         }
     }
@@ -1576,6 +1592,43 @@ public class CreateApprovalProcessResponseBody : Tea.TeaModel {
                 }
             }
         }
+        public class EndpointHardeningPolicies : Tea.TeaModel {
+            public var policyIds: [String]?
+
+            public var schemaId: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.policyIds != nil {
+                    map["PolicyIds"] = self.policyIds!
+                }
+                if self.schemaId != nil {
+                    map["SchemaId"] = self.schemaId!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("PolicyIds") {
+                    self.policyIds = dict["PolicyIds"] as! [String]
+                }
+                if dict.keys.contains("SchemaId") {
+                    self.schemaId = dict["SchemaId"] as! String
+                }
+            }
+        }
         public class PeripheralBlockPolicies : Tea.TeaModel {
             public var policyIds: [String]?
 
@@ -1687,6 +1740,43 @@ public class CreateApprovalProcessResponseBody : Tea.TeaModel {
                 }
             }
         }
+        public class SoftwareHardeningPolicies : Tea.TeaModel {
+            public var policyIds: [String]?
+
+            public var schemaId: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.policyIds != nil {
+                    map["PolicyIds"] = self.policyIds!
+                }
+                if self.schemaId != nil {
+                    map["SchemaId"] = self.schemaId!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("PolicyIds") {
+                    self.policyIds = dict["PolicyIds"] as! [String]
+                }
+                if dict.keys.contains("SchemaId") {
+                    self.schemaId = dict["SchemaId"] as! String
+                }
+            }
+        }
         public var appUninstallPolicies: CreateApprovalProcessResponseBody.Process.AppUninstallPolicies?
 
         public var createTime: String?
@@ -1701,6 +1791,8 @@ public class CreateApprovalProcessResponseBody : Tea.TeaModel {
 
         public var domainWhitelistPolicies: CreateApprovalProcessResponseBody.Process.DomainWhitelistPolicies?
 
+        public var endpointHardeningPolicies: CreateApprovalProcessResponseBody.Process.EndpointHardeningPolicies?
+
         public var peripheralBlockPolicies: CreateApprovalProcessResponseBody.Process.PeripheralBlockPolicies?
 
         public var processId: String?
@@ -1710,6 +1802,8 @@ public class CreateApprovalProcessResponseBody : Tea.TeaModel {
         public var processNodes: [[CreateApprovalProcessResponseBody.Process.ProcessNodes]]?
 
         public var softwareBlockPolicies: CreateApprovalProcessResponseBody.Process.SoftwareBlockPolicies?
+
+        public var softwareHardeningPolicies: CreateApprovalProcessResponseBody.Process.SoftwareHardeningPolicies?
 
         public override init() {
             super.init()
@@ -1726,8 +1820,10 @@ public class CreateApprovalProcessResponseBody : Tea.TeaModel {
             try self.dlpSendPolicies?.validate()
             try self.domainBlacklistPolicies?.validate()
             try self.domainWhitelistPolicies?.validate()
+            try self.endpointHardeningPolicies?.validate()
             try self.peripheralBlockPolicies?.validate()
             try self.softwareBlockPolicies?.validate()
+            try self.softwareHardeningPolicies?.validate()
         }
 
         public override func toMap() -> [String : Any] {
@@ -1753,6 +1849,9 @@ public class CreateApprovalProcessResponseBody : Tea.TeaModel {
             if self.domainWhitelistPolicies != nil {
                 map["DomainWhitelistPolicies"] = self.domainWhitelistPolicies?.toMap()
             }
+            if self.endpointHardeningPolicies != nil {
+                map["EndpointHardeningPolicies"] = self.endpointHardeningPolicies?.toMap()
+            }
             if self.peripheralBlockPolicies != nil {
                 map["PeripheralBlockPolicies"] = self.peripheralBlockPolicies?.toMap()
             }
@@ -1775,6 +1874,9 @@ public class CreateApprovalProcessResponseBody : Tea.TeaModel {
             }
             if self.softwareBlockPolicies != nil {
                 map["SoftwareBlockPolicies"] = self.softwareBlockPolicies?.toMap()
+            }
+            if self.softwareHardeningPolicies != nil {
+                map["SoftwareHardeningPolicies"] = self.softwareHardeningPolicies?.toMap()
             }
             return map
         }
@@ -1811,6 +1913,11 @@ public class CreateApprovalProcessResponseBody : Tea.TeaModel {
                 model.fromMap(dict["DomainWhitelistPolicies"] as! [String: Any])
                 self.domainWhitelistPolicies = model
             }
+            if dict.keys.contains("EndpointHardeningPolicies") {
+                var model = CreateApprovalProcessResponseBody.Process.EndpointHardeningPolicies()
+                model.fromMap(dict["EndpointHardeningPolicies"] as! [String: Any])
+                self.endpointHardeningPolicies = model
+            }
             if dict.keys.contains("PeripheralBlockPolicies") {
                 var model = CreateApprovalProcessResponseBody.Process.PeripheralBlockPolicies()
                 model.fromMap(dict["PeripheralBlockPolicies"] as! [String: Any])
@@ -1841,6 +1948,11 @@ public class CreateApprovalProcessResponseBody : Tea.TeaModel {
                 var model = CreateApprovalProcessResponseBody.Process.SoftwareBlockPolicies()
                 model.fromMap(dict["SoftwareBlockPolicies"] as! [String: Any])
                 self.softwareBlockPolicies = model
+            }
+            if dict.keys.contains("SoftwareHardeningPolicies") {
+                var model = CreateApprovalProcessResponseBody.Process.SoftwareHardeningPolicies()
+                model.fromMap(dict["SoftwareHardeningPolicies"] as! [String: Any])
+                self.softwareHardeningPolicies = model
             }
         }
     }
@@ -7848,6 +7960,43 @@ public class GetApprovalProcessResponseBody : Tea.TeaModel {
                 }
             }
         }
+        public class EndpointHardeningPolicies : Tea.TeaModel {
+            public var policyIds: [String]?
+
+            public var schemaId: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.policyIds != nil {
+                    map["PolicyIds"] = self.policyIds!
+                }
+                if self.schemaId != nil {
+                    map["SchemaId"] = self.schemaId!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("PolicyIds") {
+                    self.policyIds = dict["PolicyIds"] as! [String]
+                }
+                if dict.keys.contains("SchemaId") {
+                    self.schemaId = dict["SchemaId"] as! String
+                }
+            }
+        }
         public class PeripheralBlockPolicies : Tea.TeaModel {
             public var policyIds: [String]?
 
@@ -7959,6 +8108,43 @@ public class GetApprovalProcessResponseBody : Tea.TeaModel {
                 }
             }
         }
+        public class SoftwareHardeningPolicies : Tea.TeaModel {
+            public var policyIds: [String]?
+
+            public var schemaId: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.policyIds != nil {
+                    map["PolicyIds"] = self.policyIds!
+                }
+                if self.schemaId != nil {
+                    map["SchemaId"] = self.schemaId!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("PolicyIds") {
+                    self.policyIds = dict["PolicyIds"] as! [String]
+                }
+                if dict.keys.contains("SchemaId") {
+                    self.schemaId = dict["SchemaId"] as! String
+                }
+            }
+        }
         public var appUninstallPolicies: GetApprovalProcessResponseBody.Process.AppUninstallPolicies?
 
         public var createTime: String?
@@ -7973,6 +8159,8 @@ public class GetApprovalProcessResponseBody : Tea.TeaModel {
 
         public var domainWhitelistPolicies: GetApprovalProcessResponseBody.Process.DomainWhitelistPolicies?
 
+        public var endpointHardeningPolicies: GetApprovalProcessResponseBody.Process.EndpointHardeningPolicies?
+
         public var peripheralBlockPolicies: GetApprovalProcessResponseBody.Process.PeripheralBlockPolicies?
 
         public var processId: String?
@@ -7982,6 +8170,8 @@ public class GetApprovalProcessResponseBody : Tea.TeaModel {
         public var processNodes: [[GetApprovalProcessResponseBody.Process.ProcessNodes]]?
 
         public var softwareBlockPolicies: GetApprovalProcessResponseBody.Process.SoftwareBlockPolicies?
+
+        public var softwareHardeningPolicies: GetApprovalProcessResponseBody.Process.SoftwareHardeningPolicies?
 
         public override init() {
             super.init()
@@ -7998,8 +8188,10 @@ public class GetApprovalProcessResponseBody : Tea.TeaModel {
             try self.dlpSendPolicies?.validate()
             try self.domainBlacklistPolicies?.validate()
             try self.domainWhitelistPolicies?.validate()
+            try self.endpointHardeningPolicies?.validate()
             try self.peripheralBlockPolicies?.validate()
             try self.softwareBlockPolicies?.validate()
+            try self.softwareHardeningPolicies?.validate()
         }
 
         public override func toMap() -> [String : Any] {
@@ -8025,6 +8217,9 @@ public class GetApprovalProcessResponseBody : Tea.TeaModel {
             if self.domainWhitelistPolicies != nil {
                 map["DomainWhitelistPolicies"] = self.domainWhitelistPolicies?.toMap()
             }
+            if self.endpointHardeningPolicies != nil {
+                map["EndpointHardeningPolicies"] = self.endpointHardeningPolicies?.toMap()
+            }
             if self.peripheralBlockPolicies != nil {
                 map["PeripheralBlockPolicies"] = self.peripheralBlockPolicies?.toMap()
             }
@@ -8047,6 +8242,9 @@ public class GetApprovalProcessResponseBody : Tea.TeaModel {
             }
             if self.softwareBlockPolicies != nil {
                 map["SoftwareBlockPolicies"] = self.softwareBlockPolicies?.toMap()
+            }
+            if self.softwareHardeningPolicies != nil {
+                map["SoftwareHardeningPolicies"] = self.softwareHardeningPolicies?.toMap()
             }
             return map
         }
@@ -8083,6 +8281,11 @@ public class GetApprovalProcessResponseBody : Tea.TeaModel {
                 model.fromMap(dict["DomainWhitelistPolicies"] as! [String: Any])
                 self.domainWhitelistPolicies = model
             }
+            if dict.keys.contains("EndpointHardeningPolicies") {
+                var model = GetApprovalProcessResponseBody.Process.EndpointHardeningPolicies()
+                model.fromMap(dict["EndpointHardeningPolicies"] as! [String: Any])
+                self.endpointHardeningPolicies = model
+            }
             if dict.keys.contains("PeripheralBlockPolicies") {
                 var model = GetApprovalProcessResponseBody.Process.PeripheralBlockPolicies()
                 model.fromMap(dict["PeripheralBlockPolicies"] as! [String: Any])
@@ -8113,6 +8316,11 @@ public class GetApprovalProcessResponseBody : Tea.TeaModel {
                 var model = GetApprovalProcessResponseBody.Process.SoftwareBlockPolicies()
                 model.fromMap(dict["SoftwareBlockPolicies"] as! [String: Any])
                 self.softwareBlockPolicies = model
+            }
+            if dict.keys.contains("SoftwareHardeningPolicies") {
+                var model = GetApprovalProcessResponseBody.Process.SoftwareHardeningPolicies()
+                model.fromMap(dict["SoftwareHardeningPolicies"] as! [String: Any])
+                self.softwareHardeningPolicies = model
             }
         }
     }
@@ -12501,6 +12709,43 @@ public class ListApprovalProcessesResponseBody : Tea.TeaModel {
                 }
             }
         }
+        public class EndpointHardeningPolicies : Tea.TeaModel {
+            public var policyIds: [String]?
+
+            public var schemaId: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.policyIds != nil {
+                    map["PolicyIds"] = self.policyIds!
+                }
+                if self.schemaId != nil {
+                    map["SchemaId"] = self.schemaId!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("PolicyIds") {
+                    self.policyIds = dict["PolicyIds"] as! [String]
+                }
+                if dict.keys.contains("SchemaId") {
+                    self.schemaId = dict["SchemaId"] as! String
+                }
+            }
+        }
         public class PeripheralBlockPolicies : Tea.TeaModel {
             public var policyIds: [String]?
 
@@ -12612,6 +12857,43 @@ public class ListApprovalProcessesResponseBody : Tea.TeaModel {
                 }
             }
         }
+        public class SoftwareHardeningPolicies : Tea.TeaModel {
+            public var policyIds: [String]?
+
+            public var schemaId: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.policyIds != nil {
+                    map["PolicyIds"] = self.policyIds!
+                }
+                if self.schemaId != nil {
+                    map["SchemaId"] = self.schemaId!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("PolicyIds") {
+                    self.policyIds = dict["PolicyIds"] as! [String]
+                }
+                if dict.keys.contains("SchemaId") {
+                    self.schemaId = dict["SchemaId"] as! String
+                }
+            }
+        }
         public var appUninstallPolicies: ListApprovalProcessesResponseBody.Processes.AppUninstallPolicies?
 
         public var createTime: String?
@@ -12626,6 +12908,8 @@ public class ListApprovalProcessesResponseBody : Tea.TeaModel {
 
         public var domainWhitelistPolicies: ListApprovalProcessesResponseBody.Processes.DomainWhitelistPolicies?
 
+        public var endpointHardeningPolicies: ListApprovalProcessesResponseBody.Processes.EndpointHardeningPolicies?
+
         public var peripheralBlockPolicies: ListApprovalProcessesResponseBody.Processes.PeripheralBlockPolicies?
 
         public var processId: String?
@@ -12635,6 +12919,8 @@ public class ListApprovalProcessesResponseBody : Tea.TeaModel {
         public var processNodes: [[ListApprovalProcessesResponseBody.Processes.ProcessNodes]]?
 
         public var softwareBlockPolicies: ListApprovalProcessesResponseBody.Processes.SoftwareBlockPolicies?
+
+        public var softwareHardeningPolicies: ListApprovalProcessesResponseBody.Processes.SoftwareHardeningPolicies?
 
         public override init() {
             super.init()
@@ -12651,8 +12937,10 @@ public class ListApprovalProcessesResponseBody : Tea.TeaModel {
             try self.dlpSendPolicies?.validate()
             try self.domainBlacklistPolicies?.validate()
             try self.domainWhitelistPolicies?.validate()
+            try self.endpointHardeningPolicies?.validate()
             try self.peripheralBlockPolicies?.validate()
             try self.softwareBlockPolicies?.validate()
+            try self.softwareHardeningPolicies?.validate()
         }
 
         public override func toMap() -> [String : Any] {
@@ -12678,6 +12966,9 @@ public class ListApprovalProcessesResponseBody : Tea.TeaModel {
             if self.domainWhitelistPolicies != nil {
                 map["DomainWhitelistPolicies"] = self.domainWhitelistPolicies?.toMap()
             }
+            if self.endpointHardeningPolicies != nil {
+                map["EndpointHardeningPolicies"] = self.endpointHardeningPolicies?.toMap()
+            }
             if self.peripheralBlockPolicies != nil {
                 map["PeripheralBlockPolicies"] = self.peripheralBlockPolicies?.toMap()
             }
@@ -12700,6 +12991,9 @@ public class ListApprovalProcessesResponseBody : Tea.TeaModel {
             }
             if self.softwareBlockPolicies != nil {
                 map["SoftwareBlockPolicies"] = self.softwareBlockPolicies?.toMap()
+            }
+            if self.softwareHardeningPolicies != nil {
+                map["SoftwareHardeningPolicies"] = self.softwareHardeningPolicies?.toMap()
             }
             return map
         }
@@ -12736,6 +13030,11 @@ public class ListApprovalProcessesResponseBody : Tea.TeaModel {
                 model.fromMap(dict["DomainWhitelistPolicies"] as! [String: Any])
                 self.domainWhitelistPolicies = model
             }
+            if dict.keys.contains("EndpointHardeningPolicies") {
+                var model = ListApprovalProcessesResponseBody.Processes.EndpointHardeningPolicies()
+                model.fromMap(dict["EndpointHardeningPolicies"] as! [String: Any])
+                self.endpointHardeningPolicies = model
+            }
             if dict.keys.contains("PeripheralBlockPolicies") {
                 var model = ListApprovalProcessesResponseBody.Processes.PeripheralBlockPolicies()
                 model.fromMap(dict["PeripheralBlockPolicies"] as! [String: Any])
@@ -12766,6 +13065,11 @@ public class ListApprovalProcessesResponseBody : Tea.TeaModel {
                 var model = ListApprovalProcessesResponseBody.Processes.SoftwareBlockPolicies()
                 model.fromMap(dict["SoftwareBlockPolicies"] as! [String: Any])
                 self.softwareBlockPolicies = model
+            }
+            if dict.keys.contains("SoftwareHardeningPolicies") {
+                var model = ListApprovalProcessesResponseBody.Processes.SoftwareHardeningPolicies()
+                model.fromMap(dict["SoftwareHardeningPolicies"] as! [String: Any])
+                self.softwareHardeningPolicies = model
             }
         }
     }
@@ -24306,9 +24610,13 @@ public class UpdateApprovalProcessRequest : Tea.TeaModel {
 
         public var domainWhitelistSchemaId: String?
 
+        public var endpointHardeningSchemaId: String?
+
         public var peripheralBlockSchemaId: String?
 
         public var softwareBlockSchemaId: String?
+
+        public var softwareHardeningSchemaId: String?
 
         public override init() {
             super.init()
@@ -24339,11 +24647,17 @@ public class UpdateApprovalProcessRequest : Tea.TeaModel {
             if self.domainWhitelistSchemaId != nil {
                 map["DomainWhitelistSchemaId"] = self.domainWhitelistSchemaId!
             }
+            if self.endpointHardeningSchemaId != nil {
+                map["EndpointHardeningSchemaId"] = self.endpointHardeningSchemaId!
+            }
             if self.peripheralBlockSchemaId != nil {
                 map["PeripheralBlockSchemaId"] = self.peripheralBlockSchemaId!
             }
             if self.softwareBlockSchemaId != nil {
                 map["SoftwareBlockSchemaId"] = self.softwareBlockSchemaId!
+            }
+            if self.softwareHardeningSchemaId != nil {
+                map["SoftwareHardeningSchemaId"] = self.softwareHardeningSchemaId!
             }
             return map
         }
@@ -24364,11 +24678,17 @@ public class UpdateApprovalProcessRequest : Tea.TeaModel {
             if dict.keys.contains("DomainWhitelistSchemaId") {
                 self.domainWhitelistSchemaId = dict["DomainWhitelistSchemaId"] as! String
             }
+            if dict.keys.contains("EndpointHardeningSchemaId") {
+                self.endpointHardeningSchemaId = dict["EndpointHardeningSchemaId"] as! String
+            }
             if dict.keys.contains("PeripheralBlockSchemaId") {
                 self.peripheralBlockSchemaId = dict["PeripheralBlockSchemaId"] as! String
             }
             if dict.keys.contains("SoftwareBlockSchemaId") {
                 self.softwareBlockSchemaId = dict["SoftwareBlockSchemaId"] as! String
+            }
+            if dict.keys.contains("SoftwareHardeningSchemaId") {
+                self.softwareHardeningSchemaId = dict["SoftwareHardeningSchemaId"] as! String
             }
         }
     }
@@ -24685,6 +25005,43 @@ public class UpdateApprovalProcessResponseBody : Tea.TeaModel {
                 }
             }
         }
+        public class EndpointHardeningPolicies : Tea.TeaModel {
+            public var policyIds: [String]?
+
+            public var schemaId: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.policyIds != nil {
+                    map["PolicyIds"] = self.policyIds!
+                }
+                if self.schemaId != nil {
+                    map["SchemaId"] = self.schemaId!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("PolicyIds") {
+                    self.policyIds = dict["PolicyIds"] as! [String]
+                }
+                if dict.keys.contains("SchemaId") {
+                    self.schemaId = dict["SchemaId"] as! String
+                }
+            }
+        }
         public class PeripheraBlockPolicies : Tea.TeaModel {
             public var policyIds: [String]?
 
@@ -24796,6 +25153,43 @@ public class UpdateApprovalProcessResponseBody : Tea.TeaModel {
                 }
             }
         }
+        public class SoftwareHardeningPolicies : Tea.TeaModel {
+            public var policyIds: [String]?
+
+            public var schemaId: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.policyIds != nil {
+                    map["PolicyIds"] = self.policyIds!
+                }
+                if self.schemaId != nil {
+                    map["SchemaId"] = self.schemaId!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("PolicyIds") {
+                    self.policyIds = dict["PolicyIds"] as! [String]
+                }
+                if dict.keys.contains("SchemaId") {
+                    self.schemaId = dict["SchemaId"] as! String
+                }
+            }
+        }
         public var appUninstallPolicies: UpdateApprovalProcessResponseBody.Process.AppUninstallPolicies?
 
         public var createTime: String?
@@ -24810,6 +25204,8 @@ public class UpdateApprovalProcessResponseBody : Tea.TeaModel {
 
         public var domainWhitelistPolicies: UpdateApprovalProcessResponseBody.Process.DomainWhitelistPolicies?
 
+        public var endpointHardeningPolicies: UpdateApprovalProcessResponseBody.Process.EndpointHardeningPolicies?
+
         public var peripheraBlockPolicies: UpdateApprovalProcessResponseBody.Process.PeripheraBlockPolicies?
 
         public var processId: String?
@@ -24819,6 +25215,8 @@ public class UpdateApprovalProcessResponseBody : Tea.TeaModel {
         public var processNodes: [[UpdateApprovalProcessResponseBody.Process.ProcessNodes]]?
 
         public var softwareBlockPolicies: UpdateApprovalProcessResponseBody.Process.SoftwareBlockPolicies?
+
+        public var softwareHardeningPolicies: UpdateApprovalProcessResponseBody.Process.SoftwareHardeningPolicies?
 
         public override init() {
             super.init()
@@ -24835,8 +25233,10 @@ public class UpdateApprovalProcessResponseBody : Tea.TeaModel {
             try self.dlpSendPolicies?.validate()
             try self.domainBlacklistPolicies?.validate()
             try self.domainWhitelistPolicies?.validate()
+            try self.endpointHardeningPolicies?.validate()
             try self.peripheraBlockPolicies?.validate()
             try self.softwareBlockPolicies?.validate()
+            try self.softwareHardeningPolicies?.validate()
         }
 
         public override func toMap() -> [String : Any] {
@@ -24862,6 +25262,9 @@ public class UpdateApprovalProcessResponseBody : Tea.TeaModel {
             if self.domainWhitelistPolicies != nil {
                 map["DomainWhitelistPolicies"] = self.domainWhitelistPolicies?.toMap()
             }
+            if self.endpointHardeningPolicies != nil {
+                map["EndpointHardeningPolicies"] = self.endpointHardeningPolicies?.toMap()
+            }
             if self.peripheraBlockPolicies != nil {
                 map["PeripheraBlockPolicies"] = self.peripheraBlockPolicies?.toMap()
             }
@@ -24884,6 +25287,9 @@ public class UpdateApprovalProcessResponseBody : Tea.TeaModel {
             }
             if self.softwareBlockPolicies != nil {
                 map["SoftwareBlockPolicies"] = self.softwareBlockPolicies?.toMap()
+            }
+            if self.softwareHardeningPolicies != nil {
+                map["SoftwareHardeningPolicies"] = self.softwareHardeningPolicies?.toMap()
             }
             return map
         }
@@ -24920,6 +25326,11 @@ public class UpdateApprovalProcessResponseBody : Tea.TeaModel {
                 model.fromMap(dict["DomainWhitelistPolicies"] as! [String: Any])
                 self.domainWhitelistPolicies = model
             }
+            if dict.keys.contains("EndpointHardeningPolicies") {
+                var model = UpdateApprovalProcessResponseBody.Process.EndpointHardeningPolicies()
+                model.fromMap(dict["EndpointHardeningPolicies"] as! [String: Any])
+                self.endpointHardeningPolicies = model
+            }
             if dict.keys.contains("PeripheraBlockPolicies") {
                 var model = UpdateApprovalProcessResponseBody.Process.PeripheraBlockPolicies()
                 model.fromMap(dict["PeripheraBlockPolicies"] as! [String: Any])
@@ -24950,6 +25361,11 @@ public class UpdateApprovalProcessResponseBody : Tea.TeaModel {
                 var model = UpdateApprovalProcessResponseBody.Process.SoftwareBlockPolicies()
                 model.fromMap(dict["SoftwareBlockPolicies"] as! [String: Any])
                 self.softwareBlockPolicies = model
+            }
+            if dict.keys.contains("SoftwareHardeningPolicies") {
+                var model = UpdateApprovalProcessResponseBody.Process.SoftwareHardeningPolicies()
+                model.fromMap(dict["SoftwareHardeningPolicies"] as! [String: Any])
+                self.softwareHardeningPolicies = model
             }
         }
     }
