@@ -14016,6 +14016,10 @@ public class ListServicesRequest : Tea.TeaModel {
 
     public var quotaId: String?
 
+    public var resourceAliasName: String?
+
+    public var resourceId: String?
+
     public var resourceName: String?
 
     public var resourceType: String?
@@ -14078,6 +14082,12 @@ public class ListServicesRequest : Tea.TeaModel {
         if self.quotaId != nil {
             map["QuotaId"] = self.quotaId!
         }
+        if self.resourceAliasName != nil {
+            map["ResourceAliasName"] = self.resourceAliasName!
+        }
+        if self.resourceId != nil {
+            map["ResourceId"] = self.resourceId!
+        }
         if self.resourceName != nil {
             map["ResourceName"] = self.resourceName!
         }
@@ -14139,6 +14149,12 @@ public class ListServicesRequest : Tea.TeaModel {
         if dict.keys.contains("QuotaId") {
             self.quotaId = dict["QuotaId"] as! String
         }
+        if dict.keys.contains("ResourceAliasName") {
+            self.resourceAliasName = dict["ResourceAliasName"] as! String
+        }
+        if dict.keys.contains("ResourceId") {
+            self.resourceId = dict["ResourceId"] as! String
+        }
         if dict.keys.contains("ResourceName") {
             self.resourceName = dict["ResourceName"] as! String
         }
@@ -14189,6 +14205,10 @@ public class ListServicesShrinkRequest : Tea.TeaModel {
     public var parentServiceUid: String?
 
     public var quotaId: String?
+
+    public var resourceAliasName: String?
+
+    public var resourceId: String?
 
     public var resourceName: String?
 
@@ -14252,6 +14272,12 @@ public class ListServicesShrinkRequest : Tea.TeaModel {
         if self.quotaId != nil {
             map["QuotaId"] = self.quotaId!
         }
+        if self.resourceAliasName != nil {
+            map["ResourceAliasName"] = self.resourceAliasName!
+        }
+        if self.resourceId != nil {
+            map["ResourceId"] = self.resourceId!
+        }
         if self.resourceName != nil {
             map["ResourceName"] = self.resourceName!
         }
@@ -14312,6 +14338,12 @@ public class ListServicesShrinkRequest : Tea.TeaModel {
         }
         if dict.keys.contains("QuotaId") {
             self.quotaId = dict["QuotaId"] as! String
+        }
+        if dict.keys.contains("ResourceAliasName") {
+            self.resourceAliasName = dict["ResourceAliasName"] as! String
+        }
+        if dict.keys.contains("ResourceId") {
+            self.resourceId = dict["ResourceId"] as! String
         }
         if dict.keys.contains("ResourceName") {
             self.resourceName = dict["ResourceName"] as! String
