@@ -3828,6 +3828,51 @@ public class GetAppInstanceGroupResponseBody : Tea.TeaModel {
                 }
             }
         }
+        public class Tags : Tea.TeaModel {
+            public var key: String?
+
+            public var scope: String?
+
+            public var value: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.key != nil {
+                    map["Key"] = self.key!
+                }
+                if self.scope != nil {
+                    map["Scope"] = self.scope!
+                }
+                if self.value != nil {
+                    map["Value"] = self.value!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("Key") {
+                    self.key = dict["Key"] as! String
+                }
+                if dict.keys.contains("Scope") {
+                    self.scope = dict["Scope"] as! String
+                }
+                if dict.keys.contains("Value") {
+                    self.value = dict["Value"] as! String
+                }
+            }
+        }
         public var amount: Int32?
 
         public var appCenterImageId: String?
@@ -3893,6 +3938,8 @@ public class GetAppInstanceGroupResponseBody : Tea.TeaModel {
         public var specId: String?
 
         public var status: String?
+
+        public var tags: [GetAppInstanceGroupResponseBody.AppInstanceGroupModels.Tags]?
 
         public override init() {
             super.init()
@@ -4016,6 +4063,13 @@ public class GetAppInstanceGroupResponseBody : Tea.TeaModel {
             if self.status != nil {
                 map["Status"] = self.status!
             }
+            if self.tags != nil {
+                var tmp : [Any] = []
+                for k in self.tags! {
+                    tmp.append(k.toMap())
+                }
+                map["Tags"] = tmp
+            }
             return map
         }
 
@@ -4136,6 +4190,17 @@ public class GetAppInstanceGroupResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("Status") {
                 self.status = dict["Status"] as! String
+            }
+            if dict.keys.contains("Tags") {
+                var tmp : [GetAppInstanceGroupResponseBody.AppInstanceGroupModels.Tags] = []
+                for v in dict["Tags"] as! [Any] {
+                    var model = GetAppInstanceGroupResponseBody.AppInstanceGroupModels.Tags()
+                    if v != nil {
+                        model.fromMap(v as! [String: Any])
+                    }
+                    tmp.append(model)
+                }
+                self.tags = tmp
             }
         }
     }
