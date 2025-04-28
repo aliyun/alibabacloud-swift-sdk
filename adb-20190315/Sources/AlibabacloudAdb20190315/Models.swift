@@ -11038,11 +11038,17 @@ public class DescribeDBClusterAttributeResponseBody : Tea.TeaModel {
 
             public var port: Int32?
 
+            public var productForm: String?
+
             public var productVersion: String?
 
             public var rdsInstanceId: String?
 
             public var regionId: String?
+
+            public var reservedNodeCount: Int32?
+
+            public var reservedNodeSize: String?
 
             public var resourceGroupId: String?
 
@@ -11190,6 +11196,9 @@ public class DescribeDBClusterAttributeResponseBody : Tea.TeaModel {
                 if self.port != nil {
                     map["Port"] = self.port!
                 }
+                if self.productForm != nil {
+                    map["ProductForm"] = self.productForm!
+                }
                 if self.productVersion != nil {
                     map["ProductVersion"] = self.productVersion!
                 }
@@ -11198,6 +11207,12 @@ public class DescribeDBClusterAttributeResponseBody : Tea.TeaModel {
                 }
                 if self.regionId != nil {
                     map["RegionId"] = self.regionId!
+                }
+                if self.reservedNodeCount != nil {
+                    map["ReservedNodeCount"] = self.reservedNodeCount!
+                }
+                if self.reservedNodeSize != nil {
+                    map["ReservedNodeSize"] = self.reservedNodeSize!
                 }
                 if self.resourceGroupId != nil {
                     map["ResourceGroupId"] = self.resourceGroupId!
@@ -11344,6 +11359,9 @@ public class DescribeDBClusterAttributeResponseBody : Tea.TeaModel {
                 if dict.keys.contains("Port") {
                     self.port = dict["Port"] as! Int32
                 }
+                if dict.keys.contains("ProductForm") {
+                    self.productForm = dict["ProductForm"] as! String
+                }
                 if dict.keys.contains("ProductVersion") {
                     self.productVersion = dict["ProductVersion"] as! String
                 }
@@ -11352,6 +11370,12 @@ public class DescribeDBClusterAttributeResponseBody : Tea.TeaModel {
                 }
                 if dict.keys.contains("RegionId") {
                     self.regionId = dict["RegionId"] as! String
+                }
+                if dict.keys.contains("ReservedNodeCount") {
+                    self.reservedNodeCount = dict["ReservedNodeCount"] as! Int32
+                }
+                if dict.keys.contains("ReservedNodeSize") {
+                    self.reservedNodeSize = dict["ReservedNodeSize"] as! String
                 }
                 if dict.keys.contains("ResourceGroupId") {
                     self.resourceGroupId = dict["ResourceGroupId"] as! String
