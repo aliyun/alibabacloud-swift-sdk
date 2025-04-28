@@ -427,6 +427,67 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func docOcrMaxWithOptions(_ request: DocOcrMaxRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DocOcrMaxResponse {
+        try TeaUtils.Client.validateModel(request)
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.docType)) {
+            body["DocType"] = request.docType ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.idOcrPictureBase64)) {
+            body["IdOcrPictureBase64"] = request.idOcrPictureBase64 ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.idOcrPictureUrl)) {
+            body["IdOcrPictureUrl"] = request.idOcrPictureUrl ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.idThreshold)) {
+            body["IdThreshold"] = request.idThreshold ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.merchantBizId)) {
+            body["MerchantBizId"] = request.merchantBizId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.merchantUserId)) {
+            body["MerchantUserId"] = request.merchantUserId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.ocrModel)) {
+            body["OcrModel"] = request.ocrModel ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.productCode)) {
+            body["ProductCode"] = request.productCode ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.prompt)) {
+            body["Prompt"] = request.prompt ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.sceneCode)) {
+            body["SceneCode"] = request.sceneCode ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.spoof)) {
+            body["Spoof"] = request.spoof ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "DocOcrMax",
+            "version": "2022-08-09",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(DocOcrMaxResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func docOcrMax(_ request: DocOcrMaxRequest) async throws -> DocOcrMaxResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await docOcrMaxWithOptions(request as! DocOcrMaxRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func ekycVerifyWithOptions(_ request: EkycVerifyRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> EkycVerifyResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]

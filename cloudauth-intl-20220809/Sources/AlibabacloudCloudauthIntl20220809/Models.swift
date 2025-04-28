@@ -1714,6 +1714,275 @@ public class DocOcrResponse : Tea.TeaModel {
     }
 }
 
+public class DocOcrMaxRequest : Tea.TeaModel {
+    public var docType: String?
+
+    public var idOcrPictureBase64: String?
+
+    public var idOcrPictureUrl: String?
+
+    public var idThreshold: String?
+
+    public var merchantBizId: String?
+
+    public var merchantUserId: String?
+
+    public var ocrModel: String?
+
+    public var productCode: String?
+
+    public var prompt: String?
+
+    public var sceneCode: String?
+
+    public var spoof: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.docType != nil {
+            map["DocType"] = self.docType!
+        }
+        if self.idOcrPictureBase64 != nil {
+            map["IdOcrPictureBase64"] = self.idOcrPictureBase64!
+        }
+        if self.idOcrPictureUrl != nil {
+            map["IdOcrPictureUrl"] = self.idOcrPictureUrl!
+        }
+        if self.idThreshold != nil {
+            map["IdThreshold"] = self.idThreshold!
+        }
+        if self.merchantBizId != nil {
+            map["MerchantBizId"] = self.merchantBizId!
+        }
+        if self.merchantUserId != nil {
+            map["MerchantUserId"] = self.merchantUserId!
+        }
+        if self.ocrModel != nil {
+            map["OcrModel"] = self.ocrModel!
+        }
+        if self.productCode != nil {
+            map["ProductCode"] = self.productCode!
+        }
+        if self.prompt != nil {
+            map["Prompt"] = self.prompt!
+        }
+        if self.sceneCode != nil {
+            map["SceneCode"] = self.sceneCode!
+        }
+        if self.spoof != nil {
+            map["Spoof"] = self.spoof!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("DocType") {
+            self.docType = dict["DocType"] as! String
+        }
+        if dict.keys.contains("IdOcrPictureBase64") {
+            self.idOcrPictureBase64 = dict["IdOcrPictureBase64"] as! String
+        }
+        if dict.keys.contains("IdOcrPictureUrl") {
+            self.idOcrPictureUrl = dict["IdOcrPictureUrl"] as! String
+        }
+        if dict.keys.contains("IdThreshold") {
+            self.idThreshold = dict["IdThreshold"] as! String
+        }
+        if dict.keys.contains("MerchantBizId") {
+            self.merchantBizId = dict["MerchantBizId"] as! String
+        }
+        if dict.keys.contains("MerchantUserId") {
+            self.merchantUserId = dict["MerchantUserId"] as! String
+        }
+        if dict.keys.contains("OcrModel") {
+            self.ocrModel = dict["OcrModel"] as! String
+        }
+        if dict.keys.contains("ProductCode") {
+            self.productCode = dict["ProductCode"] as! String
+        }
+        if dict.keys.contains("Prompt") {
+            self.prompt = dict["Prompt"] as! String
+        }
+        if dict.keys.contains("SceneCode") {
+            self.sceneCode = dict["SceneCode"] as! String
+        }
+        if dict.keys.contains("Spoof") {
+            self.spoof = dict["Spoof"] as! String
+        }
+    }
+}
+
+public class DocOcrMaxResponseBody : Tea.TeaModel {
+    public class Result : Tea.TeaModel {
+        public var extIdInfo: String?
+
+        public var passed: String?
+
+        public var subCode: String?
+
+        public var transactionId: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.extIdInfo != nil {
+                map["ExtIdInfo"] = self.extIdInfo!
+            }
+            if self.passed != nil {
+                map["Passed"] = self.passed!
+            }
+            if self.subCode != nil {
+                map["SubCode"] = self.subCode!
+            }
+            if self.transactionId != nil {
+                map["TransactionId"] = self.transactionId!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("ExtIdInfo") {
+                self.extIdInfo = dict["ExtIdInfo"] as! String
+            }
+            if dict.keys.contains("Passed") {
+                self.passed = dict["Passed"] as! String
+            }
+            if dict.keys.contains("SubCode") {
+                self.subCode = dict["SubCode"] as! String
+            }
+            if dict.keys.contains("TransactionId") {
+                self.transactionId = dict["TransactionId"] as! String
+            }
+        }
+    }
+    public var code: String?
+
+    public var message: String?
+
+    public var requestId: String?
+
+    public var result: DocOcrMaxResponseBody.Result?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.result?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.code != nil {
+            map["Code"] = self.code!
+        }
+        if self.message != nil {
+            map["Message"] = self.message!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.result != nil {
+            map["Result"] = self.result?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("Code") {
+            self.code = dict["Code"] as! String
+        }
+        if dict.keys.contains("Message") {
+            self.message = dict["Message"] as! String
+        }
+        if dict.keys.contains("RequestId") {
+            self.requestId = dict["RequestId"] as! String
+        }
+        if dict.keys.contains("Result") {
+            var model = DocOcrMaxResponseBody.Result()
+            model.fromMap(dict["Result"] as! [String: Any])
+            self.result = model
+        }
+    }
+}
+
+public class DocOcrMaxResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: DocOcrMaxResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") {
+            var model = DocOcrMaxResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
 public class EkycVerifyRequest : Tea.TeaModel {
     public var authorize: String?
 
