@@ -14928,6 +14928,8 @@ public class DecryptKMSDataKeyResponse : Tea.TeaModel {
 public class DeleteAIAgentDialogueRequest : Tea.TeaModel {
     public var dialogueId: String?
 
+    public var nodeId: String?
+
     public var sessionId: String?
 
     public override init() {
@@ -14947,6 +14949,9 @@ public class DeleteAIAgentDialogueRequest : Tea.TeaModel {
         if self.dialogueId != nil {
             map["DialogueId"] = self.dialogueId!
         }
+        if self.nodeId != nil {
+            map["NodeId"] = self.nodeId!
+        }
         if self.sessionId != nil {
             map["SessionId"] = self.sessionId!
         }
@@ -14956,6 +14961,9 @@ public class DeleteAIAgentDialogueRequest : Tea.TeaModel {
     public override func fromMap(_ dict: [String: Any]) -> Void {
         if dict.keys.contains("DialogueId") {
             self.dialogueId = dict["DialogueId"] as! String
+        }
+        if dict.keys.contains("NodeId") {
+            self.nodeId = dict["NodeId"] as! String
         }
         if dict.keys.contains("SessionId") {
             self.sessionId = dict["SessionId"] as! String
@@ -45758,6 +45766,8 @@ public class ListAIAgentDialoguesRequest : Tea.TeaModel {
 
     public var pageSize: Int32?
 
+    public var roundLimit: String?
+
     public var sessionId: String?
 
     public var startTime: Int64?
@@ -45788,6 +45798,9 @@ public class ListAIAgentDialoguesRequest : Tea.TeaModel {
         if self.pageSize != nil {
             map["PageSize"] = self.pageSize!
         }
+        if self.roundLimit != nil {
+            map["RoundLimit"] = self.roundLimit!
+        }
         if self.sessionId != nil {
             map["SessionId"] = self.sessionId!
         }
@@ -45809,6 +45822,9 @@ public class ListAIAgentDialoguesRequest : Tea.TeaModel {
         }
         if dict.keys.contains("PageSize") {
             self.pageSize = dict["PageSize"] as! Int32
+        }
+        if dict.keys.contains("RoundLimit") {
+            self.roundLimit = dict["RoundLimit"] as! String
         }
         if dict.keys.contains("SessionId") {
             self.sessionId = dict["SessionId"] as! String
@@ -45886,6 +45902,10 @@ public class ListAIAgentDialoguesResponseBody : Tea.TeaModel {
 
         public var dialogueId: String?
 
+        public var extend: String?
+
+        public var nodeId: String?
+
         public var producer: String?
 
         public var reasoningText: String?
@@ -45923,6 +45943,12 @@ public class ListAIAgentDialoguesResponseBody : Tea.TeaModel {
             }
             if self.dialogueId != nil {
                 map["DialogueId"] = self.dialogueId!
+            }
+            if self.extend != nil {
+                map["Extend"] = self.extend!
+            }
+            if self.nodeId != nil {
+                map["NodeId"] = self.nodeId!
             }
             if self.producer != nil {
                 map["Producer"] = self.producer!
@@ -45962,6 +45988,12 @@ public class ListAIAgentDialoguesResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("DialogueId") {
                 self.dialogueId = dict["DialogueId"] as! String
+            }
+            if dict.keys.contains("Extend") {
+                self.extend = dict["Extend"] as! String
+            }
+            if dict.keys.contains("NodeId") {
+                self.nodeId = dict["NodeId"] as! String
             }
             if dict.keys.contains("Producer") {
                 self.producer = dict["Producer"] as! String
