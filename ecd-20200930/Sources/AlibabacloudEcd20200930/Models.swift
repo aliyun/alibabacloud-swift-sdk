@@ -7653,6 +7653,8 @@ public class CreateCloudDriveServiceRequest : Tea.TeaModel {
 
     public var regionId: String?
 
+    public var resellerOwnerUid: Int64?
+
     public var solutionId: String?
 
     public var userCount: Int64?
@@ -7715,6 +7717,9 @@ public class CreateCloudDriveServiceRequest : Tea.TeaModel {
         if self.regionId != nil {
             map["RegionId"] = self.regionId!
         }
+        if self.resellerOwnerUid != nil {
+            map["ResellerOwnerUid"] = self.resellerOwnerUid!
+        }
         if self.solutionId != nil {
             map["SolutionId"] = self.solutionId!
         }
@@ -7769,6 +7774,9 @@ public class CreateCloudDriveServiceRequest : Tea.TeaModel {
         }
         if dict.keys.contains("RegionId") {
             self.regionId = dict["RegionId"] as! String
+        }
+        if dict.keys.contains("ResellerOwnerUid") {
+            self.resellerOwnerUid = dict["ResellerOwnerUid"] as! Int64
         }
         if dict.keys.contains("SolutionId") {
             self.solutionId = dict["SolutionId"] as! String
@@ -8614,6 +8622,8 @@ public class CreateDesktopGroupRequest : Tea.TeaModel {
 
     public var regionId: String?
 
+    public var resellerOwnerUid: Int64?
+
     public var resetType: Int64?
 
     public var scaleStrategyId: String?
@@ -8784,6 +8794,9 @@ public class CreateDesktopGroupRequest : Tea.TeaModel {
         }
         if self.regionId != nil {
             map["RegionId"] = self.regionId!
+        }
+        if self.resellerOwnerUid != nil {
+            map["ResellerOwnerUid"] = self.resellerOwnerUid!
         }
         if self.resetType != nil {
             map["ResetType"] = self.resetType!
@@ -8963,6 +8976,9 @@ public class CreateDesktopGroupRequest : Tea.TeaModel {
         }
         if dict.keys.contains("RegionId") {
             self.regionId = dict["RegionId"] as! String
+        }
+        if dict.keys.contains("ResellerOwnerUid") {
+            self.resellerOwnerUid = dict["ResellerOwnerUid"] as! Int64
         }
         if dict.keys.contains("ResetType") {
             self.resetType = dict["ResetType"] as! Int64
@@ -9818,6 +9834,8 @@ public class CreateDesktopsRequest : Tea.TeaModel {
 
     public var regionId: String?
 
+    public var resellerOwnerUid: Int64?
+
     public var resourceGroupId: String?
 
     public var savingPlanId: String?
@@ -9932,6 +9950,9 @@ public class CreateDesktopsRequest : Tea.TeaModel {
         }
         if self.regionId != nil {
             map["RegionId"] = self.regionId!
+        }
+        if self.resellerOwnerUid != nil {
+            map["ResellerOwnerUid"] = self.resellerOwnerUid!
         }
         if self.resourceGroupId != nil {
             map["ResourceGroupId"] = self.resourceGroupId!
@@ -10066,6 +10087,9 @@ public class CreateDesktopsRequest : Tea.TeaModel {
         }
         if dict.keys.contains("RegionId") {
             self.regionId = dict["RegionId"] as! String
+        }
+        if dict.keys.contains("ResellerOwnerUid") {
+            self.resellerOwnerUid = dict["ResellerOwnerUid"] as! Int64
         }
         if dict.keys.contains("ResourceGroupId") {
             self.resourceGroupId = dict["ResourceGroupId"] as! String
@@ -10447,6 +10471,8 @@ public class CreateDesktopsShrinkRequest : Tea.TeaModel {
 
     public var regionId: String?
 
+    public var resellerOwnerUid: Int64?
+
     public var resourceGroupId: String?
 
     public var savingPlanId: String?
@@ -10560,6 +10586,9 @@ public class CreateDesktopsShrinkRequest : Tea.TeaModel {
         }
         if self.regionId != nil {
             map["RegionId"] = self.regionId!
+        }
+        if self.resellerOwnerUid != nil {
+            map["ResellerOwnerUid"] = self.resellerOwnerUid!
         }
         if self.resourceGroupId != nil {
             map["ResourceGroupId"] = self.resourceGroupId!
@@ -10692,6 +10721,9 @@ public class CreateDesktopsShrinkRequest : Tea.TeaModel {
         }
         if dict.keys.contains("RegionId") {
             self.regionId = dict["RegionId"] as! String
+        }
+        if dict.keys.contains("ResellerOwnerUid") {
+            self.resellerOwnerUid = dict["ResellerOwnerUid"] as! Int64
         }
         if dict.keys.contains("ResourceGroupId") {
             self.resourceGroupId = dict["ResourceGroupId"] as! String
@@ -11356,6 +11388,8 @@ public class CreateNetworkPackageRequest : Tea.TeaModel {
 
     public var regionId: String?
 
+    public var resellerOwnerUid: Int64?
+
     public override init() {
         super.init()
     }
@@ -11400,6 +11434,9 @@ public class CreateNetworkPackageRequest : Tea.TeaModel {
         if self.regionId != nil {
             map["RegionId"] = self.regionId!
         }
+        if self.resellerOwnerUid != nil {
+            map["ResellerOwnerUid"] = self.resellerOwnerUid!
+        }
         return map
     }
 
@@ -11433,6 +11470,9 @@ public class CreateNetworkPackageRequest : Tea.TeaModel {
         }
         if dict.keys.contains("RegionId") {
             self.regionId = dict["RegionId"] as! String
+        }
+        if dict.keys.contains("ResellerOwnerUid") {
+            self.resellerOwnerUid = dict["ResellerOwnerUid"] as! Int64
         }
     }
 }
@@ -14039,6 +14079,8 @@ public class DeleteDesktopGroupRequest : Tea.TeaModel {
 
     public var regionId: String?
 
+    public var resellerOwnerUid: Int64?
+
     public override init() {
         super.init()
     }
@@ -14059,6 +14101,9 @@ public class DeleteDesktopGroupRequest : Tea.TeaModel {
         if self.regionId != nil {
             map["RegionId"] = self.regionId!
         }
+        if self.resellerOwnerUid != nil {
+            map["ResellerOwnerUid"] = self.resellerOwnerUid!
+        }
         return map
     }
 
@@ -14068,6 +14113,9 @@ public class DeleteDesktopGroupRequest : Tea.TeaModel {
         }
         if dict.keys.contains("RegionId") {
             self.regionId = dict["RegionId"] as! String
+        }
+        if dict.keys.contains("ResellerOwnerUid") {
+            self.resellerOwnerUid = dict["ResellerOwnerUid"] as! Int64
         }
     }
 }
@@ -14156,6 +14204,8 @@ public class DeleteDesktopsRequest : Tea.TeaModel {
 
     public var regionId: String?
 
+    public var resellerOwnerUid: Int64?
+
     public override init() {
         super.init()
     }
@@ -14176,6 +14226,9 @@ public class DeleteDesktopsRequest : Tea.TeaModel {
         if self.regionId != nil {
             map["RegionId"] = self.regionId!
         }
+        if self.resellerOwnerUid != nil {
+            map["ResellerOwnerUid"] = self.resellerOwnerUid!
+        }
         return map
     }
 
@@ -14185,6 +14238,9 @@ public class DeleteDesktopsRequest : Tea.TeaModel {
         }
         if dict.keys.contains("RegionId") {
             self.regionId = dict["RegionId"] as! String
+        }
+        if dict.keys.contains("ResellerOwnerUid") {
+            self.resellerOwnerUid = dict["ResellerOwnerUid"] as! Int64
         }
     }
 }
@@ -14882,6 +14938,8 @@ public class DeleteNetworkPackagesRequest : Tea.TeaModel {
 
     public var regionId: String?
 
+    public var resellerOwnerUid: Int64?
+
     public override init() {
         super.init()
     }
@@ -14902,6 +14960,9 @@ public class DeleteNetworkPackagesRequest : Tea.TeaModel {
         if self.regionId != nil {
             map["RegionId"] = self.regionId!
         }
+        if self.resellerOwnerUid != nil {
+            map["ResellerOwnerUid"] = self.resellerOwnerUid!
+        }
         return map
     }
 
@@ -14911,6 +14972,9 @@ public class DeleteNetworkPackagesRequest : Tea.TeaModel {
         }
         if dict.keys.contains("RegionId") {
             self.regionId = dict["RegionId"] as! String
+        }
+        if dict.keys.contains("ResellerOwnerUid") {
+            self.resellerOwnerUid = dict["ResellerOwnerUid"] as! Int64
         }
     }
 }
@@ -29537,6 +29601,8 @@ public class DescribeModificationPriceRequest : Tea.TeaModel {
 
     public var regionId: String?
 
+    public var resellerOwnerUid: Int64?
+
     public var resourceType: String?
 
     public var rootDiskSizeGib: Int32?
@@ -29569,6 +29635,9 @@ public class DescribeModificationPriceRequest : Tea.TeaModel {
         if self.regionId != nil {
             map["RegionId"] = self.regionId!
         }
+        if self.resellerOwnerUid != nil {
+            map["ResellerOwnerUid"] = self.resellerOwnerUid!
+        }
         if self.resourceType != nil {
             map["ResourceType"] = self.resourceType!
         }
@@ -29593,6 +29662,9 @@ public class DescribeModificationPriceRequest : Tea.TeaModel {
         }
         if dict.keys.contains("RegionId") {
             self.regionId = dict["RegionId"] as! String
+        }
+        if dict.keys.contains("ResellerOwnerUid") {
+            self.resellerOwnerUid = dict["ResellerOwnerUid"] as! Int64
         }
         if dict.keys.contains("ResourceType") {
             self.resourceType = dict["ResourceType"] as! String
@@ -33268,6 +33340,8 @@ public class DescribePriceRequest : Tea.TeaModel {
 
     public var regionId: String?
 
+    public var resellerOwnerUid: Int64?
+
     public var resourceType: String?
 
     public var rootDiskCategory: String?
@@ -33325,6 +33399,9 @@ public class DescribePriceRequest : Tea.TeaModel {
         if self.regionId != nil {
             map["RegionId"] = self.regionId!
         }
+        if self.resellerOwnerUid != nil {
+            map["ResellerOwnerUid"] = self.resellerOwnerUid!
+        }
         if self.resourceType != nil {
             map["ResourceType"] = self.resourceType!
         }
@@ -33376,6 +33453,9 @@ public class DescribePriceRequest : Tea.TeaModel {
         }
         if dict.keys.contains("RegionId") {
             self.regionId = dict["RegionId"] as! String
+        }
+        if dict.keys.contains("ResellerOwnerUid") {
+            self.resellerOwnerUid = dict["ResellerOwnerUid"] as! Int64
         }
         if dict.keys.contains("ResourceType") {
             self.resourceType = dict["ResourceType"] as! String
@@ -34592,6 +34672,8 @@ public class DescribeRefundPriceRequest : Tea.TeaModel {
 
     public var regionId: String?
 
+    public var resellerOwnerUid: Int64?
+
     public override init() {
         super.init()
     }
@@ -34615,6 +34697,9 @@ public class DescribeRefundPriceRequest : Tea.TeaModel {
         if self.regionId != nil {
             map["RegionId"] = self.regionId!
         }
+        if self.resellerOwnerUid != nil {
+            map["ResellerOwnerUid"] = self.resellerOwnerUid!
+        }
         return map
     }
 
@@ -34627,6 +34712,9 @@ public class DescribeRefundPriceRequest : Tea.TeaModel {
         }
         if dict.keys.contains("RegionId") {
             self.regionId = dict["RegionId"] as! String
+        }
+        if dict.keys.contains("ResellerOwnerUid") {
+            self.resellerOwnerUid = dict["ResellerOwnerUid"] as! Int64
         }
     }
 }
@@ -34951,6 +35039,8 @@ public class DescribeRenewalPriceRequest : Tea.TeaModel {
 
     public var regionId: String?
 
+    public var resellerOwnerUid: Int64?
+
     public var resourceType: String?
 
     public override init() {
@@ -34982,6 +35072,9 @@ public class DescribeRenewalPriceRequest : Tea.TeaModel {
         if self.regionId != nil {
             map["RegionId"] = self.regionId!
         }
+        if self.resellerOwnerUid != nil {
+            map["ResellerOwnerUid"] = self.resellerOwnerUid!
+        }
         if self.resourceType != nil {
             map["ResourceType"] = self.resourceType!
         }
@@ -35003,6 +35096,9 @@ public class DescribeRenewalPriceRequest : Tea.TeaModel {
         }
         if dict.keys.contains("RegionId") {
             self.regionId = dict["RegionId"] as! String
+        }
+        if dict.keys.contains("ResellerOwnerUid") {
+            self.resellerOwnerUid = dict["ResellerOwnerUid"] as! Int64
         }
         if dict.keys.contains("ResourceType") {
             self.resourceType = dict["ResourceType"] as! String
@@ -48256,6 +48352,8 @@ public class ModifyDesktopChargeTypeRequest : Tea.TeaModel {
 
     public var regionId: String?
 
+    public var resellerOwnerUid: Int64?
+
     public var useDuration: Int32?
 
     public override init() {
@@ -48293,6 +48391,9 @@ public class ModifyDesktopChargeTypeRequest : Tea.TeaModel {
         if self.regionId != nil {
             map["RegionId"] = self.regionId!
         }
+        if self.resellerOwnerUid != nil {
+            map["ResellerOwnerUid"] = self.resellerOwnerUid!
+        }
         if self.useDuration != nil {
             map["UseDuration"] = self.useDuration!
         }
@@ -48320,6 +48421,9 @@ public class ModifyDesktopChargeTypeRequest : Tea.TeaModel {
         }
         if dict.keys.contains("RegionId") {
             self.regionId = dict["RegionId"] as! String
+        }
+        if dict.keys.contains("ResellerOwnerUid") {
+            self.resellerOwnerUid = dict["ResellerOwnerUid"] as! Int64
         }
         if dict.keys.contains("UseDuration") {
             self.useDuration = dict["UseDuration"] as! Int32
@@ -49620,6 +49724,8 @@ public class ModifyDesktopSpecRequest : Tea.TeaModel {
 
     public var regionId: String?
 
+    public var resellerOwnerUid: Int64?
+
     public var resourceSpecs: [ModifyDesktopSpecRequest.ResourceSpecs]?
 
     public var resourceType: String?
@@ -49659,6 +49765,9 @@ public class ModifyDesktopSpecRequest : Tea.TeaModel {
         if self.regionId != nil {
             map["RegionId"] = self.regionId!
         }
+        if self.resellerOwnerUid != nil {
+            map["ResellerOwnerUid"] = self.resellerOwnerUid!
+        }
         if self.resourceSpecs != nil {
             var tmp : [Any] = []
             for k in self.resourceSpecs! {
@@ -49696,6 +49805,9 @@ public class ModifyDesktopSpecRequest : Tea.TeaModel {
         }
         if dict.keys.contains("RegionId") {
             self.regionId = dict["RegionId"] as! String
+        }
+        if dict.keys.contains("ResellerOwnerUid") {
+            self.resellerOwnerUid = dict["ResellerOwnerUid"] as! Int64
         }
         if dict.keys.contains("ResourceSpecs") {
             var tmp : [ModifyDesktopSpecRequest.ResourceSpecs] = []
@@ -50938,6 +51050,8 @@ public class ModifyNetworkPackageBandwidthRequest : Tea.TeaModel {
 
     public var regionId: String?
 
+    public var resellerOwnerUid: Int64?
+
     public override init() {
         super.init()
     }
@@ -50967,6 +51081,9 @@ public class ModifyNetworkPackageBandwidthRequest : Tea.TeaModel {
         if self.regionId != nil {
             map["RegionId"] = self.regionId!
         }
+        if self.resellerOwnerUid != nil {
+            map["ResellerOwnerUid"] = self.resellerOwnerUid!
+        }
         return map
     }
 
@@ -50985,6 +51102,9 @@ public class ModifyNetworkPackageBandwidthRequest : Tea.TeaModel {
         }
         if dict.keys.contains("RegionId") {
             self.regionId = dict["RegionId"] as! String
+        }
+        if dict.keys.contains("ResellerOwnerUid") {
+            self.resellerOwnerUid = dict["ResellerOwnerUid"] as! Int64
         }
     }
 }
@@ -54828,6 +54948,8 @@ public class RenewDesktopGroupRequest : Tea.TeaModel {
 
     public var regionId: String?
 
+    public var resellerOwnerUid: Int64?
+
     public override init() {
         super.init()
     }
@@ -54860,6 +54982,9 @@ public class RenewDesktopGroupRequest : Tea.TeaModel {
         if self.regionId != nil {
             map["RegionId"] = self.regionId!
         }
+        if self.resellerOwnerUid != nil {
+            map["ResellerOwnerUid"] = self.resellerOwnerUid!
+        }
         return map
     }
 
@@ -54881,6 +55006,9 @@ public class RenewDesktopGroupRequest : Tea.TeaModel {
         }
         if dict.keys.contains("RegionId") {
             self.regionId = dict["RegionId"] as! String
+        }
+        if dict.keys.contains("ResellerOwnerUid") {
+            self.resellerOwnerUid = dict["ResellerOwnerUid"] as! Int64
         }
     }
 }
@@ -55160,6 +55288,8 @@ public class RenewDesktopsRequest : Tea.TeaModel {
 
     public var regionId: String?
 
+    public var resellerOwnerUid: Int64?
+
     public var resourceType: String?
 
     public override init() {
@@ -55197,6 +55327,9 @@ public class RenewDesktopsRequest : Tea.TeaModel {
         if self.regionId != nil {
             map["RegionId"] = self.regionId!
         }
+        if self.resellerOwnerUid != nil {
+            map["ResellerOwnerUid"] = self.resellerOwnerUid!
+        }
         if self.resourceType != nil {
             map["ResourceType"] = self.resourceType!
         }
@@ -55224,6 +55357,9 @@ public class RenewDesktopsRequest : Tea.TeaModel {
         }
         if dict.keys.contains("RegionId") {
             self.regionId = dict["RegionId"] as! String
+        }
+        if dict.keys.contains("ResellerOwnerUid") {
+            self.resellerOwnerUid = dict["ResellerOwnerUid"] as! Int64
         }
         if dict.keys.contains("ResourceType") {
             self.resourceType = dict["ResourceType"] as! String
@@ -55333,6 +55469,8 @@ public class RenewNetworkPackagesRequest : Tea.TeaModel {
 
     public var regionId: String?
 
+    public var resellerOwnerUid: Int64?
+
     public override init() {
         super.init()
     }
@@ -55368,6 +55506,9 @@ public class RenewNetworkPackagesRequest : Tea.TeaModel {
         if self.regionId != nil {
             map["RegionId"] = self.regionId!
         }
+        if self.resellerOwnerUid != nil {
+            map["ResellerOwnerUid"] = self.resellerOwnerUid!
+        }
         return map
     }
 
@@ -55392,6 +55533,9 @@ public class RenewNetworkPackagesRequest : Tea.TeaModel {
         }
         if dict.keys.contains("RegionId") {
             self.regionId = dict["RegionId"] as! String
+        }
+        if dict.keys.contains("ResellerOwnerUid") {
+            self.resellerOwnerUid = dict["ResellerOwnerUid"] as! Int64
         }
     }
 }
