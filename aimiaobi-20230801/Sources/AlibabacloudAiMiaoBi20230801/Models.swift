@@ -37241,6 +37241,8 @@ public class RunSearchGenerationRequest : Tea.TeaModel {
 
     public var chatConfig: RunSearchGenerationRequest.ChatConfig?
 
+    public var modelId: String?
+
     public var originalSessionId: String?
 
     public var prompt: String?
@@ -37271,6 +37273,9 @@ public class RunSearchGenerationRequest : Tea.TeaModel {
         if self.chatConfig != nil {
             map["ChatConfig"] = self.chatConfig?.toMap()
         }
+        if self.modelId != nil {
+            map["ModelId"] = self.modelId!
+        }
         if self.originalSessionId != nil {
             map["OriginalSessionId"] = self.originalSessionId!
         }
@@ -37297,6 +37302,9 @@ public class RunSearchGenerationRequest : Tea.TeaModel {
             model.fromMap(dict["ChatConfig"] as! [String: Any])
             self.chatConfig = model
         }
+        if dict.keys.contains("ModelId") {
+            self.modelId = dict["ModelId"] as! String
+        }
         if dict.keys.contains("OriginalSessionId") {
             self.originalSessionId = dict["OriginalSessionId"] as! String
         }
@@ -37316,6 +37324,8 @@ public class RunSearchGenerationShrinkRequest : Tea.TeaModel {
     public var agentContextShrink: String?
 
     public var chatConfigShrink: String?
+
+    public var modelId: String?
 
     public var originalSessionId: String?
 
@@ -37345,6 +37355,9 @@ public class RunSearchGenerationShrinkRequest : Tea.TeaModel {
         if self.chatConfigShrink != nil {
             map["ChatConfig"] = self.chatConfigShrink!
         }
+        if self.modelId != nil {
+            map["ModelId"] = self.modelId!
+        }
         if self.originalSessionId != nil {
             map["OriginalSessionId"] = self.originalSessionId!
         }
@@ -37366,6 +37379,9 @@ public class RunSearchGenerationShrinkRequest : Tea.TeaModel {
         }
         if dict.keys.contains("ChatConfig") {
             self.chatConfigShrink = dict["ChatConfig"] as! String
+        }
+        if dict.keys.contains("ModelId") {
+            self.modelId = dict["ModelId"] as! String
         }
         if dict.keys.contains("OriginalSessionId") {
             self.originalSessionId = dict["OriginalSessionId"] as! String
@@ -38681,6 +38697,8 @@ public class RunSearchGenerationResponseBody : Tea.TeaModel {
 
                             public var generateLevel: String?
 
+                            public var reasonTextGenerate: String?
+
                             public var searchResult: [RunSearchGenerationResponseBody.Payload.Output.AgentContext.BizContext.GeneratedContent.ExcerptResult.SearchResult]?
 
                             public var textGenerate: String?
@@ -38705,6 +38723,9 @@ public class RunSearchGenerationResponseBody : Tea.TeaModel {
                                 if self.generateLevel != nil {
                                     map["GenerateLevel"] = self.generateLevel!
                                 }
+                                if self.reasonTextGenerate != nil {
+                                    map["ReasonTextGenerate"] = self.reasonTextGenerate!
+                                }
                                 if self.searchResult != nil {
                                     var tmp : [Any] = []
                                     for k in self.searchResult! {
@@ -38724,6 +38745,9 @@ public class RunSearchGenerationResponseBody : Tea.TeaModel {
                                 }
                                 if dict.keys.contains("GenerateLevel") {
                                     self.generateLevel = dict["GenerateLevel"] as! String
+                                }
+                                if dict.keys.contains("ReasonTextGenerate") {
+                                    self.reasonTextGenerate = dict["ReasonTextGenerate"] as! String
                                 }
                                 if dict.keys.contains("SearchResult") {
                                     var tmp : [RunSearchGenerationResponseBody.Payload.Output.AgentContext.BizContext.GeneratedContent.ExcerptResult.SearchResult] = []
@@ -40043,6 +40067,8 @@ public class RunSearchGenerationResponseBody : Tea.TeaModel {
 
                             public var multimodalSearchResultList: [RunSearchGenerationResponseBody.Payload.Output.AgentContext.BizContext.GeneratedContent.TextGenerateResult.MultimodalSearchResultList]?
 
+                            public var reasonTextGenerate: String?
+
                             public var referenceList: [RunSearchGenerationResponseBody.Payload.Output.AgentContext.BizContext.GeneratedContent.TextGenerateResult.ReferenceList]?
 
                             public var textGenerate: String?
@@ -40079,6 +40105,9 @@ public class RunSearchGenerationResponseBody : Tea.TeaModel {
                                         tmp.append(k.toMap())
                                     }
                                     map["MultimodalSearchResultList"] = tmp
+                                }
+                                if self.reasonTextGenerate != nil {
+                                    map["ReasonTextGenerate"] = self.reasonTextGenerate!
                                 }
                                 if self.referenceList != nil {
                                     var tmp : [Any] = []
@@ -40122,6 +40151,9 @@ public class RunSearchGenerationResponseBody : Tea.TeaModel {
                                         tmp.append(model)
                                     }
                                     self.multimodalSearchResultList = tmp
+                                }
+                                if dict.keys.contains("ReasonTextGenerate") {
+                                    self.reasonTextGenerate = dict["ReasonTextGenerate"] as! String
                                 }
                                 if dict.keys.contains("ReferenceList") {
                                     var tmp : [RunSearchGenerationResponseBody.Payload.Output.AgentContext.BizContext.GeneratedContent.TextGenerateResult.ReferenceList] = []
@@ -41083,6 +41115,8 @@ public class RunSearchGenerationResponseBody : Tea.TeaModel {
 
                             public var multimodalSearchResultList: [RunSearchGenerationResponseBody.Payload.Output.AgentContext.BizContext.GeneratedContent.TimelineResult.MultimodalSearchResultList]?
 
+                            public var reasonTextGenerate: String?
+
                             public var referenceList: [RunSearchGenerationResponseBody.Payload.Output.AgentContext.BizContext.GeneratedContent.TimelineResult.ReferenceList]?
 
                             public var textGenerate: String?
@@ -41116,6 +41150,9 @@ public class RunSearchGenerationResponseBody : Tea.TeaModel {
                                         tmp.append(k.toMap())
                                     }
                                     map["MultimodalSearchResultList"] = tmp
+                                }
+                                if self.reasonTextGenerate != nil {
+                                    map["ReasonTextGenerate"] = self.reasonTextGenerate!
                                 }
                                 if self.referenceList != nil {
                                     var tmp : [Any] = []
@@ -41156,6 +41193,9 @@ public class RunSearchGenerationResponseBody : Tea.TeaModel {
                                         tmp.append(model)
                                     }
                                     self.multimodalSearchResultList = tmp
+                                }
+                                if dict.keys.contains("ReasonTextGenerate") {
+                                    self.reasonTextGenerate = dict["ReasonTextGenerate"] as! String
                                 }
                                 if dict.keys.contains("ReferenceList") {
                                     var tmp : [RunSearchGenerationResponseBody.Payload.Output.AgentContext.BizContext.GeneratedContent.TimelineResult.ReferenceList] = []
@@ -41531,9 +41571,72 @@ public class RunSearchGenerationResponseBody : Tea.TeaModel {
                             }
                         }
                     }
+                    public class TokenCalculate : Tea.TeaModel {
+                        public var firstTokenTime: Double?
+
+                        public var outputAvgTime: Double?
+
+                        public var searchTime: Double?
+
+                        public var time: Double?
+
+                        public var totalTokens: Int64?
+
+                        public override init() {
+                            super.init()
+                        }
+
+                        public init(_ dict: [String: Any]) {
+                            super.init()
+                            self.fromMap(dict)
+                        }
+
+                        public override func validate() throws -> Void {
+                        }
+
+                        public override func toMap() -> [String : Any] {
+                            var map = super.toMap()
+                            if self.firstTokenTime != nil {
+                                map["FirstTokenTime"] = self.firstTokenTime!
+                            }
+                            if self.outputAvgTime != nil {
+                                map["OutputAvgTime"] = self.outputAvgTime!
+                            }
+                            if self.searchTime != nil {
+                                map["SearchTime"] = self.searchTime!
+                            }
+                            if self.time != nil {
+                                map["Time"] = self.time!
+                            }
+                            if self.totalTokens != nil {
+                                map["TotalTokens"] = self.totalTokens!
+                            }
+                            return map
+                        }
+
+                        public override func fromMap(_ dict: [String: Any]) -> Void {
+                            if dict.keys.contains("FirstTokenTime") {
+                                self.firstTokenTime = dict["FirstTokenTime"] as! Double
+                            }
+                            if dict.keys.contains("OutputAvgTime") {
+                                self.outputAvgTime = dict["OutputAvgTime"] as! Double
+                            }
+                            if dict.keys.contains("SearchTime") {
+                                self.searchTime = dict["SearchTime"] as! Double
+                            }
+                            if dict.keys.contains("Time") {
+                                self.time = dict["Time"] as! Double
+                            }
+                            if dict.keys.contains("TotalTokens") {
+                                self.totalTokens = dict["TotalTokens"] as! Int64
+                            }
+                        }
+                    }
                     public var currentStep: String?
 
                     public var generatedContent: RunSearchGenerationResponseBody.Payload.Output.AgentContext.BizContext.GeneratedContent?
+
+                    public var modelId: String?
 
                     public var nextStep: String?
 
@@ -41547,6 +41650,8 @@ public class RunSearchGenerationResponseBody : Tea.TeaModel {
 
                     public var supplementEnable: Bool?
 
+                    public var tokenCalculate: RunSearchGenerationResponseBody.Payload.Output.AgentContext.BizContext.TokenCalculate?
+
                     public override init() {
                         super.init()
                     }
@@ -41558,6 +41663,7 @@ public class RunSearchGenerationResponseBody : Tea.TeaModel {
 
                     public override func validate() throws -> Void {
                         try self.generatedContent?.validate()
+                        try self.tokenCalculate?.validate()
                     }
 
                     public override func toMap() -> [String : Any] {
@@ -41567,6 +41673,9 @@ public class RunSearchGenerationResponseBody : Tea.TeaModel {
                         }
                         if self.generatedContent != nil {
                             map["GeneratedContent"] = self.generatedContent?.toMap()
+                        }
+                        if self.modelId != nil {
+                            map["ModelId"] = self.modelId!
                         }
                         if self.nextStep != nil {
                             map["NextStep"] = self.nextStep!
@@ -41586,6 +41695,9 @@ public class RunSearchGenerationResponseBody : Tea.TeaModel {
                         if self.supplementEnable != nil {
                             map["SupplementEnable"] = self.supplementEnable!
                         }
+                        if self.tokenCalculate != nil {
+                            map["TokenCalculate"] = self.tokenCalculate?.toMap()
+                        }
                         return map
                     }
 
@@ -41597,6 +41709,9 @@ public class RunSearchGenerationResponseBody : Tea.TeaModel {
                             var model = RunSearchGenerationResponseBody.Payload.Output.AgentContext.BizContext.GeneratedContent()
                             model.fromMap(dict["GeneratedContent"] as! [String: Any])
                             self.generatedContent = model
+                        }
+                        if dict.keys.contains("ModelId") {
+                            self.modelId = dict["ModelId"] as! String
                         }
                         if dict.keys.contains("NextStep") {
                             self.nextStep = dict["NextStep"] as! String
@@ -41615,6 +41730,11 @@ public class RunSearchGenerationResponseBody : Tea.TeaModel {
                         }
                         if dict.keys.contains("SupplementEnable") {
                             self.supplementEnable = dict["SupplementEnable"] as! Bool
+                        }
+                        if dict.keys.contains("TokenCalculate") {
+                            var model = RunSearchGenerationResponseBody.Payload.Output.AgentContext.BizContext.TokenCalculate()
+                            model.fromMap(dict["TokenCalculate"] as! [String: Any])
+                            self.tokenCalculate = model
                         }
                     }
                 }
@@ -47770,6 +47890,281 @@ public class SaveMaterialDocumentResponse : Tea.TeaModel {
         }
         if dict.keys.contains("body") {
             var model = SaveMaterialDocumentResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
+public class SaveStyleLearningResultRequest : Tea.TeaModel {
+    public var agentKey: String?
+
+    public var aigcResult: String?
+
+    public var customTextIdList: [Int64]?
+
+    public var materialIdList: [Int64]?
+
+    public var rewriteResult: String?
+
+    public var styleName: String?
+
+    public var taskId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.agentKey != nil {
+            map["AgentKey"] = self.agentKey!
+        }
+        if self.aigcResult != nil {
+            map["AigcResult"] = self.aigcResult!
+        }
+        if self.customTextIdList != nil {
+            map["CustomTextIdList"] = self.customTextIdList!
+        }
+        if self.materialIdList != nil {
+            map["MaterialIdList"] = self.materialIdList!
+        }
+        if self.rewriteResult != nil {
+            map["RewriteResult"] = self.rewriteResult!
+        }
+        if self.styleName != nil {
+            map["StyleName"] = self.styleName!
+        }
+        if self.taskId != nil {
+            map["TaskId"] = self.taskId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("AgentKey") {
+            self.agentKey = dict["AgentKey"] as! String
+        }
+        if dict.keys.contains("AigcResult") {
+            self.aigcResult = dict["AigcResult"] as! String
+        }
+        if dict.keys.contains("CustomTextIdList") {
+            self.customTextIdList = dict["CustomTextIdList"] as! [Int64]
+        }
+        if dict.keys.contains("MaterialIdList") {
+            self.materialIdList = dict["MaterialIdList"] as! [Int64]
+        }
+        if dict.keys.contains("RewriteResult") {
+            self.rewriteResult = dict["RewriteResult"] as! String
+        }
+        if dict.keys.contains("StyleName") {
+            self.styleName = dict["StyleName"] as! String
+        }
+        if dict.keys.contains("TaskId") {
+            self.taskId = dict["TaskId"] as! String
+        }
+    }
+}
+
+public class SaveStyleLearningResultShrinkRequest : Tea.TeaModel {
+    public var agentKey: String?
+
+    public var aigcResult: String?
+
+    public var customTextIdListShrink: String?
+
+    public var materialIdListShrink: String?
+
+    public var rewriteResult: String?
+
+    public var styleName: String?
+
+    public var taskId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.agentKey != nil {
+            map["AgentKey"] = self.agentKey!
+        }
+        if self.aigcResult != nil {
+            map["AigcResult"] = self.aigcResult!
+        }
+        if self.customTextIdListShrink != nil {
+            map["CustomTextIdList"] = self.customTextIdListShrink!
+        }
+        if self.materialIdListShrink != nil {
+            map["MaterialIdList"] = self.materialIdListShrink!
+        }
+        if self.rewriteResult != nil {
+            map["RewriteResult"] = self.rewriteResult!
+        }
+        if self.styleName != nil {
+            map["StyleName"] = self.styleName!
+        }
+        if self.taskId != nil {
+            map["TaskId"] = self.taskId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("AgentKey") {
+            self.agentKey = dict["AgentKey"] as! String
+        }
+        if dict.keys.contains("AigcResult") {
+            self.aigcResult = dict["AigcResult"] as! String
+        }
+        if dict.keys.contains("CustomTextIdList") {
+            self.customTextIdListShrink = dict["CustomTextIdList"] as! String
+        }
+        if dict.keys.contains("MaterialIdList") {
+            self.materialIdListShrink = dict["MaterialIdList"] as! String
+        }
+        if dict.keys.contains("RewriteResult") {
+            self.rewriteResult = dict["RewriteResult"] as! String
+        }
+        if dict.keys.contains("StyleName") {
+            self.styleName = dict["StyleName"] as! String
+        }
+        if dict.keys.contains("TaskId") {
+            self.taskId = dict["TaskId"] as! String
+        }
+    }
+}
+
+public class SaveStyleLearningResultResponseBody : Tea.TeaModel {
+    public var code: String?
+
+    public var data: Bool?
+
+    public var httpStatusCode: Int32?
+
+    public var message: String?
+
+    public var requestId: String?
+
+    public var success: Bool?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.code != nil {
+            map["Code"] = self.code!
+        }
+        if self.data != nil {
+            map["Data"] = self.data!
+        }
+        if self.httpStatusCode != nil {
+            map["HttpStatusCode"] = self.httpStatusCode!
+        }
+        if self.message != nil {
+            map["Message"] = self.message!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.success != nil {
+            map["Success"] = self.success!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("Code") {
+            self.code = dict["Code"] as! String
+        }
+        if dict.keys.contains("Data") {
+            self.data = dict["Data"] as! Bool
+        }
+        if dict.keys.contains("HttpStatusCode") {
+            self.httpStatusCode = dict["HttpStatusCode"] as! Int32
+        }
+        if dict.keys.contains("Message") {
+            self.message = dict["Message"] as! String
+        }
+        if dict.keys.contains("RequestId") {
+            self.requestId = dict["RequestId"] as! String
+        }
+        if dict.keys.contains("Success") {
+            self.success = dict["Success"] as! Bool
+        }
+    }
+}
+
+public class SaveStyleLearningResultResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: SaveStyleLearningResultResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") {
+            var model = SaveStyleLearningResultResponseBody()
             model.fromMap(dict["body"] as! [String: Any])
             self.body = model
         }

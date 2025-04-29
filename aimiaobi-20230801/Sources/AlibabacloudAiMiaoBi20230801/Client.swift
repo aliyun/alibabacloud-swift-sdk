@@ -4497,6 +4497,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.chatConfigShrink)) {
             body["ChatConfig"] = request.chatConfigShrink ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.modelId)) {
+            body["ModelId"] = request.modelId ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.originalSessionId)) {
             body["OriginalSessionId"] = request.originalSessionId ?? "";
         }
@@ -5113,6 +5116,63 @@ open class Client : AlibabacloudOpenApi.Client {
     public func saveMaterialDocument(_ request: SaveMaterialDocumentRequest) async throws -> SaveMaterialDocumentResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         return try await saveMaterialDocumentWithOptions(request as! SaveMaterialDocumentRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func saveStyleLearningResultWithOptions(_ tmpReq: SaveStyleLearningResultRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> SaveStyleLearningResultResponse {
+        try TeaUtils.Client.validateModel(tmpReq)
+        var request: SaveStyleLearningResultShrinkRequest = SaveStyleLearningResultShrinkRequest([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.customTextIdList)) {
+            request.customTextIdListShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.customTextIdList, "CustomTextIdList", "json")
+        }
+        if (!TeaUtils.Client.isUnset(tmpReq.materialIdList)) {
+            request.materialIdListShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.materialIdList, "MaterialIdList", "json")
+        }
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.agentKey)) {
+            body["AgentKey"] = request.agentKey ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.aigcResult)) {
+            body["AigcResult"] = request.aigcResult ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.customTextIdListShrink)) {
+            body["CustomTextIdList"] = request.customTextIdListShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.materialIdListShrink)) {
+            body["MaterialIdList"] = request.materialIdListShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.rewriteResult)) {
+            body["RewriteResult"] = request.rewriteResult ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.styleName)) {
+            body["StyleName"] = request.styleName ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.taskId)) {
+            body["TaskId"] = request.taskId ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "SaveStyleLearningResult",
+            "version": "2023-08-01",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(SaveStyleLearningResultResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func saveStyleLearningResult(_ request: SaveStyleLearningResultRequest) async throws -> SaveStyleLearningResultResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await saveStyleLearningResultWithOptions(request as! SaveStyleLearningResultRequest, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
