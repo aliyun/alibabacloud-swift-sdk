@@ -1096,6 +1096,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.mask)) {
             query["Mask"] = request.mask ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.outId)) {
+            query["OutId"] = request.outId ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.ownerId)) {
             query["OwnerId"] = request.ownerId!;
         }
@@ -1311,52 +1314,6 @@ open class Client : AlibabacloudOpenApi.Client {
     public func phoneNumberStatusForSms(_ request: PhoneNumberStatusForSmsRequest) async throws -> PhoneNumberStatusForSmsResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         return try await phoneNumberStatusForSmsWithOptions(request as! PhoneNumberStatusForSmsRequest, runtime as! TeaUtils.RuntimeOptions)
-    }
-
-    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func phoneNumberStatusForVirtualWithOptions(_ request: PhoneNumberStatusForVirtualRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> PhoneNumberStatusForVirtualResponse {
-        try TeaUtils.Client.validateModel(request)
-        var query: [String: Any] = [:]
-        if (!TeaUtils.Client.isUnset(request.authCode)) {
-            query["AuthCode"] = request.authCode ?? "";
-        }
-        if (!TeaUtils.Client.isUnset(request.inputNumber)) {
-            query["InputNumber"] = request.inputNumber ?? "";
-        }
-        if (!TeaUtils.Client.isUnset(request.mask)) {
-            query["Mask"] = request.mask ?? "";
-        }
-        if (!TeaUtils.Client.isUnset(request.ownerId)) {
-            query["OwnerId"] = request.ownerId!;
-        }
-        if (!TeaUtils.Client.isUnset(request.resourceOwnerAccount)) {
-            query["ResourceOwnerAccount"] = request.resourceOwnerAccount ?? "";
-        }
-        if (!TeaUtils.Client.isUnset(request.resourceOwnerId)) {
-            query["ResourceOwnerId"] = request.resourceOwnerId!;
-        }
-        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
-            "query": AlibabaCloudOpenApiUtil.Client.query(query)
-        ])
-        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
-            "action": "PhoneNumberStatusForVirtual",
-            "version": "2020-02-17",
-            "protocol": "HTTPS",
-            "pathname": "/",
-            "method": "POST",
-            "authType": "AK",
-            "style": "RPC",
-            "reqBodyType": "formData",
-            "bodyType": "json"
-        ])
-        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
-        return Tea.TeaConverter.fromMap(PhoneNumberStatusForVirtualResponse(), tmp)
-    }
-
-    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func phoneNumberStatusForVirtual(_ request: PhoneNumberStatusForVirtualRequest) async throws -> PhoneNumberStatusForVirtualResponse {
-        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
-        return try await phoneNumberStatusForVirtualWithOptions(request as! PhoneNumberStatusForVirtualRequest, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)

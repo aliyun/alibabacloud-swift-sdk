@@ -5357,6 +5357,8 @@ public class PhoneNumberEncryptRequest : Tea.TeaModel {
 
     public var mask: String?
 
+    public var outId: String?
+
     public var ownerId: Int64?
 
     public var resourceOwnerAccount: String?
@@ -5386,6 +5388,9 @@ public class PhoneNumberEncryptRequest : Tea.TeaModel {
         if self.mask != nil {
             map["Mask"] = self.mask!
         }
+        if self.outId != nil {
+            map["OutId"] = self.outId!
+        }
         if self.ownerId != nil {
             map["OwnerId"] = self.ownerId!
         }
@@ -5408,6 +5413,9 @@ public class PhoneNumberEncryptRequest : Tea.TeaModel {
         if dict.keys.contains("Mask") {
             self.mask = dict["Mask"] as! String
         }
+        if dict.keys.contains("OutId") {
+            self.outId = dict["OutId"] as! String
+        }
         if dict.keys.contains("OwnerId") {
             self.ownerId = dict["OwnerId"] as! Int64
         }
@@ -5427,6 +5435,8 @@ public class PhoneNumberEncryptResponseBody : Tea.TeaModel {
         public var expireTime: String?
 
         public var originalNumber: String?
+
+        public var outId: String?
 
         public override init() {
             super.init()
@@ -5451,6 +5461,9 @@ public class PhoneNumberEncryptResponseBody : Tea.TeaModel {
             if self.originalNumber != nil {
                 map["OriginalNumber"] = self.originalNumber!
             }
+            if self.outId != nil {
+                map["OutId"] = self.outId!
+            }
             return map
         }
 
@@ -5463,6 +5476,9 @@ public class PhoneNumberEncryptResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("OriginalNumber") {
                 self.originalNumber = dict["OriginalNumber"] as! String
+            }
+            if dict.keys.contains("OutId") {
+                self.outId = dict["OutId"] as! String
             }
         }
     }
@@ -6426,211 +6442,6 @@ public class PhoneNumberStatusForSmsResponse : Tea.TeaModel {
         }
         if dict.keys.contains("body") {
             var model = PhoneNumberStatusForSmsResponseBody()
-            model.fromMap(dict["body"] as! [String: Any])
-            self.body = model
-        }
-    }
-}
-
-public class PhoneNumberStatusForVirtualRequest : Tea.TeaModel {
-    public var authCode: String?
-
-    public var inputNumber: String?
-
-    public var mask: String?
-
-    public var ownerId: Int64?
-
-    public var resourceOwnerAccount: String?
-
-    public var resourceOwnerId: Int64?
-
-    public override init() {
-        super.init()
-    }
-
-    public init(_ dict: [String: Any]) {
-        super.init()
-        self.fromMap(dict)
-    }
-
-    public override func validate() throws -> Void {
-    }
-
-    public override func toMap() -> [String : Any] {
-        var map = super.toMap()
-        if self.authCode != nil {
-            map["AuthCode"] = self.authCode!
-        }
-        if self.inputNumber != nil {
-            map["InputNumber"] = self.inputNumber!
-        }
-        if self.mask != nil {
-            map["Mask"] = self.mask!
-        }
-        if self.ownerId != nil {
-            map["OwnerId"] = self.ownerId!
-        }
-        if self.resourceOwnerAccount != nil {
-            map["ResourceOwnerAccount"] = self.resourceOwnerAccount!
-        }
-        if self.resourceOwnerId != nil {
-            map["ResourceOwnerId"] = self.resourceOwnerId!
-        }
-        return map
-    }
-
-    public override func fromMap(_ dict: [String: Any]) -> Void {
-        if dict.keys.contains("AuthCode") {
-            self.authCode = dict["AuthCode"] as! String
-        }
-        if dict.keys.contains("InputNumber") {
-            self.inputNumber = dict["InputNumber"] as! String
-        }
-        if dict.keys.contains("Mask") {
-            self.mask = dict["Mask"] as! String
-        }
-        if dict.keys.contains("OwnerId") {
-            self.ownerId = dict["OwnerId"] as! Int64
-        }
-        if dict.keys.contains("ResourceOwnerAccount") {
-            self.resourceOwnerAccount = dict["ResourceOwnerAccount"] as! String
-        }
-        if dict.keys.contains("ResourceOwnerId") {
-            self.resourceOwnerId = dict["ResourceOwnerId"] as! Int64
-        }
-    }
-}
-
-public class PhoneNumberStatusForVirtualResponseBody : Tea.TeaModel {
-    public class Data : Tea.TeaModel {
-        public var isPrivacyNumber: Bool?
-
-        public override init() {
-            super.init()
-        }
-
-        public init(_ dict: [String: Any]) {
-            super.init()
-            self.fromMap(dict)
-        }
-
-        public override func validate() throws -> Void {
-        }
-
-        public override func toMap() -> [String : Any] {
-            var map = super.toMap()
-            if self.isPrivacyNumber != nil {
-                map["IsPrivacyNumber"] = self.isPrivacyNumber!
-            }
-            return map
-        }
-
-        public override func fromMap(_ dict: [String: Any]) -> Void {
-            if dict.keys.contains("IsPrivacyNumber") {
-                self.isPrivacyNumber = dict["IsPrivacyNumber"] as! Bool
-            }
-        }
-    }
-    public var code: String?
-
-    public var data: PhoneNumberStatusForVirtualResponseBody.Data?
-
-    public var message: String?
-
-    public var requestId: String?
-
-    public override init() {
-        super.init()
-    }
-
-    public init(_ dict: [String: Any]) {
-        super.init()
-        self.fromMap(dict)
-    }
-
-    public override func validate() throws -> Void {
-        try self.data?.validate()
-    }
-
-    public override func toMap() -> [String : Any] {
-        var map = super.toMap()
-        if self.code != nil {
-            map["Code"] = self.code!
-        }
-        if self.data != nil {
-            map["Data"] = self.data?.toMap()
-        }
-        if self.message != nil {
-            map["Message"] = self.message!
-        }
-        if self.requestId != nil {
-            map["RequestId"] = self.requestId!
-        }
-        return map
-    }
-
-    public override func fromMap(_ dict: [String: Any]) -> Void {
-        if dict.keys.contains("Code") {
-            self.code = dict["Code"] as! String
-        }
-        if dict.keys.contains("Data") {
-            var model = PhoneNumberStatusForVirtualResponseBody.Data()
-            model.fromMap(dict["Data"] as! [String: Any])
-            self.data = model
-        }
-        if dict.keys.contains("Message") {
-            self.message = dict["Message"] as! String
-        }
-        if dict.keys.contains("RequestId") {
-            self.requestId = dict["RequestId"] as! String
-        }
-    }
-}
-
-public class PhoneNumberStatusForVirtualResponse : Tea.TeaModel {
-    public var headers: [String: String]?
-
-    public var statusCode: Int32?
-
-    public var body: PhoneNumberStatusForVirtualResponseBody?
-
-    public override init() {
-        super.init()
-    }
-
-    public init(_ dict: [String: Any]) {
-        super.init()
-        self.fromMap(dict)
-    }
-
-    public override func validate() throws -> Void {
-        try self.body?.validate()
-    }
-
-    public override func toMap() -> [String : Any] {
-        var map = super.toMap()
-        if self.headers != nil {
-            map["headers"] = self.headers!
-        }
-        if self.statusCode != nil {
-            map["statusCode"] = self.statusCode!
-        }
-        if self.body != nil {
-            map["body"] = self.body?.toMap()
-        }
-        return map
-    }
-
-    public override func fromMap(_ dict: [String: Any]) -> Void {
-        if dict.keys.contains("headers") {
-            self.headers = dict["headers"] as! [String: String]
-        }
-        if dict.keys.contains("statusCode") {
-            self.statusCode = dict["statusCode"] as! Int32
-        }
-        if dict.keys.contains("body") {
-            var model = PhoneNumberStatusForVirtualResponseBody()
             model.fromMap(dict["body"] as! [String: Any])
             self.body = model
         }
