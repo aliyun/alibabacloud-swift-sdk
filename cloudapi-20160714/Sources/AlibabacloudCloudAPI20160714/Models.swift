@@ -10661,6 +10661,8 @@ public class DescribeApiResponseBody : Tea.TeaModel {
 
             public var fcType: String?
 
+            public var fcVersion: String?
+
             public var functionName: String?
 
             public var method: String?
@@ -10705,6 +10707,9 @@ public class DescribeApiResponseBody : Tea.TeaModel {
                 if self.fcType != nil {
                     map["FcType"] = self.fcType!
                 }
+                if self.fcVersion != nil {
+                    map["FcVersion"] = self.fcVersion!
+                }
                 if self.functionName != nil {
                     map["FunctionName"] = self.functionName!
                 }
@@ -10747,6 +10752,9 @@ public class DescribeApiResponseBody : Tea.TeaModel {
                 }
                 if dict.keys.contains("FcType") {
                     self.fcType = dict["FcType"] as! String
+                }
+                if dict.keys.contains("FcVersion") {
+                    self.fcVersion = dict["FcVersion"] as! String
                 }
                 if dict.keys.contains("FunctionName") {
                     self.functionName = dict["FunctionName"] as! String
