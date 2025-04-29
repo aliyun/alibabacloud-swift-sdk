@@ -1603,6 +1603,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func copyImageWithOptions(_ request: CopyImageRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> CopyImageResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.clientToken)) {
+            query["ClientToken"] = request.clientToken ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.destinationDescription)) {
             query["DestinationDescription"] = request.destinationDescription ?? "";
         }
@@ -1611,6 +1614,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.destinationRegionId)) {
             query["DestinationRegionId"] = request.destinationRegionId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.dryRun)) {
+            query["DryRun"] = request.dryRun!;
         }
         if (!TeaUtils.Client.isUnset(request.encryptAlgorithm)) {
             query["EncryptAlgorithm"] = request.encryptAlgorithm ?? "";
@@ -2787,6 +2793,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.diskDeviceMapping)) {
             query["DiskDeviceMapping"] = request.diskDeviceMapping ?? [];
+        }
+        if (!TeaUtils.Client.isUnset(request.dryRun)) {
+            query["DryRun"] = request.dryRun!;
         }
         if (!TeaUtils.Client.isUnset(request.features)) {
             query["Features"] = request.features!;
@@ -5544,6 +5553,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func deleteImageWithOptions(_ request: DeleteImageRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DeleteImageResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.dryRun)) {
+            query["DryRun"] = request.dryRun!;
+        }
         if (!TeaUtils.Client.isUnset(request.force)) {
             query["Force"] = request.force!;
         }
@@ -14750,6 +14762,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func exportImageWithOptions(_ request: ExportImageRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ExportImageResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.dryRun)) {
+            query["DryRun"] = request.dryRun!;
+        }
         if (!TeaUtils.Client.isUnset(request.imageFormat)) {
             query["ImageFormat"] = request.imageFormat ?? "";
         }
@@ -16930,6 +16945,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.description_)) {
             query["Description"] = request.description_ ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.dryRun)) {
+            query["DryRun"] = request.dryRun!;
+        }
         if (!TeaUtils.Client.isUnset(request.features)) {
             query["Features"] = request.features!;
         }
@@ -17045,6 +17063,9 @@ open class Client : AlibabacloudOpenApi.Client {
         var query: [String: Any] = [:]
         if (!TeaUtils.Client.isUnset(request.addAccount)) {
             query["AddAccount"] = request.addAccount ?? [];
+        }
+        if (!TeaUtils.Client.isUnset(request.dryRun)) {
+            query["DryRun"] = request.dryRun!;
         }
         if (!TeaUtils.Client.isUnset(request.imageId)) {
             query["ImageId"] = request.imageId ?? "";

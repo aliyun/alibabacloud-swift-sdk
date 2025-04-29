@@ -5793,11 +5793,15 @@ public class CopyImageRequest : Tea.TeaModel {
             }
         }
     }
+    public var clientToken: String?
+
     public var destinationDescription: String?
 
     public var destinationImageName: String?
 
     public var destinationRegionId: String?
+
+    public var dryRun: Bool?
 
     public var encryptAlgorithm: String?
 
@@ -5835,6 +5839,9 @@ public class CopyImageRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.clientToken != nil {
+            map["ClientToken"] = self.clientToken!
+        }
         if self.destinationDescription != nil {
             map["DestinationDescription"] = self.destinationDescription!
         }
@@ -5843,6 +5850,9 @@ public class CopyImageRequest : Tea.TeaModel {
         }
         if self.destinationRegionId != nil {
             map["DestinationRegionId"] = self.destinationRegionId!
+        }
+        if self.dryRun != nil {
+            map["DryRun"] = self.dryRun!
         }
         if self.encryptAlgorithm != nil {
             map["EncryptAlgorithm"] = self.encryptAlgorithm!
@@ -5885,6 +5895,9 @@ public class CopyImageRequest : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("ClientToken") {
+            self.clientToken = dict["ClientToken"] as! String
+        }
         if dict.keys.contains("DestinationDescription") {
             self.destinationDescription = dict["DestinationDescription"] as! String
         }
@@ -5893,6 +5906,9 @@ public class CopyImageRequest : Tea.TeaModel {
         }
         if dict.keys.contains("DestinationRegionId") {
             self.destinationRegionId = dict["DestinationRegionId"] as! String
+        }
+        if dict.keys.contains("DryRun") {
+            self.dryRun = dict["DryRun"] as! Bool
         }
         if dict.keys.contains("EncryptAlgorithm") {
             self.encryptAlgorithm = dict["EncryptAlgorithm"] as! String
@@ -12907,6 +12923,8 @@ public class CreateImageRequest : Tea.TeaModel {
 
     public var diskDeviceMapping: [CreateImageRequest.DiskDeviceMapping]?
 
+    public var dryRun: Bool?
+
     public var features: CreateImageRequest.Features?
 
     public var imageFamily: String?
@@ -12971,6 +12989,9 @@ public class CreateImageRequest : Tea.TeaModel {
                 tmp.append(k.toMap())
             }
             map["DiskDeviceMapping"] = tmp
+        }
+        if self.dryRun != nil {
+            map["DryRun"] = self.dryRun!
         }
         if self.features != nil {
             map["Features"] = self.features?.toMap()
@@ -13047,6 +13068,9 @@ public class CreateImageRequest : Tea.TeaModel {
                 tmp.append(model)
             }
             self.diskDeviceMapping = tmp
+        }
+        if dict.keys.contains("DryRun") {
+            self.dryRun = dict["DryRun"] as! Bool
         }
         if dict.keys.contains("Features") {
             var model = CreateImageRequest.Features()
@@ -24702,6 +24726,8 @@ public class DeleteHpcClusterResponse : Tea.TeaModel {
 }
 
 public class DeleteImageRequest : Tea.TeaModel {
+    public var dryRun: Bool?
+
     public var force: Bool?
 
     public var imageId: String?
@@ -24730,6 +24756,9 @@ public class DeleteImageRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.dryRun != nil {
+            map["DryRun"] = self.dryRun!
+        }
         if self.force != nil {
             map["Force"] = self.force!
         }
@@ -24755,6 +24784,9 @@ public class DeleteImageRequest : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("DryRun") {
+            self.dryRun = dict["DryRun"] as! Bool
+        }
         if dict.keys.contains("Force") {
             self.force = dict["Force"] as! Bool
         }
@@ -92544,6 +92576,8 @@ public class EndTerminalSessionResponse : Tea.TeaModel {
 }
 
 public class ExportImageRequest : Tea.TeaModel {
+    public var dryRun: Bool?
+
     public var imageFormat: String?
 
     public var imageId: String?
@@ -92576,6 +92610,9 @@ public class ExportImageRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.dryRun != nil {
+            map["DryRun"] = self.dryRun!
+        }
         if self.imageFormat != nil {
             map["ImageFormat"] = self.imageFormat!
         }
@@ -92607,6 +92644,9 @@ public class ExportImageRequest : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("DryRun") {
+            self.dryRun = dict["DryRun"] as! Bool
+        }
         if dict.keys.contains("ImageFormat") {
             self.imageFormat = dict["ImageFormat"] as! String
         }
@@ -101254,6 +101294,8 @@ public class ModifyImageAttributeRequest : Tea.TeaModel {
 
     public var description_: String?
 
+    public var dryRun: Bool?
+
     public var features: ModifyImageAttributeRequest.Features?
 
     public var imageFamily: String?
@@ -101297,6 +101339,9 @@ public class ModifyImageAttributeRequest : Tea.TeaModel {
         if self.description_ != nil {
             map["Description"] = self.description_!
         }
+        if self.dryRun != nil {
+            map["DryRun"] = self.dryRun!
+        }
         if self.features != nil {
             map["Features"] = self.features?.toMap()
         }
@@ -101339,6 +101384,9 @@ public class ModifyImageAttributeRequest : Tea.TeaModel {
         }
         if dict.keys.contains("Description") {
             self.description_ = dict["Description"] as! String
+        }
+        if dict.keys.contains("DryRun") {
+            self.dryRun = dict["DryRun"] as! Bool
         }
         if dict.keys.contains("Features") {
             var model = ModifyImageAttributeRequest.Features()
@@ -101625,6 +101673,8 @@ public class ModifyImageShareGroupPermissionResponse : Tea.TeaModel {
 public class ModifyImageSharePermissionRequest : Tea.TeaModel {
     public var addAccount: [String]?
 
+    public var dryRun: Bool?
+
     public var imageId: String?
 
     public var isPublic: Bool?
@@ -101660,6 +101710,9 @@ public class ModifyImageSharePermissionRequest : Tea.TeaModel {
         if self.addAccount != nil {
             map["AddAccount"] = self.addAccount!
         }
+        if self.dryRun != nil {
+            map["DryRun"] = self.dryRun!
+        }
         if self.imageId != nil {
             map["ImageId"] = self.imageId!
         }
@@ -101693,6 +101746,9 @@ public class ModifyImageSharePermissionRequest : Tea.TeaModel {
     public override func fromMap(_ dict: [String: Any]) -> Void {
         if dict.keys.contains("AddAccount") {
             self.addAccount = dict["AddAccount"] as! [String]
+        }
+        if dict.keys.contains("DryRun") {
+            self.dryRun = dict["DryRun"] as! Bool
         }
         if dict.keys.contains("ImageId") {
             self.imageId = dict["ImageId"] as! String
