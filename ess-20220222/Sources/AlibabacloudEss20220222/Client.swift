@@ -1404,6 +1404,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.alarmDimensions)) {
             query["AlarmDimensions"] = request.alarmDimensions ?? [];
         }
+        if (!TeaUtils.Client.isUnset(request.alarmOptions)) {
+            query["AlarmOptions"] = request.alarmOptions!;
+        }
         if (!TeaUtils.Client.isUnset(request.cooldown)) {
             query["Cooldown"] = request.cooldown!;
         }
@@ -4685,6 +4688,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.alarmDimensions)) {
             query["AlarmDimensions"] = request.alarmDimensions ?? [];
+        }
+        if (!TeaUtils.Client.isUnset(request.alarmOptions)) {
+            query["AlarmOptions"] = request.alarmOptions!;
         }
         if (!TeaUtils.Client.isUnset(request.cooldown)) {
             query["Cooldown"] = request.cooldown!;

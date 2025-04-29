@@ -9351,6 +9351,35 @@ public class CreateScalingRuleRequest : Tea.TeaModel {
             }
         }
     }
+    public class AlarmOptions : Tea.TeaModel {
+        public var period: Int32?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.period != nil {
+                map["Period"] = self.period!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("Period") {
+                self.period = dict["Period"] as! Int32
+            }
+        }
+    }
     public class HybridMetrics : Tea.TeaModel {
         public class Dimensions : Tea.TeaModel {
             public var dimensionKey: String?
@@ -9512,6 +9541,8 @@ public class CreateScalingRuleRequest : Tea.TeaModel {
 
     public var alarmDimensions: [CreateScalingRuleRequest.AlarmDimensions]?
 
+    public var alarmOptions: CreateScalingRuleRequest.AlarmOptions?
+
     public var cooldown: Int32?
 
     public var disableScaleIn: Bool?
@@ -9570,6 +9601,7 @@ public class CreateScalingRuleRequest : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
+        try self.alarmOptions?.validate()
     }
 
     public override func toMap() -> [String : Any] {
@@ -9586,6 +9618,9 @@ public class CreateScalingRuleRequest : Tea.TeaModel {
                 tmp.append(k.toMap())
             }
             map["AlarmDimensions"] = tmp
+        }
+        if self.alarmOptions != nil {
+            map["AlarmOptions"] = self.alarmOptions?.toMap()
         }
         if self.cooldown != nil {
             map["Cooldown"] = self.cooldown!
@@ -9687,6 +9722,11 @@ public class CreateScalingRuleRequest : Tea.TeaModel {
                 tmp.append(model)
             }
             self.alarmDimensions = tmp
+        }
+        if dict.keys.contains("AlarmOptions") {
+            var model = CreateScalingRuleRequest.AlarmOptions()
+            model.fromMap(dict["AlarmOptions"] as! [String: Any])
+            self.alarmOptions = model
         }
         if dict.keys.contains("Cooldown") {
             self.cooldown = dict["Cooldown"] as! Int32
@@ -25067,6 +25107,8 @@ public class DescribeScalingRulesResponseBody : Tea.TeaModel {
 
             public var metricType: String?
 
+            public var period: Int32?
+
             public var statistics: String?
 
             public var threshold: Double?
@@ -25110,6 +25152,9 @@ public class DescribeScalingRulesResponseBody : Tea.TeaModel {
                 if self.metricType != nil {
                     map["MetricType"] = self.metricType!
                 }
+                if self.period != nil {
+                    map["Period"] = self.period!
+                }
                 if self.statistics != nil {
                     map["Statistics"] = self.statistics!
                 }
@@ -25148,6 +25193,9 @@ public class DescribeScalingRulesResponseBody : Tea.TeaModel {
                 }
                 if dict.keys.contains("MetricType") {
                     self.metricType = dict["MetricType"] as! String
+                }
+                if dict.keys.contains("Period") {
+                    self.period = dict["Period"] as! Int32
                 }
                 if dict.keys.contains("Statistics") {
                     self.statistics = dict["Statistics"] as! String
@@ -36078,6 +36126,35 @@ public class ModifyScalingRuleRequest : Tea.TeaModel {
             }
         }
     }
+    public class AlarmOptions : Tea.TeaModel {
+        public var period: Int32?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.period != nil {
+                map["Period"] = self.period!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("Period") {
+                self.period = dict["Period"] as! Int32
+            }
+        }
+    }
     public class HybridMetrics : Tea.TeaModel {
         public class Dimensions : Tea.TeaModel {
             public var dimensionKey: String?
@@ -36239,6 +36316,8 @@ public class ModifyScalingRuleRequest : Tea.TeaModel {
 
     public var alarmDimensions: [ModifyScalingRuleRequest.AlarmDimensions]?
 
+    public var alarmOptions: ModifyScalingRuleRequest.AlarmOptions?
+
     public var cooldown: Int32?
 
     public var disableScaleIn: Bool?
@@ -36295,6 +36374,7 @@ public class ModifyScalingRuleRequest : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
+        try self.alarmOptions?.validate()
     }
 
     public override func toMap() -> [String : Any] {
@@ -36311,6 +36391,9 @@ public class ModifyScalingRuleRequest : Tea.TeaModel {
                 tmp.append(k.toMap())
             }
             map["AlarmDimensions"] = tmp
+        }
+        if self.alarmOptions != nil {
+            map["AlarmOptions"] = self.alarmOptions?.toMap()
         }
         if self.cooldown != nil {
             map["Cooldown"] = self.cooldown!
@@ -36409,6 +36492,11 @@ public class ModifyScalingRuleRequest : Tea.TeaModel {
                 tmp.append(model)
             }
             self.alarmDimensions = tmp
+        }
+        if dict.keys.contains("AlarmOptions") {
+            var model = ModifyScalingRuleRequest.AlarmOptions()
+            model.fromMap(dict["AlarmOptions"] as! [String: Any])
+            self.alarmOptions = model
         }
         if dict.keys.contains("Cooldown") {
             self.cooldown = dict["Cooldown"] as! Int32
