@@ -7175,6 +7175,8 @@ public class DescribeLensMonitorDisksResponseBody : Tea.TeaModel {
 
         public var regionId: String?
 
+        public var sharingEnabled: String?
+
         public var size: Int32?
 
         public var tags: [DescribeLensMonitorDisksResponseBody.DiskInfos.Tags]?
@@ -7231,6 +7233,9 @@ public class DescribeLensMonitorDisksResponseBody : Tea.TeaModel {
             if self.regionId != nil {
                 map["RegionId"] = self.regionId!
             }
+            if self.sharingEnabled != nil {
+                map["SharingEnabled"] = self.sharingEnabled!
+            }
             if self.size != nil {
                 map["Size"] = self.size!
             }
@@ -7283,6 +7288,9 @@ public class DescribeLensMonitorDisksResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("RegionId") {
                 self.regionId = dict["RegionId"] as! String
+            }
+            if dict.keys.contains("SharingEnabled") {
+                self.sharingEnabled = dict["SharingEnabled"] as! String
             }
             if dict.keys.contains("Size") {
                 self.size = dict["Size"] as! Int32
@@ -7507,6 +7515,8 @@ public class DescribeLensServiceStatusResponse : Tea.TeaModel {
 public class DescribeMetricDataRequest : Tea.TeaModel {
     public var aggreOps: String?
 
+    public var aggreOverLineOps: String?
+
     public var dimensions: String?
 
     public var endTime: String?
@@ -7536,6 +7546,9 @@ public class DescribeMetricDataRequest : Tea.TeaModel {
         if self.aggreOps != nil {
             map["AggreOps"] = self.aggreOps!
         }
+        if self.aggreOverLineOps != nil {
+            map["AggreOverLineOps"] = self.aggreOverLineOps!
+        }
         if self.dimensions != nil {
             map["Dimensions"] = self.dimensions!
         }
@@ -7560,6 +7573,9 @@ public class DescribeMetricDataRequest : Tea.TeaModel {
     public override func fromMap(_ dict: [String: Any]) -> Void {
         if dict.keys.contains("AggreOps") {
             self.aggreOps = dict["AggreOps"] as! String
+        }
+        if dict.keys.contains("AggreOverLineOps") {
+            self.aggreOverLineOps = dict["AggreOverLineOps"] as! String
         }
         if dict.keys.contains("Dimensions") {
             self.dimensions = dict["Dimensions"] as! String
@@ -7626,6 +7642,8 @@ public class DescribeMetricDataResponseBody : Tea.TeaModel {
 
     public var totalCount: Int32?
 
+    public var warnings: [String]?
+
     public override init() {
         super.init()
     }
@@ -7653,6 +7671,9 @@ public class DescribeMetricDataResponseBody : Tea.TeaModel {
         if self.totalCount != nil {
             map["TotalCount"] = self.totalCount!
         }
+        if self.warnings != nil {
+            map["Warnings"] = self.warnings!
+        }
         return map
     }
 
@@ -7673,6 +7694,9 @@ public class DescribeMetricDataResponseBody : Tea.TeaModel {
         }
         if dict.keys.contains("TotalCount") {
             self.totalCount = dict["TotalCount"] as! Int32
+        }
+        if dict.keys.contains("Warnings") {
+            self.warnings = dict["Warnings"] as! [String]
         }
     }
 }
