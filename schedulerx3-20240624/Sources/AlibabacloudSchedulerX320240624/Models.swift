@@ -687,6 +687,8 @@ public class CreateJobRequest : Tea.TeaModel {
 
     public var calendar: String?
 
+    public var childJobId: String?
+
     public var clusterId: String?
 
     public var description_: String?
@@ -746,6 +748,9 @@ public class CreateJobRequest : Tea.TeaModel {
         }
         if self.calendar != nil {
             map["Calendar"] = self.calendar!
+        }
+        if self.childJobId != nil {
+            map["ChildJobId"] = self.childJobId!
         }
         if self.clusterId != nil {
             map["ClusterId"] = self.clusterId!
@@ -817,6 +822,9 @@ public class CreateJobRequest : Tea.TeaModel {
         }
         if dict.keys.contains("Calendar") {
             self.calendar = dict["Calendar"] as! String
+        }
+        if dict.keys.contains("ChildJobId") {
+            self.childJobId = dict["ChildJobId"] as! String
         }
         if dict.keys.contains("ClusterId") {
             self.clusterId = dict["ClusterId"] as! String
@@ -892,6 +900,8 @@ public class CreateJobShrinkRequest : Tea.TeaModel {
 
     public var calendar: String?
 
+    public var childJobId: String?
+
     public var clusterId: String?
 
     public var description_: String?
@@ -950,6 +960,9 @@ public class CreateJobShrinkRequest : Tea.TeaModel {
         }
         if self.calendar != nil {
             map["Calendar"] = self.calendar!
+        }
+        if self.childJobId != nil {
+            map["ChildJobId"] = self.childJobId!
         }
         if self.clusterId != nil {
             map["ClusterId"] = self.clusterId!
@@ -1017,6 +1030,9 @@ public class CreateJobShrinkRequest : Tea.TeaModel {
         }
         if dict.keys.contains("Calendar") {
             self.calendar = dict["Calendar"] as! String
+        }
+        if dict.keys.contains("ChildJobId") {
+            self.childJobId = dict["ChildJobId"] as! String
         }
         if dict.keys.contains("ClusterId") {
             self.clusterId = dict["ClusterId"] as! String
@@ -1944,6 +1960,8 @@ public class GetClusterResponseBody : Tea.TeaModel {
 
         public var vSwitches: [GetClusterResponseBody.Data.VSwitches]?
 
+        public var versionLifecycle: String?
+
         public var vpcId: String?
 
         public var workerNum: Int32?
@@ -2019,6 +2037,9 @@ public class GetClusterResponseBody : Tea.TeaModel {
                 }
                 map["VSwitches"] = tmp
             }
+            if self.versionLifecycle != nil {
+                map["VersionLifecycle"] = self.versionLifecycle!
+            }
             if self.vpcId != nil {
                 map["VpcId"] = self.vpcId!
             }
@@ -2090,6 +2111,9 @@ public class GetClusterResponseBody : Tea.TeaModel {
                     tmp.append(model)
                 }
                 self.vSwitches = tmp
+            }
+            if dict.keys.contains("VersionLifecycle") {
+                self.versionLifecycle = dict["VersionLifecycle"] as! String
             }
             if dict.keys.contains("VpcId") {
                 self.vpcId = dict["VpcId"] as! String
@@ -4788,6 +4812,8 @@ public class ListClustersResponseBody : Tea.TeaModel {
 
             public var vSwitches: [ListClustersResponseBody.Data.Records.VSwitches]?
 
+            public var versionLifecycle: String?
+
             public var vpcId: String?
 
             public override init() {
@@ -4850,6 +4876,9 @@ public class ListClustersResponseBody : Tea.TeaModel {
                     }
                     map["VSwitches"] = tmp
                 }
+                if self.versionLifecycle != nil {
+                    map["VersionLifecycle"] = self.versionLifecycle!
+                }
                 if self.vpcId != nil {
                     map["VpcId"] = self.vpcId!
                 }
@@ -4906,6 +4935,9 @@ public class ListClustersResponseBody : Tea.TeaModel {
                         tmp.append(model)
                     }
                     self.vSwitches = tmp
+                }
+                if dict.keys.contains("VersionLifecycle") {
+                    self.versionLifecycle = dict["VersionLifecycle"] as! String
                 }
                 if dict.keys.contains("VpcId") {
                     self.vpcId = dict["VpcId"] as! String
@@ -5900,6 +5932,8 @@ public class ListJobsResponseBody : Tea.TeaModel {
 
             public var calendar: String?
 
+            public var childJobId: String?
+
             public var cleanMode: String?
 
             public var creator: String?
@@ -5974,6 +6008,9 @@ public class ListJobsResponseBody : Tea.TeaModel {
                 }
                 if self.calendar != nil {
                     map["Calendar"] = self.calendar!
+                }
+                if self.childJobId != nil {
+                    map["ChildJobId"] = self.childJobId!
                 }
                 if self.cleanMode != nil {
                     map["CleanMode"] = self.cleanMode!
@@ -6065,6 +6102,9 @@ public class ListJobsResponseBody : Tea.TeaModel {
                 }
                 if dict.keys.contains("Calendar") {
                     self.calendar = dict["Calendar"] as! String
+                }
+                if dict.keys.contains("ChildJobId") {
+                    self.childJobId = dict["ChildJobId"] as! String
                 }
                 if dict.keys.contains("CleanMode") {
                     self.cleanMode = dict["CleanMode"] as! String
@@ -9312,6 +9352,8 @@ public class UpdateJobRequest : Tea.TeaModel {
 
     public var calendar: String?
 
+    public var childJobId: String?
+
     public var clusterId: String?
 
     public var description_: String?
@@ -9369,6 +9411,9 @@ public class UpdateJobRequest : Tea.TeaModel {
         }
         if self.calendar != nil {
             map["Calendar"] = self.calendar!
+        }
+        if self.childJobId != nil {
+            map["ChildJobId"] = self.childJobId!
         }
         if self.clusterId != nil {
             map["ClusterId"] = self.clusterId!
@@ -9437,6 +9482,9 @@ public class UpdateJobRequest : Tea.TeaModel {
         }
         if dict.keys.contains("Calendar") {
             self.calendar = dict["Calendar"] as! String
+        }
+        if dict.keys.contains("ChildJobId") {
+            self.childJobId = dict["ChildJobId"] as! String
         }
         if dict.keys.contains("ClusterId") {
             self.clusterId = dict["ClusterId"] as! String
@@ -9509,6 +9557,8 @@ public class UpdateJobShrinkRequest : Tea.TeaModel {
 
     public var calendar: String?
 
+    public var childJobId: String?
+
     public var clusterId: String?
 
     public var description_: String?
@@ -9565,6 +9615,9 @@ public class UpdateJobShrinkRequest : Tea.TeaModel {
         }
         if self.calendar != nil {
             map["Calendar"] = self.calendar!
+        }
+        if self.childJobId != nil {
+            map["ChildJobId"] = self.childJobId!
         }
         if self.clusterId != nil {
             map["ClusterId"] = self.clusterId!
@@ -9629,6 +9682,9 @@ public class UpdateJobShrinkRequest : Tea.TeaModel {
         }
         if dict.keys.contains("Calendar") {
             self.calendar = dict["Calendar"] as! String
+        }
+        if dict.keys.contains("ChildJobId") {
+            self.childJobId = dict["ChildJobId"] as! String
         }
         if dict.keys.contains("ClusterId") {
             self.clusterId = dict["ClusterId"] as! String

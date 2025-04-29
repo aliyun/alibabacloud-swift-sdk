@@ -138,6 +138,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.calendar)) {
             body["Calendar"] = request.calendar ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.childJobId)) {
+            body["ChildJobId"] = request.childJobId ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.clusterId)) {
             body["ClusterId"] = request.clusterId ?? "";
         }
@@ -1333,6 +1336,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.calendar)) {
             body["Calendar"] = request.calendar ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.childJobId)) {
+            body["ChildJobId"] = request.childJobId ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.clusterId)) {
             body["ClusterId"] = request.clusterId ?? "";
