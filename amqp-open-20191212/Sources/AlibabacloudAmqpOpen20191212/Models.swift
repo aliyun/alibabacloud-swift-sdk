@@ -5256,6 +5256,8 @@ public class ListVirtualHostsResponse : Tea.TeaModel {
 public class UpdateInstanceRequest : Tea.TeaModel {
     public var clientToken: String?
 
+    public var edition: String?
+
     public var encryptedInstance: Bool?
 
     public var instanceId: String?
@@ -5271,6 +5273,8 @@ public class UpdateInstanceRequest : Tea.TeaModel {
     public var maxPrivateTps: Int64?
 
     public var modifyType: String?
+
+    public var provisionedCapacity: Int32?
 
     public var queueCapacity: Int32?
 
@@ -5301,6 +5305,9 @@ public class UpdateInstanceRequest : Tea.TeaModel {
         if self.clientToken != nil {
             map["ClientToken"] = self.clientToken!
         }
+        if self.edition != nil {
+            map["Edition"] = self.edition!
+        }
         if self.encryptedInstance != nil {
             map["EncryptedInstance"] = self.encryptedInstance!
         }
@@ -5324,6 +5331,9 @@ public class UpdateInstanceRequest : Tea.TeaModel {
         }
         if self.modifyType != nil {
             map["ModifyType"] = self.modifyType!
+        }
+        if self.provisionedCapacity != nil {
+            map["ProvisionedCapacity"] = self.provisionedCapacity!
         }
         if self.queueCapacity != nil {
             map["QueueCapacity"] = self.queueCapacity!
@@ -5350,6 +5360,9 @@ public class UpdateInstanceRequest : Tea.TeaModel {
         if dict.keys.contains("ClientToken") {
             self.clientToken = dict["ClientToken"] as! String
         }
+        if dict.keys.contains("Edition") {
+            self.edition = dict["Edition"] as! String
+        }
         if dict.keys.contains("EncryptedInstance") {
             self.encryptedInstance = dict["EncryptedInstance"] as! Bool
         }
@@ -5373,6 +5386,9 @@ public class UpdateInstanceRequest : Tea.TeaModel {
         }
         if dict.keys.contains("ModifyType") {
             self.modifyType = dict["ModifyType"] as! String
+        }
+        if dict.keys.contains("ProvisionedCapacity") {
+            self.provisionedCapacity = dict["ProvisionedCapacity"] as! Int32
         }
         if dict.keys.contains("QueueCapacity") {
             self.queueCapacity = dict["QueueCapacity"] as! Int32
