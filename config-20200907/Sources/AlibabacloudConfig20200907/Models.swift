@@ -9204,6 +9204,8 @@ public class GenerateAggregateCompliancePackReportRequest : Tea.TeaModel {
 
     public var compliancePackId: String?
 
+    public var multiFiles: Bool?
+
     public override init() {
         super.init()
     }
@@ -9227,6 +9229,9 @@ public class GenerateAggregateCompliancePackReportRequest : Tea.TeaModel {
         if self.compliancePackId != nil {
             map["CompliancePackId"] = self.compliancePackId!
         }
+        if self.multiFiles != nil {
+            map["MultiFiles"] = self.multiFiles!
+        }
         return map
     }
 
@@ -9239,6 +9244,9 @@ public class GenerateAggregateCompliancePackReportRequest : Tea.TeaModel {
         }
         if dict.keys.contains("CompliancePackId") {
             self.compliancePackId = dict["CompliancePackId"] as! String
+        }
+        if dict.keys.contains("MultiFiles") {
+            self.multiFiles = dict["MultiFiles"] as! Bool
         }
     }
 }

@@ -1633,6 +1633,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.compliancePackId)) {
             body["CompliancePackId"] = request.compliancePackId ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.multiFiles)) {
+            body["MultiFiles"] = request.multiFiles!;
+        }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
         ])
