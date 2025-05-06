@@ -1414,6 +1414,8 @@ public class CreateDatasetRequest : Tea.TeaModel {
 
     public var documentHandleConfig: CreateDatasetRequest.DocumentHandleConfig?
 
+    public var invokeType: String?
+
     public var searchDatasetEnable: Int32?
 
     public var workspaceId: String?
@@ -1449,6 +1451,9 @@ public class CreateDatasetRequest : Tea.TeaModel {
         if self.documentHandleConfig != nil {
             map["DocumentHandleConfig"] = self.documentHandleConfig?.toMap()
         }
+        if self.invokeType != nil {
+            map["InvokeType"] = self.invokeType!
+        }
         if self.searchDatasetEnable != nil {
             map["SearchDatasetEnable"] = self.searchDatasetEnable!
         }
@@ -1478,6 +1483,9 @@ public class CreateDatasetRequest : Tea.TeaModel {
             model.fromMap(dict["DocumentHandleConfig"] as! [String: Any])
             self.documentHandleConfig = model
         }
+        if dict.keys.contains("InvokeType") {
+            self.invokeType = dict["InvokeType"] as! String
+        }
         if dict.keys.contains("SearchDatasetEnable") {
             self.searchDatasetEnable = dict["SearchDatasetEnable"] as! Int32
         }
@@ -1497,6 +1505,8 @@ public class CreateDatasetShrinkRequest : Tea.TeaModel {
     public var datasetType: String?
 
     public var documentHandleConfigShrink: String?
+
+    public var invokeType: String?
 
     public var searchDatasetEnable: Int32?
 
@@ -1531,6 +1541,9 @@ public class CreateDatasetShrinkRequest : Tea.TeaModel {
         if self.documentHandleConfigShrink != nil {
             map["DocumentHandleConfig"] = self.documentHandleConfigShrink!
         }
+        if self.invokeType != nil {
+            map["InvokeType"] = self.invokeType!
+        }
         if self.searchDatasetEnable != nil {
             map["SearchDatasetEnable"] = self.searchDatasetEnable!
         }
@@ -1555,6 +1568,9 @@ public class CreateDatasetShrinkRequest : Tea.TeaModel {
         }
         if dict.keys.contains("DocumentHandleConfig") {
             self.documentHandleConfigShrink = dict["DocumentHandleConfig"] as! String
+        }
+        if dict.keys.contains("InvokeType") {
+            self.invokeType = dict["InvokeType"] as! String
         }
         if dict.keys.contains("SearchDatasetEnable") {
             self.searchDatasetEnable = dict["SearchDatasetEnable"] as! Int32

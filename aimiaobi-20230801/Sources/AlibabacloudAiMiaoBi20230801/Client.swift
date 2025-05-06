@@ -162,6 +162,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.documentHandleConfigShrink)) {
             body["DocumentHandleConfig"] = request.documentHandleConfigShrink ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.invokeType)) {
+            body["InvokeType"] = request.invokeType ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.searchDatasetEnable)) {
             body["SearchDatasetEnable"] = request.searchDatasetEnable!;
         }
