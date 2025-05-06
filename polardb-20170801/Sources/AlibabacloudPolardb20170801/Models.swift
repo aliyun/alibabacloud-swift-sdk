@@ -35385,9 +35385,13 @@ public class ModifyLogBackupPolicyResponse : Tea.TeaModel {
 public class ModifyMaskingRulesRequest : Tea.TeaModel {
     public var DBClusterId: String?
 
+    public var defaultAlgo: String?
+
     public var enable: String?
 
     public var interfaceVersion: String?
+
+    public var maskingAlgo: String?
 
     public var ruleConfig: String?
 
@@ -35414,11 +35418,17 @@ public class ModifyMaskingRulesRequest : Tea.TeaModel {
         if self.DBClusterId != nil {
             map["DBClusterId"] = self.DBClusterId!
         }
+        if self.defaultAlgo != nil {
+            map["DefaultAlgo"] = self.defaultAlgo!
+        }
         if self.enable != nil {
             map["Enable"] = self.enable!
         }
         if self.interfaceVersion != nil {
             map["InterfaceVersion"] = self.interfaceVersion!
+        }
+        if self.maskingAlgo != nil {
+            map["MaskingAlgo"] = self.maskingAlgo!
         }
         if self.ruleConfig != nil {
             map["RuleConfig"] = self.ruleConfig!
@@ -35439,11 +35449,17 @@ public class ModifyMaskingRulesRequest : Tea.TeaModel {
         if dict.keys.contains("DBClusterId") {
             self.DBClusterId = dict["DBClusterId"] as! String
         }
+        if dict.keys.contains("DefaultAlgo") {
+            self.defaultAlgo = dict["DefaultAlgo"] as! String
+        }
         if dict.keys.contains("Enable") {
             self.enable = dict["Enable"] as! String
         }
         if dict.keys.contains("InterfaceVersion") {
             self.interfaceVersion = dict["InterfaceVersion"] as! String
+        }
+        if dict.keys.contains("MaskingAlgo") {
+            self.maskingAlgo = dict["MaskingAlgo"] as! String
         }
         if dict.keys.contains("RuleConfig") {
             self.ruleConfig = dict["RuleConfig"] as! String
