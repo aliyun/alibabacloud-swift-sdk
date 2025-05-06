@@ -3012,6 +3012,10 @@ public class DescribeInstancesResponseBody : Tea.TeaModel {
 
             public var oss: DescribeInstancesResponseBody.Instances.Storage.Oss?
 
+            public var supportCreateFullyManagedStorage: Bool?
+
+            public var supportMigrationProgressDetection: Bool?
+
             public override init() {
                 super.init()
             }
@@ -3036,6 +3040,12 @@ public class DescribeInstancesResponseBody : Tea.TeaModel {
                 if self.oss != nil {
                     map["Oss"] = self.oss?.toMap()
                 }
+                if self.supportCreateFullyManagedStorage != nil {
+                    map["SupportCreateFullyManagedStorage"] = self.supportCreateFullyManagedStorage!
+                }
+                if self.supportMigrationProgressDetection != nil {
+                    map["SupportMigrationProgressDetection"] = self.supportMigrationProgressDetection!
+                }
                 return map
             }
 
@@ -3050,6 +3060,12 @@ public class DescribeInstancesResponseBody : Tea.TeaModel {
                     var model = DescribeInstancesResponseBody.Instances.Storage.Oss()
                     model.fromMap(dict["Oss"] as! [String: Any])
                     self.oss = model
+                }
+                if dict.keys.contains("SupportCreateFullyManagedStorage") {
+                    self.supportCreateFullyManagedStorage = dict["SupportCreateFullyManagedStorage"] as! Bool
+                }
+                if dict.keys.contains("SupportMigrationProgressDetection") {
+                    self.supportMigrationProgressDetection = dict["SupportMigrationProgressDetection"] as! Bool
                 }
             }
         }
