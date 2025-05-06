@@ -2061,6 +2061,8 @@ public class RunSearchCaseFullTextRequest : Tea.TeaModel {
 
     public var queryKeywords: [String]?
 
+    public var referLevel: String?
+
     public var sortKeyAndDirection: [String: String]?
 
     public var thread: RunSearchCaseFullTextRequest.Thread?
@@ -2097,6 +2099,9 @@ public class RunSearchCaseFullTextRequest : Tea.TeaModel {
         if self.queryKeywords != nil {
             map["queryKeywords"] = self.queryKeywords!
         }
+        if self.referLevel != nil {
+            map["referLevel"] = self.referLevel!
+        }
         if self.sortKeyAndDirection != nil {
             map["sortKeyAndDirection"] = self.sortKeyAndDirection!
         }
@@ -2126,6 +2131,9 @@ public class RunSearchCaseFullTextRequest : Tea.TeaModel {
         if dict.keys.contains("queryKeywords") {
             self.queryKeywords = dict["queryKeywords"] as! [String]
         }
+        if dict.keys.contains("referLevel") {
+            self.referLevel = dict["referLevel"] as! String
+        }
         if dict.keys.contains("sortKeyAndDirection") {
             self.sortKeyAndDirection = dict["sortKeyAndDirection"] as! [String: String]
         }
@@ -2147,6 +2155,8 @@ public class RunSearchCaseFullTextShrinkRequest : Tea.TeaModel {
     public var query: String?
 
     public var queryKeywordsShrink: String?
+
+    public var referLevel: String?
 
     public var sortKeyAndDirectionShrink: String?
 
@@ -2181,6 +2191,9 @@ public class RunSearchCaseFullTextShrinkRequest : Tea.TeaModel {
         if self.queryKeywordsShrink != nil {
             map["queryKeywords"] = self.queryKeywordsShrink!
         }
+        if self.referLevel != nil {
+            map["referLevel"] = self.referLevel!
+        }
         if self.sortKeyAndDirectionShrink != nil {
             map["sortKeyAndDirection"] = self.sortKeyAndDirectionShrink!
         }
@@ -2205,6 +2218,9 @@ public class RunSearchCaseFullTextShrinkRequest : Tea.TeaModel {
         }
         if dict.keys.contains("queryKeywords") {
             self.queryKeywordsShrink = dict["queryKeywords"] as! String
+        }
+        if dict.keys.contains("referLevel") {
+            self.referLevel = dict["referLevel"] as! String
         }
         if dict.keys.contains("sortKeyAndDirection") {
             self.sortKeyAndDirectionShrink = dict["sortKeyAndDirection"] as! String
@@ -2308,7 +2324,11 @@ public class RunSearchCaseFullTextResponseBody : Tea.TeaModel {
 
                 public var appliedLaws: String?
 
+                public var basicCase: String?
+
                 public var caseBasic: String?
+
+                public var caseCause: String?
 
                 public var caseFeature: String?
 
@@ -2338,6 +2358,8 @@ public class RunSearchCaseFullTextResponseBody : Tea.TeaModel {
 
                 public var documentType: String?
 
+                public var judgReason: String?
+
                 public var keyfacts: String?
 
                 public var legalBasis: String?
@@ -2351,6 +2373,8 @@ public class RunSearchCaseFullTextResponseBody : Tea.TeaModel {
                 public var preTrialProcess: String?
 
                 public var referLevel: String?
+
+                public var refereeGist: String?
 
                 public var sourceContent: String?
 
@@ -2387,8 +2411,14 @@ public class RunSearchCaseFullTextResponseBody : Tea.TeaModel {
                     if self.appliedLaws != nil {
                         map["appliedLaws"] = self.appliedLaws!
                     }
+                    if self.basicCase != nil {
+                        map["basicCase"] = self.basicCase!
+                    }
                     if self.caseBasic != nil {
                         map["caseBasic"] = self.caseBasic!
+                    }
+                    if self.caseCause != nil {
+                        map["caseCause"] = self.caseCause!
                     }
                     if self.caseFeature != nil {
                         map["caseFeature"] = self.caseFeature!
@@ -2432,6 +2462,9 @@ public class RunSearchCaseFullTextResponseBody : Tea.TeaModel {
                     if self.documentType != nil {
                         map["documentType"] = self.documentType!
                     }
+                    if self.judgReason != nil {
+                        map["judgReason"] = self.judgReason!
+                    }
                     if self.keyfacts != nil {
                         map["keyfacts"] = self.keyfacts!
                     }
@@ -2452,6 +2485,9 @@ public class RunSearchCaseFullTextResponseBody : Tea.TeaModel {
                     }
                     if self.referLevel != nil {
                         map["referLevel"] = self.referLevel!
+                    }
+                    if self.refereeGist != nil {
+                        map["refereeGist"] = self.refereeGist!
                     }
                     if self.sourceContent != nil {
                         map["sourceContent"] = self.sourceContent!
@@ -2484,8 +2520,14 @@ public class RunSearchCaseFullTextResponseBody : Tea.TeaModel {
                     if dict.keys.contains("appliedLaws") {
                         self.appliedLaws = dict["appliedLaws"] as! String
                     }
+                    if dict.keys.contains("basicCase") {
+                        self.basicCase = dict["basicCase"] as! String
+                    }
                     if dict.keys.contains("caseBasic") {
                         self.caseBasic = dict["caseBasic"] as! String
+                    }
+                    if dict.keys.contains("caseCause") {
+                        self.caseCause = dict["caseCause"] as! String
                     }
                     if dict.keys.contains("caseFeature") {
                         self.caseFeature = dict["caseFeature"] as! String
@@ -2529,6 +2571,9 @@ public class RunSearchCaseFullTextResponseBody : Tea.TeaModel {
                     if dict.keys.contains("documentType") {
                         self.documentType = dict["documentType"] as! String
                     }
+                    if dict.keys.contains("judgReason") {
+                        self.judgReason = dict["judgReason"] as! String
+                    }
                     if dict.keys.contains("keyfacts") {
                         self.keyfacts = dict["keyfacts"] as! String
                     }
@@ -2549,6 +2594,9 @@ public class RunSearchCaseFullTextResponseBody : Tea.TeaModel {
                     }
                     if dict.keys.contains("referLevel") {
                         self.referLevel = dict["referLevel"] as! String
+                    }
+                    if dict.keys.contains("refereeGist") {
+                        self.refereeGist = dict["refereeGist"] as! String
                     }
                     if dict.keys.contains("sourceContent") {
                         self.sourceContent = dict["sourceContent"] as! String
@@ -2577,6 +2625,8 @@ public class RunSearchCaseFullTextResponseBody : Tea.TeaModel {
             }
             public var caseDomain: RunSearchCaseFullTextResponseBody.Data.CaseResult.CaseDomain?
 
+            public var mode: String?
+
             public var similarity: String?
 
             public override init() {
@@ -2597,6 +2647,9 @@ public class RunSearchCaseFullTextResponseBody : Tea.TeaModel {
                 if self.caseDomain != nil {
                     map["caseDomain"] = self.caseDomain?.toMap()
                 }
+                if self.mode != nil {
+                    map["mode"] = self.mode!
+                }
                 if self.similarity != nil {
                     map["similarity"] = self.similarity!
                 }
@@ -2609,11 +2662,16 @@ public class RunSearchCaseFullTextResponseBody : Tea.TeaModel {
                     model.fromMap(dict["caseDomain"] as! [String: Any])
                     self.caseDomain = model
                 }
+                if dict.keys.contains("mode") {
+                    self.mode = dict["mode"] as! String
+                }
                 if dict.keys.contains("similarity") {
                     self.similarity = dict["similarity"] as! String
                 }
             }
         }
+        public var caseLevel: String?
+
         public var caseResult: [RunSearchCaseFullTextResponseBody.Data.CaseResult]?
 
         public var currentPage: Int32?
@@ -2640,6 +2698,9 @@ public class RunSearchCaseFullTextResponseBody : Tea.TeaModel {
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
+            if self.caseLevel != nil {
+                map["caseLevel"] = self.caseLevel!
+            }
             if self.caseResult != nil {
                 var tmp : [Any] = []
                 for k in self.caseResult! {
@@ -2666,6 +2727,9 @@ public class RunSearchCaseFullTextResponseBody : Tea.TeaModel {
         }
 
         public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("caseLevel") {
+                self.caseLevel = dict["caseLevel"] as! String
+            }
             if dict.keys.contains("caseResult") {
                 var tmp : [RunSearchCaseFullTextResponseBody.Data.CaseResult] = []
                 for v in dict["caseResult"] as! [Any] {

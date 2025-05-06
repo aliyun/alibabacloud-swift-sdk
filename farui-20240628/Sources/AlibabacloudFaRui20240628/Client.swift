@@ -315,6 +315,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.queryKeywordsShrink)) {
             body["queryKeywords"] = request.queryKeywordsShrink ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.referLevel)) {
+            body["referLevel"] = request.referLevel ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.sortKeyAndDirectionShrink)) {
             body["sortKeyAndDirection"] = request.sortKeyAndDirectionShrink ?? "";
         }
