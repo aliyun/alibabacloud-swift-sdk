@@ -2026,6 +2026,8 @@ public class CreateTaskRequest : Tea.TeaModel {
 
         public var level: String?
 
+        public var roleIdentification: Bool?
+
         public var serviceChannel: Int32?
 
         public var serviceChannelKeywords: [String]?
@@ -2063,6 +2065,9 @@ public class CreateTaskRequest : Tea.TeaModel {
             if self.level != nil {
                 map["level"] = self.level!
             }
+            if self.roleIdentification != nil {
+                map["roleIdentification"] = self.roleIdentification!
+            }
             if self.serviceChannel != nil {
                 map["serviceChannel"] = self.serviceChannel!
             }
@@ -2093,6 +2098,9 @@ public class CreateTaskRequest : Tea.TeaModel {
             }
             if dict.keys.contains("level") {
                 self.level = dict["level"] as! String
+            }
+            if dict.keys.contains("roleIdentification") {
+                self.roleIdentification = dict["roleIdentification"] as! Bool
             }
             if dict.keys.contains("serviceChannel") {
                 self.serviceChannel = dict["serviceChannel"] as! Int32
