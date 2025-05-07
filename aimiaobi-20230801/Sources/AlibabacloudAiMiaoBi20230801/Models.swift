@@ -37041,9 +37041,25 @@ public class RunSearchGenerationRequest : Tea.TeaModel {
                     }
                 }
             }
+            public var askUser: String?
+
+            public var askUserKeywords: [String]?
+
+            public var currentStep: String?
+
             public var multimodalMediaSelection: RunSearchGenerationRequest.AgentContext.BizContext.MultimodalMediaSelection?
 
+            public var nextStep: String?
+
             public var skipCurrentSupplement: Bool?
+
+            public var supplementDataType: String?
+
+            public var supplementEnable: Bool?
+
+            public var userBack: String?
+
+            public var userBackKeywords: [String]?
 
             public override init() {
                 super.init()
@@ -37060,23 +37076,71 @@ public class RunSearchGenerationRequest : Tea.TeaModel {
 
             public override func toMap() -> [String : Any] {
                 var map = super.toMap()
+                if self.askUser != nil {
+                    map["AskUser"] = self.askUser!
+                }
+                if self.askUserKeywords != nil {
+                    map["AskUserKeywords"] = self.askUserKeywords!
+                }
+                if self.currentStep != nil {
+                    map["CurrentStep"] = self.currentStep!
+                }
                 if self.multimodalMediaSelection != nil {
                     map["MultimodalMediaSelection"] = self.multimodalMediaSelection?.toMap()
                 }
+                if self.nextStep != nil {
+                    map["NextStep"] = self.nextStep!
+                }
                 if self.skipCurrentSupplement != nil {
                     map["SkipCurrentSupplement"] = self.skipCurrentSupplement!
+                }
+                if self.supplementDataType != nil {
+                    map["SupplementDataType"] = self.supplementDataType!
+                }
+                if self.supplementEnable != nil {
+                    map["SupplementEnable"] = self.supplementEnable!
+                }
+                if self.userBack != nil {
+                    map["UserBack"] = self.userBack!
+                }
+                if self.userBackKeywords != nil {
+                    map["UserBackKeywords"] = self.userBackKeywords!
                 }
                 return map
             }
 
             public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("AskUser") {
+                    self.askUser = dict["AskUser"] as! String
+                }
+                if dict.keys.contains("AskUserKeywords") {
+                    self.askUserKeywords = dict["AskUserKeywords"] as! [String]
+                }
+                if dict.keys.contains("CurrentStep") {
+                    self.currentStep = dict["CurrentStep"] as! String
+                }
                 if dict.keys.contains("MultimodalMediaSelection") {
                     var model = RunSearchGenerationRequest.AgentContext.BizContext.MultimodalMediaSelection()
                     model.fromMap(dict["MultimodalMediaSelection"] as! [String: Any])
                     self.multimodalMediaSelection = model
                 }
+                if dict.keys.contains("NextStep") {
+                    self.nextStep = dict["NextStep"] as! String
+                }
                 if dict.keys.contains("SkipCurrentSupplement") {
                     self.skipCurrentSupplement = dict["SkipCurrentSupplement"] as! Bool
+                }
+                if dict.keys.contains("SupplementDataType") {
+                    self.supplementDataType = dict["SupplementDataType"] as! String
+                }
+                if dict.keys.contains("SupplementEnable") {
+                    self.supplementEnable = dict["SupplementEnable"] as! Bool
+                }
+                if dict.keys.contains("UserBack") {
+                    self.userBack = dict["UserBack"] as! String
+                }
+                if dict.keys.contains("UserBackKeywords") {
+                    self.userBackKeywords = dict["UserBackKeywords"] as! [String]
                 }
             }
         }
@@ -41664,6 +41728,10 @@ public class RunSearchGenerationResponseBody : Tea.TeaModel {
                             }
                         }
                     }
+                    public var askUser: String?
+
+                    public var askUserKeywords: [String]?
+
                     public var currentStep: String?
 
                     public var generatedContent: RunSearchGenerationResponseBody.Payload.Output.AgentContext.BizContext.GeneratedContent?
@@ -41700,6 +41768,12 @@ public class RunSearchGenerationResponseBody : Tea.TeaModel {
 
                     public override func toMap() -> [String : Any] {
                         var map = super.toMap()
+                        if self.askUser != nil {
+                            map["AskUser"] = self.askUser!
+                        }
+                        if self.askUserKeywords != nil {
+                            map["AskUserKeywords"] = self.askUserKeywords!
+                        }
                         if self.currentStep != nil {
                             map["CurrentStep"] = self.currentStep!
                         }
@@ -41734,6 +41808,12 @@ public class RunSearchGenerationResponseBody : Tea.TeaModel {
                     }
 
                     public override func fromMap(_ dict: [String: Any]) -> Void {
+                        if dict.keys.contains("AskUser") {
+                            self.askUser = dict["AskUser"] as! String
+                        }
+                        if dict.keys.contains("AskUserKeywords") {
+                            self.askUserKeywords = dict["AskUserKeywords"] as! [String]
+                        }
                         if dict.keys.contains("CurrentStep") {
                             self.currentStep = dict["CurrentStep"] as! String
                         }
