@@ -3381,6 +3381,8 @@ public class DescribeUserResourcesResponseBody : Tea.TeaModel {
             }
         }
         public class Sessions : Tea.TeaModel {
+            public var nickName: String?
+
             public var resourceSessionStartTime: String?
 
             public var userId: String?
@@ -3401,6 +3403,9 @@ public class DescribeUserResourcesResponseBody : Tea.TeaModel {
 
             public override func toMap() -> [String : Any] {
                 var map = super.toMap()
+                if self.nickName != nil {
+                    map["NickName"] = self.nickName!
+                }
                 if self.resourceSessionStartTime != nil {
                     map["ResourceSessionStartTime"] = self.resourceSessionStartTime!
                 }
@@ -3414,6 +3419,9 @@ public class DescribeUserResourcesResponseBody : Tea.TeaModel {
             }
 
             public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("NickName") {
+                    self.nickName = dict["NickName"] as! String
+                }
                 if dict.keys.contains("ResourceSessionStartTime") {
                     self.resourceSessionStartTime = dict["ResourceSessionStartTime"] as! String
                 }
