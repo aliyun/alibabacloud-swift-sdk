@@ -28097,6 +28097,10 @@ public class DescribeDBInstanceAttributeResponseBody : Tea.TeaModel {
 
             public var babelfishConfig: DescribeDBInstanceAttributeResponseBody.Items.DBInstanceAttribute.BabelfishConfig?
 
+            public var blueGreenDeploymentName: String?
+
+            public var blueInstanceName: String?
+
             public var bpeEnabled: String?
 
             public var burstingEnabled: Bool?
@@ -28112,6 +28116,8 @@ public class DescribeDBInstanceAttributeResponseBody : Tea.TeaModel {
             public var compressionMode: String?
 
             public var compressionRatio: String?
+
+            public var computeBurstEnabled: Bool?
 
             public var connectionMode: String?
 
@@ -28168,6 +28174,8 @@ public class DescribeDBInstanceAttributeResponseBody : Tea.TeaModel {
             public var extra: DescribeDBInstanceAttributeResponseBody.Items.DBInstanceAttribute.Extra?
 
             public var generalGroupName: String?
+
+            public var greenInstanceName: String?
 
             public var guardDBInstanceId: String?
 
@@ -28290,6 +28298,12 @@ public class DescribeDBInstanceAttributeResponseBody : Tea.TeaModel {
                 if self.babelfishConfig != nil {
                     map["BabelfishConfig"] = self.babelfishConfig?.toMap()
                 }
+                if self.blueGreenDeploymentName != nil {
+                    map["BlueGreenDeploymentName"] = self.blueGreenDeploymentName!
+                }
+                if self.blueInstanceName != nil {
+                    map["BlueInstanceName"] = self.blueInstanceName!
+                }
                 if self.bpeEnabled != nil {
                     map["BpeEnabled"] = self.bpeEnabled!
                 }
@@ -28313,6 +28327,9 @@ public class DescribeDBInstanceAttributeResponseBody : Tea.TeaModel {
                 }
                 if self.compressionRatio != nil {
                     map["CompressionRatio"] = self.compressionRatio!
+                }
+                if self.computeBurstEnabled != nil {
+                    map["ComputeBurstEnabled"] = self.computeBurstEnabled!
                 }
                 if self.connectionMode != nil {
                     map["ConnectionMode"] = self.connectionMode!
@@ -28397,6 +28414,9 @@ public class DescribeDBInstanceAttributeResponseBody : Tea.TeaModel {
                 }
                 if self.generalGroupName != nil {
                     map["GeneralGroupName"] = self.generalGroupName!
+                }
+                if self.greenInstanceName != nil {
+                    map["GreenInstanceName"] = self.greenInstanceName!
                 }
                 if self.guardDBInstanceId != nil {
                     map["GuardDBInstanceId"] = self.guardDBInstanceId!
@@ -28548,6 +28568,12 @@ public class DescribeDBInstanceAttributeResponseBody : Tea.TeaModel {
                     model.fromMap(dict["BabelfishConfig"] as! [String: Any])
                     self.babelfishConfig = model
                 }
+                if dict.keys.contains("BlueGreenDeploymentName") {
+                    self.blueGreenDeploymentName = dict["BlueGreenDeploymentName"] as! String
+                }
+                if dict.keys.contains("BlueInstanceName") {
+                    self.blueInstanceName = dict["BlueInstanceName"] as! String
+                }
                 if dict.keys.contains("BpeEnabled") {
                     self.bpeEnabled = dict["BpeEnabled"] as! String
                 }
@@ -28571,6 +28597,9 @@ public class DescribeDBInstanceAttributeResponseBody : Tea.TeaModel {
                 }
                 if dict.keys.contains("CompressionRatio") {
                     self.compressionRatio = dict["CompressionRatio"] as! String
+                }
+                if dict.keys.contains("ComputeBurstEnabled") {
+                    self.computeBurstEnabled = dict["ComputeBurstEnabled"] as! Bool
                 }
                 if dict.keys.contains("ConnectionMode") {
                     self.connectionMode = dict["ConnectionMode"] as! String
@@ -28659,6 +28688,9 @@ public class DescribeDBInstanceAttributeResponseBody : Tea.TeaModel {
                 }
                 if dict.keys.contains("GeneralGroupName") {
                     self.generalGroupName = dict["GeneralGroupName"] as! String
+                }
+                if dict.keys.contains("GreenInstanceName") {
+                    self.greenInstanceName = dict["GreenInstanceName"] as! String
                 }
                 if dict.keys.contains("GuardDBInstanceId") {
                     self.guardDBInstanceId = dict["GuardDBInstanceId"] as! String
@@ -34726,6 +34758,10 @@ public class DescribeDBInstancesResponseBody : Tea.TeaModel {
                     }
                 }
             }
+            public var blueGreenDeploymentName: String?
+
+            public var blueInstanceName: String?
+
             public var bpeEnabled: String?
 
             public var burstingEnabled: Bool?
@@ -34792,6 +34828,8 @@ public class DescribeDBInstancesResponseBody : Tea.TeaModel {
 
             public var generalGroupName: String?
 
+            public var greenInstanceName: String?
+
             public var guardDBInstanceId: String?
 
             public var instanceNetworkType: String?
@@ -34847,6 +34885,12 @@ public class DescribeDBInstancesResponseBody : Tea.TeaModel {
 
             public override func toMap() -> [String : Any] {
                 var map = super.toMap()
+                if self.blueGreenDeploymentName != nil {
+                    map["BlueGreenDeploymentName"] = self.blueGreenDeploymentName!
+                }
+                if self.blueInstanceName != nil {
+                    map["BlueInstanceName"] = self.blueInstanceName!
+                }
                 if self.bpeEnabled != nil {
                     map["BpeEnabled"] = self.bpeEnabled!
                 }
@@ -34946,6 +34990,9 @@ public class DescribeDBInstancesResponseBody : Tea.TeaModel {
                 if self.generalGroupName != nil {
                     map["GeneralGroupName"] = self.generalGroupName!
                 }
+                if self.greenInstanceName != nil {
+                    map["GreenInstanceName"] = self.greenInstanceName!
+                }
                 if self.guardDBInstanceId != nil {
                     map["GuardDBInstanceId"] = self.guardDBInstanceId!
                 }
@@ -35010,6 +35057,12 @@ public class DescribeDBInstancesResponseBody : Tea.TeaModel {
             }
 
             public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("BlueGreenDeploymentName") {
+                    self.blueGreenDeploymentName = dict["BlueGreenDeploymentName"] as! String
+                }
+                if dict.keys.contains("BlueInstanceName") {
+                    self.blueInstanceName = dict["BlueInstanceName"] as! String
+                }
                 if dict.keys.contains("BpeEnabled") {
                     self.bpeEnabled = dict["BpeEnabled"] as! String
                 }
@@ -35108,6 +35161,9 @@ public class DescribeDBInstancesResponseBody : Tea.TeaModel {
                 }
                 if dict.keys.contains("GeneralGroupName") {
                     self.generalGroupName = dict["GeneralGroupName"] as! String
+                }
+                if dict.keys.contains("GreenInstanceName") {
+                    self.greenInstanceName = dict["GreenInstanceName"] as! String
                 }
                 if dict.keys.contains("GuardDBInstanceId") {
                     self.guardDBInstanceId = dict["GuardDBInstanceId"] as! String
@@ -58262,6 +58318,8 @@ public class DescribeRCInstancesRequest : Tea.TeaModel {
 
     public var regionId: String?
 
+    public var status: String?
+
     public var tag: String?
 
     public var vpcId: String?
@@ -58301,6 +58359,9 @@ public class DescribeRCInstancesRequest : Tea.TeaModel {
         if self.regionId != nil {
             map["RegionId"] = self.regionId!
         }
+        if self.status != nil {
+            map["Status"] = self.status!
+        }
         if self.tag != nil {
             map["Tag"] = self.tag!
         }
@@ -58331,6 +58392,9 @@ public class DescribeRCInstancesRequest : Tea.TeaModel {
         }
         if dict.keys.contains("RegionId") {
             self.regionId = dict["RegionId"] as! String
+        }
+        if dict.keys.contains("Status") {
+            self.status = dict["Status"] as! String
         }
         if dict.keys.contains("Tag") {
             self.tag = dict["Tag"] as! String
