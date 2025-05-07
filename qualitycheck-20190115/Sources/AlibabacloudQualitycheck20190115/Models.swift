@@ -32555,6 +32555,704 @@ public class UploadDataSyncResponse : Tea.TeaModel {
     }
 }
 
+public class UploadDataSyncForLLMRequest : Tea.TeaModel {
+    public var baseMeAgentId: Int64?
+
+    public var jsonStr: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.baseMeAgentId != nil {
+            map["BaseMeAgentId"] = self.baseMeAgentId!
+        }
+        if self.jsonStr != nil {
+            map["JsonStr"] = self.jsonStr!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("BaseMeAgentId") {
+            self.baseMeAgentId = dict["BaseMeAgentId"] as! Int64
+        }
+        if dict.keys.contains("JsonStr") {
+            self.jsonStr = dict["JsonStr"] as! String
+        }
+    }
+}
+
+public class UploadDataSyncForLLMResponseBody : Tea.TeaModel {
+    public class Data : Tea.TeaModel {
+        public class ResultInfo : Tea.TeaModel {
+            public class Rules : Tea.TeaModel {
+                public class RuleHitInfo : Tea.TeaModel {
+                    public class ConditionInfo : Tea.TeaModel {
+                        public class ConditionBasicInfo : Tea.TeaModel {
+                            public var conditionInfoCid: String?
+
+                            public override init() {
+                                super.init()
+                            }
+
+                            public init(_ dict: [String: Any]) {
+                                super.init()
+                                self.fromMap(dict)
+                            }
+
+                            public override func validate() throws -> Void {
+                            }
+
+                            public override func toMap() -> [String : Any] {
+                                var map = super.toMap()
+                                if self.conditionInfoCid != nil {
+                                    map["ConditionInfoCid"] = self.conditionInfoCid!
+                                }
+                                return map
+                            }
+
+                            public override func fromMap(_ dict: [String: Any]) -> Void {
+                                if dict.keys.contains("ConditionInfoCid") {
+                                    self.conditionInfoCid = dict["ConditionInfoCid"] as! String
+                                }
+                            }
+                        }
+                        public var conditionBasicInfo: [UploadDataSyncForLLMResponseBody.Data.ResultInfo.Rules.RuleHitInfo.ConditionInfo.ConditionBasicInfo]?
+
+                        public override init() {
+                            super.init()
+                        }
+
+                        public init(_ dict: [String: Any]) {
+                            super.init()
+                            self.fromMap(dict)
+                        }
+
+                        public override func validate() throws -> Void {
+                        }
+
+                        public override func toMap() -> [String : Any] {
+                            var map = super.toMap()
+                            if self.conditionBasicInfo != nil {
+                                var tmp : [Any] = []
+                                for k in self.conditionBasicInfo! {
+                                    tmp.append(k.toMap())
+                                }
+                                map["ConditionBasicInfo"] = tmp
+                            }
+                            return map
+                        }
+
+                        public override func fromMap(_ dict: [String: Any]) -> Void {
+                            if dict.keys.contains("ConditionBasicInfo") {
+                                var tmp : [UploadDataSyncForLLMResponseBody.Data.ResultInfo.Rules.RuleHitInfo.ConditionInfo.ConditionBasicInfo] = []
+                                for v in dict["ConditionBasicInfo"] as! [Any] {
+                                    var model = UploadDataSyncForLLMResponseBody.Data.ResultInfo.Rules.RuleHitInfo.ConditionInfo.ConditionBasicInfo()
+                                    if v != nil {
+                                        model.fromMap(v as! [String: Any])
+                                    }
+                                    tmp.append(model)
+                                }
+                                self.conditionBasicInfo = tmp
+                            }
+                        }
+                    }
+                    public class Hit : Tea.TeaModel {
+                        public class ConditionHitInfo : Tea.TeaModel {
+                            public class HitCids : Tea.TeaModel {
+                                public var cidItem: [String]?
+
+                                public override init() {
+                                    super.init()
+                                }
+
+                                public init(_ dict: [String: Any]) {
+                                    super.init()
+                                    self.fromMap(dict)
+                                }
+
+                                public override func validate() throws -> Void {
+                                }
+
+                                public override func toMap() -> [String : Any] {
+                                    var map = super.toMap()
+                                    if self.cidItem != nil {
+                                        map["CidItem"] = self.cidItem!
+                                    }
+                                    return map
+                                }
+
+                                public override func fromMap(_ dict: [String: Any]) -> Void {
+                                    if dict.keys.contains("CidItem") {
+                                        self.cidItem = dict["CidItem"] as! [String]
+                                    }
+                                }
+                            }
+                            public class HitKeyWords : Tea.TeaModel {
+                                public class HitKeyWord : Tea.TeaModel {
+                                    public var from: Int32?
+
+                                    public var pid: Int32?
+
+                                    public var tid: String?
+
+                                    public var to: Int32?
+
+                                    public var val: String?
+
+                                    public override init() {
+                                        super.init()
+                                    }
+
+                                    public init(_ dict: [String: Any]) {
+                                        super.init()
+                                        self.fromMap(dict)
+                                    }
+
+                                    public override func validate() throws -> Void {
+                                    }
+
+                                    public override func toMap() -> [String : Any] {
+                                        var map = super.toMap()
+                                        if self.from != nil {
+                                            map["From"] = self.from!
+                                        }
+                                        if self.pid != nil {
+                                            map["Pid"] = self.pid!
+                                        }
+                                        if self.tid != nil {
+                                            map["Tid"] = self.tid!
+                                        }
+                                        if self.to != nil {
+                                            map["To"] = self.to!
+                                        }
+                                        if self.val != nil {
+                                            map["Val"] = self.val!
+                                        }
+                                        return map
+                                    }
+
+                                    public override func fromMap(_ dict: [String: Any]) -> Void {
+                                        if dict.keys.contains("From") {
+                                            self.from = dict["From"] as! Int32
+                                        }
+                                        if dict.keys.contains("Pid") {
+                                            self.pid = dict["Pid"] as! Int32
+                                        }
+                                        if dict.keys.contains("Tid") {
+                                            self.tid = dict["Tid"] as! String
+                                        }
+                                        if dict.keys.contains("To") {
+                                            self.to = dict["To"] as! Int32
+                                        }
+                                        if dict.keys.contains("Val") {
+                                            self.val = dict["Val"] as! String
+                                        }
+                                    }
+                                }
+                                public var hitKeyWord: [UploadDataSyncForLLMResponseBody.Data.ResultInfo.Rules.RuleHitInfo.Hit.ConditionHitInfo.HitKeyWords.HitKeyWord]?
+
+                                public override init() {
+                                    super.init()
+                                }
+
+                                public init(_ dict: [String: Any]) {
+                                    super.init()
+                                    self.fromMap(dict)
+                                }
+
+                                public override func validate() throws -> Void {
+                                }
+
+                                public override func toMap() -> [String : Any] {
+                                    var map = super.toMap()
+                                    if self.hitKeyWord != nil {
+                                        var tmp : [Any] = []
+                                        for k in self.hitKeyWord! {
+                                            tmp.append(k.toMap())
+                                        }
+                                        map["HitKeyWord"] = tmp
+                                    }
+                                    return map
+                                }
+
+                                public override func fromMap(_ dict: [String: Any]) -> Void {
+                                    if dict.keys.contains("HitKeyWord") {
+                                        var tmp : [UploadDataSyncForLLMResponseBody.Data.ResultInfo.Rules.RuleHitInfo.Hit.ConditionHitInfo.HitKeyWords.HitKeyWord] = []
+                                        for v in dict["HitKeyWord"] as! [Any] {
+                                            var model = UploadDataSyncForLLMResponseBody.Data.ResultInfo.Rules.RuleHitInfo.Hit.ConditionHitInfo.HitKeyWords.HitKeyWord()
+                                            if v != nil {
+                                                model.fromMap(v as! [String: Any])
+                                            }
+                                            tmp.append(model)
+                                        }
+                                        self.hitKeyWord = tmp
+                                    }
+                                }
+                            }
+                            public class Phrase : Tea.TeaModel {
+                                public var begin: Int64?
+
+                                public var beginTime: String?
+
+                                public var end: Int64?
+
+                                public var identity: String?
+
+                                public var role: String?
+
+                                public var words: String?
+
+                                public override init() {
+                                    super.init()
+                                }
+
+                                public init(_ dict: [String: Any]) {
+                                    super.init()
+                                    self.fromMap(dict)
+                                }
+
+                                public override func validate() throws -> Void {
+                                }
+
+                                public override func toMap() -> [String : Any] {
+                                    var map = super.toMap()
+                                    if self.begin != nil {
+                                        map["Begin"] = self.begin!
+                                    }
+                                    if self.beginTime != nil {
+                                        map["BeginTime"] = self.beginTime!
+                                    }
+                                    if self.end != nil {
+                                        map["End"] = self.end!
+                                    }
+                                    if self.identity != nil {
+                                        map["Identity"] = self.identity!
+                                    }
+                                    if self.role != nil {
+                                        map["Role"] = self.role!
+                                    }
+                                    if self.words != nil {
+                                        map["Words"] = self.words!
+                                    }
+                                    return map
+                                }
+
+                                public override func fromMap(_ dict: [String: Any]) -> Void {
+                                    if dict.keys.contains("Begin") {
+                                        self.begin = dict["Begin"] as! Int64
+                                    }
+                                    if dict.keys.contains("BeginTime") {
+                                        self.beginTime = dict["BeginTime"] as! String
+                                    }
+                                    if dict.keys.contains("End") {
+                                        self.end = dict["End"] as! Int64
+                                    }
+                                    if dict.keys.contains("Identity") {
+                                        self.identity = dict["Identity"] as! String
+                                    }
+                                    if dict.keys.contains("Role") {
+                                        self.role = dict["Role"] as! String
+                                    }
+                                    if dict.keys.contains("Words") {
+                                        self.words = dict["Words"] as! String
+                                    }
+                                }
+                            }
+                            public var hitCids: UploadDataSyncForLLMResponseBody.Data.ResultInfo.Rules.RuleHitInfo.Hit.ConditionHitInfo.HitCids?
+
+                            public var hitKeyWords: UploadDataSyncForLLMResponseBody.Data.ResultInfo.Rules.RuleHitInfo.Hit.ConditionHitInfo.HitKeyWords?
+
+                            public var phrase: UploadDataSyncForLLMResponseBody.Data.ResultInfo.Rules.RuleHitInfo.Hit.ConditionHitInfo.Phrase?
+
+                            public override init() {
+                                super.init()
+                            }
+
+                            public init(_ dict: [String: Any]) {
+                                super.init()
+                                self.fromMap(dict)
+                            }
+
+                            public override func validate() throws -> Void {
+                                try self.hitCids?.validate()
+                                try self.hitKeyWords?.validate()
+                                try self.phrase?.validate()
+                            }
+
+                            public override func toMap() -> [String : Any] {
+                                var map = super.toMap()
+                                if self.hitCids != nil {
+                                    map["HitCids"] = self.hitCids?.toMap()
+                                }
+                                if self.hitKeyWords != nil {
+                                    map["HitKeyWords"] = self.hitKeyWords?.toMap()
+                                }
+                                if self.phrase != nil {
+                                    map["Phrase"] = self.phrase?.toMap()
+                                }
+                                return map
+                            }
+
+                            public override func fromMap(_ dict: [String: Any]) -> Void {
+                                if dict.keys.contains("HitCids") {
+                                    var model = UploadDataSyncForLLMResponseBody.Data.ResultInfo.Rules.RuleHitInfo.Hit.ConditionHitInfo.HitCids()
+                                    model.fromMap(dict["HitCids"] as! [String: Any])
+                                    self.hitCids = model
+                                }
+                                if dict.keys.contains("HitKeyWords") {
+                                    var model = UploadDataSyncForLLMResponseBody.Data.ResultInfo.Rules.RuleHitInfo.Hit.ConditionHitInfo.HitKeyWords()
+                                    model.fromMap(dict["HitKeyWords"] as! [String: Any])
+                                    self.hitKeyWords = model
+                                }
+                                if dict.keys.contains("Phrase") {
+                                    var model = UploadDataSyncForLLMResponseBody.Data.ResultInfo.Rules.RuleHitInfo.Hit.ConditionHitInfo.Phrase()
+                                    model.fromMap(dict["Phrase"] as! [String: Any])
+                                    self.phrase = model
+                                }
+                            }
+                        }
+                        public var conditionHitInfo: [UploadDataSyncForLLMResponseBody.Data.ResultInfo.Rules.RuleHitInfo.Hit.ConditionHitInfo]?
+
+                        public override init() {
+                            super.init()
+                        }
+
+                        public init(_ dict: [String: Any]) {
+                            super.init()
+                            self.fromMap(dict)
+                        }
+
+                        public override func validate() throws -> Void {
+                        }
+
+                        public override func toMap() -> [String : Any] {
+                            var map = super.toMap()
+                            if self.conditionHitInfo != nil {
+                                var tmp : [Any] = []
+                                for k in self.conditionHitInfo! {
+                                    tmp.append(k.toMap())
+                                }
+                                map["ConditionHitInfo"] = tmp
+                            }
+                            return map
+                        }
+
+                        public override func fromMap(_ dict: [String: Any]) -> Void {
+                            if dict.keys.contains("ConditionHitInfo") {
+                                var tmp : [UploadDataSyncForLLMResponseBody.Data.ResultInfo.Rules.RuleHitInfo.Hit.ConditionHitInfo] = []
+                                for v in dict["ConditionHitInfo"] as! [Any] {
+                                    var model = UploadDataSyncForLLMResponseBody.Data.ResultInfo.Rules.RuleHitInfo.Hit.ConditionHitInfo()
+                                    if v != nil {
+                                        model.fromMap(v as! [String: Any])
+                                    }
+                                    tmp.append(model)
+                                }
+                                self.conditionHitInfo = tmp
+                            }
+                        }
+                    }
+                    public var conditionInfo: UploadDataSyncForLLMResponseBody.Data.ResultInfo.Rules.RuleHitInfo.ConditionInfo?
+
+                    public var hit: UploadDataSyncForLLMResponseBody.Data.ResultInfo.Rules.RuleHitInfo.Hit?
+
+                    public var rid: String?
+
+                    public var tid: String?
+
+                    public override init() {
+                        super.init()
+                    }
+
+                    public init(_ dict: [String: Any]) {
+                        super.init()
+                        self.fromMap(dict)
+                    }
+
+                    public override func validate() throws -> Void {
+                        try self.conditionInfo?.validate()
+                        try self.hit?.validate()
+                    }
+
+                    public override func toMap() -> [String : Any] {
+                        var map = super.toMap()
+                        if self.conditionInfo != nil {
+                            map["ConditionInfo"] = self.conditionInfo?.toMap()
+                        }
+                        if self.hit != nil {
+                            map["Hit"] = self.hit?.toMap()
+                        }
+                        if self.rid != nil {
+                            map["Rid"] = self.rid!
+                        }
+                        if self.tid != nil {
+                            map["Tid"] = self.tid!
+                        }
+                        return map
+                    }
+
+                    public override func fromMap(_ dict: [String: Any]) -> Void {
+                        if dict.keys.contains("ConditionInfo") {
+                            var model = UploadDataSyncForLLMResponseBody.Data.ResultInfo.Rules.RuleHitInfo.ConditionInfo()
+                            model.fromMap(dict["ConditionInfo"] as! [String: Any])
+                            self.conditionInfo = model
+                        }
+                        if dict.keys.contains("Hit") {
+                            var model = UploadDataSyncForLLMResponseBody.Data.ResultInfo.Rules.RuleHitInfo.Hit()
+                            model.fromMap(dict["Hit"] as! [String: Any])
+                            self.hit = model
+                        }
+                        if dict.keys.contains("Rid") {
+                            self.rid = dict["Rid"] as! String
+                        }
+                        if dict.keys.contains("Tid") {
+                            self.tid = dict["Tid"] as! String
+                        }
+                    }
+                }
+                public var ruleHitInfo: [UploadDataSyncForLLMResponseBody.Data.ResultInfo.Rules.RuleHitInfo]?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.ruleHitInfo != nil {
+                        var tmp : [Any] = []
+                        for k in self.ruleHitInfo! {
+                            tmp.append(k.toMap())
+                        }
+                        map["RuleHitInfo"] = tmp
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any]) -> Void {
+                    if dict.keys.contains("RuleHitInfo") {
+                        var tmp : [UploadDataSyncForLLMResponseBody.Data.ResultInfo.Rules.RuleHitInfo] = []
+                        for v in dict["RuleHitInfo"] as! [Any] {
+                            var model = UploadDataSyncForLLMResponseBody.Data.ResultInfo.Rules.RuleHitInfo()
+                            if v != nil {
+                                model.fromMap(v as! [String: Any])
+                            }
+                            tmp.append(model)
+                        }
+                        self.ruleHitInfo = tmp
+                    }
+                }
+            }
+            public var rules: UploadDataSyncForLLMResponseBody.Data.ResultInfo.Rules?
+
+            public var score: Int32?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+                try self.rules?.validate()
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.rules != nil {
+                    map["Rules"] = self.rules?.toMap()
+                }
+                if self.score != nil {
+                    map["Score"] = self.score!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("Rules") {
+                    var model = UploadDataSyncForLLMResponseBody.Data.ResultInfo.Rules()
+                    model.fromMap(dict["Rules"] as! [String: Any])
+                    self.rules = model
+                }
+                if dict.keys.contains("Score") {
+                    self.score = dict["Score"] as! Int32
+                }
+            }
+        }
+        public var resultInfo: [UploadDataSyncForLLMResponseBody.Data.ResultInfo]?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.resultInfo != nil {
+                var tmp : [Any] = []
+                for k in self.resultInfo! {
+                    tmp.append(k.toMap())
+                }
+                map["ResultInfo"] = tmp
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("ResultInfo") {
+                var tmp : [UploadDataSyncForLLMResponseBody.Data.ResultInfo] = []
+                for v in dict["ResultInfo"] as! [Any] {
+                    var model = UploadDataSyncForLLMResponseBody.Data.ResultInfo()
+                    if v != nil {
+                        model.fromMap(v as! [String: Any])
+                    }
+                    tmp.append(model)
+                }
+                self.resultInfo = tmp
+            }
+        }
+    }
+    public var code: String?
+
+    public var data: UploadDataSyncForLLMResponseBody.Data?
+
+    public var message: String?
+
+    public var requestId: String?
+
+    public var success: Bool?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.data?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.code != nil {
+            map["Code"] = self.code!
+        }
+        if self.data != nil {
+            map["Data"] = self.data?.toMap()
+        }
+        if self.message != nil {
+            map["Message"] = self.message!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.success != nil {
+            map["Success"] = self.success!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("Code") {
+            self.code = dict["Code"] as! String
+        }
+        if dict.keys.contains("Data") {
+            var model = UploadDataSyncForLLMResponseBody.Data()
+            model.fromMap(dict["Data"] as! [String: Any])
+            self.data = model
+        }
+        if dict.keys.contains("Message") {
+            self.message = dict["Message"] as! String
+        }
+        if dict.keys.contains("RequestId") {
+            self.requestId = dict["RequestId"] as! String
+        }
+        if dict.keys.contains("Success") {
+            self.success = dict["Success"] as! Bool
+        }
+    }
+}
+
+public class UploadDataSyncForLLMResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: UploadDataSyncForLLMResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") {
+            var model = UploadDataSyncForLLMResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
 public class UploadDataV4Request : Tea.TeaModel {
     public var baseMeAgentId: Int64?
 
