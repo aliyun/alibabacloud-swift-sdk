@@ -7786,6 +7786,8 @@ public class GetDataSourceOrderConfigResponseBody : Tea.TeaModel {
         public class UserConfigDataSourceList : Tea.TeaModel {
             public var code: String?
 
+            public var enable: Bool?
+
             public var name: String?
 
             public var number: Int32?
@@ -7809,6 +7811,9 @@ public class GetDataSourceOrderConfigResponseBody : Tea.TeaModel {
                 if self.code != nil {
                     map["Code"] = self.code!
                 }
+                if self.enable != nil {
+                    map["Enable"] = self.enable!
+                }
                 if self.name != nil {
                     map["Name"] = self.name!
                 }
@@ -7824,6 +7829,9 @@ public class GetDataSourceOrderConfigResponseBody : Tea.TeaModel {
             public override func fromMap(_ dict: [String: Any]) -> Void {
                 if dict.keys.contains("Code") {
                     self.code = dict["Code"] as! String
+                }
+                if dict.keys.contains("Enable") {
+                    self.enable = dict["Enable"] as! Bool
                 }
                 if dict.keys.contains("Name") {
                     self.name = dict["Name"] as! String
