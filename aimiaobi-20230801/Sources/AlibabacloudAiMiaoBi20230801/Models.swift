@@ -7844,6 +7844,8 @@ public class GetDataSourceOrderConfigResponseBody : Tea.TeaModel {
                 }
             }
         }
+        public var totalDocSize: Int32?
+
         public var userConfigDataSourceList: [GetDataSourceOrderConfigResponseBody.Data.UserConfigDataSourceList]?
 
         public override init() {
@@ -7860,6 +7862,9 @@ public class GetDataSourceOrderConfigResponseBody : Tea.TeaModel {
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
+            if self.totalDocSize != nil {
+                map["TotalDocSize"] = self.totalDocSize!
+            }
             if self.userConfigDataSourceList != nil {
                 var tmp : [Any] = []
                 for k in self.userConfigDataSourceList! {
@@ -7871,6 +7876,9 @@ public class GetDataSourceOrderConfigResponseBody : Tea.TeaModel {
         }
 
         public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("TotalDocSize") {
+                self.totalDocSize = dict["TotalDocSize"] as! Int32
+            }
             if dict.keys.contains("UserConfigDataSourceList") {
                 var tmp : [GetDataSourceOrderConfigResponseBody.Data.UserConfigDataSourceList] = []
                 for v in dict["UserConfigDataSourceList"] as! [Any] {
