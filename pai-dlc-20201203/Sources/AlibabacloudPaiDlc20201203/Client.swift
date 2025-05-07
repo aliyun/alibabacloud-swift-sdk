@@ -851,6 +851,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.jobId)) {
             query["JobId"] = request.jobId ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.jobIds)) {
+            query["JobIds"] = request.jobIds ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.jobType)) {
             query["JobType"] = request.jobType ?? "";
         }

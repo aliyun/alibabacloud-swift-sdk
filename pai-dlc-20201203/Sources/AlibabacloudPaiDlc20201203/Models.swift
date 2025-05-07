@@ -8516,6 +8516,8 @@ public class ListJobsRequest : Tea.TeaModel {
 
     public var jobId: String?
 
+    public var jobIds: String?
+
     public var jobType: String?
 
     public var order: String?
@@ -8584,6 +8586,9 @@ public class ListJobsRequest : Tea.TeaModel {
         }
         if self.jobId != nil {
             map["JobId"] = self.jobId!
+        }
+        if self.jobIds != nil {
+            map["JobIds"] = self.jobIds!
         }
         if self.jobType != nil {
             map["JobType"] = self.jobType!
@@ -8661,6 +8666,9 @@ public class ListJobsRequest : Tea.TeaModel {
         if dict.keys.contains("JobId") {
             self.jobId = dict["JobId"] as! String
         }
+        if dict.keys.contains("JobIds") {
+            self.jobIds = dict["JobIds"] as! String
+        }
         if dict.keys.contains("JobType") {
             self.jobType = dict["JobType"] as! String
         }
@@ -8730,6 +8738,8 @@ public class ListJobsShrinkRequest : Tea.TeaModel {
 
     public var jobId: String?
 
+    public var jobIds: String?
+
     public var jobType: String?
 
     public var order: String?
@@ -8798,6 +8808,9 @@ public class ListJobsShrinkRequest : Tea.TeaModel {
         }
         if self.jobId != nil {
             map["JobId"] = self.jobId!
+        }
+        if self.jobIds != nil {
+            map["JobIds"] = self.jobIds!
         }
         if self.jobType != nil {
             map["JobType"] = self.jobType!
@@ -8874,6 +8887,9 @@ public class ListJobsShrinkRequest : Tea.TeaModel {
         }
         if dict.keys.contains("JobId") {
             self.jobId = dict["JobId"] as! String
+        }
+        if dict.keys.contains("JobIds") {
+            self.jobIds = dict["JobIds"] as! String
         }
         if dict.keys.contains("JobType") {
             self.jobType = dict["JobType"] as! String
