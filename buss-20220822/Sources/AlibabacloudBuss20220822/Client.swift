@@ -146,6 +146,34 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getSecurityEventDetailWithOptions(_ request: GetSecurityEventDetailRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> GetSecurityEventDetailResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: String] = AlibabaCloudOpenApiUtil.Client.query(TeaUtils.Client.toMap(request))
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "GetSecurityEventDetail",
+            "version": "2022-08-22",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "GET",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(GetSecurityEventDetailResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getSecurityEventDetail(_ request: GetSecurityEventDetailRequest) async throws -> GetSecurityEventDetailResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await getSecurityEventDetailWithOptions(request as! GetSecurityEventDetailRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func punishResourceSearchWithOptions(_ tmpReq: PunishResourceSearchRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> PunishResourceSearchResponse {
         try TeaUtils.Client.validateModel(tmpReq)
         var request: PunishResourceSearchShrinkRequest = PunishResourceSearchShrinkRequest([:])
@@ -185,6 +213,37 @@ open class Client : AlibabacloudOpenApi.Client {
     public func punishResourceSearch(_ request: PunishResourceSearchRequest) async throws -> PunishResourceSearchResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         return try await punishResourceSearchWithOptions(request as! PunishResourceSearchRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func recordClickLinkActionWithOptions(_ request: RecordClickLinkActionRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> RecordClickLinkActionResponse {
+        try TeaUtils.Client.validateModel(request)
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.tag)) {
+            body["Tag"] = request.tag ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "RecordClickLinkAction",
+            "version": "2022-08-22",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(RecordClickLinkActionResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func recordClickLinkAction(_ request: RecordClickLinkActionRequest) async throws -> RecordClickLinkActionResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await recordClickLinkActionWithOptions(request as! RecordClickLinkActionRequest, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -441,5 +500,33 @@ open class Client : AlibabacloudOpenApi.Client {
     public func searchPunishRequest(_ request: SearchPunishRequestRequest) async throws -> SearchPunishRequestResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         return try await searchPunishRequestWithOptions(request as! SearchPunishRequestRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func updateSecurityEventStatusWithOptions(_ request: UpdateSecurityEventStatusRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> UpdateSecurityEventStatusResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: String] = AlibabaCloudOpenApiUtil.Client.query(TeaUtils.Client.toMap(request))
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "UpdateSecurityEventStatus",
+            "version": "2022-08-22",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "GET",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(UpdateSecurityEventStatusResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func updateSecurityEventStatus(_ request: UpdateSecurityEventStatusRequest) async throws -> UpdateSecurityEventStatusResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await updateSecurityEventStatusWithOptions(request as! UpdateSecurityEventStatusRequest, runtime as! TeaUtils.RuntimeOptions)
     }
 }
