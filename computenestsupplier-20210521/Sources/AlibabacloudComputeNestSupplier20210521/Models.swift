@@ -12309,6 +12309,396 @@ public class ListResellersResponse : Tea.TeaModel {
     }
 }
 
+public class ListServiceInstanceBillRequest : Tea.TeaModel {
+    public var billingCycle: String?
+
+    public var billingDate: String?
+
+    public var granularity: String?
+
+    public var maxResults: Int32?
+
+    public var nextToken: String?
+
+    public var serviceId: String?
+
+    public var serviceInstanceId: String?
+
+    public var serviceVersion: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.billingCycle != nil {
+            map["BillingCycle"] = self.billingCycle!
+        }
+        if self.billingDate != nil {
+            map["BillingDate"] = self.billingDate!
+        }
+        if self.granularity != nil {
+            map["Granularity"] = self.granularity!
+        }
+        if self.maxResults != nil {
+            map["MaxResults"] = self.maxResults!
+        }
+        if self.nextToken != nil {
+            map["NextToken"] = self.nextToken!
+        }
+        if self.serviceId != nil {
+            map["ServiceId"] = self.serviceId!
+        }
+        if self.serviceInstanceId != nil {
+            map["ServiceInstanceId"] = self.serviceInstanceId!
+        }
+        if self.serviceVersion != nil {
+            map["ServiceVersion"] = self.serviceVersion!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("BillingCycle") {
+            self.billingCycle = dict["BillingCycle"] as! String
+        }
+        if dict.keys.contains("BillingDate") {
+            self.billingDate = dict["BillingDate"] as! String
+        }
+        if dict.keys.contains("Granularity") {
+            self.granularity = dict["Granularity"] as! String
+        }
+        if dict.keys.contains("MaxResults") {
+            self.maxResults = dict["MaxResults"] as! Int32
+        }
+        if dict.keys.contains("NextToken") {
+            self.nextToken = dict["NextToken"] as! String
+        }
+        if dict.keys.contains("ServiceId") {
+            self.serviceId = dict["ServiceId"] as! String
+        }
+        if dict.keys.contains("ServiceInstanceId") {
+            self.serviceInstanceId = dict["ServiceInstanceId"] as! String
+        }
+        if dict.keys.contains("ServiceVersion") {
+            self.serviceVersion = dict["ServiceVersion"] as! String
+        }
+    }
+}
+
+public class ListServiceInstanceBillResponseBody : Tea.TeaModel {
+    public class Item : Tea.TeaModel {
+        public var billingCycle: String?
+
+        public var billingDate: String?
+
+        public var billingItem: String?
+
+        public var billingItemCode: String?
+
+        public var currency: String?
+
+        public var deductedByResourcePackage: String?
+
+        public var instanceID: String?
+
+        public var invoiceDiscount: String?
+
+        public var listPrice: String?
+
+        public var listPriceUnit: String?
+
+        public var pretaxAmount: String?
+
+        public var pretaxGrossAmount: String?
+
+        public var productCode: String?
+
+        public var productDetail: String?
+
+        public var productName: String?
+
+        public var serviceInstanceId: String?
+
+        public var splitBillingCycle: String?
+
+        public var subscriptionType: String?
+
+        public var usage: String?
+
+        public var usageUnit: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.billingCycle != nil {
+                map["BillingCycle"] = self.billingCycle!
+            }
+            if self.billingDate != nil {
+                map["BillingDate"] = self.billingDate!
+            }
+            if self.billingItem != nil {
+                map["BillingItem"] = self.billingItem!
+            }
+            if self.billingItemCode != nil {
+                map["BillingItemCode"] = self.billingItemCode!
+            }
+            if self.currency != nil {
+                map["Currency"] = self.currency!
+            }
+            if self.deductedByResourcePackage != nil {
+                map["DeductedByResourcePackage"] = self.deductedByResourcePackage!
+            }
+            if self.instanceID != nil {
+                map["InstanceID"] = self.instanceID!
+            }
+            if self.invoiceDiscount != nil {
+                map["InvoiceDiscount"] = self.invoiceDiscount!
+            }
+            if self.listPrice != nil {
+                map["ListPrice"] = self.listPrice!
+            }
+            if self.listPriceUnit != nil {
+                map["ListPriceUnit"] = self.listPriceUnit!
+            }
+            if self.pretaxAmount != nil {
+                map["PretaxAmount"] = self.pretaxAmount!
+            }
+            if self.pretaxGrossAmount != nil {
+                map["PretaxGrossAmount"] = self.pretaxGrossAmount!
+            }
+            if self.productCode != nil {
+                map["ProductCode"] = self.productCode!
+            }
+            if self.productDetail != nil {
+                map["ProductDetail"] = self.productDetail!
+            }
+            if self.productName != nil {
+                map["ProductName"] = self.productName!
+            }
+            if self.serviceInstanceId != nil {
+                map["ServiceInstanceId"] = self.serviceInstanceId!
+            }
+            if self.splitBillingCycle != nil {
+                map["SplitBillingCycle"] = self.splitBillingCycle!
+            }
+            if self.subscriptionType != nil {
+                map["SubscriptionType"] = self.subscriptionType!
+            }
+            if self.usage != nil {
+                map["Usage"] = self.usage!
+            }
+            if self.usageUnit != nil {
+                map["UsageUnit"] = self.usageUnit!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("BillingCycle") {
+                self.billingCycle = dict["BillingCycle"] as! String
+            }
+            if dict.keys.contains("BillingDate") {
+                self.billingDate = dict["BillingDate"] as! String
+            }
+            if dict.keys.contains("BillingItem") {
+                self.billingItem = dict["BillingItem"] as! String
+            }
+            if dict.keys.contains("BillingItemCode") {
+                self.billingItemCode = dict["BillingItemCode"] as! String
+            }
+            if dict.keys.contains("Currency") {
+                self.currency = dict["Currency"] as! String
+            }
+            if dict.keys.contains("DeductedByResourcePackage") {
+                self.deductedByResourcePackage = dict["DeductedByResourcePackage"] as! String
+            }
+            if dict.keys.contains("InstanceID") {
+                self.instanceID = dict["InstanceID"] as! String
+            }
+            if dict.keys.contains("InvoiceDiscount") {
+                self.invoiceDiscount = dict["InvoiceDiscount"] as! String
+            }
+            if dict.keys.contains("ListPrice") {
+                self.listPrice = dict["ListPrice"] as! String
+            }
+            if dict.keys.contains("ListPriceUnit") {
+                self.listPriceUnit = dict["ListPriceUnit"] as! String
+            }
+            if dict.keys.contains("PretaxAmount") {
+                self.pretaxAmount = dict["PretaxAmount"] as! String
+            }
+            if dict.keys.contains("PretaxGrossAmount") {
+                self.pretaxGrossAmount = dict["PretaxGrossAmount"] as! String
+            }
+            if dict.keys.contains("ProductCode") {
+                self.productCode = dict["ProductCode"] as! String
+            }
+            if dict.keys.contains("ProductDetail") {
+                self.productDetail = dict["ProductDetail"] as! String
+            }
+            if dict.keys.contains("ProductName") {
+                self.productName = dict["ProductName"] as! String
+            }
+            if dict.keys.contains("ServiceInstanceId") {
+                self.serviceInstanceId = dict["ServiceInstanceId"] as! String
+            }
+            if dict.keys.contains("SplitBillingCycle") {
+                self.splitBillingCycle = dict["SplitBillingCycle"] as! String
+            }
+            if dict.keys.contains("SubscriptionType") {
+                self.subscriptionType = dict["SubscriptionType"] as! String
+            }
+            if dict.keys.contains("Usage") {
+                self.usage = dict["Usage"] as! String
+            }
+            if dict.keys.contains("UsageUnit") {
+                self.usageUnit = dict["UsageUnit"] as! String
+            }
+        }
+    }
+    public var item: [ListServiceInstanceBillResponseBody.Item]?
+
+    public var maxResults: Int32?
+
+    public var nextToken: String?
+
+    public var requestId: String?
+
+    public var totalCount: Int64?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.item != nil {
+            var tmp : [Any] = []
+            for k in self.item! {
+                tmp.append(k.toMap())
+            }
+            map["Item"] = tmp
+        }
+        if self.maxResults != nil {
+            map["MaxResults"] = self.maxResults!
+        }
+        if self.nextToken != nil {
+            map["NextToken"] = self.nextToken!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.totalCount != nil {
+            map["TotalCount"] = self.totalCount!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("Item") {
+            var tmp : [ListServiceInstanceBillResponseBody.Item] = []
+            for v in dict["Item"] as! [Any] {
+                var model = ListServiceInstanceBillResponseBody.Item()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.item = tmp
+        }
+        if dict.keys.contains("MaxResults") {
+            self.maxResults = dict["MaxResults"] as! Int32
+        }
+        if dict.keys.contains("NextToken") {
+            self.nextToken = dict["NextToken"] as! String
+        }
+        if dict.keys.contains("RequestId") {
+            self.requestId = dict["RequestId"] as! String
+        }
+        if dict.keys.contains("TotalCount") {
+            self.totalCount = dict["TotalCount"] as! Int64
+        }
+    }
+}
+
+public class ListServiceInstanceBillResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: ListServiceInstanceBillResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") {
+            var model = ListServiceInstanceBillResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
 public class ListServiceInstanceDeployDetailsRequest : Tea.TeaModel {
     public class Filter : Tea.TeaModel {
         public var name: String?
@@ -20947,6 +21337,8 @@ public class UpdateServiceRequest : Tea.TeaModel {
 
     public var approvalType: String?
 
+    public var buildParameters: String?
+
     public var clientToken: String?
 
     public var commodity: UpdateServiceRequest.Commodity?
@@ -21017,6 +21409,9 @@ public class UpdateServiceRequest : Tea.TeaModel {
         }
         if self.approvalType != nil {
             map["ApprovalType"] = self.approvalType!
+        }
+        if self.buildParameters != nil {
+            map["BuildParameters"] = self.buildParameters!
         }
         if self.clientToken != nil {
             map["ClientToken"] = self.clientToken!
@@ -21103,6 +21498,9 @@ public class UpdateServiceRequest : Tea.TeaModel {
         }
         if dict.keys.contains("ApprovalType") {
             self.approvalType = dict["ApprovalType"] as! String
+        }
+        if dict.keys.contains("BuildParameters") {
+            self.buildParameters = dict["BuildParameters"] as! String
         }
         if dict.keys.contains("ClientToken") {
             self.clientToken = dict["ClientToken"] as! String
@@ -21373,6 +21771,8 @@ public class UpdateServiceShrinkRequest : Tea.TeaModel {
 
     public var approvalType: String?
 
+    public var buildParameters: String?
+
     public var clientToken: String?
 
     public var commodityShrink: String?
@@ -21440,6 +21840,9 @@ public class UpdateServiceShrinkRequest : Tea.TeaModel {
         }
         if self.approvalType != nil {
             map["ApprovalType"] = self.approvalType!
+        }
+        if self.buildParameters != nil {
+            map["BuildParameters"] = self.buildParameters!
         }
         if self.clientToken != nil {
             map["ClientToken"] = self.clientToken!
@@ -21526,6 +21929,9 @@ public class UpdateServiceShrinkRequest : Tea.TeaModel {
         }
         if dict.keys.contains("ApprovalType") {
             self.approvalType = dict["ApprovalType"] as! String
+        }
+        if dict.keys.contains("BuildParameters") {
+            self.buildParameters = dict["BuildParameters"] as! String
         }
         if dict.keys.contains("ClientToken") {
             self.clientToken = dict["ClientToken"] as! String
