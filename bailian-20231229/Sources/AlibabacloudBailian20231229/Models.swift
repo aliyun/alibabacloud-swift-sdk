@@ -217,6 +217,8 @@ public class AddFileRequest : Tea.TeaModel {
 
     public var leaseId: String?
 
+    public var originalFileUrl: String?
+
     public var parser: String?
 
     public var tags: [String]?
@@ -244,6 +246,9 @@ public class AddFileRequest : Tea.TeaModel {
         if self.leaseId != nil {
             map["LeaseId"] = self.leaseId!
         }
+        if self.originalFileUrl != nil {
+            map["OriginalFileUrl"] = self.originalFileUrl!
+        }
         if self.parser != nil {
             map["Parser"] = self.parser!
         }
@@ -263,6 +268,9 @@ public class AddFileRequest : Tea.TeaModel {
         if dict.keys.contains("LeaseId") {
             self.leaseId = dict["LeaseId"] as! String
         }
+        if dict.keys.contains("OriginalFileUrl") {
+            self.originalFileUrl = dict["OriginalFileUrl"] as! String
+        }
         if dict.keys.contains("Parser") {
             self.parser = dict["Parser"] as! String
         }
@@ -278,6 +286,8 @@ public class AddFileShrinkRequest : Tea.TeaModel {
     public var categoryType: String?
 
     public var leaseId: String?
+
+    public var originalFileUrl: String?
 
     public var parser: String?
 
@@ -306,6 +316,9 @@ public class AddFileShrinkRequest : Tea.TeaModel {
         if self.leaseId != nil {
             map["LeaseId"] = self.leaseId!
         }
+        if self.originalFileUrl != nil {
+            map["OriginalFileUrl"] = self.originalFileUrl!
+        }
         if self.parser != nil {
             map["Parser"] = self.parser!
         }
@@ -324,6 +337,9 @@ public class AddFileShrinkRequest : Tea.TeaModel {
         }
         if dict.keys.contains("LeaseId") {
             self.leaseId = dict["LeaseId"] as! String
+        }
+        if dict.keys.contains("OriginalFileUrl") {
+            self.originalFileUrl = dict["OriginalFileUrl"] as! String
         }
         if dict.keys.contains("Parser") {
             self.parser = dict["Parser"] as! String

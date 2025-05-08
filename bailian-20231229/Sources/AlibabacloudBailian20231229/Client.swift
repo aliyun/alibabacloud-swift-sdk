@@ -80,6 +80,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.leaseId)) {
             body["LeaseId"] = request.leaseId ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.originalFileUrl)) {
+            body["OriginalFileUrl"] = request.originalFileUrl ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.parser)) {
             body["Parser"] = request.parser ?? "";
         }
