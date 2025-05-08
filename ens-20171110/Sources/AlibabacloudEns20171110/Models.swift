@@ -3694,6 +3694,43 @@ public class CopySnapshotResponse : Tea.TeaModel {
 }
 
 public class CreateARMServerInstancesRequest : Tea.TeaModel {
+    public class Tag : Tea.TeaModel {
+        public var key: String?
+
+        public var value: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.key != nil {
+                map["Key"] = self.key!
+            }
+            if self.value != nil {
+                map["Value"] = self.value!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("Key") {
+                self.key = dict["Key"] as! String
+            }
+            if dict.keys.contains("Value") {
+                self.value = dict["Value"] as! String
+            }
+        }
+    }
     public var amount: Int32?
 
     public var autoRenew: Bool?
@@ -3727,6 +3764,8 @@ public class CreateARMServerInstancesRequest : Tea.TeaModel {
     public var serverName: String?
 
     public var serverType: String?
+
+    public var tag: [CreateARMServerInstancesRequest.Tag]?
 
     public override init() {
         super.init()
@@ -3793,6 +3832,13 @@ public class CreateARMServerInstancesRequest : Tea.TeaModel {
         if self.serverType != nil {
             map["ServerType"] = self.serverType!
         }
+        if self.tag != nil {
+            var tmp : [Any] = []
+            for k in self.tag! {
+                tmp.append(k.toMap())
+            }
+            map["Tag"] = tmp
+        }
         return map
     }
 
@@ -3847,6 +3893,17 @@ public class CreateARMServerInstancesRequest : Tea.TeaModel {
         }
         if dict.keys.contains("ServerType") {
             self.serverType = dict["ServerType"] as! String
+        }
+        if dict.keys.contains("Tag") {
+            var tmp : [CreateARMServerInstancesRequest.Tag] = []
+            for v in dict["Tag"] as! [Any] {
+                var model = CreateARMServerInstancesRequest.Tag()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.tag = tmp
         }
     }
 }
@@ -4383,6 +4440,8 @@ public class CreateDiskRequest : Tea.TeaModel {
 
     public var ensRegionId: String?
 
+    public var instanceBillingCycle: String?
+
     public var instanceChargeType: String?
 
     public var KMSKeyId: String?
@@ -4419,6 +4478,9 @@ public class CreateDiskRequest : Tea.TeaModel {
         if self.ensRegionId != nil {
             map["EnsRegionId"] = self.ensRegionId!
         }
+        if self.instanceBillingCycle != nil {
+            map["InstanceBillingCycle"] = self.instanceBillingCycle!
+        }
         if self.instanceChargeType != nil {
             map["InstanceChargeType"] = self.instanceChargeType!
         }
@@ -4453,6 +4515,9 @@ public class CreateDiskRequest : Tea.TeaModel {
         }
         if dict.keys.contains("EnsRegionId") {
             self.ensRegionId = dict["EnsRegionId"] as! String
+        }
+        if dict.keys.contains("InstanceBillingCycle") {
+            self.instanceBillingCycle = dict["InstanceBillingCycle"] as! String
         }
         if dict.keys.contains("InstanceChargeType") {
             self.instanceChargeType = dict["InstanceChargeType"] as! String
@@ -9732,6 +9797,8 @@ public class CreateSnapshotRequest : Tea.TeaModel {
 
     public var ensRegionId: String?
 
+    public var instanceBillingCycle: String?
+
     public var snapshotName: String?
 
     public override init() {
@@ -9757,6 +9824,9 @@ public class CreateSnapshotRequest : Tea.TeaModel {
         if self.ensRegionId != nil {
             map["EnsRegionId"] = self.ensRegionId!
         }
+        if self.instanceBillingCycle != nil {
+            map["InstanceBillingCycle"] = self.instanceBillingCycle!
+        }
         if self.snapshotName != nil {
             map["SnapshotName"] = self.snapshotName!
         }
@@ -9772,6 +9842,9 @@ public class CreateSnapshotRequest : Tea.TeaModel {
         }
         if dict.keys.contains("EnsRegionId") {
             self.ensRegionId = dict["EnsRegionId"] as! String
+        }
+        if dict.keys.contains("InstanceBillingCycle") {
+            self.instanceBillingCycle = dict["InstanceBillingCycle"] as! String
         }
         if dict.keys.contains("SnapshotName") {
             self.snapshotName = dict["SnapshotName"] as! String
@@ -16137,6 +16210,43 @@ public class DescribeARMServerInstancesResponseBody : Tea.TeaModel {
                 }
             }
         }
+        public class Tags : Tea.TeaModel {
+            public var key: String?
+
+            public var value: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.key != nil {
+                    map["Key"] = self.key!
+                }
+                if self.value != nil {
+                    map["Value"] = self.value!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("Key") {
+                    self.key = dict["Key"] as! String
+                }
+                if dict.keys.contains("Value") {
+                    self.value = dict["Value"] as! String
+                }
+            }
+        }
         public var AICInstances: [DescribeARMServerInstancesResponseBody.Servers.AICInstances]?
 
         public var creationTime: String?
@@ -16160,6 +16270,8 @@ public class DescribeARMServerInstancesResponseBody : Tea.TeaModel {
         public var state: String?
 
         public var status: String?
+
+        public var tags: [DescribeARMServerInstancesResponseBody.Servers.Tags]?
 
         public override init() {
             super.init()
@@ -16215,6 +16327,13 @@ public class DescribeARMServerInstancesResponseBody : Tea.TeaModel {
             if self.status != nil {
                 map["Status"] = self.status!
             }
+            if self.tags != nil {
+                var tmp : [Any] = []
+                for k in self.tags! {
+                    tmp.append(k.toMap())
+                }
+                map["Tags"] = tmp
+            }
             return map
         }
 
@@ -16262,6 +16381,17 @@ public class DescribeARMServerInstancesResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("Status") {
                 self.status = dict["Status"] as! String
+            }
+            if dict.keys.contains("Tags") {
+                var tmp : [DescribeARMServerInstancesResponseBody.Servers.Tags] = []
+                for v in dict["Tags"] as! [Any] {
+                    var model = DescribeARMServerInstancesResponseBody.Servers.Tags()
+                    if v != nil {
+                        model.fromMap(v as! [String: Any])
+                    }
+                    tmp.append(model)
+                }
+                self.tags = tmp
             }
         }
     }
@@ -64661,6 +64791,8 @@ public class RunInstancesRequest : Tea.TeaModel {
 
     public var ipType: String?
 
+    public var ipv6AddressCount: Int64?
+
     public var keyPairName: String?
 
     public var netDistrictCode: String?
@@ -64770,6 +64902,9 @@ public class RunInstancesRequest : Tea.TeaModel {
         }
         if self.ipType != nil {
             map["IpType"] = self.ipType!
+        }
+        if self.ipv6AddressCount != nil {
+            map["Ipv6AddressCount"] = self.ipv6AddressCount!
         }
         if self.keyPairName != nil {
             map["KeyPairName"] = self.keyPairName!
@@ -64897,6 +65032,9 @@ public class RunInstancesRequest : Tea.TeaModel {
         }
         if dict.keys.contains("IpType") {
             self.ipType = dict["IpType"] as! String
+        }
+        if dict.keys.contains("Ipv6AddressCount") {
+            self.ipv6AddressCount = dict["Ipv6AddressCount"] as! Int64
         }
         if dict.keys.contains("KeyPairName") {
             self.keyPairName = dict["KeyPairName"] as! String
@@ -65043,6 +65181,8 @@ public class RunInstancesShrinkRequest : Tea.TeaModel {
 
     public var ipType: String?
 
+    public var ipv6AddressCount: Int64?
+
     public var keyPairName: String?
 
     public var netDistrictCode: String?
@@ -65147,6 +65287,9 @@ public class RunInstancesShrinkRequest : Tea.TeaModel {
         }
         if self.ipType != nil {
             map["IpType"] = self.ipType!
+        }
+        if self.ipv6AddressCount != nil {
+            map["Ipv6AddressCount"] = self.ipv6AddressCount!
         }
         if self.keyPairName != nil {
             map["KeyPairName"] = self.keyPairName!
@@ -65266,6 +65409,9 @@ public class RunInstancesShrinkRequest : Tea.TeaModel {
         }
         if dict.keys.contains("IpType") {
             self.ipType = dict["IpType"] as! String
+        }
+        if dict.keys.contains("Ipv6AddressCount") {
+            self.ipv6AddressCount = dict["Ipv6AddressCount"] as! Int64
         }
         if dict.keys.contains("KeyPairName") {
             self.keyPairName = dict["KeyPairName"] as! String
