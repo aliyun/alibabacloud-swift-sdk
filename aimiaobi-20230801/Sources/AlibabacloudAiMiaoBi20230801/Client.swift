@@ -1258,6 +1258,9 @@ open class Client : AlibabacloudOpenApi.Client {
             query["AgentKey"] = request.agentKey ?? "";
         }
         var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.generateTechnology)) {
+            body["GenerateTechnology"] = request.generateTechnology ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.productCode)) {
             body["ProductCode"] = request.productCode ?? "";
         }
@@ -5013,6 +5016,9 @@ open class Client : AlibabacloudOpenApi.Client {
             query["AgentKey"] = request.agentKey ?? "";
         }
         var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.generateTechnology)) {
+            body["GenerateTechnology"] = request.generateTechnology ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.productCode)) {
             body["ProductCode"] = request.productCode ?? "";
         }

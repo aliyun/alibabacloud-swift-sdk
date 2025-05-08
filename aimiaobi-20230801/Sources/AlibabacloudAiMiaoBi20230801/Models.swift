@@ -7746,6 +7746,8 @@ public class GetCustomTopicSelectionPerspectiveAnalysisTaskResponse : Tea.TeaMod
 public class GetDataSourceOrderConfigRequest : Tea.TeaModel {
     public var agentKey: String?
 
+    public var generateTechnology: String?
+
     public var productCode: String?
 
     public override init() {
@@ -7765,6 +7767,9 @@ public class GetDataSourceOrderConfigRequest : Tea.TeaModel {
         if self.agentKey != nil {
             map["AgentKey"] = self.agentKey!
         }
+        if self.generateTechnology != nil {
+            map["GenerateTechnology"] = self.generateTechnology!
+        }
         if self.productCode != nil {
             map["ProductCode"] = self.productCode!
         }
@@ -7774,6 +7779,9 @@ public class GetDataSourceOrderConfigRequest : Tea.TeaModel {
     public override func fromMap(_ dict: [String: Any]) -> Void {
         if dict.keys.contains("AgentKey") {
             self.agentKey = dict["AgentKey"] as! String
+        }
+        if dict.keys.contains("GenerateTechnology") {
+            self.generateTechnology = dict["GenerateTechnology"] as! String
         }
         if dict.keys.contains("ProductCode") {
             self.productCode = dict["ProductCode"] as! String
@@ -47607,6 +47615,8 @@ public class SaveDataSourceOrderConfigRequest : Tea.TeaModel {
     public class UserConfigDataSourceList : Tea.TeaModel {
         public var code: String?
 
+        public var enable: Bool?
+
         public var name: String?
 
         public var number: Int32?
@@ -47630,6 +47640,9 @@ public class SaveDataSourceOrderConfigRequest : Tea.TeaModel {
             if self.code != nil {
                 map["Code"] = self.code!
             }
+            if self.enable != nil {
+                map["Enable"] = self.enable!
+            }
             if self.name != nil {
                 map["Name"] = self.name!
             }
@@ -47646,6 +47659,9 @@ public class SaveDataSourceOrderConfigRequest : Tea.TeaModel {
             if dict.keys.contains("Code") {
                 self.code = dict["Code"] as! String
             }
+            if dict.keys.contains("Enable") {
+                self.enable = dict["Enable"] as! Bool
+            }
             if dict.keys.contains("Name") {
                 self.name = dict["Name"] as! String
             }
@@ -47658,6 +47674,8 @@ public class SaveDataSourceOrderConfigRequest : Tea.TeaModel {
         }
     }
     public var agentKey: String?
+
+    public var generateTechnology: String?
 
     public var productCode: String?
 
@@ -47680,6 +47698,9 @@ public class SaveDataSourceOrderConfigRequest : Tea.TeaModel {
         if self.agentKey != nil {
             map["AgentKey"] = self.agentKey!
         }
+        if self.generateTechnology != nil {
+            map["GenerateTechnology"] = self.generateTechnology!
+        }
         if self.productCode != nil {
             map["ProductCode"] = self.productCode!
         }
@@ -47696,6 +47717,9 @@ public class SaveDataSourceOrderConfigRequest : Tea.TeaModel {
     public override func fromMap(_ dict: [String: Any]) -> Void {
         if dict.keys.contains("AgentKey") {
             self.agentKey = dict["AgentKey"] as! String
+        }
+        if dict.keys.contains("GenerateTechnology") {
+            self.generateTechnology = dict["GenerateTechnology"] as! String
         }
         if dict.keys.contains("ProductCode") {
             self.productCode = dict["ProductCode"] as! String
@@ -47716,6 +47740,8 @@ public class SaveDataSourceOrderConfigRequest : Tea.TeaModel {
 
 public class SaveDataSourceOrderConfigShrinkRequest : Tea.TeaModel {
     public var agentKey: String?
+
+    public var generateTechnology: String?
 
     public var productCode: String?
 
@@ -47738,6 +47764,9 @@ public class SaveDataSourceOrderConfigShrinkRequest : Tea.TeaModel {
         if self.agentKey != nil {
             map["AgentKey"] = self.agentKey!
         }
+        if self.generateTechnology != nil {
+            map["GenerateTechnology"] = self.generateTechnology!
+        }
         if self.productCode != nil {
             map["ProductCode"] = self.productCode!
         }
@@ -47750,6 +47779,9 @@ public class SaveDataSourceOrderConfigShrinkRequest : Tea.TeaModel {
     public override func fromMap(_ dict: [String: Any]) -> Void {
         if dict.keys.contains("AgentKey") {
             self.agentKey = dict["AgentKey"] as! String
+        }
+        if dict.keys.contains("GenerateTechnology") {
+            self.generateTechnology = dict["GenerateTechnology"] as! String
         }
         if dict.keys.contains("ProductCode") {
             self.productCode = dict["ProductCode"] as! String
