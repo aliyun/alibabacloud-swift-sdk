@@ -38271,6 +38271,8 @@ public class ScaleWithAdjustmentRequest : Tea.TeaModel {
 
     public var ownerId: Int64?
 
+    public var parallelTask: Bool?
+
     public var resourceOwnerAccount: String?
 
     public var scalingGroupId: String?
@@ -38317,6 +38319,9 @@ public class ScaleWithAdjustmentRequest : Tea.TeaModel {
         if self.ownerId != nil {
             map["OwnerId"] = self.ownerId!
         }
+        if self.parallelTask != nil {
+            map["ParallelTask"] = self.parallelTask!
+        }
         if self.resourceOwnerAccount != nil {
             map["ResourceOwnerAccount"] = self.resourceOwnerAccount!
         }
@@ -38358,6 +38363,9 @@ public class ScaleWithAdjustmentRequest : Tea.TeaModel {
         if dict.keys.contains("OwnerId") {
             self.ownerId = dict["OwnerId"] as! Int64
         }
+        if dict.keys.contains("ParallelTask") {
+            self.parallelTask = dict["ParallelTask"] as! Bool
+        }
         if dict.keys.contains("ResourceOwnerAccount") {
             self.resourceOwnerAccount = dict["ResourceOwnerAccount"] as! String
         }
@@ -38386,6 +38394,8 @@ public class ScaleWithAdjustmentShrinkRequest : Tea.TeaModel {
     public var overridesShrink: String?
 
     public var ownerId: Int64?
+
+    public var parallelTask: Bool?
 
     public var resourceOwnerAccount: String?
 
@@ -38431,6 +38441,9 @@ public class ScaleWithAdjustmentShrinkRequest : Tea.TeaModel {
         if self.ownerId != nil {
             map["OwnerId"] = self.ownerId!
         }
+        if self.parallelTask != nil {
+            map["ParallelTask"] = self.parallelTask!
+        }
         if self.resourceOwnerAccount != nil {
             map["ResourceOwnerAccount"] = self.resourceOwnerAccount!
         }
@@ -38467,6 +38480,9 @@ public class ScaleWithAdjustmentShrinkRequest : Tea.TeaModel {
         }
         if dict.keys.contains("OwnerId") {
             self.ownerId = dict["OwnerId"] as! Int64
+        }
+        if dict.keys.contains("ParallelTask") {
+            self.parallelTask = dict["ParallelTask"] as! Bool
         }
         if dict.keys.contains("ResourceOwnerAccount") {
             self.resourceOwnerAccount = dict["ResourceOwnerAccount"] as! String
