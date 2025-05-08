@@ -12958,6 +12958,51 @@ public class GetPropertiesResponseBody : Tea.TeaModel {
             }
         }
         public class IntelligentSearchConfig : Tea.TeaModel {
+            public class CopilotPreciseSearchSources : Tea.TeaModel {
+                public var code: String?
+
+                public var datasetName: String?
+
+                public var name: String?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.code != nil {
+                        map["Code"] = self.code!
+                    }
+                    if self.datasetName != nil {
+                        map["DatasetName"] = self.datasetName!
+                    }
+                    if self.name != nil {
+                        map["Name"] = self.name!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any]) -> Void {
+                    if dict.keys.contains("Code") {
+                        self.code = dict["Code"] as! String
+                    }
+                    if dict.keys.contains("DatasetName") {
+                        self.datasetName = dict["DatasetName"] as! String
+                    }
+                    if dict.keys.contains("Name") {
+                        self.name = dict["Name"] as! String
+                    }
+                }
+            }
             public class SearchSamples : Tea.TeaModel {
                 public class Articles : Tea.TeaModel {
                     public var select: Bool?
@@ -13113,6 +13158,8 @@ public class GetPropertiesResponseBody : Tea.TeaModel {
                     }
                 }
             }
+            public var copilotPreciseSearchSources: [GetPropertiesResponseBody.Data.IntelligentSearchConfig.CopilotPreciseSearchSources]?
+
             public var productDescription: String?
 
             public var searchSamples: [GetPropertiesResponseBody.Data.IntelligentSearchConfig.SearchSamples]?
@@ -13133,6 +13180,13 @@ public class GetPropertiesResponseBody : Tea.TeaModel {
 
             public override func toMap() -> [String : Any] {
                 var map = super.toMap()
+                if self.copilotPreciseSearchSources != nil {
+                    var tmp : [Any] = []
+                    for k in self.copilotPreciseSearchSources! {
+                        tmp.append(k.toMap())
+                    }
+                    map["CopilotPreciseSearchSources"] = tmp
+                }
                 if self.productDescription != nil {
                     map["ProductDescription"] = self.productDescription!
                 }
@@ -13154,6 +13208,17 @@ public class GetPropertiesResponseBody : Tea.TeaModel {
             }
 
             public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("CopilotPreciseSearchSources") {
+                    var tmp : [GetPropertiesResponseBody.Data.IntelligentSearchConfig.CopilotPreciseSearchSources] = []
+                    for v in dict["CopilotPreciseSearchSources"] as! [Any] {
+                        var model = GetPropertiesResponseBody.Data.IntelligentSearchConfig.CopilotPreciseSearchSources()
+                        if v != nil {
+                            model.fromMap(v as! [String: Any])
+                        }
+                        tmp.append(model)
+                    }
+                    self.copilotPreciseSearchSources = tmp
+                }
                 if dict.keys.contains("ProductDescription") {
                     self.productDescription = dict["ProductDescription"] as! String
                 }
