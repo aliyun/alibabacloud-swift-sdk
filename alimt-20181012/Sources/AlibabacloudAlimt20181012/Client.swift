@@ -446,6 +446,37 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getDetectLanguageVpcWithOptions(_ request: GetDetectLanguageVpcRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> GetDetectLanguageVpcResponse {
+        try TeaUtils.Client.validateModel(request)
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.sourceText)) {
+            body["SourceText"] = request.sourceText ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "GetDetectLanguageVpc",
+            "version": "2018-10-12",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(GetDetectLanguageVpcResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getDetectLanguageVpc(_ request: GetDetectLanguageVpcRequest) async throws -> GetDetectLanguageVpcResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await getDetectLanguageVpcWithOptions(request as! GetDetectLanguageVpcRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func getDocTranslateTaskWithOptions(_ request: GetDocTranslateTaskRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> GetDocTranslateTaskResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: String] = AlibabaCloudOpenApiUtil.Client.query(TeaUtils.Client.toMap(request))
@@ -1215,5 +1246,48 @@ open class Client : AlibabacloudOpenApi.Client {
     public func translateImageBatch(_ request: TranslateImageBatchRequest) async throws -> TranslateImageBatchResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         return try await translateImageBatchWithOptions(request as! TranslateImageBatchRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func translateSearchWithOptions(_ request: TranslateSearchRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> TranslateSearchResponse {
+        try TeaUtils.Client.validateModel(request)
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.formatType)) {
+            body["FormatType"] = request.formatType ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.scene)) {
+            body["Scene"] = request.scene ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.sourceLanguage)) {
+            body["SourceLanguage"] = request.sourceLanguage ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.sourceText)) {
+            body["SourceText"] = request.sourceText ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.targetLanguage)) {
+            body["TargetLanguage"] = request.targetLanguage ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "TranslateSearch",
+            "version": "2018-10-12",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(TranslateSearchResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func translateSearch(_ request: TranslateSearchRequest) async throws -> TranslateSearchResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await translateSearchWithOptions(request as! TranslateSearchRequest, runtime as! TeaUtils.RuntimeOptions)
     }
 }
