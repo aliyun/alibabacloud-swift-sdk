@@ -14838,6 +14838,411 @@ public class CreatePluginConfigResponse : Tea.TeaModel {
     }
 }
 
+public class CreateWebFlowRuleRequest : Tea.TeaModel {
+    public var acceptLanguage: String?
+
+    public var appId: String?
+
+    public var appName: String?
+
+    public var burst: Int32?
+
+    public var controlBehavior: Int32?
+
+    public var enable: Bool?
+
+    public var maxQueueingTimeMs: Int32?
+
+    public var metricType: Int32?
+
+    public var namespace: String?
+
+    public var paramItem: String?
+
+    public var regionId: String?
+
+    public var resource: String?
+
+    public var resourceMode: Int32?
+
+    public var resourceType: Int32?
+
+    public var statIntervalMs: Int32?
+
+    public var threshold: Double?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.acceptLanguage != nil {
+            map["AcceptLanguage"] = self.acceptLanguage!
+        }
+        if self.appId != nil {
+            map["AppId"] = self.appId!
+        }
+        if self.appName != nil {
+            map["AppName"] = self.appName!
+        }
+        if self.burst != nil {
+            map["Burst"] = self.burst!
+        }
+        if self.controlBehavior != nil {
+            map["ControlBehavior"] = self.controlBehavior!
+        }
+        if self.enable != nil {
+            map["Enable"] = self.enable!
+        }
+        if self.maxQueueingTimeMs != nil {
+            map["MaxQueueingTimeMs"] = self.maxQueueingTimeMs!
+        }
+        if self.metricType != nil {
+            map["MetricType"] = self.metricType!
+        }
+        if self.namespace != nil {
+            map["Namespace"] = self.namespace!
+        }
+        if self.paramItem != nil {
+            map["ParamItem"] = self.paramItem!
+        }
+        if self.regionId != nil {
+            map["RegionId"] = self.regionId!
+        }
+        if self.resource != nil {
+            map["Resource"] = self.resource!
+        }
+        if self.resourceMode != nil {
+            map["ResourceMode"] = self.resourceMode!
+        }
+        if self.resourceType != nil {
+            map["ResourceType"] = self.resourceType!
+        }
+        if self.statIntervalMs != nil {
+            map["StatIntervalMs"] = self.statIntervalMs!
+        }
+        if self.threshold != nil {
+            map["Threshold"] = self.threshold!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("AcceptLanguage") {
+            self.acceptLanguage = dict["AcceptLanguage"] as! String
+        }
+        if dict.keys.contains("AppId") {
+            self.appId = dict["AppId"] as! String
+        }
+        if dict.keys.contains("AppName") {
+            self.appName = dict["AppName"] as! String
+        }
+        if dict.keys.contains("Burst") {
+            self.burst = dict["Burst"] as! Int32
+        }
+        if dict.keys.contains("ControlBehavior") {
+            self.controlBehavior = dict["ControlBehavior"] as! Int32
+        }
+        if dict.keys.contains("Enable") {
+            self.enable = dict["Enable"] as! Bool
+        }
+        if dict.keys.contains("MaxQueueingTimeMs") {
+            self.maxQueueingTimeMs = dict["MaxQueueingTimeMs"] as! Int32
+        }
+        if dict.keys.contains("MetricType") {
+            self.metricType = dict["MetricType"] as! Int32
+        }
+        if dict.keys.contains("Namespace") {
+            self.namespace = dict["Namespace"] as! String
+        }
+        if dict.keys.contains("ParamItem") {
+            self.paramItem = dict["ParamItem"] as! String
+        }
+        if dict.keys.contains("RegionId") {
+            self.regionId = dict["RegionId"] as! String
+        }
+        if dict.keys.contains("Resource") {
+            self.resource = dict["Resource"] as! String
+        }
+        if dict.keys.contains("ResourceMode") {
+            self.resourceMode = dict["ResourceMode"] as! Int32
+        }
+        if dict.keys.contains("ResourceType") {
+            self.resourceType = dict["ResourceType"] as! Int32
+        }
+        if dict.keys.contains("StatIntervalMs") {
+            self.statIntervalMs = dict["StatIntervalMs"] as! Int32
+        }
+        if dict.keys.contains("Threshold") {
+            self.threshold = dict["Threshold"] as! Double
+        }
+    }
+}
+
+public class CreateWebFlowRuleResponseBody : Tea.TeaModel {
+    public class Data : Tea.TeaModel {
+        public var appId: String?
+
+        public var appName: String?
+
+        public var burst: Int32?
+
+        public var controlBehavior: Int32?
+
+        public var enable: Bool?
+
+        public var id: Int64?
+
+        public var maxQueueingTimeMs: Int32?
+
+        public var metricType: Int32?
+
+        public var namespace: String?
+
+        public var paramItem: String?
+
+        public var regionId: String?
+
+        public var reourceMode: Int32?
+
+        public var resource: String?
+
+        public var statIntervalMs: Int32?
+
+        public var threshold: Double?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.appId != nil {
+                map["AppId"] = self.appId!
+            }
+            if self.appName != nil {
+                map["AppName"] = self.appName!
+            }
+            if self.burst != nil {
+                map["Burst"] = self.burst!
+            }
+            if self.controlBehavior != nil {
+                map["ControlBehavior"] = self.controlBehavior!
+            }
+            if self.enable != nil {
+                map["Enable"] = self.enable!
+            }
+            if self.id != nil {
+                map["Id"] = self.id!
+            }
+            if self.maxQueueingTimeMs != nil {
+                map["MaxQueueingTimeMs"] = self.maxQueueingTimeMs!
+            }
+            if self.metricType != nil {
+                map["MetricType"] = self.metricType!
+            }
+            if self.namespace != nil {
+                map["Namespace"] = self.namespace!
+            }
+            if self.paramItem != nil {
+                map["ParamItem"] = self.paramItem!
+            }
+            if self.regionId != nil {
+                map["RegionId"] = self.regionId!
+            }
+            if self.reourceMode != nil {
+                map["ReourceMode"] = self.reourceMode!
+            }
+            if self.resource != nil {
+                map["Resource"] = self.resource!
+            }
+            if self.statIntervalMs != nil {
+                map["StatIntervalMs"] = self.statIntervalMs!
+            }
+            if self.threshold != nil {
+                map["Threshold"] = self.threshold!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("AppId") {
+                self.appId = dict["AppId"] as! String
+            }
+            if dict.keys.contains("AppName") {
+                self.appName = dict["AppName"] as! String
+            }
+            if dict.keys.contains("Burst") {
+                self.burst = dict["Burst"] as! Int32
+            }
+            if dict.keys.contains("ControlBehavior") {
+                self.controlBehavior = dict["ControlBehavior"] as! Int32
+            }
+            if dict.keys.contains("Enable") {
+                self.enable = dict["Enable"] as! Bool
+            }
+            if dict.keys.contains("Id") {
+                self.id = dict["Id"] as! Int64
+            }
+            if dict.keys.contains("MaxQueueingTimeMs") {
+                self.maxQueueingTimeMs = dict["MaxQueueingTimeMs"] as! Int32
+            }
+            if dict.keys.contains("MetricType") {
+                self.metricType = dict["MetricType"] as! Int32
+            }
+            if dict.keys.contains("Namespace") {
+                self.namespace = dict["Namespace"] as! String
+            }
+            if dict.keys.contains("ParamItem") {
+                self.paramItem = dict["ParamItem"] as! String
+            }
+            if dict.keys.contains("RegionId") {
+                self.regionId = dict["RegionId"] as! String
+            }
+            if dict.keys.contains("ReourceMode") {
+                self.reourceMode = dict["ReourceMode"] as! Int32
+            }
+            if dict.keys.contains("Resource") {
+                self.resource = dict["Resource"] as! String
+            }
+            if dict.keys.contains("StatIntervalMs") {
+                self.statIntervalMs = dict["StatIntervalMs"] as! Int32
+            }
+            if dict.keys.contains("Threshold") {
+                self.threshold = dict["Threshold"] as! Double
+            }
+        }
+    }
+    public var code: String?
+
+    public var data: CreateWebFlowRuleResponseBody.Data?
+
+    public var message: String?
+
+    public var requestId: String?
+
+    public var success: Bool?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.data?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.code != nil {
+            map["Code"] = self.code!
+        }
+        if self.data != nil {
+            map["Data"] = self.data?.toMap()
+        }
+        if self.message != nil {
+            map["Message"] = self.message!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.success != nil {
+            map["Success"] = self.success!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("Code") {
+            self.code = dict["Code"] as! String
+        }
+        if dict.keys.contains("Data") {
+            var model = CreateWebFlowRuleResponseBody.Data()
+            model.fromMap(dict["Data"] as! [String: Any])
+            self.data = model
+        }
+        if dict.keys.contains("Message") {
+            self.message = dict["Message"] as! String
+        }
+        if dict.keys.contains("RequestId") {
+            self.requestId = dict["RequestId"] as! String
+        }
+        if dict.keys.contains("Success") {
+            self.success = dict["Success"] as! Bool
+        }
+    }
+}
+
+public class CreateWebFlowRuleResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: CreateWebFlowRuleResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") {
+            var model = CreateWebFlowRuleResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
 public class CreateZnodeRequest : Tea.TeaModel {
     public var acceptLanguage: String?
 
@@ -20571,6 +20976,179 @@ public class DeleteSwimmingLaneGroupResponse : Tea.TeaModel {
         }
         if dict.keys.contains("body") {
             var model = DeleteSwimmingLaneGroupResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
+public class DeleteWebFlowRulesRequest : Tea.TeaModel {
+    public var acceptLanguage: String?
+
+    public var appName: String?
+
+    public var ids: String?
+
+    public var namespace: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.acceptLanguage != nil {
+            map["AcceptLanguage"] = self.acceptLanguage!
+        }
+        if self.appName != nil {
+            map["AppName"] = self.appName!
+        }
+        if self.ids != nil {
+            map["Ids"] = self.ids!
+        }
+        if self.namespace != nil {
+            map["Namespace"] = self.namespace!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("AcceptLanguage") {
+            self.acceptLanguage = dict["AcceptLanguage"] as! String
+        }
+        if dict.keys.contains("AppName") {
+            self.appName = dict["AppName"] as! String
+        }
+        if dict.keys.contains("Ids") {
+            self.ids = dict["Ids"] as! String
+        }
+        if dict.keys.contains("Namespace") {
+            self.namespace = dict["Namespace"] as! String
+        }
+    }
+}
+
+public class DeleteWebFlowRulesResponseBody : Tea.TeaModel {
+    public var code: Int32?
+
+    public var data: [Int64]?
+
+    public var httpStatusCode: Int32?
+
+    public var message: String?
+
+    public var requestId: String?
+
+    public var success: Bool?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.code != nil {
+            map["Code"] = self.code!
+        }
+        if self.data != nil {
+            map["Data"] = self.data!
+        }
+        if self.httpStatusCode != nil {
+            map["HttpStatusCode"] = self.httpStatusCode!
+        }
+        if self.message != nil {
+            map["Message"] = self.message!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.success != nil {
+            map["Success"] = self.success!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("Code") {
+            self.code = dict["Code"] as! Int32
+        }
+        if dict.keys.contains("Data") {
+            self.data = dict["Data"] as! [Int64]
+        }
+        if dict.keys.contains("HttpStatusCode") {
+            self.httpStatusCode = dict["HttpStatusCode"] as! Int32
+        }
+        if dict.keys.contains("Message") {
+            self.message = dict["Message"] as! String
+        }
+        if dict.keys.contains("RequestId") {
+            self.requestId = dict["RequestId"] as! String
+        }
+        if dict.keys.contains("Success") {
+            self.success = dict["Success"] as! Bool
+        }
+    }
+}
+
+public class DeleteWebFlowRulesResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: DeleteWebFlowRulesResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") {
+            var model = DeleteWebFlowRulesResponseBody()
             model.fromMap(dict["body"] as! [String: Any])
             self.body = model
         }
@@ -35663,6 +36241,8 @@ public class ImportServicesRequest : Tea.TeaModel {
 
         public var namespace: String?
 
+        public var saeAppId: String?
+
         public var servicePort: Int64?
 
         public var serviceProtocol: String?
@@ -35696,6 +36276,9 @@ public class ImportServicesRequest : Tea.TeaModel {
             if self.namespace != nil {
                 map["Namespace"] = self.namespace!
             }
+            if self.saeAppId != nil {
+                map["SaeAppId"] = self.saeAppId!
+            }
             if self.servicePort != nil {
                 map["ServicePort"] = self.servicePort!
             }
@@ -35720,6 +36303,9 @@ public class ImportServicesRequest : Tea.TeaModel {
             }
             if dict.keys.contains("Namespace") {
                 self.namespace = dict["Namespace"] as! String
+            }
+            if dict.keys.contains("SaeAppId") {
+                self.saeAppId = dict["SaeAppId"] as! String
             }
             if dict.keys.contains("ServicePort") {
                 self.servicePort = dict["ServicePort"] as! Int64
@@ -56308,6 +56894,436 @@ public class ListTagResourcesResponse : Tea.TeaModel {
     }
 }
 
+public class ListWebFlowRulesRequest : Tea.TeaModel {
+    public var acceptLanguage: String?
+
+    public var appId: String?
+
+    public var appName: String?
+
+    public var namespace: String?
+
+    public var pageIndex: Int32?
+
+    public var pageSize: Int32?
+
+    public var resource: String?
+
+    public var resourceSearchKey: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.acceptLanguage != nil {
+            map["AcceptLanguage"] = self.acceptLanguage!
+        }
+        if self.appId != nil {
+            map["AppId"] = self.appId!
+        }
+        if self.appName != nil {
+            map["AppName"] = self.appName!
+        }
+        if self.namespace != nil {
+            map["Namespace"] = self.namespace!
+        }
+        if self.pageIndex != nil {
+            map["PageIndex"] = self.pageIndex!
+        }
+        if self.pageSize != nil {
+            map["PageSize"] = self.pageSize!
+        }
+        if self.resource != nil {
+            map["Resource"] = self.resource!
+        }
+        if self.resourceSearchKey != nil {
+            map["ResourceSearchKey"] = self.resourceSearchKey!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("AcceptLanguage") {
+            self.acceptLanguage = dict["AcceptLanguage"] as! String
+        }
+        if dict.keys.contains("AppId") {
+            self.appId = dict["AppId"] as! String
+        }
+        if dict.keys.contains("AppName") {
+            self.appName = dict["AppName"] as! String
+        }
+        if dict.keys.contains("Namespace") {
+            self.namespace = dict["Namespace"] as! String
+        }
+        if dict.keys.contains("PageIndex") {
+            self.pageIndex = dict["PageIndex"] as! Int32
+        }
+        if dict.keys.contains("PageSize") {
+            self.pageSize = dict["PageSize"] as! Int32
+        }
+        if dict.keys.contains("Resource") {
+            self.resource = dict["Resource"] as! String
+        }
+        if dict.keys.contains("ResourceSearchKey") {
+            self.resourceSearchKey = dict["ResourceSearchKey"] as! String
+        }
+    }
+}
+
+public class ListWebFlowRulesResponseBody : Tea.TeaModel {
+    public class Data : Tea.TeaModel {
+        public class Result : Tea.TeaModel {
+            public var appId: String?
+
+            public var appName: String?
+
+            public var burst: Int32?
+
+            public var controlBehavior: Int32?
+
+            public var enable: Bool?
+
+            public var fallbackObject: String?
+
+            public var maxQueueingTimeMs: Int32?
+
+            public var metricType: Int32?
+
+            public var namespace: String?
+
+            public var paramItem: String?
+
+            public var regionId: String?
+
+            public var resource: String?
+
+            public var resourceMode: Int32?
+
+            public var resourceType: Int32?
+
+            public var ruleId: String?
+
+            public var statIntervalMs: Int32?
+
+            public var threshold: Double?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.appId != nil {
+                    map["AppId"] = self.appId!
+                }
+                if self.appName != nil {
+                    map["AppName"] = self.appName!
+                }
+                if self.burst != nil {
+                    map["Burst"] = self.burst!
+                }
+                if self.controlBehavior != nil {
+                    map["ControlBehavior"] = self.controlBehavior!
+                }
+                if self.enable != nil {
+                    map["Enable"] = self.enable!
+                }
+                if self.fallbackObject != nil {
+                    map["FallbackObject"] = self.fallbackObject!
+                }
+                if self.maxQueueingTimeMs != nil {
+                    map["MaxQueueingTimeMs"] = self.maxQueueingTimeMs!
+                }
+                if self.metricType != nil {
+                    map["MetricType"] = self.metricType!
+                }
+                if self.namespace != nil {
+                    map["Namespace"] = self.namespace!
+                }
+                if self.paramItem != nil {
+                    map["ParamItem"] = self.paramItem!
+                }
+                if self.regionId != nil {
+                    map["RegionId"] = self.regionId!
+                }
+                if self.resource != nil {
+                    map["Resource"] = self.resource!
+                }
+                if self.resourceMode != nil {
+                    map["ResourceMode"] = self.resourceMode!
+                }
+                if self.resourceType != nil {
+                    map["ResourceType"] = self.resourceType!
+                }
+                if self.ruleId != nil {
+                    map["RuleId"] = self.ruleId!
+                }
+                if self.statIntervalMs != nil {
+                    map["StatIntervalMs"] = self.statIntervalMs!
+                }
+                if self.threshold != nil {
+                    map["Threshold"] = self.threshold!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("AppId") {
+                    self.appId = dict["AppId"] as! String
+                }
+                if dict.keys.contains("AppName") {
+                    self.appName = dict["AppName"] as! String
+                }
+                if dict.keys.contains("Burst") {
+                    self.burst = dict["Burst"] as! Int32
+                }
+                if dict.keys.contains("ControlBehavior") {
+                    self.controlBehavior = dict["ControlBehavior"] as! Int32
+                }
+                if dict.keys.contains("Enable") {
+                    self.enable = dict["Enable"] as! Bool
+                }
+                if dict.keys.contains("FallbackObject") {
+                    self.fallbackObject = dict["FallbackObject"] as! String
+                }
+                if dict.keys.contains("MaxQueueingTimeMs") {
+                    self.maxQueueingTimeMs = dict["MaxQueueingTimeMs"] as! Int32
+                }
+                if dict.keys.contains("MetricType") {
+                    self.metricType = dict["MetricType"] as! Int32
+                }
+                if dict.keys.contains("Namespace") {
+                    self.namespace = dict["Namespace"] as! String
+                }
+                if dict.keys.contains("ParamItem") {
+                    self.paramItem = dict["ParamItem"] as! String
+                }
+                if dict.keys.contains("RegionId") {
+                    self.regionId = dict["RegionId"] as! String
+                }
+                if dict.keys.contains("Resource") {
+                    self.resource = dict["Resource"] as! String
+                }
+                if dict.keys.contains("ResourceMode") {
+                    self.resourceMode = dict["ResourceMode"] as! Int32
+                }
+                if dict.keys.contains("ResourceType") {
+                    self.resourceType = dict["ResourceType"] as! Int32
+                }
+                if dict.keys.contains("RuleId") {
+                    self.ruleId = dict["RuleId"] as! String
+                }
+                if dict.keys.contains("StatIntervalMs") {
+                    self.statIntervalMs = dict["StatIntervalMs"] as! Int32
+                }
+                if dict.keys.contains("Threshold") {
+                    self.threshold = dict["Threshold"] as! Double
+                }
+            }
+        }
+        public var pageNumber: Int32?
+
+        public var pageSize: Int32?
+
+        public var result: [ListWebFlowRulesResponseBody.Data.Result]?
+
+        public var totalSize: Int32?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.pageNumber != nil {
+                map["PageNumber"] = self.pageNumber!
+            }
+            if self.pageSize != nil {
+                map["PageSize"] = self.pageSize!
+            }
+            if self.result != nil {
+                var tmp : [Any] = []
+                for k in self.result! {
+                    tmp.append(k.toMap())
+                }
+                map["Result"] = tmp
+            }
+            if self.totalSize != nil {
+                map["TotalSize"] = self.totalSize!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("PageNumber") {
+                self.pageNumber = dict["PageNumber"] as! Int32
+            }
+            if dict.keys.contains("PageSize") {
+                self.pageSize = dict["PageSize"] as! Int32
+            }
+            if dict.keys.contains("Result") {
+                var tmp : [ListWebFlowRulesResponseBody.Data.Result] = []
+                for v in dict["Result"] as! [Any] {
+                    var model = ListWebFlowRulesResponseBody.Data.Result()
+                    if v != nil {
+                        model.fromMap(v as! [String: Any])
+                    }
+                    tmp.append(model)
+                }
+                self.result = tmp
+            }
+            if dict.keys.contains("TotalSize") {
+                self.totalSize = dict["TotalSize"] as! Int32
+            }
+        }
+    }
+    public var code: Int32?
+
+    public var data: ListWebFlowRulesResponseBody.Data?
+
+    public var httpStatusCode: Int32?
+
+    public var message: String?
+
+    public var requestId: String?
+
+    public var success: Bool?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.data?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.code != nil {
+            map["Code"] = self.code!
+        }
+        if self.data != nil {
+            map["Data"] = self.data?.toMap()
+        }
+        if self.httpStatusCode != nil {
+            map["HttpStatusCode"] = self.httpStatusCode!
+        }
+        if self.message != nil {
+            map["Message"] = self.message!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.success != nil {
+            map["Success"] = self.success!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("Code") {
+            self.code = dict["Code"] as! Int32
+        }
+        if dict.keys.contains("Data") {
+            var model = ListWebFlowRulesResponseBody.Data()
+            model.fromMap(dict["Data"] as! [String: Any])
+            self.data = model
+        }
+        if dict.keys.contains("HttpStatusCode") {
+            self.httpStatusCode = dict["HttpStatusCode"] as! Int32
+        }
+        if dict.keys.contains("Message") {
+            self.message = dict["Message"] as! String
+        }
+        if dict.keys.contains("RequestId") {
+            self.requestId = dict["RequestId"] as! String
+        }
+        if dict.keys.contains("Success") {
+            self.success = dict["Success"] as! Bool
+        }
+    }
+}
+
+public class ListWebFlowRulesResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: ListWebFlowRulesResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") {
+            var model = ListWebFlowRulesResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
 public class ListZkTrackRequest : Tea.TeaModel {
     public var acceptLanguage: String?
 
@@ -58095,6 +59111,8 @@ public class PullServicesResponseBody : Tea.TeaModel {
 
             public var namespace: String?
 
+            public var saeAppId: String?
+
             public var sourceId: String?
 
             public var sourceIdList: [Int64]?
@@ -58124,6 +59142,9 @@ public class PullServicesResponseBody : Tea.TeaModel {
                 if self.namespace != nil {
                     map["Namespace"] = self.namespace!
                 }
+                if self.saeAppId != nil {
+                    map["SaeAppId"] = self.saeAppId!
+                }
                 if self.sourceId != nil {
                     map["SourceId"] = self.sourceId!
                 }
@@ -58145,6 +59166,9 @@ public class PullServicesResponseBody : Tea.TeaModel {
                 }
                 if dict.keys.contains("Namespace") {
                     self.namespace = dict["Namespace"] as! String
+                }
+                if dict.keys.contains("SaeAppId") {
+                    self.saeAppId = dict["SaeAppId"] as! String
                 }
                 if dict.keys.contains("SourceId") {
                     self.sourceId = dict["SourceId"] as! String
@@ -79340,6 +80364,403 @@ public class UpdateServiceSourceResponse : Tea.TeaModel {
         }
         if dict.keys.contains("body") {
             var model = UpdateServiceSourceResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
+public class UpdateWebFlowRuleRequest : Tea.TeaModel {
+    public var acceptLanguage: String?
+
+    public var appId: String?
+
+    public var appName: String?
+
+    public var burst: Int32?
+
+    public var controlBehavior: Int32?
+
+    public var enable: Bool?
+
+    public var maxQueueingTimeMs: Int32?
+
+    public var metricType: Int32?
+
+    public var namespace: String?
+
+    public var paramItem: String?
+
+    public var regionId: String?
+
+    public var resourceMode: Int32?
+
+    public var ruleId: Int64?
+
+    public var statIntervalMs: Int32?
+
+    public var threshold: Double?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.acceptLanguage != nil {
+            map["AcceptLanguage"] = self.acceptLanguage!
+        }
+        if self.appId != nil {
+            map["AppId"] = self.appId!
+        }
+        if self.appName != nil {
+            map["AppName"] = self.appName!
+        }
+        if self.burst != nil {
+            map["Burst"] = self.burst!
+        }
+        if self.controlBehavior != nil {
+            map["ControlBehavior"] = self.controlBehavior!
+        }
+        if self.enable != nil {
+            map["Enable"] = self.enable!
+        }
+        if self.maxQueueingTimeMs != nil {
+            map["MaxQueueingTimeMs"] = self.maxQueueingTimeMs!
+        }
+        if self.metricType != nil {
+            map["MetricType"] = self.metricType!
+        }
+        if self.namespace != nil {
+            map["Namespace"] = self.namespace!
+        }
+        if self.paramItem != nil {
+            map["ParamItem"] = self.paramItem!
+        }
+        if self.regionId != nil {
+            map["RegionId"] = self.regionId!
+        }
+        if self.resourceMode != nil {
+            map["ResourceMode"] = self.resourceMode!
+        }
+        if self.ruleId != nil {
+            map["RuleId"] = self.ruleId!
+        }
+        if self.statIntervalMs != nil {
+            map["StatIntervalMs"] = self.statIntervalMs!
+        }
+        if self.threshold != nil {
+            map["Threshold"] = self.threshold!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("AcceptLanguage") {
+            self.acceptLanguage = dict["AcceptLanguage"] as! String
+        }
+        if dict.keys.contains("AppId") {
+            self.appId = dict["AppId"] as! String
+        }
+        if dict.keys.contains("AppName") {
+            self.appName = dict["AppName"] as! String
+        }
+        if dict.keys.contains("Burst") {
+            self.burst = dict["Burst"] as! Int32
+        }
+        if dict.keys.contains("ControlBehavior") {
+            self.controlBehavior = dict["ControlBehavior"] as! Int32
+        }
+        if dict.keys.contains("Enable") {
+            self.enable = dict["Enable"] as! Bool
+        }
+        if dict.keys.contains("MaxQueueingTimeMs") {
+            self.maxQueueingTimeMs = dict["MaxQueueingTimeMs"] as! Int32
+        }
+        if dict.keys.contains("MetricType") {
+            self.metricType = dict["MetricType"] as! Int32
+        }
+        if dict.keys.contains("Namespace") {
+            self.namespace = dict["Namespace"] as! String
+        }
+        if dict.keys.contains("ParamItem") {
+            self.paramItem = dict["ParamItem"] as! String
+        }
+        if dict.keys.contains("RegionId") {
+            self.regionId = dict["RegionId"] as! String
+        }
+        if dict.keys.contains("ResourceMode") {
+            self.resourceMode = dict["ResourceMode"] as! Int32
+        }
+        if dict.keys.contains("RuleId") {
+            self.ruleId = dict["RuleId"] as! Int64
+        }
+        if dict.keys.contains("StatIntervalMs") {
+            self.statIntervalMs = dict["StatIntervalMs"] as! Int32
+        }
+        if dict.keys.contains("Threshold") {
+            self.threshold = dict["Threshold"] as! Double
+        }
+    }
+}
+
+public class UpdateWebFlowRuleResponseBody : Tea.TeaModel {
+    public class Data : Tea.TeaModel {
+        public var appId: String?
+
+        public var appName: String?
+
+        public var burst: Int32?
+
+        public var controlBehavior: Int32?
+
+        public var enable: Bool?
+
+        public var id: Int64?
+
+        public var maxQueueingTimeMs: Int32?
+
+        public var metricType: Int32?
+
+        public var namespace: String?
+
+        public var paramItem: String?
+
+        public var regionId: String?
+
+        public var reourceMode: Int32?
+
+        public var resource: String?
+
+        public var statIntervalMs: Int32?
+
+        public var threshold: Double?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.appId != nil {
+                map["AppId"] = self.appId!
+            }
+            if self.appName != nil {
+                map["AppName"] = self.appName!
+            }
+            if self.burst != nil {
+                map["Burst"] = self.burst!
+            }
+            if self.controlBehavior != nil {
+                map["ControlBehavior"] = self.controlBehavior!
+            }
+            if self.enable != nil {
+                map["Enable"] = self.enable!
+            }
+            if self.id != nil {
+                map["Id"] = self.id!
+            }
+            if self.maxQueueingTimeMs != nil {
+                map["MaxQueueingTimeMs"] = self.maxQueueingTimeMs!
+            }
+            if self.metricType != nil {
+                map["MetricType"] = self.metricType!
+            }
+            if self.namespace != nil {
+                map["Namespace"] = self.namespace!
+            }
+            if self.paramItem != nil {
+                map["ParamItem"] = self.paramItem!
+            }
+            if self.regionId != nil {
+                map["RegionId"] = self.regionId!
+            }
+            if self.reourceMode != nil {
+                map["ReourceMode"] = self.reourceMode!
+            }
+            if self.resource != nil {
+                map["Resource"] = self.resource!
+            }
+            if self.statIntervalMs != nil {
+                map["StatIntervalMs"] = self.statIntervalMs!
+            }
+            if self.threshold != nil {
+                map["Threshold"] = self.threshold!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("AppId") {
+                self.appId = dict["AppId"] as! String
+            }
+            if dict.keys.contains("AppName") {
+                self.appName = dict["AppName"] as! String
+            }
+            if dict.keys.contains("Burst") {
+                self.burst = dict["Burst"] as! Int32
+            }
+            if dict.keys.contains("ControlBehavior") {
+                self.controlBehavior = dict["ControlBehavior"] as! Int32
+            }
+            if dict.keys.contains("Enable") {
+                self.enable = dict["Enable"] as! Bool
+            }
+            if dict.keys.contains("Id") {
+                self.id = dict["Id"] as! Int64
+            }
+            if dict.keys.contains("MaxQueueingTimeMs") {
+                self.maxQueueingTimeMs = dict["MaxQueueingTimeMs"] as! Int32
+            }
+            if dict.keys.contains("MetricType") {
+                self.metricType = dict["MetricType"] as! Int32
+            }
+            if dict.keys.contains("Namespace") {
+                self.namespace = dict["Namespace"] as! String
+            }
+            if dict.keys.contains("ParamItem") {
+                self.paramItem = dict["ParamItem"] as! String
+            }
+            if dict.keys.contains("RegionId") {
+                self.regionId = dict["RegionId"] as! String
+            }
+            if dict.keys.contains("ReourceMode") {
+                self.reourceMode = dict["ReourceMode"] as! Int32
+            }
+            if dict.keys.contains("Resource") {
+                self.resource = dict["Resource"] as! String
+            }
+            if dict.keys.contains("StatIntervalMs") {
+                self.statIntervalMs = dict["StatIntervalMs"] as! Int32
+            }
+            if dict.keys.contains("Threshold") {
+                self.threshold = dict["Threshold"] as! Double
+            }
+        }
+    }
+    public var code: String?
+
+    public var data: UpdateWebFlowRuleResponseBody.Data?
+
+    public var message: String?
+
+    public var requestId: String?
+
+    public var success: Bool?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.data?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.code != nil {
+            map["Code"] = self.code!
+        }
+        if self.data != nil {
+            map["Data"] = self.data?.toMap()
+        }
+        if self.message != nil {
+            map["Message"] = self.message!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.success != nil {
+            map["Success"] = self.success!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("Code") {
+            self.code = dict["Code"] as! String
+        }
+        if dict.keys.contains("Data") {
+            var model = UpdateWebFlowRuleResponseBody.Data()
+            model.fromMap(dict["Data"] as! [String: Any])
+            self.data = model
+        }
+        if dict.keys.contains("Message") {
+            self.message = dict["Message"] as! String
+        }
+        if dict.keys.contains("RequestId") {
+            self.requestId = dict["RequestId"] as! String
+        }
+        if dict.keys.contains("Success") {
+            self.success = dict["Success"] as! Bool
+        }
+    }
+}
+
+public class UpdateWebFlowRuleResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: UpdateWebFlowRuleResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") {
+            var model = UpdateWebFlowRuleResponseBody()
             model.fromMap(dict["body"] as! [String: Any])
             self.body = model
         }
