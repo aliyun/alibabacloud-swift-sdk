@@ -19436,6 +19436,8 @@ public class ListDatasetDocumentsResponseBody : Tea.TeaModel {
 
         public var content: String?
 
+        public var createTime: String?
+
         public var disableHandleMultimodalMedia: Bool?
 
         public var docId: String?
@@ -19462,6 +19464,8 @@ public class ListDatasetDocumentsResponseBody : Tea.TeaModel {
 
         public var title: String?
 
+        public var updateTime: String?
+
         public var url: String?
 
         public override init() {
@@ -19483,6 +19487,9 @@ public class ListDatasetDocumentsResponseBody : Tea.TeaModel {
             }
             if self.content != nil {
                 map["Content"] = self.content!
+            }
+            if self.createTime != nil {
+                map["CreateTime"] = self.createTime!
             }
             if self.disableHandleMultimodalMedia != nil {
                 map["DisableHandleMultimodalMedia"] = self.disableHandleMultimodalMedia!
@@ -19527,6 +19534,9 @@ public class ListDatasetDocumentsResponseBody : Tea.TeaModel {
             if self.title != nil {
                 map["Title"] = self.title!
             }
+            if self.updateTime != nil {
+                map["UpdateTime"] = self.updateTime!
+            }
             if self.url != nil {
                 map["Url"] = self.url!
             }
@@ -19539,6 +19549,9 @@ public class ListDatasetDocumentsResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("Content") {
                 self.content = dict["Content"] as! String
+            }
+            if dict.keys.contains("CreateTime") {
+                self.createTime = dict["CreateTime"] as! String
             }
             if dict.keys.contains("DisableHandleMultimodalMedia") {
                 self.disableHandleMultimodalMedia = dict["DisableHandleMultimodalMedia"] as! Bool
@@ -19586,6 +19599,9 @@ public class ListDatasetDocumentsResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("Title") {
                 self.title = dict["Title"] as! String
+            }
+            if dict.keys.contains("UpdateTime") {
+                self.updateTime = dict["UpdateTime"] as! String
             }
             if dict.keys.contains("Url") {
                 self.url = dict["Url"] as! String
@@ -19755,6 +19771,8 @@ public class ListDatasetsRequest : Tea.TeaModel {
 
     public var endTime: String?
 
+    public var includeConfig: Bool?
+
     public var pageNumber: Int32?
 
     public var pageSize: String?
@@ -19791,6 +19809,9 @@ public class ListDatasetsRequest : Tea.TeaModel {
         if self.endTime != nil {
             map["EndTime"] = self.endTime!
         }
+        if self.includeConfig != nil {
+            map["IncludeConfig"] = self.includeConfig!
+        }
         if self.pageNumber != nil {
             map["PageNumber"] = self.pageNumber!
         }
@@ -19822,6 +19843,9 @@ public class ListDatasetsRequest : Tea.TeaModel {
         if dict.keys.contains("EndTime") {
             self.endTime = dict["EndTime"] as! String
         }
+        if dict.keys.contains("IncludeConfig") {
+            self.includeConfig = dict["IncludeConfig"] as! Bool
+        }
         if dict.keys.contains("PageNumber") {
             self.pageNumber = dict["PageNumber"] as! Int32
         }
@@ -19841,6 +19865,59 @@ public class ListDatasetsRequest : Tea.TeaModel {
 }
 
 public class ListDatasetsResponseBody : Tea.TeaModel {
+    public class CustomSemanticSearchConfig : Tea.TeaModel {
+        public var datasetQuota: Int32?
+
+        public var datasetUsedQuota: Int32?
+
+        public var docQuota: Int64?
+
+        public var docUsedQuota: Int64?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.datasetQuota != nil {
+                map["DatasetQuota"] = self.datasetQuota!
+            }
+            if self.datasetUsedQuota != nil {
+                map["DatasetUsedQuota"] = self.datasetUsedQuota!
+            }
+            if self.docQuota != nil {
+                map["DocQuota"] = self.docQuota!
+            }
+            if self.docUsedQuota != nil {
+                map["DocUsedQuota"] = self.docUsedQuota!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("DatasetQuota") {
+                self.datasetQuota = dict["DatasetQuota"] as! Int32
+            }
+            if dict.keys.contains("DatasetUsedQuota") {
+                self.datasetUsedQuota = dict["DatasetUsedQuota"] as! Int32
+            }
+            if dict.keys.contains("DocQuota") {
+                self.docQuota = dict["DocQuota"] as! Int64
+            }
+            if dict.keys.contains("DocUsedQuota") {
+                self.docUsedQuota = dict["DocUsedQuota"] as! Int64
+            }
+        }
+    }
     public class Data : Tea.TeaModel {
         public var createTime: String?
 
@@ -19853,6 +19930,8 @@ public class ListDatasetsResponseBody : Tea.TeaModel {
         public var datasetName: String?
 
         public var datasetType: String?
+
+        public var docUsedQuota: Int64?
 
         public var searchDatasetEnable: Int32?
 
@@ -19888,6 +19967,9 @@ public class ListDatasetsResponseBody : Tea.TeaModel {
             if self.datasetType != nil {
                 map["DatasetType"] = self.datasetType!
             }
+            if self.docUsedQuota != nil {
+                map["DocUsedQuota"] = self.docUsedQuota!
+            }
             if self.searchDatasetEnable != nil {
                 map["SearchDatasetEnable"] = self.searchDatasetEnable!
             }
@@ -19913,12 +19995,54 @@ public class ListDatasetsResponseBody : Tea.TeaModel {
             if dict.keys.contains("DatasetType") {
                 self.datasetType = dict["DatasetType"] as! String
             }
+            if dict.keys.contains("DocUsedQuota") {
+                self.docUsedQuota = dict["DocUsedQuota"] as! Int64
+            }
             if dict.keys.contains("SearchDatasetEnable") {
                 self.searchDatasetEnable = dict["SearchDatasetEnable"] as! Int32
             }
         }
     }
+    public class ThirdSearchConfig : Tea.TeaModel {
+        public var datasetQuota: Int32?
+
+        public var datasetUsedQuota: Int32?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.datasetQuota != nil {
+                map["DatasetQuota"] = self.datasetQuota!
+            }
+            if self.datasetUsedQuota != nil {
+                map["DatasetUsedQuota"] = self.datasetUsedQuota!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("DatasetQuota") {
+                self.datasetQuota = dict["DatasetQuota"] as! Int32
+            }
+            if dict.keys.contains("DatasetUsedQuota") {
+                self.datasetUsedQuota = dict["DatasetUsedQuota"] as! Int32
+            }
+        }
+    }
     public var code: String?
+
+    public var customSemanticSearchConfig: ListDatasetsResponseBody.CustomSemanticSearchConfig?
 
     public var data: [ListDatasetsResponseBody.Data]?
 
@@ -19934,6 +20058,8 @@ public class ListDatasetsResponseBody : Tea.TeaModel {
 
     public var success: Bool?
 
+    public var thirdSearchConfig: ListDatasetsResponseBody.ThirdSearchConfig?
+
     public var totalCount: Int32?
 
     public override init() {
@@ -19946,12 +20072,17 @@ public class ListDatasetsResponseBody : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
+        try self.customSemanticSearchConfig?.validate()
+        try self.thirdSearchConfig?.validate()
     }
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
         if self.code != nil {
             map["Code"] = self.code!
+        }
+        if self.customSemanticSearchConfig != nil {
+            map["CustomSemanticSearchConfig"] = self.customSemanticSearchConfig?.toMap()
         }
         if self.data != nil {
             var tmp : [Any] = []
@@ -19978,6 +20109,9 @@ public class ListDatasetsResponseBody : Tea.TeaModel {
         if self.success != nil {
             map["Success"] = self.success!
         }
+        if self.thirdSearchConfig != nil {
+            map["ThirdSearchConfig"] = self.thirdSearchConfig?.toMap()
+        }
         if self.totalCount != nil {
             map["TotalCount"] = self.totalCount!
         }
@@ -19987,6 +20121,11 @@ public class ListDatasetsResponseBody : Tea.TeaModel {
     public override func fromMap(_ dict: [String: Any]) -> Void {
         if dict.keys.contains("Code") {
             self.code = dict["Code"] as! String
+        }
+        if dict.keys.contains("CustomSemanticSearchConfig") {
+            var model = ListDatasetsResponseBody.CustomSemanticSearchConfig()
+            model.fromMap(dict["CustomSemanticSearchConfig"] as! [String: Any])
+            self.customSemanticSearchConfig = model
         }
         if dict.keys.contains("Data") {
             var tmp : [ListDatasetsResponseBody.Data] = []
@@ -20016,6 +20155,11 @@ public class ListDatasetsResponseBody : Tea.TeaModel {
         }
         if dict.keys.contains("Success") {
             self.success = dict["Success"] as! Bool
+        }
+        if dict.keys.contains("ThirdSearchConfig") {
+            var model = ListDatasetsResponseBody.ThirdSearchConfig()
+            model.fromMap(dict["ThirdSearchConfig"] as! [String: Any])
+            self.thirdSearchConfig = model
         }
         if dict.keys.contains("TotalCount") {
             self.totalCount = dict["TotalCount"] as! Int32
