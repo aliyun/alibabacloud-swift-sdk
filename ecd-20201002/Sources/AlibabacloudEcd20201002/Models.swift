@@ -5004,6 +5004,8 @@ public class GetLoginTokenResponseBody : Tea.TeaModel {
 
     public var nextStage: String?
 
+    public var nickName: String?
+
     public var passwordStrategy: GetLoginTokenResponseBody.PasswordStrategy?
 
     public var phone: String?
@@ -5063,6 +5065,9 @@ public class GetLoginTokenResponseBody : Tea.TeaModel {
         if self.nextStage != nil {
             map["NextStage"] = self.nextStage!
         }
+        if self.nickName != nil {
+            map["NickName"] = self.nickName!
+        }
         if self.passwordStrategy != nil {
             map["PasswordStrategy"] = self.passwordStrategy?.toMap()
         }
@@ -5120,6 +5125,9 @@ public class GetLoginTokenResponseBody : Tea.TeaModel {
         }
         if dict.keys.contains("NextStage") {
             self.nextStage = dict["NextStage"] as! String
+        }
+        if dict.keys.contains("NickName") {
+            self.nickName = dict["NickName"] as! String
         }
         if dict.keys.contains("PasswordStrategy") {
             var model = GetLoginTokenResponseBody.PasswordStrategy()
