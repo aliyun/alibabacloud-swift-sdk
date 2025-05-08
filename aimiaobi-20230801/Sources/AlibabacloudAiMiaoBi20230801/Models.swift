@@ -26130,6 +26130,190 @@ public class ListSearchTaskDialoguesRequest : Tea.TeaModel {
 
 public class ListSearchTaskDialoguesResponseBody : Tea.TeaModel {
     public class Data : Tea.TeaModel {
+        public class ChatConfig : Tea.TeaModel {
+            public class SearchParam : Tea.TeaModel {
+                public class SearchSources : Tea.TeaModel {
+                    public var code: String?
+
+                    public var datasetName: String?
+
+                    public var name: String?
+
+                    public override init() {
+                        super.init()
+                    }
+
+                    public init(_ dict: [String: Any]) {
+                        super.init()
+                        self.fromMap(dict)
+                    }
+
+                    public override func validate() throws -> Void {
+                    }
+
+                    public override func toMap() -> [String : Any] {
+                        var map = super.toMap()
+                        if self.code != nil {
+                            map["Code"] = self.code!
+                        }
+                        if self.datasetName != nil {
+                            map["DatasetName"] = self.datasetName!
+                        }
+                        if self.name != nil {
+                            map["Name"] = self.name!
+                        }
+                        return map
+                    }
+
+                    public override func fromMap(_ dict: [String: Any]) -> Void {
+                        if dict.keys.contains("Code") {
+                            self.code = dict["Code"] as! String
+                        }
+                        if dict.keys.contains("DatasetName") {
+                            self.datasetName = dict["DatasetName"] as! String
+                        }
+                        if dict.keys.contains("Name") {
+                            self.name = dict["Name"] as! String
+                        }
+                    }
+                }
+                public var endTime: String?
+
+                public var multimodalSearchTypes: [String]?
+
+                public var searchSources: [ListSearchTaskDialoguesResponseBody.Data.ChatConfig.SearchParam.SearchSources]?
+
+                public var startTime: String?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.endTime != nil {
+                        map["EndTime"] = self.endTime!
+                    }
+                    if self.multimodalSearchTypes != nil {
+                        map["MultimodalSearchTypes"] = self.multimodalSearchTypes!
+                    }
+                    if self.searchSources != nil {
+                        var tmp : [Any] = []
+                        for k in self.searchSources! {
+                            tmp.append(k.toMap())
+                        }
+                        map["SearchSources"] = tmp
+                    }
+                    if self.startTime != nil {
+                        map["StartTime"] = self.startTime!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any]) -> Void {
+                    if dict.keys.contains("EndTime") {
+                        self.endTime = dict["EndTime"] as! String
+                    }
+                    if dict.keys.contains("MultimodalSearchTypes") {
+                        self.multimodalSearchTypes = dict["MultimodalSearchTypes"] as! [String]
+                    }
+                    if dict.keys.contains("SearchSources") {
+                        var tmp : [ListSearchTaskDialoguesResponseBody.Data.ChatConfig.SearchParam.SearchSources] = []
+                        for v in dict["SearchSources"] as! [Any] {
+                            var model = ListSearchTaskDialoguesResponseBody.Data.ChatConfig.SearchParam.SearchSources()
+                            if v != nil {
+                                model.fromMap(v as! [String: Any])
+                            }
+                            tmp.append(model)
+                        }
+                        self.searchSources = tmp
+                    }
+                    if dict.keys.contains("StartTime") {
+                        self.startTime = dict["StartTime"] as! String
+                    }
+                }
+            }
+            public var dialogueType: Int32?
+
+            public var endToEnd: Bool?
+
+            public var generateLevel: String?
+
+            public var generateTechnology: String?
+
+            public var searchModels: [String]?
+
+            public var searchParam: ListSearchTaskDialoguesResponseBody.Data.ChatConfig.SearchParam?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+                try self.searchParam?.validate()
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.dialogueType != nil {
+                    map["DialogueType"] = self.dialogueType!
+                }
+                if self.endToEnd != nil {
+                    map["EndToEnd"] = self.endToEnd!
+                }
+                if self.generateLevel != nil {
+                    map["GenerateLevel"] = self.generateLevel!
+                }
+                if self.generateTechnology != nil {
+                    map["GenerateTechnology"] = self.generateTechnology!
+                }
+                if self.searchModels != nil {
+                    map["SearchModels"] = self.searchModels!
+                }
+                if self.searchParam != nil {
+                    map["SearchParam"] = self.searchParam?.toMap()
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("DialogueType") {
+                    self.dialogueType = dict["DialogueType"] as! Int32
+                }
+                if dict.keys.contains("EndToEnd") {
+                    self.endToEnd = dict["EndToEnd"] as! Bool
+                }
+                if dict.keys.contains("GenerateLevel") {
+                    self.generateLevel = dict["GenerateLevel"] as! String
+                }
+                if dict.keys.contains("GenerateTechnology") {
+                    self.generateTechnology = dict["GenerateTechnology"] as! String
+                }
+                if dict.keys.contains("SearchModels") {
+                    self.searchModels = dict["SearchModels"] as! [String]
+                }
+                if dict.keys.contains("SearchParam") {
+                    var model = ListSearchTaskDialoguesResponseBody.Data.ChatConfig.SearchParam()
+                    model.fromMap(dict["SearchParam"] as! [String: Any])
+                    self.searchParam = model
+                }
+            }
+        }
+        public var chatConfig: ListSearchTaskDialoguesResponseBody.Data.ChatConfig?
+
         public var createTime: String?
 
         public var dialogueType: Int32?
@@ -26162,10 +26346,14 @@ public class ListSearchTaskDialoguesResponseBody : Tea.TeaModel {
         }
 
         public override func validate() throws -> Void {
+            try self.chatConfig?.validate()
         }
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
+            if self.chatConfig != nil {
+                map["ChatConfig"] = self.chatConfig?.toMap()
+            }
             if self.createTime != nil {
                 map["CreateTime"] = self.createTime!
             }
@@ -26203,6 +26391,11 @@ public class ListSearchTaskDialoguesResponseBody : Tea.TeaModel {
         }
 
         public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("ChatConfig") {
+                var model = ListSearchTaskDialoguesResponseBody.Data.ChatConfig()
+                model.fromMap(dict["ChatConfig"] as! [String: Any])
+                self.chatConfig = model
+            }
             if dict.keys.contains("CreateTime") {
                 self.createTime = dict["CreateTime"] as! String
             }
