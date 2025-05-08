@@ -17,7 +17,7 @@ English | [简体中文](README-CN.md)
 To integrate `AlibabacloudIQS20241111` into your Xcode project using [Carthage](https://github.com/Carthage/Carthage), specify it in your `Cartfile`:
 
 ```ogdl
-github "alibabacloud-sdk-swift/iqs-20241111" "1.7.1"
+github "alibabacloud-sdk-swift/iqs-20241111" "1.8.0"
 ```
 
 ### Swift Package Manager
@@ -26,7 +26,7 @@ To integrate `AlibabacloudIQS20241111` into your Xcode project using [Swift Pack
 
 ```swift
 dependencies: [
-    .package(url: "https://github.com/alibabacloud-sdk-swift/iqs-20241111.git", from: "1.7.1")
+    .package(url: "https://github.com/alibabacloud-sdk-swift/iqs-20241111.git", from: "1.8.0")
 ]
 ```
 

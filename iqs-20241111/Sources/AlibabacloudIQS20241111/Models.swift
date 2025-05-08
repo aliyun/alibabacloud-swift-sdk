@@ -1363,7 +1363,7 @@ public class UnifiedSearchInformation : Tea.TeaModel {
     }
 }
 
-public class UnifiedSearchRequest : Tea.TeaModel {
+public class UnifiedSearchInput : Tea.TeaModel {
     public var category: String?
 
     public var contents: RequestContents?
@@ -1428,7 +1428,7 @@ public class UnifiedSearchRequest : Tea.TeaModel {
     }
 }
 
-public class UnifiedSearchResponse : Tea.TeaModel {
+public class UnifiedSearchOutput : Tea.TeaModel {
     public var costCredits: UnifiedCostCredits?
 
     public var pageItems: [UnifiedPageItem]?
@@ -2339,6 +2339,88 @@ public class GlobalSearchResponse : Tea.TeaModel {
         }
         if dict.keys.contains("body") {
             var model = GlobalSearchResult()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
+public class UnifiedSearchRequest : Tea.TeaModel {
+    public var body: UnifiedSearchInput?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("body") {
+            var model = UnifiedSearchInput()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
+public class UnifiedSearchResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: UnifiedSearchOutput?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") {
+            var model = UnifiedSearchOutput()
             model.fromMap(dict["body"] as! [String: Any])
             self.body = model
         }
