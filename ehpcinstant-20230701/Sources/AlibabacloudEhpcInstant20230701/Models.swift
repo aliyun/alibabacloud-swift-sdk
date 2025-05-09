@@ -3823,6 +3823,8 @@ public class GetJobResponseBody : Tea.TeaModel {
                 }
             }
         }
+        public var appExtraInfo: String?
+
         public var createTime: String?
 
         public var deploymentPolicy: GetJobResponseBody.JobInfo.DeploymentPolicy?
@@ -3858,6 +3860,9 @@ public class GetJobResponseBody : Tea.TeaModel {
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
+            if self.appExtraInfo != nil {
+                map["AppExtraInfo"] = self.appExtraInfo!
+            }
             if self.createTime != nil {
                 map["CreateTime"] = self.createTime!
             }
@@ -3896,6 +3901,9 @@ public class GetJobResponseBody : Tea.TeaModel {
         }
 
         public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("AppExtraInfo") {
+                self.appExtraInfo = dict["AppExtraInfo"] as! String
+            }
             if dict.keys.contains("CreateTime") {
                 self.createTime = dict["CreateTime"] as! String
             }
@@ -5956,6 +5964,8 @@ public class ListJobsResponseBody : Tea.TeaModel {
                 }
             }
         }
+        public var appExtraInfo: String?
+
         public var appName: String?
 
         public var createTime: String?
@@ -5996,6 +6006,9 @@ public class ListJobsResponseBody : Tea.TeaModel {
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
+            if self.appExtraInfo != nil {
+                map["AppExtraInfo"] = self.appExtraInfo!
+            }
             if self.appName != nil {
                 map["AppName"] = self.appName!
             }
@@ -6043,6 +6056,9 @@ public class ListJobsResponseBody : Tea.TeaModel {
         }
 
         public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("AppExtraInfo") {
+                self.appExtraInfo = dict["AppExtraInfo"] as! String
+            }
             if dict.keys.contains("AppName") {
                 self.appName = dict["AppName"] as! String
             }
