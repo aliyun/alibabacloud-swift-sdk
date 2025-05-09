@@ -8410,6 +8410,12 @@ public class DescribeInternetOpenIpResponseBody : Tea.TeaModel {
 
         public var hasAclRecommend: Bool?
 
+        public var inBytes: Int64?
+
+        public var memberUid: Int64?
+
+        public var outBytes: Int64?
+
         public var portList: [String]?
 
         public var publicIp: String?
@@ -8424,6 +8430,8 @@ public class DescribeInternetOpenIpResponseBody : Tea.TeaModel {
 
         public var srcIpCnt: Int64?
 
+        public var totalBytes: Int64?
+
         public var totalReplyBytes: Int64?
 
         public var trafficPercent1Day: String?
@@ -8431,6 +8439,8 @@ public class DescribeInternetOpenIpResponseBody : Tea.TeaModel {
         public var trafficPercent30Day: String?
 
         public var trafficPercent7Day: String?
+
+        public var unknownReason: [String]?
 
         public override init() {
             super.init()
@@ -8464,6 +8474,15 @@ public class DescribeInternetOpenIpResponseBody : Tea.TeaModel {
             if self.hasAclRecommend != nil {
                 map["HasAclRecommend"] = self.hasAclRecommend!
             }
+            if self.inBytes != nil {
+                map["InBytes"] = self.inBytes!
+            }
+            if self.memberUid != nil {
+                map["MemberUid"] = self.memberUid!
+            }
+            if self.outBytes != nil {
+                map["OutBytes"] = self.outBytes!
+            }
             if self.portList != nil {
                 map["PortList"] = self.portList!
             }
@@ -8485,6 +8504,9 @@ public class DescribeInternetOpenIpResponseBody : Tea.TeaModel {
             if self.srcIpCnt != nil {
                 map["SrcIpCnt"] = self.srcIpCnt!
             }
+            if self.totalBytes != nil {
+                map["TotalBytes"] = self.totalBytes!
+            }
             if self.totalReplyBytes != nil {
                 map["TotalReplyBytes"] = self.totalReplyBytes!
             }
@@ -8496,6 +8518,9 @@ public class DescribeInternetOpenIpResponseBody : Tea.TeaModel {
             }
             if self.trafficPercent7Day != nil {
                 map["TrafficPercent7Day"] = self.trafficPercent7Day!
+            }
+            if self.unknownReason != nil {
+                map["UnknownReason"] = self.unknownReason!
             }
             return map
         }
@@ -8519,6 +8544,15 @@ public class DescribeInternetOpenIpResponseBody : Tea.TeaModel {
             if dict.keys.contains("HasAclRecommend") {
                 self.hasAclRecommend = dict["HasAclRecommend"] as! Bool
             }
+            if dict.keys.contains("InBytes") {
+                self.inBytes = dict["InBytes"] as! Int64
+            }
+            if dict.keys.contains("MemberUid") {
+                self.memberUid = dict["MemberUid"] as! Int64
+            }
+            if dict.keys.contains("OutBytes") {
+                self.outBytes = dict["OutBytes"] as! Int64
+            }
             if dict.keys.contains("PortList") {
                 self.portList = dict["PortList"] as! [String]
             }
@@ -8540,6 +8574,9 @@ public class DescribeInternetOpenIpResponseBody : Tea.TeaModel {
             if dict.keys.contains("SrcIpCnt") {
                 self.srcIpCnt = dict["SrcIpCnt"] as! Int64
             }
+            if dict.keys.contains("TotalBytes") {
+                self.totalBytes = dict["TotalBytes"] as! Int64
+            }
             if dict.keys.contains("TotalReplyBytes") {
                 self.totalReplyBytes = dict["TotalReplyBytes"] as! Int64
             }
@@ -8551,6 +8588,9 @@ public class DescribeInternetOpenIpResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("TrafficPercent7Day") {
                 self.trafficPercent7Day = dict["TrafficPercent7Day"] as! String
+            }
+            if dict.keys.contains("UnknownReason") {
+                self.unknownReason = dict["UnknownReason"] as! [String]
             }
         }
     }
@@ -9594,6 +9634,125 @@ public class DescribeInvadeEventListResponse : Tea.TeaModel {
         }
         if dict.keys.contains("body") {
             var model = DescribeInvadeEventListResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
+public class DescribeLogStoreInfoResponseBody : Tea.TeaModel {
+    public var logStoreName: String?
+
+    public var projectName: String?
+
+    public var quota: Int64?
+
+    public var requestId: String?
+
+    public var ttl: Int32?
+
+    public var used: Int64?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.logStoreName != nil {
+            map["LogStoreName"] = self.logStoreName!
+        }
+        if self.projectName != nil {
+            map["ProjectName"] = self.projectName!
+        }
+        if self.quota != nil {
+            map["Quota"] = self.quota!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.ttl != nil {
+            map["Ttl"] = self.ttl!
+        }
+        if self.used != nil {
+            map["Used"] = self.used!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("LogStoreName") {
+            self.logStoreName = dict["LogStoreName"] as! String
+        }
+        if dict.keys.contains("ProjectName") {
+            self.projectName = dict["ProjectName"] as! String
+        }
+        if dict.keys.contains("Quota") {
+            self.quota = dict["Quota"] as! Int64
+        }
+        if dict.keys.contains("RequestId") {
+            self.requestId = dict["RequestId"] as! String
+        }
+        if dict.keys.contains("Ttl") {
+            self.ttl = dict["Ttl"] as! Int32
+        }
+        if dict.keys.contains("Used") {
+            self.used = dict["Used"] as! Int64
+        }
+    }
+}
+
+public class DescribeLogStoreInfoResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: DescribeLogStoreInfoResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") {
+            var model = DescribeLogStoreInfoResponseBody()
             model.fromMap(dict["body"] as! [String: Any])
             self.body = model
         }
@@ -10799,6 +10958,252 @@ public class DescribeNatFirewallPolicyPriorUsedResponse : Tea.TeaModel {
     }
 }
 
+public class DescribeNatFirewallTrafficTrendRequest : Tea.TeaModel {
+    public var endTime: Int64?
+
+    public var interval: Int64?
+
+    public var natGatewayId: String?
+
+    public var srcPrivateIP: String?
+
+    public var srcPublicIP: String?
+
+    public var startTime: Int64?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.endTime != nil {
+            map["EndTime"] = self.endTime!
+        }
+        if self.interval != nil {
+            map["Interval"] = self.interval!
+        }
+        if self.natGatewayId != nil {
+            map["NatGatewayId"] = self.natGatewayId!
+        }
+        if self.srcPrivateIP != nil {
+            map["SrcPrivateIP"] = self.srcPrivateIP!
+        }
+        if self.srcPublicIP != nil {
+            map["SrcPublicIP"] = self.srcPublicIP!
+        }
+        if self.startTime != nil {
+            map["StartTime"] = self.startTime!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("EndTime") {
+            self.endTime = dict["EndTime"] as! Int64
+        }
+        if dict.keys.contains("Interval") {
+            self.interval = dict["Interval"] as! Int64
+        }
+        if dict.keys.contains("NatGatewayId") {
+            self.natGatewayId = dict["NatGatewayId"] as! String
+        }
+        if dict.keys.contains("SrcPrivateIP") {
+            self.srcPrivateIP = dict["SrcPrivateIP"] as! String
+        }
+        if dict.keys.contains("SrcPublicIP") {
+            self.srcPublicIP = dict["SrcPublicIP"] as! String
+        }
+        if dict.keys.contains("StartTime") {
+            self.startTime = dict["StartTime"] as! Int64
+        }
+    }
+}
+
+public class DescribeNatFirewallTrafficTrendResponseBody : Tea.TeaModel {
+    public class DataList : Tea.TeaModel {
+        public var maxInBps: Int64?
+
+        public var maxOutBps: Int64?
+
+        public var maxTotalBps: Int64?
+
+        public var trafficTime: Int64?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.maxInBps != nil {
+                map["MaxInBps"] = self.maxInBps!
+            }
+            if self.maxOutBps != nil {
+                map["MaxOutBps"] = self.maxOutBps!
+            }
+            if self.maxTotalBps != nil {
+                map["MaxTotalBps"] = self.maxTotalBps!
+            }
+            if self.trafficTime != nil {
+                map["TrafficTime"] = self.trafficTime!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("MaxInBps") {
+                self.maxInBps = dict["MaxInBps"] as! Int64
+            }
+            if dict.keys.contains("MaxOutBps") {
+                self.maxOutBps = dict["MaxOutBps"] as! Int64
+            }
+            if dict.keys.contains("MaxTotalBps") {
+                self.maxTotalBps = dict["MaxTotalBps"] as! Int64
+            }
+            if dict.keys.contains("TrafficTime") {
+                self.trafficTime = dict["TrafficTime"] as! Int64
+            }
+        }
+    }
+    public var dataList: [DescribeNatFirewallTrafficTrendResponseBody.DataList]?
+
+    public var maxInBps: Int64?
+
+    public var maxOutBps: Int64?
+
+    public var maxTotalBps: Int64?
+
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.dataList != nil {
+            var tmp : [Any] = []
+            for k in self.dataList! {
+                tmp.append(k.toMap())
+            }
+            map["DataList"] = tmp
+        }
+        if self.maxInBps != nil {
+            map["MaxInBps"] = self.maxInBps!
+        }
+        if self.maxOutBps != nil {
+            map["MaxOutBps"] = self.maxOutBps!
+        }
+        if self.maxTotalBps != nil {
+            map["MaxTotalBps"] = self.maxTotalBps!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("DataList") {
+            var tmp : [DescribeNatFirewallTrafficTrendResponseBody.DataList] = []
+            for v in dict["DataList"] as! [Any] {
+                var model = DescribeNatFirewallTrafficTrendResponseBody.DataList()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.dataList = tmp
+        }
+        if dict.keys.contains("MaxInBps") {
+            self.maxInBps = dict["MaxInBps"] as! Int64
+        }
+        if dict.keys.contains("MaxOutBps") {
+            self.maxOutBps = dict["MaxOutBps"] as! Int64
+        }
+        if dict.keys.contains("MaxTotalBps") {
+            self.maxTotalBps = dict["MaxTotalBps"] as! Int64
+        }
+        if dict.keys.contains("RequestId") {
+            self.requestId = dict["RequestId"] as! String
+        }
+    }
+}
+
+public class DescribeNatFirewallTrafficTrendResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: DescribeNatFirewallTrafficTrendResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") {
+            var model = DescribeNatFirewallTrafficTrendResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
 public class DescribeOutgoingDestinationIPRequest : Tea.TeaModel {
     public var applicationName: String?
 
@@ -10977,6 +11382,8 @@ public class DescribeOutgoingDestinationIPResponseBody : Tea.TeaModel {
 
             public var port: Int32?
 
+            public var unknownReason: [String]?
+
             public override init() {
                 super.init()
             }
@@ -10997,6 +11404,9 @@ public class DescribeOutgoingDestinationIPResponseBody : Tea.TeaModel {
                 if self.port != nil {
                     map["Port"] = self.port!
                 }
+                if self.unknownReason != nil {
+                    map["UnknownReason"] = self.unknownReason!
+                }
                 return map
             }
 
@@ -11006,6 +11416,9 @@ public class DescribeOutgoingDestinationIPResponseBody : Tea.TeaModel {
                 }
                 if dict.keys.contains("Port") {
                     self.port = dict["Port"] as! Int32
+                }
+                if dict.keys.contains("UnknownReason") {
+                    self.unknownReason = dict["UnknownReason"] as! [String]
                 }
             }
         }
