@@ -10666,6 +10666,52 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func simplyAddInstanceWithOptions(_ request: SimplyAddInstanceRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> SimplyAddInstanceResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.databasePassword)) {
+            query["DatabasePassword"] = request.databasePassword ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.databaseUser)) {
+            query["DatabaseUser"] = request.databaseUser ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.host)) {
+            query["Host"] = request.host ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.instanceId)) {
+            query["InstanceId"] = request.instanceId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.instanceRegion)) {
+            query["InstanceRegion"] = request.instanceRegion ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.port)) {
+            query["Port"] = request.port!;
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "SimplyAddInstance",
+            "version": "2018-11-01",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(SimplyAddInstanceResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func simplyAddInstance(_ request: SimplyAddInstanceRequest) async throws -> SimplyAddInstanceResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await simplyAddInstanceWithOptions(request as! SimplyAddInstanceRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func skipDataCorrectRowCheckWithOptions(_ request: SkipDataCorrectRowCheckRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> SkipDataCorrectRowCheckResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]

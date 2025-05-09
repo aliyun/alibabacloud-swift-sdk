@@ -70147,6 +70147,235 @@ public class SetWorkflowExtraInfoResponse : Tea.TeaModel {
     }
 }
 
+public class SimplyAddInstanceRequest : Tea.TeaModel {
+    public var databasePassword: String?
+
+    public var databaseUser: String?
+
+    public var host: String?
+
+    public var instanceId: String?
+
+    public var instanceRegion: String?
+
+    public var port: Int32?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.databasePassword != nil {
+            map["DatabasePassword"] = self.databasePassword!
+        }
+        if self.databaseUser != nil {
+            map["DatabaseUser"] = self.databaseUser!
+        }
+        if self.host != nil {
+            map["Host"] = self.host!
+        }
+        if self.instanceId != nil {
+            map["InstanceId"] = self.instanceId!
+        }
+        if self.instanceRegion != nil {
+            map["InstanceRegion"] = self.instanceRegion!
+        }
+        if self.port != nil {
+            map["Port"] = self.port!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("DatabasePassword") {
+            self.databasePassword = dict["DatabasePassword"] as! String
+        }
+        if dict.keys.contains("DatabaseUser") {
+            self.databaseUser = dict["DatabaseUser"] as! String
+        }
+        if dict.keys.contains("Host") {
+            self.host = dict["Host"] as! String
+        }
+        if dict.keys.contains("InstanceId") {
+            self.instanceId = dict["InstanceId"] as! String
+        }
+        if dict.keys.contains("InstanceRegion") {
+            self.instanceRegion = dict["InstanceRegion"] as! String
+        }
+        if dict.keys.contains("Port") {
+            self.port = dict["Port"] as! Int32
+        }
+    }
+}
+
+public class SimplyAddInstanceResponseBody : Tea.TeaModel {
+    public class Instance : Tea.TeaModel {
+        public var host: String?
+
+        public var instanceId: String?
+
+        public var port: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.host != nil {
+                map["Host"] = self.host!
+            }
+            if self.instanceId != nil {
+                map["InstanceId"] = self.instanceId!
+            }
+            if self.port != nil {
+                map["Port"] = self.port!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("Host") {
+                self.host = dict["Host"] as! String
+            }
+            if dict.keys.contains("InstanceId") {
+                self.instanceId = dict["InstanceId"] as! String
+            }
+            if dict.keys.contains("Port") {
+                self.port = dict["Port"] as! String
+            }
+        }
+    }
+    public var errorCode: String?
+
+    public var errorMessage: String?
+
+    public var instance: SimplyAddInstanceResponseBody.Instance?
+
+    public var requestId: String?
+
+    public var success: Bool?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.instance?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.errorCode != nil {
+            map["ErrorCode"] = self.errorCode!
+        }
+        if self.errorMessage != nil {
+            map["ErrorMessage"] = self.errorMessage!
+        }
+        if self.instance != nil {
+            map["Instance"] = self.instance?.toMap()
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.success != nil {
+            map["Success"] = self.success!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("ErrorCode") {
+            self.errorCode = dict["ErrorCode"] as! String
+        }
+        if dict.keys.contains("ErrorMessage") {
+            self.errorMessage = dict["ErrorMessage"] as! String
+        }
+        if dict.keys.contains("Instance") {
+            var model = SimplyAddInstanceResponseBody.Instance()
+            model.fromMap(dict["Instance"] as! [String: Any])
+            self.instance = model
+        }
+        if dict.keys.contains("RequestId") {
+            self.requestId = dict["RequestId"] as! String
+        }
+        if dict.keys.contains("Success") {
+            self.success = dict["Success"] as! Bool
+        }
+    }
+}
+
+public class SimplyAddInstanceResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: SimplyAddInstanceResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") {
+            var model = SimplyAddInstanceResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
 public class SkipDataCorrectRowCheckRequest : Tea.TeaModel {
     public var orderId: Int64?
 
