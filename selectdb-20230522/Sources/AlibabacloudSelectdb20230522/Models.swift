@@ -793,6 +793,195 @@ public class CreateDBClusterResponse : Tea.TeaModel {
     }
 }
 
+public class CreateDBClusterBindingRequest : Tea.TeaModel {
+    public var DBClusterId: String?
+
+    public var DBClusterIdBak: String?
+
+    public var DBInstanceId: String?
+
+    public var regionId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.DBClusterId != nil {
+            map["DBClusterId"] = self.DBClusterId!
+        }
+        if self.DBClusterIdBak != nil {
+            map["DBClusterIdBak"] = self.DBClusterIdBak!
+        }
+        if self.DBInstanceId != nil {
+            map["DBInstanceId"] = self.DBInstanceId!
+        }
+        if self.regionId != nil {
+            map["RegionId"] = self.regionId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("DBClusterId") {
+            self.DBClusterId = dict["DBClusterId"] as! String
+        }
+        if dict.keys.contains("DBClusterIdBak") {
+            self.DBClusterIdBak = dict["DBClusterIdBak"] as! String
+        }
+        if dict.keys.contains("DBInstanceId") {
+            self.DBInstanceId = dict["DBInstanceId"] as! String
+        }
+        if dict.keys.contains("RegionId") {
+            self.regionId = dict["RegionId"] as! String
+        }
+    }
+}
+
+public class CreateDBClusterBindingResponseBody : Tea.TeaModel {
+    public class Data : Tea.TeaModel {
+        public var dbClusterId: String?
+
+        public var dbInstanceId: String?
+
+        public var dbInstanceName: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.dbClusterId != nil {
+                map["DbClusterId"] = self.dbClusterId!
+            }
+            if self.dbInstanceId != nil {
+                map["DbInstanceId"] = self.dbInstanceId!
+            }
+            if self.dbInstanceName != nil {
+                map["DbInstanceName"] = self.dbInstanceName!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("DbClusterId") {
+                self.dbClusterId = dict["DbClusterId"] as! String
+            }
+            if dict.keys.contains("DbInstanceId") {
+                self.dbInstanceId = dict["DbInstanceId"] as! String
+            }
+            if dict.keys.contains("DbInstanceName") {
+                self.dbInstanceName = dict["DbInstanceName"] as! String
+            }
+        }
+    }
+    public var data: CreateDBClusterBindingResponseBody.Data?
+
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.data?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.data != nil {
+            map["Data"] = self.data?.toMap()
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("Data") {
+            var model = CreateDBClusterBindingResponseBody.Data()
+            model.fromMap(dict["Data"] as! [String: Any])
+            self.data = model
+        }
+        if dict.keys.contains("RequestId") {
+            self.requestId = dict["RequestId"] as! String
+        }
+    }
+}
+
+public class CreateDBClusterBindingResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: CreateDBClusterBindingResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") {
+            var model = CreateDBClusterBindingResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
 public class CreateDBInstanceRequest : Tea.TeaModel {
     public class MultiZone : Tea.TeaModel {
         public var vSwitchIds: [String]?
@@ -868,6 +1057,8 @@ public class CreateDBInstanceRequest : Tea.TeaModel {
             }
         }
     }
+    public var addVPCIPs: String?
+
     public var cacheSize: Int32?
 
     public var chargeType: String?
@@ -922,6 +1113,9 @@ public class CreateDBInstanceRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.addVPCIPs != nil {
+            map["AddVPCIPs"] = self.addVPCIPs!
+        }
         if self.cacheSize != nil {
             map["CacheSize"] = self.cacheSize!
         }
@@ -994,6 +1188,9 @@ public class CreateDBInstanceRequest : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("AddVPCIPs") {
+            self.addVPCIPs = dict["AddVPCIPs"] as! String
+        }
         if dict.keys.contains("CacheSize") {
             self.cacheSize = dict["CacheSize"] as! Int32
         }
@@ -1074,6 +1271,8 @@ public class CreateDBInstanceRequest : Tea.TeaModel {
 }
 
 public class CreateDBInstanceShrinkRequest : Tea.TeaModel {
+    public var addVPCIPs: String?
+
     public var cacheSize: Int32?
 
     public var chargeType: String?
@@ -1128,6 +1327,9 @@ public class CreateDBInstanceShrinkRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.addVPCIPs != nil {
+            map["AddVPCIPs"] = self.addVPCIPs!
+        }
         if self.cacheSize != nil {
             map["CacheSize"] = self.cacheSize!
         }
@@ -1192,6 +1394,9 @@ public class CreateDBInstanceShrinkRequest : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("AddVPCIPs") {
+            self.addVPCIPs = dict["AddVPCIPs"] as! String
+        }
         if dict.keys.contains("CacheSize") {
             self.cacheSize = dict["CacheSize"] as! Int32
         }
@@ -1919,6 +2124,139 @@ public class DeleteDBClusterResponse : Tea.TeaModel {
         }
         if dict.keys.contains("body") {
             var model = DeleteDBClusterResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
+public class DeleteDBClusterBindingRequest : Tea.TeaModel {
+    public var DBClusterId: String?
+
+    public var DBClusterIdBak: String?
+
+    public var DBInstanceId: String?
+
+    public var regionId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.DBClusterId != nil {
+            map["DBClusterId"] = self.DBClusterId!
+        }
+        if self.DBClusterIdBak != nil {
+            map["DBClusterIdBak"] = self.DBClusterIdBak!
+        }
+        if self.DBInstanceId != nil {
+            map["DBInstanceId"] = self.DBInstanceId!
+        }
+        if self.regionId != nil {
+            map["RegionId"] = self.regionId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("DBClusterId") {
+            self.DBClusterId = dict["DBClusterId"] as! String
+        }
+        if dict.keys.contains("DBClusterIdBak") {
+            self.DBClusterIdBak = dict["DBClusterIdBak"] as! String
+        }
+        if dict.keys.contains("DBInstanceId") {
+            self.DBInstanceId = dict["DBInstanceId"] as! String
+        }
+        if dict.keys.contains("RegionId") {
+            self.regionId = dict["RegionId"] as! String
+        }
+    }
+}
+
+public class DeleteDBClusterBindingResponseBody : Tea.TeaModel {
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("RequestId") {
+            self.requestId = dict["RequestId"] as! String
+        }
+    }
+}
+
+public class DeleteDBClusterBindingResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: DeleteDBClusterBindingResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") {
+            var model = DeleteDBClusterBindingResponseBody()
             model.fromMap(dict["body"] as! [String: Any])
             self.body = model
         }
@@ -6187,6 +6525,8 @@ public class GetModifyBEClusterInquiryRequest : Tea.TeaModel {
 
     public var dbInstanceId: String?
 
+    public var modifyClusterChargeType: Bool?
+
     public var preCacheSize: Int64?
 
     public var preComputeSize: Int64?
@@ -6231,6 +6571,9 @@ public class GetModifyBEClusterInquiryRequest : Tea.TeaModel {
         if self.dbInstanceId != nil {
             map["DbInstanceId"] = self.dbInstanceId!
         }
+        if self.modifyClusterChargeType != nil {
+            map["ModifyClusterChargeType"] = self.modifyClusterChargeType!
+        }
         if self.preCacheSize != nil {
             map["PreCacheSize"] = self.preCacheSize!
         }
@@ -6271,6 +6614,9 @@ public class GetModifyBEClusterInquiryRequest : Tea.TeaModel {
         if dict.keys.contains("DbInstanceId") {
             self.dbInstanceId = dict["DbInstanceId"] as! String
         }
+        if dict.keys.contains("ModifyClusterChargeType") {
+            self.modifyClusterChargeType = dict["ModifyClusterChargeType"] as! Bool
+        }
         if dict.keys.contains("PreCacheSize") {
             self.preCacheSize = dict["PreCacheSize"] as! Int64
         }
@@ -6296,6 +6642,8 @@ public class GetModifyBEClusterInquiryResponseBody : Tea.TeaModel {
     public class Data : Tea.TeaModel {
         public var currency: String?
 
+        public var refundAmount: String?
+
         public var tradeAmount: String?
 
         public override init() {
@@ -6315,6 +6663,9 @@ public class GetModifyBEClusterInquiryResponseBody : Tea.TeaModel {
             if self.currency != nil {
                 map["Currency"] = self.currency!
             }
+            if self.refundAmount != nil {
+                map["RefundAmount"] = self.refundAmount!
+            }
             if self.tradeAmount != nil {
                 map["TradeAmount"] = self.tradeAmount!
             }
@@ -6324,6 +6675,9 @@ public class GetModifyBEClusterInquiryResponseBody : Tea.TeaModel {
         public override func fromMap(_ dict: [String: Any]) -> Void {
             if dict.keys.contains("Currency") {
                 self.currency = dict["Currency"] as! String
+            }
+            if dict.keys.contains("RefundAmount") {
+                self.refundAmount = dict["RefundAmount"] as! String
             }
             if dict.keys.contains("TradeAmount") {
                 self.tradeAmount = dict["TradeAmount"] as! String
