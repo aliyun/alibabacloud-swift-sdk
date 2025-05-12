@@ -802,6 +802,43 @@ public class AttachElasticNetworkInterfaceResponse : Tea.TeaModel {
 }
 
 public class CreateElasticNetworkInterfaceRequest : Tea.TeaModel {
+    public class Tag : Tea.TeaModel {
+        public var key: String?
+
+        public var value: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.key != nil {
+                map["Key"] = self.key!
+            }
+            if self.value != nil {
+                map["Value"] = self.value!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("Key") {
+                self.key = dict["Key"] as! String
+            }
+            if dict.keys.contains("Value") {
+                self.value = dict["Value"] as! String
+            }
+        }
+    }
     public var clientToken: String?
 
     public var description_: String?
@@ -815,6 +852,8 @@ public class CreateElasticNetworkInterfaceRequest : Tea.TeaModel {
     public var resourceGroupId: String?
 
     public var securityGroupId: String?
+
+    public var tag: [CreateElasticNetworkInterfaceRequest.Tag]?
 
     public var vSwitchId: String?
 
@@ -857,6 +896,13 @@ public class CreateElasticNetworkInterfaceRequest : Tea.TeaModel {
         if self.securityGroupId != nil {
             map["SecurityGroupId"] = self.securityGroupId!
         }
+        if self.tag != nil {
+            var tmp : [Any] = []
+            for k in self.tag! {
+                tmp.append(k.toMap())
+            }
+            map["Tag"] = tmp
+        }
         if self.vSwitchId != nil {
             map["VSwitchId"] = self.vSwitchId!
         }
@@ -890,6 +936,17 @@ public class CreateElasticNetworkInterfaceRequest : Tea.TeaModel {
         }
         if dict.keys.contains("SecurityGroupId") {
             self.securityGroupId = dict["SecurityGroupId"] as! String
+        }
+        if dict.keys.contains("Tag") {
+            var tmp : [CreateElasticNetworkInterfaceRequest.Tag] = []
+            for v in dict["Tag"] as! [Any] {
+                var model = CreateElasticNetworkInterfaceRequest.Tag()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.tag = tmp
         }
         if dict.keys.contains("VSwitchId") {
             self.vSwitchId = dict["VSwitchId"] as! String
@@ -5493,6 +5550,43 @@ public class GetElasticNetworkInterfaceResponseBody : Tea.TeaModel {
                 }
             }
         }
+        public class Tags : Tea.TeaModel {
+            public var tagKey: String?
+
+            public var tagValue: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.tagKey != nil {
+                    map["TagKey"] = self.tagKey!
+                }
+                if self.tagValue != nil {
+                    map["TagValue"] = self.tagValue!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("TagKey") {
+                    self.tagKey = dict["TagKey"] as! String
+                }
+                if dict.keys.contains("TagValue") {
+                    self.tagValue = dict["TagValue"] as! String
+                }
+            }
+        }
         public var createTime: String?
 
         public var description_: String?
@@ -5526,6 +5620,8 @@ public class GetElasticNetworkInterfaceResponseBody : Tea.TeaModel {
         public var securityGroupId: String?
 
         public var status: String?
+
+        public var tags: [GetElasticNetworkInterfaceResponseBody.Content.Tags]?
 
         public var type: String?
 
@@ -5607,6 +5703,13 @@ public class GetElasticNetworkInterfaceResponseBody : Tea.TeaModel {
             }
             if self.status != nil {
                 map["Status"] = self.status!
+            }
+            if self.tags != nil {
+                var tmp : [Any] = []
+                for k in self.tags! {
+                    tmp.append(k.toMap())
+                }
+                map["Tags"] = tmp
             }
             if self.type != nil {
                 map["Type"] = self.type!
@@ -5690,6 +5793,17 @@ public class GetElasticNetworkInterfaceResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("Status") {
                 self.status = dict["Status"] as! String
+            }
+            if dict.keys.contains("Tags") {
+                var tmp : [GetElasticNetworkInterfaceResponseBody.Content.Tags] = []
+                for v in dict["Tags"] as! [Any] {
+                    var model = GetElasticNetworkInterfaceResponseBody.Content.Tags()
+                    if v != nil {
+                        model.fromMap(v as! [String: Any])
+                    }
+                    tmp.append(model)
+                }
+                self.tags = tmp
             }
             if dict.keys.contains("Type") {
                 self.type = dict["Type"] as! String
@@ -8539,6 +8653,43 @@ public class GetNetworkInterfaceResponseBody : Tea.TeaModel {
                 }
             }
         }
+        public class Tags : Tea.TeaModel {
+            public var tagKey: String?
+
+            public var tagValue: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.tagKey != nil {
+                    map["TagKey"] = self.tagKey!
+                }
+                if self.tagValue != nil {
+                    map["TagValue"] = self.tagValue!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("TagKey") {
+                    self.tagKey = dict["TagKey"] as! String
+                }
+                if dict.keys.contains("TagValue") {
+                    self.tagValue = dict["TagValue"] as! String
+                }
+            }
+        }
         public class VpdBaseInfo : Tea.TeaModel {
             public var cidr: String?
 
@@ -8622,6 +8773,8 @@ public class GetNetworkInterfaceResponseBody : Tea.TeaModel {
 
         public var subnetBaseInfo: GetNetworkInterfaceResponseBody.Content.SubnetBaseInfo?
 
+        public var tags: [GetNetworkInterfaceResponseBody.Content.Tags]?
+
         public var tenantId: String?
 
         public var vpdBaseInfo: GetNetworkInterfaceResponseBody.Content.VpdBaseInfo?
@@ -8693,6 +8846,13 @@ public class GetNetworkInterfaceResponseBody : Tea.TeaModel {
             if self.subnetBaseInfo != nil {
                 map["SubnetBaseInfo"] = self.subnetBaseInfo?.toMap()
             }
+            if self.tags != nil {
+                var tmp : [Any] = []
+                for k in self.tags! {
+                    tmp.append(k.toMap())
+                }
+                map["Tags"] = tmp
+            }
             if self.tenantId != nil {
                 map["TenantId"] = self.tenantId!
             }
@@ -8760,6 +8920,17 @@ public class GetNetworkInterfaceResponseBody : Tea.TeaModel {
                 var model = GetNetworkInterfaceResponseBody.Content.SubnetBaseInfo()
                 model.fromMap(dict["SubnetBaseInfo"] as! [String: Any])
                 self.subnetBaseInfo = model
+            }
+            if dict.keys.contains("Tags") {
+                var tmp : [GetNetworkInterfaceResponseBody.Content.Tags] = []
+                for v in dict["Tags"] as! [Any] {
+                    var model = GetNetworkInterfaceResponseBody.Content.Tags()
+                    if v != nil {
+                        model.fromMap(v as! [String: Any])
+                    }
+                    tmp.append(model)
+                }
+                self.tags = tmp
             }
             if dict.keys.contains("TenantId") {
                 self.tenantId = dict["TenantId"] as! String
@@ -12503,6 +12674,43 @@ public class InitializeVccResponse : Tea.TeaModel {
 }
 
 public class ListElasticNetworkInterfacesRequest : Tea.TeaModel {
+    public class Tag : Tea.TeaModel {
+        public var key: String?
+
+        public var value: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.key != nil {
+                map["Key"] = self.key!
+            }
+            if self.value != nil {
+                map["Value"] = self.value!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("Key") {
+                self.key = dict["Key"] as! String
+            }
+            if dict.keys.contains("Value") {
+                self.value = dict["Value"] as! String
+            }
+        }
+    }
     public var elasticNetworkInterfaceId: String?
 
     public var ip: String?
@@ -12520,6 +12728,8 @@ public class ListElasticNetworkInterfacesRequest : Tea.TeaModel {
     public var resourceGroupId: String?
 
     public var status: String?
+
+    public var tag: [ListElasticNetworkInterfacesRequest.Tag]?
 
     public var type: String?
 
@@ -12570,6 +12780,13 @@ public class ListElasticNetworkInterfacesRequest : Tea.TeaModel {
         if self.status != nil {
             map["Status"] = self.status!
         }
+        if self.tag != nil {
+            var tmp : [Any] = []
+            for k in self.tag! {
+                tmp.append(k.toMap())
+            }
+            map["Tag"] = tmp
+        }
         if self.type != nil {
             map["Type"] = self.type!
         }
@@ -12613,6 +12830,17 @@ public class ListElasticNetworkInterfacesRequest : Tea.TeaModel {
         if dict.keys.contains("Status") {
             self.status = dict["Status"] as! String
         }
+        if dict.keys.contains("Tag") {
+            var tmp : [ListElasticNetworkInterfacesRequest.Tag] = []
+            for v in dict["Tag"] as! [Any] {
+                var model = ListElasticNetworkInterfacesRequest.Tag()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.tag = tmp
+        }
         if dict.keys.contains("Type") {
             self.type = dict["Type"] as! String
         }
@@ -12631,6 +12859,43 @@ public class ListElasticNetworkInterfacesRequest : Tea.TeaModel {
 public class ListElasticNetworkInterfacesResponseBody : Tea.TeaModel {
     public class Content : Tea.TeaModel {
         public class Data : Tea.TeaModel {
+            public class Tags : Tea.TeaModel {
+                public var tagKey: String?
+
+                public var tagValue: String?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.tagKey != nil {
+                        map["TagKey"] = self.tagKey!
+                    }
+                    if self.tagValue != nil {
+                        map["TagValue"] = self.tagValue!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any]) -> Void {
+                    if dict.keys.contains("TagKey") {
+                        self.tagKey = dict["TagKey"] as! String
+                    }
+                    if dict.keys.contains("TagValue") {
+                        self.tagValue = dict["TagValue"] as! String
+                    }
+                }
+            }
             public var createTime: String?
 
             public var description_: String?
@@ -12658,6 +12923,8 @@ public class ListElasticNetworkInterfacesResponseBody : Tea.TeaModel {
             public var securityGroupId: String?
 
             public var status: String?
+
+            public var tags: [ListElasticNetworkInterfacesResponseBody.Content.Data.Tags]?
 
             public var type: String?
 
@@ -12723,6 +12990,13 @@ public class ListElasticNetworkInterfacesResponseBody : Tea.TeaModel {
                 if self.status != nil {
                     map["Status"] = self.status!
                 }
+                if self.tags != nil {
+                    var tmp : [Any] = []
+                    for k in self.tags! {
+                        tmp.append(k.toMap())
+                    }
+                    map["Tags"] = tmp
+                }
                 if self.type != nil {
                     map["Type"] = self.type!
                 }
@@ -12780,6 +13054,17 @@ public class ListElasticNetworkInterfacesResponseBody : Tea.TeaModel {
                 }
                 if dict.keys.contains("Status") {
                     self.status = dict["Status"] as! String
+                }
+                if dict.keys.contains("Tags") {
+                    var tmp : [ListElasticNetworkInterfacesResponseBody.Content.Data.Tags] = []
+                    for v in dict["Tags"] as! [Any] {
+                        var model = ListElasticNetworkInterfacesResponseBody.Content.Data.Tags()
+                        if v != nil {
+                            model.fromMap(v as! [String: Any])
+                        }
+                        tmp.append(model)
+                    }
+                    self.tags = tmp
                 }
                 if dict.keys.contains("Type") {
                     self.type = dict["Type"] as! String
@@ -15671,6 +15956,43 @@ public class ListLniPrivateIpAddressResponse : Tea.TeaModel {
 }
 
 public class ListNetworkInterfacesRequest : Tea.TeaModel {
+    public class Tag : Tea.TeaModel {
+        public var key: String?
+
+        public var value: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.key != nil {
+                map["Key"] = self.key!
+            }
+            if self.value != nil {
+                map["Value"] = self.value!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("Key") {
+                self.key = dict["Key"] as! String
+            }
+            if dict.keys.contains("Value") {
+                self.value = dict["Value"] as! String
+            }
+        }
+    }
     public var enablePage: Bool?
 
     public var ip: String?
@@ -15688,6 +16010,8 @@ public class ListNetworkInterfacesRequest : Tea.TeaModel {
     public var resourceGroupId: String?
 
     public var subnetId: String?
+
+    public var tag: [ListNetworkInterfacesRequest.Tag]?
 
     public var vpdId: String?
 
@@ -15732,6 +16056,13 @@ public class ListNetworkInterfacesRequest : Tea.TeaModel {
         if self.subnetId != nil {
             map["SubnetId"] = self.subnetId!
         }
+        if self.tag != nil {
+            var tmp : [Any] = []
+            for k in self.tag! {
+                tmp.append(k.toMap())
+            }
+            map["Tag"] = tmp
+        }
         if self.vpdId != nil {
             map["VpdId"] = self.vpdId!
         }
@@ -15765,6 +16096,17 @@ public class ListNetworkInterfacesRequest : Tea.TeaModel {
         }
         if dict.keys.contains("SubnetId") {
             self.subnetId = dict["SubnetId"] as! String
+        }
+        if dict.keys.contains("Tag") {
+            var tmp : [ListNetworkInterfacesRequest.Tag] = []
+            for v in dict["Tag"] as! [Any] {
+                var model = ListNetworkInterfacesRequest.Tag()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.tag = tmp
         }
         if dict.keys.contains("VpdId") {
             self.vpdId = dict["VpdId"] as! String
@@ -15897,6 +16239,43 @@ public class ListNetworkInterfacesResponseBody : Tea.TeaModel {
                     }
                 }
             }
+            public class Tags : Tea.TeaModel {
+                public var tagKey: String?
+
+                public var tagValue: String?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.tagKey != nil {
+                        map["TagKey"] = self.tagKey!
+                    }
+                    if self.tagValue != nil {
+                        map["TagValue"] = self.tagValue!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any]) -> Void {
+                    if dict.keys.contains("TagKey") {
+                        self.tagKey = dict["TagKey"] as! String
+                    }
+                    if dict.keys.contains("TagValue") {
+                        self.tagValue = dict["TagValue"] as! String
+                    }
+                }
+            }
             public class VpdBaseInfo : Tea.TeaModel {
                 public var cidr: String?
 
@@ -15980,6 +16359,8 @@ public class ListNetworkInterfacesResponseBody : Tea.TeaModel {
 
             public var subnetBaseInfo: ListNetworkInterfacesResponseBody.Content.Data.SubnetBaseInfo?
 
+            public var tags: [ListNetworkInterfacesResponseBody.Content.Data.Tags]?
+
             public var tenantId: String?
 
             public var vpdBaseInfo: ListNetworkInterfacesResponseBody.Content.Data.VpdBaseInfo?
@@ -16051,6 +16432,13 @@ public class ListNetworkInterfacesResponseBody : Tea.TeaModel {
                 if self.subnetBaseInfo != nil {
                     map["SubnetBaseInfo"] = self.subnetBaseInfo?.toMap()
                 }
+                if self.tags != nil {
+                    var tmp : [Any] = []
+                    for k in self.tags! {
+                        tmp.append(k.toMap())
+                    }
+                    map["Tags"] = tmp
+                }
                 if self.tenantId != nil {
                     map["TenantId"] = self.tenantId!
                 }
@@ -16118,6 +16506,17 @@ public class ListNetworkInterfacesResponseBody : Tea.TeaModel {
                     var model = ListNetworkInterfacesResponseBody.Content.Data.SubnetBaseInfo()
                     model.fromMap(dict["SubnetBaseInfo"] as! [String: Any])
                     self.subnetBaseInfo = model
+                }
+                if dict.keys.contains("Tags") {
+                    var tmp : [ListNetworkInterfacesResponseBody.Content.Data.Tags] = []
+                    for v in dict["Tags"] as! [Any] {
+                        var model = ListNetworkInterfacesResponseBody.Content.Data.Tags()
+                        if v != nil {
+                            model.fromMap(v as! [String: Any])
+                        }
+                        tmp.append(model)
+                    }
+                    self.tags = tmp
                 }
                 if dict.keys.contains("TenantId") {
                     self.tenantId = dict["TenantId"] as! String
