@@ -1459,6 +1459,8 @@ public class AddSmarttagTemplateRequest : Tea.TeaModel {
 
     public var scene: String?
 
+    public var templateConfig: String?
+
     public var templateName: String?
 
     public override init() {
@@ -1529,6 +1531,9 @@ public class AddSmarttagTemplateRequest : Tea.TeaModel {
         if self.scene != nil {
             map["Scene"] = self.scene!
         }
+        if self.templateConfig != nil {
+            map["TemplateConfig"] = self.templateConfig!
+        }
         if self.templateName != nil {
             map["TemplateName"] = self.templateName!
         }
@@ -1589,6 +1594,9 @@ public class AddSmarttagTemplateRequest : Tea.TeaModel {
         }
         if dict.keys.contains("Scene") {
             self.scene = dict["Scene"] as! String
+        }
+        if dict.keys.contains("TemplateConfig") {
+            self.templateConfig = dict["TemplateConfig"] as! String
         }
         if dict.keys.contains("TemplateName") {
             self.templateName = dict["TemplateName"] as! String
@@ -47565,6 +47573,8 @@ public class UpdateSmarttagTemplateRequest : Tea.TeaModel {
 
     public var scene: String?
 
+    public var templateConfig: String?
+
     public var templateId: String?
 
     public var templateName: String?
@@ -47631,6 +47641,9 @@ public class UpdateSmarttagTemplateRequest : Tea.TeaModel {
         if self.scene != nil {
             map["Scene"] = self.scene!
         }
+        if self.templateConfig != nil {
+            map["TemplateConfig"] = self.templateConfig!
+        }
         if self.templateId != nil {
             map["TemplateId"] = self.templateId!
         }
@@ -47688,6 +47701,9 @@ public class UpdateSmarttagTemplateRequest : Tea.TeaModel {
         }
         if dict.keys.contains("Scene") {
             self.scene = dict["Scene"] as! String
+        }
+        if dict.keys.contains("TemplateConfig") {
+            self.templateConfig = dict["TemplateConfig"] as! String
         }
         if dict.keys.contains("TemplateId") {
             self.templateId = dict["TemplateId"] as! String
