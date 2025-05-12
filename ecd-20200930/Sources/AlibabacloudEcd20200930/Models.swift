@@ -29593,6 +29593,51 @@ public class DescribeKmsKeysResponse : Tea.TeaModel {
 }
 
 public class DescribeModificationPriceRequest : Tea.TeaModel {
+    public class ResourceSpecs : Tea.TeaModel {
+        public var desktopId: String?
+
+        public var rootDiskSizeGib: Int32?
+
+        public var userDiskSizeGib: Int32?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.desktopId != nil {
+                map["DesktopId"] = self.desktopId!
+            }
+            if self.rootDiskSizeGib != nil {
+                map["RootDiskSizeGib"] = self.rootDiskSizeGib!
+            }
+            if self.userDiskSizeGib != nil {
+                map["UserDiskSizeGib"] = self.userDiskSizeGib!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("DesktopId") {
+                self.desktopId = dict["DesktopId"] as! String
+            }
+            if dict.keys.contains("RootDiskSizeGib") {
+                self.rootDiskSizeGib = dict["RootDiskSizeGib"] as! Int32
+            }
+            if dict.keys.contains("UserDiskSizeGib") {
+                self.userDiskSizeGib = dict["UserDiskSizeGib"] as! Int32
+            }
+        }
+    }
     public var bandwidth: Int32?
 
     public var instanceId: String?
@@ -29602,6 +29647,8 @@ public class DescribeModificationPriceRequest : Tea.TeaModel {
     public var regionId: String?
 
     public var resellerOwnerUid: Int64?
+
+    public var resourceSpecs: [DescribeModificationPriceRequest.ResourceSpecs]?
 
     public var resourceType: String?
 
@@ -29638,6 +29685,13 @@ public class DescribeModificationPriceRequest : Tea.TeaModel {
         if self.resellerOwnerUid != nil {
             map["ResellerOwnerUid"] = self.resellerOwnerUid!
         }
+        if self.resourceSpecs != nil {
+            var tmp : [Any] = []
+            for k in self.resourceSpecs! {
+                tmp.append(k.toMap())
+            }
+            map["ResourceSpecs"] = tmp
+        }
         if self.resourceType != nil {
             map["ResourceType"] = self.resourceType!
         }
@@ -29665,6 +29719,17 @@ public class DescribeModificationPriceRequest : Tea.TeaModel {
         }
         if dict.keys.contains("ResellerOwnerUid") {
             self.resellerOwnerUid = dict["ResellerOwnerUid"] as! Int64
+        }
+        if dict.keys.contains("ResourceSpecs") {
+            var tmp : [DescribeModificationPriceRequest.ResourceSpecs] = []
+            for v in dict["ResourceSpecs"] as! [Any] {
+                var model = DescribeModificationPriceRequest.ResourceSpecs()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.resourceSpecs = tmp
         }
         if dict.keys.contains("ResourceType") {
             self.resourceType = dict["ResourceType"] as! String

@@ -5551,6 +5551,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.resellerOwnerUid)) {
             query["ResellerOwnerUid"] = request.resellerOwnerUid!;
         }
+        if (!TeaUtils.Client.isUnset(request.resourceSpecs)) {
+            query["ResourceSpecs"] = request.resourceSpecs ?? [];
+        }
         if (!TeaUtils.Client.isUnset(request.resourceType)) {
             query["ResourceType"] = request.resourceType ?? "";
         }
