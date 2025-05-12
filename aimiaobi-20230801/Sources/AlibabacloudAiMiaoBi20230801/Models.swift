@@ -21240,6 +21240,8 @@ public class ListGeneratedContentsRequest : Tea.TeaModel {
 
     public var current: Int32?
 
+    public var dataType: String?
+
     public var endTime: String?
 
     public var query: String?
@@ -21275,6 +21277,9 @@ public class ListGeneratedContentsRequest : Tea.TeaModel {
         if self.current != nil {
             map["Current"] = self.current!
         }
+        if self.dataType != nil {
+            map["DataType"] = self.dataType!
+        }
         if self.endTime != nil {
             map["EndTime"] = self.endTime!
         }
@@ -21306,6 +21311,9 @@ public class ListGeneratedContentsRequest : Tea.TeaModel {
         if dict.keys.contains("Current") {
             self.current = dict["Current"] as! Int32
         }
+        if dict.keys.contains("DataType") {
+            self.dataType = dict["DataType"] as! String
+        }
         if dict.keys.contains("EndTime") {
             self.endTime = dict["EndTime"] as! String
         }
@@ -21329,6 +21337,59 @@ public class ListGeneratedContentsRequest : Tea.TeaModel {
 
 public class ListGeneratedContentsResponseBody : Tea.TeaModel {
     public class Data : Tea.TeaModel {
+        public class FileAttr : Tea.TeaModel {
+            public var fileName: String?
+
+            public var height: Int32?
+
+            public var tmpUrl: String?
+
+            public var width: Int32?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.fileName != nil {
+                    map["FileName"] = self.fileName!
+                }
+                if self.height != nil {
+                    map["Height"] = self.height!
+                }
+                if self.tmpUrl != nil {
+                    map["TmpUrl"] = self.tmpUrl!
+                }
+                if self.width != nil {
+                    map["Width"] = self.width!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("FileName") {
+                    self.fileName = dict["FileName"] as! String
+                }
+                if dict.keys.contains("Height") {
+                    self.height = dict["Height"] as! Int32
+                }
+                if dict.keys.contains("TmpUrl") {
+                    self.tmpUrl = dict["TmpUrl"] as! String
+                }
+                if dict.keys.contains("Width") {
+                    self.width = dict["Width"] as! Int32
+                }
+            }
+        }
         public var content: String?
 
         public var contentDomain: String?
@@ -21340,6 +21401,10 @@ public class ListGeneratedContentsResponseBody : Tea.TeaModel {
         public var createUser: String?
 
         public var deviceId: String?
+
+        public var fileAttr: ListGeneratedContentsResponseBody.Data.FileAttr?
+
+        public var fileKey: String?
 
         public var id: Int64?
 
@@ -21369,6 +21434,7 @@ public class ListGeneratedContentsResponseBody : Tea.TeaModel {
         }
 
         public override func validate() throws -> Void {
+            try self.fileAttr?.validate()
         }
 
         public override func toMap() -> [String : Any] {
@@ -21390,6 +21456,12 @@ public class ListGeneratedContentsResponseBody : Tea.TeaModel {
             }
             if self.deviceId != nil {
                 map["DeviceId"] = self.deviceId!
+            }
+            if self.fileAttr != nil {
+                map["FileAttr"] = self.fileAttr?.toMap()
+            }
+            if self.fileKey != nil {
+                map["FileKey"] = self.fileKey!
             }
             if self.id != nil {
                 map["Id"] = self.id!
@@ -21439,6 +21511,14 @@ public class ListGeneratedContentsResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("DeviceId") {
                 self.deviceId = dict["DeviceId"] as! String
+            }
+            if dict.keys.contains("FileAttr") {
+                var model = ListGeneratedContentsResponseBody.Data.FileAttr()
+                model.fromMap(dict["FileAttr"] as! [String: Any])
+                self.fileAttr = model
+            }
+            if dict.keys.contains("FileKey") {
+                self.fileKey = dict["FileKey"] as! String
             }
             if dict.keys.contains("Id") {
                 self.id = dict["Id"] as! Int64
@@ -24887,6 +24967,75 @@ public class ListMaterialDocumentsShrinkRequest : Tea.TeaModel {
 
 public class ListMaterialDocumentsResponseBody : Tea.TeaModel {
     public class Data : Tea.TeaModel {
+        public class FileAttr : Tea.TeaModel {
+            public var duration: Double?
+
+            public var fileLength: Int64?
+
+            public var fileName: String?
+
+            public var height: Int32?
+
+            public var mimeType: String?
+
+            public var width: Int32?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.duration != nil {
+                    map["Duration"] = self.duration!
+                }
+                if self.fileLength != nil {
+                    map["FileLength"] = self.fileLength!
+                }
+                if self.fileName != nil {
+                    map["FileName"] = self.fileName!
+                }
+                if self.height != nil {
+                    map["Height"] = self.height!
+                }
+                if self.mimeType != nil {
+                    map["MimeType"] = self.mimeType!
+                }
+                if self.width != nil {
+                    map["Width"] = self.width!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("Duration") {
+                    self.duration = dict["Duration"] as! Double
+                }
+                if dict.keys.contains("FileLength") {
+                    self.fileLength = dict["FileLength"] as! Int64
+                }
+                if dict.keys.contains("FileName") {
+                    self.fileName = dict["FileName"] as! String
+                }
+                if dict.keys.contains("Height") {
+                    self.height = dict["Height"] as! Int32
+                }
+                if dict.keys.contains("MimeType") {
+                    self.mimeType = dict["MimeType"] as! String
+                }
+                if dict.keys.contains("Width") {
+                    self.width = dict["Width"] as! Int32
+                }
+            }
+        }
         public var author: String?
 
         public var createTime: String?
@@ -24900,6 +25049,10 @@ public class ListMaterialDocumentsResponseBody : Tea.TeaModel {
         public var docType: String?
 
         public var externalUrl: String?
+
+        public var fileAttr: ListMaterialDocumentsResponseBody.Data.FileAttr?
+
+        public var fileKey: String?
 
         public var htmlContent: String?
 
@@ -24939,6 +25092,7 @@ public class ListMaterialDocumentsResponseBody : Tea.TeaModel {
         }
 
         public override func validate() throws -> Void {
+            try self.fileAttr?.validate()
         }
 
         public override func toMap() -> [String : Any] {
@@ -24963,6 +25117,12 @@ public class ListMaterialDocumentsResponseBody : Tea.TeaModel {
             }
             if self.externalUrl != nil {
                 map["ExternalUrl"] = self.externalUrl!
+            }
+            if self.fileAttr != nil {
+                map["FileAttr"] = self.fileAttr?.toMap()
+            }
+            if self.fileKey != nil {
+                map["FileKey"] = self.fileKey!
             }
             if self.htmlContent != nil {
                 map["HtmlContent"] = self.htmlContent!
@@ -25030,6 +25190,14 @@ public class ListMaterialDocumentsResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("ExternalUrl") {
                 self.externalUrl = dict["ExternalUrl"] as! String
+            }
+            if dict.keys.contains("FileAttr") {
+                var model = ListMaterialDocumentsResponseBody.Data.FileAttr()
+                model.fromMap(dict["FileAttr"] as! [String: Any])
+                self.fileAttr = model
+            }
+            if dict.keys.contains("FileKey") {
+                self.fileKey = dict["FileKey"] as! String
             }
             if dict.keys.contains("HtmlContent") {
                 self.htmlContent = dict["HtmlContent"] as! String
