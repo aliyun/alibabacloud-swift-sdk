@@ -201,6 +201,229 @@ public class Collection : Tea.TeaModel {
     }
 }
 
+public class Connection : Tea.TeaModel {
+    public class Models : Tea.TeaModel {
+        public var displayName: String?
+
+        public var model: String?
+
+        public var modelType: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.displayName != nil {
+                map["DisplayName"] = self.displayName!
+            }
+            if self.model != nil {
+                map["Model"] = self.model!
+            }
+            if self.modelType != nil {
+                map["ModelType"] = self.modelType!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("DisplayName") {
+                self.displayName = dict["DisplayName"] as! String
+            }
+            if dict.keys.contains("Model") {
+                self.model = dict["Model"] as! String
+            }
+            if dict.keys.contains("ModelType") {
+                self.modelType = dict["ModelType"] as! String
+            }
+        }
+    }
+    public class ResourceMeta : Tea.TeaModel {
+        public var instanceId: String?
+
+        public var instanceName: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.instanceId != nil {
+                map["InstanceId"] = self.instanceId!
+            }
+            if self.instanceName != nil {
+                map["InstanceName"] = self.instanceName!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("InstanceId") {
+                self.instanceId = dict["InstanceId"] as! String
+            }
+            if dict.keys.contains("InstanceName") {
+                self.instanceName = dict["InstanceName"] as! String
+            }
+        }
+    }
+    public var accessibility: String?
+
+    public var configs: [String: String]?
+
+    public var connectionId: String?
+
+    public var connectionName: String?
+
+    public var connectionType: String?
+
+    public var creator: String?
+
+    public var description_: String?
+
+    public var gmtCreateTime: String?
+
+    public var gmtModifiedTime: String?
+
+    public var models: [Connection.Models]?
+
+    public var resourceMeta: Connection.ResourceMeta?
+
+    public var secrets: [String: String]?
+
+    public var workspaceId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.resourceMeta?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.accessibility != nil {
+            map["Accessibility"] = self.accessibility!
+        }
+        if self.configs != nil {
+            map["Configs"] = self.configs!
+        }
+        if self.connectionId != nil {
+            map["ConnectionId"] = self.connectionId!
+        }
+        if self.connectionName != nil {
+            map["ConnectionName"] = self.connectionName!
+        }
+        if self.connectionType != nil {
+            map["ConnectionType"] = self.connectionType!
+        }
+        if self.creator != nil {
+            map["Creator"] = self.creator!
+        }
+        if self.description_ != nil {
+            map["Description"] = self.description_!
+        }
+        if self.gmtCreateTime != nil {
+            map["GmtCreateTime"] = self.gmtCreateTime!
+        }
+        if self.gmtModifiedTime != nil {
+            map["GmtModifiedTime"] = self.gmtModifiedTime!
+        }
+        if self.models != nil {
+            var tmp : [Any] = []
+            for k in self.models! {
+                tmp.append(k.toMap())
+            }
+            map["Models"] = tmp
+        }
+        if self.resourceMeta != nil {
+            map["ResourceMeta"] = self.resourceMeta?.toMap()
+        }
+        if self.secrets != nil {
+            map["Secrets"] = self.secrets!
+        }
+        if self.workspaceId != nil {
+            map["WorkspaceId"] = self.workspaceId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("Accessibility") {
+            self.accessibility = dict["Accessibility"] as! String
+        }
+        if dict.keys.contains("Configs") {
+            self.configs = dict["Configs"] as! [String: String]
+        }
+        if dict.keys.contains("ConnectionId") {
+            self.connectionId = dict["ConnectionId"] as! String
+        }
+        if dict.keys.contains("ConnectionName") {
+            self.connectionName = dict["ConnectionName"] as! String
+        }
+        if dict.keys.contains("ConnectionType") {
+            self.connectionType = dict["ConnectionType"] as! String
+        }
+        if dict.keys.contains("Creator") {
+            self.creator = dict["Creator"] as! String
+        }
+        if dict.keys.contains("Description") {
+            self.description_ = dict["Description"] as! String
+        }
+        if dict.keys.contains("GmtCreateTime") {
+            self.gmtCreateTime = dict["GmtCreateTime"] as! String
+        }
+        if dict.keys.contains("GmtModifiedTime") {
+            self.gmtModifiedTime = dict["GmtModifiedTime"] as! String
+        }
+        if dict.keys.contains("Models") {
+            var tmp : [Connection.Models] = []
+            for v in dict["Models"] as! [Any] {
+                var model = Connection.Models()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.models = tmp
+        }
+        if dict.keys.contains("ResourceMeta") {
+            var model = Connection.ResourceMeta()
+            model.fromMap(dict["ResourceMeta"] as! [String: Any])
+            self.resourceMeta = model
+        }
+        if dict.keys.contains("Secrets") {
+            self.secrets = dict["Secrets"] as! [String: String]
+        }
+        if dict.keys.contains("WorkspaceId") {
+            self.workspaceId = dict["WorkspaceId"] as! String
+        }
+    }
+}
+
 public class Dataset : Tea.TeaModel {
     public var accessibility: String?
 
@@ -599,6 +822,8 @@ public class DatasetFileMetaConentUpdate : Tea.TeaModel {
 
     public var fileCreateTime: String?
 
+    public var fileFingerPrint: String?
+
     public var fileName: String?
 
     public var fileType: String?
@@ -642,6 +867,9 @@ public class DatasetFileMetaConentUpdate : Tea.TeaModel {
         if self.fileCreateTime != nil {
             map["FileCreateTime"] = self.fileCreateTime!
         }
+        if self.fileFingerPrint != nil {
+            map["FileFingerPrint"] = self.fileFingerPrint!
+        }
         if self.fileName != nil {
             map["FileName"] = self.fileName!
         }
@@ -681,6 +909,9 @@ public class DatasetFileMetaConentUpdate : Tea.TeaModel {
         }
         if dict.keys.contains("FileCreateTime") {
             self.fileCreateTime = dict["FileCreateTime"] as! String
+        }
+        if dict.keys.contains("FileFingerPrint") {
+            self.fileFingerPrint = dict["FileFingerPrint"] as! String
         }
         if dict.keys.contains("FileName") {
             self.fileName = dict["FileName"] as! String
