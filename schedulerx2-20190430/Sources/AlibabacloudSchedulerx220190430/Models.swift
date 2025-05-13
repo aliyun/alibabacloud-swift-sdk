@@ -68,85 +68,6 @@ public class BatchDeleteJobsRequest : Tea.TeaModel {
 }
 
 public class BatchDeleteJobsResponseBody : Tea.TeaModel {
-    public class AccessDeniedDetail : Tea.TeaModel {
-        public var authAction: String?
-
-        public var authPrincipalDisplayName: String?
-
-        public var authPrincipalOwnerId: String?
-
-        public var authPrincipalType: String?
-
-        public var encodedDiagnosticMessage: String?
-
-        public var noPermissionType: String?
-
-        public var policyType: String?
-
-        public override init() {
-            super.init()
-        }
-
-        public init(_ dict: [String: Any]) {
-            super.init()
-            self.fromMap(dict)
-        }
-
-        public override func validate() throws -> Void {
-        }
-
-        public override func toMap() -> [String : Any] {
-            var map = super.toMap()
-            if self.authAction != nil {
-                map["AuthAction"] = self.authAction!
-            }
-            if self.authPrincipalDisplayName != nil {
-                map["AuthPrincipalDisplayName"] = self.authPrincipalDisplayName!
-            }
-            if self.authPrincipalOwnerId != nil {
-                map["AuthPrincipalOwnerId"] = self.authPrincipalOwnerId!
-            }
-            if self.authPrincipalType != nil {
-                map["AuthPrincipalType"] = self.authPrincipalType!
-            }
-            if self.encodedDiagnosticMessage != nil {
-                map["EncodedDiagnosticMessage"] = self.encodedDiagnosticMessage!
-            }
-            if self.noPermissionType != nil {
-                map["NoPermissionType"] = self.noPermissionType!
-            }
-            if self.policyType != nil {
-                map["PolicyType"] = self.policyType!
-            }
-            return map
-        }
-
-        public override func fromMap(_ dict: [String: Any]) -> Void {
-            if dict.keys.contains("AuthAction") {
-                self.authAction = dict["AuthAction"] as! String
-            }
-            if dict.keys.contains("AuthPrincipalDisplayName") {
-                self.authPrincipalDisplayName = dict["AuthPrincipalDisplayName"] as! String
-            }
-            if dict.keys.contains("AuthPrincipalOwnerId") {
-                self.authPrincipalOwnerId = dict["AuthPrincipalOwnerId"] as! String
-            }
-            if dict.keys.contains("AuthPrincipalType") {
-                self.authPrincipalType = dict["AuthPrincipalType"] as! String
-            }
-            if dict.keys.contains("EncodedDiagnosticMessage") {
-                self.encodedDiagnosticMessage = dict["EncodedDiagnosticMessage"] as! String
-            }
-            if dict.keys.contains("NoPermissionType") {
-                self.noPermissionType = dict["NoPermissionType"] as! String
-            }
-            if dict.keys.contains("PolicyType") {
-                self.policyType = dict["PolicyType"] as! String
-            }
-        }
-    }
-    public var accessDeniedDetail: BatchDeleteJobsResponseBody.AccessDeniedDetail?
-
     public var code: Int32?
 
     public var message: String?
@@ -165,14 +86,10 @@ public class BatchDeleteJobsResponseBody : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.accessDeniedDetail?.validate()
     }
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
-        if self.accessDeniedDetail != nil {
-            map["AccessDeniedDetail"] = self.accessDeniedDetail?.toMap()
-        }
         if self.code != nil {
             map["Code"] = self.code!
         }
@@ -189,11 +106,6 @@ public class BatchDeleteJobsResponseBody : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
-        if dict.keys.contains("AccessDeniedDetail") {
-            var model = BatchDeleteJobsResponseBody.AccessDeniedDetail()
-            model.fromMap(dict["AccessDeniedDetail"] as! [String: Any])
-            self.accessDeniedDetail = model
-        }
         if dict.keys.contains("Code") {
             self.code = dict["Code"] as! Int32
         }
@@ -313,85 +225,6 @@ public class BatchDeleteRouteStrategyRequest : Tea.TeaModel {
 }
 
 public class BatchDeleteRouteStrategyResponseBody : Tea.TeaModel {
-    public class AccessDeniedDetail : Tea.TeaModel {
-        public var authAction: String?
-
-        public var authPrincipalDisplayName: String?
-
-        public var authPrincipalOwnerId: String?
-
-        public var authPrincipalType: String?
-
-        public var encodedDiagnosticMessage: String?
-
-        public var noPermissionType: String?
-
-        public var policyType: String?
-
-        public override init() {
-            super.init()
-        }
-
-        public init(_ dict: [String: Any]) {
-            super.init()
-            self.fromMap(dict)
-        }
-
-        public override func validate() throws -> Void {
-        }
-
-        public override func toMap() -> [String : Any] {
-            var map = super.toMap()
-            if self.authAction != nil {
-                map["AuthAction"] = self.authAction!
-            }
-            if self.authPrincipalDisplayName != nil {
-                map["AuthPrincipalDisplayName"] = self.authPrincipalDisplayName!
-            }
-            if self.authPrincipalOwnerId != nil {
-                map["AuthPrincipalOwnerId"] = self.authPrincipalOwnerId!
-            }
-            if self.authPrincipalType != nil {
-                map["AuthPrincipalType"] = self.authPrincipalType!
-            }
-            if self.encodedDiagnosticMessage != nil {
-                map["EncodedDiagnosticMessage"] = self.encodedDiagnosticMessage!
-            }
-            if self.noPermissionType != nil {
-                map["NoPermissionType"] = self.noPermissionType!
-            }
-            if self.policyType != nil {
-                map["PolicyType"] = self.policyType!
-            }
-            return map
-        }
-
-        public override func fromMap(_ dict: [String: Any]) -> Void {
-            if dict.keys.contains("AuthAction") {
-                self.authAction = dict["AuthAction"] as! String
-            }
-            if dict.keys.contains("AuthPrincipalDisplayName") {
-                self.authPrincipalDisplayName = dict["AuthPrincipalDisplayName"] as! String
-            }
-            if dict.keys.contains("AuthPrincipalOwnerId") {
-                self.authPrincipalOwnerId = dict["AuthPrincipalOwnerId"] as! String
-            }
-            if dict.keys.contains("AuthPrincipalType") {
-                self.authPrincipalType = dict["AuthPrincipalType"] as! String
-            }
-            if dict.keys.contains("EncodedDiagnosticMessage") {
-                self.encodedDiagnosticMessage = dict["EncodedDiagnosticMessage"] as! String
-            }
-            if dict.keys.contains("NoPermissionType") {
-                self.noPermissionType = dict["NoPermissionType"] as! String
-            }
-            if dict.keys.contains("PolicyType") {
-                self.policyType = dict["PolicyType"] as! String
-            }
-        }
-    }
-    public var accessDeniedDetail: BatchDeleteRouteStrategyResponseBody.AccessDeniedDetail?
-
     public var code: Int32?
 
     public var message: String?
@@ -410,14 +243,10 @@ public class BatchDeleteRouteStrategyResponseBody : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.accessDeniedDetail?.validate()
     }
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
-        if self.accessDeniedDetail != nil {
-            map["AccessDeniedDetail"] = self.accessDeniedDetail?.toMap()
-        }
         if self.code != nil {
             map["Code"] = self.code!
         }
@@ -434,11 +263,6 @@ public class BatchDeleteRouteStrategyResponseBody : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
-        if dict.keys.contains("AccessDeniedDetail") {
-            var model = BatchDeleteRouteStrategyResponseBody.AccessDeniedDetail()
-            model.fromMap(dict["AccessDeniedDetail"] as! [String: Any])
-            self.accessDeniedDetail = model
-        }
         if dict.keys.contains("Code") {
             self.code = dict["Code"] as! Int32
         }
@@ -566,85 +390,6 @@ public class BatchDisableJobsRequest : Tea.TeaModel {
 }
 
 public class BatchDisableJobsResponseBody : Tea.TeaModel {
-    public class AccessDeniedDetail : Tea.TeaModel {
-        public var authAction: String?
-
-        public var authPrincipalDisplayName: String?
-
-        public var authPrincipalOwnerId: String?
-
-        public var authPrincipalType: String?
-
-        public var encodedDiagnosticMessage: String?
-
-        public var noPermissionType: String?
-
-        public var policyType: String?
-
-        public override init() {
-            super.init()
-        }
-
-        public init(_ dict: [String: Any]) {
-            super.init()
-            self.fromMap(dict)
-        }
-
-        public override func validate() throws -> Void {
-        }
-
-        public override func toMap() -> [String : Any] {
-            var map = super.toMap()
-            if self.authAction != nil {
-                map["AuthAction"] = self.authAction!
-            }
-            if self.authPrincipalDisplayName != nil {
-                map["AuthPrincipalDisplayName"] = self.authPrincipalDisplayName!
-            }
-            if self.authPrincipalOwnerId != nil {
-                map["AuthPrincipalOwnerId"] = self.authPrincipalOwnerId!
-            }
-            if self.authPrincipalType != nil {
-                map["AuthPrincipalType"] = self.authPrincipalType!
-            }
-            if self.encodedDiagnosticMessage != nil {
-                map["EncodedDiagnosticMessage"] = self.encodedDiagnosticMessage!
-            }
-            if self.noPermissionType != nil {
-                map["NoPermissionType"] = self.noPermissionType!
-            }
-            if self.policyType != nil {
-                map["PolicyType"] = self.policyType!
-            }
-            return map
-        }
-
-        public override func fromMap(_ dict: [String: Any]) -> Void {
-            if dict.keys.contains("AuthAction") {
-                self.authAction = dict["AuthAction"] as! String
-            }
-            if dict.keys.contains("AuthPrincipalDisplayName") {
-                self.authPrincipalDisplayName = dict["AuthPrincipalDisplayName"] as! String
-            }
-            if dict.keys.contains("AuthPrincipalOwnerId") {
-                self.authPrincipalOwnerId = dict["AuthPrincipalOwnerId"] as! String
-            }
-            if dict.keys.contains("AuthPrincipalType") {
-                self.authPrincipalType = dict["AuthPrincipalType"] as! String
-            }
-            if dict.keys.contains("EncodedDiagnosticMessage") {
-                self.encodedDiagnosticMessage = dict["EncodedDiagnosticMessage"] as! String
-            }
-            if dict.keys.contains("NoPermissionType") {
-                self.noPermissionType = dict["NoPermissionType"] as! String
-            }
-            if dict.keys.contains("PolicyType") {
-                self.policyType = dict["PolicyType"] as! String
-            }
-        }
-    }
-    public var accessDeniedDetail: BatchDisableJobsResponseBody.AccessDeniedDetail?
-
     public var code: Int32?
 
     public var message: String?
@@ -663,14 +408,10 @@ public class BatchDisableJobsResponseBody : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.accessDeniedDetail?.validate()
     }
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
-        if self.accessDeniedDetail != nil {
-            map["AccessDeniedDetail"] = self.accessDeniedDetail?.toMap()
-        }
         if self.code != nil {
             map["Code"] = self.code!
         }
@@ -687,11 +428,6 @@ public class BatchDisableJobsResponseBody : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
-        if dict.keys.contains("AccessDeniedDetail") {
-            var model = BatchDisableJobsResponseBody.AccessDeniedDetail()
-            model.fromMap(dict["AccessDeniedDetail"] as! [String: Any])
-            self.accessDeniedDetail = model
-        }
         if dict.keys.contains("Code") {
             self.code = dict["Code"] as! Int32
         }
@@ -819,85 +555,6 @@ public class BatchEnableJobsRequest : Tea.TeaModel {
 }
 
 public class BatchEnableJobsResponseBody : Tea.TeaModel {
-    public class AccessDeniedDetail : Tea.TeaModel {
-        public var authAction: String?
-
-        public var authPrincipalDisplayName: String?
-
-        public var authPrincipalOwnerId: String?
-
-        public var authPrincipalType: String?
-
-        public var encodedDiagnosticMessage: String?
-
-        public var noPermissionType: String?
-
-        public var policyType: String?
-
-        public override init() {
-            super.init()
-        }
-
-        public init(_ dict: [String: Any]) {
-            super.init()
-            self.fromMap(dict)
-        }
-
-        public override func validate() throws -> Void {
-        }
-
-        public override func toMap() -> [String : Any] {
-            var map = super.toMap()
-            if self.authAction != nil {
-                map["AuthAction"] = self.authAction!
-            }
-            if self.authPrincipalDisplayName != nil {
-                map["AuthPrincipalDisplayName"] = self.authPrincipalDisplayName!
-            }
-            if self.authPrincipalOwnerId != nil {
-                map["AuthPrincipalOwnerId"] = self.authPrincipalOwnerId!
-            }
-            if self.authPrincipalType != nil {
-                map["AuthPrincipalType"] = self.authPrincipalType!
-            }
-            if self.encodedDiagnosticMessage != nil {
-                map["EncodedDiagnosticMessage"] = self.encodedDiagnosticMessage!
-            }
-            if self.noPermissionType != nil {
-                map["NoPermissionType"] = self.noPermissionType!
-            }
-            if self.policyType != nil {
-                map["PolicyType"] = self.policyType!
-            }
-            return map
-        }
-
-        public override func fromMap(_ dict: [String: Any]) -> Void {
-            if dict.keys.contains("AuthAction") {
-                self.authAction = dict["AuthAction"] as! String
-            }
-            if dict.keys.contains("AuthPrincipalDisplayName") {
-                self.authPrincipalDisplayName = dict["AuthPrincipalDisplayName"] as! String
-            }
-            if dict.keys.contains("AuthPrincipalOwnerId") {
-                self.authPrincipalOwnerId = dict["AuthPrincipalOwnerId"] as! String
-            }
-            if dict.keys.contains("AuthPrincipalType") {
-                self.authPrincipalType = dict["AuthPrincipalType"] as! String
-            }
-            if dict.keys.contains("EncodedDiagnosticMessage") {
-                self.encodedDiagnosticMessage = dict["EncodedDiagnosticMessage"] as! String
-            }
-            if dict.keys.contains("NoPermissionType") {
-                self.noPermissionType = dict["NoPermissionType"] as! String
-            }
-            if dict.keys.contains("PolicyType") {
-                self.policyType = dict["PolicyType"] as! String
-            }
-        }
-    }
-    public var accessDeniedDetail: BatchEnableJobsResponseBody.AccessDeniedDetail?
-
     public var code: Int32?
 
     public var message: String?
@@ -916,14 +573,10 @@ public class BatchEnableJobsResponseBody : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.accessDeniedDetail?.validate()
     }
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
-        if self.accessDeniedDetail != nil {
-            map["AccessDeniedDetail"] = self.accessDeniedDetail?.toMap()
-        }
         if self.code != nil {
             map["Code"] = self.code!
         }
@@ -940,11 +593,6 @@ public class BatchEnableJobsResponseBody : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
-        if dict.keys.contains("AccessDeniedDetail") {
-            var model = BatchEnableJobsResponseBody.AccessDeniedDetail()
-            model.fromMap(dict["AccessDeniedDetail"] as! [String: Any])
-            self.accessDeniedDetail = model
-        }
         if dict.keys.contains("Code") {
             self.code = dict["Code"] as! Int32
         }
@@ -1152,83 +800,6 @@ public class CreateAppGroupRequest : Tea.TeaModel {
 }
 
 public class CreateAppGroupResponseBody : Tea.TeaModel {
-    public class AccessDeniedDetail : Tea.TeaModel {
-        public var authAction: String?
-
-        public var authPrincipalDisplayName: String?
-
-        public var authPrincipalOwnerId: String?
-
-        public var authPrincipalType: String?
-
-        public var encodedDiagnosticMessage: String?
-
-        public var noPermissionType: String?
-
-        public var policyType: String?
-
-        public override init() {
-            super.init()
-        }
-
-        public init(_ dict: [String: Any]) {
-            super.init()
-            self.fromMap(dict)
-        }
-
-        public override func validate() throws -> Void {
-        }
-
-        public override func toMap() -> [String : Any] {
-            var map = super.toMap()
-            if self.authAction != nil {
-                map["AuthAction"] = self.authAction!
-            }
-            if self.authPrincipalDisplayName != nil {
-                map["AuthPrincipalDisplayName"] = self.authPrincipalDisplayName!
-            }
-            if self.authPrincipalOwnerId != nil {
-                map["AuthPrincipalOwnerId"] = self.authPrincipalOwnerId!
-            }
-            if self.authPrincipalType != nil {
-                map["AuthPrincipalType"] = self.authPrincipalType!
-            }
-            if self.encodedDiagnosticMessage != nil {
-                map["EncodedDiagnosticMessage"] = self.encodedDiagnosticMessage!
-            }
-            if self.noPermissionType != nil {
-                map["NoPermissionType"] = self.noPermissionType!
-            }
-            if self.policyType != nil {
-                map["PolicyType"] = self.policyType!
-            }
-            return map
-        }
-
-        public override func fromMap(_ dict: [String: Any]) -> Void {
-            if dict.keys.contains("AuthAction") {
-                self.authAction = dict["AuthAction"] as! String
-            }
-            if dict.keys.contains("AuthPrincipalDisplayName") {
-                self.authPrincipalDisplayName = dict["AuthPrincipalDisplayName"] as! String
-            }
-            if dict.keys.contains("AuthPrincipalOwnerId") {
-                self.authPrincipalOwnerId = dict["AuthPrincipalOwnerId"] as! String
-            }
-            if dict.keys.contains("AuthPrincipalType") {
-                self.authPrincipalType = dict["AuthPrincipalType"] as! String
-            }
-            if dict.keys.contains("EncodedDiagnosticMessage") {
-                self.encodedDiagnosticMessage = dict["EncodedDiagnosticMessage"] as! String
-            }
-            if dict.keys.contains("NoPermissionType") {
-                self.noPermissionType = dict["NoPermissionType"] as! String
-            }
-            if dict.keys.contains("PolicyType") {
-                self.policyType = dict["PolicyType"] as! String
-            }
-        }
-    }
     public class Data : Tea.TeaModel {
         public var appGroupId: Int64?
 
@@ -1266,8 +837,6 @@ public class CreateAppGroupResponseBody : Tea.TeaModel {
             }
         }
     }
-    public var accessDeniedDetail: CreateAppGroupResponseBody.AccessDeniedDetail?
-
     public var code: Int32?
 
     public var data: CreateAppGroupResponseBody.Data?
@@ -1288,15 +857,11 @@ public class CreateAppGroupResponseBody : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.accessDeniedDetail?.validate()
         try self.data?.validate()
     }
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
-        if self.accessDeniedDetail != nil {
-            map["AccessDeniedDetail"] = self.accessDeniedDetail?.toMap()
-        }
         if self.code != nil {
             map["Code"] = self.code!
         }
@@ -1316,11 +881,6 @@ public class CreateAppGroupResponseBody : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
-        if dict.keys.contains("AccessDeniedDetail") {
-            var model = CreateAppGroupResponseBody.AccessDeniedDetail()
-            model.fromMap(dict["AccessDeniedDetail"] as! [String: Any])
-            self.accessDeniedDetail = model
-        }
         if dict.keys.contains("Code") {
             self.code = dict["Code"] as! Int32
         }
@@ -1488,6 +1048,8 @@ public class CreateJobRequest : Tea.TeaModel {
 
     public var parameters: String?
 
+    public var priority: Int32?
+
     public var queueSize: Int32?
 
     public var regionId: String?
@@ -1599,6 +1161,9 @@ public class CreateJobRequest : Tea.TeaModel {
         }
         if self.parameters != nil {
             map["Parameters"] = self.parameters!
+        }
+        if self.priority != nil {
+            map["Priority"] = self.priority!
         }
         if self.queueSize != nil {
             map["QueueSize"] = self.queueSize!
@@ -1720,6 +1285,9 @@ public class CreateJobRequest : Tea.TeaModel {
         if dict.keys.contains("Parameters") {
             self.parameters = dict["Parameters"] as! String
         }
+        if dict.keys.contains("Priority") {
+            self.priority = dict["Priority"] as! Int32
+        }
         if dict.keys.contains("QueueSize") {
             self.queueSize = dict["QueueSize"] as! Int32
         }
@@ -1766,83 +1334,6 @@ public class CreateJobRequest : Tea.TeaModel {
 }
 
 public class CreateJobResponseBody : Tea.TeaModel {
-    public class AccessDeniedDetail : Tea.TeaModel {
-        public var authAction: String?
-
-        public var authPrincipalDisplayName: String?
-
-        public var authPrincipalOwnerId: String?
-
-        public var authPrincipalType: String?
-
-        public var encodedDiagnosticMessage: String?
-
-        public var noPermissionType: String?
-
-        public var policyType: String?
-
-        public override init() {
-            super.init()
-        }
-
-        public init(_ dict: [String: Any]) {
-            super.init()
-            self.fromMap(dict)
-        }
-
-        public override func validate() throws -> Void {
-        }
-
-        public override func toMap() -> [String : Any] {
-            var map = super.toMap()
-            if self.authAction != nil {
-                map["AuthAction"] = self.authAction!
-            }
-            if self.authPrincipalDisplayName != nil {
-                map["AuthPrincipalDisplayName"] = self.authPrincipalDisplayName!
-            }
-            if self.authPrincipalOwnerId != nil {
-                map["AuthPrincipalOwnerId"] = self.authPrincipalOwnerId!
-            }
-            if self.authPrincipalType != nil {
-                map["AuthPrincipalType"] = self.authPrincipalType!
-            }
-            if self.encodedDiagnosticMessage != nil {
-                map["EncodedDiagnosticMessage"] = self.encodedDiagnosticMessage!
-            }
-            if self.noPermissionType != nil {
-                map["NoPermissionType"] = self.noPermissionType!
-            }
-            if self.policyType != nil {
-                map["PolicyType"] = self.policyType!
-            }
-            return map
-        }
-
-        public override func fromMap(_ dict: [String: Any]) -> Void {
-            if dict.keys.contains("AuthAction") {
-                self.authAction = dict["AuthAction"] as! String
-            }
-            if dict.keys.contains("AuthPrincipalDisplayName") {
-                self.authPrincipalDisplayName = dict["AuthPrincipalDisplayName"] as! String
-            }
-            if dict.keys.contains("AuthPrincipalOwnerId") {
-                self.authPrincipalOwnerId = dict["AuthPrincipalOwnerId"] as! String
-            }
-            if dict.keys.contains("AuthPrincipalType") {
-                self.authPrincipalType = dict["AuthPrincipalType"] as! String
-            }
-            if dict.keys.contains("EncodedDiagnosticMessage") {
-                self.encodedDiagnosticMessage = dict["EncodedDiagnosticMessage"] as! String
-            }
-            if dict.keys.contains("NoPermissionType") {
-                self.noPermissionType = dict["NoPermissionType"] as! String
-            }
-            if dict.keys.contains("PolicyType") {
-                self.policyType = dict["PolicyType"] as! String
-            }
-        }
-    }
     public class Data : Tea.TeaModel {
         public var jobId: Int64?
 
@@ -1872,8 +1363,6 @@ public class CreateJobResponseBody : Tea.TeaModel {
             }
         }
     }
-    public var accessDeniedDetail: CreateJobResponseBody.AccessDeniedDetail?
-
     public var code: Int32?
 
     public var data: CreateJobResponseBody.Data?
@@ -1894,15 +1383,11 @@ public class CreateJobResponseBody : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.accessDeniedDetail?.validate()
         try self.data?.validate()
     }
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
-        if self.accessDeniedDetail != nil {
-            map["AccessDeniedDetail"] = self.accessDeniedDetail?.toMap()
-        }
         if self.code != nil {
             map["Code"] = self.code!
         }
@@ -1922,11 +1407,6 @@ public class CreateJobResponseBody : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
-        if dict.keys.contains("AccessDeniedDetail") {
-            var model = CreateJobResponseBody.AccessDeniedDetail()
-            model.fromMap(dict["AccessDeniedDetail"] as! [String: Any])
-            self.accessDeniedDetail = model
-        }
         if dict.keys.contains("Code") {
             self.code = dict["Code"] as! Int32
         }
@@ -2051,83 +1531,6 @@ public class CreateNamespaceRequest : Tea.TeaModel {
 }
 
 public class CreateNamespaceResponseBody : Tea.TeaModel {
-    public class AccessDeniedDetail : Tea.TeaModel {
-        public var authAction: String?
-
-        public var authPrincipalDisplayName: String?
-
-        public var authPrincipalOwnerId: String?
-
-        public var authPrincipalType: String?
-
-        public var encodedDiagnosticMessage: String?
-
-        public var noPermissionType: String?
-
-        public var policyType: String?
-
-        public override init() {
-            super.init()
-        }
-
-        public init(_ dict: [String: Any]) {
-            super.init()
-            self.fromMap(dict)
-        }
-
-        public override func validate() throws -> Void {
-        }
-
-        public override func toMap() -> [String : Any] {
-            var map = super.toMap()
-            if self.authAction != nil {
-                map["AuthAction"] = self.authAction!
-            }
-            if self.authPrincipalDisplayName != nil {
-                map["AuthPrincipalDisplayName"] = self.authPrincipalDisplayName!
-            }
-            if self.authPrincipalOwnerId != nil {
-                map["AuthPrincipalOwnerId"] = self.authPrincipalOwnerId!
-            }
-            if self.authPrincipalType != nil {
-                map["AuthPrincipalType"] = self.authPrincipalType!
-            }
-            if self.encodedDiagnosticMessage != nil {
-                map["EncodedDiagnosticMessage"] = self.encodedDiagnosticMessage!
-            }
-            if self.noPermissionType != nil {
-                map["NoPermissionType"] = self.noPermissionType!
-            }
-            if self.policyType != nil {
-                map["PolicyType"] = self.policyType!
-            }
-            return map
-        }
-
-        public override func fromMap(_ dict: [String: Any]) -> Void {
-            if dict.keys.contains("AuthAction") {
-                self.authAction = dict["AuthAction"] as! String
-            }
-            if dict.keys.contains("AuthPrincipalDisplayName") {
-                self.authPrincipalDisplayName = dict["AuthPrincipalDisplayName"] as! String
-            }
-            if dict.keys.contains("AuthPrincipalOwnerId") {
-                self.authPrincipalOwnerId = dict["AuthPrincipalOwnerId"] as! String
-            }
-            if dict.keys.contains("AuthPrincipalType") {
-                self.authPrincipalType = dict["AuthPrincipalType"] as! String
-            }
-            if dict.keys.contains("EncodedDiagnosticMessage") {
-                self.encodedDiagnosticMessage = dict["EncodedDiagnosticMessage"] as! String
-            }
-            if dict.keys.contains("NoPermissionType") {
-                self.noPermissionType = dict["NoPermissionType"] as! String
-            }
-            if dict.keys.contains("PolicyType") {
-                self.policyType = dict["PolicyType"] as! String
-            }
-        }
-    }
     public class Data : Tea.TeaModel {
         public var namespaceUid: String?
 
@@ -2157,8 +1560,6 @@ public class CreateNamespaceResponseBody : Tea.TeaModel {
             }
         }
     }
-    public var accessDeniedDetail: CreateNamespaceResponseBody.AccessDeniedDetail?
-
     public var code: Int32?
 
     public var data: CreateNamespaceResponseBody.Data?
@@ -2179,15 +1580,11 @@ public class CreateNamespaceResponseBody : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.accessDeniedDetail?.validate()
         try self.data?.validate()
     }
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
-        if self.accessDeniedDetail != nil {
-            map["AccessDeniedDetail"] = self.accessDeniedDetail?.toMap()
-        }
         if self.code != nil {
             map["Code"] = self.code!
         }
@@ -2207,11 +1604,6 @@ public class CreateNamespaceResponseBody : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
-        if dict.keys.contains("AccessDeniedDetail") {
-            var model = CreateNamespaceResponseBody.AccessDeniedDetail()
-            model.fromMap(dict["AccessDeniedDetail"] as! [String: Any])
-            self.accessDeniedDetail = model
-        }
         if dict.keys.contains("Code") {
             self.code = dict["Code"] as! Int32
         }
@@ -2368,83 +1760,6 @@ public class CreateRouteStrategyRequest : Tea.TeaModel {
 }
 
 public class CreateRouteStrategyResponseBody : Tea.TeaModel {
-    public class AccessDeniedDetail : Tea.TeaModel {
-        public var authAction: String?
-
-        public var authPrincipalDisplayName: String?
-
-        public var authPrincipalOwnerId: String?
-
-        public var authPrincipalType: String?
-
-        public var encodedDiagnosticMessage: String?
-
-        public var noPermissionType: String?
-
-        public var policyType: String?
-
-        public override init() {
-            super.init()
-        }
-
-        public init(_ dict: [String: Any]) {
-            super.init()
-            self.fromMap(dict)
-        }
-
-        public override func validate() throws -> Void {
-        }
-
-        public override func toMap() -> [String : Any] {
-            var map = super.toMap()
-            if self.authAction != nil {
-                map["AuthAction"] = self.authAction!
-            }
-            if self.authPrincipalDisplayName != nil {
-                map["AuthPrincipalDisplayName"] = self.authPrincipalDisplayName!
-            }
-            if self.authPrincipalOwnerId != nil {
-                map["AuthPrincipalOwnerId"] = self.authPrincipalOwnerId!
-            }
-            if self.authPrincipalType != nil {
-                map["AuthPrincipalType"] = self.authPrincipalType!
-            }
-            if self.encodedDiagnosticMessage != nil {
-                map["EncodedDiagnosticMessage"] = self.encodedDiagnosticMessage!
-            }
-            if self.noPermissionType != nil {
-                map["NoPermissionType"] = self.noPermissionType!
-            }
-            if self.policyType != nil {
-                map["PolicyType"] = self.policyType!
-            }
-            return map
-        }
-
-        public override func fromMap(_ dict: [String: Any]) -> Void {
-            if dict.keys.contains("AuthAction") {
-                self.authAction = dict["AuthAction"] as! String
-            }
-            if dict.keys.contains("AuthPrincipalDisplayName") {
-                self.authPrincipalDisplayName = dict["AuthPrincipalDisplayName"] as! String
-            }
-            if dict.keys.contains("AuthPrincipalOwnerId") {
-                self.authPrincipalOwnerId = dict["AuthPrincipalOwnerId"] as! String
-            }
-            if dict.keys.contains("AuthPrincipalType") {
-                self.authPrincipalType = dict["AuthPrincipalType"] as! String
-            }
-            if dict.keys.contains("EncodedDiagnosticMessage") {
-                self.encodedDiagnosticMessage = dict["EncodedDiagnosticMessage"] as! String
-            }
-            if dict.keys.contains("NoPermissionType") {
-                self.noPermissionType = dict["NoPermissionType"] as! String
-            }
-            if dict.keys.contains("PolicyType") {
-                self.policyType = dict["PolicyType"] as! String
-            }
-        }
-    }
     public class Data : Tea.TeaModel {
 
         public override init() {
@@ -2467,8 +1782,6 @@ public class CreateRouteStrategyResponseBody : Tea.TeaModel {
         public override func fromMap(_ dict: [String: Any]) -> Void {
         }
     }
-    public var accessDeniedDetail: CreateRouteStrategyResponseBody.AccessDeniedDetail?
-
     public var code: Int32?
 
     public var data: CreateRouteStrategyResponseBody.Data?
@@ -2489,15 +1802,11 @@ public class CreateRouteStrategyResponseBody : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.accessDeniedDetail?.validate()
         try self.data?.validate()
     }
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
-        if self.accessDeniedDetail != nil {
-            map["AccessDeniedDetail"] = self.accessDeniedDetail?.toMap()
-        }
         if self.code != nil {
             map["Code"] = self.code!
         }
@@ -2517,11 +1826,6 @@ public class CreateRouteStrategyResponseBody : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
-        if dict.keys.contains("AccessDeniedDetail") {
-            var model = CreateRouteStrategyResponseBody.AccessDeniedDetail()
-            model.fromMap(dict["AccessDeniedDetail"] as! [String: Any])
-            self.accessDeniedDetail = model
-        }
         if dict.keys.contains("Code") {
             self.code = dict["Code"] as! Int32
         }
@@ -2694,83 +1998,6 @@ public class CreateWorkflowRequest : Tea.TeaModel {
 }
 
 public class CreateWorkflowResponseBody : Tea.TeaModel {
-    public class AccessDeniedDetail : Tea.TeaModel {
-        public var authAction: String?
-
-        public var authPrincipalDisplayName: String?
-
-        public var authPrincipalOwnerId: String?
-
-        public var authPrincipalType: String?
-
-        public var encodedDiagnosticMessage: String?
-
-        public var noPermissionType: String?
-
-        public var policyType: String?
-
-        public override init() {
-            super.init()
-        }
-
-        public init(_ dict: [String: Any]) {
-            super.init()
-            self.fromMap(dict)
-        }
-
-        public override func validate() throws -> Void {
-        }
-
-        public override func toMap() -> [String : Any] {
-            var map = super.toMap()
-            if self.authAction != nil {
-                map["AuthAction"] = self.authAction!
-            }
-            if self.authPrincipalDisplayName != nil {
-                map["AuthPrincipalDisplayName"] = self.authPrincipalDisplayName!
-            }
-            if self.authPrincipalOwnerId != nil {
-                map["AuthPrincipalOwnerId"] = self.authPrincipalOwnerId!
-            }
-            if self.authPrincipalType != nil {
-                map["AuthPrincipalType"] = self.authPrincipalType!
-            }
-            if self.encodedDiagnosticMessage != nil {
-                map["EncodedDiagnosticMessage"] = self.encodedDiagnosticMessage!
-            }
-            if self.noPermissionType != nil {
-                map["NoPermissionType"] = self.noPermissionType!
-            }
-            if self.policyType != nil {
-                map["PolicyType"] = self.policyType!
-            }
-            return map
-        }
-
-        public override func fromMap(_ dict: [String: Any]) -> Void {
-            if dict.keys.contains("AuthAction") {
-                self.authAction = dict["AuthAction"] as! String
-            }
-            if dict.keys.contains("AuthPrincipalDisplayName") {
-                self.authPrincipalDisplayName = dict["AuthPrincipalDisplayName"] as! String
-            }
-            if dict.keys.contains("AuthPrincipalOwnerId") {
-                self.authPrincipalOwnerId = dict["AuthPrincipalOwnerId"] as! String
-            }
-            if dict.keys.contains("AuthPrincipalType") {
-                self.authPrincipalType = dict["AuthPrincipalType"] as! String
-            }
-            if dict.keys.contains("EncodedDiagnosticMessage") {
-                self.encodedDiagnosticMessage = dict["EncodedDiagnosticMessage"] as! String
-            }
-            if dict.keys.contains("NoPermissionType") {
-                self.noPermissionType = dict["NoPermissionType"] as! String
-            }
-            if dict.keys.contains("PolicyType") {
-                self.policyType = dict["PolicyType"] as! String
-            }
-        }
-    }
     public class Data : Tea.TeaModel {
         public var workflowId: Int64?
 
@@ -2800,8 +2027,6 @@ public class CreateWorkflowResponseBody : Tea.TeaModel {
             }
         }
     }
-    public var accessDeniedDetail: CreateWorkflowResponseBody.AccessDeniedDetail?
-
     public var code: String?
 
     public var data: CreateWorkflowResponseBody.Data?
@@ -2822,15 +2047,11 @@ public class CreateWorkflowResponseBody : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.accessDeniedDetail?.validate()
         try self.data?.validate()
     }
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
-        if self.accessDeniedDetail != nil {
-            map["AccessDeniedDetail"] = self.accessDeniedDetail?.toMap()
-        }
         if self.code != nil {
             map["Code"] = self.code!
         }
@@ -2850,11 +2071,6 @@ public class CreateWorkflowResponseBody : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
-        if dict.keys.contains("AccessDeniedDetail") {
-            var model = CreateWorkflowResponseBody.AccessDeniedDetail()
-            model.fromMap(dict["AccessDeniedDetail"] as! [String: Any])
-            self.accessDeniedDetail = model
-        }
         if dict.keys.contains("Code") {
             self.code = dict["Code"] as! String
         }
@@ -2979,85 +2195,6 @@ public class DeleteAppGroupRequest : Tea.TeaModel {
 }
 
 public class DeleteAppGroupResponseBody : Tea.TeaModel {
-    public class AccessDeniedDetail : Tea.TeaModel {
-        public var authAction: String?
-
-        public var authPrincipalDisplayName: String?
-
-        public var authPrincipalOwnerId: String?
-
-        public var authPrincipalType: String?
-
-        public var encodedDiagnosticMessage: String?
-
-        public var noPermissionType: String?
-
-        public var policyType: String?
-
-        public override init() {
-            super.init()
-        }
-
-        public init(_ dict: [String: Any]) {
-            super.init()
-            self.fromMap(dict)
-        }
-
-        public override func validate() throws -> Void {
-        }
-
-        public override func toMap() -> [String : Any] {
-            var map = super.toMap()
-            if self.authAction != nil {
-                map["AuthAction"] = self.authAction!
-            }
-            if self.authPrincipalDisplayName != nil {
-                map["AuthPrincipalDisplayName"] = self.authPrincipalDisplayName!
-            }
-            if self.authPrincipalOwnerId != nil {
-                map["AuthPrincipalOwnerId"] = self.authPrincipalOwnerId!
-            }
-            if self.authPrincipalType != nil {
-                map["AuthPrincipalType"] = self.authPrincipalType!
-            }
-            if self.encodedDiagnosticMessage != nil {
-                map["EncodedDiagnosticMessage"] = self.encodedDiagnosticMessage!
-            }
-            if self.noPermissionType != nil {
-                map["NoPermissionType"] = self.noPermissionType!
-            }
-            if self.policyType != nil {
-                map["PolicyType"] = self.policyType!
-            }
-            return map
-        }
-
-        public override func fromMap(_ dict: [String: Any]) -> Void {
-            if dict.keys.contains("AuthAction") {
-                self.authAction = dict["AuthAction"] as! String
-            }
-            if dict.keys.contains("AuthPrincipalDisplayName") {
-                self.authPrincipalDisplayName = dict["AuthPrincipalDisplayName"] as! String
-            }
-            if dict.keys.contains("AuthPrincipalOwnerId") {
-                self.authPrincipalOwnerId = dict["AuthPrincipalOwnerId"] as! String
-            }
-            if dict.keys.contains("AuthPrincipalType") {
-                self.authPrincipalType = dict["AuthPrincipalType"] as! String
-            }
-            if dict.keys.contains("EncodedDiagnosticMessage") {
-                self.encodedDiagnosticMessage = dict["EncodedDiagnosticMessage"] as! String
-            }
-            if dict.keys.contains("NoPermissionType") {
-                self.noPermissionType = dict["NoPermissionType"] as! String
-            }
-            if dict.keys.contains("PolicyType") {
-                self.policyType = dict["PolicyType"] as! String
-            }
-        }
-    }
-    public var accessDeniedDetail: DeleteAppGroupResponseBody.AccessDeniedDetail?
-
     public var code: Int32?
 
     public var message: String?
@@ -3076,14 +2213,10 @@ public class DeleteAppGroupResponseBody : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.accessDeniedDetail?.validate()
     }
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
-        if self.accessDeniedDetail != nil {
-            map["AccessDeniedDetail"] = self.accessDeniedDetail?.toMap()
-        }
         if self.code != nil {
             map["Code"] = self.code!
         }
@@ -3100,11 +2233,6 @@ public class DeleteAppGroupResponseBody : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
-        if dict.keys.contains("AccessDeniedDetail") {
-            var model = DeleteAppGroupResponseBody.AccessDeniedDetail()
-            model.fromMap(dict["AccessDeniedDetail"] as! [String: Any])
-            self.accessDeniedDetail = model
-        }
         if dict.keys.contains("Code") {
             self.code = dict["Code"] as! Int32
         }
@@ -3232,85 +2360,6 @@ public class DeleteJobRequest : Tea.TeaModel {
 }
 
 public class DeleteJobResponseBody : Tea.TeaModel {
-    public class AccessDeniedDetail : Tea.TeaModel {
-        public var authAction: String?
-
-        public var authPrincipalDisplayName: String?
-
-        public var authPrincipalOwnerId: String?
-
-        public var authPrincipalType: String?
-
-        public var encodedDiagnosticMessage: String?
-
-        public var noPermissionType: String?
-
-        public var policyType: String?
-
-        public override init() {
-            super.init()
-        }
-
-        public init(_ dict: [String: Any]) {
-            super.init()
-            self.fromMap(dict)
-        }
-
-        public override func validate() throws -> Void {
-        }
-
-        public override func toMap() -> [String : Any] {
-            var map = super.toMap()
-            if self.authAction != nil {
-                map["AuthAction"] = self.authAction!
-            }
-            if self.authPrincipalDisplayName != nil {
-                map["AuthPrincipalDisplayName"] = self.authPrincipalDisplayName!
-            }
-            if self.authPrincipalOwnerId != nil {
-                map["AuthPrincipalOwnerId"] = self.authPrincipalOwnerId!
-            }
-            if self.authPrincipalType != nil {
-                map["AuthPrincipalType"] = self.authPrincipalType!
-            }
-            if self.encodedDiagnosticMessage != nil {
-                map["EncodedDiagnosticMessage"] = self.encodedDiagnosticMessage!
-            }
-            if self.noPermissionType != nil {
-                map["NoPermissionType"] = self.noPermissionType!
-            }
-            if self.policyType != nil {
-                map["PolicyType"] = self.policyType!
-            }
-            return map
-        }
-
-        public override func fromMap(_ dict: [String: Any]) -> Void {
-            if dict.keys.contains("AuthAction") {
-                self.authAction = dict["AuthAction"] as! String
-            }
-            if dict.keys.contains("AuthPrincipalDisplayName") {
-                self.authPrincipalDisplayName = dict["AuthPrincipalDisplayName"] as! String
-            }
-            if dict.keys.contains("AuthPrincipalOwnerId") {
-                self.authPrincipalOwnerId = dict["AuthPrincipalOwnerId"] as! String
-            }
-            if dict.keys.contains("AuthPrincipalType") {
-                self.authPrincipalType = dict["AuthPrincipalType"] as! String
-            }
-            if dict.keys.contains("EncodedDiagnosticMessage") {
-                self.encodedDiagnosticMessage = dict["EncodedDiagnosticMessage"] as! String
-            }
-            if dict.keys.contains("NoPermissionType") {
-                self.noPermissionType = dict["NoPermissionType"] as! String
-            }
-            if dict.keys.contains("PolicyType") {
-                self.policyType = dict["PolicyType"] as! String
-            }
-        }
-    }
-    public var accessDeniedDetail: DeleteJobResponseBody.AccessDeniedDetail?
-
     public var code: Int32?
 
     public var message: String?
@@ -3329,14 +2378,10 @@ public class DeleteJobResponseBody : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.accessDeniedDetail?.validate()
     }
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
-        if self.accessDeniedDetail != nil {
-            map["AccessDeniedDetail"] = self.accessDeniedDetail?.toMap()
-        }
         if self.code != nil {
             map["Code"] = self.code!
         }
@@ -3353,11 +2398,6 @@ public class DeleteJobResponseBody : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
-        if dict.keys.contains("AccessDeniedDetail") {
-            var model = DeleteJobResponseBody.AccessDeniedDetail()
-            model.fromMap(dict["AccessDeniedDetail"] as! [String: Any])
-            self.accessDeniedDetail = model
-        }
         if dict.keys.contains("Code") {
             self.code = dict["Code"] as! Int32
         }
@@ -3422,6 +2462,147 @@ public class DeleteJobResponse : Tea.TeaModel {
     }
 }
 
+public class DeleteNamespaceRequest : Tea.TeaModel {
+    public var namespace: String?
+
+    public var regionId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.namespace != nil {
+            map["Namespace"] = self.namespace!
+        }
+        if self.regionId != nil {
+            map["RegionId"] = self.regionId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("Namespace") {
+            self.namespace = dict["Namespace"] as! String
+        }
+        if dict.keys.contains("RegionId") {
+            self.regionId = dict["RegionId"] as! String
+        }
+    }
+}
+
+public class DeleteNamespaceResponseBody : Tea.TeaModel {
+    public var code: Int32?
+
+    public var message: String?
+
+    public var requestId: String?
+
+    public var success: Bool?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.code != nil {
+            map["Code"] = self.code!
+        }
+        if self.message != nil {
+            map["Message"] = self.message!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.success != nil {
+            map["Success"] = self.success!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("Code") {
+            self.code = dict["Code"] as! Int32
+        }
+        if dict.keys.contains("Message") {
+            self.message = dict["Message"] as! String
+        }
+        if dict.keys.contains("RequestId") {
+            self.requestId = dict["RequestId"] as! String
+        }
+        if dict.keys.contains("Success") {
+            self.success = dict["Success"] as! Bool
+        }
+    }
+}
+
+public class DeleteNamespaceResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: DeleteNamespaceResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") {
+            var model = DeleteNamespaceResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
 public class DeleteRouteStrategyRequest : Tea.TeaModel {
     public var groupId: String?
 
@@ -3477,85 +2658,6 @@ public class DeleteRouteStrategyRequest : Tea.TeaModel {
 }
 
 public class DeleteRouteStrategyResponseBody : Tea.TeaModel {
-    public class AccessDeniedDetail : Tea.TeaModel {
-        public var authAction: String?
-
-        public var authPrincipalDisplayName: String?
-
-        public var authPrincipalOwnerId: String?
-
-        public var authPrincipalType: String?
-
-        public var encodedDiagnosticMessage: String?
-
-        public var noPermissionType: String?
-
-        public var policyType: String?
-
-        public override init() {
-            super.init()
-        }
-
-        public init(_ dict: [String: Any]) {
-            super.init()
-            self.fromMap(dict)
-        }
-
-        public override func validate() throws -> Void {
-        }
-
-        public override func toMap() -> [String : Any] {
-            var map = super.toMap()
-            if self.authAction != nil {
-                map["AuthAction"] = self.authAction!
-            }
-            if self.authPrincipalDisplayName != nil {
-                map["AuthPrincipalDisplayName"] = self.authPrincipalDisplayName!
-            }
-            if self.authPrincipalOwnerId != nil {
-                map["AuthPrincipalOwnerId"] = self.authPrincipalOwnerId!
-            }
-            if self.authPrincipalType != nil {
-                map["AuthPrincipalType"] = self.authPrincipalType!
-            }
-            if self.encodedDiagnosticMessage != nil {
-                map["EncodedDiagnosticMessage"] = self.encodedDiagnosticMessage!
-            }
-            if self.noPermissionType != nil {
-                map["NoPermissionType"] = self.noPermissionType!
-            }
-            if self.policyType != nil {
-                map["PolicyType"] = self.policyType!
-            }
-            return map
-        }
-
-        public override func fromMap(_ dict: [String: Any]) -> Void {
-            if dict.keys.contains("AuthAction") {
-                self.authAction = dict["AuthAction"] as! String
-            }
-            if dict.keys.contains("AuthPrincipalDisplayName") {
-                self.authPrincipalDisplayName = dict["AuthPrincipalDisplayName"] as! String
-            }
-            if dict.keys.contains("AuthPrincipalOwnerId") {
-                self.authPrincipalOwnerId = dict["AuthPrincipalOwnerId"] as! String
-            }
-            if dict.keys.contains("AuthPrincipalType") {
-                self.authPrincipalType = dict["AuthPrincipalType"] as! String
-            }
-            if dict.keys.contains("EncodedDiagnosticMessage") {
-                self.encodedDiagnosticMessage = dict["EncodedDiagnosticMessage"] as! String
-            }
-            if dict.keys.contains("NoPermissionType") {
-                self.noPermissionType = dict["NoPermissionType"] as! String
-            }
-            if dict.keys.contains("PolicyType") {
-                self.policyType = dict["PolicyType"] as! String
-            }
-        }
-    }
-    public var accessDeniedDetail: DeleteRouteStrategyResponseBody.AccessDeniedDetail?
-
     public var code: Int32?
 
     public var message: String?
@@ -3574,14 +2676,10 @@ public class DeleteRouteStrategyResponseBody : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.accessDeniedDetail?.validate()
     }
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
-        if self.accessDeniedDetail != nil {
-            map["AccessDeniedDetail"] = self.accessDeniedDetail?.toMap()
-        }
         if self.code != nil {
             map["Code"] = self.code!
         }
@@ -3598,11 +2696,6 @@ public class DeleteRouteStrategyResponseBody : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
-        if dict.keys.contains("AccessDeniedDetail") {
-            var model = DeleteRouteStrategyResponseBody.AccessDeniedDetail()
-            model.fromMap(dict["AccessDeniedDetail"] as! [String: Any])
-            self.accessDeniedDetail = model
-        }
         if dict.keys.contains("Code") {
             self.code = dict["Code"] as! Int32
         }
@@ -3730,85 +2823,6 @@ public class DeleteWorkflowRequest : Tea.TeaModel {
 }
 
 public class DeleteWorkflowResponseBody : Tea.TeaModel {
-    public class AccessDeniedDetail : Tea.TeaModel {
-        public var authAction: String?
-
-        public var authPrincipalDisplayName: String?
-
-        public var authPrincipalOwnerId: String?
-
-        public var authPrincipalType: String?
-
-        public var encodedDiagnosticMessage: String?
-
-        public var noPermissionType: String?
-
-        public var policyType: String?
-
-        public override init() {
-            super.init()
-        }
-
-        public init(_ dict: [String: Any]) {
-            super.init()
-            self.fromMap(dict)
-        }
-
-        public override func validate() throws -> Void {
-        }
-
-        public override func toMap() -> [String : Any] {
-            var map = super.toMap()
-            if self.authAction != nil {
-                map["AuthAction"] = self.authAction!
-            }
-            if self.authPrincipalDisplayName != nil {
-                map["AuthPrincipalDisplayName"] = self.authPrincipalDisplayName!
-            }
-            if self.authPrincipalOwnerId != nil {
-                map["AuthPrincipalOwnerId"] = self.authPrincipalOwnerId!
-            }
-            if self.authPrincipalType != nil {
-                map["AuthPrincipalType"] = self.authPrincipalType!
-            }
-            if self.encodedDiagnosticMessage != nil {
-                map["EncodedDiagnosticMessage"] = self.encodedDiagnosticMessage!
-            }
-            if self.noPermissionType != nil {
-                map["NoPermissionType"] = self.noPermissionType!
-            }
-            if self.policyType != nil {
-                map["PolicyType"] = self.policyType!
-            }
-            return map
-        }
-
-        public override func fromMap(_ dict: [String: Any]) -> Void {
-            if dict.keys.contains("AuthAction") {
-                self.authAction = dict["AuthAction"] as! String
-            }
-            if dict.keys.contains("AuthPrincipalDisplayName") {
-                self.authPrincipalDisplayName = dict["AuthPrincipalDisplayName"] as! String
-            }
-            if dict.keys.contains("AuthPrincipalOwnerId") {
-                self.authPrincipalOwnerId = dict["AuthPrincipalOwnerId"] as! String
-            }
-            if dict.keys.contains("AuthPrincipalType") {
-                self.authPrincipalType = dict["AuthPrincipalType"] as! String
-            }
-            if dict.keys.contains("EncodedDiagnosticMessage") {
-                self.encodedDiagnosticMessage = dict["EncodedDiagnosticMessage"] as! String
-            }
-            if dict.keys.contains("NoPermissionType") {
-                self.noPermissionType = dict["NoPermissionType"] as! String
-            }
-            if dict.keys.contains("PolicyType") {
-                self.policyType = dict["PolicyType"] as! String
-            }
-        }
-    }
-    public var accessDeniedDetail: DeleteWorkflowResponseBody.AccessDeniedDetail?
-
     public var code: Int32?
 
     public var message: String?
@@ -3827,14 +2841,10 @@ public class DeleteWorkflowResponseBody : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.accessDeniedDetail?.validate()
     }
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
-        if self.accessDeniedDetail != nil {
-            map["AccessDeniedDetail"] = self.accessDeniedDetail?.toMap()
-        }
         if self.code != nil {
             map["Code"] = self.code!
         }
@@ -3851,11 +2861,6 @@ public class DeleteWorkflowResponseBody : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
-        if dict.keys.contains("AccessDeniedDetail") {
-            var model = DeleteWorkflowResponseBody.AccessDeniedDetail()
-            model.fromMap(dict["AccessDeniedDetail"] as! [String: Any])
-            self.accessDeniedDetail = model
-        }
         if dict.keys.contains("Code") {
             self.code = dict["Code"] as! Int32
         }
@@ -4213,85 +3218,6 @@ public class DesignateWorkersRequest : Tea.TeaModel {
 }
 
 public class DesignateWorkersResponseBody : Tea.TeaModel {
-    public class AccessDeniedDetail : Tea.TeaModel {
-        public var authAction: String?
-
-        public var authPrincipalDisplayName: String?
-
-        public var authPrincipalOwnerId: String?
-
-        public var authPrincipalType: String?
-
-        public var encodedDiagnosticMessage: String?
-
-        public var noPermissionType: String?
-
-        public var policyType: String?
-
-        public override init() {
-            super.init()
-        }
-
-        public init(_ dict: [String: Any]) {
-            super.init()
-            self.fromMap(dict)
-        }
-
-        public override func validate() throws -> Void {
-        }
-
-        public override func toMap() -> [String : Any] {
-            var map = super.toMap()
-            if self.authAction != nil {
-                map["AuthAction"] = self.authAction!
-            }
-            if self.authPrincipalDisplayName != nil {
-                map["AuthPrincipalDisplayName"] = self.authPrincipalDisplayName!
-            }
-            if self.authPrincipalOwnerId != nil {
-                map["AuthPrincipalOwnerId"] = self.authPrincipalOwnerId!
-            }
-            if self.authPrincipalType != nil {
-                map["AuthPrincipalType"] = self.authPrincipalType!
-            }
-            if self.encodedDiagnosticMessage != nil {
-                map["EncodedDiagnosticMessage"] = self.encodedDiagnosticMessage!
-            }
-            if self.noPermissionType != nil {
-                map["NoPermissionType"] = self.noPermissionType!
-            }
-            if self.policyType != nil {
-                map["PolicyType"] = self.policyType!
-            }
-            return map
-        }
-
-        public override func fromMap(_ dict: [String: Any]) -> Void {
-            if dict.keys.contains("AuthAction") {
-                self.authAction = dict["AuthAction"] as! String
-            }
-            if dict.keys.contains("AuthPrincipalDisplayName") {
-                self.authPrincipalDisplayName = dict["AuthPrincipalDisplayName"] as! String
-            }
-            if dict.keys.contains("AuthPrincipalOwnerId") {
-                self.authPrincipalOwnerId = dict["AuthPrincipalOwnerId"] as! String
-            }
-            if dict.keys.contains("AuthPrincipalType") {
-                self.authPrincipalType = dict["AuthPrincipalType"] as! String
-            }
-            if dict.keys.contains("EncodedDiagnosticMessage") {
-                self.encodedDiagnosticMessage = dict["EncodedDiagnosticMessage"] as! String
-            }
-            if dict.keys.contains("NoPermissionType") {
-                self.noPermissionType = dict["NoPermissionType"] as! String
-            }
-            if dict.keys.contains("PolicyType") {
-                self.policyType = dict["PolicyType"] as! String
-            }
-        }
-    }
-    public var accessDeniedDetail: DesignateWorkersResponseBody.AccessDeniedDetail?
-
     public var code: Int32?
 
     public var message: String?
@@ -4310,14 +3236,10 @@ public class DesignateWorkersResponseBody : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.accessDeniedDetail?.validate()
     }
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
-        if self.accessDeniedDetail != nil {
-            map["AccessDeniedDetail"] = self.accessDeniedDetail?.toMap()
-        }
         if self.code != nil {
             map["Code"] = self.code!
         }
@@ -4334,11 +3256,6 @@ public class DesignateWorkersResponseBody : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
-        if dict.keys.contains("AccessDeniedDetail") {
-            var model = DesignateWorkersResponseBody.AccessDeniedDetail()
-            model.fromMap(dict["AccessDeniedDetail"] as! [String: Any])
-            self.accessDeniedDetail = model
-        }
         if dict.keys.contains("Code") {
             self.code = dict["Code"] as! Int32
         }
@@ -4466,85 +3383,6 @@ public class DisableJobRequest : Tea.TeaModel {
 }
 
 public class DisableJobResponseBody : Tea.TeaModel {
-    public class AccessDeniedDetail : Tea.TeaModel {
-        public var authAction: String?
-
-        public var authPrincipalDisplayName: String?
-
-        public var authPrincipalOwnerId: String?
-
-        public var authPrincipalType: String?
-
-        public var encodedDiagnosticMessage: String?
-
-        public var noPermissionType: String?
-
-        public var policyType: String?
-
-        public override init() {
-            super.init()
-        }
-
-        public init(_ dict: [String: Any]) {
-            super.init()
-            self.fromMap(dict)
-        }
-
-        public override func validate() throws -> Void {
-        }
-
-        public override func toMap() -> [String : Any] {
-            var map = super.toMap()
-            if self.authAction != nil {
-                map["AuthAction"] = self.authAction!
-            }
-            if self.authPrincipalDisplayName != nil {
-                map["AuthPrincipalDisplayName"] = self.authPrincipalDisplayName!
-            }
-            if self.authPrincipalOwnerId != nil {
-                map["AuthPrincipalOwnerId"] = self.authPrincipalOwnerId!
-            }
-            if self.authPrincipalType != nil {
-                map["AuthPrincipalType"] = self.authPrincipalType!
-            }
-            if self.encodedDiagnosticMessage != nil {
-                map["EncodedDiagnosticMessage"] = self.encodedDiagnosticMessage!
-            }
-            if self.noPermissionType != nil {
-                map["NoPermissionType"] = self.noPermissionType!
-            }
-            if self.policyType != nil {
-                map["PolicyType"] = self.policyType!
-            }
-            return map
-        }
-
-        public override func fromMap(_ dict: [String: Any]) -> Void {
-            if dict.keys.contains("AuthAction") {
-                self.authAction = dict["AuthAction"] as! String
-            }
-            if dict.keys.contains("AuthPrincipalDisplayName") {
-                self.authPrincipalDisplayName = dict["AuthPrincipalDisplayName"] as! String
-            }
-            if dict.keys.contains("AuthPrincipalOwnerId") {
-                self.authPrincipalOwnerId = dict["AuthPrincipalOwnerId"] as! String
-            }
-            if dict.keys.contains("AuthPrincipalType") {
-                self.authPrincipalType = dict["AuthPrincipalType"] as! String
-            }
-            if dict.keys.contains("EncodedDiagnosticMessage") {
-                self.encodedDiagnosticMessage = dict["EncodedDiagnosticMessage"] as! String
-            }
-            if dict.keys.contains("NoPermissionType") {
-                self.noPermissionType = dict["NoPermissionType"] as! String
-            }
-            if dict.keys.contains("PolicyType") {
-                self.policyType = dict["PolicyType"] as! String
-            }
-        }
-    }
-    public var accessDeniedDetail: DisableJobResponseBody.AccessDeniedDetail?
-
     public var code: Int32?
 
     public var message: String?
@@ -4563,14 +3401,10 @@ public class DisableJobResponseBody : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.accessDeniedDetail?.validate()
     }
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
-        if self.accessDeniedDetail != nil {
-            map["AccessDeniedDetail"] = self.accessDeniedDetail?.toMap()
-        }
         if self.code != nil {
             map["Code"] = self.code!
         }
@@ -4587,11 +3421,6 @@ public class DisableJobResponseBody : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
-        if dict.keys.contains("AccessDeniedDetail") {
-            var model = DisableJobResponseBody.AccessDeniedDetail()
-            model.fromMap(dict["AccessDeniedDetail"] as! [String: Any])
-            self.accessDeniedDetail = model
-        }
         if dict.keys.contains("Code") {
             self.code = dict["Code"] as! Int32
         }
@@ -4719,85 +3548,6 @@ public class DisableWorkflowRequest : Tea.TeaModel {
 }
 
 public class DisableWorkflowResponseBody : Tea.TeaModel {
-    public class AccessDeniedDetail : Tea.TeaModel {
-        public var authAction: String?
-
-        public var authPrincipalDisplayName: String?
-
-        public var authPrincipalOwnerId: String?
-
-        public var authPrincipalType: String?
-
-        public var encodedDiagnosticMessage: String?
-
-        public var noPermissionType: String?
-
-        public var policyType: String?
-
-        public override init() {
-            super.init()
-        }
-
-        public init(_ dict: [String: Any]) {
-            super.init()
-            self.fromMap(dict)
-        }
-
-        public override func validate() throws -> Void {
-        }
-
-        public override func toMap() -> [String : Any] {
-            var map = super.toMap()
-            if self.authAction != nil {
-                map["AuthAction"] = self.authAction!
-            }
-            if self.authPrincipalDisplayName != nil {
-                map["AuthPrincipalDisplayName"] = self.authPrincipalDisplayName!
-            }
-            if self.authPrincipalOwnerId != nil {
-                map["AuthPrincipalOwnerId"] = self.authPrincipalOwnerId!
-            }
-            if self.authPrincipalType != nil {
-                map["AuthPrincipalType"] = self.authPrincipalType!
-            }
-            if self.encodedDiagnosticMessage != nil {
-                map["EncodedDiagnosticMessage"] = self.encodedDiagnosticMessage!
-            }
-            if self.noPermissionType != nil {
-                map["NoPermissionType"] = self.noPermissionType!
-            }
-            if self.policyType != nil {
-                map["PolicyType"] = self.policyType!
-            }
-            return map
-        }
-
-        public override func fromMap(_ dict: [String: Any]) -> Void {
-            if dict.keys.contains("AuthAction") {
-                self.authAction = dict["AuthAction"] as! String
-            }
-            if dict.keys.contains("AuthPrincipalDisplayName") {
-                self.authPrincipalDisplayName = dict["AuthPrincipalDisplayName"] as! String
-            }
-            if dict.keys.contains("AuthPrincipalOwnerId") {
-                self.authPrincipalOwnerId = dict["AuthPrincipalOwnerId"] as! String
-            }
-            if dict.keys.contains("AuthPrincipalType") {
-                self.authPrincipalType = dict["AuthPrincipalType"] as! String
-            }
-            if dict.keys.contains("EncodedDiagnosticMessage") {
-                self.encodedDiagnosticMessage = dict["EncodedDiagnosticMessage"] as! String
-            }
-            if dict.keys.contains("NoPermissionType") {
-                self.noPermissionType = dict["NoPermissionType"] as! String
-            }
-            if dict.keys.contains("PolicyType") {
-                self.policyType = dict["PolicyType"] as! String
-            }
-        }
-    }
-    public var accessDeniedDetail: DisableWorkflowResponseBody.AccessDeniedDetail?
-
     public var code: Int32?
 
     public var message: String?
@@ -4816,14 +3566,10 @@ public class DisableWorkflowResponseBody : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.accessDeniedDetail?.validate()
     }
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
-        if self.accessDeniedDetail != nil {
-            map["AccessDeniedDetail"] = self.accessDeniedDetail?.toMap()
-        }
         if self.code != nil {
             map["Code"] = self.code!
         }
@@ -4840,11 +3586,6 @@ public class DisableWorkflowResponseBody : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
-        if dict.keys.contains("AccessDeniedDetail") {
-            var model = DisableWorkflowResponseBody.AccessDeniedDetail()
-            model.fromMap(dict["AccessDeniedDetail"] as! [String: Any])
-            self.accessDeniedDetail = model
-        }
         if dict.keys.contains("Code") {
             self.code = dict["Code"] as! Int32
         }
@@ -4972,85 +3713,6 @@ public class EnableJobRequest : Tea.TeaModel {
 }
 
 public class EnableJobResponseBody : Tea.TeaModel {
-    public class AccessDeniedDetail : Tea.TeaModel {
-        public var authAction: String?
-
-        public var authPrincipalDisplayName: String?
-
-        public var authPrincipalOwnerId: String?
-
-        public var authPrincipalType: String?
-
-        public var encodedDiagnosticMessage: String?
-
-        public var noPermissionType: String?
-
-        public var policyType: String?
-
-        public override init() {
-            super.init()
-        }
-
-        public init(_ dict: [String: Any]) {
-            super.init()
-            self.fromMap(dict)
-        }
-
-        public override func validate() throws -> Void {
-        }
-
-        public override func toMap() -> [String : Any] {
-            var map = super.toMap()
-            if self.authAction != nil {
-                map["AuthAction"] = self.authAction!
-            }
-            if self.authPrincipalDisplayName != nil {
-                map["AuthPrincipalDisplayName"] = self.authPrincipalDisplayName!
-            }
-            if self.authPrincipalOwnerId != nil {
-                map["AuthPrincipalOwnerId"] = self.authPrincipalOwnerId!
-            }
-            if self.authPrincipalType != nil {
-                map["AuthPrincipalType"] = self.authPrincipalType!
-            }
-            if self.encodedDiagnosticMessage != nil {
-                map["EncodedDiagnosticMessage"] = self.encodedDiagnosticMessage!
-            }
-            if self.noPermissionType != nil {
-                map["NoPermissionType"] = self.noPermissionType!
-            }
-            if self.policyType != nil {
-                map["PolicyType"] = self.policyType!
-            }
-            return map
-        }
-
-        public override func fromMap(_ dict: [String: Any]) -> Void {
-            if dict.keys.contains("AuthAction") {
-                self.authAction = dict["AuthAction"] as! String
-            }
-            if dict.keys.contains("AuthPrincipalDisplayName") {
-                self.authPrincipalDisplayName = dict["AuthPrincipalDisplayName"] as! String
-            }
-            if dict.keys.contains("AuthPrincipalOwnerId") {
-                self.authPrincipalOwnerId = dict["AuthPrincipalOwnerId"] as! String
-            }
-            if dict.keys.contains("AuthPrincipalType") {
-                self.authPrincipalType = dict["AuthPrincipalType"] as! String
-            }
-            if dict.keys.contains("EncodedDiagnosticMessage") {
-                self.encodedDiagnosticMessage = dict["EncodedDiagnosticMessage"] as! String
-            }
-            if dict.keys.contains("NoPermissionType") {
-                self.noPermissionType = dict["NoPermissionType"] as! String
-            }
-            if dict.keys.contains("PolicyType") {
-                self.policyType = dict["PolicyType"] as! String
-            }
-        }
-    }
-    public var accessDeniedDetail: EnableJobResponseBody.AccessDeniedDetail?
-
     public var code: Int32?
 
     public var message: String?
@@ -5069,14 +3731,10 @@ public class EnableJobResponseBody : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.accessDeniedDetail?.validate()
     }
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
-        if self.accessDeniedDetail != nil {
-            map["AccessDeniedDetail"] = self.accessDeniedDetail?.toMap()
-        }
         if self.code != nil {
             map["Code"] = self.code!
         }
@@ -5093,11 +3751,6 @@ public class EnableJobResponseBody : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
-        if dict.keys.contains("AccessDeniedDetail") {
-            var model = EnableJobResponseBody.AccessDeniedDetail()
-            model.fromMap(dict["AccessDeniedDetail"] as! [String: Any])
-            self.accessDeniedDetail = model
-        }
         if dict.keys.contains("Code") {
             self.code = dict["Code"] as! Int32
         }
@@ -5225,85 +3878,6 @@ public class EnableWorkflowRequest : Tea.TeaModel {
 }
 
 public class EnableWorkflowResponseBody : Tea.TeaModel {
-    public class AccessDeniedDetail : Tea.TeaModel {
-        public var authAction: String?
-
-        public var authPrincipalDisplayName: String?
-
-        public var authPrincipalOwnerId: String?
-
-        public var authPrincipalType: String?
-
-        public var encodedDiagnosticMessage: String?
-
-        public var noPermissionType: String?
-
-        public var policyType: String?
-
-        public override init() {
-            super.init()
-        }
-
-        public init(_ dict: [String: Any]) {
-            super.init()
-            self.fromMap(dict)
-        }
-
-        public override func validate() throws -> Void {
-        }
-
-        public override func toMap() -> [String : Any] {
-            var map = super.toMap()
-            if self.authAction != nil {
-                map["AuthAction"] = self.authAction!
-            }
-            if self.authPrincipalDisplayName != nil {
-                map["AuthPrincipalDisplayName"] = self.authPrincipalDisplayName!
-            }
-            if self.authPrincipalOwnerId != nil {
-                map["AuthPrincipalOwnerId"] = self.authPrincipalOwnerId!
-            }
-            if self.authPrincipalType != nil {
-                map["AuthPrincipalType"] = self.authPrincipalType!
-            }
-            if self.encodedDiagnosticMessage != nil {
-                map["EncodedDiagnosticMessage"] = self.encodedDiagnosticMessage!
-            }
-            if self.noPermissionType != nil {
-                map["NoPermissionType"] = self.noPermissionType!
-            }
-            if self.policyType != nil {
-                map["PolicyType"] = self.policyType!
-            }
-            return map
-        }
-
-        public override func fromMap(_ dict: [String: Any]) -> Void {
-            if dict.keys.contains("AuthAction") {
-                self.authAction = dict["AuthAction"] as! String
-            }
-            if dict.keys.contains("AuthPrincipalDisplayName") {
-                self.authPrincipalDisplayName = dict["AuthPrincipalDisplayName"] as! String
-            }
-            if dict.keys.contains("AuthPrincipalOwnerId") {
-                self.authPrincipalOwnerId = dict["AuthPrincipalOwnerId"] as! String
-            }
-            if dict.keys.contains("AuthPrincipalType") {
-                self.authPrincipalType = dict["AuthPrincipalType"] as! String
-            }
-            if dict.keys.contains("EncodedDiagnosticMessage") {
-                self.encodedDiagnosticMessage = dict["EncodedDiagnosticMessage"] as! String
-            }
-            if dict.keys.contains("NoPermissionType") {
-                self.noPermissionType = dict["NoPermissionType"] as! String
-            }
-            if dict.keys.contains("PolicyType") {
-                self.policyType = dict["PolicyType"] as! String
-            }
-        }
-    }
-    public var accessDeniedDetail: EnableWorkflowResponseBody.AccessDeniedDetail?
-
     public var code: Int32?
 
     public var message: String?
@@ -5322,14 +3896,10 @@ public class EnableWorkflowResponseBody : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.accessDeniedDetail?.validate()
     }
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
-        if self.accessDeniedDetail != nil {
-            map["AccessDeniedDetail"] = self.accessDeniedDetail?.toMap()
-        }
         if self.code != nil {
             map["Code"] = self.code!
         }
@@ -5346,11 +3916,6 @@ public class EnableWorkflowResponseBody : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
-        if dict.keys.contains("AccessDeniedDetail") {
-            var model = EnableWorkflowResponseBody.AccessDeniedDetail()
-            model.fromMap(dict["AccessDeniedDetail"] as! [String: Any])
-            self.accessDeniedDetail = model
-        }
         if dict.keys.contains("Code") {
             self.code = dict["Code"] as! Int32
         }
@@ -5518,83 +4083,6 @@ public class ExecuteJobRequest : Tea.TeaModel {
 }
 
 public class ExecuteJobResponseBody : Tea.TeaModel {
-    public class AccessDeniedDetail : Tea.TeaModel {
-        public var authAction: String?
-
-        public var authPrincipalDisplayName: String?
-
-        public var authPrincipalOwnerId: String?
-
-        public var authPrincipalType: String?
-
-        public var encodedDiagnosticMessage: String?
-
-        public var noPermissionType: String?
-
-        public var policyType: String?
-
-        public override init() {
-            super.init()
-        }
-
-        public init(_ dict: [String: Any]) {
-            super.init()
-            self.fromMap(dict)
-        }
-
-        public override func validate() throws -> Void {
-        }
-
-        public override func toMap() -> [String : Any] {
-            var map = super.toMap()
-            if self.authAction != nil {
-                map["AuthAction"] = self.authAction!
-            }
-            if self.authPrincipalDisplayName != nil {
-                map["AuthPrincipalDisplayName"] = self.authPrincipalDisplayName!
-            }
-            if self.authPrincipalOwnerId != nil {
-                map["AuthPrincipalOwnerId"] = self.authPrincipalOwnerId!
-            }
-            if self.authPrincipalType != nil {
-                map["AuthPrincipalType"] = self.authPrincipalType!
-            }
-            if self.encodedDiagnosticMessage != nil {
-                map["EncodedDiagnosticMessage"] = self.encodedDiagnosticMessage!
-            }
-            if self.noPermissionType != nil {
-                map["NoPermissionType"] = self.noPermissionType!
-            }
-            if self.policyType != nil {
-                map["PolicyType"] = self.policyType!
-            }
-            return map
-        }
-
-        public override func fromMap(_ dict: [String: Any]) -> Void {
-            if dict.keys.contains("AuthAction") {
-                self.authAction = dict["AuthAction"] as! String
-            }
-            if dict.keys.contains("AuthPrincipalDisplayName") {
-                self.authPrincipalDisplayName = dict["AuthPrincipalDisplayName"] as! String
-            }
-            if dict.keys.contains("AuthPrincipalOwnerId") {
-                self.authPrincipalOwnerId = dict["AuthPrincipalOwnerId"] as! String
-            }
-            if dict.keys.contains("AuthPrincipalType") {
-                self.authPrincipalType = dict["AuthPrincipalType"] as! String
-            }
-            if dict.keys.contains("EncodedDiagnosticMessage") {
-                self.encodedDiagnosticMessage = dict["EncodedDiagnosticMessage"] as! String
-            }
-            if dict.keys.contains("NoPermissionType") {
-                self.noPermissionType = dict["NoPermissionType"] as! String
-            }
-            if dict.keys.contains("PolicyType") {
-                self.policyType = dict["PolicyType"] as! String
-            }
-        }
-    }
     public class Data : Tea.TeaModel {
         public var jobInstanceId: Int64?
 
@@ -5624,8 +4112,6 @@ public class ExecuteJobResponseBody : Tea.TeaModel {
             }
         }
     }
-    public var accessDeniedDetail: ExecuteJobResponseBody.AccessDeniedDetail?
-
     public var code: Int32?
 
     public var data: ExecuteJobResponseBody.Data?
@@ -5646,15 +4132,11 @@ public class ExecuteJobResponseBody : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.accessDeniedDetail?.validate()
         try self.data?.validate()
     }
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
-        if self.accessDeniedDetail != nil {
-            map["AccessDeniedDetail"] = self.accessDeniedDetail?.toMap()
-        }
         if self.code != nil {
             map["Code"] = self.code!
         }
@@ -5674,11 +4156,6 @@ public class ExecuteJobResponseBody : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
-        if dict.keys.contains("AccessDeniedDetail") {
-            var model = ExecuteJobResponseBody.AccessDeniedDetail()
-            model.fromMap(dict["AccessDeniedDetail"] as! [String: Any])
-            self.accessDeniedDetail = model
-        }
         if dict.keys.contains("Code") {
             self.code = dict["Code"] as! Int32
         }
@@ -5819,83 +4296,6 @@ public class ExecuteWorkflowRequest : Tea.TeaModel {
 }
 
 public class ExecuteWorkflowResponseBody : Tea.TeaModel {
-    public class AccessDeniedDetail : Tea.TeaModel {
-        public var authAction: String?
-
-        public var authPrincipalDisplayName: String?
-
-        public var authPrincipalOwnerId: String?
-
-        public var authPrincipalType: String?
-
-        public var encodedDiagnosticMessage: String?
-
-        public var noPermissionType: String?
-
-        public var policyType: String?
-
-        public override init() {
-            super.init()
-        }
-
-        public init(_ dict: [String: Any]) {
-            super.init()
-            self.fromMap(dict)
-        }
-
-        public override func validate() throws -> Void {
-        }
-
-        public override func toMap() -> [String : Any] {
-            var map = super.toMap()
-            if self.authAction != nil {
-                map["AuthAction"] = self.authAction!
-            }
-            if self.authPrincipalDisplayName != nil {
-                map["AuthPrincipalDisplayName"] = self.authPrincipalDisplayName!
-            }
-            if self.authPrincipalOwnerId != nil {
-                map["AuthPrincipalOwnerId"] = self.authPrincipalOwnerId!
-            }
-            if self.authPrincipalType != nil {
-                map["AuthPrincipalType"] = self.authPrincipalType!
-            }
-            if self.encodedDiagnosticMessage != nil {
-                map["EncodedDiagnosticMessage"] = self.encodedDiagnosticMessage!
-            }
-            if self.noPermissionType != nil {
-                map["NoPermissionType"] = self.noPermissionType!
-            }
-            if self.policyType != nil {
-                map["PolicyType"] = self.policyType!
-            }
-            return map
-        }
-
-        public override func fromMap(_ dict: [String: Any]) -> Void {
-            if dict.keys.contains("AuthAction") {
-                self.authAction = dict["AuthAction"] as! String
-            }
-            if dict.keys.contains("AuthPrincipalDisplayName") {
-                self.authPrincipalDisplayName = dict["AuthPrincipalDisplayName"] as! String
-            }
-            if dict.keys.contains("AuthPrincipalOwnerId") {
-                self.authPrincipalOwnerId = dict["AuthPrincipalOwnerId"] as! String
-            }
-            if dict.keys.contains("AuthPrincipalType") {
-                self.authPrincipalType = dict["AuthPrincipalType"] as! String
-            }
-            if dict.keys.contains("EncodedDiagnosticMessage") {
-                self.encodedDiagnosticMessage = dict["EncodedDiagnosticMessage"] as! String
-            }
-            if dict.keys.contains("NoPermissionType") {
-                self.noPermissionType = dict["NoPermissionType"] as! String
-            }
-            if dict.keys.contains("PolicyType") {
-                self.policyType = dict["PolicyType"] as! String
-            }
-        }
-    }
     public class Data : Tea.TeaModel {
         public var wfInstanceId: Int64?
 
@@ -5925,8 +4325,6 @@ public class ExecuteWorkflowResponseBody : Tea.TeaModel {
             }
         }
     }
-    public var accessDeniedDetail: ExecuteWorkflowResponseBody.AccessDeniedDetail?
-
     public var code: Int32?
 
     public var data: ExecuteWorkflowResponseBody.Data?
@@ -5947,15 +4345,11 @@ public class ExecuteWorkflowResponseBody : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.accessDeniedDetail?.validate()
         try self.data?.validate()
     }
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
-        if self.accessDeniedDetail != nil {
-            map["AccessDeniedDetail"] = self.accessDeniedDetail?.toMap()
-        }
         if self.code != nil {
             map["Code"] = self.code!
         }
@@ -5975,11 +4369,6 @@ public class ExecuteWorkflowResponseBody : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
-        if dict.keys.contains("AccessDeniedDetail") {
-            var model = ExecuteWorkflowResponseBody.AccessDeniedDetail()
-            model.fromMap(dict["AccessDeniedDetail"] as! [String: Any])
-            self.accessDeniedDetail = model
-        }
         if dict.keys.contains("Code") {
             self.code = dict["Code"] as! Int32
         }
@@ -6096,83 +4485,6 @@ public class GetAppGroupRequest : Tea.TeaModel {
 }
 
 public class GetAppGroupResponseBody : Tea.TeaModel {
-    public class AccessDeniedDetail : Tea.TeaModel {
-        public var authAction: String?
-
-        public var authPrincipalDisplayName: String?
-
-        public var authPrincipalOwnerId: String?
-
-        public var authPrincipalType: String?
-
-        public var encodedDiagnosticMessage: String?
-
-        public var noPermissionType: String?
-
-        public var policyType: String?
-
-        public override init() {
-            super.init()
-        }
-
-        public init(_ dict: [String: Any]) {
-            super.init()
-            self.fromMap(dict)
-        }
-
-        public override func validate() throws -> Void {
-        }
-
-        public override func toMap() -> [String : Any] {
-            var map = super.toMap()
-            if self.authAction != nil {
-                map["AuthAction"] = self.authAction!
-            }
-            if self.authPrincipalDisplayName != nil {
-                map["AuthPrincipalDisplayName"] = self.authPrincipalDisplayName!
-            }
-            if self.authPrincipalOwnerId != nil {
-                map["AuthPrincipalOwnerId"] = self.authPrincipalOwnerId!
-            }
-            if self.authPrincipalType != nil {
-                map["AuthPrincipalType"] = self.authPrincipalType!
-            }
-            if self.encodedDiagnosticMessage != nil {
-                map["EncodedDiagnosticMessage"] = self.encodedDiagnosticMessage!
-            }
-            if self.noPermissionType != nil {
-                map["NoPermissionType"] = self.noPermissionType!
-            }
-            if self.policyType != nil {
-                map["PolicyType"] = self.policyType!
-            }
-            return map
-        }
-
-        public override func fromMap(_ dict: [String: Any]) -> Void {
-            if dict.keys.contains("AuthAction") {
-                self.authAction = dict["AuthAction"] as! String
-            }
-            if dict.keys.contains("AuthPrincipalDisplayName") {
-                self.authPrincipalDisplayName = dict["AuthPrincipalDisplayName"] as! String
-            }
-            if dict.keys.contains("AuthPrincipalOwnerId") {
-                self.authPrincipalOwnerId = dict["AuthPrincipalOwnerId"] as! String
-            }
-            if dict.keys.contains("AuthPrincipalType") {
-                self.authPrincipalType = dict["AuthPrincipalType"] as! String
-            }
-            if dict.keys.contains("EncodedDiagnosticMessage") {
-                self.encodedDiagnosticMessage = dict["EncodedDiagnosticMessage"] as! String
-            }
-            if dict.keys.contains("NoPermissionType") {
-                self.noPermissionType = dict["NoPermissionType"] as! String
-            }
-            if dict.keys.contains("PolicyType") {
-                self.policyType = dict["PolicyType"] as! String
-            }
-        }
-    }
     public class Data : Tea.TeaModel {
         public var appKey: String?
 
@@ -6189,6 +4501,10 @@ public class GetAppGroupResponseBody : Tea.TeaModel {
         public var maxJobs: Int32?
 
         public var monitorConfigJson: String?
+
+        public var monitorContactsJson: String?
+
+        public var namespace: String?
 
         public override init() {
             super.init()
@@ -6228,6 +4544,12 @@ public class GetAppGroupResponseBody : Tea.TeaModel {
             if self.monitorConfigJson != nil {
                 map["MonitorConfigJson"] = self.monitorConfigJson!
             }
+            if self.monitorContactsJson != nil {
+                map["MonitorContactsJson"] = self.monitorContactsJson!
+            }
+            if self.namespace != nil {
+                map["Namespace"] = self.namespace!
+            }
             return map
         }
 
@@ -6256,10 +4578,14 @@ public class GetAppGroupResponseBody : Tea.TeaModel {
             if dict.keys.contains("MonitorConfigJson") {
                 self.monitorConfigJson = dict["MonitorConfigJson"] as! String
             }
+            if dict.keys.contains("MonitorContactsJson") {
+                self.monitorContactsJson = dict["MonitorContactsJson"] as! String
+            }
+            if dict.keys.contains("Namespace") {
+                self.namespace = dict["Namespace"] as! String
+            }
         }
     }
-    public var accessDeniedDetail: GetAppGroupResponseBody.AccessDeniedDetail?
-
     public var code: Int32?
 
     public var data: GetAppGroupResponseBody.Data?
@@ -6280,15 +4606,11 @@ public class GetAppGroupResponseBody : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.accessDeniedDetail?.validate()
         try self.data?.validate()
     }
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
-        if self.accessDeniedDetail != nil {
-            map["AccessDeniedDetail"] = self.accessDeniedDetail?.toMap()
-        }
         if self.code != nil {
             map["Code"] = self.code!
         }
@@ -6308,11 +4630,6 @@ public class GetAppGroupResponseBody : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
-        if dict.keys.contains("AccessDeniedDetail") {
-            var model = GetAppGroupResponseBody.AccessDeniedDetail()
-            model.fromMap(dict["AccessDeniedDetail"] as! [String: Any])
-            self.accessDeniedDetail = model
-        }
         if dict.keys.contains("Code") {
             self.code = dict["Code"] as! Int32
         }
@@ -6453,83 +4770,6 @@ public class GetJobInfoRequest : Tea.TeaModel {
 }
 
 public class GetJobInfoResponseBody : Tea.TeaModel {
-    public class AccessDeniedDetail : Tea.TeaModel {
-        public var authAction: String?
-
-        public var authPrincipalDisplayName: String?
-
-        public var authPrincipalOwnerId: String?
-
-        public var authPrincipalType: String?
-
-        public var encodedDiagnosticMessage: String?
-
-        public var noPermissionType: String?
-
-        public var policyType: String?
-
-        public override init() {
-            super.init()
-        }
-
-        public init(_ dict: [String: Any]) {
-            super.init()
-            self.fromMap(dict)
-        }
-
-        public override func validate() throws -> Void {
-        }
-
-        public override func toMap() -> [String : Any] {
-            var map = super.toMap()
-            if self.authAction != nil {
-                map["AuthAction"] = self.authAction!
-            }
-            if self.authPrincipalDisplayName != nil {
-                map["AuthPrincipalDisplayName"] = self.authPrincipalDisplayName!
-            }
-            if self.authPrincipalOwnerId != nil {
-                map["AuthPrincipalOwnerId"] = self.authPrincipalOwnerId!
-            }
-            if self.authPrincipalType != nil {
-                map["AuthPrincipalType"] = self.authPrincipalType!
-            }
-            if self.encodedDiagnosticMessage != nil {
-                map["EncodedDiagnosticMessage"] = self.encodedDiagnosticMessage!
-            }
-            if self.noPermissionType != nil {
-                map["NoPermissionType"] = self.noPermissionType!
-            }
-            if self.policyType != nil {
-                map["PolicyType"] = self.policyType!
-            }
-            return map
-        }
-
-        public override func fromMap(_ dict: [String: Any]) -> Void {
-            if dict.keys.contains("AuthAction") {
-                self.authAction = dict["AuthAction"] as! String
-            }
-            if dict.keys.contains("AuthPrincipalDisplayName") {
-                self.authPrincipalDisplayName = dict["AuthPrincipalDisplayName"] as! String
-            }
-            if dict.keys.contains("AuthPrincipalOwnerId") {
-                self.authPrincipalOwnerId = dict["AuthPrincipalOwnerId"] as! String
-            }
-            if dict.keys.contains("AuthPrincipalType") {
-                self.authPrincipalType = dict["AuthPrincipalType"] as! String
-            }
-            if dict.keys.contains("EncodedDiagnosticMessage") {
-                self.encodedDiagnosticMessage = dict["EncodedDiagnosticMessage"] as! String
-            }
-            if dict.keys.contains("NoPermissionType") {
-                self.noPermissionType = dict["NoPermissionType"] as! String
-            }
-            if dict.keys.contains("PolicyType") {
-                self.policyType = dict["PolicyType"] as! String
-            }
-        }
-    }
     public class Data : Tea.TeaModel {
         public class JobConfigInfo : Tea.TeaModel {
             public class JobMonitorInfo : Tea.TeaModel {
@@ -7024,8 +5264,6 @@ public class GetJobInfoResponseBody : Tea.TeaModel {
             }
         }
     }
-    public var accessDeniedDetail: GetJobInfoResponseBody.AccessDeniedDetail?
-
     public var code: Int32?
 
     public var data: GetJobInfoResponseBody.Data?
@@ -7046,15 +5284,11 @@ public class GetJobInfoResponseBody : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.accessDeniedDetail?.validate()
         try self.data?.validate()
     }
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
-        if self.accessDeniedDetail != nil {
-            map["AccessDeniedDetail"] = self.accessDeniedDetail?.toMap()
-        }
         if self.code != nil {
             map["Code"] = self.code!
         }
@@ -7074,11 +5308,6 @@ public class GetJobInfoResponseBody : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
-        if dict.keys.contains("AccessDeniedDetail") {
-            var model = GetJobInfoResponseBody.AccessDeniedDetail()
-            model.fromMap(dict["AccessDeniedDetail"] as! [String: Any])
-            self.accessDeniedDetail = model
-        }
         if dict.keys.contains("Code") {
             self.code = dict["Code"] as! Int32
         }
@@ -7219,83 +5448,6 @@ public class GetJobInstanceRequest : Tea.TeaModel {
 }
 
 public class GetJobInstanceResponseBody : Tea.TeaModel {
-    public class AccessDeniedDetail : Tea.TeaModel {
-        public var authAction: String?
-
-        public var authPrincipalDisplayName: String?
-
-        public var authPrincipalOwnerId: String?
-
-        public var authPrincipalType: String?
-
-        public var encodedDiagnosticMessage: String?
-
-        public var noPermissionType: String?
-
-        public var policyType: String?
-
-        public override init() {
-            super.init()
-        }
-
-        public init(_ dict: [String: Any]) {
-            super.init()
-            self.fromMap(dict)
-        }
-
-        public override func validate() throws -> Void {
-        }
-
-        public override func toMap() -> [String : Any] {
-            var map = super.toMap()
-            if self.authAction != nil {
-                map["AuthAction"] = self.authAction!
-            }
-            if self.authPrincipalDisplayName != nil {
-                map["AuthPrincipalDisplayName"] = self.authPrincipalDisplayName!
-            }
-            if self.authPrincipalOwnerId != nil {
-                map["AuthPrincipalOwnerId"] = self.authPrincipalOwnerId!
-            }
-            if self.authPrincipalType != nil {
-                map["AuthPrincipalType"] = self.authPrincipalType!
-            }
-            if self.encodedDiagnosticMessage != nil {
-                map["EncodedDiagnosticMessage"] = self.encodedDiagnosticMessage!
-            }
-            if self.noPermissionType != nil {
-                map["NoPermissionType"] = self.noPermissionType!
-            }
-            if self.policyType != nil {
-                map["PolicyType"] = self.policyType!
-            }
-            return map
-        }
-
-        public override func fromMap(_ dict: [String: Any]) -> Void {
-            if dict.keys.contains("AuthAction") {
-                self.authAction = dict["AuthAction"] as! String
-            }
-            if dict.keys.contains("AuthPrincipalDisplayName") {
-                self.authPrincipalDisplayName = dict["AuthPrincipalDisplayName"] as! String
-            }
-            if dict.keys.contains("AuthPrincipalOwnerId") {
-                self.authPrincipalOwnerId = dict["AuthPrincipalOwnerId"] as! String
-            }
-            if dict.keys.contains("AuthPrincipalType") {
-                self.authPrincipalType = dict["AuthPrincipalType"] as! String
-            }
-            if dict.keys.contains("EncodedDiagnosticMessage") {
-                self.encodedDiagnosticMessage = dict["EncodedDiagnosticMessage"] as! String
-            }
-            if dict.keys.contains("NoPermissionType") {
-                self.noPermissionType = dict["NoPermissionType"] as! String
-            }
-            if dict.keys.contains("PolicyType") {
-                self.policyType = dict["PolicyType"] as! String
-            }
-        }
-    }
     public class Data : Tea.TeaModel {
         public class JobInstanceDetail : Tea.TeaModel {
             public var dataTime: String?
@@ -7477,8 +5629,6 @@ public class GetJobInstanceResponseBody : Tea.TeaModel {
             }
         }
     }
-    public var accessDeniedDetail: GetJobInstanceResponseBody.AccessDeniedDetail?
-
     public var code: Int32?
 
     public var data: GetJobInstanceResponseBody.Data?
@@ -7499,15 +5649,11 @@ public class GetJobInstanceResponseBody : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.accessDeniedDetail?.validate()
         try self.data?.validate()
     }
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
-        if self.accessDeniedDetail != nil {
-            map["AccessDeniedDetail"] = self.accessDeniedDetail?.toMap()
-        }
         if self.code != nil {
             map["Code"] = self.code!
         }
@@ -7527,11 +5673,6 @@ public class GetJobInstanceResponseBody : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
-        if dict.keys.contains("AccessDeniedDetail") {
-            var model = GetJobInstanceResponseBody.AccessDeniedDetail()
-            model.fromMap(dict["AccessDeniedDetail"] as! [String: Any])
-            self.accessDeniedDetail = model
-        }
         if dict.keys.contains("Code") {
             self.code = dict["Code"] as! Int32
         }
@@ -7704,83 +5845,6 @@ public class GetJobInstanceListRequest : Tea.TeaModel {
 }
 
 public class GetJobInstanceListResponseBody : Tea.TeaModel {
-    public class AccessDeniedDetail : Tea.TeaModel {
-        public var authAction: String?
-
-        public var authPrincipalDisplayName: String?
-
-        public var authPrincipalOwnerId: String?
-
-        public var authPrincipalType: String?
-
-        public var encodedDiagnosticMessage: String?
-
-        public var noPermissionType: String?
-
-        public var policyType: String?
-
-        public override init() {
-            super.init()
-        }
-
-        public init(_ dict: [String: Any]) {
-            super.init()
-            self.fromMap(dict)
-        }
-
-        public override func validate() throws -> Void {
-        }
-
-        public override func toMap() -> [String : Any] {
-            var map = super.toMap()
-            if self.authAction != nil {
-                map["AuthAction"] = self.authAction!
-            }
-            if self.authPrincipalDisplayName != nil {
-                map["AuthPrincipalDisplayName"] = self.authPrincipalDisplayName!
-            }
-            if self.authPrincipalOwnerId != nil {
-                map["AuthPrincipalOwnerId"] = self.authPrincipalOwnerId!
-            }
-            if self.authPrincipalType != nil {
-                map["AuthPrincipalType"] = self.authPrincipalType!
-            }
-            if self.encodedDiagnosticMessage != nil {
-                map["EncodedDiagnosticMessage"] = self.encodedDiagnosticMessage!
-            }
-            if self.noPermissionType != nil {
-                map["NoPermissionType"] = self.noPermissionType!
-            }
-            if self.policyType != nil {
-                map["PolicyType"] = self.policyType!
-            }
-            return map
-        }
-
-        public override func fromMap(_ dict: [String: Any]) -> Void {
-            if dict.keys.contains("AuthAction") {
-                self.authAction = dict["AuthAction"] as! String
-            }
-            if dict.keys.contains("AuthPrincipalDisplayName") {
-                self.authPrincipalDisplayName = dict["AuthPrincipalDisplayName"] as! String
-            }
-            if dict.keys.contains("AuthPrincipalOwnerId") {
-                self.authPrincipalOwnerId = dict["AuthPrincipalOwnerId"] as! String
-            }
-            if dict.keys.contains("AuthPrincipalType") {
-                self.authPrincipalType = dict["AuthPrincipalType"] as! String
-            }
-            if dict.keys.contains("EncodedDiagnosticMessage") {
-                self.encodedDiagnosticMessage = dict["EncodedDiagnosticMessage"] as! String
-            }
-            if dict.keys.contains("NoPermissionType") {
-                self.noPermissionType = dict["NoPermissionType"] as! String
-            }
-            if dict.keys.contains("PolicyType") {
-                self.policyType = dict["PolicyType"] as! String
-            }
-        }
-    }
     public class Data : Tea.TeaModel {
         public class JobInstanceDetails : Tea.TeaModel {
             public var dataTime: String?
@@ -7947,8 +6011,6 @@ public class GetJobInstanceListResponseBody : Tea.TeaModel {
             }
         }
     }
-    public var accessDeniedDetail: GetJobInstanceListResponseBody.AccessDeniedDetail?
-
     public var code: Int32?
 
     public var data: GetJobInstanceListResponseBody.Data?
@@ -7969,15 +6031,11 @@ public class GetJobInstanceListResponseBody : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.accessDeniedDetail?.validate()
         try self.data?.validate()
     }
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
-        if self.accessDeniedDetail != nil {
-            map["AccessDeniedDetail"] = self.accessDeniedDetail?.toMap()
-        }
         if self.code != nil {
             map["Code"] = self.code!
         }
@@ -7997,11 +6055,6 @@ public class GetJobInstanceListResponseBody : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
-        if dict.keys.contains("AccessDeniedDetail") {
-            var model = GetJobInstanceListResponseBody.AccessDeniedDetail()
-            model.fromMap(dict["AccessDeniedDetail"] as! [String: Any])
-            self.accessDeniedDetail = model
-        }
         if dict.keys.contains("Code") {
             self.code = dict["Code"] as! Int32
         }
@@ -8190,83 +6243,6 @@ public class GetLogRequest : Tea.TeaModel {
 }
 
 public class GetLogResponseBody : Tea.TeaModel {
-    public class AccessDeniedDetail : Tea.TeaModel {
-        public var authAction: String?
-
-        public var authPrincipalDisplayName: String?
-
-        public var authPrincipalOwnerId: String?
-
-        public var authPrincipalType: String?
-
-        public var encodedDiagnosticMessage: String?
-
-        public var noPermissionType: String?
-
-        public var policyType: String?
-
-        public override init() {
-            super.init()
-        }
-
-        public init(_ dict: [String: Any]) {
-            super.init()
-            self.fromMap(dict)
-        }
-
-        public override func validate() throws -> Void {
-        }
-
-        public override func toMap() -> [String : Any] {
-            var map = super.toMap()
-            if self.authAction != nil {
-                map["AuthAction"] = self.authAction!
-            }
-            if self.authPrincipalDisplayName != nil {
-                map["AuthPrincipalDisplayName"] = self.authPrincipalDisplayName!
-            }
-            if self.authPrincipalOwnerId != nil {
-                map["AuthPrincipalOwnerId"] = self.authPrincipalOwnerId!
-            }
-            if self.authPrincipalType != nil {
-                map["AuthPrincipalType"] = self.authPrincipalType!
-            }
-            if self.encodedDiagnosticMessage != nil {
-                map["EncodedDiagnosticMessage"] = self.encodedDiagnosticMessage!
-            }
-            if self.noPermissionType != nil {
-                map["NoPermissionType"] = self.noPermissionType!
-            }
-            if self.policyType != nil {
-                map["PolicyType"] = self.policyType!
-            }
-            return map
-        }
-
-        public override func fromMap(_ dict: [String: Any]) -> Void {
-            if dict.keys.contains("AuthAction") {
-                self.authAction = dict["AuthAction"] as! String
-            }
-            if dict.keys.contains("AuthPrincipalDisplayName") {
-                self.authPrincipalDisplayName = dict["AuthPrincipalDisplayName"] as! String
-            }
-            if dict.keys.contains("AuthPrincipalOwnerId") {
-                self.authPrincipalOwnerId = dict["AuthPrincipalOwnerId"] as! String
-            }
-            if dict.keys.contains("AuthPrincipalType") {
-                self.authPrincipalType = dict["AuthPrincipalType"] as! String
-            }
-            if dict.keys.contains("EncodedDiagnosticMessage") {
-                self.encodedDiagnosticMessage = dict["EncodedDiagnosticMessage"] as! String
-            }
-            if dict.keys.contains("NoPermissionType") {
-                self.noPermissionType = dict["NoPermissionType"] as! String
-            }
-            if dict.keys.contains("PolicyType") {
-                self.policyType = dict["PolicyType"] as! String
-            }
-        }
-    }
     public class Data : Tea.TeaModel {
         public var logs: [String]?
 
@@ -8296,8 +6272,6 @@ public class GetLogResponseBody : Tea.TeaModel {
             }
         }
     }
-    public var accessDeniedDetail: GetLogResponseBody.AccessDeniedDetail?
-
     public var code: Int32?
 
     public var data: GetLogResponseBody.Data?
@@ -8318,15 +6292,11 @@ public class GetLogResponseBody : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.accessDeniedDetail?.validate()
         try self.data?.validate()
     }
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
-        if self.accessDeniedDetail != nil {
-            map["AccessDeniedDetail"] = self.accessDeniedDetail?.toMap()
-        }
         if self.code != nil {
             map["Code"] = self.code!
         }
@@ -8346,11 +6316,6 @@ public class GetLogResponseBody : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
-        if dict.keys.contains("AccessDeniedDetail") {
-            var model = GetLogResponseBody.AccessDeniedDetail()
-            model.fromMap(dict["AccessDeniedDetail"] as! [String: Any])
-            self.accessDeniedDetail = model
-        }
         if dict.keys.contains("Code") {
             self.code = dict["Code"] as! Int32
         }
@@ -8507,85 +6472,6 @@ public class GetOverviewRequest : Tea.TeaModel {
 }
 
 public class GetOverviewResponseBody : Tea.TeaModel {
-    public class AccessDeniedDetail : Tea.TeaModel {
-        public var authAction: String?
-
-        public var authPrincipalDisplayName: String?
-
-        public var authPrincipalOwnerId: String?
-
-        public var authPrincipalType: String?
-
-        public var encodedDiagnosticMessage: String?
-
-        public var noPermissionType: String?
-
-        public var policyType: String?
-
-        public override init() {
-            super.init()
-        }
-
-        public init(_ dict: [String: Any]) {
-            super.init()
-            self.fromMap(dict)
-        }
-
-        public override func validate() throws -> Void {
-        }
-
-        public override func toMap() -> [String : Any] {
-            var map = super.toMap()
-            if self.authAction != nil {
-                map["AuthAction"] = self.authAction!
-            }
-            if self.authPrincipalDisplayName != nil {
-                map["AuthPrincipalDisplayName"] = self.authPrincipalDisplayName!
-            }
-            if self.authPrincipalOwnerId != nil {
-                map["AuthPrincipalOwnerId"] = self.authPrincipalOwnerId!
-            }
-            if self.authPrincipalType != nil {
-                map["AuthPrincipalType"] = self.authPrincipalType!
-            }
-            if self.encodedDiagnosticMessage != nil {
-                map["EncodedDiagnosticMessage"] = self.encodedDiagnosticMessage!
-            }
-            if self.noPermissionType != nil {
-                map["NoPermissionType"] = self.noPermissionType!
-            }
-            if self.policyType != nil {
-                map["PolicyType"] = self.policyType!
-            }
-            return map
-        }
-
-        public override func fromMap(_ dict: [String: Any]) -> Void {
-            if dict.keys.contains("AuthAction") {
-                self.authAction = dict["AuthAction"] as! String
-            }
-            if dict.keys.contains("AuthPrincipalDisplayName") {
-                self.authPrincipalDisplayName = dict["AuthPrincipalDisplayName"] as! String
-            }
-            if dict.keys.contains("AuthPrincipalOwnerId") {
-                self.authPrincipalOwnerId = dict["AuthPrincipalOwnerId"] as! String
-            }
-            if dict.keys.contains("AuthPrincipalType") {
-                self.authPrincipalType = dict["AuthPrincipalType"] as! String
-            }
-            if dict.keys.contains("EncodedDiagnosticMessage") {
-                self.encodedDiagnosticMessage = dict["EncodedDiagnosticMessage"] as! String
-            }
-            if dict.keys.contains("NoPermissionType") {
-                self.noPermissionType = dict["NoPermissionType"] as! String
-            }
-            if dict.keys.contains("PolicyType") {
-                self.policyType = dict["PolicyType"] as! String
-            }
-        }
-    }
-    public var accessDeniedDetail: GetOverviewResponseBody.AccessDeniedDetail?
-
     public var code: Int32?
 
     public var data: String?
@@ -8606,14 +6492,10 @@ public class GetOverviewResponseBody : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.accessDeniedDetail?.validate()
     }
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
-        if self.accessDeniedDetail != nil {
-            map["AccessDeniedDetail"] = self.accessDeniedDetail?.toMap()
-        }
         if self.code != nil {
             map["Code"] = self.code!
         }
@@ -8633,11 +6515,6 @@ public class GetOverviewResponseBody : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
-        if dict.keys.contains("AccessDeniedDetail") {
-            var model = GetOverviewResponseBody.AccessDeniedDetail()
-            model.fromMap(dict["AccessDeniedDetail"] as! [String: Any])
-            self.accessDeniedDetail = model
-        }
         if dict.keys.contains("Code") {
             self.code = dict["Code"] as! Int32
         }
@@ -8768,88 +6645,17 @@ public class GetWorkFlowRequest : Tea.TeaModel {
 }
 
 public class GetWorkFlowResponseBody : Tea.TeaModel {
-    public class AccessDeniedDetail : Tea.TeaModel {
-        public var authAction: String?
-
-        public var authPrincipalDisplayName: String?
-
-        public var authPrincipalOwnerId: String?
-
-        public var authPrincipalType: String?
-
-        public var encodedDiagnosticMessage: String?
-
-        public var noPermissionType: String?
-
-        public var policyType: String?
-
-        public override init() {
-            super.init()
-        }
-
-        public init(_ dict: [String: Any]) {
-            super.init()
-            self.fromMap(dict)
-        }
-
-        public override func validate() throws -> Void {
-        }
-
-        public override func toMap() -> [String : Any] {
-            var map = super.toMap()
-            if self.authAction != nil {
-                map["AuthAction"] = self.authAction!
-            }
-            if self.authPrincipalDisplayName != nil {
-                map["AuthPrincipalDisplayName"] = self.authPrincipalDisplayName!
-            }
-            if self.authPrincipalOwnerId != nil {
-                map["AuthPrincipalOwnerId"] = self.authPrincipalOwnerId!
-            }
-            if self.authPrincipalType != nil {
-                map["AuthPrincipalType"] = self.authPrincipalType!
-            }
-            if self.encodedDiagnosticMessage != nil {
-                map["EncodedDiagnosticMessage"] = self.encodedDiagnosticMessage!
-            }
-            if self.noPermissionType != nil {
-                map["NoPermissionType"] = self.noPermissionType!
-            }
-            if self.policyType != nil {
-                map["PolicyType"] = self.policyType!
-            }
-            return map
-        }
-
-        public override func fromMap(_ dict: [String: Any]) -> Void {
-            if dict.keys.contains("AuthAction") {
-                self.authAction = dict["AuthAction"] as! String
-            }
-            if dict.keys.contains("AuthPrincipalDisplayName") {
-                self.authPrincipalDisplayName = dict["AuthPrincipalDisplayName"] as! String
-            }
-            if dict.keys.contains("AuthPrincipalOwnerId") {
-                self.authPrincipalOwnerId = dict["AuthPrincipalOwnerId"] as! String
-            }
-            if dict.keys.contains("AuthPrincipalType") {
-                self.authPrincipalType = dict["AuthPrincipalType"] as! String
-            }
-            if dict.keys.contains("EncodedDiagnosticMessage") {
-                self.encodedDiagnosticMessage = dict["EncodedDiagnosticMessage"] as! String
-            }
-            if dict.keys.contains("NoPermissionType") {
-                self.noPermissionType = dict["NoPermissionType"] as! String
-            }
-            if dict.keys.contains("PolicyType") {
-                self.policyType = dict["PolicyType"] as! String
-            }
-        }
-    }
     public class Data : Tea.TeaModel {
         public class WorkFlowInfo : Tea.TeaModel {
             public var description_: String?
 
+            public var groupId: String?
+
+            public var maxConcurrency: String?
+
             public var name: String?
+
+            public var namespace: String?
 
             public var status: String?
 
@@ -8876,8 +6682,17 @@ public class GetWorkFlowResponseBody : Tea.TeaModel {
                 if self.description_ != nil {
                     map["Description"] = self.description_!
                 }
+                if self.groupId != nil {
+                    map["GroupId"] = self.groupId!
+                }
+                if self.maxConcurrency != nil {
+                    map["MaxConcurrency"] = self.maxConcurrency!
+                }
                 if self.name != nil {
                     map["Name"] = self.name!
+                }
+                if self.namespace != nil {
+                    map["Namespace"] = self.namespace!
                 }
                 if self.status != nil {
                     map["Status"] = self.status!
@@ -8898,8 +6713,17 @@ public class GetWorkFlowResponseBody : Tea.TeaModel {
                 if dict.keys.contains("Description") {
                     self.description_ = dict["Description"] as! String
                 }
+                if dict.keys.contains("GroupId") {
+                    self.groupId = dict["GroupId"] as! String
+                }
+                if dict.keys.contains("MaxConcurrency") {
+                    self.maxConcurrency = dict["MaxConcurrency"] as! String
+                }
                 if dict.keys.contains("Name") {
                     self.name = dict["Name"] as! String
+                }
+                if dict.keys.contains("Namespace") {
+                    self.namespace = dict["Namespace"] as! String
                 }
                 if dict.keys.contains("Status") {
                     self.status = dict["Status"] as! String
@@ -9100,8 +6924,6 @@ public class GetWorkFlowResponseBody : Tea.TeaModel {
             }
         }
     }
-    public var accessDeniedDetail: GetWorkFlowResponseBody.AccessDeniedDetail?
-
     public var code: Int32?
 
     public var data: GetWorkFlowResponseBody.Data?
@@ -9122,15 +6944,11 @@ public class GetWorkFlowResponseBody : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.accessDeniedDetail?.validate()
         try self.data?.validate()
     }
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
-        if self.accessDeniedDetail != nil {
-            map["AccessDeniedDetail"] = self.accessDeniedDetail?.toMap()
-        }
         if self.code != nil {
             map["Code"] = self.code!
         }
@@ -9150,11 +6968,6 @@ public class GetWorkFlowResponseBody : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
-        if dict.keys.contains("AccessDeniedDetail") {
-            var model = GetWorkFlowResponseBody.AccessDeniedDetail()
-            model.fromMap(dict["AccessDeniedDetail"] as! [String: Any])
-            self.accessDeniedDetail = model
-        }
         if dict.keys.contains("Code") {
             self.code = dict["Code"] as! Int32
         }
@@ -9279,83 +7092,6 @@ public class GetWorkerListRequest : Tea.TeaModel {
 }
 
 public class GetWorkerListResponseBody : Tea.TeaModel {
-    public class AccessDeniedDetail : Tea.TeaModel {
-        public var authAction: String?
-
-        public var authPrincipalDisplayName: String?
-
-        public var authPrincipalOwnerId: String?
-
-        public var authPrincipalType: String?
-
-        public var encodedDiagnosticMessage: String?
-
-        public var noPermissionType: String?
-
-        public var policyType: String?
-
-        public override init() {
-            super.init()
-        }
-
-        public init(_ dict: [String: Any]) {
-            super.init()
-            self.fromMap(dict)
-        }
-
-        public override func validate() throws -> Void {
-        }
-
-        public override func toMap() -> [String : Any] {
-            var map = super.toMap()
-            if self.authAction != nil {
-                map["AuthAction"] = self.authAction!
-            }
-            if self.authPrincipalDisplayName != nil {
-                map["AuthPrincipalDisplayName"] = self.authPrincipalDisplayName!
-            }
-            if self.authPrincipalOwnerId != nil {
-                map["AuthPrincipalOwnerId"] = self.authPrincipalOwnerId!
-            }
-            if self.authPrincipalType != nil {
-                map["AuthPrincipalType"] = self.authPrincipalType!
-            }
-            if self.encodedDiagnosticMessage != nil {
-                map["EncodedDiagnosticMessage"] = self.encodedDiagnosticMessage!
-            }
-            if self.noPermissionType != nil {
-                map["NoPermissionType"] = self.noPermissionType!
-            }
-            if self.policyType != nil {
-                map["PolicyType"] = self.policyType!
-            }
-            return map
-        }
-
-        public override func fromMap(_ dict: [String: Any]) -> Void {
-            if dict.keys.contains("AuthAction") {
-                self.authAction = dict["AuthAction"] as! String
-            }
-            if dict.keys.contains("AuthPrincipalDisplayName") {
-                self.authPrincipalDisplayName = dict["AuthPrincipalDisplayName"] as! String
-            }
-            if dict.keys.contains("AuthPrincipalOwnerId") {
-                self.authPrincipalOwnerId = dict["AuthPrincipalOwnerId"] as! String
-            }
-            if dict.keys.contains("AuthPrincipalType") {
-                self.authPrincipalType = dict["AuthPrincipalType"] as! String
-            }
-            if dict.keys.contains("EncodedDiagnosticMessage") {
-                self.encodedDiagnosticMessage = dict["EncodedDiagnosticMessage"] as! String
-            }
-            if dict.keys.contains("NoPermissionType") {
-                self.noPermissionType = dict["NoPermissionType"] as! String
-            }
-            if dict.keys.contains("PolicyType") {
-                self.policyType = dict["PolicyType"] as! String
-            }
-        }
-    }
     public class Data : Tea.TeaModel {
         public class WorkerInfos : Tea.TeaModel {
             public var ip: String?
@@ -9466,8 +7202,6 @@ public class GetWorkerListResponseBody : Tea.TeaModel {
             }
         }
     }
-    public var accessDeniedDetail: GetWorkerListResponseBody.AccessDeniedDetail?
-
     public var code: Int32?
 
     public var data: GetWorkerListResponseBody.Data?
@@ -9488,15 +7222,11 @@ public class GetWorkerListResponseBody : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.accessDeniedDetail?.validate()
         try self.data?.validate()
     }
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
-        if self.accessDeniedDetail != nil {
-            map["AccessDeniedDetail"] = self.accessDeniedDetail?.toMap()
-        }
         if self.code != nil {
             map["Code"] = self.code!
         }
@@ -9516,11 +7246,6 @@ public class GetWorkerListResponseBody : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
-        if dict.keys.contains("AccessDeniedDetail") {
-            var model = GetWorkerListResponseBody.AccessDeniedDetail()
-            model.fromMap(dict["AccessDeniedDetail"] as! [String: Any])
-            self.accessDeniedDetail = model
-        }
         if dict.keys.contains("Code") {
             self.code = dict["Code"] as! Int32
         }
@@ -9661,83 +7386,6 @@ public class GetWorkflowInstanceRequest : Tea.TeaModel {
 }
 
 public class GetWorkflowInstanceResponseBody : Tea.TeaModel {
-    public class AccessDeniedDetail : Tea.TeaModel {
-        public var authAction: String?
-
-        public var authPrincipalDisplayName: String?
-
-        public var authPrincipalOwnerId: String?
-
-        public var authPrincipalType: String?
-
-        public var encodedDiagnosticMessage: String?
-
-        public var noPermissionType: String?
-
-        public var policyType: String?
-
-        public override init() {
-            super.init()
-        }
-
-        public init(_ dict: [String: Any]) {
-            super.init()
-            self.fromMap(dict)
-        }
-
-        public override func validate() throws -> Void {
-        }
-
-        public override func toMap() -> [String : Any] {
-            var map = super.toMap()
-            if self.authAction != nil {
-                map["AuthAction"] = self.authAction!
-            }
-            if self.authPrincipalDisplayName != nil {
-                map["AuthPrincipalDisplayName"] = self.authPrincipalDisplayName!
-            }
-            if self.authPrincipalOwnerId != nil {
-                map["AuthPrincipalOwnerId"] = self.authPrincipalOwnerId!
-            }
-            if self.authPrincipalType != nil {
-                map["AuthPrincipalType"] = self.authPrincipalType!
-            }
-            if self.encodedDiagnosticMessage != nil {
-                map["EncodedDiagnosticMessage"] = self.encodedDiagnosticMessage!
-            }
-            if self.noPermissionType != nil {
-                map["NoPermissionType"] = self.noPermissionType!
-            }
-            if self.policyType != nil {
-                map["PolicyType"] = self.policyType!
-            }
-            return map
-        }
-
-        public override func fromMap(_ dict: [String: Any]) -> Void {
-            if dict.keys.contains("AuthAction") {
-                self.authAction = dict["AuthAction"] as! String
-            }
-            if dict.keys.contains("AuthPrincipalDisplayName") {
-                self.authPrincipalDisplayName = dict["AuthPrincipalDisplayName"] as! String
-            }
-            if dict.keys.contains("AuthPrincipalOwnerId") {
-                self.authPrincipalOwnerId = dict["AuthPrincipalOwnerId"] as! String
-            }
-            if dict.keys.contains("AuthPrincipalType") {
-                self.authPrincipalType = dict["AuthPrincipalType"] as! String
-            }
-            if dict.keys.contains("EncodedDiagnosticMessage") {
-                self.encodedDiagnosticMessage = dict["EncodedDiagnosticMessage"] as! String
-            }
-            if dict.keys.contains("NoPermissionType") {
-                self.noPermissionType = dict["NoPermissionType"] as! String
-            }
-            if dict.keys.contains("PolicyType") {
-                self.policyType = dict["PolicyType"] as! String
-            }
-        }
-    }
     public class Data : Tea.TeaModel {
         public class WfInstanceDag : Tea.TeaModel {
             public class Edges : Tea.TeaModel {
@@ -10049,8 +7697,6 @@ public class GetWorkflowInstanceResponseBody : Tea.TeaModel {
             }
         }
     }
-    public var accessDeniedDetail: GetWorkflowInstanceResponseBody.AccessDeniedDetail?
-
     public var code: Int32?
 
     public var data: GetWorkflowInstanceResponseBody.Data?
@@ -10071,15 +7717,11 @@ public class GetWorkflowInstanceResponseBody : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.accessDeniedDetail?.validate()
         try self.data?.validate()
     }
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
-        if self.accessDeniedDetail != nil {
-            map["AccessDeniedDetail"] = self.accessDeniedDetail?.toMap()
-        }
         if self.code != nil {
             map["Code"] = self.code!
         }
@@ -10099,11 +7741,6 @@ public class GetWorkflowInstanceResponseBody : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
-        if dict.keys.contains("AccessDeniedDetail") {
-            var model = GetWorkflowInstanceResponseBody.AccessDeniedDetail()
-            model.fromMap(dict["AccessDeniedDetail"] as! [String: Any])
-            self.accessDeniedDetail = model
-        }
         if dict.keys.contains("Code") {
             self.code = dict["Code"] as! Int32
         }
@@ -10252,85 +7889,6 @@ public class GrantPermissionRequest : Tea.TeaModel {
 }
 
 public class GrantPermissionResponseBody : Tea.TeaModel {
-    public class AccessDeniedDetail : Tea.TeaModel {
-        public var authAction: String?
-
-        public var authPrincipalDisplayName: String?
-
-        public var authPrincipalOwnerId: String?
-
-        public var authPrincipalType: String?
-
-        public var encodedDiagnosticMessage: String?
-
-        public var noPermissionType: String?
-
-        public var policyType: String?
-
-        public override init() {
-            super.init()
-        }
-
-        public init(_ dict: [String: Any]) {
-            super.init()
-            self.fromMap(dict)
-        }
-
-        public override func validate() throws -> Void {
-        }
-
-        public override func toMap() -> [String : Any] {
-            var map = super.toMap()
-            if self.authAction != nil {
-                map["AuthAction"] = self.authAction!
-            }
-            if self.authPrincipalDisplayName != nil {
-                map["AuthPrincipalDisplayName"] = self.authPrincipalDisplayName!
-            }
-            if self.authPrincipalOwnerId != nil {
-                map["AuthPrincipalOwnerId"] = self.authPrincipalOwnerId!
-            }
-            if self.authPrincipalType != nil {
-                map["AuthPrincipalType"] = self.authPrincipalType!
-            }
-            if self.encodedDiagnosticMessage != nil {
-                map["EncodedDiagnosticMessage"] = self.encodedDiagnosticMessage!
-            }
-            if self.noPermissionType != nil {
-                map["NoPermissionType"] = self.noPermissionType!
-            }
-            if self.policyType != nil {
-                map["PolicyType"] = self.policyType!
-            }
-            return map
-        }
-
-        public override func fromMap(_ dict: [String: Any]) -> Void {
-            if dict.keys.contains("AuthAction") {
-                self.authAction = dict["AuthAction"] as! String
-            }
-            if dict.keys.contains("AuthPrincipalDisplayName") {
-                self.authPrincipalDisplayName = dict["AuthPrincipalDisplayName"] as! String
-            }
-            if dict.keys.contains("AuthPrincipalOwnerId") {
-                self.authPrincipalOwnerId = dict["AuthPrincipalOwnerId"] as! String
-            }
-            if dict.keys.contains("AuthPrincipalType") {
-                self.authPrincipalType = dict["AuthPrincipalType"] as! String
-            }
-            if dict.keys.contains("EncodedDiagnosticMessage") {
-                self.encodedDiagnosticMessage = dict["EncodedDiagnosticMessage"] as! String
-            }
-            if dict.keys.contains("NoPermissionType") {
-                self.noPermissionType = dict["NoPermissionType"] as! String
-            }
-            if dict.keys.contains("PolicyType") {
-                self.policyType = dict["PolicyType"] as! String
-            }
-        }
-    }
-    public var accessDeniedDetail: GrantPermissionResponseBody.AccessDeniedDetail?
-
     public var code: Int32?
 
     public var message: String?
@@ -10349,14 +7907,10 @@ public class GrantPermissionResponseBody : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.accessDeniedDetail?.validate()
     }
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
-        if self.accessDeniedDetail != nil {
-            map["AccessDeniedDetail"] = self.accessDeniedDetail?.toMap()
-        }
         if self.code != nil {
             map["Code"] = self.code!
         }
@@ -10373,11 +7927,6 @@ public class GrantPermissionResponseBody : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
-        if dict.keys.contains("AccessDeniedDetail") {
-            var model = GrantPermissionResponseBody.AccessDeniedDetail()
-            model.fromMap(dict["AccessDeniedDetail"] as! [String: Any])
-            self.accessDeniedDetail = model
-        }
         if dict.keys.contains("Code") {
             self.code = dict["Code"] as! Int32
         }
@@ -10497,83 +8046,6 @@ public class ListGroupsRequest : Tea.TeaModel {
 }
 
 public class ListGroupsResponseBody : Tea.TeaModel {
-    public class AccessDeniedDetail : Tea.TeaModel {
-        public var authAction: String?
-
-        public var authPrincipalDisplayName: String?
-
-        public var authPrincipalOwnerId: String?
-
-        public var authPrincipalType: String?
-
-        public var encodedDiagnosticMessage: String?
-
-        public var noPermissionType: String?
-
-        public var policyType: String?
-
-        public override init() {
-            super.init()
-        }
-
-        public init(_ dict: [String: Any]) {
-            super.init()
-            self.fromMap(dict)
-        }
-
-        public override func validate() throws -> Void {
-        }
-
-        public override func toMap() -> [String : Any] {
-            var map = super.toMap()
-            if self.authAction != nil {
-                map["AuthAction"] = self.authAction!
-            }
-            if self.authPrincipalDisplayName != nil {
-                map["AuthPrincipalDisplayName"] = self.authPrincipalDisplayName!
-            }
-            if self.authPrincipalOwnerId != nil {
-                map["AuthPrincipalOwnerId"] = self.authPrincipalOwnerId!
-            }
-            if self.authPrincipalType != nil {
-                map["AuthPrincipalType"] = self.authPrincipalType!
-            }
-            if self.encodedDiagnosticMessage != nil {
-                map["EncodedDiagnosticMessage"] = self.encodedDiagnosticMessage!
-            }
-            if self.noPermissionType != nil {
-                map["NoPermissionType"] = self.noPermissionType!
-            }
-            if self.policyType != nil {
-                map["PolicyType"] = self.policyType!
-            }
-            return map
-        }
-
-        public override func fromMap(_ dict: [String: Any]) -> Void {
-            if dict.keys.contains("AuthAction") {
-                self.authAction = dict["AuthAction"] as! String
-            }
-            if dict.keys.contains("AuthPrincipalDisplayName") {
-                self.authPrincipalDisplayName = dict["AuthPrincipalDisplayName"] as! String
-            }
-            if dict.keys.contains("AuthPrincipalOwnerId") {
-                self.authPrincipalOwnerId = dict["AuthPrincipalOwnerId"] as! String
-            }
-            if dict.keys.contains("AuthPrincipalType") {
-                self.authPrincipalType = dict["AuthPrincipalType"] as! String
-            }
-            if dict.keys.contains("EncodedDiagnosticMessage") {
-                self.encodedDiagnosticMessage = dict["EncodedDiagnosticMessage"] as! String
-            }
-            if dict.keys.contains("NoPermissionType") {
-                self.noPermissionType = dict["NoPermissionType"] as! String
-            }
-            if dict.keys.contains("PolicyType") {
-                self.policyType = dict["PolicyType"] as! String
-            }
-        }
-    }
     public class Data : Tea.TeaModel {
         public class AppGroups : Tea.TeaModel {
             public var appGroupId: Int64?
@@ -10587,6 +8059,8 @@ public class ListGroupsResponseBody : Tea.TeaModel {
             public var description_: String?
 
             public var groupId: String?
+
+            public var namespace: String?
 
             public override init() {
                 super.init()
@@ -10620,6 +8094,9 @@ public class ListGroupsResponseBody : Tea.TeaModel {
                 if self.groupId != nil {
                     map["GroupId"] = self.groupId!
                 }
+                if self.namespace != nil {
+                    map["Namespace"] = self.namespace!
+                }
                 return map
             }
 
@@ -10641,6 +8118,9 @@ public class ListGroupsResponseBody : Tea.TeaModel {
                 }
                 if dict.keys.contains("GroupId") {
                     self.groupId = dict["GroupId"] as! String
+                }
+                if dict.keys.contains("Namespace") {
+                    self.namespace = dict["Namespace"] as! String
                 }
             }
         }
@@ -10684,8 +8164,6 @@ public class ListGroupsResponseBody : Tea.TeaModel {
             }
         }
     }
-    public var accessDeniedDetail: ListGroupsResponseBody.AccessDeniedDetail?
-
     public var code: Int32?
 
     public var data: ListGroupsResponseBody.Data?
@@ -10706,15 +8184,11 @@ public class ListGroupsResponseBody : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.accessDeniedDetail?.validate()
         try self.data?.validate()
     }
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
-        if self.accessDeniedDetail != nil {
-            map["AccessDeniedDetail"] = self.accessDeniedDetail?.toMap()
-        }
         if self.code != nil {
             map["Code"] = self.code!
         }
@@ -10734,11 +8208,6 @@ public class ListGroupsResponseBody : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
-        if dict.keys.contains("AccessDeniedDetail") {
-            var model = ListGroupsResponseBody.AccessDeniedDetail()
-            model.fromMap(dict["AccessDeniedDetail"] as! [String: Any])
-            self.accessDeniedDetail = model
-        }
         if dict.keys.contains("Code") {
             self.code = dict["Code"] as! Int32
         }
@@ -10802,6 +8271,276 @@ public class ListGroupsResponse : Tea.TeaModel {
         }
         if dict.keys.contains("body") {
             var model = ListGroupsResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
+public class ListJobScriptHistoryRequest : Tea.TeaModel {
+    public var groupId: String?
+
+    public var jobId: Int64?
+
+    public var namespace: String?
+
+    public var namespaceSource: String?
+
+    public var regionId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.groupId != nil {
+            map["GroupId"] = self.groupId!
+        }
+        if self.jobId != nil {
+            map["JobId"] = self.jobId!
+        }
+        if self.namespace != nil {
+            map["Namespace"] = self.namespace!
+        }
+        if self.namespaceSource != nil {
+            map["NamespaceSource"] = self.namespaceSource!
+        }
+        if self.regionId != nil {
+            map["RegionId"] = self.regionId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("GroupId") {
+            self.groupId = dict["GroupId"] as! String
+        }
+        if dict.keys.contains("JobId") {
+            self.jobId = dict["JobId"] as! Int64
+        }
+        if dict.keys.contains("Namespace") {
+            self.namespace = dict["Namespace"] as! String
+        }
+        if dict.keys.contains("NamespaceSource") {
+            self.namespaceSource = dict["NamespaceSource"] as! String
+        }
+        if dict.keys.contains("RegionId") {
+            self.regionId = dict["RegionId"] as! String
+        }
+    }
+}
+
+public class ListJobScriptHistoryResponseBody : Tea.TeaModel {
+    public class Data : Tea.TeaModel {
+        public class JobScriptHistoryInfos : Tea.TeaModel {
+            public var createTime: String?
+
+            public var creator: String?
+
+            public var scriptContent: String?
+
+            public var versionesDescription: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.createTime != nil {
+                    map["CreateTime"] = self.createTime!
+                }
+                if self.creator != nil {
+                    map["Creator"] = self.creator!
+                }
+                if self.scriptContent != nil {
+                    map["ScriptContent"] = self.scriptContent!
+                }
+                if self.versionesDescription != nil {
+                    map["VersionesDescription"] = self.versionesDescription!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("CreateTime") {
+                    self.createTime = dict["CreateTime"] as! String
+                }
+                if dict.keys.contains("Creator") {
+                    self.creator = dict["Creator"] as! String
+                }
+                if dict.keys.contains("ScriptContent") {
+                    self.scriptContent = dict["ScriptContent"] as! String
+                }
+                if dict.keys.contains("VersionesDescription") {
+                    self.versionesDescription = dict["VersionesDescription"] as! String
+                }
+            }
+        }
+        public var jobScriptHistoryInfos: [ListJobScriptHistoryResponseBody.Data.JobScriptHistoryInfos]?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.jobScriptHistoryInfos != nil {
+                var tmp : [Any] = []
+                for k in self.jobScriptHistoryInfos! {
+                    tmp.append(k.toMap())
+                }
+                map["JobScriptHistoryInfos"] = tmp
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("JobScriptHistoryInfos") {
+                var tmp : [ListJobScriptHistoryResponseBody.Data.JobScriptHistoryInfos] = []
+                for v in dict["JobScriptHistoryInfos"] as! [Any] {
+                    var model = ListJobScriptHistoryResponseBody.Data.JobScriptHistoryInfos()
+                    if v != nil {
+                        model.fromMap(v as! [String: Any])
+                    }
+                    tmp.append(model)
+                }
+                self.jobScriptHistoryInfos = tmp
+            }
+        }
+    }
+    public var code: Int32?
+
+    public var data: ListJobScriptHistoryResponseBody.Data?
+
+    public var message: String?
+
+    public var requestId: String?
+
+    public var success: Bool?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.data?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.code != nil {
+            map["Code"] = self.code!
+        }
+        if self.data != nil {
+            map["Data"] = self.data?.toMap()
+        }
+        if self.message != nil {
+            map["Message"] = self.message!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.success != nil {
+            map["Success"] = self.success!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("Code") {
+            self.code = dict["Code"] as! Int32
+        }
+        if dict.keys.contains("Data") {
+            var model = ListJobScriptHistoryResponseBody.Data()
+            model.fromMap(dict["Data"] as! [String: Any])
+            self.data = model
+        }
+        if dict.keys.contains("Message") {
+            self.message = dict["Message"] as! String
+        }
+        if dict.keys.contains("RequestId") {
+            self.requestId = dict["RequestId"] as! String
+        }
+        if dict.keys.contains("Success") {
+            self.success = dict["Success"] as! Bool
+        }
+    }
+}
+
+public class ListJobScriptHistoryResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: ListJobScriptHistoryResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") {
+            var model = ListJobScriptHistoryResponseBody()
             model.fromMap(dict["body"] as! [String: Any])
             self.body = model
         }
@@ -10879,83 +8618,6 @@ public class ListJobsRequest : Tea.TeaModel {
 }
 
 public class ListJobsResponseBody : Tea.TeaModel {
-    public class AccessDeniedDetail : Tea.TeaModel {
-        public var authAction: String?
-
-        public var authPrincipalDisplayName: String?
-
-        public var authPrincipalOwnerId: String?
-
-        public var authPrincipalType: String?
-
-        public var encodedDiagnosticMessage: String?
-
-        public var noPermissionType: String?
-
-        public var policyType: String?
-
-        public override init() {
-            super.init()
-        }
-
-        public init(_ dict: [String: Any]) {
-            super.init()
-            self.fromMap(dict)
-        }
-
-        public override func validate() throws -> Void {
-        }
-
-        public override func toMap() -> [String : Any] {
-            var map = super.toMap()
-            if self.authAction != nil {
-                map["AuthAction"] = self.authAction!
-            }
-            if self.authPrincipalDisplayName != nil {
-                map["AuthPrincipalDisplayName"] = self.authPrincipalDisplayName!
-            }
-            if self.authPrincipalOwnerId != nil {
-                map["AuthPrincipalOwnerId"] = self.authPrincipalOwnerId!
-            }
-            if self.authPrincipalType != nil {
-                map["AuthPrincipalType"] = self.authPrincipalType!
-            }
-            if self.encodedDiagnosticMessage != nil {
-                map["EncodedDiagnosticMessage"] = self.encodedDiagnosticMessage!
-            }
-            if self.noPermissionType != nil {
-                map["NoPermissionType"] = self.noPermissionType!
-            }
-            if self.policyType != nil {
-                map["PolicyType"] = self.policyType!
-            }
-            return map
-        }
-
-        public override func fromMap(_ dict: [String: Any]) -> Void {
-            if dict.keys.contains("AuthAction") {
-                self.authAction = dict["AuthAction"] as! String
-            }
-            if dict.keys.contains("AuthPrincipalDisplayName") {
-                self.authPrincipalDisplayName = dict["AuthPrincipalDisplayName"] as! String
-            }
-            if dict.keys.contains("AuthPrincipalOwnerId") {
-                self.authPrincipalOwnerId = dict["AuthPrincipalOwnerId"] as! String
-            }
-            if dict.keys.contains("AuthPrincipalType") {
-                self.authPrincipalType = dict["AuthPrincipalType"] as! String
-            }
-            if dict.keys.contains("EncodedDiagnosticMessage") {
-                self.encodedDiagnosticMessage = dict["EncodedDiagnosticMessage"] as! String
-            }
-            if dict.keys.contains("NoPermissionType") {
-                self.noPermissionType = dict["NoPermissionType"] as! String
-            }
-            if dict.keys.contains("PolicyType") {
-                self.policyType = dict["PolicyType"] as! String
-            }
-        }
-    }
     public class Data : Tea.TeaModel {
         public class Jobs : Tea.TeaModel {
             public class JobMonitorInfo : Tea.TeaModel {
@@ -11459,8 +9121,6 @@ public class ListJobsResponseBody : Tea.TeaModel {
             }
         }
     }
-    public var accessDeniedDetail: ListJobsResponseBody.AccessDeniedDetail?
-
     public var code: Int32?
 
     public var data: ListJobsResponseBody.Data?
@@ -11481,15 +9141,11 @@ public class ListJobsResponseBody : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.accessDeniedDetail?.validate()
         try self.data?.validate()
     }
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
-        if self.accessDeniedDetail != nil {
-            map["AccessDeniedDetail"] = self.accessDeniedDetail?.toMap()
-        }
         if self.code != nil {
             map["Code"] = self.code!
         }
@@ -11509,11 +9165,6 @@ public class ListJobsResponseBody : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
-        if dict.keys.contains("AccessDeniedDetail") {
-            var model = ListJobsResponseBody.AccessDeniedDetail()
-            model.fromMap(dict["AccessDeniedDetail"] as! [String: Any])
-            self.accessDeniedDetail = model
-        }
         if dict.keys.contains("Code") {
             self.code = dict["Code"] as! Int32
         }
@@ -11630,83 +9281,6 @@ public class ListNamespacesRequest : Tea.TeaModel {
 }
 
 public class ListNamespacesResponseBody : Tea.TeaModel {
-    public class AccessDeniedDetail : Tea.TeaModel {
-        public var authAction: String?
-
-        public var authPrincipalDisplayName: String?
-
-        public var authPrincipalOwnerId: String?
-
-        public var authPrincipalType: String?
-
-        public var encodedDiagnosticMessage: String?
-
-        public var noPermissionType: String?
-
-        public var policyType: String?
-
-        public override init() {
-            super.init()
-        }
-
-        public init(_ dict: [String: Any]) {
-            super.init()
-            self.fromMap(dict)
-        }
-
-        public override func validate() throws -> Void {
-        }
-
-        public override func toMap() -> [String : Any] {
-            var map = super.toMap()
-            if self.authAction != nil {
-                map["AuthAction"] = self.authAction!
-            }
-            if self.authPrincipalDisplayName != nil {
-                map["AuthPrincipalDisplayName"] = self.authPrincipalDisplayName!
-            }
-            if self.authPrincipalOwnerId != nil {
-                map["AuthPrincipalOwnerId"] = self.authPrincipalOwnerId!
-            }
-            if self.authPrincipalType != nil {
-                map["AuthPrincipalType"] = self.authPrincipalType!
-            }
-            if self.encodedDiagnosticMessage != nil {
-                map["EncodedDiagnosticMessage"] = self.encodedDiagnosticMessage!
-            }
-            if self.noPermissionType != nil {
-                map["NoPermissionType"] = self.noPermissionType!
-            }
-            if self.policyType != nil {
-                map["PolicyType"] = self.policyType!
-            }
-            return map
-        }
-
-        public override func fromMap(_ dict: [String: Any]) -> Void {
-            if dict.keys.contains("AuthAction") {
-                self.authAction = dict["AuthAction"] as! String
-            }
-            if dict.keys.contains("AuthPrincipalDisplayName") {
-                self.authPrincipalDisplayName = dict["AuthPrincipalDisplayName"] as! String
-            }
-            if dict.keys.contains("AuthPrincipalOwnerId") {
-                self.authPrincipalOwnerId = dict["AuthPrincipalOwnerId"] as! String
-            }
-            if dict.keys.contains("AuthPrincipalType") {
-                self.authPrincipalType = dict["AuthPrincipalType"] as! String
-            }
-            if dict.keys.contains("EncodedDiagnosticMessage") {
-                self.encodedDiagnosticMessage = dict["EncodedDiagnosticMessage"] as! String
-            }
-            if dict.keys.contains("NoPermissionType") {
-                self.noPermissionType = dict["NoPermissionType"] as! String
-            }
-            if dict.keys.contains("PolicyType") {
-                self.policyType = dict["PolicyType"] as! String
-            }
-        }
-    }
     public class Data : Tea.TeaModel {
         public class Namespaces : Tea.TeaModel {
             public var description_: String?
@@ -11793,8 +9367,6 @@ public class ListNamespacesResponseBody : Tea.TeaModel {
             }
         }
     }
-    public var accessDeniedDetail: ListNamespacesResponseBody.AccessDeniedDetail?
-
     public var code: Int32?
 
     public var data: ListNamespacesResponseBody.Data?
@@ -11815,15 +9387,11 @@ public class ListNamespacesResponseBody : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.accessDeniedDetail?.validate()
         try self.data?.validate()
     }
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
-        if self.accessDeniedDetail != nil {
-            map["AccessDeniedDetail"] = self.accessDeniedDetail?.toMap()
-        }
         if self.code != nil {
             map["Code"] = self.code!
         }
@@ -11843,11 +9411,6 @@ public class ListNamespacesResponseBody : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
-        if dict.keys.contains("AccessDeniedDetail") {
-            var model = ListNamespacesResponseBody.AccessDeniedDetail()
-            model.fromMap(dict["AccessDeniedDetail"] as! [String: Any])
-            self.accessDeniedDetail = model
-        }
         if dict.keys.contains("Code") {
             self.code = dict["Code"] as! Int32
         }
@@ -11980,83 +9543,6 @@ public class ListWorkflowInstanceRequest : Tea.TeaModel {
 }
 
 public class ListWorkflowInstanceResponseBody : Tea.TeaModel {
-    public class AccessDeniedDetail : Tea.TeaModel {
-        public var authAction: String?
-
-        public var authPrincipalDisplayName: String?
-
-        public var authPrincipalOwnerId: String?
-
-        public var authPrincipalType: String?
-
-        public var encodedDiagnosticMessage: String?
-
-        public var noPermissionType: String?
-
-        public var policyType: String?
-
-        public override init() {
-            super.init()
-        }
-
-        public init(_ dict: [String: Any]) {
-            super.init()
-            self.fromMap(dict)
-        }
-
-        public override func validate() throws -> Void {
-        }
-
-        public override func toMap() -> [String : Any] {
-            var map = super.toMap()
-            if self.authAction != nil {
-                map["AuthAction"] = self.authAction!
-            }
-            if self.authPrincipalDisplayName != nil {
-                map["AuthPrincipalDisplayName"] = self.authPrincipalDisplayName!
-            }
-            if self.authPrincipalOwnerId != nil {
-                map["AuthPrincipalOwnerId"] = self.authPrincipalOwnerId!
-            }
-            if self.authPrincipalType != nil {
-                map["AuthPrincipalType"] = self.authPrincipalType!
-            }
-            if self.encodedDiagnosticMessage != nil {
-                map["EncodedDiagnosticMessage"] = self.encodedDiagnosticMessage!
-            }
-            if self.noPermissionType != nil {
-                map["NoPermissionType"] = self.noPermissionType!
-            }
-            if self.policyType != nil {
-                map["PolicyType"] = self.policyType!
-            }
-            return map
-        }
-
-        public override func fromMap(_ dict: [String: Any]) -> Void {
-            if dict.keys.contains("AuthAction") {
-                self.authAction = dict["AuthAction"] as! String
-            }
-            if dict.keys.contains("AuthPrincipalDisplayName") {
-                self.authPrincipalDisplayName = dict["AuthPrincipalDisplayName"] as! String
-            }
-            if dict.keys.contains("AuthPrincipalOwnerId") {
-                self.authPrincipalOwnerId = dict["AuthPrincipalOwnerId"] as! String
-            }
-            if dict.keys.contains("AuthPrincipalType") {
-                self.authPrincipalType = dict["AuthPrincipalType"] as! String
-            }
-            if dict.keys.contains("EncodedDiagnosticMessage") {
-                self.encodedDiagnosticMessage = dict["EncodedDiagnosticMessage"] as! String
-            }
-            if dict.keys.contains("NoPermissionType") {
-                self.noPermissionType = dict["NoPermissionType"] as! String
-            }
-            if dict.keys.contains("PolicyType") {
-                self.policyType = dict["PolicyType"] as! String
-            }
-        }
-    }
     public class Data : Tea.TeaModel {
         public class WfInstanceInfos : Tea.TeaModel {
             public var dataTime: String?
@@ -12175,8 +9661,6 @@ public class ListWorkflowInstanceResponseBody : Tea.TeaModel {
             }
         }
     }
-    public var accessDeniedDetail: ListWorkflowInstanceResponseBody.AccessDeniedDetail?
-
     public var code: Int32?
 
     public var data: ListWorkflowInstanceResponseBody.Data?
@@ -12197,15 +9681,11 @@ public class ListWorkflowInstanceResponseBody : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.accessDeniedDetail?.validate()
         try self.data?.validate()
     }
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
-        if self.accessDeniedDetail != nil {
-            map["AccessDeniedDetail"] = self.accessDeniedDetail?.toMap()
-        }
         if self.code != nil {
             map["Code"] = self.code!
         }
@@ -12225,11 +9705,6 @@ public class ListWorkflowInstanceResponseBody : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
-        if dict.keys.contains("AccessDeniedDetail") {
-            var model = ListWorkflowInstanceResponseBody.AccessDeniedDetail()
-            model.fromMap(dict["AccessDeniedDetail"] as! [String: Any])
-            self.accessDeniedDetail = model
-        }
         if dict.keys.contains("Code") {
             self.code = dict["Code"] as! Int32
         }
@@ -12293,6 +9768,532 @@ public class ListWorkflowInstanceResponse : Tea.TeaModel {
         }
         if dict.keys.contains("body") {
             var model = ListWorkflowInstanceResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
+public class ReadSchedulerxDesignateDetailRequest : Tea.TeaModel {
+    public var designateType: Int32?
+
+    public var groupId: String?
+
+    public var jobId: Int64?
+
+    public var namespace: String?
+
+    public var namespaceSource: String?
+
+    public var regionId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.designateType != nil {
+            map["DesignateType"] = self.designateType!
+        }
+        if self.groupId != nil {
+            map["GroupId"] = self.groupId!
+        }
+        if self.jobId != nil {
+            map["JobId"] = self.jobId!
+        }
+        if self.namespace != nil {
+            map["Namespace"] = self.namespace!
+        }
+        if self.namespaceSource != nil {
+            map["NamespaceSource"] = self.namespaceSource!
+        }
+        if self.regionId != nil {
+            map["RegionId"] = self.regionId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("DesignateType") {
+            self.designateType = dict["DesignateType"] as! Int32
+        }
+        if dict.keys.contains("GroupId") {
+            self.groupId = dict["GroupId"] as! String
+        }
+        if dict.keys.contains("JobId") {
+            self.jobId = dict["JobId"] as! Int64
+        }
+        if dict.keys.contains("Namespace") {
+            self.namespace = dict["Namespace"] as! String
+        }
+        if dict.keys.contains("NamespaceSource") {
+            self.namespaceSource = dict["NamespaceSource"] as! String
+        }
+        if dict.keys.contains("RegionId") {
+            self.regionId = dict["RegionId"] as! String
+        }
+    }
+}
+
+public class ReadSchedulerxDesignateDetailResponseBody : Tea.TeaModel {
+    public class AccessDeniedDetail : Tea.TeaModel {
+        public var authAction: String?
+
+        public var authPrincipalDisplayName: String?
+
+        public var authPrincipalOwnerId: String?
+
+        public var authPrincipalType: String?
+
+        public var encodedDiagnosticMessage: String?
+
+        public var noPermissionType: String?
+
+        public var policyType: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.authAction != nil {
+                map["AuthAction"] = self.authAction!
+            }
+            if self.authPrincipalDisplayName != nil {
+                map["AuthPrincipalDisplayName"] = self.authPrincipalDisplayName!
+            }
+            if self.authPrincipalOwnerId != nil {
+                map["AuthPrincipalOwnerId"] = self.authPrincipalOwnerId!
+            }
+            if self.authPrincipalType != nil {
+                map["AuthPrincipalType"] = self.authPrincipalType!
+            }
+            if self.encodedDiagnosticMessage != nil {
+                map["EncodedDiagnosticMessage"] = self.encodedDiagnosticMessage!
+            }
+            if self.noPermissionType != nil {
+                map["NoPermissionType"] = self.noPermissionType!
+            }
+            if self.policyType != nil {
+                map["PolicyType"] = self.policyType!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("AuthAction") {
+                self.authAction = dict["AuthAction"] as! String
+            }
+            if dict.keys.contains("AuthPrincipalDisplayName") {
+                self.authPrincipalDisplayName = dict["AuthPrincipalDisplayName"] as! String
+            }
+            if dict.keys.contains("AuthPrincipalOwnerId") {
+                self.authPrincipalOwnerId = dict["AuthPrincipalOwnerId"] as! String
+            }
+            if dict.keys.contains("AuthPrincipalType") {
+                self.authPrincipalType = dict["AuthPrincipalType"] as! String
+            }
+            if dict.keys.contains("EncodedDiagnosticMessage") {
+                self.encodedDiagnosticMessage = dict["EncodedDiagnosticMessage"] as! String
+            }
+            if dict.keys.contains("NoPermissionType") {
+                self.noPermissionType = dict["NoPermissionType"] as! String
+            }
+            if dict.keys.contains("PolicyType") {
+                self.policyType = dict["PolicyType"] as! String
+            }
+        }
+    }
+    public class Data : Tea.TeaModel {
+        public class DesignateDetailVos : Tea.TeaModel {
+            public class Metrics : Tea.TeaModel {
+                public var cpuLoad1: Double?
+
+                public var cpuLoad5: Double?
+
+                public var cpuProcessors: Int32?
+
+                public var diskMax: Int32?
+
+                public var diskUsage: Double?
+
+                public var diskUsed: Int32?
+
+                public var execCount: Int64?
+
+                public var heap1Usage: Double?
+
+                public var heap1Used: Double?
+
+                public var heap5Usage: Double?
+
+                public var heapMax: Int32?
+
+                public var sharePoolAvailableSize: Int32?
+
+                public var sharePoolQueueSize: Int32?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.cpuLoad1 != nil {
+                        map["CpuLoad1"] = self.cpuLoad1!
+                    }
+                    if self.cpuLoad5 != nil {
+                        map["CpuLoad5"] = self.cpuLoad5!
+                    }
+                    if self.cpuProcessors != nil {
+                        map["CpuProcessors"] = self.cpuProcessors!
+                    }
+                    if self.diskMax != nil {
+                        map["DiskMax"] = self.diskMax!
+                    }
+                    if self.diskUsage != nil {
+                        map["DiskUsage"] = self.diskUsage!
+                    }
+                    if self.diskUsed != nil {
+                        map["DiskUsed"] = self.diskUsed!
+                    }
+                    if self.execCount != nil {
+                        map["ExecCount"] = self.execCount!
+                    }
+                    if self.heap1Usage != nil {
+                        map["Heap1Usage"] = self.heap1Usage!
+                    }
+                    if self.heap1Used != nil {
+                        map["Heap1Used"] = self.heap1Used!
+                    }
+                    if self.heap5Usage != nil {
+                        map["Heap5Usage"] = self.heap5Usage!
+                    }
+                    if self.heapMax != nil {
+                        map["HeapMax"] = self.heapMax!
+                    }
+                    if self.sharePoolAvailableSize != nil {
+                        map["SharePoolAvailableSize"] = self.sharePoolAvailableSize!
+                    }
+                    if self.sharePoolQueueSize != nil {
+                        map["SharePoolQueueSize"] = self.sharePoolQueueSize!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any]) -> Void {
+                    if dict.keys.contains("CpuLoad1") {
+                        self.cpuLoad1 = dict["CpuLoad1"] as! Double
+                    }
+                    if dict.keys.contains("CpuLoad5") {
+                        self.cpuLoad5 = dict["CpuLoad5"] as! Double
+                    }
+                    if dict.keys.contains("CpuProcessors") {
+                        self.cpuProcessors = dict["CpuProcessors"] as! Int32
+                    }
+                    if dict.keys.contains("DiskMax") {
+                        self.diskMax = dict["DiskMax"] as! Int32
+                    }
+                    if dict.keys.contains("DiskUsage") {
+                        self.diskUsage = dict["DiskUsage"] as! Double
+                    }
+                    if dict.keys.contains("DiskUsed") {
+                        self.diskUsed = dict["DiskUsed"] as! Int32
+                    }
+                    if dict.keys.contains("ExecCount") {
+                        self.execCount = dict["ExecCount"] as! Int64
+                    }
+                    if dict.keys.contains("Heap1Usage") {
+                        self.heap1Usage = dict["Heap1Usage"] as! Double
+                    }
+                    if dict.keys.contains("Heap1Used") {
+                        self.heap1Used = dict["Heap1Used"] as! Double
+                    }
+                    if dict.keys.contains("Heap5Usage") {
+                        self.heap5Usage = dict["Heap5Usage"] as! Double
+                    }
+                    if dict.keys.contains("HeapMax") {
+                        self.heapMax = dict["HeapMax"] as! Int32
+                    }
+                    if dict.keys.contains("SharePoolAvailableSize") {
+                        self.sharePoolAvailableSize = dict["SharePoolAvailableSize"] as! Int32
+                    }
+                    if dict.keys.contains("SharePoolQueueSize") {
+                        self.sharePoolQueueSize = dict["SharePoolQueueSize"] as! Int32
+                    }
+                }
+            }
+            public var busy: String?
+
+            public var checked: Bool?
+
+            public var key: String?
+
+            public var metrics: ReadSchedulerxDesignateDetailResponseBody.Data.DesignateDetailVos.Metrics?
+
+            public var offline: Bool?
+
+            public var size: Int32?
+
+            public var starter: String?
+
+            public var version: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+                try self.metrics?.validate()
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.busy != nil {
+                    map["Busy"] = self.busy!
+                }
+                if self.checked != nil {
+                    map["Checked"] = self.checked!
+                }
+                if self.key != nil {
+                    map["Key"] = self.key!
+                }
+                if self.metrics != nil {
+                    map["Metrics"] = self.metrics?.toMap()
+                }
+                if self.offline != nil {
+                    map["Offline"] = self.offline!
+                }
+                if self.size != nil {
+                    map["Size"] = self.size!
+                }
+                if self.starter != nil {
+                    map["Starter"] = self.starter!
+                }
+                if self.version != nil {
+                    map["Version"] = self.version!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("Busy") {
+                    self.busy = dict["Busy"] as! String
+                }
+                if dict.keys.contains("Checked") {
+                    self.checked = dict["Checked"] as! Bool
+                }
+                if dict.keys.contains("Key") {
+                    self.key = dict["Key"] as! String
+                }
+                if dict.keys.contains("Metrics") {
+                    var model = ReadSchedulerxDesignateDetailResponseBody.Data.DesignateDetailVos.Metrics()
+                    model.fromMap(dict["Metrics"] as! [String: Any])
+                    self.metrics = model
+                }
+                if dict.keys.contains("Offline") {
+                    self.offline = dict["Offline"] as! Bool
+                }
+                if dict.keys.contains("Size") {
+                    self.size = dict["Size"] as! Int32
+                }
+                if dict.keys.contains("Starter") {
+                    self.starter = dict["Starter"] as! String
+                }
+                if dict.keys.contains("Version") {
+                    self.version = dict["Version"] as! String
+                }
+            }
+        }
+        public var designateDetailVos: [ReadSchedulerxDesignateDetailResponseBody.Data.DesignateDetailVos]?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.designateDetailVos != nil {
+                var tmp : [Any] = []
+                for k in self.designateDetailVos! {
+                    tmp.append(k.toMap())
+                }
+                map["DesignateDetailVos"] = tmp
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("DesignateDetailVos") {
+                var tmp : [ReadSchedulerxDesignateDetailResponseBody.Data.DesignateDetailVos] = []
+                for v in dict["DesignateDetailVos"] as! [Any] {
+                    var model = ReadSchedulerxDesignateDetailResponseBody.Data.DesignateDetailVos()
+                    if v != nil {
+                        model.fromMap(v as! [String: Any])
+                    }
+                    tmp.append(model)
+                }
+                self.designateDetailVos = tmp
+            }
+        }
+    }
+    public var accessDeniedDetail: ReadSchedulerxDesignateDetailResponseBody.AccessDeniedDetail?
+
+    public var code: Int32?
+
+    public var data: ReadSchedulerxDesignateDetailResponseBody.Data?
+
+    public var message: String?
+
+    public var requestId: String?
+
+    public var success: Bool?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.accessDeniedDetail?.validate()
+        try self.data?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.accessDeniedDetail != nil {
+            map["AccessDeniedDetail"] = self.accessDeniedDetail?.toMap()
+        }
+        if self.code != nil {
+            map["Code"] = self.code!
+        }
+        if self.data != nil {
+            map["Data"] = self.data?.toMap()
+        }
+        if self.message != nil {
+            map["Message"] = self.message!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.success != nil {
+            map["Success"] = self.success!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("AccessDeniedDetail") {
+            var model = ReadSchedulerxDesignateDetailResponseBody.AccessDeniedDetail()
+            model.fromMap(dict["AccessDeniedDetail"] as! [String: Any])
+            self.accessDeniedDetail = model
+        }
+        if dict.keys.contains("Code") {
+            self.code = dict["Code"] as! Int32
+        }
+        if dict.keys.contains("Data") {
+            var model = ReadSchedulerxDesignateDetailResponseBody.Data()
+            model.fromMap(dict["Data"] as! [String: Any])
+            self.data = model
+        }
+        if dict.keys.contains("Message") {
+            self.message = dict["Message"] as! String
+        }
+        if dict.keys.contains("RequestId") {
+            self.requestId = dict["RequestId"] as! String
+        }
+        if dict.keys.contains("Success") {
+            self.success = dict["Success"] as! Bool
+        }
+    }
+}
+
+public class ReadSchedulerxDesignateDetailResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: ReadSchedulerxDesignateDetailResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") {
+            var model = ReadSchedulerxDesignateDetailResponseBody()
             model.fromMap(dict["body"] as! [String: Any])
             self.body = model
         }
@@ -12386,85 +10387,6 @@ public class RerunJobRequest : Tea.TeaModel {
 }
 
 public class RerunJobResponseBody : Tea.TeaModel {
-    public class AccessDeniedDetail : Tea.TeaModel {
-        public var authAction: String?
-
-        public var authPrincipalDisplayName: String?
-
-        public var authPrincipalOwnerId: String?
-
-        public var authPrincipalType: String?
-
-        public var encodedDiagnosticMessage: String?
-
-        public var noPermissionType: String?
-
-        public var policyType: String?
-
-        public override init() {
-            super.init()
-        }
-
-        public init(_ dict: [String: Any]) {
-            super.init()
-            self.fromMap(dict)
-        }
-
-        public override func validate() throws -> Void {
-        }
-
-        public override func toMap() -> [String : Any] {
-            var map = super.toMap()
-            if self.authAction != nil {
-                map["AuthAction"] = self.authAction!
-            }
-            if self.authPrincipalDisplayName != nil {
-                map["AuthPrincipalDisplayName"] = self.authPrincipalDisplayName!
-            }
-            if self.authPrincipalOwnerId != nil {
-                map["AuthPrincipalOwnerId"] = self.authPrincipalOwnerId!
-            }
-            if self.authPrincipalType != nil {
-                map["AuthPrincipalType"] = self.authPrincipalType!
-            }
-            if self.encodedDiagnosticMessage != nil {
-                map["EncodedDiagnosticMessage"] = self.encodedDiagnosticMessage!
-            }
-            if self.noPermissionType != nil {
-                map["NoPermissionType"] = self.noPermissionType!
-            }
-            if self.policyType != nil {
-                map["PolicyType"] = self.policyType!
-            }
-            return map
-        }
-
-        public override func fromMap(_ dict: [String: Any]) -> Void {
-            if dict.keys.contains("AuthAction") {
-                self.authAction = dict["AuthAction"] as! String
-            }
-            if dict.keys.contains("AuthPrincipalDisplayName") {
-                self.authPrincipalDisplayName = dict["AuthPrincipalDisplayName"] as! String
-            }
-            if dict.keys.contains("AuthPrincipalOwnerId") {
-                self.authPrincipalOwnerId = dict["AuthPrincipalOwnerId"] as! String
-            }
-            if dict.keys.contains("AuthPrincipalType") {
-                self.authPrincipalType = dict["AuthPrincipalType"] as! String
-            }
-            if dict.keys.contains("EncodedDiagnosticMessage") {
-                self.encodedDiagnosticMessage = dict["EncodedDiagnosticMessage"] as! String
-            }
-            if dict.keys.contains("NoPermissionType") {
-                self.noPermissionType = dict["NoPermissionType"] as! String
-            }
-            if dict.keys.contains("PolicyType") {
-                self.policyType = dict["PolicyType"] as! String
-            }
-        }
-    }
-    public var accessDeniedDetail: RerunJobResponseBody.AccessDeniedDetail?
-
     public var code: Int32?
 
     public var message: String?
@@ -12483,14 +10405,10 @@ public class RerunJobResponseBody : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.accessDeniedDetail?.validate()
     }
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
-        if self.accessDeniedDetail != nil {
-            map["AccessDeniedDetail"] = self.accessDeniedDetail?.toMap()
-        }
         if self.code != nil {
             map["Code"] = self.code!
         }
@@ -12507,11 +10425,6 @@ public class RerunJobResponseBody : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
-        if dict.keys.contains("AccessDeniedDetail") {
-            var model = RerunJobResponseBody.AccessDeniedDetail()
-            model.fromMap(dict["AccessDeniedDetail"] as! [String: Any])
-            self.accessDeniedDetail = model
-        }
         if dict.keys.contains("Code") {
             self.code = dict["Code"] as! Int32
         }
@@ -12647,85 +10560,6 @@ public class RetryJobInstanceRequest : Tea.TeaModel {
 }
 
 public class RetryJobInstanceResponseBody : Tea.TeaModel {
-    public class AccessDeniedDetail : Tea.TeaModel {
-        public var authAction: String?
-
-        public var authPrincipalDisplayName: String?
-
-        public var authPrincipalOwnerId: String?
-
-        public var authPrincipalType: String?
-
-        public var encodedDiagnosticMessage: String?
-
-        public var noPermissionType: String?
-
-        public var policyType: String?
-
-        public override init() {
-            super.init()
-        }
-
-        public init(_ dict: [String: Any]) {
-            super.init()
-            self.fromMap(dict)
-        }
-
-        public override func validate() throws -> Void {
-        }
-
-        public override func toMap() -> [String : Any] {
-            var map = super.toMap()
-            if self.authAction != nil {
-                map["AuthAction"] = self.authAction!
-            }
-            if self.authPrincipalDisplayName != nil {
-                map["AuthPrincipalDisplayName"] = self.authPrincipalDisplayName!
-            }
-            if self.authPrincipalOwnerId != nil {
-                map["AuthPrincipalOwnerId"] = self.authPrincipalOwnerId!
-            }
-            if self.authPrincipalType != nil {
-                map["AuthPrincipalType"] = self.authPrincipalType!
-            }
-            if self.encodedDiagnosticMessage != nil {
-                map["EncodedDiagnosticMessage"] = self.encodedDiagnosticMessage!
-            }
-            if self.noPermissionType != nil {
-                map["NoPermissionType"] = self.noPermissionType!
-            }
-            if self.policyType != nil {
-                map["PolicyType"] = self.policyType!
-            }
-            return map
-        }
-
-        public override func fromMap(_ dict: [String: Any]) -> Void {
-            if dict.keys.contains("AuthAction") {
-                self.authAction = dict["AuthAction"] as! String
-            }
-            if dict.keys.contains("AuthPrincipalDisplayName") {
-                self.authPrincipalDisplayName = dict["AuthPrincipalDisplayName"] as! String
-            }
-            if dict.keys.contains("AuthPrincipalOwnerId") {
-                self.authPrincipalOwnerId = dict["AuthPrincipalOwnerId"] as! String
-            }
-            if dict.keys.contains("AuthPrincipalType") {
-                self.authPrincipalType = dict["AuthPrincipalType"] as! String
-            }
-            if dict.keys.contains("EncodedDiagnosticMessage") {
-                self.encodedDiagnosticMessage = dict["EncodedDiagnosticMessage"] as! String
-            }
-            if dict.keys.contains("NoPermissionType") {
-                self.noPermissionType = dict["NoPermissionType"] as! String
-            }
-            if dict.keys.contains("PolicyType") {
-                self.policyType = dict["PolicyType"] as! String
-            }
-        }
-    }
-    public var accessDeniedDetail: RetryJobInstanceResponseBody.AccessDeniedDetail?
-
     public var code: Int32?
 
     public var message: String?
@@ -12744,14 +10578,10 @@ public class RetryJobInstanceResponseBody : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.accessDeniedDetail?.validate()
     }
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
-        if self.accessDeniedDetail != nil {
-            map["AccessDeniedDetail"] = self.accessDeniedDetail?.toMap()
-        }
         if self.code != nil {
             map["Code"] = self.code!
         }
@@ -12768,11 +10598,6 @@ public class RetryJobInstanceResponseBody : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
-        if dict.keys.contains("AccessDeniedDetail") {
-            var model = RetryJobInstanceResponseBody.AccessDeniedDetail()
-            model.fromMap(dict["AccessDeniedDetail"] as! [String: Any])
-            self.accessDeniedDetail = model
-        }
         if dict.keys.contains("Code") {
             self.code = dict["Code"] as! Int32
         }
@@ -12900,85 +10725,6 @@ public class RevokePermissionRequest : Tea.TeaModel {
 }
 
 public class RevokePermissionResponseBody : Tea.TeaModel {
-    public class AccessDeniedDetail : Tea.TeaModel {
-        public var authAction: String?
-
-        public var authPrincipalDisplayName: String?
-
-        public var authPrincipalOwnerId: String?
-
-        public var authPrincipalType: String?
-
-        public var encodedDiagnosticMessage: String?
-
-        public var noPermissionType: String?
-
-        public var policyType: String?
-
-        public override init() {
-            super.init()
-        }
-
-        public init(_ dict: [String: Any]) {
-            super.init()
-            self.fromMap(dict)
-        }
-
-        public override func validate() throws -> Void {
-        }
-
-        public override func toMap() -> [String : Any] {
-            var map = super.toMap()
-            if self.authAction != nil {
-                map["AuthAction"] = self.authAction!
-            }
-            if self.authPrincipalDisplayName != nil {
-                map["AuthPrincipalDisplayName"] = self.authPrincipalDisplayName!
-            }
-            if self.authPrincipalOwnerId != nil {
-                map["AuthPrincipalOwnerId"] = self.authPrincipalOwnerId!
-            }
-            if self.authPrincipalType != nil {
-                map["AuthPrincipalType"] = self.authPrincipalType!
-            }
-            if self.encodedDiagnosticMessage != nil {
-                map["EncodedDiagnosticMessage"] = self.encodedDiagnosticMessage!
-            }
-            if self.noPermissionType != nil {
-                map["NoPermissionType"] = self.noPermissionType!
-            }
-            if self.policyType != nil {
-                map["PolicyType"] = self.policyType!
-            }
-            return map
-        }
-
-        public override func fromMap(_ dict: [String: Any]) -> Void {
-            if dict.keys.contains("AuthAction") {
-                self.authAction = dict["AuthAction"] as! String
-            }
-            if dict.keys.contains("AuthPrincipalDisplayName") {
-                self.authPrincipalDisplayName = dict["AuthPrincipalDisplayName"] as! String
-            }
-            if dict.keys.contains("AuthPrincipalOwnerId") {
-                self.authPrincipalOwnerId = dict["AuthPrincipalOwnerId"] as! String
-            }
-            if dict.keys.contains("AuthPrincipalType") {
-                self.authPrincipalType = dict["AuthPrincipalType"] as! String
-            }
-            if dict.keys.contains("EncodedDiagnosticMessage") {
-                self.encodedDiagnosticMessage = dict["EncodedDiagnosticMessage"] as! String
-            }
-            if dict.keys.contains("NoPermissionType") {
-                self.noPermissionType = dict["NoPermissionType"] as! String
-            }
-            if dict.keys.contains("PolicyType") {
-                self.policyType = dict["PolicyType"] as! String
-            }
-        }
-    }
-    public var accessDeniedDetail: RevokePermissionResponseBody.AccessDeniedDetail?
-
     public var code: Int32?
 
     public var message: String?
@@ -12997,14 +10743,10 @@ public class RevokePermissionResponseBody : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.accessDeniedDetail?.validate()
     }
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
-        if self.accessDeniedDetail != nil {
-            map["AccessDeniedDetail"] = self.accessDeniedDetail?.toMap()
-        }
         if self.code != nil {
             map["Code"] = self.code!
         }
@@ -13021,11 +10763,6 @@ public class RevokePermissionResponseBody : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
-        if dict.keys.contains("AccessDeniedDetail") {
-            var model = RevokePermissionResponseBody.AccessDeniedDetail()
-            model.fromMap(dict["AccessDeniedDetail"] as! [String: Any])
-            self.accessDeniedDetail = model
-        }
         if dict.keys.contains("Code") {
             self.code = dict["Code"] as! Int32
         }
@@ -13161,85 +10898,6 @@ public class SetJobInstanceSuccessRequest : Tea.TeaModel {
 }
 
 public class SetJobInstanceSuccessResponseBody : Tea.TeaModel {
-    public class AccessDeniedDetail : Tea.TeaModel {
-        public var authAction: String?
-
-        public var authPrincipalDisplayName: String?
-
-        public var authPrincipalOwnerId: String?
-
-        public var authPrincipalType: String?
-
-        public var encodedDiagnosticMessage: String?
-
-        public var noPermissionType: String?
-
-        public var policyType: String?
-
-        public override init() {
-            super.init()
-        }
-
-        public init(_ dict: [String: Any]) {
-            super.init()
-            self.fromMap(dict)
-        }
-
-        public override func validate() throws -> Void {
-        }
-
-        public override func toMap() -> [String : Any] {
-            var map = super.toMap()
-            if self.authAction != nil {
-                map["AuthAction"] = self.authAction!
-            }
-            if self.authPrincipalDisplayName != nil {
-                map["AuthPrincipalDisplayName"] = self.authPrincipalDisplayName!
-            }
-            if self.authPrincipalOwnerId != nil {
-                map["AuthPrincipalOwnerId"] = self.authPrincipalOwnerId!
-            }
-            if self.authPrincipalType != nil {
-                map["AuthPrincipalType"] = self.authPrincipalType!
-            }
-            if self.encodedDiagnosticMessage != nil {
-                map["EncodedDiagnosticMessage"] = self.encodedDiagnosticMessage!
-            }
-            if self.noPermissionType != nil {
-                map["NoPermissionType"] = self.noPermissionType!
-            }
-            if self.policyType != nil {
-                map["PolicyType"] = self.policyType!
-            }
-            return map
-        }
-
-        public override func fromMap(_ dict: [String: Any]) -> Void {
-            if dict.keys.contains("AuthAction") {
-                self.authAction = dict["AuthAction"] as! String
-            }
-            if dict.keys.contains("AuthPrincipalDisplayName") {
-                self.authPrincipalDisplayName = dict["AuthPrincipalDisplayName"] as! String
-            }
-            if dict.keys.contains("AuthPrincipalOwnerId") {
-                self.authPrincipalOwnerId = dict["AuthPrincipalOwnerId"] as! String
-            }
-            if dict.keys.contains("AuthPrincipalType") {
-                self.authPrincipalType = dict["AuthPrincipalType"] as! String
-            }
-            if dict.keys.contains("EncodedDiagnosticMessage") {
-                self.encodedDiagnosticMessage = dict["EncodedDiagnosticMessage"] as! String
-            }
-            if dict.keys.contains("NoPermissionType") {
-                self.noPermissionType = dict["NoPermissionType"] as! String
-            }
-            if dict.keys.contains("PolicyType") {
-                self.policyType = dict["PolicyType"] as! String
-            }
-        }
-    }
-    public var accessDeniedDetail: SetJobInstanceSuccessResponseBody.AccessDeniedDetail?
-
     public var code: Int32?
 
     public var message: String?
@@ -13258,14 +10916,10 @@ public class SetJobInstanceSuccessResponseBody : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.accessDeniedDetail?.validate()
     }
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
-        if self.accessDeniedDetail != nil {
-            map["AccessDeniedDetail"] = self.accessDeniedDetail?.toMap()
-        }
         if self.code != nil {
             map["Code"] = self.code!
         }
@@ -13282,11 +10936,6 @@ public class SetJobInstanceSuccessResponseBody : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
-        if dict.keys.contains("AccessDeniedDetail") {
-            var model = SetJobInstanceSuccessResponseBody.AccessDeniedDetail()
-            model.fromMap(dict["AccessDeniedDetail"] as! [String: Any])
-            self.accessDeniedDetail = model
-        }
         if dict.keys.contains("Code") {
             self.code = dict["Code"] as! Int32
         }
@@ -13422,85 +11071,6 @@ public class SetWfInstanceSuccessRequest : Tea.TeaModel {
 }
 
 public class SetWfInstanceSuccessResponseBody : Tea.TeaModel {
-    public class AccessDeniedDetail : Tea.TeaModel {
-        public var authAction: String?
-
-        public var authPrincipalDisplayName: String?
-
-        public var authPrincipalOwnerId: String?
-
-        public var authPrincipalType: String?
-
-        public var encodedDiagnosticMessage: String?
-
-        public var noPermissionType: String?
-
-        public var policyType: String?
-
-        public override init() {
-            super.init()
-        }
-
-        public init(_ dict: [String: Any]) {
-            super.init()
-            self.fromMap(dict)
-        }
-
-        public override func validate() throws -> Void {
-        }
-
-        public override func toMap() -> [String : Any] {
-            var map = super.toMap()
-            if self.authAction != nil {
-                map["AuthAction"] = self.authAction!
-            }
-            if self.authPrincipalDisplayName != nil {
-                map["AuthPrincipalDisplayName"] = self.authPrincipalDisplayName!
-            }
-            if self.authPrincipalOwnerId != nil {
-                map["AuthPrincipalOwnerId"] = self.authPrincipalOwnerId!
-            }
-            if self.authPrincipalType != nil {
-                map["AuthPrincipalType"] = self.authPrincipalType!
-            }
-            if self.encodedDiagnosticMessage != nil {
-                map["EncodedDiagnosticMessage"] = self.encodedDiagnosticMessage!
-            }
-            if self.noPermissionType != nil {
-                map["NoPermissionType"] = self.noPermissionType!
-            }
-            if self.policyType != nil {
-                map["PolicyType"] = self.policyType!
-            }
-            return map
-        }
-
-        public override func fromMap(_ dict: [String: Any]) -> Void {
-            if dict.keys.contains("AuthAction") {
-                self.authAction = dict["AuthAction"] as! String
-            }
-            if dict.keys.contains("AuthPrincipalDisplayName") {
-                self.authPrincipalDisplayName = dict["AuthPrincipalDisplayName"] as! String
-            }
-            if dict.keys.contains("AuthPrincipalOwnerId") {
-                self.authPrincipalOwnerId = dict["AuthPrincipalOwnerId"] as! String
-            }
-            if dict.keys.contains("AuthPrincipalType") {
-                self.authPrincipalType = dict["AuthPrincipalType"] as! String
-            }
-            if dict.keys.contains("EncodedDiagnosticMessage") {
-                self.encodedDiagnosticMessage = dict["EncodedDiagnosticMessage"] as! String
-            }
-            if dict.keys.contains("NoPermissionType") {
-                self.noPermissionType = dict["NoPermissionType"] as! String
-            }
-            if dict.keys.contains("PolicyType") {
-                self.policyType = dict["PolicyType"] as! String
-            }
-        }
-    }
-    public var accessDeniedDetail: SetWfInstanceSuccessResponseBody.AccessDeniedDetail?
-
     public var code: Int32?
 
     public var message: String?
@@ -13519,14 +11089,10 @@ public class SetWfInstanceSuccessResponseBody : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.accessDeniedDetail?.validate()
     }
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
-        if self.accessDeniedDetail != nil {
-            map["AccessDeniedDetail"] = self.accessDeniedDetail?.toMap()
-        }
         if self.code != nil {
             map["Code"] = self.code!
         }
@@ -13543,11 +11109,6 @@ public class SetWfInstanceSuccessResponseBody : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
-        if dict.keys.contains("AccessDeniedDetail") {
-            var model = SetWfInstanceSuccessResponseBody.AccessDeniedDetail()
-            model.fromMap(dict["AccessDeniedDetail"] as! [String: Any])
-            self.accessDeniedDetail = model
-        }
         if dict.keys.contains("Code") {
             self.code = dict["Code"] as! Int32
         }
@@ -13683,85 +11244,6 @@ public class StopInstanceRequest : Tea.TeaModel {
 }
 
 public class StopInstanceResponseBody : Tea.TeaModel {
-    public class AccessDeniedDetail : Tea.TeaModel {
-        public var authAction: String?
-
-        public var authPrincipalDisplayName: String?
-
-        public var authPrincipalOwnerId: String?
-
-        public var authPrincipalType: String?
-
-        public var encodedDiagnosticMessage: String?
-
-        public var noPermissionType: String?
-
-        public var policyType: String?
-
-        public override init() {
-            super.init()
-        }
-
-        public init(_ dict: [String: Any]) {
-            super.init()
-            self.fromMap(dict)
-        }
-
-        public override func validate() throws -> Void {
-        }
-
-        public override func toMap() -> [String : Any] {
-            var map = super.toMap()
-            if self.authAction != nil {
-                map["AuthAction"] = self.authAction!
-            }
-            if self.authPrincipalDisplayName != nil {
-                map["AuthPrincipalDisplayName"] = self.authPrincipalDisplayName!
-            }
-            if self.authPrincipalOwnerId != nil {
-                map["AuthPrincipalOwnerId"] = self.authPrincipalOwnerId!
-            }
-            if self.authPrincipalType != nil {
-                map["AuthPrincipalType"] = self.authPrincipalType!
-            }
-            if self.encodedDiagnosticMessage != nil {
-                map["EncodedDiagnosticMessage"] = self.encodedDiagnosticMessage!
-            }
-            if self.noPermissionType != nil {
-                map["NoPermissionType"] = self.noPermissionType!
-            }
-            if self.policyType != nil {
-                map["PolicyType"] = self.policyType!
-            }
-            return map
-        }
-
-        public override func fromMap(_ dict: [String: Any]) -> Void {
-            if dict.keys.contains("AuthAction") {
-                self.authAction = dict["AuthAction"] as! String
-            }
-            if dict.keys.contains("AuthPrincipalDisplayName") {
-                self.authPrincipalDisplayName = dict["AuthPrincipalDisplayName"] as! String
-            }
-            if dict.keys.contains("AuthPrincipalOwnerId") {
-                self.authPrincipalOwnerId = dict["AuthPrincipalOwnerId"] as! String
-            }
-            if dict.keys.contains("AuthPrincipalType") {
-                self.authPrincipalType = dict["AuthPrincipalType"] as! String
-            }
-            if dict.keys.contains("EncodedDiagnosticMessage") {
-                self.encodedDiagnosticMessage = dict["EncodedDiagnosticMessage"] as! String
-            }
-            if dict.keys.contains("NoPermissionType") {
-                self.noPermissionType = dict["NoPermissionType"] as! String
-            }
-            if dict.keys.contains("PolicyType") {
-                self.policyType = dict["PolicyType"] as! String
-            }
-        }
-    }
-    public var accessDeniedDetail: StopInstanceResponseBody.AccessDeniedDetail?
-
     public var code: Int32?
 
     public var message: String?
@@ -13780,14 +11262,10 @@ public class StopInstanceResponseBody : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.accessDeniedDetail?.validate()
     }
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
-        if self.accessDeniedDetail != nil {
-            map["AccessDeniedDetail"] = self.accessDeniedDetail?.toMap()
-        }
         if self.code != nil {
             map["Code"] = self.code!
         }
@@ -13804,11 +11282,6 @@ public class StopInstanceResponseBody : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
-        if dict.keys.contains("AccessDeniedDetail") {
-            var model = StopInstanceResponseBody.AccessDeniedDetail()
-            model.fromMap(dict["AccessDeniedDetail"] as! [String: Any])
-            self.accessDeniedDetail = model
-        }
         if dict.keys.contains("Code") {
             self.code = dict["Code"] as! Int32
         }
@@ -13882,6 +11355,10 @@ public class UpdateAppGroupRequest : Tea.TeaModel {
 
     public var maxConcurrency: Int32?
 
+    public var monitorConfigJson: String?
+
+    public var monitorContactsJson: String?
+
     public var namespace: String?
 
     public var regionId: String?
@@ -13912,6 +11389,12 @@ public class UpdateAppGroupRequest : Tea.TeaModel {
         if self.maxConcurrency != nil {
             map["MaxConcurrency"] = self.maxConcurrency!
         }
+        if self.monitorConfigJson != nil {
+            map["MonitorConfigJson"] = self.monitorConfigJson!
+        }
+        if self.monitorContactsJson != nil {
+            map["MonitorContactsJson"] = self.monitorContactsJson!
+        }
         if self.namespace != nil {
             map["Namespace"] = self.namespace!
         }
@@ -13934,6 +11417,12 @@ public class UpdateAppGroupRequest : Tea.TeaModel {
         if dict.keys.contains("MaxConcurrency") {
             self.maxConcurrency = dict["MaxConcurrency"] as! Int32
         }
+        if dict.keys.contains("MonitorConfigJson") {
+            self.monitorConfigJson = dict["MonitorConfigJson"] as! String
+        }
+        if dict.keys.contains("MonitorContactsJson") {
+            self.monitorContactsJson = dict["MonitorContactsJson"] as! String
+        }
         if dict.keys.contains("Namespace") {
             self.namespace = dict["Namespace"] as! String
         }
@@ -13944,85 +11433,6 @@ public class UpdateAppGroupRequest : Tea.TeaModel {
 }
 
 public class UpdateAppGroupResponseBody : Tea.TeaModel {
-    public class AccessDeniedDetail : Tea.TeaModel {
-        public var authAction: String?
-
-        public var authPrincipalDisplayName: String?
-
-        public var authPrincipalOwnerId: String?
-
-        public var authPrincipalType: String?
-
-        public var encodedDiagnosticMessage: String?
-
-        public var noPermissionType: String?
-
-        public var policyType: String?
-
-        public override init() {
-            super.init()
-        }
-
-        public init(_ dict: [String: Any]) {
-            super.init()
-            self.fromMap(dict)
-        }
-
-        public override func validate() throws -> Void {
-        }
-
-        public override func toMap() -> [String : Any] {
-            var map = super.toMap()
-            if self.authAction != nil {
-                map["AuthAction"] = self.authAction!
-            }
-            if self.authPrincipalDisplayName != nil {
-                map["AuthPrincipalDisplayName"] = self.authPrincipalDisplayName!
-            }
-            if self.authPrincipalOwnerId != nil {
-                map["AuthPrincipalOwnerId"] = self.authPrincipalOwnerId!
-            }
-            if self.authPrincipalType != nil {
-                map["AuthPrincipalType"] = self.authPrincipalType!
-            }
-            if self.encodedDiagnosticMessage != nil {
-                map["EncodedDiagnosticMessage"] = self.encodedDiagnosticMessage!
-            }
-            if self.noPermissionType != nil {
-                map["NoPermissionType"] = self.noPermissionType!
-            }
-            if self.policyType != nil {
-                map["PolicyType"] = self.policyType!
-            }
-            return map
-        }
-
-        public override func fromMap(_ dict: [String: Any]) -> Void {
-            if dict.keys.contains("AuthAction") {
-                self.authAction = dict["AuthAction"] as! String
-            }
-            if dict.keys.contains("AuthPrincipalDisplayName") {
-                self.authPrincipalDisplayName = dict["AuthPrincipalDisplayName"] as! String
-            }
-            if dict.keys.contains("AuthPrincipalOwnerId") {
-                self.authPrincipalOwnerId = dict["AuthPrincipalOwnerId"] as! String
-            }
-            if dict.keys.contains("AuthPrincipalType") {
-                self.authPrincipalType = dict["AuthPrincipalType"] as! String
-            }
-            if dict.keys.contains("EncodedDiagnosticMessage") {
-                self.encodedDiagnosticMessage = dict["EncodedDiagnosticMessage"] as! String
-            }
-            if dict.keys.contains("NoPermissionType") {
-                self.noPermissionType = dict["NoPermissionType"] as! String
-            }
-            if dict.keys.contains("PolicyType") {
-                self.policyType = dict["PolicyType"] as! String
-            }
-        }
-    }
-    public var accessDeniedDetail: UpdateAppGroupResponseBody.AccessDeniedDetail?
-
     public var code: Int32?
 
     public var message: String?
@@ -14041,14 +11451,10 @@ public class UpdateAppGroupResponseBody : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.accessDeniedDetail?.validate()
     }
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
-        if self.accessDeniedDetail != nil {
-            map["AccessDeniedDetail"] = self.accessDeniedDetail?.toMap()
-        }
         if self.code != nil {
             map["Code"] = self.code!
         }
@@ -14065,11 +11471,6 @@ public class UpdateAppGroupResponseBody : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
-        if dict.keys.contains("AccessDeniedDetail") {
-            var model = UpdateAppGroupResponseBody.AccessDeniedDetail()
-            model.fromMap(dict["AccessDeniedDetail"] as! [String: Any])
-            self.accessDeniedDetail = model
-        }
         if dict.keys.contains("Code") {
             self.code = dict["Code"] as! Int32
         }
@@ -14232,6 +11633,8 @@ public class UpdateJobRequest : Tea.TeaModel {
 
     public var parameters: String?
 
+    public var priority: Int32?
+
     public var queueSize: Int32?
 
     public var regionId: String?
@@ -14345,6 +11748,9 @@ public class UpdateJobRequest : Tea.TeaModel {
         }
         if self.parameters != nil {
             map["Parameters"] = self.parameters!
+        }
+        if self.priority != nil {
+            map["Priority"] = self.priority!
         }
         if self.queueSize != nil {
             map["QueueSize"] = self.queueSize!
@@ -14469,6 +11875,9 @@ public class UpdateJobRequest : Tea.TeaModel {
         if dict.keys.contains("Parameters") {
             self.parameters = dict["Parameters"] as! String
         }
+        if dict.keys.contains("Priority") {
+            self.priority = dict["Priority"] as! Int32
+        }
         if dict.keys.contains("QueueSize") {
             self.queueSize = dict["QueueSize"] as! Int32
         }
@@ -14518,85 +11927,6 @@ public class UpdateJobRequest : Tea.TeaModel {
 }
 
 public class UpdateJobResponseBody : Tea.TeaModel {
-    public class AccessDeniedDetail : Tea.TeaModel {
-        public var authAction: String?
-
-        public var authPrincipalDisplayName: String?
-
-        public var authPrincipalOwnerId: String?
-
-        public var authPrincipalType: String?
-
-        public var encodedDiagnosticMessage: String?
-
-        public var noPermissionType: String?
-
-        public var policyType: String?
-
-        public override init() {
-            super.init()
-        }
-
-        public init(_ dict: [String: Any]) {
-            super.init()
-            self.fromMap(dict)
-        }
-
-        public override func validate() throws -> Void {
-        }
-
-        public override func toMap() -> [String : Any] {
-            var map = super.toMap()
-            if self.authAction != nil {
-                map["AuthAction"] = self.authAction!
-            }
-            if self.authPrincipalDisplayName != nil {
-                map["AuthPrincipalDisplayName"] = self.authPrincipalDisplayName!
-            }
-            if self.authPrincipalOwnerId != nil {
-                map["AuthPrincipalOwnerId"] = self.authPrincipalOwnerId!
-            }
-            if self.authPrincipalType != nil {
-                map["AuthPrincipalType"] = self.authPrincipalType!
-            }
-            if self.encodedDiagnosticMessage != nil {
-                map["EncodedDiagnosticMessage"] = self.encodedDiagnosticMessage!
-            }
-            if self.noPermissionType != nil {
-                map["NoPermissionType"] = self.noPermissionType!
-            }
-            if self.policyType != nil {
-                map["PolicyType"] = self.policyType!
-            }
-            return map
-        }
-
-        public override func fromMap(_ dict: [String: Any]) -> Void {
-            if dict.keys.contains("AuthAction") {
-                self.authAction = dict["AuthAction"] as! String
-            }
-            if dict.keys.contains("AuthPrincipalDisplayName") {
-                self.authPrincipalDisplayName = dict["AuthPrincipalDisplayName"] as! String
-            }
-            if dict.keys.contains("AuthPrincipalOwnerId") {
-                self.authPrincipalOwnerId = dict["AuthPrincipalOwnerId"] as! String
-            }
-            if dict.keys.contains("AuthPrincipalType") {
-                self.authPrincipalType = dict["AuthPrincipalType"] as! String
-            }
-            if dict.keys.contains("EncodedDiagnosticMessage") {
-                self.encodedDiagnosticMessage = dict["EncodedDiagnosticMessage"] as! String
-            }
-            if dict.keys.contains("NoPermissionType") {
-                self.noPermissionType = dict["NoPermissionType"] as! String
-            }
-            if dict.keys.contains("PolicyType") {
-                self.policyType = dict["PolicyType"] as! String
-            }
-        }
-    }
-    public var accessDeniedDetail: UpdateJobResponseBody.AccessDeniedDetail?
-
     public var code: Int32?
 
     public var message: String?
@@ -14615,14 +11945,10 @@ public class UpdateJobResponseBody : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.accessDeniedDetail?.validate()
     }
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
-        if self.accessDeniedDetail != nil {
-            map["AccessDeniedDetail"] = self.accessDeniedDetail?.toMap()
-        }
         if self.code != nil {
             map["Code"] = self.code!
         }
@@ -14639,11 +11965,6 @@ public class UpdateJobResponseBody : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
-        if dict.keys.contains("AccessDeniedDetail") {
-            var model = UpdateJobResponseBody.AccessDeniedDetail()
-            model.fromMap(dict["AccessDeniedDetail"] as! [String: Any])
-            self.accessDeniedDetail = model
-        }
         if dict.keys.contains("Code") {
             self.code = dict["Code"] as! Int32
         }
@@ -14702,6 +12023,344 @@ public class UpdateJobResponse : Tea.TeaModel {
         }
         if dict.keys.contains("body") {
             var model = UpdateJobResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
+public class UpdateJobScriptRequest : Tea.TeaModel {
+    public var groupId: String?
+
+    public var jobId: Int64?
+
+    public var namespace: String?
+
+    public var namespaceSource: String?
+
+    public var regionId: String?
+
+    public var scriptContent: String?
+
+    public var versionDescription: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.groupId != nil {
+            map["GroupId"] = self.groupId!
+        }
+        if self.jobId != nil {
+            map["JobId"] = self.jobId!
+        }
+        if self.namespace != nil {
+            map["Namespace"] = self.namespace!
+        }
+        if self.namespaceSource != nil {
+            map["NamespaceSource"] = self.namespaceSource!
+        }
+        if self.regionId != nil {
+            map["RegionId"] = self.regionId!
+        }
+        if self.scriptContent != nil {
+            map["ScriptContent"] = self.scriptContent!
+        }
+        if self.versionDescription != nil {
+            map["VersionDescription"] = self.versionDescription!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("GroupId") {
+            self.groupId = dict["GroupId"] as! String
+        }
+        if dict.keys.contains("JobId") {
+            self.jobId = dict["JobId"] as! Int64
+        }
+        if dict.keys.contains("Namespace") {
+            self.namespace = dict["Namespace"] as! String
+        }
+        if dict.keys.contains("NamespaceSource") {
+            self.namespaceSource = dict["NamespaceSource"] as! String
+        }
+        if dict.keys.contains("RegionId") {
+            self.regionId = dict["RegionId"] as! String
+        }
+        if dict.keys.contains("ScriptContent") {
+            self.scriptContent = dict["ScriptContent"] as! String
+        }
+        if dict.keys.contains("VersionDescription") {
+            self.versionDescription = dict["VersionDescription"] as! String
+        }
+    }
+}
+
+public class UpdateJobScriptResponseBody : Tea.TeaModel {
+    public var code: Int32?
+
+    public var message: String?
+
+    public var requestId: String?
+
+    public var success: Bool?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.code != nil {
+            map["Code"] = self.code!
+        }
+        if self.message != nil {
+            map["Message"] = self.message!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.success != nil {
+            map["Success"] = self.success!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("Code") {
+            self.code = dict["Code"] as! Int32
+        }
+        if dict.keys.contains("Message") {
+            self.message = dict["Message"] as! String
+        }
+        if dict.keys.contains("RequestId") {
+            self.requestId = dict["RequestId"] as! String
+        }
+        if dict.keys.contains("Success") {
+            self.success = dict["Success"] as! Bool
+        }
+    }
+}
+
+public class UpdateJobScriptResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: UpdateJobScriptResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") {
+            var model = UpdateJobScriptResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
+public class UpdateNamespaceRequest : Tea.TeaModel {
+    public var description_: String?
+
+    public var namespace: String?
+
+    public var namespaceName: String?
+
+    public var regionId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.description_ != nil {
+            map["Description"] = self.description_!
+        }
+        if self.namespace != nil {
+            map["Namespace"] = self.namespace!
+        }
+        if self.namespaceName != nil {
+            map["NamespaceName"] = self.namespaceName!
+        }
+        if self.regionId != nil {
+            map["RegionId"] = self.regionId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("Description") {
+            self.description_ = dict["Description"] as! String
+        }
+        if dict.keys.contains("Namespace") {
+            self.namespace = dict["Namespace"] as! String
+        }
+        if dict.keys.contains("NamespaceName") {
+            self.namespaceName = dict["NamespaceName"] as! String
+        }
+        if dict.keys.contains("RegionId") {
+            self.regionId = dict["RegionId"] as! String
+        }
+    }
+}
+
+public class UpdateNamespaceResponseBody : Tea.TeaModel {
+    public var code: Int32?
+
+    public var message: String?
+
+    public var requestId: String?
+
+    public var success: Bool?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.code != nil {
+            map["Code"] = self.code!
+        }
+        if self.message != nil {
+            map["Message"] = self.message!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.success != nil {
+            map["Success"] = self.success!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("Code") {
+            self.code = dict["Code"] as! Int32
+        }
+        if dict.keys.contains("Message") {
+            self.message = dict["Message"] as! String
+        }
+        if dict.keys.contains("RequestId") {
+            self.requestId = dict["RequestId"] as! String
+        }
+        if dict.keys.contains("Success") {
+            self.success = dict["Success"] as! Bool
+        }
+    }
+}
+
+public class UpdateNamespaceResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: UpdateNamespaceResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") {
+            var model = UpdateNamespaceResponseBody()
             model.fromMap(dict["body"] as! [String: Any])
             self.body = model
         }
@@ -14803,85 +12462,6 @@ public class UpdateWorkflowRequest : Tea.TeaModel {
 }
 
 public class UpdateWorkflowResponseBody : Tea.TeaModel {
-    public class AccessDeniedDetail : Tea.TeaModel {
-        public var authAction: String?
-
-        public var authPrincipalDisplayName: String?
-
-        public var authPrincipalOwnerId: String?
-
-        public var authPrincipalType: String?
-
-        public var encodedDiagnosticMessage: String?
-
-        public var noPermissionType: String?
-
-        public var policyType: String?
-
-        public override init() {
-            super.init()
-        }
-
-        public init(_ dict: [String: Any]) {
-            super.init()
-            self.fromMap(dict)
-        }
-
-        public override func validate() throws -> Void {
-        }
-
-        public override func toMap() -> [String : Any] {
-            var map = super.toMap()
-            if self.authAction != nil {
-                map["AuthAction"] = self.authAction!
-            }
-            if self.authPrincipalDisplayName != nil {
-                map["AuthPrincipalDisplayName"] = self.authPrincipalDisplayName!
-            }
-            if self.authPrincipalOwnerId != nil {
-                map["AuthPrincipalOwnerId"] = self.authPrincipalOwnerId!
-            }
-            if self.authPrincipalType != nil {
-                map["AuthPrincipalType"] = self.authPrincipalType!
-            }
-            if self.encodedDiagnosticMessage != nil {
-                map["EncodedDiagnosticMessage"] = self.encodedDiagnosticMessage!
-            }
-            if self.noPermissionType != nil {
-                map["NoPermissionType"] = self.noPermissionType!
-            }
-            if self.policyType != nil {
-                map["PolicyType"] = self.policyType!
-            }
-            return map
-        }
-
-        public override func fromMap(_ dict: [String: Any]) -> Void {
-            if dict.keys.contains("AuthAction") {
-                self.authAction = dict["AuthAction"] as! String
-            }
-            if dict.keys.contains("AuthPrincipalDisplayName") {
-                self.authPrincipalDisplayName = dict["AuthPrincipalDisplayName"] as! String
-            }
-            if dict.keys.contains("AuthPrincipalOwnerId") {
-                self.authPrincipalOwnerId = dict["AuthPrincipalOwnerId"] as! String
-            }
-            if dict.keys.contains("AuthPrincipalType") {
-                self.authPrincipalType = dict["AuthPrincipalType"] as! String
-            }
-            if dict.keys.contains("EncodedDiagnosticMessage") {
-                self.encodedDiagnosticMessage = dict["EncodedDiagnosticMessage"] as! String
-            }
-            if dict.keys.contains("NoPermissionType") {
-                self.noPermissionType = dict["NoPermissionType"] as! String
-            }
-            if dict.keys.contains("PolicyType") {
-                self.policyType = dict["PolicyType"] as! String
-            }
-        }
-    }
-    public var accessDeniedDetail: UpdateWorkflowResponseBody.AccessDeniedDetail?
-
     public var code: Int32?
 
     public var message: String?
@@ -14900,14 +12480,10 @@ public class UpdateWorkflowResponseBody : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.accessDeniedDetail?.validate()
     }
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
-        if self.accessDeniedDetail != nil {
-            map["AccessDeniedDetail"] = self.accessDeniedDetail?.toMap()
-        }
         if self.code != nil {
             map["Code"] = self.code!
         }
@@ -14924,11 +12500,6 @@ public class UpdateWorkflowResponseBody : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
-        if dict.keys.contains("AccessDeniedDetail") {
-            var model = UpdateWorkflowResponseBody.AccessDeniedDetail()
-            model.fromMap(dict["AccessDeniedDetail"] as! [String: Any])
-            self.accessDeniedDetail = model
-        }
         if dict.keys.contains("Code") {
             self.code = dict["Code"] as! Int32
         }
@@ -15064,85 +12635,6 @@ public class UpdateWorkflowDagRequest : Tea.TeaModel {
 }
 
 public class UpdateWorkflowDagResponseBody : Tea.TeaModel {
-    public class AccessDeniedDetail : Tea.TeaModel {
-        public var authAction: String?
-
-        public var authPrincipalDisplayName: String?
-
-        public var authPrincipalOwnerId: String?
-
-        public var authPrincipalType: String?
-
-        public var encodedDiagnosticMessage: String?
-
-        public var noPermissionType: String?
-
-        public var policyType: String?
-
-        public override init() {
-            super.init()
-        }
-
-        public init(_ dict: [String: Any]) {
-            super.init()
-            self.fromMap(dict)
-        }
-
-        public override func validate() throws -> Void {
-        }
-
-        public override func toMap() -> [String : Any] {
-            var map = super.toMap()
-            if self.authAction != nil {
-                map["AuthAction"] = self.authAction!
-            }
-            if self.authPrincipalDisplayName != nil {
-                map["AuthPrincipalDisplayName"] = self.authPrincipalDisplayName!
-            }
-            if self.authPrincipalOwnerId != nil {
-                map["AuthPrincipalOwnerId"] = self.authPrincipalOwnerId!
-            }
-            if self.authPrincipalType != nil {
-                map["AuthPrincipalType"] = self.authPrincipalType!
-            }
-            if self.encodedDiagnosticMessage != nil {
-                map["EncodedDiagnosticMessage"] = self.encodedDiagnosticMessage!
-            }
-            if self.noPermissionType != nil {
-                map["NoPermissionType"] = self.noPermissionType!
-            }
-            if self.policyType != nil {
-                map["PolicyType"] = self.policyType!
-            }
-            return map
-        }
-
-        public override func fromMap(_ dict: [String: Any]) -> Void {
-            if dict.keys.contains("AuthAction") {
-                self.authAction = dict["AuthAction"] as! String
-            }
-            if dict.keys.contains("AuthPrincipalDisplayName") {
-                self.authPrincipalDisplayName = dict["AuthPrincipalDisplayName"] as! String
-            }
-            if dict.keys.contains("AuthPrincipalOwnerId") {
-                self.authPrincipalOwnerId = dict["AuthPrincipalOwnerId"] as! String
-            }
-            if dict.keys.contains("AuthPrincipalType") {
-                self.authPrincipalType = dict["AuthPrincipalType"] as! String
-            }
-            if dict.keys.contains("EncodedDiagnosticMessage") {
-                self.encodedDiagnosticMessage = dict["EncodedDiagnosticMessage"] as! String
-            }
-            if dict.keys.contains("NoPermissionType") {
-                self.noPermissionType = dict["NoPermissionType"] as! String
-            }
-            if dict.keys.contains("PolicyType") {
-                self.policyType = dict["PolicyType"] as! String
-            }
-        }
-    }
-    public var accessDeniedDetail: UpdateWorkflowDagResponseBody.AccessDeniedDetail?
-
     public var code: Int32?
 
     public var message: String?
@@ -15161,14 +12653,10 @@ public class UpdateWorkflowDagResponseBody : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.accessDeniedDetail?.validate()
     }
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
-        if self.accessDeniedDetail != nil {
-            map["AccessDeniedDetail"] = self.accessDeniedDetail?.toMap()
-        }
         if self.code != nil {
             map["Code"] = self.code!
         }
@@ -15185,11 +12673,6 @@ public class UpdateWorkflowDagResponseBody : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
-        if dict.keys.contains("AccessDeniedDetail") {
-            var model = UpdateWorkflowDagResponseBody.AccessDeniedDetail()
-            model.fromMap(dict["AccessDeniedDetail"] as! [String: Any])
-            self.accessDeniedDetail = model
-        }
         if dict.keys.contains("Code") {
             self.code = dict["Code"] as! Int32
         }
