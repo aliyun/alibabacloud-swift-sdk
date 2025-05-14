@@ -10618,7 +10618,7 @@ public class DescribeInstanceResponseBody : Tea.TeaModel {
 
         public var enablePublic: Bool?
 
-        public var endtime: Int64?
+        public var endTime: Int64?
 
         public var esConfig: [String: Any]?
 
@@ -10774,8 +10774,8 @@ public class DescribeInstanceResponseBody : Tea.TeaModel {
             if self.enablePublic != nil {
                 map["enablePublic"] = self.enablePublic!
             }
-            if self.endtime != nil {
-                map["endtime"] = self.endtime!
+            if self.endTime != nil {
+                map["endTime"] = self.endTime!
             }
             if self.esConfig != nil {
                 map["esConfig"] = self.esConfig!
@@ -10984,8 +10984,8 @@ public class DescribeInstanceResponseBody : Tea.TeaModel {
             if dict.keys.contains("enablePublic") {
                 self.enablePublic = dict["enablePublic"] as! Bool
             }
-            if dict.keys.contains("endtime") {
-                self.endtime = dict["endtime"] as! Int64
+            if dict.keys.contains("endTime") {
+                self.endTime = dict["endTime"] as! Int64
             }
             if dict.keys.contains("esConfig") {
                 self.esConfig = dict["esConfig"] as! [String: Any]
