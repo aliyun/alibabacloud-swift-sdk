@@ -114,14 +114,8 @@ open class Client : AlibabacloudOpenApi.Client {
             "reqBodyType": "json",
             "bodyType": "json"
         ])
-        if (TeaUtils.Client.isUnset(self._signatureVersion) || !TeaUtils.Client.equalString(self._signatureVersion, "v4")) {
-            var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
-            return Tea.TeaConverter.fromMap(AttachInstancesResponse(), tmp)
-        }
-        else {
-            var tmp: [String: Any] = try await execute(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
-            return Tea.TeaConverter.fromMap(AttachInstancesResponse(), tmp)
-        }
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(AttachInstancesResponse(), tmp)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -162,14 +156,8 @@ open class Client : AlibabacloudOpenApi.Client {
             "reqBodyType": "json",
             "bodyType": "json"
         ])
-        if (TeaUtils.Client.isUnset(self._signatureVersion) || !TeaUtils.Client.equalString(self._signatureVersion, "v4")) {
-            var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
-            return Tea.TeaConverter.fromMap(AttachInstancesToNodePoolResponse(), tmp)
-        }
-        else {
-            var tmp: [String: Any] = try await execute(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
-            return Tea.TeaConverter.fromMap(AttachInstancesToNodePoolResponse(), tmp)
-        }
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(AttachInstancesToNodePoolResponse(), tmp)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -195,14 +183,8 @@ open class Client : AlibabacloudOpenApi.Client {
             "reqBodyType": "json",
             "bodyType": "none"
         ])
-        if (TeaUtils.Client.isUnset(self._signatureVersion) || !TeaUtils.Client.equalString(self._signatureVersion, "v4")) {
-            var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
-            return Tea.TeaConverter.fromMap(CancelClusterUpgradeResponse(), tmp)
-        }
-        else {
-            var tmp: [String: Any] = try await execute(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
-            return Tea.TeaConverter.fromMap(CancelClusterUpgradeResponse(), tmp)
-        }
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(CancelClusterUpgradeResponse(), tmp)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -228,14 +210,8 @@ open class Client : AlibabacloudOpenApi.Client {
             "reqBodyType": "json",
             "bodyType": "none"
         ])
-        if (TeaUtils.Client.isUnset(self._signatureVersion) || !TeaUtils.Client.equalString(self._signatureVersion, "v4")) {
-            var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
-            return Tea.TeaConverter.fromMap(CancelComponentUpgradeResponse(), tmp)
-        }
-        else {
-            var tmp: [String: Any] = try await execute(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
-            return Tea.TeaConverter.fromMap(CancelComponentUpgradeResponse(), tmp)
-        }
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(CancelComponentUpgradeResponse(), tmp)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -261,14 +237,8 @@ open class Client : AlibabacloudOpenApi.Client {
             "reqBodyType": "json",
             "bodyType": "json"
         ])
-        if (TeaUtils.Client.isUnset(self._signatureVersion) || !TeaUtils.Client.equalString(self._signatureVersion, "v4")) {
-            var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
-            return Tea.TeaConverter.fromMap(CancelOperationPlanResponse(), tmp)
-        }
-        else {
-            var tmp: [String: Any] = try await execute(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
-            return Tea.TeaConverter.fromMap(CancelOperationPlanResponse(), tmp)
-        }
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(CancelOperationPlanResponse(), tmp)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -294,14 +264,8 @@ open class Client : AlibabacloudOpenApi.Client {
             "reqBodyType": "json",
             "bodyType": "none"
         ])
-        if (TeaUtils.Client.isUnset(self._signatureVersion) || !TeaUtils.Client.equalString(self._signatureVersion, "v4")) {
-            var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
-            return Tea.TeaConverter.fromMap(CancelTaskResponse(), tmp)
-        }
-        else {
-            var tmp: [String: Any] = try await execute(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
-            return Tea.TeaConverter.fromMap(CancelTaskResponse(), tmp)
-        }
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(CancelTaskResponse(), tmp)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -327,14 +291,8 @@ open class Client : AlibabacloudOpenApi.Client {
             "reqBodyType": "json",
             "bodyType": "json"
         ])
-        if (TeaUtils.Client.isUnset(self._signatureVersion) || !TeaUtils.Client.equalString(self._signatureVersion, "v4")) {
-            var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
-            return Tea.TeaConverter.fromMap(CheckControlPlaneLogEnableResponse(), tmp)
-        }
-        else {
-            var tmp: [String: Any] = try await execute(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
-            return Tea.TeaConverter.fromMap(CheckControlPlaneLogEnableResponse(), tmp)
-        }
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(CheckControlPlaneLogEnableResponse(), tmp)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -366,14 +324,8 @@ open class Client : AlibabacloudOpenApi.Client {
             "reqBodyType": "json",
             "bodyType": "json"
         ])
-        if (TeaUtils.Client.isUnset(self._signatureVersion) || !TeaUtils.Client.equalString(self._signatureVersion, "v4")) {
-            var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
-            return Tea.TeaConverter.fromMap(CheckServiceRoleResponse(), tmp)
-        }
-        else {
-            var tmp: [String: Any] = try await execute(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
-            return Tea.TeaConverter.fromMap(CheckServiceRoleResponse(), tmp)
-        }
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(CheckServiceRoleResponse(), tmp)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -405,14 +357,8 @@ open class Client : AlibabacloudOpenApi.Client {
             "reqBodyType": "json",
             "bodyType": "none"
         ])
-        if (TeaUtils.Client.isUnset(self._signatureVersion) || !TeaUtils.Client.equalString(self._signatureVersion, "v4")) {
-            var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
-            return Tea.TeaConverter.fromMap(CleanClusterUserPermissionsResponse(), tmp)
-        }
-        else {
-            var tmp: [String: Any] = try await execute(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
-            return Tea.TeaConverter.fromMap(CleanClusterUserPermissionsResponse(), tmp)
-        }
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(CleanClusterUserPermissionsResponse(), tmp)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -452,14 +398,8 @@ open class Client : AlibabacloudOpenApi.Client {
             "reqBodyType": "json",
             "bodyType": "json"
         ])
-        if (TeaUtils.Client.isUnset(self._signatureVersion) || !TeaUtils.Client.equalString(self._signatureVersion, "v4")) {
-            var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
-            return Tea.TeaConverter.fromMap(CleanUserPermissionsResponse(), tmp)
-        }
-        else {
-            var tmp: [String: Any] = try await execute(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
-            return Tea.TeaConverter.fromMap(CleanUserPermissionsResponse(), tmp)
-        }
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(CleanUserPermissionsResponse(), tmp)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -536,14 +476,8 @@ open class Client : AlibabacloudOpenApi.Client {
             "reqBodyType": "json",
             "bodyType": "json"
         ])
-        if (TeaUtils.Client.isUnset(self._signatureVersion) || !TeaUtils.Client.equalString(self._signatureVersion, "v4")) {
-            var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
-            return Tea.TeaConverter.fromMap(CreateAutoscalingConfigResponse(), tmp)
-        }
-        else {
-            var tmp: [String: Any] = try await execute(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
-            return Tea.TeaConverter.fromMap(CreateAutoscalingConfigResponse(), tmp)
-        }
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(CreateAutoscalingConfigResponse(), tmp)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -866,14 +800,8 @@ open class Client : AlibabacloudOpenApi.Client {
             "reqBodyType": "json",
             "bodyType": "json"
         ])
-        if (TeaUtils.Client.isUnset(self._signatureVersion) || !TeaUtils.Client.equalString(self._signatureVersion, "v4")) {
-            var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
-            return Tea.TeaConverter.fromMap(CreateClusterResponse(), tmp)
-        }
-        else {
-            var tmp: [String: Any] = try await execute(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
-            return Tea.TeaConverter.fromMap(CreateClusterResponse(), tmp)
-        }
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(CreateClusterResponse(), tmp)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -908,14 +836,8 @@ open class Client : AlibabacloudOpenApi.Client {
             "reqBodyType": "json",
             "bodyType": "json"
         ])
-        if (TeaUtils.Client.isUnset(self._signatureVersion) || !TeaUtils.Client.equalString(self._signatureVersion, "v4")) {
-            var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
-            return Tea.TeaConverter.fromMap(CreateClusterDiagnosisResponse(), tmp)
-        }
-        else {
-            var tmp: [String: Any] = try await execute(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
-            return Tea.TeaConverter.fromMap(CreateClusterDiagnosisResponse(), tmp)
-        }
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(CreateClusterDiagnosisResponse(), tmp)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -923,6 +845,45 @@ open class Client : AlibabacloudOpenApi.Client {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         var headers: [String: String] = [:]
         return try await createClusterDiagnosisWithOptions(clusterId as! String, request as! CreateClusterDiagnosisRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func createClusterInspectConfigWithOptions(_ clusterId: String, _ request: CreateClusterInspectConfigRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> CreateClusterInspectConfigResponse {
+        try TeaUtils.Client.validateModel(request)
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.disabledCheckItems)) {
+            body["disabledCheckItems"] = request.disabledCheckItems ?? [];
+        }
+        if (!TeaUtils.Client.isUnset(request.enabled)) {
+            body["enabled"] = request.enabled!;
+        }
+        if (!TeaUtils.Client.isUnset(request.recurrence)) {
+            body["recurrence"] = request.recurrence ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String],
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "CreateClusterInspectConfig",
+            "version": "2015-12-15",
+            "protocol": "HTTPS",
+            "pathname": "/clusters/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(clusterId)) + "/inspectConfig",
+            "method": "POST",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(CreateClusterInspectConfigResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func createClusterInspectConfig(_ clusterId: String, _ request: CreateClusterInspectConfigRequest) async throws -> CreateClusterInspectConfigResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await createClusterInspectConfigWithOptions(clusterId as! String, request as! CreateClusterInspectConfigRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -983,14 +944,8 @@ open class Client : AlibabacloudOpenApi.Client {
             "reqBodyType": "json",
             "bodyType": "json"
         ])
-        if (TeaUtils.Client.isUnset(self._signatureVersion) || !TeaUtils.Client.equalString(self._signatureVersion, "v4")) {
-            var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
-            return Tea.TeaConverter.fromMap(CreateClusterNodePoolResponse(), tmp)
-        }
-        else {
-            var tmp: [String: Any] = try await execute(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
-            return Tea.TeaConverter.fromMap(CreateClusterNodePoolResponse(), tmp)
-        }
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(CreateClusterNodePoolResponse(), tmp)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -1028,14 +983,8 @@ open class Client : AlibabacloudOpenApi.Client {
             "reqBodyType": "json",
             "bodyType": "json"
         ])
-        if (TeaUtils.Client.isUnset(self._signatureVersion) || !TeaUtils.Client.equalString(self._signatureVersion, "v4")) {
-            var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
-            return Tea.TeaConverter.fromMap(CreateEdgeMachineResponse(), tmp)
-        }
-        else {
-            var tmp: [String: Any] = try await execute(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
-            return Tea.TeaConverter.fromMap(CreateEdgeMachineResponse(), tmp)
-        }
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(CreateEdgeMachineResponse(), tmp)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -1076,14 +1025,8 @@ open class Client : AlibabacloudOpenApi.Client {
             "reqBodyType": "json",
             "bodyType": "json"
         ])
-        if (TeaUtils.Client.isUnset(self._signatureVersion) || !TeaUtils.Client.equalString(self._signatureVersion, "v4")) {
-            var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
-            return Tea.TeaConverter.fromMap(CreateKubernetesTriggerResponse(), tmp)
-        }
-        else {
-            var tmp: [String: Any] = try await execute(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
-            return Tea.TeaConverter.fromMap(CreateKubernetesTriggerResponse(), tmp)
-        }
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(CreateKubernetesTriggerResponse(), tmp)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -1127,14 +1070,8 @@ open class Client : AlibabacloudOpenApi.Client {
             "reqBodyType": "json",
             "bodyType": "json"
         ])
-        if (TeaUtils.Client.isUnset(self._signatureVersion) || !TeaUtils.Client.equalString(self._signatureVersion, "v4")) {
-            var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
-            return Tea.TeaConverter.fromMap(CreateTemplateResponse(), tmp)
-        }
-        else {
-            var tmp: [String: Any] = try await execute(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
-            return Tea.TeaConverter.fromMap(CreateTemplateResponse(), tmp)
-        }
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(CreateTemplateResponse(), tmp)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -1175,14 +1112,8 @@ open class Client : AlibabacloudOpenApi.Client {
             "reqBodyType": "json",
             "bodyType": "json"
         ])
-        if (TeaUtils.Client.isUnset(self._signatureVersion) || !TeaUtils.Client.equalString(self._signatureVersion, "v4")) {
-            var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
-            return Tea.TeaConverter.fromMap(CreateTriggerResponse(), tmp)
-        }
-        else {
-            var tmp: [String: Any] = try await execute(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
-            return Tea.TeaConverter.fromMap(CreateTriggerResponse(), tmp)
-        }
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(CreateTriggerResponse(), tmp)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -1219,14 +1150,8 @@ open class Client : AlibabacloudOpenApi.Client {
             "reqBodyType": "json",
             "bodyType": "array"
         ])
-        if (TeaUtils.Client.isUnset(self._signatureVersion) || !TeaUtils.Client.equalString(self._signatureVersion, "v4")) {
-            var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
-            return Tea.TeaConverter.fromMap(DeleteAlertContactResponse(), tmp)
-        }
-        else {
-            var tmp: [String: Any] = try await execute(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
-            return Tea.TeaConverter.fromMap(DeleteAlertContactResponse(), tmp)
-        }
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(DeleteAlertContactResponse(), tmp)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -1263,14 +1188,8 @@ open class Client : AlibabacloudOpenApi.Client {
             "reqBodyType": "json",
             "bodyType": "array"
         ])
-        if (TeaUtils.Client.isUnset(self._signatureVersion) || !TeaUtils.Client.equalString(self._signatureVersion, "v4")) {
-            var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
-            return Tea.TeaConverter.fromMap(DeleteAlertContactGroupResponse(), tmp)
-        }
-        else {
-            var tmp: [String: Any] = try await execute(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
-            return Tea.TeaConverter.fromMap(DeleteAlertContactGroupResponse(), tmp)
-        }
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(DeleteAlertContactGroupResponse(), tmp)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -1319,14 +1238,8 @@ open class Client : AlibabacloudOpenApi.Client {
             "reqBodyType": "json",
             "bodyType": "json"
         ])
-        if (TeaUtils.Client.isUnset(self._signatureVersion) || !TeaUtils.Client.equalString(self._signatureVersion, "v4")) {
-            var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
-            return Tea.TeaConverter.fromMap(DeleteClusterResponse(), tmp)
-        }
-        else {
-            var tmp: [String: Any] = try await execute(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
-            return Tea.TeaConverter.fromMap(DeleteClusterResponse(), tmp)
-        }
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(DeleteClusterResponse(), tmp)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -1334,6 +1247,33 @@ open class Client : AlibabacloudOpenApi.Client {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         var headers: [String: String] = [:]
         return try await deleteClusterWithOptions(ClusterId as! String, request as! DeleteClusterRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func deleteClusterInspectConfigWithOptions(_ clusterId: String, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> DeleteClusterInspectConfigResponse {
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String]
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "DeleteClusterInspectConfig",
+            "version": "2015-12-15",
+            "protocol": "HTTPS",
+            "pathname": "/clusters/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(clusterId)) + "/inspectConfig",
+            "method": "DELETE",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(DeleteClusterInspectConfigResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func deleteClusterInspectConfig(_ clusterId: String) async throws -> DeleteClusterInspectConfigResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await deleteClusterInspectConfigWithOptions(clusterId as! String, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -1358,14 +1298,8 @@ open class Client : AlibabacloudOpenApi.Client {
             "reqBodyType": "json",
             "bodyType": "json"
         ])
-        if (TeaUtils.Client.isUnset(self._signatureVersion) || !TeaUtils.Client.equalString(self._signatureVersion, "v4")) {
-            var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
-            return Tea.TeaConverter.fromMap(DeleteClusterNodepoolResponse(), tmp)
-        }
-        else {
-            var tmp: [String: Any] = try await execute(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
-            return Tea.TeaConverter.fromMap(DeleteClusterNodepoolResponse(), tmp)
-        }
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(DeleteClusterNodepoolResponse(), tmp)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -1403,14 +1337,8 @@ open class Client : AlibabacloudOpenApi.Client {
             "reqBodyType": "json",
             "bodyType": "json"
         ])
-        if (TeaUtils.Client.isUnset(self._signatureVersion) || !TeaUtils.Client.equalString(self._signatureVersion, "v4")) {
-            var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
-            return Tea.TeaConverter.fromMap(DeleteClusterNodesResponse(), tmp)
-        }
-        else {
-            var tmp: [String: Any] = try await execute(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
-            return Tea.TeaConverter.fromMap(DeleteClusterNodesResponse(), tmp)
-        }
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(DeleteClusterNodesResponse(), tmp)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -1442,14 +1370,8 @@ open class Client : AlibabacloudOpenApi.Client {
             "reqBodyType": "json",
             "bodyType": "none"
         ])
-        if (TeaUtils.Client.isUnset(self._signatureVersion) || !TeaUtils.Client.equalString(self._signatureVersion, "v4")) {
-            var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
-            return Tea.TeaConverter.fromMap(DeleteEdgeMachineResponse(), tmp)
-        }
-        else {
-            var tmp: [String: Any] = try await execute(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
-            return Tea.TeaConverter.fromMap(DeleteEdgeMachineResponse(), tmp)
-        }
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(DeleteEdgeMachineResponse(), tmp)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -1475,14 +1397,8 @@ open class Client : AlibabacloudOpenApi.Client {
             "reqBodyType": "json",
             "bodyType": "none"
         ])
-        if (TeaUtils.Client.isUnset(self._signatureVersion) || !TeaUtils.Client.equalString(self._signatureVersion, "v4")) {
-            var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
-            return Tea.TeaConverter.fromMap(DeleteKubernetesTriggerResponse(), tmp)
-        }
-        else {
-            var tmp: [String: Any] = try await execute(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
-            return Tea.TeaConverter.fromMap(DeleteKubernetesTriggerResponse(), tmp)
-        }
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(DeleteKubernetesTriggerResponse(), tmp)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -1514,14 +1430,8 @@ open class Client : AlibabacloudOpenApi.Client {
             "reqBodyType": "json",
             "bodyType": "json"
         ])
-        if (TeaUtils.Client.isUnset(self._signatureVersion) || !TeaUtils.Client.equalString(self._signatureVersion, "v4")) {
-            var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
-            return Tea.TeaConverter.fromMap(DeletePolicyInstanceResponse(), tmp)
-        }
-        else {
-            var tmp: [String: Any] = try await execute(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
-            return Tea.TeaConverter.fromMap(DeletePolicyInstanceResponse(), tmp)
-        }
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(DeletePolicyInstanceResponse(), tmp)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -1547,14 +1457,8 @@ open class Client : AlibabacloudOpenApi.Client {
             "reqBodyType": "json",
             "bodyType": "none"
         ])
-        if (TeaUtils.Client.isUnset(self._signatureVersion) || !TeaUtils.Client.equalString(self._signatureVersion, "v4")) {
-            var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
-            return Tea.TeaConverter.fromMap(DeleteTemplateResponse(), tmp)
-        }
-        else {
-            var tmp: [String: Any] = try await execute(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
-            return Tea.TeaConverter.fromMap(DeleteTemplateResponse(), tmp)
-        }
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(DeleteTemplateResponse(), tmp)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -1580,14 +1484,8 @@ open class Client : AlibabacloudOpenApi.Client {
             "reqBodyType": "json",
             "bodyType": "none"
         ])
-        if (TeaUtils.Client.isUnset(self._signatureVersion) || !TeaUtils.Client.equalString(self._signatureVersion, "v4")) {
-            var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
-            return Tea.TeaConverter.fromMap(DeleteTriggerResponse(), tmp)
-        }
-        else {
-            var tmp: [String: Any] = try await execute(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
-            return Tea.TeaConverter.fromMap(DeleteTriggerResponse(), tmp)
-        }
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(DeleteTriggerResponse(), tmp)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -1625,14 +1523,8 @@ open class Client : AlibabacloudOpenApi.Client {
             "reqBodyType": "json",
             "bodyType": "json"
         ])
-        if (TeaUtils.Client.isUnset(self._signatureVersion) || !TeaUtils.Client.equalString(self._signatureVersion, "v4")) {
-            var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
-            return Tea.TeaConverter.fromMap(DeployPolicyInstanceResponse(), tmp)
-        }
-        else {
-            var tmp: [String: Any] = try await execute(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
-            return Tea.TeaConverter.fromMap(DeployPolicyInstanceResponse(), tmp)
-        }
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(DeployPolicyInstanceResponse(), tmp)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -1682,14 +1574,8 @@ open class Client : AlibabacloudOpenApi.Client {
             "reqBodyType": "json",
             "bodyType": "json"
         ])
-        if (TeaUtils.Client.isUnset(self._signatureVersion) || !TeaUtils.Client.equalString(self._signatureVersion, "v4")) {
-            var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
-            return Tea.TeaConverter.fromMap(DescribeAddonResponse(), tmp)
-        }
-        else {
-            var tmp: [String: Any] = try await execute(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
-            return Tea.TeaConverter.fromMap(DescribeAddonResponse(), tmp)
-        }
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(DescribeAddonResponse(), tmp)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -1733,14 +1619,8 @@ open class Client : AlibabacloudOpenApi.Client {
             "reqBodyType": "json",
             "bodyType": "json"
         ])
-        if (TeaUtils.Client.isUnset(self._signatureVersion) || !TeaUtils.Client.equalString(self._signatureVersion, "v4")) {
-            var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
-            return Tea.TeaConverter.fromMap(DescribeAddonsResponse(), tmp)
-        }
-        else {
-            var tmp: [String: Any] = try await execute(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
-            return Tea.TeaConverter.fromMap(DescribeAddonsResponse(), tmp)
-        }
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(DescribeAddonsResponse(), tmp)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -1766,14 +1646,8 @@ open class Client : AlibabacloudOpenApi.Client {
             "reqBodyType": "json",
             "bodyType": "json"
         ])
-        if (TeaUtils.Client.isUnset(self._signatureVersion) || !TeaUtils.Client.equalString(self._signatureVersion, "v4")) {
-            var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
-            return Tea.TeaConverter.fromMap(DescribeClusterAddonInstanceResponse(), tmp)
-        }
-        else {
-            var tmp: [String: Any] = try await execute(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
-            return Tea.TeaConverter.fromMap(DescribeClusterAddonInstanceResponse(), tmp)
-        }
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(DescribeClusterAddonInstanceResponse(), tmp)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -1805,14 +1679,8 @@ open class Client : AlibabacloudOpenApi.Client {
             "reqBodyType": "json",
             "bodyType": "json"
         ])
-        if (TeaUtils.Client.isUnset(self._signatureVersion) || !TeaUtils.Client.equalString(self._signatureVersion, "v4")) {
-            var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
-            return Tea.TeaConverter.fromMap(DescribeClusterAddonMetadataResponse(), tmp)
-        }
-        else {
-            var tmp: [String: Any] = try await execute(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
-            return Tea.TeaConverter.fromMap(DescribeClusterAddonMetadataResponse(), tmp)
-        }
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(DescribeClusterAddonMetadataResponse(), tmp)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -1838,14 +1706,8 @@ open class Client : AlibabacloudOpenApi.Client {
             "reqBodyType": "json",
             "bodyType": "json"
         ])
-        if (TeaUtils.Client.isUnset(self._signatureVersion) || !TeaUtils.Client.equalString(self._signatureVersion, "v4")) {
-            var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
-            return Tea.TeaConverter.fromMap(DescribeClusterAddonUpgradeStatusResponse(), tmp)
-        }
-        else {
-            var tmp: [String: Any] = try await execute(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
-            return Tea.TeaConverter.fromMap(DescribeClusterAddonUpgradeStatusResponse(), tmp)
-        }
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(DescribeClusterAddonUpgradeStatusResponse(), tmp)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -1882,14 +1744,8 @@ open class Client : AlibabacloudOpenApi.Client {
             "reqBodyType": "json",
             "bodyType": "json"
         ])
-        if (TeaUtils.Client.isUnset(self._signatureVersion) || !TeaUtils.Client.equalString(self._signatureVersion, "v4")) {
-            var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
-            return Tea.TeaConverter.fromMap(DescribeClusterAddonsUpgradeStatusResponse(), tmp)
-        }
-        else {
-            var tmp: [String: Any] = try await execute(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
-            return Tea.TeaConverter.fromMap(DescribeClusterAddonsUpgradeStatusResponse(), tmp)
-        }
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(DescribeClusterAddonsUpgradeStatusResponse(), tmp)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -1915,14 +1771,8 @@ open class Client : AlibabacloudOpenApi.Client {
             "reqBodyType": "json",
             "bodyType": "json"
         ])
-        if (TeaUtils.Client.isUnset(self._signatureVersion) || !TeaUtils.Client.equalString(self._signatureVersion, "v4")) {
-            var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
-            return Tea.TeaConverter.fromMap(DescribeClusterAddonsVersionResponse(), tmp)
-        }
-        else {
-            var tmp: [String: Any] = try await execute(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
-            return Tea.TeaConverter.fromMap(DescribeClusterAddonsVersionResponse(), tmp)
-        }
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(DescribeClusterAddonsVersionResponse(), tmp)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -1972,14 +1822,8 @@ open class Client : AlibabacloudOpenApi.Client {
             "reqBodyType": "json",
             "bodyType": "string"
         ])
-        if (TeaUtils.Client.isUnset(self._signatureVersion) || !TeaUtils.Client.equalString(self._signatureVersion, "v4")) {
-            var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
-            return Tea.TeaConverter.fromMap(DescribeClusterAttachScriptsResponse(), tmp)
-        }
-        else {
-            var tmp: [String: Any] = try await execute(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
-            return Tea.TeaConverter.fromMap(DescribeClusterAttachScriptsResponse(), tmp)
-        }
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(DescribeClusterAttachScriptsResponse(), tmp)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -2005,14 +1849,8 @@ open class Client : AlibabacloudOpenApi.Client {
             "reqBodyType": "json",
             "bodyType": "json"
         ])
-        if (TeaUtils.Client.isUnset(self._signatureVersion) || !TeaUtils.Client.equalString(self._signatureVersion, "v4")) {
-            var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
-            return Tea.TeaConverter.fromMap(DescribeClusterDetailResponse(), tmp)
-        }
-        else {
-            var tmp: [String: Any] = try await execute(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
-            return Tea.TeaConverter.fromMap(DescribeClusterDetailResponse(), tmp)
-        }
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(DescribeClusterDetailResponse(), tmp)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -2050,14 +1888,8 @@ open class Client : AlibabacloudOpenApi.Client {
             "reqBodyType": "json",
             "bodyType": "json"
         ])
-        if (TeaUtils.Client.isUnset(self._signatureVersion) || !TeaUtils.Client.equalString(self._signatureVersion, "v4")) {
-            var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
-            return Tea.TeaConverter.fromMap(DescribeClusterEventsResponse(), tmp)
-        }
-        else {
-            var tmp: [String: Any] = try await execute(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
-            return Tea.TeaConverter.fromMap(DescribeClusterEventsResponse(), tmp)
-        }
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(DescribeClusterEventsResponse(), tmp)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -2083,14 +1915,8 @@ open class Client : AlibabacloudOpenApi.Client {
             "reqBodyType": "json",
             "bodyType": "array"
         ])
-        if (TeaUtils.Client.isUnset(self._signatureVersion) || !TeaUtils.Client.equalString(self._signatureVersion, "v4")) {
-            var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
-            return Tea.TeaConverter.fromMap(DescribeClusterLogsResponse(), tmp)
-        }
-        else {
-            var tmp: [String: Any] = try await execute(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
-            return Tea.TeaConverter.fromMap(DescribeClusterLogsResponse(), tmp)
-        }
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(DescribeClusterLogsResponse(), tmp)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -2116,14 +1942,8 @@ open class Client : AlibabacloudOpenApi.Client {
             "reqBodyType": "json",
             "bodyType": "json"
         ])
-        if (TeaUtils.Client.isUnset(self._signatureVersion) || !TeaUtils.Client.equalString(self._signatureVersion, "v4")) {
-            var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
-            return Tea.TeaConverter.fromMap(DescribeClusterNodePoolDetailResponse(), tmp)
-        }
-        else {
-            var tmp: [String: Any] = try await execute(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
-            return Tea.TeaConverter.fromMap(DescribeClusterNodePoolDetailResponse(), tmp)
-        }
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(DescribeClusterNodePoolDetailResponse(), tmp)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -2155,14 +1975,8 @@ open class Client : AlibabacloudOpenApi.Client {
             "reqBodyType": "json",
             "bodyType": "json"
         ])
-        if (TeaUtils.Client.isUnset(self._signatureVersion) || !TeaUtils.Client.equalString(self._signatureVersion, "v4")) {
-            var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
-            return Tea.TeaConverter.fromMap(DescribeClusterNodePoolsResponse(), tmp)
-        }
-        else {
-            var tmp: [String: Any] = try await execute(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
-            return Tea.TeaConverter.fromMap(DescribeClusterNodePoolsResponse(), tmp)
-        }
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(DescribeClusterNodePoolsResponse(), tmp)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -2206,14 +2020,8 @@ open class Client : AlibabacloudOpenApi.Client {
             "reqBodyType": "json",
             "bodyType": "json"
         ])
-        if (TeaUtils.Client.isUnset(self._signatureVersion) || !TeaUtils.Client.equalString(self._signatureVersion, "v4")) {
-            var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
-            return Tea.TeaConverter.fromMap(DescribeClusterNodesResponse(), tmp)
-        }
-        else {
-            var tmp: [String: Any] = try await execute(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
-            return Tea.TeaConverter.fromMap(DescribeClusterNodesResponse(), tmp)
-        }
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(DescribeClusterNodesResponse(), tmp)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -2245,14 +2053,8 @@ open class Client : AlibabacloudOpenApi.Client {
             "reqBodyType": "json",
             "bodyType": "array"
         ])
-        if (TeaUtils.Client.isUnset(self._signatureVersion) || !TeaUtils.Client.equalString(self._signatureVersion, "v4")) {
-            var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
-            return Tea.TeaConverter.fromMap(DescribeClusterResourcesResponse(), tmp)
-        }
-        else {
-            var tmp: [String: Any] = try await execute(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
-            return Tea.TeaConverter.fromMap(DescribeClusterResourcesResponse(), tmp)
-        }
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(DescribeClusterResourcesResponse(), tmp)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -2287,14 +2089,8 @@ open class Client : AlibabacloudOpenApi.Client {
             "reqBodyType": "json",
             "bodyType": "json"
         ])
-        if (TeaUtils.Client.isUnset(self._signatureVersion) || !TeaUtils.Client.equalString(self._signatureVersion, "v4")) {
-            var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
-            return Tea.TeaConverter.fromMap(DescribeClusterTasksResponse(), tmp)
-        }
-        else {
-            var tmp: [String: Any] = try await execute(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
-            return Tea.TeaConverter.fromMap(DescribeClusterTasksResponse(), tmp)
-        }
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(DescribeClusterTasksResponse(), tmp)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -2329,14 +2125,8 @@ open class Client : AlibabacloudOpenApi.Client {
             "reqBodyType": "json",
             "bodyType": "json"
         ])
-        if (TeaUtils.Client.isUnset(self._signatureVersion) || !TeaUtils.Client.equalString(self._signatureVersion, "v4")) {
-            var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
-            return Tea.TeaConverter.fromMap(DescribeClusterUserKubeconfigResponse(), tmp)
-        }
-        else {
-            var tmp: [String: Any] = try await execute(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
-            return Tea.TeaConverter.fromMap(DescribeClusterUserKubeconfigResponse(), tmp)
-        }
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(DescribeClusterUserKubeconfigResponse(), tmp)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -2371,14 +2161,8 @@ open class Client : AlibabacloudOpenApi.Client {
             "reqBodyType": "json",
             "bodyType": "json"
         ])
-        if (TeaUtils.Client.isUnset(self._signatureVersion) || !TeaUtils.Client.equalString(self._signatureVersion, "v4")) {
-            var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
-            return Tea.TeaConverter.fromMap(DescribeClusterV2UserKubeconfigResponse(), tmp)
-        }
-        else {
-            var tmp: [String: Any] = try await execute(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
-            return Tea.TeaConverter.fromMap(DescribeClusterV2UserKubeconfigResponse(), tmp)
-        }
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(DescribeClusterV2UserKubeconfigResponse(), tmp)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -2404,14 +2188,8 @@ open class Client : AlibabacloudOpenApi.Client {
             "reqBodyType": "json",
             "bodyType": "json"
         ])
-        if (TeaUtils.Client.isUnset(self._signatureVersion) || !TeaUtils.Client.equalString(self._signatureVersion, "v4")) {
-            var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
-            return Tea.TeaConverter.fromMap(DescribeClusterVulsResponse(), tmp)
-        }
-        else {
-            var tmp: [String: Any] = try await execute(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
-            return Tea.TeaConverter.fromMap(DescribeClusterVulsResponse(), tmp)
-        }
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(DescribeClusterVulsResponse(), tmp)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -2449,14 +2227,8 @@ open class Client : AlibabacloudOpenApi.Client {
             "reqBodyType": "json",
             "bodyType": "array"
         ])
-        if (TeaUtils.Client.isUnset(self._signatureVersion) || !TeaUtils.Client.equalString(self._signatureVersion, "v4")) {
-            var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
-            return Tea.TeaConverter.fromMap(DescribeClustersResponse(), tmp)
-        }
-        else {
-            var tmp: [String: Any] = try await execute(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
-            return Tea.TeaConverter.fromMap(DescribeClustersResponse(), tmp)
-        }
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(DescribeClustersResponse(), tmp)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -2506,14 +2278,8 @@ open class Client : AlibabacloudOpenApi.Client {
             "reqBodyType": "json",
             "bodyType": "json"
         ])
-        if (TeaUtils.Client.isUnset(self._signatureVersion) || !TeaUtils.Client.equalString(self._signatureVersion, "v4")) {
-            var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
-            return Tea.TeaConverter.fromMap(DescribeClustersForRegionResponse(), tmp)
-        }
-        else {
-            var tmp: [String: Any] = try await execute(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
-            return Tea.TeaConverter.fromMap(DescribeClustersForRegionResponse(), tmp)
-        }
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(DescribeClustersForRegionResponse(), tmp)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -2566,14 +2332,8 @@ open class Client : AlibabacloudOpenApi.Client {
             "reqBodyType": "json",
             "bodyType": "json"
         ])
-        if (TeaUtils.Client.isUnset(self._signatureVersion) || !TeaUtils.Client.equalString(self._signatureVersion, "v4")) {
-            var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
-            return Tea.TeaConverter.fromMap(DescribeClustersV1Response(), tmp)
-        }
-        else {
-            var tmp: [String: Any] = try await execute(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
-            return Tea.TeaConverter.fromMap(DescribeClustersV1Response(), tmp)
-        }
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(DescribeClustersV1Response(), tmp)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -2599,14 +2359,8 @@ open class Client : AlibabacloudOpenApi.Client {
             "reqBodyType": "json",
             "bodyType": "json"
         ])
-        if (TeaUtils.Client.isUnset(self._signatureVersion) || !TeaUtils.Client.equalString(self._signatureVersion, "v4")) {
-            var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
-            return Tea.TeaConverter.fromMap(DescribeEdgeMachineActiveProcessResponse(), tmp)
-        }
-        else {
-            var tmp: [String: Any] = try await execute(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
-            return Tea.TeaConverter.fromMap(DescribeEdgeMachineActiveProcessResponse(), tmp)
-        }
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(DescribeEdgeMachineActiveProcessResponse(), tmp)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -2632,14 +2386,8 @@ open class Client : AlibabacloudOpenApi.Client {
             "reqBodyType": "json",
             "bodyType": "json"
         ])
-        if (TeaUtils.Client.isUnset(self._signatureVersion) || !TeaUtils.Client.equalString(self._signatureVersion, "v4")) {
-            var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
-            return Tea.TeaConverter.fromMap(DescribeEdgeMachineModelsResponse(), tmp)
-        }
-        else {
-            var tmp: [String: Any] = try await execute(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
-            return Tea.TeaConverter.fromMap(DescribeEdgeMachineModelsResponse(), tmp)
-        }
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(DescribeEdgeMachineModelsResponse(), tmp)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -2665,14 +2413,8 @@ open class Client : AlibabacloudOpenApi.Client {
             "reqBodyType": "json",
             "bodyType": "json"
         ])
-        if (TeaUtils.Client.isUnset(self._signatureVersion) || !TeaUtils.Client.equalString(self._signatureVersion, "v4")) {
-            var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
-            return Tea.TeaConverter.fromMap(DescribeEdgeMachineTunnelConfigDetailResponse(), tmp)
-        }
-        else {
-            var tmp: [String: Any] = try await execute(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
-            return Tea.TeaConverter.fromMap(DescribeEdgeMachineTunnelConfigDetailResponse(), tmp)
-        }
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(DescribeEdgeMachineTunnelConfigDetailResponse(), tmp)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -2719,14 +2461,8 @@ open class Client : AlibabacloudOpenApi.Client {
             "reqBodyType": "json",
             "bodyType": "json"
         ])
-        if (TeaUtils.Client.isUnset(self._signatureVersion) || !TeaUtils.Client.equalString(self._signatureVersion, "v4")) {
-            var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
-            return Tea.TeaConverter.fromMap(DescribeEdgeMachinesResponse(), tmp)
-        }
-        else {
-            var tmp: [String: Any] = try await execute(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
-            return Tea.TeaConverter.fromMap(DescribeEdgeMachinesResponse(), tmp)
-        }
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(DescribeEdgeMachinesResponse(), tmp)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -2767,14 +2503,8 @@ open class Client : AlibabacloudOpenApi.Client {
             "reqBodyType": "json",
             "bodyType": "json"
         ])
-        if (TeaUtils.Client.isUnset(self._signatureVersion) || !TeaUtils.Client.equalString(self._signatureVersion, "v4")) {
-            var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
-            return Tea.TeaConverter.fromMap(DescribeEventsResponse(), tmp)
-        }
-        else {
-            var tmp: [String: Any] = try await execute(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
-            return Tea.TeaConverter.fromMap(DescribeEventsResponse(), tmp)
-        }
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(DescribeEventsResponse(), tmp)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -2812,14 +2542,8 @@ open class Client : AlibabacloudOpenApi.Client {
             "reqBodyType": "json",
             "bodyType": "json"
         ])
-        if (TeaUtils.Client.isUnset(self._signatureVersion) || !TeaUtils.Client.equalString(self._signatureVersion, "v4")) {
-            var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
-            return Tea.TeaConverter.fromMap(DescribeEventsForRegionResponse(), tmp)
-        }
-        else {
-            var tmp: [String: Any] = try await execute(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
-            return Tea.TeaConverter.fromMap(DescribeEventsForRegionResponse(), tmp)
-        }
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(DescribeEventsForRegionResponse(), tmp)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -2854,14 +2578,8 @@ open class Client : AlibabacloudOpenApi.Client {
             "reqBodyType": "json",
             "bodyType": "json"
         ])
-        if (TeaUtils.Client.isUnset(self._signatureVersion) || !TeaUtils.Client.equalString(self._signatureVersion, "v4")) {
-            var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
-            return Tea.TeaConverter.fromMap(DescribeExternalAgentResponse(), tmp)
-        }
-        else {
-            var tmp: [String: Any] = try await execute(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
-            return Tea.TeaConverter.fromMap(DescribeExternalAgentResponse(), tmp)
-        }
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(DescribeExternalAgentResponse(), tmp)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -2911,14 +2629,8 @@ open class Client : AlibabacloudOpenApi.Client {
             "reqBodyType": "json",
             "bodyType": "array"
         ])
-        if (TeaUtils.Client.isUnset(self._signatureVersion) || !TeaUtils.Client.equalString(self._signatureVersion, "v4")) {
-            var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
-            return Tea.TeaConverter.fromMap(DescribeKubernetesVersionMetadataResponse(), tmp)
-        }
-        else {
-            var tmp: [String: Any] = try await execute(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
-            return Tea.TeaConverter.fromMap(DescribeKubernetesVersionMetadataResponse(), tmp)
-        }
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(DescribeKubernetesVersionMetadataResponse(), tmp)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -2950,14 +2662,8 @@ open class Client : AlibabacloudOpenApi.Client {
             "reqBodyType": "json",
             "bodyType": "json"
         ])
-        if (TeaUtils.Client.isUnset(self._signatureVersion) || !TeaUtils.Client.equalString(self._signatureVersion, "v4")) {
-            var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
-            return Tea.TeaConverter.fromMap(DescribeNodePoolVulsResponse(), tmp)
-        }
-        else {
-            var tmp: [String: Any] = try await execute(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
-            return Tea.TeaConverter.fromMap(DescribeNodePoolVulsResponse(), tmp)
-        }
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(DescribeNodePoolVulsResponse(), tmp)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -2983,14 +2689,8 @@ open class Client : AlibabacloudOpenApi.Client {
             "reqBodyType": "json",
             "bodyType": "json"
         ])
-        if (TeaUtils.Client.isUnset(self._signatureVersion) || !TeaUtils.Client.equalString(self._signatureVersion, "v4")) {
-            var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
-            return Tea.TeaConverter.fromMap(DescribePoliciesResponse(), tmp)
-        }
-        else {
-            var tmp: [String: Any] = try await execute(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
-            return Tea.TeaConverter.fromMap(DescribePoliciesResponse(), tmp)
-        }
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(DescribePoliciesResponse(), tmp)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -3016,14 +2716,8 @@ open class Client : AlibabacloudOpenApi.Client {
             "reqBodyType": "json",
             "bodyType": "json"
         ])
-        if (TeaUtils.Client.isUnset(self._signatureVersion) || !TeaUtils.Client.equalString(self._signatureVersion, "v4")) {
-            var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
-            return Tea.TeaConverter.fromMap(DescribePolicyDetailsResponse(), tmp)
-        }
-        else {
-            var tmp: [String: Any] = try await execute(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
-            return Tea.TeaConverter.fromMap(DescribePolicyDetailsResponse(), tmp)
-        }
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(DescribePolicyDetailsResponse(), tmp)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -3049,14 +2743,8 @@ open class Client : AlibabacloudOpenApi.Client {
             "reqBodyType": "json",
             "bodyType": "json"
         ])
-        if (TeaUtils.Client.isUnset(self._signatureVersion) || !TeaUtils.Client.equalString(self._signatureVersion, "v4")) {
-            var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
-            return Tea.TeaConverter.fromMap(DescribePolicyGovernanceInClusterResponse(), tmp)
-        }
-        else {
-            var tmp: [String: Any] = try await execute(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
-            return Tea.TeaConverter.fromMap(DescribePolicyGovernanceInClusterResponse(), tmp)
-        }
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(DescribePolicyGovernanceInClusterResponse(), tmp)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -3091,14 +2779,8 @@ open class Client : AlibabacloudOpenApi.Client {
             "reqBodyType": "json",
             "bodyType": "array"
         ])
-        if (TeaUtils.Client.isUnset(self._signatureVersion) || !TeaUtils.Client.equalString(self._signatureVersion, "v4")) {
-            var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
-            return Tea.TeaConverter.fromMap(DescribePolicyInstancesResponse(), tmp)
-        }
-        else {
-            var tmp: [String: Any] = try await execute(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
-            return Tea.TeaConverter.fromMap(DescribePolicyInstancesResponse(), tmp)
-        }
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(DescribePolicyInstancesResponse(), tmp)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -3124,14 +2806,8 @@ open class Client : AlibabacloudOpenApi.Client {
             "reqBodyType": "json",
             "bodyType": "json"
         ])
-        if (TeaUtils.Client.isUnset(self._signatureVersion) || !TeaUtils.Client.equalString(self._signatureVersion, "v4")) {
-            var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
-            return Tea.TeaConverter.fromMap(DescribePolicyInstancesStatusResponse(), tmp)
-        }
-        else {
-            var tmp: [String: Any] = try await execute(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
-            return Tea.TeaConverter.fromMap(DescribePolicyInstancesStatusResponse(), tmp)
-        }
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(DescribePolicyInstancesStatusResponse(), tmp)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -3166,14 +2842,8 @@ open class Client : AlibabacloudOpenApi.Client {
             "reqBodyType": "json",
             "bodyType": "array"
         ])
-        if (TeaUtils.Client.isUnset(self._signatureVersion) || !TeaUtils.Client.equalString(self._signatureVersion, "v4")) {
-            var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
-            return Tea.TeaConverter.fromMap(DescribeResourcesDeleteProtectionResponse(), tmp)
-        }
-        else {
-            var tmp: [String: Any] = try await execute(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
-            return Tea.TeaConverter.fromMap(DescribeResourcesDeleteProtectionResponse(), tmp)
-        }
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(DescribeResourcesDeleteProtectionResponse(), tmp)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -3208,14 +2878,8 @@ open class Client : AlibabacloudOpenApi.Client {
             "reqBodyType": "json",
             "bodyType": "json"
         ])
-        if (TeaUtils.Client.isUnset(self._signatureVersion) || !TeaUtils.Client.equalString(self._signatureVersion, "v4")) {
-            var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
-            return Tea.TeaConverter.fromMap(DescribeSubaccountK8sClusterUserConfigResponse(), tmp)
-        }
-        else {
-            var tmp: [String: Any] = try await execute(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
-            return Tea.TeaConverter.fromMap(DescribeSubaccountK8sClusterUserConfigResponse(), tmp)
-        }
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(DescribeSubaccountK8sClusterUserConfigResponse(), tmp)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -3241,14 +2905,8 @@ open class Client : AlibabacloudOpenApi.Client {
             "reqBodyType": "json",
             "bodyType": "json"
         ])
-        if (TeaUtils.Client.isUnset(self._signatureVersion) || !TeaUtils.Client.equalString(self._signatureVersion, "v4")) {
-            var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
-            return Tea.TeaConverter.fromMap(DescribeTaskInfoResponse(), tmp)
-        }
-        else {
-            var tmp: [String: Any] = try await execute(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
-            return Tea.TeaConverter.fromMap(DescribeTaskInfoResponse(), tmp)
-        }
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(DescribeTaskInfoResponse(), tmp)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -3280,14 +2938,8 @@ open class Client : AlibabacloudOpenApi.Client {
             "reqBodyType": "json",
             "bodyType": "array"
         ])
-        if (TeaUtils.Client.isUnset(self._signatureVersion) || !TeaUtils.Client.equalString(self._signatureVersion, "v4")) {
-            var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
-            return Tea.TeaConverter.fromMap(DescribeTemplateAttributeResponse(), tmp)
-        }
-        else {
-            var tmp: [String: Any] = try await execute(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
-            return Tea.TeaConverter.fromMap(DescribeTemplateAttributeResponse(), tmp)
-        }
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(DescribeTemplateAttributeResponse(), tmp)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -3325,14 +2977,8 @@ open class Client : AlibabacloudOpenApi.Client {
             "reqBodyType": "json",
             "bodyType": "json"
         ])
-        if (TeaUtils.Client.isUnset(self._signatureVersion) || !TeaUtils.Client.equalString(self._signatureVersion, "v4")) {
-            var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
-            return Tea.TeaConverter.fromMap(DescribeTemplatesResponse(), tmp)
-        }
-        else {
-            var tmp: [String: Any] = try await execute(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
-            return Tea.TeaConverter.fromMap(DescribeTemplatesResponse(), tmp)
-        }
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(DescribeTemplatesResponse(), tmp)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -3373,14 +3019,8 @@ open class Client : AlibabacloudOpenApi.Client {
             "reqBodyType": "json",
             "bodyType": "array"
         ])
-        if (TeaUtils.Client.isUnset(self._signatureVersion) || !TeaUtils.Client.equalString(self._signatureVersion, "v4")) {
-            var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
-            return Tea.TeaConverter.fromMap(DescribeTriggerResponse(), tmp)
-        }
-        else {
-            var tmp: [String: Any] = try await execute(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
-            return Tea.TeaConverter.fromMap(DescribeTriggerResponse(), tmp)
-        }
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(DescribeTriggerResponse(), tmp)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -3406,14 +3046,8 @@ open class Client : AlibabacloudOpenApi.Client {
             "reqBodyType": "json",
             "bodyType": "array"
         ])
-        if (TeaUtils.Client.isUnset(self._signatureVersion) || !TeaUtils.Client.equalString(self._signatureVersion, "v4")) {
-            var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
-            return Tea.TeaConverter.fromMap(DescribeUserClusterNamespacesResponse(), tmp)
-        }
-        else {
-            var tmp: [String: Any] = try await execute(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
-            return Tea.TeaConverter.fromMap(DescribeUserClusterNamespacesResponse(), tmp)
-        }
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(DescribeUserClusterNamespacesResponse(), tmp)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -3439,14 +3073,8 @@ open class Client : AlibabacloudOpenApi.Client {
             "reqBodyType": "json",
             "bodyType": "array"
         ])
-        if (TeaUtils.Client.isUnset(self._signatureVersion) || !TeaUtils.Client.equalString(self._signatureVersion, "v4")) {
-            var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
-            return Tea.TeaConverter.fromMap(DescribeUserPermissionResponse(), tmp)
-        }
-        else {
-            var tmp: [String: Any] = try await execute(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
-            return Tea.TeaConverter.fromMap(DescribeUserPermissionResponse(), tmp)
-        }
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(DescribeUserPermissionResponse(), tmp)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -3472,14 +3100,8 @@ open class Client : AlibabacloudOpenApi.Client {
             "reqBodyType": "json",
             "bodyType": "json"
         ])
-        if (TeaUtils.Client.isUnset(self._signatureVersion) || !TeaUtils.Client.equalString(self._signatureVersion, "v4")) {
-            var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
-            return Tea.TeaConverter.fromMap(DescribeUserQuotaResponse(), tmp)
-        }
-        else {
-            var tmp: [String: Any] = try await execute(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
-            return Tea.TeaConverter.fromMap(DescribeUserQuotaResponse(), tmp)
-        }
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(DescribeUserQuotaResponse(), tmp)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -3517,14 +3139,8 @@ open class Client : AlibabacloudOpenApi.Client {
             "reqBodyType": "json",
             "bodyType": "json"
         ])
-        if (TeaUtils.Client.isUnset(self._signatureVersion) || !TeaUtils.Client.equalString(self._signatureVersion, "v4")) {
-            var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
-            return Tea.TeaConverter.fromMap(EdgeClusterAddEdgeMachineResponse(), tmp)
-        }
-        else {
-            var tmp: [String: Any] = try await execute(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
-            return Tea.TeaConverter.fromMap(EdgeClusterAddEdgeMachineResponse(), tmp)
-        }
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(EdgeClusterAddEdgeMachineResponse(), tmp)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -3565,14 +3181,8 @@ open class Client : AlibabacloudOpenApi.Client {
             "reqBodyType": "json",
             "bodyType": "json"
         ])
-        if (TeaUtils.Client.isUnset(self._signatureVersion) || !TeaUtils.Client.equalString(self._signatureVersion, "v4")) {
-            var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
-            return Tea.TeaConverter.fromMap(FixNodePoolVulsResponse(), tmp)
-        }
-        else {
-            var tmp: [String: Any] = try await execute(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
-            return Tea.TeaConverter.fromMap(FixNodePoolVulsResponse(), tmp)
-        }
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(FixNodePoolVulsResponse(), tmp)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -3598,14 +3208,8 @@ open class Client : AlibabacloudOpenApi.Client {
             "reqBodyType": "json",
             "bodyType": "json"
         ])
-        if (TeaUtils.Client.isUnset(self._signatureVersion) || !TeaUtils.Client.equalString(self._signatureVersion, "v4")) {
-            var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
-            return Tea.TeaConverter.fromMap(GetClusterAddonInstanceResponse(), tmp)
-        }
-        else {
-            var tmp: [String: Any] = try await execute(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
-            return Tea.TeaConverter.fromMap(GetClusterAddonInstanceResponse(), tmp)
-        }
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(GetClusterAddonInstanceResponse(), tmp)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -3631,14 +3235,8 @@ open class Client : AlibabacloudOpenApi.Client {
             "reqBodyType": "json",
             "bodyType": "json"
         ])
-        if (TeaUtils.Client.isUnset(self._signatureVersion) || !TeaUtils.Client.equalString(self._signatureVersion, "v4")) {
-            var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
-            return Tea.TeaConverter.fromMap(GetClusterAuditProjectResponse(), tmp)
-        }
-        else {
-            var tmp: [String: Any] = try await execute(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
-            return Tea.TeaConverter.fromMap(GetClusterAuditProjectResponse(), tmp)
-        }
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(GetClusterAuditProjectResponse(), tmp)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -3664,14 +3262,8 @@ open class Client : AlibabacloudOpenApi.Client {
             "reqBodyType": "json",
             "bodyType": "json"
         ])
-        if (TeaUtils.Client.isUnset(self._signatureVersion) || !TeaUtils.Client.equalString(self._signatureVersion, "v4")) {
-            var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
-            return Tea.TeaConverter.fromMap(GetClusterCheckResponse(), tmp)
-        }
-        else {
-            var tmp: [String: Any] = try await execute(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
-            return Tea.TeaConverter.fromMap(GetClusterCheckResponse(), tmp)
-        }
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(GetClusterCheckResponse(), tmp)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -3703,14 +3295,8 @@ open class Client : AlibabacloudOpenApi.Client {
             "reqBodyType": "json",
             "bodyType": "json"
         ])
-        if (TeaUtils.Client.isUnset(self._signatureVersion) || !TeaUtils.Client.equalString(self._signatureVersion, "v4")) {
-            var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
-            return Tea.TeaConverter.fromMap(GetClusterDiagnosisCheckItemsResponse(), tmp)
-        }
-        else {
-            var tmp: [String: Any] = try await execute(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
-            return Tea.TeaConverter.fromMap(GetClusterDiagnosisCheckItemsResponse(), tmp)
-        }
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(GetClusterDiagnosisCheckItemsResponse(), tmp)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -3742,14 +3328,8 @@ open class Client : AlibabacloudOpenApi.Client {
             "reqBodyType": "json",
             "bodyType": "json"
         ])
-        if (TeaUtils.Client.isUnset(self._signatureVersion) || !TeaUtils.Client.equalString(self._signatureVersion, "v4")) {
-            var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
-            return Tea.TeaConverter.fromMap(GetClusterDiagnosisResultResponse(), tmp)
-        }
-        else {
-            var tmp: [String: Any] = try await execute(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
-            return Tea.TeaConverter.fromMap(GetClusterDiagnosisResultResponse(), tmp)
-        }
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(GetClusterDiagnosisResultResponse(), tmp)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -3757,6 +3337,84 @@ open class Client : AlibabacloudOpenApi.Client {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         var headers: [String: String] = [:]
         return try await getClusterDiagnosisResultWithOptions(clusterId as! String, diagnosisId as! String, request as! GetClusterDiagnosisResultRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getClusterInspectConfigWithOptions(_ clusterId: String, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> GetClusterInspectConfigResponse {
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String]
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "GetClusterInspectConfig",
+            "version": "2015-12-15",
+            "protocol": "HTTPS",
+            "pathname": "/clusters/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(clusterId)) + "/inspectConfig",
+            "method": "GET",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(GetClusterInspectConfigResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getClusterInspectConfig(_ clusterId: String) async throws -> GetClusterInspectConfigResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await getClusterInspectConfigWithOptions(clusterId as! String, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getClusterInspectReportDetailWithOptions(_ clusterId: String, _ reportId: String, _ request: GetClusterInspectReportDetailRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> GetClusterInspectReportDetailResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.category)) {
+            query["category"] = request.category ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.enableFilter)) {
+            query["enableFilter"] = request.enableFilter!;
+        }
+        if (!TeaUtils.Client.isUnset(request.language)) {
+            query["language"] = request.language ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.level)) {
+            query["level"] = request.level ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.maxResults)) {
+            query["maxResults"] = request.maxResults!;
+        }
+        if (!TeaUtils.Client.isUnset(request.nextToken)) {
+            query["nextToken"] = request.nextToken ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.targetType)) {
+            query["targetType"] = request.targetType ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String],
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "GetClusterInspectReportDetail",
+            "version": "2015-12-15",
+            "protocol": "HTTPS",
+            "pathname": "/clusters/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(clusterId)) + "/inspectReports/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(reportId)),
+            "method": "GET",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(GetClusterInspectReportDetailResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getClusterInspectReportDetail(_ clusterId: String, _ reportId: String, _ request: GetClusterInspectReportDetailRequest) async throws -> GetClusterInspectReportDetailResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await getClusterInspectReportDetailWithOptions(clusterId as! String, reportId as! String, request as! GetClusterInspectReportDetailRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -3790,14 +3448,8 @@ open class Client : AlibabacloudOpenApi.Client {
             "reqBodyType": "json",
             "bodyType": "array"
         ])
-        if (TeaUtils.Client.isUnset(self._signatureVersion) || !TeaUtils.Client.equalString(self._signatureVersion, "v4")) {
-            var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
-            return Tea.TeaConverter.fromMap(GetKubernetesTriggerResponse(), tmp)
-        }
-        else {
-            var tmp: [String: Any] = try await execute(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
-            return Tea.TeaConverter.fromMap(GetKubernetesTriggerResponse(), tmp)
-        }
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(GetKubernetesTriggerResponse(), tmp)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -3823,14 +3475,8 @@ open class Client : AlibabacloudOpenApi.Client {
             "reqBodyType": "json",
             "bodyType": "json"
         ])
-        if (TeaUtils.Client.isUnset(self._signatureVersion) || !TeaUtils.Client.equalString(self._signatureVersion, "v4")) {
-            var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
-            return Tea.TeaConverter.fromMap(GetUpgradeStatusResponse(), tmp)
-        }
-        else {
-            var tmp: [String: Any] = try await execute(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
-            return Tea.TeaConverter.fromMap(GetUpgradeStatusResponse(), tmp)
-        }
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(GetUpgradeStatusResponse(), tmp)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -3858,14 +3504,8 @@ open class Client : AlibabacloudOpenApi.Client {
             "reqBodyType": "json",
             "bodyType": "none"
         ])
-        if (TeaUtils.Client.isUnset(self._signatureVersion) || !TeaUtils.Client.equalString(self._signatureVersion, "v4")) {
-            var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
-            return Tea.TeaConverter.fromMap(GrantPermissionsResponse(), tmp)
-        }
-        else {
-            var tmp: [String: Any] = try await execute(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
-            return Tea.TeaConverter.fromMap(GrantPermissionsResponse(), tmp)
-        }
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(GrantPermissionsResponse(), tmp)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -3893,14 +3533,8 @@ open class Client : AlibabacloudOpenApi.Client {
             "reqBodyType": "json",
             "bodyType": "json"
         ])
-        if (TeaUtils.Client.isUnset(self._signatureVersion) || !TeaUtils.Client.equalString(self._signatureVersion, "v4")) {
-            var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
-            return Tea.TeaConverter.fromMap(InstallClusterAddonsResponse(), tmp)
-        }
-        else {
-            var tmp: [String: Any] = try await execute(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
-            return Tea.TeaConverter.fromMap(InstallClusterAddonsResponse(), tmp)
-        }
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(InstallClusterAddonsResponse(), tmp)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -3947,14 +3581,8 @@ open class Client : AlibabacloudOpenApi.Client {
             "reqBodyType": "json",
             "bodyType": "json"
         ])
-        if (TeaUtils.Client.isUnset(self._signatureVersion) || !TeaUtils.Client.equalString(self._signatureVersion, "v4")) {
-            var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
-            return Tea.TeaConverter.fromMap(ListAddonsResponse(), tmp)
-        }
-        else {
-            var tmp: [String: Any] = try await execute(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
-            return Tea.TeaConverter.fromMap(ListAddonsResponse(), tmp)
-        }
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(ListAddonsResponse(), tmp)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -3980,14 +3608,8 @@ open class Client : AlibabacloudOpenApi.Client {
             "reqBodyType": "json",
             "bodyType": "json"
         ])
-        if (TeaUtils.Client.isUnset(self._signatureVersion) || !TeaUtils.Client.equalString(self._signatureVersion, "v4")) {
-            var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
-            return Tea.TeaConverter.fromMap(ListClusterAddonInstancesResponse(), tmp)
-        }
-        else {
-            var tmp: [String: Any] = try await execute(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
-            return Tea.TeaConverter.fromMap(ListClusterAddonInstancesResponse(), tmp)
-        }
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(ListClusterAddonInstancesResponse(), tmp)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -4022,14 +3644,8 @@ open class Client : AlibabacloudOpenApi.Client {
             "reqBodyType": "json",
             "bodyType": "json"
         ])
-        if (TeaUtils.Client.isUnset(self._signatureVersion) || !TeaUtils.Client.equalString(self._signatureVersion, "v4")) {
-            var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
-            return Tea.TeaConverter.fromMap(ListClusterChecksResponse(), tmp)
-        }
-        else {
-            var tmp: [String: Any] = try await execute(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
-            return Tea.TeaConverter.fromMap(ListClusterChecksResponse(), tmp)
-        }
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(ListClusterChecksResponse(), tmp)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -4037,6 +3653,42 @@ open class Client : AlibabacloudOpenApi.Client {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         var headers: [String: String] = [:]
         return try await listClusterChecksWithOptions(clusterId as! String, request as! ListClusterChecksRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func listClusterInspectReportsWithOptions(_ clusterId: String, _ request: ListClusterInspectReportsRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> ListClusterInspectReportsResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.maxResults)) {
+            query["maxResults"] = request.maxResults!;
+        }
+        if (!TeaUtils.Client.isUnset(request.nextToken)) {
+            query["nextToken"] = request.nextToken ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String],
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "ListClusterInspectReports",
+            "version": "2015-12-15",
+            "protocol": "HTTPS",
+            "pathname": "/clusters/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(clusterId)) + "/inspectReports",
+            "method": "GET",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(ListClusterInspectReportsResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func listClusterInspectReports(_ clusterId: String, _ request: ListClusterInspectReportsRequest) async throws -> ListClusterInspectReportsResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await listClusterInspectReportsWithOptions(clusterId as! String, request as! ListClusterInspectReportsRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -4064,14 +3716,8 @@ open class Client : AlibabacloudOpenApi.Client {
             "reqBodyType": "json",
             "bodyType": "json"
         ])
-        if (TeaUtils.Client.isUnset(self._signatureVersion) || !TeaUtils.Client.equalString(self._signatureVersion, "v4")) {
-            var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
-            return Tea.TeaConverter.fromMap(ListClusterKubeconfigStatesResponse(), tmp)
-        }
-        else {
-            var tmp: [String: Any] = try await execute(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
-            return Tea.TeaConverter.fromMap(ListClusterKubeconfigStatesResponse(), tmp)
-        }
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(ListClusterKubeconfigStatesResponse(), tmp)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -4106,14 +3752,8 @@ open class Client : AlibabacloudOpenApi.Client {
             "reqBodyType": "json",
             "bodyType": "json"
         ])
-        if (TeaUtils.Client.isUnset(self._signatureVersion) || !TeaUtils.Client.equalString(self._signatureVersion, "v4")) {
-            var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
-            return Tea.TeaConverter.fromMap(ListOperationPlansResponse(), tmp)
-        }
-        else {
-            var tmp: [String: Any] = try await execute(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
-            return Tea.TeaConverter.fromMap(ListOperationPlansResponse(), tmp)
-        }
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(ListOperationPlansResponse(), tmp)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -4165,14 +3805,8 @@ open class Client : AlibabacloudOpenApi.Client {
             "reqBodyType": "json",
             "bodyType": "json"
         ])
-        if (TeaUtils.Client.isUnset(self._signatureVersion) || !TeaUtils.Client.equalString(self._signatureVersion, "v4")) {
-            var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
-            return Tea.TeaConverter.fromMap(ListTagResourcesResponse(), tmp)
-        }
-        else {
-            var tmp: [String: Any] = try await execute(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
-            return Tea.TeaConverter.fromMap(ListTagResourcesResponse(), tmp)
-        }
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(ListTagResourcesResponse(), tmp)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -4207,14 +3841,8 @@ open class Client : AlibabacloudOpenApi.Client {
             "reqBodyType": "json",
             "bodyType": "json"
         ])
-        if (TeaUtils.Client.isUnset(self._signatureVersion) || !TeaUtils.Client.equalString(self._signatureVersion, "v4")) {
-            var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
-            return Tea.TeaConverter.fromMap(ListUserKubeConfigStatesResponse(), tmp)
-        }
-        else {
-            var tmp: [String: Any] = try await execute(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
-            return Tea.TeaConverter.fromMap(ListUserKubeConfigStatesResponse(), tmp)
-        }
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(ListUserKubeConfigStatesResponse(), tmp)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -4249,14 +3877,8 @@ open class Client : AlibabacloudOpenApi.Client {
             "reqBodyType": "json",
             "bodyType": "json"
         ])
-        if (TeaUtils.Client.isUnset(self._signatureVersion) || !TeaUtils.Client.equalString(self._signatureVersion, "v4")) {
-            var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
-            return Tea.TeaConverter.fromMap(MigrateClusterResponse(), tmp)
-        }
-        else {
-            var tmp: [String: Any] = try await execute(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
-            return Tea.TeaConverter.fromMap(MigrateClusterResponse(), tmp)
-        }
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(MigrateClusterResponse(), tmp)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -4339,14 +3961,8 @@ open class Client : AlibabacloudOpenApi.Client {
             "reqBodyType": "json",
             "bodyType": "json"
         ])
-        if (TeaUtils.Client.isUnset(self._signatureVersion) || !TeaUtils.Client.equalString(self._signatureVersion, "v4")) {
-            var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
-            return Tea.TeaConverter.fromMap(ModifyClusterResponse(), tmp)
-        }
-        else {
-            var tmp: [String: Any] = try await execute(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
-            return Tea.TeaConverter.fromMap(ModifyClusterResponse(), tmp)
-        }
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(ModifyClusterResponse(), tmp)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -4378,14 +3994,8 @@ open class Client : AlibabacloudOpenApi.Client {
             "reqBodyType": "json",
             "bodyType": "none"
         ])
-        if (TeaUtils.Client.isUnset(self._signatureVersion) || !TeaUtils.Client.equalString(self._signatureVersion, "v4")) {
-            var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
-            return Tea.TeaConverter.fromMap(ModifyClusterAddonResponse(), tmp)
-        }
-        else {
-            var tmp: [String: Any] = try await execute(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
-            return Tea.TeaConverter.fromMap(ModifyClusterAddonResponse(), tmp)
-        }
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(ModifyClusterAddonResponse(), tmp)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -4417,14 +4027,8 @@ open class Client : AlibabacloudOpenApi.Client {
             "reqBodyType": "json",
             "bodyType": "none"
         ])
-        if (TeaUtils.Client.isUnset(self._signatureVersion) || !TeaUtils.Client.equalString(self._signatureVersion, "v4")) {
-            var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
-            return Tea.TeaConverter.fromMap(ModifyClusterConfigurationResponse(), tmp)
-        }
-        else {
-            var tmp: [String: Any] = try await execute(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
-            return Tea.TeaConverter.fromMap(ModifyClusterConfigurationResponse(), tmp)
-        }
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(ModifyClusterConfigurationResponse(), tmp)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -4477,14 +4081,8 @@ open class Client : AlibabacloudOpenApi.Client {
             "reqBodyType": "json",
             "bodyType": "json"
         ])
-        if (TeaUtils.Client.isUnset(self._signatureVersion) || !TeaUtils.Client.equalString(self._signatureVersion, "v4")) {
-            var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
-            return Tea.TeaConverter.fromMap(ModifyClusterNodePoolResponse(), tmp)
-        }
-        else {
-            var tmp: [String: Any] = try await execute(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
-            return Tea.TeaConverter.fromMap(ModifyClusterNodePoolResponse(), tmp)
-        }
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(ModifyClusterNodePoolResponse(), tmp)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -4512,14 +4110,8 @@ open class Client : AlibabacloudOpenApi.Client {
             "reqBodyType": "json",
             "bodyType": "none"
         ])
-        if (TeaUtils.Client.isUnset(self._signatureVersion) || !TeaUtils.Client.equalString(self._signatureVersion, "v4")) {
-            var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
-            return Tea.TeaConverter.fromMap(ModifyClusterTagsResponse(), tmp)
-        }
-        else {
-            var tmp: [String: Any] = try await execute(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
-            return Tea.TeaConverter.fromMap(ModifyClusterTagsResponse(), tmp)
-        }
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(ModifyClusterTagsResponse(), tmp)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -4560,14 +4152,8 @@ open class Client : AlibabacloudOpenApi.Client {
             "reqBodyType": "json",
             "bodyType": "json"
         ])
-        if (TeaUtils.Client.isUnset(self._signatureVersion) || !TeaUtils.Client.equalString(self._signatureVersion, "v4")) {
-            var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
-            return Tea.TeaConverter.fromMap(ModifyNodePoolNodeConfigResponse(), tmp)
-        }
-        else {
-            var tmp: [String: Any] = try await execute(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
-            return Tea.TeaConverter.fromMap(ModifyNodePoolNodeConfigResponse(), tmp)
-        }
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(ModifyNodePoolNodeConfigResponse(), tmp)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -4608,14 +4194,8 @@ open class Client : AlibabacloudOpenApi.Client {
             "reqBodyType": "json",
             "bodyType": "json"
         ])
-        if (TeaUtils.Client.isUnset(self._signatureVersion) || !TeaUtils.Client.equalString(self._signatureVersion, "v4")) {
-            var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
-            return Tea.TeaConverter.fromMap(ModifyPolicyInstanceResponse(), tmp)
-        }
-        else {
-            var tmp: [String: Any] = try await execute(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
-            return Tea.TeaConverter.fromMap(ModifyPolicyInstanceResponse(), tmp)
-        }
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(ModifyPolicyInstanceResponse(), tmp)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -4647,14 +4227,8 @@ open class Client : AlibabacloudOpenApi.Client {
             "reqBodyType": "json",
             "bodyType": "json"
         ])
-        if (TeaUtils.Client.isUnset(self._signatureVersion) || !TeaUtils.Client.equalString(self._signatureVersion, "v4")) {
-            var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
-            return Tea.TeaConverter.fromMap(OpenAckServiceResponse(), tmp)
-        }
-        else {
-            var tmp: [String: Any] = try await execute(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
-            return Tea.TeaConverter.fromMap(OpenAckServiceResponse(), tmp)
-        }
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(OpenAckServiceResponse(), tmp)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -4680,14 +4254,8 @@ open class Client : AlibabacloudOpenApi.Client {
             "reqBodyType": "json",
             "bodyType": "none"
         ])
-        if (TeaUtils.Client.isUnset(self._signatureVersion) || !TeaUtils.Client.equalString(self._signatureVersion, "v4")) {
-            var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
-            return Tea.TeaConverter.fromMap(PauseClusterUpgradeResponse(), tmp)
-        }
-        else {
-            var tmp: [String: Any] = try await execute(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
-            return Tea.TeaConverter.fromMap(PauseClusterUpgradeResponse(), tmp)
-        }
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(PauseClusterUpgradeResponse(), tmp)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -4713,14 +4281,8 @@ open class Client : AlibabacloudOpenApi.Client {
             "reqBodyType": "json",
             "bodyType": "none"
         ])
-        if (TeaUtils.Client.isUnset(self._signatureVersion) || !TeaUtils.Client.equalString(self._signatureVersion, "v4")) {
-            var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
-            return Tea.TeaConverter.fromMap(PauseComponentUpgradeResponse(), tmp)
-        }
-        else {
-            var tmp: [String: Any] = try await execute(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
-            return Tea.TeaConverter.fromMap(PauseComponentUpgradeResponse(), tmp)
-        }
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(PauseComponentUpgradeResponse(), tmp)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -4746,14 +4308,8 @@ open class Client : AlibabacloudOpenApi.Client {
             "reqBodyType": "json",
             "bodyType": "none"
         ])
-        if (TeaUtils.Client.isUnset(self._signatureVersion) || !TeaUtils.Client.equalString(self._signatureVersion, "v4")) {
-            var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
-            return Tea.TeaConverter.fromMap(PauseTaskResponse(), tmp)
-        }
-        else {
-            var tmp: [String: Any] = try await execute(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
-            return Tea.TeaConverter.fromMap(PauseTaskResponse(), tmp)
-        }
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(PauseTaskResponse(), tmp)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -4791,14 +4347,8 @@ open class Client : AlibabacloudOpenApi.Client {
             "reqBodyType": "json",
             "bodyType": "none"
         ])
-        if (TeaUtils.Client.isUnset(self._signatureVersion) || !TeaUtils.Client.equalString(self._signatureVersion, "v4")) {
-            var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
-            return Tea.TeaConverter.fromMap(RemoveClusterNodesResponse(), tmp)
-        }
-        else {
-            var tmp: [String: Any] = try await execute(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
-            return Tea.TeaConverter.fromMap(RemoveClusterNodesResponse(), tmp)
-        }
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(RemoveClusterNodesResponse(), tmp)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -4850,14 +4400,8 @@ open class Client : AlibabacloudOpenApi.Client {
             "reqBodyType": "json",
             "bodyType": "json"
         ])
-        if (TeaUtils.Client.isUnset(self._signatureVersion) || !TeaUtils.Client.equalString(self._signatureVersion, "v4")) {
-            var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
-            return Tea.TeaConverter.fromMap(RemoveNodePoolNodesResponse(), tmp)
-        }
-        else {
-            var tmp: [String: Any] = try await execute(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
-            return Tea.TeaConverter.fromMap(RemoveNodePoolNodesResponse(), tmp)
-        }
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(RemoveNodePoolNodesResponse(), tmp)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -4895,14 +4439,8 @@ open class Client : AlibabacloudOpenApi.Client {
             "reqBodyType": "json",
             "bodyType": "json"
         ])
-        if (TeaUtils.Client.isUnset(self._signatureVersion) || !TeaUtils.Client.equalString(self._signatureVersion, "v4")) {
-            var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
-            return Tea.TeaConverter.fromMap(RepairClusterNodePoolResponse(), tmp)
-        }
-        else {
-            var tmp: [String: Any] = try await execute(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
-            return Tea.TeaConverter.fromMap(RepairClusterNodePoolResponse(), tmp)
-        }
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(RepairClusterNodePoolResponse(), tmp)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -4928,14 +4466,8 @@ open class Client : AlibabacloudOpenApi.Client {
             "reqBodyType": "json",
             "bodyType": "none"
         ])
-        if (TeaUtils.Client.isUnset(self._signatureVersion) || !TeaUtils.Client.equalString(self._signatureVersion, "v4")) {
-            var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
-            return Tea.TeaConverter.fromMap(ResumeComponentUpgradeResponse(), tmp)
-        }
-        else {
-            var tmp: [String: Any] = try await execute(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
-            return Tea.TeaConverter.fromMap(ResumeComponentUpgradeResponse(), tmp)
-        }
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(ResumeComponentUpgradeResponse(), tmp)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -4961,14 +4493,8 @@ open class Client : AlibabacloudOpenApi.Client {
             "reqBodyType": "json",
             "bodyType": "none"
         ])
-        if (TeaUtils.Client.isUnset(self._signatureVersion) || !TeaUtils.Client.equalString(self._signatureVersion, "v4")) {
-            var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
-            return Tea.TeaConverter.fromMap(ResumeTaskResponse(), tmp)
-        }
-        else {
-            var tmp: [String: Any] = try await execute(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
-            return Tea.TeaConverter.fromMap(ResumeTaskResponse(), tmp)
-        }
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(ResumeTaskResponse(), tmp)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -4994,14 +4520,8 @@ open class Client : AlibabacloudOpenApi.Client {
             "reqBodyType": "json",
             "bodyType": "none"
         ])
-        if (TeaUtils.Client.isUnset(self._signatureVersion) || !TeaUtils.Client.equalString(self._signatureVersion, "v4")) {
-            var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
-            return Tea.TeaConverter.fromMap(ResumeUpgradeClusterResponse(), tmp)
-        }
-        else {
-            var tmp: [String: Any] = try await execute(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
-            return Tea.TeaConverter.fromMap(ResumeUpgradeClusterResponse(), tmp)
-        }
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(ResumeUpgradeClusterResponse(), tmp)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -5027,14 +4547,8 @@ open class Client : AlibabacloudOpenApi.Client {
             "reqBodyType": "json",
             "bodyType": "json"
         ])
-        if (TeaUtils.Client.isUnset(self._signatureVersion) || !TeaUtils.Client.equalString(self._signatureVersion, "v4")) {
-            var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
-            return Tea.TeaConverter.fromMap(RevokeK8sClusterKubeConfigResponse(), tmp)
-        }
-        else {
-            var tmp: [String: Any] = try await execute(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
-            return Tea.TeaConverter.fromMap(RevokeK8sClusterKubeConfigResponse(), tmp)
-        }
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(RevokeK8sClusterKubeConfigResponse(), tmp)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -5072,14 +4586,8 @@ open class Client : AlibabacloudOpenApi.Client {
             "reqBodyType": "json",
             "bodyType": "json"
         ])
-        if (TeaUtils.Client.isUnset(self._signatureVersion) || !TeaUtils.Client.equalString(self._signatureVersion, "v4")) {
-            var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
-            return Tea.TeaConverter.fromMap(RunClusterCheckResponse(), tmp)
-        }
-        else {
-            var tmp: [String: Any] = try await execute(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
-            return Tea.TeaConverter.fromMap(RunClusterCheckResponse(), tmp)
-        }
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(RunClusterCheckResponse(), tmp)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -5087,6 +4595,39 @@ open class Client : AlibabacloudOpenApi.Client {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         var headers: [String: String] = [:]
         return try await runClusterCheckWithOptions(clusterId as! String, request as! RunClusterCheckRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func runClusterInspectWithOptions(_ clusterId: String, _ request: RunClusterInspectRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> RunClusterInspectResponse {
+        try TeaUtils.Client.validateModel(request)
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.clientToken)) {
+            body["clientToken"] = request.clientToken ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String],
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "RunClusterInspect",
+            "version": "2015-12-15",
+            "protocol": "HTTPS",
+            "pathname": "/clusters/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(clusterId)) + "/inspectReports",
+            "method": "POST",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(RunClusterInspectResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func runClusterInspect(_ clusterId: String, _ request: RunClusterInspectRequest) async throws -> RunClusterInspectResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await runClusterInspectWithOptions(clusterId as! String, request as! RunClusterInspectRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -5165,14 +4706,8 @@ open class Client : AlibabacloudOpenApi.Client {
             "reqBodyType": "json",
             "bodyType": "json"
         ])
-        if (TeaUtils.Client.isUnset(self._signatureVersion) || !TeaUtils.Client.equalString(self._signatureVersion, "v4")) {
-            var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
-            return Tea.TeaConverter.fromMap(ScaleClusterResponse(), tmp)
-        }
-        else {
-            var tmp: [String: Any] = try await execute(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
-            return Tea.TeaConverter.fromMap(ScaleClusterResponse(), tmp)
-        }
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(ScaleClusterResponse(), tmp)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -5204,14 +4739,8 @@ open class Client : AlibabacloudOpenApi.Client {
             "reqBodyType": "json",
             "bodyType": "json"
         ])
-        if (TeaUtils.Client.isUnset(self._signatureVersion) || !TeaUtils.Client.equalString(self._signatureVersion, "v4")) {
-            var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
-            return Tea.TeaConverter.fromMap(ScaleClusterNodePoolResponse(), tmp)
-        }
-        else {
-            var tmp: [String: Any] = try await execute(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
-            return Tea.TeaConverter.fromMap(ScaleClusterNodePoolResponse(), tmp)
-        }
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(ScaleClusterNodePoolResponse(), tmp)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -5303,14 +4832,8 @@ open class Client : AlibabacloudOpenApi.Client {
             "reqBodyType": "json",
             "bodyType": "json"
         ])
-        if (TeaUtils.Client.isUnset(self._signatureVersion) || !TeaUtils.Client.equalString(self._signatureVersion, "v4")) {
-            var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
-            return Tea.TeaConverter.fromMap(ScaleOutClusterResponse(), tmp)
-        }
-        else {
-            var tmp: [String: Any] = try await execute(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
-            return Tea.TeaConverter.fromMap(ScaleOutClusterResponse(), tmp)
-        }
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(ScaleOutClusterResponse(), tmp)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -5336,14 +4859,8 @@ open class Client : AlibabacloudOpenApi.Client {
             "reqBodyType": "json",
             "bodyType": "json"
         ])
-        if (TeaUtils.Client.isUnset(self._signatureVersion) || !TeaUtils.Client.equalString(self._signatureVersion, "v4")) {
-            var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
-            return Tea.TeaConverter.fromMap(ScanClusterVulsResponse(), tmp)
-        }
-        else {
-            var tmp: [String: Any] = try await execute(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
-            return Tea.TeaConverter.fromMap(ScanClusterVulsResponse(), tmp)
-        }
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(ScanClusterVulsResponse(), tmp)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -5378,14 +4895,8 @@ open class Client : AlibabacloudOpenApi.Client {
             "reqBodyType": "json",
             "bodyType": "json"
         ])
-        if (TeaUtils.Client.isUnset(self._signatureVersion) || !TeaUtils.Client.equalString(self._signatureVersion, "v4")) {
-            var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
-            return Tea.TeaConverter.fromMap(StartAlertResponse(), tmp)
-        }
-        else {
-            var tmp: [String: Any] = try await execute(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
-            return Tea.TeaConverter.fromMap(StartAlertResponse(), tmp)
-        }
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(StartAlertResponse(), tmp)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -5420,14 +4931,8 @@ open class Client : AlibabacloudOpenApi.Client {
             "reqBodyType": "json",
             "bodyType": "json"
         ])
-        if (TeaUtils.Client.isUnset(self._signatureVersion) || !TeaUtils.Client.equalString(self._signatureVersion, "v4")) {
-            var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
-            return Tea.TeaConverter.fromMap(StopAlertResponse(), tmp)
-        }
-        else {
-            var tmp: [String: Any] = try await execute(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
-            return Tea.TeaConverter.fromMap(StopAlertResponse(), tmp)
-        }
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(StopAlertResponse(), tmp)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -5453,14 +4958,8 @@ open class Client : AlibabacloudOpenApi.Client {
             "reqBodyType": "json",
             "bodyType": "json"
         ])
-        if (TeaUtils.Client.isUnset(self._signatureVersion) || !TeaUtils.Client.equalString(self._signatureVersion, "v4")) {
-            var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
-            return Tea.TeaConverter.fromMap(SyncClusterNodePoolResponse(), tmp)
-        }
-        else {
-            var tmp: [String: Any] = try await execute(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
-            return Tea.TeaConverter.fromMap(SyncClusterNodePoolResponse(), tmp)
-        }
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(SyncClusterNodePoolResponse(), tmp)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -5501,14 +5000,8 @@ open class Client : AlibabacloudOpenApi.Client {
             "reqBodyType": "json",
             "bodyType": "json"
         ])
-        if (TeaUtils.Client.isUnset(self._signatureVersion) || !TeaUtils.Client.equalString(self._signatureVersion, "v4")) {
-            var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
-            return Tea.TeaConverter.fromMap(TagResourcesResponse(), tmp)
-        }
-        else {
-            var tmp: [String: Any] = try await execute(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
-            return Tea.TeaConverter.fromMap(TagResourcesResponse(), tmp)
-        }
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(TagResourcesResponse(), tmp)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -5536,14 +5029,8 @@ open class Client : AlibabacloudOpenApi.Client {
             "reqBodyType": "json",
             "bodyType": "json"
         ])
-        if (TeaUtils.Client.isUnset(self._signatureVersion) || !TeaUtils.Client.equalString(self._signatureVersion, "v4")) {
-            var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
-            return Tea.TeaConverter.fromMap(UnInstallClusterAddonsResponse(), tmp)
-        }
-        else {
-            var tmp: [String: Any] = try await execute(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
-            return Tea.TeaConverter.fromMap(UnInstallClusterAddonsResponse(), tmp)
-        }
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(UnInstallClusterAddonsResponse(), tmp)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -5595,14 +5082,8 @@ open class Client : AlibabacloudOpenApi.Client {
             "reqBodyType": "json",
             "bodyType": "json"
         ])
-        if (TeaUtils.Client.isUnset(self._signatureVersion) || !TeaUtils.Client.equalString(self._signatureVersion, "v4")) {
-            var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
-            return Tea.TeaConverter.fromMap(UntagResourcesResponse(), tmp)
-        }
-        else {
-            var tmp: [String: Any] = try await execute(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
-            return Tea.TeaConverter.fromMap(UntagResourcesResponse(), tmp)
-        }
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(UntagResourcesResponse(), tmp)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -5637,14 +5118,8 @@ open class Client : AlibabacloudOpenApi.Client {
             "reqBodyType": "json",
             "bodyType": "json"
         ])
-        if (TeaUtils.Client.isUnset(self._signatureVersion) || !TeaUtils.Client.equalString(self._signatureVersion, "v4")) {
-            var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
-            return Tea.TeaConverter.fromMap(UpdateClusterAuditLogConfigResponse(), tmp)
-        }
-        else {
-            var tmp: [String: Any] = try await execute(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
-            return Tea.TeaConverter.fromMap(UpdateClusterAuditLogConfigResponse(), tmp)
-        }
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(UpdateClusterAuditLogConfigResponse(), tmp)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -5652,6 +5127,45 @@ open class Client : AlibabacloudOpenApi.Client {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         var headers: [String: String] = [:]
         return try await updateClusterAuditLogConfigWithOptions(clusterid as! String, request as! UpdateClusterAuditLogConfigRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func updateClusterInspectConfigWithOptions(_ clusterId: String, _ request: UpdateClusterInspectConfigRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> UpdateClusterInspectConfigResponse {
+        try TeaUtils.Client.validateModel(request)
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.disabledCheckItems)) {
+            body["disabledCheckItems"] = request.disabledCheckItems ?? [];
+        }
+        if (!TeaUtils.Client.isUnset(request.enabled)) {
+            body["enabled"] = request.enabled!;
+        }
+        if (!TeaUtils.Client.isUnset(request.scheduleTime)) {
+            body["scheduleTime"] = request.scheduleTime ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String],
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "UpdateClusterInspectConfig",
+            "version": "2015-12-15",
+            "protocol": "HTTPS",
+            "pathname": "/clusters/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(clusterId)) + "/inspectConfig",
+            "method": "PUT",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(UpdateClusterInspectConfigResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func updateClusterInspectConfig(_ clusterId: String, _ request: UpdateClusterInspectConfigRequest) async throws -> UpdateClusterInspectConfigResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await updateClusterInspectConfigWithOptions(clusterId as! String, request as! UpdateClusterInspectConfigRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -5685,14 +5199,8 @@ open class Client : AlibabacloudOpenApi.Client {
             "reqBodyType": "json",
             "bodyType": "json"
         ])
-        if (TeaUtils.Client.isUnset(self._signatureVersion) || !TeaUtils.Client.equalString(self._signatureVersion, "v4")) {
-            var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
-            return Tea.TeaConverter.fromMap(UpdateContactGroupForAlertResponse(), tmp)
-        }
-        else {
-            var tmp: [String: Any] = try await execute(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
-            return Tea.TeaConverter.fromMap(UpdateContactGroupForAlertResponse(), tmp)
-        }
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(UpdateContactGroupForAlertResponse(), tmp)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -5733,14 +5241,8 @@ open class Client : AlibabacloudOpenApi.Client {
             "reqBodyType": "json",
             "bodyType": "json"
         ])
-        if (TeaUtils.Client.isUnset(self._signatureVersion) || !TeaUtils.Client.equalString(self._signatureVersion, "v4")) {
-            var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
-            return Tea.TeaConverter.fromMap(UpdateControlPlaneLogResponse(), tmp)
-        }
-        else {
-            var tmp: [String: Any] = try await execute(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
-            return Tea.TeaConverter.fromMap(UpdateControlPlaneLogResponse(), tmp)
-        }
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(UpdateControlPlaneLogResponse(), tmp)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -5775,14 +5277,8 @@ open class Client : AlibabacloudOpenApi.Client {
             "reqBodyType": "json",
             "bodyType": "none"
         ])
-        if (TeaUtils.Client.isUnset(self._signatureVersion) || !TeaUtils.Client.equalString(self._signatureVersion, "v4")) {
-            var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
-            return Tea.TeaConverter.fromMap(UpdateK8sClusterUserConfigExpireResponse(), tmp)
-        }
-        else {
-            var tmp: [String: Any] = try await execute(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
-            return Tea.TeaConverter.fromMap(UpdateK8sClusterUserConfigExpireResponse(), tmp)
-        }
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(UpdateK8sClusterUserConfigExpireResponse(), tmp)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -5823,14 +5319,8 @@ open class Client : AlibabacloudOpenApi.Client {
             "reqBodyType": "json",
             "bodyType": "json"
         ])
-        if (TeaUtils.Client.isUnset(self._signatureVersion) || !TeaUtils.Client.equalString(self._signatureVersion, "v4")) {
-            var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
-            return Tea.TeaConverter.fromMap(UpdateResourcesDeleteProtectionResponse(), tmp)
-        }
-        else {
-            var tmp: [String: Any] = try await execute(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
-            return Tea.TeaConverter.fromMap(UpdateResourcesDeleteProtectionResponse(), tmp)
-        }
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(UpdateResourcesDeleteProtectionResponse(), tmp)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -5874,14 +5364,8 @@ open class Client : AlibabacloudOpenApi.Client {
             "reqBodyType": "json",
             "bodyType": "none"
         ])
-        if (TeaUtils.Client.isUnset(self._signatureVersion) || !TeaUtils.Client.equalString(self._signatureVersion, "v4")) {
-            var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
-            return Tea.TeaConverter.fromMap(UpdateTemplateResponse(), tmp)
-        }
-        else {
-            var tmp: [String: Any] = try await execute(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
-            return Tea.TeaConverter.fromMap(UpdateTemplateResponse(), tmp)
-        }
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(UpdateTemplateResponse(), tmp)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -5914,14 +5398,8 @@ open class Client : AlibabacloudOpenApi.Client {
             "reqBodyType": "json",
             "bodyType": "none"
         ])
-        if (TeaUtils.Client.isUnset(self._signatureVersion) || !TeaUtils.Client.equalString(self._signatureVersion, "v4")) {
-            var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
-            return Tea.TeaConverter.fromMap(UpdateUserPermissionsResponse(), tmp)
-        }
-        else {
-            var tmp: [String: Any] = try await execute(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
-            return Tea.TeaConverter.fromMap(UpdateUserPermissionsResponse(), tmp)
-        }
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(UpdateUserPermissionsResponse(), tmp)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -5965,14 +5443,8 @@ open class Client : AlibabacloudOpenApi.Client {
             "reqBodyType": "json",
             "bodyType": "json"
         ])
-        if (TeaUtils.Client.isUnset(self._signatureVersion) || !TeaUtils.Client.equalString(self._signatureVersion, "v4")) {
-            var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
-            return Tea.TeaConverter.fromMap(UpgradeClusterResponse(), tmp)
-        }
-        else {
-            var tmp: [String: Any] = try await execute(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
-            return Tea.TeaConverter.fromMap(UpgradeClusterResponse(), tmp)
-        }
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(UpgradeClusterResponse(), tmp)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -6000,14 +5472,8 @@ open class Client : AlibabacloudOpenApi.Client {
             "reqBodyType": "json",
             "bodyType": "json"
         ])
-        if (TeaUtils.Client.isUnset(self._signatureVersion) || !TeaUtils.Client.equalString(self._signatureVersion, "v4")) {
-            var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
-            return Tea.TeaConverter.fromMap(UpgradeClusterAddonsResponse(), tmp)
-        }
-        else {
-            var tmp: [String: Any] = try await execute(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
-            return Tea.TeaConverter.fromMap(UpgradeClusterAddonsResponse(), tmp)
-        }
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(UpgradeClusterAddonsResponse(), tmp)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -6057,14 +5523,8 @@ open class Client : AlibabacloudOpenApi.Client {
             "reqBodyType": "json",
             "bodyType": "json"
         ])
-        if (TeaUtils.Client.isUnset(self._signatureVersion) || !TeaUtils.Client.equalString(self._signatureVersion, "v4")) {
-            var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
-            return Tea.TeaConverter.fromMap(UpgradeClusterNodepoolResponse(), tmp)
-        }
-        else {
-            var tmp: [String: Any] = try await execute(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
-            return Tea.TeaConverter.fromMap(UpgradeClusterNodepoolResponse(), tmp)
-        }
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(UpgradeClusterNodepoolResponse(), tmp)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
