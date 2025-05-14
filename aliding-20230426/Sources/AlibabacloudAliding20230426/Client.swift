@@ -260,6 +260,68 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func addMultiDimTableWithOptions(_ tmpReq: AddMultiDimTableRequest, _ tmpHeader: AddMultiDimTableHeaders, _ runtime: TeaUtils.RuntimeOptions) async throws -> AddMultiDimTableResponse {
+        try TeaUtils.Client.validateModel(tmpReq)
+        var request: AddMultiDimTableShrinkRequest = AddMultiDimTableShrinkRequest([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        var headers: AddMultiDimTableShrinkHeaders = AddMultiDimTableShrinkHeaders([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpHeader, headers)
+        if (!TeaUtils.Client.isUnset(tmpHeader.accountContext)) {
+            headers.accountContextShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpHeader.accountContext, "AccountContext", "json")
+        }
+        if (!TeaUtils.Client.isUnset(tmpReq.fields)) {
+            request.fieldsShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.fields, "Fields", "json")
+        }
+        if (!TeaUtils.Client.isUnset(tmpReq.tenantContext)) {
+            request.tenantContextShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.tenantContext, "TenantContext", "json")
+        }
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.baseId)) {
+            body["BaseId"] = request.baseId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.fieldsShrink)) {
+            body["Fields"] = request.fieldsShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.name)) {
+            body["Name"] = request.name ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.tenantContextShrink)) {
+            body["TenantContext"] = request.tenantContextShrink ?? "";
+        }
+        var realHeaders: [String: String] = [:]
+        if (!TeaUtils.Client.isUnset(headers.commonHeaders)) {
+            realHeaders = headers.commonHeaders ?? [:]
+        }
+        if (!TeaUtils.Client.isUnset(headers.accountContextShrink)) {
+            realHeaders["AccountContext"] = TeaUtils.Client.toJSONString(headers.accountContextShrink);
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": realHeaders as! [String: String],
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "AddMultiDimTable",
+            "version": "2023-04-26",
+            "protocol": "HTTPS",
+            "pathname": "/dingtalk/v1/table/addMultiDimTable",
+            "method": "POST",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(AddMultiDimTableResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func addMultiDimTable(_ request: AddMultiDimTableRequest) async throws -> AddMultiDimTableResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: AddMultiDimTableHeaders = AddMultiDimTableHeaders([:])
+        return try await addMultiDimTableWithOptions(request as! AddMultiDimTableRequest, headers as! AddMultiDimTableHeaders, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func addPermissionWithOptions(_ tmpReq: AddPermissionRequest, _ tmpHeader: AddPermissionHeaders, _ runtime: TeaUtils.RuntimeOptions) async throws -> AddPermissionResponse {
         try TeaUtils.Client.validateModel(tmpReq)
         var request: AddPermissionShrinkRequest = AddPermissionShrinkRequest([:])
@@ -2149,6 +2211,74 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func createMultiDimTableFieldWithOptions(_ tmpReq: CreateMultiDimTableFieldRequest, _ tmpHeader: CreateMultiDimTableFieldHeaders, _ runtime: TeaUtils.RuntimeOptions) async throws -> CreateMultiDimTableFieldResponse {
+        try TeaUtils.Client.validateModel(tmpReq)
+        var request: CreateMultiDimTableFieldShrinkRequest = CreateMultiDimTableFieldShrinkRequest([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        var headers: CreateMultiDimTableFieldShrinkHeaders = CreateMultiDimTableFieldShrinkHeaders([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpHeader, headers)
+        if (!TeaUtils.Client.isUnset(tmpHeader.accountContext)) {
+            headers.accountContextShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpHeader.accountContext, "AccountContext", "json")
+        }
+        if (!TeaUtils.Client.isUnset(tmpReq.property)) {
+            request.propertyShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.property, "Property", "json")
+        }
+        if (!TeaUtils.Client.isUnset(tmpReq.tenantContext)) {
+            request.tenantContextShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.tenantContext, "TenantContext", "json")
+        }
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.baseId)) {
+            body["BaseId"] = request.baseId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.name)) {
+            body["Name"] = request.name ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.propertyShrink)) {
+            body["Property"] = request.propertyShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.sheetIdOrName)) {
+            body["SheetIdOrName"] = request.sheetIdOrName ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.tenantContextShrink)) {
+            body["TenantContext"] = request.tenantContextShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.type)) {
+            body["Type"] = request.type ?? "";
+        }
+        var realHeaders: [String: String] = [:]
+        if (!TeaUtils.Client.isUnset(headers.commonHeaders)) {
+            realHeaders = headers.commonHeaders ?? [:]
+        }
+        if (!TeaUtils.Client.isUnset(headers.accountContextShrink)) {
+            realHeaders["AccountContext"] = TeaUtils.Client.toJSONString(headers.accountContextShrink);
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": realHeaders as! [String: String],
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "CreateMultiDimTableField",
+            "version": "2023-04-26",
+            "protocol": "HTTPS",
+            "pathname": "/dingtalk/v1/table/createMultiDimTableField",
+            "method": "POST",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(CreateMultiDimTableFieldResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func createMultiDimTableField(_ request: CreateMultiDimTableFieldRequest) async throws -> CreateMultiDimTableFieldResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: CreateMultiDimTableFieldHeaders = CreateMultiDimTableFieldHeaders([:])
+        return try await createMultiDimTableFieldWithOptions(request as! CreateMultiDimTableFieldRequest, headers as! CreateMultiDimTableFieldHeaders, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func createOrUpdateFormDataWithOptions(_ request: CreateOrUpdateFormDataRequest, _ tmpHeader: CreateOrUpdateFormDataHeaders, _ runtime: TeaUtils.RuntimeOptions) async throws -> CreateOrUpdateFormDataResponse {
         try TeaUtils.Client.validateModel(request)
         var headers: CreateOrUpdateFormDataShrinkHeaders = CreateOrUpdateFormDataShrinkHeaders([:])
@@ -3829,6 +3959,127 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func deleteMultiDimTableFieldWithOptions(_ tmpReq: DeleteMultiDimTableFieldRequest, _ tmpHeader: DeleteMultiDimTableFieldHeaders, _ runtime: TeaUtils.RuntimeOptions) async throws -> DeleteMultiDimTableFieldResponse {
+        try TeaUtils.Client.validateModel(tmpReq)
+        var request: DeleteMultiDimTableFieldShrinkRequest = DeleteMultiDimTableFieldShrinkRequest([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        var headers: DeleteMultiDimTableFieldShrinkHeaders = DeleteMultiDimTableFieldShrinkHeaders([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpHeader, headers)
+        if (!TeaUtils.Client.isUnset(tmpHeader.accountContext)) {
+            headers.accountContextShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpHeader.accountContext, "AccountContext", "json")
+        }
+        if (!TeaUtils.Client.isUnset(tmpReq.tenantContext)) {
+            request.tenantContextShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.tenantContext, "TenantContext", "json")
+        }
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.baseId)) {
+            body["BaseId"] = request.baseId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.fieldIdOrName)) {
+            body["FieldIdOrName"] = request.fieldIdOrName ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.sheetIdOrName)) {
+            body["SheetIdOrName"] = request.sheetIdOrName ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.tenantContextShrink)) {
+            body["TenantContext"] = request.tenantContextShrink ?? "";
+        }
+        var realHeaders: [String: String] = [:]
+        if (!TeaUtils.Client.isUnset(headers.commonHeaders)) {
+            realHeaders = headers.commonHeaders ?? [:]
+        }
+        if (!TeaUtils.Client.isUnset(headers.accountContextShrink)) {
+            realHeaders["AccountContext"] = TeaUtils.Client.toJSONString(headers.accountContextShrink);
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": realHeaders as! [String: String],
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "DeleteMultiDimTableField",
+            "version": "2023-04-26",
+            "protocol": "HTTPS",
+            "pathname": "/dingtalk/v1/table/deleteMultiDimTableField",
+            "method": "POST",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(DeleteMultiDimTableFieldResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func deleteMultiDimTableField(_ request: DeleteMultiDimTableFieldRequest) async throws -> DeleteMultiDimTableFieldResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: DeleteMultiDimTableFieldHeaders = DeleteMultiDimTableFieldHeaders([:])
+        return try await deleteMultiDimTableFieldWithOptions(request as! DeleteMultiDimTableFieldRequest, headers as! DeleteMultiDimTableFieldHeaders, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func deleteMultiDimTableRecordsWithOptions(_ tmpReq: DeleteMultiDimTableRecordsRequest, _ tmpHeader: DeleteMultiDimTableRecordsHeaders, _ runtime: TeaUtils.RuntimeOptions) async throws -> DeleteMultiDimTableRecordsResponse {
+        try TeaUtils.Client.validateModel(tmpReq)
+        var request: DeleteMultiDimTableRecordsShrinkRequest = DeleteMultiDimTableRecordsShrinkRequest([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        var headers: DeleteMultiDimTableRecordsShrinkHeaders = DeleteMultiDimTableRecordsShrinkHeaders([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpHeader, headers)
+        if (!TeaUtils.Client.isUnset(tmpHeader.accountContext)) {
+            headers.accountContextShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpHeader.accountContext, "AccountContext", "json")
+        }
+        if (!TeaUtils.Client.isUnset(tmpReq.recordIds)) {
+            request.recordIdsShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.recordIds, "RecordIds", "json")
+        }
+        if (!TeaUtils.Client.isUnset(tmpReq.tenantContext)) {
+            request.tenantContextShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.tenantContext, "TenantContext", "json")
+        }
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.baseId)) {
+            body["BaseId"] = request.baseId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.recordIdsShrink)) {
+            body["RecordIds"] = request.recordIdsShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.sheetIdOrName)) {
+            body["SheetIdOrName"] = request.sheetIdOrName ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.tenantContextShrink)) {
+            body["TenantContext"] = request.tenantContextShrink ?? "";
+        }
+        var realHeaders: [String: String] = [:]
+        if (!TeaUtils.Client.isUnset(headers.commonHeaders)) {
+            realHeaders = headers.commonHeaders ?? [:]
+        }
+        if (!TeaUtils.Client.isUnset(headers.accountContextShrink)) {
+            realHeaders["AccountContext"] = TeaUtils.Client.toJSONString(headers.accountContextShrink);
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": realHeaders as! [String: String],
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "DeleteMultiDimTableRecords",
+            "version": "2023-04-26",
+            "protocol": "HTTPS",
+            "pathname": "/dingtalk/v1/table/deleteMultiDimTableRecords",
+            "method": "POST",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(DeleteMultiDimTableRecordsResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func deleteMultiDimTableRecords(_ request: DeleteMultiDimTableRecordsRequest) async throws -> DeleteMultiDimTableRecordsResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: DeleteMultiDimTableRecordsHeaders = DeleteMultiDimTableRecordsHeaders([:])
+        return try await deleteMultiDimTableRecordsWithOptions(request as! DeleteMultiDimTableRecordsRequest, headers as! DeleteMultiDimTableRecordsHeaders, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func deletePermissionWithOptions(_ tmpReq: DeletePermissionRequest, _ tmpHeader: DeletePermissionHeaders, _ runtime: TeaUtils.RuntimeOptions) async throws -> DeletePermissionResponse {
         try TeaUtils.Client.validateModel(tmpReq)
         var request: DeletePermissionShrinkRequest = DeletePermissionShrinkRequest([:])
@@ -4276,6 +4527,68 @@ open class Client : AlibabacloudOpenApi.Client {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         var headers: DeleteWorkspaceMembersHeaders = DeleteWorkspaceMembersHeaders([:])
         return try await deleteWorkspaceMembersWithOptions(request as! DeleteWorkspaceMembersRequest, headers as! DeleteWorkspaceMembersHeaders, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func docBlocksQueryWithOptions(_ tmpReq: DocBlocksQueryRequest, _ tmpHeader: DocBlocksQueryHeaders, _ runtime: TeaUtils.RuntimeOptions) async throws -> DocBlocksQueryResponse {
+        try TeaUtils.Client.validateModel(tmpReq)
+        var request: DocBlocksQueryShrinkRequest = DocBlocksQueryShrinkRequest([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        var headers: DocBlocksQueryShrinkHeaders = DocBlocksQueryShrinkHeaders([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpHeader, headers)
+        if (!TeaUtils.Client.isUnset(tmpHeader.accountContext)) {
+            headers.accountContextShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpHeader.accountContext, "AccountContext", "json")
+        }
+        if (!TeaUtils.Client.isUnset(tmpReq.tenantContext)) {
+            request.tenantContextShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.tenantContext, "TenantContext", "json")
+        }
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.blockType)) {
+            body["BlockType"] = request.blockType ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.docKey)) {
+            body["DocKey"] = request.docKey ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.endIndex)) {
+            body["EndIndex"] = request.endIndex!;
+        }
+        if (!TeaUtils.Client.isUnset(request.startIndex)) {
+            body["StartIndex"] = request.startIndex!;
+        }
+        if (!TeaUtils.Client.isUnset(request.tenantContextShrink)) {
+            body["TenantContext"] = request.tenantContextShrink ?? "";
+        }
+        var realHeaders: [String: String] = [:]
+        if (!TeaUtils.Client.isUnset(headers.commonHeaders)) {
+            realHeaders = headers.commonHeaders ?? [:]
+        }
+        if (!TeaUtils.Client.isUnset(headers.accountContextShrink)) {
+            realHeaders["AccountContext"] = TeaUtils.Client.toJSONString(headers.accountContextShrink);
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": realHeaders as! [String: String],
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "DocBlocksQuery",
+            "version": "2023-04-26",
+            "protocol": "HTTPS",
+            "pathname": "/dingtalk/v1/documents/docBlocksQuery",
+            "method": "POST",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(DocBlocksQueryResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func docBlocksQuery(_ request: DocBlocksQueryRequest) async throws -> DocBlocksQueryResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: DocBlocksQueryHeaders = DocBlocksQueryHeaders([:])
+        return try await docBlocksQueryWithOptions(request as! DocBlocksQueryRequest, headers as! DocBlocksQueryHeaders, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -8449,6 +8762,68 @@ open class Client : AlibabacloudOpenApi.Client {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         var headers: InsertColumnsBeforeHeaders = InsertColumnsBeforeHeaders([:])
         return try await insertColumnsBeforeWithOptions(request as! InsertColumnsBeforeRequest, headers as! InsertColumnsBeforeHeaders, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func insertMultiDimTableRecordWithOptions(_ tmpReq: InsertMultiDimTableRecordRequest, _ tmpHeader: InsertMultiDimTableRecordHeaders, _ runtime: TeaUtils.RuntimeOptions) async throws -> InsertMultiDimTableRecordResponse {
+        try TeaUtils.Client.validateModel(tmpReq)
+        var request: InsertMultiDimTableRecordShrinkRequest = InsertMultiDimTableRecordShrinkRequest([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        var headers: InsertMultiDimTableRecordShrinkHeaders = InsertMultiDimTableRecordShrinkHeaders([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpHeader, headers)
+        if (!TeaUtils.Client.isUnset(tmpHeader.accountContext)) {
+            headers.accountContextShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpHeader.accountContext, "AccountContext", "json")
+        }
+        if (!TeaUtils.Client.isUnset(tmpReq.records)) {
+            request.recordsShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.records, "Records", "json")
+        }
+        if (!TeaUtils.Client.isUnset(tmpReq.tenantContext)) {
+            request.tenantContextShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.tenantContext, "TenantContext", "json")
+        }
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.baseId)) {
+            body["BaseId"] = request.baseId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.recordsShrink)) {
+            body["Records"] = request.recordsShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.sheetIdOrName)) {
+            body["SheetIdOrName"] = request.sheetIdOrName ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.tenantContextShrink)) {
+            body["TenantContext"] = request.tenantContextShrink ?? "";
+        }
+        var realHeaders: [String: String] = [:]
+        if (!TeaUtils.Client.isUnset(headers.commonHeaders)) {
+            realHeaders = headers.commonHeaders ?? [:]
+        }
+        if (!TeaUtils.Client.isUnset(headers.accountContextShrink)) {
+            realHeaders["AccountContext"] = TeaUtils.Client.toJSONString(headers.accountContextShrink);
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": realHeaders as! [String: String],
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "InsertMultiDimTableRecord",
+            "version": "2023-04-26",
+            "protocol": "HTTPS",
+            "pathname": "/dingtalk/v1/table/insertMultiDimTableRecord",
+            "method": "POST",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(InsertMultiDimTableRecordResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func insertMultiDimTableRecord(_ request: InsertMultiDimTableRecordRequest) async throws -> InsertMultiDimTableRecordResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: InsertMultiDimTableRecordHeaders = InsertMultiDimTableRecordHeaders([:])
+        return try await insertMultiDimTableRecordWithOptions(request as! InsertMultiDimTableRecordRequest, headers as! InsertMultiDimTableRecordHeaders, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -13947,6 +14322,195 @@ open class Client : AlibabacloudOpenApi.Client {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         var headers: UpdateMeetingRoomGroupHeaders = UpdateMeetingRoomGroupHeaders([:])
         return try await updateMeetingRoomGroupWithOptions(request as! UpdateMeetingRoomGroupRequest, headers as! UpdateMeetingRoomGroupHeaders, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func updateMultiDimTableWithOptions(_ tmpReq: UpdateMultiDimTableRequest, _ tmpHeader: UpdateMultiDimTableHeaders, _ runtime: TeaUtils.RuntimeOptions) async throws -> UpdateMultiDimTableResponse {
+        try TeaUtils.Client.validateModel(tmpReq)
+        var request: UpdateMultiDimTableShrinkRequest = UpdateMultiDimTableShrinkRequest([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        var headers: UpdateMultiDimTableShrinkHeaders = UpdateMultiDimTableShrinkHeaders([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpHeader, headers)
+        if (!TeaUtils.Client.isUnset(tmpHeader.accountContext)) {
+            headers.accountContextShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpHeader.accountContext, "AccountContext", "json")
+        }
+        if (!TeaUtils.Client.isUnset(tmpReq.tenantContext)) {
+            request.tenantContextShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.tenantContext, "TenantContext", "json")
+        }
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.baseId)) {
+            body["BaseId"] = request.baseId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.name)) {
+            body["Name"] = request.name ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.sheetIdOrName)) {
+            body["SheetIdOrName"] = request.sheetIdOrName ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.tenantContextShrink)) {
+            body["TenantContext"] = request.tenantContextShrink ?? "";
+        }
+        var realHeaders: [String: String] = [:]
+        if (!TeaUtils.Client.isUnset(headers.commonHeaders)) {
+            realHeaders = headers.commonHeaders ?? [:]
+        }
+        if (!TeaUtils.Client.isUnset(headers.accountContextShrink)) {
+            realHeaders["AccountContext"] = TeaUtils.Client.toJSONString(headers.accountContextShrink);
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": realHeaders as! [String: String],
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "UpdateMultiDimTable",
+            "version": "2023-04-26",
+            "protocol": "HTTPS",
+            "pathname": "/dingtalk/v1/table/updateMultiDimTable",
+            "method": "POST",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(UpdateMultiDimTableResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func updateMultiDimTable(_ request: UpdateMultiDimTableRequest) async throws -> UpdateMultiDimTableResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: UpdateMultiDimTableHeaders = UpdateMultiDimTableHeaders([:])
+        return try await updateMultiDimTableWithOptions(request as! UpdateMultiDimTableRequest, headers as! UpdateMultiDimTableHeaders, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func updateMultiDimTableFieldWithOptions(_ tmpReq: UpdateMultiDimTableFieldRequest, _ tmpHeader: UpdateMultiDimTableFieldHeaders, _ runtime: TeaUtils.RuntimeOptions) async throws -> UpdateMultiDimTableFieldResponse {
+        try TeaUtils.Client.validateModel(tmpReq)
+        var request: UpdateMultiDimTableFieldShrinkRequest = UpdateMultiDimTableFieldShrinkRequest([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        var headers: UpdateMultiDimTableFieldShrinkHeaders = UpdateMultiDimTableFieldShrinkHeaders([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpHeader, headers)
+        if (!TeaUtils.Client.isUnset(tmpHeader.accountContext)) {
+            headers.accountContextShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpHeader.accountContext, "AccountContext", "json")
+        }
+        if (!TeaUtils.Client.isUnset(tmpReq.property)) {
+            request.propertyShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.property, "Property", "json")
+        }
+        if (!TeaUtils.Client.isUnset(tmpReq.tenantContext)) {
+            request.tenantContextShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.tenantContext, "TenantContext", "json")
+        }
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.baseId)) {
+            body["BaseId"] = request.baseId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.fieldIdOrName)) {
+            body["FieldIdOrName"] = request.fieldIdOrName ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.name)) {
+            body["Name"] = request.name ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.propertyShrink)) {
+            body["Property"] = request.propertyShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.sheetIdOrName)) {
+            body["SheetIdOrName"] = request.sheetIdOrName ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.tenantContextShrink)) {
+            body["TenantContext"] = request.tenantContextShrink ?? "";
+        }
+        var realHeaders: [String: String] = [:]
+        if (!TeaUtils.Client.isUnset(headers.commonHeaders)) {
+            realHeaders = headers.commonHeaders ?? [:]
+        }
+        if (!TeaUtils.Client.isUnset(headers.accountContextShrink)) {
+            realHeaders["AccountContext"] = TeaUtils.Client.toJSONString(headers.accountContextShrink);
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": realHeaders as! [String: String],
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "UpdateMultiDimTableField",
+            "version": "2023-04-26",
+            "protocol": "HTTPS",
+            "pathname": "/dingtalk/v1/table/updateMultiDimTableField",
+            "method": "POST",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(UpdateMultiDimTableFieldResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func updateMultiDimTableField(_ request: UpdateMultiDimTableFieldRequest) async throws -> UpdateMultiDimTableFieldResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: UpdateMultiDimTableFieldHeaders = UpdateMultiDimTableFieldHeaders([:])
+        return try await updateMultiDimTableFieldWithOptions(request as! UpdateMultiDimTableFieldRequest, headers as! UpdateMultiDimTableFieldHeaders, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func updateMultiDimTableRecordsWithOptions(_ tmpReq: UpdateMultiDimTableRecordsRequest, _ tmpHeader: UpdateMultiDimTableRecordsHeaders, _ runtime: TeaUtils.RuntimeOptions) async throws -> UpdateMultiDimTableRecordsResponse {
+        try TeaUtils.Client.validateModel(tmpReq)
+        var request: UpdateMultiDimTableRecordsShrinkRequest = UpdateMultiDimTableRecordsShrinkRequest([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        var headers: UpdateMultiDimTableRecordsShrinkHeaders = UpdateMultiDimTableRecordsShrinkHeaders([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpHeader, headers)
+        if (!TeaUtils.Client.isUnset(tmpHeader.accountContext)) {
+            headers.accountContextShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpHeader.accountContext, "AccountContext", "json")
+        }
+        if (!TeaUtils.Client.isUnset(tmpReq.recordIds)) {
+            request.recordIdsShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.recordIds, "RecordIds", "json")
+        }
+        if (!TeaUtils.Client.isUnset(tmpReq.tenantContext)) {
+            request.tenantContextShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.tenantContext, "TenantContext", "json")
+        }
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.baseId)) {
+            body["BaseId"] = request.baseId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.recordIdsShrink)) {
+            body["RecordIds"] = request.recordIdsShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.sheetIdOrName)) {
+            body["SheetIdOrName"] = request.sheetIdOrName ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.tenantContextShrink)) {
+            body["TenantContext"] = request.tenantContextShrink ?? "";
+        }
+        var realHeaders: [String: String] = [:]
+        if (!TeaUtils.Client.isUnset(headers.commonHeaders)) {
+            realHeaders = headers.commonHeaders ?? [:]
+        }
+        if (!TeaUtils.Client.isUnset(headers.accountContextShrink)) {
+            realHeaders["AccountContext"] = TeaUtils.Client.toJSONString(headers.accountContextShrink);
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": realHeaders as! [String: String],
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "UpdateMultiDimTableRecords",
+            "version": "2023-04-26",
+            "protocol": "HTTPS",
+            "pathname": "/dingtalk/v1/table/updateMultiDimTableRecords",
+            "method": "POST",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(UpdateMultiDimTableRecordsResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func updateMultiDimTableRecords(_ request: UpdateMultiDimTableRecordsRequest) async throws -> UpdateMultiDimTableRecordsResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: UpdateMultiDimTableRecordsHeaders = UpdateMultiDimTableRecordsHeaders([:])
+        return try await updateMultiDimTableRecordsWithOptions(request as! UpdateMultiDimTableRecordsRequest, headers as! UpdateMultiDimTableRecordsHeaders, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
