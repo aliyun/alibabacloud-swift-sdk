@@ -5024,6 +5024,8 @@ public class DescribeAndroidInstancesRequest : Tea.TeaModel {
 
     public var officeSiteIds: [String]?
 
+    public var qosRuleIds: [String]?
+
     public var saleMode: String?
 
     public var status: String?
@@ -5086,6 +5088,9 @@ public class DescribeAndroidInstancesRequest : Tea.TeaModel {
         if self.officeSiteIds != nil {
             map["OfficeSiteIds"] = self.officeSiteIds!
         }
+        if self.qosRuleIds != nil {
+            map["QosRuleIds"] = self.qosRuleIds!
+        }
         if self.saleMode != nil {
             map["SaleMode"] = self.saleMode!
         }
@@ -5144,6 +5149,9 @@ public class DescribeAndroidInstancesRequest : Tea.TeaModel {
         }
         if dict.keys.contains("OfficeSiteIds") {
             self.officeSiteIds = dict["OfficeSiteIds"] as! [String]
+        }
+        if dict.keys.contains("QosRuleIds") {
+            self.qosRuleIds = dict["QosRuleIds"] as! [String]
         }
         if dict.keys.contains("SaleMode") {
             self.saleMode = dict["SaleMode"] as! String
@@ -5360,6 +5368,8 @@ public class DescribeAndroidInstancesResponseBody : Tea.TeaModel {
 
         public var publicIpv6Address: String?
 
+        public var qosRuleId: String?
+
         public var rate: Int32?
 
         public var regionId: String?
@@ -5475,6 +5485,9 @@ public class DescribeAndroidInstancesResponseBody : Tea.TeaModel {
             }
             if self.publicIpv6Address != nil {
                 map["PublicIpv6Address"] = self.publicIpv6Address!
+            }
+            if self.qosRuleId != nil {
+                map["QosRuleId"] = self.qosRuleId!
             }
             if self.rate != nil {
                 map["Rate"] = self.rate!
@@ -5595,6 +5608,9 @@ public class DescribeAndroidInstancesResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("PublicIpv6Address") {
                 self.publicIpv6Address = dict["PublicIpv6Address"] as! String
+            }
+            if dict.keys.contains("QosRuleId") {
+                self.qosRuleId = dict["QosRuleId"] as! String
             }
             if dict.keys.contains("Rate") {
                 self.rate = dict["Rate"] as! Int32
@@ -6875,6 +6891,204 @@ public class DescribeCloudPhoneNodesResponse : Tea.TeaModel {
         }
         if dict.keys.contains("body") {
             var model = DescribeCloudPhoneNodesResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
+public class DescribeDisplayConfigRequest : Tea.TeaModel {
+    public var androidInstanceIds: [String]?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.androidInstanceIds != nil {
+            map["AndroidInstanceIds"] = self.androidInstanceIds!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("AndroidInstanceIds") {
+            self.androidInstanceIds = dict["AndroidInstanceIds"] as! [String]
+        }
+    }
+}
+
+public class DescribeDisplayConfigResponseBody : Tea.TeaModel {
+    public class DisplayConfigModel : Tea.TeaModel {
+        public var androidInstanceId: String?
+
+        public var dpi: Int32?
+
+        public var fps: Int32?
+
+        public var lockResolution: String?
+
+        public var resolutionHeight: Int32?
+
+        public var resolutionWidth: Int32?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.androidInstanceId != nil {
+                map["AndroidInstanceId"] = self.androidInstanceId!
+            }
+            if self.dpi != nil {
+                map["Dpi"] = self.dpi!
+            }
+            if self.fps != nil {
+                map["Fps"] = self.fps!
+            }
+            if self.lockResolution != nil {
+                map["LockResolution"] = self.lockResolution!
+            }
+            if self.resolutionHeight != nil {
+                map["ResolutionHeight"] = self.resolutionHeight!
+            }
+            if self.resolutionWidth != nil {
+                map["ResolutionWidth"] = self.resolutionWidth!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("AndroidInstanceId") {
+                self.androidInstanceId = dict["AndroidInstanceId"] as! String
+            }
+            if dict.keys.contains("Dpi") {
+                self.dpi = dict["Dpi"] as! Int32
+            }
+            if dict.keys.contains("Fps") {
+                self.fps = dict["Fps"] as! Int32
+            }
+            if dict.keys.contains("LockResolution") {
+                self.lockResolution = dict["LockResolution"] as! String
+            }
+            if dict.keys.contains("ResolutionHeight") {
+                self.resolutionHeight = dict["ResolutionHeight"] as! Int32
+            }
+            if dict.keys.contains("ResolutionWidth") {
+                self.resolutionWidth = dict["ResolutionWidth"] as! Int32
+            }
+        }
+    }
+    public var displayConfigModel: [DescribeDisplayConfigResponseBody.DisplayConfigModel]?
+
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.displayConfigModel != nil {
+            var tmp : [Any] = []
+            for k in self.displayConfigModel! {
+                tmp.append(k.toMap())
+            }
+            map["DisplayConfigModel"] = tmp
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("DisplayConfigModel") {
+            var tmp : [DescribeDisplayConfigResponseBody.DisplayConfigModel] = []
+            for v in dict["DisplayConfigModel"] as! [Any] {
+                var model = DescribeDisplayConfigResponseBody.DisplayConfigModel()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.displayConfigModel = tmp
+        }
+        if dict.keys.contains("RequestId") {
+            self.requestId = dict["RequestId"] as! String
+        }
+    }
+}
+
+public class DescribeDisplayConfigResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: DescribeDisplayConfigResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") {
+            var model = DescribeDisplayConfigResponseBody()
             model.fromMap(dict["body"] as! [String: Any])
             self.body = model
         }
@@ -11057,6 +11271,225 @@ public class ModifyCloudPhoneNodeResponse : Tea.TeaModel {
         }
         if dict.keys.contains("body") {
             var model = ModifyCloudPhoneNodeResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
+public class ModifyDisplayConfigRequest : Tea.TeaModel {
+    public class DisplayConfig : Tea.TeaModel {
+        public var dpi: Int32?
+
+        public var fps: Int32?
+
+        public var lockResolution: String?
+
+        public var resolutionHeight: Int32?
+
+        public var resolutionWidth: Int32?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.dpi != nil {
+                map["Dpi"] = self.dpi!
+            }
+            if self.fps != nil {
+                map["Fps"] = self.fps!
+            }
+            if self.lockResolution != nil {
+                map["LockResolution"] = self.lockResolution!
+            }
+            if self.resolutionHeight != nil {
+                map["ResolutionHeight"] = self.resolutionHeight!
+            }
+            if self.resolutionWidth != nil {
+                map["ResolutionWidth"] = self.resolutionWidth!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("Dpi") {
+                self.dpi = dict["Dpi"] as! Int32
+            }
+            if dict.keys.contains("Fps") {
+                self.fps = dict["Fps"] as! Int32
+            }
+            if dict.keys.contains("LockResolution") {
+                self.lockResolution = dict["LockResolution"] as! String
+            }
+            if dict.keys.contains("ResolutionHeight") {
+                self.resolutionHeight = dict["ResolutionHeight"] as! Int32
+            }
+            if dict.keys.contains("ResolutionWidth") {
+                self.resolutionWidth = dict["ResolutionWidth"] as! Int32
+            }
+        }
+    }
+    public var androidInstanceIds: [String]?
+
+    public var displayConfig: ModifyDisplayConfigRequest.DisplayConfig?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.displayConfig?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.androidInstanceIds != nil {
+            map["AndroidInstanceIds"] = self.androidInstanceIds!
+        }
+        if self.displayConfig != nil {
+            map["DisplayConfig"] = self.displayConfig?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("AndroidInstanceIds") {
+            self.androidInstanceIds = dict["AndroidInstanceIds"] as! [String]
+        }
+        if dict.keys.contains("DisplayConfig") {
+            var model = ModifyDisplayConfigRequest.DisplayConfig()
+            model.fromMap(dict["DisplayConfig"] as! [String: Any])
+            self.displayConfig = model
+        }
+    }
+}
+
+public class ModifyDisplayConfigShrinkRequest : Tea.TeaModel {
+    public var androidInstanceIds: [String]?
+
+    public var displayConfigShrink: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.androidInstanceIds != nil {
+            map["AndroidInstanceIds"] = self.androidInstanceIds!
+        }
+        if self.displayConfigShrink != nil {
+            map["DisplayConfig"] = self.displayConfigShrink!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("AndroidInstanceIds") {
+            self.androidInstanceIds = dict["AndroidInstanceIds"] as! [String]
+        }
+        if dict.keys.contains("DisplayConfig") {
+            self.displayConfigShrink = dict["DisplayConfig"] as! String
+        }
+    }
+}
+
+public class ModifyDisplayConfigResponseBody : Tea.TeaModel {
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("RequestId") {
+            self.requestId = dict["RequestId"] as! String
+        }
+    }
+}
+
+public class ModifyDisplayConfigResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: ModifyDisplayConfigResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") {
+            var model = ModifyDisplayConfigResponseBody()
             model.fromMap(dict["body"] as! [String: Any])
             self.body = model
         }

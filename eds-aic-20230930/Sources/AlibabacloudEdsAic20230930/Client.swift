@@ -985,6 +985,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.officeSiteIds)) {
             query["OfficeSiteIds"] = request.officeSiteIds ?? [];
         }
+        if (!TeaUtils.Client.isUnset(request.qosRuleIds)) {
+            query["QosRuleIds"] = request.qosRuleIds ?? [];
+        }
         if (!TeaUtils.Client.isUnset(request.saleMode)) {
             query["SaleMode"] = request.saleMode ?? "";
         }
@@ -1190,6 +1193,37 @@ open class Client : AlibabacloudOpenApi.Client {
     public func describeCloudPhoneNodes(_ request: DescribeCloudPhoneNodesRequest) async throws -> DescribeCloudPhoneNodesResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         return try await describeCloudPhoneNodesWithOptions(request as! DescribeCloudPhoneNodesRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func describeDisplayConfigWithOptions(_ request: DescribeDisplayConfigRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DescribeDisplayConfigResponse {
+        try TeaUtils.Client.validateModel(request)
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.androidInstanceIds)) {
+            body["AndroidInstanceIds"] = request.androidInstanceIds ?? [];
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "DescribeDisplayConfig",
+            "version": "2023-09-30",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(DescribeDisplayConfigResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func describeDisplayConfig(_ request: DescribeDisplayConfigRequest) async throws -> DescribeDisplayConfigResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await describeDisplayConfigWithOptions(request as! DescribeDisplayConfigRequest, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -2014,6 +2048,45 @@ open class Client : AlibabacloudOpenApi.Client {
     public func modifyCloudPhoneNode(_ request: ModifyCloudPhoneNodeRequest) async throws -> ModifyCloudPhoneNodeResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         return try await modifyCloudPhoneNodeWithOptions(request as! ModifyCloudPhoneNodeRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func modifyDisplayConfigWithOptions(_ tmpReq: ModifyDisplayConfigRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ModifyDisplayConfigResponse {
+        try TeaUtils.Client.validateModel(tmpReq)
+        var request: ModifyDisplayConfigShrinkRequest = ModifyDisplayConfigShrinkRequest([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.displayConfig)) {
+            request.displayConfigShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.displayConfig, "DisplayConfig", "json")
+        }
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.androidInstanceIds)) {
+            body["AndroidInstanceIds"] = request.androidInstanceIds ?? [];
+        }
+        if (!TeaUtils.Client.isUnset(request.displayConfigShrink)) {
+            body["DisplayConfig"] = request.displayConfigShrink ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "ModifyDisplayConfig",
+            "version": "2023-09-30",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(ModifyDisplayConfigResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func modifyDisplayConfig(_ request: ModifyDisplayConfigRequest) async throws -> ModifyDisplayConfigResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await modifyDisplayConfigWithOptions(request as! ModifyDisplayConfigRequest, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
