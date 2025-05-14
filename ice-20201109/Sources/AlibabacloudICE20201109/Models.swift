@@ -11947,6 +11947,8 @@ public class CreateMediaLiveChannelRequest : Tea.TeaModel {
 
         public var videoCodecSetting: CreateMediaLiveChannelRequest.VideoSettings.VideoCodecSetting?
 
+        public var videoCodecType: String?
+
         public var width: Int32?
 
         public override init() {
@@ -11976,6 +11978,9 @@ public class CreateMediaLiveChannelRequest : Tea.TeaModel {
             if self.videoCodecSetting != nil {
                 map["VideoCodecSetting"] = self.videoCodecSetting?.toMap()
             }
+            if self.videoCodecType != nil {
+                map["VideoCodecType"] = self.videoCodecType!
+            }
             if self.width != nil {
                 map["Width"] = self.width!
             }
@@ -11996,6 +12001,9 @@ public class CreateMediaLiveChannelRequest : Tea.TeaModel {
                 var model = CreateMediaLiveChannelRequest.VideoSettings.VideoCodecSetting()
                 model.fromMap(dict["VideoCodecSetting"] as! [String: Any])
                 self.videoCodecSetting = model
+            }
+            if dict.keys.contains("VideoCodecType") {
+                self.videoCodecType = dict["VideoCodecType"] as! String
             }
             if dict.keys.contains("Width") {
                 self.width = dict["Width"] as! Int32
@@ -34388,6 +34396,8 @@ public class GetMediaLiveChannelResponseBody : Tea.TeaModel {
 
             public var videoCodecSetting: GetMediaLiveChannelResponseBody.Channel.VideoSettings.VideoCodecSetting?
 
+            public var videoCodecType: String?
+
             public var width: Int32?
 
             public override init() {
@@ -34417,6 +34427,9 @@ public class GetMediaLiveChannelResponseBody : Tea.TeaModel {
                 if self.videoCodecSetting != nil {
                     map["VideoCodecSetting"] = self.videoCodecSetting?.toMap()
                 }
+                if self.videoCodecType != nil {
+                    map["VideoCodecType"] = self.videoCodecType!
+                }
                 if self.width != nil {
                     map["Width"] = self.width!
                 }
@@ -34437,6 +34450,9 @@ public class GetMediaLiveChannelResponseBody : Tea.TeaModel {
                     var model = GetMediaLiveChannelResponseBody.Channel.VideoSettings.VideoCodecSetting()
                     model.fromMap(dict["VideoCodecSetting"] as! [String: Any])
                     self.videoCodecSetting = model
+                }
+                if dict.keys.contains("VideoCodecType") {
+                    self.videoCodecType = dict["VideoCodecType"] as! String
                 }
                 if dict.keys.contains("Width") {
                     self.width = dict["Width"] as! Int32
@@ -56930,6 +56946,8 @@ public class ListMediaLiveChannelsResponseBody : Tea.TeaModel {
 
             public var videoCodecSetting: ListMediaLiveChannelsResponseBody.Channels.VideoSettings.VideoCodecSetting?
 
+            public var videoCodecType: String?
+
             public var width: Int32?
 
             public override init() {
@@ -56959,6 +56977,9 @@ public class ListMediaLiveChannelsResponseBody : Tea.TeaModel {
                 if self.videoCodecSetting != nil {
                     map["VideoCodecSetting"] = self.videoCodecSetting?.toMap()
                 }
+                if self.videoCodecType != nil {
+                    map["VideoCodecType"] = self.videoCodecType!
+                }
                 if self.width != nil {
                     map["Width"] = self.width!
                 }
@@ -56979,6 +57000,9 @@ public class ListMediaLiveChannelsResponseBody : Tea.TeaModel {
                     var model = ListMediaLiveChannelsResponseBody.Channels.VideoSettings.VideoCodecSetting()
                     model.fromMap(dict["VideoCodecSetting"] as! [String: Any])
                     self.videoCodecSetting = model
+                }
+                if dict.keys.contains("VideoCodecType") {
+                    self.videoCodecType = dict["VideoCodecType"] as! String
                 }
                 if dict.keys.contains("Width") {
                     self.width = dict["Width"] as! Int32
@@ -99473,6 +99497,8 @@ public class UpdateMediaLiveChannelRequest : Tea.TeaModel {
 
         public var videoCodecSetting: UpdateMediaLiveChannelRequest.VideoSettings.VideoCodecSetting?
 
+        public var videoCodecType: String?
+
         public var width: Int32?
 
         public override init() {
@@ -99502,6 +99528,9 @@ public class UpdateMediaLiveChannelRequest : Tea.TeaModel {
             if self.videoCodecSetting != nil {
                 map["VideoCodecSetting"] = self.videoCodecSetting?.toMap()
             }
+            if self.videoCodecType != nil {
+                map["VideoCodecType"] = self.videoCodecType!
+            }
             if self.width != nil {
                 map["Width"] = self.width!
             }
@@ -99522,6 +99551,9 @@ public class UpdateMediaLiveChannelRequest : Tea.TeaModel {
                 var model = UpdateMediaLiveChannelRequest.VideoSettings.VideoCodecSetting()
                 model.fromMap(dict["VideoCodecSetting"] as! [String: Any])
                 self.videoCodecSetting = model
+            }
+            if dict.keys.contains("VideoCodecType") {
+                self.videoCodecType = dict["VideoCodecType"] as! String
             }
             if dict.keys.contains("Width") {
                 self.width = dict["Width"] as! Int32
