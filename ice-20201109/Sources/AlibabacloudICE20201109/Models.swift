@@ -79007,9 +79007,9 @@ public class SubmitCopyrightJobRequest : Tea.TeaModel {
 
     public var params: String?
 
-    public var startTime: String?
+    public var startTime: Int64?
 
-    public var totalTime: String?
+    public var totalTime: Int64?
 
     public var userData: String?
 
@@ -79083,10 +79083,10 @@ public class SubmitCopyrightJobRequest : Tea.TeaModel {
             self.params = dict["Params"] as! String
         }
         if dict.keys.contains("StartTime") {
-            self.startTime = dict["StartTime"] as! String
+            self.startTime = dict["StartTime"] as! Int64
         }
         if dict.keys.contains("TotalTime") {
-            self.totalTime = dict["TotalTime"] as! String
+            self.totalTime = dict["TotalTime"] as! Int64
         }
         if dict.keys.contains("UserData") {
             self.userData = dict["UserData"] as! String
@@ -79107,9 +79107,9 @@ public class SubmitCopyrightJobShrinkRequest : Tea.TeaModel {
 
     public var params: String?
 
-    public var startTime: String?
+    public var startTime: Int64?
 
-    public var totalTime: String?
+    public var totalTime: Int64?
 
     public var userData: String?
 
@@ -79177,10 +79177,10 @@ public class SubmitCopyrightJobShrinkRequest : Tea.TeaModel {
             self.params = dict["Params"] as! String
         }
         if dict.keys.contains("StartTime") {
-            self.startTime = dict["StartTime"] as! String
+            self.startTime = dict["StartTime"] as! Int64
         }
         if dict.keys.contains("TotalTime") {
-            self.totalTime = dict["TotalTime"] as! String
+            self.totalTime = dict["TotalTime"] as! Int64
         }
         if dict.keys.contains("UserData") {
             self.userData = dict["UserData"] as! String
@@ -87716,9 +87716,9 @@ public class SubmitTraceAbJobRequest : Tea.TeaModel {
 
     public var output: SubmitTraceAbJobRequest.Output?
 
-    public var startTime: String?
+    public var startTime: Int64?
 
-    public var totalTime: String?
+    public var totalTime: Int64?
 
     public var userData: String?
 
@@ -87780,10 +87780,10 @@ public class SubmitTraceAbJobRequest : Tea.TeaModel {
             self.output = model
         }
         if dict.keys.contains("StartTime") {
-            self.startTime = dict["StartTime"] as! String
+            self.startTime = dict["StartTime"] as! Int64
         }
         if dict.keys.contains("TotalTime") {
-            self.totalTime = dict["TotalTime"] as! String
+            self.totalTime = dict["TotalTime"] as! Int64
         }
         if dict.keys.contains("UserData") {
             self.userData = dict["UserData"] as! String
@@ -87800,9 +87800,9 @@ public class SubmitTraceAbJobShrinkRequest : Tea.TeaModel {
 
     public var outputShrink: String?
 
-    public var startTime: String?
+    public var startTime: Int64?
 
-    public var totalTime: String?
+    public var totalTime: Int64?
 
     public var userData: String?
 
@@ -87858,10 +87858,10 @@ public class SubmitTraceAbJobShrinkRequest : Tea.TeaModel {
             self.outputShrink = dict["Output"] as! String
         }
         if dict.keys.contains("StartTime") {
-            self.startTime = dict["StartTime"] as! String
+            self.startTime = dict["StartTime"] as! Int64
         }
         if dict.keys.contains("TotalTime") {
-            self.totalTime = dict["TotalTime"] as! String
+            self.totalTime = dict["TotalTime"] as! Int64
         }
         if dict.keys.contains("UserData") {
             self.userData = dict["UserData"] as! String
