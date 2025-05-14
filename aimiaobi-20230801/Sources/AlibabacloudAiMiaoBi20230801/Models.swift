@@ -33303,6 +33303,85 @@ public class RunCustomHotTopicViewPointAnalysisResponseBody : Tea.TeaModel {
     }
     public class Payload : Tea.TeaModel {
         public class Output : Tea.TeaModel {
+            public class Articles : Tea.TeaModel {
+                public var author: String?
+
+                public var content: String?
+
+                public var pubTime: String?
+
+                public var source: String?
+
+                public var summary: String?
+
+                public var title: String?
+
+                public var url: String?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.author != nil {
+                        map["Author"] = self.author!
+                    }
+                    if self.content != nil {
+                        map["Content"] = self.content!
+                    }
+                    if self.pubTime != nil {
+                        map["PubTime"] = self.pubTime!
+                    }
+                    if self.source != nil {
+                        map["Source"] = self.source!
+                    }
+                    if self.summary != nil {
+                        map["Summary"] = self.summary!
+                    }
+                    if self.title != nil {
+                        map["Title"] = self.title!
+                    }
+                    if self.url != nil {
+                        map["Url"] = self.url!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any]) -> Void {
+                    if dict.keys.contains("Author") {
+                        self.author = dict["Author"] as! String
+                    }
+                    if dict.keys.contains("Content") {
+                        self.content = dict["Content"] as! String
+                    }
+                    if dict.keys.contains("PubTime") {
+                        self.pubTime = dict["PubTime"] as! String
+                    }
+                    if dict.keys.contains("Source") {
+                        self.source = dict["Source"] as! String
+                    }
+                    if dict.keys.contains("Summary") {
+                        self.summary = dict["Summary"] as! String
+                    }
+                    if dict.keys.contains("Title") {
+                        self.title = dict["Title"] as! String
+                    }
+                    if dict.keys.contains("Url") {
+                        self.url = dict["Url"] as! String
+                    }
+                }
+            }
+            public var articles: [RunCustomHotTopicViewPointAnalysisResponseBody.Payload.Output.Articles]?
+
             public var askUser: [String]?
 
             public var asyncTaskId: String?
@@ -33329,6 +33408,13 @@ public class RunCustomHotTopicViewPointAnalysisResponseBody : Tea.TeaModel {
 
             public override func toMap() -> [String : Any] {
                 var map = super.toMap()
+                if self.articles != nil {
+                    var tmp : [Any] = []
+                    for k in self.articles! {
+                        tmp.append(k.toMap())
+                    }
+                    map["Articles"] = tmp
+                }
                 if self.askUser != nil {
                     map["AskUser"] = self.askUser!
                 }
@@ -33351,6 +33437,17 @@ public class RunCustomHotTopicViewPointAnalysisResponseBody : Tea.TeaModel {
             }
 
             public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("Articles") {
+                    var tmp : [RunCustomHotTopicViewPointAnalysisResponseBody.Payload.Output.Articles] = []
+                    for v in dict["Articles"] as! [Any] {
+                        var model = RunCustomHotTopicViewPointAnalysisResponseBody.Payload.Output.Articles()
+                        if v != nil {
+                            model.fromMap(v as! [String: Any])
+                        }
+                        tmp.append(model)
+                    }
+                    self.articles = tmp
+                }
                 if dict.keys.contains("AskUser") {
                     self.askUser = dict["AskUser"] as! [String]
                 }
