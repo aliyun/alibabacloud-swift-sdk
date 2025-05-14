@@ -28364,6 +28364,8 @@ public class LlmSmartCallRequest : Tea.TeaModel {
 
     public var callerNumber: String?
 
+    public var extension_: String?
+
     public var outId: String?
 
     public var promptParam: [String: Any]?
@@ -28396,6 +28398,9 @@ public class LlmSmartCallRequest : Tea.TeaModel {
         if self.callerNumber != nil {
             map["CallerNumber"] = self.callerNumber!
         }
+        if self.extension_ != nil {
+            map["Extension"] = self.extension_!
+        }
         if self.outId != nil {
             map["OutId"] = self.outId!
         }
@@ -28421,6 +28426,9 @@ public class LlmSmartCallRequest : Tea.TeaModel {
         if dict.keys.contains("CallerNumber") {
             self.callerNumber = dict["CallerNumber"] as! String
         }
+        if dict.keys.contains("Extension") {
+            self.extension_ = dict["Extension"] as! String
+        }
         if dict.keys.contains("OutId") {
             self.outId = dict["OutId"] as! String
         }
@@ -28441,6 +28449,8 @@ public class LlmSmartCallShrinkRequest : Tea.TeaModel {
     public var calledNumber: String?
 
     public var callerNumber: String?
+
+    public var extension_: String?
 
     public var outId: String?
 
@@ -28474,6 +28484,9 @@ public class LlmSmartCallShrinkRequest : Tea.TeaModel {
         if self.callerNumber != nil {
             map["CallerNumber"] = self.callerNumber!
         }
+        if self.extension_ != nil {
+            map["Extension"] = self.extension_!
+        }
         if self.outId != nil {
             map["OutId"] = self.outId!
         }
@@ -28498,6 +28511,9 @@ public class LlmSmartCallShrinkRequest : Tea.TeaModel {
         }
         if dict.keys.contains("CallerNumber") {
             self.callerNumber = dict["CallerNumber"] as! String
+        }
+        if dict.keys.contains("Extension") {
+            self.extension_ = dict["Extension"] as! String
         }
         if dict.keys.contains("OutId") {
             self.outId = dict["OutId"] as! String
