@@ -542,9 +542,105 @@ public class CreateFeatureEntityResponse : Tea.TeaModel {
 
 public class CreateFeatureViewRequest : Tea.TeaModel {
     public class Fields : Tea.TeaModel {
+        public class Transform : Tea.TeaModel {
+            public class Input : Tea.TeaModel {
+                public var name: String?
+
+                public var type: String?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.name != nil {
+                        map["Name"] = self.name!
+                    }
+                    if self.type != nil {
+                        map["Type"] = self.type!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any]) -> Void {
+                    if dict.keys.contains("Name") {
+                        self.name = dict["Name"] as! String
+                    }
+                    if dict.keys.contains("Type") {
+                        self.type = dict["Type"] as! String
+                    }
+                }
+            }
+            public var input: [CreateFeatureViewRequest.Fields.Transform.Input]?
+
+            public var LLMConfigId: Int32?
+
+            public var type: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.input != nil {
+                    var tmp : [Any] = []
+                    for k in self.input! {
+                        tmp.append(k.toMap())
+                    }
+                    map["Input"] = tmp
+                }
+                if self.LLMConfigId != nil {
+                    map["LLMConfigId"] = self.LLMConfigId!
+                }
+                if self.type != nil {
+                    map["Type"] = self.type!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("Input") {
+                    var tmp : [CreateFeatureViewRequest.Fields.Transform.Input] = []
+                    for v in dict["Input"] as! [Any] {
+                        var model = CreateFeatureViewRequest.Fields.Transform.Input()
+                        if v != nil {
+                            model.fromMap(v as! [String: Any])
+                        }
+                        tmp.append(model)
+                    }
+                    self.input = tmp
+                }
+                if dict.keys.contains("LLMConfigId") {
+                    self.LLMConfigId = dict["LLMConfigId"] as! Int32
+                }
+                if dict.keys.contains("Type") {
+                    self.type = dict["Type"] as! String
+                }
+            }
+        }
         public var attributes: [String]?
 
         public var name: String?
+
+        public var transform: [CreateFeatureViewRequest.Fields.Transform]?
 
         public var type: String?
 
@@ -568,6 +664,13 @@ public class CreateFeatureViewRequest : Tea.TeaModel {
             if self.name != nil {
                 map["Name"] = self.name!
             }
+            if self.transform != nil {
+                var tmp : [Any] = []
+                for k in self.transform! {
+                    tmp.append(k.toMap())
+                }
+                map["Transform"] = tmp
+            }
             if self.type != nil {
                 map["Type"] = self.type!
             }
@@ -580,6 +683,17 @@ public class CreateFeatureViewRequest : Tea.TeaModel {
             }
             if dict.keys.contains("Name") {
                 self.name = dict["Name"] as! String
+            }
+            if dict.keys.contains("Transform") {
+                var tmp : [CreateFeatureViewRequest.Fields.Transform] = []
+                for v in dict["Transform"] as! [Any] {
+                    var model = CreateFeatureViewRequest.Fields.Transform()
+                    if v != nil {
+                        model.fromMap(v as! [String: Any])
+                    }
+                    tmp.append(model)
+                }
+                self.transform = tmp
             }
             if dict.keys.contains("Type") {
                 self.type = dict["Type"] as! String
@@ -2768,9 +2882,105 @@ public class GetFeatureEntityResponse : Tea.TeaModel {
 
 public class GetFeatureViewResponseBody : Tea.TeaModel {
     public class Fields : Tea.TeaModel {
+        public class Transform : Tea.TeaModel {
+            public class Input : Tea.TeaModel {
+                public var name: String?
+
+                public var type: String?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.name != nil {
+                        map["Name"] = self.name!
+                    }
+                    if self.type != nil {
+                        map["Type"] = self.type!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any]) -> Void {
+                    if dict.keys.contains("Name") {
+                        self.name = dict["Name"] as! String
+                    }
+                    if dict.keys.contains("Type") {
+                        self.type = dict["Type"] as! String
+                    }
+                }
+            }
+            public var input: [GetFeatureViewResponseBody.Fields.Transform.Input]?
+
+            public var LLMConfigId: Int32?
+
+            public var type: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.input != nil {
+                    var tmp : [Any] = []
+                    for k in self.input! {
+                        tmp.append(k.toMap())
+                    }
+                    map["Input"] = tmp
+                }
+                if self.LLMConfigId != nil {
+                    map["LLMConfigId"] = self.LLMConfigId!
+                }
+                if self.type != nil {
+                    map["Type"] = self.type!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("Input") {
+                    var tmp : [GetFeatureViewResponseBody.Fields.Transform.Input] = []
+                    for v in dict["Input"] as! [Any] {
+                        var model = GetFeatureViewResponseBody.Fields.Transform.Input()
+                        if v != nil {
+                            model.fromMap(v as! [String: Any])
+                        }
+                        tmp.append(model)
+                    }
+                    self.input = tmp
+                }
+                if dict.keys.contains("LLMConfigId") {
+                    self.LLMConfigId = dict["LLMConfigId"] as! Int32
+                }
+                if dict.keys.contains("Type") {
+                    self.type = dict["Type"] as! String
+                }
+            }
+        }
         public var attributes: [String]?
 
         public var name: String?
+
+        public var transform: GetFeatureViewResponseBody.Fields.Transform?
 
         public var type: String?
 
@@ -2784,6 +2994,7 @@ public class GetFeatureViewResponseBody : Tea.TeaModel {
         }
 
         public override func validate() throws -> Void {
+            try self.transform?.validate()
         }
 
         public override func toMap() -> [String : Any] {
@@ -2793,6 +3004,9 @@ public class GetFeatureViewResponseBody : Tea.TeaModel {
             }
             if self.name != nil {
                 map["Name"] = self.name!
+            }
+            if self.transform != nil {
+                map["Transform"] = self.transform?.toMap()
             }
             if self.type != nil {
                 map["Type"] = self.type!
@@ -2806,6 +3020,11 @@ public class GetFeatureViewResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("Name") {
                 self.name = dict["Name"] as! String
+            }
+            if dict.keys.contains("Transform") {
+                var model = GetFeatureViewResponseBody.Fields.Transform()
+                model.fromMap(dict["Transform"] as! [String: Any])
+                self.transform = model
             }
             if dict.keys.contains("Type") {
                 self.type = dict["Type"] as! String
@@ -5767,6 +5986,8 @@ public class ListFeatureEntitiesResponse : Tea.TeaModel {
 public class ListFeatureViewFieldRelationshipsResponseBody : Tea.TeaModel {
     public class Relationships : Tea.TeaModel {
         public class Models : Tea.TeaModel {
+            public var featureAliasName: String?
+
             public var modelId: String?
 
             public var modelName: String?
@@ -5785,6 +6006,9 @@ public class ListFeatureViewFieldRelationshipsResponseBody : Tea.TeaModel {
 
             public override func toMap() -> [String : Any] {
                 var map = super.toMap()
+                if self.featureAliasName != nil {
+                    map["FeatureAliasName"] = self.featureAliasName!
+                }
                 if self.modelId != nil {
                     map["ModelId"] = self.modelId!
                 }
@@ -5795,6 +6019,9 @@ public class ListFeatureViewFieldRelationshipsResponseBody : Tea.TeaModel {
             }
 
             public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("FeatureAliasName") {
+                    self.featureAliasName = dict["FeatureAliasName"] as! String
+                }
                 if dict.keys.contains("ModelId") {
                     self.modelId = dict["ModelId"] as! String
                 }
