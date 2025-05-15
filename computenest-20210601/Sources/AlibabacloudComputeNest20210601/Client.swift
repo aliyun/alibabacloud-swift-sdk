@@ -881,6 +881,52 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func listServiceInstanceBillWithOptions(_ request: ListServiceInstanceBillRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ListServiceInstanceBillResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.billingCycle)) {
+            query["BillingCycle"] = request.billingCycle ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.billingDate)) {
+            query["BillingDate"] = request.billingDate ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.granularity)) {
+            query["Granularity"] = request.granularity ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.maxResults)) {
+            query["MaxResults"] = request.maxResults!;
+        }
+        if (!TeaUtils.Client.isUnset(request.nextToken)) {
+            query["NextToken"] = request.nextToken ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.serviceInstanceId)) {
+            query["ServiceInstanceId"] = request.serviceInstanceId ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "ListServiceInstanceBill",
+            "version": "2021-06-01",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(ListServiceInstanceBillResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func listServiceInstanceBill(_ request: ListServiceInstanceBillRequest) async throws -> ListServiceInstanceBillResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await listServiceInstanceBillWithOptions(request as! ListServiceInstanceBillRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func listServiceInstanceLogsWithOptions(_ request: ListServiceInstanceLogsRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ListServiceInstanceLogsResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
