@@ -1683,6 +1683,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func listReportsWithOptions(_ request: ListReportsRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ListReportsResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.appId)) {
+            query["AppId"] = request.appId ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.maxResults)) {
             query["MaxResults"] = request.maxResults!;
         }
