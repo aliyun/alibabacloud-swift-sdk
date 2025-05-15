@@ -9647,6 +9647,8 @@ public class DescribeLogStoreInfoResponseBody : Tea.TeaModel {
 
     public var quota: Int64?
 
+    public var regionId: String?
+
     public var requestId: String?
 
     public var ttl: Int32?
@@ -9676,6 +9678,9 @@ public class DescribeLogStoreInfoResponseBody : Tea.TeaModel {
         if self.quota != nil {
             map["Quota"] = self.quota!
         }
+        if self.regionId != nil {
+            map["RegionId"] = self.regionId!
+        }
         if self.requestId != nil {
             map["RequestId"] = self.requestId!
         }
@@ -9697,6 +9702,9 @@ public class DescribeLogStoreInfoResponseBody : Tea.TeaModel {
         }
         if dict.keys.contains("Quota") {
             self.quota = dict["Quota"] as! Int64
+        }
+        if dict.keys.contains("RegionId") {
+            self.regionId = dict["RegionId"] as! String
         }
         if dict.keys.contains("RequestId") {
             self.requestId = dict["RequestId"] as! String
@@ -11850,9 +11858,13 @@ public class DescribeOutgoingDomainRequest : Tea.TeaModel {
 
     public var currentPage: String?
 
+    public var dataType: String?
+
     public var domain: String?
 
     public var endTime: String?
+
+    public var isAITraffic: String?
 
     public var lang: String?
 
@@ -11888,11 +11900,17 @@ public class DescribeOutgoingDomainRequest : Tea.TeaModel {
         if self.currentPage != nil {
             map["CurrentPage"] = self.currentPage!
         }
+        if self.dataType != nil {
+            map["DataType"] = self.dataType!
+        }
         if self.domain != nil {
             map["Domain"] = self.domain!
         }
         if self.endTime != nil {
             map["EndTime"] = self.endTime!
+        }
+        if self.isAITraffic != nil {
+            map["IsAITraffic"] = self.isAITraffic!
         }
         if self.lang != nil {
             map["Lang"] = self.lang!
@@ -11925,11 +11943,17 @@ public class DescribeOutgoingDomainRequest : Tea.TeaModel {
         if dict.keys.contains("CurrentPage") {
             self.currentPage = dict["CurrentPage"] as! String
         }
+        if dict.keys.contains("DataType") {
+            self.dataType = dict["DataType"] as! String
+        }
         if dict.keys.contains("Domain") {
             self.domain = dict["Domain"] as! String
         }
         if dict.keys.contains("EndTime") {
             self.endTime = dict["EndTime"] as! String
+        }
+        if dict.keys.contains("IsAITraffic") {
+            self.isAITraffic = dict["IsAITraffic"] as! String
         }
         if dict.keys.contains("Lang") {
             self.lang = dict["Lang"] as! String
