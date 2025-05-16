@@ -24,6 +24,48 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func attachNodesWithOptions(_ tmpReq: AttachNodesRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> AttachNodesResponse {
+        try TeaUtils.Client.validateModel(tmpReq)
+        var request: AttachNodesShrinkRequest = AttachNodesShrinkRequest([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.computeNode)) {
+            request.computeNodeShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.computeNode, "ComputeNode", "json")
+        }
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.clusterId)) {
+            query["ClusterId"] = request.clusterId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.computeNodeShrink)) {
+            query["ComputeNode"] = request.computeNodeShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.queueName)) {
+            query["QueueName"] = request.queueName ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "AttachNodes",
+            "version": "2024-07-30",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(AttachNodesResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func attachNodes(_ request: AttachNodesRequest) async throws -> AttachNodesResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await attachNodesWithOptions(request as! AttachNodesRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func attachSharedStoragesWithOptions(_ tmpReq: AttachSharedStoragesRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> AttachSharedStoragesResponse {
         try TeaUtils.Client.validateModel(tmpReq)
         var request: AttachSharedStoragesShrinkRequest = AttachSharedStoragesShrinkRequest([:])
@@ -239,6 +281,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.count)) {
             query["Count"] = request.count!;
         }
+        if (!TeaUtils.Client.isUnset(request.deploymentSetId)) {
+            query["DeploymentSetId"] = request.deploymentSetId ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.HPCInterConnect)) {
             query["HPCInterConnect"] = request.HPCInterConnect ?? "";
         }
@@ -256,6 +301,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.ramRole)) {
             query["RamRole"] = request.ramRole ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.reservedNodePoolId)) {
+            query["ReservedNodePoolId"] = request.reservedNodePoolId ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.vSwitchId)) {
             query["VSwitchId"] = request.vSwitchId ?? "";
@@ -1544,6 +1592,12 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(tmpReq.clusterCustomConfiguration)) {
             request.clusterCustomConfigurationShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.clusterCustomConfiguration, "ClusterCustomConfiguration", "json")
         }
+        if (!TeaUtils.Client.isUnset(tmpReq.monitorSpec)) {
+            request.monitorSpecShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.monitorSpec, "MonitorSpec", "json")
+        }
+        if (!TeaUtils.Client.isUnset(tmpReq.schedulerSpec)) {
+            request.schedulerSpecShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.schedulerSpec, "SchedulerSpec", "json")
+        }
         var query: [String: Any] = [:]
         if (!TeaUtils.Client.isUnset(request.clientVersion)) {
             query["ClientVersion"] = request.clientVersion ?? "";
@@ -1580,6 +1634,12 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.maxCount)) {
             query["MaxCount"] = request.maxCount!;
+        }
+        if (!TeaUtils.Client.isUnset(request.monitorSpecShrink)) {
+            query["MonitorSpec"] = request.monitorSpecShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.schedulerSpecShrink)) {
+            query["SchedulerSpec"] = request.schedulerSpecShrink ?? "";
         }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "query": AlibabaCloudOpenApiUtil.Client.query(query)
