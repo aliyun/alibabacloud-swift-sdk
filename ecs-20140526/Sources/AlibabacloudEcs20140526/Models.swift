@@ -83890,6 +83890,10 @@ public class DescribeSnapshotLinksRequest : Tea.TeaModel {
 
     public var instanceId: String?
 
+    public var maxResults: Int32?
+
+    public var nextToken: String?
+
     public var ownerAccount: String?
 
     public var ownerId: Int64?
@@ -83926,6 +83930,12 @@ public class DescribeSnapshotLinksRequest : Tea.TeaModel {
         if self.instanceId != nil {
             map["InstanceId"] = self.instanceId!
         }
+        if self.maxResults != nil {
+            map["MaxResults"] = self.maxResults!
+        }
+        if self.nextToken != nil {
+            map["NextToken"] = self.nextToken!
+        }
         if self.ownerAccount != nil {
             map["OwnerAccount"] = self.ownerAccount!
         }
@@ -83960,6 +83970,12 @@ public class DescribeSnapshotLinksRequest : Tea.TeaModel {
         }
         if let value = dict["InstanceId"] as? String {
             self.instanceId = value
+        }
+        if let value = dict["MaxResults"] as? Int32 {
+            self.maxResults = value
+        }
+        if let value = dict["NextToken"] as? String {
+            self.nextToken = value
         }
         if let value = dict["OwnerAccount"] as? String {
             self.ownerAccount = value
@@ -84151,6 +84167,8 @@ public class DescribeSnapshotLinksResponseBody : Tea.TeaModel {
             }
         }
     }
+    public var nextToken: String?
+
     public var pageNumber: Int32?
 
     public var pageSize: Int32?
@@ -84176,6 +84194,9 @@ public class DescribeSnapshotLinksResponseBody : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.nextToken != nil {
+            map["NextToken"] = self.nextToken!
+        }
         if self.pageNumber != nil {
             map["PageNumber"] = self.pageNumber!
         }
@@ -84196,6 +84217,9 @@ public class DescribeSnapshotLinksResponseBody : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["NextToken"] as? String {
+            self.nextToken = value
+        }
         if let value = dict["PageNumber"] as? Int32 {
             self.pageNumber = value
         }
