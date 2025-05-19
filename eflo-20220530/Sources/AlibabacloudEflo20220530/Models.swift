@@ -9395,7 +9395,13 @@ public class GetNodeInfoForPodResponseBody : Tea.TeaModel {
     public class Content : Tea.TeaModel {
         public var clusterId: String?
 
+        public var hdeniIpv6SipQuota: Int32?
+
         public var hdeniQuota: Int32?
+
+        public var hdeniSipQuota: Int32?
+
+        public var leniIpv6SipQuota: Int32?
 
         public var leniQuota: Int32?
 
@@ -9412,12 +9418,6 @@ public class GetNodeInfoForPodResponseBody : Tea.TeaModel {
         public var vpcId: String?
 
         public var zoneId: String?
-
-        public var hdeniIpv6SipQuota: Int32?
-
-        public var hdeniSipQuota: Int32?
-
-        public var leniIpv6SipQuota: Int32?
 
         public override init() {
             super.init()
@@ -9436,8 +9436,17 @@ public class GetNodeInfoForPodResponseBody : Tea.TeaModel {
             if self.clusterId != nil {
                 map["ClusterId"] = self.clusterId!
             }
+            if self.hdeniIpv6SipQuota != nil {
+                map["HdeniIpv6SipQuota"] = self.hdeniIpv6SipQuota!
+            }
             if self.hdeniQuota != nil {
                 map["HdeniQuota"] = self.hdeniQuota!
+            }
+            if self.hdeniSipQuota != nil {
+                map["HdeniSipQuota"] = self.hdeniSipQuota!
+            }
+            if self.leniIpv6SipQuota != nil {
+                map["LeniIpv6SipQuota"] = self.leniIpv6SipQuota!
             }
             if self.leniQuota != nil {
                 map["LeniQuota"] = self.leniQuota!
@@ -9463,15 +9472,6 @@ public class GetNodeInfoForPodResponseBody : Tea.TeaModel {
             if self.zoneId != nil {
                 map["ZoneId"] = self.zoneId!
             }
-            if self.hdeniIpv6SipQuota != nil {
-                map["hdeniIpv6SipQuota"] = self.hdeniIpv6SipQuota!
-            }
-            if self.hdeniSipQuota != nil {
-                map["hdeniSipQuota"] = self.hdeniSipQuota!
-            }
-            if self.leniIpv6SipQuota != nil {
-                map["leniIpv6SipQuota"] = self.leniIpv6SipQuota!
-            }
             return map
         }
 
@@ -9480,8 +9480,17 @@ public class GetNodeInfoForPodResponseBody : Tea.TeaModel {
             if let value = dict["ClusterId"] as? String {
                 self.clusterId = value
             }
+            if let value = dict["HdeniIpv6SipQuota"] as? Int32 {
+                self.hdeniIpv6SipQuota = value
+            }
             if let value = dict["HdeniQuota"] as? Int32 {
                 self.hdeniQuota = value
+            }
+            if let value = dict["HdeniSipQuota"] as? Int32 {
+                self.hdeniSipQuota = value
+            }
+            if let value = dict["LeniIpv6SipQuota"] as? Int32 {
+                self.leniIpv6SipQuota = value
             }
             if let value = dict["LeniQuota"] as? Int32 {
                 self.leniQuota = value
@@ -9506,15 +9515,6 @@ public class GetNodeInfoForPodResponseBody : Tea.TeaModel {
             }
             if let value = dict["ZoneId"] as? String {
                 self.zoneId = value
-            }
-            if let value = dict["hdeniIpv6SipQuota"] as? Int32 {
-                self.hdeniIpv6SipQuota = value
-            }
-            if let value = dict["hdeniSipQuota"] as? Int32 {
-                self.hdeniSipQuota = value
-            }
-            if let value = dict["leniIpv6SipQuota"] as? Int32 {
-                self.leniIpv6SipQuota = value
             }
         }
     }
