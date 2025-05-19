@@ -1652,6 +1652,8 @@ public class TaskSnapshot : Tea.TeaModel {
 }
 
 public class Template : Tea.TeaModel {
+    public var bizId: String?
+
     public var creator: Int64?
 
     public var displaySparkVersion: String?
@@ -1662,7 +1664,11 @@ public class Template : Tea.TeaModel {
 
     public var gmtModified: String?
 
+    public var isDefault: Bool?
+
     public var modifier: Int64?
+
+    public var name: String?
 
     public var sparkConf: [SparkConf]?
 
@@ -1696,6 +1702,9 @@ public class Template : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.bizId != nil {
+            map["bizId"] = self.bizId!
+        }
         if self.creator != nil {
             map["creator"] = self.creator!
         }
@@ -1711,8 +1720,14 @@ public class Template : Tea.TeaModel {
         if self.gmtModified != nil {
             map["gmtModified"] = self.gmtModified!
         }
+        if self.isDefault != nil {
+            map["isDefault"] = self.isDefault!
+        }
         if self.modifier != nil {
             map["modifier"] = self.modifier!
+        }
+        if self.name != nil {
+            map["name"] = self.name!
         }
         if self.sparkConf != nil {
             var tmp : [Any] = []
@@ -1750,6 +1765,9 @@ public class Template : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["bizId"] as? String {
+            self.bizId = value
+        }
         if let value = dict["creator"] as? Int64 {
             self.creator = value
         }
@@ -1765,8 +1783,14 @@ public class Template : Tea.TeaModel {
         if let value = dict["gmtModified"] as? String {
             self.gmtModified = value
         }
+        if let value = dict["isDefault"] as? Bool {
+            self.isDefault = value
+        }
         if let value = dict["modifier"] as? Int64 {
             self.modifier = value
+        }
+        if let value = dict["name"] as? String {
+            self.name = value
         }
         if let value = dict["sparkConf"] as? [Any?] {
             var tmp : [SparkConf] = []
@@ -3312,6 +3336,8 @@ public class CreateSessionClusterRequest : Tea.TeaModel {
 
     public var name: String?
 
+    public var publicEndpointEnabled: Bool?
+
     public var queueName: String?
 
     public var releaseVersion: String?
@@ -3361,6 +3387,9 @@ public class CreateSessionClusterRequest : Tea.TeaModel {
         }
         if self.name != nil {
             map["name"] = self.name!
+        }
+        if self.publicEndpointEnabled != nil {
+            map["publicEndpointEnabled"] = self.publicEndpointEnabled!
         }
         if self.queueName != nil {
             map["queueName"] = self.queueName!
@@ -3413,6 +3442,9 @@ public class CreateSessionClusterRequest : Tea.TeaModel {
         }
         if let value = dict["name"] as? String {
             self.name = value
+        }
+        if let value = dict["publicEndpointEnabled"] as? Bool {
+            self.publicEndpointEnabled = value
         }
         if let value = dict["queueName"] as? String {
             self.queueName = value
@@ -5172,6 +5204,8 @@ public class GetSessionClusterResponseBody : Tea.TeaModel {
 
         public var name: String?
 
+        public var publicEndpointEnabled: Bool?
+
         public var queueName: String?
 
         public var releaseVersion: String?
@@ -5251,6 +5285,9 @@ public class GetSessionClusterResponseBody : Tea.TeaModel {
             }
             if self.name != nil {
                 map["name"] = self.name!
+            }
+            if self.publicEndpointEnabled != nil {
+                map["publicEndpointEnabled"] = self.publicEndpointEnabled!
             }
             if self.queueName != nil {
                 map["queueName"] = self.queueName!
@@ -5339,6 +5376,9 @@ public class GetSessionClusterResponseBody : Tea.TeaModel {
             }
             if let value = dict["name"] as? String {
                 self.name = value
+            }
+            if let value = dict["publicEndpointEnabled"] as? Bool {
+                self.publicEndpointEnabled = value
             }
             if let value = dict["queueName"] as? String {
                 self.queueName = value
@@ -5721,6 +5761,8 @@ public class GetSqlStatementResponse : Tea.TeaModel {
 public class GetTemplateRequest : Tea.TeaModel {
     public var regionId: String?
 
+    public var templateBizId: String?
+
     public var templateType: String?
 
     public override init() {
@@ -5740,6 +5782,9 @@ public class GetTemplateRequest : Tea.TeaModel {
         if self.regionId != nil {
             map["regionId"] = self.regionId!
         }
+        if self.templateBizId != nil {
+            map["templateBizId"] = self.templateBizId!
+        }
         if self.templateType != nil {
             map["templateType"] = self.templateType!
         }
@@ -5750,6 +5795,9 @@ public class GetTemplateRequest : Tea.TeaModel {
         guard let dict else { return }
         if let value = dict["regionId"] as? String {
             self.regionId = value
+        }
+        if let value = dict["templateBizId"] as? String {
+            self.templateBizId = value
         }
         if let value = dict["templateType"] as? String {
             self.templateType = value
@@ -7996,6 +8044,8 @@ public class ListSessionClustersResponseBody : Tea.TeaModel {
 
         public var name: String?
 
+        public var publicEndpointEnabled: Bool?
+
         public var queueName: String?
 
         public var releaseVersion: String?
@@ -8072,6 +8122,9 @@ public class ListSessionClustersResponseBody : Tea.TeaModel {
             }
             if self.name != nil {
                 map["name"] = self.name!
+            }
+            if self.publicEndpointEnabled != nil {
+                map["publicEndpointEnabled"] = self.publicEndpointEnabled!
             }
             if self.queueName != nil {
                 map["queueName"] = self.queueName!
@@ -8157,6 +8210,9 @@ public class ListSessionClustersResponseBody : Tea.TeaModel {
             }
             if let value = dict["name"] as? String {
                 self.name = value
+            }
+            if let value = dict["publicEndpointEnabled"] as? Bool {
+                self.publicEndpointEnabled = value
             }
             if let value = dict["queueName"] as? String {
                 self.queueName = value
@@ -8911,6 +8967,8 @@ public class ListWorkspacesResponseBody : Tea.TeaModel {
 
             public var maxResource: String?
 
+            public var orderId: String?
+
             public var paymentStatus: String?
 
             public var usedResource: String?
@@ -8947,6 +9005,9 @@ public class ListWorkspacesResponseBody : Tea.TeaModel {
                 if self.maxResource != nil {
                     map["maxResource"] = self.maxResource!
                 }
+                if self.orderId != nil {
+                    map["orderId"] = self.orderId!
+                }
                 if self.paymentStatus != nil {
                     map["paymentStatus"] = self.paymentStatus!
                 }
@@ -8975,6 +9036,9 @@ public class ListWorkspacesResponseBody : Tea.TeaModel {
                 }
                 if let value = dict["maxResource"] as? String {
                     self.maxResource = value
+                }
+                if let value = dict["orderId"] as? String {
+                    self.orderId = value
                 }
                 if let value = dict["paymentStatus"] as? String {
                     self.paymentStatus = value
