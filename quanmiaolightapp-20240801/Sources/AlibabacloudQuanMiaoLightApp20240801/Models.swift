@@ -10547,6 +10547,8 @@ public class RunVideoAnalysisRequest : Tea.TeaModel {
                 }
             }
         }
+        public var videoCaptionFileUrl: String?
+
         public var videoCaptions: [RunVideoAnalysisRequest.VideoCaptionInfo.VideoCaptions]?
 
         public override init() {
@@ -10563,6 +10565,9 @@ public class RunVideoAnalysisRequest : Tea.TeaModel {
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
+            if self.videoCaptionFileUrl != nil {
+                map["videoCaptionFileUrl"] = self.videoCaptionFileUrl!
+            }
             if self.videoCaptions != nil {
                 var tmp : [Any] = []
                 for k in self.videoCaptions! {
@@ -10575,6 +10580,9 @@ public class RunVideoAnalysisRequest : Tea.TeaModel {
 
         public override func fromMap(_ dict: [String: Any?]?) -> Void {
             guard let dict else { return }
+            if let value = dict["videoCaptionFileUrl"] as? String {
+                self.videoCaptionFileUrl = value
+            }
             if let value = dict["videoCaptions"] as? [Any?] {
                 var tmp : [RunVideoAnalysisRequest.VideoCaptionInfo.VideoCaptions] = []
                 for v in value {
@@ -13551,6 +13559,8 @@ public class SubmitVideoAnalysisTaskRequest : Tea.TeaModel {
                 }
             }
         }
+        public var videoCaptionFileUrl: String?
+
         public var videoCaptions: [SubmitVideoAnalysisTaskRequest.VideoCaptionInfo.VideoCaptions]?
 
         public override init() {
@@ -13567,6 +13577,9 @@ public class SubmitVideoAnalysisTaskRequest : Tea.TeaModel {
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
+            if self.videoCaptionFileUrl != nil {
+                map["videoCaptionFileUrl"] = self.videoCaptionFileUrl!
+            }
             if self.videoCaptions != nil {
                 var tmp : [Any] = []
                 for k in self.videoCaptions! {
@@ -13579,6 +13592,9 @@ public class SubmitVideoAnalysisTaskRequest : Tea.TeaModel {
 
         public override func fromMap(_ dict: [String: Any?]?) -> Void {
             guard let dict else { return }
+            if let value = dict["videoCaptionFileUrl"] as? String {
+                self.videoCaptionFileUrl = value
+            }
             if let value = dict["videoCaptions"] as? [Any?] {
                 var tmp : [SubmitVideoAnalysisTaskRequest.VideoCaptionInfo.VideoCaptions] = []
                 for v in value {
