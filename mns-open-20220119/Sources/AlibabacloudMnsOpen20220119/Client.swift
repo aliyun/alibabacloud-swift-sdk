@@ -846,6 +846,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.pushType)) {
             query["PushType"] = request.pushType ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.stsRoleArn)) {
+            query["StsRoleArn"] = request.stsRoleArn ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.subscriptionName)) {
             query["SubscriptionName"] = request.subscriptionName ?? "";
         }
