@@ -64,6 +64,49 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func checkServiceLinkedRoleEfloCnpForDeletingWithOptions(_ request: CheckServiceLinkedRoleEfloCnpForDeletingRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> CheckServiceLinkedRoleEfloCnpForDeletingResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.accountId)) {
+            query["AccountId"] = request.accountId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.deletionTaskId)) {
+            query["DeletionTaskId"] = request.deletionTaskId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.roleArn)) {
+            query["RoleArn"] = request.roleArn ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.SPIRegionId)) {
+            query["SPIRegionId"] = request.SPIRegionId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.serviceName)) {
+            query["ServiceName"] = request.serviceName ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "CheckServiceLinkedRoleEfloCnpForDeleting",
+            "version": "2023-08-28",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(CheckServiceLinkedRoleEfloCnpForDeletingResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func checkServiceLinkedRoleEfloCnpForDeleting(_ request: CheckServiceLinkedRoleEfloCnpForDeletingRequest) async throws -> CheckServiceLinkedRoleEfloCnpForDeletingResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await checkServiceLinkedRoleEfloCnpForDeletingWithOptions(request as! CheckServiceLinkedRoleEfloCnpForDeletingRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func createExperimentPlanWithOptions(_ tmpReq: CreateExperimentPlanRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> CreateExperimentPlanResponse {
         try TeaUtils.Client.validateModel(tmpReq)
         var request: CreateExperimentPlanShrinkRequest = CreateExperimentPlanShrinkRequest([:])
