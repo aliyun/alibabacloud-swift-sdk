@@ -1864,6 +1864,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.fileSystemMountEnabled)) {
             body["FileSystemMountEnabled"] = request.fileSystemMountEnabled!;
         }
+        if (!TeaUtils.Client.isUnset(request.imageId)) {
+            body["ImageId"] = request.imageId ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.keyPairName)) {
             body["KeyPairName"] = request.keyPairName ?? "";
         }
