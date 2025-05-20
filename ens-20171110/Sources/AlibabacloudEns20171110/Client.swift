@@ -2012,6 +2012,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.description_)) {
             query["Description"] = request.description_ ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.destinationCidrBlock)) {
+            query["DestinationCidrBlock"] = request.destinationCidrBlock ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.direction)) {
             query["Direction"] = request.direction ?? "";
         }
@@ -6089,7 +6092,22 @@ open class Client : AlibabacloudOpenApi.Client {
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func describeNetworkAclsWithOptions(_ request: DescribeNetworkAclsRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DescribeNetworkAclsResponse {
         try TeaUtils.Client.validateModel(request)
-        var query: [String: String] = AlibabaCloudOpenApiUtil.Client.query(TeaUtils.Client.toMap(request))
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.networkAclId)) {
+            query["NetworkAclId"] = request.networkAclId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.networkAclName)) {
+            query["NetworkAclName"] = request.networkAclName ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.pageNumber)) {
+            query["PageNumber"] = request.pageNumber ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.pageSize)) {
+            query["PageSize"] = request.pageSize ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.resourceId)) {
+            query["ResourceId"] = request.resourceId ?? "";
+        }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "query": AlibabaCloudOpenApiUtil.Client.query(query)
         ])
@@ -6098,7 +6116,7 @@ open class Client : AlibabacloudOpenApi.Client {
             "version": "2017-11-10",
             "protocol": "HTTPS",
             "pathname": "/",
-            "method": "GET",
+            "method": "POST",
             "authType": "AK",
             "style": "RPC",
             "reqBodyType": "formData",
