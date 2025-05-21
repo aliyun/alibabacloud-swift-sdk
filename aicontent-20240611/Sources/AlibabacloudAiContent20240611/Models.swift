@@ -10275,7 +10275,7 @@ public class ListTextbookAssistantArticleDetailsResponseBody : Tea.TeaModel {
 
             public var sceneImageList: [String]?
 
-            public var sceneTransLate: String?
+            public var sceneTranslate: String?
 
             public override init() {
                 super.init()
@@ -10300,8 +10300,8 @@ public class ListTextbookAssistantArticleDetailsResponseBody : Tea.TeaModel {
                 if self.sceneImageList != nil {
                     map["sceneImageList"] = self.sceneImageList!
                 }
-                if self.sceneTransLate != nil {
-                    map["sceneTransLate"] = self.sceneTransLate!
+                if self.sceneTranslate != nil {
+                    map["sceneTranslate"] = self.sceneTranslate!
                 }
                 return map
             }
@@ -10317,8 +10317,8 @@ public class ListTextbookAssistantArticleDetailsResponseBody : Tea.TeaModel {
                 if let value = dict["sceneImageList"] as? [String] {
                     self.sceneImageList = value
                 }
-                if let value = dict["sceneTransLate"] as? String {
-                    self.sceneTransLate = value
+                if let value = dict["sceneTranslate"] as? String {
+                    self.sceneTranslate = value
                 }
             }
         }
@@ -11079,11 +11079,239 @@ public class ListTextbookAssistantBookDirectoriesResponseBody : Tea.TeaModel {
                     }
                 }
             }
+            public class Unit : Tea.TeaModel {
+                public class Section : Tea.TeaModel {
+                    public class Topic : Tea.TeaModel {
+                        public var labelId: String?
+
+                        public var labelName: String?
+
+                        public override init() {
+                            super.init()
+                        }
+
+                        public init(_ dict: [String: Any]) {
+                            super.init()
+                            self.fromMap(dict)
+                        }
+
+                        public override func validate() throws -> Void {
+                        }
+
+                        public override func toMap() -> [String : Any] {
+                            var map = super.toMap()
+                            if self.labelId != nil {
+                                map["labelId"] = self.labelId!
+                            }
+                            if self.labelName != nil {
+                                map["labelName"] = self.labelName!
+                            }
+                            return map
+                        }
+
+                        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                            guard let dict else { return }
+                            if let value = dict["labelId"] as? String {
+                                self.labelId = value
+                            }
+                            if let value = dict["labelName"] as? String {
+                                self.labelName = value
+                            }
+                        }
+                    }
+                    public var children: Any?
+
+                    public var directoryId: String?
+
+                    public var directoryName: String?
+
+                    public var topic: [ListTextbookAssistantBookDirectoriesResponseBody.Data.DirectoryTree.Unit.Section.Topic]?
+
+                    public override init() {
+                        super.init()
+                    }
+
+                    public init(_ dict: [String: Any]) {
+                        super.init()
+                        self.fromMap(dict)
+                    }
+
+                    public override func validate() throws -> Void {
+                    }
+
+                    public override func toMap() -> [String : Any] {
+                        var map = super.toMap()
+                        if self.children != nil {
+                            map["children"] = self.children!
+                        }
+                        if self.directoryId != nil {
+                            map["directoryId"] = self.directoryId!
+                        }
+                        if self.directoryName != nil {
+                            map["directoryName"] = self.directoryName!
+                        }
+                        if self.topic != nil {
+                            var tmp : [Any] = []
+                            for k in self.topic! {
+                                tmp.append(k.toMap())
+                            }
+                            map["topic"] = tmp
+                        }
+                        return map
+                    }
+
+                    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                        guard let dict else { return }
+                        if let value = dict["children"] as? Any {
+                            self.children = value
+                        }
+                        if let value = dict["directoryId"] as? String {
+                            self.directoryId = value
+                        }
+                        if let value = dict["directoryName"] as? String {
+                            self.directoryName = value
+                        }
+                        if let value = dict["topic"] as? [Any?] {
+                            var tmp : [ListTextbookAssistantBookDirectoriesResponseBody.Data.DirectoryTree.Unit.Section.Topic] = []
+                            for v in value {
+                                if v != nil {
+                                    var model = ListTextbookAssistantBookDirectoriesResponseBody.Data.DirectoryTree.Unit.Section.Topic()
+                                    if v != nil {
+                                        model.fromMap(v as? [String: Any?])
+                                    }
+                                    tmp.append(model)
+                                }
+                            }
+                            self.topic = tmp
+                        }
+                    }
+                }
+                public class Topic : Tea.TeaModel {
+                    public var labelId: String?
+
+                    public var labelName: String?
+
+                    public override init() {
+                        super.init()
+                    }
+
+                    public init(_ dict: [String: Any]) {
+                        super.init()
+                        self.fromMap(dict)
+                    }
+
+                    public override func validate() throws -> Void {
+                    }
+
+                    public override func toMap() -> [String : Any] {
+                        var map = super.toMap()
+                        if self.labelId != nil {
+                            map["labelId"] = self.labelId!
+                        }
+                        if self.labelName != nil {
+                            map["labelName"] = self.labelName!
+                        }
+                        return map
+                    }
+
+                    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                        guard let dict else { return }
+                        if let value = dict["labelId"] as? String {
+                            self.labelId = value
+                        }
+                        if let value = dict["labelName"] as? String {
+                            self.labelName = value
+                        }
+                    }
+                }
+                public var directoryId: String?
+
+                public var directoryName: String?
+
+                public var section: [ListTextbookAssistantBookDirectoriesResponseBody.Data.DirectoryTree.Unit.Section]?
+
+                public var topic: [ListTextbookAssistantBookDirectoriesResponseBody.Data.DirectoryTree.Unit.Topic]?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.directoryId != nil {
+                        map["directoryId"] = self.directoryId!
+                    }
+                    if self.directoryName != nil {
+                        map["directoryName"] = self.directoryName!
+                    }
+                    if self.section != nil {
+                        var tmp : [Any] = []
+                        for k in self.section! {
+                            tmp.append(k.toMap())
+                        }
+                        map["section"] = tmp
+                    }
+                    if self.topic != nil {
+                        var tmp : [Any] = []
+                        for k in self.topic! {
+                            tmp.append(k.toMap())
+                        }
+                        map["topic"] = tmp
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                    guard let dict else { return }
+                    if let value = dict["directoryId"] as? String {
+                        self.directoryId = value
+                    }
+                    if let value = dict["directoryName"] as? String {
+                        self.directoryName = value
+                    }
+                    if let value = dict["section"] as? [Any?] {
+                        var tmp : [ListTextbookAssistantBookDirectoriesResponseBody.Data.DirectoryTree.Unit.Section] = []
+                        for v in value {
+                            if v != nil {
+                                var model = ListTextbookAssistantBookDirectoriesResponseBody.Data.DirectoryTree.Unit.Section()
+                                if v != nil {
+                                    model.fromMap(v as? [String: Any?])
+                                }
+                                tmp.append(model)
+                            }
+                        }
+                        self.section = tmp
+                    }
+                    if let value = dict["topic"] as? [Any?] {
+                        var tmp : [ListTextbookAssistantBookDirectoriesResponseBody.Data.DirectoryTree.Unit.Topic] = []
+                        for v in value {
+                            if v != nil {
+                                var model = ListTextbookAssistantBookDirectoriesResponseBody.Data.DirectoryTree.Unit.Topic()
+                                if v != nil {
+                                    model.fromMap(v as? [String: Any?])
+                                }
+                                tmp.append(model)
+                            }
+                        }
+                        self.topic = tmp
+                    }
+                }
+            }
             public var directoryId: String?
 
             public var directoryName: String?
 
             public var topic: [ListTextbookAssistantBookDirectoriesResponseBody.Data.DirectoryTree.Topic]?
+
+            public var unit: [ListTextbookAssistantBookDirectoriesResponseBody.Data.DirectoryTree.Unit]?
 
             public override init() {
                 super.init()
@@ -11112,6 +11340,13 @@ public class ListTextbookAssistantBookDirectoriesResponseBody : Tea.TeaModel {
                     }
                     map["topic"] = tmp
                 }
+                if self.unit != nil {
+                    var tmp : [Any] = []
+                    for k in self.unit! {
+                        tmp.append(k.toMap())
+                    }
+                    map["unit"] = tmp
+                }
                 return map
             }
 
@@ -11135,6 +11370,19 @@ public class ListTextbookAssistantBookDirectoriesResponseBody : Tea.TeaModel {
                         }
                     }
                     self.topic = tmp
+                }
+                if let value = dict["unit"] as? [Any?] {
+                    var tmp : [ListTextbookAssistantBookDirectoriesResponseBody.Data.DirectoryTree.Unit] = []
+                    for v in value {
+                        if v != nil {
+                            var model = ListTextbookAssistantBookDirectoriesResponseBody.Data.DirectoryTree.Unit()
+                            if v != nil {
+                                model.fromMap(v as? [String: Any?])
+                            }
+                            tmp.append(model)
+                        }
+                    }
+                    self.unit = tmp
                 }
             }
         }
@@ -12446,6 +12694,8 @@ public class ListTextbookAssistantSceneDetailsResponseBody : Tea.TeaModel {
 
         public var sceneTaskList: [ListTextbookAssistantSceneDetailsResponseBody.Data.SceneTaskList]?
 
+        public var sceneTranslate: String?
+
         public var sentenceList: [ListTextbookAssistantSceneDetailsResponseBody.Data.SentenceList]?
 
         public var target: String?
@@ -12494,6 +12744,9 @@ public class ListTextbookAssistantSceneDetailsResponseBody : Tea.TeaModel {
                     tmp.append(k.toMap())
                 }
                 map["sceneTaskList"] = tmp
+            }
+            if self.sceneTranslate != nil {
+                map["sceneTranslate"] = self.sceneTranslate!
             }
             if self.sentenceList != nil {
                 var tmp : [Any] = []
@@ -12557,6 +12810,9 @@ public class ListTextbookAssistantSceneDetailsResponseBody : Tea.TeaModel {
                     }
                 }
                 self.sceneTaskList = tmp
+            }
+            if let value = dict["sceneTranslate"] as? String {
+                self.sceneTranslate = value
             }
             if let value = dict["sentenceList"] as? [Any?] {
                 var tmp : [ListTextbookAssistantSceneDetailsResponseBody.Data.SentenceList] = []
