@@ -18112,6 +18112,10 @@ public class CreateNetworkInterfaceRequest : Tea.TeaModel {
 
         public var enableSriov: Bool?
 
+        public var virtualFunctionQuantity: Int32?
+
+        public var virtualFunctionTotalQueueNumber: Int32?
+
         public override init() {
             super.init()
         }
@@ -18132,6 +18136,12 @@ public class CreateNetworkInterfaceRequest : Tea.TeaModel {
             if self.enableSriov != nil {
                 map["EnableSriov"] = self.enableSriov!
             }
+            if self.virtualFunctionQuantity != nil {
+                map["VirtualFunctionQuantity"] = self.virtualFunctionQuantity!
+            }
+            if self.virtualFunctionTotalQueueNumber != nil {
+                map["VirtualFunctionTotalQueueNumber"] = self.virtualFunctionTotalQueueNumber!
+            }
             return map
         }
 
@@ -18142,6 +18152,12 @@ public class CreateNetworkInterfaceRequest : Tea.TeaModel {
             }
             if let value = dict["EnableSriov"] as? Bool {
                 self.enableSriov = value
+            }
+            if let value = dict["VirtualFunctionQuantity"] as? Int32 {
+                self.virtualFunctionQuantity = value
+            }
+            if let value = dict["VirtualFunctionTotalQueueNumber"] as? Int32 {
+                self.virtualFunctionTotalQueueNumber = value
             }
         }
     }
@@ -69388,6 +69404,10 @@ public class DescribeNetworkInterfaceAttributeResponseBody : Tea.TeaModel {
 
         public var enableSriov: Bool?
 
+        public var virtualFunctionQuantity: Int32?
+
+        public var virtualFunctionTotalQueueNumber: Int32?
+
         public override init() {
             super.init()
         }
@@ -69408,6 +69428,12 @@ public class DescribeNetworkInterfaceAttributeResponseBody : Tea.TeaModel {
             if self.enableSriov != nil {
                 map["EnableSriov"] = self.enableSriov!
             }
+            if self.virtualFunctionQuantity != nil {
+                map["VirtualFunctionQuantity"] = self.virtualFunctionQuantity!
+            }
+            if self.virtualFunctionTotalQueueNumber != nil {
+                map["VirtualFunctionTotalQueueNumber"] = self.virtualFunctionTotalQueueNumber!
+            }
             return map
         }
 
@@ -69418,6 +69444,12 @@ public class DescribeNetworkInterfaceAttributeResponseBody : Tea.TeaModel {
             }
             if let value = dict["EnableSriov"] as? Bool {
                 self.enableSriov = value
+            }
+            if let value = dict["VirtualFunctionQuantity"] as? Int32 {
+                self.virtualFunctionQuantity = value
+            }
+            if let value = dict["VirtualFunctionTotalQueueNumber"] as? Int32 {
+                self.virtualFunctionTotalQueueNumber = value
             }
         }
     }
@@ -108071,6 +108103,10 @@ public class ModifyNetworkInterfaceAttributeRequest : Tea.TeaModel {
 
         public var enableSriov: Bool?
 
+        public var virtualFunctionQuantity: Int32?
+
+        public var virtualFunctionTotalQueueNumber: Int32?
+
         public override init() {
             super.init()
         }
@@ -108091,6 +108127,12 @@ public class ModifyNetworkInterfaceAttributeRequest : Tea.TeaModel {
             if self.enableSriov != nil {
                 map["EnableSriov"] = self.enableSriov!
             }
+            if self.virtualFunctionQuantity != nil {
+                map["VirtualFunctionQuantity"] = self.virtualFunctionQuantity!
+            }
+            if self.virtualFunctionTotalQueueNumber != nil {
+                map["VirtualFunctionTotalQueueNumber"] = self.virtualFunctionTotalQueueNumber!
+            }
             return map
         }
 
@@ -108101,6 +108143,12 @@ public class ModifyNetworkInterfaceAttributeRequest : Tea.TeaModel {
             }
             if let value = dict["EnableSriov"] as? Bool {
                 self.enableSriov = value
+            }
+            if let value = dict["VirtualFunctionQuantity"] as? Int32 {
+                self.virtualFunctionQuantity = value
+            }
+            if let value = dict["VirtualFunctionTotalQueueNumber"] as? Int32 {
+                self.virtualFunctionTotalQueueNumber = value
             }
         }
     }
