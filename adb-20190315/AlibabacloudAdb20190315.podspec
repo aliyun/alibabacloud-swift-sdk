@@ -1,7 +1,7 @@
 Pod::Spec.new do |spec|
 
   spec.name         = "AlibabacloudAdb20190315"
-  spec.version      = "5.0.1"
+  spec.version      = "5.0.2"
   spec.license      = "Apache 2.0"
   spec.summary      = "Alibaba Cloud adb (20190315) SDK Library for Swift"
   spec.homepage     = "https://github.com/alibabacloud-sdk-swift/adb-20190315" 
@@ -17,7 +17,7 @@ Pod::Spec.new do |spec|
   spec.watchos.deployment_target = '6.0'
   spec.tvos.deployment_target    = '13.0'
 
-  spec.dependency 'Tea',  '~> 1.0.0'
+  spec.dependency 'Tea',  '~> 1.0.3'
   spec.dependency 'TeaUtils',  '~> 1.0.6'
   spec.dependency 'AlibabacloudOpenApi',  '~> 1.0.7'
   spec.dependency 'AlibabaCloudOpenApiUtil',  '~> 1.0.1'
