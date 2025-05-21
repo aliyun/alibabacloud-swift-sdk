@@ -372,6 +372,43 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getPlatformUserInfoForPartnerWithOptions(_ request: GetPlatformUserInfoForPartnerRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> GetPlatformUserInfoForPartnerResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.appId)) {
+            query["AppId"] = request.appId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.platformType)) {
+            query["PlatformType"] = request.platformType ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.userId)) {
+            query["UserId"] = request.userId ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "GetPlatformUserInfoForPartner",
+            "version": "2021-01-18",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(GetPlatformUserInfoForPartnerResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getPlatformUserInfoForPartner(_ request: GetPlatformUserInfoForPartnerRequest) async throws -> GetPlatformUserInfoForPartnerResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await getPlatformUserInfoForPartnerWithOptions(request as! GetPlatformUserInfoForPartnerRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func getProxyByTypeWithOptions(_ request: GetProxyByTypeRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> GetProxyByTypeResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
