@@ -2197,46 +2197,6 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func createRoutineRelatedRouteWithOptions(_ request: CreateRoutineRelatedRouteRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> CreateRoutineRelatedRouteResponse {
-        try TeaUtils.Client.validateModel(request)
-        var body: [String: Any] = [:]
-        if (!TeaUtils.Client.isUnset(request.byPass)) {
-            body["ByPass"] = request.byPass ?? "";
-        }
-        if (!TeaUtils.Client.isUnset(request.name)) {
-            body["Name"] = request.name ?? "";
-        }
-        if (!TeaUtils.Client.isUnset(request.route)) {
-            body["Route"] = request.route ?? "";
-        }
-        if (!TeaUtils.Client.isUnset(request.siteId)) {
-            body["SiteId"] = request.siteId!;
-        }
-        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
-            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
-        ])
-        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
-            "action": "CreateRoutineRelatedRoute",
-            "version": "2024-09-10",
-            "protocol": "HTTPS",
-            "pathname": "/",
-            "method": "POST",
-            "authType": "AK",
-            "style": "RPC",
-            "reqBodyType": "formData",
-            "bodyType": "json"
-        ])
-        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
-        return Tea.TeaConverter.fromMap(CreateRoutineRelatedRouteResponse(), tmp)
-    }
-
-    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func createRoutineRelatedRoute(_ request: CreateRoutineRelatedRouteRequest) async throws -> CreateRoutineRelatedRouteResponse {
-        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
-        return try await createRoutineRelatedRouteWithOptions(request as! CreateRoutineRelatedRouteRequest, runtime as! TeaUtils.RuntimeOptions)
-    }
-
-    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func createRoutineRouteWithOptions(_ request: CreateRoutineRouteRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> CreateRoutineRouteResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
@@ -3993,46 +3953,6 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func deleteRoutineRelatedRouteWithOptions(_ request: DeleteRoutineRelatedRouteRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DeleteRoutineRelatedRouteResponse {
-        try TeaUtils.Client.validateModel(request)
-        var body: [String: Any] = [:]
-        if (!TeaUtils.Client.isUnset(request.name)) {
-            body["Name"] = request.name ?? "";
-        }
-        if (!TeaUtils.Client.isUnset(request.route)) {
-            body["Route"] = request.route ?? "";
-        }
-        if (!TeaUtils.Client.isUnset(request.routeId)) {
-            body["RouteId"] = request.routeId ?? "";
-        }
-        if (!TeaUtils.Client.isUnset(request.siteId)) {
-            body["SiteId"] = request.siteId!;
-        }
-        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
-            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
-        ])
-        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
-            "action": "DeleteRoutineRelatedRoute",
-            "version": "2024-09-10",
-            "protocol": "HTTPS",
-            "pathname": "/",
-            "method": "POST",
-            "authType": "AK",
-            "style": "RPC",
-            "reqBodyType": "formData",
-            "bodyType": "json"
-        ])
-        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
-        return Tea.TeaConverter.fromMap(DeleteRoutineRelatedRouteResponse(), tmp)
-    }
-
-    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func deleteRoutineRelatedRoute(_ request: DeleteRoutineRelatedRouteRequest) async throws -> DeleteRoutineRelatedRouteResponse {
-        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
-        return try await deleteRoutineRelatedRouteWithOptions(request as! DeleteRoutineRelatedRouteRequest, runtime as! TeaUtils.RuntimeOptions)
-    }
-
-    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func deleteRoutineRouteWithOptions(_ request: DeleteRoutineRouteRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DeleteRoutineRouteResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
@@ -4791,6 +4711,49 @@ open class Client : AlibabacloudOpenApi.Client {
     public func describeRatePlanInstanceStatus(_ request: DescribeRatePlanInstanceStatusRequest) async throws -> DescribeRatePlanInstanceStatusResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         return try await describeRatePlanInstanceStatusWithOptions(request as! DescribeRatePlanInstanceStatusRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func describeSiteLogsWithOptions(_ request: DescribeSiteLogsRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DescribeSiteLogsResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.endTime)) {
+            query["EndTime"] = request.endTime ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.pageNumber)) {
+            query["PageNumber"] = request.pageNumber!;
+        }
+        if (!TeaUtils.Client.isUnset(request.pageSize)) {
+            query["PageSize"] = request.pageSize!;
+        }
+        if (!TeaUtils.Client.isUnset(request.siteId)) {
+            query["SiteId"] = request.siteId!;
+        }
+        if (!TeaUtils.Client.isUnset(request.startTime)) {
+            query["StartTime"] = request.startTime ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "DescribeSiteLogs",
+            "version": "2024-09-10",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(DescribeSiteLogsResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func describeSiteLogs(_ request: DescribeSiteLogsRequest) async throws -> DescribeSiteLogsResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await describeSiteLogsWithOptions(request as! DescribeSiteLogsRequest, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -9018,6 +8981,40 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func openErServiceWithOptions(_ request: OpenErServiceRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> OpenErServiceResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.ownerId)) {
+            query["OwnerId"] = request.ownerId!;
+        }
+        if (!TeaUtils.Client.isUnset(request.securityToken)) {
+            query["SecurityToken"] = request.securityToken ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "OpenErService",
+            "version": "2024-09-10",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(OpenErServiceResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func openErService(_ request: OpenErServiceRequest) async throws -> OpenErServiceResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await openErServiceWithOptions(request as! OpenErServiceRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func preloadCachesWithOptions(_ tmpReq: PreloadCachesRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> PreloadCachesResponse {
         try TeaUtils.Client.validateModel(tmpReq)
         var request: PreloadCachesShrinkRequest = PreloadCachesShrinkRequest([:])
@@ -10897,6 +10894,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.addRealClientIpHeader)) {
             query["AddRealClientIpHeader"] = request.addRealClientIpHeader ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.realClientIpHeaderName)) {
+            query["RealClientIpHeaderName"] = request.realClientIpHeaderName ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.siteId)) {
             query["SiteId"] = request.siteId!;
