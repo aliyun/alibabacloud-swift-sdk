@@ -19641,6 +19641,8 @@ public class UpdateHttpApiRequest : Tea.TeaModel {
 
     public var ingressConfig: UpdateHttpApiRequest.IngressConfig?
 
+    public var onlyChangeConfig: Bool?
+
     public var protocols: [String]?
 
     public var versionConfig: HttpApiVersionConfig?
@@ -19687,6 +19689,9 @@ public class UpdateHttpApiRequest : Tea.TeaModel {
         if self.ingressConfig != nil {
             map["ingressConfig"] = self.ingressConfig?.toMap()
         }
+        if self.onlyChangeConfig != nil {
+            map["onlyChangeConfig"] = self.onlyChangeConfig!
+        }
         if self.protocols != nil {
             map["protocols"] = self.protocols!
         }
@@ -19732,6 +19737,9 @@ public class UpdateHttpApiRequest : Tea.TeaModel {
             var model = UpdateHttpApiRequest.IngressConfig()
             model.fromMap(value)
             self.ingressConfig = model
+        }
+        if let value = dict["onlyChangeConfig"] as? Bool {
+            self.onlyChangeConfig = value
         }
         if let value = dict["protocols"] as? [String] {
             self.protocols = value

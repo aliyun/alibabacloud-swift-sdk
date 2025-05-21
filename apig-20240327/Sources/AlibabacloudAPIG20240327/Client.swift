@@ -2224,6 +2224,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.ingressConfig)) {
             body["ingressConfig"] = request.ingressConfig!;
         }
+        if (!TeaUtils.Client.isUnset(request.onlyChangeConfig)) {
+            body["onlyChangeConfig"] = request.onlyChangeConfig!;
+        }
         if (!TeaUtils.Client.isUnset(request.protocols)) {
             body["protocols"] = request.protocols ?? [];
         }
