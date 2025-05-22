@@ -1,7 +1,7 @@
 Pod::Spec.new do |spec|
 
   spec.name         = "AlibabacloudDocmindApi20220711"
-  spec.version      = "1.4.1"
+  spec.version      = "1.4.2"
   spec.license      = "Apache 2.0"
   spec.summary      = "Alibaba Cloud docmind-api (20220711) SDK Library for Swift"
   spec.homepage     = "https://github.com/alibabacloud-sdk-swift/docmind-api-20220711" 
@@ -17,7 +17,7 @@ Pod::Spec.new do |spec|
   spec.watchos.deployment_target = '6.0'
   spec.tvos.deployment_target    = '13.0'
 
-  spec.dependency 'Tea',  '~> 1.0.0'
+  spec.dependency 'Tea',  '~> 1.0.3'
   spec.dependency 'TeaUtils',  '~> 1.0.6'
   spec.dependency 'AlibabaCloudOssSdk',  '~> 1.0.0'
   spec.dependency 'AlibabacloudOpenPlatform20191219',  '~> 1.0.0'
