@@ -3610,6 +3610,275 @@ public class GetVideoAnalysisTaskResponse : Tea.TeaModel {
     }
 }
 
+public class HotNewsRecommendRequest : Tea.TeaModel {
+    public var prompt: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.prompt != nil {
+            map["prompt"] = self.prompt!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["prompt"] as? String {
+            self.prompt = value
+        }
+    }
+}
+
+public class HotNewsRecommendResponseBody : Tea.TeaModel {
+    public class Data : Tea.TeaModel {
+        public class News : Tea.TeaModel {
+            public var content: String?
+
+            public var imageUrls: [String]?
+
+            public var pubTime: String?
+
+            public var searchSource: String?
+
+            public var source: String?
+
+            public var title: String?
+
+            public var url: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.content != nil {
+                    map["content"] = self.content!
+                }
+                if self.imageUrls != nil {
+                    map["imageUrls"] = self.imageUrls!
+                }
+                if self.pubTime != nil {
+                    map["pubTime"] = self.pubTime!
+                }
+                if self.searchSource != nil {
+                    map["searchSource"] = self.searchSource!
+                }
+                if self.source != nil {
+                    map["source"] = self.source!
+                }
+                if self.title != nil {
+                    map["title"] = self.title!
+                }
+                if self.url != nil {
+                    map["url"] = self.url!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["content"] as? String {
+                    self.content = value
+                }
+                if let value = dict["imageUrls"] as? [String] {
+                    self.imageUrls = value
+                }
+                if let value = dict["pubTime"] as? String {
+                    self.pubTime = value
+                }
+                if let value = dict["searchSource"] as? String {
+                    self.searchSource = value
+                }
+                if let value = dict["source"] as? String {
+                    self.source = value
+                }
+                if let value = dict["title"] as? String {
+                    self.title = value
+                }
+                if let value = dict["url"] as? String {
+                    self.url = value
+                }
+            }
+        }
+        public var news: [HotNewsRecommendResponseBody.Data.News]?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.news != nil {
+                var tmp : [Any] = []
+                for k in self.news! {
+                    tmp.append(k.toMap())
+                }
+                map["news"] = tmp
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["news"] as? [Any?] {
+                var tmp : [HotNewsRecommendResponseBody.Data.News] = []
+                for v in value {
+                    if v != nil {
+                        var model = HotNewsRecommendResponseBody.Data.News()
+                        if v != nil {
+                            model.fromMap(v as? [String: Any?])
+                        }
+                        tmp.append(model)
+                    }
+                }
+                self.news = tmp
+            }
+        }
+    }
+    public var code: String?
+
+    public var data: HotNewsRecommendResponseBody.Data?
+
+    public var message: String?
+
+    public var requestId: String?
+
+    public var success: Bool?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.data?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.code != nil {
+            map["code"] = self.code!
+        }
+        if self.data != nil {
+            map["data"] = self.data?.toMap()
+        }
+        if self.message != nil {
+            map["message"] = self.message!
+        }
+        if self.requestId != nil {
+            map["requestId"] = self.requestId!
+        }
+        if self.success != nil {
+            map["success"] = self.success!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["code"] as? String {
+            self.code = value
+        }
+        if let value = dict["data"] as? [String: Any?] {
+            var model = HotNewsRecommendResponseBody.Data()
+            model.fromMap(value)
+            self.data = model
+        }
+        if let value = dict["message"] as? String {
+            self.message = value
+        }
+        if let value = dict["requestId"] as? String {
+            self.requestId = value
+        }
+        if let value = dict["success"] as? Bool {
+            self.success = value
+        }
+    }
+}
+
+public class HotNewsRecommendResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: HotNewsRecommendResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = HotNewsRecommendResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
 public class ListAnalysisTagDetailByTaskIdRequest : Tea.TeaModel {
     public var maxResults: Int32?
 
