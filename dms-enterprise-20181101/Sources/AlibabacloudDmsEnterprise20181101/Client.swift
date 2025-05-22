@@ -1260,6 +1260,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.paramShrink)) {
             query["Param"] = request.paramShrink ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.realLoginUserUid)) {
+            query["RealLoginUserUid"] = request.realLoginUserUid ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.relatedUserListShrink)) {
             query["RelatedUserList"] = request.relatedUserListShrink ?? "";
         }
