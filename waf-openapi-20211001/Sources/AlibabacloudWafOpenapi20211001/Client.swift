@@ -4142,6 +4142,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.regionId)) {
             query["RegionId"] = request.regionId ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.resourceInstanceAccessStatus)) {
+            query["ResourceInstanceAccessStatus"] = request.resourceInstanceAccessStatus ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.resourceInstanceId)) {
             query["ResourceInstanceId"] = request.resourceInstanceId ?? "";
         }
