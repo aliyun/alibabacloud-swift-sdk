@@ -378,6 +378,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.beginTime)) {
             query["BeginTime"] = request.beginTime!;
         }
+        if (!TeaUtils.Client.isUnset(request.bizType)) {
+            query["BizType"] = request.bizType ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.endTime)) {
             query["EndTime"] = request.endTime!;
         }
@@ -641,6 +644,9 @@ open class Client : AlibabacloudOpenApi.Client {
             request.existStatusShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.existStatus, "ExistStatus", "json")
         }
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.bizType)) {
+            query["BizType"] = request.bizType ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.existStatusShrink)) {
             query["ExistStatus"] = request.existStatusShrink ?? "";
         }
@@ -863,43 +869,6 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func queryCommodityConfigWithOptions(_ request: QueryCommodityConfigRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> QueryCommodityConfigResponse {
-        try TeaUtils.Client.validateModel(request)
-        var query: [String: Any] = [:]
-        if (!TeaUtils.Client.isUnset(request.bizType)) {
-            query["BizType"] = request.bizType ?? "";
-        }
-        if (!TeaUtils.Client.isUnset(request.commodityCode)) {
-            query["CommodityCode"] = request.commodityCode ?? "";
-        }
-        if (!TeaUtils.Client.isUnset(request.queryModule)) {
-            query["QueryModule"] = request.queryModule!;
-        }
-        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
-            "query": AlibabaCloudOpenApiUtil.Client.query(query)
-        ])
-        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
-            "action": "QueryCommodityConfig",
-            "version": "2020-03-06",
-            "protocol": "HTTPS",
-            "pathname": "/",
-            "method": "POST",
-            "authType": "AK",
-            "style": "RPC",
-            "reqBodyType": "formData",
-            "bodyType": "json"
-        ])
-        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
-        return Tea.TeaConverter.fromMap(QueryCommodityConfigResponse(), tmp)
-    }
-
-    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func queryCommodityConfig(_ request: QueryCommodityConfigRequest) async throws -> QueryCommodityConfigResponse {
-        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
-        return try await queryCommodityConfigWithOptions(request as! QueryCommodityConfigRequest, runtime as! TeaUtils.RuntimeOptions)
-    }
-
-    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func queryInstanceWithOptions(_ request: QueryInstanceRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> QueryInstanceResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
@@ -1072,6 +1041,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func rejectSolutionWithOptions(_ request: RejectSolutionRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> RejectSolutionResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.bizType)) {
+            query["BizType"] = request.bizType ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.note)) {
             query["Note"] = request.note ?? "";
         }
@@ -1223,9 +1195,70 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func submitIntentionForPartnerWithOptions(_ request: SubmitIntentionForPartnerRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> SubmitIntentionForPartnerResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.area)) {
+            query["Area"] = request.area ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.bizType)) {
+            query["BizType"] = request.bizType ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.channel)) {
+            query["Channel"] = request.channel ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.commodityType)) {
+            query["CommodityType"] = request.commodityType ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.contactName)) {
+            query["ContactName"] = request.contactName ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.description_)) {
+            query["Description"] = request.description_ ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.extInfo)) {
+            query["ExtInfo"] = request.extInfo ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.grade)) {
+            query["Grade"] = request.grade!;
+        }
+        if (!TeaUtils.Client.isUnset(request.mobile)) {
+            query["Mobile"] = request.mobile ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.userId)) {
+            query["UserId"] = request.userId ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "SubmitIntentionForPartner",
+            "version": "2020-03-06",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(SubmitIntentionForPartnerResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func submitIntentionForPartner(_ request: SubmitIntentionForPartnerRequest) async throws -> SubmitIntentionForPartnerResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await submitIntentionForPartnerWithOptions(request as! SubmitIntentionForPartnerRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func submitIntentionNoteWithOptions(_ request: SubmitIntentionNoteRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> SubmitIntentionNoteResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.bizType)) {
+            query["BizType"] = request.bizType ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.intentionBizId)) {
             query["IntentionBizId"] = request.intentionBizId ?? "";
         }
