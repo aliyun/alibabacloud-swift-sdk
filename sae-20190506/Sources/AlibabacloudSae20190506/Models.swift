@@ -8034,7 +8034,15 @@ public class PriceEstimateFeature : Tea.TeaModel {
 
     public var cpuStrategy: String?
 
+    public var cpuUtilLevel: String?
+
+    public var cpuUtilMetrics: [Double]?
+
+    public var enableCpuIdle: Bool?
+
     public var envType: String?
+
+    public var ephemeralStorageGiB: Int64?
 
     public var highLoadInstanceCount: Int64?
 
@@ -8058,11 +8066,15 @@ public class PriceEstimateFeature : Tea.TeaModel {
 
     public var minInstanceCount: Int64?
 
+    public var newSaeVersion: String?
+
     public var noneLoadInstanceCount: Int64?
 
     public var noneLoadSeconds: Int64?
 
     public var regionId: String?
+
+    public var resourceType: String?
 
     public override init() {
         super.init()
@@ -8087,8 +8099,20 @@ public class PriceEstimateFeature : Tea.TeaModel {
         if self.cpuStrategy != nil {
             map["CpuStrategy"] = self.cpuStrategy!
         }
+        if self.cpuUtilLevel != nil {
+            map["CpuUtilLevel"] = self.cpuUtilLevel!
+        }
+        if self.cpuUtilMetrics != nil {
+            map["CpuUtilMetrics"] = self.cpuUtilMetrics!
+        }
+        if self.enableCpuIdle != nil {
+            map["EnableCpuIdle"] = self.enableCpuIdle!
+        }
         if self.envType != nil {
             map["EnvType"] = self.envType!
+        }
+        if self.ephemeralStorageGiB != nil {
+            map["EphemeralStorageGiB"] = self.ephemeralStorageGiB!
         }
         if self.highLoadInstanceCount != nil {
             map["HighLoadInstanceCount"] = self.highLoadInstanceCount!
@@ -8123,6 +8147,9 @@ public class PriceEstimateFeature : Tea.TeaModel {
         if self.minInstanceCount != nil {
             map["MinInstanceCount"] = self.minInstanceCount!
         }
+        if self.newSaeVersion != nil {
+            map["NewSaeVersion"] = self.newSaeVersion!
+        }
         if self.noneLoadInstanceCount != nil {
             map["NoneLoadInstanceCount"] = self.noneLoadInstanceCount!
         }
@@ -8131,6 +8158,9 @@ public class PriceEstimateFeature : Tea.TeaModel {
         }
         if self.regionId != nil {
             map["RegionId"] = self.regionId!
+        }
+        if self.resourceType != nil {
+            map["ResourceType"] = self.resourceType!
         }
         return map
     }
@@ -8146,8 +8176,20 @@ public class PriceEstimateFeature : Tea.TeaModel {
         if let value = dict["CpuStrategy"] as? String {
             self.cpuStrategy = value
         }
+        if let value = dict["CpuUtilLevel"] as? String {
+            self.cpuUtilLevel = value
+        }
+        if let value = dict["CpuUtilMetrics"] as? [Double] {
+            self.cpuUtilMetrics = value
+        }
+        if let value = dict["EnableCpuIdle"] as? Bool {
+            self.enableCpuIdle = value
+        }
         if let value = dict["EnvType"] as? String {
             self.envType = value
+        }
+        if let value = dict["EphemeralStorageGiB"] as? Int64 {
+            self.ephemeralStorageGiB = value
         }
         if let value = dict["HighLoadInstanceCount"] as? Int64 {
             self.highLoadInstanceCount = value
@@ -8182,6 +8224,9 @@ public class PriceEstimateFeature : Tea.TeaModel {
         if let value = dict["MinInstanceCount"] as? Int64 {
             self.minInstanceCount = value
         }
+        if let value = dict["NewSaeVersion"] as? String {
+            self.newSaeVersion = value
+        }
         if let value = dict["NoneLoadInstanceCount"] as? Int64 {
             self.noneLoadInstanceCount = value
         }
@@ -8190,6 +8235,9 @@ public class PriceEstimateFeature : Tea.TeaModel {
         }
         if let value = dict["RegionId"] as? String {
             self.regionId = value
+        }
+        if let value = dict["ResourceType"] as? String {
+            self.resourceType = value
         }
     }
 }
@@ -14676,6 +14724,8 @@ public class CreateApplicationRequest : Tea.TeaModel {
 
     public var envs: String?
 
+    public var gpuConfig: String?
+
     public var imagePullSecrets: String?
 
     public var imageUrl: String?
@@ -14860,6 +14910,9 @@ public class CreateApplicationRequest : Tea.TeaModel {
         }
         if self.envs != nil {
             map["Envs"] = self.envs!
+        }
+        if self.gpuConfig != nil {
+            map["GpuConfig"] = self.gpuConfig!
         }
         if self.imagePullSecrets != nil {
             map["ImagePullSecrets"] = self.imagePullSecrets!
@@ -15096,6 +15149,9 @@ public class CreateApplicationRequest : Tea.TeaModel {
         if let value = dict["Envs"] as? String {
             self.envs = value
         }
+        if let value = dict["GpuConfig"] as? String {
+            self.gpuConfig = value
+        }
         if let value = dict["ImagePullSecrets"] as? String {
             self.imagePullSecrets = value
         }
@@ -15319,6 +15375,8 @@ public class CreateApplicationShrinkRequest : Tea.TeaModel {
 
     public var envs: String?
 
+    public var gpuConfig: String?
+
     public var imagePullSecrets: String?
 
     public var imageUrl: String?
@@ -15503,6 +15561,9 @@ public class CreateApplicationShrinkRequest : Tea.TeaModel {
         }
         if self.envs != nil {
             map["Envs"] = self.envs!
+        }
+        if self.gpuConfig != nil {
+            map["GpuConfig"] = self.gpuConfig!
         }
         if self.imagePullSecrets != nil {
             map["ImagePullSecrets"] = self.imagePullSecrets!
@@ -15730,6 +15791,9 @@ public class CreateApplicationShrinkRequest : Tea.TeaModel {
         }
         if let value = dict["Envs"] as? String {
             self.envs = value
+        }
+        if let value = dict["GpuConfig"] as? String {
+            self.gpuConfig = value
         }
         if let value = dict["ImagePullSecrets"] as? String {
             self.imagePullSecrets = value
@@ -20888,6 +20952,207 @@ public class DeleteIngressResponse : Tea.TeaModel {
     }
 }
 
+public class DeleteInstancesRequest : Tea.TeaModel {
+    public var appId: String?
+
+    public var instanceIds: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.appId != nil {
+            map["AppId"] = self.appId!
+        }
+        if self.instanceIds != nil {
+            map["InstanceIds"] = self.instanceIds!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["AppId"] as? String {
+            self.appId = value
+        }
+        if let value = dict["InstanceIds"] as? String {
+            self.instanceIds = value
+        }
+    }
+}
+
+public class DeleteInstancesResponseBody : Tea.TeaModel {
+    public class Data : Tea.TeaModel {
+        public var changeOrderId: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.changeOrderId != nil {
+                map["ChangeOrderId"] = self.changeOrderId!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["ChangeOrderId"] as? String {
+                self.changeOrderId = value
+            }
+        }
+    }
+    public var code: String?
+
+    public var data: DeleteInstancesResponseBody.Data?
+
+    public var errorCode: String?
+
+    public var message: String?
+
+    public var requestId: String?
+
+    public var success: Bool?
+
+    public var traceId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.data?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.code != nil {
+            map["Code"] = self.code!
+        }
+        if self.data != nil {
+            map["Data"] = self.data?.toMap()
+        }
+        if self.errorCode != nil {
+            map["ErrorCode"] = self.errorCode!
+        }
+        if self.message != nil {
+            map["Message"] = self.message!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.success != nil {
+            map["Success"] = self.success!
+        }
+        if self.traceId != nil {
+            map["TraceId"] = self.traceId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["Code"] as? String {
+            self.code = value
+        }
+        if let value = dict["Data"] as? [String: Any?] {
+            var model = DeleteInstancesResponseBody.Data()
+            model.fromMap(value)
+            self.data = model
+        }
+        if let value = dict["ErrorCode"] as? String {
+            self.errorCode = value
+        }
+        if let value = dict["Message"] as? String {
+            self.message = value
+        }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+        if let value = dict["Success"] as? Bool {
+            self.success = value
+        }
+        if let value = dict["TraceId"] as? String {
+            self.traceId = value
+        }
+    }
+}
+
+public class DeleteInstancesResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: DeleteInstancesResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = DeleteInstancesResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
 public class DeleteJobRequest : Tea.TeaModel {
     public var appId: String?
 
@@ -21857,6 +22122,8 @@ public class DeployApplicationRequest : Tea.TeaModel {
 
     public var envs: String?
 
+    public var gpuConfig: String?
+
     public var imagePullSecrets: String?
 
     public var imageUrl: String?
@@ -22036,6 +22303,9 @@ public class DeployApplicationRequest : Tea.TeaModel {
         }
         if self.envs != nil {
             map["Envs"] = self.envs!
+        }
+        if self.gpuConfig != nil {
+            map["GpuConfig"] = self.gpuConfig!
         }
         if self.imagePullSecrets != nil {
             map["ImagePullSecrets"] = self.imagePullSecrets!
@@ -22266,6 +22536,9 @@ public class DeployApplicationRequest : Tea.TeaModel {
         if let value = dict["Envs"] as? String {
             self.envs = value
         }
+        if let value = dict["GpuConfig"] as? String {
+            self.gpuConfig = value
+        }
         if let value = dict["ImagePullSecrets"] as? String {
             self.imagePullSecrets = value
         }
@@ -22484,6 +22757,8 @@ public class DeployApplicationShrinkRequest : Tea.TeaModel {
 
     public var envs: String?
 
+    public var gpuConfig: String?
+
     public var imagePullSecrets: String?
 
     public var imageUrl: String?
@@ -22663,6 +22938,9 @@ public class DeployApplicationShrinkRequest : Tea.TeaModel {
         }
         if self.envs != nil {
             map["Envs"] = self.envs!
+        }
+        if self.gpuConfig != nil {
+            map["GpuConfig"] = self.gpuConfig!
         }
         if self.imagePullSecrets != nil {
             map["ImagePullSecrets"] = self.imagePullSecrets!
@@ -22884,6 +23162,9 @@ public class DeployApplicationShrinkRequest : Tea.TeaModel {
         }
         if let value = dict["Envs"] as? String {
             self.envs = value
+        }
+        if let value = dict["GpuConfig"] as? String {
+            self.gpuConfig = value
         }
         if let value = dict["ImagePullSecrets"] as? String {
             self.imagePullSecrets = value
@@ -50074,6 +50355,10 @@ public class QueryResourceStaticsResponseBody : Tea.TeaModel {
 
             public var ephemeralStorage: Double?
 
+            public var gpuA10: Double?
+
+            public var gpuPpu810e: Double?
+
             public var idleCpu: Double?
 
             public var memory: Double?
@@ -50104,6 +50389,12 @@ public class QueryResourceStaticsResponseBody : Tea.TeaModel {
                 if self.ephemeralStorage != nil {
                     map["EphemeralStorage"] = self.ephemeralStorage!
                 }
+                if self.gpuA10 != nil {
+                    map["GpuA10"] = self.gpuA10!
+                }
+                if self.gpuPpu810e != nil {
+                    map["GpuPpu810e"] = self.gpuPpu810e!
+                }
                 if self.idleCpu != nil {
                     map["IdleCpu"] = self.idleCpu!
                 }
@@ -50126,6 +50417,12 @@ public class QueryResourceStaticsResponseBody : Tea.TeaModel {
                 }
                 if let value = dict["EphemeralStorage"] as? Double {
                     self.ephemeralStorage = value
+                }
+                if let value = dict["GpuA10"] as? Double {
+                    self.gpuA10 = value
+                }
+                if let value = dict["GpuPpu810e"] as? Double {
+                    self.gpuPpu810e = value
                 }
                 if let value = dict["IdleCpu"] as? Double {
                     self.idleCpu = value
