@@ -839,6 +839,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func listCategoryWithOptions(_ WorkspaceId: String, _ request: ListCategoryRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> ListCategoryResponse {
         try TeaUtils.Client.validateModel(request)
         var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.categoryName)) {
+            body["CategoryName"] = request.categoryName ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.categoryType)) {
             body["CategoryType"] = request.categoryType ?? "";
         }
