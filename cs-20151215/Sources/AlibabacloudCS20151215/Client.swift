@@ -500,6 +500,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.apiAudiences)) {
             body["api_audiences"] = request.apiAudiences ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.auditLogConfig)) {
+            body["audit_log_config"] = request.auditLogConfig!;
+        }
         if (!TeaUtils.Client.isUnset(request.autoRenew)) {
             body["auto_renew"] = request.autoRenew!;
         }
