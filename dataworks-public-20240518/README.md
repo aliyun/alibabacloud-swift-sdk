@@ -17,7 +17,7 @@ English | [简体中文](README-CN.md)
 To integrate `AlibabacloudDataworksPublic20240518` into your Xcode project using [Carthage](https://github.com/Carthage/Carthage), specify it in your `Cartfile`:
 
 ```ogdl
-github "alibabacloud-sdk-swift/dataworks-public-20240518" "7.0.1"
+github "alibabacloud-sdk-swift/dataworks-public-20240518" "7.1.0"
 ```
 
 ### Swift Package Manager
@@ -26,7 +26,7 @@ To integrate `AlibabacloudDataworksPublic20240518` into your Xcode project using
 
 ```swift
 dependencies: [
-    .package(url: "https://github.com/alibabacloud-sdk-swift/dataworks-public-20240518.git", from: "7.0.1")
+    .package(url: "https://github.com/alibabacloud-sdk-swift/dataworks-public-20240518.git", from: "7.1.0")
 ]
 ```
 
