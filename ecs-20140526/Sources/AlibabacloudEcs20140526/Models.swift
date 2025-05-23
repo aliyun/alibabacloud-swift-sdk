@@ -59575,6 +59575,36 @@ public class DescribeInstanceTypesResponseBody : Tea.TeaModel {
                     }
                 }
             }
+            public class Clock : Tea.TeaModel {
+                public var ptpSupport: String?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.ptpSupport != nil {
+                        map["PtpSupport"] = self.ptpSupport!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                    guard let dict else { return }
+                    if let value = dict["PtpSupport"] as? String {
+                        self.ptpSupport = value
+                    }
+                }
+            }
             public class CpuOptions : Tea.TeaModel {
                 public class SupportedTopologyTypes : Tea.TeaModel {
                     public var supportedTopologyType: [String]?
@@ -59824,6 +59854,8 @@ public class DescribeInstanceTypesResponseBody : Tea.TeaModel {
 
             public var baselineCredit: Int32?
 
+            public var clock: DescribeInstanceTypesResponseBody.InstanceTypes.InstanceType.Clock?
+
             public var cpuArchitecture: String?
 
             public var cpuCoreCount: Int32?
@@ -59917,6 +59949,7 @@ public class DescribeInstanceTypesResponseBody : Tea.TeaModel {
 
             public override func validate() throws -> Void {
                 try self.attributes?.validate()
+                try self.clock?.validate()
                 try self.cpuOptions?.validate()
                 try self.enhancedNetwork?.validate()
                 try self.networkCards?.validate()
@@ -59930,6 +59963,9 @@ public class DescribeInstanceTypesResponseBody : Tea.TeaModel {
                 }
                 if self.baselineCredit != nil {
                     map["BaselineCredit"] = self.baselineCredit!
+                }
+                if self.clock != nil {
+                    map["Clock"] = self.clock?.toMap()
                 }
                 if self.cpuArchitecture != nil {
                     map["CpuArchitecture"] = self.cpuArchitecture!
@@ -60066,6 +60102,11 @@ public class DescribeInstanceTypesResponseBody : Tea.TeaModel {
                 }
                 if let value = dict["BaselineCredit"] as? Int32 {
                     self.baselineCredit = value
+                }
+                if let value = dict["Clock"] as? [String: Any?] {
+                    var model = DescribeInstanceTypesResponseBody.InstanceTypes.InstanceType.Clock()
+                    model.fromMap(value)
+                    self.clock = model
                 }
                 if let value = dict["CpuArchitecture"] as? String {
                     self.cpuArchitecture = value
