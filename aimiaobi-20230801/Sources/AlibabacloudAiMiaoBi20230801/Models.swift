@@ -11350,6 +11350,8 @@ public class GetGeneratedContentResponseBody : Tea.TeaModel {
 
         public var id: Int64?
 
+        public var ignoreContentAuditWords: String?
+
         public var keywordList: [String]?
 
         public var keywords: String?
@@ -11401,6 +11403,9 @@ public class GetGeneratedContentResponseBody : Tea.TeaModel {
             if self.id != nil {
                 map["Id"] = self.id!
             }
+            if self.ignoreContentAuditWords != nil {
+                map["IgnoreContentAuditWords"] = self.ignoreContentAuditWords!
+            }
             if self.keywordList != nil {
                 map["KeywordList"] = self.keywordList!
             }
@@ -11450,6 +11455,9 @@ public class GetGeneratedContentResponseBody : Tea.TeaModel {
             }
             if let value = dict["Id"] as? Int64 {
                 self.id = value
+            }
+            if let value = dict["IgnoreContentAuditWords"] as? String {
+                self.ignoreContentAuditWords = value
             }
             if let value = dict["KeywordList"] as? [String] {
                 self.keywordList = value
