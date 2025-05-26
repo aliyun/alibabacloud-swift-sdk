@@ -9,6 +9,247 @@ import AlibabacloudOpenApi
 import AlibabaCloudOpenApiUtil
 import AlibabacloudEndpointUtil
 
+public class BankMetaVerifyIntlRequest : Tea.TeaModel {
+    public var bankCard: String?
+
+    public var identifyNum: String?
+
+    public var identityType: String?
+
+    public var mobile: String?
+
+    public var paramType: String?
+
+    public var productCode: String?
+
+    public var productType: String?
+
+    public var userName: String?
+
+    public var verifyMode: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.bankCard != nil {
+            map["BankCard"] = self.bankCard!
+        }
+        if self.identifyNum != nil {
+            map["IdentifyNum"] = self.identifyNum!
+        }
+        if self.identityType != nil {
+            map["IdentityType"] = self.identityType!
+        }
+        if self.mobile != nil {
+            map["Mobile"] = self.mobile!
+        }
+        if self.paramType != nil {
+            map["ParamType"] = self.paramType!
+        }
+        if self.productCode != nil {
+            map["ProductCode"] = self.productCode!
+        }
+        if self.productType != nil {
+            map["ProductType"] = self.productType!
+        }
+        if self.userName != nil {
+            map["UserName"] = self.userName!
+        }
+        if self.verifyMode != nil {
+            map["VerifyMode"] = self.verifyMode!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["BankCard"] as? String {
+            self.bankCard = value
+        }
+        if let value = dict["IdentifyNum"] as? String {
+            self.identifyNum = value
+        }
+        if let value = dict["IdentityType"] as? String {
+            self.identityType = value
+        }
+        if let value = dict["Mobile"] as? String {
+            self.mobile = value
+        }
+        if let value = dict["ParamType"] as? String {
+            self.paramType = value
+        }
+        if let value = dict["ProductCode"] as? String {
+            self.productCode = value
+        }
+        if let value = dict["ProductType"] as? String {
+            self.productType = value
+        }
+        if let value = dict["UserName"] as? String {
+            self.userName = value
+        }
+        if let value = dict["VerifyMode"] as? String {
+            self.verifyMode = value
+        }
+    }
+}
+
+public class BankMetaVerifyIntlResponseBody : Tea.TeaModel {
+    public class ResultObject : Tea.TeaModel {
+        public var bizCode: String?
+
+        public var subCode: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.bizCode != nil {
+                map["BizCode"] = self.bizCode!
+            }
+            if self.subCode != nil {
+                map["SubCode"] = self.subCode!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["BizCode"] as? String {
+                self.bizCode = value
+            }
+            if let value = dict["SubCode"] as? String {
+                self.subCode = value
+            }
+        }
+    }
+    public var code: String?
+
+    public var message: String?
+
+    public var requestId: String?
+
+    public var resultObject: BankMetaVerifyIntlResponseBody.ResultObject?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.resultObject?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.code != nil {
+            map["Code"] = self.code!
+        }
+        if self.message != nil {
+            map["Message"] = self.message!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.resultObject != nil {
+            map["ResultObject"] = self.resultObject?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["Code"] as? String {
+            self.code = value
+        }
+        if let value = dict["Message"] as? String {
+            self.message = value
+        }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+        if let value = dict["ResultObject"] as? [String: Any?] {
+            var model = BankMetaVerifyIntlResponseBody.ResultObject()
+            model.fromMap(value)
+            self.resultObject = model
+        }
+    }
+}
+
+public class BankMetaVerifyIntlResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: BankMetaVerifyIntlResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = BankMetaVerifyIntlResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
 public class CardOcrRequest : Tea.TeaModel {
     public var docType: String?
 

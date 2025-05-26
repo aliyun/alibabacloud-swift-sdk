@@ -28,6 +28,61 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func bankMetaVerifyIntlWithOptions(_ request: BankMetaVerifyIntlRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> BankMetaVerifyIntlResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.bankCard)) {
+            query["BankCard"] = request.bankCard ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.identifyNum)) {
+            query["IdentifyNum"] = request.identifyNum ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.identityType)) {
+            query["IdentityType"] = request.identityType ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.mobile)) {
+            query["Mobile"] = request.mobile ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.paramType)) {
+            query["ParamType"] = request.paramType ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.productCode)) {
+            query["ProductCode"] = request.productCode ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.productType)) {
+            query["ProductType"] = request.productType ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.userName)) {
+            query["UserName"] = request.userName ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.verifyMode)) {
+            query["VerifyMode"] = request.verifyMode ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "BankMetaVerifyIntl",
+            "version": "2022-08-09",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(BankMetaVerifyIntlResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func bankMetaVerifyIntl(_ request: BankMetaVerifyIntlRequest) async throws -> BankMetaVerifyIntlResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await bankMetaVerifyIntlWithOptions(request as! BankMetaVerifyIntlRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func cardOcrWithOptions(_ request: CardOcrRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> CardOcrResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
