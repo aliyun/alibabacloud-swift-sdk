@@ -14814,6 +14814,8 @@ public class CreateApplicationRequest : Tea.TeaModel {
 
     public var slsConfigs: String?
 
+    public var startupProbe: String?
+
     public var terminationGracePeriodSeconds: Int32?
 
     public var timezone: String?
@@ -15053,6 +15055,9 @@ public class CreateApplicationRequest : Tea.TeaModel {
         }
         if self.slsConfigs != nil {
             map["SlsConfigs"] = self.slsConfigs!
+        }
+        if self.startupProbe != nil {
+            map["StartupProbe"] = self.startupProbe!
         }
         if self.terminationGracePeriodSeconds != nil {
             map["TerminationGracePeriodSeconds"] = self.terminationGracePeriodSeconds!
@@ -15304,6 +15309,9 @@ public class CreateApplicationRequest : Tea.TeaModel {
         if let value = dict["SlsConfigs"] as? String {
             self.slsConfigs = value
         }
+        if let value = dict["StartupProbe"] as? String {
+            self.startupProbe = value
+        }
         if let value = dict["TerminationGracePeriodSeconds"] as? Int32 {
             self.terminationGracePeriodSeconds = value
         }
@@ -15464,6 +15472,8 @@ public class CreateApplicationShrinkRequest : Tea.TeaModel {
     public var sidecarContainersConfigShrink: String?
 
     public var slsConfigs: String?
+
+    public var startupProbe: String?
 
     public var terminationGracePeriodSeconds: Int32?
 
@@ -15697,6 +15707,9 @@ public class CreateApplicationShrinkRequest : Tea.TeaModel {
         if self.slsConfigs != nil {
             map["SlsConfigs"] = self.slsConfigs!
         }
+        if self.startupProbe != nil {
+            map["StartupProbe"] = self.startupProbe!
+        }
         if self.terminationGracePeriodSeconds != nil {
             map["TerminationGracePeriodSeconds"] = self.terminationGracePeriodSeconds!
         }
@@ -15926,6 +15939,9 @@ public class CreateApplicationShrinkRequest : Tea.TeaModel {
         }
         if let value = dict["SlsConfigs"] as? String {
             self.slsConfigs = value
+        }
+        if let value = dict["StartupProbe"] as? String {
+            self.startupProbe = value
         }
         if let value = dict["TerminationGracePeriodSeconds"] as? Int32 {
             self.terminationGracePeriodSeconds = value
@@ -22208,6 +22224,8 @@ public class DeployApplicationRequest : Tea.TeaModel {
 
     public var slsConfigs: String?
 
+    public var startupProbe: String?
+
     public var swimlanePvtzDiscoverySvc: String?
 
     public var terminationGracePeriodSeconds: Int32?
@@ -22440,6 +22458,9 @@ public class DeployApplicationRequest : Tea.TeaModel {
         }
         if self.slsConfigs != nil {
             map["SlsConfigs"] = self.slsConfigs!
+        }
+        if self.startupProbe != nil {
+            map["StartupProbe"] = self.startupProbe!
         }
         if self.swimlanePvtzDiscoverySvc != nil {
             map["SwimlanePvtzDiscoverySvc"] = self.swimlanePvtzDiscoverySvc!
@@ -22685,6 +22706,9 @@ public class DeployApplicationRequest : Tea.TeaModel {
         if let value = dict["SlsConfigs"] as? String {
             self.slsConfigs = value
         }
+        if let value = dict["StartupProbe"] as? String {
+            self.startupProbe = value
+        }
         if let value = dict["SwimlanePvtzDiscoverySvc"] as? String {
             self.swimlanePvtzDiscoverySvc = value
         }
@@ -22842,6 +22866,8 @@ public class DeployApplicationShrinkRequest : Tea.TeaModel {
     public var sidecarContainersConfigShrink: String?
 
     public var slsConfigs: String?
+
+    public var startupProbe: String?
 
     public var swimlanePvtzDiscoverySvc: String?
 
@@ -23068,6 +23094,9 @@ public class DeployApplicationShrinkRequest : Tea.TeaModel {
         if self.slsConfigs != nil {
             map["SlsConfigs"] = self.slsConfigs!
         }
+        if self.startupProbe != nil {
+            map["StartupProbe"] = self.startupProbe!
+        }
         if self.swimlanePvtzDiscoverySvc != nil {
             map["SwimlanePvtzDiscoverySvc"] = self.swimlanePvtzDiscoverySvc!
         }
@@ -23291,6 +23320,9 @@ public class DeployApplicationShrinkRequest : Tea.TeaModel {
         }
         if let value = dict["SlsConfigs"] as? String {
             self.slsConfigs = value
+        }
+        if let value = dict["StartupProbe"] as? String {
+            self.startupProbe = value
         }
         if let value = dict["SwimlanePvtzDiscoverySvc"] as? String {
             self.swimlanePvtzDiscoverySvc = value
@@ -24787,6 +24819,8 @@ public class DescribeApplicationConfigResponseBody : Tea.TeaModel {
 
         public var slsConfigs: String?
 
+        public var startupProbe: String?
+
         public var swimlanePvtzDiscovery: String?
 
         public var tags: [DescribeApplicationConfigResponseBody.Data.Tags]?
@@ -25063,6 +25097,9 @@ public class DescribeApplicationConfigResponseBody : Tea.TeaModel {
             }
             if self.slsConfigs != nil {
                 map["SlsConfigs"] = self.slsConfigs!
+            }
+            if self.startupProbe != nil {
+                map["StartupProbe"] = self.startupProbe!
             }
             if self.swimlanePvtzDiscovery != nil {
                 map["SwimlanePvtzDiscovery"] = self.swimlanePvtzDiscovery!
@@ -25381,6 +25418,9 @@ public class DescribeApplicationConfigResponseBody : Tea.TeaModel {
             }
             if let value = dict["SlsConfigs"] as? String {
                 self.slsConfigs = value
+            }
+            if let value = dict["StartupProbe"] as? String {
+                self.startupProbe = value
             }
             if let value = dict["SwimlanePvtzDiscovery"] as? String {
                 self.swimlanePvtzDiscovery = value
