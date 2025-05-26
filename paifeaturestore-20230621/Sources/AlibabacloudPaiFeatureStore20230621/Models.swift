@@ -3460,7 +3460,7 @@ public class GetFeatureViewResponseBody : Tea.TeaModel {
 
         public var name: String?
 
-        public var transform: GetFeatureViewResponseBody.Fields.Transform?
+        public var transform: [GetFeatureViewResponseBody.Fields.Transform]?
 
         public var type: String?
 
@@ -3474,7 +3474,6 @@ public class GetFeatureViewResponseBody : Tea.TeaModel {
         }
 
         public override func validate() throws -> Void {
-            try self.transform?.validate()
         }
 
         public override func toMap() -> [String : Any] {
@@ -3486,7 +3485,11 @@ public class GetFeatureViewResponseBody : Tea.TeaModel {
                 map["Name"] = self.name!
             }
             if self.transform != nil {
-                map["Transform"] = self.transform?.toMap()
+                var tmp : [Any] = []
+                for k in self.transform! {
+                    tmp.append(k.toMap())
+                }
+                map["Transform"] = tmp
             }
             if self.type != nil {
                 map["Type"] = self.type!
@@ -3502,10 +3505,18 @@ public class GetFeatureViewResponseBody : Tea.TeaModel {
             if let value = dict["Name"] as? String {
                 self.name = value
             }
-            if let value = dict["Transform"] as? [String: Any?] {
-                var model = GetFeatureViewResponseBody.Fields.Transform()
-                model.fromMap(value)
-                self.transform = model
+            if let value = dict["Transform"] as? [Any?] {
+                var tmp : [GetFeatureViewResponseBody.Fields.Transform] = []
+                for v in value {
+                    if v != nil {
+                        var model = GetFeatureViewResponseBody.Fields.Transform()
+                        if v != nil {
+                            model.fromMap(v as? [String: Any?])
+                        }
+                        tmp.append(model)
+                    }
+                }
+                self.transform = tmp
             }
             if let value = dict["Type"] as? String {
                 self.type = value
