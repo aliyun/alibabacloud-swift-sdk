@@ -12,20 +12,12 @@ English | [简体中文](README-CN.md)
 
 ## Installation
 
-### CocoaPods
-
-[CocoaPods](https://cocoapods.org) is a dependency manager for Cocoa projects. For usage and installation instructions, visit their website. To integrate `AlibabacloudImm20200930` into your Xcode project using CocoaPods, specify it in your `Podfile`:
-
-```ruby
-pod 'AlibabacloudImm20200930', '~> 2.1.6'
-```
-
 ### Carthage
 
 To integrate `AlibabacloudImm20200930` into your Xcode project using [Carthage](https://github.com/Carthage/Carthage), specify it in your `Cartfile`:
 
 ```ogdl
-github "alibabacloud-sdk-swift/imm-20200930" "2.1.6"
+github "alibabacloud-sdk-swift/imm-20200930" "3.0.0"
 ```
 
 ### Swift Package Manager
@@ -34,7 +26,7 @@ To integrate `AlibabacloudImm20200930` into your Xcode project using [Swift Pack
 
 ```swift
 dependencies: [
-    .package(url: "https://github.com/alibabacloud-sdk-swift/imm-20200930.git", from: "2.1.6")
+    .package(url: "https://github.com/alibabacloud-sdk-swift/imm-20200930.git", from: "3.0.0")
 ]
 ```
 
