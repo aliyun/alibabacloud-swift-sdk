@@ -2959,6 +2959,8 @@ public class JobSpec : Tea.TeaModel {
 
     public var isCheif: Bool?
 
+    public var isChief: Bool?
+
     public var localMountSpecs: [LocalMountSpec]?
 
     public var podCount: Int64?
@@ -3016,6 +3018,9 @@ public class JobSpec : Tea.TeaModel {
         }
         if self.isCheif != nil {
             map["IsCheif"] = self.isCheif!
+        }
+        if self.isChief != nil {
+            map["IsChief"] = self.isChief!
         }
         if self.localMountSpecs != nil {
             var tmp : [Any] = []
@@ -3078,6 +3083,9 @@ public class JobSpec : Tea.TeaModel {
         }
         if let value = dict["IsCheif"] as? Bool {
             self.isCheif = value
+        }
+        if let value = dict["IsChief"] as? Bool {
+            self.isChief = value
         }
         if let value = dict["LocalMountSpecs"] as? [Any?] {
             var tmp : [LocalMountSpec] = []
