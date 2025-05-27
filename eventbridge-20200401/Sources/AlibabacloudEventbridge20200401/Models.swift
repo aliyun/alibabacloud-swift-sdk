@@ -12341,6 +12341,517 @@ public class DisableRuleResponse : Tea.TeaModel {
     }
 }
 
+public class DiscoverEventSourceRequest : Tea.TeaModel {
+    public class SourceMySQLParameters : Tea.TeaModel {
+        public var databaseName: String?
+
+        public var hostName: String?
+
+        public var limit: String?
+
+        public var networkType: String?
+
+        public var offset: String?
+
+        public var password: String?
+
+        public var port: Int32?
+
+        public var regionId: String?
+
+        public var securityGroupId: String?
+
+        public var tableName: String?
+
+        public var user: String?
+
+        public var vSwitchIds: String?
+
+        public var vpcId: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.databaseName != nil {
+                map["DatabaseName"] = self.databaseName!
+            }
+            if self.hostName != nil {
+                map["HostName"] = self.hostName!
+            }
+            if self.limit != nil {
+                map["Limit"] = self.limit!
+            }
+            if self.networkType != nil {
+                map["NetworkType"] = self.networkType!
+            }
+            if self.offset != nil {
+                map["Offset"] = self.offset!
+            }
+            if self.password != nil {
+                map["Password"] = self.password!
+            }
+            if self.port != nil {
+                map["Port"] = self.port!
+            }
+            if self.regionId != nil {
+                map["RegionId"] = self.regionId!
+            }
+            if self.securityGroupId != nil {
+                map["SecurityGroupId"] = self.securityGroupId!
+            }
+            if self.tableName != nil {
+                map["TableName"] = self.tableName!
+            }
+            if self.user != nil {
+                map["User"] = self.user!
+            }
+            if self.vSwitchIds != nil {
+                map["VSwitchIds"] = self.vSwitchIds!
+            }
+            if self.vpcId != nil {
+                map["VpcId"] = self.vpcId!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["DatabaseName"] as? String {
+                self.databaseName = value
+            }
+            if let value = dict["HostName"] as? String {
+                self.hostName = value
+            }
+            if let value = dict["Limit"] as? String {
+                self.limit = value
+            }
+            if let value = dict["NetworkType"] as? String {
+                self.networkType = value
+            }
+            if let value = dict["Offset"] as? String {
+                self.offset = value
+            }
+            if let value = dict["Password"] as? String {
+                self.password = value
+            }
+            if let value = dict["Port"] as? Int32 {
+                self.port = value
+            }
+            if let value = dict["RegionId"] as? String {
+                self.regionId = value
+            }
+            if let value = dict["SecurityGroupId"] as? String {
+                self.securityGroupId = value
+            }
+            if let value = dict["TableName"] as? String {
+                self.tableName = value
+            }
+            if let value = dict["User"] as? String {
+                self.user = value
+            }
+            if let value = dict["VSwitchIds"] as? String {
+                self.vSwitchIds = value
+            }
+            if let value = dict["VpcId"] as? String {
+                self.vpcId = value
+            }
+        }
+    }
+    public var sourceMySQLParameters: DiscoverEventSourceRequest.SourceMySQLParameters?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.sourceMySQLParameters?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.sourceMySQLParameters != nil {
+            map["SourceMySQLParameters"] = self.sourceMySQLParameters?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["SourceMySQLParameters"] as? [String: Any?] {
+            var model = DiscoverEventSourceRequest.SourceMySQLParameters()
+            model.fromMap(value)
+            self.sourceMySQLParameters = model
+        }
+    }
+}
+
+public class DiscoverEventSourceShrinkRequest : Tea.TeaModel {
+    public var sourceMySQLParametersShrink: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.sourceMySQLParametersShrink != nil {
+            map["SourceMySQLParameters"] = self.sourceMySQLParametersShrink!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["SourceMySQLParameters"] as? String {
+            self.sourceMySQLParametersShrink = value
+        }
+    }
+}
+
+public class DiscoverEventSourceResponseBody : Tea.TeaModel {
+    public class Data : Tea.TeaModel {
+        public class SourceMySQLDiscovery : Tea.TeaModel {
+            public class TableSchema : Tea.TeaModel {
+                public class Columns : Tea.TeaModel {
+                    public var extra: String?
+
+                    public var field: String?
+
+                    public var isNull: String?
+
+                    public var key: String?
+
+                    public var type: String?
+
+                    public override init() {
+                        super.init()
+                    }
+
+                    public init(_ dict: [String: Any]) {
+                        super.init()
+                        self.fromMap(dict)
+                    }
+
+                    public override func validate() throws -> Void {
+                    }
+
+                    public override func toMap() -> [String : Any] {
+                        var map = super.toMap()
+                        if self.extra != nil {
+                            map["Extra"] = self.extra!
+                        }
+                        if self.field != nil {
+                            map["Field"] = self.field!
+                        }
+                        if self.isNull != nil {
+                            map["IsNull"] = self.isNull!
+                        }
+                        if self.key != nil {
+                            map["Key"] = self.key!
+                        }
+                        if self.type != nil {
+                            map["Type"] = self.type!
+                        }
+                        return map
+                    }
+
+                    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                        guard let dict else { return }
+                        if let value = dict["Extra"] as? String {
+                            self.extra = value
+                        }
+                        if let value = dict["Field"] as? String {
+                            self.field = value
+                        }
+                        if let value = dict["IsNull"] as? String {
+                            self.isNull = value
+                        }
+                        if let value = dict["Key"] as? String {
+                            self.key = value
+                        }
+                        if let value = dict["Type"] as? String {
+                            self.type = value
+                        }
+                    }
+                }
+                public var columns: [DiscoverEventSourceResponseBody.Data.SourceMySQLDiscovery.TableSchema.Columns]?
+
+                public var tableName: String?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.columns != nil {
+                        var tmp : [Any] = []
+                        for k in self.columns! {
+                            tmp.append(k.toMap())
+                        }
+                        map["Columns"] = tmp
+                    }
+                    if self.tableName != nil {
+                        map["TableName"] = self.tableName!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                    guard let dict else { return }
+                    if let value = dict["Columns"] as? [Any?] {
+                        var tmp : [DiscoverEventSourceResponseBody.Data.SourceMySQLDiscovery.TableSchema.Columns] = []
+                        for v in value {
+                            if v != nil {
+                                var model = DiscoverEventSourceResponseBody.Data.SourceMySQLDiscovery.TableSchema.Columns()
+                                if v != nil {
+                                    model.fromMap(v as? [String: Any?])
+                                }
+                                tmp.append(model)
+                            }
+                        }
+                        self.columns = tmp
+                    }
+                    if let value = dict["TableName"] as? String {
+                        self.tableName = value
+                    }
+                }
+            }
+            public var databaseNames: [String]?
+
+            public var simpleData: String?
+
+            public var tableNames: [String]?
+
+            public var tableSchema: DiscoverEventSourceResponseBody.Data.SourceMySQLDiscovery.TableSchema?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+                try self.tableSchema?.validate()
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.databaseNames != nil {
+                    map["DatabaseNames"] = self.databaseNames!
+                }
+                if self.simpleData != nil {
+                    map["SimpleData"] = self.simpleData!
+                }
+                if self.tableNames != nil {
+                    map["TableNames"] = self.tableNames!
+                }
+                if self.tableSchema != nil {
+                    map["TableSchema"] = self.tableSchema?.toMap()
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["DatabaseNames"] as? [String] {
+                    self.databaseNames = value
+                }
+                if let value = dict["SimpleData"] as? String {
+                    self.simpleData = value
+                }
+                if let value = dict["TableNames"] as? [String] {
+                    self.tableNames = value
+                }
+                if let value = dict["TableSchema"] as? [String: Any?] {
+                    var model = DiscoverEventSourceResponseBody.Data.SourceMySQLDiscovery.TableSchema()
+                    model.fromMap(value)
+                    self.tableSchema = model
+                }
+            }
+        }
+        public var sourceMySQLDiscovery: DiscoverEventSourceResponseBody.Data.SourceMySQLDiscovery?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+            try self.sourceMySQLDiscovery?.validate()
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.sourceMySQLDiscovery != nil {
+                map["SourceMySQLDiscovery"] = self.sourceMySQLDiscovery?.toMap()
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["SourceMySQLDiscovery"] as? [String: Any?] {
+                var model = DiscoverEventSourceResponseBody.Data.SourceMySQLDiscovery()
+                model.fromMap(value)
+                self.sourceMySQLDiscovery = model
+            }
+        }
+    }
+    public var code: String?
+
+    public var data: DiscoverEventSourceResponseBody.Data?
+
+    public var message: String?
+
+    public var requestId: String?
+
+    public var success: Bool?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.data?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.code != nil {
+            map["Code"] = self.code!
+        }
+        if self.data != nil {
+            map["Data"] = self.data?.toMap()
+        }
+        if self.message != nil {
+            map["Message"] = self.message!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.success != nil {
+            map["Success"] = self.success!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["Code"] as? String {
+            self.code = value
+        }
+        if let value = dict["Data"] as? [String: Any?] {
+            var model = DiscoverEventSourceResponseBody.Data()
+            model.fromMap(value)
+            self.data = model
+        }
+        if let value = dict["Message"] as? String {
+            self.message = value
+        }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+        if let value = dict["Success"] as? Bool {
+            self.success = value
+        }
+    }
+}
+
+public class DiscoverEventSourceResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: DiscoverEventSourceResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = DiscoverEventSourceResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
 public class EnableRuleRequest : Tea.TeaModel {
     public var eventBusName: String?
 
@@ -34267,6 +34778,354 @@ public class TestEventPatternResponse : Tea.TeaModel {
         }
         if let value = dict["body"] as? [String: Any?] {
             var model = TestEventPatternResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
+public class TestEventSourceConfigRequest : Tea.TeaModel {
+    public class SourceMySQLParameters : Tea.TeaModel {
+        public var databaseName: String?
+
+        public var hostName: String?
+
+        public var networkType: String?
+
+        public var password: String?
+
+        public var port: Int32?
+
+        public var regionId: String?
+
+        public var securityGroupId: String?
+
+        public var tableNames: String?
+
+        public var user: String?
+
+        public var vSwitchIds: String?
+
+        public var vpcId: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.databaseName != nil {
+                map["DatabaseName"] = self.databaseName!
+            }
+            if self.hostName != nil {
+                map["HostName"] = self.hostName!
+            }
+            if self.networkType != nil {
+                map["NetworkType"] = self.networkType!
+            }
+            if self.password != nil {
+                map["Password"] = self.password!
+            }
+            if self.port != nil {
+                map["Port"] = self.port!
+            }
+            if self.regionId != nil {
+                map["RegionId"] = self.regionId!
+            }
+            if self.securityGroupId != nil {
+                map["SecurityGroupId"] = self.securityGroupId!
+            }
+            if self.tableNames != nil {
+                map["TableNames"] = self.tableNames!
+            }
+            if self.user != nil {
+                map["User"] = self.user!
+            }
+            if self.vSwitchIds != nil {
+                map["VSwitchIds"] = self.vSwitchIds!
+            }
+            if self.vpcId != nil {
+                map["VpcId"] = self.vpcId!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["DatabaseName"] as? String {
+                self.databaseName = value
+            }
+            if let value = dict["HostName"] as? String {
+                self.hostName = value
+            }
+            if let value = dict["NetworkType"] as? String {
+                self.networkType = value
+            }
+            if let value = dict["Password"] as? String {
+                self.password = value
+            }
+            if let value = dict["Port"] as? Int32 {
+                self.port = value
+            }
+            if let value = dict["RegionId"] as? String {
+                self.regionId = value
+            }
+            if let value = dict["SecurityGroupId"] as? String {
+                self.securityGroupId = value
+            }
+            if let value = dict["TableNames"] as? String {
+                self.tableNames = value
+            }
+            if let value = dict["User"] as? String {
+                self.user = value
+            }
+            if let value = dict["VSwitchIds"] as? String {
+                self.vSwitchIds = value
+            }
+            if let value = dict["VpcId"] as? String {
+                self.vpcId = value
+            }
+        }
+    }
+    public var sourceMySQLParameters: TestEventSourceConfigRequest.SourceMySQLParameters?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.sourceMySQLParameters?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.sourceMySQLParameters != nil {
+            map["SourceMySQLParameters"] = self.sourceMySQLParameters?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["SourceMySQLParameters"] as? [String: Any?] {
+            var model = TestEventSourceConfigRequest.SourceMySQLParameters()
+            model.fromMap(value)
+            self.sourceMySQLParameters = model
+        }
+    }
+}
+
+public class TestEventSourceConfigShrinkRequest : Tea.TeaModel {
+    public var sourceMySQLParametersShrink: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.sourceMySQLParametersShrink != nil {
+            map["SourceMySQLParameters"] = self.sourceMySQLParametersShrink!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["SourceMySQLParameters"] as? String {
+            self.sourceMySQLParametersShrink = value
+        }
+    }
+}
+
+public class TestEventSourceConfigResponseBody : Tea.TeaModel {
+    public class Data : Tea.TeaModel {
+        public var checkItem: String?
+
+        public var errorMsg: String?
+
+        public var isSucceed: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.checkItem != nil {
+                map["CheckItem"] = self.checkItem!
+            }
+            if self.errorMsg != nil {
+                map["ErrorMsg"] = self.errorMsg!
+            }
+            if self.isSucceed != nil {
+                map["IsSucceed"] = self.isSucceed!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["CheckItem"] as? String {
+                self.checkItem = value
+            }
+            if let value = dict["ErrorMsg"] as? String {
+                self.errorMsg = value
+            }
+            if let value = dict["IsSucceed"] as? String {
+                self.isSucceed = value
+            }
+        }
+    }
+    public var code: String?
+
+    public var data: [TestEventSourceConfigResponseBody.Data]?
+
+    public var message: String?
+
+    public var requestId: String?
+
+    public var success: Bool?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.code != nil {
+            map["Code"] = self.code!
+        }
+        if self.data != nil {
+            var tmp : [Any] = []
+            for k in self.data! {
+                tmp.append(k.toMap())
+            }
+            map["Data"] = tmp
+        }
+        if self.message != nil {
+            map["Message"] = self.message!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.success != nil {
+            map["Success"] = self.success!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["Code"] as? String {
+            self.code = value
+        }
+        if let value = dict["Data"] as? [Any?] {
+            var tmp : [TestEventSourceConfigResponseBody.Data] = []
+            for v in value {
+                if v != nil {
+                    var model = TestEventSourceConfigResponseBody.Data()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.data = tmp
+        }
+        if let value = dict["Message"] as? String {
+            self.message = value
+        }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+        if let value = dict["Success"] as? Bool {
+            self.success = value
+        }
+    }
+}
+
+public class TestEventSourceConfigResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: TestEventSourceConfigResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = TestEventSourceConfigResponseBody()
             model.fromMap(value)
             self.body = model
         }
