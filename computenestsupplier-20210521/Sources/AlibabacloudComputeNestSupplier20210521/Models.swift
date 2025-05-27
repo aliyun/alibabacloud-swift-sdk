@@ -8753,6 +8753,52 @@ public class GetServiceProvisionsShrinkRequest : Tea.TeaModel {
 
 public class GetServiceProvisionsResponseBody : Tea.TeaModel {
     public class ServiceProvisions : Tea.TeaModel {
+        public class CommodityProvisions : Tea.TeaModel {
+            public var commodityCode: String?
+
+            public var enableURL: String?
+
+            public var status: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.commodityCode != nil {
+                    map["CommodityCode"] = self.commodityCode!
+                }
+                if self.enableURL != nil {
+                    map["EnableURL"] = self.enableURL!
+                }
+                if self.status != nil {
+                    map["Status"] = self.status!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["CommodityCode"] as? String {
+                    self.commodityCode = value
+                }
+                if let value = dict["EnableURL"] as? String {
+                    self.enableURL = value
+                }
+                if let value = dict["Status"] as? String {
+                    self.status = value
+                }
+            }
+        }
         public class RoleProvision : Tea.TeaModel {
             public class Roles : Tea.TeaModel {
                 public class ApiForCreation : Tea.TeaModel {
@@ -8918,6 +8964,8 @@ public class GetServiceProvisionsResponseBody : Tea.TeaModel {
         }
         public var autoEnableService: Bool?
 
+        public var commodityProvisions: [GetServiceProvisionsResponseBody.ServiceProvisions.CommodityProvisions]?
+
         public var enableURL: String?
 
         public var roleProvision: GetServiceProvisionsResponseBody.ServiceProvisions.RoleProvision?
@@ -8946,6 +8994,13 @@ public class GetServiceProvisionsResponseBody : Tea.TeaModel {
             if self.autoEnableService != nil {
                 map["AutoEnableService"] = self.autoEnableService!
             }
+            if self.commodityProvisions != nil {
+                var tmp : [Any] = []
+                for k in self.commodityProvisions! {
+                    tmp.append(k.toMap())
+                }
+                map["CommodityProvisions"] = tmp
+            }
             if self.enableURL != nil {
                 map["EnableURL"] = self.enableURL!
             }
@@ -8968,6 +9023,19 @@ public class GetServiceProvisionsResponseBody : Tea.TeaModel {
             guard let dict else { return }
             if let value = dict["AutoEnableService"] as? Bool {
                 self.autoEnableService = value
+            }
+            if let value = dict["CommodityProvisions"] as? [Any?] {
+                var tmp : [GetServiceProvisionsResponseBody.ServiceProvisions.CommodityProvisions] = []
+                for v in value {
+                    if v != nil {
+                        var model = GetServiceProvisionsResponseBody.ServiceProvisions.CommodityProvisions()
+                        if v != nil {
+                            model.fromMap(v as? [String: Any?])
+                        }
+                        tmp.append(model)
+                    }
+                }
+                self.commodityProvisions = tmp
             }
             if let value = dict["EnableURL"] as? String {
                 self.enableURL = value
