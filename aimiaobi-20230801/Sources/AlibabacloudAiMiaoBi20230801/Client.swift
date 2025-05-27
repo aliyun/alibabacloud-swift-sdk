@@ -4427,6 +4427,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.docId)) {
             body["DocId"] = request.docId ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.modelName)) {
+            body["ModelName"] = request.modelName ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.query)) {
             body["Query"] = request.query ?? "";
         }

@@ -38078,6 +38078,8 @@ public class RunDocSummaryRequest : Tea.TeaModel {
 
     public var docId: String?
 
+    public var modelName: String?
+
     public var query: String?
 
     public var recommendContent: String?
@@ -38106,6 +38108,9 @@ public class RunDocSummaryRequest : Tea.TeaModel {
         if self.docId != nil {
             map["DocId"] = self.docId!
         }
+        if self.modelName != nil {
+            map["ModelName"] = self.modelName!
+        }
         if self.query != nil {
             map["Query"] = self.query!
         }
@@ -38128,6 +38133,9 @@ public class RunDocSummaryRequest : Tea.TeaModel {
         }
         if let value = dict["DocId"] as? String {
             self.docId = value
+        }
+        if let value = dict["ModelName"] as? String {
+            self.modelName = value
         }
         if let value = dict["Query"] as? String {
             self.query = value
