@@ -1478,6 +1478,9 @@ open class Client : AlibabacloudOpenApi.Client {
             request.mobilesShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.mobiles, "Mobiles", "json")
         }
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.encryptType)) {
+            query["EncryptType"] = request.encryptType ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.mobilesShrink)) {
             query["Mobiles"] = request.mobilesShrink ?? "";
         }
