@@ -3972,6 +3972,8 @@ public class ListAnalysisTagDetailByTaskIdResponseBody : Tea.TeaModel {
 
         public var originResponse: String?
 
+        public var sourceList: [String]?
+
         public override init() {
             super.init()
         }
@@ -3999,6 +4001,9 @@ public class ListAnalysisTagDetailByTaskIdResponseBody : Tea.TeaModel {
             if self.originResponse != nil {
                 map["originResponse"] = self.originResponse!
             }
+            if self.sourceList != nil {
+                map["sourceList"] = self.sourceList!
+            }
             return map
         }
 
@@ -4022,6 +4027,9 @@ public class ListAnalysisTagDetailByTaskIdResponseBody : Tea.TeaModel {
             }
             if let value = dict["originResponse"] as? String {
                 self.originResponse = value
+            }
+            if let value = dict["sourceList"] as? [String] {
+                self.sourceList = value
             }
         }
     }
@@ -4779,6 +4787,8 @@ public class RunEnterpriseVocAnalysisRequest : Tea.TeaModel {
 
     public var outputFormat: String?
 
+    public var sourceTrace: Bool?
+
     public var tags: [RunEnterpriseVocAnalysisRequest.Tags]?
 
     public var taskDescription: String?
@@ -4821,6 +4831,9 @@ public class RunEnterpriseVocAnalysisRequest : Tea.TeaModel {
         }
         if self.outputFormat != nil {
             map["outputFormat"] = self.outputFormat!
+        }
+        if self.sourceTrace != nil {
+            map["sourceTrace"] = self.sourceTrace!
         }
         if self.tags != nil {
             var tmp : [Any] = []
@@ -4868,6 +4881,9 @@ public class RunEnterpriseVocAnalysisRequest : Tea.TeaModel {
         if let value = dict["outputFormat"] as? String {
             self.outputFormat = value
         }
+        if let value = dict["sourceTrace"] as? Bool {
+            self.sourceTrace = value
+        }
         if let value = dict["tags"] as? [Any?] {
             var tmp : [RunEnterpriseVocAnalysisRequest.Tags] = []
             for v in value {
@@ -4901,6 +4917,8 @@ public class RunEnterpriseVocAnalysisShrinkRequest : Tea.TeaModel {
     public var modelId: String?
 
     public var outputFormat: String?
+
+    public var sourceTrace: Bool?
 
     public var tagsShrink: String?
 
@@ -4941,6 +4959,9 @@ public class RunEnterpriseVocAnalysisShrinkRequest : Tea.TeaModel {
         if self.outputFormat != nil {
             map["outputFormat"] = self.outputFormat!
         }
+        if self.sourceTrace != nil {
+            map["sourceTrace"] = self.sourceTrace!
+        }
         if self.tagsShrink != nil {
             map["tags"] = self.tagsShrink!
         }
@@ -4972,6 +4993,9 @@ public class RunEnterpriseVocAnalysisShrinkRequest : Tea.TeaModel {
         }
         if let value = dict["outputFormat"] as? String {
             self.outputFormat = value
+        }
+        if let value = dict["sourceTrace"] as? Bool {
+            self.sourceTrace = value
         }
         if let value = dict["tags"] as? String {
             self.tagsShrink = value
@@ -5147,6 +5171,8 @@ public class RunEnterpriseVocAnalysisResponseBody : Tea.TeaModel {
             }
             public var filterResult: RunEnterpriseVocAnalysisResponseBody.Payload.Output.FilterResult?
 
+            public var reasonContent: String?
+
             public var text: String?
 
             public override init() {
@@ -5167,6 +5193,9 @@ public class RunEnterpriseVocAnalysisResponseBody : Tea.TeaModel {
                 if self.filterResult != nil {
                     map["filterResult"] = self.filterResult?.toMap()
                 }
+                if self.reasonContent != nil {
+                    map["reasonContent"] = self.reasonContent!
+                }
                 if self.text != nil {
                     map["text"] = self.text!
                 }
@@ -5179,6 +5208,9 @@ public class RunEnterpriseVocAnalysisResponseBody : Tea.TeaModel {
                     var model = RunEnterpriseVocAnalysisResponseBody.Payload.Output.FilterResult()
                     model.fromMap(value)
                     self.filterResult = model
+                }
+                if let value = dict["reasonContent"] as? String {
+                    self.reasonContent = value
                 }
                 if let value = dict["text"] as? String {
                     self.text = value
@@ -12897,6 +12929,8 @@ public class SubmitEnterpriseVocAnalysisTaskRequest : Tea.TeaModel {
 
     public var outputFormat: String?
 
+    public var sourceTrace: Bool?
+
     public var tags: [SubmitEnterpriseVocAnalysisTaskRequest.Tags]?
 
     public var taskDescription: String?
@@ -12945,6 +12979,9 @@ public class SubmitEnterpriseVocAnalysisTaskRequest : Tea.TeaModel {
         }
         if self.outputFormat != nil {
             map["outputFormat"] = self.outputFormat!
+        }
+        if self.sourceTrace != nil {
+            map["sourceTrace"] = self.sourceTrace!
         }
         if self.tags != nil {
             var tmp : [Any] = []
@@ -13005,6 +13042,9 @@ public class SubmitEnterpriseVocAnalysisTaskRequest : Tea.TeaModel {
         if let value = dict["outputFormat"] as? String {
             self.outputFormat = value
         }
+        if let value = dict["sourceTrace"] as? Bool {
+            self.sourceTrace = value
+        }
         if let value = dict["tags"] as? [Any?] {
             var tmp : [SubmitEnterpriseVocAnalysisTaskRequest.Tags] = []
             for v in value {
@@ -13041,6 +13081,8 @@ public class SubmitEnterpriseVocAnalysisTaskShrinkRequest : Tea.TeaModel {
     public var modelId: String?
 
     public var outputFormat: String?
+
+    public var sourceTrace: Bool?
 
     public var tagsShrink: String?
 
@@ -13083,6 +13125,9 @@ public class SubmitEnterpriseVocAnalysisTaskShrinkRequest : Tea.TeaModel {
         if self.outputFormat != nil {
             map["outputFormat"] = self.outputFormat!
         }
+        if self.sourceTrace != nil {
+            map["sourceTrace"] = self.sourceTrace!
+        }
         if self.tagsShrink != nil {
             map["tags"] = self.tagsShrink!
         }
@@ -13117,6 +13162,9 @@ public class SubmitEnterpriseVocAnalysisTaskShrinkRequest : Tea.TeaModel {
         }
         if let value = dict["outputFormat"] as? String {
             self.outputFormat = value
+        }
+        if let value = dict["sourceTrace"] as? Bool {
+            self.sourceTrace = value
         }
         if let value = dict["tags"] as? String {
             self.tagsShrink = value
