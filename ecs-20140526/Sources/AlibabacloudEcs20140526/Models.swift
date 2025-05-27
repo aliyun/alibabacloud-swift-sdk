@@ -15802,6 +15802,8 @@ public class CreateLaunchTemplateRequest : Tea.TeaModel {
 
         public var iops: Int32?
 
+        public var KMSKeyId: String?
+
         public var performanceLevel: String?
 
         public var provisionedIops: Int64?
@@ -15846,6 +15848,9 @@ public class CreateLaunchTemplateRequest : Tea.TeaModel {
             if self.iops != nil {
                 map["Iops"] = self.iops!
             }
+            if self.KMSKeyId != nil {
+                map["KMSKeyId"] = self.KMSKeyId!
+            }
             if self.performanceLevel != nil {
                 map["PerformanceLevel"] = self.performanceLevel!
             }
@@ -15884,6 +15889,9 @@ public class CreateLaunchTemplateRequest : Tea.TeaModel {
             if let value = dict["Iops"] as? Int32 {
                 self.iops = value
             }
+            if let value = dict["KMSKeyId"] as? String {
+                self.KMSKeyId = value
+            }
             if let value = dict["PerformanceLevel"] as? String {
                 self.performanceLevel = value
             }
@@ -15911,6 +15919,8 @@ public class CreateLaunchTemplateRequest : Tea.TeaModel {
         public var diskName: String?
 
         public var encrypted: String?
+
+        public var KMSKeyId: String?
 
         public var performanceLevel: String?
 
@@ -15958,6 +15968,9 @@ public class CreateLaunchTemplateRequest : Tea.TeaModel {
             if self.encrypted != nil {
                 map["Encrypted"] = self.encrypted!
             }
+            if self.KMSKeyId != nil {
+                map["KMSKeyId"] = self.KMSKeyId!
+            }
             if self.performanceLevel != nil {
                 map["PerformanceLevel"] = self.performanceLevel!
             }
@@ -15998,6 +16011,9 @@ public class CreateLaunchTemplateRequest : Tea.TeaModel {
             }
             if let value = dict["Encrypted"] as? String {
                 self.encrypted = value
+            }
+            if let value = dict["KMSKeyId"] as? String {
+                self.KMSKeyId = value
             }
             if let value = dict["PerformanceLevel"] as? String {
                 self.performanceLevel = value
@@ -16803,6 +16819,8 @@ public class CreateLaunchTemplateVersionRequest : Tea.TeaModel {
 
         public var iops: Int32?
 
+        public var KMSKeyId: String?
+
         public var performanceLevel: String?
 
         public var provisionedIops: Int64?
@@ -16847,6 +16865,9 @@ public class CreateLaunchTemplateVersionRequest : Tea.TeaModel {
             if self.iops != nil {
                 map["Iops"] = self.iops!
             }
+            if self.KMSKeyId != nil {
+                map["KMSKeyId"] = self.KMSKeyId!
+            }
             if self.performanceLevel != nil {
                 map["PerformanceLevel"] = self.performanceLevel!
             }
@@ -16885,6 +16906,9 @@ public class CreateLaunchTemplateVersionRequest : Tea.TeaModel {
             if let value = dict["Iops"] as? Int32 {
                 self.iops = value
             }
+            if let value = dict["KMSKeyId"] as? String {
+                self.KMSKeyId = value
+            }
             if let value = dict["PerformanceLevel"] as? String {
                 self.performanceLevel = value
             }
@@ -16912,6 +16936,8 @@ public class CreateLaunchTemplateVersionRequest : Tea.TeaModel {
         public var diskName: String?
 
         public var encrypted: String?
+
+        public var KMSKeyId: String?
 
         public var performanceLevel: String?
 
@@ -16959,6 +16985,9 @@ public class CreateLaunchTemplateVersionRequest : Tea.TeaModel {
             if self.encrypted != nil {
                 map["Encrypted"] = self.encrypted!
             }
+            if self.KMSKeyId != nil {
+                map["KMSKeyId"] = self.KMSKeyId!
+            }
             if self.performanceLevel != nil {
                 map["PerformanceLevel"] = self.performanceLevel!
             }
@@ -16999,6 +17028,9 @@ public class CreateLaunchTemplateVersionRequest : Tea.TeaModel {
             }
             if let value = dict["Encrypted"] as? String {
                 self.encrypted = value
+            }
+            if let value = dict["KMSKeyId"] as? String {
+                self.KMSKeyId = value
             }
             if let value = dict["PerformanceLevel"] as? String {
                 self.performanceLevel = value
@@ -22274,6 +22306,8 @@ public class CreateStorageSetRequest : Tea.TeaModel {
 
     public var regionId: String?
 
+    public var resourceGroupId: String?
+
     public var resourceOwnerAccount: String?
 
     public var resourceOwnerId: Int64?
@@ -22316,6 +22350,9 @@ public class CreateStorageSetRequest : Tea.TeaModel {
         if self.regionId != nil {
             map["RegionId"] = self.regionId!
         }
+        if self.resourceGroupId != nil {
+            map["ResourceGroupId"] = self.resourceGroupId!
+        }
         if self.resourceOwnerAccount != nil {
             map["ResourceOwnerAccount"] = self.resourceOwnerAccount!
         }
@@ -22357,6 +22394,9 @@ public class CreateStorageSetRequest : Tea.TeaModel {
         }
         if let value = dict["RegionId"] as? String {
             self.regionId = value
+        }
+        if let value = dict["ResourceGroupId"] as? String {
+            self.resourceGroupId = value
         }
         if let value = dict["ResourceOwnerAccount"] as? String {
             self.resourceOwnerAccount = value
@@ -66169,6 +66209,8 @@ public class DescribeLaunchTemplateVersionsResponseBody : Tea.TeaModel {
 
                     public var iops: Int32?
 
+                    public var KMSKeyId: String?
+
                     public var performanceLevel: String?
 
                     public var provisionedIops: Int64?
@@ -66213,6 +66255,9 @@ public class DescribeLaunchTemplateVersionsResponseBody : Tea.TeaModel {
                         if self.iops != nil {
                             map["Iops"] = self.iops!
                         }
+                        if self.KMSKeyId != nil {
+                            map["KMSKeyId"] = self.KMSKeyId!
+                        }
                         if self.performanceLevel != nil {
                             map["PerformanceLevel"] = self.performanceLevel!
                         }
@@ -66251,6 +66296,9 @@ public class DescribeLaunchTemplateVersionsResponseBody : Tea.TeaModel {
                         if let value = dict["Iops"] as? Int32 {
                             self.iops = value
                         }
+                        if let value = dict["KMSKeyId"] as? String {
+                            self.KMSKeyId = value
+                        }
                         if let value = dict["PerformanceLevel"] as? String {
                             self.performanceLevel = value
                         }
@@ -66279,6 +66327,8 @@ public class DescribeLaunchTemplateVersionsResponseBody : Tea.TeaModel {
                         public var diskName: String?
 
                         public var encrypted: String?
+
+                        public var KMSKeyId: String?
 
                         public var performanceLevel: String?
 
@@ -66326,6 +66376,9 @@ public class DescribeLaunchTemplateVersionsResponseBody : Tea.TeaModel {
                             if self.encrypted != nil {
                                 map["Encrypted"] = self.encrypted!
                             }
+                            if self.KMSKeyId != nil {
+                                map["KMSKeyId"] = self.KMSKeyId!
+                            }
                             if self.performanceLevel != nil {
                                 map["PerformanceLevel"] = self.performanceLevel!
                             }
@@ -66366,6 +66419,9 @@ public class DescribeLaunchTemplateVersionsResponseBody : Tea.TeaModel {
                             }
                             if let value = dict["Encrypted"] as? String {
                                 self.encrypted = value
+                            }
+                            if let value = dict["KMSKeyId"] as? String {
+                                self.KMSKeyId = value
                             }
                             if let value = dict["PerformanceLevel"] as? String {
                                 self.performanceLevel = value
