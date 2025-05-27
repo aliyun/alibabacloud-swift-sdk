@@ -2675,6 +2675,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.DBClusterStatus)) {
             query["DBClusterStatus"] = request.DBClusterStatus ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.DBClusterVersion)) {
+            query["DBClusterVersion"] = request.DBClusterVersion ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.DBVersion)) {
             query["DBVersion"] = request.DBVersion ?? "";
         }

@@ -14110,6 +14110,8 @@ public class DescribeDBClustersRequest : Tea.TeaModel {
 
     public var DBClusterStatus: String?
 
+    public var DBClusterVersion: String?
+
     public var DBVersion: String?
 
     public var ownerAccount: String?
@@ -14152,6 +14154,9 @@ public class DescribeDBClustersRequest : Tea.TeaModel {
         }
         if self.DBClusterStatus != nil {
             map["DBClusterStatus"] = self.DBClusterStatus!
+        }
+        if self.DBClusterVersion != nil {
+            map["DBClusterVersion"] = self.DBClusterVersion!
         }
         if self.DBVersion != nil {
             map["DBVersion"] = self.DBVersion!
@@ -14200,6 +14205,9 @@ public class DescribeDBClustersRequest : Tea.TeaModel {
         }
         if let value = dict["DBClusterStatus"] as? String {
             self.DBClusterStatus = value
+        }
+        if let value = dict["DBClusterVersion"] as? String {
+            self.DBClusterVersion = value
         }
         if let value = dict["DBVersion"] as? String {
             self.DBVersion = value
