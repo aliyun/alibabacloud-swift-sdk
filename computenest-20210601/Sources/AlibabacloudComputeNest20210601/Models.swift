@@ -3266,6 +3266,36 @@ public class GetServiceResponseBody : Tea.TeaModel {
             }
         }
     }
+    public class ComplianceMetadata : Tea.TeaModel {
+        public var compliancePacks: [String]?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.compliancePacks != nil {
+                map["CompliancePacks"] = self.compliancePacks!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["CompliancePacks"] as? [String] {
+                self.compliancePacks = value
+            }
+        }
+    }
     public class InstanceRoleInfos : Tea.TeaModel {
         public var policyDocument: String?
 
@@ -3622,6 +3652,8 @@ public class GetServiceResponseBody : Tea.TeaModel {
 
     public var commodity: GetServiceResponseBody.Commodity?
 
+    public var complianceMetadata: GetServiceResponseBody.ComplianceMetadata?
+
     public var deployFrom: String?
 
     public var deployMetadata: String?
@@ -3697,6 +3729,7 @@ public class GetServiceResponseBody : Tea.TeaModel {
 
     public override func validate() throws -> Void {
         try self.commodity?.validate()
+        try self.complianceMetadata?.validate()
     }
 
     public override func toMap() -> [String : Any] {
@@ -3709,6 +3742,9 @@ public class GetServiceResponseBody : Tea.TeaModel {
         }
         if self.commodity != nil {
             map["Commodity"] = self.commodity?.toMap()
+        }
+        if self.complianceMetadata != nil {
+            map["ComplianceMetadata"] = self.complianceMetadata?.toMap()
         }
         if self.deployFrom != nil {
             map["DeployFrom"] = self.deployFrom!
@@ -3841,6 +3877,11 @@ public class GetServiceResponseBody : Tea.TeaModel {
             var model = GetServiceResponseBody.Commodity()
             model.fromMap(value)
             self.commodity = model
+        }
+        if let value = dict["ComplianceMetadata"] as? [String: Any?] {
+            var model = GetServiceResponseBody.ComplianceMetadata()
+            model.fromMap(value)
+            self.complianceMetadata = model
         }
         if let value = dict["DeployFrom"] as? String {
             self.deployFrom = value
