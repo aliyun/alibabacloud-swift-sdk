@@ -8028,6 +8028,8 @@ public class PolicyItem : Tea.TeaModel {
 }
 
 public class PriceEstimateFeature : Tea.TeaModel {
+    public var appCount: Int64?
+
     public var appType: String?
 
     public var cpuCore: Double?
@@ -8090,6 +8092,9 @@ public class PriceEstimateFeature : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.appCount != nil {
+            map["AppCount"] = self.appCount!
+        }
         if self.appType != nil {
             map["AppType"] = self.appType!
         }
@@ -8167,6 +8172,9 @@ public class PriceEstimateFeature : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["AppCount"] as? Int64 {
+            self.appCount = value
+        }
         if let value = dict["AppType"] as? String {
             self.appType = value
         }
@@ -24723,6 +24731,10 @@ public class DescribeApplicationConfigResponseBody : Tea.TeaModel {
 
         public var envs: String?
 
+        public var gpuCount: String?
+
+        public var gpuType: String?
+
         public var imagePullSecrets: String?
 
         public var imageUrl: String?
@@ -24933,6 +24945,12 @@ public class DescribeApplicationConfigResponseBody : Tea.TeaModel {
             }
             if self.envs != nil {
                 map["Envs"] = self.envs!
+            }
+            if self.gpuCount != nil {
+                map["GpuCount"] = self.gpuCount!
+            }
+            if self.gpuType != nil {
+                map["GpuType"] = self.gpuType!
             }
             if self.imagePullSecrets != nil {
                 map["ImagePullSecrets"] = self.imagePullSecrets!
@@ -25224,6 +25242,12 @@ public class DescribeApplicationConfigResponseBody : Tea.TeaModel {
             }
             if let value = dict["Envs"] as? String {
                 self.envs = value
+            }
+            if let value = dict["GpuCount"] as? String {
+                self.gpuCount = value
+            }
+            if let value = dict["GpuType"] as? String {
+                self.gpuType = value
             }
             if let value = dict["ImagePullSecrets"] as? String {
                 self.imagePullSecrets = value
