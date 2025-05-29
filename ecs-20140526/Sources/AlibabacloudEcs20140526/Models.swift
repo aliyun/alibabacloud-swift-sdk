@@ -54677,6 +54677,44 @@ public class DescribeInstanceAttributeResponseBody : Tea.TeaModel {
             }
         }
     }
+    public class NetworkOptions : Tea.TeaModel {
+        public var enableJumboFrame: Bool?
+
+        public var enableNetworkEncryption: Bool?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.enableJumboFrame != nil {
+                map["EnableJumboFrame"] = self.enableJumboFrame!
+            }
+            if self.enableNetworkEncryption != nil {
+                map["EnableNetworkEncryption"] = self.enableNetworkEncryption!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["EnableJumboFrame"] as? Bool {
+                self.enableJumboFrame = value
+            }
+            if let value = dict["EnableNetworkEncryption"] as? Bool {
+                self.enableNetworkEncryption = value
+            }
+        }
+    }
     public class OperationLocks : Tea.TeaModel {
         public class LockReason : Tea.TeaModel {
             public var lockReason: String?
@@ -54944,6 +54982,8 @@ public class DescribeInstanceAttributeResponseBody : Tea.TeaModel {
 
     public var memory: Int32?
 
+    public var networkOptions: DescribeInstanceAttributeResponseBody.NetworkOptions?
+
     public var operationLocks: DescribeInstanceAttributeResponseBody.OperationLocks?
 
     public var publicIpAddress: DescribeInstanceAttributeResponseBody.PublicIpAddress?
@@ -54979,6 +55019,7 @@ public class DescribeInstanceAttributeResponseBody : Tea.TeaModel {
         try self.dedicatedHostAttribute?.validate()
         try self.eipAddress?.validate()
         try self.innerIpAddress?.validate()
+        try self.networkOptions?.validate()
         try self.operationLocks?.validate()
         try self.publicIpAddress?.validate()
         try self.securityGroupIds?.validate()
@@ -55055,6 +55096,9 @@ public class DescribeInstanceAttributeResponseBody : Tea.TeaModel {
         }
         if self.memory != nil {
             map["Memory"] = self.memory!
+        }
+        if self.networkOptions != nil {
+            map["NetworkOptions"] = self.networkOptions?.toMap()
         }
         if self.operationLocks != nil {
             map["OperationLocks"] = self.operationLocks?.toMap()
@@ -55168,6 +55212,11 @@ public class DescribeInstanceAttributeResponseBody : Tea.TeaModel {
         }
         if let value = dict["Memory"] as? Int32 {
             self.memory = value
+        }
+        if let value = dict["NetworkOptions"] as? [String: Any?] {
+            var model = DescribeInstanceAttributeResponseBody.NetworkOptions()
+            model.fromMap(value)
+            self.networkOptions = model
         }
         if let value = dict["OperationLocks"] as? [String: Any?] {
             var model = DescribeInstanceAttributeResponseBody.OperationLocks()
