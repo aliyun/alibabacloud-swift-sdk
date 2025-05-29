@@ -12158,6 +12158,8 @@ public class ListArtifactsResponseBody : Tea.TeaModel {
 
         public var name: String?
 
+        public var permissionType: String?
+
         public var resourceGroupId: String?
 
         public var status: String?
@@ -12199,6 +12201,9 @@ public class ListArtifactsResponseBody : Tea.TeaModel {
             if self.name != nil {
                 map["Name"] = self.name!
             }
+            if self.permissionType != nil {
+                map["PermissionType"] = self.permissionType!
+            }
             if self.resourceGroupId != nil {
                 map["ResourceGroupId"] = self.resourceGroupId!
             }
@@ -12237,6 +12242,9 @@ public class ListArtifactsResponseBody : Tea.TeaModel {
             }
             if let value = dict["Name"] as? String {
                 self.name = value
+            }
+            if let value = dict["PermissionType"] as? String {
+                self.permissionType = value
             }
             if let value = dict["ResourceGroupId"] as? String {
                 self.resourceGroupId = value
