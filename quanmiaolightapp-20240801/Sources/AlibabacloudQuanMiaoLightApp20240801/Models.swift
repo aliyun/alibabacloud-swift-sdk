@@ -6057,7 +6057,11 @@ public class RunHotTopicChatResponseBody : Tea.TeaModel {
 
                 public var news: [RunHotTopicChatResponseBody.Payload.Output.HotTopicSummaries.News]?
 
+                public var pubTime: String?
+
                 public var textSummary: String?
+
+                public var url: String?
 
                 public override init() {
                     super.init()
@@ -6102,8 +6106,14 @@ public class RunHotTopicChatResponseBody : Tea.TeaModel {
                         }
                         map["news"] = tmp
                     }
+                    if self.pubTime != nil {
+                        map["pubTime"] = self.pubTime!
+                    }
                     if self.textSummary != nil {
                         map["textSummary"] = self.textSummary!
+                    }
+                    if self.url != nil {
+                        map["url"] = self.url!
                     }
                     return map
                 }
@@ -6151,8 +6161,14 @@ public class RunHotTopicChatResponseBody : Tea.TeaModel {
                         }
                         self.news = tmp
                     }
+                    if let value = dict["pubTime"] as? String {
+                        self.pubTime = value
+                    }
                     if let value = dict["textSummary"] as? String {
                         self.textSummary = value
+                    }
+                    if let value = dict["url"] as? String {
+                        self.url = value
                     }
                 }
             }
@@ -6204,7 +6220,13 @@ public class RunHotTopicChatResponseBody : Tea.TeaModel {
             }
             public var articles: [RunHotTopicChatResponseBody.Payload.Output.Articles]?
 
+            public var category: String?
+
             public var hotTopicSummaries: [RunHotTopicChatResponseBody.Payload.Output.HotTopicSummaries]?
+
+            public var keyword: String?
+
+            public var location: String?
 
             public var multimodalMedias: [RunHotTopicChatResponseBody.Payload.Output.MultimodalMedias]?
 
@@ -6235,12 +6257,21 @@ public class RunHotTopicChatResponseBody : Tea.TeaModel {
                     }
                     map["articles"] = tmp
                 }
+                if self.category != nil {
+                    map["category"] = self.category!
+                }
                 if self.hotTopicSummaries != nil {
                     var tmp : [Any] = []
                     for k in self.hotTopicSummaries! {
                         tmp.append(k.toMap())
                     }
                     map["hotTopicSummaries"] = tmp
+                }
+                if self.keyword != nil {
+                    map["keyword"] = self.keyword!
+                }
+                if self.location != nil {
+                    map["location"] = self.location!
                 }
                 if self.multimodalMedias != nil {
                     var tmp : [Any] = []
@@ -6276,6 +6307,9 @@ public class RunHotTopicChatResponseBody : Tea.TeaModel {
                     }
                     self.articles = tmp
                 }
+                if let value = dict["category"] as? String {
+                    self.category = value
+                }
                 if let value = dict["hotTopicSummaries"] as? [Any?] {
                     var tmp : [RunHotTopicChatResponseBody.Payload.Output.HotTopicSummaries] = []
                     for v in value {
@@ -6288,6 +6322,12 @@ public class RunHotTopicChatResponseBody : Tea.TeaModel {
                         }
                     }
                     self.hotTopicSummaries = tmp
+                }
+                if let value = dict["keyword"] as? String {
+                    self.keyword = value
+                }
+                if let value = dict["location"] as? String {
+                    self.location = value
                 }
                 if let value = dict["multimodalMedias"] as? [Any?] {
                     var tmp : [RunHotTopicChatResponseBody.Payload.Output.MultimodalMedias] = []
