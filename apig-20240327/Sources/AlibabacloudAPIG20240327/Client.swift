@@ -339,6 +339,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.match)) {
             body["match"] = request.match!;
         }
+        if (!TeaUtils.Client.isUnset(request.mcpRouteConfig)) {
+            body["mcpRouteConfig"] = request.mcpRouteConfig!;
+        }
         if (!TeaUtils.Client.isUnset(request.name)) {
             body["name"] = request.name ?? "";
         }

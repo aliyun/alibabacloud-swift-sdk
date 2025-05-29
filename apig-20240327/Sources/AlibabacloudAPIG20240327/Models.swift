@@ -8170,6 +8170,44 @@ public class CreateHttpApiRouteRequest : Tea.TeaModel {
             }
         }
     }
+    public class McpRouteConfig : Tea.TeaModel {
+        public var exposedUriPath: String?
+
+        public var protocol_: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.exposedUriPath != nil {
+                map["exposedUriPath"] = self.exposedUriPath!
+            }
+            if self.protocol_ != nil {
+                map["protocol"] = self.protocol_!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["exposedUriPath"] as? String {
+                self.exposedUriPath = value
+            }
+            if let value = dict["protocol"] as? String {
+                self.protocol_ = value
+            }
+        }
+    }
     public var backendConfig: CreateHttpApiRouteRequest.BackendConfig?
 
     public var deployConfigs: [HttpApiDeployConfig]?
@@ -8181,6 +8219,8 @@ public class CreateHttpApiRouteRequest : Tea.TeaModel {
     public var environmentId: String?
 
     public var match: HttpRouteMatch?
+
+    public var mcpRouteConfig: CreateHttpApiRouteRequest.McpRouteConfig?
 
     public var name: String?
 
@@ -8196,6 +8236,7 @@ public class CreateHttpApiRouteRequest : Tea.TeaModel {
     public override func validate() throws -> Void {
         try self.backendConfig?.validate()
         try self.match?.validate()
+        try self.mcpRouteConfig?.validate()
     }
 
     public override func toMap() -> [String : Any] {
@@ -8221,6 +8262,9 @@ public class CreateHttpApiRouteRequest : Tea.TeaModel {
         }
         if self.match != nil {
             map["match"] = self.match?.toMap()
+        }
+        if self.mcpRouteConfig != nil {
+            map["mcpRouteConfig"] = self.mcpRouteConfig?.toMap()
         }
         if self.name != nil {
             map["name"] = self.name!
@@ -8261,6 +8305,11 @@ public class CreateHttpApiRouteRequest : Tea.TeaModel {
             var model = HttpRouteMatch()
             model.fromMap(value)
             self.match = model
+        }
+        if let value = dict["mcpRouteConfig"] as? [String: Any?] {
+            var model = CreateHttpApiRouteRequest.McpRouteConfig()
+            model.fromMap(value)
+            self.mcpRouteConfig = model
         }
         if let value = dict["name"] as? String {
             self.name = value
