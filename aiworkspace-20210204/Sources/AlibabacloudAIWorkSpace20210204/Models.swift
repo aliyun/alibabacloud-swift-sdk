@@ -12787,6 +12787,8 @@ public class GetMemberRequest : Tea.TeaModel {
 }
 
 public class GetMemberResponseBody : Tea.TeaModel {
+    public var accountType: String?
+
     public var displayName: String?
 
     public var gmtCreateTime: String?
@@ -12815,6 +12817,9 @@ public class GetMemberResponseBody : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.accountType != nil {
+            map["AccountType"] = self.accountType!
+        }
         if self.displayName != nil {
             map["DisplayName"] = self.displayName!
         }
@@ -12841,6 +12846,9 @@ public class GetMemberResponseBody : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["AccountType"] as? String {
+            self.accountType = value
+        }
         if let value = dict["DisplayName"] as? String {
             self.displayName = value
         }
@@ -17310,6 +17318,8 @@ public class ListMembersResponseBody : Tea.TeaModel {
     public class Members : Tea.TeaModel {
         public var accountName: String?
 
+        public var accountType: String?
+
         public var displayName: String?
 
         public var gmtCreateTime: String?
@@ -17339,6 +17349,9 @@ public class ListMembersResponseBody : Tea.TeaModel {
             if self.accountName != nil {
                 map["AccountName"] = self.accountName!
             }
+            if self.accountType != nil {
+                map["AccountType"] = self.accountType!
+            }
             if self.displayName != nil {
                 map["DisplayName"] = self.displayName!
             }
@@ -17364,6 +17377,9 @@ public class ListMembersResponseBody : Tea.TeaModel {
             guard let dict else { return }
             if let value = dict["AccountName"] as? String {
                 self.accountName = value
+            }
+            if let value = dict["AccountType"] as? String {
+                self.accountType = value
             }
             if let value = dict["DisplayName"] as? String {
                 self.displayName = value
