@@ -7559,6 +7559,8 @@ public class RunMarketingInformationWritingResponseBody : Tea.TeaModel {
     }
     public class Payload : Tea.TeaModel {
         public class Output : Tea.TeaModel {
+            public var reasonContent: String?
+
             public var text: String?
 
             public override init() {
@@ -7575,6 +7577,9 @@ public class RunMarketingInformationWritingResponseBody : Tea.TeaModel {
 
             public override func toMap() -> [String : Any] {
                 var map = super.toMap()
+                if self.reasonContent != nil {
+                    map["reasonContent"] = self.reasonContent!
+                }
                 if self.text != nil {
                     map["text"] = self.text!
                 }
@@ -7583,6 +7588,9 @@ public class RunMarketingInformationWritingResponseBody : Tea.TeaModel {
 
             public override func fromMap(_ dict: [String: Any?]?) -> Void {
                 guard let dict else { return }
+                if let value = dict["reasonContent"] as? String {
+                    self.reasonContent = value
+                }
                 if let value = dict["text"] as? String {
                     self.text = value
                 }
