@@ -235,6 +235,8 @@ public class PodcastTaskSubmitRequest : Tea.TeaModel {
 
     public var fileUrls: [String]?
 
+    public var sourceLang: String?
+
     public var text: String?
 
     public var topic: String?
@@ -263,6 +265,9 @@ public class PodcastTaskSubmitRequest : Tea.TeaModel {
         if self.fileUrls != nil {
             map["fileUrls"] = self.fileUrls!
         }
+        if self.sourceLang != nil {
+            map["sourceLang"] = self.sourceLang!
+        }
         if self.text != nil {
             map["text"] = self.text!
         }
@@ -286,6 +291,9 @@ public class PodcastTaskSubmitRequest : Tea.TeaModel {
         if let value = dict["fileUrls"] as? [String] {
             self.fileUrls = value
         }
+        if let value = dict["sourceLang"] as? String {
+            self.sourceLang = value
+        }
         if let value = dict["text"] as? String {
             self.text = value
         }
@@ -305,6 +313,8 @@ public class PodcastTaskSubmitShrinkRequest : Tea.TeaModel {
     public var counts: Int32?
 
     public var fileUrlsShrink: String?
+
+    public var sourceLang: String?
 
     public var text: String?
 
@@ -334,6 +344,9 @@ public class PodcastTaskSubmitShrinkRequest : Tea.TeaModel {
         if self.fileUrlsShrink != nil {
             map["fileUrls"] = self.fileUrlsShrink!
         }
+        if self.sourceLang != nil {
+            map["sourceLang"] = self.sourceLang!
+        }
         if self.text != nil {
             map["text"] = self.text!
         }
@@ -356,6 +369,9 @@ public class PodcastTaskSubmitShrinkRequest : Tea.TeaModel {
         }
         if let value = dict["fileUrls"] as? String {
             self.fileUrlsShrink = value
+        }
+        if let value = dict["sourceLang"] as? String {
+            self.sourceLang = value
         }
         if let value = dict["text"] as? String {
             self.text = value

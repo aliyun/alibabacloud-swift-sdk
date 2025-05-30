@@ -77,6 +77,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.fileUrlsShrink)) {
             body["fileUrls"] = request.fileUrlsShrink ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.sourceLang)) {
+            body["sourceLang"] = request.sourceLang ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.text)) {
             body["text"] = request.text ?? "";
         }
