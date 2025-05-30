@@ -1229,6 +1229,8 @@ public class CreateClusterRequest : Tea.TeaModel {
 
         public var keyPairName: String?
 
+        public var loginPassword: String?
+
         public var machineType: String?
 
         public var nodeGroupDescription: String?
@@ -1266,6 +1268,9 @@ public class CreateClusterRequest : Tea.TeaModel {
             }
             if self.keyPairName != nil {
                 map["KeyPairName"] = self.keyPairName!
+            }
+            if self.loginPassword != nil {
+                map["LoginPassword"] = self.loginPassword!
             }
             if self.machineType != nil {
                 map["MachineType"] = self.machineType!
@@ -1305,6 +1310,9 @@ public class CreateClusterRequest : Tea.TeaModel {
             }
             if let value = dict["KeyPairName"] as? String {
                 self.keyPairName = value
+            }
+            if let value = dict["LoginPassword"] as? String {
+                self.loginPassword = value
             }
             if let value = dict["MachineType"] as? String {
                 self.machineType = value
@@ -2956,6 +2964,8 @@ public class CreateNodeGroupRequest : Tea.TeaModel {
 
         public var keyPairName: String?
 
+        public var loginPassword: String?
+
         public var machineType: String?
 
         public var nodeGroupDescription: String?
@@ -2993,6 +3003,9 @@ public class CreateNodeGroupRequest : Tea.TeaModel {
             if self.keyPairName != nil {
                 map["KeyPairName"] = self.keyPairName!
             }
+            if self.loginPassword != nil {
+                map["LoginPassword"] = self.loginPassword!
+            }
             if self.machineType != nil {
                 map["MachineType"] = self.machineType!
             }
@@ -3024,6 +3037,9 @@ public class CreateNodeGroupRequest : Tea.TeaModel {
             }
             if let value = dict["KeyPairName"] as? String {
                 self.keyPairName = value
+            }
+            if let value = dict["LoginPassword"] as? String {
+                self.loginPassword = value
             }
             if let value = dict["MachineType"] as? String {
                 self.machineType = value
@@ -14748,6 +14764,8 @@ public class UpdateNodeGroupRequest : Tea.TeaModel {
 
     public var keyPairName: String?
 
+    public var loginPassword: String?
+
     public var newNodeGroupName: String?
 
     public var nodeGroupId: String?
@@ -14777,6 +14795,9 @@ public class UpdateNodeGroupRequest : Tea.TeaModel {
         if self.keyPairName != nil {
             map["KeyPairName"] = self.keyPairName!
         }
+        if self.loginPassword != nil {
+            map["LoginPassword"] = self.loginPassword!
+        }
         if self.newNodeGroupName != nil {
             map["NewNodeGroupName"] = self.newNodeGroupName!
         }
@@ -14799,6 +14820,9 @@ public class UpdateNodeGroupRequest : Tea.TeaModel {
         }
         if let value = dict["KeyPairName"] as? String {
             self.keyPairName = value
+        }
+        if let value = dict["LoginPassword"] as? String {
+            self.loginPassword = value
         }
         if let value = dict["NewNodeGroupName"] as? String {
             self.newNodeGroupName = value

@@ -1870,6 +1870,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.keyPairName)) {
             body["KeyPairName"] = request.keyPairName ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.loginPassword)) {
+            body["LoginPassword"] = request.loginPassword ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.newNodeGroupName)) {
             body["NewNodeGroupName"] = request.newNodeGroupName ?? "";
         }
