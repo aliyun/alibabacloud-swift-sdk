@@ -4889,6 +4889,8 @@ public class GetServiceInstanceResponseBody : Tea.TeaModel {
 
         public var deployType: String?
 
+        public var operationMetadata: String?
+
         public var publishTime: String?
 
         public var serviceDocUrl: String?
@@ -4936,6 +4938,9 @@ public class GetServiceInstanceResponseBody : Tea.TeaModel {
             }
             if self.deployType != nil {
                 map["DeployType"] = self.deployType!
+            }
+            if self.operationMetadata != nil {
+                map["OperationMetadata"] = self.operationMetadata!
             }
             if self.publishTime != nil {
                 map["PublishTime"] = self.publishTime!
@@ -4997,6 +5002,9 @@ public class GetServiceInstanceResponseBody : Tea.TeaModel {
             }
             if let value = dict["DeployType"] as? String {
                 self.deployType = value
+            }
+            if let value = dict["OperationMetadata"] as? String {
+                self.operationMetadata = value
             }
             if let value = dict["PublishTime"] as? String {
                 self.publishTime = value
