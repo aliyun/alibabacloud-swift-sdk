@@ -5696,6 +5696,8 @@ public class CreateClusterNodePoolRequest : Tea.TeaModel {
     }
     public class Management : Tea.TeaModel {
         public class AutoRepairPolicy : Tea.TeaModel {
+            public var approvalRequired: Bool?
+
             public var restartNode: Bool?
 
             public override init() {
@@ -5712,6 +5714,9 @@ public class CreateClusterNodePoolRequest : Tea.TeaModel {
 
             public override func toMap() -> [String : Any] {
                 var map = super.toMap()
+                if self.approvalRequired != nil {
+                    map["approval_required"] = self.approvalRequired!
+                }
                 if self.restartNode != nil {
                     map["restart_node"] = self.restartNode!
                 }
@@ -5720,6 +5725,9 @@ public class CreateClusterNodePoolRequest : Tea.TeaModel {
 
             public override func fromMap(_ dict: [String: Any?]?) -> Void {
                 guard let dict else { return }
+                if let value = dict["approval_required"] as? Bool {
+                    self.approvalRequired = value
+                }
                 if let value = dict["restart_node"] as? Bool {
                     self.restartNode = value
                 }
@@ -11448,6 +11456,8 @@ public class DescribeClusterNodePoolDetailResponseBody : Tea.TeaModel {
     }
     public class Management : Tea.TeaModel {
         public class AutoRepairPolicy : Tea.TeaModel {
+            public var approvalRequired: Bool?
+
             public var restartNode: Bool?
 
             public override init() {
@@ -11464,6 +11474,9 @@ public class DescribeClusterNodePoolDetailResponseBody : Tea.TeaModel {
 
             public override func toMap() -> [String : Any] {
                 var map = super.toMap()
+                if self.approvalRequired != nil {
+                    map["approval_required"] = self.approvalRequired!
+                }
                 if self.restartNode != nil {
                     map["restart_node"] = self.restartNode!
                 }
@@ -11472,6 +11485,9 @@ public class DescribeClusterNodePoolDetailResponseBody : Tea.TeaModel {
 
             public override func fromMap(_ dict: [String: Any?]?) -> Void {
                 guard let dict else { return }
+                if let value = dict["approval_required"] as? Bool {
+                    self.approvalRequired = value
+                }
                 if let value = dict["restart_node"] as? Bool {
                     self.restartNode = value
                 }
@@ -13021,6 +13037,8 @@ public class DescribeClusterNodePoolsResponseBody : Tea.TeaModel {
         }
         public class Management : Tea.TeaModel {
             public class AutoRepairPolicy : Tea.TeaModel {
+                public var approvalRequired: Bool?
+
                 public var restartNode: Bool?
 
                 public override init() {
@@ -13037,6 +13055,9 @@ public class DescribeClusterNodePoolsResponseBody : Tea.TeaModel {
 
                 public override func toMap() -> [String : Any] {
                     var map = super.toMap()
+                    if self.approvalRequired != nil {
+                        map["approval_required"] = self.approvalRequired!
+                    }
                     if self.restartNode != nil {
                         map["restart_node"] = self.restartNode!
                     }
@@ -13045,6 +13066,9 @@ public class DescribeClusterNodePoolsResponseBody : Tea.TeaModel {
 
                 public override func fromMap(_ dict: [String: Any?]?) -> Void {
                     guard let dict else { return }
+                    if let value = dict["approval_required"] as? Bool {
+                        self.approvalRequired = value
+                    }
                     if let value = dict["restart_node"] as? Bool {
                         self.restartNode = value
                     }
@@ -27899,6 +27923,8 @@ public class ModifyClusterNodePoolRequest : Tea.TeaModel {
     }
     public class Management : Tea.TeaModel {
         public class AutoRepairPolicy : Tea.TeaModel {
+            public var approvalRequired: Bool?
+
             public var restartNode: Bool?
 
             public override init() {
@@ -27915,6 +27941,9 @@ public class ModifyClusterNodePoolRequest : Tea.TeaModel {
 
             public override func toMap() -> [String : Any] {
                 var map = super.toMap()
+                if self.approvalRequired != nil {
+                    map["approval_required"] = self.approvalRequired!
+                }
                 if self.restartNode != nil {
                     map["restart_node"] = self.restartNode!
                 }
@@ -27923,6 +27952,9 @@ public class ModifyClusterNodePoolRequest : Tea.TeaModel {
 
             public override func fromMap(_ dict: [String: Any?]?) -> Void {
                 guard let dict else { return }
+                if let value = dict["approval_required"] as? Bool {
+                    self.approvalRequired = value
+                }
                 if let value = dict["restart_node"] as? Bool {
                     self.restartNode = value
                 }
