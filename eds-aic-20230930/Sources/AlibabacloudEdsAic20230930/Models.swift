@@ -736,7 +736,13 @@ public class BatchGetAcpConnectionTicketResponseBody : Tea.TeaModel {
     public class InstanceConnectionModels : Tea.TeaModel {
         public var appInstanceGroupId: String?
 
+        public var appInstanceId: String?
+
+        public var errorCode: String?
+
         public var instanceId: String?
+
+        public var persistentAppInstanceId: String?
 
         public var taskId: String?
 
@@ -761,8 +767,17 @@ public class BatchGetAcpConnectionTicketResponseBody : Tea.TeaModel {
             if self.appInstanceGroupId != nil {
                 map["AppInstanceGroupId"] = self.appInstanceGroupId!
             }
+            if self.appInstanceId != nil {
+                map["AppInstanceId"] = self.appInstanceId!
+            }
+            if self.errorCode != nil {
+                map["ErrorCode"] = self.errorCode!
+            }
             if self.instanceId != nil {
                 map["InstanceId"] = self.instanceId!
+            }
+            if self.persistentAppInstanceId != nil {
+                map["PersistentAppInstanceId"] = self.persistentAppInstanceId!
             }
             if self.taskId != nil {
                 map["TaskId"] = self.taskId!
@@ -781,8 +796,17 @@ public class BatchGetAcpConnectionTicketResponseBody : Tea.TeaModel {
             if let value = dict["AppInstanceGroupId"] as? String {
                 self.appInstanceGroupId = value
             }
+            if let value = dict["AppInstanceId"] as? String {
+                self.appInstanceId = value
+            }
+            if let value = dict["ErrorCode"] as? String {
+                self.errorCode = value
+            }
             if let value = dict["InstanceId"] as? String {
                 self.instanceId = value
+            }
+            if let value = dict["PersistentAppInstanceId"] as? String {
+                self.persistentAppInstanceId = value
             }
             if let value = dict["TaskId"] as? String {
                 self.taskId = value
@@ -5552,6 +5576,10 @@ public class DescribeAndroidInstancesResponseBody : Tea.TeaModel {
 
         public var tags: [DescribeAndroidInstancesResponseBody.InstanceModel.Tags]?
 
+        public var vSwitchId: String?
+
+        public var zoneId: String?
+
         public override init() {
             super.init()
         }
@@ -5683,6 +5711,12 @@ public class DescribeAndroidInstancesResponseBody : Tea.TeaModel {
                     tmp.append(k.toMap())
                 }
                 map["Tags"] = tmp
+            }
+            if self.vSwitchId != nil {
+                map["VSwitchId"] = self.vSwitchId!
+            }
+            if self.zoneId != nil {
+                map["ZoneId"] = self.zoneId!
             }
             return map
         }
@@ -5820,6 +5854,12 @@ public class DescribeAndroidInstancesResponseBody : Tea.TeaModel {
                     }
                 }
                 self.tags = tmp
+            }
+            if let value = dict["VSwitchId"] as? String {
+                self.vSwitchId = value
+            }
+            if let value = dict["ZoneId"] as? String {
+                self.zoneId = value
             }
         }
     }
@@ -6814,6 +6854,44 @@ public class DescribeCloudPhoneNodesRequest : Tea.TeaModel {
 
 public class DescribeCloudPhoneNodesResponseBody : Tea.TeaModel {
     public class NodeModel : Tea.TeaModel {
+        public class NetworkInfos : Tea.TeaModel {
+            public var networkId: String?
+
+            public var vSwitchId: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.networkId != nil {
+                    map["NetworkId"] = self.networkId!
+                }
+                if self.vSwitchId != nil {
+                    map["VSwitchId"] = self.vSwitchId!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["NetworkId"] as? String {
+                    self.networkId = value
+                }
+                if let value = dict["VSwitchId"] as? String {
+                    self.vSwitchId = value
+                }
+            }
+        }
         public var chargeType: String?
 
         public var cpu: String?
@@ -6829,6 +6907,8 @@ public class DescribeCloudPhoneNodesResponseBody : Tea.TeaModel {
         public var memory: Int32?
 
         public var networkId: String?
+
+        public var networkInfos: [DescribeCloudPhoneNodesResponseBody.NodeModel.NetworkInfos]?
 
         public var nodeId: String?
 
@@ -6888,6 +6968,13 @@ public class DescribeCloudPhoneNodesResponseBody : Tea.TeaModel {
             if self.networkId != nil {
                 map["NetworkId"] = self.networkId!
             }
+            if self.networkInfos != nil {
+                var tmp : [Any] = []
+                for k in self.networkInfos! {
+                    tmp.append(k.toMap())
+                }
+                map["NetworkInfos"] = tmp
+            }
             if self.nodeId != nil {
                 map["NodeId"] = self.nodeId!
             }
@@ -6946,6 +7033,19 @@ public class DescribeCloudPhoneNodesResponseBody : Tea.TeaModel {
             }
             if let value = dict["NetworkId"] as? String {
                 self.networkId = value
+            }
+            if let value = dict["NetworkInfos"] as? [Any?] {
+                var tmp : [DescribeCloudPhoneNodesResponseBody.NodeModel.NetworkInfos] = []
+                for v in value {
+                    if v != nil {
+                        var model = DescribeCloudPhoneNodesResponseBody.NodeModel.NetworkInfos()
+                        if v != nil {
+                            model.fromMap(v as? [String: Any?])
+                        }
+                        tmp.append(model)
+                    }
+                }
+                self.networkInfos = tmp
             }
             if let value = dict["NodeId"] as? String {
                 self.nodeId = value
@@ -13408,6 +13508,8 @@ public class ResetAndroidInstancesInGroupRequest : Tea.TeaModel {
 
     public var saleMode: String?
 
+    public var settingResetType: Int32?
+
     public override init() {
         super.init()
     }
@@ -13428,6 +13530,9 @@ public class ResetAndroidInstancesInGroupRequest : Tea.TeaModel {
         if self.saleMode != nil {
             map["SaleMode"] = self.saleMode!
         }
+        if self.settingResetType != nil {
+            map["SettingResetType"] = self.settingResetType!
+        }
         return map
     }
 
@@ -13438,6 +13543,9 @@ public class ResetAndroidInstancesInGroupRequest : Tea.TeaModel {
         }
         if let value = dict["SaleMode"] as? String {
             self.saleMode = value
+        }
+        if let value = dict["SettingResetType"] as? Int32 {
+            self.settingResetType = value
         }
     }
 }

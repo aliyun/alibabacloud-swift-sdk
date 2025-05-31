@@ -2456,6 +2456,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.saleMode)) {
             query["SaleMode"] = request.saleMode ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.settingResetType)) {
+            query["SettingResetType"] = request.settingResetType!;
+        }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "query": AlibabaCloudOpenApiUtil.Client.query(query)
         ])
