@@ -256,6 +256,61 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func createEnterpriseAcceleratePolicyWithOptions(_ request: CreateEnterpriseAcceleratePolicyRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> CreateEnterpriseAcceleratePolicyResponse {
+        try TeaUtils.Client.validateModel(request)
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.accelerationType)) {
+            body["AccelerationType"] = request.accelerationType ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.description_)) {
+            body["Description"] = request.description_ ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.name)) {
+            body["Name"] = request.name ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.priority)) {
+            body["Priority"] = request.priority ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.showInClient)) {
+            body["ShowInClient"] = request.showInClient!;
+        }
+        if (!TeaUtils.Client.isUnset(request.upstreamHost)) {
+            body["UpstreamHost"] = request.upstreamHost ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.upstreamPort)) {
+            body["UpstreamPort"] = request.upstreamPort!;
+        }
+        if (!TeaUtils.Client.isUnset(request.upstreamType)) {
+            body["UpstreamType"] = request.upstreamType ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.userAttributeGroup)) {
+            body["UserAttributeGroup"] = request.userAttributeGroup ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "CreateEnterpriseAcceleratePolicy",
+            "version": "2023-01-20",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(CreateEnterpriseAcceleratePolicyResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func createEnterpriseAcceleratePolicy(_ request: CreateEnterpriseAcceleratePolicyRequest) async throws -> CreateEnterpriseAcceleratePolicyResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await createEnterpriseAcceleratePolicyWithOptions(request as! CreateEnterpriseAcceleratePolicyRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func createIdpDepartmentWithOptions(_ request: CreateIdpDepartmentRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> CreateIdpDepartmentResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
@@ -922,6 +977,37 @@ open class Client : AlibabacloudOpenApi.Client {
     public func deleteIdpDepartment(_ request: DeleteIdpDepartmentRequest) async throws -> DeleteIdpDepartmentResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         return try await deleteIdpDepartmentWithOptions(request as! DeleteIdpDepartmentRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func deleteOtpConfigWithOptions(_ request: DeleteOtpConfigRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DeleteOtpConfigResponse {
+        try TeaUtils.Client.validateModel(request)
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.username)) {
+            body["Username"] = request.username ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "DeleteOtpConfig",
+            "version": "2023-01-20",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(DeleteOtpConfigResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func deleteOtpConfig(_ request: DeleteOtpConfigRequest) async throws -> DeleteOtpConfigResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await deleteOtpConfigWithOptions(request as! DeleteOtpConfigRequest, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
