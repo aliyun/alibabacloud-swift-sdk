@@ -1249,6 +1249,42 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func generateReportWithOptions(_ tmpReq: GenerateReportRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> GenerateReportResponse {
+        try TeaUtils.Client.validateModel(tmpReq)
+        var request: GenerateReportShrinkRequest = GenerateReportShrinkRequest([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.reportConfigs)) {
+            request.reportConfigsShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.reportConfigs, "ReportConfigs", "json")
+        }
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.reportConfigsShrink)) {
+            body["ReportConfigs"] = request.reportConfigsShrink ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "GenerateReport",
+            "version": "2020-03-20",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(GenerateReportResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func generateReport(_ request: GenerateReportRequest) async throws -> GenerateReportResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await generateReportWithOptions(request as! GenerateReportRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func getAsyncJobResultWithOptions(_ request: GetAsyncJobResultRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> GetAsyncJobResultResponse {
         try TeaUtils.Client.validateModel(request)
         var body: [String: Any] = [:]
