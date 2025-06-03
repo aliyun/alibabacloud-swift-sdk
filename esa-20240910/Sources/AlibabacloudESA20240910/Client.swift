@@ -1012,6 +1012,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.objects)) {
             query["Objects"] = request.objects ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.siteIds)) {
+            query["SiteIds"] = request.siteIds ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.startTime)) {
             query["StartTime"] = request.startTime ?? "";
         }
@@ -1335,6 +1338,15 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.httpsForceCode)) {
             query["HttpsForceCode"] = request.httpsForceCode ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.httpsNoSniDeny)) {
+            query["HttpsNoSniDeny"] = request.httpsNoSniDeny ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.httpsSniVerify)) {
+            query["HttpsSniVerify"] = request.httpsSniVerify ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.httpsSniWhitelist)) {
+            query["HttpsSniWhitelist"] = request.httpsSniWhitelist ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.rule)) {
             query["Rule"] = request.rule ?? "";
@@ -10255,6 +10267,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.policyId)) {
             query["PolicyId"] = request.policyId!;
         }
+        if (!TeaUtils.Client.isUnset(request.siteIds)) {
+            query["SiteIds"] = request.siteIds ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.startTime)) {
             query["StartTime"] = request.startTime ?? "";
         }
@@ -10548,6 +10563,15 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.httpsForceCode)) {
             query["HttpsForceCode"] = request.httpsForceCode ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.httpsNoSniDeny)) {
+            query["HttpsNoSniDeny"] = request.httpsNoSniDeny ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.httpsSniVerify)) {
+            query["HttpsSniVerify"] = request.httpsSniVerify ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.httpsSniWhitelist)) {
+            query["HttpsSniWhitelist"] = request.httpsSniWhitelist ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.rule)) {
             query["Rule"] = request.rule ?? "";

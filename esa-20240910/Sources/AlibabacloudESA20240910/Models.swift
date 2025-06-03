@@ -7137,6 +7137,8 @@ public class CreateCustomScenePolicyRequest : Tea.TeaModel {
 
     public var objects: String?
 
+    public var siteIds: String?
+
     public var startTime: String?
 
     public var template: String?
@@ -7164,6 +7166,9 @@ public class CreateCustomScenePolicyRequest : Tea.TeaModel {
         if self.objects != nil {
             map["Objects"] = self.objects!
         }
+        if self.siteIds != nil {
+            map["SiteIds"] = self.siteIds!
+        }
         if self.startTime != nil {
             map["StartTime"] = self.startTime!
         }
@@ -7184,6 +7189,9 @@ public class CreateCustomScenePolicyRequest : Tea.TeaModel {
         if let value = dict["Objects"] as? String {
             self.objects = value
         }
+        if let value = dict["SiteIds"] as? String {
+            self.siteIds = value
+        }
         if let value = dict["StartTime"] as? String {
             self.startTime = value
         }
@@ -7203,6 +7211,8 @@ public class CreateCustomScenePolicyResponseBody : Tea.TeaModel {
     public var policyId: Int64?
 
     public var requestId: String?
+
+    public var siteIds: String?
 
     public var startTime: String?
 
@@ -7237,6 +7247,9 @@ public class CreateCustomScenePolicyResponseBody : Tea.TeaModel {
         if self.requestId != nil {
             map["RequestId"] = self.requestId!
         }
+        if self.siteIds != nil {
+            map["SiteIds"] = self.siteIds!
+        }
         if self.startTime != nil {
             map["StartTime"] = self.startTime!
         }
@@ -7262,6 +7275,9 @@ public class CreateCustomScenePolicyResponseBody : Tea.TeaModel {
         }
         if let value = dict["RequestId"] as? String {
             self.requestId = value
+        }
+        if let value = dict["SiteIds"] as? String {
+            self.siteIds = value
         }
         if let value = dict["StartTime"] as? String {
             self.startTime = value
@@ -8874,6 +8890,12 @@ public class CreateHttpsApplicationConfigurationRequest : Tea.TeaModel {
 
     public var httpsForceCode: String?
 
+    public var httpsNoSniDeny: String?
+
+    public var httpsSniVerify: String?
+
+    public var httpsSniWhitelist: String?
+
     public var rule: String?
 
     public var ruleEnable: String?
@@ -8930,6 +8952,15 @@ public class CreateHttpsApplicationConfigurationRequest : Tea.TeaModel {
         if self.httpsForceCode != nil {
             map["HttpsForceCode"] = self.httpsForceCode!
         }
+        if self.httpsNoSniDeny != nil {
+            map["HttpsNoSniDeny"] = self.httpsNoSniDeny!
+        }
+        if self.httpsSniVerify != nil {
+            map["HttpsSniVerify"] = self.httpsSniVerify!
+        }
+        if self.httpsSniWhitelist != nil {
+            map["HttpsSniWhitelist"] = self.httpsSniWhitelist!
+        }
         if self.rule != nil {
             map["Rule"] = self.rule!
         }
@@ -8982,6 +9013,15 @@ public class CreateHttpsApplicationConfigurationRequest : Tea.TeaModel {
         }
         if let value = dict["HttpsForceCode"] as? String {
             self.httpsForceCode = value
+        }
+        if let value = dict["HttpsNoSniDeny"] as? String {
+            self.httpsNoSniDeny = value
+        }
+        if let value = dict["HttpsSniVerify"] as? String {
+            self.httpsSniVerify = value
+        }
+        if let value = dict["HttpsSniWhitelist"] as? String {
+            self.httpsSniWhitelist = value
         }
         if let value = dict["Rule"] as? String {
             self.rule = value
@@ -22611,6 +22651,8 @@ public class DescribeCustomScenePoliciesResponseBody : Tea.TeaModel {
 
         public var policyId: Int64?
 
+        public var siteIds: String?
+
         public var startTime: String?
 
         public var status: String?
@@ -22643,6 +22685,9 @@ public class DescribeCustomScenePoliciesResponseBody : Tea.TeaModel {
             if self.policyId != nil {
                 map["PolicyId"] = self.policyId!
             }
+            if self.siteIds != nil {
+                map["SiteIds"] = self.siteIds!
+            }
             if self.startTime != nil {
                 map["StartTime"] = self.startTime!
             }
@@ -22668,6 +22713,9 @@ public class DescribeCustomScenePoliciesResponseBody : Tea.TeaModel {
             }
             if let value = dict["PolicyId"] as? Int64 {
                 self.policyId = value
+            }
+            if let value = dict["SiteIds"] as? String {
+                self.siteIds = value
             }
             if let value = dict["StartTime"] as? String {
                 self.startTime = value
@@ -32492,6 +32540,12 @@ public class GetHttpsApplicationConfigurationResponseBody : Tea.TeaModel {
 
     public var httpsForceCode: String?
 
+    public var httpsNoSniDeny: String?
+
+    public var httpsSniVerify: String?
+
+    public var httpsSniWhitelist: String?
+
     public var requestId: String?
 
     public var rule: String?
@@ -32554,6 +32608,15 @@ public class GetHttpsApplicationConfigurationResponseBody : Tea.TeaModel {
         if self.httpsForceCode != nil {
             map["HttpsForceCode"] = self.httpsForceCode!
         }
+        if self.httpsNoSniDeny != nil {
+            map["HttpsNoSniDeny"] = self.httpsNoSniDeny!
+        }
+        if self.httpsSniVerify != nil {
+            map["HttpsSniVerify"] = self.httpsSniVerify!
+        }
+        if self.httpsSniWhitelist != nil {
+            map["HttpsSniWhitelist"] = self.httpsSniWhitelist!
+        }
         if self.requestId != nil {
             map["RequestId"] = self.requestId!
         }
@@ -32612,6 +32675,15 @@ public class GetHttpsApplicationConfigurationResponseBody : Tea.TeaModel {
         }
         if let value = dict["HttpsForceCode"] as? String {
             self.httpsForceCode = value
+        }
+        if let value = dict["HttpsNoSniDeny"] as? String {
+            self.httpsNoSniDeny = value
+        }
+        if let value = dict["HttpsSniVerify"] as? String {
+            self.httpsSniVerify = value
+        }
+        if let value = dict["HttpsSniWhitelist"] as? String {
+            self.httpsSniWhitelist = value
         }
         if let value = dict["RequestId"] as? String {
             self.requestId = value
@@ -48711,6 +48783,12 @@ public class ListHttpsApplicationConfigurationsResponseBody : Tea.TeaModel {
 
         public var httpsForceCode: String?
 
+        public var httpsNoSniDeny: String?
+
+        public var httpsSniVerify: String?
+
+        public var httpsSniWhitelist: String?
+
         public var rule: String?
 
         public var ruleEnable: String?
@@ -48771,6 +48849,15 @@ public class ListHttpsApplicationConfigurationsResponseBody : Tea.TeaModel {
             if self.httpsForceCode != nil {
                 map["HttpsForceCode"] = self.httpsForceCode!
             }
+            if self.httpsNoSniDeny != nil {
+                map["HttpsNoSniDeny"] = self.httpsNoSniDeny!
+            }
+            if self.httpsSniVerify != nil {
+                map["HttpsSniVerify"] = self.httpsSniVerify!
+            }
+            if self.httpsSniWhitelist != nil {
+                map["HttpsSniWhitelist"] = self.httpsSniWhitelist!
+            }
             if self.rule != nil {
                 map["Rule"] = self.rule!
             }
@@ -48826,6 +48913,15 @@ public class ListHttpsApplicationConfigurationsResponseBody : Tea.TeaModel {
             }
             if let value = dict["HttpsForceCode"] as? String {
                 self.httpsForceCode = value
+            }
+            if let value = dict["HttpsNoSniDeny"] as? String {
+                self.httpsNoSniDeny = value
+            }
+            if let value = dict["HttpsSniVerify"] as? String {
+                self.httpsSniVerify = value
+            }
+            if let value = dict["HttpsSniWhitelist"] as? String {
+                self.httpsSniWhitelist = value
             }
             if let value = dict["Rule"] as? String {
                 self.rule = value
@@ -67728,6 +67824,8 @@ public class UpdateCustomScenePolicyRequest : Tea.TeaModel {
 
     public var policyId: Int64?
 
+    public var siteIds: String?
+
     public var startTime: String?
 
     public var template: String?
@@ -67758,6 +67856,9 @@ public class UpdateCustomScenePolicyRequest : Tea.TeaModel {
         if self.policyId != nil {
             map["PolicyId"] = self.policyId!
         }
+        if self.siteIds != nil {
+            map["SiteIds"] = self.siteIds!
+        }
         if self.startTime != nil {
             map["StartTime"] = self.startTime!
         }
@@ -67781,6 +67882,9 @@ public class UpdateCustomScenePolicyRequest : Tea.TeaModel {
         if let value = dict["PolicyId"] as? Int64 {
             self.policyId = value
         }
+        if let value = dict["SiteIds"] as? String {
+            self.siteIds = value
+        }
         if let value = dict["StartTime"] as? String {
             self.startTime = value
         }
@@ -67800,6 +67904,8 @@ public class UpdateCustomScenePolicyResponseBody : Tea.TeaModel {
     public var policyId: Int64?
 
     public var requestId: String?
+
+    public var siteIds: String?
 
     public var startTime: String?
 
@@ -67834,6 +67940,9 @@ public class UpdateCustomScenePolicyResponseBody : Tea.TeaModel {
         if self.requestId != nil {
             map["RequestId"] = self.requestId!
         }
+        if self.siteIds != nil {
+            map["SiteIds"] = self.siteIds!
+        }
         if self.startTime != nil {
             map["StartTime"] = self.startTime!
         }
@@ -67859,6 +67968,9 @@ public class UpdateCustomScenePolicyResponseBody : Tea.TeaModel {
         }
         if let value = dict["RequestId"] as? String {
             self.requestId = value
+        }
+        if let value = dict["SiteIds"] as? String {
+            self.siteIds = value
         }
         if let value = dict["StartTime"] as? String {
             self.startTime = value
@@ -69179,6 +69291,12 @@ public class UpdateHttpsApplicationConfigurationRequest : Tea.TeaModel {
 
     public var httpsForceCode: String?
 
+    public var httpsNoSniDeny: String?
+
+    public var httpsSniVerify: String?
+
+    public var httpsSniWhitelist: String?
+
     public var rule: String?
 
     public var ruleEnable: String?
@@ -69236,6 +69354,15 @@ public class UpdateHttpsApplicationConfigurationRequest : Tea.TeaModel {
         if self.httpsForceCode != nil {
             map["HttpsForceCode"] = self.httpsForceCode!
         }
+        if self.httpsNoSniDeny != nil {
+            map["HttpsNoSniDeny"] = self.httpsNoSniDeny!
+        }
+        if self.httpsSniVerify != nil {
+            map["HttpsSniVerify"] = self.httpsSniVerify!
+        }
+        if self.httpsSniWhitelist != nil {
+            map["HttpsSniWhitelist"] = self.httpsSniWhitelist!
+        }
         if self.rule != nil {
             map["Rule"] = self.rule!
         }
@@ -69288,6 +69415,15 @@ public class UpdateHttpsApplicationConfigurationRequest : Tea.TeaModel {
         }
         if let value = dict["HttpsForceCode"] as? String {
             self.httpsForceCode = value
+        }
+        if let value = dict["HttpsNoSniDeny"] as? String {
+            self.httpsNoSniDeny = value
+        }
+        if let value = dict["HttpsSniVerify"] as? String {
+            self.httpsSniVerify = value
+        }
+        if let value = dict["HttpsSniWhitelist"] as? String {
+            self.httpsSniWhitelist = value
         }
         if let value = dict["Rule"] as? String {
             self.rule = value
