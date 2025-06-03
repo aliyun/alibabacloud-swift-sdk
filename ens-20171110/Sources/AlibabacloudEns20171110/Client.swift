@@ -357,9 +357,15 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(tmpReq.instanceIds)) {
             request.instanceIdsShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.instanceIds, "InstanceIds", "json")
         }
+        if (!TeaUtils.Client.isUnset(tmpReq.loadOpt)) {
+            request.loadOptShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.loadOpt, "LoadOpt", "json")
+        }
         var query: [String: Any] = [:]
         if (!TeaUtils.Client.isUnset(request.instanceIdsShrink)) {
             query["InstanceIds"] = request.instanceIdsShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.loadOptShrink)) {
+            query["LoadOpt"] = request.loadOptShrink ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.SDGId)) {
             query["SDGId"] = request.SDGId ?? "";

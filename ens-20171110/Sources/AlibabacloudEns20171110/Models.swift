@@ -2267,7 +2267,63 @@ public class AttachEnsInstancesResponse : Tea.TeaModel {
 }
 
 public class AttachInstanceSDGRequest : Tea.TeaModel {
+    public class LoadOpt : Tea.TeaModel {
+        public var blockRwSplit: Bool?
+
+        public var blockRwSplitSize: Int32?
+
+        public var cache: Bool?
+
+        public var cacheSize: Int32?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.blockRwSplit != nil {
+                map["BlockRwSplit"] = self.blockRwSplit!
+            }
+            if self.blockRwSplitSize != nil {
+                map["BlockRwSplitSize"] = self.blockRwSplitSize!
+            }
+            if self.cache != nil {
+                map["Cache"] = self.cache!
+            }
+            if self.cacheSize != nil {
+                map["CacheSize"] = self.cacheSize!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["BlockRwSplit"] as? Bool {
+                self.blockRwSplit = value
+            }
+            if let value = dict["BlockRwSplitSize"] as? Int32 {
+                self.blockRwSplitSize = value
+            }
+            if let value = dict["Cache"] as? Bool {
+                self.cache = value
+            }
+            if let value = dict["CacheSize"] as? Int32 {
+                self.cacheSize = value
+            }
+        }
+    }
     public var instanceIds: [String]?
+
+    public var loadOpt: AttachInstanceSDGRequest.LoadOpt?
 
     public var SDGId: String?
 
@@ -2281,12 +2337,16 @@ public class AttachInstanceSDGRequest : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
+        try self.loadOpt?.validate()
     }
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
         if self.instanceIds != nil {
             map["InstanceIds"] = self.instanceIds!
+        }
+        if self.loadOpt != nil {
+            map["LoadOpt"] = self.loadOpt?.toMap()
         }
         if self.SDGId != nil {
             map["SDGId"] = self.SDGId!
@@ -2299,6 +2359,11 @@ public class AttachInstanceSDGRequest : Tea.TeaModel {
         if let value = dict["InstanceIds"] as? [String] {
             self.instanceIds = value
         }
+        if let value = dict["LoadOpt"] as? [String: Any?] {
+            var model = AttachInstanceSDGRequest.LoadOpt()
+            model.fromMap(value)
+            self.loadOpt = model
+        }
         if let value = dict["SDGId"] as? String {
             self.SDGId = value
         }
@@ -2307,6 +2372,8 @@ public class AttachInstanceSDGRequest : Tea.TeaModel {
 
 public class AttachInstanceSDGShrinkRequest : Tea.TeaModel {
     public var instanceIdsShrink: String?
+
+    public var loadOptShrink: String?
 
     public var SDGId: String?
 
@@ -2327,6 +2394,9 @@ public class AttachInstanceSDGShrinkRequest : Tea.TeaModel {
         if self.instanceIdsShrink != nil {
             map["InstanceIds"] = self.instanceIdsShrink!
         }
+        if self.loadOptShrink != nil {
+            map["LoadOpt"] = self.loadOptShrink!
+        }
         if self.SDGId != nil {
             map["SDGId"] = self.SDGId!
         }
@@ -2337,6 +2407,9 @@ public class AttachInstanceSDGShrinkRequest : Tea.TeaModel {
         guard let dict else { return }
         if let value = dict["InstanceIds"] as? String {
             self.instanceIdsShrink = value
+        }
+        if let value = dict["LoadOpt"] as? String {
+            self.loadOptShrink = value
         }
         if let value = dict["SDGId"] as? String {
             self.SDGId = value
@@ -32630,6 +32703,10 @@ public class DescribeInstanceSDGStatusShrinkRequest : Tea.TeaModel {
 
 public class DescribeInstanceSDGStatusResponseBody : Tea.TeaModel {
     public class DeploymentStatus : Tea.TeaModel {
+        public var blockRwSplitSize: Int32?
+
+        public var cacheSize: Int32?
+
         public var ensRegionId: String?
 
         public var instanceId: String?
@@ -32658,6 +32735,12 @@ public class DescribeInstanceSDGStatusResponseBody : Tea.TeaModel {
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
+            if self.blockRwSplitSize != nil {
+                map["BlockRwSplitSize"] = self.blockRwSplitSize!
+            }
+            if self.cacheSize != nil {
+                map["CacheSize"] = self.cacheSize!
+            }
             if self.ensRegionId != nil {
                 map["EnsRegionId"] = self.ensRegionId!
             }
@@ -32684,6 +32767,12 @@ public class DescribeInstanceSDGStatusResponseBody : Tea.TeaModel {
 
         public override func fromMap(_ dict: [String: Any?]?) -> Void {
             guard let dict else { return }
+            if let value = dict["BlockRwSplitSize"] as? Int32 {
+                self.blockRwSplitSize = value
+            }
+            if let value = dict["CacheSize"] as? Int32 {
+                self.cacheSize = value
+            }
             if let value = dict["EnsRegionId"] as? String {
                 self.ensRegionId = value
             }
@@ -47525,6 +47614,10 @@ public class DescribeSDGDeploymentStatusShrinkRequest : Tea.TeaModel {
 
 public class DescribeSDGDeploymentStatusResponseBody : Tea.TeaModel {
     public class DeploymentStatus : Tea.TeaModel {
+        public var blockRwSplitSize: Int32?
+
+        public var cacheSize: Int32?
+
         public var instanceId: String?
 
         public var mountType: String?
@@ -47551,6 +47644,12 @@ public class DescribeSDGDeploymentStatusResponseBody : Tea.TeaModel {
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
+            if self.blockRwSplitSize != nil {
+                map["BlockRwSplitSize"] = self.blockRwSplitSize!
+            }
+            if self.cacheSize != nil {
+                map["CacheSize"] = self.cacheSize!
+            }
             if self.instanceId != nil {
                 map["InstanceId"] = self.instanceId!
             }
@@ -47574,6 +47673,12 @@ public class DescribeSDGDeploymentStatusResponseBody : Tea.TeaModel {
 
         public override func fromMap(_ dict: [String: Any?]?) -> Void {
             guard let dict else { return }
+            if let value = dict["BlockRwSplitSize"] as? Int32 {
+                self.blockRwSplitSize = value
+            }
+            if let value = dict["CacheSize"] as? Int32 {
+                self.cacheSize = value
+            }
             if let value = dict["InstanceId"] as? String {
                 self.instanceId = value
             }
