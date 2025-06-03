@@ -22582,7 +22582,11 @@ public class DescribeDesktopGroupsResponseBody : Tea.TeaModel {
 
         public var policyGroupId: String?
 
+        public var policyGroupIdList: [String]?
+
         public var policyGroupName: String?
+
+        public var policyGroupNameList: [String]?
 
         public var protocolType: String?
 
@@ -22738,8 +22742,14 @@ public class DescribeDesktopGroupsResponseBody : Tea.TeaModel {
             if self.policyGroupId != nil {
                 map["PolicyGroupId"] = self.policyGroupId!
             }
+            if self.policyGroupIdList != nil {
+                map["PolicyGroupIdList"] = self.policyGroupIdList!
+            }
             if self.policyGroupName != nil {
                 map["PolicyGroupName"] = self.policyGroupName!
+            }
+            if self.policyGroupNameList != nil {
+                map["PolicyGroupNameList"] = self.policyGroupNameList!
             }
             if self.protocolType != nil {
                 map["ProtocolType"] = self.protocolType!
@@ -22910,8 +22920,14 @@ public class DescribeDesktopGroupsResponseBody : Tea.TeaModel {
             if let value = dict["PolicyGroupId"] as? String {
                 self.policyGroupId = value
             }
+            if let value = dict["PolicyGroupIdList"] as? [String] {
+                self.policyGroupIdList = value
+            }
             if let value = dict["PolicyGroupName"] as? String {
                 self.policyGroupName = value
+            }
+            if let value = dict["PolicyGroupNameList"] as? [String] {
+                self.policyGroupNameList = value
             }
             if let value = dict["ProtocolType"] as? String {
                 self.protocolType = value
