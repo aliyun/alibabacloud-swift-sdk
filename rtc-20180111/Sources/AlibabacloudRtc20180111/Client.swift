@@ -284,6 +284,45 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func createCloudNotePhrasesWithOptions(_ tmpReq: CreateCloudNotePhrasesRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> CreateCloudNotePhrasesResponse {
+        try TeaUtils.Client.validateModel(tmpReq)
+        var request: CreateCloudNotePhrasesShrinkRequest = CreateCloudNotePhrasesShrinkRequest([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.phrase)) {
+            request.phraseShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.phrase, "Phrase", "json")
+        }
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.appId)) {
+            query["AppId"] = request.appId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.phraseShrink)) {
+            query["Phrase"] = request.phraseShrink ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "CreateCloudNotePhrases",
+            "version": "2018-01-11",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(CreateCloudNotePhrasesResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func createCloudNotePhrases(_ request: CreateCloudNotePhrasesRequest) async throws -> CreateCloudNotePhrasesResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await createCloudNotePhrasesWithOptions(request as! CreateCloudNotePhrasesRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func createEventSubscribeWithOptions(_ request: CreateEventSubscribeRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> CreateEventSubscribeResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
@@ -576,6 +615,45 @@ open class Client : AlibabacloudOpenApi.Client {
     public func deleteChannel(_ request: DeleteChannelRequest) async throws -> DeleteChannelResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         return try await deleteChannelWithOptions(request as! DeleteChannelRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func deleteCloudNotePhrasesWithOptions(_ tmpReq: DeleteCloudNotePhrasesRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DeleteCloudNotePhrasesResponse {
+        try TeaUtils.Client.validateModel(tmpReq)
+        var request: DeleteCloudNotePhrasesShrinkRequest = DeleteCloudNotePhrasesShrinkRequest([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.phrase)) {
+            request.phraseShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.phrase, "Phrase", "json")
+        }
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.appId)) {
+            query["AppId"] = request.appId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.phraseShrink)) {
+            query["Phrase"] = request.phraseShrink ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "DeleteCloudNotePhrases",
+            "version": "2018-01-11",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(DeleteCloudNotePhrasesResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func deleteCloudNotePhrases(_ request: DeleteCloudNotePhrasesRequest) async throws -> DeleteCloudNotePhrasesResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await deleteCloudNotePhrasesWithOptions(request as! DeleteCloudNotePhrasesRequest, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -1650,6 +1728,51 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func describeCloudNotePhrasesWithOptions(_ tmpReq: DescribeCloudNotePhrasesRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DescribeCloudNotePhrasesResponse {
+        try TeaUtils.Client.validateModel(tmpReq)
+        var request: DescribeCloudNotePhrasesShrinkRequest = DescribeCloudNotePhrasesShrinkRequest([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.condition)) {
+            request.conditionShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.condition, "Condition", "json")
+        }
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.appId)) {
+            query["AppId"] = request.appId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.conditionShrink)) {
+            query["Condition"] = request.conditionShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.pageNum)) {
+            query["PageNum"] = request.pageNum!;
+        }
+        if (!TeaUtils.Client.isUnset(request.pageSize)) {
+            query["PageSize"] = request.pageSize!;
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "DescribeCloudNotePhrases",
+            "version": "2018-01-11",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(DescribeCloudNotePhrasesResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func describeCloudNotePhrases(_ request: DescribeCloudNotePhrasesRequest) async throws -> DescribeCloudNotePhrasesResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await describeCloudNotePhrasesWithOptions(request as! DescribeCloudNotePhrasesRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func describeCloudNotesWithOptions(_ tmpReq: DescribeCloudNotesRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DescribeCloudNotesResponse {
         try TeaUtils.Client.validateModel(tmpReq)
         var request: DescribeCloudNotesShrinkRequest = DescribeCloudNotesShrinkRequest([:])
@@ -1680,6 +1803,43 @@ open class Client : AlibabacloudOpenApi.Client {
     public func describeCloudNotes(_ request: DescribeCloudNotesRequest) async throws -> DescribeCloudNotesResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         return try await describeCloudNotesWithOptions(request as! DescribeCloudNotesRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func describeCloudRecordStatusWithOptions(_ request: DescribeCloudRecordStatusRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DescribeCloudRecordStatusResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.appId)) {
+            query["AppId"] = request.appId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.channelId)) {
+            query["ChannelId"] = request.channelId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.taskId)) {
+            query["TaskId"] = request.taskId ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "DescribeCloudRecordStatus",
+            "version": "2018-01-11",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(DescribeCloudRecordStatusResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func describeCloudRecordStatus(_ request: DescribeCloudRecordStatusRequest) async throws -> DescribeCloudRecordStatusResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await describeCloudRecordStatusWithOptions(request as! DescribeCloudRecordStatusRequest, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -3253,6 +3413,45 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func modifyCloudNotePhrasesWithOptions(_ tmpReq: ModifyCloudNotePhrasesRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ModifyCloudNotePhrasesResponse {
+        try TeaUtils.Client.validateModel(tmpReq)
+        var request: ModifyCloudNotePhrasesShrinkRequest = ModifyCloudNotePhrasesShrinkRequest([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.phrase)) {
+            request.phraseShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.phrase, "Phrase", "json")
+        }
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.appId)) {
+            query["AppId"] = request.appId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.phraseShrink)) {
+            query["Phrase"] = request.phraseShrink ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "ModifyCloudNotePhrases",
+            "version": "2018-01-11",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(ModifyCloudNotePhrasesResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func modifyCloudNotePhrases(_ request: ModifyCloudNotePhrasesRequest) async throws -> ModifyCloudNotePhrasesResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await modifyCloudNotePhrasesWithOptions(request as! ModifyCloudNotePhrasesRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func modifyMPULayoutWithOptions(_ request: ModifyMPULayoutRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ModifyMPULayoutResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
@@ -3525,6 +3724,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.backgrounds)) {
             query["Backgrounds"] = request.backgrounds ?? [];
         }
+        if (!TeaUtils.Client.isUnset(request.bgColor)) {
+            query["BgColor"] = request.bgColor!;
+        }
         if (!TeaUtils.Client.isUnset(request.channelId)) {
             query["ChannelId"] = request.channelId ?? "";
         }
@@ -3554,6 +3756,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.storageConfig)) {
             query["StorageConfig"] = request.storageConfig!;
+        }
+        if (!TeaUtils.Client.isUnset(request.subHighResolutionStream)) {
+            query["SubHighResolutionStream"] = request.subHighResolutionStream!;
         }
         if (!TeaUtils.Client.isUnset(request.taskId)) {
             query["TaskId"] = request.taskId ?? "";
@@ -3813,6 +4018,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.backgrounds)) {
             query["Backgrounds"] = request.backgrounds ?? [];
         }
+        if (!TeaUtils.Client.isUnset(request.bgColor)) {
+            query["BgColor"] = request.bgColor!;
+        }
         if (!TeaUtils.Client.isUnset(request.channelId)) {
             query["ChannelId"] = request.channelId ?? "";
         }
@@ -3845,6 +4053,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.startWithoutChannelWaitTime)) {
             query["StartWithoutChannelWaitTime"] = request.startWithoutChannelWaitTime!;
+        }
+        if (!TeaUtils.Client.isUnset(request.subHighResolutionStream)) {
+            query["SubHighResolutionStream"] = request.subHighResolutionStream!;
         }
         if (!TeaUtils.Client.isUnset(request.taskId)) {
             query["TaskId"] = request.taskId ?? "";
@@ -4534,11 +4745,17 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.backgrounds)) {
             query["Backgrounds"] = request.backgrounds ?? [];
         }
+        if (!TeaUtils.Client.isUnset(request.bgColor)) {
+            query["BgColor"] = request.bgColor!;
+        }
         if (!TeaUtils.Client.isUnset(request.channelId)) {
             query["ChannelId"] = request.channelId ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.clockWidgets)) {
             query["ClockWidgets"] = request.clockWidgets ?? [];
+        }
+        if (!TeaUtils.Client.isUnset(request.cropMode)) {
+            query["CropMode"] = request.cropMode!;
         }
         if (!TeaUtils.Client.isUnset(request.images)) {
             query["Images"] = request.images ?? [];
@@ -4548,6 +4765,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.panes)) {
             query["Panes"] = request.panes ?? [];
+        }
+        if (!TeaUtils.Client.isUnset(request.regionColor)) {
+            query["RegionColor"] = request.regionColor!;
         }
         if (!TeaUtils.Client.isUnset(request.taskId)) {
             query["TaskId"] = request.taskId ?? "";
