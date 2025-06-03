@@ -1765,6 +1765,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.gatewayType)) {
             query["gatewayType"] = request.gatewayType ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.includeBuiltinAiGateway)) {
+            query["includeBuiltinAiGateway"] = request.includeBuiltinAiGateway!;
+        }
         if (!TeaUtils.Client.isUnset(request.pageNumber)) {
             query["pageNumber"] = request.pageNumber!;
         }

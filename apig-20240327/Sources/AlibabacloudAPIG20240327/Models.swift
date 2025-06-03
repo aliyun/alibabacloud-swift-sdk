@@ -17334,6 +17334,8 @@ public class ListPluginsRequest : Tea.TeaModel {
 
     public var gatewayType: String?
 
+    public var includeBuiltinAiGateway: Bool?
+
     public var pageNumber: Int32?
 
     public var pageSize: Int32?
@@ -17370,6 +17372,9 @@ public class ListPluginsRequest : Tea.TeaModel {
         if self.gatewayType != nil {
             map["gatewayType"] = self.gatewayType!
         }
+        if self.includeBuiltinAiGateway != nil {
+            map["includeBuiltinAiGateway"] = self.includeBuiltinAiGateway!
+        }
         if self.pageNumber != nil {
             map["pageNumber"] = self.pageNumber!
         }
@@ -17401,6 +17406,9 @@ public class ListPluginsRequest : Tea.TeaModel {
         }
         if let value = dict["gatewayType"] as? String {
             self.gatewayType = value
+        }
+        if let value = dict["includeBuiltinAiGateway"] as? Bool {
+            self.includeBuiltinAiGateway = value
         }
         if let value = dict["pageNumber"] as? Int32 {
             self.pageNumber = value
