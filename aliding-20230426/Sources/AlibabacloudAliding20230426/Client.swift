@@ -2162,17 +2162,17 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.assistantId)) {
             body["assistantId"] = request.assistantId ?? "";
         }
-        if (!TeaUtils.Client.isUnset(request.content)) {
-            body["content"] = request.content ?? [];
-        }
-        if (!TeaUtils.Client.isUnset(request.metadata)) {
-            body["metadata"] = request.metadata ?? [:];
+        if (!TeaUtils.Client.isUnset(request.messages)) {
+            body["messages"] = request.messages ?? [];
         }
         if (!TeaUtils.Client.isUnset(request.originalAssistantId)) {
             body["originalAssistantId"] = request.originalAssistantId ?? "";
         }
-        if (!TeaUtils.Client.isUnset(request.role)) {
-            body["role"] = request.role ?? "";
+        if (!TeaUtils.Client.isUnset(request.sourceIdOfOriginalAssistantId)) {
+            body["sourceIdOfOriginalAssistantId"] = request.sourceIdOfOriginalAssistantId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.sourceTypeOfOriginalAssistantId)) {
+            body["sourceTypeOfOriginalAssistantId"] = request.sourceTypeOfOriginalAssistantId ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.threadId)) {
             body["threadId"] = request.threadId ?? "";
@@ -2576,14 +2576,14 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.assistantId)) {
             body["assistantId"] = request.assistantId ?? "";
         }
-        if (!TeaUtils.Client.isUnset(request.instructions)) {
-            body["instructions"] = request.instructions ?? "";
-        }
-        if (!TeaUtils.Client.isUnset(request.metadata)) {
-            body["metadata"] = request.metadata ?? [:];
-        }
         if (!TeaUtils.Client.isUnset(request.originalAssistantId)) {
             body["originalAssistantId"] = request.originalAssistantId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.sourceIdOfOriginalAssistantId)) {
+            body["sourceIdOfOriginalAssistantId"] = request.sourceIdOfOriginalAssistantId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.sourceTypeOfOriginalAssistantId)) {
+            body["sourceTypeOfOriginalAssistantId"] = request.sourceTypeOfOriginalAssistantId ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.stream)) {
             body["stream"] = request.stream!;
@@ -3052,11 +3052,14 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.assistantId)) {
             body["assistantId"] = request.assistantId ?? "";
         }
-        if (!TeaUtils.Client.isUnset(request.metadata)) {
-            body["metadata"] = request.metadata ?? [:];
-        }
         if (!TeaUtils.Client.isUnset(request.originalAssistantId)) {
             body["originalAssistantId"] = request.originalAssistantId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.sourceIdOfOriginalAssistantId)) {
+            body["sourceIdOfOriginalAssistantId"] = request.sourceIdOfOriginalAssistantId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.sourceTypeOfOriginalAssistantId)) {
+            body["sourceTypeOfOriginalAssistantId"] = request.sourceTypeOfOriginalAssistantId!;
         }
         var realHeaders: [String: String] = [:]
         if (!TeaUtils.Client.isUnset(headers.commonHeaders)) {
@@ -5080,20 +5083,20 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.assistantId)) {
             body["assistantId"] = request.assistantId ?? "";
         }
-        if (!TeaUtils.Client.isUnset(request.content)) {
-            body["content"] = request.content ?? [];
-        }
-        if (!TeaUtils.Client.isUnset(request.id)) {
-            body["id"] = request.id ?? "";
-        }
-        if (!TeaUtils.Client.isUnset(request.metadata)) {
-            body["metadata"] = request.metadata ?? [:];
+        if (!TeaUtils.Client.isUnset(request.messages)) {
+            body["messages"] = request.messages ?? [];
         }
         if (!TeaUtils.Client.isUnset(request.originalAssistantId)) {
             body["originalAssistantId"] = request.originalAssistantId ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.protocol_)) {
             body["protocol"] = request.protocol_ ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.sourceIdOfOriginalAssistantId)) {
+            body["sourceIdOfOriginalAssistantId"] = request.sourceIdOfOriginalAssistantId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.sourceTypeOfOriginalAssistantId)) {
+            body["sourceTypeOfOriginalAssistantId"] = request.sourceTypeOfOriginalAssistantId ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.threadId)) {
             body["threadId"] = request.threadId ?? "";
@@ -9031,14 +9034,20 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.assistantId)) {
             body["assistantId"] = request.assistantId ?? "";
         }
-        if (!TeaUtils.Client.isUnset(request.content)) {
-            body["content"] = request.content ?? [];
+        if (!TeaUtils.Client.isUnset(request.messages)) {
+            body["messages"] = request.messages ?? [];
         }
-        if (!TeaUtils.Client.isUnset(request.history)) {
-            body["history"] = request.history ?? [];
+        if (!TeaUtils.Client.isUnset(request.originalAssistantId)) {
+            body["originalAssistantId"] = request.originalAssistantId ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.sessionId)) {
             body["sessionId"] = request.sessionId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.sourceIdOfOriginalAssistantId)) {
+            body["sourceIdOfOriginalAssistantId"] = request.sourceIdOfOriginalAssistantId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.sourceTypeOfOriginalAssistantId)) {
+            body["sourceTypeOfOriginalAssistantId"] = request.sourceTypeOfOriginalAssistantId ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.stream)) {
             body["stream"] = request.stream!;
@@ -9570,11 +9579,17 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.order)) {
             body["order"] = request.order ?? "";
         }
-        if (!TeaUtils.Client.isUnset(request.originalAssistantid)) {
-            body["originalAssistantid"] = request.originalAssistantid ?? "";
+        if (!TeaUtils.Client.isUnset(request.originalAssistantId)) {
+            body["originalAssistantId"] = request.originalAssistantId ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.runId)) {
             body["runId"] = request.runId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.sourceIdOfOriginalAssistantId)) {
+            body["sourceIdOfOriginalAssistantId"] = request.sourceIdOfOriginalAssistantId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.sourceTypeOfOriginalAssistantId)) {
+            body["sourceTypeOfOriginalAssistantId"] = request.sourceTypeOfOriginalAssistantId ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.threadId)) {
             body["threadId"] = request.threadId ?? "";
@@ -12181,8 +12196,11 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.runId)) {
             body["runId"] = request.runId ?? "";
         }
-        if (!TeaUtils.Client.isUnset(request.threadId)) {
-            body["threadId"] = request.threadId ?? "";
+        if (!TeaUtils.Client.isUnset(request.sourceIdOfOriginalAssistantId)) {
+            body["sourceIdOfOriginalAssistantId"] = request.sourceIdOfOriginalAssistantId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.sourceTypeOfOriginalAssistantId)) {
+            body["sourceTypeOfOriginalAssistantId"] = request.sourceTypeOfOriginalAssistantId ?? "";
         }
         var realHeaders: [String: String] = [:]
         if (!TeaUtils.Client.isUnset(headers.commonHeaders)) {
