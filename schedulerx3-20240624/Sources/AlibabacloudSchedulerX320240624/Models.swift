@@ -729,6 +729,8 @@ public class CreateJobRequest : Tea.TeaModel {
 
     public var routeStrategy: Int32?
 
+    public var script: String?
+
     public var startTime: Int64?
 
     public var status: Int32?
@@ -808,6 +810,9 @@ public class CreateJobRequest : Tea.TeaModel {
         }
         if self.routeStrategy != nil {
             map["RouteStrategy"] = self.routeStrategy!
+        }
+        if self.script != nil {
+            map["Script"] = self.script!
         }
         if self.startTime != nil {
             map["StartTime"] = self.startTime!
@@ -892,6 +897,9 @@ public class CreateJobRequest : Tea.TeaModel {
         if let value = dict["RouteStrategy"] as? Int32 {
             self.routeStrategy = value
         }
+        if let value = dict["Script"] as? String {
+            self.script = value
+        }
         if let value = dict["StartTime"] as? Int64 {
             self.startTime = value
         }
@@ -944,6 +952,8 @@ public class CreateJobShrinkRequest : Tea.TeaModel {
     public var priority: Int32?
 
     public var routeStrategy: Int32?
+
+    public var script: String?
 
     public var startTime: Int64?
 
@@ -1020,6 +1030,9 @@ public class CreateJobShrinkRequest : Tea.TeaModel {
         if self.routeStrategy != nil {
             map["RouteStrategy"] = self.routeStrategy!
         }
+        if self.script != nil {
+            map["Script"] = self.script!
+        }
         if self.startTime != nil {
             map["StartTime"] = self.startTime!
         }
@@ -1090,6 +1103,9 @@ public class CreateJobShrinkRequest : Tea.TeaModel {
         }
         if let value = dict["RouteStrategy"] as? Int32 {
             self.routeStrategy = value
+        }
+        if let value = dict["Script"] as? String {
+            self.script = value
         }
         if let value = dict["StartTime"] as? Int64 {
             self.startTime = value
@@ -2475,6 +2491,351 @@ public class GetDesigateInfoResponse : Tea.TeaModel {
         }
         if let value = dict["body"] as? [String: Any?] {
             var model = GetDesigateInfoResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
+public class GetJobExecutionRequest : Tea.TeaModel {
+    public var appName: String?
+
+    public var clusterId: String?
+
+    public var jobExecutionId: String?
+
+    public var mseSessionId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.appName != nil {
+            map["AppName"] = self.appName!
+        }
+        if self.clusterId != nil {
+            map["ClusterId"] = self.clusterId!
+        }
+        if self.jobExecutionId != nil {
+            map["JobExecutionId"] = self.jobExecutionId!
+        }
+        if self.mseSessionId != nil {
+            map["MseSessionId"] = self.mseSessionId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["AppName"] as? String {
+            self.appName = value
+        }
+        if let value = dict["ClusterId"] as? String {
+            self.clusterId = value
+        }
+        if let value = dict["JobExecutionId"] as? String {
+            self.jobExecutionId = value
+        }
+        if let value = dict["MseSessionId"] as? String {
+            self.mseSessionId = value
+        }
+    }
+}
+
+public class GetJobExecutionResponseBody : Tea.TeaModel {
+    public class Data : Tea.TeaModel {
+        public var appName: String?
+
+        public var attempt: Int32?
+
+        public var dataTime: String?
+
+        public var duration: Int64?
+
+        public var endTime: String?
+
+        public var executor: String?
+
+        public var jobExecutionId: String?
+
+        public var jobId: Int64?
+
+        public var jobName: String?
+
+        public var jobType: String?
+
+        public var parameters: String?
+
+        public var result: String?
+
+        public var routeStrategy: Int32?
+
+        public var scheduleTime: String?
+
+        public var serverIp: String?
+
+        public var startTime: String?
+
+        public var status: Int32?
+
+        public var timeType: Int32?
+
+        public var triggerType: Int32?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.appName != nil {
+                map["AppName"] = self.appName!
+            }
+            if self.attempt != nil {
+                map["Attempt"] = self.attempt!
+            }
+            if self.dataTime != nil {
+                map["DataTime"] = self.dataTime!
+            }
+            if self.duration != nil {
+                map["Duration"] = self.duration!
+            }
+            if self.endTime != nil {
+                map["EndTime"] = self.endTime!
+            }
+            if self.executor != nil {
+                map["Executor"] = self.executor!
+            }
+            if self.jobExecutionId != nil {
+                map["JobExecutionId"] = self.jobExecutionId!
+            }
+            if self.jobId != nil {
+                map["JobId"] = self.jobId!
+            }
+            if self.jobName != nil {
+                map["JobName"] = self.jobName!
+            }
+            if self.jobType != nil {
+                map["JobType"] = self.jobType!
+            }
+            if self.parameters != nil {
+                map["Parameters"] = self.parameters!
+            }
+            if self.result != nil {
+                map["Result"] = self.result!
+            }
+            if self.routeStrategy != nil {
+                map["RouteStrategy"] = self.routeStrategy!
+            }
+            if self.scheduleTime != nil {
+                map["ScheduleTime"] = self.scheduleTime!
+            }
+            if self.serverIp != nil {
+                map["ServerIp"] = self.serverIp!
+            }
+            if self.startTime != nil {
+                map["StartTime"] = self.startTime!
+            }
+            if self.status != nil {
+                map["Status"] = self.status!
+            }
+            if self.timeType != nil {
+                map["TimeType"] = self.timeType!
+            }
+            if self.triggerType != nil {
+                map["TriggerType"] = self.triggerType!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["AppName"] as? String {
+                self.appName = value
+            }
+            if let value = dict["Attempt"] as? Int32 {
+                self.attempt = value
+            }
+            if let value = dict["DataTime"] as? String {
+                self.dataTime = value
+            }
+            if let value = dict["Duration"] as? Int64 {
+                self.duration = value
+            }
+            if let value = dict["EndTime"] as? String {
+                self.endTime = value
+            }
+            if let value = dict["Executor"] as? String {
+                self.executor = value
+            }
+            if let value = dict["JobExecutionId"] as? String {
+                self.jobExecutionId = value
+            }
+            if let value = dict["JobId"] as? Int64 {
+                self.jobId = value
+            }
+            if let value = dict["JobName"] as? String {
+                self.jobName = value
+            }
+            if let value = dict["JobType"] as? String {
+                self.jobType = value
+            }
+            if let value = dict["Parameters"] as? String {
+                self.parameters = value
+            }
+            if let value = dict["Result"] as? String {
+                self.result = value
+            }
+            if let value = dict["RouteStrategy"] as? Int32 {
+                self.routeStrategy = value
+            }
+            if let value = dict["ScheduleTime"] as? String {
+                self.scheduleTime = value
+            }
+            if let value = dict["ServerIp"] as? String {
+                self.serverIp = value
+            }
+            if let value = dict["StartTime"] as? String {
+                self.startTime = value
+            }
+            if let value = dict["Status"] as? Int32 {
+                self.status = value
+            }
+            if let value = dict["TimeType"] as? Int32 {
+                self.timeType = value
+            }
+            if let value = dict["TriggerType"] as? Int32 {
+                self.triggerType = value
+            }
+        }
+    }
+    public var code: Int32?
+
+    public var data: GetJobExecutionResponseBody.Data?
+
+    public var message: String?
+
+    public var requestId: String?
+
+    public var success: Bool?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.data?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.code != nil {
+            map["Code"] = self.code!
+        }
+        if self.data != nil {
+            map["Data"] = self.data?.toMap()
+        }
+        if self.message != nil {
+            map["Message"] = self.message!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.success != nil {
+            map["Success"] = self.success!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["Code"] as? Int32 {
+            self.code = value
+        }
+        if let value = dict["Data"] as? [String: Any?] {
+            var model = GetJobExecutionResponseBody.Data()
+            model.fromMap(value)
+            self.data = model
+        }
+        if let value = dict["Message"] as? String {
+            self.message = value
+        }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+        if let value = dict["Success"] as? Bool {
+            self.success = value
+        }
+    }
+}
+
+public class GetJobExecutionResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: GetJobExecutionResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = GetJobExecutionResponseBody()
             model.fromMap(value)
             self.body = model
         }
@@ -6097,6 +6458,8 @@ public class ListJobsResponseBody : Tea.TeaModel {
 
             public var routeStrategy: Int32?
 
+            public var script: String?
+
             public var status: Int32?
 
             public var timeExpression: String?
@@ -6194,6 +6557,9 @@ public class ListJobsResponseBody : Tea.TeaModel {
                 if self.routeStrategy != nil {
                     map["RouteStrategy"] = self.routeStrategy!
                 }
+                if self.script != nil {
+                    map["Script"] = self.script!
+                }
                 if self.status != nil {
                     map["Status"] = self.status!
                 }
@@ -6288,6 +6654,9 @@ public class ListJobsResponseBody : Tea.TeaModel {
                 }
                 if let value = dict["RouteStrategy"] as? Int32 {
                     self.routeStrategy = value
+                }
+                if let value = dict["Script"] as? String {
+                    self.script = value
                 }
                 if let value = dict["Status"] as? Int32 {
                     self.status = value
@@ -9580,6 +9949,8 @@ public class UpdateJobRequest : Tea.TeaModel {
 
     public var routeStrategy: Int32?
 
+    public var script: String?
+
     public var startTime: Int64?
 
     public var timeExpression: String?
@@ -9657,6 +10028,9 @@ public class UpdateJobRequest : Tea.TeaModel {
         }
         if self.routeStrategy != nil {
             map["RouteStrategy"] = self.routeStrategy!
+        }
+        if self.script != nil {
+            map["Script"] = self.script!
         }
         if self.startTime != nil {
             map["StartTime"] = self.startTime!
@@ -9738,6 +10112,9 @@ public class UpdateJobRequest : Tea.TeaModel {
         if let value = dict["RouteStrategy"] as? Int32 {
             self.routeStrategy = value
         }
+        if let value = dict["Script"] as? String {
+            self.script = value
+        }
         if let value = dict["StartTime"] as? Int64 {
             self.startTime = value
         }
@@ -9787,6 +10164,8 @@ public class UpdateJobShrinkRequest : Tea.TeaModel {
     public var priority: Int32?
 
     public var routeStrategy: Int32?
+
+    public var script: String?
 
     public var startTime: Int64?
 
@@ -9861,6 +10240,9 @@ public class UpdateJobShrinkRequest : Tea.TeaModel {
         if self.routeStrategy != nil {
             map["RouteStrategy"] = self.routeStrategy!
         }
+        if self.script != nil {
+            map["Script"] = self.script!
+        }
         if self.startTime != nil {
             map["StartTime"] = self.startTime!
         }
@@ -9928,6 +10310,9 @@ public class UpdateJobShrinkRequest : Tea.TeaModel {
         }
         if let value = dict["RouteStrategy"] as? Int32 {
             self.routeStrategy = value
+        }
+        if let value = dict["Script"] as? String {
+            self.script = value
         }
         if let value = dict["StartTime"] as? Int64 {
             self.startTime = value
