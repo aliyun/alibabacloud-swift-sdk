@@ -6197,6 +6197,8 @@ public class ListIndexDocumentsRequest : Tea.TeaModel {
 
     public var documentStatus: String?
 
+    public var enableNameLike: String?
+
     public var indexId: String?
 
     public var pageNumber: Int32?
@@ -6223,6 +6225,9 @@ public class ListIndexDocumentsRequest : Tea.TeaModel {
         if self.documentStatus != nil {
             map["DocumentStatus"] = self.documentStatus!
         }
+        if self.enableNameLike != nil {
+            map["EnableNameLike"] = self.enableNameLike!
+        }
         if self.indexId != nil {
             map["IndexId"] = self.indexId!
         }
@@ -6242,6 +6247,9 @@ public class ListIndexDocumentsRequest : Tea.TeaModel {
         }
         if let value = dict["DocumentStatus"] as? String {
             self.documentStatus = value
+        }
+        if let value = dict["EnableNameLike"] as? String {
+            self.enableNameLike = value
         }
         if let value = dict["IndexId"] as? String {
             self.indexId = value

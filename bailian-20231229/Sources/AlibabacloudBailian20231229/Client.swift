@@ -980,6 +980,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.documentStatus)) {
             query["DocumentStatus"] = request.documentStatus ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.enableNameLike)) {
+            query["EnableNameLike"] = request.enableNameLike ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.indexId)) {
             query["IndexId"] = request.indexId ?? "";
         }
