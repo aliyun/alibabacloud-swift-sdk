@@ -450,6 +450,8 @@ public class Dataset : Tea.TeaModel {
 
     public var description_: String?
 
+    public var edition: String?
+
     public var gmtCreateTime: String?
 
     public var gmtModifiedTime: String?
@@ -519,6 +521,9 @@ public class Dataset : Tea.TeaModel {
         }
         if self.description_ != nil {
             map["Description"] = self.description_!
+        }
+        if self.edition != nil {
+            map["Edition"] = self.edition!
         }
         if self.gmtCreateTime != nil {
             map["GmtCreateTime"] = self.gmtCreateTime!
@@ -603,6 +608,9 @@ public class Dataset : Tea.TeaModel {
         }
         if let value = dict["Description"] as? String {
             self.description_ = value
+        }
+        if let value = dict["Edition"] as? String {
+            self.edition = value
         }
         if let value = dict["GmtCreateTime"] as? String {
             self.gmtCreateTime = value
@@ -4456,6 +4464,8 @@ public class CreateDatasetRequest : Tea.TeaModel {
 
     public var description_: String?
 
+    public var edition: String?
+
     public var importInfo: String?
 
     public var labels: [Label]?
@@ -4521,6 +4531,9 @@ public class CreateDatasetRequest : Tea.TeaModel {
         }
         if self.description_ != nil {
             map["Description"] = self.description_!
+        }
+        if self.edition != nil {
+            map["Edition"] = self.edition!
         }
         if self.importInfo != nil {
             map["ImportInfo"] = self.importInfo!
@@ -4603,6 +4616,9 @@ public class CreateDatasetRequest : Tea.TeaModel {
         }
         if let value = dict["Description"] as? String {
             self.description_ = value
+        }
+        if let value = dict["Edition"] as? String {
+            self.edition = value
         }
         if let value = dict["ImportInfo"] as? String {
             self.importInfo = value
@@ -10882,6 +10898,8 @@ public class GetDatasetResponseBody : Tea.TeaModel {
 
     public var description_: String?
 
+    public var edition: String?
+
     public var gmtCreateTime: String?
 
     public var gmtModifiedTime: String?
@@ -10955,6 +10973,9 @@ public class GetDatasetResponseBody : Tea.TeaModel {
         }
         if self.description_ != nil {
             map["Description"] = self.description_!
+        }
+        if self.edition != nil {
+            map["Edition"] = self.edition!
         }
         if self.gmtCreateTime != nil {
             map["GmtCreateTime"] = self.gmtCreateTime!
@@ -11045,6 +11066,9 @@ public class GetDatasetResponseBody : Tea.TeaModel {
         }
         if let value = dict["Description"] as? String {
             self.description_ = value
+        }
+        if let value = dict["Edition"] as? String {
+            self.edition = value
         }
         if let value = dict["GmtCreateTime"] as? String {
             self.gmtCreateTime = value
@@ -22610,6 +22634,8 @@ public class UpdateConnectionResponse : Tea.TeaModel {
 public class UpdateDatasetRequest : Tea.TeaModel {
     public var description_: String?
 
+    public var edition: String?
+
     public var mountAccessReadWriteRoleIdList: [String]?
 
     public var name: String?
@@ -22633,6 +22659,9 @@ public class UpdateDatasetRequest : Tea.TeaModel {
         if self.description_ != nil {
             map["Description"] = self.description_!
         }
+        if self.edition != nil {
+            map["Edition"] = self.edition!
+        }
         if self.mountAccessReadWriteRoleIdList != nil {
             map["MountAccessReadWriteRoleIdList"] = self.mountAccessReadWriteRoleIdList!
         }
@@ -22649,6 +22678,9 @@ public class UpdateDatasetRequest : Tea.TeaModel {
         guard let dict else { return }
         if let value = dict["Description"] as? String {
             self.description_ = value
+        }
+        if let value = dict["Edition"] as? String {
+            self.edition = value
         }
         if let value = dict["MountAccessReadWriteRoleIdList"] as? [String] {
             self.mountAccessReadWriteRoleIdList = value
