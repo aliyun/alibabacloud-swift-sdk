@@ -3556,6 +3556,8 @@ public class CopySnapshotRequest : Tea.TeaModel {
 
     public var destinationSnapshotName: String?
 
+    public var instanceBillingCycle: String?
+
     public var snapshotId: String?
 
     public override init() {
@@ -3581,6 +3583,9 @@ public class CopySnapshotRequest : Tea.TeaModel {
         if self.destinationSnapshotName != nil {
             map["DestinationSnapshotName"] = self.destinationSnapshotName!
         }
+        if self.instanceBillingCycle != nil {
+            map["InstanceBillingCycle"] = self.instanceBillingCycle!
+        }
         if self.snapshotId != nil {
             map["SnapshotId"] = self.snapshotId!
         }
@@ -3598,6 +3603,9 @@ public class CopySnapshotRequest : Tea.TeaModel {
         if let value = dict["DestinationSnapshotName"] as? String {
             self.destinationSnapshotName = value
         }
+        if let value = dict["InstanceBillingCycle"] as? String {
+            self.instanceBillingCycle = value
+        }
         if let value = dict["SnapshotId"] as? String {
             self.snapshotId = value
         }
@@ -3610,6 +3618,8 @@ public class CopySnapshotShrinkRequest : Tea.TeaModel {
     public var destinationSnapshotDescription: String?
 
     public var destinationSnapshotName: String?
+
+    public var instanceBillingCycle: String?
 
     public var snapshotId: String?
 
@@ -3636,6 +3646,9 @@ public class CopySnapshotShrinkRequest : Tea.TeaModel {
         if self.destinationSnapshotName != nil {
             map["DestinationSnapshotName"] = self.destinationSnapshotName!
         }
+        if self.instanceBillingCycle != nil {
+            map["InstanceBillingCycle"] = self.instanceBillingCycle!
+        }
         if self.snapshotId != nil {
             map["SnapshotId"] = self.snapshotId!
         }
@@ -3652,6 +3665,9 @@ public class CopySnapshotShrinkRequest : Tea.TeaModel {
         }
         if let value = dict["DestinationSnapshotName"] as? String {
             self.destinationSnapshotName = value
+        }
+        if let value = dict["InstanceBillingCycle"] as? String {
+            self.instanceBillingCycle = value
         }
         if let value = dict["SnapshotId"] as? String {
             self.snapshotId = value
