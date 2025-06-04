@@ -933,6 +933,8 @@ public class CreateChangeSetRequest : Tea.TeaModel {
 
     public var tags: [CreateChangeSetRequest.Tags]?
 
+    public var taintResources: [String]?
+
     public var templateBody: String?
 
     public var templateId: String?
@@ -1032,6 +1034,9 @@ public class CreateChangeSetRequest : Tea.TeaModel {
                 tmp.append(k.toMap())
             }
             map["Tags"] = tmp
+        }
+        if self.taintResources != nil {
+            map["TaintResources"] = self.taintResources!
         }
         if self.templateBody != nil {
             map["TemplateBody"] = self.templateBody!
@@ -1148,6 +1153,9 @@ public class CreateChangeSetRequest : Tea.TeaModel {
                 }
             }
             self.tags = tmp
+        }
+        if let value = dict["TaintResources"] as? [String] {
+            self.taintResources = value
         }
         if let value = dict["TemplateBody"] as? String {
             self.templateBody = value
@@ -22274,6 +22282,8 @@ public class PreviewStackRequest : Tea.TeaModel {
 
     public var stackPolicyURL: String?
 
+    public var taintResources: [String]?
+
     public var templateBody: String?
 
     public var templateId: String?
@@ -22335,6 +22345,9 @@ public class PreviewStackRequest : Tea.TeaModel {
         }
         if self.stackPolicyURL != nil {
             map["StackPolicyURL"] = self.stackPolicyURL!
+        }
+        if self.taintResources != nil {
+            map["TaintResources"] = self.taintResources!
         }
         if self.templateBody != nil {
             map["TemplateBody"] = self.templateBody!
@@ -22401,6 +22414,9 @@ public class PreviewStackRequest : Tea.TeaModel {
         }
         if let value = dict["StackPolicyURL"] as? String {
             self.stackPolicyURL = value
+        }
+        if let value = dict["TaintResources"] as? [String] {
+            self.taintResources = value
         }
         if let value = dict["TemplateBody"] as? String {
             self.templateBody = value
@@ -24298,6 +24314,8 @@ public class UpdateStackRequest : Tea.TeaModel {
 
     public var tags: [UpdateStackRequest.Tags]?
 
+    public var taintResources: [String]?
+
     public var templateBody: String?
 
     public var templateId: String?
@@ -24379,6 +24397,9 @@ public class UpdateStackRequest : Tea.TeaModel {
                 tmp.append(k.toMap())
             }
             map["Tags"] = tmp
+        }
+        if self.taintResources != nil {
+            map["TaintResources"] = self.taintResources!
         }
         if self.templateBody != nil {
             map["TemplateBody"] = self.templateBody!
@@ -24470,6 +24491,9 @@ public class UpdateStackRequest : Tea.TeaModel {
                 }
             }
             self.tags = tmp
+        }
+        if let value = dict["TaintResources"] as? [String] {
+            self.taintResources = value
         }
         if let value = dict["TemplateBody"] as? String {
             self.templateBody = value
