@@ -3103,6 +3103,8 @@ public class CreateFeatureConsistencyCheckJobConfigRequest : Tea.TeaModel {
 
     public var predictWorkerMemory: Int32?
 
+    public var resourceConfig: String?
+
     public var sampleRate: Double?
 
     public var sceneId: String?
@@ -3238,6 +3240,9 @@ public class CreateFeatureConsistencyCheckJobConfigRequest : Tea.TeaModel {
         }
         if self.predictWorkerMemory != nil {
             map["PredictWorkerMemory"] = self.predictWorkerMemory!
+        }
+        if self.resourceConfig != nil {
+            map["ResourceConfig"] = self.resourceConfig!
         }
         if self.sampleRate != nil {
             map["SampleRate"] = self.sampleRate!
@@ -3378,6 +3383,9 @@ public class CreateFeatureConsistencyCheckJobConfigRequest : Tea.TeaModel {
         }
         if let value = dict["PredictWorkerMemory"] as? Int32 {
             self.predictWorkerMemory = value
+        }
+        if let value = dict["ResourceConfig"] as? String {
+            self.resourceConfig = value
         }
         if let value = dict["SampleRate"] as? Double {
             self.sampleRate = value
@@ -10020,6 +10028,8 @@ public class GetFeatureConsistencyCheckJobConfigResponseBody : Tea.TeaModel {
 
     public var requestId: String?
 
+    public var resourceConfig: String?
+
     public var sampleRate: String?
 
     public var sceneId: String?
@@ -10182,6 +10192,9 @@ public class GetFeatureConsistencyCheckJobConfigResponseBody : Tea.TeaModel {
         }
         if self.requestId != nil {
             map["RequestId"] = self.requestId!
+        }
+        if self.resourceConfig != nil {
+            map["ResourceConfig"] = self.resourceConfig!
         }
         if self.sampleRate != nil {
             map["SampleRate"] = self.sampleRate!
@@ -10352,6 +10365,9 @@ public class GetFeatureConsistencyCheckJobConfigResponseBody : Tea.TeaModel {
         }
         if let value = dict["RequestId"] as? String {
             self.requestId = value
+        }
+        if let value = dict["ResourceConfig"] as? String {
+            self.resourceConfig = value
         }
         if let value = dict["SampleRate"] as? String {
             self.sampleRate = value
@@ -16261,6 +16277,8 @@ public class ListFeatureConsistencyCheckJobConfigsResponseBody : Tea.TeaModel {
 
         public var predictWorkerMemory: Int32?
 
+        public var resourceConfig: String?
+
         public var sampleRate: String?
 
         public var sceneId: String?
@@ -16423,6 +16441,9 @@ public class ListFeatureConsistencyCheckJobConfigsResponseBody : Tea.TeaModel {
             }
             if self.predictWorkerMemory != nil {
                 map["PredictWorkerMemory"] = self.predictWorkerMemory!
+            }
+            if self.resourceConfig != nil {
+                map["ResourceConfig"] = self.resourceConfig!
             }
             if self.sampleRate != nil {
                 map["SampleRate"] = self.sampleRate!
@@ -16593,6 +16614,9 @@ public class ListFeatureConsistencyCheckJobConfigsResponseBody : Tea.TeaModel {
             }
             if let value = dict["PredictWorkerMemory"] as? Int32 {
                 self.predictWorkerMemory = value
+            }
+            if let value = dict["ResourceConfig"] as? String {
+                self.resourceConfig = value
             }
             if let value = dict["SampleRate"] as? String {
                 self.sampleRate = value
@@ -26103,6 +26127,8 @@ public class UpdateFeatureConsistencyCheckJobConfigRequest : Tea.TeaModel {
 
     public var predictWorkerMemory: Int32?
 
+    public var resourceConfig: String?
+
     public var sampleRate: Double?
 
     public var sceneId: String?
@@ -26239,6 +26265,9 @@ public class UpdateFeatureConsistencyCheckJobConfigRequest : Tea.TeaModel {
         }
         if self.predictWorkerMemory != nil {
             map["PredictWorkerMemory"] = self.predictWorkerMemory!
+        }
+        if self.resourceConfig != nil {
+            map["ResourceConfig"] = self.resourceConfig!
         }
         if self.sampleRate != nil {
             map["SampleRate"] = self.sampleRate!
@@ -26379,6 +26408,9 @@ public class UpdateFeatureConsistencyCheckJobConfigRequest : Tea.TeaModel {
         }
         if let value = dict["PredictWorkerMemory"] as? Int32 {
             self.predictWorkerMemory = value
+        }
+        if let value = dict["ResourceConfig"] as? String {
+            self.resourceConfig = value
         }
         if let value = dict["SampleRate"] as? Double {
             self.sampleRate = value
