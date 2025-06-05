@@ -14553,6 +14553,104 @@ public class GetPropertiesResponseBody : Tea.TeaModel {
                 }
             }
         }
+        public class MiaosouConfig : Tea.TeaModel {
+            public class ModelInfos : Tea.TeaModel {
+                public var modelId: String?
+
+                public var modelName: String?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.modelId != nil {
+                        map["ModelId"] = self.modelId!
+                    }
+                    if self.modelName != nil {
+                        map["ModelName"] = self.modelName!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                    guard let dict else { return }
+                    if let value = dict["ModelId"] as? String {
+                        self.modelId = value
+                    }
+                    if let value = dict["ModelName"] as? String {
+                        self.modelName = value
+                    }
+                }
+            }
+            public var maxDocSize: Int64?
+
+            public var modelInfos: [GetPropertiesResponseBody.Data.MiaosouConfig.ModelInfos]?
+
+            public var useDocSize: Int64?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.maxDocSize != nil {
+                    map["MaxDocSize"] = self.maxDocSize!
+                }
+                if self.modelInfos != nil {
+                    var tmp : [Any] = []
+                    for k in self.modelInfos! {
+                        tmp.append(k.toMap())
+                    }
+                    map["ModelInfos"] = tmp
+                }
+                if self.useDocSize != nil {
+                    map["UseDocSize"] = self.useDocSize!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["MaxDocSize"] as? Int64 {
+                    self.maxDocSize = value
+                }
+                if let value = dict["ModelInfos"] as? [Any?] {
+                    var tmp : [GetPropertiesResponseBody.Data.MiaosouConfig.ModelInfos] = []
+                    for v in value {
+                        if v != nil {
+                            var model = GetPropertiesResponseBody.Data.MiaosouConfig.ModelInfos()
+                            if v != nil {
+                                model.fromMap(v as? [String: Any?])
+                            }
+                            tmp.append(model)
+                        }
+                    }
+                    self.modelInfos = tmp
+                }
+                if let value = dict["UseDocSize"] as? Int64 {
+                    self.useDocSize = value
+                }
+            }
+        }
         public class SearchSourceList : Tea.TeaModel {
             public var code: String?
 
@@ -14783,6 +14881,8 @@ public class GetPropertiesResponseBody : Tea.TeaModel {
 
         public var intelligentSearchConfig: GetPropertiesResponseBody.Data.IntelligentSearchConfig?
 
+        public var miaosouConfig: GetPropertiesResponseBody.Data.MiaosouConfig?
+
         public var searchSourceList: [GetPropertiesResponseBody.Data.SearchSourceList]?
 
         public var searchSources: [GetPropertiesResponseBody.Data.SearchSources]?
@@ -14807,6 +14907,7 @@ public class GetPropertiesResponseBody : Tea.TeaModel {
         public override func validate() throws -> Void {
             try self.consoleConfig?.validate()
             try self.intelligentSearchConfig?.validate()
+            try self.miaosouConfig?.validate()
             try self.userInfo?.validate()
         }
 
@@ -14823,6 +14924,9 @@ public class GetPropertiesResponseBody : Tea.TeaModel {
             }
             if self.intelligentSearchConfig != nil {
                 map["IntelligentSearchConfig"] = self.intelligentSearchConfig?.toMap()
+            }
+            if self.miaosouConfig != nil {
+                map["MiaosouConfig"] = self.miaosouConfig?.toMap()
             }
             if self.searchSourceList != nil {
                 var tmp : [Any] = []
@@ -14878,6 +14982,11 @@ public class GetPropertiesResponseBody : Tea.TeaModel {
                 var model = GetPropertiesResponseBody.Data.IntelligentSearchConfig()
                 model.fromMap(value)
                 self.intelligentSearchConfig = model
+            }
+            if let value = dict["MiaosouConfig"] as? [String: Any?] {
+                var model = GetPropertiesResponseBody.Data.MiaosouConfig()
+                model.fromMap(value)
+                self.miaosouConfig = model
             }
             if let value = dict["SearchSourceList"] as? [Any?] {
                 var tmp : [GetPropertiesResponseBody.Data.SearchSourceList] = []
@@ -41677,6 +41786,8 @@ public class RunSearchGenerationRequest : Tea.TeaModel {
                 }
             }
         }
+        public var enableThinking: Bool?
+
         public var generateLevel: String?
 
         public var generateTechnology: String?
@@ -41700,6 +41811,9 @@ public class RunSearchGenerationRequest : Tea.TeaModel {
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
+            if self.enableThinking != nil {
+                map["EnableThinking"] = self.enableThinking!
+            }
             if self.generateLevel != nil {
                 map["GenerateLevel"] = self.generateLevel!
             }
@@ -41717,6 +41831,9 @@ public class RunSearchGenerationRequest : Tea.TeaModel {
 
         public override func fromMap(_ dict: [String: Any?]?) -> Void {
             guard let dict else { return }
+            if let value = dict["EnableThinking"] as? Bool {
+                self.enableThinking = value
+            }
             if let value = dict["GenerateLevel"] as? String {
                 self.generateLevel = value
             }
