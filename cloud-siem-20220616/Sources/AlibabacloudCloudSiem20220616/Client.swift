@@ -2575,6 +2575,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.regionId)) {
             body["RegionId"] = request.regionId ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.responseRuleType)) {
+            body["ResponseRuleType"] = request.responseRuleType ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.roleFor)) {
             body["RoleFor"] = request.roleFor!;
         }

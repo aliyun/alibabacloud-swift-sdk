@@ -16255,6 +16255,8 @@ public class ListAutomateResponseConfigsRequest : Tea.TeaModel {
 
     public var regionId: String?
 
+    public var responseRuleType: String?
+
     public var roleFor: Int64?
 
     public var roleType: Int32?
@@ -16300,6 +16302,9 @@ public class ListAutomateResponseConfigsRequest : Tea.TeaModel {
         if self.regionId != nil {
             map["RegionId"] = self.regionId!
         }
+        if self.responseRuleType != nil {
+            map["ResponseRuleType"] = self.responseRuleType!
+        }
         if self.roleFor != nil {
             map["RoleFor"] = self.roleFor!
         }
@@ -16340,6 +16345,9 @@ public class ListAutomateResponseConfigsRequest : Tea.TeaModel {
         }
         if let value = dict["RegionId"] as? String {
             self.regionId = value
+        }
+        if let value = dict["ResponseRuleType"] as? String {
+            self.responseRuleType = value
         }
         if let value = dict["RoleFor"] as? Int64 {
             self.roleFor = value
@@ -16426,6 +16434,8 @@ public class ListAutomateResponseConfigsResponseBody : Tea.TeaModel {
 
             public var id: Int64?
 
+            public var responseRuleType: String?
+
             public var ruleName: String?
 
             public var status: Int32?
@@ -16473,6 +16483,9 @@ public class ListAutomateResponseConfigsResponseBody : Tea.TeaModel {
                 if self.id != nil {
                     map["Id"] = self.id!
                 }
+                if self.responseRuleType != nil {
+                    map["ResponseRuleType"] = self.responseRuleType!
+                }
                 if self.ruleName != nil {
                     map["RuleName"] = self.ruleName!
                 }
@@ -16513,6 +16526,9 @@ public class ListAutomateResponseConfigsResponseBody : Tea.TeaModel {
                 }
                 if let value = dict["Id"] as? Int64 {
                     self.id = value
+                }
+                if let value = dict["ResponseRuleType"] as? String {
+                    self.responseRuleType = value
                 }
                 if let value = dict["RuleName"] as? String {
                     self.ruleName = value
