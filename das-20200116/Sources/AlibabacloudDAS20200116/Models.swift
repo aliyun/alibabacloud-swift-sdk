@@ -12772,6 +12772,8 @@ public class DescribeSqlLogStatisticResponseBody : Tea.TeaModel {
 
         public var timestamp: Int64?
 
+        public var totalSqlSize: Int64?
+
         public override init() {
             super.init()
         }
@@ -12804,6 +12806,9 @@ public class DescribeSqlLogStatisticResponseBody : Tea.TeaModel {
             if self.timestamp != nil {
                 map["Timestamp"] = self.timestamp!
             }
+            if self.totalSqlSize != nil {
+                map["TotalSqlSize"] = self.totalSqlSize!
+            }
             return map
         }
 
@@ -12826,6 +12831,9 @@ public class DescribeSqlLogStatisticResponseBody : Tea.TeaModel {
             }
             if let value = dict["Timestamp"] as? Int64 {
                 self.timestamp = value
+            }
+            if let value = dict["TotalSqlSize"] as? Int64 {
+                self.totalSqlSize = value
             }
         }
     }
@@ -13777,6 +13785,8 @@ public class DescribeSqlLogTasksResponseBody : Tea.TeaModel {
 
             public var filters: [DescribeSqlLogTasksResponseBody.Data.List.Filters]?
 
+            public var innerResult: String?
+
             public var instanceId: String?
 
             public var logCount: Int64?
@@ -13832,6 +13842,9 @@ public class DescribeSqlLogTasksResponseBody : Tea.TeaModel {
                         tmp.append(k.toMap())
                     }
                     map["Filters"] = tmp
+                }
+                if self.innerResult != nil {
+                    map["InnerResult"] = self.innerResult!
                 }
                 if self.instanceId != nil {
                     map["InstanceId"] = self.instanceId!
@@ -13895,6 +13908,9 @@ public class DescribeSqlLogTasksResponseBody : Tea.TeaModel {
                         }
                     }
                     self.filters = tmp
+                }
+                if let value = dict["InnerResult"] as? String {
+                    self.innerResult = value
                 }
                 if let value = dict["InstanceId"] as? String {
                     self.instanceId = value
