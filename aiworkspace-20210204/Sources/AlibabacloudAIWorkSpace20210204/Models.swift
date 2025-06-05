@@ -10434,6 +10434,10 @@ public class GetConfigResponseBody : Tea.TeaModel {
 
     public var configValue: String?
 
+    public var gmtCreateTime: String?
+
+    public var gmtModifiedTime: String?
+
     public var labels: [GetConfigResponseBody.Labels]?
 
     public var requestId: String?
@@ -10463,6 +10467,12 @@ public class GetConfigResponseBody : Tea.TeaModel {
         if self.configValue != nil {
             map["ConfigValue"] = self.configValue!
         }
+        if self.gmtCreateTime != nil {
+            map["GmtCreateTime"] = self.gmtCreateTime!
+        }
+        if self.gmtModifiedTime != nil {
+            map["GmtModifiedTime"] = self.gmtModifiedTime!
+        }
         if self.labels != nil {
             var tmp : [Any] = []
             for k in self.labels! {
@@ -10489,6 +10499,12 @@ public class GetConfigResponseBody : Tea.TeaModel {
         }
         if let value = dict["ConfigValue"] as? String {
             self.configValue = value
+        }
+        if let value = dict["GmtCreateTime"] as? String {
+            self.gmtCreateTime = value
+        }
+        if let value = dict["GmtModifiedTime"] as? String {
+            self.gmtModifiedTime = value
         }
         if let value = dict["Labels"] as? [Any?] {
             var tmp : [GetConfigResponseBody.Labels] = []
@@ -14370,6 +14386,10 @@ public class ListConfigsResponseBody : Tea.TeaModel {
 
         public var configValue: String?
 
+        public var gmtCreateTime: String?
+
+        public var gmtModifiedTime: String?
+
         public var labels: [ListConfigsResponseBody.Configs.Labels]?
 
         public override init() {
@@ -14392,6 +14412,12 @@ public class ListConfigsResponseBody : Tea.TeaModel {
             if self.configValue != nil {
                 map["ConfigValue"] = self.configValue!
             }
+            if self.gmtCreateTime != nil {
+                map["GmtCreateTime"] = self.gmtCreateTime!
+            }
+            if self.gmtModifiedTime != nil {
+                map["GmtModifiedTime"] = self.gmtModifiedTime!
+            }
             if self.labels != nil {
                 var tmp : [Any] = []
                 for k in self.labels! {
@@ -14409,6 +14435,12 @@ public class ListConfigsResponseBody : Tea.TeaModel {
             }
             if let value = dict["ConfigValue"] as? String {
                 self.configValue = value
+            }
+            if let value = dict["GmtCreateTime"] as? String {
+                self.gmtCreateTime = value
+            }
+            if let value = dict["GmtModifiedTime"] as? String {
+                self.gmtModifiedTime = value
             }
             if let value = dict["Labels"] as? [Any?] {
                 var tmp : [ListConfigsResponseBody.Configs.Labels] = []
