@@ -17758,6 +17758,524 @@ public class GetRulesCountListResponse : Tea.TeaModel {
     }
 }
 
+public class GetSchemeTaskConfigRequest : Tea.TeaModel {
+    public var baseMeAgentId: Int64?
+
+    public var jsonStr: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.baseMeAgentId != nil {
+            map["BaseMeAgentId"] = self.baseMeAgentId!
+        }
+        if self.jsonStr != nil {
+            map["JsonStr"] = self.jsonStr!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["BaseMeAgentId"] as? Int64 {
+            self.baseMeAgentId = value
+        }
+        if let value = dict["JsonStr"] as? String {
+            self.jsonStr = value
+        }
+    }
+}
+
+public class GetSchemeTaskConfigResponseBody : Tea.TeaModel {
+    public class Data : Tea.TeaModel {
+        public class DataConfig : Tea.TeaModel {
+            public class AssignConfigs : Tea.TeaModel {
+                public class AssignConfigContests : Tea.TeaModel {
+                    public var dataType: Int32?
+
+                    public var listObject: [Any]?
+
+                    public var name: String?
+
+                    public var symbol: Int32?
+
+                    public var value: String?
+
+                    public override init() {
+                        super.init()
+                    }
+
+                    public init(_ dict: [String: Any]) {
+                        super.init()
+                        self.fromMap(dict)
+                    }
+
+                    public override func validate() throws -> Void {
+                    }
+
+                    public override func toMap() -> [String : Any] {
+                        var map = super.toMap()
+                        if self.dataType != nil {
+                            map["DataType"] = self.dataType!
+                        }
+                        if self.listObject != nil {
+                            map["ListObject"] = self.listObject!
+                        }
+                        if self.name != nil {
+                            map["Name"] = self.name!
+                        }
+                        if self.symbol != nil {
+                            map["Symbol"] = self.symbol!
+                        }
+                        if self.value != nil {
+                            map["Value"] = self.value!
+                        }
+                        return map
+                    }
+
+                    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                        guard let dict else { return }
+                        if let value = dict["DataType"] as? Int32 {
+                            self.dataType = value
+                        }
+                        if let value = dict["ListObject"] as? [Any] {
+                            self.listObject = value
+                        }
+                        if let value = dict["Name"] as? String {
+                            self.name = value
+                        }
+                        if let value = dict["Symbol"] as? Int32 {
+                            self.symbol = value
+                        }
+                        if let value = dict["Value"] as? String {
+                            self.value = value
+                        }
+                    }
+                }
+                public var assignConfigContests: [GetSchemeTaskConfigResponseBody.Data.DataConfig.AssignConfigs.AssignConfigContests]?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.assignConfigContests != nil {
+                        var tmp : [Any] = []
+                        for k in self.assignConfigContests! {
+                            tmp.append(k.toMap())
+                        }
+                        map["AssignConfigContests"] = tmp
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                    guard let dict else { return }
+                    if let value = dict["AssignConfigContests"] as? [Any?] {
+                        var tmp : [GetSchemeTaskConfigResponseBody.Data.DataConfig.AssignConfigs.AssignConfigContests] = []
+                        for v in value {
+                            if v != nil {
+                                var model = GetSchemeTaskConfigResponseBody.Data.DataConfig.AssignConfigs.AssignConfigContests()
+                                if v != nil {
+                                    model.fromMap(v as? [String: Any?])
+                                }
+                                tmp.append(model)
+                            }
+                        }
+                        self.assignConfigContests = tmp
+                    }
+                }
+            }
+            public var assignConfigs: [GetSchemeTaskConfigResponseBody.Data.DataConfig.AssignConfigs]?
+
+            public var dataSets: String?
+
+            public var index: Int64?
+
+            public var resultParam: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.assignConfigs != nil {
+                    var tmp : [Any] = []
+                    for k in self.assignConfigs! {
+                        tmp.append(k.toMap())
+                    }
+                    map["AssignConfigs"] = tmp
+                }
+                if self.dataSets != nil {
+                    map["DataSets"] = self.dataSets!
+                }
+                if self.index != nil {
+                    map["Index"] = self.index!
+                }
+                if self.resultParam != nil {
+                    map["ResultParam"] = self.resultParam!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["AssignConfigs"] as? [Any?] {
+                    var tmp : [GetSchemeTaskConfigResponseBody.Data.DataConfig.AssignConfigs] = []
+                    for v in value {
+                        if v != nil {
+                            var model = GetSchemeTaskConfigResponseBody.Data.DataConfig.AssignConfigs()
+                            if v != nil {
+                                model.fromMap(v as? [String: Any?])
+                            }
+                            tmp.append(model)
+                        }
+                    }
+                    self.assignConfigs = tmp
+                }
+                if let value = dict["DataSets"] as? String {
+                    self.dataSets = value
+                }
+                if let value = dict["Index"] as? Int64 {
+                    self.index = value
+                }
+                if let value = dict["ResultParam"] as? String {
+                    self.resultParam = value
+                }
+            }
+        }
+        public class SchemeList : Tea.TeaModel {
+            public var name: String?
+
+            public var schemeId: Int64?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.name != nil {
+                    map["Name"] = self.name!
+                }
+                if self.schemeId != nil {
+                    map["SchemeId"] = self.schemeId!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["Name"] as? String {
+                    self.name = value
+                }
+                if let value = dict["SchemeId"] as? Int64 {
+                    self.schemeId = value
+                }
+            }
+        }
+        public var asrTaskPriority: Int32?
+
+        public var assignType: Int32?
+
+        public var dataConfig: GetSchemeTaskConfigResponseBody.Data.DataConfig?
+
+        public var id: Int64?
+
+        public var manualReview: Int32?
+
+        public var modeCustomizationId: String?
+
+        public var modelName: String?
+
+        public var name: String?
+
+        public var schemeIdList: [Int64]?
+
+        public var schemeList: [GetSchemeTaskConfigResponseBody.Data.SchemeList]?
+
+        public var schemeTaskConfigId: Int64?
+
+        public var sourceDataType: String?
+
+        public var status: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+            try self.dataConfig?.validate()
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.asrTaskPriority != nil {
+                map["AsrTaskPriority"] = self.asrTaskPriority!
+            }
+            if self.assignType != nil {
+                map["AssignType"] = self.assignType!
+            }
+            if self.dataConfig != nil {
+                map["DataConfig"] = self.dataConfig?.toMap()
+            }
+            if self.id != nil {
+                map["Id"] = self.id!
+            }
+            if self.manualReview != nil {
+                map["ManualReview"] = self.manualReview!
+            }
+            if self.modeCustomizationId != nil {
+                map["ModeCustomizationId"] = self.modeCustomizationId!
+            }
+            if self.modelName != nil {
+                map["ModelName"] = self.modelName!
+            }
+            if self.name != nil {
+                map["Name"] = self.name!
+            }
+            if self.schemeIdList != nil {
+                map["SchemeIdList"] = self.schemeIdList!
+            }
+            if self.schemeList != nil {
+                var tmp : [Any] = []
+                for k in self.schemeList! {
+                    tmp.append(k.toMap())
+                }
+                map["SchemeList"] = tmp
+            }
+            if self.schemeTaskConfigId != nil {
+                map["SchemeTaskConfigId"] = self.schemeTaskConfigId!
+            }
+            if self.sourceDataType != nil {
+                map["SourceDataType"] = self.sourceDataType!
+            }
+            if self.status != nil {
+                map["Status"] = self.status!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["AsrTaskPriority"] as? Int32 {
+                self.asrTaskPriority = value
+            }
+            if let value = dict["AssignType"] as? Int32 {
+                self.assignType = value
+            }
+            if let value = dict["DataConfig"] as? [String: Any?] {
+                var model = GetSchemeTaskConfigResponseBody.Data.DataConfig()
+                model.fromMap(value)
+                self.dataConfig = model
+            }
+            if let value = dict["Id"] as? Int64 {
+                self.id = value
+            }
+            if let value = dict["ManualReview"] as? Int32 {
+                self.manualReview = value
+            }
+            if let value = dict["ModeCustomizationId"] as? String {
+                self.modeCustomizationId = value
+            }
+            if let value = dict["ModelName"] as? String {
+                self.modelName = value
+            }
+            if let value = dict["Name"] as? String {
+                self.name = value
+            }
+            if let value = dict["SchemeIdList"] as? [Int64] {
+                self.schemeIdList = value
+            }
+            if let value = dict["SchemeList"] as? [Any?] {
+                var tmp : [GetSchemeTaskConfigResponseBody.Data.SchemeList] = []
+                for v in value {
+                    if v != nil {
+                        var model = GetSchemeTaskConfigResponseBody.Data.SchemeList()
+                        if v != nil {
+                            model.fromMap(v as? [String: Any?])
+                        }
+                        tmp.append(model)
+                    }
+                }
+                self.schemeList = tmp
+            }
+            if let value = dict["SchemeTaskConfigId"] as? Int64 {
+                self.schemeTaskConfigId = value
+            }
+            if let value = dict["SourceDataType"] as? String {
+                self.sourceDataType = value
+            }
+            if let value = dict["Status"] as? String {
+                self.status = value
+            }
+        }
+    }
+    public var code: String?
+
+    public var data: GetSchemeTaskConfigResponseBody.Data?
+
+    public var httpStatusCode: String?
+
+    public var message: String?
+
+    public var requestId: String?
+
+    public var success: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.data?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.code != nil {
+            map["Code"] = self.code!
+        }
+        if self.data != nil {
+            map["Data"] = self.data?.toMap()
+        }
+        if self.httpStatusCode != nil {
+            map["HttpStatusCode"] = self.httpStatusCode!
+        }
+        if self.message != nil {
+            map["Message"] = self.message!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.success != nil {
+            map["Success"] = self.success!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["Code"] as? String {
+            self.code = value
+        }
+        if let value = dict["Data"] as? [String: Any?] {
+            var model = GetSchemeTaskConfigResponseBody.Data()
+            model.fromMap(value)
+            self.data = model
+        }
+        if let value = dict["HttpStatusCode"] as? String {
+            self.httpStatusCode = value
+        }
+        if let value = dict["Message"] as? String {
+            self.message = value
+        }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+        if let value = dict["Success"] as? String {
+            self.success = value
+        }
+    }
+}
+
+public class GetSchemeTaskConfigResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: GetSchemeTaskConfigResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = GetSchemeTaskConfigResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
 public class GetScoreInfoRequest : Tea.TeaModel {
     public var baseMeAgentId: Int64?
 

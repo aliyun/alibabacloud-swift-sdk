@@ -1611,6 +1611,40 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getSchemeTaskConfigWithOptions(_ request: GetSchemeTaskConfigRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> GetSchemeTaskConfigResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.baseMeAgentId)) {
+            query["BaseMeAgentId"] = request.baseMeAgentId!;
+        }
+        if (!TeaUtils.Client.isUnset(request.jsonStr)) {
+            query["JsonStr"] = request.jsonStr ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "GetSchemeTaskConfig",
+            "version": "2019-01-15",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(GetSchemeTaskConfigResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getSchemeTaskConfig(_ request: GetSchemeTaskConfigRequest) async throws -> GetSchemeTaskConfigResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await getSchemeTaskConfigWithOptions(request as! GetSchemeTaskConfigRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func getScoreInfoWithOptions(_ request: GetScoreInfoRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> GetScoreInfoResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
