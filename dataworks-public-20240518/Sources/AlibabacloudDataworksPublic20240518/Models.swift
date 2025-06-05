@@ -50147,6 +50147,8 @@ public class ListFoldersResponse : Tea.TeaModel {
 }
 
 public class ListFunctionsRequest : Tea.TeaModel {
+    public var name: String?
+
     public var owner: String?
 
     public var pageNumber: Int32?
@@ -50171,6 +50173,9 @@ public class ListFunctionsRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.name != nil {
+            map["Name"] = self.name!
+        }
         if self.owner != nil {
             map["Owner"] = self.owner!
         }
@@ -50191,6 +50196,9 @@ public class ListFunctionsRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["Name"] as? String {
+            self.name = value
+        }
         if let value = dict["Owner"] as? String {
             self.owner = value
         }
@@ -53219,6 +53227,8 @@ public class ListNodeDependenciesResponse : Tea.TeaModel {
 public class ListNodesRequest : Tea.TeaModel {
     public var containerId: Int64?
 
+    public var name: String?
+
     public var pageNumber: Int32?
 
     public var pageSize: Int32?
@@ -53248,6 +53258,9 @@ public class ListNodesRequest : Tea.TeaModel {
         if self.containerId != nil {
             map["ContainerId"] = self.containerId!
         }
+        if self.name != nil {
+            map["Name"] = self.name!
+        }
         if self.pageNumber != nil {
             map["PageNumber"] = self.pageNumber!
         }
@@ -53273,6 +53286,9 @@ public class ListNodesRequest : Tea.TeaModel {
         guard let dict else { return }
         if let value = dict["ContainerId"] as? Int64 {
             self.containerId = value
+        }
+        if let value = dict["Name"] as? String {
+            self.name = value
         }
         if let value = dict["PageNumber"] as? Int32 {
             self.pageNumber = value
@@ -57438,6 +57454,8 @@ public class ListResourceGroupsResponse : Tea.TeaModel {
 }
 
 public class ListResourcesRequest : Tea.TeaModel {
+    public var name: String?
+
     public var owner: String?
 
     public var pageNumber: Int32?
@@ -57462,6 +57480,9 @@ public class ListResourcesRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.name != nil {
+            map["Name"] = self.name!
+        }
         if self.owner != nil {
             map["Owner"] = self.owner!
         }
@@ -57482,6 +57503,9 @@ public class ListResourcesRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["Name"] as? String {
+            self.name = value
+        }
         if let value = dict["Owner"] as? String {
             self.owner = value
         }
@@ -63239,6 +63263,8 @@ public class ListUpstreamTasksResponse : Tea.TeaModel {
 }
 
 public class ListWorkflowDefinitionsRequest : Tea.TeaModel {
+    public var name: String?
+
     public var owner: String?
 
     public var pageNumber: Int32?
@@ -63263,6 +63289,9 @@ public class ListWorkflowDefinitionsRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.name != nil {
+            map["Name"] = self.name!
+        }
         if self.owner != nil {
             map["Owner"] = self.owner!
         }
@@ -63283,6 +63312,9 @@ public class ListWorkflowDefinitionsRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["Name"] as? String {
+            self.name = value
+        }
         if let value = dict["Owner"] as? String {
             self.owner = value
         }
