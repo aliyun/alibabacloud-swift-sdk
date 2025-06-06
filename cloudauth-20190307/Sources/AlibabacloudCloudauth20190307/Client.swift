@@ -1715,6 +1715,43 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func mobile2MetaVerifyWithOptions(_ request: Mobile2MetaVerifyRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> Mobile2MetaVerifyResponse {
+        try TeaUtils.Client.validateModel(request)
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.mobile)) {
+            body["Mobile"] = request.mobile ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.paramType)) {
+            body["ParamType"] = request.paramType ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.userName)) {
+            body["UserName"] = request.userName ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "Mobile2MetaVerify",
+            "version": "2019-03-07",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(Mobile2MetaVerifyResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func mobile2MetaVerify(_ request: Mobile2MetaVerifyRequest) async throws -> Mobile2MetaVerifyResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await mobile2MetaVerifyWithOptions(request as! Mobile2MetaVerifyRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func mobile3MetaDetailStandardVerifyWithOptions(_ request: Mobile3MetaDetailStandardVerifyRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> Mobile3MetaDetailStandardVerifyResponse {
         try TeaUtils.Client.validateModel(request)
         var body: [String: Any] = [:]
