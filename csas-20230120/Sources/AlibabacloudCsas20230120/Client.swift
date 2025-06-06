@@ -311,6 +311,42 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func createEnterpriseAccelerateTargetWithOptions(_ request: CreateEnterpriseAccelerateTargetRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> CreateEnterpriseAccelerateTargetResponse {
+        try TeaUtils.Client.validateModel(request)
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.eapId)) {
+            body["EapId"] = request.eapId ?? "";
+        }
+        var bodyFlat: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.target)) {
+            bodyFlat["Target"] = request.target ?? [];
+        }
+        body = Tea.TeaConverter.merge([:], body, AlibabaCloudOpenApiUtil.Client.query(bodyFlat))
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "CreateEnterpriseAccelerateTarget",
+            "version": "2023-01-20",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(CreateEnterpriseAccelerateTargetResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func createEnterpriseAccelerateTarget(_ request: CreateEnterpriseAccelerateTargetRequest) async throws -> CreateEnterpriseAccelerateTargetResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await createEnterpriseAccelerateTargetWithOptions(request as! CreateEnterpriseAccelerateTargetRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func createIdpDepartmentWithOptions(_ request: CreateIdpDepartmentRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> CreateIdpDepartmentResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
@@ -766,6 +802,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.csvControlShrink)) {
             query["CsvControl"] = request.csvControlShrink ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.isClientEmbed)) {
+            query["IsClientEmbed"] = request.isClientEmbed!;
+        }
         var body: [String: Any] = [:]
         if (!TeaUtils.Client.isUnset(request.documentIsCapture)) {
             body["DocumentIsCapture"] = request.documentIsCapture!;
@@ -943,6 +982,73 @@ open class Client : AlibabacloudOpenApi.Client {
     public func deleteDynamicRoute(_ request: DeleteDynamicRouteRequest) async throws -> DeleteDynamicRouteResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         return try await deleteDynamicRouteWithOptions(request as! DeleteDynamicRouteRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func deleteEnterpriseAcceleratePolicyWithOptions(_ request: DeleteEnterpriseAcceleratePolicyRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DeleteEnterpriseAcceleratePolicyResponse {
+        try TeaUtils.Client.validateModel(request)
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.eapId)) {
+            body["EapId"] = request.eapId ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "DeleteEnterpriseAcceleratePolicy",
+            "version": "2023-01-20",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(DeleteEnterpriseAcceleratePolicyResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func deleteEnterpriseAcceleratePolicy(_ request: DeleteEnterpriseAcceleratePolicyRequest) async throws -> DeleteEnterpriseAcceleratePolicyResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await deleteEnterpriseAcceleratePolicyWithOptions(request as! DeleteEnterpriseAcceleratePolicyRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func deleteEnterpriseAccelerateTargetWithOptions(_ request: DeleteEnterpriseAccelerateTargetRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DeleteEnterpriseAccelerateTargetResponse {
+        try TeaUtils.Client.validateModel(request)
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.eapId)) {
+            body["EapId"] = request.eapId ?? "";
+        }
+        var bodyFlat: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.target)) {
+            bodyFlat["Target"] = request.target ?? [];
+        }
+        body = Tea.TeaConverter.merge([:], body, AlibabaCloudOpenApiUtil.Client.query(bodyFlat))
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "DeleteEnterpriseAccelerateTarget",
+            "version": "2023-01-20",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(DeleteEnterpriseAccelerateTargetResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func deleteEnterpriseAccelerateTarget(_ request: DeleteEnterpriseAccelerateTargetRequest) async throws -> DeleteEnterpriseAccelerateTargetResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await deleteEnterpriseAccelerateTargetWithOptions(request as! DeleteEnterpriseAccelerateTargetRequest, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -1274,6 +1380,68 @@ open class Client : AlibabacloudOpenApi.Client {
     public func detachPolicy2ApprovalProcess(_ request: DetachPolicy2ApprovalProcessRequest) async throws -> DetachPolicy2ApprovalProcessResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         return try await detachPolicy2ApprovalProcessWithOptions(request as! DetachPolicy2ApprovalProcessRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func disableEnterpriseAcceleratePolicyWithOptions(_ request: DisableEnterpriseAcceleratePolicyRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DisableEnterpriseAcceleratePolicyResponse {
+        try TeaUtils.Client.validateModel(request)
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.eapId)) {
+            body["EapId"] = request.eapId ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "DisableEnterpriseAcceleratePolicy",
+            "version": "2023-01-20",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(DisableEnterpriseAcceleratePolicyResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func disableEnterpriseAcceleratePolicy(_ request: DisableEnterpriseAcceleratePolicyRequest) async throws -> DisableEnterpriseAcceleratePolicyResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await disableEnterpriseAcceleratePolicyWithOptions(request as! DisableEnterpriseAcceleratePolicyRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func enableEnterpriseAcceleratePolicyWithOptions(_ request: EnableEnterpriseAcceleratePolicyRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> EnableEnterpriseAcceleratePolicyResponse {
+        try TeaUtils.Client.validateModel(request)
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.eapId)) {
+            body["EapId"] = request.eapId ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "EnableEnterpriseAcceleratePolicy",
+            "version": "2023-01-20",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(EnableEnterpriseAcceleratePolicyResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func enableEnterpriseAcceleratePolicy(_ request: EnableEnterpriseAcceleratePolicyRequest) async throws -> EnableEnterpriseAcceleratePolicyResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await enableEnterpriseAcceleratePolicyWithOptions(request as! EnableEnterpriseAcceleratePolicyRequest, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -1764,6 +1932,40 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func importEnterpriseAccelerateTargetsWithOptions(_ request: ImportEnterpriseAccelerateTargetsRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ImportEnterpriseAccelerateTargetsResponse {
+        try TeaUtils.Client.validateModel(request)
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.eapId)) {
+            body["EapId"] = request.eapId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.fileUrl)) {
+            body["FileUrl"] = request.fileUrl ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "ImportEnterpriseAccelerateTargets",
+            "version": "2023-01-20",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(ImportEnterpriseAccelerateTargetsResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func importEnterpriseAccelerateTargets(_ request: ImportEnterpriseAccelerateTargetsRequest) async throws -> ImportEnterpriseAccelerateTargetsResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await importEnterpriseAccelerateTargetsWithOptions(request as! ImportEnterpriseAccelerateTargetsRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func listApplicationsForPrivateAccessPolicyWithOptions(_ request: ListApplicationsForPrivateAccessPolicyRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ListApplicationsForPrivateAccessPolicyResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: String] = AlibabaCloudOpenApiUtil.Client.query(TeaUtils.Client.toMap(request))
@@ -2093,6 +2295,90 @@ open class Client : AlibabacloudOpenApi.Client {
     public func listDynamicRoutes(_ request: ListDynamicRoutesRequest) async throws -> ListDynamicRoutesResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         return try await listDynamicRoutesWithOptions(request as! ListDynamicRoutesRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func listEnterpriseAccelerateLogsWithOptions(_ request: ListEnterpriseAccelerateLogsRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ListEnterpriseAccelerateLogsResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: String] = AlibabaCloudOpenApiUtil.Client.query(TeaUtils.Client.toMap(request))
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "ListEnterpriseAccelerateLogs",
+            "version": "2023-01-20",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "GET",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(ListEnterpriseAccelerateLogsResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func listEnterpriseAccelerateLogs(_ request: ListEnterpriseAccelerateLogsRequest) async throws -> ListEnterpriseAccelerateLogsResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await listEnterpriseAccelerateLogsWithOptions(request as! ListEnterpriseAccelerateLogsRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func listEnterpriseAcceleratePoliciesWithOptions(_ request: ListEnterpriseAcceleratePoliciesRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ListEnterpriseAcceleratePoliciesResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: String] = AlibabaCloudOpenApiUtil.Client.query(TeaUtils.Client.toMap(request))
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "ListEnterpriseAcceleratePolicies",
+            "version": "2023-01-20",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "GET",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(ListEnterpriseAcceleratePoliciesResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func listEnterpriseAcceleratePolicies(_ request: ListEnterpriseAcceleratePoliciesRequest) async throws -> ListEnterpriseAcceleratePoliciesResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await listEnterpriseAcceleratePoliciesWithOptions(request as! ListEnterpriseAcceleratePoliciesRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func listEnterpriseAccelerateTargetsWithOptions(_ request: ListEnterpriseAccelerateTargetsRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ListEnterpriseAccelerateTargetsResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: String] = AlibabaCloudOpenApiUtil.Client.query(TeaUtils.Client.toMap(request))
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "ListEnterpriseAccelerateTargets",
+            "version": "2023-01-20",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "GET",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(ListEnterpriseAccelerateTargetsResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func listEnterpriseAccelerateTargets(_ request: ListEnterpriseAccelerateTargetsRequest) async throws -> ListEnterpriseAccelerateTargetsResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await listEnterpriseAccelerateTargetsWithOptions(request as! ListEnterpriseAccelerateTargetsRequest, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -2873,6 +3159,67 @@ open class Client : AlibabacloudOpenApi.Client {
     public func lookupWmInfoMapping(_ request: LookupWmInfoMappingRequest) async throws -> LookupWmInfoMappingResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         return try await lookupWmInfoMappingWithOptions(request as! LookupWmInfoMappingRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func modifyEnterpriseAcceleratePolicyWithOptions(_ request: ModifyEnterpriseAcceleratePolicyRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ModifyEnterpriseAcceleratePolicyResponse {
+        try TeaUtils.Client.validateModel(request)
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.accelerationType)) {
+            body["AccelerationType"] = request.accelerationType ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.description_)) {
+            body["Description"] = request.description_ ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.eapId)) {
+            body["EapId"] = request.eapId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.name)) {
+            body["Name"] = request.name ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.onTls)) {
+            body["OnTls"] = request.onTls!;
+        }
+        if (!TeaUtils.Client.isUnset(request.priority)) {
+            body["Priority"] = request.priority!;
+        }
+        if (!TeaUtils.Client.isUnset(request.showInClient)) {
+            body["ShowInClient"] = request.showInClient!;
+        }
+        if (!TeaUtils.Client.isUnset(request.upstreamHost)) {
+            body["UpstreamHost"] = request.upstreamHost ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.upstreamPort)) {
+            body["UpstreamPort"] = request.upstreamPort!;
+        }
+        if (!TeaUtils.Client.isUnset(request.upstreamType)) {
+            body["UpstreamType"] = request.upstreamType ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.userAttributeGroup)) {
+            body["UserAttributeGroup"] = request.userAttributeGroup ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "ModifyEnterpriseAcceleratePolicy",
+            "version": "2023-01-20",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(ModifyEnterpriseAcceleratePolicyResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func modifyEnterpriseAcceleratePolicy(_ request: ModifyEnterpriseAcceleratePolicyRequest) async throws -> ModifyEnterpriseAcceleratePolicyResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await modifyEnterpriseAcceleratePolicyWithOptions(request as! ModifyEnterpriseAcceleratePolicyRequest, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
