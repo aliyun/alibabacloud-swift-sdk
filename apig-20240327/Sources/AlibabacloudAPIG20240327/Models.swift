@@ -4834,6 +4834,117 @@ public class HttpRoute : Tea.TeaModel {
             }
         }
     }
+    public class McpServerInfo : Tea.TeaModel {
+        public class McpRouteConfig : Tea.TeaModel {
+            public var exposedUriPath: String?
+
+            public var protocol_: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.exposedUriPath != nil {
+                    map["exposedUriPath"] = self.exposedUriPath!
+                }
+                if self.protocol_ != nil {
+                    map["protocol"] = self.protocol_!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["exposedUriPath"] as? String {
+                    self.exposedUriPath = value
+                }
+                if let value = dict["protocol"] as? String {
+                    self.protocol_ = value
+                }
+            }
+        }
+        public var createFromType: String?
+
+        public var importInstanceId: String?
+
+        public var importMcpServerId: String?
+
+        public var importNamespace: String?
+
+        public var mcpRouteConfig: HttpRoute.McpServerInfo.McpRouteConfig?
+
+        public var mcpServerConfig: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+            try self.mcpRouteConfig?.validate()
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.createFromType != nil {
+                map["createFromType"] = self.createFromType!
+            }
+            if self.importInstanceId != nil {
+                map["importInstanceId"] = self.importInstanceId!
+            }
+            if self.importMcpServerId != nil {
+                map["importMcpServerId"] = self.importMcpServerId!
+            }
+            if self.importNamespace != nil {
+                map["importNamespace"] = self.importNamespace!
+            }
+            if self.mcpRouteConfig != nil {
+                map["mcpRouteConfig"] = self.mcpRouteConfig?.toMap()
+            }
+            if self.mcpServerConfig != nil {
+                map["mcpServerConfig"] = self.mcpServerConfig!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["createFromType"] as? String {
+                self.createFromType = value
+            }
+            if let value = dict["importInstanceId"] as? String {
+                self.importInstanceId = value
+            }
+            if let value = dict["importMcpServerId"] as? String {
+                self.importMcpServerId = value
+            }
+            if let value = dict["importNamespace"] as? String {
+                self.importNamespace = value
+            }
+            if let value = dict["mcpRouteConfig"] as? [String: Any?] {
+                var model = HttpRoute.McpServerInfo.McpRouteConfig()
+                model.fromMap(value)
+                self.mcpRouteConfig = model
+            }
+            if let value = dict["mcpServerConfig"] as? String {
+                self.mcpServerConfig = value
+            }
+        }
+    }
     public var backend: Backend?
 
     public var createTimestamp: Int64?
@@ -4849,6 +4960,8 @@ public class HttpRoute : Tea.TeaModel {
     public var gatewayStatus: [String: String]?
 
     public var match: HttpRouteMatch?
+
+    public var mcpServerInfo: HttpRoute.McpServerInfo?
 
     public var name: String?
 
@@ -4869,6 +4982,7 @@ public class HttpRoute : Tea.TeaModel {
         try self.backend?.validate()
         try self.environmentInfo?.validate()
         try self.match?.validate()
+        try self.mcpServerInfo?.validate()
     }
 
     public override func toMap() -> [String : Any] {
@@ -4900,6 +5014,9 @@ public class HttpRoute : Tea.TeaModel {
         }
         if self.match != nil {
             map["match"] = self.match?.toMap()
+        }
+        if self.mcpServerInfo != nil {
+            map["mcpServerInfo"] = self.mcpServerInfo?.toMap()
         }
         if self.name != nil {
             map["name"] = self.name!
@@ -4954,6 +5071,11 @@ public class HttpRoute : Tea.TeaModel {
             var model = HttpRouteMatch()
             model.fromMap(value)
             self.match = model
+        }
+        if let value = dict["mcpServerInfo"] as? [String: Any?] {
+            var model = HttpRoute.McpServerInfo()
+            model.fromMap(value)
+            self.mcpServerInfo = model
         }
         if let value = dict["name"] as? String {
             self.name = value
