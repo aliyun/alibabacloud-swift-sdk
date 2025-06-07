@@ -568,6 +568,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.nextToken)) {
             query["NextToken"] = request.nextToken ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.status)) {
+            query["Status"] = request.status!;
+        }
         var body: [String: Any] = [:]
         if (!TeaUtils.Client.isUnset(request.bizType)) {
             body["BizType"] = request.bizType ?? "";

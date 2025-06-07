@@ -3380,6 +3380,8 @@ public class DescribeUsersRequest : Tea.TeaModel {
 
     public var solutionId: String?
 
+    public var status: Int32?
+
     public override init() {
         super.init()
     }
@@ -3433,6 +3435,9 @@ public class DescribeUsersRequest : Tea.TeaModel {
         if self.solutionId != nil {
             map["SolutionId"] = self.solutionId!
         }
+        if self.status != nil {
+            map["Status"] = self.status!
+        }
         return map
     }
 
@@ -3477,6 +3482,9 @@ public class DescribeUsersRequest : Tea.TeaModel {
         if let value = dict["SolutionId"] as? String {
             self.solutionId = value
         }
+        if let value = dict["Status"] as? Int32 {
+            self.status = value
+        }
     }
 }
 
@@ -3506,6 +3514,8 @@ public class DescribeUsersShrinkRequest : Tea.TeaModel {
     public var showExtrasShrink: String?
 
     public var solutionId: String?
+
+    public var status: Int32?
 
     public override init() {
         super.init()
@@ -3560,6 +3570,9 @@ public class DescribeUsersShrinkRequest : Tea.TeaModel {
         if self.solutionId != nil {
             map["SolutionId"] = self.solutionId!
         }
+        if self.status != nil {
+            map["Status"] = self.status!
+        }
         return map
     }
 
@@ -3603,6 +3616,9 @@ public class DescribeUsersShrinkRequest : Tea.TeaModel {
         }
         if let value = dict["SolutionId"] as? String {
             self.solutionId = value
+        }
+        if let value = dict["Status"] as? Int32 {
+            self.status = value
         }
     }
 }
@@ -3682,6 +3698,8 @@ public class DescribeUsersResponseBody : Tea.TeaModel {
 
             public var orgName: String?
 
+            public var orgNamePath: String?
+
             public override init() {
                 super.init()
             }
@@ -3702,6 +3720,9 @@ public class DescribeUsersResponseBody : Tea.TeaModel {
                 if self.orgName != nil {
                     map["OrgName"] = self.orgName!
                 }
+                if self.orgNamePath != nil {
+                    map["OrgNamePath"] = self.orgNamePath!
+                }
                 return map
             }
 
@@ -3712,6 +3733,9 @@ public class DescribeUsersResponseBody : Tea.TeaModel {
                 }
                 if let value = dict["OrgName"] as? String {
                     self.orgName = value
+                }
+                if let value = dict["OrgNamePath"] as? String {
+                    self.orgNamePath = value
                 }
             }
         }
@@ -4669,6 +4693,8 @@ public class FilterUsersResponseBody : Tea.TeaModel {
 
             public var orgName: String?
 
+            public var orgNamePath: String?
+
             public override init() {
                 super.init()
             }
@@ -4689,6 +4715,9 @@ public class FilterUsersResponseBody : Tea.TeaModel {
                 if self.orgName != nil {
                     map["OrgName"] = self.orgName!
                 }
+                if self.orgNamePath != nil {
+                    map["OrgNamePath"] = self.orgNamePath!
+                }
                 return map
             }
 
@@ -4699,6 +4728,9 @@ public class FilterUsersResponseBody : Tea.TeaModel {
                 }
                 if let value = dict["OrgName"] as? String {
                     self.orgName = value
+                }
+                if let value = dict["OrgNamePath"] as? String {
+                    self.orgNamePath = value
                 }
             }
         }
