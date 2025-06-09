@@ -12371,9 +12371,13 @@ public class GetHotTopicBroadcastResponseBody : Tea.TeaModel {
 
             public var outputToken: Int32?
 
+            public var pubTime: String?
+
             public var summary: GetHotTopicBroadcastResponseBody.Data.Data.Summary?
 
             public var textSummary: String?
+
+            public var url: String?
 
             public override init() {
                 super.init()
@@ -12437,11 +12441,17 @@ public class GetHotTopicBroadcastResponseBody : Tea.TeaModel {
                 if self.outputToken != nil {
                     map["OutputToken"] = self.outputToken!
                 }
+                if self.pubTime != nil {
+                    map["PubTime"] = self.pubTime!
+                }
                 if self.summary != nil {
                     map["Summary"] = self.summary?.toMap()
                 }
                 if self.textSummary != nil {
                     map["TextSummary"] = self.textSummary!
+                }
+                if self.url != nil {
+                    map["Url"] = self.url!
                 }
                 return map
             }
@@ -12507,6 +12517,9 @@ public class GetHotTopicBroadcastResponseBody : Tea.TeaModel {
                 if let value = dict["OutputToken"] as? Int32 {
                     self.outputToken = value
                 }
+                if let value = dict["PubTime"] as? String {
+                    self.pubTime = value
+                }
                 if let value = dict["Summary"] as? [String: Any?] {
                     var model = GetHotTopicBroadcastResponseBody.Data.Data.Summary()
                     model.fromMap(value)
@@ -12514,6 +12527,9 @@ public class GetHotTopicBroadcastResponseBody : Tea.TeaModel {
                 }
                 if let value = dict["TextSummary"] as? String {
                     self.textSummary = value
+                }
+                if let value = dict["Url"] as? String {
+                    self.url = value
                 }
             }
         }
