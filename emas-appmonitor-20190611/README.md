@@ -17,7 +17,7 @@ English | [简体中文](README-CN.md)
 To integrate `AlibabacloudEmasAppmonitor20190611` into your Xcode project using [Carthage](https://github.com/Carthage/Carthage), specify it in your `Cartfile`:
 
 ```ogdl
-github "alibabacloud-sdk-swift/emas-appmonitor-20190611" "1.2.0"
+github "alibabacloud-sdk-swift/emas-appmonitor-20190611" "1.2.1"
 ```
 
 ### Swift Package Manager
@@ -26,7 +26,7 @@ To integrate `AlibabacloudEmasAppmonitor20190611` into your Xcode project using 
 
 ```swift
 dependencies: [
-    .package(url: "https://github.com/alibabacloud-sdk-swift/emas-appmonitor-20190611.git", from: "1.2.0")
+    .package(url: "https://github.com/alibabacloud-sdk-swift/emas-appmonitor-20190611.git", from: "1.2.1")
 ]
 ```
 
