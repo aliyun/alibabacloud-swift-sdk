@@ -123,6 +123,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.tag)) {
             body["Tag"] = request.tag ?? [];
         }
+        if (!TeaUtils.Client.isUnset(request.userCommand)) {
+            body["UserCommand"] = request.userCommand!;
+        }
         if (!TeaUtils.Client.isUnset(request.userId)) {
             body["UserId"] = request.userId ?? "";
         }
@@ -1121,8 +1124,14 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.disassociateDriver)) {
             body["DisassociateDriver"] = request.disassociateDriver!;
         }
+        if (!TeaUtils.Client.isUnset(request.disassociateEnvironmentVariables)) {
+            body["DisassociateEnvironmentVariables"] = request.disassociateEnvironmentVariables!;
+        }
         if (!TeaUtils.Client.isUnset(request.disassociateForwardInfos)) {
             body["DisassociateForwardInfos"] = request.disassociateForwardInfos!;
+        }
+        if (!TeaUtils.Client.isUnset(request.disassociateUserCommand)) {
+            body["DisassociateUserCommand"] = request.disassociateUserCommand!;
         }
         if (!TeaUtils.Client.isUnset(request.disassociateVpc)) {
             body["DisassociateVpc"] = request.disassociateVpc!;
@@ -1135,6 +1144,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.ecsSpec)) {
             body["EcsSpec"] = request.ecsSpec ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.environmentVariables)) {
+            body["EnvironmentVariables"] = request.environmentVariables ?? [:];
         }
         if (!TeaUtils.Client.isUnset(request.imageAuth)) {
             body["ImageAuth"] = request.imageAuth ?? "";
@@ -1156,6 +1168,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.requestedResource)) {
             body["RequestedResource"] = request.requestedResource!;
+        }
+        if (!TeaUtils.Client.isUnset(request.userCommand)) {
+            body["UserCommand"] = request.userCommand!;
         }
         if (!TeaUtils.Client.isUnset(request.userId)) {
             body["UserId"] = request.userId ?? "";

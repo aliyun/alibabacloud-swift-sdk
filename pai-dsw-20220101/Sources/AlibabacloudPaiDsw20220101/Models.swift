@@ -1357,6 +1357,69 @@ public class CreateInstanceRequest : Tea.TeaModel {
             }
         }
     }
+    public class UserCommand : Tea.TeaModel {
+        public class OnStart : Tea.TeaModel {
+            public var content: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.content != nil {
+                    map["Content"] = self.content!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["Content"] as? String {
+                    self.content = value
+                }
+            }
+        }
+        public var onStart: CreateInstanceRequest.UserCommand.OnStart?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+            try self.onStart?.validate()
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.onStart != nil {
+                map["OnStart"] = self.onStart?.toMap()
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["OnStart"] as? [String: Any?] {
+                var model = CreateInstanceRequest.UserCommand.OnStart()
+                model.fromMap(value)
+                self.onStart = model
+            }
+        }
+    }
     public class UserVpc : Tea.TeaModel {
         public var bandwidthLimit: BandwidthLimit?
 
@@ -1490,6 +1553,8 @@ public class CreateInstanceRequest : Tea.TeaModel {
 
     public var tag: [CreateInstanceRequest.Tag]?
 
+    public var userCommand: CreateInstanceRequest.UserCommand?
+
     public var userId: String?
 
     public var userVpc: CreateInstanceRequest.UserVpc?
@@ -1512,6 +1577,7 @@ public class CreateInstanceRequest : Tea.TeaModel {
         try self.credentialConfig?.validate()
         try self.dynamicMount?.validate()
         try self.requestedResource?.validate()
+        try self.userCommand?.validate()
         try self.userVpc?.validate()
     }
 
@@ -1589,6 +1655,9 @@ public class CreateInstanceRequest : Tea.TeaModel {
                 tmp.append(k.toMap())
             }
             map["Tag"] = tmp
+        }
+        if self.userCommand != nil {
+            map["UserCommand"] = self.userCommand?.toMap()
         }
         if self.userId != nil {
             map["UserId"] = self.userId!
@@ -1711,6 +1780,11 @@ public class CreateInstanceRequest : Tea.TeaModel {
                 }
             }
             self.tag = tmp
+        }
+        if let value = dict["UserCommand"] as? [String: Any?] {
+            var model = CreateInstanceRequest.UserCommand()
+            model.fromMap(value)
+            self.userCommand = model
         }
         if let value = dict["UserId"] as? String {
             self.userId = value
@@ -3915,6 +3989,8 @@ public class GetInstanceResponseBody : Tea.TeaModel {
 
     public var terminalUrl: String?
 
+    public var userCommandId: String?
+
     public var userId: String?
 
     public var userName: String?
@@ -4100,6 +4176,9 @@ public class GetInstanceResponseBody : Tea.TeaModel {
         }
         if self.terminalUrl != nil {
             map["TerminalUrl"] = self.terminalUrl!
+        }
+        if self.userCommandId != nil {
+            map["UserCommandId"] = self.userCommandId!
         }
         if self.userId != nil {
             map["UserId"] = self.userId!
@@ -4321,6 +4400,9 @@ public class GetInstanceResponseBody : Tea.TeaModel {
         }
         if let value = dict["TerminalUrl"] as? String {
             self.terminalUrl = value
+        }
+        if let value = dict["UserCommandId"] as? String {
+            self.userCommandId = value
         }
         if let value = dict["UserId"] as? String {
             self.userId = value
@@ -9704,6 +9786,69 @@ public class UpdateInstanceRequest : Tea.TeaModel {
             }
         }
     }
+    public class UserCommand : Tea.TeaModel {
+        public class OnStart : Tea.TeaModel {
+            public var content: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.content != nil {
+                    map["Content"] = self.content!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["Content"] as? String {
+                    self.content = value
+                }
+            }
+        }
+        public var onStart: UpdateInstanceRequest.UserCommand.OnStart?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+            try self.onStart?.validate()
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.onStart != nil {
+                map["OnStart"] = self.onStart?.toMap()
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["OnStart"] as? [String: Any?] {
+                var model = UpdateInstanceRequest.UserCommand.OnStart()
+                model.fromMap(value)
+                self.onStart = model
+            }
+        }
+    }
     public class UserVpc : Tea.TeaModel {
         public var bandwidthLimit: BandwidthLimit?
 
@@ -9815,7 +9960,11 @@ public class UpdateInstanceRequest : Tea.TeaModel {
 
     public var disassociateDriver: Bool?
 
+    public var disassociateEnvironmentVariables: Bool?
+
     public var disassociateForwardInfos: Bool?
+
+    public var disassociateUserCommand: Bool?
 
     public var disassociateVpc: Bool?
 
@@ -9824,6 +9973,8 @@ public class UpdateInstanceRequest : Tea.TeaModel {
     public var dynamicMount: DynamicMount?
 
     public var ecsSpec: String?
+
+    public var environmentVariables: [String: Any]?
 
     public var imageAuth: String?
 
@@ -9838,6 +9989,8 @@ public class UpdateInstanceRequest : Tea.TeaModel {
     public var priority: Int64?
 
     public var requestedResource: UpdateInstanceRequest.RequestedResource?
+
+    public var userCommand: UpdateInstanceRequest.UserCommand?
 
     public var userId: String?
 
@@ -9859,6 +10012,7 @@ public class UpdateInstanceRequest : Tea.TeaModel {
         try self.credentialConfig?.validate()
         try self.dynamicMount?.validate()
         try self.requestedResource?.validate()
+        try self.userCommand?.validate()
         try self.userVpc?.validate()
     }
 
@@ -9896,8 +10050,14 @@ public class UpdateInstanceRequest : Tea.TeaModel {
         if self.disassociateDriver != nil {
             map["DisassociateDriver"] = self.disassociateDriver!
         }
+        if self.disassociateEnvironmentVariables != nil {
+            map["DisassociateEnvironmentVariables"] = self.disassociateEnvironmentVariables!
+        }
         if self.disassociateForwardInfos != nil {
             map["DisassociateForwardInfos"] = self.disassociateForwardInfos!
+        }
+        if self.disassociateUserCommand != nil {
+            map["DisassociateUserCommand"] = self.disassociateUserCommand!
         }
         if self.disassociateVpc != nil {
             map["DisassociateVpc"] = self.disassociateVpc!
@@ -9910,6 +10070,9 @@ public class UpdateInstanceRequest : Tea.TeaModel {
         }
         if self.ecsSpec != nil {
             map["EcsSpec"] = self.ecsSpec!
+        }
+        if self.environmentVariables != nil {
+            map["EnvironmentVariables"] = self.environmentVariables!
         }
         if self.imageAuth != nil {
             map["ImageAuth"] = self.imageAuth!
@@ -9931,6 +10094,9 @@ public class UpdateInstanceRequest : Tea.TeaModel {
         }
         if self.requestedResource != nil {
             map["RequestedResource"] = self.requestedResource?.toMap()
+        }
+        if self.userCommand != nil {
+            map["UserCommand"] = self.userCommand?.toMap()
         }
         if self.userId != nil {
             map["UserId"] = self.userId!
@@ -9994,8 +10160,14 @@ public class UpdateInstanceRequest : Tea.TeaModel {
         if let value = dict["DisassociateDriver"] as? Bool {
             self.disassociateDriver = value
         }
+        if let value = dict["DisassociateEnvironmentVariables"] as? Bool {
+            self.disassociateEnvironmentVariables = value
+        }
         if let value = dict["DisassociateForwardInfos"] as? Bool {
             self.disassociateForwardInfos = value
+        }
+        if let value = dict["DisassociateUserCommand"] as? Bool {
+            self.disassociateUserCommand = value
         }
         if let value = dict["DisassociateVpc"] as? Bool {
             self.disassociateVpc = value
@@ -10010,6 +10182,9 @@ public class UpdateInstanceRequest : Tea.TeaModel {
         }
         if let value = dict["EcsSpec"] as? String {
             self.ecsSpec = value
+        }
+        if let value = dict["EnvironmentVariables"] as? [String: Any] {
+            self.environmentVariables = value
         }
         if let value = dict["ImageAuth"] as? String {
             self.imageAuth = value
@@ -10033,6 +10208,11 @@ public class UpdateInstanceRequest : Tea.TeaModel {
             var model = UpdateInstanceRequest.RequestedResource()
             model.fromMap(value)
             self.requestedResource = model
+        }
+        if let value = dict["UserCommand"] as? [String: Any?] {
+            var model = UpdateInstanceRequest.UserCommand()
+            model.fromMap(value)
+            self.userCommand = model
         }
         if let value = dict["UserId"] as? String {
             self.userId = value
