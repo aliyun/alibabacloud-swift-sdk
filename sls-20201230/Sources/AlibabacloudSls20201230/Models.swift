@@ -5,6 +5,45 @@ import AlibabacloudGatewaySLS
 import AlibabacloudOpenApi
 import AlibabaCloudOpenApiUtil
 
+public class AgentInstanceConfigGrayConfigs : Tea.TeaModel {
+    public var condition: String?
+
+    public var content: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.condition != nil {
+            map["condition"] = self.condition!
+        }
+        if self.content != nil {
+            map["content"] = self.content!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["condition"] as? String {
+            self.condition = value
+        }
+        if let value = dict["content"] as? String {
+            self.content = value
+        }
+    }
+}
+
 public class Alert : Tea.TeaModel {
     public var configuration: AlertConfiguration?
 
@@ -6500,13 +6539,13 @@ public class ConsumerGroupUpdateCheckPointResponse : Tea.TeaModel {
 }
 
 public class CreateAgentInstanceConfigRequest : Tea.TeaModel {
-    public var attributes: String?
+    public var attributes: [String: String]?
 
     public var config: String?
 
     public var configType: String?
 
-    public var grayConfigs: String?
+    public var grayConfigs: [AgentInstanceConfigGrayConfigs]?
 
     public override init() {
         super.init()
@@ -6532,14 +6571,18 @@ public class CreateAgentInstanceConfigRequest : Tea.TeaModel {
             map["configType"] = self.configType!
         }
         if self.grayConfigs != nil {
-            map["grayConfigs"] = self.grayConfigs!
+            var tmp : [Any] = []
+            for k in self.grayConfigs! {
+                tmp.append(k.toMap())
+            }
+            map["grayConfigs"] = tmp
         }
         return map
     }
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
-        if let value = dict["attributes"] as? String {
+        if let value = dict["attributes"] as? [String: String] {
             self.attributes = value
         }
         if let value = dict["config"] as? String {
@@ -6548,8 +6591,18 @@ public class CreateAgentInstanceConfigRequest : Tea.TeaModel {
         if let value = dict["configType"] as? String {
             self.configType = value
         }
-        if let value = dict["grayConfigs"] as? String {
-            self.grayConfigs = value
+        if let value = dict["grayConfigs"] as? [Any?] {
+            var tmp : [AgentInstanceConfigGrayConfigs] = []
+            for v in value {
+                if v != nil {
+                    var model = AgentInstanceConfigGrayConfigs()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.grayConfigs = tmp
         }
     }
 }
@@ -9279,7 +9332,7 @@ public class CreateTicketResponse : Tea.TeaModel {
 }
 
 public class DeleteAgentInstanceConfigRequest : Tea.TeaModel {
-    public var attributes: String?
+    public var attributes: [String: String]?
 
     public override init() {
         super.init()
@@ -9303,8 +9356,39 @@ public class DeleteAgentInstanceConfigRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
-        if let value = dict["attributes"] as? String {
+        if let value = dict["attributes"] as? [String: String] {
             self.attributes = value
+        }
+    }
+}
+
+public class DeleteAgentInstanceConfigShrinkRequest : Tea.TeaModel {
+    public var attributesShrink: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.attributesShrink != nil {
+            map["attributes"] = self.attributesShrink!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["attributes"] as? String {
+            self.attributesShrink = value
         }
     }
 }
@@ -10808,7 +10892,7 @@ public class EnableScheduledSQLResponse : Tea.TeaModel {
 }
 
 public class GetAgentInstanceConfigRequest : Tea.TeaModel {
-    public var attributes: String?
+    public var attributes: [String: String]?
 
     public override init() {
         super.init()
@@ -10832,14 +10916,45 @@ public class GetAgentInstanceConfigRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
-        if let value = dict["attributes"] as? String {
+        if let value = dict["attributes"] as? [String: String] {
             self.attributes = value
         }
     }
 }
 
+public class GetAgentInstanceConfigShrinkRequest : Tea.TeaModel {
+    public var attributesShrink: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.attributesShrink != nil {
+            map["attributes"] = self.attributesShrink!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["attributes"] as? String {
+            self.attributesShrink = value
+        }
+    }
+}
+
 public class GetAgentInstanceConfigResponseBody : Tea.TeaModel {
-    public var attributes: String?
+    public var attributes: [String: String]?
 
     public var config: String?
 
@@ -10847,7 +10962,7 @@ public class GetAgentInstanceConfigResponseBody : Tea.TeaModel {
 
     public var createTime: Int64?
 
-    public var grayConfigs: [[String: String]]?
+    public var grayConfigs: [AgentInstanceConfigGrayConfigs]?
 
     public var lastModifyTime: Int64?
 
@@ -10878,7 +10993,11 @@ public class GetAgentInstanceConfigResponseBody : Tea.TeaModel {
             map["createTime"] = self.createTime!
         }
         if self.grayConfigs != nil {
-            map["grayConfigs"] = self.grayConfigs!
+            var tmp : [Any] = []
+            for k in self.grayConfigs! {
+                tmp.append(k.toMap())
+            }
+            map["grayConfigs"] = tmp
         }
         if self.lastModifyTime != nil {
             map["lastModifyTime"] = self.lastModifyTime!
@@ -10888,7 +11007,7 @@ public class GetAgentInstanceConfigResponseBody : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
-        if let value = dict["attributes"] as? String {
+        if let value = dict["attributes"] as? [String: String] {
             self.attributes = value
         }
         if let value = dict["config"] as? String {
@@ -10900,8 +11019,18 @@ public class GetAgentInstanceConfigResponseBody : Tea.TeaModel {
         if let value = dict["createTime"] as? Int64 {
             self.createTime = value
         }
-        if let value = dict["grayConfigs"] as? [[String: String]] {
-            self.grayConfigs = value
+        if let value = dict["grayConfigs"] as? [Any?] {
+            var tmp : [AgentInstanceConfigGrayConfigs] = []
+            for v in value {
+                if v != nil {
+                    var model = AgentInstanceConfigGrayConfigs()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.grayConfigs = tmp
         }
         if let value = dict["lastModifyTime"] as? Int64 {
             self.lastModifyTime = value
@@ -15481,8 +15610,6 @@ public class GetStoreViewIndexResponse : Tea.TeaModel {
 }
 
 public class ListAgentInstanceConfigsRequest : Tea.TeaModel {
-    public var attributes: String?
-
     public var configType: String?
 
     public var offset: Int64?
@@ -15503,9 +15630,6 @@ public class ListAgentInstanceConfigsRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
-        if self.attributes != nil {
-            map["attributes"] = self.attributes!
-        }
         if self.configType != nil {
             map["configType"] = self.configType!
         }
@@ -15520,9 +15644,6 @@ public class ListAgentInstanceConfigsRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
-        if let value = dict["attributes"] as? String {
-            self.attributes = value
-        }
         if let value = dict["configType"] as? String {
             self.configType = value
         }
@@ -22592,11 +22713,11 @@ public class UntagResourcesResponse : Tea.TeaModel {
 }
 
 public class UpdateAgentInstanceConfigRequest : Tea.TeaModel {
-    public var attributes: String?
+    public var attributes: [String: String]?
 
     public var config: String?
 
-    public var grayConfigs: String?
+    public var grayConfigs: [AgentInstanceConfigGrayConfigs]?
 
     public override init() {
         super.init()
@@ -22619,7 +22740,72 @@ public class UpdateAgentInstanceConfigRequest : Tea.TeaModel {
             map["config"] = self.config!
         }
         if self.grayConfigs != nil {
-            map["grayConfigs"] = self.grayConfigs!
+            var tmp : [Any] = []
+            for k in self.grayConfigs! {
+                tmp.append(k.toMap())
+            }
+            map["grayConfigs"] = tmp
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["attributes"] as? [String: String] {
+            self.attributes = value
+        }
+        if let value = dict["config"] as? String {
+            self.config = value
+        }
+        if let value = dict["grayConfigs"] as? [Any?] {
+            var tmp : [AgentInstanceConfigGrayConfigs] = []
+            for v in value {
+                if v != nil {
+                    var model = AgentInstanceConfigGrayConfigs()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.grayConfigs = tmp
+        }
+    }
+}
+
+public class UpdateAgentInstanceConfigShrinkRequest : Tea.TeaModel {
+    public var attributesShrink: String?
+
+    public var config: String?
+
+    public var grayConfigs: [AgentInstanceConfigGrayConfigs]?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.attributesShrink != nil {
+            map["attributes"] = self.attributesShrink!
+        }
+        if self.config != nil {
+            map["config"] = self.config!
+        }
+        if self.grayConfigs != nil {
+            var tmp : [Any] = []
+            for k in self.grayConfigs! {
+                tmp.append(k.toMap())
+            }
+            map["grayConfigs"] = tmp
         }
         return map
     }
@@ -22627,13 +22813,23 @@ public class UpdateAgentInstanceConfigRequest : Tea.TeaModel {
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
         if let value = dict["attributes"] as? String {
-            self.attributes = value
+            self.attributesShrink = value
         }
         if let value = dict["config"] as? String {
             self.config = value
         }
-        if let value = dict["grayConfigs"] as? String {
-            self.grayConfigs = value
+        if let value = dict["grayConfigs"] as? [Any?] {
+            var tmp : [AgentInstanceConfigGrayConfigs] = []
+            for v in value {
+                if v != nil {
+                    var model = AgentInstanceConfigGrayConfigs()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.grayConfigs = tmp
         }
     }
 }

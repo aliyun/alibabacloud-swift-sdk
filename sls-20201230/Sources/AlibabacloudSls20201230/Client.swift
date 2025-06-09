@@ -214,7 +214,7 @@ open class Client : AlibabacloudOpenApi.Client {
         try TeaUtils.Client.validateModel(request)
         var body: [String: Any] = [:]
         if (!TeaUtils.Client.isUnset(request.attributes)) {
-            body["attributes"] = request.attributes ?? "";
+            body["attributes"] = request.attributes ?? [:];
         }
         if (!TeaUtils.Client.isUnset(request.config)) {
             body["config"] = request.config ?? "";
@@ -223,7 +223,7 @@ open class Client : AlibabacloudOpenApi.Client {
             body["configType"] = request.configType ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.grayConfigs)) {
-            body["grayConfigs"] = request.grayConfigs ?? "";
+            body["grayConfigs"] = request.grayConfigs ?? [];
         }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "headers": headers as! [String: String],
@@ -1341,11 +1341,16 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func deleteAgentInstanceConfigWithOptions(_ configType: String, _ request: DeleteAgentInstanceConfigRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> DeleteAgentInstanceConfigResponse {
-        try TeaUtils.Client.validateModel(request)
+    public func deleteAgentInstanceConfigWithOptions(_ configType: String, _ tmpReq: DeleteAgentInstanceConfigRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> DeleteAgentInstanceConfigResponse {
+        try TeaUtils.Client.validateModel(tmpReq)
+        var request: DeleteAgentInstanceConfigShrinkRequest = DeleteAgentInstanceConfigShrinkRequest([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.attributes)) {
+            request.attributesShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.attributes, "attributes", "json")
+        }
         var query: [String: Any] = [:]
-        if (!TeaUtils.Client.isUnset(request.attributes)) {
-            query["attributes"] = request.attributes ?? "";
+        if (!TeaUtils.Client.isUnset(request.attributesShrink)) {
+            query["attributes"] = request.attributesShrink ?? "";
         }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "headers": headers as! [String: String],
@@ -2340,11 +2345,16 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func getAgentInstanceConfigWithOptions(_ configType: String, _ request: GetAgentInstanceConfigRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> GetAgentInstanceConfigResponse {
-        try TeaUtils.Client.validateModel(request)
+    public func getAgentInstanceConfigWithOptions(_ configType: String, _ tmpReq: GetAgentInstanceConfigRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> GetAgentInstanceConfigResponse {
+        try TeaUtils.Client.validateModel(tmpReq)
+        var request: GetAgentInstanceConfigShrinkRequest = GetAgentInstanceConfigShrinkRequest([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.attributes)) {
+            request.attributesShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.attributes, "attributes", "json")
+        }
         var query: [String: Any] = [:]
-        if (!TeaUtils.Client.isUnset(request.attributes)) {
-            query["attributes"] = request.attributes ?? "";
+        if (!TeaUtils.Client.isUnset(request.attributesShrink)) {
+            query["attributes"] = request.attributesShrink ?? "";
         }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "headers": headers as! [String: String],
@@ -3734,9 +3744,6 @@ open class Client : AlibabacloudOpenApi.Client {
     public func listAgentInstanceConfigsWithOptions(_ request: ListAgentInstanceConfigsRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> ListAgentInstanceConfigsResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
-        if (!TeaUtils.Client.isUnset(request.attributes)) {
-            query["attributes"] = request.attributes ?? "";
-        }
         if (!TeaUtils.Client.isUnset(request.configType)) {
             query["configType"] = request.configType ?? "";
         }
@@ -5762,18 +5769,23 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func updateAgentInstanceConfigWithOptions(_ configType: String, _ request: UpdateAgentInstanceConfigRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> UpdateAgentInstanceConfigResponse {
-        try TeaUtils.Client.validateModel(request)
+    public func updateAgentInstanceConfigWithOptions(_ configType: String, _ tmpReq: UpdateAgentInstanceConfigRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> UpdateAgentInstanceConfigResponse {
+        try TeaUtils.Client.validateModel(tmpReq)
+        var request: UpdateAgentInstanceConfigShrinkRequest = UpdateAgentInstanceConfigShrinkRequest([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.attributes)) {
+            request.attributesShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.attributes, "attributes", "json")
+        }
         var query: [String: Any] = [:]
-        if (!TeaUtils.Client.isUnset(request.attributes)) {
-            query["attributes"] = request.attributes ?? "";
+        if (!TeaUtils.Client.isUnset(request.attributesShrink)) {
+            query["attributes"] = request.attributesShrink ?? "";
         }
         var body: [String: Any] = [:]
         if (!TeaUtils.Client.isUnset(request.config)) {
             body["config"] = request.config ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.grayConfigs)) {
-            body["grayConfigs"] = request.grayConfigs ?? "";
+            body["grayConfigs"] = request.grayConfigs ?? [];
         }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "headers": headers as! [String: String],
