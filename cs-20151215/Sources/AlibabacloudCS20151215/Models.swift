@@ -5,6 +5,37 @@ import AlibabacloudOpenApi
 import AlibabaCloudOpenApiUtil
 import AlibabacloudEndpointUtil
 
+public class InstanceMetadataOptions : Tea.TeaModel {
+    public var httpTokens: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.httpTokens != nil {
+            map["http_tokens"] = self.httpTokens!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["http_tokens"] as? String {
+            self.httpTokens = value
+        }
+    }
+}
+
 public class Addon : Tea.TeaModel {
     public var config: String?
 
@@ -5502,6 +5533,44 @@ public class CreateClusterNodePoolRequest : Tea.TeaModel {
             }
         }
     }
+    public class EfloNodeGroup : Tea.TeaModel {
+        public var clusterId: String?
+
+        public var groupId: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.clusterId != nil {
+                map["cluster_id"] = self.clusterId!
+            }
+            if self.groupId != nil {
+                map["group_id"] = self.groupId!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["cluster_id"] as? String {
+                self.clusterId = value
+            }
+            if let value = dict["group_id"] as? String {
+                self.groupId = value
+            }
+        }
+    }
     public class InterconnectConfig : Tea.TeaModel {
         public var bandwidth: Int64?
 
@@ -6644,6 +6713,8 @@ public class CreateClusterNodePoolRequest : Tea.TeaModel {
 
     public var count: Int64?
 
+    public var efloNodeGroup: CreateClusterNodePoolRequest.EfloNodeGroup?
+
     public var hostNetwork: Bool?
 
     public var interconnectConfig: CreateClusterNodePoolRequest.InterconnectConfig?
@@ -6677,6 +6748,7 @@ public class CreateClusterNodePoolRequest : Tea.TeaModel {
 
     public override func validate() throws -> Void {
         try self.autoScaling?.validate()
+        try self.efloNodeGroup?.validate()
         try self.interconnectConfig?.validate()
         try self.kubernetesConfig?.validate()
         try self.management?.validate()
@@ -6693,6 +6765,9 @@ public class CreateClusterNodePoolRequest : Tea.TeaModel {
         }
         if self.count != nil {
             map["count"] = self.count!
+        }
+        if self.efloNodeGroup != nil {
+            map["eflo_node_group"] = self.efloNodeGroup?.toMap()
         }
         if self.hostNetwork != nil {
             map["host_network"] = self.hostNetwork!
@@ -6739,6 +6814,11 @@ public class CreateClusterNodePoolRequest : Tea.TeaModel {
         }
         if let value = dict["count"] as? Int64 {
             self.count = value
+        }
+        if let value = dict["eflo_node_group"] as? [String: Any?] {
+            var model = CreateClusterNodePoolRequest.EfloNodeGroup()
+            model.fromMap(value)
+            self.efloNodeGroup = model
         }
         if let value = dict["host_network"] as? Bool {
             self.hostNetwork = value

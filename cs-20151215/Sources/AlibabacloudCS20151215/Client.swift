@@ -899,6 +899,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.count)) {
             body["count"] = request.count!;
         }
+        if (!TeaUtils.Client.isUnset(request.efloNodeGroup)) {
+            body["eflo_node_group"] = request.efloNodeGroup!;
+        }
         if (!TeaUtils.Client.isUnset(request.hostNetwork)) {
             body["host_network"] = request.hostNetwork!;
         }
