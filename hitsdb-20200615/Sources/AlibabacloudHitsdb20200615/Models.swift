@@ -15415,6 +15415,8 @@ public class UpgradeLindormInstanceResponse : Tea.TeaModel {
 }
 
 public class UpgradeLindormV2StreamEngineRequest : Tea.TeaModel {
+    public var customConfig: String?
+
     public var instanceId: String?
 
     public var ownerAccount: String?
@@ -15451,6 +15453,9 @@ public class UpgradeLindormV2StreamEngineRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.customConfig != nil {
+            map["CustomConfig"] = self.customConfig!
+        }
         if self.instanceId != nil {
             map["InstanceId"] = self.instanceId!
         }
@@ -15489,6 +15494,9 @@ public class UpgradeLindormV2StreamEngineRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["CustomConfig"] as? String {
+            self.customConfig = value
+        }
         if let value = dict["InstanceId"] as? String {
             self.instanceId = value
         }

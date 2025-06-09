@@ -3182,6 +3182,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func upgradeLindormV2StreamEngineWithOptions(_ request: UpgradeLindormV2StreamEngineRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> UpgradeLindormV2StreamEngineResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.customConfig)) {
+            query["CustomConfig"] = request.customConfig ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.instanceId)) {
             query["InstanceId"] = request.instanceId ?? "";
         }
