@@ -14074,6 +14074,8 @@ public class CreateWorkflowInstancesRequest : Tea.TeaModel {
 
         public var parallelism: Int32?
 
+        public var priority: Int32?
+
         public var rootTaskIds: [Int64]?
 
         public var runPolicy: CreateWorkflowInstancesRequest.DefaultRunProperties.RunPolicy?
@@ -14124,6 +14126,9 @@ public class CreateWorkflowInstancesRequest : Tea.TeaModel {
             if self.parallelism != nil {
                 map["Parallelism"] = self.parallelism!
             }
+            if self.priority != nil {
+                map["Priority"] = self.priority!
+            }
             if self.rootTaskIds != nil {
                 map["RootTaskIds"] = self.rootTaskIds!
             }
@@ -14168,6 +14173,9 @@ public class CreateWorkflowInstancesRequest : Tea.TeaModel {
             }
             if let value = dict["Parallelism"] as? Int32 {
                 self.parallelism = value
+            }
+            if let value = dict["Priority"] as? Int32 {
+                self.priority = value
             }
             if let value = dict["RootTaskIds"] as? [Int64] {
                 self.rootTaskIds = value
