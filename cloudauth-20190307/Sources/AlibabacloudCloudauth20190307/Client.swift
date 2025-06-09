@@ -788,6 +788,37 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func describeCardVerifyWithOptions(_ request: DescribeCardVerifyRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DescribeCardVerifyResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.certifyId)) {
+            query["CertifyId"] = request.certifyId ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "DescribeCardVerify",
+            "version": "2019-03-07",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(DescribeCardVerifyResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func describeCardVerify(_ request: DescribeCardVerifyRequest) async throws -> DescribeCardVerifyResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await describeCardVerifyWithOptions(request as! DescribeCardVerifyRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func describeDeviceInfoWithOptions(_ request: DescribeDeviceInfoRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DescribeDeviceInfoResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
@@ -1453,6 +1484,64 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         var id2MetaVerifyWithOCRResp: Id2MetaVerifyWithOCRResponse = try await id2MetaVerifyWithOCRWithOptions(id2MetaVerifyWithOCRReq as! Id2MetaVerifyWithOCRRequest, runtime as! TeaUtils.RuntimeOptions)
         return id2MetaVerifyWithOCRResp as! Id2MetaVerifyWithOCRResponse
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func initCardVerifyWithOptions(_ request: InitCardVerifyRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> InitCardVerifyResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.callbackToken)) {
+            query["CallbackToken"] = request.callbackToken ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.callbackUrl)) {
+            query["CallbackUrl"] = request.callbackUrl ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.cardPageNumber)) {
+            query["CardPageNumber"] = request.cardPageNumber ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.cardType)) {
+            query["CardType"] = request.cardType ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.docScanMode)) {
+            query["DocScanMode"] = request.docScanMode ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.merchantBizId)) {
+            query["MerchantBizId"] = request.merchantBizId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.metaInfo)) {
+            query["MetaInfo"] = request.metaInfo ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.model)) {
+            query["Model"] = request.model ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.pictureSave)) {
+            query["PictureSave"] = request.pictureSave ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.verifyMeta)) {
+            query["VerifyMeta"] = request.verifyMeta ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "InitCardVerify",
+            "version": "2019-03-07",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(InitCardVerifyResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func initCardVerify(_ request: InitCardVerifyRequest) async throws -> InitCardVerifyResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await initCardVerifyWithOptions(request as! InitCardVerifyRequest, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
