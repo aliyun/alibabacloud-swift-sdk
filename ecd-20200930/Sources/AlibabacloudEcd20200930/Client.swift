@@ -4853,6 +4853,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.scope)) {
             query["Scope"] = request.scope ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.scopeSet)) {
+            query["ScopeSet"] = request.scopeSet ?? [];
+        }
         if (!TeaUtils.Client.isUnset(request.sortType)) {
             query["SortType"] = request.sortType ?? "";
         }

@@ -24608,6 +24608,8 @@ public class DescribeDesktopTypesRequest : Tea.TeaModel {
 
     public var scope: String?
 
+    public var scopeSet: [String]?
+
     public var sortType: String?
 
     public var supportMinSessionCount: Int32?
@@ -24673,6 +24675,9 @@ public class DescribeDesktopTypesRequest : Tea.TeaModel {
         if self.scope != nil {
             map["Scope"] = self.scope!
         }
+        if self.scopeSet != nil {
+            map["ScopeSet"] = self.scopeSet!
+        }
         if self.sortType != nil {
             map["SortType"] = self.sortType!
         }
@@ -24731,6 +24736,9 @@ public class DescribeDesktopTypesRequest : Tea.TeaModel {
         }
         if let value = dict["Scope"] as? String {
             self.scope = value
+        }
+        if let value = dict["ScopeSet"] as? [String] {
+            self.scopeSet = value
         }
         if let value = dict["SortType"] as? String {
             self.sortType = value
