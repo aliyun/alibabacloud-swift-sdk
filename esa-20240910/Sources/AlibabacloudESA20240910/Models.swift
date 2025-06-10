@@ -15909,6 +15909,214 @@ public class CreateUserDeliveryTaskResponse : Tea.TeaModel {
     }
 }
 
+public class CreateVideoProcessingRequest : Tea.TeaModel {
+    public var flvSeekEnd: String?
+
+    public var flvSeekStart: String?
+
+    public var flvVideoSeekMode: String?
+
+    public var mp4SeekEnd: String?
+
+    public var mp4SeekStart: String?
+
+    public var rule: String?
+
+    public var ruleEnable: String?
+
+    public var ruleName: String?
+
+    public var sequence: Int32?
+
+    public var siteId: Int64?
+
+    public var siteVersion: Int32?
+
+    public var videoSeekEnable: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.flvSeekEnd != nil {
+            map["FlvSeekEnd"] = self.flvSeekEnd!
+        }
+        if self.flvSeekStart != nil {
+            map["FlvSeekStart"] = self.flvSeekStart!
+        }
+        if self.flvVideoSeekMode != nil {
+            map["FlvVideoSeekMode"] = self.flvVideoSeekMode!
+        }
+        if self.mp4SeekEnd != nil {
+            map["Mp4SeekEnd"] = self.mp4SeekEnd!
+        }
+        if self.mp4SeekStart != nil {
+            map["Mp4SeekStart"] = self.mp4SeekStart!
+        }
+        if self.rule != nil {
+            map["Rule"] = self.rule!
+        }
+        if self.ruleEnable != nil {
+            map["RuleEnable"] = self.ruleEnable!
+        }
+        if self.ruleName != nil {
+            map["RuleName"] = self.ruleName!
+        }
+        if self.sequence != nil {
+            map["Sequence"] = self.sequence!
+        }
+        if self.siteId != nil {
+            map["SiteId"] = self.siteId!
+        }
+        if self.siteVersion != nil {
+            map["SiteVersion"] = self.siteVersion!
+        }
+        if self.videoSeekEnable != nil {
+            map["VideoSeekEnable"] = self.videoSeekEnable!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["FlvSeekEnd"] as? String {
+            self.flvSeekEnd = value
+        }
+        if let value = dict["FlvSeekStart"] as? String {
+            self.flvSeekStart = value
+        }
+        if let value = dict["FlvVideoSeekMode"] as? String {
+            self.flvVideoSeekMode = value
+        }
+        if let value = dict["Mp4SeekEnd"] as? String {
+            self.mp4SeekEnd = value
+        }
+        if let value = dict["Mp4SeekStart"] as? String {
+            self.mp4SeekStart = value
+        }
+        if let value = dict["Rule"] as? String {
+            self.rule = value
+        }
+        if let value = dict["RuleEnable"] as? String {
+            self.ruleEnable = value
+        }
+        if let value = dict["RuleName"] as? String {
+            self.ruleName = value
+        }
+        if let value = dict["Sequence"] as? Int32 {
+            self.sequence = value
+        }
+        if let value = dict["SiteId"] as? Int64 {
+            self.siteId = value
+        }
+        if let value = dict["SiteVersion"] as? Int32 {
+            self.siteVersion = value
+        }
+        if let value = dict["VideoSeekEnable"] as? String {
+            self.videoSeekEnable = value
+        }
+    }
+}
+
+public class CreateVideoProcessingResponseBody : Tea.TeaModel {
+    public var configId: Int64?
+
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.configId != nil {
+            map["ConfigId"] = self.configId!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["ConfigId"] as? Int64 {
+            self.configId = value
+        }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+    }
+}
+
+public class CreateVideoProcessingResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: CreateVideoProcessingResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = CreateVideoProcessingResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
 public class CreateWafRuleRequest : Tea.TeaModel {
     public var config: WafRuleConfig?
 
@@ -21972,6 +22180,126 @@ public class DeleteUserDeliveryTaskResponse : Tea.TeaModel {
         }
         if let value = dict["body"] as? [String: Any?] {
             var model = DeleteUserDeliveryTaskResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
+public class DeleteVideoProcessingRequest : Tea.TeaModel {
+    public var configId: Int64?
+
+    public var siteId: Int64?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.configId != nil {
+            map["ConfigId"] = self.configId!
+        }
+        if self.siteId != nil {
+            map["SiteId"] = self.siteId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["ConfigId"] as? Int64 {
+            self.configId = value
+        }
+        if let value = dict["SiteId"] as? Int64 {
+            self.siteId = value
+        }
+    }
+}
+
+public class DeleteVideoProcessingResponseBody : Tea.TeaModel {
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+    }
+}
+
+public class DeleteVideoProcessingResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: DeleteVideoProcessingResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = DeleteVideoProcessingResponseBody()
             model.fromMap(value)
             self.body = model
         }
@@ -41722,6 +42050,230 @@ public class GetUserLogDeliveryQuotaResponse : Tea.TeaModel {
     }
 }
 
+public class GetVideoProcessingRequest : Tea.TeaModel {
+    public var configId: Int64?
+
+    public var siteId: Int64?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.configId != nil {
+            map["ConfigId"] = self.configId!
+        }
+        if self.siteId != nil {
+            map["SiteId"] = self.siteId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["ConfigId"] as? Int64 {
+            self.configId = value
+        }
+        if let value = dict["SiteId"] as? Int64 {
+            self.siteId = value
+        }
+    }
+}
+
+public class GetVideoProcessingResponseBody : Tea.TeaModel {
+    public var configId: Int64?
+
+    public var configType: String?
+
+    public var flvSeekEnd: String?
+
+    public var flvSeekStart: String?
+
+    public var flvVideoSeekMode: String?
+
+    public var mp4SeekEnd: String?
+
+    public var mp4SeekStart: String?
+
+    public var requestId: String?
+
+    public var rule: String?
+
+    public var ruleEnable: String?
+
+    public var ruleName: String?
+
+    public var sequence: Int32?
+
+    public var siteVersion: Int32?
+
+    public var videoSeekEnable: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.configId != nil {
+            map["ConfigId"] = self.configId!
+        }
+        if self.configType != nil {
+            map["ConfigType"] = self.configType!
+        }
+        if self.flvSeekEnd != nil {
+            map["FlvSeekEnd"] = self.flvSeekEnd!
+        }
+        if self.flvSeekStart != nil {
+            map["FlvSeekStart"] = self.flvSeekStart!
+        }
+        if self.flvVideoSeekMode != nil {
+            map["FlvVideoSeekMode"] = self.flvVideoSeekMode!
+        }
+        if self.mp4SeekEnd != nil {
+            map["Mp4SeekEnd"] = self.mp4SeekEnd!
+        }
+        if self.mp4SeekStart != nil {
+            map["Mp4SeekStart"] = self.mp4SeekStart!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.rule != nil {
+            map["Rule"] = self.rule!
+        }
+        if self.ruleEnable != nil {
+            map["RuleEnable"] = self.ruleEnable!
+        }
+        if self.ruleName != nil {
+            map["RuleName"] = self.ruleName!
+        }
+        if self.sequence != nil {
+            map["Sequence"] = self.sequence!
+        }
+        if self.siteVersion != nil {
+            map["SiteVersion"] = self.siteVersion!
+        }
+        if self.videoSeekEnable != nil {
+            map["VideoSeekEnable"] = self.videoSeekEnable!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["ConfigId"] as? Int64 {
+            self.configId = value
+        }
+        if let value = dict["ConfigType"] as? String {
+            self.configType = value
+        }
+        if let value = dict["FlvSeekEnd"] as? String {
+            self.flvSeekEnd = value
+        }
+        if let value = dict["FlvSeekStart"] as? String {
+            self.flvSeekStart = value
+        }
+        if let value = dict["FlvVideoSeekMode"] as? String {
+            self.flvVideoSeekMode = value
+        }
+        if let value = dict["Mp4SeekEnd"] as? String {
+            self.mp4SeekEnd = value
+        }
+        if let value = dict["Mp4SeekStart"] as? String {
+            self.mp4SeekStart = value
+        }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+        if let value = dict["Rule"] as? String {
+            self.rule = value
+        }
+        if let value = dict["RuleEnable"] as? String {
+            self.ruleEnable = value
+        }
+        if let value = dict["RuleName"] as? String {
+            self.ruleName = value
+        }
+        if let value = dict["Sequence"] as? Int32 {
+            self.sequence = value
+        }
+        if let value = dict["SiteVersion"] as? Int32 {
+            self.siteVersion = value
+        }
+        if let value = dict["VideoSeekEnable"] as? String {
+            self.videoSeekEnable = value
+        }
+    }
+}
+
+public class GetVideoProcessingResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: GetVideoProcessingResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = GetVideoProcessingResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
 public class GetWafBotAppKeyResponseBody : Tea.TeaModel {
     public var appKey: String?
 
@@ -59946,6 +60498,346 @@ public class ListUserRoutinesResponse : Tea.TeaModel {
     }
 }
 
+public class ListVideoProcessingsRequest : Tea.TeaModel {
+    public var configId: Int64?
+
+    public var configType: String?
+
+    public var pageNumber: Int32?
+
+    public var pageSize: Int32?
+
+    public var ruleName: String?
+
+    public var siteId: Int64?
+
+    public var siteVersion: Int32?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.configId != nil {
+            map["ConfigId"] = self.configId!
+        }
+        if self.configType != nil {
+            map["ConfigType"] = self.configType!
+        }
+        if self.pageNumber != nil {
+            map["PageNumber"] = self.pageNumber!
+        }
+        if self.pageSize != nil {
+            map["PageSize"] = self.pageSize!
+        }
+        if self.ruleName != nil {
+            map["RuleName"] = self.ruleName!
+        }
+        if self.siteId != nil {
+            map["SiteId"] = self.siteId!
+        }
+        if self.siteVersion != nil {
+            map["SiteVersion"] = self.siteVersion!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["ConfigId"] as? Int64 {
+            self.configId = value
+        }
+        if let value = dict["ConfigType"] as? String {
+            self.configType = value
+        }
+        if let value = dict["PageNumber"] as? Int32 {
+            self.pageNumber = value
+        }
+        if let value = dict["PageSize"] as? Int32 {
+            self.pageSize = value
+        }
+        if let value = dict["RuleName"] as? String {
+            self.ruleName = value
+        }
+        if let value = dict["SiteId"] as? Int64 {
+            self.siteId = value
+        }
+        if let value = dict["SiteVersion"] as? Int32 {
+            self.siteVersion = value
+        }
+    }
+}
+
+public class ListVideoProcessingsResponseBody : Tea.TeaModel {
+    public class Configs : Tea.TeaModel {
+        public var configId: Int64?
+
+        public var configType: String?
+
+        public var flvSeekEnd: String?
+
+        public var flvSeekStart: String?
+
+        public var flvVideoSeekMode: String?
+
+        public var mp4SeekEnd: String?
+
+        public var mp4SeekStart: String?
+
+        public var rule: String?
+
+        public var ruleEnable: String?
+
+        public var ruleName: String?
+
+        public var sequence: Int32?
+
+        public var siteVersion: Int32?
+
+        public var videoSeekEnable: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.configId != nil {
+                map["ConfigId"] = self.configId!
+            }
+            if self.configType != nil {
+                map["ConfigType"] = self.configType!
+            }
+            if self.flvSeekEnd != nil {
+                map["FlvSeekEnd"] = self.flvSeekEnd!
+            }
+            if self.flvSeekStart != nil {
+                map["FlvSeekStart"] = self.flvSeekStart!
+            }
+            if self.flvVideoSeekMode != nil {
+                map["FlvVideoSeekMode"] = self.flvVideoSeekMode!
+            }
+            if self.mp4SeekEnd != nil {
+                map["Mp4SeekEnd"] = self.mp4SeekEnd!
+            }
+            if self.mp4SeekStart != nil {
+                map["Mp4SeekStart"] = self.mp4SeekStart!
+            }
+            if self.rule != nil {
+                map["Rule"] = self.rule!
+            }
+            if self.ruleEnable != nil {
+                map["RuleEnable"] = self.ruleEnable!
+            }
+            if self.ruleName != nil {
+                map["RuleName"] = self.ruleName!
+            }
+            if self.sequence != nil {
+                map["Sequence"] = self.sequence!
+            }
+            if self.siteVersion != nil {
+                map["SiteVersion"] = self.siteVersion!
+            }
+            if self.videoSeekEnable != nil {
+                map["VideoSeekEnable"] = self.videoSeekEnable!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["ConfigId"] as? Int64 {
+                self.configId = value
+            }
+            if let value = dict["ConfigType"] as? String {
+                self.configType = value
+            }
+            if let value = dict["FlvSeekEnd"] as? String {
+                self.flvSeekEnd = value
+            }
+            if let value = dict["FlvSeekStart"] as? String {
+                self.flvSeekStart = value
+            }
+            if let value = dict["FlvVideoSeekMode"] as? String {
+                self.flvVideoSeekMode = value
+            }
+            if let value = dict["Mp4SeekEnd"] as? String {
+                self.mp4SeekEnd = value
+            }
+            if let value = dict["Mp4SeekStart"] as? String {
+                self.mp4SeekStart = value
+            }
+            if let value = dict["Rule"] as? String {
+                self.rule = value
+            }
+            if let value = dict["RuleEnable"] as? String {
+                self.ruleEnable = value
+            }
+            if let value = dict["RuleName"] as? String {
+                self.ruleName = value
+            }
+            if let value = dict["Sequence"] as? Int32 {
+                self.sequence = value
+            }
+            if let value = dict["SiteVersion"] as? Int32 {
+                self.siteVersion = value
+            }
+            if let value = dict["VideoSeekEnable"] as? String {
+                self.videoSeekEnable = value
+            }
+        }
+    }
+    public var configs: [ListVideoProcessingsResponseBody.Configs]?
+
+    public var pageNumber: Int32?
+
+    public var pageSize: Int32?
+
+    public var requestId: String?
+
+    public var totalCount: Int32?
+
+    public var totalPage: Int32?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.configs != nil {
+            var tmp : [Any] = []
+            for k in self.configs! {
+                tmp.append(k.toMap())
+            }
+            map["Configs"] = tmp
+        }
+        if self.pageNumber != nil {
+            map["PageNumber"] = self.pageNumber!
+        }
+        if self.pageSize != nil {
+            map["PageSize"] = self.pageSize!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.totalCount != nil {
+            map["TotalCount"] = self.totalCount!
+        }
+        if self.totalPage != nil {
+            map["TotalPage"] = self.totalPage!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["Configs"] as? [Any?] {
+            var tmp : [ListVideoProcessingsResponseBody.Configs] = []
+            for v in value {
+                if v != nil {
+                    var model = ListVideoProcessingsResponseBody.Configs()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.configs = tmp
+        }
+        if let value = dict["PageNumber"] as? Int32 {
+            self.pageNumber = value
+        }
+        if let value = dict["PageSize"] as? Int32 {
+            self.pageSize = value
+        }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+        if let value = dict["TotalCount"] as? Int32 {
+            self.totalCount = value
+        }
+        if let value = dict["TotalPage"] as? Int32 {
+            self.totalPage = value
+        }
+    }
+}
+
+public class ListVideoProcessingsResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: ListVideoProcessingsResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = ListVideoProcessingsResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
 public class ListWafManagedRulesRequest : Tea.TeaModel {
     public class QueryArgs : Tea.TeaModel {
         public var action: String?
@@ -72669,6 +73561,8 @@ public class UpdateRecordRequest : Tea.TeaModel {
 
     public var ttl: Int32?
 
+    public var type: String?
+
     public override init() {
         super.init()
     }
@@ -72712,6 +73606,9 @@ public class UpdateRecordRequest : Tea.TeaModel {
         if self.ttl != nil {
             map["Ttl"] = self.ttl!
         }
+        if self.type != nil {
+            map["Type"] = self.type!
+        }
         return map
     }
 
@@ -72748,6 +73645,9 @@ public class UpdateRecordRequest : Tea.TeaModel {
         if let value = dict["Ttl"] as? Int32 {
             self.ttl = value
         }
+        if let value = dict["Type"] as? String {
+            self.type = value
+        }
     }
 }
 
@@ -72769,6 +73669,8 @@ public class UpdateRecordShrinkRequest : Tea.TeaModel {
     public var sourceType: String?
 
     public var ttl: Int32?
+
+    public var type: String?
 
     public override init() {
         super.init()
@@ -72811,6 +73713,9 @@ public class UpdateRecordShrinkRequest : Tea.TeaModel {
         if self.ttl != nil {
             map["Ttl"] = self.ttl!
         }
+        if self.type != nil {
+            map["Type"] = self.type!
+        }
         return map
     }
 
@@ -72842,6 +73747,9 @@ public class UpdateRecordShrinkRequest : Tea.TeaModel {
         }
         if let value = dict["Ttl"] as? Int32 {
             self.ttl = value
+        }
+        if let value = dict["Type"] as? String {
+            self.type = value
         }
     }
 }
@@ -75264,6 +76172,206 @@ public class UpdateUserDeliveryTaskStatusResponse : Tea.TeaModel {
         }
         if let value = dict["body"] as? [String: Any?] {
             var model = UpdateUserDeliveryTaskStatusResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
+public class UpdateVideoProcessingRequest : Tea.TeaModel {
+    public var configId: Int64?
+
+    public var flvSeekEnd: String?
+
+    public var flvSeekStart: String?
+
+    public var flvVideoSeekMode: String?
+
+    public var mp4SeekEnd: String?
+
+    public var mp4SeekStart: String?
+
+    public var rule: String?
+
+    public var ruleEnable: String?
+
+    public var ruleName: String?
+
+    public var sequence: Int32?
+
+    public var siteId: Int64?
+
+    public var videoSeekEnable: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.configId != nil {
+            map["ConfigId"] = self.configId!
+        }
+        if self.flvSeekEnd != nil {
+            map["FlvSeekEnd"] = self.flvSeekEnd!
+        }
+        if self.flvSeekStart != nil {
+            map["FlvSeekStart"] = self.flvSeekStart!
+        }
+        if self.flvVideoSeekMode != nil {
+            map["FlvVideoSeekMode"] = self.flvVideoSeekMode!
+        }
+        if self.mp4SeekEnd != nil {
+            map["Mp4SeekEnd"] = self.mp4SeekEnd!
+        }
+        if self.mp4SeekStart != nil {
+            map["Mp4SeekStart"] = self.mp4SeekStart!
+        }
+        if self.rule != nil {
+            map["Rule"] = self.rule!
+        }
+        if self.ruleEnable != nil {
+            map["RuleEnable"] = self.ruleEnable!
+        }
+        if self.ruleName != nil {
+            map["RuleName"] = self.ruleName!
+        }
+        if self.sequence != nil {
+            map["Sequence"] = self.sequence!
+        }
+        if self.siteId != nil {
+            map["SiteId"] = self.siteId!
+        }
+        if self.videoSeekEnable != nil {
+            map["VideoSeekEnable"] = self.videoSeekEnable!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["ConfigId"] as? Int64 {
+            self.configId = value
+        }
+        if let value = dict["FlvSeekEnd"] as? String {
+            self.flvSeekEnd = value
+        }
+        if let value = dict["FlvSeekStart"] as? String {
+            self.flvSeekStart = value
+        }
+        if let value = dict["FlvVideoSeekMode"] as? String {
+            self.flvVideoSeekMode = value
+        }
+        if let value = dict["Mp4SeekEnd"] as? String {
+            self.mp4SeekEnd = value
+        }
+        if let value = dict["Mp4SeekStart"] as? String {
+            self.mp4SeekStart = value
+        }
+        if let value = dict["Rule"] as? String {
+            self.rule = value
+        }
+        if let value = dict["RuleEnable"] as? String {
+            self.ruleEnable = value
+        }
+        if let value = dict["RuleName"] as? String {
+            self.ruleName = value
+        }
+        if let value = dict["Sequence"] as? Int32 {
+            self.sequence = value
+        }
+        if let value = dict["SiteId"] as? Int64 {
+            self.siteId = value
+        }
+        if let value = dict["VideoSeekEnable"] as? String {
+            self.videoSeekEnable = value
+        }
+    }
+}
+
+public class UpdateVideoProcessingResponseBody : Tea.TeaModel {
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+    }
+}
+
+public class UpdateVideoProcessingResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: UpdateVideoProcessingResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = UpdateVideoProcessingResponseBody()
             model.fromMap(value)
             self.body = model
         }

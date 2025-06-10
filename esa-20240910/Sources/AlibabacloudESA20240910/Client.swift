@@ -2622,6 +2622,70 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func createVideoProcessingWithOptions(_ request: CreateVideoProcessingRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> CreateVideoProcessingResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.flvSeekEnd)) {
+            query["FlvSeekEnd"] = request.flvSeekEnd ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.flvSeekStart)) {
+            query["FlvSeekStart"] = request.flvSeekStart ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.flvVideoSeekMode)) {
+            query["FlvVideoSeekMode"] = request.flvVideoSeekMode ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.mp4SeekEnd)) {
+            query["Mp4SeekEnd"] = request.mp4SeekEnd ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.mp4SeekStart)) {
+            query["Mp4SeekStart"] = request.mp4SeekStart ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.rule)) {
+            query["Rule"] = request.rule ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.ruleEnable)) {
+            query["RuleEnable"] = request.ruleEnable ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.ruleName)) {
+            query["RuleName"] = request.ruleName ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.sequence)) {
+            query["Sequence"] = request.sequence!;
+        }
+        if (!TeaUtils.Client.isUnset(request.siteId)) {
+            query["SiteId"] = request.siteId!;
+        }
+        if (!TeaUtils.Client.isUnset(request.siteVersion)) {
+            query["SiteVersion"] = request.siteVersion!;
+        }
+        if (!TeaUtils.Client.isUnset(request.videoSeekEnable)) {
+            query["VideoSeekEnable"] = request.videoSeekEnable ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "CreateVideoProcessing",
+            "version": "2024-09-10",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(CreateVideoProcessingResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func createVideoProcessing(_ request: CreateVideoProcessingRequest) async throws -> CreateVideoProcessingResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await createVideoProcessingWithOptions(request as! CreateVideoProcessingRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func createWafRuleWithOptions(_ tmpReq: CreateWafRuleRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> CreateWafRuleResponse {
         try TeaUtils.Client.validateModel(tmpReq)
         var request: CreateWafRuleShrinkRequest = CreateWafRuleShrinkRequest([:])
@@ -4188,6 +4252,40 @@ open class Client : AlibabacloudOpenApi.Client {
     public func deleteUserDeliveryTask(_ request: DeleteUserDeliveryTaskRequest) async throws -> DeleteUserDeliveryTaskResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         return try await deleteUserDeliveryTaskWithOptions(request as! DeleteUserDeliveryTaskRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func deleteVideoProcessingWithOptions(_ request: DeleteVideoProcessingRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DeleteVideoProcessingResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.configId)) {
+            query["ConfigId"] = request.configId!;
+        }
+        if (!TeaUtils.Client.isUnset(request.siteId)) {
+            query["SiteId"] = request.siteId!;
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "DeleteVideoProcessing",
+            "version": "2024-09-10",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(DeleteVideoProcessingResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func deleteVideoProcessing(_ request: DeleteVideoProcessingRequest) async throws -> DeleteVideoProcessingResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await deleteVideoProcessingWithOptions(request as! DeleteVideoProcessingRequest, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -6938,6 +7036,40 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getVideoProcessingWithOptions(_ request: GetVideoProcessingRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> GetVideoProcessingResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.configId)) {
+            query["ConfigId"] = request.configId!;
+        }
+        if (!TeaUtils.Client.isUnset(request.siteId)) {
+            query["SiteId"] = request.siteId!;
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "GetVideoProcessing",
+            "version": "2024-09-10",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(GetVideoProcessingResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getVideoProcessing(_ request: GetVideoProcessingRequest) async throws -> GetVideoProcessingResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await getVideoProcessingWithOptions(request as! GetVideoProcessingRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func getWafBotAppKeyWithOptions(_ runtime: TeaUtils.RuntimeOptions) async throws -> GetWafBotAppKeyResponse {
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([:])
         var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
@@ -8634,6 +8766,55 @@ open class Client : AlibabacloudOpenApi.Client {
     public func listUserRoutines(_ request: ListUserRoutinesRequest) async throws -> ListUserRoutinesResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         return try await listUserRoutinesWithOptions(request as! ListUserRoutinesRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func listVideoProcessingsWithOptions(_ request: ListVideoProcessingsRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ListVideoProcessingsResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.configId)) {
+            query["ConfigId"] = request.configId!;
+        }
+        if (!TeaUtils.Client.isUnset(request.configType)) {
+            query["ConfigType"] = request.configType ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.pageNumber)) {
+            query["PageNumber"] = request.pageNumber!;
+        }
+        if (!TeaUtils.Client.isUnset(request.pageSize)) {
+            query["PageSize"] = request.pageSize!;
+        }
+        if (!TeaUtils.Client.isUnset(request.ruleName)) {
+            query["RuleName"] = request.ruleName ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.siteId)) {
+            query["SiteId"] = request.siteId!;
+        }
+        if (!TeaUtils.Client.isUnset(request.siteVersion)) {
+            query["SiteVersion"] = request.siteVersion!;
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "ListVideoProcessings",
+            "version": "2024-09-10",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(ListVideoProcessingsResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func listVideoProcessings(_ request: ListVideoProcessingsRequest) async throws -> ListVideoProcessingsResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await listVideoProcessingsWithOptions(request as! ListVideoProcessingsRequest, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -11345,6 +11526,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.ttl)) {
             query["Ttl"] = request.ttl!;
         }
+        if (!TeaUtils.Client.isUnset(request.type)) {
+            query["Type"] = request.type ?? "";
+        }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "query": AlibabaCloudOpenApiUtil.Client.query(query)
         ])
@@ -12011,6 +12195,70 @@ open class Client : AlibabacloudOpenApi.Client {
     public func updateUserDeliveryTaskStatus(_ request: UpdateUserDeliveryTaskStatusRequest) async throws -> UpdateUserDeliveryTaskStatusResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         return try await updateUserDeliveryTaskStatusWithOptions(request as! UpdateUserDeliveryTaskStatusRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func updateVideoProcessingWithOptions(_ request: UpdateVideoProcessingRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> UpdateVideoProcessingResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.configId)) {
+            query["ConfigId"] = request.configId!;
+        }
+        if (!TeaUtils.Client.isUnset(request.flvSeekEnd)) {
+            query["FlvSeekEnd"] = request.flvSeekEnd ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.flvSeekStart)) {
+            query["FlvSeekStart"] = request.flvSeekStart ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.flvVideoSeekMode)) {
+            query["FlvVideoSeekMode"] = request.flvVideoSeekMode ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.mp4SeekEnd)) {
+            query["Mp4SeekEnd"] = request.mp4SeekEnd ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.mp4SeekStart)) {
+            query["Mp4SeekStart"] = request.mp4SeekStart ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.rule)) {
+            query["Rule"] = request.rule ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.ruleEnable)) {
+            query["RuleEnable"] = request.ruleEnable ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.ruleName)) {
+            query["RuleName"] = request.ruleName ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.sequence)) {
+            query["Sequence"] = request.sequence!;
+        }
+        if (!TeaUtils.Client.isUnset(request.siteId)) {
+            query["SiteId"] = request.siteId!;
+        }
+        if (!TeaUtils.Client.isUnset(request.videoSeekEnable)) {
+            query["VideoSeekEnable"] = request.videoSeekEnable ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "UpdateVideoProcessing",
+            "version": "2024-09-10",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(UpdateVideoProcessingResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func updateVideoProcessing(_ request: UpdateVideoProcessingRequest) async throws -> UpdateVideoProcessingResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await updateVideoProcessingWithOptions(request as! UpdateVideoProcessingRequest, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
