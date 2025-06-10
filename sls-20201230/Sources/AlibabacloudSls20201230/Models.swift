@@ -15658,7 +15658,7 @@ public class ListAgentInstanceConfigsRequest : Tea.TeaModel {
 
 public class ListAgentInstanceConfigsResponseBody : Tea.TeaModel {
     public class Configs : Tea.TeaModel {
-        public var attributes: String?
+        public var attributes: [String: String]?
 
         public var configType: String?
 
@@ -15687,7 +15687,7 @@ public class ListAgentInstanceConfigsResponseBody : Tea.TeaModel {
 
         public override func fromMap(_ dict: [String: Any?]?) -> Void {
             guard let dict else { return }
-            if let value = dict["attributes"] as? String {
+            if let value = dict["attributes"] as? [String: String] {
                 self.attributes = value
             }
             if let value = dict["configType"] as? String {

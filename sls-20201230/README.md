@@ -17,7 +17,7 @@ English | [简体中文](README-CN.md)
 To integrate `AlibabacloudSls20201230` into your Xcode project using [Carthage](https://github.com/Carthage/Carthage), specify it in your `Cartfile`:
 
 ```ogdl
-github "alibabacloud-sdk-swift/sls-20201230" "1.0.1"
+github "alibabacloud-sdk-swift/sls-20201230" "1.0.2"
 ```
 
 ### Swift Package Manager
@@ -26,7 +26,7 @@ To integrate `AlibabacloudSls20201230` into your Xcode project using [Swift Pack
 
 ```swift
 dependencies: [
-    .package(url: "https://github.com/alibabacloud-sdk-swift/sls-20201230.git", from: "1.0.1")
+    .package(url: "https://github.com/alibabacloud-sdk-swift/sls-20201230.git", from: "1.0.2")
 ]
 ```
 
