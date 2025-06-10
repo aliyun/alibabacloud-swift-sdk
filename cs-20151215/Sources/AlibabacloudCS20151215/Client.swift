@@ -503,6 +503,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.auditLogConfig)) {
             body["audit_log_config"] = request.auditLogConfig!;
         }
+        if (!TeaUtils.Client.isUnset(request.autoMode)) {
+            body["auto_mode"] = request.autoMode!;
+        }
         if (!TeaUtils.Client.isUnset(request.autoRenew)) {
             body["auto_renew"] = request.autoRenew!;
         }
@@ -893,6 +896,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func createClusterNodePoolWithOptions(_ ClusterId: String, _ request: CreateClusterNodePoolRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> CreateClusterNodePoolResponse {
         try TeaUtils.Client.validateModel(request)
         var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.autoMode)) {
+            body["auto_mode"] = request.autoMode!;
+        }
         if (!TeaUtils.Client.isUnset(request.autoScaling)) {
             body["auto_scaling"] = request.autoScaling!;
         }

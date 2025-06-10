@@ -3855,6 +3855,36 @@ public class CreateClusterRequest : Tea.TeaModel {
             }
         }
     }
+    public class AutoMode : Tea.TeaModel {
+        public var enable: Bool?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.enable != nil {
+                map["enable"] = self.enable!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["enable"] as? Bool {
+                self.enable = value
+            }
+        }
+    }
     public class ControlPlaneConfig : Tea.TeaModel {
         public var autoRenew: Bool?
 
@@ -4202,6 +4232,8 @@ public class CreateClusterRequest : Tea.TeaModel {
 
     public var auditLogConfig: CreateClusterRequest.AuditLogConfig?
 
+    public var autoMode: CreateClusterRequest.AutoMode?
+
     public var autoRenew: Bool?
 
     public var autoRenewPeriod: Int64?
@@ -4403,6 +4435,7 @@ public class CreateClusterRequest : Tea.TeaModel {
 
     public override func validate() throws -> Void {
         try self.auditLogConfig?.validate()
+        try self.autoMode?.validate()
         try self.controlPlaneConfig?.validate()
         try self.maintenanceWindow?.validate()
         try self.operationPolicy?.validate()
@@ -4426,6 +4459,9 @@ public class CreateClusterRequest : Tea.TeaModel {
         }
         if self.auditLogConfig != nil {
             map["audit_log_config"] = self.auditLogConfig?.toMap()
+        }
+        if self.autoMode != nil {
+            map["auto_mode"] = self.autoMode?.toMap()
         }
         if self.autoRenew != nil {
             map["auto_renew"] = self.autoRenew!
@@ -4756,6 +4792,11 @@ public class CreateClusterRequest : Tea.TeaModel {
             var model = CreateClusterRequest.AuditLogConfig()
             model.fromMap(value)
             self.auditLogConfig = model
+        }
+        if let value = dict["auto_mode"] as? [String: Any?] {
+            var model = CreateClusterRequest.AutoMode()
+            model.fromMap(value)
+            self.autoMode = model
         }
         if let value = dict["auto_renew"] as? Bool {
             self.autoRenew = value
@@ -5455,6 +5496,36 @@ public class CreateClusterInspectConfigResponse : Tea.TeaModel {
 }
 
 public class CreateClusterNodePoolRequest : Tea.TeaModel {
+    public class AutoMode : Tea.TeaModel {
+        public var enable: Bool?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.enable != nil {
+                map["enable"] = self.enable!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["enable"] as? Bool {
+                self.enable = value
+            }
+        }
+    }
     public class AutoScaling : Tea.TeaModel {
         public var eipBandwidth: Int64?
 
@@ -6709,6 +6780,8 @@ public class CreateClusterNodePoolRequest : Tea.TeaModel {
             }
         }
     }
+    public var autoMode: CreateClusterNodePoolRequest.AutoMode?
+
     public var autoScaling: CreateClusterNodePoolRequest.AutoScaling?
 
     public var count: Int64?
@@ -6747,6 +6820,7 @@ public class CreateClusterNodePoolRequest : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
+        try self.autoMode?.validate()
         try self.autoScaling?.validate()
         try self.efloNodeGroup?.validate()
         try self.interconnectConfig?.validate()
@@ -6760,6 +6834,9 @@ public class CreateClusterNodePoolRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.autoMode != nil {
+            map["auto_mode"] = self.autoMode?.toMap()
+        }
         if self.autoScaling != nil {
             map["auto_scaling"] = self.autoScaling?.toMap()
         }
@@ -6807,6 +6884,11 @@ public class CreateClusterNodePoolRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["auto_mode"] as? [String: Any?] {
+            var model = CreateClusterNodePoolRequest.AutoMode()
+            model.fromMap(value)
+            self.autoMode = model
+        }
         if let value = dict["auto_scaling"] as? [String: Any?] {
             var model = CreateClusterNodePoolRequest.AutoScaling()
             model.fromMap(value)
@@ -10092,6 +10174,36 @@ public class DescribeClusterAttachScriptsResponse : Tea.TeaModel {
 }
 
 public class DescribeClusterDetailResponseBody : Tea.TeaModel {
+    public class AutoMode : Tea.TeaModel {
+        public var enable: Bool?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.enable != nil {
+                map["enable"] = self.enable!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["enable"] as? Bool {
+                self.enable = value
+            }
+        }
+    }
     public class ControlPlaneConfig : Tea.TeaModel {
         public var autoRenew: Bool?
 
@@ -10369,6 +10481,8 @@ public class DescribeClusterDetailResponseBody : Tea.TeaModel {
             }
         }
     }
+    public var autoMode: DescribeClusterDetailResponseBody.AutoMode?
+
     public var clusterDomain: String?
 
     public var clusterId: String?
@@ -10459,6 +10573,7 @@ public class DescribeClusterDetailResponseBody : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
+        try self.autoMode?.validate()
         try self.controlPlaneConfig?.validate()
         try self.maintenanceWindow?.validate()
         try self.operationPolicy?.validate()
@@ -10466,6 +10581,9 @@ public class DescribeClusterDetailResponseBody : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.autoMode != nil {
+            map["auto_mode"] = self.autoMode?.toMap()
+        }
         if self.clusterDomain != nil {
             map["cluster_domain"] = self.clusterDomain!
         }
@@ -10595,6 +10713,11 @@ public class DescribeClusterDetailResponseBody : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["auto_mode"] as? [String: Any?] {
+            var model = DescribeClusterDetailResponseBody.AutoMode()
+            model.fromMap(value)
+            self.autoMode = model
+        }
         if let value = dict["cluster_domain"] as? String {
             self.clusterDomain = value
         }
