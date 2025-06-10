@@ -1,7 +1,7 @@
 Pod::Spec.new do |spec|
 
   spec.name         = "AlibabacloudSchedulerx220190430"
-  spec.version      = "2.1.0"
+  spec.version      = "2.2.0"
   spec.license      = "Apache 2.0"
   spec.summary      = "Alibaba Cloud schedulerx2 (20190430) SDK Library for Swift"
   spec.homepage     = "https://github.com/alibabacloud-sdk-swift/schedulerx2-20190430" 
@@ -17,7 +17,7 @@ Pod::Spec.new do |spec|
   spec.watchos.deployment_target = '6.0'
   spec.tvos.deployment_target    = '13.0'
 
-  spec.dependency 'Tea',  '~> 1.0.0'
+  spec.dependency 'Tea',  '~> 1.0.3'
   spec.dependency 'TeaUtils',  '~> 1.0.6'
   spec.dependency 'AlibabacloudOpenApi',  '~> 1.0.7'
   spec.dependency 'AlibabaCloudOpenApiUtil',  '~> 1.0.1'
