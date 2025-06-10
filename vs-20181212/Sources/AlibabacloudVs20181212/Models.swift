@@ -15096,6 +15096,104 @@ public class DescribeRenderingInstanceRequest : Tea.TeaModel {
 }
 
 public class DescribeRenderingInstanceResponseBody : Tea.TeaModel {
+    public class AdditionalIngresses : Tea.TeaModel {
+        public class PortMappings : Tea.TeaModel {
+            public var externalPort: String?
+
+            public var internalPort: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.externalPort != nil {
+                    map["ExternalPort"] = self.externalPort!
+                }
+                if self.internalPort != nil {
+                    map["InternalPort"] = self.internalPort!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["ExternalPort"] as? String {
+                    self.externalPort = value
+                }
+                if let value = dict["InternalPort"] as? String {
+                    self.internalPort = value
+                }
+            }
+        }
+        public var hostname: String?
+
+        public var isp: String?
+
+        public var portMappings: [DescribeRenderingInstanceResponseBody.AdditionalIngresses.PortMappings]?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.hostname != nil {
+                map["Hostname"] = self.hostname!
+            }
+            if self.isp != nil {
+                map["Isp"] = self.isp!
+            }
+            if self.portMappings != nil {
+                var tmp : [Any] = []
+                for k in self.portMappings! {
+                    tmp.append(k.toMap())
+                }
+                map["PortMappings"] = tmp
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["Hostname"] as? String {
+                self.hostname = value
+            }
+            if let value = dict["Isp"] as? String {
+                self.isp = value
+            }
+            if let value = dict["PortMappings"] as? [Any?] {
+                var tmp : [DescribeRenderingInstanceResponseBody.AdditionalIngresses.PortMappings] = []
+                for v in value {
+                    if v != nil {
+                        var model = DescribeRenderingInstanceResponseBody.AdditionalIngresses.PortMappings()
+                        if v != nil {
+                            model.fromMap(v as? [String: Any?])
+                        }
+                        tmp.append(model)
+                    }
+                }
+                self.portMappings = tmp
+            }
+        }
+    }
     public class ConfigInfo : Tea.TeaModel {
         public class Configuration : Tea.TeaModel {
             public class Attributes : Tea.TeaModel {
@@ -15417,6 +15515,8 @@ public class DescribeRenderingInstanceResponseBody : Tea.TeaModel {
             }
         }
     }
+    public var additionalIngresses: [DescribeRenderingInstanceResponseBody.AdditionalIngresses]?
+
     public var configInfo: DescribeRenderingInstanceResponseBody.ConfigInfo?
 
     public var creationTime: String?
@@ -15424,6 +15524,8 @@ public class DescribeRenderingInstanceResponseBody : Tea.TeaModel {
     public var egressIp: String?
 
     public var hostname: String?
+
+    public var isp: String?
 
     public var portMappings: [DescribeRenderingInstanceResponseBody.PortMappings]?
 
@@ -15456,6 +15558,13 @@ public class DescribeRenderingInstanceResponseBody : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.additionalIngresses != nil {
+            var tmp : [Any] = []
+            for k in self.additionalIngresses! {
+                tmp.append(k.toMap())
+            }
+            map["AdditionalIngresses"] = tmp
+        }
         if self.configInfo != nil {
             map["ConfigInfo"] = self.configInfo?.toMap()
         }
@@ -15467,6 +15576,9 @@ public class DescribeRenderingInstanceResponseBody : Tea.TeaModel {
         }
         if self.hostname != nil {
             map["Hostname"] = self.hostname!
+        }
+        if self.isp != nil {
+            map["Isp"] = self.isp!
         }
         if self.portMappings != nil {
             var tmp : [Any] = []
@@ -15498,6 +15610,19 @@ public class DescribeRenderingInstanceResponseBody : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["AdditionalIngresses"] as? [Any?] {
+            var tmp : [DescribeRenderingInstanceResponseBody.AdditionalIngresses] = []
+            for v in value {
+                if v != nil {
+                    var model = DescribeRenderingInstanceResponseBody.AdditionalIngresses()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.additionalIngresses = tmp
+        }
         if let value = dict["ConfigInfo"] as? [String: Any?] {
             var model = DescribeRenderingInstanceResponseBody.ConfigInfo()
             model.fromMap(value)
@@ -15511,6 +15636,9 @@ public class DescribeRenderingInstanceResponseBody : Tea.TeaModel {
         }
         if let value = dict["Hostname"] as? String {
             self.hostname = value
+        }
+        if let value = dict["Isp"] as? String {
+            self.isp = value
         }
         if let value = dict["PortMappings"] as? [Any?] {
             var tmp : [DescribeRenderingInstanceResponseBody.PortMappings] = []
@@ -16190,6 +16318,104 @@ public class DescribeRenderingSessionRequest : Tea.TeaModel {
 }
 
 public class DescribeRenderingSessionResponseBody : Tea.TeaModel {
+    public class AdditionalIngresses : Tea.TeaModel {
+        public class PortMappings : Tea.TeaModel {
+            public var externalPort: String?
+
+            public var internalPort: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.externalPort != nil {
+                    map["ExternalPort"] = self.externalPort!
+                }
+                if self.internalPort != nil {
+                    map["InternalPort"] = self.internalPort!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["ExternalPort"] as? String {
+                    self.externalPort = value
+                }
+                if let value = dict["InternalPort"] as? String {
+                    self.internalPort = value
+                }
+            }
+        }
+        public var hostname: String?
+
+        public var isp: String?
+
+        public var portMappings: [DescribeRenderingSessionResponseBody.AdditionalIngresses.PortMappings]?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.hostname != nil {
+                map["Hostname"] = self.hostname!
+            }
+            if self.isp != nil {
+                map["Isp"] = self.isp!
+            }
+            if self.portMappings != nil {
+                var tmp : [Any] = []
+                for k in self.portMappings! {
+                    tmp.append(k.toMap())
+                }
+                map["PortMappings"] = tmp
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["Hostname"] as? String {
+                self.hostname = value
+            }
+            if let value = dict["Isp"] as? String {
+                self.isp = value
+            }
+            if let value = dict["PortMappings"] as? [Any?] {
+                var tmp : [DescribeRenderingSessionResponseBody.AdditionalIngresses.PortMappings] = []
+                for v in value {
+                    if v != nil {
+                        var model = DescribeRenderingSessionResponseBody.AdditionalIngresses.PortMappings()
+                        if v != nil {
+                            model.fromMap(v as? [String: Any?])
+                        }
+                        tmp.append(model)
+                    }
+                }
+                self.portMappings = tmp
+            }
+        }
+    }
     public class Location : Tea.TeaModel {
         public var provinceCode: String?
 
@@ -16304,11 +16530,15 @@ public class DescribeRenderingSessionResponseBody : Tea.TeaModel {
             }
         }
     }
+    public var additionalIngresses: [DescribeRenderingSessionResponseBody.AdditionalIngresses]?
+
     public var appId: String?
 
     public var clientId: String?
 
     public var hostname: String?
+
+    public var isp: String?
 
     public var location: DescribeRenderingSessionResponseBody.Location?
 
@@ -16338,6 +16568,13 @@ public class DescribeRenderingSessionResponseBody : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.additionalIngresses != nil {
+            var tmp : [Any] = []
+            for k in self.additionalIngresses! {
+                tmp.append(k.toMap())
+            }
+            map["AdditionalIngresses"] = tmp
+        }
         if self.appId != nil {
             map["AppId"] = self.appId!
         }
@@ -16346,6 +16583,9 @@ public class DescribeRenderingSessionResponseBody : Tea.TeaModel {
         }
         if self.hostname != nil {
             map["Hostname"] = self.hostname!
+        }
+        if self.isp != nil {
+            map["Isp"] = self.isp!
         }
         if self.location != nil {
             map["Location"] = self.location?.toMap()
@@ -16374,6 +16614,19 @@ public class DescribeRenderingSessionResponseBody : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["AdditionalIngresses"] as? [Any?] {
+            var tmp : [DescribeRenderingSessionResponseBody.AdditionalIngresses] = []
+            for v in value {
+                if v != nil {
+                    var model = DescribeRenderingSessionResponseBody.AdditionalIngresses()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.additionalIngresses = tmp
+        }
         if let value = dict["AppId"] as? String {
             self.appId = value
         }
@@ -16382,6 +16635,9 @@ public class DescribeRenderingSessionResponseBody : Tea.TeaModel {
         }
         if let value = dict["Hostname"] as? String {
             self.hostname = value
+        }
+        if let value = dict["Isp"] as? String {
+            self.isp = value
         }
         if let value = dict["Location"] as? [String: Any?] {
             var model = DescribeRenderingSessionResponseBody.Location()
