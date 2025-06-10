@@ -656,11 +656,19 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func createNamespaceWithOptions(_ request: CreateNamespaceRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> CreateNamespaceResponse {
-        try TeaUtils.Client.validateModel(request)
+    public func createNamespaceWithOptions(_ tmpReq: CreateNamespaceRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> CreateNamespaceResponse {
+        try TeaUtils.Client.validateModel(tmpReq)
+        var request: CreateNamespaceShrinkRequest = CreateNamespaceShrinkRequest([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.defaultRepoConfiguration)) {
+            request.defaultRepoConfigurationShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.defaultRepoConfiguration, "DefaultRepoConfiguration", "json")
+        }
         var query: [String: Any] = [:]
         if (!TeaUtils.Client.isUnset(request.autoCreateRepo)) {
             query["AutoCreateRepo"] = request.autoCreateRepo!;
+        }
+        if (!TeaUtils.Client.isUnset(request.defaultRepoConfigurationShrink)) {
+            query["DefaultRepoConfiguration"] = request.defaultRepoConfigurationShrink ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.defaultRepoType)) {
             query["DefaultRepoType"] = request.defaultRepoType ?? "";
@@ -4010,11 +4018,19 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func updateNamespaceWithOptions(_ request: UpdateNamespaceRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> UpdateNamespaceResponse {
-        try TeaUtils.Client.validateModel(request)
+    public func updateNamespaceWithOptions(_ tmpReq: UpdateNamespaceRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> UpdateNamespaceResponse {
+        try TeaUtils.Client.validateModel(tmpReq)
+        var request: UpdateNamespaceShrinkRequest = UpdateNamespaceShrinkRequest([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.defaultRepoConfiguration)) {
+            request.defaultRepoConfigurationShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.defaultRepoConfiguration, "DefaultRepoConfiguration", "json")
+        }
         var query: [String: Any] = [:]
         if (!TeaUtils.Client.isUnset(request.autoCreateRepo)) {
             query["AutoCreateRepo"] = request.autoCreateRepo!;
+        }
+        if (!TeaUtils.Client.isUnset(request.defaultRepoConfigurationShrink)) {
+            query["DefaultRepoConfiguration"] = request.defaultRepoConfigurationShrink ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.defaultRepoType)) {
             query["DefaultRepoType"] = request.defaultRepoType ?? "";
