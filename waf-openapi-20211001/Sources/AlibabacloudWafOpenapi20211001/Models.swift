@@ -1417,6 +1417,8 @@ public class CreateDefenseResourceGroupResponse : Tea.TeaModel {
 public class CreateDefenseRuleRequest : Tea.TeaModel {
     public var defenseScene: String?
 
+    public var defenseType: String?
+
     public var instanceId: String?
 
     public var regionId: String?
@@ -1446,6 +1448,9 @@ public class CreateDefenseRuleRequest : Tea.TeaModel {
         if self.defenseScene != nil {
             map["DefenseScene"] = self.defenseScene!
         }
+        if self.defenseType != nil {
+            map["DefenseType"] = self.defenseType!
+        }
         if self.instanceId != nil {
             map["InstanceId"] = self.instanceId!
         }
@@ -1471,6 +1476,9 @@ public class CreateDefenseRuleRequest : Tea.TeaModel {
         guard let dict else { return }
         if let value = dict["DefenseScene"] as? String {
             self.defenseScene = value
+        }
+        if let value = dict["DefenseType"] as? String {
+            self.defenseType = value
         }
         if let value = dict["InstanceId"] as? String {
             self.instanceId = value
@@ -3941,6 +3949,8 @@ public class DeleteDefenseResourceGroupResponse : Tea.TeaModel {
 }
 
 public class DeleteDefenseRuleRequest : Tea.TeaModel {
+    public var defenseType: String?
+
     public var instanceId: String?
 
     public var regionId: String?
@@ -3967,6 +3977,9 @@ public class DeleteDefenseRuleRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.defenseType != nil {
+            map["DefenseType"] = self.defenseType!
+        }
         if self.instanceId != nil {
             map["InstanceId"] = self.instanceId!
         }
@@ -3990,6 +4003,9 @@ public class DeleteDefenseRuleRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["DefenseType"] as? String {
+            self.defenseType = value
+        }
         if let value = dict["InstanceId"] as? String {
             self.instanceId = value
         }
@@ -14339,6 +14355,8 @@ public class DescribeDefenseResourcesResponse : Tea.TeaModel {
 }
 
 public class DescribeDefenseRuleRequest : Tea.TeaModel {
+    public var defenseType: String?
+
     public var instanceId: String?
 
     public var regionId: String?
@@ -14365,6 +14383,9 @@ public class DescribeDefenseRuleRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.defenseType != nil {
+            map["DefenseType"] = self.defenseType!
+        }
         if self.instanceId != nil {
             map["InstanceId"] = self.instanceId!
         }
@@ -14388,6 +14409,9 @@ public class DescribeDefenseRuleRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["DefenseType"] as? String {
+            self.defenseType = value
+        }
         if let value = dict["InstanceId"] as? String {
             self.instanceId = value
         }
@@ -36575,6 +36599,8 @@ public class ModifyDefenseResourceXffResponse : Tea.TeaModel {
 public class ModifyDefenseRuleRequest : Tea.TeaModel {
     public var defenseScene: String?
 
+    public var defenseType: String?
+
     public var instanceId: String?
 
     public var regionId: String?
@@ -36604,6 +36630,9 @@ public class ModifyDefenseRuleRequest : Tea.TeaModel {
         if self.defenseScene != nil {
             map["DefenseScene"] = self.defenseScene!
         }
+        if self.defenseType != nil {
+            map["DefenseType"] = self.defenseType!
+        }
         if self.instanceId != nil {
             map["InstanceId"] = self.instanceId!
         }
@@ -36629,6 +36658,9 @@ public class ModifyDefenseRuleRequest : Tea.TeaModel {
         guard let dict else { return }
         if let value = dict["DefenseScene"] as? String {
             self.defenseScene = value
+        }
+        if let value = dict["DefenseType"] as? String {
+            self.defenseType = value
         }
         if let value = dict["InstanceId"] as? String {
             self.instanceId = value

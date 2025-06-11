@@ -337,6 +337,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.defenseScene)) {
             query["DefenseScene"] = request.defenseScene ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.defenseType)) {
+            query["DefenseType"] = request.defenseType ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.instanceId)) {
             query["InstanceId"] = request.instanceId ?? "";
         }
@@ -911,6 +914,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func deleteDefenseRuleWithOptions(_ request: DeleteDefenseRuleRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DeleteDefenseRuleResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.defenseType)) {
+            query["DefenseType"] = request.defenseType ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.instanceId)) {
             query["InstanceId"] = request.instanceId ?? "";
         }
@@ -2883,6 +2889,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func describeDefenseRuleWithOptions(_ request: DescribeDefenseRuleRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DescribeDefenseRuleResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.defenseType)) {
+            query["DefenseType"] = request.defenseType ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.instanceId)) {
             query["InstanceId"] = request.instanceId ?? "";
         }
@@ -6813,6 +6822,9 @@ open class Client : AlibabacloudOpenApi.Client {
         var query: [String: Any] = [:]
         if (!TeaUtils.Client.isUnset(request.defenseScene)) {
             query["DefenseScene"] = request.defenseScene ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.defenseType)) {
+            query["DefenseType"] = request.defenseType ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.instanceId)) {
             query["InstanceId"] = request.instanceId ?? "";
