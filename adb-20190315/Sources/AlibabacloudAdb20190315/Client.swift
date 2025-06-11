@@ -631,20 +631,49 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func createDBResourceGroupWithOptions(_ request: CreateDBResourceGroupRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> CreateDBResourceGroupResponse {
-        try TeaUtils.Client.validateModel(request)
+    public func createDBResourceGroupWithOptions(_ tmpReq: CreateDBResourceGroupRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> CreateDBResourceGroupResponse {
+        try TeaUtils.Client.validateModel(tmpReq)
+        var request: CreateDBResourceGroupShrinkRequest = CreateDBResourceGroupShrinkRequest([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.engineParams)) {
+            request.engineParamsShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.engineParams, "EngineParams", "json")
+        }
         var query: [String: Any] = [:]
         if (!TeaUtils.Client.isUnset(request.clientToken)) {
             query["ClientToken"] = request.clientToken ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.clusterMode)) {
+            query["ClusterMode"] = request.clusterMode ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.clusterSizeResource)) {
+            query["ClusterSizeResource"] = request.clusterSizeResource ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.DBClusterId)) {
             query["DBClusterId"] = request.DBClusterId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.engine)) {
+            query["Engine"] = request.engine ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.engineParamsShrink)) {
+            query["EngineParams"] = request.engineParamsShrink ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.groupName)) {
             query["GroupName"] = request.groupName ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.groupType)) {
             query["GroupType"] = request.groupType ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.maxClusterCount)) {
+            query["MaxClusterCount"] = request.maxClusterCount!;
+        }
+        if (!TeaUtils.Client.isUnset(request.maxComputeResource)) {
+            query["MaxComputeResource"] = request.maxComputeResource ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.minClusterCount)) {
+            query["MinClusterCount"] = request.minClusterCount!;
+        }
+        if (!TeaUtils.Client.isUnset(request.minComputeResource)) {
+            query["MinComputeResource"] = request.minComputeResource ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.nodeNum)) {
             query["NodeNum"] = request.nodeNum!;
@@ -2340,6 +2369,9 @@ open class Client : AlibabacloudOpenApi.Client {
         var query: [String: Any] = [:]
         if (!TeaUtils.Client.isUnset(request.DBClusterId)) {
             query["DBClusterId"] = request.DBClusterId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.engine)) {
+            query["Engine"] = request.engine ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.ownerAccount)) {
             query["OwnerAccount"] = request.ownerAccount ?? "";
@@ -6691,6 +6723,9 @@ open class Client : AlibabacloudOpenApi.Client {
         try TeaUtils.Client.validateModel(tmpReq)
         var request: ModifyDBResourceGroupShrinkRequest = ModifyDBResourceGroupShrinkRequest([:])
         AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.engineParams)) {
+            request.engineParamsShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.engineParams, "EngineParams", "json")
+        }
         if (!TeaUtils.Client.isUnset(tmpReq.poolUserList)) {
             request.poolUserListShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.poolUserList, "PoolUserList", "json")
         }
@@ -6698,14 +6733,35 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.clientToken)) {
             query["ClientToken"] = request.clientToken ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.clusterMode)) {
+            query["ClusterMode"] = request.clusterMode ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.clusterSizeResource)) {
+            query["ClusterSizeResource"] = request.clusterSizeResource ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.DBClusterId)) {
             query["DBClusterId"] = request.DBClusterId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.engineParamsShrink)) {
+            query["EngineParams"] = request.engineParamsShrink ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.groupName)) {
             query["GroupName"] = request.groupName ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.groupType)) {
             query["GroupType"] = request.groupType ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.maxClusterCount)) {
+            query["MaxClusterCount"] = request.maxClusterCount!;
+        }
+        if (!TeaUtils.Client.isUnset(request.maxComputeResource)) {
+            query["MaxComputeResource"] = request.maxComputeResource ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.minClusterCount)) {
+            query["MinClusterCount"] = request.minClusterCount!;
+        }
+        if (!TeaUtils.Client.isUnset(request.minComputeResource)) {
+            query["MinComputeResource"] = request.minComputeResource ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.nodeNum)) {
             query["NodeNum"] = request.nodeNum!;

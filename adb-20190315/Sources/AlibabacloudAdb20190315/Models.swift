@@ -2063,11 +2063,27 @@ public class CreateDBClusterResponse : Tea.TeaModel {
 public class CreateDBResourceGroupRequest : Tea.TeaModel {
     public var clientToken: String?
 
+    public var clusterMode: String?
+
+    public var clusterSizeResource: String?
+
     public var DBClusterId: String?
+
+    public var engine: String?
+
+    public var engineParams: [String: Any]?
 
     public var groupName: String?
 
     public var groupType: String?
+
+    public var maxClusterCount: Int32?
+
+    public var maxComputeResource: String?
+
+    public var minClusterCount: Int32?
+
+    public var minComputeResource: String?
 
     public var nodeNum: Int32?
 
@@ -2096,14 +2112,38 @@ public class CreateDBResourceGroupRequest : Tea.TeaModel {
         if self.clientToken != nil {
             map["ClientToken"] = self.clientToken!
         }
+        if self.clusterMode != nil {
+            map["ClusterMode"] = self.clusterMode!
+        }
+        if self.clusterSizeResource != nil {
+            map["ClusterSizeResource"] = self.clusterSizeResource!
+        }
         if self.DBClusterId != nil {
             map["DBClusterId"] = self.DBClusterId!
+        }
+        if self.engine != nil {
+            map["Engine"] = self.engine!
+        }
+        if self.engineParams != nil {
+            map["EngineParams"] = self.engineParams!
         }
         if self.groupName != nil {
             map["GroupName"] = self.groupName!
         }
         if self.groupType != nil {
             map["GroupType"] = self.groupType!
+        }
+        if self.maxClusterCount != nil {
+            map["MaxClusterCount"] = self.maxClusterCount!
+        }
+        if self.maxComputeResource != nil {
+            map["MaxComputeResource"] = self.maxComputeResource!
+        }
+        if self.minClusterCount != nil {
+            map["MinClusterCount"] = self.minClusterCount!
+        }
+        if self.minComputeResource != nil {
+            map["MinComputeResource"] = self.minComputeResource!
         }
         if self.nodeNum != nil {
             map["NodeNum"] = self.nodeNum!
@@ -2128,14 +2168,197 @@ public class CreateDBResourceGroupRequest : Tea.TeaModel {
         if let value = dict["ClientToken"] as? String {
             self.clientToken = value
         }
+        if let value = dict["ClusterMode"] as? String {
+            self.clusterMode = value
+        }
+        if let value = dict["ClusterSizeResource"] as? String {
+            self.clusterSizeResource = value
+        }
         if let value = dict["DBClusterId"] as? String {
             self.DBClusterId = value
+        }
+        if let value = dict["Engine"] as? String {
+            self.engine = value
+        }
+        if let value = dict["EngineParams"] as? [String: Any] {
+            self.engineParams = value
         }
         if let value = dict["GroupName"] as? String {
             self.groupName = value
         }
         if let value = dict["GroupType"] as? String {
             self.groupType = value
+        }
+        if let value = dict["MaxClusterCount"] as? Int32 {
+            self.maxClusterCount = value
+        }
+        if let value = dict["MaxComputeResource"] as? String {
+            self.maxComputeResource = value
+        }
+        if let value = dict["MinClusterCount"] as? Int32 {
+            self.minClusterCount = value
+        }
+        if let value = dict["MinComputeResource"] as? String {
+            self.minComputeResource = value
+        }
+        if let value = dict["NodeNum"] as? Int32 {
+            self.nodeNum = value
+        }
+        if let value = dict["OwnerAccount"] as? String {
+            self.ownerAccount = value
+        }
+        if let value = dict["OwnerId"] as? Int64 {
+            self.ownerId = value
+        }
+        if let value = dict["ResourceOwnerAccount"] as? String {
+            self.resourceOwnerAccount = value
+        }
+        if let value = dict["ResourceOwnerId"] as? Int64 {
+            self.resourceOwnerId = value
+        }
+    }
+}
+
+public class CreateDBResourceGroupShrinkRequest : Tea.TeaModel {
+    public var clientToken: String?
+
+    public var clusterMode: String?
+
+    public var clusterSizeResource: String?
+
+    public var DBClusterId: String?
+
+    public var engine: String?
+
+    public var engineParamsShrink: String?
+
+    public var groupName: String?
+
+    public var groupType: String?
+
+    public var maxClusterCount: Int32?
+
+    public var maxComputeResource: String?
+
+    public var minClusterCount: Int32?
+
+    public var minComputeResource: String?
+
+    public var nodeNum: Int32?
+
+    public var ownerAccount: String?
+
+    public var ownerId: Int64?
+
+    public var resourceOwnerAccount: String?
+
+    public var resourceOwnerId: Int64?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.clientToken != nil {
+            map["ClientToken"] = self.clientToken!
+        }
+        if self.clusterMode != nil {
+            map["ClusterMode"] = self.clusterMode!
+        }
+        if self.clusterSizeResource != nil {
+            map["ClusterSizeResource"] = self.clusterSizeResource!
+        }
+        if self.DBClusterId != nil {
+            map["DBClusterId"] = self.DBClusterId!
+        }
+        if self.engine != nil {
+            map["Engine"] = self.engine!
+        }
+        if self.engineParamsShrink != nil {
+            map["EngineParams"] = self.engineParamsShrink!
+        }
+        if self.groupName != nil {
+            map["GroupName"] = self.groupName!
+        }
+        if self.groupType != nil {
+            map["GroupType"] = self.groupType!
+        }
+        if self.maxClusterCount != nil {
+            map["MaxClusterCount"] = self.maxClusterCount!
+        }
+        if self.maxComputeResource != nil {
+            map["MaxComputeResource"] = self.maxComputeResource!
+        }
+        if self.minClusterCount != nil {
+            map["MinClusterCount"] = self.minClusterCount!
+        }
+        if self.minComputeResource != nil {
+            map["MinComputeResource"] = self.minComputeResource!
+        }
+        if self.nodeNum != nil {
+            map["NodeNum"] = self.nodeNum!
+        }
+        if self.ownerAccount != nil {
+            map["OwnerAccount"] = self.ownerAccount!
+        }
+        if self.ownerId != nil {
+            map["OwnerId"] = self.ownerId!
+        }
+        if self.resourceOwnerAccount != nil {
+            map["ResourceOwnerAccount"] = self.resourceOwnerAccount!
+        }
+        if self.resourceOwnerId != nil {
+            map["ResourceOwnerId"] = self.resourceOwnerId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["ClientToken"] as? String {
+            self.clientToken = value
+        }
+        if let value = dict["ClusterMode"] as? String {
+            self.clusterMode = value
+        }
+        if let value = dict["ClusterSizeResource"] as? String {
+            self.clusterSizeResource = value
+        }
+        if let value = dict["DBClusterId"] as? String {
+            self.DBClusterId = value
+        }
+        if let value = dict["Engine"] as? String {
+            self.engine = value
+        }
+        if let value = dict["EngineParams"] as? String {
+            self.engineParamsShrink = value
+        }
+        if let value = dict["GroupName"] as? String {
+            self.groupName = value
+        }
+        if let value = dict["GroupType"] as? String {
+            self.groupType = value
+        }
+        if let value = dict["MaxClusterCount"] as? Int32 {
+            self.maxClusterCount = value
+        }
+        if let value = dict["MaxComputeResource"] as? String {
+            self.maxComputeResource = value
+        }
+        if let value = dict["MinClusterCount"] as? Int32 {
+            self.minClusterCount = value
+        }
+        if let value = dict["MinComputeResource"] as? String {
+            self.minComputeResource = value
         }
         if let value = dict["NodeNum"] as? Int32 {
             self.nodeNum = value
@@ -12147,6 +12370,8 @@ public class DescribeDBClusterHealthStatusResponse : Tea.TeaModel {
 public class DescribeDBClusterNetInfoRequest : Tea.TeaModel {
     public var DBClusterId: String?
 
+    public var engine: String?
+
     public var ownerAccount: String?
 
     public var ownerId: Int64?
@@ -12174,6 +12399,9 @@ public class DescribeDBClusterNetInfoRequest : Tea.TeaModel {
         if self.DBClusterId != nil {
             map["DBClusterId"] = self.DBClusterId!
         }
+        if self.engine != nil {
+            map["Engine"] = self.engine!
+        }
         if self.ownerAccount != nil {
             map["OwnerAccount"] = self.ownerAccount!
         }
@@ -12196,6 +12424,9 @@ public class DescribeDBClusterNetInfoRequest : Tea.TeaModel {
         guard let dict else { return }
         if let value = dict["DBClusterId"] as? String {
             self.DBClusterId = value
+        }
+        if let value = dict["Engine"] as? String {
+            self.engine = value
         }
         if let value = dict["OwnerAccount"] as? String {
             self.ownerAccount = value
@@ -15078,7 +15309,19 @@ public class DescribeDBResourceGroupRequest : Tea.TeaModel {
 
 public class DescribeDBResourceGroupResponseBody : Tea.TeaModel {
     public class GroupsInfo : Tea.TeaModel {
+        public var clusterMode: String?
+
+        public var clusterSizeResource: String?
+
+        public var connectionString: String?
+
         public var createTime: String?
+
+        public var elasticMinComputeResource: String?
+
+        public var engine: String?
+
+        public var engineParams: [String: Any]?
 
         public var groupName: String?
 
@@ -15088,7 +15331,21 @@ public class DescribeDBResourceGroupResponseBody : Tea.TeaModel {
 
         public var groupUsers: String?
 
+        public var maxClusterCount: Int32?
+
+        public var maxComputeResource: String?
+
+        public var minClusterCount: Int32?
+
+        public var minComputeResource: String?
+
         public var nodeNum: Int32?
+
+        public var port: String?
+
+        public var runningClusterCount: Int32?
+
+        public var status: String?
 
         public var updateTime: String?
 
@@ -15106,8 +15363,26 @@ public class DescribeDBResourceGroupResponseBody : Tea.TeaModel {
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
+            if self.clusterMode != nil {
+                map["ClusterMode"] = self.clusterMode!
+            }
+            if self.clusterSizeResource != nil {
+                map["ClusterSizeResource"] = self.clusterSizeResource!
+            }
+            if self.connectionString != nil {
+                map["ConnectionString"] = self.connectionString!
+            }
             if self.createTime != nil {
                 map["CreateTime"] = self.createTime!
+            }
+            if self.elasticMinComputeResource != nil {
+                map["ElasticMinComputeResource"] = self.elasticMinComputeResource!
+            }
+            if self.engine != nil {
+                map["Engine"] = self.engine!
+            }
+            if self.engineParams != nil {
+                map["EngineParams"] = self.engineParams!
             }
             if self.groupName != nil {
                 map["GroupName"] = self.groupName!
@@ -15121,8 +15396,29 @@ public class DescribeDBResourceGroupResponseBody : Tea.TeaModel {
             if self.groupUsers != nil {
                 map["GroupUsers"] = self.groupUsers!
             }
+            if self.maxClusterCount != nil {
+                map["MaxClusterCount"] = self.maxClusterCount!
+            }
+            if self.maxComputeResource != nil {
+                map["MaxComputeResource"] = self.maxComputeResource!
+            }
+            if self.minClusterCount != nil {
+                map["MinClusterCount"] = self.minClusterCount!
+            }
+            if self.minComputeResource != nil {
+                map["MinComputeResource"] = self.minComputeResource!
+            }
             if self.nodeNum != nil {
                 map["NodeNum"] = self.nodeNum!
+            }
+            if self.port != nil {
+                map["Port"] = self.port!
+            }
+            if self.runningClusterCount != nil {
+                map["RunningClusterCount"] = self.runningClusterCount!
+            }
+            if self.status != nil {
+                map["Status"] = self.status!
             }
             if self.updateTime != nil {
                 map["UpdateTime"] = self.updateTime!
@@ -15132,8 +15428,26 @@ public class DescribeDBResourceGroupResponseBody : Tea.TeaModel {
 
         public override func fromMap(_ dict: [String: Any?]?) -> Void {
             guard let dict else { return }
+            if let value = dict["ClusterMode"] as? String {
+                self.clusterMode = value
+            }
+            if let value = dict["ClusterSizeResource"] as? String {
+                self.clusterSizeResource = value
+            }
+            if let value = dict["ConnectionString"] as? String {
+                self.connectionString = value
+            }
             if let value = dict["CreateTime"] as? String {
                 self.createTime = value
+            }
+            if let value = dict["ElasticMinComputeResource"] as? String {
+                self.elasticMinComputeResource = value
+            }
+            if let value = dict["Engine"] as? String {
+                self.engine = value
+            }
+            if let value = dict["EngineParams"] as? [String: Any] {
+                self.engineParams = value
             }
             if let value = dict["GroupName"] as? String {
                 self.groupName = value
@@ -15147,8 +15461,29 @@ public class DescribeDBResourceGroupResponseBody : Tea.TeaModel {
             if let value = dict["GroupUsers"] as? String {
                 self.groupUsers = value
             }
+            if let value = dict["MaxClusterCount"] as? Int32 {
+                self.maxClusterCount = value
+            }
+            if let value = dict["MaxComputeResource"] as? String {
+                self.maxComputeResource = value
+            }
+            if let value = dict["MinClusterCount"] as? Int32 {
+                self.minClusterCount = value
+            }
+            if let value = dict["MinComputeResource"] as? String {
+                self.minComputeResource = value
+            }
             if let value = dict["NodeNum"] as? Int32 {
                 self.nodeNum = value
+            }
+            if let value = dict["Port"] as? String {
+                self.port = value
+            }
+            if let value = dict["RunningClusterCount"] as? Int32 {
+                self.runningClusterCount = value
+            }
+            if let value = dict["Status"] as? String {
+                self.status = value
             }
             if let value = dict["UpdateTime"] as? String {
                 self.updateTime = value
@@ -37039,11 +37374,25 @@ public class ModifyDBClusterVipResponse : Tea.TeaModel {
 public class ModifyDBResourceGroupRequest : Tea.TeaModel {
     public var clientToken: String?
 
+    public var clusterMode: String?
+
+    public var clusterSizeResource: String?
+
     public var DBClusterId: String?
+
+    public var engineParams: [String: Any]?
 
     public var groupName: String?
 
     public var groupType: String?
+
+    public var maxClusterCount: Int32?
+
+    public var maxComputeResource: String?
+
+    public var minClusterCount: Int32?
+
+    public var minComputeResource: String?
 
     public var nodeNum: Int32?
 
@@ -37074,14 +37423,35 @@ public class ModifyDBResourceGroupRequest : Tea.TeaModel {
         if self.clientToken != nil {
             map["ClientToken"] = self.clientToken!
         }
+        if self.clusterMode != nil {
+            map["ClusterMode"] = self.clusterMode!
+        }
+        if self.clusterSizeResource != nil {
+            map["ClusterSizeResource"] = self.clusterSizeResource!
+        }
         if self.DBClusterId != nil {
             map["DBClusterId"] = self.DBClusterId!
+        }
+        if self.engineParams != nil {
+            map["EngineParams"] = self.engineParams!
         }
         if self.groupName != nil {
             map["GroupName"] = self.groupName!
         }
         if self.groupType != nil {
             map["GroupType"] = self.groupType!
+        }
+        if self.maxClusterCount != nil {
+            map["MaxClusterCount"] = self.maxClusterCount!
+        }
+        if self.maxComputeResource != nil {
+            map["MaxComputeResource"] = self.maxComputeResource!
+        }
+        if self.minClusterCount != nil {
+            map["MinClusterCount"] = self.minClusterCount!
+        }
+        if self.minComputeResource != nil {
+            map["MinComputeResource"] = self.minComputeResource!
         }
         if self.nodeNum != nil {
             map["NodeNum"] = self.nodeNum!
@@ -37109,14 +37479,35 @@ public class ModifyDBResourceGroupRequest : Tea.TeaModel {
         if let value = dict["ClientToken"] as? String {
             self.clientToken = value
         }
+        if let value = dict["ClusterMode"] as? String {
+            self.clusterMode = value
+        }
+        if let value = dict["ClusterSizeResource"] as? String {
+            self.clusterSizeResource = value
+        }
         if let value = dict["DBClusterId"] as? String {
             self.DBClusterId = value
+        }
+        if let value = dict["EngineParams"] as? [String: Any] {
+            self.engineParams = value
         }
         if let value = dict["GroupName"] as? String {
             self.groupName = value
         }
         if let value = dict["GroupType"] as? String {
             self.groupType = value
+        }
+        if let value = dict["MaxClusterCount"] as? Int32 {
+            self.maxClusterCount = value
+        }
+        if let value = dict["MaxComputeResource"] as? String {
+            self.maxComputeResource = value
+        }
+        if let value = dict["MinClusterCount"] as? Int32 {
+            self.minClusterCount = value
+        }
+        if let value = dict["MinComputeResource"] as? String {
+            self.minComputeResource = value
         }
         if let value = dict["NodeNum"] as? Int32 {
             self.nodeNum = value
@@ -37142,11 +37533,25 @@ public class ModifyDBResourceGroupRequest : Tea.TeaModel {
 public class ModifyDBResourceGroupShrinkRequest : Tea.TeaModel {
     public var clientToken: String?
 
+    public var clusterMode: String?
+
+    public var clusterSizeResource: String?
+
     public var DBClusterId: String?
+
+    public var engineParamsShrink: String?
 
     public var groupName: String?
 
     public var groupType: String?
+
+    public var maxClusterCount: Int32?
+
+    public var maxComputeResource: String?
+
+    public var minClusterCount: Int32?
+
+    public var minComputeResource: String?
 
     public var nodeNum: Int32?
 
@@ -37177,14 +37582,35 @@ public class ModifyDBResourceGroupShrinkRequest : Tea.TeaModel {
         if self.clientToken != nil {
             map["ClientToken"] = self.clientToken!
         }
+        if self.clusterMode != nil {
+            map["ClusterMode"] = self.clusterMode!
+        }
+        if self.clusterSizeResource != nil {
+            map["ClusterSizeResource"] = self.clusterSizeResource!
+        }
         if self.DBClusterId != nil {
             map["DBClusterId"] = self.DBClusterId!
+        }
+        if self.engineParamsShrink != nil {
+            map["EngineParams"] = self.engineParamsShrink!
         }
         if self.groupName != nil {
             map["GroupName"] = self.groupName!
         }
         if self.groupType != nil {
             map["GroupType"] = self.groupType!
+        }
+        if self.maxClusterCount != nil {
+            map["MaxClusterCount"] = self.maxClusterCount!
+        }
+        if self.maxComputeResource != nil {
+            map["MaxComputeResource"] = self.maxComputeResource!
+        }
+        if self.minClusterCount != nil {
+            map["MinClusterCount"] = self.minClusterCount!
+        }
+        if self.minComputeResource != nil {
+            map["MinComputeResource"] = self.minComputeResource!
         }
         if self.nodeNum != nil {
             map["NodeNum"] = self.nodeNum!
@@ -37212,14 +37638,35 @@ public class ModifyDBResourceGroupShrinkRequest : Tea.TeaModel {
         if let value = dict["ClientToken"] as? String {
             self.clientToken = value
         }
+        if let value = dict["ClusterMode"] as? String {
+            self.clusterMode = value
+        }
+        if let value = dict["ClusterSizeResource"] as? String {
+            self.clusterSizeResource = value
+        }
         if let value = dict["DBClusterId"] as? String {
             self.DBClusterId = value
+        }
+        if let value = dict["EngineParams"] as? String {
+            self.engineParamsShrink = value
         }
         if let value = dict["GroupName"] as? String {
             self.groupName = value
         }
         if let value = dict["GroupType"] as? String {
             self.groupType = value
+        }
+        if let value = dict["MaxClusterCount"] as? Int32 {
+            self.maxClusterCount = value
+        }
+        if let value = dict["MaxComputeResource"] as? String {
+            self.maxComputeResource = value
+        }
+        if let value = dict["MinClusterCount"] as? Int32 {
+            self.minClusterCount = value
+        }
+        if let value = dict["MinComputeResource"] as? String {
+            self.minComputeResource = value
         }
         if let value = dict["NodeNum"] as? Int32 {
             self.nodeNum = value
