@@ -3012,6 +3012,8 @@ public class GetTaskResultResponseBody : Tea.TeaModel {
 
             public var role: String?
 
+            public var roleName: String?
+
             public var speechRate: Int32?
 
             public var words: String?
@@ -3042,6 +3044,9 @@ public class GetTaskResultResponseBody : Tea.TeaModel {
                 if self.role != nil {
                     map["role"] = self.role!
                 }
+                if self.roleName != nil {
+                    map["roleName"] = self.roleName!
+                }
                 if self.speechRate != nil {
                     map["speechRate"] = self.speechRate!
                 }
@@ -3064,6 +3069,9 @@ public class GetTaskResultResponseBody : Tea.TeaModel {
                 }
                 if let value = dict["role"] as? String {
                     self.role = value
+                }
+                if let value = dict["roleName"] as? String {
+                    self.roleName = value
                 }
                 if let value = dict["speechRate"] as? Int32 {
                     self.speechRate = value
