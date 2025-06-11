@@ -233,6 +233,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.sessionDuration)) {
             query["SessionDuration"] = request.sessionDuration!;
         }
+        if (!TeaUtils.Client.isUnset(request.tags)) {
+            query["Tags"] = request.tags ?? [];
+        }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "query": AlibabaCloudOpenApiUtil.Client.query(query)
         ])
@@ -380,6 +383,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.status)) {
             query["Status"] = request.status ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.tags)) {
+            query["Tags"] = request.tags ?? [];
         }
         if (!TeaUtils.Client.isUnset(request.userName)) {
             query["UserName"] = request.userName ?? "";
@@ -1804,6 +1810,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.statusNotifications)) {
             query["StatusNotifications"] = request.statusNotifications ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.tags)) {
+            query["Tags"] = request.tags ?? [];
+        }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "query": AlibabaCloudOpenApiUtil.Client.query(query)
         ])
@@ -2280,6 +2289,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.status)) {
             query["Status"] = request.status ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.tags)) {
+            query["Tags"] = request.tags ?? [];
+        }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "query": AlibabaCloudOpenApiUtil.Client.query(query)
         ])
@@ -2539,6 +2551,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func setExternalSAMLIdentityProviderWithOptions(_ request: SetExternalSAMLIdentityProviderRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> SetExternalSAMLIdentityProviderResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.bindingType)) {
+            query["BindingType"] = request.bindingType ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.directoryId)) {
             query["DirectoryId"] = request.directoryId ?? "";
         }
@@ -2588,6 +2603,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func setLoginPreferenceWithOptions(_ request: SetLoginPreferenceRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> SetLoginPreferenceResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.allowUserToGetCredentials)) {
+            query["AllowUserToGetCredentials"] = request.allowUserToGetCredentials!;
+        }
         if (!TeaUtils.Client.isUnset(request.directoryId)) {
             query["DirectoryId"] = request.directoryId ?? "";
         }
