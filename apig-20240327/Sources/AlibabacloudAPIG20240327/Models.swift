@@ -12579,6 +12579,8 @@ public class GetGatewayResponseBody : Tea.TeaModel {
 
         public var gatewayId: String?
 
+        public var gatewayType: String?
+
         public var loadBalancers: [GetGatewayResponseBody.Data.LoadBalancers]?
 
         public var name: String?
@@ -12645,6 +12647,9 @@ public class GetGatewayResponseBody : Tea.TeaModel {
             }
             if self.gatewayId != nil {
                 map["gatewayId"] = self.gatewayId!
+            }
+            if self.gatewayType != nil {
+                map["gatewayType"] = self.gatewayType!
             }
             if self.loadBalancers != nil {
                 var tmp : [Any] = []
@@ -12732,6 +12737,9 @@ public class GetGatewayResponseBody : Tea.TeaModel {
             }
             if let value = dict["gatewayId"] as? String {
                 self.gatewayId = value
+            }
+            if let value = dict["gatewayType"] as? String {
+                self.gatewayType = value
             }
             if let value = dict["loadBalancers"] as? [Any?] {
                 var tmp : [GetGatewayResponseBody.Data.LoadBalancers] = []
@@ -17441,6 +17449,394 @@ public class ListHttpApisResponse : Tea.TeaModel {
         }
         if let value = dict["body"] as? [String: Any?] {
             var model = ListHttpApisResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
+public class ListPluginAttachmentsRequest : Tea.TeaModel {
+    public var attachResourceId: String?
+
+    public var attachResourceType: String?
+
+    public var attachResourceTypes: String?
+
+    public var environmentId: String?
+
+    public var gatewayId: String?
+
+    public var pageNumber: Int32?
+
+    public var pageSize: Int32?
+
+    public var pluginId: String?
+
+    public var withParentResource: Bool?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.attachResourceId != nil {
+            map["attachResourceId"] = self.attachResourceId!
+        }
+        if self.attachResourceType != nil {
+            map["attachResourceType"] = self.attachResourceType!
+        }
+        if self.attachResourceTypes != nil {
+            map["attachResourceTypes"] = self.attachResourceTypes!
+        }
+        if self.environmentId != nil {
+            map["environmentId"] = self.environmentId!
+        }
+        if self.gatewayId != nil {
+            map["gatewayId"] = self.gatewayId!
+        }
+        if self.pageNumber != nil {
+            map["pageNumber"] = self.pageNumber!
+        }
+        if self.pageSize != nil {
+            map["pageSize"] = self.pageSize!
+        }
+        if self.pluginId != nil {
+            map["pluginId"] = self.pluginId!
+        }
+        if self.withParentResource != nil {
+            map["withParentResource"] = self.withParentResource!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["attachResourceId"] as? String {
+            self.attachResourceId = value
+        }
+        if let value = dict["attachResourceType"] as? String {
+            self.attachResourceType = value
+        }
+        if let value = dict["attachResourceTypes"] as? String {
+            self.attachResourceTypes = value
+        }
+        if let value = dict["environmentId"] as? String {
+            self.environmentId = value
+        }
+        if let value = dict["gatewayId"] as? String {
+            self.gatewayId = value
+        }
+        if let value = dict["pageNumber"] as? Int32 {
+            self.pageNumber = value
+        }
+        if let value = dict["pageSize"] as? Int32 {
+            self.pageSize = value
+        }
+        if let value = dict["pluginId"] as? String {
+            self.pluginId = value
+        }
+        if let value = dict["withParentResource"] as? Bool {
+            self.withParentResource = value
+        }
+    }
+}
+
+public class ListPluginAttachmentsResponseBody : Tea.TeaModel {
+    public class Data : Tea.TeaModel {
+        public class Items : Tea.TeaModel {
+            public var attachResourceType: String?
+
+            public var enable: Bool?
+
+            public var environmentInfo: EnvironmentInfo?
+
+            public var parentResourceInfo: ParentResourceInfo?
+
+            public var pluginAttachmentId: String?
+
+            public var pluginClassInfo: PluginClassInfo?
+
+            public var pluginConfig: String?
+
+            public var pluginId: String?
+
+            public var resourceInfos: [ResourceInfo]?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+                try self.environmentInfo?.validate()
+                try self.parentResourceInfo?.validate()
+                try self.pluginClassInfo?.validate()
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.attachResourceType != nil {
+                    map["attachResourceType"] = self.attachResourceType!
+                }
+                if self.enable != nil {
+                    map["enable"] = self.enable!
+                }
+                if self.environmentInfo != nil {
+                    map["environmentInfo"] = self.environmentInfo?.toMap()
+                }
+                if self.parentResourceInfo != nil {
+                    map["parentResourceInfo"] = self.parentResourceInfo?.toMap()
+                }
+                if self.pluginAttachmentId != nil {
+                    map["pluginAttachmentId"] = self.pluginAttachmentId!
+                }
+                if self.pluginClassInfo != nil {
+                    map["pluginClassInfo"] = self.pluginClassInfo?.toMap()
+                }
+                if self.pluginConfig != nil {
+                    map["pluginConfig"] = self.pluginConfig!
+                }
+                if self.pluginId != nil {
+                    map["pluginId"] = self.pluginId!
+                }
+                if self.resourceInfos != nil {
+                    var tmp : [Any] = []
+                    for k in self.resourceInfos! {
+                        tmp.append(k.toMap())
+                    }
+                    map["resourceInfos"] = tmp
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["attachResourceType"] as? String {
+                    self.attachResourceType = value
+                }
+                if let value = dict["enable"] as? Bool {
+                    self.enable = value
+                }
+                if let value = dict["environmentInfo"] as? [String: Any?] {
+                    var model = EnvironmentInfo()
+                    model.fromMap(value)
+                    self.environmentInfo = model
+                }
+                if let value = dict["parentResourceInfo"] as? [String: Any?] {
+                    var model = ParentResourceInfo()
+                    model.fromMap(value)
+                    self.parentResourceInfo = model
+                }
+                if let value = dict["pluginAttachmentId"] as? String {
+                    self.pluginAttachmentId = value
+                }
+                if let value = dict["pluginClassInfo"] as? [String: Any?] {
+                    var model = PluginClassInfo()
+                    model.fromMap(value)
+                    self.pluginClassInfo = model
+                }
+                if let value = dict["pluginConfig"] as? String {
+                    self.pluginConfig = value
+                }
+                if let value = dict["pluginId"] as? String {
+                    self.pluginId = value
+                }
+                if let value = dict["resourceInfos"] as? [Any?] {
+                    var tmp : [ResourceInfo] = []
+                    for v in value {
+                        if v != nil {
+                            var model = ResourceInfo()
+                            if v != nil {
+                                model.fromMap(v as? [String: Any?])
+                            }
+                            tmp.append(model)
+                        }
+                    }
+                    self.resourceInfos = tmp
+                }
+            }
+        }
+        public var items: [ListPluginAttachmentsResponseBody.Data.Items]?
+
+        public var pageNumber: Int32?
+
+        public var pageSize: Int32?
+
+        public var totalSize: Int32?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.items != nil {
+                var tmp : [Any] = []
+                for k in self.items! {
+                    tmp.append(k.toMap())
+                }
+                map["items"] = tmp
+            }
+            if self.pageNumber != nil {
+                map["pageNumber"] = self.pageNumber!
+            }
+            if self.pageSize != nil {
+                map["pageSize"] = self.pageSize!
+            }
+            if self.totalSize != nil {
+                map["totalSize"] = self.totalSize!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["items"] as? [Any?] {
+                var tmp : [ListPluginAttachmentsResponseBody.Data.Items] = []
+                for v in value {
+                    if v != nil {
+                        var model = ListPluginAttachmentsResponseBody.Data.Items()
+                        if v != nil {
+                            model.fromMap(v as? [String: Any?])
+                        }
+                        tmp.append(model)
+                    }
+                }
+                self.items = tmp
+            }
+            if let value = dict["pageNumber"] as? Int32 {
+                self.pageNumber = value
+            }
+            if let value = dict["pageSize"] as? Int32 {
+                self.pageSize = value
+            }
+            if let value = dict["totalSize"] as? Int32 {
+                self.totalSize = value
+            }
+        }
+    }
+    public var code: String?
+
+    public var data: ListPluginAttachmentsResponseBody.Data?
+
+    public var message: String?
+
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.data?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.code != nil {
+            map["code"] = self.code!
+        }
+        if self.data != nil {
+            map["data"] = self.data?.toMap()
+        }
+        if self.message != nil {
+            map["message"] = self.message!
+        }
+        if self.requestId != nil {
+            map["requestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["code"] as? String {
+            self.code = value
+        }
+        if let value = dict["data"] as? [String: Any?] {
+            var model = ListPluginAttachmentsResponseBody.Data()
+            model.fromMap(value)
+            self.data = model
+        }
+        if let value = dict["message"] as? String {
+            self.message = value
+        }
+        if let value = dict["requestId"] as? String {
+            self.requestId = value
+        }
+    }
+}
+
+public class ListPluginAttachmentsResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: ListPluginAttachmentsResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = ListPluginAttachmentsResponseBody()
             model.fromMap(value)
             self.body = model
         }

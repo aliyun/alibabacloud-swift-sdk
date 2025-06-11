@@ -1750,6 +1750,63 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func listPluginAttachmentsWithOptions(_ request: ListPluginAttachmentsRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> ListPluginAttachmentsResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.attachResourceId)) {
+            query["attachResourceId"] = request.attachResourceId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.attachResourceType)) {
+            query["attachResourceType"] = request.attachResourceType ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.attachResourceTypes)) {
+            query["attachResourceTypes"] = request.attachResourceTypes ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.environmentId)) {
+            query["environmentId"] = request.environmentId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.gatewayId)) {
+            query["gatewayId"] = request.gatewayId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.pageNumber)) {
+            query["pageNumber"] = request.pageNumber!;
+        }
+        if (!TeaUtils.Client.isUnset(request.pageSize)) {
+            query["pageSize"] = request.pageSize!;
+        }
+        if (!TeaUtils.Client.isUnset(request.pluginId)) {
+            query["pluginId"] = request.pluginId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.withParentResource)) {
+            query["withParentResource"] = request.withParentResource!;
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String],
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "ListPluginAttachments",
+            "version": "2024-03-27",
+            "protocol": "HTTPS",
+            "pathname": "/v1/plugin-attachments",
+            "method": "GET",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(ListPluginAttachmentsResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func listPluginAttachments(_ request: ListPluginAttachmentsRequest) async throws -> ListPluginAttachmentsResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await listPluginAttachmentsWithOptions(request as! ListPluginAttachmentsRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func listPluginsWithOptions(_ request: ListPluginsRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> ListPluginsResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
