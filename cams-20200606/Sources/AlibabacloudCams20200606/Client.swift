@@ -558,6 +558,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.category)) {
             body["Category"] = request.category ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.categoryChangePaused)) {
+            body["CategoryChangePaused"] = request.categoryChangePaused!;
+        }
         if (!TeaUtils.Client.isUnset(request.componentsShrink)) {
             body["Components"] = request.componentsShrink ?? "";
         }
@@ -1895,6 +1898,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.category)) {
             body["Category"] = request.category ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.categoryChangePaused)) {
+            body["CategoryChangePaused"] = request.categoryChangePaused!;
+        }
         if (!TeaUtils.Client.isUnset(request.componentsShrink)) {
             body["Components"] = request.componentsShrink ?? "";
         }
@@ -1947,6 +1953,61 @@ open class Client : AlibabacloudOpenApi.Client {
     public func modifyChatappTemplate(_ request: ModifyChatappTemplateRequest) async throws -> ModifyChatappTemplateResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         return try await modifyChatappTemplateWithOptions(request as! ModifyChatappTemplateRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func modifyChatappTemplatePropertiesWithOptions(_ request: ModifyChatappTemplatePropertiesRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ModifyChatappTemplatePropertiesResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.allowSend)) {
+            query["AllowSend"] = request.allowSend!;
+        }
+        if (!TeaUtils.Client.isUnset(request.categoryChangePaused)) {
+            query["CategoryChangePaused"] = request.categoryChangePaused!;
+        }
+        if (!TeaUtils.Client.isUnset(request.custSpaceId)) {
+            query["CustSpaceId"] = request.custSpaceId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.language)) {
+            query["Language"] = request.language ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.ownerId)) {
+            query["OwnerId"] = request.ownerId!;
+        }
+        if (!TeaUtils.Client.isUnset(request.resourceOwnerAccount)) {
+            query["ResourceOwnerAccount"] = request.resourceOwnerAccount ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.resourceOwnerId)) {
+            query["ResourceOwnerId"] = request.resourceOwnerId!;
+        }
+        if (!TeaUtils.Client.isUnset(request.templateCode)) {
+            query["TemplateCode"] = request.templateCode ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.templateType)) {
+            query["TemplateType"] = request.templateType ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "ModifyChatappTemplateProperties",
+            "version": "2020-06-06",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(ModifyChatappTemplatePropertiesResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func modifyChatappTemplateProperties(_ request: ModifyChatappTemplatePropertiesRequest) async throws -> ModifyChatappTemplatePropertiesResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await modifyChatappTemplatePropertiesWithOptions(request as! ModifyChatappTemplatePropertiesRequest, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
