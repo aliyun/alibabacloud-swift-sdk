@@ -6177,6 +6177,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func insertMediaToSearchLibWithOptions(_ request: InsertMediaToSearchLibRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> InsertMediaToSearchLibResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.imagesInput)) {
+            query["ImagesInput"] = request.imagesInput ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.input)) {
             query["Input"] = request.input ?? "";
         }
@@ -9540,6 +9543,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.multimodalSearchType)) {
             query["MultimodalSearchType"] = request.multimodalSearchType ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.namespace)) {
+            query["Namespace"] = request.namespace ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.pageNo)) {
             query["PageNo"] = request.pageNo!;
         }
@@ -9595,6 +9601,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.mediaType)) {
             query["MediaType"] = request.mediaType ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.namespace)) {
+            query["Namespace"] = request.namespace ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.pageNo)) {
             query["PageNo"] = request.pageNo!;
         }
@@ -9641,6 +9650,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.mediaType)) {
             query["MediaType"] = request.mediaType ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.namespace)) {
+            query["Namespace"] = request.namespace ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.pageNo)) {
             query["PageNo"] = request.pageNo!;
         }
@@ -9683,6 +9695,9 @@ open class Client : AlibabacloudOpenApi.Client {
         var query: [String: Any] = [:]
         if (!TeaUtils.Client.isUnset(request.mediaType)) {
             query["MediaType"] = request.mediaType ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.namespace)) {
+            query["Namespace"] = request.namespace ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.pageNo)) {
             query["PageNo"] = request.pageNo!;

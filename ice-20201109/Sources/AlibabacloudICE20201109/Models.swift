@@ -49381,6 +49381,8 @@ public class GetWorkflowTaskResponse : Tea.TeaModel {
 }
 
 public class InsertMediaToSearchLibRequest : Tea.TeaModel {
+    public var imagesInput: String?
+
     public var input: String?
 
     public var mediaId: String?
@@ -49405,6 +49407,9 @@ public class InsertMediaToSearchLibRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.imagesInput != nil {
+            map["ImagesInput"] = self.imagesInput!
+        }
         if self.input != nil {
             map["Input"] = self.input!
         }
@@ -49425,6 +49430,9 @@ public class InsertMediaToSearchLibRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["ImagesInput"] as? String {
+            self.imagesInput = value
+        }
         if let value = dict["Input"] as? String {
             self.input = value
         }
@@ -77660,6 +77668,8 @@ public class SearchMediaResponseBody : Tea.TeaModel {
 
                 public var height: String?
 
+                public var imagesInput: String?
+
                 public var modifiedTime: String?
 
                 public var region: String?
@@ -77710,6 +77720,9 @@ public class SearchMediaResponseBody : Tea.TeaModel {
                     if self.height != nil {
                         map["Height"] = self.height!
                     }
+                    if self.imagesInput != nil {
+                        map["ImagesInput"] = self.imagesInput!
+                    }
                     if self.modifiedTime != nil {
                         map["ModifiedTime"] = self.modifiedTime!
                     }
@@ -77753,6 +77766,9 @@ public class SearchMediaResponseBody : Tea.TeaModel {
                     }
                     if let value = dict["Height"] as? String {
                         self.height = value
+                    }
+                    if let value = dict["ImagesInput"] as? String {
+                        self.imagesInput = value
                     }
                     if let value = dict["ModifiedTime"] as? String {
                         self.modifiedTime = value
@@ -77864,6 +77880,8 @@ public class SearchMediaResponseBody : Tea.TeaModel {
 
             public var modifiedTime: String?
 
+            public var namespace: String?
+
             public var referenceId: String?
 
             public var snapshots: String?
@@ -77881,6 +77899,8 @@ public class SearchMediaResponseBody : Tea.TeaModel {
             public var uploadSource: String?
 
             public var userData: String?
+
+            public var visionDescription: String?
 
             public override init() {
                 super.init()
@@ -77938,6 +77958,9 @@ public class SearchMediaResponseBody : Tea.TeaModel {
                 if self.modifiedTime != nil {
                     map["ModifiedTime"] = self.modifiedTime!
                 }
+                if self.namespace != nil {
+                    map["Namespace"] = self.namespace!
+                }
                 if self.referenceId != nil {
                     map["ReferenceId"] = self.referenceId!
                 }
@@ -77964,6 +77987,9 @@ public class SearchMediaResponseBody : Tea.TeaModel {
                 }
                 if self.userData != nil {
                     map["UserData"] = self.userData!
+                }
+                if self.visionDescription != nil {
+                    map["VisionDescription"] = self.visionDescription!
                 }
                 return map
             }
@@ -78012,6 +78038,9 @@ public class SearchMediaResponseBody : Tea.TeaModel {
                 if let value = dict["ModifiedTime"] as? String {
                     self.modifiedTime = value
                 }
+                if let value = dict["Namespace"] as? String {
+                    self.namespace = value
+                }
                 if let value = dict["ReferenceId"] as? String {
                     self.referenceId = value
                 }
@@ -78038,6 +78067,9 @@ public class SearchMediaResponseBody : Tea.TeaModel {
                 }
                 if let value = dict["UserData"] as? String {
                     self.userData = value
+                }
+                if let value = dict["VisionDescription"] as? String {
+                    self.visionDescription = value
                 }
             }
         }
@@ -78290,6 +78322,8 @@ public class SearchMediaByAILabelRequest : Tea.TeaModel {
 
     public var multimodalSearchType: String?
 
+    public var namespace: String?
+
     public var pageNo: Int32?
 
     public var pageSize: Int32?
@@ -78328,6 +78362,9 @@ public class SearchMediaByAILabelRequest : Tea.TeaModel {
         if self.multimodalSearchType != nil {
             map["MultimodalSearchType"] = self.multimodalSearchType!
         }
+        if self.namespace != nil {
+            map["Namespace"] = self.namespace!
+        }
         if self.pageNo != nil {
             map["PageNo"] = self.pageNo!
         }
@@ -78362,6 +78399,9 @@ public class SearchMediaByAILabelRequest : Tea.TeaModel {
         }
         if let value = dict["MultimodalSearchType"] as? String {
             self.multimodalSearchType = value
+        }
+        if let value = dict["Namespace"] as? String {
+            self.namespace = value
         }
         if let value = dict["PageNo"] as? Int32 {
             self.pageNo = value
@@ -79121,6 +79161,8 @@ public class SearchMediaByFaceRequest : Tea.TeaModel {
 
     public var mediaType: String?
 
+    public var namespace: String?
+
     public var pageNo: Int32?
 
     public var pageSize: Int32?
@@ -79152,6 +79194,9 @@ public class SearchMediaByFaceRequest : Tea.TeaModel {
         if self.mediaType != nil {
             map["MediaType"] = self.mediaType!
         }
+        if self.namespace != nil {
+            map["Namespace"] = self.namespace!
+        }
         if self.pageNo != nil {
             map["PageNo"] = self.pageNo!
         }
@@ -79177,6 +79222,9 @@ public class SearchMediaByFaceRequest : Tea.TeaModel {
         }
         if let value = dict["MediaType"] as? String {
             self.mediaType = value
+        }
+        if let value = dict["Namespace"] as? String {
+            self.namespace = value
         }
         if let value = dict["PageNo"] as? Int32 {
             self.pageNo = value
@@ -79355,6 +79403,8 @@ public class SearchMediaByHybridRequest : Tea.TeaModel {
 
     public var mediaType: String?
 
+    public var namespace: String?
+
     public var pageNo: Int32?
 
     public var pageSize: Int32?
@@ -79383,6 +79433,9 @@ public class SearchMediaByHybridRequest : Tea.TeaModel {
         if self.mediaType != nil {
             map["MediaType"] = self.mediaType!
         }
+        if self.namespace != nil {
+            map["Namespace"] = self.namespace!
+        }
         if self.pageNo != nil {
             map["PageNo"] = self.pageNo!
         }
@@ -79405,6 +79458,9 @@ public class SearchMediaByHybridRequest : Tea.TeaModel {
         }
         if let value = dict["MediaType"] as? String {
             self.mediaType = value
+        }
+        if let value = dict["Namespace"] as? String {
+            self.namespace = value
         }
         if let value = dict["PageNo"] as? Int32 {
             self.pageNo = value
@@ -79649,6 +79705,8 @@ public class SearchMediaByHybridResponse : Tea.TeaModel {
 public class SearchMediaByMultimodalRequest : Tea.TeaModel {
     public var mediaType: String?
 
+    public var namespace: String?
+
     public var pageNo: Int32?
 
     public var pageSize: Int32?
@@ -79674,6 +79732,9 @@ public class SearchMediaByMultimodalRequest : Tea.TeaModel {
         if self.mediaType != nil {
             map["MediaType"] = self.mediaType!
         }
+        if self.namespace != nil {
+            map["Namespace"] = self.namespace!
+        }
         if self.pageNo != nil {
             map["PageNo"] = self.pageNo!
         }
@@ -79693,6 +79754,9 @@ public class SearchMediaByMultimodalRequest : Tea.TeaModel {
         guard let dict else { return }
         if let value = dict["MediaType"] as? String {
             self.mediaType = value
+        }
+        if let value = dict["Namespace"] as? String {
+            self.namespace = value
         }
         if let value = dict["PageNo"] as? Int32 {
             self.pageNo = value
