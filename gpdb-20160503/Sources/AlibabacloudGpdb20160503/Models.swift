@@ -47477,6 +47477,8 @@ public class UpsertChunksRequest : Tea.TeaModel {
             }
         }
     }
+    public var allowInsertWithFilter: Bool?
+
     public var collection: String?
 
     public var DBInstanceId: String?
@@ -47509,6 +47511,9 @@ public class UpsertChunksRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.allowInsertWithFilter != nil {
+            map["AllowInsertWithFilter"] = self.allowInsertWithFilter!
+        }
         if self.collection != nil {
             map["Collection"] = self.collection!
         }
@@ -47545,6 +47550,9 @@ public class UpsertChunksRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["AllowInsertWithFilter"] as? Bool {
+            self.allowInsertWithFilter = value
+        }
         if let value = dict["Collection"] as? String {
             self.collection = value
         }
@@ -47586,6 +47594,8 @@ public class UpsertChunksRequest : Tea.TeaModel {
 }
 
 public class UpsertChunksShrinkRequest : Tea.TeaModel {
+    public var allowInsertWithFilter: Bool?
+
     public var collection: String?
 
     public var DBInstanceId: String?
@@ -47618,6 +47628,9 @@ public class UpsertChunksShrinkRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.allowInsertWithFilter != nil {
+            map["AllowInsertWithFilter"] = self.allowInsertWithFilter!
+        }
         if self.collection != nil {
             map["Collection"] = self.collection!
         }
@@ -47650,6 +47663,9 @@ public class UpsertChunksShrinkRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["AllowInsertWithFilter"] as? Bool {
+            self.allowInsertWithFilter = value
+        }
         if let value = dict["Collection"] as? String {
             self.collection = value
         }

@@ -9498,6 +9498,9 @@ open class Client : AlibabacloudOpenApi.Client {
             request.textChunksShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.textChunks, "TextChunks", "json")
         }
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.allowInsertWithFilter)) {
+            query["AllowInsertWithFilter"] = request.allowInsertWithFilter!;
+        }
         if (!TeaUtils.Client.isUnset(request.collection)) {
             query["Collection"] = request.collection ?? "";
         }
