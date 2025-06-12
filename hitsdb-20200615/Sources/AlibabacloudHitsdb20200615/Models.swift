@@ -9287,6 +9287,266 @@ public class GetLindormV2StorageUsageResponse : Tea.TeaModel {
     }
 }
 
+public class GetLindormV2StreamEngineInfoRequest : Tea.TeaModel {
+    public var instanceId: String?
+
+    public var ownerAccount: String?
+
+    public var ownerId: Int64?
+
+    public var resourceOwnerAccount: String?
+
+    public var resourceOwnerId: Int64?
+
+    public var securityToken: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.instanceId != nil {
+            map["InstanceId"] = self.instanceId!
+        }
+        if self.ownerAccount != nil {
+            map["OwnerAccount"] = self.ownerAccount!
+        }
+        if self.ownerId != nil {
+            map["OwnerId"] = self.ownerId!
+        }
+        if self.resourceOwnerAccount != nil {
+            map["ResourceOwnerAccount"] = self.resourceOwnerAccount!
+        }
+        if self.resourceOwnerId != nil {
+            map["ResourceOwnerId"] = self.resourceOwnerId!
+        }
+        if self.securityToken != nil {
+            map["SecurityToken"] = self.securityToken!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["InstanceId"] as? String {
+            self.instanceId = value
+        }
+        if let value = dict["OwnerAccount"] as? String {
+            self.ownerAccount = value
+        }
+        if let value = dict["OwnerId"] as? Int64 {
+            self.ownerId = value
+        }
+        if let value = dict["ResourceOwnerAccount"] as? String {
+            self.resourceOwnerAccount = value
+        }
+        if let value = dict["ResourceOwnerId"] as? Int64 {
+            self.resourceOwnerId = value
+        }
+        if let value = dict["SecurityToken"] as? String {
+            self.securityToken = value
+        }
+    }
+}
+
+public class GetLindormV2StreamEngineInfoResponseBody : Tea.TeaModel {
+    public class ResourceGroupList : Tea.TeaModel {
+        public var jmIpList: [String]?
+
+        public var quantity: Int32?
+
+        public var resourceGroupName: String?
+
+        public var sgIpList: [String]?
+
+        public var spec: String?
+
+        public var specId: String?
+
+        public var status: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.jmIpList != nil {
+                map["JmIpList"] = self.jmIpList!
+            }
+            if self.quantity != nil {
+                map["Quantity"] = self.quantity!
+            }
+            if self.resourceGroupName != nil {
+                map["ResourceGroupName"] = self.resourceGroupName!
+            }
+            if self.sgIpList != nil {
+                map["SgIpList"] = self.sgIpList!
+            }
+            if self.spec != nil {
+                map["Spec"] = self.spec!
+            }
+            if self.specId != nil {
+                map["SpecId"] = self.specId!
+            }
+            if self.status != nil {
+                map["Status"] = self.status!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["JmIpList"] as? [String] {
+                self.jmIpList = value
+            }
+            if let value = dict["Quantity"] as? Int32 {
+                self.quantity = value
+            }
+            if let value = dict["ResourceGroupName"] as? String {
+                self.resourceGroupName = value
+            }
+            if let value = dict["SgIpList"] as? [String] {
+                self.sgIpList = value
+            }
+            if let value = dict["Spec"] as? String {
+                self.spec = value
+            }
+            if let value = dict["SpecId"] as? String {
+                self.specId = value
+            }
+            if let value = dict["Status"] as? String {
+                self.status = value
+            }
+        }
+    }
+    public var instanceId: String?
+
+    public var requestId: String?
+
+    public var resourceGroupList: [GetLindormV2StreamEngineInfoResponseBody.ResourceGroupList]?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.instanceId != nil {
+            map["InstanceId"] = self.instanceId!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.resourceGroupList != nil {
+            var tmp : [Any] = []
+            for k in self.resourceGroupList! {
+                tmp.append(k.toMap())
+            }
+            map["ResourceGroupList"] = tmp
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["InstanceId"] as? String {
+            self.instanceId = value
+        }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+        if let value = dict["ResourceGroupList"] as? [Any?] {
+            var tmp : [GetLindormV2StreamEngineInfoResponseBody.ResourceGroupList] = []
+            for v in value {
+                if v != nil {
+                    var model = GetLindormV2StreamEngineInfoResponseBody.ResourceGroupList()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.resourceGroupList = tmp
+        }
+    }
+}
+
+public class GetLindormV2StreamEngineInfoResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: GetLindormV2StreamEngineInfoResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = GetLindormV2StreamEngineInfoResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
 public class ListAutoScalingConfigsRequest : Tea.TeaModel {
     public var instanceId: String?
 
