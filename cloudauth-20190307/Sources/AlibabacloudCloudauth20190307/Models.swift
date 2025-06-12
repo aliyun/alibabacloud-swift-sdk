@@ -2729,6 +2729,8 @@ public class CredentialVerifyV2Request : Tea.TeaModel {
 
     public var identifyNum: String?
 
+    public var imageContext: String?
+
     public var imageFile: String?
 
     public var imageUrl: String?
@@ -2774,6 +2776,9 @@ public class CredentialVerifyV2Request : Tea.TeaModel {
         }
         if self.identifyNum != nil {
             map["IdentifyNum"] = self.identifyNum!
+        }
+        if self.imageContext != nil {
+            map["ImageContext"] = self.imageContext!
         }
         if self.imageFile != nil {
             map["ImageFile"] = self.imageFile!
@@ -2825,6 +2830,9 @@ public class CredentialVerifyV2Request : Tea.TeaModel {
         }
         if let value = dict["IdentifyNum"] as? String {
             self.identifyNum = value
+        }
+        if let value = dict["ImageContext"] as? String {
+            self.imageContext = value
         }
         if let value = dict["ImageFile"] as? String {
             self.imageFile = value
@@ -2916,6 +2924,8 @@ public class CredentialVerifyV2AdvanceRequest : Tea.TeaModel {
 
     public var identifyNum: String?
 
+    public var imageContext: String?
+
     public var imageFileObject: InputStream?
 
     public var imageUrl: String?
@@ -2961,6 +2971,9 @@ public class CredentialVerifyV2AdvanceRequest : Tea.TeaModel {
         }
         if self.identifyNum != nil {
             map["IdentifyNum"] = self.identifyNum!
+        }
+        if self.imageContext != nil {
+            map["ImageContext"] = self.imageContext!
         }
         if self.imageFileObject != nil {
             map["ImageFile"] = self.imageFileObject!
@@ -3012,6 +3025,9 @@ public class CredentialVerifyV2AdvanceRequest : Tea.TeaModel {
         }
         if let value = dict["IdentifyNum"] as? String {
             self.identifyNum = value
+        }
+        if let value = dict["ImageContext"] as? String {
+            self.imageContext = value
         }
         if let value = dict["ImageFile"] as? InputStream {
             self.imageFileObject = value
@@ -3065,6 +3081,8 @@ public class CredentialVerifyV2ShrinkRequest : Tea.TeaModel {
 
     public var identifyNum: String?
 
+    public var imageContext: String?
+
     public var imageFile: String?
 
     public var imageUrl: String?
@@ -3110,6 +3128,9 @@ public class CredentialVerifyV2ShrinkRequest : Tea.TeaModel {
         }
         if self.identifyNum != nil {
             map["IdentifyNum"] = self.identifyNum!
+        }
+        if self.imageContext != nil {
+            map["ImageContext"] = self.imageContext!
         }
         if self.imageFile != nil {
             map["ImageFile"] = self.imageFile!
@@ -3157,6 +3178,9 @@ public class CredentialVerifyV2ShrinkRequest : Tea.TeaModel {
         }
         if let value = dict["IdentifyNum"] as? String {
             self.identifyNum = value
+        }
+        if let value = dict["ImageContext"] as? String {
+            self.imageContext = value
         }
         if let value = dict["ImageFile"] as? String {
             self.imageFile = value
@@ -3865,6 +3889,8 @@ public class DescribeCardVerifyResponseBody : Tea.TeaModel {
 
         public var cardInfo: String?
 
+        public var faceDetail: String?
+
         public var ocrCardInfo: String?
 
         public var pictureInfo: String?
@@ -3889,6 +3915,9 @@ public class DescribeCardVerifyResponseBody : Tea.TeaModel {
             if self.cardInfo != nil {
                 map["CardInfo"] = self.cardInfo!
             }
+            if self.faceDetail != nil {
+                map["FaceDetail"] = self.faceDetail!
+            }
             if self.ocrCardInfo != nil {
                 map["OcrCardInfo"] = self.ocrCardInfo!
             }
@@ -3905,6 +3934,9 @@ public class DescribeCardVerifyResponseBody : Tea.TeaModel {
             }
             if let value = dict["CardInfo"] as? String {
                 self.cardInfo = value
+            }
+            if let value = dict["FaceDetail"] as? String {
+                self.faceDetail = value
             }
             if let value = dict["OcrCardInfo"] as? String {
                 self.ocrCardInfo = value

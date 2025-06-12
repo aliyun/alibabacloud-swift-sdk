@@ -731,6 +731,9 @@ open class Client : AlibabacloudOpenApi.Client {
             query["UserName"] = request.userName ?? "";
         }
         var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.imageContext)) {
+            body["ImageContext"] = request.imageContext ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.imageFile)) {
             body["ImageFile"] = request.imageFile ?? "";
         }
