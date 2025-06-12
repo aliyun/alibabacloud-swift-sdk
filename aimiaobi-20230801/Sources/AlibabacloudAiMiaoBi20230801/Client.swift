@@ -783,6 +783,40 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func exportCustomSourceAnalysisTaskWithOptions(_ request: ExportCustomSourceAnalysisTaskRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ExportCustomSourceAnalysisTaskResponse {
+        try TeaUtils.Client.validateModel(request)
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.taskId)) {
+            body["TaskId"] = request.taskId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.workspaceId)) {
+            body["WorkspaceId"] = request.workspaceId ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "ExportCustomSourceAnalysisTask",
+            "version": "2023-08-01",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(ExportCustomSourceAnalysisTaskResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func exportCustomSourceAnalysisTask(_ request: ExportCustomSourceAnalysisTaskRequest) async throws -> ExportCustomSourceAnalysisTaskResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await exportCustomSourceAnalysisTaskWithOptions(request as! ExportCustomSourceAnalysisTaskRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func exportGeneratedContentWithOptions(_ request: ExportGeneratedContentRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ExportGeneratedContentResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
@@ -1246,6 +1280,40 @@ open class Client : AlibabacloudOpenApi.Client {
     public func getCustomHotTopicBroadcastJob(_ request: GetCustomHotTopicBroadcastJobRequest) async throws -> GetCustomHotTopicBroadcastJobResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         return try await getCustomHotTopicBroadcastJobWithOptions(request as! GetCustomHotTopicBroadcastJobRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getCustomSourceTopicAnalysisTaskWithOptions(_ request: GetCustomSourceTopicAnalysisTaskRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> GetCustomSourceTopicAnalysisTaskResponse {
+        try TeaUtils.Client.validateModel(request)
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.taskId)) {
+            body["TaskId"] = request.taskId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.workspaceId)) {
+            body["WorkspaceId"] = request.workspaceId ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "GetCustomSourceTopicAnalysisTask",
+            "version": "2023-08-01",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(GetCustomSourceTopicAnalysisTaskResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getCustomSourceTopicAnalysisTask(_ request: GetCustomSourceTopicAnalysisTaskRequest) async throws -> GetCustomSourceTopicAnalysisTaskResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await getCustomSourceTopicAnalysisTaskWithOptions(request as! GetCustomSourceTopicAnalysisTaskRequest, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -5820,6 +5888,54 @@ open class Client : AlibabacloudOpenApi.Client {
     public func submitCustomHotTopicBroadcastJob(_ request: SubmitCustomHotTopicBroadcastJobRequest) async throws -> SubmitCustomHotTopicBroadcastJobResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         return try await submitCustomHotTopicBroadcastJobWithOptions(request as! SubmitCustomHotTopicBroadcastJobRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func submitCustomSourceTopicAnalysisWithOptions(_ tmpReq: SubmitCustomSourceTopicAnalysisRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> SubmitCustomSourceTopicAnalysisResponse {
+        try TeaUtils.Client.validateModel(tmpReq)
+        var request: SubmitCustomSourceTopicAnalysisShrinkRequest = SubmitCustomSourceTopicAnalysisShrinkRequest([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.news)) {
+            request.newsShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.news, "News", "json")
+        }
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.fileType)) {
+            body["FileType"] = request.fileType ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.fileUrl)) {
+            body["FileUrl"] = request.fileUrl ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.maxTopicSize)) {
+            body["MaxTopicSize"] = request.maxTopicSize!;
+        }
+        if (!TeaUtils.Client.isUnset(request.newsShrink)) {
+            body["News"] = request.newsShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.workspaceId)) {
+            body["WorkspaceId"] = request.workspaceId ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "SubmitCustomSourceTopicAnalysis",
+            "version": "2023-08-01",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(SubmitCustomSourceTopicAnalysisResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func submitCustomSourceTopicAnalysis(_ request: SubmitCustomSourceTopicAnalysisRequest) async throws -> SubmitCustomSourceTopicAnalysisResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await submitCustomSourceTopicAnalysisWithOptions(request as! SubmitCustomSourceTopicAnalysisRequest, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
