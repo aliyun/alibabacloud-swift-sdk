@@ -2873,6 +2873,8 @@ public class File : Tea.TeaModel {
 
     public var imageWidth: Int64?
 
+    public var insights: Insights?
+
     public var labels: [Label]?
 
     public var language: String?
@@ -2976,6 +2978,7 @@ public class File : Tea.TeaModel {
 
     public override func validate() throws -> Void {
         try self.imageScore?.validate()
+        try self.insights?.validate()
     }
 
     public override func toMap() -> [String : Any] {
@@ -3114,6 +3117,9 @@ public class File : Tea.TeaModel {
         }
         if self.imageWidth != nil {
             map["ImageWidth"] = self.imageWidth!
+        }
+        if self.insights != nil {
+            map["Insights"] = self.insights?.toMap()
         }
         if self.labels != nil {
             var tmp : [Any] = []
@@ -3450,6 +3456,11 @@ public class File : Tea.TeaModel {
         }
         if let value = dict["ImageWidth"] as? Int64 {
             self.imageWidth = value
+        }
+        if let value = dict["Insights"] as? [String: Any?] {
+            var model = Insights()
+            model.fromMap(value)
+            self.insights = model
         }
         if let value = dict["Labels"] as? [Any?] {
             var tmp : [Label] = []
@@ -3965,6 +3976,45 @@ public class Image : Tea.TeaModel {
     }
 }
 
+public class ImageInsight : Tea.TeaModel {
+    public var caption: String?
+
+    public var description_: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.caption != nil {
+            map["Caption"] = self.caption!
+        }
+        if self.description_ != nil {
+            map["Description"] = self.description_!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["Caption"] as? String {
+            self.caption = value
+        }
+        if let value = dict["Description"] as? String {
+            self.description_ = value
+        }
+    }
+}
+
 public class ImageScore : Tea.TeaModel {
     public var overallQualityScore: Double?
 
@@ -4328,6 +4378,51 @@ public class InputOSS : Tea.TeaModel {
         }
         if let value = dict["Prefix"] as? String {
             self.prefix_ = value
+        }
+    }
+}
+
+public class Insights : Tea.TeaModel {
+    public var image: ImageInsight?
+
+    public var video: VideoInsight?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.image?.validate()
+        try self.video?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.image != nil {
+            map["Image"] = self.image?.toMap()
+        }
+        if self.video != nil {
+            map["Video"] = self.video?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["Image"] as? [String: Any?] {
+            var model = ImageInsight()
+            model.fromMap(value)
+            self.image = model
+        }
+        if let value = dict["Video"] as? [String: Any?] {
+            var model = VideoInsight()
+            model.fromMap(value)
+            self.video = model
         }
     }
 }
@@ -8295,6 +8390,45 @@ public class TrimPolicy : Tea.TeaModel {
     }
 }
 
+public class VideoInsight : Tea.TeaModel {
+    public var caption: String?
+
+    public var description_: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.caption != nil {
+            map["Caption"] = self.caption!
+        }
+        if self.description_ != nil {
+            map["Description"] = self.description_!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["Caption"] as? String {
+            self.caption = value
+        }
+        if let value = dict["Description"] as? String {
+            self.description_ = value
+        }
+    }
+}
+
 public class VideoStream : Tea.TeaModel {
     public var averageFrameRate: String?
 
@@ -8735,6 +8869,45 @@ public class WebofficeWatermark : Tea.TeaModel {
         }
         if let value = dict["Vertical"] as? Int64 {
             self.vertical = value
+        }
+    }
+}
+
+public class WorkflowParameter : Tea.TeaModel {
+    public var name: String?
+
+    public var value: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.name != nil {
+            map["Name"] = self.name!
+        }
+        if self.value != nil {
+            map["Value"] = self.value!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["Name"] as? String {
+            self.name = value
+        }
+        if let value = dict["Value"] as? String {
+            self.value = value
         }
     }
 }
@@ -12758,6 +12931,8 @@ public class CreateDatasetRequest : Tea.TeaModel {
 
     public var templateId: String?
 
+    public var workflowParameters: [WorkflowParameter]?
+
     public override init() {
         super.init()
     }
@@ -12799,6 +12974,13 @@ public class CreateDatasetRequest : Tea.TeaModel {
         if self.templateId != nil {
             map["TemplateId"] = self.templateId!
         }
+        if self.workflowParameters != nil {
+            var tmp : [Any] = []
+            for k in self.workflowParameters! {
+                tmp.append(k.toMap())
+            }
+            map["WorkflowParameters"] = tmp
+        }
         return map
     }
 
@@ -12830,6 +13012,122 @@ public class CreateDatasetRequest : Tea.TeaModel {
         }
         if let value = dict["TemplateId"] as? String {
             self.templateId = value
+        }
+        if let value = dict["WorkflowParameters"] as? [Any?] {
+            var tmp : [WorkflowParameter] = []
+            for v in value {
+                if v != nil {
+                    var model = WorkflowParameter()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.workflowParameters = tmp
+        }
+    }
+}
+
+public class CreateDatasetShrinkRequest : Tea.TeaModel {
+    public var datasetMaxBindCount: Int64?
+
+    public var datasetMaxEntityCount: Int64?
+
+    public var datasetMaxFileCount: Int64?
+
+    public var datasetMaxRelationCount: Int64?
+
+    public var datasetMaxTotalFileSize: Int64?
+
+    public var datasetName: String?
+
+    public var description_: String?
+
+    public var projectName: String?
+
+    public var templateId: String?
+
+    public var workflowParametersShrink: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.datasetMaxBindCount != nil {
+            map["DatasetMaxBindCount"] = self.datasetMaxBindCount!
+        }
+        if self.datasetMaxEntityCount != nil {
+            map["DatasetMaxEntityCount"] = self.datasetMaxEntityCount!
+        }
+        if self.datasetMaxFileCount != nil {
+            map["DatasetMaxFileCount"] = self.datasetMaxFileCount!
+        }
+        if self.datasetMaxRelationCount != nil {
+            map["DatasetMaxRelationCount"] = self.datasetMaxRelationCount!
+        }
+        if self.datasetMaxTotalFileSize != nil {
+            map["DatasetMaxTotalFileSize"] = self.datasetMaxTotalFileSize!
+        }
+        if self.datasetName != nil {
+            map["DatasetName"] = self.datasetName!
+        }
+        if self.description_ != nil {
+            map["Description"] = self.description_!
+        }
+        if self.projectName != nil {
+            map["ProjectName"] = self.projectName!
+        }
+        if self.templateId != nil {
+            map["TemplateId"] = self.templateId!
+        }
+        if self.workflowParametersShrink != nil {
+            map["WorkflowParameters"] = self.workflowParametersShrink!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["DatasetMaxBindCount"] as? Int64 {
+            self.datasetMaxBindCount = value
+        }
+        if let value = dict["DatasetMaxEntityCount"] as? Int64 {
+            self.datasetMaxEntityCount = value
+        }
+        if let value = dict["DatasetMaxFileCount"] as? Int64 {
+            self.datasetMaxFileCount = value
+        }
+        if let value = dict["DatasetMaxRelationCount"] as? Int64 {
+            self.datasetMaxRelationCount = value
+        }
+        if let value = dict["DatasetMaxTotalFileSize"] as? Int64 {
+            self.datasetMaxTotalFileSize = value
+        }
+        if let value = dict["DatasetName"] as? String {
+            self.datasetName = value
+        }
+        if let value = dict["Description"] as? String {
+            self.description_ = value
+        }
+        if let value = dict["ProjectName"] as? String {
+            self.projectName = value
+        }
+        if let value = dict["TemplateId"] as? String {
+            self.templateId = value
+        }
+        if let value = dict["WorkflowParameters"] as? String {
+            self.workflowParametersShrink = value
         }
     }
 }
@@ -32563,6 +32861,8 @@ public class UpdateDatasetRequest : Tea.TeaModel {
 
     public var templateId: String?
 
+    public var workflowParameters: [WorkflowParameter]?
+
     public override init() {
         super.init()
     }
@@ -32604,6 +32904,13 @@ public class UpdateDatasetRequest : Tea.TeaModel {
         if self.templateId != nil {
             map["TemplateId"] = self.templateId!
         }
+        if self.workflowParameters != nil {
+            var tmp : [Any] = []
+            for k in self.workflowParameters! {
+                tmp.append(k.toMap())
+            }
+            map["WorkflowParameters"] = tmp
+        }
         return map
     }
 
@@ -32635,6 +32942,122 @@ public class UpdateDatasetRequest : Tea.TeaModel {
         }
         if let value = dict["TemplateId"] as? String {
             self.templateId = value
+        }
+        if let value = dict["WorkflowParameters"] as? [Any?] {
+            var tmp : [WorkflowParameter] = []
+            for v in value {
+                if v != nil {
+                    var model = WorkflowParameter()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.workflowParameters = tmp
+        }
+    }
+}
+
+public class UpdateDatasetShrinkRequest : Tea.TeaModel {
+    public var datasetMaxBindCount: Int64?
+
+    public var datasetMaxEntityCount: Int64?
+
+    public var datasetMaxFileCount: Int64?
+
+    public var datasetMaxRelationCount: Int64?
+
+    public var datasetMaxTotalFileSize: Int64?
+
+    public var datasetName: String?
+
+    public var description_: String?
+
+    public var projectName: String?
+
+    public var templateId: String?
+
+    public var workflowParametersShrink: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.datasetMaxBindCount != nil {
+            map["DatasetMaxBindCount"] = self.datasetMaxBindCount!
+        }
+        if self.datasetMaxEntityCount != nil {
+            map["DatasetMaxEntityCount"] = self.datasetMaxEntityCount!
+        }
+        if self.datasetMaxFileCount != nil {
+            map["DatasetMaxFileCount"] = self.datasetMaxFileCount!
+        }
+        if self.datasetMaxRelationCount != nil {
+            map["DatasetMaxRelationCount"] = self.datasetMaxRelationCount!
+        }
+        if self.datasetMaxTotalFileSize != nil {
+            map["DatasetMaxTotalFileSize"] = self.datasetMaxTotalFileSize!
+        }
+        if self.datasetName != nil {
+            map["DatasetName"] = self.datasetName!
+        }
+        if self.description_ != nil {
+            map["Description"] = self.description_!
+        }
+        if self.projectName != nil {
+            map["ProjectName"] = self.projectName!
+        }
+        if self.templateId != nil {
+            map["TemplateId"] = self.templateId!
+        }
+        if self.workflowParametersShrink != nil {
+            map["WorkflowParameters"] = self.workflowParametersShrink!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["DatasetMaxBindCount"] as? Int64 {
+            self.datasetMaxBindCount = value
+        }
+        if let value = dict["DatasetMaxEntityCount"] as? Int64 {
+            self.datasetMaxEntityCount = value
+        }
+        if let value = dict["DatasetMaxFileCount"] as? Int64 {
+            self.datasetMaxFileCount = value
+        }
+        if let value = dict["DatasetMaxRelationCount"] as? Int64 {
+            self.datasetMaxRelationCount = value
+        }
+        if let value = dict["DatasetMaxTotalFileSize"] as? Int64 {
+            self.datasetMaxTotalFileSize = value
+        }
+        if let value = dict["DatasetName"] as? String {
+            self.datasetName = value
+        }
+        if let value = dict["Description"] as? String {
+            self.description_ = value
+        }
+        if let value = dict["ProjectName"] as? String {
+            self.projectName = value
+        }
+        if let value = dict["TemplateId"] as? String {
+            self.templateId = value
+        }
+        if let value = dict["WorkflowParameters"] as? String {
+            self.workflowParametersShrink = value
         }
     }
 }
