@@ -89601,6 +89601,8 @@ public class DescribeTerminalSessionsResponseBody : Tea.TeaModel {
 
                     public var endTime: String?
 
+                    public var failedDetail: String?
+
                     public var instanceId: String?
 
                     public var startTime: String?
@@ -89627,6 +89629,9 @@ public class DescribeTerminalSessionsResponseBody : Tea.TeaModel {
                         if self.endTime != nil {
                             map["EndTime"] = self.endTime!
                         }
+                        if self.failedDetail != nil {
+                            map["FailedDetail"] = self.failedDetail!
+                        }
                         if self.instanceId != nil {
                             map["InstanceId"] = self.instanceId!
                         }
@@ -89646,6 +89651,9 @@ public class DescribeTerminalSessionsResponseBody : Tea.TeaModel {
                         }
                         if let value = dict["EndTime"] as? String {
                             self.endTime = value
+                        }
+                        if let value = dict["FailedDetail"] as? String {
+                            self.failedDetail = value
                         }
                         if let value = dict["InstanceId"] as? String {
                             self.instanceId = value
@@ -123498,6 +123506,8 @@ public class StartTerminalSessionRequest : Tea.TeaModel {
 
     public var ownerId: Int64?
 
+    public var passwordName: String?
+
     public var portNumber: Int32?
 
     public var regionId: String?
@@ -123539,6 +123549,9 @@ public class StartTerminalSessionRequest : Tea.TeaModel {
         if self.ownerId != nil {
             map["OwnerId"] = self.ownerId!
         }
+        if self.passwordName != nil {
+            map["PasswordName"] = self.passwordName!
+        }
         if self.portNumber != nil {
             map["PortNumber"] = self.portNumber!
         }
@@ -123576,6 +123589,9 @@ public class StartTerminalSessionRequest : Tea.TeaModel {
         }
         if let value = dict["OwnerId"] as? Int64 {
             self.ownerId = value
+        }
+        if let value = dict["PasswordName"] as? String {
+            self.passwordName = value
         }
         if let value = dict["PortNumber"] as? Int32 {
             self.portNumber = value

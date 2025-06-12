@@ -21867,6 +21867,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.ownerId)) {
             query["OwnerId"] = request.ownerId!;
         }
+        if (!TeaUtils.Client.isUnset(request.passwordName)) {
+            query["PasswordName"] = request.passwordName ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.portNumber)) {
             query["PortNumber"] = request.portNumber!;
         }
