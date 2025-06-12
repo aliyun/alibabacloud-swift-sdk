@@ -2467,8 +2467,13 @@ open class Client : AlibabacloudOpenApi.Client {
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func installUserPluginsWithOptions(_ InstanceId: String, _ request: InstallUserPluginsRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> InstallUserPluginsResponse {
         try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.force)) {
+            query["force"] = request.force!;
+        }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "headers": headers as! [String: String],
+            "query": AlibabaCloudOpenApiUtil.Client.query(query),
             "body": request.body ?? ""
         ])
         var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
@@ -3495,6 +3500,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.size)) {
             query["size"] = request.size!;
+        }
+        if (!TeaUtils.Client.isUnset(request.status)) {
+            query["status"] = request.status ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.tags)) {
             query["tags"] = request.tags ?? "";
@@ -6155,6 +6163,9 @@ open class Client : AlibabacloudOpenApi.Client {
         var query: [String: Any] = [:]
         if (!TeaUtils.Client.isUnset(request.clientToken)) {
             query["clientToken"] = request.clientToken ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.force)) {
+            query["force"] = request.force!;
         }
         if (!TeaUtils.Client.isUnset(request.updateStrategy)) {
             query["updateStrategy"] = request.updateStrategy ?? "";
