@@ -5374,6 +5374,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.instanceId)) {
             query["InstanceId"] = request.instanceId ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.labelConfig)) {
+            query["LabelConfig"] = request.labelConfig ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.longWaitEnable)) {
             query["LongWaitEnable"] = request.longWaitEnable!;
         }
