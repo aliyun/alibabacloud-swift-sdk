@@ -42835,6 +42835,8 @@ public class DescribeDiagnosticReportsResponse : Tea.TeaModel {
 }
 
 public class DescribeDiskDefaultKMSKeyIdRequest : Tea.TeaModel {
+    public var ownerId: Int64?
+
     public var regionId: String?
 
     public var resourceOwnerId: Int64?
@@ -42853,6 +42855,9 @@ public class DescribeDiskDefaultKMSKeyIdRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.ownerId != nil {
+            map["OwnerId"] = self.ownerId!
+        }
         if self.regionId != nil {
             map["RegionId"] = self.regionId!
         }
@@ -42864,6 +42869,9 @@ public class DescribeDiskDefaultKMSKeyIdRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["OwnerId"] as? Int64 {
+            self.ownerId = value
+        }
         if let value = dict["RegionId"] as? String {
             self.regionId = value
         }
@@ -42963,6 +42971,8 @@ public class DescribeDiskDefaultKMSKeyIdResponse : Tea.TeaModel {
 }
 
 public class DescribeDiskEncryptionByDefaultStatusRequest : Tea.TeaModel {
+    public var ownerId: Int64?
+
     public var regionId: String?
 
     public var resourceOwnerId: Int64?
@@ -42981,6 +42991,9 @@ public class DescribeDiskEncryptionByDefaultStatusRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.ownerId != nil {
+            map["OwnerId"] = self.ownerId!
+        }
         if self.regionId != nil {
             map["RegionId"] = self.regionId!
         }
@@ -42992,6 +43005,9 @@ public class DescribeDiskEncryptionByDefaultStatusRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["OwnerId"] as? Int64 {
+            self.ownerId = value
+        }
         if let value = dict["RegionId"] as? String {
             self.regionId = value
         }
@@ -94566,6 +94582,8 @@ public class DisableActivationResponse : Tea.TeaModel {
 }
 
 public class DisableDiskEncryptionByDefaultRequest : Tea.TeaModel {
+    public var ownerId: Int64?
+
     public var regionId: String?
 
     public var resourceOwnerId: Int64?
@@ -94584,6 +94602,9 @@ public class DisableDiskEncryptionByDefaultRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.ownerId != nil {
+            map["OwnerId"] = self.ownerId!
+        }
         if self.regionId != nil {
             map["RegionId"] = self.regionId!
         }
@@ -94595,6 +94616,9 @@ public class DisableDiskEncryptionByDefaultRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["OwnerId"] as? Int64 {
+            self.ownerId = value
+        }
         if let value = dict["RegionId"] as? String {
             self.regionId = value
         }
@@ -102245,6 +102269,8 @@ public class ModifyDiskChargeTypeResponse : Tea.TeaModel {
 public class ModifyDiskDefaultKMSKeyIdRequest : Tea.TeaModel {
     public var KMSKeyId: String?
 
+    public var ownerId: Int64?
+
     public var regionId: String?
 
     public var resourceOwnerId: Int64?
@@ -102266,6 +102292,9 @@ public class ModifyDiskDefaultKMSKeyIdRequest : Tea.TeaModel {
         if self.KMSKeyId != nil {
             map["KMSKeyId"] = self.KMSKeyId!
         }
+        if self.ownerId != nil {
+            map["OwnerId"] = self.ownerId!
+        }
         if self.regionId != nil {
             map["RegionId"] = self.regionId!
         }
@@ -102279,6 +102308,9 @@ public class ModifyDiskDefaultKMSKeyIdRequest : Tea.TeaModel {
         guard let dict else { return }
         if let value = dict["KMSKeyId"] as? String {
             self.KMSKeyId = value
+        }
+        if let value = dict["OwnerId"] as? Int64 {
+            self.ownerId = value
         }
         if let value = dict["RegionId"] as? String {
             self.regionId = value
@@ -118328,6 +118360,8 @@ public class ResetDiskResponse : Tea.TeaModel {
 }
 
 public class ResetDiskDefaultKMSKeyIdRequest : Tea.TeaModel {
+    public var ownerId: Int64?
+
     public var regionId: String?
 
     public var resourceOwnerId: Int64?
@@ -118346,6 +118380,9 @@ public class ResetDiskDefaultKMSKeyIdRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.ownerId != nil {
+            map["OwnerId"] = self.ownerId!
+        }
         if self.regionId != nil {
             map["RegionId"] = self.regionId!
         }
@@ -118357,6 +118394,9 @@ public class ResetDiskDefaultKMSKeyIdRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["OwnerId"] as? Int64 {
+            self.ownerId = value
+        }
         if let value = dict["RegionId"] as? String {
             self.regionId = value
         }

@@ -8304,6 +8304,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func describeDiskDefaultKMSKeyIdWithOptions(_ request: DescribeDiskDefaultKMSKeyIdRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DescribeDiskDefaultKMSKeyIdResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.ownerId)) {
+            query["OwnerId"] = request.ownerId!;
+        }
         if (!TeaUtils.Client.isUnset(request.regionId)) {
             query["RegionId"] = request.regionId ?? "";
         }
@@ -8338,6 +8341,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func describeDiskEncryptionByDefaultStatusWithOptions(_ request: DescribeDiskEncryptionByDefaultStatusRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DescribeDiskEncryptionByDefaultStatusResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.ownerId)) {
+            query["OwnerId"] = request.ownerId!;
+        }
         if (!TeaUtils.Client.isUnset(request.regionId)) {
             query["RegionId"] = request.regionId ?? "";
         }
@@ -14602,6 +14608,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func disableDiskEncryptionByDefaultWithOptions(_ request: DisableDiskEncryptionByDefaultRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DisableDiskEncryptionByDefaultResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.ownerId)) {
+            query["OwnerId"] = request.ownerId!;
+        }
         if (!TeaUtils.Client.isUnset(request.regionId)) {
             query["RegionId"] = request.regionId ?? "";
         }
@@ -16470,6 +16479,9 @@ open class Client : AlibabacloudOpenApi.Client {
         var query: [String: Any] = [:]
         if (!TeaUtils.Client.isUnset(request.KMSKeyId)) {
             query["KMSKeyId"] = request.KMSKeyId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.ownerId)) {
+            query["OwnerId"] = request.ownerId!;
         }
         if (!TeaUtils.Client.isUnset(request.regionId)) {
             query["RegionId"] = request.regionId ?? "";
@@ -20867,6 +20879,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func resetDiskDefaultKMSKeyIdWithOptions(_ request: ResetDiskDefaultKMSKeyIdRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ResetDiskDefaultKMSKeyIdResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.ownerId)) {
+            query["OwnerId"] = request.ownerId!;
+        }
         if (!TeaUtils.Client.isUnset(request.regionId)) {
             query["RegionId"] = request.regionId ?? "";
         }
