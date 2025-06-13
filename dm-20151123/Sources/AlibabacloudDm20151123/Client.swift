@@ -961,8 +961,17 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.accountName)) {
             query["AccountName"] = request.accountName ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.dedicatedIp)) {
+            query["DedicatedIp"] = request.dedicatedIp ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.dedicatedIpPoolId)) {
+            query["DedicatedIpPoolId"] = request.dedicatedIpPoolId ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.endTime)) {
             query["EndTime"] = request.endTime ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.esp)) {
+            query["Esp"] = request.esp ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.offset)) {
             query["Offset"] = request.offset ?? "";
@@ -1028,8 +1037,17 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.accountName)) {
             query["AccountName"] = request.accountName ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.dedicatedIp)) {
+            query["DedicatedIp"] = request.dedicatedIp ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.dedicatedIpPoolId)) {
+            query["DedicatedIpPoolId"] = request.dedicatedIpPoolId ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.endTime)) {
             query["EndTime"] = request.endTime ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.esp)) {
+            query["Esp"] = request.esp ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.offset)) {
             query["Offset"] = request.offset ?? "";
@@ -1799,8 +1817,17 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.accountName)) {
             query["AccountName"] = request.accountName ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.dedicatedIp)) {
+            query["DedicatedIp"] = request.dedicatedIp ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.dedicatedIpPoolId)) {
+            query["DedicatedIpPoolId"] = request.dedicatedIpPoolId ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.endTime)) {
             query["EndTime"] = request.endTime ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.esp)) {
+            query["Esp"] = request.esp ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.ownerId)) {
             query["OwnerId"] = request.ownerId!;

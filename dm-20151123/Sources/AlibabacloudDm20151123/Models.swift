@@ -3701,7 +3701,13 @@ public class GetSuppressionListLevelResponse : Tea.TeaModel {
 public class GetTrackListRequest : Tea.TeaModel {
     public var accountName: String?
 
+    public var dedicatedIp: String?
+
+    public var dedicatedIpPoolId: String?
+
     public var endTime: String?
+
+    public var esp: String?
 
     public var offset: String?
 
@@ -3742,8 +3748,17 @@ public class GetTrackListRequest : Tea.TeaModel {
         if self.accountName != nil {
             map["AccountName"] = self.accountName!
         }
+        if self.dedicatedIp != nil {
+            map["DedicatedIp"] = self.dedicatedIp!
+        }
+        if self.dedicatedIpPoolId != nil {
+            map["DedicatedIpPoolId"] = self.dedicatedIpPoolId!
+        }
         if self.endTime != nil {
             map["EndTime"] = self.endTime!
+        }
+        if self.esp != nil {
+            map["Esp"] = self.esp!
         }
         if self.offset != nil {
             map["Offset"] = self.offset!
@@ -3786,8 +3801,17 @@ public class GetTrackListRequest : Tea.TeaModel {
         if let value = dict["AccountName"] as? String {
             self.accountName = value
         }
+        if let value = dict["DedicatedIp"] as? String {
+            self.dedicatedIp = value
+        }
+        if let value = dict["DedicatedIpPoolId"] as? String {
+            self.dedicatedIpPoolId = value
+        }
         if let value = dict["EndTime"] as? String {
             self.endTime = value
+        }
+        if let value = dict["Esp"] as? String {
+            self.esp = value
         }
         if let value = dict["Offset"] as? String {
             self.offset = value
@@ -3984,6 +4008,8 @@ public class GetTrackListResponseBody : Tea.TeaModel {
 
     public var total: Int32?
 
+    public var totalPages: Int32?
+
     public var data: GetTrackListResponseBody.Data?
 
     public override init() {
@@ -4019,6 +4045,9 @@ public class GetTrackListResponseBody : Tea.TeaModel {
         if self.total != nil {
             map["Total"] = self.total!
         }
+        if self.totalPages != nil {
+            map["TotalPages"] = self.totalPages!
+        }
         if self.data != nil {
             map["data"] = self.data?.toMap()
         }
@@ -4044,6 +4073,9 @@ public class GetTrackListResponseBody : Tea.TeaModel {
         }
         if let value = dict["Total"] as? Int32 {
             self.total = value
+        }
+        if let value = dict["TotalPages"] as? Int32 {
+            self.totalPages = value
         }
         if let value = dict["data"] as? [String: Any?] {
             var model = GetTrackListResponseBody.Data()
@@ -4106,7 +4138,13 @@ public class GetTrackListResponse : Tea.TeaModel {
 public class GetTrackListByMailFromAndTagNameRequest : Tea.TeaModel {
     public var accountName: String?
 
+    public var dedicatedIp: String?
+
+    public var dedicatedIpPoolId: String?
+
     public var endTime: String?
+
+    public var esp: String?
 
     public var offset: String?
 
@@ -4147,8 +4185,17 @@ public class GetTrackListByMailFromAndTagNameRequest : Tea.TeaModel {
         if self.accountName != nil {
             map["AccountName"] = self.accountName!
         }
+        if self.dedicatedIp != nil {
+            map["DedicatedIp"] = self.dedicatedIp!
+        }
+        if self.dedicatedIpPoolId != nil {
+            map["DedicatedIpPoolId"] = self.dedicatedIpPoolId!
+        }
         if self.endTime != nil {
             map["EndTime"] = self.endTime!
+        }
+        if self.esp != nil {
+            map["Esp"] = self.esp!
         }
         if self.offset != nil {
             map["Offset"] = self.offset!
@@ -4191,8 +4238,17 @@ public class GetTrackListByMailFromAndTagNameRequest : Tea.TeaModel {
         if let value = dict["AccountName"] as? String {
             self.accountName = value
         }
+        if let value = dict["DedicatedIp"] as? String {
+            self.dedicatedIp = value
+        }
+        if let value = dict["DedicatedIpPoolId"] as? String {
+            self.dedicatedIpPoolId = value
+        }
         if let value = dict["EndTime"] as? String {
             self.endTime = value
+        }
+        if let value = dict["Esp"] as? String {
+            self.esp = value
         }
         if let value = dict["Offset"] as? String {
             self.offset = value
@@ -4389,6 +4445,8 @@ public class GetTrackListByMailFromAndTagNameResponseBody : Tea.TeaModel {
 
     public var total: Int32?
 
+    public var totalPages: String?
+
     public var trackList: GetTrackListByMailFromAndTagNameResponseBody.TrackList?
 
     public override init() {
@@ -4424,6 +4482,9 @@ public class GetTrackListByMailFromAndTagNameResponseBody : Tea.TeaModel {
         if self.total != nil {
             map["Total"] = self.total!
         }
+        if self.totalPages != nil {
+            map["TotalPages"] = self.totalPages!
+        }
         if self.trackList != nil {
             map["TrackList"] = self.trackList?.toMap()
         }
@@ -4449,6 +4510,9 @@ public class GetTrackListByMailFromAndTagNameResponseBody : Tea.TeaModel {
         }
         if let value = dict["Total"] as? Int32 {
             self.total = value
+        }
+        if let value = dict["TotalPages"] as? String {
+            self.totalPages = value
         }
         if let value = dict["TrackList"] as? [String: Any?] {
             var model = GetTrackListByMailFromAndTagNameResponseBody.TrackList()
@@ -8222,7 +8286,13 @@ public class SendTestByTemplateResponse : Tea.TeaModel {
 public class SenderStatisticsByTagNameAndBatchIDRequest : Tea.TeaModel {
     public var accountName: String?
 
+    public var dedicatedIp: String?
+
+    public var dedicatedIpPoolId: String?
+
     public var endTime: String?
+
+    public var esp: String?
 
     public var ownerId: Int64?
 
@@ -8251,8 +8321,17 @@ public class SenderStatisticsByTagNameAndBatchIDRequest : Tea.TeaModel {
         if self.accountName != nil {
             map["AccountName"] = self.accountName!
         }
+        if self.dedicatedIp != nil {
+            map["DedicatedIp"] = self.dedicatedIp!
+        }
+        if self.dedicatedIpPoolId != nil {
+            map["DedicatedIpPoolId"] = self.dedicatedIpPoolId!
+        }
         if self.endTime != nil {
             map["EndTime"] = self.endTime!
+        }
+        if self.esp != nil {
+            map["Esp"] = self.esp!
         }
         if self.ownerId != nil {
             map["OwnerId"] = self.ownerId!
@@ -8277,8 +8356,17 @@ public class SenderStatisticsByTagNameAndBatchIDRequest : Tea.TeaModel {
         if let value = dict["AccountName"] as? String {
             self.accountName = value
         }
+        if let value = dict["DedicatedIp"] as? String {
+            self.dedicatedIp = value
+        }
+        if let value = dict["DedicatedIpPoolId"] as? String {
+            self.dedicatedIpPoolId = value
+        }
         if let value = dict["EndTime"] as? String {
             self.endTime = value
+        }
+        if let value = dict["Esp"] as? String {
+            self.esp = value
         }
         if let value = dict["OwnerId"] as? Int64 {
             self.ownerId = value
