@@ -3044,11 +3044,17 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.feedback)) {
             body["Feedback"] = request.feedback ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.labels)) {
+            body["Labels"] = request.labels ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.queryRequestId)) {
             body["QueryRequestId"] = request.queryRequestId ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.resourceType)) {
             body["ResourceType"] = request.resourceType ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.riskLevel)) {
+            body["RiskLevel"] = request.riskLevel ?? "";
         }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "query": AlibabaCloudOpenApiUtil.Client.query(query),
@@ -3091,6 +3097,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.keywordHitLibs)) {
             body["KeywordHitLibs"] = request.keywordHitLibs ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.manualMachineConfig)) {
+            body["ManualMachineConfig"] = request.manualMachineConfig ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.resourceType)) {
             body["ResourceType"] = request.resourceType ?? "";
