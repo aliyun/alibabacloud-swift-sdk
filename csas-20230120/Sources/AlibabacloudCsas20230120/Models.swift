@@ -844,6 +844,146 @@ public class PAL7ConfigRewriteOp : Tea.TeaModel {
     }
 }
 
+public class ProcessGroup : Tea.TeaModel {
+    public var description_: String?
+
+    public var gmtCreate: String?
+
+    public var gmtModified: String?
+
+    public var name: String?
+
+    public var processGroupId: String?
+
+    public var processes: [ProcessItem]?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.description_ != nil {
+            map["Description"] = self.description_!
+        }
+        if self.gmtCreate != nil {
+            map["GmtCreate"] = self.gmtCreate!
+        }
+        if self.gmtModified != nil {
+            map["GmtModified"] = self.gmtModified!
+        }
+        if self.name != nil {
+            map["Name"] = self.name!
+        }
+        if self.processGroupId != nil {
+            map["ProcessGroupId"] = self.processGroupId!
+        }
+        if self.processes != nil {
+            var tmp : [Any] = []
+            for k in self.processes! {
+                tmp.append(k.toMap())
+            }
+            map["Processes"] = tmp
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["Description"] as? String {
+            self.description_ = value
+        }
+        if let value = dict["GmtCreate"] as? String {
+            self.gmtCreate = value
+        }
+        if let value = dict["GmtModified"] as? String {
+            self.gmtModified = value
+        }
+        if let value = dict["Name"] as? String {
+            self.name = value
+        }
+        if let value = dict["ProcessGroupId"] as? String {
+            self.processGroupId = value
+        }
+        if let value = dict["Processes"] as? [Any?] {
+            var tmp : [ProcessItem] = []
+            for v in value {
+                if v != nil {
+                    var model = ProcessItem()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.processes = tmp
+        }
+    }
+}
+
+public class ProcessItem : Tea.TeaModel {
+    public var bundleId: String?
+
+    public var devType: String?
+
+    public var directory: String?
+
+    public var process: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.bundleId != nil {
+            map["BundleId"] = self.bundleId!
+        }
+        if self.devType != nil {
+            map["DevType"] = self.devType!
+        }
+        if self.directory != nil {
+            map["Directory"] = self.directory!
+        }
+        if self.process != nil {
+            map["Process"] = self.process!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["BundleId"] as? String {
+            self.bundleId = value
+        }
+        if let value = dict["DevType"] as? String {
+            self.devType = value
+        }
+        if let value = dict["Directory"] as? String {
+            self.directory = value
+        }
+        if let value = dict["Process"] as? String {
+            self.process = value
+        }
+    }
+}
+
 public class RecoveryContent : Tea.TeaModel {
     public var authReportInterval: AuthReportInterval?
 
@@ -3553,6 +3693,12 @@ public class CreatePrivateAccessPolicyRequest : Tea.TeaModel {
 
     public var triggerTemplateId: String?
 
+    public var trustedProcessGroupIds: [String]?
+
+    public var trustedProcessStatus: String?
+
+    public var trustedSoftwareIds: [String]?
+
     public var userGroupIds: [String]?
 
     public var userGroupMode: String?
@@ -3611,6 +3757,15 @@ public class CreatePrivateAccessPolicyRequest : Tea.TeaModel {
         if self.triggerTemplateId != nil {
             map["TriggerTemplateId"] = self.triggerTemplateId!
         }
+        if self.trustedProcessGroupIds != nil {
+            map["TrustedProcessGroupIds"] = self.trustedProcessGroupIds!
+        }
+        if self.trustedProcessStatus != nil {
+            map["TrustedProcessStatus"] = self.trustedProcessStatus!
+        }
+        if self.trustedSoftwareIds != nil {
+            map["TrustedSoftwareIds"] = self.trustedSoftwareIds!
+        }
         if self.userGroupIds != nil {
             map["UserGroupIds"] = self.userGroupIds!
         }
@@ -3667,6 +3822,15 @@ public class CreatePrivateAccessPolicyRequest : Tea.TeaModel {
         }
         if let value = dict["TriggerTemplateId"] as? String {
             self.triggerTemplateId = value
+        }
+        if let value = dict["TrustedProcessGroupIds"] as? [String] {
+            self.trustedProcessGroupIds = value
+        }
+        if let value = dict["TrustedProcessStatus"] as? String {
+            self.trustedProcessStatus = value
+        }
+        if let value = dict["TrustedSoftwareIds"] as? [String] {
+            self.trustedSoftwareIds = value
         }
         if let value = dict["UserGroupIds"] as? [String] {
             self.userGroupIds = value
@@ -11459,6 +11623,12 @@ public class GetPrivateAccessPolicyResponseBody : Tea.TeaModel {
 
         public var triggerTemplateId: String?
 
+        public var trustedProcessGroupIds: [String]?
+
+        public var trustedProcessStatus: String?
+
+        public var trustedSoftwareIds: [String]?
+
         public var userGroupIds: [String]?
 
         public var userGroupMode: String?
@@ -11523,6 +11693,15 @@ public class GetPrivateAccessPolicyResponseBody : Tea.TeaModel {
             if self.triggerTemplateId != nil {
                 map["TriggerTemplateId"] = self.triggerTemplateId!
             }
+            if self.trustedProcessGroupIds != nil {
+                map["TrustedProcessGroupIds"] = self.trustedProcessGroupIds!
+            }
+            if self.trustedProcessStatus != nil {
+                map["TrustedProcessStatus"] = self.trustedProcessStatus!
+            }
+            if self.trustedSoftwareIds != nil {
+                map["TrustedSoftwareIds"] = self.trustedSoftwareIds!
+            }
             if self.userGroupIds != nil {
                 map["UserGroupIds"] = self.userGroupIds!
             }
@@ -11585,6 +11764,15 @@ public class GetPrivateAccessPolicyResponseBody : Tea.TeaModel {
             }
             if let value = dict["TriggerTemplateId"] as? String {
                 self.triggerTemplateId = value
+            }
+            if let value = dict["TrustedProcessGroupIds"] as? [String] {
+                self.trustedProcessGroupIds = value
+            }
+            if let value = dict["TrustedProcessStatus"] as? String {
+                self.trustedProcessStatus = value
+            }
+            if let value = dict["TrustedSoftwareIds"] as? [String] {
+                self.trustedSoftwareIds = value
             }
             if let value = dict["UserGroupIds"] as? [String] {
                 self.userGroupIds = value
@@ -21828,6 +22016,12 @@ public class ListPrivateAccessPolicesResponseBody : Tea.TeaModel {
 
         public var triggerTemplateId: String?
 
+        public var trustedProcessGroupIds: [String]?
+
+        public var trustedProcessStatus: String?
+
+        public var trustedSoftwareIds: [String]?
+
         public var userGroupIds: [String]?
 
         public var userGroupMode: String?
@@ -21892,6 +22086,15 @@ public class ListPrivateAccessPolicesResponseBody : Tea.TeaModel {
             if self.triggerTemplateId != nil {
                 map["TriggerTemplateId"] = self.triggerTemplateId!
             }
+            if self.trustedProcessGroupIds != nil {
+                map["TrustedProcessGroupIds"] = self.trustedProcessGroupIds!
+            }
+            if self.trustedProcessStatus != nil {
+                map["TrustedProcessStatus"] = self.trustedProcessStatus!
+            }
+            if self.trustedSoftwareIds != nil {
+                map["TrustedSoftwareIds"] = self.trustedSoftwareIds!
+            }
             if self.userGroupIds != nil {
                 map["UserGroupIds"] = self.userGroupIds!
             }
@@ -21954,6 +22157,15 @@ public class ListPrivateAccessPolicesResponseBody : Tea.TeaModel {
             }
             if let value = dict["TriggerTemplateId"] as? String {
                 self.triggerTemplateId = value
+            }
+            if let value = dict["TrustedProcessGroupIds"] as? [String] {
+                self.trustedProcessGroupIds = value
+            }
+            if let value = dict["TrustedProcessStatus"] as? String {
+                self.trustedProcessStatus = value
+            }
+            if let value = dict["TrustedSoftwareIds"] as? [String] {
+                self.trustedSoftwareIds = value
             }
             if let value = dict["UserGroupIds"] as? [String] {
                 self.userGroupIds = value
@@ -26400,6 +26612,10 @@ public class ListUserPrivateAccessPoliciesResponseBody : Tea.TeaModel {
 
         public var priority: Int64?
 
+        public var trustedProcessGroupIds: [String]?
+
+        public var trustedSoftwareIds: [String]?
+
         public var userGroupMode: String?
 
         public override init() {
@@ -26441,6 +26657,12 @@ public class ListUserPrivateAccessPoliciesResponseBody : Tea.TeaModel {
             if self.priority != nil {
                 map["Priority"] = self.priority!
             }
+            if self.trustedProcessGroupIds != nil {
+                map["TrustedProcessGroupIds"] = self.trustedProcessGroupIds!
+            }
+            if self.trustedSoftwareIds != nil {
+                map["TrustedSoftwareIds"] = self.trustedSoftwareIds!
+            }
             if self.userGroupMode != nil {
                 map["UserGroupMode"] = self.userGroupMode!
             }
@@ -26479,6 +26701,12 @@ public class ListUserPrivateAccessPoliciesResponseBody : Tea.TeaModel {
             }
             if let value = dict["Priority"] as? Int64 {
                 self.priority = value
+            }
+            if let value = dict["TrustedProcessGroupIds"] as? [String] {
+                self.trustedProcessGroupIds = value
+            }
+            if let value = dict["TrustedSoftwareIds"] as? [String] {
+                self.trustedSoftwareIds = value
             }
             if let value = dict["UserGroupMode"] as? String {
                 self.userGroupMode = value
@@ -30965,6 +31193,12 @@ public class UpdatePrivateAccessPolicyRequest : Tea.TeaModel {
 
     public var triggerTemplateId: String?
 
+    public var trustedProcessGroupIds: [String]?
+
+    public var trustedProcessStatus: String?
+
+    public var trustedSoftwareIds: [String]?
+
     public var userGroupIds: [String]?
 
     public var userGroupMode: String?
@@ -31026,6 +31260,15 @@ public class UpdatePrivateAccessPolicyRequest : Tea.TeaModel {
         if self.triggerTemplateId != nil {
             map["TriggerTemplateId"] = self.triggerTemplateId!
         }
+        if self.trustedProcessGroupIds != nil {
+            map["TrustedProcessGroupIds"] = self.trustedProcessGroupIds!
+        }
+        if self.trustedProcessStatus != nil {
+            map["TrustedProcessStatus"] = self.trustedProcessStatus!
+        }
+        if self.trustedSoftwareIds != nil {
+            map["TrustedSoftwareIds"] = self.trustedSoftwareIds!
+        }
         if self.userGroupIds != nil {
             map["UserGroupIds"] = self.userGroupIds!
         }
@@ -31085,6 +31328,15 @@ public class UpdatePrivateAccessPolicyRequest : Tea.TeaModel {
         }
         if let value = dict["TriggerTemplateId"] as? String {
             self.triggerTemplateId = value
+        }
+        if let value = dict["TrustedProcessGroupIds"] as? [String] {
+            self.trustedProcessGroupIds = value
+        }
+        if let value = dict["TrustedProcessStatus"] as? String {
+            self.trustedProcessStatus = value
+        }
+        if let value = dict["TrustedSoftwareIds"] as? [String] {
+            self.trustedSoftwareIds = value
         }
         if let value = dict["UserGroupIds"] as? [String] {
             self.userGroupIds = value

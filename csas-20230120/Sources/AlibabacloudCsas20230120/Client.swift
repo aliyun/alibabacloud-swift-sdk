@@ -489,6 +489,15 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.triggerTemplateId)) {
             body["TriggerTemplateId"] = request.triggerTemplateId ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.trustedProcessGroupIds)) {
+            bodyFlat["TrustedProcessGroupIds"] = request.trustedProcessGroupIds ?? [];
+        }
+        if (!TeaUtils.Client.isUnset(request.trustedProcessStatus)) {
+            body["TrustedProcessStatus"] = request.trustedProcessStatus ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.trustedSoftwareIds)) {
+            bodyFlat["TrustedSoftwareIds"] = request.trustedSoftwareIds ?? [];
+        }
         if (!TeaUtils.Client.isUnset(request.userGroupIds)) {
             bodyFlat["UserGroupIds"] = request.userGroupIds ?? [];
         }
@@ -3796,6 +3805,15 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.triggerTemplateId)) {
             body["TriggerTemplateId"] = request.triggerTemplateId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.trustedProcessGroupIds)) {
+            bodyFlat["TrustedProcessGroupIds"] = request.trustedProcessGroupIds ?? [];
+        }
+        if (!TeaUtils.Client.isUnset(request.trustedProcessStatus)) {
+            body["TrustedProcessStatus"] = request.trustedProcessStatus ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.trustedSoftwareIds)) {
+            bodyFlat["TrustedSoftwareIds"] = request.trustedSoftwareIds ?? [];
         }
         if (!TeaUtils.Client.isUnset(request.userGroupIds)) {
             bodyFlat["UserGroupIds"] = request.userGroupIds ?? [];
