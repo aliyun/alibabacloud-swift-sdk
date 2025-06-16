@@ -1991,6 +1991,8 @@ public class DocOcrMaxRequest : Tea.TeaModel {
 
     public var idOcrPictureUrl: String?
 
+    public var idSpoof: String?
+
     public var idThreshold: String?
 
     public var merchantBizId: String?
@@ -2030,6 +2032,9 @@ public class DocOcrMaxRequest : Tea.TeaModel {
         if self.idOcrPictureUrl != nil {
             map["IdOcrPictureUrl"] = self.idOcrPictureUrl!
         }
+        if self.idSpoof != nil {
+            map["IdSpoof"] = self.idSpoof!
+        }
         if self.idThreshold != nil {
             map["IdThreshold"] = self.idThreshold!
         }
@@ -2067,6 +2072,9 @@ public class DocOcrMaxRequest : Tea.TeaModel {
         }
         if let value = dict["IdOcrPictureUrl"] as? String {
             self.idOcrPictureUrl = value
+        }
+        if let value = dict["IdSpoof"] as? String {
+            self.idSpoof = value
         }
         if let value = dict["IdThreshold"] as? String {
             self.idThreshold = value
@@ -3947,6 +3955,8 @@ public class InitializeRequest : Tea.TeaModel {
 
     public var ocr: String?
 
+    public var pages: String?
+
     public var procedurePriority: String?
 
     public var productCode: String?
@@ -4057,6 +4067,9 @@ public class InitializeRequest : Tea.TeaModel {
         }
         if self.ocr != nil {
             map["Ocr"] = self.ocr!
+        }
+        if self.pages != nil {
+            map["Pages"] = self.pages!
         }
         if self.procedurePriority != nil {
             map["ProcedurePriority"] = self.procedurePriority!
@@ -4171,6 +4184,9 @@ public class InitializeRequest : Tea.TeaModel {
         if let value = dict["Ocr"] as? String {
             self.ocr = value
         }
+        if let value = dict["Pages"] as? String {
+            self.pages = value
+        }
         if let value = dict["ProcedurePriority"] as? String {
             self.procedurePriority = value
         }
@@ -4257,6 +4273,8 @@ public class InitializeShrinkRequest : Tea.TeaModel {
     public var model: String?
 
     public var ocr: String?
+
+    public var pages: String?
 
     public var procedurePriority: String?
 
@@ -4368,6 +4386,9 @@ public class InitializeShrinkRequest : Tea.TeaModel {
         }
         if self.ocr != nil {
             map["Ocr"] = self.ocr!
+        }
+        if self.pages != nil {
+            map["Pages"] = self.pages!
         }
         if self.procedurePriority != nil {
             map["ProcedurePriority"] = self.procedurePriority!
@@ -4481,6 +4502,9 @@ public class InitializeShrinkRequest : Tea.TeaModel {
         }
         if let value = dict["Ocr"] as? String {
             self.ocr = value
+        }
+        if let value = dict["Pages"] as? String {
+            self.pages = value
         }
         if let value = dict["ProcedurePriority"] as? String {
             self.procedurePriority = value
