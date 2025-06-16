@@ -9930,6 +9930,8 @@ public class CreateLoadBalancerRequest : Tea.TeaModel {
 
         public var method: String?
 
+        public var monitoringRegion: String?
+
         public var path: String?
 
         public var port: Int32?
@@ -9973,6 +9975,9 @@ public class CreateLoadBalancerRequest : Tea.TeaModel {
             if self.method != nil {
                 map["Method"] = self.method!
             }
+            if self.monitoringRegion != nil {
+                map["MonitoringRegion"] = self.monitoringRegion!
+            }
             if self.path != nil {
                 map["Path"] = self.path!
             }
@@ -10010,6 +10015,9 @@ public class CreateLoadBalancerRequest : Tea.TeaModel {
             }
             if let value = dict["Method"] as? String {
                 self.method = value
+            }
+            if let value = dict["MonitoringRegion"] as? String {
+                self.monitoringRegion = value
             }
             if let value = dict["Path"] as? String {
                 self.path = value
@@ -34446,6 +34454,8 @@ public class GetLoadBalancerResponseBody : Tea.TeaModel {
 
         public var method: String?
 
+        public var monitoringRegion: String?
+
         public var path: String?
 
         public var port: Int32?
@@ -34489,6 +34499,9 @@ public class GetLoadBalancerResponseBody : Tea.TeaModel {
             if self.method != nil {
                 map["Method"] = self.method!
             }
+            if self.monitoringRegion != nil {
+                map["MonitoringRegion"] = self.monitoringRegion!
+            }
             if self.path != nil {
                 map["Path"] = self.path!
             }
@@ -34526,6 +34539,9 @@ public class GetLoadBalancerResponseBody : Tea.TeaModel {
             }
             if let value = dict["Method"] as? String {
                 self.method = value
+            }
+            if let value = dict["MonitoringRegion"] as? String {
+                self.monitoringRegion = value
             }
             if let value = dict["Path"] as? String {
                 self.path = value
@@ -52008,6 +52024,8 @@ public class ListLoadBalancersResponseBody : Tea.TeaModel {
 
             public var method: String?
 
+            public var monitoringRegion: String?
+
             public var path: String?
 
             public var port: Int32?
@@ -52051,6 +52069,9 @@ public class ListLoadBalancersResponseBody : Tea.TeaModel {
                 if self.method != nil {
                     map["Method"] = self.method!
                 }
+                if self.monitoringRegion != nil {
+                    map["MonitoringRegion"] = self.monitoringRegion!
+                }
                 if self.path != nil {
                     map["Path"] = self.path!
                 }
@@ -52088,6 +52109,9 @@ public class ListLoadBalancersResponseBody : Tea.TeaModel {
                 }
                 if let value = dict["Method"] as? String {
                     self.method = value
+                }
+                if let value = dict["MonitoringRegion"] as? String {
+                    self.monitoringRegion = value
                 }
                 if let value = dict["Path"] as? String {
                     self.path = value
@@ -71173,6 +71197,8 @@ public class UpdateLoadBalancerRequest : Tea.TeaModel {
 
         public var method: String?
 
+        public var monitoringRegion: String?
+
         public var path: String?
 
         public var port: Int32?
@@ -71216,6 +71242,9 @@ public class UpdateLoadBalancerRequest : Tea.TeaModel {
             if self.method != nil {
                 map["Method"] = self.method!
             }
+            if self.monitoringRegion != nil {
+                map["MonitoringRegion"] = self.monitoringRegion!
+            }
             if self.path != nil {
                 map["Path"] = self.path!
             }
@@ -71253,6 +71282,9 @@ public class UpdateLoadBalancerRequest : Tea.TeaModel {
             }
             if let value = dict["Method"] as? String {
                 self.method = value
+            }
+            if let value = dict["MonitoringRegion"] as? String {
+                self.monitoringRegion = value
             }
             if let value = dict["Path"] as? String {
                 self.path = value
