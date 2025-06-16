@@ -824,6 +824,8 @@ public class CreateArtifactRequest : Tea.TeaModel {
 
         public var sourceImageId: String?
 
+        public var systemDiskSize: Int64?
+
         public override init() {
             super.init()
         }
@@ -867,6 +869,9 @@ public class CreateArtifactRequest : Tea.TeaModel {
             if self.sourceImageId != nil {
                 map["SourceImageId"] = self.sourceImageId!
             }
+            if self.systemDiskSize != nil {
+                map["SystemDiskSize"] = self.systemDiskSize!
+            }
             return map
         }
 
@@ -907,6 +912,9 @@ public class CreateArtifactRequest : Tea.TeaModel {
             }
             if let value = dict["SourceImageId"] as? String {
                 self.sourceImageId = value
+            }
+            if let value = dict["SystemDiskSize"] as? Int64 {
+                self.systemDiskSize = value
             }
         }
     }
