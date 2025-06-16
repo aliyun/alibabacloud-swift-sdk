@@ -674,11 +674,19 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func createWmBaseImageWithOptions(_ request: CreateWmBaseImageRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> CreateWmBaseImageResponse {
-        try TeaUtils.Client.validateModel(request)
+    public func createWmBaseImageWithOptions(_ tmpReq: CreateWmBaseImageRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> CreateWmBaseImageResponse {
+        try TeaUtils.Client.validateModel(tmpReq)
+        var request: CreateWmBaseImageShrinkRequest = CreateWmBaseImageShrinkRequest([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.imageControl)) {
+            request.imageControlShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.imageControl, "ImageControl", "json")
+        }
         var body: [String: Any] = [:]
         if (!TeaUtils.Client.isUnset(request.height)) {
             body["Height"] = request.height!;
+        }
+        if (!TeaUtils.Client.isUnset(request.imageControlShrink)) {
+            body["ImageControl"] = request.imageControlShrink ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.opacity)) {
             body["Opacity"] = request.opacity!;

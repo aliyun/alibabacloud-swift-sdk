@@ -4886,7 +4886,387 @@ public class CreateUserGroupResponse : Tea.TeaModel {
 }
 
 public class CreateWmBaseImageRequest : Tea.TeaModel {
+    public class ImageControl : Tea.TeaModel {
+        public class LogoVisibleControl : Tea.TeaModel {
+            public var angle: Int64?
+
+            public var logoBase64: String?
+
+            public var mode: String?
+
+            public var opacity: Int32?
+
+            public var posAx: Double?
+
+            public var posAy: Double?
+
+            public var posX: Int64?
+
+            public var posY: Int64?
+
+            public var spaceX: Int64?
+
+            public var spaceY: Int64?
+
+            public var visible: Bool?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.angle != nil {
+                    map["Angle"] = self.angle!
+                }
+                if self.logoBase64 != nil {
+                    map["LogoBase64"] = self.logoBase64!
+                }
+                if self.mode != nil {
+                    map["Mode"] = self.mode!
+                }
+                if self.opacity != nil {
+                    map["Opacity"] = self.opacity!
+                }
+                if self.posAx != nil {
+                    map["PosAx"] = self.posAx!
+                }
+                if self.posAy != nil {
+                    map["PosAy"] = self.posAy!
+                }
+                if self.posX != nil {
+                    map["PosX"] = self.posX!
+                }
+                if self.posY != nil {
+                    map["PosY"] = self.posY!
+                }
+                if self.spaceX != nil {
+                    map["SpaceX"] = self.spaceX!
+                }
+                if self.spaceY != nil {
+                    map["SpaceY"] = self.spaceY!
+                }
+                if self.visible != nil {
+                    map["Visible"] = self.visible!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["Angle"] as? Int64 {
+                    self.angle = value
+                }
+                if let value = dict["LogoBase64"] as? String {
+                    self.logoBase64 = value
+                }
+                if let value = dict["Mode"] as? String {
+                    self.mode = value
+                }
+                if let value = dict["Opacity"] as? Int32 {
+                    self.opacity = value
+                }
+                if let value = dict["PosAx"] as? Double {
+                    self.posAx = value
+                }
+                if let value = dict["PosAy"] as? Double {
+                    self.posAy = value
+                }
+                if let value = dict["PosX"] as? Int64 {
+                    self.posX = value
+                }
+                if let value = dict["PosY"] as? Int64 {
+                    self.posY = value
+                }
+                if let value = dict["SpaceX"] as? Int64 {
+                    self.spaceX = value
+                }
+                if let value = dict["SpaceY"] as? Int64 {
+                    self.spaceY = value
+                }
+                if let value = dict["Visible"] as? Bool {
+                    self.visible = value
+                }
+            }
+        }
+        public class TextVisibleControl : Tea.TeaModel {
+            public var angle: Int64?
+
+            public var fontColor: String?
+
+            public var fontSize: Int64?
+
+            public var mode: String?
+
+            public var opacity: Int32?
+
+            public var posAx: Double?
+
+            public var posAy: Double?
+
+            public var posX: Int64?
+
+            public var posY: Int64?
+
+            public var spaceX: Int64?
+
+            public var spaceY: Int64?
+
+            public var visible: Bool?
+
+            public var visibleText: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.angle != nil {
+                    map["Angle"] = self.angle!
+                }
+                if self.fontColor != nil {
+                    map["FontColor"] = self.fontColor!
+                }
+                if self.fontSize != nil {
+                    map["FontSize"] = self.fontSize!
+                }
+                if self.mode != nil {
+                    map["Mode"] = self.mode!
+                }
+                if self.opacity != nil {
+                    map["Opacity"] = self.opacity!
+                }
+                if self.posAx != nil {
+                    map["PosAx"] = self.posAx!
+                }
+                if self.posAy != nil {
+                    map["PosAy"] = self.posAy!
+                }
+                if self.posX != nil {
+                    map["PosX"] = self.posX!
+                }
+                if self.posY != nil {
+                    map["PosY"] = self.posY!
+                }
+                if self.spaceX != nil {
+                    map["SpaceX"] = self.spaceX!
+                }
+                if self.spaceY != nil {
+                    map["SpaceY"] = self.spaceY!
+                }
+                if self.visible != nil {
+                    map["Visible"] = self.visible!
+                }
+                if self.visibleText != nil {
+                    map["VisibleText"] = self.visibleText!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["Angle"] as? Int64 {
+                    self.angle = value
+                }
+                if let value = dict["FontColor"] as? String {
+                    self.fontColor = value
+                }
+                if let value = dict["FontSize"] as? Int64 {
+                    self.fontSize = value
+                }
+                if let value = dict["Mode"] as? String {
+                    self.mode = value
+                }
+                if let value = dict["Opacity"] as? Int32 {
+                    self.opacity = value
+                }
+                if let value = dict["PosAx"] as? Double {
+                    self.posAx = value
+                }
+                if let value = dict["PosAy"] as? Double {
+                    self.posAy = value
+                }
+                if let value = dict["PosX"] as? Int64 {
+                    self.posX = value
+                }
+                if let value = dict["PosY"] as? Int64 {
+                    self.posY = value
+                }
+                if let value = dict["SpaceX"] as? Int64 {
+                    self.spaceX = value
+                }
+                if let value = dict["SpaceY"] as? Int64 {
+                    self.spaceY = value
+                }
+                if let value = dict["Visible"] as? Bool {
+                    self.visible = value
+                }
+                if let value = dict["VisibleText"] as? String {
+                    self.visibleText = value
+                }
+            }
+        }
+        public var logoVisibleControl: CreateWmBaseImageRequest.ImageControl.LogoVisibleControl?
+
+        public var textVisibleControl: CreateWmBaseImageRequest.ImageControl.TextVisibleControl?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+            try self.logoVisibleControl?.validate()
+            try self.textVisibleControl?.validate()
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.logoVisibleControl != nil {
+                map["LogoVisibleControl"] = self.logoVisibleControl?.toMap()
+            }
+            if self.textVisibleControl != nil {
+                map["TextVisibleControl"] = self.textVisibleControl?.toMap()
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["LogoVisibleControl"] as? [String: Any?] {
+                var model = CreateWmBaseImageRequest.ImageControl.LogoVisibleControl()
+                model.fromMap(value)
+                self.logoVisibleControl = model
+            }
+            if let value = dict["TextVisibleControl"] as? [String: Any?] {
+                var model = CreateWmBaseImageRequest.ImageControl.TextVisibleControl()
+                model.fromMap(value)
+                self.textVisibleControl = model
+            }
+        }
+    }
     public var height: Int32?
+
+    public var imageControl: CreateWmBaseImageRequest.ImageControl?
+
+    public var opacity: Int32?
+
+    public var scale: Int32?
+
+    public var width: Int32?
+
+    public var wmInfoBytesB64: String?
+
+    public var wmInfoSize: Int64?
+
+    public var wmInfoUint: String?
+
+    public var wmType: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.imageControl?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.height != nil {
+            map["Height"] = self.height!
+        }
+        if self.imageControl != nil {
+            map["ImageControl"] = self.imageControl?.toMap()
+        }
+        if self.opacity != nil {
+            map["Opacity"] = self.opacity!
+        }
+        if self.scale != nil {
+            map["Scale"] = self.scale!
+        }
+        if self.width != nil {
+            map["Width"] = self.width!
+        }
+        if self.wmInfoBytesB64 != nil {
+            map["WmInfoBytesB64"] = self.wmInfoBytesB64!
+        }
+        if self.wmInfoSize != nil {
+            map["WmInfoSize"] = self.wmInfoSize!
+        }
+        if self.wmInfoUint != nil {
+            map["WmInfoUint"] = self.wmInfoUint!
+        }
+        if self.wmType != nil {
+            map["WmType"] = self.wmType!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["Height"] as? Int32 {
+            self.height = value
+        }
+        if let value = dict["ImageControl"] as? [String: Any?] {
+            var model = CreateWmBaseImageRequest.ImageControl()
+            model.fromMap(value)
+            self.imageControl = model
+        }
+        if let value = dict["Opacity"] as? Int32 {
+            self.opacity = value
+        }
+        if let value = dict["Scale"] as? Int32 {
+            self.scale = value
+        }
+        if let value = dict["Width"] as? Int32 {
+            self.width = value
+        }
+        if let value = dict["WmInfoBytesB64"] as? String {
+            self.wmInfoBytesB64 = value
+        }
+        if let value = dict["WmInfoSize"] as? Int64 {
+            self.wmInfoSize = value
+        }
+        if let value = dict["WmInfoUint"] as? String {
+            self.wmInfoUint = value
+        }
+        if let value = dict["WmType"] as? String {
+            self.wmType = value
+        }
+    }
+}
+
+public class CreateWmBaseImageShrinkRequest : Tea.TeaModel {
+    public var height: Int32?
+
+    public var imageControlShrink: String?
 
     public var opacity: Int32?
 
@@ -4919,6 +5299,9 @@ public class CreateWmBaseImageRequest : Tea.TeaModel {
         if self.height != nil {
             map["Height"] = self.height!
         }
+        if self.imageControlShrink != nil {
+            map["ImageControl"] = self.imageControlShrink!
+        }
         if self.opacity != nil {
             map["Opacity"] = self.opacity!
         }
@@ -4947,6 +5330,9 @@ public class CreateWmBaseImageRequest : Tea.TeaModel {
         guard let dict else { return }
         if let value = dict["Height"] as? Int32 {
             self.height = value
+        }
+        if let value = dict["ImageControl"] as? String {
+            self.imageControlShrink = value
         }
         if let value = dict["Opacity"] as? Int32 {
             self.opacity = value
