@@ -75012,6 +75012,8 @@ public class GetDhcpOptionsSetResponseBody : Tea.TeaModel {
     }
     public var associateVpcs: [GetDhcpOptionsSetResponseBody.AssociateVpcs]?
 
+    public var creationTime: String?
+
     public var dhcpOptions: GetDhcpOptionsSetResponseBody.DhcpOptions?
 
     public var dhcpOptionsSetDescription: String?
@@ -75051,6 +75053,9 @@ public class GetDhcpOptionsSetResponseBody : Tea.TeaModel {
                 tmp.append(k.toMap())
             }
             map["AssociateVpcs"] = tmp
+        }
+        if self.creationTime != nil {
+            map["CreationTime"] = self.creationTime!
         }
         if self.dhcpOptions != nil {
             map["DhcpOptions"] = self.dhcpOptions?.toMap()
@@ -75100,6 +75105,9 @@ public class GetDhcpOptionsSetResponseBody : Tea.TeaModel {
                 }
             }
             self.associateVpcs = tmp
+        }
+        if let value = dict["CreationTime"] as? String {
+            self.creationTime = value
         }
         if let value = dict["DhcpOptions"] as? [String: Any?] {
             var model = GetDhcpOptionsSetResponseBody.DhcpOptions()
@@ -79475,6 +79483,8 @@ public class ListDhcpOptionsSetsResponseBody : Tea.TeaModel {
         }
         public var associateVpcCount: Int32?
 
+        public var creationTime: String?
+
         public var dhcpOptions: ListDhcpOptionsSetsResponseBody.DhcpOptionsSets.DhcpOptions?
 
         public var dhcpOptionsSetDescription: String?
@@ -79508,6 +79518,9 @@ public class ListDhcpOptionsSetsResponseBody : Tea.TeaModel {
             var map = super.toMap()
             if self.associateVpcCount != nil {
                 map["AssociateVpcCount"] = self.associateVpcCount!
+            }
+            if self.creationTime != nil {
+                map["CreationTime"] = self.creationTime!
             }
             if self.dhcpOptions != nil {
                 map["DhcpOptions"] = self.dhcpOptions?.toMap()
@@ -79544,6 +79557,9 @@ public class ListDhcpOptionsSetsResponseBody : Tea.TeaModel {
             guard let dict else { return }
             if let value = dict["AssociateVpcCount"] as? Int32 {
                 self.associateVpcCount = value
+            }
+            if let value = dict["CreationTime"] as? String {
+                self.creationTime = value
             }
             if let value = dict["DhcpOptions"] as? [String: Any?] {
                 var model = ListDhcpOptionsSetsResponseBody.DhcpOptionsSets.DhcpOptions()
