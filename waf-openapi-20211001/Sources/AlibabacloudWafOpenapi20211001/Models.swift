@@ -21425,6 +21425,326 @@ public class DescribeInstanceResponse : Tea.TeaModel {
     }
 }
 
+public class DescribeIpAbroadCountryInfosRequest : Tea.TeaModel {
+    public var abroadRegion: String?
+
+    public var country: String?
+
+    public var instanceId: String?
+
+    public var language: String?
+
+    public var maxResults: Int32?
+
+    public var nextToken: String?
+
+    public var regionId: String?
+
+    public var resourceManagerResourceGroupId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.abroadRegion != nil {
+            map["AbroadRegion"] = self.abroadRegion!
+        }
+        if self.country != nil {
+            map["Country"] = self.country!
+        }
+        if self.instanceId != nil {
+            map["InstanceId"] = self.instanceId!
+        }
+        if self.language != nil {
+            map["Language"] = self.language!
+        }
+        if self.maxResults != nil {
+            map["MaxResults"] = self.maxResults!
+        }
+        if self.nextToken != nil {
+            map["NextToken"] = self.nextToken!
+        }
+        if self.regionId != nil {
+            map["RegionId"] = self.regionId!
+        }
+        if self.resourceManagerResourceGroupId != nil {
+            map["ResourceManagerResourceGroupId"] = self.resourceManagerResourceGroupId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["AbroadRegion"] as? String {
+            self.abroadRegion = value
+        }
+        if let value = dict["Country"] as? String {
+            self.country = value
+        }
+        if let value = dict["InstanceId"] as? String {
+            self.instanceId = value
+        }
+        if let value = dict["Language"] as? String {
+            self.language = value
+        }
+        if let value = dict["MaxResults"] as? Int32 {
+            self.maxResults = value
+        }
+        if let value = dict["NextToken"] as? String {
+            self.nextToken = value
+        }
+        if let value = dict["RegionId"] as? String {
+            self.regionId = value
+        }
+        if let value = dict["ResourceManagerResourceGroupId"] as? String {
+            self.resourceManagerResourceGroupId = value
+        }
+    }
+}
+
+public class DescribeIpAbroadCountryInfosResponseBody : Tea.TeaModel {
+    public class AbroadInfos : Tea.TeaModel {
+        public class Regions : Tea.TeaModel {
+            public var abroadRegionId: String?
+
+            public var abroadRegionName: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.abroadRegionId != nil {
+                    map["AbroadRegionId"] = self.abroadRegionId!
+                }
+                if self.abroadRegionName != nil {
+                    map["AbroadRegionName"] = self.abroadRegionName!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["AbroadRegionId"] as? String {
+                    self.abroadRegionId = value
+                }
+                if let value = dict["AbroadRegionName"] as? String {
+                    self.abroadRegionName = value
+                }
+            }
+        }
+        public var continent: String?
+
+        public var country: String?
+
+        public var countryName: String?
+
+        public var regions: [DescribeIpAbroadCountryInfosResponseBody.AbroadInfos.Regions]?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.continent != nil {
+                map["Continent"] = self.continent!
+            }
+            if self.country != nil {
+                map["Country"] = self.country!
+            }
+            if self.countryName != nil {
+                map["CountryName"] = self.countryName!
+            }
+            if self.regions != nil {
+                var tmp : [Any] = []
+                for k in self.regions! {
+                    tmp.append(k.toMap())
+                }
+                map["Regions"] = tmp
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["Continent"] as? String {
+                self.continent = value
+            }
+            if let value = dict["Country"] as? String {
+                self.country = value
+            }
+            if let value = dict["CountryName"] as? String {
+                self.countryName = value
+            }
+            if let value = dict["Regions"] as? [Any?] {
+                var tmp : [DescribeIpAbroadCountryInfosResponseBody.AbroadInfos.Regions] = []
+                for v in value {
+                    if v != nil {
+                        var model = DescribeIpAbroadCountryInfosResponseBody.AbroadInfos.Regions()
+                        if v != nil {
+                            model.fromMap(v as? [String: Any?])
+                        }
+                        tmp.append(model)
+                    }
+                }
+                self.regions = tmp
+            }
+        }
+    }
+    public var abroadInfos: [DescribeIpAbroadCountryInfosResponseBody.AbroadInfos]?
+
+    public var maxResults: Int32?
+
+    public var nextToken: String?
+
+    public var requestId: String?
+
+    public var totalCount: Int32?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.abroadInfos != nil {
+            var tmp : [Any] = []
+            for k in self.abroadInfos! {
+                tmp.append(k.toMap())
+            }
+            map["AbroadInfos"] = tmp
+        }
+        if self.maxResults != nil {
+            map["MaxResults"] = self.maxResults!
+        }
+        if self.nextToken != nil {
+            map["NextToken"] = self.nextToken!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.totalCount != nil {
+            map["TotalCount"] = self.totalCount!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["AbroadInfos"] as? [Any?] {
+            var tmp : [DescribeIpAbroadCountryInfosResponseBody.AbroadInfos] = []
+            for v in value {
+                if v != nil {
+                    var model = DescribeIpAbroadCountryInfosResponseBody.AbroadInfos()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.abroadInfos = tmp
+        }
+        if let value = dict["MaxResults"] as? Int32 {
+            self.maxResults = value
+        }
+        if let value = dict["NextToken"] as? String {
+            self.nextToken = value
+        }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+        if let value = dict["TotalCount"] as? Int32 {
+            self.totalCount = value
+        }
+    }
+}
+
+public class DescribeIpAbroadCountryInfosResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: DescribeIpAbroadCountryInfosResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = DescribeIpAbroadCountryInfosResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
 public class DescribeMajorProtectionBlackIpsRequest : Tea.TeaModel {
     public var instanceId: String?
 
