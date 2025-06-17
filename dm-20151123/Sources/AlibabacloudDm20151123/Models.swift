@@ -294,6 +294,8 @@ public class BatchSendMailRequest : Tea.TeaModel {
 
     public var headers: String?
 
+    public var ipPoolId: String?
+
     public var ownerId: Int64?
 
     public var receiversName: String?
@@ -339,6 +341,9 @@ public class BatchSendMailRequest : Tea.TeaModel {
         }
         if self.headers != nil {
             map["Headers"] = self.headers!
+        }
+        if self.ipPoolId != nil {
+            map["IpPoolId"] = self.ipPoolId!
         }
         if self.ownerId != nil {
             map["OwnerId"] = self.ownerId!
@@ -386,6 +391,9 @@ public class BatchSendMailRequest : Tea.TeaModel {
         }
         if let value = dict["Headers"] as? String {
             self.headers = value
+        }
+        if let value = dict["IpPoolId"] as? String {
+            self.ipPoolId = value
         }
         if let value = dict["OwnerId"] as? Int64 {
             self.ownerId = value
@@ -7463,6 +7471,10 @@ public class QueryTaskByParamResponseBody : Tea.TeaModel {
 
             public var createTime: String?
 
+            public var ipPoolId: String?
+
+            public var ipPoolName: String?
+
             public var receiversName: String?
 
             public var requestCount: String?
@@ -7497,6 +7509,12 @@ public class QueryTaskByParamResponseBody : Tea.TeaModel {
                 if self.createTime != nil {
                     map["CreateTime"] = self.createTime!
                 }
+                if self.ipPoolId != nil {
+                    map["IpPoolId"] = self.ipPoolId!
+                }
+                if self.ipPoolName != nil {
+                    map["IpPoolName"] = self.ipPoolName!
+                }
                 if self.receiversName != nil {
                     map["ReceiversName"] = self.receiversName!
                 }
@@ -7528,6 +7546,12 @@ public class QueryTaskByParamResponseBody : Tea.TeaModel {
                 }
                 if let value = dict["CreateTime"] as? String {
                     self.createTime = value
+                }
+                if let value = dict["IpPoolId"] as? String {
+                    self.ipPoolId = value
+                }
+                if let value = dict["IpPoolName"] as? String {
+                    self.ipPoolName = value
                 }
                 if let value = dict["ReceiversName"] as? String {
                     self.receiversName = value
@@ -9106,6 +9130,8 @@ public class SingleSendMailRequest : Tea.TeaModel {
 
     public var htmlBody: String?
 
+    public var ipPoolId: String?
+
     public var ownerId: Int64?
 
     public var replyAddress: String?
@@ -9161,6 +9187,9 @@ public class SingleSendMailRequest : Tea.TeaModel {
         }
         if self.htmlBody != nil {
             map["HtmlBody"] = self.htmlBody!
+        }
+        if self.ipPoolId != nil {
+            map["IpPoolId"] = self.ipPoolId!
         }
         if self.ownerId != nil {
             map["OwnerId"] = self.ownerId!
@@ -9220,6 +9249,9 @@ public class SingleSendMailRequest : Tea.TeaModel {
         }
         if let value = dict["HtmlBody"] as? String {
             self.htmlBody = value
+        }
+        if let value = dict["IpPoolId"] as? String {
+            self.ipPoolId = value
         }
         if let value = dict["OwnerId"] as? Int64 {
             self.ownerId = value

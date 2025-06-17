@@ -119,6 +119,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.headers)) {
             query["Headers"] = request.headers ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.ipPoolId)) {
+            query["IpPoolId"] = request.ipPoolId ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.ownerId)) {
             query["OwnerId"] = request.ownerId!;
         }
@@ -1990,6 +1993,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.htmlBody)) {
             query["HtmlBody"] = request.htmlBody ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.ipPoolId)) {
+            query["IpPoolId"] = request.ipPoolId ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.ownerId)) {
             query["OwnerId"] = request.ownerId!;
