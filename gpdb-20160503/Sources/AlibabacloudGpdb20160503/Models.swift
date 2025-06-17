@@ -12573,6 +12573,8 @@ public class DescribeDBInstanceAttributeResponseBody : Tea.TeaModel {
 
             public var instanceNetworkType: String?
 
+            public var instanceSpec: String?
+
             public var lockMode: String?
 
             public var lockReason: String?
@@ -12753,6 +12755,9 @@ public class DescribeDBInstanceAttributeResponseBody : Tea.TeaModel {
                 }
                 if self.instanceNetworkType != nil {
                     map["InstanceNetworkType"] = self.instanceNetworkType!
+                }
+                if self.instanceSpec != nil {
+                    map["InstanceSpec"] = self.instanceSpec!
                 }
                 if self.lockMode != nil {
                     map["LockMode"] = self.lockMode!
@@ -12962,6 +12967,9 @@ public class DescribeDBInstanceAttributeResponseBody : Tea.TeaModel {
                 }
                 if let value = dict["InstanceNetworkType"] as? String {
                     self.instanceNetworkType = value
+                }
+                if let value = dict["InstanceSpec"] as? String {
+                    self.instanceSpec = value
                 }
                 if let value = dict["LockMode"] as? String {
                     self.lockMode = value
