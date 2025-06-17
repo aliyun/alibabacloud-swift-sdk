@@ -58,6 +58,42 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func batchIntrudeDomainsWithOptions(_ tmpReq: BatchIntrudeDomainsRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> BatchIntrudeDomainsResponse {
+        try TeaUtils.Client.validateModel(tmpReq)
+        var request: BatchIntrudeDomainsShrinkRequest = BatchIntrudeDomainsShrinkRequest([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.domainNames)) {
+            request.domainNamesShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.domainNames, "DomainNames", "json")
+        }
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.domainNamesShrink)) {
+            query["DomainNames"] = request.domainNamesShrink ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "BatchIntrudeDomains",
+            "version": "2018-02-08",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(BatchIntrudeDomainsResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func batchIntrudeDomains(_ request: BatchIntrudeDomainsRequest) async throws -> BatchIntrudeDomainsResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await batchIntrudeDomainsWithOptions(request as! BatchIntrudeDomainsRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func bidDomainWithOptions(_ request: BidDomainRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> BidDomainResponse {
         try TeaUtils.Client.validateModel(request)
         var body: [String: Any] = [:]
@@ -702,6 +738,37 @@ open class Client : AlibabacloudOpenApi.Client {
     public func queryExchangeRate(_ request: QueryExchangeRateRequest) async throws -> QueryExchangeRateResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         return try await queryExchangeRateWithOptions(request as! QueryExchangeRateRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func queryExportAuctionDetailWithOptions(_ request: QueryExportAuctionDetailRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> QueryExportAuctionDetailResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.auctionId)) {
+            query["AuctionId"] = request.auctionId ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "QueryExportAuctionDetail",
+            "version": "2018-02-08",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(QueryExportAuctionDetailResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func queryExportAuctionDetail(_ request: QueryExportAuctionDetailRequest) async throws -> QueryExportAuctionDetailResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await queryExportAuctionDetailWithOptions(request as! QueryExportAuctionDetailRequest, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
