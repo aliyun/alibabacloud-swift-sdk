@@ -3778,6 +3778,478 @@ public class MediaConvertInput : Tea.TeaModel {
     }
 }
 
+public class MediaConvertJob : Tea.TeaModel {
+    public class Config : Tea.TeaModel {
+        public var inputs: [MediaConvertInput]?
+
+        public var jobName: String?
+
+        public var outputGroups: [MediaConvertOutputGroup]?
+
+        public var outputs: [MediaConvertOutput]?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.inputs != nil {
+                var tmp : [Any] = []
+                for k in self.inputs! {
+                    tmp.append(k.toMap())
+                }
+                map["Inputs"] = tmp
+            }
+            if self.jobName != nil {
+                map["JobName"] = self.jobName!
+            }
+            if self.outputGroups != nil {
+                var tmp : [Any] = []
+                for k in self.outputGroups! {
+                    tmp.append(k.toMap())
+                }
+                map["OutputGroups"] = tmp
+            }
+            if self.outputs != nil {
+                var tmp : [Any] = []
+                for k in self.outputs! {
+                    tmp.append(k.toMap())
+                }
+                map["Outputs"] = tmp
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["Inputs"] as? [Any?] {
+                var tmp : [MediaConvertInput] = []
+                for v in value {
+                    if v != nil {
+                        var model = MediaConvertInput()
+                        if v != nil {
+                            model.fromMap(v as? [String: Any?])
+                        }
+                        tmp.append(model)
+                    }
+                }
+                self.inputs = tmp
+            }
+            if let value = dict["JobName"] as? String {
+                self.jobName = value
+            }
+            if let value = dict["OutputGroups"] as? [Any?] {
+                var tmp : [MediaConvertOutputGroup] = []
+                for v in value {
+                    if v != nil {
+                        var model = MediaConvertOutputGroup()
+                        if v != nil {
+                            model.fromMap(v as? [String: Any?])
+                        }
+                        tmp.append(model)
+                    }
+                }
+                self.outputGroups = tmp
+            }
+            if let value = dict["Outputs"] as? [Any?] {
+                var tmp : [MediaConvertOutput] = []
+                for v in value {
+                    if v != nil {
+                        var model = MediaConvertOutput()
+                        if v != nil {
+                            model.fromMap(v as? [String: Any?])
+                        }
+                        tmp.append(model)
+                    }
+                }
+                self.outputs = tmp
+            }
+        }
+    }
+    public var clientToken: String?
+
+    public var code: String?
+
+    public var config: MediaConvertJob.Config?
+
+    public var createTime: String?
+
+    public var finishTime: String?
+
+    public var jobId: String?
+
+    public var message: String?
+
+    public var outputDetails: [MediaConvertOutputDetail]?
+
+    public var outputGroupDetails: [MediaConvertOutputGroupDetail]?
+
+    public var percent: Int32?
+
+    public var pipelineId: String?
+
+    public var requestId: String?
+
+    public var state: String?
+
+    public var userData: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.config?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.clientToken != nil {
+            map["ClientToken"] = self.clientToken!
+        }
+        if self.code != nil {
+            map["Code"] = self.code!
+        }
+        if self.config != nil {
+            map["Config"] = self.config?.toMap()
+        }
+        if self.createTime != nil {
+            map["CreateTime"] = self.createTime!
+        }
+        if self.finishTime != nil {
+            map["FinishTime"] = self.finishTime!
+        }
+        if self.jobId != nil {
+            map["JobId"] = self.jobId!
+        }
+        if self.message != nil {
+            map["Message"] = self.message!
+        }
+        if self.outputDetails != nil {
+            var tmp : [Any] = []
+            for k in self.outputDetails! {
+                tmp.append(k.toMap())
+            }
+            map["OutputDetails"] = tmp
+        }
+        if self.outputGroupDetails != nil {
+            var tmp : [Any] = []
+            for k in self.outputGroupDetails! {
+                tmp.append(k.toMap())
+            }
+            map["OutputGroupDetails"] = tmp
+        }
+        if self.percent != nil {
+            map["Percent"] = self.percent!
+        }
+        if self.pipelineId != nil {
+            map["PipelineId"] = self.pipelineId!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.state != nil {
+            map["State"] = self.state!
+        }
+        if self.userData != nil {
+            map["UserData"] = self.userData!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["ClientToken"] as? String {
+            self.clientToken = value
+        }
+        if let value = dict["Code"] as? String {
+            self.code = value
+        }
+        if let value = dict["Config"] as? [String: Any?] {
+            var model = MediaConvertJob.Config()
+            model.fromMap(value)
+            self.config = model
+        }
+        if let value = dict["CreateTime"] as? String {
+            self.createTime = value
+        }
+        if let value = dict["FinishTime"] as? String {
+            self.finishTime = value
+        }
+        if let value = dict["JobId"] as? String {
+            self.jobId = value
+        }
+        if let value = dict["Message"] as? String {
+            self.message = value
+        }
+        if let value = dict["OutputDetails"] as? [Any?] {
+            var tmp : [MediaConvertOutputDetail] = []
+            for v in value {
+                if v != nil {
+                    var model = MediaConvertOutputDetail()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.outputDetails = tmp
+        }
+        if let value = dict["OutputGroupDetails"] as? [Any?] {
+            var tmp : [MediaConvertOutputGroupDetail] = []
+            for v in value {
+                if v != nil {
+                    var model = MediaConvertOutputGroupDetail()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.outputGroupDetails = tmp
+        }
+        if let value = dict["Percent"] as? Int32 {
+            self.percent = value
+        }
+        if let value = dict["PipelineId"] as? String {
+            self.pipelineId = value
+        }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+        if let value = dict["State"] as? String {
+            self.state = value
+        }
+        if let value = dict["UserData"] as? String {
+            self.userData = value
+        }
+    }
+}
+
+public class MediaConvertJobWithoutDetail : Tea.TeaModel {
+    public class Config : Tea.TeaModel {
+        public var inputs: [MediaConvertInput]?
+
+        public var jobName: String?
+
+        public var outputGroups: [MediaConvertOutputGroup]?
+
+        public var outputs: [MediaConvertOutput]?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.inputs != nil {
+                var tmp : [Any] = []
+                for k in self.inputs! {
+                    tmp.append(k.toMap())
+                }
+                map["Inputs"] = tmp
+            }
+            if self.jobName != nil {
+                map["JobName"] = self.jobName!
+            }
+            if self.outputGroups != nil {
+                var tmp : [Any] = []
+                for k in self.outputGroups! {
+                    tmp.append(k.toMap())
+                }
+                map["OutputGroups"] = tmp
+            }
+            if self.outputs != nil {
+                var tmp : [Any] = []
+                for k in self.outputs! {
+                    tmp.append(k.toMap())
+                }
+                map["Outputs"] = tmp
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["Inputs"] as? [Any?] {
+                var tmp : [MediaConvertInput] = []
+                for v in value {
+                    if v != nil {
+                        var model = MediaConvertInput()
+                        if v != nil {
+                            model.fromMap(v as? [String: Any?])
+                        }
+                        tmp.append(model)
+                    }
+                }
+                self.inputs = tmp
+            }
+            if let value = dict["JobName"] as? String {
+                self.jobName = value
+            }
+            if let value = dict["OutputGroups"] as? [Any?] {
+                var tmp : [MediaConvertOutputGroup] = []
+                for v in value {
+                    if v != nil {
+                        var model = MediaConvertOutputGroup()
+                        if v != nil {
+                            model.fromMap(v as? [String: Any?])
+                        }
+                        tmp.append(model)
+                    }
+                }
+                self.outputGroups = tmp
+            }
+            if let value = dict["Outputs"] as? [Any?] {
+                var tmp : [MediaConvertOutput] = []
+                for v in value {
+                    if v != nil {
+                        var model = MediaConvertOutput()
+                        if v != nil {
+                            model.fromMap(v as? [String: Any?])
+                        }
+                        tmp.append(model)
+                    }
+                }
+                self.outputs = tmp
+            }
+        }
+    }
+    public var clientToken: String?
+
+    public var code: String?
+
+    public var config: MediaConvertJobWithoutDetail.Config?
+
+    public var createTime: String?
+
+    public var finishTime: String?
+
+    public var jobId: String?
+
+    public var message: String?
+
+    public var pipelineId: String?
+
+    public var requestId: String?
+
+    public var state: String?
+
+    public var userData: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.config?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.clientToken != nil {
+            map["ClientToken"] = self.clientToken!
+        }
+        if self.code != nil {
+            map["Code"] = self.code!
+        }
+        if self.config != nil {
+            map["Config"] = self.config?.toMap()
+        }
+        if self.createTime != nil {
+            map["CreateTime"] = self.createTime!
+        }
+        if self.finishTime != nil {
+            map["FinishTime"] = self.finishTime!
+        }
+        if self.jobId != nil {
+            map["JobId"] = self.jobId!
+        }
+        if self.message != nil {
+            map["Message"] = self.message!
+        }
+        if self.pipelineId != nil {
+            map["PipelineId"] = self.pipelineId!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.state != nil {
+            map["State"] = self.state!
+        }
+        if self.userData != nil {
+            map["UserData"] = self.userData!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["ClientToken"] as? String {
+            self.clientToken = value
+        }
+        if let value = dict["Code"] as? String {
+            self.code = value
+        }
+        if let value = dict["Config"] as? [String: Any?] {
+            var model = MediaConvertJobWithoutDetail.Config()
+            model.fromMap(value)
+            self.config = model
+        }
+        if let value = dict["CreateTime"] as? String {
+            self.createTime = value
+        }
+        if let value = dict["FinishTime"] as? String {
+            self.finishTime = value
+        }
+        if let value = dict["JobId"] as? String {
+            self.jobId = value
+        }
+        if let value = dict["Message"] as? String {
+            self.message = value
+        }
+        if let value = dict["PipelineId"] as? String {
+            self.pipelineId = value
+        }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+        if let value = dict["State"] as? String {
+            self.state = value
+        }
+        if let value = dict["UserData"] as? String {
+            self.userData = value
+        }
+    }
+}
+
 public class MediaConvertMuxConfig : Tea.TeaModel {
     public var segment: MediaConvertSegment?
 
@@ -3887,11 +4359,107 @@ public class MediaConvertOutput : Tea.TeaModel {
 }
 
 public class MediaConvertOutputDetail : Tea.TeaModel {
+    public class Result : Tea.TeaModel {
+        public class OutputFile : Tea.TeaModel {
+            public var media: String?
+
+            public var type: String?
+
+            public var url: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.media != nil {
+                    map["Media"] = self.media!
+                }
+                if self.type != nil {
+                    map["Type"] = self.type!
+                }
+                if self.url != nil {
+                    map["Url"] = self.url!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["Media"] as? String {
+                    self.media = value
+                }
+                if let value = dict["Type"] as? String {
+                    self.type = value
+                }
+                if let value = dict["Url"] as? String {
+                    self.url = value
+                }
+            }
+        }
+        public var outFileMeta: MediaConvertOutputDetailFileMeta?
+
+        public var outputFile: MediaConvertOutputDetail.Result.OutputFile?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+            try self.outFileMeta?.validate()
+            try self.outputFile?.validate()
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.outFileMeta != nil {
+                map["OutFileMeta"] = self.outFileMeta?.toMap()
+            }
+            if self.outputFile != nil {
+                map["OutputFile"] = self.outputFile?.toMap()
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["OutFileMeta"] as? [String: Any?] {
+                var model = MediaConvertOutputDetailFileMeta()
+                model.fromMap(value)
+                self.outFileMeta = model
+            }
+            if let value = dict["OutputFile"] as? [String: Any?] {
+                var model = MediaConvertOutputDetail.Result.OutputFile()
+                model.fromMap(value)
+                self.outputFile = model
+            }
+        }
+    }
     public var code: String?
+
+    public var createTime: String?
+
+    public var finishTime: String?
 
     public var message: String?
 
     public var name: String?
+
+    public var result: MediaConvertOutputDetail.Result?
 
     public var status: String?
 
@@ -3907,6 +4475,7 @@ public class MediaConvertOutputDetail : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
+        try self.result?.validate()
     }
 
     public override func toMap() -> [String : Any] {
@@ -3914,11 +4483,20 @@ public class MediaConvertOutputDetail : Tea.TeaModel {
         if self.code != nil {
             map["Code"] = self.code!
         }
+        if self.createTime != nil {
+            map["CreateTime"] = self.createTime!
+        }
+        if self.finishTime != nil {
+            map["FinishTime"] = self.finishTime!
+        }
         if self.message != nil {
             map["Message"] = self.message!
         }
         if self.name != nil {
             map["Name"] = self.name!
+        }
+        if self.result != nil {
+            map["Result"] = self.result?.toMap()
         }
         if self.status != nil {
             map["Status"] = self.status!
@@ -3934,17 +4512,572 @@ public class MediaConvertOutputDetail : Tea.TeaModel {
         if let value = dict["Code"] as? String {
             self.code = value
         }
+        if let value = dict["CreateTime"] as? String {
+            self.createTime = value
+        }
+        if let value = dict["FinishTime"] as? String {
+            self.finishTime = value
+        }
         if let value = dict["Message"] as? String {
             self.message = value
         }
         if let value = dict["Name"] as? String {
             self.name = value
         }
+        if let value = dict["Result"] as? [String: Any?] {
+            var model = MediaConvertOutputDetail.Result()
+            model.fromMap(value)
+            self.result = model
+        }
         if let value = dict["Status"] as? String {
             self.status = value
         }
         if let value = dict["TaskId"] as? String {
             self.taskId = value
+        }
+    }
+}
+
+public class MediaConvertOutputDetailFileMeta : Tea.TeaModel {
+    public class AudioStreamInfoList : Tea.TeaModel {
+        public var bitrate: String?
+
+        public var channelLayout: String?
+
+        public var channels: String?
+
+        public var codecLongName: String?
+
+        public var codecName: String?
+
+        public var codecTag: String?
+
+        public var codecTagString: String?
+
+        public var codecTimeBase: String?
+
+        public var duration: String?
+
+        public var index: String?
+
+        public var lang: String?
+
+        public var sampleFmt: String?
+
+        public var sampleRate: String?
+
+        public var startTime: String?
+
+        public var timebase: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.bitrate != nil {
+                map["Bitrate"] = self.bitrate!
+            }
+            if self.channelLayout != nil {
+                map["ChannelLayout"] = self.channelLayout!
+            }
+            if self.channels != nil {
+                map["Channels"] = self.channels!
+            }
+            if self.codecLongName != nil {
+                map["CodecLongName"] = self.codecLongName!
+            }
+            if self.codecName != nil {
+                map["CodecName"] = self.codecName!
+            }
+            if self.codecTag != nil {
+                map["CodecTag"] = self.codecTag!
+            }
+            if self.codecTagString != nil {
+                map["CodecTagString"] = self.codecTagString!
+            }
+            if self.codecTimeBase != nil {
+                map["CodecTimeBase"] = self.codecTimeBase!
+            }
+            if self.duration != nil {
+                map["Duration"] = self.duration!
+            }
+            if self.index != nil {
+                map["Index"] = self.index!
+            }
+            if self.lang != nil {
+                map["Lang"] = self.lang!
+            }
+            if self.sampleFmt != nil {
+                map["SampleFmt"] = self.sampleFmt!
+            }
+            if self.sampleRate != nil {
+                map["SampleRate"] = self.sampleRate!
+            }
+            if self.startTime != nil {
+                map["StartTime"] = self.startTime!
+            }
+            if self.timebase != nil {
+                map["Timebase"] = self.timebase!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["Bitrate"] as? String {
+                self.bitrate = value
+            }
+            if let value = dict["ChannelLayout"] as? String {
+                self.channelLayout = value
+            }
+            if let value = dict["Channels"] as? String {
+                self.channels = value
+            }
+            if let value = dict["CodecLongName"] as? String {
+                self.codecLongName = value
+            }
+            if let value = dict["CodecName"] as? String {
+                self.codecName = value
+            }
+            if let value = dict["CodecTag"] as? String {
+                self.codecTag = value
+            }
+            if let value = dict["CodecTagString"] as? String {
+                self.codecTagString = value
+            }
+            if let value = dict["CodecTimeBase"] as? String {
+                self.codecTimeBase = value
+            }
+            if let value = dict["Duration"] as? String {
+                self.duration = value
+            }
+            if let value = dict["Index"] as? String {
+                self.index = value
+            }
+            if let value = dict["Lang"] as? String {
+                self.lang = value
+            }
+            if let value = dict["SampleFmt"] as? String {
+                self.sampleFmt = value
+            }
+            if let value = dict["SampleRate"] as? String {
+                self.sampleRate = value
+            }
+            if let value = dict["StartTime"] as? String {
+                self.startTime = value
+            }
+            if let value = dict["Timebase"] as? String {
+                self.timebase = value
+            }
+        }
+    }
+    public class FileBasicInfo : Tea.TeaModel {
+        public var bitrate: String?
+
+        public var duration: String?
+
+        public var fileName: String?
+
+        public var fileSize: String?
+
+        public var fileStatus: String?
+
+        public var fileType: String?
+
+        public var fileUrl: String?
+
+        public var formatName: String?
+
+        public var height: String?
+
+        public var mediaId: String?
+
+        public var region: String?
+
+        public var width: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.bitrate != nil {
+                map["Bitrate"] = self.bitrate!
+            }
+            if self.duration != nil {
+                map["Duration"] = self.duration!
+            }
+            if self.fileName != nil {
+                map["FileName"] = self.fileName!
+            }
+            if self.fileSize != nil {
+                map["FileSize"] = self.fileSize!
+            }
+            if self.fileStatus != nil {
+                map["FileStatus"] = self.fileStatus!
+            }
+            if self.fileType != nil {
+                map["FileType"] = self.fileType!
+            }
+            if self.fileUrl != nil {
+                map["FileUrl"] = self.fileUrl!
+            }
+            if self.formatName != nil {
+                map["FormatName"] = self.formatName!
+            }
+            if self.height != nil {
+                map["Height"] = self.height!
+            }
+            if self.mediaId != nil {
+                map["MediaId"] = self.mediaId!
+            }
+            if self.region != nil {
+                map["Region"] = self.region!
+            }
+            if self.width != nil {
+                map["Width"] = self.width!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["Bitrate"] as? String {
+                self.bitrate = value
+            }
+            if let value = dict["Duration"] as? String {
+                self.duration = value
+            }
+            if let value = dict["FileName"] as? String {
+                self.fileName = value
+            }
+            if let value = dict["FileSize"] as? String {
+                self.fileSize = value
+            }
+            if let value = dict["FileStatus"] as? String {
+                self.fileStatus = value
+            }
+            if let value = dict["FileType"] as? String {
+                self.fileType = value
+            }
+            if let value = dict["FileUrl"] as? String {
+                self.fileUrl = value
+            }
+            if let value = dict["FormatName"] as? String {
+                self.formatName = value
+            }
+            if let value = dict["Height"] as? String {
+                self.height = value
+            }
+            if let value = dict["MediaId"] as? String {
+                self.mediaId = value
+            }
+            if let value = dict["Region"] as? String {
+                self.region = value
+            }
+            if let value = dict["Width"] as? String {
+                self.width = value
+            }
+        }
+    }
+    public class VideoStreamInfoList : Tea.TeaModel {
+        public var avgFps: String?
+
+        public var bitRate: String?
+
+        public var codecLongName: String?
+
+        public var codecName: String?
+
+        public var codecTag: String?
+
+        public var codecTagString: String?
+
+        public var codecTimeBase: String?
+
+        public var dar: String?
+
+        public var duration: String?
+
+        public var fps: String?
+
+        public var hasBFrames: String?
+
+        public var height: String?
+
+        public var index: String?
+
+        public var lang: String?
+
+        public var level: String?
+
+        public var numFrames: String?
+
+        public var pixFmt: String?
+
+        public var profile: String?
+
+        public var rotate: String?
+
+        public var sar: String?
+
+        public var startTime: String?
+
+        public var timeBase: String?
+
+        public var width: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.avgFps != nil {
+                map["Avg_fps"] = self.avgFps!
+            }
+            if self.bitRate != nil {
+                map["Bit_rate"] = self.bitRate!
+            }
+            if self.codecLongName != nil {
+                map["Codec_long_name"] = self.codecLongName!
+            }
+            if self.codecName != nil {
+                map["Codec_name"] = self.codecName!
+            }
+            if self.codecTag != nil {
+                map["Codec_tag"] = self.codecTag!
+            }
+            if self.codecTagString != nil {
+                map["Codec_tag_string"] = self.codecTagString!
+            }
+            if self.codecTimeBase != nil {
+                map["Codec_time_base"] = self.codecTimeBase!
+            }
+            if self.dar != nil {
+                map["Dar"] = self.dar!
+            }
+            if self.duration != nil {
+                map["Duration"] = self.duration!
+            }
+            if self.fps != nil {
+                map["Fps"] = self.fps!
+            }
+            if self.hasBFrames != nil {
+                map["Has_b_frames"] = self.hasBFrames!
+            }
+            if self.height != nil {
+                map["Height"] = self.height!
+            }
+            if self.index != nil {
+                map["Index"] = self.index!
+            }
+            if self.lang != nil {
+                map["Lang"] = self.lang!
+            }
+            if self.level != nil {
+                map["Level"] = self.level!
+            }
+            if self.numFrames != nil {
+                map["NumFrames"] = self.numFrames!
+            }
+            if self.pixFmt != nil {
+                map["PixFmt"] = self.pixFmt!
+            }
+            if self.profile != nil {
+                map["Profile"] = self.profile!
+            }
+            if self.rotate != nil {
+                map["Rotate"] = self.rotate!
+            }
+            if self.sar != nil {
+                map["Sar"] = self.sar!
+            }
+            if self.startTime != nil {
+                map["Start_time"] = self.startTime!
+            }
+            if self.timeBase != nil {
+                map["Time_base"] = self.timeBase!
+            }
+            if self.width != nil {
+                map["Width"] = self.width!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["Avg_fps"] as? String {
+                self.avgFps = value
+            }
+            if let value = dict["Bit_rate"] as? String {
+                self.bitRate = value
+            }
+            if let value = dict["Codec_long_name"] as? String {
+                self.codecLongName = value
+            }
+            if let value = dict["Codec_name"] as? String {
+                self.codecName = value
+            }
+            if let value = dict["Codec_tag"] as? String {
+                self.codecTag = value
+            }
+            if let value = dict["Codec_tag_string"] as? String {
+                self.codecTagString = value
+            }
+            if let value = dict["Codec_time_base"] as? String {
+                self.codecTimeBase = value
+            }
+            if let value = dict["Dar"] as? String {
+                self.dar = value
+            }
+            if let value = dict["Duration"] as? String {
+                self.duration = value
+            }
+            if let value = dict["Fps"] as? String {
+                self.fps = value
+            }
+            if let value = dict["Has_b_frames"] as? String {
+                self.hasBFrames = value
+            }
+            if let value = dict["Height"] as? String {
+                self.height = value
+            }
+            if let value = dict["Index"] as? String {
+                self.index = value
+            }
+            if let value = dict["Lang"] as? String {
+                self.lang = value
+            }
+            if let value = dict["Level"] as? String {
+                self.level = value
+            }
+            if let value = dict["NumFrames"] as? String {
+                self.numFrames = value
+            }
+            if let value = dict["PixFmt"] as? String {
+                self.pixFmt = value
+            }
+            if let value = dict["Profile"] as? String {
+                self.profile = value
+            }
+            if let value = dict["Rotate"] as? String {
+                self.rotate = value
+            }
+            if let value = dict["Sar"] as? String {
+                self.sar = value
+            }
+            if let value = dict["Start_time"] as? String {
+                self.startTime = value
+            }
+            if let value = dict["Time_base"] as? String {
+                self.timeBase = value
+            }
+            if let value = dict["Width"] as? String {
+                self.width = value
+            }
+        }
+    }
+    public var audioStreamInfoList: [MediaConvertOutputDetailFileMeta.AudioStreamInfoList]?
+
+    public var fileBasicInfo: MediaConvertOutputDetailFileMeta.FileBasicInfo?
+
+    public var videoStreamInfoList: [MediaConvertOutputDetailFileMeta.VideoStreamInfoList]?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.fileBasicInfo?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.audioStreamInfoList != nil {
+            var tmp : [Any] = []
+            for k in self.audioStreamInfoList! {
+                tmp.append(k.toMap())
+            }
+            map["AudioStreamInfoList"] = tmp
+        }
+        if self.fileBasicInfo != nil {
+            map["FileBasicInfo"] = self.fileBasicInfo?.toMap()
+        }
+        if self.videoStreamInfoList != nil {
+            var tmp : [Any] = []
+            for k in self.videoStreamInfoList! {
+                tmp.append(k.toMap())
+            }
+            map["VideoStreamInfoList"] = tmp
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["AudioStreamInfoList"] as? [Any?] {
+            var tmp : [MediaConvertOutputDetailFileMeta.AudioStreamInfoList] = []
+            for v in value {
+                if v != nil {
+                    var model = MediaConvertOutputDetailFileMeta.AudioStreamInfoList()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.audioStreamInfoList = tmp
+        }
+        if let value = dict["FileBasicInfo"] as? [String: Any?] {
+            var model = MediaConvertOutputDetailFileMeta.FileBasicInfo()
+            model.fromMap(value)
+            self.fileBasicInfo = model
+        }
+        if let value = dict["VideoStreamInfoList"] as? [Any?] {
+            var tmp : [MediaConvertOutputDetailFileMeta.VideoStreamInfoList] = []
+            for v in value {
+                if v != nil {
+                    var model = MediaConvertOutputDetailFileMeta.VideoStreamInfoList()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.videoStreamInfoList = tmp
         }
     }
 }
@@ -4066,6 +5199,10 @@ public class MediaConvertOutputGroupConfig : Tea.TeaModel {
 public class MediaConvertOutputGroupDetail : Tea.TeaModel {
     public var code: String?
 
+    public var createTime: String?
+
+    public var finishTime: String?
+
     public var message: String?
 
     public var name: String?
@@ -4093,6 +5230,12 @@ public class MediaConvertOutputGroupDetail : Tea.TeaModel {
         if self.code != nil {
             map["Code"] = self.code!
         }
+        if self.createTime != nil {
+            map["CreateTime"] = self.createTime!
+        }
+        if self.finishTime != nil {
+            map["FinishTime"] = self.finishTime!
+        }
         if self.message != nil {
             map["Message"] = self.message!
         }
@@ -4119,6 +5262,12 @@ public class MediaConvertOutputGroupDetail : Tea.TeaModel {
         guard let dict else { return }
         if let value = dict["Code"] as? String {
             self.code = value
+        }
+        if let value = dict["CreateTime"] as? String {
+            self.createTime = value
+        }
+        if let value = dict["FinishTime"] as? String {
+            self.finishTime = value
         }
         if let value = dict["Message"] as? String {
             self.message = value
@@ -34566,6 +35715,8 @@ public class GetMediaConvertJobResponseBody : Tea.TeaModel {
         public class Config : Tea.TeaModel {
             public var inputs: [MediaConvertInput]?
 
+            public var jobName: String?
+
             public var outputGroups: [MediaConvertOutputGroup]?
 
             public var outputs: [MediaConvertOutput]?
@@ -34590,6 +35741,9 @@ public class GetMediaConvertJobResponseBody : Tea.TeaModel {
                         tmp.append(k.toMap())
                     }
                     map["Inputs"] = tmp
+                }
+                if self.jobName != nil {
+                    map["JobName"] = self.jobName!
                 }
                 if self.outputGroups != nil {
                     var tmp : [Any] = []
@@ -34622,6 +35776,9 @@ public class GetMediaConvertJobResponseBody : Tea.TeaModel {
                         }
                     }
                     self.inputs = tmp
+                }
+                if let value = dict["JobName"] as? String {
+                    self.jobName = value
                 }
                 if let value = dict["OutputGroups"] as? [Any?] {
                     var tmp : [MediaConvertOutputGroup] = []
@@ -34657,6 +35814,10 @@ public class GetMediaConvertJobResponseBody : Tea.TeaModel {
 
         public var config: GetMediaConvertJobResponseBody.Job.Config?
 
+        public var createTime: String?
+
+        public var finishTime: String?
+
         public var jobId: String?
 
         public var message: String?
@@ -34664,6 +35825,8 @@ public class GetMediaConvertJobResponseBody : Tea.TeaModel {
         public var outputDetails: [MediaConvertOutputDetail]?
 
         public var outputGroupDetails: [MediaConvertOutputGroupDetail]?
+
+        public var percent: Int32?
 
         public var pipelineId: String?
 
@@ -34697,6 +35860,12 @@ public class GetMediaConvertJobResponseBody : Tea.TeaModel {
             if self.config != nil {
                 map["Config"] = self.config?.toMap()
             }
+            if self.createTime != nil {
+                map["CreateTime"] = self.createTime!
+            }
+            if self.finishTime != nil {
+                map["FinishTime"] = self.finishTime!
+            }
             if self.jobId != nil {
                 map["JobId"] = self.jobId!
             }
@@ -34716,6 +35885,9 @@ public class GetMediaConvertJobResponseBody : Tea.TeaModel {
                     tmp.append(k.toMap())
                 }
                 map["OutputGroupDetails"] = tmp
+            }
+            if self.percent != nil {
+                map["Percent"] = self.percent!
             }
             if self.pipelineId != nil {
                 map["PipelineId"] = self.pipelineId!
@@ -34744,6 +35916,12 @@ public class GetMediaConvertJobResponseBody : Tea.TeaModel {
                 var model = GetMediaConvertJobResponseBody.Job.Config()
                 model.fromMap(value)
                 self.config = model
+            }
+            if let value = dict["CreateTime"] as? String {
+                self.createTime = value
+            }
+            if let value = dict["FinishTime"] as? String {
+                self.finishTime = value
             }
             if let value = dict["JobId"] as? String {
                 self.jobId = value
@@ -34776,6 +35954,9 @@ public class GetMediaConvertJobResponseBody : Tea.TeaModel {
                     }
                 }
                 self.outputGroupDetails = tmp
+            }
+            if let value = dict["Percent"] as? Int32 {
+                self.percent = value
             }
             if let value = dict["PipelineId"] as? String {
                 self.pipelineId = value
@@ -89567,6 +90748,8 @@ public class SubmitMediaConvertJobResponseBody : Tea.TeaModel {
         public class Config : Tea.TeaModel {
             public var inputs: [MediaConvertInput]?
 
+            public var jobName: String?
+
             public var outputGroups: [MediaConvertOutputGroup]?
 
             public var outputs: [MediaConvertOutput]?
@@ -89591,6 +90774,9 @@ public class SubmitMediaConvertJobResponseBody : Tea.TeaModel {
                         tmp.append(k.toMap())
                     }
                     map["Inputs"] = tmp
+                }
+                if self.jobName != nil {
+                    map["JobName"] = self.jobName!
                 }
                 if self.outputGroups != nil {
                     var tmp : [Any] = []
@@ -89623,6 +90809,9 @@ public class SubmitMediaConvertJobResponseBody : Tea.TeaModel {
                         }
                     }
                     self.inputs = tmp
+                }
+                if let value = dict["JobName"] as? String {
+                    self.jobName = value
                 }
                 if let value = dict["OutputGroups"] as? [Any?] {
                     var tmp : [MediaConvertOutputGroup] = []
