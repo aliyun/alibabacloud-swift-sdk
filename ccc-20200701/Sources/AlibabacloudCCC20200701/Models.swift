@@ -11632,6 +11632,8 @@ public class DeleteCallTagResponse : Tea.TeaModel {
 public class DeleteContactFlowRequest : Tea.TeaModel {
     public var contactFlowId: String?
 
+    public var force: Bool?
+
     public var instanceId: String?
 
     public override init() {
@@ -11651,6 +11653,9 @@ public class DeleteContactFlowRequest : Tea.TeaModel {
         if self.contactFlowId != nil {
             map["ContactFlowId"] = self.contactFlowId!
         }
+        if self.force != nil {
+            map["Force"] = self.force!
+        }
         if self.instanceId != nil {
             map["InstanceId"] = self.instanceId!
         }
@@ -11661,6 +11666,9 @@ public class DeleteContactFlowRequest : Tea.TeaModel {
         guard let dict else { return }
         if let value = dict["ContactFlowId"] as? String {
             self.contactFlowId = value
+        }
+        if let value = dict["Force"] as? Bool {
+            self.force = value
         }
         if let value = dict["InstanceId"] as? String {
             self.instanceId = value
@@ -38614,6 +38622,8 @@ public class ListContactFlowsRequest : Tea.TeaModel {
 
     public var pageSize: Int32?
 
+    public var searchPattern: String?
+
     public var sortOrder: String?
 
     public var type: String?
@@ -38644,6 +38654,9 @@ public class ListContactFlowsRequest : Tea.TeaModel {
         if self.pageSize != nil {
             map["PageSize"] = self.pageSize!
         }
+        if self.searchPattern != nil {
+            map["SearchPattern"] = self.searchPattern!
+        }
         if self.sortOrder != nil {
             map["SortOrder"] = self.sortOrder!
         }
@@ -38666,6 +38679,9 @@ public class ListContactFlowsRequest : Tea.TeaModel {
         }
         if let value = dict["PageSize"] as? Int32 {
             self.pageSize = value
+        }
+        if let value = dict["SearchPattern"] as? String {
+            self.searchPattern = value
         }
         if let value = dict["SortOrder"] as? String {
             self.sortOrder = value
