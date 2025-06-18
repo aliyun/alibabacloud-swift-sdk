@@ -10146,6 +10146,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.queryTimeout)) {
             query["QueryTimeout"] = request.queryTimeout!;
         }
+        if (!TeaUtils.Client.isUnset(request.resourceGroup)) {
+            query["ResourceGroup"] = request.resourceGroup ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.safeRule)) {
             query["SafeRule"] = request.safeRule ?? "";
         }

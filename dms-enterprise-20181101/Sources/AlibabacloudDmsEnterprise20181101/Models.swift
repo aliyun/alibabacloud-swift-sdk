@@ -31883,6 +31883,8 @@ public class GetInstanceResponseBody : Tea.TeaModel {
 
         public var sellSitd: String?
 
+        public var sellTrust: String?
+
         public var sid: String?
 
         public var standardGroup: GetInstanceResponseBody.Instance.StandardGroup?
@@ -31973,6 +31975,9 @@ public class GetInstanceResponseBody : Tea.TeaModel {
             if self.sellSitd != nil {
                 map["SellSitd"] = self.sellSitd!
             }
+            if self.sellTrust != nil {
+                map["SellTrust"] = self.sellTrust!
+            }
             if self.sid != nil {
                 map["Sid"] = self.sid!
             }
@@ -32059,6 +32064,9 @@ public class GetInstanceResponseBody : Tea.TeaModel {
             }
             if let value = dict["SellSitd"] as? String {
                 self.sellSitd = value
+            }
+            if let value = dict["SellTrust"] as? String {
+                self.sellTrust = value
             }
             if let value = dict["Sid"] as? String {
                 self.sid = value
@@ -53954,6 +53962,8 @@ public class ListInstancesResponseBody : Tea.TeaModel {
 
             public var sellSitd: Bool?
 
+            public var sellTrust: String?
+
             public var sid: String?
 
             public var standardGroup: ListInstancesResponseBody.InstanceList.Instance.StandardGroup?
@@ -54044,6 +54054,9 @@ public class ListInstancesResponseBody : Tea.TeaModel {
                 if self.sellSitd != nil {
                     map["SellSitd"] = self.sellSitd!
                 }
+                if self.sellTrust != nil {
+                    map["SellTrust"] = self.sellTrust!
+                }
                 if self.sid != nil {
                     map["Sid"] = self.sid!
                 }
@@ -54130,6 +54143,9 @@ public class ListInstancesResponseBody : Tea.TeaModel {
                 }
                 if let value = dict["SellSitd"] as? Bool {
                     self.sellSitd = value
+                }
+                if let value = dict["SellTrust"] as? String {
+                    self.sellTrust = value
                 }
                 if let value = dict["Sid"] as? String {
                     self.sid = value
@@ -68888,6 +68904,8 @@ public class RegisterInstanceRequest : Tea.TeaModel {
 
     public var queryTimeout: Int32?
 
+    public var resourceGroup: String?
+
     public var safeRule: String?
 
     public var sid: String?
@@ -68972,6 +68990,9 @@ public class RegisterInstanceRequest : Tea.TeaModel {
         if self.queryTimeout != nil {
             map["QueryTimeout"] = self.queryTimeout!
         }
+        if self.resourceGroup != nil {
+            map["ResourceGroup"] = self.resourceGroup!
+        }
         if self.safeRule != nil {
             map["SafeRule"] = self.safeRule!
         }
@@ -69054,6 +69075,9 @@ public class RegisterInstanceRequest : Tea.TeaModel {
         }
         if let value = dict["QueryTimeout"] as? Int32 {
             self.queryTimeout = value
+        }
+        if let value = dict["ResourceGroup"] as? String {
+            self.resourceGroup = value
         }
         if let value = dict["SafeRule"] as? String {
             self.safeRule = value
