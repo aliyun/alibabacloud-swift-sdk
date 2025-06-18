@@ -20349,6 +20349,8 @@ public class ListEntitiesRequest : Tea.TeaModel {
 
     public var roleType: Int32?
 
+    public var tags: String?
+
     public override init() {
         super.init()
     }
@@ -20396,6 +20398,9 @@ public class ListEntitiesRequest : Tea.TeaModel {
         if self.roleType != nil {
             map["RoleType"] = self.roleType!
         }
+        if self.tags != nil {
+            map["Tags"] = self.tags!
+        }
         return map
     }
 
@@ -20433,6 +20438,9 @@ public class ListEntitiesRequest : Tea.TeaModel {
         }
         if let value = dict["RoleType"] as? Int32 {
             self.roleType = value
+        }
+        if let value = dict["Tags"] as? String {
+            self.tags = value
         }
     }
 }
@@ -20514,9 +20522,15 @@ public class ListEntitiesResponseBody : Tea.TeaModel {
 
             public var incidentUuid: String?
 
+            public var isAsset: String?
+
+            public var isMalware: String?
+
             public var malwareType: String?
 
             public var subUserId: Int64?
+
+            public var tags: String?
 
             public override init() {
                 super.init()
@@ -20574,11 +20588,20 @@ public class ListEntitiesResponseBody : Tea.TeaModel {
                 if self.incidentUuid != nil {
                     map["IncidentUuid"] = self.incidentUuid!
                 }
+                if self.isAsset != nil {
+                    map["IsAsset"] = self.isAsset!
+                }
+                if self.isMalware != nil {
+                    map["IsMalware"] = self.isMalware!
+                }
                 if self.malwareType != nil {
                     map["MalwareType"] = self.malwareType!
                 }
                 if self.subUserId != nil {
                     map["SubUserId"] = self.subUserId!
+                }
+                if self.tags != nil {
+                    map["Tags"] = self.tags!
                 }
                 return map
             }
@@ -20627,11 +20650,20 @@ public class ListEntitiesResponseBody : Tea.TeaModel {
                 if let value = dict["IncidentUuid"] as? String {
                     self.incidentUuid = value
                 }
+                if let value = dict["IsAsset"] as? String {
+                    self.isAsset = value
+                }
+                if let value = dict["IsMalware"] as? String {
+                    self.isMalware = value
+                }
                 if let value = dict["MalwareType"] as? String {
                     self.malwareType = value
                 }
                 if let value = dict["SubUserId"] as? Int64 {
                     self.subUserId = value
+                }
+                if let value = dict["Tags"] as? String {
+                    self.tags = value
                 }
             }
         }

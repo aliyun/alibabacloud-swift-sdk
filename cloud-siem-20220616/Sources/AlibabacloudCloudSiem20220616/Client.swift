@@ -3134,6 +3134,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.roleType)) {
             body["RoleType"] = request.roleType!;
         }
+        if (!TeaUtils.Client.isUnset(request.tags)) {
+            body["Tags"] = request.tags ?? "";
+        }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
         ])
