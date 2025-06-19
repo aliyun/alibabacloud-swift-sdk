@@ -20,6 +20,8 @@ public class Catalog : Tea.TeaModel {
 
     public var status: String?
 
+    public var type: String?
+
     public var updatedAt: Int64?
 
     public var updatedBy: String?
@@ -59,6 +61,9 @@ public class Catalog : Tea.TeaModel {
         if self.status != nil {
             map["status"] = self.status!
         }
+        if self.type != nil {
+            map["type"] = self.type!
+        }
         if self.updatedAt != nil {
             map["updatedAt"] = self.updatedAt!
         }
@@ -90,6 +95,9 @@ public class Catalog : Tea.TeaModel {
         }
         if let value = dict["status"] as? String {
             self.status = value
+        }
+        if let value = dict["type"] as? String {
+            self.type = value
         }
         if let value = dict["updatedAt"] as? Int64 {
             self.updatedAt = value
@@ -805,6 +813,53 @@ public class FullDataType : Tea.TeaModel {
     }
 }
 
+public class FullInstant : Tea.TeaModel {
+    public var snapshotId: Int64?
+
+    public var tagName: String?
+
+    public var type: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.snapshotId != nil {
+            map["snapshotId"] = self.snapshotId!
+        }
+        if self.tagName != nil {
+            map["tagName"] = self.tagName!
+        }
+        if self.type != nil {
+            map["type"] = self.type!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["snapshotId"] as? Int64 {
+            self.snapshotId = value
+        }
+        if let value = dict["tagName"] as? String {
+            self.tagName = value
+        }
+        if let value = dict["type"] as? String {
+            self.type = value
+        }
+    }
+}
+
 public class FullSchemaChange : Tea.TeaModel {
     public var action: String?
 
@@ -929,6 +984,403 @@ public class FullSchemaChange : Tea.TeaModel {
         }
         if let value = dict["value"] as? String {
             self.value = value
+        }
+    }
+}
+
+public class IcebergNestedField : Tea.TeaModel {
+    public var doc: String?
+
+    public var id: Int64?
+
+    public var name: String?
+
+    public var optional_: Bool?
+
+    public var type: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.doc != nil {
+            map["doc"] = self.doc!
+        }
+        if self.id != nil {
+            map["id"] = self.id!
+        }
+        if self.name != nil {
+            map["name"] = self.name!
+        }
+        if self.optional_ != nil {
+            map["optional"] = self.optional_!
+        }
+        if self.type != nil {
+            map["type"] = self.type!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["doc"] as? String {
+            self.doc = value
+        }
+        if let value = dict["id"] as? Int64 {
+            self.id = value
+        }
+        if let value = dict["name"] as? String {
+            self.name = value
+        }
+        if let value = dict["optional"] as? Bool {
+            self.optional_ = value
+        }
+        if let value = dict["type"] as? String {
+            self.type = value
+        }
+    }
+}
+
+public class IcebergPartitionField : Tea.TeaModel {
+    public var fieldId: Int64?
+
+    public var name: String?
+
+    public var sourceId: Int64?
+
+    public var transform: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.fieldId != nil {
+            map["fieldId"] = self.fieldId!
+        }
+        if self.name != nil {
+            map["name"] = self.name!
+        }
+        if self.sourceId != nil {
+            map["sourceId"] = self.sourceId!
+        }
+        if self.transform != nil {
+            map["transform"] = self.transform!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["fieldId"] as? Int64 {
+            self.fieldId = value
+        }
+        if let value = dict["name"] as? String {
+            self.name = value
+        }
+        if let value = dict["sourceId"] as? Int64 {
+            self.sourceId = value
+        }
+        if let value = dict["transform"] as? String {
+            self.transform = value
+        }
+    }
+}
+
+public class IcebergSnapshot : Tea.TeaModel {
+    public var addedRows: Int64?
+
+    public var id: Int64?
+
+    public var operation: String?
+
+    public var parentId: Int64?
+
+    public var schemaId: Int64?
+
+    public var sequenceNumber: Int64?
+
+    public var summary: [String: String]?
+
+    public var timestampMillis: Int64?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.addedRows != nil {
+            map["addedRows"] = self.addedRows!
+        }
+        if self.id != nil {
+            map["id"] = self.id!
+        }
+        if self.operation != nil {
+            map["operation"] = self.operation!
+        }
+        if self.parentId != nil {
+            map["parentId"] = self.parentId!
+        }
+        if self.schemaId != nil {
+            map["schemaId"] = self.schemaId!
+        }
+        if self.sequenceNumber != nil {
+            map["sequenceNumber"] = self.sequenceNumber!
+        }
+        if self.summary != nil {
+            map["summary"] = self.summary!
+        }
+        if self.timestampMillis != nil {
+            map["timestampMillis"] = self.timestampMillis!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["addedRows"] as? Int64 {
+            self.addedRows = value
+        }
+        if let value = dict["id"] as? Int64 {
+            self.id = value
+        }
+        if let value = dict["operation"] as? String {
+            self.operation = value
+        }
+        if let value = dict["parentId"] as? Int64 {
+            self.parentId = value
+        }
+        if let value = dict["schemaId"] as? Int64 {
+            self.schemaId = value
+        }
+        if let value = dict["sequenceNumber"] as? Int64 {
+            self.sequenceNumber = value
+        }
+        if let value = dict["summary"] as? [String: String] {
+            self.summary = value
+        }
+        if let value = dict["timestampMillis"] as? Int64 {
+            self.timestampMillis = value
+        }
+    }
+}
+
+public class IcebergTable : Tea.TeaModel {
+    public var createdAt: Int64?
+
+    public var createdBy: String?
+
+    public var icebergTableMetadata: IcebergTableMetadata?
+
+    public var id: String?
+
+    public var name: String?
+
+    public var owner: String?
+
+    public var path: String?
+
+    public var updatedAt: Int64?
+
+    public var updatedBy: String?
+
+    public var version: Int64?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.icebergTableMetadata?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.createdAt != nil {
+            map["createdAt"] = self.createdAt!
+        }
+        if self.createdBy != nil {
+            map["createdBy"] = self.createdBy!
+        }
+        if self.icebergTableMetadata != nil {
+            map["icebergTableMetadata"] = self.icebergTableMetadata?.toMap()
+        }
+        if self.id != nil {
+            map["id"] = self.id!
+        }
+        if self.name != nil {
+            map["name"] = self.name!
+        }
+        if self.owner != nil {
+            map["owner"] = self.owner!
+        }
+        if self.path != nil {
+            map["path"] = self.path!
+        }
+        if self.updatedAt != nil {
+            map["updatedAt"] = self.updatedAt!
+        }
+        if self.updatedBy != nil {
+            map["updatedBy"] = self.updatedBy!
+        }
+        if self.version != nil {
+            map["version"] = self.version!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["createdAt"] as? Int64 {
+            self.createdAt = value
+        }
+        if let value = dict["createdBy"] as? String {
+            self.createdBy = value
+        }
+        if let value = dict["icebergTableMetadata"] as? [String: Any?] {
+            var model = IcebergTableMetadata()
+            model.fromMap(value)
+            self.icebergTableMetadata = model
+        }
+        if let value = dict["id"] as? String {
+            self.id = value
+        }
+        if let value = dict["name"] as? String {
+            self.name = value
+        }
+        if let value = dict["owner"] as? String {
+            self.owner = value
+        }
+        if let value = dict["path"] as? String {
+            self.path = value
+        }
+        if let value = dict["updatedAt"] as? Int64 {
+            self.updatedAt = value
+        }
+        if let value = dict["updatedBy"] as? String {
+            self.updatedBy = value
+        }
+        if let value = dict["version"] as? Int64 {
+            self.version = value
+        }
+    }
+}
+
+public class IcebergTableMetadata : Tea.TeaModel {
+    public var currentSnapshot: IcebergSnapshot?
+
+    public var fields: [IcebergNestedField]?
+
+    public var partitionFields: [IcebergPartitionField]?
+
+    public var properties: [String: String]?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.currentSnapshot?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.currentSnapshot != nil {
+            map["currentSnapshot"] = self.currentSnapshot?.toMap()
+        }
+        if self.fields != nil {
+            var tmp : [Any] = []
+            for k in self.fields! {
+                tmp.append(k.toMap())
+            }
+            map["fields"] = tmp
+        }
+        if self.partitionFields != nil {
+            var tmp : [Any] = []
+            for k in self.partitionFields! {
+                tmp.append(k.toMap())
+            }
+            map["partitionFields"] = tmp
+        }
+        if self.properties != nil {
+            map["properties"] = self.properties!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["currentSnapshot"] as? [String: Any?] {
+            var model = IcebergSnapshot()
+            model.fromMap(value)
+            self.currentSnapshot = model
+        }
+        if let value = dict["fields"] as? [Any?] {
+            var tmp : [IcebergNestedField] = []
+            for v in value {
+                if v != nil {
+                    var model = IcebergNestedField()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.fields = tmp
+        }
+        if let value = dict["partitionFields"] as? [Any?] {
+            var tmp : [IcebergPartitionField] = []
+            for v in value {
+                if v != nil {
+                    var model = IcebergPartitionField()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.partitionFields = tmp
+        }
+        if let value = dict["properties"] as? [String: String] {
+            self.properties = value
         }
     }
 }
@@ -1062,6 +1514,101 @@ public class Move : Tea.TeaModel {
         }
         if let value = dict["type"] as? String {
             self.type = value
+        }
+    }
+}
+
+public class Namespace : Tea.TeaModel {
+    public var createdAt: Int64?
+
+    public var createdBy: String?
+
+    public var id: String?
+
+    public var location: String?
+
+    public var name: String?
+
+    public var options: [String: String]?
+
+    public var owner: String?
+
+    public var updatedAt: Int64?
+
+    public var updatedBy: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.createdAt != nil {
+            map["createdAt"] = self.createdAt!
+        }
+        if self.createdBy != nil {
+            map["createdBy"] = self.createdBy!
+        }
+        if self.id != nil {
+            map["id"] = self.id!
+        }
+        if self.location != nil {
+            map["location"] = self.location!
+        }
+        if self.name != nil {
+            map["name"] = self.name!
+        }
+        if self.options != nil {
+            map["options"] = self.options!
+        }
+        if self.owner != nil {
+            map["owner"] = self.owner!
+        }
+        if self.updatedAt != nil {
+            map["updatedAt"] = self.updatedAt!
+        }
+        if self.updatedBy != nil {
+            map["updatedBy"] = self.updatedBy!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["createdAt"] as? Int64 {
+            self.createdAt = value
+        }
+        if let value = dict["createdBy"] as? String {
+            self.createdBy = value
+        }
+        if let value = dict["id"] as? String {
+            self.id = value
+        }
+        if let value = dict["location"] as? String {
+            self.location = value
+        }
+        if let value = dict["name"] as? String {
+            self.name = value
+        }
+        if let value = dict["options"] as? [String: String] {
+            self.options = value
+        }
+        if let value = dict["owner"] as? String {
+            self.owner = value
+        }
+        if let value = dict["updatedAt"] as? Int64 {
+            self.updatedAt = value
+        }
+        if let value = dict["updatedBy"] as? String {
+            self.updatedBy = value
         }
     }
 }
@@ -1839,6 +2386,61 @@ public class Table : Tea.TeaModel {
     }
 }
 
+public class TableCompaction : Tea.TeaModel {
+    public var catalogId: String?
+
+    public var lastCompactedFileTime: Int64?
+
+    public var maxLevel0FileCount: String?
+
+    public var tableId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.catalogId != nil {
+            map["catalogId"] = self.catalogId!
+        }
+        if self.lastCompactedFileTime != nil {
+            map["lastCompactedFileTime"] = self.lastCompactedFileTime!
+        }
+        if self.maxLevel0FileCount != nil {
+            map["maxLevel0FileCount"] = self.maxLevel0FileCount!
+        }
+        if self.tableId != nil {
+            map["tableId"] = self.tableId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["catalogId"] as? String {
+            self.catalogId = value
+        }
+        if let value = dict["lastCompactedFileTime"] as? Int64 {
+            self.lastCompactedFileTime = value
+        }
+        if let value = dict["maxLevel0FileCount"] as? String {
+            self.maxLevel0FileCount = value
+        }
+        if let value = dict["tableId"] as? String {
+            self.tableId = value
+        }
+    }
+}
+
 public class TableSnapshot : Tea.TeaModel {
     public var fileCount: Int64?
 
@@ -2550,6 +3152,8 @@ public class CreateCatalogRequest : Tea.TeaModel {
 
     public var options: [String: String]?
 
+    public var type: String?
+
     public override init() {
         super.init()
     }
@@ -2573,6 +3177,9 @@ public class CreateCatalogRequest : Tea.TeaModel {
         if self.options != nil {
             map["options"] = self.options!
         }
+        if self.type != nil {
+            map["type"] = self.type!
+        }
         return map
     }
 
@@ -2586,6 +3193,9 @@ public class CreateCatalogRequest : Tea.TeaModel {
         }
         if let value = dict["options"] as? [String: String] {
             self.options = value
+        }
+        if let value = dict["type"] as? String {
+            self.type = value
         }
     }
 }
