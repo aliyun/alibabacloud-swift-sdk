@@ -21073,6 +21073,8 @@ public class CreateRunHeaders : Tea.TeaModel {
 }
 
 public class CreateRunRequest : Tea.TeaModel {
+    public var allowStructViewContent: Bool?
+
     public var assistantId: String?
 
     public var originalAssistantId: String?
@@ -21099,6 +21101,9 @@ public class CreateRunRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.allowStructViewContent != nil {
+            map["allowStructViewContent"] = self.allowStructViewContent!
+        }
         if self.assistantId != nil {
             map["assistantId"] = self.assistantId!
         }
@@ -21122,6 +21127,9 @@ public class CreateRunRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["allowStructViewContent"] as? Bool {
+            self.allowStructViewContent = value
+        }
         if let value = dict["assistantId"] as? String {
             self.assistantId = value
         }
@@ -22101,9 +22109,474 @@ public class CreateRunResponseBody : Tea.TeaModel {
                 }
             }
         }
+        public class ContentStruct : Tea.TeaModel {
+            public class Parts : Tea.TeaModel {
+                public class DataPart : Tea.TeaModel {
+                    public var data: Any?
+
+                    public override init() {
+                        super.init()
+                    }
+
+                    public init(_ dict: [String: Any]) {
+                        super.init()
+                        self.fromMap(dict)
+                    }
+
+                    public override func validate() throws -> Void {
+                    }
+
+                    public override func toMap() -> [String : Any] {
+                        var map = super.toMap()
+                        if self.data != nil {
+                            map["data"] = self.data!
+                        }
+                        return map
+                    }
+
+                    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                        guard let dict else { return }
+                        if let value = dict["data"] as? Any {
+                            self.data = value
+                        }
+                    }
+                }
+                public class ReasonPart : Tea.TeaModel {
+                    public var reason: String?
+
+                    public override init() {
+                        super.init()
+                    }
+
+                    public init(_ dict: [String: Any]) {
+                        super.init()
+                        self.fromMap(dict)
+                    }
+
+                    public override func validate() throws -> Void {
+                    }
+
+                    public override func toMap() -> [String : Any] {
+                        var map = super.toMap()
+                        if self.reason != nil {
+                            map["reason"] = self.reason!
+                        }
+                        return map
+                    }
+
+                    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                        guard let dict else { return }
+                        if let value = dict["reason"] as? String {
+                            self.reason = value
+                        }
+                    }
+                }
+                public class RecommendPart : Tea.TeaModel {
+                    public class Recommends : Tea.TeaModel {
+                        public var mobileUrl: String?
+
+                        public var text: String?
+
+                        public var url: String?
+
+                        public override init() {
+                            super.init()
+                        }
+
+                        public init(_ dict: [String: Any]) {
+                            super.init()
+                            self.fromMap(dict)
+                        }
+
+                        public override func validate() throws -> Void {
+                        }
+
+                        public override func toMap() -> [String : Any] {
+                            var map = super.toMap()
+                            if self.mobileUrl != nil {
+                                map["mobileUrl"] = self.mobileUrl!
+                            }
+                            if self.text != nil {
+                                map["text"] = self.text!
+                            }
+                            if self.url != nil {
+                                map["url"] = self.url!
+                            }
+                            return map
+                        }
+
+                        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                            guard let dict else { return }
+                            if let value = dict["mobileUrl"] as? String {
+                                self.mobileUrl = value
+                            }
+                            if let value = dict["text"] as? String {
+                                self.text = value
+                            }
+                            if let value = dict["url"] as? String {
+                                self.url = value
+                            }
+                        }
+                    }
+                    public var recommends: [CreateRunResponseBody.Messages.ContentStruct.Parts.RecommendPart.Recommends]?
+
+                    public override init() {
+                        super.init()
+                    }
+
+                    public init(_ dict: [String: Any]) {
+                        super.init()
+                        self.fromMap(dict)
+                    }
+
+                    public override func validate() throws -> Void {
+                    }
+
+                    public override func toMap() -> [String : Any] {
+                        var map = super.toMap()
+                        if self.recommends != nil {
+                            var tmp : [Any] = []
+                            for k in self.recommends! {
+                                tmp.append(k.toMap())
+                            }
+                            map["recommends"] = tmp
+                        }
+                        return map
+                    }
+
+                    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                        guard let dict else { return }
+                        if let value = dict["recommends"] as? [Any?] {
+                            var tmp : [CreateRunResponseBody.Messages.ContentStruct.Parts.RecommendPart.Recommends] = []
+                            for v in value {
+                                if v != nil {
+                                    var model = CreateRunResponseBody.Messages.ContentStruct.Parts.RecommendPart.Recommends()
+                                    if v != nil {
+                                        model.fromMap(v as? [String: Any?])
+                                    }
+                                    tmp.append(model)
+                                }
+                            }
+                            self.recommends = tmp
+                        }
+                    }
+                }
+                public class ReferencePart : Tea.TeaModel {
+                    public class References : Tea.TeaModel {
+                        public var index: String?
+
+                        public var name: String?
+
+                        public var sourceCode: String?
+
+                        public var sourceIcon: String?
+
+                        public var summary: String?
+
+                        public var title: String?
+
+                        public var url: String?
+
+                        public override init() {
+                            super.init()
+                        }
+
+                        public init(_ dict: [String: Any]) {
+                            super.init()
+                            self.fromMap(dict)
+                        }
+
+                        public override func validate() throws -> Void {
+                        }
+
+                        public override func toMap() -> [String : Any] {
+                            var map = super.toMap()
+                            if self.index != nil {
+                                map["index"] = self.index!
+                            }
+                            if self.name != nil {
+                                map["name"] = self.name!
+                            }
+                            if self.sourceCode != nil {
+                                map["sourceCode"] = self.sourceCode!
+                            }
+                            if self.sourceIcon != nil {
+                                map["sourceIcon"] = self.sourceIcon!
+                            }
+                            if self.summary != nil {
+                                map["summary"] = self.summary!
+                            }
+                            if self.title != nil {
+                                map["title"] = self.title!
+                            }
+                            if self.url != nil {
+                                map["url"] = self.url!
+                            }
+                            return map
+                        }
+
+                        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                            guard let dict else { return }
+                            if let value = dict["index"] as? String {
+                                self.index = value
+                            }
+                            if let value = dict["name"] as? String {
+                                self.name = value
+                            }
+                            if let value = dict["sourceCode"] as? String {
+                                self.sourceCode = value
+                            }
+                            if let value = dict["sourceIcon"] as? String {
+                                self.sourceIcon = value
+                            }
+                            if let value = dict["summary"] as? String {
+                                self.summary = value
+                            }
+                            if let value = dict["title"] as? String {
+                                self.title = value
+                            }
+                            if let value = dict["url"] as? String {
+                                self.url = value
+                            }
+                        }
+                    }
+                    public var references: [CreateRunResponseBody.Messages.ContentStruct.Parts.ReferencePart.References]?
+
+                    public override init() {
+                        super.init()
+                    }
+
+                    public init(_ dict: [String: Any]) {
+                        super.init()
+                        self.fromMap(dict)
+                    }
+
+                    public override func validate() throws -> Void {
+                    }
+
+                    public override func toMap() -> [String : Any] {
+                        var map = super.toMap()
+                        if self.references != nil {
+                            var tmp : [Any] = []
+                            for k in self.references! {
+                                tmp.append(k.toMap())
+                            }
+                            map["references"] = tmp
+                        }
+                        return map
+                    }
+
+                    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                        guard let dict else { return }
+                        if let value = dict["references"] as? [Any?] {
+                            var tmp : [CreateRunResponseBody.Messages.ContentStruct.Parts.ReferencePart.References] = []
+                            for v in value {
+                                if v != nil {
+                                    var model = CreateRunResponseBody.Messages.ContentStruct.Parts.ReferencePart.References()
+                                    if v != nil {
+                                        model.fromMap(v as? [String: Any?])
+                                    }
+                                    tmp.append(model)
+                                }
+                            }
+                            self.references = tmp
+                        }
+                    }
+                }
+                public class TextPart : Tea.TeaModel {
+                    public var text: String?
+
+                    public override init() {
+                        super.init()
+                    }
+
+                    public init(_ dict: [String: Any]) {
+                        super.init()
+                        self.fromMap(dict)
+                    }
+
+                    public override func validate() throws -> Void {
+                    }
+
+                    public override func toMap() -> [String : Any] {
+                        var map = super.toMap()
+                        if self.text != nil {
+                            map["text"] = self.text!
+                        }
+                        return map
+                    }
+
+                    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                        guard let dict else { return }
+                        if let value = dict["text"] as? String {
+                            self.text = value
+                        }
+                    }
+                }
+                public var append: Bool?
+
+                public var dataPart: CreateRunResponseBody.Messages.ContentStruct.Parts.DataPart?
+
+                public var finish: Bool?
+
+                public var partDesc: String?
+
+                public var partId: String?
+
+                public var reasonPart: CreateRunResponseBody.Messages.ContentStruct.Parts.ReasonPart?
+
+                public var recommendPart: CreateRunResponseBody.Messages.ContentStruct.Parts.RecommendPart?
+
+                public var referencePart: CreateRunResponseBody.Messages.ContentStruct.Parts.ReferencePart?
+
+                public var textPart: CreateRunResponseBody.Messages.ContentStruct.Parts.TextPart?
+
+                public var type: String?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                    try self.dataPart?.validate()
+                    try self.reasonPart?.validate()
+                    try self.recommendPart?.validate()
+                    try self.referencePart?.validate()
+                    try self.textPart?.validate()
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.append != nil {
+                        map["append"] = self.append!
+                    }
+                    if self.dataPart != nil {
+                        map["dataPart"] = self.dataPart?.toMap()
+                    }
+                    if self.finish != nil {
+                        map["finish"] = self.finish!
+                    }
+                    if self.partDesc != nil {
+                        map["partDesc"] = self.partDesc!
+                    }
+                    if self.partId != nil {
+                        map["partId"] = self.partId!
+                    }
+                    if self.reasonPart != nil {
+                        map["reasonPart"] = self.reasonPart?.toMap()
+                    }
+                    if self.recommendPart != nil {
+                        map["recommendPart"] = self.recommendPart?.toMap()
+                    }
+                    if self.referencePart != nil {
+                        map["referencePart"] = self.referencePart?.toMap()
+                    }
+                    if self.textPart != nil {
+                        map["textPart"] = self.textPart?.toMap()
+                    }
+                    if self.type != nil {
+                        map["type"] = self.type!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                    guard let dict else { return }
+                    if let value = dict["append"] as? Bool {
+                        self.append = value
+                    }
+                    if let value = dict["dataPart"] as? [String: Any?] {
+                        var model = CreateRunResponseBody.Messages.ContentStruct.Parts.DataPart()
+                        model.fromMap(value)
+                        self.dataPart = model
+                    }
+                    if let value = dict["finish"] as? Bool {
+                        self.finish = value
+                    }
+                    if let value = dict["partDesc"] as? String {
+                        self.partDesc = value
+                    }
+                    if let value = dict["partId"] as? String {
+                        self.partId = value
+                    }
+                    if let value = dict["reasonPart"] as? [String: Any?] {
+                        var model = CreateRunResponseBody.Messages.ContentStruct.Parts.ReasonPart()
+                        model.fromMap(value)
+                        self.reasonPart = model
+                    }
+                    if let value = dict["recommendPart"] as? [String: Any?] {
+                        var model = CreateRunResponseBody.Messages.ContentStruct.Parts.RecommendPart()
+                        model.fromMap(value)
+                        self.recommendPart = model
+                    }
+                    if let value = dict["referencePart"] as? [String: Any?] {
+                        var model = CreateRunResponseBody.Messages.ContentStruct.Parts.ReferencePart()
+                        model.fromMap(value)
+                        self.referencePart = model
+                    }
+                    if let value = dict["textPart"] as? [String: Any?] {
+                        var model = CreateRunResponseBody.Messages.ContentStruct.Parts.TextPart()
+                        model.fromMap(value)
+                        self.textPart = model
+                    }
+                    if let value = dict["type"] as? String {
+                        self.type = value
+                    }
+                }
+            }
+            public var parts: [CreateRunResponseBody.Messages.ContentStruct.Parts]?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.parts != nil {
+                    var tmp : [Any] = []
+                    for k in self.parts! {
+                        tmp.append(k.toMap())
+                    }
+                    map["parts"] = tmp
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["parts"] as? [Any?] {
+                    var tmp : [CreateRunResponseBody.Messages.ContentStruct.Parts] = []
+                    for v in value {
+                        if v != nil {
+                            var model = CreateRunResponseBody.Messages.ContentStruct.Parts()
+                            if v != nil {
+                                model.fromMap(v as? [String: Any?])
+                            }
+                            tmp.append(model)
+                        }
+                    }
+                    self.parts = tmp
+                }
+            }
+        }
         public var content: CreateRunResponseBody.Messages.Content?
 
         public var contentDesc: String?
+
+        public var contentStruct: CreateRunResponseBody.Messages.ContentStruct?
 
         public var createAt: Int64?
 
@@ -22126,6 +22599,7 @@ public class CreateRunResponseBody : Tea.TeaModel {
 
         public override func validate() throws -> Void {
             try self.content?.validate()
+            try self.contentStruct?.validate()
         }
 
         public override func toMap() -> [String : Any] {
@@ -22135,6 +22609,9 @@ public class CreateRunResponseBody : Tea.TeaModel {
             }
             if self.contentDesc != nil {
                 map["contentDesc"] = self.contentDesc!
+            }
+            if self.contentStruct != nil {
+                map["contentStruct"] = self.contentStruct?.toMap()
             }
             if self.createAt != nil {
                 map["createAt"] = self.createAt!
@@ -22163,6 +22640,11 @@ public class CreateRunResponseBody : Tea.TeaModel {
             }
             if let value = dict["contentDesc"] as? String {
                 self.contentDesc = value
+            }
+            if let value = dict["contentStruct"] as? [String: Any?] {
+                var model = CreateRunResponseBody.Messages.ContentStruct()
+                model.fromMap(value)
+                self.contentStruct = model
             }
             if let value = dict["createAt"] as? Int64 {
                 self.createAt = value

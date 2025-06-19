@@ -2623,6 +2623,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func createRunWithOptions(_ request: CreateRunRequest, _ headers: CreateRunHeaders, _ runtime: TeaUtils.RuntimeOptions) async throws -> CreateRunResponse {
         try TeaUtils.Client.validateModel(request)
         var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.allowStructViewContent)) {
+            body["allowStructViewContent"] = request.allowStructViewContent!;
+        }
         if (!TeaUtils.Client.isUnset(request.assistantId)) {
             body["assistantId"] = request.assistantId ?? "";
         }
