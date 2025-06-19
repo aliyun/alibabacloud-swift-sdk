@@ -4600,6 +4600,40 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getRenderingInstanceCommandsStatusWithOptions(_ request: GetRenderingInstanceCommandsStatusRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> GetRenderingInstanceCommandsStatusResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.cmdId)) {
+            query["CmdId"] = request.cmdId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.renderingInstanceId)) {
+            query["RenderingInstanceId"] = request.renderingInstanceId ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "GetRenderingInstanceCommandsStatus",
+            "version": "2018-12-12",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(GetRenderingInstanceCommandsStatusResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getRenderingInstanceCommandsStatus(_ request: GetRenderingInstanceCommandsStatusRequest) async throws -> GetRenderingInstanceCommandsStatusResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await getRenderingInstanceCommandsStatusWithOptions(request as! GetRenderingInstanceCommandsStatusRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func getRenderingInstanceStreamingInfoWithOptions(_ request: GetRenderingInstanceStreamingInfoRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> GetRenderingInstanceStreamingInfoResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
@@ -5087,6 +5121,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.projectId)) {
             query["ProjectId"] = request.projectId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.renderingInstanceId)) {
+            query["RenderingInstanceId"] = request.renderingInstanceId ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.sessionId)) {
             query["SessionId"] = request.sessionId ?? "";
@@ -6062,8 +6099,14 @@ open class Client : AlibabacloudOpenApi.Client {
     public func sendRenderingInstanceCommandsWithOptions(_ request: SendRenderingInstanceCommandsRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> SendRenderingInstanceCommandsResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.mode)) {
+            query["Mode"] = request.mode ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.renderingInstanceId)) {
             query["RenderingInstanceId"] = request.renderingInstanceId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.timeout)) {
+            query["Timeout"] = request.timeout!;
         }
         var body: [String: Any] = [:]
         if (!TeaUtils.Client.isUnset(request.commands)) {

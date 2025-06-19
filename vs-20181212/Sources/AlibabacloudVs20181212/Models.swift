@@ -16544,6 +16544,8 @@ public class DescribeRenderingSessionResponseBody : Tea.TeaModel {
 
     public var portMappings: [DescribeRenderingSessionResponseBody.PortMappings]?
 
+    public var renderingInstanceId: String?
+
     public var requestId: String?
 
     public var sessionId: String?
@@ -16596,6 +16598,9 @@ public class DescribeRenderingSessionResponseBody : Tea.TeaModel {
                 tmp.append(k.toMap())
             }
             map["PortMappings"] = tmp
+        }
+        if self.renderingInstanceId != nil {
+            map["RenderingInstanceId"] = self.renderingInstanceId!
         }
         if self.requestId != nil {
             map["RequestId"] = self.requestId!
@@ -16656,6 +16661,9 @@ public class DescribeRenderingSessionResponseBody : Tea.TeaModel {
                 }
             }
             self.portMappings = tmp
+        }
+        if let value = dict["RenderingInstanceId"] as? String {
+            self.renderingInstanceId = value
         }
         if let value = dict["RequestId"] as? String {
             self.requestId = value
@@ -25536,6 +25544,150 @@ public class ForbidVsStreamResponse : Tea.TeaModel {
     }
 }
 
+public class GetRenderingInstanceCommandsStatusRequest : Tea.TeaModel {
+    public var cmdId: String?
+
+    public var renderingInstanceId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.cmdId != nil {
+            map["CmdId"] = self.cmdId!
+        }
+        if self.renderingInstanceId != nil {
+            map["RenderingInstanceId"] = self.renderingInstanceId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["CmdId"] as? String {
+            self.cmdId = value
+        }
+        if let value = dict["RenderingInstanceId"] as? String {
+            self.renderingInstanceId = value
+        }
+    }
+}
+
+public class GetRenderingInstanceCommandsStatusResponseBody : Tea.TeaModel {
+    public var message: String?
+
+    public var requestId: String?
+
+    public var result: String?
+
+    public var status: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.message != nil {
+            map["Message"] = self.message!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.result != nil {
+            map["Result"] = self.result!
+        }
+        if self.status != nil {
+            map["Status"] = self.status!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["Message"] as? String {
+            self.message = value
+        }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+        if let value = dict["Result"] as? String {
+            self.result = value
+        }
+        if let value = dict["Status"] as? String {
+            self.status = value
+        }
+    }
+}
+
+public class GetRenderingInstanceCommandsStatusResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: GetRenderingInstanceCommandsStatusResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = GetRenderingInstanceCommandsStatusResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
 public class GetRenderingInstanceStreamingInfoRequest : Tea.TeaModel {
     public var renderingInstanceId: String?
 
@@ -28761,6 +28913,8 @@ public class ListRenderingSessionsRequest : Tea.TeaModel {
 
     public var projectId: String?
 
+    public var renderingInstanceId: String?
+
     public var sessionId: String?
 
     public var state: String?
@@ -28794,6 +28948,9 @@ public class ListRenderingSessionsRequest : Tea.TeaModel {
         if self.projectId != nil {
             map["ProjectId"] = self.projectId!
         }
+        if self.renderingInstanceId != nil {
+            map["RenderingInstanceId"] = self.renderingInstanceId!
+        }
         if self.sessionId != nil {
             map["SessionId"] = self.sessionId!
         }
@@ -28820,6 +28977,9 @@ public class ListRenderingSessionsRequest : Tea.TeaModel {
         if let value = dict["ProjectId"] as? String {
             self.projectId = value
         }
+        if let value = dict["RenderingInstanceId"] as? String {
+            self.renderingInstanceId = value
+        }
         if let value = dict["SessionId"] as? String {
             self.sessionId = value
         }
@@ -28834,6 +28994,8 @@ public class ListRenderingSessionsResponseBody : Tea.TeaModel {
         public var appId: String?
 
         public var clientId: String?
+
+        public var renderingInstanceId: String?
 
         public var sessionId: String?
 
@@ -28859,6 +29021,9 @@ public class ListRenderingSessionsResponseBody : Tea.TeaModel {
             if self.clientId != nil {
                 map["ClientId"] = self.clientId!
             }
+            if self.renderingInstanceId != nil {
+                map["RenderingInstanceId"] = self.renderingInstanceId!
+            }
             if self.sessionId != nil {
                 map["SessionId"] = self.sessionId!
             }
@@ -28875,6 +29040,9 @@ public class ListRenderingSessionsResponseBody : Tea.TeaModel {
             }
             if let value = dict["ClientId"] as? String {
                 self.clientId = value
+            }
+            if let value = dict["RenderingInstanceId"] as? String {
+                self.renderingInstanceId = value
             }
             if let value = dict["SessionId"] as? String {
                 self.sessionId = value
@@ -32319,7 +32487,11 @@ public class ResumeVsStreamResponse : Tea.TeaModel {
 public class SendRenderingInstanceCommandsRequest : Tea.TeaModel {
     public var commands: String?
 
+    public var mode: String?
+
     public var renderingInstanceId: String?
+
+    public var timeout: Int32?
 
     public override init() {
         super.init()
@@ -32338,8 +32510,14 @@ public class SendRenderingInstanceCommandsRequest : Tea.TeaModel {
         if self.commands != nil {
             map["Commands"] = self.commands!
         }
+        if self.mode != nil {
+            map["Mode"] = self.mode!
+        }
         if self.renderingInstanceId != nil {
             map["RenderingInstanceId"] = self.renderingInstanceId!
+        }
+        if self.timeout != nil {
+            map["Timeout"] = self.timeout!
         }
         return map
     }
@@ -32349,13 +32527,21 @@ public class SendRenderingInstanceCommandsRequest : Tea.TeaModel {
         if let value = dict["Commands"] as? String {
             self.commands = value
         }
+        if let value = dict["Mode"] as? String {
+            self.mode = value
+        }
         if let value = dict["RenderingInstanceId"] as? String {
             self.renderingInstanceId = value
+        }
+        if let value = dict["Timeout"] as? Int32 {
+            self.timeout = value
         }
     }
 }
 
 public class SendRenderingInstanceCommandsResponseBody : Tea.TeaModel {
+    public var cmdId: String?
+
     public var requestId: String?
 
     public var result: String?
@@ -32374,6 +32560,9 @@ public class SendRenderingInstanceCommandsResponseBody : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.cmdId != nil {
+            map["CmdId"] = self.cmdId!
+        }
         if self.requestId != nil {
             map["RequestId"] = self.requestId!
         }
@@ -32385,6 +32574,9 @@ public class SendRenderingInstanceCommandsResponseBody : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["CmdId"] as? String {
+            self.cmdId = value
+        }
         if let value = dict["RequestId"] as? String {
             self.requestId = value
         }
@@ -33710,6 +33902,8 @@ public class StartRenderingSessionResponseBody : Tea.TeaModel {
 
     public var portMappings: [StartRenderingSessionResponseBody.PortMappings]?
 
+    public var renderingInstanceId: String?
+
     public var requestId: String?
 
     public var sessionId: String?
@@ -33748,6 +33942,9 @@ public class StartRenderingSessionResponseBody : Tea.TeaModel {
             }
             map["PortMappings"] = tmp
         }
+        if self.renderingInstanceId != nil {
+            map["RenderingInstanceId"] = self.renderingInstanceId!
+        }
         if self.requestId != nil {
             map["RequestId"] = self.requestId!
         }
@@ -33785,6 +33982,9 @@ public class StartRenderingSessionResponseBody : Tea.TeaModel {
                 }
             }
             self.portMappings = tmp
+        }
+        if let value = dict["RenderingInstanceId"] as? String {
+            self.renderingInstanceId = value
         }
         if let value = dict["RequestId"] as? String {
             self.requestId = value
