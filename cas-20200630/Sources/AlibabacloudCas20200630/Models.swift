@@ -2872,6 +2872,8 @@ public class DescribeCACertificateListResponseBody : Tea.TeaModel {
 
         public var algorithm: String?
 
+        public var alias: String?
+
         public var beforeDate: Int64?
 
         public var certificateType: String?
@@ -2931,6 +2933,9 @@ public class DescribeCACertificateListResponseBody : Tea.TeaModel {
             }
             if self.algorithm != nil {
                 map["Algorithm"] = self.algorithm!
+            }
+            if self.alias != nil {
+                map["Alias"] = self.alias!
             }
             if self.beforeDate != nil {
                 map["BeforeDate"] = self.beforeDate!
@@ -3002,6 +3007,9 @@ public class DescribeCACertificateListResponseBody : Tea.TeaModel {
             }
             if let value = dict["Algorithm"] as? String {
                 self.algorithm = value
+            }
+            if let value = dict["Alias"] as? String {
+                self.alias = value
             }
             if let value = dict["BeforeDate"] as? Int64 {
                 self.beforeDate = value
