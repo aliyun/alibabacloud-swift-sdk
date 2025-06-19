@@ -60829,6 +60829,196 @@ public class ListMediaBasicInfosResponse : Tea.TeaModel {
     }
 }
 
+public class ListMediaConvertJobsRequest : Tea.TeaModel {
+    public var endOfCreateTime: String?
+
+    public var jobId: String?
+
+    public var nextPageToken: String?
+
+    public var orderBy: String?
+
+    public var pageSize: Int32?
+
+    public var startOfCreateTime: String?
+
+    public var status: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.endOfCreateTime != nil {
+            map["EndOfCreateTime"] = self.endOfCreateTime!
+        }
+        if self.jobId != nil {
+            map["JobId"] = self.jobId!
+        }
+        if self.nextPageToken != nil {
+            map["NextPageToken"] = self.nextPageToken!
+        }
+        if self.orderBy != nil {
+            map["OrderBy"] = self.orderBy!
+        }
+        if self.pageSize != nil {
+            map["PageSize"] = self.pageSize!
+        }
+        if self.startOfCreateTime != nil {
+            map["StartOfCreateTime"] = self.startOfCreateTime!
+        }
+        if self.status != nil {
+            map["Status"] = self.status!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["EndOfCreateTime"] as? String {
+            self.endOfCreateTime = value
+        }
+        if let value = dict["JobId"] as? String {
+            self.jobId = value
+        }
+        if let value = dict["NextPageToken"] as? String {
+            self.nextPageToken = value
+        }
+        if let value = dict["OrderBy"] as? String {
+            self.orderBy = value
+        }
+        if let value = dict["PageSize"] as? Int32 {
+            self.pageSize = value
+        }
+        if let value = dict["StartOfCreateTime"] as? String {
+            self.startOfCreateTime = value
+        }
+        if let value = dict["Status"] as? String {
+            self.status = value
+        }
+    }
+}
+
+public class ListMediaConvertJobsResponseBody : Tea.TeaModel {
+    public var jobs: [MediaConvertJobWithoutDetail]?
+
+    public var nextPageToken: String?
+
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.jobs != nil {
+            var tmp : [Any] = []
+            for k in self.jobs! {
+                tmp.append(k.toMap())
+            }
+            map["Jobs"] = tmp
+        }
+        if self.nextPageToken != nil {
+            map["NextPageToken"] = self.nextPageToken!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["Jobs"] as? [Any?] {
+            var tmp : [MediaConvertJobWithoutDetail] = []
+            for v in value {
+                if v != nil {
+                    var model = MediaConvertJobWithoutDetail()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.jobs = tmp
+        }
+        if let value = dict["NextPageToken"] as? String {
+            self.nextPageToken = value
+        }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+    }
+}
+
+public class ListMediaConvertJobsResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: ListMediaConvertJobsResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = ListMediaConvertJobsResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
 public class ListMediaInfoJobsRequest : Tea.TeaModel {
     public var endOfCreateTime: String?
 
@@ -84675,6 +84865,8 @@ public class StartRtcRobotInstanceResponse : Tea.TeaModel {
 }
 
 public class StartWorkflowRequest : Tea.TeaModel {
+    public var skipInputVerification: Bool?
+
     public var taskInput: String?
 
     public var userData: String?
@@ -84695,6 +84887,9 @@ public class StartWorkflowRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.skipInputVerification != nil {
+            map["SkipInputVerification"] = self.skipInputVerification!
+        }
         if self.taskInput != nil {
             map["TaskInput"] = self.taskInput!
         }
@@ -84709,6 +84904,9 @@ public class StartWorkflowRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["SkipInputVerification"] as? Bool {
+            self.skipInputVerification = value
+        }
         if let value = dict["TaskInput"] as? String {
             self.taskInput = value
         }
