@@ -7388,6 +7388,8 @@ public class CreateKeyPairResponse : Tea.TeaModel {
 }
 
 public class CreateLoadBalancerRequest : Tea.TeaModel {
+    public var billingCycle: String?
+
     public var clientToken: String?
 
     public var ensRegionId: String?
@@ -7395,6 +7397,8 @@ public class CreateLoadBalancerRequest : Tea.TeaModel {
     public var loadBalancerName: String?
 
     public var loadBalancerSpec: String?
+
+    public var loadBalancerType: String?
 
     public var networkId: String?
 
@@ -7416,6 +7420,9 @@ public class CreateLoadBalancerRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.billingCycle != nil {
+            map["BillingCycle"] = self.billingCycle!
+        }
         if self.clientToken != nil {
             map["ClientToken"] = self.clientToken!
         }
@@ -7427,6 +7434,9 @@ public class CreateLoadBalancerRequest : Tea.TeaModel {
         }
         if self.loadBalancerSpec != nil {
             map["LoadBalancerSpec"] = self.loadBalancerSpec!
+        }
+        if self.loadBalancerType != nil {
+            map["LoadBalancerType"] = self.loadBalancerType!
         }
         if self.networkId != nil {
             map["NetworkId"] = self.networkId!
@@ -7442,6 +7452,9 @@ public class CreateLoadBalancerRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["BillingCycle"] as? String {
+            self.billingCycle = value
+        }
         if let value = dict["ClientToken"] as? String {
             self.clientToken = value
         }
@@ -7453,6 +7466,9 @@ public class CreateLoadBalancerRequest : Tea.TeaModel {
         }
         if let value = dict["LoadBalancerSpec"] as? String {
             self.loadBalancerSpec = value
+        }
+        if let value = dict["LoadBalancerType"] as? String {
+            self.loadBalancerType = value
         }
         if let value = dict["NetworkId"] as? String {
             self.networkId = value
@@ -35772,6 +35788,8 @@ public class DescribeLoadBalancerAttributeResponseBody : Tea.TeaModel {
 
     public var addressIPVersion: String?
 
+    public var addressType: String?
+
     public var backendServers: [DescribeLoadBalancerAttributeResponseBody.BackendServers]?
 
     public var bandwidth: Int32?
@@ -35793,6 +35811,8 @@ public class DescribeLoadBalancerAttributeResponseBody : Tea.TeaModel {
     public var loadBalancerSpec: String?
 
     public var loadBalancerStatus: String?
+
+    public var loadBalancerType: String?
 
     public var networkId: String?
 
@@ -35821,6 +35841,9 @@ public class DescribeLoadBalancerAttributeResponseBody : Tea.TeaModel {
         }
         if self.addressIPVersion != nil {
             map["AddressIPVersion"] = self.addressIPVersion!
+        }
+        if self.addressType != nil {
+            map["AddressType"] = self.addressType!
         }
         if self.backendServers != nil {
             var tmp : [Any] = []
@@ -35863,6 +35886,9 @@ public class DescribeLoadBalancerAttributeResponseBody : Tea.TeaModel {
         if self.loadBalancerStatus != nil {
             map["LoadBalancerStatus"] = self.loadBalancerStatus!
         }
+        if self.loadBalancerType != nil {
+            map["LoadBalancerType"] = self.loadBalancerType!
+        }
         if self.networkId != nil {
             map["NetworkId"] = self.networkId!
         }
@@ -35885,6 +35911,9 @@ public class DescribeLoadBalancerAttributeResponseBody : Tea.TeaModel {
         }
         if let value = dict["AddressIPVersion"] as? String {
             self.addressIPVersion = value
+        }
+        if let value = dict["AddressType"] as? String {
+            self.addressType = value
         }
         if let value = dict["BackendServers"] as? [Any?] {
             var tmp : [DescribeLoadBalancerAttributeResponseBody.BackendServers] = []
@@ -35938,6 +35967,9 @@ public class DescribeLoadBalancerAttributeResponseBody : Tea.TeaModel {
         }
         if let value = dict["LoadBalancerStatus"] as? String {
             self.loadBalancerStatus = value
+        }
+        if let value = dict["LoadBalancerType"] as? String {
+            self.loadBalancerType = value
         }
         if let value = dict["NetworkId"] as? String {
             self.networkId = value
@@ -37990,6 +38022,8 @@ public class DescribeLoadBalancersRequest : Tea.TeaModel {
 
     public var loadBalancerStatus: String?
 
+    public var loadBalancerType: String?
+
     public var networkId: String?
 
     public var pageNumber: Int32?
@@ -38032,6 +38066,9 @@ public class DescribeLoadBalancersRequest : Tea.TeaModel {
         if self.loadBalancerStatus != nil {
             map["LoadBalancerStatus"] = self.loadBalancerStatus!
         }
+        if self.loadBalancerType != nil {
+            map["LoadBalancerType"] = self.loadBalancerType!
+        }
         if self.networkId != nil {
             map["NetworkId"] = self.networkId!
         }
@@ -38070,6 +38107,9 @@ public class DescribeLoadBalancersRequest : Tea.TeaModel {
         if let value = dict["LoadBalancerStatus"] as? String {
             self.loadBalancerStatus = value
         }
+        if let value = dict["LoadBalancerType"] as? String {
+            self.loadBalancerType = value
+        }
         if let value = dict["NetworkId"] as? String {
             self.networkId = value
         }
@@ -38095,6 +38135,8 @@ public class DescribeLoadBalancersResponseBody : Tea.TeaModel {
 
             public var addressIPVersion: String?
 
+            public var addressType: String?
+
             public var createTime: String?
 
             public var ensRegionId: String?
@@ -38104,6 +38146,8 @@ public class DescribeLoadBalancersResponseBody : Tea.TeaModel {
             public var loadBalancerName: String?
 
             public var loadBalancerStatus: String?
+
+            public var loadBalancerType: String?
 
             public var networkId: String?
 
@@ -38131,6 +38175,9 @@ public class DescribeLoadBalancersResponseBody : Tea.TeaModel {
                 if self.addressIPVersion != nil {
                     map["AddressIPVersion"] = self.addressIPVersion!
                 }
+                if self.addressType != nil {
+                    map["AddressType"] = self.addressType!
+                }
                 if self.createTime != nil {
                     map["CreateTime"] = self.createTime!
                 }
@@ -38145,6 +38192,9 @@ public class DescribeLoadBalancersResponseBody : Tea.TeaModel {
                 }
                 if self.loadBalancerStatus != nil {
                     map["LoadBalancerStatus"] = self.loadBalancerStatus!
+                }
+                if self.loadBalancerType != nil {
+                    map["LoadBalancerType"] = self.loadBalancerType!
                 }
                 if self.networkId != nil {
                     map["NetworkId"] = self.networkId!
@@ -38166,6 +38216,9 @@ public class DescribeLoadBalancersResponseBody : Tea.TeaModel {
                 if let value = dict["AddressIPVersion"] as? String {
                     self.addressIPVersion = value
                 }
+                if let value = dict["AddressType"] as? String {
+                    self.addressType = value
+                }
                 if let value = dict["CreateTime"] as? String {
                     self.createTime = value
                 }
@@ -38180,6 +38233,9 @@ public class DescribeLoadBalancersResponseBody : Tea.TeaModel {
                 }
                 if let value = dict["LoadBalancerStatus"] as? String {
                     self.loadBalancerStatus = value
+                }
+                if let value = dict["LoadBalancerType"] as? String {
+                    self.loadBalancerType = value
                 }
                 if let value = dict["NetworkId"] as? String {
                     self.networkId = value

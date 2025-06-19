@@ -1466,6 +1466,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func createLoadBalancerWithOptions(_ request: CreateLoadBalancerRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> CreateLoadBalancerResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.billingCycle)) {
+            query["BillingCycle"] = request.billingCycle ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.clientToken)) {
             query["ClientToken"] = request.clientToken ?? "";
         }
@@ -1477,6 +1480,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.loadBalancerSpec)) {
             query["LoadBalancerSpec"] = request.loadBalancerSpec ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.loadBalancerType)) {
+            query["LoadBalancerType"] = request.loadBalancerType ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.networkId)) {
             query["NetworkId"] = request.networkId ?? "";
