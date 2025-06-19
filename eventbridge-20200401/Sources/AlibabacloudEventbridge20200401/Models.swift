@@ -13425,11 +13425,17 @@ public class DiscoverEventSourceResponseBody : Tea.TeaModel {
             }
             public var databaseNames: [String]?
 
+            public var estimatedRows: Int64?
+
+            public var expireLogsDays: Int32?
+
             public var simpleData: String?
 
             public var tableNames: [String]?
 
             public var tableSchema: DiscoverEventSourceResponseBody.Data.SourceMySQLDiscovery.TableSchema?
+
+            public var waitTimeout: Int32?
 
             public override init() {
                 super.init()
@@ -13449,6 +13455,12 @@ public class DiscoverEventSourceResponseBody : Tea.TeaModel {
                 if self.databaseNames != nil {
                     map["DatabaseNames"] = self.databaseNames!
                 }
+                if self.estimatedRows != nil {
+                    map["EstimatedRows"] = self.estimatedRows!
+                }
+                if self.expireLogsDays != nil {
+                    map["ExpireLogsDays"] = self.expireLogsDays!
+                }
                 if self.simpleData != nil {
                     map["SimpleData"] = self.simpleData!
                 }
@@ -13458,6 +13470,9 @@ public class DiscoverEventSourceResponseBody : Tea.TeaModel {
                 if self.tableSchema != nil {
                     map["TableSchema"] = self.tableSchema?.toMap()
                 }
+                if self.waitTimeout != nil {
+                    map["WaitTimeout"] = self.waitTimeout!
+                }
                 return map
             }
 
@@ -13465,6 +13480,12 @@ public class DiscoverEventSourceResponseBody : Tea.TeaModel {
                 guard let dict else { return }
                 if let value = dict["DatabaseNames"] as? [String] {
                     self.databaseNames = value
+                }
+                if let value = dict["EstimatedRows"] as? Int64 {
+                    self.estimatedRows = value
+                }
+                if let value = dict["ExpireLogsDays"] as? Int32 {
+                    self.expireLogsDays = value
                 }
                 if let value = dict["SimpleData"] as? String {
                     self.simpleData = value
@@ -13476,6 +13497,9 @@ public class DiscoverEventSourceResponseBody : Tea.TeaModel {
                     var model = DiscoverEventSourceResponseBody.Data.SourceMySQLDiscovery.TableSchema()
                     model.fromMap(value)
                     self.tableSchema = model
+                }
+                if let value = dict["WaitTimeout"] as? Int32 {
+                    self.waitTimeout = value
                 }
             }
         }
