@@ -42733,6 +42733,8 @@ public class ListClustersRequest : Tea.TeaModel {
 
     public var tag: [ListClustersRequest.Tag]?
 
+    public var vpcId: String?
+
     public override init() {
         super.init()
     }
@@ -42778,6 +42780,9 @@ public class ListClustersRequest : Tea.TeaModel {
             }
             map["Tag"] = tmp
         }
+        if self.vpcId != nil {
+            map["VpcId"] = self.vpcId!
+        }
         return map
     }
 
@@ -42819,6 +42824,9 @@ public class ListClustersRequest : Tea.TeaModel {
                 }
             }
             self.tag = tmp
+        }
+        if let value = dict["VpcId"] as? String {
+            self.vpcId = value
         }
     }
 }
