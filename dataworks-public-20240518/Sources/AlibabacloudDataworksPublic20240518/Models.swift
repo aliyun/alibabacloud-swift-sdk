@@ -30789,6 +30789,167 @@ public class GetProjectRoleResponse : Tea.TeaModel {
     }
 }
 
+public class GetRerunWorkflowInstancesResultRequest : Tea.TeaModel {
+    public var operationId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.operationId != nil {
+            map["OperationId"] = self.operationId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["OperationId"] as? String {
+            self.operationId = value
+        }
+    }
+}
+
+public class GetRerunWorkflowInstancesResultResponseBody : Tea.TeaModel {
+    public class Result : Tea.TeaModel {
+        public var failureMessage: String?
+
+        public var status: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.failureMessage != nil {
+                map["FailureMessage"] = self.failureMessage!
+            }
+            if self.status != nil {
+                map["Status"] = self.status!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["FailureMessage"] as? String {
+                self.failureMessage = value
+            }
+            if let value = dict["Status"] as? String {
+                self.status = value
+            }
+        }
+    }
+    public var requestId: String?
+
+    public var result: GetRerunWorkflowInstancesResultResponseBody.Result?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.result?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.result != nil {
+            map["Result"] = self.result?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+        if let value = dict["Result"] as? [String: Any?] {
+            var model = GetRerunWorkflowInstancesResultResponseBody.Result()
+            model.fromMap(value)
+            self.result = model
+        }
+    }
+}
+
+public class GetRerunWorkflowInstancesResultResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: GetRerunWorkflowInstancesResultResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = GetRerunWorkflowInstancesResultResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
 public class GetResourceRequest : Tea.TeaModel {
     public var id: Int64?
 
@@ -33669,6 +33830,10 @@ public class GetTaskInstanceResponseBody : Tea.TeaModel {
 
         public var triggerType: String?
 
+        public var waitingResourceTime: Int64?
+
+        public var waitingTriggerTime: Int64?
+
         public var workflowId: Int64?
 
         public var workflowInstanceId: Int64?
@@ -33796,6 +33961,12 @@ public class GetTaskInstanceResponseBody : Tea.TeaModel {
             }
             if self.triggerType != nil {
                 map["TriggerType"] = self.triggerType!
+            }
+            if self.waitingResourceTime != nil {
+                map["WaitingResourceTime"] = self.waitingResourceTime!
+            }
+            if self.waitingTriggerTime != nil {
+                map["WaitingTriggerTime"] = self.waitingTriggerTime!
             }
             if self.workflowId != nil {
                 map["WorkflowId"] = self.workflowId!
@@ -33931,6 +34102,12 @@ public class GetTaskInstanceResponseBody : Tea.TeaModel {
             }
             if let value = dict["TriggerType"] as? String {
                 self.triggerType = value
+            }
+            if let value = dict["WaitingResourceTime"] as? Int64 {
+                self.waitingResourceTime = value
+            }
+            if let value = dict["WaitingTriggerTime"] as? Int64 {
+                self.waitingTriggerTime = value
             }
             if let value = dict["WorkflowId"] as? Int64 {
                 self.workflowId = value
@@ -59724,6 +59901,8 @@ public class ListTaskInstancesResponseBody : Tea.TeaModel {
 
             public var runtimeResource: ListTaskInstancesResponseBody.PagingInfo.TaskInstances.RuntimeResource?
 
+            public var scriptParameters: String?
+
             public var startedTime: Int64?
 
             public var status: String?
@@ -59741,6 +59920,10 @@ public class ListTaskInstancesResponseBody : Tea.TeaModel {
             public var triggerTime: Int64?
 
             public var triggerType: String?
+
+            public var waitingResourceTime: Int64?
+
+            public var waitingTriggerTime: Int64?
 
             public var workflowId: Int64?
 
@@ -59824,6 +60007,9 @@ public class ListTaskInstancesResponseBody : Tea.TeaModel {
                 if self.runtimeResource != nil {
                     map["RuntimeResource"] = self.runtimeResource?.toMap()
                 }
+                if self.scriptParameters != nil {
+                    map["ScriptParameters"] = self.scriptParameters!
+                }
                 if self.startedTime != nil {
                     map["StartedTime"] = self.startedTime!
                 }
@@ -59850,6 +60036,12 @@ public class ListTaskInstancesResponseBody : Tea.TeaModel {
                 }
                 if self.triggerType != nil {
                     map["TriggerType"] = self.triggerType!
+                }
+                if self.waitingResourceTime != nil {
+                    map["WaitingResourceTime"] = self.waitingResourceTime!
+                }
+                if self.waitingTriggerTime != nil {
+                    map["WaitingTriggerTime"] = self.waitingTriggerTime!
                 }
                 if self.workflowId != nil {
                     map["WorkflowId"] = self.workflowId!
@@ -59931,6 +60123,9 @@ public class ListTaskInstancesResponseBody : Tea.TeaModel {
                     model.fromMap(value)
                     self.runtimeResource = model
                 }
+                if let value = dict["ScriptParameters"] as? String {
+                    self.scriptParameters = value
+                }
                 if let value = dict["StartedTime"] as? Int64 {
                     self.startedTime = value
                 }
@@ -59957,6 +60152,12 @@ public class ListTaskInstancesResponseBody : Tea.TeaModel {
                 }
                 if let value = dict["TriggerType"] as? String {
                     self.triggerType = value
+                }
+                if let value = dict["WaitingResourceTime"] as? Int64 {
+                    self.waitingResourceTime = value
+                }
+                if let value = dict["WaitingTriggerTime"] as? Int64 {
+                    self.waitingTriggerTime = value
                 }
                 if let value = dict["WorkflowId"] as? Int64 {
                     self.workflowId = value
@@ -66282,6 +66483,382 @@ public class RerunTaskInstancesResponse : Tea.TeaModel {
         }
         if let value = dict["body"] as? [String: Any?] {
             var model = RerunTaskInstancesResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
+public class RerunWorkflowInstancesRequest : Tea.TeaModel {
+    public class Filter : Tea.TeaModel {
+        public var rerunDownstreamEnabled: Bool?
+
+        public var taskIds: [Int64]?
+
+        public var taskInstanceStatuses: [String]?
+
+        public var taskName: String?
+
+        public var taskTypes: [String]?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.rerunDownstreamEnabled != nil {
+                map["RerunDownstreamEnabled"] = self.rerunDownstreamEnabled!
+            }
+            if self.taskIds != nil {
+                map["TaskIds"] = self.taskIds!
+            }
+            if self.taskInstanceStatuses != nil {
+                map["TaskInstanceStatuses"] = self.taskInstanceStatuses!
+            }
+            if self.taskName != nil {
+                map["TaskName"] = self.taskName!
+            }
+            if self.taskTypes != nil {
+                map["TaskTypes"] = self.taskTypes!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["RerunDownstreamEnabled"] as? Bool {
+                self.rerunDownstreamEnabled = value
+            }
+            if let value = dict["TaskIds"] as? [Int64] {
+                self.taskIds = value
+            }
+            if let value = dict["TaskInstanceStatuses"] as? [String] {
+                self.taskInstanceStatuses = value
+            }
+            if let value = dict["TaskName"] as? String {
+                self.taskName = value
+            }
+            if let value = dict["TaskTypes"] as? [String] {
+                self.taskTypes = value
+            }
+        }
+    }
+    public var bizdate: Int64?
+
+    public var endTriggerTime: Int64?
+
+    public var envType: String?
+
+    public var filter: RerunWorkflowInstancesRequest.Filter?
+
+    public var ids: [Int64]?
+
+    public var name: String?
+
+    public var projectId: Int64?
+
+    public var startTriggerTime: Int64?
+
+    public var status: String?
+
+    public var type: String?
+
+    public var workflowId: Int64?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.filter?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.bizdate != nil {
+            map["Bizdate"] = self.bizdate!
+        }
+        if self.endTriggerTime != nil {
+            map["EndTriggerTime"] = self.endTriggerTime!
+        }
+        if self.envType != nil {
+            map["EnvType"] = self.envType!
+        }
+        if self.filter != nil {
+            map["Filter"] = self.filter?.toMap()
+        }
+        if self.ids != nil {
+            map["Ids"] = self.ids!
+        }
+        if self.name != nil {
+            map["Name"] = self.name!
+        }
+        if self.projectId != nil {
+            map["ProjectId"] = self.projectId!
+        }
+        if self.startTriggerTime != nil {
+            map["StartTriggerTime"] = self.startTriggerTime!
+        }
+        if self.status != nil {
+            map["Status"] = self.status!
+        }
+        if self.type != nil {
+            map["Type"] = self.type!
+        }
+        if self.workflowId != nil {
+            map["WorkflowId"] = self.workflowId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["Bizdate"] as? Int64 {
+            self.bizdate = value
+        }
+        if let value = dict["EndTriggerTime"] as? Int64 {
+            self.endTriggerTime = value
+        }
+        if let value = dict["EnvType"] as? String {
+            self.envType = value
+        }
+        if let value = dict["Filter"] as? [String: Any?] {
+            var model = RerunWorkflowInstancesRequest.Filter()
+            model.fromMap(value)
+            self.filter = model
+        }
+        if let value = dict["Ids"] as? [Int64] {
+            self.ids = value
+        }
+        if let value = dict["Name"] as? String {
+            self.name = value
+        }
+        if let value = dict["ProjectId"] as? Int64 {
+            self.projectId = value
+        }
+        if let value = dict["StartTriggerTime"] as? Int64 {
+            self.startTriggerTime = value
+        }
+        if let value = dict["Status"] as? String {
+            self.status = value
+        }
+        if let value = dict["Type"] as? String {
+            self.type = value
+        }
+        if let value = dict["WorkflowId"] as? Int64 {
+            self.workflowId = value
+        }
+    }
+}
+
+public class RerunWorkflowInstancesShrinkRequest : Tea.TeaModel {
+    public var bizdate: Int64?
+
+    public var endTriggerTime: Int64?
+
+    public var envType: String?
+
+    public var filterShrink: String?
+
+    public var idsShrink: String?
+
+    public var name: String?
+
+    public var projectId: Int64?
+
+    public var startTriggerTime: Int64?
+
+    public var status: String?
+
+    public var type: String?
+
+    public var workflowId: Int64?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.bizdate != nil {
+            map["Bizdate"] = self.bizdate!
+        }
+        if self.endTriggerTime != nil {
+            map["EndTriggerTime"] = self.endTriggerTime!
+        }
+        if self.envType != nil {
+            map["EnvType"] = self.envType!
+        }
+        if self.filterShrink != nil {
+            map["Filter"] = self.filterShrink!
+        }
+        if self.idsShrink != nil {
+            map["Ids"] = self.idsShrink!
+        }
+        if self.name != nil {
+            map["Name"] = self.name!
+        }
+        if self.projectId != nil {
+            map["ProjectId"] = self.projectId!
+        }
+        if self.startTriggerTime != nil {
+            map["StartTriggerTime"] = self.startTriggerTime!
+        }
+        if self.status != nil {
+            map["Status"] = self.status!
+        }
+        if self.type != nil {
+            map["Type"] = self.type!
+        }
+        if self.workflowId != nil {
+            map["WorkflowId"] = self.workflowId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["Bizdate"] as? Int64 {
+            self.bizdate = value
+        }
+        if let value = dict["EndTriggerTime"] as? Int64 {
+            self.endTriggerTime = value
+        }
+        if let value = dict["EnvType"] as? String {
+            self.envType = value
+        }
+        if let value = dict["Filter"] as? String {
+            self.filterShrink = value
+        }
+        if let value = dict["Ids"] as? String {
+            self.idsShrink = value
+        }
+        if let value = dict["Name"] as? String {
+            self.name = value
+        }
+        if let value = dict["ProjectId"] as? Int64 {
+            self.projectId = value
+        }
+        if let value = dict["StartTriggerTime"] as? Int64 {
+            self.startTriggerTime = value
+        }
+        if let value = dict["Status"] as? String {
+            self.status = value
+        }
+        if let value = dict["Type"] as? String {
+            self.type = value
+        }
+        if let value = dict["WorkflowId"] as? Int64 {
+            self.workflowId = value
+        }
+    }
+}
+
+public class RerunWorkflowInstancesResponseBody : Tea.TeaModel {
+    public var operationId: String?
+
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.operationId != nil {
+            map["OperationId"] = self.operationId!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["OperationId"] as? String {
+            self.operationId = value
+        }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+    }
+}
+
+public class RerunWorkflowInstancesResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: RerunWorkflowInstancesResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = RerunWorkflowInstancesResponseBody()
             model.fromMap(value)
             self.body = model
         }
