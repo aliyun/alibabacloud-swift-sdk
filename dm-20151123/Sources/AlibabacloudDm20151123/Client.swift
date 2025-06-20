@@ -1,6 +1,11 @@
 import Foundation
 import Tea
 import TeaUtils
+import AlibabaCloudOssSdk
+import AlibabacloudOpenPlatform20191219
+import AlibabaCloudOSSUtil
+import TeaFileForm
+import DarabonbaNumber
 import AlibabacloudOpenApi
 import AlibabaCloudOpenApiUtil
 import AlibabacloudEndpointUtil
@@ -1982,6 +1987,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.addressType)) {
             query["AddressType"] = request.addressType!;
         }
+        if (!TeaUtils.Client.isUnset(request.attachments)) {
+            query["Attachments"] = request.attachments ?? [];
+        }
         if (!TeaUtils.Client.isUnset(request.clickTrace)) {
             query["ClickTrace"] = request.clickTrace ?? "";
         }
@@ -2055,6 +2063,85 @@ open class Client : AlibabacloudOpenApi.Client {
     public func singleSendMail(_ request: SingleSendMailRequest) async throws -> SingleSendMailResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         return try await singleSendMailWithOptions(request as! SingleSendMailRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func singleSendMailAdvance(_ request: SingleSendMailAdvanceRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> SingleSendMailResponse {
+        var accessKeyId: String = try await self._credential!.getAccessKeyId()
+        var accessKeySecret: String = try await self._credential!.getAccessKeySecret()
+        var securityToken: String = try await self._credential!.getSecurityToken()
+        var credentialType: String = self._credential!.getType()
+        var openPlatformEndpoint: String = self._openPlatformEndpoint ?? ""
+        if (TeaUtils.Client.empty(openPlatformEndpoint)) {
+            openPlatformEndpoint = "openplatform.aliyuncs.com"
+        }
+        if (TeaUtils.Client.isUnset(credentialType)) {
+            credentialType = "access_key"
+        }
+        var authConfig: AlibabacloudOpenApi.Config = AlibabacloudOpenApi.Config([
+            "accessKeyId": accessKeyId as! String,
+            "accessKeySecret": accessKeySecret as! String,
+            "securityToken": securityToken as! String,
+            "type": credentialType as! String,
+            "endpoint": openPlatformEndpoint as! String,
+            "protocol": self._protocol ?? "",
+            "regionId": self._regionId ?? ""
+        ])
+        var authClient: AlibabacloudOpenPlatform20191219.Client = try AlibabacloudOpenPlatform20191219.Client(authConfig)
+        var authRequest: AlibabacloudOpenPlatform20191219.AuthorizeFileUploadRequest = AlibabacloudOpenPlatform20191219.AuthorizeFileUploadRequest([
+            "product": "Dm",
+            "regionId": self._regionId ?? ""
+        ])
+        var authResponse: AlibabacloudOpenPlatform20191219.AuthorizeFileUploadResponse = AlibabacloudOpenPlatform20191219.AuthorizeFileUploadResponse([:])
+        var ossConfig: AlibabaCloudOssSdk.Config = AlibabaCloudOssSdk.Config([
+            "accessKeyId": accessKeyId as! String,
+            "accessKeySecret": accessKeySecret as! String,
+            "type": "access_key",
+            "protocol": self._protocol ?? "",
+            "regionId": self._regionId ?? ""
+        ])
+        var ossClient: AlibabaCloudOssSdk.Client = try AlibabaCloudOssSdk.Client(ossConfig)
+        var fileObj: TeaFileForm.FileField = TeaFileForm.FileField([:])
+        var ossHeader: AlibabaCloudOssSdk.PostObjectRequest.Header = AlibabaCloudOssSdk.PostObjectRequest.Header([:])
+        var uploadRequest: AlibabaCloudOssSdk.PostObjectRequest = AlibabaCloudOssSdk.PostObjectRequest([:])
+        var ossRuntime: AlibabaCloudOSSUtil.RuntimeOptions = AlibabaCloudOSSUtil.RuntimeOptions([:])
+        AlibabaCloudOpenApiUtil.Client.convert(runtime, ossRuntime)
+        var singleSendMailReq: SingleSendMailRequest = SingleSendMailRequest([:])
+        AlibabaCloudOpenApiUtil.Client.convert(request, singleSendMailReq)
+        if (!TeaUtils.Client.isUnset(request.attachments)) {
+            var i0: Int = 0
+            for item0 in request.attachments {
+                if (!TeaUtils.Client.isUnset(item0.attachmentUrlObject)) {
+                    authResponse = try await authClient.authorizeFileUploadWithOptions(authRequest as! AlibabacloudOpenPlatform20191219.AuthorizeFileUploadRequest, runtime as! TeaUtils.RuntimeOptions)
+                    ossConfig.accessKeyId = authResponse.body!.accessKeyId
+                    ossConfig.endpoint = AlibabaCloudOpenApiUtil.Client.getEndpoint(authResponse.body!.endpoint, authResponse.body!.useAccelerate, self._endpointType)
+                    ossClient = try AlibabaCloudOssSdk.Client(ossConfig)
+                    fileObj = TeaFileForm.FileField([
+                        "filename": authResponse.body!.objectKey ?? "",
+                        "content": item0.attachmentUrlObject!,
+                        "contentType": ""
+                    ])
+                    ossHeader = AlibabaCloudOssSdk.PostObjectRequest.Header([
+                        "accessKeyId": authResponse.body!.accessKeyId ?? "",
+                        "policy": authResponse.body!.encodedPolicy ?? "",
+                        "signature": authResponse.body!.signature ?? "",
+                        "key": authResponse.body!.objectKey ?? "",
+                        "file": fileObj as! TeaFileForm.FileField,
+                        "successActionStatus": "201"
+                    ])
+                    uploadRequest = AlibabaCloudOssSdk.PostObjectRequest([
+                        "bucketName": authResponse.body!.bucket ?? "",
+                        "header": ossHeader as! AlibabaCloudOssSdk.PostObjectRequest.Header
+                    ])
+                    try await ossClient.postObject(uploadRequest as! AlibabaCloudOssSdk.PostObjectRequest, ossRuntime as! AlibabaCloudOSSUtil.RuntimeOptions)
+                    var tmp: SingleSendMailRequest.Attachments = singleSendMailReq.attachments[i0]
+                    tmp.attachmentUrl = "http://" + (authResponse.body!.bucket ?? "") + "." + (authResponse.body!.endpoint ?? "") + "/" + (authResponse.body!.objectKey ?? "")
+                    i0 = DarabonbaNumber.Client.ltoi(DarabonbaNumber.Client.add(DarabonbaNumber.Client.itol(i0), DarabonbaNumber.Client.itol(1)))
+                }
+            }
+        }
+        var singleSendMailResp: SingleSendMailResponse = try await singleSendMailWithOptions(singleSendMailReq as! SingleSendMailRequest, runtime as! TeaUtils.RuntimeOptions)
+        return singleSendMailResp as! SingleSendMailResponse
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)

@@ -1,6 +1,11 @@
 import Foundation
 import Tea
 import TeaUtils
+import AlibabaCloudOssSdk
+import AlibabacloudOpenPlatform20191219
+import AlibabaCloudOSSUtil
+import TeaFileForm
+import DarabonbaNumber
 import AlibabacloudOpenApi
 import AlibabaCloudOpenApiUtil
 import AlibabacloudEndpointUtil
@@ -9118,9 +9123,49 @@ public class SetSuppressionListLevelResponse : Tea.TeaModel {
 }
 
 public class SingleSendMailRequest : Tea.TeaModel {
+    public class Attachments : Tea.TeaModel {
+        public var attachmentName: String?
+
+        public var attachmentUrl: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.attachmentName != nil {
+                map["AttachmentName"] = self.attachmentName!
+            }
+            if self.attachmentUrl != nil {
+                map["AttachmentUrl"] = self.attachmentUrl!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["AttachmentName"] as? String {
+                self.attachmentName = value
+            }
+            if let value = dict["AttachmentUrl"] as? String {
+                self.attachmentUrl = value
+            }
+        }
+    }
     public var accountName: String?
 
     public var addressType: Int32?
+
+    public var attachments: [SingleSendMailRequest.Attachments]?
 
     public var clickTrace: String?
 
@@ -9175,6 +9220,13 @@ public class SingleSendMailRequest : Tea.TeaModel {
         }
         if self.addressType != nil {
             map["AddressType"] = self.addressType!
+        }
+        if self.attachments != nil {
+            var tmp : [Any] = []
+            for k in self.attachments! {
+                tmp.append(k.toMap())
+            }
+            map["Attachments"] = tmp
         }
         if self.clickTrace != nil {
             map["ClickTrace"] = self.clickTrace!
@@ -9237,6 +9289,254 @@ public class SingleSendMailRequest : Tea.TeaModel {
         }
         if let value = dict["AddressType"] as? Int32 {
             self.addressType = value
+        }
+        if let value = dict["Attachments"] as? [Any?] {
+            var tmp : [SingleSendMailRequest.Attachments] = []
+            for v in value {
+                if v != nil {
+                    var model = SingleSendMailRequest.Attachments()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.attachments = tmp
+        }
+        if let value = dict["ClickTrace"] as? String {
+            self.clickTrace = value
+        }
+        if let value = dict["FromAlias"] as? String {
+            self.fromAlias = value
+        }
+        if let value = dict["Headers"] as? String {
+            self.headers = value
+        }
+        if let value = dict["HtmlBody"] as? String {
+            self.htmlBody = value
+        }
+        if let value = dict["IpPoolId"] as? String {
+            self.ipPoolId = value
+        }
+        if let value = dict["OwnerId"] as? Int64 {
+            self.ownerId = value
+        }
+        if let value = dict["ReplyAddress"] as? String {
+            self.replyAddress = value
+        }
+        if let value = dict["ReplyAddressAlias"] as? String {
+            self.replyAddressAlias = value
+        }
+        if let value = dict["ReplyToAddress"] as? Bool {
+            self.replyToAddress = value
+        }
+        if let value = dict["ResourceOwnerAccount"] as? String {
+            self.resourceOwnerAccount = value
+        }
+        if let value = dict["ResourceOwnerId"] as? Int64 {
+            self.resourceOwnerId = value
+        }
+        if let value = dict["Subject"] as? String {
+            self.subject = value
+        }
+        if let value = dict["TagName"] as? String {
+            self.tagName = value
+        }
+        if let value = dict["TextBody"] as? String {
+            self.textBody = value
+        }
+        if let value = dict["ToAddress"] as? String {
+            self.toAddress = value
+        }
+        if let value = dict["UnSubscribeFilterLevel"] as? String {
+            self.unSubscribeFilterLevel = value
+        }
+        if let value = dict["UnSubscribeLinkType"] as? String {
+            self.unSubscribeLinkType = value
+        }
+    }
+}
+
+public class SingleSendMailAdvanceRequest : Tea.TeaModel {
+    public class Attachments : Tea.TeaModel {
+        public var attachmentName: String?
+
+        public var attachmentUrlObject: InputStream?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.attachmentName != nil {
+                map["AttachmentName"] = self.attachmentName!
+            }
+            if self.attachmentUrlObject != nil {
+                map["AttachmentUrl"] = self.attachmentUrlObject!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["AttachmentName"] as? String {
+                self.attachmentName = value
+            }
+            if let value = dict["AttachmentUrl"] as? InputStream {
+                self.attachmentUrlObject = value
+            }
+        }
+    }
+    public var accountName: String?
+
+    public var addressType: Int32?
+
+    public var attachments: [SingleSendMailAdvanceRequest.Attachments]?
+
+    public var clickTrace: String?
+
+    public var fromAlias: String?
+
+    public var headers: String?
+
+    public var htmlBody: String?
+
+    public var ipPoolId: String?
+
+    public var ownerId: Int64?
+
+    public var replyAddress: String?
+
+    public var replyAddressAlias: String?
+
+    public var replyToAddress: Bool?
+
+    public var resourceOwnerAccount: String?
+
+    public var resourceOwnerId: Int64?
+
+    public var subject: String?
+
+    public var tagName: String?
+
+    public var textBody: String?
+
+    public var toAddress: String?
+
+    public var unSubscribeFilterLevel: String?
+
+    public var unSubscribeLinkType: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.accountName != nil {
+            map["AccountName"] = self.accountName!
+        }
+        if self.addressType != nil {
+            map["AddressType"] = self.addressType!
+        }
+        if self.attachments != nil {
+            var tmp : [Any] = []
+            for k in self.attachments! {
+                tmp.append(k.toMap())
+            }
+            map["Attachments"] = tmp
+        }
+        if self.clickTrace != nil {
+            map["ClickTrace"] = self.clickTrace!
+        }
+        if self.fromAlias != nil {
+            map["FromAlias"] = self.fromAlias!
+        }
+        if self.headers != nil {
+            map["Headers"] = self.headers!
+        }
+        if self.htmlBody != nil {
+            map["HtmlBody"] = self.htmlBody!
+        }
+        if self.ipPoolId != nil {
+            map["IpPoolId"] = self.ipPoolId!
+        }
+        if self.ownerId != nil {
+            map["OwnerId"] = self.ownerId!
+        }
+        if self.replyAddress != nil {
+            map["ReplyAddress"] = self.replyAddress!
+        }
+        if self.replyAddressAlias != nil {
+            map["ReplyAddressAlias"] = self.replyAddressAlias!
+        }
+        if self.replyToAddress != nil {
+            map["ReplyToAddress"] = self.replyToAddress!
+        }
+        if self.resourceOwnerAccount != nil {
+            map["ResourceOwnerAccount"] = self.resourceOwnerAccount!
+        }
+        if self.resourceOwnerId != nil {
+            map["ResourceOwnerId"] = self.resourceOwnerId!
+        }
+        if self.subject != nil {
+            map["Subject"] = self.subject!
+        }
+        if self.tagName != nil {
+            map["TagName"] = self.tagName!
+        }
+        if self.textBody != nil {
+            map["TextBody"] = self.textBody!
+        }
+        if self.toAddress != nil {
+            map["ToAddress"] = self.toAddress!
+        }
+        if self.unSubscribeFilterLevel != nil {
+            map["UnSubscribeFilterLevel"] = self.unSubscribeFilterLevel!
+        }
+        if self.unSubscribeLinkType != nil {
+            map["UnSubscribeLinkType"] = self.unSubscribeLinkType!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["AccountName"] as? String {
+            self.accountName = value
+        }
+        if let value = dict["AddressType"] as? Int32 {
+            self.addressType = value
+        }
+        if let value = dict["Attachments"] as? [Any?] {
+            var tmp : [SingleSendMailAdvanceRequest.Attachments] = []
+            for v in value {
+                if v != nil {
+                    var model = SingleSendMailAdvanceRequest.Attachments()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.attachments = tmp
         }
         if let value = dict["ClickTrace"] as? String {
             self.clickTrace = value
