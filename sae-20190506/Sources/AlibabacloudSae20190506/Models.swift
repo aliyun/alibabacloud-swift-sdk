@@ -42686,6 +42686,8 @@ public class ListAppEventsRequest : Tea.TeaModel {
 public class ListAppEventsResponseBody : Tea.TeaModel {
     public class Data : Tea.TeaModel {
         public class AppEventEntity : Tea.TeaModel {
+            public var causeAnalysis: String?
+
             public var eventType: String?
 
             public var firstTimestamp: String?
@@ -42714,6 +42716,9 @@ public class ListAppEventsResponseBody : Tea.TeaModel {
 
             public override func toMap() -> [String : Any] {
                 var map = super.toMap()
+                if self.causeAnalysis != nil {
+                    map["CauseAnalysis"] = self.causeAnalysis!
+                }
                 if self.eventType != nil {
                     map["EventType"] = self.eventType!
                 }
@@ -42740,6 +42745,9 @@ public class ListAppEventsResponseBody : Tea.TeaModel {
 
             public override func fromMap(_ dict: [String: Any?]?) -> Void {
                 guard let dict else { return }
+                if let value = dict["CauseAnalysis"] as? String {
+                    self.causeAnalysis = value
+                }
                 if let value = dict["EventType"] as? String {
                     self.eventType = value
                 }
