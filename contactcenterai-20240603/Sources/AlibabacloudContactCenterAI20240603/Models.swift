@@ -2093,6 +2093,8 @@ public class CreateTaskRequest : Tea.TeaModel {
 
         public var fileName: String?
 
+        public var languageHints: String?
+
         public var level: String?
 
         public var roleIdentification: Bool?
@@ -2131,6 +2133,9 @@ public class CreateTaskRequest : Tea.TeaModel {
             if self.fileName != nil {
                 map["fileName"] = self.fileName!
             }
+            if self.languageHints != nil {
+                map["languageHints"] = self.languageHints!
+            }
             if self.level != nil {
                 map["level"] = self.level!
             }
@@ -2165,6 +2170,9 @@ public class CreateTaskRequest : Tea.TeaModel {
             }
             if let value = dict["fileName"] as? String {
                 self.fileName = value
+            }
+            if let value = dict["languageHints"] as? String {
+                self.languageHints = value
             }
             if let value = dict["level"] as? String {
                 self.level = value
