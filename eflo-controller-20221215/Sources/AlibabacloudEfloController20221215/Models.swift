@@ -1116,6 +1116,62 @@ public class CreateClusterRequest : Tea.TeaModel {
     }
     public class NodeGroups : Tea.TeaModel {
         public class Nodes : Tea.TeaModel {
+            public class DataDisk : Tea.TeaModel {
+                public var category: String?
+
+                public var deleteWithNode: Bool?
+
+                public var performanceLevel: String?
+
+                public var size: Int32?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.category != nil {
+                        map["Category"] = self.category!
+                    }
+                    if self.deleteWithNode != nil {
+                        map["DeleteWithNode"] = self.deleteWithNode!
+                    }
+                    if self.performanceLevel != nil {
+                        map["PerformanceLevel"] = self.performanceLevel!
+                    }
+                    if self.size != nil {
+                        map["Size"] = self.size!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                    guard let dict else { return }
+                    if let value = dict["Category"] as? String {
+                        self.category = value
+                    }
+                    if let value = dict["DeleteWithNode"] as? Bool {
+                        self.deleteWithNode = value
+                    }
+                    if let value = dict["PerformanceLevel"] as? String {
+                        self.performanceLevel = value
+                    }
+                    if let value = dict["Size"] as? Int32 {
+                        self.size = value
+                    }
+                }
+            }
+            public var dataDisk: [CreateClusterRequest.NodeGroups.Nodes.DataDisk]?
+
             public var hostname: String?
 
             public var loginPassword: String?
@@ -1140,6 +1196,13 @@ public class CreateClusterRequest : Tea.TeaModel {
 
             public override func toMap() -> [String : Any] {
                 var map = super.toMap()
+                if self.dataDisk != nil {
+                    var tmp : [Any] = []
+                    for k in self.dataDisk! {
+                        tmp.append(k.toMap())
+                    }
+                    map["DataDisk"] = tmp
+                }
                 if self.hostname != nil {
                     map["Hostname"] = self.hostname!
                 }
@@ -1160,6 +1223,19 @@ public class CreateClusterRequest : Tea.TeaModel {
 
             public override func fromMap(_ dict: [String: Any?]?) -> Void {
                 guard let dict else { return }
+                if let value = dict["DataDisk"] as? [Any?] {
+                    var tmp : [CreateClusterRequest.NodeGroups.Nodes.DataDisk] = []
+                    for v in value {
+                        if v != nil {
+                            var model = CreateClusterRequest.NodeGroups.Nodes.DataDisk()
+                            if v != nil {
+                                model.fromMap(v as? [String: Any?])
+                            }
+                            tmp.append(model)
+                        }
+                    }
+                    self.dataDisk = tmp
+                }
                 if let value = dict["Hostname"] as? String {
                     self.hostname = value
                 }
@@ -7769,6 +7845,62 @@ public class ExtendClusterRequest : Tea.TeaModel {
             }
         }
         public class Nodes : Tea.TeaModel {
+            public class DataDisk : Tea.TeaModel {
+                public var category: String?
+
+                public var deleteWithNode: Bool?
+
+                public var performanceLevel: String?
+
+                public var size: Int32?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.category != nil {
+                        map["Category"] = self.category!
+                    }
+                    if self.deleteWithNode != nil {
+                        map["DeleteWithNode"] = self.deleteWithNode!
+                    }
+                    if self.performanceLevel != nil {
+                        map["PerformanceLevel"] = self.performanceLevel!
+                    }
+                    if self.size != nil {
+                        map["Size"] = self.size!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                    guard let dict else { return }
+                    if let value = dict["Category"] as? String {
+                        self.category = value
+                    }
+                    if let value = dict["DeleteWithNode"] as? Bool {
+                        self.deleteWithNode = value
+                    }
+                    if let value = dict["PerformanceLevel"] as? String {
+                        self.performanceLevel = value
+                    }
+                    if let value = dict["Size"] as? Int32 {
+                        self.size = value
+                    }
+                }
+            }
+            public var dataDisk: [ExtendClusterRequest.NodeGroups.Nodes.DataDisk]?
+
             public var hostname: String?
 
             public var loginPassword: String?
@@ -7793,6 +7925,13 @@ public class ExtendClusterRequest : Tea.TeaModel {
 
             public override func toMap() -> [String : Any] {
                 var map = super.toMap()
+                if self.dataDisk != nil {
+                    var tmp : [Any] = []
+                    for k in self.dataDisk! {
+                        tmp.append(k.toMap())
+                    }
+                    map["DataDisk"] = tmp
+                }
                 if self.hostname != nil {
                     map["Hostname"] = self.hostname!
                 }
@@ -7813,6 +7952,19 @@ public class ExtendClusterRequest : Tea.TeaModel {
 
             public override func fromMap(_ dict: [String: Any?]?) -> Void {
                 guard let dict else { return }
+                if let value = dict["DataDisk"] as? [Any?] {
+                    var tmp : [ExtendClusterRequest.NodeGroups.Nodes.DataDisk] = []
+                    for v in value {
+                        if v != nil {
+                            var model = ExtendClusterRequest.NodeGroups.Nodes.DataDisk()
+                            if v != nil {
+                                model.fromMap(v as? [String: Any?])
+                            }
+                            tmp.append(model)
+                        }
+                    }
+                    self.dataDisk = tmp
+                }
                 if let value = dict["Hostname"] as? String {
                     self.hostname = value
                 }
