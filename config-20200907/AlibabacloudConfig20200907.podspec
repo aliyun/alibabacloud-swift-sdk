@@ -1,7 +1,7 @@
 Pod::Spec.new do |spec|
 
   spec.name         = "AlibabacloudConfig20200907"
-  spec.version      = "1.0.13"
+  spec.version      = "1.0.14"
   spec.license      = "Apache 2.0"
   spec.summary      = "Alibaba Cloud CloudConfig (20200907) SDK Library for Swift"
   spec.homepage     = "https://github.com/alibabacloud-sdk-swift/config-20200907" 
@@ -17,7 +17,7 @@ Pod::Spec.new do |spec|
   spec.watchos.deployment_target = '6.0'
   spec.tvos.deployment_target    = '13.0'
 
-  spec.dependency 'Tea',  '~> 1.0.0'
+  spec.dependency 'Tea',  '~> 1.0.3'
   spec.dependency 'TeaUtils',  '~> 1.0.6'
   spec.dependency 'AlibabacloudOpenApi',  '~> 1.0.7'
   spec.dependency 'AlibabaCloudOpenApiUtil',  '~> 1.0.1'
