@@ -1677,6 +1677,8 @@ public class DescribePackageDeductionsRequest : Tea.TeaModel {
 
     public var resourceType: String?
 
+    public var resourceTypes: [String]?
+
     public var startTime: Int64?
 
     public override init() {
@@ -1711,6 +1713,9 @@ public class DescribePackageDeductionsRequest : Tea.TeaModel {
         if self.resourceType != nil {
             map["ResourceType"] = self.resourceType!
         }
+        if self.resourceTypes != nil {
+            map["ResourceTypes"] = self.resourceTypes!
+        }
         if self.startTime != nil {
             map["StartTime"] = self.startTime!
         }
@@ -1737,6 +1742,9 @@ public class DescribePackageDeductionsRequest : Tea.TeaModel {
         if let value = dict["ResourceType"] as? String {
             self.resourceType = value
         }
+        if let value = dict["ResourceTypes"] as? [String] {
+            self.resourceTypes = value
+        }
         if let value = dict["StartTime"] as? Int64 {
             self.startTime = value
         }
@@ -1755,7 +1763,11 @@ public class DescribePackageDeductionsResponseBody : Tea.TeaModel {
 
         public var endTime: String?
 
+        public var instanceId: String?
+
         public var instanceState: String?
+
+        public var instanceType: String?
 
         public var memory: Int64?
 
@@ -1765,11 +1777,15 @@ public class DescribePackageDeductionsResponseBody : Tea.TeaModel {
 
         public var resourceType: String?
 
+        public var sessionId: String?
+
         public var staTime: String?
 
         public var usedCoreTime: Double?
 
         public var usedTime: Int64?
+
+        public var usedTimeWithScale: Int64?
 
         public override init() {
             super.init()
@@ -1800,8 +1816,14 @@ public class DescribePackageDeductionsResponseBody : Tea.TeaModel {
             if self.endTime != nil {
                 map["EndTime"] = self.endTime!
             }
+            if self.instanceId != nil {
+                map["InstanceId"] = self.instanceId!
+            }
             if self.instanceState != nil {
                 map["InstanceState"] = self.instanceState!
+            }
+            if self.instanceType != nil {
+                map["InstanceType"] = self.instanceType!
             }
             if self.memory != nil {
                 map["Memory"] = self.memory!
@@ -1815,6 +1837,9 @@ public class DescribePackageDeductionsResponseBody : Tea.TeaModel {
             if self.resourceType != nil {
                 map["ResourceType"] = self.resourceType!
             }
+            if self.sessionId != nil {
+                map["SessionId"] = self.sessionId!
+            }
             if self.staTime != nil {
                 map["StaTime"] = self.staTime!
             }
@@ -1823,6 +1848,9 @@ public class DescribePackageDeductionsResponseBody : Tea.TeaModel {
             }
             if self.usedTime != nil {
                 map["UsedTime"] = self.usedTime!
+            }
+            if self.usedTimeWithScale != nil {
+                map["UsedTimeWithScale"] = self.usedTimeWithScale!
             }
             return map
         }
@@ -1844,8 +1872,14 @@ public class DescribePackageDeductionsResponseBody : Tea.TeaModel {
             if let value = dict["EndTime"] as? String {
                 self.endTime = value
             }
+            if let value = dict["InstanceId"] as? String {
+                self.instanceId = value
+            }
             if let value = dict["InstanceState"] as? String {
                 self.instanceState = value
+            }
+            if let value = dict["InstanceType"] as? String {
+                self.instanceType = value
             }
             if let value = dict["Memory"] as? Int64 {
                 self.memory = value
@@ -1859,6 +1893,9 @@ public class DescribePackageDeductionsResponseBody : Tea.TeaModel {
             if let value = dict["ResourceType"] as? String {
                 self.resourceType = value
             }
+            if let value = dict["SessionId"] as? String {
+                self.sessionId = value
+            }
             if let value = dict["StaTime"] as? String {
                 self.staTime = value
             }
@@ -1867,6 +1904,9 @@ public class DescribePackageDeductionsResponseBody : Tea.TeaModel {
             }
             if let value = dict["UsedTime"] as? Int64 {
                 self.usedTime = value
+            }
+            if let value = dict["UsedTimeWithScale"] as? Int64 {
+                self.usedTimeWithScale = value
             }
         }
     }
