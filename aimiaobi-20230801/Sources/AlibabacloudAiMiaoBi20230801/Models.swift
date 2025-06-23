@@ -45350,6 +45350,8 @@ public class RunSearchGenerationRequest : Tea.TeaModel {
         }
         public var enableThinking: Bool?
 
+        public var excludeGenerateOptions: [String]?
+
         public var generateLevel: String?
 
         public var generateTechnology: String?
@@ -45376,6 +45378,9 @@ public class RunSearchGenerationRequest : Tea.TeaModel {
             if self.enableThinking != nil {
                 map["EnableThinking"] = self.enableThinking!
             }
+            if self.excludeGenerateOptions != nil {
+                map["ExcludeGenerateOptions"] = self.excludeGenerateOptions!
+            }
             if self.generateLevel != nil {
                 map["GenerateLevel"] = self.generateLevel!
             }
@@ -45395,6 +45400,9 @@ public class RunSearchGenerationRequest : Tea.TeaModel {
             guard let dict else { return }
             if let value = dict["EnableThinking"] as? Bool {
                 self.enableThinking = value
+            }
+            if let value = dict["ExcludeGenerateOptions"] as? [String] {
+                self.excludeGenerateOptions = value
             }
             if let value = dict["GenerateLevel"] as? String {
                 self.generateLevel = value
