@@ -522,6 +522,182 @@ public class BatchSendMailResponse : Tea.TeaModel {
     }
 }
 
+public class ChangeDomainDkimRecordRequest : Tea.TeaModel {
+    public var dkimRsaLength: Int32?
+
+    public var domain: String?
+
+    public var ownerId: Int64?
+
+    public var resourceOwnerAccount: String?
+
+    public var resourceOwnerId: Int64?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.dkimRsaLength != nil {
+            map["DkimRsaLength"] = self.dkimRsaLength!
+        }
+        if self.domain != nil {
+            map["Domain"] = self.domain!
+        }
+        if self.ownerId != nil {
+            map["OwnerId"] = self.ownerId!
+        }
+        if self.resourceOwnerAccount != nil {
+            map["ResourceOwnerAccount"] = self.resourceOwnerAccount!
+        }
+        if self.resourceOwnerId != nil {
+            map["ResourceOwnerId"] = self.resourceOwnerId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["DkimRsaLength"] as? Int32 {
+            self.dkimRsaLength = value
+        }
+        if let value = dict["Domain"] as? String {
+            self.domain = value
+        }
+        if let value = dict["OwnerId"] as? Int64 {
+            self.ownerId = value
+        }
+        if let value = dict["ResourceOwnerAccount"] as? String {
+            self.resourceOwnerAccount = value
+        }
+        if let value = dict["ResourceOwnerId"] as? Int64 {
+            self.resourceOwnerId = value
+        }
+    }
+}
+
+public class ChangeDomainDkimRecordResponseBody : Tea.TeaModel {
+    public var changed: Bool?
+
+    public var dkimPublicKey: String?
+
+    public var dkimRsaLength: Int32?
+
+    public var hostname: String?
+
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.changed != nil {
+            map["Changed"] = self.changed!
+        }
+        if self.dkimPublicKey != nil {
+            map["DkimPublicKey"] = self.dkimPublicKey!
+        }
+        if self.dkimRsaLength != nil {
+            map["DkimRsaLength"] = self.dkimRsaLength!
+        }
+        if self.hostname != nil {
+            map["Hostname"] = self.hostname!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["Changed"] as? Bool {
+            self.changed = value
+        }
+        if let value = dict["DkimPublicKey"] as? String {
+            self.dkimPublicKey = value
+        }
+        if let value = dict["DkimRsaLength"] as? Int32 {
+            self.dkimRsaLength = value
+        }
+        if let value = dict["Hostname"] as? String {
+            self.hostname = value
+        }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+    }
+}
+
+public class ChangeDomainDkimRecordResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: ChangeDomainDkimRecordResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = ChangeDomainDkimRecordResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
 public class CheckDomainRequest : Tea.TeaModel {
     public var domainId: Int32?
 
@@ -2898,6 +3074,8 @@ public class DescDomainResponseBody : Tea.TeaModel {
 
     public var dkimRR: String?
 
+    public var dkimRsaLength: Int32?
+
     public var dmarcAuthStatus: Int32?
 
     public var dmarcHostRecord: String?
@@ -2977,6 +3155,9 @@ public class DescDomainResponseBody : Tea.TeaModel {
         }
         if self.dkimRR != nil {
             map["DkimRR"] = self.dkimRR!
+        }
+        if self.dkimRsaLength != nil {
+            map["DkimRsaLength"] = self.dkimRsaLength!
         }
         if self.dmarcAuthStatus != nil {
             map["DmarcAuthStatus"] = self.dmarcAuthStatus!
@@ -3069,6 +3250,9 @@ public class DescDomainResponseBody : Tea.TeaModel {
         }
         if let value = dict["DkimRR"] as? String {
             self.dkimRR = value
+        }
+        if let value = dict["DkimRsaLength"] as? Int32 {
+            self.dkimRsaLength = value
         }
         if let value = dict["DmarcAuthStatus"] as? Int32 {
             self.dmarcAuthStatus = value
