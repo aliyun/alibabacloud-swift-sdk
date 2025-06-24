@@ -5986,6 +5986,346 @@ public class GetLdpsResourceCostResponse : Tea.TeaModel {
     }
 }
 
+public class GetLindormEngineConfigRequest : Tea.TeaModel {
+    public var engineType: String?
+
+    public var instanceId: String?
+
+    public var ownerAccount: String?
+
+    public var ownerId: Int64?
+
+    public var regionId: String?
+
+    public var resourceOwnerAccount: String?
+
+    public var resourceOwnerId: Int64?
+
+    public var securityToken: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.engineType != nil {
+            map["EngineType"] = self.engineType!
+        }
+        if self.instanceId != nil {
+            map["InstanceId"] = self.instanceId!
+        }
+        if self.ownerAccount != nil {
+            map["OwnerAccount"] = self.ownerAccount!
+        }
+        if self.ownerId != nil {
+            map["OwnerId"] = self.ownerId!
+        }
+        if self.regionId != nil {
+            map["RegionId"] = self.regionId!
+        }
+        if self.resourceOwnerAccount != nil {
+            map["ResourceOwnerAccount"] = self.resourceOwnerAccount!
+        }
+        if self.resourceOwnerId != nil {
+            map["ResourceOwnerId"] = self.resourceOwnerId!
+        }
+        if self.securityToken != nil {
+            map["SecurityToken"] = self.securityToken!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["EngineType"] as? String {
+            self.engineType = value
+        }
+        if let value = dict["InstanceId"] as? String {
+            self.instanceId = value
+        }
+        if let value = dict["OwnerAccount"] as? String {
+            self.ownerAccount = value
+        }
+        if let value = dict["OwnerId"] as? Int64 {
+            self.ownerId = value
+        }
+        if let value = dict["RegionId"] as? String {
+            self.regionId = value
+        }
+        if let value = dict["ResourceOwnerAccount"] as? String {
+            self.resourceOwnerAccount = value
+        }
+        if let value = dict["ResourceOwnerId"] as? Int64 {
+            self.resourceOwnerId = value
+        }
+        if let value = dict["SecurityToken"] as? String {
+            self.securityToken = value
+        }
+    }
+}
+
+public class GetLindormEngineConfigResponseBody : Tea.TeaModel {
+    public class EngineConfigs : Tea.TeaModel {
+        public class ConfigFiles : Tea.TeaModel {
+            public class ConfigItems : Tea.TeaModel {
+                public var configItemKey: String?
+
+                public var configItemValue: String?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.configItemKey != nil {
+                        map["ConfigItemKey"] = self.configItemKey!
+                    }
+                    if self.configItemValue != nil {
+                        map["ConfigItemValue"] = self.configItemValue!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                    guard let dict else { return }
+                    if let value = dict["ConfigItemKey"] as? String {
+                        self.configItemKey = value
+                    }
+                    if let value = dict["ConfigItemValue"] as? String {
+                        self.configItemValue = value
+                    }
+                }
+            }
+            public var configItems: [GetLindormEngineConfigResponseBody.EngineConfigs.ConfigFiles.ConfigItems]?
+
+            public var fileName: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.configItems != nil {
+                    var tmp : [Any] = []
+                    for k in self.configItems! {
+                        tmp.append(k.toMap())
+                    }
+                    map["ConfigItems"] = tmp
+                }
+                if self.fileName != nil {
+                    map["FileName"] = self.fileName!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["ConfigItems"] as? [Any?] {
+                    var tmp : [GetLindormEngineConfigResponseBody.EngineConfigs.ConfigFiles.ConfigItems] = []
+                    for v in value {
+                        if v != nil {
+                            var model = GetLindormEngineConfigResponseBody.EngineConfigs.ConfigFiles.ConfigItems()
+                            if v != nil {
+                                model.fromMap(v as? [String: Any?])
+                            }
+                            tmp.append(model)
+                        }
+                    }
+                    self.configItems = tmp
+                }
+                if let value = dict["FileName"] as? String {
+                    self.fileName = value
+                }
+            }
+        }
+        public var configFiles: [GetLindormEngineConfigResponseBody.EngineConfigs.ConfigFiles]?
+
+        public var engine: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.configFiles != nil {
+                var tmp : [Any] = []
+                for k in self.configFiles! {
+                    tmp.append(k.toMap())
+                }
+                map["ConfigFiles"] = tmp
+            }
+            if self.engine != nil {
+                map["Engine"] = self.engine!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["ConfigFiles"] as? [Any?] {
+                var tmp : [GetLindormEngineConfigResponseBody.EngineConfigs.ConfigFiles] = []
+                for v in value {
+                    if v != nil {
+                        var model = GetLindormEngineConfigResponseBody.EngineConfigs.ConfigFiles()
+                        if v != nil {
+                            model.fromMap(v as? [String: Any?])
+                        }
+                        tmp.append(model)
+                    }
+                }
+                self.configFiles = tmp
+            }
+            if let value = dict["Engine"] as? String {
+                self.engine = value
+            }
+        }
+    }
+    public var accessDeniedDetail: String?
+
+    public var engineConfigs: [GetLindormEngineConfigResponseBody.EngineConfigs]?
+
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.accessDeniedDetail != nil {
+            map["AccessDeniedDetail"] = self.accessDeniedDetail!
+        }
+        if self.engineConfigs != nil {
+            var tmp : [Any] = []
+            for k in self.engineConfigs! {
+                tmp.append(k.toMap())
+            }
+            map["EngineConfigs"] = tmp
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["AccessDeniedDetail"] as? String {
+            self.accessDeniedDetail = value
+        }
+        if let value = dict["EngineConfigs"] as? [Any?] {
+            var tmp : [GetLindormEngineConfigResponseBody.EngineConfigs] = []
+            for v in value {
+                if v != nil {
+                    var model = GetLindormEngineConfigResponseBody.EngineConfigs()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.engineConfigs = tmp
+        }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+    }
+}
+
+public class GetLindormEngineConfigResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: GetLindormEngineConfigResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = GetLindormEngineConfigResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
 public class GetLindormFsUsedDetailRequest : Tea.TeaModel {
     public var instanceId: String?
 
@@ -6073,6 +6413,10 @@ public class GetLindormFsUsedDetailResponseBody : Tea.TeaModel {
 
         public var used: String?
 
+        public var usedLindormColumn3: String?
+
+        public var usedLindormMessage3: String?
+
         public var usedLindormSearch: String?
 
         public var usedLindormSpark: String?
@@ -6080,6 +6424,8 @@ public class GetLindormFsUsedDetailResponseBody : Tea.TeaModel {
         public var usedLindormTable: String?
 
         public var usedLindormTsdb: String?
+
+        public var usedLindormVector3: String?
 
         public var usedOther: String?
 
@@ -6106,6 +6452,12 @@ public class GetLindormFsUsedDetailResponseBody : Tea.TeaModel {
             if self.used != nil {
                 map["Used"] = self.used!
             }
+            if self.usedLindormColumn3 != nil {
+                map["UsedLindormColumn3"] = self.usedLindormColumn3!
+            }
+            if self.usedLindormMessage3 != nil {
+                map["UsedLindormMessage3"] = self.usedLindormMessage3!
+            }
             if self.usedLindormSearch != nil {
                 map["UsedLindormSearch"] = self.usedLindormSearch!
             }
@@ -6117,6 +6469,9 @@ public class GetLindormFsUsedDetailResponseBody : Tea.TeaModel {
             }
             if self.usedLindormTsdb != nil {
                 map["UsedLindormTsdb"] = self.usedLindormTsdb!
+            }
+            if self.usedLindormVector3 != nil {
+                map["UsedLindormVector3"] = self.usedLindormVector3!
             }
             if self.usedOther != nil {
                 map["UsedOther"] = self.usedOther!
@@ -6135,6 +6490,12 @@ public class GetLindormFsUsedDetailResponseBody : Tea.TeaModel {
             if let value = dict["Used"] as? String {
                 self.used = value
             }
+            if let value = dict["UsedLindormColumn3"] as? String {
+                self.usedLindormColumn3 = value
+            }
+            if let value = dict["UsedLindormMessage3"] as? String {
+                self.usedLindormMessage3 = value
+            }
             if let value = dict["UsedLindormSearch"] as? String {
                 self.usedLindormSearch = value
             }
@@ -6146,6 +6507,9 @@ public class GetLindormFsUsedDetailResponseBody : Tea.TeaModel {
             }
             if let value = dict["UsedLindormTsdb"] as? String {
                 self.usedLindormTsdb = value
+            }
+            if let value = dict["UsedLindormVector3"] as? String {
+                self.usedLindormVector3 = value
             }
             if let value = dict["UsedOther"] as? String {
                 self.usedOther = value
@@ -11540,6 +11904,198 @@ public class ListTagResourcesResponse : Tea.TeaModel {
         }
         if let value = dict["body"] as? [String: Any?] {
             var model = ListTagResourcesResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
+public class MigrateSingleZoneToMultiZoneRequest : Tea.TeaModel {
+    public var arbitraryVSwitchId: String?
+
+    public var arbitraryZoneId: String?
+
+    public var instanceId: String?
+
+    public var ownerAccount: String?
+
+    public var ownerId: Int64?
+
+    public var resourceOwnerAccount: String?
+
+    public var resourceOwnerId: Int64?
+
+    public var securityToken: String?
+
+    public var standbyVSwitchId: String?
+
+    public var standbyZoneId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.arbitraryVSwitchId != nil {
+            map["ArbitraryVSwitchId"] = self.arbitraryVSwitchId!
+        }
+        if self.arbitraryZoneId != nil {
+            map["ArbitraryZoneId"] = self.arbitraryZoneId!
+        }
+        if self.instanceId != nil {
+            map["InstanceId"] = self.instanceId!
+        }
+        if self.ownerAccount != nil {
+            map["OwnerAccount"] = self.ownerAccount!
+        }
+        if self.ownerId != nil {
+            map["OwnerId"] = self.ownerId!
+        }
+        if self.resourceOwnerAccount != nil {
+            map["ResourceOwnerAccount"] = self.resourceOwnerAccount!
+        }
+        if self.resourceOwnerId != nil {
+            map["ResourceOwnerId"] = self.resourceOwnerId!
+        }
+        if self.securityToken != nil {
+            map["SecurityToken"] = self.securityToken!
+        }
+        if self.standbyVSwitchId != nil {
+            map["StandbyVSwitchId"] = self.standbyVSwitchId!
+        }
+        if self.standbyZoneId != nil {
+            map["StandbyZoneId"] = self.standbyZoneId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["ArbitraryVSwitchId"] as? String {
+            self.arbitraryVSwitchId = value
+        }
+        if let value = dict["ArbitraryZoneId"] as? String {
+            self.arbitraryZoneId = value
+        }
+        if let value = dict["InstanceId"] as? String {
+            self.instanceId = value
+        }
+        if let value = dict["OwnerAccount"] as? String {
+            self.ownerAccount = value
+        }
+        if let value = dict["OwnerId"] as? Int64 {
+            self.ownerId = value
+        }
+        if let value = dict["ResourceOwnerAccount"] as? String {
+            self.resourceOwnerAccount = value
+        }
+        if let value = dict["ResourceOwnerId"] as? Int64 {
+            self.resourceOwnerId = value
+        }
+        if let value = dict["SecurityToken"] as? String {
+            self.securityToken = value
+        }
+        if let value = dict["StandbyVSwitchId"] as? String {
+            self.standbyVSwitchId = value
+        }
+        if let value = dict["StandbyZoneId"] as? String {
+            self.standbyZoneId = value
+        }
+    }
+}
+
+public class MigrateSingleZoneToMultiZoneResponseBody : Tea.TeaModel {
+    public var accessDeniedDetail: String?
+
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.accessDeniedDetail != nil {
+            map["AccessDeniedDetail"] = self.accessDeniedDetail!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["AccessDeniedDetail"] as? String {
+            self.accessDeniedDetail = value
+        }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+    }
+}
+
+public class MigrateSingleZoneToMultiZoneResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: MigrateSingleZoneToMultiZoneResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = MigrateSingleZoneToMultiZoneResponseBody()
             model.fromMap(value)
             self.body = model
         }
