@@ -44066,6 +44066,8 @@ public class ListApplicationsResponseBody : Tea.TeaModel {
 
                 public var instances: Int32?
 
+                public var isStateful: Bool?
+
                 public var mem: Int32?
 
                 public var mseEnabled: Bool?
@@ -44125,6 +44127,9 @@ public class ListApplicationsResponseBody : Tea.TeaModel {
                     }
                     if self.instances != nil {
                         map["Instances"] = self.instances!
+                    }
+                    if self.isStateful != nil {
+                        map["IsStateful"] = self.isStateful!
                     }
                     if self.mem != nil {
                         map["Mem"] = self.mem!
@@ -44191,6 +44196,9 @@ public class ListApplicationsResponseBody : Tea.TeaModel {
                     }
                     if let value = dict["Instances"] as? Int32 {
                         self.instances = value
+                    }
+                    if let value = dict["IsStateful"] as? Bool {
+                        self.isStateful = value
                     }
                     if let value = dict["Mem"] as? Int32 {
                         self.mem = value
@@ -44299,6 +44307,8 @@ public class ListApplicationsResponseBody : Tea.TeaModel {
 
             public var instances: Int32?
 
+            public var isStateful: Bool?
+
             public var mem: Int32?
 
             public var mseEnabled: Bool?
@@ -44320,6 +44330,8 @@ public class ListApplicationsResponseBody : Tea.TeaModel {
             public var runningInstances: Int32?
 
             public var tags: [ListApplicationsResponseBody.Data.Applications.Tags]?
+
+            public var vpcId: String?
 
             public override init() {
                 super.init()
@@ -44375,6 +44387,9 @@ public class ListApplicationsResponseBody : Tea.TeaModel {
                 if self.instances != nil {
                     map["Instances"] = self.instances!
                 }
+                if self.isStateful != nil {
+                    map["IsStateful"] = self.isStateful!
+                }
                 if self.mem != nil {
                     map["Mem"] = self.mem!
                 }
@@ -44411,6 +44426,9 @@ public class ListApplicationsResponseBody : Tea.TeaModel {
                         tmp.append(k.toMap())
                     }
                     map["Tags"] = tmp
+                }
+                if self.vpcId != nil {
+                    map["VpcId"] = self.vpcId!
                 }
                 return map
             }
@@ -44463,6 +44481,9 @@ public class ListApplicationsResponseBody : Tea.TeaModel {
                 if let value = dict["Instances"] as? Int32 {
                     self.instances = value
                 }
+                if let value = dict["IsStateful"] as? Bool {
+                    self.isStateful = value
+                }
                 if let value = dict["Mem"] as? Int32 {
                     self.mem = value
                 }
@@ -44505,6 +44526,9 @@ public class ListApplicationsResponseBody : Tea.TeaModel {
                         }
                     }
                     self.tags = tmp
+                }
+                if let value = dict["VpcId"] as? String {
+                    self.vpcId = value
                 }
             }
         }
