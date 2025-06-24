@@ -3537,7 +3537,19 @@ open class Client : AlibabacloudOpenApi.Client {
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func getQueryOptimizeExecErrorSampleWithOptions(_ request: GetQueryOptimizeExecErrorSampleRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> GetQueryOptimizeExecErrorSampleResponse {
         try TeaUtils.Client.validateModel(request)
-        var query: [String: String] = AlibabaCloudOpenApiUtil.Client.query(TeaUtils.Client.toMap(request))
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.engine)) {
+            query["Engine"] = request.engine ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.instanceId)) {
+            query["InstanceId"] = request.instanceId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.sqlId)) {
+            query["SqlId"] = request.sqlId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.time)) {
+            query["Time"] = request.time ?? "";
+        }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "query": AlibabaCloudOpenApiUtil.Client.query(query)
         ])
@@ -3546,7 +3558,7 @@ open class Client : AlibabacloudOpenApi.Client {
             "version": "2020-01-16",
             "protocol": "HTTPS",
             "pathname": "/",
-            "method": "GET",
+            "method": "POST",
             "authType": "AK",
             "style": "RPC",
             "reqBodyType": "formData",
@@ -3621,7 +3633,55 @@ open class Client : AlibabacloudOpenApi.Client {
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func getQueryOptimizeShareUrlWithOptions(_ request: GetQueryOptimizeShareUrlRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> GetQueryOptimizeShareUrlResponse {
         try TeaUtils.Client.validateModel(request)
-        var query: [String: String] = AlibabaCloudOpenApiUtil.Client.query(TeaUtils.Client.toMap(request))
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.asc)) {
+            query["Asc"] = request.asc!;
+        }
+        if (!TeaUtils.Client.isUnset(request.dbNames)) {
+            query["DbNames"] = request.dbNames ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.engine)) {
+            query["Engine"] = request.engine ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.instanceIds)) {
+            query["InstanceIds"] = request.instanceIds ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.keywords)) {
+            query["Keywords"] = request.keywords ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.logicalOperator)) {
+            query["LogicalOperator"] = request.logicalOperator ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.onlyOptimizedSql)) {
+            query["OnlyOptimizedSql"] = request.onlyOptimizedSql!;
+        }
+        if (!TeaUtils.Client.isUnset(request.orderBy)) {
+            query["OrderBy"] = request.orderBy ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.pageNo)) {
+            query["PageNo"] = request.pageNo!;
+        }
+        if (!TeaUtils.Client.isUnset(request.pageSize)) {
+            query["PageSize"] = request.pageSize!;
+        }
+        if (!TeaUtils.Client.isUnset(request.region)) {
+            query["Region"] = request.region ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.rules)) {
+            query["Rules"] = request.rules ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.sqlIds)) {
+            query["SqlIds"] = request.sqlIds ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.tagNames)) {
+            query["TagNames"] = request.tagNames ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.time)) {
+            query["Time"] = request.time!;
+        }
+        if (!TeaUtils.Client.isUnset(request.user)) {
+            query["User"] = request.user ?? "";
+        }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "query": AlibabaCloudOpenApiUtil.Client.query(query)
         ])
@@ -3630,7 +3690,7 @@ open class Client : AlibabacloudOpenApi.Client {
             "version": "2020-01-16",
             "protocol": "HTTPS",
             "pathname": "/",
-            "method": "GET",
+            "method": "POST",
             "authType": "AK",
             "style": "RPC",
             "reqBodyType": "formData",
@@ -3649,7 +3709,19 @@ open class Client : AlibabacloudOpenApi.Client {
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func getQueryOptimizeSolutionWithOptions(_ request: GetQueryOptimizeSolutionRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> GetQueryOptimizeSolutionResponse {
         try TeaUtils.Client.validateModel(request)
-        var query: [String: String] = AlibabaCloudOpenApiUtil.Client.query(TeaUtils.Client.toMap(request))
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.engine)) {
+            query["Engine"] = request.engine ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.instanceId)) {
+            query["InstanceId"] = request.instanceId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.ruleIds)) {
+            query["RuleIds"] = request.ruleIds ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.sqlId)) {
+            query["SqlId"] = request.sqlId ?? "";
+        }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "query": AlibabaCloudOpenApiUtil.Client.query(query)
         ])
@@ -3658,7 +3730,7 @@ open class Client : AlibabacloudOpenApi.Client {
             "version": "2020-01-16",
             "protocol": "HTTPS",
             "pathname": "/",
-            "method": "GET",
+            "method": "POST",
             "authType": "AK",
             "style": "RPC",
             "reqBodyType": "formData",
@@ -3677,7 +3749,16 @@ open class Client : AlibabacloudOpenApi.Client {
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func getQueryOptimizeTagWithOptions(_ request: GetQueryOptimizeTagRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> GetQueryOptimizeTagResponse {
         try TeaUtils.Client.validateModel(request)
-        var query: [String: String] = AlibabaCloudOpenApiUtil.Client.query(TeaUtils.Client.toMap(request))
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.engine)) {
+            query["Engine"] = request.engine ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.instanceId)) {
+            query["InstanceId"] = request.instanceId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.sqlId)) {
+            query["SqlId"] = request.sqlId ?? "";
+        }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "query": AlibabaCloudOpenApiUtil.Client.query(query)
         ])
@@ -3686,7 +3767,7 @@ open class Client : AlibabacloudOpenApi.Client {
             "version": "2020-01-16",
             "protocol": "HTTPS",
             "pathname": "/",
-            "method": "GET",
+            "method": "POST",
             "authType": "AK",
             "style": "RPC",
             "reqBodyType": "formData",
