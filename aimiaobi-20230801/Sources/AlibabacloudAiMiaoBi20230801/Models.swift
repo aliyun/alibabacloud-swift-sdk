@@ -37671,6 +37671,8 @@ public class RunCommentGenerationRequest : Tea.TeaModel {
 
     public var lengthRange: [String: Any]?
 
+    public var modelId: String?
+
     public var numComments: String?
 
     public var sentiment: [String: Any]?
@@ -37711,6 +37713,9 @@ public class RunCommentGenerationRequest : Tea.TeaModel {
         if self.lengthRange != nil {
             map["LengthRange"] = self.lengthRange!
         }
+        if self.modelId != nil {
+            map["ModelId"] = self.modelId!
+        }
         if self.numComments != nil {
             map["NumComments"] = self.numComments!
         }
@@ -37749,6 +37754,9 @@ public class RunCommentGenerationRequest : Tea.TeaModel {
         if let value = dict["LengthRange"] as? [String: Any] {
             self.lengthRange = value
         }
+        if let value = dict["ModelId"] as? String {
+            self.modelId = value
+        }
         if let value = dict["NumComments"] as? String {
             self.numComments = value
         }
@@ -37781,6 +37789,8 @@ public class RunCommentGenerationShrinkRequest : Tea.TeaModel {
     public var length: String?
 
     public var lengthRangeShrink: String?
+
+    public var modelId: String?
 
     public var numComments: String?
 
@@ -37822,6 +37832,9 @@ public class RunCommentGenerationShrinkRequest : Tea.TeaModel {
         if self.lengthRangeShrink != nil {
             map["LengthRange"] = self.lengthRangeShrink!
         }
+        if self.modelId != nil {
+            map["ModelId"] = self.modelId!
+        }
         if self.numComments != nil {
             map["NumComments"] = self.numComments!
         }
@@ -37859,6 +37872,9 @@ public class RunCommentGenerationShrinkRequest : Tea.TeaModel {
         }
         if let value = dict["LengthRange"] as? String {
             self.lengthRangeShrink = value
+        }
+        if let value = dict["ModelId"] as? String {
+            self.modelId = value
         }
         if let value = dict["NumComments"] as? String {
             self.numComments = value
@@ -39626,6 +39642,8 @@ public class RunDocBrainmapRequest : Tea.TeaModel {
 
     public var docId: String?
 
+    public var modelName: String?
+
     public var nodeNumber: Int32?
 
     public var prompt: String?
@@ -39658,6 +39676,9 @@ public class RunDocBrainmapRequest : Tea.TeaModel {
         if self.docId != nil {
             map["DocId"] = self.docId!
         }
+        if self.modelName != nil {
+            map["ModelName"] = self.modelName!
+        }
         if self.nodeNumber != nil {
             map["NodeNumber"] = self.nodeNumber!
         }
@@ -39686,6 +39707,9 @@ public class RunDocBrainmapRequest : Tea.TeaModel {
         }
         if let value = dict["DocId"] as? String {
             self.docId = value
+        }
+        if let value = dict["ModelName"] as? String {
+            self.modelName = value
         }
         if let value = dict["NodeNumber"] as? Int32 {
             self.nodeNumber = value
@@ -40018,6 +40042,8 @@ public class RunDocIntroductionRequest : Tea.TeaModel {
 
     public var keyPointPrompt: String?
 
+    public var modelName: String?
+
     public var sessionId: String?
 
     public var summaryPrompt: String?
@@ -40052,6 +40078,9 @@ public class RunDocIntroductionRequest : Tea.TeaModel {
         if self.keyPointPrompt != nil {
             map["KeyPointPrompt"] = self.keyPointPrompt!
         }
+        if self.modelName != nil {
+            map["ModelName"] = self.modelName!
+        }
         if self.sessionId != nil {
             map["SessionId"] = self.sessionId!
         }
@@ -40080,6 +40109,9 @@ public class RunDocIntroductionRequest : Tea.TeaModel {
         }
         if let value = dict["KeyPointPrompt"] as? String {
             self.keyPointPrompt = value
+        }
+        if let value = dict["ModelName"] as? String {
+            self.modelName = value
         }
         if let value = dict["SessionId"] as? String {
             self.sessionId = value
@@ -40618,6 +40650,8 @@ public class RunDocQaRequest : Tea.TeaModel {
 
     public var docIds: [String]?
 
+    public var modelName: String?
+
     public var query: String?
 
     public var referenceContent: String?
@@ -40654,6 +40688,9 @@ public class RunDocQaRequest : Tea.TeaModel {
         }
         if self.docIds != nil {
             map["DocIds"] = self.docIds!
+        }
+        if self.modelName != nil {
+            map["ModelName"] = self.modelName!
         }
         if self.query != nil {
             map["Query"] = self.query!
@@ -40694,6 +40731,9 @@ public class RunDocQaRequest : Tea.TeaModel {
         if let value = dict["DocIds"] as? [String] {
             self.docIds = value
         }
+        if let value = dict["ModelName"] as? String {
+            self.modelName = value
+        }
         if let value = dict["Query"] as? String {
             self.query = value
         }
@@ -40718,6 +40758,8 @@ public class RunDocQaShrinkRequest : Tea.TeaModel {
     public var conversationContextsShrink: String?
 
     public var docIdsShrink: String?
+
+    public var modelName: String?
 
     public var query: String?
 
@@ -40752,6 +40794,9 @@ public class RunDocQaShrinkRequest : Tea.TeaModel {
         if self.docIdsShrink != nil {
             map["DocIds"] = self.docIdsShrink!
         }
+        if self.modelName != nil {
+            map["ModelName"] = self.modelName!
+        }
         if self.query != nil {
             map["Query"] = self.query!
         }
@@ -40780,6 +40825,9 @@ public class RunDocQaShrinkRequest : Tea.TeaModel {
         }
         if let value = dict["DocIds"] as? String {
             self.docIdsShrink = value
+        }
+        if let value = dict["ModelName"] as? String {
+            self.modelName = value
         }
         if let value = dict["Query"] as? String {
             self.query = value
@@ -41383,6 +41431,8 @@ public class RunDocQaResponse : Tea.TeaModel {
 public class RunDocSmartCardRequest : Tea.TeaModel {
     public var docId: String?
 
+    public var modelName: String?
+
     public var prompt: String?
 
     public var sessionId: String?
@@ -41406,6 +41456,9 @@ public class RunDocSmartCardRequest : Tea.TeaModel {
         if self.docId != nil {
             map["DocId"] = self.docId!
         }
+        if self.modelName != nil {
+            map["ModelName"] = self.modelName!
+        }
         if self.prompt != nil {
             map["Prompt"] = self.prompt!
         }
@@ -41422,6 +41475,9 @@ public class RunDocSmartCardRequest : Tea.TeaModel {
         guard let dict else { return }
         if let value = dict["DocId"] as? String {
             self.docId = value
+        }
+        if let value = dict["ModelName"] as? String {
+            self.modelName = value
         }
         if let value = dict["Prompt"] as? String {
             self.prompt = value
@@ -42129,6 +42185,8 @@ public class RunDocTranslationRequest : Tea.TeaModel {
 
     public var docId: String?
 
+    public var modelName: String?
+
     public var recommendContent: String?
 
     public var sessionId: String?
@@ -42157,6 +42215,9 @@ public class RunDocTranslationRequest : Tea.TeaModel {
         if self.docId != nil {
             map["DocId"] = self.docId!
         }
+        if self.modelName != nil {
+            map["ModelName"] = self.modelName!
+        }
         if self.recommendContent != nil {
             map["RecommendContent"] = self.recommendContent!
         }
@@ -42179,6 +42240,9 @@ public class RunDocTranslationRequest : Tea.TeaModel {
         }
         if let value = dict["DocId"] as? String {
             self.docId = value
+        }
+        if let value = dict["ModelName"] as? String {
+            self.modelName = value
         }
         if let value = dict["RecommendContent"] as? String {
             self.recommendContent = value
@@ -42497,6 +42561,8 @@ public class RunDocTranslationResponse : Tea.TeaModel {
 }
 
 public class RunDocWashingRequest : Tea.TeaModel {
+    public var modelId: String?
+
     public var prompt: String?
 
     public var referenceContent: String?
@@ -42527,6 +42593,9 @@ public class RunDocWashingRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.modelId != nil {
+            map["ModelId"] = self.modelId!
+        }
         if self.prompt != nil {
             map["Prompt"] = self.prompt!
         }
@@ -42556,6 +42625,9 @@ public class RunDocWashingRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["ModelId"] as? String {
+            self.modelId = value
+        }
         if let value = dict["Prompt"] as? String {
             self.prompt = value
         }
@@ -43235,6 +43307,8 @@ public class RunExpandContentResponse : Tea.TeaModel {
 public class RunGenerateQuestionsRequest : Tea.TeaModel {
     public var docId: String?
 
+    public var modelName: String?
+
     public var referenceContent: String?
 
     public var sessionId: String?
@@ -43258,6 +43332,9 @@ public class RunGenerateQuestionsRequest : Tea.TeaModel {
         if self.docId != nil {
             map["DocId"] = self.docId!
         }
+        if self.modelName != nil {
+            map["ModelName"] = self.modelName!
+        }
         if self.referenceContent != nil {
             map["ReferenceContent"] = self.referenceContent!
         }
@@ -43274,6 +43351,9 @@ public class RunGenerateQuestionsRequest : Tea.TeaModel {
         guard let dict else { return }
         if let value = dict["DocId"] as? String {
             self.docId = value
+        }
+        if let value = dict["ModelName"] as? String {
+            self.modelName = value
         }
         if let value = dict["ReferenceContent"] as? String {
             self.referenceContent = value
@@ -43591,6 +43671,8 @@ public class RunGenerateQuestionsResponse : Tea.TeaModel {
 public class RunHotwordRequest : Tea.TeaModel {
     public var docId: String?
 
+    public var modelName: String?
+
     public var prompt: String?
 
     public var referenceContent: String?
@@ -43616,6 +43698,9 @@ public class RunHotwordRequest : Tea.TeaModel {
         if self.docId != nil {
             map["DocId"] = self.docId!
         }
+        if self.modelName != nil {
+            map["ModelName"] = self.modelName!
+        }
         if self.prompt != nil {
             map["Prompt"] = self.prompt!
         }
@@ -43635,6 +43720,9 @@ public class RunHotwordRequest : Tea.TeaModel {
         guard let dict else { return }
         if let value = dict["DocId"] as? String {
             self.docId = value
+        }
+        if let value = dict["ModelName"] as? String {
+            self.modelName = value
         }
         if let value = dict["Prompt"] as? String {
             self.prompt = value
@@ -44377,6 +44465,8 @@ public class RunMultiDocIntroductionRequest : Tea.TeaModel {
 
     public var keyPointPrompt: String?
 
+    public var modelName: String?
+
     public var sessionId: String?
 
     public var summaryPrompt: String?
@@ -44403,6 +44493,9 @@ public class RunMultiDocIntroductionRequest : Tea.TeaModel {
         if self.keyPointPrompt != nil {
             map["KeyPointPrompt"] = self.keyPointPrompt!
         }
+        if self.modelName != nil {
+            map["ModelName"] = self.modelName!
+        }
         if self.sessionId != nil {
             map["SessionId"] = self.sessionId!
         }
@@ -44423,6 +44516,9 @@ public class RunMultiDocIntroductionRequest : Tea.TeaModel {
         if let value = dict["KeyPointPrompt"] as? String {
             self.keyPointPrompt = value
         }
+        if let value = dict["ModelName"] as? String {
+            self.modelName = value
+        }
         if let value = dict["SessionId"] as? String {
             self.sessionId = value
         }
@@ -44439,6 +44535,8 @@ public class RunMultiDocIntroductionShrinkRequest : Tea.TeaModel {
     public var docIdsShrink: String?
 
     public var keyPointPrompt: String?
+
+    public var modelName: String?
 
     public var sessionId: String?
 
@@ -44466,6 +44564,9 @@ public class RunMultiDocIntroductionShrinkRequest : Tea.TeaModel {
         if self.keyPointPrompt != nil {
             map["KeyPointPrompt"] = self.keyPointPrompt!
         }
+        if self.modelName != nil {
+            map["ModelName"] = self.modelName!
+        }
         if self.sessionId != nil {
             map["SessionId"] = self.sessionId!
         }
@@ -44485,6 +44586,9 @@ public class RunMultiDocIntroductionShrinkRequest : Tea.TeaModel {
         }
         if let value = dict["KeyPointPrompt"] as? String {
             self.keyPointPrompt = value
+        }
+        if let value = dict["ModelName"] as? String {
+            self.modelName = value
         }
         if let value = dict["SessionId"] as? String {
             self.sessionId = value
