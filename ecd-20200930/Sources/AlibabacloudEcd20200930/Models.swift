@@ -6766,11 +6766,15 @@ public class CreateCenterPolicyRequest : Tea.TeaModel {
 
     public var cameraRedirect: String?
 
+    public var clientControlMenu: String?
+
     public var clientType: [CreateCenterPolicyRequest.ClientType]?
 
     public var clipboard: String?
 
     public var colorEnhancement: String?
+
+    public var cpdDriveClipboard: String?
 
     public var cpuDownGradeDuration: Int32?
 
@@ -6807,6 +6811,12 @@ public class CreateCenterPolicyRequest : Tea.TeaModel {
     public var endUserGroupCoordinate: String?
 
     public var fileMigrate: String?
+
+    public var fileTransferAddress: String?
+
+    public var fileTransferSpeed: String?
+
+    public var fileTransferSpeedLocation: String?
 
     public var gpuAcceleration: String?
 
@@ -6896,6 +6906,8 @@ public class CreateCenterPolicyRequest : Tea.TeaModel {
 
     public var scopeValue: [String]?
 
+    public var screenDisplayMode: String?
+
     public var sessionMaxRateKbps: Int32?
 
     public var smoothEnhancement: String?
@@ -6911,6 +6923,8 @@ public class CreateCenterPolicyRequest : Tea.TeaModel {
     public var usbRedirect: String?
 
     public var usbSupplyRedirectRule: [CreateCenterPolicyRequest.UsbSupplyRedirectRule]?
+
+    public var useTime: String?
 
     public var videoEncAvgKbps: Int32?
 
@@ -6996,6 +7010,9 @@ public class CreateCenterPolicyRequest : Tea.TeaModel {
         if self.cameraRedirect != nil {
             map["CameraRedirect"] = self.cameraRedirect!
         }
+        if self.clientControlMenu != nil {
+            map["ClientControlMenu"] = self.clientControlMenu!
+        }
         if self.clientType != nil {
             var tmp : [Any] = []
             for k in self.clientType! {
@@ -7008,6 +7025,9 @@ public class CreateCenterPolicyRequest : Tea.TeaModel {
         }
         if self.colorEnhancement != nil {
             map["ColorEnhancement"] = self.colorEnhancement!
+        }
+        if self.cpdDriveClipboard != nil {
+            map["CpdDriveClipboard"] = self.cpdDriveClipboard!
         }
         if self.cpuDownGradeDuration != nil {
             map["CpuDownGradeDuration"] = self.cpuDownGradeDuration!
@@ -7074,6 +7094,15 @@ public class CreateCenterPolicyRequest : Tea.TeaModel {
         }
         if self.fileMigrate != nil {
             map["FileMigrate"] = self.fileMigrate!
+        }
+        if self.fileTransferAddress != nil {
+            map["FileTransferAddress"] = self.fileTransferAddress!
+        }
+        if self.fileTransferSpeed != nil {
+            map["FileTransferSpeed"] = self.fileTransferSpeed!
+        }
+        if self.fileTransferSpeedLocation != nil {
+            map["FileTransferSpeedLocation"] = self.fileTransferSpeedLocation!
         }
         if self.gpuAcceleration != nil {
             map["GpuAcceleration"] = self.gpuAcceleration!
@@ -7211,6 +7240,9 @@ public class CreateCenterPolicyRequest : Tea.TeaModel {
         if self.scopeValue != nil {
             map["ScopeValue"] = self.scopeValue!
         }
+        if self.screenDisplayMode != nil {
+            map["ScreenDisplayMode"] = self.screenDisplayMode!
+        }
         if self.sessionMaxRateKbps != nil {
             map["SessionMaxRateKbps"] = self.sessionMaxRateKbps!
         }
@@ -7238,6 +7270,9 @@ public class CreateCenterPolicyRequest : Tea.TeaModel {
                 tmp.append(k.toMap())
             }
             map["UsbSupplyRedirectRule"] = tmp
+        }
+        if self.useTime != nil {
+            map["UseTime"] = self.useTime!
         }
         if self.videoEncAvgKbps != nil {
             map["VideoEncAvgKbps"] = self.videoEncAvgKbps!
@@ -7348,6 +7383,9 @@ public class CreateCenterPolicyRequest : Tea.TeaModel {
         if let value = dict["CameraRedirect"] as? String {
             self.cameraRedirect = value
         }
+        if let value = dict["ClientControlMenu"] as? String {
+            self.clientControlMenu = value
+        }
         if let value = dict["ClientType"] as? [Any?] {
             var tmp : [CreateCenterPolicyRequest.ClientType] = []
             for v in value {
@@ -7366,6 +7404,9 @@ public class CreateCenterPolicyRequest : Tea.TeaModel {
         }
         if let value = dict["ColorEnhancement"] as? String {
             self.colorEnhancement = value
+        }
+        if let value = dict["CpdDriveClipboard"] as? String {
+            self.cpdDriveClipboard = value
         }
         if let value = dict["CpuDownGradeDuration"] as? Int32 {
             self.cpuDownGradeDuration = value
@@ -7450,6 +7491,15 @@ public class CreateCenterPolicyRequest : Tea.TeaModel {
         }
         if let value = dict["FileMigrate"] as? String {
             self.fileMigrate = value
+        }
+        if let value = dict["FileTransferAddress"] as? String {
+            self.fileTransferAddress = value
+        }
+        if let value = dict["FileTransferSpeed"] as? String {
+            self.fileTransferSpeed = value
+        }
+        if let value = dict["FileTransferSpeedLocation"] as? String {
+            self.fileTransferSpeedLocation = value
         }
         if let value = dict["GpuAcceleration"] as? String {
             self.gpuAcceleration = value
@@ -7593,6 +7643,9 @@ public class CreateCenterPolicyRequest : Tea.TeaModel {
         if let value = dict["ScopeValue"] as? [String] {
             self.scopeValue = value
         }
+        if let value = dict["ScreenDisplayMode"] as? String {
+            self.screenDisplayMode = value
+        }
         if let value = dict["SessionMaxRateKbps"] as? Int32 {
             self.sessionMaxRateKbps = value
         }
@@ -7626,6 +7679,9 @@ public class CreateCenterPolicyRequest : Tea.TeaModel {
                 }
             }
             self.usbSupplyRedirectRule = tmp
+        }
+        if let value = dict["UseTime"] as? String {
+            self.useTime = value
         }
         if let value = dict["VideoEncAvgKbps"] as? Int32 {
             self.videoEncAvgKbps = value
@@ -18875,11 +18931,15 @@ public class DescribeCenterPolicyListResponseBody : Tea.TeaModel {
 
         public var cameraRedirect: String?
 
+        public var clientControlMenu: String?
+
         public var clientTypes: [DescribeCenterPolicyListResponseBody.DescribePolicyGroups.ClientTypes]?
 
         public var clipboard: String?
 
         public var colorEnhancement: String?
+
+        public var cpdDriveClipboard: String?
 
         public var cpuDownGradeDuration: Int32?
 
@@ -18916,6 +18976,12 @@ public class DescribeCenterPolicyListResponseBody : Tea.TeaModel {
         public var endUserApplyAdminCoordinate: String?
 
         public var endUserGroupCoordinate: String?
+
+        public var fileTransferAddress: String?
+
+        public var fileTransferSpeed: String?
+
+        public var fileTransferSpeedLocation: String?
 
         public var gpuAcceleration: String?
 
@@ -19011,6 +19077,8 @@ public class DescribeCenterPolicyListResponseBody : Tea.TeaModel {
 
         public var scopeValue: [String]?
 
+        public var screenDisplayMode: String?
+
         public var smoothEnhancement: String?
 
         public var statusMonitor: String?
@@ -19024,6 +19092,8 @@ public class DescribeCenterPolicyListResponseBody : Tea.TeaModel {
         public var usbRedirect: String?
 
         public var usbSupplyRedirectRule: [DescribeCenterPolicyListResponseBody.DescribePolicyGroups.UsbSupplyRedirectRule]?
+
+        public var useTime: String?
 
         public var videoEncAvgKbps: Int32?
 
@@ -19102,6 +19172,9 @@ public class DescribeCenterPolicyListResponseBody : Tea.TeaModel {
             if self.cameraRedirect != nil {
                 map["CameraRedirect"] = self.cameraRedirect!
             }
+            if self.clientControlMenu != nil {
+                map["ClientControlMenu"] = self.clientControlMenu!
+            }
             if self.clientTypes != nil {
                 var tmp : [Any] = []
                 for k in self.clientTypes! {
@@ -19114,6 +19187,9 @@ public class DescribeCenterPolicyListResponseBody : Tea.TeaModel {
             }
             if self.colorEnhancement != nil {
                 map["ColorEnhancement"] = self.colorEnhancement!
+            }
+            if self.cpdDriveClipboard != nil {
+                map["CpdDriveClipboard"] = self.cpdDriveClipboard!
             }
             if self.cpuDownGradeDuration != nil {
                 map["CpuDownGradeDuration"] = self.cpuDownGradeDuration!
@@ -19180,6 +19256,15 @@ public class DescribeCenterPolicyListResponseBody : Tea.TeaModel {
             }
             if self.endUserGroupCoordinate != nil {
                 map["EndUserGroupCoordinate"] = self.endUserGroupCoordinate!
+            }
+            if self.fileTransferAddress != nil {
+                map["FileTransferAddress"] = self.fileTransferAddress!
+            }
+            if self.fileTransferSpeed != nil {
+                map["FileTransferSpeed"] = self.fileTransferSpeed!
+            }
+            if self.fileTransferSpeedLocation != nil {
+                map["FileTransferSpeedLocation"] = self.fileTransferSpeedLocation!
             }
             if self.gpuAcceleration != nil {
                 map["GpuAcceleration"] = self.gpuAcceleration!
@@ -19326,6 +19411,9 @@ public class DescribeCenterPolicyListResponseBody : Tea.TeaModel {
             if self.scopeValue != nil {
                 map["ScopeValue"] = self.scopeValue!
             }
+            if self.screenDisplayMode != nil {
+                map["ScreenDisplayMode"] = self.screenDisplayMode!
+            }
             if self.smoothEnhancement != nil {
                 map["SmoothEnhancement"] = self.smoothEnhancement!
             }
@@ -19350,6 +19438,9 @@ public class DescribeCenterPolicyListResponseBody : Tea.TeaModel {
                     tmp.append(k.toMap())
                 }
                 map["UsbSupplyRedirectRule"] = tmp
+            }
+            if self.useTime != nil {
+                map["UseTime"] = self.useTime!
             }
             if self.videoEncAvgKbps != nil {
                 map["VideoEncAvgKbps"] = self.videoEncAvgKbps!
@@ -19451,6 +19542,9 @@ public class DescribeCenterPolicyListResponseBody : Tea.TeaModel {
             if let value = dict["CameraRedirect"] as? String {
                 self.cameraRedirect = value
             }
+            if let value = dict["ClientControlMenu"] as? String {
+                self.clientControlMenu = value
+            }
             if let value = dict["ClientTypes"] as? [Any?] {
                 var tmp : [DescribeCenterPolicyListResponseBody.DescribePolicyGroups.ClientTypes] = []
                 for v in value {
@@ -19469,6 +19563,9 @@ public class DescribeCenterPolicyListResponseBody : Tea.TeaModel {
             }
             if let value = dict["ColorEnhancement"] as? String {
                 self.colorEnhancement = value
+            }
+            if let value = dict["CpdDriveClipboard"] as? String {
+                self.cpdDriveClipboard = value
             }
             if let value = dict["CpuDownGradeDuration"] as? Int32 {
                 self.cpuDownGradeDuration = value
@@ -19553,6 +19650,15 @@ public class DescribeCenterPolicyListResponseBody : Tea.TeaModel {
             }
             if let value = dict["EndUserGroupCoordinate"] as? String {
                 self.endUserGroupCoordinate = value
+            }
+            if let value = dict["FileTransferAddress"] as? String {
+                self.fileTransferAddress = value
+            }
+            if let value = dict["FileTransferSpeed"] as? String {
+                self.fileTransferSpeed = value
+            }
+            if let value = dict["FileTransferSpeedLocation"] as? String {
+                self.fileTransferSpeedLocation = value
             }
             if let value = dict["GpuAcceleration"] as? String {
                 self.gpuAcceleration = value
@@ -19705,6 +19811,9 @@ public class DescribeCenterPolicyListResponseBody : Tea.TeaModel {
             if let value = dict["ScopeValue"] as? [String] {
                 self.scopeValue = value
             }
+            if let value = dict["ScreenDisplayMode"] as? String {
+                self.screenDisplayMode = value
+            }
             if let value = dict["SmoothEnhancement"] as? String {
                 self.smoothEnhancement = value
             }
@@ -19735,6 +19844,9 @@ public class DescribeCenterPolicyListResponseBody : Tea.TeaModel {
                     }
                 }
                 self.usbSupplyRedirectRule = tmp
+            }
+            if let value = dict["UseTime"] as? String {
+                self.useTime = value
             }
             if let value = dict["VideoEncAvgKbps"] as? Int32 {
                 self.videoEncAvgKbps = value
@@ -33836,11 +33948,15 @@ public class DescribePolicyGroupsResponseBody : Tea.TeaModel {
 
         public var cameraRedirect: String?
 
+        public var clientControlMenu: String?
+
         public var clientTypes: [DescribePolicyGroupsResponseBody.DescribePolicyGroups.ClientTypes]?
 
         public var clipboard: String?
 
         public var colorEnhancement: String?
+
+        public var cpdDriveClipboard: String?
 
         public var cpuDownGradeDuration: Int32?
 
@@ -33881,6 +33997,12 @@ public class DescribePolicyGroupsResponseBody : Tea.TeaModel {
         public var fileMigrate: String?
 
         public var fileTransfer: String?
+
+        public var fileTransferAddress: String?
+
+        public var fileTransferSpeed: String?
+
+        public var fileTransferSpeedLocation: String?
 
         public var gpuAcceleration: String?
 
@@ -33980,6 +34102,8 @@ public class DescribePolicyGroupsResponseBody : Tea.TeaModel {
 
         public var scopeValue: [String]?
 
+        public var screenDisplayMode: String?
+
         public var smoothEnhancement: String?
 
         public var statusMonitor: String?
@@ -33991,6 +34115,8 @@ public class DescribePolicyGroupsResponseBody : Tea.TeaModel {
         public var usbRedirect: String?
 
         public var usbSupplyRedirectRule: [DescribePolicyGroupsResponseBody.DescribePolicyGroups.UsbSupplyRedirectRule]?
+
+        public var useTime: String?
 
         public var videoEncAvgKbps: Int32?
 
@@ -34073,6 +34199,9 @@ public class DescribePolicyGroupsResponseBody : Tea.TeaModel {
             if self.cameraRedirect != nil {
                 map["CameraRedirect"] = self.cameraRedirect!
             }
+            if self.clientControlMenu != nil {
+                map["ClientControlMenu"] = self.clientControlMenu!
+            }
             if self.clientTypes != nil {
                 var tmp : [Any] = []
                 for k in self.clientTypes! {
@@ -34085,6 +34214,9 @@ public class DescribePolicyGroupsResponseBody : Tea.TeaModel {
             }
             if self.colorEnhancement != nil {
                 map["ColorEnhancement"] = self.colorEnhancement!
+            }
+            if self.cpdDriveClipboard != nil {
+                map["CpdDriveClipboard"] = self.cpdDriveClipboard!
             }
             if self.cpuDownGradeDuration != nil {
                 map["CpuDownGradeDuration"] = self.cpuDownGradeDuration!
@@ -34157,6 +34289,15 @@ public class DescribePolicyGroupsResponseBody : Tea.TeaModel {
             }
             if self.fileTransfer != nil {
                 map["FileTransfer"] = self.fileTransfer!
+            }
+            if self.fileTransferAddress != nil {
+                map["FileTransferAddress"] = self.fileTransferAddress!
+            }
+            if self.fileTransferSpeed != nil {
+                map["FileTransferSpeed"] = self.fileTransferSpeed!
+            }
+            if self.fileTransferSpeedLocation != nil {
+                map["FileTransferSpeedLocation"] = self.fileTransferSpeedLocation!
             }
             if self.gpuAcceleration != nil {
                 map["GpuAcceleration"] = self.gpuAcceleration!
@@ -34309,6 +34450,9 @@ public class DescribePolicyGroupsResponseBody : Tea.TeaModel {
             if self.scopeValue != nil {
                 map["ScopeValue"] = self.scopeValue!
             }
+            if self.screenDisplayMode != nil {
+                map["ScreenDisplayMode"] = self.screenDisplayMode!
+            }
             if self.smoothEnhancement != nil {
                 map["SmoothEnhancement"] = self.smoothEnhancement!
             }
@@ -34330,6 +34474,9 @@ public class DescribePolicyGroupsResponseBody : Tea.TeaModel {
                     tmp.append(k.toMap())
                 }
                 map["UsbSupplyRedirectRule"] = tmp
+            }
+            if self.useTime != nil {
+                map["UseTime"] = self.useTime!
             }
             if self.videoEncAvgKbps != nil {
                 map["VideoEncAvgKbps"] = self.videoEncAvgKbps!
@@ -34437,6 +34584,9 @@ public class DescribePolicyGroupsResponseBody : Tea.TeaModel {
             if let value = dict["CameraRedirect"] as? String {
                 self.cameraRedirect = value
             }
+            if let value = dict["ClientControlMenu"] as? String {
+                self.clientControlMenu = value
+            }
             if let value = dict["ClientTypes"] as? [Any?] {
                 var tmp : [DescribePolicyGroupsResponseBody.DescribePolicyGroups.ClientTypes] = []
                 for v in value {
@@ -34455,6 +34605,9 @@ public class DescribePolicyGroupsResponseBody : Tea.TeaModel {
             }
             if let value = dict["ColorEnhancement"] as? String {
                 self.colorEnhancement = value
+            }
+            if let value = dict["CpdDriveClipboard"] as? String {
+                self.cpdDriveClipboard = value
             }
             if let value = dict["CpuDownGradeDuration"] as? Int32 {
                 self.cpuDownGradeDuration = value
@@ -34545,6 +34698,15 @@ public class DescribePolicyGroupsResponseBody : Tea.TeaModel {
             }
             if let value = dict["FileTransfer"] as? String {
                 self.fileTransfer = value
+            }
+            if let value = dict["FileTransferAddress"] as? String {
+                self.fileTransferAddress = value
+            }
+            if let value = dict["FileTransferSpeed"] as? String {
+                self.fileTransferSpeed = value
+            }
+            if let value = dict["FileTransferSpeedLocation"] as? String {
+                self.fileTransferSpeedLocation = value
             }
             if let value = dict["GpuAcceleration"] as? String {
                 self.gpuAcceleration = value
@@ -34703,6 +34865,9 @@ public class DescribePolicyGroupsResponseBody : Tea.TeaModel {
             if let value = dict["ScopeValue"] as? [String] {
                 self.scopeValue = value
             }
+            if let value = dict["ScreenDisplayMode"] as? String {
+                self.screenDisplayMode = value
+            }
             if let value = dict["SmoothEnhancement"] as? String {
                 self.smoothEnhancement = value
             }
@@ -34730,6 +34895,9 @@ public class DescribePolicyGroupsResponseBody : Tea.TeaModel {
                     }
                 }
                 self.usbSupplyRedirectRule = tmp
+            }
+            if let value = dict["UseTime"] as? String {
+                self.useTime = value
             }
             if let value = dict["VideoEncAvgKbps"] as? Int32 {
                 self.videoEncAvgKbps = value
@@ -49285,11 +49453,15 @@ public class ModifyCenterPolicyRequest : Tea.TeaModel {
 
     public var cameraRedirect: String?
 
+    public var clientControlMenu: String?
+
     public var clientType: [ModifyCenterPolicyRequest.ClientType]?
 
     public var clipboard: String?
 
     public var colorEnhancement: String?
+
+    public var cpdDriveClipboard: String?
 
     public var cpuDownGradeDuration: Int32?
 
@@ -49326,6 +49498,12 @@ public class ModifyCenterPolicyRequest : Tea.TeaModel {
     public var endUserGroupCoordinate: String?
 
     public var fileMigrate: String?
+
+    public var fileTransferAddress: String?
+
+    public var fileTransferSpeed: String?
+
+    public var fileTransferSpeedLocation: String?
 
     public var gpuAcceleration: String?
 
@@ -49421,6 +49599,8 @@ public class ModifyCenterPolicyRequest : Tea.TeaModel {
 
     public var scopeValue: [String]?
 
+    public var screenDisplayMode: String?
+
     public var sessionMaxRateKbps: Int32?
 
     public var smoothEnhancement: String?
@@ -49436,6 +49616,8 @@ public class ModifyCenterPolicyRequest : Tea.TeaModel {
     public var usbRedirect: String?
 
     public var usbSupplyRedirectRule: [ModifyCenterPolicyRequest.UsbSupplyRedirectRule]?
+
+    public var useTime: String?
 
     public var videoEncAvgKbps: Int32?
 
@@ -49521,6 +49703,9 @@ public class ModifyCenterPolicyRequest : Tea.TeaModel {
         if self.cameraRedirect != nil {
             map["CameraRedirect"] = self.cameraRedirect!
         }
+        if self.clientControlMenu != nil {
+            map["ClientControlMenu"] = self.clientControlMenu!
+        }
         if self.clientType != nil {
             var tmp : [Any] = []
             for k in self.clientType! {
@@ -49533,6 +49718,9 @@ public class ModifyCenterPolicyRequest : Tea.TeaModel {
         }
         if self.colorEnhancement != nil {
             map["ColorEnhancement"] = self.colorEnhancement!
+        }
+        if self.cpdDriveClipboard != nil {
+            map["CpdDriveClipboard"] = self.cpdDriveClipboard!
         }
         if self.cpuDownGradeDuration != nil {
             map["CpuDownGradeDuration"] = self.cpuDownGradeDuration!
@@ -49599,6 +49787,15 @@ public class ModifyCenterPolicyRequest : Tea.TeaModel {
         }
         if self.fileMigrate != nil {
             map["FileMigrate"] = self.fileMigrate!
+        }
+        if self.fileTransferAddress != nil {
+            map["FileTransferAddress"] = self.fileTransferAddress!
+        }
+        if self.fileTransferSpeed != nil {
+            map["FileTransferSpeed"] = self.fileTransferSpeed!
+        }
+        if self.fileTransferSpeedLocation != nil {
+            map["FileTransferSpeedLocation"] = self.fileTransferSpeedLocation!
         }
         if self.gpuAcceleration != nil {
             map["GpuAcceleration"] = self.gpuAcceleration!
@@ -49753,6 +49950,9 @@ public class ModifyCenterPolicyRequest : Tea.TeaModel {
         if self.scopeValue != nil {
             map["ScopeValue"] = self.scopeValue!
         }
+        if self.screenDisplayMode != nil {
+            map["ScreenDisplayMode"] = self.screenDisplayMode!
+        }
         if self.sessionMaxRateKbps != nil {
             map["SessionMaxRateKbps"] = self.sessionMaxRateKbps!
         }
@@ -49780,6 +49980,9 @@ public class ModifyCenterPolicyRequest : Tea.TeaModel {
                 tmp.append(k.toMap())
             }
             map["UsbSupplyRedirectRule"] = tmp
+        }
+        if self.useTime != nil {
+            map["UseTime"] = self.useTime!
         }
         if self.videoEncAvgKbps != nil {
             map["VideoEncAvgKbps"] = self.videoEncAvgKbps!
@@ -49890,6 +50093,9 @@ public class ModifyCenterPolicyRequest : Tea.TeaModel {
         if let value = dict["CameraRedirect"] as? String {
             self.cameraRedirect = value
         }
+        if let value = dict["ClientControlMenu"] as? String {
+            self.clientControlMenu = value
+        }
         if let value = dict["ClientType"] as? [Any?] {
             var tmp : [ModifyCenterPolicyRequest.ClientType] = []
             for v in value {
@@ -49908,6 +50114,9 @@ public class ModifyCenterPolicyRequest : Tea.TeaModel {
         }
         if let value = dict["ColorEnhancement"] as? String {
             self.colorEnhancement = value
+        }
+        if let value = dict["CpdDriveClipboard"] as? String {
+            self.cpdDriveClipboard = value
         }
         if let value = dict["CpuDownGradeDuration"] as? Int32 {
             self.cpuDownGradeDuration = value
@@ -49992,6 +50201,15 @@ public class ModifyCenterPolicyRequest : Tea.TeaModel {
         }
         if let value = dict["FileMigrate"] as? String {
             self.fileMigrate = value
+        }
+        if let value = dict["FileTransferAddress"] as? String {
+            self.fileTransferAddress = value
+        }
+        if let value = dict["FileTransferSpeed"] as? String {
+            self.fileTransferSpeed = value
+        }
+        if let value = dict["FileTransferSpeedLocation"] as? String {
+            self.fileTransferSpeedLocation = value
         }
         if let value = dict["GpuAcceleration"] as? String {
             self.gpuAcceleration = value
@@ -50164,6 +50382,9 @@ public class ModifyCenterPolicyRequest : Tea.TeaModel {
         if let value = dict["ScopeValue"] as? [String] {
             self.scopeValue = value
         }
+        if let value = dict["ScreenDisplayMode"] as? String {
+            self.screenDisplayMode = value
+        }
         if let value = dict["SessionMaxRateKbps"] as? Int32 {
             self.sessionMaxRateKbps = value
         }
@@ -50197,6 +50418,9 @@ public class ModifyCenterPolicyRequest : Tea.TeaModel {
                 }
             }
             self.usbSupplyRedirectRule = tmp
+        }
+        if let value = dict["UseTime"] as? String {
+            self.useTime = value
         }
         if let value = dict["VideoEncAvgKbps"] as? Int32 {
             self.videoEncAvgKbps = value
