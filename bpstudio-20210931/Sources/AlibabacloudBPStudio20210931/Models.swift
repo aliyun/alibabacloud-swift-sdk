@@ -494,6 +494,8 @@ public class CreateApplicationRequest : Tea.TeaModel {
 
     public var name: String?
 
+    public var processVariables: [String: Any]?
+
     public var resourceGroupId: String?
 
     public var templateId: String?
@@ -532,6 +534,9 @@ public class CreateApplicationRequest : Tea.TeaModel {
         }
         if self.name != nil {
             map["Name"] = self.name!
+        }
+        if self.processVariables != nil {
+            map["ProcessVariables"] = self.processVariables!
         }
         if self.resourceGroupId != nil {
             map["ResourceGroupId"] = self.resourceGroupId!
@@ -572,6 +577,9 @@ public class CreateApplicationRequest : Tea.TeaModel {
         if let value = dict["Name"] as? String {
             self.name = value
         }
+        if let value = dict["ProcessVariables"] as? [String: Any] {
+            self.processVariables = value
+        }
         if let value = dict["ResourceGroupId"] as? String {
             self.resourceGroupId = value
         }
@@ -594,6 +602,8 @@ public class CreateApplicationShrinkRequest : Tea.TeaModel {
     public var instancesShrink: String?
 
     public var name: String?
+
+    public var processVariablesShrink: String?
 
     public var resourceGroupId: String?
 
@@ -630,6 +640,9 @@ public class CreateApplicationShrinkRequest : Tea.TeaModel {
         if self.name != nil {
             map["Name"] = self.name!
         }
+        if self.processVariablesShrink != nil {
+            map["ProcessVariables"] = self.processVariablesShrink!
+        }
         if self.resourceGroupId != nil {
             map["ResourceGroupId"] = self.resourceGroupId!
         }
@@ -658,6 +671,9 @@ public class CreateApplicationShrinkRequest : Tea.TeaModel {
         }
         if let value = dict["Name"] as? String {
             self.name = value
+        }
+        if let value = dict["ProcessVariables"] as? String {
+            self.processVariablesShrink = value
         }
         if let value = dict["ResourceGroupId"] as? String {
             self.resourceGroupId = value
