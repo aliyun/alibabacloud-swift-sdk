@@ -22212,6 +22212,10 @@ public class DescribeDBClusterAttributeResponseBody : Tea.TeaModel {
                     }
                 }
             }
+            public var AINodeNumber: Int32?
+
+            public var AINodeSpec: String?
+
             public var clickhouseEngineCacheSize: Int32?
 
             public var clickhouseEngineEnabled: Bool?
@@ -22320,6 +22324,12 @@ public class DescribeDBClusterAttributeResponseBody : Tea.TeaModel {
 
             public override func toMap() -> [String : Any] {
                 var map = super.toMap()
+                if self.AINodeNumber != nil {
+                    map["AINodeNumber"] = self.AINodeNumber!
+                }
+                if self.AINodeSpec != nil {
+                    map["AINodeSpec"] = self.AINodeSpec!
+                }
                 if self.clickhouseEngineCacheSize != nil {
                     map["ClickhouseEngineCacheSize"] = self.clickhouseEngineCacheSize!
                 }
@@ -22463,6 +22473,12 @@ public class DescribeDBClusterAttributeResponseBody : Tea.TeaModel {
 
             public override func fromMap(_ dict: [String: Any?]?) -> Void {
                 guard let dict else { return }
+                if let value = dict["AINodeNumber"] as? Int32 {
+                    self.AINodeNumber = value
+                }
+                if let value = dict["AINodeSpec"] as? String {
+                    self.AINodeSpec = value
+                }
                 if let value = dict["ClickhouseEngineCacheSize"] as? Int32 {
                     self.clickhouseEngineCacheSize = value
                 }
