@@ -6323,10 +6323,16 @@ open class Client : AlibabacloudOpenApi.Client {
         try TeaUtils.Client.validateModel(tmpReq)
         var request: SubmitCustomSourceTopicAnalysisShrinkRequest = SubmitCustomSourceTopicAnalysisShrinkRequest([:])
         AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.analysisTypes)) {
+            request.analysisTypesShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.analysisTypes, "AnalysisTypes", "json")
+        }
         if (!TeaUtils.Client.isUnset(tmpReq.news)) {
             request.newsShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.news, "News", "json")
         }
         var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.analysisTypesShrink)) {
+            body["AnalysisTypes"] = request.analysisTypesShrink ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.fileType)) {
             body["FileType"] = request.fileType ?? "";
         }

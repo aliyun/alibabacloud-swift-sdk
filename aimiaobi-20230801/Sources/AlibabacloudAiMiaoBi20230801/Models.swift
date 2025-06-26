@@ -10700,6 +10700,10 @@ public class GetCustomSourceTopicAnalysisTaskResponseBody : Tea.TeaModel {
 
         public var status: String?
 
+        public var rt: Int64?
+
+        public var usages: [String: Int64]?
+
         public override init() {
             super.init()
         }
@@ -10736,6 +10740,12 @@ public class GetCustomSourceTopicAnalysisTaskResponseBody : Tea.TeaModel {
             if self.status != nil {
                 map["Status"] = self.status!
             }
+            if self.rt != nil {
+                map["rt"] = self.rt!
+            }
+            if self.usages != nil {
+                map["usages"] = self.usages!
+            }
             return map
         }
 
@@ -10768,6 +10778,12 @@ public class GetCustomSourceTopicAnalysisTaskResponseBody : Tea.TeaModel {
             }
             if let value = dict["Status"] as? String {
                 self.status = value
+            }
+            if let value = dict["rt"] as? Int64 {
+                self.rt = value
+            }
+            if let value = dict["usages"] as? [String: Int64] {
+                self.usages = value
             }
         }
     }
@@ -59684,6 +59700,8 @@ public class SubmitCustomSourceTopicAnalysisRequest : Tea.TeaModel {
 
         public var pubTime: String?
 
+        public var source: String?
+
         public var title: String?
 
         public var url: String?
@@ -59715,6 +59733,9 @@ public class SubmitCustomSourceTopicAnalysisRequest : Tea.TeaModel {
             if self.pubTime != nil {
                 map["PubTime"] = self.pubTime!
             }
+            if self.source != nil {
+                map["Source"] = self.source!
+            }
             if self.title != nil {
                 map["Title"] = self.title!
             }
@@ -59745,6 +59766,9 @@ public class SubmitCustomSourceTopicAnalysisRequest : Tea.TeaModel {
             if let value = dict["PubTime"] as? String {
                 self.pubTime = value
             }
+            if let value = dict["Source"] as? String {
+                self.source = value
+            }
             if let value = dict["Title"] as? String {
                 self.title = value
             }
@@ -59753,6 +59777,8 @@ public class SubmitCustomSourceTopicAnalysisRequest : Tea.TeaModel {
             }
         }
     }
+    public var analysisTypes: [String]?
+
     public var fileType: String?
 
     public var fileUrl: String?
@@ -59777,6 +59803,9 @@ public class SubmitCustomSourceTopicAnalysisRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.analysisTypes != nil {
+            map["AnalysisTypes"] = self.analysisTypes!
+        }
         if self.fileType != nil {
             map["FileType"] = self.fileType!
         }
@@ -59801,6 +59830,9 @@ public class SubmitCustomSourceTopicAnalysisRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["AnalysisTypes"] as? [String] {
+            self.analysisTypes = value
+        }
         if let value = dict["FileType"] as? String {
             self.fileType = value
         }
@@ -59830,6 +59862,8 @@ public class SubmitCustomSourceTopicAnalysisRequest : Tea.TeaModel {
 }
 
 public class SubmitCustomSourceTopicAnalysisShrinkRequest : Tea.TeaModel {
+    public var analysisTypesShrink: String?
+
     public var fileType: String?
 
     public var fileUrl: String?
@@ -59854,6 +59888,9 @@ public class SubmitCustomSourceTopicAnalysisShrinkRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.analysisTypesShrink != nil {
+            map["AnalysisTypes"] = self.analysisTypesShrink!
+        }
         if self.fileType != nil {
             map["FileType"] = self.fileType!
         }
@@ -59874,6 +59911,9 @@ public class SubmitCustomSourceTopicAnalysisShrinkRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["AnalysisTypes"] as? String {
+            self.analysisTypesShrink = value
+        }
         if let value = dict["FileType"] as? String {
             self.fileType = value
         }
