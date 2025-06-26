@@ -5,6 +5,203 @@ import AlibabacloudOpenApi
 import AlibabaCloudOpenApiUtil
 import AlibabacloudEndpointUtil
 
+public class AgentServiceConfig : Tea.TeaModel {
+    public class DashScopeConfig : Tea.TeaModel {
+        public class AppCredentials : Tea.TeaModel {
+            public var apiKey: String?
+
+            public var appId: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.apiKey != nil {
+                    map["apiKey"] = self.apiKey!
+                }
+                if self.appId != nil {
+                    map["appId"] = self.appId!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["apiKey"] as? String {
+                    self.apiKey = value
+                }
+                if let value = dict["appId"] as? String {
+                    self.appId = value
+                }
+            }
+        }
+        public var appCredentials: [AgentServiceConfig.DashScopeConfig.AppCredentials]?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.appCredentials != nil {
+                var tmp : [Any] = []
+                for k in self.appCredentials! {
+                    tmp.append(k.toMap())
+                }
+                map["appCredentials"] = tmp
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["appCredentials"] as? [Any?] {
+                var tmp : [AgentServiceConfig.DashScopeConfig.AppCredentials] = []
+                for v in value {
+                    if v != nil {
+                        var model = AgentServiceConfig.DashScopeConfig.AppCredentials()
+                        if v != nil {
+                            model.fromMap(v as? [String: Any?])
+                        }
+                        tmp.append(model)
+                    }
+                }
+                self.appCredentials = tmp
+            }
+        }
+    }
+    public class DifyConfig : Tea.TeaModel {
+        public var apiKey: String?
+
+        public var botType: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.apiKey != nil {
+                map["apiKey"] = self.apiKey!
+            }
+            if self.botType != nil {
+                map["botType"] = self.botType!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["apiKey"] as? String {
+                self.apiKey = value
+            }
+            if let value = dict["botType"] as? String {
+                self.botType = value
+            }
+        }
+    }
+    public var address: String?
+
+    public var dashScopeConfig: AgentServiceConfig.DashScopeConfig?
+
+    public var difyConfig: AgentServiceConfig.DifyConfig?
+
+    public var enableHealthCheck: Bool?
+
+    public var protocols: [String]?
+
+    public var provider: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.dashScopeConfig?.validate()
+        try self.difyConfig?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.address != nil {
+            map["address"] = self.address!
+        }
+        if self.dashScopeConfig != nil {
+            map["dashScopeConfig"] = self.dashScopeConfig?.toMap()
+        }
+        if self.difyConfig != nil {
+            map["difyConfig"] = self.difyConfig?.toMap()
+        }
+        if self.enableHealthCheck != nil {
+            map["enableHealthCheck"] = self.enableHealthCheck!
+        }
+        if self.protocols != nil {
+            map["protocols"] = self.protocols!
+        }
+        if self.provider != nil {
+            map["provider"] = self.provider!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["address"] as? String {
+            self.address = value
+        }
+        if let value = dict["dashScopeConfig"] as? [String: Any?] {
+            var model = AgentServiceConfig.DashScopeConfig()
+            model.fromMap(value)
+            self.dashScopeConfig = model
+        }
+        if let value = dict["difyConfig"] as? [String: Any?] {
+            var model = AgentServiceConfig.DifyConfig()
+            model.fromMap(value)
+            self.difyConfig = model
+        }
+        if let value = dict["enableHealthCheck"] as? Bool {
+            self.enableHealthCheck = value
+        }
+        if let value = dict["protocols"] as? [String] {
+            self.protocols = value
+        }
+        if let value = dict["provider"] as? String {
+            self.provider = value
+        }
+    }
+}
+
 public class AiServiceConfig : Tea.TeaModel {
     public var address: String?
 
@@ -6133,6 +6330,8 @@ public class Service : Tea.TeaModel {
     }
     public var addresses: [String]?
 
+    public var agentServiceConfig: AgentServiceConfig?
+
     public var aiServiceConfig: AiServiceConfig?
 
     public var createTimestamp: Int64?
@@ -6175,6 +6374,7 @@ public class Service : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
+        try self.agentServiceConfig?.validate()
         try self.aiServiceConfig?.validate()
         try self.healthCheck?.validate()
     }
@@ -6183,6 +6383,9 @@ public class Service : Tea.TeaModel {
         var map = super.toMap()
         if self.addresses != nil {
             map["addresses"] = self.addresses!
+        }
+        if self.agentServiceConfig != nil {
+            map["agentServiceConfig"] = self.agentServiceConfig?.toMap()
         }
         if self.aiServiceConfig != nil {
             map["aiServiceConfig"] = self.aiServiceConfig?.toMap()
@@ -6243,6 +6446,11 @@ public class Service : Tea.TeaModel {
         guard let dict else { return }
         if let value = dict["addresses"] as? [String] {
             self.addresses = value
+        }
+        if let value = dict["agentServiceConfig"] as? [String: Any?] {
+            var model = AgentServiceConfig()
+            model.fromMap(value)
+            self.agentServiceConfig = model
         }
         if let value = dict["aiServiceConfig"] as? [String: Any?] {
             var model = AiServiceConfig()
@@ -7663,6 +7871,8 @@ public class CreateHttpApiRequest : Tea.TeaModel {
             }
         }
     }
+    public var agentProtocols: [String]?
+
     public var aiProtocols: [String]?
 
     public var authConfig: AuthConfig?
@@ -7704,6 +7914,9 @@ public class CreateHttpApiRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.agentProtocols != nil {
+            map["agentProtocols"] = self.agentProtocols!
+        }
         if self.aiProtocols != nil {
             map["aiProtocols"] = self.aiProtocols!
         }
@@ -7749,6 +7962,9 @@ public class CreateHttpApiRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["agentProtocols"] as? [String] {
+            self.agentProtocols = value
+        }
         if let value = dict["aiProtocols"] as? [String] {
             self.aiProtocols = value
         }
@@ -9192,6 +9408,8 @@ public class CreateServiceRequest : Tea.TeaModel {
     public class ServiceConfigs : Tea.TeaModel {
         public var addresses: [String]?
 
+        public var agentServiceConfig: AgentServiceConfig?
+
         public var aiServiceConfig: AiServiceConfig?
 
         public var dnsServers: [String]?
@@ -9214,6 +9432,7 @@ public class CreateServiceRequest : Tea.TeaModel {
         }
 
         public override func validate() throws -> Void {
+            try self.agentServiceConfig?.validate()
             try self.aiServiceConfig?.validate()
         }
 
@@ -9221,6 +9440,9 @@ public class CreateServiceRequest : Tea.TeaModel {
             var map = super.toMap()
             if self.addresses != nil {
                 map["addresses"] = self.addresses!
+            }
+            if self.agentServiceConfig != nil {
+                map["agentServiceConfig"] = self.agentServiceConfig?.toMap()
             }
             if self.aiServiceConfig != nil {
                 map["aiServiceConfig"] = self.aiServiceConfig?.toMap()
@@ -9247,6 +9469,11 @@ public class CreateServiceRequest : Tea.TeaModel {
             guard let dict else { return }
             if let value = dict["addresses"] as? [String] {
                 self.addresses = value
+            }
+            if let value = dict["agentServiceConfig"] as? [String: Any?] {
+                var model = AgentServiceConfig()
+                model.fromMap(value)
+                self.agentServiceConfig = model
             }
             if let value = dict["aiServiceConfig"] as? [String: Any?] {
                 var model = AiServiceConfig()
@@ -10471,6 +10698,103 @@ public class DeletePolicyAttachmentResponse : Tea.TeaModel {
         }
         if let value = dict["body"] as? [String: Any?] {
             var model = DeletePolicyAttachmentResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
+public class DeleteServiceResponseBody : Tea.TeaModel {
+    public var code: String?
+
+    public var message: String?
+
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.code != nil {
+            map["code"] = self.code!
+        }
+        if self.message != nil {
+            map["message"] = self.message!
+        }
+        if self.requestId != nil {
+            map["requestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["code"] as? String {
+            self.code = value
+        }
+        if let value = dict["message"] as? String {
+            self.message = value
+        }
+        if let value = dict["requestId"] as? String {
+            self.requestId = value
+        }
+    }
+}
+
+public class DeleteServiceResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: DeleteServiceResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = DeleteServiceResponseBody()
             model.fromMap(value)
             self.body = model
         }
@@ -20202,6 +20526,8 @@ public class UpdateHttpApiRequest : Tea.TeaModel {
             }
         }
     }
+    public var agentProtocols: [String]?
+
     public var aiProtocols: [String]?
 
     public var authConfig: AuthConfig?
@@ -20239,6 +20565,9 @@ public class UpdateHttpApiRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.agentProtocols != nil {
+            map["agentProtocols"] = self.agentProtocols!
+        }
         if self.aiProtocols != nil {
             map["aiProtocols"] = self.aiProtocols!
         }
@@ -20278,6 +20607,9 @@ public class UpdateHttpApiRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["agentProtocols"] as? [String] {
+            self.agentProtocols = value
+        }
         if let value = dict["aiProtocols"] as? [String] {
             self.aiProtocols = value
         }
