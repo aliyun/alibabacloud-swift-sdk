@@ -554,10 +554,10 @@ open class Client : AlibabacloudOpenApi.Client {
         try TeaUtils.Client.validateModel(request)
         var body: [String: Any] = [:]
         if (!TeaUtils.Client.isUnset(request.currentPage)) {
-            body["currentPage"] = request.currentPage ?? "";
+            body["currentPage"] = request.currentPage!;
         }
         if (!TeaUtils.Client.isUnset(request.pageSize)) {
-            body["pageSize"] = request.pageSize ?? "";
+            body["pageSize"] = request.pageSize!;
         }
         if (!TeaUtils.Client.isUnset(request.sessionId)) {
             body["sessionId"] = request.sessionId ?? "";

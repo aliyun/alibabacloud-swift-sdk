@@ -4061,9 +4061,9 @@ public class GetChatFolderListResponse : Tea.TeaModel {
 }
 
 public class GetChatListRequest : Tea.TeaModel {
-    public var currentPage: String?
+    public var currentPage: Int32?
 
-    public var pageSize: String?
+    public var pageSize: Int32?
 
     public var sessionId: String?
 
@@ -4095,10 +4095,10 @@ public class GetChatListRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
-        if let value = dict["currentPage"] as? String {
+        if let value = dict["currentPage"] as? Int32 {
             self.currentPage = value
         }
-        if let value = dict["pageSize"] as? String {
+        if let value = dict["pageSize"] as? Int32 {
             self.pageSize = value
         }
         if let value = dict["sessionId"] as? String {
