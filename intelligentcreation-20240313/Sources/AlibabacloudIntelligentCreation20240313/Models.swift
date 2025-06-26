@@ -7262,6 +7262,257 @@ public class GetAICoachScriptResponseBody : Tea.TeaModel {
             }
         }
     }
+    public class CustomReplyRules : Tea.TeaModel {
+        public class Action : Tea.TeaModel {
+            public class Parameters : Tea.TeaModel {
+                public var assessPointId: String?
+
+                public var customContent: String?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.assessPointId != nil {
+                        map["assessPointId"] = self.assessPointId!
+                    }
+                    if self.customContent != nil {
+                        map["customContent"] = self.customContent!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                    guard let dict else { return }
+                    if let value = dict["assessPointId"] as? String {
+                        self.assessPointId = value
+                    }
+                    if let value = dict["customContent"] as? String {
+                        self.customContent = value
+                    }
+                }
+            }
+            public var parameters: GetAICoachScriptResponseBody.CustomReplyRules.Action.Parameters?
+
+            public var type: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+                try self.parameters?.validate()
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.parameters != nil {
+                    map["parameters"] = self.parameters?.toMap()
+                }
+                if self.type != nil {
+                    map["type"] = self.type!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["parameters"] as? [String: Any?] {
+                    var model = GetAICoachScriptResponseBody.CustomReplyRules.Action.Parameters()
+                    model.fromMap(value)
+                    self.parameters = model
+                }
+                if let value = dict["type"] as? String {
+                    self.type = value
+                }
+            }
+        }
+        public class MainCondition : Tea.TeaModel {
+            public class Parameters : Tea.TeaModel {
+                public var assessPointId: String?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.assessPointId != nil {
+                        map["assessPointId"] = self.assessPointId!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                    guard let dict else { return }
+                    if let value = dict["assessPointId"] as? String {
+                        self.assessPointId = value
+                    }
+                }
+            }
+            public var parameters: GetAICoachScriptResponseBody.CustomReplyRules.MainCondition.Parameters?
+
+            public var type: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+                try self.parameters?.validate()
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.parameters != nil {
+                    map["parameters"] = self.parameters?.toMap()
+                }
+                if self.type != nil {
+                    map["type"] = self.type!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["parameters"] as? [String: Any?] {
+                    var model = GetAICoachScriptResponseBody.CustomReplyRules.MainCondition.Parameters()
+                    model.fromMap(value)
+                    self.parameters = model
+                }
+                if let value = dict["type"] as? String {
+                    self.type = value
+                }
+            }
+        }
+        public class SubCondition : Tea.TeaModel {
+            public var type: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.type != nil {
+                    map["type"] = self.type!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["type"] as? String {
+                    self.type = value
+                }
+            }
+        }
+        public var action: GetAICoachScriptResponseBody.CustomReplyRules.Action?
+
+        public var logic: String?
+
+        public var mainCondition: GetAICoachScriptResponseBody.CustomReplyRules.MainCondition?
+
+        public var priority: Int32?
+
+        public var subCondition: GetAICoachScriptResponseBody.CustomReplyRules.SubCondition?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+            try self.action?.validate()
+            try self.mainCondition?.validate()
+            try self.subCondition?.validate()
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.action != nil {
+                map["action"] = self.action?.toMap()
+            }
+            if self.logic != nil {
+                map["logic"] = self.logic!
+            }
+            if self.mainCondition != nil {
+                map["mainCondition"] = self.mainCondition?.toMap()
+            }
+            if self.priority != nil {
+                map["priority"] = self.priority!
+            }
+            if self.subCondition != nil {
+                map["subCondition"] = self.subCondition?.toMap()
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["action"] as? [String: Any?] {
+                var model = GetAICoachScriptResponseBody.CustomReplyRules.Action()
+                model.fromMap(value)
+                self.action = model
+            }
+            if let value = dict["logic"] as? String {
+                self.logic = value
+            }
+            if let value = dict["mainCondition"] as? [String: Any?] {
+                var model = GetAICoachScriptResponseBody.CustomReplyRules.MainCondition()
+                model.fromMap(value)
+                self.mainCondition = model
+            }
+            if let value = dict["priority"] as? Int32 {
+                self.priority = value
+            }
+            if let value = dict["subCondition"] as? [String: Any?] {
+                var model = GetAICoachScriptResponseBody.CustomReplyRules.SubCondition()
+                model.fromMap(value)
+                self.subCondition = model
+            }
+        }
+    }
     public class ExpressivenessList : Tea.TeaModel {
         public var desc: String?
 
@@ -7957,6 +8208,8 @@ public class GetAICoachScriptResponseBody : Tea.TeaModel {
 
         public var assessmentPointEnabled: Bool?
 
+        public var customReplyRuleEnabled: Bool?
+
         public var expressiveness: Int32?
 
         public var expressivenessEnabled: Bool?
@@ -7997,6 +8250,9 @@ public class GetAICoachScriptResponseBody : Tea.TeaModel {
             if self.assessmentPointEnabled != nil {
                 map["assessmentPointEnabled"] = self.assessmentPointEnabled!
             }
+            if self.customReplyRuleEnabled != nil {
+                map["customReplyRuleEnabled"] = self.customReplyRuleEnabled!
+            }
             if self.expressiveness != nil {
                 map["expressiveness"] = self.expressiveness!
             }
@@ -8035,6 +8291,9 @@ public class GetAICoachScriptResponseBody : Tea.TeaModel {
             if let value = dict["assessmentPointEnabled"] as? Bool {
                 self.assessmentPointEnabled = value
             }
+            if let value = dict["customReplyRuleEnabled"] as? Bool {
+                self.customReplyRuleEnabled = value
+            }
             if let value = dict["expressiveness"] as? Int32 {
                 self.expressiveness = value
             }
@@ -8069,6 +8328,8 @@ public class GetAICoachScriptResponseBody : Tea.TeaModel {
     public var completeStrategy: GetAICoachScriptResponseBody.CompleteStrategy?
 
     public var coverUrl: String?
+
+    public var customReplyRules: [GetAICoachScriptResponseBody.CustomReplyRules]?
 
     public var dialogueInputTextLimit: Int32?
 
@@ -8167,6 +8428,13 @@ public class GetAICoachScriptResponseBody : Tea.TeaModel {
         }
         if self.coverUrl != nil {
             map["coverUrl"] = self.coverUrl!
+        }
+        if self.customReplyRules != nil {
+            var tmp : [Any] = []
+            for k in self.customReplyRules! {
+                tmp.append(k.toMap())
+            }
+            map["customReplyRules"] = tmp
         }
         if self.dialogueInputTextLimit != nil {
             map["dialogueInputTextLimit"] = self.dialogueInputTextLimit!
@@ -8303,6 +8571,19 @@ public class GetAICoachScriptResponseBody : Tea.TeaModel {
         }
         if let value = dict["coverUrl"] as? String {
             self.coverUrl = value
+        }
+        if let value = dict["customReplyRules"] as? [Any?] {
+            var tmp : [GetAICoachScriptResponseBody.CustomReplyRules] = []
+            for v in value {
+                if v != nil {
+                    var model = GetAICoachScriptResponseBody.CustomReplyRules()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.customReplyRules = tmp
         }
         if let value = dict["dialogueInputTextLimit"] as? Int32 {
             self.dialogueInputTextLimit = value
@@ -8980,6 +9261,166 @@ public class GetAICoachTaskSessionReportResponse : Tea.TeaModel {
         }
         if let value = dict["body"] as? [String: Any?] {
             var model = GetAICoachTaskSessionReportResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
+public class GetAICoachTaskSessionResourceUsageRequest : Tea.TeaModel {
+    public var sessionId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.sessionId != nil {
+            map["sessionId"] = self.sessionId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["sessionId"] as? String {
+            self.sessionId = value
+        }
+    }
+}
+
+public class GetAICoachTaskSessionResourceUsageResponseBody : Tea.TeaModel {
+    public var audioUsage: Int32?
+
+    public var deductionStatus: Int32?
+
+    public var errorCode: String?
+
+    public var errorMessage: String?
+
+    public var requestId: String?
+
+    public var success: Bool?
+
+    public var tokenUsage: Int32?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.audioUsage != nil {
+            map["audioUsage"] = self.audioUsage!
+        }
+        if self.deductionStatus != nil {
+            map["deductionStatus"] = self.deductionStatus!
+        }
+        if self.errorCode != nil {
+            map["errorCode"] = self.errorCode!
+        }
+        if self.errorMessage != nil {
+            map["errorMessage"] = self.errorMessage!
+        }
+        if self.requestId != nil {
+            map["requestId"] = self.requestId!
+        }
+        if self.success != nil {
+            map["success"] = self.success!
+        }
+        if self.tokenUsage != nil {
+            map["tokenUsage"] = self.tokenUsage!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["audioUsage"] as? Int32 {
+            self.audioUsage = value
+        }
+        if let value = dict["deductionStatus"] as? Int32 {
+            self.deductionStatus = value
+        }
+        if let value = dict["errorCode"] as? String {
+            self.errorCode = value
+        }
+        if let value = dict["errorMessage"] as? String {
+            self.errorMessage = value
+        }
+        if let value = dict["requestId"] as? String {
+            self.requestId = value
+        }
+        if let value = dict["success"] as? Bool {
+            self.success = value
+        }
+        if let value = dict["tokenUsage"] as? Int32 {
+            self.tokenUsage = value
+        }
+    }
+}
+
+public class GetAICoachTaskSessionResourceUsageResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: GetAICoachTaskSessionResourceUsageResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = GetAICoachTaskSessionResourceUsageResponseBody()
             model.fromMap(value)
             self.body = model
         }
@@ -10011,6 +10452,265 @@ public class ListAICoachScriptPageResponseBody : Tea.TeaModel {
                 }
             }
         }
+        public class CustomReplyRules : Tea.TeaModel {
+            public class Action : Tea.TeaModel {
+                public class Parameters : Tea.TeaModel {
+                    public var assessPoint: String?
+
+                    public var customContent: String?
+
+                    public override init() {
+                        super.init()
+                    }
+
+                    public init(_ dict: [String: Any]) {
+                        super.init()
+                        self.fromMap(dict)
+                    }
+
+                    public override func validate() throws -> Void {
+                    }
+
+                    public override func toMap() -> [String : Any] {
+                        var map = super.toMap()
+                        if self.assessPoint != nil {
+                            map["assessPoint"] = self.assessPoint!
+                        }
+                        if self.customContent != nil {
+                            map["customContent"] = self.customContent!
+                        }
+                        return map
+                    }
+
+                    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                        guard let dict else { return }
+                        if let value = dict["assessPoint"] as? String {
+                            self.assessPoint = value
+                        }
+                        if let value = dict["customContent"] as? String {
+                            self.customContent = value
+                        }
+                    }
+                }
+                public var parameters: ListAICoachScriptPageResponseBody.List.CustomReplyRules.Action.Parameters?
+
+                public var type: String?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                    try self.parameters?.validate()
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.parameters != nil {
+                        map["parameters"] = self.parameters?.toMap()
+                    }
+                    if self.type != nil {
+                        map["type"] = self.type!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                    guard let dict else { return }
+                    if let value = dict["parameters"] as? [String: Any?] {
+                        var model = ListAICoachScriptPageResponseBody.List.CustomReplyRules.Action.Parameters()
+                        model.fromMap(value)
+                        self.parameters = model
+                    }
+                    if let value = dict["type"] as? String {
+                        self.type = value
+                    }
+                }
+            }
+            public class MainCondition : Tea.TeaModel {
+                public class Parameters : Tea.TeaModel {
+                    public var assessPoint: String?
+
+                    public override init() {
+                        super.init()
+                    }
+
+                    public init(_ dict: [String: Any]) {
+                        super.init()
+                        self.fromMap(dict)
+                    }
+
+                    public override func validate() throws -> Void {
+                    }
+
+                    public override func toMap() -> [String : Any] {
+                        var map = super.toMap()
+                        if self.assessPoint != nil {
+                            map["assessPoint"] = self.assessPoint!
+                        }
+                        return map
+                    }
+
+                    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                        guard let dict else { return }
+                        if let value = dict["assessPoint"] as? String {
+                            self.assessPoint = value
+                        }
+                    }
+                }
+                public var parameters: ListAICoachScriptPageResponseBody.List.CustomReplyRules.MainCondition.Parameters?
+
+                public var type: String?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                    try self.parameters?.validate()
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.parameters != nil {
+                        map["parameters"] = self.parameters?.toMap()
+                    }
+                    if self.type != nil {
+                        map["type"] = self.type!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                    guard let dict else { return }
+                    if let value = dict["parameters"] as? [String: Any?] {
+                        var model = ListAICoachScriptPageResponseBody.List.CustomReplyRules.MainCondition.Parameters()
+                        model.fromMap(value)
+                        self.parameters = model
+                    }
+                    if let value = dict["type"] as? String {
+                        self.type = value
+                    }
+                }
+            }
+            public class SubCondition : Tea.TeaModel {
+                public var type: String?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.type != nil {
+                        map["type"] = self.type!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                    guard let dict else { return }
+                    if let value = dict["type"] as? String {
+                        self.type = value
+                    }
+                }
+            }
+            public var action: ListAICoachScriptPageResponseBody.List.CustomReplyRules.Action?
+
+            public var logic: String?
+
+            public var mainCondition: ListAICoachScriptPageResponseBody.List.CustomReplyRules.MainCondition?
+
+            public var priority: Int32?
+
+            public var sortNo: Int32?
+
+            public var subCondition: ListAICoachScriptPageResponseBody.List.CustomReplyRules.SubCondition?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+                try self.action?.validate()
+                try self.mainCondition?.validate()
+                try self.subCondition?.validate()
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.action != nil {
+                    map["action"] = self.action?.toMap()
+                }
+                if self.logic != nil {
+                    map["logic"] = self.logic!
+                }
+                if self.mainCondition != nil {
+                    map["mainCondition"] = self.mainCondition?.toMap()
+                }
+                if self.priority != nil {
+                    map["priority"] = self.priority!
+                }
+                if self.sortNo != nil {
+                    map["sortNo"] = self.sortNo!
+                }
+                if self.subCondition != nil {
+                    map["subCondition"] = self.subCondition?.toMap()
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["action"] as? [String: Any?] {
+                    var model = ListAICoachScriptPageResponseBody.List.CustomReplyRules.Action()
+                    model.fromMap(value)
+                    self.action = model
+                }
+                if let value = dict["logic"] as? String {
+                    self.logic = value
+                }
+                if let value = dict["mainCondition"] as? [String: Any?] {
+                    var model = ListAICoachScriptPageResponseBody.List.CustomReplyRules.MainCondition()
+                    model.fromMap(value)
+                    self.mainCondition = model
+                }
+                if let value = dict["priority"] as? Int32 {
+                    self.priority = value
+                }
+                if let value = dict["sortNo"] as? Int32 {
+                    self.sortNo = value
+                }
+                if let value = dict["subCondition"] as? [String: Any?] {
+                    var model = ListAICoachScriptPageResponseBody.List.CustomReplyRules.SubCondition()
+                    model.fromMap(value)
+                    self.subCondition = model
+                }
+            }
+        }
         public class SampleDialogueList : Tea.TeaModel {
             public var message: String?
 
@@ -10168,6 +10868,8 @@ public class ListAICoachScriptPageResponseBody : Tea.TeaModel {
 
             public var assessmentPointEnabled: Bool?
 
+            public var customReplyRuleEnabled: Bool?
+
             public var expressiveness: Int32?
 
             public var expressivenessEnabled: Bool?
@@ -10202,6 +10904,9 @@ public class ListAICoachScriptPageResponseBody : Tea.TeaModel {
                 if self.assessmentPointEnabled != nil {
                     map["assessmentPointEnabled"] = self.assessmentPointEnabled!
                 }
+                if self.customReplyRuleEnabled != nil {
+                    map["customReplyRuleEnabled"] = self.customReplyRuleEnabled!
+                }
                 if self.expressiveness != nil {
                     map["expressiveness"] = self.expressiveness!
                 }
@@ -10233,6 +10938,9 @@ public class ListAICoachScriptPageResponseBody : Tea.TeaModel {
                 }
                 if let value = dict["assessmentPointEnabled"] as? Bool {
                     self.assessmentPointEnabled = value
+                }
+                if let value = dict["customReplyRuleEnabled"] as? Bool {
+                    self.customReplyRuleEnabled = value
                 }
                 if let value = dict["expressiveness"] as? Int32 {
                     self.expressiveness = value
@@ -10266,6 +10974,8 @@ public class ListAICoachScriptPageResponseBody : Tea.TeaModel {
         public var completeStrategy: ListAICoachScriptPageResponseBody.List.CompleteStrategy?
 
         public var coverUrl: String?
+
+        public var customReplyRules: [ListAICoachScriptPageResponseBody.List.CustomReplyRules]?
 
         public var dialogueTextFlag: Bool?
 
@@ -10344,6 +11054,13 @@ public class ListAICoachScriptPageResponseBody : Tea.TeaModel {
             }
             if self.coverUrl != nil {
                 map["coverUrl"] = self.coverUrl!
+            }
+            if self.customReplyRules != nil {
+                var tmp : [Any] = []
+                for k in self.customReplyRules! {
+                    tmp.append(k.toMap())
+                }
+                map["customReplyRules"] = tmp
             }
             if self.dialogueTextFlag != nil {
                 map["dialogueTextFlag"] = self.dialogueTextFlag!
@@ -10439,6 +11156,19 @@ public class ListAICoachScriptPageResponseBody : Tea.TeaModel {
             }
             if let value = dict["coverUrl"] as? String {
                 self.coverUrl = value
+            }
+            if let value = dict["customReplyRules"] as? [Any?] {
+                var tmp : [ListAICoachScriptPageResponseBody.List.CustomReplyRules] = []
+                for v in value {
+                    if v != nil {
+                        var model = ListAICoachScriptPageResponseBody.List.CustomReplyRules()
+                        if v != nil {
+                            model.fromMap(v as? [String: Any?])
+                        }
+                        tmp.append(model)
+                    }
+                }
+                self.customReplyRules = tmp
             }
             if let value = dict["dialogueTextFlag"] as? Bool {
                 self.dialogueTextFlag = value
