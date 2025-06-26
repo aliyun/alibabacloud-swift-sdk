@@ -7468,7 +7468,65 @@ public class VideoModerationResultResponseBody : Tea.TeaModel {
                         }
                     }
                     public class PublicFigure : Tea.TeaModel {
+                        public class Location : Tea.TeaModel {
+                            public var h: Int32?
+
+                            public var w: Int32?
+
+                            public var x: Int32?
+
+                            public var y: Int32?
+
+                            public override init() {
+                                super.init()
+                            }
+
+                            public init(_ dict: [String: Any]) {
+                                super.init()
+                                self.fromMap(dict)
+                            }
+
+                            public override func validate() throws -> Void {
+                            }
+
+                            public override func toMap() -> [String : Any] {
+                                var map = super.toMap()
+                                if self.h != nil {
+                                    map["H"] = self.h!
+                                }
+                                if self.w != nil {
+                                    map["W"] = self.w!
+                                }
+                                if self.x != nil {
+                                    map["X"] = self.x!
+                                }
+                                if self.y != nil {
+                                    map["Y"] = self.y!
+                                }
+                                return map
+                            }
+
+                            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                                guard let dict else { return }
+                                if let value = dict["H"] as? Int32 {
+                                    self.h = value
+                                }
+                                if let value = dict["W"] as? Int32 {
+                                    self.w = value
+                                }
+                                if let value = dict["X"] as? Int32 {
+                                    self.x = value
+                                }
+                                if let value = dict["Y"] as? Int32 {
+                                    self.y = value
+                                }
+                            }
+                        }
                         public var figureId: String?
+
+                        public var figureName: String?
+
+                        public var location: [VideoModerationResultResponseBody.Data.FrameResult.Frames.Results.PublicFigure.Location]?
 
                         public override init() {
                             super.init()
@@ -7487,6 +7545,16 @@ public class VideoModerationResultResponseBody : Tea.TeaModel {
                             if self.figureId != nil {
                                 map["FigureId"] = self.figureId!
                             }
+                            if self.figureName != nil {
+                                map["FigureName"] = self.figureName!
+                            }
+                            if self.location != nil {
+                                var tmp : [Any] = []
+                                for k in self.location! {
+                                    tmp.append(k.toMap())
+                                }
+                                map["Location"] = tmp
+                            }
                             return map
                         }
 
@@ -7494,6 +7562,22 @@ public class VideoModerationResultResponseBody : Tea.TeaModel {
                             guard let dict else { return }
                             if let value = dict["FigureId"] as? String {
                                 self.figureId = value
+                            }
+                            if let value = dict["FigureName"] as? String {
+                                self.figureName = value
+                            }
+                            if let value = dict["Location"] as? [Any?] {
+                                var tmp : [VideoModerationResultResponseBody.Data.FrameResult.Frames.Results.PublicFigure.Location] = []
+                                for v in value {
+                                    if v != nil {
+                                        var model = VideoModerationResultResponseBody.Data.FrameResult.Frames.Results.PublicFigure.Location()
+                                        if v != nil {
+                                            model.fromMap(v as? [String: Any?])
+                                        }
+                                        tmp.append(model)
+                                    }
+                                }
+                                self.location = tmp
                             }
                         }
                     }
