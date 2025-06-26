@@ -909,6 +909,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.callbackUrl)) {
             query["CallbackUrl"] = request.callbackUrl ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.chameleonFrameEnable)) {
+            query["ChameleonFrameEnable"] = request.chameleonFrameEnable ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.crop)) {
             query["Crop"] = request.crop ?? "";
         }

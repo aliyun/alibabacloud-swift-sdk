@@ -3913,6 +3913,8 @@ public class InitializeRequest : Tea.TeaModel {
 
     public var callbackUrl: String?
 
+    public var chameleonFrameEnable: String?
+
     public var crop: String?
 
     public var dateOfBirth: String?
@@ -4004,6 +4006,9 @@ public class InitializeRequest : Tea.TeaModel {
         }
         if self.callbackUrl != nil {
             map["CallbackUrl"] = self.callbackUrl!
+        }
+        if self.chameleonFrameEnable != nil {
+            map["ChameleonFrameEnable"] = self.chameleonFrameEnable!
         }
         if self.crop != nil {
             map["Crop"] = self.crop!
@@ -4121,6 +4126,9 @@ public class InitializeRequest : Tea.TeaModel {
         if let value = dict["CallbackUrl"] as? String {
             self.callbackUrl = value
         }
+        if let value = dict["ChameleonFrameEnable"] as? String {
+            self.chameleonFrameEnable = value
+        }
         if let value = dict["Crop"] as? String {
             self.crop = value
         }
@@ -4232,6 +4240,8 @@ public class InitializeShrinkRequest : Tea.TeaModel {
 
     public var callbackUrl: String?
 
+    public var chameleonFrameEnable: String?
+
     public var crop: String?
 
     public var dateOfBirth: String?
@@ -4323,6 +4333,9 @@ public class InitializeShrinkRequest : Tea.TeaModel {
         }
         if self.callbackUrl != nil {
             map["CallbackUrl"] = self.callbackUrl!
+        }
+        if self.chameleonFrameEnable != nil {
+            map["ChameleonFrameEnable"] = self.chameleonFrameEnable!
         }
         if self.crop != nil {
             map["Crop"] = self.crop!
@@ -4439,6 +4452,9 @@ public class InitializeShrinkRequest : Tea.TeaModel {
         }
         if let value = dict["CallbackUrl"] as? String {
             self.callbackUrl = value
+        }
+        if let value = dict["ChameleonFrameEnable"] as? String {
+            self.chameleonFrameEnable = value
         }
         if let value = dict["Crop"] as? String {
             self.crop = value
