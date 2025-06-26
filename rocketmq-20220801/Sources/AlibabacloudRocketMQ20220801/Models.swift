@@ -803,6 +803,8 @@ public class CreateDisasterRecoveryPlanRequest : Tea.TeaModel {
         }
         public var authType: String?
 
+        public var consumerGroupId: String?
+
         public var endpointUrl: String?
 
         public var instanceId: String?
@@ -844,6 +846,9 @@ public class CreateDisasterRecoveryPlanRequest : Tea.TeaModel {
             var map = super.toMap()
             if self.authType != nil {
                 map["authType"] = self.authType!
+            }
+            if self.consumerGroupId != nil {
+                map["consumerGroupId"] = self.consumerGroupId!
             }
             if self.endpointUrl != nil {
                 map["endpointUrl"] = self.endpointUrl!
@@ -888,6 +893,9 @@ public class CreateDisasterRecoveryPlanRequest : Tea.TeaModel {
             guard let dict else { return }
             if let value = dict["authType"] as? String {
                 self.authType = value
+            }
+            if let value = dict["consumerGroupId"] as? String {
+                self.consumerGroupId = value
             }
             if let value = dict["endpointUrl"] as? String {
                 self.endpointUrl = value
@@ -5533,6 +5541,8 @@ public class GetDisasterRecoveryPlanResponseBody : Tea.TeaModel {
             }
             public var authType: String?
 
+            public var consumerGroupId: String?
+
             public var endpointUrl: String?
 
             public var instanceId: String?
@@ -5574,6 +5584,9 @@ public class GetDisasterRecoveryPlanResponseBody : Tea.TeaModel {
                 var map = super.toMap()
                 if self.authType != nil {
                     map["authType"] = self.authType!
+                }
+                if self.consumerGroupId != nil {
+                    map["consumerGroupId"] = self.consumerGroupId!
                 }
                 if self.endpointUrl != nil {
                     map["endpointUrl"] = self.endpointUrl!
@@ -5618,6 +5631,9 @@ public class GetDisasterRecoveryPlanResponseBody : Tea.TeaModel {
                 guard let dict else { return }
                 if let value = dict["authType"] as? String {
                     self.authType = value
+                }
+                if let value = dict["consumerGroupId"] as? String {
+                    self.consumerGroupId = value
                 }
                 if let value = dict["endpointUrl"] as? String {
                     self.endpointUrl = value
@@ -11380,6 +11396,8 @@ public class ListDisasterRecoveryPlansResponseBody : Tea.TeaModel {
                 }
                 public var authType: String?
 
+                public var consumerGroupId: String?
+
                 public var endpointUrl: String?
 
                 public var instanceId: String?
@@ -11421,6 +11439,9 @@ public class ListDisasterRecoveryPlansResponseBody : Tea.TeaModel {
                     var map = super.toMap()
                     if self.authType != nil {
                         map["authType"] = self.authType!
+                    }
+                    if self.consumerGroupId != nil {
+                        map["consumerGroupId"] = self.consumerGroupId!
                     }
                     if self.endpointUrl != nil {
                         map["endpointUrl"] = self.endpointUrl!
@@ -11465,6 +11486,9 @@ public class ListDisasterRecoveryPlansResponseBody : Tea.TeaModel {
                     guard let dict else { return }
                     if let value = dict["authType"] as? String {
                         self.authType = value
+                    }
+                    if let value = dict["consumerGroupId"] as? String {
+                        self.consumerGroupId = value
                     }
                     if let value = dict["endpointUrl"] as? String {
                         self.endpointUrl = value
@@ -17335,6 +17359,8 @@ public class UpdateDisasterRecoveryPlanRequest : Tea.TeaModel {
         }
         public var authType: String?
 
+        public var consumerGroupId: String?
+
         public var endpointUrl: String?
 
         public var instanceId: String?
@@ -17376,6 +17402,9 @@ public class UpdateDisasterRecoveryPlanRequest : Tea.TeaModel {
             var map = super.toMap()
             if self.authType != nil {
                 map["authType"] = self.authType!
+            }
+            if self.consumerGroupId != nil {
+                map["consumerGroupId"] = self.consumerGroupId!
             }
             if self.endpointUrl != nil {
                 map["endpointUrl"] = self.endpointUrl!
@@ -17420,6 +17449,9 @@ public class UpdateDisasterRecoveryPlanRequest : Tea.TeaModel {
             guard let dict else { return }
             if let value = dict["authType"] as? String {
                 self.authType = value
+            }
+            if let value = dict["consumerGroupId"] as? String {
+                self.consumerGroupId = value
             }
             if let value = dict["endpointUrl"] as? String {
                 self.endpointUrl = value
