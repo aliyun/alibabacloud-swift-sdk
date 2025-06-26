@@ -1,4 +1,4 @@
-github aliyun/tea-swift ~> 1.0.0
+github aliyun/tea-swift ~> 1.0.3
 github alibabacloud-sdk-swift/tea-utils ~> 1.0.6
 github alibabacloud-sdk-swift/tea-oss-sdk ~> 1.0.0
 github alibabacloud-sdk-swift/openplatform-20191219 ~> 1.0.0
