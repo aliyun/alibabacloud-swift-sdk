@@ -721,6 +721,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.endTimeShrink)) {
             query["endTime"] = request.endTimeShrink ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.isWorkflow)) {
+            query["isWorkflow"] = request.isWorkflow ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.jobRunDeploymentId)) {
             query["jobRunDeploymentId"] = request.jobRunDeploymentId ?? "";
         }
@@ -781,10 +784,40 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func listKyuubiServicesWithOptions(_ workspaceId: String, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> ListKyuubiServicesResponse {
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String]
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "ListKyuubiServices",
+            "version": "2023-08-08",
+            "protocol": "HTTPS",
+            "pathname": "/api/v1/kyuubi/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(workspaceId)),
+            "method": "GET",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(ListKyuubiServicesResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func listKyuubiServices(_ workspaceId: String) async throws -> ListKyuubiServicesResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await listKyuubiServicesWithOptions(workspaceId as! String, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func listKyuubiSparkApplicationsWithOptions(_ workspaceId: String, _ kyuubiServiceId: String, _ tmpReq: ListKyuubiSparkApplicationsRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> ListKyuubiSparkApplicationsResponse {
         try TeaUtils.Client.validateModel(tmpReq)
         var request: ListKyuubiSparkApplicationsShrinkRequest = ListKyuubiSparkApplicationsShrinkRequest([:])
         AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.orderBy)) {
+            request.orderByShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.orderBy, "orderBy", "json")
+        }
         if (!TeaUtils.Client.isUnset(tmpReq.startTime)) {
             request.startTimeShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.startTime, "startTime", "json")
         }
@@ -798,8 +831,20 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.maxResults)) {
             query["maxResults"] = request.maxResults!;
         }
+        if (!TeaUtils.Client.isUnset(request.minDuration)) {
+            query["minDuration"] = request.minDuration!;
+        }
         if (!TeaUtils.Client.isUnset(request.nextToken)) {
             query["nextToken"] = request.nextToken ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.orderByShrink)) {
+            query["orderBy"] = request.orderByShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.resourceQueueId)) {
+            query["resourceQueueId"] = request.resourceQueueId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.sort)) {
+            query["sort"] = request.sort ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.startTimeShrink)) {
             query["startTime"] = request.startTimeShrink ?? "";
@@ -828,6 +873,39 @@ open class Client : AlibabacloudOpenApi.Client {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         var headers: [String: String] = [:]
         return try await listKyuubiSparkApplicationsWithOptions(workspaceId as! String, kyuubiServiceId as! String, request as! ListKyuubiSparkApplicationsRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func listKyuubiTokenWithOptions(_ workspaceId: String, _ kyuubiServiceId: String, _ request: ListKyuubiTokenRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> ListKyuubiTokenResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.regionId)) {
+            query["regionId"] = request.regionId ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String],
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "ListKyuubiToken",
+            "version": "2023-08-08",
+            "protocol": "HTTPS",
+            "pathname": "/api/v1/workspaces/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(workspaceId)) + "/kyuubiService/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(kyuubiServiceId)) + "/token",
+            "method": "GET",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(ListKyuubiTokenResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func listKyuubiToken(_ workspaceId: String, _ kyuubiServiceId: String, _ request: ListKyuubiTokenRequest) async throws -> ListKyuubiTokenResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await listKyuubiTokenWithOptions(workspaceId as! String, kyuubiServiceId as! String, request as! ListKyuubiTokenRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
