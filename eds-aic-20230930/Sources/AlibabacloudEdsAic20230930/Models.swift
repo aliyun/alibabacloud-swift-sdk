@@ -4035,6 +4035,118 @@ public class DeleteAppsResponse : Tea.TeaModel {
     }
 }
 
+public class DeleteBackupFileRequest : Tea.TeaModel {
+    public var backupFileIdList: [String]?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.backupFileIdList != nil {
+            map["BackupFileIdList"] = self.backupFileIdList!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["BackupFileIdList"] as? [String] {
+            self.backupFileIdList = value
+        }
+    }
+}
+
+public class DeleteBackupFileResponseBody : Tea.TeaModel {
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+    }
+}
+
+public class DeleteBackupFileResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: DeleteBackupFileResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = DeleteBackupFileResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
 public class DeleteCloudPhoneNodesRequest : Tea.TeaModel {
     public var nodeIds: [String]?
 
@@ -5466,6 +5578,44 @@ public class DescribeAndroidInstancesResponseBody : Tea.TeaModel {
                 }
             }
         }
+        public class PhoneDataInfo : Tea.TeaModel {
+            public var phoneDataId: String?
+
+            public var phoneDataVolume: Int32?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.phoneDataId != nil {
+                    map["PhoneDataId"] = self.phoneDataId!
+                }
+                if self.phoneDataVolume != nil {
+                    map["PhoneDataVolume"] = self.phoneDataVolume!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["PhoneDataId"] as? String {
+                    self.phoneDataId = value
+                }
+                if let value = dict["PhoneDataVolume"] as? Int32 {
+                    self.phoneDataVolume = value
+                }
+            }
+        }
         public class Tags : Tea.TeaModel {
             public var key: String?
 
@@ -5558,6 +5708,8 @@ public class DescribeAndroidInstancesResponseBody : Tea.TeaModel {
 
         public var persistentAppInstanceId: String?
 
+        public var phoneDataInfo: DescribeAndroidInstancesResponseBody.InstanceModel.PhoneDataInfo?
+
         public var policyGroupId: String?
 
         public var publicIpAddress: String?
@@ -5592,6 +5744,7 @@ public class DescribeAndroidInstancesResponseBody : Tea.TeaModel {
         public override func validate() throws -> Void {
             try self.appManagePolicy?.validate()
             try self.displayConfig?.validate()
+            try self.phoneDataInfo?.validate()
         }
 
         public override func toMap() -> [String : Any] {
@@ -5680,6 +5833,9 @@ public class DescribeAndroidInstancesResponseBody : Tea.TeaModel {
             }
             if self.persistentAppInstanceId != nil {
                 map["PersistentAppInstanceId"] = self.persistentAppInstanceId!
+            }
+            if self.phoneDataInfo != nil {
+                map["PhoneDataInfo"] = self.phoneDataInfo?.toMap()
             }
             if self.policyGroupId != nil {
                 map["PolicyGroupId"] = self.policyGroupId!
@@ -5817,6 +5973,11 @@ public class DescribeAndroidInstancesResponseBody : Tea.TeaModel {
             }
             if let value = dict["PersistentAppInstanceId"] as? String {
                 self.persistentAppInstanceId = value
+            }
+            if let value = dict["PhoneDataInfo"] as? [String: Any?] {
+                var model = DescribeAndroidInstancesResponseBody.InstanceModel.PhoneDataInfo()
+                model.fromMap(value)
+                self.phoneDataInfo = model
             }
             if let value = dict["PolicyGroupId"] as? String {
                 self.policyGroupId = value
@@ -6892,6 +7053,44 @@ public class DescribeCloudPhoneNodesResponseBody : Tea.TeaModel {
                 }
             }
         }
+        public class PhoneDataInfo : Tea.TeaModel {
+            public var phoneDataId: String?
+
+            public var phoneDataVolume: Int32?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.phoneDataId != nil {
+                    map["PhoneDataId"] = self.phoneDataId!
+                }
+                if self.phoneDataVolume != nil {
+                    map["PhoneDataVolume"] = self.phoneDataVolume!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["PhoneDataId"] as? String {
+                    self.phoneDataId = value
+                }
+                if let value = dict["PhoneDataVolume"] as? Int32 {
+                    self.phoneDataVolume = value
+                }
+            }
+        }
         public var chargeType: String?
 
         public var cpu: String?
@@ -6915,6 +7114,8 @@ public class DescribeCloudPhoneNodesResponseBody : Tea.TeaModel {
         public var nodeName: String?
 
         public var phoneCount: Int32?
+
+        public var phoneDataInfo: DescribeCloudPhoneNodesResponseBody.NodeModel.PhoneDataInfo?
 
         public var regionId: String?
 
@@ -6940,6 +7141,7 @@ public class DescribeCloudPhoneNodesResponseBody : Tea.TeaModel {
         }
 
         public override func validate() throws -> Void {
+            try self.phoneDataInfo?.validate()
         }
 
         public override func toMap() -> [String : Any] {
@@ -6983,6 +7185,9 @@ public class DescribeCloudPhoneNodesResponseBody : Tea.TeaModel {
             }
             if self.phoneCount != nil {
                 map["PhoneCount"] = self.phoneCount!
+            }
+            if self.phoneDataInfo != nil {
+                map["PhoneDataInfo"] = self.phoneDataInfo?.toMap()
             }
             if self.regionId != nil {
                 map["RegionId"] = self.regionId!
@@ -7055,6 +7260,11 @@ public class DescribeCloudPhoneNodesResponseBody : Tea.TeaModel {
             }
             if let value = dict["PhoneCount"] as? Int32 {
                 self.phoneCount = value
+            }
+            if let value = dict["PhoneDataInfo"] as? [String: Any?] {
+                var model = DescribeCloudPhoneNodesResponseBody.NodeModel.PhoneDataInfo()
+                model.fromMap(value)
+                self.phoneDataInfo = model
             }
             if let value = dict["RegionId"] as? String {
                 self.regionId = value

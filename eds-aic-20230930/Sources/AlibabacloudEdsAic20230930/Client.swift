@@ -753,6 +753,37 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func deleteBackupFileWithOptions(_ request: DeleteBackupFileRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DeleteBackupFileResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.backupFileIdList)) {
+            query["BackupFileIdList"] = request.backupFileIdList ?? [];
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "DeleteBackupFile",
+            "version": "2023-09-30",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(DeleteBackupFileResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func deleteBackupFile(_ request: DeleteBackupFileRequest) async throws -> DeleteBackupFileResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await deleteBackupFileWithOptions(request as! DeleteBackupFileRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func deleteCloudPhoneNodesWithOptions(_ request: DeleteCloudPhoneNodesRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DeleteCloudPhoneNodesResponse {
         try TeaUtils.Client.validateModel(request)
         var body: [String: Any] = [:]
