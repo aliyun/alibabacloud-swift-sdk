@@ -14076,6 +14076,8 @@ public class CreateWorkflowInstancesRequest : Tea.TeaModel {
 
         public var priority: Int32?
 
+        public var priorityWeightStrategy: String?
+
         public var rootTaskIds: [Int64]?
 
         public var runPolicy: CreateWorkflowInstancesRequest.DefaultRunProperties.RunPolicy?
@@ -14129,6 +14131,9 @@ public class CreateWorkflowInstancesRequest : Tea.TeaModel {
             if self.priority != nil {
                 map["Priority"] = self.priority!
             }
+            if self.priorityWeightStrategy != nil {
+                map["PriorityWeightStrategy"] = self.priorityWeightStrategy!
+            }
             if self.rootTaskIds != nil {
                 map["RootTaskIds"] = self.rootTaskIds!
             }
@@ -14176,6 +14181,9 @@ public class CreateWorkflowInstancesRequest : Tea.TeaModel {
             }
             if let value = dict["Priority"] as? Int32 {
                 self.priority = value
+            }
+            if let value = dict["PriorityWeightStrategy"] as? String {
+                self.priorityWeightStrategy = value
             }
             if let value = dict["RootTaskIds"] as? [Int64] {
                 self.rootTaskIds = value
