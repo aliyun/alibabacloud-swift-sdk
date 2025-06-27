@@ -5634,6 +5634,343 @@ public class ManualModerationResultResponse : Tea.TeaModel {
     }
 }
 
+public class MultiModalGuardRequest : Tea.TeaModel {
+    public var service: String?
+
+    public var serviceParameters: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.service != nil {
+            map["Service"] = self.service!
+        }
+        if self.serviceParameters != nil {
+            map["ServiceParameters"] = self.serviceParameters!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["Service"] as? String {
+            self.service = value
+        }
+        if let value = dict["ServiceParameters"] as? String {
+            self.serviceParameters = value
+        }
+    }
+}
+
+public class MultiModalGuardResponseBody : Tea.TeaModel {
+    public class Data : Tea.TeaModel {
+        public class Detail : Tea.TeaModel {
+            public class Result : Tea.TeaModel {
+                public var confidence: Double?
+
+                public var description_: String?
+
+                public var ext: Any?
+
+                public var label: String?
+
+                public var level: String?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.confidence != nil {
+                        map["Confidence"] = self.confidence!
+                    }
+                    if self.description_ != nil {
+                        map["Description"] = self.description_!
+                    }
+                    if self.ext != nil {
+                        map["Ext"] = self.ext!
+                    }
+                    if self.label != nil {
+                        map["Label"] = self.label!
+                    }
+                    if self.level != nil {
+                        map["Level"] = self.level!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                    guard let dict else { return }
+                    if let value = dict["Confidence"] as? Double {
+                        self.confidence = value
+                    }
+                    if let value = dict["Description"] as? String {
+                        self.description_ = value
+                    }
+                    if let value = dict["Ext"] as? Any {
+                        self.ext = value
+                    }
+                    if let value = dict["Label"] as? String {
+                        self.label = value
+                    }
+                    if let value = dict["Level"] as? String {
+                        self.level = value
+                    }
+                }
+            }
+            public var level: String?
+
+            public var result: [MultiModalGuardResponseBody.Data.Detail.Result]?
+
+            public var suggestion: String?
+
+            public var type: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.level != nil {
+                    map["Level"] = self.level!
+                }
+                if self.result != nil {
+                    var tmp : [Any] = []
+                    for k in self.result! {
+                        tmp.append(k.toMap())
+                    }
+                    map["Result"] = tmp
+                }
+                if self.suggestion != nil {
+                    map["Suggestion"] = self.suggestion!
+                }
+                if self.type != nil {
+                    map["Type"] = self.type!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["Level"] as? String {
+                    self.level = value
+                }
+                if let value = dict["Result"] as? [Any?] {
+                    var tmp : [MultiModalGuardResponseBody.Data.Detail.Result] = []
+                    for v in value {
+                        if v != nil {
+                            var model = MultiModalGuardResponseBody.Data.Detail.Result()
+                            if v != nil {
+                                model.fromMap(v as? [String: Any?])
+                            }
+                            tmp.append(model)
+                        }
+                    }
+                    self.result = tmp
+                }
+                if let value = dict["Suggestion"] as? String {
+                    self.suggestion = value
+                }
+                if let value = dict["Type"] as? String {
+                    self.type = value
+                }
+            }
+        }
+        public var dataId: String?
+
+        public var detail: [MultiModalGuardResponseBody.Data.Detail]?
+
+        public var suggestion: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.dataId != nil {
+                map["DataId"] = self.dataId!
+            }
+            if self.detail != nil {
+                var tmp : [Any] = []
+                for k in self.detail! {
+                    tmp.append(k.toMap())
+                }
+                map["Detail"] = tmp
+            }
+            if self.suggestion != nil {
+                map["Suggestion"] = self.suggestion!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["DataId"] as? String {
+                self.dataId = value
+            }
+            if let value = dict["Detail"] as? [Any?] {
+                var tmp : [MultiModalGuardResponseBody.Data.Detail] = []
+                for v in value {
+                    if v != nil {
+                        var model = MultiModalGuardResponseBody.Data.Detail()
+                        if v != nil {
+                            model.fromMap(v as? [String: Any?])
+                        }
+                        tmp.append(model)
+                    }
+                }
+                self.detail = tmp
+            }
+            if let value = dict["Suggestion"] as? String {
+                self.suggestion = value
+            }
+        }
+    }
+    public var code: Int32?
+
+    public var data: MultiModalGuardResponseBody.Data?
+
+    public var message: String?
+
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.data?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.code != nil {
+            map["Code"] = self.code!
+        }
+        if self.data != nil {
+            map["Data"] = self.data?.toMap()
+        }
+        if self.message != nil {
+            map["Message"] = self.message!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["Code"] as? Int32 {
+            self.code = value
+        }
+        if let value = dict["Data"] as? [String: Any?] {
+            var model = MultiModalGuardResponseBody.Data()
+            model.fromMap(value)
+            self.data = model
+        }
+        if let value = dict["Message"] as? String {
+            self.message = value
+        }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+    }
+}
+
+public class MultiModalGuardResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: MultiModalGuardResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = MultiModalGuardResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
 public class TextModerationRequest : Tea.TeaModel {
     public var service: String?
 
