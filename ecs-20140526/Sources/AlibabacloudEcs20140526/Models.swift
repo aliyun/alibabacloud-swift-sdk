@@ -16029,6 +16029,36 @@ public class CreateLaunchTemplateRequest : Tea.TeaModel {
             }
         }
     }
+    public class ImageOptions : Tea.TeaModel {
+        public var loginAsNonRoot: Bool?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.loginAsNonRoot != nil {
+                map["LoginAsNonRoot"] = self.loginAsNonRoot!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["LoginAsNonRoot"] as? Bool {
+                self.loginAsNonRoot = value
+            }
+        }
+    }
     public class NetworkInterface : Tea.TeaModel {
         public var deleteOnRelease: Bool?
 
@@ -16229,6 +16259,8 @@ public class CreateLaunchTemplateRequest : Tea.TeaModel {
 
     public var imageId: String?
 
+    public var imageOptions: CreateLaunchTemplateRequest.ImageOptions?
+
     public var imageOwnerAlias: String?
 
     public var instanceChargeType: String?
@@ -16316,6 +16348,7 @@ public class CreateLaunchTemplateRequest : Tea.TeaModel {
 
     public override func validate() throws -> Void {
         try self.systemDisk?.validate()
+        try self.imageOptions?.validate()
     }
 
     public override func toMap() -> [String : Any] {
@@ -16368,6 +16401,9 @@ public class CreateLaunchTemplateRequest : Tea.TeaModel {
         }
         if self.imageId != nil {
             map["ImageId"] = self.imageId!
+        }
+        if self.imageOptions != nil {
+            map["ImageOptions"] = self.imageOptions?.toMap()
         }
         if self.imageOwnerAlias != nil {
             map["ImageOwnerAlias"] = self.imageOwnerAlias!
@@ -16556,6 +16592,11 @@ public class CreateLaunchTemplateRequest : Tea.TeaModel {
         }
         if let value = dict["ImageId"] as? String {
             self.imageId = value
+        }
+        if let value = dict["ImageOptions"] as? [String: Any?] {
+            var model = CreateLaunchTemplateRequest.ImageOptions()
+            model.fromMap(value)
+            self.imageOptions = model
         }
         if let value = dict["ImageOwnerAlias"] as? String {
             self.imageOwnerAlias = value
@@ -17046,6 +17087,36 @@ public class CreateLaunchTemplateVersionRequest : Tea.TeaModel {
             }
         }
     }
+    public class ImageOptions : Tea.TeaModel {
+        public var loginAsNonRoot: Bool?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.loginAsNonRoot != nil {
+                map["LoginAsNonRoot"] = self.loginAsNonRoot!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["LoginAsNonRoot"] as? Bool {
+                self.loginAsNonRoot = value
+            }
+        }
+    }
     public class NetworkInterface : Tea.TeaModel {
         public var deleteOnRelease: Bool?
 
@@ -17208,6 +17279,8 @@ public class CreateLaunchTemplateVersionRequest : Tea.TeaModel {
 
     public var imageId: String?
 
+    public var imageOptions: CreateLaunchTemplateVersionRequest.ImageOptions?
+
     public var imageOwnerAlias: String?
 
     public var instanceChargeType: String?
@@ -17293,6 +17366,7 @@ public class CreateLaunchTemplateVersionRequest : Tea.TeaModel {
 
     public override func validate() throws -> Void {
         try self.systemDisk?.validate()
+        try self.imageOptions?.validate()
     }
 
     public override func toMap() -> [String : Any] {
@@ -17345,6 +17419,9 @@ public class CreateLaunchTemplateVersionRequest : Tea.TeaModel {
         }
         if self.imageId != nil {
             map["ImageId"] = self.imageId!
+        }
+        if self.imageOptions != nil {
+            map["ImageOptions"] = self.imageOptions?.toMap()
         }
         if self.imageOwnerAlias != nil {
             map["ImageOwnerAlias"] = self.imageOwnerAlias!
@@ -17526,6 +17603,11 @@ public class CreateLaunchTemplateVersionRequest : Tea.TeaModel {
         }
         if let value = dict["ImageId"] as? String {
             self.imageId = value
+        }
+        if let value = dict["ImageOptions"] as? [String: Any?] {
+            var model = CreateLaunchTemplateVersionRequest.ImageOptions()
+            model.fromMap(value)
+            self.imageOptions = model
         }
         if let value = dict["ImageOwnerAlias"] as? String {
             self.imageOwnerAlias = value
@@ -66545,6 +66627,36 @@ public class DescribeLaunchTemplateVersionsResponseBody : Tea.TeaModel {
                         }
                     }
                 }
+                public class ImageOptions : Tea.TeaModel {
+                    public var loginAsNonRoot: Bool?
+
+                    public override init() {
+                        super.init()
+                    }
+
+                    public init(_ dict: [String: Any]) {
+                        super.init()
+                        self.fromMap(dict)
+                    }
+
+                    public override func validate() throws -> Void {
+                    }
+
+                    public override func toMap() -> [String : Any] {
+                        var map = super.toMap()
+                        if self.loginAsNonRoot != nil {
+                            map["LoginAsNonRoot"] = self.loginAsNonRoot!
+                        }
+                        return map
+                    }
+
+                    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                        guard let dict else { return }
+                        if let value = dict["LoginAsNonRoot"] as? Bool {
+                            self.loginAsNonRoot = value
+                        }
+                    }
+                }
                 public class NetworkInterfaces : Tea.TeaModel {
                     public class NetworkInterface : Tea.TeaModel {
                         public class SecurityGroupIds : Tea.TeaModel {
@@ -66858,6 +66970,8 @@ public class DescribeLaunchTemplateVersionsResponseBody : Tea.TeaModel {
 
                 public var imageId: String?
 
+                public var imageOptions: DescribeLaunchTemplateVersionsResponseBody.LaunchTemplateVersionSets.LaunchTemplateVersionSet.LaunchTemplateData.ImageOptions?
+
                 public var imageOwnerAlias: String?
 
                 public var instanceChargeType: String?
@@ -66928,6 +67042,7 @@ public class DescribeLaunchTemplateVersionsResponseBody : Tea.TeaModel {
                 public override func validate() throws -> Void {
                     try self.systemDisk?.validate()
                     try self.dataDisks?.validate()
+                    try self.imageOptions?.validate()
                     try self.networkInterfaces?.validate()
                     try self.securityGroupIds?.validate()
                     try self.tags?.validate()
@@ -66979,6 +67094,9 @@ public class DescribeLaunchTemplateVersionsResponseBody : Tea.TeaModel {
                     }
                     if self.imageId != nil {
                         map["ImageId"] = self.imageId!
+                    }
+                    if self.imageOptions != nil {
+                        map["ImageOptions"] = self.imageOptions?.toMap()
                     }
                     if self.imageOwnerAlias != nil {
                         map["ImageOwnerAlias"] = self.imageOwnerAlias!
@@ -67120,6 +67238,11 @@ public class DescribeLaunchTemplateVersionsResponseBody : Tea.TeaModel {
                     }
                     if let value = dict["ImageId"] as? String {
                         self.imageId = value
+                    }
+                    if let value = dict["ImageOptions"] as? [String: Any?] {
+                        var model = DescribeLaunchTemplateVersionsResponseBody.LaunchTemplateVersionSets.LaunchTemplateVersionSet.LaunchTemplateData.ImageOptions()
+                        model.fromMap(value)
+                        self.imageOptions = model
                     }
                     if let value = dict["ImageOwnerAlias"] as? String {
                         self.imageOwnerAlias = value
