@@ -42799,7 +42799,11 @@ public class ModifySubscriptionRequest : Tea.TeaModel {
 
     public var dtsJobId: String?
 
+    public var modifyType: String?
+
     public var regionId: String?
+
+    public var reserved: String?
 
     public var resourceGroupId: String?
 
@@ -42830,8 +42834,14 @@ public class ModifySubscriptionRequest : Tea.TeaModel {
         if self.dtsJobId != nil {
             map["DtsJobId"] = self.dtsJobId!
         }
+        if self.modifyType != nil {
+            map["ModifyType"] = self.modifyType!
+        }
         if self.regionId != nil {
             map["RegionId"] = self.regionId!
+        }
+        if self.reserved != nil {
+            map["Reserved"] = self.reserved!
         }
         if self.resourceGroupId != nil {
             map["ResourceGroupId"] = self.resourceGroupId!
@@ -42856,8 +42866,14 @@ public class ModifySubscriptionRequest : Tea.TeaModel {
         if let value = dict["DtsJobId"] as? String {
             self.dtsJobId = value
         }
+        if let value = dict["ModifyType"] as? String {
+            self.modifyType = value
+        }
         if let value = dict["RegionId"] as? String {
             self.regionId = value
+        }
+        if let value = dict["Reserved"] as? String {
+            self.reserved = value
         }
         if let value = dict["ResourceGroupId"] as? String {
             self.resourceGroupId = value
