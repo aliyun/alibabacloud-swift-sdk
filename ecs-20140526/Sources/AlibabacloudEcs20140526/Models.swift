@@ -7098,6 +7098,44 @@ public class CreateAutoProvisioningGroupRequest : Tea.TeaModel {
                 }
             }
         }
+        public class SchedulerOptions : Tea.TeaModel {
+            public var dedicatedHostClusterId: String?
+
+            public var dedicatedHostId: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.dedicatedHostClusterId != nil {
+                    map["DedicatedHostClusterId"] = self.dedicatedHostClusterId!
+                }
+                if self.dedicatedHostId != nil {
+                    map["DedicatedHostId"] = self.dedicatedHostId!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["DedicatedHostClusterId"] as? String {
+                    self.dedicatedHostClusterId = value
+                }
+                if let value = dict["DedicatedHostId"] as? String {
+                    self.dedicatedHostId = value
+                }
+            }
+        }
         public var arn: [CreateAutoProvisioningGroupRequest.LaunchConfiguration.Arn]?
 
         public var autoReleaseTime: String?
@@ -7170,6 +7208,8 @@ public class CreateAutoProvisioningGroupRequest : Tea.TeaModel {
 
         public var periodUnit: String?
 
+        public var schedulerOptions: CreateAutoProvisioningGroupRequest.LaunchConfiguration.SchedulerOptions?
+
         public var spotDuration: Int32?
 
         public var spotInterruptionBehavior: String?
@@ -7186,6 +7226,7 @@ public class CreateAutoProvisioningGroupRequest : Tea.TeaModel {
         public override func validate() throws -> Void {
             try self.systemDisk?.validate()
             try self.imageOptions?.validate()
+            try self.schedulerOptions?.validate()
         }
 
         public override func toMap() -> [String : Any] {
@@ -7309,6 +7350,9 @@ public class CreateAutoProvisioningGroupRequest : Tea.TeaModel {
             }
             if self.periodUnit != nil {
                 map["PeriodUnit"] = self.periodUnit!
+            }
+            if self.schedulerOptions != nil {
+                map["SchedulerOptions"] = self.schedulerOptions?.toMap()
             }
             if self.spotDuration != nil {
                 map["SpotDuration"] = self.spotDuration!
@@ -7462,6 +7506,11 @@ public class CreateAutoProvisioningGroupRequest : Tea.TeaModel {
             }
             if let value = dict["PeriodUnit"] as? String {
                 self.periodUnit = value
+            }
+            if let value = dict["SchedulerOptions"] as? [String: Any?] {
+                var model = CreateAutoProvisioningGroupRequest.LaunchConfiguration.SchedulerOptions()
+                model.fromMap(value)
+                self.schedulerOptions = model
             }
             if let value = dict["SpotDuration"] as? Int32 {
                 self.spotDuration = value
@@ -8502,6 +8551,44 @@ public class CreateAutoProvisioningGroupShrinkRequest : Tea.TeaModel {
                 }
             }
         }
+        public class SchedulerOptions : Tea.TeaModel {
+            public var dedicatedHostClusterId: String?
+
+            public var dedicatedHostId: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.dedicatedHostClusterId != nil {
+                    map["DedicatedHostClusterId"] = self.dedicatedHostClusterId!
+                }
+                if self.dedicatedHostId != nil {
+                    map["DedicatedHostId"] = self.dedicatedHostId!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["DedicatedHostClusterId"] as? String {
+                    self.dedicatedHostClusterId = value
+                }
+                if let value = dict["DedicatedHostId"] as? String {
+                    self.dedicatedHostId = value
+                }
+            }
+        }
         public var arn: [CreateAutoProvisioningGroupShrinkRequest.LaunchConfiguration.Arn]?
 
         public var autoReleaseTime: String?
@@ -8574,6 +8661,8 @@ public class CreateAutoProvisioningGroupShrinkRequest : Tea.TeaModel {
 
         public var periodUnit: String?
 
+        public var schedulerOptions: CreateAutoProvisioningGroupShrinkRequest.LaunchConfiguration.SchedulerOptions?
+
         public var spotDuration: Int32?
 
         public var spotInterruptionBehavior: String?
@@ -8590,6 +8679,7 @@ public class CreateAutoProvisioningGroupShrinkRequest : Tea.TeaModel {
         public override func validate() throws -> Void {
             try self.systemDisk?.validate()
             try self.imageOptions?.validate()
+            try self.schedulerOptions?.validate()
         }
 
         public override func toMap() -> [String : Any] {
@@ -8713,6 +8803,9 @@ public class CreateAutoProvisioningGroupShrinkRequest : Tea.TeaModel {
             }
             if self.periodUnit != nil {
                 map["PeriodUnit"] = self.periodUnit!
+            }
+            if self.schedulerOptions != nil {
+                map["SchedulerOptions"] = self.schedulerOptions?.toMap()
             }
             if self.spotDuration != nil {
                 map["SpotDuration"] = self.spotDuration!
@@ -8866,6 +8959,11 @@ public class CreateAutoProvisioningGroupShrinkRequest : Tea.TeaModel {
             }
             if let value = dict["PeriodUnit"] as? String {
                 self.periodUnit = value
+            }
+            if let value = dict["SchedulerOptions"] as? [String: Any?] {
+                var model = CreateAutoProvisioningGroupShrinkRequest.LaunchConfiguration.SchedulerOptions()
+                model.fromMap(value)
+                self.schedulerOptions = model
             }
             if let value = dict["SpotDuration"] as? Int32 {
                 self.spotDuration = value
