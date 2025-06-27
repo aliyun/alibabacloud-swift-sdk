@@ -28406,6 +28406,44 @@ public class DescribeApplicationScalingRulesResponseBody : Tea.TeaModel {
                         }
                     }
                 }
+                public class PrometheusMetrics : Tea.TeaModel {
+                    public var prometheusQuery: String?
+
+                    public var targetMetricValue: String?
+
+                    public override init() {
+                        super.init()
+                    }
+
+                    public init(_ dict: [String: Any]) {
+                        super.init()
+                        self.fromMap(dict)
+                    }
+
+                    public override func validate() throws -> Void {
+                    }
+
+                    public override func toMap() -> [String : Any] {
+                        var map = super.toMap()
+                        if self.prometheusQuery != nil {
+                            map["PrometheusQuery"] = self.prometheusQuery!
+                        }
+                        if self.targetMetricValue != nil {
+                            map["TargetMetricValue"] = self.targetMetricValue!
+                        }
+                        return map
+                    }
+
+                    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                        guard let dict else { return }
+                        if let value = dict["PrometheusQuery"] as? String {
+                            self.prometheusQuery = value
+                        }
+                        if let value = dict["TargetMetricValue"] as? String {
+                            self.targetMetricValue = value
+                        }
+                    }
+                }
                 public class ScaleDownRules : Tea.TeaModel {
                     public var disabled: Bool?
 
@@ -28500,11 +28538,19 @@ public class DescribeApplicationScalingRulesResponseBody : Tea.TeaModel {
                 }
                 public var maxReplicas: Int32?
 
+                public var metricSource: String?
+
                 public var metrics: [DescribeApplicationScalingRulesResponseBody.Data.ApplicationScalingRules.Metric.Metrics]?
 
                 public var metricsStatus: DescribeApplicationScalingRulesResponseBody.Data.ApplicationScalingRules.Metric.MetricsStatus?
 
                 public var minReplicas: Int32?
+
+                public var prometheusMetrics: [DescribeApplicationScalingRulesResponseBody.Data.ApplicationScalingRules.Metric.PrometheusMetrics]?
+
+                public var prometheusToken: String?
+
+                public var prometheusUrl: String?
 
                 public var scaleDownRules: DescribeApplicationScalingRulesResponseBody.Data.ApplicationScalingRules.Metric.ScaleDownRules?
 
@@ -28530,6 +28576,9 @@ public class DescribeApplicationScalingRulesResponseBody : Tea.TeaModel {
                     if self.maxReplicas != nil {
                         map["MaxReplicas"] = self.maxReplicas!
                     }
+                    if self.metricSource != nil {
+                        map["MetricSource"] = self.metricSource!
+                    }
                     if self.metrics != nil {
                         var tmp : [Any] = []
                         for k in self.metrics! {
@@ -28542,6 +28591,19 @@ public class DescribeApplicationScalingRulesResponseBody : Tea.TeaModel {
                     }
                     if self.minReplicas != nil {
                         map["MinReplicas"] = self.minReplicas!
+                    }
+                    if self.prometheusMetrics != nil {
+                        var tmp : [Any] = []
+                        for k in self.prometheusMetrics! {
+                            tmp.append(k.toMap())
+                        }
+                        map["PrometheusMetrics"] = tmp
+                    }
+                    if self.prometheusToken != nil {
+                        map["PrometheusToken"] = self.prometheusToken!
+                    }
+                    if self.prometheusUrl != nil {
+                        map["PrometheusUrl"] = self.prometheusUrl!
                     }
                     if self.scaleDownRules != nil {
                         map["ScaleDownRules"] = self.scaleDownRules?.toMap()
@@ -28556,6 +28618,9 @@ public class DescribeApplicationScalingRulesResponseBody : Tea.TeaModel {
                     guard let dict else { return }
                     if let value = dict["MaxReplicas"] as? Int32 {
                         self.maxReplicas = value
+                    }
+                    if let value = dict["MetricSource"] as? String {
+                        self.metricSource = value
                     }
                     if let value = dict["Metrics"] as? [Any?] {
                         var tmp : [DescribeApplicationScalingRulesResponseBody.Data.ApplicationScalingRules.Metric.Metrics] = []
@@ -28577,6 +28642,25 @@ public class DescribeApplicationScalingRulesResponseBody : Tea.TeaModel {
                     }
                     if let value = dict["MinReplicas"] as? Int32 {
                         self.minReplicas = value
+                    }
+                    if let value = dict["PrometheusMetrics"] as? [Any?] {
+                        var tmp : [DescribeApplicationScalingRulesResponseBody.Data.ApplicationScalingRules.Metric.PrometheusMetrics] = []
+                        for v in value {
+                            if v != nil {
+                                var model = DescribeApplicationScalingRulesResponseBody.Data.ApplicationScalingRules.Metric.PrometheusMetrics()
+                                if v != nil {
+                                    model.fromMap(v as? [String: Any?])
+                                }
+                                tmp.append(model)
+                            }
+                        }
+                        self.prometheusMetrics = tmp
+                    }
+                    if let value = dict["PrometheusToken"] as? String {
+                        self.prometheusToken = value
+                    }
+                    if let value = dict["PrometheusUrl"] as? String {
+                        self.prometheusUrl = value
                     }
                     if let value = dict["ScaleDownRules"] as? [String: Any?] {
                         var model = DescribeApplicationScalingRulesResponseBody.Data.ApplicationScalingRules.Metric.ScaleDownRules()
