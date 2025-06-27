@@ -709,6 +709,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.scanBy)) {
             query["ScanBy"] = request.scanBy ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.stepMinutes)) {
+            query["StepMinutes"] = request.stepMinutes!;
+        }
         if (!TeaUtils.Client.isUnset(request.useCrossAccount)) {
             query["UseCrossAccount"] = request.useCrossAccount!;
         }
