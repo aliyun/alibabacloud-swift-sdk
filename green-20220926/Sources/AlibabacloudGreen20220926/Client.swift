@@ -2559,6 +2559,43 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func llmStreamChatWithOptions(_ request: LlmStreamChatRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> LlmStreamChatResponse {
+        try TeaUtils.Client.validateModel(request)
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.messages)) {
+            body["Messages"] = request.messages!;
+        }
+        if (!TeaUtils.Client.isUnset(request.temperature)) {
+            body["Temperature"] = request.temperature!;
+        }
+        if (!TeaUtils.Client.isUnset(request.topP)) {
+            body["TopP"] = request.topP!;
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "LlmStreamChat",
+            "version": "2022-09-26",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(LlmStreamChatResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func llmStreamChat(_ request: LlmStreamChatRequest) async throws -> LlmStreamChatResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await llmStreamChatWithOptions(request as! LlmStreamChatRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func modifyAnswerLibWithOptions(_ request: ModifyAnswerLibRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ModifyAnswerLibResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
@@ -3112,6 +3149,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.serviceCode)) {
             body["ServiceCode"] = request.serviceCode ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.serviceConfig)) {
+            body["ServiceConfig"] = request.serviceConfig ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.videoConfig)) {
             body["VideoConfig"] = request.videoConfig ?? "";
