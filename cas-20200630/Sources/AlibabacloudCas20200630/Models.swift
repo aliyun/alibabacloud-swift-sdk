@@ -2882,6 +2882,8 @@ public class DescribeCACertificateListResponseBody : Tea.TeaModel {
 
         public var countryCode: String?
 
+        public var gift: Int32?
+
         public var identifier: String?
 
         public var keySize: Int32?
@@ -2909,6 +2911,8 @@ public class DescribeCACertificateListResponseBody : Tea.TeaModel {
         public var status: String?
 
         public var subjectDN: String?
+
+        public var trial: Int32?
 
         public var x509Certificate: String?
 
@@ -2948,6 +2952,9 @@ public class DescribeCACertificateListResponseBody : Tea.TeaModel {
             }
             if self.countryCode != nil {
                 map["CountryCode"] = self.countryCode!
+            }
+            if self.gift != nil {
+                map["Gift"] = self.gift!
             }
             if self.identifier != nil {
                 map["Identifier"] = self.identifier!
@@ -2991,6 +2998,9 @@ public class DescribeCACertificateListResponseBody : Tea.TeaModel {
             if self.subjectDN != nil {
                 map["SubjectDN"] = self.subjectDN!
             }
+            if self.trial != nil {
+                map["Trial"] = self.trial!
+            }
             if self.x509Certificate != nil {
                 map["X509Certificate"] = self.x509Certificate!
             }
@@ -3022,6 +3032,9 @@ public class DescribeCACertificateListResponseBody : Tea.TeaModel {
             }
             if let value = dict["CountryCode"] as? String {
                 self.countryCode = value
+            }
+            if let value = dict["Gift"] as? Int32 {
+                self.gift = value
             }
             if let value = dict["Identifier"] as? String {
                 self.identifier = value
@@ -3064,6 +3077,9 @@ public class DescribeCACertificateListResponseBody : Tea.TeaModel {
             }
             if let value = dict["SubjectDN"] as? String {
                 self.subjectDN = value
+            }
+            if let value = dict["Trial"] as? Int32 {
+                self.trial = value
             }
             if let value = dict["X509Certificate"] as? String {
                 self.x509Certificate = value
