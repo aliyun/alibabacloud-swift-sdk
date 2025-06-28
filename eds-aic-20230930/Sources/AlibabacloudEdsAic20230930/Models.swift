@@ -2244,6 +2244,8 @@ public class CreateCloudPhoneNodeRequest : Tea.TeaModel {
 
     public var serverType: String?
 
+    public var streamMode: Int32?
+
     public var tag: [CreateCloudPhoneNodeRequest.Tag]?
 
     public var vSwitchId: String?
@@ -2314,6 +2316,9 @@ public class CreateCloudPhoneNodeRequest : Tea.TeaModel {
         if self.serverType != nil {
             map["ServerType"] = self.serverType!
         }
+        if self.streamMode != nil {
+            map["StreamMode"] = self.streamMode!
+        }
         if self.tag != nil {
             var tmp : [Any] = []
             for k in self.tag! {
@@ -2381,6 +2386,9 @@ public class CreateCloudPhoneNodeRequest : Tea.TeaModel {
         }
         if let value = dict["ServerType"] as? String {
             self.serverType = value
+        }
+        if let value = dict["StreamMode"] as? Int32 {
+            self.streamMode = value
         }
         if let value = dict["Tag"] as? [Any?] {
             var tmp : [CreateCloudPhoneNodeRequest.Tag] = []
@@ -2474,6 +2482,8 @@ public class CreateCloudPhoneNodeShrinkRequest : Tea.TeaModel {
 
     public var serverType: String?
 
+    public var streamMode: Int32?
+
     public var tag: [CreateCloudPhoneNodeShrinkRequest.Tag]?
 
     public var vSwitchId: String?
@@ -2543,6 +2553,9 @@ public class CreateCloudPhoneNodeShrinkRequest : Tea.TeaModel {
         if self.serverType != nil {
             map["ServerType"] = self.serverType!
         }
+        if self.streamMode != nil {
+            map["StreamMode"] = self.streamMode!
+        }
         if self.tag != nil {
             var tmp : [Any] = []
             for k in self.tag! {
@@ -2608,6 +2621,9 @@ public class CreateCloudPhoneNodeShrinkRequest : Tea.TeaModel {
         }
         if let value = dict["ServerType"] as? String {
             self.serverType = value
+        }
+        if let value = dict["StreamMode"] as? Int32 {
+            self.streamMode = value
         }
         if let value = dict["Tag"] as? [Any?] {
             var tmp : [CreateCloudPhoneNodeShrinkRequest.Tag] = []
@@ -5726,6 +5742,8 @@ public class DescribeAndroidInstancesResponseBody : Tea.TeaModel {
 
         public var sessionStatus: String?
 
+        public var streamMode: Int32?
+
         public var tags: [DescribeAndroidInstancesResponseBody.InstanceModel.Tags]?
 
         public var vSwitchId: String?
@@ -5860,6 +5878,9 @@ public class DescribeAndroidInstancesResponseBody : Tea.TeaModel {
             }
             if self.sessionStatus != nil {
                 map["SessionStatus"] = self.sessionStatus!
+            }
+            if self.streamMode != nil {
+                map["StreamMode"] = self.streamMode!
             }
             if self.tags != nil {
                 var tmp : [Any] = []
@@ -6002,6 +6023,9 @@ public class DescribeAndroidInstancesResponseBody : Tea.TeaModel {
             }
             if let value = dict["SessionStatus"] as? String {
                 self.sessionStatus = value
+            }
+            if let value = dict["StreamMode"] as? Int32 {
+                self.streamMode = value
             }
             if let value = dict["Tags"] as? [Any?] {
                 var tmp : [DescribeAndroidInstancesResponseBody.InstanceModel.Tags] = []
@@ -9537,6 +9561,8 @@ public class DetachKeyPairResponse : Tea.TeaModel {
 }
 
 public class DisconnectAndroidInstanceRequest : Tea.TeaModel {
+    public var endUserId: String?
+
     public var instanceIds: [String]?
 
     public override init() {
@@ -9553,6 +9579,9 @@ public class DisconnectAndroidInstanceRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.endUserId != nil {
+            map["EndUserId"] = self.endUserId!
+        }
         if self.instanceIds != nil {
             map["InstanceIds"] = self.instanceIds!
         }
@@ -9561,6 +9590,9 @@ public class DisconnectAndroidInstanceRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["EndUserId"] as? String {
+            self.endUserId = value
+        }
         if let value = dict["InstanceIds"] as? [String] {
             self.instanceIds = value
         }
@@ -11781,6 +11813,8 @@ public class ModifyCloudPhoneNodeRequest : Tea.TeaModel {
 
     public var nodeId: String?
 
+    public var streamMode: Int32?
+
     public override init() {
         super.init()
     }
@@ -11801,6 +11835,9 @@ public class ModifyCloudPhoneNodeRequest : Tea.TeaModel {
         if self.nodeId != nil {
             map["NodeId"] = self.nodeId!
         }
+        if self.streamMode != nil {
+            map["StreamMode"] = self.streamMode!
+        }
         return map
     }
 
@@ -11811,6 +11848,9 @@ public class ModifyCloudPhoneNodeRequest : Tea.TeaModel {
         }
         if let value = dict["NodeId"] as? String {
             self.nodeId = value
+        }
+        if let value = dict["StreamMode"] as? Int32 {
+            self.streamMode = value
         }
     }
 }

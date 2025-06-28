@@ -478,6 +478,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.serverType)) {
             query["ServerType"] = request.serverType ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.streamMode)) {
+            query["StreamMode"] = request.streamMode!;
+        }
         if (!TeaUtils.Client.isUnset(request.tag)) {
             query["Tag"] = request.tag ?? [];
         }
@@ -1579,6 +1582,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func disconnectAndroidInstanceWithOptions(_ request: DisconnectAndroidInstanceRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DisconnectAndroidInstanceResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.endUserId)) {
+            query["EndUserId"] = request.endUserId ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.instanceIds)) {
             query["InstanceIds"] = request.instanceIds ?? [];
         }
@@ -2059,7 +2065,16 @@ open class Client : AlibabacloudOpenApi.Client {
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func modifyCloudPhoneNodeWithOptions(_ request: ModifyCloudPhoneNodeRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ModifyCloudPhoneNodeResponse {
         try TeaUtils.Client.validateModel(request)
-        var query: [String: String] = AlibabaCloudOpenApiUtil.Client.query(TeaUtils.Client.toMap(request))
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.newNodeName)) {
+            query["NewNodeName"] = request.newNodeName ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.nodeId)) {
+            query["NodeId"] = request.nodeId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.streamMode)) {
+            query["StreamMode"] = request.streamMode!;
+        }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "query": AlibabaCloudOpenApiUtil.Client.query(query)
         ])
@@ -2068,7 +2083,7 @@ open class Client : AlibabacloudOpenApi.Client {
             "version": "2023-09-30",
             "protocol": "HTTPS",
             "pathname": "/",
-            "method": "GET",
+            "method": "POST",
             "authType": "AK",
             "style": "RPC",
             "reqBodyType": "formData",
