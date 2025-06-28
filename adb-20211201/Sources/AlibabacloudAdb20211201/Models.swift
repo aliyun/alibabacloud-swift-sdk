@@ -33118,6 +33118,8 @@ public class DescribeSQLPatternsRequest : Tea.TeaModel {
 
     public var startTime: String?
 
+    public var userName: String?
+
     public override init() {
         super.init()
     }
@@ -33159,6 +33161,9 @@ public class DescribeSQLPatternsRequest : Tea.TeaModel {
         if self.startTime != nil {
             map["StartTime"] = self.startTime!
         }
+        if self.userName != nil {
+            map["UserName"] = self.userName!
+        }
         return map
     }
 
@@ -33190,6 +33195,9 @@ public class DescribeSQLPatternsRequest : Tea.TeaModel {
         }
         if let value = dict["StartTime"] as? String {
             self.startTime = value
+        }
+        if let value = dict["UserName"] as? String {
+            self.userName = value
         }
     }
 }
