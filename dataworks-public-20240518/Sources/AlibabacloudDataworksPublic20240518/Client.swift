@@ -429,16 +429,58 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(tmpReq.transformationRules)) {
             request.transformationRulesShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.transformationRules, "TransformationRules", "json")
         }
-        var query: [String: String] = AlibabaCloudOpenApiUtil.Client.query(TeaUtils.Client.toMap(request))
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.description_)) {
+            body["Description"] = request.description_ ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.destinationDataSourceSettingsShrink)) {
+            body["DestinationDataSourceSettings"] = request.destinationDataSourceSettingsShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.destinationDataSourceType)) {
+            body["DestinationDataSourceType"] = request.destinationDataSourceType ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.jobName)) {
+            body["JobName"] = request.jobName ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.jobSettingsShrink)) {
+            body["JobSettings"] = request.jobSettingsShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.jobType)) {
+            body["JobType"] = request.jobType ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.migrationType)) {
+            body["MigrationType"] = request.migrationType ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.name)) {
+            body["Name"] = request.name ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.projectId)) {
+            body["ProjectId"] = request.projectId!;
+        }
+        if (!TeaUtils.Client.isUnset(request.resourceSettingsShrink)) {
+            body["ResourceSettings"] = request.resourceSettingsShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.sourceDataSourceSettingsShrink)) {
+            body["SourceDataSourceSettings"] = request.sourceDataSourceSettingsShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.sourceDataSourceType)) {
+            body["SourceDataSourceType"] = request.sourceDataSourceType ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.tableMappingsShrink)) {
+            body["TableMappings"] = request.tableMappingsShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.transformationRulesShrink)) {
+            body["TransformationRules"] = request.transformationRulesShrink ?? "";
+        }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
-            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
         ])
         var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
             "action": "CreateDIJob",
             "version": "2024-05-18",
             "protocol": "HTTPS",
             "pathname": "/",
-            "method": "GET",
+            "method": "POST",
             "authType": "AK",
             "style": "RPC",
             "reqBodyType": "formData",
@@ -7723,16 +7765,42 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(tmpReq.transformationRules)) {
             request.transformationRulesShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.transformationRules, "TransformationRules", "json")
         }
-        var query: [String: String] = AlibabaCloudOpenApiUtil.Client.query(TeaUtils.Client.toMap(request))
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.id)) {
+            query["Id"] = request.id!;
+        }
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.DIJobId)) {
+            body["DIJobId"] = request.DIJobId!;
+        }
+        if (!TeaUtils.Client.isUnset(request.description_)) {
+            body["Description"] = request.description_ ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.jobSettingsShrink)) {
+            body["JobSettings"] = request.jobSettingsShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.projectId)) {
+            body["ProjectId"] = request.projectId!;
+        }
+        if (!TeaUtils.Client.isUnset(request.resourceSettingsShrink)) {
+            body["ResourceSettings"] = request.resourceSettingsShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.tableMappingsShrink)) {
+            body["TableMappings"] = request.tableMappingsShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.transformationRulesShrink)) {
+            body["TransformationRules"] = request.transformationRulesShrink ?? "";
+        }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
-            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+            "query": AlibabaCloudOpenApiUtil.Client.query(query),
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
         ])
         var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
             "action": "UpdateDIJob",
             "version": "2024-05-18",
             "protocol": "HTTPS",
             "pathname": "/",
-            "method": "GET",
+            "method": "POST",
             "authType": "AK",
             "style": "RPC",
             "reqBodyType": "formData",
