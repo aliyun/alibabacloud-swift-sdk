@@ -1076,6 +1076,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.clusterId)) {
             body["cluster_id"] = request.clusterId ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.configId)) {
+            body["config_id"] = request.configId ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.grayscaleConfig)) {
             body["grayscale_config"] = request.grayscaleConfig ?? "";
         }
@@ -1256,6 +1259,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.pluginVersion)) {
             query["plugin_version"] = request.pluginVersion ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.region)) {
+            query["region"] = request.region ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.status)) {
             query["status"] = request.status ?? "";
         }
@@ -1331,6 +1337,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func listClusterAgentInstallRecordsWithOptions(_ request: ListClusterAgentInstallRecordsRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> ListClusterAgentInstallRecordsResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.agentConfigId)) {
+            query["agent_config_id"] = request.agentConfigId ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.clusterId)) {
             query["cluster_id"] = request.clusterId ?? "";
         }
