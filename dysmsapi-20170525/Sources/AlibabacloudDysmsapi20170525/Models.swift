@@ -5506,6 +5506,112 @@ public class GetSmsSignResponseBody : Tea.TeaModel {
             }
         }
     }
+    public class SignIspRegisterDetailList : Tea.TeaModel {
+        public class RegisterStatusReasons : Tea.TeaModel {
+            public var reasonCode: String?
+
+            public var reasonDescList: [String]?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.reasonCode != nil {
+                    map["ReasonCode"] = self.reasonCode!
+                }
+                if self.reasonDescList != nil {
+                    map["ReasonDescList"] = self.reasonDescList!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["ReasonCode"] as? String {
+                    self.reasonCode = value
+                }
+                if let value = dict["ReasonDescList"] as? [String] {
+                    self.reasonDescList = value
+                }
+            }
+        }
+        public var operatorCode: String?
+
+        public var operatorCompleteTime: String?
+
+        public var registerStatus: Int32?
+
+        public var registerStatusReasons: [GetSmsSignResponseBody.SignIspRegisterDetailList.RegisterStatusReasons]?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.operatorCode != nil {
+                map["OperatorCode"] = self.operatorCode!
+            }
+            if self.operatorCompleteTime != nil {
+                map["OperatorCompleteTime"] = self.operatorCompleteTime!
+            }
+            if self.registerStatus != nil {
+                map["RegisterStatus"] = self.registerStatus!
+            }
+            if self.registerStatusReasons != nil {
+                var tmp : [Any] = []
+                for k in self.registerStatusReasons! {
+                    tmp.append(k.toMap())
+                }
+                map["RegisterStatusReasons"] = tmp
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["OperatorCode"] as? String {
+                self.operatorCode = value
+            }
+            if let value = dict["OperatorCompleteTime"] as? String {
+                self.operatorCompleteTime = value
+            }
+            if let value = dict["RegisterStatus"] as? Int32 {
+                self.registerStatus = value
+            }
+            if let value = dict["RegisterStatusReasons"] as? [Any?] {
+                var tmp : [GetSmsSignResponseBody.SignIspRegisterDetailList.RegisterStatusReasons] = []
+                for v in value {
+                    if v != nil {
+                        var model = GetSmsSignResponseBody.SignIspRegisterDetailList.RegisterStatusReasons()
+                        if v != nil {
+                            model.fromMap(v as? [String: Any?])
+                        }
+                        tmp.append(model)
+                    }
+                }
+                self.registerStatusReasons = tmp
+            }
+        }
+    }
     public var applyScene: String?
 
     public var auditInfo: GetSmsSignResponseBody.AuditInfo?
@@ -5533,6 +5639,8 @@ public class GetSmsSignResponseBody : Tea.TeaModel {
     public var requestId: String?
 
     public var signCode: String?
+
+    public var signIspRegisterDetailList: [GetSmsSignResponseBody.SignIspRegisterDetailList]?
 
     public var signName: String?
 
@@ -5601,6 +5709,13 @@ public class GetSmsSignResponseBody : Tea.TeaModel {
         if self.signCode != nil {
             map["SignCode"] = self.signCode!
         }
+        if self.signIspRegisterDetailList != nil {
+            var tmp : [Any] = []
+            for k in self.signIspRegisterDetailList! {
+                tmp.append(k.toMap())
+            }
+            map["SignIspRegisterDetailList"] = tmp
+        }
         if self.signName != nil {
             map["SignName"] = self.signName!
         }
@@ -5664,6 +5779,19 @@ public class GetSmsSignResponseBody : Tea.TeaModel {
         }
         if let value = dict["SignCode"] as? String {
             self.signCode = value
+        }
+        if let value = dict["SignIspRegisterDetailList"] as? [Any?] {
+            var tmp : [GetSmsSignResponseBody.SignIspRegisterDetailList] = []
+            for v in value {
+                if v != nil {
+                    var model = GetSmsSignResponseBody.SignIspRegisterDetailList()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.signIspRegisterDetailList = tmp
         }
         if let value = dict["SignName"] as? String {
             self.signName = value
