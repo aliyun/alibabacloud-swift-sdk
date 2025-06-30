@@ -1081,6 +1081,45 @@ public class ConditionExpression : Tea.TeaModel {
     }
 }
 
+public class EniCacheConfig : Tea.TeaModel {
+    public var cachePoolSize: Int32?
+
+    public var enabled: Bool?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.cachePoolSize != nil {
+            map["CachePoolSize"] = self.cachePoolSize!
+        }
+        if self.enabled != nil {
+            map["Enabled"] = self.enabled!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["CachePoolSize"] as? Int32 {
+            self.cachePoolSize = value
+        }
+        if let value = dict["Enabled"] as? Bool {
+            self.enabled = value
+        }
+    }
+}
+
 public class Features : Tea.TeaModel {
     public class Quota : Tea.TeaModel {
         public var isEnabled: Bool?
@@ -1844,6 +1883,8 @@ public class Location : Tea.TeaModel {
 }
 
 public class MachineGroup : Tea.TeaModel {
+    public var cpu: Int64?
+
     public var creatorID: String?
 
     public var defaultDriver: String?
@@ -1864,7 +1905,15 @@ public class MachineGroup : Tea.TeaModel {
 
     public var gmtStartedTime: String?
 
+    public var gpu: Int64?
+
+    public var gpuMemory: Int64?
+
+    public var gpuType: String?
+
     public var machineGroupID: String?
+
+    public var memory: Int64?
 
     public var orderInstanceId: String?
 
@@ -1879,6 +1928,8 @@ public class MachineGroup : Tea.TeaModel {
     public var reasonMessage: String?
 
     public var resourceGroupID: String?
+
+    public var resourceType: String?
 
     public var status: String?
 
@@ -1898,6 +1949,9 @@ public class MachineGroup : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.cpu != nil {
+            map["Cpu"] = self.cpu!
+        }
         if self.creatorID != nil {
             map["CreatorID"] = self.creatorID!
         }
@@ -1928,8 +1982,20 @@ public class MachineGroup : Tea.TeaModel {
         if self.gmtStartedTime != nil {
             map["GmtStartedTime"] = self.gmtStartedTime!
         }
+        if self.gpu != nil {
+            map["Gpu"] = self.gpu!
+        }
+        if self.gpuMemory != nil {
+            map["GpuMemory"] = self.gpuMemory!
+        }
+        if self.gpuType != nil {
+            map["GpuType"] = self.gpuType!
+        }
         if self.machineGroupID != nil {
             map["MachineGroupID"] = self.machineGroupID!
+        }
+        if self.memory != nil {
+            map["Memory"] = self.memory!
         }
         if self.orderInstanceId != nil {
             map["OrderInstanceId"] = self.orderInstanceId!
@@ -1952,6 +2018,9 @@ public class MachineGroup : Tea.TeaModel {
         if self.resourceGroupID != nil {
             map["ResourceGroupID"] = self.resourceGroupID!
         }
+        if self.resourceType != nil {
+            map["ResourceType"] = self.resourceType!
+        }
         if self.status != nil {
             map["Status"] = self.status!
         }
@@ -1963,6 +2032,9 @@ public class MachineGroup : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["Cpu"] as? Int64 {
+            self.cpu = value
+        }
         if let value = dict["CreatorID"] as? String {
             self.creatorID = value
         }
@@ -1993,8 +2065,20 @@ public class MachineGroup : Tea.TeaModel {
         if let value = dict["GmtStartedTime"] as? String {
             self.gmtStartedTime = value
         }
+        if let value = dict["Gpu"] as? Int64 {
+            self.gpu = value
+        }
+        if let value = dict["GpuMemory"] as? Int64 {
+            self.gpuMemory = value
+        }
+        if let value = dict["GpuType"] as? String {
+            self.gpuType = value
+        }
         if let value = dict["MachineGroupID"] as? String {
             self.machineGroupID = value
+        }
+        if let value = dict["Memory"] as? Int64 {
+            self.memory = value
         }
         if let value = dict["OrderInstanceId"] as? String {
             self.orderInstanceId = value
@@ -2016,6 +2100,9 @@ public class MachineGroup : Tea.TeaModel {
         }
         if let value = dict["ResourceGroupID"] as? String {
             self.resourceGroupID = value
+        }
+        if let value = dict["ResourceType"] as? String {
+            self.resourceType = value
         }
         if let value = dict["Status"] as? String {
             self.status = value
@@ -3791,9 +3878,13 @@ public class QuotaConfig : Tea.TeaModel {
 
     public var enableSubQuotaPreemption: Bool?
 
+    public var eniCacheConfig: EniCacheConfig?
+
     public var oversoldUsageInfo: OversoldUsageConfig?
 
     public var resourceSpecs: [WorkspaceSpecs]?
+
+    public var sandboxCacheConfig: SandboxCacheConfig?
 
     public var selfQuotaPreemptionConfig: SelfQuotaPreemptionConfig?
 
@@ -3816,7 +3907,9 @@ public class QuotaConfig : Tea.TeaModel {
 
     public override func validate() throws -> Void {
         try self.ACS?.validate()
+        try self.eniCacheConfig?.validate()
         try self.oversoldUsageInfo?.validate()
+        try self.sandboxCacheConfig?.validate()
         try self.selfQuotaPreemptionConfig?.validate()
         try self.subQuotaPreemptionConfig?.validate()
         try self.userVpc?.validate()
@@ -3842,6 +3935,9 @@ public class QuotaConfig : Tea.TeaModel {
         if self.enableSubQuotaPreemption != nil {
             map["EnableSubQuotaPreemption"] = self.enableSubQuotaPreemption!
         }
+        if self.eniCacheConfig != nil {
+            map["EniCacheConfig"] = self.eniCacheConfig?.toMap()
+        }
         if self.oversoldUsageInfo != nil {
             map["OversoldUsageInfo"] = self.oversoldUsageInfo?.toMap()
         }
@@ -3851,6 +3947,9 @@ public class QuotaConfig : Tea.TeaModel {
                 tmp.append(k.toMap())
             }
             map["ResourceSpecs"] = tmp
+        }
+        if self.sandboxCacheConfig != nil {
+            map["SandboxCacheConfig"] = self.sandboxCacheConfig?.toMap()
         }
         if self.selfQuotaPreemptionConfig != nil {
             map["SelfQuotaPreemptionConfig"] = self.selfQuotaPreemptionConfig?.toMap()
@@ -3892,6 +3991,11 @@ public class QuotaConfig : Tea.TeaModel {
         if let value = dict["EnableSubQuotaPreemption"] as? Bool {
             self.enableSubQuotaPreemption = value
         }
+        if let value = dict["EniCacheConfig"] as? [String: Any?] {
+            var model = EniCacheConfig()
+            model.fromMap(value)
+            self.eniCacheConfig = model
+        }
         if let value = dict["OversoldUsageInfo"] as? [String: Any?] {
             var model = OversoldUsageConfig()
             model.fromMap(value)
@@ -3909,6 +4013,11 @@ public class QuotaConfig : Tea.TeaModel {
                 }
             }
             self.resourceSpecs = tmp
+        }
+        if let value = dict["SandboxCacheConfig"] as? [String: Any?] {
+            var model = SandboxCacheConfig()
+            model.fromMap(value)
+            self.sandboxCacheConfig = model
         }
         if let value = dict["SelfQuotaPreemptionConfig"] as? [String: Any?] {
             var model = SelfQuotaPreemptionConfig()
@@ -5214,6 +5323,133 @@ public class ResourceGroupMetric : Tea.TeaModel {
     }
 }
 
+public class ResourceInfo : Tea.TeaModel {
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+    }
+}
+
+public class ResourceInfos : Tea.TeaModel {
+    public var clusterId: String?
+
+    public var ecsSpec: String?
+
+    public var gpuCardType: String?
+
+    public var machineModel: String?
+
+    public var maxQuota: Int64?
+
+    public var networkPodId: String?
+
+    public var regionId: String?
+
+    public var usedQuota: Int64?
+
+    public var userId: String?
+
+    public var userName: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.clusterId != nil {
+            map["ClusterId"] = self.clusterId!
+        }
+        if self.ecsSpec != nil {
+            map["EcsSpec"] = self.ecsSpec!
+        }
+        if self.gpuCardType != nil {
+            map["GpuCardType"] = self.gpuCardType!
+        }
+        if self.machineModel != nil {
+            map["MachineModel"] = self.machineModel!
+        }
+        if self.maxQuota != nil {
+            map["MaxQuota"] = self.maxQuota!
+        }
+        if self.networkPodId != nil {
+            map["NetworkPodId"] = self.networkPodId!
+        }
+        if self.regionId != nil {
+            map["RegionId"] = self.regionId!
+        }
+        if self.usedQuota != nil {
+            map["UsedQuota"] = self.usedQuota!
+        }
+        if self.userId != nil {
+            map["UserId"] = self.userId!
+        }
+        if self.userName != nil {
+            map["UserName"] = self.userName!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["ClusterId"] as? String {
+            self.clusterId = value
+        }
+        if let value = dict["EcsSpec"] as? String {
+            self.ecsSpec = value
+        }
+        if let value = dict["GpuCardType"] as? String {
+            self.gpuCardType = value
+        }
+        if let value = dict["MachineModel"] as? String {
+            self.machineModel = value
+        }
+        if let value = dict["MaxQuota"] as? Int64 {
+            self.maxQuota = value
+        }
+        if let value = dict["NetworkPodId"] as? String {
+            self.networkPodId = value
+        }
+        if let value = dict["RegionId"] as? String {
+            self.regionId = value
+        }
+        if let value = dict["UsedQuota"] as? Int64 {
+            self.usedQuota = value
+        }
+        if let value = dict["UserId"] as? String {
+            self.userId = value
+        }
+        if let value = dict["UserName"] as? String {
+            self.userName = value
+        }
+    }
+}
+
 public class ResourceLimitDetails : Tea.TeaModel {
     public var GCLevel: String?
 
@@ -5471,6 +5707,37 @@ public class Rules : Tea.TeaModel {
             var model = SchedulingRule()
             model.fromMap(value)
             self.scheduling = model
+        }
+    }
+}
+
+public class SandboxCacheConfig : Tea.TeaModel {
+    public var enabled: Bool?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.enabled != nil {
+            map["Enabled"] = self.enabled!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["Enabled"] as? Bool {
+            self.enabled = value
         }
     }
 }
@@ -15059,6 +15326,8 @@ public class ListResourceGroupsRequest : Tea.TeaModel {
 
     public var pageSize: Int64?
 
+    public var resourceGroupIDs: String?
+
     public var resourceType: String?
 
     public var showAll: Bool?
@@ -15096,6 +15365,9 @@ public class ListResourceGroupsRequest : Tea.TeaModel {
         if self.pageSize != nil {
             map["PageSize"] = self.pageSize!
         }
+        if self.resourceGroupIDs != nil {
+            map["ResourceGroupIDs"] = self.resourceGroupIDs!
+        }
         if self.resourceType != nil {
             map["ResourceType"] = self.resourceType!
         }
@@ -15127,6 +15399,9 @@ public class ListResourceGroupsRequest : Tea.TeaModel {
         }
         if let value = dict["PageSize"] as? Int64 {
             self.pageSize = value
+        }
+        if let value = dict["ResourceGroupIDs"] as? String {
+            self.resourceGroupIDs = value
         }
         if let value = dict["ResourceType"] as? String {
             self.resourceType = value
