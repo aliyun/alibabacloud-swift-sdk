@@ -1271,6 +1271,8 @@ public class AddUserToDesktopGroupRequest : Tea.TeaModel {
 
     public var regionId: String?
 
+    public var simpleUserGroupId: String?
+
     public var userGroupName: String?
 
     public var userOuPath: String?
@@ -1304,6 +1306,9 @@ public class AddUserToDesktopGroupRequest : Tea.TeaModel {
         if self.regionId != nil {
             map["RegionId"] = self.regionId!
         }
+        if self.simpleUserGroupId != nil {
+            map["SimpleUserGroupId"] = self.simpleUserGroupId!
+        }
         if self.userGroupName != nil {
             map["UserGroupName"] = self.userGroupName!
         }
@@ -1329,6 +1334,9 @@ public class AddUserToDesktopGroupRequest : Tea.TeaModel {
         }
         if let value = dict["RegionId"] as? String {
             self.regionId = value
+        }
+        if let value = dict["SimpleUserGroupId"] as? String {
+            self.simpleUserGroupId = value
         }
         if let value = dict["UserGroupName"] as? String {
             self.userGroupName = value
@@ -8999,6 +9007,8 @@ public class CreateDesktopGroupRequest : Tea.TeaModel {
 
     public var sessionType: String?
 
+    public var simpleUserGroupId: String?
+
     public var snapshotPolicyId: String?
 
     public var stopDuration: Int64?
@@ -9177,6 +9187,9 @@ public class CreateDesktopGroupRequest : Tea.TeaModel {
         }
         if self.sessionType != nil {
             map["SessionType"] = self.sessionType!
+        }
+        if self.simpleUserGroupId != nil {
+            map["SimpleUserGroupId"] = self.simpleUserGroupId!
         }
         if self.snapshotPolicyId != nil {
             map["SnapshotPolicyId"] = self.snapshotPolicyId!
@@ -9363,6 +9376,9 @@ public class CreateDesktopGroupRequest : Tea.TeaModel {
         }
         if let value = dict["SessionType"] as? String {
             self.sessionType = value
+        }
+        if let value = dict["SimpleUserGroupId"] as? String {
+            self.simpleUserGroupId = value
         }
         if let value = dict["SnapshotPolicyId"] as? String {
             self.snapshotPolicyId = value
@@ -22364,6 +22380,8 @@ public class DescribeDesktopGroupsRequest : Tea.TeaModel {
 
     public var desktopGroupName: String?
 
+    public var desktopType: String?
+
     public var endUserIds: [String]?
 
     public var excludedEndUserIds: [String]?
@@ -22419,6 +22437,9 @@ public class DescribeDesktopGroupsRequest : Tea.TeaModel {
         }
         if self.desktopGroupName != nil {
             map["DesktopGroupName"] = self.desktopGroupName!
+        }
+        if self.desktopType != nil {
+            map["DesktopType"] = self.desktopType!
         }
         if self.endUserIds != nil {
             map["EndUserIds"] = self.endUserIds!
@@ -22485,6 +22506,9 @@ public class DescribeDesktopGroupsRequest : Tea.TeaModel {
         }
         if let value = dict["DesktopGroupName"] as? String {
             self.desktopGroupName = value
+        }
+        if let value = dict["DesktopType"] as? String {
+            self.desktopType = value
         }
         if let value = dict["EndUserIds"] as? [String] {
             self.endUserIds = value
@@ -22706,6 +22730,8 @@ public class DescribeDesktopGroupsResponseBody : Tea.TeaModel {
 
         public var resetType: Int64?
 
+        public var simpleUserGroupId: String?
+
         public var status: Int32?
 
         public var stopDuration: Int64?
@@ -22871,6 +22897,9 @@ public class DescribeDesktopGroupsResponseBody : Tea.TeaModel {
             }
             if self.resetType != nil {
                 map["ResetType"] = self.resetType!
+            }
+            if self.simpleUserGroupId != nil {
+                map["SimpleUserGroupId"] = self.simpleUserGroupId!
             }
             if self.status != nil {
                 map["Status"] = self.status!
@@ -23049,6 +23078,9 @@ public class DescribeDesktopGroupsResponseBody : Tea.TeaModel {
             }
             if let value = dict["ResetType"] as? Int64 {
                 self.resetType = value
+            }
+            if let value = dict["SimpleUserGroupId"] as? String {
+                self.simpleUserGroupId = value
             }
             if let value = dict["Status"] as? Int32 {
                 self.status = value
@@ -58565,6 +58597,8 @@ public class RemoveUserFromDesktopGroupRequest : Tea.TeaModel {
 
     public var regionId: String?
 
+    public var simpleUserGroupId: String?
+
     public var userGroupName: String?
 
     public var userOuPath: String?
@@ -58595,6 +58629,9 @@ public class RemoveUserFromDesktopGroupRequest : Tea.TeaModel {
         if self.regionId != nil {
             map["RegionId"] = self.regionId!
         }
+        if self.simpleUserGroupId != nil {
+            map["SimpleUserGroupId"] = self.simpleUserGroupId!
+        }
         if self.userGroupName != nil {
             map["UserGroupName"] = self.userGroupName!
         }
@@ -58617,6 +58654,9 @@ public class RemoveUserFromDesktopGroupRequest : Tea.TeaModel {
         }
         if let value = dict["RegionId"] as? String {
             self.regionId = value
+        }
+        if let value = dict["SimpleUserGroupId"] as? String {
+            self.simpleUserGroupId = value
         }
         if let value = dict["UserGroupName"] as? String {
             self.userGroupName = value
