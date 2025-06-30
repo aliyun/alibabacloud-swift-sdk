@@ -116,6 +116,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func addResolverRuleWithOptions(_ request: AddResolverRuleRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> AddResolverRuleResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.edgeDnsClusters)) {
+            query["EdgeDnsClusters"] = request.edgeDnsClusters ?? [];
+        }
         if (!TeaUtils.Client.isUnset(request.endpointId)) {
             query["EndpointId"] = request.endpointId ?? "";
         }
@@ -130,6 +133,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.type)) {
             query["Type"] = request.type ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.vpcs)) {
+            query["Vpcs"] = request.vpcs ?? [];
         }
         if (!TeaUtils.Client.isUnset(request.zoneName)) {
             query["ZoneName"] = request.zoneName ?? "";
