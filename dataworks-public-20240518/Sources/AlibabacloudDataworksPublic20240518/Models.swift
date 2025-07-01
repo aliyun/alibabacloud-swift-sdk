@@ -35473,6 +35473,8 @@ public class GetWorkflowInstanceResponseBody : Tea.TeaModel {
 
         public var workflowId: Int64?
 
+        public var workflowParameters: String?
+
         public override init() {
             super.init()
         }
@@ -35529,6 +35531,9 @@ public class GetWorkflowInstanceResponseBody : Tea.TeaModel {
             if self.workflowId != nil {
                 map["WorkflowId"] = self.workflowId!
             }
+            if self.workflowParameters != nil {
+                map["WorkflowParameters"] = self.workflowParameters!
+            }
             return map
         }
 
@@ -35575,6 +35580,9 @@ public class GetWorkflowInstanceResponseBody : Tea.TeaModel {
             }
             if let value = dict["WorkflowId"] as? Int64 {
                 self.workflowId = value
+            }
+            if let value = dict["WorkflowParameters"] as? String {
+                self.workflowParameters = value
             }
         }
     }
@@ -64123,6 +64131,8 @@ public class ListWorkflowInstancesResponseBody : Tea.TeaModel {
 
             public var workflowId: Int64?
 
+            public var workflowParameters: String?
+
             public override init() {
                 super.init()
             }
@@ -64179,6 +64189,9 @@ public class ListWorkflowInstancesResponseBody : Tea.TeaModel {
                 if self.workflowId != nil {
                     map["WorkflowId"] = self.workflowId!
                 }
+                if self.workflowParameters != nil {
+                    map["WorkflowParameters"] = self.workflowParameters!
+                }
                 return map
             }
 
@@ -64225,6 +64238,9 @@ public class ListWorkflowInstancesResponseBody : Tea.TeaModel {
                 }
                 if let value = dict["WorkflowId"] as? Int64 {
                     self.workflowId = value
+                }
+                if let value = dict["WorkflowParameters"] as? String {
+                    self.workflowParameters = value
                 }
             }
         }
