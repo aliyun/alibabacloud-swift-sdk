@@ -675,6 +675,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.imageId)) {
             query["ImageId"] = request.imageId ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.instanceBillingCycle)) {
+            query["InstanceBillingCycle"] = request.instanceBillingCycle ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.instanceType)) {
             query["InstanceType"] = request.instanceType ?? "";
         }

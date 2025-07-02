@@ -3931,6 +3931,8 @@ public class CreateARMServerInstancesRequest : Tea.TeaModel {
 
     public var imageId: String?
 
+    public var instanceBillingCycle: String?
+
     public var instanceType: String?
 
     public var keyPairName: String?
@@ -3988,6 +3990,9 @@ public class CreateARMServerInstancesRequest : Tea.TeaModel {
         }
         if self.imageId != nil {
             map["ImageId"] = self.imageId!
+        }
+        if self.instanceBillingCycle != nil {
+            map["InstanceBillingCycle"] = self.instanceBillingCycle!
         }
         if self.instanceType != nil {
             map["InstanceType"] = self.instanceType!
@@ -4051,6 +4056,9 @@ public class CreateARMServerInstancesRequest : Tea.TeaModel {
         }
         if let value = dict["ImageId"] as? String {
             self.imageId = value
+        }
+        if let value = dict["InstanceBillingCycle"] as? String {
+            self.instanceBillingCycle = value
         }
         if let value = dict["InstanceType"] as? String {
             self.instanceType = value
