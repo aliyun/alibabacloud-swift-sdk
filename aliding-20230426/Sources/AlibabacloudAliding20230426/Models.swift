@@ -20947,6 +20947,8 @@ public class CreateReportShrinkRequest : Tea.TeaModel {
 public class CreateReportResponseBody : Tea.TeaModel {
     public var requestId: String?
 
+    public var result: String?
+
     public var success: Bool?
 
     public override init() {
@@ -20966,6 +20968,9 @@ public class CreateReportResponseBody : Tea.TeaModel {
         if self.requestId != nil {
             map["requestId"] = self.requestId!
         }
+        if self.result != nil {
+            map["result"] = self.result!
+        }
         if self.success != nil {
             map["success"] = self.success!
         }
@@ -20976,6 +20981,9 @@ public class CreateReportResponseBody : Tea.TeaModel {
         guard let dict else { return }
         if let value = dict["requestId"] as? String {
             self.requestId = value
+        }
+        if let value = dict["result"] as? String {
+            self.result = value
         }
         if let value = dict["success"] as? Bool {
             self.success = value
@@ -69705,8 +69713,6 @@ public class InsertContentWithOptionsRequest : Tea.TeaModel {
 
     public var index: Int32?
 
-    public var operatorId: String?
-
     public var path: [Int32]?
 
     public var tenantContext: InsertContentWithOptionsRequest.TenantContext?
@@ -69735,9 +69741,6 @@ public class InsertContentWithOptionsRequest : Tea.TeaModel {
         if self.index != nil {
             map["Index"] = self.index!
         }
-        if self.operatorId != nil {
-            map["OperatorId"] = self.operatorId!
-        }
         if self.path != nil {
             map["Path"] = self.path!
         }
@@ -69758,9 +69761,6 @@ public class InsertContentWithOptionsRequest : Tea.TeaModel {
         if let value = dict["Index"] as? Int32 {
             self.index = value
         }
-        if let value = dict["OperatorId"] as? String {
-            self.operatorId = value
-        }
         if let value = dict["Path"] as? [Int32] {
             self.path = value
         }
@@ -69778,8 +69778,6 @@ public class InsertContentWithOptionsShrinkRequest : Tea.TeaModel {
     public var documentId: String?
 
     public var index: Int32?
-
-    public var operatorId: String?
 
     public var pathShrink: String?
 
@@ -69808,9 +69806,6 @@ public class InsertContentWithOptionsShrinkRequest : Tea.TeaModel {
         if self.index != nil {
             map["Index"] = self.index!
         }
-        if self.operatorId != nil {
-            map["OperatorId"] = self.operatorId!
-        }
         if self.pathShrink != nil {
             map["Path"] = self.pathShrink!
         }
@@ -69830,9 +69825,6 @@ public class InsertContentWithOptionsShrinkRequest : Tea.TeaModel {
         }
         if let value = dict["Index"] as? Int32 {
             self.index = value
-        }
-        if let value = dict["OperatorId"] as? String {
-            self.operatorId = value
         }
         if let value = dict["Path"] as? String {
             self.pathShrink = value
@@ -69942,6 +69934,433 @@ public class InsertContentWithOptionsResponse : Tea.TeaModel {
         }
         if let value = dict["body"] as? [String: Any?] {
             var model = InsertContentWithOptionsResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
+public class InsertDropDownListHeaders : Tea.TeaModel {
+    public class AccountContext : Tea.TeaModel {
+        public var accountId: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.accountId != nil {
+                map["accountId"] = self.accountId!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["accountId"] as? String {
+                self.accountId = value
+            }
+        }
+    }
+    public var commonHeaders: [String: String]?
+
+    public var accountContext: InsertDropDownListHeaders.AccountContext?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.accountContext?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.commonHeaders != nil {
+            map["commonHeaders"] = self.commonHeaders!
+        }
+        if self.accountContext != nil {
+            map["AccountContext"] = self.accountContext?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["commonHeaders"] as? [String: String] {
+            self.commonHeaders = value
+        }
+        if let value = dict["AccountContext"] as? [String: Any?] {
+            var model = InsertDropDownListHeaders.AccountContext()
+            model.fromMap(value)
+            self.accountContext = model
+        }
+    }
+}
+
+public class InsertDropDownListShrinkHeaders : Tea.TeaModel {
+    public var commonHeaders: [String: String]?
+
+    public var accountContextShrink: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.commonHeaders != nil {
+            map["commonHeaders"] = self.commonHeaders!
+        }
+        if self.accountContextShrink != nil {
+            map["AccountContext"] = self.accountContextShrink!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["commonHeaders"] as? [String: String] {
+            self.commonHeaders = value
+        }
+        if let value = dict["AccountContext"] as? String {
+            self.accountContextShrink = value
+        }
+    }
+}
+
+public class InsertDropDownListRequest : Tea.TeaModel {
+    public class Options : Tea.TeaModel {
+        public var color: String?
+
+        public var value: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.color != nil {
+                map["Color"] = self.color!
+            }
+            if self.value != nil {
+                map["Value"] = self.value!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["Color"] as? String {
+                self.color = value
+            }
+            if let value = dict["Value"] as? String {
+                self.value = value
+            }
+        }
+    }
+    public class TenantContext : Tea.TeaModel {
+        public var tenantId: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.tenantId != nil {
+                map["tenantId"] = self.tenantId!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["tenantId"] as? String {
+                self.tenantId = value
+            }
+        }
+    }
+    public var options: [InsertDropDownListRequest.Options]?
+
+    public var rangeAddress: String?
+
+    public var sheetId: String?
+
+    public var tenantContext: InsertDropDownListRequest.TenantContext?
+
+    public var workbookId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.tenantContext?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.options != nil {
+            var tmp : [Any] = []
+            for k in self.options! {
+                tmp.append(k.toMap())
+            }
+            map["Options"] = tmp
+        }
+        if self.rangeAddress != nil {
+            map["RangeAddress"] = self.rangeAddress!
+        }
+        if self.sheetId != nil {
+            map["SheetId"] = self.sheetId!
+        }
+        if self.tenantContext != nil {
+            map["TenantContext"] = self.tenantContext?.toMap()
+        }
+        if self.workbookId != nil {
+            map["WorkbookId"] = self.workbookId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["Options"] as? [Any?] {
+            var tmp : [InsertDropDownListRequest.Options] = []
+            for v in value {
+                if v != nil {
+                    var model = InsertDropDownListRequest.Options()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.options = tmp
+        }
+        if let value = dict["RangeAddress"] as? String {
+            self.rangeAddress = value
+        }
+        if let value = dict["SheetId"] as? String {
+            self.sheetId = value
+        }
+        if let value = dict["TenantContext"] as? [String: Any?] {
+            var model = InsertDropDownListRequest.TenantContext()
+            model.fromMap(value)
+            self.tenantContext = model
+        }
+        if let value = dict["WorkbookId"] as? String {
+            self.workbookId = value
+        }
+    }
+}
+
+public class InsertDropDownListShrinkRequest : Tea.TeaModel {
+    public var optionsShrink: String?
+
+    public var rangeAddress: String?
+
+    public var sheetId: String?
+
+    public var tenantContextShrink: String?
+
+    public var workbookId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.optionsShrink != nil {
+            map["Options"] = self.optionsShrink!
+        }
+        if self.rangeAddress != nil {
+            map["RangeAddress"] = self.rangeAddress!
+        }
+        if self.sheetId != nil {
+            map["SheetId"] = self.sheetId!
+        }
+        if self.tenantContextShrink != nil {
+            map["TenantContext"] = self.tenantContextShrink!
+        }
+        if self.workbookId != nil {
+            map["WorkbookId"] = self.workbookId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["Options"] as? String {
+            self.optionsShrink = value
+        }
+        if let value = dict["RangeAddress"] as? String {
+            self.rangeAddress = value
+        }
+        if let value = dict["SheetId"] as? String {
+            self.sheetId = value
+        }
+        if let value = dict["TenantContext"] as? String {
+            self.tenantContextShrink = value
+        }
+        if let value = dict["WorkbookId"] as? String {
+            self.workbookId = value
+        }
+    }
+}
+
+public class InsertDropDownListResponseBody : Tea.TeaModel {
+    public var a1Notation: String?
+
+    public var requestId: String?
+
+    public var vendorRequestId: String?
+
+    public var vendorType: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.a1Notation != nil {
+            map["a1Notation"] = self.a1Notation!
+        }
+        if self.requestId != nil {
+            map["requestId"] = self.requestId!
+        }
+        if self.vendorRequestId != nil {
+            map["vendorRequestId"] = self.vendorRequestId!
+        }
+        if self.vendorType != nil {
+            map["vendorType"] = self.vendorType!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["a1Notation"] as? String {
+            self.a1Notation = value
+        }
+        if let value = dict["requestId"] as? String {
+            self.requestId = value
+        }
+        if let value = dict["vendorRequestId"] as? String {
+            self.vendorRequestId = value
+        }
+        if let value = dict["vendorType"] as? String {
+            self.vendorType = value
+        }
+    }
+}
+
+public class InsertDropDownListResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: InsertDropDownListResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = InsertDropDownListResponseBody()
             model.fromMap(value)
             self.body = model
         }
@@ -103207,6 +103626,8 @@ public class SaveContentShrinkRequest : Tea.TeaModel {
 public class SaveContentResponseBody : Tea.TeaModel {
     public var requestId: String?
 
+    public var result: String?
+
     public var success: Bool?
 
     public override init() {
@@ -103226,6 +103647,9 @@ public class SaveContentResponseBody : Tea.TeaModel {
         if self.requestId != nil {
             map["requestId"] = self.requestId!
         }
+        if self.result != nil {
+            map["result"] = self.result!
+        }
         if self.success != nil {
             map["success"] = self.success!
         }
@@ -103236,6 +103660,9 @@ public class SaveContentResponseBody : Tea.TeaModel {
         guard let dict else { return }
         if let value = dict["requestId"] as? String {
             self.requestId = value
+        }
+        if let value = dict["result"] as? String {
+            self.result = value
         }
         if let value = dict["success"] as? Bool {
             self.success = value

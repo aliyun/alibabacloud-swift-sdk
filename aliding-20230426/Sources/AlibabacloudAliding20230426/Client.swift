@@ -8849,9 +8849,6 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.index)) {
             body["Index"] = request.index!;
         }
-        if (!TeaUtils.Client.isUnset(request.operatorId)) {
-            body["OperatorId"] = request.operatorId ?? "";
-        }
         if (!TeaUtils.Client.isUnset(request.pathShrink)) {
             body["Path"] = request.pathShrink ?? "";
         }
@@ -8889,6 +8886,71 @@ open class Client : AlibabacloudOpenApi.Client {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         var headers: InsertContentWithOptionsHeaders = InsertContentWithOptionsHeaders([:])
         return try await insertContentWithOptionsWithOptions(request as! InsertContentWithOptionsRequest, headers as! InsertContentWithOptionsHeaders, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func insertDropDownListWithOptions(_ tmpReq: InsertDropDownListRequest, _ tmpHeader: InsertDropDownListHeaders, _ runtime: TeaUtils.RuntimeOptions) async throws -> InsertDropDownListResponse {
+        try TeaUtils.Client.validateModel(tmpReq)
+        var request: InsertDropDownListShrinkRequest = InsertDropDownListShrinkRequest([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        var headers: InsertDropDownListShrinkHeaders = InsertDropDownListShrinkHeaders([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpHeader, headers)
+        if (!TeaUtils.Client.isUnset(tmpHeader.accountContext)) {
+            headers.accountContextShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpHeader.accountContext, "AccountContext", "json")
+        }
+        if (!TeaUtils.Client.isUnset(tmpReq.options)) {
+            request.optionsShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.options, "Options", "json")
+        }
+        if (!TeaUtils.Client.isUnset(tmpReq.tenantContext)) {
+            request.tenantContextShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.tenantContext, "TenantContext", "json")
+        }
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.optionsShrink)) {
+            body["Options"] = request.optionsShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.rangeAddress)) {
+            body["RangeAddress"] = request.rangeAddress ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.sheetId)) {
+            body["SheetId"] = request.sheetId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.tenantContextShrink)) {
+            body["TenantContext"] = request.tenantContextShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.workbookId)) {
+            body["WorkbookId"] = request.workbookId ?? "";
+        }
+        var realHeaders: [String: String] = [:]
+        if (!TeaUtils.Client.isUnset(headers.commonHeaders)) {
+            realHeaders = headers.commonHeaders ?? [:]
+        }
+        if (!TeaUtils.Client.isUnset(headers.accountContextShrink)) {
+            realHeaders["AccountContext"] = TeaUtils.Client.toJSONString(headers.accountContextShrink);
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": realHeaders as! [String: String],
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "InsertDropDownList",
+            "version": "2023-04-26",
+            "protocol": "HTTPS",
+            "pathname": "/dingtalk/v1/documents/insertDropDownList",
+            "method": "POST",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(InsertDropDownListResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func insertDropDownList(_ request: InsertDropDownListRequest) async throws -> InsertDropDownListResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: InsertDropDownListHeaders = InsertDropDownListHeaders([:])
+        return try await insertDropDownListWithOptions(request as! InsertDropDownListRequest, headers as! InsertDropDownListHeaders, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
