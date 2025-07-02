@@ -11106,6 +11106,8 @@ public class QueryApprovalInfoResponse : Tea.TeaModel {
 }
 
 public class QueryAuditLogRequest : Tea.TeaModel {
+    public var accessSourceFlag: String?
+
     public var endDate: String?
 
     public var logType: String?
@@ -11117,6 +11119,8 @@ public class QueryAuditLogRequest : Tea.TeaModel {
     public var resourceType: String?
 
     public var startDate: String?
+
+    public var userAccessDevice: String?
 
     public var workspaceId: String?
 
@@ -11134,6 +11138,9 @@ public class QueryAuditLogRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.accessSourceFlag != nil {
+            map["AccessSourceFlag"] = self.accessSourceFlag!
+        }
         if self.endDate != nil {
             map["EndDate"] = self.endDate!
         }
@@ -11152,6 +11159,9 @@ public class QueryAuditLogRequest : Tea.TeaModel {
         if self.startDate != nil {
             map["StartDate"] = self.startDate!
         }
+        if self.userAccessDevice != nil {
+            map["UserAccessDevice"] = self.userAccessDevice!
+        }
         if self.workspaceId != nil {
             map["WorkspaceId"] = self.workspaceId!
         }
@@ -11160,6 +11170,9 @@ public class QueryAuditLogRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["AccessSourceFlag"] as? String {
+            self.accessSourceFlag = value
+        }
         if let value = dict["EndDate"] as? String {
             self.endDate = value
         }
@@ -11177,6 +11190,9 @@ public class QueryAuditLogRequest : Tea.TeaModel {
         }
         if let value = dict["StartDate"] as? String {
             self.startDate = value
+        }
+        if let value = dict["UserAccessDevice"] as? String {
+            self.userAccessDevice = value
         }
         if let value = dict["WorkspaceId"] as? String {
             self.workspaceId = value

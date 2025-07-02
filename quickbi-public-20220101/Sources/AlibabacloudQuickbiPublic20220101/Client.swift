@@ -2101,6 +2101,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func queryAuditLogWithOptions(_ request: QueryAuditLogRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> QueryAuditLogResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.accessSourceFlag)) {
+            query["AccessSourceFlag"] = request.accessSourceFlag ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.endDate)) {
             query["EndDate"] = request.endDate ?? "";
         }
@@ -2118,6 +2121,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.startDate)) {
             query["StartDate"] = request.startDate ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.userAccessDevice)) {
+            query["UserAccessDevice"] = request.userAccessDevice ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.workspaceId)) {
             query["WorkspaceId"] = request.workspaceId ?? "";
