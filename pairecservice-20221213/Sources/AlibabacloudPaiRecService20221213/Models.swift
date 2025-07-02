@@ -4023,6 +4023,8 @@ public class CreateParamRequest : Tea.TeaModel {
 
     public var sceneId: String?
 
+    public var type: String?
+
     public var value: String?
 
     public override init() {
@@ -4051,6 +4053,9 @@ public class CreateParamRequest : Tea.TeaModel {
         if self.sceneId != nil {
             map["SceneId"] = self.sceneId!
         }
+        if self.type != nil {
+            map["Type"] = self.type!
+        }
         if self.value != nil {
             map["Value"] = self.value!
         }
@@ -4070,6 +4075,9 @@ public class CreateParamRequest : Tea.TeaModel {
         }
         if let value = dict["SceneId"] as? String {
             self.sceneId = value
+        }
+        if let value = dict["Type"] as? String {
+            self.type = value
         }
         if let value = dict["Value"] as? String {
             self.value = value
@@ -8240,6 +8248,150 @@ public class DeleteTrafficControlTaskResponse : Tea.TeaModel {
         }
         if let value = dict["body"] as? [String: Any?] {
             var model = DeleteTrafficControlTaskResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
+public class GenerateAlgorithmCustomizationScriptRequest : Tea.TeaModel {
+    public var deployMode: String?
+
+    public var instanceId: String?
+
+    public var moduleFieldTypes: [String: Any]?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.deployMode != nil {
+            map["DeployMode"] = self.deployMode!
+        }
+        if self.instanceId != nil {
+            map["InstanceId"] = self.instanceId!
+        }
+        if self.moduleFieldTypes != nil {
+            map["ModuleFieldTypes"] = self.moduleFieldTypes!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["DeployMode"] as? String {
+            self.deployMode = value
+        }
+        if let value = dict["InstanceId"] as? String {
+            self.instanceId = value
+        }
+        if let value = dict["ModuleFieldTypes"] as? [String: Any] {
+            self.moduleFieldTypes = value
+        }
+    }
+}
+
+public class GenerateAlgorithmCustomizationScriptResponseBody : Tea.TeaModel {
+    public var logId: String?
+
+    public var ossAddress: String?
+
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.logId != nil {
+            map["LogId"] = self.logId!
+        }
+        if self.ossAddress != nil {
+            map["OssAddress"] = self.ossAddress!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["LogId"] as? String {
+            self.logId = value
+        }
+        if let value = dict["OssAddress"] as? String {
+            self.ossAddress = value
+        }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+    }
+}
+
+public class GenerateAlgorithmCustomizationScriptResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: GenerateAlgorithmCustomizationScriptResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = GenerateAlgorithmCustomizationScriptResponseBody()
             model.fromMap(value)
             self.body = model
         }
@@ -18876,6 +19028,8 @@ public class ListLayersResponse : Tea.TeaModel {
 }
 
 public class ListParamsRequest : Tea.TeaModel {
+    public var encrypted: Bool?
+
     public var environment: String?
 
     public var instanceId: String?
@@ -18902,6 +19056,9 @@ public class ListParamsRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.encrypted != nil {
+            map["Encrypted"] = self.encrypted!
+        }
         if self.environment != nil {
             map["Environment"] = self.environment!
         }
@@ -18925,6 +19082,9 @@ public class ListParamsRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["Encrypted"] as? Bool {
+            self.encrypted = value
+        }
         if let value = dict["Environment"] as? String {
             self.environment = value
         }

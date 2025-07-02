@@ -1209,6 +1209,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.sceneId)) {
             body["SceneId"] = request.sceneId ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.type)) {
+            body["Type"] = request.type ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.value)) {
             body["Value"] = request.value ?? "";
         }
@@ -2354,6 +2357,45 @@ open class Client : AlibabacloudOpenApi.Client {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         var headers: [String: String] = [:]
         return try await deleteTrafficControlTaskWithOptions(TrafficControlTaskId as! String, request as! DeleteTrafficControlTaskRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func generateAlgorithmCustomizationScriptWithOptions(_ AlgorithmCustomizationId: String, _ request: GenerateAlgorithmCustomizationScriptRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> GenerateAlgorithmCustomizationScriptResponse {
+        try TeaUtils.Client.validateModel(request)
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.deployMode)) {
+            body["DeployMode"] = request.deployMode ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.instanceId)) {
+            body["InstanceId"] = request.instanceId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.moduleFieldTypes)) {
+            body["ModuleFieldTypes"] = request.moduleFieldTypes ?? [:];
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String],
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "GenerateAlgorithmCustomizationScript",
+            "version": "2022-12-13",
+            "protocol": "HTTPS",
+            "pathname": "/api/v1/algorithmcustomizations/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(AlgorithmCustomizationId)) + "/action/generatescript",
+            "method": "POST",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(GenerateAlgorithmCustomizationScriptResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func generateAlgorithmCustomizationScript(_ AlgorithmCustomizationId: String, _ request: GenerateAlgorithmCustomizationScriptRequest) async throws -> GenerateAlgorithmCustomizationScriptResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await generateAlgorithmCustomizationScriptWithOptions(AlgorithmCustomizationId as! String, request as! GenerateAlgorithmCustomizationScriptRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -3817,6 +3859,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func listParamsWithOptions(_ request: ListParamsRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> ListParamsResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.encrypted)) {
+            query["Encrypted"] = request.encrypted!;
+        }
         if (!TeaUtils.Client.isUnset(request.environment)) {
             query["Environment"] = request.environment ?? "";
         }
