@@ -1857,15 +1857,59 @@ public class PartitionSummary : Tea.TeaModel {
 }
 
 public class Permission : Tea.TeaModel {
+    public class Columns : Tea.TeaModel {
+        public var columnNames: [String]?
+
+        public var excludedColumnNames: [String]?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.columnNames != nil {
+                map["columnNames"] = self.columnNames!
+            }
+            if self.excludedColumnNames != nil {
+                map["excludedColumnNames"] = self.excludedColumnNames!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["columnNames"] as? [String] {
+                self.columnNames = value
+            }
+            if let value = dict["excludedColumnNames"] as? [String] {
+                self.excludedColumnNames = value
+            }
+        }
+    }
     public var access: String?
 
+    public var columns: Permission.Columns?
+
     public var database: String?
+
+    public var function: String?
 
     public var principal: String?
 
     public var resourceType: String?
 
     public var table: String?
+
+    public var view: String?
 
     public override init() {
         super.init()
@@ -1877,6 +1921,7 @@ public class Permission : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
+        try self.columns?.validate()
     }
 
     public override func toMap() -> [String : Any] {
@@ -1884,8 +1929,14 @@ public class Permission : Tea.TeaModel {
         if self.access != nil {
             map["access"] = self.access!
         }
+        if self.columns != nil {
+            map["columns"] = self.columns?.toMap()
+        }
         if self.database != nil {
             map["database"] = self.database!
+        }
+        if self.function != nil {
+            map["function"] = self.function!
         }
         if self.principal != nil {
             map["principal"] = self.principal!
@@ -1896,6 +1947,9 @@ public class Permission : Tea.TeaModel {
         if self.table != nil {
             map["table"] = self.table!
         }
+        if self.view != nil {
+            map["view"] = self.view!
+        }
         return map
     }
 
@@ -1904,8 +1958,16 @@ public class Permission : Tea.TeaModel {
         if let value = dict["access"] as? String {
             self.access = value
         }
+        if let value = dict["columns"] as? [String: Any?] {
+            var model = Permission.Columns()
+            model.fromMap(value)
+            self.columns = model
+        }
         if let value = dict["database"] as? String {
             self.database = value
+        }
+        if let value = dict["function"] as? String {
+            self.function = value
         }
         if let value = dict["principal"] as? String {
             self.principal = value
@@ -1915,6 +1977,9 @@ public class Permission : Tea.TeaModel {
         }
         if let value = dict["table"] as? String {
             self.table = value
+        }
+        if let value = dict["view"] as? String {
+            self.view = value
         }
     }
 }
@@ -4540,6 +4605,8 @@ public class ListPartitionSummariesResponse : Tea.TeaModel {
 public class ListPermissionsRequest : Tea.TeaModel {
     public var database: String?
 
+    public var function: String?
+
     public var maxResults: Int32?
 
     public var pageToken: String?
@@ -4549,6 +4616,8 @@ public class ListPermissionsRequest : Tea.TeaModel {
     public var resourceType: String?
 
     public var table: String?
+
+    public var view: String?
 
     public override init() {
         super.init()
@@ -4567,6 +4636,9 @@ public class ListPermissionsRequest : Tea.TeaModel {
         if self.database != nil {
             map["database"] = self.database!
         }
+        if self.function != nil {
+            map["function"] = self.function!
+        }
         if self.maxResults != nil {
             map["maxResults"] = self.maxResults!
         }
@@ -4582,6 +4654,9 @@ public class ListPermissionsRequest : Tea.TeaModel {
         if self.table != nil {
             map["table"] = self.table!
         }
+        if self.view != nil {
+            map["view"] = self.view!
+        }
         return map
     }
 
@@ -4589,6 +4664,9 @@ public class ListPermissionsRequest : Tea.TeaModel {
         guard let dict else { return }
         if let value = dict["database"] as? String {
             self.database = value
+        }
+        if let value = dict["function"] as? String {
+            self.function = value
         }
         if let value = dict["maxResults"] as? Int32 {
             self.maxResults = value
@@ -4604,6 +4682,9 @@ public class ListPermissionsRequest : Tea.TeaModel {
         }
         if let value = dict["table"] as? String {
             self.table = value
+        }
+        if let value = dict["view"] as? String {
+            self.view = value
         }
     }
 }
