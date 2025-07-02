@@ -40795,6 +40795,8 @@ public class ListFlashSmsTemplatesRequest : Tea.TeaModel {
 
 public class ListFlashSmsTemplatesResponseBody : Tea.TeaModel {
     public class Data : Tea.TeaModel {
+        public var templateDetails: String?
+
         public var templateId: String?
 
         public var templateName: String?
@@ -40813,6 +40815,9 @@ public class ListFlashSmsTemplatesResponseBody : Tea.TeaModel {
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
+            if self.templateDetails != nil {
+                map["TemplateDetails"] = self.templateDetails!
+            }
             if self.templateId != nil {
                 map["TemplateId"] = self.templateId!
             }
@@ -40824,6 +40829,9 @@ public class ListFlashSmsTemplatesResponseBody : Tea.TeaModel {
 
         public override func fromMap(_ dict: [String: Any?]?) -> Void {
             guard let dict else { return }
+            if let value = dict["TemplateDetails"] as? String {
+                self.templateDetails = value
+            }
             if let value = dict["TemplateId"] as? String {
                 self.templateId = value
             }
