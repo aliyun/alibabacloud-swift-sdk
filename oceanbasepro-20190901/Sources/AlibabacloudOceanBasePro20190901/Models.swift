@@ -18112,6 +18112,8 @@ public class DescribeInstanceResponseBody : Tea.TeaModel {
 
         public var instanceRole: String?
 
+        public var iops: Int32?
+
         public var isLatestObVersion: Bool?
 
         public var isTrustEcs: Bool?
@@ -18248,6 +18250,9 @@ public class DescribeInstanceResponseBody : Tea.TeaModel {
             }
             if self.instanceRole != nil {
                 map["InstanceRole"] = self.instanceRole!
+            }
+            if self.iops != nil {
+                map["Iops"] = self.iops!
             }
             if self.isLatestObVersion != nil {
                 map["IsLatestObVersion"] = self.isLatestObVersion!
@@ -18396,6 +18401,9 @@ public class DescribeInstanceResponseBody : Tea.TeaModel {
             }
             if let value = dict["InstanceRole"] as? String {
                 self.instanceRole = value
+            }
+            if let value = dict["Iops"] as? Int32 {
+                self.iops = value
             }
             if let value = dict["IsLatestObVersion"] as? Bool {
                 self.isLatestObVersion = value
@@ -21932,6 +21940,8 @@ public class DescribeInstancesResponseBody : Tea.TeaModel {
 
         public var instanceType: String?
 
+        public var iops: Int32?
+
         public var maintainTime: String?
 
         public var mem: Int64?
@@ -22038,6 +22048,9 @@ public class DescribeInstancesResponseBody : Tea.TeaModel {
             }
             if self.instanceType != nil {
                 map["InstanceType"] = self.instanceType!
+            }
+            if self.iops != nil {
+                map["Iops"] = self.iops!
             }
             if self.maintainTime != nil {
                 map["MaintainTime"] = self.maintainTime!
@@ -22150,6 +22163,9 @@ public class DescribeInstancesResponseBody : Tea.TeaModel {
             }
             if let value = dict["InstanceType"] as? String {
                 self.instanceType = value
+            }
+            if let value = dict["Iops"] as? Int32 {
+                self.iops = value
             }
             if let value = dict["MaintainTime"] as? String {
                 self.maintainTime = value
@@ -22323,6 +22339,8 @@ public class DescribeMetricsDataRequest : Tea.TeaModel {
 
     public var limit: String?
 
+    public var metricScope: String?
+
     public var metrics: String?
 
     public var replicaType: String?
@@ -22362,6 +22380,9 @@ public class DescribeMetricsDataRequest : Tea.TeaModel {
         if self.limit != nil {
             map["Limit"] = self.limit!
         }
+        if self.metricScope != nil {
+            map["MetricScope"] = self.metricScope!
+        }
         if self.metrics != nil {
             map["Metrics"] = self.metrics!
         }
@@ -22396,6 +22417,9 @@ public class DescribeMetricsDataRequest : Tea.TeaModel {
         }
         if let value = dict["Limit"] as? String {
             self.limit = value
+        }
+        if let value = dict["MetricScope"] as? String {
+            self.metricScope = value
         }
         if let value = dict["Metrics"] as? String {
             self.metrics = value
@@ -42655,6 +42679,8 @@ public class DescribeSqlAuditStatRequest : Tea.TeaModel {
 
     public var instanceId: String?
 
+    public var operatorType: String?
+
     public var pageNumber: Int32?
 
     public var pageSize: Int32?
@@ -42683,6 +42709,9 @@ public class DescribeSqlAuditStatRequest : Tea.TeaModel {
         if self.instanceId != nil {
             map["InstanceId"] = self.instanceId!
         }
+        if self.operatorType != nil {
+            map["OperatorType"] = self.operatorType!
+        }
         if self.pageNumber != nil {
             map["PageNumber"] = self.pageNumber!
         }
@@ -42705,6 +42734,9 @@ public class DescribeSqlAuditStatRequest : Tea.TeaModel {
         }
         if let value = dict["InstanceId"] as? String {
             self.instanceId = value
+        }
+        if let value = dict["OperatorType"] as? String {
+            self.operatorType = value
         }
         if let value = dict["PageNumber"] as? Int32 {
             self.pageNumber = value
@@ -42884,6 +42916,8 @@ public class DescribeSqlAuditStatResponseBody : Tea.TeaModel {
 
     public var requestId: String?
 
+    public var totalCount: Int64?
+
     public override init() {
         super.init()
     }
@@ -42908,6 +42942,9 @@ public class DescribeSqlAuditStatResponseBody : Tea.TeaModel {
         if self.requestId != nil {
             map["RequestId"] = self.requestId!
         }
+        if self.totalCount != nil {
+            map["TotalCount"] = self.totalCount!
+        }
         return map
     }
 
@@ -42928,6 +42965,9 @@ public class DescribeSqlAuditStatResponseBody : Tea.TeaModel {
         }
         if let value = dict["RequestId"] as? String {
             self.requestId = value
+        }
+        if let value = dict["TotalCount"] as? Int64 {
+            self.totalCount = value
         }
     }
 }
@@ -44312,6 +44352,8 @@ public class DescribeTenantResponseBody : Tea.TeaModel {
 
         public var instanceType: String?
 
+        public var iops: Int32?
+
         public var lowerCaseTableNames: Int32?
 
         public var masterIntranetAddressZone: String?
@@ -44422,6 +44464,9 @@ public class DescribeTenantResponseBody : Tea.TeaModel {
             }
             if self.instanceType != nil {
                 map["InstanceType"] = self.instanceType!
+            }
+            if self.iops != nil {
+                map["Iops"] = self.iops!
             }
             if self.lowerCaseTableNames != nil {
                 map["LowerCaseTableNames"] = self.lowerCaseTableNames!
@@ -44552,6 +44597,9 @@ public class DescribeTenantResponseBody : Tea.TeaModel {
             }
             if let value = dict["InstanceType"] as? String {
                 self.instanceType = value
+            }
+            if let value = dict["Iops"] as? Int32 {
+                self.iops = value
             }
             if let value = dict["LowerCaseTableNames"] as? Int32 {
                 self.lowerCaseTableNames = value
@@ -46843,6 +46891,8 @@ public class DescribeTenantsResponseBody : Tea.TeaModel {
 
         public var enableReadOnlyReplica: Bool?
 
+        public var iops: Int32?
+
         public var mem: Int32?
 
         public var parameterTemplate: String?
@@ -46904,6 +46954,9 @@ public class DescribeTenantsResponseBody : Tea.TeaModel {
             }
             if self.enableReadOnlyReplica != nil {
                 map["EnableReadOnlyReplica"] = self.enableReadOnlyReplica!
+            }
+            if self.iops != nil {
+                map["Iops"] = self.iops!
             }
             if self.mem != nil {
                 map["Mem"] = self.mem!
@@ -46969,6 +47022,9 @@ public class DescribeTenantsResponseBody : Tea.TeaModel {
             }
             if let value = dict["EnableReadOnlyReplica"] as? Bool {
                 self.enableReadOnlyReplica = value
+            }
+            if let value = dict["Iops"] as? Int32 {
+                self.iops = value
             }
             if let value = dict["Mem"] as? Int32 {
                 self.mem = value
@@ -58515,6 +58571,8 @@ public class ModifyTenantResourceRequest : Tea.TeaModel {
 
     public var instanceId: String?
 
+    public var iops: String?
+
     public var logDisk: Int64?
 
     public var memory: Int32?
@@ -58543,6 +58601,9 @@ public class ModifyTenantResourceRequest : Tea.TeaModel {
         if self.instanceId != nil {
             map["InstanceId"] = self.instanceId!
         }
+        if self.iops != nil {
+            map["Iops"] = self.iops!
+        }
         if self.logDisk != nil {
             map["LogDisk"] = self.logDisk!
         }
@@ -58565,6 +58626,9 @@ public class ModifyTenantResourceRequest : Tea.TeaModel {
         }
         if let value = dict["InstanceId"] as? String {
             self.instanceId = value
+        }
+        if let value = dict["Iops"] as? String {
+            self.iops = value
         }
         if let value = dict["LogDisk"] as? Int64 {
             self.logDisk = value
