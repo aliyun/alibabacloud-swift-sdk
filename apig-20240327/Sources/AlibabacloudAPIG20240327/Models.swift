@@ -19399,6 +19399,8 @@ public class ListSslCertsResponse : Tea.TeaModel {
 public class ListZonesResponseBody : Tea.TeaModel {
     public class Data : Tea.TeaModel {
         public class Items : Tea.TeaModel {
+            public var supportQat: String?
+
             public var zoneId: String?
 
             public override init() {
@@ -19415,6 +19417,9 @@ public class ListZonesResponseBody : Tea.TeaModel {
 
             public override func toMap() -> [String : Any] {
                 var map = super.toMap()
+                if self.supportQat != nil {
+                    map["supportQat"] = self.supportQat!
+                }
                 if self.zoneId != nil {
                     map["zoneId"] = self.zoneId!
                 }
@@ -19423,6 +19428,9 @@ public class ListZonesResponseBody : Tea.TeaModel {
 
             public override func fromMap(_ dict: [String: Any?]?) -> Void {
                 guard let dict else { return }
+                if let value = dict["supportQat"] as? String {
+                    self.supportQat = value
+                }
                 if let value = dict["zoneId"] as? String {
                     self.zoneId = value
                 }
