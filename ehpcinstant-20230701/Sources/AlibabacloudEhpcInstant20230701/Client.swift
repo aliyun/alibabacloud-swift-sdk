@@ -380,9 +380,17 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func getImageWithOptions(_ request: GetImageRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> GetImageResponse {
-        try TeaUtils.Client.validateModel(request)
+    public func getImageWithOptions(_ tmpReq: GetImageRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> GetImageResponse {
+        try TeaUtils.Client.validateModel(tmpReq)
+        var request: GetImageShrinkRequest = GetImageShrinkRequest([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.additionalRegionIds)) {
+            request.additionalRegionIdsShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.additionalRegionIds, "AdditionalRegionIds", "json")
+        }
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.additionalRegionIdsShrink)) {
+            query["AdditionalRegionIds"] = request.additionalRegionIdsShrink ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.imageCategory)) {
             query["ImageCategory"] = request.imageCategory ?? "";
         }

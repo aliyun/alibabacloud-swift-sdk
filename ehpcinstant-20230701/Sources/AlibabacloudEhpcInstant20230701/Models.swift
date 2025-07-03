@@ -2810,6 +2810,8 @@ public class GetAppVersionsResponse : Tea.TeaModel {
 }
 
 public class GetImageRequest : Tea.TeaModel {
+    public var additionalRegionIds: [String]?
+
     public var imageCategory: String?
 
     public var imageId: String?
@@ -2830,6 +2832,9 @@ public class GetImageRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.additionalRegionIds != nil {
+            map["AdditionalRegionIds"] = self.additionalRegionIds!
+        }
         if self.imageCategory != nil {
             map["ImageCategory"] = self.imageCategory!
         }
@@ -2844,6 +2849,64 @@ public class GetImageRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["AdditionalRegionIds"] as? [String] {
+            self.additionalRegionIds = value
+        }
+        if let value = dict["ImageCategory"] as? String {
+            self.imageCategory = value
+        }
+        if let value = dict["ImageId"] as? String {
+            self.imageId = value
+        }
+        if let value = dict["ImageType"] as? String {
+            self.imageType = value
+        }
+    }
+}
+
+public class GetImageShrinkRequest : Tea.TeaModel {
+    public var additionalRegionIdsShrink: String?
+
+    public var imageCategory: String?
+
+    public var imageId: String?
+
+    public var imageType: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.additionalRegionIdsShrink != nil {
+            map["AdditionalRegionIds"] = self.additionalRegionIdsShrink!
+        }
+        if self.imageCategory != nil {
+            map["ImageCategory"] = self.imageCategory!
+        }
+        if self.imageId != nil {
+            map["ImageId"] = self.imageId!
+        }
+        if self.imageType != nil {
+            map["ImageType"] = self.imageType!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["AdditionalRegionIds"] as? String {
+            self.additionalRegionIdsShrink = value
+        }
         if let value = dict["ImageCategory"] as? String {
             self.imageCategory = value
         }
@@ -2858,6 +2921,52 @@ public class GetImageRequest : Tea.TeaModel {
 
 public class GetImageResponseBody : Tea.TeaModel {
     public class Image : Tea.TeaModel {
+        public class AdditionalRegionsInfo : Tea.TeaModel {
+            public var imageId: String?
+
+            public var regionId: String?
+
+            public var status: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.imageId != nil {
+                    map["ImageId"] = self.imageId!
+                }
+                if self.regionId != nil {
+                    map["RegionId"] = self.regionId!
+                }
+                if self.status != nil {
+                    map["Status"] = self.status!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["ImageId"] as? String {
+                    self.imageId = value
+                }
+                if let value = dict["RegionId"] as? String {
+                    self.regionId = value
+                }
+                if let value = dict["Status"] as? String {
+                    self.status = value
+                }
+            }
+        }
         public class ContainerImageSpec : Tea.TeaModel {
             public class RegistryCredential : Tea.TeaModel {
                 public var password: String?
@@ -3093,6 +3202,8 @@ public class GetImageResponseBody : Tea.TeaModel {
                 }
             }
         }
+        public var additionalRegionsInfo: [GetImageResponseBody.Image.AdditionalRegionsInfo]?
+
         public var appId: String?
 
         public var containerImageSpec: GetImageResponseBody.Image.ContainerImageSpec?
@@ -3132,6 +3243,13 @@ public class GetImageResponseBody : Tea.TeaModel {
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
+            if self.additionalRegionsInfo != nil {
+                var tmp : [Any] = []
+                for k in self.additionalRegionsInfo! {
+                    tmp.append(k.toMap())
+                }
+                map["AdditionalRegionsInfo"] = tmp
+            }
             if self.appId != nil {
                 map["AppId"] = self.appId!
             }
@@ -3170,6 +3288,19 @@ public class GetImageResponseBody : Tea.TeaModel {
 
         public override func fromMap(_ dict: [String: Any?]?) -> Void {
             guard let dict else { return }
+            if let value = dict["AdditionalRegionsInfo"] as? [Any?] {
+                var tmp : [GetImageResponseBody.Image.AdditionalRegionsInfo] = []
+                for v in value {
+                    if v != nil {
+                        var model = GetImageResponseBody.Image.AdditionalRegionsInfo()
+                        if v != nil {
+                            model.fromMap(v as? [String: Any?])
+                        }
+                        tmp.append(model)
+                    }
+                }
+                self.additionalRegionsInfo = tmp
+            }
             if let value = dict["AppId"] as? String {
                 self.appId = value
             }
