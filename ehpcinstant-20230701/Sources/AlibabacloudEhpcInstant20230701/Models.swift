@@ -1841,6 +1841,8 @@ public class DeleteJobsRequest : Tea.TeaModel {
     }
     public var executorIds: [String]?
 
+    public var jobScheduler: String?
+
     public var jobSpec: [DeleteJobsRequest.JobSpec]?
 
     public override init() {
@@ -1860,6 +1862,9 @@ public class DeleteJobsRequest : Tea.TeaModel {
         if self.executorIds != nil {
             map["ExecutorIds"] = self.executorIds!
         }
+        if self.jobScheduler != nil {
+            map["JobScheduler"] = self.jobScheduler!
+        }
         if self.jobSpec != nil {
             var tmp : [Any] = []
             for k in self.jobSpec! {
@@ -1874,6 +1879,9 @@ public class DeleteJobsRequest : Tea.TeaModel {
         guard let dict else { return }
         if let value = dict["ExecutorIds"] as? [String] {
             self.executorIds = value
+        }
+        if let value = dict["JobScheduler"] as? String {
+            self.jobScheduler = value
         }
         if let value = dict["JobSpec"] as? [Any?] {
             var tmp : [DeleteJobsRequest.JobSpec] = []
@@ -1894,6 +1902,8 @@ public class DeleteJobsRequest : Tea.TeaModel {
 public class DeleteJobsShrinkRequest : Tea.TeaModel {
     public var executorIdsShrink: String?
 
+    public var jobScheduler: String?
+
     public var jobSpecShrink: String?
 
     public override init() {
@@ -1913,6 +1923,9 @@ public class DeleteJobsShrinkRequest : Tea.TeaModel {
         if self.executorIdsShrink != nil {
             map["ExecutorIds"] = self.executorIdsShrink!
         }
+        if self.jobScheduler != nil {
+            map["JobScheduler"] = self.jobScheduler!
+        }
         if self.jobSpecShrink != nil {
             map["JobSpec"] = self.jobSpecShrink!
         }
@@ -1923,6 +1936,9 @@ public class DeleteJobsShrinkRequest : Tea.TeaModel {
         guard let dict else { return }
         if let value = dict["ExecutorIds"] as? String {
             self.executorIdsShrink = value
+        }
+        if let value = dict["JobScheduler"] as? String {
+            self.jobScheduler = value
         }
         if let value = dict["JobSpec"] as? String {
             self.jobSpecShrink = value

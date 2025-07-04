@@ -191,6 +191,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.executorIdsShrink)) {
             query["ExecutorIds"] = request.executorIdsShrink ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.jobScheduler)) {
+            query["JobScheduler"] = request.jobScheduler ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.jobSpecShrink)) {
             query["JobSpec"] = request.jobSpecShrink ?? "";
         }
