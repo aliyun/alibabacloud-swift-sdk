@@ -15075,6 +15075,8 @@ public class CreateApplicationRequest : Tea.TeaModel {
 
     public var enableNewArms: Bool?
 
+    public var enablePrometheus: Bool?
+
     public var enableSidecarResourceIsolated: Bool?
 
     public var envs: String?
@@ -15086,6 +15088,8 @@ public class CreateApplicationRequest : Tea.TeaModel {
     public var imageUrl: String?
 
     public var initContainersConfig: [InitContainerConfig]?
+
+    public var isStateful: Bool?
 
     public var jarStartArgs: String?
 
@@ -15262,6 +15266,9 @@ public class CreateApplicationRequest : Tea.TeaModel {
         if self.enableNewArms != nil {
             map["EnableNewArms"] = self.enableNewArms!
         }
+        if self.enablePrometheus != nil {
+            map["EnablePrometheus"] = self.enablePrometheus!
+        }
         if self.enableSidecarResourceIsolated != nil {
             map["EnableSidecarResourceIsolated"] = self.enableSidecarResourceIsolated!
         }
@@ -15283,6 +15290,9 @@ public class CreateApplicationRequest : Tea.TeaModel {
                 tmp.append(k.toMap())
             }
             map["InitContainersConfig"] = tmp
+        }
+        if self.isStateful != nil {
+            map["IsStateful"] = self.isStateful!
         }
         if self.jarStartArgs != nil {
             map["JarStartArgs"] = self.jarStartArgs!
@@ -15503,6 +15513,9 @@ public class CreateApplicationRequest : Tea.TeaModel {
         if let value = dict["EnableNewArms"] as? Bool {
             self.enableNewArms = value
         }
+        if let value = dict["EnablePrometheus"] as? Bool {
+            self.enablePrometheus = value
+        }
         if let value = dict["EnableSidecarResourceIsolated"] as? Bool {
             self.enableSidecarResourceIsolated = value
         }
@@ -15530,6 +15543,9 @@ public class CreateApplicationRequest : Tea.TeaModel {
                 }
             }
             self.initContainersConfig = tmp
+        }
+        if let value = dict["IsStateful"] as? Bool {
+            self.isStateful = value
         }
         if let value = dict["JarStartArgs"] as? String {
             self.jarStartArgs = value
@@ -15734,6 +15750,8 @@ public class CreateApplicationShrinkRequest : Tea.TeaModel {
 
     public var enableNewArms: Bool?
 
+    public var enablePrometheus: Bool?
+
     public var enableSidecarResourceIsolated: Bool?
 
     public var envs: String?
@@ -15745,6 +15763,8 @@ public class CreateApplicationShrinkRequest : Tea.TeaModel {
     public var imageUrl: String?
 
     public var initContainersConfigShrink: String?
+
+    public var isStateful: Bool?
 
     public var jarStartArgs: String?
 
@@ -15921,6 +15941,9 @@ public class CreateApplicationShrinkRequest : Tea.TeaModel {
         if self.enableNewArms != nil {
             map["EnableNewArms"] = self.enableNewArms!
         }
+        if self.enablePrometheus != nil {
+            map["EnablePrometheus"] = self.enablePrometheus!
+        }
         if self.enableSidecarResourceIsolated != nil {
             map["EnableSidecarResourceIsolated"] = self.enableSidecarResourceIsolated!
         }
@@ -15938,6 +15961,9 @@ public class CreateApplicationShrinkRequest : Tea.TeaModel {
         }
         if self.initContainersConfigShrink != nil {
             map["InitContainersConfig"] = self.initContainersConfigShrink!
+        }
+        if self.isStateful != nil {
+            map["IsStateful"] = self.isStateful!
         }
         if self.jarStartArgs != nil {
             map["JarStartArgs"] = self.jarStartArgs!
@@ -16154,6 +16180,9 @@ public class CreateApplicationShrinkRequest : Tea.TeaModel {
         if let value = dict["EnableNewArms"] as? Bool {
             self.enableNewArms = value
         }
+        if let value = dict["EnablePrometheus"] as? Bool {
+            self.enablePrometheus = value
+        }
         if let value = dict["EnableSidecarResourceIsolated"] as? Bool {
             self.enableSidecarResourceIsolated = value
         }
@@ -16171,6 +16200,9 @@ public class CreateApplicationShrinkRequest : Tea.TeaModel {
         }
         if let value = dict["InitContainersConfig"] as? String {
             self.initContainersConfigShrink = value
+        }
+        if let value = dict["IsStateful"] as? Bool {
+            self.isStateful = value
         }
         if let value = dict["JarStartArgs"] as? String {
             self.jarStartArgs = value
@@ -22489,6 +22521,8 @@ public class DeployApplicationRequest : Tea.TeaModel {
 
     public var enableNewArms: Bool?
 
+    public var enablePrometheus: Bool?
+
     public var enableSidecarResourceIsolated: Bool?
 
     public var envs: String?
@@ -22670,6 +22704,9 @@ public class DeployApplicationRequest : Tea.TeaModel {
         }
         if self.enableNewArms != nil {
             map["EnableNewArms"] = self.enableNewArms!
+        }
+        if self.enablePrometheus != nil {
+            map["EnablePrometheus"] = self.enablePrometheus!
         }
         if self.enableSidecarResourceIsolated != nil {
             map["EnableSidecarResourceIsolated"] = self.enableSidecarResourceIsolated!
@@ -22906,6 +22943,9 @@ public class DeployApplicationRequest : Tea.TeaModel {
         if let value = dict["EnableNewArms"] as? Bool {
             self.enableNewArms = value
         }
+        if let value = dict["EnablePrometheus"] as? Bool {
+            self.enablePrometheus = value
+        }
         if let value = dict["EnableSidecarResourceIsolated"] as? Bool {
             self.enableSidecarResourceIsolated = value
         }
@@ -23132,6 +23172,8 @@ public class DeployApplicationShrinkRequest : Tea.TeaModel {
 
     public var enableNewArms: Bool?
 
+    public var enablePrometheus: Bool?
+
     public var enableSidecarResourceIsolated: Bool?
 
     public var envs: String?
@@ -23313,6 +23355,9 @@ public class DeployApplicationShrinkRequest : Tea.TeaModel {
         }
         if self.enableNewArms != nil {
             map["EnableNewArms"] = self.enableNewArms!
+        }
+        if self.enablePrometheus != nil {
+            map["EnablePrometheus"] = self.enablePrometheus!
         }
         if self.enableSidecarResourceIsolated != nil {
             map["EnableSidecarResourceIsolated"] = self.enableSidecarResourceIsolated!
@@ -23540,6 +23585,9 @@ public class DeployApplicationShrinkRequest : Tea.TeaModel {
         }
         if let value = dict["EnableNewArms"] as? Bool {
             self.enableNewArms = value
+        }
+        if let value = dict["EnablePrometheus"] as? Bool {
+            self.enablePrometheus = value
         }
         if let value = dict["EnableSidecarResourceIsolated"] as? Bool {
             self.enableSidecarResourceIsolated = value
@@ -25076,6 +25124,8 @@ public class DescribeApplicationConfigResponseBody : Tea.TeaModel {
 
         public var enableNewArms: Bool?
 
+        public var enablePrometheus: Bool?
+
         public var envs: String?
 
         public var gpuCount: String?
@@ -25087,6 +25137,8 @@ public class DescribeApplicationConfigResponseBody : Tea.TeaModel {
         public var imageUrl: String?
 
         public var initContainersConfig: [DescribeApplicationConfigResponseBody.Data.InitContainersConfig]?
+
+        public var isStateful: Bool?
 
         public var jarStartArgs: String?
 
@@ -25290,6 +25342,9 @@ public class DescribeApplicationConfigResponseBody : Tea.TeaModel {
             if self.enableNewArms != nil {
                 map["EnableNewArms"] = self.enableNewArms!
             }
+            if self.enablePrometheus != nil {
+                map["EnablePrometheus"] = self.enablePrometheus!
+            }
             if self.envs != nil {
                 map["Envs"] = self.envs!
             }
@@ -25311,6 +25366,9 @@ public class DescribeApplicationConfigResponseBody : Tea.TeaModel {
                     tmp.append(k.toMap())
                 }
                 map["InitContainersConfig"] = tmp
+            }
+            if self.isStateful != nil {
+                map["IsStateful"] = self.isStateful!
             }
             if self.jarStartArgs != nil {
                 map["JarStartArgs"] = self.jarStartArgs!
@@ -25587,6 +25645,9 @@ public class DescribeApplicationConfigResponseBody : Tea.TeaModel {
             if let value = dict["EnableNewArms"] as? Bool {
                 self.enableNewArms = value
             }
+            if let value = dict["EnablePrometheus"] as? Bool {
+                self.enablePrometheus = value
+            }
             if let value = dict["Envs"] as? String {
                 self.envs = value
             }
@@ -25614,6 +25675,9 @@ public class DescribeApplicationConfigResponseBody : Tea.TeaModel {
                     }
                 }
                 self.initContainersConfig = tmp
+            }
+            if let value = dict["IsStateful"] as? Bool {
+                self.isStateful = value
             }
             if let value = dict["JarStartArgs"] as? String {
                 self.jarStartArgs = value
@@ -39662,6 +39726,8 @@ public class GetApplicationResponseBody : Tea.TeaModel {
 
         public var instances: Int32?
 
+        public var isStateful: Bool?
+
         public var mem: Int32?
 
         public var mseEnabled: Bool?
@@ -39710,6 +39776,9 @@ public class GetApplicationResponseBody : Tea.TeaModel {
             if self.instances != nil {
                 map["Instances"] = self.instances!
             }
+            if self.isStateful != nil {
+                map["IsStateful"] = self.isStateful!
+            }
             if self.mem != nil {
                 map["Mem"] = self.mem!
             }
@@ -39756,6 +39825,9 @@ public class GetApplicationResponseBody : Tea.TeaModel {
             }
             if let value = dict["Instances"] as? Int32 {
                 self.instances = value
+            }
+            if let value = dict["IsStateful"] as? Bool {
+                self.isStateful = value
             }
             if let value = dict["Mem"] as? Int32 {
                 self.mem = value
@@ -44000,6 +44072,8 @@ public class ListApplicationsRequest : Tea.TeaModel {
 
     public var fieldValue: String?
 
+    public var isStateful: String?
+
     public var namespaceId: String?
 
     public var orderBy: String?
@@ -44039,6 +44113,9 @@ public class ListApplicationsRequest : Tea.TeaModel {
         if self.fieldValue != nil {
             map["FieldValue"] = self.fieldValue!
         }
+        if self.isStateful != nil {
+            map["IsStateful"] = self.isStateful!
+        }
         if self.namespaceId != nil {
             map["NamespaceId"] = self.namespaceId!
         }
@@ -44073,6 +44150,9 @@ public class ListApplicationsRequest : Tea.TeaModel {
         }
         if let value = dict["FieldValue"] as? String {
             self.fieldValue = value
+        }
+        if let value = dict["IsStateful"] as? String {
+            self.isStateful = value
         }
         if let value = dict["NamespaceId"] as? String {
             self.namespaceId = value
