@@ -37050,6 +37050,8 @@ public class PublishStagingConfigToProductionResponse : Tea.TeaModel {
 public class PushObjectCacheRequest : Tea.TeaModel {
     public var area: String?
 
+    public var consistencyHash: Bool?
+
     public var l2Preload: Bool?
 
     public var objectPath: String?
@@ -37079,6 +37081,9 @@ public class PushObjectCacheRequest : Tea.TeaModel {
         if self.area != nil {
             map["Area"] = self.area!
         }
+        if self.consistencyHash != nil {
+            map["ConsistencyHash"] = self.consistencyHash!
+        }
         if self.l2Preload != nil {
             map["L2Preload"] = self.l2Preload!
         }
@@ -37104,6 +37109,9 @@ public class PushObjectCacheRequest : Tea.TeaModel {
         guard let dict else { return }
         if let value = dict["Area"] as? String {
             self.area = value
+        }
+        if let value = dict["ConsistencyHash"] as? Bool {
+            self.consistencyHash = value
         }
         if let value = dict["L2Preload"] as? Bool {
             self.l2Preload = value
@@ -37890,8 +37898,6 @@ public class SetCdnDomainSSLCertificateRequest : Tea.TeaModel {
 
     public var domainName: String?
 
-    public var env: String?
-
     public var ownerId: Int64?
 
     public var SSLPri: String?
@@ -37931,9 +37937,6 @@ public class SetCdnDomainSSLCertificateRequest : Tea.TeaModel {
         if self.domainName != nil {
             map["DomainName"] = self.domainName!
         }
-        if self.env != nil {
-            map["Env"] = self.env!
-        }
         if self.ownerId != nil {
             map["OwnerId"] = self.ownerId!
         }
@@ -37968,9 +37971,6 @@ public class SetCdnDomainSSLCertificateRequest : Tea.TeaModel {
         }
         if let value = dict["DomainName"] as? String {
             self.domainName = value
-        }
-        if let value = dict["Env"] as? String {
-            self.env = value
         }
         if let value = dict["OwnerId"] as? Int64 {
             self.ownerId = value
