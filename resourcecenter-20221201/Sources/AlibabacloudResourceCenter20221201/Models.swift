@@ -4154,6 +4154,330 @@ public class GetMultiAccountResourceConfigurationResponse : Tea.TeaModel {
     }
 }
 
+public class GetMultiAccountResourceCountsRequest : Tea.TeaModel {
+    public class Filter : Tea.TeaModel {
+        public var key: String?
+
+        public var matchType: String?
+
+        public var value: [String]?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.key != nil {
+                map["Key"] = self.key!
+            }
+            if self.matchType != nil {
+                map["MatchType"] = self.matchType!
+            }
+            if self.value != nil {
+                map["Value"] = self.value!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["Key"] as? String {
+                self.key = value
+            }
+            if let value = dict["MatchType"] as? String {
+                self.matchType = value
+            }
+            if let value = dict["Value"] as? [String] {
+                self.value = value
+            }
+        }
+    }
+    public var filter: [GetMultiAccountResourceCountsRequest.Filter]?
+
+    public var groupByKey: String?
+
+    public var scope: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.filter != nil {
+            var tmp : [Any] = []
+            for k in self.filter! {
+                tmp.append(k.toMap())
+            }
+            map["Filter"] = tmp
+        }
+        if self.groupByKey != nil {
+            map["GroupByKey"] = self.groupByKey!
+        }
+        if self.scope != nil {
+            map["Scope"] = self.scope!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["Filter"] as? [Any?] {
+            var tmp : [GetMultiAccountResourceCountsRequest.Filter] = []
+            for v in value {
+                if v != nil {
+                    var model = GetMultiAccountResourceCountsRequest.Filter()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.filter = tmp
+        }
+        if let value = dict["GroupByKey"] as? String {
+            self.groupByKey = value
+        }
+        if let value = dict["Scope"] as? String {
+            self.scope = value
+        }
+    }
+}
+
+public class GetMultiAccountResourceCountsResponseBody : Tea.TeaModel {
+    public class Filters : Tea.TeaModel {
+        public var key: String?
+
+        public var values: [String]?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.key != nil {
+                map["Key"] = self.key!
+            }
+            if self.values != nil {
+                map["Values"] = self.values!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["Key"] as? String {
+                self.key = value
+            }
+            if let value = dict["Values"] as? [String] {
+                self.values = value
+            }
+        }
+    }
+    public class ResourceCounts : Tea.TeaModel {
+        public var count: Int64?
+
+        public var groupName: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.count != nil {
+                map["Count"] = self.count!
+            }
+            if self.groupName != nil {
+                map["GroupName"] = self.groupName!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["Count"] as? Int64 {
+                self.count = value
+            }
+            if let value = dict["GroupName"] as? String {
+                self.groupName = value
+            }
+        }
+    }
+    public var filters: [GetMultiAccountResourceCountsResponseBody.Filters]?
+
+    public var groupByKey: String?
+
+    public var requestId: String?
+
+    public var resourceCounts: [GetMultiAccountResourceCountsResponseBody.ResourceCounts]?
+
+    public var scope: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.filters != nil {
+            var tmp : [Any] = []
+            for k in self.filters! {
+                tmp.append(k.toMap())
+            }
+            map["Filters"] = tmp
+        }
+        if self.groupByKey != nil {
+            map["GroupByKey"] = self.groupByKey!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.resourceCounts != nil {
+            var tmp : [Any] = []
+            for k in self.resourceCounts! {
+                tmp.append(k.toMap())
+            }
+            map["ResourceCounts"] = tmp
+        }
+        if self.scope != nil {
+            map["Scope"] = self.scope!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["Filters"] as? [Any?] {
+            var tmp : [GetMultiAccountResourceCountsResponseBody.Filters] = []
+            for v in value {
+                if v != nil {
+                    var model = GetMultiAccountResourceCountsResponseBody.Filters()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.filters = tmp
+        }
+        if let value = dict["GroupByKey"] as? String {
+            self.groupByKey = value
+        }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+        if let value = dict["ResourceCounts"] as? [Any?] {
+            var tmp : [GetMultiAccountResourceCountsResponseBody.ResourceCounts] = []
+            for v in value {
+                if v != nil {
+                    var model = GetMultiAccountResourceCountsResponseBody.ResourceCounts()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.resourceCounts = tmp
+        }
+        if let value = dict["Scope"] as? String {
+            self.scope = value
+        }
+    }
+}
+
+public class GetMultiAccountResourceCountsResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: GetMultiAccountResourceCountsResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = GetMultiAccountResourceCountsResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
 public class GetResourceCenterServiceStatusResponseBody : Tea.TeaModel {
     public var initialStatus: String?
 
