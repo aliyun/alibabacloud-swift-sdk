@@ -13822,7 +13822,13 @@ public class CreateTemplateRequest : Tea.TeaModel {
             }
         }
     }
+    public var autoPay: Bool?
+
+    public var autoRenew: Bool?
+
     public var bizType: String?
+
+    public var chargeType: String?
 
     public var dataDiskList: [CreateTemplateRequest.DataDiskList]?
 
@@ -13832,7 +13838,13 @@ public class CreateTemplateRequest : Tea.TeaModel {
 
     public var imageId: String?
 
+    public var period: Int32?
+
+    public var periodUnit: String?
+
     public var policyGroupId: String?
+
+    public var postPaidAfterUsedUp: Bool?
 
     public var productType: String?
 
@@ -13852,6 +13864,8 @@ public class CreateTemplateRequest : Tea.TeaModel {
 
     public var timerGroupId: String?
 
+    public var userDuration: Int32?
+
     public override init() {
         super.init()
     }
@@ -13866,8 +13880,17 @@ public class CreateTemplateRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.autoPay != nil {
+            map["AutoPay"] = self.autoPay!
+        }
+        if self.autoRenew != nil {
+            map["AutoRenew"] = self.autoRenew!
+        }
         if self.bizType != nil {
             map["BizType"] = self.bizType!
+        }
+        if self.chargeType != nil {
+            map["ChargeType"] = self.chargeType!
         }
         if self.dataDiskList != nil {
             var tmp : [Any] = []
@@ -13885,8 +13908,17 @@ public class CreateTemplateRequest : Tea.TeaModel {
         if self.imageId != nil {
             map["ImageId"] = self.imageId!
         }
+        if self.period != nil {
+            map["Period"] = self.period!
+        }
+        if self.periodUnit != nil {
+            map["PeriodUnit"] = self.periodUnit!
+        }
         if self.policyGroupId != nil {
             map["PolicyGroupId"] = self.policyGroupId!
+        }
+        if self.postPaidAfterUsedUp != nil {
+            map["PostPaidAfterUsedUp"] = self.postPaidAfterUsedUp!
         }
         if self.productType != nil {
             map["ProductType"] = self.productType!
@@ -13927,13 +13959,25 @@ public class CreateTemplateRequest : Tea.TeaModel {
         if self.timerGroupId != nil {
             map["TimerGroupId"] = self.timerGroupId!
         }
+        if self.userDuration != nil {
+            map["UserDuration"] = self.userDuration!
+        }
         return map
     }
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["AutoPay"] as? Bool {
+            self.autoPay = value
+        }
+        if let value = dict["AutoRenew"] as? Bool {
+            self.autoRenew = value
+        }
         if let value = dict["BizType"] as? String {
             self.bizType = value
+        }
+        if let value = dict["ChargeType"] as? String {
+            self.chargeType = value
         }
         if let value = dict["DataDiskList"] as? [Any?] {
             var tmp : [CreateTemplateRequest.DataDiskList] = []
@@ -13957,8 +14001,17 @@ public class CreateTemplateRequest : Tea.TeaModel {
         if let value = dict["ImageId"] as? String {
             self.imageId = value
         }
+        if let value = dict["Period"] as? Int32 {
+            self.period = value
+        }
+        if let value = dict["PeriodUnit"] as? String {
+            self.periodUnit = value
+        }
         if let value = dict["PolicyGroupId"] as? String {
             self.policyGroupId = value
+        }
+        if let value = dict["PostPaidAfterUsedUp"] as? Bool {
+            self.postPaidAfterUsedUp = value
         }
         if let value = dict["ProductType"] as? String {
             self.productType = value
@@ -14016,6 +14069,9 @@ public class CreateTemplateRequest : Tea.TeaModel {
         }
         if let value = dict["TimerGroupId"] as? String {
             self.timerGroupId = value
+        }
+        if let value = dict["UserDuration"] as? Int32 {
+            self.userDuration = value
         }
     }
 }
@@ -38670,6 +38726,12 @@ public class DescribeTemplatesResponseBody : Tea.TeaModel {
                 }
             }
         }
+        public var autoPay: Bool?
+
+        public var autoRenew: Bool?
+
+        public var chargeType: String?
+
         public var dataDiskList: [DescribeTemplatesResponseBody.Data.DataDiskList]?
 
         public var defaultLanguage: String?
@@ -38684,7 +38746,13 @@ public class DescribeTemplatesResponseBody : Tea.TeaModel {
 
         public var imageType: String?
 
+        public var period: Int32?
+
+        public var periodUnit: String?
+
         public var policyGroupId: String?
+
+        public var postPaidAfterUsedUp: Bool?
 
         public var productType: String?
 
@@ -38710,6 +38778,8 @@ public class DescribeTemplatesResponseBody : Tea.TeaModel {
 
         public var timerGroupId: String?
 
+        public var userDuration: String?
+
         public override init() {
             super.init()
         }
@@ -38724,6 +38794,15 @@ public class DescribeTemplatesResponseBody : Tea.TeaModel {
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
+            if self.autoPay != nil {
+                map["AutoPay"] = self.autoPay!
+            }
+            if self.autoRenew != nil {
+                map["AutoRenew"] = self.autoRenew!
+            }
+            if self.chargeType != nil {
+                map["ChargeType"] = self.chargeType!
+            }
             if self.dataDiskList != nil {
                 var tmp : [Any] = []
                 for k in self.dataDiskList! {
@@ -38749,8 +38828,17 @@ public class DescribeTemplatesResponseBody : Tea.TeaModel {
             if self.imageType != nil {
                 map["ImageType"] = self.imageType!
             }
+            if self.period != nil {
+                map["Period"] = self.period!
+            }
+            if self.periodUnit != nil {
+                map["PeriodUnit"] = self.periodUnit!
+            }
             if self.policyGroupId != nil {
                 map["PolicyGroupId"] = self.policyGroupId!
+            }
+            if self.postPaidAfterUsedUp != nil {
+                map["PostPaidAfterUsedUp"] = self.postPaidAfterUsedUp!
             }
             if self.productType != nil {
                 map["ProductType"] = self.productType!
@@ -38800,11 +38888,23 @@ public class DescribeTemplatesResponseBody : Tea.TeaModel {
             if self.timerGroupId != nil {
                 map["TimerGroupId"] = self.timerGroupId!
             }
+            if self.userDuration != nil {
+                map["UserDuration"] = self.userDuration!
+            }
             return map
         }
 
         public override func fromMap(_ dict: [String: Any?]?) -> Void {
             guard let dict else { return }
+            if let value = dict["AutoPay"] as? Bool {
+                self.autoPay = value
+            }
+            if let value = dict["AutoRenew"] as? Bool {
+                self.autoRenew = value
+            }
+            if let value = dict["ChargeType"] as? String {
+                self.chargeType = value
+            }
             if let value = dict["DataDiskList"] as? [Any?] {
                 var tmp : [DescribeTemplatesResponseBody.Data.DataDiskList] = []
                 for v in value {
@@ -38836,8 +38936,17 @@ public class DescribeTemplatesResponseBody : Tea.TeaModel {
             if let value = dict["ImageType"] as? String {
                 self.imageType = value
             }
+            if let value = dict["Period"] as? Int32 {
+                self.period = value
+            }
+            if let value = dict["PeriodUnit"] as? String {
+                self.periodUnit = value
+            }
             if let value = dict["PolicyGroupId"] as? String {
                 self.policyGroupId = value
+            }
+            if let value = dict["PostPaidAfterUsedUp"] as? Bool {
+                self.postPaidAfterUsedUp = value
             }
             if let value = dict["ProductType"] as? String {
                 self.productType = value
@@ -38904,6 +39013,9 @@ public class DescribeTemplatesResponseBody : Tea.TeaModel {
             }
             if let value = dict["TimerGroupId"] as? String {
                 self.timerGroupId = value
+            }
+            if let value = dict["UserDuration"] as? String {
+                self.userDuration = value
             }
         }
     }
@@ -56570,13 +56682,25 @@ public class ModifyTemplateRequest : Tea.TeaModel {
             }
         }
     }
+    public var autoPay: Bool?
+
+    public var autoRenew: Bool?
+
+    public var chargeType: String?
+
     public var defaultLanguage: String?
 
     public var description_: String?
 
     public var imageId: String?
 
+    public var period: Int32?
+
+    public var periodUnit: String?
+
     public var policyGroupId: String?
+
+    public var postPaidAfterUsedUp: Bool?
 
     public var regionConfigList: [ModifyTemplateRequest.RegionConfigList]?
 
@@ -56596,6 +56720,8 @@ public class ModifyTemplateRequest : Tea.TeaModel {
 
     public var timerGroupId: String?
 
+    public var userDuration: Int32?
+
     public override init() {
         super.init()
     }
@@ -56610,6 +56736,15 @@ public class ModifyTemplateRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.autoPay != nil {
+            map["AutoPay"] = self.autoPay!
+        }
+        if self.autoRenew != nil {
+            map["AutoRenew"] = self.autoRenew!
+        }
+        if self.chargeType != nil {
+            map["ChargeType"] = self.chargeType!
+        }
         if self.defaultLanguage != nil {
             map["DefaultLanguage"] = self.defaultLanguage!
         }
@@ -56619,8 +56754,17 @@ public class ModifyTemplateRequest : Tea.TeaModel {
         if self.imageId != nil {
             map["ImageId"] = self.imageId!
         }
+        if self.period != nil {
+            map["Period"] = self.period!
+        }
+        if self.periodUnit != nil {
+            map["PeriodUnit"] = self.periodUnit!
+        }
         if self.policyGroupId != nil {
             map["PolicyGroupId"] = self.policyGroupId!
+        }
+        if self.postPaidAfterUsedUp != nil {
+            map["PostPaidAfterUsedUp"] = self.postPaidAfterUsedUp!
         }
         if self.regionConfigList != nil {
             var tmp : [Any] = []
@@ -56661,11 +56805,23 @@ public class ModifyTemplateRequest : Tea.TeaModel {
         if self.timerGroupId != nil {
             map["TimerGroupId"] = self.timerGroupId!
         }
+        if self.userDuration != nil {
+            map["UserDuration"] = self.userDuration!
+        }
         return map
     }
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["AutoPay"] as? Bool {
+            self.autoPay = value
+        }
+        if let value = dict["AutoRenew"] as? Bool {
+            self.autoRenew = value
+        }
+        if let value = dict["ChargeType"] as? String {
+            self.chargeType = value
+        }
         if let value = dict["DefaultLanguage"] as? String {
             self.defaultLanguage = value
         }
@@ -56675,8 +56831,17 @@ public class ModifyTemplateRequest : Tea.TeaModel {
         if let value = dict["ImageId"] as? String {
             self.imageId = value
         }
+        if let value = dict["Period"] as? Int32 {
+            self.period = value
+        }
+        if let value = dict["PeriodUnit"] as? String {
+            self.periodUnit = value
+        }
         if let value = dict["PolicyGroupId"] as? String {
             self.policyGroupId = value
+        }
+        if let value = dict["PostPaidAfterUsedUp"] as? Bool {
+            self.postPaidAfterUsedUp = value
         }
         if let value = dict["RegionConfigList"] as? [Any?] {
             var tmp : [ModifyTemplateRequest.RegionConfigList] = []
@@ -56734,6 +56899,9 @@ public class ModifyTemplateRequest : Tea.TeaModel {
         }
         if let value = dict["TimerGroupId"] as? String {
             self.timerGroupId = value
+        }
+        if let value = dict["UserDuration"] as? Int32 {
+            self.userDuration = value
         }
     }
 }
@@ -60144,6 +60312,8 @@ public class RevokeCoordinatePrivilegeResponse : Tea.TeaModel {
 public class RunCommandRequest : Tea.TeaModel {
     public var commandContent: String?
 
+    public var commandRole: String?
+
     public var contentEncoding: String?
 
     public var desktopId: [String]?
@@ -60173,6 +60343,9 @@ public class RunCommandRequest : Tea.TeaModel {
         if self.commandContent != nil {
             map["CommandContent"] = self.commandContent!
         }
+        if self.commandRole != nil {
+            map["CommandRole"] = self.commandRole!
+        }
         if self.contentEncoding != nil {
             map["ContentEncoding"] = self.contentEncoding!
         }
@@ -60198,6 +60371,9 @@ public class RunCommandRequest : Tea.TeaModel {
         guard let dict else { return }
         if let value = dict["CommandContent"] as? String {
             self.commandContent = value
+        }
+        if let value = dict["CommandRole"] as? String {
+            self.commandRole = value
         }
         if let value = dict["ContentEncoding"] as? String {
             self.contentEncoding = value
