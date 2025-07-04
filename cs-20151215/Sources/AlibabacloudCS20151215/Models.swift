@@ -4170,6 +4170,36 @@ public class CreateClusterRequest : Tea.TeaModel {
             }
         }
     }
+    public class RrsaConfig : Tea.TeaModel {
+        public var enabled: Bool?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.enabled != nil {
+                map["enabled"] = self.enabled!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["enabled"] as? Bool {
+                self.enabled = value
+            }
+        }
+    }
     public class WorkerDataDisks : Tea.TeaModel {
         public var category: String?
 
@@ -4274,6 +4304,8 @@ public class CreateClusterRequest : Tea.TeaModel {
 
     public var endpointPublicAccess: Bool?
 
+    public var extraSans: [String]?
+
     public var formatDisk: Bool?
 
     public var imageId: String?
@@ -4362,6 +4394,8 @@ public class CreateClusterRequest : Tea.TeaModel {
 
     public var resourceGroupId: String?
 
+    public var rrsaConfig: CreateClusterRequest.RrsaConfig?
+
     public var runtime: Runtime?
 
     public var securityGroupId: String?
@@ -4439,6 +4473,7 @@ public class CreateClusterRequest : Tea.TeaModel {
         try self.controlPlaneConfig?.validate()
         try self.maintenanceWindow?.validate()
         try self.operationPolicy?.validate()
+        try self.rrsaConfig?.validate()
         try self.runtime?.validate()
     }
 
@@ -4522,6 +4557,9 @@ public class CreateClusterRequest : Tea.TeaModel {
         }
         if self.endpointPublicAccess != nil {
             map["endpoint_public_access"] = self.endpointPublicAccess!
+        }
+        if self.extraSans != nil {
+            map["extra_sans"] = self.extraSans!
         }
         if self.formatDisk != nil {
             map["format_disk"] = self.formatDisk!
@@ -4658,6 +4696,9 @@ public class CreateClusterRequest : Tea.TeaModel {
         }
         if self.resourceGroupId != nil {
             map["resource_group_id"] = self.resourceGroupId!
+        }
+        if self.rrsaConfig != nil {
+            map["rrsa_config"] = self.rrsaConfig?.toMap()
         }
         if self.runtime != nil {
             map["runtime"] = self.runtime?.toMap()
@@ -4860,6 +4901,9 @@ public class CreateClusterRequest : Tea.TeaModel {
         if let value = dict["endpoint_public_access"] as? Bool {
             self.endpointPublicAccess = value
         }
+        if let value = dict["extra_sans"] as? [String] {
+            self.extraSans = value
+        }
         if let value = dict["format_disk"] as? Bool {
             self.formatDisk = value
         }
@@ -5005,6 +5049,11 @@ public class CreateClusterRequest : Tea.TeaModel {
         }
         if let value = dict["resource_group_id"] as? String {
             self.resourceGroupId = value
+        }
+        if let value = dict["rrsa_config"] as? [String: Any?] {
+            var model = CreateClusterRequest.RrsaConfig()
+            model.fromMap(value)
+            self.rrsaConfig = model
         }
         if let value = dict["runtime"] as? [String: Any?] {
             var model = Runtime()
