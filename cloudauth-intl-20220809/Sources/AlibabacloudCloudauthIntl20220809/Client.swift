@@ -28,6 +28,67 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func addressVerifyIntlWithOptions(_ request: AddressVerifyIntlRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> AddressVerifyIntlResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.addressType)) {
+            query["AddressType"] = request.addressType ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.defaultCity)) {
+            query["DefaultCity"] = request.defaultCity ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.defaultCountry)) {
+            query["DefaultCountry"] = request.defaultCountry ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.defaultDistrict)) {
+            query["DefaultDistrict"] = request.defaultDistrict ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.defaultProvince)) {
+            query["DefaultProvince"] = request.defaultProvince ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.latitude)) {
+            query["Latitude"] = request.latitude ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.longitude)) {
+            query["Longitude"] = request.longitude ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.mobile)) {
+            query["Mobile"] = request.mobile ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.productCode)) {
+            query["ProductCode"] = request.productCode ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.text)) {
+            query["Text"] = request.text ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.verifyType)) {
+            query["VerifyType"] = request.verifyType ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "AddressVerifyIntl",
+            "version": "2022-08-09",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(AddressVerifyIntlResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func addressVerifyIntl(_ request: AddressVerifyIntlRequest) async throws -> AddressVerifyIntlResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await addressVerifyIntlWithOptions(request as! AddressVerifyIntlRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func bankMetaVerifyIntlWithOptions(_ request: BankMetaVerifyIntlRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> BankMetaVerifyIntlResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]

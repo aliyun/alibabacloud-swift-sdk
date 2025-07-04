@@ -9,6 +9,287 @@ import AlibabacloudOpenApi
 import AlibabaCloudOpenApiUtil
 import AlibabacloudEndpointUtil
 
+public class AddressVerifyIntlRequest : Tea.TeaModel {
+    public var addressType: String?
+
+    public var defaultCity: String?
+
+    public var defaultCountry: String?
+
+    public var defaultDistrict: String?
+
+    public var defaultProvince: String?
+
+    public var latitude: String?
+
+    public var longitude: String?
+
+    public var mobile: String?
+
+    public var productCode: String?
+
+    public var text: String?
+
+    public var verifyType: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.addressType != nil {
+            map["AddressType"] = self.addressType!
+        }
+        if self.defaultCity != nil {
+            map["DefaultCity"] = self.defaultCity!
+        }
+        if self.defaultCountry != nil {
+            map["DefaultCountry"] = self.defaultCountry!
+        }
+        if self.defaultDistrict != nil {
+            map["DefaultDistrict"] = self.defaultDistrict!
+        }
+        if self.defaultProvince != nil {
+            map["DefaultProvince"] = self.defaultProvince!
+        }
+        if self.latitude != nil {
+            map["Latitude"] = self.latitude!
+        }
+        if self.longitude != nil {
+            map["Longitude"] = self.longitude!
+        }
+        if self.mobile != nil {
+            map["Mobile"] = self.mobile!
+        }
+        if self.productCode != nil {
+            map["ProductCode"] = self.productCode!
+        }
+        if self.text != nil {
+            map["Text"] = self.text!
+        }
+        if self.verifyType != nil {
+            map["VerifyType"] = self.verifyType!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["AddressType"] as? String {
+            self.addressType = value
+        }
+        if let value = dict["DefaultCity"] as? String {
+            self.defaultCity = value
+        }
+        if let value = dict["DefaultCountry"] as? String {
+            self.defaultCountry = value
+        }
+        if let value = dict["DefaultDistrict"] as? String {
+            self.defaultDistrict = value
+        }
+        if let value = dict["DefaultProvince"] as? String {
+            self.defaultProvince = value
+        }
+        if let value = dict["Latitude"] as? String {
+            self.latitude = value
+        }
+        if let value = dict["Longitude"] as? String {
+            self.longitude = value
+        }
+        if let value = dict["Mobile"] as? String {
+            self.mobile = value
+        }
+        if let value = dict["ProductCode"] as? String {
+            self.productCode = value
+        }
+        if let value = dict["Text"] as? String {
+            self.text = value
+        }
+        if let value = dict["VerifyType"] as? String {
+            self.verifyType = value
+        }
+    }
+}
+
+public class AddressVerifyIntlResponseBody : Tea.TeaModel {
+    public class ResultObject : Tea.TeaModel {
+        public var addressInfo: String?
+
+        public var ispName: String?
+
+        public var passed: String?
+
+        public var subCode: String?
+
+        public var transactionId: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.addressInfo != nil {
+                map["AddressInfo"] = self.addressInfo!
+            }
+            if self.ispName != nil {
+                map["IspName"] = self.ispName!
+            }
+            if self.passed != nil {
+                map["Passed"] = self.passed!
+            }
+            if self.subCode != nil {
+                map["SubCode"] = self.subCode!
+            }
+            if self.transactionId != nil {
+                map["TransactionId"] = self.transactionId!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["AddressInfo"] as? String {
+                self.addressInfo = value
+            }
+            if let value = dict["IspName"] as? String {
+                self.ispName = value
+            }
+            if let value = dict["Passed"] as? String {
+                self.passed = value
+            }
+            if let value = dict["SubCode"] as? String {
+                self.subCode = value
+            }
+            if let value = dict["TransactionId"] as? String {
+                self.transactionId = value
+            }
+        }
+    }
+    public var code: String?
+
+    public var message: String?
+
+    public var requestId: String?
+
+    public var resultObject: AddressVerifyIntlResponseBody.ResultObject?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.resultObject?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.code != nil {
+            map["Code"] = self.code!
+        }
+        if self.message != nil {
+            map["Message"] = self.message!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.resultObject != nil {
+            map["ResultObject"] = self.resultObject?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["Code"] as? String {
+            self.code = value
+        }
+        if let value = dict["Message"] as? String {
+            self.message = value
+        }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+        if let value = dict["ResultObject"] as? [String: Any?] {
+            var model = AddressVerifyIntlResponseBody.ResultObject()
+            model.fromMap(value)
+            self.resultObject = model
+        }
+    }
+}
+
+public class AddressVerifyIntlResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: AddressVerifyIntlResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = AddressVerifyIntlResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
 public class BankMetaVerifyIntlRequest : Tea.TeaModel {
     public var bankCard: String?
 
