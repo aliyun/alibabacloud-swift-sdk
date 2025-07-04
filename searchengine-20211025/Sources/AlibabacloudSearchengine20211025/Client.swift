@@ -645,6 +645,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.rawSchema)) {
             body["rawSchema"] = request.rawSchema ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.scene)) {
+            body["scene"] = request.scene ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.vectorIndex)) {
             body["vectorIndex"] = request.vectorIndex ?? [];
         }
