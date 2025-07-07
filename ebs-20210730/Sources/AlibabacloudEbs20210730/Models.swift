@@ -1140,6 +1140,8 @@ public class CreateDiskReplicaGroupRequest : Tea.TeaModel {
 
     public var destinationZoneId: String?
 
+    public var enableRtc: Bool?
+
     public var groupName: String?
 
     public var RPO: Int64?
@@ -1180,6 +1182,9 @@ public class CreateDiskReplicaGroupRequest : Tea.TeaModel {
         }
         if self.destinationZoneId != nil {
             map["DestinationZoneId"] = self.destinationZoneId!
+        }
+        if self.enableRtc != nil {
+            map["EnableRtc"] = self.enableRtc!
         }
         if self.groupName != nil {
             map["GroupName"] = self.groupName!
@@ -1222,6 +1227,9 @@ public class CreateDiskReplicaGroupRequest : Tea.TeaModel {
         }
         if let value = dict["DestinationZoneId"] as? String {
             self.destinationZoneId = value
+        }
+        if let value = dict["EnableRtc"] as? Bool {
+            self.enableRtc = value
         }
         if let value = dict["GroupName"] as? String {
             self.groupName = value
@@ -1398,6 +1406,8 @@ public class CreateDiskReplicaPairRequest : Tea.TeaModel {
 
     public var diskId: String?
 
+    public var enableRtc: Bool?
+
     public var pairName: String?
 
     public var period: Int64?
@@ -1451,6 +1461,9 @@ public class CreateDiskReplicaPairRequest : Tea.TeaModel {
         }
         if self.diskId != nil {
             map["DiskId"] = self.diskId!
+        }
+        if self.enableRtc != nil {
+            map["EnableRtc"] = self.enableRtc!
         }
         if self.pairName != nil {
             map["PairName"] = self.pairName!
@@ -1508,6 +1521,9 @@ public class CreateDiskReplicaPairRequest : Tea.TeaModel {
         }
         if let value = dict["DiskId"] as? String {
             self.diskId = value
+        }
+        if let value = dict["EnableRtc"] as? Bool {
+            self.enableRtc = value
         }
         if let value = dict["PairName"] as? String {
             self.pairName = value
@@ -5020,6 +5036,8 @@ public class DescribeDiskReplicaGroupsResponseBody : Tea.TeaModel {
 
         public var destinationZoneId: String?
 
+        public var enableRtc: Bool?
+
         public var groupName: String?
 
         public var lastRecoverPoint: Int64?
@@ -5077,6 +5095,9 @@ public class DescribeDiskReplicaGroupsResponseBody : Tea.TeaModel {
             }
             if self.destinationZoneId != nil {
                 map["DestinationZoneId"] = self.destinationZoneId!
+            }
+            if self.enableRtc != nil {
+                map["EnableRtc"] = self.enableRtc!
             }
             if self.groupName != nil {
                 map["GroupName"] = self.groupName!
@@ -5146,6 +5167,9 @@ public class DescribeDiskReplicaGroupsResponseBody : Tea.TeaModel {
             }
             if let value = dict["DestinationZoneId"] as? String {
                 self.destinationZoneId = value
+            }
+            if let value = dict["EnableRtc"] as? Bool {
+                self.enableRtc = value
             }
             if let value = dict["GroupName"] as? String {
                 self.groupName = value
@@ -5694,6 +5718,8 @@ public class DescribeDiskReplicaPairsResponseBody : Tea.TeaModel {
 
         public var destinationZoneId: String?
 
+        public var enableRtc: Bool?
+
         public var expiredTime: Int64?
 
         public var lastRecoverPoint: Int64?
@@ -5766,6 +5792,9 @@ public class DescribeDiskReplicaPairsResponseBody : Tea.TeaModel {
             }
             if self.destinationZoneId != nil {
                 map["DestinationZoneId"] = self.destinationZoneId!
+            }
+            if self.enableRtc != nil {
+                map["EnableRtc"] = self.enableRtc!
             }
             if self.expiredTime != nil {
                 map["ExpiredTime"] = self.expiredTime!
@@ -5853,6 +5882,9 @@ public class DescribeDiskReplicaPairsResponseBody : Tea.TeaModel {
             }
             if let value = dict["DestinationZoneId"] as? String {
                 self.destinationZoneId = value
+            }
+            if let value = dict["EnableRtc"] as? Bool {
+                self.enableRtc = value
             }
             if let value = dict["ExpiredTime"] as? Int64 {
                 self.expiredTime = value
@@ -10677,6 +10709,8 @@ public class ModifyDiskReplicaGroupRequest : Tea.TeaModel {
 
     public var description_: String?
 
+    public var enableRtc: Bool?
+
     public var groupName: String?
 
     public var RPO: Int64?
@@ -10708,6 +10742,9 @@ public class ModifyDiskReplicaGroupRequest : Tea.TeaModel {
         if self.description_ != nil {
             map["Description"] = self.description_!
         }
+        if self.enableRtc != nil {
+            map["EnableRtc"] = self.enableRtc!
+        }
         if self.groupName != nil {
             map["GroupName"] = self.groupName!
         }
@@ -10733,6 +10770,9 @@ public class ModifyDiskReplicaGroupRequest : Tea.TeaModel {
         }
         if let value = dict["Description"] as? String {
             self.description_ = value
+        }
+        if let value = dict["EnableRtc"] as? Bool {
+            self.enableRtc = value
         }
         if let value = dict["GroupName"] as? String {
             self.groupName = value
@@ -10837,6 +10877,8 @@ public class ModifyDiskReplicaPairRequest : Tea.TeaModel {
 
     public var description_: String?
 
+    public var enableRtc: Bool?
+
     public var pairName: String?
 
     public var RPO: Int64?
@@ -10868,6 +10910,9 @@ public class ModifyDiskReplicaPairRequest : Tea.TeaModel {
         if self.description_ != nil {
             map["Description"] = self.description_!
         }
+        if self.enableRtc != nil {
+            map["EnableRtc"] = self.enableRtc!
+        }
         if self.pairName != nil {
             map["PairName"] = self.pairName!
         }
@@ -10893,6 +10938,9 @@ public class ModifyDiskReplicaPairRequest : Tea.TeaModel {
         }
         if let value = dict["Description"] as? String {
             self.description_ = value
+        }
+        if let value = dict["EnableRtc"] as? Bool {
+            self.enableRtc = value
         }
         if let value = dict["PairName"] as? String {
             self.pairName = value
