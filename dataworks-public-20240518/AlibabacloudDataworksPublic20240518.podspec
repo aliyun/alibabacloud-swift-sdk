@@ -1,7 +1,7 @@
 Pod::Spec.new do |spec|
 
   spec.name         = "AlibabacloudDataworksPublic20240518"
-  spec.version      = "7.2.3"
+  spec.version      = "7.2.4"
   spec.license      = "Apache 2.0"
   spec.summary      = "Alibaba Cloud dataworks-public (20240518) SDK Library for Swift"
   spec.homepage     = "https://github.com/alibabacloud-sdk-swift/dataworks-public-20240518" 
@@ -19,9 +19,8 @@ Pod::Spec.new do |spec|
 
   spec.dependency 'Tea',  '~> 1.0.3'
   spec.dependency 'TeaUtils',  '~> 1.0.6'
-  spec.dependency 'AlibabaCloudOssSdk',  '~> 1.0.0'
-  spec.dependency 'AlibabacloudOpenPlatform20191219',  '~> 1.0.0'
-  spec.dependency 'AlibabaCloudOSSUtil',  '~> 1.0.1'
+  spec.dependency 'DarabonbaXML',  '~> 1.0.1'
+  spec.dependency 'AlibabaCloudCredentials',  '~> 1.0.1'
   spec.dependency 'TeaFileForm',  '~> 1.0.3'
   spec.dependency 'AlibabacloudOpenApi',  '~> 1.0.7'
   spec.dependency 'AlibabaCloudOpenApiUtil',  '~> 1.0.1'

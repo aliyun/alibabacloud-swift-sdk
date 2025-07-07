@@ -1,9 +1,8 @@
 import Foundation
 import Tea
 import TeaUtils
-import AlibabaCloudOssSdk
-import AlibabacloudOpenPlatform20191219
-import AlibabaCloudOSSUtil
+import DarabonbaXML
+import AlibabaCloudCredentials
 import TeaFileForm
 import AlibabacloudOpenApi
 import AlibabaCloudOpenApiUtil
