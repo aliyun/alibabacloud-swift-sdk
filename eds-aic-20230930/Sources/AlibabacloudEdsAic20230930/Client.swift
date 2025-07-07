@@ -466,6 +466,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.phoneCount)) {
             query["PhoneCount"] = request.phoneCount!;
         }
+        if (!TeaUtils.Client.isUnset(request.phoneDataVolume)) {
+            query["PhoneDataVolume"] = request.phoneDataVolume!;
+        }
         if (!TeaUtils.Client.isUnset(request.resolutionHeight)) {
             query["ResolutionHeight"] = request.resolutionHeight!;
         }

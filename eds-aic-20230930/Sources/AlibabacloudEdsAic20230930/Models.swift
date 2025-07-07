@@ -2236,6 +2236,8 @@ public class CreateCloudPhoneNodeRequest : Tea.TeaModel {
 
     public var phoneCount: Int32?
 
+    public var phoneDataVolume: Int32?
+
     public var resolutionHeight: Int32?
 
     public var resolutionWidth: Int32?
@@ -2303,6 +2305,9 @@ public class CreateCloudPhoneNodeRequest : Tea.TeaModel {
         }
         if self.phoneCount != nil {
             map["PhoneCount"] = self.phoneCount!
+        }
+        if self.phoneDataVolume != nil {
+            map["PhoneDataVolume"] = self.phoneDataVolume!
         }
         if self.resolutionHeight != nil {
             map["ResolutionHeight"] = self.resolutionHeight!
@@ -2374,6 +2379,9 @@ public class CreateCloudPhoneNodeRequest : Tea.TeaModel {
         }
         if let value = dict["PhoneCount"] as? Int32 {
             self.phoneCount = value
+        }
+        if let value = dict["PhoneDataVolume"] as? Int32 {
+            self.phoneDataVolume = value
         }
         if let value = dict["ResolutionHeight"] as? Int32 {
             self.resolutionHeight = value
@@ -2474,6 +2482,8 @@ public class CreateCloudPhoneNodeShrinkRequest : Tea.TeaModel {
 
     public var phoneCount: Int32?
 
+    public var phoneDataVolume: Int32?
+
     public var resolutionHeight: Int32?
 
     public var resolutionWidth: Int32?
@@ -2540,6 +2550,9 @@ public class CreateCloudPhoneNodeShrinkRequest : Tea.TeaModel {
         }
         if self.phoneCount != nil {
             map["PhoneCount"] = self.phoneCount!
+        }
+        if self.phoneDataVolume != nil {
+            map["PhoneDataVolume"] = self.phoneDataVolume!
         }
         if self.resolutionHeight != nil {
             map["ResolutionHeight"] = self.resolutionHeight!
@@ -2609,6 +2622,9 @@ public class CreateCloudPhoneNodeShrinkRequest : Tea.TeaModel {
         }
         if let value = dict["PhoneCount"] as? Int32 {
             self.phoneCount = value
+        }
+        if let value = dict["PhoneDataVolume"] as? Int32 {
+            self.phoneDataVolume = value
         }
         if let value = dict["ResolutionHeight"] as? Int32 {
             self.resolutionHeight = value
