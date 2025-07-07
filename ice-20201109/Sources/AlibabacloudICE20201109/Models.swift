@@ -2544,9 +2544,15 @@ public class AppInfoDTO : Tea.TeaModel {
 
     public var appType: Int32?
 
+    public var creationTime: String?
+
     public var gmtCreate: String?
 
+    public var gmtModified: String?
+
     public var itemId: String?
+
+    public var modificationTime: String?
 
     public var platforms: [AppInfoDTO.Platforms]?
 
@@ -2572,11 +2578,20 @@ public class AppInfoDTO : Tea.TeaModel {
         if self.appType != nil {
             map["AppType"] = self.appType!
         }
+        if self.creationTime != nil {
+            map["CreationTime"] = self.creationTime!
+        }
         if self.gmtCreate != nil {
             map["GmtCreate"] = self.gmtCreate!
         }
+        if self.gmtModified != nil {
+            map["GmtModified"] = self.gmtModified!
+        }
         if self.itemId != nil {
             map["ItemId"] = self.itemId!
+        }
+        if self.modificationTime != nil {
+            map["ModificationTime"] = self.modificationTime!
         }
         if self.platforms != nil {
             var tmp : [Any] = []
@@ -2599,11 +2614,20 @@ public class AppInfoDTO : Tea.TeaModel {
         if let value = dict["AppType"] as? Int32 {
             self.appType = value
         }
+        if let value = dict["CreationTime"] as? String {
+            self.creationTime = value
+        }
         if let value = dict["GmtCreate"] as? String {
             self.gmtCreate = value
         }
+        if let value = dict["GmtModified"] as? String {
+            self.gmtModified = value
+        }
         if let value = dict["ItemId"] as? String {
             self.itemId = value
+        }
+        if let value = dict["ModificationTime"] as? String {
+            self.modificationTime = value
         }
         if let value = dict["Platforms"] as? [Any?] {
             var tmp : [AppInfoDTO.Platforms] = []
@@ -43533,6 +43557,10 @@ public class GetSmartHandleJobResponseBody : Tea.TeaModel {
             }
         }
     }
+    public var errorCode: String?
+
+    public var errorMessage: String?
+
     public var jobId: String?
 
     public var jobResult: GetSmartHandleJobResponseBody.JobResult?
@@ -43563,6 +43591,12 @@ public class GetSmartHandleJobResponseBody : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.errorCode != nil {
+            map["ErrorCode"] = self.errorCode!
+        }
+        if self.errorMessage != nil {
+            map["ErrorMessage"] = self.errorMessage!
+        }
         if self.jobId != nil {
             map["JobId"] = self.jobId!
         }
@@ -43589,6 +43623,12 @@ public class GetSmartHandleJobResponseBody : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["ErrorCode"] as? String {
+            self.errorCode = value
+        }
+        if let value = dict["ErrorMessage"] as? String {
+            self.errorMessage = value
+        }
         if let value = dict["JobId"] as? String {
             self.jobId = value
         }
