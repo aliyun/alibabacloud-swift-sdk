@@ -1254,8 +1254,13 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func describeMetricDataWithOptions(_ request: DescribeMetricDataRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DescribeMetricDataResponse {
-        try TeaUtils.Client.validateModel(request)
+    public func describeMetricDataWithOptions(_ tmpReq: DescribeMetricDataRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DescribeMetricDataResponse {
+        try TeaUtils.Client.validateModel(tmpReq)
+        var request: DescribeMetricDataShrinkRequest = DescribeMetricDataShrinkRequest([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.groupByLabels)) {
+            request.groupByLabelsShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.groupByLabels, "GroupByLabels", "simple")
+        }
         var query: [String: Any] = [:]
         if (!TeaUtils.Client.isUnset(request.aggreOps)) {
             query["AggreOps"] = request.aggreOps ?? "";
@@ -1268,6 +1273,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.endTime)) {
             query["EndTime"] = request.endTime ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.groupByLabelsShrink)) {
+            query["GroupByLabels"] = request.groupByLabelsShrink ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.metricName)) {
             query["MetricName"] = request.metricName ?? "";
@@ -1699,9 +1707,6 @@ open class Client : AlibabacloudOpenApi.Client {
             query["PageSize"] = request.pageSize!;
         }
         var body: [String: Any] = [:]
-        if (!TeaUtils.Client.isUnset(request.appName)) {
-            body["AppName"] = request.appName ?? "";
-        }
         if (!TeaUtils.Client.isUnset(request.regionId)) {
             body["RegionId"] = request.regionId ?? "";
         }

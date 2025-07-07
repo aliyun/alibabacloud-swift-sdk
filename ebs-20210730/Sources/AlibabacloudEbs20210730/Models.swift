@@ -7696,6 +7696,8 @@ public class DescribeMetricDataRequest : Tea.TeaModel {
 
     public var endTime: String?
 
+    public var groupByLabels: [String]?
+
     public var metricName: String?
 
     public var period: Int32?
@@ -7730,6 +7732,9 @@ public class DescribeMetricDataRequest : Tea.TeaModel {
         if self.endTime != nil {
             map["EndTime"] = self.endTime!
         }
+        if self.groupByLabels != nil {
+            map["GroupByLabels"] = self.groupByLabels!
+        }
         if self.metricName != nil {
             map["MetricName"] = self.metricName!
         }
@@ -7758,6 +7763,104 @@ public class DescribeMetricDataRequest : Tea.TeaModel {
         }
         if let value = dict["EndTime"] as? String {
             self.endTime = value
+        }
+        if let value = dict["GroupByLabels"] as? [String] {
+            self.groupByLabels = value
+        }
+        if let value = dict["MetricName"] as? String {
+            self.metricName = value
+        }
+        if let value = dict["Period"] as? Int32 {
+            self.period = value
+        }
+        if let value = dict["RegionId"] as? String {
+            self.regionId = value
+        }
+        if let value = dict["StartTime"] as? String {
+            self.startTime = value
+        }
+    }
+}
+
+public class DescribeMetricDataShrinkRequest : Tea.TeaModel {
+    public var aggreOps: String?
+
+    public var aggreOverLineOps: String?
+
+    public var dimensions: String?
+
+    public var endTime: String?
+
+    public var groupByLabelsShrink: String?
+
+    public var metricName: String?
+
+    public var period: Int32?
+
+    public var regionId: String?
+
+    public var startTime: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.aggreOps != nil {
+            map["AggreOps"] = self.aggreOps!
+        }
+        if self.aggreOverLineOps != nil {
+            map["AggreOverLineOps"] = self.aggreOverLineOps!
+        }
+        if self.dimensions != nil {
+            map["Dimensions"] = self.dimensions!
+        }
+        if self.endTime != nil {
+            map["EndTime"] = self.endTime!
+        }
+        if self.groupByLabelsShrink != nil {
+            map["GroupByLabels"] = self.groupByLabelsShrink!
+        }
+        if self.metricName != nil {
+            map["MetricName"] = self.metricName!
+        }
+        if self.period != nil {
+            map["Period"] = self.period!
+        }
+        if self.regionId != nil {
+            map["RegionId"] = self.regionId!
+        }
+        if self.startTime != nil {
+            map["StartTime"] = self.startTime!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["AggreOps"] as? String {
+            self.aggreOps = value
+        }
+        if let value = dict["AggreOverLineOps"] as? String {
+            self.aggreOverLineOps = value
+        }
+        if let value = dict["Dimensions"] as? String {
+            self.dimensions = value
+        }
+        if let value = dict["EndTime"] as? String {
+            self.endTime = value
+        }
+        if let value = dict["GroupByLabels"] as? String {
+            self.groupByLabelsShrink = value
         }
         if let value = dict["MetricName"] as? String {
             self.metricName = value
@@ -9870,8 +9973,6 @@ public class GetReportResponse : Tea.TeaModel {
 public class ListReportsRequest : Tea.TeaModel {
     public var appId: String?
 
-    public var appName: String?
-
     public var maxResults: Int32?
 
     public var nextToken: String?
@@ -9899,9 +10000,6 @@ public class ListReportsRequest : Tea.TeaModel {
         if self.appId != nil {
             map["AppId"] = self.appId!
         }
-        if self.appName != nil {
-            map["AppName"] = self.appName!
-        }
         if self.maxResults != nil {
             map["MaxResults"] = self.maxResults!
         }
@@ -9924,9 +10022,6 @@ public class ListReportsRequest : Tea.TeaModel {
         guard let dict else { return }
         if let value = dict["AppId"] as? String {
             self.appId = value
-        }
-        if let value = dict["AppName"] as? String {
-            self.appName = value
         }
         if let value = dict["MaxResults"] as? Int32 {
             self.maxResults = value
