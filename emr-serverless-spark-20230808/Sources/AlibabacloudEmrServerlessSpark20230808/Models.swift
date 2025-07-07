@@ -2119,6 +2119,603 @@ public class CancelJobRunResponse : Tea.TeaModel {
     }
 }
 
+public class CreateLivyComputeRequest : Tea.TeaModel {
+    public class AutoStartConfiguration : Tea.TeaModel {
+        public var enable: Bool?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.enable != nil {
+                map["enable"] = self.enable!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["enable"] as? Bool {
+                self.enable = value
+            }
+        }
+    }
+    public class AutoStopConfiguration : Tea.TeaModel {
+        public var enable: Bool?
+
+        public var idleTimeoutMinutes: Int64?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.enable != nil {
+                map["enable"] = self.enable!
+            }
+            if self.idleTimeoutMinutes != nil {
+                map["idleTimeoutMinutes"] = self.idleTimeoutMinutes!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["enable"] as? Bool {
+                self.enable = value
+            }
+            if let value = dict["idleTimeoutMinutes"] as? Int64 {
+                self.idleTimeoutMinutes = value
+            }
+        }
+    }
+    public var authType: String?
+
+    public var autoStartConfiguration: CreateLivyComputeRequest.AutoStartConfiguration?
+
+    public var autoStopConfiguration: CreateLivyComputeRequest.AutoStopConfiguration?
+
+    public var cpuLimit: String?
+
+    public var displayReleaseVersion: String?
+
+    public var enablePublic: Bool?
+
+    public var environmentId: String?
+
+    public var fusion: Bool?
+
+    public var livyServerConf: String?
+
+    public var livyVersion: String?
+
+    public var memoryLimit: String?
+
+    public var name: String?
+
+    public var networkName: String?
+
+    public var queueName: String?
+
+    public var releaseVersion: String?
+
+    public var regionId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.autoStartConfiguration?.validate()
+        try self.autoStopConfiguration?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.authType != nil {
+            map["authType"] = self.authType!
+        }
+        if self.autoStartConfiguration != nil {
+            map["autoStartConfiguration"] = self.autoStartConfiguration?.toMap()
+        }
+        if self.autoStopConfiguration != nil {
+            map["autoStopConfiguration"] = self.autoStopConfiguration?.toMap()
+        }
+        if self.cpuLimit != nil {
+            map["cpuLimit"] = self.cpuLimit!
+        }
+        if self.displayReleaseVersion != nil {
+            map["displayReleaseVersion"] = self.displayReleaseVersion!
+        }
+        if self.enablePublic != nil {
+            map["enablePublic"] = self.enablePublic!
+        }
+        if self.environmentId != nil {
+            map["environmentId"] = self.environmentId!
+        }
+        if self.fusion != nil {
+            map["fusion"] = self.fusion!
+        }
+        if self.livyServerConf != nil {
+            map["livyServerConf"] = self.livyServerConf!
+        }
+        if self.livyVersion != nil {
+            map["livyVersion"] = self.livyVersion!
+        }
+        if self.memoryLimit != nil {
+            map["memoryLimit"] = self.memoryLimit!
+        }
+        if self.name != nil {
+            map["name"] = self.name!
+        }
+        if self.networkName != nil {
+            map["networkName"] = self.networkName!
+        }
+        if self.queueName != nil {
+            map["queueName"] = self.queueName!
+        }
+        if self.releaseVersion != nil {
+            map["releaseVersion"] = self.releaseVersion!
+        }
+        if self.regionId != nil {
+            map["regionId"] = self.regionId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["authType"] as? String {
+            self.authType = value
+        }
+        if let value = dict["autoStartConfiguration"] as? [String: Any?] {
+            var model = CreateLivyComputeRequest.AutoStartConfiguration()
+            model.fromMap(value)
+            self.autoStartConfiguration = model
+        }
+        if let value = dict["autoStopConfiguration"] as? [String: Any?] {
+            var model = CreateLivyComputeRequest.AutoStopConfiguration()
+            model.fromMap(value)
+            self.autoStopConfiguration = model
+        }
+        if let value = dict["cpuLimit"] as? String {
+            self.cpuLimit = value
+        }
+        if let value = dict["displayReleaseVersion"] as? String {
+            self.displayReleaseVersion = value
+        }
+        if let value = dict["enablePublic"] as? Bool {
+            self.enablePublic = value
+        }
+        if let value = dict["environmentId"] as? String {
+            self.environmentId = value
+        }
+        if let value = dict["fusion"] as? Bool {
+            self.fusion = value
+        }
+        if let value = dict["livyServerConf"] as? String {
+            self.livyServerConf = value
+        }
+        if let value = dict["livyVersion"] as? String {
+            self.livyVersion = value
+        }
+        if let value = dict["memoryLimit"] as? String {
+            self.memoryLimit = value
+        }
+        if let value = dict["name"] as? String {
+            self.name = value
+        }
+        if let value = dict["networkName"] as? String {
+            self.networkName = value
+        }
+        if let value = dict["queueName"] as? String {
+            self.queueName = value
+        }
+        if let value = dict["releaseVersion"] as? String {
+            self.releaseVersion = value
+        }
+        if let value = dict["regionId"] as? String {
+            self.regionId = value
+        }
+    }
+}
+
+public class CreateLivyComputeResponseBody : Tea.TeaModel {
+    public class Data : Tea.TeaModel {
+        public var livyComputeId: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.livyComputeId != nil {
+                map["livyComputeId"] = self.livyComputeId!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["livyComputeId"] as? String {
+                self.livyComputeId = value
+            }
+        }
+    }
+    public var code: String?
+
+    public var data: CreateLivyComputeResponseBody.Data?
+
+    public var message: String?
+
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.data?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.code != nil {
+            map["code"] = self.code!
+        }
+        if self.data != nil {
+            map["data"] = self.data?.toMap()
+        }
+        if self.message != nil {
+            map["message"] = self.message!
+        }
+        if self.requestId != nil {
+            map["requestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["code"] as? String {
+            self.code = value
+        }
+        if let value = dict["data"] as? [String: Any?] {
+            var model = CreateLivyComputeResponseBody.Data()
+            model.fromMap(value)
+            self.data = model
+        }
+        if let value = dict["message"] as? String {
+            self.message = value
+        }
+        if let value = dict["requestId"] as? String {
+            self.requestId = value
+        }
+    }
+}
+
+public class CreateLivyComputeResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: CreateLivyComputeResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = CreateLivyComputeResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
+public class CreateLivyComputeTokenRequest : Tea.TeaModel {
+    public class AutoExpireConfiguration : Tea.TeaModel {
+        public var enable: Bool?
+
+        public var expireDays: Int32?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.enable != nil {
+                map["enable"] = self.enable!
+            }
+            if self.expireDays != nil {
+                map["expireDays"] = self.expireDays!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["enable"] as? Bool {
+                self.enable = value
+            }
+            if let value = dict["expireDays"] as? Int32 {
+                self.expireDays = value
+            }
+        }
+    }
+    public var autoExpireConfiguration: CreateLivyComputeTokenRequest.AutoExpireConfiguration?
+
+    public var name: String?
+
+    public var token: String?
+
+    public var regionId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.autoExpireConfiguration?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.autoExpireConfiguration != nil {
+            map["autoExpireConfiguration"] = self.autoExpireConfiguration?.toMap()
+        }
+        if self.name != nil {
+            map["name"] = self.name!
+        }
+        if self.token != nil {
+            map["token"] = self.token!
+        }
+        if self.regionId != nil {
+            map["regionId"] = self.regionId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["autoExpireConfiguration"] as? [String: Any?] {
+            var model = CreateLivyComputeTokenRequest.AutoExpireConfiguration()
+            model.fromMap(value)
+            self.autoExpireConfiguration = model
+        }
+        if let value = dict["name"] as? String {
+            self.name = value
+        }
+        if let value = dict["token"] as? String {
+            self.token = value
+        }
+        if let value = dict["regionId"] as? String {
+            self.regionId = value
+        }
+    }
+}
+
+public class CreateLivyComputeTokenResponseBody : Tea.TeaModel {
+    public class Data : Tea.TeaModel {
+        public var tokenId: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.tokenId != nil {
+                map["tokenId"] = self.tokenId!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["tokenId"] as? String {
+                self.tokenId = value
+            }
+        }
+    }
+    public var code: String?
+
+    public var data: CreateLivyComputeTokenResponseBody.Data?
+
+    public var message: String?
+
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.data?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.code != nil {
+            map["code"] = self.code!
+        }
+        if self.data != nil {
+            map["data"] = self.data?.toMap()
+        }
+        if self.message != nil {
+            map["message"] = self.message!
+        }
+        if self.requestId != nil {
+            map["requestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["code"] as? String {
+            self.code = value
+        }
+        if let value = dict["data"] as? [String: Any?] {
+            var model = CreateLivyComputeTokenResponseBody.Data()
+            model.fromMap(value)
+            self.data = model
+        }
+        if let value = dict["message"] as? String {
+            self.message = value
+        }
+        if let value = dict["requestId"] as? String {
+            self.requestId = value
+        }
+    }
+}
+
+public class CreateLivyComputeTokenResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: CreateLivyComputeTokenResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = CreateLivyComputeTokenResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
 public class CreateProcessDefinitionWithScheduleRequest : Tea.TeaModel {
     public class GlobalParams : Tea.TeaModel {
         public var direct: String?
@@ -4081,6 +4678,262 @@ public class CreateWorkspaceResponse : Tea.TeaModel {
     }
 }
 
+public class DeleteLivyComputeRequest : Tea.TeaModel {
+    public var regionId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.regionId != nil {
+            map["regionId"] = self.regionId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["regionId"] as? String {
+            self.regionId = value
+        }
+    }
+}
+
+public class DeleteLivyComputeResponseBody : Tea.TeaModel {
+    public var code: String?
+
+    public var message: String?
+
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.code != nil {
+            map["code"] = self.code!
+        }
+        if self.message != nil {
+            map["message"] = self.message!
+        }
+        if self.requestId != nil {
+            map["requestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["code"] as? String {
+            self.code = value
+        }
+        if let value = dict["message"] as? String {
+            self.message = value
+        }
+        if let value = dict["requestId"] as? String {
+            self.requestId = value
+        }
+    }
+}
+
+public class DeleteLivyComputeResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: DeleteLivyComputeResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = DeleteLivyComputeResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
+public class DeleteLivyComputeTokenRequest : Tea.TeaModel {
+    public var regionId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.regionId != nil {
+            map["regionId"] = self.regionId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["regionId"] as? String {
+            self.regionId = value
+        }
+    }
+}
+
+public class DeleteLivyComputeTokenResponseBody : Tea.TeaModel {
+    public var code: String?
+
+    public var message: String?
+
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.code != nil {
+            map["code"] = self.code!
+        }
+        if self.message != nil {
+            map["message"] = self.message!
+        }
+        if self.requestId != nil {
+            map["requestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["code"] as? String {
+            self.code = value
+        }
+        if let value = dict["message"] as? String {
+            self.message = value
+        }
+        if let value = dict["requestId"] as? String {
+            self.requestId = value
+        }
+    }
+}
+
+public class DeleteLivyComputeTokenResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: DeleteLivyComputeTokenResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = DeleteLivyComputeTokenResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
 public class EditWorkspaceQueueRequest : Tea.TeaModel {
     public class ResourceSpec : Tea.TeaModel {
         public var cu: Int64?
@@ -4987,6 +5840,650 @@ public class GetJobRunResponse : Tea.TeaModel {
         }
         if let value = dict["body"] as? [String: Any?] {
             var model = GetJobRunResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
+public class GetLivyComputeRequest : Tea.TeaModel {
+    public var regionId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.regionId != nil {
+            map["regionId"] = self.regionId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["regionId"] as? String {
+            self.regionId = value
+        }
+    }
+}
+
+public class GetLivyComputeResponseBody : Tea.TeaModel {
+    public class Data : Tea.TeaModel {
+        public class AutoStopConfiguration : Tea.TeaModel {
+            public var enable: Bool?
+
+            public var idleTimeoutMinutes: Int64?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.enable != nil {
+                    map["enable"] = self.enable!
+                }
+                if self.idleTimeoutMinutes != nil {
+                    map["idleTimeoutMinutes"] = self.idleTimeoutMinutes!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["enable"] as? Bool {
+                    self.enable = value
+                }
+                if let value = dict["idleTimeoutMinutes"] as? Int64 {
+                    self.idleTimeoutMinutes = value
+                }
+            }
+        }
+        public var authType: String?
+
+        public var autoStopConfiguration: GetLivyComputeResponseBody.Data.AutoStopConfiguration?
+
+        public var computeId: String?
+
+        public var cpuLimit: String?
+
+        public var createdBy: String?
+
+        public var displayReleaseVersion: String?
+
+        public var enablePublic: Bool?
+
+        public var endpoint: String?
+
+        public var endpointInner: String?
+
+        public var environmentId: String?
+
+        public var fusion: Bool?
+
+        public var gmtCreate: Int64?
+
+        public var livyServerConf: String?
+
+        public var livyVersion: String?
+
+        public var memoryLimit: String?
+
+        public var name: String?
+
+        public var networkName: String?
+
+        public var queueName: String?
+
+        public var ramUserId: String?
+
+        public var releaseVersion: String?
+
+        public var startTime: Int64?
+
+        public var status: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+            try self.autoStopConfiguration?.validate()
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.authType != nil {
+                map["authType"] = self.authType!
+            }
+            if self.autoStopConfiguration != nil {
+                map["autoStopConfiguration"] = self.autoStopConfiguration?.toMap()
+            }
+            if self.computeId != nil {
+                map["computeId"] = self.computeId!
+            }
+            if self.cpuLimit != nil {
+                map["cpuLimit"] = self.cpuLimit!
+            }
+            if self.createdBy != nil {
+                map["createdBy"] = self.createdBy!
+            }
+            if self.displayReleaseVersion != nil {
+                map["displayReleaseVersion"] = self.displayReleaseVersion!
+            }
+            if self.enablePublic != nil {
+                map["enablePublic"] = self.enablePublic!
+            }
+            if self.endpoint != nil {
+                map["endpoint"] = self.endpoint!
+            }
+            if self.endpointInner != nil {
+                map["endpointInner"] = self.endpointInner!
+            }
+            if self.environmentId != nil {
+                map["environmentId"] = self.environmentId!
+            }
+            if self.fusion != nil {
+                map["fusion"] = self.fusion!
+            }
+            if self.gmtCreate != nil {
+                map["gmtCreate"] = self.gmtCreate!
+            }
+            if self.livyServerConf != nil {
+                map["livyServerConf"] = self.livyServerConf!
+            }
+            if self.livyVersion != nil {
+                map["livyVersion"] = self.livyVersion!
+            }
+            if self.memoryLimit != nil {
+                map["memoryLimit"] = self.memoryLimit!
+            }
+            if self.name != nil {
+                map["name"] = self.name!
+            }
+            if self.networkName != nil {
+                map["networkName"] = self.networkName!
+            }
+            if self.queueName != nil {
+                map["queueName"] = self.queueName!
+            }
+            if self.ramUserId != nil {
+                map["ramUserId"] = self.ramUserId!
+            }
+            if self.releaseVersion != nil {
+                map["releaseVersion"] = self.releaseVersion!
+            }
+            if self.startTime != nil {
+                map["startTime"] = self.startTime!
+            }
+            if self.status != nil {
+                map["status"] = self.status!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["authType"] as? String {
+                self.authType = value
+            }
+            if let value = dict["autoStopConfiguration"] as? [String: Any?] {
+                var model = GetLivyComputeResponseBody.Data.AutoStopConfiguration()
+                model.fromMap(value)
+                self.autoStopConfiguration = model
+            }
+            if let value = dict["computeId"] as? String {
+                self.computeId = value
+            }
+            if let value = dict["cpuLimit"] as? String {
+                self.cpuLimit = value
+            }
+            if let value = dict["createdBy"] as? String {
+                self.createdBy = value
+            }
+            if let value = dict["displayReleaseVersion"] as? String {
+                self.displayReleaseVersion = value
+            }
+            if let value = dict["enablePublic"] as? Bool {
+                self.enablePublic = value
+            }
+            if let value = dict["endpoint"] as? String {
+                self.endpoint = value
+            }
+            if let value = dict["endpointInner"] as? String {
+                self.endpointInner = value
+            }
+            if let value = dict["environmentId"] as? String {
+                self.environmentId = value
+            }
+            if let value = dict["fusion"] as? Bool {
+                self.fusion = value
+            }
+            if let value = dict["gmtCreate"] as? Int64 {
+                self.gmtCreate = value
+            }
+            if let value = dict["livyServerConf"] as? String {
+                self.livyServerConf = value
+            }
+            if let value = dict["livyVersion"] as? String {
+                self.livyVersion = value
+            }
+            if let value = dict["memoryLimit"] as? String {
+                self.memoryLimit = value
+            }
+            if let value = dict["name"] as? String {
+                self.name = value
+            }
+            if let value = dict["networkName"] as? String {
+                self.networkName = value
+            }
+            if let value = dict["queueName"] as? String {
+                self.queueName = value
+            }
+            if let value = dict["ramUserId"] as? String {
+                self.ramUserId = value
+            }
+            if let value = dict["releaseVersion"] as? String {
+                self.releaseVersion = value
+            }
+            if let value = dict["startTime"] as? Int64 {
+                self.startTime = value
+            }
+            if let value = dict["status"] as? String {
+                self.status = value
+            }
+        }
+    }
+    public var code: String?
+
+    public var data: GetLivyComputeResponseBody.Data?
+
+    public var message: String?
+
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.data?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.code != nil {
+            map["code"] = self.code!
+        }
+        if self.data != nil {
+            map["data"] = self.data?.toMap()
+        }
+        if self.message != nil {
+            map["message"] = self.message!
+        }
+        if self.requestId != nil {
+            map["requestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["code"] as? String {
+            self.code = value
+        }
+        if let value = dict["data"] as? [String: Any?] {
+            var model = GetLivyComputeResponseBody.Data()
+            model.fromMap(value)
+            self.data = model
+        }
+        if let value = dict["message"] as? String {
+            self.message = value
+        }
+        if let value = dict["requestId"] as? String {
+            self.requestId = value
+        }
+    }
+}
+
+public class GetLivyComputeResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: GetLivyComputeResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = GetLivyComputeResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
+public class GetLivyComputeTokenRequest : Tea.TeaModel {
+    public var regionId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.regionId != nil {
+            map["regionId"] = self.regionId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["regionId"] as? String {
+            self.regionId = value
+        }
+    }
+}
+
+public class GetLivyComputeTokenResponseBody : Tea.TeaModel {
+    public class Data : Tea.TeaModel {
+        public class AutoExpireConfiguration : Tea.TeaModel {
+            public var enable: Bool?
+
+            public var expireDays: Int32?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.enable != nil {
+                    map["enable"] = self.enable!
+                }
+                if self.expireDays != nil {
+                    map["expireDays"] = self.expireDays!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["enable"] as? Bool {
+                    self.enable = value
+                }
+                if let value = dict["expireDays"] as? Int32 {
+                    self.expireDays = value
+                }
+            }
+        }
+        public var autoExpireConfiguration: GetLivyComputeTokenResponseBody.Data.AutoExpireConfiguration?
+
+        public var createTime: Int64?
+
+        public var createdBy: String?
+
+        public var expireTime: Int64?
+
+        public var lastUsedTime: Int64?
+
+        public var name: String?
+
+        public var token: String?
+
+        public var tokenId: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+            try self.autoExpireConfiguration?.validate()
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.autoExpireConfiguration != nil {
+                map["autoExpireConfiguration"] = self.autoExpireConfiguration?.toMap()
+            }
+            if self.createTime != nil {
+                map["createTime"] = self.createTime!
+            }
+            if self.createdBy != nil {
+                map["createdBy"] = self.createdBy!
+            }
+            if self.expireTime != nil {
+                map["expireTime"] = self.expireTime!
+            }
+            if self.lastUsedTime != nil {
+                map["lastUsedTime"] = self.lastUsedTime!
+            }
+            if self.name != nil {
+                map["name"] = self.name!
+            }
+            if self.token != nil {
+                map["token"] = self.token!
+            }
+            if self.tokenId != nil {
+                map["tokenId"] = self.tokenId!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["autoExpireConfiguration"] as? [String: Any?] {
+                var model = GetLivyComputeTokenResponseBody.Data.AutoExpireConfiguration()
+                model.fromMap(value)
+                self.autoExpireConfiguration = model
+            }
+            if let value = dict["createTime"] as? Int64 {
+                self.createTime = value
+            }
+            if let value = dict["createdBy"] as? String {
+                self.createdBy = value
+            }
+            if let value = dict["expireTime"] as? Int64 {
+                self.expireTime = value
+            }
+            if let value = dict["lastUsedTime"] as? Int64 {
+                self.lastUsedTime = value
+            }
+            if let value = dict["name"] as? String {
+                self.name = value
+            }
+            if let value = dict["token"] as? String {
+                self.token = value
+            }
+            if let value = dict["tokenId"] as? String {
+                self.tokenId = value
+            }
+        }
+    }
+    public var code: String?
+
+    public var data: GetLivyComputeTokenResponseBody.Data?
+
+    public var message: String?
+
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.data?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.code != nil {
+            map["code"] = self.code!
+        }
+        if self.data != nil {
+            map["data"] = self.data?.toMap()
+        }
+        if self.message != nil {
+            map["message"] = self.message!
+        }
+        if self.requestId != nil {
+            map["requestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["code"] as? String {
+            self.code = value
+        }
+        if let value = dict["data"] as? [String: Any?] {
+            var model = GetLivyComputeTokenResponseBody.Data()
+            model.fromMap(value)
+            self.data = model
+        }
+        if let value = dict["message"] as? String {
+            self.message = value
+        }
+        if let value = dict["requestId"] as? String {
+            self.requestId = value
+        }
+    }
+}
+
+public class GetLivyComputeTokenResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: GetLivyComputeTokenResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = GetLivyComputeTokenResponseBody()
             model.fromMap(value)
             self.body = model
         }
@@ -7869,6 +9366,552 @@ public class ListKyuubiTokenResponse : Tea.TeaModel {
     }
 }
 
+public class ListLivyComputeRequest : Tea.TeaModel {
+    public var environmentId: String?
+
+    public var regionId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.environmentId != nil {
+            map["environmentId"] = self.environmentId!
+        }
+        if self.regionId != nil {
+            map["regionId"] = self.regionId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["environmentId"] as? String {
+            self.environmentId = value
+        }
+        if let value = dict["regionId"] as? String {
+            self.regionId = value
+        }
+    }
+}
+
+public class ListLivyComputeResponseBody : Tea.TeaModel {
+    public class Data : Tea.TeaModel {
+        public class LivyComputes : Tea.TeaModel {
+            public var computeId: String?
+
+            public var createdBy: String?
+
+            public var endpoint: String?
+
+            public var endpointInner: String?
+
+            public var gmtCreate: Int64?
+
+            public var name: String?
+
+            public var queueName: String?
+
+            public var startTime: Int64?
+
+            public var status: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.computeId != nil {
+                    map["computeId"] = self.computeId!
+                }
+                if self.createdBy != nil {
+                    map["createdBy"] = self.createdBy!
+                }
+                if self.endpoint != nil {
+                    map["endpoint"] = self.endpoint!
+                }
+                if self.endpointInner != nil {
+                    map["endpointInner"] = self.endpointInner!
+                }
+                if self.gmtCreate != nil {
+                    map["gmtCreate"] = self.gmtCreate!
+                }
+                if self.name != nil {
+                    map["name"] = self.name!
+                }
+                if self.queueName != nil {
+                    map["queueName"] = self.queueName!
+                }
+                if self.startTime != nil {
+                    map["startTime"] = self.startTime!
+                }
+                if self.status != nil {
+                    map["status"] = self.status!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["computeId"] as? String {
+                    self.computeId = value
+                }
+                if let value = dict["createdBy"] as? String {
+                    self.createdBy = value
+                }
+                if let value = dict["endpoint"] as? String {
+                    self.endpoint = value
+                }
+                if let value = dict["endpointInner"] as? String {
+                    self.endpointInner = value
+                }
+                if let value = dict["gmtCreate"] as? Int64 {
+                    self.gmtCreate = value
+                }
+                if let value = dict["name"] as? String {
+                    self.name = value
+                }
+                if let value = dict["queueName"] as? String {
+                    self.queueName = value
+                }
+                if let value = dict["startTime"] as? Int64 {
+                    self.startTime = value
+                }
+                if let value = dict["status"] as? String {
+                    self.status = value
+                }
+            }
+        }
+        public var livyComputes: [ListLivyComputeResponseBody.Data.LivyComputes]?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.livyComputes != nil {
+                var tmp : [Any] = []
+                for k in self.livyComputes! {
+                    tmp.append(k.toMap())
+                }
+                map["livyComputes"] = tmp
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["livyComputes"] as? [Any?] {
+                var tmp : [ListLivyComputeResponseBody.Data.LivyComputes] = []
+                for v in value {
+                    if v != nil {
+                        var model = ListLivyComputeResponseBody.Data.LivyComputes()
+                        if v != nil {
+                            model.fromMap(v as? [String: Any?])
+                        }
+                        tmp.append(model)
+                    }
+                }
+                self.livyComputes = tmp
+            }
+        }
+    }
+    public var code: String?
+
+    public var data: ListLivyComputeResponseBody.Data?
+
+    public var message: String?
+
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.data?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.code != nil {
+            map["code"] = self.code!
+        }
+        if self.data != nil {
+            map["data"] = self.data?.toMap()
+        }
+        if self.message != nil {
+            map["message"] = self.message!
+        }
+        if self.requestId != nil {
+            map["requestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["code"] as? String {
+            self.code = value
+        }
+        if let value = dict["data"] as? [String: Any?] {
+            var model = ListLivyComputeResponseBody.Data()
+            model.fromMap(value)
+            self.data = model
+        }
+        if let value = dict["message"] as? String {
+            self.message = value
+        }
+        if let value = dict["requestId"] as? String {
+            self.requestId = value
+        }
+    }
+}
+
+public class ListLivyComputeResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: ListLivyComputeResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = ListLivyComputeResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
+public class ListLivyComputeTokenRequest : Tea.TeaModel {
+    public var regionId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.regionId != nil {
+            map["regionId"] = self.regionId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["regionId"] as? String {
+            self.regionId = value
+        }
+    }
+}
+
+public class ListLivyComputeTokenResponseBody : Tea.TeaModel {
+    public class Data : Tea.TeaModel {
+        public class Tokens : Tea.TeaModel {
+            public var createTime: Int64?
+
+            public var createdby: String?
+
+            public var expireTime: Int64?
+
+            public var lastUsedTime: Int64?
+
+            public var name: String?
+
+            public var token: String?
+
+            public var tokenId: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.createTime != nil {
+                    map["createTime"] = self.createTime!
+                }
+                if self.createdby != nil {
+                    map["createdby"] = self.createdby!
+                }
+                if self.expireTime != nil {
+                    map["expireTime"] = self.expireTime!
+                }
+                if self.lastUsedTime != nil {
+                    map["lastUsedTime"] = self.lastUsedTime!
+                }
+                if self.name != nil {
+                    map["name"] = self.name!
+                }
+                if self.token != nil {
+                    map["token"] = self.token!
+                }
+                if self.tokenId != nil {
+                    map["tokenId"] = self.tokenId!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["createTime"] as? Int64 {
+                    self.createTime = value
+                }
+                if let value = dict["createdby"] as? String {
+                    self.createdby = value
+                }
+                if let value = dict["expireTime"] as? Int64 {
+                    self.expireTime = value
+                }
+                if let value = dict["lastUsedTime"] as? Int64 {
+                    self.lastUsedTime = value
+                }
+                if let value = dict["name"] as? String {
+                    self.name = value
+                }
+                if let value = dict["token"] as? String {
+                    self.token = value
+                }
+                if let value = dict["tokenId"] as? String {
+                    self.tokenId = value
+                }
+            }
+        }
+        public var tokens: [ListLivyComputeTokenResponseBody.Data.Tokens]?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.tokens != nil {
+                var tmp : [Any] = []
+                for k in self.tokens! {
+                    tmp.append(k.toMap())
+                }
+                map["tokens"] = tmp
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["tokens"] as? [Any?] {
+                var tmp : [ListLivyComputeTokenResponseBody.Data.Tokens] = []
+                for v in value {
+                    if v != nil {
+                        var model = ListLivyComputeTokenResponseBody.Data.Tokens()
+                        if v != nil {
+                            model.fromMap(v as? [String: Any?])
+                        }
+                        tmp.append(model)
+                    }
+                }
+                self.tokens = tmp
+            }
+        }
+    }
+    public var code: String?
+
+    public var data: ListLivyComputeTokenResponseBody.Data?
+
+    public var message: String?
+
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.data?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.code != nil {
+            map["code"] = self.code!
+        }
+        if self.data != nil {
+            map["data"] = self.data?.toMap()
+        }
+        if self.message != nil {
+            map["message"] = self.message!
+        }
+        if self.requestId != nil {
+            map["requestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["code"] as? String {
+            self.code = value
+        }
+        if let value = dict["data"] as? [String: Any?] {
+            var model = ListLivyComputeTokenResponseBody.Data()
+            model.fromMap(value)
+            self.data = model
+        }
+        if let value = dict["message"] as? String {
+            self.message = value
+        }
+        if let value = dict["requestId"] as? String {
+            self.requestId = value
+        }
+    }
+}
+
+public class ListLivyComputeTokenResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: ListLivyComputeTokenResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = ListLivyComputeTokenResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
 public class ListLogContentsRequest : Tea.TeaModel {
     public var fileName: String?
 
@@ -10070,6 +12113,199 @@ public class ListWorkspacesResponse : Tea.TeaModel {
     }
 }
 
+public class RefreshLivyComputeTokenRequest : Tea.TeaModel {
+    public class AutoExpireConfiguration : Tea.TeaModel {
+        public var enable: Bool?
+
+        public var expireDays: Int32?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.enable != nil {
+                map["enable"] = self.enable!
+            }
+            if self.expireDays != nil {
+                map["expireDays"] = self.expireDays!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["enable"] as? Bool {
+                self.enable = value
+            }
+            if let value = dict["expireDays"] as? Int32 {
+                self.expireDays = value
+            }
+        }
+    }
+    public var autoExpireConfiguration: RefreshLivyComputeTokenRequest.AutoExpireConfiguration?
+
+    public var name: String?
+
+    public var token: String?
+
+    public var regionId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.autoExpireConfiguration?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.autoExpireConfiguration != nil {
+            map["autoExpireConfiguration"] = self.autoExpireConfiguration?.toMap()
+        }
+        if self.name != nil {
+            map["name"] = self.name!
+        }
+        if self.token != nil {
+            map["token"] = self.token!
+        }
+        if self.regionId != nil {
+            map["regionId"] = self.regionId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["autoExpireConfiguration"] as? [String: Any?] {
+            var model = RefreshLivyComputeTokenRequest.AutoExpireConfiguration()
+            model.fromMap(value)
+            self.autoExpireConfiguration = model
+        }
+        if let value = dict["name"] as? String {
+            self.name = value
+        }
+        if let value = dict["token"] as? String {
+            self.token = value
+        }
+        if let value = dict["regionId"] as? String {
+            self.regionId = value
+        }
+    }
+}
+
+public class RefreshLivyComputeTokenResponseBody : Tea.TeaModel {
+    public var code: String?
+
+    public var message: String?
+
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.code != nil {
+            map["code"] = self.code!
+        }
+        if self.message != nil {
+            map["message"] = self.message!
+        }
+        if self.requestId != nil {
+            map["requestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["code"] as? String {
+            self.code = value
+        }
+        if let value = dict["message"] as? String {
+            self.message = value
+        }
+        if let value = dict["requestId"] as? String {
+            self.requestId = value
+        }
+    }
+}
+
+public class RefreshLivyComputeTokenResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: RefreshLivyComputeTokenResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = RefreshLivyComputeTokenResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
 public class StartJobRunRequest : Tea.TeaModel {
     public class ConfigurationOverrides : Tea.TeaModel {
         public class Configurations : Tea.TeaModel {
@@ -10390,6 +12626,134 @@ public class StartJobRunResponse : Tea.TeaModel {
         }
         if let value = dict["body"] as? [String: Any?] {
             var model = StartJobRunResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
+public class StartLivyComputeRequest : Tea.TeaModel {
+    public var regionId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.regionId != nil {
+            map["regionId"] = self.regionId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["regionId"] as? String {
+            self.regionId = value
+        }
+    }
+}
+
+public class StartLivyComputeResponseBody : Tea.TeaModel {
+    public var code: String?
+
+    public var message: String?
+
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.code != nil {
+            map["code"] = self.code!
+        }
+        if self.message != nil {
+            map["message"] = self.message!
+        }
+        if self.requestId != nil {
+            map["requestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["code"] as? String {
+            self.code = value
+        }
+        if let value = dict["message"] as? String {
+            self.message = value
+        }
+        if let value = dict["requestId"] as? String {
+            self.requestId = value
+        }
+    }
+}
+
+public class StartLivyComputeResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: StartLivyComputeResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = StartLivyComputeResponseBody()
             model.fromMap(value)
             self.body = model
         }
@@ -10772,6 +13136,134 @@ public class StartSessionClusterResponse : Tea.TeaModel {
     }
 }
 
+public class StopLivyComputeRequest : Tea.TeaModel {
+    public var regionId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.regionId != nil {
+            map["regionId"] = self.regionId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["regionId"] as? String {
+            self.regionId = value
+        }
+    }
+}
+
+public class StopLivyComputeResponseBody : Tea.TeaModel {
+    public var code: String?
+
+    public var message: String?
+
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.code != nil {
+            map["code"] = self.code!
+        }
+        if self.message != nil {
+            map["message"] = self.message!
+        }
+        if self.requestId != nil {
+            map["requestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["code"] as? String {
+            self.code = value
+        }
+        if let value = dict["message"] as? String {
+            self.message = value
+        }
+        if let value = dict["requestId"] as? String {
+            self.requestId = value
+        }
+    }
+}
+
+public class StopLivyComputeResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: StopLivyComputeResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = StopLivyComputeResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
 public class StopSessionClusterRequest : Tea.TeaModel {
     public var queueName: String?
 
@@ -11014,6 +13506,328 @@ public class TerminateSqlStatementResponse : Tea.TeaModel {
         }
         if let value = dict["body"] as? [String: Any?] {
             var model = TerminateSqlStatementResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
+public class UpdateLivyComputeRequest : Tea.TeaModel {
+    public class AutoStartConfiguration : Tea.TeaModel {
+        public var enable: Bool?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.enable != nil {
+                map["enable"] = self.enable!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["enable"] as? Bool {
+                self.enable = value
+            }
+        }
+    }
+    public class AutoStopConfiguration : Tea.TeaModel {
+        public var enable: Bool?
+
+        public var idleTimeoutMinutes: Int64?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.enable != nil {
+                map["enable"] = self.enable!
+            }
+            if self.idleTimeoutMinutes != nil {
+                map["idleTimeoutMinutes"] = self.idleTimeoutMinutes!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["enable"] as? Bool {
+                self.enable = value
+            }
+            if let value = dict["idleTimeoutMinutes"] as? Int64 {
+                self.idleTimeoutMinutes = value
+            }
+        }
+    }
+    public var authType: String?
+
+    public var autoStartConfiguration: UpdateLivyComputeRequest.AutoStartConfiguration?
+
+    public var autoStopConfiguration: UpdateLivyComputeRequest.AutoStopConfiguration?
+
+    public var cpuLimit: String?
+
+    public var displayReleaseVersion: String?
+
+    public var enablePublic: Bool?
+
+    public var environmentId: String?
+
+    public var fusion: Bool?
+
+    public var livyServerConf: String?
+
+    public var livyVersion: String?
+
+    public var memoryLimit: String?
+
+    public var name: String?
+
+    public var networkName: String?
+
+    public var queueName: String?
+
+    public var releaseVersion: String?
+
+    public var regionId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.autoStartConfiguration?.validate()
+        try self.autoStopConfiguration?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.authType != nil {
+            map["authType"] = self.authType!
+        }
+        if self.autoStartConfiguration != nil {
+            map["autoStartConfiguration"] = self.autoStartConfiguration?.toMap()
+        }
+        if self.autoStopConfiguration != nil {
+            map["autoStopConfiguration"] = self.autoStopConfiguration?.toMap()
+        }
+        if self.cpuLimit != nil {
+            map["cpuLimit"] = self.cpuLimit!
+        }
+        if self.displayReleaseVersion != nil {
+            map["displayReleaseVersion"] = self.displayReleaseVersion!
+        }
+        if self.enablePublic != nil {
+            map["enablePublic"] = self.enablePublic!
+        }
+        if self.environmentId != nil {
+            map["environmentId"] = self.environmentId!
+        }
+        if self.fusion != nil {
+            map["fusion"] = self.fusion!
+        }
+        if self.livyServerConf != nil {
+            map["livyServerConf"] = self.livyServerConf!
+        }
+        if self.livyVersion != nil {
+            map["livyVersion"] = self.livyVersion!
+        }
+        if self.memoryLimit != nil {
+            map["memoryLimit"] = self.memoryLimit!
+        }
+        if self.name != nil {
+            map["name"] = self.name!
+        }
+        if self.networkName != nil {
+            map["networkName"] = self.networkName!
+        }
+        if self.queueName != nil {
+            map["queueName"] = self.queueName!
+        }
+        if self.releaseVersion != nil {
+            map["releaseVersion"] = self.releaseVersion!
+        }
+        if self.regionId != nil {
+            map["regionId"] = self.regionId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["authType"] as? String {
+            self.authType = value
+        }
+        if let value = dict["autoStartConfiguration"] as? [String: Any?] {
+            var model = UpdateLivyComputeRequest.AutoStartConfiguration()
+            model.fromMap(value)
+            self.autoStartConfiguration = model
+        }
+        if let value = dict["autoStopConfiguration"] as? [String: Any?] {
+            var model = UpdateLivyComputeRequest.AutoStopConfiguration()
+            model.fromMap(value)
+            self.autoStopConfiguration = model
+        }
+        if let value = dict["cpuLimit"] as? String {
+            self.cpuLimit = value
+        }
+        if let value = dict["displayReleaseVersion"] as? String {
+            self.displayReleaseVersion = value
+        }
+        if let value = dict["enablePublic"] as? Bool {
+            self.enablePublic = value
+        }
+        if let value = dict["environmentId"] as? String {
+            self.environmentId = value
+        }
+        if let value = dict["fusion"] as? Bool {
+            self.fusion = value
+        }
+        if let value = dict["livyServerConf"] as? String {
+            self.livyServerConf = value
+        }
+        if let value = dict["livyVersion"] as? String {
+            self.livyVersion = value
+        }
+        if let value = dict["memoryLimit"] as? String {
+            self.memoryLimit = value
+        }
+        if let value = dict["name"] as? String {
+            self.name = value
+        }
+        if let value = dict["networkName"] as? String {
+            self.networkName = value
+        }
+        if let value = dict["queueName"] as? String {
+            self.queueName = value
+        }
+        if let value = dict["releaseVersion"] as? String {
+            self.releaseVersion = value
+        }
+        if let value = dict["regionId"] as? String {
+            self.regionId = value
+        }
+    }
+}
+
+public class UpdateLivyComputeResponseBody : Tea.TeaModel {
+    public var code: String?
+
+    public var message: String?
+
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.code != nil {
+            map["code"] = self.code!
+        }
+        if self.message != nil {
+            map["message"] = self.message!
+        }
+        if self.requestId != nil {
+            map["requestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["code"] as? String {
+            self.code = value
+        }
+        if let value = dict["message"] as? String {
+            self.message = value
+        }
+        if let value = dict["requestId"] as? String {
+            self.requestId = value
+        }
+    }
+}
+
+public class UpdateLivyComputeResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: UpdateLivyComputeResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = UpdateLivyComputeResponseBody()
             model.fromMap(value)
             self.body = model
         }

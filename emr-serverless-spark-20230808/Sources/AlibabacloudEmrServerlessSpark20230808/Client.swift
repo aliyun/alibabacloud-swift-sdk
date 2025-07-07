@@ -98,6 +98,130 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func createLivyComputeWithOptions(_ workspaceBizId: String, _ request: CreateLivyComputeRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> CreateLivyComputeResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.regionId)) {
+            query["regionId"] = request.regionId ?? "";
+        }
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.authType)) {
+            body["authType"] = request.authType ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.autoStartConfiguration)) {
+            body["autoStartConfiguration"] = request.autoStartConfiguration!;
+        }
+        if (!TeaUtils.Client.isUnset(request.autoStopConfiguration)) {
+            body["autoStopConfiguration"] = request.autoStopConfiguration!;
+        }
+        if (!TeaUtils.Client.isUnset(request.cpuLimit)) {
+            body["cpuLimit"] = request.cpuLimit ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.displayReleaseVersion)) {
+            body["displayReleaseVersion"] = request.displayReleaseVersion ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.enablePublic)) {
+            body["enablePublic"] = request.enablePublic!;
+        }
+        if (!TeaUtils.Client.isUnset(request.environmentId)) {
+            body["environmentId"] = request.environmentId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.fusion)) {
+            body["fusion"] = request.fusion!;
+        }
+        if (!TeaUtils.Client.isUnset(request.livyServerConf)) {
+            body["livyServerConf"] = request.livyServerConf ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.livyVersion)) {
+            body["livyVersion"] = request.livyVersion ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.memoryLimit)) {
+            body["memoryLimit"] = request.memoryLimit ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.name)) {
+            body["name"] = request.name ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.networkName)) {
+            body["networkName"] = request.networkName ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.queueName)) {
+            body["queueName"] = request.queueName ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.releaseVersion)) {
+            body["releaseVersion"] = request.releaseVersion ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String],
+            "query": AlibabaCloudOpenApiUtil.Client.query(query),
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "CreateLivyCompute",
+            "version": "2023-08-08",
+            "protocol": "HTTPS",
+            "pathname": "/api/interactive/v1/workspace/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(workspaceBizId)) + "/livycompute",
+            "method": "PUT",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(CreateLivyComputeResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func createLivyCompute(_ workspaceBizId: String, _ request: CreateLivyComputeRequest) async throws -> CreateLivyComputeResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await createLivyComputeWithOptions(workspaceBizId as! String, request as! CreateLivyComputeRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func createLivyComputeTokenWithOptions(_ workspaceBizId: String, _ livyComputeId: String, _ request: CreateLivyComputeTokenRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> CreateLivyComputeTokenResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.regionId)) {
+            query["regionId"] = request.regionId ?? "";
+        }
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.autoExpireConfiguration)) {
+            body["autoExpireConfiguration"] = request.autoExpireConfiguration!;
+        }
+        if (!TeaUtils.Client.isUnset(request.name)) {
+            body["name"] = request.name ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.token)) {
+            body["token"] = request.token ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String],
+            "query": AlibabaCloudOpenApiUtil.Client.query(query),
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "CreateLivyComputeToken",
+            "version": "2023-08-08",
+            "protocol": "HTTPS",
+            "pathname": "/api/interactive/v1/workspace/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(workspaceBizId)) + "/livycompute/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(livyComputeId)) + "/token",
+            "method": "PUT",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(CreateLivyComputeTokenResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func createLivyComputeToken(_ workspaceBizId: String, _ livyComputeId: String, _ request: CreateLivyComputeTokenRequest) async throws -> CreateLivyComputeTokenResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await createLivyComputeTokenWithOptions(workspaceBizId as! String, livyComputeId as! String, request as! CreateLivyComputeTokenRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func createProcessDefinitionWithScheduleWithOptions(_ bizId: String, _ tmpReq: CreateProcessDefinitionWithScheduleRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> CreateProcessDefinitionWithScheduleResponse {
         try TeaUtils.Client.validateModel(tmpReq)
         var request: CreateProcessDefinitionWithScheduleShrinkRequest = CreateProcessDefinitionWithScheduleShrinkRequest([:])
@@ -397,6 +521,72 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func deleteLivyComputeWithOptions(_ workspaceBizId: String, _ livyComputeId: String, _ request: DeleteLivyComputeRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> DeleteLivyComputeResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.regionId)) {
+            query["regionId"] = request.regionId ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String],
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "DeleteLivyCompute",
+            "version": "2023-08-08",
+            "protocol": "HTTPS",
+            "pathname": "/api/interactive/v1/workspace/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(workspaceBizId)) + "/livycompute/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(livyComputeId)),
+            "method": "DELETE",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(DeleteLivyComputeResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func deleteLivyCompute(_ workspaceBizId: String, _ livyComputeId: String, _ request: DeleteLivyComputeRequest) async throws -> DeleteLivyComputeResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await deleteLivyComputeWithOptions(workspaceBizId as! String, livyComputeId as! String, request as! DeleteLivyComputeRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func deleteLivyComputeTokenWithOptions(_ workspaceBizId: String, _ livyComputeId: String, _ tokenId: String, _ request: DeleteLivyComputeTokenRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> DeleteLivyComputeTokenResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.regionId)) {
+            query["regionId"] = request.regionId ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String],
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "DeleteLivyComputeToken",
+            "version": "2023-08-08",
+            "protocol": "HTTPS",
+            "pathname": "/api/interactive/v1/workspace/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(workspaceBizId)) + "/livycompute/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(livyComputeId)) + "/token/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(tokenId)),
+            "method": "DELETE",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(DeleteLivyComputeTokenResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func deleteLivyComputeToken(_ workspaceBizId: String, _ livyComputeId: String, _ tokenId: String, _ request: DeleteLivyComputeTokenRequest) async throws -> DeleteLivyComputeTokenResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await deleteLivyComputeTokenWithOptions(workspaceBizId as! String, livyComputeId as! String, tokenId as! String, request as! DeleteLivyComputeTokenRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func editWorkspaceQueueWithOptions(_ request: EditWorkspaceQueueRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> EditWorkspaceQueueResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
@@ -549,6 +739,72 @@ open class Client : AlibabacloudOpenApi.Client {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         var headers: [String: String] = [:]
         return try await getJobRunWithOptions(workspaceId as! String, jobRunId as! String, request as! GetJobRunRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getLivyComputeWithOptions(_ workspaceBizId: String, _ livyComputeId: String, _ request: GetLivyComputeRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> GetLivyComputeResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.regionId)) {
+            query["regionId"] = request.regionId ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String],
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "GetLivyCompute",
+            "version": "2023-08-08",
+            "protocol": "HTTPS",
+            "pathname": "/api/interactive/v1/workspace/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(workspaceBizId)) + "/livycompute/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(livyComputeId)),
+            "method": "GET",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(GetLivyComputeResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getLivyCompute(_ workspaceBizId: String, _ livyComputeId: String, _ request: GetLivyComputeRequest) async throws -> GetLivyComputeResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await getLivyComputeWithOptions(workspaceBizId as! String, livyComputeId as! String, request as! GetLivyComputeRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getLivyComputeTokenWithOptions(_ workspaceBizId: String, _ livyComputeId: String, _ tokenId: String, _ request: GetLivyComputeTokenRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> GetLivyComputeTokenResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.regionId)) {
+            query["regionId"] = request.regionId ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String],
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "GetLivyComputeToken",
+            "version": "2023-08-08",
+            "protocol": "HTTPS",
+            "pathname": "/api/interactive/v1/workspace/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(workspaceBizId)) + "/livycompute/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(livyComputeId)) + "/token/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(tokenId)),
+            "method": "GET",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(GetLivyComputeTokenResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getLivyComputeToken(_ workspaceBizId: String, _ livyComputeId: String, _ tokenId: String, _ request: GetLivyComputeTokenRequest) async throws -> GetLivyComputeTokenResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await getLivyComputeTokenWithOptions(workspaceBizId as! String, livyComputeId as! String, tokenId as! String, request as! GetLivyComputeTokenRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -909,6 +1165,75 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func listLivyComputeWithOptions(_ workspaceBizId: String, _ request: ListLivyComputeRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> ListLivyComputeResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.environmentId)) {
+            query["environmentId"] = request.environmentId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.regionId)) {
+            query["regionId"] = request.regionId ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String],
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "ListLivyCompute",
+            "version": "2023-08-08",
+            "protocol": "HTTPS",
+            "pathname": "/api/interactive/v1/workspace/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(workspaceBizId)) + "/livycompute",
+            "method": "GET",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(ListLivyComputeResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func listLivyCompute(_ workspaceBizId: String, _ request: ListLivyComputeRequest) async throws -> ListLivyComputeResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await listLivyComputeWithOptions(workspaceBizId as! String, request as! ListLivyComputeRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func listLivyComputeTokenWithOptions(_ workspaceBizId: String, _ livyComputeId: String, _ request: ListLivyComputeTokenRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> ListLivyComputeTokenResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.regionId)) {
+            query["regionId"] = request.regionId ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String],
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "ListLivyComputeToken",
+            "version": "2023-08-08",
+            "protocol": "HTTPS",
+            "pathname": "/api/interactive/v1/workspace/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(workspaceBizId)) + "/livycompute/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(livyComputeId)) + "/token",
+            "method": "GET",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(ListLivyComputeTokenResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func listLivyComputeToken(_ workspaceBizId: String, _ livyComputeId: String, _ request: ListLivyComputeTokenRequest) async throws -> ListLivyComputeTokenResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await listLivyComputeTokenWithOptions(workspaceBizId as! String, livyComputeId as! String, request as! ListLivyComputeTokenRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func listLogContentsWithOptions(_ workspaceId: String, _ request: ListLogContentsRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> ListLogContentsResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
@@ -1136,6 +1461,50 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func refreshLivyComputeTokenWithOptions(_ workspaceBizId: String, _ livyComputeId: String, _ tokenId: String, _ request: RefreshLivyComputeTokenRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> RefreshLivyComputeTokenResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.regionId)) {
+            query["regionId"] = request.regionId ?? "";
+        }
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.autoExpireConfiguration)) {
+            body["autoExpireConfiguration"] = request.autoExpireConfiguration!;
+        }
+        if (!TeaUtils.Client.isUnset(request.name)) {
+            body["name"] = request.name ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.token)) {
+            body["token"] = request.token ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String],
+            "query": AlibabaCloudOpenApiUtil.Client.query(query),
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "RefreshLivyComputeToken",
+            "version": "2023-08-08",
+            "protocol": "HTTPS",
+            "pathname": "/api/interactive/v1/workspace/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(workspaceBizId)) + "/livycompute/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(livyComputeId)) + "/token/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(tokenId)),
+            "method": "POST",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(RefreshLivyComputeTokenResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func refreshLivyComputeToken(_ workspaceBizId: String, _ livyComputeId: String, _ tokenId: String, _ request: RefreshLivyComputeTokenRequest) async throws -> RefreshLivyComputeTokenResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await refreshLivyComputeTokenWithOptions(workspaceBizId as! String, livyComputeId as! String, tokenId as! String, request as! RefreshLivyComputeTokenRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func startJobRunWithOptions(_ workspaceId: String, _ request: StartJobRunRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> StartJobRunResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
@@ -1204,6 +1573,39 @@ open class Client : AlibabacloudOpenApi.Client {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         var headers: [String: String] = [:]
         return try await startJobRunWithOptions(workspaceId as! String, request as! StartJobRunRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func startLivyComputeWithOptions(_ workspaceBizId: String, _ livyComputeId: String, _ request: StartLivyComputeRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> StartLivyComputeResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.regionId)) {
+            query["regionId"] = request.regionId ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String],
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "StartLivyCompute",
+            "version": "2023-08-08",
+            "protocol": "HTTPS",
+            "pathname": "/api/interactive/v1/workspace/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(workspaceBizId)) + "/livycompute/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(livyComputeId)) + "/start",
+            "method": "POST",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(StartLivyComputeResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func startLivyCompute(_ workspaceBizId: String, _ livyComputeId: String, _ request: StartLivyComputeRequest) async throws -> StartLivyComputeResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await startLivyComputeWithOptions(workspaceBizId as! String, livyComputeId as! String, request as! StartLivyComputeRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -1311,6 +1713,39 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func stopLivyComputeWithOptions(_ workspaceBizId: String, _ livyComputeId: String, _ request: StopLivyComputeRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> StopLivyComputeResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.regionId)) {
+            query["regionId"] = request.regionId ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String],
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "StopLivyCompute",
+            "version": "2023-08-08",
+            "protocol": "HTTPS",
+            "pathname": "/api/interactive/v1/workspace/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(workspaceBizId)) + "/livycompute/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(livyComputeId)) + "/stop",
+            "method": "POST",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(StopLivyComputeResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func stopLivyCompute(_ workspaceBizId: String, _ livyComputeId: String, _ request: StopLivyComputeRequest) async throws -> StopLivyComputeResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await stopLivyComputeWithOptions(workspaceBizId as! String, livyComputeId as! String, request as! StopLivyComputeRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func stopSessionClusterWithOptions(_ workspaceId: String, _ request: StopSessionClusterRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> StopSessionClusterResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
@@ -1382,6 +1817,86 @@ open class Client : AlibabacloudOpenApi.Client {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         var headers: [String: String] = [:]
         return try await terminateSqlStatementWithOptions(workspaceId as! String, statementId as! String, request as! TerminateSqlStatementRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func updateLivyComputeWithOptions(_ workspaceBizId: String, _ livyComputeId: String, _ request: UpdateLivyComputeRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> UpdateLivyComputeResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.regionId)) {
+            query["regionId"] = request.regionId ?? "";
+        }
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.authType)) {
+            body["authType"] = request.authType ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.autoStartConfiguration)) {
+            body["autoStartConfiguration"] = request.autoStartConfiguration!;
+        }
+        if (!TeaUtils.Client.isUnset(request.autoStopConfiguration)) {
+            body["autoStopConfiguration"] = request.autoStopConfiguration!;
+        }
+        if (!TeaUtils.Client.isUnset(request.cpuLimit)) {
+            body["cpuLimit"] = request.cpuLimit ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.displayReleaseVersion)) {
+            body["displayReleaseVersion"] = request.displayReleaseVersion ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.enablePublic)) {
+            body["enablePublic"] = request.enablePublic!;
+        }
+        if (!TeaUtils.Client.isUnset(request.environmentId)) {
+            body["environmentId"] = request.environmentId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.fusion)) {
+            body["fusion"] = request.fusion!;
+        }
+        if (!TeaUtils.Client.isUnset(request.livyServerConf)) {
+            body["livyServerConf"] = request.livyServerConf ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.livyVersion)) {
+            body["livyVersion"] = request.livyVersion ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.memoryLimit)) {
+            body["memoryLimit"] = request.memoryLimit ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.name)) {
+            body["name"] = request.name ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.networkName)) {
+            body["networkName"] = request.networkName ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.queueName)) {
+            body["queueName"] = request.queueName ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.releaseVersion)) {
+            body["releaseVersion"] = request.releaseVersion ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String],
+            "query": AlibabaCloudOpenApiUtil.Client.query(query),
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "UpdateLivyCompute",
+            "version": "2023-08-08",
+            "protocol": "HTTPS",
+            "pathname": "/api/interactive/v1/workspace/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(workspaceBizId)) + "/livycompute/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(livyComputeId)),
+            "method": "POST",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(UpdateLivyComputeResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func updateLivyCompute(_ workspaceBizId: String, _ livyComputeId: String, _ request: UpdateLivyComputeRequest) async throws -> UpdateLivyComputeResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await updateLivyComputeWithOptions(workspaceBizId as! String, livyComputeId as! String, request as! UpdateLivyComputeRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
