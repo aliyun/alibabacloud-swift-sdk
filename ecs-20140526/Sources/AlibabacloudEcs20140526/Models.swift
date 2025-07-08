@@ -39648,6 +39648,8 @@ public class DescribeDedicatedHostsRequest : Tea.TeaModel {
 
     public var pageSize: Int32?
 
+    public var queryInventory: Bool?
+
     public var regionId: String?
 
     public var resourceGroupId: String?
@@ -39710,6 +39712,9 @@ public class DescribeDedicatedHostsRequest : Tea.TeaModel {
         }
         if self.pageSize != nil {
             map["PageSize"] = self.pageSize!
+        }
+        if self.queryInventory != nil {
+            map["QueryInventory"] = self.queryInventory!
         }
         if self.regionId != nil {
             map["RegionId"] = self.regionId!
@@ -39776,6 +39781,9 @@ public class DescribeDedicatedHostsRequest : Tea.TeaModel {
         }
         if let value = dict["PageSize"] as? Int32 {
             self.pageSize = value
+        }
+        if let value = dict["QueryInventory"] as? Bool {
+            self.queryInventory = value
         }
         if let value = dict["RegionId"] as? String {
             self.regionId = value
@@ -39848,6 +39856,88 @@ public class DescribeDedicatedHostsResponseBody : Tea.TeaModel {
                 }
             }
             public class Capacity : Tea.TeaModel {
+                public class AvailableInstanceTypes : Tea.TeaModel {
+                    public class AvailableInstanceType : Tea.TeaModel {
+                        public var availableInstanceCapacity: Int32?
+
+                        public var instanceType: String?
+
+                        public override init() {
+                            super.init()
+                        }
+
+                        public init(_ dict: [String: Any]) {
+                            super.init()
+                            self.fromMap(dict)
+                        }
+
+                        public override func validate() throws -> Void {
+                        }
+
+                        public override func toMap() -> [String : Any] {
+                            var map = super.toMap()
+                            if self.availableInstanceCapacity != nil {
+                                map["AvailableInstanceCapacity"] = self.availableInstanceCapacity!
+                            }
+                            if self.instanceType != nil {
+                                map["InstanceType"] = self.instanceType!
+                            }
+                            return map
+                        }
+
+                        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                            guard let dict else { return }
+                            if let value = dict["AvailableInstanceCapacity"] as? Int32 {
+                                self.availableInstanceCapacity = value
+                            }
+                            if let value = dict["InstanceType"] as? String {
+                                self.instanceType = value
+                            }
+                        }
+                    }
+                    public var availableInstanceType: [DescribeDedicatedHostsResponseBody.DedicatedHosts.DedicatedHost.Capacity.AvailableInstanceTypes.AvailableInstanceType]?
+
+                    public override init() {
+                        super.init()
+                    }
+
+                    public init(_ dict: [String: Any]) {
+                        super.init()
+                        self.fromMap(dict)
+                    }
+
+                    public override func validate() throws -> Void {
+                    }
+
+                    public override func toMap() -> [String : Any] {
+                        var map = super.toMap()
+                        if self.availableInstanceType != nil {
+                            var tmp : [Any] = []
+                            for k in self.availableInstanceType! {
+                                tmp.append(k.toMap())
+                            }
+                            map["AvailableInstanceType"] = tmp
+                        }
+                        return map
+                    }
+
+                    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                        guard let dict else { return }
+                        if let value = dict["AvailableInstanceType"] as? [Any?] {
+                            var tmp : [DescribeDedicatedHostsResponseBody.DedicatedHosts.DedicatedHost.Capacity.AvailableInstanceTypes.AvailableInstanceType] = []
+                            for v in value {
+                                if v != nil {
+                                    var model = DescribeDedicatedHostsResponseBody.DedicatedHosts.DedicatedHost.Capacity.AvailableInstanceTypes.AvailableInstanceType()
+                                    if v != nil {
+                                        model.fromMap(v as? [String: Any?])
+                                    }
+                                    tmp.append(model)
+                                }
+                            }
+                            self.availableInstanceType = tmp
+                        }
+                    }
+                }
                 public class SocketCapacities : Tea.TeaModel {
                     public class SocketCapacity : Tea.TeaModel {
                         public var availableMemory: Double?
@@ -39954,6 +40044,8 @@ public class DescribeDedicatedHostsResponseBody : Tea.TeaModel {
                         }
                     }
                 }
+                public var availableInstanceTypes: DescribeDedicatedHostsResponseBody.DedicatedHosts.DedicatedHost.Capacity.AvailableInstanceTypes?
+
                 public var availableLocalStorage: Int32?
 
                 public var availableMemory: Double?
@@ -39984,11 +40076,15 @@ public class DescribeDedicatedHostsResponseBody : Tea.TeaModel {
                 }
 
                 public override func validate() throws -> Void {
+                    try self.availableInstanceTypes?.validate()
                     try self.socketCapacities?.validate()
                 }
 
                 public override func toMap() -> [String : Any] {
                     var map = super.toMap()
+                    if self.availableInstanceTypes != nil {
+                        map["AvailableInstanceTypes"] = self.availableInstanceTypes?.toMap()
+                    }
                     if self.availableLocalStorage != nil {
                         map["AvailableLocalStorage"] = self.availableLocalStorage!
                     }
@@ -40024,6 +40120,11 @@ public class DescribeDedicatedHostsResponseBody : Tea.TeaModel {
 
                 public override func fromMap(_ dict: [String: Any?]?) -> Void {
                     guard let dict else { return }
+                    if let value = dict["AvailableInstanceTypes"] as? [String: Any?] {
+                        var model = DescribeDedicatedHostsResponseBody.DedicatedHosts.DedicatedHost.Capacity.AvailableInstanceTypes()
+                        model.fromMap(value)
+                        self.availableInstanceTypes = model
+                    }
                     if let value = dict["AvailableLocalStorage"] as? Int32 {
                         self.availableLocalStorage = value
                     }
