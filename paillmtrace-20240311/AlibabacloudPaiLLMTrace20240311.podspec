@@ -1,7 +1,7 @@
 Pod::Spec.new do |spec|
 
   spec.name         = "AlibabacloudPaiLLMTrace20240311"
-  spec.version      = "1.0.0"
+  spec.version      = "1.1.0"
   spec.license      = "Apache 2.0"
   spec.summary      = "Alibaba Cloud PaiLLMTrace (20240311) SDK Library for Swift"
   spec.homepage     = "https://github.com/alibabacloud-sdk-swift/paillmtrace-20240311" 
@@ -17,7 +17,7 @@ Pod::Spec.new do |spec|
   spec.watchos.deployment_target = '6.0'
   spec.tvos.deployment_target    = '13.0'
 
-  spec.dependency 'Tea',  '~> 1.0.0'
+  spec.dependency 'Tea',  '~> 1.0.3'
   spec.dependency 'TeaUtils',  '~> 1.0.6'
   spec.dependency 'AlibabacloudOpenApi',  '~> 1.0.7'
   spec.dependency 'AlibabaCloudOpenApiUtil',  '~> 1.0.1'

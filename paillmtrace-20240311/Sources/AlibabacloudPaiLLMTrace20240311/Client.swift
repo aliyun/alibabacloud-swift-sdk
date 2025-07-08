@@ -272,6 +272,56 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func listEvalResultsWithOptions(_ tmpReq: ListEvalResultsRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> ListEvalResultsResponse {
+        try TeaUtils.Client.validateModel(tmpReq)
+        var request: ListEvalResultsShrinkRequest = ListEvalResultsShrinkRequest([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.recordIds)) {
+            request.recordIdsShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.recordIds, "RecordIds", "simple")
+        }
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.evaluationId)) {
+            query["EvaluationId"] = request.evaluationId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.keyword)) {
+            query["Keyword"] = request.keyword ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.pageNumber)) {
+            query["PageNumber"] = request.pageNumber!;
+        }
+        if (!TeaUtils.Client.isUnset(request.pageSize)) {
+            query["PageSize"] = request.pageSize!;
+        }
+        if (!TeaUtils.Client.isUnset(request.recordIdsShrink)) {
+            query["RecordIds"] = request.recordIdsShrink ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String],
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "ListEvalResults",
+            "version": "2024-03-11",
+            "protocol": "HTTPS",
+            "pathname": "/api/v1/PAILLMTrace/eval/results",
+            "method": "GET",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(ListEvalResultsResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func listEvalResults(_ request: ListEvalResultsRequest) async throws -> ListEvalResultsResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await listEvalResultsWithOptions(request as! ListEvalResultsRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func listOnlineEvalTaskResultsWithOptions(_ tmpReq: ListOnlineEvalTaskResultsRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> ListOnlineEvalTaskResultsResponse {
         try TeaUtils.Client.validateModel(tmpReq)
         var request: ListOnlineEvalTaskResultsShrinkRequest = ListOnlineEvalTaskResultsShrinkRequest([:])
@@ -396,8 +446,14 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.llmAppName)) {
             query["LlmAppName"] = request.llmAppName ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.maxDuration)) {
+            query["MaxDuration"] = request.maxDuration!;
+        }
         if (!TeaUtils.Client.isUnset(request.maxTime)) {
             query["MaxTime"] = request.maxTime ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.minDuration)) {
+            query["MinDuration"] = request.minDuration!;
         }
         if (!TeaUtils.Client.isUnset(request.minTime)) {
             query["MinTime"] = request.minTime ?? "";
@@ -425,6 +481,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.spanIdsShrink)) {
             query["SpanIds"] = request.spanIdsShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.spanName)) {
+            query["SpanName"] = request.spanName ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.traceIdsShrink)) {
             query["TraceIds"] = request.traceIdsShrink ?? "";
