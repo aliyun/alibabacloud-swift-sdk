@@ -9732,6 +9732,48 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func removeSDGsWithOptions(_ tmpReq: RemoveSDGsRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> RemoveSDGsResponse {
+        try TeaUtils.Client.validateModel(tmpReq)
+        var request: RemoveSDGsShrinkRequest = RemoveSDGsShrinkRequest([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.instanceIds)) {
+            request.instanceIdsShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.instanceIds, "InstanceIds", "json")
+        }
+        if (!TeaUtils.Client.isUnset(tmpReq.sdgIds)) {
+            request.sdgIdsShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.sdgIds, "SdgIds", "json")
+        }
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.instanceIdsShrink)) {
+            query["InstanceIds"] = request.instanceIdsShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.sdgIdsShrink)) {
+            query["SdgIds"] = request.sdgIdsShrink ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "RemoveSDGs",
+            "version": "2017-11-10",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(RemoveSDGsResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func removeSDGs(_ request: RemoveSDGsRequest) async throws -> RemoveSDGsResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await removeSDGsWithOptions(request as! RemoveSDGsRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func removeVSwitchesFromEpnInstanceWithOptions(_ request: RemoveVSwitchesFromEpnInstanceRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> RemoveVSwitchesFromEpnInstanceResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
