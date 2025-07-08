@@ -1870,14 +1870,32 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.analysisTool)) {
             body["analysisTool"] = request.analysisTool ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.analysisParams)) {
+            body["analysis_params"] = request.analysisParams ?? [];
+        }
         if (!TeaUtils.Client.isUnset(request.channel)) {
             body["channel"] = request.channel ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.comms)) {
             body["comms"] = request.comms ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.createdBy)) {
+            body["created_by"] = request.createdBy ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.instance)) {
             body["instance"] = request.instance ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.instanceType)) {
+            body["instance_type"] = request.instanceType ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.iterationFunc)) {
+            body["iteration_func"] = request.iterationFunc ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.iterationMod)) {
+            body["iteration_mod"] = request.iterationMod ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.iterationRange)) {
+            body["iteration_range"] = request.iterationRange ?? [];
         }
         if (!TeaUtils.Client.isUnset(request.pids)) {
             body["pids"] = request.pids ?? "";
@@ -1887,6 +1905,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.timeout)) {
             body["timeout"] = request.timeout!;
+        }
+        if (!TeaUtils.Client.isUnset(request.uid)) {
+            body["uid"] = request.uid ?? "";
         }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "headers": headers as! [String: String],
@@ -1912,6 +1933,42 @@ open class Client : AlibabacloudOpenApi.Client {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         var headers: [String: String] = [:]
         return try await startAIAnalysisWithOptions(request as! StartAIAnalysisRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func startAIDiffAnalysisWithOptions(_ request: StartAIDiffAnalysisRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> StartAIDiffAnalysisResponse {
+        try TeaUtils.Client.validateModel(request)
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.task1)) {
+            body["task1"] = request.task1!;
+        }
+        if (!TeaUtils.Client.isUnset(request.task2)) {
+            body["task2"] = request.task2!;
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String],
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "StartAIDiffAnalysis",
+            "version": "2023-12-30",
+            "protocol": "HTTPS",
+            "pathname": "/api/v1/appObserv/aiAnalysis/diffAnalysis",
+            "method": "POST",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(StartAIDiffAnalysisResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func startAIDiffAnalysis(_ request: StartAIDiffAnalysisRequest) async throws -> StartAIDiffAnalysisResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await startAIDiffAnalysisWithOptions(request as! StartAIDiffAnalysisRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)

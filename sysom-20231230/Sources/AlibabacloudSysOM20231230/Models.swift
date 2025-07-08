@@ -10675,17 +10675,31 @@ public class ListRegionsResponse : Tea.TeaModel {
 public class StartAIAnalysisRequest : Tea.TeaModel {
     public var analysisTool: String?
 
+    public var analysisParams: [String]?
+
     public var channel: String?
 
     public var comms: String?
 
+    public var createdBy: String?
+
     public var instance: String?
+
+    public var instanceType: String?
+
+    public var iterationFunc: String?
+
+    public var iterationMod: String?
+
+    public var iterationRange: [Int32]?
 
     public var pids: String?
 
     public var region: String?
 
     public var timeout: Int32?
+
+    public var uid: String?
 
     public override init() {
         super.init()
@@ -10704,14 +10718,32 @@ public class StartAIAnalysisRequest : Tea.TeaModel {
         if self.analysisTool != nil {
             map["analysisTool"] = self.analysisTool!
         }
+        if self.analysisParams != nil {
+            map["analysis_params"] = self.analysisParams!
+        }
         if self.channel != nil {
             map["channel"] = self.channel!
         }
         if self.comms != nil {
             map["comms"] = self.comms!
         }
+        if self.createdBy != nil {
+            map["created_by"] = self.createdBy!
+        }
         if self.instance != nil {
             map["instance"] = self.instance!
+        }
+        if self.instanceType != nil {
+            map["instance_type"] = self.instanceType!
+        }
+        if self.iterationFunc != nil {
+            map["iteration_func"] = self.iterationFunc!
+        }
+        if self.iterationMod != nil {
+            map["iteration_mod"] = self.iterationMod!
+        }
+        if self.iterationRange != nil {
+            map["iteration_range"] = self.iterationRange!
         }
         if self.pids != nil {
             map["pids"] = self.pids!
@@ -10722,6 +10754,9 @@ public class StartAIAnalysisRequest : Tea.TeaModel {
         if self.timeout != nil {
             map["timeout"] = self.timeout!
         }
+        if self.uid != nil {
+            map["uid"] = self.uid!
+        }
         return map
     }
 
@@ -10730,14 +10765,32 @@ public class StartAIAnalysisRequest : Tea.TeaModel {
         if let value = dict["analysisTool"] as? String {
             self.analysisTool = value
         }
+        if let value = dict["analysis_params"] as? [String] {
+            self.analysisParams = value
+        }
         if let value = dict["channel"] as? String {
             self.channel = value
         }
         if let value = dict["comms"] as? String {
             self.comms = value
         }
+        if let value = dict["created_by"] as? String {
+            self.createdBy = value
+        }
         if let value = dict["instance"] as? String {
             self.instance = value
+        }
+        if let value = dict["instance_type"] as? String {
+            self.instanceType = value
+        }
+        if let value = dict["iteration_func"] as? String {
+            self.iterationFunc = value
+        }
+        if let value = dict["iteration_mod"] as? String {
+            self.iterationMod = value
+        }
+        if let value = dict["iteration_range"] as? [Int32] {
+            self.iterationRange = value
         }
         if let value = dict["pids"] as? String {
             self.pids = value
@@ -10747,6 +10800,9 @@ public class StartAIAnalysisRequest : Tea.TeaModel {
         }
         if let value = dict["timeout"] as? Int32 {
             self.timeout = value
+        }
+        if let value = dict["uid"] as? String {
+            self.uid = value
         }
     }
 }
@@ -10883,6 +10939,264 @@ public class StartAIAnalysisResponse : Tea.TeaModel {
         }
         if let value = dict["body"] as? [String: Any?] {
             var model = StartAIAnalysisResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
+public class StartAIDiffAnalysisRequest : Tea.TeaModel {
+    public class Task1 : Tea.TeaModel {
+        public var analysisId: String?
+
+        public var pids: [String]?
+
+        public var stepEnd: Double?
+
+        public var stepStart: Double?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.analysisId != nil {
+                map["analysisId"] = self.analysisId!
+            }
+            if self.pids != nil {
+                map["pids"] = self.pids!
+            }
+            if self.stepEnd != nil {
+                map["step_end"] = self.stepEnd!
+            }
+            if self.stepStart != nil {
+                map["step_start"] = self.stepStart!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["analysisId"] as? String {
+                self.analysisId = value
+            }
+            if let value = dict["pids"] as? [String] {
+                self.pids = value
+            }
+            if let value = dict["step_end"] as? Double {
+                self.stepEnd = value
+            }
+            if let value = dict["step_start"] as? Double {
+                self.stepStart = value
+            }
+        }
+    }
+    public class Task2 : Tea.TeaModel {
+        public var analysisId: String?
+
+        public var pids: [String]?
+
+        public var stepEnd: Double?
+
+        public var stepStart: Double?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.analysisId != nil {
+                map["analysisId"] = self.analysisId!
+            }
+            if self.pids != nil {
+                map["pids"] = self.pids!
+            }
+            if self.stepEnd != nil {
+                map["step_end"] = self.stepEnd!
+            }
+            if self.stepStart != nil {
+                map["step_start"] = self.stepStart!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["analysisId"] as? String {
+                self.analysisId = value
+            }
+            if let value = dict["pids"] as? [String] {
+                self.pids = value
+            }
+            if let value = dict["step_end"] as? Double {
+                self.stepEnd = value
+            }
+            if let value = dict["step_start"] as? Double {
+                self.stepStart = value
+            }
+        }
+    }
+    public var task1: StartAIDiffAnalysisRequest.Task1?
+
+    public var task2: StartAIDiffAnalysisRequest.Task2?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.task1?.validate()
+        try self.task2?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.task1 != nil {
+            map["task1"] = self.task1?.toMap()
+        }
+        if self.task2 != nil {
+            map["task2"] = self.task2?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["task1"] as? [String: Any?] {
+            var model = StartAIDiffAnalysisRequest.Task1()
+            model.fromMap(value)
+            self.task1 = model
+        }
+        if let value = dict["task2"] as? [String: Any?] {
+            var model = StartAIDiffAnalysisRequest.Task2()
+            model.fromMap(value)
+            self.task2 = model
+        }
+    }
+}
+
+public class StartAIDiffAnalysisResponseBody : Tea.TeaModel {
+    public var code: String?
+
+    public var data: String?
+
+    public var message: String?
+
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.code != nil {
+            map["code"] = self.code!
+        }
+        if self.data != nil {
+            map["data"] = self.data!
+        }
+        if self.message != nil {
+            map["message"] = self.message!
+        }
+        if self.requestId != nil {
+            map["requestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["code"] as? String {
+            self.code = value
+        }
+        if let value = dict["data"] as? String {
+            self.data = value
+        }
+        if let value = dict["message"] as? String {
+            self.message = value
+        }
+        if let value = dict["requestId"] as? String {
+            self.requestId = value
+        }
+    }
+}
+
+public class StartAIDiffAnalysisResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: StartAIDiffAnalysisResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = StartAIDiffAnalysisResponseBody()
             model.fromMap(value)
             self.body = model
         }
