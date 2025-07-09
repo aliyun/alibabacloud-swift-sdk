@@ -22033,6 +22033,8 @@ public class DeleteMediaFromSearchLibRequest : Tea.TeaModel {
 
     public var msgBody: String?
 
+    public var namespace: String?
+
     public var searchLibName: String?
 
     public override init() {
@@ -22055,6 +22057,9 @@ public class DeleteMediaFromSearchLibRequest : Tea.TeaModel {
         if self.msgBody != nil {
             map["MsgBody"] = self.msgBody!
         }
+        if self.namespace != nil {
+            map["Namespace"] = self.namespace!
+        }
         if self.searchLibName != nil {
             map["SearchLibName"] = self.searchLibName!
         }
@@ -22068,6 +22073,9 @@ public class DeleteMediaFromSearchLibRequest : Tea.TeaModel {
         }
         if let value = dict["MsgBody"] as? String {
             self.msgBody = value
+        }
+        if let value = dict["Namespace"] as? String {
+            self.namespace = value
         }
         if let value = dict["SearchLibName"] as? String {
             self.searchLibName = value
@@ -51090,6 +51098,8 @@ public class InsertMediaToSearchLibRequest : Tea.TeaModel {
 
     public var msgBody: String?
 
+    public var namespace: String?
+
     public var searchLibName: String?
 
     public override init() {
@@ -51121,6 +51131,9 @@ public class InsertMediaToSearchLibRequest : Tea.TeaModel {
         if self.msgBody != nil {
             map["MsgBody"] = self.msgBody!
         }
+        if self.namespace != nil {
+            map["Namespace"] = self.namespace!
+        }
         if self.searchLibName != nil {
             map["SearchLibName"] = self.searchLibName!
         }
@@ -51143,6 +51156,9 @@ public class InsertMediaToSearchLibRequest : Tea.TeaModel {
         }
         if let value = dict["MsgBody"] as? String {
             self.msgBody = value
+        }
+        if let value = dict["Namespace"] as? String {
+            self.namespace = value
         }
         if let value = dict["SearchLibName"] as? String {
             self.searchLibName = value
@@ -78768,6 +78784,8 @@ public class SearchEditingProjectResponse : Tea.TeaModel {
 public class SearchIndexJobRerunRequest : Tea.TeaModel {
     public var mediaIds: String?
 
+    public var namespace: String?
+
     public var searchLibName: String?
 
     public var task: String?
@@ -78789,6 +78807,9 @@ public class SearchIndexJobRerunRequest : Tea.TeaModel {
         if self.mediaIds != nil {
             map["MediaIds"] = self.mediaIds!
         }
+        if self.namespace != nil {
+            map["Namespace"] = self.namespace!
+        }
         if self.searchLibName != nil {
             map["SearchLibName"] = self.searchLibName!
         }
@@ -78802,6 +78823,9 @@ public class SearchIndexJobRerunRequest : Tea.TeaModel {
         guard let dict else { return }
         if let value = dict["MediaIds"] as? String {
             self.mediaIds = value
+        }
+        if let value = dict["Namespace"] as? String {
+            self.namespace = value
         }
         if let value = dict["SearchLibName"] as? String {
             self.searchLibName = value
@@ -109801,6 +109825,8 @@ public class UpdateMediaToSearchLibRequest : Tea.TeaModel {
 
     public var msgBody: String?
 
+    public var namespace: String?
+
     public var searchLibName: String?
 
     public override init() {
@@ -109823,6 +109849,9 @@ public class UpdateMediaToSearchLibRequest : Tea.TeaModel {
         if self.msgBody != nil {
             map["MsgBody"] = self.msgBody!
         }
+        if self.namespace != nil {
+            map["Namespace"] = self.namespace!
+        }
         if self.searchLibName != nil {
             map["SearchLibName"] = self.searchLibName!
         }
@@ -109836,6 +109865,9 @@ public class UpdateMediaToSearchLibRequest : Tea.TeaModel {
         }
         if let value = dict["MsgBody"] as? String {
             self.msgBody = value
+        }
+        if let value = dict["Namespace"] as? String {
+            self.namespace = value
         }
         if let value = dict["SearchLibName"] as? String {
             self.searchLibName = value
