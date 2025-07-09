@@ -23095,7 +23095,7 @@ public class DescribeOasAnomalySQLListResponseBody : Tea.TeaModel {
 
         public var executions: Double?
 
-        public var lastExecutedTime: Double?
+        public var lastExecutedTime: String?
 
         public var riskLevel: String?
 
@@ -23240,7 +23240,7 @@ public class DescribeOasAnomalySQLListResponseBody : Tea.TeaModel {
             if let value = dict["Executions"] as? Double {
                 self.executions = value
             }
-            if let value = dict["LastExecutedTime"] as? Double {
+            if let value = dict["LastExecutedTime"] as? String {
                 self.lastExecutedTime = value
             }
             if let value = dict["RiskLevel"] as? String {
@@ -23730,15 +23730,15 @@ public class DescribeOasSQLHistoryListRequest : Tea.TeaModel {
 
 public class DescribeOasSQLHistoryListResponseBody : Tea.TeaModel {
     public class Data : Tea.TeaModel {
-        public var avgAffectedRows: Int64?
+        public var avgAffectedRows: Double?
 
         public var avgApplicationWaitTime: Double?
 
-        public var avgBlockCacheHit: Int64?
+        public var avgBlockCacheHit: Double?
 
-        public var avgBlockIndexCacheHit: Int64?
+        public var avgBlockIndexCacheHit: Double?
 
-        public var avgBloomFilterCacheHit: Int64?
+        public var avgBloomFilterCacheHit: Double?
 
         public var avgConcurrencyWaitTime: Double?
 
@@ -23748,7 +23748,7 @@ public class DescribeOasSQLHistoryListResponseBody : Tea.TeaModel {
 
         public var avgDecodeTime: Double?
 
-        public var avgDiskReads: Int64?
+        public var avgDiskReads: Double?
 
         public var avgElapsedTime: Double?
 
@@ -23760,9 +23760,9 @@ public class DescribeOasSQLHistoryListResponseBody : Tea.TeaModel {
 
         public var avgGetPlanTime: Double?
 
-        public var avgLogicalReads: Int64?
+        public var avgLogicalReads: Double?
 
-        public var avgMemstoreReadRows: Int64?
+        public var avgMemstoreReadRows: Double?
 
         public var avgNetTime: Double?
 
@@ -23772,15 +23772,15 @@ public class DescribeOasSQLHistoryListResponseBody : Tea.TeaModel {
 
         public var avgQueueTime: Double?
 
-        public var avgReturnRows: Int64?
+        public var avgReturnRows: Double?
 
-        public var avgRowCacheHit: Int64?
+        public var avgRowCacheHit: Double?
 
-        public var avgRpcCount: Int64?
+        public var avgRpcCount: Double?
 
         public var avgScheduleTime: Double?
 
-        public var avgSsstoreReadRows: Int64?
+        public var avgSsstoreReadRows: Double?
 
         public var avgUsedWorkerCount: Double?
 
@@ -23830,19 +23830,19 @@ public class DescribeOasSQLHistoryListResponseBody : Tea.TeaModel {
 
         public var remotePlans: Int64?
 
-        public var retCode4012Count: Double?
+        public var retCode4012Count: Int64?
 
-        public var retCode4013Count: Double?
+        public var retCode4013Count: Int64?
 
-        public var retCode5001Count: Double?
+        public var retCode5001Count: Int64?
 
-        public var retCode5024Count: Double?
+        public var retCode5024Count: Int64?
 
-        public var retCode5167Count: Double?
+        public var retCode5167Count: Int64?
 
-        public var retCode5217Count: Double?
+        public var retCode5217Count: Int64?
 
-        public var retCode6002Count: Double?
+        public var retCode6002Count: Int64?
 
         public var retryCount: Int64?
 
@@ -24099,19 +24099,19 @@ public class DescribeOasSQLHistoryListResponseBody : Tea.TeaModel {
 
         public override func fromMap(_ dict: [String: Any?]?) -> Void {
             guard let dict else { return }
-            if let value = dict["AvgAffectedRows"] as? Int64 {
+            if let value = dict["AvgAffectedRows"] as? Double {
                 self.avgAffectedRows = value
             }
             if let value = dict["AvgApplicationWaitTime"] as? Double {
                 self.avgApplicationWaitTime = value
             }
-            if let value = dict["AvgBlockCacheHit"] as? Int64 {
+            if let value = dict["AvgBlockCacheHit"] as? Double {
                 self.avgBlockCacheHit = value
             }
-            if let value = dict["AvgBlockIndexCacheHit"] as? Int64 {
+            if let value = dict["AvgBlockIndexCacheHit"] as? Double {
                 self.avgBlockIndexCacheHit = value
             }
-            if let value = dict["AvgBloomFilterCacheHit"] as? Int64 {
+            if let value = dict["AvgBloomFilterCacheHit"] as? Double {
                 self.avgBloomFilterCacheHit = value
             }
             if let value = dict["AvgConcurrencyWaitTime"] as? Double {
@@ -24126,7 +24126,7 @@ public class DescribeOasSQLHistoryListResponseBody : Tea.TeaModel {
             if let value = dict["AvgDecodeTime"] as? Double {
                 self.avgDecodeTime = value
             }
-            if let value = dict["AvgDiskReads"] as? Int64 {
+            if let value = dict["AvgDiskReads"] as? Double {
                 self.avgDiskReads = value
             }
             if let value = dict["AvgElapsedTime"] as? Double {
@@ -24144,10 +24144,10 @@ public class DescribeOasSQLHistoryListResponseBody : Tea.TeaModel {
             if let value = dict["AvgGetPlanTime"] as? Double {
                 self.avgGetPlanTime = value
             }
-            if let value = dict["AvgLogicalReads"] as? Int64 {
+            if let value = dict["AvgLogicalReads"] as? Double {
                 self.avgLogicalReads = value
             }
-            if let value = dict["AvgMemstoreReadRows"] as? Int64 {
+            if let value = dict["AvgMemstoreReadRows"] as? Double {
                 self.avgMemstoreReadRows = value
             }
             if let value = dict["AvgNetTime"] as? Double {
@@ -24162,19 +24162,19 @@ public class DescribeOasSQLHistoryListResponseBody : Tea.TeaModel {
             if let value = dict["AvgQueueTime"] as? Double {
                 self.avgQueueTime = value
             }
-            if let value = dict["AvgReturnRows"] as? Int64 {
+            if let value = dict["AvgReturnRows"] as? Double {
                 self.avgReturnRows = value
             }
-            if let value = dict["AvgRowCacheHit"] as? Int64 {
+            if let value = dict["AvgRowCacheHit"] as? Double {
                 self.avgRowCacheHit = value
             }
-            if let value = dict["AvgRpcCount"] as? Int64 {
+            if let value = dict["AvgRpcCount"] as? Double {
                 self.avgRpcCount = value
             }
             if let value = dict["AvgScheduleTime"] as? Double {
                 self.avgScheduleTime = value
             }
-            if let value = dict["AvgSsstoreReadRows"] as? Int64 {
+            if let value = dict["AvgSsstoreReadRows"] as? Double {
                 self.avgSsstoreReadRows = value
             }
             if let value = dict["AvgUsedWorkerCount"] as? Double {
@@ -24249,25 +24249,25 @@ public class DescribeOasSQLHistoryListResponseBody : Tea.TeaModel {
             if let value = dict["RemotePlans"] as? Int64 {
                 self.remotePlans = value
             }
-            if let value = dict["RetCode4012Count"] as? Double {
+            if let value = dict["RetCode4012Count"] as? Int64 {
                 self.retCode4012Count = value
             }
-            if let value = dict["RetCode4013Count"] as? Double {
+            if let value = dict["RetCode4013Count"] as? Int64 {
                 self.retCode4013Count = value
             }
-            if let value = dict["RetCode5001Count"] as? Double {
+            if let value = dict["RetCode5001Count"] as? Int64 {
                 self.retCode5001Count = value
             }
-            if let value = dict["RetCode5024Count"] as? Double {
+            if let value = dict["RetCode5024Count"] as? Int64 {
                 self.retCode5024Count = value
             }
-            if let value = dict["RetCode5167Count"] as? Double {
+            if let value = dict["RetCode5167Count"] as? Int64 {
                 self.retCode5167Count = value
             }
-            if let value = dict["RetCode5217Count"] as? Double {
+            if let value = dict["RetCode5217Count"] as? Int64 {
                 self.retCode5217Count = value
             }
-            if let value = dict["RetCode6002Count"] as? Double {
+            if let value = dict["RetCode6002Count"] as? Int64 {
                 self.retCode6002Count = value
             }
             if let value = dict["RetryCount"] as? Int64 {
@@ -25348,9 +25348,9 @@ public class DescribeOasSlowSQLListResponseBody : Tea.TeaModel {
 
             public var execPs: Double?
 
-            public var executions: Double?
+            public var executions: Int64?
 
-            public var failCount: Double?
+            public var failCount: Int64?
 
             public var failPercentage: Double?
 
@@ -25378,11 +25378,11 @@ public class DescribeOasSlowSQLListResponseBody : Tea.TeaModel {
 
             public var missPlanPercentage: Double?
 
-            public var missPlans: Double?
+            public var missPlans: Int64?
 
             public var remotePlanPercentage: Double?
 
-            public var remotePlans: Double?
+            public var remotePlans: Int64?
 
             public var retCode4012Count: Int64?
 
@@ -25398,7 +25398,7 @@ public class DescribeOasSlowSQLListResponseBody : Tea.TeaModel {
 
             public var retCode6002Count: Int64?
 
-            public var retryCount: Double?
+            public var retryCount: Int64?
 
             public var rpcCount: Double?
 
@@ -25786,10 +25786,10 @@ public class DescribeOasSlowSQLListResponseBody : Tea.TeaModel {
                 if let value = dict["ExecPs"] as? Double {
                     self.execPs = value
                 }
-                if let value = dict["Executions"] as? Double {
+                if let value = dict["Executions"] as? Int64 {
                     self.executions = value
                 }
-                if let value = dict["FailCount"] as? Double {
+                if let value = dict["FailCount"] as? Int64 {
                     self.failCount = value
                 }
                 if let value = dict["FailPercentage"] as? Double {
@@ -25831,13 +25831,13 @@ public class DescribeOasSlowSQLListResponseBody : Tea.TeaModel {
                 if let value = dict["MissPlanPercentage"] as? Double {
                     self.missPlanPercentage = value
                 }
-                if let value = dict["MissPlans"] as? Double {
+                if let value = dict["MissPlans"] as? Int64 {
                     self.missPlans = value
                 }
                 if let value = dict["RemotePlanPercentage"] as? Double {
                     self.remotePlanPercentage = value
                 }
-                if let value = dict["RemotePlans"] as? Double {
+                if let value = dict["RemotePlans"] as? Int64 {
                     self.remotePlans = value
                 }
                 if let value = dict["RetCode4012Count"] as? Int64 {
@@ -25861,7 +25861,7 @@ public class DescribeOasSlowSQLListResponseBody : Tea.TeaModel {
                 if let value = dict["RetCode6002Count"] as? Int64 {
                     self.retCode6002Count = value
                 }
-                if let value = dict["RetryCount"] as? Double {
+                if let value = dict["RetryCount"] as? Int64 {
                     self.retryCount = value
                 }
                 if let value = dict["RpcCount"] as? Double {
@@ -25987,9 +25987,9 @@ public class DescribeOasSlowSQLListResponseBody : Tea.TeaModel {
 
         public var execPs: Double?
 
-        public var executions: Double?
+        public var executions: Int64?
 
-        public var failCount: Double?
+        public var failCount: Int64?
 
         public var failPercentage: Double?
 
@@ -26017,27 +26017,27 @@ public class DescribeOasSlowSQLListResponseBody : Tea.TeaModel {
 
         public var missPlanPercentage: Double?
 
-        public var missPlans: Double?
+        public var missPlans: Int64?
 
         public var remotePlanPercentage: Double?
 
-        public var remotePlans: Double?
+        public var remotePlans: Int64?
 
         public var retCode4012Count: Int64?
 
         public var retCode4013Count: Int64?
 
-        public var retCode5001Count: Double?
+        public var retCode5001Count: Int64?
 
-        public var retCode5024Count: Double?
+        public var retCode5024Count: Int64?
 
-        public var retCode5167Count: Double?
+        public var retCode5167Count: Int64?
 
-        public var retCode5217Count: Double?
+        public var retCode5217Count: Int64?
 
-        public var retCode6002Count: Double?
+        public var retCode6002Count: Int64?
 
-        public var retryCount: Double?
+        public var retryCount: Int64?
 
         public var rpcCount: Double?
 
@@ -26440,10 +26440,10 @@ public class DescribeOasSlowSQLListResponseBody : Tea.TeaModel {
             if let value = dict["ExecPs"] as? Double {
                 self.execPs = value
             }
-            if let value = dict["Executions"] as? Double {
+            if let value = dict["Executions"] as? Int64 {
                 self.executions = value
             }
-            if let value = dict["FailCount"] as? Double {
+            if let value = dict["FailCount"] as? Int64 {
                 self.failCount = value
             }
             if let value = dict["FailPercentage"] as? Double {
@@ -26485,13 +26485,13 @@ public class DescribeOasSlowSQLListResponseBody : Tea.TeaModel {
             if let value = dict["MissPlanPercentage"] as? Double {
                 self.missPlanPercentage = value
             }
-            if let value = dict["MissPlans"] as? Double {
+            if let value = dict["MissPlans"] as? Int64 {
                 self.missPlans = value
             }
             if let value = dict["RemotePlanPercentage"] as? Double {
                 self.remotePlanPercentage = value
             }
-            if let value = dict["RemotePlans"] as? Double {
+            if let value = dict["RemotePlans"] as? Int64 {
                 self.remotePlans = value
             }
             if let value = dict["RetCode4012Count"] as? Int64 {
@@ -26500,22 +26500,22 @@ public class DescribeOasSlowSQLListResponseBody : Tea.TeaModel {
             if let value = dict["RetCode4013Count"] as? Int64 {
                 self.retCode4013Count = value
             }
-            if let value = dict["RetCode5001Count"] as? Double {
+            if let value = dict["RetCode5001Count"] as? Int64 {
                 self.retCode5001Count = value
             }
-            if let value = dict["RetCode5024Count"] as? Double {
+            if let value = dict["RetCode5024Count"] as? Int64 {
                 self.retCode5024Count = value
             }
-            if let value = dict["RetCode5167Count"] as? Double {
+            if let value = dict["RetCode5167Count"] as? Int64 {
                 self.retCode5167Count = value
             }
-            if let value = dict["RetCode5217Count"] as? Double {
+            if let value = dict["RetCode5217Count"] as? Int64 {
                 self.retCode5217Count = value
             }
-            if let value = dict["RetCode6002Count"] as? Double {
+            if let value = dict["RetCode6002Count"] as? Int64 {
                 self.retCode6002Count = value
             }
-            if let value = dict["RetryCount"] as? Double {
+            if let value = dict["RetryCount"] as? Int64 {
                 self.retryCount = value
             }
             if let value = dict["RpcCount"] as? Double {
@@ -26958,7 +26958,7 @@ public class DescribeOasTopSQLListResponseBody : Tea.TeaModel {
 
             public var executions: Int64?
 
-            public var failCount: Double?
+            public var failCount: Int64?
 
             public var failPercentage: Double?
 
@@ -26986,11 +26986,11 @@ public class DescribeOasTopSQLListResponseBody : Tea.TeaModel {
 
             public var missPlanPercentage: Double?
 
-            public var missPlans: Double?
+            public var missPlans: Int64?
 
             public var remotePlanPercentage: Double?
 
-            public var remotePlans: Double?
+            public var remotePlans: Int64?
 
             public var retCode4012Count: Int64?
 
@@ -27006,7 +27006,7 @@ public class DescribeOasTopSQLListResponseBody : Tea.TeaModel {
 
             public var retCode6002Count: Int64?
 
-            public var retryCount: Double?
+            public var retryCount: Int64?
 
             public var rpcCount: Double?
 
@@ -27403,7 +27403,7 @@ public class DescribeOasTopSQLListResponseBody : Tea.TeaModel {
                 if let value = dict["Executions"] as? Int64 {
                     self.executions = value
                 }
-                if let value = dict["FailCount"] as? Double {
+                if let value = dict["FailCount"] as? Int64 {
                     self.failCount = value
                 }
                 if let value = dict["FailPercentage"] as? Double {
@@ -27445,13 +27445,13 @@ public class DescribeOasTopSQLListResponseBody : Tea.TeaModel {
                 if let value = dict["MissPlanPercentage"] as? Double {
                     self.missPlanPercentage = value
                 }
-                if let value = dict["MissPlans"] as? Double {
+                if let value = dict["MissPlans"] as? Int64 {
                     self.missPlans = value
                 }
                 if let value = dict["RemotePlanPercentage"] as? Double {
                     self.remotePlanPercentage = value
                 }
-                if let value = dict["RemotePlans"] as? Double {
+                if let value = dict["RemotePlans"] as? Int64 {
                     self.remotePlans = value
                 }
                 if let value = dict["RetCode4012Count"] as? Int64 {
@@ -27475,7 +27475,7 @@ public class DescribeOasTopSQLListResponseBody : Tea.TeaModel {
                 if let value = dict["RetCode6002Count"] as? Int64 {
                     self.retCode6002Count = value
                 }
-                if let value = dict["RetryCount"] as? Double {
+                if let value = dict["RetryCount"] as? Int64 {
                     self.retryCount = value
                 }
                 if let value = dict["RpcCount"] as? Double {
@@ -27607,7 +27607,7 @@ public class DescribeOasTopSQLListResponseBody : Tea.TeaModel {
 
         public var executions: Int64?
 
-        public var failCount: Double?
+        public var failCount: Int64?
 
         public var failPercentage: Double?
 
@@ -27637,13 +27637,13 @@ public class DescribeOasTopSQLListResponseBody : Tea.TeaModel {
 
         public var missPlanPercentage: Double?
 
-        public var missPlans: Double?
+        public var missPlans: Int64?
 
-        public var obDbId: String?
+        public var obDbId: Int64?
 
         public var remotePlanPercentage: Double?
 
-        public var remotePlans: Double?
+        public var remotePlans: Int64?
 
         public var retCode4012Count: Int64?
 
@@ -27659,7 +27659,7 @@ public class DescribeOasTopSQLListResponseBody : Tea.TeaModel {
 
         public var retCode6002Count: Int64?
 
-        public var retryCount: Double?
+        public var retryCount: Int64?
 
         public var rpcCount: Double?
 
@@ -28086,7 +28086,7 @@ public class DescribeOasTopSQLListResponseBody : Tea.TeaModel {
             if let value = dict["Executions"] as? Int64 {
                 self.executions = value
             }
-            if let value = dict["FailCount"] as? Double {
+            if let value = dict["FailCount"] as? Int64 {
                 self.failCount = value
             }
             if let value = dict["FailPercentage"] as? Double {
@@ -28131,16 +28131,16 @@ public class DescribeOasTopSQLListResponseBody : Tea.TeaModel {
             if let value = dict["MissPlanPercentage"] as? Double {
                 self.missPlanPercentage = value
             }
-            if let value = dict["MissPlans"] as? Double {
+            if let value = dict["MissPlans"] as? Int64 {
                 self.missPlans = value
             }
-            if let value = dict["ObDbId"] as? String {
+            if let value = dict["ObDbId"] as? Int64 {
                 self.obDbId = value
             }
             if let value = dict["RemotePlanPercentage"] as? Double {
                 self.remotePlanPercentage = value
             }
-            if let value = dict["RemotePlans"] as? Double {
+            if let value = dict["RemotePlans"] as? Int64 {
                 self.remotePlans = value
             }
             if let value = dict["RetCode4012Count"] as? Int64 {
@@ -28164,7 +28164,7 @@ public class DescribeOasTopSQLListResponseBody : Tea.TeaModel {
             if let value = dict["RetCode6002Count"] as? Int64 {
                 self.retCode6002Count = value
             }
-            if let value = dict["RetryCount"] as? Double {
+            if let value = dict["RetryCount"] as? Int64 {
                 self.retryCount = value
             }
             if let value = dict["RpcCount"] as? Double {
@@ -29245,7 +29245,7 @@ public class DescribeProcessStatsCompositionResponseBody : Tea.TeaModel {
 
                     public var database: String?
 
-                    public var dynamicSql: String?
+                    public var dynamicSql: Bool?
 
                     public var executeTime: Int64?
 
@@ -29348,7 +29348,7 @@ public class DescribeProcessStatsCompositionResponseBody : Tea.TeaModel {
                         if let value = dict["Database"] as? String {
                             self.database = value
                         }
-                        if let value = dict["DynamicSql"] as? String {
+                        if let value = dict["DynamicSql"] as? Bool {
                             self.dynamicSql = value
                         }
                         if let value = dict["ExecuteTime"] as? Int64 {
@@ -29394,7 +29394,7 @@ public class DescribeProcessStatsCompositionResponseBody : Tea.TeaModel {
 
                 public var database: String?
 
-                public var dynamicSql: String?
+                public var dynamicSql: Bool?
 
                 public var executeTime: Int64?
 
@@ -29506,7 +29506,7 @@ public class DescribeProcessStatsCompositionResponseBody : Tea.TeaModel {
                     if let value = dict["Database"] as? String {
                         self.database = value
                     }
-                    if let value = dict["DynamicSql"] as? String {
+                    if let value = dict["DynamicSql"] as? Bool {
                         self.dynamicSql = value
                     }
                     if let value = dict["ExecuteTime"] as? Int64 {
@@ -29565,7 +29565,7 @@ public class DescribeProcessStatsCompositionResponseBody : Tea.TeaModel {
 
             public var database: String?
 
-            public var dynamicSql: String?
+            public var dynamicSql: Bool?
 
             public var executeTime: Int64?
 
@@ -29682,7 +29682,7 @@ public class DescribeProcessStatsCompositionResponseBody : Tea.TeaModel {
                 if let value = dict["Database"] as? String {
                     self.database = value
                 }
-                if let value = dict["DynamicSql"] as? String {
+                if let value = dict["DynamicSql"] as? Bool {
                     self.dynamicSql = value
                 }
                 if let value = dict["ExecuteTime"] as? Int64 {
@@ -39637,7 +39637,7 @@ public class DescribeSQLSamplesRequest : Tea.TeaModel {
 
 public class DescribeSQLSamplesResponseBody : Tea.TeaModel {
     public class Data : Tea.TeaModel {
-        public var affectedRows: Double?
+        public var affectedRows: Int64?
 
         public var applicationWaitTime: Double?
 
@@ -39649,7 +39649,7 @@ public class DescribeSQLSamplesResponseBody : Tea.TeaModel {
 
         public var clientIp: String?
 
-        public var clientPort: String?
+        public var clientPort: Int32?
 
         public var concurrencyWaitTime: Double?
 
@@ -39669,7 +39669,7 @@ public class DescribeSQLSamplesResponseBody : Tea.TeaModel {
 
         public var executorRpc: Bool?
 
-        public var expectedWorkerCount: Double?
+        public var expectedWorkerCount: Int64?
 
         public var fullSqlText: String?
 
@@ -39679,41 +39679,41 @@ public class DescribeSQLSamplesResponseBody : Tea.TeaModel {
 
         public var inner: Bool?
 
-        public var memstoreReadRows: Double?
+        public var memstoreReadRows: Int64?
 
         public var netTime: Double?
 
         public var netWaitTime: Double?
 
-        public var obDbId: Double?
+        public var obDbId: Int64?
 
-        public var obServerId: Double?
+        public var obServerId: Int64?
 
-        public var obUserId: Double?
+        public var obUserId: Int64?
 
         public var paramsValue: String?
 
-        public var partitionCount: Double?
+        public var partitionCount: Int64?
 
-        public var planId: Double?
+        public var planId: Int64?
 
         public var planType: String?
 
         public var queueTime: Double?
 
-        public var requestId: String?
+        public var requestId: Int64?
 
         public var requestTime: String?
 
-        public var retCode: Double?
+        public var retCode: Int32?
 
-        public var retryCount: Double?
+        public var retryCount: Int64?
 
-        public var returnRows: Double?
+        public var returnRows: Int64?
 
         public var rowCacheHit: Double?
 
-        public var rpcCount: Double?
+        public var rpcCount: Int64?
 
         public var scheduleTime: Double?
 
@@ -39723,7 +39723,7 @@ public class DescribeSQLSamplesResponseBody : Tea.TeaModel {
 
         public var sqlType: String?
 
-        public var ssstoreReadRows: Double?
+        public var ssstoreReadRows: Int64?
 
         public var statement: String?
 
@@ -39733,13 +39733,13 @@ public class DescribeSQLSamplesResponseBody : Tea.TeaModel {
 
         public var transHash: String?
 
-        public var usedWorkerCount: Double?
+        public var usedWorkerCount: Int64?
 
         public var userIoWaitTime: Double?
 
         public var userName: String?
 
-        public var waitCount: Double?
+        public var waitCount: Int64?
 
         public var waitEvent: String?
 
@@ -39926,7 +39926,7 @@ public class DescribeSQLSamplesResponseBody : Tea.TeaModel {
 
         public override func fromMap(_ dict: [String: Any?]?) -> Void {
             guard let dict else { return }
-            if let value = dict["AffectedRows"] as? Double {
+            if let value = dict["AffectedRows"] as? Int64 {
                 self.affectedRows = value
             }
             if let value = dict["ApplicationWaitTime"] as? Double {
@@ -39944,7 +39944,7 @@ public class DescribeSQLSamplesResponseBody : Tea.TeaModel {
             if let value = dict["ClientIp"] as? String {
                 self.clientIp = value
             }
-            if let value = dict["ClientPort"] as? String {
+            if let value = dict["ClientPort"] as? Int32 {
                 self.clientPort = value
             }
             if let value = dict["ConcurrencyWaitTime"] as? Double {
@@ -39974,7 +39974,7 @@ public class DescribeSQLSamplesResponseBody : Tea.TeaModel {
             if let value = dict["ExecutorRpc"] as? Bool {
                 self.executorRpc = value
             }
-            if let value = dict["ExpectedWorkerCount"] as? Double {
+            if let value = dict["ExpectedWorkerCount"] as? Int64 {
                 self.expectedWorkerCount = value
             }
             if let value = dict["FullSqlText"] as? String {
@@ -39989,7 +39989,7 @@ public class DescribeSQLSamplesResponseBody : Tea.TeaModel {
             if let value = dict["Inner"] as? Bool {
                 self.inner = value
             }
-            if let value = dict["MemstoreReadRows"] as? Double {
+            if let value = dict["MemstoreReadRows"] as? Int64 {
                 self.memstoreReadRows = value
             }
             if let value = dict["NetTime"] as? Double {
@@ -39998,22 +39998,22 @@ public class DescribeSQLSamplesResponseBody : Tea.TeaModel {
             if let value = dict["NetWaitTime"] as? Double {
                 self.netWaitTime = value
             }
-            if let value = dict["ObDbId"] as? Double {
+            if let value = dict["ObDbId"] as? Int64 {
                 self.obDbId = value
             }
-            if let value = dict["ObServerId"] as? Double {
+            if let value = dict["ObServerId"] as? Int64 {
                 self.obServerId = value
             }
-            if let value = dict["ObUserId"] as? Double {
+            if let value = dict["ObUserId"] as? Int64 {
                 self.obUserId = value
             }
             if let value = dict["ParamsValue"] as? String {
                 self.paramsValue = value
             }
-            if let value = dict["PartitionCount"] as? Double {
+            if let value = dict["PartitionCount"] as? Int64 {
                 self.partitionCount = value
             }
-            if let value = dict["PlanId"] as? Double {
+            if let value = dict["PlanId"] as? Int64 {
                 self.planId = value
             }
             if let value = dict["PlanType"] as? String {
@@ -40022,25 +40022,25 @@ public class DescribeSQLSamplesResponseBody : Tea.TeaModel {
             if let value = dict["QueueTime"] as? Double {
                 self.queueTime = value
             }
-            if let value = dict["RequestId"] as? String {
+            if let value = dict["RequestId"] as? Int64 {
                 self.requestId = value
             }
             if let value = dict["RequestTime"] as? String {
                 self.requestTime = value
             }
-            if let value = dict["RetCode"] as? Double {
+            if let value = dict["RetCode"] as? Int32 {
                 self.retCode = value
             }
-            if let value = dict["RetryCount"] as? Double {
+            if let value = dict["RetryCount"] as? Int64 {
                 self.retryCount = value
             }
-            if let value = dict["ReturnRows"] as? Double {
+            if let value = dict["ReturnRows"] as? Int64 {
                 self.returnRows = value
             }
             if let value = dict["RowCacheHit"] as? Double {
                 self.rowCacheHit = value
             }
-            if let value = dict["RpcCount"] as? Double {
+            if let value = dict["RpcCount"] as? Int64 {
                 self.rpcCount = value
             }
             if let value = dict["ScheduleTime"] as? Double {
@@ -40055,7 +40055,7 @@ public class DescribeSQLSamplesResponseBody : Tea.TeaModel {
             if let value = dict["SqlType"] as? String {
                 self.sqlType = value
             }
-            if let value = dict["SsstoreReadRows"] as? Double {
+            if let value = dict["SsstoreReadRows"] as? Int64 {
                 self.ssstoreReadRows = value
             }
             if let value = dict["Statement"] as? String {
@@ -40070,7 +40070,7 @@ public class DescribeSQLSamplesResponseBody : Tea.TeaModel {
             if let value = dict["TransHash"] as? String {
                 self.transHash = value
             }
-            if let value = dict["UsedWorkerCount"] as? Double {
+            if let value = dict["UsedWorkerCount"] as? Int64 {
                 self.usedWorkerCount = value
             }
             if let value = dict["UserIoWaitTime"] as? Double {
@@ -40079,7 +40079,7 @@ public class DescribeSQLSamplesResponseBody : Tea.TeaModel {
             if let value = dict["UserName"] as? String {
                 self.userName = value
             }
-            if let value = dict["WaitCount"] as? Double {
+            if let value = dict["WaitCount"] as? Int64 {
                 self.waitCount = value
             }
             if let value = dict["WaitEvent"] as? String {
@@ -40810,7 +40810,7 @@ public class DescribeSampleSqlRawTextsRequest : Tea.TeaModel {
 
     public var instanceId: String?
 
-    public var limit: String?
+    public var limit: Int32?
 
     public var sqlId: String?
 
@@ -40878,7 +40878,7 @@ public class DescribeSampleSqlRawTextsRequest : Tea.TeaModel {
         if let value = dict["InstanceId"] as? String {
             self.instanceId = value
         }
-        if let value = dict["Limit"] as? String {
+        if let value = dict["Limit"] as? Int32 {
             self.limit = value
         }
         if let value = dict["SqlId"] as? String {

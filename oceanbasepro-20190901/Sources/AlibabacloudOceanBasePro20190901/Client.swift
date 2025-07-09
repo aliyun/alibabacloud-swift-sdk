@@ -3495,7 +3495,7 @@ open class Client : AlibabacloudOpenApi.Client {
             body["InstanceId"] = request.instanceId ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.limit)) {
-            body["Limit"] = request.limit ?? "";
+            body["Limit"] = request.limit!;
         }
         if (!TeaUtils.Client.isUnset(request.sqlId)) {
             body["SqlId"] = request.sqlId ?? "";
