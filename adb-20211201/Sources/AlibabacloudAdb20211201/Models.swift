@@ -2898,6 +2898,54 @@ public class OpenStructMvBaseTableDetailModel : Tea.TeaModel {
 }
 
 public class OpenStructMvDetailModel : Tea.TeaModel {
+    public class BaseTableInfos : Tea.TeaModel {
+        public var baseTableIsMv: Bool?
+
+        public var schemaName: String?
+
+        public var tableName: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.baseTableIsMv != nil {
+                map["BaseTableIsMv"] = self.baseTableIsMv!
+            }
+            if self.schemaName != nil {
+                map["SchemaName"] = self.schemaName!
+            }
+            if self.tableName != nil {
+                map["TableName"] = self.tableName!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["BaseTableIsMv"] as? Bool {
+                self.baseTableIsMv = value
+            }
+            if let value = dict["SchemaName"] as? String {
+                self.schemaName = value
+            }
+            if let value = dict["TableName"] as? String {
+                self.tableName = value
+            }
+        }
+    }
+    public var baseTableInfos: [OpenStructMvDetailModel.BaseTableInfos]?
+
     public var baseTableNames: [[String]]?
 
     public var explicitHit: Int64?
@@ -2936,6 +2984,13 @@ public class OpenStructMvDetailModel : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.baseTableInfos != nil {
+            var tmp : [Any] = []
+            for k in self.baseTableInfos! {
+                tmp.append(k.toMap())
+            }
+            map["BaseTableInfos"] = tmp
+        }
         if self.baseTableNames != nil {
             map["BaseTableNames"] = self.baseTableNames!
         }
@@ -2977,6 +3032,19 @@ public class OpenStructMvDetailModel : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["BaseTableInfos"] as? [Any?] {
+            var tmp : [OpenStructMvDetailModel.BaseTableInfos] = []
+            for v in value {
+                if v != nil {
+                    var model = OpenStructMvDetailModel.BaseTableInfos()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.baseTableInfos = tmp
+        }
         if let value = dict["BaseTableNames"] as? [[String]] {
             self.baseTableNames = value
         }
@@ -3171,6 +3239,8 @@ public class OpenStructRefreshJobModel : Tea.TeaModel {
 
     public var resourceGroup: String?
 
+    public var scheduledStartTime: String?
+
     public var schemaName: String?
 
     public var startTime: String?
@@ -3209,6 +3279,9 @@ public class OpenStructRefreshJobModel : Tea.TeaModel {
         if self.resourceGroup != nil {
             map["ResourceGroup"] = self.resourceGroup!
         }
+        if self.scheduledStartTime != nil {
+            map["ScheduledStartTime"] = self.scheduledStartTime!
+        }
         if self.schemaName != nil {
             map["SchemaName"] = self.schemaName!
         }
@@ -3240,6 +3313,9 @@ public class OpenStructRefreshJobModel : Tea.TeaModel {
         }
         if let value = dict["ResourceGroup"] as? String {
             self.resourceGroup = value
+        }
+        if let value = dict["ScheduledStartTime"] as? String {
+            self.scheduledStartTime = value
         }
         if let value = dict["SchemaName"] as? String {
             self.schemaName = value
@@ -3386,6 +3462,10 @@ public class ApplyAdviceByIdRequest : Tea.TeaModel {
 
     public var adviceId: String?
 
+    public var applyType: String?
+
+    public var buildImmediately: Bool?
+
     public var DBClusterId: String?
 
     public var regionId: String?
@@ -3410,6 +3490,12 @@ public class ApplyAdviceByIdRequest : Tea.TeaModel {
         if self.adviceId != nil {
             map["AdviceId"] = self.adviceId!
         }
+        if self.applyType != nil {
+            map["ApplyType"] = self.applyType!
+        }
+        if self.buildImmediately != nil {
+            map["BuildImmediately"] = self.buildImmediately!
+        }
         if self.DBClusterId != nil {
             map["DBClusterId"] = self.DBClusterId!
         }
@@ -3426,6 +3512,12 @@ public class ApplyAdviceByIdRequest : Tea.TeaModel {
         }
         if let value = dict["AdviceId"] as? String {
             self.adviceId = value
+        }
+        if let value = dict["ApplyType"] as? String {
+            self.applyType = value
+        }
+        if let value = dict["BuildImmediately"] as? Bool {
+            self.buildImmediately = value
         }
         if let value = dict["DBClusterId"] as? String {
             self.DBClusterId = value
@@ -3634,6 +3726,10 @@ public class BatchApplyAdviceByIdListRequest : Tea.TeaModel {
 
     public var adviceIdList: String?
 
+    public var applyType: String?
+
+    public var buildImmediately: Bool?
+
     public var DBClusterId: String?
 
     public var regionId: String?
@@ -3658,6 +3754,12 @@ public class BatchApplyAdviceByIdListRequest : Tea.TeaModel {
         if self.adviceIdList != nil {
             map["AdviceIdList"] = self.adviceIdList!
         }
+        if self.applyType != nil {
+            map["ApplyType"] = self.applyType!
+        }
+        if self.buildImmediately != nil {
+            map["BuildImmediately"] = self.buildImmediately!
+        }
         if self.DBClusterId != nil {
             map["DBClusterId"] = self.DBClusterId!
         }
@@ -3674,6 +3776,12 @@ public class BatchApplyAdviceByIdListRequest : Tea.TeaModel {
         }
         if let value = dict["AdviceIdList"] as? String {
             self.adviceIdList = value
+        }
+        if let value = dict["ApplyType"] as? String {
+            self.applyType = value
+        }
+        if let value = dict["BuildImmediately"] as? Bool {
+            self.buildImmediately = value
         }
         if let value = dict["DBClusterId"] as? String {
             self.DBClusterId = value
@@ -14789,6 +14897,8 @@ public class DescribeAppliedAdvicesResponseBody : Tea.TeaModel {
 
         public var buildSQL: String?
 
+        public var indexFields: String?
+
         public var jobStatus: String?
 
         public var pageNumber: Int64?
@@ -14831,6 +14941,9 @@ public class DescribeAppliedAdvicesResponseBody : Tea.TeaModel {
             }
             if self.buildSQL != nil {
                 map["BuildSQL"] = self.buildSQL!
+            }
+            if self.indexFields != nil {
+                map["IndexFields"] = self.indexFields!
             }
             if self.jobStatus != nil {
                 map["JobStatus"] = self.jobStatus!
@@ -14875,6 +14988,9 @@ public class DescribeAppliedAdvicesResponseBody : Tea.TeaModel {
             }
             if let value = dict["BuildSQL"] as? String {
                 self.buildSQL = value
+            }
+            if let value = dict["IndexFields"] as? String {
+                self.indexFields = value
             }
             if let value = dict["JobStatus"] as? String {
                 self.jobStatus = value
@@ -18521,6 +18637,8 @@ public class DescribeAvailableAdvicesResponseBody : Tea.TeaModel {
 
         public var benefit: String?
 
+        public var indexFields: String?
+
         public var pageNumber: Int64?
 
         public var pageSize: Int64?
@@ -18561,6 +18679,9 @@ public class DescribeAvailableAdvicesResponseBody : Tea.TeaModel {
             if self.benefit != nil {
                 map["Benefit"] = self.benefit!
             }
+            if self.indexFields != nil {
+                map["IndexFields"] = self.indexFields!
+            }
             if self.pageNumber != nil {
                 map["PageNumber"] = self.pageNumber!
             }
@@ -18598,6 +18719,9 @@ public class DescribeAvailableAdvicesResponseBody : Tea.TeaModel {
             }
             if let value = dict["Benefit"] as? String {
                 self.benefit = value
+            }
+            if let value = dict["IndexFields"] as? String {
+                self.indexFields = value
             }
             if let value = dict["PageNumber"] as? Int64 {
                 self.pageNumber = value
