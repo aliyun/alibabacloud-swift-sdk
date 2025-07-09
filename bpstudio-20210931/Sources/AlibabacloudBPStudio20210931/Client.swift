@@ -862,8 +862,13 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func listTemplateWithOptions(_ request: ListTemplateRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ListTemplateResponse {
-        try TeaUtils.Client.validateModel(request)
+    public func listTemplateWithOptions(_ tmpReq: ListTemplateRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ListTemplateResponse {
+        try TeaUtils.Client.validateModel(tmpReq)
+        var request: ListTemplateShrinkRequest = ListTemplateShrinkRequest([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.tag)) {
+            request.tagShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.tag, "Tag", "json")
+        }
         var body: [String: Any] = [:]
         if (!TeaUtils.Client.isUnset(request.keyword)) {
             body["Keyword"] = request.keyword ?? "";
@@ -879,6 +884,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.resourceGroupId)) {
             body["ResourceGroupId"] = request.resourceGroupId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.tagShrink)) {
+            body["Tag"] = request.tagShrink ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.tagList)) {
             body["TagList"] = request.tagList!;

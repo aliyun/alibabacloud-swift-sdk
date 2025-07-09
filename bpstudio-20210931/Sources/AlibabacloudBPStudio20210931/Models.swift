@@ -5298,6 +5298,44 @@ public class ListTagResourcesResponse : Tea.TeaModel {
 }
 
 public class ListTemplateRequest : Tea.TeaModel {
+    public class Tag : Tea.TeaModel {
+        public var key: String?
+
+        public var value: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.key != nil {
+                map["Key"] = self.key!
+            }
+            if self.value != nil {
+                map["Value"] = self.value!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["Key"] as? String {
+                self.key = value
+            }
+            if let value = dict["Value"] as? String {
+                self.value = value
+            }
+        }
+    }
     public var keyword: String?
 
     public var maxResults: Int32?
@@ -5307,6 +5345,8 @@ public class ListTemplateRequest : Tea.TeaModel {
     public var orderType: Int64?
 
     public var resourceGroupId: String?
+
+    public var tag: [ListTemplateRequest.Tag]?
 
     public var tagList: Int32?
 
@@ -5341,6 +5381,13 @@ public class ListTemplateRequest : Tea.TeaModel {
         if self.resourceGroupId != nil {
             map["ResourceGroupId"] = self.resourceGroupId!
         }
+        if self.tag != nil {
+            var tmp : [Any] = []
+            for k in self.tag! {
+                tmp.append(k.toMap())
+            }
+            map["Tag"] = tmp
+        }
         if self.tagList != nil {
             map["TagList"] = self.tagList!
         }
@@ -5366,6 +5413,106 @@ public class ListTemplateRequest : Tea.TeaModel {
         }
         if let value = dict["ResourceGroupId"] as? String {
             self.resourceGroupId = value
+        }
+        if let value = dict["Tag"] as? [Any?] {
+            var tmp : [ListTemplateRequest.Tag] = []
+            for v in value {
+                if v != nil {
+                    var model = ListTemplateRequest.Tag()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.tag = tmp
+        }
+        if let value = dict["TagList"] as? Int32 {
+            self.tagList = value
+        }
+        if let value = dict["Type"] as? String {
+            self.type = value
+        }
+    }
+}
+
+public class ListTemplateShrinkRequest : Tea.TeaModel {
+    public var keyword: String?
+
+    public var maxResults: Int32?
+
+    public var nextToken: Int32?
+
+    public var orderType: Int64?
+
+    public var resourceGroupId: String?
+
+    public var tagShrink: String?
+
+    public var tagList: Int32?
+
+    public var type: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.keyword != nil {
+            map["Keyword"] = self.keyword!
+        }
+        if self.maxResults != nil {
+            map["MaxResults"] = self.maxResults!
+        }
+        if self.nextToken != nil {
+            map["NextToken"] = self.nextToken!
+        }
+        if self.orderType != nil {
+            map["OrderType"] = self.orderType!
+        }
+        if self.resourceGroupId != nil {
+            map["ResourceGroupId"] = self.resourceGroupId!
+        }
+        if self.tagShrink != nil {
+            map["Tag"] = self.tagShrink!
+        }
+        if self.tagList != nil {
+            map["TagList"] = self.tagList!
+        }
+        if self.type != nil {
+            map["Type"] = self.type!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["Keyword"] as? String {
+            self.keyword = value
+        }
+        if let value = dict["MaxResults"] as? Int32 {
+            self.maxResults = value
+        }
+        if let value = dict["NextToken"] as? Int32 {
+            self.nextToken = value
+        }
+        if let value = dict["OrderType"] as? Int64 {
+            self.orderType = value
+        }
+        if let value = dict["ResourceGroupId"] as? String {
+            self.resourceGroupId = value
+        }
+        if let value = dict["Tag"] as? String {
+            self.tagShrink = value
         }
         if let value = dict["TagList"] as? Int32 {
             self.tagList = value
