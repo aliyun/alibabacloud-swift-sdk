@@ -6,13 +6,13 @@ import AlibabaCloudOpenApiUtil
 import AlibabacloudEndpointUtil
 
 public class CreateLogoTaskRequest : Tea.TeaModel {
+    public var logoVersion: String?
+
     public var negativePrompt: String?
 
     public var parameters: String?
 
     public var prompt: String?
-
-    public var version: String?
 
     public override init() {
         super.init()
@@ -28,6 +28,9 @@ public class CreateLogoTaskRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.logoVersion != nil {
+            map["LogoVersion"] = self.logoVersion!
+        }
         if self.negativePrompt != nil {
             map["NegativePrompt"] = self.negativePrompt!
         }
@@ -37,14 +40,14 @@ public class CreateLogoTaskRequest : Tea.TeaModel {
         if self.prompt != nil {
             map["Prompt"] = self.prompt!
         }
-        if self.version != nil {
-            map["Version"] = self.version!
-        }
         return map
     }
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["LogoVersion"] as? String {
+            self.logoVersion = value
+        }
         if let value = dict["NegativePrompt"] as? String {
             self.negativePrompt = value
         }
@@ -53,9 +56,6 @@ public class CreateLogoTaskRequest : Tea.TeaModel {
         }
         if let value = dict["Prompt"] as? String {
             self.prompt = value
-        }
-        if let value = dict["Version"] as? String {
-            self.version = value
         }
     }
 }

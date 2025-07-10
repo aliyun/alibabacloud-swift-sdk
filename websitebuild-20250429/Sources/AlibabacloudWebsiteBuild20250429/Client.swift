@@ -27,6 +27,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func createLogoTaskWithOptions(_ request: CreateLogoTaskRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> CreateLogoTaskResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.logoVersion)) {
+            query["LogoVersion"] = request.logoVersion ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.negativePrompt)) {
             query["NegativePrompt"] = request.negativePrompt ?? "";
         }
@@ -35,9 +38,6 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.prompt)) {
             query["Prompt"] = request.prompt ?? "";
-        }
-        if (!TeaUtils.Client.isUnset(request.version)) {
-            query["Version"] = request.version ?? "";
         }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "query": AlibabaCloudOpenApiUtil.Client.query(query)
