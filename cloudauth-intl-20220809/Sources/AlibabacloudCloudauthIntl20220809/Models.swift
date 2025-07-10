@@ -1,9 +1,8 @@
 import Foundation
 import Tea
 import TeaUtils
-import AlibabaCloudOssSdk
-import AlibabacloudOpenPlatform20191219
-import AlibabaCloudOSSUtil
+import DarabonbaXML
+import AlibabaCloudCredentials
 import TeaFileForm
 import AlibabacloudOpenApi
 import AlibabaCloudOpenApiUtil
@@ -4202,6 +4201,10 @@ public class InitializeRequest : Tea.TeaModel {
 
     public var dateOfExpiry: String?
 
+    public var docName: String?
+
+    public var docNo: String?
+
     public var docPageConfig: [String]?
 
     public var docScanMode: String?
@@ -4299,6 +4302,12 @@ public class InitializeRequest : Tea.TeaModel {
         }
         if self.dateOfExpiry != nil {
             map["DateOfExpiry"] = self.dateOfExpiry!
+        }
+        if self.docName != nil {
+            map["DocName"] = self.docName!
+        }
+        if self.docNo != nil {
+            map["DocNo"] = self.docNo!
         }
         if self.docPageConfig != nil {
             map["DocPageConfig"] = self.docPageConfig!
@@ -4419,6 +4428,12 @@ public class InitializeRequest : Tea.TeaModel {
         if let value = dict["DateOfExpiry"] as? String {
             self.dateOfExpiry = value
         }
+        if let value = dict["DocName"] as? String {
+            self.docName = value
+        }
+        if let value = dict["DocNo"] as? String {
+            self.docNo = value
+        }
         if let value = dict["DocPageConfig"] as? [String] {
             self.docPageConfig = value
         }
@@ -4529,6 +4544,10 @@ public class InitializeShrinkRequest : Tea.TeaModel {
 
     public var dateOfExpiry: String?
 
+    public var docName: String?
+
+    public var docNo: String?
+
     public var docPageConfigShrink: String?
 
     public var docScanMode: String?
@@ -4626,6 +4645,12 @@ public class InitializeShrinkRequest : Tea.TeaModel {
         }
         if self.dateOfExpiry != nil {
             map["DateOfExpiry"] = self.dateOfExpiry!
+        }
+        if self.docName != nil {
+            map["DocName"] = self.docName!
+        }
+        if self.docNo != nil {
+            map["DocNo"] = self.docNo!
         }
         if self.docPageConfigShrink != nil {
             map["DocPageConfig"] = self.docPageConfigShrink!
@@ -4745,6 +4770,12 @@ public class InitializeShrinkRequest : Tea.TeaModel {
         }
         if let value = dict["DateOfExpiry"] as? String {
             self.dateOfExpiry = value
+        }
+        if let value = dict["DocName"] as? String {
+            self.docName = value
+        }
+        if let value = dict["DocNo"] as? String {
+            self.docNo = value
         }
         if let value = dict["DocPageConfig"] as? String {
             self.docPageConfigShrink = value
