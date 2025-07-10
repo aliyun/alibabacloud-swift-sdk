@@ -47501,6 +47501,8 @@ public class ListJobsResponseBody : Tea.TeaModel {
 
             public var failed: Int64?
 
+            public var imageUrl: String?
+
             public var lastChangeorderState: String?
 
             public var lastJobState: String?
@@ -47557,6 +47559,9 @@ public class ListJobsResponseBody : Tea.TeaModel {
                 }
                 if self.failed != nil {
                     map["Failed"] = self.failed!
+                }
+                if self.imageUrl != nil {
+                    map["ImageUrl"] = self.imageUrl!
                 }
                 if self.lastChangeorderState != nil {
                     map["LastChangeorderState"] = self.lastChangeorderState!
@@ -47620,6 +47625,9 @@ public class ListJobsResponseBody : Tea.TeaModel {
                 }
                 if let value = dict["Failed"] as? Int64 {
                     self.failed = value
+                }
+                if let value = dict["ImageUrl"] as? String {
+                    self.imageUrl = value
                 }
                 if let value = dict["LastChangeorderState"] as? String {
                     self.lastChangeorderState = value
