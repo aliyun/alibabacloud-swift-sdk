@@ -1720,6 +1720,92 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func createAlidingAssistantWithOptions(_ tmpReq: CreateAlidingAssistantRequest, _ tmpHeader: CreateAlidingAssistantHeaders, _ runtime: TeaUtils.RuntimeOptions) async throws -> CreateAlidingAssistantResponse {
+        try TeaUtils.Client.validateModel(tmpReq)
+        var request: CreateAlidingAssistantShrinkRequest = CreateAlidingAssistantShrinkRequest([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        var headers: CreateAlidingAssistantShrinkHeaders = CreateAlidingAssistantShrinkHeaders([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpHeader, headers)
+        if (!TeaUtils.Client.isUnset(tmpHeader.accountContext)) {
+            headers.accountContextShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpHeader.accountContext, "AccountContext", "json")
+        }
+        if (!TeaUtils.Client.isUnset(tmpReq.ext)) {
+            request.extShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.ext, "Ext", "json")
+        }
+        if (!TeaUtils.Client.isUnset(tmpReq.recommendPrompts)) {
+            request.recommendPromptsShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.recommendPrompts, "RecommendPrompts", "json")
+        }
+        if (!TeaUtils.Client.isUnset(tmpReq.tenantContext)) {
+            request.tenantContextShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.tenantContext, "TenantContext", "json")
+        }
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.appCode)) {
+            body["AppCode"] = request.appCode ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.description_)) {
+            body["Description"] = request.description_ ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.extShrink)) {
+            body["Ext"] = request.extShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.icon)) {
+            body["Icon"] = request.icon ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.instructions)) {
+            body["Instructions"] = request.instructions ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.name)) {
+            body["Name"] = request.name ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.recommendPromptsShrink)) {
+            body["RecommendPrompts"] = request.recommendPromptsShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.source)) {
+            body["Source"] = request.source!;
+        }
+        if (!TeaUtils.Client.isUnset(request.sourceIdentityId)) {
+            body["SourceIdentityId"] = request.sourceIdentityId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.tenantContextShrink)) {
+            body["TenantContext"] = request.tenantContextShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.welcomeContent)) {
+            body["WelcomeContent"] = request.welcomeContent ?? "";
+        }
+        var realHeaders: [String: String] = [:]
+        if (!TeaUtils.Client.isUnset(headers.commonHeaders)) {
+            realHeaders = headers.commonHeaders ?? [:]
+        }
+        if (!TeaUtils.Client.isUnset(headers.accountContextShrink)) {
+            realHeaders["AccountContext"] = TeaUtils.Client.toJSONString(headers.accountContextShrink);
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": realHeaders as! [String: String],
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "CreateAlidingAssistant",
+            "version": "2023-04-26",
+            "protocol": "HTTPS",
+            "pathname": "/dingtalk/v1/aiagent/createAlidingAssistant",
+            "method": "POST",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(CreateAlidingAssistantResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func createAlidingAssistant(_ request: CreateAlidingAssistantRequest) async throws -> CreateAlidingAssistantResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: CreateAlidingAssistantHeaders = CreateAlidingAssistantHeaders([:])
+        return try await createAlidingAssistantWithOptions(request as! CreateAlidingAssistantRequest, headers as! CreateAlidingAssistantHeaders, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func createDeliveryPlanWithOptions(_ tmpReq: CreateDeliveryPlanRequest, _ tmpHeader: CreateDeliveryPlanHeaders, _ runtime: TeaUtils.RuntimeOptions) async throws -> CreateDeliveryPlanResponse {
         try TeaUtils.Client.validateModel(tmpReq)
         var request: CreateDeliveryPlanShrinkRequest = CreateDeliveryPlanShrinkRequest([:])
@@ -3523,6 +3609,59 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func deleteAlidingAssistantWithOptions(_ tmpReq: DeleteAlidingAssistantRequest, _ tmpHeader: DeleteAlidingAssistantHeaders, _ runtime: TeaUtils.RuntimeOptions) async throws -> DeleteAlidingAssistantResponse {
+        try TeaUtils.Client.validateModel(tmpReq)
+        var request: DeleteAlidingAssistantShrinkRequest = DeleteAlidingAssistantShrinkRequest([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        var headers: DeleteAlidingAssistantShrinkHeaders = DeleteAlidingAssistantShrinkHeaders([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpHeader, headers)
+        if (!TeaUtils.Client.isUnset(tmpHeader.accountContext)) {
+            headers.accountContextShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpHeader.accountContext, "AccountContext", "json")
+        }
+        if (!TeaUtils.Client.isUnset(tmpReq.tenantContext)) {
+            request.tenantContextShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.tenantContext, "TenantContext", "json")
+        }
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.assistantId)) {
+            body["AssistantId"] = request.assistantId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.tenantContextShrink)) {
+            body["TenantContext"] = request.tenantContextShrink ?? "";
+        }
+        var realHeaders: [String: String] = [:]
+        if (!TeaUtils.Client.isUnset(headers.commonHeaders)) {
+            realHeaders = headers.commonHeaders ?? [:]
+        }
+        if (!TeaUtils.Client.isUnset(headers.accountContextShrink)) {
+            realHeaders["AccountContext"] = TeaUtils.Client.toJSONString(headers.accountContextShrink);
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": realHeaders as! [String: String],
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "DeleteAlidingAssistant",
+            "version": "2023-04-26",
+            "protocol": "HTTPS",
+            "pathname": "/dingtalk/v1/aiagent/deleteAlidingAssistant",
+            "method": "POST",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(DeleteAlidingAssistantResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func deleteAlidingAssistant(_ request: DeleteAlidingAssistantRequest) async throws -> DeleteAlidingAssistantResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: DeleteAlidingAssistantHeaders = DeleteAlidingAssistantHeaders([:])
+        return try await deleteAlidingAssistantWithOptions(request as! DeleteAlidingAssistantRequest, headers as! DeleteAlidingAssistantHeaders, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func deleteColumnsWithOptions(_ tmpReq: DeleteColumnsRequest, _ tmpHeader: DeleteColumnsHeaders, _ runtime: TeaUtils.RuntimeOptions) async throws -> DeleteColumnsResponse {
         try TeaUtils.Client.validateModel(tmpReq)
         var request: DeleteColumnsShrinkRequest = DeleteColumnsShrinkRequest([:])
@@ -5074,6 +5213,59 @@ open class Client : AlibabacloudOpenApi.Client {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         var headers: GetActivityListHeaders = GetActivityListHeaders([:])
         return try await getActivityListWithOptions(request as! GetActivityListRequest, headers as! GetActivityListHeaders, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getAlidingAssistantInfoWithOptions(_ tmpReq: GetAlidingAssistantInfoRequest, _ tmpHeader: GetAlidingAssistantInfoHeaders, _ runtime: TeaUtils.RuntimeOptions) async throws -> GetAlidingAssistantInfoResponse {
+        try TeaUtils.Client.validateModel(tmpReq)
+        var request: GetAlidingAssistantInfoShrinkRequest = GetAlidingAssistantInfoShrinkRequest([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        var headers: GetAlidingAssistantInfoShrinkHeaders = GetAlidingAssistantInfoShrinkHeaders([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpHeader, headers)
+        if (!TeaUtils.Client.isUnset(tmpHeader.accountContext)) {
+            headers.accountContextShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpHeader.accountContext, "AccountContext", "json")
+        }
+        if (!TeaUtils.Client.isUnset(tmpReq.tenantContext)) {
+            request.tenantContextShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.tenantContext, "TenantContext", "json")
+        }
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.assistantId)) {
+            body["AssistantId"] = request.assistantId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.tenantContextShrink)) {
+            body["TenantContext"] = request.tenantContextShrink ?? "";
+        }
+        var realHeaders: [String: String] = [:]
+        if (!TeaUtils.Client.isUnset(headers.commonHeaders)) {
+            realHeaders = headers.commonHeaders ?? [:]
+        }
+        if (!TeaUtils.Client.isUnset(headers.accountContextShrink)) {
+            realHeaders["AccountContext"] = TeaUtils.Client.toJSONString(headers.accountContextShrink);
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": realHeaders as! [String: String],
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "GetAlidingAssistantInfo",
+            "version": "2023-04-26",
+            "protocol": "HTTPS",
+            "pathname": "/dingtalk/v1/aiagent/getAlidingAssistantInfo",
+            "method": "POST",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(GetAlidingAssistantInfoResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getAlidingAssistantInfo(_ request: GetAlidingAssistantInfoRequest) async throws -> GetAlidingAssistantInfoResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: GetAlidingAssistantInfoHeaders = GetAlidingAssistantInfoHeaders([:])
+        return try await getAlidingAssistantInfoWithOptions(request as! GetAlidingAssistantInfoRequest, headers as! GetAlidingAssistantInfoHeaders, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -14309,6 +14501,95 @@ open class Client : AlibabacloudOpenApi.Client {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         var headers: UnsubscribeEventHeaders = UnsubscribeEventHeaders([:])
         return try await unsubscribeEventWithOptions(request as! UnsubscribeEventRequest, headers as! UnsubscribeEventHeaders, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func updateAlidingAssistantWithOptions(_ tmpReq: UpdateAlidingAssistantRequest, _ tmpHeader: UpdateAlidingAssistantHeaders, _ runtime: TeaUtils.RuntimeOptions) async throws -> UpdateAlidingAssistantResponse {
+        try TeaUtils.Client.validateModel(tmpReq)
+        var request: UpdateAlidingAssistantShrinkRequest = UpdateAlidingAssistantShrinkRequest([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        var headers: UpdateAlidingAssistantShrinkHeaders = UpdateAlidingAssistantShrinkHeaders([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpHeader, headers)
+        if (!TeaUtils.Client.isUnset(tmpHeader.accountContext)) {
+            headers.accountContextShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpHeader.accountContext, "AccountContext", "json")
+        }
+        if (!TeaUtils.Client.isUnset(tmpReq.ext)) {
+            request.extShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.ext, "Ext", "json")
+        }
+        if (!TeaUtils.Client.isUnset(tmpReq.feature)) {
+            request.featureShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.feature, "Feature", "json")
+        }
+        if (!TeaUtils.Client.isUnset(tmpReq.recommendPrompts)) {
+            request.recommendPromptsShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.recommendPrompts, "RecommendPrompts", "json")
+        }
+        if (!TeaUtils.Client.isUnset(tmpReq.tenantContext)) {
+            request.tenantContextShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.tenantContext, "TenantContext", "json")
+        }
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.assistantId)) {
+            body["AssistantId"] = request.assistantId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.description_)) {
+            body["Description"] = request.description_ ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.extShrink)) {
+            body["Ext"] = request.extShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.fallbackContent)) {
+            body["FallbackContent"] = request.fallbackContent ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.featureShrink)) {
+            body["Feature"] = request.featureShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.icon)) {
+            body["Icon"] = request.icon ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.instructions)) {
+            body["Instructions"] = request.instructions ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.name)) {
+            body["Name"] = request.name ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.recommendPromptsShrink)) {
+            body["RecommendPrompts"] = request.recommendPromptsShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.tenantContextShrink)) {
+            body["TenantContext"] = request.tenantContextShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.welcomeContent)) {
+            body["WelcomeContent"] = request.welcomeContent ?? "";
+        }
+        var realHeaders: [String: String] = [:]
+        if (!TeaUtils.Client.isUnset(headers.commonHeaders)) {
+            realHeaders = headers.commonHeaders ?? [:]
+        }
+        if (!TeaUtils.Client.isUnset(headers.accountContextShrink)) {
+            realHeaders["AccountContext"] = TeaUtils.Client.toJSONString(headers.accountContextShrink);
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": realHeaders as! [String: String],
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "UpdateAlidingAssistant",
+            "version": "2023-04-26",
+            "protocol": "HTTPS",
+            "pathname": "/dingtalk/v1/aiagent/updateAlidingAssistant",
+            "method": "POST",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(UpdateAlidingAssistantResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func updateAlidingAssistant(_ request: UpdateAlidingAssistantRequest) async throws -> UpdateAlidingAssistantResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: UpdateAlidingAssistantHeaders = UpdateAlidingAssistantHeaders([:])
+        return try await updateAlidingAssistantWithOptions(request as! UpdateAlidingAssistantRequest, headers as! UpdateAlidingAssistantHeaders, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
