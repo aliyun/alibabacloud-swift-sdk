@@ -125,6 +125,12 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.adviceId)) {
             query["AdviceId"] = request.adviceId ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.applyType)) {
+            query["ApplyType"] = request.applyType ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.buildImmediately)) {
+            query["BuildImmediately"] = request.buildImmediately!;
+        }
         if (!TeaUtils.Client.isUnset(request.DBClusterId)) {
             query["DBClusterId"] = request.DBClusterId ?? "";
         }
@@ -207,6 +213,12 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.adviceIdList)) {
             query["AdviceIdList"] = request.adviceIdList ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.applyType)) {
+            query["ApplyType"] = request.applyType ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.buildImmediately)) {
+            query["BuildImmediately"] = request.buildImmediately!;
         }
         if (!TeaUtils.Client.isUnset(request.DBClusterId)) {
             query["DBClusterId"] = request.DBClusterId ?? "";

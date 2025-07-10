@@ -17,7 +17,7 @@ English | [简体中文](README-CN.md)
 To integrate `AlibabacloudAdb20190315` into your Xcode project using [Carthage](https://github.com/Carthage/Carthage), specify it in your `Cartfile`:
 
 ```ogdl
-github "alibabacloud-sdk-swift/adb-20190315" "5.0.5"
+github "alibabacloud-sdk-swift/adb-20190315" "5.0.6"
 ```
 
 ### Swift Package Manager
@@ -26,7 +26,7 @@ To integrate `AlibabacloudAdb20190315` into your Xcode project using [Swift Pack
 
 ```swift
 dependencies: [
-    .package(url: "https://github.com/alibabacloud-sdk-swift/adb-20190315.git", from: "5.0.5")
+    .package(url: "https://github.com/alibabacloud-sdk-swift/adb-20190315.git", from: "5.0.6")
 ]
 ```
 
