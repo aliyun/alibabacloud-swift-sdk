@@ -1,9 +1,8 @@
 import Foundation
 import Tea
 import TeaUtils
-import AlibabaCloudOssSdk
-import AlibabacloudOpenPlatform20191219
-import AlibabaCloudOSSUtil
+import DarabonbaXML
+import AlibabaCloudCredentials
 import TeaFileForm
 import AlibabacloudOpenApi
 import AlibabaCloudOpenApiUtil
@@ -12875,6 +12874,8 @@ public class CreateRoutineRelatedRecordResponse : Tea.TeaModel {
 public class CreateRoutineRouteRequest : Tea.TeaModel {
     public var bypass: String?
 
+    public var fallback: String?
+
     public var routeEnable: String?
 
     public var routeName: String?
@@ -12904,6 +12905,9 @@ public class CreateRoutineRouteRequest : Tea.TeaModel {
         if self.bypass != nil {
             map["Bypass"] = self.bypass!
         }
+        if self.fallback != nil {
+            map["Fallback"] = self.fallback!
+        }
         if self.routeEnable != nil {
             map["RouteEnable"] = self.routeEnable!
         }
@@ -12929,6 +12933,9 @@ public class CreateRoutineRouteRequest : Tea.TeaModel {
         guard let dict else { return }
         if let value = dict["Bypass"] as? String {
             self.bypass = value
+        }
+        if let value = dict["Fallback"] as? String {
+            self.fallback = value
         }
         if let value = dict["RouteEnable"] as? String {
             self.routeEnable = value
@@ -26970,6 +26977,290 @@ public class DescribeSiteTopDataResponse : Tea.TeaModel {
     }
 }
 
+public class DescribeUrlObservationDataRequest : Tea.TeaModel {
+    public var clientPlatform: String?
+
+    public var endTime: String?
+
+    public var metric: String?
+
+    public var siteId: String?
+
+    public var startTime: String?
+
+    public var url: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.clientPlatform != nil {
+            map["ClientPlatform"] = self.clientPlatform!
+        }
+        if self.endTime != nil {
+            map["EndTime"] = self.endTime!
+        }
+        if self.metric != nil {
+            map["Metric"] = self.metric!
+        }
+        if self.siteId != nil {
+            map["SiteId"] = self.siteId!
+        }
+        if self.startTime != nil {
+            map["StartTime"] = self.startTime!
+        }
+        if self.url != nil {
+            map["Url"] = self.url!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["ClientPlatform"] as? String {
+            self.clientPlatform = value
+        }
+        if let value = dict["EndTime"] as? String {
+            self.endTime = value
+        }
+        if let value = dict["Metric"] as? String {
+            self.metric = value
+        }
+        if let value = dict["SiteId"] as? String {
+            self.siteId = value
+        }
+        if let value = dict["StartTime"] as? String {
+            self.startTime = value
+        }
+        if let value = dict["Url"] as? String {
+            self.url = value
+        }
+    }
+}
+
+public class DescribeUrlObservationDataResponseBody : Tea.TeaModel {
+    public class UrlDetailData : Tea.TeaModel {
+        public var CLS: Double?
+
+        public var clientPlatform: String?
+
+        public var country: String?
+
+        public var FCP: Double?
+
+        public var FID: Double?
+
+        public var INP: Double?
+
+        public var LCP: Double?
+
+        public var TTFB: Double?
+
+        public var url: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.CLS != nil {
+                map["CLS"] = self.CLS!
+            }
+            if self.clientPlatform != nil {
+                map["ClientPlatform"] = self.clientPlatform!
+            }
+            if self.country != nil {
+                map["Country"] = self.country!
+            }
+            if self.FCP != nil {
+                map["FCP"] = self.FCP!
+            }
+            if self.FID != nil {
+                map["FID"] = self.FID!
+            }
+            if self.INP != nil {
+                map["INP"] = self.INP!
+            }
+            if self.LCP != nil {
+                map["LCP"] = self.LCP!
+            }
+            if self.TTFB != nil {
+                map["TTFB"] = self.TTFB!
+            }
+            if self.url != nil {
+                map["Url"] = self.url!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["CLS"] as? Double {
+                self.CLS = value
+            }
+            if let value = dict["ClientPlatform"] as? String {
+                self.clientPlatform = value
+            }
+            if let value = dict["Country"] as? String {
+                self.country = value
+            }
+            if let value = dict["FCP"] as? Double {
+                self.FCP = value
+            }
+            if let value = dict["FID"] as? Double {
+                self.FID = value
+            }
+            if let value = dict["INP"] as? Double {
+                self.INP = value
+            }
+            if let value = dict["LCP"] as? Double {
+                self.LCP = value
+            }
+            if let value = dict["TTFB"] as? Double {
+                self.TTFB = value
+            }
+            if let value = dict["Url"] as? String {
+                self.url = value
+            }
+        }
+    }
+    public var endTime: String?
+
+    public var requestId: String?
+
+    public var startTime: String?
+
+    public var urlDetailData: [DescribeUrlObservationDataResponseBody.UrlDetailData]?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.endTime != nil {
+            map["EndTime"] = self.endTime!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.startTime != nil {
+            map["StartTime"] = self.startTime!
+        }
+        if self.urlDetailData != nil {
+            var tmp : [Any] = []
+            for k in self.urlDetailData! {
+                tmp.append(k.toMap())
+            }
+            map["UrlDetailData"] = tmp
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["EndTime"] as? String {
+            self.endTime = value
+        }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+        if let value = dict["StartTime"] as? String {
+            self.startTime = value
+        }
+        if let value = dict["UrlDetailData"] as? [Any?] {
+            var tmp : [DescribeUrlObservationDataResponseBody.UrlDetailData] = []
+            for v in value {
+                if v != nil {
+                    var model = DescribeUrlObservationDataResponseBody.UrlDetailData()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.urlDetailData = tmp
+        }
+    }
+}
+
+public class DescribeUrlObservationDataResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: DescribeUrlObservationDataResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = DescribeUrlObservationDataResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
 public class DisableCustomScenePolicyRequest : Tea.TeaModel {
     public var policyId: Int64?
 
@@ -30783,6 +31074,10 @@ public class GetEdgeContainerAppResourceStatusRequest : Tea.TeaModel {
 
 public class GetEdgeContainerAppResourceStatusResponseBody : Tea.TeaModel {
     public class Regions : Tea.TeaModel {
+        public var isOffline: Bool?
+
+        public var isStaging: Bool?
+
         public var isp: String?
 
         public var ready: Int32?
@@ -30805,6 +31100,12 @@ public class GetEdgeContainerAppResourceStatusResponseBody : Tea.TeaModel {
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
+            if self.isOffline != nil {
+                map["IsOffline"] = self.isOffline!
+            }
+            if self.isStaging != nil {
+                map["IsStaging"] = self.isStaging!
+            }
             if self.isp != nil {
                 map["Isp"] = self.isp!
             }
@@ -30822,6 +31123,12 @@ public class GetEdgeContainerAppResourceStatusResponseBody : Tea.TeaModel {
 
         public override func fromMap(_ dict: [String: Any?]?) -> Void {
             guard let dict else { return }
+            if let value = dict["IsOffline"] as? Bool {
+                self.isOffline = value
+            }
+            if let value = dict["IsStaging"] as? Bool {
+                self.isStaging = value
+            }
             if let value = dict["Isp"] as? String {
                 self.isp = value
             }
@@ -39252,6 +39559,8 @@ public class GetRoutineRouteResponseBody : Tea.TeaModel {
 
     public var configType: String?
 
+    public var fallback: String?
+
     public var mode: String?
 
     public var requestId: String?
@@ -39291,6 +39600,9 @@ public class GetRoutineRouteResponseBody : Tea.TeaModel {
         if self.configType != nil {
             map["ConfigType"] = self.configType!
         }
+        if self.fallback != nil {
+            map["Fallback"] = self.fallback!
+        }
         if self.mode != nil {
             map["Mode"] = self.mode!
         }
@@ -39328,6 +39640,9 @@ public class GetRoutineRouteResponseBody : Tea.TeaModel {
         }
         if let value = dict["ConfigType"] as? String {
             self.configType = value
+        }
+        if let value = dict["Fallback"] as? String {
+            self.fallback = value
         }
         if let value = dict["Mode"] as? String {
             self.mode = value
@@ -57558,6 +57873,8 @@ public class ListRoutineRoutesResponseBody : Tea.TeaModel {
 
         public var configType: String?
 
+        public var fallback: String?
+
         public var mode: String?
 
         public var routeEnable: String?
@@ -57599,6 +57916,9 @@ public class ListRoutineRoutesResponseBody : Tea.TeaModel {
             if self.configType != nil {
                 map["ConfigType"] = self.configType!
             }
+            if self.fallback != nil {
+                map["Fallback"] = self.fallback!
+            }
             if self.mode != nil {
                 map["Mode"] = self.mode!
             }
@@ -57639,6 +57959,9 @@ public class ListRoutineRoutesResponseBody : Tea.TeaModel {
             }
             if let value = dict["ConfigType"] as? String {
                 self.configType = value
+            }
+            if let value = dict["Fallback"] as? String {
+                self.fallback = value
             }
             if let value = dict["Mode"] as? String {
                 self.mode = value
@@ -58670,6 +58993,8 @@ public class ListSiteRoutesResponseBody : Tea.TeaModel {
 
         public var configType: String?
 
+        public var fallback: String?
+
         public var mode: String?
 
         public var routeEnable: String?
@@ -58707,6 +59032,9 @@ public class ListSiteRoutesResponseBody : Tea.TeaModel {
             if self.configType != nil {
                 map["ConfigType"] = self.configType!
             }
+            if self.fallback != nil {
+                map["Fallback"] = self.fallback!
+            }
             if self.mode != nil {
                 map["Mode"] = self.mode!
             }
@@ -58741,6 +59069,9 @@ public class ListSiteRoutesResponseBody : Tea.TeaModel {
             }
             if let value = dict["ConfigType"] as? String {
                 self.configType = value
+            }
+            if let value = dict["Fallback"] as? String {
+                self.fallback = value
             }
             if let value = dict["Mode"] as? String {
                 self.mode = value
@@ -75164,6 +75495,8 @@ public class UpdateRoutineRouteRequest : Tea.TeaModel {
 
     public var configId: Int64?
 
+    public var fallback: String?
+
     public var routeEnable: String?
 
     public var routeName: String?
@@ -75196,6 +75529,9 @@ public class UpdateRoutineRouteRequest : Tea.TeaModel {
         if self.configId != nil {
             map["ConfigId"] = self.configId!
         }
+        if self.fallback != nil {
+            map["Fallback"] = self.fallback!
+        }
         if self.routeEnable != nil {
             map["RouteEnable"] = self.routeEnable!
         }
@@ -75224,6 +75560,9 @@ public class UpdateRoutineRouteRequest : Tea.TeaModel {
         }
         if let value = dict["ConfigId"] as? Int64 {
             self.configId = value
+        }
+        if let value = dict["Fallback"] as? String {
+            self.fallback = value
         }
         if let value = dict["RouteEnable"] as? String {
             self.routeEnable = value
