@@ -1393,6 +1393,8 @@ public class CreateServiceInstanceRequest : Tea.TeaModel {
 
     public var serviceId: String?
 
+    public var serviceInstanceId: String?
+
     public var serviceVersion: String?
 
     public var specificationCode: String?
@@ -1459,6 +1461,9 @@ public class CreateServiceInstanceRequest : Tea.TeaModel {
         }
         if self.serviceId != nil {
             map["ServiceId"] = self.serviceId!
+        }
+        if self.serviceInstanceId != nil {
+            map["ServiceInstanceId"] = self.serviceInstanceId!
         }
         if self.serviceVersion != nil {
             map["ServiceVersion"] = self.serviceVersion!
@@ -1529,6 +1534,9 @@ public class CreateServiceInstanceRequest : Tea.TeaModel {
         }
         if let value = dict["ServiceId"] as? String {
             self.serviceId = value
+        }
+        if let value = dict["ServiceInstanceId"] as? String {
+            self.serviceInstanceId = value
         }
         if let value = dict["ServiceVersion"] as? String {
             self.serviceVersion = value
@@ -1750,6 +1758,8 @@ public class CreateServiceInstanceShrinkRequest : Tea.TeaModel {
 
     public var serviceId: String?
 
+    public var serviceInstanceId: String?
+
     public var serviceVersion: String?
 
     public var specificationCode: String?
@@ -1816,6 +1826,9 @@ public class CreateServiceInstanceShrinkRequest : Tea.TeaModel {
         }
         if self.serviceId != nil {
             map["ServiceId"] = self.serviceId!
+        }
+        if self.serviceInstanceId != nil {
+            map["ServiceInstanceId"] = self.serviceInstanceId!
         }
         if self.serviceVersion != nil {
             map["ServiceVersion"] = self.serviceVersion!
@@ -1886,6 +1899,9 @@ public class CreateServiceInstanceShrinkRequest : Tea.TeaModel {
         }
         if let value = dict["ServiceId"] as? String {
             self.serviceId = value
+        }
+        if let value = dict["ServiceInstanceId"] as? String {
+            self.serviceInstanceId = value
         }
         if let value = dict["ServiceVersion"] as? String {
             self.serviceVersion = value
@@ -5168,6 +5184,8 @@ public class GetServiceInstanceResponseBody : Tea.TeaModel {
 
     public var supplierUid: Int64?
 
+    public var supportTrialToPrivate: Bool?
+
     public var tags: [GetServiceInstanceResponseBody.Tags]?
 
     public var templateName: String?
@@ -5281,6 +5299,9 @@ public class GetServiceInstanceResponseBody : Tea.TeaModel {
         }
         if self.supplierUid != nil {
             map["SupplierUid"] = self.supplierUid!
+        }
+        if self.supportTrialToPrivate != nil {
+            map["SupportTrialToPrivate"] = self.supportTrialToPrivate!
         }
         if self.tags != nil {
             var tmp : [Any] = []
@@ -5396,6 +5417,9 @@ public class GetServiceInstanceResponseBody : Tea.TeaModel {
         }
         if let value = dict["SupplierUid"] as? Int64 {
             self.supplierUid = value
+        }
+        if let value = dict["SupportTrialToPrivate"] as? Bool {
+            self.supportTrialToPrivate = value
         }
         if let value = dict["Tags"] as? [Any?] {
             var tmp : [GetServiceInstanceResponseBody.Tags] = []
@@ -9341,6 +9365,8 @@ public class ListServiceInstancesResponseBody : Tea.TeaModel {
 
         public var statusDetail: String?
 
+        public var supportTrialToPrivate: Bool?
+
         public var tags: [ListServiceInstancesResponseBody.ServiceInstances.Tags]?
 
         public var templateName: String?
@@ -9428,6 +9454,9 @@ public class ListServiceInstancesResponseBody : Tea.TeaModel {
             if self.statusDetail != nil {
                 map["StatusDetail"] = self.statusDetail!
             }
+            if self.supportTrialToPrivate != nil {
+                map["SupportTrialToPrivate"] = self.supportTrialToPrivate!
+            }
             if self.tags != nil {
                 var tmp : [Any] = []
                 for k in self.tags! {
@@ -9513,6 +9542,9 @@ public class ListServiceInstancesResponseBody : Tea.TeaModel {
             }
             if let value = dict["StatusDetail"] as? String {
                 self.statusDetail = value
+            }
+            if let value = dict["SupportTrialToPrivate"] as? Bool {
+                self.supportTrialToPrivate = value
             }
             if let value = dict["Tags"] as? [Any?] {
                 var tmp : [ListServiceInstancesResponseBody.ServiceInstances.Tags] = []
