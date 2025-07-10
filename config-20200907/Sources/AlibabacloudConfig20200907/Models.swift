@@ -25118,6 +25118,8 @@ public class ListAggregateConfigRuleEvaluationResultsResponseBody : Tea.TeaModel
 
                     public var regionId: String?
 
+                    public var resourceGroupId: String?
+
                     public var resourceId: String?
 
                     public var resourceName: String?
@@ -25158,6 +25160,9 @@ public class ListAggregateConfigRuleEvaluationResultsResponseBody : Tea.TeaModel
                         if self.regionId != nil {
                             map["RegionId"] = self.regionId!
                         }
+                        if self.resourceGroupId != nil {
+                            map["ResourceGroupId"] = self.resourceGroupId!
+                        }
                         if self.resourceId != nil {
                             map["ResourceId"] = self.resourceId!
                         }
@@ -25192,6 +25197,9 @@ public class ListAggregateConfigRuleEvaluationResultsResponseBody : Tea.TeaModel
                         }
                         if let value = dict["RegionId"] as? String {
                             self.regionId = value
+                        }
+                        if let value = dict["ResourceGroupId"] as? String {
+                            self.resourceGroupId = value
                         }
                         if let value = dict["ResourceId"] as? String {
                             self.resourceId = value
@@ -30172,6 +30180,8 @@ public class ListConfigRuleEvaluationResultsResponseBody : Tea.TeaModel {
 
                     public var regionId: String?
 
+                    public var resourceGroupId: String?
+
                     public var resourceId: String?
 
                     public var resourceName: String?
@@ -30212,6 +30222,9 @@ public class ListConfigRuleEvaluationResultsResponseBody : Tea.TeaModel {
                         if self.regionId != nil {
                             map["RegionId"] = self.regionId!
                         }
+                        if self.resourceGroupId != nil {
+                            map["ResourceGroupId"] = self.resourceGroupId!
+                        }
                         if self.resourceId != nil {
                             map["ResourceId"] = self.resourceId!
                         }
@@ -30246,6 +30259,9 @@ public class ListConfigRuleEvaluationResultsResponseBody : Tea.TeaModel {
                         }
                         if let value = dict["RegionId"] as? String {
                             self.regionId = value
+                        }
+                        if let value = dict["ResourceGroupId"] as? String {
+                            self.resourceGroupId = value
                         }
                         if let value = dict["ResourceId"] as? String {
                             self.resourceId = value
