@@ -1453,8 +1453,13 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func renewAppInstanceGroupWithOptions(_ request: RenewAppInstanceGroupRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> RenewAppInstanceGroupResponse {
-        try TeaUtils.Client.validateModel(request)
+    public func renewAppInstanceGroupWithOptions(_ tmpReq: RenewAppInstanceGroupRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> RenewAppInstanceGroupResponse {
+        try TeaUtils.Client.validateModel(tmpReq)
+        var request: RenewAppInstanceGroupShrinkRequest = RenewAppInstanceGroupShrinkRequest([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.renewNodes)) {
+            request.renewNodesShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.renewNodes, "RenewNodes", "json")
+        }
         var query: [String: Any] = [:]
         if (!TeaUtils.Client.isUnset(request.appInstanceGroupId)) {
             query["AppInstanceGroupId"] = request.appInstanceGroupId ?? "";
@@ -1473,6 +1478,15 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.promotionId)) {
             query["PromotionId"] = request.promotionId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.renewAmount)) {
+            query["RenewAmount"] = request.renewAmount!;
+        }
+        if (!TeaUtils.Client.isUnset(request.renewMode)) {
+            query["RenewMode"] = request.renewMode ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.renewNodesShrink)) {
+            query["RenewNodes"] = request.renewNodesShrink ?? "";
         }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "query": AlibabaCloudOpenApiUtil.Client.query(query)

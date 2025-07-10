@@ -10660,6 +10660,12 @@ public class RenewAppInstanceGroupRequest : Tea.TeaModel {
 
     public var promotionId: String?
 
+    public var renewAmount: Int32?
+
+    public var renewMode: String?
+
+    public var renewNodes: [String]?
+
     public override init() {
         super.init()
     }
@@ -10692,6 +10698,15 @@ public class RenewAppInstanceGroupRequest : Tea.TeaModel {
         if self.promotionId != nil {
             map["PromotionId"] = self.promotionId!
         }
+        if self.renewAmount != nil {
+            map["RenewAmount"] = self.renewAmount!
+        }
+        if self.renewMode != nil {
+            map["RenewMode"] = self.renewMode!
+        }
+        if self.renewNodes != nil {
+            map["RenewNodes"] = self.renewNodes!
+        }
         return map
     }
 
@@ -10714,6 +10729,110 @@ public class RenewAppInstanceGroupRequest : Tea.TeaModel {
         }
         if let value = dict["PromotionId"] as? String {
             self.promotionId = value
+        }
+        if let value = dict["RenewAmount"] as? Int32 {
+            self.renewAmount = value
+        }
+        if let value = dict["RenewMode"] as? String {
+            self.renewMode = value
+        }
+        if let value = dict["RenewNodes"] as? [String] {
+            self.renewNodes = value
+        }
+    }
+}
+
+public class RenewAppInstanceGroupShrinkRequest : Tea.TeaModel {
+    public var appInstanceGroupId: String?
+
+    public var autoPay: Bool?
+
+    public var period: Int32?
+
+    public var periodUnit: String?
+
+    public var productType: String?
+
+    public var promotionId: String?
+
+    public var renewAmount: Int32?
+
+    public var renewMode: String?
+
+    public var renewNodesShrink: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.appInstanceGroupId != nil {
+            map["AppInstanceGroupId"] = self.appInstanceGroupId!
+        }
+        if self.autoPay != nil {
+            map["AutoPay"] = self.autoPay!
+        }
+        if self.period != nil {
+            map["Period"] = self.period!
+        }
+        if self.periodUnit != nil {
+            map["PeriodUnit"] = self.periodUnit!
+        }
+        if self.productType != nil {
+            map["ProductType"] = self.productType!
+        }
+        if self.promotionId != nil {
+            map["PromotionId"] = self.promotionId!
+        }
+        if self.renewAmount != nil {
+            map["RenewAmount"] = self.renewAmount!
+        }
+        if self.renewMode != nil {
+            map["RenewMode"] = self.renewMode!
+        }
+        if self.renewNodesShrink != nil {
+            map["RenewNodes"] = self.renewNodesShrink!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["AppInstanceGroupId"] as? String {
+            self.appInstanceGroupId = value
+        }
+        if let value = dict["AutoPay"] as? Bool {
+            self.autoPay = value
+        }
+        if let value = dict["Period"] as? Int32 {
+            self.period = value
+        }
+        if let value = dict["PeriodUnit"] as? String {
+            self.periodUnit = value
+        }
+        if let value = dict["ProductType"] as? String {
+            self.productType = value
+        }
+        if let value = dict["PromotionId"] as? String {
+            self.promotionId = value
+        }
+        if let value = dict["RenewAmount"] as? Int32 {
+            self.renewAmount = value
+        }
+        if let value = dict["RenewMode"] as? String {
+            self.renewMode = value
+        }
+        if let value = dict["RenewNodes"] as? String {
+            self.renewNodesShrink = value
         }
     }
 }
