@@ -3019,6 +3019,8 @@ public class CreateAiCallTaskRequest : Tea.TeaModel {
 
     public var startType: String?
 
+    public var taskCps: Int64?
+
     public var taskName: String?
 
     public var taskStartTime: Int64?
@@ -3072,6 +3074,9 @@ public class CreateAiCallTaskRequest : Tea.TeaModel {
         if self.startType != nil {
             map["StartType"] = self.startType!
         }
+        if self.taskCps != nil {
+            map["TaskCps"] = self.taskCps!
+        }
         if self.taskName != nil {
             map["TaskName"] = self.taskName!
         }
@@ -3119,6 +3124,9 @@ public class CreateAiCallTaskRequest : Tea.TeaModel {
         if let value = dict["StartType"] as? String {
             self.startType = value
         }
+        if let value = dict["TaskCps"] as? Int64 {
+            self.taskCps = value
+        }
         if let value = dict["TaskName"] as? String {
             self.taskName = value
         }
@@ -3153,6 +3161,8 @@ public class CreateAiCallTaskShrinkRequest : Tea.TeaModel {
     public var resourceOwnerId: Int64?
 
     public var startType: String?
+
+    public var taskCps: Int64?
 
     public var taskName: String?
 
@@ -3207,6 +3217,9 @@ public class CreateAiCallTaskShrinkRequest : Tea.TeaModel {
         if self.startType != nil {
             map["StartType"] = self.startType!
         }
+        if self.taskCps != nil {
+            map["TaskCps"] = self.taskCps!
+        }
         if self.taskName != nil {
             map["TaskName"] = self.taskName!
         }
@@ -3253,6 +3266,9 @@ public class CreateAiCallTaskShrinkRequest : Tea.TeaModel {
         }
         if let value = dict["StartType"] as? String {
             self.startType = value
+        }
+        if let value = dict["TaskCps"] as? Int64 {
+            self.taskCps = value
         }
         if let value = dict["TaskName"] as? String {
             self.taskName = value
@@ -30154,6 +30170,8 @@ public class LlmSmartCallRequest : Tea.TeaModel {
 
     public var callerNumber: String?
 
+    public var customerLineCode: String?
+
     public var extension_: String?
 
     public var outId: String?
@@ -30196,6 +30214,9 @@ public class LlmSmartCallRequest : Tea.TeaModel {
         if self.callerNumber != nil {
             map["CallerNumber"] = self.callerNumber!
         }
+        if self.customerLineCode != nil {
+            map["CustomerLineCode"] = self.customerLineCode!
+        }
         if self.extension_ != nil {
             map["Extension"] = self.extension_!
         }
@@ -30237,6 +30258,9 @@ public class LlmSmartCallRequest : Tea.TeaModel {
         if let value = dict["CallerNumber"] as? String {
             self.callerNumber = value
         }
+        if let value = dict["CustomerLineCode"] as? String {
+            self.customerLineCode = value
+        }
         if let value = dict["Extension"] as? String {
             self.extension_ = value
         }
@@ -30272,6 +30296,8 @@ public class LlmSmartCallShrinkRequest : Tea.TeaModel {
     public var calledNumber: String?
 
     public var callerNumber: String?
+
+    public var customerLineCode: String?
 
     public var extension_: String?
 
@@ -30315,6 +30341,9 @@ public class LlmSmartCallShrinkRequest : Tea.TeaModel {
         if self.callerNumber != nil {
             map["CallerNumber"] = self.callerNumber!
         }
+        if self.customerLineCode != nil {
+            map["CustomerLineCode"] = self.customerLineCode!
+        }
         if self.extension_ != nil {
             map["Extension"] = self.extension_!
         }
@@ -30355,6 +30384,9 @@ public class LlmSmartCallShrinkRequest : Tea.TeaModel {
         }
         if let value = dict["CallerNumber"] as? String {
             self.callerNumber = value
+        }
+        if let value = dict["CustomerLineCode"] as? String {
+            self.customerLineCode = value
         }
         if let value = dict["Extension"] as? String {
             self.extension_ = value
