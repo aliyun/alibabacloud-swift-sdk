@@ -15525,6 +15525,8 @@ public class DescribeRenderingInstanceResponseBody : Tea.TeaModel {
 
     public var hostname: String?
 
+    public var internalIp: String?
+
     public var isp: String?
 
     public var portMappings: [DescribeRenderingInstanceResponseBody.PortMappings]?
@@ -15576,6 +15578,9 @@ public class DescribeRenderingInstanceResponseBody : Tea.TeaModel {
         }
         if self.hostname != nil {
             map["Hostname"] = self.hostname!
+        }
+        if self.internalIp != nil {
+            map["InternalIp"] = self.internalIp!
         }
         if self.isp != nil {
             map["Isp"] = self.isp!
@@ -15636,6 +15641,9 @@ public class DescribeRenderingInstanceResponseBody : Tea.TeaModel {
         }
         if let value = dict["Hostname"] as? String {
             self.hostname = value
+        }
+        if let value = dict["InternalIp"] as? String {
+            self.internalIp = value
         }
         if let value = dict["Isp"] as? String {
             self.isp = value
@@ -26151,7 +26159,15 @@ public class GotoPresetResponse : Tea.TeaModel {
 public class InstallCloudAppRequest : Tea.TeaModel {
     public var appId: String?
 
+    public var pageNumber: Int32?
+
+    public var pageSize: Int32?
+
+    public var projectId: String?
+
     public var renderingInstanceId: String?
+
+    public var renderingInstanceIds: [String]?
 
     public override init() {
         super.init()
@@ -26170,8 +26186,20 @@ public class InstallCloudAppRequest : Tea.TeaModel {
         if self.appId != nil {
             map["AppId"] = self.appId!
         }
+        if self.pageNumber != nil {
+            map["PageNumber"] = self.pageNumber!
+        }
+        if self.pageSize != nil {
+            map["PageSize"] = self.pageSize!
+        }
+        if self.projectId != nil {
+            map["ProjectId"] = self.projectId!
+        }
         if self.renderingInstanceId != nil {
             map["RenderingInstanceId"] = self.renderingInstanceId!
+        }
+        if self.renderingInstanceIds != nil {
+            map["RenderingInstanceIds"] = self.renderingInstanceIds!
         }
         return map
     }
@@ -26181,14 +26209,36 @@ public class InstallCloudAppRequest : Tea.TeaModel {
         if let value = dict["AppId"] as? String {
             self.appId = value
         }
+        if let value = dict["PageNumber"] as? Int32 {
+            self.pageNumber = value
+        }
+        if let value = dict["PageSize"] as? Int32 {
+            self.pageSize = value
+        }
+        if let value = dict["ProjectId"] as? String {
+            self.projectId = value
+        }
         if let value = dict["RenderingInstanceId"] as? String {
             self.renderingInstanceId = value
+        }
+        if let value = dict["RenderingInstanceIds"] as? [String] {
+            self.renderingInstanceIds = value
         }
     }
 }
 
-public class InstallCloudAppResponseBody : Tea.TeaModel {
-    public var requestId: String?
+public class InstallCloudAppShrinkRequest : Tea.TeaModel {
+    public var appId: String?
+
+    public var pageNumber: Int32?
+
+    public var pageSize: Int32?
+
+    public var projectId: String?
+
+    public var renderingInstanceId: String?
+
+    public var renderingInstanceIdsShrink: String?
 
     public override init() {
         super.init()
@@ -26204,16 +26254,213 @@ public class InstallCloudAppResponseBody : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
-        if self.requestId != nil {
-            map["RequestId"] = self.requestId!
+        if self.appId != nil {
+            map["AppId"] = self.appId!
+        }
+        if self.pageNumber != nil {
+            map["PageNumber"] = self.pageNumber!
+        }
+        if self.pageSize != nil {
+            map["PageSize"] = self.pageSize!
+        }
+        if self.projectId != nil {
+            map["ProjectId"] = self.projectId!
+        }
+        if self.renderingInstanceId != nil {
+            map["RenderingInstanceId"] = self.renderingInstanceId!
+        }
+        if self.renderingInstanceIdsShrink != nil {
+            map["RenderingInstanceIds"] = self.renderingInstanceIdsShrink!
         }
         return map
     }
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["AppId"] as? String {
+            self.appId = value
+        }
+        if let value = dict["PageNumber"] as? Int32 {
+            self.pageNumber = value
+        }
+        if let value = dict["PageSize"] as? Int32 {
+            self.pageSize = value
+        }
+        if let value = dict["ProjectId"] as? String {
+            self.projectId = value
+        }
+        if let value = dict["RenderingInstanceId"] as? String {
+            self.renderingInstanceId = value
+        }
+        if let value = dict["RenderingInstanceIds"] as? String {
+            self.renderingInstanceIdsShrink = value
+        }
+    }
+}
+
+public class InstallCloudAppResponseBody : Tea.TeaModel {
+    public class FailedInstances : Tea.TeaModel {
+        public var errCode: Int32?
+
+        public var errMessage: String?
+
+        public var renderingInstanceId: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.errCode != nil {
+                map["ErrCode"] = self.errCode!
+            }
+            if self.errMessage != nil {
+                map["ErrMessage"] = self.errMessage!
+            }
+            if self.renderingInstanceId != nil {
+                map["RenderingInstanceId"] = self.renderingInstanceId!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["ErrCode"] as? Int32 {
+                self.errCode = value
+            }
+            if let value = dict["ErrMessage"] as? String {
+                self.errMessage = value
+            }
+            if let value = dict["RenderingInstanceId"] as? String {
+                self.renderingInstanceId = value
+            }
+        }
+    }
+    public class SuccessInstances : Tea.TeaModel {
+        public var renderingInstanceId: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.renderingInstanceId != nil {
+                map["RenderingInstanceId"] = self.renderingInstanceId!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["RenderingInstanceId"] as? String {
+                self.renderingInstanceId = value
+            }
+        }
+    }
+    public var failedInstanceCount: Int32?
+
+    public var failedInstances: [InstallCloudAppResponseBody.FailedInstances]?
+
+    public var requestId: String?
+
+    public var successInstanceCount: Int32?
+
+    public var successInstances: [InstallCloudAppResponseBody.SuccessInstances]?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.failedInstanceCount != nil {
+            map["FailedInstanceCount"] = self.failedInstanceCount!
+        }
+        if self.failedInstances != nil {
+            var tmp : [Any] = []
+            for k in self.failedInstances! {
+                tmp.append(k.toMap())
+            }
+            map["FailedInstances"] = tmp
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.successInstanceCount != nil {
+            map["SuccessInstanceCount"] = self.successInstanceCount!
+        }
+        if self.successInstances != nil {
+            var tmp : [Any] = []
+            for k in self.successInstances! {
+                tmp.append(k.toMap())
+            }
+            map["SuccessInstances"] = tmp
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["FailedInstanceCount"] as? Int32 {
+            self.failedInstanceCount = value
+        }
+        if let value = dict["FailedInstances"] as? [Any?] {
+            var tmp : [InstallCloudAppResponseBody.FailedInstances] = []
+            for v in value {
+                if v != nil {
+                    var model = InstallCloudAppResponseBody.FailedInstances()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.failedInstances = tmp
+        }
         if let value = dict["RequestId"] as? String {
             self.requestId = value
+        }
+        if let value = dict["SuccessInstanceCount"] as? Int32 {
+            self.successInstanceCount = value
+        }
+        if let value = dict["SuccessInstances"] as? [Any?] {
+            var tmp : [InstallCloudAppResponseBody.SuccessInstances] = []
+            for v in value {
+                if v != nil {
+                    var model = InstallCloudAppResponseBody.SuccessInstances()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.successInstances = tmp
         }
     }
 }
@@ -26275,11 +26522,17 @@ public class ListCloudAppInstallationsRequest : Tea.TeaModel {
 
     public var appVersion: String?
 
+    public var endTime: String?
+
     public var pageNumber: Int64?
 
     public var pageSize: Int64?
 
+    public var projectId: String?
+
     public var renderingInstanceId: String?
+
+    public var startTime: String?
 
     public override init() {
         super.init()
@@ -26304,14 +26557,23 @@ public class ListCloudAppInstallationsRequest : Tea.TeaModel {
         if self.appVersion != nil {
             map["AppVersion"] = self.appVersion!
         }
+        if self.endTime != nil {
+            map["EndTime"] = self.endTime!
+        }
         if self.pageNumber != nil {
             map["PageNumber"] = self.pageNumber!
         }
         if self.pageSize != nil {
             map["PageSize"] = self.pageSize!
         }
+        if self.projectId != nil {
+            map["ProjectId"] = self.projectId!
+        }
         if self.renderingInstanceId != nil {
             map["RenderingInstanceId"] = self.renderingInstanceId!
+        }
+        if self.startTime != nil {
+            map["StartTime"] = self.startTime!
         }
         return map
     }
@@ -26327,14 +26589,23 @@ public class ListCloudAppInstallationsRequest : Tea.TeaModel {
         if let value = dict["AppVersion"] as? String {
             self.appVersion = value
         }
+        if let value = dict["EndTime"] as? String {
+            self.endTime = value
+        }
         if let value = dict["PageNumber"] as? Int64 {
             self.pageNumber = value
         }
         if let value = dict["PageSize"] as? Int64 {
             self.pageSize = value
         }
+        if let value = dict["ProjectId"] as? String {
+            self.projectId = value
+        }
         if let value = dict["RenderingInstanceId"] as? String {
             self.renderingInstanceId = value
+        }
+        if let value = dict["StartTime"] as? String {
+            self.startTime = value
         }
     }
 }
@@ -26559,9 +26830,15 @@ public class ListCloudAppsRequest : Tea.TeaModel {
 
     public var appVersion: String?
 
+    public var endTime: String?
+
     public var pageNumber: Int64?
 
     public var pageSize: Int64?
+
+    public var pkgType: String?
+
+    public var startTime: String?
 
     public override init() {
         super.init()
@@ -26586,11 +26863,20 @@ public class ListCloudAppsRequest : Tea.TeaModel {
         if self.appVersion != nil {
             map["AppVersion"] = self.appVersion!
         }
+        if self.endTime != nil {
+            map["EndTime"] = self.endTime!
+        }
         if self.pageNumber != nil {
             map["PageNumber"] = self.pageNumber!
         }
         if self.pageSize != nil {
             map["PageSize"] = self.pageSize!
+        }
+        if self.pkgType != nil {
+            map["PkgType"] = self.pkgType!
+        }
+        if self.startTime != nil {
+            map["StartTime"] = self.startTime!
         }
         return map
     }
@@ -26606,11 +26892,20 @@ public class ListCloudAppsRequest : Tea.TeaModel {
         if let value = dict["AppVersion"] as? String {
             self.appVersion = value
         }
+        if let value = dict["EndTime"] as? String {
+            self.endTime = value
+        }
         if let value = dict["PageNumber"] as? Int64 {
             self.pageNumber = value
         }
         if let value = dict["PageSize"] as? Int64 {
             self.pageSize = value
+        }
+        if let value = dict["PkgType"] as? String {
+            self.pkgType = value
+        }
+        if let value = dict["StartTime"] as? String {
+            self.startTime = value
         }
     }
 }
@@ -26624,6 +26919,10 @@ public class ListCloudAppsResponseBody : Tea.TeaModel {
         public var appVersion: String?
 
         public var description_: String?
+
+        public var pkgFormat: String?
+
+        public var pkgType: String?
 
         public var status: String?
 
@@ -26659,6 +26958,12 @@ public class ListCloudAppsResponseBody : Tea.TeaModel {
             if self.description_ != nil {
                 map["Description"] = self.description_!
             }
+            if self.pkgFormat != nil {
+                map["PkgFormat"] = self.pkgFormat!
+            }
+            if self.pkgType != nil {
+                map["PkgType"] = self.pkgType!
+            }
             if self.status != nil {
                 map["Status"] = self.status!
             }
@@ -26687,6 +26992,12 @@ public class ListCloudAppsResponseBody : Tea.TeaModel {
             }
             if let value = dict["Description"] as? String {
                 self.description_ = value
+            }
+            if let value = dict["PkgFormat"] as? String {
+                self.pkgFormat = value
+            }
+            if let value = dict["PkgType"] as? String {
+                self.pkgType = value
             }
             if let value = dict["Status"] as? String {
                 self.status = value
@@ -26829,6 +27140,8 @@ public class ListCloudAppsResponse : Tea.TeaModel {
 }
 
 public class ListFilePushStatusesRequest : Tea.TeaModel {
+    public var endTime: String?
+
     public var fileId: String?
 
     public var fileName: String?
@@ -26838,6 +27151,8 @@ public class ListFilePushStatusesRequest : Tea.TeaModel {
     public var pageSize: Int64?
 
     public var renderingInstanceId: String?
+
+    public var startTime: String?
 
     public override init() {
         super.init()
@@ -26853,6 +27168,9 @@ public class ListFilePushStatusesRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.endTime != nil {
+            map["EndTime"] = self.endTime!
+        }
         if self.fileId != nil {
             map["FileId"] = self.fileId!
         }
@@ -26868,11 +27186,17 @@ public class ListFilePushStatusesRequest : Tea.TeaModel {
         if self.renderingInstanceId != nil {
             map["RenderingInstanceId"] = self.renderingInstanceId!
         }
+        if self.startTime != nil {
+            map["StartTime"] = self.startTime!
+        }
         return map
     }
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["EndTime"] as? String {
+            self.endTime = value
+        }
         if let value = dict["FileId"] as? String {
             self.fileId = value
         }
@@ -26887,6 +27211,9 @@ public class ListFilePushStatusesRequest : Tea.TeaModel {
         }
         if let value = dict["RenderingInstanceId"] as? String {
             self.renderingInstanceId = value
+        }
+        if let value = dict["StartTime"] as? String {
+            self.startTime = value
         }
     }
 }
@@ -27097,6 +27424,8 @@ public class ListFilePushStatusesResponse : Tea.TeaModel {
 }
 
 public class ListFilesRequest : Tea.TeaModel {
+    public var endTime: String?
+
     public var fileId: String?
 
     public var fileName: String?
@@ -27104,6 +27433,8 @@ public class ListFilesRequest : Tea.TeaModel {
     public var pageNumber: Int64?
 
     public var pageSize: Int64?
+
+    public var startTime: String?
 
     public override init() {
         super.init()
@@ -27119,6 +27450,9 @@ public class ListFilesRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.endTime != nil {
+            map["EndTime"] = self.endTime!
+        }
         if self.fileId != nil {
             map["FileId"] = self.fileId!
         }
@@ -27131,11 +27465,17 @@ public class ListFilesRequest : Tea.TeaModel {
         if self.pageSize != nil {
             map["PageSize"] = self.pageSize!
         }
+        if self.startTime != nil {
+            map["StartTime"] = self.startTime!
+        }
         return map
     }
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["EndTime"] as? String {
+            self.endTime = value
+        }
         if let value = dict["FileId"] as? String {
             self.fileId = value
         }
@@ -27147,6 +27487,9 @@ public class ListFilesRequest : Tea.TeaModel {
         }
         if let value = dict["PageSize"] as? Int64 {
             self.pageSize = value
+        }
+        if let value = dict["StartTime"] as? String {
+            self.startTime = value
         }
     }
 }
@@ -27365,6 +27708,8 @@ public class ListFilesResponse : Tea.TeaModel {
 }
 
 public class ListPublicKeysRequest : Tea.TeaModel {
+    public var endTime: String?
+
     public var keyGroup: String?
 
     public var keyName: String?
@@ -27374,6 +27719,8 @@ public class ListPublicKeysRequest : Tea.TeaModel {
     public var pageNumber: Int64?
 
     public var pageSize: Int64?
+
+    public var startTime: String?
 
     public override init() {
         super.init()
@@ -27389,6 +27736,9 @@ public class ListPublicKeysRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.endTime != nil {
+            map["EndTime"] = self.endTime!
+        }
         if self.keyGroup != nil {
             map["KeyGroup"] = self.keyGroup!
         }
@@ -27404,11 +27754,17 @@ public class ListPublicKeysRequest : Tea.TeaModel {
         if self.pageSize != nil {
             map["PageSize"] = self.pageSize!
         }
+        if self.startTime != nil {
+            map["StartTime"] = self.startTime!
+        }
         return map
     }
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["EndTime"] as? String {
+            self.endTime = value
+        }
         if let value = dict["KeyGroup"] as? String {
             self.keyGroup = value
         }
@@ -27423,6 +27779,9 @@ public class ListPublicKeysRequest : Tea.TeaModel {
         }
         if let value = dict["PageSize"] as? Int64 {
             self.pageSize = value
+        }
+        if let value = dict["StartTime"] as? String {
+            self.startTime = value
         }
     }
 }
@@ -27629,11 +27988,15 @@ public class ListRenderingDataPackagesRequest : Tea.TeaModel {
 
     public var dataPackageId: String?
 
+    public var endTime: String?
+
     public var pageNumber: Int32?
 
     public var pageSize: Int32?
 
     public var size: Int32?
+
+    public var startTime: String?
 
     public var status: String?
 
@@ -27657,6 +28020,9 @@ public class ListRenderingDataPackagesRequest : Tea.TeaModel {
         if self.dataPackageId != nil {
             map["DataPackageId"] = self.dataPackageId!
         }
+        if self.endTime != nil {
+            map["EndTime"] = self.endTime!
+        }
         if self.pageNumber != nil {
             map["PageNumber"] = self.pageNumber!
         }
@@ -27665,6 +28031,9 @@ public class ListRenderingDataPackagesRequest : Tea.TeaModel {
         }
         if self.size != nil {
             map["Size"] = self.size!
+        }
+        if self.startTime != nil {
+            map["StartTime"] = self.startTime!
         }
         if self.status != nil {
             map["Status"] = self.status!
@@ -27680,6 +28049,9 @@ public class ListRenderingDataPackagesRequest : Tea.TeaModel {
         if let value = dict["DataPackageId"] as? String {
             self.dataPackageId = value
         }
+        if let value = dict["EndTime"] as? String {
+            self.endTime = value
+        }
         if let value = dict["PageNumber"] as? Int32 {
             self.pageNumber = value
         }
@@ -27688,6 +28060,9 @@ public class ListRenderingDataPackagesRequest : Tea.TeaModel {
         }
         if let value = dict["Size"] as? Int32 {
             self.size = value
+        }
+        if let value = dict["StartTime"] as? String {
+            self.startTime = value
         }
         if let value = dict["Status"] as? String {
             self.status = value
@@ -27893,6 +28268,8 @@ public class ListRenderingDataPackagesResponse : Tea.TeaModel {
 }
 
 public class ListRenderingInstanceGatewayRequest : Tea.TeaModel {
+    public var endTime: String?
+
     public var gatewayInstanceId: String?
 
     public var pageNumber: Int64?
@@ -27900,6 +28277,8 @@ public class ListRenderingInstanceGatewayRequest : Tea.TeaModel {
     public var pageSize: Int64?
 
     public var renderingInstanceId: String?
+
+    public var startTime: String?
 
     public override init() {
         super.init()
@@ -27915,6 +28294,9 @@ public class ListRenderingInstanceGatewayRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.endTime != nil {
+            map["EndTime"] = self.endTime!
+        }
         if self.gatewayInstanceId != nil {
             map["GatewayInstanceId"] = self.gatewayInstanceId!
         }
@@ -27927,11 +28309,17 @@ public class ListRenderingInstanceGatewayRequest : Tea.TeaModel {
         if self.renderingInstanceId != nil {
             map["RenderingInstanceId"] = self.renderingInstanceId!
         }
+        if self.startTime != nil {
+            map["StartTime"] = self.startTime!
+        }
         return map
     }
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["EndTime"] as? String {
+            self.endTime = value
+        }
         if let value = dict["GatewayInstanceId"] as? String {
             self.gatewayInstanceId = value
         }
@@ -27943,6 +28331,9 @@ public class ListRenderingInstanceGatewayRequest : Tea.TeaModel {
         }
         if let value = dict["RenderingInstanceId"] as? String {
             self.renderingInstanceId = value
+        }
+        if let value = dict["StartTime"] as? String {
+            self.startTime = value
         }
     }
 }
@@ -28137,6 +28528,8 @@ public class ListRenderingInstanceGatewayResponse : Tea.TeaModel {
 }
 
 public class ListRenderingInstancesRequest : Tea.TeaModel {
+    public var endTime: String?
+
     public var pageNumber: Int32?
 
     public var pageSize: Int32?
@@ -28144,6 +28537,8 @@ public class ListRenderingInstancesRequest : Tea.TeaModel {
     public var renderingInstanceId: String?
 
     public var renderingSpec: String?
+
+    public var startTime: String?
 
     public var storageSize: Int32?
 
@@ -28161,6 +28556,9 @@ public class ListRenderingInstancesRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.endTime != nil {
+            map["EndTime"] = self.endTime!
+        }
         if self.pageNumber != nil {
             map["PageNumber"] = self.pageNumber!
         }
@@ -28173,6 +28571,9 @@ public class ListRenderingInstancesRequest : Tea.TeaModel {
         if self.renderingSpec != nil {
             map["RenderingSpec"] = self.renderingSpec!
         }
+        if self.startTime != nil {
+            map["StartTime"] = self.startTime!
+        }
         if self.storageSize != nil {
             map["StorageSize"] = self.storageSize!
         }
@@ -28181,6 +28582,9 @@ public class ListRenderingInstancesRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["EndTime"] as? String {
+            self.endTime = value
+        }
         if let value = dict["PageNumber"] as? Int32 {
             self.pageNumber = value
         }
@@ -28192,6 +28596,9 @@ public class ListRenderingInstancesRequest : Tea.TeaModel {
         }
         if let value = dict["RenderingSpec"] as? String {
             self.renderingSpec = value
+        }
+        if let value = dict["StartTime"] as? String {
+            self.startTime = value
         }
         if let value = dict["StorageSize"] as? Int32 {
             self.storageSize = value
@@ -28365,6 +28772,8 @@ public class ListRenderingInstancesResponse : Tea.TeaModel {
 }
 
 public class ListRenderingProjectInstancesRequest : Tea.TeaModel {
+    public var endTime: String?
+
     public var pageNumber: Int32?
 
     public var pageSize: Int32?
@@ -28372,6 +28781,8 @@ public class ListRenderingProjectInstancesRequest : Tea.TeaModel {
     public var projectId: String?
 
     public var renderingInstanceId: String?
+
+    public var startTime: String?
 
     public var state: String?
 
@@ -28389,6 +28800,9 @@ public class ListRenderingProjectInstancesRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.endTime != nil {
+            map["EndTime"] = self.endTime!
+        }
         if self.pageNumber != nil {
             map["PageNumber"] = self.pageNumber!
         }
@@ -28401,6 +28815,9 @@ public class ListRenderingProjectInstancesRequest : Tea.TeaModel {
         if self.renderingInstanceId != nil {
             map["RenderingInstanceId"] = self.renderingInstanceId!
         }
+        if self.startTime != nil {
+            map["StartTime"] = self.startTime!
+        }
         if self.state != nil {
             map["State"] = self.state!
         }
@@ -28409,6 +28826,9 @@ public class ListRenderingProjectInstancesRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["EndTime"] as? String {
+            self.endTime = value
+        }
         if let value = dict["PageNumber"] as? Int32 {
             self.pageNumber = value
         }
@@ -28420,6 +28840,9 @@ public class ListRenderingProjectInstancesRequest : Tea.TeaModel {
         }
         if let value = dict["RenderingInstanceId"] as? String {
             self.renderingInstanceId = value
+        }
+        if let value = dict["StartTime"] as? String {
+            self.startTime = value
         }
         if let value = dict["State"] as? String {
             self.state = value
@@ -28634,6 +29057,8 @@ public class ListRenderingProjectInstancesResponse : Tea.TeaModel {
 }
 
 public class ListRenderingProjectsRequest : Tea.TeaModel {
+    public var endTime: String?
+
     public var pageNumber: Int32?
 
     public var pageSize: Int32?
@@ -28641,6 +29066,8 @@ public class ListRenderingProjectsRequest : Tea.TeaModel {
     public var projectId: String?
 
     public var projectName: String?
+
+    public var startTime: String?
 
     public override init() {
         super.init()
@@ -28656,6 +29083,9 @@ public class ListRenderingProjectsRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.endTime != nil {
+            map["EndTime"] = self.endTime!
+        }
         if self.pageNumber != nil {
             map["PageNumber"] = self.pageNumber!
         }
@@ -28668,11 +29098,17 @@ public class ListRenderingProjectsRequest : Tea.TeaModel {
         if self.projectName != nil {
             map["ProjectName"] = self.projectName!
         }
+        if self.startTime != nil {
+            map["StartTime"] = self.startTime!
+        }
         return map
     }
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["EndTime"] as? String {
+            self.endTime = value
+        }
         if let value = dict["PageNumber"] as? Int32 {
             self.pageNumber = value
         }
@@ -28684,6 +29120,9 @@ public class ListRenderingProjectsRequest : Tea.TeaModel {
         }
         if let value = dict["ProjectName"] as? String {
             self.projectName = value
+        }
+        if let value = dict["StartTime"] as? String {
+            self.startTime = value
         }
     }
 }
@@ -28907,6 +29346,8 @@ public class ListRenderingSessionsRequest : Tea.TeaModel {
 
     public var clientId: String?
 
+    public var endTime: String?
+
     public var pageNumber: Int32?
 
     public var pageSize: Int32?
@@ -28916,6 +29357,8 @@ public class ListRenderingSessionsRequest : Tea.TeaModel {
     public var renderingInstanceId: String?
 
     public var sessionId: String?
+
+    public var startTime: String?
 
     public var state: String?
 
@@ -28939,6 +29382,9 @@ public class ListRenderingSessionsRequest : Tea.TeaModel {
         if self.clientId != nil {
             map["ClientId"] = self.clientId!
         }
+        if self.endTime != nil {
+            map["EndTime"] = self.endTime!
+        }
         if self.pageNumber != nil {
             map["PageNumber"] = self.pageNumber!
         }
@@ -28954,6 +29400,9 @@ public class ListRenderingSessionsRequest : Tea.TeaModel {
         if self.sessionId != nil {
             map["SessionId"] = self.sessionId!
         }
+        if self.startTime != nil {
+            map["StartTime"] = self.startTime!
+        }
         if self.state != nil {
             map["State"] = self.state!
         }
@@ -28967,6 +29416,9 @@ public class ListRenderingSessionsRequest : Tea.TeaModel {
         }
         if let value = dict["ClientId"] as? String {
             self.clientId = value
+        }
+        if let value = dict["EndTime"] as? String {
+            self.endTime = value
         }
         if let value = dict["PageNumber"] as? Int32 {
             self.pageNumber = value
@@ -28982,6 +29434,9 @@ public class ListRenderingSessionsRequest : Tea.TeaModel {
         }
         if let value = dict["SessionId"] as? String {
             self.sessionId = value
+        }
+        if let value = dict["StartTime"] as? String {
+            self.startTime = value
         }
         if let value = dict["State"] as? String {
             self.state = value
@@ -36133,7 +36588,15 @@ public class UnbindTemplateResponse : Tea.TeaModel {
 public class UninstallCloudAppRequest : Tea.TeaModel {
     public var appId: String?
 
+    public var pageNumber: Int32?
+
+    public var pageSize: Int32?
+
+    public var projectId: String?
+
     public var renderingInstanceId: String?
+
+    public var renderingInstanceIds: [String]?
 
     public override init() {
         super.init()
@@ -36152,8 +36615,20 @@ public class UninstallCloudAppRequest : Tea.TeaModel {
         if self.appId != nil {
             map["AppId"] = self.appId!
         }
+        if self.pageNumber != nil {
+            map["PageNumber"] = self.pageNumber!
+        }
+        if self.pageSize != nil {
+            map["PageSize"] = self.pageSize!
+        }
+        if self.projectId != nil {
+            map["ProjectId"] = self.projectId!
+        }
         if self.renderingInstanceId != nil {
             map["RenderingInstanceId"] = self.renderingInstanceId!
+        }
+        if self.renderingInstanceIds != nil {
+            map["RenderingInstanceIds"] = self.renderingInstanceIds!
         }
         return map
     }
@@ -36163,14 +36638,36 @@ public class UninstallCloudAppRequest : Tea.TeaModel {
         if let value = dict["AppId"] as? String {
             self.appId = value
         }
+        if let value = dict["PageNumber"] as? Int32 {
+            self.pageNumber = value
+        }
+        if let value = dict["PageSize"] as? Int32 {
+            self.pageSize = value
+        }
+        if let value = dict["ProjectId"] as? String {
+            self.projectId = value
+        }
         if let value = dict["RenderingInstanceId"] as? String {
             self.renderingInstanceId = value
+        }
+        if let value = dict["RenderingInstanceIds"] as? [String] {
+            self.renderingInstanceIds = value
         }
     }
 }
 
-public class UninstallCloudAppResponseBody : Tea.TeaModel {
-    public var requestId: String?
+public class UninstallCloudAppShrinkRequest : Tea.TeaModel {
+    public var appId: String?
+
+    public var pageNumber: Int32?
+
+    public var pageSize: Int32?
+
+    public var projectId: String?
+
+    public var renderingInstanceId: String?
+
+    public var renderingInstanceIdsShrink: String?
 
     public override init() {
         super.init()
@@ -36186,16 +36683,213 @@ public class UninstallCloudAppResponseBody : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
-        if self.requestId != nil {
-            map["RequestId"] = self.requestId!
+        if self.appId != nil {
+            map["AppId"] = self.appId!
+        }
+        if self.pageNumber != nil {
+            map["PageNumber"] = self.pageNumber!
+        }
+        if self.pageSize != nil {
+            map["PageSize"] = self.pageSize!
+        }
+        if self.projectId != nil {
+            map["ProjectId"] = self.projectId!
+        }
+        if self.renderingInstanceId != nil {
+            map["RenderingInstanceId"] = self.renderingInstanceId!
+        }
+        if self.renderingInstanceIdsShrink != nil {
+            map["RenderingInstanceIds"] = self.renderingInstanceIdsShrink!
         }
         return map
     }
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["AppId"] as? String {
+            self.appId = value
+        }
+        if let value = dict["PageNumber"] as? Int32 {
+            self.pageNumber = value
+        }
+        if let value = dict["PageSize"] as? Int32 {
+            self.pageSize = value
+        }
+        if let value = dict["ProjectId"] as? String {
+            self.projectId = value
+        }
+        if let value = dict["RenderingInstanceId"] as? String {
+            self.renderingInstanceId = value
+        }
+        if let value = dict["RenderingInstanceIds"] as? String {
+            self.renderingInstanceIdsShrink = value
+        }
+    }
+}
+
+public class UninstallCloudAppResponseBody : Tea.TeaModel {
+    public class FailedInstances : Tea.TeaModel {
+        public var errCode: Int32?
+
+        public var errMessage: String?
+
+        public var renderingInstanceId: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.errCode != nil {
+                map["ErrCode"] = self.errCode!
+            }
+            if self.errMessage != nil {
+                map["ErrMessage"] = self.errMessage!
+            }
+            if self.renderingInstanceId != nil {
+                map["RenderingInstanceId"] = self.renderingInstanceId!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["ErrCode"] as? Int32 {
+                self.errCode = value
+            }
+            if let value = dict["ErrMessage"] as? String {
+                self.errMessage = value
+            }
+            if let value = dict["RenderingInstanceId"] as? String {
+                self.renderingInstanceId = value
+            }
+        }
+    }
+    public class SuccessInstances : Tea.TeaModel {
+        public var renderingInstanceId: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.renderingInstanceId != nil {
+                map["RenderingInstanceId"] = self.renderingInstanceId!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["RenderingInstanceId"] as? String {
+                self.renderingInstanceId = value
+            }
+        }
+    }
+    public var failedInstanceCount: Int32?
+
+    public var failedInstances: [UninstallCloudAppResponseBody.FailedInstances]?
+
+    public var requestId: String?
+
+    public var successInstanceCount: Int32?
+
+    public var successInstances: [UninstallCloudAppResponseBody.SuccessInstances]?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.failedInstanceCount != nil {
+            map["FailedInstanceCount"] = self.failedInstanceCount!
+        }
+        if self.failedInstances != nil {
+            var tmp : [Any] = []
+            for k in self.failedInstances! {
+                tmp.append(k.toMap())
+            }
+            map["FailedInstances"] = tmp
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.successInstanceCount != nil {
+            map["SuccessInstanceCount"] = self.successInstanceCount!
+        }
+        if self.successInstances != nil {
+            var tmp : [Any] = []
+            for k in self.successInstances! {
+                tmp.append(k.toMap())
+            }
+            map["SuccessInstances"] = tmp
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["FailedInstanceCount"] as? Int32 {
+            self.failedInstanceCount = value
+        }
+        if let value = dict["FailedInstances"] as? [Any?] {
+            var tmp : [UninstallCloudAppResponseBody.FailedInstances] = []
+            for v in value {
+                if v != nil {
+                    var model = UninstallCloudAppResponseBody.FailedInstances()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.failedInstances = tmp
+        }
         if let value = dict["RequestId"] as? String {
             self.requestId = value
+        }
+        if let value = dict["SuccessInstanceCount"] as? Int32 {
+            self.successInstanceCount = value
+        }
+        if let value = dict["SuccessInstances"] as? [Any?] {
+            var tmp : [UninstallCloudAppResponseBody.SuccessInstances] = []
+            for v in value {
+                if v != nil {
+                    var model = UninstallCloudAppResponseBody.SuccessInstances()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.successInstances = tmp
         }
     }
 }
@@ -37495,6 +38189,10 @@ public class UploadCloudAppRequest : Tea.TeaModel {
 
     public var md5: String?
 
+    public var pkgFormat: String?
+
+    public var pkgType: String?
+
     public override init() {
         super.init()
     }
@@ -37524,6 +38222,12 @@ public class UploadCloudAppRequest : Tea.TeaModel {
         if self.md5 != nil {
             map["Md5"] = self.md5!
         }
+        if self.pkgFormat != nil {
+            map["PkgFormat"] = self.pkgFormat!
+        }
+        if self.pkgType != nil {
+            map["PkgType"] = self.pkgType!
+        }
         return map
     }
 
@@ -37543,6 +38247,12 @@ public class UploadCloudAppRequest : Tea.TeaModel {
         }
         if let value = dict["Md5"] as? String {
             self.md5 = value
+        }
+        if let value = dict["PkgFormat"] as? String {
+            self.pkgFormat = value
+        }
+        if let value = dict["PkgType"] as? String {
+            self.pkgType = value
         }
     }
 }
