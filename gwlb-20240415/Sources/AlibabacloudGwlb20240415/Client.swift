@@ -88,6 +88,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.tag)) {
             bodyFlat["Tag"] = request.tag ?? [];
         }
+        if (!TeaUtils.Client.isUnset(request.tcpIdleTimeout)) {
+            body["TcpIdleTimeout"] = request.tcpIdleTimeout!;
+        }
         body = Tea.TeaConverter.merge([:], body, AlibabaCloudOpenApiUtil.Client.query(bodyFlat))
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
@@ -976,6 +979,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.serverGroupId)) {
             body["ServerGroupId"] = request.serverGroupId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.tcpIdleTimeout)) {
+            body["TcpIdleTimeout"] = request.tcpIdleTimeout!;
         }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
