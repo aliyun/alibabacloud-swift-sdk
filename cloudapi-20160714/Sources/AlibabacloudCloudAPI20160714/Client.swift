@@ -7206,6 +7206,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.description_)) {
             query["Description"] = request.description_ ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.disabled)) {
+            query["Disabled"] = request.disabled!;
+        }
         if (!TeaUtils.Client.isUnset(request.extend)) {
             query["Extend"] = request.extend ?? "";
         }

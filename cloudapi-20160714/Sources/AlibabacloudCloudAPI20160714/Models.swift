@@ -22221,6 +22221,8 @@ public class DescribeAppResponseBody : Tea.TeaModel {
 
     public var description_: String?
 
+    public var disabled: Bool?
+
     public var extend: String?
 
     public var modifiedTime: String?
@@ -22253,6 +22255,9 @@ public class DescribeAppResponseBody : Tea.TeaModel {
         if self.description_ != nil {
             map["Description"] = self.description_!
         }
+        if self.disabled != nil {
+            map["Disabled"] = self.disabled!
+        }
         if self.extend != nil {
             map["Extend"] = self.extend!
         }
@@ -22278,6 +22283,9 @@ public class DescribeAppResponseBody : Tea.TeaModel {
         }
         if let value = dict["Description"] as? String {
             self.description_ = value
+        }
+        if let value = dict["Disabled"] as? Bool {
+            self.disabled = value
         }
         if let value = dict["Extend"] as? String {
             self.extend = value
@@ -22597,6 +22605,8 @@ public class DescribeAppAttributesResponseBody : Tea.TeaModel {
 
             public var description_: String?
 
+            public var disabled: Bool?
+
             public var extend: String?
 
             public var modifiedTime: String?
@@ -22630,6 +22640,9 @@ public class DescribeAppAttributesResponseBody : Tea.TeaModel {
                 if self.description_ != nil {
                     map["Description"] = self.description_!
                 }
+                if self.disabled != nil {
+                    map["Disabled"] = self.disabled!
+                }
                 if self.extend != nil {
                     map["Extend"] = self.extend!
                 }
@@ -22655,6 +22668,9 @@ public class DescribeAppAttributesResponseBody : Tea.TeaModel {
                 }
                 if let value = dict["Description"] as? String {
                     self.description_ = value
+                }
+                if let value = dict["Disabled"] as? Bool {
+                    self.disabled = value
                 }
                 if let value = dict["Extend"] as? String {
                     self.extend = value
@@ -48398,6 +48414,8 @@ public class ModifyAppRequest : Tea.TeaModel {
 
     public var description_: String?
 
+    public var disabled: Bool?
+
     public var extend: String?
 
     public var securityToken: String?
@@ -48427,6 +48445,9 @@ public class ModifyAppRequest : Tea.TeaModel {
         if self.description_ != nil {
             map["Description"] = self.description_!
         }
+        if self.disabled != nil {
+            map["Disabled"] = self.disabled!
+        }
         if self.extend != nil {
             map["Extend"] = self.extend!
         }
@@ -48453,6 +48474,9 @@ public class ModifyAppRequest : Tea.TeaModel {
         }
         if let value = dict["Description"] as? String {
             self.description_ = value
+        }
+        if let value = dict["Disabled"] as? Bool {
+            self.disabled = value
         }
         if let value = dict["Extend"] as? String {
             self.extend = value
