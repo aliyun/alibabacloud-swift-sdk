@@ -6513,6 +6513,8 @@ public class TextModerationPlusResponseBody : Tea.TeaModel {
 
         public var dataId: String?
 
+        public var detectedLanguage: String?
+
         public var manualTaskId: String?
 
         public var result: [TextModerationPlusResponseBody.Data.Result]?
@@ -6524,6 +6526,8 @@ public class TextModerationPlusResponseBody : Tea.TeaModel {
         public var sensitiveLevel: String?
 
         public var sensitiveResult: [TextModerationPlusResponseBody.Data.SensitiveResult]?
+
+        public var translatedContent: String?
 
         public override init() {
             super.init()
@@ -6559,6 +6563,9 @@ public class TextModerationPlusResponseBody : Tea.TeaModel {
             if self.dataId != nil {
                 map["DataId"] = self.dataId!
             }
+            if self.detectedLanguage != nil {
+                map["DetectedLanguage"] = self.detectedLanguage!
+            }
             if self.manualTaskId != nil {
                 map["ManualTaskId"] = self.manualTaskId!
             }
@@ -6584,6 +6591,9 @@ public class TextModerationPlusResponseBody : Tea.TeaModel {
                     tmp.append(k.toMap())
                 }
                 map["SensitiveResult"] = tmp
+            }
+            if self.translatedContent != nil {
+                map["TranslatedContent"] = self.translatedContent!
             }
             return map
         }
@@ -6622,6 +6632,9 @@ public class TextModerationPlusResponseBody : Tea.TeaModel {
             if let value = dict["DataId"] as? String {
                 self.dataId = value
             }
+            if let value = dict["DetectedLanguage"] as? String {
+                self.detectedLanguage = value
+            }
             if let value = dict["ManualTaskId"] as? String {
                 self.manualTaskId = value
             }
@@ -6659,6 +6672,9 @@ public class TextModerationPlusResponseBody : Tea.TeaModel {
                     }
                 }
                 self.sensitiveResult = tmp
+            }
+            if let value = dict["TranslatedContent"] as? String {
+                self.translatedContent = value
             }
         }
     }
