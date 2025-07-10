@@ -80,6 +80,12 @@ open class Client : AlibabacloudOpenApi.Client {
             request.matchRulesShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.matchRules, "MatchRules", "json")
         }
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.clientToken)) {
+            query["ClientToken"] = request.clientToken ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.deliveryMode)) {
+            query["DeliveryMode"] = request.deliveryMode ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.endpointsShrink)) {
             query["Endpoints"] = request.endpointsShrink ?? "";
         }
@@ -127,6 +133,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(tmpReq.dlqPolicy)) {
             request.dlqPolicyShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.dlqPolicy, "DlqPolicy", "json")
         }
+        if (!TeaUtils.Client.isUnset(tmpReq.tenantRateLimitPolicy)) {
+            request.tenantRateLimitPolicyShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.tenantRateLimitPolicy, "TenantRateLimitPolicy", "json")
+        }
         var query: [String: Any] = [:]
         if (!TeaUtils.Client.isUnset(request.delaySeconds)) {
             query["DelaySeconds"] = request.delaySeconds!;
@@ -151,6 +160,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.tag)) {
             query["Tag"] = request.tag ?? [];
+        }
+        if (!TeaUtils.Client.isUnset(request.tenantRateLimitPolicyShrink)) {
+            query["TenantRateLimitPolicy"] = request.tenantRateLimitPolicyShrink ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.visibilityTimeout)) {
             query["VisibilityTimeout"] = request.visibilityTimeout!;
@@ -688,6 +700,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(tmpReq.dlqPolicy)) {
             request.dlqPolicyShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.dlqPolicy, "DlqPolicy", "json")
         }
+        if (!TeaUtils.Client.isUnset(tmpReq.tenantRateLimitPolicy)) {
+            request.tenantRateLimitPolicyShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.tenantRateLimitPolicy, "TenantRateLimitPolicy", "json")
+        }
         var query: [String: Any] = [:]
         if (!TeaUtils.Client.isUnset(request.delaySeconds)) {
             query["DelaySeconds"] = request.delaySeconds!;
@@ -709,6 +724,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.queueName)) {
             query["QueueName"] = request.queueName ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.tenantRateLimitPolicyShrink)) {
+            query["TenantRateLimitPolicy"] = request.tenantRateLimitPolicyShrink ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.visibilityTimeout)) {
             query["VisibilityTimeout"] = request.visibilityTimeout!;
@@ -745,6 +763,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(tmpReq.dlqPolicy)) {
             request.dlqPolicyShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.dlqPolicy, "DlqPolicy", "json")
         }
+        if (!TeaUtils.Client.isUnset(tmpReq.tenantRateLimitPolicy)) {
+            request.tenantRateLimitPolicyShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.tenantRateLimitPolicy, "TenantRateLimitPolicy", "json")
+        }
         var query: [String: Any] = [:]
         if (!TeaUtils.Client.isUnset(request.dlqPolicyShrink)) {
             query["DlqPolicy"] = request.dlqPolicyShrink ?? "";
@@ -754,6 +775,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.subscriptionName)) {
             query["SubscriptionName"] = request.subscriptionName ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.tenantRateLimitPolicyShrink)) {
+            query["TenantRateLimitPolicy"] = request.tenantRateLimitPolicyShrink ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.topicName)) {
             query["TopicName"] = request.topicName ?? "";
@@ -827,12 +851,33 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(tmpReq.dlqPolicy)) {
             request.dlqPolicyShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.dlqPolicy, "DlqPolicy", "json")
         }
+        if (!TeaUtils.Client.isUnset(tmpReq.dmAttributes)) {
+            request.dmAttributesShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.dmAttributes, "DmAttributes", "json")
+        }
+        if (!TeaUtils.Client.isUnset(tmpReq.dysmsAttributes)) {
+            request.dysmsAttributesShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.dysmsAttributes, "DysmsAttributes", "json")
+        }
+        if (!TeaUtils.Client.isUnset(tmpReq.kafkaAttributes)) {
+            request.kafkaAttributesShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.kafkaAttributes, "KafkaAttributes", "json")
+        }
+        if (!TeaUtils.Client.isUnset(tmpReq.tenantRateLimitPolicy)) {
+            request.tenantRateLimitPolicyShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.tenantRateLimitPolicy, "TenantRateLimitPolicy", "json")
+        }
         var query: [String: Any] = [:]
         if (!TeaUtils.Client.isUnset(request.dlqPolicyShrink)) {
             query["DlqPolicy"] = request.dlqPolicyShrink ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.dmAttributesShrink)) {
+            query["DmAttributes"] = request.dmAttributesShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.dysmsAttributesShrink)) {
+            query["DysmsAttributes"] = request.dysmsAttributesShrink ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.endpoint)) {
             query["Endpoint"] = request.endpoint ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.kafkaAttributesShrink)) {
+            query["KafkaAttributes"] = request.kafkaAttributesShrink ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.messageTag)) {
             query["MessageTag"] = request.messageTag ?? "";
@@ -851,6 +896,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.subscriptionName)) {
             query["SubscriptionName"] = request.subscriptionName ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.tenantRateLimitPolicyShrink)) {
+            query["TenantRateLimitPolicy"] = request.tenantRateLimitPolicyShrink ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.topicName)) {
             query["TopicName"] = request.topicName ?? "";

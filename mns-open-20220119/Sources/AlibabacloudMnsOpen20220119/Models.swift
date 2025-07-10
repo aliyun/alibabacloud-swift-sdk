@@ -306,6 +306,10 @@ public class CreateEventRuleRequest : Tea.TeaModel {
             }
         }
     }
+    public var clientToken: String?
+
+    public var deliveryMode: String?
+
     public var endpoints: [CreateEventRuleRequest.Endpoints]?
 
     public var eventTypes: [String]?
@@ -330,6 +334,12 @@ public class CreateEventRuleRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.clientToken != nil {
+            map["ClientToken"] = self.clientToken!
+        }
+        if self.deliveryMode != nil {
+            map["DeliveryMode"] = self.deliveryMode!
+        }
         if self.endpoints != nil {
             var tmp : [Any] = []
             for k in self.endpoints! {
@@ -362,6 +372,12 @@ public class CreateEventRuleRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["ClientToken"] as? String {
+            self.clientToken = value
+        }
+        if let value = dict["DeliveryMode"] as? String {
+            self.deliveryMode = value
+        }
         if let value = dict["Endpoints"] as? [Any?] {
             var tmp : [CreateEventRuleRequest.Endpoints] = []
             for v in value {
@@ -407,6 +423,10 @@ public class CreateEventRuleRequest : Tea.TeaModel {
 }
 
 public class CreateEventRuleShrinkRequest : Tea.TeaModel {
+    public var clientToken: String?
+
+    public var deliveryMode: String?
+
     public var endpointsShrink: String?
 
     public var eventTypesShrink: String?
@@ -431,6 +451,12 @@ public class CreateEventRuleShrinkRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.clientToken != nil {
+            map["ClientToken"] = self.clientToken!
+        }
+        if self.deliveryMode != nil {
+            map["DeliveryMode"] = self.deliveryMode!
+        }
         if self.endpointsShrink != nil {
             map["Endpoints"] = self.endpointsShrink!
         }
@@ -451,6 +477,12 @@ public class CreateEventRuleShrinkRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["ClientToken"] as? String {
+            self.clientToken = value
+        }
+        if let value = dict["DeliveryMode"] as? String {
+            self.deliveryMode = value
+        }
         if let value = dict["Endpoints"] as? String {
             self.endpointsShrink = value
         }
@@ -675,6 +707,44 @@ public class CreateQueueRequest : Tea.TeaModel {
             }
         }
     }
+    public class TenantRateLimitPolicy : Tea.TeaModel {
+        public var enabled: Bool?
+
+        public var maxReceivesPerSecond: Int32?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.enabled != nil {
+                map["Enabled"] = self.enabled!
+            }
+            if self.maxReceivesPerSecond != nil {
+                map["MaxReceivesPerSecond"] = self.maxReceivesPerSecond!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["Enabled"] as? Bool {
+                self.enabled = value
+            }
+            if let value = dict["MaxReceivesPerSecond"] as? Int32 {
+                self.maxReceivesPerSecond = value
+            }
+        }
+    }
     public var delaySeconds: Int64?
 
     public var dlqPolicy: CreateQueueRequest.DlqPolicy?
@@ -691,6 +761,8 @@ public class CreateQueueRequest : Tea.TeaModel {
 
     public var tag: [CreateQueueRequest.Tag]?
 
+    public var tenantRateLimitPolicy: CreateQueueRequest.TenantRateLimitPolicy?
+
     public var visibilityTimeout: Int64?
 
     public override init() {
@@ -704,6 +776,7 @@ public class CreateQueueRequest : Tea.TeaModel {
 
     public override func validate() throws -> Void {
         try self.dlqPolicy?.validate()
+        try self.tenantRateLimitPolicy?.validate()
     }
 
     public override func toMap() -> [String : Any] {
@@ -735,6 +808,9 @@ public class CreateQueueRequest : Tea.TeaModel {
                 tmp.append(k.toMap())
             }
             map["Tag"] = tmp
+        }
+        if self.tenantRateLimitPolicy != nil {
+            map["TenantRateLimitPolicy"] = self.tenantRateLimitPolicy?.toMap()
         }
         if self.visibilityTimeout != nil {
             map["VisibilityTimeout"] = self.visibilityTimeout!
@@ -779,6 +855,11 @@ public class CreateQueueRequest : Tea.TeaModel {
                 }
             }
             self.tag = tmp
+        }
+        if let value = dict["TenantRateLimitPolicy"] as? [String: Any?] {
+            var model = CreateQueueRequest.TenantRateLimitPolicy()
+            model.fromMap(value)
+            self.tenantRateLimitPolicy = model
         }
         if let value = dict["VisibilityTimeout"] as? Int64 {
             self.visibilityTimeout = value
@@ -841,6 +922,8 @@ public class CreateQueueShrinkRequest : Tea.TeaModel {
 
     public var tag: [CreateQueueShrinkRequest.Tag]?
 
+    public var tenantRateLimitPolicyShrink: String?
+
     public var visibilityTimeout: Int64?
 
     public override init() {
@@ -885,6 +968,9 @@ public class CreateQueueShrinkRequest : Tea.TeaModel {
             }
             map["Tag"] = tmp
         }
+        if self.tenantRateLimitPolicyShrink != nil {
+            map["TenantRateLimitPolicy"] = self.tenantRateLimitPolicyShrink!
+        }
         if self.visibilityTimeout != nil {
             map["VisibilityTimeout"] = self.visibilityTimeout!
         }
@@ -926,6 +1012,9 @@ public class CreateQueueShrinkRequest : Tea.TeaModel {
                 }
             }
             self.tag = tmp
+        }
+        if let value = dict["TenantRateLimitPolicy"] as? String {
+            self.tenantRateLimitPolicyShrink = value
         }
         if let value = dict["VisibilityTimeout"] as? Int64 {
             self.visibilityTimeout = value
@@ -2603,6 +2692,44 @@ public class GetQueueAttributesResponseBody : Tea.TeaModel {
                 }
             }
         }
+        public class TenantRateLimitPolicy : Tea.TeaModel {
+            public var enabled: Bool?
+
+            public var maxReceivesPerSecond: Int32?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.enabled != nil {
+                    map["Enabled"] = self.enabled!
+                }
+                if self.maxReceivesPerSecond != nil {
+                    map["MaxReceivesPerSecond"] = self.maxReceivesPerSecond!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["Enabled"] as? Bool {
+                    self.enabled = value
+                }
+                if let value = dict["MaxReceivesPerSecond"] as? Int32 {
+                    self.maxReceivesPerSecond = value
+                }
+            }
+        }
         public var activeMessages: Int64?
 
         public var createTime: Int64?
@@ -2629,6 +2756,8 @@ public class GetQueueAttributesResponseBody : Tea.TeaModel {
 
         public var tags: [GetQueueAttributesResponseBody.Data.Tags]?
 
+        public var tenantRateLimitPolicy: GetQueueAttributesResponseBody.Data.TenantRateLimitPolicy?
+
         public var visibilityTimeout: Int64?
 
         public override init() {
@@ -2642,6 +2771,7 @@ public class GetQueueAttributesResponseBody : Tea.TeaModel {
 
         public override func validate() throws -> Void {
             try self.dlqPolicy?.validate()
+            try self.tenantRateLimitPolicy?.validate()
         }
 
         public override func toMap() -> [String : Any] {
@@ -2688,6 +2818,9 @@ public class GetQueueAttributesResponseBody : Tea.TeaModel {
                     tmp.append(k.toMap())
                 }
                 map["Tags"] = tmp
+            }
+            if self.tenantRateLimitPolicy != nil {
+                map["TenantRateLimitPolicy"] = self.tenantRateLimitPolicy?.toMap()
             }
             if self.visibilityTimeout != nil {
                 map["VisibilityTimeout"] = self.visibilityTimeout!
@@ -2747,6 +2880,11 @@ public class GetQueueAttributesResponseBody : Tea.TeaModel {
                     }
                 }
                 self.tags = tmp
+            }
+            if let value = dict["TenantRateLimitPolicy"] as? [String: Any?] {
+                var model = GetQueueAttributesResponseBody.Data.TenantRateLimitPolicy()
+                model.fromMap(value)
+                self.tenantRateLimitPolicy = model
             }
             if let value = dict["VisibilityTimeout"] as? Int64 {
                 self.visibilityTimeout = value
@@ -2955,6 +3093,44 @@ public class GetSubscriptionAttributesResponseBody : Tea.TeaModel {
                 }
             }
         }
+        public class TenantRateLimitPolicy : Tea.TeaModel {
+            public var enabled: Bool?
+
+            public var maxReceivesPerSecond: Int32?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.enabled != nil {
+                    map["Enabled"] = self.enabled!
+                }
+                if self.maxReceivesPerSecond != nil {
+                    map["MaxReceivesPerSecond"] = self.maxReceivesPerSecond!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["Enabled"] as? Bool {
+                    self.enabled = value
+                }
+                if let value = dict["MaxReceivesPerSecond"] as? Int32 {
+                    self.maxReceivesPerSecond = value
+                }
+            }
+        }
         public var createTime: Int64?
 
         public var dlqPolicy: GetSubscriptionAttributesResponseBody.Data.DlqPolicy?
@@ -2971,6 +3147,8 @@ public class GetSubscriptionAttributesResponseBody : Tea.TeaModel {
 
         public var subscriptionName: String?
 
+        public var tenantRateLimitPolicy: GetSubscriptionAttributesResponseBody.Data.TenantRateLimitPolicy?
+
         public var topicName: String?
 
         public var topicOwner: String?
@@ -2986,6 +3164,7 @@ public class GetSubscriptionAttributesResponseBody : Tea.TeaModel {
 
         public override func validate() throws -> Void {
             try self.dlqPolicy?.validate()
+            try self.tenantRateLimitPolicy?.validate()
         }
 
         public override func toMap() -> [String : Any] {
@@ -3013,6 +3192,9 @@ public class GetSubscriptionAttributesResponseBody : Tea.TeaModel {
             }
             if self.subscriptionName != nil {
                 map["SubscriptionName"] = self.subscriptionName!
+            }
+            if self.tenantRateLimitPolicy != nil {
+                map["TenantRateLimitPolicy"] = self.tenantRateLimitPolicy?.toMap()
             }
             if self.topicName != nil {
                 map["TopicName"] = self.topicName!
@@ -3050,6 +3232,11 @@ public class GetSubscriptionAttributesResponseBody : Tea.TeaModel {
             }
             if let value = dict["SubscriptionName"] as? String {
                 self.subscriptionName = value
+            }
+            if let value = dict["TenantRateLimitPolicy"] as? [String: Any?] {
+                var model = GetSubscriptionAttributesResponseBody.Data.TenantRateLimitPolicy()
+                model.fromMap(value)
+                self.tenantRateLimitPolicy = model
             }
             if let value = dict["TopicName"] as? String {
                 self.topicName = value
@@ -5214,6 +5401,44 @@ public class SetQueueAttributesRequest : Tea.TeaModel {
             }
         }
     }
+    public class TenantRateLimitPolicy : Tea.TeaModel {
+        public var enabled: Bool?
+
+        public var maxReceivesPerSecond: Int32?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.enabled != nil {
+                map["Enabled"] = self.enabled!
+            }
+            if self.maxReceivesPerSecond != nil {
+                map["MaxReceivesPerSecond"] = self.maxReceivesPerSecond!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["Enabled"] as? Bool {
+                self.enabled = value
+            }
+            if let value = dict["MaxReceivesPerSecond"] as? Int32 {
+                self.maxReceivesPerSecond = value
+            }
+        }
+    }
     public var delaySeconds: Int64?
 
     public var dlqPolicy: SetQueueAttributesRequest.DlqPolicy?
@@ -5228,6 +5453,8 @@ public class SetQueueAttributesRequest : Tea.TeaModel {
 
     public var queueName: String?
 
+    public var tenantRateLimitPolicy: SetQueueAttributesRequest.TenantRateLimitPolicy?
+
     public var visibilityTimeout: Int64?
 
     public override init() {
@@ -5241,6 +5468,7 @@ public class SetQueueAttributesRequest : Tea.TeaModel {
 
     public override func validate() throws -> Void {
         try self.dlqPolicy?.validate()
+        try self.tenantRateLimitPolicy?.validate()
     }
 
     public override func toMap() -> [String : Any] {
@@ -5265,6 +5493,9 @@ public class SetQueueAttributesRequest : Tea.TeaModel {
         }
         if self.queueName != nil {
             map["QueueName"] = self.queueName!
+        }
+        if self.tenantRateLimitPolicy != nil {
+            map["TenantRateLimitPolicy"] = self.tenantRateLimitPolicy?.toMap()
         }
         if self.visibilityTimeout != nil {
             map["VisibilityTimeout"] = self.visibilityTimeout!
@@ -5297,6 +5528,11 @@ public class SetQueueAttributesRequest : Tea.TeaModel {
         if let value = dict["QueueName"] as? String {
             self.queueName = value
         }
+        if let value = dict["TenantRateLimitPolicy"] as? [String: Any?] {
+            var model = SetQueueAttributesRequest.TenantRateLimitPolicy()
+            model.fromMap(value)
+            self.tenantRateLimitPolicy = model
+        }
         if let value = dict["VisibilityTimeout"] as? Int64 {
             self.visibilityTimeout = value
         }
@@ -5317,6 +5553,8 @@ public class SetQueueAttributesShrinkRequest : Tea.TeaModel {
     public var pollingWaitSeconds: Int64?
 
     public var queueName: String?
+
+    public var tenantRateLimitPolicyShrink: String?
 
     public var visibilityTimeout: Int64?
 
@@ -5355,6 +5593,9 @@ public class SetQueueAttributesShrinkRequest : Tea.TeaModel {
         if self.queueName != nil {
             map["QueueName"] = self.queueName!
         }
+        if self.tenantRateLimitPolicyShrink != nil {
+            map["TenantRateLimitPolicy"] = self.tenantRateLimitPolicyShrink!
+        }
         if self.visibilityTimeout != nil {
             map["VisibilityTimeout"] = self.visibilityTimeout!
         }
@@ -5383,6 +5624,9 @@ public class SetQueueAttributesShrinkRequest : Tea.TeaModel {
         }
         if let value = dict["QueueName"] as? String {
             self.queueName = value
+        }
+        if let value = dict["TenantRateLimitPolicy"] as? String {
+            self.tenantRateLimitPolicyShrink = value
         }
         if let value = dict["VisibilityTimeout"] as? Int64 {
             self.visibilityTimeout = value
@@ -5599,11 +5843,51 @@ public class SetSubscriptionAttributesRequest : Tea.TeaModel {
             }
         }
     }
+    public class TenantRateLimitPolicy : Tea.TeaModel {
+        public var enabled: Bool?
+
+        public var maxReceivesPerSecond: Int32?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.enabled != nil {
+                map["Enabled"] = self.enabled!
+            }
+            if self.maxReceivesPerSecond != nil {
+                map["MaxReceivesPerSecond"] = self.maxReceivesPerSecond!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["Enabled"] as? Bool {
+                self.enabled = value
+            }
+            if let value = dict["MaxReceivesPerSecond"] as? Int32 {
+                self.maxReceivesPerSecond = value
+            }
+        }
+    }
     public var dlqPolicy: SetSubscriptionAttributesRequest.DlqPolicy?
 
     public var notifyStrategy: String?
 
     public var subscriptionName: String?
+
+    public var tenantRateLimitPolicy: SetSubscriptionAttributesRequest.TenantRateLimitPolicy?
 
     public var topicName: String?
 
@@ -5618,6 +5902,7 @@ public class SetSubscriptionAttributesRequest : Tea.TeaModel {
 
     public override func validate() throws -> Void {
         try self.dlqPolicy?.validate()
+        try self.tenantRateLimitPolicy?.validate()
     }
 
     public override func toMap() -> [String : Any] {
@@ -5630,6 +5915,9 @@ public class SetSubscriptionAttributesRequest : Tea.TeaModel {
         }
         if self.subscriptionName != nil {
             map["SubscriptionName"] = self.subscriptionName!
+        }
+        if self.tenantRateLimitPolicy != nil {
+            map["TenantRateLimitPolicy"] = self.tenantRateLimitPolicy?.toMap()
         }
         if self.topicName != nil {
             map["TopicName"] = self.topicName!
@@ -5650,6 +5938,11 @@ public class SetSubscriptionAttributesRequest : Tea.TeaModel {
         if let value = dict["SubscriptionName"] as? String {
             self.subscriptionName = value
         }
+        if let value = dict["TenantRateLimitPolicy"] as? [String: Any?] {
+            var model = SetSubscriptionAttributesRequest.TenantRateLimitPolicy()
+            model.fromMap(value)
+            self.tenantRateLimitPolicy = model
+        }
         if let value = dict["TopicName"] as? String {
             self.topicName = value
         }
@@ -5662,6 +5955,8 @@ public class SetSubscriptionAttributesShrinkRequest : Tea.TeaModel {
     public var notifyStrategy: String?
 
     public var subscriptionName: String?
+
+    public var tenantRateLimitPolicyShrink: String?
 
     public var topicName: String?
 
@@ -5688,6 +5983,9 @@ public class SetSubscriptionAttributesShrinkRequest : Tea.TeaModel {
         if self.subscriptionName != nil {
             map["SubscriptionName"] = self.subscriptionName!
         }
+        if self.tenantRateLimitPolicyShrink != nil {
+            map["TenantRateLimitPolicy"] = self.tenantRateLimitPolicyShrink!
+        }
         if self.topicName != nil {
             map["TopicName"] = self.topicName!
         }
@@ -5704,6 +6002,9 @@ public class SetSubscriptionAttributesShrinkRequest : Tea.TeaModel {
         }
         if let value = dict["SubscriptionName"] as? String {
             self.subscriptionName = value
+        }
+        if let value = dict["TenantRateLimitPolicy"] as? String {
+            self.tenantRateLimitPolicyShrink = value
         }
         if let value = dict["TopicName"] as? String {
             self.topicName = value
@@ -6137,9 +6438,159 @@ public class SubscribeRequest : Tea.TeaModel {
             }
         }
     }
+    public class DmAttributes : Tea.TeaModel {
+        public var accountName: String?
+
+        public var subject: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.accountName != nil {
+                map["AccountName"] = self.accountName!
+            }
+            if self.subject != nil {
+                map["Subject"] = self.subject!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["AccountName"] as? String {
+                self.accountName = value
+            }
+            if let value = dict["Subject"] as? String {
+                self.subject = value
+            }
+        }
+    }
+    public class DysmsAttributes : Tea.TeaModel {
+        public var signName: String?
+
+        public var templateCode: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.signName != nil {
+                map["SignName"] = self.signName!
+            }
+            if self.templateCode != nil {
+                map["TemplateCode"] = self.templateCode!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["SignName"] as? String {
+                self.signName = value
+            }
+            if let value = dict["TemplateCode"] as? String {
+                self.templateCode = value
+            }
+        }
+    }
+    public class KafkaAttributes : Tea.TeaModel {
+        public var businessMode: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.businessMode != nil {
+                map["BusinessMode"] = self.businessMode!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["BusinessMode"] as? String {
+                self.businessMode = value
+            }
+        }
+    }
+    public class TenantRateLimitPolicy : Tea.TeaModel {
+        public var enabled: Bool?
+
+        public var maxReceivesPerSecond: Int32?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.enabled != nil {
+                map["Enabled"] = self.enabled!
+            }
+            if self.maxReceivesPerSecond != nil {
+                map["MaxReceivesPerSecond"] = self.maxReceivesPerSecond!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["Enabled"] as? Bool {
+                self.enabled = value
+            }
+            if let value = dict["MaxReceivesPerSecond"] as? Int32 {
+                self.maxReceivesPerSecond = value
+            }
+        }
+    }
     public var dlqPolicy: SubscribeRequest.DlqPolicy?
 
+    public var dmAttributes: SubscribeRequest.DmAttributes?
+
+    public var dysmsAttributes: SubscribeRequest.DysmsAttributes?
+
     public var endpoint: String?
+
+    public var kafkaAttributes: SubscribeRequest.KafkaAttributes?
 
     public var messageTag: String?
 
@@ -6152,6 +6603,8 @@ public class SubscribeRequest : Tea.TeaModel {
     public var stsRoleArn: String?
 
     public var subscriptionName: String?
+
+    public var tenantRateLimitPolicy: SubscribeRequest.TenantRateLimitPolicy?
 
     public var topicName: String?
 
@@ -6166,6 +6619,10 @@ public class SubscribeRequest : Tea.TeaModel {
 
     public override func validate() throws -> Void {
         try self.dlqPolicy?.validate()
+        try self.dmAttributes?.validate()
+        try self.dysmsAttributes?.validate()
+        try self.kafkaAttributes?.validate()
+        try self.tenantRateLimitPolicy?.validate()
     }
 
     public override func toMap() -> [String : Any] {
@@ -6173,8 +6630,17 @@ public class SubscribeRequest : Tea.TeaModel {
         if self.dlqPolicy != nil {
             map["DlqPolicy"] = self.dlqPolicy?.toMap()
         }
+        if self.dmAttributes != nil {
+            map["DmAttributes"] = self.dmAttributes?.toMap()
+        }
+        if self.dysmsAttributes != nil {
+            map["DysmsAttributes"] = self.dysmsAttributes?.toMap()
+        }
         if self.endpoint != nil {
             map["Endpoint"] = self.endpoint!
+        }
+        if self.kafkaAttributes != nil {
+            map["KafkaAttributes"] = self.kafkaAttributes?.toMap()
         }
         if self.messageTag != nil {
             map["MessageTag"] = self.messageTag!
@@ -6194,6 +6660,9 @@ public class SubscribeRequest : Tea.TeaModel {
         if self.subscriptionName != nil {
             map["SubscriptionName"] = self.subscriptionName!
         }
+        if self.tenantRateLimitPolicy != nil {
+            map["TenantRateLimitPolicy"] = self.tenantRateLimitPolicy?.toMap()
+        }
         if self.topicName != nil {
             map["TopicName"] = self.topicName!
         }
@@ -6207,8 +6676,23 @@ public class SubscribeRequest : Tea.TeaModel {
             model.fromMap(value)
             self.dlqPolicy = model
         }
+        if let value = dict["DmAttributes"] as? [String: Any?] {
+            var model = SubscribeRequest.DmAttributes()
+            model.fromMap(value)
+            self.dmAttributes = model
+        }
+        if let value = dict["DysmsAttributes"] as? [String: Any?] {
+            var model = SubscribeRequest.DysmsAttributes()
+            model.fromMap(value)
+            self.dysmsAttributes = model
+        }
         if let value = dict["Endpoint"] as? String {
             self.endpoint = value
+        }
+        if let value = dict["KafkaAttributes"] as? [String: Any?] {
+            var model = SubscribeRequest.KafkaAttributes()
+            model.fromMap(value)
+            self.kafkaAttributes = model
         }
         if let value = dict["MessageTag"] as? String {
             self.messageTag = value
@@ -6228,6 +6712,11 @@ public class SubscribeRequest : Tea.TeaModel {
         if let value = dict["SubscriptionName"] as? String {
             self.subscriptionName = value
         }
+        if let value = dict["TenantRateLimitPolicy"] as? [String: Any?] {
+            var model = SubscribeRequest.TenantRateLimitPolicy()
+            model.fromMap(value)
+            self.tenantRateLimitPolicy = model
+        }
         if let value = dict["TopicName"] as? String {
             self.topicName = value
         }
@@ -6237,7 +6726,13 @@ public class SubscribeRequest : Tea.TeaModel {
 public class SubscribeShrinkRequest : Tea.TeaModel {
     public var dlqPolicyShrink: String?
 
+    public var dmAttributesShrink: String?
+
+    public var dysmsAttributesShrink: String?
+
     public var endpoint: String?
+
+    public var kafkaAttributesShrink: String?
 
     public var messageTag: String?
 
@@ -6250,6 +6745,8 @@ public class SubscribeShrinkRequest : Tea.TeaModel {
     public var stsRoleArn: String?
 
     public var subscriptionName: String?
+
+    public var tenantRateLimitPolicyShrink: String?
 
     public var topicName: String?
 
@@ -6270,8 +6767,17 @@ public class SubscribeShrinkRequest : Tea.TeaModel {
         if self.dlqPolicyShrink != nil {
             map["DlqPolicy"] = self.dlqPolicyShrink!
         }
+        if self.dmAttributesShrink != nil {
+            map["DmAttributes"] = self.dmAttributesShrink!
+        }
+        if self.dysmsAttributesShrink != nil {
+            map["DysmsAttributes"] = self.dysmsAttributesShrink!
+        }
         if self.endpoint != nil {
             map["Endpoint"] = self.endpoint!
+        }
+        if self.kafkaAttributesShrink != nil {
+            map["KafkaAttributes"] = self.kafkaAttributesShrink!
         }
         if self.messageTag != nil {
             map["MessageTag"] = self.messageTag!
@@ -6291,6 +6797,9 @@ public class SubscribeShrinkRequest : Tea.TeaModel {
         if self.subscriptionName != nil {
             map["SubscriptionName"] = self.subscriptionName!
         }
+        if self.tenantRateLimitPolicyShrink != nil {
+            map["TenantRateLimitPolicy"] = self.tenantRateLimitPolicyShrink!
+        }
         if self.topicName != nil {
             map["TopicName"] = self.topicName!
         }
@@ -6302,8 +6811,17 @@ public class SubscribeShrinkRequest : Tea.TeaModel {
         if let value = dict["DlqPolicy"] as? String {
             self.dlqPolicyShrink = value
         }
+        if let value = dict["DmAttributes"] as? String {
+            self.dmAttributesShrink = value
+        }
+        if let value = dict["DysmsAttributes"] as? String {
+            self.dysmsAttributesShrink = value
+        }
         if let value = dict["Endpoint"] as? String {
             self.endpoint = value
+        }
+        if let value = dict["KafkaAttributes"] as? String {
+            self.kafkaAttributesShrink = value
         }
         if let value = dict["MessageTag"] as? String {
             self.messageTag = value
@@ -6322,6 +6840,9 @@ public class SubscribeShrinkRequest : Tea.TeaModel {
         }
         if let value = dict["SubscriptionName"] as? String {
             self.subscriptionName = value
+        }
+        if let value = dict["TenantRateLimitPolicy"] as? String {
+            self.tenantRateLimitPolicyShrink = value
         }
         if let value = dict["TopicName"] as? String {
             self.topicName = value
