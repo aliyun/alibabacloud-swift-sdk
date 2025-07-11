@@ -8949,6 +8949,8 @@ public class CreateDesktopGroupRequest : Tea.TeaModel {
 
     public var defaultLanguage: String?
 
+    public var deleteDuration: Int64?
+
     public var desktopGroupName: String?
 
     public var desktopType: String?
@@ -9100,6 +9102,9 @@ public class CreateDesktopGroupRequest : Tea.TeaModel {
         }
         if self.defaultLanguage != nil {
             map["DefaultLanguage"] = self.defaultLanguage!
+        }
+        if self.deleteDuration != nil {
+            map["DeleteDuration"] = self.deleteDuration!
         }
         if self.desktopGroupName != nil {
             map["DesktopGroupName"] = self.desktopGroupName!
@@ -9289,6 +9294,9 @@ public class CreateDesktopGroupRequest : Tea.TeaModel {
         }
         if let value = dict["DefaultLanguage"] as? String {
             self.defaultLanguage = value
+        }
+        if let value = dict["DeleteDuration"] as? Int64 {
+            self.deleteDuration = value
         }
         if let value = dict["DesktopGroupName"] as? String {
             self.desktopGroupName = value
@@ -23271,6 +23279,8 @@ public class DescribeDesktopGroupsResponseBody : Tea.TeaModel {
 
         public var expiredTime: String?
 
+        public var expiredTimes: [String]?
+
         public var gpuCount: Double?
 
         public var gpuDriverVersion: String?
@@ -23412,6 +23422,9 @@ public class DescribeDesktopGroupsResponseBody : Tea.TeaModel {
             }
             if self.expiredTime != nil {
                 map["ExpiredTime"] = self.expiredTime!
+            }
+            if self.expiredTimes != nil {
+                map["ExpiredTimes"] = self.expiredTimes!
             }
             if self.gpuCount != nil {
                 map["GpuCount"] = self.gpuCount!
@@ -23593,6 +23606,9 @@ public class DescribeDesktopGroupsResponseBody : Tea.TeaModel {
             }
             if let value = dict["ExpiredTime"] as? String {
                 self.expiredTime = value
+            }
+            if let value = dict["ExpiredTimes"] as? [String] {
+                self.expiredTimes = value
             }
             if let value = dict["GpuCount"] as? Double {
                 self.gpuCount = value
@@ -27479,6 +27495,8 @@ public class DescribeDesktopsInGroupResponseBody : Tea.TeaModel {
 
         public var endUserNames: [String]?
 
+        public var expiredTime: String?
+
         public var fotaVersion: String?
 
         public var gpuDriverVersion: String?
@@ -27543,6 +27561,9 @@ public class DescribeDesktopsInGroupResponseBody : Tea.TeaModel {
             }
             if self.endUserNames != nil {
                 map["EndUserNames"] = self.endUserNames!
+            }
+            if self.expiredTime != nil {
+                map["ExpiredTime"] = self.expiredTime!
             }
             if self.fotaVersion != nil {
                 map["FotaVersion"] = self.fotaVersion!
@@ -27611,6 +27632,9 @@ public class DescribeDesktopsInGroupResponseBody : Tea.TeaModel {
             }
             if let value = dict["EndUserNames"] as? [String] {
                 self.endUserNames = value
+            }
+            if let value = dict["ExpiredTime"] as? String {
+                self.expiredTime = value
             }
             if let value = dict["FotaVersion"] as? String {
                 self.fotaVersion = value
@@ -45417,6 +45441,8 @@ public class GetDesktopGroupDetailResponseBody : Tea.TeaModel {
 
         public var expiredTime: String?
 
+        public var expiredTimes: [String]?
+
         public var gpuCount: Double?
 
         public var gpuSpec: String?
@@ -45445,6 +45471,8 @@ public class GetDesktopGroupDetailResponseBody : Tea.TeaModel {
 
         public var officeSiteType: String?
 
+        public var osType: String?
+
         public var ownBundleId: String?
 
         public var ownBundleName: String?
@@ -45462,6 +45490,8 @@ public class GetDesktopGroupDetailResponseBody : Tea.TeaModel {
         public var policyGroupNames: [String]?
 
         public var profileFollowSwitch: Bool?
+
+        public var protocolType: String?
 
         public var ratioThreshold: Double?
 
@@ -45547,6 +45577,9 @@ public class GetDesktopGroupDetailResponseBody : Tea.TeaModel {
             if self.expiredTime != nil {
                 map["ExpiredTime"] = self.expiredTime!
             }
+            if self.expiredTimes != nil {
+                map["ExpiredTimes"] = self.expiredTimes!
+            }
             if self.gpuCount != nil {
                 map["GpuCount"] = self.gpuCount!
             }
@@ -45589,6 +45622,9 @@ public class GetDesktopGroupDetailResponseBody : Tea.TeaModel {
             if self.officeSiteType != nil {
                 map["OfficeSiteType"] = self.officeSiteType!
             }
+            if self.osType != nil {
+                map["OsType"] = self.osType!
+            }
             if self.ownBundleId != nil {
                 map["OwnBundleId"] = self.ownBundleId!
             }
@@ -45615,6 +45651,9 @@ public class GetDesktopGroupDetailResponseBody : Tea.TeaModel {
             }
             if self.profileFollowSwitch != nil {
                 map["ProfileFollowSwitch"] = self.profileFollowSwitch!
+            }
+            if self.protocolType != nil {
+                map["ProtocolType"] = self.protocolType!
             }
             if self.ratioThreshold != nil {
                 map["RatioThreshold"] = self.ratioThreshold!
@@ -45710,6 +45749,9 @@ public class GetDesktopGroupDetailResponseBody : Tea.TeaModel {
             if let value = dict["ExpiredTime"] as? String {
                 self.expiredTime = value
             }
+            if let value = dict["ExpiredTimes"] as? [String] {
+                self.expiredTimes = value
+            }
             if let value = dict["GpuCount"] as? Double {
                 self.gpuCount = value
             }
@@ -45752,6 +45794,9 @@ public class GetDesktopGroupDetailResponseBody : Tea.TeaModel {
             if let value = dict["OfficeSiteType"] as? String {
                 self.officeSiteType = value
             }
+            if let value = dict["OsType"] as? String {
+                self.osType = value
+            }
             if let value = dict["OwnBundleId"] as? String {
                 self.ownBundleId = value
             }
@@ -45778,6 +45823,9 @@ public class GetDesktopGroupDetailResponseBody : Tea.TeaModel {
             }
             if let value = dict["ProfileFollowSwitch"] as? Bool {
                 self.profileFollowSwitch = value
+            }
+            if let value = dict["ProtocolType"] as? String {
+                self.protocolType = value
             }
             if let value = dict["RatioThreshold"] as? Double {
                 self.ratioThreshold = value
@@ -52772,6 +52820,8 @@ public class ModifyDesktopGroupRequest : Tea.TeaModel {
 
     public var connectDuration: Int64?
 
+    public var deleteDuration: Int64?
+
     public var desktopGroupId: String?
 
     public var desktopGroupName: String?
@@ -52844,6 +52894,9 @@ public class ModifyDesktopGroupRequest : Tea.TeaModel {
         }
         if self.connectDuration != nil {
             map["ConnectDuration"] = self.connectDuration!
+        }
+        if self.deleteDuration != nil {
+            map["DeleteDuration"] = self.deleteDuration!
         }
         if self.desktopGroupId != nil {
             map["DesktopGroupId"] = self.desktopGroupId!
@@ -52927,6 +52980,9 @@ public class ModifyDesktopGroupRequest : Tea.TeaModel {
         }
         if let value = dict["ConnectDuration"] as? Int64 {
             self.connectDuration = value
+        }
+        if let value = dict["DeleteDuration"] as? Int64 {
+            self.deleteDuration = value
         }
         if let value = dict["DesktopGroupId"] as? String {
             self.desktopGroupId = value
