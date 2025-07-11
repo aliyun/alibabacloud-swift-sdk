@@ -818,6 +818,8 @@ public class CreateArtifactRequest : Tea.TeaModel {
 
         public var dockerfilePath: String?
 
+        public var enableGpu: Bool?
+
         public var regionId: String?
 
         public var sourceContainerImage: String?
@@ -859,6 +861,9 @@ public class CreateArtifactRequest : Tea.TeaModel {
             }
             if self.dockerfilePath != nil {
                 map["DockerfilePath"] = self.dockerfilePath!
+            }
+            if self.enableGpu != nil {
+                map["EnableGpu"] = self.enableGpu!
             }
             if self.regionId != nil {
                 map["RegionId"] = self.regionId!
@@ -903,6 +908,9 @@ public class CreateArtifactRequest : Tea.TeaModel {
             }
             if let value = dict["DockerfilePath"] as? String {
                 self.dockerfilePath = value
+            }
+            if let value = dict["EnableGpu"] as? Bool {
+                self.enableGpu = value
             }
             if let value = dict["RegionId"] as? String {
                 self.regionId = value
@@ -20855,11 +20863,15 @@ public class UpdateArtifactRequest : Tea.TeaModel {
 
         public var dockerfilePath: String?
 
+        public var enableGpu: Bool?
+
         public var regionId: String?
 
         public var sourceContainerImage: String?
 
         public var sourceImageId: String?
+
+        public var systemDiskSize: Int64?
 
         public override init() {
             super.init()
@@ -20895,6 +20907,9 @@ public class UpdateArtifactRequest : Tea.TeaModel {
             if self.dockerfilePath != nil {
                 map["DockerfilePath"] = self.dockerfilePath!
             }
+            if self.enableGpu != nil {
+                map["EnableGpu"] = self.enableGpu!
+            }
             if self.regionId != nil {
                 map["RegionId"] = self.regionId!
             }
@@ -20903,6 +20918,9 @@ public class UpdateArtifactRequest : Tea.TeaModel {
             }
             if self.sourceImageId != nil {
                 map["SourceImageId"] = self.sourceImageId!
+            }
+            if self.systemDiskSize != nil {
+                map["SystemDiskSize"] = self.systemDiskSize!
             }
             return map
         }
@@ -20936,6 +20954,9 @@ public class UpdateArtifactRequest : Tea.TeaModel {
             if let value = dict["DockerfilePath"] as? String {
                 self.dockerfilePath = value
             }
+            if let value = dict["EnableGpu"] as? Bool {
+                self.enableGpu = value
+            }
             if let value = dict["RegionId"] as? String {
                 self.regionId = value
             }
@@ -20944,6 +20965,9 @@ public class UpdateArtifactRequest : Tea.TeaModel {
             }
             if let value = dict["SourceImageId"] as? String {
                 self.sourceImageId = value
+            }
+            if let value = dict["SystemDiskSize"] as? Int64 {
+                self.systemDiskSize = value
             }
         }
     }
