@@ -4883,6 +4883,150 @@ public class DeleteDefenseRuleResponse : Tea.TeaModel {
     }
 }
 
+public class DeleteDefenseRuleBlockIpRequest : Tea.TeaModel {
+    public var instanceId: String?
+
+    public var regionId: String?
+
+    public var resourceManagerResourceGroupId: String?
+
+    public var ruleId: Int64?
+
+    public var templateId: Int64?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.instanceId != nil {
+            map["InstanceId"] = self.instanceId!
+        }
+        if self.regionId != nil {
+            map["RegionId"] = self.regionId!
+        }
+        if self.resourceManagerResourceGroupId != nil {
+            map["ResourceManagerResourceGroupId"] = self.resourceManagerResourceGroupId!
+        }
+        if self.ruleId != nil {
+            map["RuleId"] = self.ruleId!
+        }
+        if self.templateId != nil {
+            map["TemplateId"] = self.templateId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["InstanceId"] as? String {
+            self.instanceId = value
+        }
+        if let value = dict["RegionId"] as? String {
+            self.regionId = value
+        }
+        if let value = dict["ResourceManagerResourceGroupId"] as? String {
+            self.resourceManagerResourceGroupId = value
+        }
+        if let value = dict["RuleId"] as? Int64 {
+            self.ruleId = value
+        }
+        if let value = dict["TemplateId"] as? Int64 {
+            self.templateId = value
+        }
+    }
+}
+
+public class DeleteDefenseRuleBlockIpResponseBody : Tea.TeaModel {
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+    }
+}
+
+public class DeleteDefenseRuleBlockIpResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: DeleteDefenseRuleBlockIpResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = DeleteDefenseRuleBlockIpResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
 public class DeleteDefenseTemplateRequest : Tea.TeaModel {
     public var instanceId: String?
 
@@ -16834,6 +16978,8 @@ public class DescribeDomainDNSRecordResponse : Tea.TeaModel {
 public class DescribeDomainDetailRequest : Tea.TeaModel {
     public var domain: String?
 
+    public var domainId: String?
+
     public var instanceId: String?
 
     public var regionId: String?
@@ -16855,6 +17001,9 @@ public class DescribeDomainDetailRequest : Tea.TeaModel {
         if self.domain != nil {
             map["Domain"] = self.domain!
         }
+        if self.domainId != nil {
+            map["DomainId"] = self.domainId!
+        }
         if self.instanceId != nil {
             map["InstanceId"] = self.instanceId!
         }
@@ -16868,6 +17017,9 @@ public class DescribeDomainDetailRequest : Tea.TeaModel {
         guard let dict else { return }
         if let value = dict["Domain"] as? String {
             self.domain = value
+        }
+        if let value = dict["DomainId"] as? String {
+            self.domainId = value
         }
         if let value = dict["InstanceId"] as? String {
             self.instanceId = value
@@ -17465,6 +17617,8 @@ public class DescribeDomainDetailResponseBody : Tea.TeaModel {
 
     public var domain: String?
 
+    public var domainId: String?
+
     public var listen: DescribeDomainDetailResponseBody.Listen?
 
     public var redirect: DescribeDomainDetailResponseBody.Redirect?
@@ -17475,7 +17629,7 @@ public class DescribeDomainDetailResponseBody : Tea.TeaModel {
 
     public var SM2CertDetail: DescribeDomainDetailResponseBody.SM2CertDetail?
 
-    public var status: Int64?
+    public var status: Int32?
 
     public override init() {
         super.init()
@@ -17503,6 +17657,9 @@ public class DescribeDomainDetailResponseBody : Tea.TeaModel {
         }
         if self.domain != nil {
             map["Domain"] = self.domain!
+        }
+        if self.domainId != nil {
+            map["DomainId"] = self.domainId!
         }
         if self.listen != nil {
             map["Listen"] = self.listen?.toMap()
@@ -17538,6 +17695,9 @@ public class DescribeDomainDetailResponseBody : Tea.TeaModel {
         if let value = dict["Domain"] as? String {
             self.domain = value
         }
+        if let value = dict["DomainId"] as? String {
+            self.domainId = value
+        }
         if let value = dict["Listen"] as? [String: Any?] {
             var model = DescribeDomainDetailResponseBody.Listen()
             model.fromMap(value)
@@ -17559,7 +17719,7 @@ public class DescribeDomainDetailResponseBody : Tea.TeaModel {
             model.fromMap(value)
             self.SM2CertDetail = model
         }
-        if let value = dict["Status"] as? Int64 {
+        if let value = dict["Status"] as? Int32 {
             self.status = value
         }
     }
@@ -18054,6 +18214,8 @@ public class DescribeDomainsResponseBody : Tea.TeaModel {
 
         public var domain: String?
 
+        public var domainId: String?
+
         public var listenPorts: DescribeDomainsResponseBody.Domains.ListenPorts?
 
         public var resourceManagerResourceGroupId: String?
@@ -18085,6 +18247,9 @@ public class DescribeDomainsResponseBody : Tea.TeaModel {
             if self.domain != nil {
                 map["Domain"] = self.domain!
             }
+            if self.domainId != nil {
+                map["DomainId"] = self.domainId!
+            }
             if self.listenPorts != nil {
                 map["ListenPorts"] = self.listenPorts?.toMap()
             }
@@ -18109,6 +18274,9 @@ public class DescribeDomainsResponseBody : Tea.TeaModel {
             }
             if let value = dict["Domain"] as? String {
                 self.domain = value
+            }
+            if let value = dict["DomainId"] as? String {
+                self.domainId = value
             }
             if let value = dict["ListenPorts"] as? [String: Any?] {
                 var model = DescribeDomainsResponseBody.Domains.ListenPorts()
@@ -39204,6 +39372,8 @@ public class ModifyDomainRequest : Tea.TeaModel {
 
     public var domain: String?
 
+    public var domainId: String?
+
     public var instanceId: String?
 
     public var listen: ModifyDomainRequest.Listen?
@@ -39234,6 +39404,9 @@ public class ModifyDomainRequest : Tea.TeaModel {
         if self.domain != nil {
             map["Domain"] = self.domain!
         }
+        if self.domainId != nil {
+            map["DomainId"] = self.domainId!
+        }
         if self.instanceId != nil {
             map["InstanceId"] = self.instanceId!
         }
@@ -39256,6 +39429,9 @@ public class ModifyDomainRequest : Tea.TeaModel {
         }
         if let value = dict["Domain"] as? String {
             self.domain = value
+        }
+        if let value = dict["DomainId"] as? String {
+            self.domainId = value
         }
         if let value = dict["InstanceId"] as? String {
             self.instanceId = value
@@ -39280,6 +39456,8 @@ public class ModifyDomainShrinkRequest : Tea.TeaModel {
     public var accessType: String?
 
     public var domain: String?
+
+    public var domainId: String?
 
     public var instanceId: String?
 
@@ -39309,6 +39487,9 @@ public class ModifyDomainShrinkRequest : Tea.TeaModel {
         if self.domain != nil {
             map["Domain"] = self.domain!
         }
+        if self.domainId != nil {
+            map["DomainId"] = self.domainId!
+        }
         if self.instanceId != nil {
             map["InstanceId"] = self.instanceId!
         }
@@ -39331,6 +39512,9 @@ public class ModifyDomainShrinkRequest : Tea.TeaModel {
         }
         if let value = dict["Domain"] as? String {
             self.domain = value
+        }
+        if let value = dict["DomainId"] as? String {
+            self.domainId = value
         }
         if let value = dict["InstanceId"] as? String {
             self.instanceId = value
