@@ -11465,6 +11465,375 @@ public class CreateDiskEncryptionServiceResponse : Tea.TeaModel {
     }
 }
 
+public class CreateDriveRequest : Tea.TeaModel {
+    public var aliUid: Int64?
+
+    public var description_: String?
+
+    public var domainId: String?
+
+    public var driveName: String?
+
+    public var externalDomainId: String?
+
+    public var profileRoaming: Bool?
+
+    public var regionId: String?
+
+    public var resourceType: String?
+
+    public var type: String?
+
+    public var userId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.aliUid != nil {
+            map["AliUid"] = self.aliUid!
+        }
+        if self.description_ != nil {
+            map["Description"] = self.description_!
+        }
+        if self.domainId != nil {
+            map["DomainId"] = self.domainId!
+        }
+        if self.driveName != nil {
+            map["DriveName"] = self.driveName!
+        }
+        if self.externalDomainId != nil {
+            map["ExternalDomainId"] = self.externalDomainId!
+        }
+        if self.profileRoaming != nil {
+            map["ProfileRoaming"] = self.profileRoaming!
+        }
+        if self.regionId != nil {
+            map["RegionId"] = self.regionId!
+        }
+        if self.resourceType != nil {
+            map["ResourceType"] = self.resourceType!
+        }
+        if self.type != nil {
+            map["Type"] = self.type!
+        }
+        if self.userId != nil {
+            map["UserId"] = self.userId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["AliUid"] as? Int64 {
+            self.aliUid = value
+        }
+        if let value = dict["Description"] as? String {
+            self.description_ = value
+        }
+        if let value = dict["DomainId"] as? String {
+            self.domainId = value
+        }
+        if let value = dict["DriveName"] as? String {
+            self.driveName = value
+        }
+        if let value = dict["ExternalDomainId"] as? String {
+            self.externalDomainId = value
+        }
+        if let value = dict["ProfileRoaming"] as? Bool {
+            self.profileRoaming = value
+        }
+        if let value = dict["RegionId"] as? String {
+            self.regionId = value
+        }
+        if let value = dict["ResourceType"] as? String {
+            self.resourceType = value
+        }
+        if let value = dict["Type"] as? String {
+            self.type = value
+        }
+        if let value = dict["UserId"] as? String {
+            self.userId = value
+        }
+    }
+}
+
+public class CreateDriveResponseBody : Tea.TeaModel {
+    public class Drive : Tea.TeaModel {
+        public var aliUid: String?
+
+        public var description_: String?
+
+        public var domainId: String?
+
+        public var driveId: String?
+
+        public var externalDriveId: String?
+
+        public var externalUserId: String?
+
+        public var gmtCreate: String?
+
+        public var gmtModified: String?
+
+        public var id: String?
+
+        public var name: String?
+
+        public var profileRoaming: Bool?
+
+        public var status: String?
+
+        public var totalSize: Int64?
+
+        public var type: String?
+
+        public var usedSize: Int64?
+
+        public var userId: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.aliUid != nil {
+                map["AliUid"] = self.aliUid!
+            }
+            if self.description_ != nil {
+                map["Description"] = self.description_!
+            }
+            if self.domainId != nil {
+                map["DomainId"] = self.domainId!
+            }
+            if self.driveId != nil {
+                map["DriveId"] = self.driveId!
+            }
+            if self.externalDriveId != nil {
+                map["ExternalDriveId"] = self.externalDriveId!
+            }
+            if self.externalUserId != nil {
+                map["ExternalUserId"] = self.externalUserId!
+            }
+            if self.gmtCreate != nil {
+                map["GmtCreate"] = self.gmtCreate!
+            }
+            if self.gmtModified != nil {
+                map["GmtModified"] = self.gmtModified!
+            }
+            if self.id != nil {
+                map["Id"] = self.id!
+            }
+            if self.name != nil {
+                map["Name"] = self.name!
+            }
+            if self.profileRoaming != nil {
+                map["ProfileRoaming"] = self.profileRoaming!
+            }
+            if self.status != nil {
+                map["Status"] = self.status!
+            }
+            if self.totalSize != nil {
+                map["TotalSize"] = self.totalSize!
+            }
+            if self.type != nil {
+                map["Type"] = self.type!
+            }
+            if self.usedSize != nil {
+                map["UsedSize"] = self.usedSize!
+            }
+            if self.userId != nil {
+                map["UserId"] = self.userId!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["AliUid"] as? String {
+                self.aliUid = value
+            }
+            if let value = dict["Description"] as? String {
+                self.description_ = value
+            }
+            if let value = dict["DomainId"] as? String {
+                self.domainId = value
+            }
+            if let value = dict["DriveId"] as? String {
+                self.driveId = value
+            }
+            if let value = dict["ExternalDriveId"] as? String {
+                self.externalDriveId = value
+            }
+            if let value = dict["ExternalUserId"] as? String {
+                self.externalUserId = value
+            }
+            if let value = dict["GmtCreate"] as? String {
+                self.gmtCreate = value
+            }
+            if let value = dict["GmtModified"] as? String {
+                self.gmtModified = value
+            }
+            if let value = dict["Id"] as? String {
+                self.id = value
+            }
+            if let value = dict["Name"] as? String {
+                self.name = value
+            }
+            if let value = dict["ProfileRoaming"] as? Bool {
+                self.profileRoaming = value
+            }
+            if let value = dict["Status"] as? String {
+                self.status = value
+            }
+            if let value = dict["TotalSize"] as? Int64 {
+                self.totalSize = value
+            }
+            if let value = dict["Type"] as? String {
+                self.type = value
+            }
+            if let value = dict["UsedSize"] as? Int64 {
+                self.usedSize = value
+            }
+            if let value = dict["UserId"] as? String {
+                self.userId = value
+            }
+        }
+    }
+    public var code: String?
+
+    public var drive: CreateDriveResponseBody.Drive?
+
+    public var message: String?
+
+    public var requestId: String?
+
+    public var success: Bool?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.drive?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.code != nil {
+            map["Code"] = self.code!
+        }
+        if self.drive != nil {
+            map["Drive"] = self.drive?.toMap()
+        }
+        if self.message != nil {
+            map["Message"] = self.message!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.success != nil {
+            map["Success"] = self.success!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["Code"] as? String {
+            self.code = value
+        }
+        if let value = dict["Drive"] as? [String: Any?] {
+            var model = CreateDriveResponseBody.Drive()
+            model.fromMap(value)
+            self.drive = model
+        }
+        if let value = dict["Message"] as? String {
+            self.message = value
+        }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+        if let value = dict["Success"] as? Bool {
+            self.success = value
+        }
+    }
+}
+
+public class CreateDriveResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: CreateDriveResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = CreateDriveResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
 public class CreateImageRequest : Tea.TeaModel {
     public var autoCleanUserdata: Bool?
 
@@ -15679,6 +16048,158 @@ public class DeleteDirectoriesResponse : Tea.TeaModel {
         }
         if let value = dict["body"] as? [String: Any?] {
             var model = DeleteDirectoriesResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
+public class DeleteDriveRequest : Tea.TeaModel {
+    public var driveId: String?
+
+    public var regionId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.driveId != nil {
+            map["DriveId"] = self.driveId!
+        }
+        if self.regionId != nil {
+            map["RegionId"] = self.regionId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["DriveId"] as? String {
+            self.driveId = value
+        }
+        if let value = dict["RegionId"] as? String {
+            self.regionId = value
+        }
+    }
+}
+
+public class DeleteDriveResponseBody : Tea.TeaModel {
+    public var code: String?
+
+    public var data: Bool?
+
+    public var message: String?
+
+    public var requestId: String?
+
+    public var success: Bool?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.code != nil {
+            map["Code"] = self.code!
+        }
+        if self.data != nil {
+            map["Data"] = self.data!
+        }
+        if self.message != nil {
+            map["Message"] = self.message!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.success != nil {
+            map["Success"] = self.success!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["Code"] as? String {
+            self.code = value
+        }
+        if let value = dict["Data"] as? Bool {
+            self.data = value
+        }
+        if let value = dict["Message"] as? String {
+            self.message = value
+        }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+        if let value = dict["Success"] as? Bool {
+            self.success = value
+        }
+    }
+}
+
+public class DeleteDriveResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: DeleteDriveResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = DeleteDriveResponseBody()
             model.fromMap(value)
             self.body = model
         }
@@ -28449,6 +28970,454 @@ public class DescribeDirectoriesResponse : Tea.TeaModel {
         }
         if let value = dict["body"] as? [String: Any?] {
             var model = DescribeDirectoriesResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
+public class DescribeDrivesRequest : Tea.TeaModel {
+    public var domainIds: [String]?
+
+    public var maxResults: Int32?
+
+    public var nextToken: String?
+
+    public var regionId: String?
+
+    public var resourceType: String?
+
+    public var userId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.domainIds != nil {
+            map["DomainIds"] = self.domainIds!
+        }
+        if self.maxResults != nil {
+            map["MaxResults"] = self.maxResults!
+        }
+        if self.nextToken != nil {
+            map["NextToken"] = self.nextToken!
+        }
+        if self.regionId != nil {
+            map["RegionId"] = self.regionId!
+        }
+        if self.resourceType != nil {
+            map["ResourceType"] = self.resourceType!
+        }
+        if self.userId != nil {
+            map["UserId"] = self.userId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["DomainIds"] as? [String] {
+            self.domainIds = value
+        }
+        if let value = dict["MaxResults"] as? Int32 {
+            self.maxResults = value
+        }
+        if let value = dict["NextToken"] as? String {
+            self.nextToken = value
+        }
+        if let value = dict["RegionId"] as? String {
+            self.regionId = value
+        }
+        if let value = dict["ResourceType"] as? String {
+            self.resourceType = value
+        }
+        if let value = dict["UserId"] as? String {
+            self.userId = value
+        }
+    }
+}
+
+public class DescribeDrivesResponseBody : Tea.TeaModel {
+    public class Drives : Tea.TeaModel {
+        public class DesktopGroups : Tea.TeaModel {
+            public var desktopGroupId: String?
+
+            public var desktopGroupName: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.desktopGroupId != nil {
+                    map["DesktopGroupId"] = self.desktopGroupId!
+                }
+                if self.desktopGroupName != nil {
+                    map["DesktopGroupName"] = self.desktopGroupName!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["DesktopGroupId"] as? String {
+                    self.desktopGroupId = value
+                }
+                if let value = dict["DesktopGroupName"] as? String {
+                    self.desktopGroupName = value
+                }
+            }
+        }
+        public var aliUid: Int64?
+
+        public var description_: String?
+
+        public var desktopGroupCount: Int32?
+
+        public var desktopGroups: [DescribeDrivesResponseBody.Drives.DesktopGroups]?
+
+        public var domainId: String?
+
+        public var driveId: String?
+
+        public var enableProfileManagement: Bool?
+
+        public var externalDomainId: String?
+
+        public var externalDriveId: String?
+
+        public var externalUserId: String?
+
+        public var gmtCreate: String?
+
+        public var gmtModified: String?
+
+        public var id: String?
+
+        public var name: String?
+
+        public var profileRoaming: Bool?
+
+        public var status: String?
+
+        public var totalSize: Int64?
+
+        public var type: String?
+
+        public var usedSize: Int64?
+
+        public var userId: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.aliUid != nil {
+                map["AliUid"] = self.aliUid!
+            }
+            if self.description_ != nil {
+                map["Description"] = self.description_!
+            }
+            if self.desktopGroupCount != nil {
+                map["DesktopGroupCount"] = self.desktopGroupCount!
+            }
+            if self.desktopGroups != nil {
+                var tmp : [Any] = []
+                for k in self.desktopGroups! {
+                    tmp.append(k.toMap())
+                }
+                map["DesktopGroups"] = tmp
+            }
+            if self.domainId != nil {
+                map["DomainId"] = self.domainId!
+            }
+            if self.driveId != nil {
+                map["DriveId"] = self.driveId!
+            }
+            if self.enableProfileManagement != nil {
+                map["EnableProfileManagement"] = self.enableProfileManagement!
+            }
+            if self.externalDomainId != nil {
+                map["ExternalDomainId"] = self.externalDomainId!
+            }
+            if self.externalDriveId != nil {
+                map["ExternalDriveId"] = self.externalDriveId!
+            }
+            if self.externalUserId != nil {
+                map["ExternalUserId"] = self.externalUserId!
+            }
+            if self.gmtCreate != nil {
+                map["GmtCreate"] = self.gmtCreate!
+            }
+            if self.gmtModified != nil {
+                map["GmtModified"] = self.gmtModified!
+            }
+            if self.id != nil {
+                map["Id"] = self.id!
+            }
+            if self.name != nil {
+                map["Name"] = self.name!
+            }
+            if self.profileRoaming != nil {
+                map["ProfileRoaming"] = self.profileRoaming!
+            }
+            if self.status != nil {
+                map["Status"] = self.status!
+            }
+            if self.totalSize != nil {
+                map["TotalSize"] = self.totalSize!
+            }
+            if self.type != nil {
+                map["Type"] = self.type!
+            }
+            if self.usedSize != nil {
+                map["UsedSize"] = self.usedSize!
+            }
+            if self.userId != nil {
+                map["UserId"] = self.userId!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["AliUid"] as? Int64 {
+                self.aliUid = value
+            }
+            if let value = dict["Description"] as? String {
+                self.description_ = value
+            }
+            if let value = dict["DesktopGroupCount"] as? Int32 {
+                self.desktopGroupCount = value
+            }
+            if let value = dict["DesktopGroups"] as? [Any?] {
+                var tmp : [DescribeDrivesResponseBody.Drives.DesktopGroups] = []
+                for v in value {
+                    if v != nil {
+                        var model = DescribeDrivesResponseBody.Drives.DesktopGroups()
+                        if v != nil {
+                            model.fromMap(v as? [String: Any?])
+                        }
+                        tmp.append(model)
+                    }
+                }
+                self.desktopGroups = tmp
+            }
+            if let value = dict["DomainId"] as? String {
+                self.domainId = value
+            }
+            if let value = dict["DriveId"] as? String {
+                self.driveId = value
+            }
+            if let value = dict["EnableProfileManagement"] as? Bool {
+                self.enableProfileManagement = value
+            }
+            if let value = dict["ExternalDomainId"] as? String {
+                self.externalDomainId = value
+            }
+            if let value = dict["ExternalDriveId"] as? String {
+                self.externalDriveId = value
+            }
+            if let value = dict["ExternalUserId"] as? String {
+                self.externalUserId = value
+            }
+            if let value = dict["GmtCreate"] as? String {
+                self.gmtCreate = value
+            }
+            if let value = dict["GmtModified"] as? String {
+                self.gmtModified = value
+            }
+            if let value = dict["Id"] as? String {
+                self.id = value
+            }
+            if let value = dict["Name"] as? String {
+                self.name = value
+            }
+            if let value = dict["ProfileRoaming"] as? Bool {
+                self.profileRoaming = value
+            }
+            if let value = dict["Status"] as? String {
+                self.status = value
+            }
+            if let value = dict["TotalSize"] as? Int64 {
+                self.totalSize = value
+            }
+            if let value = dict["Type"] as? String {
+                self.type = value
+            }
+            if let value = dict["UsedSize"] as? Int64 {
+                self.usedSize = value
+            }
+            if let value = dict["UserId"] as? String {
+                self.userId = value
+            }
+        }
+    }
+    public var code: String?
+
+    public var count: Int32?
+
+    public var drives: [DescribeDrivesResponseBody.Drives]?
+
+    public var message: String?
+
+    public var nextToken: String?
+
+    public var requestId: String?
+
+    public var success: Bool?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.code != nil {
+            map["Code"] = self.code!
+        }
+        if self.count != nil {
+            map["Count"] = self.count!
+        }
+        if self.drives != nil {
+            var tmp : [Any] = []
+            for k in self.drives! {
+                tmp.append(k.toMap())
+            }
+            map["Drives"] = tmp
+        }
+        if self.message != nil {
+            map["Message"] = self.message!
+        }
+        if self.nextToken != nil {
+            map["NextToken"] = self.nextToken!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.success != nil {
+            map["Success"] = self.success!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["Code"] as? String {
+            self.code = value
+        }
+        if let value = dict["Count"] as? Int32 {
+            self.count = value
+        }
+        if let value = dict["Drives"] as? [Any?] {
+            var tmp : [DescribeDrivesResponseBody.Drives] = []
+            for v in value {
+                if v != nil {
+                    var model = DescribeDrivesResponseBody.Drives()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.drives = tmp
+        }
+        if let value = dict["Message"] as? String {
+            self.message = value
+        }
+        if let value = dict["NextToken"] as? String {
+            self.nextToken = value
+        }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+        if let value = dict["Success"] as? Bool {
+            self.success = value
+        }
+    }
+}
+
+public class DescribeDrivesResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: DescribeDrivesResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = DescribeDrivesResponseBody()
             model.fromMap(value)
             self.body = model
         }
