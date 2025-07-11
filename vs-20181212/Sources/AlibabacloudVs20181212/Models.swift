@@ -6409,6 +6409,8 @@ public class CreateRenderingDataPackageRequest : Tea.TeaModel {
 
     public var description_: String?
 
+    public var instanceBillingCycle: String?
+
     public var renderingInstanceId: String?
 
     public override init() {
@@ -6431,6 +6433,9 @@ public class CreateRenderingDataPackageRequest : Tea.TeaModel {
         if self.description_ != nil {
             map["Description"] = self.description_!
         }
+        if self.instanceBillingCycle != nil {
+            map["InstanceBillingCycle"] = self.instanceBillingCycle!
+        }
         if self.renderingInstanceId != nil {
             map["RenderingInstanceId"] = self.renderingInstanceId!
         }
@@ -6444,6 +6449,9 @@ public class CreateRenderingDataPackageRequest : Tea.TeaModel {
         }
         if let value = dict["Description"] as? String {
             self.description_ = value
+        }
+        if let value = dict["InstanceBillingCycle"] as? String {
+            self.instanceBillingCycle = value
         }
         if let value = dict["RenderingInstanceId"] as? String {
             self.renderingInstanceId = value
