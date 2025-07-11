@@ -4578,6 +4578,8 @@ public class ListExecutorsRequest : Tea.TeaModel {
     public class Filter : Tea.TeaModel {
         public var executorIds: [String]?
 
+        public var image: String?
+
         public var ipAddresses: [String]?
 
         public var jobName: String?
@@ -4587,6 +4589,8 @@ public class ListExecutorsRequest : Tea.TeaModel {
         public var timeCreatedAfter: Int32?
 
         public var timeCreatedBefore: Int32?
+
+        public var vswitchId: String?
 
         public override init() {
             super.init()
@@ -4605,6 +4609,9 @@ public class ListExecutorsRequest : Tea.TeaModel {
             if self.executorIds != nil {
                 map["ExecutorIds"] = self.executorIds!
             }
+            if self.image != nil {
+                map["Image"] = self.image!
+            }
             if self.ipAddresses != nil {
                 map["IpAddresses"] = self.ipAddresses!
             }
@@ -4620,6 +4627,9 @@ public class ListExecutorsRequest : Tea.TeaModel {
             if self.timeCreatedBefore != nil {
                 map["TimeCreatedBefore"] = self.timeCreatedBefore!
             }
+            if self.vswitchId != nil {
+                map["VswitchId"] = self.vswitchId!
+            }
             return map
         }
 
@@ -4627,6 +4637,9 @@ public class ListExecutorsRequest : Tea.TeaModel {
             guard let dict else { return }
             if let value = dict["ExecutorIds"] as? [String] {
                 self.executorIds = value
+            }
+            if let value = dict["Image"] as? String {
+                self.image = value
             }
             if let value = dict["IpAddresses"] as? [String] {
                 self.ipAddresses = value
@@ -4642,6 +4655,9 @@ public class ListExecutorsRequest : Tea.TeaModel {
             }
             if let value = dict["TimeCreatedBefore"] as? Int32 {
                 self.timeCreatedBefore = value
+            }
+            if let value = dict["VswitchId"] as? String {
+                self.vswitchId = value
             }
         }
     }
