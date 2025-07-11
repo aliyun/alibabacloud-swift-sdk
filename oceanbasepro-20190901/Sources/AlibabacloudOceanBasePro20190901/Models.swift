@@ -22924,7 +22924,7 @@ public class DescribeOasAnomalySQLListResponseBody : Tea.TeaModel {
 
             public var sumDbTime: Double?
 
-            public var sumElapsedTime: String?
+            public var sumElapsedTime: Double?
 
             public var sumRetryCount: Double?
 
@@ -23060,7 +23060,7 @@ public class DescribeOasAnomalySQLListResponseBody : Tea.TeaModel {
                 if let value = dict["SumDbTime"] as? Double {
                     self.sumDbTime = value
                 }
-                if let value = dict["SumElapsedTime"] as? String {
+                if let value = dict["SumElapsedTime"] as? Double {
                     self.sumElapsedTime = value
                 }
                 if let value = dict["SumRetryCount"] as? Double {
@@ -23109,7 +23109,7 @@ public class DescribeOasAnomalySQLListResponseBody : Tea.TeaModel {
 
         public var sumDbTime: Double?
 
-        public var sumElapsedTime: String?
+        public var sumElapsedTime: Double?
 
         public var sumRetryCount: Double?
 
@@ -23271,7 +23271,7 @@ public class DescribeOasAnomalySQLListResponseBody : Tea.TeaModel {
             if let value = dict["SumDbTime"] as? Double {
                 self.sumDbTime = value
             }
-            if let value = dict["SumElapsedTime"] as? String {
+            if let value = dict["SumElapsedTime"] as? Double {
                 self.sumElapsedTime = value
             }
             if let value = dict["SumRetryCount"] as? Double {
@@ -29249,7 +29249,7 @@ public class DescribeProcessStatsCompositionResponseBody : Tea.TeaModel {
 
                     public var executeTime: Int64?
 
-                    public var planId: String?
+                    public var planId: Int64?
 
                     public var proxySessId: String?
 
@@ -29354,7 +29354,7 @@ public class DescribeProcessStatsCompositionResponseBody : Tea.TeaModel {
                         if let value = dict["ExecuteTime"] as? Int64 {
                             self.executeTime = value
                         }
-                        if let value = dict["PlanId"] as? String {
+                        if let value = dict["PlanId"] as? Int64 {
                             self.planId = value
                         }
                         if let value = dict["ProxySessId"] as? String {
@@ -29398,7 +29398,7 @@ public class DescribeProcessStatsCompositionResponseBody : Tea.TeaModel {
 
                 public var executeTime: Int64?
 
-                public var planId: String?
+                public var planId: Int64?
 
                 public var processSqlList: [DescribeProcessStatsCompositionResponseBody.Data.AllProcessList.ProcessSqlLists.ProcessSqlList]?
 
@@ -29512,7 +29512,7 @@ public class DescribeProcessStatsCompositionResponseBody : Tea.TeaModel {
                     if let value = dict["ExecuteTime"] as? Int64 {
                         self.executeTime = value
                     }
-                    if let value = dict["PlanId"] as? String {
+                    if let value = dict["PlanId"] as? Int64 {
                         self.planId = value
                     }
                     if let value = dict["ProcessSqlList"] as? [Any?] {
@@ -29569,7 +29569,7 @@ public class DescribeProcessStatsCompositionResponseBody : Tea.TeaModel {
 
             public var executeTime: Int64?
 
-            public var planId: String?
+            public var planId: Int64?
 
             public var processSqlLists: [DescribeProcessStatsCompositionResponseBody.Data.AllProcessList.ProcessSqlLists]?
 
@@ -29688,7 +29688,7 @@ public class DescribeProcessStatsCompositionResponseBody : Tea.TeaModel {
                 if let value = dict["ExecuteTime"] as? Int64 {
                     self.executeTime = value
                 }
-                if let value = dict["PlanId"] as? String {
+                if let value = dict["PlanId"] as? Int64 {
                     self.planId = value
                 }
                 if let value = dict["ProcessSqlLists"] as? [Any?] {
@@ -29986,17 +29986,17 @@ public class DescribeProcessStatsCompositionResponseBody : Tea.TeaModel {
                 }
             }
         }
-        public var activeSessionCount: Int32?
+        public var activeSessionCount: Int64?
 
         public var allProcessList: [DescribeProcessStatsCompositionResponseBody.Data.AllProcessList]?
 
-        public var idleSessionCount: Int32?
+        public var idleSessionCount: Int64?
 
         public var obVersion: String?
 
         public var sessionStatistics: DescribeProcessStatsCompositionResponseBody.Data.SessionStatistics?
 
-        public var totalSessionCount: Int32?
+        public var totalSessionCount: Int64?
 
         public override init() {
             super.init()
@@ -30040,7 +30040,7 @@ public class DescribeProcessStatsCompositionResponseBody : Tea.TeaModel {
 
         public override func fromMap(_ dict: [String: Any?]?) -> Void {
             guard let dict else { return }
-            if let value = dict["ActiveSessionCount"] as? Int32 {
+            if let value = dict["ActiveSessionCount"] as? Int64 {
                 self.activeSessionCount = value
             }
             if let value = dict["AllProcessList"] as? [Any?] {
@@ -30056,7 +30056,7 @@ public class DescribeProcessStatsCompositionResponseBody : Tea.TeaModel {
                 }
                 self.allProcessList = tmp
             }
-            if let value = dict["IdleSessionCount"] as? Int32 {
+            if let value = dict["IdleSessionCount"] as? Int64 {
                 self.idleSessionCount = value
             }
             if let value = dict["ObVersion"] as? String {
@@ -30067,7 +30067,7 @@ public class DescribeProcessStatsCompositionResponseBody : Tea.TeaModel {
                 model.fromMap(value)
                 self.sessionStatistics = model
             }
-            if let value = dict["TotalSessionCount"] as? Int32 {
+            if let value = dict["TotalSessionCount"] as? Int64 {
                 self.totalSessionCount = value
             }
         }
