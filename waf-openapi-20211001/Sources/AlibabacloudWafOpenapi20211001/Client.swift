@@ -7546,6 +7546,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.clusterId)) {
             query["ClusterId"] = request.clusterId!;
         }
+        if (!TeaUtils.Client.isUnset(request.clusterRuleResourceId)) {
+            query["ClusterRuleResourceId"] = request.clusterRuleResourceId ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.instanceId)) {
             query["InstanceId"] = request.instanceId ?? "";
         }

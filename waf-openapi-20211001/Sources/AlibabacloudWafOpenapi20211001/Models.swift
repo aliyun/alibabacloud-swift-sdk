@@ -20002,6 +20002,8 @@ public class DescribeFreeUserEventsResponse : Tea.TeaModel {
 public class DescribeHybridCloudClusterRuleRequest : Tea.TeaModel {
     public var clusterId: Int64?
 
+    public var clusterRuleResourceId: String?
+
     public var instanceId: String?
 
     public var regionId: String?
@@ -20027,6 +20029,9 @@ public class DescribeHybridCloudClusterRuleRequest : Tea.TeaModel {
         if self.clusterId != nil {
             map["ClusterId"] = self.clusterId!
         }
+        if self.clusterRuleResourceId != nil {
+            map["ClusterRuleResourceId"] = self.clusterRuleResourceId!
+        }
         if self.instanceId != nil {
             map["InstanceId"] = self.instanceId!
         }
@@ -20047,6 +20052,9 @@ public class DescribeHybridCloudClusterRuleRequest : Tea.TeaModel {
         if let value = dict["ClusterId"] as? Int64 {
             self.clusterId = value
         }
+        if let value = dict["ClusterRuleResourceId"] as? String {
+            self.clusterRuleResourceId = value
+        }
         if let value = dict["InstanceId"] as? String {
             self.instanceId = value
         }
@@ -20064,6 +20072,8 @@ public class DescribeHybridCloudClusterRuleRequest : Tea.TeaModel {
 
 public class DescribeHybridCloudClusterRuleResponseBody : Tea.TeaModel {
     public class ClusterRule : Tea.TeaModel {
+        public var clusterRuleResourceId: String?
+
         public var ruleConfig: String?
 
         public var ruleStatus: String?
@@ -20084,6 +20094,9 @@ public class DescribeHybridCloudClusterRuleResponseBody : Tea.TeaModel {
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
+            if self.clusterRuleResourceId != nil {
+                map["ClusterRuleResourceId"] = self.clusterRuleResourceId!
+            }
             if self.ruleConfig != nil {
                 map["RuleConfig"] = self.ruleConfig!
             }
@@ -20098,6 +20111,9 @@ public class DescribeHybridCloudClusterRuleResponseBody : Tea.TeaModel {
 
         public override func fromMap(_ dict: [String: Any?]?) -> Void {
             guard let dict else { return }
+            if let value = dict["ClusterRuleResourceId"] as? String {
+                self.clusterRuleResourceId = value
+            }
             if let value = dict["RuleConfig"] as? String {
                 self.ruleConfig = value
             }
@@ -39952,6 +39968,8 @@ public class ModifyHybridCloudClusterBypassStatusResponse : Tea.TeaModel {
 public class ModifyHybridCloudClusterRuleRequest : Tea.TeaModel {
     public var clusterId: Int64?
 
+    public var clusterRuleResourceId: String?
+
     public var instanceId: String?
 
     public var regionId: String?
@@ -39981,6 +39999,9 @@ public class ModifyHybridCloudClusterRuleRequest : Tea.TeaModel {
         if self.clusterId != nil {
             map["ClusterId"] = self.clusterId!
         }
+        if self.clusterRuleResourceId != nil {
+            map["ClusterRuleResourceId"] = self.clusterRuleResourceId!
+        }
         if self.instanceId != nil {
             map["InstanceId"] = self.instanceId!
         }
@@ -40006,6 +40027,9 @@ public class ModifyHybridCloudClusterRuleRequest : Tea.TeaModel {
         guard let dict else { return }
         if let value = dict["ClusterId"] as? Int64 {
             self.clusterId = value
+        }
+        if let value = dict["ClusterRuleResourceId"] as? String {
+            self.clusterRuleResourceId = value
         }
         if let value = dict["InstanceId"] as? String {
             self.instanceId = value
