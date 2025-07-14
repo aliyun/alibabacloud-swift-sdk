@@ -6799,6 +6799,8 @@ public class CreateTaskExportTaskRequest : Tea.TeaModel {
 
     public var calledNumber: String?
 
+    public var callingNumber: String?
+
     public var hasAnswered: Bool?
 
     public var hasHangUpByRejection: Bool?
@@ -6869,6 +6871,9 @@ public class CreateTaskExportTaskRequest : Tea.TeaModel {
         }
         if self.calledNumber != nil {
             map["CalledNumber"] = self.calledNumber!
+        }
+        if self.callingNumber != nil {
+            map["CallingNumber"] = self.callingNumber!
         }
         if self.hasAnswered != nil {
             map["HasAnswered"] = self.hasAnswered!
@@ -6952,6 +6957,9 @@ public class CreateTaskExportTaskRequest : Tea.TeaModel {
         }
         if let value = dict["CalledNumber"] as? String {
             self.calledNumber = value
+        }
+        if let value = dict["CallingNumber"] as? String {
+            self.callingNumber = value
         }
         if let value = dict["HasAnswered"] as? Bool {
             self.hasAnswered = value
@@ -46748,6 +46756,8 @@ public class SearchTaskRequest : Tea.TeaModel {
 
     public var calledNumber: String?
 
+    public var callingNumber: String?
+
     public var instanceId: String?
 
     public var jobGroupId: String?
@@ -46812,6 +46822,9 @@ public class SearchTaskRequest : Tea.TeaModel {
         }
         if self.calledNumber != nil {
             map["CalledNumber"] = self.calledNumber!
+        }
+        if self.callingNumber != nil {
+            map["CallingNumber"] = self.callingNumber!
         }
         if self.instanceId != nil {
             map["InstanceId"] = self.instanceId!
@@ -46887,6 +46900,9 @@ public class SearchTaskRequest : Tea.TeaModel {
         if let value = dict["CalledNumber"] as? String {
             self.calledNumber = value
         }
+        if let value = dict["CallingNumber"] as? String {
+            self.callingNumber = value
+        }
         if let value = dict["InstanceId"] as? String {
             self.instanceId = value
         }
@@ -46953,6 +46969,8 @@ public class SearchTaskResponseBody : Tea.TeaModel {
         public var callDurationDisplay: String?
 
         public var calledNumber: String?
+
+        public var callingNumber: String?
 
         public var dialException: String?
 
@@ -47027,6 +47045,9 @@ public class SearchTaskResponseBody : Tea.TeaModel {
             }
             if self.calledNumber != nil {
                 map["CalledNumber"] = self.calledNumber!
+            }
+            if self.callingNumber != nil {
+                map["CallingNumber"] = self.callingNumber!
             }
             if self.dialException != nil {
                 map["DialException"] = self.dialException!
@@ -47116,6 +47137,9 @@ public class SearchTaskResponseBody : Tea.TeaModel {
             }
             if let value = dict["CalledNumber"] as? String {
                 self.calledNumber = value
+            }
+            if let value = dict["CallingNumber"] as? String {
+                self.callingNumber = value
             }
             if let value = dict["DialException"] as? String {
                 self.dialException = value
