@@ -1319,6 +1319,8 @@ public class CreateClusterRequest : Tea.TeaModel {
 
         public var userData: String?
 
+        public var virtualGpuEnabled: Bool?
+
         public var zoneId: String?
 
         public override init() {
@@ -1370,6 +1372,9 @@ public class CreateClusterRequest : Tea.TeaModel {
             if self.userData != nil {
                 map["UserData"] = self.userData!
             }
+            if self.virtualGpuEnabled != nil {
+                map["VirtualGpuEnabled"] = self.virtualGpuEnabled!
+            }
             if self.zoneId != nil {
                 map["ZoneId"] = self.zoneId!
             }
@@ -1419,6 +1424,9 @@ public class CreateClusterRequest : Tea.TeaModel {
             }
             if let value = dict["UserData"] as? String {
                 self.userData = value
+            }
+            if let value = dict["VirtualGpuEnabled"] as? Bool {
+                self.virtualGpuEnabled = value
             }
             if let value = dict["ZoneId"] as? String {
                 self.zoneId = value
@@ -3052,6 +3060,8 @@ public class CreateNodeGroupRequest : Tea.TeaModel {
 
         public var userData: String?
 
+        public var virtualGpuEnabled: Bool?
+
         public override init() {
             super.init()
         }
@@ -3097,6 +3107,9 @@ public class CreateNodeGroupRequest : Tea.TeaModel {
             if self.userData != nil {
                 map["UserData"] = self.userData!
             }
+            if self.virtualGpuEnabled != nil {
+                map["VirtualGpuEnabled"] = self.virtualGpuEnabled!
+            }
             return map
         }
 
@@ -3133,6 +3146,9 @@ public class CreateNodeGroupRequest : Tea.TeaModel {
             }
             if let value = dict["UserData"] as? String {
                 self.userData = value
+            }
+            if let value = dict["VirtualGpuEnabled"] as? Bool {
+                self.virtualGpuEnabled = value
             }
         }
     }
@@ -11644,6 +11660,8 @@ public class ListNodeGroupsResponseBody : Tea.TeaModel {
 
         public var updateTime: String?
 
+        public var virtualGpuEnabled: Bool?
+
         public var zoneId: String?
 
         public override init() {
@@ -11696,6 +11714,9 @@ public class ListNodeGroupsResponseBody : Tea.TeaModel {
             if self.updateTime != nil {
                 map["UpdateTime"] = self.updateTime!
             }
+            if self.virtualGpuEnabled != nil {
+                map["VirtualGpuEnabled"] = self.virtualGpuEnabled!
+            }
             if self.zoneId != nil {
                 map["ZoneId"] = self.zoneId!
             }
@@ -11739,6 +11760,9 @@ public class ListNodeGroupsResponseBody : Tea.TeaModel {
             }
             if let value = dict["UpdateTime"] as? String {
                 self.updateTime = value
+            }
+            if let value = dict["VirtualGpuEnabled"] as? Bool {
+                self.virtualGpuEnabled = value
             }
             if let value = dict["ZoneId"] as? String {
                 self.zoneId = value
