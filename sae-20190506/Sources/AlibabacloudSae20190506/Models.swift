@@ -46659,7 +46659,11 @@ public class ListGreyTagRouteResponse : Tea.TeaModel {
 public class ListIngressesRequest : Tea.TeaModel {
     public var appId: String?
 
+    public var currentPage: Int32?
+
     public var namespaceId: String?
+
+    public var pageSize: Int32?
 
     public override init() {
         super.init()
@@ -46678,8 +46682,14 @@ public class ListIngressesRequest : Tea.TeaModel {
         if self.appId != nil {
             map["AppId"] = self.appId!
         }
+        if self.currentPage != nil {
+            map["CurrentPage"] = self.currentPage!
+        }
         if self.namespaceId != nil {
             map["NamespaceId"] = self.namespaceId!
+        }
+        if self.pageSize != nil {
+            map["PageSize"] = self.pageSize!
         }
         return map
     }
@@ -46689,8 +46699,14 @@ public class ListIngressesRequest : Tea.TeaModel {
         if let value = dict["AppId"] as? String {
             self.appId = value
         }
+        if let value = dict["CurrentPage"] as? Int32 {
+            self.currentPage = value
+        }
         if let value = dict["NamespaceId"] as? String {
             self.namespaceId = value
+        }
+        if let value = dict["PageSize"] as? Int32 {
+            self.pageSize = value
         }
     }
 }
@@ -47169,7 +47185,13 @@ public class ListIngressesResponseBody : Tea.TeaModel {
                 }
             }
         }
+        public var currentPage: Int32?
+
         public var ingressList: [ListIngressesResponseBody.Data.IngressList]?
+
+        public var pageSize: Int32?
+
+        public var totalSize: Int32?
 
         public override init() {
             super.init()
@@ -47185,6 +47207,9 @@ public class ListIngressesResponseBody : Tea.TeaModel {
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
+            if self.currentPage != nil {
+                map["CurrentPage"] = self.currentPage!
+            }
             if self.ingressList != nil {
                 var tmp : [Any] = []
                 for k in self.ingressList! {
@@ -47192,11 +47217,20 @@ public class ListIngressesResponseBody : Tea.TeaModel {
                 }
                 map["IngressList"] = tmp
             }
+            if self.pageSize != nil {
+                map["PageSize"] = self.pageSize!
+            }
+            if self.totalSize != nil {
+                map["TotalSize"] = self.totalSize!
+            }
             return map
         }
 
         public override func fromMap(_ dict: [String: Any?]?) -> Void {
             guard let dict else { return }
+            if let value = dict["CurrentPage"] as? Int32 {
+                self.currentPage = value
+            }
             if let value = dict["IngressList"] as? [Any?] {
                 var tmp : [ListIngressesResponseBody.Data.IngressList] = []
                 for v in value {
@@ -47209,6 +47243,12 @@ public class ListIngressesResponseBody : Tea.TeaModel {
                     }
                 }
                 self.ingressList = tmp
+            }
+            if let value = dict["PageSize"] as? Int32 {
+                self.pageSize = value
+            }
+            if let value = dict["TotalSize"] as? Int32 {
+                self.totalSize = value
             }
         }
     }
