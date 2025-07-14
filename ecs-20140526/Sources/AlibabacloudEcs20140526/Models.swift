@@ -61425,6 +61425,36 @@ public class DescribeInstancesResponseBody : Tea.TeaModel {
                     }
                 }
             }
+            public class ClockOptions : Tea.TeaModel {
+                public var ptpStatus: String?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.ptpStatus != nil {
+                        map["PtpStatus"] = self.ptpStatus!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                    guard let dict else { return }
+                    if let value = dict["PtpStatus"] as? String {
+                        self.ptpStatus = value
+                    }
+                }
+            }
             public class CpuOptions : Tea.TeaModel {
                 public var coreCount: Int32?
 
@@ -62692,6 +62722,8 @@ public class DescribeInstancesResponseBody : Tea.TeaModel {
 
             public var autoReleaseTime: String?
 
+            public var clockOptions: DescribeInstancesResponseBody.Instances.Instance.ClockOptions?
+
             public var clusterId: String?
 
             public var cpu: Int32?
@@ -62833,6 +62865,7 @@ public class DescribeInstancesResponseBody : Tea.TeaModel {
 
             public override func validate() throws -> Void {
                 try self.additionalInfo?.validate()
+                try self.clockOptions?.validate()
                 try self.cpuOptions?.validate()
                 try self.dedicatedHostAttribute?.validate()
                 try self.dedicatedInstanceAttribute?.validate()
@@ -62859,6 +62892,9 @@ public class DescribeInstancesResponseBody : Tea.TeaModel {
                 }
                 if self.autoReleaseTime != nil {
                     map["AutoReleaseTime"] = self.autoReleaseTime!
+                }
+                if self.clockOptions != nil {
+                    map["ClockOptions"] = self.clockOptions?.toMap()
                 }
                 if self.clusterId != nil {
                     map["ClusterId"] = self.clusterId!
@@ -63067,6 +63103,11 @@ public class DescribeInstancesResponseBody : Tea.TeaModel {
                 }
                 if let value = dict["AutoReleaseTime"] as? String {
                     self.autoReleaseTime = value
+                }
+                if let value = dict["ClockOptions"] as? [String: Any?] {
+                    var model = DescribeInstancesResponseBody.Instances.Instance.ClockOptions()
+                    model.fromMap(value)
+                    self.clockOptions = model
                 }
                 if let value = dict["ClusterId"] as? String {
                     self.clusterId = value
