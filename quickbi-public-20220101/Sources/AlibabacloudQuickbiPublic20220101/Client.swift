@@ -2819,6 +2819,43 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func queryReadableResourcesListByUserIdV2WithOptions(_ request: QueryReadableResourcesListByUserIdV2Request, _ runtime: TeaUtils.RuntimeOptions) async throws -> QueryReadableResourcesListByUserIdV2Response {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.userId)) {
+            query["UserId"] = request.userId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.workType)) {
+            query["WorkType"] = request.workType ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.workspaceId)) {
+            query["WorkspaceId"] = request.workspaceId ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "QueryReadableResourcesListByUserIdV2",
+            "version": "2022-01-01",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(QueryReadableResourcesListByUserIdV2Response(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func queryReadableResourcesListByUserIdV2(_ request: QueryReadableResourcesListByUserIdV2Request) async throws -> QueryReadableResourcesListByUserIdV2Response {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await queryReadableResourcesListByUserIdV2WithOptions(request as! QueryReadableResourcesListByUserIdV2Request, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func queryReportPerformanceWithOptions(_ request: QueryReportPerformanceRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> QueryReportPerformanceResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
