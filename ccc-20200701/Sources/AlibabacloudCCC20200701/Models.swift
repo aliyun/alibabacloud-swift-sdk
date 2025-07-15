@@ -35689,6 +35689,8 @@ public class ListCallDetailRecordsV2ResponseBody : Tea.TeaModel {
 
             public var offsiteAgentOriginatorNumbers: String?
 
+            public var offsiteAgentReleaseReason: String?
+
             public var outsideNumberReleaseReason: String?
 
             public var queueTime: Int64?
@@ -35724,6 +35726,10 @@ public class ListCallDetailRecordsV2ResponseBody : Tea.TeaModel {
             public var talkTime: Int64?
 
             public var transferCount: Int64?
+
+            public var voicebotDestinationNumber: String?
+
+            public var voicebotOriginatorNumber: String?
 
             public var waitTime: Int64?
 
@@ -35857,6 +35863,9 @@ public class ListCallDetailRecordsV2ResponseBody : Tea.TeaModel {
                 if self.offsiteAgentOriginatorNumbers != nil {
                     map["OffsiteAgentOriginatorNumbers"] = self.offsiteAgentOriginatorNumbers!
                 }
+                if self.offsiteAgentReleaseReason != nil {
+                    map["OffsiteAgentReleaseReason"] = self.offsiteAgentReleaseReason!
+                }
                 if self.outsideNumberReleaseReason != nil {
                     map["OutsideNumberReleaseReason"] = self.outsideNumberReleaseReason!
                 }
@@ -35910,6 +35919,12 @@ public class ListCallDetailRecordsV2ResponseBody : Tea.TeaModel {
                 }
                 if self.transferCount != nil {
                     map["TransferCount"] = self.transferCount!
+                }
+                if self.voicebotDestinationNumber != nil {
+                    map["VoicebotDestinationNumber"] = self.voicebotDestinationNumber!
+                }
+                if self.voicebotOriginatorNumber != nil {
+                    map["VoicebotOriginatorNumber"] = self.voicebotOriginatorNumber!
                 }
                 if self.waitTime != nil {
                     map["WaitTime"] = self.waitTime!
@@ -36035,6 +36050,9 @@ public class ListCallDetailRecordsV2ResponseBody : Tea.TeaModel {
                 if let value = dict["OffsiteAgentOriginatorNumbers"] as? String {
                     self.offsiteAgentOriginatorNumbers = value
                 }
+                if let value = dict["OffsiteAgentReleaseReason"] as? String {
+                    self.offsiteAgentReleaseReason = value
+                }
                 if let value = dict["OutsideNumberReleaseReason"] as? String {
                     self.outsideNumberReleaseReason = value
                 }
@@ -36090,6 +36108,12 @@ public class ListCallDetailRecordsV2ResponseBody : Tea.TeaModel {
                 }
                 if let value = dict["TransferCount"] as? Int64 {
                     self.transferCount = value
+                }
+                if let value = dict["VoicebotDestinationNumber"] as? String {
+                    self.voicebotDestinationNumber = value
+                }
+                if let value = dict["VoicebotOriginatorNumber"] as? String {
+                    self.voicebotOriginatorNumber = value
                 }
                 if let value = dict["WaitTime"] as? Int64 {
                     self.waitTime = value
@@ -55084,6 +55108,10 @@ public class ListOutboundNumbersOfUserResponseBody : Tea.TeaModel {
 
             public var providerDisplayName: String?
 
+            public var providerShortName: String?
+
+            public var providerType: String?
+
             public var province: String?
 
             public override init() {
@@ -55115,6 +55143,12 @@ public class ListOutboundNumbersOfUserResponseBody : Tea.TeaModel {
                 if self.providerDisplayName != nil {
                     map["ProviderDisplayName"] = self.providerDisplayName!
                 }
+                if self.providerShortName != nil {
+                    map["ProviderShortName"] = self.providerShortName!
+                }
+                if self.providerType != nil {
+                    map["ProviderType"] = self.providerType!
+                }
                 if self.province != nil {
                     map["Province"] = self.province!
                 }
@@ -55137,6 +55171,12 @@ public class ListOutboundNumbersOfUserResponseBody : Tea.TeaModel {
                 }
                 if let value = dict["ProviderDisplayName"] as? String {
                     self.providerDisplayName = value
+                }
+                if let value = dict["ProviderShortName"] as? String {
+                    self.providerShortName = value
+                }
+                if let value = dict["ProviderType"] as? String {
+                    self.providerType = value
                 }
                 if let value = dict["Province"] as? String {
                     self.province = value
