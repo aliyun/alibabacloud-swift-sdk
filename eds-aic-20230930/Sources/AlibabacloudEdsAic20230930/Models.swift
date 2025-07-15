@@ -2172,6 +2172,76 @@ public class CreateCloudPhoneNodeRequest : Tea.TeaModel {
             }
         }
     }
+    public class NetworkInfo : Tea.TeaModel {
+        public var bandwidthPackageName: String?
+
+        public var cidrBlock: String?
+
+        public var internetChargeType: String?
+
+        public var ipRatio: Int32?
+
+        public var isp: String?
+
+        public var limitedBandwidth: Int32?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.bandwidthPackageName != nil {
+                map["BandwidthPackageName"] = self.bandwidthPackageName!
+            }
+            if self.cidrBlock != nil {
+                map["CidrBlock"] = self.cidrBlock!
+            }
+            if self.internetChargeType != nil {
+                map["InternetChargeType"] = self.internetChargeType!
+            }
+            if self.ipRatio != nil {
+                map["IpRatio"] = self.ipRatio!
+            }
+            if self.isp != nil {
+                map["Isp"] = self.isp!
+            }
+            if self.limitedBandwidth != nil {
+                map["LimitedBandwidth"] = self.limitedBandwidth!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["BandwidthPackageName"] as? String {
+                self.bandwidthPackageName = value
+            }
+            if let value = dict["CidrBlock"] as? String {
+                self.cidrBlock = value
+            }
+            if let value = dict["InternetChargeType"] as? String {
+                self.internetChargeType = value
+            }
+            if let value = dict["IpRatio"] as? Int32 {
+                self.ipRatio = value
+            }
+            if let value = dict["Isp"] as? String {
+                self.isp = value
+            }
+            if let value = dict["LimitedBandwidth"] as? Int32 {
+                self.limitedBandwidth = value
+            }
+        }
+    }
     public class Tag : Tea.TeaModel {
         public var key: String?
 
@@ -2214,6 +2284,10 @@ public class CreateCloudPhoneNodeRequest : Tea.TeaModel {
 
     public var autoRenew: Bool?
 
+    public var bandwidthPackageId: String?
+
+    public var bandwidthPackageType: String?
+
     public var bizRegionId: String?
 
     public var chargeType: String?
@@ -2222,11 +2296,17 @@ public class CreateCloudPhoneNodeRequest : Tea.TeaModel {
 
     public var displayConfig: CreateCloudPhoneNodeRequest.DisplayConfig?
 
+    public var downBandwidthLimit: Int32?
+
     public var imageId: String?
 
     public var instanceType: String?
 
     public var networkId: String?
+
+    public var networkInfo: CreateCloudPhoneNodeRequest.NetworkInfo?
+
+    public var networkType: String?
 
     public var nodeName: String?
 
@@ -2250,6 +2330,8 @@ public class CreateCloudPhoneNodeRequest : Tea.TeaModel {
 
     public var tag: [CreateCloudPhoneNodeRequest.Tag]?
 
+    public var upBandwidthLimit: Int32?
+
     public var vSwitchId: String?
 
     public override init() {
@@ -2263,6 +2345,7 @@ public class CreateCloudPhoneNodeRequest : Tea.TeaModel {
 
     public override func validate() throws -> Void {
         try self.displayConfig?.validate()
+        try self.networkInfo?.validate()
     }
 
     public override func toMap() -> [String : Any] {
@@ -2272,6 +2355,12 @@ public class CreateCloudPhoneNodeRequest : Tea.TeaModel {
         }
         if self.autoRenew != nil {
             map["AutoRenew"] = self.autoRenew!
+        }
+        if self.bandwidthPackageId != nil {
+            map["BandwidthPackageId"] = self.bandwidthPackageId!
+        }
+        if self.bandwidthPackageType != nil {
+            map["BandwidthPackageType"] = self.bandwidthPackageType!
         }
         if self.bizRegionId != nil {
             map["BizRegionId"] = self.bizRegionId!
@@ -2285,6 +2374,9 @@ public class CreateCloudPhoneNodeRequest : Tea.TeaModel {
         if self.displayConfig != nil {
             map["DisplayConfig"] = self.displayConfig?.toMap()
         }
+        if self.downBandwidthLimit != nil {
+            map["DownBandwidthLimit"] = self.downBandwidthLimit!
+        }
         if self.imageId != nil {
             map["ImageId"] = self.imageId!
         }
@@ -2293,6 +2385,12 @@ public class CreateCloudPhoneNodeRequest : Tea.TeaModel {
         }
         if self.networkId != nil {
             map["NetworkId"] = self.networkId!
+        }
+        if self.networkInfo != nil {
+            map["NetworkInfo"] = self.networkInfo?.toMap()
+        }
+        if self.networkType != nil {
+            map["NetworkType"] = self.networkType!
         }
         if self.nodeName != nil {
             map["NodeName"] = self.nodeName!
@@ -2331,6 +2429,9 @@ public class CreateCloudPhoneNodeRequest : Tea.TeaModel {
             }
             map["Tag"] = tmp
         }
+        if self.upBandwidthLimit != nil {
+            map["UpBandwidthLimit"] = self.upBandwidthLimit!
+        }
         if self.vSwitchId != nil {
             map["VSwitchId"] = self.vSwitchId!
         }
@@ -2344,6 +2445,12 @@ public class CreateCloudPhoneNodeRequest : Tea.TeaModel {
         }
         if let value = dict["AutoRenew"] as? Bool {
             self.autoRenew = value
+        }
+        if let value = dict["BandwidthPackageId"] as? String {
+            self.bandwidthPackageId = value
+        }
+        if let value = dict["BandwidthPackageType"] as? String {
+            self.bandwidthPackageType = value
         }
         if let value = dict["BizRegionId"] as? String {
             self.bizRegionId = value
@@ -2359,6 +2466,9 @@ public class CreateCloudPhoneNodeRequest : Tea.TeaModel {
             model.fromMap(value)
             self.displayConfig = model
         }
+        if let value = dict["DownBandwidthLimit"] as? Int32 {
+            self.downBandwidthLimit = value
+        }
         if let value = dict["ImageId"] as? String {
             self.imageId = value
         }
@@ -2367,6 +2477,14 @@ public class CreateCloudPhoneNodeRequest : Tea.TeaModel {
         }
         if let value = dict["NetworkId"] as? String {
             self.networkId = value
+        }
+        if let value = dict["NetworkInfo"] as? [String: Any?] {
+            var model = CreateCloudPhoneNodeRequest.NetworkInfo()
+            model.fromMap(value)
+            self.networkInfo = model
+        }
+        if let value = dict["NetworkType"] as? String {
+            self.networkType = value
         }
         if let value = dict["NodeName"] as? String {
             self.nodeName = value
@@ -2410,6 +2528,9 @@ public class CreateCloudPhoneNodeRequest : Tea.TeaModel {
                 }
             }
             self.tag = tmp
+        }
+        if let value = dict["UpBandwidthLimit"] as? Int32 {
+            self.upBandwidthLimit = value
         }
         if let value = dict["VSwitchId"] as? String {
             self.vSwitchId = value
@@ -2460,6 +2581,10 @@ public class CreateCloudPhoneNodeShrinkRequest : Tea.TeaModel {
 
     public var autoRenew: Bool?
 
+    public var bandwidthPackageId: String?
+
+    public var bandwidthPackageType: String?
+
     public var bizRegionId: String?
 
     public var chargeType: String?
@@ -2468,11 +2593,17 @@ public class CreateCloudPhoneNodeShrinkRequest : Tea.TeaModel {
 
     public var displayConfigShrink: String?
 
+    public var downBandwidthLimit: Int32?
+
     public var imageId: String?
 
     public var instanceType: String?
 
     public var networkId: String?
+
+    public var networkInfoShrink: String?
+
+    public var networkType: String?
 
     public var nodeName: String?
 
@@ -2496,6 +2627,8 @@ public class CreateCloudPhoneNodeShrinkRequest : Tea.TeaModel {
 
     public var tag: [CreateCloudPhoneNodeShrinkRequest.Tag]?
 
+    public var upBandwidthLimit: Int32?
+
     public var vSwitchId: String?
 
     public override init() {
@@ -2518,6 +2651,12 @@ public class CreateCloudPhoneNodeShrinkRequest : Tea.TeaModel {
         if self.autoRenew != nil {
             map["AutoRenew"] = self.autoRenew!
         }
+        if self.bandwidthPackageId != nil {
+            map["BandwidthPackageId"] = self.bandwidthPackageId!
+        }
+        if self.bandwidthPackageType != nil {
+            map["BandwidthPackageType"] = self.bandwidthPackageType!
+        }
         if self.bizRegionId != nil {
             map["BizRegionId"] = self.bizRegionId!
         }
@@ -2530,6 +2669,9 @@ public class CreateCloudPhoneNodeShrinkRequest : Tea.TeaModel {
         if self.displayConfigShrink != nil {
             map["DisplayConfig"] = self.displayConfigShrink!
         }
+        if self.downBandwidthLimit != nil {
+            map["DownBandwidthLimit"] = self.downBandwidthLimit!
+        }
         if self.imageId != nil {
             map["ImageId"] = self.imageId!
         }
@@ -2538,6 +2680,12 @@ public class CreateCloudPhoneNodeShrinkRequest : Tea.TeaModel {
         }
         if self.networkId != nil {
             map["NetworkId"] = self.networkId!
+        }
+        if self.networkInfoShrink != nil {
+            map["NetworkInfo"] = self.networkInfoShrink!
+        }
+        if self.networkType != nil {
+            map["NetworkType"] = self.networkType!
         }
         if self.nodeName != nil {
             map["NodeName"] = self.nodeName!
@@ -2576,6 +2724,9 @@ public class CreateCloudPhoneNodeShrinkRequest : Tea.TeaModel {
             }
             map["Tag"] = tmp
         }
+        if self.upBandwidthLimit != nil {
+            map["UpBandwidthLimit"] = self.upBandwidthLimit!
+        }
         if self.vSwitchId != nil {
             map["VSwitchId"] = self.vSwitchId!
         }
@@ -2590,6 +2741,12 @@ public class CreateCloudPhoneNodeShrinkRequest : Tea.TeaModel {
         if let value = dict["AutoRenew"] as? Bool {
             self.autoRenew = value
         }
+        if let value = dict["BandwidthPackageId"] as? String {
+            self.bandwidthPackageId = value
+        }
+        if let value = dict["BandwidthPackageType"] as? String {
+            self.bandwidthPackageType = value
+        }
         if let value = dict["BizRegionId"] as? String {
             self.bizRegionId = value
         }
@@ -2602,6 +2759,9 @@ public class CreateCloudPhoneNodeShrinkRequest : Tea.TeaModel {
         if let value = dict["DisplayConfig"] as? String {
             self.displayConfigShrink = value
         }
+        if let value = dict["DownBandwidthLimit"] as? Int32 {
+            self.downBandwidthLimit = value
+        }
         if let value = dict["ImageId"] as? String {
             self.imageId = value
         }
@@ -2610,6 +2770,12 @@ public class CreateCloudPhoneNodeShrinkRequest : Tea.TeaModel {
         }
         if let value = dict["NetworkId"] as? String {
             self.networkId = value
+        }
+        if let value = dict["NetworkInfo"] as? String {
+            self.networkInfoShrink = value
+        }
+        if let value = dict["NetworkType"] as? String {
+            self.networkType = value
         }
         if let value = dict["NodeName"] as? String {
             self.nodeName = value
@@ -2654,6 +2820,9 @@ public class CreateCloudPhoneNodeShrinkRequest : Tea.TeaModel {
             }
             self.tag = tmp
         }
+        if let value = dict["UpBandwidthLimit"] as? Int32 {
+            self.upBandwidthLimit = value
+        }
         if let value = dict["VSwitchId"] as? String {
             self.vSwitchId = value
         }
@@ -2661,6 +2830,44 @@ public class CreateCloudPhoneNodeShrinkRequest : Tea.TeaModel {
 }
 
 public class CreateCloudPhoneNodeResponseBody : Tea.TeaModel {
+    public class NetworkPackageOrderModel : Tea.TeaModel {
+        public var bandwidthPackageId: String?
+
+        public var bandwidthPackageOrderId: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.bandwidthPackageId != nil {
+                map["BandwidthPackageId"] = self.bandwidthPackageId!
+            }
+            if self.bandwidthPackageOrderId != nil {
+                map["BandwidthPackageOrderId"] = self.bandwidthPackageOrderId!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["BandwidthPackageId"] as? String {
+                self.bandwidthPackageId = value
+            }
+            if let value = dict["BandwidthPackageOrderId"] as? String {
+                self.bandwidthPackageOrderId = value
+            }
+        }
+    }
     public class NodeInfos : Tea.TeaModel {
         public var instanceIds: [String]?
 
@@ -2699,6 +2906,8 @@ public class CreateCloudPhoneNodeResponseBody : Tea.TeaModel {
             }
         }
     }
+    public var networkPackageOrderModel: CreateCloudPhoneNodeResponseBody.NetworkPackageOrderModel?
+
     public var nodeInfos: [CreateCloudPhoneNodeResponseBody.NodeInfos]?
 
     public var orderId: String?
@@ -2715,10 +2924,14 @@ public class CreateCloudPhoneNodeResponseBody : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
+        try self.networkPackageOrderModel?.validate()
     }
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.networkPackageOrderModel != nil {
+            map["NetworkPackageOrderModel"] = self.networkPackageOrderModel?.toMap()
+        }
         if self.nodeInfos != nil {
             var tmp : [Any] = []
             for k in self.nodeInfos! {
@@ -2737,6 +2950,11 @@ public class CreateCloudPhoneNodeResponseBody : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["NetworkPackageOrderModel"] as? [String: Any?] {
+            var model = CreateCloudPhoneNodeResponseBody.NetworkPackageOrderModel()
+            model.fromMap(value)
+            self.networkPackageOrderModel = model
+        }
         if let value = dict["NodeInfos"] as? [Any?] {
             var tmp : [CreateCloudPhoneNodeResponseBody.NodeInfos] = []
             for v in value {
@@ -5312,6 +5530,8 @@ public class DescribeAndroidInstancesRequest : Tea.TeaModel {
 
     public var officeSiteIds: [String]?
 
+    public var privateIpAddress: String?
+
     public var qosRuleIds: [String]?
 
     public var saleMode: String?
@@ -5379,6 +5599,9 @@ public class DescribeAndroidInstancesRequest : Tea.TeaModel {
         if self.officeSiteIds != nil {
             map["OfficeSiteIds"] = self.officeSiteIds!
         }
+        if self.privateIpAddress != nil {
+            map["PrivateIpAddress"] = self.privateIpAddress!
+        }
         if self.qosRuleIds != nil {
             map["QosRuleIds"] = self.qosRuleIds!
         }
@@ -5444,6 +5667,9 @@ public class DescribeAndroidInstancesRequest : Tea.TeaModel {
         }
         if let value = dict["OfficeSiteIds"] as? [String] {
             self.officeSiteIds = value
+        }
+        if let value = dict["PrivateIpAddress"] as? String {
+            self.privateIpAddress = value
         }
         if let value = dict["QosRuleIds"] as? [String] {
             self.qosRuleIds = value
@@ -5704,6 +5930,10 @@ public class DescribeAndroidInstancesResponseBody : Tea.TeaModel {
 
         public var authorizedUserId: String?
 
+        public var bandwidthPackageId: String?
+
+        public var bandwidthPackageType: String?
+
         public var bindUserId: String?
 
         public var chargeType: String?
@@ -5713,6 +5943,8 @@ public class DescribeAndroidInstancesResponseBody : Tea.TeaModel {
         public var disks: [DescribeAndroidInstancesResponseBody.InstanceModel.Disks]?
 
         public var displayConfig: DescribeAndroidInstancesResponseBody.InstanceModel.DisplayConfig?
+
+        public var downBandwidthLimit: Int32?
 
         public var errorCode: String?
 
@@ -5735,6 +5967,8 @@ public class DescribeAndroidInstancesResponseBody : Tea.TeaModel {
         public var networkInterfaceIp: String?
 
         public var networkInterfaceIpv6Address: String?
+
+        public var networkType: String?
 
         public var officeSiteId: String?
 
@@ -5761,6 +5995,8 @@ public class DescribeAndroidInstancesResponseBody : Tea.TeaModel {
         public var streamMode: Int32?
 
         public var tags: [DescribeAndroidInstancesResponseBody.InstanceModel.Tags]?
+
+        public var upBandwidthLimit: Int32?
 
         public var vSwitchId: String?
 
@@ -5810,6 +6046,12 @@ public class DescribeAndroidInstancesResponseBody : Tea.TeaModel {
             if self.authorizedUserId != nil {
                 map["AuthorizedUserId"] = self.authorizedUserId!
             }
+            if self.bandwidthPackageId != nil {
+                map["BandwidthPackageId"] = self.bandwidthPackageId!
+            }
+            if self.bandwidthPackageType != nil {
+                map["BandwidthPackageType"] = self.bandwidthPackageType!
+            }
             if self.bindUserId != nil {
                 map["BindUserId"] = self.bindUserId!
             }
@@ -5828,6 +6070,9 @@ public class DescribeAndroidInstancesResponseBody : Tea.TeaModel {
             }
             if self.displayConfig != nil {
                 map["DisplayConfig"] = self.displayConfig?.toMap()
+            }
+            if self.downBandwidthLimit != nil {
+                map["DownBandwidthLimit"] = self.downBandwidthLimit!
             }
             if self.errorCode != nil {
                 map["ErrorCode"] = self.errorCode!
@@ -5861,6 +6106,9 @@ public class DescribeAndroidInstancesResponseBody : Tea.TeaModel {
             }
             if self.networkInterfaceIpv6Address != nil {
                 map["NetworkInterfaceIpv6Address"] = self.networkInterfaceIpv6Address!
+            }
+            if self.networkType != nil {
+                map["NetworkType"] = self.networkType!
             }
             if self.officeSiteId != nil {
                 map["OfficeSiteId"] = self.officeSiteId!
@@ -5905,6 +6153,9 @@ public class DescribeAndroidInstancesResponseBody : Tea.TeaModel {
                 }
                 map["Tags"] = tmp
             }
+            if self.upBandwidthLimit != nil {
+                map["UpBandwidthLimit"] = self.upBandwidthLimit!
+            }
             if self.vSwitchId != nil {
                 map["VSwitchId"] = self.vSwitchId!
             }
@@ -5945,6 +6196,12 @@ public class DescribeAndroidInstancesResponseBody : Tea.TeaModel {
             if let value = dict["AuthorizedUserId"] as? String {
                 self.authorizedUserId = value
             }
+            if let value = dict["BandwidthPackageId"] as? String {
+                self.bandwidthPackageId = value
+            }
+            if let value = dict["BandwidthPackageType"] as? String {
+                self.bandwidthPackageType = value
+            }
             if let value = dict["BindUserId"] as? String {
                 self.bindUserId = value
             }
@@ -5971,6 +6228,9 @@ public class DescribeAndroidInstancesResponseBody : Tea.TeaModel {
                 var model = DescribeAndroidInstancesResponseBody.InstanceModel.DisplayConfig()
                 model.fromMap(value)
                 self.displayConfig = model
+            }
+            if let value = dict["DownBandwidthLimit"] as? Int32 {
+                self.downBandwidthLimit = value
             }
             if let value = dict["ErrorCode"] as? String {
                 self.errorCode = value
@@ -6004,6 +6264,9 @@ public class DescribeAndroidInstancesResponseBody : Tea.TeaModel {
             }
             if let value = dict["NetworkInterfaceIpv6Address"] as? String {
                 self.networkInterfaceIpv6Address = value
+            }
+            if let value = dict["NetworkType"] as? String {
+                self.networkType = value
             }
             if let value = dict["OfficeSiteId"] as? String {
                 self.officeSiteId = value
@@ -6055,6 +6318,9 @@ public class DescribeAndroidInstancesResponseBody : Tea.TeaModel {
                     }
                 }
                 self.tags = tmp
+            }
+            if let value = dict["UpBandwidthLimit"] as? Int32 {
+                self.upBandwidthLimit = value
             }
             if let value = dict["VSwitchId"] as? String {
                 self.vSwitchId = value
@@ -6967,6 +7233,8 @@ public class DescribeBackupFilesResponse : Tea.TeaModel {
 }
 
 public class DescribeCloudPhoneNodesRequest : Tea.TeaModel {
+    public var bandwidthPackageId: String?
+
     public var bizRegionId: String?
 
     public var chargeType: String?
@@ -6997,6 +7265,9 @@ public class DescribeCloudPhoneNodesRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.bandwidthPackageId != nil {
+            map["BandwidthPackageId"] = self.bandwidthPackageId!
+        }
         if self.bizRegionId != nil {
             map["BizRegionId"] = self.bizRegionId!
         }
@@ -7026,6 +7297,9 @@ public class DescribeCloudPhoneNodesRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["BandwidthPackageId"] as? String {
+            self.bandwidthPackageId = value
+        }
         if let value = dict["BizRegionId"] as? String {
             self.bizRegionId = value
         }
@@ -7056,7 +7330,13 @@ public class DescribeCloudPhoneNodesRequest : Tea.TeaModel {
 public class DescribeCloudPhoneNodesResponseBody : Tea.TeaModel {
     public class NodeModel : Tea.TeaModel {
         public class NetworkInfos : Tea.TeaModel {
+            public var bandwidthPackageId: String?
+
+            public var bandwidthPackageType: String?
+
             public var networkId: String?
+
+            public var networkType: String?
 
             public var vSwitchId: String?
 
@@ -7074,8 +7354,17 @@ public class DescribeCloudPhoneNodesResponseBody : Tea.TeaModel {
 
             public override func toMap() -> [String : Any] {
                 var map = super.toMap()
+                if self.bandwidthPackageId != nil {
+                    map["BandwidthPackageId"] = self.bandwidthPackageId!
+                }
+                if self.bandwidthPackageType != nil {
+                    map["BandwidthPackageType"] = self.bandwidthPackageType!
+                }
                 if self.networkId != nil {
                     map["NetworkId"] = self.networkId!
+                }
+                if self.networkType != nil {
+                    map["NetworkType"] = self.networkType!
                 }
                 if self.vSwitchId != nil {
                     map["VSwitchId"] = self.vSwitchId!
@@ -7085,8 +7374,17 @@ public class DescribeCloudPhoneNodesResponseBody : Tea.TeaModel {
 
             public override func fromMap(_ dict: [String: Any?]?) -> Void {
                 guard let dict else { return }
+                if let value = dict["BandwidthPackageId"] as? String {
+                    self.bandwidthPackageId = value
+                }
+                if let value = dict["BandwidthPackageType"] as? String {
+                    self.bandwidthPackageType = value
+                }
                 if let value = dict["NetworkId"] as? String {
                     self.networkId = value
+                }
+                if let value = dict["NetworkType"] as? String {
+                    self.networkType = value
                 }
                 if let value = dict["VSwitchId"] as? String {
                     self.vSwitchId = value
@@ -7131,6 +7429,10 @@ public class DescribeCloudPhoneNodesResponseBody : Tea.TeaModel {
                 }
             }
         }
+        public var bandwidthPackageId: String?
+
+        public var bandwidthPackageType: String?
+
         public var chargeType: String?
 
         public var cpu: String?
@@ -7148,6 +7450,8 @@ public class DescribeCloudPhoneNodesResponseBody : Tea.TeaModel {
         public var networkId: String?
 
         public var networkInfos: [DescribeCloudPhoneNodesResponseBody.NodeModel.NetworkInfos]?
+
+        public var networkType: String?
 
         public var nodeId: String?
 
@@ -7186,6 +7490,12 @@ public class DescribeCloudPhoneNodesResponseBody : Tea.TeaModel {
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
+            if self.bandwidthPackageId != nil {
+                map["BandwidthPackageId"] = self.bandwidthPackageId!
+            }
+            if self.bandwidthPackageType != nil {
+                map["BandwidthPackageType"] = self.bandwidthPackageType!
+            }
             if self.chargeType != nil {
                 map["ChargeType"] = self.chargeType!
             }
@@ -7216,6 +7526,9 @@ public class DescribeCloudPhoneNodesResponseBody : Tea.TeaModel {
                     tmp.append(k.toMap())
                 }
                 map["NetworkInfos"] = tmp
+            }
+            if self.networkType != nil {
+                map["NetworkType"] = self.networkType!
             }
             if self.nodeId != nil {
                 map["NodeId"] = self.nodeId!
@@ -7255,6 +7568,12 @@ public class DescribeCloudPhoneNodesResponseBody : Tea.TeaModel {
 
         public override func fromMap(_ dict: [String: Any?]?) -> Void {
             guard let dict else { return }
+            if let value = dict["BandwidthPackageId"] as? String {
+                self.bandwidthPackageId = value
+            }
+            if let value = dict["BandwidthPackageType"] as? String {
+                self.bandwidthPackageType = value
+            }
             if let value = dict["ChargeType"] as? String {
                 self.chargeType = value
             }
@@ -7291,6 +7610,9 @@ public class DescribeCloudPhoneNodesResponseBody : Tea.TeaModel {
                     }
                 }
                 self.networkInfos = tmp
+            }
+            if let value = dict["NetworkType"] as? String {
+                self.networkType = value
             }
             if let value = dict["NodeId"] as? String {
                 self.nodeId = value
@@ -11883,7 +12205,13 @@ public class ListPolicyGroupsResponse : Tea.TeaModel {
 public class ModifyAndroidInstanceRequest : Tea.TeaModel {
     public var androidInstanceId: String?
 
+    public var downBandwidthLimit: Int32?
+
+    public var instanceIds: [String]?
+
     public var newAndroidInstanceName: String?
+
+    public var upBandwidthLimit: Int32?
 
     public override init() {
         super.init()
@@ -11902,8 +12230,17 @@ public class ModifyAndroidInstanceRequest : Tea.TeaModel {
         if self.androidInstanceId != nil {
             map["AndroidInstanceId"] = self.androidInstanceId!
         }
+        if self.downBandwidthLimit != nil {
+            map["DownBandwidthLimit"] = self.downBandwidthLimit!
+        }
+        if self.instanceIds != nil {
+            map["InstanceIds"] = self.instanceIds!
+        }
         if self.newAndroidInstanceName != nil {
             map["NewAndroidInstanceName"] = self.newAndroidInstanceName!
+        }
+        if self.upBandwidthLimit != nil {
+            map["UpBandwidthLimit"] = self.upBandwidthLimit!
         }
         return map
     }
@@ -11913,8 +12250,17 @@ public class ModifyAndroidInstanceRequest : Tea.TeaModel {
         if let value = dict["AndroidInstanceId"] as? String {
             self.androidInstanceId = value
         }
+        if let value = dict["DownBandwidthLimit"] as? Int32 {
+            self.downBandwidthLimit = value
+        }
+        if let value = dict["InstanceIds"] as? [String] {
+            self.instanceIds = value
+        }
         if let value = dict["NewAndroidInstanceName"] as? String {
             self.newAndroidInstanceName = value
+        }
+        if let value = dict["UpBandwidthLimit"] as? Int32 {
+            self.upBandwidthLimit = value
         }
     }
 }
