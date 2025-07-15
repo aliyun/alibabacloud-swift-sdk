@@ -594,6 +594,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func docOcrMaxWithOptions(_ request: DocOcrMaxRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DocOcrMaxResponse {
         try TeaUtils.Client.validateModel(request)
         var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.docPage)) {
+            body["DocPage"] = request.docPage ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.docType)) {
             body["DocType"] = request.docType ?? "";
         }

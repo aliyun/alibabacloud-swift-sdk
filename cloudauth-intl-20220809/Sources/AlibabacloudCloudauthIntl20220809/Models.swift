@@ -2265,6 +2265,8 @@ public class DocOcrResponse : Tea.TeaModel {
 }
 
 public class DocOcrMaxRequest : Tea.TeaModel {
+    public var docPage: String?
+
     public var docType: String?
 
     public var idOcrPictureBase64: String?
@@ -2303,6 +2305,9 @@ public class DocOcrMaxRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.docPage != nil {
+            map["DocPage"] = self.docPage!
+        }
         if self.docType != nil {
             map["DocType"] = self.docType!
         }
@@ -2344,6 +2349,9 @@ public class DocOcrMaxRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["DocPage"] as? String {
+            self.docPage = value
+        }
         if let value = dict["DocType"] as? String {
             self.docType = value
         }
