@@ -4899,6 +4899,8 @@ public class ListExecutorsResponseBody : Tea.TeaModel {
 
         public var arrayIndex: Int32?
 
+        public var blockDuration: Int32?
+
         public var createTime: String?
 
         public var endTime: String?
@@ -4918,6 +4920,8 @@ public class ListExecutorsResponseBody : Tea.TeaModel {
         public var jobId: String?
 
         public var jobName: String?
+
+        public var preemptible: Bool?
 
         public var resource: ListExecutorsResponseBody.Executors.Resource?
 
@@ -4958,6 +4962,9 @@ public class ListExecutorsResponseBody : Tea.TeaModel {
             if self.arrayIndex != nil {
                 map["ArrayIndex"] = self.arrayIndex!
             }
+            if self.blockDuration != nil {
+                map["BlockDuration"] = self.blockDuration!
+            }
             if self.createTime != nil {
                 map["CreateTime"] = self.createTime!
             }
@@ -4987,6 +4994,9 @@ public class ListExecutorsResponseBody : Tea.TeaModel {
             }
             if self.jobName != nil {
                 map["JobName"] = self.jobName!
+            }
+            if self.preemptible != nil {
+                map["Preemptible"] = self.preemptible!
             }
             if self.resource != nil {
                 map["Resource"] = self.resource?.toMap()
@@ -5030,6 +5040,9 @@ public class ListExecutorsResponseBody : Tea.TeaModel {
             if let value = dict["ArrayIndex"] as? Int32 {
                 self.arrayIndex = value
             }
+            if let value = dict["BlockDuration"] as? Int32 {
+                self.blockDuration = value
+            }
             if let value = dict["CreateTime"] as? String {
                 self.createTime = value
             }
@@ -5059,6 +5072,9 @@ public class ListExecutorsResponseBody : Tea.TeaModel {
             }
             if let value = dict["JobName"] as? String {
                 self.jobName = value
+            }
+            if let value = dict["Preemptible"] as? Bool {
+                self.preemptible = value
             }
             if let value = dict["Resource"] as? [String: Any?] {
                 var model = ListExecutorsResponseBody.Executors.Resource()
@@ -5805,6 +5821,8 @@ public class ListJobExecutorsResponseBody : Tea.TeaModel {
         }
         public var arrayIndex: Int32?
 
+        public var blockDuration: Int32?
+
         public var createTime: String?
 
         public var endTime: String?
@@ -5818,6 +5836,8 @@ public class ListJobExecutorsResponseBody : Tea.TeaModel {
         public var hostName: [String]?
 
         public var ipAddress: [String]?
+
+        public var preemptible: Bool?
 
         public var startTime: String?
 
@@ -5844,6 +5864,9 @@ public class ListJobExecutorsResponseBody : Tea.TeaModel {
             if self.arrayIndex != nil {
                 map["ArrayIndex"] = self.arrayIndex!
             }
+            if self.blockDuration != nil {
+                map["BlockDuration"] = self.blockDuration!
+            }
             if self.createTime != nil {
                 map["CreateTime"] = self.createTime!
             }
@@ -5864,6 +5887,9 @@ public class ListJobExecutorsResponseBody : Tea.TeaModel {
             }
             if self.ipAddress != nil {
                 map["IpAddress"] = self.ipAddress!
+            }
+            if self.preemptible != nil {
+                map["Preemptible"] = self.preemptible!
             }
             if self.startTime != nil {
                 map["StartTime"] = self.startTime!
@@ -5889,6 +5915,9 @@ public class ListJobExecutorsResponseBody : Tea.TeaModel {
             if let value = dict["ArrayIndex"] as? Int32 {
                 self.arrayIndex = value
             }
+            if let value = dict["BlockDuration"] as? Int32 {
+                self.blockDuration = value
+            }
             if let value = dict["CreateTime"] as? String {
                 self.createTime = value
             }
@@ -5909,6 +5938,9 @@ public class ListJobExecutorsResponseBody : Tea.TeaModel {
             }
             if let value = dict["IpAddress"] as? [String] {
                 self.ipAddress = value
+            }
+            if let value = dict["Preemptible"] as? Bool {
+                self.preemptible = value
             }
             if let value = dict["StartTime"] as? String {
                 self.startTime = value
