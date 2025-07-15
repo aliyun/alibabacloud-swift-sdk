@@ -34391,6 +34391,8 @@ public class DescribeInstancesRequest : Tea.TeaModel {
 
     public var instanceId: String?
 
+    public var instanceType: String?
+
     public var language: String?
 
     public var securityToken: String?
@@ -34417,6 +34419,9 @@ public class DescribeInstancesRequest : Tea.TeaModel {
         if self.instanceId != nil {
             map["InstanceId"] = self.instanceId!
         }
+        if self.instanceType != nil {
+            map["InstanceType"] = self.instanceType!
+        }
         if self.language != nil {
             map["Language"] = self.language!
         }
@@ -34440,6 +34445,9 @@ public class DescribeInstancesRequest : Tea.TeaModel {
         }
         if let value = dict["InstanceId"] as? String {
             self.instanceId = value
+        }
+        if let value = dict["InstanceType"] as? String {
+            self.instanceType = value
         }
         if let value = dict["Language"] as? String {
             self.language = value
