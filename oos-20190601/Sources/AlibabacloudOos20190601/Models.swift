@@ -6720,6 +6720,8 @@ public class GetApplicationGroupResponseBody : Tea.TeaModel {
 
         public var deployRegionId: String?
 
+        public var deployedRevisionIds: String?
+
         public var description_: String?
 
         public var errorDetail: String?
@@ -6776,6 +6778,9 @@ public class GetApplicationGroupResponseBody : Tea.TeaModel {
             }
             if self.deployRegionId != nil {
                 map["DeployRegionId"] = self.deployRegionId!
+            }
+            if self.deployedRevisionIds != nil {
+                map["DeployedRevisionIds"] = self.deployedRevisionIds!
             }
             if self.description_ != nil {
                 map["Description"] = self.description_!
@@ -6835,6 +6840,9 @@ public class GetApplicationGroupResponseBody : Tea.TeaModel {
             }
             if let value = dict["DeployRegionId"] as? String {
                 self.deployRegionId = value
+            }
+            if let value = dict["DeployedRevisionIds"] as? String {
+                self.deployedRevisionIds = value
             }
             if let value = dict["Description"] as? String {
                 self.description_ = value
@@ -10951,6 +10959,8 @@ public class ListApplicationGroupsResponseBody : Tea.TeaModel {
 
         public var deployRegionId: String?
 
+        public var deployedRevisionIds: String?
+
         public var description_: String?
 
         public var errorDetail: String?
@@ -10998,6 +11008,9 @@ public class ListApplicationGroupsResponseBody : Tea.TeaModel {
             if self.deployRegionId != nil {
                 map["DeployRegionId"] = self.deployRegionId!
             }
+            if self.deployedRevisionIds != nil {
+                map["DeployedRevisionIds"] = self.deployedRevisionIds!
+            }
             if self.description_ != nil {
                 map["Description"] = self.description_!
             }
@@ -11044,6 +11057,9 @@ public class ListApplicationGroupsResponseBody : Tea.TeaModel {
             }
             if let value = dict["DeployRegionId"] as? String {
                 self.deployRegionId = value
+            }
+            if let value = dict["DeployedRevisionIds"] as? String {
+                self.deployedRevisionIds = value
             }
             if let value = dict["Description"] as? String {
                 self.description_ = value
@@ -21723,6 +21739,8 @@ public class UpdateApplicationResponse : Tea.TeaModel {
 public class UpdateApplicationGroupRequest : Tea.TeaModel {
     public var applicationName: String?
 
+    public var deployedRevisionId: String?
+
     public var name: String?
 
     public var newName: String?
@@ -21750,6 +21768,9 @@ public class UpdateApplicationGroupRequest : Tea.TeaModel {
         if self.applicationName != nil {
             map["ApplicationName"] = self.applicationName!
         }
+        if self.deployedRevisionId != nil {
+            map["DeployedRevisionId"] = self.deployedRevisionId!
+        }
         if self.name != nil {
             map["Name"] = self.name!
         }
@@ -21773,6 +21794,9 @@ public class UpdateApplicationGroupRequest : Tea.TeaModel {
         if let value = dict["ApplicationName"] as? String {
             self.applicationName = value
         }
+        if let value = dict["DeployedRevisionId"] as? String {
+            self.deployedRevisionId = value
+        }
         if let value = dict["Name"] as? String {
             self.name = value
         }
@@ -21793,6 +21817,8 @@ public class UpdateApplicationGroupRequest : Tea.TeaModel {
 
 public class UpdateApplicationGroupShrinkRequest : Tea.TeaModel {
     public var applicationName: String?
+
+    public var deployedRevisionId: String?
 
     public var name: String?
 
@@ -21821,6 +21847,9 @@ public class UpdateApplicationGroupShrinkRequest : Tea.TeaModel {
         if self.applicationName != nil {
             map["ApplicationName"] = self.applicationName!
         }
+        if self.deployedRevisionId != nil {
+            map["DeployedRevisionId"] = self.deployedRevisionId!
+        }
         if self.name != nil {
             map["Name"] = self.name!
         }
@@ -21843,6 +21872,9 @@ public class UpdateApplicationGroupShrinkRequest : Tea.TeaModel {
         guard let dict else { return }
         if let value = dict["ApplicationName"] as? String {
             self.applicationName = value
+        }
+        if let value = dict["DeployedRevisionId"] as? String {
+            self.deployedRevisionId = value
         }
         if let value = dict["Name"] as? String {
             self.name = value
