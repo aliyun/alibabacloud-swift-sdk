@@ -49033,6 +49033,8 @@ public class DescribeNatGatewayAssociateNetworkInterfacesResponseBody : Tea.TeaM
 
             public var resourceType: String?
 
+            public var resourceVpcId: String?
+
             public var tunnelIndex: String?
 
             public override init() {
@@ -49065,6 +49067,9 @@ public class DescribeNatGatewayAssociateNetworkInterfacesResponseBody : Tea.TeaM
                 if self.resourceType != nil {
                     map["ResourceType"] = self.resourceType!
                 }
+                if self.resourceVpcId != nil {
+                    map["ResourceVpcId"] = self.resourceVpcId!
+                }
                 if self.tunnelIndex != nil {
                     map["TunnelIndex"] = self.tunnelIndex!
                 }
@@ -49089,6 +49094,9 @@ public class DescribeNatGatewayAssociateNetworkInterfacesResponseBody : Tea.TeaM
                 }
                 if let value = dict["ResourceType"] as? String {
                     self.resourceType = value
+                }
+                if let value = dict["ResourceVpcId"] as? String {
+                    self.resourceVpcId = value
                 }
                 if let value = dict["TunnelIndex"] as? String {
                     self.tunnelIndex = value
@@ -77570,6 +77578,8 @@ public class GetVpcPrefixListAssociationsRequest : Tea.TeaModel {
 
 public class GetVpcPrefixListAssociationsResponseBody : Tea.TeaModel {
     public class PrefixListAssociation : Tea.TeaModel {
+        public var cidrList: String?
+
         public var ownerId: String?
 
         public var prefixListId: String?
@@ -77600,6 +77610,9 @@ public class GetVpcPrefixListAssociationsResponseBody : Tea.TeaModel {
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
+            if self.cidrList != nil {
+                map["CidrList"] = self.cidrList!
+            }
             if self.ownerId != nil {
                 map["OwnerId"] = self.ownerId!
             }
@@ -77629,6 +77642,9 @@ public class GetVpcPrefixListAssociationsResponseBody : Tea.TeaModel {
 
         public override func fromMap(_ dict: [String: Any?]?) -> Void {
             guard let dict else { return }
+            if let value = dict["CidrList"] as? String {
+                self.cidrList = value
+            }
             if let value = dict["OwnerId"] as? String {
                 self.ownerId = value
             }
