@@ -19133,6 +19133,8 @@ public class GetSmartAuditResultResponseBody : Tea.TeaModel {
 
             public var subClassDesc: String?
 
+            public var url: String?
+
             public override init() {
                 super.init()
             }
@@ -19183,6 +19185,9 @@ public class GetSmartAuditResultResponseBody : Tea.TeaModel {
                 if self.subClassDesc != nil {
                     map["SubClassDesc"] = self.subClassDesc!
                 }
+                if self.url != nil {
+                    map["Url"] = self.url!
+                }
                 return map
             }
 
@@ -19223,6 +19228,9 @@ public class GetSmartAuditResultResponseBody : Tea.TeaModel {
                 }
                 if let value = dict["SubClassDesc"] as? String {
                     self.subClassDesc = value
+                }
+                if let value = dict["Url"] as? String {
+                    self.url = value
                 }
             }
         }
@@ -37438,6 +37446,8 @@ public class QueryAuditTaskResponse : Tea.TeaModel {
 public class RunAbbreviationContentRequest : Tea.TeaModel {
     public var content: String?
 
+    public var prompt: String?
+
     public var workspaceId: String?
 
     public override init() {
@@ -37457,6 +37467,9 @@ public class RunAbbreviationContentRequest : Tea.TeaModel {
         if self.content != nil {
             map["Content"] = self.content!
         }
+        if self.prompt != nil {
+            map["Prompt"] = self.prompt!
+        }
         if self.workspaceId != nil {
             map["WorkspaceId"] = self.workspaceId!
         }
@@ -37467,6 +37480,9 @@ public class RunAbbreviationContentRequest : Tea.TeaModel {
         guard let dict else { return }
         if let value = dict["Content"] as? String {
             self.content = value
+        }
+        if let value = dict["Prompt"] as? String {
+            self.prompt = value
         }
         if let value = dict["WorkspaceId"] as? String {
             self.workspaceId = value
@@ -44188,6 +44204,8 @@ public class RunDocWashingResponse : Tea.TeaModel {
 public class RunExpandContentRequest : Tea.TeaModel {
     public var content: String?
 
+    public var prompt: String?
+
     public var workspaceId: String?
 
     public override init() {
@@ -44207,6 +44225,9 @@ public class RunExpandContentRequest : Tea.TeaModel {
         if self.content != nil {
             map["Content"] = self.content!
         }
+        if self.prompt != nil {
+            map["Prompt"] = self.prompt!
+        }
         if self.workspaceId != nil {
             map["WorkspaceId"] = self.workspaceId!
         }
@@ -44217,6 +44238,9 @@ public class RunExpandContentRequest : Tea.TeaModel {
         guard let dict else { return }
         if let value = dict["Content"] as? String {
             self.content = value
+        }
+        if let value = dict["Prompt"] as? String {
+            self.prompt = value
         }
         if let value = dict["WorkspaceId"] as? String {
             self.workspaceId = value
@@ -45300,6 +45324,8 @@ public class RunKeywordsExtractionGenerationRequest : Tea.TeaModel {
             }
         }
     }
+    public var prompt: String?
+
     public var referenceData: RunKeywordsExtractionGenerationRequest.ReferenceData?
 
     public var taskId: String?
@@ -45321,6 +45347,9 @@ public class RunKeywordsExtractionGenerationRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.prompt != nil {
+            map["Prompt"] = self.prompt!
+        }
         if self.referenceData != nil {
             map["ReferenceData"] = self.referenceData?.toMap()
         }
@@ -45335,6 +45364,9 @@ public class RunKeywordsExtractionGenerationRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["Prompt"] as? String {
+            self.prompt = value
+        }
         if let value = dict["ReferenceData"] as? [String: Any?] {
             var model = RunKeywordsExtractionGenerationRequest.ReferenceData()
             model.fromMap(value)
@@ -45350,6 +45382,8 @@ public class RunKeywordsExtractionGenerationRequest : Tea.TeaModel {
 }
 
 public class RunKeywordsExtractionGenerationShrinkRequest : Tea.TeaModel {
+    public var prompt: String?
+
     public var referenceDataShrink: String?
 
     public var taskId: String?
@@ -45370,6 +45404,9 @@ public class RunKeywordsExtractionGenerationShrinkRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.prompt != nil {
+            map["Prompt"] = self.prompt!
+        }
         if self.referenceDataShrink != nil {
             map["ReferenceData"] = self.referenceDataShrink!
         }
@@ -45384,6 +45421,9 @@ public class RunKeywordsExtractionGenerationShrinkRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["Prompt"] as? String {
+            self.prompt = value
+        }
         if let value = dict["ReferenceData"] as? String {
             self.referenceDataShrink = value
         }
@@ -54195,6 +54235,8 @@ public class RunSummaryGenerateResponse : Tea.TeaModel {
 public class RunTextPolishingRequest : Tea.TeaModel {
     public var content: String?
 
+    public var prompt: String?
+
     public var workspaceId: String?
 
     public override init() {
@@ -54214,6 +54256,9 @@ public class RunTextPolishingRequest : Tea.TeaModel {
         if self.content != nil {
             map["Content"] = self.content!
         }
+        if self.prompt != nil {
+            map["Prompt"] = self.prompt!
+        }
         if self.workspaceId != nil {
             map["WorkspaceId"] = self.workspaceId!
         }
@@ -54224,6 +54269,9 @@ public class RunTextPolishingRequest : Tea.TeaModel {
         guard let dict else { return }
         if let value = dict["Content"] as? String {
             self.content = value
+        }
+        if let value = dict["Prompt"] as? String {
+            self.prompt = value
         }
         if let value = dict["WorkspaceId"] as? String {
             self.workspaceId = value
@@ -62946,11 +62994,51 @@ public class SubmitImportTermsTaskResponse : Tea.TeaModel {
 }
 
 public class SubmitSmartAuditRequest : Tea.TeaModel {
+    public class ImageUrls : Tea.TeaModel {
+        public var id: String?
+
+        public var url: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.id != nil {
+                map["id"] = self.id!
+            }
+            if self.url != nil {
+                map["url"] = self.url!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["id"] as? String {
+                self.id = value
+            }
+            if let value = dict["url"] as? String {
+                self.url = value
+            }
+        }
+    }
     public var subCodes: [String]?
 
     public var text: String?
 
     public var workspaceId: String?
+
+    public var imageUrls: [SubmitSmartAuditRequest.ImageUrls]?
 
     public override init() {
         super.init()
@@ -62975,6 +63063,13 @@ public class SubmitSmartAuditRequest : Tea.TeaModel {
         if self.workspaceId != nil {
             map["WorkspaceId"] = self.workspaceId!
         }
+        if self.imageUrls != nil {
+            var tmp : [Any] = []
+            for k in self.imageUrls! {
+                tmp.append(k.toMap())
+            }
+            map["imageUrls"] = tmp
+        }
         return map
     }
 
@@ -62989,6 +63084,19 @@ public class SubmitSmartAuditRequest : Tea.TeaModel {
         if let value = dict["WorkspaceId"] as? String {
             self.workspaceId = value
         }
+        if let value = dict["imageUrls"] as? [Any?] {
+            var tmp : [SubmitSmartAuditRequest.ImageUrls] = []
+            for v in value {
+                if v != nil {
+                    var model = SubmitSmartAuditRequest.ImageUrls()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.imageUrls = tmp
+        }
     }
 }
 
@@ -62998,6 +63106,8 @@ public class SubmitSmartAuditShrinkRequest : Tea.TeaModel {
     public var text: String?
 
     public var workspaceId: String?
+
+    public var imageUrlsShrink: String?
 
     public override init() {
         super.init()
@@ -63022,6 +63132,9 @@ public class SubmitSmartAuditShrinkRequest : Tea.TeaModel {
         if self.workspaceId != nil {
             map["WorkspaceId"] = self.workspaceId!
         }
+        if self.imageUrlsShrink != nil {
+            map["imageUrls"] = self.imageUrlsShrink!
+        }
         return map
     }
 
@@ -63035,6 +63148,9 @@ public class SubmitSmartAuditShrinkRequest : Tea.TeaModel {
         }
         if let value = dict["WorkspaceId"] as? String {
             self.workspaceId = value
+        }
+        if let value = dict["imageUrls"] as? String {
+            self.imageUrlsShrink = value
         }
     }
 }

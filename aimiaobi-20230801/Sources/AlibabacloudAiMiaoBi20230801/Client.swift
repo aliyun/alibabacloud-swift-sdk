@@ -4534,6 +4534,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.content)) {
             body["Content"] = request.content ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.prompt)) {
+            body["Prompt"] = request.prompt ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.workspaceId)) {
             body["WorkspaceId"] = request.workspaceId ?? "";
         }
@@ -5285,6 +5288,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.content)) {
             body["Content"] = request.content ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.prompt)) {
+            body["Prompt"] = request.prompt ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.workspaceId)) {
             body["WorkspaceId"] = request.workspaceId ?? "";
         }
@@ -5410,6 +5416,9 @@ open class Client : AlibabacloudOpenApi.Client {
             request.referenceDataShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.referenceData, "ReferenceData", "json")
         }
         var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.prompt)) {
+            body["Prompt"] = request.prompt ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.referenceDataShrink)) {
             body["ReferenceData"] = request.referenceDataShrink ?? "";
         }
@@ -5744,6 +5753,9 @@ open class Client : AlibabacloudOpenApi.Client {
         var body: [String: Any] = [:]
         if (!TeaUtils.Client.isUnset(request.content)) {
             body["Content"] = request.content ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.prompt)) {
+            body["Prompt"] = request.prompt ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.workspaceId)) {
             body["WorkspaceId"] = request.workspaceId ?? "";
@@ -6841,6 +6853,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(tmpReq.subCodes)) {
             request.subCodesShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.subCodes, "SubCodes", "json")
         }
+        if (!TeaUtils.Client.isUnset(tmpReq.imageUrls)) {
+            request.imageUrlsShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.imageUrls, "imageUrls", "json")
+        }
         var body: [String: Any] = [:]
         if (!TeaUtils.Client.isUnset(request.subCodesShrink)) {
             body["SubCodes"] = request.subCodesShrink ?? "";
@@ -6850,6 +6865,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.workspaceId)) {
             body["WorkspaceId"] = request.workspaceId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.imageUrlsShrink)) {
+            body["imageUrls"] = request.imageUrlsShrink ?? "";
         }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
