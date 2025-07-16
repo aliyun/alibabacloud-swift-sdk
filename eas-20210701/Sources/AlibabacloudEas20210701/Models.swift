@@ -447,13 +447,29 @@ public class Resource : Tea.TeaModel {
 
     public var cpuCount: Int32?
 
+    public var cpuUsed: Int32?
+
     public var createTime: String?
 
     public var extraData: [String: Any]?
 
+    public var features: [String]?
+
     public var gpuCount: Int32?
 
+    public var gpuUsed: Double?
+
     public var instanceCount: Int32?
+
+    public var instanceMaxAllocatableCPU: Int32?
+
+    public var instanceMaxAllocatableGPU: Double?
+
+    public var instanceMaxAllocatableMemory: Int32?
+
+    public var memory: Int32?
+
+    public var memoryUsed: Int32?
 
     public var message: String?
 
@@ -493,17 +509,41 @@ public class Resource : Tea.TeaModel {
         if self.cpuCount != nil {
             map["CpuCount"] = self.cpuCount!
         }
+        if self.cpuUsed != nil {
+            map["CpuUsed"] = self.cpuUsed!
+        }
         if self.createTime != nil {
             map["CreateTime"] = self.createTime!
         }
         if self.extraData != nil {
             map["ExtraData"] = self.extraData!
         }
+        if self.features != nil {
+            map["Features"] = self.features!
+        }
         if self.gpuCount != nil {
             map["GpuCount"] = self.gpuCount!
         }
+        if self.gpuUsed != nil {
+            map["GpuUsed"] = self.gpuUsed!
+        }
         if self.instanceCount != nil {
             map["InstanceCount"] = self.instanceCount!
+        }
+        if self.instanceMaxAllocatableCPU != nil {
+            map["InstanceMaxAllocatableCPU"] = self.instanceMaxAllocatableCPU!
+        }
+        if self.instanceMaxAllocatableGPU != nil {
+            map["InstanceMaxAllocatableGPU"] = self.instanceMaxAllocatableGPU!
+        }
+        if self.instanceMaxAllocatableMemory != nil {
+            map["InstanceMaxAllocatableMemory"] = self.instanceMaxAllocatableMemory!
+        }
+        if self.memory != nil {
+            map["Memory"] = self.memory!
+        }
+        if self.memoryUsed != nil {
+            map["MemoryUsed"] = self.memoryUsed!
         }
         if self.message != nil {
             map["Message"] = self.message!
@@ -543,17 +583,41 @@ public class Resource : Tea.TeaModel {
         if let value = dict["CpuCount"] as? Int32 {
             self.cpuCount = value
         }
+        if let value = dict["CpuUsed"] as? Int32 {
+            self.cpuUsed = value
+        }
         if let value = dict["CreateTime"] as? String {
             self.createTime = value
         }
         if let value = dict["ExtraData"] as? [String: Any] {
             self.extraData = value
         }
+        if let value = dict["Features"] as? [String] {
+            self.features = value
+        }
         if let value = dict["GpuCount"] as? Int32 {
             self.gpuCount = value
         }
+        if let value = dict["GpuUsed"] as? Double {
+            self.gpuUsed = value
+        }
         if let value = dict["InstanceCount"] as? Int32 {
             self.instanceCount = value
+        }
+        if let value = dict["InstanceMaxAllocatableCPU"] as? Int32 {
+            self.instanceMaxAllocatableCPU = value
+        }
+        if let value = dict["InstanceMaxAllocatableGPU"] as? Double {
+            self.instanceMaxAllocatableGPU = value
+        }
+        if let value = dict["InstanceMaxAllocatableMemory"] as? Int32 {
+            self.instanceMaxAllocatableMemory = value
+        }
+        if let value = dict["Memory"] as? Int32 {
+            self.memory = value
+        }
+        if let value = dict["MemoryUsed"] as? Int32 {
+            self.memoryUsed = value
         }
         if let value = dict["Message"] as? String {
             self.message = value
@@ -972,6 +1036,52 @@ public class ResourceInstanceWorker : Tea.TeaModel {
 }
 
 public class Service : Tea.TeaModel {
+    public class InstanceCountInResource : Tea.TeaModel {
+        public var dedicated: Int32?
+
+        public var public_: Int32?
+
+        public var quota: Int32?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.dedicated != nil {
+                map["Dedicated"] = self.dedicated!
+            }
+            if self.public_ != nil {
+                map["Public"] = self.public_!
+            }
+            if self.quota != nil {
+                map["Quota"] = self.quota!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["Dedicated"] as? Int32 {
+                self.dedicated = value
+            }
+            if let value = dict["Public"] as? Int32 {
+                self.public_ = value
+            }
+            if let value = dict["Quota"] as? Int32 {
+                self.quota = value
+            }
+        }
+    }
     public class Labels : Tea.TeaModel {
         public var labelKey: String?
 
@@ -1020,21 +1130,31 @@ public class Service : Tea.TeaModel {
 
     public var appVersion: String?
 
+    public var autoscalerEnabled: Bool?
+
     public var callerUid: String?
 
     public var cpu: Int32?
 
     public var createTime: String?
 
+    public var cronscalerEnabled: Bool?
+
     public var currentVersion: Int32?
 
     public var extraData: String?
+
+    public var GPUCorePercentage: Int32?
+
+    public var GPUMemory: Int32?
 
     public var gateway: String?
 
     public var gpu: Int32?
 
     public var image: String?
+
+    public var instanceCountInResource: Service.InstanceCountInResource?
 
     public var internetEndpoint: String?
 
@@ -1065,6 +1185,8 @@ public class Service : Tea.TeaModel {
     public var resource: String?
 
     public var resourceAlias: String?
+
+    public var resourceBurstable: Bool?
 
     public var role: String?
 
@@ -1112,6 +1234,7 @@ public class Service : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
+        try self.instanceCountInResource?.validate()
     }
 
     public override func toMap() -> [String : Any] {
@@ -1131,6 +1254,9 @@ public class Service : Tea.TeaModel {
         if self.appVersion != nil {
             map["AppVersion"] = self.appVersion!
         }
+        if self.autoscalerEnabled != nil {
+            map["AutoscalerEnabled"] = self.autoscalerEnabled!
+        }
         if self.callerUid != nil {
             map["CallerUid"] = self.callerUid!
         }
@@ -1140,11 +1266,20 @@ public class Service : Tea.TeaModel {
         if self.createTime != nil {
             map["CreateTime"] = self.createTime!
         }
+        if self.cronscalerEnabled != nil {
+            map["CronscalerEnabled"] = self.cronscalerEnabled!
+        }
         if self.currentVersion != nil {
             map["CurrentVersion"] = self.currentVersion!
         }
         if self.extraData != nil {
             map["ExtraData"] = self.extraData!
+        }
+        if self.GPUCorePercentage != nil {
+            map["GPUCorePercentage"] = self.GPUCorePercentage!
+        }
+        if self.GPUMemory != nil {
+            map["GPUMemory"] = self.GPUMemory!
         }
         if self.gateway != nil {
             map["Gateway"] = self.gateway!
@@ -1154,6 +1289,9 @@ public class Service : Tea.TeaModel {
         }
         if self.image != nil {
             map["Image"] = self.image!
+        }
+        if self.instanceCountInResource != nil {
+            map["InstanceCountInResource"] = self.instanceCountInResource?.toMap()
         }
         if self.internetEndpoint != nil {
             map["InternetEndpoint"] = self.internetEndpoint!
@@ -1203,6 +1341,9 @@ public class Service : Tea.TeaModel {
         }
         if self.resourceAlias != nil {
             map["ResourceAlias"] = self.resourceAlias!
+        }
+        if self.resourceBurstable != nil {
+            map["ResourceBurstable"] = self.resourceBurstable!
         }
         if self.role != nil {
             map["Role"] = self.role!
@@ -1278,6 +1419,9 @@ public class Service : Tea.TeaModel {
         if let value = dict["AppVersion"] as? String {
             self.appVersion = value
         }
+        if let value = dict["AutoscalerEnabled"] as? Bool {
+            self.autoscalerEnabled = value
+        }
         if let value = dict["CallerUid"] as? String {
             self.callerUid = value
         }
@@ -1287,11 +1431,20 @@ public class Service : Tea.TeaModel {
         if let value = dict["CreateTime"] as? String {
             self.createTime = value
         }
+        if let value = dict["CronscalerEnabled"] as? Bool {
+            self.cronscalerEnabled = value
+        }
         if let value = dict["CurrentVersion"] as? Int32 {
             self.currentVersion = value
         }
         if let value = dict["ExtraData"] as? String {
             self.extraData = value
+        }
+        if let value = dict["GPUCorePercentage"] as? Int32 {
+            self.GPUCorePercentage = value
+        }
+        if let value = dict["GPUMemory"] as? Int32 {
+            self.GPUMemory = value
         }
         if let value = dict["Gateway"] as? String {
             self.gateway = value
@@ -1301,6 +1454,11 @@ public class Service : Tea.TeaModel {
         }
         if let value = dict["Image"] as? String {
             self.image = value
+        }
+        if let value = dict["InstanceCountInResource"] as? [String: Any?] {
+            var model = Service.InstanceCountInResource()
+            model.fromMap(value)
+            self.instanceCountInResource = model
         }
         if let value = dict["InternetEndpoint"] as? String {
             self.internetEndpoint = value
@@ -1356,6 +1514,9 @@ public class Service : Tea.TeaModel {
         }
         if let value = dict["ResourceAlias"] as? String {
             self.resourceAlias = value
+        }
+        if let value = dict["ResourceBurstable"] as? Bool {
+            self.resourceBurstable = value
         }
         if let value = dict["Role"] as? String {
             self.role = value
@@ -8182,11 +8343,19 @@ public class DescribeResourceResponseBody : Tea.TeaModel {
 
     public var extraData: String?
 
+    public var features: [String]?
+
     public var gpuCount: Int32?
 
     public var gpuUsed: Double?
 
     public var instanceCount: Int32?
+
+    public var instanceMaxAllocatableCPU: Int32?
+
+    public var instanceMaxAllocatableGPU: Double?
+
+    public var instanceMaxAllocatableMemory: Int32?
 
     public var memory: Int32?
 
@@ -8241,6 +8410,9 @@ public class DescribeResourceResponseBody : Tea.TeaModel {
         if self.extraData != nil {
             map["ExtraData"] = self.extraData!
         }
+        if self.features != nil {
+            map["Features"] = self.features!
+        }
         if self.gpuCount != nil {
             map["GpuCount"] = self.gpuCount!
         }
@@ -8249,6 +8421,15 @@ public class DescribeResourceResponseBody : Tea.TeaModel {
         }
         if self.instanceCount != nil {
             map["InstanceCount"] = self.instanceCount!
+        }
+        if self.instanceMaxAllocatableCPU != nil {
+            map["InstanceMaxAllocatableCPU"] = self.instanceMaxAllocatableCPU!
+        }
+        if self.instanceMaxAllocatableGPU != nil {
+            map["InstanceMaxAllocatableGPU"] = self.instanceMaxAllocatableGPU!
+        }
+        if self.instanceMaxAllocatableMemory != nil {
+            map["InstanceMaxAllocatableMemory"] = self.instanceMaxAllocatableMemory!
         }
         if self.memory != nil {
             map["Memory"] = self.memory!
@@ -8306,6 +8487,9 @@ public class DescribeResourceResponseBody : Tea.TeaModel {
         if let value = dict["ExtraData"] as? String {
             self.extraData = value
         }
+        if let value = dict["Features"] as? [String] {
+            self.features = value
+        }
         if let value = dict["GpuCount"] as? Int32 {
             self.gpuCount = value
         }
@@ -8314,6 +8498,15 @@ public class DescribeResourceResponseBody : Tea.TeaModel {
         }
         if let value = dict["InstanceCount"] as? Int32 {
             self.instanceCount = value
+        }
+        if let value = dict["InstanceMaxAllocatableCPU"] as? Int32 {
+            self.instanceMaxAllocatableCPU = value
+        }
+        if let value = dict["InstanceMaxAllocatableGPU"] as? Double {
+            self.instanceMaxAllocatableGPU = value
+        }
+        if let value = dict["InstanceMaxAllocatableMemory"] as? Int32 {
+            self.instanceMaxAllocatableMemory = value
         }
         if let value = dict["Memory"] as? Int32 {
             self.memory = value
@@ -10582,6 +10775,8 @@ public class DescribeVirtualResourceResponseBody : Tea.TeaModel {
 
     public var disableSpotProtectionPeriod: Bool?
 
+    public var features: [String]?
+
     public var requestId: String?
 
     public var resources: [DescribeVirtualResourceResponseBody.Resources]?
@@ -10613,6 +10808,9 @@ public class DescribeVirtualResourceResponseBody : Tea.TeaModel {
         }
         if self.disableSpotProtectionPeriod != nil {
             map["DisableSpotProtectionPeriod"] = self.disableSpotProtectionPeriod!
+        }
+        if self.features != nil {
+            map["Features"] = self.features!
         }
         if self.requestId != nil {
             map["RequestId"] = self.requestId!
@@ -10646,6 +10844,9 @@ public class DescribeVirtualResourceResponseBody : Tea.TeaModel {
         }
         if let value = dict["DisableSpotProtectionPeriod"] as? Bool {
             self.disableSpotProtectionPeriod = value
+        }
+        if let value = dict["Features"] as? [String] {
+            self.features = value
         }
         if let value = dict["RequestId"] as? String {
             self.requestId = value
@@ -14386,6 +14587,10 @@ public class ListServiceVersionsResponse : Tea.TeaModel {
 }
 
 public class ListServicesRequest : Tea.TeaModel {
+    public var autoscalerEnabled: Bool?
+
+    public var cronscalerEnabled: Bool?
+
     public var filter: String?
 
     public var gateway: String?
@@ -14407,6 +14612,8 @@ public class ListServicesRequest : Tea.TeaModel {
     public var quotaId: String?
 
     public var resourceAliasName: String?
+
+    public var resourceBurstable: Bool?
 
     public var resourceId: String?
 
@@ -14442,6 +14649,12 @@ public class ListServicesRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.autoscalerEnabled != nil {
+            map["AutoscalerEnabled"] = self.autoscalerEnabled!
+        }
+        if self.cronscalerEnabled != nil {
+            map["CronscalerEnabled"] = self.cronscalerEnabled!
+        }
         if self.filter != nil {
             map["Filter"] = self.filter!
         }
@@ -14474,6 +14687,9 @@ public class ListServicesRequest : Tea.TeaModel {
         }
         if self.resourceAliasName != nil {
             map["ResourceAliasName"] = self.resourceAliasName!
+        }
+        if self.resourceBurstable != nil {
+            map["ResourceBurstable"] = self.resourceBurstable!
         }
         if self.resourceId != nil {
             map["ResourceId"] = self.resourceId!
@@ -14510,6 +14726,12 @@ public class ListServicesRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["AutoscalerEnabled"] as? Bool {
+            self.autoscalerEnabled = value
+        }
+        if let value = dict["CronscalerEnabled"] as? Bool {
+            self.cronscalerEnabled = value
+        }
         if let value = dict["Filter"] as? String {
             self.filter = value
         }
@@ -14542,6 +14764,9 @@ public class ListServicesRequest : Tea.TeaModel {
         }
         if let value = dict["ResourceAliasName"] as? String {
             self.resourceAliasName = value
+        }
+        if let value = dict["ResourceBurstable"] as? Bool {
+            self.resourceBurstable = value
         }
         if let value = dict["ResourceId"] as? String {
             self.resourceId = value
@@ -14577,6 +14802,10 @@ public class ListServicesRequest : Tea.TeaModel {
 }
 
 public class ListServicesShrinkRequest : Tea.TeaModel {
+    public var autoscalerEnabled: Bool?
+
+    public var cronscalerEnabled: Bool?
+
     public var filter: String?
 
     public var gateway: String?
@@ -14598,6 +14827,8 @@ public class ListServicesShrinkRequest : Tea.TeaModel {
     public var quotaId: String?
 
     public var resourceAliasName: String?
+
+    public var resourceBurstable: Bool?
 
     public var resourceId: String?
 
@@ -14633,6 +14864,12 @@ public class ListServicesShrinkRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.autoscalerEnabled != nil {
+            map["AutoscalerEnabled"] = self.autoscalerEnabled!
+        }
+        if self.cronscalerEnabled != nil {
+            map["CronscalerEnabled"] = self.cronscalerEnabled!
+        }
         if self.filter != nil {
             map["Filter"] = self.filter!
         }
@@ -14665,6 +14902,9 @@ public class ListServicesShrinkRequest : Tea.TeaModel {
         }
         if self.resourceAliasName != nil {
             map["ResourceAliasName"] = self.resourceAliasName!
+        }
+        if self.resourceBurstable != nil {
+            map["ResourceBurstable"] = self.resourceBurstable!
         }
         if self.resourceId != nil {
             map["ResourceId"] = self.resourceId!
@@ -14701,6 +14941,12 @@ public class ListServicesShrinkRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["AutoscalerEnabled"] as? Bool {
+            self.autoscalerEnabled = value
+        }
+        if let value = dict["CronscalerEnabled"] as? Bool {
+            self.cronscalerEnabled = value
+        }
         if let value = dict["Filter"] as? String {
             self.filter = value
         }
@@ -14733,6 +14979,9 @@ public class ListServicesShrinkRequest : Tea.TeaModel {
         }
         if let value = dict["ResourceAliasName"] as? String {
             self.resourceAliasName = value
+        }
+        if let value = dict["ResourceBurstable"] as? Bool {
+            self.resourceBurstable = value
         }
         if let value = dict["ResourceId"] as? String {
             self.resourceId = value

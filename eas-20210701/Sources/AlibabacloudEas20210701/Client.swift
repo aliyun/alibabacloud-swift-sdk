@@ -2673,6 +2673,12 @@ open class Client : AlibabacloudOpenApi.Client {
             request.labelShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.label, "Label", "json")
         }
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.autoscalerEnabled)) {
+            query["AutoscalerEnabled"] = request.autoscalerEnabled!;
+        }
+        if (!TeaUtils.Client.isUnset(request.cronscalerEnabled)) {
+            query["CronscalerEnabled"] = request.cronscalerEnabled!;
+        }
         if (!TeaUtils.Client.isUnset(request.filter)) {
             query["Filter"] = request.filter ?? "";
         }
@@ -2705,6 +2711,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.resourceAliasName)) {
             query["ResourceAliasName"] = request.resourceAliasName ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.resourceBurstable)) {
+            query["ResourceBurstable"] = request.resourceBurstable!;
         }
         if (!TeaUtils.Client.isUnset(request.resourceId)) {
             query["ResourceId"] = request.resourceId ?? "";
