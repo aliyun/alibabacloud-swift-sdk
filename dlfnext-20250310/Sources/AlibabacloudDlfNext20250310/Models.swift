@@ -113,6 +113,8 @@ public class CatalogSummary : Tea.TeaModel {
 
     public var databaseCount: MoMValues?
 
+    public var fileAccessCountMonthly: Int64?
+
     public var generatedDate: String?
 
     public var partitionCount: MoMValues?
@@ -150,6 +152,9 @@ public class CatalogSummary : Tea.TeaModel {
         if self.databaseCount != nil {
             map["databaseCount"] = self.databaseCount?.toMap()
         }
+        if self.fileAccessCountMonthly != nil {
+            map["fileAccessCountMonthly"] = self.fileAccessCountMonthly!
+        }
         if self.generatedDate != nil {
             map["generatedDate"] = self.generatedDate!
         }
@@ -180,6 +185,9 @@ public class CatalogSummary : Tea.TeaModel {
             var model = MoMValues()
             model.fromMap(value)
             self.databaseCount = model
+        }
+        if let value = dict["fileAccessCountMonthly"] as? Int64 {
+            self.fileAccessCountMonthly = value
         }
         if let value = dict["generatedDate"] as? String {
             self.generatedDate = value
@@ -213,6 +221,8 @@ public class CatalogSummary : Tea.TeaModel {
 public class CatalogSummaryTrend : Tea.TeaModel {
     public var apiVisitCount: [DateSummary]?
 
+    public var fileAccessCount: [DateSummary]?
+
     public var throughput: [DateSummary]?
 
     public var totalFileCount: [DateSummary]?
@@ -241,6 +251,13 @@ public class CatalogSummaryTrend : Tea.TeaModel {
                 tmp.append(k.toMap())
             }
             map["apiVisitCount"] = tmp
+        }
+        if self.fileAccessCount != nil {
+            var tmp : [Any] = []
+            for k in self.fileAccessCount! {
+                tmp.append(k.toMap())
+            }
+            map["fileAccessCount"] = tmp
         }
         if self.throughput != nil {
             var tmp : [Any] = []
@@ -287,6 +304,19 @@ public class CatalogSummaryTrend : Tea.TeaModel {
                 }
             }
             self.apiVisitCount = tmp
+        }
+        if let value = dict["fileAccessCount"] as? [Any?] {
+            var tmp : [DateSummary] = []
+            for v in value {
+                if v != nil {
+                    var model = DateSummary()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.fileAccessCount = tmp
         }
         if let value = dict["throughput"] as? [Any?] {
             var tmp : [DateSummary] = []
@@ -2454,6 +2484,8 @@ public class Table : Tea.TeaModel {
 public class TableCompaction : Tea.TeaModel {
     public var catalogId: String?
 
+    public var cuUsage: Double?
+
     public var lastCompactedFileTime: Int64?
 
     public var maxLevel0FileCount: String?
@@ -2477,6 +2509,9 @@ public class TableCompaction : Tea.TeaModel {
         if self.catalogId != nil {
             map["catalogId"] = self.catalogId!
         }
+        if self.cuUsage != nil {
+            map["cuUsage"] = self.cuUsage!
+        }
         if self.lastCompactedFileTime != nil {
             map["lastCompactedFileTime"] = self.lastCompactedFileTime!
         }
@@ -2493,6 +2528,9 @@ public class TableCompaction : Tea.TeaModel {
         guard let dict else { return }
         if let value = dict["catalogId"] as? String {
             self.catalogId = value
+        }
+        if let value = dict["cuUsage"] as? Double {
+            self.cuUsage = value
         }
         if let value = dict["lastCompactedFileTime"] as? Int64 {
             self.lastCompactedFileTime = value
@@ -3213,8 +3251,6 @@ public class BatchRevokePermissionsResponse : Tea.TeaModel {
 public class CreateCatalogRequest : Tea.TeaModel {
     public var name: String?
 
-    public var optimizationConfig: [String: String]?
-
     public var options: [String: String]?
 
     public var type: String?
@@ -3236,9 +3272,6 @@ public class CreateCatalogRequest : Tea.TeaModel {
         if self.name != nil {
             map["name"] = self.name!
         }
-        if self.optimizationConfig != nil {
-            map["optimizationConfig"] = self.optimizationConfig!
-        }
         if self.options != nil {
             map["options"] = self.options!
         }
@@ -3252,9 +3285,6 @@ public class CreateCatalogRequest : Tea.TeaModel {
         guard let dict else { return }
         if let value = dict["name"] as? String {
             self.name = value
-        }
-        if let value = dict["optimizationConfig"] as? [String: String] {
-            self.optimizationConfig = value
         }
         if let value = dict["options"] as? [String: String] {
             self.options = value
@@ -4793,7 +4823,7 @@ public class ListPermissionsResponse : Tea.TeaModel {
 }
 
 public class ListRoleUsersRequest : Tea.TeaModel {
-    public var maxResults: String?
+    public var maxResults: Int32?
 
     public var pageToken: String?
 
@@ -4827,7 +4857,7 @@ public class ListRoleUsersRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
-        if let value = dict["maxResults"] as? String {
+        if let value = dict["maxResults"] as? Int32 {
             self.maxResults = value
         }
         if let value = dict["pageToken"] as? String {
@@ -5093,7 +5123,7 @@ public class ListRolesResponse : Tea.TeaModel {
 }
 
 public class ListUserRolesRequest : Tea.TeaModel {
-    public var maxResults: String?
+    public var maxResults: Int32?
 
     public var pageToken: String?
 
@@ -5127,7 +5157,7 @@ public class ListUserRolesRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
-        if let value = dict["maxResults"] as? String {
+        if let value = dict["maxResults"] as? Int32 {
             self.maxResults = value
         }
         if let value = dict["pageToken"] as? String {
