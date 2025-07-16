@@ -26766,6 +26766,8 @@ public class DescribeDomainUsageDataRequest : Tea.TeaModel {
 
     public var interval: String?
 
+    public var serviceType: String?
+
     public var startTime: String?
 
     public var type: String?
@@ -26802,6 +26804,9 @@ public class DescribeDomainUsageDataRequest : Tea.TeaModel {
         if self.interval != nil {
             map["Interval"] = self.interval!
         }
+        if self.serviceType != nil {
+            map["ServiceType"] = self.serviceType!
+        }
         if self.startTime != nil {
             map["StartTime"] = self.startTime!
         }
@@ -26830,6 +26835,9 @@ public class DescribeDomainUsageDataRequest : Tea.TeaModel {
         }
         if let value = dict["Interval"] as? String {
             self.interval = value
+        }
+        if let value = dict["ServiceType"] as? String {
+            self.serviceType = value
         }
         if let value = dict["StartTime"] as? String {
             self.startTime = value

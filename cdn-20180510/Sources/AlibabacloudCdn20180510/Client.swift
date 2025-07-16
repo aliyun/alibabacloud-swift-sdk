@@ -4262,6 +4262,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.interval)) {
             query["Interval"] = request.interval ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.serviceType)) {
+            query["ServiceType"] = request.serviceType ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.startTime)) {
             query["StartTime"] = request.startTime ?? "";
         }
