@@ -6457,6 +6457,8 @@ public class DescribeDBInstanceAttributeResponseBody : Tea.TeaModel {
 
         public var connectionString: String?
 
+        public var cpuType: String?
+
         public var createTime: String?
 
         public var DBInstanceType: String?
@@ -6594,6 +6596,9 @@ public class DescribeDBInstanceAttributeResponseBody : Tea.TeaModel {
             }
             if self.connectionString != nil {
                 map["ConnectionString"] = self.connectionString!
+            }
+            if self.cpuType != nil {
+                map["CpuType"] = self.cpuType!
             }
             if self.createTime != nil {
                 map["CreateTime"] = self.createTime!
@@ -6789,6 +6794,9 @@ public class DescribeDBInstanceAttributeResponseBody : Tea.TeaModel {
             }
             if let value = dict["ConnectionString"] as? String {
                 self.connectionString = value
+            }
+            if let value = dict["CpuType"] as? String {
+                self.cpuType = value
             }
             if let value = dict["CreateTime"] as? String {
                 self.createTime = value
