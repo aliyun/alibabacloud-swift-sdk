@@ -4025,6 +4025,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.question)) {
             query["Question"] = request.question ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.tableNames)) {
+            query["TableNames"] = request.tableNames ?? "";
+        }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "query": AlibabaCloudOpenApiUtil.Client.query(query)
         ])

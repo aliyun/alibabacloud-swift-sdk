@@ -22783,6 +22783,8 @@ public class GenerateSqlFromNLRequest : Tea.TeaModel {
 
     public var question: String?
 
+    public var tableNames: String?
+
     public override init() {
         super.init()
     }
@@ -22815,6 +22817,9 @@ public class GenerateSqlFromNLRequest : Tea.TeaModel {
         if self.question != nil {
             map["Question"] = self.question!
         }
+        if self.tableNames != nil {
+            map["TableNames"] = self.tableNames!
+        }
         return map
     }
 
@@ -22837,6 +22842,9 @@ public class GenerateSqlFromNLRequest : Tea.TeaModel {
         }
         if let value = dict["Question"] as? String {
             self.question = value
+        }
+        if let value = dict["TableNames"] as? String {
+            self.tableNames = value
         }
     }
 }
