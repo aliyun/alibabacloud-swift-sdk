@@ -3810,6 +3810,36 @@ public class GetFeatureViewResponse : Tea.TeaModel {
 }
 
 public class GetInstanceResponseBody : Tea.TeaModel {
+    public class FeatureDBInfo : Tea.TeaModel {
+        public var status: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.status != nil {
+                map["Status"] = self.status!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["Status"] as? String {
+                self.status = value
+            }
+        }
+    }
     public class FeatureDBInstanceInfo : Tea.TeaModel {
         public var status: String?
 
@@ -3840,6 +3870,8 @@ public class GetInstanceResponseBody : Tea.TeaModel {
             }
         }
     }
+    public var featureDBInfo: GetInstanceResponseBody.FeatureDBInfo?
+
     public var featureDBInstanceInfo: GetInstanceResponseBody.FeatureDBInstanceInfo?
 
     public var gmtCreateTime: String?
@@ -3868,11 +3900,15 @@ public class GetInstanceResponseBody : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
+        try self.featureDBInfo?.validate()
         try self.featureDBInstanceInfo?.validate()
     }
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.featureDBInfo != nil {
+            map["FeatureDBInfo"] = self.featureDBInfo?.toMap()
+        }
         if self.featureDBInstanceInfo != nil {
             map["FeatureDBInstanceInfo"] = self.featureDBInstanceInfo?.toMap()
         }
@@ -3905,6 +3941,11 @@ public class GetInstanceResponseBody : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["FeatureDBInfo"] as? [String: Any?] {
+            var model = GetInstanceResponseBody.FeatureDBInfo()
+            model.fromMap(value)
+            self.featureDBInfo = model
+        }
         if let value = dict["FeatureDBInstanceInfo"] as? [String: Any?] {
             var model = GetInstanceResponseBody.FeatureDBInstanceInfo()
             model.fromMap(value)
@@ -8367,6 +8408,36 @@ public class ListInstancesRequest : Tea.TeaModel {
 
 public class ListInstancesResponseBody : Tea.TeaModel {
     public class Instances : Tea.TeaModel {
+        public class FeatureDBInfo : Tea.TeaModel {
+            public var status: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.status != nil {
+                    map["Status"] = self.status!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["Status"] as? String {
+                    self.status = value
+                }
+            }
+        }
         public class FeatureDBInstanceInfo : Tea.TeaModel {
             public var status: String?
 
@@ -8397,6 +8468,8 @@ public class ListInstancesResponseBody : Tea.TeaModel {
                 }
             }
         }
+        public var featureDBInfo: ListInstancesResponseBody.Instances.FeatureDBInfo?
+
         public var featureDBInstanceInfo: ListInstancesResponseBody.Instances.FeatureDBInstanceInfo?
 
         public var gmtCreateTime: String?
@@ -8421,11 +8494,15 @@ public class ListInstancesResponseBody : Tea.TeaModel {
         }
 
         public override func validate() throws -> Void {
+            try self.featureDBInfo?.validate()
             try self.featureDBInstanceInfo?.validate()
         }
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
+            if self.featureDBInfo != nil {
+                map["FeatureDBInfo"] = self.featureDBInfo?.toMap()
+            }
             if self.featureDBInstanceInfo != nil {
                 map["FeatureDBInstanceInfo"] = self.featureDBInstanceInfo?.toMap()
             }
@@ -8452,6 +8529,11 @@ public class ListInstancesResponseBody : Tea.TeaModel {
 
         public override func fromMap(_ dict: [String: Any?]?) -> Void {
             guard let dict else { return }
+            if let value = dict["FeatureDBInfo"] as? [String: Any?] {
+                var model = ListInstancesResponseBody.Instances.FeatureDBInfo()
+                model.fromMap(value)
+                self.featureDBInfo = model
+            }
             if let value = dict["FeatureDBInstanceInfo"] as? [String: Any?] {
                 var model = ListInstancesResponseBody.Instances.FeatureDBInstanceInfo()
                 model.fromMap(value)
