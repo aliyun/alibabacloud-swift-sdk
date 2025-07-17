@@ -5193,6 +5193,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.clientToken)) {
             query["ClientToken"] = request.clientToken ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.executionMode)) {
+            query["ExecutionMode"] = request.executionMode ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.lifecycleHookContextShrink)) {
             query["LifecycleHookContext"] = request.lifecycleHookContextShrink ?? "";
         }
