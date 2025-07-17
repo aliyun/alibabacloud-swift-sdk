@@ -7887,9 +7887,13 @@ public class CreateHttpApiRequest : Tea.TeaModel {
 
     public var ingressConfig: CreateHttpApiRequest.IngressConfig?
 
+    public var modelCategory: String?
+
     public var name: String?
 
     public var protocols: [String]?
+
+    public var removeBasePathOnForward: Bool?
 
     public var resourceGroupId: String?
 
@@ -7942,11 +7946,17 @@ public class CreateHttpApiRequest : Tea.TeaModel {
         if self.ingressConfig != nil {
             map["ingressConfig"] = self.ingressConfig?.toMap()
         }
+        if self.modelCategory != nil {
+            map["modelCategory"] = self.modelCategory!
+        }
         if self.name != nil {
             map["name"] = self.name!
         }
         if self.protocols != nil {
             map["protocols"] = self.protocols!
+        }
+        if self.removeBasePathOnForward != nil {
+            map["removeBasePathOnForward"] = self.removeBasePathOnForward!
         }
         if self.resourceGroupId != nil {
             map["resourceGroupId"] = self.resourceGroupId!
@@ -8000,11 +8010,17 @@ public class CreateHttpApiRequest : Tea.TeaModel {
             model.fromMap(value)
             self.ingressConfig = model
         }
+        if let value = dict["modelCategory"] as? String {
+            self.modelCategory = value
+        }
         if let value = dict["name"] as? String {
             self.name = value
         }
         if let value = dict["protocols"] as? [String] {
             self.protocols = value
+        }
+        if let value = dict["removeBasePathOnForward"] as? Bool {
+            self.removeBasePathOnForward = value
         }
         if let value = dict["resourceGroupId"] as? String {
             self.resourceGroupId = value
@@ -20554,6 +20570,8 @@ public class UpdateHttpApiRequest : Tea.TeaModel {
 
     public var protocols: [String]?
 
+    public var removeBasePathOnForward: Bool?
+
     public var versionConfig: HttpApiVersionConfig?
 
     public override init() {
@@ -20607,6 +20625,9 @@ public class UpdateHttpApiRequest : Tea.TeaModel {
         if self.protocols != nil {
             map["protocols"] = self.protocols!
         }
+        if self.removeBasePathOnForward != nil {
+            map["removeBasePathOnForward"] = self.removeBasePathOnForward!
+        }
         if self.versionConfig != nil {
             map["versionConfig"] = self.versionConfig?.toMap()
         }
@@ -20658,6 +20679,9 @@ public class UpdateHttpApiRequest : Tea.TeaModel {
         }
         if let value = dict["protocols"] as? [String] {
             self.protocols = value
+        }
+        if let value = dict["removeBasePathOnForward"] as? Bool {
+            self.removeBasePathOnForward = value
         }
         if let value = dict["versionConfig"] as? [String: Any?] {
             var model = HttpApiVersionConfig()
