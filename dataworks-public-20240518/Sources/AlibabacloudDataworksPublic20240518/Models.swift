@@ -30461,6 +30461,8 @@ public class GetProjectMemberResponseBody : Tea.TeaModel {
 
         public var userId: String?
 
+        public var userName: String?
+
         public override init() {
             super.init()
         }
@@ -30491,6 +30493,9 @@ public class GetProjectMemberResponseBody : Tea.TeaModel {
             if self.userId != nil {
                 map["UserId"] = self.userId!
             }
+            if self.userName != nil {
+                map["UserName"] = self.userName!
+            }
             return map
         }
 
@@ -30517,6 +30522,9 @@ public class GetProjectMemberResponseBody : Tea.TeaModel {
             }
             if let value = dict["UserId"] as? String {
                 self.userId = value
+            }
+            if let value = dict["UserName"] as? String {
+                self.userName = value
             }
         }
     }
@@ -55847,6 +55855,8 @@ public class ListProjectMembersResponseBody : Tea.TeaModel {
 
             public var userId: String?
 
+            public var userName: String?
+
             public override init() {
                 super.init()
             }
@@ -55877,6 +55887,9 @@ public class ListProjectMembersResponseBody : Tea.TeaModel {
                 if self.userId != nil {
                     map["UserId"] = self.userId!
                 }
+                if self.userName != nil {
+                    map["UserName"] = self.userName!
+                }
                 return map
             }
 
@@ -55903,6 +55916,9 @@ public class ListProjectMembersResponseBody : Tea.TeaModel {
                 }
                 if let value = dict["UserId"] as? String {
                     self.userId = value
+                }
+                if let value = dict["UserName"] as? String {
+                    self.userName = value
                 }
             }
         }
