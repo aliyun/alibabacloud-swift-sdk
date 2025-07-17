@@ -116,6 +116,62 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func addFilesFromAuthorizedOssWithOptions(_ WorkspaceId: String, _ tmpReq: AddFilesFromAuthorizedOssRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> AddFilesFromAuthorizedOssResponse {
+        try TeaUtils.Client.validateModel(tmpReq)
+        var request: AddFilesFromAuthorizedOssShrinkRequest = AddFilesFromAuthorizedOssShrinkRequest([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.fileDetails)) {
+            request.fileDetailsShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.fileDetails, "FileDetails", "json")
+        }
+        if (!TeaUtils.Client.isUnset(tmpReq.tags)) {
+            request.tagsShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.tags, "Tags", "json")
+        }
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.categoryId)) {
+            body["CategoryId"] = request.categoryId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.categoryType)) {
+            body["CategoryType"] = request.categoryType ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.fileDetailsShrink)) {
+            body["FileDetails"] = request.fileDetailsShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.ossBucketName)) {
+            body["OssBucketName"] = request.ossBucketName ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.ossRegionId)) {
+            body["OssRegionId"] = request.ossRegionId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.tagsShrink)) {
+            body["Tags"] = request.tagsShrink ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String],
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "AddFilesFromAuthorizedOss",
+            "version": "2023-12-29",
+            "protocol": "HTTPS",
+            "pathname": "/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(WorkspaceId)) + "/datacenter/file/fromoss",
+            "method": "POST",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(AddFilesFromAuthorizedOssResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func addFilesFromAuthorizedOss(_ WorkspaceId: String, _ request: AddFilesFromAuthorizedOssRequest) async throws -> AddFilesFromAuthorizedOssResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await addFilesFromAuthorizedOssWithOptions(WorkspaceId as! String, request as! AddFilesFromAuthorizedOssRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func applyFileUploadLeaseWithOptions(_ CategoryId: String, _ WorkspaceId: String, _ request: ApplyFileUploadLeaseRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> ApplyFileUploadLeaseResponse {
         try TeaUtils.Client.validateModel(request)
         var body: [String: Any] = [:]

@@ -518,6 +518,422 @@ public class AddFileResponse : Tea.TeaModel {
     }
 }
 
+public class AddFilesFromAuthorizedOssRequest : Tea.TeaModel {
+    public class FileDetails : Tea.TeaModel {
+        public var fileName: String?
+
+        public var ossKey: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.fileName != nil {
+                map["FileName"] = self.fileName!
+            }
+            if self.ossKey != nil {
+                map["OssKey"] = self.ossKey!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["FileName"] as? String {
+                self.fileName = value
+            }
+            if let value = dict["OssKey"] as? String {
+                self.ossKey = value
+            }
+        }
+    }
+    public var categoryId: String?
+
+    public var categoryType: String?
+
+    public var fileDetails: [AddFilesFromAuthorizedOssRequest.FileDetails]?
+
+    public var ossBucketName: String?
+
+    public var ossRegionId: String?
+
+    public var tags: [String]?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.categoryId != nil {
+            map["CategoryId"] = self.categoryId!
+        }
+        if self.categoryType != nil {
+            map["CategoryType"] = self.categoryType!
+        }
+        if self.fileDetails != nil {
+            var tmp : [Any] = []
+            for k in self.fileDetails! {
+                tmp.append(k.toMap())
+            }
+            map["FileDetails"] = tmp
+        }
+        if self.ossBucketName != nil {
+            map["OssBucketName"] = self.ossBucketName!
+        }
+        if self.ossRegionId != nil {
+            map["OssRegionId"] = self.ossRegionId!
+        }
+        if self.tags != nil {
+            map["Tags"] = self.tags!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["CategoryId"] as? String {
+            self.categoryId = value
+        }
+        if let value = dict["CategoryType"] as? String {
+            self.categoryType = value
+        }
+        if let value = dict["FileDetails"] as? [Any?] {
+            var tmp : [AddFilesFromAuthorizedOssRequest.FileDetails] = []
+            for v in value {
+                if v != nil {
+                    var model = AddFilesFromAuthorizedOssRequest.FileDetails()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.fileDetails = tmp
+        }
+        if let value = dict["OssBucketName"] as? String {
+            self.ossBucketName = value
+        }
+        if let value = dict["OssRegionId"] as? String {
+            self.ossRegionId = value
+        }
+        if let value = dict["Tags"] as? [String] {
+            self.tags = value
+        }
+    }
+}
+
+public class AddFilesFromAuthorizedOssShrinkRequest : Tea.TeaModel {
+    public var categoryId: String?
+
+    public var categoryType: String?
+
+    public var fileDetailsShrink: String?
+
+    public var ossBucketName: String?
+
+    public var ossRegionId: String?
+
+    public var tagsShrink: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.categoryId != nil {
+            map["CategoryId"] = self.categoryId!
+        }
+        if self.categoryType != nil {
+            map["CategoryType"] = self.categoryType!
+        }
+        if self.fileDetailsShrink != nil {
+            map["FileDetails"] = self.fileDetailsShrink!
+        }
+        if self.ossBucketName != nil {
+            map["OssBucketName"] = self.ossBucketName!
+        }
+        if self.ossRegionId != nil {
+            map["OssRegionId"] = self.ossRegionId!
+        }
+        if self.tagsShrink != nil {
+            map["Tags"] = self.tagsShrink!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["CategoryId"] as? String {
+            self.categoryId = value
+        }
+        if let value = dict["CategoryType"] as? String {
+            self.categoryType = value
+        }
+        if let value = dict["FileDetails"] as? String {
+            self.fileDetailsShrink = value
+        }
+        if let value = dict["OssBucketName"] as? String {
+            self.ossBucketName = value
+        }
+        if let value = dict["OssRegionId"] as? String {
+            self.ossRegionId = value
+        }
+        if let value = dict["Tags"] as? String {
+            self.tagsShrink = value
+        }
+    }
+}
+
+public class AddFilesFromAuthorizedOssResponseBody : Tea.TeaModel {
+    public class Data : Tea.TeaModel {
+        public class AddFileResultList : Tea.TeaModel {
+            public var fileId: String?
+
+            public var msg: String?
+
+            public var ossKey: String?
+
+            public var status: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.fileId != nil {
+                    map["FileId"] = self.fileId!
+                }
+                if self.msg != nil {
+                    map["Msg"] = self.msg!
+                }
+                if self.ossKey != nil {
+                    map["OssKey"] = self.ossKey!
+                }
+                if self.status != nil {
+                    map["Status"] = self.status!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["FileId"] as? String {
+                    self.fileId = value
+                }
+                if let value = dict["Msg"] as? String {
+                    self.msg = value
+                }
+                if let value = dict["OssKey"] as? String {
+                    self.ossKey = value
+                }
+                if let value = dict["Status"] as? String {
+                    self.status = value
+                }
+            }
+        }
+        public var addFileResultList: [AddFilesFromAuthorizedOssResponseBody.Data.AddFileResultList]?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.addFileResultList != nil {
+                var tmp : [Any] = []
+                for k in self.addFileResultList! {
+                    tmp.append(k.toMap())
+                }
+                map["AddFileResultList"] = tmp
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["AddFileResultList"] as? [Any?] {
+                var tmp : [AddFilesFromAuthorizedOssResponseBody.Data.AddFileResultList] = []
+                for v in value {
+                    if v != nil {
+                        var model = AddFilesFromAuthorizedOssResponseBody.Data.AddFileResultList()
+                        if v != nil {
+                            model.fromMap(v as? [String: Any?])
+                        }
+                        tmp.append(model)
+                    }
+                }
+                self.addFileResultList = tmp
+            }
+        }
+    }
+    public var code: String?
+
+    public var data: AddFilesFromAuthorizedOssResponseBody.Data?
+
+    public var message: String?
+
+    public var requestId: String?
+
+    public var status: String?
+
+    public var success: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.data?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.code != nil {
+            map["Code"] = self.code!
+        }
+        if self.data != nil {
+            map["Data"] = self.data?.toMap()
+        }
+        if self.message != nil {
+            map["Message"] = self.message!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.status != nil {
+            map["Status"] = self.status!
+        }
+        if self.success != nil {
+            map["Success"] = self.success!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["Code"] as? String {
+            self.code = value
+        }
+        if let value = dict["Data"] as? [String: Any?] {
+            var model = AddFilesFromAuthorizedOssResponseBody.Data()
+            model.fromMap(value)
+            self.data = model
+        }
+        if let value = dict["Message"] as? String {
+            self.message = value
+        }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+        if let value = dict["Status"] as? String {
+            self.status = value
+        }
+        if let value = dict["Success"] as? String {
+            self.success = value
+        }
+    }
+}
+
+public class AddFilesFromAuthorizedOssResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: AddFilesFromAuthorizedOssResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = AddFilesFromAuthorizedOssResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
 public class ApplyFileUploadLeaseRequest : Tea.TeaModel {
     public var categoryType: String?
 
