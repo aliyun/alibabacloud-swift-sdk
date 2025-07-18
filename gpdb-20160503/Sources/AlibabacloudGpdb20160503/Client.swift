@@ -9745,6 +9745,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.textSplitterName)) {
             body["TextSplitterName"] = request.textSplitterName ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.vlEnhance)) {
+            body["VlEnhance"] = request.vlEnhance!;
+        }
         if (!TeaUtils.Client.isUnset(request.zhTitleEnhance)) {
             body["ZhTitleEnhance"] = request.zhTitleEnhance!;
         }

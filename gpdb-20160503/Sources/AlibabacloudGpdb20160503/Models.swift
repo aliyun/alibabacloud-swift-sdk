@@ -48438,6 +48438,8 @@ public class UploadDocumentAsyncRequest : Tea.TeaModel {
 
     public var textSplitterName: String?
 
+    public var vlEnhance: Bool?
+
     public var zhTitleEnhance: Bool?
 
     public override init() {
@@ -48499,6 +48501,9 @@ public class UploadDocumentAsyncRequest : Tea.TeaModel {
         if self.textSplitterName != nil {
             map["TextSplitterName"] = self.textSplitterName!
         }
+        if self.vlEnhance != nil {
+            map["VlEnhance"] = self.vlEnhance!
+        }
         if self.zhTitleEnhance != nil {
             map["ZhTitleEnhance"] = self.zhTitleEnhance!
         }
@@ -48552,6 +48557,9 @@ public class UploadDocumentAsyncRequest : Tea.TeaModel {
         if let value = dict["TextSplitterName"] as? String {
             self.textSplitterName = value
         }
+        if let value = dict["VlEnhance"] as? Bool {
+            self.vlEnhance = value
+        }
         if let value = dict["ZhTitleEnhance"] as? Bool {
             self.zhTitleEnhance = value
         }
@@ -48588,6 +48596,8 @@ public class UploadDocumentAsyncAdvanceRequest : Tea.TeaModel {
     public var separators: [String]?
 
     public var textSplitterName: String?
+
+    public var vlEnhance: Bool?
 
     public var zhTitleEnhance: Bool?
 
@@ -48650,6 +48660,9 @@ public class UploadDocumentAsyncAdvanceRequest : Tea.TeaModel {
         if self.textSplitterName != nil {
             map["TextSplitterName"] = self.textSplitterName!
         }
+        if self.vlEnhance != nil {
+            map["VlEnhance"] = self.vlEnhance!
+        }
         if self.zhTitleEnhance != nil {
             map["ZhTitleEnhance"] = self.zhTitleEnhance!
         }
@@ -48703,6 +48716,9 @@ public class UploadDocumentAsyncAdvanceRequest : Tea.TeaModel {
         if let value = dict["TextSplitterName"] as? String {
             self.textSplitterName = value
         }
+        if let value = dict["VlEnhance"] as? Bool {
+            self.vlEnhance = value
+        }
         if let value = dict["ZhTitleEnhance"] as? Bool {
             self.zhTitleEnhance = value
         }
@@ -48739,6 +48755,8 @@ public class UploadDocumentAsyncShrinkRequest : Tea.TeaModel {
     public var separatorsShrink: String?
 
     public var textSplitterName: String?
+
+    public var vlEnhance: Bool?
 
     public var zhTitleEnhance: Bool?
 
@@ -48801,6 +48819,9 @@ public class UploadDocumentAsyncShrinkRequest : Tea.TeaModel {
         if self.textSplitterName != nil {
             map["TextSplitterName"] = self.textSplitterName!
         }
+        if self.vlEnhance != nil {
+            map["VlEnhance"] = self.vlEnhance!
+        }
         if self.zhTitleEnhance != nil {
             map["ZhTitleEnhance"] = self.zhTitleEnhance!
         }
@@ -48853,6 +48874,9 @@ public class UploadDocumentAsyncShrinkRequest : Tea.TeaModel {
         }
         if let value = dict["TextSplitterName"] as? String {
             self.textSplitterName = value
+        }
+        if let value = dict["VlEnhance"] as? Bool {
+            self.vlEnhance = value
         }
         if let value = dict["ZhTitleEnhance"] as? Bool {
             self.zhTitleEnhance = value
