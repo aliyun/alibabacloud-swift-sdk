@@ -36435,6 +36435,36 @@ public class DescribeCloudAssistantSettingsResponseBody : Tea.TeaModel {
             }
         }
     }
+    public class SessionManagerConfig : Tea.TeaModel {
+        public var sessionManagerEnabled: Bool?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.sessionManagerEnabled != nil {
+                map["SessionManagerEnabled"] = self.sessionManagerEnabled!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["SessionManagerEnabled"] as? Bool {
+                self.sessionManagerEnabled = value
+            }
+        }
+    }
     public class SlsDeliveryConfigs : Tea.TeaModel {
         public class SlsDeliveryConfig : Tea.TeaModel {
             public var deliveryType: String?
@@ -36539,6 +36569,8 @@ public class DescribeCloudAssistantSettingsResponseBody : Tea.TeaModel {
 
     public var requestId: String?
 
+    public var sessionManagerConfig: DescribeCloudAssistantSettingsResponseBody.SessionManagerConfig?
+
     public var slsDeliveryConfigs: DescribeCloudAssistantSettingsResponseBody.SlsDeliveryConfigs?
 
     public override init() {
@@ -36553,6 +36585,7 @@ public class DescribeCloudAssistantSettingsResponseBody : Tea.TeaModel {
     public override func validate() throws -> Void {
         try self.agentUpgradeConfig?.validate()
         try self.ossDeliveryConfigs?.validate()
+        try self.sessionManagerConfig?.validate()
         try self.slsDeliveryConfigs?.validate()
     }
 
@@ -36566,6 +36599,9 @@ public class DescribeCloudAssistantSettingsResponseBody : Tea.TeaModel {
         }
         if self.requestId != nil {
             map["RequestId"] = self.requestId!
+        }
+        if self.sessionManagerConfig != nil {
+            map["SessionManagerConfig"] = self.sessionManagerConfig?.toMap()
         }
         if self.slsDeliveryConfigs != nil {
             map["SlsDeliveryConfigs"] = self.slsDeliveryConfigs?.toMap()
@@ -36587,6 +36623,11 @@ public class DescribeCloudAssistantSettingsResponseBody : Tea.TeaModel {
         }
         if let value = dict["RequestId"] as? String {
             self.requestId = value
+        }
+        if let value = dict["SessionManagerConfig"] as? [String: Any?] {
+            var model = DescribeCloudAssistantSettingsResponseBody.SessionManagerConfig()
+            model.fromMap(value)
+            self.sessionManagerConfig = model
         }
         if let value = dict["SlsDeliveryConfigs"] as? [String: Any?] {
             var model = DescribeCloudAssistantSettingsResponseBody.SlsDeliveryConfigs()
@@ -100298,6 +100339,36 @@ public class ModifyCloudAssistantSettingsRequest : Tea.TeaModel {
             }
         }
     }
+    public class SessionManagerConfig : Tea.TeaModel {
+        public var sessionManagerEnabled: Bool?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.sessionManagerEnabled != nil {
+                map["SessionManagerEnabled"] = self.sessionManagerEnabled!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["SessionManagerEnabled"] as? Bool {
+                self.sessionManagerEnabled = value
+            }
+        }
+    }
     public class SlsDeliveryConfig : Tea.TeaModel {
         public var enabled: Bool?
 
@@ -100358,6 +100429,8 @@ public class ModifyCloudAssistantSettingsRequest : Tea.TeaModel {
 
     public var resourceOwnerId: Int64?
 
+    public var sessionManagerConfig: ModifyCloudAssistantSettingsRequest.SessionManagerConfig?
+
     public var settingType: String?
 
     public var slsDeliveryConfig: ModifyCloudAssistantSettingsRequest.SlsDeliveryConfig?
@@ -100374,6 +100447,7 @@ public class ModifyCloudAssistantSettingsRequest : Tea.TeaModel {
     public override func validate() throws -> Void {
         try self.agentUpgradeConfig?.validate()
         try self.ossDeliveryConfig?.validate()
+        try self.sessionManagerConfig?.validate()
         try self.slsDeliveryConfig?.validate()
     }
 
@@ -100399,6 +100473,9 @@ public class ModifyCloudAssistantSettingsRequest : Tea.TeaModel {
         }
         if self.resourceOwnerId != nil {
             map["ResourceOwnerId"] = self.resourceOwnerId!
+        }
+        if self.sessionManagerConfig != nil {
+            map["SessionManagerConfig"] = self.sessionManagerConfig?.toMap()
         }
         if self.settingType != nil {
             map["SettingType"] = self.settingType!
@@ -100436,6 +100513,11 @@ public class ModifyCloudAssistantSettingsRequest : Tea.TeaModel {
         if let value = dict["ResourceOwnerId"] as? Int64 {
             self.resourceOwnerId = value
         }
+        if let value = dict["SessionManagerConfig"] as? [String: Any?] {
+            var model = ModifyCloudAssistantSettingsRequest.SessionManagerConfig()
+            model.fromMap(value)
+            self.sessionManagerConfig = model
+        }
         if let value = dict["SettingType"] as? String {
             self.settingType = value
         }
@@ -100461,6 +100543,8 @@ public class ModifyCloudAssistantSettingsShrinkRequest : Tea.TeaModel {
     public var resourceOwnerAccount: String?
 
     public var resourceOwnerId: Int64?
+
+    public var sessionManagerConfigShrink: String?
 
     public var settingType: String?
 
@@ -100501,6 +100585,9 @@ public class ModifyCloudAssistantSettingsShrinkRequest : Tea.TeaModel {
         if self.resourceOwnerId != nil {
             map["ResourceOwnerId"] = self.resourceOwnerId!
         }
+        if self.sessionManagerConfigShrink != nil {
+            map["SessionManagerConfig"] = self.sessionManagerConfigShrink!
+        }
         if self.settingType != nil {
             map["SettingType"] = self.settingType!
         }
@@ -100532,6 +100619,9 @@ public class ModifyCloudAssistantSettingsShrinkRequest : Tea.TeaModel {
         }
         if let value = dict["ResourceOwnerId"] as? Int64 {
             self.resourceOwnerId = value
+        }
+        if let value = dict["SessionManagerConfig"] as? String {
+            self.sessionManagerConfigShrink = value
         }
         if let value = dict["SettingType"] as? String {
             self.settingType = value

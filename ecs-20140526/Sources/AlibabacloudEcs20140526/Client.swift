@@ -15841,6 +15841,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(tmpReq.ossDeliveryConfig)) {
             request.ossDeliveryConfigShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.ossDeliveryConfig, "OssDeliveryConfig", "json")
         }
+        if (!TeaUtils.Client.isUnset(tmpReq.sessionManagerConfig)) {
+            request.sessionManagerConfigShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.sessionManagerConfig, "SessionManagerConfig", "json")
+        }
         if (!TeaUtils.Client.isUnset(tmpReq.slsDeliveryConfig)) {
             request.slsDeliveryConfigShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.slsDeliveryConfig, "SlsDeliveryConfig", "json")
         }
@@ -15865,6 +15868,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.resourceOwnerId)) {
             query["ResourceOwnerId"] = request.resourceOwnerId!;
+        }
+        if (!TeaUtils.Client.isUnset(request.sessionManagerConfigShrink)) {
+            query["SessionManagerConfig"] = request.sessionManagerConfigShrink ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.settingType)) {
             query["SettingType"] = request.settingType ?? "";
