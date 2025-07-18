@@ -1180,6 +1180,46 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func mobile2MetaVerifyIntlWithOptions(_ request: Mobile2MetaVerifyIntlRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> Mobile2MetaVerifyIntlResponse {
+        try TeaUtils.Client.validateModel(request)
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.mobile)) {
+            body["Mobile"] = request.mobile ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.paramType)) {
+            body["ParamType"] = request.paramType ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.productCode)) {
+            body["ProductCode"] = request.productCode ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.userName)) {
+            body["UserName"] = request.userName ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "Mobile2MetaVerifyIntl",
+            "version": "2022-08-09",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(Mobile2MetaVerifyIntlResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func mobile2MetaVerifyIntl(_ request: Mobile2MetaVerifyIntlRequest) async throws -> Mobile2MetaVerifyIntlResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await mobile2MetaVerifyIntlWithOptions(request as! Mobile2MetaVerifyIntlRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func mobile3MetaVerifyIntlWithOptions(_ request: Mobile3MetaVerifyIntlRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> Mobile3MetaVerifyIntlResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
