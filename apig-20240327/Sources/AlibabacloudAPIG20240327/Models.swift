@@ -12921,6 +12921,8 @@ public class GetGatewayResponseBody : Tea.TeaModel {
 
         public var gatewayType: String?
 
+        public var isp: String?
+
         public var loadBalancers: [GetGatewayResponseBody.Data.LoadBalancers]?
 
         public var name: String?
@@ -12990,6 +12992,9 @@ public class GetGatewayResponseBody : Tea.TeaModel {
             }
             if self.gatewayType != nil {
                 map["gatewayType"] = self.gatewayType!
+            }
+            if self.isp != nil {
+                map["isp"] = self.isp!
             }
             if self.loadBalancers != nil {
                 var tmp : [Any] = []
@@ -13080,6 +13085,9 @@ public class GetGatewayResponseBody : Tea.TeaModel {
             }
             if let value = dict["gatewayType"] as? String {
                 self.gatewayType = value
+            }
+            if let value = dict["isp"] as? String {
+                self.isp = value
             }
             if let value = dict["loadBalancers"] as? [Any?] {
                 var tmp : [GetGatewayResponseBody.Data.LoadBalancers] = []
