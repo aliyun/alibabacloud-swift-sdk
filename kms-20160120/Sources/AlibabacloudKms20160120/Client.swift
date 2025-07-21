@@ -1,6 +1,7 @@
 import Foundation
 import Tea
 import TeaUtils
+import AlibabacloudGatewayPOP
 import AlibabacloudOpenApi
 import AlibabaCloudOpenApiUtil
 import AlibabacloudEndpointUtil
@@ -8,6 +9,9 @@ import AlibabacloudEndpointUtil
 open class Client : AlibabacloudOpenApi.Client {
     public override init(_ config: AlibabacloudOpenApi.Config) throws {
         try super.init(config)
+        self._productId = "Kms"
+        var gatewayClient: AlibabacloudGatewayPOP.Client = try AlibabacloudGatewayPOP.Client()
+        self._spi = gatewayClient
         self._endpointRule = "regional"
         try checkConfig(config as! AlibabacloudOpenApi.Config)
         self._endpoint = try getEndpoint("kms", self._regionId ?? "", self._endpointRule ?? "", self._network ?? "", self._suffix ?? "", self._endpointMap ?? [:], self._endpoint ?? "")
@@ -32,6 +36,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.ciphertextBlob)) {
             query["CiphertextBlob"] = request.ciphertextBlob ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.dryRun)) {
+            query["DryRun"] = request.dryRun ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.keyId)) {
             query["KeyId"] = request.keyId ?? "";
@@ -69,6 +76,9 @@ open class Client : AlibabacloudOpenApi.Client {
         var query: [String: Any] = [:]
         if (!TeaUtils.Client.isUnset(request.algorithm)) {
             query["Algorithm"] = request.algorithm ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.dryRun)) {
+            query["DryRun"] = request.dryRun ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.keyId)) {
             query["KeyId"] = request.keyId ?? "";
@@ -113,6 +123,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.digest)) {
             query["Digest"] = request.digest ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.dryRun)) {
+            query["DryRun"] = request.dryRun ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.keyId)) {
             query["KeyId"] = request.keyId ?? "";
         }
@@ -152,6 +165,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.digest)) {
             query["Digest"] = request.digest ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.dryRun)) {
+            query["DryRun"] = request.dryRun ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.keyId)) {
             query["KeyId"] = request.keyId ?? "";
@@ -592,6 +608,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.keySpec)) {
             query["KeySpec"] = request.keySpec ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.keyStorageMechanism)) {
+            query["KeyStorageMechanism"] = request.keyStorageMechanism ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.keyUsage)) {
             query["KeyUsage"] = request.keyUsage ?? "";
         }
@@ -834,6 +853,9 @@ open class Client : AlibabacloudOpenApi.Client {
         var query: [String: Any] = [:]
         if (!TeaUtils.Client.isUnset(request.ciphertextBlob)) {
             query["CiphertextBlob"] = request.ciphertextBlob ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.dryRun)) {
+            query["DryRun"] = request.dryRun ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.encryptionContextShrink)) {
             query["EncryptionContext"] = request.encryptionContextShrink ?? "";
@@ -1458,6 +1480,9 @@ open class Client : AlibabacloudOpenApi.Client {
             request.encryptionContextShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.encryptionContext, "EncryptionContext", "json")
         }
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.dryRun)) {
+            query["DryRun"] = request.dryRun ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.encryptionContextShrink)) {
             query["EncryptionContext"] = request.encryptionContextShrink ?? "";
         }
@@ -1502,6 +1527,9 @@ open class Client : AlibabacloudOpenApi.Client {
         var query: [String: Any] = [:]
         if (!TeaUtils.Client.isUnset(request.ciphertextBlob)) {
             query["CiphertextBlob"] = request.ciphertextBlob ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.dryRun)) {
+            query["DryRun"] = request.dryRun ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.encryptionContextShrink)) {
             query["EncryptionContext"] = request.encryptionContextShrink ?? "";
@@ -1548,6 +1576,9 @@ open class Client : AlibabacloudOpenApi.Client {
             request.encryptionContextShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.encryptionContext, "EncryptionContext", "json")
         }
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.dryRun)) {
+            query["DryRun"] = request.dryRun ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.encryptionContextShrink)) {
             query["EncryptionContext"] = request.encryptionContextShrink ?? "";
         }
@@ -1602,6 +1633,9 @@ open class Client : AlibabacloudOpenApi.Client {
             request.encryptionContextShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.encryptionContext, "EncryptionContext", "json")
         }
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.dryRun)) {
+            query["DryRun"] = request.dryRun ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.encryptionContextShrink)) {
             query["EncryptionContext"] = request.encryptionContextShrink ?? "";
         }
@@ -1647,6 +1681,9 @@ open class Client : AlibabacloudOpenApi.Client {
             request.encryptionContextShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.encryptionContext, "EncryptionContext", "json")
         }
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.dryRun)) {
+            query["DryRun"] = request.dryRun ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.encryptionContextShrink)) {
             query["EncryptionContext"] = request.encryptionContextShrink ?? "";
         }
@@ -1740,6 +1777,30 @@ open class Client : AlibabacloudOpenApi.Client {
     public func getClientKey(_ request: GetClientKeyRequest) async throws -> GetClientKeyResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         return try await getClientKeyWithOptions(request as! GetClientKeyRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getDefaultKmsInstanceWithOptions(_ runtime: TeaUtils.RuntimeOptions) async throws -> GetDefaultKmsInstanceResponse {
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([:])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "GetDefaultKmsInstance",
+            "version": "2016-01-20",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(GetDefaultKmsInstanceResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getDefaultKmsInstance() async throws -> GetDefaultKmsInstanceResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await getDefaultKmsInstanceWithOptions(runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -1848,6 +1909,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func getPublicKeyWithOptions(_ request: GetPublicKeyRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> GetPublicKeyResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.dryRun)) {
+            query["DryRun"] = request.dryRun ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.keyId)) {
             query["KeyId"] = request.keyId ?? "";
         }
@@ -1965,6 +2029,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func getSecretValueWithOptions(_ request: GetSecretValueRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> GetSecretValueResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.dryRun)) {
+            query["DryRun"] = request.dryRun ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.fetchExtendedConfig)) {
             query["FetchExtendedConfig"] = request.fetchExtendedConfig!;
         }
@@ -2592,6 +2659,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.destinationKeyId)) {
             query["DestinationKeyId"] = request.destinationKeyId ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.dryRun)) {
+            query["DryRun"] = request.dryRun ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.sourceEncryptionAlgorithm)) {
             query["SourceEncryptionAlgorithm"] = request.sourceEncryptionAlgorithm ?? "";
         }
@@ -2626,6 +2696,40 @@ open class Client : AlibabacloudOpenApi.Client {
     public func reEncrypt(_ request: ReEncryptRequest) async throws -> ReEncryptResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         return try await reEncryptWithOptions(request as! ReEncryptRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func releaseKmsInstanceWithOptions(_ request: ReleaseKmsInstanceRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ReleaseKmsInstanceResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.forceDeleteWithoutBackup)) {
+            query["ForceDeleteWithoutBackup"] = request.forceDeleteWithoutBackup ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.kmsInstanceId)) {
+            query["KmsInstanceId"] = request.kmsInstanceId ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "ReleaseKmsInstance",
+            "version": "2016-01-20",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(ReleaseKmsInstanceResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func releaseKmsInstance(_ request: ReleaseKmsInstanceRequest) async throws -> ReleaseKmsInstanceResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await releaseKmsInstanceWithOptions(request as! ReleaseKmsInstanceRequest, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -2736,6 +2840,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.enableDeletionProtection)) {
             query["EnableDeletionProtection"] = request.enableDeletionProtection!;
+        }
+        if (!TeaUtils.Client.isUnset(request.keyId)) {
+            query["KeyId"] = request.keyId ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.protectedResourceArn)) {
             query["ProtectedResourceArn"] = request.protectedResourceArn ?? "";
