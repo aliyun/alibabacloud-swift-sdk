@@ -27085,6 +27085,8 @@ public class DescribeDesktopsResponseBody : Tea.TeaModel {
 
         public var disks: [DescribeDesktopsResponseBody.Desktops.Disks]?
 
+        public var domainType: String?
+
         public var downgradeQuota: Int64?
 
         public var downgradedTimes: Int64?
@@ -27254,6 +27256,9 @@ public class DescribeDesktopsResponseBody : Tea.TeaModel {
                     tmp.append(k.toMap())
                 }
                 map["Disks"] = tmp
+            }
+            if self.domainType != nil {
+                map["DomainType"] = self.domainType!
             }
             if self.downgradeQuota != nil {
                 map["DowngradeQuota"] = self.downgradeQuota!
@@ -27483,6 +27488,9 @@ public class DescribeDesktopsResponseBody : Tea.TeaModel {
                     }
                 }
                 self.disks = tmp
+            }
+            if let value = dict["DomainType"] as? String {
+                self.domainType = value
             }
             if let value = dict["DowngradeQuota"] as? Int64 {
                 self.downgradeQuota = value
