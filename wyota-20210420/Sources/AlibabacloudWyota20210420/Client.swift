@@ -553,6 +553,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.etherMac)) {
             body["EtherMac"] = request.etherMac ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.hostOsInfo)) {
+            body["HostOsInfo"] = request.hostOsInfo ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.loginRegionId)) {
             body["LoginRegionId"] = request.loginRegionId ?? "";
         }
@@ -1562,6 +1565,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func getFbOssConfigWithOptions(_ request: GetFbOssConfigRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> GetFbOssConfigResponse {
         try TeaUtils.Client.validateModel(request)
         var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.areaSite)) {
+            body["AreaSite"] = request.areaSite ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.dirPrefix)) {
             body["DirPrefix"] = request.dirPrefix ?? "";
         }
@@ -2747,8 +2753,17 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.fileListShrink)) {
             body["FileList"] = request.fileListShrink ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.isSubstituteReport)) {
+            body["IsSubstituteReport"] = request.isSubstituteReport!;
+        }
         if (!TeaUtils.Client.isUnset(request.issueLabel)) {
             body["IssueLabel"] = request.issueLabel ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.loginRegionId)) {
+            body["LoginRegionId"] = request.loginRegionId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.loginToken)) {
+            body["LoginToken"] = request.loginToken ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.occurTime)) {
             body["OccurTime"] = request.occurTime!;
@@ -2758,6 +2773,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.reservedB)) {
             body["ReservedB"] = request.reservedB ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.sessionId)) {
+            body["SessionId"] = request.sessionId ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.telNo)) {
             body["TelNo"] = request.telNo ?? "";

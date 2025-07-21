@@ -2148,6 +2148,8 @@ public class CheckUuidValidRequest : Tea.TeaModel {
 
     public var etherMac: String?
 
+    public var hostOsInfo: String?
+
     public var loginRegionId: String?
 
     public var loginToken: String?
@@ -2197,6 +2199,9 @@ public class CheckUuidValidRequest : Tea.TeaModel {
         if self.etherMac != nil {
             map["EtherMac"] = self.etherMac!
         }
+        if self.hostOsInfo != nil {
+            map["HostOsInfo"] = self.hostOsInfo!
+        }
         if self.loginRegionId != nil {
             map["LoginRegionId"] = self.loginRegionId!
         }
@@ -2243,6 +2248,9 @@ public class CheckUuidValidRequest : Tea.TeaModel {
         }
         if let value = dict["EtherMac"] as? String {
             self.etherMac = value
+        }
+        if let value = dict["HostOsInfo"] as? String {
+            self.hostOsInfo = value
         }
         if let value = dict["LoginRegionId"] as? String {
             self.loginRegionId = value
@@ -8043,6 +8051,8 @@ public class GetExportDeviceInfoOssUrlResponse : Tea.TeaModel {
 }
 
 public class GetFbOssConfigRequest : Tea.TeaModel {
+    public var areaSite: String?
+
     public var dirPrefix: String?
 
     public var isDedicatedLine: Int32?
@@ -8063,6 +8073,9 @@ public class GetFbOssConfigRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.areaSite != nil {
+            map["AreaSite"] = self.areaSite!
+        }
         if self.dirPrefix != nil {
             map["DirPrefix"] = self.dirPrefix!
         }
@@ -8077,6 +8090,9 @@ public class GetFbOssConfigRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["AreaSite"] as? String {
+            self.areaSite = value
+        }
         if let value = dict["DirPrefix"] as? String {
             self.dirPrefix = value
         }
@@ -15775,13 +15791,21 @@ public class ReportUserFbIssueRequest : Tea.TeaModel {
 
     public var fileList: [ReportUserFbIssueRequest.FileList]?
 
+    public var isSubstituteReport: Bool?
+
     public var issueLabel: String?
+
+    public var loginRegionId: String?
+
+    public var loginToken: String?
 
     public var occurTime: Int64?
 
     public var reservedA: String?
 
     public var reservedB: String?
+
+    public var sessionId: String?
 
     public var telNo: String?
 
@@ -15860,8 +15884,17 @@ public class ReportUserFbIssueRequest : Tea.TeaModel {
             }
             map["FileList"] = tmp
         }
+        if self.isSubstituteReport != nil {
+            map["IsSubstituteReport"] = self.isSubstituteReport!
+        }
         if self.issueLabel != nil {
             map["IssueLabel"] = self.issueLabel!
+        }
+        if self.loginRegionId != nil {
+            map["LoginRegionId"] = self.loginRegionId!
+        }
+        if self.loginToken != nil {
+            map["LoginToken"] = self.loginToken!
         }
         if self.occurTime != nil {
             map["OccurTime"] = self.occurTime!
@@ -15871,6 +15904,9 @@ public class ReportUserFbIssueRequest : Tea.TeaModel {
         }
         if self.reservedB != nil {
             map["ReservedB"] = self.reservedB!
+        }
+        if self.sessionId != nil {
+            map["SessionId"] = self.sessionId!
         }
         if self.telNo != nil {
             map["TelNo"] = self.telNo!
@@ -15953,8 +15989,17 @@ public class ReportUserFbIssueRequest : Tea.TeaModel {
             }
             self.fileList = tmp
         }
+        if let value = dict["IsSubstituteReport"] as? Bool {
+            self.isSubstituteReport = value
+        }
         if let value = dict["IssueLabel"] as? String {
             self.issueLabel = value
+        }
+        if let value = dict["LoginRegionId"] as? String {
+            self.loginRegionId = value
+        }
+        if let value = dict["LoginToken"] as? String {
+            self.loginToken = value
         }
         if let value = dict["OccurTime"] as? Int64 {
             self.occurTime = value
@@ -15964,6 +16009,9 @@ public class ReportUserFbIssueRequest : Tea.TeaModel {
         }
         if let value = dict["ReservedB"] as? String {
             self.reservedB = value
+        }
+        if let value = dict["SessionId"] as? String {
+            self.sessionId = value
         }
         if let value = dict["TelNo"] as? String {
             self.telNo = value
@@ -16020,13 +16068,21 @@ public class ReportUserFbIssueShrinkRequest : Tea.TeaModel {
 
     public var fileListShrink: String?
 
+    public var isSubstituteReport: Bool?
+
     public var issueLabel: String?
+
+    public var loginRegionId: String?
+
+    public var loginToken: String?
 
     public var occurTime: Int64?
 
     public var reservedA: String?
 
     public var reservedB: String?
+
+    public var sessionId: String?
 
     public var telNo: String?
 
@@ -16101,8 +16157,17 @@ public class ReportUserFbIssueShrinkRequest : Tea.TeaModel {
         if self.fileListShrink != nil {
             map["FileList"] = self.fileListShrink!
         }
+        if self.isSubstituteReport != nil {
+            map["IsSubstituteReport"] = self.isSubstituteReport!
+        }
         if self.issueLabel != nil {
             map["IssueLabel"] = self.issueLabel!
+        }
+        if self.loginRegionId != nil {
+            map["LoginRegionId"] = self.loginRegionId!
+        }
+        if self.loginToken != nil {
+            map["LoginToken"] = self.loginToken!
         }
         if self.occurTime != nil {
             map["OccurTime"] = self.occurTime!
@@ -16112,6 +16177,9 @@ public class ReportUserFbIssueShrinkRequest : Tea.TeaModel {
         }
         if self.reservedB != nil {
             map["ReservedB"] = self.reservedB!
+        }
+        if self.sessionId != nil {
+            map["SessionId"] = self.sessionId!
         }
         if self.telNo != nil {
             map["TelNo"] = self.telNo!
@@ -16184,8 +16252,17 @@ public class ReportUserFbIssueShrinkRequest : Tea.TeaModel {
         if let value = dict["FileList"] as? String {
             self.fileListShrink = value
         }
+        if let value = dict["IsSubstituteReport"] as? Bool {
+            self.isSubstituteReport = value
+        }
         if let value = dict["IssueLabel"] as? String {
             self.issueLabel = value
+        }
+        if let value = dict["LoginRegionId"] as? String {
+            self.loginRegionId = value
+        }
+        if let value = dict["LoginToken"] as? String {
+            self.loginToken = value
         }
         if let value = dict["OccurTime"] as? Int64 {
             self.occurTime = value
@@ -16195,6 +16272,9 @@ public class ReportUserFbIssueShrinkRequest : Tea.TeaModel {
         }
         if let value = dict["ReservedB"] as? String {
             self.reservedB = value
+        }
+        if let value = dict["SessionId"] as? String {
+            self.sessionId = value
         }
         if let value = dict["TelNo"] as? String {
             self.telNo = value
