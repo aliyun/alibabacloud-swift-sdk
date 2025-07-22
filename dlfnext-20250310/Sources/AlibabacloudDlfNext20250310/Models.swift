@@ -5818,6 +5818,156 @@ public class ListRolesResponse : Tea.TeaModel {
     }
 }
 
+public class ListTableDetailsRequest : Tea.TeaModel {
+    public var maxResults: Int32?
+
+    public var pageToken: String?
+
+    public var tableNamePattern: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.maxResults != nil {
+            map["maxResults"] = self.maxResults!
+        }
+        if self.pageToken != nil {
+            map["pageToken"] = self.pageToken!
+        }
+        if self.tableNamePattern != nil {
+            map["tableNamePattern"] = self.tableNamePattern!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["maxResults"] as? Int32 {
+            self.maxResults = value
+        }
+        if let value = dict["pageToken"] as? String {
+            self.pageToken = value
+        }
+        if let value = dict["tableNamePattern"] as? String {
+            self.tableNamePattern = value
+        }
+    }
+}
+
+public class ListTableDetailsResponseBody : Tea.TeaModel {
+    public var nextPageToken: String?
+
+    public var tableDetails: [Table]?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.nextPageToken != nil {
+            map["nextPageToken"] = self.nextPageToken!
+        }
+        if self.tableDetails != nil {
+            var tmp : [Any] = []
+            for k in self.tableDetails! {
+                tmp.append(k.toMap())
+            }
+            map["tableDetails"] = tmp
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["nextPageToken"] as? String {
+            self.nextPageToken = value
+        }
+        if let value = dict["tableDetails"] as? [Any?] {
+            var tmp : [Table] = []
+            for v in value {
+                if v != nil {
+                    var model = Table()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.tableDetails = tmp
+        }
+    }
+}
+
+public class ListTableDetailsResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: ListTableDetailsResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = ListTableDetailsResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
 public class ListTablesRequest : Tea.TeaModel {
     public var maxResults: Int32?
 
