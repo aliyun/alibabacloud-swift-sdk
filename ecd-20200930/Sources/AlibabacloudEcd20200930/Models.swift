@@ -57963,6 +57963,8 @@ public class ModifyDesktopChargeTypeResponseBody : Tea.TeaModel {
 
     public var requestId: String?
 
+    public var taskId: String?
+
     public override init() {
         super.init()
     }
@@ -57986,6 +57988,9 @@ public class ModifyDesktopChargeTypeResponseBody : Tea.TeaModel {
         if self.requestId != nil {
             map["RequestId"] = self.requestId!
         }
+        if self.taskId != nil {
+            map["TaskId"] = self.taskId!
+        }
         return map
     }
 
@@ -57999,6 +58004,9 @@ public class ModifyDesktopChargeTypeResponseBody : Tea.TeaModel {
         }
         if let value = dict["RequestId"] as? String {
             self.requestId = value
+        }
+        if let value = dict["TaskId"] as? String {
+            self.taskId = value
         }
     }
 }
