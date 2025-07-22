@@ -28467,6 +28467,194 @@ public class StartCloudRecordRequest : Tea.TeaModel {
             }
         }
     }
+    public class SingleStreamingRecord : Tea.TeaModel {
+        public class SpecifiedStreams : Tea.TeaModel {
+            public var ids: [String]?
+
+            public var streamType: String?
+
+            public var type: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.ids != nil {
+                    map["Ids"] = self.ids!
+                }
+                if self.streamType != nil {
+                    map["StreamType"] = self.streamType!
+                }
+                if self.type != nil {
+                    map["Type"] = self.type!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["Ids"] as? [String] {
+                    self.ids = value
+                }
+                if let value = dict["StreamType"] as? String {
+                    self.streamType = value
+                }
+                if let value = dict["Type"] as? String {
+                    self.type = value
+                }
+            }
+        }
+        public class TranscodingParameters : Tea.TeaModel {
+            public class Audio : Tea.TeaModel {
+                public var bitrate: Int32?
+
+                public var codec: String?
+
+                public var sampleRate: Int32?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.bitrate != nil {
+                        map["Bitrate"] = self.bitrate!
+                    }
+                    if self.codec != nil {
+                        map["Codec"] = self.codec!
+                    }
+                    if self.sampleRate != nil {
+                        map["SampleRate"] = self.sampleRate!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                    guard let dict else { return }
+                    if let value = dict["Bitrate"] as? Int32 {
+                        self.bitrate = value
+                    }
+                    if let value = dict["Codec"] as? String {
+                        self.codec = value
+                    }
+                    if let value = dict["SampleRate"] as? Int32 {
+                        self.sampleRate = value
+                    }
+                }
+            }
+            public var audio: StartCloudRecordRequest.SingleStreamingRecord.TranscodingParameters.Audio?
+
+            public var container: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+                try self.audio?.validate()
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.audio != nil {
+                    map["Audio"] = self.audio?.toMap()
+                }
+                if self.container != nil {
+                    map["Container"] = self.container!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["Audio"] as? [String: Any?] {
+                    var model = StartCloudRecordRequest.SingleStreamingRecord.TranscodingParameters.Audio()
+                    model.fromMap(value)
+                    self.audio = model
+                }
+                if let value = dict["Container"] as? String {
+                    self.container = value
+                }
+            }
+        }
+        public var specifiedStreams: [StartCloudRecordRequest.SingleStreamingRecord.SpecifiedStreams]?
+
+        public var transcodingParameters: StartCloudRecordRequest.SingleStreamingRecord.TranscodingParameters?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+            try self.transcodingParameters?.validate()
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.specifiedStreams != nil {
+                var tmp : [Any] = []
+                for k in self.specifiedStreams! {
+                    tmp.append(k.toMap())
+                }
+                map["SpecifiedStreams"] = tmp
+            }
+            if self.transcodingParameters != nil {
+                map["TranscodingParameters"] = self.transcodingParameters?.toMap()
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["SpecifiedStreams"] as? [Any?] {
+                var tmp : [StartCloudRecordRequest.SingleStreamingRecord.SpecifiedStreams] = []
+                for v in value {
+                    if v != nil {
+                        var model = StartCloudRecordRequest.SingleStreamingRecord.SpecifiedStreams()
+                        if v != nil {
+                            model.fromMap(v as? [String: Any?])
+                        }
+                        tmp.append(model)
+                    }
+                }
+                self.specifiedStreams = tmp
+            }
+            if let value = dict["TranscodingParameters"] as? [String: Any?] {
+                var model = StartCloudRecordRequest.SingleStreamingRecord.TranscodingParameters()
+                model.fromMap(value)
+                self.transcodingParameters = model
+            }
+        }
+    }
     public class StorageConfig : Tea.TeaModel {
         public var accessKey: String?
 
@@ -28753,6 +28941,8 @@ public class StartCloudRecordRequest : Tea.TeaModel {
             }
         }
     }
+    public var annotation: String?
+
     public var appId: String?
 
     public var backgrounds: [StartCloudRecordRequest.Backgrounds]?
@@ -28771,11 +28961,19 @@ public class StartCloudRecordRequest : Tea.TeaModel {
 
     public var panes: [StartCloudRecordRequest.Panes]?
 
+    public var recordMode: Int32?
+
     public var regionColor: StartCloudRecordRequest.RegionColor?
 
     public var reservePaneForNoCameraUser: Bool?
 
     public var showDefaultBackgroundOnMute: Bool?
+
+    public var singleStreamingRecord: StartCloudRecordRequest.SingleStreamingRecord?
+
+    public var startWithoutChannel: Bool?
+
+    public var startWithoutChannelWaitTime: Int32?
 
     public var storageConfig: StartCloudRecordRequest.StorageConfig?
 
@@ -28800,11 +28998,15 @@ public class StartCloudRecordRequest : Tea.TeaModel {
         try self.bgColor?.validate()
         try self.layoutSpecifiedUsers?.validate()
         try self.regionColor?.validate()
+        try self.singleStreamingRecord?.validate()
         try self.storageConfig?.validate()
     }
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.annotation != nil {
+            map["Annotation"] = self.annotation!
+        }
         if self.appId != nil {
             map["AppId"] = self.appId!
         }
@@ -28848,6 +29050,9 @@ public class StartCloudRecordRequest : Tea.TeaModel {
             }
             map["Panes"] = tmp
         }
+        if self.recordMode != nil {
+            map["RecordMode"] = self.recordMode!
+        }
         if self.regionColor != nil {
             map["RegionColor"] = self.regionColor?.toMap()
         }
@@ -28856,6 +29061,15 @@ public class StartCloudRecordRequest : Tea.TeaModel {
         }
         if self.showDefaultBackgroundOnMute != nil {
             map["ShowDefaultBackgroundOnMute"] = self.showDefaultBackgroundOnMute!
+        }
+        if self.singleStreamingRecord != nil {
+            map["SingleStreamingRecord"] = self.singleStreamingRecord?.toMap()
+        }
+        if self.startWithoutChannel != nil {
+            map["StartWithoutChannel"] = self.startWithoutChannel!
+        }
+        if self.startWithoutChannelWaitTime != nil {
+            map["StartWithoutChannelWaitTime"] = self.startWithoutChannelWaitTime!
         }
         if self.storageConfig != nil {
             map["StorageConfig"] = self.storageConfig?.toMap()
@@ -28881,6 +29095,9 @@ public class StartCloudRecordRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["Annotation"] as? String {
+            self.annotation = value
+        }
         if let value = dict["AppId"] as? String {
             self.appId = value
         }
@@ -28952,6 +29169,9 @@ public class StartCloudRecordRequest : Tea.TeaModel {
             }
             self.panes = tmp
         }
+        if let value = dict["RecordMode"] as? Int32 {
+            self.recordMode = value
+        }
         if let value = dict["RegionColor"] as? [String: Any?] {
             var model = StartCloudRecordRequest.RegionColor()
             model.fromMap(value)
@@ -28962,6 +29182,17 @@ public class StartCloudRecordRequest : Tea.TeaModel {
         }
         if let value = dict["ShowDefaultBackgroundOnMute"] as? Bool {
             self.showDefaultBackgroundOnMute = value
+        }
+        if let value = dict["SingleStreamingRecord"] as? [String: Any?] {
+            var model = StartCloudRecordRequest.SingleStreamingRecord()
+            model.fromMap(value)
+            self.singleStreamingRecord = model
+        }
+        if let value = dict["StartWithoutChannel"] as? Bool {
+            self.startWithoutChannel = value
+        }
+        if let value = dict["StartWithoutChannelWaitTime"] as? Int32 {
+            self.startWithoutChannelWaitTime = value
         }
         if let value = dict["StorageConfig"] as? [String: Any?] {
             var model = StartCloudRecordRequest.StorageConfig()
@@ -30349,6 +30580,8 @@ public class StartCloudRecordShrinkRequest : Tea.TeaModel {
             }
         }
     }
+    public var annotation: String?
+
     public var appId: String?
 
     public var backgrounds: [StartCloudRecordShrinkRequest.Backgrounds]?
@@ -30367,11 +30600,19 @@ public class StartCloudRecordShrinkRequest : Tea.TeaModel {
 
     public var panes: [StartCloudRecordShrinkRequest.Panes]?
 
+    public var recordMode: Int32?
+
     public var regionColor: StartCloudRecordShrinkRequest.RegionColor?
 
     public var reservePaneForNoCameraUser: Bool?
 
     public var showDefaultBackgroundOnMute: Bool?
+
+    public var singleStreamingRecordShrink: String?
+
+    public var startWithoutChannel: Bool?
+
+    public var startWithoutChannelWaitTime: Int32?
 
     public var storageConfig: StartCloudRecordShrinkRequest.StorageConfig?
 
@@ -30400,6 +30641,9 @@ public class StartCloudRecordShrinkRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.annotation != nil {
+            map["Annotation"] = self.annotation!
+        }
         if self.appId != nil {
             map["AppId"] = self.appId!
         }
@@ -30443,6 +30687,9 @@ public class StartCloudRecordShrinkRequest : Tea.TeaModel {
             }
             map["Panes"] = tmp
         }
+        if self.recordMode != nil {
+            map["RecordMode"] = self.recordMode!
+        }
         if self.regionColor != nil {
             map["RegionColor"] = self.regionColor?.toMap()
         }
@@ -30451,6 +30698,15 @@ public class StartCloudRecordShrinkRequest : Tea.TeaModel {
         }
         if self.showDefaultBackgroundOnMute != nil {
             map["ShowDefaultBackgroundOnMute"] = self.showDefaultBackgroundOnMute!
+        }
+        if self.singleStreamingRecordShrink != nil {
+            map["SingleStreamingRecord"] = self.singleStreamingRecordShrink!
+        }
+        if self.startWithoutChannel != nil {
+            map["StartWithoutChannel"] = self.startWithoutChannel!
+        }
+        if self.startWithoutChannelWaitTime != nil {
+            map["StartWithoutChannelWaitTime"] = self.startWithoutChannelWaitTime!
         }
         if self.storageConfig != nil {
             map["StorageConfig"] = self.storageConfig?.toMap()
@@ -30476,6 +30732,9 @@ public class StartCloudRecordShrinkRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["Annotation"] as? String {
+            self.annotation = value
+        }
         if let value = dict["AppId"] as? String {
             self.appId = value
         }
@@ -30545,6 +30804,9 @@ public class StartCloudRecordShrinkRequest : Tea.TeaModel {
             }
             self.panes = tmp
         }
+        if let value = dict["RecordMode"] as? Int32 {
+            self.recordMode = value
+        }
         if let value = dict["RegionColor"] as? [String: Any?] {
             var model = StartCloudRecordShrinkRequest.RegionColor()
             model.fromMap(value)
@@ -30555,6 +30817,15 @@ public class StartCloudRecordShrinkRequest : Tea.TeaModel {
         }
         if let value = dict["ShowDefaultBackgroundOnMute"] as? Bool {
             self.showDefaultBackgroundOnMute = value
+        }
+        if let value = dict["SingleStreamingRecord"] as? String {
+            self.singleStreamingRecordShrink = value
+        }
+        if let value = dict["StartWithoutChannel"] as? Bool {
+            self.startWithoutChannel = value
+        }
+        if let value = dict["StartWithoutChannelWaitTime"] as? Int32 {
+            self.startWithoutChannelWaitTime = value
         }
         if let value = dict["StorageConfig"] as? [String: Any?] {
             var model = StartCloudRecordShrinkRequest.StorageConfig()
@@ -33540,6 +33811,8 @@ public class StartStreamingOutRequest : Tea.TeaModel {
             }
         }
     }
+    public var annotation: String?
+
     public var appId: String?
 
     public var backgrounds: [StartStreamingOutRequest.Backgrounds]?
@@ -33563,6 +33836,8 @@ public class StartStreamingOutRequest : Tea.TeaModel {
     public var reservePaneForNoCameraUser: Bool?
 
     public var showDefaultBackgroundOnMute: Bool?
+
+    public var specMixedUserList: [String]?
 
     public var startWithoutChannel: Bool?
 
@@ -33595,6 +33870,9 @@ public class StartStreamingOutRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.annotation != nil {
+            map["Annotation"] = self.annotation!
+        }
         if self.appId != nil {
             map["AppId"] = self.appId!
         }
@@ -33647,6 +33925,9 @@ public class StartStreamingOutRequest : Tea.TeaModel {
         if self.showDefaultBackgroundOnMute != nil {
             map["ShowDefaultBackgroundOnMute"] = self.showDefaultBackgroundOnMute!
         }
+        if self.specMixedUserList != nil {
+            map["SpecMixedUserList"] = self.specMixedUserList!
+        }
         if self.startWithoutChannel != nil {
             map["StartWithoutChannel"] = self.startWithoutChannel!
         }
@@ -33677,6 +33958,9 @@ public class StartStreamingOutRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["Annotation"] as? String {
+            self.annotation = value
+        }
         if let value = dict["AppId"] as? String {
             self.appId = value
         }
@@ -33758,6 +34042,9 @@ public class StartStreamingOutRequest : Tea.TeaModel {
         }
         if let value = dict["ShowDefaultBackgroundOnMute"] as? Bool {
             self.showDefaultBackgroundOnMute = value
+        }
+        if let value = dict["SpecMixedUserList"] as? [String] {
+            self.specMixedUserList = value
         }
         if let value = dict["StartWithoutChannel"] as? Bool {
             self.startWithoutChannel = value
@@ -35079,6 +35366,8 @@ public class StartStreamingOutShrinkRequest : Tea.TeaModel {
             }
         }
     }
+    public var annotation: String?
+
     public var appId: String?
 
     public var backgrounds: [StartStreamingOutShrinkRequest.Backgrounds]?
@@ -35102,6 +35391,8 @@ public class StartStreamingOutShrinkRequest : Tea.TeaModel {
     public var reservePaneForNoCameraUser: Bool?
 
     public var showDefaultBackgroundOnMute: Bool?
+
+    public var specMixedUserList: [String]?
 
     public var startWithoutChannel: Bool?
 
@@ -35133,6 +35424,9 @@ public class StartStreamingOutShrinkRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.annotation != nil {
+            map["Annotation"] = self.annotation!
+        }
         if self.appId != nil {
             map["AppId"] = self.appId!
         }
@@ -35185,6 +35479,9 @@ public class StartStreamingOutShrinkRequest : Tea.TeaModel {
         if self.showDefaultBackgroundOnMute != nil {
             map["ShowDefaultBackgroundOnMute"] = self.showDefaultBackgroundOnMute!
         }
+        if self.specMixedUserList != nil {
+            map["SpecMixedUserList"] = self.specMixedUserList!
+        }
         if self.startWithoutChannel != nil {
             map["StartWithoutChannel"] = self.startWithoutChannel!
         }
@@ -35215,6 +35512,9 @@ public class StartStreamingOutShrinkRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["Annotation"] as? String {
+            self.annotation = value
+        }
         if let value = dict["AppId"] as? String {
             self.appId = value
         }
@@ -35294,6 +35594,9 @@ public class StartStreamingOutShrinkRequest : Tea.TeaModel {
         }
         if let value = dict["ShowDefaultBackgroundOnMute"] as? Bool {
             self.showDefaultBackgroundOnMute = value
+        }
+        if let value = dict["SpecMixedUserList"] as? [String] {
+            self.specMixedUserList = value
         }
         if let value = dict["StartWithoutChannel"] as? Bool {
             self.startWithoutChannel = value
@@ -43104,6 +43407,8 @@ public class UpdateStreamingOutRequest : Tea.TeaModel {
 
     public var regionColor: UpdateStreamingOutRequest.RegionColor?
 
+    public var specMixedUserList: [String]?
+
     public var taskId: String?
 
     public var templateId: String?
@@ -43172,6 +43477,9 @@ public class UpdateStreamingOutRequest : Tea.TeaModel {
         }
         if self.regionColor != nil {
             map["RegionColor"] = self.regionColor?.toMap()
+        }
+        if self.specMixedUserList != nil {
+            map["SpecMixedUserList"] = self.specMixedUserList!
         }
         if self.taskId != nil {
             map["TaskId"] = self.taskId!
@@ -43266,6 +43574,9 @@ public class UpdateStreamingOutRequest : Tea.TeaModel {
             var model = UpdateStreamingOutRequest.RegionColor()
             model.fromMap(value)
             self.regionColor = model
+        }
+        if let value = dict["SpecMixedUserList"] as? [String] {
+            self.specMixedUserList = value
         }
         if let value = dict["TaskId"] as? String {
             self.taskId = value
@@ -44595,6 +44906,8 @@ public class UpdateStreamingOutShrinkRequest : Tea.TeaModel {
 
     public var regionColor: UpdateStreamingOutShrinkRequest.RegionColor?
 
+    public var specMixedUserList: [String]?
+
     public var taskId: String?
 
     public var templateId: String?
@@ -44662,6 +44975,9 @@ public class UpdateStreamingOutShrinkRequest : Tea.TeaModel {
         }
         if self.regionColor != nil {
             map["RegionColor"] = self.regionColor?.toMap()
+        }
+        if self.specMixedUserList != nil {
+            map["SpecMixedUserList"] = self.specMixedUserList!
         }
         if self.taskId != nil {
             map["TaskId"] = self.taskId!
@@ -44754,6 +45070,9 @@ public class UpdateStreamingOutShrinkRequest : Tea.TeaModel {
             var model = UpdateStreamingOutShrinkRequest.RegionColor()
             model.fromMap(value)
             self.regionColor = model
+        }
+        if let value = dict["SpecMixedUserList"] as? [String] {
+            self.specMixedUserList = value
         }
         if let value = dict["TaskId"] as? String {
             self.taskId = value
