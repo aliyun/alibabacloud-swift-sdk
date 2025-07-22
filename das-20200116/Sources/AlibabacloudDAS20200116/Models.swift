@@ -20199,6 +20199,8 @@ public class GetDasSQLLogHotDataResponseBody : Tea.TeaModel {
 
             public var logicRead: Int64?
 
+            public var nodeId: String?
+
             public var originTime: String?
 
             public var physicAsyncRead: Int64?
@@ -20258,6 +20260,9 @@ public class GetDasSQLLogHotDataResponseBody : Tea.TeaModel {
                 }
                 if self.logicRead != nil {
                     map["LogicRead"] = self.logicRead!
+                }
+                if self.nodeId != nil {
+                    map["NodeId"] = self.nodeId!
                 }
                 if self.originTime != nil {
                     map["OriginTime"] = self.originTime!
@@ -20320,6 +20325,9 @@ public class GetDasSQLLogHotDataResponseBody : Tea.TeaModel {
                 }
                 if let value = dict["LogicRead"] as? Int64 {
                     self.logicRead = value
+                }
+                if let value = dict["NodeId"] as? String {
+                    self.nodeId = value
                 }
                 if let value = dict["OriginTime"] as? String {
                     self.originTime = value
