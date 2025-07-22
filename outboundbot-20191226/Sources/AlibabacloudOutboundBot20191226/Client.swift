@@ -107,6 +107,57 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func assignJobsAsyncWithOptions(_ tmpReq: AssignJobsAsyncRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> AssignJobsAsyncResponse {
+        try TeaUtils.Client.validateModel(tmpReq)
+        var request: AssignJobsAsyncShrinkRequest = AssignJobsAsyncShrinkRequest([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.callingNumber)) {
+            request.callingNumberShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.callingNumber, "CallingNumber", "json")
+        }
+        if (!TeaUtils.Client.isUnset(tmpReq.jobsJson)) {
+            request.jobsJsonShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.jobsJson, "JobsJson", "json")
+        }
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.callingNumberShrink)) {
+            body["CallingNumber"] = request.callingNumberShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.instanceId)) {
+            body["InstanceId"] = request.instanceId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.jobGroupId)) {
+            body["JobGroupId"] = request.jobGroupId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.jobsJsonShrink)) {
+            body["JobsJson"] = request.jobsJsonShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.strategyJson)) {
+            body["StrategyJson"] = request.strategyJson ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "AssignJobsAsync",
+            "version": "2019-12-26",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(AssignJobsAsyncResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func assignJobsAsync(_ request: AssignJobsAsyncRequest) async throws -> AssignJobsAsyncResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await assignJobsAsyncWithOptions(request as! AssignJobsAsyncRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func cancelJobsWithOptions(_ request: CancelJobsRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> CancelJobsResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
@@ -3011,6 +3062,37 @@ open class Client : AlibabacloudOpenApi.Client {
     public func getAsrServerInfo(_ request: GetAsrServerInfoRequest) async throws -> GetAsrServerInfoResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         return try await getAsrServerInfoWithOptions(request as! GetAsrServerInfoRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getAssignJobsAsyncResultWithOptions(_ request: GetAssignJobsAsyncResultRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> GetAssignJobsAsyncResultResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.asyncTaskId)) {
+            query["AsyncTaskId"] = request.asyncTaskId ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "GetAssignJobsAsyncResult",
+            "version": "2019-12-26",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(GetAssignJobsAsyncResultResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getAssignJobsAsyncResult(_ request: GetAssignJobsAsyncResultRequest) async throws -> GetAssignJobsAsyncResultResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await getAssignJobsAsyncResultWithOptions(request as! GetAssignJobsAsyncResultRequest, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
