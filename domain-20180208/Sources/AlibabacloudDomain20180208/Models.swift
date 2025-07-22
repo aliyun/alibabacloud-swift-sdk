@@ -4849,6 +4849,8 @@ public class QueryExportDomainExpireSnatchsResponseBody : Tea.TeaModel {
 
         public var regDate: String?
 
+        public var registrar: String?
+
         public var renewPrice: Double?
 
         public var reserved: Bool?
@@ -4972,6 +4974,9 @@ public class QueryExportDomainExpireSnatchsResponseBody : Tea.TeaModel {
             }
             if self.regDate != nil {
                 map["RegDate"] = self.regDate!
+            }
+            if self.registrar != nil {
+                map["Registrar"] = self.registrar!
             }
             if self.renewPrice != nil {
                 map["RenewPrice"] = self.renewPrice!
@@ -5100,6 +5105,9 @@ public class QueryExportDomainExpireSnatchsResponseBody : Tea.TeaModel {
             }
             if let value = dict["RegDate"] as? String {
                 self.regDate = value
+            }
+            if let value = dict["Registrar"] as? String {
+                self.registrar = value
             }
             if let value = dict["RenewPrice"] as? Double {
                 self.renewPrice = value
