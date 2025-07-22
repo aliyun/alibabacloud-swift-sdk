@@ -1518,6 +1518,251 @@ public class GetNodeByTemplateIdResponse : Tea.TeaModel {
     }
 }
 
+public class GetOrderSummaryForPartnerRequest : Tea.TeaModel {
+    public var orderId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.orderId != nil {
+            map["OrderId"] = self.orderId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["OrderId"] as? String {
+            self.orderId = value
+        }
+    }
+}
+
+public class GetOrderSummaryForPartnerResponseBody : Tea.TeaModel {
+    public class Data : Tea.TeaModel {
+        public class OrderLines : Tea.TeaModel {
+            public var instanceId: String?
+
+            public var orderLineId: String?
+
+            public var orderType: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.instanceId != nil {
+                    map["InstanceId"] = self.instanceId!
+                }
+                if self.orderLineId != nil {
+                    map["OrderLineId"] = self.orderLineId!
+                }
+                if self.orderType != nil {
+                    map["OrderType"] = self.orderType!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["InstanceId"] as? String {
+                    self.instanceId = value
+                }
+                if let value = dict["OrderLineId"] as? String {
+                    self.orderLineId = value
+                }
+                if let value = dict["OrderType"] as? String {
+                    self.orderType = value
+                }
+            }
+        }
+        public var encryptedBuyerId: String?
+
+        public var encryptedPayerId: String?
+
+        public var encryptedUserId: String?
+
+        public var orderId: String?
+
+        public var orderLines: [GetOrderSummaryForPartnerResponseBody.Data.OrderLines]?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.encryptedBuyerId != nil {
+                map["EncryptedBuyerId"] = self.encryptedBuyerId!
+            }
+            if self.encryptedPayerId != nil {
+                map["EncryptedPayerId"] = self.encryptedPayerId!
+            }
+            if self.encryptedUserId != nil {
+                map["EncryptedUserId"] = self.encryptedUserId!
+            }
+            if self.orderId != nil {
+                map["OrderId"] = self.orderId!
+            }
+            if self.orderLines != nil {
+                var tmp : [Any] = []
+                for k in self.orderLines! {
+                    tmp.append(k.toMap())
+                }
+                map["OrderLines"] = tmp
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["EncryptedBuyerId"] as? String {
+                self.encryptedBuyerId = value
+            }
+            if let value = dict["EncryptedPayerId"] as? String {
+                self.encryptedPayerId = value
+            }
+            if let value = dict["EncryptedUserId"] as? String {
+                self.encryptedUserId = value
+            }
+            if let value = dict["OrderId"] as? String {
+                self.orderId = value
+            }
+            if let value = dict["OrderLines"] as? [Any?] {
+                var tmp : [GetOrderSummaryForPartnerResponseBody.Data.OrderLines] = []
+                for v in value {
+                    if v != nil {
+                        var model = GetOrderSummaryForPartnerResponseBody.Data.OrderLines()
+                        if v != nil {
+                            model.fromMap(v as? [String: Any?])
+                        }
+                        tmp.append(model)
+                    }
+                }
+                self.orderLines = tmp
+            }
+        }
+    }
+    public var data: GetOrderSummaryForPartnerResponseBody.Data?
+
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.data?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.data != nil {
+            map["Data"] = self.data?.toMap()
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["Data"] as? [String: Any?] {
+            var model = GetOrderSummaryForPartnerResponseBody.Data()
+            model.fromMap(value)
+            self.data = model
+        }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+    }
+}
+
+public class GetOrderSummaryForPartnerResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: GetOrderSummaryForPartnerResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = GetOrderSummaryForPartnerResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
 public class GetPlatformUserInfoForPartnerRequest : Tea.TeaModel {
     public var appId: String?
 

@@ -372,6 +372,37 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getOrderSummaryForPartnerWithOptions(_ request: GetOrderSummaryForPartnerRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> GetOrderSummaryForPartnerResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.orderId)) {
+            query["OrderId"] = request.orderId ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "GetOrderSummaryForPartner",
+            "version": "2021-01-18",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(GetOrderSummaryForPartnerResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getOrderSummaryForPartner(_ request: GetOrderSummaryForPartnerRequest) async throws -> GetOrderSummaryForPartnerResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await getOrderSummaryForPartnerWithOptions(request as! GetOrderSummaryForPartnerRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func getPlatformUserInfoForPartnerWithOptions(_ request: GetPlatformUserInfoForPartnerRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> GetPlatformUserInfoForPartnerResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
