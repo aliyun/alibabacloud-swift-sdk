@@ -268,6 +268,44 @@ public class AuthorizeEndpointAclResponse : Tea.TeaModel {
 }
 
 public class CreateEventRuleRequest : Tea.TeaModel {
+    public class Endpoint : Tea.TeaModel {
+        public var endpointType: String?
+
+        public var endpointValue: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.endpointType != nil {
+                map["EndpointType"] = self.endpointType!
+            }
+            if self.endpointValue != nil {
+                map["EndpointValue"] = self.endpointValue!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["EndpointType"] as? String {
+                self.endpointType = value
+            }
+            if let value = dict["EndpointValue"] as? String {
+                self.endpointValue = value
+            }
+        }
+    }
     public class Endpoints : Tea.TeaModel {
         public var endpointType: String?
 
@@ -310,6 +348,8 @@ public class CreateEventRuleRequest : Tea.TeaModel {
 
     public var deliveryMode: String?
 
+    public var endpoint: CreateEventRuleRequest.Endpoint?
+
     public var endpoints: [CreateEventRuleRequest.Endpoints]?
 
     public var eventTypes: [String]?
@@ -330,6 +370,7 @@ public class CreateEventRuleRequest : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
+        try self.endpoint?.validate()
     }
 
     public override func toMap() -> [String : Any] {
@@ -339,6 +380,9 @@ public class CreateEventRuleRequest : Tea.TeaModel {
         }
         if self.deliveryMode != nil {
             map["DeliveryMode"] = self.deliveryMode!
+        }
+        if self.endpoint != nil {
+            map["Endpoint"] = self.endpoint?.toMap()
         }
         if self.endpoints != nil {
             var tmp : [Any] = []
@@ -377,6 +421,11 @@ public class CreateEventRuleRequest : Tea.TeaModel {
         }
         if let value = dict["DeliveryMode"] as? String {
             self.deliveryMode = value
+        }
+        if let value = dict["Endpoint"] as? [String: Any?] {
+            var model = CreateEventRuleRequest.Endpoint()
+            model.fromMap(value)
+            self.endpoint = model
         }
         if let value = dict["Endpoints"] as? [Any?] {
             var tmp : [CreateEventRuleRequest.Endpoints] = []
@@ -427,6 +476,8 @@ public class CreateEventRuleShrinkRequest : Tea.TeaModel {
 
     public var deliveryMode: String?
 
+    public var endpointShrink: String?
+
     public var endpointsShrink: String?
 
     public var eventTypesShrink: String?
@@ -457,6 +508,9 @@ public class CreateEventRuleShrinkRequest : Tea.TeaModel {
         if self.deliveryMode != nil {
             map["DeliveryMode"] = self.deliveryMode!
         }
+        if self.endpointShrink != nil {
+            map["Endpoint"] = self.endpointShrink!
+        }
         if self.endpointsShrink != nil {
             map["Endpoints"] = self.endpointsShrink!
         }
@@ -482,6 +536,9 @@ public class CreateEventRuleShrinkRequest : Tea.TeaModel {
         }
         if let value = dict["DeliveryMode"] as? String {
             self.deliveryMode = value
+        }
+        if let value = dict["Endpoint"] as? String {
+            self.endpointShrink = value
         }
         if let value = dict["Endpoints"] as? String {
             self.endpointsShrink = value

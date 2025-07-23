@@ -70,6 +70,9 @@ open class Client : AlibabacloudOpenApi.Client {
         try TeaUtils.Client.validateModel(tmpReq)
         var request: CreateEventRuleShrinkRequest = CreateEventRuleShrinkRequest([:])
         AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.endpoint)) {
+            request.endpointShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.endpoint, "Endpoint", "json")
+        }
         if (!TeaUtils.Client.isUnset(tmpReq.endpoints)) {
             request.endpointsShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.endpoints, "Endpoints", "json")
         }
@@ -85,6 +88,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.deliveryMode)) {
             query["DeliveryMode"] = request.deliveryMode ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.endpointShrink)) {
+            query["Endpoint"] = request.endpointShrink ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.endpointsShrink)) {
             query["Endpoints"] = request.endpointsShrink ?? "";
