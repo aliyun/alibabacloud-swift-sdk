@@ -3981,6 +3981,8 @@ public class GetTemplateResponseBody : Tea.TeaModel {
 
         public var description_: String?
 
+        public var documentUrl: String?
+
         public var imageURL: String?
 
         public var name: String?
@@ -4011,6 +4013,9 @@ public class GetTemplateResponseBody : Tea.TeaModel {
             if self.description_ != nil {
                 map["Description"] = self.description_!
             }
+            if self.documentUrl != nil {
+                map["DocumentUrl"] = self.documentUrl!
+            }
             if self.imageURL != nil {
                 map["ImageURL"] = self.imageURL!
             }
@@ -4040,6 +4045,9 @@ public class GetTemplateResponseBody : Tea.TeaModel {
             }
             if let value = dict["Description"] as? String {
                 self.description_ = value
+            }
+            if let value = dict["DocumentUrl"] as? String {
+                self.documentUrl = value
             }
             if let value = dict["ImageURL"] as? String {
                 self.imageURL = value
@@ -5525,13 +5533,57 @@ public class ListTemplateShrinkRequest : Tea.TeaModel {
 
 public class ListTemplateResponseBody : Tea.TeaModel {
     public class Data : Tea.TeaModel {
+        public class Tag : Tea.TeaModel {
+            public var key: String?
+
+            public var value: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.key != nil {
+                    map["Key"] = self.key!
+                }
+                if self.value != nil {
+                    map["Value"] = self.value!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["Key"] as? String {
+                    self.key = value
+                }
+                if let value = dict["Value"] as? String {
+                    self.value = value
+                }
+            }
+        }
         public var createTime: String?
+
+        public var description_: String?
+
+        public var documentUrl: String?
 
         public var imageURL: String?
 
         public var name: String?
 
         public var resourceGroupId: String?
+
+        public var tag: [ListTemplateResponseBody.Data.Tag]?
 
         public var tagId: Int32?
 
@@ -5556,6 +5608,12 @@ public class ListTemplateResponseBody : Tea.TeaModel {
             if self.createTime != nil {
                 map["CreateTime"] = self.createTime!
             }
+            if self.description_ != nil {
+                map["Description"] = self.description_!
+            }
+            if self.documentUrl != nil {
+                map["DocumentUrl"] = self.documentUrl!
+            }
             if self.imageURL != nil {
                 map["ImageURL"] = self.imageURL!
             }
@@ -5564,6 +5622,13 @@ public class ListTemplateResponseBody : Tea.TeaModel {
             }
             if self.resourceGroupId != nil {
                 map["ResourceGroupId"] = self.resourceGroupId!
+            }
+            if self.tag != nil {
+                var tmp : [Any] = []
+                for k in self.tag! {
+                    tmp.append(k.toMap())
+                }
+                map["Tag"] = tmp
             }
             if self.tagId != nil {
                 map["TagId"] = self.tagId!
@@ -5582,6 +5647,12 @@ public class ListTemplateResponseBody : Tea.TeaModel {
             if let value = dict["CreateTime"] as? String {
                 self.createTime = value
             }
+            if let value = dict["Description"] as? String {
+                self.description_ = value
+            }
+            if let value = dict["DocumentUrl"] as? String {
+                self.documentUrl = value
+            }
             if let value = dict["ImageURL"] as? String {
                 self.imageURL = value
             }
@@ -5590,6 +5661,19 @@ public class ListTemplateResponseBody : Tea.TeaModel {
             }
             if let value = dict["ResourceGroupId"] as? String {
                 self.resourceGroupId = value
+            }
+            if let value = dict["Tag"] as? [Any?] {
+                var tmp : [ListTemplateResponseBody.Data.Tag] = []
+                for v in value {
+                    if v != nil {
+                        var model = ListTemplateResponseBody.Data.Tag()
+                        if v != nil {
+                            model.fromMap(v as? [String: Any?])
+                        }
+                        tmp.append(model)
+                    }
+                }
+                self.tag = tmp
             }
             if let value = dict["TagId"] as? Int32 {
                 self.tagId = value
