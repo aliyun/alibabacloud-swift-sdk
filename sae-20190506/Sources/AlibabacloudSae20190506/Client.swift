@@ -5608,8 +5608,14 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.appId)) {
             query["AppId"] = request.appId ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.appIds)) {
+            query["AppIds"] = request.appIds ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.enableIdle)) {
             query["EnableIdle"] = request.enableIdle!;
+        }
+        if (!TeaUtils.Client.isUnset(request.namespaceId)) {
+            query["NamespaceId"] = request.namespaceId ?? "";
         }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "headers": headers as! [String: String],

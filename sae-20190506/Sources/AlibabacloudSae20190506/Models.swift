@@ -54321,7 +54321,11 @@ public class UntagResourcesResponse : Tea.TeaModel {
 public class UpdateAppModeRequest : Tea.TeaModel {
     public var appId: String?
 
+    public var appIds: String?
+
     public var enableIdle: Bool?
+
+    public var namespaceId: String?
 
     public override init() {
         super.init()
@@ -54340,8 +54344,14 @@ public class UpdateAppModeRequest : Tea.TeaModel {
         if self.appId != nil {
             map["AppId"] = self.appId!
         }
+        if self.appIds != nil {
+            map["AppIds"] = self.appIds!
+        }
         if self.enableIdle != nil {
             map["EnableIdle"] = self.enableIdle!
+        }
+        if self.namespaceId != nil {
+            map["NamespaceId"] = self.namespaceId!
         }
         return map
     }
@@ -54351,8 +54361,14 @@ public class UpdateAppModeRequest : Tea.TeaModel {
         if let value = dict["AppId"] as? String {
             self.appId = value
         }
+        if let value = dict["AppIds"] as? String {
+            self.appIds = value
+        }
         if let value = dict["EnableIdle"] as? Bool {
             self.enableIdle = value
+        }
+        if let value = dict["NamespaceId"] as? String {
+            self.namespaceId = value
         }
     }
 }
