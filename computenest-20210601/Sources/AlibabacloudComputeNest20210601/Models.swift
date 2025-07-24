@@ -1216,6 +1216,8 @@ public class CreateServiceInstanceRequest : Tea.TeaModel {
 
         public var payPeriodUnit: String?
 
+        public var quotationId: String?
+
         public override init() {
             super.init()
         }
@@ -1245,6 +1247,9 @@ public class CreateServiceInstanceRequest : Tea.TeaModel {
             if self.payPeriodUnit != nil {
                 map["PayPeriodUnit"] = self.payPeriodUnit!
             }
+            if self.quotationId != nil {
+                map["QuotationId"] = self.quotationId!
+            }
             return map
         }
 
@@ -1264,6 +1269,9 @@ public class CreateServiceInstanceRequest : Tea.TeaModel {
             }
             if let value = dict["PayPeriodUnit"] as? String {
                 self.payPeriodUnit = value
+            }
+            if let value = dict["QuotationId"] as? String {
+                self.quotationId = value
             }
         }
     }
@@ -1581,6 +1589,8 @@ public class CreateServiceInstanceShrinkRequest : Tea.TeaModel {
 
         public var payPeriodUnit: String?
 
+        public var quotationId: String?
+
         public override init() {
             super.init()
         }
@@ -1610,6 +1620,9 @@ public class CreateServiceInstanceShrinkRequest : Tea.TeaModel {
             if self.payPeriodUnit != nil {
                 map["PayPeriodUnit"] = self.payPeriodUnit!
             }
+            if self.quotationId != nil {
+                map["QuotationId"] = self.quotationId!
+            }
             return map
         }
 
@@ -1629,6 +1642,9 @@ public class CreateServiceInstanceShrinkRequest : Tea.TeaModel {
             }
             if let value = dict["PayPeriodUnit"] as? String {
                 self.payPeriodUnit = value
+            }
+            if let value = dict["QuotationId"] as? String {
+                self.quotationId = value
             }
         }
     }
@@ -4106,6 +4122,8 @@ public class GetServiceEstimateCostRequest : Tea.TeaModel {
 
         public var payPeriodUnit: String?
 
+        public var quotationId: String?
+
         public override init() {
             super.init()
         }
@@ -4129,6 +4147,9 @@ public class GetServiceEstimateCostRequest : Tea.TeaModel {
             if self.payPeriodUnit != nil {
                 map["PayPeriodUnit"] = self.payPeriodUnit!
             }
+            if self.quotationId != nil {
+                map["QuotationId"] = self.quotationId!
+            }
             return map
         }
 
@@ -4142,6 +4163,9 @@ public class GetServiceEstimateCostRequest : Tea.TeaModel {
             }
             if let value = dict["PayPeriodUnit"] as? String {
                 self.payPeriodUnit = value
+            }
+            if let value = dict["QuotationId"] as? String {
+                self.quotationId = value
             }
         }
     }
