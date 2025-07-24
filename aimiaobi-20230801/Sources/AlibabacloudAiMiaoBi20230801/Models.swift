@@ -1506,6 +1506,12 @@ public class AsyncCreateClipsTaskResponse : Tea.TeaModel {
 }
 
 public class AsyncCreateClipsTimeLineRequest : Tea.TeaModel {
+    public var additionalContent: String?
+
+    public var customContent: String?
+
+    public var noRefVideo: Bool?
+
     public var processPrompt: String?
 
     public var taskId: String?
@@ -1526,6 +1532,15 @@ public class AsyncCreateClipsTimeLineRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.additionalContent != nil {
+            map["AdditionalContent"] = self.additionalContent!
+        }
+        if self.customContent != nil {
+            map["CustomContent"] = self.customContent!
+        }
+        if self.noRefVideo != nil {
+            map["NoRefVideo"] = self.noRefVideo!
+        }
         if self.processPrompt != nil {
             map["ProcessPrompt"] = self.processPrompt!
         }
@@ -1540,6 +1555,15 @@ public class AsyncCreateClipsTimeLineRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["AdditionalContent"] as? String {
+            self.additionalContent = value
+        }
+        if let value = dict["CustomContent"] as? String {
+            self.customContent = value
+        }
+        if let value = dict["NoRefVideo"] as? Bool {
+            self.noRefVideo = value
+        }
         if let value = dict["ProcessPrompt"] as? String {
             self.processPrompt = value
         }
@@ -1691,7 +1715,11 @@ public class AsyncEditTimelineRequest : Tea.TeaModel {
 
             public var in_: Int32?
 
+            public var inEx: Double?
+
             public var out: Int32?
+
+            public var outEx: Double?
 
             public var videoId: String?
 
@@ -1720,8 +1748,14 @@ public class AsyncEditTimelineRequest : Tea.TeaModel {
                 if self.in_ != nil {
                     map["In"] = self.in_!
                 }
+                if self.inEx != nil {
+                    map["InEx"] = self.inEx!
+                }
                 if self.out != nil {
                     map["Out"] = self.out!
+                }
+                if self.outEx != nil {
+                    map["OutEx"] = self.outEx!
                 }
                 if self.videoId != nil {
                     map["VideoId"] = self.videoId!
@@ -1743,8 +1777,14 @@ public class AsyncEditTimelineRequest : Tea.TeaModel {
                 if let value = dict["In"] as? Int32 {
                     self.in_ = value
                 }
+                if let value = dict["InEx"] as? Double {
+                    self.inEx = value
+                }
                 if let value = dict["Out"] as? Int32 {
                     self.out = value
+                }
+                if let value = dict["OutEx"] as? Double {
+                    self.outEx = value
                 }
                 if let value = dict["VideoId"] as? String {
                     self.videoId = value
@@ -2067,6 +2107,52 @@ public class AsyncEditTimelineResponse : Tea.TeaModel {
 }
 
 public class AsyncUploadVideoRequest : Tea.TeaModel {
+    public class ReferenceVideo : Tea.TeaModel {
+        public var videoExtraInfo: String?
+
+        public var videoName: String?
+
+        public var videoUrl: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.videoExtraInfo != nil {
+                map["VideoExtraInfo"] = self.videoExtraInfo!
+            }
+            if self.videoName != nil {
+                map["VideoName"] = self.videoName!
+            }
+            if self.videoUrl != nil {
+                map["VideoUrl"] = self.videoUrl!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["VideoExtraInfo"] as? String {
+                self.videoExtraInfo = value
+            }
+            if let value = dict["VideoName"] as? String {
+                self.videoName = value
+            }
+            if let value = dict["VideoUrl"] as? String {
+                self.videoUrl = value
+            }
+        }
+    }
     public class SourceVideos : Tea.TeaModel {
         public var videoExtraInfo: String?
 
@@ -2115,7 +2201,11 @@ public class AsyncUploadVideoRequest : Tea.TeaModel {
     }
     public var anlysisPrompt: String?
 
+    public var referenceVideo: AsyncUploadVideoRequest.ReferenceVideo?
+
     public var sourceVideos: [AsyncUploadVideoRequest.SourceVideos]?
+
+    public var splitInterval: Int32?
 
     public var workspaceId: String?
 
@@ -2129,6 +2219,7 @@ public class AsyncUploadVideoRequest : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
+        try self.referenceVideo?.validate()
     }
 
     public override func toMap() -> [String : Any] {
@@ -2136,12 +2227,18 @@ public class AsyncUploadVideoRequest : Tea.TeaModel {
         if self.anlysisPrompt != nil {
             map["AnlysisPrompt"] = self.anlysisPrompt!
         }
+        if self.referenceVideo != nil {
+            map["ReferenceVideo"] = self.referenceVideo?.toMap()
+        }
         if self.sourceVideos != nil {
             var tmp : [Any] = []
             for k in self.sourceVideos! {
                 tmp.append(k.toMap())
             }
             map["SourceVideos"] = tmp
+        }
+        if self.splitInterval != nil {
+            map["SplitInterval"] = self.splitInterval!
         }
         if self.workspaceId != nil {
             map["WorkspaceId"] = self.workspaceId!
@@ -2153,6 +2250,11 @@ public class AsyncUploadVideoRequest : Tea.TeaModel {
         guard let dict else { return }
         if let value = dict["AnlysisPrompt"] as? String {
             self.anlysisPrompt = value
+        }
+        if let value = dict["ReferenceVideo"] as? [String: Any?] {
+            var model = AsyncUploadVideoRequest.ReferenceVideo()
+            model.fromMap(value)
+            self.referenceVideo = model
         }
         if let value = dict["SourceVideos"] as? [Any?] {
             var tmp : [AsyncUploadVideoRequest.SourceVideos] = []
@@ -2167,6 +2269,9 @@ public class AsyncUploadVideoRequest : Tea.TeaModel {
             }
             self.sourceVideos = tmp
         }
+        if let value = dict["SplitInterval"] as? Int32 {
+            self.splitInterval = value
+        }
         if let value = dict["WorkspaceId"] as? String {
             self.workspaceId = value
         }
@@ -2176,7 +2281,11 @@ public class AsyncUploadVideoRequest : Tea.TeaModel {
 public class AsyncUploadVideoShrinkRequest : Tea.TeaModel {
     public var anlysisPrompt: String?
 
+    public var referenceVideoShrink: String?
+
     public var sourceVideosShrink: String?
+
+    public var splitInterval: Int32?
 
     public var workspaceId: String?
 
@@ -2197,8 +2306,14 @@ public class AsyncUploadVideoShrinkRequest : Tea.TeaModel {
         if self.anlysisPrompt != nil {
             map["AnlysisPrompt"] = self.anlysisPrompt!
         }
+        if self.referenceVideoShrink != nil {
+            map["ReferenceVideo"] = self.referenceVideoShrink!
+        }
         if self.sourceVideosShrink != nil {
             map["SourceVideos"] = self.sourceVideosShrink!
+        }
+        if self.splitInterval != nil {
+            map["SplitInterval"] = self.splitInterval!
         }
         if self.workspaceId != nil {
             map["WorkspaceId"] = self.workspaceId!
@@ -2211,8 +2326,14 @@ public class AsyncUploadVideoShrinkRequest : Tea.TeaModel {
         if let value = dict["AnlysisPrompt"] as? String {
             self.anlysisPrompt = value
         }
+        if let value = dict["ReferenceVideo"] as? String {
+            self.referenceVideoShrink = value
+        }
         if let value = dict["SourceVideos"] as? String {
             self.sourceVideosShrink = value
+        }
+        if let value = dict["SplitInterval"] as? Int32 {
+            self.splitInterval = value
         }
         if let value = dict["WorkspaceId"] as? String {
             self.workspaceId = value
@@ -10655,7 +10776,11 @@ public class GetAutoClipsTaskInfoResponseBody : Tea.TeaModel {
 
                 public var in_: Int32?
 
+                public var inEx: Double?
+
                 public var out: Int32?
+
+                public var outEx: Double?
 
                 public var videoId: String?
 
@@ -10684,8 +10809,14 @@ public class GetAutoClipsTaskInfoResponseBody : Tea.TeaModel {
                     if self.in_ != nil {
                         map["In"] = self.in_!
                     }
+                    if self.inEx != nil {
+                        map["InEx"] = self.inEx!
+                    }
                     if self.out != nil {
                         map["Out"] = self.out!
+                    }
+                    if self.outEx != nil {
+                        map["OutEx"] = self.outEx!
                     }
                     if self.videoId != nil {
                         map["VideoId"] = self.videoId!
@@ -10707,8 +10838,14 @@ public class GetAutoClipsTaskInfoResponseBody : Tea.TeaModel {
                     if let value = dict["In"] as? Int32 {
                         self.in_ = value
                     }
+                    if let value = dict["InEx"] as? Double {
+                        self.inEx = value
+                    }
                     if let value = dict["Out"] as? Int32 {
                         self.out = value
+                    }
+                    if let value = dict["OutEx"] as? Double {
+                        self.outEx = value
                     }
                     if let value = dict["VideoId"] as? String {
                         self.videoId = value
@@ -10781,6 +10918,8 @@ public class GetAutoClipsTaskInfoResponseBody : Tea.TeaModel {
 
         public var content: String?
 
+        public var errorMessage: String?
+
         public var mediaCloudTimeline: String?
 
         public var musicStyle: String?
@@ -10828,6 +10967,9 @@ public class GetAutoClipsTaskInfoResponseBody : Tea.TeaModel {
             }
             if self.content != nil {
                 map["Content"] = self.content!
+            }
+            if self.errorMessage != nil {
+                map["ErrorMessage"] = self.errorMessage!
             }
             if self.mediaCloudTimeline != nil {
                 map["MediaCloudTimeline"] = self.mediaCloudTimeline!
@@ -10889,6 +11031,9 @@ public class GetAutoClipsTaskInfoResponseBody : Tea.TeaModel {
             }
             if let value = dict["Content"] as? String {
                 self.content = value
+            }
+            if let value = dict["ErrorMessage"] as? String {
+                self.errorMessage = value
             }
             if let value = dict["MediaCloudTimeline"] as? String {
                 self.mediaCloudTimeline = value

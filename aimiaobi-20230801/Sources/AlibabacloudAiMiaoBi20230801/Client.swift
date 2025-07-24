@@ -175,6 +175,15 @@ open class Client : AlibabacloudOpenApi.Client {
     public func asyncCreateClipsTimeLineWithOptions(_ request: AsyncCreateClipsTimeLineRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> AsyncCreateClipsTimeLineResponse {
         try TeaUtils.Client.validateModel(request)
         var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.additionalContent)) {
+            body["AdditionalContent"] = request.additionalContent ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.customContent)) {
+            body["CustomContent"] = request.customContent ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.noRefVideo)) {
+            body["NoRefVideo"] = request.noRefVideo!;
+        }
         if (!TeaUtils.Client.isUnset(request.processPrompt)) {
             body["ProcessPrompt"] = request.processPrompt ?? "";
         }
@@ -258,6 +267,9 @@ open class Client : AlibabacloudOpenApi.Client {
         try TeaUtils.Client.validateModel(tmpReq)
         var request: AsyncUploadVideoShrinkRequest = AsyncUploadVideoShrinkRequest([:])
         AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.referenceVideo)) {
+            request.referenceVideoShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.referenceVideo, "ReferenceVideo", "json")
+        }
         if (!TeaUtils.Client.isUnset(tmpReq.sourceVideos)) {
             request.sourceVideosShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.sourceVideos, "SourceVideos", "json")
         }
@@ -265,8 +277,14 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.anlysisPrompt)) {
             body["AnlysisPrompt"] = request.anlysisPrompt ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.referenceVideoShrink)) {
+            body["ReferenceVideo"] = request.referenceVideoShrink ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.sourceVideosShrink)) {
             body["SourceVideos"] = request.sourceVideosShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.splitInterval)) {
+            body["SplitInterval"] = request.splitInterval!;
         }
         if (!TeaUtils.Client.isUnset(request.workspaceId)) {
             body["WorkspaceId"] = request.workspaceId ?? "";
