@@ -1035,6 +1035,125 @@ public class ApplicationConfigParam : Tea.TeaModel {
     }
 }
 
+public class ApplicationConfigurationFile : Tea.TeaModel {
+    public var applicationName: String?
+
+    public var clusterId: String?
+
+    public var configFileFormat: String?
+
+    public var configFileGroup: String?
+
+    public var configFileLink: String?
+
+    public var configFileMode: String?
+
+    public var configFileName: String?
+
+    public var configFileOwner: String?
+
+    public var configFilePath: String?
+
+    public var description_: String?
+
+    public var nodeGroupId: String?
+
+    public var nodeId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.applicationName != nil {
+            map["ApplicationName"] = self.applicationName!
+        }
+        if self.clusterId != nil {
+            map["ClusterId"] = self.clusterId!
+        }
+        if self.configFileFormat != nil {
+            map["ConfigFileFormat"] = self.configFileFormat!
+        }
+        if self.configFileGroup != nil {
+            map["ConfigFileGroup"] = self.configFileGroup!
+        }
+        if self.configFileLink != nil {
+            map["ConfigFileLink"] = self.configFileLink!
+        }
+        if self.configFileMode != nil {
+            map["ConfigFileMode"] = self.configFileMode!
+        }
+        if self.configFileName != nil {
+            map["ConfigFileName"] = self.configFileName!
+        }
+        if self.configFileOwner != nil {
+            map["ConfigFileOwner"] = self.configFileOwner!
+        }
+        if self.configFilePath != nil {
+            map["ConfigFilePath"] = self.configFilePath!
+        }
+        if self.description_ != nil {
+            map["Description"] = self.description_!
+        }
+        if self.nodeGroupId != nil {
+            map["NodeGroupId"] = self.nodeGroupId!
+        }
+        if self.nodeId != nil {
+            map["NodeId"] = self.nodeId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["ApplicationName"] as? String {
+            self.applicationName = value
+        }
+        if let value = dict["ClusterId"] as? String {
+            self.clusterId = value
+        }
+        if let value = dict["ConfigFileFormat"] as? String {
+            self.configFileFormat = value
+        }
+        if let value = dict["ConfigFileGroup"] as? String {
+            self.configFileGroup = value
+        }
+        if let value = dict["ConfigFileLink"] as? String {
+            self.configFileLink = value
+        }
+        if let value = dict["ConfigFileMode"] as? String {
+            self.configFileMode = value
+        }
+        if let value = dict["ConfigFileName"] as? String {
+            self.configFileName = value
+        }
+        if let value = dict["ConfigFileOwner"] as? String {
+            self.configFileOwner = value
+        }
+        if let value = dict["ConfigFilePath"] as? String {
+            self.configFilePath = value
+        }
+        if let value = dict["Description"] as? String {
+            self.description_ = value
+        }
+        if let value = dict["NodeGroupId"] as? String {
+            self.nodeGroupId = value
+        }
+        if let value = dict["NodeId"] as? String {
+            self.nodeId = value
+        }
+    }
+}
+
 public class Attribute : Tea.TeaModel {
     public var key: String?
 
@@ -34136,6 +34255,232 @@ public class GetDoctorReportComponentSummaryResponse : Tea.TeaModel {
         }
         if let value = dict["body"] as? [String: Any?] {
             var model = GetDoctorReportComponentSummaryResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
+public class GetManagedScalingPolicyRequest : Tea.TeaModel {
+    public var clusterId: String?
+
+    public var regionId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.clusterId != nil {
+            map["ClusterId"] = self.clusterId!
+        }
+        if self.regionId != nil {
+            map["RegionId"] = self.regionId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["ClusterId"] as? String {
+            self.clusterId = value
+        }
+        if let value = dict["RegionId"] as? String {
+            self.regionId = value
+        }
+    }
+}
+
+public class GetManagedScalingPolicyResponseBody : Tea.TeaModel {
+    public class ScalingPolicy : Tea.TeaModel {
+        public class Constraints : Tea.TeaModel {
+            public var maxCapacity: Int32?
+
+            public var maxOnDemandCapacity: Int32?
+
+            public var minCapacity: Int32?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.maxCapacity != nil {
+                    map["MaxCapacity"] = self.maxCapacity!
+                }
+                if self.maxOnDemandCapacity != nil {
+                    map["MaxOnDemandCapacity"] = self.maxOnDemandCapacity!
+                }
+                if self.minCapacity != nil {
+                    map["MinCapacity"] = self.minCapacity!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["MaxCapacity"] as? Int32 {
+                    self.maxCapacity = value
+                }
+                if let value = dict["MaxOnDemandCapacity"] as? Int32 {
+                    self.maxOnDemandCapacity = value
+                }
+                if let value = dict["MinCapacity"] as? Int32 {
+                    self.minCapacity = value
+                }
+            }
+        }
+        public var clusterId: String?
+
+        public var constraints: GetManagedScalingPolicyResponseBody.ScalingPolicy.Constraints?
+
+        public var scalingPolicyId: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+            try self.constraints?.validate()
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.clusterId != nil {
+                map["ClusterId"] = self.clusterId!
+            }
+            if self.constraints != nil {
+                map["Constraints"] = self.constraints?.toMap()
+            }
+            if self.scalingPolicyId != nil {
+                map["ScalingPolicyId"] = self.scalingPolicyId!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["ClusterId"] as? String {
+                self.clusterId = value
+            }
+            if let value = dict["Constraints"] as? [String: Any?] {
+                var model = GetManagedScalingPolicyResponseBody.ScalingPolicy.Constraints()
+                model.fromMap(value)
+                self.constraints = model
+            }
+            if let value = dict["ScalingPolicyId"] as? String {
+                self.scalingPolicyId = value
+            }
+        }
+    }
+    public var requestId: String?
+
+    public var scalingPolicy: GetManagedScalingPolicyResponseBody.ScalingPolicy?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.scalingPolicy?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.scalingPolicy != nil {
+            map["ScalingPolicy"] = self.scalingPolicy?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+        if let value = dict["ScalingPolicy"] as? [String: Any?] {
+            var model = GetManagedScalingPolicyResponseBody.ScalingPolicy()
+            model.fromMap(value)
+            self.scalingPolicy = model
+        }
+    }
+}
+
+public class GetManagedScalingPolicyResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: GetManagedScalingPolicyResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = GetManagedScalingPolicyResponseBody()
             model.fromMap(value)
             self.body = model
         }
