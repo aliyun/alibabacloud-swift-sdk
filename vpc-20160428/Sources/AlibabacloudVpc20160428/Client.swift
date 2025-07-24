@@ -1556,6 +1556,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.ipamPoolId)) {
             query["IpamPoolId"] = request.ipamPoolId ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.ipv6CidrMask)) {
+            query["Ipv6CidrMask"] = request.ipv6CidrMask!;
+        }
         if (!TeaUtils.Client.isUnset(request.ipv6Isp)) {
             query["Ipv6Isp"] = request.ipv6Isp ?? "";
         }
@@ -5697,6 +5700,12 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.ipv6CidrBlock)) {
             query["Ipv6CidrBlock"] = request.ipv6CidrBlock ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.ipv6CidrMask)) {
+            query["Ipv6CidrMask"] = request.ipv6CidrMask!;
+        }
+        if (!TeaUtils.Client.isUnset(request.ipv6IpamPoolId)) {
+            query["Ipv6IpamPoolId"] = request.ipv6IpamPoolId ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.ipv6Isp)) {
             query["Ipv6Isp"] = request.ipv6Isp ?? "";

@@ -5024,6 +5024,8 @@ public class AssociateVpcCidrBlockRequest : Tea.TeaModel {
 
     public var ipamPoolId: String?
 
+    public var ipv6CidrMask: Int32?
+
     public var ipv6Isp: String?
 
     public var ownerAccount: String?
@@ -5065,6 +5067,9 @@ public class AssociateVpcCidrBlockRequest : Tea.TeaModel {
         if self.ipamPoolId != nil {
             map["IpamPoolId"] = self.ipamPoolId!
         }
+        if self.ipv6CidrMask != nil {
+            map["Ipv6CidrMask"] = self.ipv6CidrMask!
+        }
         if self.ipv6Isp != nil {
             map["Ipv6Isp"] = self.ipv6Isp!
         }
@@ -5105,6 +5110,9 @@ public class AssociateVpcCidrBlockRequest : Tea.TeaModel {
         }
         if let value = dict["IpamPoolId"] as? String {
             self.ipamPoolId = value
+        }
+        if let value = dict["Ipv6CidrMask"] as? Int32 {
+            self.ipv6CidrMask = value
         }
         if let value = dict["Ipv6Isp"] as? String {
             self.ipv6Isp = value
@@ -21568,6 +21576,10 @@ public class CreateVpcRequest : Tea.TeaModel {
 
     public var ipv6CidrBlock: String?
 
+    public var ipv6CidrMask: Int32?
+
+    public var ipv6IpamPoolId: String?
+
     public var ipv6Isp: String?
 
     public var ownerAccount: String?
@@ -21628,6 +21640,12 @@ public class CreateVpcRequest : Tea.TeaModel {
         }
         if self.ipv6CidrBlock != nil {
             map["Ipv6CidrBlock"] = self.ipv6CidrBlock!
+        }
+        if self.ipv6CidrMask != nil {
+            map["Ipv6CidrMask"] = self.ipv6CidrMask!
+        }
+        if self.ipv6IpamPoolId != nil {
+            map["Ipv6IpamPoolId"] = self.ipv6IpamPoolId!
         }
         if self.ipv6Isp != nil {
             map["Ipv6Isp"] = self.ipv6Isp!
@@ -21694,6 +21712,12 @@ public class CreateVpcRequest : Tea.TeaModel {
         }
         if let value = dict["Ipv6CidrBlock"] as? String {
             self.ipv6CidrBlock = value
+        }
+        if let value = dict["Ipv6CidrMask"] as? Int32 {
+            self.ipv6CidrMask = value
+        }
+        if let value = dict["Ipv6IpamPoolId"] as? String {
+            self.ipv6IpamPoolId = value
         }
         if let value = dict["Ipv6Isp"] as? String {
             self.ipv6Isp = value
