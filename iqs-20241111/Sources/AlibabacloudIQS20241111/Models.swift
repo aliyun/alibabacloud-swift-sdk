@@ -211,6 +211,169 @@ public class GenericSearchResult : Tea.TeaModel {
     }
 }
 
+public class GetIqsUsageResult : Tea.TeaModel {
+    public class Records : Tea.TeaModel {
+        public var api: String?
+
+        public var billingQps: Int32?
+
+        public var date: String?
+
+        public var engineType: String?
+
+        public var failedCalls: Int32?
+
+        public var ladderType: String?
+
+        public var mainAccountId: String?
+
+        public var subAccountId: String?
+
+        public var successCalls: Int32?
+
+        public var totalCalls: Int32?
+
+        public var valueAddedAdvanced: Int32?
+
+        public var valueAddedSummary: Int32?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.api != nil {
+                map["api"] = self.api!
+            }
+            if self.billingQps != nil {
+                map["billingQps"] = self.billingQps!
+            }
+            if self.date != nil {
+                map["date"] = self.date!
+            }
+            if self.engineType != nil {
+                map["engineType"] = self.engineType!
+            }
+            if self.failedCalls != nil {
+                map["failedCalls"] = self.failedCalls!
+            }
+            if self.ladderType != nil {
+                map["ladderType"] = self.ladderType!
+            }
+            if self.mainAccountId != nil {
+                map["mainAccountId"] = self.mainAccountId!
+            }
+            if self.subAccountId != nil {
+                map["subAccountId"] = self.subAccountId!
+            }
+            if self.successCalls != nil {
+                map["successCalls"] = self.successCalls!
+            }
+            if self.totalCalls != nil {
+                map["totalCalls"] = self.totalCalls!
+            }
+            if self.valueAddedAdvanced != nil {
+                map["valueAddedAdvanced"] = self.valueAddedAdvanced!
+            }
+            if self.valueAddedSummary != nil {
+                map["valueAddedSummary"] = self.valueAddedSummary!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["api"] as? String {
+                self.api = value
+            }
+            if let value = dict["billingQps"] as? Int32 {
+                self.billingQps = value
+            }
+            if let value = dict["date"] as? String {
+                self.date = value
+            }
+            if let value = dict["engineType"] as? String {
+                self.engineType = value
+            }
+            if let value = dict["failedCalls"] as? Int32 {
+                self.failedCalls = value
+            }
+            if let value = dict["ladderType"] as? String {
+                self.ladderType = value
+            }
+            if let value = dict["mainAccountId"] as? String {
+                self.mainAccountId = value
+            }
+            if let value = dict["subAccountId"] as? String {
+                self.subAccountId = value
+            }
+            if let value = dict["successCalls"] as? Int32 {
+                self.successCalls = value
+            }
+            if let value = dict["totalCalls"] as? Int32 {
+                self.totalCalls = value
+            }
+            if let value = dict["valueAddedAdvanced"] as? Int32 {
+                self.valueAddedAdvanced = value
+            }
+            if let value = dict["valueAddedSummary"] as? Int32 {
+                self.valueAddedSummary = value
+            }
+        }
+    }
+    public var records: [GetIqsUsageResult.Records]?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.records != nil {
+            var tmp : [Any] = []
+            for k in self.records! {
+                tmp.append(k.toMap())
+            }
+            map["records"] = tmp
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["records"] as? [Any?] {
+            var tmp : [GetIqsUsageResult.Records] = []
+            for v in value {
+                if v != nil {
+                    var model = GetIqsUsageResult.Records()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.records = tmp
+        }
+    }
+}
+
 public class GlobalPageItem : Tea.TeaModel {
     public var link: String?
 
@@ -2299,6 +2462,95 @@ public class GenericSearchResponse : Tea.TeaModel {
         }
         if let value = dict["body"] as? [String: Any?] {
             var model = GenericSearchResult()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
+public class GetIqsUsageRequest : Tea.TeaModel {
+    public var endDate: String?
+
+    public var startDate: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.endDate != nil {
+            map["endDate"] = self.endDate!
+        }
+        if self.startDate != nil {
+            map["startDate"] = self.startDate!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["endDate"] as? String {
+            self.endDate = value
+        }
+        if let value = dict["startDate"] as? String {
+            self.startDate = value
+        }
+    }
+}
+
+public class GetIqsUsageResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: GetIqsUsageResult?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = GetIqsUsageResult()
             model.fromMap(value)
             self.body = model
         }
