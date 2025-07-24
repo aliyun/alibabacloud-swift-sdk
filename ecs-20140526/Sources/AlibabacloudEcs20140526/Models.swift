@@ -41503,6 +41503,8 @@ public class DescribeDeploymentSetsResponseBody : Tea.TeaModel {
                     }
                 }
             }
+            public var accountId: Int64?
+
             public var capacities: DescribeDeploymentSetsResponseBody.DeploymentSets.DeploymentSet.Capacities?
 
             public var creationTime: String?
@@ -41543,6 +41545,9 @@ public class DescribeDeploymentSetsResponseBody : Tea.TeaModel {
 
             public override func toMap() -> [String : Any] {
                 var map = super.toMap()
+                if self.accountId != nil {
+                    map["AccountId"] = self.accountId!
+                }
                 if self.capacities != nil {
                     map["Capacities"] = self.capacities?.toMap()
                 }
@@ -41584,6 +41589,9 @@ public class DescribeDeploymentSetsResponseBody : Tea.TeaModel {
 
             public override func fromMap(_ dict: [String: Any?]?) -> Void {
                 guard let dict else { return }
+                if let value = dict["AccountId"] as? Int64 {
+                    self.accountId = value
+                }
                 if let value = dict["Capacities"] as? [String: Any?] {
                     var model = DescribeDeploymentSetsResponseBody.DeploymentSets.DeploymentSet.Capacities()
                     model.fromMap(value)
