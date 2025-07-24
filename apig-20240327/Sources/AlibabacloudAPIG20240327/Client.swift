@@ -1286,6 +1286,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.pluginId)) {
             query["pluginId"] = request.pluginId ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.routeId)) {
+            query["routeId"] = request.routeId ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.source)) {
             query["source"] = request.source ?? "";
         }
@@ -2473,6 +2476,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.resourceType)) {
             query["resourceType"] = request.resourceType ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.resourceTypes)) {
+            query["resourceTypes"] = request.resourceTypes ?? "";
+        }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "headers": headers as! [String: String],
             "query": AlibabaCloudOpenApiUtil.Client.query(query)
@@ -2961,6 +2967,12 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.match)) {
             body["match"] = request.match!;
+        }
+        if (!TeaUtils.Client.isUnset(request.mcpRouteConfig)) {
+            body["mcpRouteConfig"] = request.mcpRouteConfig!;
+        }
+        if (!TeaUtils.Client.isUnset(request.name)) {
+            body["name"] = request.name ?? "";
         }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "headers": headers as! [String: String],
