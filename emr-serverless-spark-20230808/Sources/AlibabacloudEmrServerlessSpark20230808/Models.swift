@@ -8902,6 +8902,8 @@ public class ListKyuubiSparkApplicationsResponseBody : Tea.TeaModel {
 
         public var endTime: String?
 
+        public var latestSqlStatementStatus: String?
+
         public var mbSeconds: Int64?
 
         public var resourceQueueId: String?
@@ -8940,6 +8942,9 @@ public class ListKyuubiSparkApplicationsResponseBody : Tea.TeaModel {
             if self.endTime != nil {
                 map["endTime"] = self.endTime!
             }
+            if self.latestSqlStatementStatus != nil {
+                map["latestSqlStatementStatus"] = self.latestSqlStatementStatus!
+            }
             if self.mbSeconds != nil {
                 map["mbSeconds"] = self.mbSeconds!
             }
@@ -8974,6 +8979,9 @@ public class ListKyuubiSparkApplicationsResponseBody : Tea.TeaModel {
             }
             if let value = dict["endTime"] as? String {
                 self.endTime = value
+            }
+            if let value = dict["latestSqlStatementStatus"] as? String {
+                self.latestSqlStatementStatus = value
             }
             if let value = dict["mbSeconds"] as? Int64 {
                 self.mbSeconds = value
@@ -10672,6 +10680,8 @@ public class ListSessionClustersResponseBody : Tea.TeaModel {
 
         public var autoStopConfiguration: ListSessionClustersResponseBody.SessionClusters.AutoStopConfiguration?
 
+        public var connectionToken: String?
+
         public var displayReleaseVersion: String?
 
         public var domain: String?
@@ -10741,6 +10751,9 @@ public class ListSessionClustersResponseBody : Tea.TeaModel {
             }
             if self.autoStopConfiguration != nil {
                 map["autoStopConfiguration"] = self.autoStopConfiguration?.toMap()
+            }
+            if self.connectionToken != nil {
+                map["connectionToken"] = self.connectionToken!
             }
             if self.displayReleaseVersion != nil {
                 map["displayReleaseVersion"] = self.displayReleaseVersion!
@@ -10829,6 +10842,9 @@ public class ListSessionClustersResponseBody : Tea.TeaModel {
                 var model = ListSessionClustersResponseBody.SessionClusters.AutoStopConfiguration()
                 model.fromMap(value)
                 self.autoStopConfiguration = model
+            }
+            if let value = dict["connectionToken"] as? String {
+                self.connectionToken = value
             }
             if let value = dict["displayReleaseVersion"] as? String {
                 self.displayReleaseVersion = value
