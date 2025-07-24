@@ -8435,6 +8435,8 @@ public class GetInstanceListResponseBody : Tea.TeaModel {
 
             public var paidType: Int32?
 
+            public var recommendedPartitionCount: Int32?
+
             public var regionId: String?
 
             public var reservedPublishCapacity: Int32?
@@ -8573,6 +8575,9 @@ public class GetInstanceListResponseBody : Tea.TeaModel {
                 }
                 if self.paidType != nil {
                     map["PaidType"] = self.paidType!
+                }
+                if self.recommendedPartitionCount != nil {
+                    map["RecommendedPartitionCount"] = self.recommendedPartitionCount!
                 }
                 if self.regionId != nil {
                     map["RegionId"] = self.regionId!
@@ -8727,6 +8732,9 @@ public class GetInstanceListResponseBody : Tea.TeaModel {
                 }
                 if let value = dict["PaidType"] as? Int32 {
                     self.paidType = value
+                }
+                if let value = dict["RecommendedPartitionCount"] as? Int32 {
+                    self.recommendedPartitionCount = value
                 }
                 if let value = dict["RegionId"] as? String {
                     self.regionId = value
