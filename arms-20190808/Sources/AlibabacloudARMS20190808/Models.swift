@@ -28809,6 +28809,8 @@ public class GetAlertRulesRequest : Tea.TeaModel {
 
     public var alertType: String?
 
+    public var bizRegionId: String?
+
     public var clusterId: String?
 
     public var page: Int64?
@@ -28846,6 +28848,9 @@ public class GetAlertRulesRequest : Tea.TeaModel {
         }
         if self.alertType != nil {
             map["AlertType"] = self.alertType!
+        }
+        if self.bizRegionId != nil {
+            map["BizRegionId"] = self.bizRegionId!
         }
         if self.clusterId != nil {
             map["ClusterId"] = self.clusterId!
@@ -28885,6 +28890,9 @@ public class GetAlertRulesRequest : Tea.TeaModel {
         }
         if let value = dict["AlertType"] as? String {
             self.alertType = value
+        }
+        if let value = dict["BizRegionId"] as? String {
+            self.bizRegionId = value
         }
         if let value = dict["ClusterId"] as? String {
             self.clusterId = value
