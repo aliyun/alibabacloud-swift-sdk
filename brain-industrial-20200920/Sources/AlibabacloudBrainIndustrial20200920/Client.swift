@@ -186,6 +186,67 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func createLoadForecastByFileUrlJobWithOptions(_ request: CreateLoadForecastByFileUrlJobRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> CreateLoadForecastByFileUrlJobResponse {
+        try TeaUtils.Client.validateModel(request)
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.businessKey)) {
+            body["BusinessKey"] = request.businessKey ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.deviceType)) {
+            body["DeviceType"] = request.deviceType ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.duration)) {
+            body["Duration"] = request.duration!;
+        }
+        if (!TeaUtils.Client.isUnset(request.freq)) {
+            body["Freq"] = request.freq ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.historyUrl)) {
+            body["HistoryUrl"] = request.historyUrl ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.modelVersion)) {
+            body["ModelVersion"] = request.modelVersion ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.runDate)) {
+            body["RunDate"] = request.runDate ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.systemType)) {
+            body["SystemType"] = request.systemType ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.timeColumn)) {
+            body["TimeColumn"] = request.timeColumn ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.timeZone)) {
+            body["TimeZone"] = request.timeZone ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.valueColumn)) {
+            body["ValueColumn"] = request.valueColumn ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "CreateLoadForecastByFileUrlJob",
+            "version": "2020-09-20",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(CreateLoadForecastByFileUrlJobResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func createLoadForecastByFileUrlJob(_ request: CreateLoadForecastByFileUrlJobRequest) async throws -> CreateLoadForecastByFileUrlJobResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await createLoadForecastByFileUrlJobWithOptions(request as! CreateLoadForecastByFileUrlJobRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func createLoadForecastJobWithOptions(_ tmpReq: CreateLoadForecastJobRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> CreateLoadForecastJobResponse {
         try TeaUtils.Client.validateModel(tmpReq)
         var request: CreateLoadForecastJobShrinkRequest = CreateLoadForecastJobShrinkRequest([:])
@@ -243,6 +304,75 @@ open class Client : AlibabacloudOpenApi.Client {
     public func createLoadForecastJob(_ request: CreateLoadForecastJobRequest) async throws -> CreateLoadForecastJobResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         return try await createLoadForecastJobWithOptions(request as! CreateLoadForecastJobRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func createPowerForecastByFileUrlJobWithOptions(_ tmpReq: CreatePowerForecastByFileUrlJobRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> CreatePowerForecastByFileUrlJobResponse {
+        try TeaUtils.Client.validateModel(tmpReq)
+        var request: CreatePowerForecastByFileUrlJobShrinkRequest = CreatePowerForecastByFileUrlJobShrinkRequest([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.location)) {
+            request.locationShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.location, "Location", "json")
+        }
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.businessKey)) {
+            body["BusinessKey"] = request.businessKey ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.deviceType)) {
+            body["DeviceType"] = request.deviceType ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.duration)) {
+            body["Duration"] = request.duration!;
+        }
+        if (!TeaUtils.Client.isUnset(request.freq)) {
+            body["Freq"] = request.freq ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.historyUrl)) {
+            body["HistoryUrl"] = request.historyUrl ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.locationShrink)) {
+            body["Location"] = request.locationShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.modelVersion)) {
+            body["ModelVersion"] = request.modelVersion ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.runDate)) {
+            body["RunDate"] = request.runDate ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.systemType)) {
+            body["SystemType"] = request.systemType ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.timeColumn)) {
+            body["TimeColumn"] = request.timeColumn ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.timeZone)) {
+            body["TimeZone"] = request.timeZone ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.valueColumn)) {
+            body["ValueColumn"] = request.valueColumn ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "CreatePowerForecastByFileUrlJob",
+            "version": "2020-09-20",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(CreatePowerForecastByFileUrlJobResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func createPowerForecastByFileUrlJob(_ request: CreatePowerForecastByFileUrlJobRequest) async throws -> CreatePowerForecastByFileUrlJobResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await createPowerForecastByFileUrlJobWithOptions(request as! CreatePowerForecastByFileUrlJobRequest, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)

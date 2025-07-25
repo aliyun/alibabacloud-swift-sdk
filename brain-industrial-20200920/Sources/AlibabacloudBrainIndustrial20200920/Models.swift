@@ -1359,6 +1359,360 @@ public class CreateEssOptJobResponse : Tea.TeaModel {
     }
 }
 
+public class CreateLoadForecastByFileUrlJobRequest : Tea.TeaModel {
+    public var businessKey: String?
+
+    public var deviceType: String?
+
+    public var duration: Int32?
+
+    public var freq: String?
+
+    public var historyUrl: String?
+
+    public var modelVersion: String?
+
+    public var runDate: String?
+
+    public var systemType: String?
+
+    public var timeColumn: String?
+
+    public var timeZone: String?
+
+    public var valueColumn: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.businessKey != nil {
+            map["BusinessKey"] = self.businessKey!
+        }
+        if self.deviceType != nil {
+            map["DeviceType"] = self.deviceType!
+        }
+        if self.duration != nil {
+            map["Duration"] = self.duration!
+        }
+        if self.freq != nil {
+            map["Freq"] = self.freq!
+        }
+        if self.historyUrl != nil {
+            map["HistoryUrl"] = self.historyUrl!
+        }
+        if self.modelVersion != nil {
+            map["ModelVersion"] = self.modelVersion!
+        }
+        if self.runDate != nil {
+            map["RunDate"] = self.runDate!
+        }
+        if self.systemType != nil {
+            map["SystemType"] = self.systemType!
+        }
+        if self.timeColumn != nil {
+            map["TimeColumn"] = self.timeColumn!
+        }
+        if self.timeZone != nil {
+            map["TimeZone"] = self.timeZone!
+        }
+        if self.valueColumn != nil {
+            map["ValueColumn"] = self.valueColumn!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["BusinessKey"] as? String {
+            self.businessKey = value
+        }
+        if let value = dict["DeviceType"] as? String {
+            self.deviceType = value
+        }
+        if let value = dict["Duration"] as? Int32 {
+            self.duration = value
+        }
+        if let value = dict["Freq"] as? String {
+            self.freq = value
+        }
+        if let value = dict["HistoryUrl"] as? String {
+            self.historyUrl = value
+        }
+        if let value = dict["ModelVersion"] as? String {
+            self.modelVersion = value
+        }
+        if let value = dict["RunDate"] as? String {
+            self.runDate = value
+        }
+        if let value = dict["SystemType"] as? String {
+            self.systemType = value
+        }
+        if let value = dict["TimeColumn"] as? String {
+            self.timeColumn = value
+        }
+        if let value = dict["TimeZone"] as? String {
+            self.timeZone = value
+        }
+        if let value = dict["ValueColumn"] as? String {
+            self.valueColumn = value
+        }
+    }
+}
+
+public class CreateLoadForecastByFileUrlJobResponseBody : Tea.TeaModel {
+    public class Data : Tea.TeaModel {
+        public class Response : Tea.TeaModel {
+            public var debugInfo: Any?
+
+            public var jobType: String?
+
+            public var result: Any?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.debugInfo != nil {
+                    map["DebugInfo"] = self.debugInfo!
+                }
+                if self.jobType != nil {
+                    map["JobType"] = self.jobType!
+                }
+                if self.result != nil {
+                    map["Result"] = self.result!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["DebugInfo"] as? Any {
+                    self.debugInfo = value
+                }
+                if let value = dict["JobType"] as? String {
+                    self.jobType = value
+                }
+                if let value = dict["Result"] as? Any {
+                    self.result = value
+                }
+            }
+        }
+        public var completed: Bool?
+
+        public var createTime: String?
+
+        public var error: String?
+
+        public var jobId: String?
+
+        public var progress: Int32?
+
+        public var response: CreateLoadForecastByFileUrlJobResponseBody.Data.Response?
+
+        public var status: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+            try self.response?.validate()
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.completed != nil {
+                map["Completed"] = self.completed!
+            }
+            if self.createTime != nil {
+                map["CreateTime"] = self.createTime!
+            }
+            if self.error != nil {
+                map["Error"] = self.error!
+            }
+            if self.jobId != nil {
+                map["JobId"] = self.jobId!
+            }
+            if self.progress != nil {
+                map["Progress"] = self.progress!
+            }
+            if self.response != nil {
+                map["Response"] = self.response?.toMap()
+            }
+            if self.status != nil {
+                map["Status"] = self.status!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["Completed"] as? Bool {
+                self.completed = value
+            }
+            if let value = dict["CreateTime"] as? String {
+                self.createTime = value
+            }
+            if let value = dict["Error"] as? String {
+                self.error = value
+            }
+            if let value = dict["JobId"] as? String {
+                self.jobId = value
+            }
+            if let value = dict["Progress"] as? Int32 {
+                self.progress = value
+            }
+            if let value = dict["Response"] as? [String: Any?] {
+                var model = CreateLoadForecastByFileUrlJobResponseBody.Data.Response()
+                model.fromMap(value)
+                self.response = model
+            }
+            if let value = dict["Status"] as? String {
+                self.status = value
+            }
+        }
+    }
+    public var code: String?
+
+    public var data: CreateLoadForecastByFileUrlJobResponseBody.Data?
+
+    public var message: String?
+
+    public var requestId: String?
+
+    public var success: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.data?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.code != nil {
+            map["Code"] = self.code!
+        }
+        if self.data != nil {
+            map["Data"] = self.data?.toMap()
+        }
+        if self.message != nil {
+            map["Message"] = self.message!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.success != nil {
+            map["Success"] = self.success!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["Code"] as? String {
+            self.code = value
+        }
+        if let value = dict["Data"] as? [String: Any?] {
+            var model = CreateLoadForecastByFileUrlJobResponseBody.Data()
+            model.fromMap(value)
+            self.data = model
+        }
+        if let value = dict["Message"] as? String {
+            self.message = value
+        }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+        if let value = dict["Success"] as? String {
+            self.success = value
+        }
+    }
+}
+
+public class CreateLoadForecastByFileUrlJobResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: CreateLoadForecastByFileUrlJobResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = CreateLoadForecastByFileUrlJobResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
 public class CreateLoadForecastJobRequest : Tea.TeaModel {
     public class HistoryData : Tea.TeaModel {
         public var runTime: String?
@@ -1838,6 +2192,536 @@ public class CreateLoadForecastJobResponse : Tea.TeaModel {
         }
         if let value = dict["body"] as? [String: Any?] {
             var model = CreateLoadForecastJobResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
+public class CreatePowerForecastByFileUrlJobRequest : Tea.TeaModel {
+    public class Location : Tea.TeaModel {
+        public var altitude: Double?
+
+        public var latitude: Double?
+
+        public var longitude: Double?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.altitude != nil {
+                map["Altitude"] = self.altitude!
+            }
+            if self.latitude != nil {
+                map["Latitude"] = self.latitude!
+            }
+            if self.longitude != nil {
+                map["Longitude"] = self.longitude!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["Altitude"] as? Double {
+                self.altitude = value
+            }
+            if let value = dict["Latitude"] as? Double {
+                self.latitude = value
+            }
+            if let value = dict["Longitude"] as? Double {
+                self.longitude = value
+            }
+        }
+    }
+    public var businessKey: String?
+
+    public var deviceType: String?
+
+    public var duration: Int32?
+
+    public var freq: String?
+
+    public var historyUrl: String?
+
+    public var location: CreatePowerForecastByFileUrlJobRequest.Location?
+
+    public var modelVersion: String?
+
+    public var runDate: String?
+
+    public var systemType: String?
+
+    public var timeColumn: String?
+
+    public var timeZone: String?
+
+    public var valueColumn: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.location?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.businessKey != nil {
+            map["BusinessKey"] = self.businessKey!
+        }
+        if self.deviceType != nil {
+            map["DeviceType"] = self.deviceType!
+        }
+        if self.duration != nil {
+            map["Duration"] = self.duration!
+        }
+        if self.freq != nil {
+            map["Freq"] = self.freq!
+        }
+        if self.historyUrl != nil {
+            map["HistoryUrl"] = self.historyUrl!
+        }
+        if self.location != nil {
+            map["Location"] = self.location?.toMap()
+        }
+        if self.modelVersion != nil {
+            map["ModelVersion"] = self.modelVersion!
+        }
+        if self.runDate != nil {
+            map["RunDate"] = self.runDate!
+        }
+        if self.systemType != nil {
+            map["SystemType"] = self.systemType!
+        }
+        if self.timeColumn != nil {
+            map["TimeColumn"] = self.timeColumn!
+        }
+        if self.timeZone != nil {
+            map["TimeZone"] = self.timeZone!
+        }
+        if self.valueColumn != nil {
+            map["ValueColumn"] = self.valueColumn!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["BusinessKey"] as? String {
+            self.businessKey = value
+        }
+        if let value = dict["DeviceType"] as? String {
+            self.deviceType = value
+        }
+        if let value = dict["Duration"] as? Int32 {
+            self.duration = value
+        }
+        if let value = dict["Freq"] as? String {
+            self.freq = value
+        }
+        if let value = dict["HistoryUrl"] as? String {
+            self.historyUrl = value
+        }
+        if let value = dict["Location"] as? [String: Any?] {
+            var model = CreatePowerForecastByFileUrlJobRequest.Location()
+            model.fromMap(value)
+            self.location = model
+        }
+        if let value = dict["ModelVersion"] as? String {
+            self.modelVersion = value
+        }
+        if let value = dict["RunDate"] as? String {
+            self.runDate = value
+        }
+        if let value = dict["SystemType"] as? String {
+            self.systemType = value
+        }
+        if let value = dict["TimeColumn"] as? String {
+            self.timeColumn = value
+        }
+        if let value = dict["TimeZone"] as? String {
+            self.timeZone = value
+        }
+        if let value = dict["ValueColumn"] as? String {
+            self.valueColumn = value
+        }
+    }
+}
+
+public class CreatePowerForecastByFileUrlJobShrinkRequest : Tea.TeaModel {
+    public var businessKey: String?
+
+    public var deviceType: String?
+
+    public var duration: Int32?
+
+    public var freq: String?
+
+    public var historyUrl: String?
+
+    public var locationShrink: String?
+
+    public var modelVersion: String?
+
+    public var runDate: String?
+
+    public var systemType: String?
+
+    public var timeColumn: String?
+
+    public var timeZone: String?
+
+    public var valueColumn: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.businessKey != nil {
+            map["BusinessKey"] = self.businessKey!
+        }
+        if self.deviceType != nil {
+            map["DeviceType"] = self.deviceType!
+        }
+        if self.duration != nil {
+            map["Duration"] = self.duration!
+        }
+        if self.freq != nil {
+            map["Freq"] = self.freq!
+        }
+        if self.historyUrl != nil {
+            map["HistoryUrl"] = self.historyUrl!
+        }
+        if self.locationShrink != nil {
+            map["Location"] = self.locationShrink!
+        }
+        if self.modelVersion != nil {
+            map["ModelVersion"] = self.modelVersion!
+        }
+        if self.runDate != nil {
+            map["RunDate"] = self.runDate!
+        }
+        if self.systemType != nil {
+            map["SystemType"] = self.systemType!
+        }
+        if self.timeColumn != nil {
+            map["TimeColumn"] = self.timeColumn!
+        }
+        if self.timeZone != nil {
+            map["TimeZone"] = self.timeZone!
+        }
+        if self.valueColumn != nil {
+            map["ValueColumn"] = self.valueColumn!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["BusinessKey"] as? String {
+            self.businessKey = value
+        }
+        if let value = dict["DeviceType"] as? String {
+            self.deviceType = value
+        }
+        if let value = dict["Duration"] as? Int32 {
+            self.duration = value
+        }
+        if let value = dict["Freq"] as? String {
+            self.freq = value
+        }
+        if let value = dict["HistoryUrl"] as? String {
+            self.historyUrl = value
+        }
+        if let value = dict["Location"] as? String {
+            self.locationShrink = value
+        }
+        if let value = dict["ModelVersion"] as? String {
+            self.modelVersion = value
+        }
+        if let value = dict["RunDate"] as? String {
+            self.runDate = value
+        }
+        if let value = dict["SystemType"] as? String {
+            self.systemType = value
+        }
+        if let value = dict["TimeColumn"] as? String {
+            self.timeColumn = value
+        }
+        if let value = dict["TimeZone"] as? String {
+            self.timeZone = value
+        }
+        if let value = dict["ValueColumn"] as? String {
+            self.valueColumn = value
+        }
+    }
+}
+
+public class CreatePowerForecastByFileUrlJobResponseBody : Tea.TeaModel {
+    public class Data : Tea.TeaModel {
+        public class Response : Tea.TeaModel {
+            public var debugInfo: Any?
+
+            public var jobType: String?
+
+            public var result: Any?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.debugInfo != nil {
+                    map["DebugInfo"] = self.debugInfo!
+                }
+                if self.jobType != nil {
+                    map["JobType"] = self.jobType!
+                }
+                if self.result != nil {
+                    map["Result"] = self.result!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["DebugInfo"] as? Any {
+                    self.debugInfo = value
+                }
+                if let value = dict["JobType"] as? String {
+                    self.jobType = value
+                }
+                if let value = dict["Result"] as? Any {
+                    self.result = value
+                }
+            }
+        }
+        public var completed: Bool?
+
+        public var createTime: String?
+
+        public var error: String?
+
+        public var jobId: String?
+
+        public var progress: Int32?
+
+        public var response: CreatePowerForecastByFileUrlJobResponseBody.Data.Response?
+
+        public var status: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+            try self.response?.validate()
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.completed != nil {
+                map["Completed"] = self.completed!
+            }
+            if self.createTime != nil {
+                map["CreateTime"] = self.createTime!
+            }
+            if self.error != nil {
+                map["Error"] = self.error!
+            }
+            if self.jobId != nil {
+                map["JobId"] = self.jobId!
+            }
+            if self.progress != nil {
+                map["Progress"] = self.progress!
+            }
+            if self.response != nil {
+                map["Response"] = self.response?.toMap()
+            }
+            if self.status != nil {
+                map["Status"] = self.status!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["Completed"] as? Bool {
+                self.completed = value
+            }
+            if let value = dict["CreateTime"] as? String {
+                self.createTime = value
+            }
+            if let value = dict["Error"] as? String {
+                self.error = value
+            }
+            if let value = dict["JobId"] as? String {
+                self.jobId = value
+            }
+            if let value = dict["Progress"] as? Int32 {
+                self.progress = value
+            }
+            if let value = dict["Response"] as? [String: Any?] {
+                var model = CreatePowerForecastByFileUrlJobResponseBody.Data.Response()
+                model.fromMap(value)
+                self.response = model
+            }
+            if let value = dict["Status"] as? String {
+                self.status = value
+            }
+        }
+    }
+    public var code: String?
+
+    public var data: CreatePowerForecastByFileUrlJobResponseBody.Data?
+
+    public var message: String?
+
+    public var requestId: String?
+
+    public var success: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.data?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.code != nil {
+            map["Code"] = self.code!
+        }
+        if self.data != nil {
+            map["Data"] = self.data?.toMap()
+        }
+        if self.message != nil {
+            map["Message"] = self.message!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.success != nil {
+            map["Success"] = self.success!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["Code"] as? String {
+            self.code = value
+        }
+        if let value = dict["Data"] as? [String: Any?] {
+            var model = CreatePowerForecastByFileUrlJobResponseBody.Data()
+            model.fromMap(value)
+            self.data = model
+        }
+        if let value = dict["Message"] as? String {
+            self.message = value
+        }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+        if let value = dict["Success"] as? String {
+            self.success = value
+        }
+    }
+}
+
+public class CreatePowerForecastByFileUrlJobResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: CreatePowerForecastByFileUrlJobResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = CreatePowerForecastByFileUrlJobResponseBody()
             model.fromMap(value)
             self.body = model
         }
