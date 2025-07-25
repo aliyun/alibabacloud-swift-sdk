@@ -2281,11 +2281,17 @@ open class Client : AlibabacloudOpenApi.Client {
     public func listPolicyClassesWithOptions(_ request: ListPolicyClassesRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> ListPolicyClassesResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.attachResourceId)) {
+            query["attachResourceId"] = request.attachResourceId ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.attachResourceType)) {
             query["attachResourceType"] = request.attachResourceType ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.direction)) {
             query["direction"] = request.direction ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.gatewayId)) {
+            query["gatewayId"] = request.gatewayId ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.pageNumber)) {
             query["pageNumber"] = request.pageNumber!;

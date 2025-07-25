@@ -21061,9 +21061,13 @@ public class ListPluginsResponse : Tea.TeaModel {
 }
 
 public class ListPolicyClassesRequest : Tea.TeaModel {
+    public var attachResourceId: String?
+
     public var attachResourceType: String?
 
     public var direction: String?
+
+    public var gatewayId: String?
 
     public var pageNumber: Int32?
 
@@ -21085,11 +21089,17 @@ public class ListPolicyClassesRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.attachResourceId != nil {
+            map["attachResourceId"] = self.attachResourceId!
+        }
         if self.attachResourceType != nil {
             map["attachResourceType"] = self.attachResourceType!
         }
         if self.direction != nil {
             map["direction"] = self.direction!
+        }
+        if self.gatewayId != nil {
+            map["gatewayId"] = self.gatewayId!
         }
         if self.pageNumber != nil {
             map["pageNumber"] = self.pageNumber!
@@ -21105,11 +21115,17 @@ public class ListPolicyClassesRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["attachResourceId"] as? String {
+            self.attachResourceId = value
+        }
         if let value = dict["attachResourceType"] as? String {
             self.attachResourceType = value
         }
         if let value = dict["direction"] as? String {
             self.direction = value
+        }
+        if let value = dict["gatewayId"] as? String {
+            self.gatewayId = value
         }
         if let value = dict["pageNumber"] as? Int32 {
             self.pageNumber = value
