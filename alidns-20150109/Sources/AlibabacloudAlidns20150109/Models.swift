@@ -22889,6 +22889,8 @@ public class DescribeDomainRecordsResponseBody : Tea.TeaModel {
 
             public var domainName: String?
 
+            public var lbaStatus: Bool?
+
             public var line: String?
 
             public var locked: Bool?
@@ -22932,6 +22934,9 @@ public class DescribeDomainRecordsResponseBody : Tea.TeaModel {
                 }
                 if self.domainName != nil {
                     map["DomainName"] = self.domainName!
+                }
+                if self.lbaStatus != nil {
+                    map["LbaStatus"] = self.lbaStatus!
                 }
                 if self.line != nil {
                     map["Line"] = self.line!
@@ -22979,6 +22984,9 @@ public class DescribeDomainRecordsResponseBody : Tea.TeaModel {
                 }
                 if let value = dict["DomainName"] as? String {
                     self.domainName = value
+                }
+                if let value = dict["LbaStatus"] as? Bool {
+                    self.lbaStatus = value
                 }
                 if let value = dict["Line"] as? String {
                     self.line = value
