@@ -7887,6 +7887,126 @@ public class CreateServiceResponse : Tea.TeaModel {
     }
 }
 
+public class CreateTicketRequest : Tea.TeaModel {
+    public var accessTokenExpirationTime: Int64?
+
+    public var expirationTime: Int64?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.accessTokenExpirationTime != nil {
+            map["accessTokenExpirationTime"] = self.accessTokenExpirationTime!
+        }
+        if self.expirationTime != nil {
+            map["expirationTime"] = self.expirationTime!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["accessTokenExpirationTime"] as? Int64 {
+            self.accessTokenExpirationTime = value
+        }
+        if let value = dict["expirationTime"] as? Int64 {
+            self.expirationTime = value
+        }
+    }
+}
+
+public class CreateTicketResponseBody : Tea.TeaModel {
+    public var ticket: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.ticket != nil {
+            map["ticket"] = self.ticket!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["ticket"] as? String {
+            self.ticket = value
+        }
+    }
+}
+
+public class CreateTicketResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: CreateTicketResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = CreateTicketResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
 public class CreateUmodelRequest : Tea.TeaModel {
     public class CommonSchemaRef : Tea.TeaModel {
         public var group: String?
