@@ -39061,6 +39061,8 @@ public class ScaleWithAdjustmentRequest : Tea.TeaModel {
 
         public var memory: Double?
 
+        public var userData: String?
+
         public override init() {
             super.init()
         }
@@ -39088,6 +39090,9 @@ public class ScaleWithAdjustmentRequest : Tea.TeaModel {
             if self.memory != nil {
                 map["Memory"] = self.memory!
             }
+            if self.userData != nil {
+                map["UserData"] = self.userData!
+            }
             return map
         }
 
@@ -39111,6 +39116,9 @@ public class ScaleWithAdjustmentRequest : Tea.TeaModel {
             }
             if let value = dict["Memory"] as? Double {
                 self.memory = value
+            }
+            if let value = dict["UserData"] as? String {
+                self.userData = value
             }
         }
     }
