@@ -1297,8 +1297,14 @@ open class Client : AlibabacloudOpenApi.Client {
     public func describeImageListWithOptions(_ request: DescribeImageListRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DescribeImageListResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.imageBizTags)) {
+            query["ImageBizTags"] = request.imageBizTags ?? [];
+        }
         if (!TeaUtils.Client.isUnset(request.imagePackageType)) {
             query["ImagePackageType"] = request.imagePackageType ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.instanceType)) {
+            query["InstanceType"] = request.instanceType ?? "";
         }
         var body: [String: Any] = [:]
         if (!TeaUtils.Client.isUnset(request.imageId)) {

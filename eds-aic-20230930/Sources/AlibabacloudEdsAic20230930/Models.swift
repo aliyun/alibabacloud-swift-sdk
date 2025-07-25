@@ -5736,6 +5736,44 @@ public class DescribeAndroidInstancesResponseBody : Tea.TeaModel {
                 }
             }
         }
+        public class BizTags : Tea.TeaModel {
+            public var key: String?
+
+            public var value: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.key != nil {
+                    map["Key"] = self.key!
+                }
+                if self.value != nil {
+                    map["Value"] = self.value!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["Key"] as? String {
+                    self.key = value
+                }
+                if let value = dict["Value"] as? String {
+                    self.value = value
+                }
+            }
+        }
         public class Disks : Tea.TeaModel {
             public var diskSize: Int32?
 
@@ -5936,6 +5974,8 @@ public class DescribeAndroidInstancesResponseBody : Tea.TeaModel {
 
         public var bindUserId: String?
 
+        public var bizTags: [DescribeAndroidInstancesResponseBody.InstanceModel.BizTags]?
+
         public var chargeType: String?
 
         public var cpu: String?
@@ -5989,6 +6029,8 @@ public class DescribeAndroidInstancesResponseBody : Tea.TeaModel {
         public var regionId: String?
 
         public var renderingType: String?
+
+        public var serverType: String?
 
         public var sessionStatus: String?
 
@@ -6054,6 +6096,13 @@ public class DescribeAndroidInstancesResponseBody : Tea.TeaModel {
             }
             if self.bindUserId != nil {
                 map["BindUserId"] = self.bindUserId!
+            }
+            if self.bizTags != nil {
+                var tmp : [Any] = []
+                for k in self.bizTags! {
+                    tmp.append(k.toMap())
+                }
+                map["BizTags"] = tmp
             }
             if self.chargeType != nil {
                 map["ChargeType"] = self.chargeType!
@@ -6140,6 +6189,9 @@ public class DescribeAndroidInstancesResponseBody : Tea.TeaModel {
             if self.renderingType != nil {
                 map["RenderingType"] = self.renderingType!
             }
+            if self.serverType != nil {
+                map["ServerType"] = self.serverType!
+            }
             if self.sessionStatus != nil {
                 map["SessionStatus"] = self.sessionStatus!
             }
@@ -6204,6 +6256,19 @@ public class DescribeAndroidInstancesResponseBody : Tea.TeaModel {
             }
             if let value = dict["BindUserId"] as? String {
                 self.bindUserId = value
+            }
+            if let value = dict["BizTags"] as? [Any?] {
+                var tmp : [DescribeAndroidInstancesResponseBody.InstanceModel.BizTags] = []
+                for v in value {
+                    if v != nil {
+                        var model = DescribeAndroidInstancesResponseBody.InstanceModel.BizTags()
+                        if v != nil {
+                            model.fromMap(v as? [String: Any?])
+                        }
+                        tmp.append(model)
+                    }
+                }
+                self.bizTags = tmp
             }
             if let value = dict["ChargeType"] as? String {
                 self.chargeType = value
@@ -6299,6 +6364,9 @@ public class DescribeAndroidInstancesResponseBody : Tea.TeaModel {
             }
             if let value = dict["RenderingType"] as? String {
                 self.renderingType = value
+            }
+            if let value = dict["ServerType"] as? String {
+                self.serverType = value
             }
             if let value = dict["SessionStatus"] as? String {
                 self.sessionStatus = value
@@ -7329,6 +7397,44 @@ public class DescribeCloudPhoneNodesRequest : Tea.TeaModel {
 
 public class DescribeCloudPhoneNodesResponseBody : Tea.TeaModel {
     public class NodeModel : Tea.TeaModel {
+        public class BizTags : Tea.TeaModel {
+            public var key: String?
+
+            public var value: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.key != nil {
+                    map["Key"] = self.key!
+                }
+                if self.value != nil {
+                    map["Value"] = self.value!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["Key"] as? String {
+                    self.key = value
+                }
+                if let value = dict["Value"] as? String {
+                    self.value = value
+                }
+            }
+        }
         public class NetworkInfos : Tea.TeaModel {
             public var bandwidthPackageId: String?
 
@@ -7433,6 +7539,8 @@ public class DescribeCloudPhoneNodesResponseBody : Tea.TeaModel {
 
         public var bandwidthPackageType: String?
 
+        public var bizTags: [DescribeCloudPhoneNodesResponseBody.NodeModel.BizTags]?
+
         public var chargeType: String?
 
         public var cpu: String?
@@ -7495,6 +7603,13 @@ public class DescribeCloudPhoneNodesResponseBody : Tea.TeaModel {
             }
             if self.bandwidthPackageType != nil {
                 map["BandwidthPackageType"] = self.bandwidthPackageType!
+            }
+            if self.bizTags != nil {
+                var tmp : [Any] = []
+                for k in self.bizTags! {
+                    tmp.append(k.toMap())
+                }
+                map["BizTags"] = tmp
             }
             if self.chargeType != nil {
                 map["ChargeType"] = self.chargeType!
@@ -7573,6 +7688,19 @@ public class DescribeCloudPhoneNodesResponseBody : Tea.TeaModel {
             }
             if let value = dict["BandwidthPackageType"] as? String {
                 self.bandwidthPackageType = value
+            }
+            if let value = dict["BizTags"] as? [Any?] {
+                var tmp : [DescribeCloudPhoneNodesResponseBody.NodeModel.BizTags] = []
+                for v in value {
+                    if v != nil {
+                        var model = DescribeCloudPhoneNodesResponseBody.NodeModel.BizTags()
+                        if v != nil {
+                            model.fromMap(v as? [String: Any?])
+                        }
+                        tmp.append(model)
+                    }
+                }
+                self.bizTags = tmp
             }
             if let value = dict["ChargeType"] as? String {
                 self.chargeType = value
@@ -7982,6 +8110,46 @@ public class DescribeDisplayConfigResponse : Tea.TeaModel {
 }
 
 public class DescribeImageListRequest : Tea.TeaModel {
+    public class ImageBizTags : Tea.TeaModel {
+        public var key: String?
+
+        public var value: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.key != nil {
+                map["Key"] = self.key!
+            }
+            if self.value != nil {
+                map["Value"] = self.value!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["Key"] as? String {
+                self.key = value
+            }
+            if let value = dict["Value"] as? String {
+                self.value = value
+            }
+        }
+    }
+    public var imageBizTags: [DescribeImageListRequest.ImageBizTags]?
+
     public var imageId: String?
 
     public var imageName: String?
@@ -7989,6 +8157,8 @@ public class DescribeImageListRequest : Tea.TeaModel {
     public var imagePackageType: String?
 
     public var imageType: String?
+
+    public var instanceType: String?
 
     public var maxResults: Int32?
 
@@ -8010,6 +8180,13 @@ public class DescribeImageListRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.imageBizTags != nil {
+            var tmp : [Any] = []
+            for k in self.imageBizTags! {
+                tmp.append(k.toMap())
+            }
+            map["ImageBizTags"] = tmp
+        }
         if self.imageId != nil {
             map["ImageId"] = self.imageId!
         }
@@ -8021,6 +8198,9 @@ public class DescribeImageListRequest : Tea.TeaModel {
         }
         if self.imageType != nil {
             map["ImageType"] = self.imageType!
+        }
+        if self.instanceType != nil {
+            map["InstanceType"] = self.instanceType!
         }
         if self.maxResults != nil {
             map["MaxResults"] = self.maxResults!
@@ -8036,6 +8216,19 @@ public class DescribeImageListRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["ImageBizTags"] as? [Any?] {
+            var tmp : [DescribeImageListRequest.ImageBizTags] = []
+            for v in value {
+                if v != nil {
+                    var model = DescribeImageListRequest.ImageBizTags()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.imageBizTags = tmp
+        }
         if let value = dict["ImageId"] as? String {
             self.imageId = value
         }
@@ -8047,6 +8240,9 @@ public class DescribeImageListRequest : Tea.TeaModel {
         }
         if let value = dict["ImageType"] as? String {
             self.imageType = value
+        }
+        if let value = dict["InstanceType"] as? String {
+            self.instanceType = value
         }
         if let value = dict["MaxResults"] as? Int32 {
             self.maxResults = value
@@ -8062,6 +8258,44 @@ public class DescribeImageListRequest : Tea.TeaModel {
 
 public class DescribeImageListResponseBody : Tea.TeaModel {
     public class Data : Tea.TeaModel {
+        public class ImageBizTags : Tea.TeaModel {
+            public var key: String?
+
+            public var value: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.key != nil {
+                    map["Key"] = self.key!
+                }
+                if self.value != nil {
+                    map["Value"] = self.value!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["Key"] as? String {
+                    self.key = value
+                }
+                if let value = dict["Value"] as? String {
+                    self.value = value
+                }
+            }
+        }
         public var aliUid: Int64?
 
         public var description_: String?
@@ -8069,6 +8303,8 @@ public class DescribeImageListResponseBody : Tea.TeaModel {
         public var gmtCreate: String?
 
         public var gmtModified: String?
+
+        public var imageBizTags: [DescribeImageListResponseBody.Data.ImageBizTags]?
 
         public var imageId: String?
 
@@ -8117,6 +8353,13 @@ public class DescribeImageListResponseBody : Tea.TeaModel {
             }
             if self.gmtModified != nil {
                 map["GmtModified"] = self.gmtModified!
+            }
+            if self.imageBizTags != nil {
+                var tmp : [Any] = []
+                for k in self.imageBizTags! {
+                    tmp.append(k.toMap())
+                }
+                map["ImageBizTags"] = tmp
             }
             if self.imageId != nil {
                 map["ImageId"] = self.imageId!
@@ -8171,6 +8414,19 @@ public class DescribeImageListResponseBody : Tea.TeaModel {
             }
             if let value = dict["GmtModified"] as? String {
                 self.gmtModified = value
+            }
+            if let value = dict["ImageBizTags"] as? [Any?] {
+                var tmp : [DescribeImageListResponseBody.Data.ImageBizTags] = []
+                for v in value {
+                    if v != nil {
+                        var model = DescribeImageListResponseBody.Data.ImageBizTags()
+                        if v != nil {
+                            model.fromMap(v as? [String: Any?])
+                        }
+                        tmp.append(model)
+                    }
+                }
+                self.imageBizTags = tmp
             }
             if let value = dict["ImageId"] as? String {
                 self.imageId = value
