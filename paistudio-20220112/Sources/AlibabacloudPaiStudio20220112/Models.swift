@@ -14832,6 +14832,8 @@ public class ListQuotaWorkloadsResponse : Tea.TeaModel {
 }
 
 public class ListQuotasRequest : Tea.TeaModel {
+    public var hasResource: String?
+
     public var labels: String?
 
     public var layoutMode: String?
@@ -14874,6 +14876,9 @@ public class ListQuotasRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.hasResource != nil {
+            map["HasResource"] = self.hasResource!
+        }
         if self.labels != nil {
             map["Labels"] = self.labels!
         }
@@ -14921,6 +14926,9 @@ public class ListQuotasRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["HasResource"] as? String {
+            self.hasResource = value
+        }
         if let value = dict["Labels"] as? String {
             self.labels = value
         }
@@ -15318,6 +15326,8 @@ public class ListResourceGroupMachineGroupsResponse : Tea.TeaModel {
 public class ListResourceGroupsRequest : Tea.TeaModel {
     public var computingResourceProvider: String?
 
+    public var hasResource: Bool?
+
     public var name: String?
 
     public var order: String?
@@ -15353,6 +15363,9 @@ public class ListResourceGroupsRequest : Tea.TeaModel {
         if self.computingResourceProvider != nil {
             map["ComputingResourceProvider"] = self.computingResourceProvider!
         }
+        if self.hasResource != nil {
+            map["HasResource"] = self.hasResource!
+        }
         if self.name != nil {
             map["Name"] = self.name!
         }
@@ -15387,6 +15400,9 @@ public class ListResourceGroupsRequest : Tea.TeaModel {
         guard let dict else { return }
         if let value = dict["ComputingResourceProvider"] as? String {
             self.computingResourceProvider = value
+        }
+        if let value = dict["HasResource"] as? Bool {
+            self.hasResource = value
         }
         if let value = dict["Name"] as? String {
             self.name = value

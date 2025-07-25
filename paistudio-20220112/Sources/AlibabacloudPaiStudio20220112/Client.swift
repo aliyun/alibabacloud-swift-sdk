@@ -1398,6 +1398,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func listQuotasWithOptions(_ request: ListQuotasRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> ListQuotasResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.hasResource)) {
+            query["HasResource"] = request.hasResource ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.labels)) {
             query["Labels"] = request.labels ?? "";
         }
@@ -1541,6 +1544,9 @@ open class Client : AlibabacloudOpenApi.Client {
         var query: [String: Any] = [:]
         if (!TeaUtils.Client.isUnset(request.computingResourceProvider)) {
             query["ComputingResourceProvider"] = request.computingResourceProvider ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.hasResource)) {
+            query["HasResource"] = request.hasResource!;
         }
         if (!TeaUtils.Client.isUnset(request.name)) {
             query["Name"] = request.name ?? "";
