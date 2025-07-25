@@ -9493,6 +9493,36 @@ public class GetSecretValueRequest : Tea.TeaModel {
 }
 
 public class GetSecretValueResponseBody : Tea.TeaModel {
+    public class VersionStages : Tea.TeaModel {
+        public var versionStage: [String]?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.versionStage != nil {
+                map["VersionStage"] = self.versionStage!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["VersionStage"] as? [String] {
+                self.versionStage = value
+            }
+        }
+    }
     public var automaticRotation: String?
 
     public var createTime: String?
@@ -9517,7 +9547,7 @@ public class GetSecretValueResponseBody : Tea.TeaModel {
 
     public var versionId: String?
 
-    public var versionStages: [String]?
+    public var versionStages: GetSecretValueResponseBody.VersionStages?
 
     public override init() {
         super.init()
@@ -9529,6 +9559,7 @@ public class GetSecretValueResponseBody : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
+        try self.versionStages?.validate()
     }
 
     public override func toMap() -> [String : Any] {
@@ -9570,7 +9601,7 @@ public class GetSecretValueResponseBody : Tea.TeaModel {
             map["VersionId"] = self.versionId!
         }
         if self.versionStages != nil {
-            map["VersionStages"] = self.versionStages!
+            map["VersionStages"] = self.versionStages?.toMap()
         }
         return map
     }
@@ -9613,8 +9644,10 @@ public class GetSecretValueResponseBody : Tea.TeaModel {
         if let value = dict["VersionId"] as? String {
             self.versionId = value
         }
-        if let value = dict["VersionStages"] as? [String] {
-            self.versionStages = value
+        if let value = dict["VersionStages"] as? [String: Any?] {
+            var model = GetSecretValueResponseBody.VersionStages()
+            model.fromMap(value)
+            self.versionStages = model
         }
     }
 }
