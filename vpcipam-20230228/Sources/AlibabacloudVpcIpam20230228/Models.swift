@@ -14,6 +14,8 @@ public class AddIpamPoolCidrRequest : Tea.TeaModel {
 
     public var ipamPoolId: String?
 
+    public var netmaskLength: Int32?
+
     public var regionId: String?
 
     public override init() {
@@ -42,6 +44,9 @@ public class AddIpamPoolCidrRequest : Tea.TeaModel {
         if self.ipamPoolId != nil {
             map["IpamPoolId"] = self.ipamPoolId!
         }
+        if self.netmaskLength != nil {
+            map["NetmaskLength"] = self.netmaskLength!
+        }
         if self.regionId != nil {
             map["RegionId"] = self.regionId!
         }
@@ -62,6 +67,9 @@ public class AddIpamPoolCidrRequest : Tea.TeaModel {
         if let value = dict["IpamPoolId"] as? String {
             self.ipamPoolId = value
         }
+        if let value = dict["NetmaskLength"] as? Int32 {
+            self.netmaskLength = value
+        }
         if let value = dict["RegionId"] as? String {
             self.regionId = value
         }
@@ -69,6 +77,8 @@ public class AddIpamPoolCidrRequest : Tea.TeaModel {
 }
 
 public class AddIpamPoolCidrResponseBody : Tea.TeaModel {
+    public var cidr: String?
+
     public var requestId: String?
 
     public override init() {
@@ -85,6 +95,9 @@ public class AddIpamPoolCidrResponseBody : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.cidr != nil {
+            map["Cidr"] = self.cidr!
+        }
         if self.requestId != nil {
             map["RequestId"] = self.requestId!
         }
@@ -93,6 +106,9 @@ public class AddIpamPoolCidrResponseBody : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["Cidr"] as? String {
+            self.cidr = value
+        }
         if let value = dict["RequestId"] as? String {
             self.requestId = value
         }
@@ -852,6 +868,8 @@ public class CreateIpamPoolRequest : Tea.TeaModel {
 
     public var ipamScopeId: String?
 
+    public var ipv6Isp: String?
+
     public var ownerAccount: String?
 
     public var ownerId: Int64?
@@ -913,6 +931,9 @@ public class CreateIpamPoolRequest : Tea.TeaModel {
         }
         if self.ipamScopeId != nil {
             map["IpamScopeId"] = self.ipamScopeId!
+        }
+        if self.ipv6Isp != nil {
+            map["Ipv6Isp"] = self.ipv6Isp!
         }
         if self.ownerAccount != nil {
             map["OwnerAccount"] = self.ownerAccount!
@@ -979,6 +1000,9 @@ public class CreateIpamPoolRequest : Tea.TeaModel {
         }
         if let value = dict["IpamScopeId"] as? String {
             self.ipamScopeId = value
+        }
+        if let value = dict["Ipv6Isp"] as? String {
+            self.ipv6Isp = value
         }
         if let value = dict["OwnerAccount"] as? String {
             self.ownerAccount = value
@@ -4489,11 +4513,15 @@ public class ListIpamPoolsRequest : Tea.TeaModel {
             }
         }
     }
+    public var ipVersion: String?
+
     public var ipamPoolIds: [String]?
 
     public var ipamPoolName: String?
 
     public var ipamScopeId: String?
+
+    public var ipv6Isp: String?
 
     public var isShared: Bool?
 
@@ -4533,6 +4561,9 @@ public class ListIpamPoolsRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.ipVersion != nil {
+            map["IpVersion"] = self.ipVersion!
+        }
         if self.ipamPoolIds != nil {
             map["IpamPoolIds"] = self.ipamPoolIds!
         }
@@ -4541,6 +4572,9 @@ public class ListIpamPoolsRequest : Tea.TeaModel {
         }
         if self.ipamScopeId != nil {
             map["IpamScopeId"] = self.ipamScopeId!
+        }
+        if self.ipv6Isp != nil {
+            map["Ipv6Isp"] = self.ipv6Isp!
         }
         if self.isShared != nil {
             map["IsShared"] = self.isShared!
@@ -4587,6 +4621,9 @@ public class ListIpamPoolsRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["IpVersion"] as? String {
+            self.ipVersion = value
+        }
         if let value = dict["IpamPoolIds"] as? [String] {
             self.ipamPoolIds = value
         }
@@ -4595,6 +4632,9 @@ public class ListIpamPoolsRequest : Tea.TeaModel {
         }
         if let value = dict["IpamScopeId"] as? String {
             self.ipamScopeId = value
+        }
+        if let value = dict["Ipv6Isp"] as? String {
+            self.ipv6Isp = value
         }
         if let value = dict["IsShared"] as? Bool {
             self.isShared = value
@@ -4713,6 +4753,8 @@ public class ListIpamPoolsResponseBody : Tea.TeaModel {
 
         public var ipamScopeType: String?
 
+        public var ipv6Isp: String?
+
         public var isShared: Bool?
 
         public var ownerId: Int64?
@@ -4786,6 +4828,9 @@ public class ListIpamPoolsResponseBody : Tea.TeaModel {
             }
             if self.ipamScopeType != nil {
                 map["IpamScopeType"] = self.ipamScopeType!
+            }
+            if self.ipv6Isp != nil {
+                map["Ipv6Isp"] = self.ipv6Isp!
             }
             if self.isShared != nil {
                 map["IsShared"] = self.isShared!
@@ -4864,6 +4909,9 @@ public class ListIpamPoolsResponseBody : Tea.TeaModel {
             }
             if let value = dict["IpamScopeType"] as? String {
                 self.ipamScopeType = value
+            }
+            if let value = dict["Ipv6Isp"] as? String {
+                self.ipv6Isp = value
             }
             if let value = dict["IsShared"] as? Bool {
                 self.isShared = value

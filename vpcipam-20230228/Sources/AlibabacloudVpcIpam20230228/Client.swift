@@ -39,6 +39,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.ipamPoolId)) {
             query["IpamPoolId"] = request.ipamPoolId ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.netmaskLength)) {
+            query["NetmaskLength"] = request.netmaskLength!;
+        }
         if (!TeaUtils.Client.isUnset(request.regionId)) {
             query["RegionId"] = request.regionId ?? "";
         }
@@ -270,6 +273,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.ipamScopeId)) {
             query["IpamScopeId"] = request.ipamScopeId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.ipv6Isp)) {
+            query["Ipv6Isp"] = request.ipv6Isp ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.ownerAccount)) {
             query["OwnerAccount"] = request.ownerAccount ?? "";
@@ -1095,6 +1101,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func listIpamPoolsWithOptions(_ request: ListIpamPoolsRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ListIpamPoolsResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.ipVersion)) {
+            query["IpVersion"] = request.ipVersion ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.ipamPoolIds)) {
             query["IpamPoolIds"] = request.ipamPoolIds ?? [];
         }
@@ -1103,6 +1112,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.ipamScopeId)) {
             query["IpamScopeId"] = request.ipamScopeId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.ipv6Isp)) {
+            query["Ipv6Isp"] = request.ipv6Isp ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.isShared)) {
             query["IsShared"] = request.isShared!;
