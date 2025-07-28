@@ -5449,6 +5449,8 @@ public class GetLifecycleResponseBody : Tea.TeaModel {
 
         public var gmtEndTime: String?
 
+        public var lifecycleId: String?
+
         public override init() {
             super.init()
         }
@@ -5478,6 +5480,9 @@ public class GetLifecycleResponseBody : Tea.TeaModel {
             if self.gmtEndTime != nil {
                 map["GmtEndTime"] = self.gmtEndTime!
             }
+            if self.lifecycleId != nil {
+                map["LifecycleId"] = self.lifecycleId!
+            }
             return map
         }
 
@@ -5497,6 +5502,9 @@ public class GetLifecycleResponseBody : Tea.TeaModel {
             }
             if let value = dict["GmtEndTime"] as? String {
                 self.gmtEndTime = value
+            }
+            if let value = dict["LifecycleId"] as? String {
+                self.lifecycleId = value
             }
         }
     }
