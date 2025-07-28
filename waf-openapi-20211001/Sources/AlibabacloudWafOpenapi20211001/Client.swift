@@ -7412,6 +7412,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func modifyDefenseRuleStatusWithOptions(_ request: ModifyDefenseRuleStatusRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ModifyDefenseRuleStatusResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.defenseType)) {
+            query["DefenseType"] = request.defenseType ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.instanceId)) {
             query["InstanceId"] = request.instanceId ?? "";
         }
