@@ -4165,6 +4165,8 @@ public class DescAccountSummaryResponseBody : Tea.TeaModel {
 
     public var enableTimes: Int32?
 
+    public var ipChannelType: String?
+
     public var mailAddresses: Int32?
 
     public var maxQuotaLevel: Int32?
@@ -4219,6 +4221,9 @@ public class DescAccountSummaryResponseBody : Tea.TeaModel {
         }
         if self.enableTimes != nil {
             map["EnableTimes"] = self.enableTimes!
+        }
+        if self.ipChannelType != nil {
+            map["IpChannelType"] = self.ipChannelType!
         }
         if self.mailAddresses != nil {
             map["MailAddresses"] = self.mailAddresses!
@@ -4278,6 +4283,9 @@ public class DescAccountSummaryResponseBody : Tea.TeaModel {
         }
         if let value = dict["EnableTimes"] as? Int32 {
             self.enableTimes = value
+        }
+        if let value = dict["IpChannelType"] as? String {
+            self.ipChannelType = value
         }
         if let value = dict["MailAddresses"] as? Int32 {
             self.mailAddresses = value
@@ -6262,6 +6270,266 @@ public class GetUserResponse : Tea.TeaModel {
         }
         if let value = dict["body"] as? [String: Any?] {
             var model = GetUserResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
+public class ListBlockSendingRequest : Tea.TeaModel {
+    public var beginTime: Int32?
+
+    public var blockEmail: String?
+
+    public var blockType: String?
+
+    public var endTime: Int32?
+
+    public var maxResults: Int32?
+
+    public var nextToken: String?
+
+    public var senderEmail: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.beginTime != nil {
+            map["BeginTime"] = self.beginTime!
+        }
+        if self.blockEmail != nil {
+            map["BlockEmail"] = self.blockEmail!
+        }
+        if self.blockType != nil {
+            map["BlockType"] = self.blockType!
+        }
+        if self.endTime != nil {
+            map["EndTime"] = self.endTime!
+        }
+        if self.maxResults != nil {
+            map["MaxResults"] = self.maxResults!
+        }
+        if self.nextToken != nil {
+            map["NextToken"] = self.nextToken!
+        }
+        if self.senderEmail != nil {
+            map["SenderEmail"] = self.senderEmail!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["BeginTime"] as? Int32 {
+            self.beginTime = value
+        }
+        if let value = dict["BlockEmail"] as? String {
+            self.blockEmail = value
+        }
+        if let value = dict["BlockType"] as? String {
+            self.blockType = value
+        }
+        if let value = dict["EndTime"] as? Int32 {
+            self.endTime = value
+        }
+        if let value = dict["MaxResults"] as? Int32 {
+            self.maxResults = value
+        }
+        if let value = dict["NextToken"] as? String {
+            self.nextToken = value
+        }
+        if let value = dict["SenderEmail"] as? String {
+            self.senderEmail = value
+        }
+    }
+}
+
+public class ListBlockSendingResponseBody : Tea.TeaModel {
+    public class Data : Tea.TeaModel {
+        public var blockEmail: String?
+
+        public var blockTime: Int32?
+
+        public var reason: Int32?
+
+        public var sendTime: Int32?
+
+        public var senderEmail: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.blockEmail != nil {
+                map["BlockEmail"] = self.blockEmail!
+            }
+            if self.blockTime != nil {
+                map["BlockTime"] = self.blockTime!
+            }
+            if self.reason != nil {
+                map["Reason"] = self.reason!
+            }
+            if self.sendTime != nil {
+                map["SendTime"] = self.sendTime!
+            }
+            if self.senderEmail != nil {
+                map["SenderEmail"] = self.senderEmail!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["BlockEmail"] as? String {
+                self.blockEmail = value
+            }
+            if let value = dict["BlockTime"] as? Int32 {
+                self.blockTime = value
+            }
+            if let value = dict["Reason"] as? Int32 {
+                self.reason = value
+            }
+            if let value = dict["SendTime"] as? Int32 {
+                self.sendTime = value
+            }
+            if let value = dict["SenderEmail"] as? String {
+                self.senderEmail = value
+            }
+        }
+    }
+    public var data: [ListBlockSendingResponseBody.Data]?
+
+    public var maxResults: Int32?
+
+    public var nextToken: String?
+
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.data != nil {
+            var tmp : [Any] = []
+            for k in self.data! {
+                tmp.append(k.toMap())
+            }
+            map["Data"] = tmp
+        }
+        if self.maxResults != nil {
+            map["MaxResults"] = self.maxResults!
+        }
+        if self.nextToken != nil {
+            map["NextToken"] = self.nextToken!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["Data"] as? [Any?] {
+            var tmp : [ListBlockSendingResponseBody.Data] = []
+            for v in value {
+                if v != nil {
+                    var model = ListBlockSendingResponseBody.Data()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.data = tmp
+        }
+        if let value = dict["MaxResults"] as? Int32 {
+            self.maxResults = value
+        }
+        if let value = dict["NextToken"] as? String {
+            self.nextToken = value
+        }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+    }
+}
+
+public class ListBlockSendingResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: ListBlockSendingResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = ListBlockSendingResponseBody()
             model.fromMap(value)
             self.body = model
         }
