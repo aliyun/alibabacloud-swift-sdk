@@ -28421,6 +28421,8 @@ public class DescribeDesktopsRequest : Tea.TeaModel {
 
     public var imageId: [String]?
 
+    public var includeAutoSnapshotPolicy: Bool?
+
     public var managementFlag: String?
 
     public var maxResults: Int32?
@@ -28522,6 +28524,9 @@ public class DescribeDesktopsRequest : Tea.TeaModel {
         }
         if self.imageId != nil {
             map["ImageId"] = self.imageId!
+        }
+        if self.includeAutoSnapshotPolicy != nil {
+            map["IncludeAutoSnapshotPolicy"] = self.includeAutoSnapshotPolicy!
         }
         if self.managementFlag != nil {
             map["ManagementFlag"] = self.managementFlag!
@@ -28639,6 +28644,9 @@ public class DescribeDesktopsRequest : Tea.TeaModel {
         }
         if let value = dict["ImageId"] as? [String] {
             self.imageId = value
+        }
+        if let value = dict["IncludeAutoSnapshotPolicy"] as? Bool {
+            self.includeAutoSnapshotPolicy = value
         }
         if let value = dict["ManagementFlag"] as? String {
             self.managementFlag = value

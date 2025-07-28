@@ -5785,6 +5785,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.imageId)) {
             query["ImageId"] = request.imageId ?? [];
         }
+        if (!TeaUtils.Client.isUnset(request.includeAutoSnapshotPolicy)) {
+            query["IncludeAutoSnapshotPolicy"] = request.includeAutoSnapshotPolicy!;
+        }
         if (!TeaUtils.Client.isUnset(request.managementFlag)) {
             query["ManagementFlag"] = request.managementFlag ?? "";
         }
