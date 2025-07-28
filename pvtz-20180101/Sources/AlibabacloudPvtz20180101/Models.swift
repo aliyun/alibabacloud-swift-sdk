@@ -3164,6 +3164,8 @@ public class DescribeCustomLineInfoResponseBody : Tea.TeaModel {
 
     public var creatorType: String?
 
+    public var dnscategory: String?
+
     public var ipv4s: [String]?
 
     public var lineId: String?
@@ -3205,6 +3207,9 @@ public class DescribeCustomLineInfoResponseBody : Tea.TeaModel {
         if self.creatorType != nil {
             map["CreatorType"] = self.creatorType!
         }
+        if self.dnscategory != nil {
+            map["Dnscategory"] = self.dnscategory!
+        }
         if self.ipv4s != nil {
             map["Ipv4s"] = self.ipv4s!
         }
@@ -3242,6 +3247,9 @@ public class DescribeCustomLineInfoResponseBody : Tea.TeaModel {
         }
         if let value = dict["CreatorType"] as? String {
             self.creatorType = value
+        }
+        if let value = dict["Dnscategory"] as? String {
+            self.dnscategory = value
         }
         if let value = dict["Ipv4s"] as? [String] {
             self.ipv4s = value
@@ -3404,6 +3412,8 @@ public class DescribeCustomLinesResponseBody : Tea.TeaModel {
 
             public var creatorType: String?
 
+            public var dnsCategory: String?
+
             public var ipv4s: DescribeCustomLinesResponseBody.CustomLines.CustomLine.Ipv4s?
 
             public var lineId: String?
@@ -3444,6 +3454,9 @@ public class DescribeCustomLinesResponseBody : Tea.TeaModel {
                 if self.creatorType != nil {
                     map["CreatorType"] = self.creatorType!
                 }
+                if self.dnsCategory != nil {
+                    map["DnsCategory"] = self.dnsCategory!
+                }
                 if self.ipv4s != nil {
                     map["Ipv4s"] = self.ipv4s?.toMap()
                 }
@@ -3478,6 +3491,9 @@ public class DescribeCustomLinesResponseBody : Tea.TeaModel {
                 }
                 if let value = dict["CreatorType"] as? String {
                     self.creatorType = value
+                }
+                if let value = dict["DnsCategory"] as? String {
+                    self.dnsCategory = value
                 }
                 if let value = dict["Ipv4s"] as? [String: Any?] {
                     var model = DescribeCustomLinesResponseBody.CustomLines.CustomLine.Ipv4s()
@@ -9992,6 +10008,8 @@ public class SearchCustomLinesResponseBody : Tea.TeaModel {
 
             public var creatorType: String?
 
+            public var dnsCategory: String?
+
             public var ipv4s: SearchCustomLinesResponseBody.CustomLines.CustomLine.Ipv4s?
 
             public var lineId: String?
@@ -10032,6 +10050,9 @@ public class SearchCustomLinesResponseBody : Tea.TeaModel {
                 if self.creatorType != nil {
                     map["CreatorType"] = self.creatorType!
                 }
+                if self.dnsCategory != nil {
+                    map["DnsCategory"] = self.dnsCategory!
+                }
                 if self.ipv4s != nil {
                     map["Ipv4s"] = self.ipv4s?.toMap()
                 }
@@ -10066,6 +10087,9 @@ public class SearchCustomLinesResponseBody : Tea.TeaModel {
                 }
                 if let value = dict["CreatorType"] as? String {
                     self.creatorType = value
+                }
+                if let value = dict["DnsCategory"] as? String {
+                    self.dnsCategory = value
                 }
                 if let value = dict["Ipv4s"] as? [String: Any?] {
                     var model = SearchCustomLinesResponseBody.CustomLines.CustomLine.Ipv4s()
@@ -10905,6 +10929,8 @@ public class UntagResourcesResponse : Tea.TeaModel {
 }
 
 public class UpdateCustomLineRequest : Tea.TeaModel {
+    public var dnsCategory: String?
+
     public var ipv4s: [String]?
 
     public var lang: String?
@@ -10927,6 +10953,9 @@ public class UpdateCustomLineRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.dnsCategory != nil {
+            map["DnsCategory"] = self.dnsCategory!
+        }
         if self.ipv4s != nil {
             map["Ipv4s"] = self.ipv4s!
         }
@@ -10944,6 +10973,9 @@ public class UpdateCustomLineRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["DnsCategory"] as? String {
+            self.dnsCategory = value
+        }
         if let value = dict["Ipv4s"] as? [String] {
             self.ipv4s = value
         }

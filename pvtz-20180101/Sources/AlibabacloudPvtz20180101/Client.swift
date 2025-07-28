@@ -1822,6 +1822,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func updateCustomLineWithOptions(_ request: UpdateCustomLineRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> UpdateCustomLineResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.dnsCategory)) {
+            query["DnsCategory"] = request.dnsCategory ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.ipv4s)) {
             query["Ipv4s"] = request.ipv4s ?? [];
         }
