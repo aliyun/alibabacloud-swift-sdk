@@ -432,6 +432,79 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func pageDemandPlanWithDemandInfoWithOptions(_ request: PageDemandPlanWithDemandInfoRequest, _ headers: PageDemandPlanWithDemandInfoHeaders, _ runtime: TeaUtils.RuntimeOptions) async throws -> PageDemandPlanWithDemandInfoResponse {
+        try TeaUtils.Client.validateModel(request)
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.approvalStatus)) {
+            body["approvalStatus"] = request.approvalStatus ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.createTimeEnd)) {
+            body["createTimeEnd"] = request.createTimeEnd ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.createTimeStart)) {
+            body["createTimeStart"] = request.createTimeStart ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.creatorStaffId)) {
+            body["creatorStaffId"] = request.creatorStaffId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.demandDeliveryStatus)) {
+            body["demandDeliveryStatus"] = request.demandDeliveryStatus ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.demandId)) {
+            body["demandId"] = request.demandId ?? [];
+        }
+        if (!TeaUtils.Client.isUnset(request.demandPlanId)) {
+            body["demandPlanId"] = request.demandPlanId ?? [];
+        }
+        if (!TeaUtils.Client.isUnset(request.demandPlanStatus)) {
+            body["demandPlanStatus"] = request.demandPlanStatus ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.operator_)) {
+            body["operator"] = request.operator_ ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.pageNum)) {
+            body["pageNum"] = request.pageNum!;
+        }
+        if (!TeaUtils.Client.isUnset(request.pageSize)) {
+            body["pageSize"] = request.pageSize!;
+        }
+        if (!TeaUtils.Client.isUnset(request.roCode)) {
+            body["roCode"] = request.roCode ?? "";
+        }
+        var realHeaders: [String: String] = [:]
+        if (!TeaUtils.Client.isUnset(headers.commonHeaders)) {
+            realHeaders = headers.commonHeaders ?? [:]
+        }
+        if (!TeaUtils.Client.isUnset(headers.yunUserId)) {
+            realHeaders["Yun-User-Id"] = TeaUtils.Client.toJSONString(headers.yunUserId);
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": realHeaders as! [String: String],
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "PageDemandPlanWithDemandInfo",
+            "version": "2021-12-17",
+            "protocol": "HTTPS",
+            "pathname": "/api/demand/getDemandPlanList",
+            "method": "POST",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(PageDemandPlanWithDemandInfoResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func pageDemandPlanWithDemandInfo(_ request: PageDemandPlanWithDemandInfoRequest) async throws -> PageDemandPlanWithDemandInfoResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: PageDemandPlanWithDemandInfoHeaders = PageDemandPlanWithDemandInfoHeaders([:])
+        return try await pageDemandPlanWithDemandInfoWithOptions(request as! PageDemandPlanWithDemandInfoRequest, headers as! PageDemandPlanWithDemandInfoHeaders, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func pushResourcePlanWithOptions(_ request: PushResourcePlanRequest, _ headers: PushResourcePlanHeaders, _ runtime: TeaUtils.RuntimeOptions) async throws -> PushResourcePlanResponse {
         try TeaUtils.Client.validateModel(request)
         var body: [String: Any] = [:]

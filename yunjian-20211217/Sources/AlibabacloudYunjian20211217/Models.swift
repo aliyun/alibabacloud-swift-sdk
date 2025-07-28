@@ -2630,6 +2630,482 @@ public class GetUrgentDemandPlanListResponse : Tea.TeaModel {
     }
 }
 
+public class PageDemandPlanWithDemandInfoHeaders : Tea.TeaModel {
+    public var commonHeaders: [String: String]?
+
+    public var yunUserId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.commonHeaders != nil {
+            map["commonHeaders"] = self.commonHeaders!
+        }
+        if self.yunUserId != nil {
+            map["Yun-User-Id"] = self.yunUserId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["commonHeaders"] as? [String: String] {
+            self.commonHeaders = value
+        }
+        if let value = dict["Yun-User-Id"] as? String {
+            self.yunUserId = value
+        }
+    }
+}
+
+public class PageDemandPlanWithDemandInfoRequest : Tea.TeaModel {
+    public var approvalStatus: String?
+
+    public var createTimeEnd: String?
+
+    public var createTimeStart: String?
+
+    public var creatorStaffId: String?
+
+    public var demandDeliveryStatus: String?
+
+    public var demandId: [Int64]?
+
+    public var demandPlanId: [Int64]?
+
+    public var demandPlanStatus: String?
+
+    public var operator_: String?
+
+    public var pageNum: Int32?
+
+    public var pageSize: Int32?
+
+    public var roCode: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.approvalStatus != nil {
+            map["approvalStatus"] = self.approvalStatus!
+        }
+        if self.createTimeEnd != nil {
+            map["createTimeEnd"] = self.createTimeEnd!
+        }
+        if self.createTimeStart != nil {
+            map["createTimeStart"] = self.createTimeStart!
+        }
+        if self.creatorStaffId != nil {
+            map["creatorStaffId"] = self.creatorStaffId!
+        }
+        if self.demandDeliveryStatus != nil {
+            map["demandDeliveryStatus"] = self.demandDeliveryStatus!
+        }
+        if self.demandId != nil {
+            map["demandId"] = self.demandId!
+        }
+        if self.demandPlanId != nil {
+            map["demandPlanId"] = self.demandPlanId!
+        }
+        if self.demandPlanStatus != nil {
+            map["demandPlanStatus"] = self.demandPlanStatus!
+        }
+        if self.operator_ != nil {
+            map["operator"] = self.operator_!
+        }
+        if self.pageNum != nil {
+            map["pageNum"] = self.pageNum!
+        }
+        if self.pageSize != nil {
+            map["pageSize"] = self.pageSize!
+        }
+        if self.roCode != nil {
+            map["roCode"] = self.roCode!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["approvalStatus"] as? String {
+            self.approvalStatus = value
+        }
+        if let value = dict["createTimeEnd"] as? String {
+            self.createTimeEnd = value
+        }
+        if let value = dict["createTimeStart"] as? String {
+            self.createTimeStart = value
+        }
+        if let value = dict["creatorStaffId"] as? String {
+            self.creatorStaffId = value
+        }
+        if let value = dict["demandDeliveryStatus"] as? String {
+            self.demandDeliveryStatus = value
+        }
+        if let value = dict["demandId"] as? [Int64] {
+            self.demandId = value
+        }
+        if let value = dict["demandPlanId"] as? [Int64] {
+            self.demandPlanId = value
+        }
+        if let value = dict["demandPlanStatus"] as? String {
+            self.demandPlanStatus = value
+        }
+        if let value = dict["operator"] as? String {
+            self.operator_ = value
+        }
+        if let value = dict["pageNum"] as? Int32 {
+            self.pageNum = value
+        }
+        if let value = dict["pageSize"] as? Int32 {
+            self.pageSize = value
+        }
+        if let value = dict["roCode"] as? String {
+            self.roCode = value
+        }
+    }
+}
+
+public class PageDemandPlanWithDemandInfoResponseBody : Tea.TeaModel {
+    public class Data : Tea.TeaModel {
+        public class Data : Tea.TeaModel {
+            public var accountId: String?
+
+            public var accountName: String?
+
+            public var approvalNodeStatus: String?
+
+            public var approvalStatus: String?
+
+            public var creator: String?
+
+            public var deliveryPlanId: String?
+
+            public var deliveryStatus: String?
+
+            public var demandDesc: String?
+
+            public var demandId: Int64?
+
+            public var demandName: String?
+
+            public var demandPlanId: Double?
+
+            public var gmtCreate: String?
+
+            public var gmtModified: String?
+
+            public var modifier: String?
+
+            public var requirementObjectCode: String?
+
+            public var uid: Int64?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.accountId != nil {
+                    map["accountId"] = self.accountId!
+                }
+                if self.accountName != nil {
+                    map["accountName"] = self.accountName!
+                }
+                if self.approvalNodeStatus != nil {
+                    map["approvalNodeStatus"] = self.approvalNodeStatus!
+                }
+                if self.approvalStatus != nil {
+                    map["approvalStatus"] = self.approvalStatus!
+                }
+                if self.creator != nil {
+                    map["creator"] = self.creator!
+                }
+                if self.deliveryPlanId != nil {
+                    map["deliveryPlanId"] = self.deliveryPlanId!
+                }
+                if self.deliveryStatus != nil {
+                    map["deliveryStatus"] = self.deliveryStatus!
+                }
+                if self.demandDesc != nil {
+                    map["demandDesc"] = self.demandDesc!
+                }
+                if self.demandId != nil {
+                    map["demandId"] = self.demandId!
+                }
+                if self.demandName != nil {
+                    map["demandName"] = self.demandName!
+                }
+                if self.demandPlanId != nil {
+                    map["demandPlanId"] = self.demandPlanId!
+                }
+                if self.gmtCreate != nil {
+                    map["gmtCreate"] = self.gmtCreate!
+                }
+                if self.gmtModified != nil {
+                    map["gmtModified"] = self.gmtModified!
+                }
+                if self.modifier != nil {
+                    map["modifier"] = self.modifier!
+                }
+                if self.requirementObjectCode != nil {
+                    map["requirementObjectCode"] = self.requirementObjectCode!
+                }
+                if self.uid != nil {
+                    map["uid"] = self.uid!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["accountId"] as? String {
+                    self.accountId = value
+                }
+                if let value = dict["accountName"] as? String {
+                    self.accountName = value
+                }
+                if let value = dict["approvalNodeStatus"] as? String {
+                    self.approvalNodeStatus = value
+                }
+                if let value = dict["approvalStatus"] as? String {
+                    self.approvalStatus = value
+                }
+                if let value = dict["creator"] as? String {
+                    self.creator = value
+                }
+                if let value = dict["deliveryPlanId"] as? String {
+                    self.deliveryPlanId = value
+                }
+                if let value = dict["deliveryStatus"] as? String {
+                    self.deliveryStatus = value
+                }
+                if let value = dict["demandDesc"] as? String {
+                    self.demandDesc = value
+                }
+                if let value = dict["demandId"] as? Int64 {
+                    self.demandId = value
+                }
+                if let value = dict["demandName"] as? String {
+                    self.demandName = value
+                }
+                if let value = dict["demandPlanId"] as? Double {
+                    self.demandPlanId = value
+                }
+                if let value = dict["gmtCreate"] as? String {
+                    self.gmtCreate = value
+                }
+                if let value = dict["gmtModified"] as? String {
+                    self.gmtModified = value
+                }
+                if let value = dict["modifier"] as? String {
+                    self.modifier = value
+                }
+                if let value = dict["requirementObjectCode"] as? String {
+                    self.requirementObjectCode = value
+                }
+                if let value = dict["uid"] as? Int64 {
+                    self.uid = value
+                }
+            }
+        }
+        public var data: [PageDemandPlanWithDemandInfoResponseBody.Data.Data]?
+
+        public var pageNum: Int32?
+
+        public var pageSize: Int32?
+
+        public var total: Int64?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.data != nil {
+                var tmp : [Any] = []
+                for k in self.data! {
+                    tmp.append(k.toMap())
+                }
+                map["data"] = tmp
+            }
+            if self.pageNum != nil {
+                map["pageNum"] = self.pageNum!
+            }
+            if self.pageSize != nil {
+                map["pageSize"] = self.pageSize!
+            }
+            if self.total != nil {
+                map["total"] = self.total!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["data"] as? [Any?] {
+                var tmp : [PageDemandPlanWithDemandInfoResponseBody.Data.Data] = []
+                for v in value {
+                    if v != nil {
+                        var model = PageDemandPlanWithDemandInfoResponseBody.Data.Data()
+                        if v != nil {
+                            model.fromMap(v as? [String: Any?])
+                        }
+                        tmp.append(model)
+                    }
+                }
+                self.data = tmp
+            }
+            if let value = dict["pageNum"] as? Int32 {
+                self.pageNum = value
+            }
+            if let value = dict["pageSize"] as? Int32 {
+                self.pageSize = value
+            }
+            if let value = dict["total"] as? Int64 {
+                self.total = value
+            }
+        }
+    }
+    public var data: PageDemandPlanWithDemandInfoResponseBody.Data?
+
+    public var requestId: String?
+
+    public var traceId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.data?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.data != nil {
+            map["data"] = self.data?.toMap()
+        }
+        if self.requestId != nil {
+            map["requestId"] = self.requestId!
+        }
+        if self.traceId != nil {
+            map["traceId"] = self.traceId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["data"] as? [String: Any?] {
+            var model = PageDemandPlanWithDemandInfoResponseBody.Data()
+            model.fromMap(value)
+            self.data = model
+        }
+        if let value = dict["requestId"] as? String {
+            self.requestId = value
+        }
+        if let value = dict["traceId"] as? String {
+            self.traceId = value
+        }
+    }
+}
+
+public class PageDemandPlanWithDemandInfoResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: PageDemandPlanWithDemandInfoResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = PageDemandPlanWithDemandInfoResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
 public class PushResourcePlanHeaders : Tea.TeaModel {
     public var commonHeaders: [String: String]?
 
