@@ -508,6 +508,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.upBandwidthLimit)) {
             query["UpBandwidthLimit"] = request.upBandwidthLimit!;
         }
+        if (!TeaUtils.Client.isUnset(request.useTemplate)) {
+            query["UseTemplate"] = request.useTemplate ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.vSwitchId)) {
             query["VSwitchId"] = request.vSwitchId ?? "";
         }
@@ -715,6 +718,51 @@ open class Client : AlibabacloudOpenApi.Client {
     public func createScreenshot(_ request: CreateScreenshotRequest) async throws -> CreateScreenshotResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         return try await createScreenshotWithOptions(request as! CreateScreenshotRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func createSystemPropertyTemplateWithOptions(_ tmpReq: CreateSystemPropertyTemplateRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> CreateSystemPropertyTemplateResponse {
+        try TeaUtils.Client.validateModel(tmpReq)
+        var request: CreateSystemPropertyTemplateShrinkRequest = CreateSystemPropertyTemplateShrinkRequest([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.systemPropertyInfo)) {
+            request.systemPropertyInfoShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.systemPropertyInfo, "SystemPropertyInfo", "json")
+        }
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.enableAuto)) {
+            query["EnableAuto"] = request.enableAuto!;
+        }
+        if (!TeaUtils.Client.isUnset(request.filePath)) {
+            query["FilePath"] = request.filePath ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.systemPropertyInfoShrink)) {
+            query["SystemPropertyInfo"] = request.systemPropertyInfoShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.templateName)) {
+            query["TemplateName"] = request.templateName ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "CreateSystemPropertyTemplate",
+            "version": "2023-09-30",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(CreateSystemPropertyTemplateResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func createSystemPropertyTemplate(_ request: CreateSystemPropertyTemplateRequest) async throws -> CreateSystemPropertyTemplateResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await createSystemPropertyTemplateWithOptions(request as! CreateSystemPropertyTemplateRequest, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -937,6 +985,37 @@ open class Client : AlibabacloudOpenApi.Client {
     public func deletePolicyGroup(_ request: DeletePolicyGroupRequest) async throws -> DeletePolicyGroupResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         return try await deletePolicyGroupWithOptions(request as! DeletePolicyGroupRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func deleteSystemPropertyTemplatesWithOptions(_ request: DeleteSystemPropertyTemplatesRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DeleteSystemPropertyTemplatesResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.templateIds)) {
+            query["TemplateIds"] = request.templateIds ?? [];
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "DeleteSystemPropertyTemplates",
+            "version": "2023-09-30",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(DeleteSystemPropertyTemplatesResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func deleteSystemPropertyTemplates(_ request: DeleteSystemPropertyTemplatesRequest) async throws -> DeleteSystemPropertyTemplatesResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await deleteSystemPropertyTemplatesWithOptions(request as! DeleteSystemPropertyTemplatesRequest, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -1560,6 +1639,46 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func describeSystemPropertyTemplatesWithOptions(_ request: DescribeSystemPropertyTemplatesRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DescribeSystemPropertyTemplatesResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.maxResults)) {
+            query["MaxResults"] = request.maxResults!;
+        }
+        if (!TeaUtils.Client.isUnset(request.nextToken)) {
+            query["NextToken"] = request.nextToken ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.templateIds)) {
+            query["TemplateIds"] = request.templateIds ?? [];
+        }
+        if (!TeaUtils.Client.isUnset(request.templateName)) {
+            query["TemplateName"] = request.templateName ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "DescribeSystemPropertyTemplates",
+            "version": "2023-09-30",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(DescribeSystemPropertyTemplatesResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func describeSystemPropertyTemplates(_ request: DescribeSystemPropertyTemplatesRequest) async throws -> DescribeSystemPropertyTemplatesResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await describeSystemPropertyTemplatesWithOptions(request as! DescribeSystemPropertyTemplatesRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func describeTasksWithOptions(_ request: DescribeTasksRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DescribeTasksResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
@@ -1920,6 +2039,37 @@ open class Client : AlibabacloudOpenApi.Client {
     public func generateCoordinationCode(_ request: GenerateCoordinationCodeRequest) async throws -> GenerateCoordinationCodeResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         return try await generateCoordinationCodeWithOptions(request as! GenerateCoordinationCodeRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getInstancePropertiesWithOptions(_ request: GetInstancePropertiesRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> GetInstancePropertiesResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.instanceId)) {
+            query["InstanceId"] = request.instanceId ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "GetInstanceProperties",
+            "version": "2023-09-30",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(GetInstancePropertiesResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getInstanceProperties(_ request: GetInstancePropertiesRequest) async throws -> GetInstancePropertiesResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await getInstancePropertiesWithOptions(request as! GetInstancePropertiesRequest, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -2382,6 +2532,54 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func modifySystemPropertyTemplateWithOptions(_ tmpReq: ModifySystemPropertyTemplateRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ModifySystemPropertyTemplateResponse {
+        try TeaUtils.Client.validateModel(tmpReq)
+        var request: ModifySystemPropertyTemplateShrinkRequest = ModifySystemPropertyTemplateShrinkRequest([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.systemPropertyInfo)) {
+            request.systemPropertyInfoShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.systemPropertyInfo, "SystemPropertyInfo", "json")
+        }
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.enableAuto)) {
+            query["EnableAuto"] = request.enableAuto!;
+        }
+        if (!TeaUtils.Client.isUnset(request.filePath)) {
+            query["FilePath"] = request.filePath ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.systemPropertyInfoShrink)) {
+            query["SystemPropertyInfo"] = request.systemPropertyInfoShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.templateId)) {
+            query["TemplateId"] = request.templateId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.templateName)) {
+            query["TemplateName"] = request.templateName ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "ModifySystemPropertyTemplate",
+            "version": "2023-09-30",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(ModifySystemPropertyTemplateResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func modifySystemPropertyTemplate(_ request: ModifySystemPropertyTemplateRequest) async throws -> ModifySystemPropertyTemplateResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await modifySystemPropertyTemplateWithOptions(request as! ModifySystemPropertyTemplateRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func operateAppWithOptions(_ request: OperateAppRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> OperateAppResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
@@ -2707,6 +2905,45 @@ open class Client : AlibabacloudOpenApi.Client {
     public func sendFile(_ request: SendFileRequest) async throws -> SendFileResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         return try await sendFileWithOptions(request as! SendFileRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func sendSystemPropertyTemplateWithOptions(_ request: SendSystemPropertyTemplateRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> SendSystemPropertyTemplateResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.templateId)) {
+            query["TemplateId"] = request.templateId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.templateIds)) {
+            query["TemplateIds"] = request.templateIds ?? [];
+        }
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.androidInstanceIds)) {
+            body["AndroidInstanceIds"] = request.androidInstanceIds ?? [];
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query),
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "SendSystemPropertyTemplate",
+            "version": "2023-09-30",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(SendSystemPropertyTemplateResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func sendSystemPropertyTemplate(_ request: SendSystemPropertyTemplateRequest) async throws -> SendSystemPropertyTemplateResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await sendSystemPropertyTemplateWithOptions(request as! SendSystemPropertyTemplateRequest, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)

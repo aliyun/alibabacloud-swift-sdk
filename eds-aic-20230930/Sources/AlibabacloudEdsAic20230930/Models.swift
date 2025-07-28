@@ -2332,6 +2332,8 @@ public class CreateCloudPhoneNodeRequest : Tea.TeaModel {
 
     public var upBandwidthLimit: Int32?
 
+    public var useTemplate: String?
+
     public var vSwitchId: String?
 
     public override init() {
@@ -2431,6 +2433,9 @@ public class CreateCloudPhoneNodeRequest : Tea.TeaModel {
         }
         if self.upBandwidthLimit != nil {
             map["UpBandwidthLimit"] = self.upBandwidthLimit!
+        }
+        if self.useTemplate != nil {
+            map["UseTemplate"] = self.useTemplate!
         }
         if self.vSwitchId != nil {
             map["VSwitchId"] = self.vSwitchId!
@@ -2532,6 +2537,9 @@ public class CreateCloudPhoneNodeRequest : Tea.TeaModel {
         if let value = dict["UpBandwidthLimit"] as? Int32 {
             self.upBandwidthLimit = value
         }
+        if let value = dict["UseTemplate"] as? String {
+            self.useTemplate = value
+        }
         if let value = dict["VSwitchId"] as? String {
             self.vSwitchId = value
         }
@@ -2628,6 +2636,8 @@ public class CreateCloudPhoneNodeShrinkRequest : Tea.TeaModel {
     public var tag: [CreateCloudPhoneNodeShrinkRequest.Tag]?
 
     public var upBandwidthLimit: Int32?
+
+    public var useTemplate: String?
 
     public var vSwitchId: String?
 
@@ -2727,6 +2737,9 @@ public class CreateCloudPhoneNodeShrinkRequest : Tea.TeaModel {
         if self.upBandwidthLimit != nil {
             map["UpBandwidthLimit"] = self.upBandwidthLimit!
         }
+        if self.useTemplate != nil {
+            map["UseTemplate"] = self.useTemplate!
+        }
         if self.vSwitchId != nil {
             map["VSwitchId"] = self.vSwitchId!
         }
@@ -2822,6 +2835,9 @@ public class CreateCloudPhoneNodeShrinkRequest : Tea.TeaModel {
         }
         if let value = dict["UpBandwidthLimit"] as? Int32 {
             self.upBandwidthLimit = value
+        }
+        if let value = dict["UseTemplate"] as? String {
+            self.useTemplate = value
         }
         if let value = dict["VSwitchId"] as? String {
             self.vSwitchId = value
@@ -4061,6 +4077,410 @@ public class CreateScreenshotResponse : Tea.TeaModel {
     }
 }
 
+public class CreateSystemPropertyTemplateRequest : Tea.TeaModel {
+    public class SystemPropertyInfo : Tea.TeaModel {
+        public class CustomPropertyInfos : Tea.TeaModel {
+            public var propertyName: String?
+
+            public var propertyValue: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.propertyName != nil {
+                    map["PropertyName"] = self.propertyName!
+                }
+                if self.propertyValue != nil {
+                    map["PropertyValue"] = self.propertyValue!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["PropertyName"] as? String {
+                    self.propertyName = value
+                }
+                if let value = dict["PropertyValue"] as? String {
+                    self.propertyValue = value
+                }
+            }
+        }
+        public var customPropertyInfos: [CreateSystemPropertyTemplateRequest.SystemPropertyInfo.CustomPropertyInfos]?
+
+        public var roBootloader: String?
+
+        public var roBuildDisplayId: String?
+
+        public var roBuildFingerprint: String?
+
+        public var roBuildHost: String?
+
+        public var roBuildId: String?
+
+        public var roBuildProduct: String?
+
+        public var roBuildTags: String?
+
+        public var roBuildType: String?
+
+        public var roBuildUser: String?
+
+        public var roProductBoard: String?
+
+        public var roProductBrand: String?
+
+        public var roProductDevice: String?
+
+        public var roProductManufacturer: String?
+
+        public var roProductModel: String?
+
+        public var rwRoSerialNo: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.customPropertyInfos != nil {
+                var tmp : [Any] = []
+                for k in self.customPropertyInfos! {
+                    tmp.append(k.toMap())
+                }
+                map["CustomPropertyInfos"] = tmp
+            }
+            if self.roBootloader != nil {
+                map["RoBootloader"] = self.roBootloader!
+            }
+            if self.roBuildDisplayId != nil {
+                map["RoBuildDisplayId"] = self.roBuildDisplayId!
+            }
+            if self.roBuildFingerprint != nil {
+                map["RoBuildFingerprint"] = self.roBuildFingerprint!
+            }
+            if self.roBuildHost != nil {
+                map["RoBuildHost"] = self.roBuildHost!
+            }
+            if self.roBuildId != nil {
+                map["RoBuildId"] = self.roBuildId!
+            }
+            if self.roBuildProduct != nil {
+                map["RoBuildProduct"] = self.roBuildProduct!
+            }
+            if self.roBuildTags != nil {
+                map["RoBuildTags"] = self.roBuildTags!
+            }
+            if self.roBuildType != nil {
+                map["RoBuildType"] = self.roBuildType!
+            }
+            if self.roBuildUser != nil {
+                map["RoBuildUser"] = self.roBuildUser!
+            }
+            if self.roProductBoard != nil {
+                map["RoProductBoard"] = self.roProductBoard!
+            }
+            if self.roProductBrand != nil {
+                map["RoProductBrand"] = self.roProductBrand!
+            }
+            if self.roProductDevice != nil {
+                map["RoProductDevice"] = self.roProductDevice!
+            }
+            if self.roProductManufacturer != nil {
+                map["RoProductManufacturer"] = self.roProductManufacturer!
+            }
+            if self.roProductModel != nil {
+                map["RoProductModel"] = self.roProductModel!
+            }
+            if self.rwRoSerialNo != nil {
+                map["RwRoSerialNo"] = self.rwRoSerialNo!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["CustomPropertyInfos"] as? [Any?] {
+                var tmp : [CreateSystemPropertyTemplateRequest.SystemPropertyInfo.CustomPropertyInfos] = []
+                for v in value {
+                    if v != nil {
+                        var model = CreateSystemPropertyTemplateRequest.SystemPropertyInfo.CustomPropertyInfos()
+                        if v != nil {
+                            model.fromMap(v as? [String: Any?])
+                        }
+                        tmp.append(model)
+                    }
+                }
+                self.customPropertyInfos = tmp
+            }
+            if let value = dict["RoBootloader"] as? String {
+                self.roBootloader = value
+            }
+            if let value = dict["RoBuildDisplayId"] as? String {
+                self.roBuildDisplayId = value
+            }
+            if let value = dict["RoBuildFingerprint"] as? String {
+                self.roBuildFingerprint = value
+            }
+            if let value = dict["RoBuildHost"] as? String {
+                self.roBuildHost = value
+            }
+            if let value = dict["RoBuildId"] as? String {
+                self.roBuildId = value
+            }
+            if let value = dict["RoBuildProduct"] as? String {
+                self.roBuildProduct = value
+            }
+            if let value = dict["RoBuildTags"] as? String {
+                self.roBuildTags = value
+            }
+            if let value = dict["RoBuildType"] as? String {
+                self.roBuildType = value
+            }
+            if let value = dict["RoBuildUser"] as? String {
+                self.roBuildUser = value
+            }
+            if let value = dict["RoProductBoard"] as? String {
+                self.roProductBoard = value
+            }
+            if let value = dict["RoProductBrand"] as? String {
+                self.roProductBrand = value
+            }
+            if let value = dict["RoProductDevice"] as? String {
+                self.roProductDevice = value
+            }
+            if let value = dict["RoProductManufacturer"] as? String {
+                self.roProductManufacturer = value
+            }
+            if let value = dict["RoProductModel"] as? String {
+                self.roProductModel = value
+            }
+            if let value = dict["RwRoSerialNo"] as? String {
+                self.rwRoSerialNo = value
+            }
+        }
+    }
+    public var enableAuto: Bool?
+
+    public var filePath: String?
+
+    public var systemPropertyInfo: CreateSystemPropertyTemplateRequest.SystemPropertyInfo?
+
+    public var templateName: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.systemPropertyInfo?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.enableAuto != nil {
+            map["EnableAuto"] = self.enableAuto!
+        }
+        if self.filePath != nil {
+            map["FilePath"] = self.filePath!
+        }
+        if self.systemPropertyInfo != nil {
+            map["SystemPropertyInfo"] = self.systemPropertyInfo?.toMap()
+        }
+        if self.templateName != nil {
+            map["TemplateName"] = self.templateName!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["EnableAuto"] as? Bool {
+            self.enableAuto = value
+        }
+        if let value = dict["FilePath"] as? String {
+            self.filePath = value
+        }
+        if let value = dict["SystemPropertyInfo"] as? [String: Any?] {
+            var model = CreateSystemPropertyTemplateRequest.SystemPropertyInfo()
+            model.fromMap(value)
+            self.systemPropertyInfo = model
+        }
+        if let value = dict["TemplateName"] as? String {
+            self.templateName = value
+        }
+    }
+}
+
+public class CreateSystemPropertyTemplateShrinkRequest : Tea.TeaModel {
+    public var enableAuto: Bool?
+
+    public var filePath: String?
+
+    public var systemPropertyInfoShrink: String?
+
+    public var templateName: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.enableAuto != nil {
+            map["EnableAuto"] = self.enableAuto!
+        }
+        if self.filePath != nil {
+            map["FilePath"] = self.filePath!
+        }
+        if self.systemPropertyInfoShrink != nil {
+            map["SystemPropertyInfo"] = self.systemPropertyInfoShrink!
+        }
+        if self.templateName != nil {
+            map["TemplateName"] = self.templateName!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["EnableAuto"] as? Bool {
+            self.enableAuto = value
+        }
+        if let value = dict["FilePath"] as? String {
+            self.filePath = value
+        }
+        if let value = dict["SystemPropertyInfo"] as? String {
+            self.systemPropertyInfoShrink = value
+        }
+        if let value = dict["TemplateName"] as? String {
+            self.templateName = value
+        }
+    }
+}
+
+public class CreateSystemPropertyTemplateResponseBody : Tea.TeaModel {
+    public var requestId: String?
+
+    public var templateId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.templateId != nil {
+            map["TemplateId"] = self.templateId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+        if let value = dict["TemplateId"] as? String {
+            self.templateId = value
+        }
+    }
+}
+
+public class CreateSystemPropertyTemplateResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: CreateSystemPropertyTemplateResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = CreateSystemPropertyTemplateResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
 public class DeleteAndroidInstanceGroupRequest : Tea.TeaModel {
     public var instanceGroupIds: [String]?
 
@@ -4919,6 +5339,134 @@ public class DeletePolicyGroupResponse : Tea.TeaModel {
         }
         if let value = dict["body"] as? [String: Any?] {
             var model = DeletePolicyGroupResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
+public class DeleteSystemPropertyTemplatesRequest : Tea.TeaModel {
+    public var templateIds: [String]?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.templateIds != nil {
+            map["TemplateIds"] = self.templateIds!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["TemplateIds"] as? [String] {
+            self.templateIds = value
+        }
+    }
+}
+
+public class DeleteSystemPropertyTemplatesResponseBody : Tea.TeaModel {
+    public var code: String?
+
+    public var message: String?
+
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.code != nil {
+            map["Code"] = self.code!
+        }
+        if self.message != nil {
+            map["Message"] = self.message!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["Code"] as? String {
+            self.code = value
+        }
+        if let value = dict["Message"] as? String {
+            self.message = value
+        }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+    }
+}
+
+public class DeleteSystemPropertyTemplatesResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: DeleteSystemPropertyTemplatesResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = DeleteSystemPropertyTemplatesResponseBody()
             model.fromMap(value)
             self.body = model
         }
@@ -9957,6 +10505,343 @@ public class DescribeSpecResponse : Tea.TeaModel {
     }
 }
 
+public class DescribeSystemPropertyTemplatesRequest : Tea.TeaModel {
+    public var maxResults: Int32?
+
+    public var nextToken: String?
+
+    public var templateIds: [String]?
+
+    public var templateName: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.maxResults != nil {
+            map["MaxResults"] = self.maxResults!
+        }
+        if self.nextToken != nil {
+            map["NextToken"] = self.nextToken!
+        }
+        if self.templateIds != nil {
+            map["TemplateIds"] = self.templateIds!
+        }
+        if self.templateName != nil {
+            map["TemplateName"] = self.templateName!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["MaxResults"] as? Int32 {
+            self.maxResults = value
+        }
+        if let value = dict["NextToken"] as? String {
+            self.nextToken = value
+        }
+        if let value = dict["TemplateIds"] as? [String] {
+            self.templateIds = value
+        }
+        if let value = dict["TemplateName"] as? String {
+            self.templateName = value
+        }
+    }
+}
+
+public class DescribeSystemPropertyTemplatesResponseBody : Tea.TeaModel {
+    public class SystemPropertyTemplateModel : Tea.TeaModel {
+        public class SystemPropertyInfo : Tea.TeaModel {
+            public class CustomPropertyInfos : Tea.TeaModel {
+                public var propertyName: String?
+
+                public var propertyValue: String?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.propertyName != nil {
+                        map["PropertyName"] = self.propertyName!
+                    }
+                    if self.propertyValue != nil {
+                        map["PropertyValue"] = self.propertyValue!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                    guard let dict else { return }
+                    if let value = dict["PropertyName"] as? String {
+                        self.propertyName = value
+                    }
+                    if let value = dict["PropertyValue"] as? String {
+                        self.propertyValue = value
+                    }
+                }
+            }
+            public var customPropertyInfos: [DescribeSystemPropertyTemplatesResponseBody.SystemPropertyTemplateModel.SystemPropertyInfo.CustomPropertyInfos]?
+
+            public var roProductDevice: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.customPropertyInfos != nil {
+                    var tmp : [Any] = []
+                    for k in self.customPropertyInfos! {
+                        tmp.append(k.toMap())
+                    }
+                    map["CustomPropertyInfos"] = tmp
+                }
+                if self.roProductDevice != nil {
+                    map["RoProductDevice"] = self.roProductDevice!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["CustomPropertyInfos"] as? [Any?] {
+                    var tmp : [DescribeSystemPropertyTemplatesResponseBody.SystemPropertyTemplateModel.SystemPropertyInfo.CustomPropertyInfos] = []
+                    for v in value {
+                        if v != nil {
+                            var model = DescribeSystemPropertyTemplatesResponseBody.SystemPropertyTemplateModel.SystemPropertyInfo.CustomPropertyInfos()
+                            if v != nil {
+                                model.fromMap(v as? [String: Any?])
+                            }
+                            tmp.append(model)
+                        }
+                    }
+                    self.customPropertyInfos = tmp
+                }
+                if let value = dict["RoProductDevice"] as? String {
+                    self.roProductDevice = value
+                }
+            }
+        }
+        public var enableAuto: Bool?
+
+        public var filePath: String?
+
+        public var status: String?
+
+        public var systemPropertyInfo: DescribeSystemPropertyTemplatesResponseBody.SystemPropertyTemplateModel.SystemPropertyInfo?
+
+        public var templateId: String?
+
+        public var templateName: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+            try self.systemPropertyInfo?.validate()
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.enableAuto != nil {
+                map["EnableAuto"] = self.enableAuto!
+            }
+            if self.filePath != nil {
+                map["FilePath"] = self.filePath!
+            }
+            if self.status != nil {
+                map["Status"] = self.status!
+            }
+            if self.systemPropertyInfo != nil {
+                map["SystemPropertyInfo"] = self.systemPropertyInfo?.toMap()
+            }
+            if self.templateId != nil {
+                map["TemplateId"] = self.templateId!
+            }
+            if self.templateName != nil {
+                map["TemplateName"] = self.templateName!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["EnableAuto"] as? Bool {
+                self.enableAuto = value
+            }
+            if let value = dict["FilePath"] as? String {
+                self.filePath = value
+            }
+            if let value = dict["Status"] as? String {
+                self.status = value
+            }
+            if let value = dict["SystemPropertyInfo"] as? [String: Any?] {
+                var model = DescribeSystemPropertyTemplatesResponseBody.SystemPropertyTemplateModel.SystemPropertyInfo()
+                model.fromMap(value)
+                self.systemPropertyInfo = model
+            }
+            if let value = dict["TemplateId"] as? String {
+                self.templateId = value
+            }
+            if let value = dict["TemplateName"] as? String {
+                self.templateName = value
+            }
+        }
+    }
+    public var nextToken: String?
+
+    public var requestId: String?
+
+    public var systemPropertyTemplateModel: [DescribeSystemPropertyTemplatesResponseBody.SystemPropertyTemplateModel]?
+
+    public var totalCount: Int32?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.nextToken != nil {
+            map["NextToken"] = self.nextToken!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.systemPropertyTemplateModel != nil {
+            var tmp : [Any] = []
+            for k in self.systemPropertyTemplateModel! {
+                tmp.append(k.toMap())
+            }
+            map["SystemPropertyTemplateModel"] = tmp
+        }
+        if self.totalCount != nil {
+            map["TotalCount"] = self.totalCount!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["NextToken"] as? String {
+            self.nextToken = value
+        }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+        if let value = dict["SystemPropertyTemplateModel"] as? [Any?] {
+            var tmp : [DescribeSystemPropertyTemplatesResponseBody.SystemPropertyTemplateModel] = []
+            for v in value {
+                if v != nil {
+                    var model = DescribeSystemPropertyTemplatesResponseBody.SystemPropertyTemplateModel()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.systemPropertyTemplateModel = tmp
+        }
+        if let value = dict["TotalCount"] as? Int32 {
+            self.totalCount = value
+        }
+    }
+}
+
+public class DescribeSystemPropertyTemplatesResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: DescribeSystemPropertyTemplatesResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = DescribeSystemPropertyTemplatesResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
 public class DescribeTasksRequest : Tea.TeaModel {
     public var instanceId: String?
 
@@ -11576,6 +12461,159 @@ public class GenerateCoordinationCodeResponse : Tea.TeaModel {
         }
         if let value = dict["body"] as? [String: Any?] {
             var model = GenerateCoordinationCodeResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
+public class GetInstancePropertiesRequest : Tea.TeaModel {
+    public var instanceId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.instanceId != nil {
+            map["InstanceId"] = self.instanceId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["InstanceId"] as? String {
+            self.instanceId = value
+        }
+    }
+}
+
+public class GetInstancePropertiesResponseBody : Tea.TeaModel {
+    public class PropertyTemplateModel : Tea.TeaModel {
+        public var content: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.content != nil {
+                map["Content"] = self.content!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["Content"] as? String {
+                self.content = value
+            }
+        }
+    }
+    public var propertyTemplateModel: GetInstancePropertiesResponseBody.PropertyTemplateModel?
+
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.propertyTemplateModel?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.propertyTemplateModel != nil {
+            map["PropertyTemplateModel"] = self.propertyTemplateModel?.toMap()
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["PropertyTemplateModel"] as? [String: Any?] {
+            var model = GetInstancePropertiesResponseBody.PropertyTemplateModel()
+            model.fromMap(value)
+            self.propertyTemplateModel = model
+        }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+    }
+}
+
+public class GetInstancePropertiesResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: GetInstancePropertiesResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = GetInstancePropertiesResponseBody()
             model.fromMap(value)
             self.body = model
         }
@@ -14023,6 +15061,426 @@ public class ModifyPolicyGroupResponse : Tea.TeaModel {
     }
 }
 
+public class ModifySystemPropertyTemplateRequest : Tea.TeaModel {
+    public class SystemPropertyInfo : Tea.TeaModel {
+        public class CustomPropertyInfos : Tea.TeaModel {
+            public var propertyName: String?
+
+            public var propertyValue: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.propertyName != nil {
+                    map["PropertyName"] = self.propertyName!
+                }
+                if self.propertyValue != nil {
+                    map["PropertyValue"] = self.propertyValue!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["PropertyName"] as? String {
+                    self.propertyName = value
+                }
+                if let value = dict["PropertyValue"] as? String {
+                    self.propertyValue = value
+                }
+            }
+        }
+        public var customPropertyInfos: [ModifySystemPropertyTemplateRequest.SystemPropertyInfo.CustomPropertyInfos]?
+
+        public var roBootloader: String?
+
+        public var roBuildDisplayId: String?
+
+        public var roBuildFingerprint: String?
+
+        public var roBuildHost: String?
+
+        public var roBuildId: String?
+
+        public var roBuildProduct: String?
+
+        public var roBuildTags: String?
+
+        public var roBuildType: String?
+
+        public var roBuildUser: String?
+
+        public var roProductBoard: String?
+
+        public var roProductBrand: String?
+
+        public var roProductDevice: String?
+
+        public var roProductManufacturer: String?
+
+        public var roProductModel: String?
+
+        public var rwRoSerialNo: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.customPropertyInfos != nil {
+                var tmp : [Any] = []
+                for k in self.customPropertyInfos! {
+                    tmp.append(k.toMap())
+                }
+                map["CustomPropertyInfos"] = tmp
+            }
+            if self.roBootloader != nil {
+                map["RoBootloader"] = self.roBootloader!
+            }
+            if self.roBuildDisplayId != nil {
+                map["RoBuildDisplayId"] = self.roBuildDisplayId!
+            }
+            if self.roBuildFingerprint != nil {
+                map["RoBuildFingerprint"] = self.roBuildFingerprint!
+            }
+            if self.roBuildHost != nil {
+                map["RoBuildHost"] = self.roBuildHost!
+            }
+            if self.roBuildId != nil {
+                map["RoBuildId"] = self.roBuildId!
+            }
+            if self.roBuildProduct != nil {
+                map["RoBuildProduct"] = self.roBuildProduct!
+            }
+            if self.roBuildTags != nil {
+                map["RoBuildTags"] = self.roBuildTags!
+            }
+            if self.roBuildType != nil {
+                map["RoBuildType"] = self.roBuildType!
+            }
+            if self.roBuildUser != nil {
+                map["RoBuildUser"] = self.roBuildUser!
+            }
+            if self.roProductBoard != nil {
+                map["RoProductBoard"] = self.roProductBoard!
+            }
+            if self.roProductBrand != nil {
+                map["RoProductBrand"] = self.roProductBrand!
+            }
+            if self.roProductDevice != nil {
+                map["RoProductDevice"] = self.roProductDevice!
+            }
+            if self.roProductManufacturer != nil {
+                map["RoProductManufacturer"] = self.roProductManufacturer!
+            }
+            if self.roProductModel != nil {
+                map["RoProductModel"] = self.roProductModel!
+            }
+            if self.rwRoSerialNo != nil {
+                map["RwRoSerialNo"] = self.rwRoSerialNo!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["CustomPropertyInfos"] as? [Any?] {
+                var tmp : [ModifySystemPropertyTemplateRequest.SystemPropertyInfo.CustomPropertyInfos] = []
+                for v in value {
+                    if v != nil {
+                        var model = ModifySystemPropertyTemplateRequest.SystemPropertyInfo.CustomPropertyInfos()
+                        if v != nil {
+                            model.fromMap(v as? [String: Any?])
+                        }
+                        tmp.append(model)
+                    }
+                }
+                self.customPropertyInfos = tmp
+            }
+            if let value = dict["RoBootloader"] as? String {
+                self.roBootloader = value
+            }
+            if let value = dict["RoBuildDisplayId"] as? String {
+                self.roBuildDisplayId = value
+            }
+            if let value = dict["RoBuildFingerprint"] as? String {
+                self.roBuildFingerprint = value
+            }
+            if let value = dict["RoBuildHost"] as? String {
+                self.roBuildHost = value
+            }
+            if let value = dict["RoBuildId"] as? String {
+                self.roBuildId = value
+            }
+            if let value = dict["RoBuildProduct"] as? String {
+                self.roBuildProduct = value
+            }
+            if let value = dict["RoBuildTags"] as? String {
+                self.roBuildTags = value
+            }
+            if let value = dict["RoBuildType"] as? String {
+                self.roBuildType = value
+            }
+            if let value = dict["RoBuildUser"] as? String {
+                self.roBuildUser = value
+            }
+            if let value = dict["RoProductBoard"] as? String {
+                self.roProductBoard = value
+            }
+            if let value = dict["RoProductBrand"] as? String {
+                self.roProductBrand = value
+            }
+            if let value = dict["RoProductDevice"] as? String {
+                self.roProductDevice = value
+            }
+            if let value = dict["RoProductManufacturer"] as? String {
+                self.roProductManufacturer = value
+            }
+            if let value = dict["RoProductModel"] as? String {
+                self.roProductModel = value
+            }
+            if let value = dict["RwRoSerialNo"] as? String {
+                self.rwRoSerialNo = value
+            }
+        }
+    }
+    public var enableAuto: Bool?
+
+    public var filePath: String?
+
+    public var systemPropertyInfo: ModifySystemPropertyTemplateRequest.SystemPropertyInfo?
+
+    public var templateId: String?
+
+    public var templateName: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.systemPropertyInfo?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.enableAuto != nil {
+            map["EnableAuto"] = self.enableAuto!
+        }
+        if self.filePath != nil {
+            map["FilePath"] = self.filePath!
+        }
+        if self.systemPropertyInfo != nil {
+            map["SystemPropertyInfo"] = self.systemPropertyInfo?.toMap()
+        }
+        if self.templateId != nil {
+            map["TemplateId"] = self.templateId!
+        }
+        if self.templateName != nil {
+            map["TemplateName"] = self.templateName!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["EnableAuto"] as? Bool {
+            self.enableAuto = value
+        }
+        if let value = dict["FilePath"] as? String {
+            self.filePath = value
+        }
+        if let value = dict["SystemPropertyInfo"] as? [String: Any?] {
+            var model = ModifySystemPropertyTemplateRequest.SystemPropertyInfo()
+            model.fromMap(value)
+            self.systemPropertyInfo = model
+        }
+        if let value = dict["TemplateId"] as? String {
+            self.templateId = value
+        }
+        if let value = dict["TemplateName"] as? String {
+            self.templateName = value
+        }
+    }
+}
+
+public class ModifySystemPropertyTemplateShrinkRequest : Tea.TeaModel {
+    public var enableAuto: Bool?
+
+    public var filePath: String?
+
+    public var systemPropertyInfoShrink: String?
+
+    public var templateId: String?
+
+    public var templateName: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.enableAuto != nil {
+            map["EnableAuto"] = self.enableAuto!
+        }
+        if self.filePath != nil {
+            map["FilePath"] = self.filePath!
+        }
+        if self.systemPropertyInfoShrink != nil {
+            map["SystemPropertyInfo"] = self.systemPropertyInfoShrink!
+        }
+        if self.templateId != nil {
+            map["TemplateId"] = self.templateId!
+        }
+        if self.templateName != nil {
+            map["TemplateName"] = self.templateName!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["EnableAuto"] as? Bool {
+            self.enableAuto = value
+        }
+        if let value = dict["FilePath"] as? String {
+            self.filePath = value
+        }
+        if let value = dict["SystemPropertyInfo"] as? String {
+            self.systemPropertyInfoShrink = value
+        }
+        if let value = dict["TemplateId"] as? String {
+            self.templateId = value
+        }
+        if let value = dict["TemplateName"] as? String {
+            self.templateName = value
+        }
+    }
+}
+
+public class ModifySystemPropertyTemplateResponseBody : Tea.TeaModel {
+    public var requestId: String?
+
+    public var templateId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.templateId != nil {
+            map["TemplateId"] = self.templateId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+        if let value = dict["TemplateId"] as? String {
+            self.templateId = value
+        }
+    }
+}
+
+public class ModifySystemPropertyTemplateResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: ModifySystemPropertyTemplateResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = ModifySystemPropertyTemplateResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
 public class OperateAppRequest : Tea.TeaModel {
     public var appId: Int32?
 
@@ -15297,6 +16755,134 @@ public class SendFileResponse : Tea.TeaModel {
         }
         if let value = dict["body"] as? [String: Any?] {
             var model = SendFileResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
+public class SendSystemPropertyTemplateRequest : Tea.TeaModel {
+    public var androidInstanceIds: [String]?
+
+    public var templateId: String?
+
+    public var templateIds: [String]?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.androidInstanceIds != nil {
+            map["AndroidInstanceIds"] = self.androidInstanceIds!
+        }
+        if self.templateId != nil {
+            map["TemplateId"] = self.templateId!
+        }
+        if self.templateIds != nil {
+            map["TemplateIds"] = self.templateIds!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["AndroidInstanceIds"] as? [String] {
+            self.androidInstanceIds = value
+        }
+        if let value = dict["TemplateId"] as? String {
+            self.templateId = value
+        }
+        if let value = dict["TemplateIds"] as? [String] {
+            self.templateIds = value
+        }
+    }
+}
+
+public class SendSystemPropertyTemplateResponseBody : Tea.TeaModel {
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+    }
+}
+
+public class SendSystemPropertyTemplateResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: SendSystemPropertyTemplateResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = SendSystemPropertyTemplateResponseBody()
             model.fromMap(value)
             self.body = model
         }
