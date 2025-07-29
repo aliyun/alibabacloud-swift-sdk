@@ -35793,6 +35793,8 @@ public class DescribeModificationPriceRequest : Tea.TeaModel {
 
     public var instanceType: String?
 
+    public var promotionId: String?
+
     public var regionId: String?
 
     public var resellerOwnerUid: Int64?
@@ -35827,6 +35829,9 @@ public class DescribeModificationPriceRequest : Tea.TeaModel {
         }
         if self.instanceType != nil {
             map["InstanceType"] = self.instanceType!
+        }
+        if self.promotionId != nil {
+            map["PromotionId"] = self.promotionId!
         }
         if self.regionId != nil {
             map["RegionId"] = self.regionId!
@@ -35863,6 +35868,9 @@ public class DescribeModificationPriceRequest : Tea.TeaModel {
         }
         if let value = dict["InstanceType"] as? String {
             self.instanceType = value
+        }
+        if let value = dict["PromotionId"] as? String {
+            self.promotionId = value
         }
         if let value = dict["RegionId"] as? String {
             self.regionId = value
@@ -41777,6 +41785,8 @@ public class DescribeRenewalPriceRequest : Tea.TeaModel {
 
     public var periodUnit: String?
 
+    public var promotionId: String?
+
     public var regionId: String?
 
     public var resellerOwnerUid: Int64?
@@ -41809,6 +41819,9 @@ public class DescribeRenewalPriceRequest : Tea.TeaModel {
         if self.periodUnit != nil {
             map["PeriodUnit"] = self.periodUnit!
         }
+        if self.promotionId != nil {
+            map["PromotionId"] = self.promotionId!
+        }
         if self.regionId != nil {
             map["RegionId"] = self.regionId!
         }
@@ -41834,6 +41847,9 @@ public class DescribeRenewalPriceRequest : Tea.TeaModel {
         }
         if let value = dict["PeriodUnit"] as? String {
             self.periodUnit = value
+        }
+        if let value = dict["PromotionId"] as? String {
+            self.promotionId = value
         }
         if let value = dict["RegionId"] as? String {
             self.regionId = value
