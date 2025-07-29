@@ -1433,6 +1433,60 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func manageSchedulerxJobSyncWithOptions(_ tmpReq: ManageSchedulerxJobSyncRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ManageSchedulerxJobSyncResponse {
+        try TeaUtils.Client.validateModel(tmpReq)
+        var request: ManageSchedulerxJobSyncShrinkRequest = ManageSchedulerxJobSyncShrinkRequest([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.jobIdList)) {
+            request.jobIdListShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.jobIdList, "JobIdList", "json")
+        }
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.jobIdListShrink)) {
+            body["JobIdList"] = request.jobIdListShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.namespaceSource)) {
+            body["NamespaceSource"] = request.namespaceSource ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.originalGroupId)) {
+            body["OriginalGroupId"] = request.originalGroupId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.originalNamespace)) {
+            body["OriginalNamespace"] = request.originalNamespace ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.regionId)) {
+            body["RegionId"] = request.regionId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.targetGroupId)) {
+            body["TargetGroupId"] = request.targetGroupId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.targetNamespace)) {
+            body["TargetNamespace"] = request.targetNamespace ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "ManageSchedulerxJobSync",
+            "version": "2019-04-30",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(ManageSchedulerxJobSyncResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func manageSchedulerxJobSync(_ request: ManageSchedulerxJobSyncRequest) async throws -> ManageSchedulerxJobSyncResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await manageSchedulerxJobSyncWithOptions(request as! ManageSchedulerxJobSyncRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func readSchedulerxDesignateDetailWithOptions(_ request: ReadSchedulerxDesignateDetailRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ReadSchedulerxDesignateDetailResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]

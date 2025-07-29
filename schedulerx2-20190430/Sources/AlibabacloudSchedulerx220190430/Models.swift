@@ -9964,6 +9964,269 @@ public class ListWorkflowInstanceResponse : Tea.TeaModel {
     }
 }
 
+public class ManageSchedulerxJobSyncRequest : Tea.TeaModel {
+    public var jobIdList: [Int64]?
+
+    public var namespaceSource: String?
+
+    public var originalGroupId: String?
+
+    public var originalNamespace: String?
+
+    public var regionId: String?
+
+    public var targetGroupId: String?
+
+    public var targetNamespace: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.jobIdList != nil {
+            map["JobIdList"] = self.jobIdList!
+        }
+        if self.namespaceSource != nil {
+            map["NamespaceSource"] = self.namespaceSource!
+        }
+        if self.originalGroupId != nil {
+            map["OriginalGroupId"] = self.originalGroupId!
+        }
+        if self.originalNamespace != nil {
+            map["OriginalNamespace"] = self.originalNamespace!
+        }
+        if self.regionId != nil {
+            map["RegionId"] = self.regionId!
+        }
+        if self.targetGroupId != nil {
+            map["TargetGroupId"] = self.targetGroupId!
+        }
+        if self.targetNamespace != nil {
+            map["TargetNamespace"] = self.targetNamespace!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["JobIdList"] as? [Int64] {
+            self.jobIdList = value
+        }
+        if let value = dict["NamespaceSource"] as? String {
+            self.namespaceSource = value
+        }
+        if let value = dict["OriginalGroupId"] as? String {
+            self.originalGroupId = value
+        }
+        if let value = dict["OriginalNamespace"] as? String {
+            self.originalNamespace = value
+        }
+        if let value = dict["RegionId"] as? String {
+            self.regionId = value
+        }
+        if let value = dict["TargetGroupId"] as? String {
+            self.targetGroupId = value
+        }
+        if let value = dict["TargetNamespace"] as? String {
+            self.targetNamespace = value
+        }
+    }
+}
+
+public class ManageSchedulerxJobSyncShrinkRequest : Tea.TeaModel {
+    public var jobIdListShrink: String?
+
+    public var namespaceSource: String?
+
+    public var originalGroupId: String?
+
+    public var originalNamespace: String?
+
+    public var regionId: String?
+
+    public var targetGroupId: String?
+
+    public var targetNamespace: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.jobIdListShrink != nil {
+            map["JobIdList"] = self.jobIdListShrink!
+        }
+        if self.namespaceSource != nil {
+            map["NamespaceSource"] = self.namespaceSource!
+        }
+        if self.originalGroupId != nil {
+            map["OriginalGroupId"] = self.originalGroupId!
+        }
+        if self.originalNamespace != nil {
+            map["OriginalNamespace"] = self.originalNamespace!
+        }
+        if self.regionId != nil {
+            map["RegionId"] = self.regionId!
+        }
+        if self.targetGroupId != nil {
+            map["TargetGroupId"] = self.targetGroupId!
+        }
+        if self.targetNamespace != nil {
+            map["TargetNamespace"] = self.targetNamespace!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["JobIdList"] as? String {
+            self.jobIdListShrink = value
+        }
+        if let value = dict["NamespaceSource"] as? String {
+            self.namespaceSource = value
+        }
+        if let value = dict["OriginalGroupId"] as? String {
+            self.originalGroupId = value
+        }
+        if let value = dict["OriginalNamespace"] as? String {
+            self.originalNamespace = value
+        }
+        if let value = dict["RegionId"] as? String {
+            self.regionId = value
+        }
+        if let value = dict["TargetGroupId"] as? String {
+            self.targetGroupId = value
+        }
+        if let value = dict["TargetNamespace"] as? String {
+            self.targetNamespace = value
+        }
+    }
+}
+
+public class ManageSchedulerxJobSyncResponseBody : Tea.TeaModel {
+    public var code: Int32?
+
+    public var message: String?
+
+    public var requestId: String?
+
+    public var success: Bool?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.code != nil {
+            map["Code"] = self.code!
+        }
+        if self.message != nil {
+            map["Message"] = self.message!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.success != nil {
+            map["Success"] = self.success!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["Code"] as? Int32 {
+            self.code = value
+        }
+        if let value = dict["Message"] as? String {
+            self.message = value
+        }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+        if let value = dict["Success"] as? Bool {
+            self.success = value
+        }
+    }
+}
+
+public class ManageSchedulerxJobSyncResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: ManageSchedulerxJobSyncResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = ManageSchedulerxJobSyncResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
 public class ReadSchedulerxDesignateDetailRequest : Tea.TeaModel {
     public var designateType: Int32?
 
