@@ -2170,6 +2170,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.instanceId)) {
             query["InstanceId"] = request.instanceId ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.lang)) {
+            query["Lang"] = request.lang ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.level)) {
             query["Level"] = request.level ?? "";
         }
@@ -2369,6 +2372,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.clusterId)) {
             query["ClusterId"] = request.clusterId ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.endTime)) {
+            query["EndTime"] = request.endTime!;
+        }
         if (!TeaUtils.Client.isUnset(request.instanceId)) {
             query["InstanceId"] = request.instanceId ?? "";
         }
@@ -2378,8 +2384,14 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.resourceManagerResourceGroupId)) {
             query["ResourceManagerResourceGroupId"] = request.resourceManagerResourceGroupId ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.startTime)) {
+            query["StartTime"] = request.startTime!;
+        }
         if (!TeaUtils.Client.isUnset(request.type)) {
             query["Type"] = request.type ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.userStatusList)) {
+            query["UserStatusList"] = request.userStatusList ?? [];
         }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "query": AlibabaCloudOpenApiUtil.Client.query(query)
@@ -6227,6 +6239,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.startTime)) {
             query["StartTime"] = request.startTime!;
         }
+        if (!TeaUtils.Client.isUnset(request.userStatusList)) {
+            query["UserStatusList"] = request.userStatusList ?? [];
+        }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "query": AlibabaCloudOpenApiUtil.Client.query(query)
         ])
@@ -6410,6 +6425,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.startTime)) {
             query["StartTime"] = request.startTime!;
+        }
+        if (!TeaUtils.Client.isUnset(request.userStatusList)) {
+            query["UserStatusList"] = request.userStatusList ?? [];
         }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "query": AlibabaCloudOpenApiUtil.Client.query(query)

@@ -9834,6 +9834,8 @@ public class DescribeApisecProtectionResourcesResponse : Tea.TeaModel {
 public class DescribeApisecRulesRequest : Tea.TeaModel {
     public var instanceId: String?
 
+    public var lang: String?
+
     public var level: String?
 
     public var name: String?
@@ -9869,6 +9871,9 @@ public class DescribeApisecRulesRequest : Tea.TeaModel {
         if self.instanceId != nil {
             map["InstanceId"] = self.instanceId!
         }
+        if self.lang != nil {
+            map["Lang"] = self.lang!
+        }
         if self.level != nil {
             map["Level"] = self.level!
         }
@@ -9903,6 +9908,9 @@ public class DescribeApisecRulesRequest : Tea.TeaModel {
         guard let dict else { return }
         if let value = dict["InstanceId"] as? String {
             self.instanceId = value
+        }
+        if let value = dict["Lang"] as? String {
+            self.lang = value
         }
         if let value = dict["Level"] as? String {
             self.level = value
@@ -10682,13 +10690,19 @@ public class DescribeApisecSlsProjectsResponse : Tea.TeaModel {
 public class DescribeApisecStatisticsRequest : Tea.TeaModel {
     public var clusterId: String?
 
+    public var endTime: Int64?
+
     public var instanceId: String?
 
     public var regionId: String?
 
     public var resourceManagerResourceGroupId: String?
 
+    public var startTime: Int64?
+
     public var type: String?
+
+    public var userStatusList: [String]?
 
     public override init() {
         super.init()
@@ -10707,6 +10721,9 @@ public class DescribeApisecStatisticsRequest : Tea.TeaModel {
         if self.clusterId != nil {
             map["ClusterId"] = self.clusterId!
         }
+        if self.endTime != nil {
+            map["EndTime"] = self.endTime!
+        }
         if self.instanceId != nil {
             map["InstanceId"] = self.instanceId!
         }
@@ -10716,8 +10733,14 @@ public class DescribeApisecStatisticsRequest : Tea.TeaModel {
         if self.resourceManagerResourceGroupId != nil {
             map["ResourceManagerResourceGroupId"] = self.resourceManagerResourceGroupId!
         }
+        if self.startTime != nil {
+            map["StartTime"] = self.startTime!
+        }
         if self.type != nil {
             map["Type"] = self.type!
+        }
+        if self.userStatusList != nil {
+            map["UserStatusList"] = self.userStatusList!
         }
         return map
     }
@@ -10726,6 +10749,9 @@ public class DescribeApisecStatisticsRequest : Tea.TeaModel {
         guard let dict else { return }
         if let value = dict["ClusterId"] as? String {
             self.clusterId = value
+        }
+        if let value = dict["EndTime"] as? Int64 {
+            self.endTime = value
         }
         if let value = dict["InstanceId"] as? String {
             self.instanceId = value
@@ -10736,8 +10762,14 @@ public class DescribeApisecStatisticsRequest : Tea.TeaModel {
         if let value = dict["ResourceManagerResourceGroupId"] as? String {
             self.resourceManagerResourceGroupId = value
         }
+        if let value = dict["StartTime"] as? Int64 {
+            self.startTime = value
+        }
         if let value = dict["Type"] as? String {
             self.type = value
+        }
+        if let value = dict["UserStatusList"] as? [String] {
+            self.userStatusList = value
         }
     }
 }
@@ -10762,9 +10794,15 @@ public class DescribeApisecStatisticsResponseBody : Tea.TeaModel {
 
         public var medium: Int64?
 
+        public var notFixed: Int64?
+
+        public var systemFixed: Int64?
+
         public var toBeConfirmed: Int64?
 
         public var toBeFixed: Int64?
+
+        public var toBeVerified: Int64?
 
         public var todayHigh: String?
 
@@ -10817,11 +10855,20 @@ public class DescribeApisecStatisticsResponseBody : Tea.TeaModel {
             if self.medium != nil {
                 map["Medium"] = self.medium!
             }
+            if self.notFixed != nil {
+                map["NotFixed"] = self.notFixed!
+            }
+            if self.systemFixed != nil {
+                map["SystemFixed"] = self.systemFixed!
+            }
             if self.toBeConfirmed != nil {
                 map["ToBeConfirmed"] = self.toBeConfirmed!
             }
             if self.toBeFixed != nil {
                 map["ToBeFixed"] = self.toBeFixed!
+            }
+            if self.toBeVerified != nil {
+                map["ToBeVerified"] = self.toBeVerified!
             }
             if self.todayHigh != nil {
                 map["TodayHigh"] = self.todayHigh!
@@ -10870,11 +10917,20 @@ public class DescribeApisecStatisticsResponseBody : Tea.TeaModel {
             if let value = dict["Medium"] as? Int64 {
                 self.medium = value
             }
+            if let value = dict["NotFixed"] as? Int64 {
+                self.notFixed = value
+            }
+            if let value = dict["SystemFixed"] as? Int64 {
+                self.systemFixed = value
+            }
             if let value = dict["ToBeConfirmed"] as? Int64 {
                 self.toBeConfirmed = value
             }
             if let value = dict["ToBeFixed"] as? Int64 {
                 self.toBeFixed = value
+            }
+            if let value = dict["ToBeVerified"] as? Int64 {
+                self.toBeVerified = value
             }
             if let value = dict["TodayHigh"] as? String {
                 self.todayHigh = value
@@ -11291,6 +11347,8 @@ public class DescribeApisecUserOperationsResponseBody : Tea.TeaModel {
 
         public var objectId: String?
 
+        public var operationSource: String?
+
         public var time: Int64?
 
         public var toStatus: String?
@@ -11322,6 +11380,9 @@ public class DescribeApisecUserOperationsResponseBody : Tea.TeaModel {
             if self.objectId != nil {
                 map["ObjectId"] = self.objectId!
             }
+            if self.operationSource != nil {
+                map["OperationSource"] = self.operationSource!
+            }
             if self.time != nil {
                 map["Time"] = self.time!
             }
@@ -11347,6 +11408,9 @@ public class DescribeApisecUserOperationsResponseBody : Tea.TeaModel {
             }
             if let value = dict["ObjectId"] as? String {
                 self.objectId = value
+            }
+            if let value = dict["OperationSource"] as? String {
+                self.operationSource = value
             }
             if let value = dict["Time"] as? Int64 {
                 self.time = value
@@ -34018,6 +34082,8 @@ public class DescribeUserAbnormalTypeRequest : Tea.TeaModel {
 
     public var startTime: Int64?
 
+    public var userStatusList: [String]?
+
     public override init() {
         super.init()
     }
@@ -34050,6 +34116,9 @@ public class DescribeUserAbnormalTypeRequest : Tea.TeaModel {
         if self.startTime != nil {
             map["StartTime"] = self.startTime!
         }
+        if self.userStatusList != nil {
+            map["UserStatusList"] = self.userStatusList!
+        }
         return map
     }
 
@@ -34072,6 +34141,9 @@ public class DescribeUserAbnormalTypeRequest : Tea.TeaModel {
         }
         if let value = dict["StartTime"] as? Int64 {
             self.startTime = value
+        }
+        if let value = dict["UserStatusList"] as? [String] {
+            self.userStatusList = value
         }
     }
 }
@@ -34906,6 +34978,8 @@ public class DescribeUserEventTypeRequest : Tea.TeaModel {
 
     public var startTime: Int64?
 
+    public var userStatusList: [String]?
+
     public override init() {
         super.init()
     }
@@ -34938,6 +35012,9 @@ public class DescribeUserEventTypeRequest : Tea.TeaModel {
         if self.startTime != nil {
             map["StartTime"] = self.startTime!
         }
+        if self.userStatusList != nil {
+            map["UserStatusList"] = self.userStatusList!
+        }
         return map
     }
 
@@ -34960,6 +35037,9 @@ public class DescribeUserEventTypeRequest : Tea.TeaModel {
         }
         if let value = dict["StartTime"] as? Int64 {
             self.startTime = value
+        }
+        if let value = dict["UserStatusList"] as? [String] {
+            self.userStatusList = value
         }
     }
 }
