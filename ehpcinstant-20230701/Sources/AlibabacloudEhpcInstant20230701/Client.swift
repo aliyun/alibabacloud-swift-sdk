@@ -82,6 +82,9 @@ open class Client : AlibabacloudOpenApi.Client {
         try TeaUtils.Client.validateModel(tmpReq)
         var request: CreateJobShrinkRequest = CreateJobShrinkRequest([:])
         AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.dependencyPolicy)) {
+            request.dependencyPolicyShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.dependencyPolicy, "DependencyPolicy", "json")
+        }
         if (!TeaUtils.Client.isUnset(tmpReq.deploymentPolicy)) {
             request.deploymentPolicyShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.deploymentPolicy, "DeploymentPolicy", "json")
         }
@@ -92,6 +95,9 @@ open class Client : AlibabacloudOpenApi.Client {
             request.tasksShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.tasks, "Tasks", "json")
         }
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.dependencyPolicyShrink)) {
+            query["DependencyPolicy"] = request.dependencyPolicyShrink ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.deploymentPolicyShrink)) {
             query["DeploymentPolicy"] = request.deploymentPolicyShrink ?? "";
         }
