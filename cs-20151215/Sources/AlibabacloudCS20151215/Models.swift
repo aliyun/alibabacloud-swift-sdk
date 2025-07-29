@@ -1584,6 +1584,8 @@ public class Nodepool : Tea.TeaModel {
 
         public var instanceChargeType: String?
 
+        public var instanceMetadataOptions: InstanceMetadataOptions?
+
         public var instanceTypes: [String]?
 
         public var internetChargeType: String?
@@ -1660,6 +1662,7 @@ public class Nodepool : Tea.TeaModel {
         }
 
         public override func validate() throws -> Void {
+            try self.instanceMetadataOptions?.validate()
             try self.privatePoolOptions?.validate()
         }
 
@@ -1695,6 +1698,9 @@ public class Nodepool : Tea.TeaModel {
             }
             if self.instanceChargeType != nil {
                 map["instance_charge_type"] = self.instanceChargeType!
+            }
+            if self.instanceMetadataOptions != nil {
+                map["instance_metadata_options"] = self.instanceMetadataOptions?.toMap()
             }
             if self.instanceTypes != nil {
                 map["instance_types"] = self.instanceTypes!
@@ -1844,6 +1850,11 @@ public class Nodepool : Tea.TeaModel {
             }
             if let value = dict["instance_charge_type"] as? String {
                 self.instanceChargeType = value
+            }
+            if let value = dict["instance_metadata_options"] as? [String: Any?] {
+                var model = InstanceMetadataOptions()
+                model.fromMap(value)
+                self.instanceMetadataOptions = model
             }
             if let value = dict["instance_types"] as? [String] {
                 self.instanceTypes = value
@@ -3902,6 +3913,8 @@ public class CreateClusterRequest : Tea.TeaModel {
 
         public var imageType: String?
 
+        public var instanceMetadataOptions: InstanceMetadataOptions?
+
         public var instanceTypes: [String]?
 
         public var keyPair: String?
@@ -3944,6 +3957,7 @@ public class CreateClusterRequest : Tea.TeaModel {
         }
 
         public override func validate() throws -> Void {
+            try self.instanceMetadataOptions?.validate()
         }
 
         public override func toMap() -> [String : Any] {
@@ -3971,6 +3985,9 @@ public class CreateClusterRequest : Tea.TeaModel {
             }
             if self.imageType != nil {
                 map["image_type"] = self.imageType!
+            }
+            if self.instanceMetadataOptions != nil {
+                map["instance_metadata_options"] = self.instanceMetadataOptions?.toMap()
             }
             if self.instanceTypes != nil {
                 map["instance_types"] = self.instanceTypes!
@@ -4048,6 +4065,11 @@ public class CreateClusterRequest : Tea.TeaModel {
             }
             if let value = dict["image_type"] as? String {
                 self.imageType = value
+            }
+            if let value = dict["instance_metadata_options"] as? [String: Any?] {
+                var model = InstanceMetadataOptions()
+                model.fromMap(value)
+                self.instanceMetadataOptions = model
             }
             if let value = dict["instance_types"] as? [String] {
                 self.instanceTypes = value
@@ -6371,6 +6393,8 @@ public class CreateClusterNodePoolRequest : Tea.TeaModel {
 
         public var instanceChargeType: String?
 
+        public var instanceMetadataOptions: InstanceMetadataOptions?
+
         public var instancePatterns: [InstancePatterns]?
 
         public var instanceTypes: [String]?
@@ -6453,6 +6477,7 @@ public class CreateClusterNodePoolRequest : Tea.TeaModel {
         }
 
         public override func validate() throws -> Void {
+            try self.instanceMetadataOptions?.validate()
             try self.privatePoolOptions?.validate()
         }
 
@@ -6491,6 +6516,9 @@ public class CreateClusterNodePoolRequest : Tea.TeaModel {
             }
             if self.instanceChargeType != nil {
                 map["instance_charge_type"] = self.instanceChargeType!
+            }
+            if self.instanceMetadataOptions != nil {
+                map["instance_metadata_options"] = self.instanceMetadataOptions?.toMap()
             }
             if self.instancePatterns != nil {
                 var tmp : [Any] = []
@@ -6656,6 +6684,11 @@ public class CreateClusterNodePoolRequest : Tea.TeaModel {
             }
             if let value = dict["instance_charge_type"] as? String {
                 self.instanceChargeType = value
+            }
+            if let value = dict["instance_metadata_options"] as? [String: Any?] {
+                var model = InstanceMetadataOptions()
+                model.fromMap(value)
+                self.instanceMetadataOptions = model
             }
             if let value = dict["instance_patterns"] as? [Any?] {
                 var tmp : [InstancePatterns] = []
@@ -10270,6 +10303,8 @@ public class DescribeClusterDetailResponseBody : Tea.TeaModel {
 
         public var imageType: String?
 
+        public var instanceMetadataOptions: InstanceMetadataOptions?
+
         public var instanceTypes: [String]?
 
         public var keyPair: String?
@@ -10310,6 +10345,7 @@ public class DescribeClusterDetailResponseBody : Tea.TeaModel {
         }
 
         public override func validate() throws -> Void {
+            try self.instanceMetadataOptions?.validate()
         }
 
         public override func toMap() -> [String : Any] {
@@ -10337,6 +10373,9 @@ public class DescribeClusterDetailResponseBody : Tea.TeaModel {
             }
             if self.imageType != nil {
                 map["image_type"] = self.imageType!
+            }
+            if self.instanceMetadataOptions != nil {
+                map["instance_metadata_options"] = self.instanceMetadataOptions?.toMap()
             }
             if self.instanceTypes != nil {
                 map["instance_types"] = self.instanceTypes!
@@ -10411,6 +10450,11 @@ public class DescribeClusterDetailResponseBody : Tea.TeaModel {
             }
             if let value = dict["image_type"] as? String {
                 self.imageType = value
+            }
+            if let value = dict["instance_metadata_options"] as? [String: Any?] {
+                var model = InstanceMetadataOptions()
+                model.fromMap(value)
+                self.instanceMetadataOptions = model
             }
             if let value = dict["instance_types"] as? [String] {
                 self.instanceTypes = value
@@ -12180,6 +12224,8 @@ public class DescribeClusterNodePoolDetailResponseBody : Tea.TeaModel {
 
         public var instanceChargeType: String?
 
+        public var instanceMetadataOptions: InstanceMetadataOptions?
+
         public var instancePatterns: [InstancePatterns]?
 
         public var instanceTypes: [String]?
@@ -12266,6 +12312,7 @@ public class DescribeClusterNodePoolDetailResponseBody : Tea.TeaModel {
         }
 
         public override func validate() throws -> Void {
+            try self.instanceMetadataOptions?.validate()
             try self.privatePoolOptions?.validate()
         }
 
@@ -12304,6 +12351,9 @@ public class DescribeClusterNodePoolDetailResponseBody : Tea.TeaModel {
             }
             if self.instanceChargeType != nil {
                 map["instance_charge_type"] = self.instanceChargeType!
+            }
+            if self.instanceMetadataOptions != nil {
+                map["instance_metadata_options"] = self.instanceMetadataOptions?.toMap()
             }
             if self.instancePatterns != nil {
                 var tmp : [Any] = []
@@ -12475,6 +12525,11 @@ public class DescribeClusterNodePoolDetailResponseBody : Tea.TeaModel {
             }
             if let value = dict["instance_charge_type"] as? String {
                 self.instanceChargeType = value
+            }
+            if let value = dict["instance_metadata_options"] as? [String: Any?] {
+                var model = InstanceMetadataOptions()
+                model.fromMap(value)
+                self.instanceMetadataOptions = model
             }
             if let value = dict["instance_patterns"] as? [Any?] {
                 var tmp : [InstancePatterns] = []
