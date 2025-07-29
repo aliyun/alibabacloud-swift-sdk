@@ -374,6 +374,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.gpuConfig)) {
             query["GpuConfig"] = request.gpuConfig ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.html)) {
+            query["Html"] = request.html ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.imagePullSecrets)) {
             query["ImagePullSecrets"] = request.imagePullSecrets ?? "";
         }
@@ -1849,6 +1852,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.gpuConfig)) {
             query["GpuConfig"] = request.gpuConfig ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.html)) {
+            query["Html"] = request.html ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.imagePullSecrets)) {
             query["ImagePullSecrets"] = request.imagePullSecrets ?? "";

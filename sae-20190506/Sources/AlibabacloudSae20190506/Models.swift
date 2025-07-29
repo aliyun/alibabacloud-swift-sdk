@@ -15083,6 +15083,8 @@ public class CreateApplicationRequest : Tea.TeaModel {
 
     public var gpuConfig: String?
 
+    public var html: String?
+
     public var imagePullSecrets: String?
 
     public var imageUrl: String?
@@ -15277,6 +15279,9 @@ public class CreateApplicationRequest : Tea.TeaModel {
         }
         if self.gpuConfig != nil {
             map["GpuConfig"] = self.gpuConfig!
+        }
+        if self.html != nil {
+            map["Html"] = self.html!
         }
         if self.imagePullSecrets != nil {
             map["ImagePullSecrets"] = self.imagePullSecrets!
@@ -15525,6 +15530,9 @@ public class CreateApplicationRequest : Tea.TeaModel {
         if let value = dict["GpuConfig"] as? String {
             self.gpuConfig = value
         }
+        if let value = dict["Html"] as? String {
+            self.html = value
+        }
         if let value = dict["ImagePullSecrets"] as? String {
             self.imagePullSecrets = value
         }
@@ -15758,6 +15766,8 @@ public class CreateApplicationShrinkRequest : Tea.TeaModel {
 
     public var gpuConfig: String?
 
+    public var html: String?
+
     public var imagePullSecrets: String?
 
     public var imageUrl: String?
@@ -15952,6 +15962,9 @@ public class CreateApplicationShrinkRequest : Tea.TeaModel {
         }
         if self.gpuConfig != nil {
             map["GpuConfig"] = self.gpuConfig!
+        }
+        if self.html != nil {
+            map["Html"] = self.html!
         }
         if self.imagePullSecrets != nil {
             map["ImagePullSecrets"] = self.imagePullSecrets!
@@ -16191,6 +16204,9 @@ public class CreateApplicationShrinkRequest : Tea.TeaModel {
         }
         if let value = dict["GpuConfig"] as? String {
             self.gpuConfig = value
+        }
+        if let value = dict["Html"] as? String {
+            self.html = value
         }
         if let value = dict["ImagePullSecrets"] as? String {
             self.imagePullSecrets = value
@@ -22529,6 +22545,8 @@ public class DeployApplicationRequest : Tea.TeaModel {
 
     public var gpuConfig: String?
 
+    public var html: String?
+
     public var imagePullSecrets: String?
 
     public var imageUrl: String?
@@ -22716,6 +22734,9 @@ public class DeployApplicationRequest : Tea.TeaModel {
         }
         if self.gpuConfig != nil {
             map["GpuConfig"] = self.gpuConfig!
+        }
+        if self.html != nil {
+            map["Html"] = self.html!
         }
         if self.imagePullSecrets != nil {
             map["ImagePullSecrets"] = self.imagePullSecrets!
@@ -22955,6 +22976,9 @@ public class DeployApplicationRequest : Tea.TeaModel {
         if let value = dict["GpuConfig"] as? String {
             self.gpuConfig = value
         }
+        if let value = dict["Html"] as? String {
+            self.html = value
+        }
         if let value = dict["ImagePullSecrets"] as? String {
             self.imagePullSecrets = value
         }
@@ -23180,6 +23204,8 @@ public class DeployApplicationShrinkRequest : Tea.TeaModel {
 
     public var gpuConfig: String?
 
+    public var html: String?
+
     public var imagePullSecrets: String?
 
     public var imageUrl: String?
@@ -23367,6 +23393,9 @@ public class DeployApplicationShrinkRequest : Tea.TeaModel {
         }
         if self.gpuConfig != nil {
             map["GpuConfig"] = self.gpuConfig!
+        }
+        if self.html != nil {
+            map["Html"] = self.html!
         }
         if self.imagePullSecrets != nil {
             map["ImagePullSecrets"] = self.imagePullSecrets!
@@ -23597,6 +23626,9 @@ public class DeployApplicationShrinkRequest : Tea.TeaModel {
         }
         if let value = dict["GpuConfig"] as? String {
             self.gpuConfig = value
+        }
+        if let value = dict["Html"] as? String {
+            self.html = value
         }
         if let value = dict["ImagePullSecrets"] as? String {
             self.imagePullSecrets = value
@@ -25132,6 +25164,8 @@ public class DescribeApplicationConfigResponseBody : Tea.TeaModel {
 
         public var gpuType: String?
 
+        public var html: String?
+
         public var imagePullSecrets: String?
 
         public var imageUrl: String?
@@ -25353,6 +25387,9 @@ public class DescribeApplicationConfigResponseBody : Tea.TeaModel {
             }
             if self.gpuType != nil {
                 map["GpuType"] = self.gpuType!
+            }
+            if self.html != nil {
+                map["Html"] = self.html!
             }
             if self.imagePullSecrets != nil {
                 map["ImagePullSecrets"] = self.imagePullSecrets!
@@ -25656,6 +25693,9 @@ public class DescribeApplicationConfigResponseBody : Tea.TeaModel {
             }
             if let value = dict["GpuType"] as? String {
                 self.gpuType = value
+            }
+            if let value = dict["Html"] as? String {
+                self.html = value
             }
             if let value = dict["ImagePullSecrets"] as? String {
                 self.imagePullSecrets = value
