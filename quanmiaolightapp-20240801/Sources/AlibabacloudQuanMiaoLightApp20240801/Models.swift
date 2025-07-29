@@ -3342,6 +3342,180 @@ public class GetVideoAnalysisTaskResponseBody : Tea.TeaModel {
                         }
                     }
                 }
+                public class VideoRoleRecognitionResult : Tea.TeaModel {
+                    public class VideoRoles : Tea.TeaModel {
+                        public class TimeIntervals : Tea.TeaModel {
+                            public var endTime: Int64?
+
+                            public var startTime: Int64?
+
+                            public var timestamp: Int64?
+
+                            public var url: String?
+
+                            public override init() {
+                                super.init()
+                            }
+
+                            public init(_ dict: [String: Any]) {
+                                super.init()
+                                self.fromMap(dict)
+                            }
+
+                            public override func validate() throws -> Void {
+                            }
+
+                            public override func toMap() -> [String : Any] {
+                                var map = super.toMap()
+                                if self.endTime != nil {
+                                    map["endTime"] = self.endTime!
+                                }
+                                if self.startTime != nil {
+                                    map["startTime"] = self.startTime!
+                                }
+                                if self.timestamp != nil {
+                                    map["timestamp"] = self.timestamp!
+                                }
+                                if self.url != nil {
+                                    map["url"] = self.url!
+                                }
+                                return map
+                            }
+
+                            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                                guard let dict else { return }
+                                if let value = dict["endTime"] as? Int64 {
+                                    self.endTime = value
+                                }
+                                if let value = dict["startTime"] as? Int64 {
+                                    self.startTime = value
+                                }
+                                if let value = dict["timestamp"] as? Int64 {
+                                    self.timestamp = value
+                                }
+                                if let value = dict["url"] as? String {
+                                    self.url = value
+                                }
+                            }
+                        }
+                        public var isAutoRecognition: Bool?
+
+                        public var ratio: Double?
+
+                        public var roleInfo: String?
+
+                        public var roleName: String?
+
+                        public var timeIntervals: [GetVideoAnalysisTaskResponseBody.Data.Payload.Output.VideoRoleRecognitionResult.VideoRoles.TimeIntervals]?
+
+                        public override init() {
+                            super.init()
+                        }
+
+                        public init(_ dict: [String: Any]) {
+                            super.init()
+                            self.fromMap(dict)
+                        }
+
+                        public override func validate() throws -> Void {
+                        }
+
+                        public override func toMap() -> [String : Any] {
+                            var map = super.toMap()
+                            if self.isAutoRecognition != nil {
+                                map["isAutoRecognition"] = self.isAutoRecognition!
+                            }
+                            if self.ratio != nil {
+                                map["ratio"] = self.ratio!
+                            }
+                            if self.roleInfo != nil {
+                                map["roleInfo"] = self.roleInfo!
+                            }
+                            if self.roleName != nil {
+                                map["roleName"] = self.roleName!
+                            }
+                            if self.timeIntervals != nil {
+                                var tmp : [Any] = []
+                                for k in self.timeIntervals! {
+                                    tmp.append(k.toMap())
+                                }
+                                map["timeIntervals"] = tmp
+                            }
+                            return map
+                        }
+
+                        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                            guard let dict else { return }
+                            if let value = dict["isAutoRecognition"] as? Bool {
+                                self.isAutoRecognition = value
+                            }
+                            if let value = dict["ratio"] as? Double {
+                                self.ratio = value
+                            }
+                            if let value = dict["roleInfo"] as? String {
+                                self.roleInfo = value
+                            }
+                            if let value = dict["roleName"] as? String {
+                                self.roleName = value
+                            }
+                            if let value = dict["timeIntervals"] as? [Any?] {
+                                var tmp : [GetVideoAnalysisTaskResponseBody.Data.Payload.Output.VideoRoleRecognitionResult.VideoRoles.TimeIntervals] = []
+                                for v in value {
+                                    if v != nil {
+                                        var model = GetVideoAnalysisTaskResponseBody.Data.Payload.Output.VideoRoleRecognitionResult.VideoRoles.TimeIntervals()
+                                        if v != nil {
+                                            model.fromMap(v as? [String: Any?])
+                                        }
+                                        tmp.append(model)
+                                    }
+                                }
+                                self.timeIntervals = tmp
+                            }
+                        }
+                    }
+                    public var videoRoles: [GetVideoAnalysisTaskResponseBody.Data.Payload.Output.VideoRoleRecognitionResult.VideoRoles]?
+
+                    public override init() {
+                        super.init()
+                    }
+
+                    public init(_ dict: [String: Any]) {
+                        super.init()
+                        self.fromMap(dict)
+                    }
+
+                    public override func validate() throws -> Void {
+                    }
+
+                    public override func toMap() -> [String : Any] {
+                        var map = super.toMap()
+                        if self.videoRoles != nil {
+                            var tmp : [Any] = []
+                            for k in self.videoRoles! {
+                                tmp.append(k.toMap())
+                            }
+                            map["videoRoles"] = tmp
+                        }
+                        return map
+                    }
+
+                    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                        guard let dict else { return }
+                        if let value = dict["videoRoles"] as? [Any?] {
+                            var tmp : [GetVideoAnalysisTaskResponseBody.Data.Payload.Output.VideoRoleRecognitionResult.VideoRoles] = []
+                            for v in value {
+                                if v != nil {
+                                    var model = GetVideoAnalysisTaskResponseBody.Data.Payload.Output.VideoRoleRecognitionResult.VideoRoles()
+                                    if v != nil {
+                                        model.fromMap(v as? [String: Any?])
+                                    }
+                                    tmp.append(model)
+                                }
+                            }
+                            self.videoRoles = tmp
+                        }
+                    }
+                }
                 public class VideoTitleGenerateResult : Tea.TeaModel {
                     public class Usage : Tea.TeaModel {
                         public var inputTokens: Int64?
@@ -3449,6 +3623,8 @@ public class GetVideoAnalysisTaskResponseBody : Tea.TeaModel {
 
                 public var videoMindMappingGenerateResult: GetVideoAnalysisTaskResponseBody.Data.Payload.Output.VideoMindMappingGenerateResult?
 
+                public var videoRoleRecognitionResult: GetVideoAnalysisTaskResponseBody.Data.Payload.Output.VideoRoleRecognitionResult?
+
                 public var videoTitleGenerateResult: GetVideoAnalysisTaskResponseBody.Data.Payload.Output.VideoTitleGenerateResult?
 
                 public override init() {
@@ -3465,6 +3641,7 @@ public class GetVideoAnalysisTaskResponseBody : Tea.TeaModel {
                     try self.videoCaptionResult?.validate()
                     try self.videoGenerateResult?.validate()
                     try self.videoMindMappingGenerateResult?.validate()
+                    try self.videoRoleRecognitionResult?.validate()
                     try self.videoTitleGenerateResult?.validate()
                 }
 
@@ -3491,6 +3668,9 @@ public class GetVideoAnalysisTaskResponseBody : Tea.TeaModel {
                     }
                     if self.videoMindMappingGenerateResult != nil {
                         map["videoMindMappingGenerateResult"] = self.videoMindMappingGenerateResult?.toMap()
+                    }
+                    if self.videoRoleRecognitionResult != nil {
+                        map["videoRoleRecognitionResult"] = self.videoRoleRecognitionResult?.toMap()
                     }
                     if self.videoTitleGenerateResult != nil {
                         map["videoTitleGenerateResult"] = self.videoTitleGenerateResult?.toMap()
@@ -3535,6 +3715,11 @@ public class GetVideoAnalysisTaskResponseBody : Tea.TeaModel {
                         var model = GetVideoAnalysisTaskResponseBody.Data.Payload.Output.VideoMindMappingGenerateResult()
                         model.fromMap(value)
                         self.videoMindMappingGenerateResult = model
+                    }
+                    if let value = dict["videoRoleRecognitionResult"] as? [String: Any?] {
+                        var model = GetVideoAnalysisTaskResponseBody.Data.Payload.Output.VideoRoleRecognitionResult()
+                        model.fromMap(value)
+                        self.videoRoleRecognitionResult = model
                     }
                     if let value = dict["videoTitleGenerateResult"] as? [String: Any?] {
                         var model = GetVideoAnalysisTaskResponseBody.Data.Payload.Output.VideoTitleGenerateResult()
@@ -11929,9 +12114,51 @@ public class RunVideoAnalysisRequest : Tea.TeaModel {
         }
     }
     public class VideoRoles : Tea.TeaModel {
+        public class TimeIntervals : Tea.TeaModel {
+            public var endTime: Int64?
+
+            public var startTime: Int64?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.endTime != nil {
+                    map["endTime"] = self.endTime!
+                }
+                if self.startTime != nil {
+                    map["startTime"] = self.startTime!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["endTime"] as? Int64 {
+                    self.endTime = value
+                }
+                if let value = dict["startTime"] as? Int64 {
+                    self.startTime = value
+                }
+            }
+        }
+        public var isAutoRecognition: Bool?
+
         public var roleInfo: String?
 
         public var roleName: String?
+
+        public var timeIntervals: [RunVideoAnalysisRequest.VideoRoles.TimeIntervals]?
 
         public var urls: [String]?
 
@@ -11949,11 +12176,21 @@ public class RunVideoAnalysisRequest : Tea.TeaModel {
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
+            if self.isAutoRecognition != nil {
+                map["isAutoRecognition"] = self.isAutoRecognition!
+            }
             if self.roleInfo != nil {
                 map["roleInfo"] = self.roleInfo!
             }
             if self.roleName != nil {
                 map["roleName"] = self.roleName!
+            }
+            if self.timeIntervals != nil {
+                var tmp : [Any] = []
+                for k in self.timeIntervals! {
+                    tmp.append(k.toMap())
+                }
+                map["timeIntervals"] = tmp
             }
             if self.urls != nil {
                 map["urls"] = self.urls!
@@ -11963,17 +12200,35 @@ public class RunVideoAnalysisRequest : Tea.TeaModel {
 
         public override func fromMap(_ dict: [String: Any?]?) -> Void {
             guard let dict else { return }
+            if let value = dict["isAutoRecognition"] as? Bool {
+                self.isAutoRecognition = value
+            }
             if let value = dict["roleInfo"] as? String {
                 self.roleInfo = value
             }
             if let value = dict["roleName"] as? String {
                 self.roleName = value
             }
+            if let value = dict["timeIntervals"] as? [Any?] {
+                var tmp : [RunVideoAnalysisRequest.VideoRoles.TimeIntervals] = []
+                for v in value {
+                    if v != nil {
+                        var model = RunVideoAnalysisRequest.VideoRoles.TimeIntervals()
+                        if v != nil {
+                            model.fromMap(v as? [String: Any?])
+                        }
+                        tmp.append(model)
+                    }
+                }
+                self.timeIntervals = tmp
+            }
             if let value = dict["urls"] as? [String] {
                 self.urls = value
             }
         }
     }
+    public var autoRoleRecognitionVideoUrl: String?
+
     public var excludeGenerateOptions: [String]?
 
     public var faceIdentitySimilarityMinScore: Double?
@@ -12030,6 +12285,9 @@ public class RunVideoAnalysisRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.autoRoleRecognitionVideoUrl != nil {
+            map["autoRoleRecognitionVideoUrl"] = self.autoRoleRecognitionVideoUrl!
+        }
         if self.excludeGenerateOptions != nil {
             map["excludeGenerateOptions"] = self.excludeGenerateOptions!
         }
@@ -12103,6 +12361,9 @@ public class RunVideoAnalysisRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["autoRoleRecognitionVideoUrl"] as? String {
+            self.autoRoleRecognitionVideoUrl = value
+        }
         if let value = dict["excludeGenerateOptions"] as? [String] {
             self.excludeGenerateOptions = value
         }
@@ -12191,6 +12452,8 @@ public class RunVideoAnalysisRequest : Tea.TeaModel {
 }
 
 public class RunVideoAnalysisShrinkRequest : Tea.TeaModel {
+    public var autoRoleRecognitionVideoUrl: String?
+
     public var excludeGenerateOptionsShrink: String?
 
     public var faceIdentitySimilarityMinScore: Double?
@@ -12245,6 +12508,9 @@ public class RunVideoAnalysisShrinkRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.autoRoleRecognitionVideoUrl != nil {
+            map["autoRoleRecognitionVideoUrl"] = self.autoRoleRecognitionVideoUrl!
+        }
         if self.excludeGenerateOptionsShrink != nil {
             map["excludeGenerateOptions"] = self.excludeGenerateOptionsShrink!
         }
@@ -12310,6 +12576,9 @@ public class RunVideoAnalysisShrinkRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["autoRoleRecognitionVideoUrl"] as? String {
+            self.autoRoleRecognitionVideoUrl = value
+        }
         if let value = dict["excludeGenerateOptions"] as? String {
             self.excludeGenerateOptionsShrink = value
         }
@@ -13260,6 +13529,180 @@ public class RunVideoAnalysisResponseBody : Tea.TeaModel {
                     }
                 }
             }
+            public class VideoRoleRecognitionResult : Tea.TeaModel {
+                public class VideoRoles : Tea.TeaModel {
+                    public class TimeIntervals : Tea.TeaModel {
+                        public var endTime: Int64?
+
+                        public var startTime: Int64?
+
+                        public var timestamp: Int64?
+
+                        public var url: String?
+
+                        public override init() {
+                            super.init()
+                        }
+
+                        public init(_ dict: [String: Any]) {
+                            super.init()
+                            self.fromMap(dict)
+                        }
+
+                        public override func validate() throws -> Void {
+                        }
+
+                        public override func toMap() -> [String : Any] {
+                            var map = super.toMap()
+                            if self.endTime != nil {
+                                map["endTime"] = self.endTime!
+                            }
+                            if self.startTime != nil {
+                                map["startTime"] = self.startTime!
+                            }
+                            if self.timestamp != nil {
+                                map["timestamp"] = self.timestamp!
+                            }
+                            if self.url != nil {
+                                map["url"] = self.url!
+                            }
+                            return map
+                        }
+
+                        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                            guard let dict else { return }
+                            if let value = dict["endTime"] as? Int64 {
+                                self.endTime = value
+                            }
+                            if let value = dict["startTime"] as? Int64 {
+                                self.startTime = value
+                            }
+                            if let value = dict["timestamp"] as? Int64 {
+                                self.timestamp = value
+                            }
+                            if let value = dict["url"] as? String {
+                                self.url = value
+                            }
+                        }
+                    }
+                    public var isAutoRecognition: Bool?
+
+                    public var ratio: Double?
+
+                    public var roleInfo: String?
+
+                    public var roleName: String?
+
+                    public var timeIntervals: [RunVideoAnalysisResponseBody.Payload.Output.VideoRoleRecognitionResult.VideoRoles.TimeIntervals]?
+
+                    public override init() {
+                        super.init()
+                    }
+
+                    public init(_ dict: [String: Any]) {
+                        super.init()
+                        self.fromMap(dict)
+                    }
+
+                    public override func validate() throws -> Void {
+                    }
+
+                    public override func toMap() -> [String : Any] {
+                        var map = super.toMap()
+                        if self.isAutoRecognition != nil {
+                            map["isAutoRecognition"] = self.isAutoRecognition!
+                        }
+                        if self.ratio != nil {
+                            map["ratio"] = self.ratio!
+                        }
+                        if self.roleInfo != nil {
+                            map["roleInfo"] = self.roleInfo!
+                        }
+                        if self.roleName != nil {
+                            map["roleName"] = self.roleName!
+                        }
+                        if self.timeIntervals != nil {
+                            var tmp : [Any] = []
+                            for k in self.timeIntervals! {
+                                tmp.append(k.toMap())
+                            }
+                            map["timeIntervals"] = tmp
+                        }
+                        return map
+                    }
+
+                    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                        guard let dict else { return }
+                        if let value = dict["isAutoRecognition"] as? Bool {
+                            self.isAutoRecognition = value
+                        }
+                        if let value = dict["ratio"] as? Double {
+                            self.ratio = value
+                        }
+                        if let value = dict["roleInfo"] as? String {
+                            self.roleInfo = value
+                        }
+                        if let value = dict["roleName"] as? String {
+                            self.roleName = value
+                        }
+                        if let value = dict["timeIntervals"] as? [Any?] {
+                            var tmp : [RunVideoAnalysisResponseBody.Payload.Output.VideoRoleRecognitionResult.VideoRoles.TimeIntervals] = []
+                            for v in value {
+                                if v != nil {
+                                    var model = RunVideoAnalysisResponseBody.Payload.Output.VideoRoleRecognitionResult.VideoRoles.TimeIntervals()
+                                    if v != nil {
+                                        model.fromMap(v as? [String: Any?])
+                                    }
+                                    tmp.append(model)
+                                }
+                            }
+                            self.timeIntervals = tmp
+                        }
+                    }
+                }
+                public var videoRoles: [RunVideoAnalysisResponseBody.Payload.Output.VideoRoleRecognitionResult.VideoRoles]?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.videoRoles != nil {
+                        var tmp : [Any] = []
+                        for k in self.videoRoles! {
+                            tmp.append(k.toMap())
+                        }
+                        map["videoRoles"] = tmp
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                    guard let dict else { return }
+                    if let value = dict["videoRoles"] as? [Any?] {
+                        var tmp : [RunVideoAnalysisResponseBody.Payload.Output.VideoRoleRecognitionResult.VideoRoles] = []
+                        for v in value {
+                            if v != nil {
+                                var model = RunVideoAnalysisResponseBody.Payload.Output.VideoRoleRecognitionResult.VideoRoles()
+                                if v != nil {
+                                    model.fromMap(v as? [String: Any?])
+                                }
+                                tmp.append(model)
+                            }
+                        }
+                        self.videoRoles = tmp
+                    }
+                }
+            }
             public class VideoShotSnapshotResult : Tea.TeaModel {
                 public class VideoShots : Tea.TeaModel {
                     public class VideoSnapshots : Tea.TeaModel {
@@ -13533,6 +13976,8 @@ public class RunVideoAnalysisResponseBody : Tea.TeaModel {
 
             public var videoMindMappingGenerateResult: RunVideoAnalysisResponseBody.Payload.Output.VideoMindMappingGenerateResult?
 
+            public var videoRoleRecognitionResult: RunVideoAnalysisResponseBody.Payload.Output.VideoRoleRecognitionResult?
+
             public var videoShotSnapshotResult: RunVideoAnalysisResponseBody.Payload.Output.VideoShotSnapshotResult?
 
             public var videoTitleGenerateResult: RunVideoAnalysisResponseBody.Payload.Output.VideoTitleGenerateResult?
@@ -13551,6 +13996,7 @@ public class RunVideoAnalysisResponseBody : Tea.TeaModel {
                 try self.videoCaptionResult?.validate()
                 try self.videoGenerateResult?.validate()
                 try self.videoMindMappingGenerateResult?.validate()
+                try self.videoRoleRecognitionResult?.validate()
                 try self.videoShotSnapshotResult?.validate()
                 try self.videoTitleGenerateResult?.validate()
             }
@@ -13578,6 +14024,9 @@ public class RunVideoAnalysisResponseBody : Tea.TeaModel {
                 }
                 if self.videoMindMappingGenerateResult != nil {
                     map["videoMindMappingGenerateResult"] = self.videoMindMappingGenerateResult?.toMap()
+                }
+                if self.videoRoleRecognitionResult != nil {
+                    map["videoRoleRecognitionResult"] = self.videoRoleRecognitionResult?.toMap()
                 }
                 if self.videoShotSnapshotResult != nil {
                     map["videoShotSnapshotResult"] = self.videoShotSnapshotResult?.toMap()
@@ -13625,6 +14074,11 @@ public class RunVideoAnalysisResponseBody : Tea.TeaModel {
                     var model = RunVideoAnalysisResponseBody.Payload.Output.VideoMindMappingGenerateResult()
                     model.fromMap(value)
                     self.videoMindMappingGenerateResult = model
+                }
+                if let value = dict["videoRoleRecognitionResult"] as? [String: Any?] {
+                    var model = RunVideoAnalysisResponseBody.Payload.Output.VideoRoleRecognitionResult()
+                    model.fromMap(value)
+                    self.videoRoleRecognitionResult = model
                 }
                 if let value = dict["videoShotSnapshotResult"] as? [String: Any?] {
                     var model = RunVideoAnalysisResponseBody.Payload.Output.VideoShotSnapshotResult()
@@ -15353,9 +15807,51 @@ public class SubmitVideoAnalysisTaskRequest : Tea.TeaModel {
         }
     }
     public class VideoRoles : Tea.TeaModel {
+        public class TimeIntervals : Tea.TeaModel {
+            public var endTime: Int64?
+
+            public var startTime: Int64?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.endTime != nil {
+                    map["endTime"] = self.endTime!
+                }
+                if self.startTime != nil {
+                    map["startTime"] = self.startTime!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["endTime"] as? Int64 {
+                    self.endTime = value
+                }
+                if let value = dict["startTime"] as? Int64 {
+                    self.startTime = value
+                }
+            }
+        }
+        public var isAutoRecognition: Bool?
+
         public var roleInfo: String?
 
         public var roleName: String?
+
+        public var timeIntervals: [SubmitVideoAnalysisTaskRequest.VideoRoles.TimeIntervals]?
 
         public var urls: [String]?
 
@@ -15373,11 +15869,21 @@ public class SubmitVideoAnalysisTaskRequest : Tea.TeaModel {
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
+            if self.isAutoRecognition != nil {
+                map["isAutoRecognition"] = self.isAutoRecognition!
+            }
             if self.roleInfo != nil {
                 map["roleInfo"] = self.roleInfo!
             }
             if self.roleName != nil {
                 map["roleName"] = self.roleName!
+            }
+            if self.timeIntervals != nil {
+                var tmp : [Any] = []
+                for k in self.timeIntervals! {
+                    tmp.append(k.toMap())
+                }
+                map["timeIntervals"] = tmp
             }
             if self.urls != nil {
                 map["urls"] = self.urls!
@@ -15387,17 +15893,35 @@ public class SubmitVideoAnalysisTaskRequest : Tea.TeaModel {
 
         public override func fromMap(_ dict: [String: Any?]?) -> Void {
             guard let dict else { return }
+            if let value = dict["isAutoRecognition"] as? Bool {
+                self.isAutoRecognition = value
+            }
             if let value = dict["roleInfo"] as? String {
                 self.roleInfo = value
             }
             if let value = dict["roleName"] as? String {
                 self.roleName = value
             }
+            if let value = dict["timeIntervals"] as? [Any?] {
+                var tmp : [SubmitVideoAnalysisTaskRequest.VideoRoles.TimeIntervals] = []
+                for v in value {
+                    if v != nil {
+                        var model = SubmitVideoAnalysisTaskRequest.VideoRoles.TimeIntervals()
+                        if v != nil {
+                            model.fromMap(v as? [String: Any?])
+                        }
+                        tmp.append(model)
+                    }
+                }
+                self.timeIntervals = tmp
+            }
             if let value = dict["urls"] as? [String] {
                 self.urls = value
             }
         }
     }
+    public var autoRoleRecognitionVideoUrl: String?
+
     public var deduplicationId: String?
 
     public var excludeGenerateOptions: [String]?
@@ -15452,6 +15976,9 @@ public class SubmitVideoAnalysisTaskRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.autoRoleRecognitionVideoUrl != nil {
+            map["autoRoleRecognitionVideoUrl"] = self.autoRoleRecognitionVideoUrl!
+        }
         if self.deduplicationId != nil {
             map["deduplicationId"] = self.deduplicationId!
         }
@@ -15522,6 +16049,9 @@ public class SubmitVideoAnalysisTaskRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["autoRoleRecognitionVideoUrl"] as? String {
+            self.autoRoleRecognitionVideoUrl = value
+        }
         if let value = dict["deduplicationId"] as? String {
             self.deduplicationId = value
         }
@@ -15607,6 +16137,8 @@ public class SubmitVideoAnalysisTaskRequest : Tea.TeaModel {
 }
 
 public class SubmitVideoAnalysisTaskShrinkRequest : Tea.TeaModel {
+    public var autoRoleRecognitionVideoUrl: String?
+
     public var deduplicationId: String?
 
     public var excludeGenerateOptionsShrink: String?
@@ -15659,6 +16191,9 @@ public class SubmitVideoAnalysisTaskShrinkRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.autoRoleRecognitionVideoUrl != nil {
+            map["autoRoleRecognitionVideoUrl"] = self.autoRoleRecognitionVideoUrl!
+        }
         if self.deduplicationId != nil {
             map["deduplicationId"] = self.deduplicationId!
         }
@@ -15721,6 +16256,9 @@ public class SubmitVideoAnalysisTaskShrinkRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["autoRoleRecognitionVideoUrl"] as? String {
+            self.autoRoleRecognitionVideoUrl = value
+        }
         if let value = dict["deduplicationId"] as? String {
             self.deduplicationId = value
         }

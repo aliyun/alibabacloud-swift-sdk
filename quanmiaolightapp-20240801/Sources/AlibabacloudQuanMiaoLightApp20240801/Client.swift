@@ -1202,6 +1202,9 @@ open class Client : AlibabacloudOpenApi.Client {
             request.videoRolesShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.videoRoles, "videoRoles", "json")
         }
         var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.autoRoleRecognitionVideoUrl)) {
+            body["autoRoleRecognitionVideoUrl"] = request.autoRoleRecognitionVideoUrl ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.excludeGenerateOptionsShrink)) {
             body["excludeGenerateOptions"] = request.excludeGenerateOptionsShrink ?? "";
         }
@@ -1507,6 +1510,9 @@ open class Client : AlibabacloudOpenApi.Client {
             request.videoRolesShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.videoRoles, "videoRoles", "json")
         }
         var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.autoRoleRecognitionVideoUrl)) {
+            body["autoRoleRecognitionVideoUrl"] = request.autoRoleRecognitionVideoUrl ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.deduplicationId)) {
             body["deduplicationId"] = request.deduplicationId ?? "";
         }
