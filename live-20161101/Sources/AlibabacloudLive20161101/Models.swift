@@ -27346,7 +27346,7 @@ public class DescribeCastersResponseBody : Tea.TeaModel {
 
             public var purchaseTime: String?
 
-            public var resourceGroupId: Int32?
+            public var resourceGroupId: String?
 
             public var startTime: String?
 
@@ -27458,7 +27458,7 @@ public class DescribeCastersResponseBody : Tea.TeaModel {
                 if let value = dict["PurchaseTime"] as? String {
                     self.purchaseTime = value
                 }
-                if let value = dict["ResourceGroupId"] as? Int32 {
+                if let value = dict["ResourceGroupId"] as? String {
                     self.resourceGroupId = value
                 }
                 if let value = dict["StartTime"] as? String {
@@ -61481,6 +61481,442 @@ public class DescribeLiveUserDomainsResponse : Tea.TeaModel {
         }
         if let value = dict["body"] as? [String: Any?] {
             var model = DescribeLiveUserDomainsResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
+public class DescribeLiveUserStreamMetricDataRequest : Tea.TeaModel {
+    public var appName: String?
+
+    public var domainName: String?
+
+    public var endTime: String?
+
+    public var pageNumber: Int64?
+
+    public var pageSize: Int64?
+
+    public var protocol_: String?
+
+    public var startTime: String?
+
+    public var streamName: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.appName != nil {
+            map["AppName"] = self.appName!
+        }
+        if self.domainName != nil {
+            map["DomainName"] = self.domainName!
+        }
+        if self.endTime != nil {
+            map["EndTime"] = self.endTime!
+        }
+        if self.pageNumber != nil {
+            map["PageNumber"] = self.pageNumber!
+        }
+        if self.pageSize != nil {
+            map["PageSize"] = self.pageSize!
+        }
+        if self.protocol_ != nil {
+            map["Protocol"] = self.protocol_!
+        }
+        if self.startTime != nil {
+            map["StartTime"] = self.startTime!
+        }
+        if self.streamName != nil {
+            map["StreamName"] = self.streamName!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["AppName"] as? String {
+            self.appName = value
+        }
+        if let value = dict["DomainName"] as? String {
+            self.domainName = value
+        }
+        if let value = dict["EndTime"] as? String {
+            self.endTime = value
+        }
+        if let value = dict["PageNumber"] as? Int64 {
+            self.pageNumber = value
+        }
+        if let value = dict["PageSize"] as? Int64 {
+            self.pageSize = value
+        }
+        if let value = dict["Protocol"] as? String {
+            self.protocol_ = value
+        }
+        if let value = dict["StartTime"] as? String {
+            self.startTime = value
+        }
+        if let value = dict["StreamName"] as? String {
+            self.streamName = value
+        }
+    }
+}
+
+public class DescribeLiveUserStreamMetricDataResponseBody : Tea.TeaModel {
+    public class StreamDetailData : Tea.TeaModel {
+        public var appName: String?
+
+        public var bps: Double?
+
+        public var count: Int64?
+
+        public var flvBps: Double?
+
+        public var flvCount: Int64?
+
+        public var flvTraffic: Double?
+
+        public var hlsBps: Double?
+
+        public var hlsCount: Int64?
+
+        public var hlsTraffic: Double?
+
+        public var newConns: Int64?
+
+        public var p2pBps: Double?
+
+        public var p2pCount: Int64?
+
+        public var p2pTraffic: Double?
+
+        public var rtmpBps: Double?
+
+        public var rtmpCount: Int64?
+
+        public var rtmpTraffic: Double?
+
+        public var rtsBps: Double?
+
+        public var rtsCount: Int64?
+
+        public var rtsTraffic: Double?
+
+        public var streamName: String?
+
+        public var timeStamp: String?
+
+        public var traffic: Double?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.appName != nil {
+                map["AppName"] = self.appName!
+            }
+            if self.bps != nil {
+                map["Bps"] = self.bps!
+            }
+            if self.count != nil {
+                map["Count"] = self.count!
+            }
+            if self.flvBps != nil {
+                map["FlvBps"] = self.flvBps!
+            }
+            if self.flvCount != nil {
+                map["FlvCount"] = self.flvCount!
+            }
+            if self.flvTraffic != nil {
+                map["FlvTraffic"] = self.flvTraffic!
+            }
+            if self.hlsBps != nil {
+                map["HlsBps"] = self.hlsBps!
+            }
+            if self.hlsCount != nil {
+                map["HlsCount"] = self.hlsCount!
+            }
+            if self.hlsTraffic != nil {
+                map["HlsTraffic"] = self.hlsTraffic!
+            }
+            if self.newConns != nil {
+                map["NewConns"] = self.newConns!
+            }
+            if self.p2pBps != nil {
+                map["P2pBps"] = self.p2pBps!
+            }
+            if self.p2pCount != nil {
+                map["P2pCount"] = self.p2pCount!
+            }
+            if self.p2pTraffic != nil {
+                map["P2pTraffic"] = self.p2pTraffic!
+            }
+            if self.rtmpBps != nil {
+                map["RtmpBps"] = self.rtmpBps!
+            }
+            if self.rtmpCount != nil {
+                map["RtmpCount"] = self.rtmpCount!
+            }
+            if self.rtmpTraffic != nil {
+                map["RtmpTraffic"] = self.rtmpTraffic!
+            }
+            if self.rtsBps != nil {
+                map["RtsBps"] = self.rtsBps!
+            }
+            if self.rtsCount != nil {
+                map["RtsCount"] = self.rtsCount!
+            }
+            if self.rtsTraffic != nil {
+                map["RtsTraffic"] = self.rtsTraffic!
+            }
+            if self.streamName != nil {
+                map["StreamName"] = self.streamName!
+            }
+            if self.timeStamp != nil {
+                map["TimeStamp"] = self.timeStamp!
+            }
+            if self.traffic != nil {
+                map["Traffic"] = self.traffic!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["AppName"] as? String {
+                self.appName = value
+            }
+            if let value = dict["Bps"] as? Double {
+                self.bps = value
+            }
+            if let value = dict["Count"] as? Int64 {
+                self.count = value
+            }
+            if let value = dict["FlvBps"] as? Double {
+                self.flvBps = value
+            }
+            if let value = dict["FlvCount"] as? Int64 {
+                self.flvCount = value
+            }
+            if let value = dict["FlvTraffic"] as? Double {
+                self.flvTraffic = value
+            }
+            if let value = dict["HlsBps"] as? Double {
+                self.hlsBps = value
+            }
+            if let value = dict["HlsCount"] as? Int64 {
+                self.hlsCount = value
+            }
+            if let value = dict["HlsTraffic"] as? Double {
+                self.hlsTraffic = value
+            }
+            if let value = dict["NewConns"] as? Int64 {
+                self.newConns = value
+            }
+            if let value = dict["P2pBps"] as? Double {
+                self.p2pBps = value
+            }
+            if let value = dict["P2pCount"] as? Int64 {
+                self.p2pCount = value
+            }
+            if let value = dict["P2pTraffic"] as? Double {
+                self.p2pTraffic = value
+            }
+            if let value = dict["RtmpBps"] as? Double {
+                self.rtmpBps = value
+            }
+            if let value = dict["RtmpCount"] as? Int64 {
+                self.rtmpCount = value
+            }
+            if let value = dict["RtmpTraffic"] as? Double {
+                self.rtmpTraffic = value
+            }
+            if let value = dict["RtsBps"] as? Double {
+                self.rtsBps = value
+            }
+            if let value = dict["RtsCount"] as? Int64 {
+                self.rtsCount = value
+            }
+            if let value = dict["RtsTraffic"] as? Double {
+                self.rtsTraffic = value
+            }
+            if let value = dict["StreamName"] as? String {
+                self.streamName = value
+            }
+            if let value = dict["TimeStamp"] as? String {
+                self.timeStamp = value
+            }
+            if let value = dict["Traffic"] as? Double {
+                self.traffic = value
+            }
+        }
+    }
+    public var domainName: String?
+
+    public var endTime: String?
+
+    public var pageNumber: Int64?
+
+    public var pageSize: Int64?
+
+    public var requestId: String?
+
+    public var startTime: String?
+
+    public var streamDetailData: [DescribeLiveUserStreamMetricDataResponseBody.StreamDetailData]?
+
+    public var totalCount: Int64?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.domainName != nil {
+            map["DomainName"] = self.domainName!
+        }
+        if self.endTime != nil {
+            map["EndTime"] = self.endTime!
+        }
+        if self.pageNumber != nil {
+            map["PageNumber"] = self.pageNumber!
+        }
+        if self.pageSize != nil {
+            map["PageSize"] = self.pageSize!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.startTime != nil {
+            map["StartTime"] = self.startTime!
+        }
+        if self.streamDetailData != nil {
+            var tmp : [Any] = []
+            for k in self.streamDetailData! {
+                tmp.append(k.toMap())
+            }
+            map["StreamDetailData"] = tmp
+        }
+        if self.totalCount != nil {
+            map["TotalCount"] = self.totalCount!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["DomainName"] as? String {
+            self.domainName = value
+        }
+        if let value = dict["EndTime"] as? String {
+            self.endTime = value
+        }
+        if let value = dict["PageNumber"] as? Int64 {
+            self.pageNumber = value
+        }
+        if let value = dict["PageSize"] as? Int64 {
+            self.pageSize = value
+        }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+        if let value = dict["StartTime"] as? String {
+            self.startTime = value
+        }
+        if let value = dict["StreamDetailData"] as? [Any?] {
+            var tmp : [DescribeLiveUserStreamMetricDataResponseBody.StreamDetailData] = []
+            for v in value {
+                if v != nil {
+                    var model = DescribeLiveUserStreamMetricDataResponseBody.StreamDetailData()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.streamDetailData = tmp
+        }
+        if let value = dict["TotalCount"] as? Int64 {
+            self.totalCount = value
+        }
+    }
+}
+
+public class DescribeLiveUserStreamMetricDataResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: DescribeLiveUserStreamMetricDataResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = DescribeLiveUserStreamMetricDataResponseBody()
             model.fromMap(value)
             self.body = model
         }
