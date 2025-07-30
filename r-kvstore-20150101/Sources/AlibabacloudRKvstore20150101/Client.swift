@@ -17,7 +17,6 @@ open class Client : AlibabacloudOpenApi.Client {
             "cn-shanghai": "r-kvstore.aliyuncs.com",
             "cn-shenzhen": "r-kvstore.aliyuncs.com",
             "cn-heyuan": "r-kvstore.aliyuncs.com",
-            "cn-guangzhou": "r-kvstore.aliyuncs.com",
             "cn-hangzhou-finance": "r-kvstore.aliyuncs.com",
             "cn-shanghai-finance-1": "r-kvstore.aliyuncs.com",
             "ap-northeast-2-pop": "r-kvstore.aliyuncs.com",
