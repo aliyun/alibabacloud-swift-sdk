@@ -929,6 +929,8 @@ public class CheckUsedPropertyValueResponse : Tea.TeaModel {
 public class CreateGroupRequest : Tea.TeaModel {
     public var bizType: String?
 
+    public var description_: String?
+
     public var groupName: String?
 
     public var parentGroupId: String?
@@ -952,6 +954,9 @@ public class CreateGroupRequest : Tea.TeaModel {
         if self.bizType != nil {
             map["BizType"] = self.bizType!
         }
+        if self.description_ != nil {
+            map["Description"] = self.description_!
+        }
         if self.groupName != nil {
             map["GroupName"] = self.groupName!
         }
@@ -968,6 +973,9 @@ public class CreateGroupRequest : Tea.TeaModel {
         guard let dict else { return }
         if let value = dict["BizType"] as? String {
             self.bizType = value
+        }
+        if let value = dict["Description"] as? String {
+            self.description_ = value
         }
         if let value = dict["GroupName"] as? String {
             self.groupName = value
@@ -2376,7 +2384,13 @@ public class DeleteUserPropertyValueResponse : Tea.TeaModel {
 public class DescribeGroupUserRequest : Tea.TeaModel {
     public var bizType: String?
 
+    public var filter: String?
+
     public var groupId: String?
+
+    public var maxResults: Int32?
+
+    public var nextToken: String?
 
     public var solutionId: String?
 
@@ -2397,8 +2411,17 @@ public class DescribeGroupUserRequest : Tea.TeaModel {
         if self.bizType != nil {
             map["BizType"] = self.bizType!
         }
+        if self.filter != nil {
+            map["Filter"] = self.filter!
+        }
         if self.groupId != nil {
             map["GroupId"] = self.groupId!
+        }
+        if self.maxResults != nil {
+            map["MaxResults"] = self.maxResults!
+        }
+        if self.nextToken != nil {
+            map["NextToken"] = self.nextToken!
         }
         if self.solutionId != nil {
             map["SolutionId"] = self.solutionId!
@@ -2411,8 +2434,17 @@ public class DescribeGroupUserRequest : Tea.TeaModel {
         if let value = dict["BizType"] as? String {
             self.bizType = value
         }
+        if let value = dict["Filter"] as? String {
+            self.filter = value
+        }
         if let value = dict["GroupId"] as? String {
             self.groupId = value
+        }
+        if let value = dict["MaxResults"] as? Int32 {
+            self.maxResults = value
+        }
+        if let value = dict["NextToken"] as? String {
+            self.nextToken = value
         }
         if let value = dict["SolutionId"] as? String {
             self.solutionId = value
@@ -2486,6 +2518,8 @@ public class DescribeGroupUserResponseBody : Tea.TeaModel {
 
         public var phone: String?
 
+        public var remark: String?
+
         public override init() {
             super.init()
         }
@@ -2527,6 +2561,9 @@ public class DescribeGroupUserResponseBody : Tea.TeaModel {
             if self.phone != nil {
                 map["Phone"] = self.phone!
             }
+            if self.remark != nil {
+                map["Remark"] = self.remark!
+            }
             return map
         }
 
@@ -2559,9 +2596,14 @@ public class DescribeGroupUserResponseBody : Tea.TeaModel {
             if let value = dict["Phone"] as? String {
                 self.phone = value
             }
+            if let value = dict["Remark"] as? String {
+                self.remark = value
+            }
         }
     }
     public var groups: [DescribeGroupUserResponseBody.Groups]?
+
+    public var nextToken: String?
 
     public var requestId: String?
 
@@ -2587,6 +2629,9 @@ public class DescribeGroupUserResponseBody : Tea.TeaModel {
                 tmp.append(k.toMap())
             }
             map["Groups"] = tmp
+        }
+        if self.nextToken != nil {
+            map["NextToken"] = self.nextToken!
         }
         if self.requestId != nil {
             map["RequestId"] = self.requestId!
@@ -2615,6 +2660,9 @@ public class DescribeGroupUserResponseBody : Tea.TeaModel {
                 }
             }
             self.groups = tmp
+        }
+        if let value = dict["NextToken"] as? String {
+            self.nextToken = value
         }
         if let value = dict["RequestId"] as? String {
             self.requestId = value
@@ -2692,7 +2740,13 @@ public class DescribeGroupsRequest : Tea.TeaModel {
 
     public var groupName: String?
 
+    public var pageNumber: Int32?
+
+    public var pageSize: Int32?
+
     public var solutionId: String?
+
+    public var transferFileNeedApproval: Bool?
 
     public override init() {
         super.init()
@@ -2717,8 +2771,17 @@ public class DescribeGroupsRequest : Tea.TeaModel {
         if self.groupName != nil {
             map["GroupName"] = self.groupName!
         }
+        if self.pageNumber != nil {
+            map["PageNumber"] = self.pageNumber!
+        }
+        if self.pageSize != nil {
+            map["PageSize"] = self.pageSize!
+        }
         if self.solutionId != nil {
             map["SolutionId"] = self.solutionId!
+        }
+        if self.transferFileNeedApproval != nil {
+            map["TransferFileNeedApproval"] = self.transferFileNeedApproval!
         }
         return map
     }
@@ -2734,17 +2797,36 @@ public class DescribeGroupsRequest : Tea.TeaModel {
         if let value = dict["GroupName"] as? String {
             self.groupName = value
         }
+        if let value = dict["PageNumber"] as? Int32 {
+            self.pageNumber = value
+        }
+        if let value = dict["PageSize"] as? Int32 {
+            self.pageSize = value
+        }
         if let value = dict["SolutionId"] as? String {
             self.solutionId = value
+        }
+        if let value = dict["TransferFileNeedApproval"] as? Bool {
+            self.transferFileNeedApproval = value
         }
     }
 }
 
 public class DescribeGroupsResponseBody : Tea.TeaModel {
     public class Groups : Tea.TeaModel {
+        public var authedResources: [String: String]?
+
+        public var createTime: String?
+
+        public var description_: String?
+
         public var groupId: String?
 
         public var groupName: String?
+
+        public var transferFileNeedApproval: Bool?
+
+        public var userCount: Int32?
 
         public override init() {
             super.init()
@@ -2760,25 +2842,57 @@ public class DescribeGroupsResponseBody : Tea.TeaModel {
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
+            if self.authedResources != nil {
+                map["AuthedResources"] = self.authedResources!
+            }
+            if self.createTime != nil {
+                map["CreateTime"] = self.createTime!
+            }
+            if self.description_ != nil {
+                map["Description"] = self.description_!
+            }
             if self.groupId != nil {
                 map["GroupId"] = self.groupId!
             }
             if self.groupName != nil {
                 map["GroupName"] = self.groupName!
             }
+            if self.transferFileNeedApproval != nil {
+                map["TransferFileNeedApproval"] = self.transferFileNeedApproval!
+            }
+            if self.userCount != nil {
+                map["UserCount"] = self.userCount!
+            }
             return map
         }
 
         public override func fromMap(_ dict: [String: Any?]?) -> Void {
             guard let dict else { return }
+            if let value = dict["AuthedResources"] as? [String: String] {
+                self.authedResources = value
+            }
+            if let value = dict["CreateTime"] as? String {
+                self.createTime = value
+            }
+            if let value = dict["Description"] as? String {
+                self.description_ = value
+            }
             if let value = dict["GroupId"] as? String {
                 self.groupId = value
             }
             if let value = dict["GroupName"] as? String {
                 self.groupName = value
             }
+            if let value = dict["TransferFileNeedApproval"] as? Bool {
+                self.transferFileNeedApproval = value
+            }
+            if let value = dict["UserCount"] as? Int32 {
+                self.userCount = value
+            }
         }
     }
+    public var count: Int32?
+
     public var groups: [DescribeGroupsResponseBody.Groups]?
 
     public var requestId: String?
@@ -2797,6 +2911,9 @@ public class DescribeGroupsResponseBody : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.count != nil {
+            map["Count"] = self.count!
+        }
         if self.groups != nil {
             var tmp : [Any] = []
             for k in self.groups! {
@@ -2812,6 +2929,9 @@ public class DescribeGroupsResponseBody : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["Count"] as? Int32 {
+            self.count = value
+        }
         if let value = dict["Groups"] as? [Any?] {
             var tmp : [DescribeGroupsResponseBody.Groups] = []
             for v in value {
@@ -4012,6 +4132,8 @@ public class DescribeUsersRequest : Tea.TeaModel {
 
     public var excludeEndUserIds: [String]?
 
+    public var excludeGroupId: String?
+
     public var filter: String?
 
     public var filterWithAssignedResource: [String: String]?
@@ -4056,6 +4178,9 @@ public class DescribeUsersRequest : Tea.TeaModel {
         }
         if self.excludeEndUserIds != nil {
             map["ExcludeEndUserIds"] = self.excludeEndUserIds!
+        }
+        if self.excludeGroupId != nil {
+            map["ExcludeGroupId"] = self.excludeGroupId!
         }
         if self.filter != nil {
             map["Filter"] = self.filter!
@@ -4104,6 +4229,9 @@ public class DescribeUsersRequest : Tea.TeaModel {
         if let value = dict["ExcludeEndUserIds"] as? [String] {
             self.excludeEndUserIds = value
         }
+        if let value = dict["ExcludeGroupId"] as? String {
+            self.excludeGroupId = value
+        }
         if let value = dict["Filter"] as? String {
             self.filter = value
         }
@@ -4146,6 +4274,8 @@ public class DescribeUsersShrinkRequest : Tea.TeaModel {
     public var endUserIds: [String]?
 
     public var excludeEndUserIds: [String]?
+
+    public var excludeGroupId: String?
 
     public var filter: String?
 
@@ -4191,6 +4321,9 @@ public class DescribeUsersShrinkRequest : Tea.TeaModel {
         }
         if self.excludeEndUserIds != nil {
             map["ExcludeEndUserIds"] = self.excludeEndUserIds!
+        }
+        if self.excludeGroupId != nil {
+            map["ExcludeGroupId"] = self.excludeGroupId!
         }
         if self.filter != nil {
             map["Filter"] = self.filter!
@@ -4238,6 +4371,9 @@ public class DescribeUsersShrinkRequest : Tea.TeaModel {
         }
         if let value = dict["ExcludeEndUserIds"] as? [String] {
             self.excludeEndUserIds = value
+        }
+        if let value = dict["ExcludeGroupId"] as? String {
+            self.excludeGroupId = value
         }
         if let value = dict["Filter"] as? String {
             self.filter = value
@@ -4435,6 +4571,8 @@ public class DescribeUsersResponseBody : Tea.TeaModel {
 
         public var email: String?
 
+        public var enableAdminAccess: Bool?
+
         public var endUserId: String?
 
         public var externalName: String?
@@ -4492,6 +4630,9 @@ public class DescribeUsersResponseBody : Tea.TeaModel {
             }
             if self.email != nil {
                 map["Email"] = self.email!
+            }
+            if self.enableAdminAccess != nil {
+                map["EnableAdminAccess"] = self.enableAdminAccess!
             }
             if self.endUserId != nil {
                 map["EndUserId"] = self.endUserId!
@@ -4569,6 +4710,9 @@ public class DescribeUsersResponseBody : Tea.TeaModel {
             }
             if let value = dict["Email"] as? String {
                 self.email = value
+            }
+            if let value = dict["EnableAdminAccess"] as? Bool {
+                self.enableAdminAccess = value
             }
             if let value = dict["EndUserId"] as? String {
                 self.endUserId = value
@@ -6911,6 +7055,8 @@ public class LockUsersResponse : Tea.TeaModel {
 }
 
 public class ModifyGroupRequest : Tea.TeaModel {
+    public var description_: String?
+
     public var groupId: String?
 
     public var newGroupName: String?
@@ -6929,6 +7075,9 @@ public class ModifyGroupRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.description_ != nil {
+            map["Description"] = self.description_!
+        }
         if self.groupId != nil {
             map["GroupId"] = self.groupId!
         }
@@ -6940,6 +7089,9 @@ public class ModifyGroupRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["Description"] as? String {
+            self.description_ = value
+        }
         if let value = dict["GroupId"] as? String {
             self.groupId = value
         }
@@ -7739,6 +7891,8 @@ public class QuerySyncStatusByAliUidResponse : Tea.TeaModel {
 public class RemoveGroupRequest : Tea.TeaModel {
     public var groupId: String?
 
+    public var groupIds: [String]?
+
     public override init() {
         super.init()
     }
@@ -7756,6 +7910,9 @@ public class RemoveGroupRequest : Tea.TeaModel {
         if self.groupId != nil {
             map["GroupId"] = self.groupId!
         }
+        if self.groupIds != nil {
+            map["GroupIds"] = self.groupIds!
+        }
         return map
     }
 
@@ -7763,6 +7920,9 @@ public class RemoveGroupRequest : Tea.TeaModel {
         guard let dict else { return }
         if let value = dict["GroupId"] as? String {
             self.groupId = value
+        }
+        if let value = dict["GroupIds"] as? [String] {
+            self.groupIds = value
         }
     }
 }
