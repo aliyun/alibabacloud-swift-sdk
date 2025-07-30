@@ -20244,6 +20244,8 @@ public class DescribeDocumentResponseBody : Tea.TeaModel {
 
     public var documentLoader: String?
 
+    public var documentLoaderResultFileUrl: String?
+
     public var fileExt: String?
 
     public var fileMd5: String?
@@ -20292,6 +20294,9 @@ public class DescribeDocumentResponseBody : Tea.TeaModel {
         }
         if self.documentLoader != nil {
             map["DocumentLoader"] = self.documentLoader!
+        }
+        if self.documentLoaderResultFileUrl != nil {
+            map["DocumentLoaderResultFileUrl"] = self.documentLoaderResultFileUrl!
         }
         if self.fileExt != nil {
             map["FileExt"] = self.fileExt!
@@ -20345,6 +20350,9 @@ public class DescribeDocumentResponseBody : Tea.TeaModel {
         }
         if let value = dict["DocumentLoader"] as? String {
             self.documentLoader = value
+        }
+        if let value = dict["DocumentLoaderResultFileUrl"] as? String {
+            self.documentLoaderResultFileUrl = value
         }
         if let value = dict["FileExt"] as? String {
             self.fileExt = value
@@ -31367,6 +31375,8 @@ public class GetUploadDocumentJobResponseBody : Tea.TeaModel {
     public class ChunkResult : Tea.TeaModel {
         public var chunkFileUrl: String?
 
+        public var documentLoaderResultFileUrl: String?
+
         public var plainChunkFileUrl: String?
 
         public override init() {
@@ -31386,6 +31396,9 @@ public class GetUploadDocumentJobResponseBody : Tea.TeaModel {
             if self.chunkFileUrl != nil {
                 map["ChunkFileUrl"] = self.chunkFileUrl!
             }
+            if self.documentLoaderResultFileUrl != nil {
+                map["DocumentLoaderResultFileUrl"] = self.documentLoaderResultFileUrl!
+            }
             if self.plainChunkFileUrl != nil {
                 map["PlainChunkFileUrl"] = self.plainChunkFileUrl!
             }
@@ -31396,6 +31409,9 @@ public class GetUploadDocumentJobResponseBody : Tea.TeaModel {
             guard let dict else { return }
             if let value = dict["ChunkFileUrl"] as? String {
                 self.chunkFileUrl = value
+            }
+            if let value = dict["DocumentLoaderResultFileUrl"] as? String {
+                self.documentLoaderResultFileUrl = value
             }
             if let value = dict["PlainChunkFileUrl"] as? String {
                 self.plainChunkFileUrl = value
