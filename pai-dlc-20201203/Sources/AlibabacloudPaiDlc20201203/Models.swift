@@ -4372,7 +4372,7 @@ public class SecurityContextCapabilities : Tea.TeaModel {
 public class ServiceSpec : Tea.TeaModel {
     public var defaultPort: Int32?
 
-    public var extraPorts: Int32?
+    public var extraPorts: [Int32]?
 
     public var serviceMode: String?
 
@@ -4407,7 +4407,7 @@ public class ServiceSpec : Tea.TeaModel {
         if let value = dict["DefaultPort"] as? Int32 {
             self.defaultPort = value
         }
-        if let value = dict["ExtraPorts"] as? Int32 {
+        if let value = dict["ExtraPorts"] as? [Int32] {
             self.extraPorts = value
         }
         if let value = dict["ServiceMode"] as? String {
@@ -5299,6 +5299,8 @@ public class CreateJobRequest : Tea.TeaModel {
 
         public var dataSourceVersion: String?
 
+        public var enableCache: Bool?
+
         public var mountAccess: String?
 
         public var mountPath: String?
@@ -5327,6 +5329,9 @@ public class CreateJobRequest : Tea.TeaModel {
             if self.dataSourceVersion != nil {
                 map["DataSourceVersion"] = self.dataSourceVersion!
             }
+            if self.enableCache != nil {
+                map["EnableCache"] = self.enableCache!
+            }
             if self.mountAccess != nil {
                 map["MountAccess"] = self.mountAccess!
             }
@@ -5349,6 +5354,9 @@ public class CreateJobRequest : Tea.TeaModel {
             }
             if let value = dict["DataSourceVersion"] as? String {
                 self.dataSourceVersion = value
+            }
+            if let value = dict["EnableCache"] as? Bool {
+                self.enableCache = value
             }
             if let value = dict["MountAccess"] as? String {
                 self.mountAccess = value
