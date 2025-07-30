@@ -15083,6 +15083,8 @@ public class CreateApplicationRequest : Tea.TeaModel {
 
     public var gpuConfig: String?
 
+    public var headlessPvtzDiscoverySvc: String?
+
     public var html: String?
 
     public var imagePullSecrets: String?
@@ -15279,6 +15281,9 @@ public class CreateApplicationRequest : Tea.TeaModel {
         }
         if self.gpuConfig != nil {
             map["GpuConfig"] = self.gpuConfig!
+        }
+        if self.headlessPvtzDiscoverySvc != nil {
+            map["HeadlessPvtzDiscoverySvc"] = self.headlessPvtzDiscoverySvc!
         }
         if self.html != nil {
             map["Html"] = self.html!
@@ -15530,6 +15535,9 @@ public class CreateApplicationRequest : Tea.TeaModel {
         if let value = dict["GpuConfig"] as? String {
             self.gpuConfig = value
         }
+        if let value = dict["HeadlessPvtzDiscoverySvc"] as? String {
+            self.headlessPvtzDiscoverySvc = value
+        }
         if let value = dict["Html"] as? String {
             self.html = value
         }
@@ -15766,6 +15774,8 @@ public class CreateApplicationShrinkRequest : Tea.TeaModel {
 
     public var gpuConfig: String?
 
+    public var headlessPvtzDiscoverySvc: String?
+
     public var html: String?
 
     public var imagePullSecrets: String?
@@ -15962,6 +15972,9 @@ public class CreateApplicationShrinkRequest : Tea.TeaModel {
         }
         if self.gpuConfig != nil {
             map["GpuConfig"] = self.gpuConfig!
+        }
+        if self.headlessPvtzDiscoverySvc != nil {
+            map["HeadlessPvtzDiscoverySvc"] = self.headlessPvtzDiscoverySvc!
         }
         if self.html != nil {
             map["Html"] = self.html!
@@ -16204,6 +16217,9 @@ public class CreateApplicationShrinkRequest : Tea.TeaModel {
         }
         if let value = dict["GpuConfig"] as? String {
             self.gpuConfig = value
+        }
+        if let value = dict["HeadlessPvtzDiscoverySvc"] as? String {
+            self.headlessPvtzDiscoverySvc = value
         }
         if let value = dict["Html"] as? String {
             self.html = value
@@ -25128,6 +25144,8 @@ public class DescribeApplicationConfigResponseBody : Tea.TeaModel {
 
         public var clusterId: String?
 
+        public var cmsServiceId: String?
+
         public var command: String?
 
         public var commandArgs: String?
@@ -25163,6 +25181,8 @@ public class DescribeApplicationConfigResponseBody : Tea.TeaModel {
         public var gpuCount: String?
 
         public var gpuType: String?
+
+        public var headlessPvtzDiscovery: String?
 
         public var html: String?
 
@@ -25330,6 +25350,9 @@ public class DescribeApplicationConfigResponseBody : Tea.TeaModel {
             if self.clusterId != nil {
                 map["ClusterId"] = self.clusterId!
             }
+            if self.cmsServiceId != nil {
+                map["CmsServiceId"] = self.cmsServiceId!
+            }
             if self.command != nil {
                 map["Command"] = self.command!
             }
@@ -25387,6 +25410,9 @@ public class DescribeApplicationConfigResponseBody : Tea.TeaModel {
             }
             if self.gpuType != nil {
                 map["GpuType"] = self.gpuType!
+            }
+            if self.headlessPvtzDiscovery != nil {
+                map["HeadlessPvtzDiscovery"] = self.headlessPvtzDiscovery!
             }
             if self.html != nil {
                 map["Html"] = self.html!
@@ -25630,6 +25656,9 @@ public class DescribeApplicationConfigResponseBody : Tea.TeaModel {
             if let value = dict["ClusterId"] as? String {
                 self.clusterId = value
             }
+            if let value = dict["CmsServiceId"] as? String {
+                self.cmsServiceId = value
+            }
             if let value = dict["Command"] as? String {
                 self.command = value
             }
@@ -25693,6 +25722,9 @@ public class DescribeApplicationConfigResponseBody : Tea.TeaModel {
             }
             if let value = dict["GpuType"] as? String {
                 self.gpuType = value
+            }
+            if let value = dict["HeadlessPvtzDiscovery"] as? String {
+                self.headlessPvtzDiscovery = value
             }
             if let value = dict["Html"] as? String {
                 self.html = value

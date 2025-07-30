@@ -374,6 +374,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.gpuConfig)) {
             query["GpuConfig"] = request.gpuConfig ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.headlessPvtzDiscoverySvc)) {
+            query["HeadlessPvtzDiscoverySvc"] = request.headlessPvtzDiscoverySvc ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.html)) {
             query["Html"] = request.html ?? "";
         }
