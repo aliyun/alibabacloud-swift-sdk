@@ -1568,6 +1568,12 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.inStreamName2)) {
             query["InStreamName2"] = request.inStreamName2 ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.liveMerger)) {
+            query["LiveMerger"] = request.liveMerger ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.mergeParameters)) {
+            query["MergeParameters"] = request.mergeParameters ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.ownerId)) {
             query["OwnerId"] = request.ownerId!;
         }

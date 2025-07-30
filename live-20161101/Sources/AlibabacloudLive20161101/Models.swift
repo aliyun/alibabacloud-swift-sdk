@@ -5995,6 +5995,10 @@ public class AddLiveStreamMergeRequest : Tea.TeaModel {
 
     public var inStreamName2: String?
 
+    public var liveMerger: String?
+
+    public var mergeParameters: String?
+
     public var ownerId: Int64?
 
     public var protocol_: String?
@@ -6040,6 +6044,12 @@ public class AddLiveStreamMergeRequest : Tea.TeaModel {
         if self.inStreamName2 != nil {
             map["InStreamName2"] = self.inStreamName2!
         }
+        if self.liveMerger != nil {
+            map["LiveMerger"] = self.liveMerger!
+        }
+        if self.mergeParameters != nil {
+            map["MergeParameters"] = self.mergeParameters!
+        }
         if self.ownerId != nil {
             map["OwnerId"] = self.ownerId!
         }
@@ -6081,6 +6091,12 @@ public class AddLiveStreamMergeRequest : Tea.TeaModel {
         if let value = dict["InStreamName2"] as? String {
             self.inStreamName2 = value
         }
+        if let value = dict["LiveMerger"] as? String {
+            self.liveMerger = value
+        }
+        if let value = dict["MergeParameters"] as? String {
+            self.mergeParameters = value
+        }
         if let value = dict["OwnerId"] as? Int64 {
             self.ownerId = value
         }
@@ -6100,6 +6116,8 @@ public class AddLiveStreamMergeRequest : Tea.TeaModel {
 }
 
 public class AddLiveStreamMergeResponseBody : Tea.TeaModel {
+    public var message: String?
+
     public var requestId: String?
 
     public override init() {
@@ -6116,6 +6134,9 @@ public class AddLiveStreamMergeResponseBody : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.message != nil {
+            map["Message"] = self.message!
+        }
         if self.requestId != nil {
             map["RequestId"] = self.requestId!
         }
@@ -6124,6 +6145,9 @@ public class AddLiveStreamMergeResponseBody : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["Message"] as? String {
+            self.message = value
+        }
         if let value = dict["RequestId"] as? String {
             self.requestId = value
         }
@@ -51400,6 +51424,10 @@ public class DescribeLiveStreamMergeResponseBody : Tea.TeaModel {
 
             public var inStreamName2: String?
 
+            public var liveMerger: String?
+
+            public var mergeParameters: String?
+
             public var protocol_: String?
 
             public var startTime: String?
@@ -51449,6 +51477,12 @@ public class DescribeLiveStreamMergeResponseBody : Tea.TeaModel {
                 if self.inStreamName2 != nil {
                     map["InStreamName2"] = self.inStreamName2!
                 }
+                if self.liveMerger != nil {
+                    map["LiveMerger"] = self.liveMerger!
+                }
+                if self.mergeParameters != nil {
+                    map["MergeParameters"] = self.mergeParameters!
+                }
                 if self.protocol_ != nil {
                     map["Protocol"] = self.protocol_!
                 }
@@ -51492,6 +51526,12 @@ public class DescribeLiveStreamMergeResponseBody : Tea.TeaModel {
                 }
                 if let value = dict["InStreamName2"] as? String {
                     self.inStreamName2 = value
+                }
+                if let value = dict["LiveMerger"] as? String {
+                    self.liveMerger = value
+                }
+                if let value = dict["MergeParameters"] as? String {
+                    self.mergeParameters = value
                 }
                 if let value = dict["Protocol"] as? String {
                     self.protocol_ = value
