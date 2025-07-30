@@ -321,6 +321,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.algorithm)) {
             query["Algorithm"] = request.algorithm ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.clientToken)) {
+            query["ClientToken"] = request.clientToken ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.commonName)) {
             query["CommonName"] = request.commonName ?? "";
         }
@@ -983,6 +986,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func updateCACertificateStatusWithOptions(_ request: UpdateCACertificateStatusRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> UpdateCACertificateStatusResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.clientToken)) {
+            query["ClientToken"] = request.clientToken ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.identifier)) {
             query["Identifier"] = request.identifier ?? "";
         }

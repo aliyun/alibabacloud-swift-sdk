@@ -1252,6 +1252,8 @@ public class CreateRevokeClientCertificateResponse : Tea.TeaModel {
 public class CreateRootCACertificateRequest : Tea.TeaModel {
     public var algorithm: String?
 
+    public var clientToken: String?
+
     public var commonName: String?
 
     public var countryCode: String?
@@ -1283,6 +1285,9 @@ public class CreateRootCACertificateRequest : Tea.TeaModel {
         if self.algorithm != nil {
             map["Algorithm"] = self.algorithm!
         }
+        if self.clientToken != nil {
+            map["ClientToken"] = self.clientToken!
+        }
         if self.commonName != nil {
             map["CommonName"] = self.commonName!
         }
@@ -1311,6 +1316,9 @@ public class CreateRootCACertificateRequest : Tea.TeaModel {
         guard let dict else { return }
         if let value = dict["Algorithm"] as? String {
             self.algorithm = value
+        }
+        if let value = dict["ClientToken"] as? String {
+            self.clientToken = value
         }
         if let value = dict["CommonName"] as? String {
             self.commonName = value
@@ -2380,7 +2388,11 @@ public class DescribeCACertificateResponseBody : Tea.TeaModel {
 
         public var crlUrl: String?
 
+        public var fullAlgorithm: String?
+
         public var identifier: String?
+
+        public var issuerType: String?
 
         public var keySize: Int32?
 
@@ -2409,6 +2421,8 @@ public class DescribeCACertificateResponseBody : Tea.TeaModel {
         public var subjectDN: String?
 
         public var x509Certificate: String?
+
+        public var years: Int32?
 
         public override init() {
             super.init()
@@ -2463,8 +2477,14 @@ public class DescribeCACertificateResponseBody : Tea.TeaModel {
             if self.crlUrl != nil {
                 map["CrlUrl"] = self.crlUrl!
             }
+            if self.fullAlgorithm != nil {
+                map["FullAlgorithm"] = self.fullAlgorithm!
+            }
             if self.identifier != nil {
                 map["Identifier"] = self.identifier!
+            }
+            if self.issuerType != nil {
+                map["IssuerType"] = self.issuerType!
             }
             if self.keySize != nil {
                 map["KeySize"] = self.keySize!
@@ -2507,6 +2527,9 @@ public class DescribeCACertificateResponseBody : Tea.TeaModel {
             }
             if self.x509Certificate != nil {
                 map["X509Certificate"] = self.x509Certificate!
+            }
+            if self.years != nil {
+                map["Years"] = self.years!
             }
             return map
         }
@@ -2552,8 +2575,14 @@ public class DescribeCACertificateResponseBody : Tea.TeaModel {
             if let value = dict["CrlUrl"] as? String {
                 self.crlUrl = value
             }
+            if let value = dict["FullAlgorithm"] as? String {
+                self.fullAlgorithm = value
+            }
             if let value = dict["Identifier"] as? String {
                 self.identifier = value
+            }
+            if let value = dict["IssuerType"] as? String {
+                self.issuerType = value
             }
             if let value = dict["KeySize"] as? Int32 {
                 self.keySize = value
@@ -2596,6 +2625,9 @@ public class DescribeCACertificateResponseBody : Tea.TeaModel {
             }
             if let value = dict["X509Certificate"] as? String {
                 self.x509Certificate = value
+            }
+            if let value = dict["Years"] as? Int32 {
+                self.years = value
             }
         }
     }
@@ -5245,6 +5277,8 @@ public class ListRevokeCertificateResponse : Tea.TeaModel {
 }
 
 public class UpdateCACertificateStatusRequest : Tea.TeaModel {
+    public var clientToken: String?
+
     public var identifier: String?
 
     public var status: String?
@@ -5263,6 +5297,9 @@ public class UpdateCACertificateStatusRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.clientToken != nil {
+            map["ClientToken"] = self.clientToken!
+        }
         if self.identifier != nil {
             map["Identifier"] = self.identifier!
         }
@@ -5274,6 +5311,9 @@ public class UpdateCACertificateStatusRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["ClientToken"] as? String {
+            self.clientToken = value
+        }
         if let value = dict["Identifier"] as? String {
             self.identifier = value
         }
