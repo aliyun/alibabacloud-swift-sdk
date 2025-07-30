@@ -335,6 +335,51 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func createMiningTaskWithOptions(_ request: CreateMiningTaskRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> CreateMiningTaskResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.baseMeAgentId)) {
+            query["BaseMeAgentId"] = request.baseMeAgentId!;
+        }
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.callbackUrl)) {
+            body["CallbackUrl"] = request.callbackUrl ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.filePath)) {
+            body["FilePath"] = request.filePath ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.param)) {
+            body["Param"] = request.param ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.taskType)) {
+            body["TaskType"] = request.taskType ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query),
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "CreateMiningTask",
+            "version": "2019-01-15",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(CreateMiningTaskResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func createMiningTask(_ request: CreateMiningTaskRequest) async throws -> CreateMiningTaskResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await createMiningTaskWithOptions(request as! CreateMiningTaskRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func createQualityCheckSchemeWithOptions(_ request: CreateQualityCheckSchemeRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> CreateQualityCheckSchemeResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
@@ -1161,6 +1206,40 @@ open class Client : AlibabacloudOpenApi.Client {
     public func getCustomizationConfigList(_ request: GetCustomizationConfigListRequest) async throws -> GetCustomizationConfigListResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         return try await getCustomizationConfigListWithOptions(request as! GetCustomizationConfigListRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getMiningTaskResultWithOptions(_ request: GetMiningTaskResultRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> GetMiningTaskResultResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.baseMeAgentId)) {
+            query["BaseMeAgentId"] = request.baseMeAgentId!;
+        }
+        if (!TeaUtils.Client.isUnset(request.taskId)) {
+            query["TaskId"] = request.taskId ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "GetMiningTaskResult",
+            "version": "2019-01-15",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(GetMiningTaskResultResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getMiningTaskResult(_ request: GetMiningTaskResultRequest) async throws -> GetMiningTaskResultResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await getMiningTaskResultWithOptions(request as! GetMiningTaskResultRequest, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
