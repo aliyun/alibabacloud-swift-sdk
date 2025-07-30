@@ -75627,6 +75627,8 @@ public class DescribePriceRequest : Tea.TeaModel {
     public class SchedulerOptions : Tea.TeaModel {
         public var dedicatedHostId: String?
 
+        public var deploymentSetStrategy: String?
+
         public override init() {
             super.init()
         }
@@ -75644,6 +75646,9 @@ public class DescribePriceRequest : Tea.TeaModel {
             if self.dedicatedHostId != nil {
                 map["DedicatedHostId"] = self.dedicatedHostId!
             }
+            if self.deploymentSetStrategy != nil {
+                map["DeploymentSetStrategy"] = self.deploymentSetStrategy!
+            }
             return map
         }
 
@@ -75651,6 +75656,9 @@ public class DescribePriceRequest : Tea.TeaModel {
             guard let dict else { return }
             if let value = dict["DedicatedHostId"] as? String {
                 self.dedicatedHostId = value
+            }
+            if let value = dict["DeploymentSetStrategy"] as? String {
+                self.deploymentSetStrategy = value
             }
         }
     }
