@@ -14295,6 +14295,44 @@ public class CreateWorkflowInstancesRequest : Tea.TeaModel {
             }
         }
     }
+    public class Tags : Tea.TeaModel {
+        public var key: String?
+
+        public var value: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.key != nil {
+                map["Key"] = self.key!
+            }
+            if self.value != nil {
+                map["Value"] = self.value!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["Key"] as? String {
+                self.key = value
+            }
+            if let value = dict["Value"] as? String {
+                self.value = value
+            }
+        }
+    }
     public var autoStartEnabled: Bool?
 
     public var comment: String?
@@ -14308,6 +14346,10 @@ public class CreateWorkflowInstancesRequest : Tea.TeaModel {
     public var periods: CreateWorkflowInstancesRequest.Periods?
 
     public var projectId: Int64?
+
+    public var tagCreationPolicy: String?
+
+    public var tags: [CreateWorkflowInstancesRequest.Tags]?
 
     public var taskParameters: String?
 
@@ -14354,6 +14396,16 @@ public class CreateWorkflowInstancesRequest : Tea.TeaModel {
         if self.projectId != nil {
             map["ProjectId"] = self.projectId!
         }
+        if self.tagCreationPolicy != nil {
+            map["TagCreationPolicy"] = self.tagCreationPolicy!
+        }
+        if self.tags != nil {
+            var tmp : [Any] = []
+            for k in self.tags! {
+                tmp.append(k.toMap())
+            }
+            map["Tags"] = tmp
+        }
         if self.taskParameters != nil {
             map["TaskParameters"] = self.taskParameters!
         }
@@ -14396,6 +14448,22 @@ public class CreateWorkflowInstancesRequest : Tea.TeaModel {
         if let value = dict["ProjectId"] as? Int64 {
             self.projectId = value
         }
+        if let value = dict["TagCreationPolicy"] as? String {
+            self.tagCreationPolicy = value
+        }
+        if let value = dict["Tags"] as? [Any?] {
+            var tmp : [CreateWorkflowInstancesRequest.Tags] = []
+            for v in value {
+                if v != nil {
+                    var model = CreateWorkflowInstancesRequest.Tags()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.tags = tmp
+        }
         if let value = dict["TaskParameters"] as? String {
             self.taskParameters = value
         }
@@ -14425,6 +14493,10 @@ public class CreateWorkflowInstancesShrinkRequest : Tea.TeaModel {
     public var periodsShrink: String?
 
     public var projectId: Int64?
+
+    public var tagCreationPolicy: String?
+
+    public var tagsShrink: String?
 
     public var taskParameters: String?
 
@@ -14469,6 +14541,12 @@ public class CreateWorkflowInstancesShrinkRequest : Tea.TeaModel {
         if self.projectId != nil {
             map["ProjectId"] = self.projectId!
         }
+        if self.tagCreationPolicy != nil {
+            map["TagCreationPolicy"] = self.tagCreationPolicy!
+        }
+        if self.tagsShrink != nil {
+            map["Tags"] = self.tagsShrink!
+        }
         if self.taskParameters != nil {
             map["TaskParameters"] = self.taskParameters!
         }
@@ -14506,6 +14584,12 @@ public class CreateWorkflowInstancesShrinkRequest : Tea.TeaModel {
         }
         if let value = dict["ProjectId"] as? Int64 {
             self.projectId = value
+        }
+        if let value = dict["TagCreationPolicy"] as? String {
+            self.tagCreationPolicy = value
+        }
+        if let value = dict["Tags"] as? String {
+            self.tagsShrink = value
         }
         if let value = dict["TaskParameters"] as? String {
             self.taskParameters = value

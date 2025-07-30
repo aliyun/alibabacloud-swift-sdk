@@ -1917,6 +1917,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(tmpReq.periods)) {
             request.periodsShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.periods, "Periods", "json")
         }
+        if (!TeaUtils.Client.isUnset(tmpReq.tags)) {
+            request.tagsShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.tags, "Tags", "json")
+        }
         var body: [String: Any] = [:]
         if (!TeaUtils.Client.isUnset(request.autoStartEnabled)) {
             body["AutoStartEnabled"] = request.autoStartEnabled!;
@@ -1938,6 +1941,12 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.projectId)) {
             body["ProjectId"] = request.projectId!;
+        }
+        if (!TeaUtils.Client.isUnset(request.tagCreationPolicy)) {
+            body["TagCreationPolicy"] = request.tagCreationPolicy ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.tagsShrink)) {
+            body["Tags"] = request.tagsShrink ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.taskParameters)) {
             body["TaskParameters"] = request.taskParameters ?? "";
