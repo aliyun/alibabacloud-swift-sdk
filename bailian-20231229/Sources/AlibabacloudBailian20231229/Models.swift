@@ -2223,6 +2223,8 @@ public class CreateIndexRequest : Tea.TeaModel {
 
     public var columns: [CreateIndexRequest.Columns]?
 
+    public var createIndexType: String?
+
     public var dataSource: CreateIndexRequest.DataSource?
 
     public var description_: String?
@@ -2230,6 +2232,8 @@ public class CreateIndexRequest : Tea.TeaModel {
     public var documentIds: [String]?
 
     public var embeddingModelName: String?
+
+    public var enableRewrite: Bool?
 
     public var name: String?
 
@@ -2250,6 +2254,8 @@ public class CreateIndexRequest : Tea.TeaModel {
     public var sourceType: String?
 
     public var structureType: String?
+
+    public var tableIds: [String]?
 
     public var chunkMode: String?
 
@@ -2285,6 +2291,9 @@ public class CreateIndexRequest : Tea.TeaModel {
             }
             map["Columns"] = tmp
         }
+        if self.createIndexType != nil {
+            map["CreateIndexType"] = self.createIndexType!
+        }
         if self.dataSource != nil {
             map["DataSource"] = self.dataSource?.toMap()
         }
@@ -2296,6 +2305,9 @@ public class CreateIndexRequest : Tea.TeaModel {
         }
         if self.embeddingModelName != nil {
             map["EmbeddingModelName"] = self.embeddingModelName!
+        }
+        if self.enableRewrite != nil {
+            map["EnableRewrite"] = self.enableRewrite!
         }
         if self.name != nil {
             map["Name"] = self.name!
@@ -2326,6 +2338,9 @@ public class CreateIndexRequest : Tea.TeaModel {
         }
         if self.structureType != nil {
             map["StructureType"] = self.structureType!
+        }
+        if self.tableIds != nil {
+            map["TableIds"] = self.tableIds!
         }
         if self.chunkMode != nil {
             map["chunkMode"] = self.chunkMode!
@@ -2364,6 +2379,9 @@ public class CreateIndexRequest : Tea.TeaModel {
             }
             self.columns = tmp
         }
+        if let value = dict["CreateIndexType"] as? String {
+            self.createIndexType = value
+        }
         if let value = dict["DataSource"] as? [String: Any?] {
             var model = CreateIndexRequest.DataSource()
             model.fromMap(value)
@@ -2377,6 +2395,9 @@ public class CreateIndexRequest : Tea.TeaModel {
         }
         if let value = dict["EmbeddingModelName"] as? String {
             self.embeddingModelName = value
+        }
+        if let value = dict["EnableRewrite"] as? Bool {
+            self.enableRewrite = value
         }
         if let value = dict["Name"] as? String {
             self.name = value
@@ -2408,6 +2429,9 @@ public class CreateIndexRequest : Tea.TeaModel {
         if let value = dict["StructureType"] as? String {
             self.structureType = value
         }
+        if let value = dict["TableIds"] as? [String] {
+            self.tableIds = value
+        }
         if let value = dict["chunkMode"] as? String {
             self.chunkMode = value
         }
@@ -2437,6 +2461,8 @@ public class CreateIndexShrinkRequest : Tea.TeaModel {
 
     public var columnsShrink: String?
 
+    public var createIndexType: String?
+
     public var dataSourceShrink: String?
 
     public var description_: String?
@@ -2444,6 +2470,8 @@ public class CreateIndexShrinkRequest : Tea.TeaModel {
     public var documentIdsShrink: String?
 
     public var embeddingModelName: String?
+
+    public var enableRewrite: Bool?
 
     public var name: String?
 
@@ -2464,6 +2492,8 @@ public class CreateIndexShrinkRequest : Tea.TeaModel {
     public var sourceType: String?
 
     public var structureType: String?
+
+    public var tableIdsShrink: String?
 
     public var chunkMode: String?
 
@@ -2494,6 +2524,9 @@ public class CreateIndexShrinkRequest : Tea.TeaModel {
         if self.columnsShrink != nil {
             map["Columns"] = self.columnsShrink!
         }
+        if self.createIndexType != nil {
+            map["CreateIndexType"] = self.createIndexType!
+        }
         if self.dataSourceShrink != nil {
             map["DataSource"] = self.dataSourceShrink!
         }
@@ -2505,6 +2538,9 @@ public class CreateIndexShrinkRequest : Tea.TeaModel {
         }
         if self.embeddingModelName != nil {
             map["EmbeddingModelName"] = self.embeddingModelName!
+        }
+        if self.enableRewrite != nil {
+            map["EnableRewrite"] = self.enableRewrite!
         }
         if self.name != nil {
             map["Name"] = self.name!
@@ -2536,6 +2572,9 @@ public class CreateIndexShrinkRequest : Tea.TeaModel {
         if self.structureType != nil {
             map["StructureType"] = self.structureType!
         }
+        if self.tableIdsShrink != nil {
+            map["TableIds"] = self.tableIdsShrink!
+        }
         if self.chunkMode != nil {
             map["chunkMode"] = self.chunkMode!
         }
@@ -2559,6 +2598,9 @@ public class CreateIndexShrinkRequest : Tea.TeaModel {
         if let value = dict["Columns"] as? String {
             self.columnsShrink = value
         }
+        if let value = dict["CreateIndexType"] as? String {
+            self.createIndexType = value
+        }
         if let value = dict["DataSource"] as? String {
             self.dataSourceShrink = value
         }
@@ -2570,6 +2612,9 @@ public class CreateIndexShrinkRequest : Tea.TeaModel {
         }
         if let value = dict["EmbeddingModelName"] as? String {
             self.embeddingModelName = value
+        }
+        if let value = dict["EnableRewrite"] as? Bool {
+            self.enableRewrite = value
         }
         if let value = dict["Name"] as? String {
             self.name = value
@@ -2600,6 +2645,9 @@ public class CreateIndexShrinkRequest : Tea.TeaModel {
         }
         if let value = dict["StructureType"] as? String {
             self.structureType = value
+        }
+        if let value = dict["TableIds"] as? String {
+            self.tableIdsShrink = value
         }
         if let value = dict["chunkMode"] as? String {
             self.chunkMode = value
@@ -7025,11 +7073,15 @@ public class ListIndicesResponseBody : Tea.TeaModel {
         public class Indices : Tea.TeaModel {
             public var chunkSize: Int32?
 
+            public var confgModel: String?
+
             public var description_: String?
 
             public var documentIds: [String]?
 
             public var embeddingModelName: String?
+
+            public var enableRewrite: Bool?
 
             public var id: String?
 
@@ -7070,6 +7122,9 @@ public class ListIndicesResponseBody : Tea.TeaModel {
                 if self.chunkSize != nil {
                     map["ChunkSize"] = self.chunkSize!
                 }
+                if self.confgModel != nil {
+                    map["ConfgModel"] = self.confgModel!
+                }
                 if self.description_ != nil {
                     map["Description"] = self.description_!
                 }
@@ -7078,6 +7133,9 @@ public class ListIndicesResponseBody : Tea.TeaModel {
                 }
                 if self.embeddingModelName != nil {
                     map["EmbeddingModelName"] = self.embeddingModelName!
+                }
+                if self.enableRewrite != nil {
+                    map["EnableRewrite"] = self.enableRewrite!
                 }
                 if self.id != nil {
                     map["Id"] = self.id!
@@ -7120,6 +7178,9 @@ public class ListIndicesResponseBody : Tea.TeaModel {
                 if let value = dict["ChunkSize"] as? Int32 {
                     self.chunkSize = value
                 }
+                if let value = dict["ConfgModel"] as? String {
+                    self.confgModel = value
+                }
                 if let value = dict["Description"] as? String {
                     self.description_ = value
                 }
@@ -7128,6 +7189,9 @@ public class ListIndicesResponseBody : Tea.TeaModel {
                 }
                 if let value = dict["EmbeddingModelName"] as? String {
                     self.embeddingModelName = value
+                }
+                if let value = dict["EnableRewrite"] as? Bool {
+                    self.enableRewrite = value
                 }
                 if let value = dict["Id"] as? String {
                     self.id = value
@@ -9354,6 +9418,8 @@ public class SubmitIndexAddDocumentsJobRequest : Tea.TeaModel {
 
     public var documentIds: [String]?
 
+    public var enableHeaders: Bool?
+
     public var indexId: String?
 
     public var overlapSize: Int32?
@@ -9388,6 +9454,9 @@ public class SubmitIndexAddDocumentsJobRequest : Tea.TeaModel {
         if self.documentIds != nil {
             map["DocumentIds"] = self.documentIds!
         }
+        if self.enableHeaders != nil {
+            map["EnableHeaders"] = self.enableHeaders!
+        }
         if self.indexId != nil {
             map["IndexId"] = self.indexId!
         }
@@ -9417,6 +9486,9 @@ public class SubmitIndexAddDocumentsJobRequest : Tea.TeaModel {
         if let value = dict["DocumentIds"] as? [String] {
             self.documentIds = value
         }
+        if let value = dict["EnableHeaders"] as? Bool {
+            self.enableHeaders = value
+        }
         if let value = dict["IndexId"] as? String {
             self.indexId = value
         }
@@ -9440,6 +9512,8 @@ public class SubmitIndexAddDocumentsJobShrinkRequest : Tea.TeaModel {
     public var chunkSize: Int32?
 
     public var documentIdsShrink: String?
+
+    public var enableHeaders: Bool?
 
     public var indexId: String?
 
@@ -9475,6 +9549,9 @@ public class SubmitIndexAddDocumentsJobShrinkRequest : Tea.TeaModel {
         if self.documentIdsShrink != nil {
             map["DocumentIds"] = self.documentIdsShrink!
         }
+        if self.enableHeaders != nil {
+            map["EnableHeaders"] = self.enableHeaders!
+        }
         if self.indexId != nil {
             map["IndexId"] = self.indexId!
         }
@@ -9503,6 +9580,9 @@ public class SubmitIndexAddDocumentsJobShrinkRequest : Tea.TeaModel {
         }
         if let value = dict["DocumentIds"] as? String {
             self.documentIdsShrink = value
+        }
+        if let value = dict["EnableHeaders"] as? Bool {
+            self.enableHeaders = value
         }
         if let value = dict["IndexId"] as? String {
             self.indexId = value
