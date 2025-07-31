@@ -23477,6 +23477,12 @@ public class SendChatappMassMessageRequest : Tea.TeaModel {
 
     public var language: String?
 
+    public var ownerId: Int64?
+
+    public var resourceOwnerAccount: String?
+
+    public var resourceOwnerId: Int64?
+
     public var senderList: [SendChatappMassMessageRequest.SenderList]?
 
     public var tag: String?
@@ -23535,6 +23541,15 @@ public class SendChatappMassMessageRequest : Tea.TeaModel {
         }
         if self.language != nil {
             map["Language"] = self.language!
+        }
+        if self.ownerId != nil {
+            map["OwnerId"] = self.ownerId!
+        }
+        if self.resourceOwnerAccount != nil {
+            map["ResourceOwnerAccount"] = self.resourceOwnerAccount!
+        }
+        if self.resourceOwnerId != nil {
+            map["ResourceOwnerId"] = self.resourceOwnerId!
         }
         if self.senderList != nil {
             var tmp : [Any] = []
@@ -23596,6 +23611,15 @@ public class SendChatappMassMessageRequest : Tea.TeaModel {
         if let value = dict["Language"] as? String {
             self.language = value
         }
+        if let value = dict["OwnerId"] as? Int64 {
+            self.ownerId = value
+        }
+        if let value = dict["ResourceOwnerAccount"] as? String {
+            self.resourceOwnerAccount = value
+        }
+        if let value = dict["ResourceOwnerId"] as? Int64 {
+            self.resourceOwnerId = value
+        }
         if let value = dict["SenderList"] as? [Any?] {
             var tmp : [SendChatappMassMessageRequest.SenderList] = []
             for v in value {
@@ -23649,6 +23673,12 @@ public class SendChatappMassMessageShrinkRequest : Tea.TeaModel {
     public var label: String?
 
     public var language: String?
+
+    public var ownerId: Int64?
+
+    public var resourceOwnerAccount: String?
+
+    public var resourceOwnerId: Int64?
 
     public var senderListShrink: String?
 
@@ -23709,6 +23739,15 @@ public class SendChatappMassMessageShrinkRequest : Tea.TeaModel {
         if self.language != nil {
             map["Language"] = self.language!
         }
+        if self.ownerId != nil {
+            map["OwnerId"] = self.ownerId!
+        }
+        if self.resourceOwnerAccount != nil {
+            map["ResourceOwnerAccount"] = self.resourceOwnerAccount!
+        }
+        if self.resourceOwnerId != nil {
+            map["ResourceOwnerId"] = self.resourceOwnerId!
+        }
         if self.senderListShrink != nil {
             map["SenderList"] = self.senderListShrink!
         }
@@ -23764,6 +23803,15 @@ public class SendChatappMassMessageShrinkRequest : Tea.TeaModel {
         }
         if let value = dict["Language"] as? String {
             self.language = value
+        }
+        if let value = dict["OwnerId"] as? Int64 {
+            self.ownerId = value
+        }
+        if let value = dict["ResourceOwnerAccount"] as? String {
+            self.resourceOwnerAccount = value
+        }
+        if let value = dict["ResourceOwnerId"] as? Int64 {
+            self.resourceOwnerId = value
         }
         if let value = dict["SenderList"] as? String {
             self.senderListShrink = value
@@ -24102,11 +24150,17 @@ public class SendChatappMessageRequest : Tea.TeaModel {
 
     public var messageType: String?
 
+    public var ownerId: Int64?
+
     public var payload: [String]?
 
     public var productAction: SendChatappMessageRequest.ProductAction?
 
     public var recipientType: String?
+
+    public var resourceOwnerAccount: String?
+
+    public var resourceOwnerId: Int64?
 
     public var tag: String?
 
@@ -24187,6 +24241,9 @@ public class SendChatappMessageRequest : Tea.TeaModel {
         if self.messageType != nil {
             map["MessageType"] = self.messageType!
         }
+        if self.ownerId != nil {
+            map["OwnerId"] = self.ownerId!
+        }
         if self.payload != nil {
             map["Payload"] = self.payload!
         }
@@ -24195,6 +24252,12 @@ public class SendChatappMessageRequest : Tea.TeaModel {
         }
         if self.recipientType != nil {
             map["RecipientType"] = self.recipientType!
+        }
+        if self.resourceOwnerAccount != nil {
+            map["ResourceOwnerAccount"] = self.resourceOwnerAccount!
+        }
+        if self.resourceOwnerId != nil {
+            map["ResourceOwnerId"] = self.resourceOwnerId!
         }
         if self.tag != nil {
             map["Tag"] = self.tag!
@@ -24275,6 +24338,9 @@ public class SendChatappMessageRequest : Tea.TeaModel {
         if let value = dict["MessageType"] as? String {
             self.messageType = value
         }
+        if let value = dict["OwnerId"] as? Int64 {
+            self.ownerId = value
+        }
         if let value = dict["Payload"] as? [String] {
             self.payload = value
         }
@@ -24285,6 +24351,12 @@ public class SendChatappMessageRequest : Tea.TeaModel {
         }
         if let value = dict["RecipientType"] as? String {
             self.recipientType = value
+        }
+        if let value = dict["ResourceOwnerAccount"] as? String {
+            self.resourceOwnerAccount = value
+        }
+        if let value = dict["ResourceOwnerId"] as? Int64 {
+            self.resourceOwnerId = value
         }
         if let value = dict["Tag"] as? String {
             self.tag = value
@@ -24347,11 +24419,17 @@ public class SendChatappMessageShrinkRequest : Tea.TeaModel {
 
     public var messageType: String?
 
+    public var ownerId: Int64?
+
     public var payloadShrink: String?
 
     public var productActionShrink: String?
 
     public var recipientType: String?
+
+    public var resourceOwnerAccount: String?
+
+    public var resourceOwnerId: Int64?
 
     public var tag: String?
 
@@ -24430,6 +24508,9 @@ public class SendChatappMessageShrinkRequest : Tea.TeaModel {
         if self.messageType != nil {
             map["MessageType"] = self.messageType!
         }
+        if self.ownerId != nil {
+            map["OwnerId"] = self.ownerId!
+        }
         if self.payloadShrink != nil {
             map["Payload"] = self.payloadShrink!
         }
@@ -24438,6 +24519,12 @@ public class SendChatappMessageShrinkRequest : Tea.TeaModel {
         }
         if self.recipientType != nil {
             map["RecipientType"] = self.recipientType!
+        }
+        if self.resourceOwnerAccount != nil {
+            map["ResourceOwnerAccount"] = self.resourceOwnerAccount!
+        }
+        if self.resourceOwnerId != nil {
+            map["ResourceOwnerId"] = self.resourceOwnerId!
         }
         if self.tag != nil {
             map["Tag"] = self.tag!
@@ -24516,6 +24603,9 @@ public class SendChatappMessageShrinkRequest : Tea.TeaModel {
         if let value = dict["MessageType"] as? String {
             self.messageType = value
         }
+        if let value = dict["OwnerId"] as? Int64 {
+            self.ownerId = value
+        }
         if let value = dict["Payload"] as? String {
             self.payloadShrink = value
         }
@@ -24524,6 +24614,12 @@ public class SendChatappMessageShrinkRequest : Tea.TeaModel {
         }
         if let value = dict["RecipientType"] as? String {
             self.recipientType = value
+        }
+        if let value = dict["ResourceOwnerAccount"] as? String {
+            self.resourceOwnerAccount = value
+        }
+        if let value = dict["ResourceOwnerId"] as? Int64 {
+            self.resourceOwnerId = value
         }
         if let value = dict["Tag"] as? String {
             self.tag = value
@@ -24556,6 +24652,8 @@ public class SendChatappMessageShrinkRequest : Tea.TeaModel {
 }
 
 public class SendChatappMessageResponseBody : Tea.TeaModel {
+    public var accessDeniedDetail: String?
+
     public var code: String?
 
     public var message: String?
@@ -24578,6 +24676,9 @@ public class SendChatappMessageResponseBody : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.accessDeniedDetail != nil {
+            map["AccessDeniedDetail"] = self.accessDeniedDetail!
+        }
         if self.code != nil {
             map["Code"] = self.code!
         }
@@ -24595,6 +24696,9 @@ public class SendChatappMessageResponseBody : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["AccessDeniedDetail"] as? String {
+            self.accessDeniedDetail = value
+        }
         if let value = dict["Code"] as? String {
             self.code = value
         }

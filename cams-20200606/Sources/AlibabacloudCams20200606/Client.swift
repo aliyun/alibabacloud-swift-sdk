@@ -4043,60 +4043,69 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(tmpReq.senderList)) {
             request.senderListShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.senderList, "SenderList", "json")
         }
-        var body: [String: Any] = [:]
+        var query: [String: Any] = [:]
         if (!TeaUtils.Client.isUnset(request.channelType)) {
-            body["ChannelType"] = request.channelType ?? "";
+            query["ChannelType"] = request.channelType ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.custSpaceId)) {
-            body["CustSpaceId"] = request.custSpaceId ?? "";
+            query["CustSpaceId"] = request.custSpaceId ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.custWabaId)) {
-            body["CustWabaId"] = request.custWabaId ?? "";
+            query["CustWabaId"] = request.custWabaId ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.fallBackContent)) {
-            body["FallBackContent"] = request.fallBackContent ?? "";
+            query["FallBackContent"] = request.fallBackContent ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.fallBackDuration)) {
-            body["FallBackDuration"] = request.fallBackDuration!;
+            query["FallBackDuration"] = request.fallBackDuration!;
         }
         if (!TeaUtils.Client.isUnset(request.fallBackId)) {
-            body["FallBackId"] = request.fallBackId ?? "";
+            query["FallBackId"] = request.fallBackId ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.fallBackRule)) {
-            body["FallBackRule"] = request.fallBackRule ?? "";
+            query["FallBackRule"] = request.fallBackRule ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.from)) {
-            body["From"] = request.from ?? "";
+            query["From"] = request.from ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.isvCode)) {
-            body["IsvCode"] = request.isvCode ?? "";
+            query["IsvCode"] = request.isvCode ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.label)) {
-            body["Label"] = request.label ?? "";
+            query["Label"] = request.label ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.language)) {
-            body["Language"] = request.language ?? "";
+            query["Language"] = request.language ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.ownerId)) {
+            query["OwnerId"] = request.ownerId!;
+        }
+        if (!TeaUtils.Client.isUnset(request.resourceOwnerAccount)) {
+            query["ResourceOwnerAccount"] = request.resourceOwnerAccount ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.resourceOwnerId)) {
+            query["ResourceOwnerId"] = request.resourceOwnerId!;
         }
         if (!TeaUtils.Client.isUnset(request.senderListShrink)) {
-            body["SenderList"] = request.senderListShrink ?? "";
+            query["SenderList"] = request.senderListShrink ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.tag)) {
-            body["Tag"] = request.tag ?? "";
+            query["Tag"] = request.tag ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.taskId)) {
-            body["TaskId"] = request.taskId ?? "";
+            query["TaskId"] = request.taskId ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.templateCode)) {
-            body["TemplateCode"] = request.templateCode ?? "";
+            query["TemplateCode"] = request.templateCode ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.templateName)) {
-            body["TemplateName"] = request.templateName ?? "";
+            query["TemplateName"] = request.templateName ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.ttl)) {
-            body["Ttl"] = request.ttl!;
+            query["Ttl"] = request.ttl!;
         }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
-            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
         ])
         var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
             "action": "SendChatappMassMessage",
@@ -4137,91 +4146,98 @@ open class Client : AlibabacloudOpenApi.Client {
             request.templateParamsShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.templateParams, "TemplateParams", "json")
         }
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.channelType)) {
+            query["ChannelType"] = request.channelType ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.content)) {
             query["Content"] = request.content ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.contextMessageId)) {
+            query["ContextMessageId"] = request.contextMessageId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.custSpaceId)) {
+            query["CustSpaceId"] = request.custSpaceId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.custWabaId)) {
+            query["CustWabaId"] = request.custWabaId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.fallBackContent)) {
+            query["FallBackContent"] = request.fallBackContent ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.fallBackDuration)) {
+            query["FallBackDuration"] = request.fallBackDuration!;
+        }
+        if (!TeaUtils.Client.isUnset(request.fallBackId)) {
+            query["FallBackId"] = request.fallBackId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.fallBackRule)) {
+            query["FallBackRule"] = request.fallBackRule ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.flowActionShrink)) {
+            query["FlowAction"] = request.flowActionShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.from)) {
+            query["From"] = request.from ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.isvCode)) {
+            query["IsvCode"] = request.isvCode ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.label)) {
+            query["Label"] = request.label ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.language)) {
+            query["Language"] = request.language ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.messageType)) {
+            query["MessageType"] = request.messageType ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.ownerId)) {
+            query["OwnerId"] = request.ownerId!;
         }
         if (!TeaUtils.Client.isUnset(request.payloadShrink)) {
             query["Payload"] = request.payloadShrink ?? "";
         }
-        var body: [String: Any] = [:]
-        if (!TeaUtils.Client.isUnset(request.channelType)) {
-            body["ChannelType"] = request.channelType ?? "";
-        }
-        if (!TeaUtils.Client.isUnset(request.contextMessageId)) {
-            body["ContextMessageId"] = request.contextMessageId ?? "";
-        }
-        if (!TeaUtils.Client.isUnset(request.custSpaceId)) {
-            body["CustSpaceId"] = request.custSpaceId ?? "";
-        }
-        if (!TeaUtils.Client.isUnset(request.custWabaId)) {
-            body["CustWabaId"] = request.custWabaId ?? "";
-        }
-        if (!TeaUtils.Client.isUnset(request.fallBackContent)) {
-            body["FallBackContent"] = request.fallBackContent ?? "";
-        }
-        if (!TeaUtils.Client.isUnset(request.fallBackDuration)) {
-            body["FallBackDuration"] = request.fallBackDuration!;
-        }
-        if (!TeaUtils.Client.isUnset(request.fallBackId)) {
-            body["FallBackId"] = request.fallBackId ?? "";
-        }
-        if (!TeaUtils.Client.isUnset(request.fallBackRule)) {
-            body["FallBackRule"] = request.fallBackRule ?? "";
-        }
-        if (!TeaUtils.Client.isUnset(request.flowActionShrink)) {
-            body["FlowAction"] = request.flowActionShrink ?? "";
-        }
-        if (!TeaUtils.Client.isUnset(request.from)) {
-            body["From"] = request.from ?? "";
-        }
-        if (!TeaUtils.Client.isUnset(request.isvCode)) {
-            body["IsvCode"] = request.isvCode ?? "";
-        }
-        if (!TeaUtils.Client.isUnset(request.label)) {
-            body["Label"] = request.label ?? "";
-        }
-        if (!TeaUtils.Client.isUnset(request.language)) {
-            body["Language"] = request.language ?? "";
-        }
-        if (!TeaUtils.Client.isUnset(request.messageType)) {
-            body["MessageType"] = request.messageType ?? "";
-        }
         if (!TeaUtils.Client.isUnset(request.productActionShrink)) {
-            body["ProductAction"] = request.productActionShrink ?? "";
+            query["ProductAction"] = request.productActionShrink ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.recipientType)) {
-            body["RecipientType"] = request.recipientType ?? "";
+            query["RecipientType"] = request.recipientType ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.resourceOwnerAccount)) {
+            query["ResourceOwnerAccount"] = request.resourceOwnerAccount ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.resourceOwnerId)) {
+            query["ResourceOwnerId"] = request.resourceOwnerId!;
         }
         if (!TeaUtils.Client.isUnset(request.tag)) {
-            body["Tag"] = request.tag ?? "";
+            query["Tag"] = request.tag ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.taskId)) {
-            body["TaskId"] = request.taskId ?? "";
+            query["TaskId"] = request.taskId ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.templateCode)) {
-            body["TemplateCode"] = request.templateCode ?? "";
+            query["TemplateCode"] = request.templateCode ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.templateName)) {
-            body["TemplateName"] = request.templateName ?? "";
+            query["TemplateName"] = request.templateName ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.templateParamsShrink)) {
-            body["TemplateParams"] = request.templateParamsShrink ?? "";
+            query["TemplateParams"] = request.templateParamsShrink ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.to)) {
-            body["To"] = request.to ?? "";
+            query["To"] = request.to ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.trackingData)) {
-            body["TrackingData"] = request.trackingData ?? "";
+            query["TrackingData"] = request.trackingData ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.ttl)) {
-            body["Ttl"] = request.ttl!;
+            query["Ttl"] = request.ttl!;
         }
         if (!TeaUtils.Client.isUnset(request.type)) {
-            body["Type"] = request.type ?? "";
+            query["Type"] = request.type ?? "";
         }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
-            "query": AlibabaCloudOpenApiUtil.Client.query(query),
-            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
         ])
         var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
             "action": "SendChatappMessage",
