@@ -30586,6 +30586,8 @@ public class DescribeSensitiveApiStatisticRequest : Tea.TeaModel {
 
     public var startTime: Int64?
 
+    public var type: String?
+
     public override init() {
         super.init()
     }
@@ -30627,6 +30629,9 @@ public class DescribeSensitiveApiStatisticRequest : Tea.TeaModel {
         if self.startTime != nil {
             map["StartTime"] = self.startTime!
         }
+        if self.type != nil {
+            map["Type"] = self.type!
+        }
         return map
     }
 
@@ -30658,6 +30663,9 @@ public class DescribeSensitiveApiStatisticRequest : Tea.TeaModel {
         }
         if let value = dict["StartTime"] as? Int64 {
             self.startTime = value
+        }
+        if let value = dict["Type"] as? String {
+            self.type = value
         }
     }
 }
