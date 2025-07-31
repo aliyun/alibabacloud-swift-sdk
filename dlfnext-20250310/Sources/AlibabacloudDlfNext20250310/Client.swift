@@ -684,6 +684,60 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getIcebergNamespaceWithOptions(_ catalogId: String, _ namespace: String, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> GetIcebergNamespaceResponse {
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String]
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "GetIcebergNamespace",
+            "version": "2025-03-10",
+            "protocol": "HTTPS",
+            "pathname": "/iceberg/dlf/v1/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(catalogId)) + "/namespaces/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(namespace)),
+            "method": "GET",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(GetIcebergNamespaceResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getIcebergNamespace(_ catalogId: String, _ namespace: String) async throws -> GetIcebergNamespaceResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await getIcebergNamespaceWithOptions(catalogId as! String, namespace as! String, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getIcebergTableWithOptions(_ catalogId: String, _ namespace: String, _ table: String, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> GetIcebergTableResponse {
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String]
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "GetIcebergTable",
+            "version": "2025-03-10",
+            "protocol": "HTTPS",
+            "pathname": "/iceberg/dlf/v1/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(catalogId)) + "/namespaces/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(namespace)) + "/tables/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(table)),
+            "method": "GET",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(GetIcebergTableResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getIcebergTable(_ catalogId: String, _ namespace: String, _ table: String) async throws -> GetIcebergTableResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await getIcebergTableWithOptions(catalogId as! String, namespace as! String, table as! String, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func getRegionStatusWithOptions(_ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> GetRegionStatusResponse {
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "headers": headers as! [String: String]
@@ -981,6 +1035,120 @@ open class Client : AlibabacloudOpenApi.Client {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         var headers: [String: String] = [:]
         return try await listDatabasesWithOptions(catalogId as! String, request as! ListDatabasesRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func listIcebergNamespaceDetailsWithOptions(_ catalogId: String, _ request: ListIcebergNamespaceDetailsRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> ListIcebergNamespaceDetailsResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.maxResults)) {
+            query["maxResults"] = request.maxResults!;
+        }
+        if (!TeaUtils.Client.isUnset(request.namespaceNamePattern)) {
+            query["namespaceNamePattern"] = request.namespaceNamePattern ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.pageToken)) {
+            query["pageToken"] = request.pageToken ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String],
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "ListIcebergNamespaceDetails",
+            "version": "2025-03-10",
+            "protocol": "HTTPS",
+            "pathname": "/iceberg/dlf/v1/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(catalogId)) + "/namespace-details",
+            "method": "GET",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(ListIcebergNamespaceDetailsResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func listIcebergNamespaceDetails(_ catalogId: String, _ request: ListIcebergNamespaceDetailsRequest) async throws -> ListIcebergNamespaceDetailsResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await listIcebergNamespaceDetailsWithOptions(catalogId as! String, request as! ListIcebergNamespaceDetailsRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func listIcebergSnapshotsWithOptions(_ catalogId: String, _ namespace: String, _ table: String, _ request: ListIcebergSnapshotsRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> ListIcebergSnapshotsResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.maxResults)) {
+            query["maxResults"] = request.maxResults!;
+        }
+        if (!TeaUtils.Client.isUnset(request.pageToken)) {
+            query["pageToken"] = request.pageToken ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String],
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "ListIcebergSnapshots",
+            "version": "2025-03-10",
+            "protocol": "HTTPS",
+            "pathname": "/iceberg/dlf/v1/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(catalogId)) + "/namespaces/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(namespace)) + "/tables/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(table)) + "/snapshots",
+            "method": "GET",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(ListIcebergSnapshotsResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func listIcebergSnapshots(_ catalogId: String, _ namespace: String, _ table: String, _ request: ListIcebergSnapshotsRequest) async throws -> ListIcebergSnapshotsResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await listIcebergSnapshotsWithOptions(catalogId as! String, namespace as! String, table as! String, request as! ListIcebergSnapshotsRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func listIcebergTableDetailsWithOptions(_ catalogId: String, _ namespace: String, _ request: ListIcebergTableDetailsRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> ListIcebergTableDetailsResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.maxResults)) {
+            query["maxResults"] = request.maxResults!;
+        }
+        if (!TeaUtils.Client.isUnset(request.pageToken)) {
+            query["pageToken"] = request.pageToken ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.tableNamePattern)) {
+            query["tableNamePattern"] = request.tableNamePattern ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String],
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "ListIcebergTableDetails",
+            "version": "2025-03-10",
+            "protocol": "HTTPS",
+            "pathname": "/iceberg/dlf/v1/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(catalogId)) + "/namespaces/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(namespace)) + "/table-details",
+            "method": "GET",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(ListIcebergTableDetailsResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func listIcebergTableDetails(_ catalogId: String, _ namespace: String, _ request: ListIcebergTableDetailsRequest) async throws -> ListIcebergTableDetailsResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await listIcebergTableDetailsWithOptions(catalogId as! String, namespace as! String, request as! ListIcebergTableDetailsRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)

@@ -4566,6 +4566,106 @@ public class GetDatabaseSummaryResponse : Tea.TeaModel {
     }
 }
 
+public class GetIcebergNamespaceResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: Namespace?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = Namespace()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
+public class GetIcebergTableResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: IcebergTable?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = IcebergTable()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
 public class GetRegionStatusResponseBody : Tea.TeaModel {
     public var serviceRoleExists: Bool?
 
@@ -5425,6 +5525,448 @@ public class ListDatabasesResponse : Tea.TeaModel {
         }
         if let value = dict["body"] as? [String: Any?] {
             var model = ListDatabasesResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
+public class ListIcebergNamespaceDetailsRequest : Tea.TeaModel {
+    public var maxResults: Int32?
+
+    public var namespaceNamePattern: String?
+
+    public var pageToken: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.maxResults != nil {
+            map["maxResults"] = self.maxResults!
+        }
+        if self.namespaceNamePattern != nil {
+            map["namespaceNamePattern"] = self.namespaceNamePattern!
+        }
+        if self.pageToken != nil {
+            map["pageToken"] = self.pageToken!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["maxResults"] as? Int32 {
+            self.maxResults = value
+        }
+        if let value = dict["namespaceNamePattern"] as? String {
+            self.namespaceNamePattern = value
+        }
+        if let value = dict["pageToken"] as? String {
+            self.pageToken = value
+        }
+    }
+}
+
+public class ListIcebergNamespaceDetailsResponseBody : Tea.TeaModel {
+    public var namespaceDetails: [Namespace]?
+
+    public var nextPageToken: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.namespaceDetails != nil {
+            var tmp : [Any] = []
+            for k in self.namespaceDetails! {
+                tmp.append(k.toMap())
+            }
+            map["namespaceDetails"] = tmp
+        }
+        if self.nextPageToken != nil {
+            map["nextPageToken"] = self.nextPageToken!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["namespaceDetails"] as? [Any?] {
+            var tmp : [Namespace] = []
+            for v in value {
+                if v != nil {
+                    var model = Namespace()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.namespaceDetails = tmp
+        }
+        if let value = dict["nextPageToken"] as? String {
+            self.nextPageToken = value
+        }
+    }
+}
+
+public class ListIcebergNamespaceDetailsResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: ListIcebergNamespaceDetailsResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = ListIcebergNamespaceDetailsResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
+public class ListIcebergSnapshotsRequest : Tea.TeaModel {
+    public var maxResults: Int32?
+
+    public var pageToken: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.maxResults != nil {
+            map["maxResults"] = self.maxResults!
+        }
+        if self.pageToken != nil {
+            map["pageToken"] = self.pageToken!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["maxResults"] as? Int32 {
+            self.maxResults = value
+        }
+        if let value = dict["pageToken"] as? String {
+            self.pageToken = value
+        }
+    }
+}
+
+public class ListIcebergSnapshotsResponseBody : Tea.TeaModel {
+    public var nextPageToken: String?
+
+    public var snapshots: [IcebergSnapshot]?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.nextPageToken != nil {
+            map["nextPageToken"] = self.nextPageToken!
+        }
+        if self.snapshots != nil {
+            var tmp : [Any] = []
+            for k in self.snapshots! {
+                tmp.append(k.toMap())
+            }
+            map["snapshots"] = tmp
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["nextPageToken"] as? String {
+            self.nextPageToken = value
+        }
+        if let value = dict["snapshots"] as? [Any?] {
+            var tmp : [IcebergSnapshot] = []
+            for v in value {
+                if v != nil {
+                    var model = IcebergSnapshot()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.snapshots = tmp
+        }
+    }
+}
+
+public class ListIcebergSnapshotsResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: ListIcebergSnapshotsResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = ListIcebergSnapshotsResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
+public class ListIcebergTableDetailsRequest : Tea.TeaModel {
+    public var maxResults: Int32?
+
+    public var pageToken: String?
+
+    public var tableNamePattern: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.maxResults != nil {
+            map["maxResults"] = self.maxResults!
+        }
+        if self.pageToken != nil {
+            map["pageToken"] = self.pageToken!
+        }
+        if self.tableNamePattern != nil {
+            map["tableNamePattern"] = self.tableNamePattern!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["maxResults"] as? Int32 {
+            self.maxResults = value
+        }
+        if let value = dict["pageToken"] as? String {
+            self.pageToken = value
+        }
+        if let value = dict["tableNamePattern"] as? String {
+            self.tableNamePattern = value
+        }
+    }
+}
+
+public class ListIcebergTableDetailsResponseBody : Tea.TeaModel {
+    public var nextPageToken: String?
+
+    public var tableDetails: [IcebergTable]?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.nextPageToken != nil {
+            map["nextPageToken"] = self.nextPageToken!
+        }
+        if self.tableDetails != nil {
+            var tmp : [Any] = []
+            for k in self.tableDetails! {
+                tmp.append(k.toMap())
+            }
+            map["tableDetails"] = tmp
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["nextPageToken"] as? String {
+            self.nextPageToken = value
+        }
+        if let value = dict["tableDetails"] as? [Any?] {
+            var tmp : [IcebergTable] = []
+            for v in value {
+                if v != nil {
+                    var model = IcebergTable()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.tableDetails = tmp
+        }
+    }
+}
+
+public class ListIcebergTableDetailsResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: ListIcebergTableDetailsResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = ListIcebergTableDetailsResponseBody()
             model.fromMap(value)
             self.body = model
         }
