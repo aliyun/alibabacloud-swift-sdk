@@ -65065,6 +65065,12 @@ public class DescribeInvocationResultsResponseBody : Tea.TeaModel {
 
                 public var launcher: String?
 
+                public var ossOutputDelivery: String?
+
+                public var ossOutputStatus: String?
+
+                public var ossOutputUri: String?
+
                 public var output: String?
 
                 public var repeats: Int32?
@@ -65133,6 +65139,15 @@ public class DescribeInvocationResultsResponseBody : Tea.TeaModel {
                     if self.launcher != nil {
                         map["Launcher"] = self.launcher!
                     }
+                    if self.ossOutputDelivery != nil {
+                        map["OssOutputDelivery"] = self.ossOutputDelivery!
+                    }
+                    if self.ossOutputStatus != nil {
+                        map["OssOutputStatus"] = self.ossOutputStatus!
+                    }
+                    if self.ossOutputUri != nil {
+                        map["OssOutputUri"] = self.ossOutputUri!
+                    }
                     if self.output != nil {
                         map["Output"] = self.output!
                     }
@@ -65197,6 +65212,15 @@ public class DescribeInvocationResultsResponseBody : Tea.TeaModel {
                     }
                     if let value = dict["Launcher"] as? String {
                         self.launcher = value
+                    }
+                    if let value = dict["OssOutputDelivery"] as? String {
+                        self.ossOutputDelivery = value
+                    }
+                    if let value = dict["OssOutputStatus"] as? String {
+                        self.ossOutputStatus = value
+                    }
+                    if let value = dict["OssOutputUri"] as? String {
+                        self.ossOutputUri = value
                     }
                     if let value = dict["Output"] as? String {
                         self.output = value
@@ -65687,6 +65711,10 @@ public class DescribeInvocationsResponseBody : Tea.TeaModel {
 
                     public var invocationStatus: String?
 
+                    public var ossOutputStatus: String?
+
+                    public var ossOutputUri: String?
+
                     public var output: String?
 
                     public var repeats: Int32?
@@ -65740,6 +65768,12 @@ public class DescribeInvocationsResponseBody : Tea.TeaModel {
                         if self.invocationStatus != nil {
                             map["InvocationStatus"] = self.invocationStatus!
                         }
+                        if self.ossOutputStatus != nil {
+                            map["OssOutputStatus"] = self.ossOutputStatus!
+                        }
+                        if self.ossOutputUri != nil {
+                            map["OssOutputUri"] = self.ossOutputUri!
+                        }
                         if self.output != nil {
                             map["Output"] = self.output!
                         }
@@ -65789,6 +65823,12 @@ public class DescribeInvocationsResponseBody : Tea.TeaModel {
                         }
                         if let value = dict["InvocationStatus"] as? String {
                             self.invocationStatus = value
+                        }
+                        if let value = dict["OssOutputStatus"] as? String {
+                            self.ossOutputStatus = value
+                        }
+                        if let value = dict["OssOutputUri"] as? String {
+                            self.ossOutputUri = value
                         }
                         if let value = dict["Output"] as? String {
                             self.output = value
@@ -65963,6 +66003,8 @@ public class DescribeInvocationsResponseBody : Tea.TeaModel {
 
             public var launcher: String?
 
+            public var ossOutputDelivery: String?
+
             public var parameters: String?
 
             public var repeatMode: String?
@@ -66037,6 +66079,9 @@ public class DescribeInvocationsResponseBody : Tea.TeaModel {
                 if self.launcher != nil {
                     map["Launcher"] = self.launcher!
                 }
+                if self.ossOutputDelivery != nil {
+                    map["OssOutputDelivery"] = self.ossOutputDelivery!
+                }
                 if self.parameters != nil {
                     map["Parameters"] = self.parameters!
                 }
@@ -66109,6 +66154,9 @@ public class DescribeInvocationsResponseBody : Tea.TeaModel {
                 }
                 if let value = dict["Launcher"] as? String {
                     self.launcher = value
+                }
+                if let value = dict["OssOutputDelivery"] as? String {
+                    self.ossOutputDelivery = value
                 }
                 if let value = dict["Parameters"] as? String {
                     self.parameters = value
@@ -97558,6 +97606,8 @@ public class InvokeCommandRequest : Tea.TeaModel {
 
     public var launcher: String?
 
+    public var ossOutputDelivery: String?
+
     public var ownerAccount: String?
 
     public var ownerId: Int64?
@@ -97624,6 +97674,9 @@ public class InvokeCommandRequest : Tea.TeaModel {
         }
         if self.launcher != nil {
             map["Launcher"] = self.launcher!
+        }
+        if self.ossOutputDelivery != nil {
+            map["OssOutputDelivery"] = self.ossOutputDelivery!
         }
         if self.ownerAccount != nil {
             map["OwnerAccount"] = self.ownerAccount!
@@ -97706,6 +97759,9 @@ public class InvokeCommandRequest : Tea.TeaModel {
         }
         if let value = dict["Launcher"] as? String {
             self.launcher = value
+        }
+        if let value = dict["OssOutputDelivery"] as? String {
+            self.ossOutputDelivery = value
         }
         if let value = dict["OwnerAccount"] as? String {
             self.ownerAccount = value
@@ -97869,6 +97925,8 @@ public class InvokeCommandShrinkRequest : Tea.TeaModel {
 
     public var launcher: String?
 
+    public var ossOutputDelivery: String?
+
     public var ownerAccount: String?
 
     public var ownerId: Int64?
@@ -97935,6 +97993,9 @@ public class InvokeCommandShrinkRequest : Tea.TeaModel {
         }
         if self.launcher != nil {
             map["Launcher"] = self.launcher!
+        }
+        if self.ossOutputDelivery != nil {
+            map["OssOutputDelivery"] = self.ossOutputDelivery!
         }
         if self.ownerAccount != nil {
             map["OwnerAccount"] = self.ownerAccount!
@@ -98017,6 +98078,9 @@ public class InvokeCommandShrinkRequest : Tea.TeaModel {
         }
         if let value = dict["Launcher"] as? String {
             self.launcher = value
+        }
+        if let value = dict["OssOutputDelivery"] as? String {
+            self.ossOutputDelivery = value
         }
         if let value = dict["OwnerAccount"] as? String {
             self.ownerAccount = value
@@ -121004,6 +121068,8 @@ public class RunCommandRequest : Tea.TeaModel {
 
     public var name: String?
 
+    public var ossOutputDelivery: String?
+
     public var ownerAccount: String?
 
     public var ownerId: Int64?
@@ -121087,6 +121153,9 @@ public class RunCommandRequest : Tea.TeaModel {
         }
         if self.name != nil {
             map["Name"] = self.name!
+        }
+        if self.ossOutputDelivery != nil {
+            map["OssOutputDelivery"] = self.ossOutputDelivery!
         }
         if self.ownerAccount != nil {
             map["OwnerAccount"] = self.ownerAccount!
@@ -121187,6 +121256,9 @@ public class RunCommandRequest : Tea.TeaModel {
         }
         if let value = dict["Name"] as? String {
             self.name = value
+        }
+        if let value = dict["OssOutputDelivery"] as? String {
+            self.ossOutputDelivery = value
         }
         if let value = dict["OwnerAccount"] as? String {
             self.ownerAccount = value
@@ -121363,6 +121435,8 @@ public class RunCommandShrinkRequest : Tea.TeaModel {
 
     public var name: String?
 
+    public var ossOutputDelivery: String?
+
     public var ownerAccount: String?
 
     public var ownerId: Int64?
@@ -121446,6 +121520,9 @@ public class RunCommandShrinkRequest : Tea.TeaModel {
         }
         if self.name != nil {
             map["Name"] = self.name!
+        }
+        if self.ossOutputDelivery != nil {
+            map["OssOutputDelivery"] = self.ossOutputDelivery!
         }
         if self.ownerAccount != nil {
             map["OwnerAccount"] = self.ownerAccount!
@@ -121546,6 +121623,9 @@ public class RunCommandShrinkRequest : Tea.TeaModel {
         }
         if let value = dict["Name"] as? String {
             self.name = value
+        }
+        if let value = dict["OssOutputDelivery"] as? String {
+            self.ossOutputDelivery = value
         }
         if let value = dict["OwnerAccount"] as? String {
             self.ownerAccount = value
