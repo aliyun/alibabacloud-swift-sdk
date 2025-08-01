@@ -681,6 +681,10 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(tmpReq.imageControl)) {
             request.imageControlShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.imageControl, "ImageControl", "json")
         }
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.comment)) {
+            query["comment"] = request.comment ?? "";
+        }
         var body: [String: Any] = [:]
         if (!TeaUtils.Client.isUnset(request.height)) {
             body["Height"] = request.height!;
@@ -710,6 +714,7 @@ open class Client : AlibabacloudOpenApi.Client {
             body["WmType"] = request.wmType ?? "";
         }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query),
             "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
         ])
         var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
@@ -815,9 +820,15 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(tmpReq.csvControl)) {
             request.csvControlShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.csvControl, "CsvControl", "json")
         }
+        if (!TeaUtils.Client.isUnset(tmpReq.imageExtractParamsOpenApi)) {
+            request.imageExtractParamsOpenApiShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.imageExtractParamsOpenApi, "ImageExtractParamsOpenApi", "json")
+        }
         var query: [String: Any] = [:]
         if (!TeaUtils.Client.isUnset(request.csvControlShrink)) {
             query["CsvControl"] = request.csvControlShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.imageExtractParamsOpenApiShrink)) {
+            query["ImageExtractParamsOpenApi"] = request.imageExtractParamsOpenApiShrink ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.isClientEmbed)) {
             query["IsClientEmbed"] = request.isClientEmbed!;

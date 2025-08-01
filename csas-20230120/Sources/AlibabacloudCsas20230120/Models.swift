@@ -6774,9 +6774,67 @@ public class CreateUserGroupResponse : Tea.TeaModel {
 public class CreateWmBaseImageRequest : Tea.TeaModel {
     public class ImageControl : Tea.TeaModel {
         public class LogoVisibleControl : Tea.TeaModel {
+            public class Margin : Tea.TeaModel {
+                public var bottom: Double?
+
+                public var left_: Double?
+
+                public var right_: Double?
+
+                public var top: Double?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.bottom != nil {
+                        map["Bottom"] = self.bottom!
+                    }
+                    if self.left_ != nil {
+                        map["Left"] = self.left_!
+                    }
+                    if self.right_ != nil {
+                        map["Right"] = self.right_!
+                    }
+                    if self.top != nil {
+                        map["Top"] = self.top!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                    guard let dict else { return }
+                    if let value = dict["Bottom"] as? Double {
+                        self.bottom = value
+                    }
+                    if let value = dict["Left"] as? Double {
+                        self.left_ = value
+                    }
+                    if let value = dict["Right"] as? Double {
+                        self.right_ = value
+                    }
+                    if let value = dict["Top"] as? Double {
+                        self.top = value
+                    }
+                }
+            }
             public var angle: Int64?
 
+            public var enhance: Bool?
+
             public var logoBase64: String?
+
+            public var margin: CreateWmBaseImageRequest.ImageControl.LogoVisibleControl.Margin?
 
             public var mode: String?
 
@@ -6806,6 +6864,7 @@ public class CreateWmBaseImageRequest : Tea.TeaModel {
             }
 
             public override func validate() throws -> Void {
+                try self.margin?.validate()
             }
 
             public override func toMap() -> [String : Any] {
@@ -6813,8 +6872,14 @@ public class CreateWmBaseImageRequest : Tea.TeaModel {
                 if self.angle != nil {
                     map["Angle"] = self.angle!
                 }
+                if self.enhance != nil {
+                    map["Enhance"] = self.enhance!
+                }
                 if self.logoBase64 != nil {
                     map["LogoBase64"] = self.logoBase64!
+                }
+                if self.margin != nil {
+                    map["Margin"] = self.margin?.toMap()
                 }
                 if self.mode != nil {
                     map["Mode"] = self.mode!
@@ -6851,8 +6916,16 @@ public class CreateWmBaseImageRequest : Tea.TeaModel {
                 if let value = dict["Angle"] as? Int64 {
                     self.angle = value
                 }
+                if let value = dict["Enhance"] as? Bool {
+                    self.enhance = value
+                }
                 if let value = dict["LogoBase64"] as? String {
                     self.logoBase64 = value
+                }
+                if let value = dict["Margin"] as? [String: Any?] {
+                    var model = CreateWmBaseImageRequest.ImageControl.LogoVisibleControl.Margin()
+                    model.fromMap(value)
+                    self.margin = model
                 }
                 if let value = dict["Mode"] as? String {
                     self.mode = value
@@ -6884,11 +6957,67 @@ public class CreateWmBaseImageRequest : Tea.TeaModel {
             }
         }
         public class TextVisibleControl : Tea.TeaModel {
+            public class Margin : Tea.TeaModel {
+                public var bottom: Double?
+
+                public var left_: Double?
+
+                public var right_: Double?
+
+                public var top: Double?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.bottom != nil {
+                        map["Bottom"] = self.bottom!
+                    }
+                    if self.left_ != nil {
+                        map["Left"] = self.left_!
+                    }
+                    if self.right_ != nil {
+                        map["Right"] = self.right_!
+                    }
+                    if self.top != nil {
+                        map["Top"] = self.top!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                    guard let dict else { return }
+                    if let value = dict["Bottom"] as? Double {
+                        self.bottom = value
+                    }
+                    if let value = dict["Left"] as? Double {
+                        self.left_ = value
+                    }
+                    if let value = dict["Right"] as? Double {
+                        self.right_ = value
+                    }
+                    if let value = dict["Top"] as? Double {
+                        self.top = value
+                    }
+                }
+            }
             public var angle: Int64?
 
             public var fontColor: String?
 
             public var fontSize: Int64?
+
+            public var margin: CreateWmBaseImageRequest.ImageControl.TextVisibleControl.Margin?
 
             public var mode: String?
 
@@ -6920,6 +7049,7 @@ public class CreateWmBaseImageRequest : Tea.TeaModel {
             }
 
             public override func validate() throws -> Void {
+                try self.margin?.validate()
             }
 
             public override func toMap() -> [String : Any] {
@@ -6932,6 +7062,9 @@ public class CreateWmBaseImageRequest : Tea.TeaModel {
                 }
                 if self.fontSize != nil {
                     map["FontSize"] = self.fontSize!
+                }
+                if self.margin != nil {
+                    map["Margin"] = self.margin?.toMap()
                 }
                 if self.mode != nil {
                     map["Mode"] = self.mode!
@@ -6976,6 +7109,11 @@ public class CreateWmBaseImageRequest : Tea.TeaModel {
                 }
                 if let value = dict["FontSize"] as? Int64 {
                     self.fontSize = value
+                }
+                if let value = dict["Margin"] as? [String: Any?] {
+                    var model = CreateWmBaseImageRequest.ImageControl.TextVisibleControl.Margin()
+                    model.fromMap(value)
+                    self.margin = model
                 }
                 if let value = dict["Mode"] as? String {
                     self.mode = value
@@ -7070,6 +7208,8 @@ public class CreateWmBaseImageRequest : Tea.TeaModel {
 
     public var wmType: String?
 
+    public var comment: String?
+
     public override init() {
         super.init()
     }
@@ -7112,6 +7252,9 @@ public class CreateWmBaseImageRequest : Tea.TeaModel {
         if self.wmType != nil {
             map["WmType"] = self.wmType!
         }
+        if self.comment != nil {
+            map["comment"] = self.comment!
+        }
         return map
     }
 
@@ -7146,6 +7289,9 @@ public class CreateWmBaseImageRequest : Tea.TeaModel {
         if let value = dict["WmType"] as? String {
             self.wmType = value
         }
+        if let value = dict["comment"] as? String {
+            self.comment = value
+        }
     }
 }
 
@@ -7167,6 +7313,8 @@ public class CreateWmBaseImageShrinkRequest : Tea.TeaModel {
     public var wmInfoUint: String?
 
     public var wmType: String?
+
+    public var comment: String?
 
     public override init() {
         super.init()
@@ -7209,6 +7357,9 @@ public class CreateWmBaseImageShrinkRequest : Tea.TeaModel {
         if self.wmType != nil {
             map["WmType"] = self.wmType!
         }
+        if self.comment != nil {
+            map["comment"] = self.comment!
+        }
         return map
     }
 
@@ -7240,6 +7391,9 @@ public class CreateWmBaseImageShrinkRequest : Tea.TeaModel {
         }
         if let value = dict["WmType"] as? String {
             self.wmType = value
+        }
+        if let value = dict["comment"] as? String {
+            self.comment = value
         }
     }
 }
@@ -8138,6 +8292,36 @@ public class CreateWmExtractTaskRequest : Tea.TeaModel {
             }
         }
     }
+    public class ImageExtractParamsOpenApi : Tea.TeaModel {
+        public var srcLogoBase64: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.srcLogoBase64 != nil {
+                map["SrcLogoBase64"] = self.srcLogoBase64!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["SrcLogoBase64"] as? String {
+                self.srcLogoBase64 = value
+            }
+        }
+    }
     public var csvControl: CreateWmExtractTaskRequest.CsvControl?
 
     public var documentIsCapture: Bool?
@@ -8145,6 +8329,8 @@ public class CreateWmExtractTaskRequest : Tea.TeaModel {
     public var fileUrl: String?
 
     public var filename: String?
+
+    public var imageExtractParamsOpenApi: CreateWmExtractTaskRequest.ImageExtractParamsOpenApi?
 
     public var isClientEmbed: Bool?
 
@@ -8167,6 +8353,7 @@ public class CreateWmExtractTaskRequest : Tea.TeaModel {
 
     public override func validate() throws -> Void {
         try self.csvControl?.validate()
+        try self.imageExtractParamsOpenApi?.validate()
     }
 
     public override func toMap() -> [String : Any] {
@@ -8182,6 +8369,9 @@ public class CreateWmExtractTaskRequest : Tea.TeaModel {
         }
         if self.filename != nil {
             map["Filename"] = self.filename!
+        }
+        if self.imageExtractParamsOpenApi != nil {
+            map["ImageExtractParamsOpenApi"] = self.imageExtractParamsOpenApi?.toMap()
         }
         if self.isClientEmbed != nil {
             map["IsClientEmbed"] = self.isClientEmbed!
@@ -8217,6 +8407,11 @@ public class CreateWmExtractTaskRequest : Tea.TeaModel {
         if let value = dict["Filename"] as? String {
             self.filename = value
         }
+        if let value = dict["ImageExtractParamsOpenApi"] as? [String: Any?] {
+            var model = CreateWmExtractTaskRequest.ImageExtractParamsOpenApi()
+            model.fromMap(value)
+            self.imageExtractParamsOpenApi = model
+        }
         if let value = dict["IsClientEmbed"] as? Bool {
             self.isClientEmbed = value
         }
@@ -8243,6 +8438,8 @@ public class CreateWmExtractTaskShrinkRequest : Tea.TeaModel {
     public var fileUrl: String?
 
     public var filename: String?
+
+    public var imageExtractParamsOpenApiShrink: String?
 
     public var isClientEmbed: Bool?
 
@@ -8280,6 +8477,9 @@ public class CreateWmExtractTaskShrinkRequest : Tea.TeaModel {
         if self.filename != nil {
             map["Filename"] = self.filename!
         }
+        if self.imageExtractParamsOpenApiShrink != nil {
+            map["ImageExtractParamsOpenApi"] = self.imageExtractParamsOpenApiShrink!
+        }
         if self.isClientEmbed != nil {
             map["IsClientEmbed"] = self.isClientEmbed!
         }
@@ -8311,6 +8511,9 @@ public class CreateWmExtractTaskShrinkRequest : Tea.TeaModel {
         }
         if let value = dict["Filename"] as? String {
             self.filename = value
+        }
+        if let value = dict["ImageExtractParamsOpenApi"] as? String {
+            self.imageExtractParamsOpenApiShrink = value
         }
         if let value = dict["IsClientEmbed"] as? Bool {
             self.isClientEmbed = value
