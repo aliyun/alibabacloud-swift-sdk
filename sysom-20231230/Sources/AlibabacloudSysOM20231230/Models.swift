@@ -5429,6 +5429,8 @@ public class GetServiceFuncStatusResponse : Tea.TeaModel {
 public class InitialSysomRequest : Tea.TeaModel {
     public var checkOnly: Bool?
 
+    public var source: String?
+
     public override init() {
         super.init()
     }
@@ -5446,6 +5448,9 @@ public class InitialSysomRequest : Tea.TeaModel {
         if self.checkOnly != nil {
             map["check_only"] = self.checkOnly!
         }
+        if self.source != nil {
+            map["source"] = self.source!
+        }
         return map
     }
 
@@ -5453,6 +5458,9 @@ public class InitialSysomRequest : Tea.TeaModel {
         guard let dict else { return }
         if let value = dict["check_only"] as? Bool {
             self.checkOnly = value
+        }
+        if let value = dict["source"] as? String {
+            self.source = value
         }
     }
 }

@@ -995,6 +995,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.checkOnly)) {
             body["check_only"] = request.checkOnly!;
         }
+        if (!TeaUtils.Client.isUnset(request.source)) {
+            body["source"] = request.source ?? "";
+        }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "headers": headers as! [String: String],
             "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
