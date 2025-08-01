@@ -481,8 +481,13 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func addGatewayDomainWithOptions(_ request: AddGatewayDomainRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> AddGatewayDomainResponse {
-        try TeaUtils.Client.validateModel(request)
+    public func addGatewayDomainWithOptions(_ tmpReq: AddGatewayDomainRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> AddGatewayDomainResponse {
+        try TeaUtils.Client.validateModel(tmpReq)
+        var request: AddGatewayDomainShrinkRequest = AddGatewayDomainShrinkRequest([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.tlsCipherSuitesConfigJSON)) {
+            request.tlsCipherSuitesConfigJSONShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.tlsCipherSuitesConfigJSON, "TlsCipherSuitesConfigJSON", "json")
+        }
         var query: [String: Any] = [:]
         if (!TeaUtils.Client.isUnset(request.acceptLanguage)) {
             query["AcceptLanguage"] = request.acceptLanguage ?? "";
@@ -504,6 +509,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.protocol_)) {
             query["Protocol"] = request.protocol_ ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.tlsCipherSuitesConfigJSONShrink)) {
+            query["TlsCipherSuitesConfigJSON"] = request.tlsCipherSuitesConfigJSONShrink ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.tlsMax)) {
             query["TlsMax"] = request.tlsMax ?? "";
@@ -2393,6 +2401,67 @@ open class Client : AlibabacloudOpenApi.Client {
     public func createPluginConfig(_ request: CreatePluginConfigRequest) async throws -> CreatePluginConfigResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         return try await createPluginConfigWithOptions(request as! CreatePluginConfigRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func createSentinelBlockFallbackDefinitionWithOptions(_ request: CreateSentinelBlockFallbackDefinitionRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> CreateSentinelBlockFallbackDefinitionResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.acceptLanguage)) {
+            query["AcceptLanguage"] = request.acceptLanguage ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.appId)) {
+            query["AppId"] = request.appId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.appName)) {
+            query["AppName"] = request.appName ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.fallbackBehavior)) {
+            query["FallbackBehavior"] = request.fallbackBehavior ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.language)) {
+            query["Language"] = request.language ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.name)) {
+            query["Name"] = request.name ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.namespace)) {
+            query["Namespace"] = request.namespace ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.regionId)) {
+            query["RegionId"] = request.regionId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.resourceClassification)) {
+            query["ResourceClassification"] = request.resourceClassification!;
+        }
+        if (!TeaUtils.Client.isUnset(request.scenario)) {
+            query["Scenario"] = request.scenario ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.source)) {
+            query["Source"] = request.source ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "CreateSentinelBlockFallbackDefinition",
+            "version": "2019-05-31",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(CreateSentinelBlockFallbackDefinitionResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func createSentinelBlockFallbackDefinition(_ request: CreateSentinelBlockFallbackDefinitionRequest) async throws -> CreateSentinelBlockFallbackDefinitionResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await createSentinelBlockFallbackDefinitionWithOptions(request as! CreateSentinelBlockFallbackDefinitionRequest, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -9820,8 +9889,13 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func updateGatewayDomainWithOptions(_ request: UpdateGatewayDomainRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> UpdateGatewayDomainResponse {
-        try TeaUtils.Client.validateModel(request)
+    public func updateGatewayDomainWithOptions(_ tmpReq: UpdateGatewayDomainRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> UpdateGatewayDomainResponse {
+        try TeaUtils.Client.validateModel(tmpReq)
+        var request: UpdateGatewayDomainShrinkRequest = UpdateGatewayDomainShrinkRequest([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.tlsCipherSuitesConfigJSON)) {
+            request.tlsCipherSuitesConfigJSONShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.tlsCipherSuitesConfigJSON, "TlsCipherSuitesConfigJSON", "json")
+        }
         var query: [String: Any] = [:]
         if (!TeaUtils.Client.isUnset(request.acceptLanguage)) {
             query["AcceptLanguage"] = request.acceptLanguage ?? "";
@@ -9843,6 +9917,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.protocol_)) {
             query["Protocol"] = request.protocol_ ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.tlsCipherSuitesConfigJSONShrink)) {
+            query["TlsCipherSuitesConfigJSON"] = request.tlsCipherSuitesConfigJSONShrink ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.tlsMax)) {
             query["TlsMax"] = request.tlsMax ?? "";

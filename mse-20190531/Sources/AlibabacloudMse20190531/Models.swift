@@ -3865,6 +3865,44 @@ public class AddGatewayAuthConsumerResponse : Tea.TeaModel {
 }
 
 public class AddGatewayDomainRequest : Tea.TeaModel {
+    public class TlsCipherSuitesConfigJSON : Tea.TeaModel {
+        public var configType: String?
+
+        public var tlsCipherSuites: [String]?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.configType != nil {
+                map["ConfigType"] = self.configType!
+            }
+            if self.tlsCipherSuites != nil {
+                map["TlsCipherSuites"] = self.tlsCipherSuites!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["ConfigType"] as? String {
+                self.configType = value
+            }
+            if let value = dict["TlsCipherSuites"] as? [String] {
+                self.tlsCipherSuites = value
+            }
+        }
+    }
     public var acceptLanguage: String?
 
     public var certIdentifier: String?
@@ -3878,6 +3916,114 @@ public class AddGatewayDomainRequest : Tea.TeaModel {
     public var name: String?
 
     public var protocol_: String?
+
+    public var tlsCipherSuitesConfigJSON: AddGatewayDomainRequest.TlsCipherSuitesConfigJSON?
+
+    public var tlsMax: String?
+
+    public var tlsMin: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.tlsCipherSuitesConfigJSON?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.acceptLanguage != nil {
+            map["AcceptLanguage"] = self.acceptLanguage!
+        }
+        if self.certIdentifier != nil {
+            map["CertIdentifier"] = self.certIdentifier!
+        }
+        if self.gatewayUniqueId != nil {
+            map["GatewayUniqueId"] = self.gatewayUniqueId!
+        }
+        if self.http2 != nil {
+            map["Http2"] = self.http2!
+        }
+        if self.mustHttps != nil {
+            map["MustHttps"] = self.mustHttps!
+        }
+        if self.name != nil {
+            map["Name"] = self.name!
+        }
+        if self.protocol_ != nil {
+            map["Protocol"] = self.protocol_!
+        }
+        if self.tlsCipherSuitesConfigJSON != nil {
+            map["TlsCipherSuitesConfigJSON"] = self.tlsCipherSuitesConfigJSON?.toMap()
+        }
+        if self.tlsMax != nil {
+            map["TlsMax"] = self.tlsMax!
+        }
+        if self.tlsMin != nil {
+            map["TlsMin"] = self.tlsMin!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["AcceptLanguage"] as? String {
+            self.acceptLanguage = value
+        }
+        if let value = dict["CertIdentifier"] as? String {
+            self.certIdentifier = value
+        }
+        if let value = dict["GatewayUniqueId"] as? String {
+            self.gatewayUniqueId = value
+        }
+        if let value = dict["Http2"] as? String {
+            self.http2 = value
+        }
+        if let value = dict["MustHttps"] as? Bool {
+            self.mustHttps = value
+        }
+        if let value = dict["Name"] as? String {
+            self.name = value
+        }
+        if let value = dict["Protocol"] as? String {
+            self.protocol_ = value
+        }
+        if let value = dict["TlsCipherSuitesConfigJSON"] as? [String: Any?] {
+            var model = AddGatewayDomainRequest.TlsCipherSuitesConfigJSON()
+            model.fromMap(value)
+            self.tlsCipherSuitesConfigJSON = model
+        }
+        if let value = dict["TlsMax"] as? String {
+            self.tlsMax = value
+        }
+        if let value = dict["TlsMin"] as? String {
+            self.tlsMin = value
+        }
+    }
+}
+
+public class AddGatewayDomainShrinkRequest : Tea.TeaModel {
+    public var acceptLanguage: String?
+
+    public var certIdentifier: String?
+
+    public var gatewayUniqueId: String?
+
+    public var http2: String?
+
+    public var mustHttps: Bool?
+
+    public var name: String?
+
+    public var protocol_: String?
+
+    public var tlsCipherSuitesConfigJSONShrink: String?
 
     public var tlsMax: String?
 
@@ -3918,6 +4064,9 @@ public class AddGatewayDomainRequest : Tea.TeaModel {
         if self.protocol_ != nil {
             map["Protocol"] = self.protocol_!
         }
+        if self.tlsCipherSuitesConfigJSONShrink != nil {
+            map["TlsCipherSuitesConfigJSON"] = self.tlsCipherSuitesConfigJSONShrink!
+        }
         if self.tlsMax != nil {
             map["TlsMax"] = self.tlsMax!
         }
@@ -3949,6 +4098,9 @@ public class AddGatewayDomainRequest : Tea.TeaModel {
         }
         if let value = dict["Protocol"] as? String {
             self.protocol_ = value
+        }
+        if let value = dict["TlsCipherSuitesConfigJSON"] as? String {
+            self.tlsCipherSuitesConfigJSONShrink = value
         }
         if let value = dict["TlsMax"] as? String {
             self.tlsMax = value
@@ -15088,6 +15240,319 @@ public class CreatePluginConfigResponse : Tea.TeaModel {
         }
         if let value = dict["body"] as? [String: Any?] {
             var model = CreatePluginConfigResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
+public class CreateSentinelBlockFallbackDefinitionRequest : Tea.TeaModel {
+    public var acceptLanguage: String?
+
+    public var appId: String?
+
+    public var appName: String?
+
+    public var fallbackBehavior: String?
+
+    public var language: String?
+
+    public var name: String?
+
+    public var namespace: String?
+
+    public var regionId: String?
+
+    public var resourceClassification: Int32?
+
+    public var scenario: String?
+
+    public var source: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.acceptLanguage != nil {
+            map["AcceptLanguage"] = self.acceptLanguage!
+        }
+        if self.appId != nil {
+            map["AppId"] = self.appId!
+        }
+        if self.appName != nil {
+            map["AppName"] = self.appName!
+        }
+        if self.fallbackBehavior != nil {
+            map["FallbackBehavior"] = self.fallbackBehavior!
+        }
+        if self.language != nil {
+            map["Language"] = self.language!
+        }
+        if self.name != nil {
+            map["Name"] = self.name!
+        }
+        if self.namespace != nil {
+            map["Namespace"] = self.namespace!
+        }
+        if self.regionId != nil {
+            map["RegionId"] = self.regionId!
+        }
+        if self.resourceClassification != nil {
+            map["ResourceClassification"] = self.resourceClassification!
+        }
+        if self.scenario != nil {
+            map["Scenario"] = self.scenario!
+        }
+        if self.source != nil {
+            map["Source"] = self.source!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["AcceptLanguage"] as? String {
+            self.acceptLanguage = value
+        }
+        if let value = dict["AppId"] as? String {
+            self.appId = value
+        }
+        if let value = dict["AppName"] as? String {
+            self.appName = value
+        }
+        if let value = dict["FallbackBehavior"] as? String {
+            self.fallbackBehavior = value
+        }
+        if let value = dict["Language"] as? String {
+            self.language = value
+        }
+        if let value = dict["Name"] as? String {
+            self.name = value
+        }
+        if let value = dict["Namespace"] as? String {
+            self.namespace = value
+        }
+        if let value = dict["RegionId"] as? String {
+            self.regionId = value
+        }
+        if let value = dict["ResourceClassification"] as? Int32 {
+            self.resourceClassification = value
+        }
+        if let value = dict["Scenario"] as? String {
+            self.scenario = value
+        }
+        if let value = dict["Source"] as? String {
+            self.source = value
+        }
+    }
+}
+
+public class CreateSentinelBlockFallbackDefinitionResponseBody : Tea.TeaModel {
+    public class Data : Tea.TeaModel {
+        public var appName: String?
+
+        public var fallbackBehavior: String?
+
+        public var id: Int64?
+
+        public var name: String?
+
+        public var namespace: String?
+
+        public var resourceClassification: Int32?
+
+        public var userId: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.appName != nil {
+                map["AppName"] = self.appName!
+            }
+            if self.fallbackBehavior != nil {
+                map["FallbackBehavior"] = self.fallbackBehavior!
+            }
+            if self.id != nil {
+                map["Id"] = self.id!
+            }
+            if self.name != nil {
+                map["Name"] = self.name!
+            }
+            if self.namespace != nil {
+                map["Namespace"] = self.namespace!
+            }
+            if self.resourceClassification != nil {
+                map["ResourceClassification"] = self.resourceClassification!
+            }
+            if self.userId != nil {
+                map["UserId"] = self.userId!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["AppName"] as? String {
+                self.appName = value
+            }
+            if let value = dict["FallbackBehavior"] as? String {
+                self.fallbackBehavior = value
+            }
+            if let value = dict["Id"] as? Int64 {
+                self.id = value
+            }
+            if let value = dict["Name"] as? String {
+                self.name = value
+            }
+            if let value = dict["Namespace"] as? String {
+                self.namespace = value
+            }
+            if let value = dict["ResourceClassification"] as? Int32 {
+                self.resourceClassification = value
+            }
+            if let value = dict["UserId"] as? String {
+                self.userId = value
+            }
+        }
+    }
+    public var code: Int32?
+
+    public var data: CreateSentinelBlockFallbackDefinitionResponseBody.Data?
+
+    public var httpStatusCode: Int32?
+
+    public var message: String?
+
+    public var requestId: String?
+
+    public var success: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.data?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.code != nil {
+            map["Code"] = self.code!
+        }
+        if self.data != nil {
+            map["Data"] = self.data?.toMap()
+        }
+        if self.httpStatusCode != nil {
+            map["HttpStatusCode"] = self.httpStatusCode!
+        }
+        if self.message != nil {
+            map["Message"] = self.message!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.success != nil {
+            map["Success"] = self.success!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["Code"] as? Int32 {
+            self.code = value
+        }
+        if let value = dict["Data"] as? [String: Any?] {
+            var model = CreateSentinelBlockFallbackDefinitionResponseBody.Data()
+            model.fromMap(value)
+            self.data = model
+        }
+        if let value = dict["HttpStatusCode"] as? Int32 {
+            self.httpStatusCode = value
+        }
+        if let value = dict["Message"] as? String {
+            self.message = value
+        }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+        if let value = dict["Success"] as? String {
+            self.success = value
+        }
+    }
+}
+
+public class CreateSentinelBlockFallbackDefinitionResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: CreateSentinelBlockFallbackDefinitionResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = CreateSentinelBlockFallbackDefinitionResponseBody()
             model.fromMap(value)
             self.body = model
         }
@@ -27961,6 +28426,44 @@ public class GetGatewayDomainDetailRequest : Tea.TeaModel {
 
 public class GetGatewayDomainDetailResponseBody : Tea.TeaModel {
     public class Data : Tea.TeaModel {
+        public class TlsCipherSuitesConfig : Tea.TeaModel {
+            public var configType: String?
+
+            public var tlsCipherSuites: [String]?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.configType != nil {
+                    map["ConfigType"] = self.configType!
+                }
+                if self.tlsCipherSuites != nil {
+                    map["TlsCipherSuites"] = self.tlsCipherSuites!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["ConfigType"] as? String {
+                    self.configType = value
+                }
+                if let value = dict["TlsCipherSuites"] as? [String] {
+                    self.tlsCipherSuites = value
+                }
+            }
+        }
         public var afterDate: Int64?
 
         public var algorithm: String?
@@ -28001,6 +28504,8 @@ public class GetGatewayDomainDetailResponseBody : Tea.TeaModel {
 
         public var sans: String?
 
+        public var tlsCipherSuitesConfig: GetGatewayDomainDetailResponseBody.Data.TlsCipherSuitesConfig?
+
         public var tlsMax: String?
 
         public var tlsMin: String?
@@ -28015,6 +28520,7 @@ public class GetGatewayDomainDetailResponseBody : Tea.TeaModel {
         }
 
         public override func validate() throws -> Void {
+            try self.tlsCipherSuitesConfig?.validate()
         }
 
         public override func toMap() -> [String : Any] {
@@ -28078,6 +28584,9 @@ public class GetGatewayDomainDetailResponseBody : Tea.TeaModel {
             }
             if self.sans != nil {
                 map["Sans"] = self.sans!
+            }
+            if self.tlsCipherSuitesConfig != nil {
+                map["TlsCipherSuitesConfig"] = self.tlsCipherSuitesConfig?.toMap()
             }
             if self.tlsMax != nil {
                 map["TlsMax"] = self.tlsMax!
@@ -28149,6 +28658,11 @@ public class GetGatewayDomainDetailResponseBody : Tea.TeaModel {
             }
             if let value = dict["Sans"] as? String {
                 self.sans = value
+            }
+            if let value = dict["TlsCipherSuitesConfig"] as? [String: Any?] {
+                var model = GetGatewayDomainDetailResponseBody.Data.TlsCipherSuitesConfig()
+                model.fromMap(value)
+                self.tlsCipherSuitesConfig = model
             }
             if let value = dict["TlsMax"] as? String {
                 self.tlsMax = value
@@ -48052,6 +48566,44 @@ public class ListGatewayDomainResponseBody : Tea.TeaModel {
                 }
             }
         }
+        public class TlsCipherSuitesConfig : Tea.TeaModel {
+            public var configType: String?
+
+            public var tlsCipherSuites: [String]?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.configType != nil {
+                    map["ConfigType"] = self.configType!
+                }
+                if self.tlsCipherSuites != nil {
+                    map["TlsCipherSuites"] = self.tlsCipherSuites!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["ConfigType"] as? String {
+                    self.configType = value
+                }
+                if let value = dict["TlsCipherSuites"] as? [String] {
+                    self.tlsCipherSuites = value
+                }
+            }
+        }
         public var certBeforeDate: String?
 
         public var certIdentifier: String?
@@ -48078,6 +48630,8 @@ public class ListGatewayDomainResponseBody : Tea.TeaModel {
 
         public var status: Int32?
 
+        public var tlsCipherSuitesConfig: ListGatewayDomainResponseBody.Data.TlsCipherSuitesConfig?
+
         public var tlsMax: String?
 
         public var tlsMin: String?
@@ -48095,6 +48649,7 @@ public class ListGatewayDomainResponseBody : Tea.TeaModel {
 
         public override func validate() throws -> Void {
             try self.comment?.validate()
+            try self.tlsCipherSuitesConfig?.validate()
         }
 
         public override func toMap() -> [String : Any] {
@@ -48137,6 +48692,9 @@ public class ListGatewayDomainResponseBody : Tea.TeaModel {
             }
             if self.status != nil {
                 map["Status"] = self.status!
+            }
+            if self.tlsCipherSuitesConfig != nil {
+                map["TlsCipherSuitesConfig"] = self.tlsCipherSuitesConfig?.toMap()
             }
             if self.tlsMax != nil {
                 map["TlsMax"] = self.tlsMax!
@@ -48192,6 +48750,11 @@ public class ListGatewayDomainResponseBody : Tea.TeaModel {
             }
             if let value = dict["Status"] as? Int32 {
                 self.status = value
+            }
+            if let value = dict["TlsCipherSuitesConfig"] as? [String: Any?] {
+                var model = ListGatewayDomainResponseBody.Data.TlsCipherSuitesConfig()
+                model.fromMap(value)
+                self.tlsCipherSuitesConfig = model
             }
             if let value = dict["TlsMax"] as? String {
                 self.tlsMax = value
@@ -71847,6 +72410,44 @@ public class UpdateGatewayConfigResponse : Tea.TeaModel {
 }
 
 public class UpdateGatewayDomainRequest : Tea.TeaModel {
+    public class TlsCipherSuitesConfigJSON : Tea.TeaModel {
+        public var configType: String?
+
+        public var tlsCipherSuites: [String]?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.configType != nil {
+                map["ConfigType"] = self.configType!
+            }
+            if self.tlsCipherSuites != nil {
+                map["TlsCipherSuites"] = self.tlsCipherSuites!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["ConfigType"] as? String {
+                self.configType = value
+            }
+            if let value = dict["TlsCipherSuites"] as? [String] {
+                self.tlsCipherSuites = value
+            }
+        }
+    }
     public var acceptLanguage: String?
 
     public var certIdentifier: String?
@@ -71860,6 +72461,114 @@ public class UpdateGatewayDomainRequest : Tea.TeaModel {
     public var mustHttps: Bool?
 
     public var protocol_: String?
+
+    public var tlsCipherSuitesConfigJSON: UpdateGatewayDomainRequest.TlsCipherSuitesConfigJSON?
+
+    public var tlsMax: String?
+
+    public var tlsMin: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.tlsCipherSuitesConfigJSON?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.acceptLanguage != nil {
+            map["AcceptLanguage"] = self.acceptLanguage!
+        }
+        if self.certIdentifier != nil {
+            map["CertIdentifier"] = self.certIdentifier!
+        }
+        if self.gatewayUniqueId != nil {
+            map["GatewayUniqueId"] = self.gatewayUniqueId!
+        }
+        if self.http2 != nil {
+            map["Http2"] = self.http2!
+        }
+        if self.id != nil {
+            map["Id"] = self.id!
+        }
+        if self.mustHttps != nil {
+            map["MustHttps"] = self.mustHttps!
+        }
+        if self.protocol_ != nil {
+            map["Protocol"] = self.protocol_!
+        }
+        if self.tlsCipherSuitesConfigJSON != nil {
+            map["TlsCipherSuitesConfigJSON"] = self.tlsCipherSuitesConfigJSON?.toMap()
+        }
+        if self.tlsMax != nil {
+            map["TlsMax"] = self.tlsMax!
+        }
+        if self.tlsMin != nil {
+            map["TlsMin"] = self.tlsMin!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["AcceptLanguage"] as? String {
+            self.acceptLanguage = value
+        }
+        if let value = dict["CertIdentifier"] as? String {
+            self.certIdentifier = value
+        }
+        if let value = dict["GatewayUniqueId"] as? String {
+            self.gatewayUniqueId = value
+        }
+        if let value = dict["Http2"] as? String {
+            self.http2 = value
+        }
+        if let value = dict["Id"] as? Int64 {
+            self.id = value
+        }
+        if let value = dict["MustHttps"] as? Bool {
+            self.mustHttps = value
+        }
+        if let value = dict["Protocol"] as? String {
+            self.protocol_ = value
+        }
+        if let value = dict["TlsCipherSuitesConfigJSON"] as? [String: Any?] {
+            var model = UpdateGatewayDomainRequest.TlsCipherSuitesConfigJSON()
+            model.fromMap(value)
+            self.tlsCipherSuitesConfigJSON = model
+        }
+        if let value = dict["TlsMax"] as? String {
+            self.tlsMax = value
+        }
+        if let value = dict["TlsMin"] as? String {
+            self.tlsMin = value
+        }
+    }
+}
+
+public class UpdateGatewayDomainShrinkRequest : Tea.TeaModel {
+    public var acceptLanguage: String?
+
+    public var certIdentifier: String?
+
+    public var gatewayUniqueId: String?
+
+    public var http2: String?
+
+    public var id: Int64?
+
+    public var mustHttps: Bool?
+
+    public var protocol_: String?
+
+    public var tlsCipherSuitesConfigJSONShrink: String?
 
     public var tlsMax: String?
 
@@ -71900,6 +72609,9 @@ public class UpdateGatewayDomainRequest : Tea.TeaModel {
         if self.protocol_ != nil {
             map["Protocol"] = self.protocol_!
         }
+        if self.tlsCipherSuitesConfigJSONShrink != nil {
+            map["TlsCipherSuitesConfigJSON"] = self.tlsCipherSuitesConfigJSONShrink!
+        }
         if self.tlsMax != nil {
             map["TlsMax"] = self.tlsMax!
         }
@@ -71931,6 +72643,9 @@ public class UpdateGatewayDomainRequest : Tea.TeaModel {
         }
         if let value = dict["Protocol"] as? String {
             self.protocol_ = value
+        }
+        if let value = dict["TlsCipherSuitesConfigJSON"] as? String {
+            self.tlsCipherSuitesConfigJSONShrink = value
         }
         if let value = dict["TlsMax"] as? String {
             self.tlsMax = value
