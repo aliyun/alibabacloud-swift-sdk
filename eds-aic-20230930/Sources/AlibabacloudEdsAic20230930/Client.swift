@@ -2144,6 +2144,40 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func installMonitorAgentWithOptions(_ request: InstallMonitorAgentRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> InstallMonitorAgentResponse {
+        try TeaUtils.Client.validateModel(request)
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.androidInstanceIds)) {
+            body["AndroidInstanceIds"] = request.androidInstanceIds ?? [];
+        }
+        if (!TeaUtils.Client.isUnset(request.saleMode)) {
+            body["SaleMode"] = request.saleMode ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "InstallMonitorAgent",
+            "version": "2023-09-30",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(InstallMonitorAgentResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func installMonitorAgent(_ request: InstallMonitorAgentRequest) async throws -> InstallMonitorAgentResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await installMonitorAgentWithOptions(request as! InstallMonitorAgentRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func listPolicyGroupsWithOptions(_ request: ListPolicyGroupsRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ListPolicyGroupsResponse {
         try TeaUtils.Client.validateModel(request)
         var body: [String: Any] = [:]
@@ -2868,6 +2902,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.androidInstanceIdList)) {
             query["AndroidInstanceIdList"] = request.androidInstanceIdList ?? [];
         }
+        if (!TeaUtils.Client.isUnset(request.autoInstall)) {
+            query["AutoInstall"] = request.autoInstall!;
+        }
         if (!TeaUtils.Client.isUnset(request.sourceFilePath)) {
             query["SourceFilePath"] = request.sourceFilePath ?? "";
         }
@@ -3086,6 +3123,40 @@ open class Client : AlibabacloudOpenApi.Client {
     public func uninstallApp(_ request: UninstallAppRequest) async throws -> UninstallAppResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         return try await uninstallAppWithOptions(request as! UninstallAppRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func uninstallMonitorAgentWithOptions(_ request: UninstallMonitorAgentRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> UninstallMonitorAgentResponse {
+        try TeaUtils.Client.validateModel(request)
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.androidInstanceIds)) {
+            body["AndroidInstanceIds"] = request.androidInstanceIds ?? [];
+        }
+        if (!TeaUtils.Client.isUnset(request.saleMode)) {
+            body["SaleMode"] = request.saleMode ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "UninstallMonitorAgent",
+            "version": "2023-09-30",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(UninstallMonitorAgentResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func uninstallMonitorAgent(_ request: UninstallMonitorAgentRequest) async throws -> UninstallMonitorAgentResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await uninstallMonitorAgentWithOptions(request as! UninstallMonitorAgentRequest, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)

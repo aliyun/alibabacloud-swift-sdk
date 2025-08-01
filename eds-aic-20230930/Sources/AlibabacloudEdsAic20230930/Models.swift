@@ -12933,6 +12933,126 @@ public class InstallAppResponse : Tea.TeaModel {
     }
 }
 
+public class InstallMonitorAgentRequest : Tea.TeaModel {
+    public var androidInstanceIds: [String]?
+
+    public var saleMode: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.androidInstanceIds != nil {
+            map["AndroidInstanceIds"] = self.androidInstanceIds!
+        }
+        if self.saleMode != nil {
+            map["SaleMode"] = self.saleMode!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["AndroidInstanceIds"] as? [String] {
+            self.androidInstanceIds = value
+        }
+        if let value = dict["SaleMode"] as? String {
+            self.saleMode = value
+        }
+    }
+}
+
+public class InstallMonitorAgentResponseBody : Tea.TeaModel {
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+    }
+}
+
+public class InstallMonitorAgentResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: InstallMonitorAgentResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = InstallMonitorAgentResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
 public class ListPolicyGroupsRequest : Tea.TeaModel {
     public var maxResults: Int32?
 
@@ -16544,6 +16664,8 @@ public class RunCommandResponse : Tea.TeaModel {
 public class SendFileRequest : Tea.TeaModel {
     public var androidInstanceIdList: [String]?
 
+    public var autoInstall: Bool?
+
     public var sourceFilePath: String?
 
     public var targetFileName: String?
@@ -16571,6 +16693,9 @@ public class SendFileRequest : Tea.TeaModel {
         if self.androidInstanceIdList != nil {
             map["AndroidInstanceIdList"] = self.androidInstanceIdList!
         }
+        if self.autoInstall != nil {
+            map["AutoInstall"] = self.autoInstall!
+        }
         if self.sourceFilePath != nil {
             map["SourceFilePath"] = self.sourceFilePath!
         }
@@ -16593,6 +16718,9 @@ public class SendFileRequest : Tea.TeaModel {
         guard let dict else { return }
         if let value = dict["AndroidInstanceIdList"] as? [String] {
             self.androidInstanceIdList = value
+        }
+        if let value = dict["AutoInstall"] as? Bool {
+            self.autoInstall = value
         }
         if let value = dict["SourceFilePath"] as? String {
             self.sourceFilePath = value
@@ -17444,6 +17572,126 @@ public class UninstallAppResponse : Tea.TeaModel {
         }
         if let value = dict["body"] as? [String: Any?] {
             var model = UninstallAppResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
+public class UninstallMonitorAgentRequest : Tea.TeaModel {
+    public var androidInstanceIds: [String]?
+
+    public var saleMode: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.androidInstanceIds != nil {
+            map["AndroidInstanceIds"] = self.androidInstanceIds!
+        }
+        if self.saleMode != nil {
+            map["SaleMode"] = self.saleMode!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["AndroidInstanceIds"] as? [String] {
+            self.androidInstanceIds = value
+        }
+        if let value = dict["SaleMode"] as? String {
+            self.saleMode = value
+        }
+    }
+}
+
+public class UninstallMonitorAgentResponseBody : Tea.TeaModel {
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+    }
+}
+
+public class UninstallMonitorAgentResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: UninstallMonitorAgentResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = UninstallMonitorAgentResponseBody()
             model.fromMap(value)
             self.body = model
         }
