@@ -278,6 +278,135 @@ public class ModelConfig : Tea.TeaModel {
     }
 }
 
+public class QuestionAnswer : Tea.TeaModel {
+    public class Answer : Tea.TeaModel {
+        public var contexts: [String]?
+
+        public var text: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.contexts != nil {
+                map["Contexts"] = self.contexts!
+            }
+            if self.text != nil {
+                map["Text"] = self.text!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["Contexts"] as? [String] {
+                self.contexts = value
+            }
+            if let value = dict["Text"] as? String {
+                self.text = value
+            }
+        }
+    }
+    public class GroundTruth : Tea.TeaModel {
+        public var contexts: [String]?
+
+        public var text: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.contexts != nil {
+                map["Contexts"] = self.contexts!
+            }
+            if self.text != nil {
+                map["Text"] = self.text!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["Contexts"] as? [String] {
+                self.contexts = value
+            }
+            if let value = dict["Text"] as? String {
+                self.text = value
+            }
+        }
+    }
+    public var answer: QuestionAnswer.Answer?
+
+    public var groundTruth: QuestionAnswer.GroundTruth?
+
+    public var question: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.answer?.validate()
+        try self.groundTruth?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.answer != nil {
+            map["Answer"] = self.answer?.toMap()
+        }
+        if self.groundTruth != nil {
+            map["GroundTruth"] = self.groundTruth?.toMap()
+        }
+        if self.question != nil {
+            map["Question"] = self.question!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["Answer"] as? [String: Any?] {
+            var model = QuestionAnswer.Answer()
+            model.fromMap(value)
+            self.answer = model
+        }
+        if let value = dict["GroundTruth"] as? [String: Any?] {
+            var model = QuestionAnswer.GroundTruth()
+            model.fromMap(value)
+            self.groundTruth = model
+        }
+        if let value = dict["Question"] as? String {
+            self.question = value
+        }
+    }
+}
+
 public class CreateOnlineEvalTaskRequest : Tea.TeaModel {
     public class Body : Tea.TeaModel {
         public class Filters : Tea.TeaModel {
@@ -2200,6 +2329,10 @@ public class ListOnlineEvalTasksRequest : Tea.TeaModel {
 
     public var pageSize: Int32?
 
+    public var sortBy: String?
+
+    public var sortOrder: String?
+
     public override init() {
         super.init()
     }
@@ -2229,6 +2362,12 @@ public class ListOnlineEvalTasksRequest : Tea.TeaModel {
         if self.pageSize != nil {
             map["PageSize"] = self.pageSize!
         }
+        if self.sortBy != nil {
+            map["SortBy"] = self.sortBy!
+        }
+        if self.sortOrder != nil {
+            map["SortOrder"] = self.sortOrder!
+        }
         return map
     }
 
@@ -2248,6 +2387,12 @@ public class ListOnlineEvalTasksRequest : Tea.TeaModel {
         }
         if let value = dict["PageSize"] as? Int32 {
             self.pageSize = value
+        }
+        if let value = dict["SortBy"] as? String {
+            self.sortBy = value
+        }
+        if let value = dict["SortOrder"] as? String {
+            self.sortOrder = value
         }
     }
 }
@@ -2306,6 +2451,8 @@ public class ListOnlineEvalTasksResponseBody : Tea.TeaModel {
 
         public var description_: String?
 
+        public var evalResults: String?
+
         public var evaluationConfig: EvaluationConfig?
 
         public var filters: [ListOnlineEvalTasksResponseBody.Tasks.Filters]?
@@ -2321,6 +2468,8 @@ public class ListOnlineEvalTasksResponseBody : Tea.TeaModel {
         public var modelConfig: ModelConfig?
 
         public var name: String?
+
+        public var recordCount: Int32?
 
         public var samplingFrequencyMinutes: Int32?
 
@@ -2355,6 +2504,9 @@ public class ListOnlineEvalTasksResponseBody : Tea.TeaModel {
             if self.description_ != nil {
                 map["Description"] = self.description_!
             }
+            if self.evalResults != nil {
+                map["EvalResults"] = self.evalResults!
+            }
             if self.evaluationConfig != nil {
                 map["EvaluationConfig"] = self.evaluationConfig?.toMap()
             }
@@ -2383,6 +2535,9 @@ public class ListOnlineEvalTasksResponseBody : Tea.TeaModel {
             if self.name != nil {
                 map["Name"] = self.name!
             }
+            if self.recordCount != nil {
+                map["RecordCount"] = self.recordCount!
+            }
             if self.samplingFrequencyMinutes != nil {
                 map["SamplingFrequencyMinutes"] = self.samplingFrequencyMinutes!
             }
@@ -2408,6 +2563,9 @@ public class ListOnlineEvalTasksResponseBody : Tea.TeaModel {
             }
             if let value = dict["Description"] as? String {
                 self.description_ = value
+            }
+            if let value = dict["EvalResults"] as? String {
+                self.evalResults = value
             }
             if let value = dict["EvaluationConfig"] as? [String: Any?] {
                 var model = EvaluationConfig()
@@ -2446,6 +2604,9 @@ public class ListOnlineEvalTasksResponseBody : Tea.TeaModel {
             }
             if let value = dict["Name"] as? String {
                 self.name = value
+            }
+            if let value = dict["RecordCount"] as? Int32 {
+                self.recordCount = value
             }
             if let value = dict["SamplingFrequencyMinutes"] as? Int32 {
                 self.samplingFrequencyMinutes = value
