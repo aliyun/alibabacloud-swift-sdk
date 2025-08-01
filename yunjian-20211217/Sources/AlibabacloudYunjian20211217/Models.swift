@@ -47,6 +47,8 @@ public class CreateDemandPlanHeaders : Tea.TeaModel {
 public class CreateDemandPlanRequest : Tea.TeaModel {
     public var accountId: String?
 
+    public var demandType: String?
+
     public var description_: String?
 
     public var name: String?
@@ -78,6 +80,9 @@ public class CreateDemandPlanRequest : Tea.TeaModel {
         if self.accountId != nil {
             map["accountId"] = self.accountId!
         }
+        if self.demandType != nil {
+            map["demandType"] = self.demandType!
+        }
         if self.description_ != nil {
             map["description"] = self.description_!
         }
@@ -106,6 +111,9 @@ public class CreateDemandPlanRequest : Tea.TeaModel {
         guard let dict else { return }
         if let value = dict["accountId"] as? String {
             self.accountId = value
+        }
+        if let value = dict["demandType"] as? String {
+            self.demandType = value
         }
         if let value = dict["description"] as? String {
             self.description_ = value
@@ -286,6 +294,8 @@ public class CreateDemandPlanV2Headers : Tea.TeaModel {
 public class CreateDemandPlanV2Request : Tea.TeaModel {
     public var accountId: String?
 
+    public var demandType: String?
+
     public var description_: String?
 
     public var name: String?
@@ -315,6 +325,9 @@ public class CreateDemandPlanV2Request : Tea.TeaModel {
         if self.accountId != nil {
             map["accountId"] = self.accountId!
         }
+        if self.demandType != nil {
+            map["demandType"] = self.demandType!
+        }
         if self.description_ != nil {
             map["description"] = self.description_!
         }
@@ -340,6 +353,9 @@ public class CreateDemandPlanV2Request : Tea.TeaModel {
         guard let dict else { return }
         if let value = dict["accountId"] as? String {
             self.accountId = value
+        }
+        if let value = dict["demandType"] as? String {
+            self.demandType = value
         }
         if let value = dict["description"] as? String {
             self.description_ = value
