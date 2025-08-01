@@ -164,6 +164,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.to)) {
             query["To"] = request.to ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.type)) {
+            query["Type"] = request.type ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.validityPeriod)) {
             query["ValidityPeriod"] = request.validityPeriod!;
         }
