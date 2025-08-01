@@ -169,6 +169,84 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func searchImageWithOptions(_ tmpReq: SearchImageRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> SearchImageResponse {
+        try TeaUtils.Client.validateModel(tmpReq)
+        var request: SearchImageShrinkRequest = SearchImageShrinkRequest([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.tags)) {
+            request.tagsShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.tags, "Tags", "simple")
+        }
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.colorHex)) {
+            query["ColorHex"] = request.colorHex ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.hasPerson)) {
+            query["HasPerson"] = request.hasPerson!;
+        }
+        if (!TeaUtils.Client.isUnset(request.imageCategory)) {
+            query["ImageCategory"] = request.imageCategory ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.imageRatio)) {
+            query["ImageRatio"] = request.imageRatio ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.maxHeight)) {
+            query["MaxHeight"] = request.maxHeight!;
+        }
+        if (!TeaUtils.Client.isUnset(request.maxResults)) {
+            query["MaxResults"] = request.maxResults!;
+        }
+        if (!TeaUtils.Client.isUnset(request.maxWidth)) {
+            query["MaxWidth"] = request.maxWidth!;
+        }
+        if (!TeaUtils.Client.isUnset(request.minHeight)) {
+            query["MinHeight"] = request.minHeight!;
+        }
+        if (!TeaUtils.Client.isUnset(request.minWidth)) {
+            query["MinWidth"] = request.minWidth!;
+        }
+        if (!TeaUtils.Client.isUnset(request.nextToken)) {
+            query["NextToken"] = request.nextToken ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.ossKey)) {
+            query["OssKey"] = request.ossKey ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.size)) {
+            query["Size"] = request.size!;
+        }
+        if (!TeaUtils.Client.isUnset(request.start)) {
+            query["Start"] = request.start!;
+        }
+        if (!TeaUtils.Client.isUnset(request.tagsShrink)) {
+            query["Tags"] = request.tagsShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.text)) {
+            query["Text"] = request.text ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "SearchImage",
+            "version": "2025-04-29",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(SearchImageResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func searchImage(_ request: SearchImageRequest) async throws -> SearchImageResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await searchImageWithOptions(request as! SearchImageRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func syncAppInstanceForPartnerWithOptions(_ tmpReq: SyncAppInstanceForPartnerRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> SyncAppInstanceForPartnerResponse {
         try TeaUtils.Client.validateModel(tmpReq)
         var request: SyncAppInstanceForPartnerShrinkRequest = SyncAppInstanceForPartnerShrinkRequest([:])

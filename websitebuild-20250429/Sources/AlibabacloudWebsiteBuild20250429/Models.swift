@@ -670,6 +670,570 @@ public class OperateAppServiceForPartnerResponse : Tea.TeaModel {
     }
 }
 
+public class SearchImageRequest : Tea.TeaModel {
+    public var colorHex: String?
+
+    public var hasPerson: Bool?
+
+    public var imageCategory: String?
+
+    public var imageRatio: String?
+
+    public var maxHeight: Int32?
+
+    public var maxResults: Int32?
+
+    public var maxWidth: Int32?
+
+    public var minHeight: Int32?
+
+    public var minWidth: Int32?
+
+    public var nextToken: String?
+
+    public var ossKey: String?
+
+    public var size: Int32?
+
+    public var start: Int32?
+
+    public var tags: [String]?
+
+    public var text: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.colorHex != nil {
+            map["ColorHex"] = self.colorHex!
+        }
+        if self.hasPerson != nil {
+            map["HasPerson"] = self.hasPerson!
+        }
+        if self.imageCategory != nil {
+            map["ImageCategory"] = self.imageCategory!
+        }
+        if self.imageRatio != nil {
+            map["ImageRatio"] = self.imageRatio!
+        }
+        if self.maxHeight != nil {
+            map["MaxHeight"] = self.maxHeight!
+        }
+        if self.maxResults != nil {
+            map["MaxResults"] = self.maxResults!
+        }
+        if self.maxWidth != nil {
+            map["MaxWidth"] = self.maxWidth!
+        }
+        if self.minHeight != nil {
+            map["MinHeight"] = self.minHeight!
+        }
+        if self.minWidth != nil {
+            map["MinWidth"] = self.minWidth!
+        }
+        if self.nextToken != nil {
+            map["NextToken"] = self.nextToken!
+        }
+        if self.ossKey != nil {
+            map["OssKey"] = self.ossKey!
+        }
+        if self.size != nil {
+            map["Size"] = self.size!
+        }
+        if self.start != nil {
+            map["Start"] = self.start!
+        }
+        if self.tags != nil {
+            map["Tags"] = self.tags!
+        }
+        if self.text != nil {
+            map["Text"] = self.text!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["ColorHex"] as? String {
+            self.colorHex = value
+        }
+        if let value = dict["HasPerson"] as? Bool {
+            self.hasPerson = value
+        }
+        if let value = dict["ImageCategory"] as? String {
+            self.imageCategory = value
+        }
+        if let value = dict["ImageRatio"] as? String {
+            self.imageRatio = value
+        }
+        if let value = dict["MaxHeight"] as? Int32 {
+            self.maxHeight = value
+        }
+        if let value = dict["MaxResults"] as? Int32 {
+            self.maxResults = value
+        }
+        if let value = dict["MaxWidth"] as? Int32 {
+            self.maxWidth = value
+        }
+        if let value = dict["MinHeight"] as? Int32 {
+            self.minHeight = value
+        }
+        if let value = dict["MinWidth"] as? Int32 {
+            self.minWidth = value
+        }
+        if let value = dict["NextToken"] as? String {
+            self.nextToken = value
+        }
+        if let value = dict["OssKey"] as? String {
+            self.ossKey = value
+        }
+        if let value = dict["Size"] as? Int32 {
+            self.size = value
+        }
+        if let value = dict["Start"] as? Int32 {
+            self.start = value
+        }
+        if let value = dict["Tags"] as? [String] {
+            self.tags = value
+        }
+        if let value = dict["Text"] as? String {
+            self.text = value
+        }
+    }
+}
+
+public class SearchImageShrinkRequest : Tea.TeaModel {
+    public var colorHex: String?
+
+    public var hasPerson: Bool?
+
+    public var imageCategory: String?
+
+    public var imageRatio: String?
+
+    public var maxHeight: Int32?
+
+    public var maxResults: Int32?
+
+    public var maxWidth: Int32?
+
+    public var minHeight: Int32?
+
+    public var minWidth: Int32?
+
+    public var nextToken: String?
+
+    public var ossKey: String?
+
+    public var size: Int32?
+
+    public var start: Int32?
+
+    public var tagsShrink: String?
+
+    public var text: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.colorHex != nil {
+            map["ColorHex"] = self.colorHex!
+        }
+        if self.hasPerson != nil {
+            map["HasPerson"] = self.hasPerson!
+        }
+        if self.imageCategory != nil {
+            map["ImageCategory"] = self.imageCategory!
+        }
+        if self.imageRatio != nil {
+            map["ImageRatio"] = self.imageRatio!
+        }
+        if self.maxHeight != nil {
+            map["MaxHeight"] = self.maxHeight!
+        }
+        if self.maxResults != nil {
+            map["MaxResults"] = self.maxResults!
+        }
+        if self.maxWidth != nil {
+            map["MaxWidth"] = self.maxWidth!
+        }
+        if self.minHeight != nil {
+            map["MinHeight"] = self.minHeight!
+        }
+        if self.minWidth != nil {
+            map["MinWidth"] = self.minWidth!
+        }
+        if self.nextToken != nil {
+            map["NextToken"] = self.nextToken!
+        }
+        if self.ossKey != nil {
+            map["OssKey"] = self.ossKey!
+        }
+        if self.size != nil {
+            map["Size"] = self.size!
+        }
+        if self.start != nil {
+            map["Start"] = self.start!
+        }
+        if self.tagsShrink != nil {
+            map["Tags"] = self.tagsShrink!
+        }
+        if self.text != nil {
+            map["Text"] = self.text!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["ColorHex"] as? String {
+            self.colorHex = value
+        }
+        if let value = dict["HasPerson"] as? Bool {
+            self.hasPerson = value
+        }
+        if let value = dict["ImageCategory"] as? String {
+            self.imageCategory = value
+        }
+        if let value = dict["ImageRatio"] as? String {
+            self.imageRatio = value
+        }
+        if let value = dict["MaxHeight"] as? Int32 {
+            self.maxHeight = value
+        }
+        if let value = dict["MaxResults"] as? Int32 {
+            self.maxResults = value
+        }
+        if let value = dict["MaxWidth"] as? Int32 {
+            self.maxWidth = value
+        }
+        if let value = dict["MinHeight"] as? Int32 {
+            self.minHeight = value
+        }
+        if let value = dict["MinWidth"] as? Int32 {
+            self.minWidth = value
+        }
+        if let value = dict["NextToken"] as? String {
+            self.nextToken = value
+        }
+        if let value = dict["OssKey"] as? String {
+            self.ossKey = value
+        }
+        if let value = dict["Size"] as? Int32 {
+            self.size = value
+        }
+        if let value = dict["Start"] as? Int32 {
+            self.start = value
+        }
+        if let value = dict["Tags"] as? String {
+            self.tagsShrink = value
+        }
+        if let value = dict["Text"] as? String {
+            self.text = value
+        }
+    }
+}
+
+public class SearchImageResponseBody : Tea.TeaModel {
+    public class ImageResponse : Tea.TeaModel {
+        public class ImageList : Tea.TeaModel {
+            public var descriptiveTones: String?
+
+            public var height: Int32?
+
+            public var imageCategory: String?
+
+            public var imageRatio: String?
+
+            public var imageUuid: String?
+
+            public var ossKey: String?
+
+            public var quantitativePalette: String?
+
+            public var tagsFromImage: String?
+
+            public var url: String?
+
+            public var width: Int32?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.descriptiveTones != nil {
+                    map["DescriptiveTones"] = self.descriptiveTones!
+                }
+                if self.height != nil {
+                    map["Height"] = self.height!
+                }
+                if self.imageCategory != nil {
+                    map["ImageCategory"] = self.imageCategory!
+                }
+                if self.imageRatio != nil {
+                    map["ImageRatio"] = self.imageRatio!
+                }
+                if self.imageUuid != nil {
+                    map["ImageUuid"] = self.imageUuid!
+                }
+                if self.ossKey != nil {
+                    map["OssKey"] = self.ossKey!
+                }
+                if self.quantitativePalette != nil {
+                    map["QuantitativePalette"] = self.quantitativePalette!
+                }
+                if self.tagsFromImage != nil {
+                    map["TagsFromImage"] = self.tagsFromImage!
+                }
+                if self.url != nil {
+                    map["Url"] = self.url!
+                }
+                if self.width != nil {
+                    map["Width"] = self.width!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["DescriptiveTones"] as? String {
+                    self.descriptiveTones = value
+                }
+                if let value = dict["Height"] as? Int32 {
+                    self.height = value
+                }
+                if let value = dict["ImageCategory"] as? String {
+                    self.imageCategory = value
+                }
+                if let value = dict["ImageRatio"] as? String {
+                    self.imageRatio = value
+                }
+                if let value = dict["ImageUuid"] as? String {
+                    self.imageUuid = value
+                }
+                if let value = dict["OssKey"] as? String {
+                    self.ossKey = value
+                }
+                if let value = dict["QuantitativePalette"] as? String {
+                    self.quantitativePalette = value
+                }
+                if let value = dict["TagsFromImage"] as? String {
+                    self.tagsFromImage = value
+                }
+                if let value = dict["Url"] as? String {
+                    self.url = value
+                }
+                if let value = dict["Width"] as? Int32 {
+                    self.width = value
+                }
+            }
+        }
+        public var imageList: [SearchImageResponseBody.ImageResponse.ImageList]?
+
+        public var maxResults: Int32?
+
+        public var nextToken: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.imageList != nil {
+                var tmp : [Any] = []
+                for k in self.imageList! {
+                    tmp.append(k.toMap())
+                }
+                map["ImageList"] = tmp
+            }
+            if self.maxResults != nil {
+                map["MaxResults"] = self.maxResults!
+            }
+            if self.nextToken != nil {
+                map["NextToken"] = self.nextToken!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["ImageList"] as? [Any?] {
+                var tmp : [SearchImageResponseBody.ImageResponse.ImageList] = []
+                for v in value {
+                    if v != nil {
+                        var model = SearchImageResponseBody.ImageResponse.ImageList()
+                        if v != nil {
+                            model.fromMap(v as? [String: Any?])
+                        }
+                        tmp.append(model)
+                    }
+                }
+                self.imageList = tmp
+            }
+            if let value = dict["MaxResults"] as? Int32 {
+                self.maxResults = value
+            }
+            if let value = dict["NextToken"] as? String {
+                self.nextToken = value
+            }
+        }
+    }
+    public var errorCode: String?
+
+    public var errorMsg: String?
+
+    public var imageResponse: SearchImageResponseBody.ImageResponse?
+
+    public var requestId: String?
+
+    public var success: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.imageResponse?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.errorCode != nil {
+            map["ErrorCode"] = self.errorCode!
+        }
+        if self.errorMsg != nil {
+            map["ErrorMsg"] = self.errorMsg!
+        }
+        if self.imageResponse != nil {
+            map["ImageResponse"] = self.imageResponse?.toMap()
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.success != nil {
+            map["Success"] = self.success!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["ErrorCode"] as? String {
+            self.errorCode = value
+        }
+        if let value = dict["ErrorMsg"] as? String {
+            self.errorMsg = value
+        }
+        if let value = dict["ImageResponse"] as? [String: Any?] {
+            var model = SearchImageResponseBody.ImageResponse()
+            model.fromMap(value)
+            self.imageResponse = model
+        }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+        if let value = dict["Success"] as? String {
+            self.success = value
+        }
+    }
+}
+
+public class SearchImageResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: SearchImageResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = SearchImageResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
 public class SyncAppInstanceForPartnerRequest : Tea.TeaModel {
     public class AppInstance : Tea.TeaModel {
         public class Profile : Tea.TeaModel {
