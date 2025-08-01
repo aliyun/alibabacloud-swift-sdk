@@ -6578,6 +6578,8 @@ public class DescribeAndroidInstancesResponseBody : Tea.TeaModel {
 
         public var renderingType: String?
 
+        public var serverStatus: String?
+
         public var serverType: String?
 
         public var sessionStatus: String?
@@ -6736,6 +6738,9 @@ public class DescribeAndroidInstancesResponseBody : Tea.TeaModel {
             }
             if self.renderingType != nil {
                 map["RenderingType"] = self.renderingType!
+            }
+            if self.serverStatus != nil {
+                map["ServerStatus"] = self.serverStatus!
             }
             if self.serverType != nil {
                 map["ServerType"] = self.serverType!
@@ -6912,6 +6917,9 @@ public class DescribeAndroidInstancesResponseBody : Tea.TeaModel {
             }
             if let value = dict["RenderingType"] as? String {
                 self.renderingType = value
+            }
+            if let value = dict["ServerStatus"] as? String {
+                self.serverStatus = value
             }
             if let value = dict["ServerType"] as? String {
                 self.serverType = value
