@@ -2319,6 +2319,8 @@ public class ListOnlineEvalTaskResultsResponse : Tea.TeaModel {
 }
 
 public class ListOnlineEvalTasksRequest : Tea.TeaModel {
+    public var appName: String?
+
     public var keyword: String?
 
     public var maxTime: String?
@@ -2332,6 +2334,8 @@ public class ListOnlineEvalTasksRequest : Tea.TeaModel {
     public var sortBy: String?
 
     public var sortOrder: String?
+
+    public var status: String?
 
     public override init() {
         super.init()
@@ -2347,6 +2351,9 @@ public class ListOnlineEvalTasksRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.appName != nil {
+            map["AppName"] = self.appName!
+        }
         if self.keyword != nil {
             map["Keyword"] = self.keyword!
         }
@@ -2368,11 +2375,17 @@ public class ListOnlineEvalTasksRequest : Tea.TeaModel {
         if self.sortOrder != nil {
             map["SortOrder"] = self.sortOrder!
         }
+        if self.status != nil {
+            map["Status"] = self.status!
+        }
         return map
     }
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["AppName"] as? String {
+            self.appName = value
+        }
         if let value = dict["Keyword"] as? String {
             self.keyword = value
         }
@@ -2393,6 +2406,9 @@ public class ListOnlineEvalTasksRequest : Tea.TeaModel {
         }
         if let value = dict["SortOrder"] as? String {
             self.sortOrder = value
+        }
+        if let value = dict["Status"] as? String {
+            self.status = value
         }
     }
 }
