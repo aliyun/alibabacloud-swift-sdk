@@ -828,6 +828,8 @@ public class GetAbnormalEventsCountRequest : Tea.TeaModel {
 
     public var instance: String?
 
+    public var level: String?
+
     public var namespace: String?
 
     public var pod: String?
@@ -859,6 +861,9 @@ public class GetAbnormalEventsCountRequest : Tea.TeaModel {
         if self.instance != nil {
             map["instance"] = self.instance!
         }
+        if self.level != nil {
+            map["level"] = self.level!
+        }
         if self.namespace != nil {
             map["namespace"] = self.namespace!
         }
@@ -885,6 +890,9 @@ public class GetAbnormalEventsCountRequest : Tea.TeaModel {
         if let value = dict["instance"] as? String {
             self.instance = value
         }
+        if let value = dict["level"] as? String {
+            self.level = value
+        }
         if let value = dict["namespace"] as? String {
             self.namespace = value
         }
@@ -902,6 +910,8 @@ public class GetAbnormalEventsCountRequest : Tea.TeaModel {
 
 public class GetAbnormalEventsCountResponseBody : Tea.TeaModel {
     public class Data : Tea.TeaModel {
+        public var eventList: [String]?
+
         public var type: String?
 
         public var value: Int64?
@@ -920,6 +930,9 @@ public class GetAbnormalEventsCountResponseBody : Tea.TeaModel {
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
+            if self.eventList != nil {
+                map["eventList"] = self.eventList!
+            }
             if self.type != nil {
                 map["type"] = self.type!
             }
@@ -931,6 +944,9 @@ public class GetAbnormalEventsCountResponseBody : Tea.TeaModel {
 
         public override func fromMap(_ dict: [String: Any?]?) -> Void {
             guard let dict else { return }
+            if let value = dict["eventList"] as? [String] {
+                self.eventList = value
+            }
             if let value = dict["type"] as? String {
                 self.type = value
             }
@@ -6369,6 +6385,8 @@ public class ListAbnormalyEventsRequest : Tea.TeaModel {
 
     public var end: Double?
 
+    public var event: String?
+
     public var instance: String?
 
     public var level: String?
@@ -6406,6 +6424,9 @@ public class ListAbnormalyEventsRequest : Tea.TeaModel {
         if self.end != nil {
             map["end"] = self.end!
         }
+        if self.event != nil {
+            map["event"] = self.event!
+        }
         if self.instance != nil {
             map["instance"] = self.instance!
         }
@@ -6440,6 +6461,9 @@ public class ListAbnormalyEventsRequest : Tea.TeaModel {
         }
         if let value = dict["end"] as? Double {
             self.end = value
+        }
+        if let value = dict["event"] as? String {
+            self.event = value
         }
         if let value = dict["instance"] as? String {
             self.instance = value
