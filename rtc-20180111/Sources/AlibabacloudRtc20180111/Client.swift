@@ -113,6 +113,9 @@ open class Client : AlibabacloudOpenApi.Client {
         try TeaUtils.Client.validateModel(tmpReq)
         var request: CreateAppAgentTemplateShrinkRequest = CreateAppAgentTemplateShrinkRequest([:])
         AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.agentSilenceConfig)) {
+            request.agentSilenceConfigShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.agentSilenceConfig, "AgentSilenceConfig", "json")
+        }
         if (!TeaUtils.Client.isUnset(tmpReq.asrConfig)) {
             request.asrConfigShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.asrConfig, "AsrConfig", "json")
         }
@@ -123,6 +126,9 @@ open class Client : AlibabacloudOpenApi.Client {
             request.ttsConfigShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.ttsConfig, "TtsConfig", "json")
         }
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.agentSilenceConfigShrink)) {
+            query["AgentSilenceConfig"] = request.agentSilenceConfigShrink ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.appId)) {
             query["AppId"] = request.appId ?? "";
         }
@@ -3395,6 +3401,9 @@ open class Client : AlibabacloudOpenApi.Client {
         try TeaUtils.Client.validateModel(tmpReq)
         var request: ModifyAppAgentTemplateShrinkRequest = ModifyAppAgentTemplateShrinkRequest([:])
         AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.agentSilenceConfig)) {
+            request.agentSilenceConfigShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.agentSilenceConfig, "AgentSilenceConfig", "json")
+        }
         if (!TeaUtils.Client.isUnset(tmpReq.asrConfig)) {
             request.asrConfigShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.asrConfig, "AsrConfig", "json")
         }
@@ -3405,6 +3414,9 @@ open class Client : AlibabacloudOpenApi.Client {
             request.ttsConfigShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.ttsConfig, "TtsConfig", "json")
         }
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.agentSilenceConfigShrink)) {
+            query["AgentSilenceConfig"] = request.agentSilenceConfigShrink ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.appId)) {
             query["AppId"] = request.appId ?? "";
         }
