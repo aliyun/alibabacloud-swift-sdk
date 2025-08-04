@@ -182,3 +182,144 @@ public class GetEveryOneSellsFormListResponse : Tea.TeaModel {
         }
     }
 }
+
+public class PushEveryOneSellMsgRequest : Tea.TeaModel {
+    public var dingIdList: [String]?
+
+    public var pushMsg: String?
+
+    public var pushType: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.dingIdList != nil {
+            map["DingIdList"] = self.dingIdList!
+        }
+        if self.pushMsg != nil {
+            map["PushMsg"] = self.pushMsg!
+        }
+        if self.pushType != nil {
+            map["PushType"] = self.pushType!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["DingIdList"] as? [String] {
+            self.dingIdList = value
+        }
+        if let value = dict["PushMsg"] as? String {
+            self.pushMsg = value
+        }
+        if let value = dict["PushType"] as? String {
+            self.pushType = value
+        }
+    }
+}
+
+public class PushEveryOneSellMsgShrinkRequest : Tea.TeaModel {
+    public var dingIdListShrink: String?
+
+    public var pushMsg: String?
+
+    public var pushType: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.dingIdListShrink != nil {
+            map["DingIdList"] = self.dingIdListShrink!
+        }
+        if self.pushMsg != nil {
+            map["PushMsg"] = self.pushMsg!
+        }
+        if self.pushType != nil {
+            map["PushType"] = self.pushType!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["DingIdList"] as? String {
+            self.dingIdListShrink = value
+        }
+        if let value = dict["PushMsg"] as? String {
+            self.pushMsg = value
+        }
+        if let value = dict["PushType"] as? String {
+            self.pushType = value
+        }
+    }
+}
+
+public class PushEveryOneSellMsgResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? String {
+            self.body = value
+        }
+    }
+}

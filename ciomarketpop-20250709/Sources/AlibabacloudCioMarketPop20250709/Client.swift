@@ -51,4 +51,46 @@ open class Client : AlibabacloudOpenApi.Client {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         return try await getEveryOneSellsFormListWithOptions(request as! GetEveryOneSellsFormListRequest, runtime as! TeaUtils.RuntimeOptions)
     }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func pushEveryOneSellMsgWithOptions(_ tmpReq: PushEveryOneSellMsgRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> PushEveryOneSellMsgResponse {
+        try TeaUtils.Client.validateModel(tmpReq)
+        var request: PushEveryOneSellMsgShrinkRequest = PushEveryOneSellMsgShrinkRequest([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.dingIdList)) {
+            request.dingIdListShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.dingIdList, "DingIdList", "json")
+        }
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.dingIdListShrink)) {
+            body["DingIdList"] = request.dingIdListShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.pushMsg)) {
+            body["PushMsg"] = request.pushMsg ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.pushType)) {
+            body["PushType"] = request.pushType ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "PushEveryOneSellMsg",
+            "version": "2025-07-09",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "Anonymous",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "string"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(PushEveryOneSellMsgResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func pushEveryOneSellMsg(_ request: PushEveryOneSellMsgRequest) async throws -> PushEveryOneSellMsgResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await pushEveryOneSellMsgWithOptions(request as! PushEveryOneSellMsgRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
 }
