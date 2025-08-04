@@ -7100,6 +7100,9 @@ open class Client : AlibabacloudOpenApi.Client {
         try TeaUtils.Client.validateModel(tmpReq)
         var request: SubmitSmartAuditShrinkRequest = SubmitSmartAuditShrinkRequest([:])
         AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.imageUrlList)) {
+            request.imageUrlListShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.imageUrlList, "ImageUrlList", "json")
+        }
         if (!TeaUtils.Client.isUnset(tmpReq.subCodes)) {
             request.subCodesShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.subCodes, "SubCodes", "json")
         }
@@ -7107,6 +7110,9 @@ open class Client : AlibabacloudOpenApi.Client {
             request.imageUrlsShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.imageUrls, "imageUrls", "json")
         }
         var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.imageUrlListShrink)) {
+            body["ImageUrlList"] = request.imageUrlListShrink ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.subCodesShrink)) {
             body["SubCodes"] = request.subCodesShrink ?? "";
         }

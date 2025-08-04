@@ -20664,6 +20664,8 @@ public class GetSmartAuditResultResponseBody : Tea.TeaModel {
         }
         public var errorItemDetails: [GetSmartAuditResultResponseBody.Data.ErrorItemDetails]?
 
+        public var errorMessage: String?
+
         public var status: String?
 
         public override init() {
@@ -20687,6 +20689,9 @@ public class GetSmartAuditResultResponseBody : Tea.TeaModel {
                 }
                 map["ErrorItemDetails"] = tmp
             }
+            if self.errorMessage != nil {
+                map["ErrorMessage"] = self.errorMessage!
+            }
             if self.status != nil {
                 map["Status"] = self.status!
             }
@@ -20707,6 +20712,9 @@ public class GetSmartAuditResultResponseBody : Tea.TeaModel {
                     }
                 }
                 self.errorItemDetails = tmp
+            }
+            if let value = dict["ErrorMessage"] as? String {
+                self.errorMessage = value
             }
             if let value = dict["Status"] as? String {
                 self.status = value
@@ -64582,6 +64590,44 @@ public class SubmitImportTermsTaskResponse : Tea.TeaModel {
 }
 
 public class SubmitSmartAuditRequest : Tea.TeaModel {
+    public class ImageUrlList : Tea.TeaModel {
+        public var id: String?
+
+        public var url: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.id != nil {
+                map["Id"] = self.id!
+            }
+            if self.url != nil {
+                map["Url"] = self.url!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["Id"] as? String {
+                self.id = value
+            }
+            if let value = dict["Url"] as? String {
+                self.url = value
+            }
+        }
+    }
     public class ImageUrls : Tea.TeaModel {
         public var id: String?
 
@@ -64620,6 +64666,8 @@ public class SubmitSmartAuditRequest : Tea.TeaModel {
             }
         }
     }
+    public var imageUrlList: [SubmitSmartAuditRequest.ImageUrlList]?
+
     public var subCodes: [String]?
 
     public var text: String?
@@ -64642,6 +64690,13 @@ public class SubmitSmartAuditRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.imageUrlList != nil {
+            var tmp : [Any] = []
+            for k in self.imageUrlList! {
+                tmp.append(k.toMap())
+            }
+            map["ImageUrlList"] = tmp
+        }
         if self.subCodes != nil {
             map["SubCodes"] = self.subCodes!
         }
@@ -64663,6 +64718,19 @@ public class SubmitSmartAuditRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["ImageUrlList"] as? [Any?] {
+            var tmp : [SubmitSmartAuditRequest.ImageUrlList] = []
+            for v in value {
+                if v != nil {
+                    var model = SubmitSmartAuditRequest.ImageUrlList()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.imageUrlList = tmp
+        }
         if let value = dict["SubCodes"] as? [String] {
             self.subCodes = value
         }
@@ -64689,6 +64757,8 @@ public class SubmitSmartAuditRequest : Tea.TeaModel {
 }
 
 public class SubmitSmartAuditShrinkRequest : Tea.TeaModel {
+    public var imageUrlListShrink: String?
+
     public var subCodesShrink: String?
 
     public var text: String?
@@ -64711,6 +64781,9 @@ public class SubmitSmartAuditShrinkRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.imageUrlListShrink != nil {
+            map["ImageUrlList"] = self.imageUrlListShrink!
+        }
         if self.subCodesShrink != nil {
             map["SubCodes"] = self.subCodesShrink!
         }
@@ -64728,6 +64801,9 @@ public class SubmitSmartAuditShrinkRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["ImageUrlList"] as? String {
+            self.imageUrlListShrink = value
+        }
         if let value = dict["SubCodes"] as? String {
             self.subCodesShrink = value
         }
