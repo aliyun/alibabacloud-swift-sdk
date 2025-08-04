@@ -5425,6 +5425,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.desktopId)) {
             query["DesktopId"] = request.desktopId ?? [];
         }
+        if (!TeaUtils.Client.isUnset(request.needExtraInfo)) {
+            query["NeedExtraInfo"] = request.needExtraInfo!;
+        }
         if (!TeaUtils.Client.isUnset(request.regionId)) {
             query["RegionId"] = request.regionId ?? "";
         }

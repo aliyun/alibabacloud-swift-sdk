@@ -26397,6 +26397,8 @@ public class DescribeDesktopGroupsResponse : Tea.TeaModel {
 public class DescribeDesktopInfoRequest : Tea.TeaModel {
     public var desktopId: [String]?
 
+    public var needExtraInfo: Bool?
+
     public var regionId: String?
 
     public override init() {
@@ -26416,6 +26418,9 @@ public class DescribeDesktopInfoRequest : Tea.TeaModel {
         if self.desktopId != nil {
             map["DesktopId"] = self.desktopId!
         }
+        if self.needExtraInfo != nil {
+            map["NeedExtraInfo"] = self.needExtraInfo!
+        }
         if self.regionId != nil {
             map["RegionId"] = self.regionId!
         }
@@ -26426,6 +26431,9 @@ public class DescribeDesktopInfoRequest : Tea.TeaModel {
         guard let dict else { return }
         if let value = dict["DesktopId"] as? [String] {
             self.desktopId = value
+        }
+        if let value = dict["NeedExtraInfo"] as? Bool {
+            self.needExtraInfo = value
         }
         if let value = dict["RegionId"] as? String {
             self.regionId = value
