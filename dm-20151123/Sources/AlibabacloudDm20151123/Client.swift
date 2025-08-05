@@ -1199,6 +1199,77 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getDedicatedIpWarmUpDetailWithOptions(_ request: GetDedicatedIpWarmUpDetailRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> GetDedicatedIpWarmUpDetailResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.dedicatedIp)) {
+            query["DedicatedIp"] = request.dedicatedIp ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.endDayMark)) {
+            query["EndDayMark"] = request.endDayMark!;
+        }
+        if (!TeaUtils.Client.isUnset(request.esp)) {
+            query["Esp"] = request.esp ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.startDayMark)) {
+            query["StartDayMark"] = request.startDayMark!;
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "GetDedicatedIpWarmUpDetail",
+            "version": "2015-11-23",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(GetDedicatedIpWarmUpDetailResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getDedicatedIpWarmUpDetail(_ request: GetDedicatedIpWarmUpDetailRequest) async throws -> GetDedicatedIpWarmUpDetailResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await getDedicatedIpWarmUpDetailWithOptions(request as! GetDedicatedIpWarmUpDetailRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getDedicatedIpWarmUpInfoWithOptions(_ request: GetDedicatedIpWarmUpInfoRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> GetDedicatedIpWarmUpInfoResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.dedicatedIp)) {
+            query["DedicatedIp"] = request.dedicatedIp ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "GetDedicatedIpWarmUpInfo",
+            "version": "2015-11-23",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(GetDedicatedIpWarmUpInfoResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getDedicatedIpWarmUpInfo(_ request: GetDedicatedIpWarmUpInfoRequest) async throws -> GetDedicatedIpWarmUpInfoResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await getDedicatedIpWarmUpInfoWithOptions(request as! GetDedicatedIpWarmUpInfoRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func getIpProtectionWithOptions(_ request: GetIpProtectionRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> GetIpProtectionResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
