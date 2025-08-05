@@ -25952,10 +25952,6 @@ public class ListEventStreamingsResponseBody : Tea.TeaModel {
                     }
                 }
                 public class RetryStrategy : Tea.TeaModel {
-                    public var maximumEventAgeInSeconds: Double?
-
-                    public var maximumRetryAttempts: Double?
-
                     public var pushRetryStrategy: String?
 
                     public override init() {
@@ -25972,12 +25968,6 @@ public class ListEventStreamingsResponseBody : Tea.TeaModel {
 
                     public override func toMap() -> [String : Any] {
                         var map = super.toMap()
-                        if self.maximumEventAgeInSeconds != nil {
-                            map["MaximumEventAgeInSeconds"] = self.maximumEventAgeInSeconds!
-                        }
-                        if self.maximumRetryAttempts != nil {
-                            map["MaximumRetryAttempts"] = self.maximumRetryAttempts!
-                        }
                         if self.pushRetryStrategy != nil {
                             map["PushRetryStrategy"] = self.pushRetryStrategy!
                         }
@@ -25986,12 +25976,6 @@ public class ListEventStreamingsResponseBody : Tea.TeaModel {
 
                     public override func fromMap(_ dict: [String: Any?]?) -> Void {
                         guard let dict else { return }
-                        if let value = dict["MaximumEventAgeInSeconds"] as? Double {
-                            self.maximumEventAgeInSeconds = value
-                        }
-                        if let value = dict["MaximumRetryAttempts"] as? Double {
-                            self.maximumRetryAttempts = value
-                        }
                         if let value = dict["PushRetryStrategy"] as? String {
                             self.pushRetryStrategy = value
                         }
