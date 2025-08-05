@@ -3201,6 +3201,54 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func sumStorageMetricsByDateWithOptions(_ request: SumStorageMetricsByDateRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> SumStorageMetricsByDateResponse {
+        try TeaUtils.Client.validateModel(request)
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.endDate)) {
+            body["endDate"] = request.endDate!;
+        }
+        if (!TeaUtils.Client.isUnset(request.projectNames)) {
+            body["projectNames"] = request.projectNames ?? [];
+        }
+        if (!TeaUtils.Client.isUnset(request.region)) {
+            body["region"] = request.region ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.startDate)) {
+            body["startDate"] = request.startDate!;
+        }
+        if (!TeaUtils.Client.isUnset(request.statsType)) {
+            body["statsType"] = request.statsType ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.userId)) {
+            body["userId"] = request.userId ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String],
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "SumStorageMetricsByDate",
+            "version": "2022-01-04",
+            "protocol": "HTTPS",
+            "pathname": "/api/v1/storageMetrics/sumByDate",
+            "method": "POST",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(SumStorageMetricsByDateResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func sumStorageMetricsByDate(_ request: SumStorageMetricsByDateRequest) async throws -> SumStorageMetricsByDateResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await sumStorageMetricsByDateWithOptions(request as! SumStorageMetricsByDateRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func updateComputeQuotaPlanWithOptions(_ nickname: String, _ request: UpdateComputeQuotaPlanRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> UpdateComputeQuotaPlanResponse {
         try TeaUtils.Client.validateModel(request)
         var body: [String: Any] = [:]

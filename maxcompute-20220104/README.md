@@ -17,7 +17,7 @@ English | [简体中文](README-CN.md)
 To integrate `AlibabacloudMaxCompute20220104` into your Xcode project using [Carthage](https://github.com/Carthage/Carthage), specify it in your `Cartfile`:
 
 ```ogdl
-github "alibabacloud-sdk-swift/maxcompute-20220104" "2.2.0"
+github "alibabacloud-sdk-swift/maxcompute-20220104" "2.3.0"
 ```
 
 ### Swift Package Manager
@@ -26,7 +26,7 @@ To integrate `AlibabacloudMaxCompute20220104` into your Xcode project using [Swi
 
 ```swift
 dependencies: [
-    .package(url: "https://github.com/alibabacloud-sdk-swift/maxcompute-20220104.git", from: "2.2.0")
+    .package(url: "https://github.com/alibabacloud-sdk-swift/maxcompute-20220104.git", from: "2.3.0")
 ]
 ```
 
