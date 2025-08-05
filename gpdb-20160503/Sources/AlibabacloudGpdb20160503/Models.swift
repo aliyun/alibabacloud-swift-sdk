@@ -48452,6 +48452,8 @@ public class UploadDocumentAsyncRequest : Tea.TeaModel {
 
     public var separators: [String]?
 
+    public var splitterModel: String?
+
     public var textSplitterName: String?
 
     public var vlEnhance: Bool?
@@ -48514,6 +48516,9 @@ public class UploadDocumentAsyncRequest : Tea.TeaModel {
         if self.separators != nil {
             map["Separators"] = self.separators!
         }
+        if self.splitterModel != nil {
+            map["SplitterModel"] = self.splitterModel!
+        }
         if self.textSplitterName != nil {
             map["TextSplitterName"] = self.textSplitterName!
         }
@@ -48570,6 +48575,9 @@ public class UploadDocumentAsyncRequest : Tea.TeaModel {
         if let value = dict["Separators"] as? [String] {
             self.separators = value
         }
+        if let value = dict["SplitterModel"] as? String {
+            self.splitterModel = value
+        }
         if let value = dict["TextSplitterName"] as? String {
             self.textSplitterName = value
         }
@@ -48610,6 +48618,8 @@ public class UploadDocumentAsyncAdvanceRequest : Tea.TeaModel {
     public var regionId: String?
 
     public var separators: [String]?
+
+    public var splitterModel: String?
 
     public var textSplitterName: String?
 
@@ -48673,6 +48683,9 @@ public class UploadDocumentAsyncAdvanceRequest : Tea.TeaModel {
         if self.separators != nil {
             map["Separators"] = self.separators!
         }
+        if self.splitterModel != nil {
+            map["SplitterModel"] = self.splitterModel!
+        }
         if self.textSplitterName != nil {
             map["TextSplitterName"] = self.textSplitterName!
         }
@@ -48729,6 +48742,9 @@ public class UploadDocumentAsyncAdvanceRequest : Tea.TeaModel {
         if let value = dict["Separators"] as? [String] {
             self.separators = value
         }
+        if let value = dict["SplitterModel"] as? String {
+            self.splitterModel = value
+        }
         if let value = dict["TextSplitterName"] as? String {
             self.textSplitterName = value
         }
@@ -48769,6 +48785,8 @@ public class UploadDocumentAsyncShrinkRequest : Tea.TeaModel {
     public var regionId: String?
 
     public var separatorsShrink: String?
+
+    public var splitterModel: String?
 
     public var textSplitterName: String?
 
@@ -48832,6 +48850,9 @@ public class UploadDocumentAsyncShrinkRequest : Tea.TeaModel {
         if self.separatorsShrink != nil {
             map["Separators"] = self.separatorsShrink!
         }
+        if self.splitterModel != nil {
+            map["SplitterModel"] = self.splitterModel!
+        }
         if self.textSplitterName != nil {
             map["TextSplitterName"] = self.textSplitterName!
         }
@@ -48887,6 +48908,9 @@ public class UploadDocumentAsyncShrinkRequest : Tea.TeaModel {
         }
         if let value = dict["Separators"] as? String {
             self.separatorsShrink = value
+        }
+        if let value = dict["SplitterModel"] as? String {
+            self.splitterModel = value
         }
         if let value = dict["TextSplitterName"] as? String {
             self.textSplitterName = value
