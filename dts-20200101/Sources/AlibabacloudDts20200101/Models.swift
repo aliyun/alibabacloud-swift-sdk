@@ -19469,6 +19469,8 @@ public class DescribeDtsJobDetailResponseBody : Tea.TeaModel {
 
     public var httpStatusCode: Int32?
 
+    public var initCheckpoint: String?
+
     public var jobType: String?
 
     public var lastUpdateTime: String?
@@ -19640,6 +19642,9 @@ public class DescribeDtsJobDetailResponseBody : Tea.TeaModel {
         }
         if self.httpStatusCode != nil {
             map["HttpStatusCode"] = self.httpStatusCode!
+        }
+        if self.initCheckpoint != nil {
+            map["InitCheckpoint"] = self.initCheckpoint!
         }
         if self.jobType != nil {
             map["JobType"] = self.jobType!
@@ -19830,6 +19835,9 @@ public class DescribeDtsJobDetailResponseBody : Tea.TeaModel {
         }
         if let value = dict["HttpStatusCode"] as? Int32 {
             self.httpStatusCode = value
+        }
+        if let value = dict["InitCheckpoint"] as? String {
+            self.initCheckpoint = value
         }
         if let value = dict["JobType"] as? String {
             self.jobType = value
