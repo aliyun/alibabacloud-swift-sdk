@@ -11551,6 +11551,10 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.chargeType)) {
             body["ChargeType"] = request.chargeType ?? "";
         }
+        var bodyFlat: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.dataDiskList)) {
+            bodyFlat["DataDiskList"] = request.dataDiskList ?? [];
+        }
         if (!TeaUtils.Client.isUnset(request.defaultLanguage)) {
             body["DefaultLanguage"] = request.defaultLanguage ?? "";
         }
@@ -11572,7 +11576,6 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.postPaidAfterUsedUp)) {
             body["PostPaidAfterUsedUp"] = request.postPaidAfterUsedUp!;
         }
-        var bodyFlat: [String: Any] = [:]
         if (!TeaUtils.Client.isUnset(request.regionConfigList)) {
             bodyFlat["RegionConfigList"] = request.regionConfigList ?? [];
         }

@@ -62933,6 +62933,44 @@ public class ModifyResourceCenterPolicyResponse : Tea.TeaModel {
 }
 
 public class ModifyTemplateRequest : Tea.TeaModel {
+    public class DataDiskList : Tea.TeaModel {
+        public var performanceLevel: String?
+
+        public var size: Int32?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.performanceLevel != nil {
+                map["PerformanceLevel"] = self.performanceLevel!
+            }
+            if self.size != nil {
+                map["Size"] = self.size!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["PerformanceLevel"] as? String {
+                self.performanceLevel = value
+            }
+            if let value = dict["Size"] as? Int32 {
+                self.size = value
+            }
+        }
+    }
     public class RegionConfigList : Tea.TeaModel {
         public var officeSiteId: String?
 
@@ -63093,6 +63131,8 @@ public class ModifyTemplateRequest : Tea.TeaModel {
 
     public var chargeType: String?
 
+    public var dataDiskList: [ModifyTemplateRequest.DataDiskList]?
+
     public var defaultLanguage: String?
 
     public var description_: String?
@@ -63149,6 +63189,13 @@ public class ModifyTemplateRequest : Tea.TeaModel {
         }
         if self.chargeType != nil {
             map["ChargeType"] = self.chargeType!
+        }
+        if self.dataDiskList != nil {
+            var tmp : [Any] = []
+            for k in self.dataDiskList! {
+                tmp.append(k.toMap())
+            }
+            map["DataDiskList"] = tmp
         }
         if self.defaultLanguage != nil {
             map["DefaultLanguage"] = self.defaultLanguage!
@@ -63226,6 +63273,19 @@ public class ModifyTemplateRequest : Tea.TeaModel {
         }
         if let value = dict["ChargeType"] as? String {
             self.chargeType = value
+        }
+        if let value = dict["DataDiskList"] as? [Any?] {
+            var tmp : [ModifyTemplateRequest.DataDiskList] = []
+            for v in value {
+                if v != nil {
+                    var model = ModifyTemplateRequest.DataDiskList()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.dataDiskList = tmp
         }
         if let value = dict["DefaultLanguage"] as? String {
             self.defaultLanguage = value
