@@ -869,6 +869,43 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func queryCallRecordListWithOptions(_ request: QueryCallRecordListRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> QueryCallRecordListResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.bizId)) {
+            query["BizId"] = request.bizId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.bizType)) {
+            query["BizType"] = request.bizType ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.skillType)) {
+            query["SkillType"] = request.skillType!;
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "QueryCallRecordList",
+            "version": "2020-03-06",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(QueryCallRecordListResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func queryCallRecordList(_ request: QueryCallRecordListRequest) async throws -> QueryCallRecordListResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await queryCallRecordListWithOptions(request as! QueryCallRecordListRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func queryInstanceWithOptions(_ request: QueryInstanceRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> QueryInstanceResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]

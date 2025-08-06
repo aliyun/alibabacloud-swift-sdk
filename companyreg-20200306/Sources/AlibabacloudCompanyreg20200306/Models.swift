@@ -4157,6 +4157,226 @@ public class QueryBagRemainingResponse : Tea.TeaModel {
     }
 }
 
+public class QueryCallRecordListRequest : Tea.TeaModel {
+    public var bizId: String?
+
+    public var bizType: String?
+
+    public var skillType: Int64?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.bizId != nil {
+            map["BizId"] = self.bizId!
+        }
+        if self.bizType != nil {
+            map["BizType"] = self.bizType!
+        }
+        if self.skillType != nil {
+            map["SkillType"] = self.skillType!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["BizId"] as? String {
+            self.bizId = value
+        }
+        if let value = dict["BizType"] as? String {
+            self.bizType = value
+        }
+        if let value = dict["SkillType"] as? Int64 {
+            self.skillType = value
+        }
+    }
+}
+
+public class QueryCallRecordListResponseBody : Tea.TeaModel {
+    public class Data : Tea.TeaModel {
+        public var duration: Int32?
+
+        public var signatureUrl: String?
+
+        public var startTime: Int64?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.duration != nil {
+                map["Duration"] = self.duration!
+            }
+            if self.signatureUrl != nil {
+                map["SignatureUrl"] = self.signatureUrl!
+            }
+            if self.startTime != nil {
+                map["StartTime"] = self.startTime!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["Duration"] as? Int32 {
+                self.duration = value
+            }
+            if let value = dict["SignatureUrl"] as? String {
+                self.signatureUrl = value
+            }
+            if let value = dict["StartTime"] as? Int64 {
+                self.startTime = value
+            }
+        }
+    }
+    public var data: [QueryCallRecordListResponseBody.Data]?
+
+    public var errorCode: String?
+
+    public var errorMsg: String?
+
+    public var requestId: String?
+
+    public var success: Bool?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.data != nil {
+            var tmp : [Any] = []
+            for k in self.data! {
+                tmp.append(k.toMap())
+            }
+            map["Data"] = tmp
+        }
+        if self.errorCode != nil {
+            map["ErrorCode"] = self.errorCode!
+        }
+        if self.errorMsg != nil {
+            map["ErrorMsg"] = self.errorMsg!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.success != nil {
+            map["Success"] = self.success!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["Data"] as? [Any?] {
+            var tmp : [QueryCallRecordListResponseBody.Data] = []
+            for v in value {
+                if v != nil {
+                    var model = QueryCallRecordListResponseBody.Data()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.data = tmp
+        }
+        if let value = dict["ErrorCode"] as? String {
+            self.errorCode = value
+        }
+        if let value = dict["ErrorMsg"] as? String {
+            self.errorMsg = value
+        }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+        if let value = dict["Success"] as? Bool {
+            self.success = value
+        }
+    }
+}
+
+public class QueryCallRecordListResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: QueryCallRecordListResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = QueryCallRecordListResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
 public class QueryInstanceRequest : Tea.TeaModel {
     public var bizType: String?
 
