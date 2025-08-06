@@ -4043,6 +4043,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.instanceId)) {
             query["InstanceId"] = request.instanceId ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.networkAccessEndpointId)) {
+            query["NetworkAccessEndpointId"] = request.networkAccessEndpointId ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.provisionPassword)) {
             query["ProvisionPassword"] = request.provisionPassword!;
         }

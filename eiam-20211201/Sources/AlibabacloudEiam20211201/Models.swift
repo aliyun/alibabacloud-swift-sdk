@@ -8569,6 +8569,8 @@ public class GetApplicationProvisioningConfigResponseBody : Tea.TeaModel {
 
         public var instanceId: String?
 
+        public var networkAccessEndpointId: String?
+
         public var provisionJwksEndpoint: String?
 
         public var provisionPassword: Bool?
@@ -8607,6 +8609,9 @@ public class GetApplicationProvisioningConfigResponseBody : Tea.TeaModel {
             if self.instanceId != nil {
                 map["InstanceId"] = self.instanceId!
             }
+            if self.networkAccessEndpointId != nil {
+                map["NetworkAccessEndpointId"] = self.networkAccessEndpointId!
+            }
             if self.provisionJwksEndpoint != nil {
                 map["ProvisionJwksEndpoint"] = self.provisionJwksEndpoint!
             }
@@ -8640,6 +8645,9 @@ public class GetApplicationProvisioningConfigResponseBody : Tea.TeaModel {
             }
             if let value = dict["InstanceId"] as? String {
                 self.instanceId = value
+            }
+            if let value = dict["NetworkAccessEndpointId"] as? String {
+                self.networkAccessEndpointId = value
             }
             if let value = dict["ProvisionJwksEndpoint"] as? String {
                 self.provisionJwksEndpoint = value
@@ -27815,6 +27823,8 @@ public class SetApplicationProvisioningConfigRequest : Tea.TeaModel {
 
     public var instanceId: String?
 
+    public var networkAccessEndpointId: String?
+
     public var provisionPassword: Bool?
 
     public var provisionProtocolType: String?
@@ -27846,6 +27856,9 @@ public class SetApplicationProvisioningConfigRequest : Tea.TeaModel {
         if self.instanceId != nil {
             map["InstanceId"] = self.instanceId!
         }
+        if self.networkAccessEndpointId != nil {
+            map["NetworkAccessEndpointId"] = self.networkAccessEndpointId!
+        }
         if self.provisionPassword != nil {
             map["ProvisionPassword"] = self.provisionPassword!
         }
@@ -27870,6 +27883,9 @@ public class SetApplicationProvisioningConfigRequest : Tea.TeaModel {
         }
         if let value = dict["InstanceId"] as? String {
             self.instanceId = value
+        }
+        if let value = dict["NetworkAccessEndpointId"] as? String {
+            self.networkAccessEndpointId = value
         }
         if let value = dict["ProvisionPassword"] as? Bool {
             self.provisionPassword = value
