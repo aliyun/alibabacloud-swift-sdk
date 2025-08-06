@@ -2331,6 +2331,8 @@ public class ListOnlineEvalTasksRequest : Tea.TeaModel {
 
     public var pageSize: Int32?
 
+    public var samplingMethod: String?
+
     public var sortBy: String?
 
     public var sortOrder: String?
@@ -2369,6 +2371,9 @@ public class ListOnlineEvalTasksRequest : Tea.TeaModel {
         if self.pageSize != nil {
             map["PageSize"] = self.pageSize!
         }
+        if self.samplingMethod != nil {
+            map["SamplingMethod"] = self.samplingMethod!
+        }
         if self.sortBy != nil {
             map["SortBy"] = self.sortBy!
         }
@@ -2400,6 +2405,9 @@ public class ListOnlineEvalTasksRequest : Tea.TeaModel {
         }
         if let value = dict["PageSize"] as? Int32 {
             self.pageSize = value
+        }
+        if let value = dict["SamplingMethod"] as? String {
+            self.samplingMethod = value
         }
         if let value = dict["SortBy"] as? String {
             self.sortBy = value

@@ -393,6 +393,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.pageSize)) {
             query["PageSize"] = request.pageSize!;
         }
+        if (!TeaUtils.Client.isUnset(request.samplingMethod)) {
+            query["SamplingMethod"] = request.samplingMethod ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.sortBy)) {
             query["SortBy"] = request.sortBy ?? "";
         }
