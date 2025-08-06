@@ -21507,6 +21507,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.clientToken)) {
             query["ClientToken"] = request.clientToken ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.clockOptions)) {
+            query["ClockOptions"] = request.clockOptions!;
+        }
         if (!TeaUtils.Client.isUnset(request.creditSpecification)) {
             query["CreditSpecification"] = request.creditSpecification ?? "";
         }
