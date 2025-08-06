@@ -764,6 +764,189 @@ public class CacheService : Tea.TeaModel {
     }
 }
 
+public class CapacityLock : Tea.TeaModel {
+    public var availableCount: Int32?
+
+    public var crsReservationId: String?
+
+    public var description_: String?
+
+    public var expireTime: String?
+
+    public var gmtCreated: String?
+
+    public var gmtModified: String?
+
+    public var id: String?
+
+    public var instanceType: String?
+
+    public var lastReconcileAttemptTime: String?
+
+    public var lastSyncTime: String?
+
+    public var lockProvider: String?
+
+    public var lockedCount: Int32?
+
+    public var operator_: String?
+
+    public var paymentType: String?
+
+    public var privatePoolId: String?
+
+    public var requestedCount: Int32?
+
+    public var status: String?
+
+    public var tenantId: String?
+
+    public var usedCount: Int32?
+
+    public var zoneId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.availableCount != nil {
+            map["availableCount"] = self.availableCount!
+        }
+        if self.crsReservationId != nil {
+            map["crsReservationId"] = self.crsReservationId!
+        }
+        if self.description_ != nil {
+            map["description"] = self.description_!
+        }
+        if self.expireTime != nil {
+            map["expireTime"] = self.expireTime!
+        }
+        if self.gmtCreated != nil {
+            map["gmtCreated"] = self.gmtCreated!
+        }
+        if self.gmtModified != nil {
+            map["gmtModified"] = self.gmtModified!
+        }
+        if self.id != nil {
+            map["id"] = self.id!
+        }
+        if self.instanceType != nil {
+            map["instanceType"] = self.instanceType!
+        }
+        if self.lastReconcileAttemptTime != nil {
+            map["lastReconcileAttemptTime"] = self.lastReconcileAttemptTime!
+        }
+        if self.lastSyncTime != nil {
+            map["lastSyncTime"] = self.lastSyncTime!
+        }
+        if self.lockProvider != nil {
+            map["lockProvider"] = self.lockProvider!
+        }
+        if self.lockedCount != nil {
+            map["lockedCount"] = self.lockedCount!
+        }
+        if self.operator_ != nil {
+            map["operator"] = self.operator_!
+        }
+        if self.paymentType != nil {
+            map["paymentType"] = self.paymentType!
+        }
+        if self.privatePoolId != nil {
+            map["privatePoolId"] = self.privatePoolId!
+        }
+        if self.requestedCount != nil {
+            map["requestedCount"] = self.requestedCount!
+        }
+        if self.status != nil {
+            map["status"] = self.status!
+        }
+        if self.tenantId != nil {
+            map["tenantId"] = self.tenantId!
+        }
+        if self.usedCount != nil {
+            map["usedCount"] = self.usedCount!
+        }
+        if self.zoneId != nil {
+            map["zoneId"] = self.zoneId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["availableCount"] as? Int32 {
+            self.availableCount = value
+        }
+        if let value = dict["crsReservationId"] as? String {
+            self.crsReservationId = value
+        }
+        if let value = dict["description"] as? String {
+            self.description_ = value
+        }
+        if let value = dict["expireTime"] as? String {
+            self.expireTime = value
+        }
+        if let value = dict["gmtCreated"] as? String {
+            self.gmtCreated = value
+        }
+        if let value = dict["gmtModified"] as? String {
+            self.gmtModified = value
+        }
+        if let value = dict["id"] as? String {
+            self.id = value
+        }
+        if let value = dict["instanceType"] as? String {
+            self.instanceType = value
+        }
+        if let value = dict["lastReconcileAttemptTime"] as? String {
+            self.lastReconcileAttemptTime = value
+        }
+        if let value = dict["lastSyncTime"] as? String {
+            self.lastSyncTime = value
+        }
+        if let value = dict["lockProvider"] as? String {
+            self.lockProvider = value
+        }
+        if let value = dict["lockedCount"] as? Int32 {
+            self.lockedCount = value
+        }
+        if let value = dict["operator"] as? String {
+            self.operator_ = value
+        }
+        if let value = dict["paymentType"] as? String {
+            self.paymentType = value
+        }
+        if let value = dict["privatePoolId"] as? String {
+            self.privatePoolId = value
+        }
+        if let value = dict["requestedCount"] as? Int32 {
+            self.requestedCount = value
+        }
+        if let value = dict["status"] as? String {
+            self.status = value
+        }
+        if let value = dict["tenantId"] as? String {
+            self.tenantId = value
+        }
+        if let value = dict["usedCount"] as? Int32 {
+            self.usedCount = value
+        }
+        if let value = dict["zoneId"] as? String {
+            self.zoneId = value
+        }
+    }
+}
+
 public class Channel : Tea.TeaModel {
     public var description_: String?
 
@@ -3894,6 +4077,8 @@ public class QuotaConfig : Tea.TeaModel {
 
     public var supportRDMA: Bool?
 
+    public var useCase: String?
+
     public var userVpc: UserVpc?
 
     public override init() {
@@ -3962,6 +4147,9 @@ public class QuotaConfig : Tea.TeaModel {
         }
         if self.supportRDMA != nil {
             map["SupportRDMA"] = self.supportRDMA!
+        }
+        if self.useCase != nil {
+            map["UseCase"] = self.useCase!
         }
         if self.userVpc != nil {
             map["UserVpc"] = self.userVpc?.toMap()
@@ -4034,6 +4222,9 @@ public class QuotaConfig : Tea.TeaModel {
         }
         if let value = dict["SupportRDMA"] as? Bool {
             self.supportRDMA = value
+        }
+        if let value = dict["UseCase"] as? String {
+            self.useCase = value
         }
         if let value = dict["UserVpc"] as? [String: Any?] {
             var model = UserVpc()
@@ -14276,6 +14467,8 @@ public class ListNodesRequest : Tea.TeaModel {
 
     public var pageSize: Int32?
 
+    public var paymentType: String?
+
     public var quotaId: String?
 
     public var reasonCodes: String?
@@ -14342,6 +14535,9 @@ public class ListNodesRequest : Tea.TeaModel {
         if self.pageSize != nil {
             map["PageSize"] = self.pageSize!
         }
+        if self.paymentType != nil {
+            map["PaymentType"] = self.paymentType!
+        }
         if self.quotaId != nil {
             map["QuotaId"] = self.quotaId!
         }
@@ -14403,6 +14599,9 @@ public class ListNodesRequest : Tea.TeaModel {
         }
         if let value = dict["PageSize"] as? Int32 {
             self.pageSize = value
+        }
+        if let value = dict["PaymentType"] as? String {
+            self.paymentType = value
         }
         if let value = dict["QuotaId"] as? String {
             self.quotaId = value

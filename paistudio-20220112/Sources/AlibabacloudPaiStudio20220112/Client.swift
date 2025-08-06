@@ -1266,6 +1266,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.pageSize)) {
             query["PageSize"] = request.pageSize!;
         }
+        if (!TeaUtils.Client.isUnset(request.paymentType)) {
+            query["PaymentType"] = request.paymentType ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.quotaId)) {
             query["QuotaId"] = request.quotaId ?? "";
         }
