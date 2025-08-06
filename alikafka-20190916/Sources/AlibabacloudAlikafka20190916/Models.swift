@@ -8247,6 +8247,104 @@ public class GetInstanceListResponseBody : Tea.TeaModel {
                     }
                 }
             }
+            public class ConfluentInstanceComponents : Tea.TeaModel {
+                public class ConfluentInstanceComponentVO : Tea.TeaModel {
+                    public var componentType: String?
+
+                    public var deployModule: String?
+
+                    public var pubEndpoint: String?
+
+                    public var vpcEndpoint: String?
+
+                    public override init() {
+                        super.init()
+                    }
+
+                    public init(_ dict: [String: Any]) {
+                        super.init()
+                        self.fromMap(dict)
+                    }
+
+                    public override func validate() throws -> Void {
+                    }
+
+                    public override func toMap() -> [String : Any] {
+                        var map = super.toMap()
+                        if self.componentType != nil {
+                            map["ComponentType"] = self.componentType!
+                        }
+                        if self.deployModule != nil {
+                            map["DeployModule"] = self.deployModule!
+                        }
+                        if self.pubEndpoint != nil {
+                            map["PubEndpoint"] = self.pubEndpoint!
+                        }
+                        if self.vpcEndpoint != nil {
+                            map["VpcEndpoint"] = self.vpcEndpoint!
+                        }
+                        return map
+                    }
+
+                    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                        guard let dict else { return }
+                        if let value = dict["ComponentType"] as? String {
+                            self.componentType = value
+                        }
+                        if let value = dict["DeployModule"] as? String {
+                            self.deployModule = value
+                        }
+                        if let value = dict["PubEndpoint"] as? String {
+                            self.pubEndpoint = value
+                        }
+                        if let value = dict["VpcEndpoint"] as? String {
+                            self.vpcEndpoint = value
+                        }
+                    }
+                }
+                public var confluentInstanceComponentVO: [GetInstanceListResponseBody.InstanceList.InstanceVO.ConfluentInstanceComponents.ConfluentInstanceComponentVO]?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.confluentInstanceComponentVO != nil {
+                        var tmp : [Any] = []
+                        for k in self.confluentInstanceComponentVO! {
+                            tmp.append(k.toMap())
+                        }
+                        map["ConfluentInstanceComponentVO"] = tmp
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                    guard let dict else { return }
+                    if let value = dict["ConfluentInstanceComponentVO"] as? [Any?] {
+                        var tmp : [GetInstanceListResponseBody.InstanceList.InstanceVO.ConfluentInstanceComponents.ConfluentInstanceComponentVO] = []
+                        for v in value {
+                            if v != nil {
+                                var model = GetInstanceListResponseBody.InstanceList.InstanceVO.ConfluentInstanceComponents.ConfluentInstanceComponentVO()
+                                if v != nil {
+                                    model.fromMap(v as? [String: Any?])
+                                }
+                                tmp.append(model)
+                            }
+                        }
+                        self.confluentInstanceComponentVO = tmp
+                    }
+                }
+            }
             public class Tags : Tea.TeaModel {
                 public class TagVO : Tea.TeaModel {
                     public var key: String?
@@ -8399,6 +8497,8 @@ public class GetInstanceListResponseBody : Tea.TeaModel {
 
             public var confluentConfig: GetInstanceListResponseBody.InstanceList.InstanceVO.ConfluentConfig?
 
+            public var confluentInstanceComponents: GetInstanceListResponseBody.InstanceList.InstanceVO.ConfluentInstanceComponents?
+
             public var createTime: Int64?
 
             public var defaultPartitionNum: Int32?
@@ -8500,6 +8600,7 @@ public class GetInstanceListResponseBody : Tea.TeaModel {
 
             public override func validate() throws -> Void {
                 try self.confluentConfig?.validate()
+                try self.confluentInstanceComponents?.validate()
                 try self.tags?.validate()
                 try self.upgradeServiceDetailInfo?.validate()
                 try self.vSwitchIds?.validate()
@@ -8521,6 +8622,9 @@ public class GetInstanceListResponseBody : Tea.TeaModel {
                 }
                 if self.confluentConfig != nil {
                     map["ConfluentConfig"] = self.confluentConfig?.toMap()
+                }
+                if self.confluentInstanceComponents != nil {
+                    map["ConfluentInstanceComponents"] = self.confluentInstanceComponents?.toMap()
                 }
                 if self.createTime != nil {
                     map["CreateTime"] = self.createTime!
@@ -8678,6 +8782,11 @@ public class GetInstanceListResponseBody : Tea.TeaModel {
                     var model = GetInstanceListResponseBody.InstanceList.InstanceVO.ConfluentConfig()
                     model.fromMap(value)
                     self.confluentConfig = model
+                }
+                if let value = dict["ConfluentInstanceComponents"] as? [String: Any?] {
+                    var model = GetInstanceListResponseBody.InstanceList.InstanceVO.ConfluentInstanceComponents()
+                    model.fromMap(value)
+                    self.confluentInstanceComponents = model
                 }
                 if let value = dict["CreateTime"] as? Int64 {
                     self.createTime = value
