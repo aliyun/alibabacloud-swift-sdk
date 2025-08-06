@@ -1890,6 +1890,46 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func updateEventStreamingBusinessOptionWithOptions(_ request: UpdateEventStreamingBusinessOptionRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> UpdateEventStreamingBusinessOptionResponse {
+        try TeaUtils.Client.validateModel(request)
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.businessMode)) {
+            body["BusinessMode"] = request.businessMode ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.eventStreamingName)) {
+            body["EventStreamingName"] = request.eventStreamingName ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.maxCapacityUnitCount)) {
+            body["MaxCapacityUnitCount"] = request.maxCapacityUnitCount!;
+        }
+        if (!TeaUtils.Client.isUnset(request.minCapacityUnitCount)) {
+            body["MinCapacityUnitCount"] = request.minCapacityUnitCount!;
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "UpdateEventStreamingBusinessOption",
+            "version": "2020-04-01",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(UpdateEventStreamingBusinessOptionResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func updateEventStreamingBusinessOption(_ request: UpdateEventStreamingBusinessOptionRequest) async throws -> UpdateEventStreamingBusinessOptionResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await updateEventStreamingBusinessOptionWithOptions(request as! UpdateEventStreamingBusinessOptionRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func updateRuleWithOptions(_ request: UpdateRuleRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> UpdateRuleResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
