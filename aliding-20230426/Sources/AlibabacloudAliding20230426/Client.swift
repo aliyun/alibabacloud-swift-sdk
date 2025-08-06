@@ -3400,6 +3400,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(tmpReq.participantIds)) {
             request.participantIdsShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.participantIds, "participantIds", "json")
         }
+        if (!TeaUtils.Client.isUnset(tmpReq.remindNotifyConfigs)) {
+            request.remindNotifyConfigsShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.remindNotifyConfigs, "remindNotifyConfigs", "json")
+        }
         var query: [String: Any] = [:]
         if (!TeaUtils.Client.isUnset(request.operatorId)) {
             query["operatorId"] = request.operatorId ?? "";
@@ -3440,6 +3443,12 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.priority)) {
             body["priority"] = request.priority!;
+        }
+        if (!TeaUtils.Client.isUnset(request.remindNotifyConfigsShrink)) {
+            body["remindNotifyConfigs"] = request.remindNotifyConfigsShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.reminderTimeStamp)) {
+            body["reminderTimeStamp"] = request.reminderTimeStamp!;
         }
         if (!TeaUtils.Client.isUnset(request.sourceId)) {
             body["sourceId"] = request.sourceId ?? "";
@@ -5433,6 +5442,59 @@ open class Client : AlibabacloudOpenApi.Client {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         var headers: GetAssistantCapabilityHeaders = GetAssistantCapabilityHeaders([:])
         return try await getAssistantCapabilityWithOptions(request as! GetAssistantCapabilityRequest, headers as! GetAssistantCapabilityHeaders, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getCardTemplateWithOptions(_ tmpReq: GetCardTemplateRequest, _ tmpHeader: GetCardTemplateHeaders, _ runtime: TeaUtils.RuntimeOptions) async throws -> GetCardTemplateResponse {
+        try TeaUtils.Client.validateModel(tmpReq)
+        var request: GetCardTemplateShrinkRequest = GetCardTemplateShrinkRequest([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        var headers: GetCardTemplateShrinkHeaders = GetCardTemplateShrinkHeaders([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpHeader, headers)
+        if (!TeaUtils.Client.isUnset(tmpHeader.accountContext)) {
+            headers.accountContextShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpHeader.accountContext, "AccountContext", "json")
+        }
+        if (!TeaUtils.Client.isUnset(tmpReq.tenantContext)) {
+            request.tenantContextShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.tenantContext, "TenantContext", "json")
+        }
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.templateId)) {
+            body["TemplateId"] = request.templateId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.tenantContextShrink)) {
+            body["TenantContext"] = request.tenantContextShrink ?? "";
+        }
+        var realHeaders: [String: String] = [:]
+        if (!TeaUtils.Client.isUnset(headers.commonHeaders)) {
+            realHeaders = headers.commonHeaders ?? [:]
+        }
+        if (!TeaUtils.Client.isUnset(headers.accountContextShrink)) {
+            realHeaders["AccountContext"] = TeaUtils.Client.toJSONString(headers.accountContextShrink);
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": realHeaders as! [String: String],
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "GetCardTemplate",
+            "version": "2023-04-26",
+            "protocol": "HTTPS",
+            "pathname": "/dingtalk/v1/card/getCardTemplate",
+            "method": "POST",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(GetCardTemplateResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getCardTemplate(_ request: GetCardTemplateRequest) async throws -> GetCardTemplateResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: GetCardTemplateHeaders = GetCardTemplateHeaders([:])
+        return try await getCardTemplateWithOptions(request as! GetCardTemplateRequest, headers as! GetCardTemplateHeaders, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
