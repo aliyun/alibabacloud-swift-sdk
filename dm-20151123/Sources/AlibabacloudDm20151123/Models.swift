@@ -2116,6 +2116,8 @@ public class DedicatedIpListResponseBody : Tea.TeaModel {
 
         public var warmupType: String?
 
+        public var zoneId: String?
+
         public override init() {
             super.init()
         }
@@ -2161,6 +2163,9 @@ public class DedicatedIpListResponseBody : Tea.TeaModel {
             if self.warmupType != nil {
                 map["WarmupType"] = self.warmupType!
             }
+            if self.zoneId != nil {
+                map["ZoneId"] = self.zoneId!
+            }
             return map
         }
 
@@ -2197,6 +2202,9 @@ public class DedicatedIpListResponseBody : Tea.TeaModel {
             }
             if let value = dict["WarmupType"] as? String {
                 self.warmupType = value
+            }
+            if let value = dict["ZoneId"] as? String {
+                self.zoneId = value
             }
         }
     }
@@ -2340,6 +2348,8 @@ public class DedicatedIpNonePoolListResponseBody : Tea.TeaModel {
 
         public var ip: String?
 
+        public var zoneId: String?
+
         public override init() {
             super.init()
         }
@@ -2360,6 +2370,9 @@ public class DedicatedIpNonePoolListResponseBody : Tea.TeaModel {
             if self.ip != nil {
                 map["Ip"] = self.ip!
             }
+            if self.zoneId != nil {
+                map["ZoneId"] = self.zoneId!
+            }
             return map
         }
 
@@ -2370,6 +2383,9 @@ public class DedicatedIpNonePoolListResponseBody : Tea.TeaModel {
             }
             if let value = dict["Ip"] as? String {
                 self.ip = value
+            }
+            if let value = dict["ZoneId"] as? String {
+                self.zoneId = value
             }
         }
     }
@@ -2769,6 +2785,8 @@ public class DedicatedIpPoolListResponseBody : Tea.TeaModel {
 
             public var ip: String?
 
+            public var zoneId: String?
+
             public override init() {
                 super.init()
             }
@@ -2789,6 +2807,9 @@ public class DedicatedIpPoolListResponseBody : Tea.TeaModel {
                 if self.ip != nil {
                     map["Ip"] = self.ip!
                 }
+                if self.zoneId != nil {
+                    map["ZoneId"] = self.zoneId!
+                }
                 return map
             }
 
@@ -2799,6 +2820,9 @@ public class DedicatedIpPoolListResponseBody : Tea.TeaModel {
                 }
                 if let value = dict["Ip"] as? String {
                     self.ip = value
+                }
+                if let value = dict["ZoneId"] as? String {
+                    self.zoneId = value
                 }
             }
         }
