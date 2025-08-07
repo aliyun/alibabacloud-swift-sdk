@@ -9185,7 +9185,47 @@ public class GetMiningTaskResultRequest : Tea.TeaModel {
 
 public class GetMiningTaskResultResponseBody : Tea.TeaModel {
     public class Data : Tea.TeaModel {
+        public class FilePathList : Tea.TeaModel {
+            public var fileType: String?
+
+            public var fileUrl: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.fileType != nil {
+                    map["FileType"] = self.fileType!
+                }
+                if self.fileUrl != nil {
+                    map["FileUrl"] = self.fileUrl!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["FileType"] as? String {
+                    self.fileType = value
+                }
+                if let value = dict["FileUrl"] as? String {
+                    self.fileUrl = value
+                }
+            }
+        }
         public var filePath: String?
+
+        public var filePathList: [GetMiningTaskResultResponseBody.Data.FilePathList]?
 
         public var filePathMd: String?
 
@@ -9210,6 +9250,13 @@ public class GetMiningTaskResultResponseBody : Tea.TeaModel {
             if self.filePath != nil {
                 map["FilePath"] = self.filePath!
             }
+            if self.filePathList != nil {
+                var tmp : [Any] = []
+                for k in self.filePathList! {
+                    tmp.append(k.toMap())
+                }
+                map["FilePathList"] = tmp
+            }
             if self.filePathMd != nil {
                 map["FilePathMd"] = self.filePathMd!
             }
@@ -9226,6 +9273,19 @@ public class GetMiningTaskResultResponseBody : Tea.TeaModel {
             guard let dict else { return }
             if let value = dict["FilePath"] as? String {
                 self.filePath = value
+            }
+            if let value = dict["FilePathList"] as? [Any?] {
+                var tmp : [GetMiningTaskResultResponseBody.Data.FilePathList] = []
+                for v in value {
+                    if v != nil {
+                        var model = GetMiningTaskResultResponseBody.Data.FilePathList()
+                        if v != nil {
+                            model.fromMap(v as? [String: Any?])
+                        }
+                        tmp.append(model)
+                    }
+                }
+                self.filePathList = tmp
             }
             if let value = dict["FilePathMd"] as? String {
                 self.filePathMd = value
