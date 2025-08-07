@@ -4206,11 +4206,15 @@ public class QueryCallRecordListRequest : Tea.TeaModel {
 
 public class QueryCallRecordListResponseBody : Tea.TeaModel {
     public class Data : Tea.TeaModel {
+        public var contactDisposition: String?
+
         public var duration: Int32?
 
         public var signatureUrl: String?
 
         public var startTime: Int64?
+
+        public var taskId: String?
 
         public override init() {
             super.init()
@@ -4226,6 +4230,9 @@ public class QueryCallRecordListResponseBody : Tea.TeaModel {
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
+            if self.contactDisposition != nil {
+                map["ContactDisposition"] = self.contactDisposition!
+            }
             if self.duration != nil {
                 map["Duration"] = self.duration!
             }
@@ -4235,11 +4242,17 @@ public class QueryCallRecordListResponseBody : Tea.TeaModel {
             if self.startTime != nil {
                 map["StartTime"] = self.startTime!
             }
+            if self.taskId != nil {
+                map["taskId"] = self.taskId!
+            }
             return map
         }
 
         public override func fromMap(_ dict: [String: Any?]?) -> Void {
             guard let dict else { return }
+            if let value = dict["ContactDisposition"] as? String {
+                self.contactDisposition = value
+            }
             if let value = dict["Duration"] as? Int32 {
                 self.duration = value
             }
@@ -4248,6 +4261,9 @@ public class QueryCallRecordListResponseBody : Tea.TeaModel {
             }
             if let value = dict["StartTime"] as? Int64 {
                 self.startTime = value
+            }
+            if let value = dict["taskId"] as? String {
+                self.taskId = value
             }
         }
     }
