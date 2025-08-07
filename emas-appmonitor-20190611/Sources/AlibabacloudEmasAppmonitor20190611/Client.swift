@@ -39,6 +39,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.did)) {
             body["Did"] = request.did ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.digestHash)) {
+            body["DigestHash"] = request.digestHash ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.force)) {
             body["Force"] = request.force!;
         }

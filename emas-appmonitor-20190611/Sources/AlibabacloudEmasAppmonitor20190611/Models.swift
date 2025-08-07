@@ -433,6 +433,8 @@ public class GetErrorRequest : Tea.TeaModel {
 
     public var did: String?
 
+    public var digestHash: String?
+
     public var force: Bool?
 
     public var os: String?
@@ -465,6 +467,9 @@ public class GetErrorRequest : Tea.TeaModel {
         if self.did != nil {
             map["Did"] = self.did!
         }
+        if self.digestHash != nil {
+            map["DigestHash"] = self.digestHash!
+        }
         if self.force != nil {
             map["Force"] = self.force!
         }
@@ -490,6 +495,9 @@ public class GetErrorRequest : Tea.TeaModel {
         }
         if let value = dict["Did"] as? String {
             self.did = value
+        }
+        if let value = dict["DigestHash"] as? String {
+            self.digestHash = value
         }
         if let value = dict["Force"] as? Bool {
             self.force = value
@@ -748,6 +756,8 @@ public class GetErrorResponseBody : Tea.TeaModel {
         public var stack: String?
 
         public var status: String?
+
+        public var structuredStack: String?
 
         public var summary: String?
 
@@ -1166,6 +1176,9 @@ public class GetErrorResponseBody : Tea.TeaModel {
             }
             if self.status != nil {
                 map["Status"] = self.status!
+            }
+            if self.structuredStack != nil {
+                map["StructuredStack"] = self.structuredStack!
             }
             if self.summary != nil {
                 map["Summary"] = self.summary!
@@ -1594,6 +1607,9 @@ public class GetErrorResponseBody : Tea.TeaModel {
             }
             if let value = dict["Status"] as? String {
                 self.status = value
+            }
+            if let value = dict["StructuredStack"] as? String {
+                self.structuredStack = value
             }
             if let value = dict["Summary"] as? String {
                 self.summary = value
@@ -2113,6 +2129,8 @@ public class GetErrorsResponseBody : Tea.TeaModel {
 
             public var did: String?
 
+            public var digestHash: String?
+
             public var utdid: String?
 
             public var uuid: String?
@@ -2137,6 +2155,9 @@ public class GetErrorsResponseBody : Tea.TeaModel {
                 if self.did != nil {
                     map["Did"] = self.did!
                 }
+                if self.digestHash != nil {
+                    map["DigestHash"] = self.digestHash!
+                }
                 if self.utdid != nil {
                     map["Utdid"] = self.utdid!
                 }
@@ -2153,6 +2174,9 @@ public class GetErrorsResponseBody : Tea.TeaModel {
                 }
                 if let value = dict["Did"] as? String {
                     self.did = value
+                }
+                if let value = dict["DigestHash"] as? String {
+                    self.digestHash = value
                 }
                 if let value = dict["Utdid"] as? String {
                     self.utdid = value
@@ -2677,6 +2701,14 @@ public class GetIssueResponseBody : Tea.TeaModel {
     public class Model : Tea.TeaModel {
         public var affectedVersions: [String]?
 
+        public var allocSizeMax: Int64?
+
+        public var allocSizePct50: Int64?
+
+        public var allocSizePct70: Int64?
+
+        public var allocSizePct90: Int64?
+
         public var cruxStack: String?
 
         public var digestHash: String?
@@ -2706,6 +2738,8 @@ public class GetIssueResponseBody : Tea.TeaModel {
         public var errorRateGrowthRate: Double?
 
         public var errorType: String?
+
+        public var eventTime: Int64?
 
         public var firstVersion: String?
 
@@ -2743,6 +2777,18 @@ public class GetIssueResponseBody : Tea.TeaModel {
             var map = super.toMap()
             if self.affectedVersions != nil {
                 map["AffectedVersions"] = self.affectedVersions!
+            }
+            if self.allocSizeMax != nil {
+                map["AllocSizeMax"] = self.allocSizeMax!
+            }
+            if self.allocSizePct50 != nil {
+                map["AllocSizePct50"] = self.allocSizePct50!
+            }
+            if self.allocSizePct70 != nil {
+                map["AllocSizePct70"] = self.allocSizePct70!
+            }
+            if self.allocSizePct90 != nil {
+                map["AllocSizePct90"] = self.allocSizePct90!
             }
             if self.cruxStack != nil {
                 map["CruxStack"] = self.cruxStack!
@@ -2789,6 +2835,9 @@ public class GetIssueResponseBody : Tea.TeaModel {
             if self.errorType != nil {
                 map["ErrorType"] = self.errorType!
             }
+            if self.eventTime != nil {
+                map["EventTime"] = self.eventTime!
+            }
             if self.firstVersion != nil {
                 map["FirstVersion"] = self.firstVersion!
             }
@@ -2826,6 +2875,18 @@ public class GetIssueResponseBody : Tea.TeaModel {
             guard let dict else { return }
             if let value = dict["AffectedVersions"] as? [String] {
                 self.affectedVersions = value
+            }
+            if let value = dict["AllocSizeMax"] as? Int64 {
+                self.allocSizeMax = value
+            }
+            if let value = dict["AllocSizePct50"] as? Int64 {
+                self.allocSizePct50 = value
+            }
+            if let value = dict["AllocSizePct70"] as? Int64 {
+                self.allocSizePct70 = value
+            }
+            if let value = dict["AllocSizePct90"] as? Int64 {
+                self.allocSizePct90 = value
             }
             if let value = dict["CruxStack"] as? String {
                 self.cruxStack = value
@@ -2871,6 +2932,9 @@ public class GetIssueResponseBody : Tea.TeaModel {
             }
             if let value = dict["ErrorType"] as? String {
                 self.errorType = value
+            }
+            if let value = dict["EventTime"] as? Int64 {
+                self.eventTime = value
             }
             if let value = dict["FirstVersion"] as? String {
                 self.firstVersion = value
@@ -3425,6 +3489,14 @@ public class GetIssuesResponseBody : Tea.TeaModel {
         public class Items : Tea.TeaModel {
             public var affectedUserCount: Int32?
 
+            public var allocSizeMax: Int64?
+
+            public var allocSizePct50: Int64?
+
+            public var allocSizePct70: Int64?
+
+            public var allocSizePct90: Int64?
+
             public var digestHash: String?
 
             public var domScore: String?
@@ -3473,6 +3545,18 @@ public class GetIssuesResponseBody : Tea.TeaModel {
                 var map = super.toMap()
                 if self.affectedUserCount != nil {
                     map["AffectedUserCount"] = self.affectedUserCount!
+                }
+                if self.allocSizeMax != nil {
+                    map["AllocSizeMax"] = self.allocSizeMax!
+                }
+                if self.allocSizePct50 != nil {
+                    map["AllocSizePct50"] = self.allocSizePct50!
+                }
+                if self.allocSizePct70 != nil {
+                    map["AllocSizePct70"] = self.allocSizePct70!
+                }
+                if self.allocSizePct90 != nil {
+                    map["AllocSizePct90"] = self.allocSizePct90!
                 }
                 if self.digestHash != nil {
                     map["DigestHash"] = self.digestHash!
@@ -3529,6 +3613,18 @@ public class GetIssuesResponseBody : Tea.TeaModel {
                 guard let dict else { return }
                 if let value = dict["AffectedUserCount"] as? Int32 {
                     self.affectedUserCount = value
+                }
+                if let value = dict["AllocSizeMax"] as? Int64 {
+                    self.allocSizeMax = value
+                }
+                if let value = dict["AllocSizePct50"] as? Int64 {
+                    self.allocSizePct50 = value
+                }
+                if let value = dict["AllocSizePct70"] as? Int64 {
+                    self.allocSizePct70 = value
+                }
+                if let value = dict["AllocSizePct90"] as? Int64 {
+                    self.allocSizePct90 = value
                 }
                 if let value = dict["DigestHash"] as? String {
                     self.digestHash = value
