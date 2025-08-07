@@ -2009,6 +2009,8 @@ public class ReadMessageListResponseBody : Tea.TeaModel {
 
             public var title: String?
 
+            public var titleh: String?
+
             public override init() {
                 super.init()
             }
@@ -2059,6 +2061,9 @@ public class ReadMessageListResponseBody : Tea.TeaModel {
                 if self.title != nil {
                     map["Title"] = self.title!
                 }
+                if self.titleh != nil {
+                    map["Titleh"] = self.titleh!
+                }
                 return map
             }
 
@@ -2099,6 +2104,9 @@ public class ReadMessageListResponseBody : Tea.TeaModel {
                 }
                 if let value = dict["Title"] as? String {
                     self.title = value
+                }
+                if let value = dict["Titleh"] as? String {
+                    self.titleh = value
                 }
             }
         }
@@ -2785,6 +2793,8 @@ public class ReadNumGroupTotalRequest : Tea.TeaModel {
 
     public var tenantCode: String?
 
+    public var title: String?
+
     public var uidType: String?
 
     public override init() {
@@ -2825,6 +2835,9 @@ public class ReadNumGroupTotalRequest : Tea.TeaModel {
         if self.tenantCode != nil {
             map["TenantCode"] = self.tenantCode!
         }
+        if self.title != nil {
+            map["Title"] = self.title!
+        }
         if self.uidType != nil {
             map["UidType"] = self.uidType!
         }
@@ -2856,6 +2869,9 @@ public class ReadNumGroupTotalRequest : Tea.TeaModel {
         }
         if let value = dict["TenantCode"] as? String {
             self.tenantCode = value
+        }
+        if let value = dict["Title"] as? String {
+            self.title = value
         }
         if let value = dict["UidType"] as? String {
             self.uidType = value
