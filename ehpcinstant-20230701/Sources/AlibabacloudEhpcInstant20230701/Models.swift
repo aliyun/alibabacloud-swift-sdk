@@ -4300,8 +4300,6 @@ public class GetJobResponseBody : Tea.TeaModel {
 
                         public var script: String?
 
-                        public var userName: String?
-
                         public override init() {
                             super.init()
                         }
@@ -4325,9 +4323,6 @@ public class GetJobResponseBody : Tea.TeaModel {
                             if self.script != nil {
                                 map["Script"] = self.script!
                             }
-                            if self.userName != nil {
-                                map["UserName"] = self.userName!
-                            }
                             return map
                         }
 
@@ -4341,9 +4336,6 @@ public class GetJobResponseBody : Tea.TeaModel {
                             }
                             if let value = dict["Script"] as? String {
                                 self.script = value
-                            }
-                            if let value = dict["UserName"] as? String {
-                                self.userName = value
                             }
                         }
                     }
@@ -5198,6 +5190,8 @@ public class ListExecutorsResponseBody : Tea.TeaModel {
 
             public var disks: [ListExecutorsResponseBody.Executors.Resource.Disks]?
 
+            public var instanceType: String?
+
             public var memory: Double?
 
             public override init() {
@@ -5224,6 +5218,9 @@ public class ListExecutorsResponseBody : Tea.TeaModel {
                     }
                     map["Disks"] = tmp
                 }
+                if self.instanceType != nil {
+                    map["InstanceType"] = self.instanceType!
+                }
                 if self.memory != nil {
                     map["Memory"] = self.memory!
                 }
@@ -5247,6 +5244,9 @@ public class ListExecutorsResponseBody : Tea.TeaModel {
                         }
                     }
                     self.disks = tmp
+                }
+                if let value = dict["InstanceType"] as? String {
+                    self.instanceType = value
                 }
                 if let value = dict["Memory"] as? Double {
                     self.memory = value
@@ -6109,9 +6109,13 @@ public class ListJobExecutorsResponseBody : Tea.TeaModel {
 
         public var pending: Int32?
 
+        public var restarting: Int32?
+
         public var running: Int32?
 
         public var succeeded: Int32?
+
+        public var suspended: Int32?
 
         public override init() {
             super.init()
@@ -6142,11 +6146,17 @@ public class ListJobExecutorsResponseBody : Tea.TeaModel {
             if self.pending != nil {
                 map["Pending"] = self.pending!
             }
+            if self.restarting != nil {
+                map["Restarting"] = self.restarting!
+            }
             if self.running != nil {
                 map["Running"] = self.running!
             }
             if self.succeeded != nil {
                 map["Succeeded"] = self.succeeded!
+            }
+            if self.suspended != nil {
+                map["Suspended"] = self.suspended!
             }
             return map
         }
@@ -6168,11 +6178,17 @@ public class ListJobExecutorsResponseBody : Tea.TeaModel {
             if let value = dict["Pending"] as? Int32 {
                 self.pending = value
             }
+            if let value = dict["Restarting"] as? Int32 {
+                self.restarting = value
+            }
             if let value = dict["Running"] as? Int32 {
                 self.running = value
             }
             if let value = dict["Succeeded"] as? Int32 {
                 self.succeeded = value
+            }
+            if let value = dict["Suspended"] as? Int32 {
+                self.suspended = value
             }
         }
     }
