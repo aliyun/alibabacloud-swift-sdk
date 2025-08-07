@@ -1138,6 +1138,8 @@ public class ScorePageItem : Tea.TeaModel {
 public class SearchCredits : Tea.TeaModel {
     public var genericTextSearch: Int32?
 
+    public var liteAdvancedTextSearch: Int32?
+
     public override init() {
         super.init()
     }
@@ -1155,6 +1157,9 @@ public class SearchCredits : Tea.TeaModel {
         if self.genericTextSearch != nil {
             map["genericTextSearch"] = self.genericTextSearch!
         }
+        if self.liteAdvancedTextSearch != nil {
+            map["liteAdvancedTextSearch"] = self.liteAdvancedTextSearch!
+        }
         return map
     }
 
@@ -1162,6 +1167,9 @@ public class SearchCredits : Tea.TeaModel {
         guard let dict else { return }
         if let value = dict["genericTextSearch"] as? Int32 {
             self.genericTextSearch = value
+        }
+        if let value = dict["liteAdvancedTextSearch"] as? Int32 {
+            self.liteAdvancedTextSearch = value
         }
     }
 }
@@ -1290,6 +1298,8 @@ public class UnifiedOriginalQuery : Tea.TeaModel {
 }
 
 public class UnifiedPageItem : Tea.TeaModel {
+    public var hostAuthorityScore: Double?
+
     public var hostLogo: String?
 
     public var hostname: String?
@@ -1326,6 +1336,9 @@ public class UnifiedPageItem : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.hostAuthorityScore != nil {
+            map["hostAuthorityScore"] = self.hostAuthorityScore!
+        }
         if self.hostLogo != nil {
             map["hostLogo"] = self.hostLogo!
         }
@@ -1364,6 +1377,9 @@ public class UnifiedPageItem : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["hostAuthorityScore"] as? Double {
+            self.hostAuthorityScore = value
+        }
         if let value = dict["hostLogo"] as? String {
             self.hostLogo = value
         }
@@ -1563,6 +1579,8 @@ public class UnifiedSearchInformation : Tea.TeaModel {
 }
 
 public class UnifiedSearchInput : Tea.TeaModel {
+    public var advancedParams: [String: Any]?
+
     public var category: String?
 
     public var contents: RequestContents?
@@ -1590,6 +1608,9 @@ public class UnifiedSearchInput : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.advancedParams != nil {
+            map["advancedParams"] = self.advancedParams!
+        }
         if self.category != nil {
             map["category"] = self.category!
         }
@@ -1613,6 +1634,9 @@ public class UnifiedSearchInput : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["advancedParams"] as? [String: Any] {
+            self.advancedParams = value
+        }
         if let value = dict["category"] as? String {
             self.category = value
         }
