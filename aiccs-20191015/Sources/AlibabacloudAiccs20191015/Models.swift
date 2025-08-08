@@ -32227,7 +32227,7 @@ public class QueryAiCallTaskPageResponseBody : Tea.TeaModel {
 
             public var callingCount: Int64?
 
-            public var completeRate: Double?
+            public var completeRate: String?
 
             public var concurrentCount: Int64?
 
@@ -32235,13 +32235,13 @@ public class QueryAiCallTaskPageResponseBody : Tea.TeaModel {
 
             public var dayCallCount: Int64?
 
-            public var dayConnectRate: Double?
+            public var dayConnectRate: String?
 
             public var dayImportCount: Int64?
 
             public var failedCount: Int64?
 
-            public var historyConnectRate: Double?
+            public var historyConnectRate: String?
 
             public var realStartTime: Int64?
 
@@ -32349,7 +32349,7 @@ public class QueryAiCallTaskPageResponseBody : Tea.TeaModel {
                 if let value = dict["CallingCount"] as? Int64 {
                     self.callingCount = value
                 }
-                if let value = dict["CompleteRate"] as? Double {
+                if let value = dict["CompleteRate"] as? String {
                     self.completeRate = value
                 }
                 if let value = dict["ConcurrentCount"] as? Int64 {
@@ -32361,7 +32361,7 @@ public class QueryAiCallTaskPageResponseBody : Tea.TeaModel {
                 if let value = dict["DayCallCount"] as? Int64 {
                     self.dayCallCount = value
                 }
-                if let value = dict["DayConnectRate"] as? Double {
+                if let value = dict["DayConnectRate"] as? String {
                     self.dayConnectRate = value
                 }
                 if let value = dict["DayImportCount"] as? Int64 {
@@ -32370,7 +32370,7 @@ public class QueryAiCallTaskPageResponseBody : Tea.TeaModel {
                 if let value = dict["FailedCount"] as? Int64 {
                     self.failedCount = value
                 }
-                if let value = dict["HistoryConnectRate"] as? Double {
+                if let value = dict["HistoryConnectRate"] as? String {
                     self.historyConnectRate = value
                 }
                 if let value = dict["RealStartTime"] as? Int64 {
