@@ -1763,6 +1763,8 @@ public class DescribePackageDeductionsResponseBody : Tea.TeaModel {
 
         public var endTime: String?
 
+        public var groupResourceType: String?
+
         public var instanceId: String?
 
         public var instanceState: String?
@@ -1815,6 +1817,9 @@ public class DescribePackageDeductionsResponseBody : Tea.TeaModel {
             }
             if self.endTime != nil {
                 map["EndTime"] = self.endTime!
+            }
+            if self.groupResourceType != nil {
+                map["GroupResourceType"] = self.groupResourceType!
             }
             if self.instanceId != nil {
                 map["InstanceId"] = self.instanceId!
@@ -1871,6 +1876,9 @@ public class DescribePackageDeductionsResponseBody : Tea.TeaModel {
             }
             if let value = dict["EndTime"] as? String {
                 self.endTime = value
+            }
+            if let value = dict["GroupResourceType"] as? String {
+                self.groupResourceType = value
             }
             if let value = dict["InstanceId"] as? String {
                 self.instanceId = value
