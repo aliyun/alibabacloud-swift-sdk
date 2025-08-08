@@ -531,6 +531,63 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getLinkageAttributesTemplateWithOptions(_ tmpReq: GetLinkageAttributesTemplateRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> GetLinkageAttributesTemplateResponse {
+        try TeaUtils.Client.validateModel(tmpReq)
+        var request: GetLinkageAttributesTemplateShrinkRequest = GetLinkageAttributesTemplateShrinkRequest([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.instances)) {
+            request.instancesShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.instances, "Instances", "json")
+        }
+        if (!TeaUtils.Client.isUnset(tmpReq.variables)) {
+            request.variablesShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.variables, "Variables", "json")
+        }
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.areaId)) {
+            body["AreaId"] = request.areaId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.instancesShrink)) {
+            body["Instances"] = request.instancesShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.maxResults)) {
+            body["MaxResults"] = request.maxResults!;
+        }
+        if (!TeaUtils.Client.isUnset(request.nextToken)) {
+            body["NextToken"] = request.nextToken ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.targetVariable)) {
+            body["TargetVariable"] = request.targetVariable ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.templateId)) {
+            body["TemplateId"] = request.templateId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.variablesShrink)) {
+            body["Variables"] = request.variablesShrink ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "GetLinkageAttributesTemplate",
+            "version": "2021-09-31",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(GetLinkageAttributesTemplateResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getLinkageAttributesTemplate(_ request: GetLinkageAttributesTemplateRequest) async throws -> GetLinkageAttributesTemplateResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await getLinkageAttributesTemplateWithOptions(request as! GetLinkageAttributesTemplateRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func getPotentialFailZonesWithOptions(_ request: GetPotentialFailZonesRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> GetPotentialFailZonesResponse {
         try TeaUtils.Client.validateModel(request)
         var body: [String: Any] = [:]
