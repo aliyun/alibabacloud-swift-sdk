@@ -961,6 +961,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func createNotificationConfigurationWithOptions(_ request: CreateNotificationConfigurationRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> CreateNotificationConfigurationResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.messageEncoding)) {
+            query["MessageEncoding"] = request.messageEncoding ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.notificationArn)) {
             query["NotificationArn"] = request.notificationArn ?? "";
         }
@@ -4291,6 +4294,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func modifyNotificationConfigurationWithOptions(_ request: ModifyNotificationConfigurationRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ModifyNotificationConfigurationResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.messageEncoding)) {
+            query["MessageEncoding"] = request.messageEncoding ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.notificationArn)) {
             query["NotificationArn"] = request.notificationArn ?? "";
         }

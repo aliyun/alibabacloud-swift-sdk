@@ -5443,6 +5443,8 @@ public class CreateLifecycleHookResponse : Tea.TeaModel {
 }
 
 public class CreateNotificationConfigurationRequest : Tea.TeaModel {
+    public var messageEncoding: String?
+
     public var notificationArn: String?
 
     public var notificationTypes: [String]?
@@ -5471,6 +5473,9 @@ public class CreateNotificationConfigurationRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.messageEncoding != nil {
+            map["MessageEncoding"] = self.messageEncoding!
+        }
         if self.notificationArn != nil {
             map["NotificationArn"] = self.notificationArn!
         }
@@ -5497,6 +5502,9 @@ public class CreateNotificationConfigurationRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["MessageEncoding"] as? String {
+            self.messageEncoding = value
+        }
         if let value = dict["NotificationArn"] as? String {
             self.notificationArn = value
         }
@@ -19142,6 +19150,8 @@ public class DescribeNotificationConfigurationsRequest : Tea.TeaModel {
 
 public class DescribeNotificationConfigurationsResponseBody : Tea.TeaModel {
     public class NotificationConfigurationModels : Tea.TeaModel {
+        public var messageEncoding: String?
+
         public var notificationArn: String?
 
         public var notificationTypes: [String]?
@@ -19164,6 +19174,9 @@ public class DescribeNotificationConfigurationsResponseBody : Tea.TeaModel {
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
+            if self.messageEncoding != nil {
+                map["MessageEncoding"] = self.messageEncoding!
+            }
             if self.notificationArn != nil {
                 map["NotificationArn"] = self.notificationArn!
             }
@@ -19181,6 +19194,9 @@ public class DescribeNotificationConfigurationsResponseBody : Tea.TeaModel {
 
         public override func fromMap(_ dict: [String: Any?]?) -> Void {
             guard let dict else { return }
+            if let value = dict["MessageEncoding"] as? String {
+                self.messageEncoding = value
+            }
             if let value = dict["NotificationArn"] as? String {
                 self.notificationArn = value
             }
@@ -33463,6 +33479,8 @@ public class ModifyLifecycleHookResponse : Tea.TeaModel {
 }
 
 public class ModifyNotificationConfigurationRequest : Tea.TeaModel {
+    public var messageEncoding: String?
+
     public var notificationArn: String?
 
     public var notificationTypes: [String]?
@@ -33491,6 +33509,9 @@ public class ModifyNotificationConfigurationRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.messageEncoding != nil {
+            map["MessageEncoding"] = self.messageEncoding!
+        }
         if self.notificationArn != nil {
             map["NotificationArn"] = self.notificationArn!
         }
@@ -33517,6 +33538,9 @@ public class ModifyNotificationConfigurationRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["MessageEncoding"] as? String {
+            self.messageEncoding = value
+        }
         if let value = dict["NotificationArn"] as? String {
             self.notificationArn = value
         }
