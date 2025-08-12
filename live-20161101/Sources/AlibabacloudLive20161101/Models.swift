@@ -48089,6 +48089,8 @@ public class DescribeLiveRecordNotifyRecordsResponseBody : Tea.TeaModel {
 
         public var notifyContent: String?
 
+        public var notifyResponse: String?
+
         public var notifyResult: String?
 
         public var notifyTime: String?
@@ -48125,6 +48127,9 @@ public class DescribeLiveRecordNotifyRecordsResponseBody : Tea.TeaModel {
             if self.notifyContent != nil {
                 map["NotifyContent"] = self.notifyContent!
             }
+            if self.notifyResponse != nil {
+                map["NotifyResponse"] = self.notifyResponse!
+            }
             if self.notifyResult != nil {
                 map["NotifyResult"] = self.notifyResult!
             }
@@ -48156,6 +48161,9 @@ public class DescribeLiveRecordNotifyRecordsResponseBody : Tea.TeaModel {
             }
             if let value = dict["NotifyContent"] as? String {
                 self.notifyContent = value
+            }
+            if let value = dict["NotifyResponse"] as? String {
+                self.notifyResponse = value
             }
             if let value = dict["NotifyResult"] as? String {
                 self.notifyResult = value
@@ -64819,11 +64827,59 @@ public class DescribeRtcCloudRecordingFilesRequest : Tea.TeaModel {
 public class DescribeRtcCloudRecordingFilesResponseBody : Tea.TeaModel {
     public class TaskInfo : Tea.TeaModel {
         public class RecordFileList : Tea.TeaModel {
+            public class VodMediaList : Tea.TeaModel {
+                public var mediaIds: [String]?
+
+                public var mergedIds: [String]?
+
+                public var stream: String?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.mediaIds != nil {
+                        map["MediaIds"] = self.mediaIds!
+                    }
+                    if self.mergedIds != nil {
+                        map["MergedIds"] = self.mergedIds!
+                    }
+                    if self.stream != nil {
+                        map["Stream"] = self.stream!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                    guard let dict else { return }
+                    if let value = dict["MediaIds"] as? [String] {
+                        self.mediaIds = value
+                    }
+                    if let value = dict["MergedIds"] as? [String] {
+                        self.mergedIds = value
+                    }
+                    if let value = dict["Stream"] as? String {
+                        self.stream = value
+                    }
+                }
+            }
             public var hlsFileList: [String]?
 
             public var mp3FileList: [String]?
 
             public var mp4FileList: [String]?
+
+            public var vodMediaList: [DescribeRtcCloudRecordingFilesResponseBody.TaskInfo.RecordFileList.VodMediaList]?
 
             public override init() {
                 super.init()
@@ -64848,6 +64904,13 @@ public class DescribeRtcCloudRecordingFilesResponseBody : Tea.TeaModel {
                 if self.mp4FileList != nil {
                     map["Mp4FileList"] = self.mp4FileList!
                 }
+                if self.vodMediaList != nil {
+                    var tmp : [Any] = []
+                    for k in self.vodMediaList! {
+                        tmp.append(k.toMap())
+                    }
+                    map["VodMediaList"] = tmp
+                }
                 return map
             }
 
@@ -64861,6 +64924,19 @@ public class DescribeRtcCloudRecordingFilesResponseBody : Tea.TeaModel {
                 }
                 if let value = dict["Mp4FileList"] as? [String] {
                     self.mp4FileList = value
+                }
+                if let value = dict["VodMediaList"] as? [Any?] {
+                    var tmp : [DescribeRtcCloudRecordingFilesResponseBody.TaskInfo.RecordFileList.VodMediaList] = []
+                    for v in value {
+                        if v != nil {
+                            var model = DescribeRtcCloudRecordingFilesResponseBody.TaskInfo.RecordFileList.VodMediaList()
+                            if v != nil {
+                                model.fromMap(v as? [String: Any?])
+                            }
+                            tmp.append(model)
+                        }
+                    }
+                    self.vodMediaList = tmp
                 }
             }
         }
@@ -93507,6 +93583,8 @@ public class StartRtcCloudRecordingRequest : Tea.TeaModel {
         public class FileInfo : Tea.TeaModel {
             public var fileNamePattern: String?
 
+            public var filePathPrefix: [String]?
+
             public var format: String?
 
             public var sliceNamePattern: String?
@@ -93528,6 +93606,9 @@ public class StartRtcCloudRecordingRequest : Tea.TeaModel {
                 if self.fileNamePattern != nil {
                     map["FileNamePattern"] = self.fileNamePattern!
                 }
+                if self.filePathPrefix != nil {
+                    map["FilePathPrefix"] = self.filePathPrefix!
+                }
                 if self.format != nil {
                     map["Format"] = self.format!
                 }
@@ -93541,6 +93622,9 @@ public class StartRtcCloudRecordingRequest : Tea.TeaModel {
                 guard let dict else { return }
                 if let value = dict["FileNamePattern"] as? String {
                     self.fileNamePattern = value
+                }
+                if let value = dict["FilePathPrefix"] as? [String] {
+                    self.filePathPrefix = value
                 }
                 if let value = dict["Format"] as? String {
                     self.format = value
@@ -93588,11 +93672,67 @@ public class StartRtcCloudRecordingRequest : Tea.TeaModel {
                 }
             }
         }
+        public class VodParams : Tea.TeaModel {
+            public var autoCompose: Int32?
+
+            public var composeVodTranscodeGroupId: String?
+
+            public var storageLocation: String?
+
+            public var vodTranscodeGroupId: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.autoCompose != nil {
+                    map["AutoCompose"] = self.autoCompose!
+                }
+                if self.composeVodTranscodeGroupId != nil {
+                    map["ComposeVodTranscodeGroupId"] = self.composeVodTranscodeGroupId!
+                }
+                if self.storageLocation != nil {
+                    map["StorageLocation"] = self.storageLocation!
+                }
+                if self.vodTranscodeGroupId != nil {
+                    map["VodTranscodeGroupId"] = self.vodTranscodeGroupId!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["AutoCompose"] as? Int32 {
+                    self.autoCompose = value
+                }
+                if let value = dict["ComposeVodTranscodeGroupId"] as? String {
+                    self.composeVodTranscodeGroupId = value
+                }
+                if let value = dict["StorageLocation"] as? String {
+                    self.storageLocation = value
+                }
+                if let value = dict["VodTranscodeGroupId"] as? String {
+                    self.vodTranscodeGroupId = value
+                }
+            }
+        }
         public var fileInfo: [StartRtcCloudRecordingRequest.StorageParams.FileInfo]?
 
         public var OSSParams: StartRtcCloudRecordingRequest.StorageParams.OSSParams?
 
         public var storageType: Int32?
+
+        public var vodParams: StartRtcCloudRecordingRequest.StorageParams.VodParams?
 
         public override init() {
             super.init()
@@ -93605,6 +93745,7 @@ public class StartRtcCloudRecordingRequest : Tea.TeaModel {
 
         public override func validate() throws -> Void {
             try self.OSSParams?.validate()
+            try self.vodParams?.validate()
         }
 
         public override func toMap() -> [String : Any] {
@@ -93621,6 +93762,9 @@ public class StartRtcCloudRecordingRequest : Tea.TeaModel {
             }
             if self.storageType != nil {
                 map["StorageType"] = self.storageType!
+            }
+            if self.vodParams != nil {
+                map["VodParams"] = self.vodParams?.toMap()
             }
             return map
         }
@@ -93647,6 +93791,11 @@ public class StartRtcCloudRecordingRequest : Tea.TeaModel {
             }
             if let value = dict["StorageType"] as? Int32 {
                 self.storageType = value
+            }
+            if let value = dict["VodParams"] as? [String: Any?] {
+                var model = StartRtcCloudRecordingRequest.StorageParams.VodParams()
+                model.fromMap(value)
+                self.vodParams = model
             }
         }
     }
@@ -93744,9 +93893,13 @@ public class StartRtcCloudRecordingRequest : Tea.TeaModel {
 
     public var channelId: String?
 
+    public var maxIdleTime: Int64?
+
     public var mixLayoutParams: StartRtcCloudRecordingRequest.MixLayoutParams?
 
     public var mixTranscodeParams: StartRtcCloudRecordingRequest.MixTranscodeParams?
+
+    public var notifyAuthKey: String?
 
     public var notifyUrl: String?
 
@@ -93781,11 +93934,17 @@ public class StartRtcCloudRecordingRequest : Tea.TeaModel {
         if self.channelId != nil {
             map["ChannelId"] = self.channelId!
         }
+        if self.maxIdleTime != nil {
+            map["MaxIdleTime"] = self.maxIdleTime!
+        }
         if self.mixLayoutParams != nil {
             map["MixLayoutParams"] = self.mixLayoutParams?.toMap()
         }
         if self.mixTranscodeParams != nil {
             map["MixTranscodeParams"] = self.mixTranscodeParams?.toMap()
+        }
+        if self.notifyAuthKey != nil {
+            map["NotifyAuthKey"] = self.notifyAuthKey!
         }
         if self.notifyUrl != nil {
             map["NotifyUrl"] = self.notifyUrl!
@@ -93810,6 +93969,9 @@ public class StartRtcCloudRecordingRequest : Tea.TeaModel {
         if let value = dict["ChannelId"] as? String {
             self.channelId = value
         }
+        if let value = dict["MaxIdleTime"] as? Int64 {
+            self.maxIdleTime = value
+        }
         if let value = dict["MixLayoutParams"] as? [String: Any?] {
             var model = StartRtcCloudRecordingRequest.MixLayoutParams()
             model.fromMap(value)
@@ -93819,6 +93981,9 @@ public class StartRtcCloudRecordingRequest : Tea.TeaModel {
             var model = StartRtcCloudRecordingRequest.MixTranscodeParams()
             model.fromMap(value)
             self.mixTranscodeParams = model
+        }
+        if let value = dict["NotifyAuthKey"] as? String {
+            self.notifyAuthKey = value
         }
         if let value = dict["NotifyUrl"] as? String {
             self.notifyUrl = value
@@ -93846,9 +94011,13 @@ public class StartRtcCloudRecordingShrinkRequest : Tea.TeaModel {
 
     public var channelId: String?
 
+    public var maxIdleTime: Int64?
+
     public var mixLayoutParamsShrink: String?
 
     public var mixTranscodeParamsShrink: String?
+
+    public var notifyAuthKey: String?
 
     public var notifyUrl: String?
 
@@ -93878,11 +94047,17 @@ public class StartRtcCloudRecordingShrinkRequest : Tea.TeaModel {
         if self.channelId != nil {
             map["ChannelId"] = self.channelId!
         }
+        if self.maxIdleTime != nil {
+            map["MaxIdleTime"] = self.maxIdleTime!
+        }
         if self.mixLayoutParamsShrink != nil {
             map["MixLayoutParams"] = self.mixLayoutParamsShrink!
         }
         if self.mixTranscodeParamsShrink != nil {
             map["MixTranscodeParams"] = self.mixTranscodeParamsShrink!
+        }
+        if self.notifyAuthKey != nil {
+            map["NotifyAuthKey"] = self.notifyAuthKey!
         }
         if self.notifyUrl != nil {
             map["NotifyUrl"] = self.notifyUrl!
@@ -93907,11 +94082,17 @@ public class StartRtcCloudRecordingShrinkRequest : Tea.TeaModel {
         if let value = dict["ChannelId"] as? String {
             self.channelId = value
         }
+        if let value = dict["MaxIdleTime"] as? Int64 {
+            self.maxIdleTime = value
+        }
         if let value = dict["MixLayoutParams"] as? String {
             self.mixLayoutParamsShrink = value
         }
         if let value = dict["MixTranscodeParams"] as? String {
             self.mixTranscodeParamsShrink = value
+        }
+        if let value = dict["NotifyAuthKey"] as? String {
+            self.notifyAuthKey = value
         }
         if let value = dict["NotifyUrl"] as? String {
             self.notifyUrl = value

@@ -17314,11 +17314,17 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.channelId)) {
             query["ChannelId"] = request.channelId ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.maxIdleTime)) {
+            query["MaxIdleTime"] = request.maxIdleTime!;
+        }
         if (!TeaUtils.Client.isUnset(request.mixLayoutParamsShrink)) {
             query["MixLayoutParams"] = request.mixLayoutParamsShrink ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.mixTranscodeParamsShrink)) {
             query["MixTranscodeParams"] = request.mixTranscodeParamsShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.notifyAuthKey)) {
+            query["NotifyAuthKey"] = request.notifyAuthKey ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.notifyUrl)) {
             query["NotifyUrl"] = request.notifyUrl ?? "";
