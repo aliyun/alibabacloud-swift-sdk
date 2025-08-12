@@ -8008,54 +8008,6 @@ public class CreateTicketResponse : Tea.TeaModel {
 }
 
 public class CreateUmodelRequest : Tea.TeaModel {
-    public class CommonSchemaRef : Tea.TeaModel {
-        public var group: String?
-
-        public var items: [String]?
-
-        public var version: String?
-
-        public override init() {
-            super.init()
-        }
-
-        public init(_ dict: [String: Any]) {
-            super.init()
-            self.fromMap(dict)
-        }
-
-        public override func validate() throws -> Void {
-        }
-
-        public override func toMap() -> [String : Any] {
-            var map = super.toMap()
-            if self.group != nil {
-                map["group"] = self.group!
-            }
-            if self.items != nil {
-                map["items"] = self.items!
-            }
-            if self.version != nil {
-                map["version"] = self.version!
-            }
-            return map
-        }
-
-        public override func fromMap(_ dict: [String: Any?]?) -> Void {
-            guard let dict else { return }
-            if let value = dict["group"] as? String {
-                self.group = value
-            }
-            if let value = dict["items"] as? [String] {
-                self.items = value
-            }
-            if let value = dict["version"] as? String {
-                self.version = value
-            }
-        }
-    }
-    public var commonSchemaRef: [CreateUmodelRequest.CommonSchemaRef]?
-
     public var description_: String?
 
     public override init() {
@@ -8072,13 +8024,6 @@ public class CreateUmodelRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
-        if self.commonSchemaRef != nil {
-            var tmp : [Any] = []
-            for k in self.commonSchemaRef! {
-                tmp.append(k.toMap())
-            }
-            map["commonSchemaRef"] = tmp
-        }
         if self.description_ != nil {
             map["description"] = self.description_!
         }
@@ -8087,19 +8032,6 @@ public class CreateUmodelRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
-        if let value = dict["commonSchemaRef"] as? [Any?] {
-            var tmp : [CreateUmodelRequest.CommonSchemaRef] = []
-            for v in value {
-                if v != nil {
-                    var model = CreateUmodelRequest.CommonSchemaRef()
-                    if v != nil {
-                        model.fromMap(v as? [String: Any?])
-                    }
-                    tmp.append(model)
-                }
-            }
-            self.commonSchemaRef = tmp
-        }
         if let value = dict["description"] as? String {
             self.description_ = value
         }
@@ -9335,8 +9267,6 @@ public class GetUmodelResponseBody : Tea.TeaModel {
     public class CommonSchemaRef : Tea.TeaModel {
         public var group: String?
 
-        public var items: [String]?
-
         public var version: String?
 
         public override init() {
@@ -9356,9 +9286,6 @@ public class GetUmodelResponseBody : Tea.TeaModel {
             if self.group != nil {
                 map["group"] = self.group!
             }
-            if self.items != nil {
-                map["items"] = self.items!
-            }
             if self.version != nil {
                 map["version"] = self.version!
             }
@@ -9369,9 +9296,6 @@ public class GetUmodelResponseBody : Tea.TeaModel {
             guard let dict else { return }
             if let value = dict["group"] as? String {
                 self.group = value
-            }
-            if let value = dict["items"] as? [String] {
-                self.items = value
             }
             if let value = dict["version"] as? String {
                 self.version = value
@@ -11504,54 +11428,6 @@ public class UpdateServiceResponse : Tea.TeaModel {
 }
 
 public class UpdateUmodelRequest : Tea.TeaModel {
-    public class CommonSchemaRef : Tea.TeaModel {
-        public var group: String?
-
-        public var items: [String]?
-
-        public var version: String?
-
-        public override init() {
-            super.init()
-        }
-
-        public init(_ dict: [String: Any]) {
-            super.init()
-            self.fromMap(dict)
-        }
-
-        public override func validate() throws -> Void {
-        }
-
-        public override func toMap() -> [String : Any] {
-            var map = super.toMap()
-            if self.group != nil {
-                map["group"] = self.group!
-            }
-            if self.items != nil {
-                map["items"] = self.items!
-            }
-            if self.version != nil {
-                map["version"] = self.version!
-            }
-            return map
-        }
-
-        public override func fromMap(_ dict: [String: Any?]?) -> Void {
-            guard let dict else { return }
-            if let value = dict["group"] as? String {
-                self.group = value
-            }
-            if let value = dict["items"] as? [String] {
-                self.items = value
-            }
-            if let value = dict["version"] as? String {
-                self.version = value
-            }
-        }
-    }
-    public var commonSchemaRef: [UpdateUmodelRequest.CommonSchemaRef]?
-
     public var description_: String?
 
     public override init() {
@@ -11568,13 +11444,6 @@ public class UpdateUmodelRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
-        if self.commonSchemaRef != nil {
-            var tmp : [Any] = []
-            for k in self.commonSchemaRef! {
-                tmp.append(k.toMap())
-            }
-            map["commonSchemaRef"] = tmp
-        }
         if self.description_ != nil {
             map["description"] = self.description_!
         }
@@ -11583,19 +11452,6 @@ public class UpdateUmodelRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
-        if let value = dict["commonSchemaRef"] as? [Any?] {
-            var tmp : [UpdateUmodelRequest.CommonSchemaRef] = []
-            for v in value {
-                if v != nil {
-                    var model = UpdateUmodelRequest.CommonSchemaRef()
-                    if v != nil {
-                        model.fromMap(v as? [String: Any?])
-                    }
-                    tmp.append(model)
-                }
-            }
-            self.commonSchemaRef = tmp
-        }
         if let value = dict["description"] as? String {
             self.description_ = value
         }

@@ -207,9 +207,6 @@ open class Client : AlibabacloudOpenApi.Client {
     public func createUmodelWithOptions(_ workspace: String, _ request: CreateUmodelRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> CreateUmodelResponse {
         try TeaUtils.Client.validateModel(request)
         var body: [String: Any] = [:]
-        if (!TeaUtils.Client.isUnset(request.commonSchemaRef)) {
-            body["commonSchemaRef"] = request.commonSchemaRef ?? [];
-        }
         if (!TeaUtils.Client.isUnset(request.description_)) {
             body["description"] = request.description_ ?? "";
         }
@@ -829,9 +826,6 @@ open class Client : AlibabacloudOpenApi.Client {
     public func updateUmodelWithOptions(_ workspace: String, _ request: UpdateUmodelRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> UpdateUmodelResponse {
         try TeaUtils.Client.validateModel(request)
         var body: [String: Any] = [:]
-        if (!TeaUtils.Client.isUnset(request.commonSchemaRef)) {
-            body["commonSchemaRef"] = request.commonSchemaRef ?? [];
-        }
         if (!TeaUtils.Client.isUnset(request.description_)) {
             body["description"] = request.description_ ?? "";
         }
