@@ -594,8 +594,13 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func describeOrgsWithOptions(_ request: DescribeOrgsRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DescribeOrgsResponse {
-        try TeaUtils.Client.validateModel(request)
+    public func describeOrgsWithOptions(_ tmpReq: DescribeOrgsRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DescribeOrgsResponse {
+        try TeaUtils.Client.validateModel(tmpReq)
+        var request: DescribeOrgsShrinkRequest = DescribeOrgsShrinkRequest([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.showExtras)) {
+            request.showExtrasShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.showExtras, "ShowExtras", "json")
+        }
         var query: [String: Any] = [:]
         if (!TeaUtils.Client.isUnset(request.maxResults)) {
             query["MaxResults"] = request.maxResults!;
@@ -608,6 +613,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.parentOrgId)) {
             query["ParentOrgId"] = request.parentOrgId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.showExtrasShrink)) {
+            query["ShowExtras"] = request.showExtrasShrink ?? "";
         }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "query": AlibabaCloudOpenApiUtil.Client.query(query)

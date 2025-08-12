@@ -3466,6 +3466,8 @@ public class DescribeOrgsRequest : Tea.TeaModel {
 
     public var parentOrgId: String?
 
+    public var showExtras: [String: Any]?
+
     public override init() {
         super.init()
     }
@@ -3492,6 +3494,9 @@ public class DescribeOrgsRequest : Tea.TeaModel {
         if self.parentOrgId != nil {
             map["ParentOrgId"] = self.parentOrgId!
         }
+        if self.showExtras != nil {
+            map["ShowExtras"] = self.showExtras!
+        }
         return map
     }
 
@@ -3509,6 +3514,72 @@ public class DescribeOrgsRequest : Tea.TeaModel {
         if let value = dict["ParentOrgId"] as? String {
             self.parentOrgId = value
         }
+        if let value = dict["ShowExtras"] as? [String: Any] {
+            self.showExtras = value
+        }
+    }
+}
+
+public class DescribeOrgsShrinkRequest : Tea.TeaModel {
+    public var maxResults: Int64?
+
+    public var nextToken: String?
+
+    public var orgName: String?
+
+    public var parentOrgId: String?
+
+    public var showExtrasShrink: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.maxResults != nil {
+            map["MaxResults"] = self.maxResults!
+        }
+        if self.nextToken != nil {
+            map["NextToken"] = self.nextToken!
+        }
+        if self.orgName != nil {
+            map["OrgName"] = self.orgName!
+        }
+        if self.parentOrgId != nil {
+            map["ParentOrgId"] = self.parentOrgId!
+        }
+        if self.showExtrasShrink != nil {
+            map["ShowExtras"] = self.showExtrasShrink!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["MaxResults"] as? Int64 {
+            self.maxResults = value
+        }
+        if let value = dict["NextToken"] as? String {
+            self.nextToken = value
+        }
+        if let value = dict["OrgName"] as? String {
+            self.orgName = value
+        }
+        if let value = dict["ParentOrgId"] as? String {
+            self.parentOrgId = value
+        }
+        if let value = dict["ShowExtras"] as? String {
+            self.showExtrasShrink = value
+        }
     }
 }
 
@@ -3517,6 +3588,8 @@ public class DescribeOrgsResponseBody : Tea.TeaModel {
         public var orgId: String?
 
         public var orgName: String?
+
+        public var orgNamePath: String?
 
         public var parentOrgId: String?
 
@@ -3540,6 +3613,9 @@ public class DescribeOrgsResponseBody : Tea.TeaModel {
             if self.orgName != nil {
                 map["OrgName"] = self.orgName!
             }
+            if self.orgNamePath != nil {
+                map["OrgNamePath"] = self.orgNamePath!
+            }
             if self.parentOrgId != nil {
                 map["ParentOrgId"] = self.parentOrgId!
             }
@@ -3553,6 +3629,9 @@ public class DescribeOrgsResponseBody : Tea.TeaModel {
             }
             if let value = dict["OrgName"] as? String {
                 self.orgName = value
+            }
+            if let value = dict["OrgNamePath"] as? String {
+                self.orgNamePath = value
             }
             if let value = dict["ParentOrgId"] as? String {
                 self.parentOrgId = value
