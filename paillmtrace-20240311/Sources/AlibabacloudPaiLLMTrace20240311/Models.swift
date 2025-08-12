@@ -2847,6 +2847,8 @@ public class ListTracesDatasRequest : Tea.TeaModel {
 
     public var pageSize: Int32?
 
+    public var sessionId: String?
+
     public var sortBy: String?
 
     public var sortOrder: String?
@@ -2918,6 +2920,9 @@ public class ListTracesDatasRequest : Tea.TeaModel {
         }
         if self.pageSize != nil {
             map["PageSize"] = self.pageSize!
+        }
+        if self.sessionId != nil {
+            map["SessionId"] = self.sessionId!
         }
         if self.sortBy != nil {
             map["SortBy"] = self.sortBy!
@@ -2994,6 +2999,9 @@ public class ListTracesDatasRequest : Tea.TeaModel {
         if let value = dict["PageSize"] as? Int32 {
             self.pageSize = value
         }
+        if let value = dict["SessionId"] as? String {
+            self.sessionId = value
+        }
         if let value = dict["SortBy"] as? String {
             self.sortBy = value
         }
@@ -3043,6 +3051,8 @@ public class ListTracesDatasShrinkRequest : Tea.TeaModel {
     public var pageNumber: Int32?
 
     public var pageSize: Int32?
+
+    public var sessionId: String?
 
     public var sortBy: String?
 
@@ -3112,6 +3122,9 @@ public class ListTracesDatasShrinkRequest : Tea.TeaModel {
         if self.pageSize != nil {
             map["PageSize"] = self.pageSize!
         }
+        if self.sessionId != nil {
+            map["SessionId"] = self.sessionId!
+        }
         if self.sortBy != nil {
             map["SortBy"] = self.sortBy!
         }
@@ -3176,6 +3189,9 @@ public class ListTracesDatasShrinkRequest : Tea.TeaModel {
         }
         if let value = dict["PageSize"] as? Int32 {
             self.pageSize = value
+        }
+        if let value = dict["SessionId"] as? String {
+            self.sessionId = value
         }
         if let value = dict["SortBy"] as? String {
             self.sortBy = value
