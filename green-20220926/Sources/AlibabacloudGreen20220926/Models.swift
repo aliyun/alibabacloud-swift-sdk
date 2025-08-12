@@ -17596,6 +17596,8 @@ public class LlmStreamChatRequest : Tea.TeaModel {
 
     public var topP: Double?
 
+    public var type: String?
+
     public override init() {
         super.init()
     }
@@ -17619,6 +17621,9 @@ public class LlmStreamChatRequest : Tea.TeaModel {
         if self.topP != nil {
             map["TopP"] = self.topP!
         }
+        if self.type != nil {
+            map["Type"] = self.type!
+        }
         return map
     }
 
@@ -17632,6 +17637,9 @@ public class LlmStreamChatRequest : Tea.TeaModel {
         }
         if let value = dict["TopP"] as? Double {
             self.topP = value
+        }
+        if let value = dict["Type"] as? String {
+            self.type = value
         }
     }
 }
