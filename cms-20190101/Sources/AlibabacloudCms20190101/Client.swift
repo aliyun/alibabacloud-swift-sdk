@@ -4330,6 +4330,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func describeSiteMonitorListWithOptions(_ request: DescribeSiteMonitorListRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DescribeSiteMonitorListResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.agentGroup)) {
+            query["AgentGroup"] = request.agentGroup ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.keyword)) {
             query["Keyword"] = request.keyword ?? "";
         }
@@ -5709,30 +5712,6 @@ open class Client : AlibabacloudOpenApi.Client {
     public func modifySiteMonitor(_ request: ModifySiteMonitorRequest) async throws -> ModifySiteMonitorResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         return try await modifySiteMonitorWithOptions(request as! ModifySiteMonitorRequest, runtime as! TeaUtils.RuntimeOptions)
-    }
-
-    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func openCmsServiceWithOptions(_ runtime: TeaUtils.RuntimeOptions) async throws -> OpenCmsServiceResponse {
-        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([:])
-        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
-            "action": "OpenCmsService",
-            "version": "2019-01-01",
-            "protocol": "HTTPS",
-            "pathname": "/",
-            "method": "POST",
-            "authType": "AK",
-            "style": "RPC",
-            "reqBodyType": "formData",
-            "bodyType": "json"
-        ])
-        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
-        return Tea.TeaConverter.fromMap(OpenCmsServiceResponse(), tmp)
-    }
-
-    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func openCmsService() async throws -> OpenCmsServiceResponse {
-        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
-        return try await openCmsServiceWithOptions(runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
