@@ -816,6 +816,8 @@ public class CreateApplicationResponse : Tea.TeaModel {
 public class CreateApplicationClientSecretRequest : Tea.TeaModel {
     public var applicationId: String?
 
+    public var expirationTime: Int64?
+
     public var instanceId: String?
 
     public override init() {
@@ -835,6 +837,9 @@ public class CreateApplicationClientSecretRequest : Tea.TeaModel {
         if self.applicationId != nil {
             map["ApplicationId"] = self.applicationId!
         }
+        if self.expirationTime != nil {
+            map["ExpirationTime"] = self.expirationTime!
+        }
         if self.instanceId != nil {
             map["InstanceId"] = self.instanceId!
         }
@@ -845,6 +850,9 @@ public class CreateApplicationClientSecretRequest : Tea.TeaModel {
         guard let dict else { return }
         if let value = dict["ApplicationId"] as? String {
             self.applicationId = value
+        }
+        if let value = dict["ExpirationTime"] as? Int64 {
+            self.expirationTime = value
         }
         if let value = dict["InstanceId"] as? String {
             self.instanceId = value
@@ -9026,6 +9034,8 @@ public class GetApplicationSsoConfigResponseBody : Tea.TeaModel {
             }
             public var accessTokenEffectiveTime: Int64?
 
+            public var allowedPublicClient: String?
+
             public var codeEffectiveTime: Int64?
 
             public var customClaims: [GetApplicationSsoConfigResponseBody.ApplicationSsoConfig.OidcSsoConfig.CustomClaims]?
@@ -9070,6 +9080,9 @@ public class GetApplicationSsoConfigResponseBody : Tea.TeaModel {
                 var map = super.toMap()
                 if self.accessTokenEffectiveTime != nil {
                     map["AccessTokenEffectiveTime"] = self.accessTokenEffectiveTime!
+                }
+                if self.allowedPublicClient != nil {
+                    map["AllowedPublicClient"] = self.allowedPublicClient!
                 }
                 if self.codeEffectiveTime != nil {
                     map["CodeEffectiveTime"] = self.codeEffectiveTime!
@@ -9124,6 +9137,9 @@ public class GetApplicationSsoConfigResponseBody : Tea.TeaModel {
                 guard let dict else { return }
                 if let value = dict["AccessTokenEffectiveTime"] as? Int64 {
                     self.accessTokenEffectiveTime = value
+                }
+                if let value = dict["AllowedPublicClient"] as? String {
+                    self.allowedPublicClient = value
                 }
                 if let value = dict["CodeEffectiveTime"] as? Int64 {
                     self.codeEffectiveTime = value
@@ -17161,6 +17177,8 @@ public class ListApplicationClientSecretsResponseBody : Tea.TeaModel {
 
         public var clientSecret: String?
 
+        public var expirationTime: Int64?
+
         public var instanceId: String?
 
         public var lastUsedTime: Int64?
@@ -17192,6 +17210,9 @@ public class ListApplicationClientSecretsResponseBody : Tea.TeaModel {
             if self.clientSecret != nil {
                 map["ClientSecret"] = self.clientSecret!
             }
+            if self.expirationTime != nil {
+                map["ExpirationTime"] = self.expirationTime!
+            }
             if self.instanceId != nil {
                 map["InstanceId"] = self.instanceId!
             }
@@ -17217,6 +17238,9 @@ public class ListApplicationClientSecretsResponseBody : Tea.TeaModel {
             }
             if let value = dict["ClientSecret"] as? String {
                 self.clientSecret = value
+            }
+            if let value = dict["ExpirationTime"] as? Int64 {
+                self.expirationTime = value
             }
             if let value = dict["InstanceId"] as? String {
                 self.instanceId = value
@@ -26222,6 +26246,8 @@ public class ObtainApplicationClientSecretResponseBody : Tea.TeaModel {
 
         public var clientSecret: String?
 
+        public var expirationTime: Int64?
+
         public var instanceId: String?
 
         public var lastUsedTime: Int64?
@@ -26253,6 +26279,9 @@ public class ObtainApplicationClientSecretResponseBody : Tea.TeaModel {
             if self.clientSecret != nil {
                 map["ClientSecret"] = self.clientSecret!
             }
+            if self.expirationTime != nil {
+                map["ExpirationTime"] = self.expirationTime!
+            }
             if self.instanceId != nil {
                 map["InstanceId"] = self.instanceId!
             }
@@ -26278,6 +26307,9 @@ public class ObtainApplicationClientSecretResponseBody : Tea.TeaModel {
             }
             if let value = dict["ClientSecret"] as? String {
                 self.clientSecret = value
+            }
+            if let value = dict["ExpirationTime"] as? Int64 {
+                self.expirationTime = value
             }
             if let value = dict["InstanceId"] as? String {
                 self.instanceId = value
@@ -28160,6 +28192,8 @@ public class SetApplicationSsoConfigRequest : Tea.TeaModel {
         }
         public var accessTokenEffectiveTime: Int64?
 
+        public var allowedPublicClient: Bool?
+
         public var codeEffectiveTime: Int64?
 
         public var customClaims: [SetApplicationSsoConfigRequest.OidcSsoConfig.CustomClaims]?
@@ -28204,6 +28238,9 @@ public class SetApplicationSsoConfigRequest : Tea.TeaModel {
             var map = super.toMap()
             if self.accessTokenEffectiveTime != nil {
                 map["AccessTokenEffectiveTime"] = self.accessTokenEffectiveTime!
+            }
+            if self.allowedPublicClient != nil {
+                map["AllowedPublicClient"] = self.allowedPublicClient!
             }
             if self.codeEffectiveTime != nil {
                 map["CodeEffectiveTime"] = self.codeEffectiveTime!
@@ -28258,6 +28295,9 @@ public class SetApplicationSsoConfigRequest : Tea.TeaModel {
             guard let dict else { return }
             if let value = dict["AccessTokenEffectiveTime"] as? Int64 {
                 self.accessTokenEffectiveTime = value
+            }
+            if let value = dict["AllowedPublicClient"] as? Bool {
+                self.allowedPublicClient = value
             }
             if let value = dict["CodeEffectiveTime"] as? Int64 {
                 self.codeEffectiveTime = value
