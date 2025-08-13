@@ -46201,7 +46201,11 @@ public class ListGatewayResponseBody : Tea.TeaModel {
 
                 public var ipList: [String]?
 
+                public var ipv6List: [String]?
+
                 public var netType: String?
+
+                public var status: String?
 
                 public override init() {
                     super.init()
@@ -46229,8 +46233,14 @@ public class ListGatewayResponseBody : Tea.TeaModel {
                     if self.ipList != nil {
                         map["IpList"] = self.ipList!
                     }
+                    if self.ipv6List != nil {
+                        map["Ipv6List"] = self.ipv6List!
+                    }
                     if self.netType != nil {
                         map["NetType"] = self.netType!
+                    }
+                    if self.status != nil {
+                        map["Status"] = self.status!
                     }
                     return map
                 }
@@ -46249,8 +46259,14 @@ public class ListGatewayResponseBody : Tea.TeaModel {
                     if let value = dict["IpList"] as? [String] {
                         self.ipList = value
                     }
+                    if let value = dict["Ipv6List"] as? [String] {
+                        self.ipv6List = value
+                    }
                     if let value = dict["NetType"] as? String {
                         self.netType = value
+                    }
+                    if let value = dict["Status"] as? String {
+                        self.status = value
                     }
                 }
             }
