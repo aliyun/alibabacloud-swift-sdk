@@ -4236,6 +4236,12 @@ public class DescribeInvoiceForIsvResponseBody : Tea.TeaModel {
 
             public var outBizId: String?
 
+            public var productCode: String?
+
+            public var productName: String?
+
+            public var realAliyunId: String?
+
             public var realAliyunPk: String?
 
             public override init() {
@@ -4270,6 +4276,15 @@ public class DescribeInvoiceForIsvResponseBody : Tea.TeaModel {
                 if self.outBizId != nil {
                     map["OutBizId"] = self.outBizId!
                 }
+                if self.productCode != nil {
+                    map["ProductCode"] = self.productCode!
+                }
+                if self.productName != nil {
+                    map["ProductName"] = self.productName!
+                }
+                if self.realAliyunId != nil {
+                    map["RealAliyunId"] = self.realAliyunId!
+                }
                 if self.realAliyunPk != nil {
                     map["RealAliyunPk"] = self.realAliyunPk!
                 }
@@ -4295,6 +4310,15 @@ public class DescribeInvoiceForIsvResponseBody : Tea.TeaModel {
                 }
                 if let value = dict["OutBizId"] as? String {
                     self.outBizId = value
+                }
+                if let value = dict["ProductCode"] as? String {
+                    self.productCode = value
+                }
+                if let value = dict["ProductName"] as? String {
+                    self.productName = value
+                }
+                if let value = dict["RealAliyunId"] as? String {
+                    self.realAliyunId = value
                 }
                 if let value = dict["RealAliyunPk"] as? String {
                     self.realAliyunPk = value
@@ -4449,6 +4473,8 @@ public class DescribeInvoiceForIsvResponseBody : Tea.TeaModel {
         }
         public var aliyunPk: String?
 
+        public var checkNotice: String?
+
         public var createTimeStr: String?
 
         public var evaluateList: [DescribeInvoiceForIsvResponseBody.Result.EvaluateList]?
@@ -4477,6 +4503,8 @@ public class DescribeInvoiceForIsvResponseBody : Tea.TeaModel {
 
         public var userAddressDto: DescribeInvoiceForIsvResponseBody.Result.UserAddressDto?
 
+        public var userNotice: String?
+
         public override init() {
             super.init()
         }
@@ -4495,6 +4523,9 @@ public class DescribeInvoiceForIsvResponseBody : Tea.TeaModel {
             var map = super.toMap()
             if self.aliyunPk != nil {
                 map["AliyunPk"] = self.aliyunPk!
+            }
+            if self.checkNotice != nil {
+                map["CheckNotice"] = self.checkNotice!
             }
             if self.createTimeStr != nil {
                 map["CreateTimeStr"] = self.createTimeStr!
@@ -4546,6 +4577,9 @@ public class DescribeInvoiceForIsvResponseBody : Tea.TeaModel {
             if self.userAddressDto != nil {
                 map["UserAddressDto"] = self.userAddressDto?.toMap()
             }
+            if self.userNotice != nil {
+                map["UserNotice"] = self.userNotice!
+            }
             return map
         }
 
@@ -4553,6 +4587,9 @@ public class DescribeInvoiceForIsvResponseBody : Tea.TeaModel {
             guard let dict else { return }
             if let value = dict["AliyunPk"] as? String {
                 self.aliyunPk = value
+            }
+            if let value = dict["CheckNotice"] as? String {
+                self.checkNotice = value
             }
             if let value = dict["CreateTimeStr"] as? String {
                 self.createTimeStr = value
@@ -4619,6 +4656,9 @@ public class DescribeInvoiceForIsvResponseBody : Tea.TeaModel {
                 var model = DescribeInvoiceForIsvResponseBody.Result.UserAddressDto()
                 model.fromMap(value)
                 self.userAddressDto = model
+            }
+            if let value = dict["UserNotice"] as? String {
+                self.userNotice = value
             }
         }
     }
