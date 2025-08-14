@@ -1,9 +1,8 @@
 import Foundation
 import Tea
 import TeaUtils
-import AlibabaCloudOssSdk
-import AlibabacloudOpenPlatform20191219
-import AlibabaCloudOSSUtil
+import DarabonbaXML
+import AlibabaCloudCredentials
 import TeaFileForm
 import AlibabacloudOpenApi
 import AlibabaCloudOpenApiUtil
@@ -4126,6 +4125,8 @@ public class SubmitDocParserJobRequest : Tea.TeaModel {
 
     public var ossEndpoint: String?
 
+    public var outputHtmlTable: Bool?
+
     public var pageIndex: String?
 
     public override init() {
@@ -4166,6 +4167,9 @@ public class SubmitDocParserJobRequest : Tea.TeaModel {
         if self.ossEndpoint != nil {
             map["OssEndpoint"] = self.ossEndpoint!
         }
+        if self.outputHtmlTable != nil {
+            map["OutputHtmlTable"] = self.outputHtmlTable!
+        }
         if self.pageIndex != nil {
             map["PageIndex"] = self.pageIndex!
         }
@@ -4198,6 +4202,9 @@ public class SubmitDocParserJobRequest : Tea.TeaModel {
         if let value = dict["OssEndpoint"] as? String {
             self.ossEndpoint = value
         }
+        if let value = dict["OutputHtmlTable"] as? Bool {
+            self.outputHtmlTable = value
+        }
         if let value = dict["PageIndex"] as? String {
             self.pageIndex = value
         }
@@ -4220,6 +4227,8 @@ public class SubmitDocParserJobAdvanceRequest : Tea.TeaModel {
     public var ossBucket: String?
 
     public var ossEndpoint: String?
+
+    public var outputHtmlTable: Bool?
 
     public var pageIndex: String?
 
@@ -4261,6 +4270,9 @@ public class SubmitDocParserJobAdvanceRequest : Tea.TeaModel {
         if self.ossEndpoint != nil {
             map["OssEndpoint"] = self.ossEndpoint!
         }
+        if self.outputHtmlTable != nil {
+            map["OutputHtmlTable"] = self.outputHtmlTable!
+        }
         if self.pageIndex != nil {
             map["PageIndex"] = self.pageIndex!
         }
@@ -4292,6 +4304,9 @@ public class SubmitDocParserJobAdvanceRequest : Tea.TeaModel {
         }
         if let value = dict["OssEndpoint"] as? String {
             self.ossEndpoint = value
+        }
+        if let value = dict["OutputHtmlTable"] as? Bool {
+            self.outputHtmlTable = value
         }
         if let value = dict["PageIndex"] as? String {
             self.pageIndex = value
