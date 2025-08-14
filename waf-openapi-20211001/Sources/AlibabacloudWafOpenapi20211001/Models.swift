@@ -2573,6 +2573,52 @@ public class CreateDomainRequest : Tea.TeaModel {
         }
     }
     public class Redirect : Tea.TeaModel {
+        public class BackendPorts : Tea.TeaModel {
+            public var backendPort: Int32?
+
+            public var listenPort: Int32?
+
+            public var protocol_: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.backendPort != nil {
+                    map["BackendPort"] = self.backendPort!
+                }
+                if self.listenPort != nil {
+                    map["ListenPort"] = self.listenPort!
+                }
+                if self.protocol_ != nil {
+                    map["Protocol"] = self.protocol_!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["BackendPort"] as? Int32 {
+                    self.backendPort = value
+                }
+                if let value = dict["ListenPort"] as? Int32 {
+                    self.listenPort = value
+                }
+                if let value = dict["Protocol"] as? String {
+                    self.protocol_ = value
+                }
+            }
+        }
         public class RequestHeaders : Tea.TeaModel {
             public var key: String?
 
@@ -2611,6 +2657,8 @@ public class CreateDomainRequest : Tea.TeaModel {
                 }
             }
         }
+        public var backendPorts: [CreateDomainRequest.Redirect.BackendPorts]?
+
         public var backends: [String]?
 
         public var backupBackends: [String]?
@@ -2659,6 +2707,13 @@ public class CreateDomainRequest : Tea.TeaModel {
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
+            if self.backendPorts != nil {
+                var tmp : [Any] = []
+                for k in self.backendPorts! {
+                    tmp.append(k.toMap())
+                }
+                map["BackendPorts"] = tmp
+            }
             if self.backends != nil {
                 map["Backends"] = self.backends!
             }
@@ -2719,6 +2774,19 @@ public class CreateDomainRequest : Tea.TeaModel {
 
         public override func fromMap(_ dict: [String: Any?]?) -> Void {
             guard let dict else { return }
+            if let value = dict["BackendPorts"] as? [Any?] {
+                var tmp : [CreateDomainRequest.Redirect.BackendPorts] = []
+                for v in value {
+                    if v != nil {
+                        var model = CreateDomainRequest.Redirect.BackendPorts()
+                        if v != nil {
+                            model.fromMap(v as? [String: Any?])
+                        }
+                        tmp.append(model)
+                    }
+                }
+                self.backendPorts = tmp
+            }
             if let value = dict["Backends"] as? [String] {
                 self.backends = value
             }
@@ -17796,6 +17864,52 @@ public class DescribeDomainDetailResponseBody : Tea.TeaModel {
         }
     }
     public class Redirect : Tea.TeaModel {
+        public class BackendPorts : Tea.TeaModel {
+            public var backendPort: Int32?
+
+            public var listenPort: Int32?
+
+            public var protocol_: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.backendPort != nil {
+                    map["BackendPort"] = self.backendPort!
+                }
+                if self.listenPort != nil {
+                    map["ListenPort"] = self.listenPort!
+                }
+                if self.protocol_ != nil {
+                    map["Protocol"] = self.protocol_!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["BackendPort"] as? Int32 {
+                    self.backendPort = value
+                }
+                if let value = dict["ListenPort"] as? Int32 {
+                    self.listenPort = value
+                }
+                if let value = dict["Protocol"] as? String {
+                    self.protocol_ = value
+                }
+            }
+        }
         public class Backends : Tea.TeaModel {
             public var backend: String?
 
@@ -17898,6 +18012,8 @@ public class DescribeDomainDetailResponseBody : Tea.TeaModel {
 
         public var backendList: [String]?
 
+        public var backendPorts: [DescribeDomainDetailResponseBody.Redirect.BackendPorts]?
+
         public var backends: [DescribeDomainDetailResponseBody.Redirect.Backends]?
 
         public var backupBackends: [DescribeDomainDetailResponseBody.Redirect.BackupBackends]?
@@ -17947,6 +18063,13 @@ public class DescribeDomainDetailResponseBody : Tea.TeaModel {
             }
             if self.backendList != nil {
                 map["BackendList"] = self.backendList!
+            }
+            if self.backendPorts != nil {
+                var tmp : [Any] = []
+                for k in self.backendPorts! {
+                    tmp.append(k.toMap())
+                }
+                map["BackendPorts"] = tmp
             }
             if self.backends != nil {
                 var tmp : [Any] = []
@@ -18015,6 +18138,19 @@ public class DescribeDomainDetailResponseBody : Tea.TeaModel {
             }
             if let value = dict["BackendList"] as? [String] {
                 self.backendList = value
+            }
+            if let value = dict["BackendPorts"] as? [Any?] {
+                var tmp : [DescribeDomainDetailResponseBody.Redirect.BackendPorts] = []
+                for v in value {
+                    if v != nil {
+                        var model = DescribeDomainDetailResponseBody.Redirect.BackendPorts()
+                        if v != nil {
+                            model.fromMap(v as? [String: Any?])
+                        }
+                        tmp.append(model)
+                    }
+                }
+                self.backendPorts = tmp
             }
             if let value = dict["Backends"] as? [Any?] {
                 var tmp : [DescribeDomainDetailResponseBody.Redirect.Backends] = []
@@ -40195,6 +40331,52 @@ public class ModifyDomainRequest : Tea.TeaModel {
         }
     }
     public class Redirect : Tea.TeaModel {
+        public class BackendPorts : Tea.TeaModel {
+            public var backendPort: Int32?
+
+            public var listenPort: Int32?
+
+            public var protocol_: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.backendPort != nil {
+                    map["BackendPort"] = self.backendPort!
+                }
+                if self.listenPort != nil {
+                    map["ListenPort"] = self.listenPort!
+                }
+                if self.protocol_ != nil {
+                    map["Protocol"] = self.protocol_!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["BackendPort"] as? Int32 {
+                    self.backendPort = value
+                }
+                if let value = dict["ListenPort"] as? Int32 {
+                    self.listenPort = value
+                }
+                if let value = dict["Protocol"] as? String {
+                    self.protocol_ = value
+                }
+            }
+        }
         public class RequestHeaders : Tea.TeaModel {
             public var key: String?
 
@@ -40233,6 +40415,8 @@ public class ModifyDomainRequest : Tea.TeaModel {
                 }
             }
         }
+        public var backendPorts: [ModifyDomainRequest.Redirect.BackendPorts]?
+
         public var backends: [String]?
 
         public var backupBackends: [String]?
@@ -40281,6 +40465,13 @@ public class ModifyDomainRequest : Tea.TeaModel {
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
+            if self.backendPorts != nil {
+                var tmp : [Any] = []
+                for k in self.backendPorts! {
+                    tmp.append(k.toMap())
+                }
+                map["BackendPorts"] = tmp
+            }
             if self.backends != nil {
                 map["Backends"] = self.backends!
             }
@@ -40341,6 +40532,19 @@ public class ModifyDomainRequest : Tea.TeaModel {
 
         public override func fromMap(_ dict: [String: Any?]?) -> Void {
             guard let dict else { return }
+            if let value = dict["BackendPorts"] as? [Any?] {
+                var tmp : [ModifyDomainRequest.Redirect.BackendPorts] = []
+                for v in value {
+                    if v != nil {
+                        var model = ModifyDomainRequest.Redirect.BackendPorts()
+                        if v != nil {
+                            model.fromMap(v as? [String: Any?])
+                        }
+                        tmp.append(model)
+                    }
+                }
+                self.backendPorts = tmp
+            }
             if let value = dict["Backends"] as? [String] {
                 self.backends = value
             }
