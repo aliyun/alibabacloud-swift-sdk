@@ -4073,6 +4073,8 @@ public class DescribeCouponResponseBody : Tea.TeaModel {
 
         public var endTime: String?
 
+        public var firstBuy: Bool?
+
         public var gmtCreate: String?
 
         public var itemNames: [String]?
@@ -4142,6 +4144,9 @@ public class DescribeCouponResponseBody : Tea.TeaModel {
             }
             if self.endTime != nil {
                 map["EndTime"] = self.endTime!
+            }
+            if self.firstBuy != nil {
+                map["FirstBuy"] = self.firstBuy!
             }
             if self.gmtCreate != nil {
                 map["GmtCreate"] = self.gmtCreate!
@@ -4223,6 +4228,9 @@ public class DescribeCouponResponseBody : Tea.TeaModel {
             }
             if let value = dict["EndTime"] as? String {
                 self.endTime = value
+            }
+            if let value = dict["FirstBuy"] as? Bool {
+                self.firstBuy = value
             }
             if let value = dict["GmtCreate"] as? String {
                 self.gmtCreate = value
@@ -13925,6 +13933,933 @@ public class QueryCostCenterRuleResponse : Tea.TeaModel {
         }
         if let value = dict["body"] as? [String: Any?] {
             var model = QueryCostCenterRuleResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
+public class QueryCostCenterShareRuleRequest : Tea.TeaModel {
+    public class EcIdAccountIds : Tea.TeaModel {
+        public var accountIds: [Int64]?
+
+        public var ecId: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.accountIds != nil {
+                map["AccountIds"] = self.accountIds!
+            }
+            if self.ecId != nil {
+                map["EcId"] = self.ecId!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["AccountIds"] as? [Int64] {
+                self.accountIds = value
+            }
+            if let value = dict["EcId"] as? String {
+                self.ecId = value
+            }
+        }
+    }
+    public var ecIdAccountIds: [QueryCostCenterShareRuleRequest.EcIdAccountIds]?
+
+    public var maxResults: Int32?
+
+    public var nbid: String?
+
+    public var nextToken: String?
+
+    public var ownerAccountId: Int64?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.ecIdAccountIds != nil {
+            var tmp : [Any] = []
+            for k in self.ecIdAccountIds! {
+                tmp.append(k.toMap())
+            }
+            map["EcIdAccountIds"] = tmp
+        }
+        if self.maxResults != nil {
+            map["MaxResults"] = self.maxResults!
+        }
+        if self.nbid != nil {
+            map["Nbid"] = self.nbid!
+        }
+        if self.nextToken != nil {
+            map["NextToken"] = self.nextToken!
+        }
+        if self.ownerAccountId != nil {
+            map["OwnerAccountId"] = self.ownerAccountId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["EcIdAccountIds"] as? [Any?] {
+            var tmp : [QueryCostCenterShareRuleRequest.EcIdAccountIds] = []
+            for v in value {
+                if v != nil {
+                    var model = QueryCostCenterShareRuleRequest.EcIdAccountIds()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.ecIdAccountIds = tmp
+        }
+        if let value = dict["MaxResults"] as? Int32 {
+            self.maxResults = value
+        }
+        if let value = dict["Nbid"] as? String {
+            self.nbid = value
+        }
+        if let value = dict["NextToken"] as? String {
+            self.nextToken = value
+        }
+        if let value = dict["OwnerAccountId"] as? Int64 {
+            self.ownerAccountId = value
+        }
+    }
+}
+
+public class QueryCostCenterShareRuleResponseBody : Tea.TeaModel {
+    public class Data : Tea.TeaModel {
+        public class FromCostCenterShareRuleDetails : Tea.TeaModel {
+            public var costCenterCode: String?
+
+            public var costCenterId: Int64?
+
+            public var costCenterName: String?
+
+            public var gmtCreate: String?
+
+            public var gmtModified: String?
+
+            public var ownerAccountId: Int64?
+
+            public var parentCostCenterId: Int64?
+
+            public var prevCostCenterId: Int64?
+
+            public var rootCostCenterId: Int64?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.costCenterCode != nil {
+                    map["CostCenterCode"] = self.costCenterCode!
+                }
+                if self.costCenterId != nil {
+                    map["CostCenterId"] = self.costCenterId!
+                }
+                if self.costCenterName != nil {
+                    map["CostCenterName"] = self.costCenterName!
+                }
+                if self.gmtCreate != nil {
+                    map["GmtCreate"] = self.gmtCreate!
+                }
+                if self.gmtModified != nil {
+                    map["GmtModified"] = self.gmtModified!
+                }
+                if self.ownerAccountId != nil {
+                    map["OwnerAccountId"] = self.ownerAccountId!
+                }
+                if self.parentCostCenterId != nil {
+                    map["ParentCostCenterId"] = self.parentCostCenterId!
+                }
+                if self.prevCostCenterId != nil {
+                    map["PrevCostCenterId"] = self.prevCostCenterId!
+                }
+                if self.rootCostCenterId != nil {
+                    map["RootCostCenterId"] = self.rootCostCenterId!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["CostCenterCode"] as? String {
+                    self.costCenterCode = value
+                }
+                if let value = dict["CostCenterId"] as? Int64 {
+                    self.costCenterId = value
+                }
+                if let value = dict["CostCenterName"] as? String {
+                    self.costCenterName = value
+                }
+                if let value = dict["GmtCreate"] as? String {
+                    self.gmtCreate = value
+                }
+                if let value = dict["GmtModified"] as? String {
+                    self.gmtModified = value
+                }
+                if let value = dict["OwnerAccountId"] as? Int64 {
+                    self.ownerAccountId = value
+                }
+                if let value = dict["ParentCostCenterId"] as? Int64 {
+                    self.parentCostCenterId = value
+                }
+                if let value = dict["PrevCostCenterId"] as? Int64 {
+                    self.prevCostCenterId = value
+                }
+                if let value = dict["RootCostCenterId"] as? Int64 {
+                    self.rootCostCenterId = value
+                }
+            }
+        }
+        public class ToCostCenterShareRuleDetails : Tea.TeaModel {
+            public var costCenterCode: String?
+
+            public var costCenterId: Int64?
+
+            public var costCenterName: String?
+
+            public var gmtCreate: String?
+
+            public var gmtModified: String?
+
+            public var ownerAccountId: Int64?
+
+            public var parentCostCenterId: Int64?
+
+            public var prevCostCenterId: Int64?
+
+            public var rootCostCenterId: Int64?
+
+            public var shareRatio: Double?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.costCenterCode != nil {
+                    map["CostCenterCode"] = self.costCenterCode!
+                }
+                if self.costCenterId != nil {
+                    map["CostCenterId"] = self.costCenterId!
+                }
+                if self.costCenterName != nil {
+                    map["CostCenterName"] = self.costCenterName!
+                }
+                if self.gmtCreate != nil {
+                    map["GmtCreate"] = self.gmtCreate!
+                }
+                if self.gmtModified != nil {
+                    map["GmtModified"] = self.gmtModified!
+                }
+                if self.ownerAccountId != nil {
+                    map["OwnerAccountId"] = self.ownerAccountId!
+                }
+                if self.parentCostCenterId != nil {
+                    map["ParentCostCenterId"] = self.parentCostCenterId!
+                }
+                if self.prevCostCenterId != nil {
+                    map["PrevCostCenterId"] = self.prevCostCenterId!
+                }
+                if self.rootCostCenterId != nil {
+                    map["RootCostCenterId"] = self.rootCostCenterId!
+                }
+                if self.shareRatio != nil {
+                    map["ShareRatio"] = self.shareRatio!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["CostCenterCode"] as? String {
+                    self.costCenterCode = value
+                }
+                if let value = dict["CostCenterId"] as? Int64 {
+                    self.costCenterId = value
+                }
+                if let value = dict["CostCenterName"] as? String {
+                    self.costCenterName = value
+                }
+                if let value = dict["GmtCreate"] as? String {
+                    self.gmtCreate = value
+                }
+                if let value = dict["GmtModified"] as? String {
+                    self.gmtModified = value
+                }
+                if let value = dict["OwnerAccountId"] as? Int64 {
+                    self.ownerAccountId = value
+                }
+                if let value = dict["ParentCostCenterId"] as? Int64 {
+                    self.parentCostCenterId = value
+                }
+                if let value = dict["PrevCostCenterId"] as? Int64 {
+                    self.prevCostCenterId = value
+                }
+                if let value = dict["RootCostCenterId"] as? Int64 {
+                    self.rootCostCenterId = value
+                }
+                if let value = dict["ShareRatio"] as? Double {
+                    self.shareRatio = value
+                }
+            }
+        }
+        public var fromCostCenterShareRuleDetails: [QueryCostCenterShareRuleResponseBody.Data.FromCostCenterShareRuleDetails]?
+
+        public var ownerAccountId: Int64?
+
+        public var shareRuleId: Int64?
+
+        public var shareRuleName: String?
+
+        public var shareRuleType: String?
+
+        public var toCostCenterShareRuleDetails: [QueryCostCenterShareRuleResponseBody.Data.ToCostCenterShareRuleDetails]?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.fromCostCenterShareRuleDetails != nil {
+                var tmp : [Any] = []
+                for k in self.fromCostCenterShareRuleDetails! {
+                    tmp.append(k.toMap())
+                }
+                map["FromCostCenterShareRuleDetails"] = tmp
+            }
+            if self.ownerAccountId != nil {
+                map["OwnerAccountId"] = self.ownerAccountId!
+            }
+            if self.shareRuleId != nil {
+                map["ShareRuleId"] = self.shareRuleId!
+            }
+            if self.shareRuleName != nil {
+                map["ShareRuleName"] = self.shareRuleName!
+            }
+            if self.shareRuleType != nil {
+                map["ShareRuleType"] = self.shareRuleType!
+            }
+            if self.toCostCenterShareRuleDetails != nil {
+                var tmp : [Any] = []
+                for k in self.toCostCenterShareRuleDetails! {
+                    tmp.append(k.toMap())
+                }
+                map["ToCostCenterShareRuleDetails"] = tmp
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["FromCostCenterShareRuleDetails"] as? [Any?] {
+                var tmp : [QueryCostCenterShareRuleResponseBody.Data.FromCostCenterShareRuleDetails] = []
+                for v in value {
+                    if v != nil {
+                        var model = QueryCostCenterShareRuleResponseBody.Data.FromCostCenterShareRuleDetails()
+                        if v != nil {
+                            model.fromMap(v as? [String: Any?])
+                        }
+                        tmp.append(model)
+                    }
+                }
+                self.fromCostCenterShareRuleDetails = tmp
+            }
+            if let value = dict["OwnerAccountId"] as? Int64 {
+                self.ownerAccountId = value
+            }
+            if let value = dict["ShareRuleId"] as? Int64 {
+                self.shareRuleId = value
+            }
+            if let value = dict["ShareRuleName"] as? String {
+                self.shareRuleName = value
+            }
+            if let value = dict["ShareRuleType"] as? String {
+                self.shareRuleType = value
+            }
+            if let value = dict["ToCostCenterShareRuleDetails"] as? [Any?] {
+                var tmp : [QueryCostCenterShareRuleResponseBody.Data.ToCostCenterShareRuleDetails] = []
+                for v in value {
+                    if v != nil {
+                        var model = QueryCostCenterShareRuleResponseBody.Data.ToCostCenterShareRuleDetails()
+                        if v != nil {
+                            model.fromMap(v as? [String: Any?])
+                        }
+                        tmp.append(model)
+                    }
+                }
+                self.toCostCenterShareRuleDetails = tmp
+            }
+        }
+    }
+    public var data: [QueryCostCenterShareRuleResponseBody.Data]?
+
+    public var maxResults: Int32?
+
+    public var metadata: Any?
+
+    public var nextToken: String?
+
+    public var requestId: String?
+
+    public var totalCount: Int32?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.data != nil {
+            var tmp : [Any] = []
+            for k in self.data! {
+                tmp.append(k.toMap())
+            }
+            map["Data"] = tmp
+        }
+        if self.maxResults != nil {
+            map["MaxResults"] = self.maxResults!
+        }
+        if self.metadata != nil {
+            map["Metadata"] = self.metadata!
+        }
+        if self.nextToken != nil {
+            map["NextToken"] = self.nextToken!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.totalCount != nil {
+            map["TotalCount"] = self.totalCount!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["Data"] as? [Any?] {
+            var tmp : [QueryCostCenterShareRuleResponseBody.Data] = []
+            for v in value {
+                if v != nil {
+                    var model = QueryCostCenterShareRuleResponseBody.Data()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.data = tmp
+        }
+        if let value = dict["MaxResults"] as? Int32 {
+            self.maxResults = value
+        }
+        if let value = dict["Metadata"] as? Any {
+            self.metadata = value
+        }
+        if let value = dict["NextToken"] as? String {
+            self.nextToken = value
+        }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+        if let value = dict["TotalCount"] as? Int32 {
+            self.totalCount = value
+        }
+    }
+}
+
+public class QueryCostCenterShareRuleResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: QueryCostCenterShareRuleResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = QueryCostCenterShareRuleResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
+public class SaveCostCenterShareRuleRequest : Tea.TeaModel {
+    public class CreateShareRuleList : Tea.TeaModel {
+        public var fromCostCenterList: [Int64]?
+
+        public var shareRatioList: [Double]?
+
+        public var shareRuleName: String?
+
+        public var shareType: String?
+
+        public var toCostCenterList: [Int64]?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.fromCostCenterList != nil {
+                map["FromCostCenterList"] = self.fromCostCenterList!
+            }
+            if self.shareRatioList != nil {
+                map["ShareRatioList"] = self.shareRatioList!
+            }
+            if self.shareRuleName != nil {
+                map["ShareRuleName"] = self.shareRuleName!
+            }
+            if self.shareType != nil {
+                map["ShareType"] = self.shareType!
+            }
+            if self.toCostCenterList != nil {
+                map["ToCostCenterList"] = self.toCostCenterList!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["FromCostCenterList"] as? [Int64] {
+                self.fromCostCenterList = value
+            }
+            if let value = dict["ShareRatioList"] as? [Double] {
+                self.shareRatioList = value
+            }
+            if let value = dict["ShareRuleName"] as? String {
+                self.shareRuleName = value
+            }
+            if let value = dict["ShareType"] as? String {
+                self.shareType = value
+            }
+            if let value = dict["ToCostCenterList"] as? [Int64] {
+                self.toCostCenterList = value
+            }
+        }
+    }
+    public class ModifyShareRuleList : Tea.TeaModel {
+        public var fromCostCenterList: [Int64]?
+
+        public var shareRatioList: [Double]?
+
+        public var shareRuleId: Int64?
+
+        public var shareRuleName: String?
+
+        public var shareType: String?
+
+        public var toCostCenterList: [Int64]?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.fromCostCenterList != nil {
+                map["FromCostCenterList"] = self.fromCostCenterList!
+            }
+            if self.shareRatioList != nil {
+                map["ShareRatioList"] = self.shareRatioList!
+            }
+            if self.shareRuleId != nil {
+                map["ShareRuleId"] = self.shareRuleId!
+            }
+            if self.shareRuleName != nil {
+                map["ShareRuleName"] = self.shareRuleName!
+            }
+            if self.shareType != nil {
+                map["ShareType"] = self.shareType!
+            }
+            if self.toCostCenterList != nil {
+                map["ToCostCenterList"] = self.toCostCenterList!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["FromCostCenterList"] as? [Int64] {
+                self.fromCostCenterList = value
+            }
+            if let value = dict["ShareRatioList"] as? [Double] {
+                self.shareRatioList = value
+            }
+            if let value = dict["ShareRuleId"] as? Int64 {
+                self.shareRuleId = value
+            }
+            if let value = dict["ShareRuleName"] as? String {
+                self.shareRuleName = value
+            }
+            if let value = dict["ShareType"] as? String {
+                self.shareType = value
+            }
+            if let value = dict["ToCostCenterList"] as? [Int64] {
+                self.toCostCenterList = value
+            }
+        }
+    }
+    public var createShareRuleList: [SaveCostCenterShareRuleRequest.CreateShareRuleList]?
+
+    public var modifyShareRuleList: [SaveCostCenterShareRuleRequest.ModifyShareRuleList]?
+
+    public var nbid: String?
+
+    public var ownerAccountId: Int64?
+
+    public var removeShareRuleList: [Int64]?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.createShareRuleList != nil {
+            var tmp : [Any] = []
+            for k in self.createShareRuleList! {
+                tmp.append(k.toMap())
+            }
+            map["CreateShareRuleList"] = tmp
+        }
+        if self.modifyShareRuleList != nil {
+            var tmp : [Any] = []
+            for k in self.modifyShareRuleList! {
+                tmp.append(k.toMap())
+            }
+            map["ModifyShareRuleList"] = tmp
+        }
+        if self.nbid != nil {
+            map["Nbid"] = self.nbid!
+        }
+        if self.ownerAccountId != nil {
+            map["OwnerAccountId"] = self.ownerAccountId!
+        }
+        if self.removeShareRuleList != nil {
+            map["RemoveShareRuleList"] = self.removeShareRuleList!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["CreateShareRuleList"] as? [Any?] {
+            var tmp : [SaveCostCenterShareRuleRequest.CreateShareRuleList] = []
+            for v in value {
+                if v != nil {
+                    var model = SaveCostCenterShareRuleRequest.CreateShareRuleList()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.createShareRuleList = tmp
+        }
+        if let value = dict["ModifyShareRuleList"] as? [Any?] {
+            var tmp : [SaveCostCenterShareRuleRequest.ModifyShareRuleList] = []
+            for v in value {
+                if v != nil {
+                    var model = SaveCostCenterShareRuleRequest.ModifyShareRuleList()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.modifyShareRuleList = tmp
+        }
+        if let value = dict["Nbid"] as? String {
+            self.nbid = value
+        }
+        if let value = dict["OwnerAccountId"] as? Int64 {
+            self.ownerAccountId = value
+        }
+        if let value = dict["RemoveShareRuleList"] as? [Int64] {
+            self.removeShareRuleList = value
+        }
+    }
+}
+
+public class SaveCostCenterShareRuleShrinkRequest : Tea.TeaModel {
+    public var createShareRuleListShrink: String?
+
+    public var modifyShareRuleListShrink: String?
+
+    public var nbid: String?
+
+    public var ownerAccountId: Int64?
+
+    public var removeShareRuleListShrink: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.createShareRuleListShrink != nil {
+            map["CreateShareRuleList"] = self.createShareRuleListShrink!
+        }
+        if self.modifyShareRuleListShrink != nil {
+            map["ModifyShareRuleList"] = self.modifyShareRuleListShrink!
+        }
+        if self.nbid != nil {
+            map["Nbid"] = self.nbid!
+        }
+        if self.ownerAccountId != nil {
+            map["OwnerAccountId"] = self.ownerAccountId!
+        }
+        if self.removeShareRuleListShrink != nil {
+            map["RemoveShareRuleList"] = self.removeShareRuleListShrink!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["CreateShareRuleList"] as? String {
+            self.createShareRuleListShrink = value
+        }
+        if let value = dict["ModifyShareRuleList"] as? String {
+            self.modifyShareRuleListShrink = value
+        }
+        if let value = dict["Nbid"] as? String {
+            self.nbid = value
+        }
+        if let value = dict["OwnerAccountId"] as? Int64 {
+            self.ownerAccountId = value
+        }
+        if let value = dict["RemoveShareRuleList"] as? String {
+            self.removeShareRuleListShrink = value
+        }
+    }
+}
+
+public class SaveCostCenterShareRuleResponseBody : Tea.TeaModel {
+    public var metadata: Any?
+
+    public var requestId: String?
+
+    public var success: Bool?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.metadata != nil {
+            map["Metadata"] = self.metadata!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.success != nil {
+            map["Success"] = self.success!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["Metadata"] as? Any {
+            self.metadata = value
+        }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+        if let value = dict["Success"] as? Bool {
+            self.success = value
+        }
+    }
+}
+
+public class SaveCostCenterShareRuleResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: SaveCostCenterShareRuleResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = SaveCostCenterShareRuleResponseBody()
             model.fromMap(value)
             self.body = model
         }

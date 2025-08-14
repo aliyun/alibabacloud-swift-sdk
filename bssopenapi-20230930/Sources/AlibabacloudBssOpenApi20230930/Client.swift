@@ -1765,6 +1765,103 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func queryCostCenterShareRuleWithOptions(_ request: QueryCostCenterShareRuleRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> QueryCostCenterShareRuleResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.ecIdAccountIds)) {
+            query["EcIdAccountIds"] = request.ecIdAccountIds ?? [];
+        }
+        if (!TeaUtils.Client.isUnset(request.maxResults)) {
+            query["MaxResults"] = request.maxResults!;
+        }
+        if (!TeaUtils.Client.isUnset(request.nbid)) {
+            query["Nbid"] = request.nbid ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.nextToken)) {
+            query["NextToken"] = request.nextToken ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.ownerAccountId)) {
+            query["OwnerAccountId"] = request.ownerAccountId!;
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "QueryCostCenterShareRule",
+            "version": "2023-09-30",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(QueryCostCenterShareRuleResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func queryCostCenterShareRule(_ request: QueryCostCenterShareRuleRequest) async throws -> QueryCostCenterShareRuleResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await queryCostCenterShareRuleWithOptions(request as! QueryCostCenterShareRuleRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func saveCostCenterShareRuleWithOptions(_ tmpReq: SaveCostCenterShareRuleRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> SaveCostCenterShareRuleResponse {
+        try TeaUtils.Client.validateModel(tmpReq)
+        var request: SaveCostCenterShareRuleShrinkRequest = SaveCostCenterShareRuleShrinkRequest([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.createShareRuleList)) {
+            request.createShareRuleListShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.createShareRuleList, "CreateShareRuleList", "json")
+        }
+        if (!TeaUtils.Client.isUnset(tmpReq.modifyShareRuleList)) {
+            request.modifyShareRuleListShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.modifyShareRuleList, "ModifyShareRuleList", "json")
+        }
+        if (!TeaUtils.Client.isUnset(tmpReq.removeShareRuleList)) {
+            request.removeShareRuleListShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.removeShareRuleList, "RemoveShareRuleList", "json")
+        }
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.createShareRuleListShrink)) {
+            query["CreateShareRuleList"] = request.createShareRuleListShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.modifyShareRuleListShrink)) {
+            query["ModifyShareRuleList"] = request.modifyShareRuleListShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.nbid)) {
+            query["Nbid"] = request.nbid ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.ownerAccountId)) {
+            query["OwnerAccountId"] = request.ownerAccountId!;
+        }
+        if (!TeaUtils.Client.isUnset(request.removeShareRuleListShrink)) {
+            query["RemoveShareRuleList"] = request.removeShareRuleListShrink ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "SaveCostCenterShareRule",
+            "version": "2023-09-30",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(SaveCostCenterShareRuleResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func saveCostCenterShareRule(_ request: SaveCostCenterShareRuleRequest) async throws -> SaveCostCenterShareRuleResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await saveCostCenterShareRuleWithOptions(request as! SaveCostCenterShareRuleRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func setFundAccountCreditAmountWithOptions(_ request: SetFundAccountCreditAmountRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> SetFundAccountCreditAmountResponse {
         try TeaUtils.Client.validateModel(request)
         var body: [String: Any] = [:]
