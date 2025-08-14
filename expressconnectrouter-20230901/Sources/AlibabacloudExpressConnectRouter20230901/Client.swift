@@ -1357,6 +1357,49 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func modifyExpressConnectRouterAssociationWithOptions(_ request: ModifyExpressConnectRouterAssociationRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ModifyExpressConnectRouterAssociationResponse {
+        try TeaUtils.Client.validateModel(request)
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.associationId)) {
+            body["AssociationId"] = request.associationId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.clientToken)) {
+            body["ClientToken"] = request.clientToken ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.description_)) {
+            body["Description"] = request.description_ ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.dryRun)) {
+            body["DryRun"] = request.dryRun!;
+        }
+        if (!TeaUtils.Client.isUnset(request.ecrId)) {
+            body["EcrId"] = request.ecrId ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "ModifyExpressConnectRouterAssociation",
+            "version": "2023-09-01",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(ModifyExpressConnectRouterAssociationResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func modifyExpressConnectRouterAssociation(_ request: ModifyExpressConnectRouterAssociationRequest) async throws -> ModifyExpressConnectRouterAssociationResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await modifyExpressConnectRouterAssociationWithOptions(request as! ModifyExpressConnectRouterAssociationRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func modifyExpressConnectRouterAssociationAllowedPrefixWithOptions(_ request: ModifyExpressConnectRouterAssociationAllowedPrefixRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ModifyExpressConnectRouterAssociationAllowedPrefixResponse {
         try TeaUtils.Client.validateModel(request)
         var body: [String: Any] = [:]
@@ -1403,6 +1446,52 @@ open class Client : AlibabacloudOpenApi.Client {
     public func modifyExpressConnectRouterAssociationAllowedPrefix(_ request: ModifyExpressConnectRouterAssociationAllowedPrefixRequest) async throws -> ModifyExpressConnectRouterAssociationAllowedPrefixResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         return try await modifyExpressConnectRouterAssociationAllowedPrefixWithOptions(request as! ModifyExpressConnectRouterAssociationAllowedPrefixRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func modifyExpressConnectRouterChildInstanceWithOptions(_ request: ModifyExpressConnectRouterChildInstanceRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ModifyExpressConnectRouterChildInstanceResponse {
+        try TeaUtils.Client.validateModel(request)
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.childInstanceId)) {
+            body["ChildInstanceId"] = request.childInstanceId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.childInstanceType)) {
+            body["ChildInstanceType"] = request.childInstanceType ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.clientToken)) {
+            body["ClientToken"] = request.clientToken ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.description_)) {
+            body["Description"] = request.description_ ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.dryRun)) {
+            body["DryRun"] = request.dryRun!;
+        }
+        if (!TeaUtils.Client.isUnset(request.ecrId)) {
+            body["EcrId"] = request.ecrId ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "ModifyExpressConnectRouterChildInstance",
+            "version": "2023-09-01",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(ModifyExpressConnectRouterChildInstanceResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func modifyExpressConnectRouterChildInstance(_ request: ModifyExpressConnectRouterChildInstanceRequest) async throws -> ModifyExpressConnectRouterChildInstanceResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await modifyExpressConnectRouterChildInstanceWithOptions(request as! ModifyExpressConnectRouterChildInstanceRequest, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
