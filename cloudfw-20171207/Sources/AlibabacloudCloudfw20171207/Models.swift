@@ -5133,6 +5133,8 @@ public class DeleteSecurityProxyRequest : Tea.TeaModel {
 
     public var proxyId: String?
 
+    public var trimSql: String?
+
     public override init() {
         super.init()
     }
@@ -5153,6 +5155,9 @@ public class DeleteSecurityProxyRequest : Tea.TeaModel {
         if self.proxyId != nil {
             map["ProxyId"] = self.proxyId!
         }
+        if self.trimSql != nil {
+            map["trimSql"] = self.trimSql!
+        }
         return map
     }
 
@@ -5163,6 +5168,9 @@ public class DeleteSecurityProxyRequest : Tea.TeaModel {
         }
         if let value = dict["ProxyId"] as? String {
             self.proxyId = value
+        }
+        if let value = dict["trimSql"] as? String {
+            self.trimSql = value
         }
     }
 }
