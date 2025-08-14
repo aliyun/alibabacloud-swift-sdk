@@ -6063,11 +6063,22 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func modifyBackupPolicyWithOptions(_ request: ModifyBackupPolicyRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ModifyBackupPolicyResponse {
-        try TeaUtils.Client.validateModel(request)
+    public func modifyBackupPolicyWithOptions(_ tmpReq: ModifyBackupPolicyRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ModifyBackupPolicyResponse {
+        try TeaUtils.Client.validateModel(tmpReq)
+        var request: ModifyBackupPolicyShrinkRequest = ModifyBackupPolicyShrinkRequest([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.advancedDataPolicies)) {
+            request.advancedDataPoliciesShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.advancedDataPolicies, "AdvancedDataPolicies", "json")
+        }
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.advancedDataPoliciesShrink)) {
+            query["AdvancedDataPolicies"] = request.advancedDataPoliciesShrink ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.backupFrequency)) {
             query["BackupFrequency"] = request.backupFrequency ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.backupPolicyLevel)) {
+            query["BackupPolicyLevel"] = request.backupPolicyLevel ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.backupRetentionPolicyOnClusterDeletion)) {
             query["BackupRetentionPolicyOnClusterDeletion"] = request.backupRetentionPolicyOnClusterDeletion ?? "";
