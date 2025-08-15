@@ -8305,6 +8305,45 @@ public class GetTopicResponse : Tea.TeaModel {
     }
 }
 
+public class GetTraceRequest : Tea.TeaModel {
+    public var endTime: String?
+
+    public var startTime: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.endTime != nil {
+            map["endTime"] = self.endTime!
+        }
+        if self.startTime != nil {
+            map["startTime"] = self.startTime!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["endTime"] as? String {
+            self.endTime = value
+        }
+        if let value = dict["startTime"] as? String {
+            self.startTime = value
+        }
+    }
+}
+
 public class GetTraceResponseBody : Tea.TeaModel {
     public class Data : Tea.TeaModel {
         public class BrokerInfo : Tea.TeaModel {

@@ -1062,9 +1062,18 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func getTraceWithOptions(_ instanceId: String, _ topicName: String, _ messageId: String, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> GetTraceResponse {
+    public func getTraceWithOptions(_ instanceId: String, _ topicName: String, _ messageId: String, _ request: GetTraceRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> GetTraceResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.endTime)) {
+            query["endTime"] = request.endTime ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.startTime)) {
+            query["startTime"] = request.startTime ?? "";
+        }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
-            "headers": headers as! [String: String]
+            "headers": headers as! [String: String],
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
         ])
         var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
             "action": "GetTrace",
@@ -1082,10 +1091,10 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func getTrace(_ instanceId: String, _ topicName: String, _ messageId: String) async throws -> GetTraceResponse {
+    public func getTrace(_ instanceId: String, _ topicName: String, _ messageId: String, _ request: GetTraceRequest) async throws -> GetTraceResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         var headers: [String: String] = [:]
-        return try await getTraceWithOptions(instanceId as! String, topicName as! String, messageId as! String, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+        return try await getTraceWithOptions(instanceId as! String, topicName as! String, messageId as! String, request as! GetTraceRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
