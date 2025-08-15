@@ -24,9 +24,17 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func addAuditTermsWithOptions(_ request: AddAuditTermsRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> AddAuditTermsResponse {
-        try TeaUtils.Client.validateModel(request)
+    public func addAuditTermsWithOptions(_ tmpReq: AddAuditTermsRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> AddAuditTermsResponse {
+        try TeaUtils.Client.validateModel(tmpReq)
+        var request: AddAuditTermsShrinkRequest = AddAuditTermsShrinkRequest([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.exceptionWord)) {
+            request.exceptionWordShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.exceptionWord, "ExceptionWord", "json")
+        }
         var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.exceptionWordShrink)) {
+            body["ExceptionWord"] = request.exceptionWordShrink ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.keyword)) {
             body["Keyword"] = request.keyword ?? "";
         }
@@ -902,6 +910,40 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func deleteFactAuditUrlWithOptions(_ request: DeleteFactAuditUrlRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DeleteFactAuditUrlResponse {
+        try TeaUtils.Client.validateModel(request)
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.url)) {
+            body["Url"] = request.url ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.workspaceId)) {
+            body["WorkspaceId"] = request.workspaceId ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "DeleteFactAuditUrl",
+            "version": "2023-08-01",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(DeleteFactAuditUrlResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func deleteFactAuditUrl(_ request: DeleteFactAuditUrlRequest) async throws -> DeleteFactAuditUrlResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await deleteFactAuditUrlWithOptions(request as! DeleteFactAuditUrlRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func deleteGeneratedContentWithOptions(_ request: DeleteGeneratedContentRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DeleteGeneratedContentResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
@@ -1124,9 +1166,17 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func editAuditTermsWithOptions(_ request: EditAuditTermsRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> EditAuditTermsResponse {
-        try TeaUtils.Client.validateModel(request)
+    public func editAuditTermsWithOptions(_ tmpReq: EditAuditTermsRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> EditAuditTermsResponse {
+        try TeaUtils.Client.validateModel(tmpReq)
+        var request: EditAuditTermsShrinkRequest = EditAuditTermsShrinkRequest([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.exceptionWord)) {
+            request.exceptionWordShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.exceptionWord, "ExceptionWord", "json")
+        }
         var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.exceptionWordShrink)) {
+            body["ExceptionWord"] = request.exceptionWordShrink ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.id)) {
             body["Id"] = request.id ?? "";
         }
@@ -2348,6 +2398,37 @@ open class Client : AlibabacloudOpenApi.Client {
     public func getEnterpriseVocAnalysisTask(_ request: GetEnterpriseVocAnalysisTaskRequest) async throws -> GetEnterpriseVocAnalysisTaskResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         return try await getEnterpriseVocAnalysisTaskWithOptions(request as! GetEnterpriseVocAnalysisTaskRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getFactAuditUrlWithOptions(_ request: GetFactAuditUrlRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> GetFactAuditUrlResponse {
+        try TeaUtils.Client.validateModel(request)
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.workspaceId)) {
+            body["WorkspaceId"] = request.workspaceId ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "GetFactAuditUrl",
+            "version": "2023-08-01",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(GetFactAuditUrlResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getFactAuditUrl(_ request: GetFactAuditUrlRequest) async throws -> GetFactAuditUrlResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await getFactAuditUrlWithOptions(request as! GetFactAuditUrlRequest, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -7059,6 +7140,40 @@ open class Client : AlibabacloudOpenApi.Client {
     public func submitExportTermsTask(_ request: SubmitExportTermsTaskRequest) async throws -> SubmitExportTermsTaskResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         return try await submitExportTermsTaskWithOptions(request as! SubmitExportTermsTaskRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func submitFactAuditUrlWithOptions(_ request: SubmitFactAuditUrlRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> SubmitFactAuditUrlResponse {
+        try TeaUtils.Client.validateModel(request)
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.url)) {
+            body["Url"] = request.url ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.workspaceId)) {
+            body["WorkspaceId"] = request.workspaceId ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "SubmitFactAuditUrl",
+            "version": "2023-08-01",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(SubmitFactAuditUrlResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func submitFactAuditUrl(_ request: SubmitFactAuditUrlRequest) async throws -> SubmitFactAuditUrlResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await submitFactAuditUrlWithOptions(request as! SubmitFactAuditUrlRequest, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
