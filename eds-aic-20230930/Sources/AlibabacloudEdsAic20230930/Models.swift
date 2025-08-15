@@ -2241,6 +2241,8 @@ public class CreateCloudPhoneNodeRequest : Tea.TeaModel {
 
         public var limitedBandwidth: Int32?
 
+        public var payType: String?
+
         public override init() {
             super.init()
         }
@@ -2273,6 +2275,9 @@ public class CreateCloudPhoneNodeRequest : Tea.TeaModel {
             if self.limitedBandwidth != nil {
                 map["LimitedBandwidth"] = self.limitedBandwidth!
             }
+            if self.payType != nil {
+                map["PayType"] = self.payType!
+            }
             return map
         }
 
@@ -2295,6 +2300,9 @@ public class CreateCloudPhoneNodeRequest : Tea.TeaModel {
             }
             if let value = dict["LimitedBandwidth"] as? Int32 {
                 self.limitedBandwidth = value
+            }
+            if let value = dict["PayType"] as? String {
+                self.payType = value
             }
         }
     }
