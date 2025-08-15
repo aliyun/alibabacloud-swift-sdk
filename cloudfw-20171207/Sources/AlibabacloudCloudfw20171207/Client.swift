@@ -1475,9 +1475,6 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.proxyId)) {
             query["ProxyId"] = request.proxyId ?? "";
         }
-        if (!TeaUtils.Client.isUnset(request.trimSql)) {
-            query["trimSql"] = request.trimSql ?? "";
-        }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "query": AlibabaCloudOpenApiUtil.Client.query(query)
         ])

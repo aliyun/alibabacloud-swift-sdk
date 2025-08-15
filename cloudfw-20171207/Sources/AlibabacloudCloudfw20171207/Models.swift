@@ -5133,8 +5133,6 @@ public class DeleteSecurityProxyRequest : Tea.TeaModel {
 
     public var proxyId: String?
 
-    public var trimSql: String?
-
     public override init() {
         super.init()
     }
@@ -5155,9 +5153,6 @@ public class DeleteSecurityProxyRequest : Tea.TeaModel {
         if self.proxyId != nil {
             map["ProxyId"] = self.proxyId!
         }
-        if self.trimSql != nil {
-            map["trimSql"] = self.trimSql!
-        }
         return map
     }
 
@@ -5168,9 +5163,6 @@ public class DeleteSecurityProxyRequest : Tea.TeaModel {
         }
         if let value = dict["ProxyId"] as? String {
             self.proxyId = value
-        }
-        if let value = dict["trimSql"] as? String {
-            self.trimSql = value
         }
     }
 }
@@ -11748,7 +11740,7 @@ public class DescribeNatFirewallControlPolicyResponseBody : Tea.TeaModel {
 
         public var hitLastTime: Int64?
 
-        public var hitTimes: Int32?
+        public var hitTimes: Int64?
 
         public var modifyTime: Int64?
 
@@ -11955,7 +11947,7 @@ public class DescribeNatFirewallControlPolicyResponseBody : Tea.TeaModel {
             if let value = dict["HitLastTime"] as? Int64 {
                 self.hitLastTime = value
             }
-            if let value = dict["HitTimes"] as? Int32 {
+            if let value = dict["HitTimes"] as? Int64 {
                 self.hitTimes = value
             }
             if let value = dict["ModifyTime"] as? Int64 {
