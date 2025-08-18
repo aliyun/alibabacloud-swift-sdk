@@ -9110,6 +9110,8 @@ public class CreateStreamBatchJobMappingResponseBody : Tea.TeaModel {
     public class Data : Tea.TeaModel {
         public var fileId: String?
 
+        public var jobId: Int64?
+
         public var url: String?
 
         public override init() {
@@ -9129,6 +9131,9 @@ public class CreateStreamBatchJobMappingResponseBody : Tea.TeaModel {
             if self.fileId != nil {
                 map["FileId"] = self.fileId!
             }
+            if self.jobId != nil {
+                map["JobId"] = self.jobId!
+            }
             if self.url != nil {
                 map["Url"] = self.url!
             }
@@ -9139,6 +9144,9 @@ public class CreateStreamBatchJobMappingResponseBody : Tea.TeaModel {
             guard let dict else { return }
             if let value = dict["FileId"] as? String {
                 self.fileId = value
+            }
+            if let value = dict["JobId"] as? Int64 {
+                self.jobId = value
             }
             if let value = dict["Url"] as? String {
                 self.url = value
