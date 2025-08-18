@@ -15127,7 +15127,7 @@ public class CreateUrlObservationRequest : Tea.TeaModel {
 }
 
 public class CreateUrlObservationResponseBody : Tea.TeaModel {
-    public var configId: String?
+    public var configId: Int64?
 
     public var requestId: String?
 
@@ -15156,7 +15156,7 @@ public class CreateUrlObservationResponseBody : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
-        if let value = dict["ConfigId"] as? String {
+        if let value = dict["ConfigId"] as? Int64 {
             self.configId = value
         }
         if let value = dict["RequestId"] as? String {
