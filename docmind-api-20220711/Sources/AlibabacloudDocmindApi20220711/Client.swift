@@ -1290,6 +1290,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func submitDocParserJobWithOptions(_ request: SubmitDocParserJobRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> SubmitDocParserJobResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.enhancementMode)) {
+            query["EnhancementMode"] = request.enhancementMode ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.fileName)) {
             query["FileName"] = request.fileName ?? "";
         }

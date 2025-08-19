@@ -4109,6 +4109,8 @@ public class SubmitDigitalDocStructureJobResponse : Tea.TeaModel {
 }
 
 public class SubmitDocParserJobRequest : Tea.TeaModel {
+    public var enhancementMode: String?
+
     public var fileName: String?
 
     public var fileNameExtension: String?
@@ -4143,6 +4145,9 @@ public class SubmitDocParserJobRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.enhancementMode != nil {
+            map["EnhancementMode"] = self.enhancementMode!
+        }
         if self.fileName != nil {
             map["FileName"] = self.fileName!
         }
@@ -4178,6 +4183,9 @@ public class SubmitDocParserJobRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["EnhancementMode"] as? String {
+            self.enhancementMode = value
+        }
         if let value = dict["FileName"] as? String {
             self.fileName = value
         }
@@ -4212,6 +4220,8 @@ public class SubmitDocParserJobRequest : Tea.TeaModel {
 }
 
 public class SubmitDocParserJobAdvanceRequest : Tea.TeaModel {
+    public var enhancementMode: String?
+
     public var fileName: String?
 
     public var fileNameExtension: String?
@@ -4246,6 +4256,9 @@ public class SubmitDocParserJobAdvanceRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.enhancementMode != nil {
+            map["EnhancementMode"] = self.enhancementMode!
+        }
         if self.fileName != nil {
             map["FileName"] = self.fileName!
         }
@@ -4281,6 +4294,9 @@ public class SubmitDocParserJobAdvanceRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["EnhancementMode"] as? String {
+            self.enhancementMode = value
+        }
         if let value = dict["FileName"] as? String {
             self.fileName = value
         }
