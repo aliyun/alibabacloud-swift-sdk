@@ -2572,6 +2572,364 @@ public class GetEndpointAttributeResponse : Tea.TeaModel {
     }
 }
 
+public class GetEventRuleRequest : Tea.TeaModel {
+    public var productName: String?
+
+    public var ruleName: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.productName != nil {
+            map["ProductName"] = self.productName!
+        }
+        if self.ruleName != nil {
+            map["RuleName"] = self.ruleName!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["ProductName"] as? String {
+            self.productName = value
+        }
+        if let value = dict["RuleName"] as? String {
+            self.ruleName = value
+        }
+    }
+}
+
+public class GetEventRuleResponseBody : Tea.TeaModel {
+    public class Data : Tea.TeaModel {
+        public class Endpoint : Tea.TeaModel {
+            public var endpointType: String?
+
+            public var endpointValue: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.endpointType != nil {
+                    map["EndpointType"] = self.endpointType!
+                }
+                if self.endpointValue != nil {
+                    map["EndpointValue"] = self.endpointValue!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["EndpointType"] as? String {
+                    self.endpointType = value
+                }
+                if let value = dict["EndpointValue"] as? String {
+                    self.endpointValue = value
+                }
+            }
+        }
+        public class Subscriptions : Tea.TeaModel {
+            public var endpointType: String?
+
+            public var endpointValue: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.endpointType != nil {
+                    map["EndpointType"] = self.endpointType!
+                }
+                if self.endpointValue != nil {
+                    map["EndpointValue"] = self.endpointValue!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["EndpointType"] as? String {
+                    self.endpointType = value
+                }
+                if let value = dict["EndpointValue"] as? String {
+                    self.endpointValue = value
+                }
+            }
+        }
+        public var deliveryMode: String?
+
+        public var endpoint: GetEventRuleResponseBody.Data.Endpoint?
+
+        public var eventTypes: [String]?
+
+        public var matchRules: [[EventMatchRule]]?
+
+        public var ruleName: String?
+
+        public var subscriptions: [GetEventRuleResponseBody.Data.Subscriptions]?
+
+        public var topicName: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+            try self.endpoint?.validate()
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.deliveryMode != nil {
+                map["DeliveryMode"] = self.deliveryMode!
+            }
+            if self.endpoint != nil {
+                map["Endpoint"] = self.endpoint?.toMap()
+            }
+            if self.eventTypes != nil {
+                map["EventTypes"] = self.eventTypes!
+            }
+            if self.matchRules != nil {
+                var tmp : [Any] = []
+                for k in self.matchRules! {
+                    var l1 : [Any] = []
+                    for k1 in k {
+                        l1.append(k1.toMap())
+                    }
+                    tmp.append(l1)
+                }
+                map["MatchRules"] = tmp
+            }
+            if self.ruleName != nil {
+                map["RuleName"] = self.ruleName!
+            }
+            if self.subscriptions != nil {
+                var tmp : [Any] = []
+                for k in self.subscriptions! {
+                    tmp.append(k.toMap())
+                }
+                map["Subscriptions"] = tmp
+            }
+            if self.topicName != nil {
+                map["TopicName"] = self.topicName!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["DeliveryMode"] as? String {
+                self.deliveryMode = value
+            }
+            if let value = dict["Endpoint"] as? [String: Any?] {
+                var model = GetEventRuleResponseBody.Data.Endpoint()
+                model.fromMap(value)
+                self.endpoint = model
+            }
+            if let value = dict["EventTypes"] as? [String] {
+                self.eventTypes = value
+            }
+            if let value = dict["MatchRules"] as? [Any?] {
+                var tmp : [[EventMatchRule]] = []
+                for v in value {
+                    if v != nil {
+                        var l1 : [EventMatchRule] = []
+                        for v1 in v as! [Any?] {
+                            if v1 != nil {
+                                var model = EventMatchRule()
+                                if v1 != nil {
+                                    model.fromMap(v1 as? [String: Any?])
+                                }
+                                l1.append(model)
+                            }
+                        }
+                        tmp.append(l1)
+                    }
+                }
+                self.matchRules = tmp
+            }
+            if let value = dict["RuleName"] as? String {
+                self.ruleName = value
+            }
+            if let value = dict["Subscriptions"] as? [Any?] {
+                var tmp : [GetEventRuleResponseBody.Data.Subscriptions] = []
+                for v in value {
+                    if v != nil {
+                        var model = GetEventRuleResponseBody.Data.Subscriptions()
+                        if v != nil {
+                            model.fromMap(v as? [String: Any?])
+                        }
+                        tmp.append(model)
+                    }
+                }
+                self.subscriptions = tmp
+            }
+            if let value = dict["TopicName"] as? String {
+                self.topicName = value
+            }
+        }
+    }
+    public var code: Int64?
+
+    public var data: GetEventRuleResponseBody.Data?
+
+    public var message: String?
+
+    public var requestId: String?
+
+    public var status: String?
+
+    public var success: Bool?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.data?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.code != nil {
+            map["Code"] = self.code!
+        }
+        if self.data != nil {
+            map["Data"] = self.data?.toMap()
+        }
+        if self.message != nil {
+            map["Message"] = self.message!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.status != nil {
+            map["Status"] = self.status!
+        }
+        if self.success != nil {
+            map["Success"] = self.success!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["Code"] as? Int64 {
+            self.code = value
+        }
+        if let value = dict["Data"] as? [String: Any?] {
+            var model = GetEventRuleResponseBody.Data()
+            model.fromMap(value)
+            self.data = model
+        }
+        if let value = dict["Message"] as? String {
+            self.message = value
+        }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+        if let value = dict["Status"] as? String {
+            self.status = value
+        }
+        if let value = dict["Success"] as? Bool {
+            self.success = value
+        }
+    }
+}
+
+public class GetEventRuleResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: GetEventRuleResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = GetEventRuleResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
 public class GetQueueAttributesRequest : Tea.TeaModel {
     public class Tag : Tea.TeaModel {
         public var key: String?
@@ -3773,6 +4131,656 @@ public class GetTopicAttributesResponse : Tea.TeaModel {
         }
         if let value = dict["body"] as? [String: Any?] {
             var model = GetTopicAttributesResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
+public class ListEventRulesRequest : Tea.TeaModel {
+    public class Subscription : Tea.TeaModel {
+        public var endpointType: String?
+
+        public var endpointValue: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.endpointType != nil {
+                map["EndpointType"] = self.endpointType!
+            }
+            if self.endpointValue != nil {
+                map["EndpointValue"] = self.endpointValue!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["EndpointType"] as? String {
+                self.endpointType = value
+            }
+            if let value = dict["EndpointValue"] as? String {
+                self.endpointValue = value
+            }
+        }
+    }
+    public var maxResults: Int32?
+
+    public var nextToken: String?
+
+    public var pageNum: Int64?
+
+    public var pageSize: Int64?
+
+    public var productName: String?
+
+    public var resourceName: String?
+
+    public var ruleName: String?
+
+    public var subscription: ListEventRulesRequest.Subscription?
+
+    public var topicName: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.subscription?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.maxResults != nil {
+            map["MaxResults"] = self.maxResults!
+        }
+        if self.nextToken != nil {
+            map["NextToken"] = self.nextToken!
+        }
+        if self.pageNum != nil {
+            map["PageNum"] = self.pageNum!
+        }
+        if self.pageSize != nil {
+            map["PageSize"] = self.pageSize!
+        }
+        if self.productName != nil {
+            map["ProductName"] = self.productName!
+        }
+        if self.resourceName != nil {
+            map["ResourceName"] = self.resourceName!
+        }
+        if self.ruleName != nil {
+            map["RuleName"] = self.ruleName!
+        }
+        if self.subscription != nil {
+            map["Subscription"] = self.subscription?.toMap()
+        }
+        if self.topicName != nil {
+            map["TopicName"] = self.topicName!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["MaxResults"] as? Int32 {
+            self.maxResults = value
+        }
+        if let value = dict["NextToken"] as? String {
+            self.nextToken = value
+        }
+        if let value = dict["PageNum"] as? Int64 {
+            self.pageNum = value
+        }
+        if let value = dict["PageSize"] as? Int64 {
+            self.pageSize = value
+        }
+        if let value = dict["ProductName"] as? String {
+            self.productName = value
+        }
+        if let value = dict["ResourceName"] as? String {
+            self.resourceName = value
+        }
+        if let value = dict["RuleName"] as? String {
+            self.ruleName = value
+        }
+        if let value = dict["Subscription"] as? [String: Any?] {
+            var model = ListEventRulesRequest.Subscription()
+            model.fromMap(value)
+            self.subscription = model
+        }
+        if let value = dict["TopicName"] as? String {
+            self.topicName = value
+        }
+    }
+}
+
+public class ListEventRulesShrinkRequest : Tea.TeaModel {
+    public var maxResults: Int32?
+
+    public var nextToken: String?
+
+    public var pageNum: Int64?
+
+    public var pageSize: Int64?
+
+    public var productName: String?
+
+    public var resourceName: String?
+
+    public var ruleName: String?
+
+    public var subscriptionShrink: String?
+
+    public var topicName: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.maxResults != nil {
+            map["MaxResults"] = self.maxResults!
+        }
+        if self.nextToken != nil {
+            map["NextToken"] = self.nextToken!
+        }
+        if self.pageNum != nil {
+            map["PageNum"] = self.pageNum!
+        }
+        if self.pageSize != nil {
+            map["PageSize"] = self.pageSize!
+        }
+        if self.productName != nil {
+            map["ProductName"] = self.productName!
+        }
+        if self.resourceName != nil {
+            map["ResourceName"] = self.resourceName!
+        }
+        if self.ruleName != nil {
+            map["RuleName"] = self.ruleName!
+        }
+        if self.subscriptionShrink != nil {
+            map["Subscription"] = self.subscriptionShrink!
+        }
+        if self.topicName != nil {
+            map["TopicName"] = self.topicName!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["MaxResults"] as? Int32 {
+            self.maxResults = value
+        }
+        if let value = dict["NextToken"] as? String {
+            self.nextToken = value
+        }
+        if let value = dict["PageNum"] as? Int64 {
+            self.pageNum = value
+        }
+        if let value = dict["PageSize"] as? Int64 {
+            self.pageSize = value
+        }
+        if let value = dict["ProductName"] as? String {
+            self.productName = value
+        }
+        if let value = dict["ResourceName"] as? String {
+            self.resourceName = value
+        }
+        if let value = dict["RuleName"] as? String {
+            self.ruleName = value
+        }
+        if let value = dict["Subscription"] as? String {
+            self.subscriptionShrink = value
+        }
+        if let value = dict["TopicName"] as? String {
+            self.topicName = value
+        }
+    }
+}
+
+public class ListEventRulesResponseBody : Tea.TeaModel {
+    public class Data : Tea.TeaModel {
+        public class PageData : Tea.TeaModel {
+            public class Endpoint : Tea.TeaModel {
+                public var endpointType: String?
+
+                public var endpointValue: String?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.endpointType != nil {
+                        map["EndpointType"] = self.endpointType!
+                    }
+                    if self.endpointValue != nil {
+                        map["EndpointValue"] = self.endpointValue!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                    guard let dict else { return }
+                    if let value = dict["EndpointType"] as? String {
+                        self.endpointType = value
+                    }
+                    if let value = dict["EndpointValue"] as? String {
+                        self.endpointValue = value
+                    }
+                }
+            }
+            public class Subscriptions : Tea.TeaModel {
+                public var endpointType: String?
+
+                public var endpointValue: String?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.endpointType != nil {
+                        map["EndpointType"] = self.endpointType!
+                    }
+                    if self.endpointValue != nil {
+                        map["EndpointValue"] = self.endpointValue!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                    guard let dict else { return }
+                    if let value = dict["EndpointType"] as? String {
+                        self.endpointType = value
+                    }
+                    if let value = dict["EndpointValue"] as? String {
+                        self.endpointValue = value
+                    }
+                }
+            }
+            public var deliveryMode: String?
+
+            public var endpoint: ListEventRulesResponseBody.Data.PageData.Endpoint?
+
+            public var eventTypes: [String]?
+
+            public var matchRules: [[EventMatchRule]]?
+
+            public var ruleName: String?
+
+            public var subscriptions: [ListEventRulesResponseBody.Data.PageData.Subscriptions]?
+
+            public var topicName: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+                try self.endpoint?.validate()
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.deliveryMode != nil {
+                    map["DeliveryMode"] = self.deliveryMode!
+                }
+                if self.endpoint != nil {
+                    map["Endpoint"] = self.endpoint?.toMap()
+                }
+                if self.eventTypes != nil {
+                    map["EventTypes"] = self.eventTypes!
+                }
+                if self.matchRules != nil {
+                    var tmp : [Any] = []
+                    for k in self.matchRules! {
+                        var l1 : [Any] = []
+                        for k1 in k {
+                            l1.append(k1.toMap())
+                        }
+                        tmp.append(l1)
+                    }
+                    map["MatchRules"] = tmp
+                }
+                if self.ruleName != nil {
+                    map["RuleName"] = self.ruleName!
+                }
+                if self.subscriptions != nil {
+                    var tmp : [Any] = []
+                    for k in self.subscriptions! {
+                        tmp.append(k.toMap())
+                    }
+                    map["Subscriptions"] = tmp
+                }
+                if self.topicName != nil {
+                    map["TopicName"] = self.topicName!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["DeliveryMode"] as? String {
+                    self.deliveryMode = value
+                }
+                if let value = dict["Endpoint"] as? [String: Any?] {
+                    var model = ListEventRulesResponseBody.Data.PageData.Endpoint()
+                    model.fromMap(value)
+                    self.endpoint = model
+                }
+                if let value = dict["EventTypes"] as? [String] {
+                    self.eventTypes = value
+                }
+                if let value = dict["MatchRules"] as? [Any?] {
+                    var tmp : [[EventMatchRule]] = []
+                    for v in value {
+                        if v != nil {
+                            var l1 : [EventMatchRule] = []
+                            for v1 in v as! [Any?] {
+                                if v1 != nil {
+                                    var model = EventMatchRule()
+                                    if v1 != nil {
+                                        model.fromMap(v1 as? [String: Any?])
+                                    }
+                                    l1.append(model)
+                                }
+                            }
+                            tmp.append(l1)
+                        }
+                    }
+                    self.matchRules = tmp
+                }
+                if let value = dict["RuleName"] as? String {
+                    self.ruleName = value
+                }
+                if let value = dict["Subscriptions"] as? [Any?] {
+                    var tmp : [ListEventRulesResponseBody.Data.PageData.Subscriptions] = []
+                    for v in value {
+                        if v != nil {
+                            var model = ListEventRulesResponseBody.Data.PageData.Subscriptions()
+                            if v != nil {
+                                model.fromMap(v as? [String: Any?])
+                            }
+                            tmp.append(model)
+                        }
+                    }
+                    self.subscriptions = tmp
+                }
+                if let value = dict["TopicName"] as? String {
+                    self.topicName = value
+                }
+            }
+        }
+        public var maxResults: Int32?
+
+        public var nextToken: String?
+
+        public var pageData: [ListEventRulesResponseBody.Data.PageData]?
+
+        public var pageNum: Int64?
+
+        public var pageSize: Int64?
+
+        public var pages: Int64?
+
+        public var size: Int64?
+
+        public var total: Int64?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.maxResults != nil {
+                map["MaxResults"] = self.maxResults!
+            }
+            if self.nextToken != nil {
+                map["NextToken"] = self.nextToken!
+            }
+            if self.pageData != nil {
+                var tmp : [Any] = []
+                for k in self.pageData! {
+                    tmp.append(k.toMap())
+                }
+                map["PageData"] = tmp
+            }
+            if self.pageNum != nil {
+                map["PageNum"] = self.pageNum!
+            }
+            if self.pageSize != nil {
+                map["PageSize"] = self.pageSize!
+            }
+            if self.pages != nil {
+                map["Pages"] = self.pages!
+            }
+            if self.size != nil {
+                map["Size"] = self.size!
+            }
+            if self.total != nil {
+                map["Total"] = self.total!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["MaxResults"] as? Int32 {
+                self.maxResults = value
+            }
+            if let value = dict["NextToken"] as? String {
+                self.nextToken = value
+            }
+            if let value = dict["PageData"] as? [Any?] {
+                var tmp : [ListEventRulesResponseBody.Data.PageData] = []
+                for v in value {
+                    if v != nil {
+                        var model = ListEventRulesResponseBody.Data.PageData()
+                        if v != nil {
+                            model.fromMap(v as? [String: Any?])
+                        }
+                        tmp.append(model)
+                    }
+                }
+                self.pageData = tmp
+            }
+            if let value = dict["PageNum"] as? Int64 {
+                self.pageNum = value
+            }
+            if let value = dict["PageSize"] as? Int64 {
+                self.pageSize = value
+            }
+            if let value = dict["Pages"] as? Int64 {
+                self.pages = value
+            }
+            if let value = dict["Size"] as? Int64 {
+                self.size = value
+            }
+            if let value = dict["Total"] as? Int64 {
+                self.total = value
+            }
+        }
+    }
+    public var code: Int64?
+
+    public var data: ListEventRulesResponseBody.Data?
+
+    public var message: String?
+
+    public var requestId: String?
+
+    public var status: String?
+
+    public var success: Bool?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.data?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.code != nil {
+            map["Code"] = self.code!
+        }
+        if self.data != nil {
+            map["Data"] = self.data?.toMap()
+        }
+        if self.message != nil {
+            map["Message"] = self.message!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.status != nil {
+            map["Status"] = self.status!
+        }
+        if self.success != nil {
+            map["Success"] = self.success!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["Code"] as? Int64 {
+            self.code = value
+        }
+        if let value = dict["Data"] as? [String: Any?] {
+            var model = ListEventRulesResponseBody.Data()
+            model.fromMap(value)
+            self.data = model
+        }
+        if let value = dict["Message"] as? String {
+            self.message = value
+        }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+        if let value = dict["Status"] as? String {
+            self.status = value
+        }
+        if let value = dict["Success"] as? Bool {
+            self.success = value
+        }
+    }
+}
+
+public class ListEventRulesResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: ListEventRulesResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = ListEventRulesResponseBody()
             model.fromMap(value)
             self.body = model
         }
