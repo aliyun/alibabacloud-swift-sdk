@@ -534,6 +534,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func getDocumentDownloadUrlWithOptions(_ request: GetDocumentDownloadUrlRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> GetDocumentDownloadUrlResponse {
         try TeaUtils.Client.validateModel(request)
         var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.fileKey)) {
+            body["FileKey"] = request.fileKey ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.id)) {
             body["Id"] = request.id!;
         }
@@ -1161,6 +1164,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.eventDetails)) {
             body["EventDetails"] = request.eventDetails ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.eventMarkdown)) {
+            body["EventMarkdown"] = request.eventMarkdown ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.eventName)) {
             body["EventName"] = request.eventName ?? "";
