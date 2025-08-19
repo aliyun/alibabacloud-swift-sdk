@@ -714,6 +714,53 @@ public class ConcurrencyConfig : Tea.TeaModel {
     }
 }
 
+public class CookieSessionAffinityConfig : Tea.TeaModel {
+    public var sessionConcurrencyPerInstance: Int64?
+
+    public var sessionIdleTimeoutInSeconds: Int64?
+
+    public var sessionTTLInSeconds: Int64?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.sessionConcurrencyPerInstance != nil {
+            map["sessionConcurrencyPerInstance"] = self.sessionConcurrencyPerInstance!
+        }
+        if self.sessionIdleTimeoutInSeconds != nil {
+            map["sessionIdleTimeoutInSeconds"] = self.sessionIdleTimeoutInSeconds!
+        }
+        if self.sessionTTLInSeconds != nil {
+            map["sessionTTLInSeconds"] = self.sessionTTLInSeconds!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["sessionConcurrencyPerInstance"] as? Int64 {
+            self.sessionConcurrencyPerInstance = value
+        }
+        if let value = dict["sessionIdleTimeoutInSeconds"] as? Int64 {
+            self.sessionIdleTimeoutInSeconds = value
+        }
+        if let value = dict["sessionTTLInSeconds"] as? Int64 {
+            self.sessionTTLInSeconds = value
+        }
+    }
+}
+
 public class CreateAliasInput : Tea.TeaModel {
     public var additionalVersionWeight: [String: Double]?
 
@@ -892,6 +939,8 @@ public class CreateFunctionInput : Tea.TeaModel {
 
     public var instanceConcurrency: Int32?
 
+    public var instanceIsolationMode: String?
+
     public var instanceLifecycleConfig: InstanceLifecycleConfig?
 
     public var internetAccess: Bool?
@@ -913,6 +962,8 @@ public class CreateFunctionInput : Tea.TeaModel {
     public var runtime: String?
 
     public var sessionAffinity: String?
+
+    public var sessionAffinityConfig: String?
 
     public var tags: [Tag]?
 
@@ -989,6 +1040,9 @@ public class CreateFunctionInput : Tea.TeaModel {
         if self.instanceConcurrency != nil {
             map["instanceConcurrency"] = self.instanceConcurrency!
         }
+        if self.instanceIsolationMode != nil {
+            map["instanceIsolationMode"] = self.instanceIsolationMode!
+        }
         if self.instanceLifecycleConfig != nil {
             map["instanceLifecycleConfig"] = self.instanceLifecycleConfig?.toMap()
         }
@@ -1021,6 +1075,9 @@ public class CreateFunctionInput : Tea.TeaModel {
         }
         if self.sessionAffinity != nil {
             map["sessionAffinity"] = self.sessionAffinity!
+        }
+        if self.sessionAffinityConfig != nil {
+            map["sessionAffinityConfig"] = self.sessionAffinityConfig!
         }
         if self.tags != nil {
             var tmp : [Any] = []
@@ -1095,6 +1152,9 @@ public class CreateFunctionInput : Tea.TeaModel {
         if let value = dict["instanceConcurrency"] as? Int32 {
             self.instanceConcurrency = value
         }
+        if let value = dict["instanceIsolationMode"] as? String {
+            self.instanceIsolationMode = value
+        }
         if let value = dict["instanceLifecycleConfig"] as? [String: Any?] {
             var model = InstanceLifecycleConfig()
             model.fromMap(value)
@@ -1135,6 +1195,9 @@ public class CreateFunctionInput : Tea.TeaModel {
         }
         if let value = dict["sessionAffinity"] as? String {
             self.sessionAffinity = value
+        }
+        if let value = dict["sessionAffinityConfig"] as? String {
+            self.sessionAffinityConfig = value
         }
         if let value = dict["tags"] as? [Any?] {
             var tmp : [Tag] = []
@@ -2472,6 +2535,8 @@ public class Function : Tea.TeaModel {
 
     public var instanceConcurrency: Int32?
 
+    public var instanceIsolationMode: String?
+
     public var instanceLifecycleConfig: InstanceLifecycleConfig?
 
     public var internetAccess: Bool?
@@ -2503,6 +2568,8 @@ public class Function : Tea.TeaModel {
     public var runtime: String?
 
     public var sessionAffinity: String?
+
+    public var sessionAffinityConfig: String?
 
     public var state: String?
 
@@ -2597,6 +2664,9 @@ public class Function : Tea.TeaModel {
         if self.instanceConcurrency != nil {
             map["instanceConcurrency"] = self.instanceConcurrency!
         }
+        if self.instanceIsolationMode != nil {
+            map["instanceIsolationMode"] = self.instanceIsolationMode!
+        }
         if self.instanceLifecycleConfig != nil {
             map["instanceLifecycleConfig"] = self.instanceLifecycleConfig?.toMap()
         }
@@ -2648,6 +2718,9 @@ public class Function : Tea.TeaModel {
         }
         if self.sessionAffinity != nil {
             map["sessionAffinity"] = self.sessionAffinity!
+        }
+        if self.sessionAffinityConfig != nil {
+            map["sessionAffinityConfig"] = self.sessionAffinityConfig!
         }
         if self.state != nil {
             map["state"] = self.state!
@@ -2741,6 +2814,9 @@ public class Function : Tea.TeaModel {
         if let value = dict["instanceConcurrency"] as? Int32 {
             self.instanceConcurrency = value
         }
+        if let value = dict["instanceIsolationMode"] as? String {
+            self.instanceIsolationMode = value
+        }
         if let value = dict["instanceLifecycleConfig"] as? [String: Any?] {
             var model = InstanceLifecycleConfig()
             model.fromMap(value)
@@ -2808,6 +2884,9 @@ public class Function : Tea.TeaModel {
         }
         if let value = dict["sessionAffinity"] as? String {
             self.sessionAffinity = value
+        }
+        if let value = dict["sessionAffinityConfig"] as? String {
+            self.sessionAffinityConfig = value
         }
         if let value = dict["state"] as? String {
             self.state = value
@@ -3072,6 +3151,40 @@ public class GetResourceTagsOutput : Tea.TeaModel {
     }
 }
 
+public class GetScalingConfigStatusOutput : Tea.TeaModel {
+    public var scalingConfigStatus: ScalingConfigStatus?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.scalingConfigStatus?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.scalingConfigStatus != nil {
+            map["scalingConfigStatus"] = self.scalingConfigStatus?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["scalingConfigStatus"] as? [String: Any?] {
+            var model = ScalingConfigStatus()
+            model.fromMap(value)
+            self.scalingConfigStatus = model
+        }
+    }
+}
+
 public class HTTPTrigger : Tea.TeaModel {
     public var urlInternet: String?
 
@@ -3162,6 +3275,61 @@ public class HTTPTriggerConfig : Tea.TeaModel {
         }
         if let value = dict["methods"] as? [String] {
             self.methods = value
+        }
+    }
+}
+
+public class HeaderFieldSessionAffinityConfig : Tea.TeaModel {
+    public var affinityHeaderFieldName: String?
+
+    public var sessionConcurrencyPerInstance: Int64?
+
+    public var sessionIdleTimeoutInSeconds: Int64?
+
+    public var sessionTTLInSeconds: Int64?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.affinityHeaderFieldName != nil {
+            map["affinityHeaderFieldName"] = self.affinityHeaderFieldName!
+        }
+        if self.sessionConcurrencyPerInstance != nil {
+            map["sessionConcurrencyPerInstance"] = self.sessionConcurrencyPerInstance!
+        }
+        if self.sessionIdleTimeoutInSeconds != nil {
+            map["sessionIdleTimeoutInSeconds"] = self.sessionIdleTimeoutInSeconds!
+        }
+        if self.sessionTTLInSeconds != nil {
+            map["sessionTTLInSeconds"] = self.sessionTTLInSeconds!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["affinityHeaderFieldName"] as? String {
+            self.affinityHeaderFieldName = value
+        }
+        if let value = dict["sessionConcurrencyPerInstance"] as? Int64 {
+            self.sessionConcurrencyPerInstance = value
+        }
+        if let value = dict["sessionIdleTimeoutInSeconds"] as? Int64 {
+            self.sessionIdleTimeoutInSeconds = value
+        }
+        if let value = dict["sessionTTLInSeconds"] as? Int64 {
+            self.sessionTTLInSeconds = value
         }
     }
 }
@@ -4183,6 +4351,112 @@ public class ListProvisionConfigsOutput : Tea.TeaModel {
     }
 }
 
+public class ListResidentResourcePoolsOutput : Tea.TeaModel {
+    public var nextToken: String?
+
+    public var residentResourcePools: [ResidentResourcePool]?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.nextToken != nil {
+            map["nextToken"] = self.nextToken!
+        }
+        if self.residentResourcePools != nil {
+            var tmp : [Any] = []
+            for k in self.residentResourcePools! {
+                tmp.append(k.toMap())
+            }
+            map["residentResourcePools"] = tmp
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["nextToken"] as? String {
+            self.nextToken = value
+        }
+        if let value = dict["residentResourcePools"] as? [Any?] {
+            var tmp : [ResidentResourcePool] = []
+            for v in value {
+                if v != nil {
+                    var model = ResidentResourcePool()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.residentResourcePools = tmp
+        }
+    }
+}
+
+public class ListScalingConfigStatusOutput : Tea.TeaModel {
+    public var nextToken: String?
+
+    public var result: [ScalingConfigStatus]?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.nextToken != nil {
+            map["nextToken"] = self.nextToken!
+        }
+        if self.result != nil {
+            var tmp : [Any] = []
+            for k in self.result! {
+                tmp.append(k.toMap())
+            }
+            map["result"] = tmp
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["nextToken"] as? String {
+            self.nextToken = value
+        }
+        if let value = dict["result"] as? [Any?] {
+            var tmp : [ScalingConfigStatus] = []
+            for v in value {
+                if v != nil {
+                    var model = ScalingConfigStatus()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.result = tmp
+        }
+    }
+}
+
 public class ListTagResourcesOutput : Tea.TeaModel {
     public var nextToken: String?
 
@@ -4501,6 +4775,92 @@ public class LogConfig : Tea.TeaModel {
         }
         if let value = dict["project"] as? String {
             self.project = value
+        }
+    }
+}
+
+public class MCPSSESessionAffinityConfig : Tea.TeaModel {
+    public var sessionConcurrencyPerInstance: Int64?
+
+    public var sseEndpointPath: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.sessionConcurrencyPerInstance != nil {
+            map["sessionConcurrencyPerInstance"] = self.sessionConcurrencyPerInstance!
+        }
+        if self.sseEndpointPath != nil {
+            map["sseEndpointPath"] = self.sseEndpointPath!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["sessionConcurrencyPerInstance"] as? Int64 {
+            self.sessionConcurrencyPerInstance = value
+        }
+        if let value = dict["sseEndpointPath"] as? String {
+            self.sseEndpointPath = value
+        }
+    }
+}
+
+public class MCPStreamableSessionAffinityConfig : Tea.TeaModel {
+    public var sessionConcurrencyPerInstance: Int64?
+
+    public var sessionIdleTimeoutInSeconds: Int64?
+
+    public var sessionTTLInSeconds: Int64?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.sessionConcurrencyPerInstance != nil {
+            map["sessionConcurrencyPerInstance"] = self.sessionConcurrencyPerInstance!
+        }
+        if self.sessionIdleTimeoutInSeconds != nil {
+            map["sessionIdleTimeoutInSeconds"] = self.sessionIdleTimeoutInSeconds!
+        }
+        if self.sessionTTLInSeconds != nil {
+            map["sessionTTLInSeconds"] = self.sessionTTLInSeconds!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["sessionConcurrencyPerInstance"] as? Int64 {
+            self.sessionConcurrencyPerInstance = value
+        }
+        if let value = dict["sessionIdleTimeoutInSeconds"] as? Int64 {
+            self.sessionIdleTimeoutInSeconds = value
+        }
+        if let value = dict["sessionTTLInSeconds"] as? Int64 {
+            self.sessionTTLInSeconds = value
         }
     }
 }
@@ -5296,6 +5656,106 @@ public class PutProvisionConfigInput : Tea.TeaModel {
     }
 }
 
+public class PutScalingConfigInput : Tea.TeaModel {
+    public var residentConfig: ResidentConfig?
+
+    public var resourceType: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.residentConfig?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.residentConfig != nil {
+            map["residentConfig"] = self.residentConfig?.toMap()
+        }
+        if self.resourceType != nil {
+            map["resourceType"] = self.resourceType!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["residentConfig"] as? [String: Any?] {
+            var model = ResidentConfig()
+            model.fromMap(value)
+            self.residentConfig = model
+        }
+        if let value = dict["resourceType"] as? String {
+            self.resourceType = value
+        }
+    }
+}
+
+public class PutScalingConfigOutput : Tea.TeaModel {
+    public var functionName: String?
+
+    public var qualifier: String?
+
+    public var residentConfig: ResidentConfig?
+
+    public var resourceType: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.residentConfig?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.functionName != nil {
+            map["functionName"] = self.functionName!
+        }
+        if self.qualifier != nil {
+            map["qualifier"] = self.qualifier!
+        }
+        if self.residentConfig != nil {
+            map["residentConfig"] = self.residentConfig?.toMap()
+        }
+        if self.resourceType != nil {
+            map["resourceType"] = self.resourceType!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["functionName"] as? String {
+            self.functionName = value
+        }
+        if let value = dict["qualifier"] as? String {
+            self.qualifier = value
+        }
+        if let value = dict["residentConfig"] as? [String: Any?] {
+            var model = ResidentConfig()
+            model.fromMap(value)
+            self.residentConfig = model
+        }
+        if let value = dict["resourceType"] as? String {
+            self.resourceType = value
+        }
+    }
+}
+
 public class RegexRule : Tea.TeaModel {
     public var match: String?
 
@@ -5512,6 +5972,333 @@ public class RegistryNetworkConfig : Tea.TeaModel {
         }
         if let value = dict["vpcId"] as? String {
             self.vpcId = value
+        }
+    }
+}
+
+public class ResidentConfig : Tea.TeaModel {
+    public var count: Int64?
+
+    public var poolId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.count != nil {
+            map["count"] = self.count!
+        }
+        if self.poolId != nil {
+            map["poolId"] = self.poolId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["count"] as? Int64 {
+            self.count = value
+        }
+        if let value = dict["poolId"] as? String {
+            self.poolId = value
+        }
+    }
+}
+
+public class ResidentResourceAllocation : Tea.TeaModel {
+    public var functionName: String?
+
+    public var instanceCount: Int32?
+
+    public var qualifier: String?
+
+    public var totalCpuCores: Double?
+
+    public var totalDiskSize: Double?
+
+    public var totalGpuMemorySize: Double?
+
+    public var totalMemorySize: Double?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.functionName != nil {
+            map["functionName"] = self.functionName!
+        }
+        if self.instanceCount != nil {
+            map["instanceCount"] = self.instanceCount!
+        }
+        if self.qualifier != nil {
+            map["qualifier"] = self.qualifier!
+        }
+        if self.totalCpuCores != nil {
+            map["totalCpuCores"] = self.totalCpuCores!
+        }
+        if self.totalDiskSize != nil {
+            map["totalDiskSize"] = self.totalDiskSize!
+        }
+        if self.totalGpuMemorySize != nil {
+            map["totalGpuMemorySize"] = self.totalGpuMemorySize!
+        }
+        if self.totalMemorySize != nil {
+            map["totalMemorySize"] = self.totalMemorySize!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["functionName"] as? String {
+            self.functionName = value
+        }
+        if let value = dict["instanceCount"] as? Int32 {
+            self.instanceCount = value
+        }
+        if let value = dict["qualifier"] as? String {
+            self.qualifier = value
+        }
+        if let value = dict["totalCpuCores"] as? Double {
+            self.totalCpuCores = value
+        }
+        if let value = dict["totalDiskSize"] as? Double {
+            self.totalDiskSize = value
+        }
+        if let value = dict["totalGpuMemorySize"] as? Double {
+            self.totalGpuMemorySize = value
+        }
+        if let value = dict["totalMemorySize"] as? Double {
+            self.totalMemorySize = value
+        }
+    }
+}
+
+public class ResidentResourceAllocationStatus : Tea.TeaModel {
+    public var lastAllocatedTime: String?
+
+    public var lastAllocation: ResidentResourceAllocation?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.lastAllocation?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.lastAllocatedTime != nil {
+            map["lastAllocatedTime"] = self.lastAllocatedTime!
+        }
+        if self.lastAllocation != nil {
+            map["lastAllocation"] = self.lastAllocation?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["lastAllocatedTime"] as? String {
+            self.lastAllocatedTime = value
+        }
+        if let value = dict["lastAllocation"] as? [String: Any?] {
+            var model = ResidentResourceAllocation()
+            model.fromMap(value)
+            self.lastAllocation = model
+        }
+    }
+}
+
+public class ResidentResourceCapacity : Tea.TeaModel {
+    public var gpuType: String?
+
+    public var totalCpuCores: Int64?
+
+    public var totalDiskSize: Int64?
+
+    public var totalGpuCards: Int64?
+
+    public var totalGpuMemorySize: Int64?
+
+    public var totalMemorySize: Int64?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.gpuType != nil {
+            map["gpuType"] = self.gpuType!
+        }
+        if self.totalCpuCores != nil {
+            map["totalCpuCores"] = self.totalCpuCores!
+        }
+        if self.totalDiskSize != nil {
+            map["totalDiskSize"] = self.totalDiskSize!
+        }
+        if self.totalGpuCards != nil {
+            map["totalGpuCards"] = self.totalGpuCards!
+        }
+        if self.totalGpuMemorySize != nil {
+            map["totalGpuMemorySize"] = self.totalGpuMemorySize!
+        }
+        if self.totalMemorySize != nil {
+            map["totalMemorySize"] = self.totalMemorySize!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["gpuType"] as? String {
+            self.gpuType = value
+        }
+        if let value = dict["totalCpuCores"] as? Int64 {
+            self.totalCpuCores = value
+        }
+        if let value = dict["totalDiskSize"] as? Int64 {
+            self.totalDiskSize = value
+        }
+        if let value = dict["totalGpuCards"] as? Int64 {
+            self.totalGpuCards = value
+        }
+        if let value = dict["totalGpuMemorySize"] as? Int64 {
+            self.totalGpuMemorySize = value
+        }
+        if let value = dict["totalMemorySize"] as? Int64 {
+            self.totalMemorySize = value
+        }
+    }
+}
+
+public class ResidentResourcePool : Tea.TeaModel {
+    public var allocationStatus: ResidentResourceAllocationStatus?
+
+    public var createdTime: String?
+
+    public var expireTime: String?
+
+    public var lastModifiedTime: String?
+
+    public var residentResourcePoolId: String?
+
+    public var residentResourcePoolName: String?
+
+    public var resourcePoolCapacity: ResidentResourceCapacity?
+
+    public var resourcePoolConfig: ResidentResourceCapacity?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.allocationStatus?.validate()
+        try self.resourcePoolCapacity?.validate()
+        try self.resourcePoolConfig?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.allocationStatus != nil {
+            map["allocationStatus"] = self.allocationStatus?.toMap()
+        }
+        if self.createdTime != nil {
+            map["createdTime"] = self.createdTime!
+        }
+        if self.expireTime != nil {
+            map["expireTime"] = self.expireTime!
+        }
+        if self.lastModifiedTime != nil {
+            map["lastModifiedTime"] = self.lastModifiedTime!
+        }
+        if self.residentResourcePoolId != nil {
+            map["residentResourcePoolId"] = self.residentResourcePoolId!
+        }
+        if self.residentResourcePoolName != nil {
+            map["residentResourcePoolName"] = self.residentResourcePoolName!
+        }
+        if self.resourcePoolCapacity != nil {
+            map["resourcePoolCapacity"] = self.resourcePoolCapacity?.toMap()
+        }
+        if self.resourcePoolConfig != nil {
+            map["resourcePoolConfig"] = self.resourcePoolConfig?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["allocationStatus"] as? [String: Any?] {
+            var model = ResidentResourceAllocationStatus()
+            model.fromMap(value)
+            self.allocationStatus = model
+        }
+        if let value = dict["createdTime"] as? String {
+            self.createdTime = value
+        }
+        if let value = dict["expireTime"] as? String {
+            self.expireTime = value
+        }
+        if let value = dict["lastModifiedTime"] as? String {
+            self.lastModifiedTime = value
+        }
+        if let value = dict["residentResourcePoolId"] as? String {
+            self.residentResourcePoolId = value
+        }
+        if let value = dict["residentResourcePoolName"] as? String {
+            self.residentResourcePoolName = value
+        }
+        if let value = dict["resourcePoolCapacity"] as? [String: Any?] {
+            var model = ResidentResourceCapacity()
+            model.fromMap(value)
+            self.resourcePoolCapacity = model
+        }
+        if let value = dict["resourcePoolConfig"] as? [String: Any?] {
+            var model = ResidentResourceCapacity()
+            model.fromMap(value)
+            self.resourcePoolConfig = model
         }
     }
 }
@@ -5907,6 +6694,114 @@ public class SLSTriggerLogConfig : Tea.TeaModel {
         }
         if let value = dict["project"] as? String {
             self.project = value
+        }
+    }
+}
+
+public class ScalingConfigStatus : Tea.TeaModel {
+    public var functionName: String?
+
+    public var qualifier: String?
+
+    public var residentConfig: ResidentConfig?
+
+    public var resourceType: String?
+
+    public var scalingStatus: ScalingStatus?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.residentConfig?.validate()
+        try self.scalingStatus?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.functionName != nil {
+            map["functionName"] = self.functionName!
+        }
+        if self.qualifier != nil {
+            map["qualifier"] = self.qualifier!
+        }
+        if self.residentConfig != nil {
+            map["residentConfig"] = self.residentConfig?.toMap()
+        }
+        if self.resourceType != nil {
+            map["resourceType"] = self.resourceType!
+        }
+        if self.scalingStatus != nil {
+            map["scalingStatus"] = self.scalingStatus?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["functionName"] as? String {
+            self.functionName = value
+        }
+        if let value = dict["qualifier"] as? String {
+            self.qualifier = value
+        }
+        if let value = dict["residentConfig"] as? [String: Any?] {
+            var model = ResidentConfig()
+            model.fromMap(value)
+            self.residentConfig = model
+        }
+        if let value = dict["resourceType"] as? String {
+            self.resourceType = value
+        }
+        if let value = dict["scalingStatus"] as? [String: Any?] {
+            var model = ScalingStatus()
+            model.fromMap(value)
+            self.scalingStatus = model
+        }
+    }
+}
+
+public class ScalingStatus : Tea.TeaModel {
+    public var currentError: String?
+
+    public var resourceCount: Int64?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.currentError != nil {
+            map["currentError"] = self.currentError!
+        }
+        if self.resourceCount != nil {
+            map["resourceCount"] = self.resourceCount!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["currentError"] as? String {
+            self.currentError = value
+        }
+        if let value = dict["resourceCount"] as? Int64 {
+            self.resourceCount = value
         }
     }
 }
@@ -7215,6 +8110,8 @@ public class UpdateFunctionInput : Tea.TeaModel {
 
     public var instanceConcurrency: Int32?
 
+    public var instanceIsolationMode: String?
+
     public var instanceLifecycleConfig: InstanceLifecycleConfig?
 
     public var internetAccess: Bool?
@@ -7234,6 +8131,8 @@ public class UpdateFunctionInput : Tea.TeaModel {
     public var runtime: String?
 
     public var sessionAffinity: String?
+
+    public var sessionAffinityConfig: String?
 
     public var timeout: Int32?
 
@@ -7305,6 +8204,9 @@ public class UpdateFunctionInput : Tea.TeaModel {
         if self.instanceConcurrency != nil {
             map["instanceConcurrency"] = self.instanceConcurrency!
         }
+        if self.instanceIsolationMode != nil {
+            map["instanceIsolationMode"] = self.instanceIsolationMode!
+        }
         if self.instanceLifecycleConfig != nil {
             map["instanceLifecycleConfig"] = self.instanceLifecycleConfig?.toMap()
         }
@@ -7334,6 +8236,9 @@ public class UpdateFunctionInput : Tea.TeaModel {
         }
         if self.sessionAffinity != nil {
             map["sessionAffinity"] = self.sessionAffinity!
+        }
+        if self.sessionAffinityConfig != nil {
+            map["sessionAffinityConfig"] = self.sessionAffinityConfig!
         }
         if self.timeout != nil {
             map["timeout"] = self.timeout!
@@ -7398,6 +8303,9 @@ public class UpdateFunctionInput : Tea.TeaModel {
         if let value = dict["instanceConcurrency"] as? Int32 {
             self.instanceConcurrency = value
         }
+        if let value = dict["instanceIsolationMode"] as? String {
+            self.instanceIsolationMode = value
+        }
         if let value = dict["instanceLifecycleConfig"] as? [String: Any?] {
             var model = InstanceLifecycleConfig()
             model.fromMap(value)
@@ -7436,6 +8344,9 @@ public class UpdateFunctionInput : Tea.TeaModel {
         if let value = dict["sessionAffinity"] as? String {
             self.sessionAffinity = value
         }
+        if let value = dict["sessionAffinityConfig"] as? String {
+            self.sessionAffinityConfig = value
+        }
         if let value = dict["timeout"] as? Int32 {
             self.timeout = value
         }
@@ -7448,6 +8359,37 @@ public class UpdateFunctionInput : Tea.TeaModel {
             var model = VPCConfig()
             model.fromMap(value)
             self.vpcConfig = model
+        }
+    }
+}
+
+public class UpdateResidentResourcePoolInput : Tea.TeaModel {
+    public var name: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.name != nil {
+            map["name"] = self.name!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["name"] as? String {
+            self.name = value
         }
     }
 }
@@ -7683,6 +8625,90 @@ public class WildcardRule : Tea.TeaModel {
         }
         if let value = dict["replacement"] as? String {
             self.replacement = value
+        }
+    }
+}
+
+public class ChangeResourceGroupRequest : Tea.TeaModel {
+    public var body: ChangeResourceGroupInput?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = ChangeResourceGroupInput()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
+public class ChangeResourceGroupResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: ChangeResourceGroupOutput?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = ChangeResourceGroupOutput()
+            model.fromMap(value)
+            self.body = model
         }
     }
 }
