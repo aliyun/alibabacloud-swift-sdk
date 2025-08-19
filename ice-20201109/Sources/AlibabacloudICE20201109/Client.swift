@@ -8,7 +8,6 @@ import AlibabacloudEndpointUtil
 open class Client : AlibabacloudOpenApi.Client {
     public override init(_ config: AlibabacloudOpenApi.Config) throws {
         try super.init(config)
-        self._signatureAlgorithm = "v2"
         self._endpointRule = "regional"
         self._endpointMap = [
             "ap-northeast-1": "ice.aliyuncs.com",
@@ -5819,7 +5818,7 @@ open class Client : AlibabacloudOpenApi.Client {
             "reqBodyType": "formData",
             "bodyType": "json"
         ])
-        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        var tmp: [String: Any] = try await doRPCRequest(params.action ?? "", params.version ?? "", params.protocol_ ?? "", params.method ?? "", params.authType ?? "", params.bodyType ?? "", req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
         return Tea.TeaConverter.fromMap(GetPublicMediaInfoResponse(), tmp)
     }
 
@@ -6744,7 +6743,7 @@ open class Client : AlibabacloudOpenApi.Client {
             "reqBodyType": "formData",
             "bodyType": "json"
         ])
-        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        var tmp: [String: Any] = try await doRPCRequest(params.action ?? "", params.version ?? "", params.protocol_ ?? "", params.method ?? "", params.authType ?? "", params.bodyType ?? "", req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
         return Tea.TeaConverter.fromMap(ListAllPublicMediaTagsResponse(), tmp)
     }
 
@@ -8304,7 +8303,7 @@ open class Client : AlibabacloudOpenApi.Client {
             "reqBodyType": "formData",
             "bodyType": "json"
         ])
-        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        var tmp: [String: Any] = try await doRPCRequest(params.action ?? "", params.version ?? "", params.protocol_ ?? "", params.method ?? "", params.authType ?? "", params.bodyType ?? "", req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
         return Tea.TeaConverter.fromMap(ListPublicMediaBasicInfosResponse(), tmp)
     }
 
@@ -9809,6 +9808,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.mediaId)) {
             query["MediaId"] = request.mediaId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.streamTags)) {
+            query["StreamTags"] = request.streamTags ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.userData)) {
             query["UserData"] = request.userData ?? "";

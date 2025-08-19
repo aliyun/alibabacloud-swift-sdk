@@ -80703,6 +80703,8 @@ public class RegisterMediaStreamRequest : Tea.TeaModel {
 
     public var mediaId: String?
 
+    public var streamTags: String?
+
     public var userData: String?
 
     public override init() {
@@ -80725,6 +80727,9 @@ public class RegisterMediaStreamRequest : Tea.TeaModel {
         if self.mediaId != nil {
             map["MediaId"] = self.mediaId!
         }
+        if self.streamTags != nil {
+            map["StreamTags"] = self.streamTags!
+        }
         if self.userData != nil {
             map["UserData"] = self.userData!
         }
@@ -80738,6 +80743,9 @@ public class RegisterMediaStreamRequest : Tea.TeaModel {
         }
         if let value = dict["MediaId"] as? String {
             self.mediaId = value
+        }
+        if let value = dict["StreamTags"] as? String {
+            self.streamTags = value
         }
         if let value = dict["UserData"] as? String {
             self.userData = value
