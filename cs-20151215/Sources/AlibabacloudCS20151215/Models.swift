@@ -5991,6 +5991,8 @@ public class CreateClusterNodePoolRequest : Tea.TeaModel {
             }
         }
         public class AutoVulFixPolicy : Tea.TeaModel {
+            public var excludePackages: String?
+
             public var restartNode: Bool?
 
             public var vulLevel: String?
@@ -6009,6 +6011,9 @@ public class CreateClusterNodePoolRequest : Tea.TeaModel {
 
             public override func toMap() -> [String : Any] {
                 var map = super.toMap()
+                if self.excludePackages != nil {
+                    map["exclude_packages"] = self.excludePackages!
+                }
                 if self.restartNode != nil {
                     map["restart_node"] = self.restartNode!
                 }
@@ -6020,6 +6025,9 @@ public class CreateClusterNodePoolRequest : Tea.TeaModel {
 
             public override func fromMap(_ dict: [String: Any?]?) -> Void {
                 guard let dict else { return }
+                if let value = dict["exclude_packages"] as? String {
+                    self.excludePackages = value
+                }
                 if let value = dict["restart_node"] as? Bool {
                     self.restartNode = value
                 }
@@ -10574,6 +10582,92 @@ public class DescribeClusterDetailResponseBody : Tea.TeaModel {
             }
         }
     }
+    public class RrsaConfig : Tea.TeaModel {
+        public var audience: String?
+
+        public var enabled: Bool?
+
+        public var issuer: String?
+
+        public var jwksUrl: String?
+
+        public var maxOidcTokenExpiration: String?
+
+        public var oidcArn: String?
+
+        public var oidcName: String?
+
+        public var openApiConfigurationUrl: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.audience != nil {
+                map["audience"] = self.audience!
+            }
+            if self.enabled != nil {
+                map["enabled"] = self.enabled!
+            }
+            if self.issuer != nil {
+                map["issuer"] = self.issuer!
+            }
+            if self.jwksUrl != nil {
+                map["jwks_url"] = self.jwksUrl!
+            }
+            if self.maxOidcTokenExpiration != nil {
+                map["max_oidc_token_expiration"] = self.maxOidcTokenExpiration!
+            }
+            if self.oidcArn != nil {
+                map["oidc_arn"] = self.oidcArn!
+            }
+            if self.oidcName != nil {
+                map["oidc_name"] = self.oidcName!
+            }
+            if self.openApiConfigurationUrl != nil {
+                map["open_api_configuration_url"] = self.openApiConfigurationUrl!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["audience"] as? String {
+                self.audience = value
+            }
+            if let value = dict["enabled"] as? Bool {
+                self.enabled = value
+            }
+            if let value = dict["issuer"] as? String {
+                self.issuer = value
+            }
+            if let value = dict["jwks_url"] as? String {
+                self.jwksUrl = value
+            }
+            if let value = dict["max_oidc_token_expiration"] as? String {
+                self.maxOidcTokenExpiration = value
+            }
+            if let value = dict["oidc_arn"] as? String {
+                self.oidcArn = value
+            }
+            if let value = dict["oidc_name"] as? String {
+                self.oidcName = value
+            }
+            if let value = dict["open_api_configuration_url"] as? String {
+                self.openApiConfigurationUrl = value
+            }
+        }
+    }
     public var autoMode: DescribeClusterDetailResponseBody.AutoMode?
 
     public var clusterDomain: String?
@@ -10597,6 +10691,8 @@ public class DescribeClusterDetailResponseBody : Tea.TeaModel {
     public var dockerVersion: String?
 
     public var externalLoadbalancerId: String?
+
+    public var extraSans: [String]?
 
     public var initVersion: String?
 
@@ -10629,6 +10725,8 @@ public class DescribeClusterDetailResponseBody : Tea.TeaModel {
     public var regionId: String?
 
     public var resourceGroupId: String?
+
+    public var rrsaConfig: DescribeClusterDetailResponseBody.RrsaConfig?
 
     public var securityGroupId: String?
 
@@ -10670,6 +10768,7 @@ public class DescribeClusterDetailResponseBody : Tea.TeaModel {
         try self.controlPlaneConfig?.validate()
         try self.maintenanceWindow?.validate()
         try self.operationPolicy?.validate()
+        try self.rrsaConfig?.validate()
     }
 
     public override func toMap() -> [String : Any] {
@@ -10709,6 +10808,9 @@ public class DescribeClusterDetailResponseBody : Tea.TeaModel {
         }
         if self.externalLoadbalancerId != nil {
             map["external_loadbalancer_id"] = self.externalLoadbalancerId!
+        }
+        if self.extraSans != nil {
+            map["extra_sans"] = self.extraSans!
         }
         if self.initVersion != nil {
             map["init_version"] = self.initVersion!
@@ -10757,6 +10859,9 @@ public class DescribeClusterDetailResponseBody : Tea.TeaModel {
         }
         if self.resourceGroupId != nil {
             map["resource_group_id"] = self.resourceGroupId!
+        }
+        if self.rrsaConfig != nil {
+            map["rrsa_config"] = self.rrsaConfig?.toMap()
         }
         if self.securityGroupId != nil {
             map["security_group_id"] = self.securityGroupId!
@@ -10846,6 +10951,9 @@ public class DescribeClusterDetailResponseBody : Tea.TeaModel {
         if let value = dict["external_loadbalancer_id"] as? String {
             self.externalLoadbalancerId = value
         }
+        if let value = dict["extra_sans"] as? [String] {
+            self.extraSans = value
+        }
         if let value = dict["init_version"] as? String {
             self.initVersion = value
         }
@@ -10897,6 +11005,11 @@ public class DescribeClusterDetailResponseBody : Tea.TeaModel {
         }
         if let value = dict["resource_group_id"] as? String {
             self.resourceGroupId = value
+        }
+        if let value = dict["rrsa_config"] as? [String: Any?] {
+            var model = DescribeClusterDetailResponseBody.RrsaConfig()
+            model.fromMap(value)
+            self.rrsaConfig = model
         }
         if let value = dict["security_group_id"] as? String {
             self.securityGroupId = value
@@ -11820,6 +11933,8 @@ public class DescribeClusterNodePoolDetailResponseBody : Tea.TeaModel {
             }
         }
         public class AutoVulFixPolicy : Tea.TeaModel {
+            public var excludePackages: String?
+
             public var restartNode: Bool?
 
             public var vulLevel: String?
@@ -11838,6 +11953,9 @@ public class DescribeClusterNodePoolDetailResponseBody : Tea.TeaModel {
 
             public override func toMap() -> [String : Any] {
                 var map = super.toMap()
+                if self.excludePackages != nil {
+                    map["exclude_packages"] = self.excludePackages!
+                }
                 if self.restartNode != nil {
                     map["restart_node"] = self.restartNode!
                 }
@@ -11849,6 +11967,9 @@ public class DescribeClusterNodePoolDetailResponseBody : Tea.TeaModel {
 
             public override func fromMap(_ dict: [String: Any?]?) -> Void {
                 guard let dict else { return }
+                if let value = dict["exclude_packages"] as? String {
+                    self.excludePackages = value
+                }
                 if let value = dict["restart_node"] as? Bool {
                     self.restartNode = value
                 }
@@ -13412,6 +13533,8 @@ public class DescribeClusterNodePoolsResponseBody : Tea.TeaModel {
                 }
             }
             public class AutoVulFixPolicy : Tea.TeaModel {
+                public var excludePackages: String?
+
                 public var restartNode: Bool?
 
                 public var vulLevel: String?
@@ -13430,6 +13553,9 @@ public class DescribeClusterNodePoolsResponseBody : Tea.TeaModel {
 
                 public override func toMap() -> [String : Any] {
                     var map = super.toMap()
+                    if self.excludePackages != nil {
+                        map["exclude_packages"] = self.excludePackages!
+                    }
                     if self.restartNode != nil {
                         map["restart_node"] = self.restartNode!
                     }
@@ -13441,6 +13567,9 @@ public class DescribeClusterNodePoolsResponseBody : Tea.TeaModel {
 
                 public override func fromMap(_ dict: [String: Any?]?) -> Void {
                     guard let dict else { return }
+                    if let value = dict["exclude_packages"] as? String {
+                        self.excludePackages = value
+                    }
                     if let value = dict["restart_node"] as? Bool {
                         self.restartNode = value
                     }
@@ -19552,6 +19681,36 @@ public class DescribeNodePoolVulsRequest : Tea.TeaModel {
 public class DescribeNodePoolVulsResponseBody : Tea.TeaModel {
     public class VulRecords : Tea.TeaModel {
         public class VulList : Tea.TeaModel {
+            public class PackageList : Tea.TeaModel {
+                public var name: String?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.name != nil {
+                        map["name"] = self.name!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                    guard let dict else { return }
+                    if let value = dict["name"] as? String {
+                        self.name = value
+                    }
+                }
+            }
             public var aliasName: String?
 
             public var cveList: [String]?
@@ -19561,6 +19720,8 @@ public class DescribeNodePoolVulsResponseBody : Tea.TeaModel {
             public var necessity: String?
 
             public var needReboot: Bool?
+
+            public var packageList: [DescribeNodePoolVulsResponseBody.VulRecords.VulList.PackageList]?
 
             public override init() {
                 super.init()
@@ -19591,6 +19752,13 @@ public class DescribeNodePoolVulsResponseBody : Tea.TeaModel {
                 if self.needReboot != nil {
                     map["need_reboot"] = self.needReboot!
                 }
+                if self.packageList != nil {
+                    var tmp : [Any] = []
+                    for k in self.packageList! {
+                        tmp.append(k.toMap())
+                    }
+                    map["package_list"] = tmp
+                }
                 return map
             }
 
@@ -19610,6 +19778,19 @@ public class DescribeNodePoolVulsResponseBody : Tea.TeaModel {
                 }
                 if let value = dict["need_reboot"] as? Bool {
                     self.needReboot = value
+                }
+                if let value = dict["package_list"] as? [Any?] {
+                    var tmp : [DescribeNodePoolVulsResponseBody.VulRecords.VulList.PackageList] = []
+                    for v in value {
+                        if v != nil {
+                            var model = DescribeNodePoolVulsResponseBody.VulRecords.VulList.PackageList()
+                            if v != nil {
+                                model.fromMap(v as? [String: Any?])
+                            }
+                            tmp.append(model)
+                        }
+                    }
+                    self.packageList = tmp
                 }
             }
         }
@@ -28113,6 +28294,8 @@ public class ModifyClusterNodePoolRequest : Tea.TeaModel {
 
         public var labels: [Tag]?
 
+        public var nodeNameMode: String?
+
         public var preUserData: String?
 
         public var runtime: String?
@@ -28151,6 +28334,9 @@ public class ModifyClusterNodePoolRequest : Tea.TeaModel {
                     tmp.append(k.toMap())
                 }
                 map["labels"] = tmp
+            }
+            if self.nodeNameMode != nil {
+                map["node_name_mode"] = self.nodeNameMode!
             }
             if self.preUserData != nil {
                 map["pre_user_data"] = self.preUserData!
@@ -28197,6 +28383,9 @@ public class ModifyClusterNodePoolRequest : Tea.TeaModel {
                     }
                 }
                 self.labels = tmp
+            }
+            if let value = dict["node_name_mode"] as? String {
+                self.nodeNameMode = value
             }
             if let value = dict["pre_user_data"] as? String {
                 self.preUserData = value
@@ -28314,6 +28503,8 @@ public class ModifyClusterNodePoolRequest : Tea.TeaModel {
             }
         }
         public class AutoVulFixPolicy : Tea.TeaModel {
+            public var excludePackages: String?
+
             public var restartNode: Bool?
 
             public var vulLevel: String?
@@ -28332,6 +28523,9 @@ public class ModifyClusterNodePoolRequest : Tea.TeaModel {
 
             public override func toMap() -> [String : Any] {
                 var map = super.toMap()
+                if self.excludePackages != nil {
+                    map["exclude_packages"] = self.excludePackages!
+                }
                 if self.restartNode != nil {
                     map["restart_node"] = self.restartNode!
                 }
@@ -28343,6 +28537,9 @@ public class ModifyClusterNodePoolRequest : Tea.TeaModel {
 
             public override func fromMap(_ dict: [String: Any?]?) -> Void {
                 guard let dict else { return }
+                if let value = dict["exclude_packages"] as? String {
+                    self.excludePackages = value
+                }
                 if let value = dict["restart_node"] as? Bool {
                     self.restartNode = value
                 }
