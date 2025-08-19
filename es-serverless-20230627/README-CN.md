@@ -17,7 +17,7 @@
 要使用 [Carthage](https://github.com/Carthage/Carthage) 将 `AlibabacloudEsServerless20230627` 集成到你的 Xcode 项目中，需要在 `Cartfile` 中定义以下内容:
 
 ```ogdl
-github "alibabacloud-sdk-swift/es-serverless-20230627" "2.1.3"
+github "alibabacloud-sdk-swift/es-serverless-20230627" "2.2.0"
 ```
 
 ### Swift 包管理工具
@@ -26,7 +26,7 @@ github "alibabacloud-sdk-swift/es-serverless-20230627" "2.1.3"
 
 ```swift
 dependencies: [
-    .package(url: "https://github.com/alibabacloud-sdk-swift/es-serverless-20230627.git", from: "2.1.3")
+    .package(url: "https://github.com/alibabacloud-sdk-swift/es-serverless-20230627.git", from: "2.2.0")
 ]
 ```
 
