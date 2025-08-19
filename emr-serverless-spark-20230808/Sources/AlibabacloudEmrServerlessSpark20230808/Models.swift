@@ -3923,6 +3923,8 @@ public class CreateSessionClusterRequest : Tea.TeaModel {
 
     public var autoStopConfiguration: CreateSessionClusterRequest.AutoStopConfiguration?
 
+    public var clientToken: String?
+
     public var displayReleaseVersion: String?
 
     public var envId: String?
@@ -3969,6 +3971,9 @@ public class CreateSessionClusterRequest : Tea.TeaModel {
         }
         if self.autoStopConfiguration != nil {
             map["autoStopConfiguration"] = self.autoStopConfiguration?.toMap()
+        }
+        if self.clientToken != nil {
+            map["clientToken"] = self.clientToken!
         }
         if self.displayReleaseVersion != nil {
             map["displayReleaseVersion"] = self.displayReleaseVersion!
@@ -4024,6 +4029,9 @@ public class CreateSessionClusterRequest : Tea.TeaModel {
             var model = CreateSessionClusterRequest.AutoStopConfiguration()
             model.fromMap(value)
             self.autoStopConfiguration = model
+        }
+        if let value = dict["clientToken"] as? String {
+            self.clientToken = value
         }
         if let value = dict["displayReleaseVersion"] as? String {
             self.displayReleaseVersion = value
@@ -7677,6 +7685,8 @@ public class ListJobRunsRequest : Tea.TeaModel {
             }
         }
     }
+    public var applicationConfigs: String?
+
     public var creator: String?
 
     public var endTime: ListJobRunsRequest.EndTime?
@@ -7698,6 +7708,8 @@ public class ListJobRunsRequest : Tea.TeaModel {
     public var regionId: String?
 
     public var resourceQueueId: String?
+
+    public var runtimeConfigs: String?
 
     public var startTime: ListJobRunsRequest.StartTime?
 
@@ -7721,6 +7733,9 @@ public class ListJobRunsRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.applicationConfigs != nil {
+            map["applicationConfigs"] = self.applicationConfigs!
+        }
         if self.creator != nil {
             map["creator"] = self.creator!
         }
@@ -7754,6 +7769,9 @@ public class ListJobRunsRequest : Tea.TeaModel {
         if self.resourceQueueId != nil {
             map["resourceQueueId"] = self.resourceQueueId!
         }
+        if self.runtimeConfigs != nil {
+            map["runtimeConfigs"] = self.runtimeConfigs!
+        }
         if self.startTime != nil {
             map["startTime"] = self.startTime?.toMap()
         }
@@ -7772,6 +7790,9 @@ public class ListJobRunsRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["applicationConfigs"] as? String {
+            self.applicationConfigs = value
+        }
         if let value = dict["creator"] as? String {
             self.creator = value
         }
@@ -7807,6 +7828,9 @@ public class ListJobRunsRequest : Tea.TeaModel {
         if let value = dict["resourceQueueId"] as? String {
             self.resourceQueueId = value
         }
+        if let value = dict["runtimeConfigs"] as? String {
+            self.runtimeConfigs = value
+        }
         if let value = dict["startTime"] as? [String: Any?] {
             var model = ListJobRunsRequest.StartTime()
             model.fromMap(value)
@@ -7832,6 +7856,8 @@ public class ListJobRunsRequest : Tea.TeaModel {
 }
 
 public class ListJobRunsShrinkRequest : Tea.TeaModel {
+    public var applicationConfigs: String?
+
     public var creator: String?
 
     public var endTimeShrink: String?
@@ -7854,6 +7880,8 @@ public class ListJobRunsShrinkRequest : Tea.TeaModel {
 
     public var resourceQueueId: String?
 
+    public var runtimeConfigs: String?
+
     public var startTimeShrink: String?
 
     public var statesShrink: String?
@@ -7874,6 +7902,9 @@ public class ListJobRunsShrinkRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.applicationConfigs != nil {
+            map["applicationConfigs"] = self.applicationConfigs!
+        }
         if self.creator != nil {
             map["creator"] = self.creator!
         }
@@ -7907,6 +7938,9 @@ public class ListJobRunsShrinkRequest : Tea.TeaModel {
         if self.resourceQueueId != nil {
             map["resourceQueueId"] = self.resourceQueueId!
         }
+        if self.runtimeConfigs != nil {
+            map["runtimeConfigs"] = self.runtimeConfigs!
+        }
         if self.startTimeShrink != nil {
             map["startTime"] = self.startTimeShrink!
         }
@@ -7921,6 +7955,9 @@ public class ListJobRunsShrinkRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["applicationConfigs"] as? String {
+            self.applicationConfigs = value
+        }
         if let value = dict["creator"] as? String {
             self.creator = value
         }
@@ -7953,6 +7990,9 @@ public class ListJobRunsShrinkRequest : Tea.TeaModel {
         }
         if let value = dict["resourceQueueId"] as? String {
             self.resourceQueueId = value
+        }
+        if let value = dict["runtimeConfigs"] as? String {
+            self.runtimeConfigs = value
         }
         if let value = dict["startTime"] as? String {
             self.startTimeShrink = value
@@ -8404,6 +8444,8 @@ public class ListKyuubiServicesResponseBody : Tea.TeaModel {
 
             public var kyuubiConfigs: String?
 
+            public var kyuubiReleaseVersion: String?
+
             public var kyuubiServiceId: String?
 
             public var name: String?
@@ -8451,6 +8493,9 @@ public class ListKyuubiServicesResponseBody : Tea.TeaModel {
                 if self.kyuubiConfigs != nil {
                     map["kyuubiConfigs"] = self.kyuubiConfigs!
                 }
+                if self.kyuubiReleaseVersion != nil {
+                    map["kyuubiReleaseVersion"] = self.kyuubiReleaseVersion!
+                }
                 if self.kyuubiServiceId != nil {
                     map["kyuubiServiceId"] = self.kyuubiServiceId!
                 }
@@ -8497,6 +8542,9 @@ public class ListKyuubiServicesResponseBody : Tea.TeaModel {
                 }
                 if let value = dict["kyuubiConfigs"] as? String {
                     self.kyuubiConfigs = value
+                }
+                if let value = dict["kyuubiReleaseVersion"] as? String {
+                    self.kyuubiReleaseVersion = value
                 }
                 if let value = dict["kyuubiServiceId"] as? String {
                     self.kyuubiServiceId = value
@@ -8902,6 +8950,8 @@ public class ListKyuubiSparkApplicationsResponseBody : Tea.TeaModel {
 
         public var endTime: String?
 
+        public var exitReason: String?
+
         public var latestSqlStatementStatus: String?
 
         public var mbSeconds: Int64?
@@ -8942,6 +8992,9 @@ public class ListKyuubiSparkApplicationsResponseBody : Tea.TeaModel {
             if self.endTime != nil {
                 map["endTime"] = self.endTime!
             }
+            if self.exitReason != nil {
+                map["exitReason"] = self.exitReason!
+            }
             if self.latestSqlStatementStatus != nil {
                 map["latestSqlStatementStatus"] = self.latestSqlStatementStatus!
             }
@@ -8979,6 +9032,9 @@ public class ListKyuubiSparkApplicationsResponseBody : Tea.TeaModel {
             }
             if let value = dict["endTime"] as? String {
                 self.endTime = value
+            }
+            if let value = dict["exitReason"] as? String {
+                self.exitReason = value
             }
             if let value = dict["latestSqlStatementStatus"] as? String {
                 self.latestSqlStatementStatus = value
@@ -9163,6 +9219,8 @@ public class ListKyuubiTokenRequest : Tea.TeaModel {
 public class ListKyuubiTokenResponseBody : Tea.TeaModel {
     public class Data : Tea.TeaModel {
         public class Tokens : Tea.TeaModel {
+            public var accountNames: [String]?
+
             public var createTime: Int64?
 
             public var createdBy: String?
@@ -9170,6 +9228,8 @@ public class ListKyuubiTokenResponseBody : Tea.TeaModel {
             public var expireTime: Int64?
 
             public var lastUsedTime: Int64?
+
+            public var memberArns: [String]?
 
             public var name: String?
 
@@ -9191,6 +9251,9 @@ public class ListKyuubiTokenResponseBody : Tea.TeaModel {
 
             public override func toMap() -> [String : Any] {
                 var map = super.toMap()
+                if self.accountNames != nil {
+                    map["accountNames"] = self.accountNames!
+                }
                 if self.createTime != nil {
                     map["createTime"] = self.createTime!
                 }
@@ -9202,6 +9265,9 @@ public class ListKyuubiTokenResponseBody : Tea.TeaModel {
                 }
                 if self.lastUsedTime != nil {
                     map["lastUsedTime"] = self.lastUsedTime!
+                }
+                if self.memberArns != nil {
+                    map["memberArns"] = self.memberArns!
                 }
                 if self.name != nil {
                     map["name"] = self.name!
@@ -9217,6 +9283,9 @@ public class ListKyuubiTokenResponseBody : Tea.TeaModel {
 
             public override func fromMap(_ dict: [String: Any?]?) -> Void {
                 guard let dict else { return }
+                if let value = dict["accountNames"] as? [String] {
+                    self.accountNames = value
+                }
                 if let value = dict["createTime"] as? Int64 {
                     self.createTime = value
                 }
@@ -9228,6 +9297,9 @@ public class ListKyuubiTokenResponseBody : Tea.TeaModel {
                 }
                 if let value = dict["lastUsedTime"] as? Int64 {
                     self.lastUsedTime = value
+                }
+                if let value = dict["memberArns"] as? [String] {
+                    self.memberArns = value
                 }
                 if let value = dict["name"] as? String {
                     self.name = value
