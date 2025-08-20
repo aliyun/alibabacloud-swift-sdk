@@ -451,6 +451,8 @@ public class ActivateLicenseResponse : Tea.TeaModel {
 }
 
 public class AicsOpenApiInvokeRequest : Tea.TeaModel {
+    public var jobId: String?
+
     public var nodeId: String?
 
     public var param: [String: Any]?
@@ -473,6 +475,9 @@ public class AicsOpenApiInvokeRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.jobId != nil {
+            map["JobId"] = self.jobId!
+        }
         if self.nodeId != nil {
             map["NodeId"] = self.nodeId!
         }
@@ -490,6 +495,9 @@ public class AicsOpenApiInvokeRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["JobId"] as? String {
+            self.jobId = value
+        }
         if let value = dict["NodeId"] as? String {
             self.nodeId = value
         }
@@ -506,6 +514,8 @@ public class AicsOpenApiInvokeRequest : Tea.TeaModel {
 }
 
 public class AicsOpenApiInvokeShrinkRequest : Tea.TeaModel {
+    public var jobId: String?
+
     public var nodeId: String?
 
     public var paramShrink: String?
@@ -528,6 +538,9 @@ public class AicsOpenApiInvokeShrinkRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.jobId != nil {
+            map["JobId"] = self.jobId!
+        }
         if self.nodeId != nil {
             map["NodeId"] = self.nodeId!
         }
@@ -545,6 +558,9 @@ public class AicsOpenApiInvokeShrinkRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["JobId"] as? String {
+            self.jobId = value
+        }
         if let value = dict["NodeId"] as? String {
             self.nodeId = value
         }

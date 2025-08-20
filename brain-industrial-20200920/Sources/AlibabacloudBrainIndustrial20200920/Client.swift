@@ -72,6 +72,9 @@ open class Client : AlibabacloudOpenApi.Client {
             request.paramShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.param, "Param", "json")
         }
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.jobId)) {
+            query["JobId"] = request.jobId ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.nodeId)) {
             query["NodeId"] = request.nodeId ?? "";
         }
