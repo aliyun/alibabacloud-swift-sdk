@@ -58307,6 +58307,8 @@ public class GetOrgLiveListResponseBody : Tea.TeaModel {
 
                 public var anchorUnionId: String?
 
+                public var anchorUnionIdInAlibaba: String?
+
                 public var anchorUserId: String?
 
                 public var liveEndTime: Int64?
@@ -58339,6 +58341,9 @@ public class GetOrgLiveListResponseBody : Tea.TeaModel {
                     if self.anchorUnionId != nil {
                         map["AnchorUnionId"] = self.anchorUnionId!
                     }
+                    if self.anchorUnionIdInAlibaba != nil {
+                        map["AnchorUnionIdInAlibaba"] = self.anchorUnionIdInAlibaba!
+                    }
                     if self.anchorUserId != nil {
                         map["AnchorUserId"] = self.anchorUserId!
                     }
@@ -58367,6 +58372,9 @@ public class GetOrgLiveListResponseBody : Tea.TeaModel {
                     }
                     if let value = dict["AnchorUnionId"] as? String {
                         self.anchorUnionId = value
+                    }
+                    if let value = dict["AnchorUnionIdInAlibaba"] as? String {
+                        self.anchorUnionIdInAlibaba = value
                     }
                     if let value = dict["AnchorUserId"] as? String {
                         self.anchorUserId = value
@@ -58469,6 +58477,8 @@ public class GetOrgLiveListResponseBody : Tea.TeaModel {
 
                 public var anchorUnionId: String?
 
+                public var anchorUnionIdInAlibaba: String?
+
                 public var anchorUserId: String?
 
                 public var liveEndTime: Int64?
@@ -58499,6 +58509,9 @@ public class GetOrgLiveListResponseBody : Tea.TeaModel {
                     if self.anchorUnionId != nil {
                         map["AnchorUnionId"] = self.anchorUnionId!
                     }
+                    if self.anchorUnionIdInAlibaba != nil {
+                        map["AnchorUnionIdInAlibaba"] = self.anchorUnionIdInAlibaba!
+                    }
                     if self.anchorUserId != nil {
                         map["AnchorUserId"] = self.anchorUserId!
                     }
@@ -58524,6 +58537,9 @@ public class GetOrgLiveListResponseBody : Tea.TeaModel {
                     }
                     if let value = dict["AnchorUnionId"] as? String {
                         self.anchorUnionId = value
+                    }
+                    if let value = dict["AnchorUnionIdInAlibaba"] as? String {
+                        self.anchorUnionIdInAlibaba = value
                     }
                     if let value = dict["AnchorUserId"] as? String {
                         self.anchorUserId = value
