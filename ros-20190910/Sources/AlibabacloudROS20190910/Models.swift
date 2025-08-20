@@ -22298,6 +22298,8 @@ public class PreviewStackRequest : Tea.TeaModel {
 
     public var timeoutInMinutes: Int64?
 
+    public var usePreviousParameters: Bool?
+
     public override init() {
         super.init()
     }
@@ -22370,6 +22372,9 @@ public class PreviewStackRequest : Tea.TeaModel {
         if self.timeoutInMinutes != nil {
             map["TimeoutInMinutes"] = self.timeoutInMinutes!
         }
+        if self.usePreviousParameters != nil {
+            map["UsePreviousParameters"] = self.usePreviousParameters!
+        }
         return map
     }
 
@@ -22438,6 +22443,9 @@ public class PreviewStackRequest : Tea.TeaModel {
         }
         if let value = dict["TimeoutInMinutes"] as? Int64 {
             self.timeoutInMinutes = value
+        }
+        if let value = dict["UsePreviousParameters"] as? Bool {
+            self.usePreviousParameters = value
         }
     }
 }

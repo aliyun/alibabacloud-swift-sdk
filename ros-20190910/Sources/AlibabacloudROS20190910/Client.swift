@@ -3330,6 +3330,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.timeoutInMinutes)) {
             query["TimeoutInMinutes"] = request.timeoutInMinutes!;
         }
+        if (!TeaUtils.Client.isUnset(request.usePreviousParameters)) {
+            query["UsePreviousParameters"] = request.usePreviousParameters!;
+        }
         var body: [String: Any] = [:]
         if (!TeaUtils.Client.isUnset(request.templateBody)) {
             body["TemplateBody"] = request.templateBody ?? "";
