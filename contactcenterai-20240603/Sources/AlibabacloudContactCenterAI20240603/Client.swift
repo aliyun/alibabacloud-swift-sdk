@@ -354,6 +354,48 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func generalAnalyzeImageWithOptions(_ workspaceId: String, _ appId: String, _ request: GeneralAnalyzeImageRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> GeneralAnalyzeImageResponse {
+        try TeaUtils.Client.validateModel(request)
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.customPrompt)) {
+            body["customPrompt"] = request.customPrompt ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.imageUrls)) {
+            body["imageUrls"] = request.imageUrls ?? [];
+        }
+        if (!TeaUtils.Client.isUnset(request.stream)) {
+            body["stream"] = request.stream!;
+        }
+        if (!TeaUtils.Client.isUnset(request.templateIds)) {
+            body["templateIds"] = request.templateIds ?? [];
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String],
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "GeneralAnalyzeImage",
+            "version": "2024-06-03",
+            "protocol": "HTTPS",
+            "pathname": "/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(workspaceId)) + "/ccai/app/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(appId)) + "/generalanalyzeImage",
+            "method": "POST",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(GeneralAnalyzeImageResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func generalAnalyzeImage(_ workspaceId: String, _ appId: String, _ request: GeneralAnalyzeImageRequest) async throws -> GeneralAnalyzeImageResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await generalAnalyzeImageWithOptions(workspaceId as! String, appId as! String, request as! GeneralAnalyzeImageRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func getTaskResultWithOptions(_ tmpReq: GetTaskResultRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> GetTaskResultResponse {
         try TeaUtils.Client.validateModel(tmpReq)
         var request: GetTaskResultShrinkRequest = GetTaskResultShrinkRequest([:])

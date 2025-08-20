@@ -2931,6 +2931,190 @@ public class DeleteVocabResponse : Tea.TeaModel {
     }
 }
 
+public class GeneralAnalyzeImageRequest : Tea.TeaModel {
+    public var customPrompt: String?
+
+    public var imageUrls: [String]?
+
+    public var stream: Bool?
+
+    public var templateIds: [Int64]?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.customPrompt != nil {
+            map["customPrompt"] = self.customPrompt!
+        }
+        if self.imageUrls != nil {
+            map["imageUrls"] = self.imageUrls!
+        }
+        if self.stream != nil {
+            map["stream"] = self.stream!
+        }
+        if self.templateIds != nil {
+            map["templateIds"] = self.templateIds!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["customPrompt"] as? String {
+            self.customPrompt = value
+        }
+        if let value = dict["imageUrls"] as? [String] {
+            self.imageUrls = value
+        }
+        if let value = dict["stream"] as? Bool {
+            self.stream = value
+        }
+        if let value = dict["templateIds"] as? [Int64] {
+            self.templateIds = value
+        }
+    }
+}
+
+public class GeneralAnalyzeImageResponseBody : Tea.TeaModel {
+    public var finishReason: String?
+
+    public var inputTokens: Int32?
+
+    public var outputTokens: Int32?
+
+    public var requestId: String?
+
+    public var success: Bool?
+
+    public var text: String?
+
+    public var totalTokens: Int32?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.finishReason != nil {
+            map["finishReason"] = self.finishReason!
+        }
+        if self.inputTokens != nil {
+            map["inputTokens"] = self.inputTokens!
+        }
+        if self.outputTokens != nil {
+            map["outputTokens"] = self.outputTokens!
+        }
+        if self.requestId != nil {
+            map["requestId"] = self.requestId!
+        }
+        if self.success != nil {
+            map["success"] = self.success!
+        }
+        if self.text != nil {
+            map["text"] = self.text!
+        }
+        if self.totalTokens != nil {
+            map["totalTokens"] = self.totalTokens!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["finishReason"] as? String {
+            self.finishReason = value
+        }
+        if let value = dict["inputTokens"] as? Int32 {
+            self.inputTokens = value
+        }
+        if let value = dict["outputTokens"] as? Int32 {
+            self.outputTokens = value
+        }
+        if let value = dict["requestId"] as? String {
+            self.requestId = value
+        }
+        if let value = dict["success"] as? Bool {
+            self.success = value
+        }
+        if let value = dict["text"] as? String {
+            self.text = value
+        }
+        if let value = dict["totalTokens"] as? Int32 {
+            self.totalTokens = value
+        }
+    }
+}
+
+public class GeneralAnalyzeImageResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: GeneralAnalyzeImageResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = GeneralAnalyzeImageResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
 public class GetTaskResultRequest : Tea.TeaModel {
     public var requiredFieldList: [String]?
 
