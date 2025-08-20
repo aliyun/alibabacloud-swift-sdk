@@ -3319,8 +3319,24 @@ open class Client : AlibabacloudOpenApi.Client {
         try TeaUtils.Client.validateModel(tmpReq)
         var request: UpdateApprovalProcessShrinkRequest = UpdateApprovalProcessShrinkRequest([:])
         AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.matchSchemaConfigs)) {
+            request.matchSchemaConfigsShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.matchSchemaConfigs, "MatchSchemaConfigs", "json")
+        }
         if (!TeaUtils.Client.isUnset(tmpReq.matchSchemas)) {
             request.matchSchemasShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.matchSchemas, "MatchSchemas", "json")
+        }
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.approvalType)) {
+            query["ApprovalType"] = request.approvalType!;
+        }
+        if (!TeaUtils.Client.isUnset(request.eventLabel)) {
+            query["EventLabel"] = request.eventLabel ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.externalConfig)) {
+            query["ExternalConfig"] = request.externalConfig ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.matchSchemaConfigsShrink)) {
+            query["MatchSchemaConfigs"] = request.matchSchemaConfigsShrink ?? "";
         }
         var body: [String: Any] = [:]
         if (!TeaUtils.Client.isUnset(request.description_)) {
@@ -3341,6 +3357,7 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         body = Tea.TeaConverter.merge([:], body, AlibabaCloudOpenApiUtil.Client.query(bodyFlat))
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query),
             "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
         ])
         var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([

@@ -341,6 +341,8 @@ public class DisposalContent : Tea.TeaModel {
 
     public var alertContentEn: String?
 
+    public var alertIntervalSeconds: Int64?
+
     public var alertTitle: String?
 
     public var alertTitleEn: String?
@@ -354,6 +356,8 @@ public class DisposalContent : Tea.TeaModel {
     public var notifyActions: [String]?
 
     public var prohibitActions: [String]?
+
+    public var prohibitSoftwareIds: [String]?
 
     public override init() {
         super.init()
@@ -374,6 +378,9 @@ public class DisposalContent : Tea.TeaModel {
         }
         if self.alertContentEn != nil {
             map["AlertContentEn"] = self.alertContentEn!
+        }
+        if self.alertIntervalSeconds != nil {
+            map["AlertIntervalSeconds"] = self.alertIntervalSeconds!
         }
         if self.alertTitle != nil {
             map["AlertTitle"] = self.alertTitle!
@@ -396,6 +403,9 @@ public class DisposalContent : Tea.TeaModel {
         if self.prohibitActions != nil {
             map["ProhibitActions"] = self.prohibitActions!
         }
+        if self.prohibitSoftwareIds != nil {
+            map["ProhibitSoftwareIds"] = self.prohibitSoftwareIds!
+        }
         return map
     }
 
@@ -406,6 +416,9 @@ public class DisposalContent : Tea.TeaModel {
         }
         if let value = dict["AlertContentEn"] as? String {
             self.alertContentEn = value
+        }
+        if let value = dict["AlertIntervalSeconds"] as? Int64 {
+            self.alertIntervalSeconds = value
         }
         if let value = dict["AlertTitle"] as? String {
             self.alertTitle = value
@@ -427,6 +440,9 @@ public class DisposalContent : Tea.TeaModel {
         }
         if let value = dict["ProhibitActions"] as? [String] {
             self.prohibitActions = value
+        }
+        if let value = dict["ProhibitSoftwareIds"] as? [String] {
+            self.prohibitSoftwareIds = value
         }
     }
 }
@@ -11647,6 +11663,48 @@ public class GetApprovalProcessRequest : Tea.TeaModel {
 public class GetApprovalProcessResponseBody : Tea.TeaModel {
     public class Process : Tea.TeaModel {
         public class AppUninstallPolicies : Tea.TeaModel {
+            public class FieldMap : Tea.TeaModel {
+                public var displayField: String?
+
+                public var systemField: String?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.displayField != nil {
+                        map["DisplayField"] = self.displayField!
+                    }
+                    if self.systemField != nil {
+                        map["SystemField"] = self.systemField!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                    guard let dict else { return }
+                    if let value = dict["DisplayField"] as? String {
+                        self.displayField = value
+                    }
+                    if let value = dict["SystemField"] as? String {
+                        self.systemField = value
+                    }
+                }
+            }
+            public var externalProcessId: String?
+
+            public var fieldMap: [GetApprovalProcessResponseBody.Process.AppUninstallPolicies.FieldMap]?
+
             public var policyIds: [String]?
 
             public var schemaId: String?
@@ -11665,6 +11723,16 @@ public class GetApprovalProcessResponseBody : Tea.TeaModel {
 
             public override func toMap() -> [String : Any] {
                 var map = super.toMap()
+                if self.externalProcessId != nil {
+                    map["ExternalProcessId"] = self.externalProcessId!
+                }
+                if self.fieldMap != nil {
+                    var tmp : [Any] = []
+                    for k in self.fieldMap! {
+                        tmp.append(k.toMap())
+                    }
+                    map["FieldMap"] = tmp
+                }
                 if self.policyIds != nil {
                     map["PolicyIds"] = self.policyIds!
                 }
@@ -11676,6 +11744,22 @@ public class GetApprovalProcessResponseBody : Tea.TeaModel {
 
             public override func fromMap(_ dict: [String: Any?]?) -> Void {
                 guard let dict else { return }
+                if let value = dict["ExternalProcessId"] as? String {
+                    self.externalProcessId = value
+                }
+                if let value = dict["FieldMap"] as? [Any?] {
+                    var tmp : [GetApprovalProcessResponseBody.Process.AppUninstallPolicies.FieldMap] = []
+                    for v in value {
+                        if v != nil {
+                            var model = GetApprovalProcessResponseBody.Process.AppUninstallPolicies.FieldMap()
+                            if v != nil {
+                                model.fromMap(v as? [String: Any?])
+                            }
+                            tmp.append(model)
+                        }
+                    }
+                    self.fieldMap = tmp
+                }
                 if let value = dict["PolicyIds"] as? [String] {
                     self.policyIds = value
                 }
@@ -11685,6 +11769,48 @@ public class GetApprovalProcessResponseBody : Tea.TeaModel {
             }
         }
         public class DeviceRegistrationPolicies : Tea.TeaModel {
+            public class FieldMap : Tea.TeaModel {
+                public var displayField: String?
+
+                public var systemField: String?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.displayField != nil {
+                        map["DisplayField"] = self.displayField!
+                    }
+                    if self.systemField != nil {
+                        map["SystemField"] = self.systemField!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                    guard let dict else { return }
+                    if let value = dict["DisplayField"] as? String {
+                        self.displayField = value
+                    }
+                    if let value = dict["SystemField"] as? String {
+                        self.systemField = value
+                    }
+                }
+            }
+            public var externalProcessId: String?
+
+            public var fieldMap: [GetApprovalProcessResponseBody.Process.DeviceRegistrationPolicies.FieldMap]?
+
             public var policyIds: [String]?
 
             public var schemaId: String?
@@ -11703,6 +11829,16 @@ public class GetApprovalProcessResponseBody : Tea.TeaModel {
 
             public override func toMap() -> [String : Any] {
                 var map = super.toMap()
+                if self.externalProcessId != nil {
+                    map["ExternalProcessId"] = self.externalProcessId!
+                }
+                if self.fieldMap != nil {
+                    var tmp : [Any] = []
+                    for k in self.fieldMap! {
+                        tmp.append(k.toMap())
+                    }
+                    map["FieldMap"] = tmp
+                }
                 if self.policyIds != nil {
                     map["PolicyIds"] = self.policyIds!
                 }
@@ -11714,6 +11850,22 @@ public class GetApprovalProcessResponseBody : Tea.TeaModel {
 
             public override func fromMap(_ dict: [String: Any?]?) -> Void {
                 guard let dict else { return }
+                if let value = dict["ExternalProcessId"] as? String {
+                    self.externalProcessId = value
+                }
+                if let value = dict["FieldMap"] as? [Any?] {
+                    var tmp : [GetApprovalProcessResponseBody.Process.DeviceRegistrationPolicies.FieldMap] = []
+                    for v in value {
+                        if v != nil {
+                            var model = GetApprovalProcessResponseBody.Process.DeviceRegistrationPolicies.FieldMap()
+                            if v != nil {
+                                model.fromMap(v as? [String: Any?])
+                            }
+                            tmp.append(model)
+                        }
+                    }
+                    self.fieldMap = tmp
+                }
                 if let value = dict["PolicyIds"] as? [String] {
                     self.policyIds = value
                 }
@@ -11723,6 +11875,48 @@ public class GetApprovalProcessResponseBody : Tea.TeaModel {
             }
         }
         public class DlpSendPolicies : Tea.TeaModel {
+            public class FieldMap : Tea.TeaModel {
+                public var displayField: String?
+
+                public var systemField: String?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.displayField != nil {
+                        map["DisplayField"] = self.displayField!
+                    }
+                    if self.systemField != nil {
+                        map["SystemField"] = self.systemField!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                    guard let dict else { return }
+                    if let value = dict["DisplayField"] as? String {
+                        self.displayField = value
+                    }
+                    if let value = dict["SystemField"] as? String {
+                        self.systemField = value
+                    }
+                }
+            }
+            public var externalProcessId: String?
+
+            public var fieldMap: [GetApprovalProcessResponseBody.Process.DlpSendPolicies.FieldMap]?
+
             public var policyIds: [String]?
 
             public var schemaId: String?
@@ -11741,6 +11935,16 @@ public class GetApprovalProcessResponseBody : Tea.TeaModel {
 
             public override func toMap() -> [String : Any] {
                 var map = super.toMap()
+                if self.externalProcessId != nil {
+                    map["ExternalProcessId"] = self.externalProcessId!
+                }
+                if self.fieldMap != nil {
+                    var tmp : [Any] = []
+                    for k in self.fieldMap! {
+                        tmp.append(k.toMap())
+                    }
+                    map["FieldMap"] = tmp
+                }
                 if self.policyIds != nil {
                     map["PolicyIds"] = self.policyIds!
                 }
@@ -11752,6 +11956,22 @@ public class GetApprovalProcessResponseBody : Tea.TeaModel {
 
             public override func fromMap(_ dict: [String: Any?]?) -> Void {
                 guard let dict else { return }
+                if let value = dict["ExternalProcessId"] as? String {
+                    self.externalProcessId = value
+                }
+                if let value = dict["FieldMap"] as? [Any?] {
+                    var tmp : [GetApprovalProcessResponseBody.Process.DlpSendPolicies.FieldMap] = []
+                    for v in value {
+                        if v != nil {
+                            var model = GetApprovalProcessResponseBody.Process.DlpSendPolicies.FieldMap()
+                            if v != nil {
+                                model.fromMap(v as? [String: Any?])
+                            }
+                            tmp.append(model)
+                        }
+                    }
+                    self.fieldMap = tmp
+                }
                 if let value = dict["PolicyIds"] as? [String] {
                     self.policyIds = value
                 }
@@ -11761,6 +11981,48 @@ public class GetApprovalProcessResponseBody : Tea.TeaModel {
             }
         }
         public class DomainBlacklistPolicies : Tea.TeaModel {
+            public class FieldMap : Tea.TeaModel {
+                public var displayField: String?
+
+                public var systemField: String?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.displayField != nil {
+                        map["DisplayField"] = self.displayField!
+                    }
+                    if self.systemField != nil {
+                        map["SystemField"] = self.systemField!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                    guard let dict else { return }
+                    if let value = dict["DisplayField"] as? String {
+                        self.displayField = value
+                    }
+                    if let value = dict["SystemField"] as? String {
+                        self.systemField = value
+                    }
+                }
+            }
+            public var externalProcessId: String?
+
+            public var fieldMap: [GetApprovalProcessResponseBody.Process.DomainBlacklistPolicies.FieldMap]?
+
             public var policyIds: [String]?
 
             public var schemaId: String?
@@ -11779,6 +12041,16 @@ public class GetApprovalProcessResponseBody : Tea.TeaModel {
 
             public override func toMap() -> [String : Any] {
                 var map = super.toMap()
+                if self.externalProcessId != nil {
+                    map["ExternalProcessId"] = self.externalProcessId!
+                }
+                if self.fieldMap != nil {
+                    var tmp : [Any] = []
+                    for k in self.fieldMap! {
+                        tmp.append(k.toMap())
+                    }
+                    map["FieldMap"] = tmp
+                }
                 if self.policyIds != nil {
                     map["PolicyIds"] = self.policyIds!
                 }
@@ -11790,6 +12062,22 @@ public class GetApprovalProcessResponseBody : Tea.TeaModel {
 
             public override func fromMap(_ dict: [String: Any?]?) -> Void {
                 guard let dict else { return }
+                if let value = dict["ExternalProcessId"] as? String {
+                    self.externalProcessId = value
+                }
+                if let value = dict["FieldMap"] as? [Any?] {
+                    var tmp : [GetApprovalProcessResponseBody.Process.DomainBlacklistPolicies.FieldMap] = []
+                    for v in value {
+                        if v != nil {
+                            var model = GetApprovalProcessResponseBody.Process.DomainBlacklistPolicies.FieldMap()
+                            if v != nil {
+                                model.fromMap(v as? [String: Any?])
+                            }
+                            tmp.append(model)
+                        }
+                    }
+                    self.fieldMap = tmp
+                }
                 if let value = dict["PolicyIds"] as? [String] {
                     self.policyIds = value
                 }
@@ -11799,6 +12087,48 @@ public class GetApprovalProcessResponseBody : Tea.TeaModel {
             }
         }
         public class DomainWhitelistPolicies : Tea.TeaModel {
+            public class FieldMap : Tea.TeaModel {
+                public var displayField: String?
+
+                public var systemField: String?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.displayField != nil {
+                        map["DisplayField"] = self.displayField!
+                    }
+                    if self.systemField != nil {
+                        map["SystemField"] = self.systemField!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                    guard let dict else { return }
+                    if let value = dict["DisplayField"] as? String {
+                        self.displayField = value
+                    }
+                    if let value = dict["SystemField"] as? String {
+                        self.systemField = value
+                    }
+                }
+            }
+            public var externalProcessId: String?
+
+            public var fieldMap: [GetApprovalProcessResponseBody.Process.DomainWhitelistPolicies.FieldMap]?
+
             public var policyIds: [String]?
 
             public var schemaId: String?
@@ -11817,6 +12147,16 @@ public class GetApprovalProcessResponseBody : Tea.TeaModel {
 
             public override func toMap() -> [String : Any] {
                 var map = super.toMap()
+                if self.externalProcessId != nil {
+                    map["ExternalProcessId"] = self.externalProcessId!
+                }
+                if self.fieldMap != nil {
+                    var tmp : [Any] = []
+                    for k in self.fieldMap! {
+                        tmp.append(k.toMap())
+                    }
+                    map["FieldMap"] = tmp
+                }
                 if self.policyIds != nil {
                     map["PolicyIds"] = self.policyIds!
                 }
@@ -11828,6 +12168,22 @@ public class GetApprovalProcessResponseBody : Tea.TeaModel {
 
             public override func fromMap(_ dict: [String: Any?]?) -> Void {
                 guard let dict else { return }
+                if let value = dict["ExternalProcessId"] as? String {
+                    self.externalProcessId = value
+                }
+                if let value = dict["FieldMap"] as? [Any?] {
+                    var tmp : [GetApprovalProcessResponseBody.Process.DomainWhitelistPolicies.FieldMap] = []
+                    for v in value {
+                        if v != nil {
+                            var model = GetApprovalProcessResponseBody.Process.DomainWhitelistPolicies.FieldMap()
+                            if v != nil {
+                                model.fromMap(v as? [String: Any?])
+                            }
+                            tmp.append(model)
+                        }
+                    }
+                    self.fieldMap = tmp
+                }
                 if let value = dict["PolicyIds"] as? [String] {
                     self.policyIds = value
                 }
@@ -11837,6 +12193,48 @@ public class GetApprovalProcessResponseBody : Tea.TeaModel {
             }
         }
         public class EndpointHardeningPolicies : Tea.TeaModel {
+            public class FieldMap : Tea.TeaModel {
+                public var displayField: String?
+
+                public var systemField: String?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.displayField != nil {
+                        map["DisplayField"] = self.displayField!
+                    }
+                    if self.systemField != nil {
+                        map["SystemField"] = self.systemField!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                    guard let dict else { return }
+                    if let value = dict["DisplayField"] as? String {
+                        self.displayField = value
+                    }
+                    if let value = dict["SystemField"] as? String {
+                        self.systemField = value
+                    }
+                }
+            }
+            public var externalProcessId: String?
+
+            public var fieldMap: [GetApprovalProcessResponseBody.Process.EndpointHardeningPolicies.FieldMap]?
+
             public var policyIds: [String]?
 
             public var schemaId: String?
@@ -11855,6 +12253,16 @@ public class GetApprovalProcessResponseBody : Tea.TeaModel {
 
             public override func toMap() -> [String : Any] {
                 var map = super.toMap()
+                if self.externalProcessId != nil {
+                    map["ExternalProcessId"] = self.externalProcessId!
+                }
+                if self.fieldMap != nil {
+                    var tmp : [Any] = []
+                    for k in self.fieldMap! {
+                        tmp.append(k.toMap())
+                    }
+                    map["FieldMap"] = tmp
+                }
                 if self.policyIds != nil {
                     map["PolicyIds"] = self.policyIds!
                 }
@@ -11866,6 +12274,22 @@ public class GetApprovalProcessResponseBody : Tea.TeaModel {
 
             public override func fromMap(_ dict: [String: Any?]?) -> Void {
                 guard let dict else { return }
+                if let value = dict["ExternalProcessId"] as? String {
+                    self.externalProcessId = value
+                }
+                if let value = dict["FieldMap"] as? [Any?] {
+                    var tmp : [GetApprovalProcessResponseBody.Process.EndpointHardeningPolicies.FieldMap] = []
+                    for v in value {
+                        if v != nil {
+                            var model = GetApprovalProcessResponseBody.Process.EndpointHardeningPolicies.FieldMap()
+                            if v != nil {
+                                model.fromMap(v as? [String: Any?])
+                            }
+                            tmp.append(model)
+                        }
+                    }
+                    self.fieldMap = tmp
+                }
                 if let value = dict["PolicyIds"] as? [String] {
                     self.policyIds = value
                 }
@@ -11875,6 +12299,48 @@ public class GetApprovalProcessResponseBody : Tea.TeaModel {
             }
         }
         public class PeripheralBlockPolicies : Tea.TeaModel {
+            public class FieldMap : Tea.TeaModel {
+                public var displayField: String?
+
+                public var systemField: String?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.displayField != nil {
+                        map["DisplayField"] = self.displayField!
+                    }
+                    if self.systemField != nil {
+                        map["SystemField"] = self.systemField!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                    guard let dict else { return }
+                    if let value = dict["DisplayField"] as? String {
+                        self.displayField = value
+                    }
+                    if let value = dict["SystemField"] as? String {
+                        self.systemField = value
+                    }
+                }
+            }
+            public var externalProcessId: String?
+
+            public var fieldMap: [GetApprovalProcessResponseBody.Process.PeripheralBlockPolicies.FieldMap]?
+
             public var policyIds: [String]?
 
             public var schemaId: String?
@@ -11893,6 +12359,16 @@ public class GetApprovalProcessResponseBody : Tea.TeaModel {
 
             public override func toMap() -> [String : Any] {
                 var map = super.toMap()
+                if self.externalProcessId != nil {
+                    map["ExternalProcessId"] = self.externalProcessId!
+                }
+                if self.fieldMap != nil {
+                    var tmp : [Any] = []
+                    for k in self.fieldMap! {
+                        tmp.append(k.toMap())
+                    }
+                    map["FieldMap"] = tmp
+                }
                 if self.policyIds != nil {
                     map["PolicyIds"] = self.policyIds!
                 }
@@ -11904,6 +12380,22 @@ public class GetApprovalProcessResponseBody : Tea.TeaModel {
 
             public override func fromMap(_ dict: [String: Any?]?) -> Void {
                 guard let dict else { return }
+                if let value = dict["ExternalProcessId"] as? String {
+                    self.externalProcessId = value
+                }
+                if let value = dict["FieldMap"] as? [Any?] {
+                    var tmp : [GetApprovalProcessResponseBody.Process.PeripheralBlockPolicies.FieldMap] = []
+                    for v in value {
+                        if v != nil {
+                            var model = GetApprovalProcessResponseBody.Process.PeripheralBlockPolicies.FieldMap()
+                            if v != nil {
+                                model.fromMap(v as? [String: Any?])
+                            }
+                            tmp.append(model)
+                        }
+                    }
+                    self.fieldMap = tmp
+                }
                 if let value = dict["PolicyIds"] as? [String] {
                     self.policyIds = value
                 }
@@ -11951,6 +12443,48 @@ public class GetApprovalProcessResponseBody : Tea.TeaModel {
             }
         }
         public class SoftwareBlockPolicies : Tea.TeaModel {
+            public class FieldMap : Tea.TeaModel {
+                public var displayField: String?
+
+                public var systemField: String?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.displayField != nil {
+                        map["DisplayField"] = self.displayField!
+                    }
+                    if self.systemField != nil {
+                        map["SystemField"] = self.systemField!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                    guard let dict else { return }
+                    if let value = dict["DisplayField"] as? String {
+                        self.displayField = value
+                    }
+                    if let value = dict["SystemField"] as? String {
+                        self.systemField = value
+                    }
+                }
+            }
+            public var externalProcessId: String?
+
+            public var fieldMap: [GetApprovalProcessResponseBody.Process.SoftwareBlockPolicies.FieldMap]?
+
             public var policyIds: [String]?
 
             public var schemaId: String?
@@ -11969,6 +12503,16 @@ public class GetApprovalProcessResponseBody : Tea.TeaModel {
 
             public override func toMap() -> [String : Any] {
                 var map = super.toMap()
+                if self.externalProcessId != nil {
+                    map["ExternalProcessId"] = self.externalProcessId!
+                }
+                if self.fieldMap != nil {
+                    var tmp : [Any] = []
+                    for k in self.fieldMap! {
+                        tmp.append(k.toMap())
+                    }
+                    map["FieldMap"] = tmp
+                }
                 if self.policyIds != nil {
                     map["PolicyIds"] = self.policyIds!
                 }
@@ -11980,6 +12524,22 @@ public class GetApprovalProcessResponseBody : Tea.TeaModel {
 
             public override func fromMap(_ dict: [String: Any?]?) -> Void {
                 guard let dict else { return }
+                if let value = dict["ExternalProcessId"] as? String {
+                    self.externalProcessId = value
+                }
+                if let value = dict["FieldMap"] as? [Any?] {
+                    var tmp : [GetApprovalProcessResponseBody.Process.SoftwareBlockPolicies.FieldMap] = []
+                    for v in value {
+                        if v != nil {
+                            var model = GetApprovalProcessResponseBody.Process.SoftwareBlockPolicies.FieldMap()
+                            if v != nil {
+                                model.fromMap(v as? [String: Any?])
+                            }
+                            tmp.append(model)
+                        }
+                    }
+                    self.fieldMap = tmp
+                }
                 if let value = dict["PolicyIds"] as? [String] {
                     self.policyIds = value
                 }
@@ -11989,6 +12549,48 @@ public class GetApprovalProcessResponseBody : Tea.TeaModel {
             }
         }
         public class SoftwareHardeningPolicies : Tea.TeaModel {
+            public class FieldMap : Tea.TeaModel {
+                public var displayField: String?
+
+                public var systemField: String?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.displayField != nil {
+                        map["DisplayField"] = self.displayField!
+                    }
+                    if self.systemField != nil {
+                        map["SystemField"] = self.systemField!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                    guard let dict else { return }
+                    if let value = dict["DisplayField"] as? String {
+                        self.displayField = value
+                    }
+                    if let value = dict["SystemField"] as? String {
+                        self.systemField = value
+                    }
+                }
+            }
+            public var externalProcessId: String?
+
+            public var fieldMap: [GetApprovalProcessResponseBody.Process.SoftwareHardeningPolicies.FieldMap]?
+
             public var policyIds: [String]?
 
             public var schemaId: String?
@@ -12007,6 +12609,16 @@ public class GetApprovalProcessResponseBody : Tea.TeaModel {
 
             public override func toMap() -> [String : Any] {
                 var map = super.toMap()
+                if self.externalProcessId != nil {
+                    map["ExternalProcessId"] = self.externalProcessId!
+                }
+                if self.fieldMap != nil {
+                    var tmp : [Any] = []
+                    for k in self.fieldMap! {
+                        tmp.append(k.toMap())
+                    }
+                    map["FieldMap"] = tmp
+                }
                 if self.policyIds != nil {
                     map["PolicyIds"] = self.policyIds!
                 }
@@ -12018,6 +12630,22 @@ public class GetApprovalProcessResponseBody : Tea.TeaModel {
 
             public override func fromMap(_ dict: [String: Any?]?) -> Void {
                 guard let dict else { return }
+                if let value = dict["ExternalProcessId"] as? String {
+                    self.externalProcessId = value
+                }
+                if let value = dict["FieldMap"] as? [Any?] {
+                    var tmp : [GetApprovalProcessResponseBody.Process.SoftwareHardeningPolicies.FieldMap] = []
+                    for v in value {
+                        if v != nil {
+                            var model = GetApprovalProcessResponseBody.Process.SoftwareHardeningPolicies.FieldMap()
+                            if v != nil {
+                                model.fromMap(v as? [String: Any?])
+                            }
+                            tmp.append(model)
+                        }
+                    }
+                    self.fieldMap = tmp
+                }
                 if let value = dict["PolicyIds"] as? [String] {
                     self.policyIds = value
                 }
@@ -12027,6 +12655,8 @@ public class GetApprovalProcessResponseBody : Tea.TeaModel {
             }
         }
         public var appUninstallPolicies: GetApprovalProcessResponseBody.Process.AppUninstallPolicies?
+
+        public var approvalType: Int32?
 
         public var createTime: String?
 
@@ -12041,6 +12671,10 @@ public class GetApprovalProcessResponseBody : Tea.TeaModel {
         public var domainWhitelistPolicies: GetApprovalProcessResponseBody.Process.DomainWhitelistPolicies?
 
         public var endpointHardeningPolicies: GetApprovalProcessResponseBody.Process.EndpointHardeningPolicies?
+
+        public var eventLabel: String?
+
+        public var externalConfig: String?
 
         public var peripheralBlockPolicies: GetApprovalProcessResponseBody.Process.PeripheralBlockPolicies?
 
@@ -12080,6 +12714,9 @@ public class GetApprovalProcessResponseBody : Tea.TeaModel {
             if self.appUninstallPolicies != nil {
                 map["AppUninstallPolicies"] = self.appUninstallPolicies?.toMap()
             }
+            if self.approvalType != nil {
+                map["ApprovalType"] = self.approvalType!
+            }
             if self.createTime != nil {
                 map["CreateTime"] = self.createTime!
             }
@@ -12100,6 +12737,12 @@ public class GetApprovalProcessResponseBody : Tea.TeaModel {
             }
             if self.endpointHardeningPolicies != nil {
                 map["EndpointHardeningPolicies"] = self.endpointHardeningPolicies?.toMap()
+            }
+            if self.eventLabel != nil {
+                map["EventLabel"] = self.eventLabel!
+            }
+            if self.externalConfig != nil {
+                map["ExternalConfig"] = self.externalConfig!
             }
             if self.peripheralBlockPolicies != nil {
                 map["PeripheralBlockPolicies"] = self.peripheralBlockPolicies?.toMap()
@@ -12137,6 +12780,9 @@ public class GetApprovalProcessResponseBody : Tea.TeaModel {
                 model.fromMap(value)
                 self.appUninstallPolicies = model
             }
+            if let value = dict["ApprovalType"] as? Int32 {
+                self.approvalType = value
+            }
             if let value = dict["CreateTime"] as? String {
                 self.createTime = value
             }
@@ -12167,6 +12813,12 @@ public class GetApprovalProcessResponseBody : Tea.TeaModel {
                 var model = GetApprovalProcessResponseBody.Process.EndpointHardeningPolicies()
                 model.fromMap(value)
                 self.endpointHardeningPolicies = model
+            }
+            if let value = dict["EventLabel"] as? String {
+                self.eventLabel = value
+            }
+            if let value = dict["ExternalConfig"] as? String {
+                self.externalConfig = value
             }
             if let value = dict["PeripheralBlockPolicies"] as? [String: Any?] {
                 var model = GetApprovalProcessResponseBody.Process.PeripheralBlockPolicies()
@@ -17096,6 +17748,8 @@ public class ListApprovalProcessesResponseBody : Tea.TeaModel {
         }
         public var appUninstallPolicies: ListApprovalProcessesResponseBody.Processes.AppUninstallPolicies?
 
+        public var approvalType: Int32?
+
         public var createTime: String?
 
         public var description_: String?
@@ -17147,6 +17801,9 @@ public class ListApprovalProcessesResponseBody : Tea.TeaModel {
             var map = super.toMap()
             if self.appUninstallPolicies != nil {
                 map["AppUninstallPolicies"] = self.appUninstallPolicies?.toMap()
+            }
+            if self.approvalType != nil {
+                map["ApprovalType"] = self.approvalType!
             }
             if self.createTime != nil {
                 map["CreateTime"] = self.createTime!
@@ -17204,6 +17861,9 @@ public class ListApprovalProcessesResponseBody : Tea.TeaModel {
                 var model = ListApprovalProcessesResponseBody.Processes.AppUninstallPolicies()
                 model.fromMap(value)
                 self.appUninstallPolicies = model
+            }
+            if let value = dict["ApprovalType"] as? Int32 {
+                self.approvalType = value
             }
             if let value = dict["CreateTime"] as? String {
                 self.createTime = value
@@ -18449,6 +19109,8 @@ public class ListApprovalsResponseBody : Tea.TeaModel {
 
         public var approvalProgresses: [ListApprovalsResponseBody.Approvals.ApprovalProgresses]?
 
+        public var approvalType: Int32?
+
         public var createTime: String?
 
         public var creatorDepartment: String?
@@ -18503,6 +19165,9 @@ public class ListApprovalsResponseBody : Tea.TeaModel {
                     tmp.append(k.toMap())
                 }
                 map["ApprovalProgresses"] = tmp
+            }
+            if self.approvalType != nil {
+                map["ApprovalType"] = self.approvalType!
             }
             if self.createTime != nil {
                 map["CreateTime"] = self.createTime!
@@ -18569,6 +19234,9 @@ public class ListApprovalsResponseBody : Tea.TeaModel {
                     }
                 }
                 self.approvalProgresses = tmp
+            }
+            if let value = dict["ApprovalType"] as? Int32 {
+                self.approvalType = value
             }
             if let value = dict["CreateTime"] as? String {
                 self.createTime = value
@@ -30152,6 +30820,1009 @@ public class RevokeUserSessionResponse : Tea.TeaModel {
 }
 
 public class UpdateApprovalProcessRequest : Tea.TeaModel {
+    public class MatchSchemaConfigs : Tea.TeaModel {
+        public class AppUninstallSchemaConfig : Tea.TeaModel {
+            public class FieldMap : Tea.TeaModel {
+                public var displayField: String?
+
+                public var systemField: String?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.displayField != nil {
+                        map["DisplayField"] = self.displayField!
+                    }
+                    if self.systemField != nil {
+                        map["SystemField"] = self.systemField!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                    guard let dict else { return }
+                    if let value = dict["DisplayField"] as? String {
+                        self.displayField = value
+                    }
+                    if let value = dict["SystemField"] as? String {
+                        self.systemField = value
+                    }
+                }
+            }
+            public var externalProcessId: String?
+
+            public var fieldMap: [UpdateApprovalProcessRequest.MatchSchemaConfigs.AppUninstallSchemaConfig.FieldMap]?
+
+            public var schemaId: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.externalProcessId != nil {
+                    map["ExternalProcessId"] = self.externalProcessId!
+                }
+                if self.fieldMap != nil {
+                    var tmp : [Any] = []
+                    for k in self.fieldMap! {
+                        tmp.append(k.toMap())
+                    }
+                    map["FieldMap"] = tmp
+                }
+                if self.schemaId != nil {
+                    map["SchemaId"] = self.schemaId!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["ExternalProcessId"] as? String {
+                    self.externalProcessId = value
+                }
+                if let value = dict["FieldMap"] as? [Any?] {
+                    var tmp : [UpdateApprovalProcessRequest.MatchSchemaConfigs.AppUninstallSchemaConfig.FieldMap] = []
+                    for v in value {
+                        if v != nil {
+                            var model = UpdateApprovalProcessRequest.MatchSchemaConfigs.AppUninstallSchemaConfig.FieldMap()
+                            if v != nil {
+                                model.fromMap(v as? [String: Any?])
+                            }
+                            tmp.append(model)
+                        }
+                    }
+                    self.fieldMap = tmp
+                }
+                if let value = dict["SchemaId"] as? String {
+                    self.schemaId = value
+                }
+            }
+        }
+        public class DeviceRegistrationSchemaConfig : Tea.TeaModel {
+            public class FieldMap : Tea.TeaModel {
+                public var displayField: String?
+
+                public var systemField: String?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.displayField != nil {
+                        map["DisplayField"] = self.displayField!
+                    }
+                    if self.systemField != nil {
+                        map["SystemField"] = self.systemField!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                    guard let dict else { return }
+                    if let value = dict["DisplayField"] as? String {
+                        self.displayField = value
+                    }
+                    if let value = dict["SystemField"] as? String {
+                        self.systemField = value
+                    }
+                }
+            }
+            public var externalProcessId: String?
+
+            public var fieldMap: [UpdateApprovalProcessRequest.MatchSchemaConfigs.DeviceRegistrationSchemaConfig.FieldMap]?
+
+            public var schemaId: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.externalProcessId != nil {
+                    map["ExternalProcessId"] = self.externalProcessId!
+                }
+                if self.fieldMap != nil {
+                    var tmp : [Any] = []
+                    for k in self.fieldMap! {
+                        tmp.append(k.toMap())
+                    }
+                    map["FieldMap"] = tmp
+                }
+                if self.schemaId != nil {
+                    map["SchemaId"] = self.schemaId!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["ExternalProcessId"] as? String {
+                    self.externalProcessId = value
+                }
+                if let value = dict["FieldMap"] as? [Any?] {
+                    var tmp : [UpdateApprovalProcessRequest.MatchSchemaConfigs.DeviceRegistrationSchemaConfig.FieldMap] = []
+                    for v in value {
+                        if v != nil {
+                            var model = UpdateApprovalProcessRequest.MatchSchemaConfigs.DeviceRegistrationSchemaConfig.FieldMap()
+                            if v != nil {
+                                model.fromMap(v as? [String: Any?])
+                            }
+                            tmp.append(model)
+                        }
+                    }
+                    self.fieldMap = tmp
+                }
+                if let value = dict["SchemaId"] as? String {
+                    self.schemaId = value
+                }
+            }
+        }
+        public class DlpSendSchemaConfig : Tea.TeaModel {
+            public class FieldMap : Tea.TeaModel {
+                public var displayField: String?
+
+                public var systemField: String?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.displayField != nil {
+                        map["DisplayField"] = self.displayField!
+                    }
+                    if self.systemField != nil {
+                        map["SystemField"] = self.systemField!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                    guard let dict else { return }
+                    if let value = dict["DisplayField"] as? String {
+                        self.displayField = value
+                    }
+                    if let value = dict["SystemField"] as? String {
+                        self.systemField = value
+                    }
+                }
+            }
+            public var externalProcessId: String?
+
+            public var fieldMap: [UpdateApprovalProcessRequest.MatchSchemaConfigs.DlpSendSchemaConfig.FieldMap]?
+
+            public var schemaId: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.externalProcessId != nil {
+                    map["ExternalProcessId"] = self.externalProcessId!
+                }
+                if self.fieldMap != nil {
+                    var tmp : [Any] = []
+                    for k in self.fieldMap! {
+                        tmp.append(k.toMap())
+                    }
+                    map["FieldMap"] = tmp
+                }
+                if self.schemaId != nil {
+                    map["SchemaId"] = self.schemaId!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["ExternalProcessId"] as? String {
+                    self.externalProcessId = value
+                }
+                if let value = dict["FieldMap"] as? [Any?] {
+                    var tmp : [UpdateApprovalProcessRequest.MatchSchemaConfigs.DlpSendSchemaConfig.FieldMap] = []
+                    for v in value {
+                        if v != nil {
+                            var model = UpdateApprovalProcessRequest.MatchSchemaConfigs.DlpSendSchemaConfig.FieldMap()
+                            if v != nil {
+                                model.fromMap(v as? [String: Any?])
+                            }
+                            tmp.append(model)
+                        }
+                    }
+                    self.fieldMap = tmp
+                }
+                if let value = dict["SchemaId"] as? String {
+                    self.schemaId = value
+                }
+            }
+        }
+        public class DomainBlacklistSchemaConfig : Tea.TeaModel {
+            public class FieldMap : Tea.TeaModel {
+                public var displayField: String?
+
+                public var systemField: String?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.displayField != nil {
+                        map["DisplayField"] = self.displayField!
+                    }
+                    if self.systemField != nil {
+                        map["SystemField"] = self.systemField!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                    guard let dict else { return }
+                    if let value = dict["DisplayField"] as? String {
+                        self.displayField = value
+                    }
+                    if let value = dict["SystemField"] as? String {
+                        self.systemField = value
+                    }
+                }
+            }
+            public var externalProcessId: String?
+
+            public var fieldMap: [UpdateApprovalProcessRequest.MatchSchemaConfigs.DomainBlacklistSchemaConfig.FieldMap]?
+
+            public var schemaId: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.externalProcessId != nil {
+                    map["ExternalProcessId"] = self.externalProcessId!
+                }
+                if self.fieldMap != nil {
+                    var tmp : [Any] = []
+                    for k in self.fieldMap! {
+                        tmp.append(k.toMap())
+                    }
+                    map["FieldMap"] = tmp
+                }
+                if self.schemaId != nil {
+                    map["SchemaId"] = self.schemaId!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["ExternalProcessId"] as? String {
+                    self.externalProcessId = value
+                }
+                if let value = dict["FieldMap"] as? [Any?] {
+                    var tmp : [UpdateApprovalProcessRequest.MatchSchemaConfigs.DomainBlacklistSchemaConfig.FieldMap] = []
+                    for v in value {
+                        if v != nil {
+                            var model = UpdateApprovalProcessRequest.MatchSchemaConfigs.DomainBlacklistSchemaConfig.FieldMap()
+                            if v != nil {
+                                model.fromMap(v as? [String: Any?])
+                            }
+                            tmp.append(model)
+                        }
+                    }
+                    self.fieldMap = tmp
+                }
+                if let value = dict["SchemaId"] as? String {
+                    self.schemaId = value
+                }
+            }
+        }
+        public class DomainWhitelistSchemaConfig : Tea.TeaModel {
+            public class FieldMap : Tea.TeaModel {
+                public var displayField: String?
+
+                public var systemField: String?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.displayField != nil {
+                        map["DisplayField"] = self.displayField!
+                    }
+                    if self.systemField != nil {
+                        map["SystemField"] = self.systemField!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                    guard let dict else { return }
+                    if let value = dict["DisplayField"] as? String {
+                        self.displayField = value
+                    }
+                    if let value = dict["SystemField"] as? String {
+                        self.systemField = value
+                    }
+                }
+            }
+            public var externalProcessId: String?
+
+            public var fieldMap: [UpdateApprovalProcessRequest.MatchSchemaConfigs.DomainWhitelistSchemaConfig.FieldMap]?
+
+            public var schemaId: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.externalProcessId != nil {
+                    map["ExternalProcessId"] = self.externalProcessId!
+                }
+                if self.fieldMap != nil {
+                    var tmp : [Any] = []
+                    for k in self.fieldMap! {
+                        tmp.append(k.toMap())
+                    }
+                    map["FieldMap"] = tmp
+                }
+                if self.schemaId != nil {
+                    map["SchemaId"] = self.schemaId!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["ExternalProcessId"] as? String {
+                    self.externalProcessId = value
+                }
+                if let value = dict["FieldMap"] as? [Any?] {
+                    var tmp : [UpdateApprovalProcessRequest.MatchSchemaConfigs.DomainWhitelistSchemaConfig.FieldMap] = []
+                    for v in value {
+                        if v != nil {
+                            var model = UpdateApprovalProcessRequest.MatchSchemaConfigs.DomainWhitelistSchemaConfig.FieldMap()
+                            if v != nil {
+                                model.fromMap(v as? [String: Any?])
+                            }
+                            tmp.append(model)
+                        }
+                    }
+                    self.fieldMap = tmp
+                }
+                if let value = dict["SchemaId"] as? String {
+                    self.schemaId = value
+                }
+            }
+        }
+        public class EndpointHardeningSchemaConfig : Tea.TeaModel {
+            public class FieldMap : Tea.TeaModel {
+                public var displayField: String?
+
+                public var systemField: String?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.displayField != nil {
+                        map["DisplayField"] = self.displayField!
+                    }
+                    if self.systemField != nil {
+                        map["SystemField"] = self.systemField!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                    guard let dict else { return }
+                    if let value = dict["DisplayField"] as? String {
+                        self.displayField = value
+                    }
+                    if let value = dict["SystemField"] as? String {
+                        self.systemField = value
+                    }
+                }
+            }
+            public var externalProcessId: String?
+
+            public var fieldMap: [UpdateApprovalProcessRequest.MatchSchemaConfigs.EndpointHardeningSchemaConfig.FieldMap]?
+
+            public var schemaId: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.externalProcessId != nil {
+                    map["ExternalProcessId"] = self.externalProcessId!
+                }
+                if self.fieldMap != nil {
+                    var tmp : [Any] = []
+                    for k in self.fieldMap! {
+                        tmp.append(k.toMap())
+                    }
+                    map["FieldMap"] = tmp
+                }
+                if self.schemaId != nil {
+                    map["SchemaId"] = self.schemaId!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["ExternalProcessId"] as? String {
+                    self.externalProcessId = value
+                }
+                if let value = dict["FieldMap"] as? [Any?] {
+                    var tmp : [UpdateApprovalProcessRequest.MatchSchemaConfigs.EndpointHardeningSchemaConfig.FieldMap] = []
+                    for v in value {
+                        if v != nil {
+                            var model = UpdateApprovalProcessRequest.MatchSchemaConfigs.EndpointHardeningSchemaConfig.FieldMap()
+                            if v != nil {
+                                model.fromMap(v as? [String: Any?])
+                            }
+                            tmp.append(model)
+                        }
+                    }
+                    self.fieldMap = tmp
+                }
+                if let value = dict["SchemaId"] as? String {
+                    self.schemaId = value
+                }
+            }
+        }
+        public class PeripheralBlockSchemaConfig : Tea.TeaModel {
+            public class FieldMap : Tea.TeaModel {
+                public var displayField: String?
+
+                public var systemField: String?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.displayField != nil {
+                        map["DisplayField"] = self.displayField!
+                    }
+                    if self.systemField != nil {
+                        map["SystemField"] = self.systemField!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                    guard let dict else { return }
+                    if let value = dict["DisplayField"] as? String {
+                        self.displayField = value
+                    }
+                    if let value = dict["SystemField"] as? String {
+                        self.systemField = value
+                    }
+                }
+            }
+            public var externalProcessId: String?
+
+            public var fieldMap: [UpdateApprovalProcessRequest.MatchSchemaConfigs.PeripheralBlockSchemaConfig.FieldMap]?
+
+            public var schemaId: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.externalProcessId != nil {
+                    map["ExternalProcessId"] = self.externalProcessId!
+                }
+                if self.fieldMap != nil {
+                    var tmp : [Any] = []
+                    for k in self.fieldMap! {
+                        tmp.append(k.toMap())
+                    }
+                    map["FieldMap"] = tmp
+                }
+                if self.schemaId != nil {
+                    map["SchemaId"] = self.schemaId!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["ExternalProcessId"] as? String {
+                    self.externalProcessId = value
+                }
+                if let value = dict["FieldMap"] as? [Any?] {
+                    var tmp : [UpdateApprovalProcessRequest.MatchSchemaConfigs.PeripheralBlockSchemaConfig.FieldMap] = []
+                    for v in value {
+                        if v != nil {
+                            var model = UpdateApprovalProcessRequest.MatchSchemaConfigs.PeripheralBlockSchemaConfig.FieldMap()
+                            if v != nil {
+                                model.fromMap(v as? [String: Any?])
+                            }
+                            tmp.append(model)
+                        }
+                    }
+                    self.fieldMap = tmp
+                }
+                if let value = dict["SchemaId"] as? String {
+                    self.schemaId = value
+                }
+            }
+        }
+        public class SoftwareBlockSchemaConfig : Tea.TeaModel {
+            public class FieldMap : Tea.TeaModel {
+                public var displayField: String?
+
+                public var systemField: String?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.displayField != nil {
+                        map["DisplayField"] = self.displayField!
+                    }
+                    if self.systemField != nil {
+                        map["SystemField"] = self.systemField!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                    guard let dict else { return }
+                    if let value = dict["DisplayField"] as? String {
+                        self.displayField = value
+                    }
+                    if let value = dict["SystemField"] as? String {
+                        self.systemField = value
+                    }
+                }
+            }
+            public var externalProcessId: String?
+
+            public var fieldMap: [UpdateApprovalProcessRequest.MatchSchemaConfigs.SoftwareBlockSchemaConfig.FieldMap]?
+
+            public var schemaId: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.externalProcessId != nil {
+                    map["ExternalProcessId"] = self.externalProcessId!
+                }
+                if self.fieldMap != nil {
+                    var tmp : [Any] = []
+                    for k in self.fieldMap! {
+                        tmp.append(k.toMap())
+                    }
+                    map["FieldMap"] = tmp
+                }
+                if self.schemaId != nil {
+                    map["SchemaId"] = self.schemaId!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["ExternalProcessId"] as? String {
+                    self.externalProcessId = value
+                }
+                if let value = dict["FieldMap"] as? [Any?] {
+                    var tmp : [UpdateApprovalProcessRequest.MatchSchemaConfigs.SoftwareBlockSchemaConfig.FieldMap] = []
+                    for v in value {
+                        if v != nil {
+                            var model = UpdateApprovalProcessRequest.MatchSchemaConfigs.SoftwareBlockSchemaConfig.FieldMap()
+                            if v != nil {
+                                model.fromMap(v as? [String: Any?])
+                            }
+                            tmp.append(model)
+                        }
+                    }
+                    self.fieldMap = tmp
+                }
+                if let value = dict["SchemaId"] as? String {
+                    self.schemaId = value
+                }
+            }
+        }
+        public class SoftwareHardeningSchemaConfig : Tea.TeaModel {
+            public class FieldMap : Tea.TeaModel {
+                public var displayField: String?
+
+                public var systemField: String?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.displayField != nil {
+                        map["DisplayField"] = self.displayField!
+                    }
+                    if self.systemField != nil {
+                        map["SystemField"] = self.systemField!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                    guard let dict else { return }
+                    if let value = dict["DisplayField"] as? String {
+                        self.displayField = value
+                    }
+                    if let value = dict["SystemField"] as? String {
+                        self.systemField = value
+                    }
+                }
+            }
+            public var externalProcessId: String?
+
+            public var fieldMap: [UpdateApprovalProcessRequest.MatchSchemaConfigs.SoftwareHardeningSchemaConfig.FieldMap]?
+
+            public var schemaId: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.externalProcessId != nil {
+                    map["ExternalProcessId"] = self.externalProcessId!
+                }
+                if self.fieldMap != nil {
+                    var tmp : [Any] = []
+                    for k in self.fieldMap! {
+                        tmp.append(k.toMap())
+                    }
+                    map["FieldMap"] = tmp
+                }
+                if self.schemaId != nil {
+                    map["SchemaId"] = self.schemaId!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["ExternalProcessId"] as? String {
+                    self.externalProcessId = value
+                }
+                if let value = dict["FieldMap"] as? [Any?] {
+                    var tmp : [UpdateApprovalProcessRequest.MatchSchemaConfigs.SoftwareHardeningSchemaConfig.FieldMap] = []
+                    for v in value {
+                        if v != nil {
+                            var model = UpdateApprovalProcessRequest.MatchSchemaConfigs.SoftwareHardeningSchemaConfig.FieldMap()
+                            if v != nil {
+                                model.fromMap(v as? [String: Any?])
+                            }
+                            tmp.append(model)
+                        }
+                    }
+                    self.fieldMap = tmp
+                }
+                if let value = dict["SchemaId"] as? String {
+                    self.schemaId = value
+                }
+            }
+        }
+        public var appUninstallSchemaConfig: UpdateApprovalProcessRequest.MatchSchemaConfigs.AppUninstallSchemaConfig?
+
+        public var deviceRegistrationSchemaConfig: UpdateApprovalProcessRequest.MatchSchemaConfigs.DeviceRegistrationSchemaConfig?
+
+        public var dlpSendSchemaConfig: UpdateApprovalProcessRequest.MatchSchemaConfigs.DlpSendSchemaConfig?
+
+        public var domainBlacklistSchemaConfig: UpdateApprovalProcessRequest.MatchSchemaConfigs.DomainBlacklistSchemaConfig?
+
+        public var domainWhitelistSchemaConfig: UpdateApprovalProcessRequest.MatchSchemaConfigs.DomainWhitelistSchemaConfig?
+
+        public var endpointHardeningSchemaConfig: UpdateApprovalProcessRequest.MatchSchemaConfigs.EndpointHardeningSchemaConfig?
+
+        public var peripheralBlockSchemaConfig: UpdateApprovalProcessRequest.MatchSchemaConfigs.PeripheralBlockSchemaConfig?
+
+        public var softwareBlockSchemaConfig: UpdateApprovalProcessRequest.MatchSchemaConfigs.SoftwareBlockSchemaConfig?
+
+        public var softwareHardeningSchemaConfig: UpdateApprovalProcessRequest.MatchSchemaConfigs.SoftwareHardeningSchemaConfig?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+            try self.appUninstallSchemaConfig?.validate()
+            try self.deviceRegistrationSchemaConfig?.validate()
+            try self.dlpSendSchemaConfig?.validate()
+            try self.domainBlacklistSchemaConfig?.validate()
+            try self.domainWhitelistSchemaConfig?.validate()
+            try self.endpointHardeningSchemaConfig?.validate()
+            try self.peripheralBlockSchemaConfig?.validate()
+            try self.softwareBlockSchemaConfig?.validate()
+            try self.softwareHardeningSchemaConfig?.validate()
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.appUninstallSchemaConfig != nil {
+                map["AppUninstallSchemaConfig"] = self.appUninstallSchemaConfig?.toMap()
+            }
+            if self.deviceRegistrationSchemaConfig != nil {
+                map["DeviceRegistrationSchemaConfig"] = self.deviceRegistrationSchemaConfig?.toMap()
+            }
+            if self.dlpSendSchemaConfig != nil {
+                map["DlpSendSchemaConfig"] = self.dlpSendSchemaConfig?.toMap()
+            }
+            if self.domainBlacklistSchemaConfig != nil {
+                map["DomainBlacklistSchemaConfig"] = self.domainBlacklistSchemaConfig?.toMap()
+            }
+            if self.domainWhitelistSchemaConfig != nil {
+                map["DomainWhitelistSchemaConfig"] = self.domainWhitelistSchemaConfig?.toMap()
+            }
+            if self.endpointHardeningSchemaConfig != nil {
+                map["EndpointHardeningSchemaConfig"] = self.endpointHardeningSchemaConfig?.toMap()
+            }
+            if self.peripheralBlockSchemaConfig != nil {
+                map["PeripheralBlockSchemaConfig"] = self.peripheralBlockSchemaConfig?.toMap()
+            }
+            if self.softwareBlockSchemaConfig != nil {
+                map["SoftwareBlockSchemaConfig"] = self.softwareBlockSchemaConfig?.toMap()
+            }
+            if self.softwareHardeningSchemaConfig != nil {
+                map["SoftwareHardeningSchemaConfig"] = self.softwareHardeningSchemaConfig?.toMap()
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["AppUninstallSchemaConfig"] as? [String: Any?] {
+                var model = UpdateApprovalProcessRequest.MatchSchemaConfigs.AppUninstallSchemaConfig()
+                model.fromMap(value)
+                self.appUninstallSchemaConfig = model
+            }
+            if let value = dict["DeviceRegistrationSchemaConfig"] as? [String: Any?] {
+                var model = UpdateApprovalProcessRequest.MatchSchemaConfigs.DeviceRegistrationSchemaConfig()
+                model.fromMap(value)
+                self.deviceRegistrationSchemaConfig = model
+            }
+            if let value = dict["DlpSendSchemaConfig"] as? [String: Any?] {
+                var model = UpdateApprovalProcessRequest.MatchSchemaConfigs.DlpSendSchemaConfig()
+                model.fromMap(value)
+                self.dlpSendSchemaConfig = model
+            }
+            if let value = dict["DomainBlacklistSchemaConfig"] as? [String: Any?] {
+                var model = UpdateApprovalProcessRequest.MatchSchemaConfigs.DomainBlacklistSchemaConfig()
+                model.fromMap(value)
+                self.domainBlacklistSchemaConfig = model
+            }
+            if let value = dict["DomainWhitelistSchemaConfig"] as? [String: Any?] {
+                var model = UpdateApprovalProcessRequest.MatchSchemaConfigs.DomainWhitelistSchemaConfig()
+                model.fromMap(value)
+                self.domainWhitelistSchemaConfig = model
+            }
+            if let value = dict["EndpointHardeningSchemaConfig"] as? [String: Any?] {
+                var model = UpdateApprovalProcessRequest.MatchSchemaConfigs.EndpointHardeningSchemaConfig()
+                model.fromMap(value)
+                self.endpointHardeningSchemaConfig = model
+            }
+            if let value = dict["PeripheralBlockSchemaConfig"] as? [String: Any?] {
+                var model = UpdateApprovalProcessRequest.MatchSchemaConfigs.PeripheralBlockSchemaConfig()
+                model.fromMap(value)
+                self.peripheralBlockSchemaConfig = model
+            }
+            if let value = dict["SoftwareBlockSchemaConfig"] as? [String: Any?] {
+                var model = UpdateApprovalProcessRequest.MatchSchemaConfigs.SoftwareBlockSchemaConfig()
+                model.fromMap(value)
+                self.softwareBlockSchemaConfig = model
+            }
+            if let value = dict["SoftwareHardeningSchemaConfig"] as? [String: Any?] {
+                var model = UpdateApprovalProcessRequest.MatchSchemaConfigs.SoftwareHardeningSchemaConfig()
+                model.fromMap(value)
+                self.softwareHardeningSchemaConfig = model
+            }
+        }
+    }
     public class MatchSchemas : Tea.TeaModel {
         public var appUninstallSchemaId: String?
 
@@ -30246,7 +31917,15 @@ public class UpdateApprovalProcessRequest : Tea.TeaModel {
             }
         }
     }
+    public var approvalType: Int32?
+
     public var description_: String?
+
+    public var eventLabel: String?
+
+    public var externalConfig: String?
+
+    public var matchSchemaConfigs: UpdateApprovalProcessRequest.MatchSchemaConfigs?
 
     public var matchSchemas: UpdateApprovalProcessRequest.MatchSchemas?
 
@@ -30266,13 +31945,26 @@ public class UpdateApprovalProcessRequest : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
+        try self.matchSchemaConfigs?.validate()
         try self.matchSchemas?.validate()
     }
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.approvalType != nil {
+            map["ApprovalType"] = self.approvalType!
+        }
         if self.description_ != nil {
             map["Description"] = self.description_!
+        }
+        if self.eventLabel != nil {
+            map["EventLabel"] = self.eventLabel!
+        }
+        if self.externalConfig != nil {
+            map["ExternalConfig"] = self.externalConfig!
+        }
+        if self.matchSchemaConfigs != nil {
+            map["MatchSchemaConfigs"] = self.matchSchemaConfigs?.toMap()
         }
         if self.matchSchemas != nil {
             map["MatchSchemas"] = self.matchSchemas?.toMap()
@@ -30291,8 +31983,22 @@ public class UpdateApprovalProcessRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["ApprovalType"] as? Int32 {
+            self.approvalType = value
+        }
         if let value = dict["Description"] as? String {
             self.description_ = value
+        }
+        if let value = dict["EventLabel"] as? String {
+            self.eventLabel = value
+        }
+        if let value = dict["ExternalConfig"] as? String {
+            self.externalConfig = value
+        }
+        if let value = dict["MatchSchemaConfigs"] as? [String: Any?] {
+            var model = UpdateApprovalProcessRequest.MatchSchemaConfigs()
+            model.fromMap(value)
+            self.matchSchemaConfigs = model
         }
         if let value = dict["MatchSchemas"] as? [String: Any?] {
             var model = UpdateApprovalProcessRequest.MatchSchemas()
@@ -30312,7 +32018,15 @@ public class UpdateApprovalProcessRequest : Tea.TeaModel {
 }
 
 public class UpdateApprovalProcessShrinkRequest : Tea.TeaModel {
+    public var approvalType: Int32?
+
     public var description_: String?
+
+    public var eventLabel: String?
+
+    public var externalConfig: String?
+
+    public var matchSchemaConfigsShrink: String?
 
     public var matchSchemasShrink: String?
 
@@ -30336,8 +32050,20 @@ public class UpdateApprovalProcessShrinkRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.approvalType != nil {
+            map["ApprovalType"] = self.approvalType!
+        }
         if self.description_ != nil {
             map["Description"] = self.description_!
+        }
+        if self.eventLabel != nil {
+            map["EventLabel"] = self.eventLabel!
+        }
+        if self.externalConfig != nil {
+            map["ExternalConfig"] = self.externalConfig!
+        }
+        if self.matchSchemaConfigsShrink != nil {
+            map["MatchSchemaConfigs"] = self.matchSchemaConfigsShrink!
         }
         if self.matchSchemasShrink != nil {
             map["MatchSchemas"] = self.matchSchemasShrink!
@@ -30356,8 +32082,20 @@ public class UpdateApprovalProcessShrinkRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["ApprovalType"] as? Int32 {
+            self.approvalType = value
+        }
         if let value = dict["Description"] as? String {
             self.description_ = value
+        }
+        if let value = dict["EventLabel"] as? String {
+            self.eventLabel = value
+        }
+        if let value = dict["ExternalConfig"] as? String {
+            self.externalConfig = value
+        }
+        if let value = dict["MatchSchemaConfigs"] as? String {
+            self.matchSchemaConfigsShrink = value
         }
         if let value = dict["MatchSchemas"] as? String {
             self.matchSchemasShrink = value
@@ -30377,6 +32115,56 @@ public class UpdateApprovalProcessShrinkRequest : Tea.TeaModel {
 public class UpdateApprovalProcessResponseBody : Tea.TeaModel {
     public class Process : Tea.TeaModel {
         public class AppUninstallPolicies : Tea.TeaModel {
+            public class FieldMap : Tea.TeaModel {
+                public var displayField: String?
+
+                public var displayFieldValue: String?
+
+                public var systemField: String?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.displayField != nil {
+                        map["DisplayField"] = self.displayField!
+                    }
+                    if self.displayFieldValue != nil {
+                        map["DisplayFieldValue"] = self.displayFieldValue!
+                    }
+                    if self.systemField != nil {
+                        map["SystemField"] = self.systemField!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                    guard let dict else { return }
+                    if let value = dict["DisplayField"] as? String {
+                        self.displayField = value
+                    }
+                    if let value = dict["DisplayFieldValue"] as? String {
+                        self.displayFieldValue = value
+                    }
+                    if let value = dict["SystemField"] as? String {
+                        self.systemField = value
+                    }
+                }
+            }
+            public var externalProcessId: String?
+
+            public var fieldMap: [UpdateApprovalProcessResponseBody.Process.AppUninstallPolicies.FieldMap]?
+
             public var policyIds: [String]?
 
             public var schemaId: String?
@@ -30395,6 +32183,16 @@ public class UpdateApprovalProcessResponseBody : Tea.TeaModel {
 
             public override func toMap() -> [String : Any] {
                 var map = super.toMap()
+                if self.externalProcessId != nil {
+                    map["ExternalProcessId"] = self.externalProcessId!
+                }
+                if self.fieldMap != nil {
+                    var tmp : [Any] = []
+                    for k in self.fieldMap! {
+                        tmp.append(k.toMap())
+                    }
+                    map["FieldMap"] = tmp
+                }
                 if self.policyIds != nil {
                     map["PolicyIds"] = self.policyIds!
                 }
@@ -30406,6 +32204,22 @@ public class UpdateApprovalProcessResponseBody : Tea.TeaModel {
 
             public override func fromMap(_ dict: [String: Any?]?) -> Void {
                 guard let dict else { return }
+                if let value = dict["ExternalProcessId"] as? String {
+                    self.externalProcessId = value
+                }
+                if let value = dict["FieldMap"] as? [Any?] {
+                    var tmp : [UpdateApprovalProcessResponseBody.Process.AppUninstallPolicies.FieldMap] = []
+                    for v in value {
+                        if v != nil {
+                            var model = UpdateApprovalProcessResponseBody.Process.AppUninstallPolicies.FieldMap()
+                            if v != nil {
+                                model.fromMap(v as? [String: Any?])
+                            }
+                            tmp.append(model)
+                        }
+                    }
+                    self.fieldMap = tmp
+                }
                 if let value = dict["PolicyIds"] as? [String] {
                     self.policyIds = value
                 }
@@ -30415,6 +32229,56 @@ public class UpdateApprovalProcessResponseBody : Tea.TeaModel {
             }
         }
         public class DeviceRegistrationPolicies : Tea.TeaModel {
+            public class FieldMap : Tea.TeaModel {
+                public var displayField: String?
+
+                public var displayFieldValue: String?
+
+                public var systemField: String?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.displayField != nil {
+                        map["DisplayField"] = self.displayField!
+                    }
+                    if self.displayFieldValue != nil {
+                        map["DisplayFieldValue"] = self.displayFieldValue!
+                    }
+                    if self.systemField != nil {
+                        map["SystemField"] = self.systemField!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                    guard let dict else { return }
+                    if let value = dict["DisplayField"] as? String {
+                        self.displayField = value
+                    }
+                    if let value = dict["DisplayFieldValue"] as? String {
+                        self.displayFieldValue = value
+                    }
+                    if let value = dict["SystemField"] as? String {
+                        self.systemField = value
+                    }
+                }
+            }
+            public var externalProcessId: String?
+
+            public var fieldMap: [UpdateApprovalProcessResponseBody.Process.DeviceRegistrationPolicies.FieldMap]?
+
             public var policyIds: [String]?
 
             public var schemaId: String?
@@ -30433,6 +32297,16 @@ public class UpdateApprovalProcessResponseBody : Tea.TeaModel {
 
             public override func toMap() -> [String : Any] {
                 var map = super.toMap()
+                if self.externalProcessId != nil {
+                    map["ExternalProcessId"] = self.externalProcessId!
+                }
+                if self.fieldMap != nil {
+                    var tmp : [Any] = []
+                    for k in self.fieldMap! {
+                        tmp.append(k.toMap())
+                    }
+                    map["FieldMap"] = tmp
+                }
                 if self.policyIds != nil {
                     map["PolicyIds"] = self.policyIds!
                 }
@@ -30444,6 +32318,22 @@ public class UpdateApprovalProcessResponseBody : Tea.TeaModel {
 
             public override func fromMap(_ dict: [String: Any?]?) -> Void {
                 guard let dict else { return }
+                if let value = dict["ExternalProcessId"] as? String {
+                    self.externalProcessId = value
+                }
+                if let value = dict["FieldMap"] as? [Any?] {
+                    var tmp : [UpdateApprovalProcessResponseBody.Process.DeviceRegistrationPolicies.FieldMap] = []
+                    for v in value {
+                        if v != nil {
+                            var model = UpdateApprovalProcessResponseBody.Process.DeviceRegistrationPolicies.FieldMap()
+                            if v != nil {
+                                model.fromMap(v as? [String: Any?])
+                            }
+                            tmp.append(model)
+                        }
+                    }
+                    self.fieldMap = tmp
+                }
                 if let value = dict["PolicyIds"] as? [String] {
                     self.policyIds = value
                 }
@@ -30453,6 +32343,56 @@ public class UpdateApprovalProcessResponseBody : Tea.TeaModel {
             }
         }
         public class DlpSendPolicies : Tea.TeaModel {
+            public class FieldMap : Tea.TeaModel {
+                public var displayField: String?
+
+                public var displayFieldValue: String?
+
+                public var systemField: String?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.displayField != nil {
+                        map["DisplayField"] = self.displayField!
+                    }
+                    if self.displayFieldValue != nil {
+                        map["DisplayFieldValue"] = self.displayFieldValue!
+                    }
+                    if self.systemField != nil {
+                        map["SystemField"] = self.systemField!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                    guard let dict else { return }
+                    if let value = dict["DisplayField"] as? String {
+                        self.displayField = value
+                    }
+                    if let value = dict["DisplayFieldValue"] as? String {
+                        self.displayFieldValue = value
+                    }
+                    if let value = dict["SystemField"] as? String {
+                        self.systemField = value
+                    }
+                }
+            }
+            public var externalProcessId: String?
+
+            public var fieldMap: [UpdateApprovalProcessResponseBody.Process.DlpSendPolicies.FieldMap]?
+
             public var policyIds: [String]?
 
             public var schemaId: String?
@@ -30471,6 +32411,16 @@ public class UpdateApprovalProcessResponseBody : Tea.TeaModel {
 
             public override func toMap() -> [String : Any] {
                 var map = super.toMap()
+                if self.externalProcessId != nil {
+                    map["ExternalProcessId"] = self.externalProcessId!
+                }
+                if self.fieldMap != nil {
+                    var tmp : [Any] = []
+                    for k in self.fieldMap! {
+                        tmp.append(k.toMap())
+                    }
+                    map["FieldMap"] = tmp
+                }
                 if self.policyIds != nil {
                     map["PolicyIds"] = self.policyIds!
                 }
@@ -30482,6 +32432,22 @@ public class UpdateApprovalProcessResponseBody : Tea.TeaModel {
 
             public override func fromMap(_ dict: [String: Any?]?) -> Void {
                 guard let dict else { return }
+                if let value = dict["ExternalProcessId"] as? String {
+                    self.externalProcessId = value
+                }
+                if let value = dict["FieldMap"] as? [Any?] {
+                    var tmp : [UpdateApprovalProcessResponseBody.Process.DlpSendPolicies.FieldMap] = []
+                    for v in value {
+                        if v != nil {
+                            var model = UpdateApprovalProcessResponseBody.Process.DlpSendPolicies.FieldMap()
+                            if v != nil {
+                                model.fromMap(v as? [String: Any?])
+                            }
+                            tmp.append(model)
+                        }
+                    }
+                    self.fieldMap = tmp
+                }
                 if let value = dict["PolicyIds"] as? [String] {
                     self.policyIds = value
                 }
@@ -30491,6 +32457,56 @@ public class UpdateApprovalProcessResponseBody : Tea.TeaModel {
             }
         }
         public class DomainBlacklistPolicies : Tea.TeaModel {
+            public class FieldMap : Tea.TeaModel {
+                public var displayField: String?
+
+                public var displayFieldValue: String?
+
+                public var systemField: String?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.displayField != nil {
+                        map["DisplayField"] = self.displayField!
+                    }
+                    if self.displayFieldValue != nil {
+                        map["DisplayFieldValue"] = self.displayFieldValue!
+                    }
+                    if self.systemField != nil {
+                        map["SystemField"] = self.systemField!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                    guard let dict else { return }
+                    if let value = dict["DisplayField"] as? String {
+                        self.displayField = value
+                    }
+                    if let value = dict["DisplayFieldValue"] as? String {
+                        self.displayFieldValue = value
+                    }
+                    if let value = dict["SystemField"] as? String {
+                        self.systemField = value
+                    }
+                }
+            }
+            public var externalProcessId: String?
+
+            public var fieldMap: [UpdateApprovalProcessResponseBody.Process.DomainBlacklistPolicies.FieldMap]?
+
             public var policyIds: [String]?
 
             public var schemaId: String?
@@ -30509,6 +32525,16 @@ public class UpdateApprovalProcessResponseBody : Tea.TeaModel {
 
             public override func toMap() -> [String : Any] {
                 var map = super.toMap()
+                if self.externalProcessId != nil {
+                    map["ExternalProcessId"] = self.externalProcessId!
+                }
+                if self.fieldMap != nil {
+                    var tmp : [Any] = []
+                    for k in self.fieldMap! {
+                        tmp.append(k.toMap())
+                    }
+                    map["FieldMap"] = tmp
+                }
                 if self.policyIds != nil {
                     map["PolicyIds"] = self.policyIds!
                 }
@@ -30520,6 +32546,22 @@ public class UpdateApprovalProcessResponseBody : Tea.TeaModel {
 
             public override func fromMap(_ dict: [String: Any?]?) -> Void {
                 guard let dict else { return }
+                if let value = dict["ExternalProcessId"] as? String {
+                    self.externalProcessId = value
+                }
+                if let value = dict["FieldMap"] as? [Any?] {
+                    var tmp : [UpdateApprovalProcessResponseBody.Process.DomainBlacklistPolicies.FieldMap] = []
+                    for v in value {
+                        if v != nil {
+                            var model = UpdateApprovalProcessResponseBody.Process.DomainBlacklistPolicies.FieldMap()
+                            if v != nil {
+                                model.fromMap(v as? [String: Any?])
+                            }
+                            tmp.append(model)
+                        }
+                    }
+                    self.fieldMap = tmp
+                }
                 if let value = dict["PolicyIds"] as? [String] {
                     self.policyIds = value
                 }
@@ -30529,6 +32571,56 @@ public class UpdateApprovalProcessResponseBody : Tea.TeaModel {
             }
         }
         public class DomainWhitelistPolicies : Tea.TeaModel {
+            public class FieldMap : Tea.TeaModel {
+                public var displayField: String?
+
+                public var displayFieldValue: String?
+
+                public var systemField: String?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.displayField != nil {
+                        map["DisplayField"] = self.displayField!
+                    }
+                    if self.displayFieldValue != nil {
+                        map["DisplayFieldValue"] = self.displayFieldValue!
+                    }
+                    if self.systemField != nil {
+                        map["SystemField"] = self.systemField!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                    guard let dict else { return }
+                    if let value = dict["DisplayField"] as? String {
+                        self.displayField = value
+                    }
+                    if let value = dict["DisplayFieldValue"] as? String {
+                        self.displayFieldValue = value
+                    }
+                    if let value = dict["SystemField"] as? String {
+                        self.systemField = value
+                    }
+                }
+            }
+            public var externalProcessId: String?
+
+            public var fieldMap: [UpdateApprovalProcessResponseBody.Process.DomainWhitelistPolicies.FieldMap]?
+
             public var policyIds: [String]?
 
             public var schemaId: String?
@@ -30547,6 +32639,16 @@ public class UpdateApprovalProcessResponseBody : Tea.TeaModel {
 
             public override func toMap() -> [String : Any] {
                 var map = super.toMap()
+                if self.externalProcessId != nil {
+                    map["ExternalProcessId"] = self.externalProcessId!
+                }
+                if self.fieldMap != nil {
+                    var tmp : [Any] = []
+                    for k in self.fieldMap! {
+                        tmp.append(k.toMap())
+                    }
+                    map["FieldMap"] = tmp
+                }
                 if self.policyIds != nil {
                     map["PolicyIds"] = self.policyIds!
                 }
@@ -30558,6 +32660,22 @@ public class UpdateApprovalProcessResponseBody : Tea.TeaModel {
 
             public override func fromMap(_ dict: [String: Any?]?) -> Void {
                 guard let dict else { return }
+                if let value = dict["ExternalProcessId"] as? String {
+                    self.externalProcessId = value
+                }
+                if let value = dict["FieldMap"] as? [Any?] {
+                    var tmp : [UpdateApprovalProcessResponseBody.Process.DomainWhitelistPolicies.FieldMap] = []
+                    for v in value {
+                        if v != nil {
+                            var model = UpdateApprovalProcessResponseBody.Process.DomainWhitelistPolicies.FieldMap()
+                            if v != nil {
+                                model.fromMap(v as? [String: Any?])
+                            }
+                            tmp.append(model)
+                        }
+                    }
+                    self.fieldMap = tmp
+                }
                 if let value = dict["PolicyIds"] as? [String] {
                     self.policyIds = value
                 }
@@ -30567,6 +32685,56 @@ public class UpdateApprovalProcessResponseBody : Tea.TeaModel {
             }
         }
         public class EndpointHardeningPolicies : Tea.TeaModel {
+            public class FieldMap : Tea.TeaModel {
+                public var displayField: String?
+
+                public var displayFieldValue: String?
+
+                public var systemField: String?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.displayField != nil {
+                        map["DisplayField"] = self.displayField!
+                    }
+                    if self.displayFieldValue != nil {
+                        map["DisplayFieldValue"] = self.displayFieldValue!
+                    }
+                    if self.systemField != nil {
+                        map["SystemField"] = self.systemField!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                    guard let dict else { return }
+                    if let value = dict["DisplayField"] as? String {
+                        self.displayField = value
+                    }
+                    if let value = dict["DisplayFieldValue"] as? String {
+                        self.displayFieldValue = value
+                    }
+                    if let value = dict["SystemField"] as? String {
+                        self.systemField = value
+                    }
+                }
+            }
+            public var externalProcessId: String?
+
+            public var fieldMap: [UpdateApprovalProcessResponseBody.Process.EndpointHardeningPolicies.FieldMap]?
+
             public var policyIds: [String]?
 
             public var schemaId: String?
@@ -30585,6 +32753,16 @@ public class UpdateApprovalProcessResponseBody : Tea.TeaModel {
 
             public override func toMap() -> [String : Any] {
                 var map = super.toMap()
+                if self.externalProcessId != nil {
+                    map["ExternalProcessId"] = self.externalProcessId!
+                }
+                if self.fieldMap != nil {
+                    var tmp : [Any] = []
+                    for k in self.fieldMap! {
+                        tmp.append(k.toMap())
+                    }
+                    map["FieldMap"] = tmp
+                }
                 if self.policyIds != nil {
                     map["PolicyIds"] = self.policyIds!
                 }
@@ -30596,6 +32774,22 @@ public class UpdateApprovalProcessResponseBody : Tea.TeaModel {
 
             public override func fromMap(_ dict: [String: Any?]?) -> Void {
                 guard let dict else { return }
+                if let value = dict["ExternalProcessId"] as? String {
+                    self.externalProcessId = value
+                }
+                if let value = dict["FieldMap"] as? [Any?] {
+                    var tmp : [UpdateApprovalProcessResponseBody.Process.EndpointHardeningPolicies.FieldMap] = []
+                    for v in value {
+                        if v != nil {
+                            var model = UpdateApprovalProcessResponseBody.Process.EndpointHardeningPolicies.FieldMap()
+                            if v != nil {
+                                model.fromMap(v as? [String: Any?])
+                            }
+                            tmp.append(model)
+                        }
+                    }
+                    self.fieldMap = tmp
+                }
                 if let value = dict["PolicyIds"] as? [String] {
                     self.policyIds = value
                 }
@@ -30605,6 +32799,56 @@ public class UpdateApprovalProcessResponseBody : Tea.TeaModel {
             }
         }
         public class PeripheraBlockPolicies : Tea.TeaModel {
+            public class FieldMap : Tea.TeaModel {
+                public var displayField: String?
+
+                public var displayFieldValue: String?
+
+                public var systemField: String?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.displayField != nil {
+                        map["DisplayField"] = self.displayField!
+                    }
+                    if self.displayFieldValue != nil {
+                        map["DisplayFieldValue"] = self.displayFieldValue!
+                    }
+                    if self.systemField != nil {
+                        map["SystemField"] = self.systemField!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                    guard let dict else { return }
+                    if let value = dict["DisplayField"] as? String {
+                        self.displayField = value
+                    }
+                    if let value = dict["DisplayFieldValue"] as? String {
+                        self.displayFieldValue = value
+                    }
+                    if let value = dict["SystemField"] as? String {
+                        self.systemField = value
+                    }
+                }
+            }
+            public var externalProcessId: String?
+
+            public var fieldMap: [UpdateApprovalProcessResponseBody.Process.PeripheraBlockPolicies.FieldMap]?
+
             public var policyIds: [String]?
 
             public var schemaId: String?
@@ -30623,6 +32867,16 @@ public class UpdateApprovalProcessResponseBody : Tea.TeaModel {
 
             public override func toMap() -> [String : Any] {
                 var map = super.toMap()
+                if self.externalProcessId != nil {
+                    map["ExternalProcessId"] = self.externalProcessId!
+                }
+                if self.fieldMap != nil {
+                    var tmp : [Any] = []
+                    for k in self.fieldMap! {
+                        tmp.append(k.toMap())
+                    }
+                    map["FieldMap"] = tmp
+                }
                 if self.policyIds != nil {
                     map["PolicyIds"] = self.policyIds!
                 }
@@ -30634,6 +32888,22 @@ public class UpdateApprovalProcessResponseBody : Tea.TeaModel {
 
             public override func fromMap(_ dict: [String: Any?]?) -> Void {
                 guard let dict else { return }
+                if let value = dict["ExternalProcessId"] as? String {
+                    self.externalProcessId = value
+                }
+                if let value = dict["FieldMap"] as? [Any?] {
+                    var tmp : [UpdateApprovalProcessResponseBody.Process.PeripheraBlockPolicies.FieldMap] = []
+                    for v in value {
+                        if v != nil {
+                            var model = UpdateApprovalProcessResponseBody.Process.PeripheraBlockPolicies.FieldMap()
+                            if v != nil {
+                                model.fromMap(v as? [String: Any?])
+                            }
+                            tmp.append(model)
+                        }
+                    }
+                    self.fieldMap = tmp
+                }
                 if let value = dict["PolicyIds"] as? [String] {
                     self.policyIds = value
                 }
@@ -30681,6 +32951,56 @@ public class UpdateApprovalProcessResponseBody : Tea.TeaModel {
             }
         }
         public class SoftwareBlockPolicies : Tea.TeaModel {
+            public class FieldMap : Tea.TeaModel {
+                public var displayField: String?
+
+                public var displayFieldValue: String?
+
+                public var systemField: String?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.displayField != nil {
+                        map["DisplayField"] = self.displayField!
+                    }
+                    if self.displayFieldValue != nil {
+                        map["DisplayFieldValue"] = self.displayFieldValue!
+                    }
+                    if self.systemField != nil {
+                        map["SystemField"] = self.systemField!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                    guard let dict else { return }
+                    if let value = dict["DisplayField"] as? String {
+                        self.displayField = value
+                    }
+                    if let value = dict["DisplayFieldValue"] as? String {
+                        self.displayFieldValue = value
+                    }
+                    if let value = dict["SystemField"] as? String {
+                        self.systemField = value
+                    }
+                }
+            }
+            public var externalProcessId: String?
+
+            public var fieldMap: [UpdateApprovalProcessResponseBody.Process.SoftwareBlockPolicies.FieldMap]?
+
             public var policyIds: [String]?
 
             public var schemaId: String?
@@ -30699,6 +33019,16 @@ public class UpdateApprovalProcessResponseBody : Tea.TeaModel {
 
             public override func toMap() -> [String : Any] {
                 var map = super.toMap()
+                if self.externalProcessId != nil {
+                    map["ExternalProcessId"] = self.externalProcessId!
+                }
+                if self.fieldMap != nil {
+                    var tmp : [Any] = []
+                    for k in self.fieldMap! {
+                        tmp.append(k.toMap())
+                    }
+                    map["FieldMap"] = tmp
+                }
                 if self.policyIds != nil {
                     map["PolicyIds"] = self.policyIds!
                 }
@@ -30710,6 +33040,22 @@ public class UpdateApprovalProcessResponseBody : Tea.TeaModel {
 
             public override func fromMap(_ dict: [String: Any?]?) -> Void {
                 guard let dict else { return }
+                if let value = dict["ExternalProcessId"] as? String {
+                    self.externalProcessId = value
+                }
+                if let value = dict["FieldMap"] as? [Any?] {
+                    var tmp : [UpdateApprovalProcessResponseBody.Process.SoftwareBlockPolicies.FieldMap] = []
+                    for v in value {
+                        if v != nil {
+                            var model = UpdateApprovalProcessResponseBody.Process.SoftwareBlockPolicies.FieldMap()
+                            if v != nil {
+                                model.fromMap(v as? [String: Any?])
+                            }
+                            tmp.append(model)
+                        }
+                    }
+                    self.fieldMap = tmp
+                }
                 if let value = dict["PolicyIds"] as? [String] {
                     self.policyIds = value
                 }
@@ -30719,6 +33065,56 @@ public class UpdateApprovalProcessResponseBody : Tea.TeaModel {
             }
         }
         public class SoftwareHardeningPolicies : Tea.TeaModel {
+            public class FieldMap : Tea.TeaModel {
+                public var displayField: String?
+
+                public var displayFieldValue: String?
+
+                public var systemField: String?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.displayField != nil {
+                        map["DisplayField"] = self.displayField!
+                    }
+                    if self.displayFieldValue != nil {
+                        map["DisplayFieldValue"] = self.displayFieldValue!
+                    }
+                    if self.systemField != nil {
+                        map["SystemField"] = self.systemField!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                    guard let dict else { return }
+                    if let value = dict["DisplayField"] as? String {
+                        self.displayField = value
+                    }
+                    if let value = dict["DisplayFieldValue"] as? String {
+                        self.displayFieldValue = value
+                    }
+                    if let value = dict["SystemField"] as? String {
+                        self.systemField = value
+                    }
+                }
+            }
+            public var externalProcessId: String?
+
+            public var fieldMap: [UpdateApprovalProcessResponseBody.Process.SoftwareHardeningPolicies.FieldMap]?
+
             public var policyIds: [String]?
 
             public var schemaId: String?
@@ -30737,6 +33133,16 @@ public class UpdateApprovalProcessResponseBody : Tea.TeaModel {
 
             public override func toMap() -> [String : Any] {
                 var map = super.toMap()
+                if self.externalProcessId != nil {
+                    map["ExternalProcessId"] = self.externalProcessId!
+                }
+                if self.fieldMap != nil {
+                    var tmp : [Any] = []
+                    for k in self.fieldMap! {
+                        tmp.append(k.toMap())
+                    }
+                    map["FieldMap"] = tmp
+                }
                 if self.policyIds != nil {
                     map["PolicyIds"] = self.policyIds!
                 }
@@ -30748,6 +33154,22 @@ public class UpdateApprovalProcessResponseBody : Tea.TeaModel {
 
             public override func fromMap(_ dict: [String: Any?]?) -> Void {
                 guard let dict else { return }
+                if let value = dict["ExternalProcessId"] as? String {
+                    self.externalProcessId = value
+                }
+                if let value = dict["FieldMap"] as? [Any?] {
+                    var tmp : [UpdateApprovalProcessResponseBody.Process.SoftwareHardeningPolicies.FieldMap] = []
+                    for v in value {
+                        if v != nil {
+                            var model = UpdateApprovalProcessResponseBody.Process.SoftwareHardeningPolicies.FieldMap()
+                            if v != nil {
+                                model.fromMap(v as? [String: Any?])
+                            }
+                            tmp.append(model)
+                        }
+                    }
+                    self.fieldMap = tmp
+                }
                 if let value = dict["PolicyIds"] as? [String] {
                     self.policyIds = value
                 }
@@ -30757,6 +33179,8 @@ public class UpdateApprovalProcessResponseBody : Tea.TeaModel {
             }
         }
         public var appUninstallPolicies: UpdateApprovalProcessResponseBody.Process.AppUninstallPolicies?
+
+        public var approvalType: Int32?
 
         public var createTime: String?
 
@@ -30771,6 +33195,10 @@ public class UpdateApprovalProcessResponseBody : Tea.TeaModel {
         public var domainWhitelistPolicies: UpdateApprovalProcessResponseBody.Process.DomainWhitelistPolicies?
 
         public var endpointHardeningPolicies: UpdateApprovalProcessResponseBody.Process.EndpointHardeningPolicies?
+
+        public var eventLabel: String?
+
+        public var externalConfig: String?
 
         public var peripheraBlockPolicies: UpdateApprovalProcessResponseBody.Process.PeripheraBlockPolicies?
 
@@ -30810,6 +33238,9 @@ public class UpdateApprovalProcessResponseBody : Tea.TeaModel {
             if self.appUninstallPolicies != nil {
                 map["AppUninstallPolicies"] = self.appUninstallPolicies?.toMap()
             }
+            if self.approvalType != nil {
+                map["ApprovalType"] = self.approvalType!
+            }
             if self.createTime != nil {
                 map["CreateTime"] = self.createTime!
             }
@@ -30830,6 +33261,12 @@ public class UpdateApprovalProcessResponseBody : Tea.TeaModel {
             }
             if self.endpointHardeningPolicies != nil {
                 map["EndpointHardeningPolicies"] = self.endpointHardeningPolicies?.toMap()
+            }
+            if self.eventLabel != nil {
+                map["EventLabel"] = self.eventLabel!
+            }
+            if self.externalConfig != nil {
+                map["ExternalConfig"] = self.externalConfig!
             }
             if self.peripheraBlockPolicies != nil {
                 map["PeripheraBlockPolicies"] = self.peripheraBlockPolicies?.toMap()
@@ -30867,6 +33304,9 @@ public class UpdateApprovalProcessResponseBody : Tea.TeaModel {
                 model.fromMap(value)
                 self.appUninstallPolicies = model
             }
+            if let value = dict["ApprovalType"] as? Int32 {
+                self.approvalType = value
+            }
             if let value = dict["CreateTime"] as? String {
                 self.createTime = value
             }
@@ -30897,6 +33337,12 @@ public class UpdateApprovalProcessResponseBody : Tea.TeaModel {
                 var model = UpdateApprovalProcessResponseBody.Process.EndpointHardeningPolicies()
                 model.fromMap(value)
                 self.endpointHardeningPolicies = model
+            }
+            if let value = dict["EventLabel"] as? String {
+                self.eventLabel = value
+            }
+            if let value = dict["ExternalConfig"] as? String {
+                self.externalConfig = value
             }
             if let value = dict["PeripheraBlockPolicies"] as? [String: Any?] {
                 var model = UpdateApprovalProcessResponseBody.Process.PeripheraBlockPolicies()
