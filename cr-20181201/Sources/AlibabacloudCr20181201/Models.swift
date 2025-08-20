@@ -5,11 +5,138 @@ import AlibabacloudOpenApi
 import AlibabaCloudOpenApiUtil
 import AlibabacloudEndpointUtil
 
+public class ArtifactLifecyclePolicy : Tea.TeaModel {
+    public class Condition : Tea.TeaModel {
+        public var lastPullOlderThanDays: Int32?
+
+        public var lastPushOlderThanDays: Int32?
+
+        public var latestTagCount: Int32?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.lastPullOlderThanDays != nil {
+                map["LastPullOlderThanDays"] = self.lastPullOlderThanDays!
+            }
+            if self.lastPushOlderThanDays != nil {
+                map["LastPushOlderThanDays"] = self.lastPushOlderThanDays!
+            }
+            if self.latestTagCount != nil {
+                map["LatestTagCount"] = self.latestTagCount!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["LastPullOlderThanDays"] as? Int32 {
+                self.lastPullOlderThanDays = value
+            }
+            if let value = dict["LastPushOlderThanDays"] as? Int32 {
+                self.lastPushOlderThanDays = value
+            }
+            if let value = dict["LatestTagCount"] as? Int32 {
+                self.latestTagCount = value
+            }
+        }
+    }
+    public class Filter : Tea.TeaModel {
+        public var tagWildcard: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.tagWildcard != nil {
+                map["TagWildcard"] = self.tagWildcard!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["TagWildcard"] as? String {
+                self.tagWildcard = value
+            }
+        }
+    }
+    public var condition: ArtifactLifecyclePolicy.Condition?
+
+    public var filter: ArtifactLifecyclePolicy.Filter?
+
+    public var type: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.condition?.validate()
+        try self.filter?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.condition != nil {
+            map["Condition"] = self.condition?.toMap()
+        }
+        if self.filter != nil {
+            map["Filter"] = self.filter?.toMap()
+        }
+        if self.type != nil {
+            map["Type"] = self.type!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["Condition"] as? [String: Any?] {
+            var model = ArtifactLifecyclePolicy.Condition()
+            model.fromMap(value)
+            self.condition = model
+        }
+        if let value = dict["Filter"] as? [String: Any?] {
+            var model = ArtifactLifecyclePolicy.Filter()
+            model.fromMap(value)
+            self.filter = model
+        }
+        if let value = dict["Type"] as? String {
+            self.type = value
+        }
+    }
+}
+
 public class RepoConfiguration : Tea.TeaModel {
     public class ArtifactBuildRuleParameters : Tea.TeaModel {
         public var imageIndexOnly: Bool?
-
-        public var priorityFile: String?
 
         public override init() {
             super.init()
@@ -28,9 +155,6 @@ public class RepoConfiguration : Tea.TeaModel {
             if self.imageIndexOnly != nil {
                 map["ImageIndexOnly"] = self.imageIndexOnly!
             }
-            if self.priorityFile != nil {
-                map["PriorityFile"] = self.priorityFile!
-            }
             return map
         }
 
@@ -38,9 +162,6 @@ public class RepoConfiguration : Tea.TeaModel {
             guard let dict else { return }
             if let value = dict["ImageIndexOnly"] as? Bool {
                 self.imageIndexOnly = value
-            }
-            if let value = dict["PriorityFile"] as? String {
-                self.priorityFile = value
             }
         }
     }
@@ -7169,6 +7290,134 @@ public class GetArtifactLifecycleRuleRequest : Tea.TeaModel {
 }
 
 public class GetArtifactLifecycleRuleResponseBody : Tea.TeaModel {
+    public class Policies : Tea.TeaModel {
+        public class Condition : Tea.TeaModel {
+            public var lastPullOlderThanDays: Int32?
+
+            public var lastPushOlderThanDays: Int32?
+
+            public var latestTagCount: Int32?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.lastPullOlderThanDays != nil {
+                    map["LastPullOlderThanDays"] = self.lastPullOlderThanDays!
+                }
+                if self.lastPushOlderThanDays != nil {
+                    map["LastPushOlderThanDays"] = self.lastPushOlderThanDays!
+                }
+                if self.latestTagCount != nil {
+                    map["LatestTagCount"] = self.latestTagCount!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["LastPullOlderThanDays"] as? Int32 {
+                    self.lastPullOlderThanDays = value
+                }
+                if let value = dict["LastPushOlderThanDays"] as? Int32 {
+                    self.lastPushOlderThanDays = value
+                }
+                if let value = dict["LatestTagCount"] as? Int32 {
+                    self.latestTagCount = value
+                }
+            }
+        }
+        public class Filter : Tea.TeaModel {
+            public var tagWildcard: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.tagWildcard != nil {
+                    map["TagWildcard"] = self.tagWildcard!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["TagWildcard"] as? String {
+                    self.tagWildcard = value
+                }
+            }
+        }
+        public var condition: GetArtifactLifecycleRuleResponseBody.Policies.Condition?
+
+        public var filter: GetArtifactLifecycleRuleResponseBody.Policies.Filter?
+
+        public var type: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+            try self.condition?.validate()
+            try self.filter?.validate()
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.condition != nil {
+                map["Condition"] = self.condition?.toMap()
+            }
+            if self.filter != nil {
+                map["Filter"] = self.filter?.toMap()
+            }
+            if self.type != nil {
+                map["Type"] = self.type!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["Condition"] as? [String: Any?] {
+                var model = GetArtifactLifecycleRuleResponseBody.Policies.Condition()
+                model.fromMap(value)
+                self.condition = model
+            }
+            if let value = dict["Filter"] as? [String: Any?] {
+                var model = GetArtifactLifecycleRuleResponseBody.Policies.Filter()
+                model.fromMap(value)
+                self.filter = model
+            }
+            if let value = dict["Type"] as? String {
+                self.type = value
+            }
+        }
+    }
     public var auto: Bool?
 
     public var code: String?
@@ -7186,6 +7435,8 @@ public class GetArtifactLifecycleRuleResponseBody : Tea.TeaModel {
     public var namespaceName: String?
 
     public var nextTime: Int64?
+
+    public var policies: [GetArtifactLifecycleRuleResponseBody.Policies]?
 
     public var repoName: String?
 
@@ -7242,6 +7493,13 @@ public class GetArtifactLifecycleRuleResponseBody : Tea.TeaModel {
         if self.nextTime != nil {
             map["NextTime"] = self.nextTime!
         }
+        if self.policies != nil {
+            var tmp : [Any] = []
+            for k in self.policies! {
+                tmp.append(k.toMap())
+            }
+            map["Policies"] = tmp
+        }
         if self.repoName != nil {
             map["RepoName"] = self.repoName!
         }
@@ -7294,6 +7552,19 @@ public class GetArtifactLifecycleRuleResponseBody : Tea.TeaModel {
         }
         if let value = dict["NextTime"] as? Int64 {
             self.nextTime = value
+        }
+        if let value = dict["Policies"] as? [Any?] {
+            var tmp : [GetArtifactLifecycleRuleResponseBody.Policies] = []
+            for v in value {
+                if v != nil {
+                    var model = GetArtifactLifecycleRuleResponseBody.Policies()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.policies = tmp
         }
         if let value = dict["RepoName"] as? String {
             self.repoName = value
@@ -12802,6 +13073,134 @@ public class ListArtifactLifecycleRuleRequest : Tea.TeaModel {
 
 public class ListArtifactLifecycleRuleResponseBody : Tea.TeaModel {
     public class Rules : Tea.TeaModel {
+        public class Policies : Tea.TeaModel {
+            public class Condition : Tea.TeaModel {
+                public var lastPullOlderThanDays: Int32?
+
+                public var lastPushOlderThanDays: Int32?
+
+                public var latestTagCount: Int32?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.lastPullOlderThanDays != nil {
+                        map["LastPullOlderThanDays"] = self.lastPullOlderThanDays!
+                    }
+                    if self.lastPushOlderThanDays != nil {
+                        map["LastPushOlderThanDays"] = self.lastPushOlderThanDays!
+                    }
+                    if self.latestTagCount != nil {
+                        map["LatestTagCount"] = self.latestTagCount!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                    guard let dict else { return }
+                    if let value = dict["LastPullOlderThanDays"] as? Int32 {
+                        self.lastPullOlderThanDays = value
+                    }
+                    if let value = dict["LastPushOlderThanDays"] as? Int32 {
+                        self.lastPushOlderThanDays = value
+                    }
+                    if let value = dict["LatestTagCount"] as? Int32 {
+                        self.latestTagCount = value
+                    }
+                }
+            }
+            public class Filter : Tea.TeaModel {
+                public var tagWildcard: String?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.tagWildcard != nil {
+                        map["TagWildcard"] = self.tagWildcard!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                    guard let dict else { return }
+                    if let value = dict["TagWildcard"] as? String {
+                        self.tagWildcard = value
+                    }
+                }
+            }
+            public var condition: ListArtifactLifecycleRuleResponseBody.Rules.Policies.Condition?
+
+            public var filter: ListArtifactLifecycleRuleResponseBody.Rules.Policies.Filter?
+
+            public var type: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+                try self.condition?.validate()
+                try self.filter?.validate()
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.condition != nil {
+                    map["Condition"] = self.condition?.toMap()
+                }
+                if self.filter != nil {
+                    map["Filter"] = self.filter?.toMap()
+                }
+                if self.type != nil {
+                    map["Type"] = self.type!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["Condition"] as? [String: Any?] {
+                    var model = ListArtifactLifecycleRuleResponseBody.Rules.Policies.Condition()
+                    model.fromMap(value)
+                    self.condition = model
+                }
+                if let value = dict["Filter"] as? [String: Any?] {
+                    var model = ListArtifactLifecycleRuleResponseBody.Rules.Policies.Filter()
+                    model.fromMap(value)
+                    self.filter = model
+                }
+                if let value = dict["Type"] as? String {
+                    self.type = value
+                }
+            }
+        }
         public var auto: Bool?
 
         public var createTime: Int64?
@@ -12815,6 +13214,8 @@ public class ListArtifactLifecycleRuleResponseBody : Tea.TeaModel {
         public var namespaceName: String?
 
         public var nextTime: Int64?
+
+        public var policies: [ListArtifactLifecycleRuleResponseBody.Rules.Policies]?
 
         public var repoName: String?
 
@@ -12863,6 +13264,13 @@ public class ListArtifactLifecycleRuleResponseBody : Tea.TeaModel {
             if self.nextTime != nil {
                 map["NextTime"] = self.nextTime!
             }
+            if self.policies != nil {
+                var tmp : [Any] = []
+                for k in self.policies! {
+                    tmp.append(k.toMap())
+                }
+                map["Policies"] = tmp
+            }
             if self.repoName != nil {
                 map["RepoName"] = self.repoName!
             }
@@ -12906,6 +13314,19 @@ public class ListArtifactLifecycleRuleResponseBody : Tea.TeaModel {
             }
             if let value = dict["NextTime"] as? Int64 {
                 self.nextTime = value
+            }
+            if let value = dict["Policies"] as? [Any?] {
+                var tmp : [ListArtifactLifecycleRuleResponseBody.Rules.Policies] = []
+                for v in value {
+                    if v != nil {
+                        var model = ListArtifactLifecycleRuleResponseBody.Rules.Policies()
+                        if v != nil {
+                            model.fromMap(v as? [String: Any?])
+                        }
+                        tmp.append(model)
+                    }
+                }
+                self.policies = tmp
             }
             if let value = dict["RepoName"] as? String {
                 self.repoName = value
