@@ -216,6 +216,8 @@ public class DescribePriceResponseBody : Tea.TeaModel {
     public class Coupons : Tea.TeaModel {
         public var canPromFee: Int64?
 
+        public var couponDesc: String?
+
         public var couponName: String?
 
         public var couponOptionCode: String?
@@ -243,6 +245,9 @@ public class DescribePriceResponseBody : Tea.TeaModel {
             if self.canPromFee != nil {
                 map["CanPromFee"] = self.canPromFee!
             }
+            if self.couponDesc != nil {
+                map["CouponDesc"] = self.couponDesc!
+            }
             if self.couponName != nil {
                 map["CouponName"] = self.couponName!
             }
@@ -265,6 +270,9 @@ public class DescribePriceResponseBody : Tea.TeaModel {
             guard let dict else { return }
             if let value = dict["CanPromFee"] as? Int64 {
                 self.canPromFee = value
+            }
+            if let value = dict["CouponDesc"] as? String {
+                self.couponDesc = value
             }
             if let value = dict["CouponName"] as? String {
                 self.couponName = value
