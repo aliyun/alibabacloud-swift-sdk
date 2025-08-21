@@ -749,6 +749,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(tmpReq.documentControl)) {
             request.documentControlShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.documentControl, "DocumentControl", "json")
         }
+        if (!TeaUtils.Client.isUnset(tmpReq.imageControl)) {
+            request.imageControlShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.imageControl, "ImageControl", "json")
+        }
         var query: [String: Any] = [:]
         if (!TeaUtils.Client.isUnset(request.csvControlShrink)) {
             query["CsvControl"] = request.csvControlShrink ?? "";
@@ -762,6 +765,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.filename)) {
             body["Filename"] = request.filename ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.imageControlShrink)) {
+            body["ImageControl"] = request.imageControlShrink ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.imageEmbedJpegQuality)) {
             body["ImageEmbedJpegQuality"] = request.imageEmbedJpegQuality!;

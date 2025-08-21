@@ -7872,6 +7872,465 @@ public class CreateWmEmbedTaskRequest : Tea.TeaModel {
             }
         }
     }
+    public class ImageControl : Tea.TeaModel {
+        public class LogoVisibleControl : Tea.TeaModel {
+            public class Margin : Tea.TeaModel {
+                public var bottom: Double?
+
+                public var left_: Double?
+
+                public var right_: Double?
+
+                public var top: Double?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.bottom != nil {
+                        map["Bottom"] = self.bottom!
+                    }
+                    if self.left_ != nil {
+                        map["Left"] = self.left_!
+                    }
+                    if self.right_ != nil {
+                        map["Right"] = self.right_!
+                    }
+                    if self.top != nil {
+                        map["Top"] = self.top!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                    guard let dict else { return }
+                    if let value = dict["Bottom"] as? Double {
+                        self.bottom = value
+                    }
+                    if let value = dict["Left"] as? Double {
+                        self.left_ = value
+                    }
+                    if let value = dict["Right"] as? Double {
+                        self.right_ = value
+                    }
+                    if let value = dict["Top"] as? Double {
+                        self.top = value
+                    }
+                }
+            }
+            public var angle: Int64?
+
+            public var logoBase64: String?
+
+            public var margin: CreateWmEmbedTaskRequest.ImageControl.LogoVisibleControl.Margin?
+
+            public var mode: String?
+
+            public var opacity: Int32?
+
+            public var posAx: Double?
+
+            public var posAy: Double?
+
+            public var posX: Int64?
+
+            public var posY: Int64?
+
+            public var spaceX: Int64?
+
+            public var spaceY: Int64?
+
+            public var visible: Bool?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+                try self.margin?.validate()
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.angle != nil {
+                    map["Angle"] = self.angle!
+                }
+                if self.logoBase64 != nil {
+                    map["LogoBase64"] = self.logoBase64!
+                }
+                if self.margin != nil {
+                    map["Margin"] = self.margin?.toMap()
+                }
+                if self.mode != nil {
+                    map["Mode"] = self.mode!
+                }
+                if self.opacity != nil {
+                    map["Opacity"] = self.opacity!
+                }
+                if self.posAx != nil {
+                    map["PosAx"] = self.posAx!
+                }
+                if self.posAy != nil {
+                    map["PosAy"] = self.posAy!
+                }
+                if self.posX != nil {
+                    map["PosX"] = self.posX!
+                }
+                if self.posY != nil {
+                    map["PosY"] = self.posY!
+                }
+                if self.spaceX != nil {
+                    map["SpaceX"] = self.spaceX!
+                }
+                if self.spaceY != nil {
+                    map["SpaceY"] = self.spaceY!
+                }
+                if self.visible != nil {
+                    map["Visible"] = self.visible!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["Angle"] as? Int64 {
+                    self.angle = value
+                }
+                if let value = dict["LogoBase64"] as? String {
+                    self.logoBase64 = value
+                }
+                if let value = dict["Margin"] as? [String: Any?] {
+                    var model = CreateWmEmbedTaskRequest.ImageControl.LogoVisibleControl.Margin()
+                    model.fromMap(value)
+                    self.margin = model
+                }
+                if let value = dict["Mode"] as? String {
+                    self.mode = value
+                }
+                if let value = dict["Opacity"] as? Int32 {
+                    self.opacity = value
+                }
+                if let value = dict["PosAx"] as? Double {
+                    self.posAx = value
+                }
+                if let value = dict["PosAy"] as? Double {
+                    self.posAy = value
+                }
+                if let value = dict["PosX"] as? Int64 {
+                    self.posX = value
+                }
+                if let value = dict["PosY"] as? Int64 {
+                    self.posY = value
+                }
+                if let value = dict["SpaceX"] as? Int64 {
+                    self.spaceX = value
+                }
+                if let value = dict["SpaceY"] as? Int64 {
+                    self.spaceY = value
+                }
+                if let value = dict["Visible"] as? Bool {
+                    self.visible = value
+                }
+            }
+        }
+        public class MetadataControl : Tea.TeaModel {
+            public var enable: Bool?
+
+            public var xmpKvBase64: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.enable != nil {
+                    map["Enable"] = self.enable!
+                }
+                if self.xmpKvBase64 != nil {
+                    map["XmpKvBase64"] = self.xmpKvBase64!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["Enable"] as? Bool {
+                    self.enable = value
+                }
+                if let value = dict["XmpKvBase64"] as? String {
+                    self.xmpKvBase64 = value
+                }
+            }
+        }
+        public class TextVisibleControl : Tea.TeaModel {
+            public class Margin : Tea.TeaModel {
+                public var bottom: Double?
+
+                public var left_: Double?
+
+                public var right_: Double?
+
+                public var top: Double?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.bottom != nil {
+                        map["Bottom"] = self.bottom!
+                    }
+                    if self.left_ != nil {
+                        map["Left"] = self.left_!
+                    }
+                    if self.right_ != nil {
+                        map["Right"] = self.right_!
+                    }
+                    if self.top != nil {
+                        map["Top"] = self.top!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                    guard let dict else { return }
+                    if let value = dict["Bottom"] as? Double {
+                        self.bottom = value
+                    }
+                    if let value = dict["Left"] as? Double {
+                        self.left_ = value
+                    }
+                    if let value = dict["Right"] as? Double {
+                        self.right_ = value
+                    }
+                    if let value = dict["Top"] as? Double {
+                        self.top = value
+                    }
+                }
+            }
+            public var angle: Int64?
+
+            public var fontColor: String?
+
+            public var fontSize: Int64?
+
+            public var margin: CreateWmEmbedTaskRequest.ImageControl.TextVisibleControl.Margin?
+
+            public var mode: String?
+
+            public var opacity: Int32?
+
+            public var posAx: Double?
+
+            public var posAy: Double?
+
+            public var posX: Int64?
+
+            public var posY: Int64?
+
+            public var spaceX: Int64?
+
+            public var spaceY: Int64?
+
+            public var visible: Bool?
+
+            public var visibleText: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+                try self.margin?.validate()
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.angle != nil {
+                    map["Angle"] = self.angle!
+                }
+                if self.fontColor != nil {
+                    map["FontColor"] = self.fontColor!
+                }
+                if self.fontSize != nil {
+                    map["FontSize"] = self.fontSize!
+                }
+                if self.margin != nil {
+                    map["Margin"] = self.margin?.toMap()
+                }
+                if self.mode != nil {
+                    map["Mode"] = self.mode!
+                }
+                if self.opacity != nil {
+                    map["Opacity"] = self.opacity!
+                }
+                if self.posAx != nil {
+                    map["PosAx"] = self.posAx!
+                }
+                if self.posAy != nil {
+                    map["PosAy"] = self.posAy!
+                }
+                if self.posX != nil {
+                    map["PosX"] = self.posX!
+                }
+                if self.posY != nil {
+                    map["PosY"] = self.posY!
+                }
+                if self.spaceX != nil {
+                    map["SpaceX"] = self.spaceX!
+                }
+                if self.spaceY != nil {
+                    map["SpaceY"] = self.spaceY!
+                }
+                if self.visible != nil {
+                    map["Visible"] = self.visible!
+                }
+                if self.visibleText != nil {
+                    map["VisibleText"] = self.visibleText!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["Angle"] as? Int64 {
+                    self.angle = value
+                }
+                if let value = dict["FontColor"] as? String {
+                    self.fontColor = value
+                }
+                if let value = dict["FontSize"] as? Int64 {
+                    self.fontSize = value
+                }
+                if let value = dict["Margin"] as? [String: Any?] {
+                    var model = CreateWmEmbedTaskRequest.ImageControl.TextVisibleControl.Margin()
+                    model.fromMap(value)
+                    self.margin = model
+                }
+                if let value = dict["Mode"] as? String {
+                    self.mode = value
+                }
+                if let value = dict["Opacity"] as? Int32 {
+                    self.opacity = value
+                }
+                if let value = dict["PosAx"] as? Double {
+                    self.posAx = value
+                }
+                if let value = dict["PosAy"] as? Double {
+                    self.posAy = value
+                }
+                if let value = dict["PosX"] as? Int64 {
+                    self.posX = value
+                }
+                if let value = dict["PosY"] as? Int64 {
+                    self.posY = value
+                }
+                if let value = dict["SpaceX"] as? Int64 {
+                    self.spaceX = value
+                }
+                if let value = dict["SpaceY"] as? Int64 {
+                    self.spaceY = value
+                }
+                if let value = dict["Visible"] as? Bool {
+                    self.visible = value
+                }
+                if let value = dict["VisibleText"] as? String {
+                    self.visibleText = value
+                }
+            }
+        }
+        public var logoVisibleControl: CreateWmEmbedTaskRequest.ImageControl.LogoVisibleControl?
+
+        public var metadataControl: CreateWmEmbedTaskRequest.ImageControl.MetadataControl?
+
+        public var textVisibleControl: CreateWmEmbedTaskRequest.ImageControl.TextVisibleControl?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+            try self.logoVisibleControl?.validate()
+            try self.metadataControl?.validate()
+            try self.textVisibleControl?.validate()
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.logoVisibleControl != nil {
+                map["LogoVisibleControl"] = self.logoVisibleControl?.toMap()
+            }
+            if self.metadataControl != nil {
+                map["MetadataControl"] = self.metadataControl?.toMap()
+            }
+            if self.textVisibleControl != nil {
+                map["TextVisibleControl"] = self.textVisibleControl?.toMap()
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["LogoVisibleControl"] as? [String: Any?] {
+                var model = CreateWmEmbedTaskRequest.ImageControl.LogoVisibleControl()
+                model.fromMap(value)
+                self.logoVisibleControl = model
+            }
+            if let value = dict["MetadataControl"] as? [String: Any?] {
+                var model = CreateWmEmbedTaskRequest.ImageControl.MetadataControl()
+                model.fromMap(value)
+                self.metadataControl = model
+            }
+            if let value = dict["TextVisibleControl"] as? [String: Any?] {
+                var model = CreateWmEmbedTaskRequest.ImageControl.TextVisibleControl()
+                model.fromMap(value)
+                self.textVisibleControl = model
+            }
+        }
+    }
     public var csvControl: CreateWmEmbedTaskRequest.CsvControl?
 
     public var documentControl: CreateWmEmbedTaskRequest.DocumentControl?
@@ -7879,6 +8338,8 @@ public class CreateWmEmbedTaskRequest : Tea.TeaModel {
     public var fileUrl: String?
 
     public var filename: String?
+
+    public var imageControl: CreateWmEmbedTaskRequest.ImageControl?
 
     public var imageEmbedJpegQuality: Int64?
 
@@ -7908,6 +8369,7 @@ public class CreateWmEmbedTaskRequest : Tea.TeaModel {
     public override func validate() throws -> Void {
         try self.csvControl?.validate()
         try self.documentControl?.validate()
+        try self.imageControl?.validate()
     }
 
     public override func toMap() -> [String : Any] {
@@ -7923,6 +8385,9 @@ public class CreateWmEmbedTaskRequest : Tea.TeaModel {
         }
         if self.filename != nil {
             map["Filename"] = self.filename!
+        }
+        if self.imageControl != nil {
+            map["ImageControl"] = self.imageControl?.toMap()
         }
         if self.imageEmbedJpegQuality != nil {
             map["ImageEmbedJpegQuality"] = self.imageEmbedJpegQuality!
@@ -7969,6 +8434,11 @@ public class CreateWmEmbedTaskRequest : Tea.TeaModel {
         if let value = dict["Filename"] as? String {
             self.filename = value
         }
+        if let value = dict["ImageControl"] as? [String: Any?] {
+            var model = CreateWmEmbedTaskRequest.ImageControl()
+            model.fromMap(value)
+            self.imageControl = model
+        }
         if let value = dict["ImageEmbedJpegQuality"] as? Int64 {
             self.imageEmbedJpegQuality = value
         }
@@ -8004,6 +8474,8 @@ public class CreateWmEmbedTaskShrinkRequest : Tea.TeaModel {
     public var fileUrl: String?
 
     public var filename: String?
+
+    public var imageControlShrink: String?
 
     public var imageEmbedJpegQuality: Int64?
 
@@ -8047,6 +8519,9 @@ public class CreateWmEmbedTaskShrinkRequest : Tea.TeaModel {
         if self.filename != nil {
             map["Filename"] = self.filename!
         }
+        if self.imageControlShrink != nil {
+            map["ImageControl"] = self.imageControlShrink!
+        }
         if self.imageEmbedJpegQuality != nil {
             map["ImageEmbedJpegQuality"] = self.imageEmbedJpegQuality!
         }
@@ -8087,6 +8562,9 @@ public class CreateWmEmbedTaskShrinkRequest : Tea.TeaModel {
         }
         if let value = dict["Filename"] as? String {
             self.filename = value
+        }
+        if let value = dict["ImageControl"] as? String {
+            self.imageControlShrink = value
         }
         if let value = dict["ImageEmbedJpegQuality"] as? Int64 {
             self.imageEmbedJpegQuality = value
