@@ -1230,6 +1230,8 @@ public class CreateApplicationRequest : Tea.TeaModel {
 
     public var predefinedScopes: String?
 
+    public var protocolVersion: String?
+
     public var redirectUris: String?
 
     public var refreshTokenValidity: Int32?
@@ -1270,6 +1272,9 @@ public class CreateApplicationRequest : Tea.TeaModel {
         if self.predefinedScopes != nil {
             map["PredefinedScopes"] = self.predefinedScopes!
         }
+        if self.protocolVersion != nil {
+            map["ProtocolVersion"] = self.protocolVersion!
+        }
         if self.redirectUris != nil {
             map["RedirectUris"] = self.redirectUris!
         }
@@ -1304,6 +1309,9 @@ public class CreateApplicationRequest : Tea.TeaModel {
         }
         if let value = dict["PredefinedScopes"] as? String {
             self.predefinedScopes = value
+        }
+        if let value = dict["ProtocolVersion"] as? String {
+            self.protocolVersion = value
         }
         if let value = dict["RedirectUris"] as? String {
             self.redirectUris = value
@@ -1493,6 +1501,8 @@ public class CreateApplicationResponseBody : Tea.TeaModel {
 
         public var isMultiTenant: Bool?
 
+        public var protocolVersion: String?
+
         public var redirectUris: CreateApplicationResponseBody.Application.RedirectUris?
 
         public var refreshTokenValidity: Int32?
@@ -1544,6 +1554,9 @@ public class CreateApplicationResponseBody : Tea.TeaModel {
             if self.isMultiTenant != nil {
                 map["IsMultiTenant"] = self.isMultiTenant!
             }
+            if self.protocolVersion != nil {
+                map["ProtocolVersion"] = self.protocolVersion!
+            }
             if self.redirectUris != nil {
                 map["RedirectUris"] = self.redirectUris?.toMap()
             }
@@ -1589,6 +1602,9 @@ public class CreateApplicationResponseBody : Tea.TeaModel {
             }
             if let value = dict["IsMultiTenant"] as? Bool {
                 self.isMultiTenant = value
+            }
+            if let value = dict["ProtocolVersion"] as? String {
+                self.protocolVersion = value
             }
             if let value = dict["RedirectUris"] as? [String: Any?] {
                 var model = CreateApplicationResponseBody.Application.RedirectUris()
@@ -5764,6 +5780,8 @@ public class GetAccountSummaryResponseBody : Tea.TeaModel {
     public class SummaryMap : Tea.TeaModel {
         public var accessKeysPerUserQuota: Int32?
 
+        public var accountAccessKeysPerAccountQuota: Int32?
+
         public var attachedPoliciesPerGroupQuota: Int32?
 
         public var attachedPoliciesPerRoleQuota: Int32?
@@ -5824,6 +5842,9 @@ public class GetAccountSummaryResponseBody : Tea.TeaModel {
             var map = super.toMap()
             if self.accessKeysPerUserQuota != nil {
                 map["AccessKeysPerUserQuota"] = self.accessKeysPerUserQuota!
+            }
+            if self.accountAccessKeysPerAccountQuota != nil {
+                map["AccountAccessKeysPerAccountQuota"] = self.accountAccessKeysPerAccountQuota!
             }
             if self.attachedPoliciesPerGroupQuota != nil {
                 map["AttachedPoliciesPerGroupQuota"] = self.attachedPoliciesPerGroupQuota!
@@ -5898,6 +5919,9 @@ public class GetAccountSummaryResponseBody : Tea.TeaModel {
             guard let dict else { return }
             if let value = dict["AccessKeysPerUserQuota"] as? Int32 {
                 self.accessKeysPerUserQuota = value
+            }
+            if let value = dict["AccountAccessKeysPerAccountQuota"] as? Int32 {
+                self.accountAccessKeysPerAccountQuota = value
             }
             if let value = dict["AttachedPoliciesPerGroupQuota"] as? Int32 {
                 self.attachedPoliciesPerGroupQuota = value
@@ -6447,6 +6471,8 @@ public class GetApplicationResponseBody : Tea.TeaModel {
 
         public var isMultiTenant: Bool?
 
+        public var protocolVersion: String?
+
         public var redirectUris: GetApplicationResponseBody.Application.RedirectUris?
 
         public var refreshTokenValidity: Int32?
@@ -6498,6 +6524,9 @@ public class GetApplicationResponseBody : Tea.TeaModel {
             if self.isMultiTenant != nil {
                 map["IsMultiTenant"] = self.isMultiTenant!
             }
+            if self.protocolVersion != nil {
+                map["ProtocolVersion"] = self.protocolVersion!
+            }
             if self.redirectUris != nil {
                 map["RedirectUris"] = self.redirectUris?.toMap()
             }
@@ -6543,6 +6572,9 @@ public class GetApplicationResponseBody : Tea.TeaModel {
             }
             if let value = dict["IsMultiTenant"] as? Bool {
                 self.isMultiTenant = value
+            }
+            if let value = dict["ProtocolVersion"] as? String {
+                self.protocolVersion = value
             }
             if let value = dict["RedirectUris"] as? [String: Any?] {
                 var model = GetApplicationResponseBody.Application.RedirectUris()
@@ -11764,6 +11796,8 @@ public class ListApplicationsResponseBody : Tea.TeaModel {
 
             public var isMultiTenant: Bool?
 
+            public var protocolVersion: String?
+
             public var redirectUris: ListApplicationsResponseBody.Applications.Application.RedirectUris?
 
             public var refreshTokenValidity: Int32?
@@ -11815,6 +11849,9 @@ public class ListApplicationsResponseBody : Tea.TeaModel {
                 if self.isMultiTenant != nil {
                     map["IsMultiTenant"] = self.isMultiTenant!
                 }
+                if self.protocolVersion != nil {
+                    map["ProtocolVersion"] = self.protocolVersion!
+                }
                 if self.redirectUris != nil {
                     map["RedirectUris"] = self.redirectUris?.toMap()
                 }
@@ -11860,6 +11897,9 @@ public class ListApplicationsResponseBody : Tea.TeaModel {
                 }
                 if let value = dict["IsMultiTenant"] as? Bool {
                     self.isMultiTenant = value
+                }
+                if let value = dict["ProtocolVersion"] as? String {
+                    self.protocolVersion = value
                 }
                 if let value = dict["RedirectUris"] as? [String: Any?] {
                     var model = ListApplicationsResponseBody.Applications.Application.RedirectUris()
@@ -19827,6 +19867,8 @@ public class UpdateApplicationResponseBody : Tea.TeaModel {
 
         public var isMultiTenant: Bool?
 
+        public var protocolVersion: String?
+
         public var redirectUris: UpdateApplicationResponseBody.Application.RedirectUris?
 
         public var refreshTokenValidity: Int32?
@@ -19878,6 +19920,9 @@ public class UpdateApplicationResponseBody : Tea.TeaModel {
             if self.isMultiTenant != nil {
                 map["IsMultiTenant"] = self.isMultiTenant!
             }
+            if self.protocolVersion != nil {
+                map["ProtocolVersion"] = self.protocolVersion!
+            }
             if self.redirectUris != nil {
                 map["RedirectUris"] = self.redirectUris?.toMap()
             }
@@ -19923,6 +19968,9 @@ public class UpdateApplicationResponseBody : Tea.TeaModel {
             }
             if let value = dict["IsMultiTenant"] as? Bool {
                 self.isMultiTenant = value
+            }
+            if let value = dict["ProtocolVersion"] as? String {
+                self.protocolVersion = value
             }
             if let value = dict["RedirectUris"] as? [String: Any?] {
                 var model = UpdateApplicationResponseBody.Application.RedirectUris()

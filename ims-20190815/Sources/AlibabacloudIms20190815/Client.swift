@@ -283,6 +283,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.predefinedScopes)) {
             query["PredefinedScopes"] = request.predefinedScopes ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.protocolVersion)) {
+            query["ProtocolVersion"] = request.protocolVersion ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.redirectUris)) {
             query["RedirectUris"] = request.redirectUris ?? "";
         }
