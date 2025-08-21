@@ -14427,6 +14427,795 @@ public class GetElastictaskResponse : Tea.TeaModel {
     }
 }
 
+public class GetEmonAlarmRecordStatisticsDistributeRequest : Tea.TeaModel {
+    public var body: String?
+
+    public var groupId: String?
+
+    public var timeEnd: Int64?
+
+    public var timeStart: Int64?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.body != nil {
+            map["body"] = self.body!
+        }
+        if self.groupId != nil {
+            map["groupId"] = self.groupId!
+        }
+        if self.timeEnd != nil {
+            map["timeEnd"] = self.timeEnd!
+        }
+        if self.timeStart != nil {
+            map["timeStart"] = self.timeStart!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["body"] as? String {
+            self.body = value
+        }
+        if let value = dict["groupId"] as? String {
+            self.groupId = value
+        }
+        if let value = dict["timeEnd"] as? Int64 {
+            self.timeEnd = value
+        }
+        if let value = dict["timeStart"] as? Int64 {
+            self.timeStart = value
+        }
+    }
+}
+
+public class GetEmonAlarmRecordStatisticsDistributeResponseBody : Tea.TeaModel {
+    public class Result : Tea.TeaModel {
+        public class AlarmGroupTotal : Tea.TeaModel {
+            public var alarmGroup: String?
+
+            public var compare: String?
+
+            public var count: Int32?
+
+            public var level: String?
+
+            public var receiver: String?
+
+            public var time: Int32?
+
+            public var today: Int32?
+
+            public var type: String?
+
+            public var yesterday: Int32?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.alarmGroup != nil {
+                    map["alarmGroup"] = self.alarmGroup!
+                }
+                if self.compare != nil {
+                    map["compare"] = self.compare!
+                }
+                if self.count != nil {
+                    map["count"] = self.count!
+                }
+                if self.level != nil {
+                    map["level"] = self.level!
+                }
+                if self.receiver != nil {
+                    map["receiver"] = self.receiver!
+                }
+                if self.time != nil {
+                    map["time"] = self.time!
+                }
+                if self.today != nil {
+                    map["today"] = self.today!
+                }
+                if self.type != nil {
+                    map["type"] = self.type!
+                }
+                if self.yesterday != nil {
+                    map["yesterday"] = self.yesterday!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["alarmGroup"] as? String {
+                    self.alarmGroup = value
+                }
+                if let value = dict["compare"] as? String {
+                    self.compare = value
+                }
+                if let value = dict["count"] as? Int32 {
+                    self.count = value
+                }
+                if let value = dict["level"] as? String {
+                    self.level = value
+                }
+                if let value = dict["receiver"] as? String {
+                    self.receiver = value
+                }
+                if let value = dict["time"] as? Int32 {
+                    self.time = value
+                }
+                if let value = dict["today"] as? Int32 {
+                    self.today = value
+                }
+                if let value = dict["type"] as? String {
+                    self.type = value
+                }
+                if let value = dict["yesterday"] as? Int32 {
+                    self.yesterday = value
+                }
+            }
+        }
+        public class ChannelTotal : Tea.TeaModel {
+            public var alarmGroup: String?
+
+            public var compare: String?
+
+            public var count: Int32?
+
+            public var level: String?
+
+            public var receiver: String?
+
+            public var time: Int32?
+
+            public var today: Int32?
+
+            public var type: String?
+
+            public var yesterday: Int32?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.alarmGroup != nil {
+                    map["alarmGroup"] = self.alarmGroup!
+                }
+                if self.compare != nil {
+                    map["compare"] = self.compare!
+                }
+                if self.count != nil {
+                    map["count"] = self.count!
+                }
+                if self.level != nil {
+                    map["level"] = self.level!
+                }
+                if self.receiver != nil {
+                    map["receiver"] = self.receiver!
+                }
+                if self.time != nil {
+                    map["time"] = self.time!
+                }
+                if self.today != nil {
+                    map["today"] = self.today!
+                }
+                if self.type != nil {
+                    map["type"] = self.type!
+                }
+                if self.yesterday != nil {
+                    map["yesterday"] = self.yesterday!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["alarmGroup"] as? String {
+                    self.alarmGroup = value
+                }
+                if let value = dict["compare"] as? String {
+                    self.compare = value
+                }
+                if let value = dict["count"] as? Int32 {
+                    self.count = value
+                }
+                if let value = dict["level"] as? String {
+                    self.level = value
+                }
+                if let value = dict["receiver"] as? String {
+                    self.receiver = value
+                }
+                if let value = dict["time"] as? Int32 {
+                    self.time = value
+                }
+                if let value = dict["today"] as? Int32 {
+                    self.today = value
+                }
+                if let value = dict["type"] as? String {
+                    self.type = value
+                }
+                if let value = dict["yesterday"] as? Int32 {
+                    self.yesterday = value
+                }
+            }
+        }
+        public class LevelTotal : Tea.TeaModel {
+            public var alarmGroup: String?
+
+            public var compare: String?
+
+            public var count: Int32?
+
+            public var level: String?
+
+            public var receiver: String?
+
+            public var time: Int32?
+
+            public var today: Int32?
+
+            public var type: String?
+
+            public var yesterday: Int32?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.alarmGroup != nil {
+                    map["alarmGroup"] = self.alarmGroup!
+                }
+                if self.compare != nil {
+                    map["compare"] = self.compare!
+                }
+                if self.count != nil {
+                    map["count"] = self.count!
+                }
+                if self.level != nil {
+                    map["level"] = self.level!
+                }
+                if self.receiver != nil {
+                    map["receiver"] = self.receiver!
+                }
+                if self.time != nil {
+                    map["time"] = self.time!
+                }
+                if self.today != nil {
+                    map["today"] = self.today!
+                }
+                if self.type != nil {
+                    map["type"] = self.type!
+                }
+                if self.yesterday != nil {
+                    map["yesterday"] = self.yesterday!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["alarmGroup"] as? String {
+                    self.alarmGroup = value
+                }
+                if let value = dict["compare"] as? String {
+                    self.compare = value
+                }
+                if let value = dict["count"] as? Int32 {
+                    self.count = value
+                }
+                if let value = dict["level"] as? String {
+                    self.level = value
+                }
+                if let value = dict["receiver"] as? String {
+                    self.receiver = value
+                }
+                if let value = dict["time"] as? Int32 {
+                    self.time = value
+                }
+                if let value = dict["today"] as? Int32 {
+                    self.today = value
+                }
+                if let value = dict["type"] as? String {
+                    self.type = value
+                }
+                if let value = dict["yesterday"] as? Int32 {
+                    self.yesterday = value
+                }
+            }
+        }
+        public class ReceiverTotal : Tea.TeaModel {
+            public var alarmGroup: String?
+
+            public var compare: String?
+
+            public var count: Int32?
+
+            public var level: String?
+
+            public var receiver: String?
+
+            public var time: Int32?
+
+            public var today: Int32?
+
+            public var type: String?
+
+            public var yesterday: Int32?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.alarmGroup != nil {
+                    map["alarmGroup"] = self.alarmGroup!
+                }
+                if self.compare != nil {
+                    map["compare"] = self.compare!
+                }
+                if self.count != nil {
+                    map["count"] = self.count!
+                }
+                if self.level != nil {
+                    map["level"] = self.level!
+                }
+                if self.receiver != nil {
+                    map["receiver"] = self.receiver!
+                }
+                if self.time != nil {
+                    map["time"] = self.time!
+                }
+                if self.today != nil {
+                    map["today"] = self.today!
+                }
+                if self.type != nil {
+                    map["type"] = self.type!
+                }
+                if self.yesterday != nil {
+                    map["yesterday"] = self.yesterday!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["alarmGroup"] as? String {
+                    self.alarmGroup = value
+                }
+                if let value = dict["compare"] as? String {
+                    self.compare = value
+                }
+                if let value = dict["count"] as? Int32 {
+                    self.count = value
+                }
+                if let value = dict["level"] as? String {
+                    self.level = value
+                }
+                if let value = dict["receiver"] as? String {
+                    self.receiver = value
+                }
+                if let value = dict["time"] as? Int32 {
+                    self.time = value
+                }
+                if let value = dict["today"] as? Int32 {
+                    self.today = value
+                }
+                if let value = dict["type"] as? String {
+                    self.type = value
+                }
+                if let value = dict["yesterday"] as? Int32 {
+                    self.yesterday = value
+                }
+            }
+        }
+        public class Statistics : Tea.TeaModel {
+            public var alarmGroup: String?
+
+            public var compare: String?
+
+            public var count: Int32?
+
+            public var level: String?
+
+            public var receiver: String?
+
+            public var time: Int32?
+
+            public var today: Int32?
+
+            public var type: String?
+
+            public var yesterday: Int32?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.alarmGroup != nil {
+                    map["alarmGroup"] = self.alarmGroup!
+                }
+                if self.compare != nil {
+                    map["compare"] = self.compare!
+                }
+                if self.count != nil {
+                    map["count"] = self.count!
+                }
+                if self.level != nil {
+                    map["level"] = self.level!
+                }
+                if self.receiver != nil {
+                    map["receiver"] = self.receiver!
+                }
+                if self.time != nil {
+                    map["time"] = self.time!
+                }
+                if self.today != nil {
+                    map["today"] = self.today!
+                }
+                if self.type != nil {
+                    map["type"] = self.type!
+                }
+                if self.yesterday != nil {
+                    map["yesterday"] = self.yesterday!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["alarmGroup"] as? String {
+                    self.alarmGroup = value
+                }
+                if let value = dict["compare"] as? String {
+                    self.compare = value
+                }
+                if let value = dict["count"] as? Int32 {
+                    self.count = value
+                }
+                if let value = dict["level"] as? String {
+                    self.level = value
+                }
+                if let value = dict["receiver"] as? String {
+                    self.receiver = value
+                }
+                if let value = dict["time"] as? Int32 {
+                    self.time = value
+                }
+                if let value = dict["today"] as? Int32 {
+                    self.today = value
+                }
+                if let value = dict["type"] as? String {
+                    self.type = value
+                }
+                if let value = dict["yesterday"] as? Int32 {
+                    self.yesterday = value
+                }
+            }
+        }
+        public var alarmGroup: String?
+
+        public var alarmGroupTotal: [GetEmonAlarmRecordStatisticsDistributeResponseBody.Result.AlarmGroupTotal]?
+
+        public var channelTotal: [GetEmonAlarmRecordStatisticsDistributeResponseBody.Result.ChannelTotal]?
+
+        public var count: Int32?
+
+        public var levelTotal: [GetEmonAlarmRecordStatisticsDistributeResponseBody.Result.LevelTotal]?
+
+        public var receiverTotal: [GetEmonAlarmRecordStatisticsDistributeResponseBody.Result.ReceiverTotal]?
+
+        public var statistics: [GetEmonAlarmRecordStatisticsDistributeResponseBody.Result.Statistics]?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.alarmGroup != nil {
+                map["alarmGroup"] = self.alarmGroup!
+            }
+            if self.alarmGroupTotal != nil {
+                var tmp : [Any] = []
+                for k in self.alarmGroupTotal! {
+                    tmp.append(k.toMap())
+                }
+                map["alarmGroupTotal"] = tmp
+            }
+            if self.channelTotal != nil {
+                var tmp : [Any] = []
+                for k in self.channelTotal! {
+                    tmp.append(k.toMap())
+                }
+                map["channelTotal"] = tmp
+            }
+            if self.count != nil {
+                map["count"] = self.count!
+            }
+            if self.levelTotal != nil {
+                var tmp : [Any] = []
+                for k in self.levelTotal! {
+                    tmp.append(k.toMap())
+                }
+                map["levelTotal"] = tmp
+            }
+            if self.receiverTotal != nil {
+                var tmp : [Any] = []
+                for k in self.receiverTotal! {
+                    tmp.append(k.toMap())
+                }
+                map["receiverTotal"] = tmp
+            }
+            if self.statistics != nil {
+                var tmp : [Any] = []
+                for k in self.statistics! {
+                    tmp.append(k.toMap())
+                }
+                map["statistics"] = tmp
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["alarmGroup"] as? String {
+                self.alarmGroup = value
+            }
+            if let value = dict["alarmGroupTotal"] as? [Any?] {
+                var tmp : [GetEmonAlarmRecordStatisticsDistributeResponseBody.Result.AlarmGroupTotal] = []
+                for v in value {
+                    if v != nil {
+                        var model = GetEmonAlarmRecordStatisticsDistributeResponseBody.Result.AlarmGroupTotal()
+                        if v != nil {
+                            model.fromMap(v as? [String: Any?])
+                        }
+                        tmp.append(model)
+                    }
+                }
+                self.alarmGroupTotal = tmp
+            }
+            if let value = dict["channelTotal"] as? [Any?] {
+                var tmp : [GetEmonAlarmRecordStatisticsDistributeResponseBody.Result.ChannelTotal] = []
+                for v in value {
+                    if v != nil {
+                        var model = GetEmonAlarmRecordStatisticsDistributeResponseBody.Result.ChannelTotal()
+                        if v != nil {
+                            model.fromMap(v as? [String: Any?])
+                        }
+                        tmp.append(model)
+                    }
+                }
+                self.channelTotal = tmp
+            }
+            if let value = dict["count"] as? Int32 {
+                self.count = value
+            }
+            if let value = dict["levelTotal"] as? [Any?] {
+                var tmp : [GetEmonAlarmRecordStatisticsDistributeResponseBody.Result.LevelTotal] = []
+                for v in value {
+                    if v != nil {
+                        var model = GetEmonAlarmRecordStatisticsDistributeResponseBody.Result.LevelTotal()
+                        if v != nil {
+                            model.fromMap(v as? [String: Any?])
+                        }
+                        tmp.append(model)
+                    }
+                }
+                self.levelTotal = tmp
+            }
+            if let value = dict["receiverTotal"] as? [Any?] {
+                var tmp : [GetEmonAlarmRecordStatisticsDistributeResponseBody.Result.ReceiverTotal] = []
+                for v in value {
+                    if v != nil {
+                        var model = GetEmonAlarmRecordStatisticsDistributeResponseBody.Result.ReceiverTotal()
+                        if v != nil {
+                            model.fromMap(v as? [String: Any?])
+                        }
+                        tmp.append(model)
+                    }
+                }
+                self.receiverTotal = tmp
+            }
+            if let value = dict["statistics"] as? [Any?] {
+                var tmp : [GetEmonAlarmRecordStatisticsDistributeResponseBody.Result.Statistics] = []
+                for v in value {
+                    if v != nil {
+                        var model = GetEmonAlarmRecordStatisticsDistributeResponseBody.Result.Statistics()
+                        if v != nil {
+                            model.fromMap(v as? [String: Any?])
+                        }
+                        tmp.append(model)
+                    }
+                }
+                self.statistics = tmp
+            }
+        }
+    }
+    public var code: String?
+
+    public var message: String?
+
+    public var requestId: String?
+
+    public var result: GetEmonAlarmRecordStatisticsDistributeResponseBody.Result?
+
+    public var success: Bool?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.result?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.code != nil {
+            map["Code"] = self.code!
+        }
+        if self.message != nil {
+            map["Message"] = self.message!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.result != nil {
+            map["Result"] = self.result?.toMap()
+        }
+        if self.success != nil {
+            map["Success"] = self.success!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["Code"] as? String {
+            self.code = value
+        }
+        if let value = dict["Message"] as? String {
+            self.message = value
+        }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+        if let value = dict["Result"] as? [String: Any?] {
+            var model = GetEmonAlarmRecordStatisticsDistributeResponseBody.Result()
+            model.fromMap(value)
+            self.result = model
+        }
+        if let value = dict["Success"] as? Bool {
+            self.success = value
+        }
+    }
+}
+
+public class GetEmonAlarmRecordStatisticsDistributeResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: GetEmonAlarmRecordStatisticsDistributeResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = GetEmonAlarmRecordStatisticsDistributeResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
 public class GetEmonGrafanaAlertsRequest : Tea.TeaModel {
     public var body: String?
 
