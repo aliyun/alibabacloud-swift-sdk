@@ -16558,6 +16558,8 @@ public class DescribeRenderingSessionResponseBody : Tea.TeaModel {
 
     public var location: DescribeRenderingSessionResponseBody.Location?
 
+    public var patchId: String?
+
     public var portMappings: [DescribeRenderingSessionResponseBody.PortMappings]?
 
     public var renderingInstanceId: String?
@@ -16607,6 +16609,9 @@ public class DescribeRenderingSessionResponseBody : Tea.TeaModel {
         }
         if self.location != nil {
             map["Location"] = self.location?.toMap()
+        }
+        if self.patchId != nil {
+            map["PatchId"] = self.patchId!
         }
         if self.portMappings != nil {
             var tmp : [Any] = []
@@ -16664,6 +16669,9 @@ public class DescribeRenderingSessionResponseBody : Tea.TeaModel {
             var model = DescribeRenderingSessionResponseBody.Location()
             model.fromMap(value)
             self.location = model
+        }
+        if let value = dict["PatchId"] as? String {
+            self.patchId = value
         }
         if let value = dict["PortMappings"] as? [Any?] {
             var tmp : [DescribeRenderingSessionResponseBody.PortMappings] = []
@@ -26171,6 +26179,8 @@ public class InstallCloudAppRequest : Tea.TeaModel {
 
     public var pageSize: Int32?
 
+    public var patchId: String?
+
     public var projectId: String?
 
     public var renderingInstanceId: String?
@@ -26200,6 +26210,9 @@ public class InstallCloudAppRequest : Tea.TeaModel {
         if self.pageSize != nil {
             map["PageSize"] = self.pageSize!
         }
+        if self.patchId != nil {
+            map["PatchId"] = self.patchId!
+        }
         if self.projectId != nil {
             map["ProjectId"] = self.projectId!
         }
@@ -26223,6 +26236,9 @@ public class InstallCloudAppRequest : Tea.TeaModel {
         if let value = dict["PageSize"] as? Int32 {
             self.pageSize = value
         }
+        if let value = dict["PatchId"] as? String {
+            self.patchId = value
+        }
         if let value = dict["ProjectId"] as? String {
             self.projectId = value
         }
@@ -26241,6 +26257,8 @@ public class InstallCloudAppShrinkRequest : Tea.TeaModel {
     public var pageNumber: Int32?
 
     public var pageSize: Int32?
+
+    public var patchId: String?
 
     public var projectId: String?
 
@@ -26271,6 +26289,9 @@ public class InstallCloudAppShrinkRequest : Tea.TeaModel {
         if self.pageSize != nil {
             map["PageSize"] = self.pageSize!
         }
+        if self.patchId != nil {
+            map["PatchId"] = self.patchId!
+        }
         if self.projectId != nil {
             map["ProjectId"] = self.projectId!
         }
@@ -26293,6 +26314,9 @@ public class InstallCloudAppShrinkRequest : Tea.TeaModel {
         }
         if let value = dict["PageSize"] as? Int32 {
             self.pageSize = value
+        }
+        if let value = dict["PatchId"] as? String {
+            self.patchId = value
         }
         if let value = dict["ProjectId"] as? String {
             self.projectId = value
@@ -26536,6 +26560,8 @@ public class ListCloudAppInstallationsRequest : Tea.TeaModel {
 
     public var pageSize: Int64?
 
+    public var patchId: String?
+
     public var projectId: String?
 
     public var renderingInstanceId: String?
@@ -26574,6 +26600,9 @@ public class ListCloudAppInstallationsRequest : Tea.TeaModel {
         if self.pageSize != nil {
             map["PageSize"] = self.pageSize!
         }
+        if self.patchId != nil {
+            map["PatchId"] = self.patchId!
+        }
         if self.projectId != nil {
             map["ProjectId"] = self.projectId!
         }
@@ -26606,6 +26635,9 @@ public class ListCloudAppInstallationsRequest : Tea.TeaModel {
         if let value = dict["PageSize"] as? Int64 {
             self.pageSize = value
         }
+        if let value = dict["PatchId"] as? String {
+            self.patchId = value
+        }
         if let value = dict["ProjectId"] as? String {
             self.projectId = value
         }
@@ -26627,6 +26659,8 @@ public class ListCloudAppInstallationsResponseBody : Tea.TeaModel {
         public var appVersion: String?
 
         public var installationTime: String?
+
+        public var patchId: String?
 
         public var renderingInstanceId: String?
 
@@ -26662,6 +26696,9 @@ public class ListCloudAppInstallationsResponseBody : Tea.TeaModel {
             if self.installationTime != nil {
                 map["InstallationTime"] = self.installationTime!
             }
+            if self.patchId != nil {
+                map["PatchId"] = self.patchId!
+            }
             if self.renderingInstanceId != nil {
                 map["RenderingInstanceId"] = self.renderingInstanceId!
             }
@@ -26690,6 +26727,9 @@ public class ListCloudAppInstallationsResponseBody : Tea.TeaModel {
             }
             if let value = dict["InstallationTime"] as? String {
                 self.installationTime = value
+            }
+            if let value = dict["PatchId"] as? String {
+                self.patchId = value
             }
             if let value = dict["RenderingInstanceId"] as? String {
                 self.renderingInstanceId = value
@@ -26932,6 +26972,8 @@ public class ListCloudAppsResponseBody : Tea.TeaModel {
 
         public var pkgType: String?
 
+        public var stablePatchId: String?
+
         public var status: String?
 
         public var statusDescription: String?
@@ -26972,6 +27014,9 @@ public class ListCloudAppsResponseBody : Tea.TeaModel {
             if self.pkgType != nil {
                 map["PkgType"] = self.pkgType!
             }
+            if self.stablePatchId != nil {
+                map["StablePatchId"] = self.stablePatchId!
+            }
             if self.status != nil {
                 map["Status"] = self.status!
             }
@@ -27006,6 +27051,9 @@ public class ListCloudAppsResponseBody : Tea.TeaModel {
             }
             if let value = dict["PkgType"] as? String {
                 self.pkgType = value
+            }
+            if let value = dict["StablePatchId"] as? String {
+                self.stablePatchId = value
             }
             if let value = dict["Status"] as? String {
                 self.status = value
@@ -29360,6 +29408,8 @@ public class ListRenderingSessionsRequest : Tea.TeaModel {
 
     public var pageSize: Int32?
 
+    public var patchId: String?
+
     public var projectId: String?
 
     public var renderingInstanceId: String?
@@ -29399,6 +29449,9 @@ public class ListRenderingSessionsRequest : Tea.TeaModel {
         if self.pageSize != nil {
             map["PageSize"] = self.pageSize!
         }
+        if self.patchId != nil {
+            map["PatchId"] = self.patchId!
+        }
         if self.projectId != nil {
             map["ProjectId"] = self.projectId!
         }
@@ -29434,6 +29487,9 @@ public class ListRenderingSessionsRequest : Tea.TeaModel {
         if let value = dict["PageSize"] as? Int32 {
             self.pageSize = value
         }
+        if let value = dict["PatchId"] as? String {
+            self.patchId = value
+        }
         if let value = dict["ProjectId"] as? String {
             self.projectId = value
         }
@@ -29457,6 +29513,8 @@ public class ListRenderingSessionsResponseBody : Tea.TeaModel {
         public var appId: String?
 
         public var clientId: String?
+
+        public var patchId: String?
 
         public var renderingInstanceId: String?
 
@@ -29484,6 +29542,9 @@ public class ListRenderingSessionsResponseBody : Tea.TeaModel {
             if self.clientId != nil {
                 map["ClientId"] = self.clientId!
             }
+            if self.patchId != nil {
+                map["PatchId"] = self.patchId!
+            }
             if self.renderingInstanceId != nil {
                 map["RenderingInstanceId"] = self.renderingInstanceId!
             }
@@ -29503,6 +29564,9 @@ public class ListRenderingSessionsResponseBody : Tea.TeaModel {
             }
             if let value = dict["ClientId"] as? String {
                 self.clientId = value
+            }
+            if let value = dict["PatchId"] as? String {
+                self.patchId = value
             }
             if let value = dict["RenderingInstanceId"] as? String {
                 self.renderingInstanceId = value
@@ -34136,6 +34200,8 @@ public class StartRenderingSessionRequest : Tea.TeaModel {
 
     public var clientParams: StartRenderingSessionRequest.ClientParams?
 
+    public var patchId: String?
+
     public var projectId: String?
 
     public override init() {
@@ -34162,6 +34228,9 @@ public class StartRenderingSessionRequest : Tea.TeaModel {
         if self.clientParams != nil {
             map["ClientParams"] = self.clientParams?.toMap()
         }
+        if self.patchId != nil {
+            map["PatchId"] = self.patchId!
+        }
         if self.projectId != nil {
             map["ProjectId"] = self.projectId!
         }
@@ -34181,6 +34250,9 @@ public class StartRenderingSessionRequest : Tea.TeaModel {
             model.fromMap(value)
             self.clientParams = model
         }
+        if let value = dict["PatchId"] as? String {
+            self.patchId = value
+        }
         if let value = dict["ProjectId"] as? String {
             self.projectId = value
         }
@@ -34193,6 +34265,8 @@ public class StartRenderingSessionShrinkRequest : Tea.TeaModel {
     public var clientId: String?
 
     public var clientParamsShrink: String?
+
+    public var patchId: String?
 
     public var projectId: String?
 
@@ -34219,6 +34293,9 @@ public class StartRenderingSessionShrinkRequest : Tea.TeaModel {
         if self.clientParamsShrink != nil {
             map["ClientParams"] = self.clientParamsShrink!
         }
+        if self.patchId != nil {
+            map["PatchId"] = self.patchId!
+        }
         if self.projectId != nil {
             map["ProjectId"] = self.projectId!
         }
@@ -34235,6 +34312,9 @@ public class StartRenderingSessionShrinkRequest : Tea.TeaModel {
         }
         if let value = dict["ClientParams"] as? String {
             self.clientParamsShrink = value
+        }
+        if let value = dict["PatchId"] as? String {
+            self.patchId = value
         }
         if let value = dict["ProjectId"] as? String {
             self.projectId = value
@@ -36600,6 +36680,8 @@ public class UninstallCloudAppRequest : Tea.TeaModel {
 
     public var pageSize: Int32?
 
+    public var patchId: String?
+
     public var projectId: String?
 
     public var renderingInstanceId: String?
@@ -36629,6 +36711,9 @@ public class UninstallCloudAppRequest : Tea.TeaModel {
         if self.pageSize != nil {
             map["PageSize"] = self.pageSize!
         }
+        if self.patchId != nil {
+            map["PatchId"] = self.patchId!
+        }
         if self.projectId != nil {
             map["ProjectId"] = self.projectId!
         }
@@ -36652,6 +36737,9 @@ public class UninstallCloudAppRequest : Tea.TeaModel {
         if let value = dict["PageSize"] as? Int32 {
             self.pageSize = value
         }
+        if let value = dict["PatchId"] as? String {
+            self.patchId = value
+        }
         if let value = dict["ProjectId"] as? String {
             self.projectId = value
         }
@@ -36670,6 +36758,8 @@ public class UninstallCloudAppShrinkRequest : Tea.TeaModel {
     public var pageNumber: Int32?
 
     public var pageSize: Int32?
+
+    public var patchId: String?
 
     public var projectId: String?
 
@@ -36700,6 +36790,9 @@ public class UninstallCloudAppShrinkRequest : Tea.TeaModel {
         if self.pageSize != nil {
             map["PageSize"] = self.pageSize!
         }
+        if self.patchId != nil {
+            map["PatchId"] = self.patchId!
+        }
         if self.projectId != nil {
             map["ProjectId"] = self.projectId!
         }
@@ -36722,6 +36815,9 @@ public class UninstallCloudAppShrinkRequest : Tea.TeaModel {
         }
         if let value = dict["PageSize"] as? Int32 {
             self.pageSize = value
+        }
+        if let value = dict["PatchId"] as? String {
+            self.patchId = value
         }
         if let value = dict["ProjectId"] as? String {
             self.projectId = value
@@ -37081,9 +37177,117 @@ public class UnlockDeviceResponse : Tea.TeaModel {
 }
 
 public class UpdateCloudAppInfoRequest : Tea.TeaModel {
+    public class Patch : Tea.TeaModel {
+        public var downloadURL: String?
+
+        public var md5: String?
+
+        public var patchName: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.downloadURL != nil {
+                map["DownloadURL"] = self.downloadURL!
+            }
+            if self.md5 != nil {
+                map["Md5"] = self.md5!
+            }
+            if self.patchName != nil {
+                map["PatchName"] = self.patchName!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["DownloadURL"] as? String {
+                self.downloadURL = value
+            }
+            if let value = dict["Md5"] as? String {
+                self.md5 = value
+            }
+            if let value = dict["PatchName"] as? String {
+                self.patchName = value
+            }
+        }
+    }
     public var appId: String?
 
     public var description_: String?
+
+    public var patch: UpdateCloudAppInfoRequest.Patch?
+
+    public var stablePatchId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.patch?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.appId != nil {
+            map["AppId"] = self.appId!
+        }
+        if self.description_ != nil {
+            map["Description"] = self.description_!
+        }
+        if self.patch != nil {
+            map["Patch"] = self.patch?.toMap()
+        }
+        if self.stablePatchId != nil {
+            map["StablePatchId"] = self.stablePatchId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["AppId"] as? String {
+            self.appId = value
+        }
+        if let value = dict["Description"] as? String {
+            self.description_ = value
+        }
+        if let value = dict["Patch"] as? [String: Any?] {
+            var model = UpdateCloudAppInfoRequest.Patch()
+            model.fromMap(value)
+            self.patch = model
+        }
+        if let value = dict["StablePatchId"] as? String {
+            self.stablePatchId = value
+        }
+    }
+}
+
+public class UpdateCloudAppInfoShrinkRequest : Tea.TeaModel {
+    public var appId: String?
+
+    public var description_: String?
+
+    public var patchShrink: String?
+
+    public var stablePatchId: String?
 
     public override init() {
         super.init()
@@ -37105,6 +37309,12 @@ public class UpdateCloudAppInfoRequest : Tea.TeaModel {
         if self.description_ != nil {
             map["Description"] = self.description_!
         }
+        if self.patchShrink != nil {
+            map["Patch"] = self.patchShrink!
+        }
+        if self.stablePatchId != nil {
+            map["StablePatchId"] = self.stablePatchId!
+        }
         return map
     }
 
@@ -37116,10 +37326,18 @@ public class UpdateCloudAppInfoRequest : Tea.TeaModel {
         if let value = dict["Description"] as? String {
             self.description_ = value
         }
+        if let value = dict["Patch"] as? String {
+            self.patchShrink = value
+        }
+        if let value = dict["StablePatchId"] as? String {
+            self.stablePatchId = value
+        }
     }
 }
 
 public class UpdateCloudAppInfoResponseBody : Tea.TeaModel {
+    public var patchId: String?
+
     public var requestId: String?
 
     public override init() {
@@ -37136,6 +37354,9 @@ public class UpdateCloudAppInfoResponseBody : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.patchId != nil {
+            map["PatchId"] = self.patchId!
+        }
         if self.requestId != nil {
             map["RequestId"] = self.requestId!
         }
@@ -37144,6 +37365,9 @@ public class UpdateCloudAppInfoResponseBody : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["PatchId"] as? String {
+            self.patchId = value
+        }
         if let value = dict["RequestId"] as? String {
             self.requestId = value
         }
