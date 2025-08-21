@@ -2321,6 +2321,10 @@ public class AttachInstanceSDGRequest : Tea.TeaModel {
             }
         }
     }
+    public var diskAccessProtocol: String?
+
+    public var diskType: String?
+
     public var instanceIds: [String]?
 
     public var loadOpt: AttachInstanceSDGRequest.LoadOpt?
@@ -2342,6 +2346,12 @@ public class AttachInstanceSDGRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.diskAccessProtocol != nil {
+            map["DiskAccessProtocol"] = self.diskAccessProtocol!
+        }
+        if self.diskType != nil {
+            map["DiskType"] = self.diskType!
+        }
         if self.instanceIds != nil {
             map["InstanceIds"] = self.instanceIds!
         }
@@ -2356,6 +2366,12 @@ public class AttachInstanceSDGRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["DiskAccessProtocol"] as? String {
+            self.diskAccessProtocol = value
+        }
+        if let value = dict["DiskType"] as? String {
+            self.diskType = value
+        }
         if let value = dict["InstanceIds"] as? [String] {
             self.instanceIds = value
         }
@@ -2371,6 +2387,10 @@ public class AttachInstanceSDGRequest : Tea.TeaModel {
 }
 
 public class AttachInstanceSDGShrinkRequest : Tea.TeaModel {
+    public var diskAccessProtocol: String?
+
+    public var diskType: String?
+
     public var instanceIdsShrink: String?
 
     public var loadOptShrink: String?
@@ -2391,6 +2411,12 @@ public class AttachInstanceSDGShrinkRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.diskAccessProtocol != nil {
+            map["DiskAccessProtocol"] = self.diskAccessProtocol!
+        }
+        if self.diskType != nil {
+            map["DiskType"] = self.diskType!
+        }
         if self.instanceIdsShrink != nil {
             map["InstanceIds"] = self.instanceIdsShrink!
         }
@@ -2405,6 +2431,12 @@ public class AttachInstanceSDGShrinkRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["DiskAccessProtocol"] as? String {
+            self.diskAccessProtocol = value
+        }
+        if let value = dict["DiskType"] as? String {
+            self.diskType = value
+        }
         if let value = dict["InstanceIds"] as? String {
             self.instanceIdsShrink = value
         }
@@ -9699,7 +9731,11 @@ public class CreateNetworkInterfaceResponse : Tea.TeaModel {
 }
 
 public class CreateSDGRequest : Tea.TeaModel {
+    public var billingCycle: String?
+
     public var description_: String?
+
+    public var diskType: String?
 
     public var fromSDGId: String?
 
@@ -9721,8 +9757,14 @@ public class CreateSDGRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.billingCycle != nil {
+            map["BillingCycle"] = self.billingCycle!
+        }
         if self.description_ != nil {
             map["Description"] = self.description_!
+        }
+        if self.diskType != nil {
+            map["DiskType"] = self.diskType!
         }
         if self.fromSDGId != nil {
             map["FromSDGId"] = self.fromSDGId!
@@ -9738,8 +9780,14 @@ public class CreateSDGRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["BillingCycle"] as? String {
+            self.billingCycle = value
+        }
         if let value = dict["Description"] as? String {
             self.description_ = value
+        }
+        if let value = dict["DiskType"] as? String {
+            self.diskType = value
         }
         if let value = dict["FromSDGId"] as? String {
             self.fromSDGId = value
@@ -15309,6 +15357,10 @@ public class DeleteVSwitchResponse : Tea.TeaModel {
 public class DeployInstanceSDGRequest : Tea.TeaModel {
     public var deploymentType: String?
 
+    public var diskAccessProtocol: String?
+
+    public var diskType: String?
+
     public var instanceIds: [String]?
 
     public var SDGId: String?
@@ -15330,6 +15382,12 @@ public class DeployInstanceSDGRequest : Tea.TeaModel {
         if self.deploymentType != nil {
             map["DeploymentType"] = self.deploymentType!
         }
+        if self.diskAccessProtocol != nil {
+            map["DiskAccessProtocol"] = self.diskAccessProtocol!
+        }
+        if self.diskType != nil {
+            map["DiskType"] = self.diskType!
+        }
         if self.instanceIds != nil {
             map["InstanceIds"] = self.instanceIds!
         }
@@ -15344,6 +15402,12 @@ public class DeployInstanceSDGRequest : Tea.TeaModel {
         if let value = dict["DeploymentType"] as? String {
             self.deploymentType = value
         }
+        if let value = dict["DiskAccessProtocol"] as? String {
+            self.diskAccessProtocol = value
+        }
+        if let value = dict["DiskType"] as? String {
+            self.diskType = value
+        }
         if let value = dict["InstanceIds"] as? [String] {
             self.instanceIds = value
         }
@@ -15355,6 +15419,10 @@ public class DeployInstanceSDGRequest : Tea.TeaModel {
 
 public class DeployInstanceSDGShrinkRequest : Tea.TeaModel {
     public var deploymentType: String?
+
+    public var diskAccessProtocol: String?
+
+    public var diskType: String?
 
     public var instanceIdsShrink: String?
 
@@ -15377,6 +15445,12 @@ public class DeployInstanceSDGShrinkRequest : Tea.TeaModel {
         if self.deploymentType != nil {
             map["DeploymentType"] = self.deploymentType!
         }
+        if self.diskAccessProtocol != nil {
+            map["DiskAccessProtocol"] = self.diskAccessProtocol!
+        }
+        if self.diskType != nil {
+            map["DiskType"] = self.diskType!
+        }
         if self.instanceIdsShrink != nil {
             map["InstanceIds"] = self.instanceIdsShrink!
         }
@@ -15390,6 +15464,12 @@ public class DeployInstanceSDGShrinkRequest : Tea.TeaModel {
         guard let dict else { return }
         if let value = dict["DeploymentType"] as? String {
             self.deploymentType = value
+        }
+        if let value = dict["DiskAccessProtocol"] as? String {
+            self.diskAccessProtocol = value
+        }
+        if let value = dict["DiskType"] as? String {
+            self.diskType = value
         }
         if let value = dict["InstanceIds"] as? String {
             self.instanceIdsShrink = value
@@ -32755,6 +32835,10 @@ public class DescribeInstanceSDGStatusResponseBody : Tea.TeaModel {
 
         public var cacheSize: Int32?
 
+        public var diskAccessProtocol: String?
+
+        public var diskType: String?
+
         public var ensRegionId: String?
 
         public var instanceId: String?
@@ -32789,6 +32873,12 @@ public class DescribeInstanceSDGStatusResponseBody : Tea.TeaModel {
             if self.cacheSize != nil {
                 map["CacheSize"] = self.cacheSize!
             }
+            if self.diskAccessProtocol != nil {
+                map["DiskAccessProtocol"] = self.diskAccessProtocol!
+            }
+            if self.diskType != nil {
+                map["DiskType"] = self.diskType!
+            }
             if self.ensRegionId != nil {
                 map["EnsRegionId"] = self.ensRegionId!
             }
@@ -32820,6 +32910,12 @@ public class DescribeInstanceSDGStatusResponseBody : Tea.TeaModel {
             }
             if let value = dict["CacheSize"] as? Int32 {
                 self.cacheSize = value
+            }
+            if let value = dict["DiskAccessProtocol"] as? String {
+                self.diskAccessProtocol = value
+            }
+            if let value = dict["DiskType"] as? String {
+                self.diskType = value
             }
             if let value = dict["EnsRegionId"] as? String {
                 self.ensRegionId = value
@@ -34910,6 +35006,8 @@ public class DescribeInstancesResponseBody : Tea.TeaModel {
 
             public var dataDisk: DescribeInstancesResponseBody.Instances.Instance.DataDisk?
 
+            public var deletionProtection: Bool?
+
             public var disk: Int32?
 
             public var ensRegionId: String?
@@ -34999,6 +35097,9 @@ public class DescribeInstancesResponseBody : Tea.TeaModel {
                 }
                 if self.dataDisk != nil {
                     map["DataDisk"] = self.dataDisk?.toMap()
+                }
+                if self.deletionProtection != nil {
+                    map["DeletionProtection"] = self.deletionProtection!
                 }
                 if self.disk != nil {
                     map["Disk"] = self.disk!
@@ -35099,6 +35200,9 @@ public class DescribeInstancesResponseBody : Tea.TeaModel {
                     var model = DescribeInstancesResponseBody.Instances.Instance.DataDisk()
                     model.fromMap(value)
                     self.dataDisk = model
+                }
+                if let value = dict["DeletionProtection"] as? Bool {
+                    self.deletionProtection = value
                 }
                 if let value = dict["Disk"] as? Int32 {
                     self.disk = value
@@ -47220,6 +47324,8 @@ public class DescribeSDGResponseBody : Tea.TeaModel {
         public class PreloadInfos : Tea.TeaModel {
             public var creationTime: String?
 
+            public var diskType: String?
+
             public var namespace: String?
 
             public var redundantNum: Int32?
@@ -47245,6 +47351,9 @@ public class DescribeSDGResponseBody : Tea.TeaModel {
                 if self.creationTime != nil {
                     map["CreationTime"] = self.creationTime!
                 }
+                if self.diskType != nil {
+                    map["DiskType"] = self.diskType!
+                }
                 if self.namespace != nil {
                     map["Namespace"] = self.namespace!
                 }
@@ -47265,6 +47374,9 @@ public class DescribeSDGResponseBody : Tea.TeaModel {
                 if let value = dict["CreationTime"] as? String {
                     self.creationTime = value
                 }
+                if let value = dict["DiskType"] as? String {
+                    self.diskType = value
+                }
                 if let value = dict["Namespace"] as? String {
                     self.namespace = value
                 }
@@ -47280,6 +47392,10 @@ public class DescribeSDGResponseBody : Tea.TeaModel {
             }
         }
         public var avaliableRegionIds: [DescribeSDGResponseBody.SDGs.AvaliableRegionIds]?
+
+        public var billingCycle: String?
+
+        public var creationDiskType: String?
 
         public var creationInstanceId: String?
 
@@ -47321,6 +47437,12 @@ public class DescribeSDGResponseBody : Tea.TeaModel {
                     tmp.append(k.toMap())
                 }
                 map["AvaliableRegionIds"] = tmp
+            }
+            if self.billingCycle != nil {
+                map["BillingCycle"] = self.billingCycle!
+            }
+            if self.creationDiskType != nil {
+                map["CreationDiskType"] = self.creationDiskType!
             }
             if self.creationInstanceId != nil {
                 map["CreationInstanceId"] = self.creationInstanceId!
@@ -47373,6 +47495,12 @@ public class DescribeSDGResponseBody : Tea.TeaModel {
                     }
                 }
                 self.avaliableRegionIds = tmp
+            }
+            if let value = dict["BillingCycle"] as? String {
+                self.billingCycle = value
+            }
+            if let value = dict["CreationDiskType"] as? String {
+                self.creationDiskType = value
             }
             if let value = dict["CreationInstanceId"] as? String {
                 self.creationInstanceId = value
@@ -47706,6 +47834,10 @@ public class DescribeSDGDeploymentStatusResponseBody : Tea.TeaModel {
 
         public var cacheSize: Int32?
 
+        public var diskAccessProtocol: String?
+
+        public var diskType: String?
+
         public var instanceId: String?
 
         public var mountType: String?
@@ -47738,6 +47870,12 @@ public class DescribeSDGDeploymentStatusResponseBody : Tea.TeaModel {
             if self.cacheSize != nil {
                 map["CacheSize"] = self.cacheSize!
             }
+            if self.diskAccessProtocol != nil {
+                map["DiskAccessProtocol"] = self.diskAccessProtocol!
+            }
+            if self.diskType != nil {
+                map["DiskType"] = self.diskType!
+            }
             if self.instanceId != nil {
                 map["InstanceId"] = self.instanceId!
             }
@@ -47766,6 +47904,12 @@ public class DescribeSDGDeploymentStatusResponseBody : Tea.TeaModel {
             }
             if let value = dict["CacheSize"] as? Int32 {
                 self.cacheSize = value
+            }
+            if let value = dict["DiskAccessProtocol"] as? String {
+                self.diskAccessProtocol = value
+            }
+            if let value = dict["DiskType"] as? String {
+                self.diskType = value
             }
             if let value = dict["InstanceId"] as? String {
                 self.instanceId = value
@@ -48103,6 +48247,10 @@ public class DescribeSDGsResponseBody : Tea.TeaModel {
         }
         public var avaliableRegionIds: [DescribeSDGsResponseBody.SDGs.AvaliableRegionIds]?
 
+        public var billingCycle: String?
+
+        public var creationDiskType: String?
+
         public var creationInstanceId: String?
 
         public var creationRegionId: String?
@@ -48143,6 +48291,12 @@ public class DescribeSDGsResponseBody : Tea.TeaModel {
                     tmp.append(k.toMap())
                 }
                 map["AvaliableRegionIds"] = tmp
+            }
+            if self.billingCycle != nil {
+                map["BillingCycle"] = self.billingCycle!
+            }
+            if self.creationDiskType != nil {
+                map["CreationDiskType"] = self.creationDiskType!
             }
             if self.creationInstanceId != nil {
                 map["CreationInstanceId"] = self.creationInstanceId!
@@ -48195,6 +48349,12 @@ public class DescribeSDGsResponseBody : Tea.TeaModel {
                     }
                 }
                 self.avaliableRegionIds = tmp
+            }
+            if let value = dict["BillingCycle"] as? String {
+                self.billingCycle = value
+            }
+            if let value = dict["CreationDiskType"] as? String {
+                self.creationDiskType = value
             }
             if let value = dict["CreationInstanceId"] as? String {
                 self.creationInstanceId = value
@@ -55662,6 +55822,8 @@ public class ImportImageRequest : Tea.TeaModel {
 
     public var imageName: String?
 
+    public var licenseType: String?
+
     public var OSSBucket: String?
 
     public var OSSObject: String?
@@ -55708,6 +55870,9 @@ public class ImportImageRequest : Tea.TeaModel {
         }
         if self.imageName != nil {
             map["ImageName"] = self.imageName!
+        }
+        if self.licenseType != nil {
+            map["LicenseType"] = self.licenseType!
         }
         if self.OSSBucket != nil {
             map["OSSBucket"] = self.OSSBucket!
@@ -55760,6 +55925,9 @@ public class ImportImageRequest : Tea.TeaModel {
         if let value = dict["ImageName"] as? String {
             self.imageName = value
         }
+        if let value = dict["LicenseType"] as? String {
+            self.licenseType = value
+        }
         if let value = dict["OSSBucket"] as? String {
             self.OSSBucket = value
         }
@@ -55794,6 +55962,8 @@ public class ImportImageShrinkRequest : Tea.TeaModel {
     public var imageFormat: String?
 
     public var imageName: String?
+
+    public var licenseType: String?
 
     public var OSSBucket: String?
 
@@ -55838,6 +56008,9 @@ public class ImportImageShrinkRequest : Tea.TeaModel {
         if self.imageName != nil {
             map["ImageName"] = self.imageName!
         }
+        if self.licenseType != nil {
+            map["LicenseType"] = self.licenseType!
+        }
         if self.OSSBucket != nil {
             map["OSSBucket"] = self.OSSBucket!
         }
@@ -55878,6 +56051,9 @@ public class ImportImageShrinkRequest : Tea.TeaModel {
         }
         if let value = dict["ImageName"] as? String {
             self.imageName = value
+        }
+        if let value = dict["LicenseType"] as? String {
+            self.licenseType = value
         }
         if let value = dict["OSSBucket"] as? String {
             self.OSSBucket = value
@@ -58996,6 +59172,8 @@ public class ModifyImageSharePermissionResponse : Tea.TeaModel {
 }
 
 public class ModifyInstanceAttributeRequest : Tea.TeaModel {
+    public var deletionProtection: Bool?
+
     public var hostName: String?
 
     public var instanceId: String?
@@ -59020,6 +59198,9 @@ public class ModifyInstanceAttributeRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.deletionProtection != nil {
+            map["DeletionProtection"] = self.deletionProtection!
+        }
         if self.hostName != nil {
             map["HostName"] = self.hostName!
         }
@@ -59040,6 +59221,9 @@ public class ModifyInstanceAttributeRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["DeletionProtection"] as? Bool {
+            self.deletionProtection = value
+        }
         if let value = dict["HostName"] as? String {
             self.hostName = value
         }
@@ -61050,6 +61234,8 @@ public class MountInstanceSDGResponse : Tea.TeaModel {
 public class PreloadRegionSDGRequest : Tea.TeaModel {
     public var destinationRegionIds: [String]?
 
+    public var diskType: String?
+
     public var namespaces: [String]?
 
     public var redundantNum: Int32?
@@ -61073,6 +61259,9 @@ public class PreloadRegionSDGRequest : Tea.TeaModel {
         if self.destinationRegionIds != nil {
             map["DestinationRegionIds"] = self.destinationRegionIds!
         }
+        if self.diskType != nil {
+            map["DiskType"] = self.diskType!
+        }
         if self.namespaces != nil {
             map["Namespaces"] = self.namespaces!
         }
@@ -61090,6 +61279,9 @@ public class PreloadRegionSDGRequest : Tea.TeaModel {
         if let value = dict["DestinationRegionIds"] as? [String] {
             self.destinationRegionIds = value
         }
+        if let value = dict["DiskType"] as? String {
+            self.diskType = value
+        }
         if let value = dict["Namespaces"] as? [String] {
             self.namespaces = value
         }
@@ -61104,6 +61296,8 @@ public class PreloadRegionSDGRequest : Tea.TeaModel {
 
 public class PreloadRegionSDGShrinkRequest : Tea.TeaModel {
     public var destinationRegionIdsShrink: String?
+
+    public var diskType: String?
 
     public var namespacesShrink: String?
 
@@ -61128,6 +61322,9 @@ public class PreloadRegionSDGShrinkRequest : Tea.TeaModel {
         if self.destinationRegionIdsShrink != nil {
             map["DestinationRegionIds"] = self.destinationRegionIdsShrink!
         }
+        if self.diskType != nil {
+            map["DiskType"] = self.diskType!
+        }
         if self.namespacesShrink != nil {
             map["Namespaces"] = self.namespacesShrink!
         }
@@ -61144,6 +61341,9 @@ public class PreloadRegionSDGShrinkRequest : Tea.TeaModel {
         guard let dict else { return }
         if let value = dict["DestinationRegionIds"] as? String {
             self.destinationRegionIdsShrink = value
+        }
+        if let value = dict["DiskType"] as? String {
+            self.diskType = value
         }
         if let value = dict["Namespaces"] as? String {
             self.namespacesShrink = value
@@ -66976,6 +67176,8 @@ public class RunInstancesRequest : Tea.TeaModel {
 
     public var dataDisk: [RunInstancesRequest.DataDisk]?
 
+    public var deletionProtection: Bool?
+
     public var ensRegionId: String?
 
     public var hostName: String?
@@ -67077,6 +67279,9 @@ public class RunInstancesRequest : Tea.TeaModel {
                 tmp.append(k.toMap())
             }
             map["DataDisk"] = tmp
+        }
+        if self.deletionProtection != nil {
+            map["DeletionProtection"] = self.deletionProtection!
         }
         if self.ensRegionId != nil {
             map["EnsRegionId"] = self.ensRegionId!
@@ -67210,6 +67415,9 @@ public class RunInstancesRequest : Tea.TeaModel {
                 }
             }
             self.dataDisk = tmp
+        }
+        if let value = dict["DeletionProtection"] as? Bool {
+            self.deletionProtection = value
         }
         if let value = dict["EnsRegionId"] as? String {
             self.ensRegionId = value
@@ -67372,6 +67580,8 @@ public class RunInstancesShrinkRequest : Tea.TeaModel {
 
     public var dataDiskShrink: String?
 
+    public var deletionProtection: Bool?
+
     public var ensRegionId: String?
 
     public var hostName: String?
@@ -67468,6 +67678,9 @@ public class RunInstancesShrinkRequest : Tea.TeaModel {
         }
         if self.dataDiskShrink != nil {
             map["DataDisk"] = self.dataDiskShrink!
+        }
+        if self.deletionProtection != nil {
+            map["DeletionProtection"] = self.deletionProtection!
         }
         if self.ensRegionId != nil {
             map["EnsRegionId"] = self.ensRegionId!
@@ -67591,6 +67804,9 @@ public class RunInstancesShrinkRequest : Tea.TeaModel {
         }
         if let value = dict["DataDisk"] as? String {
             self.dataDiskShrink = value
+        }
+        if let value = dict["DeletionProtection"] as? Bool {
+            self.deletionProtection = value
         }
         if let value = dict["EnsRegionId"] as? String {
             self.ensRegionId = value

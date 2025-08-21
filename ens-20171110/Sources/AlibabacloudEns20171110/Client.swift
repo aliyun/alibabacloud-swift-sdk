@@ -361,6 +361,12 @@ open class Client : AlibabacloudOpenApi.Client {
             request.loadOptShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.loadOpt, "LoadOpt", "json")
         }
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.diskAccessProtocol)) {
+            query["DiskAccessProtocol"] = request.diskAccessProtocol ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.diskType)) {
+            query["DiskType"] = request.diskType ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.instanceIdsShrink)) {
             query["InstanceIds"] = request.instanceIdsShrink ?? "";
         }
@@ -3445,6 +3451,12 @@ open class Client : AlibabacloudOpenApi.Client {
         var query: [String: Any] = [:]
         if (!TeaUtils.Client.isUnset(request.deploymentType)) {
             query["DeploymentType"] = request.deploymentType ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.diskAccessProtocol)) {
+            query["DiskAccessProtocol"] = request.diskAccessProtocol ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.diskType)) {
+            query["DiskType"] = request.diskType ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.instanceIdsShrink)) {
             query["InstanceIds"] = request.instanceIdsShrink ?? "";
@@ -7671,6 +7683,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.imageName)) {
             query["ImageName"] = request.imageName ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.licenseType)) {
+            query["LicenseType"] = request.licenseType ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.OSSBucket)) {
             query["OSSBucket"] = request.OSSBucket ?? "";
         }
@@ -8409,6 +8424,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func modifyInstanceAttributeWithOptions(_ request: ModifyInstanceAttributeRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ModifyInstanceAttributeResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.deletionProtection)) {
+            query["DeletionProtection"] = request.deletionProtection!;
+        }
         if (!TeaUtils.Client.isUnset(request.hostName)) {
             query["HostName"] = request.hostName ?? "";
         }
@@ -8925,6 +8943,9 @@ open class Client : AlibabacloudOpenApi.Client {
         var query: [String: Any] = [:]
         if (!TeaUtils.Client.isUnset(request.destinationRegionIdsShrink)) {
             query["DestinationRegionIds"] = request.destinationRegionIdsShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.diskType)) {
+            query["DiskType"] = request.diskType ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.namespacesShrink)) {
             query["Namespaces"] = request.namespacesShrink ?? "";
@@ -10247,6 +10268,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.dataDiskShrink)) {
             query["DataDisk"] = request.dataDiskShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.deletionProtection)) {
+            query["DeletionProtection"] = request.deletionProtection!;
         }
         if (!TeaUtils.Client.isUnset(request.ensRegionId)) {
             query["EnsRegionId"] = request.ensRegionId ?? "";
