@@ -5708,6 +5708,8 @@ public class DescribeAsyncTasksResponse : Tea.TeaModel {
 public class DescribeAttackAnalysisMaxQpsRequest : Tea.TeaModel {
     public var endTime: Int64?
 
+    public var ip: String?
+
     public var startTime: Int64?
 
     public override init() {
@@ -5727,6 +5729,9 @@ public class DescribeAttackAnalysisMaxQpsRequest : Tea.TeaModel {
         if self.endTime != nil {
             map["EndTime"] = self.endTime!
         }
+        if self.ip != nil {
+            map["Ip"] = self.ip!
+        }
         if self.startTime != nil {
             map["StartTime"] = self.startTime!
         }
@@ -5737,6 +5742,9 @@ public class DescribeAttackAnalysisMaxQpsRequest : Tea.TeaModel {
         guard let dict else { return }
         if let value = dict["EndTime"] as? Int64 {
             self.endTime = value
+        }
+        if let value = dict["Ip"] as? String {
+            self.ip = value
         }
         if let value = dict["StartTime"] as? Int64 {
             self.startTime = value
@@ -7678,6 +7686,8 @@ public class DescribeDDosAllEventListRequest : Tea.TeaModel {
 
     public var eventType: String?
 
+    public var ip: String?
+
     public var pageNumber: Int32?
 
     public var pageSize: Int32?
@@ -7704,6 +7714,9 @@ public class DescribeDDosAllEventListRequest : Tea.TeaModel {
         if self.eventType != nil {
             map["EventType"] = self.eventType!
         }
+        if self.ip != nil {
+            map["Ip"] = self.ip!
+        }
         if self.pageNumber != nil {
             map["PageNumber"] = self.pageNumber!
         }
@@ -7723,6 +7736,9 @@ public class DescribeDDosAllEventListRequest : Tea.TeaModel {
         }
         if let value = dict["EventType"] as? String {
             self.eventType = value
+        }
+        if let value = dict["Ip"] as? String {
+            self.ip = value
         }
         if let value = dict["PageNumber"] as? Int32 {
             self.pageNumber = value
@@ -8516,6 +8532,8 @@ public class DescribeDDosEventIspResponse : Tea.TeaModel {
 public class DescribeDDosEventMaxRequest : Tea.TeaModel {
     public var endTime: Int64?
 
+    public var ip: String?
+
     public var startTime: Int64?
 
     public override init() {
@@ -8535,6 +8553,9 @@ public class DescribeDDosEventMaxRequest : Tea.TeaModel {
         if self.endTime != nil {
             map["EndTime"] = self.endTime!
         }
+        if self.ip != nil {
+            map["Ip"] = self.ip!
+        }
         if self.startTime != nil {
             map["StartTime"] = self.startTime!
         }
@@ -8545,6 +8566,9 @@ public class DescribeDDosEventMaxRequest : Tea.TeaModel {
         guard let dict else { return }
         if let value = dict["EndTime"] as? Int64 {
             self.endTime = value
+        }
+        if let value = dict["Ip"] as? String {
+            self.ip = value
         }
         if let value = dict["StartTime"] as? Int64 {
             self.startTime = value
