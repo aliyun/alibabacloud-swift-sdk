@@ -2012,6 +2012,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func linkInstanceCategoryWithOptions(_ request: LinkInstanceCategoryRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> LinkInstanceCategoryResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.abilityType)) {
+            query["AbilityType"] = request.abilityType ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.agentKey)) {
             query["AgentKey"] = request.agentKey ?? "";
         }
@@ -2936,6 +2939,43 @@ open class Client : AlibabacloudOpenApi.Client {
     public func searchFaq(_ request: SearchFaqRequest) async throws -> SearchFaqResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         return try await searchFaqWithOptions(request as! SearchFaqRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func tongyiChatDebugInfoWithOptions(_ request: TongyiChatDebugInfoRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> TongyiChatDebugInfoResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.agentKey)) {
+            query["AgentKey"] = request.agentKey ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.instanceId)) {
+            query["InstanceId"] = request.instanceId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.messageId)) {
+            query["MessageId"] = request.messageId ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "TongyiChatDebugInfo",
+            "version": "2022-04-08",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(TongyiChatDebugInfoResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func tongyiChatDebugInfo(_ request: TongyiChatDebugInfoRequest) async throws -> TongyiChatDebugInfoResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await tongyiChatDebugInfoWithOptions(request as! TongyiChatDebugInfoRequest, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
