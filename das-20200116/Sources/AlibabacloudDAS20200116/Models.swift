@@ -7784,6 +7784,136 @@ public class DescribeHotBigKeysResponseBody : Tea.TeaModel {
                 }
             }
         }
+        public class HighTrafficKeys : Tea.TeaModel {
+            public class HighTrafficKey : Tea.TeaModel {
+                public var db: Int32?
+
+                public var hot: String?
+
+                public var key: String?
+
+                public var keyType: String?
+
+                public var nodeId: String?
+
+                public var size: Int64?
+
+                public var inBytes: Int64?
+
+                public var outBytes: Int64?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.db != nil {
+                        map["Db"] = self.db!
+                    }
+                    if self.hot != nil {
+                        map["Hot"] = self.hot!
+                    }
+                    if self.key != nil {
+                        map["Key"] = self.key!
+                    }
+                    if self.keyType != nil {
+                        map["KeyType"] = self.keyType!
+                    }
+                    if self.nodeId != nil {
+                        map["NodeId"] = self.nodeId!
+                    }
+                    if self.size != nil {
+                        map["Size"] = self.size!
+                    }
+                    if self.inBytes != nil {
+                        map["inBytes"] = self.inBytes!
+                    }
+                    if self.outBytes != nil {
+                        map["outBytes"] = self.outBytes!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                    guard let dict else { return }
+                    if let value = dict["Db"] as? Int32 {
+                        self.db = value
+                    }
+                    if let value = dict["Hot"] as? String {
+                        self.hot = value
+                    }
+                    if let value = dict["Key"] as? String {
+                        self.key = value
+                    }
+                    if let value = dict["KeyType"] as? String {
+                        self.keyType = value
+                    }
+                    if let value = dict["NodeId"] as? String {
+                        self.nodeId = value
+                    }
+                    if let value = dict["Size"] as? Int64 {
+                        self.size = value
+                    }
+                    if let value = dict["inBytes"] as? Int64 {
+                        self.inBytes = value
+                    }
+                    if let value = dict["outBytes"] as? Int64 {
+                        self.outBytes = value
+                    }
+                }
+            }
+            public var highTrafficKey: [DescribeHotBigKeysResponseBody.Data.HighTrafficKeys.HighTrafficKey]?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.highTrafficKey != nil {
+                    var tmp : [Any] = []
+                    for k in self.highTrafficKey! {
+                        tmp.append(k.toMap())
+                    }
+                    map["HighTrafficKey"] = tmp
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["HighTrafficKey"] as? [Any?] {
+                    var tmp : [DescribeHotBigKeysResponseBody.Data.HighTrafficKeys.HighTrafficKey] = []
+                    for v in value {
+                        if v != nil {
+                            var model = DescribeHotBigKeysResponseBody.Data.HighTrafficKeys.HighTrafficKey()
+                            if v != nil {
+                                model.fromMap(v as? [String: Any?])
+                            }
+                            tmp.append(model)
+                        }
+                    }
+                    self.highTrafficKey = tmp
+                }
+            }
+        }
         public class HotKeys : Tea.TeaModel {
             public class HotKey : Tea.TeaModel {
                 public var db: Int32?
@@ -7797,6 +7927,8 @@ public class DescribeHotBigKeysResponseBody : Tea.TeaModel {
                 public var lfu: Int32?
 
                 public var nodeId: String?
+
+                public var size: Int64?
 
                 public override init() {
                     super.init()
@@ -7830,6 +7962,9 @@ public class DescribeHotBigKeysResponseBody : Tea.TeaModel {
                     if self.nodeId != nil {
                         map["NodeId"] = self.nodeId!
                     }
+                    if self.size != nil {
+                        map["Size"] = self.size!
+                    }
                     return map
                 }
 
@@ -7852,6 +7987,9 @@ public class DescribeHotBigKeysResponseBody : Tea.TeaModel {
                     }
                     if let value = dict["NodeId"] as? String {
                         self.nodeId = value
+                    }
+                    if let value = dict["Size"] as? Int64 {
+                        self.size = value
                     }
                 }
             }
@@ -7902,6 +8040,10 @@ public class DescribeHotBigKeysResponseBody : Tea.TeaModel {
 
         public var bigKeys: DescribeHotBigKeysResponseBody.Data.BigKeys?
 
+        public var highTrafficKeyMsg: String?
+
+        public var highTrafficKeys: DescribeHotBigKeysResponseBody.Data.HighTrafficKeys?
+
         public var hotKeyMsg: String?
 
         public var hotKeys: DescribeHotBigKeysResponseBody.Data.HotKeys?
@@ -7917,6 +8059,7 @@ public class DescribeHotBigKeysResponseBody : Tea.TeaModel {
 
         public override func validate() throws -> Void {
             try self.bigKeys?.validate()
+            try self.highTrafficKeys?.validate()
             try self.hotKeys?.validate()
         }
 
@@ -7927,6 +8070,12 @@ public class DescribeHotBigKeysResponseBody : Tea.TeaModel {
             }
             if self.bigKeys != nil {
                 map["BigKeys"] = self.bigKeys?.toMap()
+            }
+            if self.highTrafficKeyMsg != nil {
+                map["HighTrafficKeyMsg"] = self.highTrafficKeyMsg!
+            }
+            if self.highTrafficKeys != nil {
+                map["HighTrafficKeys"] = self.highTrafficKeys?.toMap()
             }
             if self.hotKeyMsg != nil {
                 map["HotKeyMsg"] = self.hotKeyMsg!
@@ -7946,6 +8095,14 @@ public class DescribeHotBigKeysResponseBody : Tea.TeaModel {
                 var model = DescribeHotBigKeysResponseBody.Data.BigKeys()
                 model.fromMap(value)
                 self.bigKeys = model
+            }
+            if let value = dict["HighTrafficKeyMsg"] as? String {
+                self.highTrafficKeyMsg = value
+            }
+            if let value = dict["HighTrafficKeys"] as? [String: Any?] {
+                var model = DescribeHotBigKeysResponseBody.Data.HighTrafficKeys()
+                model.fromMap(value)
+                self.highTrafficKeys = model
             }
             if let value = dict["HotKeyMsg"] as? String {
                 self.hotKeyMsg = value
@@ -8114,13 +8271,21 @@ public class DescribeHotKeysRequest : Tea.TeaModel {
 public class DescribeHotKeysResponseBody : Tea.TeaModel {
     public class Data : Tea.TeaModel {
         public class HotKey : Tea.TeaModel {
+            public var category: String?
+
             public var db: Int32?
 
             public var hot: String?
 
+            public var inBytes: Int64?
+
             public var key: String?
 
             public var keyType: String?
+
+            public var nodeId: String?
+
+            public var outBytes: Int64?
 
             public var size: Int64?
 
@@ -8138,17 +8303,29 @@ public class DescribeHotKeysResponseBody : Tea.TeaModel {
 
             public override func toMap() -> [String : Any] {
                 var map = super.toMap()
+                if self.category != nil {
+                    map["Category"] = self.category!
+                }
                 if self.db != nil {
                     map["Db"] = self.db!
                 }
                 if self.hot != nil {
                     map["Hot"] = self.hot!
                 }
+                if self.inBytes != nil {
+                    map["InBytes"] = self.inBytes!
+                }
                 if self.key != nil {
                     map["Key"] = self.key!
                 }
                 if self.keyType != nil {
                     map["KeyType"] = self.keyType!
+                }
+                if self.nodeId != nil {
+                    map["NodeId"] = self.nodeId!
+                }
+                if self.outBytes != nil {
+                    map["OutBytes"] = self.outBytes!
                 }
                 if self.size != nil {
                     map["Size"] = self.size!
@@ -8158,17 +8335,29 @@ public class DescribeHotKeysResponseBody : Tea.TeaModel {
 
             public override func fromMap(_ dict: [String: Any?]?) -> Void {
                 guard let dict else { return }
+                if let value = dict["Category"] as? String {
+                    self.category = value
+                }
                 if let value = dict["Db"] as? Int32 {
                     self.db = value
                 }
                 if let value = dict["Hot"] as? String {
                     self.hot = value
                 }
+                if let value = dict["InBytes"] as? Int64 {
+                    self.inBytes = value
+                }
                 if let value = dict["Key"] as? String {
                     self.key = value
                 }
                 if let value = dict["KeyType"] as? String {
                     self.keyType = value
+                }
+                if let value = dict["NodeId"] as? String {
+                    self.nodeId = value
+                }
+                if let value = dict["OutBytes"] as? Int64 {
+                    self.outBytes = value
                 }
                 if let value = dict["Size"] as? Int64 {
                     self.size = value
@@ -14886,9 +15075,13 @@ public class DescribeTopHotKeysRequest : Tea.TeaModel {
 public class DescribeTopHotKeysResponseBody : Tea.TeaModel {
     public class Data : Tea.TeaModel {
         public class HotKey : Tea.TeaModel {
+            public var category: String?
+
             public var db: Int32?
 
             public var hot: String?
+
+            public var inBytes: Int64?
 
             public var key: String?
 
@@ -14897,6 +15090,8 @@ public class DescribeTopHotKeysResponseBody : Tea.TeaModel {
             public var lfu: Int32?
 
             public var nodeId: String?
+
+            public var outBytes: Int64?
 
             public override init() {
                 super.init()
@@ -14912,11 +15107,17 @@ public class DescribeTopHotKeysResponseBody : Tea.TeaModel {
 
             public override func toMap() -> [String : Any] {
                 var map = super.toMap()
+                if self.category != nil {
+                    map["Category"] = self.category!
+                }
                 if self.db != nil {
                     map["Db"] = self.db!
                 }
                 if self.hot != nil {
                     map["Hot"] = self.hot!
+                }
+                if self.inBytes != nil {
+                    map["InBytes"] = self.inBytes!
                 }
                 if self.key != nil {
                     map["Key"] = self.key!
@@ -14930,16 +15131,25 @@ public class DescribeTopHotKeysResponseBody : Tea.TeaModel {
                 if self.nodeId != nil {
                     map["NodeId"] = self.nodeId!
                 }
+                if self.outBytes != nil {
+                    map["OutBytes"] = self.outBytes!
+                }
                 return map
             }
 
             public override func fromMap(_ dict: [String: Any?]?) -> Void {
                 guard let dict else { return }
+                if let value = dict["Category"] as? String {
+                    self.category = value
+                }
                 if let value = dict["Db"] as? Int32 {
                     self.db = value
                 }
                 if let value = dict["Hot"] as? String {
                     self.hot = value
+                }
+                if let value = dict["InBytes"] as? Int64 {
+                    self.inBytes = value
                 }
                 if let value = dict["Key"] as? String {
                     self.key = value
@@ -14952,6 +15162,9 @@ public class DescribeTopHotKeysResponseBody : Tea.TeaModel {
                 }
                 if let value = dict["NodeId"] as? String {
                     self.nodeId = value
+                }
+                if let value = dict["OutBytes"] as? Int64 {
+                    self.outBytes = value
                 }
             }
         }
