@@ -1610,6 +1610,52 @@ public class WafSiteSettings : Tea.TeaModel {
             }
         }
     }
+    public class BandwidthAbuseProtection : Tea.TeaModel {
+        public var action: String?
+
+        public var id: Int64?
+
+        public var status: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.action != nil {
+                map["Action"] = self.action!
+            }
+            if self.id != nil {
+                map["Id"] = self.id!
+            }
+            if self.status != nil {
+                map["Status"] = self.status!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["Action"] as? String {
+                self.action = value
+            }
+            if let value = dict["Id"] as? Int64 {
+                self.id = value
+            }
+            if let value = dict["Status"] as? String {
+                self.status = value
+            }
+        }
+    }
     public class BotManagement : Tea.TeaModel {
         public class DefiniteBots : Tea.TeaModel {
             public var action: String?
@@ -1899,6 +1945,36 @@ public class WafSiteSettings : Tea.TeaModel {
             }
         }
     }
+    public class DisableSecurityModule : Tea.TeaModel {
+        public var status: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.status != nil {
+                map["Status"] = self.status!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["Status"] as? String {
+                self.status = value
+            }
+        }
+    }
     public class SecurityLevel : Tea.TeaModel {
         public var value: String?
 
@@ -1933,9 +2009,13 @@ public class WafSiteSettings : Tea.TeaModel {
 
     public var addSecurityHeaders: WafSiteSettings.AddSecurityHeaders?
 
+    public var bandwidthAbuseProtection: WafSiteSettings.BandwidthAbuseProtection?
+
     public var botManagement: WafSiteSettings.BotManagement?
 
     public var clientIpIdentifier: WafSiteSettings.ClientIpIdentifier?
+
+    public var disableSecurityModule: WafSiteSettings.DisableSecurityModule?
 
     public var securityLevel: WafSiteSettings.SecurityLevel?
 
@@ -1951,8 +2031,10 @@ public class WafSiteSettings : Tea.TeaModel {
     public override func validate() throws -> Void {
         try self.addBotProtectionHeaders?.validate()
         try self.addSecurityHeaders?.validate()
+        try self.bandwidthAbuseProtection?.validate()
         try self.botManagement?.validate()
         try self.clientIpIdentifier?.validate()
+        try self.disableSecurityModule?.validate()
         try self.securityLevel?.validate()
     }
 
@@ -1964,11 +2046,17 @@ public class WafSiteSettings : Tea.TeaModel {
         if self.addSecurityHeaders != nil {
             map["AddSecurityHeaders"] = self.addSecurityHeaders?.toMap()
         }
+        if self.bandwidthAbuseProtection != nil {
+            map["BandwidthAbuseProtection"] = self.bandwidthAbuseProtection?.toMap()
+        }
         if self.botManagement != nil {
             map["BotManagement"] = self.botManagement?.toMap()
         }
         if self.clientIpIdentifier != nil {
             map["ClientIpIdentifier"] = self.clientIpIdentifier?.toMap()
+        }
+        if self.disableSecurityModule != nil {
+            map["DisableSecurityModule"] = self.disableSecurityModule?.toMap()
         }
         if self.securityLevel != nil {
             map["SecurityLevel"] = self.securityLevel?.toMap()
@@ -1988,6 +2076,11 @@ public class WafSiteSettings : Tea.TeaModel {
             model.fromMap(value)
             self.addSecurityHeaders = model
         }
+        if let value = dict["BandwidthAbuseProtection"] as? [String: Any?] {
+            var model = WafSiteSettings.BandwidthAbuseProtection()
+            model.fromMap(value)
+            self.bandwidthAbuseProtection = model
+        }
         if let value = dict["BotManagement"] as? [String: Any?] {
             var model = WafSiteSettings.BotManagement()
             model.fromMap(value)
@@ -1997,6 +2090,11 @@ public class WafSiteSettings : Tea.TeaModel {
             var model = WafSiteSettings.ClientIpIdentifier()
             model.fromMap(value)
             self.clientIpIdentifier = model
+        }
+        if let value = dict["DisableSecurityModule"] as? [String: Any?] {
+            var model = WafSiteSettings.DisableSecurityModule()
+            model.fromMap(value)
+            self.disableSecurityModule = model
         }
         if let value = dict["SecurityLevel"] as? [String: Any?] {
             var model = WafSiteSettings.SecurityLevel()
@@ -38526,6 +38624,8 @@ public class GetRecordResponseBody : Tea.TeaModel {
 
             public var tag: String?
 
+            public var tags: [String: Any]?
+
             public var type: Int32?
 
             public var usage: Int32?
@@ -38578,6 +38678,9 @@ public class GetRecordResponseBody : Tea.TeaModel {
                 if self.tag != nil {
                     map["Tag"] = self.tag!
                 }
+                if self.tags != nil {
+                    map["Tags"] = self.tags!
+                }
                 if self.type != nil {
                     map["Type"] = self.type!
                 }
@@ -38624,6 +38727,9 @@ public class GetRecordResponseBody : Tea.TeaModel {
                 }
                 if let value = dict["Tag"] as? String {
                     self.tag = value
+                }
+                if let value = dict["Tags"] as? [String: Any] {
+                    self.tags = value
                 }
                 if let value = dict["Type"] as? Int32 {
                     self.type = value
@@ -56223,6 +56329,8 @@ public class ListRecordsResponseBody : Tea.TeaModel {
 
             public var tag: String?
 
+            public var tags: [String: Any]?
+
             public var type: Int32?
 
             public var usage: Int32?
@@ -56275,6 +56383,9 @@ public class ListRecordsResponseBody : Tea.TeaModel {
                 if self.tag != nil {
                     map["Tag"] = self.tag!
                 }
+                if self.tags != nil {
+                    map["Tags"] = self.tags!
+                }
                 if self.type != nil {
                     map["Type"] = self.type!
                 }
@@ -56321,6 +56432,9 @@ public class ListRecordsResponseBody : Tea.TeaModel {
                 }
                 if let value = dict["Tag"] as? String {
                     self.tag = value
+                }
+                if let value = dict["Tags"] as? [String: Any] {
+                    self.tags = value
                 }
                 if let value = dict["Type"] as? Int32 {
                     self.type = value
