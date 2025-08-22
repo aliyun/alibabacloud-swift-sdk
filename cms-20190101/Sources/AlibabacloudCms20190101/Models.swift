@@ -7505,6 +7505,8 @@ public class CreateHybridMonitorTaskResponse : Tea.TeaModel {
 public class CreateInstantSiteMonitorRequest : Tea.TeaModel {
     public var address: String?
 
+    public var agentGroup: String?
+
     public var ispCities: String?
 
     public var optionsJson: String?
@@ -7534,6 +7536,9 @@ public class CreateInstantSiteMonitorRequest : Tea.TeaModel {
         if self.address != nil {
             map["Address"] = self.address!
         }
+        if self.agentGroup != nil {
+            map["AgentGroup"] = self.agentGroup!
+        }
         if self.ispCities != nil {
             map["IspCities"] = self.ispCities!
         }
@@ -7559,6 +7564,9 @@ public class CreateInstantSiteMonitorRequest : Tea.TeaModel {
         guard let dict else { return }
         if let value = dict["Address"] as? String {
             self.address = value
+        }
+        if let value = dict["AgentGroup"] as? String {
+            self.agentGroup = value
         }
         if let value = dict["IspCities"] as? String {
             self.ispCities = value
