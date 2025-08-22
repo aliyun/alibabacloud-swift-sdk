@@ -659,6 +659,45 @@ public class CredentialRole : Tea.TeaModel {
     }
 }
 
+public class DataJuicerConfig : Tea.TeaModel {
+    public var commandType: String?
+
+    public var executionMode: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.commandType != nil {
+            map["CommandType"] = self.commandType!
+        }
+        if self.executionMode != nil {
+            map["ExecutionMode"] = self.executionMode!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["CommandType"] as? String {
+            self.commandType = value
+        }
+        if let value = dict["ExecutionMode"] as? String {
+            self.executionMode = value
+        }
+    }
+}
+
 public class DataSourceItem : Tea.TeaModel {
     public var dataSourceId: String?
 
@@ -2778,11 +2817,15 @@ public class JobSettings : Tea.TeaModel {
 
     public var caller: String?
 
+    public var dataJuicerConfig: DataJuicerConfig?
+
     public var disableEcsStockCheck: Bool?
 
     public var driver: String?
 
     public var enableCPUAffinity: Bool?
+
+    public var enableDSWDev: Bool?
 
     public var enableErrorMonitoringInAIMaster: Bool?
 
@@ -2818,6 +2861,7 @@ public class JobSettings : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
+        try self.dataJuicerConfig?.validate()
     }
 
     public override func toMap() -> [String : Any] {
@@ -2834,6 +2878,9 @@ public class JobSettings : Tea.TeaModel {
         if self.caller != nil {
             map["Caller"] = self.caller!
         }
+        if self.dataJuicerConfig != nil {
+            map["DataJuicerConfig"] = self.dataJuicerConfig?.toMap()
+        }
         if self.disableEcsStockCheck != nil {
             map["DisableEcsStockCheck"] = self.disableEcsStockCheck!
         }
@@ -2842,6 +2889,9 @@ public class JobSettings : Tea.TeaModel {
         }
         if self.enableCPUAffinity != nil {
             map["EnableCPUAffinity"] = self.enableCPUAffinity!
+        }
+        if self.enableDSWDev != nil {
+            map["EnableDSWDev"] = self.enableDSWDev!
         }
         if self.enableErrorMonitoringInAIMaster != nil {
             map["EnableErrorMonitoringInAIMaster"] = self.enableErrorMonitoringInAIMaster!
@@ -2896,6 +2946,11 @@ public class JobSettings : Tea.TeaModel {
         if let value = dict["Caller"] as? String {
             self.caller = value
         }
+        if let value = dict["DataJuicerConfig"] as? [String: Any?] {
+            var model = DataJuicerConfig()
+            model.fromMap(value)
+            self.dataJuicerConfig = model
+        }
         if let value = dict["DisableEcsStockCheck"] as? Bool {
             self.disableEcsStockCheck = value
         }
@@ -2904,6 +2959,9 @@ public class JobSettings : Tea.TeaModel {
         }
         if let value = dict["EnableCPUAffinity"] as? Bool {
             self.enableCPUAffinity = value
+        }
+        if let value = dict["EnableDSWDev"] as? Bool {
+            self.enableDSWDev = value
         }
         if let value = dict["EnableErrorMonitoringInAIMaster"] as? Bool {
             self.enableErrorMonitoringInAIMaster = value
@@ -2973,6 +3031,8 @@ public class JobSpec : Tea.TeaModel {
 
     public var spotSpec: SpotSpec?
 
+    public var systemDisk: SystemDisk?
+
     public var type: String?
 
     public var useSpotInstance: Bool?
@@ -2994,6 +3054,7 @@ public class JobSpec : Tea.TeaModel {
         try self.resourceConfig?.validate()
         try self.serviceSpec?.validate()
         try self.spotSpec?.validate()
+        try self.systemDisk?.validate()
     }
 
     public override func toMap() -> [String : Any] {
@@ -3043,6 +3104,9 @@ public class JobSpec : Tea.TeaModel {
         }
         if self.spotSpec != nil {
             map["SpotSpec"] = self.spotSpec?.toMap()
+        }
+        if self.systemDisk != nil {
+            map["SystemDisk"] = self.systemDisk?.toMap()
         }
         if self.type != nil {
             map["Type"] = self.type!
@@ -3120,6 +3184,11 @@ public class JobSpec : Tea.TeaModel {
             var model = SpotSpec()
             model.fromMap(value)
             self.spotSpec = model
+        }
+        if let value = dict["SystemDisk"] as? [String: Any?] {
+            var model = SystemDisk()
+            model.fromMap(value)
+            self.systemDisk = model
         }
         if let value = dict["Type"] as? String {
             self.type = value
@@ -4369,6 +4438,93 @@ public class SecurityContextCapabilities : Tea.TeaModel {
     }
 }
 
+public class ServiceExposure : Tea.TeaModel {
+    public var displayName: String?
+
+    public var jobId: String?
+
+    public var message: String?
+
+    public var podId: String?
+
+    public var port: Int32?
+
+    public var serviceId: String?
+
+    public var status: String?
+
+    public var type: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.displayName != nil {
+            map["DisplayName"] = self.displayName!
+        }
+        if self.jobId != nil {
+            map["JobId"] = self.jobId!
+        }
+        if self.message != nil {
+            map["Message"] = self.message!
+        }
+        if self.podId != nil {
+            map["PodId"] = self.podId!
+        }
+        if self.port != nil {
+            map["Port"] = self.port!
+        }
+        if self.serviceId != nil {
+            map["ServiceId"] = self.serviceId!
+        }
+        if self.status != nil {
+            map["Status"] = self.status!
+        }
+        if self.type != nil {
+            map["Type"] = self.type!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["DisplayName"] as? String {
+            self.displayName = value
+        }
+        if let value = dict["JobId"] as? String {
+            self.jobId = value
+        }
+        if let value = dict["Message"] as? String {
+            self.message = value
+        }
+        if let value = dict["PodId"] as? String {
+            self.podId = value
+        }
+        if let value = dict["Port"] as? Int32 {
+            self.port = value
+        }
+        if let value = dict["ServiceId"] as? String {
+            self.serviceId = value
+        }
+        if let value = dict["Status"] as? String {
+            self.status = value
+        }
+        if let value = dict["Type"] as? String {
+            self.type = value
+        }
+    }
+}
+
 public class ServiceSpec : Tea.TeaModel {
     public var defaultPort: Int32?
 
@@ -4673,6 +4829,53 @@ public class StatusTransitionItem : Tea.TeaModel {
         }
         if let value = dict["Status"] as? String {
             self.status = value
+        }
+    }
+}
+
+public class SystemDisk : Tea.TeaModel {
+    public var category: String?
+
+    public var performanceLevel: String?
+
+    public var size: Int64?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.category != nil {
+            map["Category"] = self.category!
+        }
+        if self.performanceLevel != nil {
+            map["PerformanceLevel"] = self.performanceLevel!
+        }
+        if self.size != nil {
+            map["Size"] = self.size!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["Category"] as? String {
+            self.category = value
+        }
+        if let value = dict["PerformanceLevel"] as? String {
+            self.performanceLevel = value
+        }
+        if let value = dict["Size"] as? Int64 {
+            self.size = value
         }
     }
 }
