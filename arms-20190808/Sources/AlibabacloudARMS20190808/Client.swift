@@ -8,7 +8,6 @@ import AlibabacloudEndpointUtil
 open class Client : AlibabacloudOpenApi.Client {
     public override init(_ config: AlibabacloudOpenApi.Config) throws {
         try super.init(config)
-        self._signatureAlgorithm = "v2"
         self._endpointRule = "regional"
         self._endpointMap = [
             "ap-northeast-2-pop": "arms.aliyuncs.com",
@@ -5514,6 +5513,15 @@ open class Client : AlibabacloudOpenApi.Client {
         var query: [String: Any] = [:]
         if (!TeaUtils.Client.isUnset(request.appType)) {
             query["AppType"] = request.appType ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.fileName)) {
+            query["FileName"] = request.fileName ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.nextToken)) {
+            query["NextToken"] = request.nextToken ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.pageSize)) {
+            query["PageSize"] = request.pageSize!;
         }
         if (!TeaUtils.Client.isUnset(request.pid)) {
             query["Pid"] = request.pid ?? "";

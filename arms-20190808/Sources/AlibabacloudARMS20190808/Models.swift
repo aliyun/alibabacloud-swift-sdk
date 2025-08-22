@@ -37603,6 +37603,12 @@ public class GetRumOcuStatisticDataResponse : Tea.TeaModel {
 public class GetRumUploadFilesRequest : Tea.TeaModel {
     public var appType: String?
 
+    public var fileName: String?
+
+    public var nextToken: String?
+
+    public var pageSize: Int32?
+
     public var pid: String?
 
     public var regionId: String?
@@ -37626,6 +37632,15 @@ public class GetRumUploadFilesRequest : Tea.TeaModel {
         if self.appType != nil {
             map["AppType"] = self.appType!
         }
+        if self.fileName != nil {
+            map["FileName"] = self.fileName!
+        }
+        if self.nextToken != nil {
+            map["NextToken"] = self.nextToken!
+        }
+        if self.pageSize != nil {
+            map["PageSize"] = self.pageSize!
+        }
         if self.pid != nil {
             map["Pid"] = self.pid!
         }
@@ -37643,6 +37658,15 @@ public class GetRumUploadFilesRequest : Tea.TeaModel {
         if let value = dict["AppType"] as? String {
             self.appType = value
         }
+        if let value = dict["FileName"] as? String {
+            self.fileName = value
+        }
+        if let value = dict["NextToken"] as? String {
+            self.nextToken = value
+        }
+        if let value = dict["PageSize"] as? Int32 {
+            self.pageSize = value
+        }
         if let value = dict["Pid"] as? String {
             self.pid = value
         }
@@ -37657,15 +37681,71 @@ public class GetRumUploadFilesRequest : Tea.TeaModel {
 
 public class GetRumUploadFilesResponseBody : Tea.TeaModel {
     public class Data : Tea.TeaModel {
-        public var fileName: String?
+        public class FileList : Tea.TeaModel {
+            public var fileName: String?
 
-        public var lastModifiedTime: Any?
+            public var lastModifiedTime: Any?
 
-        public var size: String?
+            public var size: String?
 
-        public var uuid: String?
+            public var uuid: String?
 
-        public var versionId: String?
+            public var versionId: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.fileName != nil {
+                    map["FileName"] = self.fileName!
+                }
+                if self.lastModifiedTime != nil {
+                    map["LastModifiedTime"] = self.lastModifiedTime!
+                }
+                if self.size != nil {
+                    map["Size"] = self.size!
+                }
+                if self.uuid != nil {
+                    map["Uuid"] = self.uuid!
+                }
+                if self.versionId != nil {
+                    map["VersionId"] = self.versionId!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["FileName"] as? String {
+                    self.fileName = value
+                }
+                if let value = dict["LastModifiedTime"] as? Any {
+                    self.lastModifiedTime = value
+                }
+                if let value = dict["Size"] as? String {
+                    self.size = value
+                }
+                if let value = dict["Uuid"] as? String {
+                    self.uuid = value
+                }
+                if let value = dict["VersionId"] as? String {
+                    self.versionId = value
+                }
+            }
+        }
+        public var fileList: [GetRumUploadFilesResponseBody.Data.FileList]?
+
+        public var nextToken: String?
 
         public override init() {
             super.init()
@@ -37681,46 +37761,42 @@ public class GetRumUploadFilesResponseBody : Tea.TeaModel {
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
-            if self.fileName != nil {
-                map["FileName"] = self.fileName!
+            if self.fileList != nil {
+                var tmp : [Any] = []
+                for k in self.fileList! {
+                    tmp.append(k.toMap())
+                }
+                map["FileList"] = tmp
             }
-            if self.lastModifiedTime != nil {
-                map["LastModifiedTime"] = self.lastModifiedTime!
-            }
-            if self.size != nil {
-                map["Size"] = self.size!
-            }
-            if self.uuid != nil {
-                map["Uuid"] = self.uuid!
-            }
-            if self.versionId != nil {
-                map["VersionId"] = self.versionId!
+            if self.nextToken != nil {
+                map["NextToken"] = self.nextToken!
             }
             return map
         }
 
         public override func fromMap(_ dict: [String: Any?]?) -> Void {
             guard let dict else { return }
-            if let value = dict["FileName"] as? String {
-                self.fileName = value
+            if let value = dict["FileList"] as? [Any?] {
+                var tmp : [GetRumUploadFilesResponseBody.Data.FileList] = []
+                for v in value {
+                    if v != nil {
+                        var model = GetRumUploadFilesResponseBody.Data.FileList()
+                        if v != nil {
+                            model.fromMap(v as? [String: Any?])
+                        }
+                        tmp.append(model)
+                    }
+                }
+                self.fileList = tmp
             }
-            if let value = dict["LastModifiedTime"] as? Any {
-                self.lastModifiedTime = value
-            }
-            if let value = dict["Size"] as? String {
-                self.size = value
-            }
-            if let value = dict["Uuid"] as? String {
-                self.uuid = value
-            }
-            if let value = dict["VersionId"] as? String {
-                self.versionId = value
+            if let value = dict["NextToken"] as? String {
+                self.nextToken = value
             }
         }
     }
     public var code: Int32?
 
-    public var data: [GetRumUploadFilesResponseBody.Data]?
+    public var data: GetRumUploadFilesResponseBody.Data?
 
     public var httpStatusCode: Int32?
 
@@ -37740,6 +37816,7 @@ public class GetRumUploadFilesResponseBody : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
+        try self.data?.validate()
     }
 
     public override func toMap() -> [String : Any] {
@@ -37748,11 +37825,7 @@ public class GetRumUploadFilesResponseBody : Tea.TeaModel {
             map["Code"] = self.code!
         }
         if self.data != nil {
-            var tmp : [Any] = []
-            for k in self.data! {
-                tmp.append(k.toMap())
-            }
-            map["Data"] = tmp
+            map["Data"] = self.data?.toMap()
         }
         if self.httpStatusCode != nil {
             map["HttpStatusCode"] = self.httpStatusCode!
@@ -37774,18 +37847,10 @@ public class GetRumUploadFilesResponseBody : Tea.TeaModel {
         if let value = dict["Code"] as? Int32 {
             self.code = value
         }
-        if let value = dict["Data"] as? [Any?] {
-            var tmp : [GetRumUploadFilesResponseBody.Data] = []
-            for v in value {
-                if v != nil {
-                    var model = GetRumUploadFilesResponseBody.Data()
-                    if v != nil {
-                        model.fromMap(v as? [String: Any?])
-                    }
-                    tmp.append(model)
-                }
-            }
-            self.data = tmp
+        if let value = dict["Data"] as? [String: Any?] {
+            var model = GetRumUploadFilesResponseBody.Data()
+            model.fromMap(value)
+            self.data = model
         }
         if let value = dict["HttpStatusCode"] as? Int32 {
             self.httpStatusCode = value
