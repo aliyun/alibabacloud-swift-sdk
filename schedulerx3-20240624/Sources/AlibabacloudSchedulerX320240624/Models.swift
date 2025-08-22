@@ -10,6 +10,8 @@ public class CreateAppRequest : Tea.TeaModel {
 
     public var appName: String?
 
+    public var appType: Int32?
+
     public var clusterId: String?
 
     public var enableLog: Bool?
@@ -40,6 +42,9 @@ public class CreateAppRequest : Tea.TeaModel {
         if self.appName != nil {
             map["AppName"] = self.appName!
         }
+        if self.appType != nil {
+            map["AppType"] = self.appType!
+        }
         if self.clusterId != nil {
             map["ClusterId"] = self.clusterId!
         }
@@ -65,6 +70,9 @@ public class CreateAppRequest : Tea.TeaModel {
         }
         if let value = dict["AppName"] as? String {
             self.appName = value
+        }
+        if let value = dict["AppType"] as? Int32 {
+            self.appType = value
         }
         if let value = dict["ClusterId"] as? String {
             self.clusterId = value
@@ -869,6 +877,8 @@ public class CreateJobRequest : Tea.TeaModel {
 
     public var timezone: String?
 
+    public var weight: Int32?
+
     public override init() {
         super.init()
     }
@@ -957,6 +967,9 @@ public class CreateJobRequest : Tea.TeaModel {
         if self.timezone != nil {
             map["Timezone"] = self.timezone!
         }
+        if self.weight != nil {
+            map["Weight"] = self.weight!
+        }
         return map
     }
 
@@ -1043,6 +1056,9 @@ public class CreateJobRequest : Tea.TeaModel {
         if let value = dict["Timezone"] as? String {
             self.timezone = value
         }
+        if let value = dict["Weight"] as? Int32 {
+            self.weight = value
+        }
     }
 }
 
@@ -1092,6 +1108,8 @@ public class CreateJobShrinkRequest : Tea.TeaModel {
     public var timeType: Int32?
 
     public var timezone: String?
+
+    public var weight: Int32?
 
     public override init() {
         super.init()
@@ -1176,6 +1194,9 @@ public class CreateJobShrinkRequest : Tea.TeaModel {
         if self.timezone != nil {
             map["Timezone"] = self.timezone!
         }
+        if self.weight != nil {
+            map["Weight"] = self.weight!
+        }
         return map
     }
 
@@ -1249,6 +1270,9 @@ public class CreateJobShrinkRequest : Tea.TeaModel {
         }
         if let value = dict["Timezone"] as? String {
             self.timezone = value
+        }
+        if let value = dict["Weight"] as? Int32 {
+            self.weight = value
         }
     }
 }
@@ -2080,6 +2104,8 @@ public class GetAppResponseBody : Tea.TeaModel {
 
         public var appName: String?
 
+        public var appType: Int32?
+
         public var creator: String?
 
         public var enableLog: Bool?
@@ -2121,6 +2147,9 @@ public class GetAppResponseBody : Tea.TeaModel {
             }
             if self.appName != nil {
                 map["AppName"] = self.appName!
+            }
+            if self.appType != nil {
+                map["AppType"] = self.appType!
             }
             if self.creator != nil {
                 map["Creator"] = self.creator!
@@ -2165,6 +2194,9 @@ public class GetAppResponseBody : Tea.TeaModel {
             }
             if let value = dict["AppName"] as? String {
                 self.appName = value
+            }
+            if let value = dict["AppType"] as? Int32 {
+                self.appType = value
             }
             if let value = dict["Creator"] as? String {
                 self.creator = value
@@ -5696,6 +5728,8 @@ public class ListAppsResponseBody : Tea.TeaModel {
 
             public var appName: String?
 
+            public var appType: Int32?
+
             public var creator: String?
 
             public var enableLog: Bool?
@@ -5737,6 +5771,9 @@ public class ListAppsResponseBody : Tea.TeaModel {
                 }
                 if self.appName != nil {
                     map["AppName"] = self.appName!
+                }
+                if self.appType != nil {
+                    map["AppType"] = self.appType!
                 }
                 if self.creator != nil {
                     map["Creator"] = self.creator!
@@ -5781,6 +5818,9 @@ public class ListAppsResponseBody : Tea.TeaModel {
                 }
                 if let value = dict["AppName"] as? String {
                     self.appName = value
+                }
+                if let value = dict["AppType"] as? Int32 {
+                    self.appType = value
                 }
                 if let value = dict["Creator"] as? String {
                     self.creator = value
@@ -6723,6 +6763,8 @@ public class ListExecutorsResponseBody : Tea.TeaModel {
 
         public var version: String?
 
+        public var weight: Int32?
+
         public override init() {
             super.init()
         }
@@ -6758,6 +6800,9 @@ public class ListExecutorsResponseBody : Tea.TeaModel {
             if self.version != nil {
                 map["Version"] = self.version!
             }
+            if self.weight != nil {
+                map["Weight"] = self.weight!
+            }
             return map
         }
 
@@ -6783,6 +6828,9 @@ public class ListExecutorsResponseBody : Tea.TeaModel {
             }
             if let value = dict["Version"] as? String {
                 self.version = value
+            }
+            if let value = dict["Weight"] as? Int32 {
+                self.weight = value
             }
         }
     }
@@ -7840,6 +7888,8 @@ public class ListJobsResponseBody : Tea.TeaModel {
 
             public var updater: String?
 
+            public var weight: Int32?
+
             public var xattrs: String?
 
             public override init() {
@@ -7946,6 +7996,9 @@ public class ListJobsResponseBody : Tea.TeaModel {
                 if self.updater != nil {
                     map["Updater"] = self.updater!
                 }
+                if self.weight != nil {
+                    map["Weight"] = self.weight!
+                }
                 if self.xattrs != nil {
                     map["Xattrs"] = self.xattrs!
                 }
@@ -8043,6 +8096,9 @@ public class ListJobsResponseBody : Tea.TeaModel {
                 }
                 if let value = dict["Updater"] as? String {
                     self.updater = value
+                }
+                if let value = dict["Weight"] as? Int32 {
+                    self.weight = value
                 }
                 if let value = dict["Xattrs"] as? String {
                     self.xattrs = value
@@ -11335,6 +11391,8 @@ public class UpdateJobRequest : Tea.TeaModel {
 
     public var timezone: String?
 
+    public var weight: Int32?
+
     public override init() {
         super.init()
     }
@@ -11420,6 +11478,9 @@ public class UpdateJobRequest : Tea.TeaModel {
         if self.timezone != nil {
             map["Timezone"] = self.timezone!
         }
+        if self.weight != nil {
+            map["Weight"] = self.weight!
+        }
         return map
     }
 
@@ -11503,6 +11564,9 @@ public class UpdateJobRequest : Tea.TeaModel {
         if let value = dict["Timezone"] as? String {
             self.timezone = value
         }
+        if let value = dict["Weight"] as? Int32 {
+            self.weight = value
+        }
     }
 }
 
@@ -11550,6 +11614,8 @@ public class UpdateJobShrinkRequest : Tea.TeaModel {
     public var timeType: Int32?
 
     public var timezone: String?
+
+    public var weight: Int32?
 
     public override init() {
         super.init()
@@ -11631,6 +11697,9 @@ public class UpdateJobShrinkRequest : Tea.TeaModel {
         if self.timezone != nil {
             map["Timezone"] = self.timezone!
         }
+        if self.weight != nil {
+            map["Weight"] = self.weight!
+        }
         return map
     }
 
@@ -11701,6 +11770,9 @@ public class UpdateJobShrinkRequest : Tea.TeaModel {
         }
         if let value = dict["Timezone"] as? String {
             self.timezone = value
+        }
+        if let value = dict["Weight"] as? Int32 {
+            self.weight = value
         }
     }
 }
