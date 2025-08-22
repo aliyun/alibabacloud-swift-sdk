@@ -2614,11 +2614,15 @@ public class CreateInvoiceResponse : Tea.TeaModel {
 public class CreateReportDefinitionRequest : Tea.TeaModel {
     public var beginBillingCycle: String?
 
+    public var includeMembers: String?
+
     public var mcProject: String?
 
     public var mcTableName: String?
 
     public var nbid: String?
+
+    public var notSendOnNoData: String?
 
     public var ossBucketName: String?
 
@@ -2629,6 +2633,10 @@ public class CreateReportDefinitionRequest : Tea.TeaModel {
     public var reportSourceType: String?
 
     public var reportType: String?
+
+    public var sendWithAttach: String?
+
+    public var splitFileOnUserId: String?
 
     public override init() {
         super.init()
@@ -2647,6 +2655,9 @@ public class CreateReportDefinitionRequest : Tea.TeaModel {
         if self.beginBillingCycle != nil {
             map["BeginBillingCycle"] = self.beginBillingCycle!
         }
+        if self.includeMembers != nil {
+            map["IncludeMembers"] = self.includeMembers!
+        }
         if self.mcProject != nil {
             map["McProject"] = self.mcProject!
         }
@@ -2655,6 +2666,9 @@ public class CreateReportDefinitionRequest : Tea.TeaModel {
         }
         if self.nbid != nil {
             map["Nbid"] = self.nbid!
+        }
+        if self.notSendOnNoData != nil {
+            map["NotSendOnNoData"] = self.notSendOnNoData!
         }
         if self.ossBucketName != nil {
             map["OssBucketName"] = self.ossBucketName!
@@ -2671,6 +2685,12 @@ public class CreateReportDefinitionRequest : Tea.TeaModel {
         if self.reportType != nil {
             map["ReportType"] = self.reportType!
         }
+        if self.sendWithAttach != nil {
+            map["SendWithAttach"] = self.sendWithAttach!
+        }
+        if self.splitFileOnUserId != nil {
+            map["SplitFileOnUserId"] = self.splitFileOnUserId!
+        }
         return map
     }
 
@@ -2678,6 +2698,9 @@ public class CreateReportDefinitionRequest : Tea.TeaModel {
         guard let dict else { return }
         if let value = dict["BeginBillingCycle"] as? String {
             self.beginBillingCycle = value
+        }
+        if let value = dict["IncludeMembers"] as? String {
+            self.includeMembers = value
         }
         if let value = dict["McProject"] as? String {
             self.mcProject = value
@@ -2687,6 +2710,9 @@ public class CreateReportDefinitionRequest : Tea.TeaModel {
         }
         if let value = dict["Nbid"] as? String {
             self.nbid = value
+        }
+        if let value = dict["NotSendOnNoData"] as? String {
+            self.notSendOnNoData = value
         }
         if let value = dict["OssBucketName"] as? String {
             self.ossBucketName = value
@@ -2702,6 +2728,12 @@ public class CreateReportDefinitionRequest : Tea.TeaModel {
         }
         if let value = dict["ReportType"] as? String {
             self.reportType = value
+        }
+        if let value = dict["SendWithAttach"] as? String {
+            self.sendWithAttach = value
+        }
+        if let value = dict["SplitFileOnUserId"] as? String {
+            self.splitFileOnUserId = value
         }
     }
 }

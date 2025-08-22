@@ -461,8 +461,14 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.beginBillingCycle)) {
             query["BeginBillingCycle"] = request.beginBillingCycle ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.includeMembers)) {
+            query["IncludeMembers"] = request.includeMembers ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.nbid)) {
             query["Nbid"] = request.nbid ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.notSendOnNoData)) {
+            query["NotSendOnNoData"] = request.notSendOnNoData ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.ossBucketName)) {
             query["OssBucketName"] = request.ossBucketName ?? "";
@@ -475,6 +481,12 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.reportType)) {
             query["ReportType"] = request.reportType ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.sendWithAttach)) {
+            query["SendWithAttach"] = request.sendWithAttach ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.splitFileOnUserId)) {
+            query["SplitFileOnUserId"] = request.splitFileOnUserId ?? "";
         }
         var body: [String: Any] = [:]
         if (!TeaUtils.Client.isUnset(request.mcProject)) {
