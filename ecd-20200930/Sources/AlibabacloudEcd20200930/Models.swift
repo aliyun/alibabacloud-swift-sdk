@@ -66351,6 +66351,8 @@ public class ResetDesktopsRequest : Tea.TeaModel {
 
     public var imageId: String?
 
+    public var lastRetryTime: Int64?
+
     public var payType: String?
 
     public var regionId: String?
@@ -66385,6 +66387,9 @@ public class ResetDesktopsRequest : Tea.TeaModel {
         if self.imageId != nil {
             map["ImageId"] = self.imageId!
         }
+        if self.lastRetryTime != nil {
+            map["LastRetryTime"] = self.lastRetryTime!
+        }
         if self.payType != nil {
             map["PayType"] = self.payType!
         }
@@ -66413,6 +66418,9 @@ public class ResetDesktopsRequest : Tea.TeaModel {
         }
         if let value = dict["ImageId"] as? String {
             self.imageId = value
+        }
+        if let value = dict["LastRetryTime"] as? Int64 {
+            self.lastRetryTime = value
         }
         if let value = dict["PayType"] as? String {
             self.payType = value
