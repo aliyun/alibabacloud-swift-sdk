@@ -13725,11 +13725,15 @@ public class CreateRumUploadFileUrlRequest : Tea.TeaModel {
 
     public var regionId: String?
 
+    public var serviceId: String?
+
     public var sourcemapType: String?
 
     public var uuid: String?
 
     public var versionId: String?
+
+    public var workspace: String?
 
     public override init() {
         super.init()
@@ -13760,6 +13764,9 @@ public class CreateRumUploadFileUrlRequest : Tea.TeaModel {
         if self.regionId != nil {
             map["RegionId"] = self.regionId!
         }
+        if self.serviceId != nil {
+            map["ServiceId"] = self.serviceId!
+        }
         if self.sourcemapType != nil {
             map["SourcemapType"] = self.sourcemapType!
         }
@@ -13768,6 +13775,9 @@ public class CreateRumUploadFileUrlRequest : Tea.TeaModel {
         }
         if self.versionId != nil {
             map["VersionId"] = self.versionId!
+        }
+        if self.workspace != nil {
+            map["Workspace"] = self.workspace!
         }
         return map
     }
@@ -13789,6 +13799,9 @@ public class CreateRumUploadFileUrlRequest : Tea.TeaModel {
         if let value = dict["RegionId"] as? String {
             self.regionId = value
         }
+        if let value = dict["ServiceId"] as? String {
+            self.serviceId = value
+        }
         if let value = dict["SourcemapType"] as? String {
             self.sourcemapType = value
         }
@@ -13797,6 +13810,9 @@ public class CreateRumUploadFileUrlRequest : Tea.TeaModel {
         }
         if let value = dict["VersionId"] as? String {
             self.versionId = value
+        }
+        if let value = dict["Workspace"] as? String {
+            self.workspace = value
         }
     }
 }
@@ -21653,9 +21669,13 @@ public class DeleteRumUploadFileRequest : Tea.TeaModel {
 
     public var regionId: String?
 
+    public var serviceId: String?
+
     public var uuid: String?
 
     public var versionId: String?
+
+    public var workspace: String?
 
     public override init() {
         super.init()
@@ -21683,11 +21703,17 @@ public class DeleteRumUploadFileRequest : Tea.TeaModel {
         if self.regionId != nil {
             map["RegionId"] = self.regionId!
         }
+        if self.serviceId != nil {
+            map["ServiceId"] = self.serviceId!
+        }
         if self.uuid != nil {
             map["Uuid"] = self.uuid!
         }
         if self.versionId != nil {
             map["VersionId"] = self.versionId!
+        }
+        if self.workspace != nil {
+            map["Workspace"] = self.workspace!
         }
         return map
     }
@@ -21706,11 +21732,17 @@ public class DeleteRumUploadFileRequest : Tea.TeaModel {
         if let value = dict["RegionId"] as? String {
             self.regionId = value
         }
+        if let value = dict["ServiceId"] as? String {
+            self.serviceId = value
+        }
         if let value = dict["Uuid"] as? String {
             self.uuid = value
         }
         if let value = dict["VersionId"] as? String {
             self.versionId = value
+        }
+        if let value = dict["Workspace"] as? String {
+            self.workspace = value
         }
     }
 }
@@ -36868,7 +36900,11 @@ public class GetRumExceptionStackRequest : Tea.TeaModel {
 
     public var regionId: String?
 
+    public var serviceId: String?
+
     public var sourcemapType: String?
+
+    public var workspace: String?
 
     public override init() {
         super.init()
@@ -36902,8 +36938,14 @@ public class GetRumExceptionStackRequest : Tea.TeaModel {
         if self.regionId != nil {
             map["RegionId"] = self.regionId!
         }
+        if self.serviceId != nil {
+            map["ServiceId"] = self.serviceId!
+        }
         if self.sourcemapType != nil {
             map["SourcemapType"] = self.sourcemapType!
+        }
+        if self.workspace != nil {
+            map["Workspace"] = self.workspace!
         }
         return map
     }
@@ -36928,8 +36970,14 @@ public class GetRumExceptionStackRequest : Tea.TeaModel {
         if let value = dict["RegionId"] as? String {
             self.regionId = value
         }
+        if let value = dict["ServiceId"] as? String {
+            self.serviceId = value
+        }
         if let value = dict["SourcemapType"] as? String {
             self.sourcemapType = value
+        }
+        if let value = dict["Workspace"] as? String {
+            self.workspace = value
         }
     }
 }
@@ -37613,7 +37661,11 @@ public class GetRumUploadFilesRequest : Tea.TeaModel {
 
     public var regionId: String?
 
+    public var serviceId: String?
+
     public var versionId: String?
+
+    public var workspace: String?
 
     public override init() {
         super.init()
@@ -37647,8 +37699,14 @@ public class GetRumUploadFilesRequest : Tea.TeaModel {
         if self.regionId != nil {
             map["RegionId"] = self.regionId!
         }
+        if self.serviceId != nil {
+            map["ServiceId"] = self.serviceId!
+        }
         if self.versionId != nil {
             map["VersionId"] = self.versionId!
+        }
+        if self.workspace != nil {
+            map["Workspace"] = self.workspace!
         }
         return map
     }
@@ -37673,8 +37731,14 @@ public class GetRumUploadFilesRequest : Tea.TeaModel {
         if let value = dict["RegionId"] as? String {
             self.regionId = value
         }
+        if let value = dict["ServiceId"] as? String {
+            self.serviceId = value
+        }
         if let value = dict["VersionId"] as? String {
             self.versionId = value
+        }
+        if let value = dict["Workspace"] as? String {
+            self.workspace = value
         }
     }
 }
