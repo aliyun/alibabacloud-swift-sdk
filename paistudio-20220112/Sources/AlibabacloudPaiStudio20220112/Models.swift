@@ -2066,6 +2066,10 @@ public class Location : Tea.TeaModel {
 }
 
 public class MachineGroup : Tea.TeaModel {
+    public var allocatableCpu: Int64?
+
+    public var allocatableMemory: Int64?
+
     public var cpu: Int64?
 
     public var creatorID: String?
@@ -2118,6 +2122,10 @@ public class MachineGroup : Tea.TeaModel {
 
     public var supportedDrivers: [String]?
 
+    public var systemReservedCpu: Int64?
+
+    public var systemReservedMemory: Int64?
+
     public override init() {
         super.init()
     }
@@ -2132,6 +2140,12 @@ public class MachineGroup : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.allocatableCpu != nil {
+            map["AllocatableCpu"] = self.allocatableCpu!
+        }
+        if self.allocatableMemory != nil {
+            map["AllocatableMemory"] = self.allocatableMemory!
+        }
         if self.cpu != nil {
             map["Cpu"] = self.cpu!
         }
@@ -2210,11 +2224,23 @@ public class MachineGroup : Tea.TeaModel {
         if self.supportedDrivers != nil {
             map["SupportedDrivers"] = self.supportedDrivers!
         }
+        if self.systemReservedCpu != nil {
+            map["SystemReservedCpu"] = self.systemReservedCpu!
+        }
+        if self.systemReservedMemory != nil {
+            map["SystemReservedMemory"] = self.systemReservedMemory!
+        }
         return map
     }
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["AllocatableCpu"] as? Int64 {
+            self.allocatableCpu = value
+        }
+        if let value = dict["AllocatableMemory"] as? Int64 {
+            self.allocatableMemory = value
+        }
         if let value = dict["Cpu"] as? Int64 {
             self.cpu = value
         }
@@ -2292,6 +2318,12 @@ public class MachineGroup : Tea.TeaModel {
         }
         if let value = dict["SupportedDrivers"] as? [String] {
             self.supportedDrivers = value
+        }
+        if let value = dict["SystemReservedCpu"] as? Int64 {
+            self.systemReservedCpu = value
+        }
+        if let value = dict["SystemReservedMemory"] as? Int64 {
+            self.systemReservedMemory = value
         }
     }
 }
@@ -2385,6 +2417,10 @@ public class MetricDefinition : Tea.TeaModel {
 public class Node : Tea.TeaModel {
     public var acceleratorType: String?
 
+    public var allocatableCPU: String?
+
+    public var allocatableMemory: String?
+
     public var availabilityZone: String?
 
     public var boundQuotas: [QuotaIdName]?
@@ -2443,6 +2479,10 @@ public class Node : Tea.TeaModel {
 
     public var resourceGroupName: String?
 
+    public var systemReservedCPU: String?
+
+    public var systemReservedMemory: String?
+
     public var users: [UserInfo]?
 
     public var workloadNum: Int64?
@@ -2463,6 +2503,12 @@ public class Node : Tea.TeaModel {
         var map = super.toMap()
         if self.acceleratorType != nil {
             map["AcceleratorType"] = self.acceleratorType!
+        }
+        if self.allocatableCPU != nil {
+            map["AllocatableCPU"] = self.allocatableCPU!
+        }
+        if self.allocatableMemory != nil {
+            map["AllocatableMemory"] = self.allocatableMemory!
         }
         if self.availabilityZone != nil {
             map["AvailabilityZone"] = self.availabilityZone!
@@ -2555,6 +2601,12 @@ public class Node : Tea.TeaModel {
         if self.resourceGroupName != nil {
             map["ResourceGroupName"] = self.resourceGroupName!
         }
+        if self.systemReservedCPU != nil {
+            map["SystemReservedCPU"] = self.systemReservedCPU!
+        }
+        if self.systemReservedMemory != nil {
+            map["SystemReservedMemory"] = self.systemReservedMemory!
+        }
         if self.users != nil {
             var tmp : [Any] = []
             for k in self.users! {
@@ -2572,6 +2624,12 @@ public class Node : Tea.TeaModel {
         guard let dict else { return }
         if let value = dict["AcceleratorType"] as? String {
             self.acceleratorType = value
+        }
+        if let value = dict["AllocatableCPU"] as? String {
+            self.allocatableCPU = value
+        }
+        if let value = dict["AllocatableMemory"] as? String {
+            self.allocatableMemory = value
         }
         if let value = dict["AvailabilityZone"] as? String {
             self.availabilityZone = value
@@ -2669,6 +2727,12 @@ public class Node : Tea.TeaModel {
         }
         if let value = dict["ResourceGroupName"] as? String {
             self.resourceGroupName = value
+        }
+        if let value = dict["SystemReservedCPU"] as? String {
+            self.systemReservedCPU = value
+        }
+        if let value = dict["SystemReservedMemory"] as? String {
+            self.systemReservedMemory = value
         }
         if let value = dict["Users"] as? [Any?] {
             var tmp : [UserInfo] = []
@@ -3196,6 +3260,10 @@ public class NodeSpec : Tea.TeaModel {
 public class NodeType : Tea.TeaModel {
     public var acceleratorType: String?
 
+    public var allocatableCPU: String?
+
+    public var allocatableMemory: String?
+
     public var CPU: String?
 
     public var GPU: String?
@@ -3207,6 +3275,10 @@ public class NodeType : Tea.TeaModel {
     public var memory: String?
 
     public var nodeType: String?
+
+    public var systemReservedCPU: String?
+
+    public var systemReservedMemory: String?
 
     public override init() {
         super.init()
@@ -3224,6 +3296,12 @@ public class NodeType : Tea.TeaModel {
         var map = super.toMap()
         if self.acceleratorType != nil {
             map["AcceleratorType"] = self.acceleratorType!
+        }
+        if self.allocatableCPU != nil {
+            map["AllocatableCPU"] = self.allocatableCPU!
+        }
+        if self.allocatableMemory != nil {
+            map["AllocatableMemory"] = self.allocatableMemory!
         }
         if self.CPU != nil {
             map["CPU"] = self.CPU!
@@ -3243,6 +3321,12 @@ public class NodeType : Tea.TeaModel {
         if self.nodeType != nil {
             map["NodeType"] = self.nodeType!
         }
+        if self.systemReservedCPU != nil {
+            map["SystemReservedCPU"] = self.systemReservedCPU!
+        }
+        if self.systemReservedMemory != nil {
+            map["SystemReservedMemory"] = self.systemReservedMemory!
+        }
         return map
     }
 
@@ -3250,6 +3334,12 @@ public class NodeType : Tea.TeaModel {
         guard let dict else { return }
         if let value = dict["AcceleratorType"] as? String {
             self.acceleratorType = value
+        }
+        if let value = dict["AllocatableCPU"] as? String {
+            self.allocatableCPU = value
+        }
+        if let value = dict["AllocatableMemory"] as? String {
+            self.allocatableMemory = value
         }
         if let value = dict["CPU"] as? String {
             self.CPU = value
@@ -3268,6 +3358,12 @@ public class NodeType : Tea.TeaModel {
         }
         if let value = dict["NodeType"] as? String {
             self.nodeType = value
+        }
+        if let value = dict["SystemReservedCPU"] as? String {
+            self.systemReservedCPU = value
+        }
+        if let value = dict["SystemReservedMemory"] as? String {
+            self.systemReservedMemory = value
         }
     }
 }
@@ -4237,6 +4333,8 @@ public class QuotaConfig : Tea.TeaModel {
 public class QuotaDetails : Tea.TeaModel {
     public var actualMinQuota: ResourceAmount?
 
+    public var allocatableQuota: ResourceAmount?
+
     public var allocatedQuota: ResourceAmount?
 
     public var ancestorsAllocatedQuota: ResourceAmount?
@@ -4251,6 +4349,8 @@ public class QuotaDetails : Tea.TeaModel {
 
     public var selfSubmittedQuota: ResourceAmount?
 
+    public var systemReservedQuota: ResourceAmount?
+
     public var usedQuota: ResourceAmount?
 
     public override init() {
@@ -4264,6 +4364,7 @@ public class QuotaDetails : Tea.TeaModel {
 
     public override func validate() throws -> Void {
         try self.actualMinQuota?.validate()
+        try self.allocatableQuota?.validate()
         try self.allocatedQuota?.validate()
         try self.ancestorsAllocatedQuota?.validate()
         try self.descendantsAllocatedQuota?.validate()
@@ -4271,6 +4372,7 @@ public class QuotaDetails : Tea.TeaModel {
         try self.requestedQuota?.validate()
         try self.selfAllocatedQuota?.validate()
         try self.selfSubmittedQuota?.validate()
+        try self.systemReservedQuota?.validate()
         try self.usedQuota?.validate()
     }
 
@@ -4278,6 +4380,9 @@ public class QuotaDetails : Tea.TeaModel {
         var map = super.toMap()
         if self.actualMinQuota != nil {
             map["ActualMinQuota"] = self.actualMinQuota?.toMap()
+        }
+        if self.allocatableQuota != nil {
+            map["AllocatableQuota"] = self.allocatableQuota?.toMap()
         }
         if self.allocatedQuota != nil {
             map["AllocatedQuota"] = self.allocatedQuota?.toMap()
@@ -4300,6 +4405,9 @@ public class QuotaDetails : Tea.TeaModel {
         if self.selfSubmittedQuota != nil {
             map["SelfSubmittedQuota"] = self.selfSubmittedQuota?.toMap()
         }
+        if self.systemReservedQuota != nil {
+            map["SystemReservedQuota"] = self.systemReservedQuota?.toMap()
+        }
         if self.usedQuota != nil {
             map["UsedQuota"] = self.usedQuota?.toMap()
         }
@@ -4312,6 +4420,11 @@ public class QuotaDetails : Tea.TeaModel {
             var model = ResourceAmount()
             model.fromMap(value)
             self.actualMinQuota = model
+        }
+        if let value = dict["AllocatableQuota"] as? [String: Any?] {
+            var model = ResourceAmount()
+            model.fromMap(value)
+            self.allocatableQuota = model
         }
         if let value = dict["AllocatedQuota"] as? [String: Any?] {
             var model = ResourceAmount()
@@ -4347,6 +4460,11 @@ public class QuotaDetails : Tea.TeaModel {
             var model = ResourceAmount()
             model.fromMap(value)
             self.selfSubmittedQuota = model
+        }
+        if let value = dict["SystemReservedQuota"] as? [String: Any?] {
+            var model = ResourceAmount()
+            model.fromMap(value)
+            self.systemReservedQuota = model
         }
         if let value = dict["UsedQuota"] as? [String: Any?] {
             var model = ResourceAmount()
@@ -11210,6 +11328,10 @@ public class GetResourceGroupMachineGroupResponseBody : Tea.TeaModel {
             }
         }
     }
+    public var allocatableCpu: String?
+
+    public var allocatableMemory: String?
+
     public var cpu: String?
 
     public var defaultDriver: String?
@@ -11250,6 +11372,10 @@ public class GetResourceGroupMachineGroupResponseBody : Tea.TeaModel {
 
     public var supportedDrivers: [String]?
 
+    public var systemReservedCpu: String?
+
+    public var systemReservedMemory: String?
+
     public var tags: [GetResourceGroupMachineGroupResponseBody.Tags]?
 
     public override init() {
@@ -11266,6 +11392,12 @@ public class GetResourceGroupMachineGroupResponseBody : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.allocatableCpu != nil {
+            map["AllocatableCpu"] = self.allocatableCpu!
+        }
+        if self.allocatableMemory != nil {
+            map["AllocatableMemory"] = self.allocatableMemory!
+        }
         if self.cpu != nil {
             map["Cpu"] = self.cpu!
         }
@@ -11326,6 +11458,12 @@ public class GetResourceGroupMachineGroupResponseBody : Tea.TeaModel {
         if self.supportedDrivers != nil {
             map["SupportedDrivers"] = self.supportedDrivers!
         }
+        if self.systemReservedCpu != nil {
+            map["SystemReservedCpu"] = self.systemReservedCpu!
+        }
+        if self.systemReservedMemory != nil {
+            map["SystemReservedMemory"] = self.systemReservedMemory!
+        }
         if self.tags != nil {
             var tmp : [Any] = []
             for k in self.tags! {
@@ -11338,6 +11476,12 @@ public class GetResourceGroupMachineGroupResponseBody : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["AllocatableCpu"] as? String {
+            self.allocatableCpu = value
+        }
+        if let value = dict["AllocatableMemory"] as? String {
+            self.allocatableMemory = value
+        }
         if let value = dict["Cpu"] as? String {
             self.cpu = value
         }
@@ -11397,6 +11541,12 @@ public class GetResourceGroupMachineGroupResponseBody : Tea.TeaModel {
         }
         if let value = dict["SupportedDrivers"] as? [String] {
             self.supportedDrivers = value
+        }
+        if let value = dict["SystemReservedCpu"] as? String {
+            self.systemReservedCpu = value
+        }
+        if let value = dict["SystemReservedMemory"] as? String {
+            self.systemReservedMemory = value
         }
         if let value = dict["Tags"] as? [Any?] {
             var tmp : [GetResourceGroupMachineGroupResponseBody.Tags] = []
