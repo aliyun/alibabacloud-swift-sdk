@@ -24543,6 +24543,8 @@ public class GetAppMessageQueueRouteResponseBody : Tea.TeaModel {
 
         public var filterSide: String?
 
+        public var grayBaseTags: [String]?
+
         public var region: String?
 
         public var tags: [String]?
@@ -24570,6 +24572,9 @@ public class GetAppMessageQueueRouteResponseBody : Tea.TeaModel {
             if self.filterSide != nil {
                 map["FilterSide"] = self.filterSide!
             }
+            if self.grayBaseTags != nil {
+                map["GrayBaseTags"] = self.grayBaseTags!
+            }
             if self.region != nil {
                 map["Region"] = self.region!
             }
@@ -24589,6 +24594,9 @@ public class GetAppMessageQueueRouteResponseBody : Tea.TeaModel {
             }
             if let value = dict["FilterSide"] as? String {
                 self.filterSide = value
+            }
+            if let value = dict["GrayBaseTags"] as? [String] {
+                self.grayBaseTags = value
             }
             if let value = dict["Region"] as? String {
                 self.region = value
@@ -81271,6 +81279,8 @@ public class UpdateMessageQueueRouteRequest : Tea.TeaModel {
 
     public var filterSide: String?
 
+    public var grayBaseTags: [String]?
+
     public var namespace: String?
 
     public var region: String?
@@ -81306,6 +81316,9 @@ public class UpdateMessageQueueRouteRequest : Tea.TeaModel {
         if self.filterSide != nil {
             map["FilterSide"] = self.filterSide!
         }
+        if self.grayBaseTags != nil {
+            map["GrayBaseTags"] = self.grayBaseTags!
+        }
         if self.namespace != nil {
             map["Namespace"] = self.namespace!
         }
@@ -81335,6 +81348,9 @@ public class UpdateMessageQueueRouteRequest : Tea.TeaModel {
         if let value = dict["FilterSide"] as? String {
             self.filterSide = value
         }
+        if let value = dict["GrayBaseTags"] as? [String] {
+            self.grayBaseTags = value
+        }
         if let value = dict["Namespace"] as? String {
             self.namespace = value
         }
@@ -81357,6 +81373,8 @@ public class UpdateMessageQueueRouteShrinkRequest : Tea.TeaModel {
     public var enable: Bool?
 
     public var filterSide: String?
+
+    public var grayBaseTagsShrink: String?
 
     public var namespace: String?
 
@@ -81393,6 +81411,9 @@ public class UpdateMessageQueueRouteShrinkRequest : Tea.TeaModel {
         if self.filterSide != nil {
             map["FilterSide"] = self.filterSide!
         }
+        if self.grayBaseTagsShrink != nil {
+            map["GrayBaseTags"] = self.grayBaseTagsShrink!
+        }
         if self.namespace != nil {
             map["Namespace"] = self.namespace!
         }
@@ -81421,6 +81442,9 @@ public class UpdateMessageQueueRouteShrinkRequest : Tea.TeaModel {
         }
         if let value = dict["FilterSide"] as? String {
             self.filterSide = value
+        }
+        if let value = dict["GrayBaseTags"] as? String {
+            self.grayBaseTagsShrink = value
         }
         if let value = dict["Namespace"] as? String {
             self.namespace = value
