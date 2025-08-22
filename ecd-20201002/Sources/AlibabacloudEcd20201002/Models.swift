@@ -4835,6 +4835,8 @@ public class GetLoginTokenRequest : Tea.TeaModel {
 
     public var clientId: String?
 
+    public var clientName: String?
+
     public var clientOS: String?
 
     public var clientType: String?
@@ -4889,6 +4891,9 @@ public class GetLoginTokenRequest : Tea.TeaModel {
         }
         if self.clientId != nil {
             map["ClientId"] = self.clientId!
+        }
+        if self.clientName != nil {
+            map["ClientName"] = self.clientName!
         }
         if self.clientOS != nil {
             map["ClientOS"] = self.clientOS!
@@ -4952,6 +4957,9 @@ public class GetLoginTokenRequest : Tea.TeaModel {
         if let value = dict["ClientId"] as? String {
             self.clientId = value
         }
+        if let value = dict["ClientName"] as? String {
+            self.clientName = value
+        }
         if let value = dict["ClientOS"] as? String {
             self.clientOS = value
         }
@@ -5010,6 +5018,8 @@ public class GetLoginTokenShrinkRequest : Tea.TeaModel {
 
     public var clientId: String?
 
+    public var clientName: String?
+
     public var clientOS: String?
 
     public var clientType: String?
@@ -5064,6 +5074,9 @@ public class GetLoginTokenShrinkRequest : Tea.TeaModel {
         }
         if self.clientId != nil {
             map["ClientId"] = self.clientId!
+        }
+        if self.clientName != nil {
+            map["ClientName"] = self.clientName!
         }
         if self.clientOS != nil {
             map["ClientOS"] = self.clientOS!
@@ -5126,6 +5139,9 @@ public class GetLoginTokenShrinkRequest : Tea.TeaModel {
         }
         if let value = dict["ClientId"] as? String {
             self.clientId = value
+        }
+        if let value = dict["ClientName"] as? String {
+            self.clientName = value
         }
         if let value = dict["ClientOS"] as? String {
             self.clientOS = value
