@@ -8,7 +8,6 @@ import AlibabacloudEndpointUtil
 open class Client : AlibabacloudOpenApi.Client {
     public override init(_ config: AlibabacloudOpenApi.Config) throws {
         try super.init(config)
-        self._signatureAlgorithm = "v2"
         self._endpointRule = ""
         try checkConfig(config as! AlibabacloudOpenApi.Config)
         self._endpoint = try getEndpoint("eds-aic", self._regionId ?? "", self._endpointRule ?? "", self._network ?? "", self._suffix ?? "", self._endpointMap ?? [:], self._endpoint ?? "")
@@ -283,8 +282,13 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func createAndroidInstanceGroupWithOptions(_ request: CreateAndroidInstanceGroupRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> CreateAndroidInstanceGroupResponse {
-        try TeaUtils.Client.validateModel(request)
+    public func createAndroidInstanceGroupWithOptions(_ tmpReq: CreateAndroidInstanceGroupRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> CreateAndroidInstanceGroupResponse {
+        try TeaUtils.Client.validateModel(tmpReq)
+        var request: CreateAndroidInstanceGroupShrinkRequest = CreateAndroidInstanceGroupShrinkRequest([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.networkInfo)) {
+            request.networkInfoShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.networkInfo, "NetworkInfo", "json")
+        }
         var query: [String: Any] = [:]
         if (!TeaUtils.Client.isUnset(request.amount)) {
             query["Amount"] = request.amount!;
@@ -294,6 +298,12 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.autoRenew)) {
             query["AutoRenew"] = request.autoRenew!;
+        }
+        if (!TeaUtils.Client.isUnset(request.bandwidthPackageId)) {
+            query["BandwidthPackageId"] = request.bandwidthPackageId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.bandwidthPackageType)) {
+            query["BandwidthPackageType"] = request.bandwidthPackageType ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.bizRegionId)) {
             query["BizRegionId"] = request.bizRegionId ?? "";
@@ -324,6 +334,12 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.keyPairId)) {
             query["KeyPairId"] = request.keyPairId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.networkInfoShrink)) {
+            query["NetworkInfo"] = request.networkInfoShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.networkType)) {
+            query["NetworkType"] = request.networkType ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.numberOfInstances)) {
             query["NumberOfInstances"] = request.numberOfInstances!;
@@ -1063,6 +1079,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.status)) {
             query["Status"] = request.status ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.tags)) {
+            query["Tags"] = request.tags ?? [];
         }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "query": AlibabaCloudOpenApiUtil.Client.query(query)
@@ -3374,6 +3393,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.instanceIdList)) {
             query["InstanceIdList"] = request.instanceIdList ?? [];
+        }
+        if (!TeaUtils.Client.isUnset(request.reset)) {
+            query["Reset"] = request.reset!;
         }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "query": AlibabaCloudOpenApiUtil.Client.query(query)

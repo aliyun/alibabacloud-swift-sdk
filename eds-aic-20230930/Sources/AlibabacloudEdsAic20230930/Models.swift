@@ -1422,6 +1422,124 @@ public class CheckResourceStockResponse : Tea.TeaModel {
 }
 
 public class CreateAndroidInstanceGroupRequest : Tea.TeaModel {
+    public class NetworkInfo : Tea.TeaModel {
+        public var autoPay: Bool?
+
+        public var autoRenew: Bool?
+
+        public var bandwidthPackageName: String?
+
+        public var cidrBlock: String?
+
+        public var internetChargeType: String?
+
+        public var ipRatio: Int32?
+
+        public var isp: String?
+
+        public var limitedBandwidth: Int32?
+
+        public var payType: String?
+
+        public var period: Int32?
+
+        public var periodUnit: String?
+
+        public var visibleType: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.autoPay != nil {
+                map["AutoPay"] = self.autoPay!
+            }
+            if self.autoRenew != nil {
+                map["AutoRenew"] = self.autoRenew!
+            }
+            if self.bandwidthPackageName != nil {
+                map["BandwidthPackageName"] = self.bandwidthPackageName!
+            }
+            if self.cidrBlock != nil {
+                map["CidrBlock"] = self.cidrBlock!
+            }
+            if self.internetChargeType != nil {
+                map["InternetChargeType"] = self.internetChargeType!
+            }
+            if self.ipRatio != nil {
+                map["IpRatio"] = self.ipRatio!
+            }
+            if self.isp != nil {
+                map["Isp"] = self.isp!
+            }
+            if self.limitedBandwidth != nil {
+                map["LimitedBandwidth"] = self.limitedBandwidth!
+            }
+            if self.payType != nil {
+                map["PayType"] = self.payType!
+            }
+            if self.period != nil {
+                map["Period"] = self.period!
+            }
+            if self.periodUnit != nil {
+                map["PeriodUnit"] = self.periodUnit!
+            }
+            if self.visibleType != nil {
+                map["VisibleType"] = self.visibleType!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["AutoPay"] as? Bool {
+                self.autoPay = value
+            }
+            if let value = dict["AutoRenew"] as? Bool {
+                self.autoRenew = value
+            }
+            if let value = dict["BandwidthPackageName"] as? String {
+                self.bandwidthPackageName = value
+            }
+            if let value = dict["CidrBlock"] as? String {
+                self.cidrBlock = value
+            }
+            if let value = dict["InternetChargeType"] as? String {
+                self.internetChargeType = value
+            }
+            if let value = dict["IpRatio"] as? Int32 {
+                self.ipRatio = value
+            }
+            if let value = dict["Isp"] as? String {
+                self.isp = value
+            }
+            if let value = dict["LimitedBandwidth"] as? Int32 {
+                self.limitedBandwidth = value
+            }
+            if let value = dict["PayType"] as? String {
+                self.payType = value
+            }
+            if let value = dict["Period"] as? Int32 {
+                self.period = value
+            }
+            if let value = dict["PeriodUnit"] as? String {
+                self.periodUnit = value
+            }
+            if let value = dict["VisibleType"] as? String {
+                self.visibleType = value
+            }
+        }
+    }
     public class Tag : Tea.TeaModel {
         public var key: String?
 
@@ -1466,6 +1584,10 @@ public class CreateAndroidInstanceGroupRequest : Tea.TeaModel {
 
     public var autoRenew: Bool?
 
+    public var bandwidthPackageId: String?
+
+    public var bandwidthPackageType: String?
+
     public var bizRegionId: String?
 
     public var chargeType: String?
@@ -1485,6 +1607,10 @@ public class CreateAndroidInstanceGroupRequest : Tea.TeaModel {
     public var ipv6Bandwidth: Int32?
 
     public var keyPairId: String?
+
+    public var networkInfo: CreateAndroidInstanceGroupRequest.NetworkInfo?
+
+    public var networkType: String?
 
     public var numberOfInstances: Int32?
 
@@ -1510,6 +1636,7 @@ public class CreateAndroidInstanceGroupRequest : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
+        try self.networkInfo?.validate()
     }
 
     public override func toMap() -> [String : Any] {
@@ -1522,6 +1649,12 @@ public class CreateAndroidInstanceGroupRequest : Tea.TeaModel {
         }
         if self.autoRenew != nil {
             map["AutoRenew"] = self.autoRenew!
+        }
+        if self.bandwidthPackageId != nil {
+            map["BandwidthPackageId"] = self.bandwidthPackageId!
+        }
+        if self.bandwidthPackageType != nil {
+            map["BandwidthPackageType"] = self.bandwidthPackageType!
         }
         if self.bizRegionId != nil {
             map["BizRegionId"] = self.bizRegionId!
@@ -1552,6 +1685,12 @@ public class CreateAndroidInstanceGroupRequest : Tea.TeaModel {
         }
         if self.keyPairId != nil {
             map["KeyPairId"] = self.keyPairId!
+        }
+        if self.networkInfo != nil {
+            map["NetworkInfo"] = self.networkInfo?.toMap()
+        }
+        if self.networkType != nil {
+            map["NetworkType"] = self.networkType!
         }
         if self.numberOfInstances != nil {
             map["NumberOfInstances"] = self.numberOfInstances!
@@ -1592,6 +1731,12 @@ public class CreateAndroidInstanceGroupRequest : Tea.TeaModel {
         if let value = dict["AutoRenew"] as? Bool {
             self.autoRenew = value
         }
+        if let value = dict["BandwidthPackageId"] as? String {
+            self.bandwidthPackageId = value
+        }
+        if let value = dict["BandwidthPackageType"] as? String {
+            self.bandwidthPackageType = value
+        }
         if let value = dict["BizRegionId"] as? String {
             self.bizRegionId = value
         }
@@ -1622,6 +1767,14 @@ public class CreateAndroidInstanceGroupRequest : Tea.TeaModel {
         if let value = dict["KeyPairId"] as? String {
             self.keyPairId = value
         }
+        if let value = dict["NetworkInfo"] as? [String: Any?] {
+            var model = CreateAndroidInstanceGroupRequest.NetworkInfo()
+            model.fromMap(value)
+            self.networkInfo = model
+        }
+        if let value = dict["NetworkType"] as? String {
+            self.networkType = value
+        }
         if let value = dict["NumberOfInstances"] as? Int32 {
             self.numberOfInstances = value
         }
@@ -1642,6 +1795,273 @@ public class CreateAndroidInstanceGroupRequest : Tea.TeaModel {
             for v in value {
                 if v != nil {
                     var model = CreateAndroidInstanceGroupRequest.Tag()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.tag = tmp
+        }
+        if let value = dict["VSwitchId"] as? String {
+            self.vSwitchId = value
+        }
+    }
+}
+
+public class CreateAndroidInstanceGroupShrinkRequest : Tea.TeaModel {
+    public class Tag : Tea.TeaModel {
+        public var key: String?
+
+        public var value: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.key != nil {
+                map["Key"] = self.key!
+            }
+            if self.value != nil {
+                map["Value"] = self.value!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["Key"] as? String {
+                self.key = value
+            }
+            if let value = dict["Value"] as? String {
+                self.value = value
+            }
+        }
+    }
+    public var amount: Int32?
+
+    public var autoPay: Bool?
+
+    public var autoRenew: Bool?
+
+    public var bandwidthPackageId: String?
+
+    public var bandwidthPackageType: String?
+
+    public var bizRegionId: String?
+
+    public var chargeType: String?
+
+    public var clientToken: String?
+
+    public var enableIpv6: Bool?
+
+    public var gpuAcceleration: Bool?
+
+    public var imageId: String?
+
+    public var instanceGroupName: String?
+
+    public var instanceGroupSpec: String?
+
+    public var ipv6Bandwidth: Int32?
+
+    public var keyPairId: String?
+
+    public var networkInfoShrink: String?
+
+    public var networkType: String?
+
+    public var numberOfInstances: Int32?
+
+    public var officeSiteId: String?
+
+    public var period: Int32?
+
+    public var periodUnit: String?
+
+    public var policyGroupId: String?
+
+    public var tag: [CreateAndroidInstanceGroupShrinkRequest.Tag]?
+
+    public var vSwitchId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.amount != nil {
+            map["Amount"] = self.amount!
+        }
+        if self.autoPay != nil {
+            map["AutoPay"] = self.autoPay!
+        }
+        if self.autoRenew != nil {
+            map["AutoRenew"] = self.autoRenew!
+        }
+        if self.bandwidthPackageId != nil {
+            map["BandwidthPackageId"] = self.bandwidthPackageId!
+        }
+        if self.bandwidthPackageType != nil {
+            map["BandwidthPackageType"] = self.bandwidthPackageType!
+        }
+        if self.bizRegionId != nil {
+            map["BizRegionId"] = self.bizRegionId!
+        }
+        if self.chargeType != nil {
+            map["ChargeType"] = self.chargeType!
+        }
+        if self.clientToken != nil {
+            map["ClientToken"] = self.clientToken!
+        }
+        if self.enableIpv6 != nil {
+            map["EnableIpv6"] = self.enableIpv6!
+        }
+        if self.gpuAcceleration != nil {
+            map["GpuAcceleration"] = self.gpuAcceleration!
+        }
+        if self.imageId != nil {
+            map["ImageId"] = self.imageId!
+        }
+        if self.instanceGroupName != nil {
+            map["InstanceGroupName"] = self.instanceGroupName!
+        }
+        if self.instanceGroupSpec != nil {
+            map["InstanceGroupSpec"] = self.instanceGroupSpec!
+        }
+        if self.ipv6Bandwidth != nil {
+            map["Ipv6Bandwidth"] = self.ipv6Bandwidth!
+        }
+        if self.keyPairId != nil {
+            map["KeyPairId"] = self.keyPairId!
+        }
+        if self.networkInfoShrink != nil {
+            map["NetworkInfo"] = self.networkInfoShrink!
+        }
+        if self.networkType != nil {
+            map["NetworkType"] = self.networkType!
+        }
+        if self.numberOfInstances != nil {
+            map["NumberOfInstances"] = self.numberOfInstances!
+        }
+        if self.officeSiteId != nil {
+            map["OfficeSiteId"] = self.officeSiteId!
+        }
+        if self.period != nil {
+            map["Period"] = self.period!
+        }
+        if self.periodUnit != nil {
+            map["PeriodUnit"] = self.periodUnit!
+        }
+        if self.policyGroupId != nil {
+            map["PolicyGroupId"] = self.policyGroupId!
+        }
+        if self.tag != nil {
+            var tmp : [Any] = []
+            for k in self.tag! {
+                tmp.append(k.toMap())
+            }
+            map["Tag"] = tmp
+        }
+        if self.vSwitchId != nil {
+            map["VSwitchId"] = self.vSwitchId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["Amount"] as? Int32 {
+            self.amount = value
+        }
+        if let value = dict["AutoPay"] as? Bool {
+            self.autoPay = value
+        }
+        if let value = dict["AutoRenew"] as? Bool {
+            self.autoRenew = value
+        }
+        if let value = dict["BandwidthPackageId"] as? String {
+            self.bandwidthPackageId = value
+        }
+        if let value = dict["BandwidthPackageType"] as? String {
+            self.bandwidthPackageType = value
+        }
+        if let value = dict["BizRegionId"] as? String {
+            self.bizRegionId = value
+        }
+        if let value = dict["ChargeType"] as? String {
+            self.chargeType = value
+        }
+        if let value = dict["ClientToken"] as? String {
+            self.clientToken = value
+        }
+        if let value = dict["EnableIpv6"] as? Bool {
+            self.enableIpv6 = value
+        }
+        if let value = dict["GpuAcceleration"] as? Bool {
+            self.gpuAcceleration = value
+        }
+        if let value = dict["ImageId"] as? String {
+            self.imageId = value
+        }
+        if let value = dict["InstanceGroupName"] as? String {
+            self.instanceGroupName = value
+        }
+        if let value = dict["InstanceGroupSpec"] as? String {
+            self.instanceGroupSpec = value
+        }
+        if let value = dict["Ipv6Bandwidth"] as? Int32 {
+            self.ipv6Bandwidth = value
+        }
+        if let value = dict["KeyPairId"] as? String {
+            self.keyPairId = value
+        }
+        if let value = dict["NetworkInfo"] as? String {
+            self.networkInfoShrink = value
+        }
+        if let value = dict["NetworkType"] as? String {
+            self.networkType = value
+        }
+        if let value = dict["NumberOfInstances"] as? Int32 {
+            self.numberOfInstances = value
+        }
+        if let value = dict["OfficeSiteId"] as? String {
+            self.officeSiteId = value
+        }
+        if let value = dict["Period"] as? Int32 {
+            self.period = value
+        }
+        if let value = dict["PeriodUnit"] as? String {
+            self.periodUnit = value
+        }
+        if let value = dict["PolicyGroupId"] as? String {
+            self.policyGroupId = value
+        }
+        if let value = dict["Tag"] as? [Any?] {
+            var tmp : [CreateAndroidInstanceGroupShrinkRequest.Tag] = []
+            for v in value {
+                if v != nil {
+                    var model = CreateAndroidInstanceGroupShrinkRequest.Tag()
                     if v != nil {
                         model.fromMap(v as? [String: Any?])
                     }
@@ -1695,9 +2115,49 @@ public class CreateAndroidInstanceGroupResponseBody : Tea.TeaModel {
             }
         }
     }
+    public class NetworkPackageOrderModel : Tea.TeaModel {
+        public var bandwidthPackageId: String?
+
+        public var bandwidthPackageOrderId: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.bandwidthPackageId != nil {
+                map["BandwidthPackageId"] = self.bandwidthPackageId!
+            }
+            if self.bandwidthPackageOrderId != nil {
+                map["BandwidthPackageOrderId"] = self.bandwidthPackageOrderId!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["BandwidthPackageId"] as? String {
+                self.bandwidthPackageId = value
+            }
+            if let value = dict["BandwidthPackageOrderId"] as? String {
+                self.bandwidthPackageOrderId = value
+            }
+        }
+    }
     public var instanceGroupIds: [String]?
 
     public var instanceGroupInfos: [CreateAndroidInstanceGroupResponseBody.InstanceGroupInfos]?
+
+    public var networkPackageOrderModel: CreateAndroidInstanceGroupResponseBody.NetworkPackageOrderModel?
 
     public var orderId: String?
 
@@ -1713,6 +2173,7 @@ public class CreateAndroidInstanceGroupResponseBody : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
+        try self.networkPackageOrderModel?.validate()
     }
 
     public override func toMap() -> [String : Any] {
@@ -1726,6 +2187,9 @@ public class CreateAndroidInstanceGroupResponseBody : Tea.TeaModel {
                 tmp.append(k.toMap())
             }
             map["InstanceGroupInfos"] = tmp
+        }
+        if self.networkPackageOrderModel != nil {
+            map["NetworkPackageOrderModel"] = self.networkPackageOrderModel?.toMap()
         }
         if self.orderId != nil {
             map["OrderId"] = self.orderId!
@@ -1753,6 +2217,11 @@ public class CreateAndroidInstanceGroupResponseBody : Tea.TeaModel {
                 }
             }
             self.instanceGroupInfos = tmp
+        }
+        if let value = dict["NetworkPackageOrderModel"] as? [String: Any?] {
+            var model = CreateAndroidInstanceGroupResponseBody.NetworkPackageOrderModel()
+            model.fromMap(value)
+            self.networkPackageOrderModel = model
         }
         if let value = dict["OrderId"] as? String {
             self.orderId = value
@@ -2243,6 +2712,8 @@ public class CreateCloudPhoneNodeRequest : Tea.TeaModel {
 
         public var payType: String?
 
+        public var visibleType: String?
+
         public override init() {
             super.init()
         }
@@ -2278,6 +2749,9 @@ public class CreateCloudPhoneNodeRequest : Tea.TeaModel {
             if self.payType != nil {
                 map["PayType"] = self.payType!
             }
+            if self.visibleType != nil {
+                map["VisibleType"] = self.visibleType!
+            }
             return map
         }
 
@@ -2303,6 +2777,9 @@ public class CreateCloudPhoneNodeRequest : Tea.TeaModel {
             }
             if let value = dict["PayType"] as? String {
                 self.payType = value
+            }
+            if let value = dict["VisibleType"] as? String {
+                self.visibleType = value
             }
         }
     }
@@ -5538,6 +6015,44 @@ public class DeleteSystemPropertyTemplatesResponse : Tea.TeaModel {
 }
 
 public class DescribeAndroidInstanceGroupsRequest : Tea.TeaModel {
+    public class Tags : Tea.TeaModel {
+        public var key: String?
+
+        public var value: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.key != nil {
+                map["Key"] = self.key!
+            }
+            if self.value != nil {
+                map["Value"] = self.value!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["Key"] as? String {
+                self.key = value
+            }
+            if let value = dict["Value"] as? String {
+                self.value = value
+            }
+        }
+    }
     public var bizRegionId: String?
 
     public var chargeType: String?
@@ -5557,6 +6072,8 @@ public class DescribeAndroidInstanceGroupsRequest : Tea.TeaModel {
     public var saleMode: String?
 
     public var status: String?
+
+    public var tags: [DescribeAndroidInstanceGroupsRequest.Tags]?
 
     public override init() {
         super.init()
@@ -5602,6 +6119,13 @@ public class DescribeAndroidInstanceGroupsRequest : Tea.TeaModel {
         if self.status != nil {
             map["Status"] = self.status!
         }
+        if self.tags != nil {
+            var tmp : [Any] = []
+            for k in self.tags! {
+                tmp.append(k.toMap())
+            }
+            map["Tags"] = tmp
+        }
         return map
     }
 
@@ -5636,6 +6160,19 @@ public class DescribeAndroidInstanceGroupsRequest : Tea.TeaModel {
         }
         if let value = dict["Status"] as? String {
             self.status = value
+        }
+        if let value = dict["Tags"] as? [Any?] {
+            var tmp : [DescribeAndroidInstanceGroupsRequest.Tags] = []
+            for v in value {
+                if v != nil {
+                    var model = DescribeAndroidInstanceGroupsRequest.Tags()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.tags = tmp
         }
     }
 }
@@ -5680,11 +6217,55 @@ public class DescribeAndroidInstanceGroupsResponseBody : Tea.TeaModel {
                 }
             }
         }
+        public class Tags : Tea.TeaModel {
+            public var key: String?
+
+            public var value: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.key != nil {
+                    map["Key"] = self.key!
+                }
+                if self.value != nil {
+                    map["Value"] = self.value!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["Key"] as? String {
+                    self.key = value
+                }
+                if let value = dict["Value"] as? String {
+                    self.value = value
+                }
+            }
+        }
         public var appInstanceGroupId: String?
 
         public var architectureType: String?
 
         public var availableInstanceAmount: Int32?
+
+        public var bandwidthPackageId: String?
+
+        public var bandwidthPackageStatus: String?
+
+        public var bandwidthPackageType: String?
 
         public var chargeType: String?
 
@@ -5720,6 +6301,8 @@ public class DescribeAndroidInstanceGroupsResponseBody : Tea.TeaModel {
 
         public var memory: Int32?
 
+        public var networkType: String?
+
         public var numberOfInstances: String?
 
         public var officeSiteId: String?
@@ -5737,6 +6320,8 @@ public class DescribeAndroidInstanceGroupsResponseBody : Tea.TeaModel {
         public var saleMode: String?
 
         public var systemVersion: String?
+
+        public var tags: [DescribeAndroidInstanceGroupsResponseBody.InstanceGroupModel.Tags]?
 
         public var vSwitchId: String?
 
@@ -5762,6 +6347,15 @@ public class DescribeAndroidInstanceGroupsResponseBody : Tea.TeaModel {
             }
             if self.availableInstanceAmount != nil {
                 map["AvailableInstanceAmount"] = self.availableInstanceAmount!
+            }
+            if self.bandwidthPackageId != nil {
+                map["BandwidthPackageId"] = self.bandwidthPackageId!
+            }
+            if self.bandwidthPackageStatus != nil {
+                map["BandwidthPackageStatus"] = self.bandwidthPackageStatus!
+            }
+            if self.bandwidthPackageType != nil {
+                map["BandwidthPackageType"] = self.bandwidthPackageType!
             }
             if self.chargeType != nil {
                 map["ChargeType"] = self.chargeType!
@@ -5818,6 +6412,9 @@ public class DescribeAndroidInstanceGroupsResponseBody : Tea.TeaModel {
             if self.memory != nil {
                 map["Memory"] = self.memory!
             }
+            if self.networkType != nil {
+                map["NetworkType"] = self.networkType!
+            }
             if self.numberOfInstances != nil {
                 map["NumberOfInstances"] = self.numberOfInstances!
             }
@@ -5845,6 +6442,13 @@ public class DescribeAndroidInstanceGroupsResponseBody : Tea.TeaModel {
             if self.systemVersion != nil {
                 map["SystemVersion"] = self.systemVersion!
             }
+            if self.tags != nil {
+                var tmp : [Any] = []
+                for k in self.tags! {
+                    tmp.append(k.toMap())
+                }
+                map["Tags"] = tmp
+            }
             if self.vSwitchId != nil {
                 map["VSwitchId"] = self.vSwitchId!
             }
@@ -5861,6 +6465,15 @@ public class DescribeAndroidInstanceGroupsResponseBody : Tea.TeaModel {
             }
             if let value = dict["AvailableInstanceAmount"] as? Int32 {
                 self.availableInstanceAmount = value
+            }
+            if let value = dict["BandwidthPackageId"] as? String {
+                self.bandwidthPackageId = value
+            }
+            if let value = dict["BandwidthPackageStatus"] as? String {
+                self.bandwidthPackageStatus = value
+            }
+            if let value = dict["BandwidthPackageType"] as? String {
+                self.bandwidthPackageType = value
             }
             if let value = dict["ChargeType"] as? String {
                 self.chargeType = value
@@ -5923,6 +6536,9 @@ public class DescribeAndroidInstanceGroupsResponseBody : Tea.TeaModel {
             if let value = dict["Memory"] as? Int32 {
                 self.memory = value
             }
+            if let value = dict["NetworkType"] as? String {
+                self.networkType = value
+            }
             if let value = dict["NumberOfInstances"] as? String {
                 self.numberOfInstances = value
             }
@@ -5949,6 +6565,19 @@ public class DescribeAndroidInstanceGroupsResponseBody : Tea.TeaModel {
             }
             if let value = dict["SystemVersion"] as? String {
                 self.systemVersion = value
+            }
+            if let value = dict["Tags"] as? [Any?] {
+                var tmp : [DescribeAndroidInstanceGroupsResponseBody.InstanceGroupModel.Tags] = []
+                for v in value {
+                    if v != nil {
+                        var model = DescribeAndroidInstanceGroupsResponseBody.InstanceGroupModel.Tags()
+                        if v != nil {
+                            model.fromMap(v as? [String: Any?])
+                        }
+                        tmp.append(model)
+                    }
+                }
+                self.tags = tmp
             }
             if let value = dict["VSwitchId"] as? String {
                 self.vSwitchId = value
@@ -6650,6 +7279,8 @@ public class DescribeAndroidInstancesResponseBody : Tea.TeaModel {
 
         public var streamMode: Int32?
 
+        public var systemVersion: String?
+
         public var tags: [DescribeAndroidInstancesResponseBody.InstanceModel.Tags]?
 
         public var upBandwidthLimit: Int32?
@@ -6814,6 +7445,9 @@ public class DescribeAndroidInstancesResponseBody : Tea.TeaModel {
             }
             if self.streamMode != nil {
                 map["StreamMode"] = self.streamMode!
+            }
+            if self.systemVersion != nil {
+                map["SystemVersion"] = self.systemVersion!
             }
             if self.tags != nil {
                 var tmp : [Any] = []
@@ -6993,6 +7627,9 @@ public class DescribeAndroidInstancesResponseBody : Tea.TeaModel {
             }
             if let value = dict["StreamMode"] as? Int32 {
                 self.streamMode = value
+            }
+            if let value = dict["SystemVersion"] as? String {
+                self.systemVersion = value
             }
             if let value = dict["Tags"] as? [Any?] {
                 var tmp : [DescribeAndroidInstancesResponseBody.InstanceModel.Tags] = []
@@ -18635,6 +19272,8 @@ public class UpdateInstanceImageRequest : Tea.TeaModel {
 
     public var instanceIdList: [String]?
 
+    public var reset: Bool?
+
     public override init() {
         super.init()
     }
@@ -18655,6 +19294,9 @@ public class UpdateInstanceImageRequest : Tea.TeaModel {
         if self.instanceIdList != nil {
             map["InstanceIdList"] = self.instanceIdList!
         }
+        if self.reset != nil {
+            map["Reset"] = self.reset!
+        }
         return map
     }
 
@@ -18665,6 +19307,9 @@ public class UpdateInstanceImageRequest : Tea.TeaModel {
         }
         if let value = dict["InstanceIdList"] as? [String] {
             self.instanceIdList = value
+        }
+        if let value = dict["Reset"] as? Bool {
+            self.reset = value
         }
     }
 }
