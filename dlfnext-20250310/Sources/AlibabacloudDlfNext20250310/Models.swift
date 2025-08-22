@@ -2151,6 +2151,8 @@ public class ReceivedShare : Tea.TeaModel {
 
     public var createdBy: String?
 
+    public var enableWrite: Bool?
+
     public var owner: String?
 
     public var providerTenantId: Int64?
@@ -2189,6 +2191,9 @@ public class ReceivedShare : Tea.TeaModel {
         if self.createdBy != nil {
             map["createdBy"] = self.createdBy!
         }
+        if self.enableWrite != nil {
+            map["enableWrite"] = self.enableWrite!
+        }
         if self.owner != nil {
             map["owner"] = self.owner!
         }
@@ -2223,6 +2228,9 @@ public class ReceivedShare : Tea.TeaModel {
         }
         if let value = dict["createdBy"] as? String {
             self.createdBy = value
+        }
+        if let value = dict["enableWrite"] as? Bool {
+            self.enableWrite = value
         }
         if let value = dict["owner"] as? String {
             self.owner = value
@@ -2525,6 +2533,8 @@ public class Share : Tea.TeaModel {
 
     public var createdBy: String?
 
+    public var enableWrite: Bool?
+
     public var owner: String?
 
     public var providerTenantId: Int64?
@@ -2560,6 +2570,9 @@ public class Share : Tea.TeaModel {
         if self.createdBy != nil {
             map["createdBy"] = self.createdBy!
         }
+        if self.enableWrite != nil {
+            map["enableWrite"] = self.enableWrite!
+        }
         if self.owner != nil {
             map["owner"] = self.owner!
         }
@@ -2592,6 +2605,9 @@ public class Share : Tea.TeaModel {
         if let value = dict["createdBy"] as? String {
             self.createdBy = value
         }
+        if let value = dict["enableWrite"] as? Bool {
+            self.enableWrite = value
+        }
         if let value = dict["owner"] as? String {
             self.owner = value
         }
@@ -2609,6 +2625,61 @@ public class Share : Tea.TeaModel {
         }
         if let value = dict["updatedBy"] as? String {
             self.updatedBy = value
+        }
+    }
+}
+
+public class ShareOptions : Tea.TeaModel {
+    public var catalogSizeLimit: Int32?
+
+    public var receiverSizeLimit: Int32?
+
+    public var shareResourceSizeLimit: Int32?
+
+    public var shareSizeLimit: Int32?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.catalogSizeLimit != nil {
+            map["catalogSizeLimit"] = self.catalogSizeLimit!
+        }
+        if self.receiverSizeLimit != nil {
+            map["receiverSizeLimit"] = self.receiverSizeLimit!
+        }
+        if self.shareResourceSizeLimit != nil {
+            map["shareResourceSizeLimit"] = self.shareResourceSizeLimit!
+        }
+        if self.shareSizeLimit != nil {
+            map["shareSizeLimit"] = self.shareSizeLimit!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["catalogSizeLimit"] as? Int32 {
+            self.catalogSizeLimit = value
+        }
+        if let value = dict["receiverSizeLimit"] as? Int32 {
+            self.receiverSizeLimit = value
+        }
+        if let value = dict["shareResourceSizeLimit"] as? Int32 {
+            self.shareResourceSizeLimit = value
+        }
+        if let value = dict["shareSizeLimit"] as? Int32 {
+            self.shareSizeLimit = value
         }
     }
 }
@@ -3725,6 +3796,8 @@ public class AlterReceiverResponse : Tea.TeaModel {
 public class AlterShareRequest : Tea.TeaModel {
     public var comment: String?
 
+    public var enableWrite: Bool?
+
     public var shareName: String?
 
     public override init() {
@@ -3744,6 +3817,9 @@ public class AlterShareRequest : Tea.TeaModel {
         if self.comment != nil {
             map["comment"] = self.comment!
         }
+        if self.enableWrite != nil {
+            map["enableWrite"] = self.enableWrite!
+        }
         if self.shareName != nil {
             map["shareName"] = self.shareName!
         }
@@ -3754,6 +3830,9 @@ public class AlterShareRequest : Tea.TeaModel {
         guard let dict else { return }
         if let value = dict["comment"] as? String {
             self.comment = value
+        }
+        if let value = dict["enableWrite"] as? Bool {
+            self.enableWrite = value
         }
         if let value = dict["shareName"] as? String {
             self.shareName = value
@@ -4721,6 +4800,8 @@ public class CreateRoleResponse : Tea.TeaModel {
 public class CreateShareRequest : Tea.TeaModel {
     public var comment: String?
 
+    public var enableWrite: Bool?
+
     public var shareName: String?
 
     public override init() {
@@ -4740,6 +4821,9 @@ public class CreateShareRequest : Tea.TeaModel {
         if self.comment != nil {
             map["comment"] = self.comment!
         }
+        if self.enableWrite != nil {
+            map["enableWrite"] = self.enableWrite!
+        }
         if self.shareName != nil {
             map["shareName"] = self.shareName!
         }
@@ -4750,6 +4834,9 @@ public class CreateShareRequest : Tea.TeaModel {
         guard let dict else { return }
         if let value = dict["comment"] as? String {
             self.comment = value
+        }
+        if let value = dict["enableWrite"] as? Bool {
+            self.enableWrite = value
         }
         if let value = dict["shareName"] as? String {
             self.shareName = value

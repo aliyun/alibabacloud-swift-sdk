@@ -138,6 +138,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.comment)) {
             body["comment"] = request.comment ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.enableWrite)) {
+            body["enableWrite"] = request.enableWrite!;
+        }
         if (!TeaUtils.Client.isUnset(request.shareName)) {
             body["shareName"] = request.shareName ?? "";
         }
@@ -503,6 +506,9 @@ open class Client : AlibabacloudOpenApi.Client {
         var body: [String: Any] = [:]
         if (!TeaUtils.Client.isUnset(request.comment)) {
             body["comment"] = request.comment ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.enableWrite)) {
+            body["enableWrite"] = request.enableWrite!;
         }
         if (!TeaUtils.Client.isUnset(request.shareName)) {
             body["shareName"] = request.shareName ?? "";
