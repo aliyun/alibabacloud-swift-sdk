@@ -1140,6 +1140,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.documentNumber)) {
             query["DocumentNumber"] = request.documentNumber ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.editOcrResult)) {
+            query["EditOcrResult"] = request.editOcrResult ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.experienceCode)) {
             query["ExperienceCode"] = request.experienceCode ?? "";
         }

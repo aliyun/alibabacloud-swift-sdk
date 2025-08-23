@@ -4657,6 +4657,8 @@ public class InitializeRequest : Tea.TeaModel {
 
     public var documentNumber: String?
 
+    public var editOcrResult: String?
+
     public var experienceCode: String?
 
     public var facePictureBase64: String?
@@ -4765,6 +4767,9 @@ public class InitializeRequest : Tea.TeaModel {
         }
         if self.documentNumber != nil {
             map["DocumentNumber"] = self.documentNumber!
+        }
+        if self.editOcrResult != nil {
+            map["EditOcrResult"] = self.editOcrResult!
         }
         if self.experienceCode != nil {
             map["ExperienceCode"] = self.experienceCode!
@@ -4891,6 +4896,9 @@ public class InitializeRequest : Tea.TeaModel {
         if let value = dict["DocumentNumber"] as? String {
             self.documentNumber = value
         }
+        if let value = dict["EditOcrResult"] as? String {
+            self.editOcrResult = value
+        }
         if let value = dict["ExperienceCode"] as? String {
             self.experienceCode = value
         }
@@ -5000,6 +5008,8 @@ public class InitializeShrinkRequest : Tea.TeaModel {
 
     public var documentNumber: String?
 
+    public var editOcrResult: String?
+
     public var experienceCode: String?
 
     public var facePictureBase64: String?
@@ -5108,6 +5118,9 @@ public class InitializeShrinkRequest : Tea.TeaModel {
         }
         if self.documentNumber != nil {
             map["DocumentNumber"] = self.documentNumber!
+        }
+        if self.editOcrResult != nil {
+            map["EditOcrResult"] = self.editOcrResult!
         }
         if self.experienceCode != nil {
             map["ExperienceCode"] = self.experienceCode!
@@ -5233,6 +5246,9 @@ public class InitializeShrinkRequest : Tea.TeaModel {
         }
         if let value = dict["DocumentNumber"] as? String {
             self.documentNumber = value
+        }
+        if let value = dict["EditOcrResult"] as? String {
+            self.editOcrResult = value
         }
         if let value = dict["ExperienceCode"] as? String {
             self.experienceCode = value
