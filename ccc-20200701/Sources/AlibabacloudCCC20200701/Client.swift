@@ -4232,6 +4232,49 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func importRamUsersWithOptions(_ request: ImportRamUsersRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ImportRamUsersResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.instanceId)) {
+            query["InstanceId"] = request.instanceId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.ramIdList)) {
+            query["RamIdList"] = request.ramIdList ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.roleId)) {
+            query["RoleId"] = request.roleId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.skillLevelList)) {
+            query["SkillLevelList"] = request.skillLevelList ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.workMode)) {
+            query["WorkMode"] = request.workMode ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "ImportRamUsers",
+            "version": "2020-07-01",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(ImportRamUsersResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func importRamUsers(_ request: ImportRamUsersRequest) async throws -> ImportRamUsersResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await importRamUsersWithOptions(request as! ImportRamUsersRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func initiateAttendedTransferWithOptions(_ request: InitiateAttendedTransferRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> InitiateAttendedTransferResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
@@ -5496,6 +5539,54 @@ open class Client : AlibabacloudOpenApi.Client {
     public func listFlashSmsApplications(_ request: ListFlashSmsApplicationsRequest) async throws -> ListFlashSmsApplicationsResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         return try await listFlashSmsApplicationsWithOptions(request as! ListFlashSmsApplicationsRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func listFlashSmsSettingsWithOptions(_ tmpReq: ListFlashSmsSettingsRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ListFlashSmsSettingsResponse {
+        try TeaUtils.Client.validateModel(tmpReq)
+        var request: ListFlashSmsSettingsShrinkRequest = ListFlashSmsSettingsShrinkRequest([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.skillGroupIdList)) {
+            request.skillGroupIdListShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.skillGroupIdList, "SkillGroupIdList", "json")
+        }
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.instanceId)) {
+            query["InstanceId"] = request.instanceId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.pageNumber)) {
+            query["PageNumber"] = request.pageNumber!;
+        }
+        if (!TeaUtils.Client.isUnset(request.pageSize)) {
+            query["PageSize"] = request.pageSize!;
+        }
+        if (!TeaUtils.Client.isUnset(request.skillGroupIdListShrink)) {
+            query["SkillGroupIdList"] = request.skillGroupIdListShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.skillGroupName)) {
+            query["SkillGroupName"] = request.skillGroupName ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "ListFlashSmsSettings",
+            "version": "2020-07-01",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(ListFlashSmsSettingsResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func listFlashSmsSettings(_ request: ListFlashSmsSettingsRequest) async throws -> ListFlashSmsSettingsResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await listFlashSmsSettingsWithOptions(request as! ListFlashSmsSettingsRequest, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
