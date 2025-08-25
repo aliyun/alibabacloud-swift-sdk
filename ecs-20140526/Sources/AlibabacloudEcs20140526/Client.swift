@@ -10302,6 +10302,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func describeInstanceTypesWithOptions(_ request: DescribeInstanceTypesRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DescribeInstanceTypesResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.additionalAttributes)) {
+            query["AdditionalAttributes"] = request.additionalAttributes ?? [];
+        }
         if (!TeaUtils.Client.isUnset(request.cpuArchitecture)) {
             query["CpuArchitecture"] = request.cpuArchitecture ?? "";
         }

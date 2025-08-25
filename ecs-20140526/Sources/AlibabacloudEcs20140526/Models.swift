@@ -59820,6 +59820,8 @@ public class DescribeInstanceTypeFamiliesResponse : Tea.TeaModel {
 }
 
 public class DescribeInstanceTypesRequest : Tea.TeaModel {
+    public var additionalAttributes: [String]?
+
     public var cpuArchitecture: String?
 
     public var cpuArchitectures: [String]?
@@ -59928,6 +59930,9 @@ public class DescribeInstanceTypesRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.additionalAttributes != nil {
+            map["AdditionalAttributes"] = self.additionalAttributes!
+        }
         if self.cpuArchitecture != nil {
             map["CpuArchitecture"] = self.cpuArchitecture!
         }
@@ -60074,6 +60079,9 @@ public class DescribeInstanceTypesRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["AdditionalAttributes"] as? [String] {
+            self.additionalAttributes = value
+        }
         if let value = dict["CpuArchitecture"] as? String {
             self.cpuArchitecture = value
         }
@@ -60548,6 +60556,178 @@ public class DescribeInstanceTypesResponseBody : Tea.TeaModel {
                     }
                 }
             }
+            public class NetworkInfo : Tea.TeaModel {
+                public class BandwidthWeighting : Tea.TeaModel {
+                    public class WeightingInfos : Tea.TeaModel {
+                        public class WeightingInfo : Tea.TeaModel {
+                            public var ebsBandwidth: Int64?
+
+                            public var ebsBurstBandwidth: Int64?
+
+                            public var name: String?
+
+                            public var vpcBandwidth: Int64?
+
+                            public var vpcBurstBandwidth: Int64?
+
+                            public override init() {
+                                super.init()
+                            }
+
+                            public init(_ dict: [String: Any]) {
+                                super.init()
+                                self.fromMap(dict)
+                            }
+
+                            public override func validate() throws -> Void {
+                            }
+
+                            public override func toMap() -> [String : Any] {
+                                var map = super.toMap()
+                                if self.ebsBandwidth != nil {
+                                    map["EbsBandwidth"] = self.ebsBandwidth!
+                                }
+                                if self.ebsBurstBandwidth != nil {
+                                    map["EbsBurstBandwidth"] = self.ebsBurstBandwidth!
+                                }
+                                if self.name != nil {
+                                    map["Name"] = self.name!
+                                }
+                                if self.vpcBandwidth != nil {
+                                    map["VpcBandwidth"] = self.vpcBandwidth!
+                                }
+                                if self.vpcBurstBandwidth != nil {
+                                    map["VpcBurstBandwidth"] = self.vpcBurstBandwidth!
+                                }
+                                return map
+                            }
+
+                            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                                guard let dict else { return }
+                                if let value = dict["EbsBandwidth"] as? Int64 {
+                                    self.ebsBandwidth = value
+                                }
+                                if let value = dict["EbsBurstBandwidth"] as? Int64 {
+                                    self.ebsBurstBandwidth = value
+                                }
+                                if let value = dict["Name"] as? String {
+                                    self.name = value
+                                }
+                                if let value = dict["VpcBandwidth"] as? Int64 {
+                                    self.vpcBandwidth = value
+                                }
+                                if let value = dict["VpcBurstBandwidth"] as? Int64 {
+                                    self.vpcBurstBandwidth = value
+                                }
+                            }
+                        }
+                        public var weightingInfo: [DescribeInstanceTypesResponseBody.InstanceTypes.InstanceType.NetworkInfo.BandwidthWeighting.WeightingInfos.WeightingInfo]?
+
+                        public override init() {
+                            super.init()
+                        }
+
+                        public init(_ dict: [String: Any]) {
+                            super.init()
+                            self.fromMap(dict)
+                        }
+
+                        public override func validate() throws -> Void {
+                        }
+
+                        public override func toMap() -> [String : Any] {
+                            var map = super.toMap()
+                            if self.weightingInfo != nil {
+                                var tmp : [Any] = []
+                                for k in self.weightingInfo! {
+                                    tmp.append(k.toMap())
+                                }
+                                map["WeightingInfo"] = tmp
+                            }
+                            return map
+                        }
+
+                        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                            guard let dict else { return }
+                            if let value = dict["WeightingInfo"] as? [Any?] {
+                                var tmp : [DescribeInstanceTypesResponseBody.InstanceTypes.InstanceType.NetworkInfo.BandwidthWeighting.WeightingInfos.WeightingInfo] = []
+                                for v in value {
+                                    if v != nil {
+                                        var model = DescribeInstanceTypesResponseBody.InstanceTypes.InstanceType.NetworkInfo.BandwidthWeighting.WeightingInfos.WeightingInfo()
+                                        if v != nil {
+                                            model.fromMap(v as? [String: Any?])
+                                        }
+                                        tmp.append(model)
+                                    }
+                                }
+                                self.weightingInfo = tmp
+                            }
+                        }
+                    }
+                    public var weightingInfos: DescribeInstanceTypesResponseBody.InstanceTypes.InstanceType.NetworkInfo.BandwidthWeighting.WeightingInfos?
+
+                    public override init() {
+                        super.init()
+                    }
+
+                    public init(_ dict: [String: Any]) {
+                        super.init()
+                        self.fromMap(dict)
+                    }
+
+                    public override func validate() throws -> Void {
+                        try self.weightingInfos?.validate()
+                    }
+
+                    public override func toMap() -> [String : Any] {
+                        var map = super.toMap()
+                        if self.weightingInfos != nil {
+                            map["WeightingInfos"] = self.weightingInfos?.toMap()
+                        }
+                        return map
+                    }
+
+                    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                        guard let dict else { return }
+                        if let value = dict["WeightingInfos"] as? [String: Any?] {
+                            var model = DescribeInstanceTypesResponseBody.InstanceTypes.InstanceType.NetworkInfo.BandwidthWeighting.WeightingInfos()
+                            model.fromMap(value)
+                            self.weightingInfos = model
+                        }
+                    }
+                }
+                public var bandwidthWeighting: DescribeInstanceTypesResponseBody.InstanceTypes.InstanceType.NetworkInfo.BandwidthWeighting?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                    try self.bandwidthWeighting?.validate()
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.bandwidthWeighting != nil {
+                        map["BandwidthWeighting"] = self.bandwidthWeighting?.toMap()
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                    guard let dict else { return }
+                    if let value = dict["BandwidthWeighting"] as? [String: Any?] {
+                        var model = DescribeInstanceTypesResponseBody.InstanceTypes.InstanceType.NetworkInfo.BandwidthWeighting()
+                        model.fromMap(value)
+                        self.bandwidthWeighting = model
+                    }
+                }
+            }
             public class SupportedBootModes : Tea.TeaModel {
                 public var supportedBootMode: [String]?
 
@@ -60652,6 +60832,8 @@ public class DescribeInstanceTypesResponseBody : Tea.TeaModel {
 
             public var networkEncryptionSupport: Bool?
 
+            public var networkInfo: DescribeInstanceTypesResponseBody.InstanceTypes.InstanceType.NetworkInfo?
+
             public var nvmeSupport: String?
 
             public var physicalProcessorModel: String?
@@ -60681,6 +60863,7 @@ public class DescribeInstanceTypesResponseBody : Tea.TeaModel {
                 try self.cpuOptions?.validate()
                 try self.enhancedNetwork?.validate()
                 try self.networkCards?.validate()
+                try self.networkInfo?.validate()
                 try self.supportedBootModes?.validate()
             }
 
@@ -60796,6 +60979,9 @@ public class DescribeInstanceTypesResponseBody : Tea.TeaModel {
                 }
                 if self.networkEncryptionSupport != nil {
                     map["NetworkEncryptionSupport"] = self.networkEncryptionSupport!
+                }
+                if self.networkInfo != nil {
+                    map["NetworkInfo"] = self.networkInfo?.toMap()
                 }
                 if self.nvmeSupport != nil {
                     map["NvmeSupport"] = self.nvmeSupport!
@@ -60943,6 +61129,11 @@ public class DescribeInstanceTypesResponseBody : Tea.TeaModel {
                 }
                 if let value = dict["NetworkEncryptionSupport"] as? Bool {
                     self.networkEncryptionSupport = value
+                }
+                if let value = dict["NetworkInfo"] as? [String: Any?] {
+                    var model = DescribeInstanceTypesResponseBody.InstanceTypes.InstanceType.NetworkInfo()
+                    model.fromMap(value)
+                    self.networkInfo = model
                 }
                 if let value = dict["NvmeSupport"] as? String {
                     self.nvmeSupport = value
