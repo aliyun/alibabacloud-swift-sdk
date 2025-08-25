@@ -4109,6 +4109,44 @@ public class SubmitDigitalDocStructureJobResponse : Tea.TeaModel {
 }
 
 public class SubmitDocParserJobRequest : Tea.TeaModel {
+    public class MultimediaParameters : Tea.TeaModel {
+        public var enableSynopsisParse: Bool?
+
+        public var vlParsePrompt: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.enableSynopsisParse != nil {
+                map["EnableSynopsisParse"] = self.enableSynopsisParse!
+            }
+            if self.vlParsePrompt != nil {
+                map["VlParsePrompt"] = self.vlParsePrompt!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["EnableSynopsisParse"] as? Bool {
+                self.enableSynopsisParse = value
+            }
+            if let value = dict["VlParsePrompt"] as? String {
+                self.vlParsePrompt = value
+            }
+        }
+    }
     public var enhancementMode: String?
 
     public var fileName: String?
@@ -4120,6 +4158,290 @@ public class SubmitDocParserJobRequest : Tea.TeaModel {
     public var formulaEnhancement: Bool?
 
     public var llmEnhancement: Bool?
+
+    public var multimediaParameters: SubmitDocParserJobRequest.MultimediaParameters?
+
+    public var option: String?
+
+    public var ossBucket: String?
+
+    public var ossEndpoint: String?
+
+    public var outputHtmlTable: Bool?
+
+    public var pageIndex: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.multimediaParameters?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.enhancementMode != nil {
+            map["EnhancementMode"] = self.enhancementMode!
+        }
+        if self.fileName != nil {
+            map["FileName"] = self.fileName!
+        }
+        if self.fileNameExtension != nil {
+            map["FileNameExtension"] = self.fileNameExtension!
+        }
+        if self.fileUrl != nil {
+            map["FileUrl"] = self.fileUrl!
+        }
+        if self.formulaEnhancement != nil {
+            map["FormulaEnhancement"] = self.formulaEnhancement!
+        }
+        if self.llmEnhancement != nil {
+            map["LlmEnhancement"] = self.llmEnhancement!
+        }
+        if self.multimediaParameters != nil {
+            map["MultimediaParameters"] = self.multimediaParameters?.toMap()
+        }
+        if self.option != nil {
+            map["Option"] = self.option!
+        }
+        if self.ossBucket != nil {
+            map["OssBucket"] = self.ossBucket!
+        }
+        if self.ossEndpoint != nil {
+            map["OssEndpoint"] = self.ossEndpoint!
+        }
+        if self.outputHtmlTable != nil {
+            map["OutputHtmlTable"] = self.outputHtmlTable!
+        }
+        if self.pageIndex != nil {
+            map["PageIndex"] = self.pageIndex!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["EnhancementMode"] as? String {
+            self.enhancementMode = value
+        }
+        if let value = dict["FileName"] as? String {
+            self.fileName = value
+        }
+        if let value = dict["FileNameExtension"] as? String {
+            self.fileNameExtension = value
+        }
+        if let value = dict["FileUrl"] as? String {
+            self.fileUrl = value
+        }
+        if let value = dict["FormulaEnhancement"] as? Bool {
+            self.formulaEnhancement = value
+        }
+        if let value = dict["LlmEnhancement"] as? Bool {
+            self.llmEnhancement = value
+        }
+        if let value = dict["MultimediaParameters"] as? [String: Any?] {
+            var model = SubmitDocParserJobRequest.MultimediaParameters()
+            model.fromMap(value)
+            self.multimediaParameters = model
+        }
+        if let value = dict["Option"] as? String {
+            self.option = value
+        }
+        if let value = dict["OssBucket"] as? String {
+            self.ossBucket = value
+        }
+        if let value = dict["OssEndpoint"] as? String {
+            self.ossEndpoint = value
+        }
+        if let value = dict["OutputHtmlTable"] as? Bool {
+            self.outputHtmlTable = value
+        }
+        if let value = dict["PageIndex"] as? String {
+            self.pageIndex = value
+        }
+    }
+}
+
+public class SubmitDocParserJobAdvanceRequest : Tea.TeaModel {
+    public class MultimediaParameters : Tea.TeaModel {
+        public var enableSynopsisParse: Bool?
+
+        public var vlParsePrompt: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.enableSynopsisParse != nil {
+                map["EnableSynopsisParse"] = self.enableSynopsisParse!
+            }
+            if self.vlParsePrompt != nil {
+                map["VlParsePrompt"] = self.vlParsePrompt!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["EnableSynopsisParse"] as? Bool {
+                self.enableSynopsisParse = value
+            }
+            if let value = dict["VlParsePrompt"] as? String {
+                self.vlParsePrompt = value
+            }
+        }
+    }
+    public var enhancementMode: String?
+
+    public var fileName: String?
+
+    public var fileNameExtension: String?
+
+    public var fileUrlObject: InputStream?
+
+    public var formulaEnhancement: Bool?
+
+    public var llmEnhancement: Bool?
+
+    public var multimediaParameters: SubmitDocParserJobAdvanceRequest.MultimediaParameters?
+
+    public var option: String?
+
+    public var ossBucket: String?
+
+    public var ossEndpoint: String?
+
+    public var outputHtmlTable: Bool?
+
+    public var pageIndex: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.multimediaParameters?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.enhancementMode != nil {
+            map["EnhancementMode"] = self.enhancementMode!
+        }
+        if self.fileName != nil {
+            map["FileName"] = self.fileName!
+        }
+        if self.fileNameExtension != nil {
+            map["FileNameExtension"] = self.fileNameExtension!
+        }
+        if self.fileUrlObject != nil {
+            map["FileUrl"] = self.fileUrlObject!
+        }
+        if self.formulaEnhancement != nil {
+            map["FormulaEnhancement"] = self.formulaEnhancement!
+        }
+        if self.llmEnhancement != nil {
+            map["LlmEnhancement"] = self.llmEnhancement!
+        }
+        if self.multimediaParameters != nil {
+            map["MultimediaParameters"] = self.multimediaParameters?.toMap()
+        }
+        if self.option != nil {
+            map["Option"] = self.option!
+        }
+        if self.ossBucket != nil {
+            map["OssBucket"] = self.ossBucket!
+        }
+        if self.ossEndpoint != nil {
+            map["OssEndpoint"] = self.ossEndpoint!
+        }
+        if self.outputHtmlTable != nil {
+            map["OutputHtmlTable"] = self.outputHtmlTable!
+        }
+        if self.pageIndex != nil {
+            map["PageIndex"] = self.pageIndex!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["EnhancementMode"] as? String {
+            self.enhancementMode = value
+        }
+        if let value = dict["FileName"] as? String {
+            self.fileName = value
+        }
+        if let value = dict["FileNameExtension"] as? String {
+            self.fileNameExtension = value
+        }
+        if let value = dict["FileUrl"] as? InputStream {
+            self.fileUrlObject = value
+        }
+        if let value = dict["FormulaEnhancement"] as? Bool {
+            self.formulaEnhancement = value
+        }
+        if let value = dict["LlmEnhancement"] as? Bool {
+            self.llmEnhancement = value
+        }
+        if let value = dict["MultimediaParameters"] as? [String: Any?] {
+            var model = SubmitDocParserJobAdvanceRequest.MultimediaParameters()
+            model.fromMap(value)
+            self.multimediaParameters = model
+        }
+        if let value = dict["Option"] as? String {
+            self.option = value
+        }
+        if let value = dict["OssBucket"] as? String {
+            self.ossBucket = value
+        }
+        if let value = dict["OssEndpoint"] as? String {
+            self.ossEndpoint = value
+        }
+        if let value = dict["OutputHtmlTable"] as? Bool {
+            self.outputHtmlTable = value
+        }
+        if let value = dict["PageIndex"] as? String {
+            self.pageIndex = value
+        }
+    }
+}
+
+public class SubmitDocParserJobShrinkRequest : Tea.TeaModel {
+    public var enhancementMode: String?
+
+    public var fileName: String?
+
+    public var fileNameExtension: String?
+
+    public var fileUrl: String?
+
+    public var formulaEnhancement: Bool?
+
+    public var llmEnhancement: Bool?
+
+    public var multimediaParametersShrink: String?
 
     public var option: String?
 
@@ -4163,6 +4485,9 @@ public class SubmitDocParserJobRequest : Tea.TeaModel {
         if self.llmEnhancement != nil {
             map["LlmEnhancement"] = self.llmEnhancement!
         }
+        if self.multimediaParametersShrink != nil {
+            map["MultimediaParameters"] = self.multimediaParametersShrink!
+        }
         if self.option != nil {
             map["Option"] = self.option!
         }
@@ -4201,116 +4526,8 @@ public class SubmitDocParserJobRequest : Tea.TeaModel {
         if let value = dict["LlmEnhancement"] as? Bool {
             self.llmEnhancement = value
         }
-        if let value = dict["Option"] as? String {
-            self.option = value
-        }
-        if let value = dict["OssBucket"] as? String {
-            self.ossBucket = value
-        }
-        if let value = dict["OssEndpoint"] as? String {
-            self.ossEndpoint = value
-        }
-        if let value = dict["OutputHtmlTable"] as? Bool {
-            self.outputHtmlTable = value
-        }
-        if let value = dict["PageIndex"] as? String {
-            self.pageIndex = value
-        }
-    }
-}
-
-public class SubmitDocParserJobAdvanceRequest : Tea.TeaModel {
-    public var enhancementMode: String?
-
-    public var fileName: String?
-
-    public var fileNameExtension: String?
-
-    public var fileUrlObject: InputStream?
-
-    public var formulaEnhancement: Bool?
-
-    public var llmEnhancement: Bool?
-
-    public var option: String?
-
-    public var ossBucket: String?
-
-    public var ossEndpoint: String?
-
-    public var outputHtmlTable: Bool?
-
-    public var pageIndex: String?
-
-    public override init() {
-        super.init()
-    }
-
-    public init(_ dict: [String: Any]) {
-        super.init()
-        self.fromMap(dict)
-    }
-
-    public override func validate() throws -> Void {
-    }
-
-    public override func toMap() -> [String : Any] {
-        var map = super.toMap()
-        if self.enhancementMode != nil {
-            map["EnhancementMode"] = self.enhancementMode!
-        }
-        if self.fileName != nil {
-            map["FileName"] = self.fileName!
-        }
-        if self.fileNameExtension != nil {
-            map["FileNameExtension"] = self.fileNameExtension!
-        }
-        if self.fileUrlObject != nil {
-            map["FileUrl"] = self.fileUrlObject!
-        }
-        if self.formulaEnhancement != nil {
-            map["FormulaEnhancement"] = self.formulaEnhancement!
-        }
-        if self.llmEnhancement != nil {
-            map["LlmEnhancement"] = self.llmEnhancement!
-        }
-        if self.option != nil {
-            map["Option"] = self.option!
-        }
-        if self.ossBucket != nil {
-            map["OssBucket"] = self.ossBucket!
-        }
-        if self.ossEndpoint != nil {
-            map["OssEndpoint"] = self.ossEndpoint!
-        }
-        if self.outputHtmlTable != nil {
-            map["OutputHtmlTable"] = self.outputHtmlTable!
-        }
-        if self.pageIndex != nil {
-            map["PageIndex"] = self.pageIndex!
-        }
-        return map
-    }
-
-    public override func fromMap(_ dict: [String: Any?]?) -> Void {
-        guard let dict else { return }
-        if let value = dict["EnhancementMode"] as? String {
-            self.enhancementMode = value
-        }
-        if let value = dict["FileName"] as? String {
-            self.fileName = value
-        }
-        if let value = dict["FileNameExtension"] as? String {
-            self.fileNameExtension = value
-        }
-        if let value = dict["FileUrl"] as? InputStream {
-            self.fileUrlObject = value
-        }
-        if let value = dict["FormulaEnhancement"] as? Bool {
-            self.formulaEnhancement = value
-        }
-        if let value = dict["LlmEnhancement"] as? Bool {
-            self.llmEnhancement = value
+        if let value = dict["MultimediaParameters"] as? String {
+            self.multimediaParametersShrink = value
         }
         if let value = dict["Option"] as? String {
             self.option = value

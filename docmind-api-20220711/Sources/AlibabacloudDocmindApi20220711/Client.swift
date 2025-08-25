@@ -1287,8 +1287,13 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func submitDocParserJobWithOptions(_ request: SubmitDocParserJobRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> SubmitDocParserJobResponse {
-        try TeaUtils.Client.validateModel(request)
+    public func submitDocParserJobWithOptions(_ tmpReq: SubmitDocParserJobRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> SubmitDocParserJobResponse {
+        try TeaUtils.Client.validateModel(tmpReq)
+        var request: SubmitDocParserJobShrinkRequest = SubmitDocParserJobShrinkRequest([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.multimediaParameters)) {
+            request.multimediaParametersShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.multimediaParameters, "MultimediaParameters", "json")
+        }
         var query: [String: Any] = [:]
         if (!TeaUtils.Client.isUnset(request.enhancementMode)) {
             query["EnhancementMode"] = request.enhancementMode ?? "";
@@ -1307,6 +1312,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.llmEnhancement)) {
             query["LlmEnhancement"] = request.llmEnhancement!;
+        }
+        if (!TeaUtils.Client.isUnset(request.multimediaParametersShrink)) {
+            query["MultimediaParameters"] = request.multimediaParametersShrink ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.option)) {
             query["Option"] = request.option ?? "";
