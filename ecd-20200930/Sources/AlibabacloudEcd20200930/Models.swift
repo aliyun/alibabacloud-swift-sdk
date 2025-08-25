@@ -47313,6 +47313,8 @@ public class DescribeUsersPasswordResponse : Tea.TeaModel {
 public class DescribeVirtualMFADevicesRequest : Tea.TeaModel {
     public var endUserId: [String]?
 
+    public var filter: String?
+
     public var maxResults: Int32?
 
     public var nextToken: String?
@@ -47338,6 +47340,9 @@ public class DescribeVirtualMFADevicesRequest : Tea.TeaModel {
         if self.endUserId != nil {
             map["EndUserId"] = self.endUserId!
         }
+        if self.filter != nil {
+            map["Filter"] = self.filter!
+        }
         if self.maxResults != nil {
             map["MaxResults"] = self.maxResults!
         }
@@ -47358,6 +47363,9 @@ public class DescribeVirtualMFADevicesRequest : Tea.TeaModel {
         if let value = dict["EndUserId"] as? [String] {
             self.endUserId = value
         }
+        if let value = dict["Filter"] as? String {
+            self.filter = value
+        }
         if let value = dict["MaxResults"] as? Int32 {
             self.maxResults = value
         }
@@ -47375,6 +47383,62 @@ public class DescribeVirtualMFADevicesRequest : Tea.TeaModel {
 
 public class DescribeVirtualMFADevicesResponseBody : Tea.TeaModel {
     public class VirtualMFADevices : Tea.TeaModel {
+        public class AdUser : Tea.TeaModel {
+            public var displayName: String?
+
+            public var displayNameNew: String?
+
+            public var endUser: String?
+
+            public var userPrincipalName: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.displayName != nil {
+                    map["DisplayName"] = self.displayName!
+                }
+                if self.displayNameNew != nil {
+                    map["DisplayNameNew"] = self.displayNameNew!
+                }
+                if self.endUser != nil {
+                    map["EndUser"] = self.endUser!
+                }
+                if self.userPrincipalName != nil {
+                    map["UserPrincipalName"] = self.userPrincipalName!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["DisplayName"] as? String {
+                    self.displayName = value
+                }
+                if let value = dict["DisplayNameNew"] as? String {
+                    self.displayNameNew = value
+                }
+                if let value = dict["EndUser"] as? String {
+                    self.endUser = value
+                }
+                if let value = dict["UserPrincipalName"] as? String {
+                    self.userPrincipalName = value
+                }
+            }
+        }
+        public var adUser: DescribeVirtualMFADevicesResponseBody.VirtualMFADevices.AdUser?
+
         public var consecutiveFails: Int32?
 
         public var directoryId: String?
@@ -47401,10 +47465,14 @@ public class DescribeVirtualMFADevicesResponseBody : Tea.TeaModel {
         }
 
         public override func validate() throws -> Void {
+            try self.adUser?.validate()
         }
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
+            if self.adUser != nil {
+                map["AdUser"] = self.adUser?.toMap()
+            }
             if self.consecutiveFails != nil {
                 map["ConsecutiveFails"] = self.consecutiveFails!
             }
@@ -47434,6 +47502,11 @@ public class DescribeVirtualMFADevicesResponseBody : Tea.TeaModel {
 
         public override func fromMap(_ dict: [String: Any?]?) -> Void {
             guard let dict else { return }
+            if let value = dict["AdUser"] as? [String: Any?] {
+                var model = DescribeVirtualMFADevicesResponseBody.VirtualMFADevices.AdUser()
+                model.fromMap(value)
+                self.adUser = model
+            }
             if let value = dict["ConsecutiveFails"] as? Int32 {
                 self.consecutiveFails = value
             }
