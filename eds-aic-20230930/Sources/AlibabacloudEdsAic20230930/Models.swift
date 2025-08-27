@@ -17531,6 +17531,8 @@ public class ResetAndroidInstancesInGroupResponse : Tea.TeaModel {
 }
 
 public class RunCommandRequest : Tea.TeaModel {
+    public var agentType: String?
+
     public var commandContent: String?
 
     public var contentEncoding: String?
@@ -17553,6 +17555,9 @@ public class RunCommandRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.agentType != nil {
+            map["AgentType"] = self.agentType!
+        }
         if self.commandContent != nil {
             map["CommandContent"] = self.commandContent!
         }
@@ -17570,6 +17575,9 @@ public class RunCommandRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["AgentType"] as? String {
+            self.agentType = value
+        }
         if let value = dict["CommandContent"] as? String {
             self.commandContent = value
         }

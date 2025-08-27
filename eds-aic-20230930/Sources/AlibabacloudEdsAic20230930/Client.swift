@@ -2939,6 +2939,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func runCommandWithOptions(_ request: RunCommandRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> RunCommandResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.agentType)) {
+            query["AgentType"] = request.agentType ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.commandContent)) {
             query["CommandContent"] = request.commandContent ?? "";
         }
