@@ -34,7 +34,7 @@ open class Client : AlibabacloudOpenApi.Client {
             "ap-south-1": "mongodb.ap-south-1.aliyuncs.com",
             "me-east-1": "mongodb.me-east-1.aliyuncs.com",
             "cn-hangzhou-finance": "mongodb.aliyuncs.com",
-            "cn-shanghai-finance-1": "mongodb.aliyuncs.com",
+            "cn-shanghai-finance-1": "mongodb.cn-shanghai-finance-1.aliyuncs.com",
             "cn-shenzhen-finance-1": "mongodb.cn-shenzhen-finance-1.aliyuncs.com",
             "cn-north-2-gov-1": "mongodb.cn-north-2-gov-1.aliyuncs.com",
             "ap-northeast-2-pop": "mongodb.aliyuncs.com",
@@ -68,8 +68,7 @@ open class Client : AlibabacloudOpenApi.Client {
             "cn-zhangjiakou-na62-a01": "mongodb.aliyuncs.com",
             "cn-zhengzhou-nebula-1": "mongodb.aliyuncs.com",
             "eu-west-1-oxs": "mongodb.aliyuncs.com",
-            "rus-west-1-pop": "mongodb.aliyuncs.com",
-            "na-south-1": "mongodb.na-south-1.aliyuncs.com"
+            "rus-west-1-pop": "mongodb.aliyuncs.com"
         ]
         try checkConfig(config as! AlibabacloudOpenApi.Config)
         self._endpoint = try getEndpoint("dds", self._regionId ?? "", self._endpointRule ?? "", self._network ?? "", self._suffix ?? "", self._endpointMap ?? [:], self._endpoint ?? "")
@@ -83,6 +82,55 @@ open class Client : AlibabacloudOpenApi.Client {
             return endpointMap[regionId as! String] ?? ""
         }
         return try AlibabacloudEndpointUtil.Client.getEndpointRules(productId, regionId, endpointRule, network, suffix)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func allocateDBInstanceSrvNetworkAddressWithOptions(_ request: AllocateDBInstanceSrvNetworkAddressRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> AllocateDBInstanceSrvNetworkAddressResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.DBInstanceId)) {
+            query["DBInstanceId"] = request.DBInstanceId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.nodeId)) {
+            query["NodeId"] = request.nodeId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.ownerAccount)) {
+            query["OwnerAccount"] = request.ownerAccount ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.ownerId)) {
+            query["OwnerId"] = request.ownerId!;
+        }
+        if (!TeaUtils.Client.isUnset(request.resourceOwnerAccount)) {
+            query["ResourceOwnerAccount"] = request.resourceOwnerAccount ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.resourceOwnerId)) {
+            query["ResourceOwnerId"] = request.resourceOwnerId!;
+        }
+        if (!TeaUtils.Client.isUnset(request.srvConnectionType)) {
+            query["SrvConnectionType"] = request.srvConnectionType ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "AllocateDBInstanceSrvNetworkAddress",
+            "version": "2015-12-01",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(AllocateDBInstanceSrvNetworkAddressResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func allocateDBInstanceSrvNetworkAddress(_ request: AllocateDBInstanceSrvNetworkAddressRequest) async throws -> AllocateDBInstanceSrvNetworkAddressResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await allocateDBInstanceSrvNetworkAddressWithOptions(request as! AllocateDBInstanceSrvNetworkAddressRequest, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -3990,6 +4038,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.resourceOwnerId)) {
             query["ResourceOwnerId"] = request.resourceOwnerId!;
         }
+        if (!TeaUtils.Client.isUnset(request.roleARN)) {
+            query["RoleARN"] = request.roleARN ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.targetRegionId)) {
             query["TargetRegionId"] = request.targetRegionId ?? "";
         }
@@ -5175,6 +5226,18 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.resourceOwnerId)) {
             query["ResourceOwnerId"] = request.resourceOwnerId!;
         }
+        if (!TeaUtils.Client.isUnset(request.targetHiddenZoneId)) {
+            query["TargetHiddenZoneId"] = request.targetHiddenZoneId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.targetSecondaryZoneId)) {
+            query["TargetSecondaryZoneId"] = request.targetSecondaryZoneId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.targetVswitchId)) {
+            query["TargetVswitchId"] = request.targetVswitchId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.targetZoneId)) {
+            query["TargetZoneId"] = request.targetZoneId ?? "";
+        }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "query": AlibabaCloudOpenApiUtil.Client.query(query)
         ])
@@ -5563,6 +5626,18 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.switchTime)) {
             query["SwitchTime"] = request.switchTime ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.targetHiddenZoneId)) {
+            query["TargetHiddenZoneId"] = request.targetHiddenZoneId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.targetSecondaryZoneId)) {
+            query["TargetSecondaryZoneId"] = request.targetSecondaryZoneId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.targetVswitchId)) {
+            query["TargetVswitchId"] = request.targetVswitchId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.targetZoneId)) {
+            query["TargetZoneId"] = request.targetZoneId ?? "";
+        }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "query": AlibabaCloudOpenApiUtil.Client.query(query)
         ])
@@ -5629,6 +5704,18 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.resourceOwnerId)) {
             query["ResourceOwnerId"] = request.resourceOwnerId!;
+        }
+        if (!TeaUtils.Client.isUnset(request.targetHiddenZoneId)) {
+            query["TargetHiddenZoneId"] = request.targetHiddenZoneId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.targetSecondaryZoneId)) {
+            query["TargetSecondaryZoneId"] = request.targetSecondaryZoneId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.targetVswitchId)) {
+            query["TargetVswitchId"] = request.targetVswitchId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.targetZoneId)) {
+            query["TargetZoneId"] = request.targetZoneId ?? "";
         }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "query": AlibabaCloudOpenApiUtil.Client.query(query)
@@ -5860,6 +5947,55 @@ open class Client : AlibabacloudOpenApi.Client {
     public func modifySecurityIps(_ request: ModifySecurityIpsRequest) async throws -> ModifySecurityIpsResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         return try await modifySecurityIpsWithOptions(request as! ModifySecurityIpsRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func modifySrvNetworkAddressWithOptions(_ request: ModifySrvNetworkAddressRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ModifySrvNetworkAddressResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.connectionType)) {
+            query["ConnectionType"] = request.connectionType ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.DBInstanceId)) {
+            query["DBInstanceId"] = request.DBInstanceId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.newConnectionString)) {
+            query["NewConnectionString"] = request.newConnectionString ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.ownerAccount)) {
+            query["OwnerAccount"] = request.ownerAccount ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.ownerId)) {
+            query["OwnerId"] = request.ownerId!;
+        }
+        if (!TeaUtils.Client.isUnset(request.resourceOwnerAccount)) {
+            query["ResourceOwnerAccount"] = request.resourceOwnerAccount ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.resourceOwnerId)) {
+            query["ResourceOwnerId"] = request.resourceOwnerId!;
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "ModifySrvNetworkAddress",
+            "version": "2015-12-01",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(ModifySrvNetworkAddressResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func modifySrvNetworkAddress(_ request: ModifySrvNetworkAddressRequest) async throws -> ModifySrvNetworkAddressResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await modifySrvNetworkAddressWithOptions(request as! ModifySrvNetworkAddressRequest, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
