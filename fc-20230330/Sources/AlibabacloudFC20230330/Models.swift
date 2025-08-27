@@ -2133,6 +2133,113 @@ public class DestinationConfig : Tea.TeaModel {
     }
 }
 
+public class ElasticConfigStatus : Tea.TeaModel {
+    public var currentError: String?
+
+    public var currentInstances: Int64?
+
+    public var functionArn: String?
+
+    public var minInstances: Int64?
+
+    public var residentPoolId: String?
+
+    public var scalingPolicies: [ScalingPolicy]?
+
+    public var scheduledPolicies: [ScheduledPolicy]?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.currentError != nil {
+            map["currentError"] = self.currentError!
+        }
+        if self.currentInstances != nil {
+            map["currentInstances"] = self.currentInstances!
+        }
+        if self.functionArn != nil {
+            map["functionArn"] = self.functionArn!
+        }
+        if self.minInstances != nil {
+            map["minInstances"] = self.minInstances!
+        }
+        if self.residentPoolId != nil {
+            map["residentPoolId"] = self.residentPoolId!
+        }
+        if self.scalingPolicies != nil {
+            var tmp : [Any] = []
+            for k in self.scalingPolicies! {
+                tmp.append(k.toMap())
+            }
+            map["scalingPolicies"] = tmp
+        }
+        if self.scheduledPolicies != nil {
+            var tmp : [Any] = []
+            for k in self.scheduledPolicies! {
+                tmp.append(k.toMap())
+            }
+            map["scheduledPolicies"] = tmp
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["currentError"] as? String {
+            self.currentError = value
+        }
+        if let value = dict["currentInstances"] as? Int64 {
+            self.currentInstances = value
+        }
+        if let value = dict["functionArn"] as? String {
+            self.functionArn = value
+        }
+        if let value = dict["minInstances"] as? Int64 {
+            self.minInstances = value
+        }
+        if let value = dict["residentPoolId"] as? String {
+            self.residentPoolId = value
+        }
+        if let value = dict["scalingPolicies"] as? [Any?] {
+            var tmp : [ScalingPolicy] = []
+            for v in value {
+                if v != nil {
+                    var model = ScalingPolicy()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.scalingPolicies = tmp
+        }
+        if let value = dict["scheduledPolicies"] as? [Any?] {
+            var tmp : [ScheduledPolicy] = []
+            for v in value {
+                if v != nil {
+                    var model = ScheduledPolicy()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.scheduledPolicies = tmp
+        }
+    }
+}
+
 public class EqualRule : Tea.TeaModel {
     public var match: String?
 
@@ -4086,6 +4193,59 @@ public class ListCustomDomainOutput : Tea.TeaModel {
     }
 }
 
+public class ListElasticConfigsOutput : Tea.TeaModel {
+    public var elasticConfigs: [ElasticConfigStatus]?
+
+    public var nextToken: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.elasticConfigs != nil {
+            var tmp : [Any] = []
+            for k in self.elasticConfigs! {
+                tmp.append(k.toMap())
+            }
+            map["elasticConfigs"] = tmp
+        }
+        if self.nextToken != nil {
+            map["nextToken"] = self.nextToken!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["elasticConfigs"] as? [Any?] {
+            var tmp : [ElasticConfigStatus] = []
+            for v in value {
+                if v != nil {
+                    var model = ElasticConfigStatus()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.elasticConfigs = tmp
+        }
+        if let value = dict["nextToken"] as? String {
+            self.nextToken = value
+        }
+    }
+}
+
 public class ListFunctionsOutput : Tea.TeaModel {
     public var functions: [Function]?
 
@@ -5557,6 +5717,89 @@ public class PutConcurrencyInput : Tea.TeaModel {
     }
 }
 
+public class PutElasticConfigInput : Tea.TeaModel {
+    public var minInstances: Int64?
+
+    public var residentPoolId: String?
+
+    public var scalingPolicies: [ScalingPolicy]?
+
+    public var scheduledPolicies: [ScheduledPolicy]?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.minInstances != nil {
+            map["minInstances"] = self.minInstances!
+        }
+        if self.residentPoolId != nil {
+            map["residentPoolId"] = self.residentPoolId!
+        }
+        if self.scalingPolicies != nil {
+            var tmp : [Any] = []
+            for k in self.scalingPolicies! {
+                tmp.append(k.toMap())
+            }
+            map["scalingPolicies"] = tmp
+        }
+        if self.scheduledPolicies != nil {
+            var tmp : [Any] = []
+            for k in self.scheduledPolicies! {
+                tmp.append(k.toMap())
+            }
+            map["scheduledPolicies"] = tmp
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["minInstances"] as? Int64 {
+            self.minInstances = value
+        }
+        if let value = dict["residentPoolId"] as? String {
+            self.residentPoolId = value
+        }
+        if let value = dict["scalingPolicies"] as? [Any?] {
+            var tmp : [ScalingPolicy] = []
+            for v in value {
+                if v != nil {
+                    var model = ScalingPolicy()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.scalingPolicies = tmp
+        }
+        if let value = dict["scheduledPolicies"] as? [Any?] {
+            var tmp : [ScheduledPolicy] = []
+            for v in value {
+                if v != nil {
+                    var model = ScheduledPolicy()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.scheduledPolicies = tmp
+        }
+    }
+}
+
 public class PutProvisionConfigInput : Tea.TeaModel {
     public var alwaysAllocateCPU: Bool?
 
@@ -6767,6 +7010,93 @@ public class ScalingConfigStatus : Tea.TeaModel {
     }
 }
 
+public class ScalingPolicy : Tea.TeaModel {
+    public var endTime: String?
+
+    public var maxInstances: Int64?
+
+    public var metricTarget: Double?
+
+    public var metricType: String?
+
+    public var minInstances: Int64?
+
+    public var name: String?
+
+    public var startTime: String?
+
+    public var timeZone: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.endTime != nil {
+            map["endTime"] = self.endTime!
+        }
+        if self.maxInstances != nil {
+            map["maxInstances"] = self.maxInstances!
+        }
+        if self.metricTarget != nil {
+            map["metricTarget"] = self.metricTarget!
+        }
+        if self.metricType != nil {
+            map["metricType"] = self.metricType!
+        }
+        if self.minInstances != nil {
+            map["minInstances"] = self.minInstances!
+        }
+        if self.name != nil {
+            map["name"] = self.name!
+        }
+        if self.startTime != nil {
+            map["startTime"] = self.startTime!
+        }
+        if self.timeZone != nil {
+            map["timeZone"] = self.timeZone!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["endTime"] as? String {
+            self.endTime = value
+        }
+        if let value = dict["maxInstances"] as? Int64 {
+            self.maxInstances = value
+        }
+        if let value = dict["metricTarget"] as? Double {
+            self.metricTarget = value
+        }
+        if let value = dict["metricType"] as? String {
+            self.metricType = value
+        }
+        if let value = dict["minInstances"] as? Int64 {
+            self.minInstances = value
+        }
+        if let value = dict["name"] as? String {
+            self.name = value
+        }
+        if let value = dict["startTime"] as? String {
+            self.startTime = value
+        }
+        if let value = dict["timeZone"] as? String {
+            self.timeZone = value
+        }
+    }
+}
+
 public class ScalingStatus : Tea.TeaModel {
     public var currentError: String?
 
@@ -6807,6 +7137,77 @@ public class ScalingStatus : Tea.TeaModel {
 }
 
 public class ScheduledAction : Tea.TeaModel {
+    public var endTime: String?
+
+    public var name: String?
+
+    public var scheduleExpression: String?
+
+    public var startTime: String?
+
+    public var target: Int64?
+
+    public var timeZone: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.endTime != nil {
+            map["endTime"] = self.endTime!
+        }
+        if self.name != nil {
+            map["name"] = self.name!
+        }
+        if self.scheduleExpression != nil {
+            map["scheduleExpression"] = self.scheduleExpression!
+        }
+        if self.startTime != nil {
+            map["startTime"] = self.startTime!
+        }
+        if self.target != nil {
+            map["target"] = self.target!
+        }
+        if self.timeZone != nil {
+            map["timeZone"] = self.timeZone!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["endTime"] as? String {
+            self.endTime = value
+        }
+        if let value = dict["name"] as? String {
+            self.name = value
+        }
+        if let value = dict["scheduleExpression"] as? String {
+            self.scheduleExpression = value
+        }
+        if let value = dict["startTime"] as? String {
+            self.startTime = value
+        }
+        if let value = dict["target"] as? Int64 {
+            self.target = value
+        }
+        if let value = dict["timeZone"] as? String {
+            self.timeZone = value
+        }
+    }
+}
+
+public class ScheduledPolicy : Tea.TeaModel {
     public var endTime: String?
 
     public var name: String?
