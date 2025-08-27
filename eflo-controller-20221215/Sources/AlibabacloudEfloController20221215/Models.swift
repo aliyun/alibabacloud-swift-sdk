@@ -5913,6 +5913,8 @@ public class DescribeNodeResponseBody : Tea.TeaModel {
 
     public var nodeId: String?
 
+    public var nodeType: String?
+
     public var operatingState: String?
 
     public var requestId: String?
@@ -5991,6 +5993,9 @@ public class DescribeNodeResponseBody : Tea.TeaModel {
         }
         if self.nodeId != nil {
             map["NodeId"] = self.nodeId!
+        }
+        if self.nodeType != nil {
+            map["NodeType"] = self.nodeType!
         }
         if self.operatingState != nil {
             map["OperatingState"] = self.operatingState!
@@ -6080,6 +6085,9 @@ public class DescribeNodeResponseBody : Tea.TeaModel {
         if let value = dict["NodeId"] as? String {
             self.nodeId = value
         }
+        if let value = dict["NodeType"] as? String {
+            self.nodeType = value
+        }
         if let value = dict["OperatingState"] as? String {
             self.operatingState = value
         }
@@ -6145,6 +6153,150 @@ public class DescribeNodeResponse : Tea.TeaModel {
         }
         if let value = dict["body"] as? [String: Any?] {
             var model = DescribeNodeResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
+public class DescribeNodeTypeRequest : Tea.TeaModel {
+    public var nodeType: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.nodeType != nil {
+            map["NodeType"] = self.nodeType!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["NodeType"] as? String {
+            self.nodeType = value
+        }
+    }
+}
+
+public class DescribeNodeTypeResponseBody : Tea.TeaModel {
+    public var eniHighDenseQuantity: Int32?
+
+    public var eniIpv6AddressQuantity: Int32?
+
+    public var eniPrivateIpAddressQuantity: Int32?
+
+    public var eniQuantity: Int32?
+
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.eniHighDenseQuantity != nil {
+            map["EniHighDenseQuantity"] = self.eniHighDenseQuantity!
+        }
+        if self.eniIpv6AddressQuantity != nil {
+            map["EniIpv6AddressQuantity"] = self.eniIpv6AddressQuantity!
+        }
+        if self.eniPrivateIpAddressQuantity != nil {
+            map["EniPrivateIpAddressQuantity"] = self.eniPrivateIpAddressQuantity!
+        }
+        if self.eniQuantity != nil {
+            map["EniQuantity"] = self.eniQuantity!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["EniHighDenseQuantity"] as? Int32 {
+            self.eniHighDenseQuantity = value
+        }
+        if let value = dict["EniIpv6AddressQuantity"] as? Int32 {
+            self.eniIpv6AddressQuantity = value
+        }
+        if let value = dict["EniPrivateIpAddressQuantity"] as? Int32 {
+            self.eniPrivateIpAddressQuantity = value
+        }
+        if let value = dict["EniQuantity"] as? Int32 {
+            self.eniQuantity = value
+        }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+    }
+}
+
+public class DescribeNodeTypeResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: DescribeNodeTypeResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = DescribeNodeTypeResponseBody()
             model.fromMap(value)
             self.body = model
         }
