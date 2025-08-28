@@ -3976,8 +3976,14 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.internetChargeType)) {
             query["InternetChargeType"] = request.internetChargeType ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.ipv4Prefix)) {
+            query["Ipv4Prefix"] = request.ipv4Prefix ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.name)) {
             query["Name"] = request.name ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.natIp)) {
+            query["NatIp"] = request.natIp ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.natType)) {
             query["NatType"] = request.natType ?? "";
@@ -4054,6 +4060,12 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.dryRun)) {
             query["DryRun"] = request.dryRun!;
+        }
+        if (!TeaUtils.Client.isUnset(request.ipv4Prefix)) {
+            query["Ipv4Prefix"] = request.ipv4Prefix ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.ipv4PrefixCount)) {
+            query["Ipv4PrefixCount"] = request.ipv4PrefixCount!;
         }
         if (!TeaUtils.Client.isUnset(request.natGatewayId)) {
             query["NatGatewayId"] = request.natGatewayId ?? "";
@@ -7699,6 +7711,12 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.dryRun)) {
             query["DryRun"] = request.dryRun!;
+        }
+        if (!TeaUtils.Client.isUnset(request.ipv4Prefix)) {
+            query["Ipv4Prefix"] = request.ipv4Prefix ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.natGatewayId)) {
+            query["NatGatewayId"] = request.natGatewayId ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.natIpId)) {
             query["NatIpId"] = request.natIpId ?? "";
@@ -13039,6 +13057,73 @@ open class Client : AlibabacloudOpenApi.Client {
     public func describeVpcAttribute(_ request: DescribeVpcAttributeRequest) async throws -> DescribeVpcAttributeResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         return try await describeVpcAttributeWithOptions(request as! DescribeVpcAttributeRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func describeVpcGrantRulesToEcrWithOptions(_ request: DescribeVpcGrantRulesToEcrRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DescribeVpcGrantRulesToEcrResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.ecrInstanceId)) {
+            query["EcrInstanceId"] = request.ecrInstanceId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.ecrOwnerId)) {
+            query["EcrOwnerId"] = request.ecrOwnerId!;
+        }
+        if (!TeaUtils.Client.isUnset(request.instanceId)) {
+            query["InstanceId"] = request.instanceId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.instanceType)) {
+            query["InstanceType"] = request.instanceType ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.maxResults)) {
+            query["MaxResults"] = request.maxResults!;
+        }
+        if (!TeaUtils.Client.isUnset(request.nextToken)) {
+            query["NextToken"] = request.nextToken ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.ownerAccount)) {
+            query["OwnerAccount"] = request.ownerAccount ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.ownerId)) {
+            query["OwnerId"] = request.ownerId!;
+        }
+        if (!TeaUtils.Client.isUnset(request.regionId)) {
+            query["RegionId"] = request.regionId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.resourceGroupId)) {
+            query["ResourceGroupId"] = request.resourceGroupId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.resourceOwnerAccount)) {
+            query["ResourceOwnerAccount"] = request.resourceOwnerAccount ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.resourceOwnerId)) {
+            query["ResourceOwnerId"] = request.resourceOwnerId!;
+        }
+        if (!TeaUtils.Client.isUnset(request.tags)) {
+            query["Tags"] = request.tags ?? [];
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "DescribeVpcGrantRulesToEcr",
+            "version": "2016-04-28",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(DescribeVpcGrantRulesToEcrResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func describeVpcGrantRulesToEcr(_ request: DescribeVpcGrantRulesToEcrRequest) async throws -> DescribeVpcGrantRulesToEcrResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await describeVpcGrantRulesToEcrWithOptions(request as! DescribeVpcGrantRulesToEcrRequest, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
