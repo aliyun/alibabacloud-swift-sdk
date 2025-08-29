@@ -8,7 +8,6 @@ import AlibabacloudEndpointUtil
 open class Client : AlibabacloudOpenApi.Client {
     public override init(_ config: AlibabacloudOpenApi.Config) throws {
         try super.init(config)
-        self._signatureAlgorithm = "v2"
         self._endpointRule = ""
         try checkConfig(config as! AlibabacloudOpenApi.Config)
         self._endpoint = try getEndpoint("appstream-center", self._regionId ?? "", self._endpointRule ?? "", self._network ?? "", self._suffix ?? "", self._endpointMap ?? [:], self._endpoint ?? "")
@@ -358,6 +357,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.vSwitchIds)) {
             body["VSwitchIds"] = request.vSwitchIds ?? [];
+        }
+        if (!TeaUtils.Client.isUnset(request.virtualNodePoolId)) {
+            body["VirtualNodePoolId"] = request.virtualNodePoolId ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.wuyingServerName)) {
             body["WuyingServerName"] = request.wuyingServerName ?? "";
@@ -1226,6 +1228,10 @@ open class Client : AlibabacloudOpenApi.Client {
     public func listWuyingServerWithOptions(_ request: ListWuyingServerRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ListWuyingServerResponse {
         try TeaUtils.Client.validateModel(request)
         var body: [String: Any] = [:]
+        var bodyFlat: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.addVirtualNodePoolStatusList)) {
+            bodyFlat["AddVirtualNodePoolStatusList"] = request.addVirtualNodePoolStatusList ?? [];
+        }
         if (!TeaUtils.Client.isUnset(request.bizRegionId)) {
             body["BizRegionId"] = request.bizRegionId ?? "";
         }
@@ -1250,7 +1256,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.status)) {
             body["Status"] = request.status ?? "";
         }
-        var bodyFlat: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.virtualNodePoolId)) {
+            body["VirtualNodePoolId"] = request.virtualNodePoolId ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.wuyingServerIdList)) {
             bodyFlat["WuyingServerIdList"] = request.wuyingServerIdList ?? [];
         }

@@ -2079,6 +2079,8 @@ public class CreateWuyingServerRequest : Tea.TeaModel {
 
     public var vSwitchIds: [String]?
 
+    public var virtualNodePoolId: String?
+
     public var wuyingServerName: String?
 
     public override init() {
@@ -2150,6 +2152,9 @@ public class CreateWuyingServerRequest : Tea.TeaModel {
         if self.vSwitchIds != nil {
             map["VSwitchIds"] = self.vSwitchIds!
         }
+        if self.virtualNodePoolId != nil {
+            map["VirtualNodePoolId"] = self.virtualNodePoolId!
+        }
         if self.wuyingServerName != nil {
             map["WuyingServerName"] = self.wuyingServerName!
         }
@@ -2218,6 +2223,9 @@ public class CreateWuyingServerRequest : Tea.TeaModel {
         }
         if let value = dict["VSwitchIds"] as? [String] {
             self.vSwitchIds = value
+        }
+        if let value = dict["VirtualNodePoolId"] as? String {
+            self.virtualNodePoolId = value
         }
         if let value = dict["WuyingServerName"] as? String {
             self.wuyingServerName = value
@@ -9019,6 +9027,8 @@ public class ListTenantConfigResponse : Tea.TeaModel {
 }
 
 public class ListWuyingServerRequest : Tea.TeaModel {
+    public var addVirtualNodePoolStatusList: [String]?
+
     public var bizRegionId: String?
 
     public var chargeType: String?
@@ -9034,6 +9044,8 @@ public class ListWuyingServerRequest : Tea.TeaModel {
     public var serverInstanceType: String?
 
     public var status: String?
+
+    public var virtualNodePoolId: String?
 
     public var wuyingServerIdList: [String]?
 
@@ -9053,6 +9065,9 @@ public class ListWuyingServerRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.addVirtualNodePoolStatusList != nil {
+            map["AddVirtualNodePoolStatusList"] = self.addVirtualNodePoolStatusList!
+        }
         if self.bizRegionId != nil {
             map["BizRegionId"] = self.bizRegionId!
         }
@@ -9077,6 +9092,9 @@ public class ListWuyingServerRequest : Tea.TeaModel {
         if self.status != nil {
             map["Status"] = self.status!
         }
+        if self.virtualNodePoolId != nil {
+            map["VirtualNodePoolId"] = self.virtualNodePoolId!
+        }
         if self.wuyingServerIdList != nil {
             map["WuyingServerIdList"] = self.wuyingServerIdList!
         }
@@ -9088,6 +9106,9 @@ public class ListWuyingServerRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["AddVirtualNodePoolStatusList"] as? [String] {
+            self.addVirtualNodePoolStatusList = value
+        }
         if let value = dict["BizRegionId"] as? String {
             self.bizRegionId = value
         }
@@ -9111,6 +9132,9 @@ public class ListWuyingServerRequest : Tea.TeaModel {
         }
         if let value = dict["Status"] as? String {
             self.status = value
+        }
+        if let value = dict["VirtualNodePoolId"] as? String {
+            self.virtualNodePoolId = value
         }
         if let value = dict["WuyingServerIdList"] as? [String] {
             self.wuyingServerIdList = value
@@ -9269,6 +9293,8 @@ public class ListWuyingServerResponseBody : Tea.TeaModel {
                 }
             }
         }
+        public var addVirtualNodePoolStatus: String?
+
         public var bizRegionId: String?
 
         public var chargeType: String?
@@ -9295,6 +9321,8 @@ public class ListWuyingServerResponseBody : Tea.TeaModel {
 
         public var osType: String?
 
+        public var securityGroupIds: [String]?
+
         public var serverInstanceTypeInfo: ListWuyingServerResponseBody.WuyingServerList.ServerInstanceTypeInfo?
 
         public var status: String?
@@ -9304,6 +9332,8 @@ public class ListWuyingServerResponseBody : Tea.TeaModel {
         public var systemDiskPerformanceLevel: String?
 
         public var systemDiskSize: Int32?
+
+        public var virtualNodePoolId: String?
 
         public var wuyingServerId: String?
 
@@ -9324,6 +9354,9 @@ public class ListWuyingServerResponseBody : Tea.TeaModel {
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
+            if self.addVirtualNodePoolStatus != nil {
+                map["AddVirtualNodePoolStatus"] = self.addVirtualNodePoolStatus!
+            }
             if self.bizRegionId != nil {
                 map["BizRegionId"] = self.bizRegionId!
             }
@@ -9371,6 +9404,9 @@ public class ListWuyingServerResponseBody : Tea.TeaModel {
             if self.osType != nil {
                 map["OsType"] = self.osType!
             }
+            if self.securityGroupIds != nil {
+                map["SecurityGroupIds"] = self.securityGroupIds!
+            }
             if self.serverInstanceTypeInfo != nil {
                 map["ServerInstanceTypeInfo"] = self.serverInstanceTypeInfo?.toMap()
             }
@@ -9386,6 +9422,9 @@ public class ListWuyingServerResponseBody : Tea.TeaModel {
             if self.systemDiskSize != nil {
                 map["SystemDiskSize"] = self.systemDiskSize!
             }
+            if self.virtualNodePoolId != nil {
+                map["VirtualNodePoolId"] = self.virtualNodePoolId!
+            }
             if self.wuyingServerId != nil {
                 map["WuyingServerId"] = self.wuyingServerId!
             }
@@ -9397,6 +9436,9 @@ public class ListWuyingServerResponseBody : Tea.TeaModel {
 
         public override func fromMap(_ dict: [String: Any?]?) -> Void {
             guard let dict else { return }
+            if let value = dict["AddVirtualNodePoolStatus"] as? String {
+                self.addVirtualNodePoolStatus = value
+            }
             if let value = dict["BizRegionId"] as? String {
                 self.bizRegionId = value
             }
@@ -9456,6 +9498,9 @@ public class ListWuyingServerResponseBody : Tea.TeaModel {
             if let value = dict["OsType"] as? String {
                 self.osType = value
             }
+            if let value = dict["SecurityGroupIds"] as? [String] {
+                self.securityGroupIds = value
+            }
             if let value = dict["ServerInstanceTypeInfo"] as? [String: Any?] {
                 var model = ListWuyingServerResponseBody.WuyingServerList.ServerInstanceTypeInfo()
                 model.fromMap(value)
@@ -9472,6 +9517,9 @@ public class ListWuyingServerResponseBody : Tea.TeaModel {
             }
             if let value = dict["SystemDiskSize"] as? Int32 {
                 self.systemDiskSize = value
+            }
+            if let value = dict["VirtualNodePoolId"] as? String {
+                self.virtualNodePoolId = value
             }
             if let value = dict["WuyingServerId"] as? String {
                 self.wuyingServerId = value
