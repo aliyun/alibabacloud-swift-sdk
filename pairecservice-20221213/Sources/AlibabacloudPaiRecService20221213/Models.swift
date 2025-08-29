@@ -5747,6 +5747,8 @@ public class CreateTrafficControlTaskRequest : Tea.TeaModel {
 
     public var description_: String?
 
+    public var effectiveSceneIds: [Int32]?
+
     public var endTime: String?
 
     public var executionTime: String?
@@ -5772,6 +5774,8 @@ public class CreateTrafficControlTaskRequest : Tea.TeaModel {
     public var sceneId: String?
 
     public var serviceId: String?
+
+    public var serviceIds: [Int32]?
 
     public var startTime: String?
 
@@ -5820,6 +5824,9 @@ public class CreateTrafficControlTaskRequest : Tea.TeaModel {
         if self.description_ != nil {
             map["Description"] = self.description_!
         }
+        if self.effectiveSceneIds != nil {
+            map["EffectiveSceneIds"] = self.effectiveSceneIds!
+        }
         if self.endTime != nil {
             map["EndTime"] = self.endTime!
         }
@@ -5858,6 +5865,9 @@ public class CreateTrafficControlTaskRequest : Tea.TeaModel {
         }
         if self.serviceId != nil {
             map["ServiceId"] = self.serviceId!
+        }
+        if self.serviceIds != nil {
+            map["ServiceIds"] = self.serviceIds!
         }
         if self.startTime != nil {
             map["StartTime"] = self.startTime!
@@ -5910,6 +5920,9 @@ public class CreateTrafficControlTaskRequest : Tea.TeaModel {
         if let value = dict["Description"] as? String {
             self.description_ = value
         }
+        if let value = dict["EffectiveSceneIds"] as? [Int32] {
+            self.effectiveSceneIds = value
+        }
         if let value = dict["EndTime"] as? String {
             self.endTime = value
         }
@@ -5948,6 +5961,9 @@ public class CreateTrafficControlTaskRequest : Tea.TeaModel {
         }
         if let value = dict["ServiceId"] as? String {
             self.serviceId = value
+        }
+        if let value = dict["ServiceIds"] as? [Int32] {
+            self.serviceIds = value
         }
         if let value = dict["StartTime"] as? String {
             self.startTime = value
@@ -13013,6 +13029,8 @@ public class GetTrafficControlTargetResponseBody : Tea.TeaModel {
 
     public var trafficControlTargetId: String?
 
+    public var trafficControlTaskId: String?
+
     public var value: Double?
 
     public override init() {
@@ -13078,6 +13096,9 @@ public class GetTrafficControlTargetResponseBody : Tea.TeaModel {
         if self.trafficControlTargetId != nil {
             map["TrafficControlTargetId"] = self.trafficControlTargetId!
         }
+        if self.trafficControlTaskId != nil {
+            map["TrafficControlTaskId"] = self.trafficControlTaskId!
+        }
         if self.value != nil {
             map["Value"] = self.value!
         }
@@ -13135,6 +13156,9 @@ public class GetTrafficControlTargetResponseBody : Tea.TeaModel {
         }
         if let value = dict["TrafficControlTargetId"] as? String {
             self.trafficControlTargetId = value
+        }
+        if let value = dict["TrafficControlTaskId"] as? String {
+            self.trafficControlTaskId = value
         }
         if let value = dict["Value"] as? Double {
             self.value = value
@@ -13335,6 +13359,8 @@ public class GetTrafficControlTaskResponseBody : Tea.TeaModel {
 
         public var trafficControlTargetId: String?
 
+        public var trafficControlTaskId: String?
+
         public var value: Double?
 
         public override init() {
@@ -13400,6 +13426,9 @@ public class GetTrafficControlTaskResponseBody : Tea.TeaModel {
             if self.trafficControlTargetId != nil {
                 map["TrafficControlTargetId"] = self.trafficControlTargetId!
             }
+            if self.trafficControlTaskId != nil {
+                map["TrafficControlTaskId"] = self.trafficControlTaskId!
+            }
             if self.value != nil {
                 map["Value"] = self.value!
             }
@@ -13458,6 +13487,9 @@ public class GetTrafficControlTaskResponseBody : Tea.TeaModel {
             if let value = dict["TrafficControlTargetId"] as? String {
                 self.trafficControlTargetId = value
             }
+            if let value = dict["TrafficControlTaskId"] as? String {
+                self.trafficControlTaskId = value
+            }
             if let value = dict["Value"] as? Double {
                 self.value = value
             }
@@ -13472,6 +13504,10 @@ public class GetTrafficControlTaskResponseBody : Tea.TeaModel {
     public var controlType: String?
 
     public var description_: String?
+
+    public var effectiveSceneIds: [Int32]?
+
+    public var effectiveSceneNames: [String]?
 
     public var endTime: String?
 
@@ -13512,6 +13548,8 @@ public class GetTrafficControlTaskResponseBody : Tea.TeaModel {
     public var sceneName: String?
 
     public var serviceId: String?
+
+    public var serviceIds: [Int32]?
 
     public var startTime: String?
 
@@ -13561,6 +13599,12 @@ public class GetTrafficControlTaskResponseBody : Tea.TeaModel {
         }
         if self.description_ != nil {
             map["Description"] = self.description_!
+        }
+        if self.effectiveSceneIds != nil {
+            map["EffectiveSceneIds"] = self.effectiveSceneIds!
+        }
+        if self.effectiveSceneNames != nil {
+            map["EffectiveSceneNames"] = self.effectiveSceneNames!
         }
         if self.endTime != nil {
             map["EndTime"] = self.endTime!
@@ -13622,6 +13666,9 @@ public class GetTrafficControlTaskResponseBody : Tea.TeaModel {
         if self.serviceId != nil {
             map["ServiceId"] = self.serviceId!
         }
+        if self.serviceIds != nil {
+            map["ServiceIds"] = self.serviceIds!
+        }
         if self.startTime != nil {
             map["StartTime"] = self.startTime!
         }
@@ -13675,6 +13722,12 @@ public class GetTrafficControlTaskResponseBody : Tea.TeaModel {
         }
         if let value = dict["Description"] as? String {
             self.description_ = value
+        }
+        if let value = dict["EffectiveSceneIds"] as? [Int32] {
+            self.effectiveSceneIds = value
+        }
+        if let value = dict["EffectiveSceneNames"] as? [String] {
+            self.effectiveSceneNames = value
         }
         if let value = dict["EndTime"] as? String {
             self.endTime = value
@@ -13735,6 +13788,9 @@ public class GetTrafficControlTaskResponseBody : Tea.TeaModel {
         }
         if let value = dict["ServiceId"] as? String {
             self.serviceId = value
+        }
+        if let value = dict["ServiceIds"] as? [Int32] {
+            self.serviceIds = value
         }
         if let value = dict["StartTime"] as? String {
             self.startTime = value
@@ -21315,6 +21371,8 @@ public class ListTrafficControlTasksResponseBody : Tea.TeaModel {
 
             public var trafficControlTargetId: String?
 
+            public var trafficControlTaskId: String?
+
             public var value: Double?
 
             public override init() {
@@ -21380,6 +21438,9 @@ public class ListTrafficControlTasksResponseBody : Tea.TeaModel {
                 if self.trafficControlTargetId != nil {
                     map["TrafficControlTargetId"] = self.trafficControlTargetId!
                 }
+                if self.trafficControlTaskId != nil {
+                    map["TrafficControlTaskId"] = self.trafficControlTaskId!
+                }
                 if self.value != nil {
                     map["Value"] = self.value!
                 }
@@ -21438,6 +21499,9 @@ public class ListTrafficControlTasksResponseBody : Tea.TeaModel {
                 if let value = dict["TrafficControlTargetId"] as? String {
                     self.trafficControlTargetId = value
                 }
+                if let value = dict["TrafficControlTaskId"] as? String {
+                    self.trafficControlTaskId = value
+                }
                 if let value = dict["Value"] as? Double {
                     self.value = value
                 }
@@ -21452,6 +21516,10 @@ public class ListTrafficControlTasksResponseBody : Tea.TeaModel {
         public var controlType: String?
 
         public var description_: String?
+
+        public var effectiveSceneIds: [Int32]?
+
+        public var effectiveSceneNames: [Int32]?
 
         public var endTime: String?
 
@@ -21490,6 +21558,8 @@ public class ListTrafficControlTasksResponseBody : Tea.TeaModel {
         public var sceneName: String?
 
         public var serviceId: String?
+
+        public var serviceIds: [String]?
 
         public var startTime: String?
 
@@ -21539,6 +21609,12 @@ public class ListTrafficControlTasksResponseBody : Tea.TeaModel {
             }
             if self.description_ != nil {
                 map["Description"] = self.description_!
+            }
+            if self.effectiveSceneIds != nil {
+                map["EffectiveSceneIds"] = self.effectiveSceneIds!
+            }
+            if self.effectiveSceneNames != nil {
+                map["EffectiveSceneNames"] = self.effectiveSceneNames!
             }
             if self.endTime != nil {
                 map["EndTime"] = self.endTime!
@@ -21597,6 +21673,9 @@ public class ListTrafficControlTasksResponseBody : Tea.TeaModel {
             if self.serviceId != nil {
                 map["ServiceId"] = self.serviceId!
             }
+            if self.serviceIds != nil {
+                map["ServiceIds"] = self.serviceIds!
+            }
             if self.startTime != nil {
                 map["StartTime"] = self.startTime!
             }
@@ -21650,6 +21729,12 @@ public class ListTrafficControlTasksResponseBody : Tea.TeaModel {
             }
             if let value = dict["Description"] as? String {
                 self.description_ = value
+            }
+            if let value = dict["EffectiveSceneIds"] as? [Int32] {
+                self.effectiveSceneIds = value
+            }
+            if let value = dict["EffectiveSceneNames"] as? [Int32] {
+                self.effectiveSceneNames = value
             }
             if let value = dict["EndTime"] as? String {
                 self.endTime = value
@@ -21707,6 +21792,9 @@ public class ListTrafficControlTasksResponseBody : Tea.TeaModel {
             }
             if let value = dict["ServiceId"] as? String {
                 self.serviceId = value
+            }
+            if let value = dict["ServiceIds"] as? [String] {
+                self.serviceIds = value
             }
             if let value = dict["StartTime"] as? String {
                 self.startTime = value
@@ -28349,6 +28437,8 @@ public class UpdateTrafficControlTaskRequest : Tea.TeaModel {
 
     public var description_: String?
 
+    public var effectiveSceneIds: [Int32]?
+
     public var endTime: String?
 
     public var executionTime: String?
@@ -28374,6 +28464,8 @@ public class UpdateTrafficControlTaskRequest : Tea.TeaModel {
     public var sceneId: String?
 
     public var serviceId: String?
+
+    public var serviceIds: [Int32]?
 
     public var startTime: String?
 
@@ -28422,6 +28514,9 @@ public class UpdateTrafficControlTaskRequest : Tea.TeaModel {
         if self.description_ != nil {
             map["Description"] = self.description_!
         }
+        if self.effectiveSceneIds != nil {
+            map["EffectiveSceneIds"] = self.effectiveSceneIds!
+        }
         if self.endTime != nil {
             map["EndTime"] = self.endTime!
         }
@@ -28460,6 +28555,9 @@ public class UpdateTrafficControlTaskRequest : Tea.TeaModel {
         }
         if self.serviceId != nil {
             map["ServiceId"] = self.serviceId!
+        }
+        if self.serviceIds != nil {
+            map["ServiceIds"] = self.serviceIds!
         }
         if self.startTime != nil {
             map["StartTime"] = self.startTime!
@@ -28512,6 +28610,9 @@ public class UpdateTrafficControlTaskRequest : Tea.TeaModel {
         if let value = dict["Description"] as? String {
             self.description_ = value
         }
+        if let value = dict["EffectiveSceneIds"] as? [Int32] {
+            self.effectiveSceneIds = value
+        }
         if let value = dict["EndTime"] as? String {
             self.endTime = value
         }
@@ -28550,6 +28651,9 @@ public class UpdateTrafficControlTaskRequest : Tea.TeaModel {
         }
         if let value = dict["ServiceId"] as? String {
             self.serviceId = value
+        }
+        if let value = dict["ServiceIds"] as? [Int32] {
+            self.serviceIds = value
         }
         if let value = dict["StartTime"] as? String {
             self.startTime = value
