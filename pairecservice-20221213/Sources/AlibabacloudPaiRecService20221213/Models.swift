@@ -21519,6 +21519,8 @@ public class ListTrafficControlTasksResponseBody : Tea.TeaModel {
 
         public var effectiveSceneIds: [Int32]?
 
+        public var effectiveSceneNameList: [String]?
+
         public var effectiveSceneNames: [Int32]?
 
         public var endTime: String?
@@ -21558,6 +21560,8 @@ public class ListTrafficControlTasksResponseBody : Tea.TeaModel {
         public var sceneName: String?
 
         public var serviceId: String?
+
+        public var serviceIdList: [Int32]?
 
         public var serviceIds: [String]?
 
@@ -21612,6 +21616,9 @@ public class ListTrafficControlTasksResponseBody : Tea.TeaModel {
             }
             if self.effectiveSceneIds != nil {
                 map["EffectiveSceneIds"] = self.effectiveSceneIds!
+            }
+            if self.effectiveSceneNameList != nil {
+                map["EffectiveSceneNameList"] = self.effectiveSceneNameList!
             }
             if self.effectiveSceneNames != nil {
                 map["EffectiveSceneNames"] = self.effectiveSceneNames!
@@ -21673,6 +21680,9 @@ public class ListTrafficControlTasksResponseBody : Tea.TeaModel {
             if self.serviceId != nil {
                 map["ServiceId"] = self.serviceId!
             }
+            if self.serviceIdList != nil {
+                map["ServiceIdList"] = self.serviceIdList!
+            }
             if self.serviceIds != nil {
                 map["ServiceIds"] = self.serviceIds!
             }
@@ -21733,6 +21743,9 @@ public class ListTrafficControlTasksResponseBody : Tea.TeaModel {
             if let value = dict["EffectiveSceneIds"] as? [Int32] {
                 self.effectiveSceneIds = value
             }
+            if let value = dict["EffectiveSceneNameList"] as? [String] {
+                self.effectiveSceneNameList = value
+            }
             if let value = dict["EffectiveSceneNames"] as? [Int32] {
                 self.effectiveSceneNames = value
             }
@@ -21792,6 +21805,9 @@ public class ListTrafficControlTasksResponseBody : Tea.TeaModel {
             }
             if let value = dict["ServiceId"] as? String {
                 self.serviceId = value
+            }
+            if let value = dict["ServiceIdList"] as? [Int32] {
+                self.serviceIdList = value
             }
             if let value = dict["ServiceIds"] as? [String] {
                 self.serviceIds = value
