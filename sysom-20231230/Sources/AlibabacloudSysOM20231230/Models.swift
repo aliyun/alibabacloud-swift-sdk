@@ -4208,6 +4208,8 @@ public class GetListRecordRequest : Tea.TeaModel {
 
     public var pageSize: Int64?
 
+    public var region: String?
+
     public override init() {
         super.init()
     }
@@ -4228,6 +4230,9 @@ public class GetListRecordRequest : Tea.TeaModel {
         if self.pageSize != nil {
             map["pageSize"] = self.pageSize!
         }
+        if self.region != nil {
+            map["region"] = self.region!
+        }
         return map
     }
 
@@ -4238,6 +4243,9 @@ public class GetListRecordRequest : Tea.TeaModel {
         }
         if let value = dict["pageSize"] as? Int64 {
             self.pageSize = value
+        }
+        if let value = dict["region"] as? String {
+            self.region = value
         }
     }
 }
