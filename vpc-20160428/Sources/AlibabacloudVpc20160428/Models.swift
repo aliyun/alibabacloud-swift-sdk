@@ -15953,6 +15953,10 @@ public class CreatePhysicalConnectionResponse : Tea.TeaModel {
 public class CreatePhysicalConnectionOccupancyOrderRequest : Tea.TeaModel {
     public var autoPay: Bool?
 
+    public var autoRenew: Bool?
+
+    public var autoRenewDuration: Int32?
+
     public var clientToken: String?
 
     public var instanceChargeType: String?
@@ -15989,6 +15993,12 @@ public class CreatePhysicalConnectionOccupancyOrderRequest : Tea.TeaModel {
         var map = super.toMap()
         if self.autoPay != nil {
             map["AutoPay"] = self.autoPay!
+        }
+        if self.autoRenew != nil {
+            map["AutoRenew"] = self.autoRenew!
+        }
+        if self.autoRenewDuration != nil {
+            map["AutoRenewDuration"] = self.autoRenewDuration!
         }
         if self.clientToken != nil {
             map["ClientToken"] = self.clientToken!
@@ -16027,6 +16037,12 @@ public class CreatePhysicalConnectionOccupancyOrderRequest : Tea.TeaModel {
         guard let dict else { return }
         if let value = dict["AutoPay"] as? Bool {
             self.autoPay = value
+        }
+        if let value = dict["AutoRenew"] as? Bool {
+            self.autoRenew = value
+        }
+        if let value = dict["AutoRenewDuration"] as? Int32 {
+            self.autoRenewDuration = value
         }
         if let value = dict["ClientToken"] as? String {
             self.clientToken = value
@@ -62855,6 +62871,8 @@ public class DescribeVirtualBorderRoutersResponseBody : Tea.TeaModel {
 
             public var minTxInterval: Int64?
 
+            public var mtu: Int32?
+
             public var name: String?
 
             public var PConnVbrChargeType: String?
@@ -62972,6 +62990,9 @@ public class DescribeVirtualBorderRoutersResponseBody : Tea.TeaModel {
                 }
                 if self.minTxInterval != nil {
                     map["MinTxInterval"] = self.minTxInterval!
+                }
+                if self.mtu != nil {
+                    map["Mtu"] = self.mtu!
                 }
                 if self.name != nil {
                     map["Name"] = self.name!
@@ -63104,6 +63125,9 @@ public class DescribeVirtualBorderRoutersResponseBody : Tea.TeaModel {
                 }
                 if let value = dict["MinTxInterval"] as? Int64 {
                     self.minTxInterval = value
+                }
+                if let value = dict["Mtu"] as? Int32 {
+                    self.mtu = value
                 }
                 if let value = dict["Name"] as? String {
                     self.name = value
@@ -98657,6 +98681,8 @@ public class ModifyVirtualBorderRouterAttributeRequest : Tea.TeaModel {
 
     public var minTxInterval: Int64?
 
+    public var mtu: Int32?
+
     public var name: String?
 
     public var ownerAccount: String?
@@ -98729,6 +98755,9 @@ public class ModifyVirtualBorderRouterAttributeRequest : Tea.TeaModel {
         }
         if self.minTxInterval != nil {
             map["MinTxInterval"] = self.minTxInterval!
+        }
+        if self.mtu != nil {
+            map["Mtu"] = self.mtu!
         }
         if self.name != nil {
             map["Name"] = self.name!
@@ -98806,6 +98835,9 @@ public class ModifyVirtualBorderRouterAttributeRequest : Tea.TeaModel {
         }
         if let value = dict["MinTxInterval"] as? Int64 {
             self.minTxInterval = value
+        }
+        if let value = dict["Mtu"] as? Int32 {
+            self.mtu = value
         }
         if let value = dict["Name"] as? String {
             self.name = value
