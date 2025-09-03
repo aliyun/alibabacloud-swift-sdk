@@ -2732,6 +2732,8 @@ public class DedicatedIpPoolDeleteResponse : Tea.TeaModel {
 }
 
 public class DedicatedIpPoolListRequest : Tea.TeaModel {
+    public var all: Bool?
+
     public var keyword: String?
 
     public var pageIndex: Int32?
@@ -2752,6 +2754,9 @@ public class DedicatedIpPoolListRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.all != nil {
+            map["All"] = self.all!
+        }
         if self.keyword != nil {
             map["Keyword"] = self.keyword!
         }
@@ -2766,6 +2771,9 @@ public class DedicatedIpPoolListRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["All"] as? Bool {
+            self.all = value
+        }
         if let value = dict["Keyword"] as? String {
             self.keyword = value
         }
@@ -5699,6 +5707,8 @@ public class GetSuppressionListLevelResponse : Tea.TeaModel {
 public class GetTrackListRequest : Tea.TeaModel {
     public var accountName: String?
 
+    public var configSetId: String?
+
     public var dedicatedIp: String?
 
     public var dedicatedIpPoolId: String?
@@ -5745,6 +5755,9 @@ public class GetTrackListRequest : Tea.TeaModel {
         var map = super.toMap()
         if self.accountName != nil {
             map["AccountName"] = self.accountName!
+        }
+        if self.configSetId != nil {
+            map["ConfigSetId"] = self.configSetId!
         }
         if self.dedicatedIp != nil {
             map["DedicatedIp"] = self.dedicatedIp!
@@ -5798,6 +5811,9 @@ public class GetTrackListRequest : Tea.TeaModel {
         guard let dict else { return }
         if let value = dict["AccountName"] as? String {
             self.accountName = value
+        }
+        if let value = dict["ConfigSetId"] as? String {
+            self.configSetId = value
         }
         if let value = dict["DedicatedIp"] as? String {
             self.dedicatedIp = value
@@ -6136,6 +6152,8 @@ public class GetTrackListResponse : Tea.TeaModel {
 public class GetTrackListByMailFromAndTagNameRequest : Tea.TeaModel {
     public var accountName: String?
 
+    public var configSetId: String?
+
     public var dedicatedIp: String?
 
     public var dedicatedIpPoolId: String?
@@ -6182,6 +6200,9 @@ public class GetTrackListByMailFromAndTagNameRequest : Tea.TeaModel {
         var map = super.toMap()
         if self.accountName != nil {
             map["AccountName"] = self.accountName!
+        }
+        if self.configSetId != nil {
+            map["ConfigSetId"] = self.configSetId!
         }
         if self.dedicatedIp != nil {
             map["DedicatedIp"] = self.dedicatedIp!
@@ -6235,6 +6256,9 @@ public class GetTrackListByMailFromAndTagNameRequest : Tea.TeaModel {
         guard let dict else { return }
         if let value = dict["AccountName"] as? String {
             self.accountName = value
+        }
+        if let value = dict["ConfigSetId"] as? String {
+            self.configSetId = value
         }
         if let value = dict["DedicatedIp"] as? String {
             self.dedicatedIp = value
@@ -8469,6 +8493,10 @@ public class QueryMailAddressByParamResponseBody : Tea.TeaModel {
 
             public var accountStatus: String?
 
+            public var configSetId: String?
+
+            public var configSetName: String?
+
             public var createTime: String?
 
             public var dailyCount: String?
@@ -8508,6 +8536,12 @@ public class QueryMailAddressByParamResponseBody : Tea.TeaModel {
                 }
                 if self.accountStatus != nil {
                     map["AccountStatus"] = self.accountStatus!
+                }
+                if self.configSetId != nil {
+                    map["ConfigSetId"] = self.configSetId!
+                }
+                if self.configSetName != nil {
+                    map["ConfigSetName"] = self.configSetName!
                 }
                 if self.createTime != nil {
                     map["CreateTime"] = self.createTime!
@@ -8549,6 +8583,12 @@ public class QueryMailAddressByParamResponseBody : Tea.TeaModel {
                 }
                 if let value = dict["AccountStatus"] as? String {
                     self.accountStatus = value
+                }
+                if let value = dict["ConfigSetId"] as? String {
+                    self.configSetId = value
+                }
+                if let value = dict["ConfigSetName"] as? String {
+                    self.configSetName = value
                 }
                 if let value = dict["CreateTime"] as? String {
                     self.createTime = value
@@ -9719,6 +9759,10 @@ public class QueryTaskByParamResponseBody : Tea.TeaModel {
         public class Task : Tea.TeaModel {
             public var addressType: String?
 
+            public var configSetId: String?
+
+            public var configSetName: String?
+
             public var createTime: String?
 
             public var ipPoolId: String?
@@ -9755,6 +9799,12 @@ public class QueryTaskByParamResponseBody : Tea.TeaModel {
                 var map = super.toMap()
                 if self.addressType != nil {
                     map["AddressType"] = self.addressType!
+                }
+                if self.configSetId != nil {
+                    map["ConfigSetId"] = self.configSetId!
+                }
+                if self.configSetName != nil {
+                    map["ConfigSetName"] = self.configSetName!
                 }
                 if self.createTime != nil {
                     map["CreateTime"] = self.createTime!
@@ -9793,6 +9843,12 @@ public class QueryTaskByParamResponseBody : Tea.TeaModel {
                 guard let dict else { return }
                 if let value = dict["AddressType"] as? String {
                     self.addressType = value
+                }
+                if let value = dict["ConfigSetId"] as? String {
+                    self.configSetId = value
+                }
+                if let value = dict["ConfigSetName"] as? String {
+                    self.configSetName = value
                 }
                 if let value = dict["CreateTime"] as? String {
                     self.createTime = value
@@ -10885,7 +10941,11 @@ public class SenderStatisticsByTagNameAndBatchIDResponse : Tea.TeaModel {
 public class SenderStatisticsDetailByParamRequest : Tea.TeaModel {
     public var accountName: String?
 
+    public var configSetId: String?
+
     public var endTime: String?
+
+    public var ipPoolId: String?
 
     public var length: Int32?
 
@@ -10922,8 +10982,14 @@ public class SenderStatisticsDetailByParamRequest : Tea.TeaModel {
         if self.accountName != nil {
             map["AccountName"] = self.accountName!
         }
+        if self.configSetId != nil {
+            map["ConfigSetId"] = self.configSetId!
+        }
         if self.endTime != nil {
             map["EndTime"] = self.endTime!
+        }
+        if self.ipPoolId != nil {
+            map["IpPoolId"] = self.ipPoolId!
         }
         if self.length != nil {
             map["Length"] = self.length!
@@ -10960,8 +11026,14 @@ public class SenderStatisticsDetailByParamRequest : Tea.TeaModel {
         if let value = dict["AccountName"] as? String {
             self.accountName = value
         }
+        if let value = dict["ConfigSetId"] as? String {
+            self.configSetId = value
+        }
         if let value = dict["EndTime"] as? String {
             self.endTime = value
+        }
+        if let value = dict["IpPoolId"] as? String {
+            self.ipPoolId = value
         }
         if let value = dict["Length"] as? Int32 {
             self.length = value
@@ -10998,7 +11070,15 @@ public class SenderStatisticsDetailByParamResponseBody : Tea.TeaModel {
         public class MailDetail : Tea.TeaModel {
             public var accountName: String?
 
+            public var configSetId: String?
+
+            public var configSetName: String?
+
             public var errorClassification: String?
+
+            public var ipPoolId: String?
+
+            public var ipPoolName: String?
 
             public var lastUpdateTime: String?
 
@@ -11029,8 +11109,20 @@ public class SenderStatisticsDetailByParamResponseBody : Tea.TeaModel {
                 if self.accountName != nil {
                     map["AccountName"] = self.accountName!
                 }
+                if self.configSetId != nil {
+                    map["ConfigSetId"] = self.configSetId!
+                }
+                if self.configSetName != nil {
+                    map["ConfigSetName"] = self.configSetName!
+                }
                 if self.errorClassification != nil {
                     map["ErrorClassification"] = self.errorClassification!
+                }
+                if self.ipPoolId != nil {
+                    map["IpPoolId"] = self.ipPoolId!
+                }
+                if self.ipPoolName != nil {
+                    map["IpPoolName"] = self.ipPoolName!
                 }
                 if self.lastUpdateTime != nil {
                     map["LastUpdateTime"] = self.lastUpdateTime!
@@ -11058,8 +11150,20 @@ public class SenderStatisticsDetailByParamResponseBody : Tea.TeaModel {
                 if let value = dict["AccountName"] as? String {
                     self.accountName = value
                 }
+                if let value = dict["ConfigSetId"] as? String {
+                    self.configSetId = value
+                }
+                if let value = dict["ConfigSetName"] as? String {
+                    self.configSetName = value
+                }
                 if let value = dict["ErrorClassification"] as? String {
                     self.errorClassification = value
+                }
+                if let value = dict["IpPoolId"] as? String {
+                    self.ipPoolId = value
+                }
+                if let value = dict["IpPoolName"] as? String {
+                    self.ipPoolName = value
                 }
                 if let value = dict["LastUpdateTime"] as? String {
                     self.lastUpdateTime = value

@@ -762,6 +762,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func dedicatedIpPoolListWithOptions(_ request: DedicatedIpPoolListRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DedicatedIpPoolListResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.all)) {
+            query["All"] = request.all!;
+        }
         if (!TeaUtils.Client.isUnset(request.keyword)) {
             query["Keyword"] = request.keyword ?? "";
         }
@@ -1387,6 +1390,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.accountName)) {
             query["AccountName"] = request.accountName ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.configSetId)) {
+            query["ConfigSetId"] = request.configSetId ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.dedicatedIp)) {
             query["DedicatedIp"] = request.dedicatedIp ?? "";
         }
@@ -1462,6 +1468,9 @@ open class Client : AlibabacloudOpenApi.Client {
         var query: [String: Any] = [:]
         if (!TeaUtils.Client.isUnset(request.accountName)) {
             query["AccountName"] = request.accountName ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.configSetId)) {
+            query["ConfigSetId"] = request.configSetId ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.dedicatedIp)) {
             query["DedicatedIp"] = request.dedicatedIp ?? "";
@@ -2350,8 +2359,14 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.accountName)) {
             query["AccountName"] = request.accountName ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.configSetId)) {
+            query["ConfigSetId"] = request.configSetId ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.endTime)) {
             query["EndTime"] = request.endTime ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.ipPoolId)) {
+            query["IpPoolId"] = request.ipPoolId ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.length)) {
             query["Length"] = request.length!;
