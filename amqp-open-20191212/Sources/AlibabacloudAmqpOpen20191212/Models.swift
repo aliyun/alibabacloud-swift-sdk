@@ -20,6 +20,8 @@ public class DataValue : Tea.TeaModel {
 
     public var createTimestamp: Int64?
 
+    public var remark: String?
+
     public override init() {
         super.init()
     }
@@ -55,6 +57,9 @@ public class DataValue : Tea.TeaModel {
         if self.createTimestamp != nil {
             map["createTimestamp"] = self.createTimestamp!
         }
+        if self.remark != nil {
+            map["Remark"] = self.remark!
+        }
         return map
     }
 
@@ -81,10 +86,15 @@ public class DataValue : Tea.TeaModel {
         if let value = dict["createTimestamp"] as? Int64 {
             self.createTimestamp = value
         }
+        if let value = dict["Remark"] as? String {
+            self.remark = value
+        }
     }
 }
 
 public class CreateAccountRequest : Tea.TeaModel {
+    public var remark: String?
+
     public var accountAccessKey: String?
 
     public var createTimestamp: Int64?
@@ -111,6 +121,9 @@ public class CreateAccountRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.remark != nil {
+            map["Remark"] = self.remark!
+        }
         if self.accountAccessKey != nil {
             map["accountAccessKey"] = self.accountAccessKey!
         }
@@ -134,6 +147,9 @@ public class CreateAccountRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["Remark"] as? String {
+            self.remark = value
+        }
         if let value = dict["accountAccessKey"] as? String {
             self.accountAccessKey = value
         }
@@ -167,6 +183,8 @@ public class CreateAccountResponseBody : Tea.TeaModel {
 
         public var password: String?
 
+        public var remark: String?
+
         public var userName: String?
 
         public override init() {
@@ -198,6 +216,9 @@ public class CreateAccountResponseBody : Tea.TeaModel {
             if self.password != nil {
                 map["Password"] = self.password!
             }
+            if self.remark != nil {
+                map["Remark"] = self.remark!
+            }
             if self.userName != nil {
                 map["UserName"] = self.userName!
             }
@@ -220,6 +241,9 @@ public class CreateAccountResponseBody : Tea.TeaModel {
             }
             if let value = dict["Password"] as? String {
                 self.password = value
+            }
+            if let value = dict["Remark"] as? String {
+                self.remark = value
             }
             if let value = dict["UserName"] as? String {
                 self.userName = value

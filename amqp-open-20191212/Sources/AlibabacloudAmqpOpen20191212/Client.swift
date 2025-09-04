@@ -27,6 +27,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func createAccountWithOptions(_ request: CreateAccountRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> CreateAccountResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.remark)) {
+            query["Remark"] = request.remark ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.accountAccessKey)) {
             query["accountAccessKey"] = request.accountAccessKey ?? "";
         }
