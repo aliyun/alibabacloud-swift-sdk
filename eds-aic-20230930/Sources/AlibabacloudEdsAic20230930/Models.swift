@@ -934,6 +934,8 @@ public class ChangeCloudPhoneNodeRequest : Tea.TeaModel {
 
     public var phoneDataVolume: Int32?
 
+    public var promotionId: String?
+
     public var upBandwidthLimit: Int32?
 
     public override init() {
@@ -968,6 +970,9 @@ public class ChangeCloudPhoneNodeRequest : Tea.TeaModel {
         if self.phoneDataVolume != nil {
             map["PhoneDataVolume"] = self.phoneDataVolume!
         }
+        if self.promotionId != nil {
+            map["PromotionId"] = self.promotionId!
+        }
         if self.upBandwidthLimit != nil {
             map["UpBandwidthLimit"] = self.upBandwidthLimit!
         }
@@ -993,6 +998,9 @@ public class ChangeCloudPhoneNodeRequest : Tea.TeaModel {
         }
         if let value = dict["PhoneDataVolume"] as? Int32 {
             self.phoneDataVolume = value
+        }
+        if let value = dict["PromotionId"] as? String {
+            self.promotionId = value
         }
         if let value = dict["UpBandwidthLimit"] as? Int32 {
             self.upBandwidthLimit = value
@@ -1622,6 +1630,8 @@ public class CreateAndroidInstanceGroupRequest : Tea.TeaModel {
 
     public var policyGroupId: String?
 
+    public var promotionId: String?
+
     public var tag: [CreateAndroidInstanceGroupRequest.Tag]?
 
     public var vSwitchId: String?
@@ -1707,6 +1717,9 @@ public class CreateAndroidInstanceGroupRequest : Tea.TeaModel {
         if self.policyGroupId != nil {
             map["PolicyGroupId"] = self.policyGroupId!
         }
+        if self.promotionId != nil {
+            map["PromotionId"] = self.promotionId!
+        }
         if self.tag != nil {
             var tmp : [Any] = []
             for k in self.tag! {
@@ -1789,6 +1802,9 @@ public class CreateAndroidInstanceGroupRequest : Tea.TeaModel {
         }
         if let value = dict["PolicyGroupId"] as? String {
             self.policyGroupId = value
+        }
+        if let value = dict["PromotionId"] as? String {
+            self.promotionId = value
         }
         if let value = dict["Tag"] as? [Any?] {
             var tmp : [CreateAndroidInstanceGroupRequest.Tag] = []
@@ -1892,6 +1908,8 @@ public class CreateAndroidInstanceGroupShrinkRequest : Tea.TeaModel {
 
     public var policyGroupId: String?
 
+    public var promotionId: String?
+
     public var tag: [CreateAndroidInstanceGroupShrinkRequest.Tag]?
 
     public var vSwitchId: String?
@@ -1976,6 +1994,9 @@ public class CreateAndroidInstanceGroupShrinkRequest : Tea.TeaModel {
         if self.policyGroupId != nil {
             map["PolicyGroupId"] = self.policyGroupId!
         }
+        if self.promotionId != nil {
+            map["PromotionId"] = self.promotionId!
+        }
         if self.tag != nil {
             var tmp : [Any] = []
             for k in self.tag! {
@@ -2056,6 +2077,9 @@ public class CreateAndroidInstanceGroupShrinkRequest : Tea.TeaModel {
         }
         if let value = dict["PolicyGroupId"] as? String {
             self.policyGroupId = value
+        }
+        if let value = dict["PromotionId"] as? String {
+            self.promotionId = value
         }
         if let value = dict["Tag"] as? [Any?] {
             var tmp : [CreateAndroidInstanceGroupShrinkRequest.Tag] = []
@@ -2859,6 +2883,8 @@ public class CreateCloudPhoneNodeRequest : Tea.TeaModel {
 
     public var phoneDataVolume: Int32?
 
+    public var promotionId: String?
+
     public var resolutionHeight: Int32?
 
     public var resolutionWidth: Int32?
@@ -2949,6 +2975,9 @@ public class CreateCloudPhoneNodeRequest : Tea.TeaModel {
         }
         if self.phoneDataVolume != nil {
             map["PhoneDataVolume"] = self.phoneDataVolume!
+        }
+        if self.promotionId != nil {
+            map["PromotionId"] = self.promotionId!
         }
         if self.resolutionHeight != nil {
             map["ResolutionHeight"] = self.resolutionHeight!
@@ -3046,6 +3075,9 @@ public class CreateCloudPhoneNodeRequest : Tea.TeaModel {
         }
         if let value = dict["PhoneDataVolume"] as? Int32 {
             self.phoneDataVolume = value
+        }
+        if let value = dict["PromotionId"] as? String {
+            self.promotionId = value
         }
         if let value = dict["ResolutionHeight"] as? Int32 {
             self.resolutionHeight = value
@@ -3164,6 +3196,8 @@ public class CreateCloudPhoneNodeShrinkRequest : Tea.TeaModel {
 
     public var phoneDataVolume: Int32?
 
+    public var promotionId: String?
+
     public var resolutionHeight: Int32?
 
     public var resolutionWidth: Int32?
@@ -3252,6 +3286,9 @@ public class CreateCloudPhoneNodeShrinkRequest : Tea.TeaModel {
         }
         if self.phoneDataVolume != nil {
             map["PhoneDataVolume"] = self.phoneDataVolume!
+        }
+        if self.promotionId != nil {
+            map["PromotionId"] = self.promotionId!
         }
         if self.resolutionHeight != nil {
             map["ResolutionHeight"] = self.resolutionHeight!
@@ -3345,6 +3382,9 @@ public class CreateCloudPhoneNodeShrinkRequest : Tea.TeaModel {
         }
         if let value = dict["PhoneDataVolume"] as? Int32 {
             self.phoneDataVolume = value
+        }
+        if let value = dict["PromotionId"] as? String {
+            self.promotionId = value
         }
         if let value = dict["ResolutionHeight"] as? Int32 {
             self.resolutionHeight = value
@@ -12709,6 +12749,8 @@ public class ExpandDataVolumeRequest : Tea.TeaModel {
 
     public var phoneDataVolume: Int32?
 
+    public var promotionId: String?
+
     public var shareDataVolume: Int32?
 
     public override init() {
@@ -12737,6 +12779,9 @@ public class ExpandDataVolumeRequest : Tea.TeaModel {
         if self.phoneDataVolume != nil {
             map["PhoneDataVolume"] = self.phoneDataVolume!
         }
+        if self.promotionId != nil {
+            map["PromotionId"] = self.promotionId!
+        }
         if self.shareDataVolume != nil {
             map["ShareDataVolume"] = self.shareDataVolume!
         }
@@ -12756,6 +12801,9 @@ public class ExpandDataVolumeRequest : Tea.TeaModel {
         }
         if let value = dict["PhoneDataVolume"] as? Int32 {
             self.phoneDataVolume = value
+        }
+        if let value = dict["PromotionId"] as? String {
+            self.promotionId = value
         }
         if let value = dict["ShareDataVolume"] as? Int32 {
             self.shareDataVolume = value
@@ -15402,6 +15450,8 @@ public class ModifyInstanceChargeTypeRequest : Tea.TeaModel {
 
     public var periodUnit: String?
 
+    public var promotionId: String?
+
     public override init() {
         super.init()
     }
@@ -15434,6 +15484,9 @@ public class ModifyInstanceChargeTypeRequest : Tea.TeaModel {
         if self.periodUnit != nil {
             map["PeriodUnit"] = self.periodUnit!
         }
+        if self.promotionId != nil {
+            map["PromotionId"] = self.promotionId!
+        }
         return map
     }
 
@@ -15456,6 +15509,9 @@ public class ModifyInstanceChargeTypeRequest : Tea.TeaModel {
         }
         if let value = dict["PeriodUnit"] as? String {
             self.periodUnit = value
+        }
+        if let value = dict["PromotionId"] as? String {
+            self.promotionId = value
         }
     }
 }
@@ -17115,6 +17171,8 @@ public class RenewAndroidInstanceGroupsRequest : Tea.TeaModel {
 
     public var periodUnit: String?
 
+    public var promotionId: String?
+
     public override init() {
         super.init()
     }
@@ -17141,6 +17199,9 @@ public class RenewAndroidInstanceGroupsRequest : Tea.TeaModel {
         if self.periodUnit != nil {
             map["PeriodUnit"] = self.periodUnit!
         }
+        if self.promotionId != nil {
+            map["PromotionId"] = self.promotionId!
+        }
         return map
     }
 
@@ -17157,6 +17218,9 @@ public class RenewAndroidInstanceGroupsRequest : Tea.TeaModel {
         }
         if let value = dict["PeriodUnit"] as? String {
             self.periodUnit = value
+        }
+        if let value = dict["PromotionId"] as? String {
+            self.promotionId = value
         }
     }
 }
@@ -17261,6 +17325,8 @@ public class RenewCloudPhoneNodesRequest : Tea.TeaModel {
 
     public var periodUnit: String?
 
+    public var promotionId: String?
+
     public override init() {
         super.init()
     }
@@ -17290,6 +17356,9 @@ public class RenewCloudPhoneNodesRequest : Tea.TeaModel {
         if self.periodUnit != nil {
             map["PeriodUnit"] = self.periodUnit!
         }
+        if self.promotionId != nil {
+            map["PromotionId"] = self.promotionId!
+        }
         return map
     }
 
@@ -17309,6 +17378,9 @@ public class RenewCloudPhoneNodesRequest : Tea.TeaModel {
         }
         if let value = dict["PeriodUnit"] as? String {
             self.periodUnit = value
+        }
+        if let value = dict["PromotionId"] as? String {
+            self.promotionId = value
         }
     }
 }
@@ -19418,6 +19490,8 @@ public class UpgradeAndroidInstanceGroupRequest : Tea.TeaModel {
 
     public var instanceGroupId: String?
 
+    public var promotionId: String?
+
     public override init() {
         super.init()
     }
@@ -19441,6 +19515,9 @@ public class UpgradeAndroidInstanceGroupRequest : Tea.TeaModel {
         if self.instanceGroupId != nil {
             map["InstanceGroupId"] = self.instanceGroupId!
         }
+        if self.promotionId != nil {
+            map["PromotionId"] = self.promotionId!
+        }
         return map
     }
 
@@ -19454,6 +19531,9 @@ public class UpgradeAndroidInstanceGroupRequest : Tea.TeaModel {
         }
         if let value = dict["InstanceGroupId"] as? String {
             self.instanceGroupId = value
+        }
+        if let value = dict["PromotionId"] as? String {
+            self.promotionId = value
         }
     }
 }
