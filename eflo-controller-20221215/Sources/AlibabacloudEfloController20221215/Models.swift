@@ -3829,6 +3829,118 @@ public class DeleteClusterResponse : Tea.TeaModel {
     }
 }
 
+public class DeleteNodeRequest : Tea.TeaModel {
+    public var nodeId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.nodeId != nil {
+            map["NodeId"] = self.nodeId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["NodeId"] as? String {
+            self.nodeId = value
+        }
+    }
+}
+
+public class DeleteNodeResponseBody : Tea.TeaModel {
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+    }
+}
+
+public class DeleteNodeResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: DeleteNodeResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = DeleteNodeResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
 public class DeleteNodeGroupRequest : Tea.TeaModel {
     public var clusterId: String?
 
@@ -8608,6 +8720,8 @@ public class ListClusterNodesRequest : Tea.TeaModel {
 
     public var nodeGroupId: String?
 
+    public var operatingStates: [String]?
+
     public var resourceGroupId: String?
 
     public var tags: [ListClusterNodesRequest.Tags]?
@@ -8638,6 +8752,9 @@ public class ListClusterNodesRequest : Tea.TeaModel {
         if self.nodeGroupId != nil {
             map["NodeGroupId"] = self.nodeGroupId!
         }
+        if self.operatingStates != nil {
+            map["OperatingStates"] = self.operatingStates!
+        }
         if self.resourceGroupId != nil {
             map["ResourceGroupId"] = self.resourceGroupId!
         }
@@ -8664,6 +8781,9 @@ public class ListClusterNodesRequest : Tea.TeaModel {
         }
         if let value = dict["NodeGroupId"] as? String {
             self.nodeGroupId = value
+        }
+        if let value = dict["OperatingStates"] as? [String] {
+            self.operatingStates = value
         }
         if let value = dict["ResourceGroupId"] as? String {
             self.resourceGroupId = value
