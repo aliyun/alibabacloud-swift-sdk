@@ -959,6 +959,8 @@ public class ScorePageItem : Tea.TeaModel {
 
     public var displayLink: String?
 
+    public var hostAuthorityScore: Double?
+
     public var hostLogo: String?
 
     public var hostname: String?
@@ -1010,6 +1012,9 @@ public class ScorePageItem : Tea.TeaModel {
         }
         if self.displayLink != nil {
             map["displayLink"] = self.displayLink!
+        }
+        if self.hostAuthorityScore != nil {
+            map["hostAuthorityScore"] = self.hostAuthorityScore!
         }
         if self.hostLogo != nil {
             map["hostLogo"] = self.hostLogo!
@@ -1073,6 +1078,9 @@ public class ScorePageItem : Tea.TeaModel {
         }
         if let value = dict["displayLink"] as? String {
             self.displayLink = value
+        }
+        if let value = dict["hostAuthorityScore"] as? Double {
+            self.hostAuthorityScore = value
         }
         if let value = dict["hostLogo"] as? String {
             self.hostLogo = value
