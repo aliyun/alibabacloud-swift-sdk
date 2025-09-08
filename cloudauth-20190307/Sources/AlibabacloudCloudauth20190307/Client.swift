@@ -1807,6 +1807,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.mode)) {
             query["Mode"] = request.mode ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.needMultiFaceCheck)) {
+            query["NeedMultiFaceCheck"] = request.needMultiFaceCheck ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.ossBucketName)) {
             query["OssBucketName"] = request.ossBucketName ?? "";
         }

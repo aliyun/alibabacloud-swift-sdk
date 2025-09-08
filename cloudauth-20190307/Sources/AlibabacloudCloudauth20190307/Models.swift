@@ -7995,6 +7995,8 @@ public class InitFaceVerifyRequest : Tea.TeaModel {
 
     public var model: String?
 
+    public var needMultiFaceCheck: String?
+
     public var ossBucketName: String?
 
     public var ossObjectName: String?
@@ -8104,6 +8106,9 @@ public class InitFaceVerifyRequest : Tea.TeaModel {
         }
         if self.model != nil {
             map["Model"] = self.model!
+        }
+        if self.needMultiFaceCheck != nil {
+            map["NeedMultiFaceCheck"] = self.needMultiFaceCheck!
         }
         if self.ossBucketName != nil {
             map["OssBucketName"] = self.ossBucketName!
@@ -8220,6 +8225,9 @@ public class InitFaceVerifyRequest : Tea.TeaModel {
         }
         if let value = dict["Model"] as? String {
             self.model = value
+        }
+        if let value = dict["NeedMultiFaceCheck"] as? String {
+            self.needMultiFaceCheck = value
         }
         if let value = dict["OssBucketName"] as? String {
             self.ossBucketName = value
