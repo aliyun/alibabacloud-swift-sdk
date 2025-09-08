@@ -17967,6 +17967,8 @@ public class CreateJobRequest : Tea.TeaModel {
 
     public var backoffLimit: Int64?
 
+    public var bestEffortType: String?
+
     public var command: String?
 
     public var commandArgs: String?
@@ -18002,6 +18004,8 @@ public class CreateJobRequest : Tea.TeaModel {
     public var mountHost: String?
 
     public var namespaceId: String?
+
+    public var nasConfigs: String?
 
     public var nasId: String?
 
@@ -18095,6 +18099,9 @@ public class CreateJobRequest : Tea.TeaModel {
         if self.backoffLimit != nil {
             map["BackoffLimit"] = self.backoffLimit!
         }
+        if self.bestEffortType != nil {
+            map["BestEffortType"] = self.bestEffortType!
+        }
         if self.command != nil {
             map["Command"] = self.command!
         }
@@ -18148,6 +18155,9 @@ public class CreateJobRequest : Tea.TeaModel {
         }
         if self.namespaceId != nil {
             map["NamespaceId"] = self.namespaceId!
+        }
+        if self.nasConfigs != nil {
+            map["NasConfigs"] = self.nasConfigs!
         }
         if self.nasId != nil {
             map["NasId"] = self.nasId!
@@ -18262,6 +18272,9 @@ public class CreateJobRequest : Tea.TeaModel {
         if let value = dict["BackoffLimit"] as? Int64 {
             self.backoffLimit = value
         }
+        if let value = dict["BestEffortType"] as? String {
+            self.bestEffortType = value
+        }
         if let value = dict["Command"] as? String {
             self.command = value
         }
@@ -18315,6 +18328,9 @@ public class CreateJobRequest : Tea.TeaModel {
         }
         if let value = dict["NamespaceId"] as? String {
             self.namespaceId = value
+        }
+        if let value = dict["NasConfigs"] as? String {
+            self.nasConfigs = value
         }
         if let value = dict["NasId"] as? String {
             self.nasId = value
@@ -27172,6 +27188,231 @@ public class DescribeApplicationInstancesResponse : Tea.TeaModel {
     }
 }
 
+public class DescribeApplicationMseServiceRequest : Tea.TeaModel {
+    public var appId: String?
+
+    public var enableAhas: Bool?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.appId != nil {
+            map["AppId"] = self.appId!
+        }
+        if self.enableAhas != nil {
+            map["EnableAhas"] = self.enableAhas!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["AppId"] as? String {
+            self.appId = value
+        }
+        if let value = dict["EnableAhas"] as? Bool {
+            self.enableAhas = value
+        }
+    }
+}
+
+public class DescribeApplicationMseServiceResponseBody : Tea.TeaModel {
+    public class Data : Tea.TeaModel {
+        public var mseAppId: String?
+
+        public var mseAppName: String?
+
+        public var mseAppNameSpace: String?
+
+        public var status: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.mseAppId != nil {
+                map["MseAppId"] = self.mseAppId!
+            }
+            if self.mseAppName != nil {
+                map["MseAppName"] = self.mseAppName!
+            }
+            if self.mseAppNameSpace != nil {
+                map["MseAppNameSpace"] = self.mseAppNameSpace!
+            }
+            if self.status != nil {
+                map["Status"] = self.status!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["MseAppId"] as? String {
+                self.mseAppId = value
+            }
+            if let value = dict["MseAppName"] as? String {
+                self.mseAppName = value
+            }
+            if let value = dict["MseAppNameSpace"] as? String {
+                self.mseAppNameSpace = value
+            }
+            if let value = dict["Status"] as? String {
+                self.status = value
+            }
+        }
+    }
+    public var code: String?
+
+    public var data: DescribeApplicationMseServiceResponseBody.Data?
+
+    public var errorCode: String?
+
+    public var message: String?
+
+    public var requestId: String?
+
+    public var success: Bool?
+
+    public var traceId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.data?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.code != nil {
+            map["Code"] = self.code!
+        }
+        if self.data != nil {
+            map["Data"] = self.data?.toMap()
+        }
+        if self.errorCode != nil {
+            map["ErrorCode"] = self.errorCode!
+        }
+        if self.message != nil {
+            map["Message"] = self.message!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.success != nil {
+            map["Success"] = self.success!
+        }
+        if self.traceId != nil {
+            map["TraceId"] = self.traceId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["Code"] as? String {
+            self.code = value
+        }
+        if let value = dict["Data"] as? [String: Any?] {
+            var model = DescribeApplicationMseServiceResponseBody.Data()
+            model.fromMap(value)
+            self.data = model
+        }
+        if let value = dict["ErrorCode"] as? String {
+            self.errorCode = value
+        }
+        if let value = dict["Message"] as? String {
+            self.message = value
+        }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+        if let value = dict["Success"] as? Bool {
+            self.success = value
+        }
+        if let value = dict["TraceId"] as? String {
+            self.traceId = value
+        }
+    }
+}
+
+public class DescribeApplicationMseServiceResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: DescribeApplicationMseServiceResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = DescribeApplicationMseServiceResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
 public class DescribeApplicationNlbsRequest : Tea.TeaModel {
     public var appId: String?
 
@@ -31030,6 +31271,8 @@ public class DescribeConfigMapResponse : Tea.TeaModel {
 }
 
 public class DescribeConfigurationPriceRequest : Tea.TeaModel {
+    public var bestEffortType: String?
+
     public var cpu: Int32?
 
     public var memory: Int32?
@@ -31054,6 +31297,9 @@ public class DescribeConfigurationPriceRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.bestEffortType != nil {
+            map["BestEffortType"] = self.bestEffortType!
+        }
         if self.cpu != nil {
             map["Cpu"] = self.cpu!
         }
@@ -31074,6 +31320,9 @@ public class DescribeConfigurationPriceRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["BestEffortType"] as? String {
+            self.bestEffortType = value
+        }
         if let value = dict["Cpu"] as? Int32 {
             self.cpu = value
         }
@@ -34105,6 +34354,8 @@ public class DescribeJobResponseBody : Tea.TeaModel {
 
         public var backoffLimit: Int64?
 
+        public var bestEffortType: String?
+
         public var command: String?
 
         public var commandArgs: String?
@@ -34242,6 +34493,9 @@ public class DescribeJobResponseBody : Tea.TeaModel {
             }
             if self.backoffLimit != nil {
                 map["BackoffLimit"] = self.backoffLimit!
+            }
+            if self.bestEffortType != nil {
+                map["BestEffortType"] = self.bestEffortType!
             }
             if self.command != nil {
                 map["Command"] = self.command!
@@ -34440,6 +34694,9 @@ public class DescribeJobResponseBody : Tea.TeaModel {
             }
             if let value = dict["BackoffLimit"] as? Int64 {
                 self.backoffLimit = value
+            }
+            if let value = dict["BestEffortType"] as? String {
+                self.bestEffortType = value
             }
             if let value = dict["Command"] as? String {
                 self.command = value
@@ -56389,6 +56646,8 @@ public class UpdateJobRequest : Tea.TeaModel {
 
     public var backoffLimit: Int64?
 
+    public var bestEffortType: String?
+
     public var command: String?
 
     public var commandArgs: String?
@@ -56418,6 +56677,8 @@ public class UpdateJobRequest : Tea.TeaModel {
     public var mountDesc: String?
 
     public var mountHost: String?
+
+    public var nasConfigs: String?
 
     public var nasId: String?
 
@@ -56497,6 +56758,9 @@ public class UpdateJobRequest : Tea.TeaModel {
         if self.backoffLimit != nil {
             map["BackoffLimit"] = self.backoffLimit!
         }
+        if self.bestEffortType != nil {
+            map["BestEffortType"] = self.bestEffortType!
+        }
         if self.command != nil {
             map["Command"] = self.command!
         }
@@ -56541,6 +56805,9 @@ public class UpdateJobRequest : Tea.TeaModel {
         }
         if self.mountHost != nil {
             map["MountHost"] = self.mountHost!
+        }
+        if self.nasConfigs != nil {
+            map["NasConfigs"] = self.nasConfigs!
         }
         if self.nasId != nil {
             map["NasId"] = self.nasId!
@@ -56637,6 +56904,9 @@ public class UpdateJobRequest : Tea.TeaModel {
         if let value = dict["BackoffLimit"] as? Int64 {
             self.backoffLimit = value
         }
+        if let value = dict["BestEffortType"] as? String {
+            self.bestEffortType = value
+        }
         if let value = dict["Command"] as? String {
             self.command = value
         }
@@ -56681,6 +56951,9 @@ public class UpdateJobRequest : Tea.TeaModel {
         }
         if let value = dict["MountHost"] as? String {
             self.mountHost = value
+        }
+        if let value = dict["NasConfigs"] as? String {
+            self.nasConfigs = value
         }
         if let value = dict["NasId"] as? String {
             self.nasId = value

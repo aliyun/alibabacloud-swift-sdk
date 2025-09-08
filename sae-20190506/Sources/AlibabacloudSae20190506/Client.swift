@@ -848,6 +848,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.backoffLimit)) {
             query["BackoffLimit"] = request.backoffLimit!;
         }
+        if (!TeaUtils.Client.isUnset(request.bestEffortType)) {
+            query["BestEffortType"] = request.bestEffortType ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.command)) {
             query["Command"] = request.command ?? "";
         }
@@ -895,6 +898,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.namespaceId)) {
             query["NamespaceId"] = request.namespaceId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.nasConfigs)) {
+            query["NasConfigs"] = request.nasConfigs ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.nasId)) {
             query["NasId"] = request.nasId ?? "";
@@ -2266,6 +2272,42 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func describeApplicationMseServiceWithOptions(_ request: DescribeApplicationMseServiceRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> DescribeApplicationMseServiceResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.appId)) {
+            query["AppId"] = request.appId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.enableAhas)) {
+            query["EnableAhas"] = request.enableAhas!;
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String],
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "DescribeApplicationMseService",
+            "version": "2019-05-06",
+            "protocol": "HTTPS",
+            "pathname": "/pop/v1/sam/app/applicationMseService",
+            "method": "GET",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(DescribeApplicationMseServiceResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func describeApplicationMseService(_ request: DescribeApplicationMseServiceRequest) async throws -> DescribeApplicationMseServiceResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await describeApplicationMseServiceWithOptions(request as! DescribeApplicationMseServiceRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func describeApplicationNlbsWithOptions(_ request: DescribeApplicationNlbsRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> DescribeApplicationNlbsResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
@@ -2539,6 +2581,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func describeConfigurationPriceWithOptions(_ request: DescribeConfigurationPriceRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> DescribeConfigurationPriceResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.bestEffortType)) {
+            query["BestEffortType"] = request.bestEffortType ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.cpu)) {
             query["Cpu"] = request.cpu!;
         }
@@ -5996,6 +6041,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.backoffLimit)) {
             query["BackoffLimit"] = request.backoffLimit!;
         }
+        if (!TeaUtils.Client.isUnset(request.bestEffortType)) {
+            query["BestEffortType"] = request.bestEffortType ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.command)) {
             query["Command"] = request.command ?? "";
         }
@@ -6034,6 +6082,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.mountHost)) {
             query["MountHost"] = request.mountHost ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.nasConfigs)) {
+            query["NasConfigs"] = request.nasConfigs ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.nasId)) {
             query["NasId"] = request.nasId ?? "";
