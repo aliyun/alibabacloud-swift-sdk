@@ -25366,6 +25366,10 @@ public class DescribeDBClustersResponseBody : Tea.TeaModel {
                     }
                 }
             }
+            public var AINodeNumber: Int32?
+
+            public var AINodeSpec: String?
+
             public var category: String?
 
             public var commodityCode: String?
@@ -25468,6 +25472,12 @@ public class DescribeDBClustersResponseBody : Tea.TeaModel {
 
             public override func toMap() -> [String : Any] {
                 var map = super.toMap()
+                if self.AINodeNumber != nil {
+                    map["AINodeNumber"] = self.AINodeNumber!
+                }
+                if self.AINodeSpec != nil {
+                    map["AINodeSpec"] = self.AINodeSpec!
+                }
                 if self.category != nil {
                     map["Category"] = self.category!
                 }
@@ -25602,6 +25612,12 @@ public class DescribeDBClustersResponseBody : Tea.TeaModel {
 
             public override func fromMap(_ dict: [String: Any?]?) -> Void {
                 guard let dict else { return }
+                if let value = dict["AINodeNumber"] as? Int32 {
+                    self.AINodeNumber = value
+                }
+                if let value = dict["AINodeSpec"] as? String {
+                    self.AINodeSpec = value
+                }
                 if let value = dict["Category"] as? String {
                     self.category = value
                 }
@@ -31823,6 +31839,10 @@ public class DescribeJobResourceUsageRequest : Tea.TeaModel {
 
     public var endTime: String?
 
+    public var pageNumber: Int32?
+
+    public var pageSize: Int32?
+
     public var startTime: String?
 
     public override init() {
@@ -31845,6 +31865,12 @@ public class DescribeJobResourceUsageRequest : Tea.TeaModel {
         if self.endTime != nil {
             map["EndTime"] = self.endTime!
         }
+        if self.pageNumber != nil {
+            map["PageNumber"] = self.pageNumber!
+        }
+        if self.pageSize != nil {
+            map["PageSize"] = self.pageSize!
+        }
         if self.startTime != nil {
             map["StartTime"] = self.startTime!
         }
@@ -31858,6 +31884,12 @@ public class DescribeJobResourceUsageRequest : Tea.TeaModel {
         }
         if let value = dict["EndTime"] as? String {
             self.endTime = value
+        }
+        if let value = dict["PageNumber"] as? Int32 {
+            self.pageNumber = value
+        }
+        if let value = dict["PageSize"] as? Int32 {
+            self.pageSize = value
         }
         if let value = dict["StartTime"] as? String {
             self.startTime = value
@@ -32000,7 +32032,13 @@ public class DescribeJobResourceUsageResponseBody : Tea.TeaModel {
 
         public var jobAcuUsage: [DescribeJobResourceUsageResponseBody.Data.JobAcuUsage]?
 
+        public var pageNumber: Int32?
+
+        public var pageSize: Int32?
+
         public var startTime: String?
+
+        public var totalCount: Int32?
 
         public override init() {
             super.init()
@@ -32029,8 +32067,17 @@ public class DescribeJobResourceUsageResponseBody : Tea.TeaModel {
                 }
                 map["JobAcuUsage"] = tmp
             }
+            if self.pageNumber != nil {
+                map["PageNumber"] = self.pageNumber!
+            }
+            if self.pageSize != nil {
+                map["PageSize"] = self.pageSize!
+            }
             if self.startTime != nil {
                 map["StartTime"] = self.startTime!
+            }
+            if self.totalCount != nil {
+                map["TotalCount"] = self.totalCount!
             }
             return map
         }
@@ -32056,8 +32103,17 @@ public class DescribeJobResourceUsageResponseBody : Tea.TeaModel {
                 }
                 self.jobAcuUsage = tmp
             }
+            if let value = dict["PageNumber"] as? Int32 {
+                self.pageNumber = value
+            }
+            if let value = dict["PageSize"] as? Int32 {
+                self.pageSize = value
+            }
             if let value = dict["StartTime"] as? String {
                 self.startTime = value
+            }
+            if let value = dict["TotalCount"] as? Int32 {
+                self.totalCount = value
             }
         }
     }
