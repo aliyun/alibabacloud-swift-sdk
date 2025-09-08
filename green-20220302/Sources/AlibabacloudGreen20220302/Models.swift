@@ -1844,6 +1844,8 @@ public class DescribeMultimodalModerationResultResponseBody : Tea.TeaModel {
         }
         public var commentDatas: [DescribeMultimodalModerationResultResponseBody.Data.CommentDatas]?
 
+        public var dataId: String?
+
         public var mainData: DescribeMultimodalModerationResultResponseBody.Data.MainData?
 
         public var reqId: String?
@@ -1872,6 +1874,9 @@ public class DescribeMultimodalModerationResultResponseBody : Tea.TeaModel {
                 }
                 map["CommentDatas"] = tmp
             }
+            if self.dataId != nil {
+                map["DataId"] = self.dataId!
+            }
             if self.mainData != nil {
                 map["MainData"] = self.mainData?.toMap()
             }
@@ -1898,6 +1903,9 @@ public class DescribeMultimodalModerationResultResponseBody : Tea.TeaModel {
                     }
                 }
                 self.commentDatas = tmp
+            }
+            if let value = dict["DataId"] as? String {
+                self.dataId = value
             }
             if let value = dict["MainData"] as? [String: Any?] {
                 var model = DescribeMultimodalModerationResultResponseBody.Data.MainData()
