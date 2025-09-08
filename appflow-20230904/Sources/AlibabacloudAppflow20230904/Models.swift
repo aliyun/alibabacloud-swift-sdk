@@ -10,6 +10,8 @@ public class GenerateUserSessionTokenRequest : Tea.TeaModel {
 
     public var expireSecond: Int64?
 
+    public var extraInfo: String?
+
     public var integrateId: String?
 
     public var userAvatar: String?
@@ -38,6 +40,9 @@ public class GenerateUserSessionTokenRequest : Tea.TeaModel {
         if self.expireSecond != nil {
             map["ExpireSecond"] = self.expireSecond!
         }
+        if self.extraInfo != nil {
+            map["ExtraInfo"] = self.extraInfo!
+        }
         if self.integrateId != nil {
             map["IntegrateId"] = self.integrateId!
         }
@@ -60,6 +65,9 @@ public class GenerateUserSessionTokenRequest : Tea.TeaModel {
         }
         if let value = dict["ExpireSecond"] as? Int64 {
             self.expireSecond = value
+        }
+        if let value = dict["ExtraInfo"] as? String {
+            self.extraInfo = value
         }
         if let value = dict["IntegrateId"] as? String {
             self.integrateId = value

@@ -33,6 +33,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.expireSecond)) {
             query["ExpireSecond"] = request.expireSecond!;
         }
+        if (!TeaUtils.Client.isUnset(request.extraInfo)) {
+            query["ExtraInfo"] = request.extraInfo ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.integrateId)) {
             query["IntegrateId"] = request.integrateId ?? "";
         }
