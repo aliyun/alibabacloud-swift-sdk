@@ -6,6 +6,44 @@ import AlibabaCloudOpenApiUtil
 import AlibabacloudEndpointUtil
 
 public class AIAgentConfig : Tea.TeaModel {
+    public class AmbientSoundConfig : Tea.TeaModel {
+        public var resourceId: String?
+
+        public var volume: Int32?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.resourceId != nil {
+                map["ResourceId"] = self.resourceId!
+            }
+            if self.volume != nil {
+                map["Volume"] = self.volume!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["ResourceId"] as? String {
+                self.resourceId = value
+            }
+            if let value = dict["Volume"] as? Int32 {
+                self.volume = value
+            }
+        }
+    }
     public class AsrConfig : Tea.TeaModel {
         public var asrHotWords: [String]?
 
@@ -625,6 +663,36 @@ public class AIAgentConfig : Tea.TeaModel {
                 }
             }
         }
+        public class LookAway : Tea.TeaModel {
+            public var enabled: Bool?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.enabled != nil {
+                    map["Enabled"] = self.enabled!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["Enabled"] as? Bool {
+                    self.enabled = value
+                }
+            }
+        }
         public class PeopleCount : Tea.TeaModel {
             public var enabled: Bool?
 
@@ -699,6 +767,8 @@ public class AIAgentConfig : Tea.TeaModel {
 
         public var invalidFrameMotion: AIAgentConfig.VcrConfig.InvalidFrameMotion?
 
+        public var lookAway: AIAgentConfig.VcrConfig.LookAway?
+
         public var peopleCount: AIAgentConfig.VcrConfig.PeopleCount?
 
         public var stillFrameMotion: AIAgentConfig.VcrConfig.StillFrameMotion?
@@ -716,6 +786,7 @@ public class AIAgentConfig : Tea.TeaModel {
             try self.equipment?.validate()
             try self.headMotion?.validate()
             try self.invalidFrameMotion?.validate()
+            try self.lookAway?.validate()
             try self.peopleCount?.validate()
             try self.stillFrameMotion?.validate()
         }
@@ -730,6 +801,9 @@ public class AIAgentConfig : Tea.TeaModel {
             }
             if self.invalidFrameMotion != nil {
                 map["InvalidFrameMotion"] = self.invalidFrameMotion?.toMap()
+            }
+            if self.lookAway != nil {
+                map["LookAway"] = self.lookAway?.toMap()
             }
             if self.peopleCount != nil {
                 map["PeopleCount"] = self.peopleCount?.toMap()
@@ -756,6 +830,11 @@ public class AIAgentConfig : Tea.TeaModel {
                 var model = AIAgentConfig.VcrConfig.InvalidFrameMotion()
                 model.fromMap(value)
                 self.invalidFrameMotion = model
+            }
+            if let value = dict["LookAway"] as? [String: Any?] {
+                var model = AIAgentConfig.VcrConfig.LookAway()
+                model.fromMap(value)
+                self.lookAway = model
             }
             if let value = dict["PeopleCount"] as? [String: Any?] {
                 var model = AIAgentConfig.VcrConfig.PeopleCount()
@@ -807,6 +886,8 @@ public class AIAgentConfig : Tea.TeaModel {
             }
         }
     }
+    public var ambientSoundConfig: AIAgentConfig.AmbientSoundConfig?
+
     public var asrConfig: AIAgentConfig.AsrConfig?
 
     public var avatarConfig: AIAgentConfig.AvatarConfig?
@@ -859,6 +940,7 @@ public class AIAgentConfig : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
+        try self.ambientSoundConfig?.validate()
         try self.asrConfig?.validate()
         try self.avatarConfig?.validate()
         try self.interruptConfig?.validate()
@@ -871,6 +953,9 @@ public class AIAgentConfig : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.ambientSoundConfig != nil {
+            map["AmbientSoundConfig"] = self.ambientSoundConfig?.toMap()
+        }
         if self.asrConfig != nil {
             map["AsrConfig"] = self.asrConfig?.toMap()
         }
@@ -939,6 +1024,11 @@ public class AIAgentConfig : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["AmbientSoundConfig"] as? [String: Any?] {
+            var model = AIAgentConfig.AmbientSoundConfig()
+            model.fromMap(value)
+            self.ambientSoundConfig = model
+        }
         if let value = dict["AsrConfig"] as? [String: Any?] {
             var model = AIAgentConfig.AsrConfig()
             model.fromMap(value)
@@ -1022,6 +1112,44 @@ public class AIAgentConfig : Tea.TeaModel {
 }
 
 public class AIAgentOutboundCallConfig : Tea.TeaModel {
+    public class AmbientSoundConfig : Tea.TeaModel {
+        public var resourceId: String?
+
+        public var volume: Int32?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.resourceId != nil {
+                map["ResourceId"] = self.resourceId!
+            }
+            if self.volume != nil {
+                map["Volume"] = self.volume!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["ResourceId"] as? String {
+                self.resourceId = value
+            }
+            if let value = dict["Volume"] as? Int32 {
+                self.volume = value
+            }
+        }
+    }
     public class AsrConfig : Tea.TeaModel {
         public var asrHotWords: [String]?
 
@@ -1512,6 +1640,8 @@ public class AIAgentOutboundCallConfig : Tea.TeaModel {
             }
         }
     }
+    public var ambientSoundConfig: AIAgentOutboundCallConfig.AmbientSoundConfig?
+
     public var asrConfig: AIAgentOutboundCallConfig.AsrConfig?
 
     public var enableIntelligentSegment: Bool?
@@ -1538,6 +1668,7 @@ public class AIAgentOutboundCallConfig : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
+        try self.ambientSoundConfig?.validate()
         try self.asrConfig?.validate()
         try self.interruptConfig?.validate()
         try self.llmConfig?.validate()
@@ -1547,6 +1678,9 @@ public class AIAgentOutboundCallConfig : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.ambientSoundConfig != nil {
+            map["AmbientSoundConfig"] = self.ambientSoundConfig?.toMap()
+        }
         if self.asrConfig != nil {
             map["AsrConfig"] = self.asrConfig?.toMap()
         }
@@ -1576,6 +1710,11 @@ public class AIAgentOutboundCallConfig : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["AmbientSoundConfig"] as? [String: Any?] {
+            var model = AIAgentOutboundCallConfig.AmbientSoundConfig()
+            model.fromMap(value)
+            self.ambientSoundConfig = model
+        }
         if let value = dict["AsrConfig"] as? [String: Any?] {
             var model = AIAgentOutboundCallConfig.AsrConfig()
             model.fromMap(value)
@@ -85571,6 +85710,8 @@ public class SendAIAgentSpeechRequest : Tea.TeaModel {
 
     public var text: String?
 
+    public var type: String?
+
     public override init() {
         super.init()
     }
@@ -85594,6 +85735,9 @@ public class SendAIAgentSpeechRequest : Tea.TeaModel {
         if self.text != nil {
             map["Text"] = self.text!
         }
+        if self.type != nil {
+            map["Type"] = self.type!
+        }
         return map
     }
 
@@ -85607,6 +85751,9 @@ public class SendAIAgentSpeechRequest : Tea.TeaModel {
         }
         if let value = dict["Text"] as? String {
             self.text = value
+        }
+        if let value = dict["Type"] as? String {
+            self.type = value
         }
     }
 }
