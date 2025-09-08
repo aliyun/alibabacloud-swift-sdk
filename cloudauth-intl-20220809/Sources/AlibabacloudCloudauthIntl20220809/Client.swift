@@ -400,6 +400,54 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func credentialRecognitionIntlWithOptions(_ request: CredentialRecognitionIntlRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> CredentialRecognitionIntlResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.docType)) {
+            query["DocType"] = request.docType ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.fraudCheck)) {
+            query["FraudCheck"] = request.fraudCheck ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.ocrArea)) {
+            query["OcrArea"] = request.ocrArea ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.productCode)) {
+            query["ProductCode"] = request.productCode ?? "";
+        }
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.credentialOcrPictureBase64)) {
+            body["CredentialOcrPictureBase64"] = request.credentialOcrPictureBase64 ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.credentialOcrPictureUrl)) {
+            body["CredentialOcrPictureUrl"] = request.credentialOcrPictureUrl ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query),
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "CredentialRecognitionIntl",
+            "version": "2022-08-09",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(CredentialRecognitionIntlResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func credentialRecognitionIntl(_ request: CredentialRecognitionIntlRequest) async throws -> CredentialRecognitionIntlResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await credentialRecognitionIntlWithOptions(request as! CredentialRecognitionIntlRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func credentialVerifyIntlWithOptions(_ request: CredentialVerifyIntlRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> CredentialVerifyIntlResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
