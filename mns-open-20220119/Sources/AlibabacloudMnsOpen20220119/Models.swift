@@ -816,6 +816,8 @@ public class CreateQueueRequest : Tea.TeaModel {
 
     public var queueName: String?
 
+    public var queueType: String?
+
     public var tag: [CreateQueueRequest.Tag]?
 
     public var tenantRateLimitPolicy: CreateQueueRequest.TenantRateLimitPolicy?
@@ -859,6 +861,9 @@ public class CreateQueueRequest : Tea.TeaModel {
         if self.queueName != nil {
             map["QueueName"] = self.queueName!
         }
+        if self.queueType != nil {
+            map["QueueType"] = self.queueType!
+        }
         if self.tag != nil {
             var tmp : [Any] = []
             for k in self.tag! {
@@ -899,6 +904,9 @@ public class CreateQueueRequest : Tea.TeaModel {
         }
         if let value = dict["QueueName"] as? String {
             self.queueName = value
+        }
+        if let value = dict["QueueType"] as? String {
+            self.queueType = value
         }
         if let value = dict["Tag"] as? [Any?] {
             var tmp : [CreateQueueRequest.Tag] = []
@@ -977,6 +985,8 @@ public class CreateQueueShrinkRequest : Tea.TeaModel {
 
     public var queueName: String?
 
+    public var queueType: String?
+
     public var tag: [CreateQueueShrinkRequest.Tag]?
 
     public var tenantRateLimitPolicyShrink: String?
@@ -1018,6 +1028,9 @@ public class CreateQueueShrinkRequest : Tea.TeaModel {
         if self.queueName != nil {
             map["QueueName"] = self.queueName!
         }
+        if self.queueType != nil {
+            map["QueueType"] = self.queueType!
+        }
         if self.tag != nil {
             var tmp : [Any] = []
             for k in self.tag! {
@@ -1056,6 +1069,9 @@ public class CreateQueueShrinkRequest : Tea.TeaModel {
         }
         if let value = dict["QueueName"] as? String {
             self.queueName = value
+        }
+        if let value = dict["QueueType"] as? String {
+            self.queueType = value
         }
         if let value = dict["Tag"] as? [Any?] {
             var tmp : [CreateQueueShrinkRequest.Tag] = []
@@ -1296,6 +1312,8 @@ public class CreateTopicRequest : Tea.TeaModel {
 
     public var topicName: String?
 
+    public var topicType: String?
+
     public override init() {
         super.init()
     }
@@ -1326,6 +1344,9 @@ public class CreateTopicRequest : Tea.TeaModel {
         if self.topicName != nil {
             map["TopicName"] = self.topicName!
         }
+        if self.topicType != nil {
+            map["TopicType"] = self.topicType!
+        }
         return map
     }
 
@@ -1352,6 +1373,9 @@ public class CreateTopicRequest : Tea.TeaModel {
         }
         if let value = dict["TopicName"] as? String {
             self.topicName = value
+        }
+        if let value = dict["TopicType"] as? String {
+            self.topicType = value
         }
     }
 }
@@ -3169,6 +3193,8 @@ public class GetQueueAttributesResponseBody : Tea.TeaModel {
 
         public var queueName: String?
 
+        public var queueType: String?
+
         public var tags: [GetQueueAttributesResponseBody.Data.Tags]?
 
         public var tenantRateLimitPolicy: GetQueueAttributesResponseBody.Data.TenantRateLimitPolicy?
@@ -3227,6 +3253,9 @@ public class GetQueueAttributesResponseBody : Tea.TeaModel {
             if self.queueName != nil {
                 map["QueueName"] = self.queueName!
             }
+            if self.queueType != nil {
+                map["QueueType"] = self.queueType!
+            }
             if self.tags != nil {
                 var tmp : [Any] = []
                 for k in self.tags! {
@@ -3282,6 +3311,9 @@ public class GetQueueAttributesResponseBody : Tea.TeaModel {
             }
             if let value = dict["QueueName"] as? String {
                 self.queueName = value
+            }
+            if let value = dict["QueueType"] as? String {
+                self.queueType = value
             }
             if let value = dict["Tags"] as? [Any?] {
                 var tmp : [GetQueueAttributesResponseBody.Data.Tags] = []
@@ -3931,6 +3963,8 @@ public class GetTopicAttributesResponseBody : Tea.TeaModel {
 
         public var topicName: String?
 
+        public var topicType: String?
+
         public override init() {
             super.init()
         }
@@ -3973,6 +4007,9 @@ public class GetTopicAttributesResponseBody : Tea.TeaModel {
             if self.topicName != nil {
                 map["TopicName"] = self.topicName!
             }
+            if self.topicType != nil {
+                map["TopicType"] = self.topicType!
+            }
             return map
         }
 
@@ -4011,6 +4048,9 @@ public class GetTopicAttributesResponseBody : Tea.TeaModel {
             }
             if let value = dict["TopicName"] as? String {
                 self.topicName = value
+            }
+            if let value = dict["TopicType"] as? String {
+                self.topicType = value
             }
         }
     }
@@ -4832,6 +4872,8 @@ public class ListQueueRequest : Tea.TeaModel {
 
     public var queueName: String?
 
+    public var queueType: String?
+
     public var tag: [ListQueueRequest.Tag]?
 
     public override init() {
@@ -4857,6 +4899,9 @@ public class ListQueueRequest : Tea.TeaModel {
         if self.queueName != nil {
             map["QueueName"] = self.queueName!
         }
+        if self.queueType != nil {
+            map["QueueType"] = self.queueType!
+        }
         if self.tag != nil {
             var tmp : [Any] = []
             for k in self.tag! {
@@ -4877,6 +4922,9 @@ public class ListQueueRequest : Tea.TeaModel {
         }
         if let value = dict["QueueName"] as? String {
             self.queueName = value
+        }
+        if let value = dict["QueueType"] as? String {
+            self.queueType = value
         }
         if let value = dict["Tag"] as? [Any?] {
             var tmp : [ListQueueRequest.Tag] = []
@@ -5005,6 +5053,8 @@ public class ListQueueResponseBody : Tea.TeaModel {
 
             public var queueName: String?
 
+            public var queueType: String?
+
             public var tags: [ListQueueResponseBody.Data.PageData.Tags]?
 
             public var visibilityTimeout: Int64?
@@ -5060,6 +5110,9 @@ public class ListQueueResponseBody : Tea.TeaModel {
                 if self.queueName != nil {
                     map["QueueName"] = self.queueName!
                 }
+                if self.queueType != nil {
+                    map["QueueType"] = self.queueType!
+                }
                 if self.tags != nil {
                     var tmp : [Any] = []
                     for k in self.tags! {
@@ -5112,6 +5165,9 @@ public class ListQueueResponseBody : Tea.TeaModel {
                 }
                 if let value = dict["QueueName"] as? String {
                     self.queueName = value
+                }
+                if let value = dict["QueueType"] as? String {
+                    self.queueType = value
                 }
                 if let value = dict["Tags"] as? [Any?] {
                     var tmp : [ListQueueResponseBody.Data.PageData.Tags] = []
@@ -5806,6 +5862,8 @@ public class ListTopicRequest : Tea.TeaModel {
 
     public var topicName: String?
 
+    public var topicType: String?
+
     public override init() {
         super.init()
     }
@@ -5836,6 +5894,9 @@ public class ListTopicRequest : Tea.TeaModel {
         if self.topicName != nil {
             map["TopicName"] = self.topicName!
         }
+        if self.topicType != nil {
+            map["TopicType"] = self.topicType!
+        }
         return map
     }
 
@@ -5862,6 +5923,9 @@ public class ListTopicRequest : Tea.TeaModel {
         }
         if let value = dict["TopicName"] as? String {
             self.topicName = value
+        }
+        if let value = dict["TopicType"] as? String {
+            self.topicType = value
         }
     }
 }
@@ -5925,6 +5989,8 @@ public class ListTopicResponseBody : Tea.TeaModel {
 
             public var topicName: String?
 
+            public var topicType: String?
+
             public var topicUrl: String?
 
             public override init() {
@@ -5972,6 +6038,9 @@ public class ListTopicResponseBody : Tea.TeaModel {
                 if self.topicName != nil {
                     map["TopicName"] = self.topicName!
                 }
+                if self.topicType != nil {
+                    map["TopicType"] = self.topicType!
+                }
                 if self.topicUrl != nil {
                     map["TopicUrl"] = self.topicUrl!
                 }
@@ -6016,6 +6085,9 @@ public class ListTopicResponseBody : Tea.TeaModel {
                 }
                 if let value = dict["TopicName"] as? String {
                     self.topicName = value
+                }
+                if let value = dict["TopicType"] as? String {
+                    self.topicType = value
                 }
                 if let value = dict["TopicUrl"] as? String {
                     self.topicUrl = value
