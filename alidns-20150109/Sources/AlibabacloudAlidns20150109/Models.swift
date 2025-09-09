@@ -2918,6 +2918,350 @@ public class AddGtmRecoveryPlanResponse : Tea.TeaModel {
     }
 }
 
+public class AddRecursionRecordRequest : Tea.TeaModel {
+    public var clientToken: String?
+
+    public var priority: Int32?
+
+    public var requestSource: String?
+
+    public var rr: String?
+
+    public var ttl: Int32?
+
+    public var type: String?
+
+    public var userClientIp: String?
+
+    public var value: String?
+
+    public var weight: Int32?
+
+    public var zoneId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.clientToken != nil {
+            map["ClientToken"] = self.clientToken!
+        }
+        if self.priority != nil {
+            map["Priority"] = self.priority!
+        }
+        if self.requestSource != nil {
+            map["RequestSource"] = self.requestSource!
+        }
+        if self.rr != nil {
+            map["Rr"] = self.rr!
+        }
+        if self.ttl != nil {
+            map["Ttl"] = self.ttl!
+        }
+        if self.type != nil {
+            map["Type"] = self.type!
+        }
+        if self.userClientIp != nil {
+            map["UserClientIp"] = self.userClientIp!
+        }
+        if self.value != nil {
+            map["Value"] = self.value!
+        }
+        if self.weight != nil {
+            map["Weight"] = self.weight!
+        }
+        if self.zoneId != nil {
+            map["ZoneId"] = self.zoneId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["ClientToken"] as? String {
+            self.clientToken = value
+        }
+        if let value = dict["Priority"] as? Int32 {
+            self.priority = value
+        }
+        if let value = dict["RequestSource"] as? String {
+            self.requestSource = value
+        }
+        if let value = dict["Rr"] as? String {
+            self.rr = value
+        }
+        if let value = dict["Ttl"] as? Int32 {
+            self.ttl = value
+        }
+        if let value = dict["Type"] as? String {
+            self.type = value
+        }
+        if let value = dict["UserClientIp"] as? String {
+            self.userClientIp = value
+        }
+        if let value = dict["Value"] as? String {
+            self.value = value
+        }
+        if let value = dict["Weight"] as? Int32 {
+            self.weight = value
+        }
+        if let value = dict["ZoneId"] as? String {
+            self.zoneId = value
+        }
+    }
+}
+
+public class AddRecursionRecordResponseBody : Tea.TeaModel {
+    public var recordId: String?
+
+    public var requestId: String?
+
+    public var success: Bool?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.recordId != nil {
+            map["RecordId"] = self.recordId!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.success != nil {
+            map["Success"] = self.success!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["RecordId"] as? String {
+            self.recordId = value
+        }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+        if let value = dict["Success"] as? Bool {
+            self.success = value
+        }
+    }
+}
+
+public class AddRecursionRecordResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: AddRecursionRecordResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = AddRecursionRecordResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
+public class AddRecursionZoneRequest : Tea.TeaModel {
+    public var clientToken: String?
+
+    public var proxyPattern: String?
+
+    public var zoneName: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.clientToken != nil {
+            map["ClientToken"] = self.clientToken!
+        }
+        if self.proxyPattern != nil {
+            map["ProxyPattern"] = self.proxyPattern!
+        }
+        if self.zoneName != nil {
+            map["ZoneName"] = self.zoneName!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["ClientToken"] as? String {
+            self.clientToken = value
+        }
+        if let value = dict["ProxyPattern"] as? String {
+            self.proxyPattern = value
+        }
+        if let value = dict["ZoneName"] as? String {
+            self.zoneName = value
+        }
+    }
+}
+
+public class AddRecursionZoneResponseBody : Tea.TeaModel {
+    public var requestId: String?
+
+    public var success: Bool?
+
+    public var zoneId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.success != nil {
+            map["Success"] = self.success!
+        }
+        if self.zoneId != nil {
+            map["ZoneId"] = self.zoneId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+        if let value = dict["Success"] as? Bool {
+            self.success = value
+        }
+        if let value = dict["ZoneId"] as? String {
+            self.zoneId = value
+        }
+    }
+}
+
+public class AddRecursionZoneResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: AddRecursionZoneResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = AddRecursionZoneResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
 public class BindInstanceDomainsRequest : Tea.TeaModel {
     public var domainNames: String?
 
@@ -6678,6 +7022,246 @@ public class DeleteGtmRecoveryPlanResponse : Tea.TeaModel {
         }
         if let value = dict["body"] as? [String: Any?] {
             var model = DeleteGtmRecoveryPlanResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
+public class DeleteRecursionRecordRequest : Tea.TeaModel {
+    public var clientToken: String?
+
+    public var recordId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.clientToken != nil {
+            map["ClientToken"] = self.clientToken!
+        }
+        if self.recordId != nil {
+            map["RecordId"] = self.recordId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["ClientToken"] as? String {
+            self.clientToken = value
+        }
+        if let value = dict["RecordId"] as? String {
+            self.recordId = value
+        }
+    }
+}
+
+public class DeleteRecursionRecordResponseBody : Tea.TeaModel {
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+    }
+}
+
+public class DeleteRecursionRecordResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: DeleteRecursionRecordResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = DeleteRecursionRecordResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
+public class DeleteRecursionZoneRequest : Tea.TeaModel {
+    public var clientToken: String?
+
+    public var zoneId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.clientToken != nil {
+            map["ClientToken"] = self.clientToken!
+        }
+        if self.zoneId != nil {
+            map["ZoneId"] = self.zoneId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["ClientToken"] as? String {
+            self.clientToken = value
+        }
+        if let value = dict["ZoneId"] as? String {
+            self.zoneId = value
+        }
+    }
+}
+
+public class DeleteRecursionZoneResponseBody : Tea.TeaModel {
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+    }
+}
+
+public class DeleteRecursionZoneResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: DeleteRecursionZoneResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = DeleteRecursionZoneResponseBody()
             model.fromMap(value)
             self.body = model
         }
@@ -35466,6 +36050,564 @@ public class DescribeRecordStatisticsSummaryResponse : Tea.TeaModel {
     }
 }
 
+public class DescribeRecursionRecordRequest : Tea.TeaModel {
+    public var recordId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.recordId != nil {
+            map["RecordId"] = self.recordId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["RecordId"] as? String {
+            self.recordId = value
+        }
+    }
+}
+
+public class DescribeRecursionRecordResponseBody : Tea.TeaModel {
+    public var createTime: String?
+
+    public var createTimestamp: Int64?
+
+    public var priority: Int32?
+
+    public var recordId: String?
+
+    public var remark: String?
+
+    public var requestId: String?
+
+    public var rr: String?
+
+    public var ttl: Int32?
+
+    public var type: String?
+
+    public var updateTime: String?
+
+    public var updateTimestamp: Int64?
+
+    public var value: String?
+
+    public var weight: Int32?
+
+    public var zoneId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.createTime != nil {
+            map["CreateTime"] = self.createTime!
+        }
+        if self.createTimestamp != nil {
+            map["CreateTimestamp"] = self.createTimestamp!
+        }
+        if self.priority != nil {
+            map["Priority"] = self.priority!
+        }
+        if self.recordId != nil {
+            map["RecordId"] = self.recordId!
+        }
+        if self.remark != nil {
+            map["Remark"] = self.remark!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.rr != nil {
+            map["Rr"] = self.rr!
+        }
+        if self.ttl != nil {
+            map["Ttl"] = self.ttl!
+        }
+        if self.type != nil {
+            map["Type"] = self.type!
+        }
+        if self.updateTime != nil {
+            map["UpdateTime"] = self.updateTime!
+        }
+        if self.updateTimestamp != nil {
+            map["UpdateTimestamp"] = self.updateTimestamp!
+        }
+        if self.value != nil {
+            map["Value"] = self.value!
+        }
+        if self.weight != nil {
+            map["Weight"] = self.weight!
+        }
+        if self.zoneId != nil {
+            map["ZoneId"] = self.zoneId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["CreateTime"] as? String {
+            self.createTime = value
+        }
+        if let value = dict["CreateTimestamp"] as? Int64 {
+            self.createTimestamp = value
+        }
+        if let value = dict["Priority"] as? Int32 {
+            self.priority = value
+        }
+        if let value = dict["RecordId"] as? String {
+            self.recordId = value
+        }
+        if let value = dict["Remark"] as? String {
+            self.remark = value
+        }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+        if let value = dict["Rr"] as? String {
+            self.rr = value
+        }
+        if let value = dict["Ttl"] as? Int32 {
+            self.ttl = value
+        }
+        if let value = dict["Type"] as? String {
+            self.type = value
+        }
+        if let value = dict["UpdateTime"] as? String {
+            self.updateTime = value
+        }
+        if let value = dict["UpdateTimestamp"] as? Int64 {
+            self.updateTimestamp = value
+        }
+        if let value = dict["Value"] as? String {
+            self.value = value
+        }
+        if let value = dict["Weight"] as? Int32 {
+            self.weight = value
+        }
+        if let value = dict["ZoneId"] as? String {
+            self.zoneId = value
+        }
+    }
+}
+
+public class DescribeRecursionRecordResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: DescribeRecursionRecordResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = DescribeRecursionRecordResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
+public class DescribeRecursionZoneRequest : Tea.TeaModel {
+    public var zoneId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.zoneId != nil {
+            map["ZoneId"] = self.zoneId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["ZoneId"] as? String {
+            self.zoneId = value
+        }
+    }
+}
+
+public class DescribeRecursionZoneResponseBody : Tea.TeaModel {
+    public class EffectiveScopes : Tea.TeaModel {
+        public class EffectiveScope : Tea.TeaModel {
+            public class Scopes : Tea.TeaModel {
+                public var scope: [String]?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.scope != nil {
+                        map["Scope"] = self.scope!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                    guard let dict else { return }
+                    if let value = dict["Scope"] as? [String] {
+                        self.scope = value
+                    }
+                }
+            }
+            public var effectiveType: String?
+
+            public var scopes: DescribeRecursionZoneResponseBody.EffectiveScopes.EffectiveScope.Scopes?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+                try self.scopes?.validate()
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.effectiveType != nil {
+                    map["EffectiveType"] = self.effectiveType!
+                }
+                if self.scopes != nil {
+                    map["Scopes"] = self.scopes?.toMap()
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["EffectiveType"] as? String {
+                    self.effectiveType = value
+                }
+                if let value = dict["Scopes"] as? [String: Any?] {
+                    var model = DescribeRecursionZoneResponseBody.EffectiveScopes.EffectiveScope.Scopes()
+                    model.fromMap(value)
+                    self.scopes = model
+                }
+            }
+        }
+        public var effectiveScope: [DescribeRecursionZoneResponseBody.EffectiveScopes.EffectiveScope]?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.effectiveScope != nil {
+                var tmp : [Any] = []
+                for k in self.effectiveScope! {
+                    tmp.append(k.toMap())
+                }
+                map["EffectiveScope"] = tmp
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["EffectiveScope"] as? [Any?] {
+                var tmp : [DescribeRecursionZoneResponseBody.EffectiveScopes.EffectiveScope] = []
+                for v in value {
+                    if v != nil {
+                        var model = DescribeRecursionZoneResponseBody.EffectiveScopes.EffectiveScope()
+                        if v != nil {
+                            model.fromMap(v as? [String: Any?])
+                        }
+                        tmp.append(model)
+                    }
+                }
+                self.effectiveScope = tmp
+            }
+        }
+    }
+    public var createTime: String?
+
+    public var createTimestamp: Int64?
+
+    public var creator: String?
+
+    public var creatorSubType: String?
+
+    public var creatorType: String?
+
+    public var effectiveScopes: DescribeRecursionZoneResponseBody.EffectiveScopes?
+
+    public var proxyPattern: String?
+
+    public var recordCount: Int32?
+
+    public var remark: String?
+
+    public var requestId: String?
+
+    public var updateTime: String?
+
+    public var updateTimestamp: Int64?
+
+    public var userId: String?
+
+    public var zoneId: String?
+
+    public var zoneName: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.effectiveScopes?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.createTime != nil {
+            map["CreateTime"] = self.createTime!
+        }
+        if self.createTimestamp != nil {
+            map["CreateTimestamp"] = self.createTimestamp!
+        }
+        if self.creator != nil {
+            map["Creator"] = self.creator!
+        }
+        if self.creatorSubType != nil {
+            map["CreatorSubType"] = self.creatorSubType!
+        }
+        if self.creatorType != nil {
+            map["CreatorType"] = self.creatorType!
+        }
+        if self.effectiveScopes != nil {
+            map["EffectiveScopes"] = self.effectiveScopes?.toMap()
+        }
+        if self.proxyPattern != nil {
+            map["ProxyPattern"] = self.proxyPattern!
+        }
+        if self.recordCount != nil {
+            map["RecordCount"] = self.recordCount!
+        }
+        if self.remark != nil {
+            map["Remark"] = self.remark!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.updateTime != nil {
+            map["UpdateTime"] = self.updateTime!
+        }
+        if self.updateTimestamp != nil {
+            map["UpdateTimestamp"] = self.updateTimestamp!
+        }
+        if self.userId != nil {
+            map["UserId"] = self.userId!
+        }
+        if self.zoneId != nil {
+            map["ZoneId"] = self.zoneId!
+        }
+        if self.zoneName != nil {
+            map["ZoneName"] = self.zoneName!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["CreateTime"] as? String {
+            self.createTime = value
+        }
+        if let value = dict["CreateTimestamp"] as? Int64 {
+            self.createTimestamp = value
+        }
+        if let value = dict["Creator"] as? String {
+            self.creator = value
+        }
+        if let value = dict["CreatorSubType"] as? String {
+            self.creatorSubType = value
+        }
+        if let value = dict["CreatorType"] as? String {
+            self.creatorType = value
+        }
+        if let value = dict["EffectiveScopes"] as? [String: Any?] {
+            var model = DescribeRecursionZoneResponseBody.EffectiveScopes()
+            model.fromMap(value)
+            self.effectiveScopes = model
+        }
+        if let value = dict["ProxyPattern"] as? String {
+            self.proxyPattern = value
+        }
+        if let value = dict["RecordCount"] as? Int32 {
+            self.recordCount = value
+        }
+        if let value = dict["Remark"] as? String {
+            self.remark = value
+        }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+        if let value = dict["UpdateTime"] as? String {
+            self.updateTime = value
+        }
+        if let value = dict["UpdateTimestamp"] as? Int64 {
+            self.updateTimestamp = value
+        }
+        if let value = dict["UserId"] as? String {
+            self.userId = value
+        }
+        if let value = dict["ZoneId"] as? String {
+            self.zoneId = value
+        }
+        if let value = dict["ZoneName"] as? String {
+            self.zoneName = value
+        }
+    }
+}
+
+public class DescribeRecursionZoneResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: DescribeRecursionZoneResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = DescribeRecursionZoneResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
 public class DescribeSubDomainRecordsRequest : Tea.TeaModel {
     public var domainName: String?
 
@@ -40921,6 +42063,974 @@ public class ListCloudGtmMonitorTemplatesResponse : Tea.TeaModel {
         }
         if let value = dict["body"] as? [String: Any?] {
             var model = ListCloudGtmMonitorTemplatesResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
+public class ListRecursionRecordsRequest : Tea.TeaModel {
+    public var enable: String?
+
+    public var maxResults: Int32?
+
+    public var nextToken: String?
+
+    public var pageNumber: Int32?
+
+    public var pageSize: Int32?
+
+    public var remark: String?
+
+    public var requestSource: String?
+
+    public var rr: String?
+
+    public var ttl: Int32?
+
+    public var type: String?
+
+    public var weight: Int32?
+
+    public var zoneId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.enable != nil {
+            map["Enable"] = self.enable!
+        }
+        if self.maxResults != nil {
+            map["MaxResults"] = self.maxResults!
+        }
+        if self.nextToken != nil {
+            map["NextToken"] = self.nextToken!
+        }
+        if self.pageNumber != nil {
+            map["PageNumber"] = self.pageNumber!
+        }
+        if self.pageSize != nil {
+            map["PageSize"] = self.pageSize!
+        }
+        if self.remark != nil {
+            map["Remark"] = self.remark!
+        }
+        if self.requestSource != nil {
+            map["RequestSource"] = self.requestSource!
+        }
+        if self.rr != nil {
+            map["Rr"] = self.rr!
+        }
+        if self.ttl != nil {
+            map["Ttl"] = self.ttl!
+        }
+        if self.type != nil {
+            map["Type"] = self.type!
+        }
+        if self.weight != nil {
+            map["Weight"] = self.weight!
+        }
+        if self.zoneId != nil {
+            map["ZoneId"] = self.zoneId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["Enable"] as? String {
+            self.enable = value
+        }
+        if let value = dict["MaxResults"] as? Int32 {
+            self.maxResults = value
+        }
+        if let value = dict["NextToken"] as? String {
+            self.nextToken = value
+        }
+        if let value = dict["PageNumber"] as? Int32 {
+            self.pageNumber = value
+        }
+        if let value = dict["PageSize"] as? Int32 {
+            self.pageSize = value
+        }
+        if let value = dict["Remark"] as? String {
+            self.remark = value
+        }
+        if let value = dict["RequestSource"] as? String {
+            self.requestSource = value
+        }
+        if let value = dict["Rr"] as? String {
+            self.rr = value
+        }
+        if let value = dict["Ttl"] as? Int32 {
+            self.ttl = value
+        }
+        if let value = dict["Type"] as? String {
+            self.type = value
+        }
+        if let value = dict["Weight"] as? Int32 {
+            self.weight = value
+        }
+        if let value = dict["ZoneId"] as? String {
+            self.zoneId = value
+        }
+    }
+}
+
+public class ListRecursionRecordsResponseBody : Tea.TeaModel {
+    public class Records : Tea.TeaModel {
+        public class Record : Tea.TeaModel {
+            public var createTime: String?
+
+            public var createTimestamp: Int64?
+
+            public var creator: Int64?
+
+            public var creatorSubType: String?
+
+            public var creatorType: String?
+
+            public var enableStatus: String?
+
+            public var priority: Int32?
+
+            public var recordId: String?
+
+            public var remark: String?
+
+            public var requestSource: String?
+
+            public var rr: String?
+
+            public var ttl: Int32?
+
+            public var type: String?
+
+            public var updateTime: String?
+
+            public var updateTimestamp: Int64?
+
+            public var value: String?
+
+            public var weight: Int32?
+
+            public var zoneId: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.createTime != nil {
+                    map["CreateTime"] = self.createTime!
+                }
+                if self.createTimestamp != nil {
+                    map["CreateTimestamp"] = self.createTimestamp!
+                }
+                if self.creator != nil {
+                    map["Creator"] = self.creator!
+                }
+                if self.creatorSubType != nil {
+                    map["CreatorSubType"] = self.creatorSubType!
+                }
+                if self.creatorType != nil {
+                    map["CreatorType"] = self.creatorType!
+                }
+                if self.enableStatus != nil {
+                    map["EnableStatus"] = self.enableStatus!
+                }
+                if self.priority != nil {
+                    map["Priority"] = self.priority!
+                }
+                if self.recordId != nil {
+                    map["RecordId"] = self.recordId!
+                }
+                if self.remark != nil {
+                    map["Remark"] = self.remark!
+                }
+                if self.requestSource != nil {
+                    map["RequestSource"] = self.requestSource!
+                }
+                if self.rr != nil {
+                    map["Rr"] = self.rr!
+                }
+                if self.ttl != nil {
+                    map["Ttl"] = self.ttl!
+                }
+                if self.type != nil {
+                    map["Type"] = self.type!
+                }
+                if self.updateTime != nil {
+                    map["UpdateTime"] = self.updateTime!
+                }
+                if self.updateTimestamp != nil {
+                    map["UpdateTimestamp"] = self.updateTimestamp!
+                }
+                if self.value != nil {
+                    map["Value"] = self.value!
+                }
+                if self.weight != nil {
+                    map["Weight"] = self.weight!
+                }
+                if self.zoneId != nil {
+                    map["ZoneId"] = self.zoneId!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["CreateTime"] as? String {
+                    self.createTime = value
+                }
+                if let value = dict["CreateTimestamp"] as? Int64 {
+                    self.createTimestamp = value
+                }
+                if let value = dict["Creator"] as? Int64 {
+                    self.creator = value
+                }
+                if let value = dict["CreatorSubType"] as? String {
+                    self.creatorSubType = value
+                }
+                if let value = dict["CreatorType"] as? String {
+                    self.creatorType = value
+                }
+                if let value = dict["EnableStatus"] as? String {
+                    self.enableStatus = value
+                }
+                if let value = dict["Priority"] as? Int32 {
+                    self.priority = value
+                }
+                if let value = dict["RecordId"] as? String {
+                    self.recordId = value
+                }
+                if let value = dict["Remark"] as? String {
+                    self.remark = value
+                }
+                if let value = dict["RequestSource"] as? String {
+                    self.requestSource = value
+                }
+                if let value = dict["Rr"] as? String {
+                    self.rr = value
+                }
+                if let value = dict["Ttl"] as? Int32 {
+                    self.ttl = value
+                }
+                if let value = dict["Type"] as? String {
+                    self.type = value
+                }
+                if let value = dict["UpdateTime"] as? String {
+                    self.updateTime = value
+                }
+                if let value = dict["UpdateTimestamp"] as? Int64 {
+                    self.updateTimestamp = value
+                }
+                if let value = dict["Value"] as? String {
+                    self.value = value
+                }
+                if let value = dict["Weight"] as? Int32 {
+                    self.weight = value
+                }
+                if let value = dict["ZoneId"] as? String {
+                    self.zoneId = value
+                }
+            }
+        }
+        public var record: [ListRecursionRecordsResponseBody.Records.Record]?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.record != nil {
+                var tmp : [Any] = []
+                for k in self.record! {
+                    tmp.append(k.toMap())
+                }
+                map["Record"] = tmp
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["Record"] as? [Any?] {
+                var tmp : [ListRecursionRecordsResponseBody.Records.Record] = []
+                for v in value {
+                    if v != nil {
+                        var model = ListRecursionRecordsResponseBody.Records.Record()
+                        if v != nil {
+                            model.fromMap(v as? [String: Any?])
+                        }
+                        tmp.append(model)
+                    }
+                }
+                self.record = tmp
+            }
+        }
+    }
+    public var maxResults: Int32?
+
+    public var nextToken: String?
+
+    public var pageNumber: Int32?
+
+    public var pageSize: Int32?
+
+    public var records: ListRecursionRecordsResponseBody.Records?
+
+    public var requestId: String?
+
+    public var totalItems: Int32?
+
+    public var totalPages: Int32?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.records?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.maxResults != nil {
+            map["MaxResults"] = self.maxResults!
+        }
+        if self.nextToken != nil {
+            map["NextToken"] = self.nextToken!
+        }
+        if self.pageNumber != nil {
+            map["PageNumber"] = self.pageNumber!
+        }
+        if self.pageSize != nil {
+            map["PageSize"] = self.pageSize!
+        }
+        if self.records != nil {
+            map["Records"] = self.records?.toMap()
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.totalItems != nil {
+            map["TotalItems"] = self.totalItems!
+        }
+        if self.totalPages != nil {
+            map["TotalPages"] = self.totalPages!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["MaxResults"] as? Int32 {
+            self.maxResults = value
+        }
+        if let value = dict["NextToken"] as? String {
+            self.nextToken = value
+        }
+        if let value = dict["PageNumber"] as? Int32 {
+            self.pageNumber = value
+        }
+        if let value = dict["PageSize"] as? Int32 {
+            self.pageSize = value
+        }
+        if let value = dict["Records"] as? [String: Any?] {
+            var model = ListRecursionRecordsResponseBody.Records()
+            model.fromMap(value)
+            self.records = model
+        }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+        if let value = dict["TotalItems"] as? Int32 {
+            self.totalItems = value
+        }
+        if let value = dict["TotalPages"] as? Int32 {
+            self.totalPages = value
+        }
+    }
+}
+
+public class ListRecursionRecordsResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: ListRecursionRecordsResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = ListRecursionRecordsResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
+public class ListRecursionZonesRequest : Tea.TeaModel {
+    public var maxResults: Int32?
+
+    public var nextToken: String?
+
+    public var pageNumber: Int32?
+
+    public var pageSize: Int32?
+
+    public var remark: String?
+
+    public var zoneName: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.maxResults != nil {
+            map["MaxResults"] = self.maxResults!
+        }
+        if self.nextToken != nil {
+            map["NextToken"] = self.nextToken!
+        }
+        if self.pageNumber != nil {
+            map["PageNumber"] = self.pageNumber!
+        }
+        if self.pageSize != nil {
+            map["PageSize"] = self.pageSize!
+        }
+        if self.remark != nil {
+            map["Remark"] = self.remark!
+        }
+        if self.zoneName != nil {
+            map["ZoneName"] = self.zoneName!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["MaxResults"] as? Int32 {
+            self.maxResults = value
+        }
+        if let value = dict["NextToken"] as? String {
+            self.nextToken = value
+        }
+        if let value = dict["PageNumber"] as? Int32 {
+            self.pageNumber = value
+        }
+        if let value = dict["PageSize"] as? Int32 {
+            self.pageSize = value
+        }
+        if let value = dict["Remark"] as? String {
+            self.remark = value
+        }
+        if let value = dict["ZoneName"] as? String {
+            self.zoneName = value
+        }
+    }
+}
+
+public class ListRecursionZonesResponseBody : Tea.TeaModel {
+    public class Zones : Tea.TeaModel {
+        public class Zone : Tea.TeaModel {
+            public class EffectiveScopes : Tea.TeaModel {
+                public class EffectiveScope : Tea.TeaModel {
+                    public class Scopes : Tea.TeaModel {
+                        public var scope: [String]?
+
+                        public override init() {
+                            super.init()
+                        }
+
+                        public init(_ dict: [String: Any]) {
+                            super.init()
+                            self.fromMap(dict)
+                        }
+
+                        public override func validate() throws -> Void {
+                        }
+
+                        public override func toMap() -> [String : Any] {
+                            var map = super.toMap()
+                            if self.scope != nil {
+                                map["Scope"] = self.scope!
+                            }
+                            return map
+                        }
+
+                        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                            guard let dict else { return }
+                            if let value = dict["Scope"] as? [String] {
+                                self.scope = value
+                            }
+                        }
+                    }
+                    public var effectiveType: String?
+
+                    public var scopes: ListRecursionZonesResponseBody.Zones.Zone.EffectiveScopes.EffectiveScope.Scopes?
+
+                    public override init() {
+                        super.init()
+                    }
+
+                    public init(_ dict: [String: Any]) {
+                        super.init()
+                        self.fromMap(dict)
+                    }
+
+                    public override func validate() throws -> Void {
+                        try self.scopes?.validate()
+                    }
+
+                    public override func toMap() -> [String : Any] {
+                        var map = super.toMap()
+                        if self.effectiveType != nil {
+                            map["EffectiveType"] = self.effectiveType!
+                        }
+                        if self.scopes != nil {
+                            map["Scopes"] = self.scopes?.toMap()
+                        }
+                        return map
+                    }
+
+                    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                        guard let dict else { return }
+                        if let value = dict["EffectiveType"] as? String {
+                            self.effectiveType = value
+                        }
+                        if let value = dict["Scopes"] as? [String: Any?] {
+                            var model = ListRecursionZonesResponseBody.Zones.Zone.EffectiveScopes.EffectiveScope.Scopes()
+                            model.fromMap(value)
+                            self.scopes = model
+                        }
+                    }
+                }
+                public var effectiveScope: [ListRecursionZonesResponseBody.Zones.Zone.EffectiveScopes.EffectiveScope]?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.effectiveScope != nil {
+                        var tmp : [Any] = []
+                        for k in self.effectiveScope! {
+                            tmp.append(k.toMap())
+                        }
+                        map["EffectiveScope"] = tmp
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                    guard let dict else { return }
+                    if let value = dict["EffectiveScope"] as? [Any?] {
+                        var tmp : [ListRecursionZonesResponseBody.Zones.Zone.EffectiveScopes.EffectiveScope] = []
+                        for v in value {
+                            if v != nil {
+                                var model = ListRecursionZonesResponseBody.Zones.Zone.EffectiveScopes.EffectiveScope()
+                                if v != nil {
+                                    model.fromMap(v as? [String: Any?])
+                                }
+                                tmp.append(model)
+                            }
+                        }
+                        self.effectiveScope = tmp
+                    }
+                }
+            }
+            public var createTime: String?
+
+            public var createTimestamp: Int64?
+
+            public var creator: String?
+
+            public var creatorSubType: String?
+
+            public var creatorType: String?
+
+            public var effectiveScopes: ListRecursionZonesResponseBody.Zones.Zone.EffectiveScopes?
+
+            public var proxyPattern: String?
+
+            public var recordCount: Int32?
+
+            public var remark: String?
+
+            public var updateTime: String?
+
+            public var updateTimestamp: Int64?
+
+            public var zoneId: String?
+
+            public var zoneName: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+                try self.effectiveScopes?.validate()
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.createTime != nil {
+                    map["CreateTime"] = self.createTime!
+                }
+                if self.createTimestamp != nil {
+                    map["CreateTimestamp"] = self.createTimestamp!
+                }
+                if self.creator != nil {
+                    map["Creator"] = self.creator!
+                }
+                if self.creatorSubType != nil {
+                    map["CreatorSubType"] = self.creatorSubType!
+                }
+                if self.creatorType != nil {
+                    map["CreatorType"] = self.creatorType!
+                }
+                if self.effectiveScopes != nil {
+                    map["EffectiveScopes"] = self.effectiveScopes?.toMap()
+                }
+                if self.proxyPattern != nil {
+                    map["ProxyPattern"] = self.proxyPattern!
+                }
+                if self.recordCount != nil {
+                    map["RecordCount"] = self.recordCount!
+                }
+                if self.remark != nil {
+                    map["Remark"] = self.remark!
+                }
+                if self.updateTime != nil {
+                    map["UpdateTime"] = self.updateTime!
+                }
+                if self.updateTimestamp != nil {
+                    map["UpdateTimestamp"] = self.updateTimestamp!
+                }
+                if self.zoneId != nil {
+                    map["ZoneId"] = self.zoneId!
+                }
+                if self.zoneName != nil {
+                    map["ZoneName"] = self.zoneName!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["CreateTime"] as? String {
+                    self.createTime = value
+                }
+                if let value = dict["CreateTimestamp"] as? Int64 {
+                    self.createTimestamp = value
+                }
+                if let value = dict["Creator"] as? String {
+                    self.creator = value
+                }
+                if let value = dict["CreatorSubType"] as? String {
+                    self.creatorSubType = value
+                }
+                if let value = dict["CreatorType"] as? String {
+                    self.creatorType = value
+                }
+                if let value = dict["EffectiveScopes"] as? [String: Any?] {
+                    var model = ListRecursionZonesResponseBody.Zones.Zone.EffectiveScopes()
+                    model.fromMap(value)
+                    self.effectiveScopes = model
+                }
+                if let value = dict["ProxyPattern"] as? String {
+                    self.proxyPattern = value
+                }
+                if let value = dict["RecordCount"] as? Int32 {
+                    self.recordCount = value
+                }
+                if let value = dict["Remark"] as? String {
+                    self.remark = value
+                }
+                if let value = dict["UpdateTime"] as? String {
+                    self.updateTime = value
+                }
+                if let value = dict["UpdateTimestamp"] as? Int64 {
+                    self.updateTimestamp = value
+                }
+                if let value = dict["ZoneId"] as? String {
+                    self.zoneId = value
+                }
+                if let value = dict["ZoneName"] as? String {
+                    self.zoneName = value
+                }
+            }
+        }
+        public var zone: [ListRecursionZonesResponseBody.Zones.Zone]?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.zone != nil {
+                var tmp : [Any] = []
+                for k in self.zone! {
+                    tmp.append(k.toMap())
+                }
+                map["Zone"] = tmp
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["Zone"] as? [Any?] {
+                var tmp : [ListRecursionZonesResponseBody.Zones.Zone] = []
+                for v in value {
+                    if v != nil {
+                        var model = ListRecursionZonesResponseBody.Zones.Zone()
+                        if v != nil {
+                            model.fromMap(v as? [String: Any?])
+                        }
+                        tmp.append(model)
+                    }
+                }
+                self.zone = tmp
+            }
+        }
+    }
+    public var maxResults: Int32?
+
+    public var nextToken: String?
+
+    public var pageNumber: Int32?
+
+    public var pageSize: Int32?
+
+    public var requestId: String?
+
+    public var totalItems: Int32?
+
+    public var totalPages: Int32?
+
+    public var zones: ListRecursionZonesResponseBody.Zones?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.zones?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.maxResults != nil {
+            map["MaxResults"] = self.maxResults!
+        }
+        if self.nextToken != nil {
+            map["NextToken"] = self.nextToken!
+        }
+        if self.pageNumber != nil {
+            map["PageNumber"] = self.pageNumber!
+        }
+        if self.pageSize != nil {
+            map["PageSize"] = self.pageSize!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.totalItems != nil {
+            map["TotalItems"] = self.totalItems!
+        }
+        if self.totalPages != nil {
+            map["TotalPages"] = self.totalPages!
+        }
+        if self.zones != nil {
+            map["Zones"] = self.zones?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["MaxResults"] as? Int32 {
+            self.maxResults = value
+        }
+        if let value = dict["NextToken"] as? String {
+            self.nextToken = value
+        }
+        if let value = dict["PageNumber"] as? Int32 {
+            self.pageNumber = value
+        }
+        if let value = dict["PageSize"] as? Int32 {
+            self.pageSize = value
+        }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+        if let value = dict["TotalItems"] as? Int32 {
+            self.totalItems = value
+        }
+        if let value = dict["TotalPages"] as? Int32 {
+            self.totalPages = value
+        }
+        if let value = dict["Zones"] as? [String: Any?] {
+            var model = ListRecursionZonesResponseBody.Zones()
+            model.fromMap(value)
+            self.zones = model
+        }
+    }
+}
+
+public class ListRecursionZonesResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: ListRecursionZonesResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = ListRecursionZonesResponseBody()
             model.fromMap(value)
             self.body = model
         }
@@ -46466,6 +48576,1169 @@ public class SearchCloudGtmMonitorTemplatesResponse : Tea.TeaModel {
         }
         if let value = dict["body"] as? [String: Any?] {
             var model = SearchCloudGtmMonitorTemplatesResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
+public class SearchRecursionRecordsRequest : Tea.TeaModel {
+    public var direction: String?
+
+    public var enableStatus: String?
+
+    public var maxResults: Int32?
+
+    public var nextToken: String?
+
+    public var orderBy: String?
+
+    public var pageNumber: Int32?
+
+    public var pageSize: Int32?
+
+    public var remark: String?
+
+    public var requestSource: String?
+
+    public var rr: String?
+
+    public var ttl: Int32?
+
+    public var type: String?
+
+    public var value: String?
+
+    public var weight: Int32?
+
+    public var zoneId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.direction != nil {
+            map["Direction"] = self.direction!
+        }
+        if self.enableStatus != nil {
+            map["EnableStatus"] = self.enableStatus!
+        }
+        if self.maxResults != nil {
+            map["MaxResults"] = self.maxResults!
+        }
+        if self.nextToken != nil {
+            map["NextToken"] = self.nextToken!
+        }
+        if self.orderBy != nil {
+            map["OrderBy"] = self.orderBy!
+        }
+        if self.pageNumber != nil {
+            map["PageNumber"] = self.pageNumber!
+        }
+        if self.pageSize != nil {
+            map["PageSize"] = self.pageSize!
+        }
+        if self.remark != nil {
+            map["Remark"] = self.remark!
+        }
+        if self.requestSource != nil {
+            map["RequestSource"] = self.requestSource!
+        }
+        if self.rr != nil {
+            map["Rr"] = self.rr!
+        }
+        if self.ttl != nil {
+            map["Ttl"] = self.ttl!
+        }
+        if self.type != nil {
+            map["Type"] = self.type!
+        }
+        if self.value != nil {
+            map["Value"] = self.value!
+        }
+        if self.weight != nil {
+            map["Weight"] = self.weight!
+        }
+        if self.zoneId != nil {
+            map["ZoneId"] = self.zoneId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["Direction"] as? String {
+            self.direction = value
+        }
+        if let value = dict["EnableStatus"] as? String {
+            self.enableStatus = value
+        }
+        if let value = dict["MaxResults"] as? Int32 {
+            self.maxResults = value
+        }
+        if let value = dict["NextToken"] as? String {
+            self.nextToken = value
+        }
+        if let value = dict["OrderBy"] as? String {
+            self.orderBy = value
+        }
+        if let value = dict["PageNumber"] as? Int32 {
+            self.pageNumber = value
+        }
+        if let value = dict["PageSize"] as? Int32 {
+            self.pageSize = value
+        }
+        if let value = dict["Remark"] as? String {
+            self.remark = value
+        }
+        if let value = dict["RequestSource"] as? String {
+            self.requestSource = value
+        }
+        if let value = dict["Rr"] as? String {
+            self.rr = value
+        }
+        if let value = dict["Ttl"] as? Int32 {
+            self.ttl = value
+        }
+        if let value = dict["Type"] as? String {
+            self.type = value
+        }
+        if let value = dict["Value"] as? String {
+            self.value = value
+        }
+        if let value = dict["Weight"] as? Int32 {
+            self.weight = value
+        }
+        if let value = dict["ZoneId"] as? String {
+            self.zoneId = value
+        }
+    }
+}
+
+public class SearchRecursionRecordsResponseBody : Tea.TeaModel {
+    public class Records : Tea.TeaModel {
+        public class Record : Tea.TeaModel {
+            public var createTime: String?
+
+            public var createTimestamp: Int64?
+
+            public var creator: Int64?
+
+            public var creatorSubType: String?
+
+            public var creatorType: String?
+
+            public var enableStatus: String?
+
+            public var priority: Int32?
+
+            public var recordId: String?
+
+            public var remark: String?
+
+            public var requestSource: String?
+
+            public var rr: String?
+
+            public var ttl: Int32?
+
+            public var type: String?
+
+            public var updateTime: String?
+
+            public var updateTimestamp: Int64?
+
+            public var value: String?
+
+            public var weight: String?
+
+            public var zoneId: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.createTime != nil {
+                    map["CreateTime"] = self.createTime!
+                }
+                if self.createTimestamp != nil {
+                    map["CreateTimestamp"] = self.createTimestamp!
+                }
+                if self.creator != nil {
+                    map["Creator"] = self.creator!
+                }
+                if self.creatorSubType != nil {
+                    map["CreatorSubType"] = self.creatorSubType!
+                }
+                if self.creatorType != nil {
+                    map["CreatorType"] = self.creatorType!
+                }
+                if self.enableStatus != nil {
+                    map["EnableStatus"] = self.enableStatus!
+                }
+                if self.priority != nil {
+                    map["Priority"] = self.priority!
+                }
+                if self.recordId != nil {
+                    map["RecordId"] = self.recordId!
+                }
+                if self.remark != nil {
+                    map["Remark"] = self.remark!
+                }
+                if self.requestSource != nil {
+                    map["RequestSource"] = self.requestSource!
+                }
+                if self.rr != nil {
+                    map["Rr"] = self.rr!
+                }
+                if self.ttl != nil {
+                    map["Ttl"] = self.ttl!
+                }
+                if self.type != nil {
+                    map["Type"] = self.type!
+                }
+                if self.updateTime != nil {
+                    map["UpdateTime"] = self.updateTime!
+                }
+                if self.updateTimestamp != nil {
+                    map["UpdateTimestamp"] = self.updateTimestamp!
+                }
+                if self.value != nil {
+                    map["Value"] = self.value!
+                }
+                if self.weight != nil {
+                    map["Weight"] = self.weight!
+                }
+                if self.zoneId != nil {
+                    map["ZoneId"] = self.zoneId!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["CreateTime"] as? String {
+                    self.createTime = value
+                }
+                if let value = dict["CreateTimestamp"] as? Int64 {
+                    self.createTimestamp = value
+                }
+                if let value = dict["Creator"] as? Int64 {
+                    self.creator = value
+                }
+                if let value = dict["CreatorSubType"] as? String {
+                    self.creatorSubType = value
+                }
+                if let value = dict["CreatorType"] as? String {
+                    self.creatorType = value
+                }
+                if let value = dict["EnableStatus"] as? String {
+                    self.enableStatus = value
+                }
+                if let value = dict["Priority"] as? Int32 {
+                    self.priority = value
+                }
+                if let value = dict["RecordId"] as? String {
+                    self.recordId = value
+                }
+                if let value = dict["Remark"] as? String {
+                    self.remark = value
+                }
+                if let value = dict["RequestSource"] as? String {
+                    self.requestSource = value
+                }
+                if let value = dict["Rr"] as? String {
+                    self.rr = value
+                }
+                if let value = dict["Ttl"] as? Int32 {
+                    self.ttl = value
+                }
+                if let value = dict["Type"] as? String {
+                    self.type = value
+                }
+                if let value = dict["UpdateTime"] as? String {
+                    self.updateTime = value
+                }
+                if let value = dict["UpdateTimestamp"] as? Int64 {
+                    self.updateTimestamp = value
+                }
+                if let value = dict["Value"] as? String {
+                    self.value = value
+                }
+                if let value = dict["Weight"] as? String {
+                    self.weight = value
+                }
+                if let value = dict["ZoneId"] as? String {
+                    self.zoneId = value
+                }
+            }
+        }
+        public var record: [SearchRecursionRecordsResponseBody.Records.Record]?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.record != nil {
+                var tmp : [Any] = []
+                for k in self.record! {
+                    tmp.append(k.toMap())
+                }
+                map["Record"] = tmp
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["Record"] as? [Any?] {
+                var tmp : [SearchRecursionRecordsResponseBody.Records.Record] = []
+                for v in value {
+                    if v != nil {
+                        var model = SearchRecursionRecordsResponseBody.Records.Record()
+                        if v != nil {
+                            model.fromMap(v as? [String: Any?])
+                        }
+                        tmp.append(model)
+                    }
+                }
+                self.record = tmp
+            }
+        }
+    }
+    public var maxResults: Int32?
+
+    public var nextToken: String?
+
+    public var pageNumber: Int32?
+
+    public var pageSize: Int32?
+
+    public var records: SearchRecursionRecordsResponseBody.Records?
+
+    public var requestId: String?
+
+    public var totalItems: Int32?
+
+    public var totalPages: Int32?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.records?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.maxResults != nil {
+            map["MaxResults"] = self.maxResults!
+        }
+        if self.nextToken != nil {
+            map["NextToken"] = self.nextToken!
+        }
+        if self.pageNumber != nil {
+            map["PageNumber"] = self.pageNumber!
+        }
+        if self.pageSize != nil {
+            map["PageSize"] = self.pageSize!
+        }
+        if self.records != nil {
+            map["Records"] = self.records?.toMap()
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.totalItems != nil {
+            map["TotalItems"] = self.totalItems!
+        }
+        if self.totalPages != nil {
+            map["TotalPages"] = self.totalPages!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["MaxResults"] as? Int32 {
+            self.maxResults = value
+        }
+        if let value = dict["NextToken"] as? String {
+            self.nextToken = value
+        }
+        if let value = dict["PageNumber"] as? Int32 {
+            self.pageNumber = value
+        }
+        if let value = dict["PageSize"] as? Int32 {
+            self.pageSize = value
+        }
+        if let value = dict["Records"] as? [String: Any?] {
+            var model = SearchRecursionRecordsResponseBody.Records()
+            model.fromMap(value)
+            self.records = model
+        }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+        if let value = dict["TotalItems"] as? Int32 {
+            self.totalItems = value
+        }
+        if let value = dict["TotalPages"] as? Int32 {
+            self.totalPages = value
+        }
+    }
+}
+
+public class SearchRecursionRecordsResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: SearchRecursionRecordsResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = SearchRecursionRecordsResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
+public class SearchRecursionZonesRequest : Tea.TeaModel {
+    public class EffectiveScopes : Tea.TeaModel {
+        public var effectiveType: String?
+
+        public var scope: [String]?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.effectiveType != nil {
+                map["EffectiveType"] = self.effectiveType!
+            }
+            if self.scope != nil {
+                map["Scope"] = self.scope!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["EffectiveType"] as? String {
+                self.effectiveType = value
+            }
+            if let value = dict["Scope"] as? [String] {
+                self.scope = value
+            }
+        }
+    }
+    public var direction: String?
+
+    public var effectiveScopes: [SearchRecursionZonesRequest.EffectiveScopes]?
+
+    public var maxResults: Int32?
+
+    public var nextToken: String?
+
+    public var orderBy: String?
+
+    public var pageNumber: Int32?
+
+    public var pageSize: Int32?
+
+    public var remark: String?
+
+    public var zoneName: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.direction != nil {
+            map["Direction"] = self.direction!
+        }
+        if self.effectiveScopes != nil {
+            var tmp : [Any] = []
+            for k in self.effectiveScopes! {
+                tmp.append(k.toMap())
+            }
+            map["EffectiveScopes"] = tmp
+        }
+        if self.maxResults != nil {
+            map["MaxResults"] = self.maxResults!
+        }
+        if self.nextToken != nil {
+            map["NextToken"] = self.nextToken!
+        }
+        if self.orderBy != nil {
+            map["OrderBy"] = self.orderBy!
+        }
+        if self.pageNumber != nil {
+            map["PageNumber"] = self.pageNumber!
+        }
+        if self.pageSize != nil {
+            map["PageSize"] = self.pageSize!
+        }
+        if self.remark != nil {
+            map["Remark"] = self.remark!
+        }
+        if self.zoneName != nil {
+            map["ZoneName"] = self.zoneName!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["Direction"] as? String {
+            self.direction = value
+        }
+        if let value = dict["EffectiveScopes"] as? [Any?] {
+            var tmp : [SearchRecursionZonesRequest.EffectiveScopes] = []
+            for v in value {
+                if v != nil {
+                    var model = SearchRecursionZonesRequest.EffectiveScopes()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.effectiveScopes = tmp
+        }
+        if let value = dict["MaxResults"] as? Int32 {
+            self.maxResults = value
+        }
+        if let value = dict["NextToken"] as? String {
+            self.nextToken = value
+        }
+        if let value = dict["OrderBy"] as? String {
+            self.orderBy = value
+        }
+        if let value = dict["PageNumber"] as? Int32 {
+            self.pageNumber = value
+        }
+        if let value = dict["PageSize"] as? Int32 {
+            self.pageSize = value
+        }
+        if let value = dict["Remark"] as? String {
+            self.remark = value
+        }
+        if let value = dict["ZoneName"] as? String {
+            self.zoneName = value
+        }
+    }
+}
+
+public class SearchRecursionZonesShrinkRequest : Tea.TeaModel {
+    public var direction: String?
+
+    public var effectiveScopesShrink: String?
+
+    public var maxResults: Int32?
+
+    public var nextToken: String?
+
+    public var orderBy: String?
+
+    public var pageNumber: Int32?
+
+    public var pageSize: Int32?
+
+    public var remark: String?
+
+    public var zoneName: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.direction != nil {
+            map["Direction"] = self.direction!
+        }
+        if self.effectiveScopesShrink != nil {
+            map["EffectiveScopes"] = self.effectiveScopesShrink!
+        }
+        if self.maxResults != nil {
+            map["MaxResults"] = self.maxResults!
+        }
+        if self.nextToken != nil {
+            map["NextToken"] = self.nextToken!
+        }
+        if self.orderBy != nil {
+            map["OrderBy"] = self.orderBy!
+        }
+        if self.pageNumber != nil {
+            map["PageNumber"] = self.pageNumber!
+        }
+        if self.pageSize != nil {
+            map["PageSize"] = self.pageSize!
+        }
+        if self.remark != nil {
+            map["Remark"] = self.remark!
+        }
+        if self.zoneName != nil {
+            map["ZoneName"] = self.zoneName!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["Direction"] as? String {
+            self.direction = value
+        }
+        if let value = dict["EffectiveScopes"] as? String {
+            self.effectiveScopesShrink = value
+        }
+        if let value = dict["MaxResults"] as? Int32 {
+            self.maxResults = value
+        }
+        if let value = dict["NextToken"] as? String {
+            self.nextToken = value
+        }
+        if let value = dict["OrderBy"] as? String {
+            self.orderBy = value
+        }
+        if let value = dict["PageNumber"] as? Int32 {
+            self.pageNumber = value
+        }
+        if let value = dict["PageSize"] as? Int32 {
+            self.pageSize = value
+        }
+        if let value = dict["Remark"] as? String {
+            self.remark = value
+        }
+        if let value = dict["ZoneName"] as? String {
+            self.zoneName = value
+        }
+    }
+}
+
+public class SearchRecursionZonesResponseBody : Tea.TeaModel {
+    public class Zones : Tea.TeaModel {
+        public class Zone : Tea.TeaModel {
+            public class EffectiveScopes : Tea.TeaModel {
+                public class EffectiveScope : Tea.TeaModel {
+                    public class Scopes : Tea.TeaModel {
+                        public var scope: [String]?
+
+                        public override init() {
+                            super.init()
+                        }
+
+                        public init(_ dict: [String: Any]) {
+                            super.init()
+                            self.fromMap(dict)
+                        }
+
+                        public override func validate() throws -> Void {
+                        }
+
+                        public override func toMap() -> [String : Any] {
+                            var map = super.toMap()
+                            if self.scope != nil {
+                                map["Scope"] = self.scope!
+                            }
+                            return map
+                        }
+
+                        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                            guard let dict else { return }
+                            if let value = dict["Scope"] as? [String] {
+                                self.scope = value
+                            }
+                        }
+                    }
+                    public var effectiveType: String?
+
+                    public var scopes: SearchRecursionZonesResponseBody.Zones.Zone.EffectiveScopes.EffectiveScope.Scopes?
+
+                    public override init() {
+                        super.init()
+                    }
+
+                    public init(_ dict: [String: Any]) {
+                        super.init()
+                        self.fromMap(dict)
+                    }
+
+                    public override func validate() throws -> Void {
+                        try self.scopes?.validate()
+                    }
+
+                    public override func toMap() -> [String : Any] {
+                        var map = super.toMap()
+                        if self.effectiveType != nil {
+                            map["EffectiveType"] = self.effectiveType!
+                        }
+                        if self.scopes != nil {
+                            map["Scopes"] = self.scopes?.toMap()
+                        }
+                        return map
+                    }
+
+                    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                        guard let dict else { return }
+                        if let value = dict["EffectiveType"] as? String {
+                            self.effectiveType = value
+                        }
+                        if let value = dict["Scopes"] as? [String: Any?] {
+                            var model = SearchRecursionZonesResponseBody.Zones.Zone.EffectiveScopes.EffectiveScope.Scopes()
+                            model.fromMap(value)
+                            self.scopes = model
+                        }
+                    }
+                }
+                public var effectiveScope: [SearchRecursionZonesResponseBody.Zones.Zone.EffectiveScopes.EffectiveScope]?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.effectiveScope != nil {
+                        var tmp : [Any] = []
+                        for k in self.effectiveScope! {
+                            tmp.append(k.toMap())
+                        }
+                        map["EffectiveScope"] = tmp
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                    guard let dict else { return }
+                    if let value = dict["EffectiveScope"] as? [Any?] {
+                        var tmp : [SearchRecursionZonesResponseBody.Zones.Zone.EffectiveScopes.EffectiveScope] = []
+                        for v in value {
+                            if v != nil {
+                                var model = SearchRecursionZonesResponseBody.Zones.Zone.EffectiveScopes.EffectiveScope()
+                                if v != nil {
+                                    model.fromMap(v as? [String: Any?])
+                                }
+                                tmp.append(model)
+                            }
+                        }
+                        self.effectiveScope = tmp
+                    }
+                }
+            }
+            public var createTime: String?
+
+            public var createTimestamp: Int64?
+
+            public var creator: String?
+
+            public var creatorSubType: String?
+
+            public var creatorType: String?
+
+            public var effectiveScopes: SearchRecursionZonesResponseBody.Zones.Zone.EffectiveScopes?
+
+            public var proxyPattern: String?
+
+            public var recordCount: Int32?
+
+            public var remark: String?
+
+            public var updateTime: String?
+
+            public var updateTimestamp: Int64?
+
+            public var zoneId: String?
+
+            public var zoneName: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+                try self.effectiveScopes?.validate()
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.createTime != nil {
+                    map["CreateTime"] = self.createTime!
+                }
+                if self.createTimestamp != nil {
+                    map["CreateTimestamp"] = self.createTimestamp!
+                }
+                if self.creator != nil {
+                    map["Creator"] = self.creator!
+                }
+                if self.creatorSubType != nil {
+                    map["CreatorSubType"] = self.creatorSubType!
+                }
+                if self.creatorType != nil {
+                    map["CreatorType"] = self.creatorType!
+                }
+                if self.effectiveScopes != nil {
+                    map["EffectiveScopes"] = self.effectiveScopes?.toMap()
+                }
+                if self.proxyPattern != nil {
+                    map["ProxyPattern"] = self.proxyPattern!
+                }
+                if self.recordCount != nil {
+                    map["RecordCount"] = self.recordCount!
+                }
+                if self.remark != nil {
+                    map["Remark"] = self.remark!
+                }
+                if self.updateTime != nil {
+                    map["UpdateTime"] = self.updateTime!
+                }
+                if self.updateTimestamp != nil {
+                    map["UpdateTimestamp"] = self.updateTimestamp!
+                }
+                if self.zoneId != nil {
+                    map["ZoneId"] = self.zoneId!
+                }
+                if self.zoneName != nil {
+                    map["ZoneName"] = self.zoneName!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["CreateTime"] as? String {
+                    self.createTime = value
+                }
+                if let value = dict["CreateTimestamp"] as? Int64 {
+                    self.createTimestamp = value
+                }
+                if let value = dict["Creator"] as? String {
+                    self.creator = value
+                }
+                if let value = dict["CreatorSubType"] as? String {
+                    self.creatorSubType = value
+                }
+                if let value = dict["CreatorType"] as? String {
+                    self.creatorType = value
+                }
+                if let value = dict["EffectiveScopes"] as? [String: Any?] {
+                    var model = SearchRecursionZonesResponseBody.Zones.Zone.EffectiveScopes()
+                    model.fromMap(value)
+                    self.effectiveScopes = model
+                }
+                if let value = dict["ProxyPattern"] as? String {
+                    self.proxyPattern = value
+                }
+                if let value = dict["RecordCount"] as? Int32 {
+                    self.recordCount = value
+                }
+                if let value = dict["Remark"] as? String {
+                    self.remark = value
+                }
+                if let value = dict["UpdateTime"] as? String {
+                    self.updateTime = value
+                }
+                if let value = dict["UpdateTimestamp"] as? Int64 {
+                    self.updateTimestamp = value
+                }
+                if let value = dict["ZoneId"] as? String {
+                    self.zoneId = value
+                }
+                if let value = dict["ZoneName"] as? String {
+                    self.zoneName = value
+                }
+            }
+        }
+        public var zone: [SearchRecursionZonesResponseBody.Zones.Zone]?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.zone != nil {
+                var tmp : [Any] = []
+                for k in self.zone! {
+                    tmp.append(k.toMap())
+                }
+                map["Zone"] = tmp
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["Zone"] as? [Any?] {
+                var tmp : [SearchRecursionZonesResponseBody.Zones.Zone] = []
+                for v in value {
+                    if v != nil {
+                        var model = SearchRecursionZonesResponseBody.Zones.Zone()
+                        if v != nil {
+                            model.fromMap(v as? [String: Any?])
+                        }
+                        tmp.append(model)
+                    }
+                }
+                self.zone = tmp
+            }
+        }
+    }
+    public var maxResults: Int32?
+
+    public var nextToken: String?
+
+    public var pageNumber: Int32?
+
+    public var pageSize: Int32?
+
+    public var requestId: String?
+
+    public var totalItems: Int32?
+
+    public var totalPages: Int32?
+
+    public var zones: SearchRecursionZonesResponseBody.Zones?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.zones?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.maxResults != nil {
+            map["MaxResults"] = self.maxResults!
+        }
+        if self.nextToken != nil {
+            map["NextToken"] = self.nextToken!
+        }
+        if self.pageNumber != nil {
+            map["PageNumber"] = self.pageNumber!
+        }
+        if self.pageSize != nil {
+            map["PageSize"] = self.pageSize!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.totalItems != nil {
+            map["TotalItems"] = self.totalItems!
+        }
+        if self.totalPages != nil {
+            map["TotalPages"] = self.totalPages!
+        }
+        if self.zones != nil {
+            map["Zones"] = self.zones?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["MaxResults"] as? Int32 {
+            self.maxResults = value
+        }
+        if let value = dict["NextToken"] as? String {
+            self.nextToken = value
+        }
+        if let value = dict["PageNumber"] as? Int32 {
+            self.pageNumber = value
+        }
+        if let value = dict["PageSize"] as? Int32 {
+            self.pageSize = value
+        }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+        if let value = dict["TotalItems"] as? Int32 {
+            self.totalItems = value
+        }
+        if let value = dict["TotalPages"] as? Int32 {
+            self.totalPages = value
+        }
+        if let value = dict["Zones"] as? [String: Any?] {
+            var model = SearchRecursionZonesResponseBody.Zones()
+            model.fromMap(value)
+            self.zones = model
+        }
+    }
+}
+
+public class SearchRecursionZonesResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: SearchRecursionZonesResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = SearchRecursionZonesResponseBody()
             model.fromMap(value)
             self.body = model
         }
@@ -55046,6 +58319,1209 @@ public class UpdateIspFlushCacheInstanceConfigResponse : Tea.TeaModel {
         }
         if let value = dict["body"] as? [String: Any?] {
             var model = UpdateIspFlushCacheInstanceConfigResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
+public class UpdateRecursionRecordRequest : Tea.TeaModel {
+    public var clientToken: String?
+
+    public var priority: Int32?
+
+    public var recordId: String?
+
+    public var requestSource: String?
+
+    public var rr: String?
+
+    public var ttl: Int32?
+
+    public var type: String?
+
+    public var value: String?
+
+    public var weight: Int32?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.clientToken != nil {
+            map["ClientToken"] = self.clientToken!
+        }
+        if self.priority != nil {
+            map["Priority"] = self.priority!
+        }
+        if self.recordId != nil {
+            map["RecordId"] = self.recordId!
+        }
+        if self.requestSource != nil {
+            map["RequestSource"] = self.requestSource!
+        }
+        if self.rr != nil {
+            map["Rr"] = self.rr!
+        }
+        if self.ttl != nil {
+            map["Ttl"] = self.ttl!
+        }
+        if self.type != nil {
+            map["Type"] = self.type!
+        }
+        if self.value != nil {
+            map["Value"] = self.value!
+        }
+        if self.weight != nil {
+            map["Weight"] = self.weight!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["ClientToken"] as? String {
+            self.clientToken = value
+        }
+        if let value = dict["Priority"] as? Int32 {
+            self.priority = value
+        }
+        if let value = dict["RecordId"] as? String {
+            self.recordId = value
+        }
+        if let value = dict["RequestSource"] as? String {
+            self.requestSource = value
+        }
+        if let value = dict["Rr"] as? String {
+            self.rr = value
+        }
+        if let value = dict["Ttl"] as? Int32 {
+            self.ttl = value
+        }
+        if let value = dict["Type"] as? String {
+            self.type = value
+        }
+        if let value = dict["Value"] as? String {
+            self.value = value
+        }
+        if let value = dict["Weight"] as? Int32 {
+            self.weight = value
+        }
+    }
+}
+
+public class UpdateRecursionRecordResponseBody : Tea.TeaModel {
+    public var recordId: String?
+
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.recordId != nil {
+            map["RecordId"] = self.recordId!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["RecordId"] as? String {
+            self.recordId = value
+        }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+    }
+}
+
+public class UpdateRecursionRecordResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: UpdateRecursionRecordResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = UpdateRecursionRecordResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
+public class UpdateRecursionRecordEnableStatusRequest : Tea.TeaModel {
+    public var clientToken: String?
+
+    public var enableStatus: String?
+
+    public var recordId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.clientToken != nil {
+            map["ClientToken"] = self.clientToken!
+        }
+        if self.enableStatus != nil {
+            map["EnableStatus"] = self.enableStatus!
+        }
+        if self.recordId != nil {
+            map["RecordId"] = self.recordId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["ClientToken"] as? String {
+            self.clientToken = value
+        }
+        if let value = dict["EnableStatus"] as? String {
+            self.enableStatus = value
+        }
+        if let value = dict["RecordId"] as? String {
+            self.recordId = value
+        }
+    }
+}
+
+public class UpdateRecursionRecordEnableStatusResponseBody : Tea.TeaModel {
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+    }
+}
+
+public class UpdateRecursionRecordEnableStatusResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: UpdateRecursionRecordEnableStatusResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = UpdateRecursionRecordEnableStatusResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
+public class UpdateRecursionRecordRemarkRequest : Tea.TeaModel {
+    public var clientToken: String?
+
+    public var recordId: String?
+
+    public var remark: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.clientToken != nil {
+            map["ClientToken"] = self.clientToken!
+        }
+        if self.recordId != nil {
+            map["RecordId"] = self.recordId!
+        }
+        if self.remark != nil {
+            map["Remark"] = self.remark!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["ClientToken"] as? String {
+            self.clientToken = value
+        }
+        if let value = dict["RecordId"] as? String {
+            self.recordId = value
+        }
+        if let value = dict["Remark"] as? String {
+            self.remark = value
+        }
+    }
+}
+
+public class UpdateRecursionRecordRemarkResponseBody : Tea.TeaModel {
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+    }
+}
+
+public class UpdateRecursionRecordRemarkResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: UpdateRecursionRecordRemarkResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = UpdateRecursionRecordRemarkResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
+public class UpdateRecursionRecordWeightRequest : Tea.TeaModel {
+    public var clientToken: String?
+
+    public var recordId: String?
+
+    public var weight: Int32?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.clientToken != nil {
+            map["ClientToken"] = self.clientToken!
+        }
+        if self.recordId != nil {
+            map["RecordId"] = self.recordId!
+        }
+        if self.weight != nil {
+            map["Weight"] = self.weight!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["ClientToken"] as? String {
+            self.clientToken = value
+        }
+        if let value = dict["RecordId"] as? String {
+            self.recordId = value
+        }
+        if let value = dict["Weight"] as? Int32 {
+            self.weight = value
+        }
+    }
+}
+
+public class UpdateRecursionRecordWeightResponseBody : Tea.TeaModel {
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+    }
+}
+
+public class UpdateRecursionRecordWeightResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: UpdateRecursionRecordWeightResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = UpdateRecursionRecordWeightResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
+public class UpdateRecursionRecordWeightEnableStatusRequest : Tea.TeaModel {
+    public var clientToken: String?
+
+    public var enableStatus: String?
+
+    public var requestSource: String?
+
+    public var rr: String?
+
+    public var type: String?
+
+    public var zoneId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.clientToken != nil {
+            map["ClientToken"] = self.clientToken!
+        }
+        if self.enableStatus != nil {
+            map["EnableStatus"] = self.enableStatus!
+        }
+        if self.requestSource != nil {
+            map["RequestSource"] = self.requestSource!
+        }
+        if self.rr != nil {
+            map["Rr"] = self.rr!
+        }
+        if self.type != nil {
+            map["Type"] = self.type!
+        }
+        if self.zoneId != nil {
+            map["ZoneId"] = self.zoneId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["ClientToken"] as? String {
+            self.clientToken = value
+        }
+        if let value = dict["EnableStatus"] as? String {
+            self.enableStatus = value
+        }
+        if let value = dict["RequestSource"] as? String {
+            self.requestSource = value
+        }
+        if let value = dict["Rr"] as? String {
+            self.rr = value
+        }
+        if let value = dict["Type"] as? String {
+            self.type = value
+        }
+        if let value = dict["ZoneId"] as? String {
+            self.zoneId = value
+        }
+    }
+}
+
+public class UpdateRecursionRecordWeightEnableStatusResponseBody : Tea.TeaModel {
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+    }
+}
+
+public class UpdateRecursionRecordWeightEnableStatusResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: UpdateRecursionRecordWeightEnableStatusResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = UpdateRecursionRecordWeightEnableStatusResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
+public class UpdateRecursionZoneEffectiveScopeRequest : Tea.TeaModel {
+    public class EffectiveScopes : Tea.TeaModel {
+        public var effectiveType: String?
+
+        public var scope: [String]?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.effectiveType != nil {
+                map["EffectiveType"] = self.effectiveType!
+            }
+            if self.scope != nil {
+                map["Scope"] = self.scope!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["EffectiveType"] as? String {
+                self.effectiveType = value
+            }
+            if let value = dict["Scope"] as? [String] {
+                self.scope = value
+            }
+        }
+    }
+    public var clientToken: String?
+
+    public var effectiveScopes: [UpdateRecursionZoneEffectiveScopeRequest.EffectiveScopes]?
+
+    public var zoneId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.clientToken != nil {
+            map["ClientToken"] = self.clientToken!
+        }
+        if self.effectiveScopes != nil {
+            var tmp : [Any] = []
+            for k in self.effectiveScopes! {
+                tmp.append(k.toMap())
+            }
+            map["EffectiveScopes"] = tmp
+        }
+        if self.zoneId != nil {
+            map["ZoneId"] = self.zoneId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["ClientToken"] as? String {
+            self.clientToken = value
+        }
+        if let value = dict["EffectiveScopes"] as? [Any?] {
+            var tmp : [UpdateRecursionZoneEffectiveScopeRequest.EffectiveScopes] = []
+            for v in value {
+                if v != nil {
+                    var model = UpdateRecursionZoneEffectiveScopeRequest.EffectiveScopes()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.effectiveScopes = tmp
+        }
+        if let value = dict["ZoneId"] as? String {
+            self.zoneId = value
+        }
+    }
+}
+
+public class UpdateRecursionZoneEffectiveScopeShrinkRequest : Tea.TeaModel {
+    public var clientToken: String?
+
+    public var effectiveScopesShrink: String?
+
+    public var zoneId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.clientToken != nil {
+            map["ClientToken"] = self.clientToken!
+        }
+        if self.effectiveScopesShrink != nil {
+            map["EffectiveScopes"] = self.effectiveScopesShrink!
+        }
+        if self.zoneId != nil {
+            map["ZoneId"] = self.zoneId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["ClientToken"] as? String {
+            self.clientToken = value
+        }
+        if let value = dict["EffectiveScopes"] as? String {
+            self.effectiveScopesShrink = value
+        }
+        if let value = dict["ZoneId"] as? String {
+            self.zoneId = value
+        }
+    }
+}
+
+public class UpdateRecursionZoneEffectiveScopeResponseBody : Tea.TeaModel {
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+    }
+}
+
+public class UpdateRecursionZoneEffectiveScopeResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: UpdateRecursionZoneEffectiveScopeResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = UpdateRecursionZoneEffectiveScopeResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
+public class UpdateRecursionZoneProxyPatternRequest : Tea.TeaModel {
+    public var clientToken: String?
+
+    public var proxyPattern: String?
+
+    public var zoneId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.clientToken != nil {
+            map["ClientToken"] = self.clientToken!
+        }
+        if self.proxyPattern != nil {
+            map["ProxyPattern"] = self.proxyPattern!
+        }
+        if self.zoneId != nil {
+            map["ZoneId"] = self.zoneId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["ClientToken"] as? String {
+            self.clientToken = value
+        }
+        if let value = dict["ProxyPattern"] as? String {
+            self.proxyPattern = value
+        }
+        if let value = dict["ZoneId"] as? String {
+            self.zoneId = value
+        }
+    }
+}
+
+public class UpdateRecursionZoneProxyPatternResponseBody : Tea.TeaModel {
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+    }
+}
+
+public class UpdateRecursionZoneProxyPatternResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: UpdateRecursionZoneProxyPatternResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = UpdateRecursionZoneProxyPatternResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
+public class UpdateRecursionZoneRemarkRequest : Tea.TeaModel {
+    public var clientToken: String?
+
+    public var remark: String?
+
+    public var zoneId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.clientToken != nil {
+            map["ClientToken"] = self.clientToken!
+        }
+        if self.remark != nil {
+            map["Remark"] = self.remark!
+        }
+        if self.zoneId != nil {
+            map["ZoneId"] = self.zoneId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["ClientToken"] as? String {
+            self.clientToken = value
+        }
+        if let value = dict["Remark"] as? String {
+            self.remark = value
+        }
+        if let value = dict["ZoneId"] as? String {
+            self.zoneId = value
+        }
+    }
+}
+
+public class UpdateRecursionZoneRemarkResponseBody : Tea.TeaModel {
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+    }
+}
+
+public class UpdateRecursionZoneRemarkResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: UpdateRecursionZoneRemarkResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = UpdateRecursionZoneRemarkResponseBody()
             model.fromMap(value)
             self.body = model
         }
