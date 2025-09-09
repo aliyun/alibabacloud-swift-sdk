@@ -213,6 +213,48 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func checkAccountExistWithOptions(_ request: CheckAccountExistRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> CheckAccountExistResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.ecIdAccountIds)) {
+            query["EcIdAccountIds"] = request.ecIdAccountIds ?? [];
+        }
+        if (!TeaUtils.Client.isUnset(request.nbid)) {
+            query["Nbid"] = request.nbid ?? "";
+        }
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.toUserType)) {
+            body["ToUserType"] = request.toUserType!;
+        }
+        if (!TeaUtils.Client.isUnset(request.transferAccount)) {
+            body["TransferAccount"] = request.transferAccount ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query),
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "CheckAccountExist",
+            "version": "2023-09-30",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(CheckAccountExistResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func checkAccountExist(_ request: CheckAccountExistRequest) async throws -> CheckAccountExistResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await checkAccountExistWithOptions(request as! CheckAccountExistRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func createCostCenterWithOptions(_ tmpReq: CreateCostCenterRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> CreateCostCenterResponse {
         try TeaUtils.Client.validateModel(tmpReq)
         var request: CreateCostCenterShrinkRequest = CreateCostCenterShrinkRequest([:])
@@ -1636,6 +1678,55 @@ open class Client : AlibabacloudOpenApi.Client {
     public func modifyCostCenterRule(_ request: ModifyCostCenterRuleRequest) async throws -> ModifyCostCenterRuleResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         return try await modifyCostCenterRuleWithOptions(request as! ModifyCostCenterRuleRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func payOrderWithOptions(_ request: PayOrderRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> PayOrderResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.buyerId)) {
+            query["BuyerId"] = request.buyerId!;
+        }
+        if (!TeaUtils.Client.isUnset(request.ecIdAccountIds)) {
+            query["EcIdAccountIds"] = request.ecIdAccountIds ?? [];
+        }
+        if (!TeaUtils.Client.isUnset(request.nbid)) {
+            query["Nbid"] = request.nbid ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.orderId)) {
+            query["OrderId"] = request.orderId!;
+        }
+        if (!TeaUtils.Client.isUnset(request.paySubmitUid)) {
+            query["PaySubmitUid"] = request.paySubmitUid!;
+        }
+        if (!TeaUtils.Client.isUnset(request.payerId)) {
+            query["PayerId"] = request.payerId!;
+        }
+        if (!TeaUtils.Client.isUnset(request.token)) {
+            query["Token"] = request.token ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "PayOrder",
+            "version": "2023-09-30",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(PayOrderResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func payOrder(_ request: PayOrderRequest) async throws -> PayOrderResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await payOrderWithOptions(request as! PayOrderRequest, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
