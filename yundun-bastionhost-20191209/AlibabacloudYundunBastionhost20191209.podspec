@@ -1,7 +1,7 @@
 Pod::Spec.new do |spec|
 
   spec.name         = "AlibabacloudYundunBastionhost20191209"
-  spec.version      = "1.7.2"
+  spec.version      = "1.8.0"
   spec.license      = "Apache 2.0"
   spec.summary      = "Alibaba Cloud Yundun-bastionhost (20191209) SDK Library for Swift"
   spec.homepage     = "https://github.com/alibabacloud-sdk-swift/yundun-bastionhost-20191209" 
