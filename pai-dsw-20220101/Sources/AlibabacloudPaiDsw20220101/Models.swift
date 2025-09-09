@@ -9487,21 +9487,21 @@ public class ListSystemLogsRequest : Tea.TeaModel {
 
     public var instanceId: String?
 
+    public var lifecycleId: String?
+
     public var logLevel: String?
 
+    public var logRepository: String?
+
+    public var offset: String?
+
     public var order: String?
-
-    public var pageNumber: Int64?
-
-    public var pageSize: Int64?
 
     public var problemCategory: String?
 
     public var sortBy: String?
 
     public var sourceRequestId: String?
-
-    public var sourceType: String?
 
     public override init() {
         super.init()
@@ -9526,17 +9526,20 @@ public class ListSystemLogsRequest : Tea.TeaModel {
         if self.instanceId != nil {
             map["InstanceId"] = self.instanceId!
         }
+        if self.lifecycleId != nil {
+            map["LifecycleId"] = self.lifecycleId!
+        }
         if self.logLevel != nil {
             map["LogLevel"] = self.logLevel!
         }
+        if self.logRepository != nil {
+            map["LogRepository"] = self.logRepository!
+        }
+        if self.offset != nil {
+            map["Offset"] = self.offset!
+        }
         if self.order != nil {
             map["Order"] = self.order!
-        }
-        if self.pageNumber != nil {
-            map["PageNumber"] = self.pageNumber!
-        }
-        if self.pageSize != nil {
-            map["PageSize"] = self.pageSize!
         }
         if self.problemCategory != nil {
             map["ProblemCategory"] = self.problemCategory!
@@ -9546,9 +9549,6 @@ public class ListSystemLogsRequest : Tea.TeaModel {
         }
         if self.sourceRequestId != nil {
             map["SourceRequestId"] = self.sourceRequestId!
-        }
-        if self.sourceType != nil {
-            map["SourceType"] = self.sourceType!
         }
         return map
     }
@@ -9564,17 +9564,20 @@ public class ListSystemLogsRequest : Tea.TeaModel {
         if let value = dict["InstanceId"] as? String {
             self.instanceId = value
         }
+        if let value = dict["LifecycleId"] as? String {
+            self.lifecycleId = value
+        }
         if let value = dict["LogLevel"] as? String {
             self.logLevel = value
         }
+        if let value = dict["LogRepository"] as? String {
+            self.logRepository = value
+        }
+        if let value = dict["Offset"] as? String {
+            self.offset = value
+        }
         if let value = dict["Order"] as? String {
             self.order = value
-        }
-        if let value = dict["PageNumber"] as? Int64 {
-            self.pageNumber = value
-        }
-        if let value = dict["PageSize"] as? Int64 {
-            self.pageSize = value
         }
         if let value = dict["ProblemCategory"] as? String {
             self.problemCategory = value
@@ -9584,9 +9587,6 @@ public class ListSystemLogsRequest : Tea.TeaModel {
         }
         if let value = dict["SourceRequestId"] as? String {
             self.sourceRequestId = value
-        }
-        if let value = dict["SourceType"] as? String {
-            self.sourceType = value
         }
     }
 }
@@ -9638,9 +9638,9 @@ public class ListSystemLogsResponseBody : Tea.TeaModel {
             }
         }
     }
-    public var systemLogs: [ListSystemLogsResponseBody.SystemLogs]?
+    public var offset: String?
 
-    public var totalCount: Int64?
+    public var systemLogs: [ListSystemLogsResponseBody.SystemLogs]?
 
     public override init() {
         super.init()
@@ -9656,6 +9656,9 @@ public class ListSystemLogsResponseBody : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.offset != nil {
+            map["Offset"] = self.offset!
+        }
         if self.systemLogs != nil {
             var tmp : [Any] = []
             for k in self.systemLogs! {
@@ -9663,14 +9666,14 @@ public class ListSystemLogsResponseBody : Tea.TeaModel {
             }
             map["SystemLogs"] = tmp
         }
-        if self.totalCount != nil {
-            map["TotalCount"] = self.totalCount!
-        }
         return map
     }
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["Offset"] as? String {
+            self.offset = value
+        }
         if let value = dict["SystemLogs"] as? [Any?] {
             var tmp : [ListSystemLogsResponseBody.SystemLogs] = []
             for v in value {
@@ -9683,9 +9686,6 @@ public class ListSystemLogsResponseBody : Tea.TeaModel {
                 }
             }
             self.systemLogs = tmp
-        }
-        if let value = dict["TotalCount"] as? Int64 {
-            self.totalCount = value
         }
     }
 }
