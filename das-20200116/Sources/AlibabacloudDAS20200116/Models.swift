@@ -12862,6 +12862,8 @@ public class DescribeSqlLogRecordsResponseBody : Tea.TeaModel {
 
                 public var state: String?
 
+                public var tableName: String?
+
                 public var threadId: Int64?
 
                 public var traceId: String?
@@ -12968,6 +12970,9 @@ public class DescribeSqlLogRecordsResponseBody : Tea.TeaModel {
                     if self.state != nil {
                         map["State"] = self.state!
                     }
+                    if self.tableName != nil {
+                        map["TableName"] = self.tableName!
+                    }
                     if self.threadId != nil {
                         map["ThreadId"] = self.threadId!
                     }
@@ -13071,6 +13076,9 @@ public class DescribeSqlLogRecordsResponseBody : Tea.TeaModel {
                     }
                     if let value = dict["State"] as? String {
                         self.state = value
+                    }
+                    if let value = dict["TableName"] as? String {
+                        self.tableName = value
                     }
                     if let value = dict["ThreadId"] as? Int64 {
                         self.threadId = value
@@ -37001,6 +37009,8 @@ public class ModifySqlLogConfigResponseBody : Tea.TeaModel {
 
         public var sqlLogEnable: Bool?
 
+        public var sqlLogSource: String?
+
         public var sqlLogState: String?
 
         public var sqlLogVisibleTime: Int64?
@@ -37062,6 +37072,9 @@ public class ModifySqlLogConfigResponseBody : Tea.TeaModel {
             if self.sqlLogEnable != nil {
                 map["SqlLogEnable"] = self.sqlLogEnable!
             }
+            if self.sqlLogSource != nil {
+                map["SqlLogSource"] = self.sqlLogSource!
+            }
             if self.sqlLogState != nil {
                 map["SqlLogState"] = self.sqlLogState!
             }
@@ -37117,6 +37130,9 @@ public class ModifySqlLogConfigResponseBody : Tea.TeaModel {
             }
             if let value = dict["SqlLogEnable"] as? Bool {
                 self.sqlLogEnable = value
+            }
+            if let value = dict["SqlLogSource"] as? String {
+                self.sqlLogSource = value
             }
             if let value = dict["SqlLogState"] as? String {
                 self.sqlLogState = value
