@@ -119,6 +119,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.serviceVersion)) {
             query["ServiceVersion"] = request.serviceVersion ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.templateName)) {
+            query["TemplateName"] = request.templateName ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.trialType)) {
             query["TrialType"] = request.trialType ?? "";
         }
@@ -606,6 +609,58 @@ open class Client : AlibabacloudOpenApi.Client {
     public func getBackup(_ request: GetBackupRequest) async throws -> GetBackupResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         return try await getBackupWithOptions(request as! GetBackupRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getNetworkAvailableZonesWithOptions(_ request: GetNetworkAvailableZonesRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> GetNetworkAvailableZonesResponse {
+        try TeaUtils.Client.validateModel(request)
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.isPoc)) {
+            body["IsPoc"] = request.isPoc!;
+        }
+        if (!TeaUtils.Client.isUnset(request.networkRegionId)) {
+            body["NetworkRegionId"] = request.networkRegionId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.privateVpcConnectionMode)) {
+            body["PrivateVpcConnectionMode"] = request.privateVpcConnectionMode ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.serviceId)) {
+            body["ServiceId"] = request.serviceId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.serviceInstanceEndpointServiceType)) {
+            body["ServiceInstanceEndpointServiceType"] = request.serviceInstanceEndpointServiceType ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.serviceRegionId)) {
+            body["ServiceRegionId"] = request.serviceRegionId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.serviceVersion)) {
+            body["ServiceVersion"] = request.serviceVersion ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.zoneId)) {
+            body["ZoneId"] = request.zoneId ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "GetNetworkAvailableZones",
+            "version": "2021-06-01",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(GetNetworkAvailableZonesResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getNetworkAvailableZones(_ request: GetNetworkAvailableZonesRequest) async throws -> GetNetworkAvailableZonesResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await getNetworkAvailableZonesWithOptions(request as! GetNetworkAvailableZonesRequest, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -2028,5 +2083,51 @@ open class Client : AlibabacloudOpenApi.Client {
     public func upgradeServiceInstance(_ request: UpgradeServiceInstanceRequest) async throws -> UpgradeServiceInstanceResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         return try await upgradeServiceInstanceWithOptions(request as! UpgradeServiceInstanceRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func validateServiceInstanceNameWithOptions(_ request: ValidateServiceInstanceNameRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ValidateServiceInstanceNameResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.clientToken)) {
+            query["ClientToken"] = request.clientToken ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.isTrial)) {
+            query["IsTrial"] = request.isTrial!;
+        }
+        if (!TeaUtils.Client.isUnset(request.serviceId)) {
+            query["ServiceId"] = request.serviceId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.serviceInstanceName)) {
+            query["ServiceInstanceName"] = request.serviceInstanceName ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.serviceVersion)) {
+            query["ServiceVersion"] = request.serviceVersion ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.templateName)) {
+            query["TemplateName"] = request.templateName ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "ValidateServiceInstanceName",
+            "version": "2021-06-01",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(ValidateServiceInstanceNameResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func validateServiceInstanceName(_ request: ValidateServiceInstanceNameRequest) async throws -> ValidateServiceInstanceNameResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await validateServiceInstanceNameWithOptions(request as! ValidateServiceInstanceNameRequest, runtime as! TeaUtils.RuntimeOptions)
     }
 }
