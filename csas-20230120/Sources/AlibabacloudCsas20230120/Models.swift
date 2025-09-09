@@ -20449,6 +20449,10 @@ public class ListConnectorsResponseBody : Tea.TeaModel {
         }
         public var applications: [ListConnectorsResponseBody.Connectors.Applications]?
 
+        public var clusterIP: String?
+
+        public var clusterPort: String?
+
         public var connectorClients: [ListConnectorsResponseBody.Connectors.ConnectorClients]?
 
         public var connectorId: String?
@@ -20486,6 +20490,12 @@ public class ListConnectorsResponseBody : Tea.TeaModel {
                     tmp.append(k.toMap())
                 }
                 map["Applications"] = tmp
+            }
+            if self.clusterIP != nil {
+                map["ClusterIP"] = self.clusterIP!
+            }
+            if self.clusterPort != nil {
+                map["ClusterPort"] = self.clusterPort!
             }
             if self.connectorClients != nil {
                 var tmp : [Any] = []
@@ -20532,6 +20542,12 @@ public class ListConnectorsResponseBody : Tea.TeaModel {
                     }
                 }
                 self.applications = tmp
+            }
+            if let value = dict["ClusterIP"] as? String {
+                self.clusterIP = value
+            }
+            if let value = dict["ClusterPort"] as? String {
+                self.clusterPort = value
             }
             if let value = dict["ConnectorClients"] as? [Any?] {
                 var tmp : [ListConnectorsResponseBody.Connectors.ConnectorClients] = []
