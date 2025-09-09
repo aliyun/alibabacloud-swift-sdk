@@ -2119,6 +2119,232 @@ public class CancelJobRunResponse : Tea.TeaModel {
     }
 }
 
+public class CreateKyuubiTokenRequest : Tea.TeaModel {
+    public class AutoExpireConfiguration : Tea.TeaModel {
+        public var enable: Bool?
+
+        public var expireDays: Int32?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.enable != nil {
+                map["enable"] = self.enable!
+            }
+            if self.expireDays != nil {
+                map["expireDays"] = self.expireDays!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["enable"] as? Bool {
+                self.enable = value
+            }
+            if let value = dict["expireDays"] as? Int32 {
+                self.expireDays = value
+            }
+        }
+    }
+    public var autoExpireConfiguration: CreateKyuubiTokenRequest.AutoExpireConfiguration?
+
+    public var memberArns: [String]?
+
+    public var name: String?
+
+    public var token: String?
+
+    public var regionId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.autoExpireConfiguration?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.autoExpireConfiguration != nil {
+            map["autoExpireConfiguration"] = self.autoExpireConfiguration?.toMap()
+        }
+        if self.memberArns != nil {
+            map["memberArns"] = self.memberArns!
+        }
+        if self.name != nil {
+            map["name"] = self.name!
+        }
+        if self.token != nil {
+            map["token"] = self.token!
+        }
+        if self.regionId != nil {
+            map["regionId"] = self.regionId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["autoExpireConfiguration"] as? [String: Any?] {
+            var model = CreateKyuubiTokenRequest.AutoExpireConfiguration()
+            model.fromMap(value)
+            self.autoExpireConfiguration = model
+        }
+        if let value = dict["memberArns"] as? [String] {
+            self.memberArns = value
+        }
+        if let value = dict["name"] as? String {
+            self.name = value
+        }
+        if let value = dict["token"] as? String {
+            self.token = value
+        }
+        if let value = dict["regionId"] as? String {
+            self.regionId = value
+        }
+    }
+}
+
+public class CreateKyuubiTokenResponseBody : Tea.TeaModel {
+    public class Data : Tea.TeaModel {
+        public var tokenId: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.tokenId != nil {
+                map["tokenId"] = self.tokenId!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["tokenId"] as? String {
+                self.tokenId = value
+            }
+        }
+    }
+    public var data: CreateKyuubiTokenResponseBody.Data?
+
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.data?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.data != nil {
+            map["data"] = self.data?.toMap()
+        }
+        if self.requestId != nil {
+            map["requestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["data"] as? [String: Any?] {
+            var model = CreateKyuubiTokenResponseBody.Data()
+            model.fromMap(value)
+            self.data = model
+        }
+        if let value = dict["requestId"] as? String {
+            self.requestId = value
+        }
+    }
+}
+
+public class CreateKyuubiTokenResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: CreateKyuubiTokenResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = CreateKyuubiTokenResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
 public class CreateLivyComputeRequest : Tea.TeaModel {
     public class AutoStartConfiguration : Tea.TeaModel {
         public var enable: Bool?
@@ -4163,6 +4389,8 @@ public class CreateSqlStatementRequest : Tea.TeaModel {
 
     public var sqlComputeId: String?
 
+    public var taskBizId: String?
+
     public var regionId: String?
 
     public override init() {
@@ -4194,6 +4422,9 @@ public class CreateSqlStatementRequest : Tea.TeaModel {
         if self.sqlComputeId != nil {
             map["sqlComputeId"] = self.sqlComputeId!
         }
+        if self.taskBizId != nil {
+            map["taskBizId"] = self.taskBizId!
+        }
         if self.regionId != nil {
             map["regionId"] = self.regionId!
         }
@@ -4216,6 +4447,9 @@ public class CreateSqlStatementRequest : Tea.TeaModel {
         }
         if let value = dict["sqlComputeId"] as? String {
             self.sqlComputeId = value
+        }
+        if let value = dict["taskBizId"] as? String {
+            self.taskBizId = value
         }
         if let value = dict["regionId"] as? String {
             self.regionId = value
@@ -4680,6 +4914,118 @@ public class CreateWorkspaceResponse : Tea.TeaModel {
         }
         if let value = dict["body"] as? [String: Any?] {
             var model = CreateWorkspaceResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
+public class DeleteKyuubiTokenRequest : Tea.TeaModel {
+    public var regionId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.regionId != nil {
+            map["regionId"] = self.regionId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["regionId"] as? String {
+            self.regionId = value
+        }
+    }
+}
+
+public class DeleteKyuubiTokenResponseBody : Tea.TeaModel {
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.requestId != nil {
+            map["requestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["requestId"] as? String {
+            self.requestId = value
+        }
+    }
+}
+
+public class DeleteKyuubiTokenResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: DeleteKyuubiTokenResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = DeleteKyuubiTokenResponseBody()
             model.fromMap(value)
             self.body = model
         }
@@ -5848,6 +6194,264 @@ public class GetJobRunResponse : Tea.TeaModel {
         }
         if let value = dict["body"] as? [String: Any?] {
             var model = GetJobRunResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
+public class GetKyuubiTokenRequest : Tea.TeaModel {
+    public var regionId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.regionId != nil {
+            map["regionId"] = self.regionId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["regionId"] as? String {
+            self.regionId = value
+        }
+    }
+}
+
+public class GetKyuubiTokenResponseBody : Tea.TeaModel {
+    public class Data : Tea.TeaModel {
+        public class AutoExpireConfiguration : Tea.TeaModel {
+            public var enable: Bool?
+
+            public var expireDays: Int32?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.enable != nil {
+                    map["enable"] = self.enable!
+                }
+                if self.expireDays != nil {
+                    map["expireDays"] = self.expireDays!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["enable"] as? Bool {
+                    self.enable = value
+                }
+                if let value = dict["expireDays"] as? Int32 {
+                    self.expireDays = value
+                }
+            }
+        }
+        public var autoExpireConfiguration: GetKyuubiTokenResponseBody.Data.AutoExpireConfiguration?
+
+        public var createTime: Int64?
+
+        public var createdBy: String?
+
+        public var expireTime: Int64?
+
+        public var lastUsedTime: Int64?
+
+        public var memberArns: [String]?
+
+        public var name: String?
+
+        public var token: String?
+
+        public var tokenId: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+            try self.autoExpireConfiguration?.validate()
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.autoExpireConfiguration != nil {
+                map["autoExpireConfiguration"] = self.autoExpireConfiguration?.toMap()
+            }
+            if self.createTime != nil {
+                map["createTime"] = self.createTime!
+            }
+            if self.createdBy != nil {
+                map["createdBy"] = self.createdBy!
+            }
+            if self.expireTime != nil {
+                map["expireTime"] = self.expireTime!
+            }
+            if self.lastUsedTime != nil {
+                map["lastUsedTime"] = self.lastUsedTime!
+            }
+            if self.memberArns != nil {
+                map["memberArns"] = self.memberArns!
+            }
+            if self.name != nil {
+                map["name"] = self.name!
+            }
+            if self.token != nil {
+                map["token"] = self.token!
+            }
+            if self.tokenId != nil {
+                map["tokenId"] = self.tokenId!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["autoExpireConfiguration"] as? [String: Any?] {
+                var model = GetKyuubiTokenResponseBody.Data.AutoExpireConfiguration()
+                model.fromMap(value)
+                self.autoExpireConfiguration = model
+            }
+            if let value = dict["createTime"] as? Int64 {
+                self.createTime = value
+            }
+            if let value = dict["createdBy"] as? String {
+                self.createdBy = value
+            }
+            if let value = dict["expireTime"] as? Int64 {
+                self.expireTime = value
+            }
+            if let value = dict["lastUsedTime"] as? Int64 {
+                self.lastUsedTime = value
+            }
+            if let value = dict["memberArns"] as? [String] {
+                self.memberArns = value
+            }
+            if let value = dict["name"] as? String {
+                self.name = value
+            }
+            if let value = dict["token"] as? String {
+                self.token = value
+            }
+            if let value = dict["tokenId"] as? String {
+                self.tokenId = value
+            }
+        }
+    }
+    public var data: GetKyuubiTokenResponseBody.Data?
+
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.data?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.data != nil {
+            map["data"] = self.data?.toMap()
+        }
+        if self.requestId != nil {
+            map["requestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["data"] as? [String: Any?] {
+            var model = GetKyuubiTokenResponseBody.Data()
+            model.fromMap(value)
+            self.data = model
+        }
+        if let value = dict["requestId"] as? String {
+            self.requestId = value
+        }
+    }
+}
+
+public class GetKyuubiTokenResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: GetKyuubiTokenResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = GetKyuubiTokenResponseBody()
             model.fromMap(value)
             self.body = model
         }
@@ -14275,6 +14879,191 @@ public class TerminateSqlStatementResponse : Tea.TeaModel {
         }
         if let value = dict["body"] as? [String: Any?] {
             var model = TerminateSqlStatementResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
+public class UpdateKyuubiTokenRequest : Tea.TeaModel {
+    public class AutoExpireConfiguration : Tea.TeaModel {
+        public var enable: Bool?
+
+        public var expireDays: Int32?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.enable != nil {
+                map["enable"] = self.enable!
+            }
+            if self.expireDays != nil {
+                map["expireDays"] = self.expireDays!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["enable"] as? Bool {
+                self.enable = value
+            }
+            if let value = dict["expireDays"] as? Int32 {
+                self.expireDays = value
+            }
+        }
+    }
+    public var autoExpireConfiguration: UpdateKyuubiTokenRequest.AutoExpireConfiguration?
+
+    public var memberArns: [String]?
+
+    public var name: String?
+
+    public var token: String?
+
+    public var regionId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.autoExpireConfiguration?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.autoExpireConfiguration != nil {
+            map["autoExpireConfiguration"] = self.autoExpireConfiguration?.toMap()
+        }
+        if self.memberArns != nil {
+            map["memberArns"] = self.memberArns!
+        }
+        if self.name != nil {
+            map["name"] = self.name!
+        }
+        if self.token != nil {
+            map["token"] = self.token!
+        }
+        if self.regionId != nil {
+            map["regionId"] = self.regionId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["autoExpireConfiguration"] as? [String: Any?] {
+            var model = UpdateKyuubiTokenRequest.AutoExpireConfiguration()
+            model.fromMap(value)
+            self.autoExpireConfiguration = model
+        }
+        if let value = dict["memberArns"] as? [String] {
+            self.memberArns = value
+        }
+        if let value = dict["name"] as? String {
+            self.name = value
+        }
+        if let value = dict["token"] as? String {
+            self.token = value
+        }
+        if let value = dict["regionId"] as? String {
+            self.regionId = value
+        }
+    }
+}
+
+public class UpdateKyuubiTokenResponseBody : Tea.TeaModel {
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.requestId != nil {
+            map["requestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["requestId"] as? String {
+            self.requestId = value
+        }
+    }
+}
+
+public class UpdateKyuubiTokenResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: UpdateKyuubiTokenResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = UpdateKyuubiTokenResponseBody()
             model.fromMap(value)
             self.body = model
         }
