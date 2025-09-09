@@ -1317,6 +1317,642 @@ public class DeleteRuleResponse : Tea.TeaModel {
     }
 }
 
+public class DescribeAuditLogsRequest : Tea.TeaModel {
+    public var asyncRequestId: String?
+
+    public var clientIp: String?
+
+    public var clientUa: String?
+
+    public var currentPage: Int32?
+
+    public var databaseName: String?
+
+    public var effectRowRange: String?
+
+    public var endTime: Int64?
+
+    public var executeTimeRange: String?
+
+    public var instanceName: String?
+
+    public var ipType: String?
+
+    public var lang: String?
+
+    public var loadWhiteList: Bool?
+
+    public var memberAccount: String?
+
+    public var message: String?
+
+    public var operateType: String?
+
+    public var ossObjectKey: String?
+
+    public var pageSize: Int32?
+
+    public var productCode: String?
+
+    public var productId: Int64?
+
+    public var ruleCategory: String?
+
+    public var ruleID: String?
+
+    public var ruleName: String?
+
+    public var sqlText: String?
+
+    public var startTime: Int64?
+
+    public var userName: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.asyncRequestId != nil {
+            map["AsyncRequestId"] = self.asyncRequestId!
+        }
+        if self.clientIp != nil {
+            map["ClientIp"] = self.clientIp!
+        }
+        if self.clientUa != nil {
+            map["ClientUa"] = self.clientUa!
+        }
+        if self.currentPage != nil {
+            map["CurrentPage"] = self.currentPage!
+        }
+        if self.databaseName != nil {
+            map["DatabaseName"] = self.databaseName!
+        }
+        if self.effectRowRange != nil {
+            map["EffectRowRange"] = self.effectRowRange!
+        }
+        if self.endTime != nil {
+            map["EndTime"] = self.endTime!
+        }
+        if self.executeTimeRange != nil {
+            map["ExecuteTimeRange"] = self.executeTimeRange!
+        }
+        if self.instanceName != nil {
+            map["InstanceName"] = self.instanceName!
+        }
+        if self.ipType != nil {
+            map["IpType"] = self.ipType!
+        }
+        if self.lang != nil {
+            map["Lang"] = self.lang!
+        }
+        if self.loadWhiteList != nil {
+            map["LoadWhiteList"] = self.loadWhiteList!
+        }
+        if self.memberAccount != nil {
+            map["MemberAccount"] = self.memberAccount!
+        }
+        if self.message != nil {
+            map["Message"] = self.message!
+        }
+        if self.operateType != nil {
+            map["OperateType"] = self.operateType!
+        }
+        if self.ossObjectKey != nil {
+            map["OssObjectKey"] = self.ossObjectKey!
+        }
+        if self.pageSize != nil {
+            map["PageSize"] = self.pageSize!
+        }
+        if self.productCode != nil {
+            map["ProductCode"] = self.productCode!
+        }
+        if self.productId != nil {
+            map["ProductId"] = self.productId!
+        }
+        if self.ruleCategory != nil {
+            map["RuleCategory"] = self.ruleCategory!
+        }
+        if self.ruleID != nil {
+            map["RuleID"] = self.ruleID!
+        }
+        if self.ruleName != nil {
+            map["RuleName"] = self.ruleName!
+        }
+        if self.sqlText != nil {
+            map["SqlText"] = self.sqlText!
+        }
+        if self.startTime != nil {
+            map["StartTime"] = self.startTime!
+        }
+        if self.userName != nil {
+            map["UserName"] = self.userName!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["AsyncRequestId"] as? String {
+            self.asyncRequestId = value
+        }
+        if let value = dict["ClientIp"] as? String {
+            self.clientIp = value
+        }
+        if let value = dict["ClientUa"] as? String {
+            self.clientUa = value
+        }
+        if let value = dict["CurrentPage"] as? Int32 {
+            self.currentPage = value
+        }
+        if let value = dict["DatabaseName"] as? String {
+            self.databaseName = value
+        }
+        if let value = dict["EffectRowRange"] as? String {
+            self.effectRowRange = value
+        }
+        if let value = dict["EndTime"] as? Int64 {
+            self.endTime = value
+        }
+        if let value = dict["ExecuteTimeRange"] as? String {
+            self.executeTimeRange = value
+        }
+        if let value = dict["InstanceName"] as? String {
+            self.instanceName = value
+        }
+        if let value = dict["IpType"] as? String {
+            self.ipType = value
+        }
+        if let value = dict["Lang"] as? String {
+            self.lang = value
+        }
+        if let value = dict["LoadWhiteList"] as? Bool {
+            self.loadWhiteList = value
+        }
+        if let value = dict["MemberAccount"] as? String {
+            self.memberAccount = value
+        }
+        if let value = dict["Message"] as? String {
+            self.message = value
+        }
+        if let value = dict["OperateType"] as? String {
+            self.operateType = value
+        }
+        if let value = dict["OssObjectKey"] as? String {
+            self.ossObjectKey = value
+        }
+        if let value = dict["PageSize"] as? Int32 {
+            self.pageSize = value
+        }
+        if let value = dict["ProductCode"] as? String {
+            self.productCode = value
+        }
+        if let value = dict["ProductId"] as? Int64 {
+            self.productId = value
+        }
+        if let value = dict["RuleCategory"] as? String {
+            self.ruleCategory = value
+        }
+        if let value = dict["RuleID"] as? String {
+            self.ruleID = value
+        }
+        if let value = dict["RuleName"] as? String {
+            self.ruleName = value
+        }
+        if let value = dict["SqlText"] as? String {
+            self.sqlText = value
+        }
+        if let value = dict["StartTime"] as? Int64 {
+            self.startTime = value
+        }
+        if let value = dict["UserName"] as? String {
+            self.userName = value
+        }
+    }
+}
+
+public class DescribeAuditLogsResponseBody : Tea.TeaModel {
+    public class Items : Tea.TeaModel {
+        public var clientIp: String?
+
+        public var clientPort: String?
+
+        public var clientUa: String?
+
+        public var columnName: String?
+
+        public var creationTime: Int64?
+
+        public var dataSet: String?
+
+        public var databaseName: String?
+
+        public var effectRow: Int64?
+
+        public var executeStatus: Int32?
+
+        public var executeTime: Int64?
+
+        public var inWhiteList: Bool?
+
+        public var instanceDescription: String?
+
+        public var instanceName: String?
+
+        public var ipType: String?
+
+        public var logTime: Int64?
+
+        public var memberAccount: String?
+
+        public var message: String?
+
+        public var modelName: String?
+
+        public var operateType: String?
+
+        public var ossObjectKey: String?
+
+        public var packageName: String?
+
+        public var productCode: String?
+
+        public var productId: Int64?
+
+        public var ruleCategory: String?
+
+        public var ruleId: String?
+
+        public var ruleName: String?
+
+        public var sqlText: String?
+
+        public var tableName: String?
+
+        public var userId: String?
+
+        public var userName: String?
+
+        public var warnLevel: String?
+
+        public var warnLevelName: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.clientIp != nil {
+                map["ClientIp"] = self.clientIp!
+            }
+            if self.clientPort != nil {
+                map["ClientPort"] = self.clientPort!
+            }
+            if self.clientUa != nil {
+                map["ClientUa"] = self.clientUa!
+            }
+            if self.columnName != nil {
+                map["ColumnName"] = self.columnName!
+            }
+            if self.creationTime != nil {
+                map["CreationTime"] = self.creationTime!
+            }
+            if self.dataSet != nil {
+                map["DataSet"] = self.dataSet!
+            }
+            if self.databaseName != nil {
+                map["DatabaseName"] = self.databaseName!
+            }
+            if self.effectRow != nil {
+                map["EffectRow"] = self.effectRow!
+            }
+            if self.executeStatus != nil {
+                map["ExecuteStatus"] = self.executeStatus!
+            }
+            if self.executeTime != nil {
+                map["ExecuteTime"] = self.executeTime!
+            }
+            if self.inWhiteList != nil {
+                map["InWhiteList"] = self.inWhiteList!
+            }
+            if self.instanceDescription != nil {
+                map["InstanceDescription"] = self.instanceDescription!
+            }
+            if self.instanceName != nil {
+                map["InstanceName"] = self.instanceName!
+            }
+            if self.ipType != nil {
+                map["IpType"] = self.ipType!
+            }
+            if self.logTime != nil {
+                map["LogTime"] = self.logTime!
+            }
+            if self.memberAccount != nil {
+                map["MemberAccount"] = self.memberAccount!
+            }
+            if self.message != nil {
+                map["Message"] = self.message!
+            }
+            if self.modelName != nil {
+                map["ModelName"] = self.modelName!
+            }
+            if self.operateType != nil {
+                map["OperateType"] = self.operateType!
+            }
+            if self.ossObjectKey != nil {
+                map["OssObjectKey"] = self.ossObjectKey!
+            }
+            if self.packageName != nil {
+                map["PackageName"] = self.packageName!
+            }
+            if self.productCode != nil {
+                map["ProductCode"] = self.productCode!
+            }
+            if self.productId != nil {
+                map["ProductId"] = self.productId!
+            }
+            if self.ruleCategory != nil {
+                map["RuleCategory"] = self.ruleCategory!
+            }
+            if self.ruleId != nil {
+                map["RuleId"] = self.ruleId!
+            }
+            if self.ruleName != nil {
+                map["RuleName"] = self.ruleName!
+            }
+            if self.sqlText != nil {
+                map["SqlText"] = self.sqlText!
+            }
+            if self.tableName != nil {
+                map["TableName"] = self.tableName!
+            }
+            if self.userId != nil {
+                map["UserId"] = self.userId!
+            }
+            if self.userName != nil {
+                map["UserName"] = self.userName!
+            }
+            if self.warnLevel != nil {
+                map["WarnLevel"] = self.warnLevel!
+            }
+            if self.warnLevelName != nil {
+                map["WarnLevelName"] = self.warnLevelName!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["ClientIp"] as? String {
+                self.clientIp = value
+            }
+            if let value = dict["ClientPort"] as? String {
+                self.clientPort = value
+            }
+            if let value = dict["ClientUa"] as? String {
+                self.clientUa = value
+            }
+            if let value = dict["ColumnName"] as? String {
+                self.columnName = value
+            }
+            if let value = dict["CreationTime"] as? Int64 {
+                self.creationTime = value
+            }
+            if let value = dict["DataSet"] as? String {
+                self.dataSet = value
+            }
+            if let value = dict["DatabaseName"] as? String {
+                self.databaseName = value
+            }
+            if let value = dict["EffectRow"] as? Int64 {
+                self.effectRow = value
+            }
+            if let value = dict["ExecuteStatus"] as? Int32 {
+                self.executeStatus = value
+            }
+            if let value = dict["ExecuteTime"] as? Int64 {
+                self.executeTime = value
+            }
+            if let value = dict["InWhiteList"] as? Bool {
+                self.inWhiteList = value
+            }
+            if let value = dict["InstanceDescription"] as? String {
+                self.instanceDescription = value
+            }
+            if let value = dict["InstanceName"] as? String {
+                self.instanceName = value
+            }
+            if let value = dict["IpType"] as? String {
+                self.ipType = value
+            }
+            if let value = dict["LogTime"] as? Int64 {
+                self.logTime = value
+            }
+            if let value = dict["MemberAccount"] as? String {
+                self.memberAccount = value
+            }
+            if let value = dict["Message"] as? String {
+                self.message = value
+            }
+            if let value = dict["ModelName"] as? String {
+                self.modelName = value
+            }
+            if let value = dict["OperateType"] as? String {
+                self.operateType = value
+            }
+            if let value = dict["OssObjectKey"] as? String {
+                self.ossObjectKey = value
+            }
+            if let value = dict["PackageName"] as? String {
+                self.packageName = value
+            }
+            if let value = dict["ProductCode"] as? String {
+                self.productCode = value
+            }
+            if let value = dict["ProductId"] as? Int64 {
+                self.productId = value
+            }
+            if let value = dict["RuleCategory"] as? String {
+                self.ruleCategory = value
+            }
+            if let value = dict["RuleId"] as? String {
+                self.ruleId = value
+            }
+            if let value = dict["RuleName"] as? String {
+                self.ruleName = value
+            }
+            if let value = dict["SqlText"] as? String {
+                self.sqlText = value
+            }
+            if let value = dict["TableName"] as? String {
+                self.tableName = value
+            }
+            if let value = dict["UserId"] as? String {
+                self.userId = value
+            }
+            if let value = dict["UserName"] as? String {
+                self.userName = value
+            }
+            if let value = dict["WarnLevel"] as? String {
+                self.warnLevel = value
+            }
+            if let value = dict["WarnLevelName"] as? String {
+                self.warnLevelName = value
+            }
+        }
+    }
+    public var asyncRequestId: String?
+
+    public var currentPage: Int32?
+
+    public var items: [DescribeAuditLogsResponseBody.Items]?
+
+    public var pageSize: Int32?
+
+    public var requestId: String?
+
+    public var totalCount: Int32?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.asyncRequestId != nil {
+            map["AsyncRequestId"] = self.asyncRequestId!
+        }
+        if self.currentPage != nil {
+            map["CurrentPage"] = self.currentPage!
+        }
+        if self.items != nil {
+            var tmp : [Any] = []
+            for k in self.items! {
+                tmp.append(k.toMap())
+            }
+            map["Items"] = tmp
+        }
+        if self.pageSize != nil {
+            map["PageSize"] = self.pageSize!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.totalCount != nil {
+            map["TotalCount"] = self.totalCount!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["AsyncRequestId"] as? String {
+            self.asyncRequestId = value
+        }
+        if let value = dict["CurrentPage"] as? Int32 {
+            self.currentPage = value
+        }
+        if let value = dict["Items"] as? [Any?] {
+            var tmp : [DescribeAuditLogsResponseBody.Items] = []
+            for v in value {
+                if v != nil {
+                    var model = DescribeAuditLogsResponseBody.Items()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.items = tmp
+        }
+        if let value = dict["PageSize"] as? Int32 {
+            self.pageSize = value
+        }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+        if let value = dict["TotalCount"] as? Int32 {
+            self.totalCount = value
+        }
+    }
+}
+
+public class DescribeAuditLogsResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: DescribeAuditLogsResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = DescribeAuditLogsResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
 public class DescribeCategoryTemplateListRequest : Tea.TeaModel {
     public var currentPage: Int32?
 
