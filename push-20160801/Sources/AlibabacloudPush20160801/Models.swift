@@ -5,6 +5,1245 @@ import AlibabacloudOpenApi
 import AlibabaCloudOpenApiUtil
 import AlibabacloudEndpointUtil
 
+public class PushTask : Tea.TeaModel {
+    public class Message : Tea.TeaModel {
+        public var body: String?
+
+        public var title: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.body != nil {
+                map["Body"] = self.body!
+            }
+            if self.title != nil {
+                map["Title"] = self.title!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["Body"] as? String {
+                self.body = value
+            }
+            if let value = dict["Title"] as? String {
+                self.title = value
+            }
+        }
+    }
+    public class Notification : Tea.TeaModel {
+        public class Android : Tea.TeaModel {
+            public class Options : Tea.TeaModel {
+                public class Accs : Tea.TeaModel {
+                    public var customStyle: Int32?
+
+                    public var notifyType: String?
+
+                    public var openActivity: String?
+
+                    public var openType: String?
+
+                    public var openUrl: String?
+
+                    public var priority: Int32?
+
+                    public var threadId: String?
+
+                    public override init() {
+                        super.init()
+                    }
+
+                    public init(_ dict: [String: Any]) {
+                        super.init()
+                        self.fromMap(dict)
+                    }
+
+                    public override func validate() throws -> Void {
+                    }
+
+                    public override func toMap() -> [String : Any] {
+                        var map = super.toMap()
+                        if self.customStyle != nil {
+                            map["CustomStyle"] = self.customStyle!
+                        }
+                        if self.notifyType != nil {
+                            map["NotifyType"] = self.notifyType!
+                        }
+                        if self.openActivity != nil {
+                            map["OpenActivity"] = self.openActivity!
+                        }
+                        if self.openType != nil {
+                            map["OpenType"] = self.openType!
+                        }
+                        if self.openUrl != nil {
+                            map["OpenUrl"] = self.openUrl!
+                        }
+                        if self.priority != nil {
+                            map["Priority"] = self.priority!
+                        }
+                        if self.threadId != nil {
+                            map["ThreadId"] = self.threadId!
+                        }
+                        return map
+                    }
+
+                    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                        guard let dict else { return }
+                        if let value = dict["CustomStyle"] as? Int32 {
+                            self.customStyle = value
+                        }
+                        if let value = dict["NotifyType"] as? String {
+                            self.notifyType = value
+                        }
+                        if let value = dict["OpenActivity"] as? String {
+                            self.openActivity = value
+                        }
+                        if let value = dict["OpenType"] as? String {
+                            self.openType = value
+                        }
+                        if let value = dict["OpenUrl"] as? String {
+                            self.openUrl = value
+                        }
+                        if let value = dict["Priority"] as? Int32 {
+                            self.priority = value
+                        }
+                        if let value = dict["ThreadId"] as? String {
+                            self.threadId = value
+                        }
+                    }
+                }
+                public class Honor : Tea.TeaModel {
+                    public var importance: Int32?
+
+                    public override init() {
+                        super.init()
+                    }
+
+                    public init(_ dict: [String: Any]) {
+                        super.init()
+                        self.fromMap(dict)
+                    }
+
+                    public override func validate() throws -> Void {
+                    }
+
+                    public override func toMap() -> [String : Any] {
+                        var map = super.toMap()
+                        if self.importance != nil {
+                            map["Importance"] = self.importance!
+                        }
+                        return map
+                    }
+
+                    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                        guard let dict else { return }
+                        if let value = dict["Importance"] as? Int32 {
+                            self.importance = value
+                        }
+                    }
+                }
+                public class Huawei : Tea.TeaModel {
+                    public var category: String?
+
+                    public var importance: Int32?
+
+                    public var receiptId: String?
+
+                    public var urgency: String?
+
+                    public override init() {
+                        super.init()
+                    }
+
+                    public init(_ dict: [String: Any]) {
+                        super.init()
+                        self.fromMap(dict)
+                    }
+
+                    public override func validate() throws -> Void {
+                    }
+
+                    public override func toMap() -> [String : Any] {
+                        var map = super.toMap()
+                        if self.category != nil {
+                            map["Category"] = self.category!
+                        }
+                        if self.importance != nil {
+                            map["Importance"] = self.importance!
+                        }
+                        if self.receiptId != nil {
+                            map["ReceiptId"] = self.receiptId!
+                        }
+                        if self.urgency != nil {
+                            map["Urgency"] = self.urgency!
+                        }
+                        return map
+                    }
+
+                    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                        guard let dict else { return }
+                        if let value = dict["Category"] as? String {
+                            self.category = value
+                        }
+                        if let value = dict["Importance"] as? Int32 {
+                            self.importance = value
+                        }
+                        if let value = dict["ReceiptId"] as? String {
+                            self.receiptId = value
+                        }
+                        if let value = dict["Urgency"] as? String {
+                            self.urgency = value
+                        }
+                    }
+                }
+                public class Oppo : Tea.TeaModel {
+                    public var category: String?
+
+                    public var notifyLevel: Int64?
+
+                    public override init() {
+                        super.init()
+                    }
+
+                    public init(_ dict: [String: Any]) {
+                        super.init()
+                        self.fromMap(dict)
+                    }
+
+                    public override func validate() throws -> Void {
+                    }
+
+                    public override func toMap() -> [String : Any] {
+                        var map = super.toMap()
+                        if self.category != nil {
+                            map["Category"] = self.category!
+                        }
+                        if self.notifyLevel != nil {
+                            map["NotifyLevel"] = self.notifyLevel!
+                        }
+                        return map
+                    }
+
+                    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                        guard let dict else { return }
+                        if let value = dict["Category"] as? String {
+                            self.category = value
+                        }
+                        if let value = dict["NotifyLevel"] as? Int64 {
+                            self.notifyLevel = value
+                        }
+                    }
+                }
+                public class Vivo : Tea.TeaModel {
+                    public var category: String?
+
+                    public var importance: Int32?
+
+                    public var receiptId: String?
+
+                    public override init() {
+                        super.init()
+                    }
+
+                    public init(_ dict: [String: Any]) {
+                        super.init()
+                        self.fromMap(dict)
+                    }
+
+                    public override func validate() throws -> Void {
+                    }
+
+                    public override func toMap() -> [String : Any] {
+                        var map = super.toMap()
+                        if self.category != nil {
+                            map["Category"] = self.category!
+                        }
+                        if self.importance != nil {
+                            map["Importance"] = self.importance!
+                        }
+                        if self.receiptId != nil {
+                            map["ReceiptId"] = self.receiptId!
+                        }
+                        return map
+                    }
+
+                    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                        guard let dict else { return }
+                        if let value = dict["Category"] as? String {
+                            self.category = value
+                        }
+                        if let value = dict["Importance"] as? Int32 {
+                            self.importance = value
+                        }
+                        if let value = dict["ReceiptId"] as? String {
+                            self.receiptId = value
+                        }
+                    }
+                }
+                public class Xiaomi : Tea.TeaModel {
+                    public var channel: String?
+
+                    public override init() {
+                        super.init()
+                    }
+
+                    public init(_ dict: [String: Any]) {
+                        super.init()
+                        self.fromMap(dict)
+                    }
+
+                    public override func validate() throws -> Void {
+                    }
+
+                    public override func toMap() -> [String : Any] {
+                        var map = super.toMap()
+                        if self.channel != nil {
+                            map["Channel"] = self.channel!
+                        }
+                        return map
+                    }
+
+                    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                        guard let dict else { return }
+                        if let value = dict["Channel"] as? String {
+                            self.channel = value
+                        }
+                    }
+                }
+                public var accs: PushTask.Notification.Android.Options.Accs?
+
+                public var honor: PushTask.Notification.Android.Options.Honor?
+
+                public var huawei: PushTask.Notification.Android.Options.Huawei?
+
+                public var oppo: PushTask.Notification.Android.Options.Oppo?
+
+                public var vivo: PushTask.Notification.Android.Options.Vivo?
+
+                public var xiaomi: PushTask.Notification.Android.Options.Xiaomi?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                    try self.accs?.validate()
+                    try self.honor?.validate()
+                    try self.huawei?.validate()
+                    try self.oppo?.validate()
+                    try self.vivo?.validate()
+                    try self.xiaomi?.validate()
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.accs != nil {
+                        map["Accs"] = self.accs?.toMap()
+                    }
+                    if self.honor != nil {
+                        map["Honor"] = self.honor?.toMap()
+                    }
+                    if self.huawei != nil {
+                        map["Huawei"] = self.huawei?.toMap()
+                    }
+                    if self.oppo != nil {
+                        map["Oppo"] = self.oppo?.toMap()
+                    }
+                    if self.vivo != nil {
+                        map["Vivo"] = self.vivo?.toMap()
+                    }
+                    if self.xiaomi != nil {
+                        map["Xiaomi"] = self.xiaomi?.toMap()
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                    guard let dict else { return }
+                    if let value = dict["Accs"] as? [String: Any?] {
+                        var model = PushTask.Notification.Android.Options.Accs()
+                        model.fromMap(value)
+                        self.accs = model
+                    }
+                    if let value = dict["Honor"] as? [String: Any?] {
+                        var model = PushTask.Notification.Android.Options.Honor()
+                        model.fromMap(value)
+                        self.honor = model
+                    }
+                    if let value = dict["Huawei"] as? [String: Any?] {
+                        var model = PushTask.Notification.Android.Options.Huawei()
+                        model.fromMap(value)
+                        self.huawei = model
+                    }
+                    if let value = dict["Oppo"] as? [String: Any?] {
+                        var model = PushTask.Notification.Android.Options.Oppo()
+                        model.fromMap(value)
+                        self.oppo = model
+                    }
+                    if let value = dict["Vivo"] as? [String: Any?] {
+                        var model = PushTask.Notification.Android.Options.Vivo()
+                        model.fromMap(value)
+                        self.vivo = model
+                    }
+                    if let value = dict["Xiaomi"] as? [String: Any?] {
+                        var model = PushTask.Notification.Android.Options.Xiaomi()
+                        model.fromMap(value)
+                        self.xiaomi = model
+                    }
+                }
+            }
+            public var badgeActivity: String?
+
+            public var badgeAddNum: Int32?
+
+            public var badgeSetNum: Int32?
+
+            public var channelId: String?
+
+            public var extParameters: String?
+
+            public var groupId: String?
+
+            public var imageUrl: String?
+
+            public var inboxContent: [String]?
+
+            public var music: String?
+
+            public var notifyId: Int32?
+
+            public var options: PushTask.Notification.Android.Options?
+
+            public var pictureUrl: String?
+
+            public var renderStyle: String?
+
+            public var testMessage: Bool?
+
+            public var vendorChannelActivity: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+                try self.options?.validate()
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.badgeActivity != nil {
+                    map["BadgeActivity"] = self.badgeActivity!
+                }
+                if self.badgeAddNum != nil {
+                    map["BadgeAddNum"] = self.badgeAddNum!
+                }
+                if self.badgeSetNum != nil {
+                    map["BadgeSetNum"] = self.badgeSetNum!
+                }
+                if self.channelId != nil {
+                    map["ChannelId"] = self.channelId!
+                }
+                if self.extParameters != nil {
+                    map["ExtParameters"] = self.extParameters!
+                }
+                if self.groupId != nil {
+                    map["GroupId"] = self.groupId!
+                }
+                if self.imageUrl != nil {
+                    map["ImageUrl"] = self.imageUrl!
+                }
+                if self.inboxContent != nil {
+                    map["InboxContent"] = self.inboxContent!
+                }
+                if self.music != nil {
+                    map["Music"] = self.music!
+                }
+                if self.notifyId != nil {
+                    map["NotifyId"] = self.notifyId!
+                }
+                if self.options != nil {
+                    map["Options"] = self.options?.toMap()
+                }
+                if self.pictureUrl != nil {
+                    map["PictureUrl"] = self.pictureUrl!
+                }
+                if self.renderStyle != nil {
+                    map["RenderStyle"] = self.renderStyle!
+                }
+                if self.testMessage != nil {
+                    map["TestMessage"] = self.testMessage!
+                }
+                if self.vendorChannelActivity != nil {
+                    map["VendorChannelActivity"] = self.vendorChannelActivity!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["BadgeActivity"] as? String {
+                    self.badgeActivity = value
+                }
+                if let value = dict["BadgeAddNum"] as? Int32 {
+                    self.badgeAddNum = value
+                }
+                if let value = dict["BadgeSetNum"] as? Int32 {
+                    self.badgeSetNum = value
+                }
+                if let value = dict["ChannelId"] as? String {
+                    self.channelId = value
+                }
+                if let value = dict["ExtParameters"] as? String {
+                    self.extParameters = value
+                }
+                if let value = dict["GroupId"] as? String {
+                    self.groupId = value
+                }
+                if let value = dict["ImageUrl"] as? String {
+                    self.imageUrl = value
+                }
+                if let value = dict["InboxContent"] as? [String] {
+                    self.inboxContent = value
+                }
+                if let value = dict["Music"] as? String {
+                    self.music = value
+                }
+                if let value = dict["NotifyId"] as? Int32 {
+                    self.notifyId = value
+                }
+                if let value = dict["Options"] as? [String: Any?] {
+                    var model = PushTask.Notification.Android.Options()
+                    model.fromMap(value)
+                    self.options = model
+                }
+                if let value = dict["PictureUrl"] as? String {
+                    self.pictureUrl = value
+                }
+                if let value = dict["RenderStyle"] as? String {
+                    self.renderStyle = value
+                }
+                if let value = dict["TestMessage"] as? Bool {
+                    self.testMessage = value
+                }
+                if let value = dict["VendorChannelActivity"] as? String {
+                    self.vendorChannelActivity = value
+                }
+            }
+        }
+        public class Hmos : Tea.TeaModel {
+            public var action: String?
+
+            public var badgeAddNum: Int32?
+
+            public var badgeSetNum: Int32?
+
+            public var category: String?
+
+            public var extParameters: String?
+
+            public var extensionExtraData: String?
+
+            public var extensionPush: Bool?
+
+            public var imageUrl: String?
+
+            public var inboxContent: [String]?
+
+            public var notifyId: Int32?
+
+            public var receiptId: String?
+
+            public var renderStyle: String?
+
+            public var slotType: String?
+
+            public var testMessage: Bool?
+
+            public var uri: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.action != nil {
+                    map["Action"] = self.action!
+                }
+                if self.badgeAddNum != nil {
+                    map["BadgeAddNum"] = self.badgeAddNum!
+                }
+                if self.badgeSetNum != nil {
+                    map["BadgeSetNum"] = self.badgeSetNum!
+                }
+                if self.category != nil {
+                    map["Category"] = self.category!
+                }
+                if self.extParameters != nil {
+                    map["ExtParameters"] = self.extParameters!
+                }
+                if self.extensionExtraData != nil {
+                    map["ExtensionExtraData"] = self.extensionExtraData!
+                }
+                if self.extensionPush != nil {
+                    map["ExtensionPush"] = self.extensionPush!
+                }
+                if self.imageUrl != nil {
+                    map["ImageUrl"] = self.imageUrl!
+                }
+                if self.inboxContent != nil {
+                    map["InboxContent"] = self.inboxContent!
+                }
+                if self.notifyId != nil {
+                    map["NotifyId"] = self.notifyId!
+                }
+                if self.receiptId != nil {
+                    map["ReceiptId"] = self.receiptId!
+                }
+                if self.renderStyle != nil {
+                    map["RenderStyle"] = self.renderStyle!
+                }
+                if self.slotType != nil {
+                    map["SlotType"] = self.slotType!
+                }
+                if self.testMessage != nil {
+                    map["TestMessage"] = self.testMessage!
+                }
+                if self.uri != nil {
+                    map["Uri"] = self.uri!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["Action"] as? String {
+                    self.action = value
+                }
+                if let value = dict["BadgeAddNum"] as? Int32 {
+                    self.badgeAddNum = value
+                }
+                if let value = dict["BadgeSetNum"] as? Int32 {
+                    self.badgeSetNum = value
+                }
+                if let value = dict["Category"] as? String {
+                    self.category = value
+                }
+                if let value = dict["ExtParameters"] as? String {
+                    self.extParameters = value
+                }
+                if let value = dict["ExtensionExtraData"] as? String {
+                    self.extensionExtraData = value
+                }
+                if let value = dict["ExtensionPush"] as? Bool {
+                    self.extensionPush = value
+                }
+                if let value = dict["ImageUrl"] as? String {
+                    self.imageUrl = value
+                }
+                if let value = dict["InboxContent"] as? [String] {
+                    self.inboxContent = value
+                }
+                if let value = dict["NotifyId"] as? Int32 {
+                    self.notifyId = value
+                }
+                if let value = dict["ReceiptId"] as? String {
+                    self.receiptId = value
+                }
+                if let value = dict["RenderStyle"] as? String {
+                    self.renderStyle = value
+                }
+                if let value = dict["SlotType"] as? String {
+                    self.slotType = value
+                }
+                if let value = dict["TestMessage"] as? Bool {
+                    self.testMessage = value
+                }
+                if let value = dict["Uri"] as? String {
+                    self.uri = value
+                }
+            }
+        }
+        public class Ios : Tea.TeaModel {
+            public class LiveActivity : Tea.TeaModel {
+                public var attributes: String?
+
+                public var attributesType: String?
+
+                public var contentState: String?
+
+                public var dismissalDate: Int64?
+
+                public var event: String?
+
+                public var id: String?
+
+                public var staleDate: Int64?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.attributes != nil {
+                        map["Attributes"] = self.attributes!
+                    }
+                    if self.attributesType != nil {
+                        map["AttributesType"] = self.attributesType!
+                    }
+                    if self.contentState != nil {
+                        map["ContentState"] = self.contentState!
+                    }
+                    if self.dismissalDate != nil {
+                        map["DismissalDate"] = self.dismissalDate!
+                    }
+                    if self.event != nil {
+                        map["Event"] = self.event!
+                    }
+                    if self.id != nil {
+                        map["Id"] = self.id!
+                    }
+                    if self.staleDate != nil {
+                        map["StaleDate"] = self.staleDate!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                    guard let dict else { return }
+                    if let value = dict["Attributes"] as? String {
+                        self.attributes = value
+                    }
+                    if let value = dict["AttributesType"] as? String {
+                        self.attributesType = value
+                    }
+                    if let value = dict["ContentState"] as? String {
+                        self.contentState = value
+                    }
+                    if let value = dict["DismissalDate"] as? Int64 {
+                        self.dismissalDate = value
+                    }
+                    if let value = dict["Event"] as? String {
+                        self.event = value
+                    }
+                    if let value = dict["Id"] as? String {
+                        self.id = value
+                    }
+                    if let value = dict["StaleDate"] as? Int64 {
+                        self.staleDate = value
+                    }
+                }
+            }
+            public var apnsEnv: String?
+
+            public var badge: Int32?
+
+            public var badgeAutoIncrement: Bool?
+
+            public var category: String?
+
+            public var collapseId: String?
+
+            public var extParameters: String?
+
+            public var interruptionLevel: String?
+
+            public var liveActivity: PushTask.Notification.Ios.LiveActivity?
+
+            public var music: String?
+
+            public var mutable: Bool?
+
+            public var relevanceScore: Double?
+
+            public var silent: Bool?
+
+            public var subtitle: String?
+
+            public var threadId: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+                try self.liveActivity?.validate()
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.apnsEnv != nil {
+                    map["ApnsEnv"] = self.apnsEnv!
+                }
+                if self.badge != nil {
+                    map["Badge"] = self.badge!
+                }
+                if self.badgeAutoIncrement != nil {
+                    map["BadgeAutoIncrement"] = self.badgeAutoIncrement!
+                }
+                if self.category != nil {
+                    map["Category"] = self.category!
+                }
+                if self.collapseId != nil {
+                    map["CollapseId"] = self.collapseId!
+                }
+                if self.extParameters != nil {
+                    map["ExtParameters"] = self.extParameters!
+                }
+                if self.interruptionLevel != nil {
+                    map["InterruptionLevel"] = self.interruptionLevel!
+                }
+                if self.liveActivity != nil {
+                    map["LiveActivity"] = self.liveActivity?.toMap()
+                }
+                if self.music != nil {
+                    map["Music"] = self.music!
+                }
+                if self.mutable != nil {
+                    map["Mutable"] = self.mutable!
+                }
+                if self.relevanceScore != nil {
+                    map["RelevanceScore"] = self.relevanceScore!
+                }
+                if self.silent != nil {
+                    map["Silent"] = self.silent!
+                }
+                if self.subtitle != nil {
+                    map["Subtitle"] = self.subtitle!
+                }
+                if self.threadId != nil {
+                    map["ThreadId"] = self.threadId!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["ApnsEnv"] as? String {
+                    self.apnsEnv = value
+                }
+                if let value = dict["Badge"] as? Int32 {
+                    self.badge = value
+                }
+                if let value = dict["BadgeAutoIncrement"] as? Bool {
+                    self.badgeAutoIncrement = value
+                }
+                if let value = dict["Category"] as? String {
+                    self.category = value
+                }
+                if let value = dict["CollapseId"] as? String {
+                    self.collapseId = value
+                }
+                if let value = dict["ExtParameters"] as? String {
+                    self.extParameters = value
+                }
+                if let value = dict["InterruptionLevel"] as? String {
+                    self.interruptionLevel = value
+                }
+                if let value = dict["LiveActivity"] as? [String: Any?] {
+                    var model = PushTask.Notification.Ios.LiveActivity()
+                    model.fromMap(value)
+                    self.liveActivity = model
+                }
+                if let value = dict["Music"] as? String {
+                    self.music = value
+                }
+                if let value = dict["Mutable"] as? Bool {
+                    self.mutable = value
+                }
+                if let value = dict["RelevanceScore"] as? Double {
+                    self.relevanceScore = value
+                }
+                if let value = dict["Silent"] as? Bool {
+                    self.silent = value
+                }
+                if let value = dict["Subtitle"] as? String {
+                    self.subtitle = value
+                }
+                if let value = dict["ThreadId"] as? String {
+                    self.threadId = value
+                }
+            }
+        }
+        public var android: PushTask.Notification.Android?
+
+        public var body: String?
+
+        public var hmos: PushTask.Notification.Hmos?
+
+        public var ios: PushTask.Notification.Ios?
+
+        public var title: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+            try self.android?.validate()
+            try self.hmos?.validate()
+            try self.ios?.validate()
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.android != nil {
+                map["Android"] = self.android?.toMap()
+            }
+            if self.body != nil {
+                map["Body"] = self.body!
+            }
+            if self.hmos != nil {
+                map["Hmos"] = self.hmos?.toMap()
+            }
+            if self.ios != nil {
+                map["Ios"] = self.ios?.toMap()
+            }
+            if self.title != nil {
+                map["Title"] = self.title!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["Android"] as? [String: Any?] {
+                var model = PushTask.Notification.Android()
+                model.fromMap(value)
+                self.android = model
+            }
+            if let value = dict["Body"] as? String {
+                self.body = value
+            }
+            if let value = dict["Hmos"] as? [String: Any?] {
+                var model = PushTask.Notification.Hmos()
+                model.fromMap(value)
+                self.hmos = model
+            }
+            if let value = dict["Ios"] as? [String: Any?] {
+                var model = PushTask.Notification.Ios()
+                model.fromMap(value)
+                self.ios = model
+            }
+            if let value = dict["Title"] as? String {
+                self.title = value
+            }
+        }
+    }
+    public class Options : Tea.TeaModel {
+        public class Sms : Tea.TeaModel {
+            public var delaySecs: Int64?
+
+            public var params: String?
+
+            public var sendPolicy: String?
+
+            public var signName: String?
+
+            public var templateName: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.delaySecs != nil {
+                    map["DelaySecs"] = self.delaySecs!
+                }
+                if self.params != nil {
+                    map["Params"] = self.params!
+                }
+                if self.sendPolicy != nil {
+                    map["SendPolicy"] = self.sendPolicy!
+                }
+                if self.signName != nil {
+                    map["SignName"] = self.signName!
+                }
+                if self.templateName != nil {
+                    map["TemplateName"] = self.templateName!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["DelaySecs"] as? Int64 {
+                    self.delaySecs = value
+                }
+                if let value = dict["Params"] as? String {
+                    self.params = value
+                }
+                if let value = dict["SendPolicy"] as? String {
+                    self.sendPolicy = value
+                }
+                if let value = dict["SignName"] as? String {
+                    self.signName = value
+                }
+                if let value = dict["TemplateName"] as? String {
+                    self.templateName = value
+                }
+            }
+        }
+        public var expireTime: String?
+
+        public var jobKey: String?
+
+        public var messageId: Int64?
+
+        public var pushTime: String?
+
+        public var sms: PushTask.Options.Sms?
+
+        public var trim: Bool?
+
+        public var useChannels: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+            try self.sms?.validate()
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.expireTime != nil {
+                map["ExpireTime"] = self.expireTime!
+            }
+            if self.jobKey != nil {
+                map["JobKey"] = self.jobKey!
+            }
+            if self.messageId != nil {
+                map["MessageId"] = self.messageId!
+            }
+            if self.pushTime != nil {
+                map["PushTime"] = self.pushTime!
+            }
+            if self.sms != nil {
+                map["Sms"] = self.sms?.toMap()
+            }
+            if self.trim != nil {
+                map["Trim"] = self.trim!
+            }
+            if self.useChannels != nil {
+                map["UseChannels"] = self.useChannels!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["ExpireTime"] as? String {
+                self.expireTime = value
+            }
+            if let value = dict["JobKey"] as? String {
+                self.jobKey = value
+            }
+            if let value = dict["MessageId"] as? Int64 {
+                self.messageId = value
+            }
+            if let value = dict["PushTime"] as? String {
+                self.pushTime = value
+            }
+            if let value = dict["Sms"] as? [String: Any?] {
+                var model = PushTask.Options.Sms()
+                model.fromMap(value)
+                self.sms = model
+            }
+            if let value = dict["Trim"] as? Bool {
+                self.trim = value
+            }
+            if let value = dict["UseChannels"] as? String {
+                self.useChannels = value
+            }
+        }
+    }
+    public class Target : Tea.TeaModel {
+        public var platform: String?
+
+        public var type: String?
+
+        public var value: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.platform != nil {
+                map["Platform"] = self.platform!
+            }
+            if self.type != nil {
+                map["Type"] = self.type!
+            }
+            if self.value != nil {
+                map["Value"] = self.value!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["Platform"] as? String {
+                self.platform = value
+            }
+            if let value = dict["Type"] as? String {
+                self.type = value
+            }
+            if let value = dict["Value"] as? String {
+                self.value = value
+            }
+        }
+    }
+    public var action: String?
+
+    public var message: PushTask.Message?
+
+    public var notification: PushTask.Notification?
+
+    public var options: PushTask.Options?
+
+    public var target: PushTask.Target?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.message?.validate()
+        try self.notification?.validate()
+        try self.options?.validate()
+        try self.target?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.action != nil {
+            map["Action"] = self.action!
+        }
+        if self.message != nil {
+            map["Message"] = self.message?.toMap()
+        }
+        if self.notification != nil {
+            map["Notification"] = self.notification?.toMap()
+        }
+        if self.options != nil {
+            map["Options"] = self.options?.toMap()
+        }
+        if self.target != nil {
+            map["Target"] = self.target?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["Action"] as? String {
+            self.action = value
+        }
+        if let value = dict["Message"] as? [String: Any?] {
+            var model = PushTask.Message()
+            model.fromMap(value)
+            self.message = model
+        }
+        if let value = dict["Notification"] as? [String: Any?] {
+            var model = PushTask.Notification()
+            model.fromMap(value)
+            self.notification = model
+        }
+        if let value = dict["Options"] as? [String: Any?] {
+            var model = PushTask.Options()
+            model.fromMap(value)
+            self.options = model
+        }
+        if let value = dict["Target"] as? [String: Any?] {
+            var model = PushTask.Target()
+            model.fromMap(value)
+            self.target = model
+        }
+    }
+}
+
 public class BindAliasRequest : Tea.TeaModel {
     public var aliasName: String?
 
@@ -1885,6 +3124,12 @@ public class MassPushRequest : Tea.TeaModel {
 
         public var trim: Bool?
 
+        public var androidOppoPrivateContentParameters: [String: String]?
+
+        public var androidOppoPrivateMsgTemplateId: String?
+
+        public var androidOppoPrivateTitleParameters: [String: String]?
+
         public var iOSApnsEnv: String?
 
         public var iOSBadge: Int32?
@@ -2176,6 +3421,15 @@ public class MassPushRequest : Tea.TeaModel {
             }
             if self.trim != nil {
                 map["Trim"] = self.trim!
+            }
+            if self.androidOppoPrivateContentParameters != nil {
+                map["androidOppoPrivateContentParameters"] = self.androidOppoPrivateContentParameters!
+            }
+            if self.androidOppoPrivateMsgTemplateId != nil {
+                map["androidOppoPrivateMsgTemplateId"] = self.androidOppoPrivateMsgTemplateId!
+            }
+            if self.androidOppoPrivateTitleParameters != nil {
+                map["androidOppoPrivateTitleParameters"] = self.androidOppoPrivateTitleParameters!
             }
             if self.iOSApnsEnv != nil {
                 map["iOSApnsEnv"] = self.iOSApnsEnv!
@@ -2481,6 +3735,15 @@ public class MassPushRequest : Tea.TeaModel {
             }
             if let value = dict["Trim"] as? Bool {
                 self.trim = value
+            }
+            if let value = dict["androidOppoPrivateContentParameters"] as? [String: String] {
+                self.androidOppoPrivateContentParameters = value
+            }
+            if let value = dict["androidOppoPrivateMsgTemplateId"] as? String {
+                self.androidOppoPrivateMsgTemplateId = value
+            }
+            if let value = dict["androidOppoPrivateTitleParameters"] as? [String: String] {
+                self.androidOppoPrivateTitleParameters = value
             }
             if let value = dict["iOSApnsEnv"] as? String {
                 self.iOSApnsEnv = value
@@ -2903,6 +4166,12 @@ public class PushRequest : Tea.TeaModel {
 
     public var trim: Bool?
 
+    public var androidOppoPrivateContentParameters: [String: String]?
+
+    public var androidOppoPrivateMsgTemplateId: String?
+
+    public var androidOppoPrivateTitleParameters: [String: String]?
+
     public var iOSApnsEnv: String?
 
     public var iOSBadge: Int32?
@@ -3215,6 +4484,15 @@ public class PushRequest : Tea.TeaModel {
         }
         if self.trim != nil {
             map["Trim"] = self.trim!
+        }
+        if self.androidOppoPrivateContentParameters != nil {
+            map["androidOppoPrivateContentParameters"] = self.androidOppoPrivateContentParameters!
+        }
+        if self.androidOppoPrivateMsgTemplateId != nil {
+            map["androidOppoPrivateMsgTemplateId"] = self.androidOppoPrivateMsgTemplateId!
+        }
+        if self.androidOppoPrivateTitleParameters != nil {
+            map["androidOppoPrivateTitleParameters"] = self.androidOppoPrivateTitleParameters!
         }
         if self.iOSApnsEnv != nil {
             map["iOSApnsEnv"] = self.iOSApnsEnv!
@@ -3541,6 +4819,918 @@ public class PushRequest : Tea.TeaModel {
         }
         if let value = dict["Trim"] as? Bool {
             self.trim = value
+        }
+        if let value = dict["androidOppoPrivateContentParameters"] as? [String: String] {
+            self.androidOppoPrivateContentParameters = value
+        }
+        if let value = dict["androidOppoPrivateMsgTemplateId"] as? String {
+            self.androidOppoPrivateMsgTemplateId = value
+        }
+        if let value = dict["androidOppoPrivateTitleParameters"] as? [String: String] {
+            self.androidOppoPrivateTitleParameters = value
+        }
+        if let value = dict["iOSApnsEnv"] as? String {
+            self.iOSApnsEnv = value
+        }
+        if let value = dict["iOSBadge"] as? Int32 {
+            self.iOSBadge = value
+        }
+        if let value = dict["iOSBadgeAutoIncrement"] as? Bool {
+            self.iOSBadgeAutoIncrement = value
+        }
+        if let value = dict["iOSExtParameters"] as? String {
+            self.iOSExtParameters = value
+        }
+        if let value = dict["iOSInterruptionLevel"] as? String {
+            self.iOSInterruptionLevel = value
+        }
+        if let value = dict["iOSLiveActivityAttributes"] as? String {
+            self.iOSLiveActivityAttributes = value
+        }
+        if let value = dict["iOSLiveActivityAttributesType"] as? String {
+            self.iOSLiveActivityAttributesType = value
+        }
+        if let value = dict["iOSLiveActivityContentState"] as? String {
+            self.iOSLiveActivityContentState = value
+        }
+        if let value = dict["iOSLiveActivityDismissalDate"] as? Int64 {
+            self.iOSLiveActivityDismissalDate = value
+        }
+        if let value = dict["iOSLiveActivityEvent"] as? String {
+            self.iOSLiveActivityEvent = value
+        }
+        if let value = dict["iOSLiveActivityId"] as? String {
+            self.iOSLiveActivityId = value
+        }
+        if let value = dict["iOSLiveActivityStaleDate"] as? Int64 {
+            self.iOSLiveActivityStaleDate = value
+        }
+        if let value = dict["iOSMusic"] as? String {
+            self.iOSMusic = value
+        }
+        if let value = dict["iOSMutableContent"] as? Bool {
+            self.iOSMutableContent = value
+        }
+        if let value = dict["iOSNotificationCategory"] as? String {
+            self.iOSNotificationCategory = value
+        }
+        if let value = dict["iOSNotificationCollapseId"] as? String {
+            self.iOSNotificationCollapseId = value
+        }
+        if let value = dict["iOSNotificationThreadId"] as? String {
+            self.iOSNotificationThreadId = value
+        }
+        if let value = dict["iOSRelevanceScore"] as? Double {
+            self.iOSRelevanceScore = value
+        }
+        if let value = dict["iOSRemind"] as? Bool {
+            self.iOSRemind = value
+        }
+        if let value = dict["iOSRemindBody"] as? String {
+            self.iOSRemindBody = value
+        }
+        if let value = dict["iOSSilentNotification"] as? Bool {
+            self.iOSSilentNotification = value
+        }
+        if let value = dict["iOSSubtitle"] as? String {
+            self.iOSSubtitle = value
+        }
+    }
+}
+
+public class PushShrinkRequest : Tea.TeaModel {
+    public var androidActivity: String?
+
+    public var androidBadgeAddNum: Int32?
+
+    public var androidBadgeClass: String?
+
+    public var androidBadgeSetNum: Int32?
+
+    public var androidBigBody: String?
+
+    public var androidBigPictureUrl: String?
+
+    public var androidBigTitle: String?
+
+    public var androidExtParameters: String?
+
+    public var androidHonorTargetUserType: Int32?
+
+    public var androidHuaweiReceiptId: String?
+
+    public var androidHuaweiTargetUserType: Int32?
+
+    public var androidImageUrl: String?
+
+    public var androidInboxBody: String?
+
+    public var androidMeizuNoticeMsgType: Int32?
+
+    public var androidMessageHuaweiCategory: String?
+
+    public var androidMessageHuaweiUrgency: String?
+
+    public var androidMessageOppoCategory: String?
+
+    public var androidMessageOppoNotifyLevel: Int32?
+
+    public var androidMessageVivoCategory: String?
+
+    public var androidMusic: String?
+
+    public var androidNotificationBarPriority: Int32?
+
+    public var androidNotificationBarType: Int32?
+
+    public var androidNotificationChannel: String?
+
+    public var androidNotificationGroup: String?
+
+    public var androidNotificationHonorChannel: String?
+
+    public var androidNotificationHuaweiChannel: String?
+
+    public var androidNotificationNotifyId: Int32?
+
+    public var androidNotificationThreadId: String?
+
+    public var androidNotificationVivoChannel: String?
+
+    public var androidNotificationXiaomiChannel: String?
+
+    public var androidNotifyType: String?
+
+    public var androidOpenType: String?
+
+    public var androidOpenUrl: String?
+
+    public var androidPopupActivity: String?
+
+    public var androidPopupBody: String?
+
+    public var androidPopupTitle: String?
+
+    public var androidRemind: Bool?
+
+    public var androidRenderStyle: Int32?
+
+    public var androidTargetUserType: Int32?
+
+    public var androidVivoPushMode: Int32?
+
+    public var androidVivoReceiptId: String?
+
+    public var androidXiaoMiActivity: String?
+
+    public var androidXiaoMiNotifyBody: String?
+
+    public var androidXiaoMiNotifyTitle: String?
+
+    public var androidXiaomiBigPictureUrl: String?
+
+    public var androidXiaomiImageUrl: String?
+
+    public var appKey: Int64?
+
+    public var body: String?
+
+    public var deviceType: String?
+
+    public var expireTime: String?
+
+    public var harmonyAction: String?
+
+    public var harmonyActionType: String?
+
+    public var harmonyBadgeAddNum: Int32?
+
+    public var harmonyBadgeSetNum: Int32?
+
+    public var harmonyCategory: String?
+
+    public var harmonyExtParameters: String?
+
+    public var harmonyExtensionExtraData: String?
+
+    public var harmonyExtensionPush: Bool?
+
+    public var harmonyImageUrl: String?
+
+    public var harmonyInboxContent: String?
+
+    public var harmonyNotificationSlotType: String?
+
+    public var harmonyNotifyId: Int32?
+
+    public var harmonyReceiptId: String?
+
+    public var harmonyRemind: Bool?
+
+    public var harmonyRemindBody: String?
+
+    public var harmonyRemindTitle: String?
+
+    public var harmonyRenderStyle: String?
+
+    public var harmonyTestMessage: Bool?
+
+    public var harmonyUri: String?
+
+    public var idempotentToken: String?
+
+    public var jobKey: String?
+
+    public var pushTime: String?
+
+    public var pushType: String?
+
+    public var sendChannels: String?
+
+    public var sendSpeed: Int32?
+
+    public var smsDelaySecs: Int32?
+
+    public var smsParams: String?
+
+    public var smsSendPolicy: Int32?
+
+    public var smsSignName: String?
+
+    public var smsTemplateName: String?
+
+    public var storeOffline: Bool?
+
+    public var target: String?
+
+    public var targetValue: String?
+
+    public var title: String?
+
+    public var trim: Bool?
+
+    public var androidOppoPrivateContentParametersShrink: String?
+
+    public var androidOppoPrivateMsgTemplateId: String?
+
+    public var androidOppoPrivateTitleParametersShrink: String?
+
+    public var iOSApnsEnv: String?
+
+    public var iOSBadge: Int32?
+
+    public var iOSBadgeAutoIncrement: Bool?
+
+    public var iOSExtParameters: String?
+
+    public var iOSInterruptionLevel: String?
+
+    public var iOSLiveActivityAttributes: String?
+
+    public var iOSLiveActivityAttributesType: String?
+
+    public var iOSLiveActivityContentState: String?
+
+    public var iOSLiveActivityDismissalDate: Int64?
+
+    public var iOSLiveActivityEvent: String?
+
+    public var iOSLiveActivityId: String?
+
+    public var iOSLiveActivityStaleDate: Int64?
+
+    public var iOSMusic: String?
+
+    public var iOSMutableContent: Bool?
+
+    public var iOSNotificationCategory: String?
+
+    public var iOSNotificationCollapseId: String?
+
+    public var iOSNotificationThreadId: String?
+
+    public var iOSRelevanceScore: Double?
+
+    public var iOSRemind: Bool?
+
+    public var iOSRemindBody: String?
+
+    public var iOSSilentNotification: Bool?
+
+    public var iOSSubtitle: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.androidActivity != nil {
+            map["AndroidActivity"] = self.androidActivity!
+        }
+        if self.androidBadgeAddNum != nil {
+            map["AndroidBadgeAddNum"] = self.androidBadgeAddNum!
+        }
+        if self.androidBadgeClass != nil {
+            map["AndroidBadgeClass"] = self.androidBadgeClass!
+        }
+        if self.androidBadgeSetNum != nil {
+            map["AndroidBadgeSetNum"] = self.androidBadgeSetNum!
+        }
+        if self.androidBigBody != nil {
+            map["AndroidBigBody"] = self.androidBigBody!
+        }
+        if self.androidBigPictureUrl != nil {
+            map["AndroidBigPictureUrl"] = self.androidBigPictureUrl!
+        }
+        if self.androidBigTitle != nil {
+            map["AndroidBigTitle"] = self.androidBigTitle!
+        }
+        if self.androidExtParameters != nil {
+            map["AndroidExtParameters"] = self.androidExtParameters!
+        }
+        if self.androidHonorTargetUserType != nil {
+            map["AndroidHonorTargetUserType"] = self.androidHonorTargetUserType!
+        }
+        if self.androidHuaweiReceiptId != nil {
+            map["AndroidHuaweiReceiptId"] = self.androidHuaweiReceiptId!
+        }
+        if self.androidHuaweiTargetUserType != nil {
+            map["AndroidHuaweiTargetUserType"] = self.androidHuaweiTargetUserType!
+        }
+        if self.androidImageUrl != nil {
+            map["AndroidImageUrl"] = self.androidImageUrl!
+        }
+        if self.androidInboxBody != nil {
+            map["AndroidInboxBody"] = self.androidInboxBody!
+        }
+        if self.androidMeizuNoticeMsgType != nil {
+            map["AndroidMeizuNoticeMsgType"] = self.androidMeizuNoticeMsgType!
+        }
+        if self.androidMessageHuaweiCategory != nil {
+            map["AndroidMessageHuaweiCategory"] = self.androidMessageHuaweiCategory!
+        }
+        if self.androidMessageHuaweiUrgency != nil {
+            map["AndroidMessageHuaweiUrgency"] = self.androidMessageHuaweiUrgency!
+        }
+        if self.androidMessageOppoCategory != nil {
+            map["AndroidMessageOppoCategory"] = self.androidMessageOppoCategory!
+        }
+        if self.androidMessageOppoNotifyLevel != nil {
+            map["AndroidMessageOppoNotifyLevel"] = self.androidMessageOppoNotifyLevel!
+        }
+        if self.androidMessageVivoCategory != nil {
+            map["AndroidMessageVivoCategory"] = self.androidMessageVivoCategory!
+        }
+        if self.androidMusic != nil {
+            map["AndroidMusic"] = self.androidMusic!
+        }
+        if self.androidNotificationBarPriority != nil {
+            map["AndroidNotificationBarPriority"] = self.androidNotificationBarPriority!
+        }
+        if self.androidNotificationBarType != nil {
+            map["AndroidNotificationBarType"] = self.androidNotificationBarType!
+        }
+        if self.androidNotificationChannel != nil {
+            map["AndroidNotificationChannel"] = self.androidNotificationChannel!
+        }
+        if self.androidNotificationGroup != nil {
+            map["AndroidNotificationGroup"] = self.androidNotificationGroup!
+        }
+        if self.androidNotificationHonorChannel != nil {
+            map["AndroidNotificationHonorChannel"] = self.androidNotificationHonorChannel!
+        }
+        if self.androidNotificationHuaweiChannel != nil {
+            map["AndroidNotificationHuaweiChannel"] = self.androidNotificationHuaweiChannel!
+        }
+        if self.androidNotificationNotifyId != nil {
+            map["AndroidNotificationNotifyId"] = self.androidNotificationNotifyId!
+        }
+        if self.androidNotificationThreadId != nil {
+            map["AndroidNotificationThreadId"] = self.androidNotificationThreadId!
+        }
+        if self.androidNotificationVivoChannel != nil {
+            map["AndroidNotificationVivoChannel"] = self.androidNotificationVivoChannel!
+        }
+        if self.androidNotificationXiaomiChannel != nil {
+            map["AndroidNotificationXiaomiChannel"] = self.androidNotificationXiaomiChannel!
+        }
+        if self.androidNotifyType != nil {
+            map["AndroidNotifyType"] = self.androidNotifyType!
+        }
+        if self.androidOpenType != nil {
+            map["AndroidOpenType"] = self.androidOpenType!
+        }
+        if self.androidOpenUrl != nil {
+            map["AndroidOpenUrl"] = self.androidOpenUrl!
+        }
+        if self.androidPopupActivity != nil {
+            map["AndroidPopupActivity"] = self.androidPopupActivity!
+        }
+        if self.androidPopupBody != nil {
+            map["AndroidPopupBody"] = self.androidPopupBody!
+        }
+        if self.androidPopupTitle != nil {
+            map["AndroidPopupTitle"] = self.androidPopupTitle!
+        }
+        if self.androidRemind != nil {
+            map["AndroidRemind"] = self.androidRemind!
+        }
+        if self.androidRenderStyle != nil {
+            map["AndroidRenderStyle"] = self.androidRenderStyle!
+        }
+        if self.androidTargetUserType != nil {
+            map["AndroidTargetUserType"] = self.androidTargetUserType!
+        }
+        if self.androidVivoPushMode != nil {
+            map["AndroidVivoPushMode"] = self.androidVivoPushMode!
+        }
+        if self.androidVivoReceiptId != nil {
+            map["AndroidVivoReceiptId"] = self.androidVivoReceiptId!
+        }
+        if self.androidXiaoMiActivity != nil {
+            map["AndroidXiaoMiActivity"] = self.androidXiaoMiActivity!
+        }
+        if self.androidXiaoMiNotifyBody != nil {
+            map["AndroidXiaoMiNotifyBody"] = self.androidXiaoMiNotifyBody!
+        }
+        if self.androidXiaoMiNotifyTitle != nil {
+            map["AndroidXiaoMiNotifyTitle"] = self.androidXiaoMiNotifyTitle!
+        }
+        if self.androidXiaomiBigPictureUrl != nil {
+            map["AndroidXiaomiBigPictureUrl"] = self.androidXiaomiBigPictureUrl!
+        }
+        if self.androidXiaomiImageUrl != nil {
+            map["AndroidXiaomiImageUrl"] = self.androidXiaomiImageUrl!
+        }
+        if self.appKey != nil {
+            map["AppKey"] = self.appKey!
+        }
+        if self.body != nil {
+            map["Body"] = self.body!
+        }
+        if self.deviceType != nil {
+            map["DeviceType"] = self.deviceType!
+        }
+        if self.expireTime != nil {
+            map["ExpireTime"] = self.expireTime!
+        }
+        if self.harmonyAction != nil {
+            map["HarmonyAction"] = self.harmonyAction!
+        }
+        if self.harmonyActionType != nil {
+            map["HarmonyActionType"] = self.harmonyActionType!
+        }
+        if self.harmonyBadgeAddNum != nil {
+            map["HarmonyBadgeAddNum"] = self.harmonyBadgeAddNum!
+        }
+        if self.harmonyBadgeSetNum != nil {
+            map["HarmonyBadgeSetNum"] = self.harmonyBadgeSetNum!
+        }
+        if self.harmonyCategory != nil {
+            map["HarmonyCategory"] = self.harmonyCategory!
+        }
+        if self.harmonyExtParameters != nil {
+            map["HarmonyExtParameters"] = self.harmonyExtParameters!
+        }
+        if self.harmonyExtensionExtraData != nil {
+            map["HarmonyExtensionExtraData"] = self.harmonyExtensionExtraData!
+        }
+        if self.harmonyExtensionPush != nil {
+            map["HarmonyExtensionPush"] = self.harmonyExtensionPush!
+        }
+        if self.harmonyImageUrl != nil {
+            map["HarmonyImageUrl"] = self.harmonyImageUrl!
+        }
+        if self.harmonyInboxContent != nil {
+            map["HarmonyInboxContent"] = self.harmonyInboxContent!
+        }
+        if self.harmonyNotificationSlotType != nil {
+            map["HarmonyNotificationSlotType"] = self.harmonyNotificationSlotType!
+        }
+        if self.harmonyNotifyId != nil {
+            map["HarmonyNotifyId"] = self.harmonyNotifyId!
+        }
+        if self.harmonyReceiptId != nil {
+            map["HarmonyReceiptId"] = self.harmonyReceiptId!
+        }
+        if self.harmonyRemind != nil {
+            map["HarmonyRemind"] = self.harmonyRemind!
+        }
+        if self.harmonyRemindBody != nil {
+            map["HarmonyRemindBody"] = self.harmonyRemindBody!
+        }
+        if self.harmonyRemindTitle != nil {
+            map["HarmonyRemindTitle"] = self.harmonyRemindTitle!
+        }
+        if self.harmonyRenderStyle != nil {
+            map["HarmonyRenderStyle"] = self.harmonyRenderStyle!
+        }
+        if self.harmonyTestMessage != nil {
+            map["HarmonyTestMessage"] = self.harmonyTestMessage!
+        }
+        if self.harmonyUri != nil {
+            map["HarmonyUri"] = self.harmonyUri!
+        }
+        if self.idempotentToken != nil {
+            map["IdempotentToken"] = self.idempotentToken!
+        }
+        if self.jobKey != nil {
+            map["JobKey"] = self.jobKey!
+        }
+        if self.pushTime != nil {
+            map["PushTime"] = self.pushTime!
+        }
+        if self.pushType != nil {
+            map["PushType"] = self.pushType!
+        }
+        if self.sendChannels != nil {
+            map["SendChannels"] = self.sendChannels!
+        }
+        if self.sendSpeed != nil {
+            map["SendSpeed"] = self.sendSpeed!
+        }
+        if self.smsDelaySecs != nil {
+            map["SmsDelaySecs"] = self.smsDelaySecs!
+        }
+        if self.smsParams != nil {
+            map["SmsParams"] = self.smsParams!
+        }
+        if self.smsSendPolicy != nil {
+            map["SmsSendPolicy"] = self.smsSendPolicy!
+        }
+        if self.smsSignName != nil {
+            map["SmsSignName"] = self.smsSignName!
+        }
+        if self.smsTemplateName != nil {
+            map["SmsTemplateName"] = self.smsTemplateName!
+        }
+        if self.storeOffline != nil {
+            map["StoreOffline"] = self.storeOffline!
+        }
+        if self.target != nil {
+            map["Target"] = self.target!
+        }
+        if self.targetValue != nil {
+            map["TargetValue"] = self.targetValue!
+        }
+        if self.title != nil {
+            map["Title"] = self.title!
+        }
+        if self.trim != nil {
+            map["Trim"] = self.trim!
+        }
+        if self.androidOppoPrivateContentParametersShrink != nil {
+            map["androidOppoPrivateContentParameters"] = self.androidOppoPrivateContentParametersShrink!
+        }
+        if self.androidOppoPrivateMsgTemplateId != nil {
+            map["androidOppoPrivateMsgTemplateId"] = self.androidOppoPrivateMsgTemplateId!
+        }
+        if self.androidOppoPrivateTitleParametersShrink != nil {
+            map["androidOppoPrivateTitleParameters"] = self.androidOppoPrivateTitleParametersShrink!
+        }
+        if self.iOSApnsEnv != nil {
+            map["iOSApnsEnv"] = self.iOSApnsEnv!
+        }
+        if self.iOSBadge != nil {
+            map["iOSBadge"] = self.iOSBadge!
+        }
+        if self.iOSBadgeAutoIncrement != nil {
+            map["iOSBadgeAutoIncrement"] = self.iOSBadgeAutoIncrement!
+        }
+        if self.iOSExtParameters != nil {
+            map["iOSExtParameters"] = self.iOSExtParameters!
+        }
+        if self.iOSInterruptionLevel != nil {
+            map["iOSInterruptionLevel"] = self.iOSInterruptionLevel!
+        }
+        if self.iOSLiveActivityAttributes != nil {
+            map["iOSLiveActivityAttributes"] = self.iOSLiveActivityAttributes!
+        }
+        if self.iOSLiveActivityAttributesType != nil {
+            map["iOSLiveActivityAttributesType"] = self.iOSLiveActivityAttributesType!
+        }
+        if self.iOSLiveActivityContentState != nil {
+            map["iOSLiveActivityContentState"] = self.iOSLiveActivityContentState!
+        }
+        if self.iOSLiveActivityDismissalDate != nil {
+            map["iOSLiveActivityDismissalDate"] = self.iOSLiveActivityDismissalDate!
+        }
+        if self.iOSLiveActivityEvent != nil {
+            map["iOSLiveActivityEvent"] = self.iOSLiveActivityEvent!
+        }
+        if self.iOSLiveActivityId != nil {
+            map["iOSLiveActivityId"] = self.iOSLiveActivityId!
+        }
+        if self.iOSLiveActivityStaleDate != nil {
+            map["iOSLiveActivityStaleDate"] = self.iOSLiveActivityStaleDate!
+        }
+        if self.iOSMusic != nil {
+            map["iOSMusic"] = self.iOSMusic!
+        }
+        if self.iOSMutableContent != nil {
+            map["iOSMutableContent"] = self.iOSMutableContent!
+        }
+        if self.iOSNotificationCategory != nil {
+            map["iOSNotificationCategory"] = self.iOSNotificationCategory!
+        }
+        if self.iOSNotificationCollapseId != nil {
+            map["iOSNotificationCollapseId"] = self.iOSNotificationCollapseId!
+        }
+        if self.iOSNotificationThreadId != nil {
+            map["iOSNotificationThreadId"] = self.iOSNotificationThreadId!
+        }
+        if self.iOSRelevanceScore != nil {
+            map["iOSRelevanceScore"] = self.iOSRelevanceScore!
+        }
+        if self.iOSRemind != nil {
+            map["iOSRemind"] = self.iOSRemind!
+        }
+        if self.iOSRemindBody != nil {
+            map["iOSRemindBody"] = self.iOSRemindBody!
+        }
+        if self.iOSSilentNotification != nil {
+            map["iOSSilentNotification"] = self.iOSSilentNotification!
+        }
+        if self.iOSSubtitle != nil {
+            map["iOSSubtitle"] = self.iOSSubtitle!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["AndroidActivity"] as? String {
+            self.androidActivity = value
+        }
+        if let value = dict["AndroidBadgeAddNum"] as? Int32 {
+            self.androidBadgeAddNum = value
+        }
+        if let value = dict["AndroidBadgeClass"] as? String {
+            self.androidBadgeClass = value
+        }
+        if let value = dict["AndroidBadgeSetNum"] as? Int32 {
+            self.androidBadgeSetNum = value
+        }
+        if let value = dict["AndroidBigBody"] as? String {
+            self.androidBigBody = value
+        }
+        if let value = dict["AndroidBigPictureUrl"] as? String {
+            self.androidBigPictureUrl = value
+        }
+        if let value = dict["AndroidBigTitle"] as? String {
+            self.androidBigTitle = value
+        }
+        if let value = dict["AndroidExtParameters"] as? String {
+            self.androidExtParameters = value
+        }
+        if let value = dict["AndroidHonorTargetUserType"] as? Int32 {
+            self.androidHonorTargetUserType = value
+        }
+        if let value = dict["AndroidHuaweiReceiptId"] as? String {
+            self.androidHuaweiReceiptId = value
+        }
+        if let value = dict["AndroidHuaweiTargetUserType"] as? Int32 {
+            self.androidHuaweiTargetUserType = value
+        }
+        if let value = dict["AndroidImageUrl"] as? String {
+            self.androidImageUrl = value
+        }
+        if let value = dict["AndroidInboxBody"] as? String {
+            self.androidInboxBody = value
+        }
+        if let value = dict["AndroidMeizuNoticeMsgType"] as? Int32 {
+            self.androidMeizuNoticeMsgType = value
+        }
+        if let value = dict["AndroidMessageHuaweiCategory"] as? String {
+            self.androidMessageHuaweiCategory = value
+        }
+        if let value = dict["AndroidMessageHuaweiUrgency"] as? String {
+            self.androidMessageHuaweiUrgency = value
+        }
+        if let value = dict["AndroidMessageOppoCategory"] as? String {
+            self.androidMessageOppoCategory = value
+        }
+        if let value = dict["AndroidMessageOppoNotifyLevel"] as? Int32 {
+            self.androidMessageOppoNotifyLevel = value
+        }
+        if let value = dict["AndroidMessageVivoCategory"] as? String {
+            self.androidMessageVivoCategory = value
+        }
+        if let value = dict["AndroidMusic"] as? String {
+            self.androidMusic = value
+        }
+        if let value = dict["AndroidNotificationBarPriority"] as? Int32 {
+            self.androidNotificationBarPriority = value
+        }
+        if let value = dict["AndroidNotificationBarType"] as? Int32 {
+            self.androidNotificationBarType = value
+        }
+        if let value = dict["AndroidNotificationChannel"] as? String {
+            self.androidNotificationChannel = value
+        }
+        if let value = dict["AndroidNotificationGroup"] as? String {
+            self.androidNotificationGroup = value
+        }
+        if let value = dict["AndroidNotificationHonorChannel"] as? String {
+            self.androidNotificationHonorChannel = value
+        }
+        if let value = dict["AndroidNotificationHuaweiChannel"] as? String {
+            self.androidNotificationHuaweiChannel = value
+        }
+        if let value = dict["AndroidNotificationNotifyId"] as? Int32 {
+            self.androidNotificationNotifyId = value
+        }
+        if let value = dict["AndroidNotificationThreadId"] as? String {
+            self.androidNotificationThreadId = value
+        }
+        if let value = dict["AndroidNotificationVivoChannel"] as? String {
+            self.androidNotificationVivoChannel = value
+        }
+        if let value = dict["AndroidNotificationXiaomiChannel"] as? String {
+            self.androidNotificationXiaomiChannel = value
+        }
+        if let value = dict["AndroidNotifyType"] as? String {
+            self.androidNotifyType = value
+        }
+        if let value = dict["AndroidOpenType"] as? String {
+            self.androidOpenType = value
+        }
+        if let value = dict["AndroidOpenUrl"] as? String {
+            self.androidOpenUrl = value
+        }
+        if let value = dict["AndroidPopupActivity"] as? String {
+            self.androidPopupActivity = value
+        }
+        if let value = dict["AndroidPopupBody"] as? String {
+            self.androidPopupBody = value
+        }
+        if let value = dict["AndroidPopupTitle"] as? String {
+            self.androidPopupTitle = value
+        }
+        if let value = dict["AndroidRemind"] as? Bool {
+            self.androidRemind = value
+        }
+        if let value = dict["AndroidRenderStyle"] as? Int32 {
+            self.androidRenderStyle = value
+        }
+        if let value = dict["AndroidTargetUserType"] as? Int32 {
+            self.androidTargetUserType = value
+        }
+        if let value = dict["AndroidVivoPushMode"] as? Int32 {
+            self.androidVivoPushMode = value
+        }
+        if let value = dict["AndroidVivoReceiptId"] as? String {
+            self.androidVivoReceiptId = value
+        }
+        if let value = dict["AndroidXiaoMiActivity"] as? String {
+            self.androidXiaoMiActivity = value
+        }
+        if let value = dict["AndroidXiaoMiNotifyBody"] as? String {
+            self.androidXiaoMiNotifyBody = value
+        }
+        if let value = dict["AndroidXiaoMiNotifyTitle"] as? String {
+            self.androidXiaoMiNotifyTitle = value
+        }
+        if let value = dict["AndroidXiaomiBigPictureUrl"] as? String {
+            self.androidXiaomiBigPictureUrl = value
+        }
+        if let value = dict["AndroidXiaomiImageUrl"] as? String {
+            self.androidXiaomiImageUrl = value
+        }
+        if let value = dict["AppKey"] as? Int64 {
+            self.appKey = value
+        }
+        if let value = dict["Body"] as? String {
+            self.body = value
+        }
+        if let value = dict["DeviceType"] as? String {
+            self.deviceType = value
+        }
+        if let value = dict["ExpireTime"] as? String {
+            self.expireTime = value
+        }
+        if let value = dict["HarmonyAction"] as? String {
+            self.harmonyAction = value
+        }
+        if let value = dict["HarmonyActionType"] as? String {
+            self.harmonyActionType = value
+        }
+        if let value = dict["HarmonyBadgeAddNum"] as? Int32 {
+            self.harmonyBadgeAddNum = value
+        }
+        if let value = dict["HarmonyBadgeSetNum"] as? Int32 {
+            self.harmonyBadgeSetNum = value
+        }
+        if let value = dict["HarmonyCategory"] as? String {
+            self.harmonyCategory = value
+        }
+        if let value = dict["HarmonyExtParameters"] as? String {
+            self.harmonyExtParameters = value
+        }
+        if let value = dict["HarmonyExtensionExtraData"] as? String {
+            self.harmonyExtensionExtraData = value
+        }
+        if let value = dict["HarmonyExtensionPush"] as? Bool {
+            self.harmonyExtensionPush = value
+        }
+        if let value = dict["HarmonyImageUrl"] as? String {
+            self.harmonyImageUrl = value
+        }
+        if let value = dict["HarmonyInboxContent"] as? String {
+            self.harmonyInboxContent = value
+        }
+        if let value = dict["HarmonyNotificationSlotType"] as? String {
+            self.harmonyNotificationSlotType = value
+        }
+        if let value = dict["HarmonyNotifyId"] as? Int32 {
+            self.harmonyNotifyId = value
+        }
+        if let value = dict["HarmonyReceiptId"] as? String {
+            self.harmonyReceiptId = value
+        }
+        if let value = dict["HarmonyRemind"] as? Bool {
+            self.harmonyRemind = value
+        }
+        if let value = dict["HarmonyRemindBody"] as? String {
+            self.harmonyRemindBody = value
+        }
+        if let value = dict["HarmonyRemindTitle"] as? String {
+            self.harmonyRemindTitle = value
+        }
+        if let value = dict["HarmonyRenderStyle"] as? String {
+            self.harmonyRenderStyle = value
+        }
+        if let value = dict["HarmonyTestMessage"] as? Bool {
+            self.harmonyTestMessage = value
+        }
+        if let value = dict["HarmonyUri"] as? String {
+            self.harmonyUri = value
+        }
+        if let value = dict["IdempotentToken"] as? String {
+            self.idempotentToken = value
+        }
+        if let value = dict["JobKey"] as? String {
+            self.jobKey = value
+        }
+        if let value = dict["PushTime"] as? String {
+            self.pushTime = value
+        }
+        if let value = dict["PushType"] as? String {
+            self.pushType = value
+        }
+        if let value = dict["SendChannels"] as? String {
+            self.sendChannels = value
+        }
+        if let value = dict["SendSpeed"] as? Int32 {
+            self.sendSpeed = value
+        }
+        if let value = dict["SmsDelaySecs"] as? Int32 {
+            self.smsDelaySecs = value
+        }
+        if let value = dict["SmsParams"] as? String {
+            self.smsParams = value
+        }
+        if let value = dict["SmsSendPolicy"] as? Int32 {
+            self.smsSendPolicy = value
+        }
+        if let value = dict["SmsSignName"] as? String {
+            self.smsSignName = value
+        }
+        if let value = dict["SmsTemplateName"] as? String {
+            self.smsTemplateName = value
+        }
+        if let value = dict["StoreOffline"] as? Bool {
+            self.storeOffline = value
+        }
+        if let value = dict["Target"] as? String {
+            self.target = value
+        }
+        if let value = dict["TargetValue"] as? String {
+            self.targetValue = value
+        }
+        if let value = dict["Title"] as? String {
+            self.title = value
+        }
+        if let value = dict["Trim"] as? Bool {
+            self.trim = value
+        }
+        if let value = dict["androidOppoPrivateContentParameters"] as? String {
+            self.androidOppoPrivateContentParametersShrink = value
+        }
+        if let value = dict["androidOppoPrivateMsgTemplateId"] as? String {
+            self.androidOppoPrivateMsgTemplateId = value
+        }
+        if let value = dict["androidOppoPrivateTitleParameters"] as? String {
+            self.androidOppoPrivateTitleParametersShrink = value
         }
         if let value = dict["iOSApnsEnv"] as? String {
             self.iOSApnsEnv = value

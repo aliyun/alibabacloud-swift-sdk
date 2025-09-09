@@ -495,8 +495,16 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func pushWithOptions(_ request: PushRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> PushResponse {
-        try TeaUtils.Client.validateModel(request)
+    public func pushWithOptions(_ tmpReq: PushRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> PushResponse {
+        try TeaUtils.Client.validateModel(tmpReq)
+        var request: PushShrinkRequest = PushShrinkRequest([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.androidOppoPrivateContentParameters)) {
+            request.androidOppoPrivateContentParametersShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.androidOppoPrivateContentParameters, "androidOppoPrivateContentParameters", "json")
+        }
+        if (!TeaUtils.Client.isUnset(tmpReq.androidOppoPrivateTitleParameters)) {
+            request.androidOppoPrivateTitleParametersShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.androidOppoPrivateTitleParameters, "androidOppoPrivateTitleParameters", "json")
+        }
         var query: [String: Any] = [:]
         if (!TeaUtils.Client.isUnset(request.androidActivity)) {
             query["AndroidActivity"] = request.androidActivity ?? "";
@@ -752,6 +760,15 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.trim)) {
             query["Trim"] = request.trim!;
+        }
+        if (!TeaUtils.Client.isUnset(request.androidOppoPrivateContentParametersShrink)) {
+            query["androidOppoPrivateContentParameters"] = request.androidOppoPrivateContentParametersShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.androidOppoPrivateMsgTemplateId)) {
+            query["androidOppoPrivateMsgTemplateId"] = request.androidOppoPrivateMsgTemplateId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.androidOppoPrivateTitleParametersShrink)) {
+            query["androidOppoPrivateTitleParameters"] = request.androidOppoPrivateTitleParametersShrink ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.iOSApnsEnv)) {
             query["iOSApnsEnv"] = request.iOSApnsEnv ?? "";
