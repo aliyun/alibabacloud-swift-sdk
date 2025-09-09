@@ -35811,7 +35811,11 @@ public class DescribeModificationPriceRequest : Tea.TeaModel {
 
     public var resourceType: String?
 
+    public var rootDiskPerformanceLevel: String?
+
     public var rootDiskSizeGib: Int32?
+
+    public var userDiskPerformanceLevel: String?
 
     public var userDiskSizeGib: Int32?
 
@@ -35857,8 +35861,14 @@ public class DescribeModificationPriceRequest : Tea.TeaModel {
         if self.resourceType != nil {
             map["ResourceType"] = self.resourceType!
         }
+        if self.rootDiskPerformanceLevel != nil {
+            map["RootDiskPerformanceLevel"] = self.rootDiskPerformanceLevel!
+        }
         if self.rootDiskSizeGib != nil {
             map["RootDiskSizeGib"] = self.rootDiskSizeGib!
+        }
+        if self.userDiskPerformanceLevel != nil {
+            map["UserDiskPerformanceLevel"] = self.userDiskPerformanceLevel!
         }
         if self.userDiskSizeGib != nil {
             map["UserDiskSizeGib"] = self.userDiskSizeGib!
@@ -35902,8 +35912,14 @@ public class DescribeModificationPriceRequest : Tea.TeaModel {
         if let value = dict["ResourceType"] as? String {
             self.resourceType = value
         }
+        if let value = dict["RootDiskPerformanceLevel"] as? String {
+            self.rootDiskPerformanceLevel = value
+        }
         if let value = dict["RootDiskSizeGib"] as? Int32 {
             self.rootDiskSizeGib = value
+        }
+        if let value = dict["UserDiskPerformanceLevel"] as? String {
+            self.userDiskPerformanceLevel = value
         }
         if let value = dict["UserDiskSizeGib"] as? Int32 {
             self.userDiskSizeGib = value
@@ -40063,9 +40079,13 @@ public class DescribePriceRequest : Tea.TeaModel {
 
     public var rootDiskCategory: String?
 
+    public var rootDiskPerformanceLevel: String?
+
     public var rootDiskSizeGib: Int32?
 
     public var userDiskCategory: String?
+
+    public var userDiskPerformanceLevel: String?
 
     public var userDiskSizeGib: Int32?
 
@@ -40125,11 +40145,17 @@ public class DescribePriceRequest : Tea.TeaModel {
         if self.rootDiskCategory != nil {
             map["RootDiskCategory"] = self.rootDiskCategory!
         }
+        if self.rootDiskPerformanceLevel != nil {
+            map["RootDiskPerformanceLevel"] = self.rootDiskPerformanceLevel!
+        }
         if self.rootDiskSizeGib != nil {
             map["RootDiskSizeGib"] = self.rootDiskSizeGib!
         }
         if self.userDiskCategory != nil {
             map["UserDiskCategory"] = self.userDiskCategory!
+        }
+        if self.userDiskPerformanceLevel != nil {
+            map["UserDiskPerformanceLevel"] = self.userDiskPerformanceLevel!
         }
         if self.userDiskSizeGib != nil {
             map["UserDiskSizeGib"] = self.userDiskSizeGib!
@@ -40181,11 +40207,17 @@ public class DescribePriceRequest : Tea.TeaModel {
         if let value = dict["RootDiskCategory"] as? String {
             self.rootDiskCategory = value
         }
+        if let value = dict["RootDiskPerformanceLevel"] as? String {
+            self.rootDiskPerformanceLevel = value
+        }
         if let value = dict["RootDiskSizeGib"] as? Int32 {
             self.rootDiskSizeGib = value
         }
         if let value = dict["UserDiskCategory"] as? String {
             self.userDiskCategory = value
+        }
+        if let value = dict["UserDiskPerformanceLevel"] as? String {
+            self.userDiskPerformanceLevel = value
         }
         if let value = dict["UserDiskSizeGib"] as? Int32 {
             self.userDiskSizeGib = value
@@ -66716,6 +66748,8 @@ public class ResetSnapshotRequest : Tea.TeaModel {
 
     public var snapshotId: String?
 
+    public var stopDesktop: Bool?
+
     public override init() {
         super.init()
     }
@@ -66736,6 +66770,9 @@ public class ResetSnapshotRequest : Tea.TeaModel {
         if self.snapshotId != nil {
             map["SnapshotId"] = self.snapshotId!
         }
+        if self.stopDesktop != nil {
+            map["StopDesktop"] = self.stopDesktop!
+        }
         return map
     }
 
@@ -66746,6 +66783,9 @@ public class ResetSnapshotRequest : Tea.TeaModel {
         }
         if let value = dict["SnapshotId"] as? String {
             self.snapshotId = value
+        }
+        if let value = dict["StopDesktop"] as? Bool {
+            self.stopDesktop = value
         }
     }
 }

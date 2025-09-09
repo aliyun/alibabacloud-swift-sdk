@@ -6711,8 +6711,14 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.resourceType)) {
             query["ResourceType"] = request.resourceType ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.rootDiskPerformanceLevel)) {
+            query["RootDiskPerformanceLevel"] = request.rootDiskPerformanceLevel ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.rootDiskSizeGib)) {
             query["RootDiskSizeGib"] = request.rootDiskSizeGib!;
+        }
+        if (!TeaUtils.Client.isUnset(request.userDiskPerformanceLevel)) {
+            query["UserDiskPerformanceLevel"] = request.userDiskPerformanceLevel ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.userDiskSizeGib)) {
             query["UserDiskSizeGib"] = request.userDiskSizeGib!;
@@ -7026,11 +7032,17 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.rootDiskCategory)) {
             query["RootDiskCategory"] = request.rootDiskCategory ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.rootDiskPerformanceLevel)) {
+            query["RootDiskPerformanceLevel"] = request.rootDiskPerformanceLevel ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.rootDiskSizeGib)) {
             query["RootDiskSizeGib"] = request.rootDiskSizeGib!;
         }
         if (!TeaUtils.Client.isUnset(request.userDiskCategory)) {
             query["UserDiskCategory"] = request.userDiskCategory ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.userDiskPerformanceLevel)) {
+            query["UserDiskPerformanceLevel"] = request.userDiskPerformanceLevel ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.userDiskSizeGib)) {
             query["UserDiskSizeGib"] = request.userDiskSizeGib!;
@@ -12390,6 +12402,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.snapshotId)) {
             query["SnapshotId"] = request.snapshotId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.stopDesktop)) {
+            query["StopDesktop"] = request.stopDesktop!;
         }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "query": AlibabaCloudOpenApiUtil.Client.query(query)
