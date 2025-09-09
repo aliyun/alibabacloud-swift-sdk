@@ -4093,6 +4093,8 @@ public class DescribeAlertsResponseBody : Tea.TeaModel {
 
             public var cloudCode: String?
 
+            public var detectionRuleId: String?
+
             public var endTime: String?
 
             public var entityList: String?
@@ -4117,11 +4119,15 @@ public class DescribeAlertsResponseBody : Tea.TeaModel {
 
             public var occurTime: String?
 
+            public var productId: String?
+
             public var startTime: String?
 
             public var subUserId: Int64?
 
             public var subUserName: String?
+
+            public var vendorId: String?
 
             public override init() {
                 super.init()
@@ -4201,6 +4207,9 @@ public class DescribeAlertsResponseBody : Tea.TeaModel {
                 if self.cloudCode != nil {
                     map["CloudCode"] = self.cloudCode!
                 }
+                if self.detectionRuleId != nil {
+                    map["DetectionRuleId"] = self.detectionRuleId!
+                }
                 if self.endTime != nil {
                     map["EndTime"] = self.endTime!
                 }
@@ -4237,6 +4246,9 @@ public class DescribeAlertsResponseBody : Tea.TeaModel {
                 if self.occurTime != nil {
                     map["OccurTime"] = self.occurTime!
                 }
+                if self.productId != nil {
+                    map["ProductId"] = self.productId!
+                }
                 if self.startTime != nil {
                     map["StartTime"] = self.startTime!
                 }
@@ -4245,6 +4257,9 @@ public class DescribeAlertsResponseBody : Tea.TeaModel {
                 }
                 if self.subUserName != nil {
                     map["SubUserName"] = self.subUserName!
+                }
+                if self.vendorId != nil {
+                    map["VendorId"] = self.vendorId!
                 }
                 return map
             }
@@ -4321,6 +4336,9 @@ public class DescribeAlertsResponseBody : Tea.TeaModel {
                 if let value = dict["CloudCode"] as? String {
                     self.cloudCode = value
                 }
+                if let value = dict["DetectionRuleId"] as? String {
+                    self.detectionRuleId = value
+                }
                 if let value = dict["EndTime"] as? String {
                     self.endTime = value
                 }
@@ -4357,6 +4375,9 @@ public class DescribeAlertsResponseBody : Tea.TeaModel {
                 if let value = dict["OccurTime"] as? String {
                     self.occurTime = value
                 }
+                if let value = dict["ProductId"] as? String {
+                    self.productId = value
+                }
                 if let value = dict["StartTime"] as? String {
                     self.startTime = value
                 }
@@ -4365,6 +4386,9 @@ public class DescribeAlertsResponseBody : Tea.TeaModel {
                 }
                 if let value = dict["SubUserName"] as? String {
                     self.subUserName = value
+                }
+                if let value = dict["VendorId"] as? String {
+                    self.vendorId = value
                 }
             }
         }
@@ -5040,6 +5064,8 @@ public class DescribeAlertsWithEntityResponseBody : Tea.TeaModel {
 
             public var cloudCode: String?
 
+            public var detectionRuleId: String?
+
             public var endTime: String?
 
             public var entityList: String?
@@ -5062,11 +5088,15 @@ public class DescribeAlertsWithEntityResponseBody : Tea.TeaModel {
 
             public var occurTime: String?
 
+            public var productId: String?
+
             public var startTime: String?
 
             public var subUserId: Int64?
 
             public var subUserName: String?
+
+            public var vendorId: String?
 
             public override init() {
                 super.init()
@@ -5146,6 +5176,9 @@ public class DescribeAlertsWithEntityResponseBody : Tea.TeaModel {
                 if self.cloudCode != nil {
                     map["CloudCode"] = self.cloudCode!
                 }
+                if self.detectionRuleId != nil {
+                    map["DetectionRuleId"] = self.detectionRuleId!
+                }
                 if self.endTime != nil {
                     map["EndTime"] = self.endTime!
                 }
@@ -5179,6 +5212,9 @@ public class DescribeAlertsWithEntityResponseBody : Tea.TeaModel {
                 if self.occurTime != nil {
                     map["OccurTime"] = self.occurTime!
                 }
+                if self.productId != nil {
+                    map["ProductId"] = self.productId!
+                }
                 if self.startTime != nil {
                     map["StartTime"] = self.startTime!
                 }
@@ -5187,6 +5223,9 @@ public class DescribeAlertsWithEntityResponseBody : Tea.TeaModel {
                 }
                 if self.subUserName != nil {
                     map["SubUserName"] = self.subUserName!
+                }
+                if self.vendorId != nil {
+                    map["VendorId"] = self.vendorId!
                 }
                 return map
             }
@@ -5263,6 +5302,9 @@ public class DescribeAlertsWithEntityResponseBody : Tea.TeaModel {
                 if let value = dict["CloudCode"] as? String {
                     self.cloudCode = value
                 }
+                if let value = dict["DetectionRuleId"] as? String {
+                    self.detectionRuleId = value
+                }
                 if let value = dict["EndTime"] as? String {
                     self.endTime = value
                 }
@@ -5296,6 +5338,9 @@ public class DescribeAlertsWithEntityResponseBody : Tea.TeaModel {
                 if let value = dict["OccurTime"] as? String {
                     self.occurTime = value
                 }
+                if let value = dict["ProductId"] as? String {
+                    self.productId = value
+                }
                 if let value = dict["StartTime"] as? String {
                     self.startTime = value
                 }
@@ -5304,6 +5349,9 @@ public class DescribeAlertsWithEntityResponseBody : Tea.TeaModel {
                 }
                 if let value = dict["SubUserName"] as? String {
                     self.subUserName = value
+                }
+                if let value = dict["VendorId"] as? String {
+                    self.vendorId = value
                 }
             }
         }
@@ -5786,6 +5834,8 @@ public class DescribeAlertsWithEventResponseBody : Tea.TeaModel {
 
             public var cloudCode: String?
 
+            public var detectionRuleId: String?
+
             public var endTime: String?
 
             public var entityList: String?
@@ -5810,11 +5860,15 @@ public class DescribeAlertsWithEventResponseBody : Tea.TeaModel {
 
             public var occurTime: String?
 
+            public var productId: String?
+
             public var startTime: String?
 
             public var subUserId: Int64?
 
             public var subUserName: String?
+
+            public var vendorId: String?
 
             public override init() {
                 super.init()
@@ -5894,6 +5948,9 @@ public class DescribeAlertsWithEventResponseBody : Tea.TeaModel {
                 if self.cloudCode != nil {
                     map["CloudCode"] = self.cloudCode!
                 }
+                if self.detectionRuleId != nil {
+                    map["DetectionRuleId"] = self.detectionRuleId!
+                }
                 if self.endTime != nil {
                     map["EndTime"] = self.endTime!
                 }
@@ -5930,6 +5987,9 @@ public class DescribeAlertsWithEventResponseBody : Tea.TeaModel {
                 if self.occurTime != nil {
                     map["OccurTime"] = self.occurTime!
                 }
+                if self.productId != nil {
+                    map["ProductId"] = self.productId!
+                }
                 if self.startTime != nil {
                     map["StartTime"] = self.startTime!
                 }
@@ -5938,6 +5998,9 @@ public class DescribeAlertsWithEventResponseBody : Tea.TeaModel {
                 }
                 if self.subUserName != nil {
                     map["SubUserName"] = self.subUserName!
+                }
+                if self.vendorId != nil {
+                    map["VendorId"] = self.vendorId!
                 }
                 return map
             }
@@ -6014,6 +6077,9 @@ public class DescribeAlertsWithEventResponseBody : Tea.TeaModel {
                 if let value = dict["CloudCode"] as? String {
                     self.cloudCode = value
                 }
+                if let value = dict["DetectionRuleId"] as? String {
+                    self.detectionRuleId = value
+                }
                 if let value = dict["EndTime"] as? String {
                     self.endTime = value
                 }
@@ -6050,6 +6116,9 @@ public class DescribeAlertsWithEventResponseBody : Tea.TeaModel {
                 if let value = dict["OccurTime"] as? String {
                     self.occurTime = value
                 }
+                if let value = dict["ProductId"] as? String {
+                    self.productId = value
+                }
                 if let value = dict["StartTime"] as? String {
                     self.startTime = value
                 }
@@ -6058,6 +6127,9 @@ public class DescribeAlertsWithEventResponseBody : Tea.TeaModel {
                 }
                 if let value = dict["SubUserName"] as? String {
                     self.subUserName = value
+                }
+                if let value = dict["VendorId"] as? String {
+                    self.vendorId = value
                 }
             }
         }
@@ -11307,9 +11379,13 @@ public class DescribeEventCountByThreatLevelResponseBody : Tea.TeaModel {
 
         public var highLevelEventNum: Int64?
 
+        public var infoLevelEventNum: Int64?
+
         public var lowLevelEventNum: Int64?
 
         public var mediumLevelEventNum: Int64?
+
+        public var seriousLevelEventNum: Int64?
 
         public var undealEventNum: Int64?
 
@@ -11333,11 +11409,17 @@ public class DescribeEventCountByThreatLevelResponseBody : Tea.TeaModel {
             if self.highLevelEventNum != nil {
                 map["HighLevelEventNum"] = self.highLevelEventNum!
             }
+            if self.infoLevelEventNum != nil {
+                map["InfoLevelEventNum"] = self.infoLevelEventNum!
+            }
             if self.lowLevelEventNum != nil {
                 map["LowLevelEventNum"] = self.lowLevelEventNum!
             }
             if self.mediumLevelEventNum != nil {
                 map["MediumLevelEventNum"] = self.mediumLevelEventNum!
+            }
+            if self.seriousLevelEventNum != nil {
+                map["SeriousLevelEventNum"] = self.seriousLevelEventNum!
             }
             if self.undealEventNum != nil {
                 map["UndealEventNum"] = self.undealEventNum!
@@ -11353,11 +11435,17 @@ public class DescribeEventCountByThreatLevelResponseBody : Tea.TeaModel {
             if let value = dict["HighLevelEventNum"] as? Int64 {
                 self.highLevelEventNum = value
             }
+            if let value = dict["InfoLevelEventNum"] as? Int64 {
+                self.infoLevelEventNum = value
+            }
             if let value = dict["LowLevelEventNum"] as? Int64 {
                 self.lowLevelEventNum = value
             }
             if let value = dict["MediumLevelEventNum"] as? Int64 {
                 self.mediumLevelEventNum = value
+            }
+            if let value = dict["SeriousLevelEventNum"] as? Int64 {
+                self.seriousLevelEventNum = value
             }
             if let value = dict["UndealEventNum"] as? Int64 {
                 self.undealEventNum = value
