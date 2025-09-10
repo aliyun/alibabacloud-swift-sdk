@@ -30,6 +30,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.alarmName)) {
             body["AlarmName"] = request.alarmName ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.originalContext)) {
+            body["OriginalContext"] = request.originalContext ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.productCode)) {
             body["ProductCode"] = request.productCode ?? "";
         }
