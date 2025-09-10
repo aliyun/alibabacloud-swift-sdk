@@ -6,11 +6,59 @@ import AlibabaCloudOpenApiUtil
 import AlibabacloudEndpointUtil
 
 public class CreateAppInstanceRequest : Tea.TeaModel {
+    public class DBInstanceConfig : Tea.TeaModel {
+        public var DBInstanceClass: String?
+
+        public var DBInstanceStorage: Int32?
+
+        public var payType: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.DBInstanceClass != nil {
+                map["DBInstanceClass"] = self.DBInstanceClass!
+            }
+            if self.DBInstanceStorage != nil {
+                map["DBInstanceStorage"] = self.DBInstanceStorage!
+            }
+            if self.payType != nil {
+                map["PayType"] = self.payType!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["DBInstanceClass"] as? String {
+                self.DBInstanceClass = value
+            }
+            if let value = dict["DBInstanceStorage"] as? Int32 {
+                self.DBInstanceStorage = value
+            }
+            if let value = dict["PayType"] as? String {
+                self.payType = value
+            }
+        }
+    }
     public var appName: String?
 
     public var appType: String?
 
     public var clientToken: String?
+
+    public var DBInstanceConfig: CreateAppInstanceRequest.DBInstanceConfig?
 
     public var DBInstanceName: String?
 
@@ -23,6 +71,138 @@ public class CreateAppInstanceRequest : Tea.TeaModel {
     public var instanceClass: String?
 
     public var publicNetworkAccessEnabled: Bool?
+
+    public var RAGEnabled: Bool?
+
+    public var regionId: String?
+
+    public var vSwitchId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.DBInstanceConfig?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.appName != nil {
+            map["AppName"] = self.appName!
+        }
+        if self.appType != nil {
+            map["AppType"] = self.appType!
+        }
+        if self.clientToken != nil {
+            map["ClientToken"] = self.clientToken!
+        }
+        if self.DBInstanceConfig != nil {
+            map["DBInstanceConfig"] = self.DBInstanceConfig?.toMap()
+        }
+        if self.DBInstanceName != nil {
+            map["DBInstanceName"] = self.DBInstanceName!
+        }
+        if self.dashboardPassword != nil {
+            map["DashboardPassword"] = self.dashboardPassword!
+        }
+        if self.dashboardUsername != nil {
+            map["DashboardUsername"] = self.dashboardUsername!
+        }
+        if self.databasePassword != nil {
+            map["DatabasePassword"] = self.databasePassword!
+        }
+        if self.instanceClass != nil {
+            map["InstanceClass"] = self.instanceClass!
+        }
+        if self.publicNetworkAccessEnabled != nil {
+            map["PublicNetworkAccessEnabled"] = self.publicNetworkAccessEnabled!
+        }
+        if self.RAGEnabled != nil {
+            map["RAGEnabled"] = self.RAGEnabled!
+        }
+        if self.regionId != nil {
+            map["RegionId"] = self.regionId!
+        }
+        if self.vSwitchId != nil {
+            map["VSwitchId"] = self.vSwitchId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["AppName"] as? String {
+            self.appName = value
+        }
+        if let value = dict["AppType"] as? String {
+            self.appType = value
+        }
+        if let value = dict["ClientToken"] as? String {
+            self.clientToken = value
+        }
+        if let value = dict["DBInstanceConfig"] as? [String: Any?] {
+            var model = CreateAppInstanceRequest.DBInstanceConfig()
+            model.fromMap(value)
+            self.DBInstanceConfig = model
+        }
+        if let value = dict["DBInstanceName"] as? String {
+            self.DBInstanceName = value
+        }
+        if let value = dict["DashboardPassword"] as? String {
+            self.dashboardPassword = value
+        }
+        if let value = dict["DashboardUsername"] as? String {
+            self.dashboardUsername = value
+        }
+        if let value = dict["DatabasePassword"] as? String {
+            self.databasePassword = value
+        }
+        if let value = dict["InstanceClass"] as? String {
+            self.instanceClass = value
+        }
+        if let value = dict["PublicNetworkAccessEnabled"] as? Bool {
+            self.publicNetworkAccessEnabled = value
+        }
+        if let value = dict["RAGEnabled"] as? Bool {
+            self.RAGEnabled = value
+        }
+        if let value = dict["RegionId"] as? String {
+            self.regionId = value
+        }
+        if let value = dict["VSwitchId"] as? String {
+            self.vSwitchId = value
+        }
+    }
+}
+
+public class CreateAppInstanceShrinkRequest : Tea.TeaModel {
+    public var appName: String?
+
+    public var appType: String?
+
+    public var clientToken: String?
+
+    public var DBInstanceConfigShrink: String?
+
+    public var DBInstanceName: String?
+
+    public var dashboardPassword: String?
+
+    public var dashboardUsername: String?
+
+    public var databasePassword: String?
+
+    public var instanceClass: String?
+
+    public var publicNetworkAccessEnabled: Bool?
+
+    public var RAGEnabled: Bool?
 
     public var regionId: String?
 
@@ -51,6 +231,9 @@ public class CreateAppInstanceRequest : Tea.TeaModel {
         if self.clientToken != nil {
             map["ClientToken"] = self.clientToken!
         }
+        if self.DBInstanceConfigShrink != nil {
+            map["DBInstanceConfig"] = self.DBInstanceConfigShrink!
+        }
         if self.DBInstanceName != nil {
             map["DBInstanceName"] = self.DBInstanceName!
         }
@@ -68,6 +251,9 @@ public class CreateAppInstanceRequest : Tea.TeaModel {
         }
         if self.publicNetworkAccessEnabled != nil {
             map["PublicNetworkAccessEnabled"] = self.publicNetworkAccessEnabled!
+        }
+        if self.RAGEnabled != nil {
+            map["RAGEnabled"] = self.RAGEnabled!
         }
         if self.regionId != nil {
             map["RegionId"] = self.regionId!
@@ -89,6 +275,9 @@ public class CreateAppInstanceRequest : Tea.TeaModel {
         if let value = dict["ClientToken"] as? String {
             self.clientToken = value
         }
+        if let value = dict["DBInstanceConfig"] as? String {
+            self.DBInstanceConfigShrink = value
+        }
         if let value = dict["DBInstanceName"] as? String {
             self.DBInstanceName = value
         }
@@ -106,6 +295,9 @@ public class CreateAppInstanceRequest : Tea.TeaModel {
         }
         if let value = dict["PublicNetworkAccessEnabled"] as? Bool {
             self.publicNetworkAccessEnabled = value
+        }
+        if let value = dict["RAGEnabled"] as? Bool {
+            self.RAGEnabled = value
         }
         if let value = dict["RegionId"] as? String {
             self.regionId = value

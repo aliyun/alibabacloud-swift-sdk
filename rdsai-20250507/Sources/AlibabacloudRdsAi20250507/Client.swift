@@ -24,8 +24,13 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func createAppInstanceWithOptions(_ request: CreateAppInstanceRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> CreateAppInstanceResponse {
-        try TeaUtils.Client.validateModel(request)
+    public func createAppInstanceWithOptions(_ tmpReq: CreateAppInstanceRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> CreateAppInstanceResponse {
+        try TeaUtils.Client.validateModel(tmpReq)
+        var request: CreateAppInstanceShrinkRequest = CreateAppInstanceShrinkRequest([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.DBInstanceConfig)) {
+            request.DBInstanceConfigShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.DBInstanceConfig, "DBInstanceConfig", "json")
+        }
         var query: [String: Any] = [:]
         if (!TeaUtils.Client.isUnset(request.appName)) {
             query["AppName"] = request.appName ?? "";
@@ -35,6 +40,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.clientToken)) {
             query["ClientToken"] = request.clientToken ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.DBInstanceConfigShrink)) {
+            query["DBInstanceConfig"] = request.DBInstanceConfigShrink ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.DBInstanceName)) {
             query["DBInstanceName"] = request.DBInstanceName ?? "";
@@ -53,6 +61,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.publicNetworkAccessEnabled)) {
             query["PublicNetworkAccessEnabled"] = request.publicNetworkAccessEnabled!;
+        }
+        if (!TeaUtils.Client.isUnset(request.RAGEnabled)) {
+            query["RAGEnabled"] = request.RAGEnabled!;
         }
         if (!TeaUtils.Client.isUnset(request.regionId)) {
             query["RegionId"] = request.regionId ?? "";
