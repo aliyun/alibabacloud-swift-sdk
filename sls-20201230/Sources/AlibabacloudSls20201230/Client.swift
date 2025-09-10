@@ -764,6 +764,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.processors)) {
             body["processors"] = request.processors ?? [];
         }
+        if (!TeaUtils.Client.isUnset(request.task)) {
+            body["task"] = request.task ?? [:];
+        }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "hostMap": hostMap as! [String: String],
             "headers": headers as! [String: String],
@@ -1553,6 +1556,36 @@ open class Client : AlibabacloudOpenApi.Client {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         var headers: [String: String] = [:]
         return try await deleteConfigWithOptions(project as! String, configName as! String, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func deleteConsumeProcessorWithOptions(_ project: String, _ processorName: String, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> DeleteConsumeProcessorResponse {
+        var hostMap: [String: String] = [:]
+        hostMap["project"] = project as! String;
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "hostMap": hostMap as! [String: String],
+            "headers": headers as! [String: String]
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "DeleteConsumeProcessor",
+            "version": "2020-12-30",
+            "protocol": "HTTPS",
+            "pathname": "/consumeprocessors/" + (processorName as! String),
+            "method": "DELETE",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "none"
+        ])
+        var tmp: [String: Any] = try await execute(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(DeleteConsumeProcessorResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func deleteConsumeProcessor(_ project: String, _ processorName: String) async throws -> DeleteConsumeProcessorResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await deleteConsumeProcessorWithOptions(project as! String, processorName as! String, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -2653,6 +2686,36 @@ open class Client : AlibabacloudOpenApi.Client {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         var headers: [String: String] = [:]
         return try await getConfigWithOptions(project as! String, configName as! String, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getConsumeProcessorWithOptions(_ project: String, _ processorName: String, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> GetConsumeProcessorResponse {
+        var hostMap: [String: String] = [:]
+        hostMap["project"] = project as! String;
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "hostMap": hostMap as! [String: String],
+            "headers": headers as! [String: String]
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "GetConsumeProcessor",
+            "version": "2020-12-30",
+            "protocol": "HTTPS",
+            "pathname": "/consumeprocessors/" + (processorName as! String),
+            "method": "GET",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await execute(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(GetConsumeProcessorResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getConsumeProcessor(_ project: String, _ processorName: String) async throws -> GetConsumeProcessorResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await getConsumeProcessorWithOptions(project as! String, processorName as! String, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -4053,6 +4116,51 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func listConsumeProcessorsWithOptions(_ project: String, _ request: ListConsumeProcessorsRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> ListConsumeProcessorsResponse {
+        try TeaUtils.Client.validateModel(request)
+        var hostMap: [String: String] = [:]
+        hostMap["project"] = project as! String;
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.displayName)) {
+            query["displayName"] = request.displayName ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.offset)) {
+            query["offset"] = request.offset ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.processorName)) {
+            query["processorName"] = request.processorName ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.size)) {
+            query["size"] = request.size ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "hostMap": hostMap as! [String: String],
+            "headers": headers as! [String: String],
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "ListConsumeProcessors",
+            "version": "2020-12-30",
+            "protocol": "HTTPS",
+            "pathname": "/consumeprocessors",
+            "method": "GET",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await execute(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(ListConsumeProcessorsResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func listConsumeProcessors(_ project: String, _ request: ListConsumeProcessorsRequest) async throws -> ListConsumeProcessorsResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await listConsumeProcessorsWithOptions(project as! String, request as! ListConsumeProcessorsRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func listConsumerGroupWithOptions(_ project: String, _ logstore: String, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> ListConsumerGroupResponse {
         var hostMap: [String: String] = [:]
         hostMap["project"] = project as! String;
@@ -4362,6 +4470,9 @@ open class Client : AlibabacloudOpenApi.Client {
         var query: [String: Any] = [:]
         if (!TeaUtils.Client.isUnset(request.configName)) {
             query["configName"] = request.configName ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.configType)) {
+            query["configType"] = request.configType ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.logstoreName)) {
             query["logstoreName"] = request.logstoreName ?? "";
@@ -5086,6 +5197,48 @@ open class Client : AlibabacloudOpenApi.Client {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         var headers: [String: String] = [:]
         return try await putAnnotationDataWithOptions(datasetId as! String, request as! PutAnnotationDataRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func putConsumeProcessorWithOptions(_ project: String, _ processorName: String, _ request: PutConsumeProcessorRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> PutConsumeProcessorResponse {
+        try TeaUtils.Client.validateModel(request)
+        var hostMap: [String: String] = [:]
+        hostMap["project"] = project as! String;
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.configuration)) {
+            body["configuration"] = request.configuration!;
+        }
+        if (!TeaUtils.Client.isUnset(request.description_)) {
+            body["description"] = request.description_ ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.displayName)) {
+            body["displayName"] = request.displayName ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "hostMap": hostMap as! [String: String],
+            "headers": headers as! [String: String],
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "PutConsumeProcessor",
+            "version": "2020-12-30",
+            "protocol": "HTTPS",
+            "pathname": "/consumeprocessors/" + (processorName as! String),
+            "method": "PUT",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "none"
+        ])
+        var tmp: [String: Any] = try await execute(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(PutConsumeProcessorResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func putConsumeProcessor(_ project: String, _ processorName: String, _ request: PutConsumeProcessorRequest) async throws -> PutConsumeProcessorResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await putConsumeProcessorWithOptions(project as! String, processorName as! String, request as! PutConsumeProcessorRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -6358,6 +6511,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.processors)) {
             body["processors"] = request.processors ?? [];
+        }
+        if (!TeaUtils.Client.isUnset(request.task)) {
+            body["task"] = request.task ?? [:];
         }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "hostMap": hostMap as! [String: String],
