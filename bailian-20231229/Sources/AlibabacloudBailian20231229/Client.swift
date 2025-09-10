@@ -142,6 +142,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.ossRegionId)) {
             body["OssRegionId"] = request.ossRegionId ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.overWriteFileByOssKey)) {
+            body["OverWriteFileByOssKey"] = request.overWriteFileByOssKey!;
+        }
         if (!TeaUtils.Client.isUnset(request.tagsShrink)) {
             body["Tags"] = request.tagsShrink ?? "";
         }

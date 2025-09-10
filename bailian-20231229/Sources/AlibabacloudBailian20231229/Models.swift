@@ -567,6 +567,8 @@ public class AddFilesFromAuthorizedOssRequest : Tea.TeaModel {
 
     public var ossRegionId: String?
 
+    public var overWriteFileByOssKey: Bool?
+
     public var tags: [String]?
 
     public override init() {
@@ -602,6 +604,9 @@ public class AddFilesFromAuthorizedOssRequest : Tea.TeaModel {
         if self.ossRegionId != nil {
             map["OssRegionId"] = self.ossRegionId!
         }
+        if self.overWriteFileByOssKey != nil {
+            map["OverWriteFileByOssKey"] = self.overWriteFileByOssKey!
+        }
         if self.tags != nil {
             map["Tags"] = self.tags!
         }
@@ -635,6 +640,9 @@ public class AddFilesFromAuthorizedOssRequest : Tea.TeaModel {
         if let value = dict["OssRegionId"] as? String {
             self.ossRegionId = value
         }
+        if let value = dict["OverWriteFileByOssKey"] as? Bool {
+            self.overWriteFileByOssKey = value
+        }
         if let value = dict["Tags"] as? [String] {
             self.tags = value
         }
@@ -651,6 +659,8 @@ public class AddFilesFromAuthorizedOssShrinkRequest : Tea.TeaModel {
     public var ossBucketName: String?
 
     public var ossRegionId: String?
+
+    public var overWriteFileByOssKey: Bool?
 
     public var tagsShrink: String?
 
@@ -683,6 +693,9 @@ public class AddFilesFromAuthorizedOssShrinkRequest : Tea.TeaModel {
         if self.ossRegionId != nil {
             map["OssRegionId"] = self.ossRegionId!
         }
+        if self.overWriteFileByOssKey != nil {
+            map["OverWriteFileByOssKey"] = self.overWriteFileByOssKey!
+        }
         if self.tagsShrink != nil {
             map["Tags"] = self.tagsShrink!
         }
@@ -705,6 +718,9 @@ public class AddFilesFromAuthorizedOssShrinkRequest : Tea.TeaModel {
         }
         if let value = dict["OssRegionId"] as? String {
             self.ossRegionId = value
+        }
+        if let value = dict["OverWriteFileByOssKey"] as? Bool {
+            self.overWriteFileByOssKey = value
         }
         if let value = dict["Tags"] as? String {
             self.tagsShrink = value
@@ -1313,6 +1329,8 @@ public class CreateAndPulishAgentRequest : Tea.TeaModel {
         public class Parameters : Tea.TeaModel {
             public var dialogRound: Int32?
 
+            public var enableThinking: Bool?
+
             public var maxTokens: Int32?
 
             public var temperature: Double?
@@ -1334,6 +1352,9 @@ public class CreateAndPulishAgentRequest : Tea.TeaModel {
                 if self.dialogRound != nil {
                     map["dialogRound"] = self.dialogRound!
                 }
+                if self.enableThinking != nil {
+                    map["enable_thinking"] = self.enableThinking!
+                }
                 if self.maxTokens != nil {
                     map["maxTokens"] = self.maxTokens!
                 }
@@ -1347,6 +1368,9 @@ public class CreateAndPulishAgentRequest : Tea.TeaModel {
                 guard let dict else { return }
                 if let value = dict["dialogRound"] as? Int32 {
                     self.dialogRound = value
+                }
+                if let value = dict["enable_thinking"] as? Bool {
+                    self.enableThinking = value
                 }
                 if let value = dict["maxTokens"] as? Int32 {
                     self.maxTokens = value
@@ -11073,6 +11097,8 @@ public class UpdateAndPublishAgentRequest : Tea.TeaModel {
         public class Parameters : Tea.TeaModel {
             public var dialogRound: Int32?
 
+            public var enableThinking: Bool?
+
             public var maxTokens: Int32?
 
             public var temperature: Double?
@@ -11094,6 +11120,9 @@ public class UpdateAndPublishAgentRequest : Tea.TeaModel {
                 if self.dialogRound != nil {
                     map["dialogRound"] = self.dialogRound!
                 }
+                if self.enableThinking != nil {
+                    map["enable_thinking"] = self.enableThinking!
+                }
                 if self.maxTokens != nil {
                     map["maxTokens"] = self.maxTokens!
                 }
@@ -11107,6 +11136,9 @@ public class UpdateAndPublishAgentRequest : Tea.TeaModel {
                 guard let dict else { return }
                 if let value = dict["dialogRound"] as? Int32 {
                     self.dialogRound = value
+                }
+                if let value = dict["enable_thinking"] as? Bool {
+                    self.enableThinking = value
                 }
                 if let value = dict["maxTokens"] as? Int32 {
                     self.maxTokens = value
@@ -11839,6 +11871,8 @@ public class UpdateAndPublishAgentSelectiveRequest : Tea.TeaModel {
         public class Parameters : Tea.TeaModel {
             public var dialogRound: Int32?
 
+            public var enableThinking: Bool?
+
             public var maxTokens: Int32?
 
             public var temperature: Double?
@@ -11860,6 +11894,9 @@ public class UpdateAndPublishAgentSelectiveRequest : Tea.TeaModel {
                 if self.dialogRound != nil {
                     map["dialogRound"] = self.dialogRound!
                 }
+                if self.enableThinking != nil {
+                    map["enable_thinking"] = self.enableThinking!
+                }
                 if self.maxTokens != nil {
                     map["maxTokens"] = self.maxTokens!
                 }
@@ -11873,6 +11910,9 @@ public class UpdateAndPublishAgentSelectiveRequest : Tea.TeaModel {
                 guard let dict else { return }
                 if let value = dict["dialogRound"] as? Int32 {
                     self.dialogRound = value
+                }
+                if let value = dict["enable_thinking"] as? Bool {
+                    self.enableThinking = value
                 }
                 if let value = dict["maxTokens"] as? Int32 {
                     self.maxTokens = value
