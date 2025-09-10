@@ -11335,7 +11335,7 @@ public class GenerateUploadConfigResponseBody : Tea.TeaModel {
     public class Data : Tea.TeaModel {
         public var fileKey: String?
 
-        public var formDatas: [String: Any]?
+        public var formDatas: [String: String]?
 
         public var postUrl: String?
 
@@ -11370,7 +11370,7 @@ public class GenerateUploadConfigResponseBody : Tea.TeaModel {
             if let value = dict["FileKey"] as? String {
                 self.fileKey = value
             }
-            if let value = dict["FormDatas"] as? [String: Any] {
+            if let value = dict["FormDatas"] as? [String: String] {
                 self.formDatas = value
             }
             if let value = dict["PostUrl"] as? String {
