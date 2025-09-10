@@ -4489,6 +4489,8 @@ public class CreateServiceCronScalerRequest : Tea.TeaModel {
 
         public var targetSize: Int32?
 
+        public var timeZone: String?
+
         public override init() {
             super.init()
         }
@@ -4512,6 +4514,9 @@ public class CreateServiceCronScalerRequest : Tea.TeaModel {
             if self.targetSize != nil {
                 map["TargetSize"] = self.targetSize!
             }
+            if self.timeZone != nil {
+                map["TimeZone"] = self.timeZone!
+            }
             return map
         }
 
@@ -4525,6 +4530,9 @@ public class CreateServiceCronScalerRequest : Tea.TeaModel {
             }
             if let value = dict["TargetSize"] as? Int32 {
                 self.targetSize = value
+            }
+            if let value = dict["TimeZone"] as? String {
+                self.timeZone = value
             }
         }
     }
@@ -13083,9 +13091,19 @@ public class ListGroupsResponse : Tea.TeaModel {
 }
 
 public class ListResourceInstanceWorkerRequest : Tea.TeaModel {
+    public var order: String?
+
     public var pageNumber: Int32?
 
     public var pageSize: Int32?
+
+    public var ready: Bool?
+
+    public var serviceName: String?
+
+    public var sort: String?
+
+    public var status: String?
 
     public var workerName: String?
 
@@ -13103,11 +13121,26 @@ public class ListResourceInstanceWorkerRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.order != nil {
+            map["Order"] = self.order!
+        }
         if self.pageNumber != nil {
             map["PageNumber"] = self.pageNumber!
         }
         if self.pageSize != nil {
             map["PageSize"] = self.pageSize!
+        }
+        if self.ready != nil {
+            map["Ready"] = self.ready!
+        }
+        if self.serviceName != nil {
+            map["ServiceName"] = self.serviceName!
+        }
+        if self.sort != nil {
+            map["Sort"] = self.sort!
+        }
+        if self.status != nil {
+            map["Status"] = self.status!
         }
         if self.workerName != nil {
             map["WorkerName"] = self.workerName!
@@ -13117,11 +13150,26 @@ public class ListResourceInstanceWorkerRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["Order"] as? String {
+            self.order = value
+        }
         if let value = dict["PageNumber"] as? Int32 {
             self.pageNumber = value
         }
         if let value = dict["PageSize"] as? Int32 {
             self.pageSize = value
+        }
+        if let value = dict["Ready"] as? Bool {
+            self.ready = value
+        }
+        if let value = dict["ServiceName"] as? String {
+            self.serviceName = value
+        }
+        if let value = dict["Sort"] as? String {
+            self.sort = value
+        }
+        if let value = dict["Status"] as? String {
+            self.status = value
         }
         if let value = dict["WorkerName"] as? String {
             self.workerName = value
@@ -14633,6 +14681,8 @@ public class ListServicesRequest : Tea.TeaModel {
 
     public var sort: String?
 
+    public var trafficState: String?
+
     public var workspaceId: String?
 
     public override init() {
@@ -14718,6 +14768,9 @@ public class ListServicesRequest : Tea.TeaModel {
         if self.sort != nil {
             map["Sort"] = self.sort!
         }
+        if self.trafficState != nil {
+            map["TrafficState"] = self.trafficState!
+        }
         if self.workspaceId != nil {
             map["WorkspaceId"] = self.workspaceId!
         }
@@ -14795,6 +14848,9 @@ public class ListServicesRequest : Tea.TeaModel {
         if let value = dict["Sort"] as? String {
             self.sort = value
         }
+        if let value = dict["TrafficState"] as? String {
+            self.trafficState = value
+        }
         if let value = dict["WorkspaceId"] as? String {
             self.workspaceId = value
         }
@@ -14847,6 +14903,8 @@ public class ListServicesShrinkRequest : Tea.TeaModel {
     public var serviceUid: String?
 
     public var sort: String?
+
+    public var trafficState: String?
 
     public var workspaceId: String?
 
@@ -14933,6 +14991,9 @@ public class ListServicesShrinkRequest : Tea.TeaModel {
         if self.sort != nil {
             map["Sort"] = self.sort!
         }
+        if self.trafficState != nil {
+            map["TrafficState"] = self.trafficState!
+        }
         if self.workspaceId != nil {
             map["WorkspaceId"] = self.workspaceId!
         }
@@ -15009,6 +15070,9 @@ public class ListServicesShrinkRequest : Tea.TeaModel {
         }
         if let value = dict["Sort"] as? String {
             self.sort = value
+        }
+        if let value = dict["TrafficState"] as? String {
+            self.trafficState = value
         }
         if let value = dict["WorkspaceId"] as? String {
             self.workspaceId = value
@@ -15285,9 +15349,13 @@ public class ListTenantAddonsResponse : Tea.TeaModel {
 }
 
 public class ListVirtualResourceRequest : Tea.TeaModel {
+    public var order: String?
+
     public var pageNumber: Int32?
 
     public var pageSize: Int32?
+
+    public var sort: String?
 
     public var virtualResourceId: String?
 
@@ -15307,11 +15375,17 @@ public class ListVirtualResourceRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.order != nil {
+            map["Order"] = self.order!
+        }
         if self.pageNumber != nil {
             map["PageNumber"] = self.pageNumber!
         }
         if self.pageSize != nil {
             map["PageSize"] = self.pageSize!
+        }
+        if self.sort != nil {
+            map["Sort"] = self.sort!
         }
         if self.virtualResourceId != nil {
             map["VirtualResourceId"] = self.virtualResourceId!
@@ -15324,11 +15398,17 @@ public class ListVirtualResourceRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["Order"] as? String {
+            self.order = value
+        }
         if let value = dict["PageNumber"] as? Int32 {
             self.pageNumber = value
         }
         if let value = dict["PageSize"] as? Int32 {
             self.pageSize = value
+        }
+        if let value = dict["Sort"] as? String {
+            self.sort = value
         }
         if let value = dict["VirtualResourceId"] as? String {
             self.virtualResourceId = value
@@ -17962,6 +18042,8 @@ public class UpdateServiceCronScalerRequest : Tea.TeaModel {
 
         public var targetSize: Int32?
 
+        public var timeZone: String?
+
         public override init() {
             super.init()
         }
@@ -17985,6 +18067,9 @@ public class UpdateServiceCronScalerRequest : Tea.TeaModel {
             if self.targetSize != nil {
                 map["TargetSize"] = self.targetSize!
             }
+            if self.timeZone != nil {
+                map["TimeZone"] = self.timeZone!
+            }
             return map
         }
 
@@ -17998,6 +18083,9 @@ public class UpdateServiceCronScalerRequest : Tea.TeaModel {
             }
             if let value = dict["TargetSize"] as? Int32 {
                 self.targetSize = value
+            }
+            if let value = dict["TimeZone"] as? String {
+                self.timeZone = value
             }
         }
     }

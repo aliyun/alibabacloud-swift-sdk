@@ -2339,11 +2339,26 @@ open class Client : AlibabacloudOpenApi.Client {
     public func listResourceInstanceWorkerWithOptions(_ ClusterId: String, _ ResourceId: String, _ InstanceName: String, _ request: ListResourceInstanceWorkerRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> ListResourceInstanceWorkerResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.order)) {
+            query["Order"] = request.order ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.pageNumber)) {
             query["PageNumber"] = request.pageNumber!;
         }
         if (!TeaUtils.Client.isUnset(request.pageSize)) {
             query["PageSize"] = request.pageSize!;
+        }
+        if (!TeaUtils.Client.isUnset(request.ready)) {
+            query["Ready"] = request.ready!;
+        }
+        if (!TeaUtils.Client.isUnset(request.serviceName)) {
+            query["ServiceName"] = request.serviceName ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.sort)) {
+            query["Sort"] = request.sort ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.status)) {
+            query["Status"] = request.status ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.workerName)) {
             query["WorkerName"] = request.workerName ?? "";
@@ -2742,6 +2757,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.sort)) {
             query["Sort"] = request.sort ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.trafficState)) {
+            query["TrafficState"] = request.trafficState ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.workspaceId)) {
             query["WorkspaceId"] = request.workspaceId ?? "";
         }
@@ -2802,11 +2820,17 @@ open class Client : AlibabacloudOpenApi.Client {
     public func listVirtualResourceWithOptions(_ request: ListVirtualResourceRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> ListVirtualResourceResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.order)) {
+            query["Order"] = request.order ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.pageNumber)) {
             query["PageNumber"] = request.pageNumber!;
         }
         if (!TeaUtils.Client.isUnset(request.pageSize)) {
             query["PageSize"] = request.pageSize!;
+        }
+        if (!TeaUtils.Client.isUnset(request.sort)) {
+            query["Sort"] = request.sort ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.virtualResourceId)) {
             query["VirtualResourceId"] = request.virtualResourceId ?? "";
