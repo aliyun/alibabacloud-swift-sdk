@@ -198,6 +198,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(tmpReq.sourceMNSParameters)) {
             request.sourceMNSParametersShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.sourceMNSParameters, "SourceMNSParameters", "json")
         }
+        if (!TeaUtils.Client.isUnset(tmpReq.sourceOSSEventParameters)) {
+            request.sourceOSSEventParametersShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.sourceOSSEventParameters, "SourceOSSEventParameters", "json")
+        }
         if (!TeaUtils.Client.isUnset(tmpReq.sourceRabbitMQParameters)) {
             request.sourceRabbitMQParametersShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.sourceRabbitMQParameters, "SourceRabbitMQParameters", "json")
         }
@@ -237,6 +240,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.sourceMNSParametersShrink)) {
             body["SourceMNSParameters"] = request.sourceMNSParametersShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.sourceOSSEventParametersShrink)) {
+            body["SourceOSSEventParameters"] = request.sourceOSSEventParametersShrink ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.sourceRabbitMQParametersShrink)) {
             body["SourceRabbitMQParameters"] = request.sourceRabbitMQParametersShrink ?? "";
@@ -1750,6 +1756,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(tmpReq.sourceMNSParameters)) {
             request.sourceMNSParametersShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.sourceMNSParameters, "SourceMNSParameters", "json")
         }
+        if (!TeaUtils.Client.isUnset(tmpReq.sourceOSSEventParameters)) {
+            request.sourceOSSEventParametersShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.sourceOSSEventParameters, "SourceOSSEventParameters", "json")
+        }
         if (!TeaUtils.Client.isUnset(tmpReq.sourceRabbitMQParameters)) {
             request.sourceRabbitMQParametersShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.sourceRabbitMQParameters, "SourceRabbitMQParameters", "json")
         }
@@ -1789,6 +1798,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.sourceMNSParametersShrink)) {
             body["SourceMNSParameters"] = request.sourceMNSParametersShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.sourceOSSEventParametersShrink)) {
+            body["SourceOSSEventParameters"] = request.sourceOSSEventParametersShrink ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.sourceRabbitMQParametersShrink)) {
             body["SourceRabbitMQParameters"] = request.sourceRabbitMQParametersShrink ?? "";

@@ -2113,6 +2113,130 @@ public class CreateEventSourceRequest : Tea.TeaModel {
             }
         }
     }
+    public class SourceOSSEventParameters : Tea.TeaModel {
+        public class MatchRules : Tea.TeaModel {
+            public var prefix_: String?
+
+            public var suffix: String?
+
+            public var name: String?
+
+            public var matchState: Bool?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.prefix_ != nil {
+                    map["Prefix"] = self.prefix_!
+                }
+                if self.suffix != nil {
+                    map["Suffix"] = self.suffix!
+                }
+                if self.name != nil {
+                    map["Name"] = self.name!
+                }
+                if self.matchState != nil {
+                    map["MatchState"] = self.matchState!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["Prefix"] as? String {
+                    self.prefix_ = value
+                }
+                if let value = dict["Suffix"] as? String {
+                    self.suffix = value
+                }
+                if let value = dict["Name"] as? String {
+                    self.name = value
+                }
+                if let value = dict["MatchState"] as? Bool {
+                    self.matchState = value
+                }
+            }
+        }
+        public var eventTypes: [String]?
+
+        public var matchRules: [[CreateEventSourceRequest.SourceOSSEventParameters.MatchRules]]?
+
+        public var stsRoleArn: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.eventTypes != nil {
+                map["EventTypes"] = self.eventTypes!
+            }
+            if self.matchRules != nil {
+                var tmp : [Any] = []
+                for k in self.matchRules! {
+                    var l1 : [Any] = []
+                    for k1 in k {
+                        l1.append(k1.toMap())
+                    }
+                    tmp.append(l1)
+                }
+                map["MatchRules"] = tmp
+            }
+            if self.stsRoleArn != nil {
+                map["StsRoleArn"] = self.stsRoleArn!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["EventTypes"] as? [String] {
+                self.eventTypes = value
+            }
+            if let value = dict["MatchRules"] as? [Any?] {
+                var tmp : [[CreateEventSourceRequest.SourceOSSEventParameters.MatchRules]] = []
+                for v in value {
+                    if v != nil {
+                        var l1 : [CreateEventSourceRequest.SourceOSSEventParameters.MatchRules] = []
+                        for v1 in v as! [Any?] {
+                            if v1 != nil {
+                                var model = CreateEventSourceRequest.SourceOSSEventParameters.MatchRules()
+                                if v1 != nil {
+                                    model.fromMap(v1 as? [String: Any?])
+                                }
+                                l1.append(model)
+                            }
+                        }
+                        tmp.append(l1)
+                    }
+                }
+                self.matchRules = tmp
+            }
+            if let value = dict["StsRoleArn"] as? String {
+                self.stsRoleArn = value
+            }
+        }
+    }
     public class SourceRabbitMQParameters : Tea.TeaModel {
         public var instanceId: String?
 
@@ -2435,6 +2559,8 @@ public class CreateEventSourceRequest : Tea.TeaModel {
 
     public var sourceMNSParameters: CreateEventSourceRequest.SourceMNSParameters?
 
+    public var sourceOSSEventParameters: CreateEventSourceRequest.SourceOSSEventParameters?
+
     public var sourceRabbitMQParameters: CreateEventSourceRequest.SourceRabbitMQParameters?
 
     public var sourceRocketMQParameters: CreateEventSourceRequest.SourceRocketMQParameters?
@@ -2456,6 +2582,7 @@ public class CreateEventSourceRequest : Tea.TeaModel {
         try self.sourceHttpEventParameters?.validate()
         try self.sourceKafkaParameters?.validate()
         try self.sourceMNSParameters?.validate()
+        try self.sourceOSSEventParameters?.validate()
         try self.sourceRabbitMQParameters?.validate()
         try self.sourceRocketMQParameters?.validate()
         try self.sourceSLSParameters?.validate()
@@ -2490,6 +2617,9 @@ public class CreateEventSourceRequest : Tea.TeaModel {
         }
         if self.sourceMNSParameters != nil {
             map["SourceMNSParameters"] = self.sourceMNSParameters?.toMap()
+        }
+        if self.sourceOSSEventParameters != nil {
+            map["SourceOSSEventParameters"] = self.sourceOSSEventParameters?.toMap()
         }
         if self.sourceRabbitMQParameters != nil {
             map["SourceRabbitMQParameters"] = self.sourceRabbitMQParameters?.toMap()
@@ -2541,6 +2671,11 @@ public class CreateEventSourceRequest : Tea.TeaModel {
             model.fromMap(value)
             self.sourceMNSParameters = model
         }
+        if let value = dict["SourceOSSEventParameters"] as? [String: Any?] {
+            var model = CreateEventSourceRequest.SourceOSSEventParameters()
+            model.fromMap(value)
+            self.sourceOSSEventParameters = model
+        }
         if let value = dict["SourceRabbitMQParameters"] as? [String: Any?] {
             var model = CreateEventSourceRequest.SourceRabbitMQParameters()
             model.fromMap(value)
@@ -2582,6 +2717,8 @@ public class CreateEventSourceShrinkRequest : Tea.TeaModel {
     public var sourceKafkaParametersShrink: String?
 
     public var sourceMNSParametersShrink: String?
+
+    public var sourceOSSEventParametersShrink: String?
 
     public var sourceRabbitMQParametersShrink: String?
 
@@ -2632,6 +2769,9 @@ public class CreateEventSourceShrinkRequest : Tea.TeaModel {
         if self.sourceMNSParametersShrink != nil {
             map["SourceMNSParameters"] = self.sourceMNSParametersShrink!
         }
+        if self.sourceOSSEventParametersShrink != nil {
+            map["SourceOSSEventParameters"] = self.sourceOSSEventParametersShrink!
+        }
         if self.sourceRabbitMQParametersShrink != nil {
             map["SourceRabbitMQParameters"] = self.sourceRabbitMQParametersShrink!
         }
@@ -2675,6 +2815,9 @@ public class CreateEventSourceShrinkRequest : Tea.TeaModel {
         }
         if let value = dict["SourceMNSParameters"] as? String {
             self.sourceMNSParametersShrink = value
+        }
+        if let value = dict["SourceOSSEventParameters"] as? String {
+            self.sourceOSSEventParametersShrink = value
         }
         if let value = dict["SourceRabbitMQParameters"] as? String {
             self.sourceRabbitMQParametersShrink = value
@@ -36204,6 +36347,52 @@ public class ListUserDefinedEventSourcesResponseBody : Tea.TeaModel {
                     }
                 }
             }
+            public class SourceOSSEventParameters : Tea.TeaModel {
+                public var eventTypes: [String]?
+
+                public var matchRules: Any?
+
+                public var stsRoleArn: String?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.eventTypes != nil {
+                        map["EventTypes"] = self.eventTypes!
+                    }
+                    if self.matchRules != nil {
+                        map["MatchRules"] = self.matchRules!
+                    }
+                    if self.stsRoleArn != nil {
+                        map["StsRoleArn"] = self.stsRoleArn!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                    guard let dict else { return }
+                    if let value = dict["EventTypes"] as? [String] {
+                        self.eventTypes = value
+                    }
+                    if let value = dict["MatchRules"] as? Any {
+                        self.matchRules = value
+                    }
+                    if let value = dict["StsRoleArn"] as? String {
+                        self.stsRoleArn = value
+                    }
+                }
+            }
             public class SourceRabbitMQParameters : Tea.TeaModel {
                 public var instanceId: String?
 
@@ -36524,6 +36713,8 @@ public class ListUserDefinedEventSourcesResponseBody : Tea.TeaModel {
 
             public var sourceMNSParameters: ListUserDefinedEventSourcesResponseBody.Data.EventSourceList.SourceMNSParameters?
 
+            public var sourceOSSEventParameters: ListUserDefinedEventSourcesResponseBody.Data.EventSourceList.SourceOSSEventParameters?
+
             public var sourceRabbitMQParameters: ListUserDefinedEventSourcesResponseBody.Data.EventSourceList.SourceRabbitMQParameters?
 
             public var sourceRocketMQParameters: ListUserDefinedEventSourcesResponseBody.Data.EventSourceList.SourceRocketMQParameters?
@@ -36549,6 +36740,7 @@ public class ListUserDefinedEventSourcesResponseBody : Tea.TeaModel {
                 try self.sourceHttpEventParameters?.validate()
                 try self.sourceKafkaParameters?.validate()
                 try self.sourceMNSParameters?.validate()
+                try self.sourceOSSEventParameters?.validate()
                 try self.sourceRabbitMQParameters?.validate()
                 try self.sourceRocketMQParameters?.validate()
                 try self.sourceSLSParameters?.validate()
@@ -36580,6 +36772,9 @@ public class ListUserDefinedEventSourcesResponseBody : Tea.TeaModel {
                 }
                 if self.sourceMNSParameters != nil {
                     map["SourceMNSParameters"] = self.sourceMNSParameters?.toMap()
+                }
+                if self.sourceOSSEventParameters != nil {
+                    map["SourceOSSEventParameters"] = self.sourceOSSEventParameters?.toMap()
                 }
                 if self.sourceRabbitMQParameters != nil {
                     map["SourceRabbitMQParameters"] = self.sourceRabbitMQParameters?.toMap()
@@ -36633,6 +36828,11 @@ public class ListUserDefinedEventSourcesResponseBody : Tea.TeaModel {
                     var model = ListUserDefinedEventSourcesResponseBody.Data.EventSourceList.SourceMNSParameters()
                     model.fromMap(value)
                     self.sourceMNSParameters = model
+                }
+                if let value = dict["SourceOSSEventParameters"] as? [String: Any?] {
+                    var model = ListUserDefinedEventSourcesResponseBody.Data.EventSourceList.SourceOSSEventParameters()
+                    model.fromMap(value)
+                    self.sourceOSSEventParameters = model
                 }
                 if let value = dict["SourceRabbitMQParameters"] as? [String: Any?] {
                     var model = ListUserDefinedEventSourcesResponseBody.Data.EventSourceList.SourceRabbitMQParameters()
@@ -40621,6 +40821,130 @@ public class UpdateEventSourceRequest : Tea.TeaModel {
             }
         }
     }
+    public class SourceOSSEventParameters : Tea.TeaModel {
+        public class MatchRules : Tea.TeaModel {
+            public var suffix: String?
+
+            public var matchState: Bool?
+
+            public var prefix_: String?
+
+            public var name: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.suffix != nil {
+                    map["Suffix"] = self.suffix!
+                }
+                if self.matchState != nil {
+                    map["MatchState"] = self.matchState!
+                }
+                if self.prefix_ != nil {
+                    map["Prefix"] = self.prefix_!
+                }
+                if self.name != nil {
+                    map["Name"] = self.name!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["Suffix"] as? String {
+                    self.suffix = value
+                }
+                if let value = dict["MatchState"] as? Bool {
+                    self.matchState = value
+                }
+                if let value = dict["Prefix"] as? String {
+                    self.prefix_ = value
+                }
+                if let value = dict["Name"] as? String {
+                    self.name = value
+                }
+            }
+        }
+        public var eventTypes: [String]?
+
+        public var matchRules: [[UpdateEventSourceRequest.SourceOSSEventParameters.MatchRules]]?
+
+        public var stsRoleArn: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.eventTypes != nil {
+                map["EventTypes"] = self.eventTypes!
+            }
+            if self.matchRules != nil {
+                var tmp : [Any] = []
+                for k in self.matchRules! {
+                    var l1 : [Any] = []
+                    for k1 in k {
+                        l1.append(k1.toMap())
+                    }
+                    tmp.append(l1)
+                }
+                map["MatchRules"] = tmp
+            }
+            if self.stsRoleArn != nil {
+                map["StsRoleArn"] = self.stsRoleArn!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["EventTypes"] as? [String] {
+                self.eventTypes = value
+            }
+            if let value = dict["MatchRules"] as? [Any?] {
+                var tmp : [[UpdateEventSourceRequest.SourceOSSEventParameters.MatchRules]] = []
+                for v in value {
+                    if v != nil {
+                        var l1 : [UpdateEventSourceRequest.SourceOSSEventParameters.MatchRules] = []
+                        for v1 in v as! [Any?] {
+                            if v1 != nil {
+                                var model = UpdateEventSourceRequest.SourceOSSEventParameters.MatchRules()
+                                if v1 != nil {
+                                    model.fromMap(v1 as? [String: Any?])
+                                }
+                                l1.append(model)
+                            }
+                        }
+                        tmp.append(l1)
+                    }
+                }
+                self.matchRules = tmp
+            }
+            if let value = dict["StsRoleArn"] as? String {
+                self.stsRoleArn = value
+            }
+        }
+    }
     public class SourceRabbitMQParameters : Tea.TeaModel {
         public var instanceId: String?
 
@@ -40943,6 +41267,8 @@ public class UpdateEventSourceRequest : Tea.TeaModel {
 
     public var sourceMNSParameters: UpdateEventSourceRequest.SourceMNSParameters?
 
+    public var sourceOSSEventParameters: UpdateEventSourceRequest.SourceOSSEventParameters?
+
     public var sourceRabbitMQParameters: UpdateEventSourceRequest.SourceRabbitMQParameters?
 
     public var sourceRocketMQParameters: UpdateEventSourceRequest.SourceRocketMQParameters?
@@ -40964,6 +41290,7 @@ public class UpdateEventSourceRequest : Tea.TeaModel {
         try self.sourceHttpEventParameters?.validate()
         try self.sourceKafkaParameters?.validate()
         try self.sourceMNSParameters?.validate()
+        try self.sourceOSSEventParameters?.validate()
         try self.sourceRabbitMQParameters?.validate()
         try self.sourceRocketMQParameters?.validate()
         try self.sourceSLSParameters?.validate()
@@ -40998,6 +41325,9 @@ public class UpdateEventSourceRequest : Tea.TeaModel {
         }
         if self.sourceMNSParameters != nil {
             map["SourceMNSParameters"] = self.sourceMNSParameters?.toMap()
+        }
+        if self.sourceOSSEventParameters != nil {
+            map["SourceOSSEventParameters"] = self.sourceOSSEventParameters?.toMap()
         }
         if self.sourceRabbitMQParameters != nil {
             map["SourceRabbitMQParameters"] = self.sourceRabbitMQParameters?.toMap()
@@ -41049,6 +41379,11 @@ public class UpdateEventSourceRequest : Tea.TeaModel {
             model.fromMap(value)
             self.sourceMNSParameters = model
         }
+        if let value = dict["SourceOSSEventParameters"] as? [String: Any?] {
+            var model = UpdateEventSourceRequest.SourceOSSEventParameters()
+            model.fromMap(value)
+            self.sourceOSSEventParameters = model
+        }
         if let value = dict["SourceRabbitMQParameters"] as? [String: Any?] {
             var model = UpdateEventSourceRequest.SourceRabbitMQParameters()
             model.fromMap(value)
@@ -41090,6 +41425,8 @@ public class UpdateEventSourceShrinkRequest : Tea.TeaModel {
     public var sourceKafkaParametersShrink: String?
 
     public var sourceMNSParametersShrink: String?
+
+    public var sourceOSSEventParametersShrink: String?
 
     public var sourceRabbitMQParametersShrink: String?
 
@@ -41140,6 +41477,9 @@ public class UpdateEventSourceShrinkRequest : Tea.TeaModel {
         if self.sourceMNSParametersShrink != nil {
             map["SourceMNSParameters"] = self.sourceMNSParametersShrink!
         }
+        if self.sourceOSSEventParametersShrink != nil {
+            map["SourceOSSEventParameters"] = self.sourceOSSEventParametersShrink!
+        }
         if self.sourceRabbitMQParametersShrink != nil {
             map["SourceRabbitMQParameters"] = self.sourceRabbitMQParametersShrink!
         }
@@ -41183,6 +41523,9 @@ public class UpdateEventSourceShrinkRequest : Tea.TeaModel {
         }
         if let value = dict["SourceMNSParameters"] as? String {
             self.sourceMNSParametersShrink = value
+        }
+        if let value = dict["SourceOSSEventParameters"] as? String {
+            self.sourceOSSEventParametersShrink = value
         }
         if let value = dict["SourceRabbitMQParameters"] as? String {
             self.sourceRabbitMQParametersShrink = value
