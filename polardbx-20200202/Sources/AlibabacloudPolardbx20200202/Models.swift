@@ -9418,6 +9418,8 @@ public class DescribeDBInstancesResponseBody : Tea.TeaModel {
 
             public var id: String?
 
+            public var name: String?
+
             public var regionId: String?
 
             public var zoneId: String?
@@ -9442,6 +9444,9 @@ public class DescribeDBInstancesResponseBody : Tea.TeaModel {
                 if self.id != nil {
                     map["Id"] = self.id!
                 }
+                if self.name != nil {
+                    map["Name"] = self.name!
+                }
                 if self.regionId != nil {
                     map["RegionId"] = self.regionId!
                 }
@@ -9458,6 +9463,9 @@ public class DescribeDBInstancesResponseBody : Tea.TeaModel {
                 }
                 if let value = dict["Id"] as? String {
                     self.id = value
+                }
+                if let value = dict["Name"] as? String {
+                    self.name = value
                 }
                 if let value = dict["RegionId"] as? String {
                     self.regionId = value
