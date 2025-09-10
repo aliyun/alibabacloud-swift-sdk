@@ -1022,6 +1022,44 @@ public class CreateInstanceRequest : Tea.TeaModel {
             }
         }
     }
+    public class AssignNodeSpec : Tea.TeaModel {
+        public var antiAffinityNodeNames: String?
+
+        public var nodeNames: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.antiAffinityNodeNames != nil {
+                map["AntiAffinityNodeNames"] = self.antiAffinityNodeNames!
+            }
+            if self.nodeNames != nil {
+                map["NodeNames"] = self.nodeNames!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["AntiAffinityNodeNames"] as? String {
+                self.antiAffinityNodeNames = value
+            }
+            if let value = dict["NodeNames"] as? String {
+                self.nodeNames = value
+            }
+        }
+    }
     public class CloudDisks : Tea.TeaModel {
         public class Status : Tea.TeaModel {
             public var available: Int64?
@@ -1319,6 +1357,60 @@ public class CreateInstanceRequest : Tea.TeaModel {
             }
         }
     }
+    public class SpotSpec : Tea.TeaModel {
+        public var spotDiscountLimit: String?
+
+        public var spotDuration: String?
+
+        public var spotPriceLimit: String?
+
+        public var spotStrategy: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.spotDiscountLimit != nil {
+                map["SpotDiscountLimit"] = self.spotDiscountLimit!
+            }
+            if self.spotDuration != nil {
+                map["SpotDuration"] = self.spotDuration!
+            }
+            if self.spotPriceLimit != nil {
+                map["SpotPriceLimit"] = self.spotPriceLimit!
+            }
+            if self.spotStrategy != nil {
+                map["SpotStrategy"] = self.spotStrategy!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["SpotDiscountLimit"] as? String {
+                self.spotDiscountLimit = value
+            }
+            if let value = dict["SpotDuration"] as? String {
+                self.spotDuration = value
+            }
+            if let value = dict["SpotPriceLimit"] as? String {
+                self.spotPriceLimit = value
+            }
+            if let value = dict["SpotStrategy"] as? String {
+                self.spotStrategy = value
+            }
+        }
+    }
     public class Tag : Tea.TeaModel {
         public var key: String?
 
@@ -1519,6 +1611,8 @@ public class CreateInstanceRequest : Tea.TeaModel {
 
     public var affinity: CreateInstanceRequest.Affinity?
 
+    public var assignNodeSpec: CreateInstanceRequest.AssignNodeSpec?
+
     public var cloudDisks: [CreateInstanceRequest.CloudDisks]?
 
     public var credentialConfig: CredentialConfig?
@@ -1551,6 +1645,8 @@ public class CreateInstanceRequest : Tea.TeaModel {
 
     public var resourceId: String?
 
+    public var spotSpec: CreateInstanceRequest.SpotSpec?
+
     public var tag: [CreateInstanceRequest.Tag]?
 
     public var userCommand: CreateInstanceRequest.UserCommand?
@@ -1574,9 +1670,11 @@ public class CreateInstanceRequest : Tea.TeaModel {
 
     public override func validate() throws -> Void {
         try self.affinity?.validate()
+        try self.assignNodeSpec?.validate()
         try self.credentialConfig?.validate()
         try self.dynamicMount?.validate()
         try self.requestedResource?.validate()
+        try self.spotSpec?.validate()
         try self.userCommand?.validate()
         try self.userVpc?.validate()
     }
@@ -1588,6 +1686,9 @@ public class CreateInstanceRequest : Tea.TeaModel {
         }
         if self.affinity != nil {
             map["Affinity"] = self.affinity?.toMap()
+        }
+        if self.assignNodeSpec != nil {
+            map["AssignNodeSpec"] = self.assignNodeSpec?.toMap()
         }
         if self.cloudDisks != nil {
             var tmp : [Any] = []
@@ -1649,6 +1750,9 @@ public class CreateInstanceRequest : Tea.TeaModel {
         if self.resourceId != nil {
             map["ResourceId"] = self.resourceId!
         }
+        if self.spotSpec != nil {
+            map["SpotSpec"] = self.spotSpec?.toMap()
+        }
         if self.tag != nil {
             var tmp : [Any] = []
             for k in self.tag! {
@@ -1683,6 +1787,11 @@ public class CreateInstanceRequest : Tea.TeaModel {
             var model = CreateInstanceRequest.Affinity()
             model.fromMap(value)
             self.affinity = model
+        }
+        if let value = dict["AssignNodeSpec"] as? [String: Any?] {
+            var model = CreateInstanceRequest.AssignNodeSpec()
+            model.fromMap(value)
+            self.assignNodeSpec = model
         }
         if let value = dict["CloudDisks"] as? [Any?] {
             var tmp : [CreateInstanceRequest.CloudDisks] = []
@@ -1767,6 +1876,11 @@ public class CreateInstanceRequest : Tea.TeaModel {
         }
         if let value = dict["ResourceId"] as? String {
             self.resourceId = value
+        }
+        if let value = dict["SpotSpec"] as? [String: Any?] {
+            var model = CreateInstanceRequest.SpotSpec()
+            model.fromMap(value)
+            self.spotSpec = model
         }
         if let value = dict["Tag"] as? [Any?] {
             var tmp : [CreateInstanceRequest.Tag] = []
@@ -3078,6 +3192,8 @@ public class GetIdleInstanceCullerResponse : Tea.TeaModel {
 }
 
 public class GetInstanceRequest : Tea.TeaModel {
+    public var fields: String?
+
     public var token: String?
 
     public override init() {
@@ -3094,6 +3210,9 @@ public class GetInstanceRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.fields != nil {
+            map["Fields"] = self.fields!
+        }
         if self.token != nil {
             map["Token"] = self.token!
         }
@@ -3102,6 +3221,9 @@ public class GetInstanceRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["Fields"] as? String {
+            self.fields = value
+        }
         if let value = dict["Token"] as? String {
             self.token = value
         }
@@ -4483,6 +4605,8 @@ public class GetInstanceResponse : Tea.TeaModel {
 public class GetInstanceEventsRequest : Tea.TeaModel {
     public var endTime: String?
 
+    public var eventLevel: String?
+
     public var maxEventsNum: Int32?
 
     public var startTime: String?
@@ -4506,6 +4630,9 @@ public class GetInstanceEventsRequest : Tea.TeaModel {
         if self.endTime != nil {
             map["EndTime"] = self.endTime!
         }
+        if self.eventLevel != nil {
+            map["EventLevel"] = self.eventLevel!
+        }
         if self.maxEventsNum != nil {
             map["MaxEventsNum"] = self.maxEventsNum!
         }
@@ -4522,6 +4649,9 @@ public class GetInstanceEventsRequest : Tea.TeaModel {
         guard let dict else { return }
         if let value = dict["EndTime"] as? String {
             self.endTime = value
+        }
+        if let value = dict["EventLevel"] as? String {
+            self.eventLevel = value
         }
         if let value = dict["MaxEventsNum"] as? Int32 {
             self.maxEventsNum = value
@@ -10077,6 +10207,44 @@ public class UpdateInstanceRequest : Tea.TeaModel {
             }
         }
     }
+    public class AssignNodeSpec : Tea.TeaModel {
+        public var antiAffinityNodeNames: String?
+
+        public var nodeNames: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.antiAffinityNodeNames != nil {
+                map["AntiAffinityNodeNames"] = self.antiAffinityNodeNames!
+            }
+            if self.nodeNames != nil {
+                map["NodeNames"] = self.nodeNames!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["AntiAffinityNodeNames"] as? String {
+                self.antiAffinityNodeNames = value
+            }
+            if let value = dict["NodeNames"] as? String {
+                self.nodeNames = value
+            }
+        }
+    }
     public class CloudDisks : Tea.TeaModel {
         public var capacity: String?
 
@@ -10263,6 +10431,60 @@ public class UpdateInstanceRequest : Tea.TeaModel {
             }
         }
     }
+    public class SpotSpec : Tea.TeaModel {
+        public var spotDiscountLimit: String?
+
+        public var spotDuration: String?
+
+        public var spotPriceLimit: String?
+
+        public var spotStrategy: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.spotDiscountLimit != nil {
+                map["SpotDiscountLimit"] = self.spotDiscountLimit!
+            }
+            if self.spotDuration != nil {
+                map["SpotDuration"] = self.spotDuration!
+            }
+            if self.spotPriceLimit != nil {
+                map["SpotPriceLimit"] = self.spotPriceLimit!
+            }
+            if self.spotStrategy != nil {
+                map["SpotStrategy"] = self.spotStrategy!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["SpotDiscountLimit"] as? String {
+                self.spotDiscountLimit = value
+            }
+            if let value = dict["SpotDuration"] as? String {
+                self.spotDuration = value
+            }
+            if let value = dict["SpotPriceLimit"] as? String {
+                self.spotPriceLimit = value
+            }
+            if let value = dict["SpotStrategy"] as? String {
+                self.spotStrategy = value
+            }
+        }
+    }
     public class UserCommand : Tea.TeaModel {
         public class OnStart : Tea.TeaModel {
             public var content: String?
@@ -10425,11 +10647,15 @@ public class UpdateInstanceRequest : Tea.TeaModel {
 
     public var affinity: UpdateInstanceRequest.Affinity?
 
+    public var assignNodeSpec: UpdateInstanceRequest.AssignNodeSpec?
+
     public var cloudDisks: [UpdateInstanceRequest.CloudDisks]?
 
     public var credentialConfig: CredentialConfig?
 
     public var datasets: [UpdateInstanceRequest.Datasets]?
+
+    public var disassociateAssignNode: Bool?
 
     public var disassociateCredential: Bool?
 
@@ -10440,6 +10666,8 @@ public class UpdateInstanceRequest : Tea.TeaModel {
     public var disassociateEnvironmentVariables: Bool?
 
     public var disassociateForwardInfos: Bool?
+
+    public var disassociateSpot: Bool?
 
     public var disassociateUserCommand: Bool?
 
@@ -10467,6 +10695,8 @@ public class UpdateInstanceRequest : Tea.TeaModel {
 
     public var requestedResource: UpdateInstanceRequest.RequestedResource?
 
+    public var spotSpec: UpdateInstanceRequest.SpotSpec?
+
     public var userCommand: UpdateInstanceRequest.UserCommand?
 
     public var userId: String?
@@ -10486,9 +10716,11 @@ public class UpdateInstanceRequest : Tea.TeaModel {
 
     public override func validate() throws -> Void {
         try self.affinity?.validate()
+        try self.assignNodeSpec?.validate()
         try self.credentialConfig?.validate()
         try self.dynamicMount?.validate()
         try self.requestedResource?.validate()
+        try self.spotSpec?.validate()
         try self.userCommand?.validate()
         try self.userVpc?.validate()
     }
@@ -10500,6 +10732,9 @@ public class UpdateInstanceRequest : Tea.TeaModel {
         }
         if self.affinity != nil {
             map["Affinity"] = self.affinity?.toMap()
+        }
+        if self.assignNodeSpec != nil {
+            map["AssignNodeSpec"] = self.assignNodeSpec?.toMap()
         }
         if self.cloudDisks != nil {
             var tmp : [Any] = []
@@ -10518,6 +10753,9 @@ public class UpdateInstanceRequest : Tea.TeaModel {
             }
             map["Datasets"] = tmp
         }
+        if self.disassociateAssignNode != nil {
+            map["DisassociateAssignNode"] = self.disassociateAssignNode!
+        }
         if self.disassociateCredential != nil {
             map["DisassociateCredential"] = self.disassociateCredential!
         }
@@ -10532,6 +10770,9 @@ public class UpdateInstanceRequest : Tea.TeaModel {
         }
         if self.disassociateForwardInfos != nil {
             map["DisassociateForwardInfos"] = self.disassociateForwardInfos!
+        }
+        if self.disassociateSpot != nil {
+            map["DisassociateSpot"] = self.disassociateSpot!
         }
         if self.disassociateUserCommand != nil {
             map["DisassociateUserCommand"] = self.disassociateUserCommand!
@@ -10572,6 +10813,9 @@ public class UpdateInstanceRequest : Tea.TeaModel {
         if self.requestedResource != nil {
             map["RequestedResource"] = self.requestedResource?.toMap()
         }
+        if self.spotSpec != nil {
+            map["SpotSpec"] = self.spotSpec?.toMap()
+        }
         if self.userCommand != nil {
             map["UserCommand"] = self.userCommand?.toMap()
         }
@@ -10596,6 +10840,11 @@ public class UpdateInstanceRequest : Tea.TeaModel {
             var model = UpdateInstanceRequest.Affinity()
             model.fromMap(value)
             self.affinity = model
+        }
+        if let value = dict["AssignNodeSpec"] as? [String: Any?] {
+            var model = UpdateInstanceRequest.AssignNodeSpec()
+            model.fromMap(value)
+            self.assignNodeSpec = model
         }
         if let value = dict["CloudDisks"] as? [Any?] {
             var tmp : [UpdateInstanceRequest.CloudDisks] = []
@@ -10628,6 +10877,9 @@ public class UpdateInstanceRequest : Tea.TeaModel {
             }
             self.datasets = tmp
         }
+        if let value = dict["DisassociateAssignNode"] as? Bool {
+            self.disassociateAssignNode = value
+        }
         if let value = dict["DisassociateCredential"] as? Bool {
             self.disassociateCredential = value
         }
@@ -10642,6 +10894,9 @@ public class UpdateInstanceRequest : Tea.TeaModel {
         }
         if let value = dict["DisassociateForwardInfos"] as? Bool {
             self.disassociateForwardInfos = value
+        }
+        if let value = dict["DisassociateSpot"] as? Bool {
+            self.disassociateSpot = value
         }
         if let value = dict["DisassociateUserCommand"] as? Bool {
             self.disassociateUserCommand = value
@@ -10685,6 +10940,11 @@ public class UpdateInstanceRequest : Tea.TeaModel {
             var model = UpdateInstanceRequest.RequestedResource()
             model.fromMap(value)
             self.requestedResource = model
+        }
+        if let value = dict["SpotSpec"] as? [String: Any?] {
+            var model = UpdateInstanceRequest.SpotSpec()
+            model.fromMap(value)
+            self.spotSpec = model
         }
         if let value = dict["UserCommand"] as? [String: Any?] {
             var model = UpdateInstanceRequest.UserCommand()
