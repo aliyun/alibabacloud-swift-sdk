@@ -8,7 +8,6 @@ import AlibabacloudEndpointUtil
 open class Client : AlibabacloudOpenApi.Client {
     public override init(_ config: AlibabacloudOpenApi.Config) throws {
         try super.init(config)
-        self._signatureAlgorithm = "v2"
         self._endpointRule = "regional"
         self._endpointMap = [
             "ap-northeast-2-pop": "hbr.aliyuncs.com",
@@ -104,6 +103,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func cancelBackupJobWithOptions(_ request: CancelBackupJobRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> CancelBackupJobResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.edition)) {
+            query["Edition"] = request.edition ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.jobId)) {
             query["JobId"] = request.jobId ?? "";
         }
@@ -138,6 +140,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func cancelRestoreJobWithOptions(_ request: CancelRestoreJobRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> CancelRestoreJobResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.edition)) {
+            query["Edition"] = request.edition ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.restoreId)) {
             query["RestoreId"] = request.restoreId ?? "";
         }
@@ -890,6 +895,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.crossAccountUserId)) {
             query["CrossAccountUserId"] = request.crossAccountUserId!;
         }
+        if (!TeaUtils.Client.isUnset(request.edition)) {
+            query["Edition"] = request.edition ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.failbackDetailShrink)) {
             query["FailbackDetail"] = request.failbackDetailShrink ?? "";
         }
@@ -1181,6 +1189,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func deleteBackupPlanWithOptions(_ request: DeleteBackupPlanRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DeleteBackupPlanResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.edition)) {
+            query["Edition"] = request.edition ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.planId)) {
             query["PlanId"] = request.planId ?? "";
         }
@@ -1632,6 +1643,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func describeBackupJobs2WithOptions(_ request: DescribeBackupJobs2Request, _ runtime: TeaUtils.RuntimeOptions) async throws -> DescribeBackupJobs2Response {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.edition)) {
+            query["Edition"] = request.edition ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.filters)) {
             query["Filters"] = request.filters ?? [];
         }
@@ -1675,6 +1689,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func describeBackupPlansWithOptions(_ request: DescribeBackupPlansRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DescribeBackupPlansResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.edition)) {
+            query["Edition"] = request.edition ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.filters)) {
             query["Filters"] = request.filters ?? [];
         }
@@ -2396,6 +2413,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func describeRestoreJobs2WithOptions(_ request: DescribeRestoreJobs2Request, _ runtime: TeaUtils.RuntimeOptions) async throws -> DescribeRestoreJobs2Response {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.edition)) {
+            query["Edition"] = request.edition ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.filters)) {
             query["Filters"] = request.filters ?? [];
         }
@@ -2666,6 +2686,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func disableBackupPlanWithOptions(_ request: DisableBackupPlanRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DisableBackupPlanResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.edition)) {
+            query["Edition"] = request.edition ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.planId)) {
             query["PlanId"] = request.planId ?? "";
         }
@@ -2743,6 +2766,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func enableBackupPlanWithOptions(_ request: EnableBackupPlanRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> EnableBackupPlanResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.edition)) {
+            query["Edition"] = request.edition ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.planId)) {
             query["PlanId"] = request.planId ?? "";
         }
@@ -2820,6 +2846,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func executeBackupPlanWithOptions(_ request: ExecuteBackupPlanRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ExecuteBackupPlanResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.edition)) {
+            query["Edition"] = request.edition ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.planId)) {
             query["PlanId"] = request.planId ?? "";
         }
@@ -3047,6 +3076,9 @@ open class Client : AlibabacloudOpenApi.Client {
             request.queryShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.query, "Query", "json")
         }
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.edition)) {
+            query["Edition"] = request.edition ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.limit)) {
             query["Limit"] = request.limit!;
         }
@@ -3268,6 +3300,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.detailShrink)) {
             query["Detail"] = request.detailShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.edition)) {
+            query["Edition"] = request.edition ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.keepLatestSnapshots)) {
             query["KeepLatestSnapshots"] = request.keepLatestSnapshots!;

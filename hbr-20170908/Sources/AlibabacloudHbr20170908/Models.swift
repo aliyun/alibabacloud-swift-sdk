@@ -442,6 +442,8 @@ public class AddContainerClusterResponse : Tea.TeaModel {
 }
 
 public class CancelBackupJobRequest : Tea.TeaModel {
+    public var edition: String?
+
     public var jobId: String?
 
     public var vaultId: String?
@@ -460,6 +462,9 @@ public class CancelBackupJobRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.edition != nil {
+            map["Edition"] = self.edition!
+        }
         if self.jobId != nil {
             map["JobId"] = self.jobId!
         }
@@ -471,6 +476,9 @@ public class CancelBackupJobRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["Edition"] as? String {
+            self.edition = value
+        }
         if let value = dict["JobId"] as? String {
             self.jobId = value
         }
@@ -586,6 +594,8 @@ public class CancelBackupJobResponse : Tea.TeaModel {
 }
 
 public class CancelRestoreJobRequest : Tea.TeaModel {
+    public var edition: String?
+
     public var restoreId: String?
 
     public var vaultId: String?
@@ -604,6 +614,9 @@ public class CancelRestoreJobRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.edition != nil {
+            map["Edition"] = self.edition!
+        }
         if self.restoreId != nil {
             map["RestoreId"] = self.restoreId!
         }
@@ -615,6 +628,9 @@ public class CancelRestoreJobRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["Edition"] as? String {
+            self.edition = value
+        }
         if let value = dict["RestoreId"] as? String {
             self.restoreId = value
         }
@@ -4790,6 +4806,8 @@ public class CreateRestoreJobRequest : Tea.TeaModel {
 
     public var crossAccountUserId: Int64?
 
+    public var edition: String?
+
     public var exclude: String?
 
     public var failbackDetail: [String: Any]?
@@ -4861,6 +4879,9 @@ public class CreateRestoreJobRequest : Tea.TeaModel {
         }
         if self.crossAccountUserId != nil {
             map["CrossAccountUserId"] = self.crossAccountUserId!
+        }
+        if self.edition != nil {
+            map["Edition"] = self.edition!
         }
         if self.exclude != nil {
             map["Exclude"] = self.exclude!
@@ -4948,6 +4969,9 @@ public class CreateRestoreJobRequest : Tea.TeaModel {
         if let value = dict["CrossAccountUserId"] as? Int64 {
             self.crossAccountUserId = value
         }
+        if let value = dict["Edition"] as? String {
+            self.edition = value
+        }
         if let value = dict["Exclude"] as? String {
             self.exclude = value
         }
@@ -5032,6 +5056,8 @@ public class CreateRestoreJobShrinkRequest : Tea.TeaModel {
 
     public var crossAccountUserId: Int64?
 
+    public var edition: String?
+
     public var exclude: String?
 
     public var failbackDetailShrink: String?
@@ -5102,6 +5128,9 @@ public class CreateRestoreJobShrinkRequest : Tea.TeaModel {
         }
         if self.crossAccountUserId != nil {
             map["CrossAccountUserId"] = self.crossAccountUserId!
+        }
+        if self.edition != nil {
+            map["Edition"] = self.edition!
         }
         if self.exclude != nil {
             map["Exclude"] = self.exclude!
@@ -5188,6 +5217,9 @@ public class CreateRestoreJobShrinkRequest : Tea.TeaModel {
         }
         if let value = dict["CrossAccountUserId"] as? Int64 {
             self.crossAccountUserId = value
+        }
+        if let value = dict["Edition"] as? String {
+            self.edition = value
         }
         if let value = dict["Exclude"] as? String {
             self.exclude = value
@@ -6272,6 +6304,8 @@ public class DeleteBackupClientResourceResponse : Tea.TeaModel {
 }
 
 public class DeleteBackupPlanRequest : Tea.TeaModel {
+    public var edition: String?
+
     public var planId: String?
 
     public var requireNoRunningJobs: Bool?
@@ -6294,6 +6328,9 @@ public class DeleteBackupPlanRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.edition != nil {
+            map["Edition"] = self.edition!
+        }
         if self.planId != nil {
             map["PlanId"] = self.planId!
         }
@@ -6311,6 +6348,9 @@ public class DeleteBackupPlanRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["Edition"] as? String {
+            self.edition = value
+        }
         if let value = dict["PlanId"] as? String {
             self.planId = value
         }
@@ -8813,6 +8853,8 @@ public class DescribeBackupJobs2Request : Tea.TeaModel {
             }
         }
     }
+    public var edition: String?
+
     public var filters: [DescribeBackupJobs2Request.Filters]?
 
     public var pageNumber: Int32?
@@ -8837,6 +8879,9 @@ public class DescribeBackupJobs2Request : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.edition != nil {
+            map["Edition"] = self.edition!
+        }
         if self.filters != nil {
             var tmp : [Any] = []
             for k in self.filters! {
@@ -8861,6 +8906,9 @@ public class DescribeBackupJobs2Request : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["Edition"] as? String {
+            self.edition = value
+        }
         if let value = dict["Filters"] as? [Any?] {
             var tmp : [DescribeBackupJobs2Request.Filters] = []
             for v in value {
@@ -9812,6 +9860,8 @@ public class DescribeBackupPlansRequest : Tea.TeaModel {
             }
         }
     }
+    public var edition: String?
+
     public var filters: [DescribeBackupPlansRequest.Filters]?
 
     public var pageNumber: Int32?
@@ -9834,6 +9884,9 @@ public class DescribeBackupPlansRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.edition != nil {
+            map["Edition"] = self.edition!
+        }
         if self.filters != nil {
             var tmp : [Any] = []
             for k in self.filters! {
@@ -9855,6 +9908,9 @@ public class DescribeBackupPlansRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["Edition"] as? String {
+            self.edition = value
+        }
         if let value = dict["Filters"] as? [Any?] {
             var tmp : [DescribeBackupPlansRequest.Filters] = []
             for v in value {
@@ -10404,6 +10460,8 @@ public class DescribeBackupPlansResponseBody : Tea.TeaModel {
 
             public var latestExecuteJobId: String?
 
+            public var latestFinishJobId: String?
+
             public var options: String?
 
             public var otsDetail: DescribeBackupPlansResponseBody.BackupPlans.BackupPlan.OtsDetail?
@@ -10537,6 +10595,9 @@ public class DescribeBackupPlansResponseBody : Tea.TeaModel {
                 }
                 if self.latestExecuteJobId != nil {
                     map["LatestExecuteJobId"] = self.latestExecuteJobId!
+                }
+                if self.latestFinishJobId != nil {
+                    map["LatestFinishJobId"] = self.latestFinishJobId!
                 }
                 if self.options != nil {
                     map["Options"] = self.options!
@@ -10673,6 +10734,9 @@ public class DescribeBackupPlansResponseBody : Tea.TeaModel {
                 }
                 if let value = dict["LatestExecuteJobId"] as? String {
                     self.latestExecuteJobId = value
+                }
+                if let value = dict["LatestFinishJobId"] as? String {
+                    self.latestFinishJobId = value
                 }
                 if let value = dict["Options"] as? String {
                     self.options = value
@@ -16943,6 +17007,8 @@ public class DescribeRestoreJobs2Request : Tea.TeaModel {
             }
         }
     }
+    public var edition: String?
+
     public var filters: [DescribeRestoreJobs2Request.Filters]?
 
     public var pageNumber: Int32?
@@ -16965,6 +17031,9 @@ public class DescribeRestoreJobs2Request : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.edition != nil {
+            map["Edition"] = self.edition!
+        }
         if self.filters != nil {
             var tmp : [Any] = []
             for k in self.filters! {
@@ -16986,6 +17055,9 @@ public class DescribeRestoreJobs2Request : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["Edition"] as? String {
+            self.edition = value
+        }
         if let value = dict["Filters"] as? [Any?] {
             var tmp : [DescribeRestoreJobs2Request.Filters] = []
             for v in value {
@@ -17172,6 +17244,8 @@ public class DescribeRestoreJobs2ResponseBody : Tea.TeaModel {
 
             public var snapshotId: String?
 
+            public var sourceInstanceId: String?
+
             public var sourceType: String?
 
             public var speed: Int64?
@@ -17312,6 +17386,9 @@ public class DescribeRestoreJobs2ResponseBody : Tea.TeaModel {
                 }
                 if self.snapshotId != nil {
                     map["SnapshotId"] = self.snapshotId!
+                }
+                if self.sourceInstanceId != nil {
+                    map["SourceInstanceId"] = self.sourceInstanceId!
                 }
                 if self.sourceType != nil {
                     map["SourceType"] = self.sourceType!
@@ -17465,6 +17542,9 @@ public class DescribeRestoreJobs2ResponseBody : Tea.TeaModel {
                 }
                 if let value = dict["SnapshotId"] as? String {
                     self.snapshotId = value
+                }
+                if let value = dict["SourceInstanceId"] as? String {
+                    self.sourceInstanceId = value
                 }
                 if let value = dict["SourceType"] as? String {
                     self.sourceType = value
@@ -20051,6 +20131,8 @@ public class DetachNasFileSystemResponse : Tea.TeaModel {
 }
 
 public class DisableBackupPlanRequest : Tea.TeaModel {
+    public var edition: String?
+
     public var planId: String?
 
     public var sourceType: String?
@@ -20071,6 +20153,9 @@ public class DisableBackupPlanRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.edition != nil {
+            map["Edition"] = self.edition!
+        }
         if self.planId != nil {
             map["PlanId"] = self.planId!
         }
@@ -20085,6 +20170,9 @@ public class DisableBackupPlanRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["Edition"] as? String {
+            self.edition = value
+        }
         if let value = dict["PlanId"] as? String {
             self.planId = value
         }
@@ -20363,6 +20451,8 @@ public class DisableHanaBackupPlanResponse : Tea.TeaModel {
 }
 
 public class EnableBackupPlanRequest : Tea.TeaModel {
+    public var edition: String?
+
     public var planId: String?
 
     public var sourceType: String?
@@ -20383,6 +20473,9 @@ public class EnableBackupPlanRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.edition != nil {
+            map["Edition"] = self.edition!
+        }
         if self.planId != nil {
             map["PlanId"] = self.planId!
         }
@@ -20397,6 +20490,9 @@ public class EnableBackupPlanRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["Edition"] as? String {
+            self.edition = value
+        }
         if let value = dict["PlanId"] as? String {
             self.planId = value
         }
@@ -20675,6 +20771,8 @@ public class EnableHanaBackupPlanResponse : Tea.TeaModel {
 }
 
 public class ExecuteBackupPlanRequest : Tea.TeaModel {
+    public var edition: String?
+
     public var planId: String?
 
     public var ruleId: String?
@@ -20697,6 +20795,9 @@ public class ExecuteBackupPlanRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.edition != nil {
+            map["Edition"] = self.edition!
+        }
         if self.planId != nil {
             map["PlanId"] = self.planId!
         }
@@ -20714,6 +20815,9 @@ public class ExecuteBackupPlanRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["Edition"] as? String {
+            self.edition = value
+        }
         if let value = dict["PlanId"] as? String {
             self.planId = value
         }
@@ -21703,6 +21807,8 @@ public class OpenHbrServiceResponse : Tea.TeaModel {
 }
 
 public class SearchHistoricalSnapshotsRequest : Tea.TeaModel {
+    public var edition: String?
+
     public var limit: Int32?
 
     public var nextToken: String?
@@ -21729,6 +21835,9 @@ public class SearchHistoricalSnapshotsRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.edition != nil {
+            map["Edition"] = self.edition!
+        }
         if self.limit != nil {
             map["Limit"] = self.limit!
         }
@@ -21752,6 +21861,9 @@ public class SearchHistoricalSnapshotsRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["Edition"] as? String {
+            self.edition = value
+        }
         if let value = dict["Limit"] as? Int32 {
             self.limit = value
         }
@@ -21774,6 +21886,8 @@ public class SearchHistoricalSnapshotsRequest : Tea.TeaModel {
 }
 
 public class SearchHistoricalSnapshotsShrinkRequest : Tea.TeaModel {
+    public var edition: String?
+
     public var limit: Int32?
 
     public var nextToken: String?
@@ -21800,6 +21914,9 @@ public class SearchHistoricalSnapshotsShrinkRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.edition != nil {
+            map["Edition"] = self.edition!
+        }
         if self.limit != nil {
             map["Limit"] = self.limit!
         }
@@ -21823,6 +21940,9 @@ public class SearchHistoricalSnapshotsShrinkRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["Edition"] as? String {
+            self.edition = value
+        }
         if let value = dict["Limit"] as? Int32 {
             self.limit = value
         }
@@ -21926,6 +22046,8 @@ public class SearchHistoricalSnapshotsResponseBody : Tea.TeaModel {
             public var paths: SearchHistoricalSnapshotsResponseBody.Snapshots.Snapshot.Paths?
 
             public var prefix_: String?
+
+            public var protectedDataSize: Int64?
 
             public var rangeEnd: Int64?
 
@@ -22046,6 +22168,9 @@ public class SearchHistoricalSnapshotsResponseBody : Tea.TeaModel {
                 }
                 if self.prefix_ != nil {
                     map["Prefix"] = self.prefix_!
+                }
+                if self.protectedDataSize != nil {
+                    map["ProtectedDataSize"] = self.protectedDataSize!
                 }
                 if self.rangeEnd != nil {
                     map["RangeEnd"] = self.rangeEnd!
@@ -22173,6 +22298,9 @@ public class SearchHistoricalSnapshotsResponseBody : Tea.TeaModel {
                 }
                 if let value = dict["Prefix"] as? String {
                     self.prefix_ = value
+                }
+                if let value = dict["ProtectedDataSize"] as? Int64 {
+                    self.protectedDataSize = value
                 }
                 if let value = dict["RangeEnd"] as? Int64 {
                     self.rangeEnd = value
@@ -23281,6 +23409,8 @@ public class UpdateBackupPlanRequest : Tea.TeaModel {
 
     public var detail: [String: Any]?
 
+    public var edition: String?
+
     public var exclude: String?
 
     public var include: String?
@@ -23333,6 +23463,9 @@ public class UpdateBackupPlanRequest : Tea.TeaModel {
         }
         if self.detail != nil {
             map["Detail"] = self.detail!
+        }
+        if self.edition != nil {
+            map["Edition"] = self.edition!
         }
         if self.exclude != nil {
             map["Exclude"] = self.exclude!
@@ -23396,6 +23529,9 @@ public class UpdateBackupPlanRequest : Tea.TeaModel {
         }
         if let value = dict["Detail"] as? [String: Any] {
             self.detail = value
+        }
+        if let value = dict["Edition"] as? String {
+            self.edition = value
         }
         if let value = dict["Exclude"] as? String {
             self.exclude = value
@@ -23551,6 +23687,8 @@ public class UpdateBackupPlanShrinkRequest : Tea.TeaModel {
 
     public var detailShrink: String?
 
+    public var edition: String?
+
     public var exclude: String?
 
     public var include: String?
@@ -23602,6 +23740,9 @@ public class UpdateBackupPlanShrinkRequest : Tea.TeaModel {
         }
         if self.detailShrink != nil {
             map["Detail"] = self.detailShrink!
+        }
+        if self.edition != nil {
+            map["Edition"] = self.edition!
         }
         if self.exclude != nil {
             map["Exclude"] = self.exclude!
@@ -23665,6 +23806,9 @@ public class UpdateBackupPlanShrinkRequest : Tea.TeaModel {
         }
         if let value = dict["Detail"] as? String {
             self.detailShrink = value
+        }
+        if let value = dict["Edition"] as? String {
+            self.edition = value
         }
         if let value = dict["Exclude"] as? String {
             self.exclude = value
