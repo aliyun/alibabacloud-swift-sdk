@@ -952,8 +952,16 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func createDocumentCollectionWithOptions(_ request: CreateDocumentCollectionRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> CreateDocumentCollectionResponse {
-        try TeaUtils.Client.validateModel(request)
+    public func createDocumentCollectionWithOptions(_ tmpReq: CreateDocumentCollectionRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> CreateDocumentCollectionResponse {
+        try TeaUtils.Client.validateModel(tmpReq)
+        var request: CreateDocumentCollectionShrinkRequest = CreateDocumentCollectionShrinkRequest([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.entityTypes)) {
+            request.entityTypesShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.entityTypes, "EntityTypes", "json")
+        }
+        if (!TeaUtils.Client.isUnset(tmpReq.relationshipTypes)) {
+            request.relationshipTypesShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.relationshipTypes, "RelationshipTypes", "json")
+        }
         var query: [String: Any] = [:]
         if (!TeaUtils.Client.isUnset(request.collection)) {
             query["Collection"] = request.collection ?? "";
@@ -967,6 +975,12 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.embeddingModel)) {
             query["EmbeddingModel"] = request.embeddingModel ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.enableGraph)) {
+            query["EnableGraph"] = request.enableGraph!;
+        }
+        if (!TeaUtils.Client.isUnset(request.entityTypesShrink)) {
+            query["EntityTypes"] = request.entityTypesShrink ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.externalStorage)) {
             query["ExternalStorage"] = request.externalStorage!;
         }
@@ -978,6 +992,12 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.hnswM)) {
             query["HnswM"] = request.hnswM!;
+        }
+        if (!TeaUtils.Client.isUnset(request.LLMModel)) {
+            query["LLMModel"] = request.LLMModel ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.language)) {
+            query["Language"] = request.language ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.managerAccount)) {
             query["ManagerAccount"] = request.managerAccount ?? "";
@@ -1008,6 +1028,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.regionId)) {
             query["RegionId"] = request.regionId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.relationshipTypesShrink)) {
+            query["RelationshipTypes"] = request.relationshipTypesShrink ?? "";
         }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "query": AlibabaCloudOpenApiUtil.Client.query(query)
@@ -8520,6 +8543,9 @@ open class Client : AlibabacloudOpenApi.Client {
         try TeaUtils.Client.validateModel(tmpReq)
         var request: QueryContentShrinkRequest = QueryContentShrinkRequest([:])
         AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.graphSearchArgs)) {
+            request.graphSearchArgsShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.graphSearchArgs, "GraphSearchArgs", "json")
+        }
         if (!TeaUtils.Client.isUnset(tmpReq.hybridSearchArgs)) {
             request.hybridSearchArgsShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.hybridSearchArgs, "HybridSearchArgs", "json")
         }
@@ -8541,6 +8567,12 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.filter)) {
             query["Filter"] = request.filter ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.graphEnhance)) {
+            query["GraphEnhance"] = request.graphEnhance!;
+        }
+        if (!TeaUtils.Client.isUnset(request.graphSearchArgsShrink)) {
+            query["GraphSearchArgs"] = request.graphSearchArgsShrink ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.hybridSearch)) {
             query["HybridSearch"] = request.hybridSearch ?? "";
