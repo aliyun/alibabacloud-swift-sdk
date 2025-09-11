@@ -573,6 +573,8 @@ public class KubeletConfig : Tea.TeaModel {
 
     public var serializeImagePulls: Bool?
 
+    public var serverTLSBootstrap: Bool?
+
     public var systemReserved: [String: Any]?
 
     public var topologyManagerPolicy: String?
@@ -682,6 +684,9 @@ public class KubeletConfig : Tea.TeaModel {
         if self.serializeImagePulls != nil {
             map["serializeImagePulls"] = self.serializeImagePulls!
         }
+        if self.serverTLSBootstrap != nil {
+            map["serverTLSBootstrap"] = self.serverTLSBootstrap!
+        }
         if self.systemReserved != nil {
             map["systemReserved"] = self.systemReserved!
         }
@@ -789,6 +794,9 @@ public class KubeletConfig : Tea.TeaModel {
         }
         if let value = dict["serializeImagePulls"] as? Bool {
             self.serializeImagePulls = value
+        }
+        if let value = dict["serverTLSBootstrap"] as? Bool {
+            self.serverTLSBootstrap = value
         }
         if let value = dict["systemReserved"] as? [String: Any] {
             self.systemReserved = value
