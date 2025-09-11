@@ -2683,6 +2683,8 @@ public class CreateSmsTemplateRequest : Tea.TeaModel {
 
     public var templateType: Int32?
 
+    public var trafficDriving: String?
+
     public override init() {
         super.init()
     }
@@ -2733,6 +2735,9 @@ public class CreateSmsTemplateRequest : Tea.TeaModel {
         if self.templateType != nil {
             map["TemplateType"] = self.templateType!
         }
+        if self.trafficDriving != nil {
+            map["TrafficDriving"] = self.trafficDriving!
+        }
         return map
     }
 
@@ -2774,6 +2779,9 @@ public class CreateSmsTemplateRequest : Tea.TeaModel {
         if let value = dict["TemplateType"] as? Int32 {
             self.templateType = value
         }
+        if let value = dict["TrafficDriving"] as? String {
+            self.trafficDriving = value
+        }
     }
 }
 
@@ -2801,6 +2809,8 @@ public class CreateSmsTemplateShrinkRequest : Tea.TeaModel {
     public var templateRule: String?
 
     public var templateType: Int32?
+
+    public var trafficDriving: String?
 
     public override init() {
         super.init()
@@ -2852,6 +2862,9 @@ public class CreateSmsTemplateShrinkRequest : Tea.TeaModel {
         if self.templateType != nil {
             map["TemplateType"] = self.templateType!
         }
+        if self.trafficDriving != nil {
+            map["TrafficDriving"] = self.trafficDriving!
+        }
         return map
     }
 
@@ -2892,6 +2905,9 @@ public class CreateSmsTemplateShrinkRequest : Tea.TeaModel {
         }
         if let value = dict["TemplateType"] as? Int32 {
             self.templateType = value
+        }
+        if let value = dict["TrafficDriving"] as? String {
+            self.trafficDriving = value
         }
     }
 }
@@ -11479,6 +11495,8 @@ public class QuerySmsTemplateListResponseBody : Tea.TeaModel {
 
         public var reason: QuerySmsTemplateListResponseBody.SmsTemplateList.Reason?
 
+        public var signatureName: String?
+
         public var templateCode: String?
 
         public var templateContent: String?
@@ -11517,6 +11535,9 @@ public class QuerySmsTemplateListResponseBody : Tea.TeaModel {
             if self.reason != nil {
                 map["Reason"] = self.reason?.toMap()
             }
+            if self.signatureName != nil {
+                map["SignatureName"] = self.signatureName!
+            }
             if self.templateCode != nil {
                 map["TemplateCode"] = self.templateCode!
             }
@@ -11550,6 +11571,9 @@ public class QuerySmsTemplateListResponseBody : Tea.TeaModel {
                 var model = QuerySmsTemplateListResponseBody.SmsTemplateList.Reason()
                 model.fromMap(value)
                 self.reason = model
+            }
+            if let value = dict["SignatureName"] as? String {
+                self.signatureName = value
             }
             if let value = dict["TemplateCode"] as? String {
                 self.templateCode = value
@@ -15437,6 +15461,8 @@ public class UpdateSmsTemplateRequest : Tea.TeaModel {
 
     public var templateType: Int32?
 
+    public var trafficDriving: String?
+
     public override init() {
         super.init()
     }
@@ -15490,6 +15516,9 @@ public class UpdateSmsTemplateRequest : Tea.TeaModel {
         if self.templateType != nil {
             map["TemplateType"] = self.templateType!
         }
+        if self.trafficDriving != nil {
+            map["TrafficDriving"] = self.trafficDriving!
+        }
         return map
     }
 
@@ -15534,6 +15563,9 @@ public class UpdateSmsTemplateRequest : Tea.TeaModel {
         if let value = dict["TemplateType"] as? Int32 {
             self.templateType = value
         }
+        if let value = dict["TrafficDriving"] as? String {
+            self.trafficDriving = value
+        }
     }
 }
 
@@ -15563,6 +15595,8 @@ public class UpdateSmsTemplateShrinkRequest : Tea.TeaModel {
     public var templateRule: String?
 
     public var templateType: Int32?
+
+    public var trafficDriving: String?
 
     public override init() {
         super.init()
@@ -15617,6 +15651,9 @@ public class UpdateSmsTemplateShrinkRequest : Tea.TeaModel {
         if self.templateType != nil {
             map["TemplateType"] = self.templateType!
         }
+        if self.trafficDriving != nil {
+            map["TrafficDriving"] = self.trafficDriving!
+        }
         return map
     }
 
@@ -15660,6 +15697,9 @@ public class UpdateSmsTemplateShrinkRequest : Tea.TeaModel {
         }
         if let value = dict["TemplateType"] as? Int32 {
             self.templateType = value
+        }
+        if let value = dict["TrafficDriving"] as? String {
+            self.trafficDriving = value
         }
     }
 }
