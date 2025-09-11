@@ -473,11 +473,17 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.bizType)) {
             query["BizType"] = request.bizType ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.excludeAttachedLoginPolicyGroups)) {
+            query["ExcludeAttachedLoginPolicyGroups"] = request.excludeAttachedLoginPolicyGroups!;
+        }
         if (!TeaUtils.Client.isUnset(request.groupId)) {
             query["GroupId"] = request.groupId ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.groupName)) {
             query["GroupName"] = request.groupName ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.loginPolicyId)) {
+            query["LoginPolicyId"] = request.loginPolicyId ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.pageNumber)) {
             query["PageNumber"] = request.pageNumber!;

@@ -2736,9 +2736,13 @@ public class DescribeGroupUserResponse : Tea.TeaModel {
 public class DescribeGroupsRequest : Tea.TeaModel {
     public var bizType: String?
 
+    public var excludeAttachedLoginPolicyGroups: Bool?
+
     public var groupId: String?
 
     public var groupName: String?
+
+    public var loginPolicyId: String?
 
     public var pageNumber: Int32?
 
@@ -2765,11 +2769,17 @@ public class DescribeGroupsRequest : Tea.TeaModel {
         if self.bizType != nil {
             map["BizType"] = self.bizType!
         }
+        if self.excludeAttachedLoginPolicyGroups != nil {
+            map["ExcludeAttachedLoginPolicyGroups"] = self.excludeAttachedLoginPolicyGroups!
+        }
         if self.groupId != nil {
             map["GroupId"] = self.groupId!
         }
         if self.groupName != nil {
             map["GroupName"] = self.groupName!
+        }
+        if self.loginPolicyId != nil {
+            map["LoginPolicyId"] = self.loginPolicyId!
         }
         if self.pageNumber != nil {
             map["PageNumber"] = self.pageNumber!
@@ -2791,11 +2801,17 @@ public class DescribeGroupsRequest : Tea.TeaModel {
         if let value = dict["BizType"] as? String {
             self.bizType = value
         }
+        if let value = dict["ExcludeAttachedLoginPolicyGroups"] as? Bool {
+            self.excludeAttachedLoginPolicyGroups = value
+        }
         if let value = dict["GroupId"] as? String {
             self.groupId = value
         }
         if let value = dict["GroupName"] as? String {
             self.groupName = value
+        }
+        if let value = dict["LoginPolicyId"] as? String {
+            self.loginPolicyId = value
         }
         if let value = dict["PageNumber"] as? Int32 {
             self.pageNumber = value
@@ -2814,6 +2830,46 @@ public class DescribeGroupsRequest : Tea.TeaModel {
 
 public class DescribeGroupsResponseBody : Tea.TeaModel {
     public class Groups : Tea.TeaModel {
+        public class AttachedLoginPolicy : Tea.TeaModel {
+            public var name: String?
+
+            public var policyId: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.name != nil {
+                    map["Name"] = self.name!
+                }
+                if self.policyId != nil {
+                    map["PolicyId"] = self.policyId!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["Name"] as? String {
+                    self.name = value
+                }
+                if let value = dict["PolicyId"] as? String {
+                    self.policyId = value
+                }
+            }
+        }
+        public var attachedLoginPolicy: DescribeGroupsResponseBody.Groups.AttachedLoginPolicy?
+
         public var authedResources: [String: String]?
 
         public var createTime: String?
@@ -2838,10 +2894,14 @@ public class DescribeGroupsResponseBody : Tea.TeaModel {
         }
 
         public override func validate() throws -> Void {
+            try self.attachedLoginPolicy?.validate()
         }
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
+            if self.attachedLoginPolicy != nil {
+                map["AttachedLoginPolicy"] = self.attachedLoginPolicy?.toMap()
+            }
             if self.authedResources != nil {
                 map["AuthedResources"] = self.authedResources!
             }
@@ -2868,6 +2928,11 @@ public class DescribeGroupsResponseBody : Tea.TeaModel {
 
         public override func fromMap(_ dict: [String: Any?]?) -> Void {
             guard let dict else { return }
+            if let value = dict["AttachedLoginPolicy"] as? [String: Any?] {
+                var model = DescribeGroupsResponseBody.Groups.AttachedLoginPolicy()
+                model.fromMap(value)
+                self.attachedLoginPolicy = model
+            }
             if let value = dict["AuthedResources"] as? [String: String] {
                 self.authedResources = value
             }
