@@ -9127,6 +9127,8 @@ public class DescribeBackupsResponseBody : Tea.TeaModel {
 
             public var backupStartTime: String?
 
+            public var backupStatus: String?
+
             public var backupType: String?
 
             public var DBClusterId: String?
@@ -9163,6 +9165,9 @@ public class DescribeBackupsResponseBody : Tea.TeaModel {
                 if self.backupStartTime != nil {
                     map["BackupStartTime"] = self.backupStartTime!
                 }
+                if self.backupStatus != nil {
+                    map["BackupStatus"] = self.backupStatus!
+                }
                 if self.backupType != nil {
                     map["BackupType"] = self.backupType!
                 }
@@ -9191,6 +9196,9 @@ public class DescribeBackupsResponseBody : Tea.TeaModel {
                 }
                 if let value = dict["BackupStartTime"] as? String {
                     self.backupStartTime = value
+                }
+                if let value = dict["BackupStatus"] as? String {
+                    self.backupStatus = value
                 }
                 if let value = dict["BackupType"] as? String {
                     self.backupType = value
