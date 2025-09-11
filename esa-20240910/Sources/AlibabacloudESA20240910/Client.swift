@@ -2204,6 +2204,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.description_)) {
             body["Description"] = request.description_ ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.hasAssets)) {
+            body["HasAssets"] = request.hasAssets!;
+        }
         if (!TeaUtils.Client.isUnset(request.name)) {
             body["Name"] = request.name ?? "";
         }
@@ -2229,6 +2232,51 @@ open class Client : AlibabacloudOpenApi.Client {
     public func createRoutine(_ request: CreateRoutineRequest) async throws -> CreateRoutineResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         return try await createRoutineWithOptions(request as! CreateRoutineRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func createRoutineCodeDeploymentWithOptions(_ tmpReq: CreateRoutineCodeDeploymentRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> CreateRoutineCodeDeploymentResponse {
+        try TeaUtils.Client.validateModel(tmpReq)
+        var request: CreateRoutineCodeDeploymentShrinkRequest = CreateRoutineCodeDeploymentShrinkRequest([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.codeVersions)) {
+            request.codeVersionsShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.codeVersions, "CodeVersions", "json")
+        }
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.codeVersionsShrink)) {
+            body["CodeVersions"] = request.codeVersionsShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.env)) {
+            body["Env"] = request.env ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.name)) {
+            body["Name"] = request.name ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.strategy)) {
+            body["Strategy"] = request.strategy ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "CreateRoutineCodeDeployment",
+            "version": "2024-09-10",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(CreateRoutineCodeDeploymentResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func createRoutineCodeDeployment(_ request: CreateRoutineCodeDeploymentRequest) async throws -> CreateRoutineCodeDeploymentResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await createRoutineCodeDeploymentWithOptions(request as! CreateRoutineCodeDeploymentRequest, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -2318,6 +2366,54 @@ open class Client : AlibabacloudOpenApi.Client {
     public func createRoutineRoute(_ request: CreateRoutineRouteRequest) async throws -> CreateRoutineRouteResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         return try await createRoutineRouteWithOptions(request as! CreateRoutineRouteRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func createRoutineWithAssetsCodeVersionWithOptions(_ tmpReq: CreateRoutineWithAssetsCodeVersionRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> CreateRoutineWithAssetsCodeVersionResponse {
+        try TeaUtils.Client.validateModel(tmpReq)
+        var request: CreateRoutineWithAssetsCodeVersionShrinkRequest = CreateRoutineWithAssetsCodeVersionShrinkRequest([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.confOptions)) {
+            request.confOptionsShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.confOptions, "ConfOptions", "json")
+        }
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.buildId)) {
+            body["BuildId"] = request.buildId!;
+        }
+        if (!TeaUtils.Client.isUnset(request.codeDescription)) {
+            body["CodeDescription"] = request.codeDescription ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.confOptionsShrink)) {
+            body["ConfOptions"] = request.confOptionsShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.extraInfo)) {
+            body["ExtraInfo"] = request.extraInfo ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.name)) {
+            body["Name"] = request.name ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "CreateRoutineWithAssetsCodeVersion",
+            "version": "2024-09-10",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(CreateRoutineWithAssetsCodeVersionResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func createRoutineWithAssetsCodeVersion(_ request: CreateRoutineWithAssetsCodeVersionRequest) async throws -> CreateRoutineWithAssetsCodeVersionResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await createRoutineWithAssetsCodeVersionWithOptions(request as! CreateRoutineWithAssetsCodeVersionRequest, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
