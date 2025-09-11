@@ -1131,6 +1131,54 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func createS3IngestionWithOptions(_ project: String, _ request: CreateS3IngestionRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> CreateS3IngestionResponse {
+        try TeaUtils.Client.validateModel(request)
+        var hostMap: [String: String] = [:]
+        hostMap["project"] = project as! String;
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.configuration)) {
+            body["configuration"] = request.configuration!;
+        }
+        if (!TeaUtils.Client.isUnset(request.description_)) {
+            body["description"] = request.description_ ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.displayName)) {
+            body["displayName"] = request.displayName ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.name)) {
+            body["name"] = request.name ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.schedule)) {
+            body["schedule"] = request.schedule!;
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "hostMap": hostMap as! [String: String],
+            "headers": headers as! [String: String],
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "CreateS3Ingestion",
+            "version": "2020-12-30",
+            "protocol": "HTTPS",
+            "pathname": "/s3ingestions",
+            "method": "POST",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "none"
+        ])
+        var tmp: [String: Any] = try await execute(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(CreateS3IngestionResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func createS3Ingestion(_ project: String, _ request: CreateS3IngestionRequest) async throws -> CreateS3IngestionResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await createS3IngestionWithOptions(project as! String, request as! CreateS3IngestionRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func createSavedSearchWithOptions(_ project: String, _ request: CreateSavedSearchRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> CreateSavedSearchResponse {
         try TeaUtils.Client.validateModel(request)
         var hostMap: [String: String] = [:]
@@ -2132,6 +2180,36 @@ open class Client : AlibabacloudOpenApi.Client {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         var headers: [String: String] = [:]
         return try await deleteProjectPolicyWithOptions(project as! String, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func deleteS3IngestionWithOptions(_ project: String, _ s3IngestionName: String, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> DeleteS3IngestionResponse {
+        var hostMap: [String: String] = [:]
+        hostMap["project"] = project as! String;
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "hostMap": hostMap as! [String: String],
+            "headers": headers as! [String: String]
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "DeleteS3Ingestion",
+            "version": "2020-12-30",
+            "protocol": "HTTPS",
+            "pathname": "/s3ingestions/" + (s3IngestionName as! String),
+            "method": "DELETE",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "none"
+        ])
+        var tmp: [String: Any] = try await execute(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(DeleteS3IngestionResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func deleteS3Ingestion(_ project: String, _ s3IngestionName: String) async throws -> DeleteS3IngestionResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await deleteS3IngestionWithOptions(project as! String, s3IngestionName as! String, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -3627,6 +3705,36 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getS3IngestionWithOptions(_ project: String, _ s3IngestionName: String, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> GetS3IngestionResponse {
+        var hostMap: [String: String] = [:]
+        hostMap["project"] = project as! String;
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "hostMap": hostMap as! [String: String],
+            "headers": headers as! [String: String]
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "GetS3Ingestion",
+            "version": "2020-12-30",
+            "protocol": "HTTPS",
+            "pathname": "/s3ingestions/" + (s3IngestionName as! String),
+            "method": "GET",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await execute(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(GetS3IngestionResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getS3Ingestion(_ project: String, _ s3IngestionName: String) async throws -> GetS3IngestionResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await getS3IngestionWithOptions(project as! String, s3IngestionName as! String, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func getSavedSearchWithOptions(_ project: String, _ savedsearchName: String, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> GetSavedSearchResponse {
         var hostMap: [String: String] = [:]
         hostMap["project"] = project as! String;
@@ -4847,6 +4955,48 @@ open class Client : AlibabacloudOpenApi.Client {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         var headers: [String: String] = [:]
         return try await listProjectWithOptions(request as! ListProjectRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func listS3IngestionsWithOptions(_ project: String, _ request: ListS3IngestionsRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> ListS3IngestionsResponse {
+        try TeaUtils.Client.validateModel(request)
+        var hostMap: [String: String] = [:]
+        hostMap["project"] = project as! String;
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.logstore)) {
+            query["logstore"] = request.logstore ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.offset)) {
+            query["offset"] = request.offset ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.size)) {
+            query["size"] = request.size ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "hostMap": hostMap as! [String: String],
+            "headers": headers as! [String: String],
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "ListS3Ingestions",
+            "version": "2020-12-30",
+            "protocol": "HTTPS",
+            "pathname": "/s3ingestions",
+            "method": "GET",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await execute(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(ListS3IngestionsResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func listS3Ingestions(_ project: String, _ request: ListS3IngestionsRequest) async throws -> ListS3IngestionsResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await listS3IngestionsWithOptions(project as! String, request as! ListS3IngestionsRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
