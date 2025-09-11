@@ -1556,6 +1556,8 @@ public class DescribeAuditLogsResponseBody : Tea.TeaModel {
 
         public var databaseName: String?
 
+        public var dbType: String?
+
         public var effectRow: Int64?
 
         public var executeStatus: Int32?
@@ -1640,6 +1642,9 @@ public class DescribeAuditLogsResponseBody : Tea.TeaModel {
             }
             if self.databaseName != nil {
                 map["DatabaseName"] = self.databaseName!
+            }
+            if self.dbType != nil {
+                map["DbType"] = self.dbType!
             }
             if self.effectRow != nil {
                 map["EffectRow"] = self.effectRow!
@@ -1741,6 +1746,9 @@ public class DescribeAuditLogsResponseBody : Tea.TeaModel {
             }
             if let value = dict["DatabaseName"] as? String {
                 self.databaseName = value
+            }
+            if let value = dict["DbType"] as? String {
+                self.dbType = value
             }
             if let value = dict["EffectRow"] as? Int64 {
                 self.effectRow = value
