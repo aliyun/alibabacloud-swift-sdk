@@ -465,6 +465,178 @@ public class ApplyDataFlowAutoRefreshResponse : Tea.TeaModel {
     }
 }
 
+public class AttachVscToFilesystemsRequest : Tea.TeaModel {
+    public class ResourceIds : Tea.TeaModel {
+        public var fileSystemId: String?
+
+        public var vscId: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.fileSystemId != nil {
+                map["FileSystemId"] = self.fileSystemId!
+            }
+            if self.vscId != nil {
+                map["VscId"] = self.vscId!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["FileSystemId"] as? String {
+                self.fileSystemId = value
+            }
+            if let value = dict["VscId"] as? String {
+                self.vscId = value
+            }
+        }
+    }
+    public var clientToken: String?
+
+    public var resourceIds: [AttachVscToFilesystemsRequest.ResourceIds]?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.clientToken != nil {
+            map["ClientToken"] = self.clientToken!
+        }
+        if self.resourceIds != nil {
+            var tmp : [Any] = []
+            for k in self.resourceIds! {
+                tmp.append(k.toMap())
+            }
+            map["ResourceIds"] = tmp
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["ClientToken"] as? String {
+            self.clientToken = value
+        }
+        if let value = dict["ResourceIds"] as? [Any?] {
+            var tmp : [AttachVscToFilesystemsRequest.ResourceIds] = []
+            for v in value {
+                if v != nil {
+                    var model = AttachVscToFilesystemsRequest.ResourceIds()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.resourceIds = tmp
+        }
+    }
+}
+
+public class AttachVscToFilesystemsResponseBody : Tea.TeaModel {
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+    }
+}
+
+public class AttachVscToFilesystemsResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: AttachVscToFilesystemsResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = AttachVscToFilesystemsResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
 public class CancelAutoSnapshotPolicyRequest : Tea.TeaModel {
     public var fileSystemIds: String?
 
@@ -9876,6 +10048,8 @@ public class DescribeDataFlowTasksRequest : Tea.TeaModel {
 
     public var nextToken: String?
 
+    public var withReports: Bool?
+
     public override init() {
         super.init()
     }
@@ -9906,6 +10080,9 @@ public class DescribeDataFlowTasksRequest : Tea.TeaModel {
         if self.nextToken != nil {
             map["NextToken"] = self.nextToken!
         }
+        if self.withReports != nil {
+            map["WithReports"] = self.withReports!
+        }
         return map
     }
 
@@ -9932,6 +10109,9 @@ public class DescribeDataFlowTasksRequest : Tea.TeaModel {
         }
         if let value = dict["NextToken"] as? String {
             self.nextToken = value
+        }
+        if let value = dict["WithReports"] as? Bool {
+            self.withReports = value
         }
     }
 }
@@ -13483,6 +13663,311 @@ public class DescribeFilesetsResponse : Tea.TeaModel {
         }
         if let value = dict["body"] as? [String: Any?] {
             var model = DescribeFilesetsResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
+public class DescribeFilesystemsVscAttachInfoRequest : Tea.TeaModel {
+    public class ResourceIds : Tea.TeaModel {
+        public var fileSystemId: String?
+
+        public var vscId: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.fileSystemId != nil {
+                map["FileSystemId"] = self.fileSystemId!
+            }
+            if self.vscId != nil {
+                map["VscId"] = self.vscId!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["FileSystemId"] as? String {
+                self.fileSystemId = value
+            }
+            if let value = dict["VscId"] as? String {
+                self.vscId = value
+            }
+        }
+    }
+    public var maxResults: Int32?
+
+    public var nextToken: String?
+
+    public var resourceIds: [DescribeFilesystemsVscAttachInfoRequest.ResourceIds]?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.maxResults != nil {
+            map["MaxResults"] = self.maxResults!
+        }
+        if self.nextToken != nil {
+            map["NextToken"] = self.nextToken!
+        }
+        if self.resourceIds != nil {
+            var tmp : [Any] = []
+            for k in self.resourceIds! {
+                tmp.append(k.toMap())
+            }
+            map["ResourceIds"] = tmp
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["MaxResults"] as? Int32 {
+            self.maxResults = value
+        }
+        if let value = dict["NextToken"] as? String {
+            self.nextToken = value
+        }
+        if let value = dict["ResourceIds"] as? [Any?] {
+            var tmp : [DescribeFilesystemsVscAttachInfoRequest.ResourceIds] = []
+            for v in value {
+                if v != nil {
+                    var model = DescribeFilesystemsVscAttachInfoRequest.ResourceIds()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.resourceIds = tmp
+        }
+    }
+}
+
+public class DescribeFilesystemsVscAttachInfoResponseBody : Tea.TeaModel {
+    public class VscAttachInfo : Tea.TeaModel {
+        public class VscAttachInfo : Tea.TeaModel {
+            public var fileSystemId: String?
+
+            public var status: String?
+
+            public var vscId: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.fileSystemId != nil {
+                    map["FileSystemId"] = self.fileSystemId!
+                }
+                if self.status != nil {
+                    map["Status"] = self.status!
+                }
+                if self.vscId != nil {
+                    map["VscId"] = self.vscId!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["FileSystemId"] as? String {
+                    self.fileSystemId = value
+                }
+                if let value = dict["Status"] as? String {
+                    self.status = value
+                }
+                if let value = dict["VscId"] as? String {
+                    self.vscId = value
+                }
+            }
+        }
+        public var vscAttachInfo: [DescribeFilesystemsVscAttachInfoResponseBody.VscAttachInfo.VscAttachInfo]?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.vscAttachInfo != nil {
+                var tmp : [Any] = []
+                for k in self.vscAttachInfo! {
+                    tmp.append(k.toMap())
+                }
+                map["VscAttachInfo"] = tmp
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["VscAttachInfo"] as? [Any?] {
+                var tmp : [DescribeFilesystemsVscAttachInfoResponseBody.VscAttachInfo.VscAttachInfo] = []
+                for v in value {
+                    if v != nil {
+                        var model = DescribeFilesystemsVscAttachInfoResponseBody.VscAttachInfo.VscAttachInfo()
+                        if v != nil {
+                            model.fromMap(v as? [String: Any?])
+                        }
+                        tmp.append(model)
+                    }
+                }
+                self.vscAttachInfo = tmp
+            }
+        }
+    }
+    public var maxResults: Int32?
+
+    public var nextToken: String?
+
+    public var requestId: String?
+
+    public var totalCount: Int32?
+
+    public var vscAttachInfo: DescribeFilesystemsVscAttachInfoResponseBody.VscAttachInfo?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.vscAttachInfo?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.maxResults != nil {
+            map["MaxResults"] = self.maxResults!
+        }
+        if self.nextToken != nil {
+            map["NextToken"] = self.nextToken!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.totalCount != nil {
+            map["TotalCount"] = self.totalCount!
+        }
+        if self.vscAttachInfo != nil {
+            map["VscAttachInfo"] = self.vscAttachInfo?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["MaxResults"] as? Int32 {
+            self.maxResults = value
+        }
+        if let value = dict["NextToken"] as? String {
+            self.nextToken = value
+        }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+        if let value = dict["TotalCount"] as? Int32 {
+            self.totalCount = value
+        }
+        if let value = dict["VscAttachInfo"] as? [String: Any?] {
+            var model = DescribeFilesystemsVscAttachInfoResponseBody.VscAttachInfo()
+            model.fromMap(value)
+            self.vscAttachInfo = model
+        }
+    }
+}
+
+public class DescribeFilesystemsVscAttachInfoResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: DescribeFilesystemsVscAttachInfoResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = DescribeFilesystemsVscAttachInfoResponseBody()
             model.fromMap(value)
             self.body = model
         }
@@ -17154,6 +17639,178 @@ public class DescribeZonesResponse : Tea.TeaModel {
         }
         if let value = dict["body"] as? [String: Any?] {
             var model = DescribeZonesResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
+public class DetachVscFromFilesystemsRequest : Tea.TeaModel {
+    public class ResourceIds : Tea.TeaModel {
+        public var fileSystemId: String?
+
+        public var vscId: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.fileSystemId != nil {
+                map["FileSystemId"] = self.fileSystemId!
+            }
+            if self.vscId != nil {
+                map["VscId"] = self.vscId!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["FileSystemId"] as? String {
+                self.fileSystemId = value
+            }
+            if let value = dict["VscId"] as? String {
+                self.vscId = value
+            }
+        }
+    }
+    public var clientToken: String?
+
+    public var resourceIds: [DetachVscFromFilesystemsRequest.ResourceIds]?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.clientToken != nil {
+            map["ClientToken"] = self.clientToken!
+        }
+        if self.resourceIds != nil {
+            var tmp : [Any] = []
+            for k in self.resourceIds! {
+                tmp.append(k.toMap())
+            }
+            map["ResourceIds"] = tmp
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["ClientToken"] as? String {
+            self.clientToken = value
+        }
+        if let value = dict["ResourceIds"] as? [Any?] {
+            var tmp : [DetachVscFromFilesystemsRequest.ResourceIds] = []
+            for v in value {
+                if v != nil {
+                    var model = DetachVscFromFilesystemsRequest.ResourceIds()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.resourceIds = tmp
+        }
+    }
+}
+
+public class DetachVscFromFilesystemsResponseBody : Tea.TeaModel {
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+    }
+}
+
+public class DetachVscFromFilesystemsResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: DetachVscFromFilesystemsResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = DetachVscFromFilesystemsResponseBody()
             model.fromMap(value)
             self.body = model
         }
