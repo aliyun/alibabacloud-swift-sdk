@@ -748,6 +748,12 @@ public class CreateDBInstanceRequest : Tea.TeaModel {
 
     public var multiZone: [CreateDBInstanceRequest.MultiZone]?
 
+    public var nodeCount: Int32?
+
+    public var nodeScaleMax: Int32?
+
+    public var nodeScaleMin: Int32?
+
     public var regionId: String?
 
     public var resourceGroupId: String?
@@ -757,6 +763,10 @@ public class CreateDBInstanceRequest : Tea.TeaModel {
     public var scaleMin: String?
 
     public var sourceDBInstanceId: String?
+
+    public var storageQuota: String?
+
+    public var storageType: String?
 
     public var vpcId: String?
 
@@ -803,6 +813,15 @@ public class CreateDBInstanceRequest : Tea.TeaModel {
             }
             map["MultiZone"] = tmp
         }
+        if self.nodeCount != nil {
+            map["NodeCount"] = self.nodeCount!
+        }
+        if self.nodeScaleMax != nil {
+            map["NodeScaleMax"] = self.nodeScaleMax!
+        }
+        if self.nodeScaleMin != nil {
+            map["NodeScaleMin"] = self.nodeScaleMin!
+        }
         if self.regionId != nil {
             map["RegionId"] = self.regionId!
         }
@@ -817,6 +836,12 @@ public class CreateDBInstanceRequest : Tea.TeaModel {
         }
         if self.sourceDBInstanceId != nil {
             map["SourceDBInstanceId"] = self.sourceDBInstanceId!
+        }
+        if self.storageQuota != nil {
+            map["StorageQuota"] = self.storageQuota!
+        }
+        if self.storageType != nil {
+            map["StorageType"] = self.storageType!
         }
         if self.vpcId != nil {
             map["VpcId"] = self.vpcId!
@@ -863,6 +888,15 @@ public class CreateDBInstanceRequest : Tea.TeaModel {
             }
             self.multiZone = tmp
         }
+        if let value = dict["NodeCount"] as? Int32 {
+            self.nodeCount = value
+        }
+        if let value = dict["NodeScaleMax"] as? Int32 {
+            self.nodeScaleMax = value
+        }
+        if let value = dict["NodeScaleMin"] as? Int32 {
+            self.nodeScaleMin = value
+        }
         if let value = dict["RegionId"] as? String {
             self.regionId = value
         }
@@ -877,6 +911,12 @@ public class CreateDBInstanceRequest : Tea.TeaModel {
         }
         if let value = dict["SourceDBInstanceId"] as? String {
             self.sourceDBInstanceId = value
+        }
+        if let value = dict["StorageQuota"] as? String {
+            self.storageQuota = value
+        }
+        if let value = dict["StorageType"] as? String {
+            self.storageType = value
         }
         if let value = dict["VpcId"] as? String {
             self.vpcId = value
@@ -905,6 +945,12 @@ public class CreateDBInstanceShrinkRequest : Tea.TeaModel {
 
     public var multiZoneShrink: String?
 
+    public var nodeCount: Int32?
+
+    public var nodeScaleMax: Int32?
+
+    public var nodeScaleMin: Int32?
+
     public var regionId: String?
 
     public var resourceGroupId: String?
@@ -914,6 +960,10 @@ public class CreateDBInstanceShrinkRequest : Tea.TeaModel {
     public var scaleMin: String?
 
     public var sourceDBInstanceId: String?
+
+    public var storageQuota: String?
+
+    public var storageType: String?
 
     public var vpcId: String?
 
@@ -956,6 +1006,15 @@ public class CreateDBInstanceShrinkRequest : Tea.TeaModel {
         if self.multiZoneShrink != nil {
             map["MultiZone"] = self.multiZoneShrink!
         }
+        if self.nodeCount != nil {
+            map["NodeCount"] = self.nodeCount!
+        }
+        if self.nodeScaleMax != nil {
+            map["NodeScaleMax"] = self.nodeScaleMax!
+        }
+        if self.nodeScaleMin != nil {
+            map["NodeScaleMin"] = self.nodeScaleMin!
+        }
         if self.regionId != nil {
             map["RegionId"] = self.regionId!
         }
@@ -970,6 +1029,12 @@ public class CreateDBInstanceShrinkRequest : Tea.TeaModel {
         }
         if self.sourceDBInstanceId != nil {
             map["SourceDBInstanceId"] = self.sourceDBInstanceId!
+        }
+        if self.storageQuota != nil {
+            map["StorageQuota"] = self.storageQuota!
+        }
+        if self.storageType != nil {
+            map["StorageType"] = self.storageType!
         }
         if self.vpcId != nil {
             map["VpcId"] = self.vpcId!
@@ -1006,6 +1071,15 @@ public class CreateDBInstanceShrinkRequest : Tea.TeaModel {
         if let value = dict["MultiZone"] as? String {
             self.multiZoneShrink = value
         }
+        if let value = dict["NodeCount"] as? Int32 {
+            self.nodeCount = value
+        }
+        if let value = dict["NodeScaleMax"] as? Int32 {
+            self.nodeScaleMax = value
+        }
+        if let value = dict["NodeScaleMin"] as? Int32 {
+            self.nodeScaleMin = value
+        }
         if let value = dict["RegionId"] as? String {
             self.regionId = value
         }
@@ -1020,6 +1094,12 @@ public class CreateDBInstanceShrinkRequest : Tea.TeaModel {
         }
         if let value = dict["SourceDBInstanceId"] as? String {
             self.sourceDBInstanceId = value
+        }
+        if let value = dict["StorageQuota"] as? String {
+            self.storageQuota = value
+        }
+        if let value = dict["StorageType"] as? String {
+            self.storageType = value
         }
         if let value = dict["VpcId"] as? String {
             self.vpcId = value
@@ -3215,6 +3295,8 @@ public class DescribeDBInstanceAttributeResponseBody : Tea.TeaModel {
 
         public var bid: String?
 
+        public var category: String?
+
         public var chargeType: String?
 
         public var createTime: String?
@@ -3249,6 +3331,12 @@ public class DescribeDBInstanceAttributeResponseBody : Tea.TeaModel {
 
         public var multiZones: [DescribeDBInstanceAttributeResponseBody.Data.MultiZones]?
 
+        public var nodeCount: String?
+
+        public var nodeScaleMax: String?
+
+        public var nodeScaleMin: String?
+
         public var nodes: [DescribeDBInstanceAttributeResponseBody.Data.Nodes]?
 
         public var objectStoreSize: String?
@@ -3262,6 +3350,8 @@ public class DescribeDBInstanceAttributeResponseBody : Tea.TeaModel {
         public var scaleMin: Int32?
 
         public var status: String?
+
+        public var storageQuota: String?
 
         public var storageSize: Int32?
 
@@ -3294,6 +3384,9 @@ public class DescribeDBInstanceAttributeResponseBody : Tea.TeaModel {
             }
             if self.bid != nil {
                 map["Bid"] = self.bid!
+            }
+            if self.category != nil {
+                map["Category"] = self.category!
             }
             if self.chargeType != nil {
                 map["ChargeType"] = self.chargeType!
@@ -3350,6 +3443,15 @@ public class DescribeDBInstanceAttributeResponseBody : Tea.TeaModel {
                 }
                 map["MultiZones"] = tmp
             }
+            if self.nodeCount != nil {
+                map["NodeCount"] = self.nodeCount!
+            }
+            if self.nodeScaleMax != nil {
+                map["NodeScaleMax"] = self.nodeScaleMax!
+            }
+            if self.nodeScaleMin != nil {
+                map["NodeScaleMin"] = self.nodeScaleMin!
+            }
             if self.nodes != nil {
                 var tmp : [Any] = []
                 for k in self.nodes! {
@@ -3374,6 +3476,9 @@ public class DescribeDBInstanceAttributeResponseBody : Tea.TeaModel {
             }
             if self.status != nil {
                 map["Status"] = self.status!
+            }
+            if self.storageQuota != nil {
+                map["StorageQuota"] = self.storageQuota!
             }
             if self.storageSize != nil {
                 map["StorageSize"] = self.storageSize!
@@ -3407,6 +3512,9 @@ public class DescribeDBInstanceAttributeResponseBody : Tea.TeaModel {
             }
             if let value = dict["Bid"] as? String {
                 self.bid = value
+            }
+            if let value = dict["Category"] as? String {
+                self.category = value
             }
             if let value = dict["ChargeType"] as? String {
                 self.chargeType = value
@@ -3469,6 +3577,15 @@ public class DescribeDBInstanceAttributeResponseBody : Tea.TeaModel {
                 }
                 self.multiZones = tmp
             }
+            if let value = dict["NodeCount"] as? String {
+                self.nodeCount = value
+            }
+            if let value = dict["NodeScaleMax"] as? String {
+                self.nodeScaleMax = value
+            }
+            if let value = dict["NodeScaleMin"] as? String {
+                self.nodeScaleMin = value
+            }
             if let value = dict["Nodes"] as? [Any?] {
                 var tmp : [DescribeDBInstanceAttributeResponseBody.Data.Nodes] = []
                 for v in value {
@@ -3499,6 +3616,9 @@ public class DescribeDBInstanceAttributeResponseBody : Tea.TeaModel {
             }
             if let value = dict["Status"] as? String {
                 self.status = value
+            }
+            if let value = dict["StorageQuota"] as? String {
+                self.storageQuota = value
             }
             if let value = dict["StorageSize"] as? Int32 {
                 self.storageSize = value
@@ -4626,6 +4746,8 @@ public class DescribeDBInstancesResponseBody : Tea.TeaModel {
 
             public var status: String?
 
+            public var storageType: String?
+
             public var tags: [DescribeDBInstancesResponseBody.Data.DBInstances.Tags]?
 
             public var vSwitchId: String?
@@ -4705,6 +4827,9 @@ public class DescribeDBInstancesResponseBody : Tea.TeaModel {
                 if self.status != nil {
                     map["Status"] = self.status!
                 }
+                if self.storageType != nil {
+                    map["StorageType"] = self.storageType!
+                }
                 if self.tags != nil {
                     var tmp : [Any] = []
                     for k in self.tags! {
@@ -4782,6 +4907,9 @@ public class DescribeDBInstancesResponseBody : Tea.TeaModel {
                 }
                 if let value = dict["Status"] as? String {
                     self.status = value
+                }
+                if let value = dict["StorageType"] as? String {
+                    self.storageType = value
                 }
                 if let value = dict["Tags"] as? [Any?] {
                     var tmp : [DescribeDBInstancesResponseBody.Data.DBInstances.Tags] = []
@@ -7456,11 +7584,21 @@ public class ModifyDBInstanceAttributeResponse : Tea.TeaModel {
 public class ModifyDBInstanceClassRequest : Tea.TeaModel {
     public var DBInstanceId: String?
 
+    public var nodeCount: Int32?
+
+    public var nodeScaleMax: Int32?
+
+    public var nodeScaleMin: Int32?
+
     public var regionId: String?
 
     public var scaleMax: Int64?
 
     public var scaleMin: Int64?
+
+    public var storageQuota: String?
+
+    public var storageType: String?
 
     public override init() {
         super.init()
@@ -7479,6 +7617,15 @@ public class ModifyDBInstanceClassRequest : Tea.TeaModel {
         if self.DBInstanceId != nil {
             map["DBInstanceId"] = self.DBInstanceId!
         }
+        if self.nodeCount != nil {
+            map["NodeCount"] = self.nodeCount!
+        }
+        if self.nodeScaleMax != nil {
+            map["NodeScaleMax"] = self.nodeScaleMax!
+        }
+        if self.nodeScaleMin != nil {
+            map["NodeScaleMin"] = self.nodeScaleMin!
+        }
         if self.regionId != nil {
             map["RegionId"] = self.regionId!
         }
@@ -7488,6 +7635,12 @@ public class ModifyDBInstanceClassRequest : Tea.TeaModel {
         if self.scaleMin != nil {
             map["ScaleMin"] = self.scaleMin!
         }
+        if self.storageQuota != nil {
+            map["StorageQuota"] = self.storageQuota!
+        }
+        if self.storageType != nil {
+            map["StorageType"] = self.storageType!
+        }
         return map
     }
 
@@ -7495,6 +7648,15 @@ public class ModifyDBInstanceClassRequest : Tea.TeaModel {
         guard let dict else { return }
         if let value = dict["DBInstanceId"] as? String {
             self.DBInstanceId = value
+        }
+        if let value = dict["NodeCount"] as? Int32 {
+            self.nodeCount = value
+        }
+        if let value = dict["NodeScaleMax"] as? Int32 {
+            self.nodeScaleMax = value
+        }
+        if let value = dict["NodeScaleMin"] as? Int32 {
+            self.nodeScaleMin = value
         }
         if let value = dict["RegionId"] as? String {
             self.regionId = value
@@ -7504,6 +7666,12 @@ public class ModifyDBInstanceClassRequest : Tea.TeaModel {
         }
         if let value = dict["ScaleMin"] as? Int64 {
             self.scaleMin = value
+        }
+        if let value = dict["StorageQuota"] as? String {
+            self.storageQuota = value
+        }
+        if let value = dict["StorageType"] as? String {
+            self.storageType = value
         }
     }
 }

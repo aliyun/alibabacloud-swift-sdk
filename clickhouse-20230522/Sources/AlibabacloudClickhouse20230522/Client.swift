@@ -239,6 +239,15 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.multiZoneShrink)) {
             query["MultiZone"] = request.multiZoneShrink ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.nodeCount)) {
+            query["NodeCount"] = request.nodeCount!;
+        }
+        if (!TeaUtils.Client.isUnset(request.nodeScaleMax)) {
+            query["NodeScaleMax"] = request.nodeScaleMax!;
+        }
+        if (!TeaUtils.Client.isUnset(request.nodeScaleMin)) {
+            query["NodeScaleMin"] = request.nodeScaleMin!;
+        }
         if (!TeaUtils.Client.isUnset(request.regionId)) {
             query["RegionId"] = request.regionId ?? "";
         }
@@ -253,6 +262,12 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.sourceDBInstanceId)) {
             query["SourceDBInstanceId"] = request.sourceDBInstanceId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.storageQuota)) {
+            query["StorageQuota"] = request.storageQuota ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.storageType)) {
+            query["StorageType"] = request.storageType ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.vpcId)) {
             query["VpcId"] = request.vpcId ?? "";
@@ -1287,6 +1302,15 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.DBInstanceId)) {
             query["DBInstanceId"] = request.DBInstanceId ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.nodeCount)) {
+            query["NodeCount"] = request.nodeCount!;
+        }
+        if (!TeaUtils.Client.isUnset(request.nodeScaleMax)) {
+            query["NodeScaleMax"] = request.nodeScaleMax!;
+        }
+        if (!TeaUtils.Client.isUnset(request.nodeScaleMin)) {
+            query["NodeScaleMin"] = request.nodeScaleMin!;
+        }
         if (!TeaUtils.Client.isUnset(request.regionId)) {
             query["RegionId"] = request.regionId ?? "";
         }
@@ -1295,6 +1319,12 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.scaleMin)) {
             query["ScaleMin"] = request.scaleMin!;
+        }
+        if (!TeaUtils.Client.isUnset(request.storageQuota)) {
+            query["StorageQuota"] = request.storageQuota ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.storageType)) {
+            query["StorageType"] = request.storageType ?? "";
         }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "query": AlibabaCloudOpenApiUtil.Client.query(query)
