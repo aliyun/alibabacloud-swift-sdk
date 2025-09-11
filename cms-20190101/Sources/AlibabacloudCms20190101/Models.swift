@@ -9773,6 +9773,8 @@ public class CreateMonitoringAgentProcessResponse : Tea.TeaModel {
 public class CreateSiteMonitorRequest : Tea.TeaModel {
     public var address: String?
 
+    public var agentGroup: String?
+
     public var alertIds: String?
 
     public var customSchedule: String?
@@ -9808,6 +9810,9 @@ public class CreateSiteMonitorRequest : Tea.TeaModel {
         if self.address != nil {
             map["Address"] = self.address!
         }
+        if self.agentGroup != nil {
+            map["AgentGroup"] = self.agentGroup!
+        }
         if self.alertIds != nil {
             map["AlertIds"] = self.alertIds!
         }
@@ -9842,6 +9847,9 @@ public class CreateSiteMonitorRequest : Tea.TeaModel {
         guard let dict else { return }
         if let value = dict["Address"] as? String {
             self.address = value
+        }
+        if let value = dict["AgentGroup"] as? String {
+            self.agentGroup = value
         }
         if let value = dict["AlertIds"] as? String {
             self.alertIds = value

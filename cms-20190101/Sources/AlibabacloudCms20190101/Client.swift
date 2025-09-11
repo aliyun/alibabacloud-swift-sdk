@@ -938,6 +938,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.address)) {
             query["Address"] = request.address ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.agentGroup)) {
+            query["AgentGroup"] = request.agentGroup ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.alertIds)) {
             query["AlertIds"] = request.alertIds ?? "";
         }
