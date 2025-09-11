@@ -43267,6 +43267,8 @@ public class QueryCollectionDataResponseBody : Tea.TeaModel {
 
             public var metadata: [String: String]?
 
+            public var metadataV2: [String: Any]?
+
             public var score: Double?
 
             public var values: QueryCollectionDataResponseBody.Matches.Match.Values?
@@ -43292,6 +43294,9 @@ public class QueryCollectionDataResponseBody : Tea.TeaModel {
                 if self.metadata != nil {
                     map["Metadata"] = self.metadata!
                 }
+                if self.metadataV2 != nil {
+                    map["MetadataV2"] = self.metadataV2!
+                }
                 if self.score != nil {
                     map["Score"] = self.score!
                 }
@@ -43308,6 +43313,9 @@ public class QueryCollectionDataResponseBody : Tea.TeaModel {
                 }
                 if let value = dict["Metadata"] as? [String: String] {
                     self.metadata = value
+                }
+                if let value = dict["MetadataV2"] as? [String: Any] {
+                    self.metadataV2 = value
                 }
                 if let value = dict["Score"] as? Double {
                     self.score = value
