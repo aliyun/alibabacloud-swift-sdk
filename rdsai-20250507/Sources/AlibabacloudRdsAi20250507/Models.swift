@@ -1135,7 +1135,49 @@ public class DescribeInstanceAuthInfoResponseBody : Tea.TeaModel {
             }
         }
     }
+    public class ConfigList : Tea.TeaModel {
+        public var name: String?
+
+        public var value: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.name != nil {
+                map["Name"] = self.name!
+            }
+            if self.value != nil {
+                map["Value"] = self.value!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["Name"] as? String {
+                self.name = value
+            }
+            if let value = dict["Value"] as? String {
+                self.value = value
+            }
+        }
+    }
     public var apiKeys: DescribeInstanceAuthInfoResponseBody.ApiKeys?
+
+    public var configList: [DescribeInstanceAuthInfoResponseBody.ConfigList]?
+
+    public var instanceName: String?
 
     public var jwtSecret: String?
 
@@ -1159,6 +1201,16 @@ public class DescribeInstanceAuthInfoResponseBody : Tea.TeaModel {
         if self.apiKeys != nil {
             map["ApiKeys"] = self.apiKeys?.toMap()
         }
+        if self.configList != nil {
+            var tmp : [Any] = []
+            for k in self.configList! {
+                tmp.append(k.toMap())
+            }
+            map["ConfigList"] = tmp
+        }
+        if self.instanceName != nil {
+            map["InstanceName"] = self.instanceName!
+        }
         if self.jwtSecret != nil {
             map["JwtSecret"] = self.jwtSecret!
         }
@@ -1174,6 +1226,22 @@ public class DescribeInstanceAuthInfoResponseBody : Tea.TeaModel {
             var model = DescribeInstanceAuthInfoResponseBody.ApiKeys()
             model.fromMap(value)
             self.apiKeys = model
+        }
+        if let value = dict["ConfigList"] as? [Any?] {
+            var tmp : [DescribeInstanceAuthInfoResponseBody.ConfigList] = []
+            for v in value {
+                if v != nil {
+                    var model = DescribeInstanceAuthInfoResponseBody.ConfigList()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.configList = tmp
+        }
+        if let value = dict["InstanceName"] as? String {
+            self.instanceName = value
         }
         if let value = dict["JwtSecret"] as? String {
             self.jwtSecret = value
