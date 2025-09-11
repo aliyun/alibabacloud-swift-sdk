@@ -9741,6 +9741,8 @@ public class CreateSDGRequest : Tea.TeaModel {
 
     public var instanceId: String?
 
+    public var performanceLevel: Int64?
+
     public var size: String?
 
     public override init() {
@@ -9772,6 +9774,9 @@ public class CreateSDGRequest : Tea.TeaModel {
         if self.instanceId != nil {
             map["InstanceId"] = self.instanceId!
         }
+        if self.performanceLevel != nil {
+            map["PerformanceLevel"] = self.performanceLevel!
+        }
         if self.size != nil {
             map["Size"] = self.size!
         }
@@ -9794,6 +9799,9 @@ public class CreateSDGRequest : Tea.TeaModel {
         }
         if let value = dict["InstanceId"] as? String {
             self.instanceId = value
+        }
+        if let value = dict["PerformanceLevel"] as? Int64 {
+            self.performanceLevel = value
         }
         if let value = dict["Size"] as? String {
             self.size = value
@@ -16353,6 +16361,44 @@ public class DescribeAICImagesResponse : Tea.TeaModel {
 }
 
 public class DescribeARMServerInstancesRequest : Tea.TeaModel {
+    public class Tags : Tea.TeaModel {
+        public var key: String?
+
+        public var value: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.key != nil {
+                map["Key"] = self.key!
+            }
+            if self.value != nil {
+                map["Value"] = self.value!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["Key"] as? String {
+                self.key = value
+            }
+            if let value = dict["Value"] as? String {
+                self.value = value
+            }
+        }
+    }
     public var AICSpecs: [String]?
 
     public var describeAICInstances: Bool?
@@ -16378,6 +16424,8 @@ public class DescribeARMServerInstancesRequest : Tea.TeaModel {
     public var serverSpecs: [String]?
 
     public var states: [String]?
+
+    public var tags: [DescribeARMServerInstancesRequest.Tags]?
 
     public override init() {
         super.init()
@@ -16432,6 +16480,13 @@ public class DescribeARMServerInstancesRequest : Tea.TeaModel {
         if self.states != nil {
             map["States"] = self.states!
         }
+        if self.tags != nil {
+            var tmp : [Any] = []
+            for k in self.tags! {
+                tmp.append(k.toMap())
+            }
+            map["Tags"] = tmp
+        }
         return map
     }
 
@@ -16476,6 +16531,19 @@ public class DescribeARMServerInstancesRequest : Tea.TeaModel {
         if let value = dict["States"] as? [String] {
             self.states = value
         }
+        if let value = dict["Tags"] as? [Any?] {
+            var tmp : [DescribeARMServerInstancesRequest.Tags] = []
+            for v in value {
+                if v != nil {
+                    var model = DescribeARMServerInstancesRequest.Tags()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.tags = tmp
+        }
     }
 }
 
@@ -16505,6 +16573,8 @@ public class DescribeARMServerInstancesShrinkRequest : Tea.TeaModel {
     public var serverSpecsShrink: String?
 
     public var statesShrink: String?
+
+    public var tagsShrink: String?
 
     public override init() {
         super.init()
@@ -16559,6 +16629,9 @@ public class DescribeARMServerInstancesShrinkRequest : Tea.TeaModel {
         if self.statesShrink != nil {
             map["States"] = self.statesShrink!
         }
+        if self.tagsShrink != nil {
+            map["Tags"] = self.tagsShrink!
+        }
         return map
     }
 
@@ -16602,6 +16675,9 @@ public class DescribeARMServerInstancesShrinkRequest : Tea.TeaModel {
         }
         if let value = dict["States"] as? String {
             self.statesShrink = value
+        }
+        if let value = dict["Tags"] as? String {
+            self.tagsShrink = value
         }
     }
 }
@@ -47612,6 +47688,8 @@ public class DescribeSDGResponseBody : Tea.TeaModel {
 
         public var parentSDGId: String?
 
+        public var performanceLevel: String?
+
         public var preloadInfos: [DescribeSDGResponseBody.SDGs.PreloadInfos]?
 
         public var SDGId: String?
@@ -47663,6 +47741,9 @@ public class DescribeSDGResponseBody : Tea.TeaModel {
             }
             if self.parentSDGId != nil {
                 map["ParentSDGId"] = self.parentSDGId!
+            }
+            if self.performanceLevel != nil {
+                map["PerformanceLevel"] = self.performanceLevel!
             }
             if self.preloadInfos != nil {
                 var tmp : [Any] = []
@@ -47721,6 +47802,9 @@ public class DescribeSDGResponseBody : Tea.TeaModel {
             }
             if let value = dict["ParentSDGId"] as? String {
                 self.parentSDGId = value
+            }
+            if let value = dict["PerformanceLevel"] as? String {
+                self.performanceLevel = value
             }
             if let value = dict["PreloadInfos"] as? [Any?] {
                 var tmp : [DescribeSDGResponseBody.SDGs.PreloadInfos] = []
@@ -48468,6 +48552,8 @@ public class DescribeSDGsResponseBody : Tea.TeaModel {
 
         public var parentSDGId: String?
 
+        public var performanceLevel: Int64?
+
         public var SDGId: String?
 
         public var size: Int64?
@@ -48524,6 +48610,9 @@ public class DescribeSDGsResponseBody : Tea.TeaModel {
             }
             if self.parentSDGId != nil {
                 map["ParentSDGId"] = self.parentSDGId!
+            }
+            if self.performanceLevel != nil {
+                map["PerformanceLevel"] = self.performanceLevel!
             }
             if self.SDGId != nil {
                 map["SDGId"] = self.SDGId!
@@ -48588,6 +48677,9 @@ public class DescribeSDGsResponseBody : Tea.TeaModel {
             }
             if let value = dict["ParentSDGId"] as? String {
                 self.parentSDGId = value
+            }
+            if let value = dict["PerformanceLevel"] as? Int64 {
+                self.performanceLevel = value
             }
             if let value = dict["SDGId"] as? String {
                 self.SDGId = value
