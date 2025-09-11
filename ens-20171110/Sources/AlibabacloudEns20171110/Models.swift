@@ -39282,6 +39282,211 @@ public class DescribeMountTargetsResponse : Tea.TeaModel {
     }
 }
 
+public class DescribeNASAvailableResourceInfoResponseBody : Tea.TeaModel {
+    public class NasAvailableResourceInfo : Tea.TeaModel {
+        public var ability: [String]?
+
+        public var area: String?
+
+        public var enName: String?
+
+        public var ensRegionId: String?
+
+        public var ensRegionName: String?
+
+        public var nasAvailableAmount: Int32?
+
+        public var nasAvailableStorgeType: String?
+
+        public var province: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.ability != nil {
+                map["Ability"] = self.ability!
+            }
+            if self.area != nil {
+                map["Area"] = self.area!
+            }
+            if self.enName != nil {
+                map["EnName"] = self.enName!
+            }
+            if self.ensRegionId != nil {
+                map["EnsRegionId"] = self.ensRegionId!
+            }
+            if self.ensRegionName != nil {
+                map["EnsRegionName"] = self.ensRegionName!
+            }
+            if self.nasAvailableAmount != nil {
+                map["NasAvailableAmount"] = self.nasAvailableAmount!
+            }
+            if self.nasAvailableStorgeType != nil {
+                map["NasAvailableStorgeType"] = self.nasAvailableStorgeType!
+            }
+            if self.province != nil {
+                map["Province"] = self.province!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["Ability"] as? [String] {
+                self.ability = value
+            }
+            if let value = dict["Area"] as? String {
+                self.area = value
+            }
+            if let value = dict["EnName"] as? String {
+                self.enName = value
+            }
+            if let value = dict["EnsRegionId"] as? String {
+                self.ensRegionId = value
+            }
+            if let value = dict["EnsRegionName"] as? String {
+                self.ensRegionName = value
+            }
+            if let value = dict["NasAvailableAmount"] as? Int32 {
+                self.nasAvailableAmount = value
+            }
+            if let value = dict["NasAvailableStorgeType"] as? String {
+                self.nasAvailableStorgeType = value
+            }
+            if let value = dict["Province"] as? String {
+                self.province = value
+            }
+        }
+    }
+    public var code: String?
+
+    public var message: String?
+
+    public var nasAvailableResourceInfo: [DescribeNASAvailableResourceInfoResponseBody.NasAvailableResourceInfo]?
+
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.code != nil {
+            map["Code"] = self.code!
+        }
+        if self.message != nil {
+            map["Message"] = self.message!
+        }
+        if self.nasAvailableResourceInfo != nil {
+            var tmp : [Any] = []
+            for k in self.nasAvailableResourceInfo! {
+                tmp.append(k.toMap())
+            }
+            map["NasAvailableResourceInfo"] = tmp
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["Code"] as? String {
+            self.code = value
+        }
+        if let value = dict["Message"] as? String {
+            self.message = value
+        }
+        if let value = dict["NasAvailableResourceInfo"] as? [Any?] {
+            var tmp : [DescribeNASAvailableResourceInfoResponseBody.NasAvailableResourceInfo] = []
+            for v in value {
+                if v != nil {
+                    var model = DescribeNASAvailableResourceInfoResponseBody.NasAvailableResourceInfo()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.nasAvailableResourceInfo = tmp
+        }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+    }
+}
+
+public class DescribeNASAvailableResourceInfoResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: DescribeNASAvailableResourceInfoResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = DescribeNASAvailableResourceInfoResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
 public class DescribeNCInformationRequest : Tea.TeaModel {
     public var ensRegionId: String?
 
