@@ -29473,6 +29473,349 @@ public class DownloadSQLLogsRecordsResponse : Tea.TeaModel {
     }
 }
 
+public class EnableCollectionGraphRAGRequest : Tea.TeaModel {
+    public var collection: String?
+
+    public var DBInstanceId: String?
+
+    public var entityTypes: [String]?
+
+    public var LLMModel: String?
+
+    public var language: String?
+
+    public var managerAccount: String?
+
+    public var managerAccountPassword: String?
+
+    public var namespace: String?
+
+    public var namespacePassword: String?
+
+    public var ownerId: Int64?
+
+    public var regionId: String?
+
+    public var relationshipTypes: [String]?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.collection != nil {
+            map["Collection"] = self.collection!
+        }
+        if self.DBInstanceId != nil {
+            map["DBInstanceId"] = self.DBInstanceId!
+        }
+        if self.entityTypes != nil {
+            map["EntityTypes"] = self.entityTypes!
+        }
+        if self.LLMModel != nil {
+            map["LLMModel"] = self.LLMModel!
+        }
+        if self.language != nil {
+            map["Language"] = self.language!
+        }
+        if self.managerAccount != nil {
+            map["ManagerAccount"] = self.managerAccount!
+        }
+        if self.managerAccountPassword != nil {
+            map["ManagerAccountPassword"] = self.managerAccountPassword!
+        }
+        if self.namespace != nil {
+            map["Namespace"] = self.namespace!
+        }
+        if self.namespacePassword != nil {
+            map["NamespacePassword"] = self.namespacePassword!
+        }
+        if self.ownerId != nil {
+            map["OwnerId"] = self.ownerId!
+        }
+        if self.regionId != nil {
+            map["RegionId"] = self.regionId!
+        }
+        if self.relationshipTypes != nil {
+            map["RelationshipTypes"] = self.relationshipTypes!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["Collection"] as? String {
+            self.collection = value
+        }
+        if let value = dict["DBInstanceId"] as? String {
+            self.DBInstanceId = value
+        }
+        if let value = dict["EntityTypes"] as? [String] {
+            self.entityTypes = value
+        }
+        if let value = dict["LLMModel"] as? String {
+            self.LLMModel = value
+        }
+        if let value = dict["Language"] as? String {
+            self.language = value
+        }
+        if let value = dict["ManagerAccount"] as? String {
+            self.managerAccount = value
+        }
+        if let value = dict["ManagerAccountPassword"] as? String {
+            self.managerAccountPassword = value
+        }
+        if let value = dict["Namespace"] as? String {
+            self.namespace = value
+        }
+        if let value = dict["NamespacePassword"] as? String {
+            self.namespacePassword = value
+        }
+        if let value = dict["OwnerId"] as? Int64 {
+            self.ownerId = value
+        }
+        if let value = dict["RegionId"] as? String {
+            self.regionId = value
+        }
+        if let value = dict["RelationshipTypes"] as? [String] {
+            self.relationshipTypes = value
+        }
+    }
+}
+
+public class EnableCollectionGraphRAGShrinkRequest : Tea.TeaModel {
+    public var collection: String?
+
+    public var DBInstanceId: String?
+
+    public var entityTypesShrink: String?
+
+    public var LLMModel: String?
+
+    public var language: String?
+
+    public var managerAccount: String?
+
+    public var managerAccountPassword: String?
+
+    public var namespace: String?
+
+    public var namespacePassword: String?
+
+    public var ownerId: Int64?
+
+    public var regionId: String?
+
+    public var relationshipTypesShrink: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.collection != nil {
+            map["Collection"] = self.collection!
+        }
+        if self.DBInstanceId != nil {
+            map["DBInstanceId"] = self.DBInstanceId!
+        }
+        if self.entityTypesShrink != nil {
+            map["EntityTypes"] = self.entityTypesShrink!
+        }
+        if self.LLMModel != nil {
+            map["LLMModel"] = self.LLMModel!
+        }
+        if self.language != nil {
+            map["Language"] = self.language!
+        }
+        if self.managerAccount != nil {
+            map["ManagerAccount"] = self.managerAccount!
+        }
+        if self.managerAccountPassword != nil {
+            map["ManagerAccountPassword"] = self.managerAccountPassword!
+        }
+        if self.namespace != nil {
+            map["Namespace"] = self.namespace!
+        }
+        if self.namespacePassword != nil {
+            map["NamespacePassword"] = self.namespacePassword!
+        }
+        if self.ownerId != nil {
+            map["OwnerId"] = self.ownerId!
+        }
+        if self.regionId != nil {
+            map["RegionId"] = self.regionId!
+        }
+        if self.relationshipTypesShrink != nil {
+            map["RelationshipTypes"] = self.relationshipTypesShrink!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["Collection"] as? String {
+            self.collection = value
+        }
+        if let value = dict["DBInstanceId"] as? String {
+            self.DBInstanceId = value
+        }
+        if let value = dict["EntityTypes"] as? String {
+            self.entityTypesShrink = value
+        }
+        if let value = dict["LLMModel"] as? String {
+            self.LLMModel = value
+        }
+        if let value = dict["Language"] as? String {
+            self.language = value
+        }
+        if let value = dict["ManagerAccount"] as? String {
+            self.managerAccount = value
+        }
+        if let value = dict["ManagerAccountPassword"] as? String {
+            self.managerAccountPassword = value
+        }
+        if let value = dict["Namespace"] as? String {
+            self.namespace = value
+        }
+        if let value = dict["NamespacePassword"] as? String {
+            self.namespacePassword = value
+        }
+        if let value = dict["OwnerId"] as? Int64 {
+            self.ownerId = value
+        }
+        if let value = dict["RegionId"] as? String {
+            self.regionId = value
+        }
+        if let value = dict["RelationshipTypes"] as? String {
+            self.relationshipTypesShrink = value
+        }
+    }
+}
+
+public class EnableCollectionGraphRAGResponseBody : Tea.TeaModel {
+    public var jobId: String?
+
+    public var message: String?
+
+    public var requestId: String?
+
+    public var status: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.jobId != nil {
+            map["JobId"] = self.jobId!
+        }
+        if self.message != nil {
+            map["Message"] = self.message!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.status != nil {
+            map["Status"] = self.status!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["JobId"] as? String {
+            self.jobId = value
+        }
+        if let value = dict["Message"] as? String {
+            self.message = value
+        }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+        if let value = dict["Status"] as? String {
+            self.status = value
+        }
+    }
+}
+
+public class EnableCollectionGraphRAGResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: EnableCollectionGraphRAGResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = EnableCollectionGraphRAGResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
 public class EnableDBResourceGroupRequest : Tea.TeaModel {
     public var DBInstanceId: String?
 
@@ -30358,6 +30701,328 @@ public class GetAccountResponse : Tea.TeaModel {
         }
         if let value = dict["body"] as? [String: Any?] {
             var model = GetAccountResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
+public class GetGraphRAGJobRequest : Tea.TeaModel {
+    public var collection: String?
+
+    public var DBInstanceId: String?
+
+    public var jobId: String?
+
+    public var namespace: String?
+
+    public var namespacePassword: String?
+
+    public var ownerId: Int64?
+
+    public var regionId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.collection != nil {
+            map["Collection"] = self.collection!
+        }
+        if self.DBInstanceId != nil {
+            map["DBInstanceId"] = self.DBInstanceId!
+        }
+        if self.jobId != nil {
+            map["JobId"] = self.jobId!
+        }
+        if self.namespace != nil {
+            map["Namespace"] = self.namespace!
+        }
+        if self.namespacePassword != nil {
+            map["NamespacePassword"] = self.namespacePassword!
+        }
+        if self.ownerId != nil {
+            map["OwnerId"] = self.ownerId!
+        }
+        if self.regionId != nil {
+            map["RegionId"] = self.regionId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["Collection"] as? String {
+            self.collection = value
+        }
+        if let value = dict["DBInstanceId"] as? String {
+            self.DBInstanceId = value
+        }
+        if let value = dict["JobId"] as? String {
+            self.jobId = value
+        }
+        if let value = dict["Namespace"] as? String {
+            self.namespace = value
+        }
+        if let value = dict["NamespacePassword"] as? String {
+            self.namespacePassword = value
+        }
+        if let value = dict["OwnerId"] as? Int64 {
+            self.ownerId = value
+        }
+        if let value = dict["RegionId"] as? String {
+            self.regionId = value
+        }
+    }
+}
+
+public class GetGraphRAGJobResponseBody : Tea.TeaModel {
+    public class Job : Tea.TeaModel {
+        public var completed: Bool?
+
+        public var createTime: String?
+
+        public var error: String?
+
+        public var id: String?
+
+        public var progress: Int32?
+
+        public var status: String?
+
+        public var updateTime: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.completed != nil {
+                map["Completed"] = self.completed!
+            }
+            if self.createTime != nil {
+                map["CreateTime"] = self.createTime!
+            }
+            if self.error != nil {
+                map["Error"] = self.error!
+            }
+            if self.id != nil {
+                map["Id"] = self.id!
+            }
+            if self.progress != nil {
+                map["Progress"] = self.progress!
+            }
+            if self.status != nil {
+                map["Status"] = self.status!
+            }
+            if self.updateTime != nil {
+                map["UpdateTime"] = self.updateTime!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["Completed"] as? Bool {
+                self.completed = value
+            }
+            if let value = dict["CreateTime"] as? String {
+                self.createTime = value
+            }
+            if let value = dict["Error"] as? String {
+                self.error = value
+            }
+            if let value = dict["Id"] as? String {
+                self.id = value
+            }
+            if let value = dict["Progress"] as? Int32 {
+                self.progress = value
+            }
+            if let value = dict["Status"] as? String {
+                self.status = value
+            }
+            if let value = dict["UpdateTime"] as? String {
+                self.updateTime = value
+            }
+        }
+    }
+    public class Usage : Tea.TeaModel {
+        public var embeddingTokens: Int32?
+
+        public var LLMInputTokens: Int32?
+
+        public var LLMOutputTokens: Int32?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.embeddingTokens != nil {
+                map["EmbeddingTokens"] = self.embeddingTokens!
+            }
+            if self.LLMInputTokens != nil {
+                map["LLMInputTokens"] = self.LLMInputTokens!
+            }
+            if self.LLMOutputTokens != nil {
+                map["LLMOutputTokens"] = self.LLMOutputTokens!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["EmbeddingTokens"] as? Int32 {
+                self.embeddingTokens = value
+            }
+            if let value = dict["LLMInputTokens"] as? Int32 {
+                self.LLMInputTokens = value
+            }
+            if let value = dict["LLMOutputTokens"] as? Int32 {
+                self.LLMOutputTokens = value
+            }
+        }
+    }
+    public var job: GetGraphRAGJobResponseBody.Job?
+
+    public var message: String?
+
+    public var requestId: String?
+
+    public var status: String?
+
+    public var usage: GetGraphRAGJobResponseBody.Usage?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.job?.validate()
+        try self.usage?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.job != nil {
+            map["Job"] = self.job?.toMap()
+        }
+        if self.message != nil {
+            map["Message"] = self.message!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.status != nil {
+            map["Status"] = self.status!
+        }
+        if self.usage != nil {
+            map["Usage"] = self.usage?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["Job"] as? [String: Any?] {
+            var model = GetGraphRAGJobResponseBody.Job()
+            model.fromMap(value)
+            self.job = model
+        }
+        if let value = dict["Message"] as? String {
+            self.message = value
+        }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+        if let value = dict["Status"] as? String {
+            self.status = value
+        }
+        if let value = dict["Usage"] as? [String: Any?] {
+            var model = GetGraphRAGJobResponseBody.Usage()
+            model.fromMap(value)
+            self.usage = model
+        }
+    }
+}
+
+public class GetGraphRAGJobResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: GetGraphRAGJobResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = GetGraphRAGJobResponseBody()
             model.fromMap(value)
             self.body = model
         }
