@@ -14159,6 +14159,8 @@ public class ListServiceInstancesRequest : Tea.TeaModel {
 
     public var isSpot: Bool?
 
+    public var memberType: String?
+
     public var order: String?
 
     public var pageNumber: Int32?
@@ -14206,6 +14208,9 @@ public class ListServiceInstancesRequest : Tea.TeaModel {
         if self.isSpot != nil {
             map["IsSpot"] = self.isSpot!
         }
+        if self.memberType != nil {
+            map["MemberType"] = self.memberType!
+        }
         if self.order != nil {
             map["Order"] = self.order!
         }
@@ -14249,6 +14254,9 @@ public class ListServiceInstancesRequest : Tea.TeaModel {
         }
         if let value = dict["IsSpot"] as? Bool {
             self.isSpot = value
+        }
+        if let value = dict["MemberType"] as? String {
+            self.memberType = value
         }
         if let value = dict["Order"] as? String {
             self.order = value
@@ -17547,6 +17555,8 @@ public class UpdateResourceInstanceLabelResponse : Tea.TeaModel {
 }
 
 public class UpdateServiceRequest : Tea.TeaModel {
+    public var memberToUpdate: String?
+
     public var updateType: String?
 
     public var body: String?
@@ -17565,6 +17575,9 @@ public class UpdateServiceRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.memberToUpdate != nil {
+            map["MemberToUpdate"] = self.memberToUpdate!
+        }
         if self.updateType != nil {
             map["UpdateType"] = self.updateType!
         }
@@ -17576,6 +17589,9 @@ public class UpdateServiceRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["MemberToUpdate"] as? String {
+            self.memberToUpdate = value
+        }
         if let value = dict["UpdateType"] as? String {
             self.updateType = value
         }

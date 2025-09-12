@@ -2599,6 +2599,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.isSpot)) {
             query["IsSpot"] = request.isSpot!;
         }
+        if (!TeaUtils.Client.isUnset(request.memberType)) {
+            query["MemberType"] = request.memberType ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.order)) {
             query["Order"] = request.order ?? "";
         }
@@ -3389,6 +3392,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func updateServiceWithOptions(_ ClusterId: String, _ ServiceName: String, _ request: UpdateServiceRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> UpdateServiceResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.memberToUpdate)) {
+            query["MemberToUpdate"] = request.memberToUpdate ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.updateType)) {
             query["UpdateType"] = request.updateType ?? "";
         }
