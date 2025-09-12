@@ -366,6 +366,240 @@ public class GetCreateLogoTaskResponse : Tea.TeaModel {
     }
 }
 
+public class GetDomainInfoForPartnerRequest : Tea.TeaModel {
+    public var bizId: String?
+
+    public var domainName: String?
+
+    public var userId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.bizId != nil {
+            map["BizId"] = self.bizId!
+        }
+        if self.domainName != nil {
+            map["DomainName"] = self.domainName!
+        }
+        if self.userId != nil {
+            map["UserId"] = self.userId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["BizId"] as? String {
+            self.bizId = value
+        }
+        if let value = dict["DomainName"] as? String {
+            self.domainName = value
+        }
+        if let value = dict["UserId"] as? String {
+            self.userId = value
+        }
+    }
+}
+
+public class GetDomainInfoForPartnerResponseBody : Tea.TeaModel {
+    public class Data : Tea.TeaModel {
+        public class Ownership : Tea.TeaModel {
+            public var account: String?
+
+            public var provider: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.account != nil {
+                    map["Account"] = self.account!
+                }
+                if self.provider != nil {
+                    map["Provider"] = self.provider!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["Account"] as? String {
+                    self.account = value
+                }
+                if let value = dict["Provider"] as? String {
+                    self.provider = value
+                }
+            }
+        }
+        public var domainName: String?
+
+        public var nameServers: String?
+
+        public var ownership: GetDomainInfoForPartnerResponseBody.Data.Ownership?
+
+        public var registrar: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+            try self.ownership?.validate()
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.domainName != nil {
+                map["DomainName"] = self.domainName!
+            }
+            if self.nameServers != nil {
+                map["NameServers"] = self.nameServers!
+            }
+            if self.ownership != nil {
+                map["Ownership"] = self.ownership?.toMap()
+            }
+            if self.registrar != nil {
+                map["Registrar"] = self.registrar!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["DomainName"] as? String {
+                self.domainName = value
+            }
+            if let value = dict["NameServers"] as? String {
+                self.nameServers = value
+            }
+            if let value = dict["Ownership"] as? [String: Any?] {
+                var model = GetDomainInfoForPartnerResponseBody.Data.Ownership()
+                model.fromMap(value)
+                self.ownership = model
+            }
+            if let value = dict["Registrar"] as? String {
+                self.registrar = value
+            }
+        }
+    }
+    public var data: GetDomainInfoForPartnerResponseBody.Data?
+
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.data?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.data != nil {
+            map["Data"] = self.data?.toMap()
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["Data"] as? [String: Any?] {
+            var model = GetDomainInfoForPartnerResponseBody.Data()
+            model.fromMap(value)
+            self.data = model
+        }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+    }
+}
+
+public class GetDomainInfoForPartnerResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: GetDomainInfoForPartnerResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = GetDomainInfoForPartnerResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
 public class GetIcpFilingInfoForPartnerRequest : Tea.TeaModel {
     public var bizId: String?
 
