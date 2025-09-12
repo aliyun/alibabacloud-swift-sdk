@@ -5380,6 +5380,12 @@ open class Client : AlibabacloudOpenApi.Client {
     public func startInstanceRefreshWithOptions(_ request: StartInstanceRefreshRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> StartInstanceRefreshResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.checkpointPauseTime)) {
+            query["CheckpointPauseTime"] = request.checkpointPauseTime!;
+        }
+        if (!TeaUtils.Client.isUnset(request.checkpoints)) {
+            query["Checkpoints"] = request.checkpoints ?? [];
+        }
         if (!TeaUtils.Client.isUnset(request.clientToken)) {
             query["ClientToken"] = request.clientToken ?? "";
         }

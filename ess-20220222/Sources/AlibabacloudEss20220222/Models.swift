@@ -17985,8 +17985,198 @@ public class DescribeInstanceRefreshesRequest : Tea.TeaModel {
 
 public class DescribeInstanceRefreshesResponseBody : Tea.TeaModel {
     public class InstanceRefreshTasks : Tea.TeaModel {
+        public class Checkpoints : Tea.TeaModel {
+            public var percentage: Int32?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.percentage != nil {
+                    map["Percentage"] = self.percentage!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["Percentage"] as? Int32 {
+                    self.percentage = value
+                }
+            }
+        }
         public class DesiredConfiguration : Tea.TeaModel {
+            public class Containers : Tea.TeaModel {
+                public class EnvironmentVars : Tea.TeaModel {
+                    public var fieldRefFieldPath: String?
+
+                    public var key: String?
+
+                    public var value: String?
+
+                    public override init() {
+                        super.init()
+                    }
+
+                    public init(_ dict: [String: Any]) {
+                        super.init()
+                        self.fromMap(dict)
+                    }
+
+                    public override func validate() throws -> Void {
+                    }
+
+                    public override func toMap() -> [String : Any] {
+                        var map = super.toMap()
+                        if self.fieldRefFieldPath != nil {
+                            map["FieldRefFieldPath"] = self.fieldRefFieldPath!
+                        }
+                        if self.key != nil {
+                            map["Key"] = self.key!
+                        }
+                        if self.value != nil {
+                            map["Value"] = self.value!
+                        }
+                        return map
+                    }
+
+                    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                        guard let dict else { return }
+                        if let value = dict["FieldRefFieldPath"] as? String {
+                            self.fieldRefFieldPath = value
+                        }
+                        if let value = dict["Key"] as? String {
+                            self.key = value
+                        }
+                        if let value = dict["Value"] as? String {
+                            self.value = value
+                        }
+                    }
+                }
+                public var args: [String]?
+
+                public var commands: [String]?
+
+                public var environmentVars: [DescribeInstanceRefreshesResponseBody.InstanceRefreshTasks.DesiredConfiguration.Containers.EnvironmentVars]?
+
+                public var image: String?
+
+                public var name: String?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.args != nil {
+                        map["Args"] = self.args!
+                    }
+                    if self.commands != nil {
+                        map["Commands"] = self.commands!
+                    }
+                    if self.environmentVars != nil {
+                        var tmp : [Any] = []
+                        for k in self.environmentVars! {
+                            tmp.append(k.toMap())
+                        }
+                        map["EnvironmentVars"] = tmp
+                    }
+                    if self.image != nil {
+                        map["Image"] = self.image!
+                    }
+                    if self.name != nil {
+                        map["Name"] = self.name!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                    guard let dict else { return }
+                    if let value = dict["Args"] as? [String] {
+                        self.args = value
+                    }
+                    if let value = dict["Commands"] as? [String] {
+                        self.commands = value
+                    }
+                    if let value = dict["EnvironmentVars"] as? [Any?] {
+                        var tmp : [DescribeInstanceRefreshesResponseBody.InstanceRefreshTasks.DesiredConfiguration.Containers.EnvironmentVars] = []
+                        for v in value {
+                            if v != nil {
+                                var model = DescribeInstanceRefreshesResponseBody.InstanceRefreshTasks.DesiredConfiguration.Containers.EnvironmentVars()
+                                if v != nil {
+                                    model.fromMap(v as? [String: Any?])
+                                }
+                                tmp.append(model)
+                            }
+                        }
+                        self.environmentVars = tmp
+                    }
+                    if let value = dict["Image"] as? String {
+                        self.image = value
+                    }
+                    if let value = dict["Name"] as? String {
+                        self.name = value
+                    }
+                }
+            }
+            public class LaunchTemplateOverrides : Tea.TeaModel {
+                public var instanceType: String?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.instanceType != nil {
+                        map["InstanceType"] = self.instanceType!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                    guard let dict else { return }
+                    if let value = dict["InstanceType"] as? String {
+                        self.instanceType = value
+                    }
+                }
+            }
+            public var containers: [DescribeInstanceRefreshesResponseBody.InstanceRefreshTasks.DesiredConfiguration.Containers]?
+
             public var imageId: String?
+
+            public var launchTemplateId: String?
+
+            public var launchTemplateOverrides: [DescribeInstanceRefreshesResponseBody.InstanceRefreshTasks.DesiredConfiguration.LaunchTemplateOverrides]?
+
+            public var launchTemplateVersion: String?
 
             public var scalingConfigurationId: String?
 
@@ -18004,8 +18194,28 @@ public class DescribeInstanceRefreshesResponseBody : Tea.TeaModel {
 
             public override func toMap() -> [String : Any] {
                 var map = super.toMap()
+                if self.containers != nil {
+                    var tmp : [Any] = []
+                    for k in self.containers! {
+                        tmp.append(k.toMap())
+                    }
+                    map["Containers"] = tmp
+                }
                 if self.imageId != nil {
                     map["ImageId"] = self.imageId!
+                }
+                if self.launchTemplateId != nil {
+                    map["LaunchTemplateId"] = self.launchTemplateId!
+                }
+                if self.launchTemplateOverrides != nil {
+                    var tmp : [Any] = []
+                    for k in self.launchTemplateOverrides! {
+                        tmp.append(k.toMap())
+                    }
+                    map["LaunchTemplateOverrides"] = tmp
+                }
+                if self.launchTemplateVersion != nil {
+                    map["LaunchTemplateVersion"] = self.launchTemplateVersion!
                 }
                 if self.scalingConfigurationId != nil {
                     map["ScalingConfigurationId"] = self.scalingConfigurationId!
@@ -18015,14 +18225,50 @@ public class DescribeInstanceRefreshesResponseBody : Tea.TeaModel {
 
             public override func fromMap(_ dict: [String: Any?]?) -> Void {
                 guard let dict else { return }
+                if let value = dict["Containers"] as? [Any?] {
+                    var tmp : [DescribeInstanceRefreshesResponseBody.InstanceRefreshTasks.DesiredConfiguration.Containers] = []
+                    for v in value {
+                        if v != nil {
+                            var model = DescribeInstanceRefreshesResponseBody.InstanceRefreshTasks.DesiredConfiguration.Containers()
+                            if v != nil {
+                                model.fromMap(v as? [String: Any?])
+                            }
+                            tmp.append(model)
+                        }
+                    }
+                    self.containers = tmp
+                }
                 if let value = dict["ImageId"] as? String {
                     self.imageId = value
+                }
+                if let value = dict["LaunchTemplateId"] as? String {
+                    self.launchTemplateId = value
+                }
+                if let value = dict["LaunchTemplateOverrides"] as? [Any?] {
+                    var tmp : [DescribeInstanceRefreshesResponseBody.InstanceRefreshTasks.DesiredConfiguration.LaunchTemplateOverrides] = []
+                    for v in value {
+                        if v != nil {
+                            var model = DescribeInstanceRefreshesResponseBody.InstanceRefreshTasks.DesiredConfiguration.LaunchTemplateOverrides()
+                            if v != nil {
+                                model.fromMap(v as? [String: Any?])
+                            }
+                            tmp.append(model)
+                        }
+                    }
+                    self.launchTemplateOverrides = tmp
+                }
+                if let value = dict["LaunchTemplateVersion"] as? String {
+                    self.launchTemplateVersion = value
                 }
                 if let value = dict["ScalingConfigurationId"] as? String {
                     self.scalingConfigurationId = value
                 }
             }
         }
+        public var checkpointPauseTime: Int32?
+
+        public var checkpoints: [DescribeInstanceRefreshesResponseBody.InstanceRefreshTasks.Checkpoints]?
+
         public var desiredConfiguration: DescribeInstanceRefreshesResponseBody.InstanceRefreshTasks.DesiredConfiguration?
 
         public var detail: String?
@@ -18064,6 +18310,16 @@ public class DescribeInstanceRefreshesResponseBody : Tea.TeaModel {
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
+            if self.checkpointPauseTime != nil {
+                map["CheckpointPauseTime"] = self.checkpointPauseTime!
+            }
+            if self.checkpoints != nil {
+                var tmp : [Any] = []
+                for k in self.checkpoints! {
+                    tmp.append(k.toMap())
+                }
+                map["Checkpoints"] = tmp
+            }
             if self.desiredConfiguration != nil {
                 map["DesiredConfiguration"] = self.desiredConfiguration?.toMap()
             }
@@ -18108,6 +18364,22 @@ public class DescribeInstanceRefreshesResponseBody : Tea.TeaModel {
 
         public override func fromMap(_ dict: [String: Any?]?) -> Void {
             guard let dict else { return }
+            if let value = dict["CheckpointPauseTime"] as? Int32 {
+                self.checkpointPauseTime = value
+            }
+            if let value = dict["Checkpoints"] as? [Any?] {
+                var tmp : [DescribeInstanceRefreshesResponseBody.InstanceRefreshTasks.Checkpoints] = []
+                for v in value {
+                    if v != nil {
+                        var model = DescribeInstanceRefreshesResponseBody.InstanceRefreshTasks.Checkpoints()
+                        if v != nil {
+                            model.fromMap(v as? [String: Any?])
+                        }
+                        tmp.append(model)
+                    }
+                }
+                self.checkpoints = tmp
+            }
             if let value = dict["DesiredConfiguration"] as? [String: Any?] {
                 var model = DescribeInstanceRefreshesResponseBody.InstanceRefreshTasks.DesiredConfiguration()
                 model.fromMap(value)
@@ -40044,8 +40316,198 @@ public class SetInstancesProtectionResponse : Tea.TeaModel {
 }
 
 public class StartInstanceRefreshRequest : Tea.TeaModel {
+    public class Checkpoints : Tea.TeaModel {
+        public var percentage: Int32?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.percentage != nil {
+                map["Percentage"] = self.percentage!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["Percentage"] as? Int32 {
+                self.percentage = value
+            }
+        }
+    }
     public class DesiredConfiguration : Tea.TeaModel {
+        public class Containers : Tea.TeaModel {
+            public class EnvironmentVars : Tea.TeaModel {
+                public var fieldRefFieldPath: String?
+
+                public var key: String?
+
+                public var value: String?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.fieldRefFieldPath != nil {
+                        map["FieldRefFieldPath"] = self.fieldRefFieldPath!
+                    }
+                    if self.key != nil {
+                        map["Key"] = self.key!
+                    }
+                    if self.value != nil {
+                        map["Value"] = self.value!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                    guard let dict else { return }
+                    if let value = dict["FieldRefFieldPath"] as? String {
+                        self.fieldRefFieldPath = value
+                    }
+                    if let value = dict["Key"] as? String {
+                        self.key = value
+                    }
+                    if let value = dict["Value"] as? String {
+                        self.value = value
+                    }
+                }
+            }
+            public var args: [String]?
+
+            public var commands: [String]?
+
+            public var environmentVars: [StartInstanceRefreshRequest.DesiredConfiguration.Containers.EnvironmentVars]?
+
+            public var image: String?
+
+            public var name: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.args != nil {
+                    map["Args"] = self.args!
+                }
+                if self.commands != nil {
+                    map["Commands"] = self.commands!
+                }
+                if self.environmentVars != nil {
+                    var tmp : [Any] = []
+                    for k in self.environmentVars! {
+                        tmp.append(k.toMap())
+                    }
+                    map["EnvironmentVars"] = tmp
+                }
+                if self.image != nil {
+                    map["Image"] = self.image!
+                }
+                if self.name != nil {
+                    map["Name"] = self.name!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["Args"] as? [String] {
+                    self.args = value
+                }
+                if let value = dict["Commands"] as? [String] {
+                    self.commands = value
+                }
+                if let value = dict["EnvironmentVars"] as? [Any?] {
+                    var tmp : [StartInstanceRefreshRequest.DesiredConfiguration.Containers.EnvironmentVars] = []
+                    for v in value {
+                        if v != nil {
+                            var model = StartInstanceRefreshRequest.DesiredConfiguration.Containers.EnvironmentVars()
+                            if v != nil {
+                                model.fromMap(v as? [String: Any?])
+                            }
+                            tmp.append(model)
+                        }
+                    }
+                    self.environmentVars = tmp
+                }
+                if let value = dict["Image"] as? String {
+                    self.image = value
+                }
+                if let value = dict["Name"] as? String {
+                    self.name = value
+                }
+            }
+        }
+        public class LaunchTemplateOverrides : Tea.TeaModel {
+            public var instanceType: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.instanceType != nil {
+                    map["InstanceType"] = self.instanceType!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["InstanceType"] as? String {
+                    self.instanceType = value
+                }
+            }
+        }
+        public var containers: [StartInstanceRefreshRequest.DesiredConfiguration.Containers]?
+
         public var imageId: String?
+
+        public var launchTemplateId: String?
+
+        public var launchTemplateOverrides: [StartInstanceRefreshRequest.DesiredConfiguration.LaunchTemplateOverrides]?
+
+        public var launchTemplateVersion: String?
 
         public var scalingConfigurationId: String?
 
@@ -40063,8 +40525,28 @@ public class StartInstanceRefreshRequest : Tea.TeaModel {
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
+            if self.containers != nil {
+                var tmp : [Any] = []
+                for k in self.containers! {
+                    tmp.append(k.toMap())
+                }
+                map["Containers"] = tmp
+            }
             if self.imageId != nil {
                 map["ImageId"] = self.imageId!
+            }
+            if self.launchTemplateId != nil {
+                map["LaunchTemplateId"] = self.launchTemplateId!
+            }
+            if self.launchTemplateOverrides != nil {
+                var tmp : [Any] = []
+                for k in self.launchTemplateOverrides! {
+                    tmp.append(k.toMap())
+                }
+                map["LaunchTemplateOverrides"] = tmp
+            }
+            if self.launchTemplateVersion != nil {
+                map["LaunchTemplateVersion"] = self.launchTemplateVersion!
             }
             if self.scalingConfigurationId != nil {
                 map["ScalingConfigurationId"] = self.scalingConfigurationId!
@@ -40074,14 +40556,50 @@ public class StartInstanceRefreshRequest : Tea.TeaModel {
 
         public override func fromMap(_ dict: [String: Any?]?) -> Void {
             guard let dict else { return }
+            if let value = dict["Containers"] as? [Any?] {
+                var tmp : [StartInstanceRefreshRequest.DesiredConfiguration.Containers] = []
+                for v in value {
+                    if v != nil {
+                        var model = StartInstanceRefreshRequest.DesiredConfiguration.Containers()
+                        if v != nil {
+                            model.fromMap(v as? [String: Any?])
+                        }
+                        tmp.append(model)
+                    }
+                }
+                self.containers = tmp
+            }
             if let value = dict["ImageId"] as? String {
                 self.imageId = value
+            }
+            if let value = dict["LaunchTemplateId"] as? String {
+                self.launchTemplateId = value
+            }
+            if let value = dict["LaunchTemplateOverrides"] as? [Any?] {
+                var tmp : [StartInstanceRefreshRequest.DesiredConfiguration.LaunchTemplateOverrides] = []
+                for v in value {
+                    if v != nil {
+                        var model = StartInstanceRefreshRequest.DesiredConfiguration.LaunchTemplateOverrides()
+                        if v != nil {
+                            model.fromMap(v as? [String: Any?])
+                        }
+                        tmp.append(model)
+                    }
+                }
+                self.launchTemplateOverrides = tmp
+            }
+            if let value = dict["LaunchTemplateVersion"] as? String {
+                self.launchTemplateVersion = value
             }
             if let value = dict["ScalingConfigurationId"] as? String {
                 self.scalingConfigurationId = value
             }
         }
     }
+    public var checkpointPauseTime: Int32?
+
+    public var checkpoints: [StartInstanceRefreshRequest.Checkpoints]?
+
     public var clientToken: String?
 
     public var desiredConfiguration: StartInstanceRefreshRequest.DesiredConfiguration?
@@ -40115,6 +40633,16 @@ public class StartInstanceRefreshRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.checkpointPauseTime != nil {
+            map["CheckpointPauseTime"] = self.checkpointPauseTime!
+        }
+        if self.checkpoints != nil {
+            var tmp : [Any] = []
+            for k in self.checkpoints! {
+                tmp.append(k.toMap())
+            }
+            map["Checkpoints"] = tmp
+        }
         if self.clientToken != nil {
             map["ClientToken"] = self.clientToken!
         }
@@ -40147,6 +40675,22 @@ public class StartInstanceRefreshRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["CheckpointPauseTime"] as? Int32 {
+            self.checkpointPauseTime = value
+        }
+        if let value = dict["Checkpoints"] as? [Any?] {
+            var tmp : [StartInstanceRefreshRequest.Checkpoints] = []
+            for v in value {
+                if v != nil {
+                    var model = StartInstanceRefreshRequest.Checkpoints()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.checkpoints = tmp
+        }
         if let value = dict["ClientToken"] as? String {
             self.clientToken = value
         }
