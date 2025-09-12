@@ -196,6 +196,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.autoPay)) {
             query["AutoPay"] = request.autoPay!;
         }
+        if (!TeaUtils.Client.isUnset(request.displayConfig)) {
+            query["DisplayConfig"] = request.displayConfig ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.downBandwidthLimit)) {
             query["DownBandwidthLimit"] = request.downBandwidthLimit!;
         }

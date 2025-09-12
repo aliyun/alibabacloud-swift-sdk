@@ -924,6 +924,8 @@ public class BatchGetAcpConnectionTicketResponse : Tea.TeaModel {
 public class ChangeCloudPhoneNodeRequest : Tea.TeaModel {
     public var autoPay: Bool?
 
+    public var displayConfig: String?
+
     public var downBandwidthLimit: Int32?
 
     public var instanceType: String?
@@ -955,6 +957,9 @@ public class ChangeCloudPhoneNodeRequest : Tea.TeaModel {
         if self.autoPay != nil {
             map["AutoPay"] = self.autoPay!
         }
+        if self.displayConfig != nil {
+            map["DisplayConfig"] = self.displayConfig!
+        }
         if self.downBandwidthLimit != nil {
             map["DownBandwidthLimit"] = self.downBandwidthLimit!
         }
@@ -983,6 +988,9 @@ public class ChangeCloudPhoneNodeRequest : Tea.TeaModel {
         guard let dict else { return }
         if let value = dict["AutoPay"] as? Bool {
             self.autoPay = value
+        }
+        if let value = dict["DisplayConfig"] as? String {
+            self.displayConfig = value
         }
         if let value = dict["DownBandwidthLimit"] as? Int32 {
             self.downBandwidthLimit = value
@@ -7281,6 +7289,8 @@ public class DescribeAndroidInstancesResponseBody : Tea.TeaModel {
 
         public var instanceType: String?
 
+        public var internetStatus: String?
+
         public var keyPairId: String?
 
         public var memory: Int32?
@@ -7428,6 +7438,9 @@ public class DescribeAndroidInstancesResponseBody : Tea.TeaModel {
             }
             if self.instanceType != nil {
                 map["InstanceType"] = self.instanceType!
+            }
+            if self.internetStatus != nil {
+                map["InternetStatus"] = self.internetStatus!
             }
             if self.keyPairId != nil {
                 map["KeyPairId"] = self.keyPairId!
@@ -7608,6 +7621,9 @@ public class DescribeAndroidInstancesResponseBody : Tea.TeaModel {
             }
             if let value = dict["InstanceType"] as? String {
                 self.instanceType = value
+            }
+            if let value = dict["InternetStatus"] as? String {
+                self.internetStatus = value
             }
             if let value = dict["KeyPairId"] as? String {
                 self.keyPairId = value
@@ -8330,6 +8346,8 @@ public class DescribeBackupFilesResponseBody : Tea.TeaModel {
 
         public var status: String?
 
+        public var systemVersion: String?
+
         public var taskId: String?
 
         public var uploadEndpoint: String?
@@ -8398,6 +8416,9 @@ public class DescribeBackupFilesResponseBody : Tea.TeaModel {
             if self.status != nil {
                 map["Status"] = self.status!
             }
+            if self.systemVersion != nil {
+                map["SystemVersion"] = self.systemVersion!
+            }
             if self.taskId != nil {
                 map["TaskId"] = self.taskId!
             }
@@ -8459,6 +8480,9 @@ public class DescribeBackupFilesResponseBody : Tea.TeaModel {
             }
             if let value = dict["Status"] as? String {
                 self.status = value
+            }
+            if let value = dict["SystemVersion"] as? String {
+                self.systemVersion = value
             }
             if let value = dict["TaskId"] as? String {
                 self.taskId = value
