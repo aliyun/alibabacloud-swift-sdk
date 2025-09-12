@@ -30744,6 +30744,8 @@ public class GetDataServicePublishedApiResponseBody : Tea.TeaModel {
 
         public var scriptDetails: GetDataServicePublishedApiResponseBody.Data.ScriptDetails?
 
+        public var sqlMode: Int32?
+
         public var status: Int32?
 
         public var tenantId: Int64?
@@ -30819,6 +30821,9 @@ public class GetDataServicePublishedApiResponseBody : Tea.TeaModel {
             if self.scriptDetails != nil {
                 map["ScriptDetails"] = self.scriptDetails?.toMap()
             }
+            if self.sqlMode != nil {
+                map["SqlMode"] = self.sqlMode!
+            }
             if self.status != nil {
                 map["Status"] = self.status!
             }
@@ -30890,6 +30895,9 @@ public class GetDataServicePublishedApiResponseBody : Tea.TeaModel {
                 var model = GetDataServicePublishedApiResponseBody.Data.ScriptDetails()
                 model.fromMap(value)
                 self.scriptDetails = model
+            }
+            if let value = dict["SqlMode"] as? Int32 {
+                self.sqlMode = value
             }
             if let value = dict["Status"] as? Int32 {
                 self.status = value
