@@ -7022,6 +7022,8 @@ public class SetSubscriptionAttributesRequest : Tea.TeaModel {
 
     public var notifyStrategy: String?
 
+    public var stsRoleArn: String?
+
     public var subscriptionName: String?
 
     public var tenantRateLimitPolicy: SetSubscriptionAttributesRequest.TenantRateLimitPolicy?
@@ -7050,6 +7052,9 @@ public class SetSubscriptionAttributesRequest : Tea.TeaModel {
         if self.notifyStrategy != nil {
             map["NotifyStrategy"] = self.notifyStrategy!
         }
+        if self.stsRoleArn != nil {
+            map["StsRoleArn"] = self.stsRoleArn!
+        }
         if self.subscriptionName != nil {
             map["SubscriptionName"] = self.subscriptionName!
         }
@@ -7072,6 +7077,9 @@ public class SetSubscriptionAttributesRequest : Tea.TeaModel {
         if let value = dict["NotifyStrategy"] as? String {
             self.notifyStrategy = value
         }
+        if let value = dict["StsRoleArn"] as? String {
+            self.stsRoleArn = value
+        }
         if let value = dict["SubscriptionName"] as? String {
             self.subscriptionName = value
         }
@@ -7090,6 +7098,8 @@ public class SetSubscriptionAttributesShrinkRequest : Tea.TeaModel {
     public var dlqPolicyShrink: String?
 
     public var notifyStrategy: String?
+
+    public var stsRoleArn: String?
 
     public var subscriptionName: String?
 
@@ -7117,6 +7127,9 @@ public class SetSubscriptionAttributesShrinkRequest : Tea.TeaModel {
         if self.notifyStrategy != nil {
             map["NotifyStrategy"] = self.notifyStrategy!
         }
+        if self.stsRoleArn != nil {
+            map["StsRoleArn"] = self.stsRoleArn!
+        }
         if self.subscriptionName != nil {
             map["SubscriptionName"] = self.subscriptionName!
         }
@@ -7136,6 +7149,9 @@ public class SetSubscriptionAttributesShrinkRequest : Tea.TeaModel {
         }
         if let value = dict["NotifyStrategy"] as? String {
             self.notifyStrategy = value
+        }
+        if let value = dict["StsRoleArn"] as? String {
+            self.stsRoleArn = value
         }
         if let value = dict["SubscriptionName"] as? String {
             self.subscriptionName = value
