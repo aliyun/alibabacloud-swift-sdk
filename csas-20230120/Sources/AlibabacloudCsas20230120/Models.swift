@@ -2045,7 +2045,13 @@ public class OpenStructSaseUserSimple : Tea.TeaModel {
     public class Departments : Tea.TeaModel {
         public var departmentId: String?
 
+        public var fullDepartmentIdPath: String?
+
+        public var fullDn: String?
+
         public var name: String?
+
+        public var parentDepartmentId: String?
 
         public override init() {
             super.init()
@@ -2064,8 +2070,17 @@ public class OpenStructSaseUserSimple : Tea.TeaModel {
             if self.departmentId != nil {
                 map["DepartmentId"] = self.departmentId!
             }
+            if self.fullDepartmentIdPath != nil {
+                map["FullDepartmentIdPath"] = self.fullDepartmentIdPath!
+            }
+            if self.fullDn != nil {
+                map["FullDn"] = self.fullDn!
+            }
             if self.name != nil {
                 map["Name"] = self.name!
+            }
+            if self.parentDepartmentId != nil {
+                map["ParentDepartmentId"] = self.parentDepartmentId!
             }
             return map
         }
@@ -2075,8 +2090,17 @@ public class OpenStructSaseUserSimple : Tea.TeaModel {
             if let value = dict["DepartmentId"] as? String {
                 self.departmentId = value
             }
+            if let value = dict["FullDepartmentIdPath"] as? String {
+                self.fullDepartmentIdPath = value
+            }
+            if let value = dict["FullDn"] as? String {
+                self.fullDn = value
+            }
             if let value = dict["Name"] as? String {
                 self.name = value
+            }
+            if let value = dict["ParentDepartmentId"] as? String {
+                self.parentDepartmentId = value
             }
         }
     }
@@ -15900,6 +15924,8 @@ public class GetUserDeviceResponseBody : Tea.TeaModel {
 
         public var appVersion: String?
 
+        public var autoLoginStatus: String?
+
         public var CPU: String?
 
         public var createTime: String?
@@ -15985,6 +16011,9 @@ public class GetUserDeviceResponseBody : Tea.TeaModel {
             }
             if self.appVersion != nil {
                 map["AppVersion"] = self.appVersion!
+            }
+            if self.autoLoginStatus != nil {
+                map["AutoLoginStatus"] = self.autoLoginStatus!
             }
             if self.CPU != nil {
                 map["CPU"] = self.CPU!
@@ -16103,6 +16132,9 @@ public class GetUserDeviceResponseBody : Tea.TeaModel {
             }
             if let value = dict["AppVersion"] as? String {
                 self.appVersion = value
+            }
+            if let value = dict["AutoLoginStatus"] as? String {
+                self.autoLoginStatus = value
             }
             if let value = dict["CPU"] as? String {
                 self.CPU = value
@@ -28625,6 +28657,8 @@ public class ListUserDevicesRequest : Tea.TeaModel {
 
     public var appVersions: [String]?
 
+    public var autoLoginStatuses: [String]?
+
     public var currentPage: Int64?
 
     public var department: String?
@@ -28686,6 +28720,9 @@ public class ListUserDevicesRequest : Tea.TeaModel {
         }
         if self.appVersions != nil {
             map["AppVersions"] = self.appVersions!
+        }
+        if self.autoLoginStatuses != nil {
+            map["AutoLoginStatuses"] = self.autoLoginStatuses!
         }
         if self.currentPage != nil {
             map["CurrentPage"] = self.currentPage!
@@ -28760,6 +28797,9 @@ public class ListUserDevicesRequest : Tea.TeaModel {
         }
         if let value = dict["AppVersions"] as? [String] {
             self.appVersions = value
+        }
+        if let value = dict["AutoLoginStatuses"] as? [String] {
+            self.autoLoginStatuses = value
         }
         if let value = dict["CurrentPage"] as? Int64 {
             self.currentPage = value
@@ -28871,6 +28911,8 @@ public class ListUserDevicesResponseBody : Tea.TeaModel {
 
         public var appVersion: String?
 
+        public var autoLoginStatus: String?
+
         public var CPU: String?
 
         public var createTime: String?
@@ -28954,6 +28996,9 @@ public class ListUserDevicesResponseBody : Tea.TeaModel {
             }
             if self.appVersion != nil {
                 map["AppVersion"] = self.appVersion!
+            }
+            if self.autoLoginStatus != nil {
+                map["AutoLoginStatus"] = self.autoLoginStatus!
             }
             if self.CPU != nil {
                 map["CPU"] = self.CPU!
@@ -29065,6 +29110,9 @@ public class ListUserDevicesResponseBody : Tea.TeaModel {
             }
             if let value = dict["AppVersion"] as? String {
                 self.appVersion = value
+            }
+            if let value = dict["AutoLoginStatus"] as? String {
+                self.autoLoginStatus = value
             }
             if let value = dict["CPU"] as? String {
                 self.CPU = value
