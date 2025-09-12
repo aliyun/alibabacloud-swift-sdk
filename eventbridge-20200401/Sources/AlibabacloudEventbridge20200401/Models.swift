@@ -345,6 +345,37 @@ public class SinkBaiLianParameters : Tea.TeaModel {
     }
 }
 
+public class SinkDataWorksTriggerParameters : Tea.TeaModel {
+    public var enable: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.enable != nil {
+            map["Enable"] = self.enable!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["Enable"] as? String {
+            self.enable = value
+        }
+    }
+}
+
 public class SourceMySQLParameters : Tea.TeaModel {
     public var databaseName: String?
 
@@ -9746,6 +9777,8 @@ public class CreateEventStreamingRequest : Tea.TeaModel {
 
         public var sinkDataHubParameters: CreateEventStreamingRequest.Sink.SinkDataHubParameters?
 
+        public var sinkDataWorksTriggerParameters: SinkDataWorksTriggerParameters?
+
         public var sinkDorisParameters: CreateEventStreamingRequest.Sink.SinkDorisParameters?
 
         public var sinkFcParameters: CreateEventStreamingRequest.Sink.SinkFcParameters?
@@ -9785,6 +9818,7 @@ public class CreateEventStreamingRequest : Tea.TeaModel {
             try self.sinkCustomizedKafkaParameters?.validate()
             try self.sinkDashVectorParameters?.validate()
             try self.sinkDataHubParameters?.validate()
+            try self.sinkDataWorksTriggerParameters?.validate()
             try self.sinkDorisParameters?.validate()
             try self.sinkFcParameters?.validate()
             try self.sinkFnfParameters?.validate()
@@ -9820,6 +9854,9 @@ public class CreateEventStreamingRequest : Tea.TeaModel {
             }
             if self.sinkDataHubParameters != nil {
                 map["SinkDataHubParameters"] = self.sinkDataHubParameters?.toMap()
+            }
+            if self.sinkDataWorksTriggerParameters != nil {
+                map["SinkDataWorksTriggerParameters"] = self.sinkDataWorksTriggerParameters?.toMap()
             }
             if self.sinkDorisParameters != nil {
                 map["SinkDorisParameters"] = self.sinkDorisParameters?.toMap()
@@ -9893,6 +9930,11 @@ public class CreateEventStreamingRequest : Tea.TeaModel {
                 var model = CreateEventStreamingRequest.Sink.SinkDataHubParameters()
                 model.fromMap(value)
                 self.sinkDataHubParameters = model
+            }
+            if let value = dict["SinkDataWorksTriggerParameters"] as? [String: Any?] {
+                var model = SinkDataWorksTriggerParameters()
+                model.fromMap(value)
+                self.sinkDataWorksTriggerParameters = model
             }
             if let value = dict["SinkDorisParameters"] as? [String: Any?] {
                 var model = CreateEventStreamingRequest.Sink.SinkDorisParameters()
@@ -22843,6 +22885,8 @@ public class GetEventStreamingResponseBody : Tea.TeaModel {
 
             public var sinkDataHubParameters: GetEventStreamingResponseBody.Data.Sink.SinkDataHubParameters?
 
+            public var sinkDataWorksTriggerParameters: SinkDataWorksTriggerParameters?
+
             public var sinkDorisParameters: GetEventStreamingResponseBody.Data.Sink.SinkDorisParameters?
 
             public var sinkFcParameters: GetEventStreamingResponseBody.Data.Sink.SinkFcParameters?
@@ -22880,6 +22924,7 @@ public class GetEventStreamingResponseBody : Tea.TeaModel {
                 try self.sinkCustomizedKafkaParameters?.validate()
                 try self.sinkDashVectorParameters?.validate()
                 try self.sinkDataHubParameters?.validate()
+                try self.sinkDataWorksTriggerParameters?.validate()
                 try self.sinkDorisParameters?.validate()
                 try self.sinkFcParameters?.validate()
                 try self.sinkFnfParameters?.validate()
@@ -22914,6 +22959,9 @@ public class GetEventStreamingResponseBody : Tea.TeaModel {
                 }
                 if self.sinkDataHubParameters != nil {
                     map["SinkDataHubParameters"] = self.sinkDataHubParameters?.toMap()
+                }
+                if self.sinkDataWorksTriggerParameters != nil {
+                    map["SinkDataWorksTriggerParameters"] = self.sinkDataWorksTriggerParameters?.toMap()
                 }
                 if self.sinkDorisParameters != nil {
                     map["SinkDorisParameters"] = self.sinkDorisParameters?.toMap()
@@ -22984,6 +23032,11 @@ public class GetEventStreamingResponseBody : Tea.TeaModel {
                     var model = GetEventStreamingResponseBody.Data.Sink.SinkDataHubParameters()
                     model.fromMap(value)
                     self.sinkDataHubParameters = model
+                }
+                if let value = dict["SinkDataWorksTriggerParameters"] as? [String: Any?] {
+                    var model = SinkDataWorksTriggerParameters()
+                    model.fromMap(value)
+                    self.sinkDataWorksTriggerParameters = model
                 }
                 if let value = dict["SinkDorisParameters"] as? [String: Any?] {
                     var model = GetEventStreamingResponseBody.Data.Sink.SinkDorisParameters()
@@ -33240,6 +33293,8 @@ public class ListEventStreamingsResponseBody : Tea.TeaModel {
 
                 public var sinkDataHubParameters: ListEventStreamingsResponseBody.Data.EventStreamings.Sink.SinkDataHubParameters?
 
+                public var sinkDataWorksTriggerParameters: SinkDataWorksTriggerParameters?
+
                 public var sinkDorisParameters: ListEventStreamingsResponseBody.Data.EventStreamings.Sink.SinkDorisParameters?
 
                 public var sinkFcParameters: ListEventStreamingsResponseBody.Data.EventStreamings.Sink.SinkFcParameters?
@@ -33277,6 +33332,7 @@ public class ListEventStreamingsResponseBody : Tea.TeaModel {
                     try self.sinkCustomizedKafkaParameters?.validate()
                     try self.sinkDashVectorParameters?.validate()
                     try self.sinkDataHubParameters?.validate()
+                    try self.sinkDataWorksTriggerParameters?.validate()
                     try self.sinkDorisParameters?.validate()
                     try self.sinkFcParameters?.validate()
                     try self.sinkFnfParameters?.validate()
@@ -33311,6 +33367,9 @@ public class ListEventStreamingsResponseBody : Tea.TeaModel {
                     }
                     if self.sinkDataHubParameters != nil {
                         map["SinkDataHubParameters"] = self.sinkDataHubParameters?.toMap()
+                    }
+                    if self.sinkDataWorksTriggerParameters != nil {
+                        map["SinkDataWorksTriggerParameters"] = self.sinkDataWorksTriggerParameters?.toMap()
                     }
                     if self.sinkDorisParameters != nil {
                         map["SinkDorisParameters"] = self.sinkDorisParameters?.toMap()
@@ -33381,6 +33440,11 @@ public class ListEventStreamingsResponseBody : Tea.TeaModel {
                         var model = ListEventStreamingsResponseBody.Data.EventStreamings.Sink.SinkDataHubParameters()
                         model.fromMap(value)
                         self.sinkDataHubParameters = model
+                    }
+                    if let value = dict["SinkDataWorksTriggerParameters"] as? [String: Any?] {
+                        var model = SinkDataWorksTriggerParameters()
+                        model.fromMap(value)
+                        self.sinkDataWorksTriggerParameters = model
                     }
                     if let value = dict["SinkDorisParameters"] as? [String: Any?] {
                         var model = ListEventStreamingsResponseBody.Data.EventStreamings.Sink.SinkDorisParameters()
@@ -48535,6 +48599,8 @@ public class UpdateEventStreamingRequest : Tea.TeaModel {
 
         public var sinkDataHubParameters: UpdateEventStreamingRequest.Sink.SinkDataHubParameters?
 
+        public var sinkDataWorksTriggerParameters: SinkDataWorksTriggerParameters?
+
         public var sinkDorisParameters: UpdateEventStreamingRequest.Sink.SinkDorisParameters?
 
         public var sinkFcParameters: UpdateEventStreamingRequest.Sink.SinkFcParameters?
@@ -48574,6 +48640,7 @@ public class UpdateEventStreamingRequest : Tea.TeaModel {
             try self.sinkCustomizedKafkaParameters?.validate()
             try self.sinkDashVectorParameters?.validate()
             try self.sinkDataHubParameters?.validate()
+            try self.sinkDataWorksTriggerParameters?.validate()
             try self.sinkDorisParameters?.validate()
             try self.sinkFcParameters?.validate()
             try self.sinkFnfParameters?.validate()
@@ -48609,6 +48676,9 @@ public class UpdateEventStreamingRequest : Tea.TeaModel {
             }
             if self.sinkDataHubParameters != nil {
                 map["SinkDataHubParameters"] = self.sinkDataHubParameters?.toMap()
+            }
+            if self.sinkDataWorksTriggerParameters != nil {
+                map["SinkDataWorksTriggerParameters"] = self.sinkDataWorksTriggerParameters?.toMap()
             }
             if self.sinkDorisParameters != nil {
                 map["SinkDorisParameters"] = self.sinkDorisParameters?.toMap()
@@ -48682,6 +48752,11 @@ public class UpdateEventStreamingRequest : Tea.TeaModel {
                 var model = UpdateEventStreamingRequest.Sink.SinkDataHubParameters()
                 model.fromMap(value)
                 self.sinkDataHubParameters = model
+            }
+            if let value = dict["SinkDataWorksTriggerParameters"] as? [String: Any?] {
+                var model = SinkDataWorksTriggerParameters()
+                model.fromMap(value)
+                self.sinkDataWorksTriggerParameters = model
             }
             if let value = dict["SinkDorisParameters"] as? [String: Any?] {
                 var model = UpdateEventStreamingRequest.Sink.SinkDorisParameters()
