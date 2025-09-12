@@ -35699,6 +35699,8 @@ public class DescribeSQLPatternsResponse : Tea.TeaModel {
 public class DescribeSQLWebSocketDomainRequest : Tea.TeaModel {
     public var DBClusterId: String?
 
+    public var module: String?
+
     public var regionId: String?
 
     public override init() {
@@ -35718,6 +35720,9 @@ public class DescribeSQLWebSocketDomainRequest : Tea.TeaModel {
         if self.DBClusterId != nil {
             map["DBClusterId"] = self.DBClusterId!
         }
+        if self.module != nil {
+            map["Module"] = self.module!
+        }
         if self.regionId != nil {
             map["RegionId"] = self.regionId!
         }
@@ -35728,6 +35733,9 @@ public class DescribeSQLWebSocketDomainRequest : Tea.TeaModel {
         guard let dict else { return }
         if let value = dict["DBClusterId"] as? String {
             self.DBClusterId = value
+        }
+        if let value = dict["Module"] as? String {
+            self.module = value
         }
         if let value = dict["RegionId"] as? String {
             self.regionId = value
