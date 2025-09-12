@@ -72,6 +72,12 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.adminPassword)) {
             body["AdminPassword"] = request.adminPassword ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.agentNodeGroup)) {
+            body["AgentNodeGroup"] = request.agentNodeGroup!;
+        }
+        if (!TeaUtils.Client.isUnset(request.autoPay)) {
+            body["AutoPay"] = request.autoPay!;
+        }
         if (!TeaUtils.Client.isUnset(request.autoRenew)) {
             body["AutoRenew"] = request.autoRenew!;
         }
@@ -89,6 +95,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.frontendNodeGroups)) {
             body["FrontendNodeGroups"] = request.frontendNodeGroups ?? [];
+        }
+        if (!TeaUtils.Client.isUnset(request.gatewayType)) {
+            body["GatewayType"] = request.gatewayType ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.instanceName)) {
             body["InstanceName"] = request.instanceName ?? "";
@@ -425,6 +434,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func modifyDiskSizeWithOptions(_ request: ModifyDiskSizeRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> ModifyDiskSizeResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.fastMode)) {
+            query["FastMode"] = request.fastMode!;
+        }
         if (!TeaUtils.Client.isUnset(request.instanceId)) {
             query["InstanceId"] = request.instanceId ?? "";
         }

@@ -324,6 +324,36 @@ public class ChangeResourceGroupResponse : Tea.TeaModel {
 }
 
 public class CreateInstanceV1Request : Tea.TeaModel {
+    public class AgentNodeGroup : Tea.TeaModel {
+        public var cu: Int32?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.cu != nil {
+                map["cu"] = self.cu!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["cu"] as? Int32 {
+                self.cu = value
+            }
+        }
+    }
     public class BackendNodeGroups : Tea.TeaModel {
         public var cu: Int32?
 
@@ -660,6 +690,10 @@ public class CreateInstanceV1Request : Tea.TeaModel {
     }
     public var adminPassword: String?
 
+    public var agentNodeGroup: CreateInstanceV1Request.AgentNodeGroup?
+
+    public var autoPay: Bool?
+
     public var autoRenew: Bool?
 
     public var backendNodeGroups: [CreateInstanceV1Request.BackendNodeGroups]?
@@ -671,6 +705,8 @@ public class CreateInstanceV1Request : Tea.TeaModel {
     public var encrypted: Bool?
 
     public var frontendNodeGroups: [CreateInstanceV1Request.FrontendNodeGroups]?
+
+    public var gatewayType: String?
 
     public var instanceName: String?
 
@@ -714,12 +750,19 @@ public class CreateInstanceV1Request : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
+        try self.agentNodeGroup?.validate()
     }
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
         if self.adminPassword != nil {
             map["AdminPassword"] = self.adminPassword!
+        }
+        if self.agentNodeGroup != nil {
+            map["AgentNodeGroup"] = self.agentNodeGroup?.toMap()
+        }
+        if self.autoPay != nil {
+            map["AutoPay"] = self.autoPay!
         }
         if self.autoRenew != nil {
             map["AutoRenew"] = self.autoRenew!
@@ -746,6 +789,9 @@ public class CreateInstanceV1Request : Tea.TeaModel {
                 tmp.append(k.toMap())
             }
             map["FrontendNodeGroups"] = tmp
+        }
+        if self.gatewayType != nil {
+            map["GatewayType"] = self.gatewayType!
         }
         if self.instanceName != nil {
             map["InstanceName"] = self.instanceName!
@@ -815,6 +861,14 @@ public class CreateInstanceV1Request : Tea.TeaModel {
         if let value = dict["AdminPassword"] as? String {
             self.adminPassword = value
         }
+        if let value = dict["AgentNodeGroup"] as? [String: Any?] {
+            var model = CreateInstanceV1Request.AgentNodeGroup()
+            model.fromMap(value)
+            self.agentNodeGroup = model
+        }
+        if let value = dict["AutoPay"] as? Bool {
+            self.autoPay = value
+        }
         if let value = dict["AutoRenew"] as? Bool {
             self.autoRenew = value
         }
@@ -852,6 +906,9 @@ public class CreateInstanceV1Request : Tea.TeaModel {
                 }
             }
             self.frontendNodeGroups = tmp
+        }
+        if let value = dict["GatewayType"] as? String {
+            self.gatewayType = value
         }
         if let value = dict["InstanceName"] as? String {
             self.instanceName = value
@@ -2762,6 +2819,8 @@ public class ModifyDiskPerformanceLevelResponse : Tea.TeaModel {
 }
 
 public class ModifyDiskSizeRequest : Tea.TeaModel {
+    public var fastMode: Bool?
+
     public var instanceId: String?
 
     public var nodeGroupId: String?
@@ -2784,6 +2843,9 @@ public class ModifyDiskSizeRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.fastMode != nil {
+            map["FastMode"] = self.fastMode!
+        }
         if self.instanceId != nil {
             map["InstanceId"] = self.instanceId!
         }
@@ -2801,6 +2863,9 @@ public class ModifyDiskSizeRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["FastMode"] as? Bool {
+            self.fastMode = value
+        }
         if let value = dict["InstanceId"] as? String {
             self.instanceId = value
         }
