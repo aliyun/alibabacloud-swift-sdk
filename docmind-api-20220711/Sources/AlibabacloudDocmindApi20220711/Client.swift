@@ -1291,10 +1291,19 @@ open class Client : AlibabacloudOpenApi.Client {
         try TeaUtils.Client.validateModel(tmpReq)
         var request: SubmitDocParserJobShrinkRequest = SubmitDocParserJobShrinkRequest([:])
         AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.customOssConfig)) {
+            request.customOssConfigShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.customOssConfig, "CustomOssConfig", "json")
+        }
+        if (!TeaUtils.Client.isUnset(tmpReq.LLMParam)) {
+            request.LLMParamShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.LLMParam, "LLMParam", "json")
+        }
         if (!TeaUtils.Client.isUnset(tmpReq.multimediaParameters)) {
             request.multimediaParametersShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.multimediaParameters, "MultimediaParameters", "json")
         }
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.customOssConfigShrink)) {
+            query["CustomOssConfig"] = request.customOssConfigShrink ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.enhancementMode)) {
             query["EnhancementMode"] = request.enhancementMode ?? "";
         }
@@ -1309,6 +1318,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.formulaEnhancement)) {
             query["FormulaEnhancement"] = request.formulaEnhancement!;
+        }
+        if (!TeaUtils.Client.isUnset(request.LLMParamShrink)) {
+            query["LLMParam"] = request.LLMParamShrink ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.llmEnhancement)) {
             query["LlmEnhancement"] = request.llmEnhancement!;

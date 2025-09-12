@@ -4109,6 +4109,90 @@ public class SubmitDigitalDocStructureJobResponse : Tea.TeaModel {
 }
 
 public class SubmitDocParserJobRequest : Tea.TeaModel {
+    public class CustomOssConfig : Tea.TeaModel {
+        public var accessId: String?
+
+        public var accessKeySecret: String?
+
+        public var stsToken: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.accessId != nil {
+                map["AccessId"] = self.accessId!
+            }
+            if self.accessKeySecret != nil {
+                map["AccessKeySecret"] = self.accessKeySecret!
+            }
+            if self.stsToken != nil {
+                map["StsToken"] = self.stsToken!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["AccessId"] as? String {
+                self.accessId = value
+            }
+            if let value = dict["AccessKeySecret"] as? String {
+                self.accessKeySecret = value
+            }
+            if let value = dict["StsToken"] as? String {
+                self.stsToken = value
+            }
+        }
+    }
+    public class LLMParam : Tea.TeaModel {
+        public var model: String?
+
+        public var prompt: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.model != nil {
+                map["Model"] = self.model!
+            }
+            if self.prompt != nil {
+                map["Prompt"] = self.prompt!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["Model"] as? String {
+                self.model = value
+            }
+            if let value = dict["Prompt"] as? String {
+                self.prompt = value
+            }
+        }
+    }
     public class MultimediaParameters : Tea.TeaModel {
         public var enableSynopsisParse: Bool?
 
@@ -4147,6 +4231,8 @@ public class SubmitDocParserJobRequest : Tea.TeaModel {
             }
         }
     }
+    public var customOssConfig: SubmitDocParserJobRequest.CustomOssConfig?
+
     public var enhancementMode: String?
 
     public var fileName: String?
@@ -4156,6 +4242,8 @@ public class SubmitDocParserJobRequest : Tea.TeaModel {
     public var fileUrl: String?
 
     public var formulaEnhancement: Bool?
+
+    public var LLMParam: SubmitDocParserJobRequest.LLMParam?
 
     public var llmEnhancement: Bool?
 
@@ -4181,11 +4269,16 @@ public class SubmitDocParserJobRequest : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
+        try self.customOssConfig?.validate()
+        try self.LLMParam?.validate()
         try self.multimediaParameters?.validate()
     }
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.customOssConfig != nil {
+            map["CustomOssConfig"] = self.customOssConfig?.toMap()
+        }
         if self.enhancementMode != nil {
             map["EnhancementMode"] = self.enhancementMode!
         }
@@ -4200,6 +4293,9 @@ public class SubmitDocParserJobRequest : Tea.TeaModel {
         }
         if self.formulaEnhancement != nil {
             map["FormulaEnhancement"] = self.formulaEnhancement!
+        }
+        if self.LLMParam != nil {
+            map["LLMParam"] = self.LLMParam?.toMap()
         }
         if self.llmEnhancement != nil {
             map["LlmEnhancement"] = self.llmEnhancement!
@@ -4227,6 +4323,11 @@ public class SubmitDocParserJobRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["CustomOssConfig"] as? [String: Any?] {
+            var model = SubmitDocParserJobRequest.CustomOssConfig()
+            model.fromMap(value)
+            self.customOssConfig = model
+        }
         if let value = dict["EnhancementMode"] as? String {
             self.enhancementMode = value
         }
@@ -4241,6 +4342,11 @@ public class SubmitDocParserJobRequest : Tea.TeaModel {
         }
         if let value = dict["FormulaEnhancement"] as? Bool {
             self.formulaEnhancement = value
+        }
+        if let value = dict["LLMParam"] as? [String: Any?] {
+            var model = SubmitDocParserJobRequest.LLMParam()
+            model.fromMap(value)
+            self.LLMParam = model
         }
         if let value = dict["LlmEnhancement"] as? Bool {
             self.llmEnhancement = value
@@ -4269,6 +4375,90 @@ public class SubmitDocParserJobRequest : Tea.TeaModel {
 }
 
 public class SubmitDocParserJobAdvanceRequest : Tea.TeaModel {
+    public class CustomOssConfig : Tea.TeaModel {
+        public var accessId: String?
+
+        public var accessKeySecret: String?
+
+        public var stsToken: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.accessId != nil {
+                map["AccessId"] = self.accessId!
+            }
+            if self.accessKeySecret != nil {
+                map["AccessKeySecret"] = self.accessKeySecret!
+            }
+            if self.stsToken != nil {
+                map["StsToken"] = self.stsToken!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["AccessId"] as? String {
+                self.accessId = value
+            }
+            if let value = dict["AccessKeySecret"] as? String {
+                self.accessKeySecret = value
+            }
+            if let value = dict["StsToken"] as? String {
+                self.stsToken = value
+            }
+        }
+    }
+    public class LLMParam : Tea.TeaModel {
+        public var model: String?
+
+        public var prompt: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.model != nil {
+                map["Model"] = self.model!
+            }
+            if self.prompt != nil {
+                map["Prompt"] = self.prompt!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["Model"] as? String {
+                self.model = value
+            }
+            if let value = dict["Prompt"] as? String {
+                self.prompt = value
+            }
+        }
+    }
     public class MultimediaParameters : Tea.TeaModel {
         public var enableSynopsisParse: Bool?
 
@@ -4307,6 +4497,8 @@ public class SubmitDocParserJobAdvanceRequest : Tea.TeaModel {
             }
         }
     }
+    public var customOssConfig: SubmitDocParserJobAdvanceRequest.CustomOssConfig?
+
     public var enhancementMode: String?
 
     public var fileName: String?
@@ -4316,6 +4508,8 @@ public class SubmitDocParserJobAdvanceRequest : Tea.TeaModel {
     public var fileUrlObject: InputStream?
 
     public var formulaEnhancement: Bool?
+
+    public var LLMParam: SubmitDocParserJobAdvanceRequest.LLMParam?
 
     public var llmEnhancement: Bool?
 
@@ -4341,11 +4535,16 @@ public class SubmitDocParserJobAdvanceRequest : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
+        try self.customOssConfig?.validate()
+        try self.LLMParam?.validate()
         try self.multimediaParameters?.validate()
     }
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.customOssConfig != nil {
+            map["CustomOssConfig"] = self.customOssConfig?.toMap()
+        }
         if self.enhancementMode != nil {
             map["EnhancementMode"] = self.enhancementMode!
         }
@@ -4360,6 +4559,9 @@ public class SubmitDocParserJobAdvanceRequest : Tea.TeaModel {
         }
         if self.formulaEnhancement != nil {
             map["FormulaEnhancement"] = self.formulaEnhancement!
+        }
+        if self.LLMParam != nil {
+            map["LLMParam"] = self.LLMParam?.toMap()
         }
         if self.llmEnhancement != nil {
             map["LlmEnhancement"] = self.llmEnhancement!
@@ -4387,6 +4589,11 @@ public class SubmitDocParserJobAdvanceRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["CustomOssConfig"] as? [String: Any?] {
+            var model = SubmitDocParserJobAdvanceRequest.CustomOssConfig()
+            model.fromMap(value)
+            self.customOssConfig = model
+        }
         if let value = dict["EnhancementMode"] as? String {
             self.enhancementMode = value
         }
@@ -4401,6 +4608,11 @@ public class SubmitDocParserJobAdvanceRequest : Tea.TeaModel {
         }
         if let value = dict["FormulaEnhancement"] as? Bool {
             self.formulaEnhancement = value
+        }
+        if let value = dict["LLMParam"] as? [String: Any?] {
+            var model = SubmitDocParserJobAdvanceRequest.LLMParam()
+            model.fromMap(value)
+            self.LLMParam = model
         }
         if let value = dict["LlmEnhancement"] as? Bool {
             self.llmEnhancement = value
@@ -4429,6 +4641,8 @@ public class SubmitDocParserJobAdvanceRequest : Tea.TeaModel {
 }
 
 public class SubmitDocParserJobShrinkRequest : Tea.TeaModel {
+    public var customOssConfigShrink: String?
+
     public var enhancementMode: String?
 
     public var fileName: String?
@@ -4438,6 +4652,8 @@ public class SubmitDocParserJobShrinkRequest : Tea.TeaModel {
     public var fileUrl: String?
 
     public var formulaEnhancement: Bool?
+
+    public var LLMParamShrink: String?
 
     public var llmEnhancement: Bool?
 
@@ -4467,6 +4683,9 @@ public class SubmitDocParserJobShrinkRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.customOssConfigShrink != nil {
+            map["CustomOssConfig"] = self.customOssConfigShrink!
+        }
         if self.enhancementMode != nil {
             map["EnhancementMode"] = self.enhancementMode!
         }
@@ -4481,6 +4700,9 @@ public class SubmitDocParserJobShrinkRequest : Tea.TeaModel {
         }
         if self.formulaEnhancement != nil {
             map["FormulaEnhancement"] = self.formulaEnhancement!
+        }
+        if self.LLMParamShrink != nil {
+            map["LLMParam"] = self.LLMParamShrink!
         }
         if self.llmEnhancement != nil {
             map["LlmEnhancement"] = self.llmEnhancement!
@@ -4508,6 +4730,9 @@ public class SubmitDocParserJobShrinkRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["CustomOssConfig"] as? String {
+            self.customOssConfigShrink = value
+        }
         if let value = dict["EnhancementMode"] as? String {
             self.enhancementMode = value
         }
@@ -4522,6 +4747,9 @@ public class SubmitDocParserJobShrinkRequest : Tea.TeaModel {
         }
         if let value = dict["FormulaEnhancement"] as? Bool {
             self.formulaEnhancement = value
+        }
+        if let value = dict["LLMParam"] as? String {
+            self.LLMParamShrink = value
         }
         if let value = dict["LlmEnhancement"] as? Bool {
             self.llmEnhancement = value
