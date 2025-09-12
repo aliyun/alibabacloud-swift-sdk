@@ -1735,6 +1735,98 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getLindormV2InstanceForTerraformWithOptions(_ request: GetLindormV2InstanceForTerraformRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> GetLindormV2InstanceForTerraformResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.instanceId)) {
+            query["InstanceId"] = request.instanceId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.ownerAccount)) {
+            query["OwnerAccount"] = request.ownerAccount ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.ownerId)) {
+            query["OwnerId"] = request.ownerId!;
+        }
+        if (!TeaUtils.Client.isUnset(request.resourceOwnerAccount)) {
+            query["ResourceOwnerAccount"] = request.resourceOwnerAccount ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.resourceOwnerId)) {
+            query["ResourceOwnerId"] = request.resourceOwnerId!;
+        }
+        if (!TeaUtils.Client.isUnset(request.securityToken)) {
+            query["SecurityToken"] = request.securityToken ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "GetLindormV2InstanceForTerraform",
+            "version": "2020-06-15",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(GetLindormV2InstanceForTerraformResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getLindormV2InstanceForTerraform(_ request: GetLindormV2InstanceForTerraformRequest) async throws -> GetLindormV2InstanceForTerraformResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await getLindormV2InstanceForTerraformWithOptions(request as! GetLindormV2InstanceForTerraformRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getLindormV2InstanceSecurityGroupsWithOptions(_ request: GetLindormV2InstanceSecurityGroupsRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> GetLindormV2InstanceSecurityGroupsResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.instanceId)) {
+            query["InstanceId"] = request.instanceId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.ownerAccount)) {
+            query["OwnerAccount"] = request.ownerAccount ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.ownerId)) {
+            query["OwnerId"] = request.ownerId!;
+        }
+        if (!TeaUtils.Client.isUnset(request.resourceOwnerAccount)) {
+            query["ResourceOwnerAccount"] = request.resourceOwnerAccount ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.resourceOwnerId)) {
+            query["ResourceOwnerId"] = request.resourceOwnerId!;
+        }
+        if (!TeaUtils.Client.isUnset(request.securityToken)) {
+            query["SecurityToken"] = request.securityToken ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "GetLindormV2InstanceSecurityGroups",
+            "version": "2020-06-15",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(GetLindormV2InstanceSecurityGroupsResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getLindormV2InstanceSecurityGroups(_ request: GetLindormV2InstanceSecurityGroupsRequest) async throws -> GetLindormV2InstanceSecurityGroupsResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await getLindormV2InstanceSecurityGroupsWithOptions(request as! GetLindormV2InstanceSecurityGroupsRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func getLindormV2StorageUsageWithOptions(_ request: GetLindormV2StorageUsageRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> GetLindormV2StorageUsageResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
@@ -2090,6 +2182,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.arbitraryZoneId)) {
             query["ArbitraryZoneId"] = request.arbitraryZoneId ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.dryRun)) {
+            query["DryRun"] = request.dryRun!;
+        }
         if (!TeaUtils.Client.isUnset(request.instanceId)) {
             query["InstanceId"] = request.instanceId ?? "";
         }
@@ -2428,6 +2523,55 @@ open class Client : AlibabacloudOpenApi.Client {
     public func modifyLindormV2Instance(_ request: ModifyLindormV2InstanceRequest) async throws -> ModifyLindormV2InstanceResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         return try await modifyLindormV2InstanceWithOptions(request as! ModifyLindormV2InstanceRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func modifyLindormV2InstanceSecurityGroupsWithOptions(_ request: ModifyLindormV2InstanceSecurityGroupsRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ModifyLindormV2InstanceSecurityGroupsResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.instanceId)) {
+            query["InstanceId"] = request.instanceId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.ownerAccount)) {
+            query["OwnerAccount"] = request.ownerAccount ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.ownerId)) {
+            query["OwnerId"] = request.ownerId!;
+        }
+        if (!TeaUtils.Client.isUnset(request.resourceOwnerAccount)) {
+            query["ResourceOwnerAccount"] = request.resourceOwnerAccount ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.resourceOwnerId)) {
+            query["ResourceOwnerId"] = request.resourceOwnerId!;
+        }
+        if (!TeaUtils.Client.isUnset(request.securityGroups)) {
+            query["SecurityGroups"] = request.securityGroups ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.securityToken)) {
+            query["SecurityToken"] = request.securityToken ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "ModifyLindormV2InstanceSecurityGroups",
+            "version": "2020-06-15",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(ModifyLindormV2InstanceSecurityGroupsResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func modifyLindormV2InstanceSecurityGroups(_ request: ModifyLindormV2InstanceSecurityGroupsRequest) async throws -> ModifyLindormV2InstanceSecurityGroupsResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await modifyLindormV2InstanceSecurityGroupsWithOptions(request as! ModifyLindormV2InstanceSecurityGroupsRequest, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -3168,6 +3312,70 @@ open class Client : AlibabacloudOpenApi.Client {
     public func updateLdpsComputeGroup(_ request: UpdateLdpsComputeGroupRequest) async throws -> UpdateLdpsComputeGroupResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         return try await updateLdpsComputeGroupWithOptions(request as! UpdateLdpsComputeGroupRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func updateLindormV2InstanceWithOptions(_ request: UpdateLindormV2InstanceRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> UpdateLindormV2InstanceResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.capacityStorageSize)) {
+            query["CapacityStorageSize"] = request.capacityStorageSize!;
+        }
+        if (!TeaUtils.Client.isUnset(request.cloudStorageSize)) {
+            query["CloudStorageSize"] = request.cloudStorageSize!;
+        }
+        if (!TeaUtils.Client.isUnset(request.cloudStorageType)) {
+            query["CloudStorageType"] = request.cloudStorageType ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.enableCapacityStorage)) {
+            query["EnableCapacityStorage"] = request.enableCapacityStorage!;
+        }
+        if (!TeaUtils.Client.isUnset(request.engineList)) {
+            query["EngineList"] = request.engineList ?? [];
+        }
+        if (!TeaUtils.Client.isUnset(request.instanceId)) {
+            query["InstanceId"] = request.instanceId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.ownerAccount)) {
+            query["OwnerAccount"] = request.ownerAccount ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.ownerId)) {
+            query["OwnerId"] = request.ownerId!;
+        }
+        if (!TeaUtils.Client.isUnset(request.regionId)) {
+            query["RegionId"] = request.regionId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.resourceOwnerAccount)) {
+            query["ResourceOwnerAccount"] = request.resourceOwnerAccount ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.resourceOwnerId)) {
+            query["ResourceOwnerId"] = request.resourceOwnerId!;
+        }
+        if (!TeaUtils.Client.isUnset(request.securityToken)) {
+            query["SecurityToken"] = request.securityToken ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "UpdateLindormV2Instance",
+            "version": "2020-06-15",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(UpdateLindormV2InstanceResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func updateLindormV2Instance(_ request: UpdateLindormV2InstanceRequest) async throws -> UpdateLindormV2InstanceResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await updateLindormV2InstanceWithOptions(request as! UpdateLindormV2InstanceRequest, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
