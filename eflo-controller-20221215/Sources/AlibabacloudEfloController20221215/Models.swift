@@ -1115,6 +1115,144 @@ public class CreateClusterRequest : Tea.TeaModel {
         }
     }
     public class NodeGroups : Tea.TeaModel {
+        public class HyperNodes : Tea.TeaModel {
+            public class DataDisk : Tea.TeaModel {
+                public var category: String?
+
+                public var deleteWithNode: Bool?
+
+                public var performanceLevel: String?
+
+                public var size: Int32?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.category != nil {
+                        map["Category"] = self.category!
+                    }
+                    if self.deleteWithNode != nil {
+                        map["DeleteWithNode"] = self.deleteWithNode!
+                    }
+                    if self.performanceLevel != nil {
+                        map["PerformanceLevel"] = self.performanceLevel!
+                    }
+                    if self.size != nil {
+                        map["Size"] = self.size!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                    guard let dict else { return }
+                    if let value = dict["Category"] as? String {
+                        self.category = value
+                    }
+                    if let value = dict["DeleteWithNode"] as? Bool {
+                        self.deleteWithNode = value
+                    }
+                    if let value = dict["PerformanceLevel"] as? String {
+                        self.performanceLevel = value
+                    }
+                    if let value = dict["Size"] as? Int32 {
+                        self.size = value
+                    }
+                }
+            }
+            public var dataDisk: [CreateClusterRequest.NodeGroups.HyperNodes.DataDisk]?
+
+            public var hostname: String?
+
+            public var hyperNodeId: String?
+
+            public var loginPassword: String?
+
+            public var vSwitchId: String?
+
+            public var vpcId: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.dataDisk != nil {
+                    var tmp : [Any] = []
+                    for k in self.dataDisk! {
+                        tmp.append(k.toMap())
+                    }
+                    map["DataDisk"] = tmp
+                }
+                if self.hostname != nil {
+                    map["Hostname"] = self.hostname!
+                }
+                if self.hyperNodeId != nil {
+                    map["HyperNodeId"] = self.hyperNodeId!
+                }
+                if self.loginPassword != nil {
+                    map["LoginPassword"] = self.loginPassword!
+                }
+                if self.vSwitchId != nil {
+                    map["VSwitchId"] = self.vSwitchId!
+                }
+                if self.vpcId != nil {
+                    map["VpcId"] = self.vpcId!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["DataDisk"] as? [Any?] {
+                    var tmp : [CreateClusterRequest.NodeGroups.HyperNodes.DataDisk] = []
+                    for v in value {
+                        if v != nil {
+                            var model = CreateClusterRequest.NodeGroups.HyperNodes.DataDisk()
+                            if v != nil {
+                                model.fromMap(v as? [String: Any?])
+                            }
+                            tmp.append(model)
+                        }
+                    }
+                    self.dataDisk = tmp
+                }
+                if let value = dict["Hostname"] as? String {
+                    self.hostname = value
+                }
+                if let value = dict["HyperNodeId"] as? String {
+                    self.hyperNodeId = value
+                }
+                if let value = dict["LoginPassword"] as? String {
+                    self.loginPassword = value
+                }
+                if let value = dict["VSwitchId"] as? String {
+                    self.vSwitchId = value
+                }
+                if let value = dict["VpcId"] as? String {
+                    self.vpcId = value
+                }
+            }
+        }
         public class Nodes : Tea.TeaModel {
             public class DataDisk : Tea.TeaModel {
                 public var category: String?
@@ -1301,6 +1439,8 @@ public class CreateClusterRequest : Tea.TeaModel {
         }
         public var fileSystemMountEnabled: Bool?
 
+        public var hyperNodes: [CreateClusterRequest.NodeGroups.HyperNodes]?
+
         public var imageId: String?
 
         public var keyPairName: String?
@@ -1340,6 +1480,13 @@ public class CreateClusterRequest : Tea.TeaModel {
             var map = super.toMap()
             if self.fileSystemMountEnabled != nil {
                 map["FileSystemMountEnabled"] = self.fileSystemMountEnabled!
+            }
+            if self.hyperNodes != nil {
+                var tmp : [Any] = []
+                for k in self.hyperNodes! {
+                    tmp.append(k.toMap())
+                }
+                map["HyperNodes"] = tmp
             }
             if self.imageId != nil {
                 map["ImageId"] = self.imageId!
@@ -1385,6 +1532,19 @@ public class CreateClusterRequest : Tea.TeaModel {
             guard let dict else { return }
             if let value = dict["FileSystemMountEnabled"] as? Bool {
                 self.fileSystemMountEnabled = value
+            }
+            if let value = dict["HyperNodes"] as? [Any?] {
+                var tmp : [CreateClusterRequest.NodeGroups.HyperNodes] = []
+                for v in value {
+                    if v != nil {
+                        var model = CreateClusterRequest.NodeGroups.HyperNodes()
+                        if v != nil {
+                            model.fromMap(v as? [String: Any?])
+                        }
+                        tmp.append(model)
+                    }
+                }
+                self.hyperNodes = tmp
             }
             if let value = dict["ImageId"] as? String {
                 self.imageId = value
@@ -8086,6 +8246,144 @@ public class ExtendClusterRequest : Tea.TeaModel {
         }
     }
     public class NodeGroups : Tea.TeaModel {
+        public class HyperNodes : Tea.TeaModel {
+            public class DataDisk : Tea.TeaModel {
+                public var category: String?
+
+                public var deleteWithNode: Bool?
+
+                public var performanceLevel: String?
+
+                public var size: Int32?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.category != nil {
+                        map["Category"] = self.category!
+                    }
+                    if self.deleteWithNode != nil {
+                        map["DeleteWithNode"] = self.deleteWithNode!
+                    }
+                    if self.performanceLevel != nil {
+                        map["PerformanceLevel"] = self.performanceLevel!
+                    }
+                    if self.size != nil {
+                        map["Size"] = self.size!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                    guard let dict else { return }
+                    if let value = dict["Category"] as? String {
+                        self.category = value
+                    }
+                    if let value = dict["DeleteWithNode"] as? Bool {
+                        self.deleteWithNode = value
+                    }
+                    if let value = dict["PerformanceLevel"] as? String {
+                        self.performanceLevel = value
+                    }
+                    if let value = dict["Size"] as? Int32 {
+                        self.size = value
+                    }
+                }
+            }
+            public var dataDisk: [ExtendClusterRequest.NodeGroups.HyperNodes.DataDisk]?
+
+            public var hostname: String?
+
+            public var hyperNodeId: String?
+
+            public var loginPassword: String?
+
+            public var vSwitchId: String?
+
+            public var vpcId: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.dataDisk != nil {
+                    var tmp : [Any] = []
+                    for k in self.dataDisk! {
+                        tmp.append(k.toMap())
+                    }
+                    map["DataDisk"] = tmp
+                }
+                if self.hostname != nil {
+                    map["Hostname"] = self.hostname!
+                }
+                if self.hyperNodeId != nil {
+                    map["HyperNodeId"] = self.hyperNodeId!
+                }
+                if self.loginPassword != nil {
+                    map["LoginPassword"] = self.loginPassword!
+                }
+                if self.vSwitchId != nil {
+                    map["VSwitchId"] = self.vSwitchId!
+                }
+                if self.vpcId != nil {
+                    map["VpcId"] = self.vpcId!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["DataDisk"] as? [Any?] {
+                    var tmp : [ExtendClusterRequest.NodeGroups.HyperNodes.DataDisk] = []
+                    for v in value {
+                        if v != nil {
+                            var model = ExtendClusterRequest.NodeGroups.HyperNodes.DataDisk()
+                            if v != nil {
+                                model.fromMap(v as? [String: Any?])
+                            }
+                            tmp.append(model)
+                        }
+                    }
+                    self.dataDisk = tmp
+                }
+                if let value = dict["Hostname"] as? String {
+                    self.hostname = value
+                }
+                if let value = dict["HyperNodeId"] as? String {
+                    self.hyperNodeId = value
+                }
+                if let value = dict["LoginPassword"] as? String {
+                    self.loginPassword = value
+                }
+                if let value = dict["VSwitchId"] as? String {
+                    self.vSwitchId = value
+                }
+                if let value = dict["VpcId"] as? String {
+                    self.vpcId = value
+                }
+            }
+        }
         public class NodeTag : Tea.TeaModel {
             public var key: String?
 
@@ -8270,6 +8568,8 @@ public class ExtendClusterRequest : Tea.TeaModel {
 
         public var hostnames: [String]?
 
+        public var hyperNodes: [ExtendClusterRequest.NodeGroups.HyperNodes]?
+
         public var loginPassword: String?
 
         public var nodeGroupId: String?
@@ -8313,6 +8613,13 @@ public class ExtendClusterRequest : Tea.TeaModel {
             }
             if self.hostnames != nil {
                 map["Hostnames"] = self.hostnames!
+            }
+            if self.hyperNodes != nil {
+                var tmp : [Any] = []
+                for k in self.hyperNodes! {
+                    tmp.append(k.toMap())
+                }
+                map["HyperNodes"] = tmp
             }
             if self.loginPassword != nil {
                 map["LoginPassword"] = self.loginPassword!
@@ -8365,6 +8672,19 @@ public class ExtendClusterRequest : Tea.TeaModel {
             }
             if let value = dict["Hostnames"] as? [String] {
                 self.hostnames = value
+            }
+            if let value = dict["HyperNodes"] as? [Any?] {
+                var tmp : [ExtendClusterRequest.NodeGroups.HyperNodes] = []
+                for v in value {
+                    if v != nil {
+                        var model = ExtendClusterRequest.NodeGroups.HyperNodes()
+                        if v != nil {
+                            model.fromMap(v as? [String: Any?])
+                        }
+                        tmp.append(model)
+                    }
+                }
+                self.hyperNodes = tmp
             }
             if let value = dict["LoginPassword"] as? String {
                 self.loginPassword = value
@@ -14270,6 +14590,36 @@ public class SendFileResponse : Tea.TeaModel {
 
 public class ShrinkClusterRequest : Tea.TeaModel {
     public class NodeGroups : Tea.TeaModel {
+        public class HyperNodes : Tea.TeaModel {
+            public var hyperNodeId: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.hyperNodeId != nil {
+                    map["HyperNodeId"] = self.hyperNodeId!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["HyperNodeId"] as? String {
+                    self.hyperNodeId = value
+                }
+            }
+        }
         public class Nodes : Tea.TeaModel {
             public var nodeId: String?
 
@@ -14300,6 +14650,8 @@ public class ShrinkClusterRequest : Tea.TeaModel {
                 }
             }
         }
+        public var hyperNodes: [ShrinkClusterRequest.NodeGroups.HyperNodes]?
+
         public var nodeGroupId: String?
 
         public var nodes: [ShrinkClusterRequest.NodeGroups.Nodes]?
@@ -14318,6 +14670,13 @@ public class ShrinkClusterRequest : Tea.TeaModel {
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
+            if self.hyperNodes != nil {
+                var tmp : [Any] = []
+                for k in self.hyperNodes! {
+                    tmp.append(k.toMap())
+                }
+                map["HyperNodes"] = tmp
+            }
             if self.nodeGroupId != nil {
                 map["NodeGroupId"] = self.nodeGroupId!
             }
@@ -14333,6 +14692,19 @@ public class ShrinkClusterRequest : Tea.TeaModel {
 
         public override func fromMap(_ dict: [String: Any?]?) -> Void {
             guard let dict else { return }
+            if let value = dict["HyperNodes"] as? [Any?] {
+                var tmp : [ShrinkClusterRequest.NodeGroups.HyperNodes] = []
+                for v in value {
+                    if v != nil {
+                        var model = ShrinkClusterRequest.NodeGroups.HyperNodes()
+                        if v != nil {
+                            model.fromMap(v as? [String: Any?])
+                        }
+                        tmp.append(model)
+                    }
+                }
+                self.hyperNodes = tmp
+            }
             if let value = dict["NodeGroupId"] as? String {
                 self.nodeGroupId = value
             }
