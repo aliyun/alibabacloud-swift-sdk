@@ -9230,6 +9230,8 @@ public class ListClusterNodesResponseBody : Tea.TeaModel {
 
         public var hpnZone: String?
 
+        public var hyperNodeId: String?
+
         public var imageId: String?
 
         public var imageName: String?
@@ -9289,6 +9291,9 @@ public class ListClusterNodesResponseBody : Tea.TeaModel {
             }
             if self.hpnZone != nil {
                 map["HpnZone"] = self.hpnZone!
+            }
+            if self.hyperNodeId != nil {
+                map["HyperNodeId"] = self.hyperNodeId!
             }
             if self.imageId != nil {
                 map["ImageId"] = self.imageId!
@@ -9362,6 +9367,9 @@ public class ListClusterNodesResponseBody : Tea.TeaModel {
             }
             if let value = dict["HpnZone"] as? String {
                 self.hpnZone = value
+            }
+            if let value = dict["HyperNodeId"] as? String {
+                self.hyperNodeId = value
             }
             if let value = dict["ImageId"] as? String {
                 self.imageId = value
