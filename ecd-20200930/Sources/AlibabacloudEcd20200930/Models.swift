@@ -6908,6 +6908,52 @@ public class CreateCenterPolicyRequest : Tea.TeaModel {
             }
         }
     }
+    public class ClipboardGraineds : Tea.TeaModel {
+        public var clipboardSize: Int32?
+
+        public var clipboardType: String?
+
+        public var grainedType: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.clipboardSize != nil {
+                map["ClipboardSize"] = self.clipboardSize!
+            }
+            if self.clipboardType != nil {
+                map["ClipboardType"] = self.clipboardType!
+            }
+            if self.grainedType != nil {
+                map["GrainedType"] = self.grainedType!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["ClipboardSize"] as? Int32 {
+                self.clipboardSize = value
+            }
+            if let value = dict["ClipboardType"] as? String {
+                self.clipboardType = value
+            }
+            if let value = dict["GrainedType"] as? String {
+                self.grainedType = value
+            }
+        }
+    }
     public class DeviceRedirects : Tea.TeaModel {
         public var deviceType: String?
 
@@ -7116,6 +7162,44 @@ public class CreateCenterPolicyRequest : Tea.TeaModel {
             }
         }
     }
+    public class RecordEventLevels : Tea.TeaModel {
+        public var eventLevel: String?
+
+        public var eventType: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.eventLevel != nil {
+                map["EventLevel"] = self.eventLevel!
+            }
+            if self.eventType != nil {
+                map["EventType"] = self.eventType!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["EventLevel"] as? String {
+                self.eventLevel = value
+            }
+            if let value = dict["EventType"] as? String {
+                self.eventType = value
+            }
+        }
+    }
     public class UsbSupplyRedirectRule : Tea.TeaModel {
         public var description_: String?
 
@@ -7186,6 +7270,8 @@ public class CreateCenterPolicyRequest : Tea.TeaModel {
 
     public var authorizeSecurityPolicyRule: [CreateCenterPolicyRequest.AuthorizeSecurityPolicyRule]?
 
+    public var autoReconnect: String?
+
     public var businessType: Int32?
 
     public var cameraRedirect: String?
@@ -7195,6 +7281,10 @@ public class CreateCenterPolicyRequest : Tea.TeaModel {
     public var clientType: [CreateCenterPolicyRequest.ClientType]?
 
     public var clipboard: String?
+
+    public var clipboardGraineds: [CreateCenterPolicyRequest.ClipboardGraineds]?
+
+    public var clipboardScope: String?
 
     public var colorEnhancement: String?
 
@@ -7268,7 +7358,13 @@ public class CreateCenterPolicyRequest : Tea.TeaModel {
 
     public var mobileRestart: String?
 
+    public var mobileSafeMenu: String?
+
     public var mobileShutdown: String?
+
+    public var mobileWuyingKeeper: String?
+
+    public var mobileWyAssistant: String?
 
     public var name: String?
 
@@ -7286,7 +7382,11 @@ public class CreateCenterPolicyRequest : Tea.TeaModel {
 
     public var recordEventDuration: Int32?
 
+    public var recordEventFileExts: [String]?
+
     public var recordEventFilePaths: [String]?
+
+    public var recordEventLevels: [CreateCenterPolicyRequest.RecordEventLevels]?
 
     public var recordEventRegisters: [String]?
 
@@ -7428,6 +7528,9 @@ public class CreateCenterPolicyRequest : Tea.TeaModel {
             }
             map["AuthorizeSecurityPolicyRule"] = tmp
         }
+        if self.autoReconnect != nil {
+            map["AutoReconnect"] = self.autoReconnect!
+        }
         if self.businessType != nil {
             map["BusinessType"] = self.businessType!
         }
@@ -7446,6 +7549,16 @@ public class CreateCenterPolicyRequest : Tea.TeaModel {
         }
         if self.clipboard != nil {
             map["Clipboard"] = self.clipboard!
+        }
+        if self.clipboardGraineds != nil {
+            var tmp : [Any] = []
+            for k in self.clipboardGraineds! {
+                tmp.append(k.toMap())
+            }
+            map["ClipboardGraineds"] = tmp
+        }
+        if self.clipboardScope != nil {
+            map["ClipboardScope"] = self.clipboardScope!
         }
         if self.colorEnhancement != nil {
             map["ColorEnhancement"] = self.colorEnhancement!
@@ -7567,8 +7680,17 @@ public class CreateCenterPolicyRequest : Tea.TeaModel {
         if self.mobileRestart != nil {
             map["MobileRestart"] = self.mobileRestart!
         }
+        if self.mobileSafeMenu != nil {
+            map["MobileSafeMenu"] = self.mobileSafeMenu!
+        }
         if self.mobileShutdown != nil {
             map["MobileShutdown"] = self.mobileShutdown!
+        }
+        if self.mobileWuyingKeeper != nil {
+            map["MobileWuyingKeeper"] = self.mobileWuyingKeeper!
+        }
+        if self.mobileWyAssistant != nil {
+            map["MobileWyAssistant"] = self.mobileWyAssistant!
         }
         if self.name != nil {
             map["Name"] = self.name!
@@ -7598,8 +7720,18 @@ public class CreateCenterPolicyRequest : Tea.TeaModel {
         if self.recordEventDuration != nil {
             map["RecordEventDuration"] = self.recordEventDuration!
         }
+        if self.recordEventFileExts != nil {
+            map["RecordEventFileExts"] = self.recordEventFileExts!
+        }
         if self.recordEventFilePaths != nil {
             map["RecordEventFilePaths"] = self.recordEventFilePaths!
+        }
+        if self.recordEventLevels != nil {
+            var tmp : [Any] = []
+            for k in self.recordEventLevels! {
+                tmp.append(k.toMap())
+            }
+            map["RecordEventLevels"] = tmp
         }
         if self.recordEventRegisters != nil {
             map["RecordEventRegisters"] = self.recordEventRegisters!
@@ -7801,6 +7933,9 @@ public class CreateCenterPolicyRequest : Tea.TeaModel {
             }
             self.authorizeSecurityPolicyRule = tmp
         }
+        if let value = dict["AutoReconnect"] as? String {
+            self.autoReconnect = value
+        }
         if let value = dict["BusinessType"] as? Int32 {
             self.businessType = value
         }
@@ -7825,6 +7960,22 @@ public class CreateCenterPolicyRequest : Tea.TeaModel {
         }
         if let value = dict["Clipboard"] as? String {
             self.clipboard = value
+        }
+        if let value = dict["ClipboardGraineds"] as? [Any?] {
+            var tmp : [CreateCenterPolicyRequest.ClipboardGraineds] = []
+            for v in value {
+                if v != nil {
+                    var model = CreateCenterPolicyRequest.ClipboardGraineds()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.clipboardGraineds = tmp
+        }
+        if let value = dict["ClipboardScope"] as? String {
+            self.clipboardScope = value
         }
         if let value = dict["ColorEnhancement"] as? String {
             self.colorEnhancement = value
@@ -7964,8 +8115,17 @@ public class CreateCenterPolicyRequest : Tea.TeaModel {
         if let value = dict["MobileRestart"] as? String {
             self.mobileRestart = value
         }
+        if let value = dict["MobileSafeMenu"] as? String {
+            self.mobileSafeMenu = value
+        }
         if let value = dict["MobileShutdown"] as? String {
             self.mobileShutdown = value
+        }
+        if let value = dict["MobileWuyingKeeper"] as? String {
+            self.mobileWuyingKeeper = value
+        }
+        if let value = dict["MobileWyAssistant"] as? String {
+            self.mobileWyAssistant = value
         }
         if let value = dict["Name"] as? String {
             self.name = value
@@ -8001,8 +8161,24 @@ public class CreateCenterPolicyRequest : Tea.TeaModel {
         if let value = dict["RecordEventDuration"] as? Int32 {
             self.recordEventDuration = value
         }
+        if let value = dict["RecordEventFileExts"] as? [String] {
+            self.recordEventFileExts = value
+        }
         if let value = dict["RecordEventFilePaths"] as? [String] {
             self.recordEventFilePaths = value
+        }
+        if let value = dict["RecordEventLevels"] as? [Any?] {
+            var tmp : [CreateCenterPolicyRequest.RecordEventLevels] = []
+            for v in value {
+                if v != nil {
+                    var model = CreateCenterPolicyRequest.RecordEventLevels()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.recordEventLevels = tmp
         }
         if let value = dict["RecordEventRegisters"] as? [String] {
             self.recordEventRegisters = value
@@ -25103,9 +25279,17 @@ public class DescribeCustomizedListHeadersResponse : Tea.TeaModel {
 }
 
 public class DescribeDesktopGroupSessionsRequest : Tea.TeaModel {
+    public var desktopGroupIds: [String]?
+
+    public var desktopGroupName: String?
+
     public var endTime: String?
 
     public var endUserId: String?
+
+    public var fillTerminalInfo: Bool?
+
+    public var language: String?
 
     public var maxResults: Int32?
 
@@ -25133,11 +25317,23 @@ public class DescribeDesktopGroupSessionsRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.desktopGroupIds != nil {
+            map["DesktopGroupIds"] = self.desktopGroupIds!
+        }
+        if self.desktopGroupName != nil {
+            map["DesktopGroupName"] = self.desktopGroupName!
+        }
         if self.endTime != nil {
             map["EndTime"] = self.endTime!
         }
         if self.endUserId != nil {
             map["EndUserId"] = self.endUserId!
+        }
+        if self.fillTerminalInfo != nil {
+            map["FillTerminalInfo"] = self.fillTerminalInfo!
+        }
+        if self.language != nil {
+            map["Language"] = self.language!
         }
         if self.maxResults != nil {
             map["MaxResults"] = self.maxResults!
@@ -25162,11 +25358,23 @@ public class DescribeDesktopGroupSessionsRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["DesktopGroupIds"] as? [String] {
+            self.desktopGroupIds = value
+        }
+        if let value = dict["DesktopGroupName"] as? String {
+            self.desktopGroupName = value
+        }
         if let value = dict["EndTime"] as? String {
             self.endTime = value
         }
         if let value = dict["EndUserId"] as? String {
             self.endUserId = value
+        }
+        if let value = dict["FillTerminalInfo"] as? Bool {
+            self.fillTerminalInfo = value
+        }
+        if let value = dict["Language"] as? String {
+            self.language = value
         }
         if let value = dict["MaxResults"] as? Int32 {
             self.maxResults = value
@@ -25191,6 +25399,60 @@ public class DescribeDesktopGroupSessionsRequest : Tea.TeaModel {
 
 public class DescribeDesktopGroupSessionsResponseBody : Tea.TeaModel {
     public class Sessions : Tea.TeaModel {
+        public class TerminalInfo : Tea.TeaModel {
+            public var model: String?
+
+            public var productName: String?
+
+            public var serialNumber: String?
+
+            public var uuid: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.model != nil {
+                    map["Model"] = self.model!
+                }
+                if self.productName != nil {
+                    map["ProductName"] = self.productName!
+                }
+                if self.serialNumber != nil {
+                    map["SerialNumber"] = self.serialNumber!
+                }
+                if self.uuid != nil {
+                    map["Uuid"] = self.uuid!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["Model"] as? String {
+                    self.model = value
+                }
+                if let value = dict["ProductName"] as? String {
+                    self.productName = value
+                }
+                if let value = dict["SerialNumber"] as? String {
+                    self.serialNumber = value
+                }
+                if let value = dict["Uuid"] as? String {
+                    self.uuid = value
+                }
+            }
+        }
         public var clientIp: String?
 
         public var clientOS: String?
@@ -25227,6 +25489,8 @@ public class DescribeDesktopGroupSessionsResponseBody : Tea.TeaModel {
 
         public var sessionStatus: String?
 
+        public var terminalInfo: DescribeDesktopGroupSessionsResponseBody.Sessions.TerminalInfo?
+
         public var totalConnectionDuration: Int64?
 
         public override init() {
@@ -25239,6 +25503,7 @@ public class DescribeDesktopGroupSessionsResponseBody : Tea.TeaModel {
         }
 
         public override func validate() throws -> Void {
+            try self.terminalInfo?.validate()
         }
 
         public override func toMap() -> [String : Any] {
@@ -25296,6 +25561,9 @@ public class DescribeDesktopGroupSessionsResponseBody : Tea.TeaModel {
             }
             if self.sessionStatus != nil {
                 map["SessionStatus"] = self.sessionStatus!
+            }
+            if self.terminalInfo != nil {
+                map["TerminalInfo"] = self.terminalInfo?.toMap()
             }
             if self.totalConnectionDuration != nil {
                 map["TotalConnectionDuration"] = self.totalConnectionDuration!
@@ -25358,6 +25626,11 @@ public class DescribeDesktopGroupSessionsResponseBody : Tea.TeaModel {
             }
             if let value = dict["SessionStatus"] as? String {
                 self.sessionStatus = value
+            }
+            if let value = dict["TerminalInfo"] as? [String: Any?] {
+                var model = DescribeDesktopGroupSessionsResponseBody.Sessions.TerminalInfo()
+                model.fromMap(value)
+                self.terminalInfo = model
             }
             if let value = dict["TotalConnectionDuration"] as? Int64 {
                 self.totalConnectionDuration = value
@@ -27487,6 +27760,10 @@ public class DescribeDesktopSessionsRequest : Tea.TeaModel {
 
     public var endUserIdFilter: String?
 
+    public var fillHardwareInfo: Bool?
+
+    public var language: String?
+
     public var officeSiteId: String?
 
     public var pageNumber: Int32?
@@ -27535,6 +27812,12 @@ public class DescribeDesktopSessionsRequest : Tea.TeaModel {
         if self.endUserIdFilter != nil {
             map["EndUserIdFilter"] = self.endUserIdFilter!
         }
+        if self.fillHardwareInfo != nil {
+            map["FillHardwareInfo"] = self.fillHardwareInfo!
+        }
+        if self.language != nil {
+            map["Language"] = self.language!
+        }
         if self.officeSiteId != nil {
             map["OfficeSiteId"] = self.officeSiteId!
         }
@@ -27581,6 +27864,12 @@ public class DescribeDesktopSessionsRequest : Tea.TeaModel {
         }
         if let value = dict["EndUserIdFilter"] as? String {
             self.endUserIdFilter = value
+        }
+        if let value = dict["FillHardwareInfo"] as? Bool {
+            self.fillHardwareInfo = value
+        }
+        if let value = dict["Language"] as? String {
+            self.language = value
         }
         if let value = dict["OfficeSiteId"] as? String {
             self.officeSiteId = value
@@ -27649,6 +27938,60 @@ public class DescribeDesktopSessionsResponseBody : Tea.TeaModel {
                 }
             }
         }
+        public class TerminalInfo : Tea.TeaModel {
+            public var model: String?
+
+            public var productName: String?
+
+            public var serialNumber: String?
+
+            public var uuid: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.model != nil {
+                    map["Model"] = self.model!
+                }
+                if self.productName != nil {
+                    map["ProductName"] = self.productName!
+                }
+                if self.serialNumber != nil {
+                    map["SerialNumber"] = self.serialNumber!
+                }
+                if self.uuid != nil {
+                    map["Uuid"] = self.uuid!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["Model"] as? String {
+                    self.model = value
+                }
+                if let value = dict["ProductName"] as? String {
+                    self.productName = value
+                }
+                if let value = dict["SerialNumber"] as? String {
+                    self.serialNumber = value
+                }
+                if let value = dict["Uuid"] as? String {
+                    self.uuid = value
+                }
+            }
+        }
         public var clientIp: String?
 
         public var clientOS: String?
@@ -27687,6 +28030,8 @@ public class DescribeDesktopSessionsResponseBody : Tea.TeaModel {
 
         public var subPayType: String?
 
+        public var terminalInfo: DescribeDesktopSessionsResponseBody.Sessions.TerminalInfo?
+
         public var totalConnectionTime: Int64?
 
         public override init() {
@@ -27699,6 +28044,7 @@ public class DescribeDesktopSessionsResponseBody : Tea.TeaModel {
         }
 
         public override func validate() throws -> Void {
+            try self.terminalInfo?.validate()
         }
 
         public override func toMap() -> [String : Any] {
@@ -27763,6 +28109,9 @@ public class DescribeDesktopSessionsResponseBody : Tea.TeaModel {
             }
             if self.subPayType != nil {
                 map["SubPayType"] = self.subPayType!
+            }
+            if self.terminalInfo != nil {
+                map["TerminalInfo"] = self.terminalInfo?.toMap()
             }
             if self.totalConnectionTime != nil {
                 map["TotalConnectionTime"] = self.totalConnectionTime!
@@ -27838,6 +28187,11 @@ public class DescribeDesktopSessionsResponseBody : Tea.TeaModel {
             }
             if let value = dict["SubPayType"] as? String {
                 self.subPayType = value
+            }
+            if let value = dict["TerminalInfo"] as? [String: Any?] {
+                var model = DescribeDesktopSessionsResponseBody.Sessions.TerminalInfo()
+                model.fromMap(value)
+                self.terminalInfo = model
             }
             if let value = dict["TotalConnectionTime"] as? Int64 {
                 self.totalConnectionTime = value
@@ -38809,6 +39163,44 @@ public class DescribePolicyGroupsResponseBody : Tea.TeaModel {
                 }
             }
         }
+        public class RecordEventLevels : Tea.TeaModel {
+            public var eventLevel: String?
+
+            public var eventType: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.eventLevel != nil {
+                    map["EventLevel"] = self.eventLevel!
+                }
+                if self.eventType != nil {
+                    map["EventType"] = self.eventType!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["EventLevel"] as? String {
+                    self.eventLevel = value
+                }
+                if let value = dict["EventType"] as? String {
+                    self.eventType = value
+                }
+            }
+        }
         public class UsbSupplyRedirectRule : Tea.TeaModel {
             public var description_: String?
 
@@ -38894,6 +39286,8 @@ public class DescribePolicyGroupsResponseBody : Tea.TeaModel {
         public var authorizeAccessPolicyRules: [DescribePolicyGroupsResponseBody.DescribePolicyGroups.AuthorizeAccessPolicyRules]?
 
         public var authorizeSecurityPolicyRules: [DescribePolicyGroupsResponseBody.DescribePolicyGroups.AuthorizeSecurityPolicyRules]?
+
+        public var autoReconnect: String?
 
         public var cameraRedirect: String?
 
@@ -38981,7 +39375,13 @@ public class DescribePolicyGroupsResponseBody : Tea.TeaModel {
 
         public var mobileRestart: String?
 
+        public var mobileSafeMenu: String?
+
         public var mobileShutdown: String?
+
+        public var mobileWuyingKeeper: String?
+
+        public var mobileWyAssistant: String?
 
         public var name: String?
 
@@ -39009,7 +39409,11 @@ public class DescribePolicyGroupsResponseBody : Tea.TeaModel {
 
         public var recordEventDuration: Int32?
 
+        public var recordEventFileExts: [String]?
+
         public var recordEventFilePaths: [String]?
+
+        public var recordEventLevels: [DescribePolicyGroupsResponseBody.DescribePolicyGroups.RecordEventLevels]?
 
         public var recordEventRegisters: [String]?
 
@@ -39144,6 +39548,9 @@ public class DescribePolicyGroupsResponseBody : Tea.TeaModel {
                     tmp.append(k.toMap())
                 }
                 map["AuthorizeSecurityPolicyRules"] = tmp
+            }
+            if self.autoReconnect != nil {
+                map["AutoReconnect"] = self.autoReconnect!
             }
             if self.cameraRedirect != nil {
                 map["CameraRedirect"] = self.cameraRedirect!
@@ -39290,8 +39697,17 @@ public class DescribePolicyGroupsResponseBody : Tea.TeaModel {
             if self.mobileRestart != nil {
                 map["MobileRestart"] = self.mobileRestart!
             }
+            if self.mobileSafeMenu != nil {
+                map["MobileSafeMenu"] = self.mobileSafeMenu!
+            }
             if self.mobileShutdown != nil {
                 map["MobileShutdown"] = self.mobileShutdown!
+            }
+            if self.mobileWuyingKeeper != nil {
+                map["MobileWuyingKeeper"] = self.mobileWuyingKeeper!
+            }
+            if self.mobileWyAssistant != nil {
+                map["MobileWyAssistant"] = self.mobileWyAssistant!
             }
             if self.name != nil {
                 map["Name"] = self.name!
@@ -39336,8 +39752,18 @@ public class DescribePolicyGroupsResponseBody : Tea.TeaModel {
             if self.recordEventDuration != nil {
                 map["RecordEventDuration"] = self.recordEventDuration!
             }
+            if self.recordEventFileExts != nil {
+                map["RecordEventFileExts"] = self.recordEventFileExts!
+            }
             if self.recordEventFilePaths != nil {
                 map["RecordEventFilePaths"] = self.recordEventFilePaths!
+            }
+            if self.recordEventLevels != nil {
+                var tmp : [Any] = []
+                for k in self.recordEventLevels! {
+                    tmp.append(k.toMap())
+                }
+                map["RecordEventLevels"] = tmp
             }
             if self.recordEventRegisters != nil {
                 map["RecordEventRegisters"] = self.recordEventRegisters!
@@ -39530,6 +39956,9 @@ public class DescribePolicyGroupsResponseBody : Tea.TeaModel {
                 }
                 self.authorizeSecurityPolicyRules = tmp
             }
+            if let value = dict["AutoReconnect"] as? String {
+                self.autoReconnect = value
+            }
             if let value = dict["CameraRedirect"] as? String {
                 self.cameraRedirect = value
             }
@@ -39699,8 +40128,17 @@ public class DescribePolicyGroupsResponseBody : Tea.TeaModel {
             if let value = dict["MobileRestart"] as? String {
                 self.mobileRestart = value
             }
+            if let value = dict["MobileSafeMenu"] as? String {
+                self.mobileSafeMenu = value
+            }
             if let value = dict["MobileShutdown"] as? String {
                 self.mobileShutdown = value
+            }
+            if let value = dict["MobileWuyingKeeper"] as? String {
+                self.mobileWuyingKeeper = value
+            }
+            if let value = dict["MobileWyAssistant"] as? String {
+                self.mobileWyAssistant = value
             }
             if let value = dict["Name"] as? String {
                 self.name = value
@@ -39751,8 +40189,24 @@ public class DescribePolicyGroupsResponseBody : Tea.TeaModel {
             if let value = dict["RecordEventDuration"] as? Int32 {
                 self.recordEventDuration = value
             }
+            if let value = dict["RecordEventFileExts"] as? [String] {
+                self.recordEventFileExts = value
+            }
             if let value = dict["RecordEventFilePaths"] as? [String] {
                 self.recordEventFilePaths = value
+            }
+            if let value = dict["RecordEventLevels"] as? [Any?] {
+                var tmp : [DescribePolicyGroupsResponseBody.DescribePolicyGroups.RecordEventLevels] = []
+                for v in value {
+                    if v != nil {
+                        var model = DescribePolicyGroupsResponseBody.DescribePolicyGroups.RecordEventLevels()
+                        if v != nil {
+                            model.fromMap(v as? [String: Any?])
+                        }
+                        tmp.append(model)
+                    }
+                }
+                self.recordEventLevels = tmp
             }
             if let value = dict["RecordEventRegisters"] as? [String] {
                 self.recordEventRegisters = value
@@ -55693,6 +56147,52 @@ public class ModifyCenterPolicyRequest : Tea.TeaModel {
             }
         }
     }
+    public class ClipboardGraineds : Tea.TeaModel {
+        public var clipboardSize: Int32?
+
+        public var clipboardType: String?
+
+        public var grainedType: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.clipboardSize != nil {
+                map["ClipboardSize"] = self.clipboardSize!
+            }
+            if self.clipboardType != nil {
+                map["ClipboardType"] = self.clipboardType!
+            }
+            if self.grainedType != nil {
+                map["GrainedType"] = self.grainedType!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["ClipboardSize"] as? Int32 {
+                self.clipboardSize = value
+            }
+            if let value = dict["ClipboardType"] as? String {
+                self.clipboardType = value
+            }
+            if let value = dict["GrainedType"] as? String {
+                self.grainedType = value
+            }
+        }
+    }
     public class DeviceRedirects : Tea.TeaModel {
         public var deviceType: String?
 
@@ -55901,6 +56401,44 @@ public class ModifyCenterPolicyRequest : Tea.TeaModel {
             }
         }
     }
+    public class RecordEventLevels : Tea.TeaModel {
+        public var eventLevel: String?
+
+        public var eventType: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.eventLevel != nil {
+                map["EventLevel"] = self.eventLevel!
+            }
+            if self.eventType != nil {
+                map["EventType"] = self.eventType!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["EventLevel"] as? String {
+                self.eventLevel = value
+            }
+            if let value = dict["EventType"] as? String {
+                self.eventType = value
+            }
+        }
+    }
     public class RevokeAccessPolicyRule : Tea.TeaModel {
         public var cidrIp: String?
 
@@ -56087,6 +56625,8 @@ public class ModifyCenterPolicyRequest : Tea.TeaModel {
 
     public var authorizeSecurityPolicyRule: [ModifyCenterPolicyRequest.AuthorizeSecurityPolicyRule]?
 
+    public var autoReconnect: String?
+
     public var businessType: Int32?
 
     public var cameraRedirect: String?
@@ -56096,6 +56636,10 @@ public class ModifyCenterPolicyRequest : Tea.TeaModel {
     public var clientType: [ModifyCenterPolicyRequest.ClientType]?
 
     public var clipboard: String?
+
+    public var clipboardGraineds: [ModifyCenterPolicyRequest.ClipboardGraineds]?
+
+    public var clipboardScope: String?
 
     public var colorEnhancement: String?
 
@@ -56169,7 +56713,13 @@ public class ModifyCenterPolicyRequest : Tea.TeaModel {
 
     public var mobileRestart: String?
 
+    public var mobileSafeMenu: String?
+
     public var mobileShutdown: String?
+
+    public var mobileWuyingKeeper: String?
+
+    public var mobileWyAssistant: String?
 
     public var name: String?
 
@@ -56189,7 +56739,11 @@ public class ModifyCenterPolicyRequest : Tea.TeaModel {
 
     public var recordEventDuration: Int32?
 
+    public var recordEventFileExts: [String]?
+
     public var recordEventFilePaths: [String]?
+
+    public var recordEventLevels: [ModifyCenterPolicyRequest.RecordEventLevels]?
 
     public var recordEventRegisters: [String]?
 
@@ -56335,6 +56889,9 @@ public class ModifyCenterPolicyRequest : Tea.TeaModel {
             }
             map["AuthorizeSecurityPolicyRule"] = tmp
         }
+        if self.autoReconnect != nil {
+            map["AutoReconnect"] = self.autoReconnect!
+        }
         if self.businessType != nil {
             map["BusinessType"] = self.businessType!
         }
@@ -56353,6 +56910,16 @@ public class ModifyCenterPolicyRequest : Tea.TeaModel {
         }
         if self.clipboard != nil {
             map["Clipboard"] = self.clipboard!
+        }
+        if self.clipboardGraineds != nil {
+            var tmp : [Any] = []
+            for k in self.clipboardGraineds! {
+                tmp.append(k.toMap())
+            }
+            map["ClipboardGraineds"] = tmp
+        }
+        if self.clipboardScope != nil {
+            map["ClipboardScope"] = self.clipboardScope!
         }
         if self.colorEnhancement != nil {
             map["ColorEnhancement"] = self.colorEnhancement!
@@ -56474,8 +57041,17 @@ public class ModifyCenterPolicyRequest : Tea.TeaModel {
         if self.mobileRestart != nil {
             map["MobileRestart"] = self.mobileRestart!
         }
+        if self.mobileSafeMenu != nil {
+            map["MobileSafeMenu"] = self.mobileSafeMenu!
+        }
         if self.mobileShutdown != nil {
             map["MobileShutdown"] = self.mobileShutdown!
+        }
+        if self.mobileWuyingKeeper != nil {
+            map["MobileWuyingKeeper"] = self.mobileWuyingKeeper!
+        }
+        if self.mobileWyAssistant != nil {
+            map["MobileWyAssistant"] = self.mobileWyAssistant!
         }
         if self.name != nil {
             map["Name"] = self.name!
@@ -56508,8 +57084,18 @@ public class ModifyCenterPolicyRequest : Tea.TeaModel {
         if self.recordEventDuration != nil {
             map["RecordEventDuration"] = self.recordEventDuration!
         }
+        if self.recordEventFileExts != nil {
+            map["RecordEventFileExts"] = self.recordEventFileExts!
+        }
         if self.recordEventFilePaths != nil {
             map["RecordEventFilePaths"] = self.recordEventFilePaths!
+        }
+        if self.recordEventLevels != nil {
+            var tmp : [Any] = []
+            for k in self.recordEventLevels! {
+                tmp.append(k.toMap())
+            }
+            map["RecordEventLevels"] = tmp
         }
         if self.recordEventRegisters != nil {
             map["RecordEventRegisters"] = self.recordEventRegisters!
@@ -56725,6 +57311,9 @@ public class ModifyCenterPolicyRequest : Tea.TeaModel {
             }
             self.authorizeSecurityPolicyRule = tmp
         }
+        if let value = dict["AutoReconnect"] as? String {
+            self.autoReconnect = value
+        }
         if let value = dict["BusinessType"] as? Int32 {
             self.businessType = value
         }
@@ -56749,6 +57338,22 @@ public class ModifyCenterPolicyRequest : Tea.TeaModel {
         }
         if let value = dict["Clipboard"] as? String {
             self.clipboard = value
+        }
+        if let value = dict["ClipboardGraineds"] as? [Any?] {
+            var tmp : [ModifyCenterPolicyRequest.ClipboardGraineds] = []
+            for v in value {
+                if v != nil {
+                    var model = ModifyCenterPolicyRequest.ClipboardGraineds()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.clipboardGraineds = tmp
+        }
+        if let value = dict["ClipboardScope"] as? String {
+            self.clipboardScope = value
         }
         if let value = dict["ColorEnhancement"] as? String {
             self.colorEnhancement = value
@@ -56888,8 +57493,17 @@ public class ModifyCenterPolicyRequest : Tea.TeaModel {
         if let value = dict["MobileRestart"] as? String {
             self.mobileRestart = value
         }
+        if let value = dict["MobileSafeMenu"] as? String {
+            self.mobileSafeMenu = value
+        }
         if let value = dict["MobileShutdown"] as? String {
             self.mobileShutdown = value
+        }
+        if let value = dict["MobileWuyingKeeper"] as? String {
+            self.mobileWuyingKeeper = value
+        }
+        if let value = dict["MobileWyAssistant"] as? String {
+            self.mobileWyAssistant = value
         }
         if let value = dict["Name"] as? String {
             self.name = value
@@ -56928,8 +57542,24 @@ public class ModifyCenterPolicyRequest : Tea.TeaModel {
         if let value = dict["RecordEventDuration"] as? Int32 {
             self.recordEventDuration = value
         }
+        if let value = dict["RecordEventFileExts"] as? [String] {
+            self.recordEventFileExts = value
+        }
         if let value = dict["RecordEventFilePaths"] as? [String] {
             self.recordEventFilePaths = value
+        }
+        if let value = dict["RecordEventLevels"] as? [Any?] {
+            var tmp : [ModifyCenterPolicyRequest.RecordEventLevels] = []
+            for v in value {
+                if v != nil {
+                    var model = ModifyCenterPolicyRequest.RecordEventLevels()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.recordEventLevels = tmp
         }
         if let value = dict["RecordEventRegisters"] as? [String] {
             self.recordEventRegisters = value
