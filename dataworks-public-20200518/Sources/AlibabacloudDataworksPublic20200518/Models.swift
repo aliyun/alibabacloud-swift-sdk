@@ -58308,6 +58308,8 @@ public class ListDataServicePublishedApisResponseBody : Tea.TeaModel {
 
             public var scriptDetails: ListDataServicePublishedApisResponseBody.Data.Apis.ScriptDetails?
 
+            public var sqlMode: Int32?
+
             public var status: Int32?
 
             public var tenantId: Int64?
@@ -58383,6 +58385,9 @@ public class ListDataServicePublishedApisResponseBody : Tea.TeaModel {
                 if self.scriptDetails != nil {
                     map["ScriptDetails"] = self.scriptDetails?.toMap()
                 }
+                if self.sqlMode != nil {
+                    map["SqlMode"] = self.sqlMode!
+                }
                 if self.status != nil {
                     map["Status"] = self.status!
                 }
@@ -58454,6 +58459,9 @@ public class ListDataServicePublishedApisResponseBody : Tea.TeaModel {
                     var model = ListDataServicePublishedApisResponseBody.Data.Apis.ScriptDetails()
                     model.fromMap(value)
                     self.scriptDetails = model
+                }
+                if let value = dict["SqlMode"] as? Int32 {
+                    self.sqlMode = value
                 }
                 if let value = dict["Status"] as? Int32 {
                     self.status = value
