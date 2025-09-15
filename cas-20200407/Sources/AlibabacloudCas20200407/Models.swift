@@ -3692,6 +3692,44 @@ public class GetUserCertificateDetailResponseBody : Tea.TeaModel {
             }
         }
     }
+    public class Tags : Tea.TeaModel {
+        public var tagKey: String?
+
+        public var tagValue: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.tagKey != nil {
+                map["TagKey"] = self.tagKey!
+            }
+            if self.tagValue != nil {
+                map["TagValue"] = self.tagValue!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["TagKey"] as? String {
+                self.tagKey = value
+            }
+            if let value = dict["TagValue"] as? String {
+                self.tagValue = value
+            }
+        }
+    }
     public var algorithm: String?
 
     public var buyInAliyun: Bool?
@@ -3753,6 +3791,8 @@ public class GetUserCertificateDetailResponseBody : Tea.TeaModel {
     public var signPrivateKey: String?
 
     public var startDate: String?
+
+    public var tags: [GetUserCertificateDetailResponseBody.Tags]?
 
     public override init() {
         super.init()
@@ -3865,6 +3905,13 @@ public class GetUserCertificateDetailResponseBody : Tea.TeaModel {
         if self.startDate != nil {
             map["StartDate"] = self.startDate!
         }
+        if self.tags != nil {
+            var tmp : [Any] = []
+            for k in self.tags! {
+                tmp.append(k.toMap())
+            }
+            map["Tags"] = tmp
+        }
         return map
     }
 
@@ -3972,6 +4019,19 @@ public class GetUserCertificateDetailResponseBody : Tea.TeaModel {
         }
         if let value = dict["StartDate"] as? String {
             self.startDate = value
+        }
+        if let value = dict["Tags"] as? [Any?] {
+            var tmp : [GetUserCertificateDetailResponseBody.Tags] = []
+            for v in value {
+                if v != nil {
+                    var model = GetUserCertificateDetailResponseBody.Tags()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.tags = tmp
         }
     }
 }
