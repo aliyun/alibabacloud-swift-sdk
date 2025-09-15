@@ -6845,6 +6845,208 @@ public class GetJobResponseBody : Tea.TeaModel {
             }
         }
     }
+    public class RestartRecord : Tea.TeaModel {
+        public class DetailErrorInfoList : Tea.TeaModel {
+            public var addJobLevelBlacklist: Bool?
+
+            public var addNodeToBlacklist: Bool?
+
+            public var detailErrorMsg: String?
+
+            public var errorCode: String?
+
+            public var errorMsg: String?
+
+            public var errorSource: String?
+
+            public var node: String?
+
+            public var pod: String?
+
+            public var triggerRestart: Bool?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.addJobLevelBlacklist != nil {
+                    map["AddJobLevelBlacklist"] = self.addJobLevelBlacklist!
+                }
+                if self.addNodeToBlacklist != nil {
+                    map["AddNodeToBlacklist"] = self.addNodeToBlacklist!
+                }
+                if self.detailErrorMsg != nil {
+                    map["DetailErrorMsg"] = self.detailErrorMsg!
+                }
+                if self.errorCode != nil {
+                    map["ErrorCode"] = self.errorCode!
+                }
+                if self.errorMsg != nil {
+                    map["ErrorMsg"] = self.errorMsg!
+                }
+                if self.errorSource != nil {
+                    map["ErrorSource"] = self.errorSource!
+                }
+                if self.node != nil {
+                    map["Node"] = self.node!
+                }
+                if self.pod != nil {
+                    map["Pod"] = self.pod!
+                }
+                if self.triggerRestart != nil {
+                    map["TriggerRestart"] = self.triggerRestart!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["AddJobLevelBlacklist"] as? Bool {
+                    self.addJobLevelBlacklist = value
+                }
+                if let value = dict["AddNodeToBlacklist"] as? Bool {
+                    self.addNodeToBlacklist = value
+                }
+                if let value = dict["DetailErrorMsg"] as? String {
+                    self.detailErrorMsg = value
+                }
+                if let value = dict["ErrorCode"] as? String {
+                    self.errorCode = value
+                }
+                if let value = dict["ErrorMsg"] as? String {
+                    self.errorMsg = value
+                }
+                if let value = dict["ErrorSource"] as? String {
+                    self.errorSource = value
+                }
+                if let value = dict["Node"] as? String {
+                    self.node = value
+                }
+                if let value = dict["Pod"] as? String {
+                    self.pod = value
+                }
+                if let value = dict["TriggerRestart"] as? Bool {
+                    self.triggerRestart = value
+                }
+            }
+        }
+        public var detailErrorInfoList: [GetJobResponseBody.RestartRecord.DetailErrorInfoList]?
+
+        public var jobRestartCount: Int64?
+
+        public var occurPhase: String?
+
+        public var occurTime: String?
+
+        public var reason: String?
+
+        public var restartDurationInSec: Int64?
+
+        public var restartFailReason: String?
+
+        public var restartStatus: String?
+
+        public var triggerID: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.detailErrorInfoList != nil {
+                var tmp : [Any] = []
+                for k in self.detailErrorInfoList! {
+                    tmp.append(k.toMap())
+                }
+                map["DetailErrorInfoList"] = tmp
+            }
+            if self.jobRestartCount != nil {
+                map["JobRestartCount"] = self.jobRestartCount!
+            }
+            if self.occurPhase != nil {
+                map["OccurPhase"] = self.occurPhase!
+            }
+            if self.occurTime != nil {
+                map["OccurTime"] = self.occurTime!
+            }
+            if self.reason != nil {
+                map["Reason"] = self.reason!
+            }
+            if self.restartDurationInSec != nil {
+                map["RestartDurationInSec"] = self.restartDurationInSec!
+            }
+            if self.restartFailReason != nil {
+                map["RestartFailReason"] = self.restartFailReason!
+            }
+            if self.restartStatus != nil {
+                map["RestartStatus"] = self.restartStatus!
+            }
+            if self.triggerID != nil {
+                map["TriggerID"] = self.triggerID!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["DetailErrorInfoList"] as? [Any?] {
+                var tmp : [GetJobResponseBody.RestartRecord.DetailErrorInfoList] = []
+                for v in value {
+                    if v != nil {
+                        var model = GetJobResponseBody.RestartRecord.DetailErrorInfoList()
+                        if v != nil {
+                            model.fromMap(v as? [String: Any?])
+                        }
+                        tmp.append(model)
+                    }
+                }
+                self.detailErrorInfoList = tmp
+            }
+            if let value = dict["JobRestartCount"] as? Int64 {
+                self.jobRestartCount = value
+            }
+            if let value = dict["OccurPhase"] as? String {
+                self.occurPhase = value
+            }
+            if let value = dict["OccurTime"] as? String {
+                self.occurTime = value
+            }
+            if let value = dict["Reason"] as? String {
+                self.reason = value
+            }
+            if let value = dict["RestartDurationInSec"] as? Int64 {
+                self.restartDurationInSec = value
+            }
+            if let value = dict["RestartFailReason"] as? String {
+                self.restartFailReason = value
+            }
+            if let value = dict["RestartStatus"] as? String {
+                self.restartStatus = value
+            }
+            if let value = dict["TriggerID"] as? String {
+                self.triggerID = value
+            }
+        }
+    }
     public class UserVpc : Tea.TeaModel {
         public var defaultRoute: String?
 
@@ -6962,6 +7164,8 @@ public class GetJobResponseBody : Tea.TeaModel {
     public var resourceLevel: String?
 
     public var resourceType: String?
+
+    public var restartRecord: [GetJobResponseBody.RestartRecord]?
 
     public var restartTimes: String?
 
@@ -7103,6 +7307,13 @@ public class GetJobResponseBody : Tea.TeaModel {
         }
         if self.resourceType != nil {
             map["ResourceType"] = self.resourceType!
+        }
+        if self.restartRecord != nil {
+            var tmp : [Any] = []
+            for k in self.restartRecord! {
+                tmp.append(k.toMap())
+            }
+            map["RestartRecord"] = tmp
         }
         if self.restartTimes != nil {
             map["RestartTimes"] = self.restartTimes!
@@ -7271,6 +7482,19 @@ public class GetJobResponseBody : Tea.TeaModel {
         }
         if let value = dict["ResourceType"] as? String {
             self.resourceType = value
+        }
+        if let value = dict["RestartRecord"] as? [Any?] {
+            var tmp : [GetJobResponseBody.RestartRecord] = []
+            for v in value {
+                if v != nil {
+                    var model = GetJobResponseBody.RestartRecord()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.restartRecord = tmp
         }
         if let value = dict["RestartTimes"] as? String {
             self.restartTimes = value
