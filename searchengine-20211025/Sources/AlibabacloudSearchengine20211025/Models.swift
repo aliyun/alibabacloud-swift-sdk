@@ -685,6 +685,8 @@ public class BuildIndexRequest : Tea.TeaModel {
 
     public var partition: String?
 
+    public var path: String?
+
     public var tag: String?
 
     public override init() {
@@ -722,6 +724,9 @@ public class BuildIndexRequest : Tea.TeaModel {
         if self.partition != nil {
             map["partition"] = self.partition!
         }
+        if self.path != nil {
+            map["path"] = self.path!
+        }
         if self.tag != nil {
             map["tag"] = self.tag!
         }
@@ -750,6 +755,9 @@ public class BuildIndexRequest : Tea.TeaModel {
         }
         if let value = dict["partition"] as? String {
             self.partition = value
+        }
+        if let value = dict["path"] as? String {
+            self.path = value
         }
         if let value = dict["tag"] as? String {
             self.tag = value
@@ -2417,6 +2425,8 @@ public class CreateIndexRequest : Tea.TeaModel {
 
             public var table: String?
 
+            public var tableFormat: String?
+
             public var tag: String?
 
             public override init() {
@@ -2472,6 +2482,9 @@ public class CreateIndexRequest : Tea.TeaModel {
                 if self.table != nil {
                     map["table"] = self.table!
                 }
+                if self.tableFormat != nil {
+                    map["tableFormat"] = self.tableFormat!
+                }
                 if self.tag != nil {
                     map["tag"] = self.tag!
                 }
@@ -2518,6 +2531,9 @@ public class CreateIndexRequest : Tea.TeaModel {
                 }
                 if let value = dict["table"] as? String {
                     self.table = value
+                }
+                if let value = dict["tableFormat"] as? String {
+                    self.tableFormat = value
                 }
                 if let value = dict["tag"] as? String {
                     self.tag = value
@@ -4170,6 +4186,8 @@ public class CreateTableRequest : Tea.TeaModel {
 
             public var table: String?
 
+            public var tableFormat: String?
+
             public var tag: String?
 
             public override init() {
@@ -4216,6 +4234,9 @@ public class CreateTableRequest : Tea.TeaModel {
                 if self.table != nil {
                     map["table"] = self.table!
                 }
+                if self.tableFormat != nil {
+                    map["tableFormat"] = self.tableFormat!
+                }
                 if self.tag != nil {
                     map["tag"] = self.tag!
                 }
@@ -4253,6 +4274,9 @@ public class CreateTableRequest : Tea.TeaModel {
                 }
                 if let value = dict["table"] as? String {
                     self.table = value
+                }
+                if let value = dict["tableFormat"] as? String {
+                    self.tableFormat = value
                 }
                 if let value = dict["tag"] as? String {
                     self.tag = value
@@ -21902,6 +21926,8 @@ public class ModifyDataSourceDeployRequest : Tea.TeaModel {
 
         public var table: String?
 
+        public var tableFormat: String?
+
         public var tag: String?
 
         public override init() {
@@ -21954,6 +21980,9 @@ public class ModifyDataSourceDeployRequest : Tea.TeaModel {
             if self.table != nil {
                 map["table"] = self.table!
             }
+            if self.tableFormat != nil {
+                map["tableFormat"] = self.tableFormat!
+            }
             if self.tag != nil {
                 map["tag"] = self.tag!
             }
@@ -21997,6 +22026,9 @@ public class ModifyDataSourceDeployRequest : Tea.TeaModel {
             }
             if let value = dict["table"] as? String {
                 self.table = value
+            }
+            if let value = dict["tableFormat"] as? String {
+                self.tableFormat = value
             }
             if let value = dict["tag"] as? String {
                 self.tag = value
@@ -22385,6 +22417,8 @@ public class ModifyIndexRequest : Tea.TeaModel {
 
             public var table: String?
 
+            public var tableFormat: String?
+
             public var tag: String?
 
             public override init() {
@@ -22440,6 +22474,9 @@ public class ModifyIndexRequest : Tea.TeaModel {
                 if self.table != nil {
                     map["table"] = self.table!
                 }
+                if self.tableFormat != nil {
+                    map["tableFormat"] = self.tableFormat!
+                }
                 if self.tag != nil {
                     map["tag"] = self.tag!
                 }
@@ -22486,6 +22523,9 @@ public class ModifyIndexRequest : Tea.TeaModel {
                 }
                 if let value = dict["table"] as? String {
                     self.table = value
+                }
+                if let value = dict["tableFormat"] as? String {
+                    self.tableFormat = value
                 }
                 if let value = dict["tag"] as? String {
                     self.tag = value
@@ -24878,6 +24918,8 @@ public class ModifyTableRequest : Tea.TeaModel {
 
             public var table: String?
 
+            public var tableFormat: String?
+
             public var tag: String?
 
             public override init() {
@@ -24924,6 +24966,9 @@ public class ModifyTableRequest : Tea.TeaModel {
                 if self.table != nil {
                     map["table"] = self.table!
                 }
+                if self.tableFormat != nil {
+                    map["tableFormat"] = self.tableFormat!
+                }
                 if self.tag != nil {
                     map["tag"] = self.tag!
                 }
@@ -24961,6 +25006,9 @@ public class ModifyTableRequest : Tea.TeaModel {
                 }
                 if let value = dict["table"] as? String {
                     self.table = value
+                }
+                if let value = dict["tableFormat"] as? String {
+                    self.tableFormat = value
                 }
                 if let value = dict["tag"] as? String {
                     self.tag = value

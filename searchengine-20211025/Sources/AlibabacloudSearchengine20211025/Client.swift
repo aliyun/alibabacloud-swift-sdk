@@ -48,6 +48,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.partition)) {
             body["partition"] = request.partition ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.path)) {
+            body["path"] = request.path ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.tag)) {
             body["tag"] = request.tag ?? "";
         }
