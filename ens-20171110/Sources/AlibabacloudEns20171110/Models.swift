@@ -9908,6 +9908,10 @@ public class CreateSecurityGroupRequest : Tea.TeaModel {
 
         public var ipProtocol: String?
 
+        public var ipv6DestCidrIp: String?
+
+        public var ipv6SourceCidrIp: String?
+
         public var policy: String?
 
         public var portRange: String?
@@ -9944,6 +9948,12 @@ public class CreateSecurityGroupRequest : Tea.TeaModel {
             if self.ipProtocol != nil {
                 map["IpProtocol"] = self.ipProtocol!
             }
+            if self.ipv6DestCidrIp != nil {
+                map["Ipv6DestCidrIp"] = self.ipv6DestCidrIp!
+            }
+            if self.ipv6SourceCidrIp != nil {
+                map["Ipv6SourceCidrIp"] = self.ipv6SourceCidrIp!
+            }
             if self.policy != nil {
                 map["Policy"] = self.policy!
             }
@@ -9975,6 +9985,12 @@ public class CreateSecurityGroupRequest : Tea.TeaModel {
             }
             if let value = dict["IpProtocol"] as? String {
                 self.ipProtocol = value
+            }
+            if let value = dict["Ipv6DestCidrIp"] as? String {
+                self.ipv6DestCidrIp = value
+            }
+            if let value = dict["Ipv6SourceCidrIp"] as? String {
+                self.ipv6SourceCidrIp = value
             }
             if let value = dict["Policy"] as? String {
                 self.policy = value
@@ -41993,6 +42009,36 @@ public class DescribeNetworkAttributeResponseBody : Tea.TeaModel {
             }
         }
     }
+    public class SecondaryCidrBlocks : Tea.TeaModel {
+        public var secondaryCidrBlock: [String]?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.secondaryCidrBlock != nil {
+                map["SecondaryCidrBlock"] = self.secondaryCidrBlock!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["SecondaryCidrBlock"] as? [String] {
+                self.secondaryCidrBlock = value
+            }
+        }
+    }
     public class VSwitchIds : Tea.TeaModel {
         public var vSwitchId: [String]?
 
@@ -42059,6 +42105,8 @@ public class DescribeNetworkAttributeResponseBody : Tea.TeaModel {
 
     public var routerTableId: String?
 
+    public var secondaryCidrBlocks: DescribeNetworkAttributeResponseBody.SecondaryCidrBlocks?
+
     public var status: String?
 
     public var vSwitchIds: DescribeNetworkAttributeResponseBody.VSwitchIds?
@@ -42080,6 +42128,7 @@ public class DescribeNetworkAttributeResponseBody : Tea.TeaModel {
         try self.natGatewayIds?.validate()
         try self.networkInterfaceIds?.validate()
         try self.routeTableIds?.validate()
+        try self.secondaryCidrBlocks?.validate()
         try self.vSwitchIds?.validate()
     }
 
@@ -42138,6 +42187,9 @@ public class DescribeNetworkAttributeResponseBody : Tea.TeaModel {
         }
         if self.routerTableId != nil {
             map["RouterTableId"] = self.routerTableId!
+        }
+        if self.secondaryCidrBlocks != nil {
+            map["SecondaryCidrBlocks"] = self.secondaryCidrBlocks?.toMap()
         }
         if self.status != nil {
             map["Status"] = self.status!
@@ -42217,6 +42269,11 @@ public class DescribeNetworkAttributeResponseBody : Tea.TeaModel {
         }
         if let value = dict["RouterTableId"] as? String {
             self.routerTableId = value
+        }
+        if let value = dict["SecondaryCidrBlocks"] as? [String: Any?] {
+            var model = DescribeNetworkAttributeResponseBody.SecondaryCidrBlocks()
+            model.fromMap(value)
+            self.secondaryCidrBlocks = model
         }
         if let value = dict["Status"] as? String {
             self.status = value
@@ -43039,6 +43096,36 @@ public class DescribeNetworksResponseBody : Tea.TeaModel {
                     }
                 }
             }
+            public class SecondaryCidrBlocks : Tea.TeaModel {
+                public var secondaryCidrBlock: [String]?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.secondaryCidrBlock != nil {
+                        map["SecondaryCidrBlock"] = self.secondaryCidrBlock!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                    guard let dict else { return }
+                    if let value = dict["SecondaryCidrBlock"] as? [String] {
+                        self.secondaryCidrBlock = value
+                    }
+                }
+            }
             public class Tags : Tea.TeaModel {
                 public class Tag : Tea.TeaModel {
                     public var key: String?
@@ -43189,6 +43276,8 @@ public class DescribeNetworksResponseBody : Tea.TeaModel {
 
             public var routerTableId: String?
 
+            public var secondaryCidrBlocks: DescribeNetworksResponseBody.Networks.Network.SecondaryCidrBlocks?
+
             public var status: String?
 
             public var tags: DescribeNetworksResponseBody.Networks.Network.Tags?
@@ -43206,6 +43295,7 @@ public class DescribeNetworksResponseBody : Tea.TeaModel {
 
             public override func validate() throws -> Void {
                 try self.routeTableIds?.validate()
+                try self.secondaryCidrBlocks?.validate()
                 try self.tags?.validate()
                 try self.vSwitchIds?.validate()
             }
@@ -43244,6 +43334,9 @@ public class DescribeNetworksResponseBody : Tea.TeaModel {
                 }
                 if self.routerTableId != nil {
                     map["RouterTableId"] = self.routerTableId!
+                }
+                if self.secondaryCidrBlocks != nil {
+                    map["SecondaryCidrBlocks"] = self.secondaryCidrBlocks?.toMap()
                 }
                 if self.status != nil {
                     map["Status"] = self.status!
@@ -43293,6 +43386,11 @@ public class DescribeNetworksResponseBody : Tea.TeaModel {
                 }
                 if let value = dict["RouterTableId"] as? String {
                     self.routerTableId = value
+                }
+                if let value = dict["SecondaryCidrBlocks"] as? [String: Any?] {
+                    var model = DescribeNetworksResponseBody.Networks.Network.SecondaryCidrBlocks()
+                    model.fromMap(value)
+                    self.secondaryCidrBlocks = model
                 }
                 if let value = dict["Status"] as? String {
                     self.status = value
@@ -49133,6 +49231,10 @@ public class DescribeSecurityGroupAttributeResponseBody : Tea.TeaModel {
 
             public var ipProtocol: String?
 
+            public var ipv6DestCidrIp: String?
+
+            public var ipv6SourceCidrIp: String?
+
             public var policy: String?
 
             public var portRange: String?
@@ -49172,6 +49274,12 @@ public class DescribeSecurityGroupAttributeResponseBody : Tea.TeaModel {
                 if self.ipProtocol != nil {
                     map["IpProtocol"] = self.ipProtocol!
                 }
+                if self.ipv6DestCidrIp != nil {
+                    map["Ipv6DestCidrIp"] = self.ipv6DestCidrIp!
+                }
+                if self.ipv6SourceCidrIp != nil {
+                    map["Ipv6SourceCidrIp"] = self.ipv6SourceCidrIp!
+                }
                 if self.policy != nil {
                     map["Policy"] = self.policy!
                 }
@@ -49206,6 +49314,12 @@ public class DescribeSecurityGroupAttributeResponseBody : Tea.TeaModel {
                 }
                 if let value = dict["IpProtocol"] as? String {
                     self.ipProtocol = value
+                }
+                if let value = dict["Ipv6DestCidrIp"] as? String {
+                    self.ipv6DestCidrIp = value
+                }
+                if let value = dict["Ipv6SourceCidrIp"] as? String {
+                    self.ipv6SourceCidrIp = value
                 }
                 if let value = dict["Policy"] as? String {
                     self.policy = value
