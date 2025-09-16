@@ -89,8 +89,14 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.pricingCycle)) {
             body["PricingCycle"] = request.pricingCycle ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.promotionCode)) {
+            body["PromotionCode"] = request.promotionCode ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.region)) {
             body["Region"] = request.region ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.usePromotionCode)) {
+            body["UsePromotionCode"] = request.usePromotionCode!;
         }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
@@ -810,8 +816,14 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.pricingCycle)) {
             body["PricingCycle"] = request.pricingCycle ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.promotionCode)) {
+            body["PromotionCode"] = request.promotionCode ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.region)) {
             body["Region"] = request.region ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.usePromotionCode)) {
+            body["UsePromotionCode"] = request.usePromotionCode!;
         }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
@@ -1037,8 +1049,14 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.pricingCycle)) {
             body["PricingCycle"] = request.pricingCycle ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.promotionCode)) {
+            body["PromotionCode"] = request.promotionCode ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.region)) {
             body["Region"] = request.region ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.usePromotionCode)) {
+            body["UsePromotionCode"] = request.usePromotionCode!;
         }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
@@ -1077,8 +1095,14 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.pricingCycle)) {
             body["PricingCycle"] = request.pricingCycle ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.promotionCode)) {
+            body["PromotionCode"] = request.promotionCode ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.region)) {
             body["Region"] = request.region ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.usePromotionCode)) {
+            body["UsePromotionCode"] = request.usePromotionCode!;
         }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
