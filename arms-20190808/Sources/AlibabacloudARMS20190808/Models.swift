@@ -35668,6 +35668,8 @@ public class GetRumAppInfoResponseBody : Tea.TeaModel {
 
         public var type: String?
 
+        public var webSDKConfigJson: String?
+
         public override init() {
             super.init()
         }
@@ -35756,6 +35758,9 @@ public class GetRumAppInfoResponseBody : Tea.TeaModel {
             }
             if self.type != nil {
                 map["Type"] = self.type!
+            }
+            if self.webSDKConfigJson != nil {
+                map["WebSDKConfigJson"] = self.webSDKConfigJson!
             }
             return map
         }
@@ -35849,6 +35854,9 @@ public class GetRumAppInfoResponseBody : Tea.TeaModel {
             }
             if let value = dict["Type"] as? String {
                 self.type = value
+            }
+            if let value = dict["WebSDKConfigJson"] as? String {
+                self.webSDKConfigJson = value
             }
         }
     }
@@ -74378,6 +74386,8 @@ public class UpdateRumAppRequest : Tea.TeaModel {
 
     public var stop: Bool?
 
+    public var webSDKConfigJson: String?
+
     public override init() {
         super.init()
     }
@@ -74431,6 +74441,9 @@ public class UpdateRumAppRequest : Tea.TeaModel {
         if self.stop != nil {
             map["Stop"] = self.stop!
         }
+        if self.webSDKConfigJson != nil {
+            map["WebSDKConfigJson"] = self.webSDKConfigJson!
+        }
         return map
     }
 
@@ -74474,6 +74487,9 @@ public class UpdateRumAppRequest : Tea.TeaModel {
         }
         if let value = dict["Stop"] as? Bool {
             self.stop = value
+        }
+        if let value = dict["WebSDKConfigJson"] as? String {
+            self.webSDKConfigJson = value
         }
     }
 }

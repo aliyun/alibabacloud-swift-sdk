@@ -10373,6 +10373,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.stop)) {
             query["Stop"] = request.stop!;
         }
+        if (!TeaUtils.Client.isUnset(request.webSDKConfigJson)) {
+            query["WebSDKConfigJson"] = request.webSDKConfigJson ?? "";
+        }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "query": AlibabaCloudOpenApiUtil.Client.query(query)
         ])
