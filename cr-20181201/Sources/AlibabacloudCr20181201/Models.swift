@@ -10515,6 +10515,8 @@ public class GetInstanceVpcEndpointResponseBody : Tea.TeaModel {
 
         public var ip: String?
 
+        public var issue: String?
+
         public var status: String?
 
         public var vpcId: String?
@@ -10541,6 +10543,9 @@ public class GetInstanceVpcEndpointResponseBody : Tea.TeaModel {
             if self.ip != nil {
                 map["Ip"] = self.ip!
             }
+            if self.issue != nil {
+                map["Issue"] = self.issue!
+            }
             if self.status != nil {
                 map["Status"] = self.status!
             }
@@ -10560,6 +10565,9 @@ public class GetInstanceVpcEndpointResponseBody : Tea.TeaModel {
             }
             if let value = dict["Ip"] as? String {
                 self.ip = value
+            }
+            if let value = dict["Issue"] as? String {
+                self.issue = value
             }
             if let value = dict["Status"] as? String {
                 self.status = value
