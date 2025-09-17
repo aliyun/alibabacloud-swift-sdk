@@ -2689,7 +2689,15 @@ public class CreateDomainRequest : Tea.TeaModel {
 
         public var sniHost: String?
 
+        public var WLProxyClientIp: Bool?
+
+        public var webServerType: Bool?
+
         public var writeTimeout: Int32?
+
+        public var XClientIp: Bool?
+
+        public var XTrueIp: Bool?
 
         public var xffProto: Bool?
 
@@ -2763,8 +2771,20 @@ public class CreateDomainRequest : Tea.TeaModel {
             if self.sniHost != nil {
                 map["SniHost"] = self.sniHost!
             }
+            if self.WLProxyClientIp != nil {
+                map["WLProxyClientIp"] = self.WLProxyClientIp!
+            }
+            if self.webServerType != nil {
+                map["WebServerType"] = self.webServerType!
+            }
             if self.writeTimeout != nil {
                 map["WriteTimeout"] = self.writeTimeout!
+            }
+            if self.XClientIp != nil {
+                map["XClientIp"] = self.XClientIp!
+            }
+            if self.XTrueIp != nil {
+                map["XTrueIp"] = self.XTrueIp!
             }
             if self.xffProto != nil {
                 map["XffProto"] = self.xffProto!
@@ -2842,8 +2862,20 @@ public class CreateDomainRequest : Tea.TeaModel {
             if let value = dict["SniHost"] as? String {
                 self.sniHost = value
             }
+            if let value = dict["WLProxyClientIp"] as? Bool {
+                self.WLProxyClientIp = value
+            }
+            if let value = dict["WebServerType"] as? Bool {
+                self.webServerType = value
+            }
             if let value = dict["WriteTimeout"] as? Int32 {
                 self.writeTimeout = value
+            }
+            if let value = dict["XClientIp"] as? Bool {
+                self.XClientIp = value
+            }
+            if let value = dict["XTrueIp"] as? Bool {
+                self.XTrueIp = value
             }
             if let value = dict["XffProto"] as? Bool {
                 self.xffProto = value
@@ -19667,7 +19699,15 @@ public class DescribeDomainDetailResponseBody : Tea.TeaModel {
 
         public var sniHost: String?
 
+        public var WLProxyClientIp: Bool?
+
+        public var webServerType: Bool?
+
         public var writeTimeout: Int32?
+
+        public var XClientIp: Bool?
+
+        public var XTrueIp: Bool?
 
         public var xffProto: Bool?
 
@@ -19749,8 +19789,20 @@ public class DescribeDomainDetailResponseBody : Tea.TeaModel {
             if self.sniHost != nil {
                 map["SniHost"] = self.sniHost!
             }
+            if self.WLProxyClientIp != nil {
+                map["WLProxyClientIp"] = self.WLProxyClientIp!
+            }
+            if self.webServerType != nil {
+                map["WebServerType"] = self.webServerType!
+            }
             if self.writeTimeout != nil {
                 map["WriteTimeout"] = self.writeTimeout!
+            }
+            if self.XClientIp != nil {
+                map["XClientIp"] = self.XClientIp!
+            }
+            if self.XTrueIp != nil {
+                map["XTrueIp"] = self.XTrueIp!
             }
             if self.xffProto != nil {
                 map["XffProto"] = self.xffProto!
@@ -19848,8 +19900,20 @@ public class DescribeDomainDetailResponseBody : Tea.TeaModel {
             if let value = dict["SniHost"] as? String {
                 self.sniHost = value
             }
+            if let value = dict["WLProxyClientIp"] as? Bool {
+                self.WLProxyClientIp = value
+            }
+            if let value = dict["WebServerType"] as? Bool {
+                self.webServerType = value
+            }
             if let value = dict["WriteTimeout"] as? Int32 {
                 self.writeTimeout = value
+            }
+            if let value = dict["XClientIp"] as? Bool {
+                self.XClientIp = value
+            }
+            if let value = dict["XTrueIp"] as? Bool {
+                self.XTrueIp = value
             }
             if let value = dict["XffProto"] as? Bool {
                 self.xffProto = value
@@ -22314,6 +22378,218 @@ public class DescribeFreeUserEventsResponse : Tea.TeaModel {
     }
 }
 
+public class DescribeHybridCloudBasicMonitorRequest : Tea.TeaModel {
+    public var instanceId: String?
+
+    public var mid: String?
+
+    public var regionId: String?
+
+    public var resourceManagerResourceGroupId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.instanceId != nil {
+            map["InstanceId"] = self.instanceId!
+        }
+        if self.mid != nil {
+            map["Mid"] = self.mid!
+        }
+        if self.regionId != nil {
+            map["RegionId"] = self.regionId!
+        }
+        if self.resourceManagerResourceGroupId != nil {
+            map["ResourceManagerResourceGroupId"] = self.resourceManagerResourceGroupId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["InstanceId"] as? String {
+            self.instanceId = value
+        }
+        if let value = dict["Mid"] as? String {
+            self.mid = value
+        }
+        if let value = dict["RegionId"] as? String {
+            self.regionId = value
+        }
+        if let value = dict["ResourceManagerResourceGroupId"] as? String {
+            self.resourceManagerResourceGroupId = value
+        }
+    }
+}
+
+public class DescribeHybridCloudBasicMonitorResponseBody : Tea.TeaModel {
+    public class BasicMonitors : Tea.TeaModel {
+        public var levle: String?
+
+        public var monitorName: String?
+
+        public var useRatio: Int64?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.levle != nil {
+                map["Levle"] = self.levle!
+            }
+            if self.monitorName != nil {
+                map["MonitorName"] = self.monitorName!
+            }
+            if self.useRatio != nil {
+                map["UseRatio"] = self.useRatio!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["Levle"] as? String {
+                self.levle = value
+            }
+            if let value = dict["MonitorName"] as? String {
+                self.monitorName = value
+            }
+            if let value = dict["UseRatio"] as? Int64 {
+                self.useRatio = value
+            }
+        }
+    }
+    public var basicMonitors: [DescribeHybridCloudBasicMonitorResponseBody.BasicMonitors]?
+
+    public var requestId: String?
+
+    public var totalCount: Int32?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.basicMonitors != nil {
+            var tmp : [Any] = []
+            for k in self.basicMonitors! {
+                tmp.append(k.toMap())
+            }
+            map["BasicMonitors"] = tmp
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.totalCount != nil {
+            map["TotalCount"] = self.totalCount!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["BasicMonitors"] as? [Any?] {
+            var tmp : [DescribeHybridCloudBasicMonitorResponseBody.BasicMonitors] = []
+            for v in value {
+                if v != nil {
+                    var model = DescribeHybridCloudBasicMonitorResponseBody.BasicMonitors()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.basicMonitors = tmp
+        }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+        if let value = dict["TotalCount"] as? Int32 {
+            self.totalCount = value
+        }
+    }
+}
+
+public class DescribeHybridCloudBasicMonitorResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: DescribeHybridCloudBasicMonitorResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = DescribeHybridCloudBasicMonitorResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
 public class DescribeHybridCloudClusterRuleRequest : Tea.TeaModel {
     public var clusterId: Int64?
 
@@ -22801,6 +23077,402 @@ public class DescribeHybridCloudClusterRulesResponse : Tea.TeaModel {
         }
         if let value = dict["body"] as? [String: Any?] {
             var model = DescribeHybridCloudClusterRulesResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
+public class DescribeHybridCloudClusterServersRequest : Tea.TeaModel {
+    public var clusterId: Int64?
+
+    public var groupName: String?
+
+    public var groupType: String?
+
+    public var hostName: String?
+
+    public var instanceId: String?
+
+    public var ip: String?
+
+    public var pageNumber: Int32?
+
+    public var pageSize: Int32?
+
+    public var regionId: String?
+
+    public var resourceManagerResourceGroupId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.clusterId != nil {
+            map["ClusterId"] = self.clusterId!
+        }
+        if self.groupName != nil {
+            map["GroupName"] = self.groupName!
+        }
+        if self.groupType != nil {
+            map["GroupType"] = self.groupType!
+        }
+        if self.hostName != nil {
+            map["HostName"] = self.hostName!
+        }
+        if self.instanceId != nil {
+            map["InstanceId"] = self.instanceId!
+        }
+        if self.ip != nil {
+            map["Ip"] = self.ip!
+        }
+        if self.pageNumber != nil {
+            map["PageNumber"] = self.pageNumber!
+        }
+        if self.pageSize != nil {
+            map["PageSize"] = self.pageSize!
+        }
+        if self.regionId != nil {
+            map["RegionId"] = self.regionId!
+        }
+        if self.resourceManagerResourceGroupId != nil {
+            map["ResourceManagerResourceGroupId"] = self.resourceManagerResourceGroupId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["ClusterId"] as? Int64 {
+            self.clusterId = value
+        }
+        if let value = dict["GroupName"] as? String {
+            self.groupName = value
+        }
+        if let value = dict["GroupType"] as? String {
+            self.groupType = value
+        }
+        if let value = dict["HostName"] as? String {
+            self.hostName = value
+        }
+        if let value = dict["InstanceId"] as? String {
+            self.instanceId = value
+        }
+        if let value = dict["Ip"] as? String {
+            self.ip = value
+        }
+        if let value = dict["PageNumber"] as? Int32 {
+            self.pageNumber = value
+        }
+        if let value = dict["PageSize"] as? Int32 {
+            self.pageSize = value
+        }
+        if let value = dict["RegionId"] as? String {
+            self.regionId = value
+        }
+        if let value = dict["ResourceManagerResourceGroupId"] as? String {
+            self.resourceManagerResourceGroupId = value
+        }
+    }
+}
+
+public class DescribeHybridCloudClusterServersResponseBody : Tea.TeaModel {
+    public class ClusterServers : Tea.TeaModel {
+        public var continents: String?
+
+        public var continentsValue: Int32?
+
+        public var cpu: Int32?
+
+        public var createTimestamp: Int64?
+
+        public var customName: String?
+
+        public var groupId: Int64?
+
+        public var groupName: String?
+
+        public var groupType: String?
+
+        public var hostName: String?
+
+        public var ip: String?
+
+        public var jobStatus: String?
+
+        public var mac: String?
+
+        public var memory: Int64?
+
+        public var mid: String?
+
+        public var operator_: String?
+
+        public var operatorValue: Int32?
+
+        public var regionCode: String?
+
+        public var regionCodeValue: Int32?
+
+        public var status: String?
+
+        public var updateTimestamp: Int64?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.continents != nil {
+                map["Continents"] = self.continents!
+            }
+            if self.continentsValue != nil {
+                map["ContinentsValue"] = self.continentsValue!
+            }
+            if self.cpu != nil {
+                map["Cpu"] = self.cpu!
+            }
+            if self.createTimestamp != nil {
+                map["CreateTimestamp"] = self.createTimestamp!
+            }
+            if self.customName != nil {
+                map["CustomName"] = self.customName!
+            }
+            if self.groupId != nil {
+                map["GroupId"] = self.groupId!
+            }
+            if self.groupName != nil {
+                map["GroupName"] = self.groupName!
+            }
+            if self.groupType != nil {
+                map["GroupType"] = self.groupType!
+            }
+            if self.hostName != nil {
+                map["HostName"] = self.hostName!
+            }
+            if self.ip != nil {
+                map["Ip"] = self.ip!
+            }
+            if self.jobStatus != nil {
+                map["JobStatus"] = self.jobStatus!
+            }
+            if self.mac != nil {
+                map["Mac"] = self.mac!
+            }
+            if self.memory != nil {
+                map["Memory"] = self.memory!
+            }
+            if self.mid != nil {
+                map["Mid"] = self.mid!
+            }
+            if self.operator_ != nil {
+                map["Operator"] = self.operator_!
+            }
+            if self.operatorValue != nil {
+                map["OperatorValue"] = self.operatorValue!
+            }
+            if self.regionCode != nil {
+                map["RegionCode"] = self.regionCode!
+            }
+            if self.regionCodeValue != nil {
+                map["RegionCodeValue"] = self.regionCodeValue!
+            }
+            if self.status != nil {
+                map["Status"] = self.status!
+            }
+            if self.updateTimestamp != nil {
+                map["UpdateTimestamp"] = self.updateTimestamp!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["Continents"] as? String {
+                self.continents = value
+            }
+            if let value = dict["ContinentsValue"] as? Int32 {
+                self.continentsValue = value
+            }
+            if let value = dict["Cpu"] as? Int32 {
+                self.cpu = value
+            }
+            if let value = dict["CreateTimestamp"] as? Int64 {
+                self.createTimestamp = value
+            }
+            if let value = dict["CustomName"] as? String {
+                self.customName = value
+            }
+            if let value = dict["GroupId"] as? Int64 {
+                self.groupId = value
+            }
+            if let value = dict["GroupName"] as? String {
+                self.groupName = value
+            }
+            if let value = dict["GroupType"] as? String {
+                self.groupType = value
+            }
+            if let value = dict["HostName"] as? String {
+                self.hostName = value
+            }
+            if let value = dict["Ip"] as? String {
+                self.ip = value
+            }
+            if let value = dict["JobStatus"] as? String {
+                self.jobStatus = value
+            }
+            if let value = dict["Mac"] as? String {
+                self.mac = value
+            }
+            if let value = dict["Memory"] as? Int64 {
+                self.memory = value
+            }
+            if let value = dict["Mid"] as? String {
+                self.mid = value
+            }
+            if let value = dict["Operator"] as? String {
+                self.operator_ = value
+            }
+            if let value = dict["OperatorValue"] as? Int32 {
+                self.operatorValue = value
+            }
+            if let value = dict["RegionCode"] as? String {
+                self.regionCode = value
+            }
+            if let value = dict["RegionCodeValue"] as? Int32 {
+                self.regionCodeValue = value
+            }
+            if let value = dict["Status"] as? String {
+                self.status = value
+            }
+            if let value = dict["UpdateTimestamp"] as? Int64 {
+                self.updateTimestamp = value
+            }
+        }
+    }
+    public var clusterServers: [DescribeHybridCloudClusterServersResponseBody.ClusterServers]?
+
+    public var requestId: String?
+
+    public var totalCount: Int32?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.clusterServers != nil {
+            var tmp : [Any] = []
+            for k in self.clusterServers! {
+                tmp.append(k.toMap())
+            }
+            map["ClusterServers"] = tmp
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.totalCount != nil {
+            map["TotalCount"] = self.totalCount!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["ClusterServers"] as? [Any?] {
+            var tmp : [DescribeHybridCloudClusterServersResponseBody.ClusterServers] = []
+            for v in value {
+                if v != nil {
+                    var model = DescribeHybridCloudClusterServersResponseBody.ClusterServers()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.clusterServers = tmp
+        }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+        if let value = dict["TotalCount"] as? Int32 {
+            self.totalCount = value
+        }
+    }
+}
+
+public class DescribeHybridCloudClusterServersResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: DescribeHybridCloudClusterServersResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = DescribeHybridCloudClusterServersResponseBody()
             model.fromMap(value)
             self.body = model
         }
@@ -23401,6 +24073,817 @@ public class DescribeHybridCloudGroupsResponse : Tea.TeaModel {
         }
         if let value = dict["body"] as? [String: Any?] {
             var model = DescribeHybridCloudGroupsResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
+public class DescribeHybridCloudProcessMonitorRequest : Tea.TeaModel {
+    public var instanceId: String?
+
+    public var mid: String?
+
+    public var regionId: String?
+
+    public var resourceManagerResourceGroupId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.instanceId != nil {
+            map["InstanceId"] = self.instanceId!
+        }
+        if self.mid != nil {
+            map["Mid"] = self.mid!
+        }
+        if self.regionId != nil {
+            map["RegionId"] = self.regionId!
+        }
+        if self.resourceManagerResourceGroupId != nil {
+            map["ResourceManagerResourceGroupId"] = self.resourceManagerResourceGroupId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["InstanceId"] as? String {
+            self.instanceId = value
+        }
+        if let value = dict["Mid"] as? String {
+            self.mid = value
+        }
+        if let value = dict["RegionId"] as? String {
+            self.regionId = value
+        }
+        if let value = dict["ResourceManagerResourceGroupId"] as? String {
+            self.resourceManagerResourceGroupId = value
+        }
+    }
+}
+
+public class DescribeHybridCloudProcessMonitorResponseBody : Tea.TeaModel {
+    public class ProcessMonitors : Tea.TeaModel {
+        public var levle: String?
+
+        public var processName: String?
+
+        public var processStatus: Int64?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.levle != nil {
+                map["Levle"] = self.levle!
+            }
+            if self.processName != nil {
+                map["ProcessName"] = self.processName!
+            }
+            if self.processStatus != nil {
+                map["ProcessStatus"] = self.processStatus!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["Levle"] as? String {
+                self.levle = value
+            }
+            if let value = dict["ProcessName"] as? String {
+                self.processName = value
+            }
+            if let value = dict["ProcessStatus"] as? Int64 {
+                self.processStatus = value
+            }
+        }
+    }
+    public var processMonitors: [DescribeHybridCloudProcessMonitorResponseBody.ProcessMonitors]?
+
+    public var requestId: String?
+
+    public var totalCount: Int32?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.processMonitors != nil {
+            var tmp : [Any] = []
+            for k in self.processMonitors! {
+                tmp.append(k.toMap())
+            }
+            map["ProcessMonitors"] = tmp
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.totalCount != nil {
+            map["TotalCount"] = self.totalCount!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["ProcessMonitors"] as? [Any?] {
+            var tmp : [DescribeHybridCloudProcessMonitorResponseBody.ProcessMonitors] = []
+            for v in value {
+                if v != nil {
+                    var model = DescribeHybridCloudProcessMonitorResponseBody.ProcessMonitors()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.processMonitors = tmp
+        }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+        if let value = dict["TotalCount"] as? Int32 {
+            self.totalCount = value
+        }
+    }
+}
+
+public class DescribeHybridCloudProcessMonitorResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: DescribeHybridCloudProcessMonitorResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = DescribeHybridCloudProcessMonitorResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
+public class DescribeHybridCloudResourceDetailRequest : Tea.TeaModel {
+    public var backend: String?
+
+    public var cnameEnabled: Bool?
+
+    public var domain: String?
+
+    public var instanceId: String?
+
+    public var pageNumber: Int64?
+
+    public var pageSize: Int64?
+
+    public var regionId: String?
+
+    public var resourceManagerResourceGroupId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.backend != nil {
+            map["Backend"] = self.backend!
+        }
+        if self.cnameEnabled != nil {
+            map["CnameEnabled"] = self.cnameEnabled!
+        }
+        if self.domain != nil {
+            map["Domain"] = self.domain!
+        }
+        if self.instanceId != nil {
+            map["InstanceId"] = self.instanceId!
+        }
+        if self.pageNumber != nil {
+            map["PageNumber"] = self.pageNumber!
+        }
+        if self.pageSize != nil {
+            map["PageSize"] = self.pageSize!
+        }
+        if self.regionId != nil {
+            map["RegionId"] = self.regionId!
+        }
+        if self.resourceManagerResourceGroupId != nil {
+            map["ResourceManagerResourceGroupId"] = self.resourceManagerResourceGroupId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["Backend"] as? String {
+            self.backend = value
+        }
+        if let value = dict["CnameEnabled"] as? Bool {
+            self.cnameEnabled = value
+        }
+        if let value = dict["Domain"] as? String {
+            self.domain = value
+        }
+        if let value = dict["InstanceId"] as? String {
+            self.instanceId = value
+        }
+        if let value = dict["PageNumber"] as? Int64 {
+            self.pageNumber = value
+        }
+        if let value = dict["PageSize"] as? Int64 {
+            self.pageSize = value
+        }
+        if let value = dict["RegionId"] as? String {
+            self.regionId = value
+        }
+        if let value = dict["ResourceManagerResourceGroupId"] as? String {
+            self.resourceManagerResourceGroupId = value
+        }
+    }
+}
+
+public class DescribeHybridCloudResourceDetailResponseBody : Tea.TeaModel {
+    public class Domain : Tea.TeaModel {
+        public class Listen : Tea.TeaModel {
+            public var certId: String?
+
+            public var cipherSuite: Int32?
+
+            public var customCiphers: [String]?
+
+            public var enableTLSv3: Bool?
+
+            public var exclusiveIp: Bool?
+
+            public var focusHttps: Bool?
+
+            public var http2Enabled: Bool?
+
+            public var httpPorts: [Int64]?
+
+            public var httpsPorts: [Int64]?
+
+            public var IPv6Enabled: Bool?
+
+            public var protectionResource: String?
+
+            public var TLSVersion: String?
+
+            public var xffHeaderMode: Int32?
+
+            public var xffHeaders: [String]?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.certId != nil {
+                    map["CertId"] = self.certId!
+                }
+                if self.cipherSuite != nil {
+                    map["CipherSuite"] = self.cipherSuite!
+                }
+                if self.customCiphers != nil {
+                    map["CustomCiphers"] = self.customCiphers!
+                }
+                if self.enableTLSv3 != nil {
+                    map["EnableTLSv3"] = self.enableTLSv3!
+                }
+                if self.exclusiveIp != nil {
+                    map["ExclusiveIp"] = self.exclusiveIp!
+                }
+                if self.focusHttps != nil {
+                    map["FocusHttps"] = self.focusHttps!
+                }
+                if self.http2Enabled != nil {
+                    map["Http2Enabled"] = self.http2Enabled!
+                }
+                if self.httpPorts != nil {
+                    map["HttpPorts"] = self.httpPorts!
+                }
+                if self.httpsPorts != nil {
+                    map["HttpsPorts"] = self.httpsPorts!
+                }
+                if self.IPv6Enabled != nil {
+                    map["IPv6Enabled"] = self.IPv6Enabled!
+                }
+                if self.protectionResource != nil {
+                    map["ProtectionResource"] = self.protectionResource!
+                }
+                if self.TLSVersion != nil {
+                    map["TLSVersion"] = self.TLSVersion!
+                }
+                if self.xffHeaderMode != nil {
+                    map["XffHeaderMode"] = self.xffHeaderMode!
+                }
+                if self.xffHeaders != nil {
+                    map["XffHeaders"] = self.xffHeaders!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["CertId"] as? String {
+                    self.certId = value
+                }
+                if let value = dict["CipherSuite"] as? Int32 {
+                    self.cipherSuite = value
+                }
+                if let value = dict["CustomCiphers"] as? [String] {
+                    self.customCiphers = value
+                }
+                if let value = dict["EnableTLSv3"] as? Bool {
+                    self.enableTLSv3 = value
+                }
+                if let value = dict["ExclusiveIp"] as? Bool {
+                    self.exclusiveIp = value
+                }
+                if let value = dict["FocusHttps"] as? Bool {
+                    self.focusHttps = value
+                }
+                if let value = dict["Http2Enabled"] as? Bool {
+                    self.http2Enabled = value
+                }
+                if let value = dict["HttpPorts"] as? [Int64] {
+                    self.httpPorts = value
+                }
+                if let value = dict["HttpsPorts"] as? [Int64] {
+                    self.httpsPorts = value
+                }
+                if let value = dict["IPv6Enabled"] as? Bool {
+                    self.IPv6Enabled = value
+                }
+                if let value = dict["ProtectionResource"] as? String {
+                    self.protectionResource = value
+                }
+                if let value = dict["TLSVersion"] as? String {
+                    self.TLSVersion = value
+                }
+                if let value = dict["XffHeaderMode"] as? Int32 {
+                    self.xffHeaderMode = value
+                }
+                if let value = dict["XffHeaders"] as? [String] {
+                    self.xffHeaders = value
+                }
+            }
+        }
+        public class Redirect : Tea.TeaModel {
+            public class RequestHeaders : Tea.TeaModel {
+                public var key: String?
+
+                public var value: String?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.key != nil {
+                        map["Key"] = self.key!
+                    }
+                    if self.value != nil {
+                        map["Value"] = self.value!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                    guard let dict else { return }
+                    if let value = dict["Key"] as? String {
+                        self.key = value
+                    }
+                    if let value = dict["Value"] as? String {
+                        self.value = value
+                    }
+                }
+            }
+            public var backends: [String]?
+
+            public var cnameEnabled: Bool?
+
+            public var connectTimeout: Int64?
+
+            public var focusHttpBackend: Bool?
+
+            public var keepalive: Bool?
+
+            public var keepaliveRequests: Int64?
+
+            public var keepaliveTimeout: Int64?
+
+            public var loadbalance: String?
+
+            public var readTimeout: Int64?
+
+            public var requestHeaders: [DescribeHybridCloudResourceDetailResponseBody.Domain.Redirect.RequestHeaders]?
+
+            public var retry: Bool?
+
+            public var routingRules: String?
+
+            public var sniEnabled: Bool?
+
+            public var sniHost: String?
+
+            public var writeTimeout: Int64?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.backends != nil {
+                    map["Backends"] = self.backends!
+                }
+                if self.cnameEnabled != nil {
+                    map["CnameEnabled"] = self.cnameEnabled!
+                }
+                if self.connectTimeout != nil {
+                    map["ConnectTimeout"] = self.connectTimeout!
+                }
+                if self.focusHttpBackend != nil {
+                    map["FocusHttpBackend"] = self.focusHttpBackend!
+                }
+                if self.keepalive != nil {
+                    map["Keepalive"] = self.keepalive!
+                }
+                if self.keepaliveRequests != nil {
+                    map["KeepaliveRequests"] = self.keepaliveRequests!
+                }
+                if self.keepaliveTimeout != nil {
+                    map["KeepaliveTimeout"] = self.keepaliveTimeout!
+                }
+                if self.loadbalance != nil {
+                    map["Loadbalance"] = self.loadbalance!
+                }
+                if self.readTimeout != nil {
+                    map["ReadTimeout"] = self.readTimeout!
+                }
+                if self.requestHeaders != nil {
+                    var tmp : [Any] = []
+                    for k in self.requestHeaders! {
+                        tmp.append(k.toMap())
+                    }
+                    map["RequestHeaders"] = tmp
+                }
+                if self.retry != nil {
+                    map["Retry"] = self.retry!
+                }
+                if self.routingRules != nil {
+                    map["RoutingRules"] = self.routingRules!
+                }
+                if self.sniEnabled != nil {
+                    map["SniEnabled"] = self.sniEnabled!
+                }
+                if self.sniHost != nil {
+                    map["SniHost"] = self.sniHost!
+                }
+                if self.writeTimeout != nil {
+                    map["WriteTimeout"] = self.writeTimeout!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["Backends"] as? [String] {
+                    self.backends = value
+                }
+                if let value = dict["CnameEnabled"] as? Bool {
+                    self.cnameEnabled = value
+                }
+                if let value = dict["ConnectTimeout"] as? Int64 {
+                    self.connectTimeout = value
+                }
+                if let value = dict["FocusHttpBackend"] as? Bool {
+                    self.focusHttpBackend = value
+                }
+                if let value = dict["Keepalive"] as? Bool {
+                    self.keepalive = value
+                }
+                if let value = dict["KeepaliveRequests"] as? Int64 {
+                    self.keepaliveRequests = value
+                }
+                if let value = dict["KeepaliveTimeout"] as? Int64 {
+                    self.keepaliveTimeout = value
+                }
+                if let value = dict["Loadbalance"] as? String {
+                    self.loadbalance = value
+                }
+                if let value = dict["ReadTimeout"] as? Int64 {
+                    self.readTimeout = value
+                }
+                if let value = dict["RequestHeaders"] as? [Any?] {
+                    var tmp : [DescribeHybridCloudResourceDetailResponseBody.Domain.Redirect.RequestHeaders] = []
+                    for v in value {
+                        if v != nil {
+                            var model = DescribeHybridCloudResourceDetailResponseBody.Domain.Redirect.RequestHeaders()
+                            if v != nil {
+                                model.fromMap(v as? [String: Any?])
+                            }
+                            tmp.append(model)
+                        }
+                    }
+                    self.requestHeaders = tmp
+                }
+                if let value = dict["Retry"] as? Bool {
+                    self.retry = value
+                }
+                if let value = dict["RoutingRules"] as? String {
+                    self.routingRules = value
+                }
+                if let value = dict["SniEnabled"] as? Bool {
+                    self.sniEnabled = value
+                }
+                if let value = dict["SniHost"] as? String {
+                    self.sniHost = value
+                }
+                if let value = dict["WriteTimeout"] as? Int64 {
+                    self.writeTimeout = value
+                }
+            }
+        }
+        public var cname: String?
+
+        public var domain: String?
+
+        public var id: Int64?
+
+        public var listen: DescribeHybridCloudResourceDetailResponseBody.Domain.Listen?
+
+        public var redirect: DescribeHybridCloudResourceDetailResponseBody.Domain.Redirect?
+
+        public var resourceManagerResourceGroupId: String?
+
+        public var status: Int32?
+
+        public var uid: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+            try self.listen?.validate()
+            try self.redirect?.validate()
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.cname != nil {
+                map["Cname"] = self.cname!
+            }
+            if self.domain != nil {
+                map["Domain"] = self.domain!
+            }
+            if self.id != nil {
+                map["Id"] = self.id!
+            }
+            if self.listen != nil {
+                map["Listen"] = self.listen?.toMap()
+            }
+            if self.redirect != nil {
+                map["Redirect"] = self.redirect?.toMap()
+            }
+            if self.resourceManagerResourceGroupId != nil {
+                map["ResourceManagerResourceGroupId"] = self.resourceManagerResourceGroupId!
+            }
+            if self.status != nil {
+                map["Status"] = self.status!
+            }
+            if self.uid != nil {
+                map["Uid"] = self.uid!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["Cname"] as? String {
+                self.cname = value
+            }
+            if let value = dict["Domain"] as? String {
+                self.domain = value
+            }
+            if let value = dict["Id"] as? Int64 {
+                self.id = value
+            }
+            if let value = dict["Listen"] as? [String: Any?] {
+                var model = DescribeHybridCloudResourceDetailResponseBody.Domain.Listen()
+                model.fromMap(value)
+                self.listen = model
+            }
+            if let value = dict["Redirect"] as? [String: Any?] {
+                var model = DescribeHybridCloudResourceDetailResponseBody.Domain.Redirect()
+                model.fromMap(value)
+                self.redirect = model
+            }
+            if let value = dict["ResourceManagerResourceGroupId"] as? String {
+                self.resourceManagerResourceGroupId = value
+            }
+            if let value = dict["Status"] as? Int32 {
+                self.status = value
+            }
+            if let value = dict["Uid"] as? String {
+                self.uid = value
+            }
+        }
+    }
+    public var domain: DescribeHybridCloudResourceDetailResponseBody.Domain?
+
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.domain?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.domain != nil {
+            map["Domain"] = self.domain?.toMap()
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["Domain"] as? [String: Any?] {
+            var model = DescribeHybridCloudResourceDetailResponseBody.Domain()
+            model.fromMap(value)
+            self.domain = model
+        }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+    }
+}
+
+public class DescribeHybridCloudResourceDetailResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: DescribeHybridCloudResourceDetailResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = DescribeHybridCloudResourceDetailResponseBody()
             model.fromMap(value)
             self.body = model
         }
@@ -24025,6 +25508,306 @@ public class DescribeHybridCloudResourcesResponse : Tea.TeaModel {
     }
 }
 
+public class DescribeHybridCloudSdkServersRequest : Tea.TeaModel {
+    public var clusterName: String?
+
+    public var hostName: String?
+
+    public var instanceId: String?
+
+    public var ip: String?
+
+    public var pageNumber: Int32?
+
+    public var pageSize: Int32?
+
+    public var regionId: String?
+
+    public var resourceManagerResourceGroupId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.clusterName != nil {
+            map["ClusterName"] = self.clusterName!
+        }
+        if self.hostName != nil {
+            map["HostName"] = self.hostName!
+        }
+        if self.instanceId != nil {
+            map["InstanceId"] = self.instanceId!
+        }
+        if self.ip != nil {
+            map["Ip"] = self.ip!
+        }
+        if self.pageNumber != nil {
+            map["PageNumber"] = self.pageNumber!
+        }
+        if self.pageSize != nil {
+            map["PageSize"] = self.pageSize!
+        }
+        if self.regionId != nil {
+            map["RegionId"] = self.regionId!
+        }
+        if self.resourceManagerResourceGroupId != nil {
+            map["ResourceManagerResourceGroupId"] = self.resourceManagerResourceGroupId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["ClusterName"] as? String {
+            self.clusterName = value
+        }
+        if let value = dict["HostName"] as? String {
+            self.hostName = value
+        }
+        if let value = dict["InstanceId"] as? String {
+            self.instanceId = value
+        }
+        if let value = dict["Ip"] as? String {
+            self.ip = value
+        }
+        if let value = dict["PageNumber"] as? Int32 {
+            self.pageNumber = value
+        }
+        if let value = dict["PageSize"] as? Int32 {
+            self.pageSize = value
+        }
+        if let value = dict["RegionId"] as? String {
+            self.regionId = value
+        }
+        if let value = dict["ResourceManagerResourceGroupId"] as? String {
+            self.resourceManagerResourceGroupId = value
+        }
+    }
+}
+
+public class DescribeHybridCloudSdkServersResponseBody : Tea.TeaModel {
+    public class SdkServers : Tea.TeaModel {
+        public var clusterName: String?
+
+        public var createTime: Int64?
+
+        public var hostName: String?
+
+        public var ip: String?
+
+        public var mid: String?
+
+        public var protectionGroupAddress: String?
+
+        public var pullinStatus: String?
+
+        public var resourceId: String?
+
+        public var status: String?
+
+        public var updateTime: Int64?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.clusterName != nil {
+                map["ClusterName"] = self.clusterName!
+            }
+            if self.createTime != nil {
+                map["CreateTime"] = self.createTime!
+            }
+            if self.hostName != nil {
+                map["HostName"] = self.hostName!
+            }
+            if self.ip != nil {
+                map["Ip"] = self.ip!
+            }
+            if self.mid != nil {
+                map["Mid"] = self.mid!
+            }
+            if self.protectionGroupAddress != nil {
+                map["ProtectionGroupAddress"] = self.protectionGroupAddress!
+            }
+            if self.pullinStatus != nil {
+                map["PullinStatus"] = self.pullinStatus!
+            }
+            if self.resourceId != nil {
+                map["ResourceId"] = self.resourceId!
+            }
+            if self.status != nil {
+                map["Status"] = self.status!
+            }
+            if self.updateTime != nil {
+                map["UpdateTime"] = self.updateTime!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["ClusterName"] as? String {
+                self.clusterName = value
+            }
+            if let value = dict["CreateTime"] as? Int64 {
+                self.createTime = value
+            }
+            if let value = dict["HostName"] as? String {
+                self.hostName = value
+            }
+            if let value = dict["Ip"] as? String {
+                self.ip = value
+            }
+            if let value = dict["Mid"] as? String {
+                self.mid = value
+            }
+            if let value = dict["ProtectionGroupAddress"] as? String {
+                self.protectionGroupAddress = value
+            }
+            if let value = dict["PullinStatus"] as? String {
+                self.pullinStatus = value
+            }
+            if let value = dict["ResourceId"] as? String {
+                self.resourceId = value
+            }
+            if let value = dict["Status"] as? String {
+                self.status = value
+            }
+            if let value = dict["UpdateTime"] as? Int64 {
+                self.updateTime = value
+            }
+        }
+    }
+    public var requestId: String?
+
+    public var sdkServers: [DescribeHybridCloudSdkServersResponseBody.SdkServers]?
+
+    public var totalCount: Int32?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.sdkServers != nil {
+            var tmp : [Any] = []
+            for k in self.sdkServers! {
+                tmp.append(k.toMap())
+            }
+            map["SdkServers"] = tmp
+        }
+        if self.totalCount != nil {
+            map["TotalCount"] = self.totalCount!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+        if let value = dict["SdkServers"] as? [Any?] {
+            var tmp : [DescribeHybridCloudSdkServersResponseBody.SdkServers] = []
+            for v in value {
+                if v != nil {
+                    var model = DescribeHybridCloudSdkServersResponseBody.SdkServers()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.sdkServers = tmp
+        }
+        if let value = dict["TotalCount"] as? Int32 {
+            self.totalCount = value
+        }
+    }
+}
+
+public class DescribeHybridCloudSdkServersResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: DescribeHybridCloudSdkServersResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = DescribeHybridCloudSdkServersResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
 public class DescribeHybridCloudServerRegionsRequest : Tea.TeaModel {
     public var instanceId: String?
 
@@ -24223,6 +26006,142 @@ public class DescribeHybridCloudServerRegionsResponse : Tea.TeaModel {
         }
         if let value = dict["body"] as? [String: Any?] {
             var model = DescribeHybridCloudServerRegionsResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
+public class DescribeHybridCloudSupportRegionsRequest : Tea.TeaModel {
+    public var instanceId: String?
+
+    public var regionId: String?
+
+    public var resourceManagerResourceGroupId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.instanceId != nil {
+            map["InstanceId"] = self.instanceId!
+        }
+        if self.regionId != nil {
+            map["RegionId"] = self.regionId!
+        }
+        if self.resourceManagerResourceGroupId != nil {
+            map["ResourceManagerResourceGroupId"] = self.resourceManagerResourceGroupId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["InstanceId"] as? String {
+            self.instanceId = value
+        }
+        if let value = dict["RegionId"] as? String {
+            self.regionId = value
+        }
+        if let value = dict["ResourceManagerResourceGroupId"] as? String {
+            self.resourceManagerResourceGroupId = value
+        }
+    }
+}
+
+public class DescribeHybridCloudSupportRegionsResponseBody : Tea.TeaModel {
+    public var requestId: String?
+
+    public var supportRegions: [String]?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.supportRegions != nil {
+            map["SupportRegions"] = self.supportRegions!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+        if let value = dict["SupportRegions"] as? [String] {
+            self.supportRegions = value
+        }
+    }
+}
+
+public class DescribeHybridCloudSupportRegionsResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: DescribeHybridCloudSupportRegionsResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = DescribeHybridCloudSupportRegionsResponseBody()
             model.fromMap(value)
             self.body = model
         }
@@ -24499,6 +26418,150 @@ public class DescribeHybridCloudUnassignedMachinesResponse : Tea.TeaModel {
         }
         if let value = dict["body"] as? [String: Any?] {
             var model = DescribeHybridCloudUnassignedMachinesResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
+public class DescribeHybridCloudUnsupportPortsRequest : Tea.TeaModel {
+    public var instanceId: String?
+
+    public var regionId: String?
+
+    public var resourceManagerResourceGroupId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.instanceId != nil {
+            map["InstanceId"] = self.instanceId!
+        }
+        if self.regionId != nil {
+            map["RegionId"] = self.regionId!
+        }
+        if self.resourceManagerResourceGroupId != nil {
+            map["ResourceManagerResourceGroupId"] = self.resourceManagerResourceGroupId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["InstanceId"] as? String {
+            self.instanceId = value
+        }
+        if let value = dict["RegionId"] as? String {
+            self.regionId = value
+        }
+        if let value = dict["ResourceManagerResourceGroupId"] as? String {
+            self.resourceManagerResourceGroupId = value
+        }
+    }
+}
+
+public class DescribeHybridCloudUnsupportPortsResponseBody : Tea.TeaModel {
+    public var httpPorts: String?
+
+    public var httpsPorts: String?
+
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.httpPorts != nil {
+            map["HttpPorts"] = self.httpPorts!
+        }
+        if self.httpsPorts != nil {
+            map["HttpsPorts"] = self.httpsPorts!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["HttpPorts"] as? String {
+            self.httpPorts = value
+        }
+        if let value = dict["HttpsPorts"] as? String {
+            self.httpsPorts = value
+        }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+    }
+}
+
+public class DescribeHybridCloudUnsupportPortsResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: DescribeHybridCloudUnsupportPortsResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = DescribeHybridCloudUnsupportPortsResponseBody()
             model.fromMap(value)
             self.body = model
         }
@@ -42266,7 +44329,15 @@ public class ModifyDomainRequest : Tea.TeaModel {
 
         public var sniHost: String?
 
+        public var WLProxyClientIp: Bool?
+
+        public var webServerType: Bool?
+
         public var writeTimeout: Int32?
+
+        public var XClientIp: Bool?
+
+        public var XTrueIp: Bool?
 
         public var xffProto: Bool?
 
@@ -42340,8 +44411,20 @@ public class ModifyDomainRequest : Tea.TeaModel {
             if self.sniHost != nil {
                 map["SniHost"] = self.sniHost!
             }
+            if self.WLProxyClientIp != nil {
+                map["WLProxyClientIp"] = self.WLProxyClientIp!
+            }
+            if self.webServerType != nil {
+                map["WebServerType"] = self.webServerType!
+            }
             if self.writeTimeout != nil {
                 map["WriteTimeout"] = self.writeTimeout!
+            }
+            if self.XClientIp != nil {
+                map["XClientIp"] = self.XClientIp!
+            }
+            if self.XTrueIp != nil {
+                map["XTrueIp"] = self.XTrueIp!
             }
             if self.xffProto != nil {
                 map["XffProto"] = self.xffProto!
@@ -42419,8 +44502,20 @@ public class ModifyDomainRequest : Tea.TeaModel {
             if let value = dict["SniHost"] as? String {
                 self.sniHost = value
             }
+            if let value = dict["WLProxyClientIp"] as? Bool {
+                self.WLProxyClientIp = value
+            }
+            if let value = dict["WebServerType"] as? Bool {
+                self.webServerType = value
+            }
             if let value = dict["WriteTimeout"] as? Int32 {
                 self.writeTimeout = value
+            }
+            if let value = dict["XClientIp"] as? Bool {
+                self.XClientIp = value
+            }
+            if let value = dict["XTrueIp"] as? Bool {
+                self.XTrueIp = value
             }
             if let value = dict["XffProto"] as? Bool {
                 self.xffProto = value
@@ -42858,6 +44953,246 @@ public class ModifyDomainPunishStatusResponse : Tea.TeaModel {
         }
         if let value = dict["body"] as? [String: Any?] {
             var model = ModifyDomainPunishStatusResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
+public class ModifyHybridCloudClusterRequest : Tea.TeaModel {
+    public var accessMode: String?
+
+    public var accessRegion: String?
+
+    public var clusterName: String?
+
+    public var httpPorts: String?
+
+    public var httpsPorts: String?
+
+    public var id: Int64?
+
+    public var instanceId: String?
+
+    public var logFieldsNotReturned: String?
+
+    public var protectionServerCount: Int32?
+
+    public var proxyStatus: String?
+
+    public var proxyType: String?
+
+    public var regionId: String?
+
+    public var remark: String?
+
+    public var resourceManagerResourceGroupId: String?
+
+    public var ruleConfig: String?
+
+    public var ruleStatus: String?
+
+    public var ruleType: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.accessMode != nil {
+            map["AccessMode"] = self.accessMode!
+        }
+        if self.accessRegion != nil {
+            map["AccessRegion"] = self.accessRegion!
+        }
+        if self.clusterName != nil {
+            map["ClusterName"] = self.clusterName!
+        }
+        if self.httpPorts != nil {
+            map["HttpPorts"] = self.httpPorts!
+        }
+        if self.httpsPorts != nil {
+            map["HttpsPorts"] = self.httpsPorts!
+        }
+        if self.id != nil {
+            map["Id"] = self.id!
+        }
+        if self.instanceId != nil {
+            map["InstanceId"] = self.instanceId!
+        }
+        if self.logFieldsNotReturned != nil {
+            map["LogFieldsNotReturned"] = self.logFieldsNotReturned!
+        }
+        if self.protectionServerCount != nil {
+            map["ProtectionServerCount"] = self.protectionServerCount!
+        }
+        if self.proxyStatus != nil {
+            map["ProxyStatus"] = self.proxyStatus!
+        }
+        if self.proxyType != nil {
+            map["ProxyType"] = self.proxyType!
+        }
+        if self.regionId != nil {
+            map["RegionId"] = self.regionId!
+        }
+        if self.remark != nil {
+            map["Remark"] = self.remark!
+        }
+        if self.resourceManagerResourceGroupId != nil {
+            map["ResourceManagerResourceGroupId"] = self.resourceManagerResourceGroupId!
+        }
+        if self.ruleConfig != nil {
+            map["RuleConfig"] = self.ruleConfig!
+        }
+        if self.ruleStatus != nil {
+            map["RuleStatus"] = self.ruleStatus!
+        }
+        if self.ruleType != nil {
+            map["RuleType"] = self.ruleType!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["AccessMode"] as? String {
+            self.accessMode = value
+        }
+        if let value = dict["AccessRegion"] as? String {
+            self.accessRegion = value
+        }
+        if let value = dict["ClusterName"] as? String {
+            self.clusterName = value
+        }
+        if let value = dict["HttpPorts"] as? String {
+            self.httpPorts = value
+        }
+        if let value = dict["HttpsPorts"] as? String {
+            self.httpsPorts = value
+        }
+        if let value = dict["Id"] as? Int64 {
+            self.id = value
+        }
+        if let value = dict["InstanceId"] as? String {
+            self.instanceId = value
+        }
+        if let value = dict["LogFieldsNotReturned"] as? String {
+            self.logFieldsNotReturned = value
+        }
+        if let value = dict["ProtectionServerCount"] as? Int32 {
+            self.protectionServerCount = value
+        }
+        if let value = dict["ProxyStatus"] as? String {
+            self.proxyStatus = value
+        }
+        if let value = dict["ProxyType"] as? String {
+            self.proxyType = value
+        }
+        if let value = dict["RegionId"] as? String {
+            self.regionId = value
+        }
+        if let value = dict["Remark"] as? String {
+            self.remark = value
+        }
+        if let value = dict["ResourceManagerResourceGroupId"] as? String {
+            self.resourceManagerResourceGroupId = value
+        }
+        if let value = dict["RuleConfig"] as? String {
+            self.ruleConfig = value
+        }
+        if let value = dict["RuleStatus"] as? String {
+            self.ruleStatus = value
+        }
+        if let value = dict["RuleType"] as? String {
+            self.ruleType = value
+        }
+    }
+}
+
+public class ModifyHybridCloudClusterResponseBody : Tea.TeaModel {
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+    }
+}
+
+public class ModifyHybridCloudClusterResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: ModifyHybridCloudClusterResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = ModifyHybridCloudClusterResponseBody()
             model.fromMap(value)
             self.body = model
         }
