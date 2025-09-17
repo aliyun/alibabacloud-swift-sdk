@@ -2277,6 +2277,64 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func sendLogisticsSmsWithOptions(_ request: SendLogisticsSmsRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> SendLogisticsSmsResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.expressCompanyCode)) {
+            query["ExpressCompanyCode"] = request.expressCompanyCode ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.mailNo)) {
+            query["MailNo"] = request.mailNo ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.outId)) {
+            query["OutId"] = request.outId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.ownerId)) {
+            query["OwnerId"] = request.ownerId!;
+        }
+        if (!TeaUtils.Client.isUnset(request.platformCompanyCode)) {
+            query["PlatformCompanyCode"] = request.platformCompanyCode ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.resourceOwnerAccount)) {
+            query["ResourceOwnerAccount"] = request.resourceOwnerAccount ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.resourceOwnerId)) {
+            query["ResourceOwnerId"] = request.resourceOwnerId!;
+        }
+        if (!TeaUtils.Client.isUnset(request.signName)) {
+            query["SignName"] = request.signName ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.templateCode)) {
+            query["TemplateCode"] = request.templateCode ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.templateParam)) {
+            query["TemplateParam"] = request.templateParam ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "SendLogisticsSms",
+            "version": "2017-05-25",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(SendLogisticsSmsResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func sendLogisticsSms(_ request: SendLogisticsSmsRequest) async throws -> SendLogisticsSmsResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await sendLogisticsSmsWithOptions(request as! SendLogisticsSmsRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func sendSmsWithOptions(_ request: SendSmsRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> SendSmsResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
@@ -2937,5 +2995,51 @@ open class Client : AlibabacloudOpenApi.Client {
     public func validPhoneCode(_ request: ValidPhoneCodeRequest) async throws -> ValidPhoneCodeResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         return try await validPhoneCodeWithOptions(request as! ValidPhoneCodeRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func verifyLogisticsSmsMailNoWithOptions(_ request: VerifyLogisticsSmsMailNoRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> VerifyLogisticsSmsMailNoResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.expressCompanyCode)) {
+            query["ExpressCompanyCode"] = request.expressCompanyCode ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.mailNo)) {
+            query["MailNo"] = request.mailNo ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.ownerId)) {
+            query["OwnerId"] = request.ownerId!;
+        }
+        if (!TeaUtils.Client.isUnset(request.platformCompanyCode)) {
+            query["PlatformCompanyCode"] = request.platformCompanyCode ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.resourceOwnerAccount)) {
+            query["ResourceOwnerAccount"] = request.resourceOwnerAccount ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.resourceOwnerId)) {
+            query["ResourceOwnerId"] = request.resourceOwnerId!;
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "VerifyLogisticsSmsMailNo",
+            "version": "2017-05-25",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(VerifyLogisticsSmsMailNoResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func verifyLogisticsSmsMailNo(_ request: VerifyLogisticsSmsMailNoRequest) async throws -> VerifyLogisticsSmsMailNoResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await verifyLogisticsSmsMailNoWithOptions(request as! VerifyLogisticsSmsMailNoRequest, runtime as! TeaUtils.RuntimeOptions)
     }
 }
