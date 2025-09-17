@@ -44729,6 +44729,10 @@ public class GetPermissionApplyOrderDetailResponseBody : Tea.TeaModel {
 
         public var approveContent: GetPermissionApplyOrderDetailResponseBody.ApplyOrderDetail.ApproveContent?
 
+        public var finishAapprovalTimestamp: Int64?
+
+        public var finishApprovalComment: String?
+
         public var flowId: String?
 
         public var flowStatus: Int32?
@@ -44765,6 +44769,12 @@ public class GetPermissionApplyOrderDetailResponseBody : Tea.TeaModel {
             }
             if self.approveContent != nil {
                 map["ApproveContent"] = self.approveContent?.toMap()
+            }
+            if self.finishAapprovalTimestamp != nil {
+                map["FinishAapprovalTimestamp"] = self.finishAapprovalTimestamp!
+            }
+            if self.finishApprovalComment != nil {
+                map["FinishApprovalComment"] = self.finishApprovalComment!
             }
             if self.flowId != nil {
                 map["FlowId"] = self.flowId!
@@ -44807,6 +44817,12 @@ public class GetPermissionApplyOrderDetailResponseBody : Tea.TeaModel {
                 var model = GetPermissionApplyOrderDetailResponseBody.ApplyOrderDetail.ApproveContent()
                 model.fromMap(value)
                 self.approveContent = model
+            }
+            if let value = dict["FinishAapprovalTimestamp"] as? Int64 {
+                self.finishAapprovalTimestamp = value
+            }
+            if let value = dict["FinishApprovalComment"] as? String {
+                self.finishApprovalComment = value
             }
             if let value = dict["FlowId"] as? String {
                 self.flowId = value
@@ -67407,6 +67423,10 @@ public class ListPermissionApplyOrdersResponseBody : Tea.TeaModel {
 
             public var approveContent: ListPermissionApplyOrdersResponseBody.ApplyOrders.ApplyOrder.ApproveContent?
 
+            public var finishApprovalComment: String?
+
+            public var finishApprovalTimestamp: Int64?
+
             public var flowId: String?
 
             public var flowStatus: Int32?
@@ -67435,6 +67455,12 @@ public class ListPermissionApplyOrdersResponseBody : Tea.TeaModel {
                 if self.approveContent != nil {
                     map["ApproveContent"] = self.approveContent?.toMap()
                 }
+                if self.finishApprovalComment != nil {
+                    map["FinishApprovalComment"] = self.finishApprovalComment!
+                }
+                if self.finishApprovalTimestamp != nil {
+                    map["FinishApprovalTimestamp"] = self.finishApprovalTimestamp!
+                }
                 if self.flowId != nil {
                     map["FlowId"] = self.flowId!
                 }
@@ -67456,6 +67482,12 @@ public class ListPermissionApplyOrdersResponseBody : Tea.TeaModel {
                     var model = ListPermissionApplyOrdersResponseBody.ApplyOrders.ApplyOrder.ApproveContent()
                     model.fromMap(value)
                     self.approveContent = model
+                }
+                if let value = dict["FinishApprovalComment"] as? String {
+                    self.finishApprovalComment = value
+                }
+                if let value = dict["FinishApprovalTimestamp"] as? Int64 {
+                    self.finishApprovalTimestamp = value
                 }
                 if let value = dict["FlowId"] as? String {
                     self.flowId = value
