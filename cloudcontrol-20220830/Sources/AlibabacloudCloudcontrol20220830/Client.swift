@@ -88,11 +88,19 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func deleteResourceWithOptions(_ requestPath: String, _ request: DeleteResourceRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> DeleteResourceResponse {
-        try TeaUtils.Client.validateModel(request)
+    public func deleteResourceWithOptions(_ requestPath: String, _ tmpReq: DeleteResourceRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> DeleteResourceResponse {
+        try TeaUtils.Client.validateModel(tmpReq)
+        var request: DeleteResourceShrinkRequest = DeleteResourceShrinkRequest([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.filter)) {
+            request.filterShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.filter, "filter", "json")
+        }
         var query: [String: Any] = [:]
         if (!TeaUtils.Client.isUnset(request.clientToken)) {
             query["clientToken"] = request.clientToken ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.filterShrink)) {
+            query["filter"] = request.filterShrink ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.regionId)) {
             query["regionId"] = request.regionId ?? "";
