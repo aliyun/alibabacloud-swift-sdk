@@ -100,7 +100,7 @@ public class CreateImageCacheRequest : Tea.TeaModel {
 
         public var usePlainHttp: Bool?
 
-        public var userName: String?
+        public var username: String?
 
         public override init() {
             super.init()
@@ -128,8 +128,8 @@ public class CreateImageCacheRequest : Tea.TeaModel {
             if self.usePlainHttp != nil {
                 map["UsePlainHttp"] = self.usePlainHttp!
             }
-            if self.userName != nil {
-                map["UserName"] = self.userName!
+            if self.username != nil {
+                map["Username"] = self.username!
             }
             return map
         }
@@ -148,8 +148,8 @@ public class CreateImageCacheRequest : Tea.TeaModel {
             if let value = dict["UsePlainHttp"] as? Bool {
                 self.usePlainHttp = value
             }
-            if let value = dict["UserName"] as? String {
-                self.userName = value
+            if let value = dict["Username"] as? String {
+                self.username = value
             }
         }
     }
@@ -473,7 +473,7 @@ public class CreateImageCacheShrinkRequest : Tea.TeaModel {
 
         public var usePlainHttp: Bool?
 
-        public var userName: String?
+        public var username: String?
 
         public override init() {
             super.init()
@@ -501,8 +501,8 @@ public class CreateImageCacheShrinkRequest : Tea.TeaModel {
             if self.usePlainHttp != nil {
                 map["UsePlainHttp"] = self.usePlainHttp!
             }
-            if self.userName != nil {
-                map["UserName"] = self.userName!
+            if self.username != nil {
+                map["Username"] = self.username!
             }
             return map
         }
@@ -521,8 +521,8 @@ public class CreateImageCacheShrinkRequest : Tea.TeaModel {
             if let value = dict["UsePlainHttp"] as? Bool {
                 self.usePlainHttp = value
             }
-            if let value = dict["UserName"] as? String {
-                self.userName = value
+            if let value = dict["Username"] as? String {
+                self.username = value
             }
         }
     }
