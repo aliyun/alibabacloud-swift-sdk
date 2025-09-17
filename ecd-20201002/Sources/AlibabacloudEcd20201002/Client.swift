@@ -516,6 +516,12 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.protocolType)) {
             query["ProtocolType"] = request.protocolType ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.queryDesktopDurationList)) {
+            query["QueryDesktopDurationList"] = request.queryDesktopDurationList!;
+        }
+        if (!TeaUtils.Client.isUnset(request.queryDesktopTimers)) {
+            query["QueryDesktopTimers"] = request.queryDesktopTimers!;
+        }
         if (!TeaUtils.Client.isUnset(request.queryFotaUpdate)) {
             query["QueryFotaUpdate"] = request.queryFotaUpdate!;
         }

@@ -2784,6 +2784,10 @@ public class DescribeUserResourcesRequest : Tea.TeaModel {
 
     public var protocolType: String?
 
+    public var queryDesktopDurationList: Bool?
+
+    public var queryDesktopTimers: Bool?
+
     public var queryFotaUpdate: Bool?
 
     public var refreshFotaUpdate: Bool?
@@ -2867,6 +2871,12 @@ public class DescribeUserResourcesRequest : Tea.TeaModel {
         if self.protocolType != nil {
             map["ProtocolType"] = self.protocolType!
         }
+        if self.queryDesktopDurationList != nil {
+            map["QueryDesktopDurationList"] = self.queryDesktopDurationList!
+        }
+        if self.queryDesktopTimers != nil {
+            map["QueryDesktopTimers"] = self.queryDesktopTimers!
+        }
         if self.queryFotaUpdate != nil {
             map["QueryFotaUpdate"] = self.queryFotaUpdate!
         }
@@ -2949,6 +2959,12 @@ public class DescribeUserResourcesRequest : Tea.TeaModel {
         }
         if let value = dict["ProtocolType"] as? String {
             self.protocolType = value
+        }
+        if let value = dict["QueryDesktopDurationList"] as? Bool {
+            self.queryDesktopDurationList = value
+        }
+        if let value = dict["QueryDesktopTimers"] as? Bool {
+            self.queryDesktopTimers = value
         }
         if let value = dict["QueryFotaUpdate"] as? Bool {
             self.queryFotaUpdate = value
@@ -3993,6 +4009,8 @@ public class DescribeUserResourcesResponseBody : Tea.TeaModel {
             }
         }
     }
+    public var maxResults: Int32?
+
     public var nextToken: String?
 
     public var queryFailedResourceTypes: [String]?
@@ -4002,6 +4020,8 @@ public class DescribeUserResourcesResponseBody : Tea.TeaModel {
     public var requestId: String?
 
     public var resources: [DescribeUserResourcesResponseBody.Resources]?
+
+    public var totalCount: Int32?
 
     public override init() {
         super.init()
@@ -4017,6 +4037,9 @@ public class DescribeUserResourcesResponseBody : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.maxResults != nil {
+            map["MaxResults"] = self.maxResults!
+        }
         if self.nextToken != nil {
             map["NextToken"] = self.nextToken!
         }
@@ -4036,11 +4059,17 @@ public class DescribeUserResourcesResponseBody : Tea.TeaModel {
             }
             map["Resources"] = tmp
         }
+        if self.totalCount != nil {
+            map["TotalCount"] = self.totalCount!
+        }
         return map
     }
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["MaxResults"] as? Int32 {
+            self.maxResults = value
+        }
         if let value = dict["NextToken"] as? String {
             self.nextToken = value
         }
@@ -4065,6 +4094,9 @@ public class DescribeUserResourcesResponseBody : Tea.TeaModel {
                 }
             }
             self.resources = tmp
+        }
+        if let value = dict["TotalCount"] as? Int32 {
+            self.totalCount = value
         }
     }
 }
