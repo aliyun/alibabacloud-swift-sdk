@@ -1877,6 +1877,8 @@ public class OpenStructSaseUser : Tea.TeaModel {
 
     public var departments: [OpenStructSaseDepartment]?
 
+    public var description_: String?
+
     public var email: String?
 
     public var idpConfigId: String?
@@ -1931,6 +1933,9 @@ public class OpenStructSaseUser : Tea.TeaModel {
                 tmp.append(k.toMap())
             }
             map["Departments"] = tmp
+        }
+        if self.description_ != nil {
+            map["Description"] = self.description_!
         }
         if self.email != nil {
             map["Email"] = self.email!
@@ -2001,6 +2006,9 @@ public class OpenStructSaseUser : Tea.TeaModel {
                 }
             }
             self.departments = tmp
+        }
+        if let value = dict["Description"] as? String {
+            self.description_ = value
         }
         if let value = dict["Email"] as? String {
             self.email = value
