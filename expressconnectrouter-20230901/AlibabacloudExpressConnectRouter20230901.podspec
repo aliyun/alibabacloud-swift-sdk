@@ -1,7 +1,7 @@
 Pod::Spec.new do |spec|
 
   spec.name         = "AlibabacloudExpressConnectRouter20230901"
-  spec.version      = "4.1.0"
+  spec.version      = "4.1.1"
   spec.license      = "Apache 2.0"
   spec.summary      = "Alibaba Cloud ExpressConnectRouter (20230901) SDK Library for Swift"
   spec.homepage     = "https://github.com/alibabacloud-sdk-swift/expressconnectrouter-20230901" 

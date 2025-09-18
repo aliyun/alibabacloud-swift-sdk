@@ -14,6 +14,8 @@ public class ActivateFlowLogRequest : Tea.TeaModel {
 
     public var flowLogId: String?
 
+    public var version: String?
+
     public override init() {
         super.init()
     }
@@ -40,6 +42,9 @@ public class ActivateFlowLogRequest : Tea.TeaModel {
         if self.flowLogId != nil {
             map["FlowLogId"] = self.flowLogId!
         }
+        if self.version != nil {
+            map["Version"] = self.version!
+        }
         return map
     }
 
@@ -56,6 +61,9 @@ public class ActivateFlowLogRequest : Tea.TeaModel {
         }
         if let value = dict["FlowLogId"] as? String {
             self.flowLogId = value
+        }
+        if let value = dict["Version"] as? String {
+            self.version = value
         }
     }
 }
@@ -214,6 +222,8 @@ public class AttachExpressConnectRouterChildInstanceRequest : Tea.TeaModel {
 
     public var ecrId: String?
 
+    public var version: String?
+
     public override init() {
         super.init()
     }
@@ -252,6 +262,9 @@ public class AttachExpressConnectRouterChildInstanceRequest : Tea.TeaModel {
         if self.ecrId != nil {
             map["EcrId"] = self.ecrId!
         }
+        if self.version != nil {
+            map["Version"] = self.version!
+        }
         return map
     }
 
@@ -280,6 +293,9 @@ public class AttachExpressConnectRouterChildInstanceRequest : Tea.TeaModel {
         }
         if let value = dict["EcrId"] as? String {
             self.ecrId = value
+        }
+        if let value = dict["Version"] as? String {
+            self.version = value
         }
     }
 }
@@ -430,6 +446,8 @@ public class CheckAddRegionToExpressConnectRouterRequest : Tea.TeaModel {
 
     public var freshRegionId: String?
 
+    public var version: String?
+
     public override init() {
         super.init()
     }
@@ -456,6 +474,9 @@ public class CheckAddRegionToExpressConnectRouterRequest : Tea.TeaModel {
         if self.freshRegionId != nil {
             map["FreshRegionId"] = self.freshRegionId!
         }
+        if self.version != nil {
+            map["Version"] = self.version!
+        }
         return map
     }
 
@@ -472,6 +493,9 @@ public class CheckAddRegionToExpressConnectRouterRequest : Tea.TeaModel {
         }
         if let value = dict["FreshRegionId"] as? String {
             self.freshRegionId = value
+        }
+        if let value = dict["Version"] as? String {
+            self.version = value
         }
     }
 }
@@ -706,6 +730,8 @@ public class CreateExpressConnectRouterRequest : Tea.TeaModel {
 
     public var tag: [CreateExpressConnectRouterRequest.Tag]?
 
+    public var version: String?
+
     public override init() {
         super.init()
     }
@@ -745,6 +771,9 @@ public class CreateExpressConnectRouterRequest : Tea.TeaModel {
             }
             map["Tag"] = tmp
         }
+        if self.version != nil {
+            map["Version"] = self.version!
+        }
         return map
     }
 
@@ -780,6 +809,9 @@ public class CreateExpressConnectRouterRequest : Tea.TeaModel {
                 }
             }
             self.tag = tmp
+        }
+        if let value = dict["Version"] as? String {
+            self.version = value
         }
     }
 }
@@ -952,6 +984,8 @@ public class CreateExpressConnectRouterAssociationRequest : Tea.TeaModel {
 
     public var transitRouterOwnerId: Int64?
 
+    public var version: String?
+
     public var vpcId: String?
 
     public var vpcOwnerId: Int64?
@@ -1003,6 +1037,9 @@ public class CreateExpressConnectRouterAssociationRequest : Tea.TeaModel {
         if self.transitRouterOwnerId != nil {
             map["TransitRouterOwnerId"] = self.transitRouterOwnerId!
         }
+        if self.version != nil {
+            map["Version"] = self.version!
+        }
         if self.vpcId != nil {
             map["VpcId"] = self.vpcId!
         }
@@ -1046,6 +1083,9 @@ public class CreateExpressConnectRouterAssociationRequest : Tea.TeaModel {
         }
         if let value = dict["TransitRouterOwnerId"] as? Int64 {
             self.transitRouterOwnerId = value
+        }
+        if let value = dict["Version"] as? String {
+            self.version = value
         }
         if let value = dict["VpcId"] as? String {
             self.vpcId = value
@@ -1266,6 +1306,8 @@ public class CreateFlowLogRequest : Tea.TeaModel {
 
     public var tag: [CreateFlowLogRequest.Tag]?
 
+    public var version: String?
+
     public override init() {
         super.init()
     }
@@ -1323,6 +1365,9 @@ public class CreateFlowLogRequest : Tea.TeaModel {
             }
             map["Tag"] = tmp
         }
+        if self.version != nil {
+            map["Version"] = self.version!
+        }
         return map
     }
 
@@ -1376,6 +1421,9 @@ public class CreateFlowLogRequest : Tea.TeaModel {
                 }
             }
             self.tag = tmp
+        }
+        if let value = dict["Version"] as? String {
+            self.version = value
         }
     }
 }
@@ -1534,6 +1582,8 @@ public class DeactivateFlowLogRequest : Tea.TeaModel {
 
     public var flowLogId: String?
 
+    public var version: String?
+
     public override init() {
         super.init()
     }
@@ -1560,6 +1610,9 @@ public class DeactivateFlowLogRequest : Tea.TeaModel {
         if self.flowLogId != nil {
             map["FlowLogId"] = self.flowLogId!
         }
+        if self.version != nil {
+            map["Version"] = self.version!
+        }
         return map
     }
 
@@ -1576,6 +1629,9 @@ public class DeactivateFlowLogRequest : Tea.TeaModel {
         }
         if let value = dict["FlowLogId"] as? String {
             self.flowLogId = value
+        }
+        if let value = dict["Version"] as? String {
+            self.version = value
         }
     }
 }
@@ -1724,6 +1780,8 @@ public class DeleteExpressConnectRouterRequest : Tea.TeaModel {
 
     public var ecrId: String?
 
+    public var version: String?
+
     public override init() {
         super.init()
     }
@@ -1747,6 +1805,9 @@ public class DeleteExpressConnectRouterRequest : Tea.TeaModel {
         if self.ecrId != nil {
             map["EcrId"] = self.ecrId!
         }
+        if self.version != nil {
+            map["Version"] = self.version!
+        }
         return map
     }
 
@@ -1760,6 +1821,9 @@ public class DeleteExpressConnectRouterRequest : Tea.TeaModel {
         }
         if let value = dict["EcrId"] as? String {
             self.ecrId = value
+        }
+        if let value = dict["Version"] as? String {
+            self.version = value
         }
     }
 }
@@ -1912,6 +1976,8 @@ public class DeleteExpressConnectRouterAssociationRequest : Tea.TeaModel {
 
     public var ecrId: String?
 
+    public var version: String?
+
     public override init() {
         super.init()
     }
@@ -1941,6 +2007,9 @@ public class DeleteExpressConnectRouterAssociationRequest : Tea.TeaModel {
         if self.ecrId != nil {
             map["EcrId"] = self.ecrId!
         }
+        if self.version != nil {
+            map["Version"] = self.version!
+        }
         return map
     }
 
@@ -1960,6 +2029,9 @@ public class DeleteExpressConnectRouterAssociationRequest : Tea.TeaModel {
         }
         if let value = dict["EcrId"] as? String {
             self.ecrId = value
+        }
+        if let value = dict["Version"] as? String {
+            self.version = value
         }
     }
 }
@@ -2110,6 +2182,8 @@ public class DeleteFlowlogRequest : Tea.TeaModel {
 
     public var flowLogId: String?
 
+    public var version: String?
+
     public override init() {
         super.init()
     }
@@ -2136,6 +2210,9 @@ public class DeleteFlowlogRequest : Tea.TeaModel {
         if self.flowLogId != nil {
             map["FlowLogId"] = self.flowLogId!
         }
+        if self.version != nil {
+            map["Version"] = self.version!
+        }
         return map
     }
 
@@ -2152,6 +2229,9 @@ public class DeleteFlowlogRequest : Tea.TeaModel {
         }
         if let value = dict["FlowLogId"] as? String {
             self.flowLogId = value
+        }
+        if let value = dict["Version"] as? String {
+            self.version = value
         }
     }
 }
@@ -2304,6 +2384,8 @@ public class DescribeDisabledExpressConnectRouterRouteEntriesRequest : Tea.TeaMo
 
     public var nextToken: String?
 
+    public var version: String?
+
     public override init() {
         super.init()
     }
@@ -2333,6 +2415,9 @@ public class DescribeDisabledExpressConnectRouterRouteEntriesRequest : Tea.TeaMo
         if self.nextToken != nil {
             map["NextToken"] = self.nextToken!
         }
+        if self.version != nil {
+            map["Version"] = self.version!
+        }
         return map
     }
 
@@ -2352,6 +2437,9 @@ public class DescribeDisabledExpressConnectRouterRouteEntriesRequest : Tea.TeaMo
         }
         if let value = dict["NextToken"] as? String {
             self.nextToken = value
+        }
+        if let value = dict["Version"] as? String {
+            self.version = value
         }
     }
 }
@@ -2656,6 +2744,8 @@ public class DescribeExpressConnectRouterRequest : Tea.TeaModel {
 
     public var tag: [DescribeExpressConnectRouterRequest.Tag]?
 
+    public var version: String?
+
     public override init() {
         super.init()
     }
@@ -2698,6 +2788,9 @@ public class DescribeExpressConnectRouterRequest : Tea.TeaModel {
             }
             map["Tag"] = tmp
         }
+        if self.version != nil {
+            map["Version"] = self.version!
+        }
         return map
     }
 
@@ -2736,6 +2829,9 @@ public class DescribeExpressConnectRouterRequest : Tea.TeaModel {
                 }
             }
             self.tag = tmp
+        }
+        if let value = dict["Version"] as? String {
+            self.version = value
         }
     }
 }
@@ -3098,6 +3194,8 @@ public class DescribeExpressConnectRouterAllowedPrefixHistoryRequest : Tea.TeaMo
 
     public var instanceType: String?
 
+    public var version: String?
+
     public override init() {
         super.init()
     }
@@ -3130,6 +3228,9 @@ public class DescribeExpressConnectRouterAllowedPrefixHistoryRequest : Tea.TeaMo
         if self.instanceType != nil {
             map["InstanceType"] = self.instanceType!
         }
+        if self.version != nil {
+            map["Version"] = self.version!
+        }
         return map
     }
 
@@ -3152,6 +3253,9 @@ public class DescribeExpressConnectRouterAllowedPrefixHistoryRequest : Tea.TeaMo
         }
         if let value = dict["InstanceType"] as? String {
             self.instanceType = value
+        }
+        if let value = dict["Version"] as? String {
+            self.version = value
         }
     }
 }
@@ -3374,6 +3478,8 @@ public class DescribeExpressConnectRouterAssociationRequest : Tea.TeaModel {
 
     public var transitRouterId: String?
 
+    public var version: String?
+
     public var vpcId: String?
 
     public override init() {
@@ -3420,6 +3526,9 @@ public class DescribeExpressConnectRouterAssociationRequest : Tea.TeaModel {
         if self.transitRouterId != nil {
             map["TransitRouterId"] = self.transitRouterId!
         }
+        if self.version != nil {
+            map["Version"] = self.version!
+        }
         if self.vpcId != nil {
             map["VpcId"] = self.vpcId!
         }
@@ -3457,6 +3566,9 @@ public class DescribeExpressConnectRouterAssociationRequest : Tea.TeaModel {
         }
         if let value = dict["TransitRouterId"] as? String {
             self.transitRouterId = value
+        }
+        if let value = dict["Version"] as? String {
+            self.version = value
         }
         if let value = dict["VpcId"] as? String {
             self.vpcId = value
@@ -3816,6 +3928,8 @@ public class DescribeExpressConnectRouterChildInstanceRequest : Tea.TeaModel {
 
     public var nextToken: String?
 
+    public var version: String?
+
     public override init() {
         super.init()
     }
@@ -3857,6 +3971,9 @@ public class DescribeExpressConnectRouterChildInstanceRequest : Tea.TeaModel {
         if self.nextToken != nil {
             map["NextToken"] = self.nextToken!
         }
+        if self.version != nil {
+            map["Version"] = self.version!
+        }
         return map
     }
 
@@ -3888,6 +4005,9 @@ public class DescribeExpressConnectRouterChildInstanceRequest : Tea.TeaModel {
         }
         if let value = dict["NextToken"] as? String {
             self.nextToken = value
+        }
+        if let value = dict["Version"] as? String {
+            self.version = value
         }
     }
 }
@@ -4200,6 +4320,8 @@ public class DescribeExpressConnectRouterInterRegionTransitModeRequest : Tea.Tea
 
     public var ecrId: String?
 
+    public var version: String?
+
     public override init() {
         super.init()
     }
@@ -4223,6 +4345,9 @@ public class DescribeExpressConnectRouterInterRegionTransitModeRequest : Tea.Tea
         if self.ecrId != nil {
             map["EcrId"] = self.ecrId!
         }
+        if self.version != nil {
+            map["Version"] = self.version!
+        }
         return map
     }
 
@@ -4236,6 +4361,9 @@ public class DescribeExpressConnectRouterInterRegionTransitModeRequest : Tea.Tea
         }
         if let value = dict["EcrId"] as? String {
             self.ecrId = value
+        }
+        if let value = dict["Version"] as? String {
+            self.version = value
         }
     }
 }
@@ -4444,6 +4572,8 @@ public class DescribeExpressConnectRouterRegionRequest : Tea.TeaModel {
 
     public var ecrId: String?
 
+    public var version: String?
+
     public override init() {
         super.init()
     }
@@ -4467,6 +4597,9 @@ public class DescribeExpressConnectRouterRegionRequest : Tea.TeaModel {
         if self.ecrId != nil {
             map["EcrId"] = self.ecrId!
         }
+        if self.version != nil {
+            map["Version"] = self.version!
+        }
         return map
     }
 
@@ -4480,6 +4613,9 @@ public class DescribeExpressConnectRouterRegionRequest : Tea.TeaModel {
         }
         if let value = dict["EcrId"] as? String {
             self.ecrId = value
+        }
+        if let value = dict["Version"] as? String {
+            self.version = value
         }
     }
 }
@@ -4650,6 +4786,8 @@ public class DescribeExpressConnectRouterRouteEntriesRequest : Tea.TeaModel {
 
     public var queryRegionId: String?
 
+    public var version: String?
+
     public override init() {
         super.init()
     }
@@ -4694,6 +4832,9 @@ public class DescribeExpressConnectRouterRouteEntriesRequest : Tea.TeaModel {
         if self.queryRegionId != nil {
             map["QueryRegionId"] = self.queryRegionId!
         }
+        if self.version != nil {
+            map["Version"] = self.version!
+        }
         return map
     }
 
@@ -4728,6 +4869,9 @@ public class DescribeExpressConnectRouterRouteEntriesRequest : Tea.TeaModel {
         }
         if let value = dict["QueryRegionId"] as? String {
             self.queryRegionId = value
+        }
+        if let value = dict["Version"] as? String {
+            self.version = value
         }
     }
 }
@@ -5056,6 +5200,8 @@ public class DescribeFlowLogsRequest : Tea.TeaModel {
 
     public var tag: [DescribeFlowLogsRequest.Tag]?
 
+    public var version: String?
+
     public override init() {
         super.init()
     }
@@ -5110,6 +5256,9 @@ public class DescribeFlowLogsRequest : Tea.TeaModel {
             }
             map["Tag"] = tmp
         }
+        if self.version != nil {
+            map["Version"] = self.version!
+        }
         return map
     }
 
@@ -5160,6 +5309,9 @@ public class DescribeFlowLogsRequest : Tea.TeaModel {
                 }
             }
             self.tag = tmp
+        }
+        if let value = dict["Version"] as? String {
+            self.version = value
         }
     }
 }
@@ -5612,6 +5764,8 @@ public class DescribeInstanceGrantedToExpressConnectRouterRequest : Tea.TeaModel
 
     public var tagModels: [DescribeInstanceGrantedToExpressConnectRouterRequest.TagModels]?
 
+    public var version: String?
+
     public override init() {
         super.init()
     }
@@ -5666,6 +5820,9 @@ public class DescribeInstanceGrantedToExpressConnectRouterRequest : Tea.TeaModel
             }
             map["TagModels"] = tmp
         }
+        if self.version != nil {
+            map["Version"] = self.version!
+        }
         return map
     }
 
@@ -5716,6 +5873,9 @@ public class DescribeInstanceGrantedToExpressConnectRouterRequest : Tea.TeaModel
                 }
             }
             self.tagModels = tmp
+        }
+        if let value = dict["Version"] as? String {
+            self.version = value
         }
     }
 }
@@ -6024,6 +6184,8 @@ public class DetachExpressConnectRouterChildInstanceRequest : Tea.TeaModel {
 
     public var ecrId: String?
 
+    public var version: String?
+
     public override init() {
         super.init()
     }
@@ -6053,6 +6215,9 @@ public class DetachExpressConnectRouterChildInstanceRequest : Tea.TeaModel {
         if self.ecrId != nil {
             map["EcrId"] = self.ecrId!
         }
+        if self.version != nil {
+            map["Version"] = self.version!
+        }
         return map
     }
 
@@ -6072,6 +6237,9 @@ public class DetachExpressConnectRouterChildInstanceRequest : Tea.TeaModel {
         }
         if let value = dict["EcrId"] as? String {
             self.ecrId = value
+        }
+        if let value = dict["Version"] as? String {
+            self.version = value
         }
     }
 }
@@ -6224,6 +6392,8 @@ public class DisableExpressConnectRouterRouteEntriesRequest : Tea.TeaModel {
 
     public var nexthopInstanceId: String?
 
+    public var version: String?
+
     public override init() {
         super.init()
     }
@@ -6253,6 +6423,9 @@ public class DisableExpressConnectRouterRouteEntriesRequest : Tea.TeaModel {
         if self.nexthopInstanceId != nil {
             map["NexthopInstanceId"] = self.nexthopInstanceId!
         }
+        if self.version != nil {
+            map["Version"] = self.version!
+        }
         return map
     }
 
@@ -6272,6 +6445,9 @@ public class DisableExpressConnectRouterRouteEntriesRequest : Tea.TeaModel {
         }
         if let value = dict["NexthopInstanceId"] as? String {
             self.nexthopInstanceId = value
+        }
+        if let value = dict["Version"] as? String {
+            self.version = value
         }
     }
 }
@@ -6424,6 +6600,8 @@ public class EnableExpressConnectRouterRouteEntriesRequest : Tea.TeaModel {
 
     public var nexthopInstanceId: String?
 
+    public var version: String?
+
     public override init() {
         super.init()
     }
@@ -6453,6 +6631,9 @@ public class EnableExpressConnectRouterRouteEntriesRequest : Tea.TeaModel {
         if self.nexthopInstanceId != nil {
             map["NexthopInstanceId"] = self.nexthopInstanceId!
         }
+        if self.version != nil {
+            map["Version"] = self.version!
+        }
         return map
     }
 
@@ -6472,6 +6653,9 @@ public class EnableExpressConnectRouterRouteEntriesRequest : Tea.TeaModel {
         }
         if let value = dict["NexthopInstanceId"] as? String {
             self.nexthopInstanceId = value
+        }
+        if let value = dict["Version"] as? String {
+            self.version = value
         }
     }
 }
@@ -6620,6 +6804,8 @@ public class ForceDeleteExpressConnectRouterRequest : Tea.TeaModel {
 
     public var ecrId: String?
 
+    public var version: String?
+
     public override init() {
         super.init()
     }
@@ -6643,6 +6829,9 @@ public class ForceDeleteExpressConnectRouterRequest : Tea.TeaModel {
         if self.ecrId != nil {
             map["EcrId"] = self.ecrId!
         }
+        if self.version != nil {
+            map["Version"] = self.version!
+        }
         return map
     }
 
@@ -6656,6 +6845,9 @@ public class ForceDeleteExpressConnectRouterRequest : Tea.TeaModel {
         }
         if let value = dict["EcrId"] as? String {
             self.ecrId = value
+        }
+        if let value = dict["Version"] as? String {
+            self.version = value
         }
     }
 }
@@ -6812,6 +7004,8 @@ public class GrantInstanceToExpressConnectRouterRequest : Tea.TeaModel {
 
     public var instanceType: String?
 
+    public var version: String?
+
     public override init() {
         super.init()
     }
@@ -6847,6 +7041,9 @@ public class GrantInstanceToExpressConnectRouterRequest : Tea.TeaModel {
         if self.instanceType != nil {
             map["InstanceType"] = self.instanceType!
         }
+        if self.version != nil {
+            map["Version"] = self.version!
+        }
         return map
     }
 
@@ -6872,6 +7069,9 @@ public class GrantInstanceToExpressConnectRouterRequest : Tea.TeaModel {
         }
         if let value = dict["InstanceType"] as? String {
             self.instanceType = value
+        }
+        if let value = dict["Version"] as? String {
+            self.version = value
         }
     }
 }
@@ -7018,6 +7218,8 @@ public class ListExpressConnectRouterSupportedRegionRequest : Tea.TeaModel {
 
     public var nodeType: String?
 
+    public var version: String?
+
     public override init() {
         super.init()
     }
@@ -7038,6 +7240,9 @@ public class ListExpressConnectRouterSupportedRegionRequest : Tea.TeaModel {
         if self.nodeType != nil {
             map["NodeType"] = self.nodeType!
         }
+        if self.version != nil {
+            map["Version"] = self.version!
+        }
         return map
     }
 
@@ -7048,6 +7253,9 @@ public class ListExpressConnectRouterSupportedRegionRequest : Tea.TeaModel {
         }
         if let value = dict["NodeType"] as? String {
             self.nodeType = value
+        }
+        if let value = dict["Version"] as? String {
+            self.version = value
         }
     }
 }
@@ -7222,6 +7430,8 @@ public class ListTagResourcesRequest : Tea.TeaModel {
 
     public var tag: [ListTagResourcesRequest.Tag]?
 
+    public var version: String?
+
     public override init() {
         super.init()
     }
@@ -7255,6 +7465,9 @@ public class ListTagResourcesRequest : Tea.TeaModel {
             }
             map["Tag"] = tmp
         }
+        if self.version != nil {
+            map["Version"] = self.version!
+        }
         return map
     }
 
@@ -7284,6 +7497,9 @@ public class ListTagResourcesRequest : Tea.TeaModel {
                 }
             }
             self.tag = tmp
+        }
+        if let value = dict["Version"] as? String {
+            self.version = value
         }
     }
 }
@@ -7504,6 +7720,8 @@ public class ModifyExpressConnectRouterRequest : Tea.TeaModel {
 
     public var name: String?
 
+    public var version: String?
+
     public override init() {
         super.init()
     }
@@ -7533,6 +7751,9 @@ public class ModifyExpressConnectRouterRequest : Tea.TeaModel {
         if self.name != nil {
             map["Name"] = self.name!
         }
+        if self.version != nil {
+            map["Version"] = self.version!
+        }
         return map
     }
 
@@ -7552,6 +7773,9 @@ public class ModifyExpressConnectRouterRequest : Tea.TeaModel {
         }
         if let value = dict["Name"] as? String {
             self.name = value
+        }
+        if let value = dict["Version"] as? String {
+            self.version = value
         }
     }
 }
@@ -7704,6 +7928,8 @@ public class ModifyExpressConnectRouterAssociationRequest : Tea.TeaModel {
 
     public var ecrId: String?
 
+    public var version: String?
+
     public override init() {
         super.init()
     }
@@ -7733,6 +7959,9 @@ public class ModifyExpressConnectRouterAssociationRequest : Tea.TeaModel {
         if self.ecrId != nil {
             map["EcrId"] = self.ecrId!
         }
+        if self.version != nil {
+            map["Version"] = self.version!
+        }
         return map
     }
 
@@ -7752,6 +7981,9 @@ public class ModifyExpressConnectRouterAssociationRequest : Tea.TeaModel {
         }
         if let value = dict["EcrId"] as? String {
             self.ecrId = value
+        }
+        if let value = dict["Version"] as? String {
+            self.version = value
         }
     }
 }
@@ -7908,6 +8140,8 @@ public class ModifyExpressConnectRouterAssociationAllowedPrefixRequest : Tea.Tea
 
     public var ownerAccount: String?
 
+    public var version: String?
+
     public override init() {
         super.init()
     }
@@ -7943,6 +8177,9 @@ public class ModifyExpressConnectRouterAssociationAllowedPrefixRequest : Tea.Tea
         if self.ownerAccount != nil {
             map["OwnerAccount"] = self.ownerAccount!
         }
+        if self.version != nil {
+            map["Version"] = self.version!
+        }
         return map
     }
 
@@ -7968,6 +8205,9 @@ public class ModifyExpressConnectRouterAssociationAllowedPrefixRequest : Tea.Tea
         }
         if let value = dict["OwnerAccount"] as? String {
             self.ownerAccount = value
+        }
+        if let value = dict["Version"] as? String {
+            self.version = value
         }
     }
 }
@@ -8122,6 +8362,8 @@ public class ModifyExpressConnectRouterChildInstanceRequest : Tea.TeaModel {
 
     public var ecrId: String?
 
+    public var version: String?
+
     public override init() {
         super.init()
     }
@@ -8154,6 +8396,9 @@ public class ModifyExpressConnectRouterChildInstanceRequest : Tea.TeaModel {
         if self.ecrId != nil {
             map["EcrId"] = self.ecrId!
         }
+        if self.version != nil {
+            map["Version"] = self.version!
+        }
         return map
     }
 
@@ -8176,6 +8421,9 @@ public class ModifyExpressConnectRouterChildInstanceRequest : Tea.TeaModel {
         }
         if let value = dict["EcrId"] as? String {
             self.ecrId = value
+        }
+        if let value = dict["Version"] as? String {
+            self.version = value
         }
     }
 }
@@ -8364,6 +8612,8 @@ public class ModifyExpressConnectRouterInterRegionTransitModeRequest : Tea.TeaMo
 
     public var transitModeList: [ModifyExpressConnectRouterInterRegionTransitModeRequest.TransitModeList]?
 
+    public var version: String?
+
     public override init() {
         super.init()
     }
@@ -8394,6 +8644,9 @@ public class ModifyExpressConnectRouterInterRegionTransitModeRequest : Tea.TeaMo
             }
             map["TransitModeList"] = tmp
         }
+        if self.version != nil {
+            map["Version"] = self.version!
+        }
         return map
     }
 
@@ -8420,6 +8673,9 @@ public class ModifyExpressConnectRouterInterRegionTransitModeRequest : Tea.TeaMo
                 }
             }
             self.transitModeList = tmp
+        }
+        if let value = dict["Version"] as? String {
+            self.version = value
         }
     }
 }
@@ -8578,6 +8834,8 @@ public class ModifyFlowLogAttributeRequest : Tea.TeaModel {
 
     public var samplingRate: String?
 
+    public var version: String?
+
     public override init() {
         super.init()
     }
@@ -8616,6 +8874,9 @@ public class ModifyFlowLogAttributeRequest : Tea.TeaModel {
         if self.samplingRate != nil {
             map["SamplingRate"] = self.samplingRate!
         }
+        if self.version != nil {
+            map["Version"] = self.version!
+        }
         return map
     }
 
@@ -8644,6 +8905,9 @@ public class ModifyFlowLogAttributeRequest : Tea.TeaModel {
         }
         if let value = dict["SamplingRate"] as? String {
             self.samplingRate = value
+        }
+        if let value = dict["Version"] as? String {
+            self.version = value
         }
     }
 }
@@ -8796,6 +9060,8 @@ public class MoveResourceGroupRequest : Tea.TeaModel {
 
     public var resourceType: String?
 
+    public var version: String?
+
     public override init() {
         super.init()
     }
@@ -8825,6 +9091,9 @@ public class MoveResourceGroupRequest : Tea.TeaModel {
         if self.resourceType != nil {
             map["ResourceType"] = self.resourceType!
         }
+        if self.version != nil {
+            map["Version"] = self.version!
+        }
         return map
     }
 
@@ -8844,6 +9113,9 @@ public class MoveResourceGroupRequest : Tea.TeaModel {
         }
         if let value = dict["ResourceType"] as? String {
             self.resourceType = value
+        }
+        if let value = dict["Version"] as? String {
+            self.version = value
         }
     }
 }
@@ -8968,6 +9240,8 @@ public class RevokeInstanceFromExpressConnectRouterRequest : Tea.TeaModel {
 
     public var instanceType: String?
 
+    public var version: String?
+
     public override init() {
         super.init()
     }
@@ -9003,6 +9277,9 @@ public class RevokeInstanceFromExpressConnectRouterRequest : Tea.TeaModel {
         if self.instanceType != nil {
             map["InstanceType"] = self.instanceType!
         }
+        if self.version != nil {
+            map["Version"] = self.version!
+        }
         return map
     }
 
@@ -9028,6 +9305,9 @@ public class RevokeInstanceFromExpressConnectRouterRequest : Tea.TeaModel {
         }
         if let value = dict["InstanceType"] as? String {
             self.instanceType = value
+        }
+        if let value = dict["Version"] as? String {
+            self.version = value
         }
     }
 }
@@ -9176,6 +9456,8 @@ public class SynchronizeExpressConnectRouterInterRegionBandwidthRequest : Tea.Te
 
     public var ecrId: String?
 
+    public var version: String?
+
     public override init() {
         super.init()
     }
@@ -9199,6 +9481,9 @@ public class SynchronizeExpressConnectRouterInterRegionBandwidthRequest : Tea.Te
         if self.ecrId != nil {
             map["EcrId"] = self.ecrId!
         }
+        if self.version != nil {
+            map["Version"] = self.version!
+        }
         return map
     }
 
@@ -9212,6 +9497,9 @@ public class SynchronizeExpressConnectRouterInterRegionBandwidthRequest : Tea.Te
         }
         if let value = dict["EcrId"] as? String {
             self.ecrId = value
+        }
+        if let value = dict["Version"] as? String {
+            self.version = value
         }
     }
 }
@@ -9402,6 +9690,8 @@ public class TagResourcesRequest : Tea.TeaModel {
 
     public var tag: [TagResourcesRequest.Tag]?
 
+    public var version: String?
+
     public override init() {
         super.init()
     }
@@ -9435,6 +9725,9 @@ public class TagResourcesRequest : Tea.TeaModel {
             }
             map["Tag"] = tmp
         }
+        if self.version != nil {
+            map["Version"] = self.version!
+        }
         return map
     }
 
@@ -9464,6 +9757,9 @@ public class TagResourcesRequest : Tea.TeaModel {
                 }
             }
             self.tag = tmp
+        }
+        if let value = dict["Version"] as? String {
+            self.version = value
         }
     }
 }
@@ -9586,6 +9882,8 @@ public class UntagResourcesRequest : Tea.TeaModel {
 
     public var tagKey: [String]?
 
+    public var version: String?
+
     public override init() {
         super.init()
     }
@@ -9618,6 +9916,9 @@ public class UntagResourcesRequest : Tea.TeaModel {
         if self.tagKey != nil {
             map["TagKey"] = self.tagKey!
         }
+        if self.version != nil {
+            map["Version"] = self.version!
+        }
         return map
     }
 
@@ -9640,6 +9941,9 @@ public class UntagResourcesRequest : Tea.TeaModel {
         }
         if let value = dict["TagKey"] as? [String] {
             self.tagKey = value
+        }
+        if let value = dict["Version"] as? String {
+            self.version = value
         }
     }
 }

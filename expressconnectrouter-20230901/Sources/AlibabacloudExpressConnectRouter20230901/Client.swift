@@ -26,6 +26,10 @@ open class Client : AlibabacloudOpenApi.Client {
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func activateFlowLogWithOptions(_ request: ActivateFlowLogRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ActivateFlowLogResponse {
         try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.version)) {
+            query["Version"] = request.version ?? "";
+        }
         var body: [String: Any] = [:]
         if (!TeaUtils.Client.isUnset(request.clientToken)) {
             body["ClientToken"] = request.clientToken ?? "";
@@ -40,6 +44,7 @@ open class Client : AlibabacloudOpenApi.Client {
             body["FlowLogId"] = request.flowLogId ?? "";
         }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query),
             "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
         ])
         var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
@@ -66,6 +71,10 @@ open class Client : AlibabacloudOpenApi.Client {
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func attachExpressConnectRouterChildInstanceWithOptions(_ request: AttachExpressConnectRouterChildInstanceRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> AttachExpressConnectRouterChildInstanceResponse {
         try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.version)) {
+            query["Version"] = request.version ?? "";
+        }
         var body: [String: Any] = [:]
         if (!TeaUtils.Client.isUnset(request.childInstanceId)) {
             body["ChildInstanceId"] = request.childInstanceId ?? "";
@@ -92,6 +101,7 @@ open class Client : AlibabacloudOpenApi.Client {
             body["EcrId"] = request.ecrId ?? "";
         }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query),
             "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
         ])
         var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
@@ -118,6 +128,10 @@ open class Client : AlibabacloudOpenApi.Client {
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func checkAddRegionToExpressConnectRouterWithOptions(_ request: CheckAddRegionToExpressConnectRouterRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> CheckAddRegionToExpressConnectRouterResponse {
         try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.version)) {
+            query["Version"] = request.version ?? "";
+        }
         var body: [String: Any] = [:]
         if (!TeaUtils.Client.isUnset(request.clientToken)) {
             body["ClientToken"] = request.clientToken ?? "";
@@ -132,6 +146,7 @@ open class Client : AlibabacloudOpenApi.Client {
             body["FreshRegionId"] = request.freshRegionId ?? "";
         }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query),
             "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
         ])
         var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
@@ -158,6 +173,10 @@ open class Client : AlibabacloudOpenApi.Client {
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func createExpressConnectRouterWithOptions(_ request: CreateExpressConnectRouterRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> CreateExpressConnectRouterResponse {
         try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.version)) {
+            query["Version"] = request.version ?? "";
+        }
         var body: [String: Any] = [:]
         if (!TeaUtils.Client.isUnset(request.alibabaSideAsn)) {
             body["AlibabaSideAsn"] = request.alibabaSideAsn!;
@@ -181,6 +200,7 @@ open class Client : AlibabacloudOpenApi.Client {
             body["Tag"] = request.tag ?? [];
         }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query),
             "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
         ])
         var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
@@ -207,6 +227,10 @@ open class Client : AlibabacloudOpenApi.Client {
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func createExpressConnectRouterAssociationWithOptions(_ request: CreateExpressConnectRouterAssociationRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> CreateExpressConnectRouterAssociationResponse {
         try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.version)) {
+            query["Version"] = request.version ?? "";
+        }
         var body: [String: Any] = [:]
         if (!TeaUtils.Client.isUnset(request.allowedPrefixes)) {
             body["AllowedPrefixes"] = request.allowedPrefixes ?? [];
@@ -248,6 +272,7 @@ open class Client : AlibabacloudOpenApi.Client {
             body["VpcOwnerId"] = request.vpcOwnerId!;
         }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query),
             "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
         ])
         var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
@@ -299,6 +324,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.tag)) {
             query["Tag"] = request.tag ?? [];
         }
+        if (!TeaUtils.Client.isUnset(request.version)) {
+            query["Version"] = request.version ?? "";
+        }
         var body: [String: Any] = [:]
         if (!TeaUtils.Client.isUnset(request.clientToken)) {
             body["ClientToken"] = request.clientToken ?? "";
@@ -343,6 +371,10 @@ open class Client : AlibabacloudOpenApi.Client {
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func deactivateFlowLogWithOptions(_ request: DeactivateFlowLogRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DeactivateFlowLogResponse {
         try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.version)) {
+            query["Version"] = request.version ?? "";
+        }
         var body: [String: Any] = [:]
         if (!TeaUtils.Client.isUnset(request.clientToken)) {
             body["ClientToken"] = request.clientToken ?? "";
@@ -357,6 +389,7 @@ open class Client : AlibabacloudOpenApi.Client {
             body["FlowLogId"] = request.flowLogId ?? "";
         }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query),
             "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
         ])
         var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
@@ -383,6 +416,10 @@ open class Client : AlibabacloudOpenApi.Client {
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func deleteExpressConnectRouterWithOptions(_ request: DeleteExpressConnectRouterRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DeleteExpressConnectRouterResponse {
         try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.version)) {
+            query["Version"] = request.version ?? "";
+        }
         var body: [String: Any] = [:]
         if (!TeaUtils.Client.isUnset(request.clientToken)) {
             body["ClientToken"] = request.clientToken ?? "";
@@ -394,6 +431,7 @@ open class Client : AlibabacloudOpenApi.Client {
             body["EcrId"] = request.ecrId ?? "";
         }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query),
             "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
         ])
         var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
@@ -420,6 +458,10 @@ open class Client : AlibabacloudOpenApi.Client {
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func deleteExpressConnectRouterAssociationWithOptions(_ request: DeleteExpressConnectRouterAssociationRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DeleteExpressConnectRouterAssociationResponse {
         try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.version)) {
+            query["Version"] = request.version ?? "";
+        }
         var body: [String: Any] = [:]
         if (!TeaUtils.Client.isUnset(request.associationId)) {
             body["AssociationId"] = request.associationId ?? "";
@@ -437,6 +479,7 @@ open class Client : AlibabacloudOpenApi.Client {
             body["EcrId"] = request.ecrId ?? "";
         }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query),
             "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
         ])
         var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
@@ -466,6 +509,9 @@ open class Client : AlibabacloudOpenApi.Client {
         var query: [String: Any] = [:]
         if (!TeaUtils.Client.isUnset(request.flowLogId)) {
             query["FlowLogId"] = request.flowLogId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.version)) {
+            query["Version"] = request.version ?? "";
         }
         var body: [String: Any] = [:]
         if (!TeaUtils.Client.isUnset(request.clientToken)) {
@@ -505,6 +551,10 @@ open class Client : AlibabacloudOpenApi.Client {
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func describeDisabledExpressConnectRouterRouteEntriesWithOptions(_ request: DescribeDisabledExpressConnectRouterRouteEntriesRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DescribeDisabledExpressConnectRouterRouteEntriesResponse {
         try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.version)) {
+            query["Version"] = request.version ?? "";
+        }
         var body: [String: Any] = [:]
         if (!TeaUtils.Client.isUnset(request.clientToken)) {
             body["ClientToken"] = request.clientToken ?? "";
@@ -522,6 +572,7 @@ open class Client : AlibabacloudOpenApi.Client {
             body["NextToken"] = request.nextToken ?? "";
         }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query),
             "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
         ])
         var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
@@ -548,6 +599,10 @@ open class Client : AlibabacloudOpenApi.Client {
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func describeExpressConnectRouterWithOptions(_ request: DescribeExpressConnectRouterRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DescribeExpressConnectRouterResponse {
         try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.version)) {
+            query["Version"] = request.version ?? "";
+        }
         var body: [String: Any] = [:]
         if (!TeaUtils.Client.isUnset(request.clientToken)) {
             body["ClientToken"] = request.clientToken ?? "";
@@ -574,6 +629,7 @@ open class Client : AlibabacloudOpenApi.Client {
             body["Tag"] = request.tag ?? [];
         }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query),
             "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
         ])
         var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
@@ -600,6 +656,10 @@ open class Client : AlibabacloudOpenApi.Client {
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func describeExpressConnectRouterAllowedPrefixHistoryWithOptions(_ request: DescribeExpressConnectRouterAllowedPrefixHistoryRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DescribeExpressConnectRouterAllowedPrefixHistoryResponse {
         try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.version)) {
+            query["Version"] = request.version ?? "";
+        }
         var body: [String: Any] = [:]
         if (!TeaUtils.Client.isUnset(request.associationId)) {
             body["AssociationId"] = request.associationId ?? "";
@@ -620,6 +680,7 @@ open class Client : AlibabacloudOpenApi.Client {
             body["InstanceType"] = request.instanceType ?? "";
         }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query),
             "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
         ])
         var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
@@ -646,6 +707,10 @@ open class Client : AlibabacloudOpenApi.Client {
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func describeExpressConnectRouterAssociationWithOptions(_ request: DescribeExpressConnectRouterAssociationRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DescribeExpressConnectRouterAssociationResponse {
         try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.version)) {
+            query["Version"] = request.version ?? "";
+        }
         var body: [String: Any] = [:]
         if (!TeaUtils.Client.isUnset(request.associationId)) {
             body["AssociationId"] = request.associationId ?? "";
@@ -681,6 +746,7 @@ open class Client : AlibabacloudOpenApi.Client {
             body["VpcId"] = request.vpcId ?? "";
         }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query),
             "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
         ])
         var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
@@ -707,6 +773,10 @@ open class Client : AlibabacloudOpenApi.Client {
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func describeExpressConnectRouterChildInstanceWithOptions(_ request: DescribeExpressConnectRouterChildInstanceRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DescribeExpressConnectRouterChildInstanceResponse {
         try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.version)) {
+            query["Version"] = request.version ?? "";
+        }
         var body: [String: Any] = [:]
         if (!TeaUtils.Client.isUnset(request.associationId)) {
             body["AssociationId"] = request.associationId ?? "";
@@ -736,6 +806,7 @@ open class Client : AlibabacloudOpenApi.Client {
             body["NextToken"] = request.nextToken ?? "";
         }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query),
             "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
         ])
         var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
@@ -762,6 +833,10 @@ open class Client : AlibabacloudOpenApi.Client {
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func describeExpressConnectRouterInterRegionTransitModeWithOptions(_ request: DescribeExpressConnectRouterInterRegionTransitModeRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DescribeExpressConnectRouterInterRegionTransitModeResponse {
         try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.version)) {
+            query["Version"] = request.version ?? "";
+        }
         var body: [String: Any] = [:]
         if (!TeaUtils.Client.isUnset(request.clientToken)) {
             body["ClientToken"] = request.clientToken ?? "";
@@ -773,6 +848,7 @@ open class Client : AlibabacloudOpenApi.Client {
             body["EcrId"] = request.ecrId ?? "";
         }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query),
             "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
         ])
         var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
@@ -799,6 +875,10 @@ open class Client : AlibabacloudOpenApi.Client {
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func describeExpressConnectRouterRegionWithOptions(_ request: DescribeExpressConnectRouterRegionRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DescribeExpressConnectRouterRegionResponse {
         try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.version)) {
+            query["Version"] = request.version ?? "";
+        }
         var body: [String: Any] = [:]
         if (!TeaUtils.Client.isUnset(request.clientToken)) {
             body["ClientToken"] = request.clientToken ?? "";
@@ -810,6 +890,7 @@ open class Client : AlibabacloudOpenApi.Client {
             body["EcrId"] = request.ecrId ?? "";
         }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query),
             "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
         ])
         var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
@@ -836,6 +917,10 @@ open class Client : AlibabacloudOpenApi.Client {
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func describeExpressConnectRouterRouteEntriesWithOptions(_ request: DescribeExpressConnectRouterRouteEntriesRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DescribeExpressConnectRouterRouteEntriesResponse {
         try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.version)) {
+            query["Version"] = request.version ?? "";
+        }
         var body: [String: Any] = [:]
         if (!TeaUtils.Client.isUnset(request.asPath)) {
             body["AsPath"] = request.asPath ?? "";
@@ -868,6 +953,7 @@ open class Client : AlibabacloudOpenApi.Client {
             body["QueryRegionId"] = request.queryRegionId ?? "";
         }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query),
             "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
         ])
         var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
@@ -922,6 +1008,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.tag)) {
             query["Tag"] = request.tag ?? [];
         }
+        if (!TeaUtils.Client.isUnset(request.version)) {
+            query["Version"] = request.version ?? "";
+        }
         var body: [String: Any] = [:]
         if (!TeaUtils.Client.isUnset(request.clientToken)) {
             body["ClientToken"] = request.clientToken ?? "";
@@ -960,6 +1049,10 @@ open class Client : AlibabacloudOpenApi.Client {
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func describeInstanceGrantedToExpressConnectRouterWithOptions(_ request: DescribeInstanceGrantedToExpressConnectRouterRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DescribeInstanceGrantedToExpressConnectRouterResponse {
         try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.version)) {
+            query["Version"] = request.version ?? "";
+        }
         var body: [String: Any] = [:]
         if (!TeaUtils.Client.isUnset(request.callerType)) {
             body["CallerType"] = request.callerType ?? "";
@@ -998,6 +1091,7 @@ open class Client : AlibabacloudOpenApi.Client {
             body["TagModels"] = request.tagModels ?? [];
         }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query),
             "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
         ])
         var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
@@ -1024,6 +1118,10 @@ open class Client : AlibabacloudOpenApi.Client {
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func detachExpressConnectRouterChildInstanceWithOptions(_ request: DetachExpressConnectRouterChildInstanceRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DetachExpressConnectRouterChildInstanceResponse {
         try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.version)) {
+            query["Version"] = request.version ?? "";
+        }
         var body: [String: Any] = [:]
         if (!TeaUtils.Client.isUnset(request.childInstanceId)) {
             body["ChildInstanceId"] = request.childInstanceId ?? "";
@@ -1041,6 +1139,7 @@ open class Client : AlibabacloudOpenApi.Client {
             body["EcrId"] = request.ecrId ?? "";
         }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query),
             "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
         ])
         var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
@@ -1067,6 +1166,10 @@ open class Client : AlibabacloudOpenApi.Client {
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func disableExpressConnectRouterRouteEntriesWithOptions(_ request: DisableExpressConnectRouterRouteEntriesRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DisableExpressConnectRouterRouteEntriesResponse {
         try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.version)) {
+            query["Version"] = request.version ?? "";
+        }
         var body: [String: Any] = [:]
         if (!TeaUtils.Client.isUnset(request.clientToken)) {
             body["ClientToken"] = request.clientToken ?? "";
@@ -1084,6 +1187,7 @@ open class Client : AlibabacloudOpenApi.Client {
             body["NexthopInstanceId"] = request.nexthopInstanceId ?? "";
         }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query),
             "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
         ])
         var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
@@ -1110,6 +1214,10 @@ open class Client : AlibabacloudOpenApi.Client {
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func enableExpressConnectRouterRouteEntriesWithOptions(_ request: EnableExpressConnectRouterRouteEntriesRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> EnableExpressConnectRouterRouteEntriesResponse {
         try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.version)) {
+            query["Version"] = request.version ?? "";
+        }
         var body: [String: Any] = [:]
         if (!TeaUtils.Client.isUnset(request.clientToken)) {
             body["ClientToken"] = request.clientToken ?? "";
@@ -1127,6 +1235,7 @@ open class Client : AlibabacloudOpenApi.Client {
             body["NexthopInstanceId"] = request.nexthopInstanceId ?? "";
         }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query),
             "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
         ])
         var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
@@ -1153,6 +1262,10 @@ open class Client : AlibabacloudOpenApi.Client {
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func forceDeleteExpressConnectRouterWithOptions(_ request: ForceDeleteExpressConnectRouterRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ForceDeleteExpressConnectRouterResponse {
         try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.version)) {
+            query["Version"] = request.version ?? "";
+        }
         var body: [String: Any] = [:]
         if (!TeaUtils.Client.isUnset(request.clientToken)) {
             body["ClientToken"] = request.clientToken ?? "";
@@ -1164,6 +1277,7 @@ open class Client : AlibabacloudOpenApi.Client {
             body["EcrId"] = request.ecrId ?? "";
         }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query),
             "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
         ])
         var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
@@ -1190,6 +1304,10 @@ open class Client : AlibabacloudOpenApi.Client {
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func grantInstanceToExpressConnectRouterWithOptions(_ request: GrantInstanceToExpressConnectRouterRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> GrantInstanceToExpressConnectRouterResponse {
         try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.version)) {
+            query["Version"] = request.version ?? "";
+        }
         var body: [String: Any] = [:]
         if (!TeaUtils.Client.isUnset(request.clientToken)) {
             body["ClientToken"] = request.clientToken ?? "";
@@ -1213,6 +1331,7 @@ open class Client : AlibabacloudOpenApi.Client {
             body["InstanceType"] = request.instanceType ?? "";
         }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query),
             "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
         ])
         var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
@@ -1239,6 +1358,10 @@ open class Client : AlibabacloudOpenApi.Client {
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func listExpressConnectRouterSupportedRegionWithOptions(_ request: ListExpressConnectRouterSupportedRegionRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ListExpressConnectRouterSupportedRegionResponse {
         try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.version)) {
+            query["Version"] = request.version ?? "";
+        }
         var body: [String: Any] = [:]
         if (!TeaUtils.Client.isUnset(request.clientToken)) {
             body["ClientToken"] = request.clientToken ?? "";
@@ -1247,6 +1370,7 @@ open class Client : AlibabacloudOpenApi.Client {
             body["NodeType"] = request.nodeType ?? "";
         }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query),
             "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
         ])
         var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
@@ -1273,6 +1397,10 @@ open class Client : AlibabacloudOpenApi.Client {
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func listTagResourcesWithOptions(_ request: ListTagResourcesRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ListTagResourcesResponse {
         try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.version)) {
+            query["Version"] = request.version ?? "";
+        }
         var body: [String: Any] = [:]
         if (!TeaUtils.Client.isUnset(request.maxResults)) {
             body["MaxResults"] = request.maxResults!;
@@ -1290,6 +1418,7 @@ open class Client : AlibabacloudOpenApi.Client {
             body["Tag"] = request.tag ?? [];
         }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query),
             "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
         ])
         var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
@@ -1316,6 +1445,10 @@ open class Client : AlibabacloudOpenApi.Client {
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func modifyExpressConnectRouterWithOptions(_ request: ModifyExpressConnectRouterRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ModifyExpressConnectRouterResponse {
         try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.version)) {
+            query["Version"] = request.version ?? "";
+        }
         var body: [String: Any] = [:]
         if (!TeaUtils.Client.isUnset(request.clientToken)) {
             body["ClientToken"] = request.clientToken ?? "";
@@ -1333,6 +1466,7 @@ open class Client : AlibabacloudOpenApi.Client {
             body["Name"] = request.name ?? "";
         }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query),
             "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
         ])
         var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
@@ -1359,6 +1493,10 @@ open class Client : AlibabacloudOpenApi.Client {
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func modifyExpressConnectRouterAssociationWithOptions(_ request: ModifyExpressConnectRouterAssociationRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ModifyExpressConnectRouterAssociationResponse {
         try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.version)) {
+            query["Version"] = request.version ?? "";
+        }
         var body: [String: Any] = [:]
         if (!TeaUtils.Client.isUnset(request.associationId)) {
             body["AssociationId"] = request.associationId ?? "";
@@ -1376,6 +1514,7 @@ open class Client : AlibabacloudOpenApi.Client {
             body["EcrId"] = request.ecrId ?? "";
         }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query),
             "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
         ])
         var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
@@ -1402,6 +1541,10 @@ open class Client : AlibabacloudOpenApi.Client {
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func modifyExpressConnectRouterAssociationAllowedPrefixWithOptions(_ request: ModifyExpressConnectRouterAssociationAllowedPrefixRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ModifyExpressConnectRouterAssociationAllowedPrefixResponse {
         try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.version)) {
+            query["Version"] = request.version ?? "";
+        }
         var body: [String: Any] = [:]
         if (!TeaUtils.Client.isUnset(request.allowedPrefixes)) {
             body["AllowedPrefixes"] = request.allowedPrefixes ?? [];
@@ -1425,6 +1568,7 @@ open class Client : AlibabacloudOpenApi.Client {
             body["OwnerAccount"] = request.ownerAccount ?? "";
         }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query),
             "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
         ])
         var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
@@ -1451,6 +1595,10 @@ open class Client : AlibabacloudOpenApi.Client {
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func modifyExpressConnectRouterChildInstanceWithOptions(_ request: ModifyExpressConnectRouterChildInstanceRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ModifyExpressConnectRouterChildInstanceResponse {
         try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.version)) {
+            query["Version"] = request.version ?? "";
+        }
         var body: [String: Any] = [:]
         if (!TeaUtils.Client.isUnset(request.childInstanceId)) {
             body["ChildInstanceId"] = request.childInstanceId ?? "";
@@ -1471,6 +1619,7 @@ open class Client : AlibabacloudOpenApi.Client {
             body["EcrId"] = request.ecrId ?? "";
         }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query),
             "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
         ])
         var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
@@ -1497,6 +1646,10 @@ open class Client : AlibabacloudOpenApi.Client {
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func modifyExpressConnectRouterInterRegionTransitModeWithOptions(_ request: ModifyExpressConnectRouterInterRegionTransitModeRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ModifyExpressConnectRouterInterRegionTransitModeResponse {
         try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.version)) {
+            query["Version"] = request.version ?? "";
+        }
         var body: [String: Any] = [:]
         if (!TeaUtils.Client.isUnset(request.clientToken)) {
             body["ClientToken"] = request.clientToken ?? "";
@@ -1511,6 +1664,7 @@ open class Client : AlibabacloudOpenApi.Client {
             body["TransitModeList"] = request.transitModeList ?? [];
         }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query),
             "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
         ])
         var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
@@ -1549,6 +1703,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.samplingRate)) {
             query["SamplingRate"] = request.samplingRate ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.version)) {
+            query["Version"] = request.version ?? "";
         }
         var body: [String: Any] = [:]
         if (!TeaUtils.Client.isUnset(request.clientToken)) {
@@ -1591,6 +1748,10 @@ open class Client : AlibabacloudOpenApi.Client {
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func moveResourceGroupWithOptions(_ request: MoveResourceGroupRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> MoveResourceGroupResponse {
         try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.version)) {
+            query["Version"] = request.version ?? "";
+        }
         var body: [String: Any] = [:]
         if (!TeaUtils.Client.isUnset(request.clientToken)) {
             body["ClientToken"] = request.clientToken ?? "";
@@ -1608,6 +1769,7 @@ open class Client : AlibabacloudOpenApi.Client {
             body["ResourceType"] = request.resourceType ?? "";
         }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query),
             "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
         ])
         var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
@@ -1634,6 +1796,10 @@ open class Client : AlibabacloudOpenApi.Client {
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func revokeInstanceFromExpressConnectRouterWithOptions(_ request: RevokeInstanceFromExpressConnectRouterRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> RevokeInstanceFromExpressConnectRouterResponse {
         try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.version)) {
+            query["Version"] = request.version ?? "";
+        }
         var body: [String: Any] = [:]
         if (!TeaUtils.Client.isUnset(request.clientToken)) {
             body["ClientToken"] = request.clientToken ?? "";
@@ -1657,6 +1823,7 @@ open class Client : AlibabacloudOpenApi.Client {
             body["InstanceType"] = request.instanceType ?? "";
         }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query),
             "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
         ])
         var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
@@ -1683,6 +1850,10 @@ open class Client : AlibabacloudOpenApi.Client {
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func synchronizeExpressConnectRouterInterRegionBandwidthWithOptions(_ request: SynchronizeExpressConnectRouterInterRegionBandwidthRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> SynchronizeExpressConnectRouterInterRegionBandwidthResponse {
         try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.version)) {
+            query["Version"] = request.version ?? "";
+        }
         var body: [String: Any] = [:]
         if (!TeaUtils.Client.isUnset(request.clientToken)) {
             body["ClientToken"] = request.clientToken ?? "";
@@ -1694,6 +1865,7 @@ open class Client : AlibabacloudOpenApi.Client {
             body["EcrId"] = request.ecrId ?? "";
         }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query),
             "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
         ])
         var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
@@ -1720,6 +1892,10 @@ open class Client : AlibabacloudOpenApi.Client {
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func tagResourcesWithOptions(_ request: TagResourcesRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> TagResourcesResponse {
         try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.version)) {
+            query["Version"] = request.version ?? "";
+        }
         var body: [String: Any] = [:]
         if (!TeaUtils.Client.isUnset(request.clientToken)) {
             body["ClientToken"] = request.clientToken ?? "";
@@ -1737,6 +1913,7 @@ open class Client : AlibabacloudOpenApi.Client {
             body["Tag"] = request.tag ?? [];
         }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query),
             "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
         ])
         var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
@@ -1763,6 +1940,10 @@ open class Client : AlibabacloudOpenApi.Client {
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func untagResourcesWithOptions(_ request: UntagResourcesRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> UntagResourcesResponse {
         try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.version)) {
+            query["Version"] = request.version ?? "";
+        }
         var body: [String: Any] = [:]
         if (!TeaUtils.Client.isUnset(request.all)) {
             body["All"] = request.all!;
@@ -1783,6 +1964,7 @@ open class Client : AlibabacloudOpenApi.Client {
             body["TagKey"] = request.tagKey ?? [];
         }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query),
             "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
         ])
         var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
