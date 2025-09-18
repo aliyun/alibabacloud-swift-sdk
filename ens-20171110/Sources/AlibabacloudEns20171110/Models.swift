@@ -6107,7 +6107,47 @@ public class CreateFileSystemShrinkRequest : Tea.TeaModel {
 }
 
 public class CreateFileSystemResponseBody : Tea.TeaModel {
+    public class AllocationIds : Tea.TeaModel {
+        public var ensRegionId: String?
+
+        public var instanceId: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.ensRegionId != nil {
+                map["EnsRegionId"] = self.ensRegionId!
+            }
+            if self.instanceId != nil {
+                map["InstanceId"] = self.instanceId!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["EnsRegionId"] as? String {
+                self.ensRegionId = value
+            }
+            if let value = dict["InstanceId"] as? String {
+                self.instanceId = value
+            }
+        }
+    }
     public var allocationId: [String]?
+
+    public var allocationIds: [CreateFileSystemResponseBody.AllocationIds]?
 
     public var bizStatusCode: String?
 
@@ -6132,6 +6172,13 @@ public class CreateFileSystemResponseBody : Tea.TeaModel {
         if self.allocationId != nil {
             map["AllocationId"] = self.allocationId!
         }
+        if self.allocationIds != nil {
+            var tmp : [Any] = []
+            for k in self.allocationIds! {
+                tmp.append(k.toMap())
+            }
+            map["AllocationIds"] = tmp
+        }
         if self.bizStatusCode != nil {
             map["BizStatusCode"] = self.bizStatusCode!
         }
@@ -6148,6 +6195,19 @@ public class CreateFileSystemResponseBody : Tea.TeaModel {
         guard let dict else { return }
         if let value = dict["AllocationId"] as? [String] {
             self.allocationId = value
+        }
+        if let value = dict["AllocationIds"] as? [Any?] {
+            var tmp : [CreateFileSystemResponseBody.AllocationIds] = []
+            for v in value {
+                if v != nil {
+                    var model = CreateFileSystemResponseBody.AllocationIds()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.allocationIds = tmp
         }
         if let value = dict["BizStatusCode"] as? String {
             self.bizStatusCode = value
