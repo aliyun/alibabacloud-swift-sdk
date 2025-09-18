@@ -151,6 +151,8 @@ public class CatalogSummary : Tea.TeaModel {
 
     public var totalFileSizeInBytes: MoMValues?
 
+    public var totalMetaSizeInBytes: MoMValues?
+
     public override init() {
         super.init()
     }
@@ -166,6 +168,7 @@ public class CatalogSummary : Tea.TeaModel {
         try self.tableCount?.validate()
         try self.totalFileCount?.validate()
         try self.totalFileSizeInBytes?.validate()
+        try self.totalMetaSizeInBytes?.validate()
     }
 
     public override func toMap() -> [String : Any] {
@@ -208,6 +211,9 @@ public class CatalogSummary : Tea.TeaModel {
         }
         if self.totalFileSizeInBytes != nil {
             map["totalFileSizeInBytes"] = self.totalFileSizeInBytes?.toMap()
+        }
+        if self.totalMetaSizeInBytes != nil {
+            map["totalMetaSizeInBytes"] = self.totalMetaSizeInBytes?.toMap()
         }
         return map
     }
@@ -262,6 +268,11 @@ public class CatalogSummary : Tea.TeaModel {
             var model = MoMValues()
             model.fromMap(value)
             self.totalFileSizeInBytes = model
+        }
+        if let value = dict["totalMetaSizeInBytes"] as? [String: Any?] {
+            var model = MoMValues()
+            model.fromMap(value)
+            self.totalMetaSizeInBytes = model
         }
     }
 }
@@ -599,6 +610,8 @@ public class DatabaseSummary : Tea.TeaModel {
 
     public var totalFileSizeInBytes: Int64?
 
+    public var totalMetaSizeInBytes: Int64?
+
     public override init() {
         super.init()
     }
@@ -649,6 +662,9 @@ public class DatabaseSummary : Tea.TeaModel {
         if self.totalFileSizeInBytes != nil {
             map["totalFileSizeInBytes"] = self.totalFileSizeInBytes!
         }
+        if self.totalMetaSizeInBytes != nil {
+            map["totalMetaSizeInBytes"] = self.totalMetaSizeInBytes!
+        }
         return map
     }
 
@@ -689,6 +705,9 @@ public class DatabaseSummary : Tea.TeaModel {
         }
         if let value = dict["totalFileSizeInBytes"] as? Int64 {
             self.totalFileSizeInBytes = value
+        }
+        if let value = dict["totalMetaSizeInBytes"] as? Int64 {
+            self.totalMetaSizeInBytes = value
         }
     }
 }
@@ -1414,6 +1433,8 @@ public class IcebergTableMetadata : Tea.TeaModel {
 
     public var fields: [IcebergNestedField]?
 
+    public var identifierFieldIds: [Int32]?
+
     public var partitionFields: [IcebergPartitionField]?
 
     public var properties: [String: String]?
@@ -1442,6 +1463,9 @@ public class IcebergTableMetadata : Tea.TeaModel {
                 tmp.append(k.toMap())
             }
             map["fields"] = tmp
+        }
+        if self.identifierFieldIds != nil {
+            map["identifierFieldIds"] = self.identifierFieldIds!
         }
         if self.partitionFields != nil {
             var tmp : [Any] = []
@@ -1475,6 +1499,9 @@ public class IcebergTableMetadata : Tea.TeaModel {
                 }
             }
             self.fields = tmp
+        }
+        if let value = dict["identifierFieldIds"] as? [Int32] {
+            self.identifierFieldIds = value
         }
         if let value = dict["partitionFields"] as? [Any?] {
             var tmp : [IcebergPartitionField] = []
@@ -3067,6 +3094,8 @@ public class TableCompaction : Tea.TeaModel {
 
     public var lastCompactedFileTime: Int64?
 
+    public var latencyFileEarliestTime: Int64?
+
     public var maxLevel0FileCount: String?
 
     public var tableId: String?
@@ -3094,6 +3123,9 @@ public class TableCompaction : Tea.TeaModel {
         if self.lastCompactedFileTime != nil {
             map["lastCompactedFileTime"] = self.lastCompactedFileTime!
         }
+        if self.latencyFileEarliestTime != nil {
+            map["latencyFileEarliestTime"] = self.latencyFileEarliestTime!
+        }
         if self.maxLevel0FileCount != nil {
             map["maxLevel0FileCount"] = self.maxLevel0FileCount!
         }
@@ -3114,11 +3146,125 @@ public class TableCompaction : Tea.TeaModel {
         if let value = dict["lastCompactedFileTime"] as? Int64 {
             self.lastCompactedFileTime = value
         }
+        if let value = dict["latencyFileEarliestTime"] as? Int64 {
+            self.latencyFileEarliestTime = value
+        }
         if let value = dict["maxLevel0FileCount"] as? String {
             self.maxLevel0FileCount = value
         }
         if let value = dict["tableId"] as? String {
             self.tableId = value
+        }
+    }
+}
+
+public class TableCompactionHistory : Tea.TeaModel {
+    public var afterFilesCount: Int64?
+
+    public var afterFilesSize: Int64?
+
+    public var beforeFilesCount: Int64?
+
+    public var beforeFilesLastCreationTime: Int64?
+
+    public var beforeFilesSize: Int64?
+
+    public var catalogId: String?
+
+    public var commitTime: Int64?
+
+    public var snapshotId: Int64?
+
+    public var tableId: String?
+
+    public var updatedAt: Int64?
+
+    public var updatedBy: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.afterFilesCount != nil {
+            map["afterFilesCount"] = self.afterFilesCount!
+        }
+        if self.afterFilesSize != nil {
+            map["afterFilesSize"] = self.afterFilesSize!
+        }
+        if self.beforeFilesCount != nil {
+            map["beforeFilesCount"] = self.beforeFilesCount!
+        }
+        if self.beforeFilesLastCreationTime != nil {
+            map["beforeFilesLastCreationTime"] = self.beforeFilesLastCreationTime!
+        }
+        if self.beforeFilesSize != nil {
+            map["beforeFilesSize"] = self.beforeFilesSize!
+        }
+        if self.catalogId != nil {
+            map["catalogId"] = self.catalogId!
+        }
+        if self.commitTime != nil {
+            map["commitTime"] = self.commitTime!
+        }
+        if self.snapshotId != nil {
+            map["snapshotId"] = self.snapshotId!
+        }
+        if self.tableId != nil {
+            map["tableId"] = self.tableId!
+        }
+        if self.updatedAt != nil {
+            map["updatedAt"] = self.updatedAt!
+        }
+        if self.updatedBy != nil {
+            map["updatedBy"] = self.updatedBy!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["afterFilesCount"] as? Int64 {
+            self.afterFilesCount = value
+        }
+        if let value = dict["afterFilesSize"] as? Int64 {
+            self.afterFilesSize = value
+        }
+        if let value = dict["beforeFilesCount"] as? Int64 {
+            self.beforeFilesCount = value
+        }
+        if let value = dict["beforeFilesLastCreationTime"] as? Int64 {
+            self.beforeFilesLastCreationTime = value
+        }
+        if let value = dict["beforeFilesSize"] as? Int64 {
+            self.beforeFilesSize = value
+        }
+        if let value = dict["catalogId"] as? String {
+            self.catalogId = value
+        }
+        if let value = dict["commitTime"] as? Int64 {
+            self.commitTime = value
+        }
+        if let value = dict["snapshotId"] as? Int64 {
+            self.snapshotId = value
+        }
+        if let value = dict["tableId"] as? String {
+            self.tableId = value
+        }
+        if let value = dict["updatedAt"] as? Int64 {
+            self.updatedAt = value
+        }
+        if let value = dict["updatedBy"] as? String {
+            self.updatedBy = value
         }
     }
 }
@@ -3222,6 +3368,8 @@ public class TableSummary : Tea.TeaModel {
 
     public var totalFileSizeInBytes: Int64?
 
+    public var totalMetaSizeInBytes: Int64?
+
     public var updatedAt: Int64?
 
     public override init() {
@@ -3286,6 +3434,9 @@ public class TableSummary : Tea.TeaModel {
         if self.totalFileSizeInBytes != nil {
             map["totalFileSizeInBytes"] = self.totalFileSizeInBytes!
         }
+        if self.totalMetaSizeInBytes != nil {
+            map["totalMetaSizeInBytes"] = self.totalMetaSizeInBytes!
+        }
         if self.updatedAt != nil {
             map["updatedAt"] = self.updatedAt!
         }
@@ -3341,6 +3492,9 @@ public class TableSummary : Tea.TeaModel {
         }
         if let value = dict["totalFileSizeInBytes"] as? Int64 {
             self.totalFileSizeInBytes = value
+        }
+        if let value = dict["totalMetaSizeInBytes"] as? Int64 {
+            self.totalMetaSizeInBytes = value
         }
         if let value = dict["updatedAt"] as? Int64 {
             self.updatedAt = value
@@ -6422,6 +6576,126 @@ public class GetTableSummaryResponse : Tea.TeaModel {
     }
 }
 
+public class GetTableTokenRequest : Tea.TeaModel {
+    public var isInternal: Bool?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.isInternal != nil {
+            map["isInternal"] = self.isInternal!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["isInternal"] as? Bool {
+            self.isInternal = value
+        }
+    }
+}
+
+public class GetTableTokenResponseBody : Tea.TeaModel {
+    public var expiresAtMillis: Int64?
+
+    public var token: [String: String]?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.expiresAtMillis != nil {
+            map["expiresAtMillis"] = self.expiresAtMillis!
+        }
+        if self.token != nil {
+            map["token"] = self.token!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["expiresAtMillis"] as? Int64 {
+            self.expiresAtMillis = value
+        }
+        if let value = dict["token"] as? [String: String] {
+            self.token = value
+        }
+    }
+}
+
+public class GetTableTokenResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: GetTableTokenResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = GetTableTokenResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
 public class GetUserRequest : Tea.TeaModel {
     public var userPrincipal: String?
 
@@ -8921,6 +9195,8 @@ public class ListTableDetailsRequest : Tea.TeaModel {
 
     public var tableNamePattern: String?
 
+    public var type: String?
+
     public override init() {
         super.init()
     }
@@ -8944,6 +9220,9 @@ public class ListTableDetailsRequest : Tea.TeaModel {
         if self.tableNamePattern != nil {
             map["tableNamePattern"] = self.tableNamePattern!
         }
+        if self.type != nil {
+            map["type"] = self.type!
+        }
         return map
     }
 
@@ -8957,6 +9236,9 @@ public class ListTableDetailsRequest : Tea.TeaModel {
         }
         if let value = dict["tableNamePattern"] as? String {
             self.tableNamePattern = value
+        }
+        if let value = dict["type"] as? String {
+            self.type = value
         }
     }
 }
