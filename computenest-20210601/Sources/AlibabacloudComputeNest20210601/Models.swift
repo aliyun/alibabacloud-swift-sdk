@@ -4419,6 +4419,52 @@ public class GetServiceResponseBody : Tea.TeaModel {
             }
         }
     }
+    public class ServiceLocaleConfigs : Tea.TeaModel {
+        public var enValue: String?
+
+        public var originalValue: String?
+
+        public var zhValue: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.enValue != nil {
+                map["EnValue"] = self.enValue!
+            }
+            if self.originalValue != nil {
+                map["OriginalValue"] = self.originalValue!
+            }
+            if self.zhValue != nil {
+                map["ZhValue"] = self.zhValue!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["EnValue"] as? String {
+                self.enValue = value
+            }
+            if let value = dict["OriginalValue"] as? String {
+                self.originalValue = value
+            }
+            if let value = dict["ZhValue"] as? String {
+                self.zhValue = value
+            }
+        }
+    }
     public class SupportContacts : Tea.TeaModel {
         public var type: String?
 
@@ -4534,6 +4580,8 @@ public class GetServiceResponseBody : Tea.TeaModel {
     public var serviceId: String?
 
     public var serviceInfos: [GetServiceResponseBody.ServiceInfos]?
+
+    public var serviceLocaleConfigs: [GetServiceResponseBody.ServiceLocaleConfigs]?
 
     public var serviceProductUrl: String?
 
@@ -4654,6 +4702,13 @@ public class GetServiceResponseBody : Tea.TeaModel {
                 tmp.append(k.toMap())
             }
             map["ServiceInfos"] = tmp
+        }
+        if self.serviceLocaleConfigs != nil {
+            var tmp : [Any] = []
+            for k in self.serviceLocaleConfigs! {
+                tmp.append(k.toMap())
+            }
+            map["ServiceLocaleConfigs"] = tmp
         }
         if self.serviceProductUrl != nil {
             map["ServiceProductUrl"] = self.serviceProductUrl!
@@ -4809,6 +4864,19 @@ public class GetServiceResponseBody : Tea.TeaModel {
                 }
             }
             self.serviceInfos = tmp
+        }
+        if let value = dict["ServiceLocaleConfigs"] as? [Any?] {
+            var tmp : [GetServiceResponseBody.ServiceLocaleConfigs] = []
+            for v in value {
+                if v != nil {
+                    var model = GetServiceResponseBody.ServiceLocaleConfigs()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.serviceLocaleConfigs = tmp
         }
         if let value = dict["ServiceProductUrl"] as? String {
             self.serviceProductUrl = value
@@ -11863,6 +11931,52 @@ public class ListServicesResponseBody : Tea.TeaModel {
                 }
             }
         }
+        public class ServiceLocaleConfigs : Tea.TeaModel {
+            public var enValue: String?
+
+            public var originalValue: String?
+
+            public var zhValue: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.enValue != nil {
+                    map["EnValue"] = self.enValue!
+                }
+                if self.originalValue != nil {
+                    map["OriginalValue"] = self.originalValue!
+                }
+                if self.zhValue != nil {
+                    map["ZhValue"] = self.zhValue!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["EnValue"] as? String {
+                    self.enValue = value
+                }
+                if let value = dict["OriginalValue"] as? String {
+                    self.originalValue = value
+                }
+                if let value = dict["ZhValue"] as? String {
+                    self.zhValue = value
+                }
+            }
+        }
         public class Tags : Tea.TeaModel {
             public var key: String?
 
@@ -11918,6 +12032,8 @@ public class ListServicesResponseBody : Tea.TeaModel {
         public var serviceId: String?
 
         public var serviceInfos: [ListServicesResponseBody.Services.ServiceInfos]?
+
+        public var serviceLocaleConfigs: [ListServicesResponseBody.Services.ServiceLocaleConfigs]?
 
         public var serviceProductUrl: String?
 
@@ -11992,6 +12108,13 @@ public class ListServicesResponseBody : Tea.TeaModel {
                     tmp.append(k.toMap())
                 }
                 map["ServiceInfos"] = tmp
+            }
+            if self.serviceLocaleConfigs != nil {
+                var tmp : [Any] = []
+                for k in self.serviceLocaleConfigs! {
+                    tmp.append(k.toMap())
+                }
+                map["ServiceLocaleConfigs"] = tmp
             }
             if self.serviceProductUrl != nil {
                 map["ServiceProductUrl"] = self.serviceProductUrl!
@@ -12082,6 +12205,19 @@ public class ListServicesResponseBody : Tea.TeaModel {
                     }
                 }
                 self.serviceInfos = tmp
+            }
+            if let value = dict["ServiceLocaleConfigs"] as? [Any?] {
+                var tmp : [ListServicesResponseBody.Services.ServiceLocaleConfigs] = []
+                for v in value {
+                    if v != nil {
+                        var model = ListServicesResponseBody.Services.ServiceLocaleConfigs()
+                        if v != nil {
+                            model.fromMap(v as? [String: Any?])
+                        }
+                        tmp.append(model)
+                    }
+                }
+                self.serviceLocaleConfigs = tmp
             }
             if let value = dict["ServiceProductUrl"] as? String {
                 self.serviceProductUrl = value
