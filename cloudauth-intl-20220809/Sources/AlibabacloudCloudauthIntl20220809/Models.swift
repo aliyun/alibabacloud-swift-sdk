@@ -3510,6 +3510,8 @@ public class EkycVerifyResponse : Tea.TeaModel {
 }
 
 public class FaceCompareRequest : Tea.TeaModel {
+    public var facePictureQualityCheck: String?
+
     public var merchantBizId: String?
 
     public var sourceFacePicture: String?
@@ -3534,6 +3536,9 @@ public class FaceCompareRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.facePictureQualityCheck != nil {
+            map["FacePictureQualityCheck"] = self.facePictureQualityCheck!
+        }
         if self.merchantBizId != nil {
             map["MerchantBizId"] = self.merchantBizId!
         }
@@ -3554,6 +3559,9 @@ public class FaceCompareRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["FacePictureQualityCheck"] as? String {
+            self.facePictureQualityCheck = value
+        }
         if let value = dict["MerchantBizId"] as? String {
             self.merchantBizId = value
         }

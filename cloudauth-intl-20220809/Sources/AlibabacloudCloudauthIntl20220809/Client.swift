@@ -864,6 +864,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func faceCompareWithOptions(_ request: FaceCompareRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> FaceCompareResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.facePictureQualityCheck)) {
+            query["FacePictureQualityCheck"] = request.facePictureQualityCheck ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.merchantBizId)) {
             query["MerchantBizId"] = request.merchantBizId ?? "";
         }
