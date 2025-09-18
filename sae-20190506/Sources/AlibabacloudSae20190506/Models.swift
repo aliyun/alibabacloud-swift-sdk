@@ -5838,6 +5838,8 @@ public class InitContainerConfig : Tea.TeaModel {
 
     public var configMapMountDesc: String?
 
+    public var emptyDirDesc: String?
+
     public var envs: String?
 
     public var imageUrl: String?
@@ -5867,6 +5869,9 @@ public class InitContainerConfig : Tea.TeaModel {
         if self.configMapMountDesc != nil {
             map["ConfigMapMountDesc"] = self.configMapMountDesc!
         }
+        if self.emptyDirDesc != nil {
+            map["EmptyDirDesc"] = self.emptyDirDesc!
+        }
         if self.envs != nil {
             map["Envs"] = self.envs!
         }
@@ -5889,6 +5894,9 @@ public class InitContainerConfig : Tea.TeaModel {
         }
         if let value = dict["ConfigMapMountDesc"] as? String {
             self.configMapMountDesc = value
+        }
+        if let value = dict["EmptyDirDesc"] as? String {
+            self.emptyDirDesc = value
         }
         if let value = dict["Envs"] as? String {
             self.envs = value
@@ -15069,6 +15077,8 @@ public class CreateApplicationRequest : Tea.TeaModel {
 
     public var edasContainerVersion: String?
 
+    public var emptyDirDesc: String?
+
     public var enableCpuBurst: Bool?
 
     public var enableEbpf: String?
@@ -15260,6 +15270,9 @@ public class CreateApplicationRequest : Tea.TeaModel {
         }
         if self.edasContainerVersion != nil {
             map["EdasContainerVersion"] = self.edasContainerVersion!
+        }
+        if self.emptyDirDesc != nil {
+            map["EmptyDirDesc"] = self.emptyDirDesc!
         }
         if self.enableCpuBurst != nil {
             map["EnableCpuBurst"] = self.enableCpuBurst!
@@ -15514,6 +15527,9 @@ public class CreateApplicationRequest : Tea.TeaModel {
         if let value = dict["EdasContainerVersion"] as? String {
             self.edasContainerVersion = value
         }
+        if let value = dict["EmptyDirDesc"] as? String {
+            self.emptyDirDesc = value
+        }
         if let value = dict["EnableCpuBurst"] as? Bool {
             self.enableCpuBurst = value
         }
@@ -15760,6 +15776,8 @@ public class CreateApplicationShrinkRequest : Tea.TeaModel {
 
     public var edasContainerVersion: String?
 
+    public var emptyDirDesc: String?
+
     public var enableCpuBurst: Bool?
 
     public var enableEbpf: String?
@@ -15951,6 +15969,9 @@ public class CreateApplicationShrinkRequest : Tea.TeaModel {
         }
         if self.edasContainerVersion != nil {
             map["EdasContainerVersion"] = self.edasContainerVersion!
+        }
+        if self.emptyDirDesc != nil {
+            map["EmptyDirDesc"] = self.emptyDirDesc!
         }
         if self.enableCpuBurst != nil {
             map["EnableCpuBurst"] = self.enableCpuBurst!
@@ -16196,6 +16217,9 @@ public class CreateApplicationShrinkRequest : Tea.TeaModel {
         }
         if let value = dict["EdasContainerVersion"] as? String {
             self.edasContainerVersion = value
+        }
+        if let value = dict["EmptyDirDesc"] as? String {
+            self.emptyDirDesc = value
         }
         if let value = dict["EnableCpuBurst"] as? Bool {
             self.enableCpuBurst = value
@@ -22561,6 +22585,8 @@ public class DeployApplicationRequest : Tea.TeaModel {
 
     public var edasContainerVersion: String?
 
+    public var emptyDirDesc: String?
+
     public var enableAhas: String?
 
     public var enableCpuBurst: Bool?
@@ -22742,6 +22768,9 @@ public class DeployApplicationRequest : Tea.TeaModel {
         }
         if self.edasContainerVersion != nil {
             map["EdasContainerVersion"] = self.edasContainerVersion!
+        }
+        if self.emptyDirDesc != nil {
+            map["EmptyDirDesc"] = self.emptyDirDesc!
         }
         if self.enableAhas != nil {
             map["EnableAhas"] = self.enableAhas!
@@ -22984,6 +23013,9 @@ public class DeployApplicationRequest : Tea.TeaModel {
         if let value = dict["EdasContainerVersion"] as? String {
             self.edasContainerVersion = value
         }
+        if let value = dict["EmptyDirDesc"] as? String {
+            self.emptyDirDesc = value
+        }
         if let value = dict["EnableAhas"] as? String {
             self.enableAhas = value
         }
@@ -23220,6 +23252,8 @@ public class DeployApplicationShrinkRequest : Tea.TeaModel {
 
     public var edasContainerVersion: String?
 
+    public var emptyDirDesc: String?
+
     public var enableAhas: String?
 
     public var enableCpuBurst: Bool?
@@ -23401,6 +23435,9 @@ public class DeployApplicationShrinkRequest : Tea.TeaModel {
         }
         if self.edasContainerVersion != nil {
             map["EdasContainerVersion"] = self.edasContainerVersion!
+        }
+        if self.emptyDirDesc != nil {
+            map["EmptyDirDesc"] = self.emptyDirDesc!
         }
         if self.enableAhas != nil {
             map["EnableAhas"] = self.enableAhas!
@@ -23634,6 +23671,9 @@ public class DeployApplicationShrinkRequest : Tea.TeaModel {
         }
         if let value = dict["EdasContainerVersion"] as? String {
             self.edasContainerVersion = value
+        }
+        if let value = dict["EmptyDirDesc"] as? String {
+            self.emptyDirDesc = value
         }
         if let value = dict["EnableAhas"] as? String {
             self.enableAhas = value
@@ -24596,6 +24636,44 @@ public class DescribeApplicationConfigResponseBody : Tea.TeaModel {
                 }
             }
         }
+        public class EmptyDirDesc : Tea.TeaModel {
+            public var mountPath: String?
+
+            public var name: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.mountPath != nil {
+                    map["MountPath"] = self.mountPath!
+                }
+                if self.name != nil {
+                    map["Name"] = self.name!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["MountPath"] as? String {
+                    self.mountPath = value
+                }
+                if let value = dict["Name"] as? String {
+                    self.name = value
+                }
+            }
+        }
         public class InitContainersConfig : Tea.TeaModel {
             public class ConfigMapMountDesc : Tea.TeaModel {
                 public var configMapId: Int64?
@@ -24651,11 +24729,51 @@ public class DescribeApplicationConfigResponseBody : Tea.TeaModel {
                     }
                 }
             }
+            public class EmptyDirDesc : Tea.TeaModel {
+                public var mountPath: String?
+
+                public var name: String?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.mountPath != nil {
+                        map["MountPath"] = self.mountPath!
+                    }
+                    if self.name != nil {
+                        map["Name"] = self.name!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                    guard let dict else { return }
+                    if let value = dict["MountPath"] as? String {
+                        self.mountPath = value
+                    }
+                    if let value = dict["Name"] as? String {
+                        self.name = value
+                    }
+                }
+            }
             public var command: String?
 
             public var commandArgs: String?
 
             public var configMapMountDesc: [DescribeApplicationConfigResponseBody.Data.InitContainersConfig.ConfigMapMountDesc]?
+
+            public var emptyDirDesc: [DescribeApplicationConfigResponseBody.Data.InitContainersConfig.EmptyDirDesc]?
 
             public var envs: String?
 
@@ -24690,6 +24808,13 @@ public class DescribeApplicationConfigResponseBody : Tea.TeaModel {
                     }
                     map["ConfigMapMountDesc"] = tmp
                 }
+                if self.emptyDirDesc != nil {
+                    var tmp : [Any] = []
+                    for k in self.emptyDirDesc! {
+                        tmp.append(k.toMap())
+                    }
+                    map["EmptyDirDesc"] = tmp
+                }
                 if self.envs != nil {
                     map["Envs"] = self.envs!
                 }
@@ -24722,6 +24847,19 @@ public class DescribeApplicationConfigResponseBody : Tea.TeaModel {
                         }
                     }
                     self.configMapMountDesc = tmp
+                }
+                if let value = dict["EmptyDirDesc"] as? [Any?] {
+                    var tmp : [DescribeApplicationConfigResponseBody.Data.InitContainersConfig.EmptyDirDesc] = []
+                    for v in value {
+                        if v != nil {
+                            var model = DescribeApplicationConfigResponseBody.Data.InitContainersConfig.EmptyDirDesc()
+                            if v != nil {
+                                model.fromMap(v as? [String: Any?])
+                            }
+                            tmp.append(model)
+                        }
+                    }
+                    self.emptyDirDesc = tmp
                 }
                 if let value = dict["Envs"] as? String {
                     self.envs = value
@@ -25180,6 +25318,8 @@ public class DescribeApplicationConfigResponseBody : Tea.TeaModel {
 
         public var edasContainerVersion: String?
 
+        public var emptyDirDesc: [DescribeApplicationConfigResponseBody.Data.EmptyDirDesc]?
+
         public var enableAhas: String?
 
         public var enableCpuBurst: String?
@@ -25399,6 +25539,13 @@ public class DescribeApplicationConfigResponseBody : Tea.TeaModel {
             }
             if self.edasContainerVersion != nil {
                 map["EdasContainerVersion"] = self.edasContainerVersion!
+            }
+            if self.emptyDirDesc != nil {
+                var tmp : [Any] = []
+                for k in self.emptyDirDesc! {
+                    tmp.append(k.toMap())
+                }
+                map["EmptyDirDesc"] = tmp
             }
             if self.enableAhas != nil {
                 map["EnableAhas"] = self.enableAhas!
@@ -25711,6 +25858,19 @@ public class DescribeApplicationConfigResponseBody : Tea.TeaModel {
             }
             if let value = dict["EdasContainerVersion"] as? String {
                 self.edasContainerVersion = value
+            }
+            if let value = dict["EmptyDirDesc"] as? [Any?] {
+                var tmp : [DescribeApplicationConfigResponseBody.Data.EmptyDirDesc] = []
+                for v in value {
+                    if v != nil {
+                        var model = DescribeApplicationConfigResponseBody.Data.EmptyDirDesc()
+                        if v != nil {
+                            model.fromMap(v as? [String: Any?])
+                        }
+                        tmp.append(model)
+                    }
+                }
+                self.emptyDirDesc = tmp
             }
             if let value = dict["EnableAhas"] as? String {
                 self.enableAhas = value
@@ -51458,6 +51618,199 @@ public class PublishWebApplicationRevisionResponse : Tea.TeaModel {
         }
         if let value = dict["body"] as? [String: Any?] {
             var model = WebApplicationRevisionBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
+public class QueryArmsEnableRequest : Tea.TeaModel {
+    public var appId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.appId != nil {
+            map["AppId"] = self.appId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["AppId"] as? String {
+            self.appId = value
+        }
+    }
+}
+
+public class QueryArmsEnableResponseBody : Tea.TeaModel {
+    public class Data : Tea.TeaModel {
+        public var enable: Bool?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.enable != nil {
+                map["Enable"] = self.enable!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["Enable"] as? Bool {
+                self.enable = value
+            }
+        }
+    }
+    public var code: String?
+
+    public var data: QueryArmsEnableResponseBody.Data?
+
+    public var errorCode: String?
+
+    public var message: String?
+
+    public var requestId: String?
+
+    public var success: Bool?
+
+    public var traceId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.data?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.code != nil {
+            map["Code"] = self.code!
+        }
+        if self.data != nil {
+            map["Data"] = self.data?.toMap()
+        }
+        if self.errorCode != nil {
+            map["ErrorCode"] = self.errorCode!
+        }
+        if self.message != nil {
+            map["Message"] = self.message!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.success != nil {
+            map["Success"] = self.success!
+        }
+        if self.traceId != nil {
+            map["TraceId"] = self.traceId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["Code"] as? String {
+            self.code = value
+        }
+        if let value = dict["Data"] as? [String: Any?] {
+            var model = QueryArmsEnableResponseBody.Data()
+            model.fromMap(value)
+            self.data = model
+        }
+        if let value = dict["ErrorCode"] as? String {
+            self.errorCode = value
+        }
+        if let value = dict["Message"] as? String {
+            self.message = value
+        }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+        if let value = dict["Success"] as? Bool {
+            self.success = value
+        }
+        if let value = dict["TraceId"] as? String {
+            self.traceId = value
+        }
+    }
+}
+
+public class QueryArmsEnableResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: QueryArmsEnableResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = QueryArmsEnableResponseBody()
             model.fromMap(value)
             self.body = model
         }
