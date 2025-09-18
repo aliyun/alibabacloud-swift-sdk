@@ -3100,6 +3100,286 @@ public class CostOptimizedConfig : Tea.TeaModel {
     }
 }
 
+public class CreateNodeGroupConfig : Tea.TeaModel {
+    public class SpotBidPrices : Tea.TeaModel {
+        public var bidPrice: Double?
+
+        public var instanceType: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.bidPrice != nil {
+                map["BidPrice"] = self.bidPrice!
+            }
+            if self.instanceType != nil {
+                map["InstanceType"] = self.instanceType!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["BidPrice"] as? Double {
+                self.bidPrice = value
+            }
+            if let value = dict["InstanceType"] as? String {
+                self.instanceType = value
+            }
+        }
+    }
+    public var additionalSecurityGroupIds: [String]?
+
+    public var autoScalingPolicy: AutoScalingPolicy?
+
+    public var compensateWithOnDemand: Bool?
+
+    public var componentTags: [String]?
+
+    public var costOptimizedConfig: CostOptimizedConfig?
+
+    public var dataDisks: [DataDisk]?
+
+    public var deploymentSetStrategy: String?
+
+    public var gracefulShutdown: Bool?
+
+    public var instanceTypes: [String]?
+
+    public var nodeCount: Int32?
+
+    public var nodeGroupName: String?
+
+    public var nodeGroupType: String?
+
+    public var nodeResizeStrategy: String?
+
+    public var paymentType: String?
+
+    public var privatePoolOptions: PrivatePoolOptions?
+
+    public var spotBidPrices: [CreateNodeGroupConfig.SpotBidPrices]?
+
+    public var spotInstanceRemedy: Bool?
+
+    public var spotStrategy: String?
+
+    public var subscriptionConfig: SubscriptionConfig?
+
+    public var systemDisk: SystemDisk?
+
+    public var vSwitchIds: [String]?
+
+    public var withPublicIp: Bool?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.autoScalingPolicy?.validate()
+        try self.costOptimizedConfig?.validate()
+        try self.privatePoolOptions?.validate()
+        try self.subscriptionConfig?.validate()
+        try self.systemDisk?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.additionalSecurityGroupIds != nil {
+            map["AdditionalSecurityGroupIds"] = self.additionalSecurityGroupIds!
+        }
+        if self.autoScalingPolicy != nil {
+            map["AutoScalingPolicy"] = self.autoScalingPolicy?.toMap()
+        }
+        if self.compensateWithOnDemand != nil {
+            map["CompensateWithOnDemand"] = self.compensateWithOnDemand!
+        }
+        if self.componentTags != nil {
+            map["ComponentTags"] = self.componentTags!
+        }
+        if self.costOptimizedConfig != nil {
+            map["CostOptimizedConfig"] = self.costOptimizedConfig?.toMap()
+        }
+        if self.dataDisks != nil {
+            var tmp : [Any] = []
+            for k in self.dataDisks! {
+                tmp.append(k.toMap())
+            }
+            map["DataDisks"] = tmp
+        }
+        if self.deploymentSetStrategy != nil {
+            map["DeploymentSetStrategy"] = self.deploymentSetStrategy!
+        }
+        if self.gracefulShutdown != nil {
+            map["GracefulShutdown"] = self.gracefulShutdown!
+        }
+        if self.instanceTypes != nil {
+            map["InstanceTypes"] = self.instanceTypes!
+        }
+        if self.nodeCount != nil {
+            map["NodeCount"] = self.nodeCount!
+        }
+        if self.nodeGroupName != nil {
+            map["NodeGroupName"] = self.nodeGroupName!
+        }
+        if self.nodeGroupType != nil {
+            map["NodeGroupType"] = self.nodeGroupType!
+        }
+        if self.nodeResizeStrategy != nil {
+            map["NodeResizeStrategy"] = self.nodeResizeStrategy!
+        }
+        if self.paymentType != nil {
+            map["PaymentType"] = self.paymentType!
+        }
+        if self.privatePoolOptions != nil {
+            map["PrivatePoolOptions"] = self.privatePoolOptions?.toMap()
+        }
+        if self.spotBidPrices != nil {
+            var tmp : [Any] = []
+            for k in self.spotBidPrices! {
+                tmp.append(k.toMap())
+            }
+            map["SpotBidPrices"] = tmp
+        }
+        if self.spotInstanceRemedy != nil {
+            map["SpotInstanceRemedy"] = self.spotInstanceRemedy!
+        }
+        if self.spotStrategy != nil {
+            map["SpotStrategy"] = self.spotStrategy!
+        }
+        if self.subscriptionConfig != nil {
+            map["SubscriptionConfig"] = self.subscriptionConfig?.toMap()
+        }
+        if self.systemDisk != nil {
+            map["SystemDisk"] = self.systemDisk?.toMap()
+        }
+        if self.vSwitchIds != nil {
+            map["VSwitchIds"] = self.vSwitchIds!
+        }
+        if self.withPublicIp != nil {
+            map["WithPublicIp"] = self.withPublicIp!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["AdditionalSecurityGroupIds"] as? [String] {
+            self.additionalSecurityGroupIds = value
+        }
+        if let value = dict["AutoScalingPolicy"] as? [String: Any?] {
+            var model = AutoScalingPolicy()
+            model.fromMap(value)
+            self.autoScalingPolicy = model
+        }
+        if let value = dict["CompensateWithOnDemand"] as? Bool {
+            self.compensateWithOnDemand = value
+        }
+        if let value = dict["ComponentTags"] as? [String] {
+            self.componentTags = value
+        }
+        if let value = dict["CostOptimizedConfig"] as? [String: Any?] {
+            var model = CostOptimizedConfig()
+            model.fromMap(value)
+            self.costOptimizedConfig = model
+        }
+        if let value = dict["DataDisks"] as? [Any?] {
+            var tmp : [DataDisk] = []
+            for v in value {
+                if v != nil {
+                    var model = DataDisk()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.dataDisks = tmp
+        }
+        if let value = dict["DeploymentSetStrategy"] as? String {
+            self.deploymentSetStrategy = value
+        }
+        if let value = dict["GracefulShutdown"] as? Bool {
+            self.gracefulShutdown = value
+        }
+        if let value = dict["InstanceTypes"] as? [String] {
+            self.instanceTypes = value
+        }
+        if let value = dict["NodeCount"] as? Int32 {
+            self.nodeCount = value
+        }
+        if let value = dict["NodeGroupName"] as? String {
+            self.nodeGroupName = value
+        }
+        if let value = dict["NodeGroupType"] as? String {
+            self.nodeGroupType = value
+        }
+        if let value = dict["NodeResizeStrategy"] as? String {
+            self.nodeResizeStrategy = value
+        }
+        if let value = dict["PaymentType"] as? String {
+            self.paymentType = value
+        }
+        if let value = dict["PrivatePoolOptions"] as? [String: Any?] {
+            var model = PrivatePoolOptions()
+            model.fromMap(value)
+            self.privatePoolOptions = model
+        }
+        if let value = dict["SpotBidPrices"] as? [Any?] {
+            var tmp : [CreateNodeGroupConfig.SpotBidPrices] = []
+            for v in value {
+                if v != nil {
+                    var model = CreateNodeGroupConfig.SpotBidPrices()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.spotBidPrices = tmp
+        }
+        if let value = dict["SpotInstanceRemedy"] as? Bool {
+            self.spotInstanceRemedy = value
+        }
+        if let value = dict["SpotStrategy"] as? String {
+            self.spotStrategy = value
+        }
+        if let value = dict["SubscriptionConfig"] as? [String: Any?] {
+            var model = SubscriptionConfig()
+            model.fromMap(value)
+            self.subscriptionConfig = model
+        }
+        if let value = dict["SystemDisk"] as? [String: Any?] {
+            var model = SystemDisk()
+            model.fromMap(value)
+            self.systemDisk = model
+        }
+        if let value = dict["VSwitchIds"] as? [String] {
+            self.vSwitchIds = value
+        }
+        if let value = dict["WithPublicIp"] as? Bool {
+            self.withPublicIp = value
+        }
+    }
+}
+
 public class CreateNodeGroupParam : Tea.TeaModel {
     public var autoRenew: Bool?
 
@@ -3296,6 +3576,648 @@ public class CreateNodeGroupParam : Tea.TeaModel {
         }
         if let value = dict["ZoneId"] as? String {
             self.zoneId = value
+        }
+    }
+}
+
+public class DRPlanConfiguration : Tea.TeaModel {
+    public class ManagedScalingPolicy : Tea.TeaModel {
+        public var constraints: ManagedScalingConstraints?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+            try self.constraints?.validate()
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.constraints != nil {
+                map["Constraints"] = self.constraints?.toMap()
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["Constraints"] as? [String: Any?] {
+                var model = ManagedScalingConstraints()
+                model.fromMap(value)
+                self.constraints = model
+            }
+        }
+    }
+    public class Tags : Tea.TeaModel {
+        public var key: String?
+
+        public var value: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.key != nil {
+                map["Key"] = self.key!
+            }
+            if self.value != nil {
+                map["Value"] = self.value!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["Key"] as? String {
+                self.key = value
+            }
+            if let value = dict["Value"] as? String {
+                self.value = value
+            }
+        }
+    }
+    public var applicationConfigs: [ApplicationConfig]?
+
+    public var applications: [Application]?
+
+    public var bootstrapScripts: [Script]?
+
+    public var clusterName: String?
+
+    public var clusterType: String?
+
+    public var deletionProtection: Bool?
+
+    public var deployMode: String?
+
+    public var description_: String?
+
+    public var logCollectStrategy: String?
+
+    public var managedScalingPolicy: DRPlanConfiguration.ManagedScalingPolicy?
+
+    public var nodeAttributes: NodeAttributes?
+
+    public var nodeGroups: [NodeGroupConfig]?
+
+    public var paymentType: String?
+
+    public var regionId: String?
+
+    public var releaseVersion: String?
+
+    public var resourceGroupId: String?
+
+    public var securityMode: String?
+
+    public var subscriptionConfig: SubscriptionConfig?
+
+    public var tags: [DRPlanConfiguration.Tags]?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.managedScalingPolicy?.validate()
+        try self.nodeAttributes?.validate()
+        try self.subscriptionConfig?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.applicationConfigs != nil {
+            var tmp : [Any] = []
+            for k in self.applicationConfigs! {
+                tmp.append(k.toMap())
+            }
+            map["ApplicationConfigs"] = tmp
+        }
+        if self.applications != nil {
+            var tmp : [Any] = []
+            for k in self.applications! {
+                tmp.append(k.toMap())
+            }
+            map["Applications"] = tmp
+        }
+        if self.bootstrapScripts != nil {
+            var tmp : [Any] = []
+            for k in self.bootstrapScripts! {
+                tmp.append(k.toMap())
+            }
+            map["BootstrapScripts"] = tmp
+        }
+        if self.clusterName != nil {
+            map["ClusterName"] = self.clusterName!
+        }
+        if self.clusterType != nil {
+            map["ClusterType"] = self.clusterType!
+        }
+        if self.deletionProtection != nil {
+            map["DeletionProtection"] = self.deletionProtection!
+        }
+        if self.deployMode != nil {
+            map["DeployMode"] = self.deployMode!
+        }
+        if self.description_ != nil {
+            map["Description"] = self.description_!
+        }
+        if self.logCollectStrategy != nil {
+            map["LogCollectStrategy"] = self.logCollectStrategy!
+        }
+        if self.managedScalingPolicy != nil {
+            map["ManagedScalingPolicy"] = self.managedScalingPolicy?.toMap()
+        }
+        if self.nodeAttributes != nil {
+            map["NodeAttributes"] = self.nodeAttributes?.toMap()
+        }
+        if self.nodeGroups != nil {
+            var tmp : [Any] = []
+            for k in self.nodeGroups! {
+                tmp.append(k.toMap())
+            }
+            map["NodeGroups"] = tmp
+        }
+        if self.paymentType != nil {
+            map["PaymentType"] = self.paymentType!
+        }
+        if self.regionId != nil {
+            map["RegionId"] = self.regionId!
+        }
+        if self.releaseVersion != nil {
+            map["ReleaseVersion"] = self.releaseVersion!
+        }
+        if self.resourceGroupId != nil {
+            map["ResourceGroupId"] = self.resourceGroupId!
+        }
+        if self.securityMode != nil {
+            map["SecurityMode"] = self.securityMode!
+        }
+        if self.subscriptionConfig != nil {
+            map["SubscriptionConfig"] = self.subscriptionConfig?.toMap()
+        }
+        if self.tags != nil {
+            var tmp : [Any] = []
+            for k in self.tags! {
+                tmp.append(k.toMap())
+            }
+            map["Tags"] = tmp
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["ApplicationConfigs"] as? [Any?] {
+            var tmp : [ApplicationConfig] = []
+            for v in value {
+                if v != nil {
+                    var model = ApplicationConfig()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.applicationConfigs = tmp
+        }
+        if let value = dict["Applications"] as? [Any?] {
+            var tmp : [Application] = []
+            for v in value {
+                if v != nil {
+                    var model = Application()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.applications = tmp
+        }
+        if let value = dict["BootstrapScripts"] as? [Any?] {
+            var tmp : [Script] = []
+            for v in value {
+                if v != nil {
+                    var model = Script()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.bootstrapScripts = tmp
+        }
+        if let value = dict["ClusterName"] as? String {
+            self.clusterName = value
+        }
+        if let value = dict["ClusterType"] as? String {
+            self.clusterType = value
+        }
+        if let value = dict["DeletionProtection"] as? Bool {
+            self.deletionProtection = value
+        }
+        if let value = dict["DeployMode"] as? String {
+            self.deployMode = value
+        }
+        if let value = dict["Description"] as? String {
+            self.description_ = value
+        }
+        if let value = dict["LogCollectStrategy"] as? String {
+            self.logCollectStrategy = value
+        }
+        if let value = dict["ManagedScalingPolicy"] as? [String: Any?] {
+            var model = DRPlanConfiguration.ManagedScalingPolicy()
+            model.fromMap(value)
+            self.managedScalingPolicy = model
+        }
+        if let value = dict["NodeAttributes"] as? [String: Any?] {
+            var model = NodeAttributes()
+            model.fromMap(value)
+            self.nodeAttributes = model
+        }
+        if let value = dict["NodeGroups"] as? [Any?] {
+            var tmp : [NodeGroupConfig] = []
+            for v in value {
+                if v != nil {
+                    var model = NodeGroupConfig()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.nodeGroups = tmp
+        }
+        if let value = dict["PaymentType"] as? String {
+            self.paymentType = value
+        }
+        if let value = dict["RegionId"] as? String {
+            self.regionId = value
+        }
+        if let value = dict["ReleaseVersion"] as? String {
+            self.releaseVersion = value
+        }
+        if let value = dict["ResourceGroupId"] as? String {
+            self.resourceGroupId = value
+        }
+        if let value = dict["SecurityMode"] as? String {
+            self.securityMode = value
+        }
+        if let value = dict["SubscriptionConfig"] as? [String: Any?] {
+            var model = SubscriptionConfig()
+            model.fromMap(value)
+            self.subscriptionConfig = model
+        }
+        if let value = dict["Tags"] as? [Any?] {
+            var tmp : [DRPlanConfiguration.Tags] = []
+            for v in value {
+                if v != nil {
+                    var model = DRPlanConfiguration.Tags()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.tags = tmp
+        }
+    }
+}
+
+public class DRPlanConfigurationDetail : Tea.TeaModel {
+    public class ManagedScalingPolicy : Tea.TeaModel {
+        public var constraints: ManagedScalingConstraints?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+            try self.constraints?.validate()
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.constraints != nil {
+                map["Constraints"] = self.constraints?.toMap()
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["Constraints"] as? [String: Any?] {
+                var model = ManagedScalingConstraints()
+                model.fromMap(value)
+                self.constraints = model
+            }
+        }
+    }
+    public var applicationConfigs: [ApplicationConfig]?
+
+    public var applications: [Application]?
+
+    public var bootstrapScripts: [Script]?
+
+    public var clusterName: String?
+
+    public var clusterType: String?
+
+    public var deletionProtection: Bool?
+
+    public var deployMode: String?
+
+    public var description_: String?
+
+    public var logCollectStrategy: String?
+
+    public var managedScalingPolicy: DRPlanConfigurationDetail.ManagedScalingPolicy?
+
+    public var metaStoreType: String?
+
+    public var nodeAttributes: NodeAttributes?
+
+    public var nodeGroups: [NodeGroupConfig]?
+
+    public var paymentType: String?
+
+    public var regionId: String?
+
+    public var releaseVersion: String?
+
+    public var resourceGroupId: String?
+
+    public var scalingPolicies: [ScalingPolicy]?
+
+    public var securityMode: String?
+
+    public var subscriptionConfig: SubscriptionConfig?
+
+    public var tags: [Tag]?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.managedScalingPolicy?.validate()
+        try self.nodeAttributes?.validate()
+        try self.subscriptionConfig?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.applicationConfigs != nil {
+            var tmp : [Any] = []
+            for k in self.applicationConfigs! {
+                tmp.append(k.toMap())
+            }
+            map["ApplicationConfigs"] = tmp
+        }
+        if self.applications != nil {
+            var tmp : [Any] = []
+            for k in self.applications! {
+                tmp.append(k.toMap())
+            }
+            map["Applications"] = tmp
+        }
+        if self.bootstrapScripts != nil {
+            var tmp : [Any] = []
+            for k in self.bootstrapScripts! {
+                tmp.append(k.toMap())
+            }
+            map["BootstrapScripts"] = tmp
+        }
+        if self.clusterName != nil {
+            map["ClusterName"] = self.clusterName!
+        }
+        if self.clusterType != nil {
+            map["ClusterType"] = self.clusterType!
+        }
+        if self.deletionProtection != nil {
+            map["DeletionProtection"] = self.deletionProtection!
+        }
+        if self.deployMode != nil {
+            map["DeployMode"] = self.deployMode!
+        }
+        if self.description_ != nil {
+            map["Description"] = self.description_!
+        }
+        if self.logCollectStrategy != nil {
+            map["LogCollectStrategy"] = self.logCollectStrategy!
+        }
+        if self.managedScalingPolicy != nil {
+            map["ManagedScalingPolicy"] = self.managedScalingPolicy?.toMap()
+        }
+        if self.metaStoreType != nil {
+            map["MetaStoreType"] = self.metaStoreType!
+        }
+        if self.nodeAttributes != nil {
+            map["NodeAttributes"] = self.nodeAttributes?.toMap()
+        }
+        if self.nodeGroups != nil {
+            var tmp : [Any] = []
+            for k in self.nodeGroups! {
+                tmp.append(k.toMap())
+            }
+            map["NodeGroups"] = tmp
+        }
+        if self.paymentType != nil {
+            map["PaymentType"] = self.paymentType!
+        }
+        if self.regionId != nil {
+            map["RegionId"] = self.regionId!
+        }
+        if self.releaseVersion != nil {
+            map["ReleaseVersion"] = self.releaseVersion!
+        }
+        if self.resourceGroupId != nil {
+            map["ResourceGroupId"] = self.resourceGroupId!
+        }
+        if self.scalingPolicies != nil {
+            var tmp : [Any] = []
+            for k in self.scalingPolicies! {
+                tmp.append(k.toMap())
+            }
+            map["ScalingPolicies"] = tmp
+        }
+        if self.securityMode != nil {
+            map["SecurityMode"] = self.securityMode!
+        }
+        if self.subscriptionConfig != nil {
+            map["SubscriptionConfig"] = self.subscriptionConfig?.toMap()
+        }
+        if self.tags != nil {
+            var tmp : [Any] = []
+            for k in self.tags! {
+                tmp.append(k.toMap())
+            }
+            map["Tags"] = tmp
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["ApplicationConfigs"] as? [Any?] {
+            var tmp : [ApplicationConfig] = []
+            for v in value {
+                if v != nil {
+                    var model = ApplicationConfig()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.applicationConfigs = tmp
+        }
+        if let value = dict["Applications"] as? [Any?] {
+            var tmp : [Application] = []
+            for v in value {
+                if v != nil {
+                    var model = Application()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.applications = tmp
+        }
+        if let value = dict["BootstrapScripts"] as? [Any?] {
+            var tmp : [Script] = []
+            for v in value {
+                if v != nil {
+                    var model = Script()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.bootstrapScripts = tmp
+        }
+        if let value = dict["ClusterName"] as? String {
+            self.clusterName = value
+        }
+        if let value = dict["ClusterType"] as? String {
+            self.clusterType = value
+        }
+        if let value = dict["DeletionProtection"] as? Bool {
+            self.deletionProtection = value
+        }
+        if let value = dict["DeployMode"] as? String {
+            self.deployMode = value
+        }
+        if let value = dict["Description"] as? String {
+            self.description_ = value
+        }
+        if let value = dict["LogCollectStrategy"] as? String {
+            self.logCollectStrategy = value
+        }
+        if let value = dict["ManagedScalingPolicy"] as? [String: Any?] {
+            var model = DRPlanConfigurationDetail.ManagedScalingPolicy()
+            model.fromMap(value)
+            self.managedScalingPolicy = model
+        }
+        if let value = dict["MetaStoreType"] as? String {
+            self.metaStoreType = value
+        }
+        if let value = dict["NodeAttributes"] as? [String: Any?] {
+            var model = NodeAttributes()
+            model.fromMap(value)
+            self.nodeAttributes = model
+        }
+        if let value = dict["NodeGroups"] as? [Any?] {
+            var tmp : [NodeGroupConfig] = []
+            for v in value {
+                if v != nil {
+                    var model = NodeGroupConfig()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.nodeGroups = tmp
+        }
+        if let value = dict["PaymentType"] as? String {
+            self.paymentType = value
+        }
+        if let value = dict["RegionId"] as? String {
+            self.regionId = value
+        }
+        if let value = dict["ReleaseVersion"] as? String {
+            self.releaseVersion = value
+        }
+        if let value = dict["ResourceGroupId"] as? String {
+            self.resourceGroupId = value
+        }
+        if let value = dict["ScalingPolicies"] as? [Any?] {
+            var tmp : [ScalingPolicy] = []
+            for v in value {
+                if v != nil {
+                    var model = ScalingPolicy()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.scalingPolicies = tmp
+        }
+        if let value = dict["SecurityMode"] as? String {
+            self.securityMode = value
+        }
+        if let value = dict["SubscriptionConfig"] as? [String: Any?] {
+            var model = SubscriptionConfig()
+            model.fromMap(value)
+            self.subscriptionConfig = model
+        }
+        if let value = dict["Tags"] as? [Any?] {
+            var tmp : [Tag] = []
+            for v in value {
+                if v != nil {
+                    var model = Tag()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.tags = tmp
         }
     }
 }
@@ -4065,6 +4987,8 @@ public class InstanceType : Tea.TeaModel {
 
     public var localStorageCapacity: Int64?
 
+    public var modifyType: String?
+
     public var optimized: Bool?
 
     public override init() {
@@ -4102,6 +5026,9 @@ public class InstanceType : Tea.TeaModel {
         if self.localStorageCapacity != nil {
             map["LocalStorageCapacity"] = self.localStorageCapacity!
         }
+        if self.modifyType != nil {
+            map["ModifyType"] = self.modifyType!
+        }
         if self.optimized != nil {
             map["Optimized"] = self.optimized!
         }
@@ -4130,6 +5057,9 @@ public class InstanceType : Tea.TeaModel {
         }
         if let value = dict["LocalStorageCapacity"] as? Int64 {
             self.localStorageCapacity = value
+        }
+        if let value = dict["ModifyType"] as? String {
+            self.modifyType = value
         }
         if let value = dict["Optimized"] as? Bool {
             self.optimized = value
@@ -8913,6 +9843,8 @@ public class UpdateApplicationConfig : Tea.TeaModel {
 }
 
 public class UpdateSpecNodeGroup : Tea.TeaModel {
+    public var modifyType: String?
+
     public var newInstanceType: String?
 
     public var nodeGroupId: String?
@@ -8931,6 +9863,9 @@ public class UpdateSpecNodeGroup : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.modifyType != nil {
+            map["ModifyType"] = self.modifyType!
+        }
         if self.newInstanceType != nil {
             map["NewInstanceType"] = self.newInstanceType!
         }
@@ -8942,6 +9877,9 @@ public class UpdateSpecNodeGroup : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["ModifyType"] as? String {
+            self.modifyType = value
+        }
         if let value = dict["NewInstanceType"] as? String {
             self.newInstanceType = value
         }
@@ -10917,6 +11855,232 @@ public class DeleteUsersResponse : Tea.TeaModel {
         }
         if let value = dict["body"] as? [String: Any?] {
             var model = DeleteUsersResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
+public class ExportApplicationConfigsRequest : Tea.TeaModel {
+    public var applicationConfigFiles: [ApplicationConfigFile]?
+
+    public var clusterId: String?
+
+    public var exportMode: String?
+
+    public var fileFormat: String?
+
+    public var regionId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.applicationConfigFiles != nil {
+            var tmp : [Any] = []
+            for k in self.applicationConfigFiles! {
+                tmp.append(k.toMap())
+            }
+            map["ApplicationConfigFiles"] = tmp
+        }
+        if self.clusterId != nil {
+            map["ClusterId"] = self.clusterId!
+        }
+        if self.exportMode != nil {
+            map["ExportMode"] = self.exportMode!
+        }
+        if self.fileFormat != nil {
+            map["FileFormat"] = self.fileFormat!
+        }
+        if self.regionId != nil {
+            map["RegionId"] = self.regionId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["ApplicationConfigFiles"] as? [Any?] {
+            var tmp : [ApplicationConfigFile] = []
+            for v in value {
+                if v != nil {
+                    var model = ApplicationConfigFile()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.applicationConfigFiles = tmp
+        }
+        if let value = dict["ClusterId"] as? String {
+            self.clusterId = value
+        }
+        if let value = dict["ExportMode"] as? String {
+            self.exportMode = value
+        }
+        if let value = dict["FileFormat"] as? String {
+            self.fileFormat = value
+        }
+        if let value = dict["RegionId"] as? String {
+            self.regionId = value
+        }
+    }
+}
+
+public class ExportApplicationConfigsResponseBody : Tea.TeaModel {
+    public class ApplicationConfigs : Tea.TeaModel {
+        public var applicationName: String?
+
+        public var configFileName: String?
+
+        public var content: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.applicationName != nil {
+                map["ApplicationName"] = self.applicationName!
+            }
+            if self.configFileName != nil {
+                map["ConfigFileName"] = self.configFileName!
+            }
+            if self.content != nil {
+                map["Content"] = self.content!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["ApplicationName"] as? String {
+                self.applicationName = value
+            }
+            if let value = dict["ConfigFileName"] as? String {
+                self.configFileName = value
+            }
+            if let value = dict["Content"] as? String {
+                self.content = value
+            }
+        }
+    }
+    public var applicationConfigs: [ExportApplicationConfigsResponseBody.ApplicationConfigs]?
+
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.applicationConfigs != nil {
+            var tmp : [Any] = []
+            for k in self.applicationConfigs! {
+                tmp.append(k.toMap())
+            }
+            map["ApplicationConfigs"] = tmp
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["ApplicationConfigs"] as? [Any?] {
+            var tmp : [ExportApplicationConfigsResponseBody.ApplicationConfigs] = []
+            for v in value {
+                if v != nil {
+                    var model = ExportApplicationConfigsResponseBody.ApplicationConfigs()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.applicationConfigs = tmp
+        }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+    }
+}
+
+public class ExportApplicationConfigsResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: ExportApplicationConfigsResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = ExportApplicationConfigsResponseBody()
             model.fromMap(value)
             self.body = model
         }
@@ -35948,6 +37112,8 @@ public class ListAutoScalingActivitiesRequest : Tea.TeaModel {
 
     public var endTime: Int64?
 
+    public var instanceChargeTypes: [String]?
+
     public var maxResults: Int32?
 
     public var nextToken: String?
@@ -35985,6 +37151,9 @@ public class ListAutoScalingActivitiesRequest : Tea.TeaModel {
         }
         if self.endTime != nil {
             map["EndTime"] = self.endTime!
+        }
+        if self.instanceChargeTypes != nil {
+            map["InstanceChargeTypes"] = self.instanceChargeTypes!
         }
         if self.maxResults != nil {
             map["MaxResults"] = self.maxResults!
@@ -36024,6 +37193,9 @@ public class ListAutoScalingActivitiesRequest : Tea.TeaModel {
         if let value = dict["EndTime"] as? Int64 {
             self.endTime = value
         }
+        if let value = dict["InstanceChargeTypes"] as? [String] {
+            self.instanceChargeTypes = value
+        }
         if let value = dict["MaxResults"] as? Int32 {
             self.maxResults = value
         }
@@ -36056,6 +37228,52 @@ public class ListAutoScalingActivitiesRequest : Tea.TeaModel {
 
 public class ListAutoScalingActivitiesResponseBody : Tea.TeaModel {
     public class ScalingActivities : Tea.TeaModel {
+        public class InstanceTypeDetails : Tea.TeaModel {
+            public var instanceType: String?
+
+            public var onDemandInstanceIds: [String]?
+
+            public var spotInstanceIds: [String]?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.instanceType != nil {
+                    map["InstanceType"] = self.instanceType!
+                }
+                if self.onDemandInstanceIds != nil {
+                    map["OnDemandInstanceIds"] = self.onDemandInstanceIds!
+                }
+                if self.spotInstanceIds != nil {
+                    map["SpotInstanceIds"] = self.spotInstanceIds!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["InstanceType"] as? String {
+                    self.instanceType = value
+                }
+                if let value = dict["OnDemandInstanceIds"] as? [String] {
+                    self.onDemandInstanceIds = value
+                }
+                if let value = dict["SpotInstanceIds"] as? [String] {
+                    self.spotInstanceIds = value
+                }
+            }
+        }
         public var activityId: String?
 
         public var activityState: String?
@@ -36069,6 +37287,8 @@ public class ListAutoScalingActivitiesResponseBody : Tea.TeaModel {
         public var endTime: Int64?
 
         public var expectNum: Int32?
+
+        public var instanceTypeDetails: [ListAutoScalingActivitiesResponseBody.ScalingActivities.InstanceTypeDetails]?
 
         public var instanceTypeToNum: [String: Int32]?
 
@@ -36119,6 +37339,13 @@ public class ListAutoScalingActivitiesResponseBody : Tea.TeaModel {
             if self.expectNum != nil {
                 map["ExpectNum"] = self.expectNum!
             }
+            if self.instanceTypeDetails != nil {
+                var tmp : [Any] = []
+                for k in self.instanceTypeDetails! {
+                    tmp.append(k.toMap())
+                }
+                map["InstanceTypeDetails"] = tmp
+            }
             if self.instanceTypeToNum != nil {
                 map["InstanceTypeToNum"] = self.instanceTypeToNum!
             }
@@ -36165,6 +37392,19 @@ public class ListAutoScalingActivitiesResponseBody : Tea.TeaModel {
             }
             if let value = dict["ExpectNum"] as? Int32 {
                 self.expectNum = value
+            }
+            if let value = dict["InstanceTypeDetails"] as? [Any?] {
+                var tmp : [ListAutoScalingActivitiesResponseBody.ScalingActivities.InstanceTypeDetails] = []
+                for v in value {
+                    if v != nil {
+                        var model = ListAutoScalingActivitiesResponseBody.ScalingActivities.InstanceTypeDetails()
+                        if v != nil {
+                            model.fromMap(v as? [String: Any?])
+                        }
+                        tmp.append(model)
+                    }
+                }
+                self.instanceTypeDetails = tmp
             }
             if let value = dict["InstanceTypeToNum"] as? [String: Int32] {
                 self.instanceTypeToNum = value
