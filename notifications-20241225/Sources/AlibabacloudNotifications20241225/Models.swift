@@ -236,6 +236,8 @@ public class DeleteAllMessageRequest : Tea.TeaModel {
 
     public var cookies: String?
 
+    public var groupCode: String?
+
     public var srcUrl: String?
 
     public var tenantCode: String?
@@ -277,6 +279,9 @@ public class DeleteAllMessageRequest : Tea.TeaModel {
         if self.cookies != nil {
             map["Cookies"] = self.cookies!
         }
+        if self.groupCode != nil {
+            map["GroupCode"] = self.groupCode!
+        }
         if self.srcUrl != nil {
             map["SrcUrl"] = self.srcUrl!
         }
@@ -311,6 +316,9 @@ public class DeleteAllMessageRequest : Tea.TeaModel {
         }
         if let value = dict["Cookies"] as? String {
             self.cookies = value
+        }
+        if let value = dict["GroupCode"] as? String {
+            self.groupCode = value
         }
         if let value = dict["SrcUrl"] as? String {
             self.srcUrl = value
@@ -452,6 +460,8 @@ public class ReadAllMessageRequest : Tea.TeaModel {
 
     public var cookies: String?
 
+    public var groupCode: String?
+
     public var srcUrl: String?
 
     public var tenantCode: String?
@@ -493,6 +503,9 @@ public class ReadAllMessageRequest : Tea.TeaModel {
         if self.cookies != nil {
             map["Cookies"] = self.cookies!
         }
+        if self.groupCode != nil {
+            map["GroupCode"] = self.groupCode!
+        }
         if self.srcUrl != nil {
             map["SrcUrl"] = self.srcUrl!
         }
@@ -527,6 +540,9 @@ public class ReadAllMessageRequest : Tea.TeaModel {
         }
         if let value = dict["Cookies"] as? String {
             self.cookies = value
+        }
+        if let value = dict["GroupCode"] as? String {
+            self.groupCode = value
         }
         if let value = dict["SrcUrl"] as? String {
             self.srcUrl = value
@@ -1144,6 +1160,10 @@ public class ReadMessageContentRequest : Tea.TeaModel {
 
     public var cookies: String?
 
+    public var groupCode: String?
+
+    public var history: Bool?
+
     public var msgId: String?
 
     public var srcUrl: String?
@@ -1189,6 +1209,12 @@ public class ReadMessageContentRequest : Tea.TeaModel {
         if self.cookies != nil {
             map["Cookies"] = self.cookies!
         }
+        if self.groupCode != nil {
+            map["GroupCode"] = self.groupCode!
+        }
+        if self.history != nil {
+            map["History"] = self.history!
+        }
         if self.msgId != nil {
             map["MsgId"] = self.msgId!
         }
@@ -1229,6 +1255,12 @@ public class ReadMessageContentRequest : Tea.TeaModel {
         }
         if let value = dict["Cookies"] as? String {
             self.cookies = value
+        }
+        if let value = dict["GroupCode"] as? String {
+            self.groupCode = value
+        }
+        if let value = dict["History"] as? Bool {
+            self.history = value
         }
         if let value = dict["MsgId"] as? String {
             self.msgId = value
@@ -1832,6 +1864,10 @@ public class ReadMessageListRequest : Tea.TeaModel {
 
     public var cookies: String?
 
+    public var groupCode: String?
+
+    public var history: String?
+
     public var loc: String?
 
     public var maxResults: Int32?
@@ -1889,6 +1925,12 @@ public class ReadMessageListRequest : Tea.TeaModel {
         }
         if self.cookies != nil {
             map["Cookies"] = self.cookies!
+        }
+        if self.groupCode != nil {
+            map["GroupCode"] = self.groupCode!
+        }
+        if self.history != nil {
+            map["History"] = self.history!
         }
         if self.loc != nil {
             map["Loc"] = self.loc!
@@ -1949,6 +1991,12 @@ public class ReadMessageListRequest : Tea.TeaModel {
         if let value = dict["Cookies"] as? String {
             self.cookies = value
         }
+        if let value = dict["GroupCode"] as? String {
+            self.groupCode = value
+        }
+        if let value = dict["History"] as? String {
+            self.history = value
+        }
         if let value = dict["Loc"] as? String {
             self.loc = value
         }
@@ -1985,6 +2033,8 @@ public class ReadMessageListRequest : Tea.TeaModel {
 public class ReadMessageListResponseBody : Tea.TeaModel {
     public class Data : Tea.TeaModel {
         public class Rows : Tea.TeaModel {
+            public var categoryCode: String?
+
             public var categoryName: String?
 
             public var class_: String?
@@ -2025,6 +2075,9 @@ public class ReadMessageListResponseBody : Tea.TeaModel {
 
             public override func toMap() -> [String : Any] {
                 var map = super.toMap()
+                if self.categoryCode != nil {
+                    map["CategoryCode"] = self.categoryCode!
+                }
                 if self.categoryName != nil {
                     map["CategoryName"] = self.categoryName!
                 }
@@ -2069,6 +2122,9 @@ public class ReadMessageListResponseBody : Tea.TeaModel {
 
             public override func fromMap(_ dict: [String: Any?]?) -> Void {
                 guard let dict else { return }
+                if let value = dict["CategoryCode"] as? String {
+                    self.categoryCode = value
+                }
                 if let value = dict["CategoryName"] as? String {
                     self.categoryName = value
                 }
@@ -2881,6 +2937,8 @@ public class ReadNumGroupTotalRequest : Tea.TeaModel {
 
 public class ReadNumGroupTotalResponseBody : Tea.TeaModel {
     public class Data : Tea.TeaModel {
+        public var groupCode: String?
+
         public var id: Int64?
 
         public var readCount: Int64?
@@ -2903,6 +2961,9 @@ public class ReadNumGroupTotalResponseBody : Tea.TeaModel {
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
+            if self.groupCode != nil {
+                map["GroupCode"] = self.groupCode!
+            }
             if self.id != nil {
                 map["Id"] = self.id!
             }
@@ -2920,6 +2981,9 @@ public class ReadNumGroupTotalResponseBody : Tea.TeaModel {
 
         public override func fromMap(_ dict: [String: Any?]?) -> Void {
             guard let dict else { return }
+            if let value = dict["GroupCode"] as? String {
+                self.groupCode = value
+            }
             if let value = dict["Id"] as? Int64 {
                 self.id = value
             }
