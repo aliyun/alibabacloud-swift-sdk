@@ -16259,6 +16259,36 @@ public class CreateLaunchTemplateRequest : Tea.TeaModel {
             }
         }
     }
+    public class SecurityOptions : Tea.TeaModel {
+        public var trustedSystemMode: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.trustedSystemMode != nil {
+                map["TrustedSystemMode"] = self.trustedSystemMode!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["TrustedSystemMode"] as? String {
+                self.trustedSystemMode = value
+            }
+        }
+    }
     public class Tag : Tea.TeaModel {
         public var key: String?
 
@@ -16421,6 +16451,8 @@ public class CreateLaunchTemplateRequest : Tea.TeaModel {
 
     public var securityGroupIds: [String]?
 
+    public var securityOptions: CreateLaunchTemplateRequest.SecurityOptions?
+
     public var spotDuration: Int32?
 
     public var spotPriceLimit: Double?
@@ -16455,6 +16487,7 @@ public class CreateLaunchTemplateRequest : Tea.TeaModel {
     public override func validate() throws -> Void {
         try self.systemDisk?.validate()
         try self.imageOptions?.validate()
+        try self.securityOptions?.validate()
     }
 
     public override func toMap() -> [String : Any] {
@@ -16595,6 +16628,9 @@ public class CreateLaunchTemplateRequest : Tea.TeaModel {
         }
         if self.securityGroupIds != nil {
             map["SecurityGroupIds"] = self.securityGroupIds!
+        }
+        if self.securityOptions != nil {
+            map["SecurityOptions"] = self.securityOptions?.toMap()
         }
         if self.spotDuration != nil {
             map["SpotDuration"] = self.spotDuration!
@@ -16794,6 +16830,11 @@ public class CreateLaunchTemplateRequest : Tea.TeaModel {
         }
         if let value = dict["SecurityGroupIds"] as? [String] {
             self.securityGroupIds = value
+        }
+        if let value = dict["SecurityOptions"] as? [String: Any?] {
+            var model = CreateLaunchTemplateRequest.SecurityOptions()
+            model.fromMap(value)
+            self.securityOptions = model
         }
         if let value = dict["SpotDuration"] as? Int32 {
             self.spotDuration = value
@@ -17317,6 +17358,36 @@ public class CreateLaunchTemplateVersionRequest : Tea.TeaModel {
             }
         }
     }
+    public class SecurityOptions : Tea.TeaModel {
+        public var trustedSystemMode: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.trustedSystemMode != nil {
+                map["TrustedSystemMode"] = self.trustedSystemMode!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["TrustedSystemMode"] as? String {
+                self.trustedSystemMode = value
+            }
+        }
+    }
     public class Tag : Tea.TeaModel {
         public var key: String?
 
@@ -17443,6 +17514,8 @@ public class CreateLaunchTemplateVersionRequest : Tea.TeaModel {
 
     public var securityGroupIds: [String]?
 
+    public var securityOptions: CreateLaunchTemplateVersionRequest.SecurityOptions?
+
     public var spotDuration: Int32?
 
     public var spotPriceLimit: Double?
@@ -17473,6 +17546,7 @@ public class CreateLaunchTemplateVersionRequest : Tea.TeaModel {
     public override func validate() throws -> Void {
         try self.systemDisk?.validate()
         try self.imageOptions?.validate()
+        try self.securityOptions?.validate()
     }
 
     public override func toMap() -> [String : Any] {
@@ -17616,6 +17690,9 @@ public class CreateLaunchTemplateVersionRequest : Tea.TeaModel {
         }
         if self.securityGroupIds != nil {
             map["SecurityGroupIds"] = self.securityGroupIds!
+        }
+        if self.securityOptions != nil {
+            map["SecurityOptions"] = self.securityOptions?.toMap()
         }
         if self.spotDuration != nil {
             map["SpotDuration"] = self.spotDuration!
@@ -17808,6 +17885,11 @@ public class CreateLaunchTemplateVersionRequest : Tea.TeaModel {
         }
         if let value = dict["SecurityGroupIds"] as? [String] {
             self.securityGroupIds = value
+        }
+        if let value = dict["SecurityOptions"] as? [String: Any?] {
+            var model = CreateLaunchTemplateVersionRequest.SecurityOptions()
+            model.fromMap(value)
+            self.securityOptions = model
         }
         if let value = dict["SpotDuration"] as? Int32 {
             self.spotDuration = value
@@ -54412,6 +54494,8 @@ public class DescribeImagesResponseBody : Tea.TeaModel {
 
             public var isSupportIoOptimized: Bool?
 
+            public var licenseType: String?
+
             public var loginAsNonRootSupported: Bool?
 
             public var OSName: String?
@@ -54512,6 +54596,9 @@ public class DescribeImagesResponseBody : Tea.TeaModel {
                 }
                 if self.isSupportIoOptimized != nil {
                     map["IsSupportIoOptimized"] = self.isSupportIoOptimized!
+                }
+                if self.licenseType != nil {
+                    map["LicenseType"] = self.licenseType!
                 }
                 if self.loginAsNonRootSupported != nil {
                     map["LoginAsNonRootSupported"] = self.loginAsNonRootSupported!
@@ -54619,6 +54706,9 @@ public class DescribeImagesResponseBody : Tea.TeaModel {
                 }
                 if let value = dict["IsSupportIoOptimized"] as? Bool {
                     self.isSupportIoOptimized = value
+                }
+                if let value = dict["LicenseType"] as? String {
+                    self.licenseType = value
                 }
                 if let value = dict["LoginAsNonRootSupported"] as? Bool {
                     self.loginAsNonRootSupported = value
@@ -56831,6 +56921,10 @@ public class DescribeInstanceHistoryEventsResponseBody : Tea.TeaModel {
 
                 public var inactiveDisks: DescribeInstanceHistoryEventsResponseBody.InstanceSystemEventSet.InstanceSystemEventType.ExtendedAttribute.InactiveDisks?
 
+                public var metricName: String?
+
+                public var metricValue: String?
+
                 public var migrationOptions: DescribeInstanceHistoryEventsResponseBody.InstanceSystemEventSet.InstanceSystemEventType.ExtendedAttribute.MigrationOptions?
 
                 public var onlineRepairPolicy: String?
@@ -56882,6 +56976,12 @@ public class DescribeInstanceHistoryEventsResponseBody : Tea.TeaModel {
                     if self.inactiveDisks != nil {
                         map["InactiveDisks"] = self.inactiveDisks?.toMap()
                     }
+                    if self.metricName != nil {
+                        map["MetricName"] = self.metricName!
+                    }
+                    if self.metricValue != nil {
+                        map["MetricValue"] = self.metricValue!
+                    }
                     if self.migrationOptions != nil {
                         map["MigrationOptions"] = self.migrationOptions?.toMap()
                     }
@@ -56930,6 +57030,12 @@ public class DescribeInstanceHistoryEventsResponseBody : Tea.TeaModel {
                         var model = DescribeInstanceHistoryEventsResponseBody.InstanceSystemEventSet.InstanceSystemEventType.ExtendedAttribute.InactiveDisks()
                         model.fromMap(value)
                         self.inactiveDisks = model
+                    }
+                    if let value = dict["MetricName"] as? String {
+                        self.metricName = value
+                    }
+                    if let value = dict["MetricValue"] as? String {
+                        self.metricValue = value
                     }
                     if let value = dict["MigrationOptions"] as? [String: Any?] {
                         var model = DescribeInstanceHistoryEventsResponseBody.InstanceSystemEventSet.InstanceSystemEventType.ExtendedAttribute.MigrationOptions()
@@ -67679,6 +67785,36 @@ public class DescribeLaunchTemplateVersionsResponseBody : Tea.TeaModel {
                         }
                     }
                 }
+                public class SecurityOptions : Tea.TeaModel {
+                    public var trustedSystemMode: String?
+
+                    public override init() {
+                        super.init()
+                    }
+
+                    public init(_ dict: [String: Any]) {
+                        super.init()
+                        self.fromMap(dict)
+                    }
+
+                    public override func validate() throws -> Void {
+                    }
+
+                    public override func toMap() -> [String : Any] {
+                        var map = super.toMap()
+                        if self.trustedSystemMode != nil {
+                            map["TrustedSystemMode"] = self.trustedSystemMode!
+                        }
+                        return map
+                    }
+
+                    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                        guard let dict else { return }
+                        if let value = dict["TrustedSystemMode"] as? String {
+                            self.trustedSystemMode = value
+                        }
+                    }
+                }
                 public class Tags : Tea.TeaModel {
                     public class InstanceTag : Tea.TeaModel {
                         public var key: String?
@@ -67835,6 +67971,8 @@ public class DescribeLaunchTemplateVersionsResponseBody : Tea.TeaModel {
 
                 public var securityGroupIds: DescribeLaunchTemplateVersionsResponseBody.LaunchTemplateVersionSets.LaunchTemplateVersionSet.LaunchTemplateData.SecurityGroupIds?
 
+                public var securityOptions: DescribeLaunchTemplateVersionsResponseBody.LaunchTemplateVersionSets.LaunchTemplateVersionSet.LaunchTemplateData.SecurityOptions?
+
                 public var spotDuration: Int32?
 
                 public var spotPriceLimit: Double?
@@ -67866,6 +68004,7 @@ public class DescribeLaunchTemplateVersionsResponseBody : Tea.TeaModel {
                     try self.imageOptions?.validate()
                     try self.networkInterfaces?.validate()
                     try self.securityGroupIds?.validate()
+                    try self.securityOptions?.validate()
                     try self.tags?.validate()
                 }
 
@@ -67981,6 +68120,9 @@ public class DescribeLaunchTemplateVersionsResponseBody : Tea.TeaModel {
                     }
                     if self.securityGroupIds != nil {
                         map["SecurityGroupIds"] = self.securityGroupIds?.toMap()
+                    }
+                    if self.securityOptions != nil {
+                        map["SecurityOptions"] = self.securityOptions?.toMap()
                     }
                     if self.spotDuration != nil {
                         map["SpotDuration"] = self.spotDuration!
@@ -68131,6 +68273,11 @@ public class DescribeLaunchTemplateVersionsResponseBody : Tea.TeaModel {
                         var model = DescribeLaunchTemplateVersionsResponseBody.LaunchTemplateVersionSets.LaunchTemplateVersionSet.LaunchTemplateData.SecurityGroupIds()
                         model.fromMap(value)
                         self.securityGroupIds = model
+                    }
+                    if let value = dict["SecurityOptions"] as? [String: Any?] {
+                        var model = DescribeLaunchTemplateVersionsResponseBody.LaunchTemplateVersionSets.LaunchTemplateVersionSet.LaunchTemplateData.SecurityOptions()
+                        model.fromMap(value)
+                        self.securityOptions = model
                     }
                     if let value = dict["SpotDuration"] as? Int32 {
                         self.spotDuration = value
@@ -125003,9 +125150,57 @@ public class StartInstancesResponse : Tea.TeaModel {
 }
 
 public class StartTerminalSessionRequest : Tea.TeaModel {
+    public class EncryptionOptions : Tea.TeaModel {
+        public var enabled: Bool?
+
+        public var KMSKeyId: String?
+
+        public var mode: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.enabled != nil {
+                map["Enabled"] = self.enabled!
+            }
+            if self.KMSKeyId != nil {
+                map["KMSKeyId"] = self.KMSKeyId!
+            }
+            if self.mode != nil {
+                map["Mode"] = self.mode!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["Enabled"] as? Bool {
+                self.enabled = value
+            }
+            if let value = dict["KMSKeyId"] as? String {
+                self.KMSKeyId = value
+            }
+            if let value = dict["Mode"] as? String {
+                self.mode = value
+            }
+        }
+    }
     public var commandLine: String?
 
     public var connectionType: String?
+
+    public var encryptionOptions: StartTerminalSessionRequest.EncryptionOptions?
 
     public var instanceId: [String]?
 
@@ -125037,6 +125232,7 @@ public class StartTerminalSessionRequest : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
+        try self.encryptionOptions?.validate()
     }
 
     public override func toMap() -> [String : Any] {
@@ -125046,6 +125242,9 @@ public class StartTerminalSessionRequest : Tea.TeaModel {
         }
         if self.connectionType != nil {
             map["ConnectionType"] = self.connectionType!
+        }
+        if self.encryptionOptions != nil {
+            map["EncryptionOptions"] = self.encryptionOptions?.toMap()
         }
         if self.instanceId != nil {
             map["InstanceId"] = self.instanceId!
@@ -125087,6 +125286,138 @@ public class StartTerminalSessionRequest : Tea.TeaModel {
         }
         if let value = dict["ConnectionType"] as? String {
             self.connectionType = value
+        }
+        if let value = dict["EncryptionOptions"] as? [String: Any?] {
+            var model = StartTerminalSessionRequest.EncryptionOptions()
+            model.fromMap(value)
+            self.encryptionOptions = model
+        }
+        if let value = dict["InstanceId"] as? [String] {
+            self.instanceId = value
+        }
+        if let value = dict["OwnerAccount"] as? String {
+            self.ownerAccount = value
+        }
+        if let value = dict["OwnerId"] as? Int64 {
+            self.ownerId = value
+        }
+        if let value = dict["PasswordName"] as? String {
+            self.passwordName = value
+        }
+        if let value = dict["PortNumber"] as? Int32 {
+            self.portNumber = value
+        }
+        if let value = dict["RegionId"] as? String {
+            self.regionId = value
+        }
+        if let value = dict["ResourceOwnerAccount"] as? String {
+            self.resourceOwnerAccount = value
+        }
+        if let value = dict["ResourceOwnerId"] as? Int64 {
+            self.resourceOwnerId = value
+        }
+        if let value = dict["TargetServer"] as? String {
+            self.targetServer = value
+        }
+        if let value = dict["Username"] as? String {
+            self.username = value
+        }
+    }
+}
+
+public class StartTerminalSessionShrinkRequest : Tea.TeaModel {
+    public var commandLine: String?
+
+    public var connectionType: String?
+
+    public var encryptionOptionsShrink: String?
+
+    public var instanceId: [String]?
+
+    public var ownerAccount: String?
+
+    public var ownerId: Int64?
+
+    public var passwordName: String?
+
+    public var portNumber: Int32?
+
+    public var regionId: String?
+
+    public var resourceOwnerAccount: String?
+
+    public var resourceOwnerId: Int64?
+
+    public var targetServer: String?
+
+    public var username: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.commandLine != nil {
+            map["CommandLine"] = self.commandLine!
+        }
+        if self.connectionType != nil {
+            map["ConnectionType"] = self.connectionType!
+        }
+        if self.encryptionOptionsShrink != nil {
+            map["EncryptionOptions"] = self.encryptionOptionsShrink!
+        }
+        if self.instanceId != nil {
+            map["InstanceId"] = self.instanceId!
+        }
+        if self.ownerAccount != nil {
+            map["OwnerAccount"] = self.ownerAccount!
+        }
+        if self.ownerId != nil {
+            map["OwnerId"] = self.ownerId!
+        }
+        if self.passwordName != nil {
+            map["PasswordName"] = self.passwordName!
+        }
+        if self.portNumber != nil {
+            map["PortNumber"] = self.portNumber!
+        }
+        if self.regionId != nil {
+            map["RegionId"] = self.regionId!
+        }
+        if self.resourceOwnerAccount != nil {
+            map["ResourceOwnerAccount"] = self.resourceOwnerAccount!
+        }
+        if self.resourceOwnerId != nil {
+            map["ResourceOwnerId"] = self.resourceOwnerId!
+        }
+        if self.targetServer != nil {
+            map["TargetServer"] = self.targetServer!
+        }
+        if self.username != nil {
+            map["Username"] = self.username!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["CommandLine"] as? String {
+            self.commandLine = value
+        }
+        if let value = dict["ConnectionType"] as? String {
+            self.connectionType = value
+        }
+        if let value = dict["EncryptionOptions"] as? String {
+            self.encryptionOptionsShrink = value
         }
         if let value = dict["InstanceId"] as? [String] {
             self.instanceId = value

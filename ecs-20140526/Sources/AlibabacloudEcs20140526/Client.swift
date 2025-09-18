@@ -3453,6 +3453,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.securityGroupIds)) {
             query["SecurityGroupIds"] = request.securityGroupIds ?? [];
         }
+        if (!TeaUtils.Client.isUnset(request.securityOptions)) {
+            query["SecurityOptions"] = request.securityOptions!;
+        }
         if (!TeaUtils.Client.isUnset(request.spotDuration)) {
             query["SpotDuration"] = request.spotDuration!;
         }
@@ -3648,6 +3651,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.securityGroupIds)) {
             query["SecurityGroupIds"] = request.securityGroupIds ?? [];
+        }
+        if (!TeaUtils.Client.isUnset(request.securityOptions)) {
+            query["SecurityOptions"] = request.securityOptions!;
         }
         if (!TeaUtils.Client.isUnset(request.spotDuration)) {
             query["SpotDuration"] = request.spotDuration!;
@@ -22050,14 +22056,22 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func startTerminalSessionWithOptions(_ request: StartTerminalSessionRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> StartTerminalSessionResponse {
-        try TeaUtils.Client.validateModel(request)
+    public func startTerminalSessionWithOptions(_ tmpReq: StartTerminalSessionRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> StartTerminalSessionResponse {
+        try TeaUtils.Client.validateModel(tmpReq)
+        var request: StartTerminalSessionShrinkRequest = StartTerminalSessionShrinkRequest([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.encryptionOptions)) {
+            request.encryptionOptionsShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.encryptionOptions, "EncryptionOptions", "json")
+        }
         var query: [String: Any] = [:]
         if (!TeaUtils.Client.isUnset(request.commandLine)) {
             query["CommandLine"] = request.commandLine ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.connectionType)) {
             query["ConnectionType"] = request.connectionType ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.encryptionOptionsShrink)) {
+            query["EncryptionOptions"] = request.encryptionOptionsShrink ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.instanceId)) {
             query["InstanceId"] = request.instanceId ?? [];
