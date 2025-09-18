@@ -16562,6 +16562,8 @@ public class CreateTransportLayerApplicationRequest : Tea.TeaModel {
 
     public var siteId: Int64?
 
+    public var staticIp: String?
+
     public override init() {
         super.init()
     }
@@ -16598,6 +16600,9 @@ public class CreateTransportLayerApplicationRequest : Tea.TeaModel {
         if self.siteId != nil {
             map["SiteId"] = self.siteId!
         }
+        if self.staticIp != nil {
+            map["StaticIp"] = self.staticIp!
+        }
         return map
     }
 
@@ -16631,6 +16636,9 @@ public class CreateTransportLayerApplicationRequest : Tea.TeaModel {
         if let value = dict["SiteId"] as? Int64 {
             self.siteId = value
         }
+        if let value = dict["StaticIp"] as? String {
+            self.staticIp = value
+        }
     }
 }
 
@@ -16646,6 +16654,8 @@ public class CreateTransportLayerApplicationShrinkRequest : Tea.TeaModel {
     public var rulesShrink: String?
 
     public var siteId: Int64?
+
+    public var staticIp: String?
 
     public override init() {
         super.init()
@@ -16679,6 +16689,9 @@ public class CreateTransportLayerApplicationShrinkRequest : Tea.TeaModel {
         if self.siteId != nil {
             map["SiteId"] = self.siteId!
         }
+        if self.staticIp != nil {
+            map["StaticIp"] = self.staticIp!
+        }
         return map
     }
 
@@ -16701,6 +16714,9 @@ public class CreateTransportLayerApplicationShrinkRequest : Tea.TeaModel {
         }
         if let value = dict["SiteId"] as? Int64 {
             self.siteId = value
+        }
+        if let value = dict["StaticIp"] as? String {
+            self.staticIp = value
         }
     }
 }
@@ -42051,13 +42067,7 @@ public class GetRoutineResponseBody : Tea.TeaModel {
                 }
             }
         }
-        public var canaryAreaList: [String]?
-
-        public var canaryCodeVersion: String?
-
         public var codeDeploy: GetRoutineResponseBody.Envs.CodeDeploy?
-
-        public var codeVersion: String?
 
         public var env: String?
 
@@ -42076,17 +42086,8 @@ public class GetRoutineResponseBody : Tea.TeaModel {
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
-            if self.canaryAreaList != nil {
-                map["CanaryAreaList"] = self.canaryAreaList!
-            }
-            if self.canaryCodeVersion != nil {
-                map["CanaryCodeVersion"] = self.canaryCodeVersion!
-            }
             if self.codeDeploy != nil {
                 map["CodeDeploy"] = self.codeDeploy?.toMap()
-            }
-            if self.codeVersion != nil {
-                map["CodeVersion"] = self.codeVersion!
             }
             if self.env != nil {
                 map["Env"] = self.env!
@@ -42096,19 +42097,10 @@ public class GetRoutineResponseBody : Tea.TeaModel {
 
         public override func fromMap(_ dict: [String: Any?]?) -> Void {
             guard let dict else { return }
-            if let value = dict["CanaryAreaList"] as? [String] {
-                self.canaryAreaList = value
-            }
-            if let value = dict["CanaryCodeVersion"] as? String {
-                self.canaryCodeVersion = value
-            }
             if let value = dict["CodeDeploy"] as? [String: Any?] {
                 var model = GetRoutineResponseBody.Envs.CodeDeploy()
                 model.fromMap(value)
                 self.codeDeploy = model
-            }
-            if let value = dict["CodeVersion"] as? String {
-                self.codeVersion = value
             }
             if let value = dict["Env"] as? String {
                 self.env = value
@@ -45083,6 +45075,44 @@ public class GetTransportLayerApplicationResponseBody : Tea.TeaModel {
             }
         }
     }
+    public class StaticIpV4List : Tea.TeaModel {
+        public var address: String?
+
+        public var status: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.address != nil {
+                map["Address"] = self.address!
+            }
+            if self.status != nil {
+                map["Status"] = self.status!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["Address"] as? String {
+                self.address = value
+            }
+            if let value = dict["Status"] as? String {
+                self.status = value
+            }
+        }
+    }
     public var applicationId: Int64?
 
     public var cname: String?
@@ -45102,6 +45132,10 @@ public class GetTransportLayerApplicationResponseBody : Tea.TeaModel {
     public var rulesCount: Int32?
 
     public var siteId: Int64?
+
+    public var staticIp: String?
+
+    public var staticIpV4List: [GetTransportLayerApplicationResponseBody.StaticIpV4List]?
 
     public var status: String?
 
@@ -45153,6 +45187,16 @@ public class GetTransportLayerApplicationResponseBody : Tea.TeaModel {
         if self.siteId != nil {
             map["SiteId"] = self.siteId!
         }
+        if self.staticIp != nil {
+            map["StaticIp"] = self.staticIp!
+        }
+        if self.staticIpV4List != nil {
+            var tmp : [Any] = []
+            for k in self.staticIpV4List! {
+                tmp.append(k.toMap())
+            }
+            map["StaticIpV4List"] = tmp
+        }
         if self.status != nil {
             map["Status"] = self.status!
         }
@@ -45200,6 +45244,22 @@ public class GetTransportLayerApplicationResponseBody : Tea.TeaModel {
         }
         if let value = dict["SiteId"] as? Int64 {
             self.siteId = value
+        }
+        if let value = dict["StaticIp"] as? String {
+            self.staticIp = value
+        }
+        if let value = dict["StaticIpV4List"] as? [Any?] {
+            var tmp : [GetTransportLayerApplicationResponseBody.StaticIpV4List] = []
+            for v in value {
+                if v != nil {
+                    var model = GetTransportLayerApplicationResponseBody.StaticIpV4List()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.staticIpV4List = tmp
         }
         if let value = dict["Status"] as? String {
             self.status = value
@@ -64113,6 +64173,44 @@ public class ListTransportLayerApplicationsResponseBody : Tea.TeaModel {
                 }
             }
         }
+        public class StaticIpV4List : Tea.TeaModel {
+            public var address: String?
+
+            public var status: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.address != nil {
+                    map["Address"] = self.address!
+                }
+                if self.status != nil {
+                    map["Status"] = self.status!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["Address"] as? String {
+                    self.address = value
+                }
+                if let value = dict["Status"] as? String {
+                    self.status = value
+                }
+            }
+        }
         public var applicationId: Int64?
 
         public var cname: String?
@@ -64130,6 +64228,10 @@ public class ListTransportLayerApplicationsResponseBody : Tea.TeaModel {
         public var rulesCount: Int32?
 
         public var siteId: Int64?
+
+        public var staticIp: String?
+
+        public var staticIpV4List: [ListTransportLayerApplicationsResponseBody.Applications.StaticIpV4List]?
 
         public var status: String?
 
@@ -64178,6 +64280,16 @@ public class ListTransportLayerApplicationsResponseBody : Tea.TeaModel {
             if self.siteId != nil {
                 map["SiteId"] = self.siteId!
             }
+            if self.staticIp != nil {
+                map["StaticIp"] = self.staticIp!
+            }
+            if self.staticIpV4List != nil {
+                var tmp : [Any] = []
+                for k in self.staticIpV4List! {
+                    tmp.append(k.toMap())
+                }
+                map["StaticIpV4List"] = tmp
+            }
             if self.status != nil {
                 map["Status"] = self.status!
             }
@@ -64222,6 +64334,22 @@ public class ListTransportLayerApplicationsResponseBody : Tea.TeaModel {
             }
             if let value = dict["SiteId"] as? Int64 {
                 self.siteId = value
+            }
+            if let value = dict["StaticIp"] as? String {
+                self.staticIp = value
+            }
+            if let value = dict["StaticIpV4List"] as? [Any?] {
+                var tmp : [ListTransportLayerApplicationsResponseBody.Applications.StaticIpV4List] = []
+                for v in value {
+                    if v != nil {
+                        var model = ListTransportLayerApplicationsResponseBody.Applications.StaticIpV4List()
+                        if v != nil {
+                            model.fromMap(v as? [String: Any?])
+                        }
+                        tmp.append(model)
+                    }
+                }
+                self.staticIpV4List = tmp
             }
             if let value = dict["Status"] as? String {
                 self.status = value
@@ -82159,6 +82287,8 @@ public class UpdateTransportLayerApplicationRequest : Tea.TeaModel {
 
     public var siteId: Int64?
 
+    public var staticIp: String?
+
     public override init() {
         super.init()
     }
@@ -82195,6 +82325,9 @@ public class UpdateTransportLayerApplicationRequest : Tea.TeaModel {
         if self.siteId != nil {
             map["SiteId"] = self.siteId!
         }
+        if self.staticIp != nil {
+            map["StaticIp"] = self.staticIp!
+        }
         return map
     }
 
@@ -82228,6 +82361,9 @@ public class UpdateTransportLayerApplicationRequest : Tea.TeaModel {
         if let value = dict["SiteId"] as? Int64 {
             self.siteId = value
         }
+        if let value = dict["StaticIp"] as? String {
+            self.staticIp = value
+        }
     }
 }
 
@@ -82243,6 +82379,8 @@ public class UpdateTransportLayerApplicationShrinkRequest : Tea.TeaModel {
     public var rulesShrink: String?
 
     public var siteId: Int64?
+
+    public var staticIp: String?
 
     public override init() {
         super.init()
@@ -82276,6 +82414,9 @@ public class UpdateTransportLayerApplicationShrinkRequest : Tea.TeaModel {
         if self.siteId != nil {
             map["SiteId"] = self.siteId!
         }
+        if self.staticIp != nil {
+            map["StaticIp"] = self.staticIp!
+        }
         return map
     }
 
@@ -82298,6 +82439,9 @@ public class UpdateTransportLayerApplicationShrinkRequest : Tea.TeaModel {
         }
         if let value = dict["SiteId"] as? Int64 {
             self.siteId = value
+        }
+        if let value = dict["StaticIp"] as? String {
+            self.staticIp = value
         }
     }
 }
