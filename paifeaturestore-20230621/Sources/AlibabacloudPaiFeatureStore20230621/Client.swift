@@ -1185,6 +1185,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func listDatasourceTablesWithOptions(_ InstanceId: String, _ DatasourceId: String, _ request: ListDatasourceTablesRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> ListDatasourceTablesResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.schemaName)) {
+            query["SchemaName"] = request.schemaName ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.tableName)) {
             query["TableName"] = request.tableName ?? "";
         }

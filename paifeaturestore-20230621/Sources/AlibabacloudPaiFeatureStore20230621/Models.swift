@@ -6541,6 +6541,8 @@ public class ListDatasourceFeatureViewsResponse : Tea.TeaModel {
 }
 
 public class ListDatasourceTablesRequest : Tea.TeaModel {
+    public var schemaName: String?
+
     public var tableName: String?
 
     public override init() {
@@ -6557,6 +6559,9 @@ public class ListDatasourceTablesRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.schemaName != nil {
+            map["SchemaName"] = self.schemaName!
+        }
         if self.tableName != nil {
             map["TableName"] = self.tableName!
         }
@@ -6565,6 +6570,9 @@ public class ListDatasourceTablesRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["SchemaName"] as? String {
+            self.schemaName = value
+        }
         if let value = dict["TableName"] as? String {
             self.tableName = value
         }
