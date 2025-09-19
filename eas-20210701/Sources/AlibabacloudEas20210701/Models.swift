@@ -2661,6 +2661,8 @@ public class CreateGatewayRequest : Tea.TeaModel {
 
     public var enableIntranet: Bool?
 
+    public var gatewayType: String?
+
     public var instanceType: String?
 
     public var name: String?
@@ -2696,6 +2698,9 @@ public class CreateGatewayRequest : Tea.TeaModel {
         if self.enableIntranet != nil {
             map["EnableIntranet"] = self.enableIntranet!
         }
+        if self.gatewayType != nil {
+            map["GatewayType"] = self.gatewayType!
+        }
         if self.instanceType != nil {
             map["InstanceType"] = self.instanceType!
         }
@@ -2724,6 +2729,9 @@ public class CreateGatewayRequest : Tea.TeaModel {
         }
         if let value = dict["EnableIntranet"] as? Bool {
             self.enableIntranet = value
+        }
+        if let value = dict["GatewayType"] as? String {
+            self.gatewayType = value
         }
         if let value = dict["InstanceType"] as? String {
             self.instanceType = value
@@ -7445,6 +7453,8 @@ public class DescribeGatewayResponseBody : Tea.TeaModel {
 
     public var intranetDomain: String?
 
+    public var intranetEnabled: Bool?
+
     public var isDefault: Bool?
 
     public var replicas: Int32?
@@ -7501,6 +7511,9 @@ public class DescribeGatewayResponseBody : Tea.TeaModel {
         if self.intranetDomain != nil {
             map["IntranetDomain"] = self.intranetDomain!
         }
+        if self.intranetEnabled != nil {
+            map["IntranetEnabled"] = self.intranetEnabled!
+        }
         if self.isDefault != nil {
             map["IsDefault"] = self.isDefault!
         }
@@ -7553,6 +7566,9 @@ public class DescribeGatewayResponseBody : Tea.TeaModel {
         }
         if let value = dict["IntranetDomain"] as? String {
             self.intranetDomain = value
+        }
+        if let value = dict["IntranetEnabled"] as? Bool {
+            self.intranetEnabled = value
         }
         if let value = dict["IsDefault"] as? Bool {
             self.isDefault = value
@@ -11870,15 +11886,27 @@ public class ListBenchmarkTaskResponse : Tea.TeaModel {
 }
 
 public class ListGatewayRequest : Tea.TeaModel {
+    public var chargeType: String?
+
     public var gatewayId: String?
 
     public var gatewayName: String?
+
+    public var gatewayType: String?
+
+    public var internetEnabled: Bool?
+
+    public var order: String?
 
     public var pageNumber: Int32?
 
     public var pageSize: Int32?
 
     public var resourceName: String?
+
+    public var sort: String?
+
+    public var status: String?
 
     public override init() {
         super.init()
@@ -11894,11 +11922,23 @@ public class ListGatewayRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.chargeType != nil {
+            map["ChargeType"] = self.chargeType!
+        }
         if self.gatewayId != nil {
             map["GatewayId"] = self.gatewayId!
         }
         if self.gatewayName != nil {
             map["GatewayName"] = self.gatewayName!
+        }
+        if self.gatewayType != nil {
+            map["GatewayType"] = self.gatewayType!
+        }
+        if self.internetEnabled != nil {
+            map["InternetEnabled"] = self.internetEnabled!
+        }
+        if self.order != nil {
+            map["Order"] = self.order!
         }
         if self.pageNumber != nil {
             map["PageNumber"] = self.pageNumber!
@@ -11909,16 +11949,34 @@ public class ListGatewayRequest : Tea.TeaModel {
         if self.resourceName != nil {
             map["ResourceName"] = self.resourceName!
         }
+        if self.sort != nil {
+            map["Sort"] = self.sort!
+        }
+        if self.status != nil {
+            map["Status"] = self.status!
+        }
         return map
     }
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["ChargeType"] as? String {
+            self.chargeType = value
+        }
         if let value = dict["GatewayId"] as? String {
             self.gatewayId = value
         }
         if let value = dict["GatewayName"] as? String {
             self.gatewayName = value
+        }
+        if let value = dict["GatewayType"] as? String {
+            self.gatewayType = value
+        }
+        if let value = dict["InternetEnabled"] as? Bool {
+            self.internetEnabled = value
+        }
+        if let value = dict["Order"] as? String {
+            self.order = value
         }
         if let value = dict["PageNumber"] as? Int32 {
             self.pageNumber = value
@@ -11928,6 +11986,12 @@ public class ListGatewayRequest : Tea.TeaModel {
         }
         if let value = dict["ResourceName"] as? String {
             self.resourceName = value
+        }
+        if let value = dict["Sort"] as? String {
+            self.sort = value
+        }
+        if let value = dict["Status"] as? String {
+            self.status = value
         }
     }
 }
@@ -11949,6 +12013,8 @@ public class ListGatewayResponseBody : Tea.TeaModel {
         public var internetEnabled: Bool?
 
         public var intranetDomain: String?
+
+        public var intranetEnabled: Bool?
 
         public var isDefault: Bool?
 
@@ -11998,6 +12064,9 @@ public class ListGatewayResponseBody : Tea.TeaModel {
             if self.intranetDomain != nil {
                 map["IntranetDomain"] = self.intranetDomain!
             }
+            if self.intranetEnabled != nil {
+                map["IntranetEnabled"] = self.intranetEnabled!
+            }
             if self.isDefault != nil {
                 map["IsDefault"] = self.isDefault!
             }
@@ -12041,6 +12110,9 @@ public class ListGatewayResponseBody : Tea.TeaModel {
             }
             if let value = dict["IntranetDomain"] as? String {
                 self.intranetDomain = value
+            }
+            if let value = dict["IntranetEnabled"] as? Bool {
+                self.intranetEnabled = value
             }
             if let value = dict["IsDefault"] as? Bool {
                 self.isDefault = value
@@ -16581,6 +16653,10 @@ public class UpdateGatewayRequest : Tea.TeaModel {
 
     public var replicas: Int32?
 
+    public var vSwitchIds: [String]?
+
+    public var vpcId: String?
+
     public override init() {
         super.init()
     }
@@ -16616,6 +16692,12 @@ public class UpdateGatewayRequest : Tea.TeaModel {
         if self.replicas != nil {
             map["Replicas"] = self.replicas!
         }
+        if self.vSwitchIds != nil {
+            map["VSwitchIds"] = self.vSwitchIds!
+        }
+        if self.vpcId != nil {
+            map["VpcId"] = self.vpcId!
+        }
         return map
     }
 
@@ -16641,6 +16723,12 @@ public class UpdateGatewayRequest : Tea.TeaModel {
         }
         if let value = dict["Replicas"] as? Int32 {
             self.replicas = value
+        }
+        if let value = dict["VSwitchIds"] as? [String] {
+            self.vSwitchIds = value
+        }
+        if let value = dict["VpcId"] as? String {
+            self.vpcId = value
         }
     }
 }
