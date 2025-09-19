@@ -500,10 +500,10 @@ open class Client : AlibabacloudOpenApi.Client {
         var request: PushShrinkRequest = PushShrinkRequest([:])
         AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
         if (!TeaUtils.Client.isUnset(tmpReq.androidOppoPrivateContentParameters)) {
-            request.androidOppoPrivateContentParametersShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.androidOppoPrivateContentParameters, "androidOppoPrivateContentParameters", "json")
+            request.androidOppoPrivateContentParametersShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.androidOppoPrivateContentParameters, "AndroidOppoPrivateContentParameters", "json")
         }
         if (!TeaUtils.Client.isUnset(tmpReq.androidOppoPrivateTitleParameters)) {
-            request.androidOppoPrivateTitleParametersShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.androidOppoPrivateTitleParameters, "androidOppoPrivateTitleParameters", "json")
+            request.androidOppoPrivateTitleParametersShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.androidOppoPrivateTitleParameters, "AndroidOppoPrivateTitleParameters", "json")
         }
         var query: [String: Any] = [:]
         if (!TeaUtils.Client.isUnset(request.androidActivity)) {
@@ -604,6 +604,15 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.androidOpenUrl)) {
             query["AndroidOpenUrl"] = request.androidOpenUrl ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.androidOppoPrivateContentParametersShrink)) {
+            query["AndroidOppoPrivateContentParameters"] = request.androidOppoPrivateContentParametersShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.androidOppoPrivateMsgTemplateId)) {
+            query["AndroidOppoPrivateMsgTemplateId"] = request.androidOppoPrivateMsgTemplateId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.androidOppoPrivateTitleParametersShrink)) {
+            query["AndroidOppoPrivateTitleParameters"] = request.androidOppoPrivateTitleParametersShrink ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.androidPopupActivity)) {
             query["AndroidPopupActivity"] = request.androidPopupActivity ?? "";
@@ -760,15 +769,6 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.trim)) {
             query["Trim"] = request.trim!;
-        }
-        if (!TeaUtils.Client.isUnset(request.androidOppoPrivateContentParametersShrink)) {
-            query["androidOppoPrivateContentParameters"] = request.androidOppoPrivateContentParametersShrink ?? "";
-        }
-        if (!TeaUtils.Client.isUnset(request.androidOppoPrivateMsgTemplateId)) {
-            query["androidOppoPrivateMsgTemplateId"] = request.androidOppoPrivateMsgTemplateId ?? "";
-        }
-        if (!TeaUtils.Client.isUnset(request.androidOppoPrivateTitleParametersShrink)) {
-            query["androidOppoPrivateTitleParameters"] = request.androidOppoPrivateTitleParametersShrink ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.iOSApnsEnv)) {
             query["iOSApnsEnv"] = request.iOSApnsEnv ?? "";

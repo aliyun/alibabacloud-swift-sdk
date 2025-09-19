@@ -3034,6 +3034,12 @@ public class MassPushRequest : Tea.TeaModel {
 
         public var androidOpenUrl: String?
 
+        public var androidOppoPrivateContentParameters: [String: String]?
+
+        public var androidOppoPrivateMsgTemplateId: String?
+
+        public var androidOppoPrivateTitleParameters: [String: String]?
+
         public var androidPopupActivity: String?
 
         public var androidPopupBody: String?
@@ -3123,12 +3129,6 @@ public class MassPushRequest : Tea.TeaModel {
         public var title: String?
 
         public var trim: Bool?
-
-        public var androidOppoPrivateContentParameters: [String: String]?
-
-        public var androidOppoPrivateMsgTemplateId: String?
-
-        public var androidOppoPrivateTitleParameters: [String: String]?
 
         public var iOSApnsEnv: String?
 
@@ -3287,6 +3287,15 @@ public class MassPushRequest : Tea.TeaModel {
             if self.androidOpenUrl != nil {
                 map["AndroidOpenUrl"] = self.androidOpenUrl!
             }
+            if self.androidOppoPrivateContentParameters != nil {
+                map["AndroidOppoPrivateContentParameters"] = self.androidOppoPrivateContentParameters!
+            }
+            if self.androidOppoPrivateMsgTemplateId != nil {
+                map["AndroidOppoPrivateMsgTemplateId"] = self.androidOppoPrivateMsgTemplateId!
+            }
+            if self.androidOppoPrivateTitleParameters != nil {
+                map["AndroidOppoPrivateTitleParameters"] = self.androidOppoPrivateTitleParameters!
+            }
             if self.androidPopupActivity != nil {
                 map["AndroidPopupActivity"] = self.androidPopupActivity!
             }
@@ -3421,15 +3430,6 @@ public class MassPushRequest : Tea.TeaModel {
             }
             if self.trim != nil {
                 map["Trim"] = self.trim!
-            }
-            if self.androidOppoPrivateContentParameters != nil {
-                map["androidOppoPrivateContentParameters"] = self.androidOppoPrivateContentParameters!
-            }
-            if self.androidOppoPrivateMsgTemplateId != nil {
-                map["androidOppoPrivateMsgTemplateId"] = self.androidOppoPrivateMsgTemplateId!
-            }
-            if self.androidOppoPrivateTitleParameters != nil {
-                map["androidOppoPrivateTitleParameters"] = self.androidOppoPrivateTitleParameters!
             }
             if self.iOSApnsEnv != nil {
                 map["iOSApnsEnv"] = self.iOSApnsEnv!
@@ -3601,6 +3601,15 @@ public class MassPushRequest : Tea.TeaModel {
             if let value = dict["AndroidOpenUrl"] as? String {
                 self.androidOpenUrl = value
             }
+            if let value = dict["AndroidOppoPrivateContentParameters"] as? [String: String] {
+                self.androidOppoPrivateContentParameters = value
+            }
+            if let value = dict["AndroidOppoPrivateMsgTemplateId"] as? String {
+                self.androidOppoPrivateMsgTemplateId = value
+            }
+            if let value = dict["AndroidOppoPrivateTitleParameters"] as? [String: String] {
+                self.androidOppoPrivateTitleParameters = value
+            }
             if let value = dict["AndroidPopupActivity"] as? String {
                 self.androidPopupActivity = value
             }
@@ -3735,15 +3744,6 @@ public class MassPushRequest : Tea.TeaModel {
             }
             if let value = dict["Trim"] as? Bool {
                 self.trim = value
-            }
-            if let value = dict["androidOppoPrivateContentParameters"] as? [String: String] {
-                self.androidOppoPrivateContentParameters = value
-            }
-            if let value = dict["androidOppoPrivateMsgTemplateId"] as? String {
-                self.androidOppoPrivateMsgTemplateId = value
-            }
-            if let value = dict["androidOppoPrivateTitleParameters"] as? [String: String] {
-                self.androidOppoPrivateTitleParameters = value
             }
             if let value = dict["iOSApnsEnv"] as? String {
                 self.iOSApnsEnv = value
@@ -4062,6 +4062,12 @@ public class PushRequest : Tea.TeaModel {
 
     public var androidOpenUrl: String?
 
+    public var androidOppoPrivateContentParameters: [String: String]?
+
+    public var androidOppoPrivateMsgTemplateId: String?
+
+    public var androidOppoPrivateTitleParameters: [String: String]?
+
     public var androidPopupActivity: String?
 
     public var androidPopupBody: String?
@@ -4165,12 +4171,6 @@ public class PushRequest : Tea.TeaModel {
     public var title: String?
 
     public var trim: Bool?
-
-    public var androidOppoPrivateContentParameters: [String: String]?
-
-    public var androidOppoPrivateMsgTemplateId: String?
-
-    public var androidOppoPrivateTitleParameters: [String: String]?
 
     public var iOSApnsEnv: String?
 
@@ -4329,6 +4329,15 @@ public class PushRequest : Tea.TeaModel {
         if self.androidOpenUrl != nil {
             map["AndroidOpenUrl"] = self.androidOpenUrl!
         }
+        if self.androidOppoPrivateContentParameters != nil {
+            map["AndroidOppoPrivateContentParameters"] = self.androidOppoPrivateContentParameters!
+        }
+        if self.androidOppoPrivateMsgTemplateId != nil {
+            map["AndroidOppoPrivateMsgTemplateId"] = self.androidOppoPrivateMsgTemplateId!
+        }
+        if self.androidOppoPrivateTitleParameters != nil {
+            map["AndroidOppoPrivateTitleParameters"] = self.androidOppoPrivateTitleParameters!
+        }
         if self.androidPopupActivity != nil {
             map["AndroidPopupActivity"] = self.androidPopupActivity!
         }
@@ -4484,15 +4493,6 @@ public class PushRequest : Tea.TeaModel {
         }
         if self.trim != nil {
             map["Trim"] = self.trim!
-        }
-        if self.androidOppoPrivateContentParameters != nil {
-            map["androidOppoPrivateContentParameters"] = self.androidOppoPrivateContentParameters!
-        }
-        if self.androidOppoPrivateMsgTemplateId != nil {
-            map["androidOppoPrivateMsgTemplateId"] = self.androidOppoPrivateMsgTemplateId!
-        }
-        if self.androidOppoPrivateTitleParameters != nil {
-            map["androidOppoPrivateTitleParameters"] = self.androidOppoPrivateTitleParameters!
         }
         if self.iOSApnsEnv != nil {
             map["iOSApnsEnv"] = self.iOSApnsEnv!
@@ -4664,6 +4664,15 @@ public class PushRequest : Tea.TeaModel {
         if let value = dict["AndroidOpenUrl"] as? String {
             self.androidOpenUrl = value
         }
+        if let value = dict["AndroidOppoPrivateContentParameters"] as? [String: String] {
+            self.androidOppoPrivateContentParameters = value
+        }
+        if let value = dict["AndroidOppoPrivateMsgTemplateId"] as? String {
+            self.androidOppoPrivateMsgTemplateId = value
+        }
+        if let value = dict["AndroidOppoPrivateTitleParameters"] as? [String: String] {
+            self.androidOppoPrivateTitleParameters = value
+        }
         if let value = dict["AndroidPopupActivity"] as? String {
             self.androidPopupActivity = value
         }
@@ -4819,15 +4828,6 @@ public class PushRequest : Tea.TeaModel {
         }
         if let value = dict["Trim"] as? Bool {
             self.trim = value
-        }
-        if let value = dict["androidOppoPrivateContentParameters"] as? [String: String] {
-            self.androidOppoPrivateContentParameters = value
-        }
-        if let value = dict["androidOppoPrivateMsgTemplateId"] as? String {
-            self.androidOppoPrivateMsgTemplateId = value
-        }
-        if let value = dict["androidOppoPrivateTitleParameters"] as? [String: String] {
-            self.androidOppoPrivateTitleParameters = value
         }
         if let value = dict["iOSApnsEnv"] as? String {
             self.iOSApnsEnv = value
@@ -4965,6 +4965,12 @@ public class PushShrinkRequest : Tea.TeaModel {
 
     public var androidOpenUrl: String?
 
+    public var androidOppoPrivateContentParametersShrink: String?
+
+    public var androidOppoPrivateMsgTemplateId: String?
+
+    public var androidOppoPrivateTitleParametersShrink: String?
+
     public var androidPopupActivity: String?
 
     public var androidPopupBody: String?
@@ -5068,12 +5074,6 @@ public class PushShrinkRequest : Tea.TeaModel {
     public var title: String?
 
     public var trim: Bool?
-
-    public var androidOppoPrivateContentParametersShrink: String?
-
-    public var androidOppoPrivateMsgTemplateId: String?
-
-    public var androidOppoPrivateTitleParametersShrink: String?
 
     public var iOSApnsEnv: String?
 
@@ -5232,6 +5232,15 @@ public class PushShrinkRequest : Tea.TeaModel {
         if self.androidOpenUrl != nil {
             map["AndroidOpenUrl"] = self.androidOpenUrl!
         }
+        if self.androidOppoPrivateContentParametersShrink != nil {
+            map["AndroidOppoPrivateContentParameters"] = self.androidOppoPrivateContentParametersShrink!
+        }
+        if self.androidOppoPrivateMsgTemplateId != nil {
+            map["AndroidOppoPrivateMsgTemplateId"] = self.androidOppoPrivateMsgTemplateId!
+        }
+        if self.androidOppoPrivateTitleParametersShrink != nil {
+            map["AndroidOppoPrivateTitleParameters"] = self.androidOppoPrivateTitleParametersShrink!
+        }
         if self.androidPopupActivity != nil {
             map["AndroidPopupActivity"] = self.androidPopupActivity!
         }
@@ -5387,15 +5396,6 @@ public class PushShrinkRequest : Tea.TeaModel {
         }
         if self.trim != nil {
             map["Trim"] = self.trim!
-        }
-        if self.androidOppoPrivateContentParametersShrink != nil {
-            map["androidOppoPrivateContentParameters"] = self.androidOppoPrivateContentParametersShrink!
-        }
-        if self.androidOppoPrivateMsgTemplateId != nil {
-            map["androidOppoPrivateMsgTemplateId"] = self.androidOppoPrivateMsgTemplateId!
-        }
-        if self.androidOppoPrivateTitleParametersShrink != nil {
-            map["androidOppoPrivateTitleParameters"] = self.androidOppoPrivateTitleParametersShrink!
         }
         if self.iOSApnsEnv != nil {
             map["iOSApnsEnv"] = self.iOSApnsEnv!
@@ -5567,6 +5567,15 @@ public class PushShrinkRequest : Tea.TeaModel {
         if let value = dict["AndroidOpenUrl"] as? String {
             self.androidOpenUrl = value
         }
+        if let value = dict["AndroidOppoPrivateContentParameters"] as? String {
+            self.androidOppoPrivateContentParametersShrink = value
+        }
+        if let value = dict["AndroidOppoPrivateMsgTemplateId"] as? String {
+            self.androidOppoPrivateMsgTemplateId = value
+        }
+        if let value = dict["AndroidOppoPrivateTitleParameters"] as? String {
+            self.androidOppoPrivateTitleParametersShrink = value
+        }
         if let value = dict["AndroidPopupActivity"] as? String {
             self.androidPopupActivity = value
         }
@@ -5722,15 +5731,6 @@ public class PushShrinkRequest : Tea.TeaModel {
         }
         if let value = dict["Trim"] as? Bool {
             self.trim = value
-        }
-        if let value = dict["androidOppoPrivateContentParameters"] as? String {
-            self.androidOppoPrivateContentParametersShrink = value
-        }
-        if let value = dict["androidOppoPrivateMsgTemplateId"] as? String {
-            self.androidOppoPrivateMsgTemplateId = value
-        }
-        if let value = dict["androidOppoPrivateTitleParameters"] as? String {
-            self.androidOppoPrivateTitleParametersShrink = value
         }
         if let value = dict["iOSApnsEnv"] as? String {
             self.iOSApnsEnv = value
