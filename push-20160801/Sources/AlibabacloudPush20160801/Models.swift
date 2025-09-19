@@ -2986,6 +2986,8 @@ public class MassPushRequest : Tea.TeaModel {
 
         public var androidHonorTargetUserType: Int32?
 
+        public var androidHuaweiLiveNotificationPayload: String?
+
         public var androidHuaweiReceiptId: String?
 
         public var androidHuaweiTargetUserType: Int32?
@@ -3091,6 +3093,8 @@ public class MassPushRequest : Tea.TeaModel {
         public var harmonyImageUrl: String?
 
         public var harmonyInboxContent: String?
+
+        public var harmonyLiveViewPayload: String?
 
         public var harmonyNotificationSlotType: String?
 
@@ -3214,6 +3218,9 @@ public class MassPushRequest : Tea.TeaModel {
             }
             if self.androidHonorTargetUserType != nil {
                 map["AndroidHonorTargetUserType"] = self.androidHonorTargetUserType!
+            }
+            if self.androidHuaweiLiveNotificationPayload != nil {
+                map["AndroidHuaweiLiveNotificationPayload"] = self.androidHuaweiLiveNotificationPayload!
             }
             if self.androidHuaweiReceiptId != nil {
                 map["AndroidHuaweiReceiptId"] = self.androidHuaweiReceiptId!
@@ -3374,6 +3381,9 @@ public class MassPushRequest : Tea.TeaModel {
             if self.harmonyInboxContent != nil {
                 map["HarmonyInboxContent"] = self.harmonyInboxContent!
             }
+            if self.harmonyLiveViewPayload != nil {
+                map["HarmonyLiveViewPayload"] = self.harmonyLiveViewPayload!
+            }
             if self.harmonyNotificationSlotType != nil {
                 map["HarmonyNotificationSlotType"] = self.harmonyNotificationSlotType!
             }
@@ -3528,6 +3538,9 @@ public class MassPushRequest : Tea.TeaModel {
             }
             if let value = dict["AndroidHonorTargetUserType"] as? Int32 {
                 self.androidHonorTargetUserType = value
+            }
+            if let value = dict["AndroidHuaweiLiveNotificationPayload"] as? String {
+                self.androidHuaweiLiveNotificationPayload = value
             }
             if let value = dict["AndroidHuaweiReceiptId"] as? String {
                 self.androidHuaweiReceiptId = value
@@ -3687,6 +3700,9 @@ public class MassPushRequest : Tea.TeaModel {
             }
             if let value = dict["HarmonyInboxContent"] as? String {
                 self.harmonyInboxContent = value
+            }
+            if let value = dict["HarmonyLiveViewPayload"] as? String {
+                self.harmonyLiveViewPayload = value
             }
             if let value = dict["HarmonyNotificationSlotType"] as? String {
                 self.harmonyNotificationSlotType = value
@@ -4014,6 +4030,8 @@ public class PushRequest : Tea.TeaModel {
 
     public var androidHonorTargetUserType: Int32?
 
+    public var androidHuaweiLiveNotificationPayload: String?
+
     public var androidHuaweiReceiptId: String?
 
     public var androidHuaweiTargetUserType: Int32?
@@ -4121,6 +4139,8 @@ public class PushRequest : Tea.TeaModel {
     public var harmonyImageUrl: String?
 
     public var harmonyInboxContent: String?
+
+    public var harmonyLiveViewPayload: String?
 
     public var harmonyNotificationSlotType: String?
 
@@ -4256,6 +4276,9 @@ public class PushRequest : Tea.TeaModel {
         }
         if self.androidHonorTargetUserType != nil {
             map["AndroidHonorTargetUserType"] = self.androidHonorTargetUserType!
+        }
+        if self.androidHuaweiLiveNotificationPayload != nil {
+            map["AndroidHuaweiLiveNotificationPayload"] = self.androidHuaweiLiveNotificationPayload!
         }
         if self.androidHuaweiReceiptId != nil {
             map["AndroidHuaweiReceiptId"] = self.androidHuaweiReceiptId!
@@ -4418,6 +4441,9 @@ public class PushRequest : Tea.TeaModel {
         }
         if self.harmonyInboxContent != nil {
             map["HarmonyInboxContent"] = self.harmonyInboxContent!
+        }
+        if self.harmonyLiveViewPayload != nil {
+            map["HarmonyLiveViewPayload"] = self.harmonyLiveViewPayload!
         }
         if self.harmonyNotificationSlotType != nil {
             map["HarmonyNotificationSlotType"] = self.harmonyNotificationSlotType!
@@ -4592,6 +4618,9 @@ public class PushRequest : Tea.TeaModel {
         if let value = dict["AndroidHonorTargetUserType"] as? Int32 {
             self.androidHonorTargetUserType = value
         }
+        if let value = dict["AndroidHuaweiLiveNotificationPayload"] as? String {
+            self.androidHuaweiLiveNotificationPayload = value
+        }
         if let value = dict["AndroidHuaweiReceiptId"] as? String {
             self.androidHuaweiReceiptId = value
         }
@@ -4753,6 +4782,9 @@ public class PushRequest : Tea.TeaModel {
         }
         if let value = dict["HarmonyInboxContent"] as? String {
             self.harmonyInboxContent = value
+        }
+        if let value = dict["HarmonyLiveViewPayload"] as? String {
+            self.harmonyLiveViewPayload = value
         }
         if let value = dict["HarmonyNotificationSlotType"] as? String {
             self.harmonyNotificationSlotType = value
@@ -4917,6 +4949,8 @@ public class PushShrinkRequest : Tea.TeaModel {
 
     public var androidHonorTargetUserType: Int32?
 
+    public var androidHuaweiLiveNotificationPayload: String?
+
     public var androidHuaweiReceiptId: String?
 
     public var androidHuaweiTargetUserType: Int32?
@@ -5024,6 +5058,8 @@ public class PushShrinkRequest : Tea.TeaModel {
     public var harmonyImageUrl: String?
 
     public var harmonyInboxContent: String?
+
+    public var harmonyLiveViewPayload: String?
 
     public var harmonyNotificationSlotType: String?
 
@@ -5159,6 +5195,9 @@ public class PushShrinkRequest : Tea.TeaModel {
         }
         if self.androidHonorTargetUserType != nil {
             map["AndroidHonorTargetUserType"] = self.androidHonorTargetUserType!
+        }
+        if self.androidHuaweiLiveNotificationPayload != nil {
+            map["AndroidHuaweiLiveNotificationPayload"] = self.androidHuaweiLiveNotificationPayload!
         }
         if self.androidHuaweiReceiptId != nil {
             map["AndroidHuaweiReceiptId"] = self.androidHuaweiReceiptId!
@@ -5321,6 +5360,9 @@ public class PushShrinkRequest : Tea.TeaModel {
         }
         if self.harmonyInboxContent != nil {
             map["HarmonyInboxContent"] = self.harmonyInboxContent!
+        }
+        if self.harmonyLiveViewPayload != nil {
+            map["HarmonyLiveViewPayload"] = self.harmonyLiveViewPayload!
         }
         if self.harmonyNotificationSlotType != nil {
             map["HarmonyNotificationSlotType"] = self.harmonyNotificationSlotType!
@@ -5495,6 +5537,9 @@ public class PushShrinkRequest : Tea.TeaModel {
         if let value = dict["AndroidHonorTargetUserType"] as? Int32 {
             self.androidHonorTargetUserType = value
         }
+        if let value = dict["AndroidHuaweiLiveNotificationPayload"] as? String {
+            self.androidHuaweiLiveNotificationPayload = value
+        }
         if let value = dict["AndroidHuaweiReceiptId"] as? String {
             self.androidHuaweiReceiptId = value
         }
@@ -5656,6 +5701,9 @@ public class PushShrinkRequest : Tea.TeaModel {
         }
         if let value = dict["HarmonyInboxContent"] as? String {
             self.harmonyInboxContent = value
+        }
+        if let value = dict["HarmonyLiveViewPayload"] as? String {
+            self.harmonyLiveViewPayload = value
         }
         if let value = dict["HarmonyNotificationSlotType"] as? String {
             self.harmonyNotificationSlotType = value

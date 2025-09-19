@@ -533,6 +533,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.androidHonorTargetUserType)) {
             query["AndroidHonorTargetUserType"] = request.androidHonorTargetUserType!;
         }
+        if (!TeaUtils.Client.isUnset(request.androidHuaweiLiveNotificationPayload)) {
+            query["AndroidHuaweiLiveNotificationPayload"] = request.androidHuaweiLiveNotificationPayload ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.androidHuaweiReceiptId)) {
             query["AndroidHuaweiReceiptId"] = request.androidHuaweiReceiptId ?? "";
         }
@@ -694,6 +697,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.harmonyInboxContent)) {
             query["HarmonyInboxContent"] = request.harmonyInboxContent ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.harmonyLiveViewPayload)) {
+            query["HarmonyLiveViewPayload"] = request.harmonyLiveViewPayload ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.harmonyNotificationSlotType)) {
             query["HarmonyNotificationSlotType"] = request.harmonyNotificationSlotType ?? "";
