@@ -944,6 +944,8 @@ public class ConfigL7RsPolicyResponse : Tea.TeaModel {
 public class ConfigL7UsKeepaliveRequest : Tea.TeaModel {
     public var domain: String?
 
+    public var downstreamKeepalive: String?
+
     public var upstreamKeepalive: String?
 
     public override init() {
@@ -963,6 +965,9 @@ public class ConfigL7UsKeepaliveRequest : Tea.TeaModel {
         if self.domain != nil {
             map["Domain"] = self.domain!
         }
+        if self.downstreamKeepalive != nil {
+            map["DownstreamKeepalive"] = self.downstreamKeepalive!
+        }
         if self.upstreamKeepalive != nil {
             map["UpstreamKeepalive"] = self.upstreamKeepalive!
         }
@@ -973,6 +978,9 @@ public class ConfigL7UsKeepaliveRequest : Tea.TeaModel {
         guard let dict else { return }
         if let value = dict["Domain"] as? String {
             self.domain = value
+        }
+        if let value = dict["DownstreamKeepalive"] as? String {
+            self.downstreamKeepalive = value
         }
         if let value = dict["UpstreamKeepalive"] as? String {
             self.upstreamKeepalive = value
@@ -17394,6 +17402,8 @@ public class DescribeL7UsKeepaliveRequest : Tea.TeaModel {
 
 public class DescribeL7UsKeepaliveResponseBody : Tea.TeaModel {
     public class RsKeepalive : Tea.TeaModel {
+        public var dsKeepaliveTimeout: Int64?
+
         public var enabled: Bool?
 
         public var keepaliveRequests: Int64?
@@ -17414,6 +17424,9 @@ public class DescribeL7UsKeepaliveResponseBody : Tea.TeaModel {
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
+            if self.dsKeepaliveTimeout != nil {
+                map["DsKeepaliveTimeout"] = self.dsKeepaliveTimeout!
+            }
             if self.enabled != nil {
                 map["Enabled"] = self.enabled!
             }
@@ -17428,6 +17441,9 @@ public class DescribeL7UsKeepaliveResponseBody : Tea.TeaModel {
 
         public override func fromMap(_ dict: [String: Any?]?) -> Void {
             guard let dict else { return }
+            if let value = dict["DsKeepaliveTimeout"] as? Int64 {
+                self.dsKeepaliveTimeout = value
+            }
             if let value = dict["Enabled"] as? Bool {
                 self.enabled = value
             }
@@ -28027,6 +28043,8 @@ public class DescribeWebRulesResponseBody : Tea.TeaModel {
 
         public var ccTemplate: String?
 
+        public var certExpireTime: Int64?
+
         public var certName: String?
 
         public var certRegion: String?
@@ -28065,6 +28083,8 @@ public class DescribeWebRulesResponseBody : Tea.TeaModel {
 
         public var sslProtocols: String?
 
+        public var tls13CustomCiphers: [String]?
+
         public var userCertName: String?
 
         public var whiteList: [String]?
@@ -28095,6 +28115,9 @@ public class DescribeWebRulesResponseBody : Tea.TeaModel {
             }
             if self.ccTemplate != nil {
                 map["CcTemplate"] = self.ccTemplate!
+            }
+            if self.certExpireTime != nil {
+                map["CertExpireTime"] = self.certExpireTime!
             }
             if self.certName != nil {
                 map["CertName"] = self.certName!
@@ -28161,6 +28184,9 @@ public class DescribeWebRulesResponseBody : Tea.TeaModel {
             if self.sslProtocols != nil {
                 map["SslProtocols"] = self.sslProtocols!
             }
+            if self.tls13CustomCiphers != nil {
+                map["Tls13CustomCiphers"] = self.tls13CustomCiphers!
+            }
             if self.userCertName != nil {
                 map["UserCertName"] = self.userCertName!
             }
@@ -28183,6 +28209,9 @@ public class DescribeWebRulesResponseBody : Tea.TeaModel {
             }
             if let value = dict["CcTemplate"] as? String {
                 self.ccTemplate = value
+            }
+            if let value = dict["CertExpireTime"] as? Int64 {
+                self.certExpireTime = value
             }
             if let value = dict["CertName"] as? String {
                 self.certName = value
@@ -28262,6 +28291,9 @@ public class DescribeWebRulesResponseBody : Tea.TeaModel {
             }
             if let value = dict["SslProtocols"] as? String {
                 self.sslProtocols = value
+            }
+            if let value = dict["Tls13CustomCiphers"] as? [String] {
+                self.tls13CustomCiphers = value
             }
             if let value = dict["UserCertName"] as? String {
                 self.userCertName = value

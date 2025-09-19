@@ -301,6 +301,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.domain)) {
             query["Domain"] = request.domain ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.downstreamKeepalive)) {
+            query["DownstreamKeepalive"] = request.downstreamKeepalive ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.upstreamKeepalive)) {
             query["UpstreamKeepalive"] = request.upstreamKeepalive ?? "";
         }
