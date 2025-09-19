@@ -2148,6 +2148,8 @@ public class ElasticConfigStatus : Tea.TeaModel {
 
     public var scheduledPolicies: [ScheduledPolicy]?
 
+    public var targetInstances: Int64?
+
     public override init() {
         super.init()
     }
@@ -2190,6 +2192,9 @@ public class ElasticConfigStatus : Tea.TeaModel {
                 tmp.append(k.toMap())
             }
             map["scheduledPolicies"] = tmp
+        }
+        if self.targetInstances != nil {
+            map["targetInstances"] = self.targetInstances!
         }
         return map
     }
@@ -2236,6 +2241,9 @@ public class ElasticConfigStatus : Tea.TeaModel {
                 }
             }
             self.scheduledPolicies = tmp
+        }
+        if let value = dict["targetInstances"] as? Int64 {
+            self.targetInstances = value
         }
     }
 }
@@ -3259,7 +3267,6 @@ public class GetResourceTagsOutput : Tea.TeaModel {
 }
 
 public class GetScalingConfigStatusOutput : Tea.TeaModel {
-    public var scalingConfigStatus: ScalingConfigStatus?
 
     public override init() {
         super.init()
@@ -3271,24 +3278,15 @@ public class GetScalingConfigStatusOutput : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.scalingConfigStatus?.validate()
     }
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
-        if self.scalingConfigStatus != nil {
-            map["scalingConfigStatus"] = self.scalingConfigStatus?.toMap()
-        }
         return map
     }
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
-        if let value = dict["scalingConfigStatus"] as? [String: Any?] {
-            var model = ScalingConfigStatus()
-            model.fromMap(value)
-            self.scalingConfigStatus = model
-        }
     }
 }
 
@@ -4565,9 +4563,33 @@ public class ListResidentResourcePoolsOutput : Tea.TeaModel {
 }
 
 public class ListScalingConfigStatusOutput : Tea.TeaModel {
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+    }
+}
+
+public class ListScalingConfigsOutput : Tea.TeaModel {
     public var nextToken: String?
 
-    public var result: [ScalingConfigStatus]?
+    public var scalingConfigs: [ScalingConfigStatus]?
 
     public override init() {
         super.init()
@@ -4586,12 +4608,12 @@ public class ListScalingConfigStatusOutput : Tea.TeaModel {
         if self.nextToken != nil {
             map["nextToken"] = self.nextToken!
         }
-        if self.result != nil {
+        if self.scalingConfigs != nil {
             var tmp : [Any] = []
-            for k in self.result! {
+            for k in self.scalingConfigs! {
                 tmp.append(k.toMap())
             }
-            map["result"] = tmp
+            map["scalingConfigs"] = tmp
         }
         return map
     }
@@ -4601,7 +4623,7 @@ public class ListScalingConfigStatusOutput : Tea.TeaModel {
         if let value = dict["nextToken"] as? String {
             self.nextToken = value
         }
-        if let value = dict["result"] as? [Any?] {
+        if let value = dict["scalingConfigs"] as? [Any?] {
             var tmp : [ScalingConfigStatus] = []
             for v in value {
                 if v != nil {
@@ -4612,7 +4634,7 @@ public class ListScalingConfigStatusOutput : Tea.TeaModel {
                     tmp.append(model)
                 }
             }
-            self.result = tmp
+            self.scalingConfigs = tmp
         }
     }
 }
@@ -5900,9 +5922,13 @@ public class PutProvisionConfigInput : Tea.TeaModel {
 }
 
 public class PutScalingConfigInput : Tea.TeaModel {
-    public var residentConfig: ResidentConfig?
+    public var horizontalScalingPolicies: [ScalingPolicy]?
 
-    public var resourceType: String?
+    public var minInstances: Int64?
+
+    public var residentPoolId: String?
+
+    public var scheduledPolicies: [ScheduledPolicy]?
 
     public override init() {
         super.init()
@@ -5914,41 +5940,71 @@ public class PutScalingConfigInput : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.residentConfig?.validate()
     }
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
-        if self.residentConfig != nil {
-            map["residentConfig"] = self.residentConfig?.toMap()
+        if self.horizontalScalingPolicies != nil {
+            var tmp : [Any] = []
+            for k in self.horizontalScalingPolicies! {
+                tmp.append(k.toMap())
+            }
+            map["horizontalScalingPolicies"] = tmp
         }
-        if self.resourceType != nil {
-            map["resourceType"] = self.resourceType!
+        if self.minInstances != nil {
+            map["minInstances"] = self.minInstances!
+        }
+        if self.residentPoolId != nil {
+            map["residentPoolId"] = self.residentPoolId!
+        }
+        if self.scheduledPolicies != nil {
+            var tmp : [Any] = []
+            for k in self.scheduledPolicies! {
+                tmp.append(k.toMap())
+            }
+            map["scheduledPolicies"] = tmp
         }
         return map
     }
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
-        if let value = dict["residentConfig"] as? [String: Any?] {
-            var model = ResidentConfig()
-            model.fromMap(value)
-            self.residentConfig = model
+        if let value = dict["horizontalScalingPolicies"] as? [Any?] {
+            var tmp : [ScalingPolicy] = []
+            for v in value {
+                if v != nil {
+                    var model = ScalingPolicy()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.horizontalScalingPolicies = tmp
         }
-        if let value = dict["resourceType"] as? String {
-            self.resourceType = value
+        if let value = dict["minInstances"] as? Int64 {
+            self.minInstances = value
+        }
+        if let value = dict["residentPoolId"] as? String {
+            self.residentPoolId = value
+        }
+        if let value = dict["scheduledPolicies"] as? [Any?] {
+            var tmp : [ScheduledPolicy] = []
+            for v in value {
+                if v != nil {
+                    var model = ScheduledPolicy()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.scheduledPolicies = tmp
         }
     }
 }
 
 public class PutScalingConfigOutput : Tea.TeaModel {
-    public var functionName: String?
-
-    public var qualifier: String?
-
-    public var residentConfig: ResidentConfig?
-
-    public var resourceType: String?
 
     public override init() {
         super.init()
@@ -5960,42 +6016,15 @@ public class PutScalingConfigOutput : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.residentConfig?.validate()
     }
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
-        if self.functionName != nil {
-            map["functionName"] = self.functionName!
-        }
-        if self.qualifier != nil {
-            map["qualifier"] = self.qualifier!
-        }
-        if self.residentConfig != nil {
-            map["residentConfig"] = self.residentConfig?.toMap()
-        }
-        if self.resourceType != nil {
-            map["resourceType"] = self.resourceType!
-        }
         return map
     }
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
-        if let value = dict["functionName"] as? String {
-            self.functionName = value
-        }
-        if let value = dict["qualifier"] as? String {
-            self.qualifier = value
-        }
-        if let value = dict["residentConfig"] as? [String: Any?] {
-            var model = ResidentConfig()
-            model.fromMap(value)
-            self.residentConfig = model
-        }
-        if let value = dict["resourceType"] as? String {
-            self.resourceType = value
-        }
     }
 }
 
@@ -6340,7 +6369,7 @@ public class ResidentResourceAllocation : Tea.TeaModel {
 public class ResidentResourceAllocationStatus : Tea.TeaModel {
     public var lastAllocatedTime: String?
 
-    public var lastAllocation: ResidentResourceAllocation?
+    public var lastAllocation: [ResidentResourceAllocation]?
 
     public override init() {
         super.init()
@@ -6352,7 +6381,6 @@ public class ResidentResourceAllocationStatus : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.lastAllocation?.validate()
     }
 
     public override func toMap() -> [String : Any] {
@@ -6361,7 +6389,11 @@ public class ResidentResourceAllocationStatus : Tea.TeaModel {
             map["lastAllocatedTime"] = self.lastAllocatedTime!
         }
         if self.lastAllocation != nil {
-            map["lastAllocation"] = self.lastAllocation?.toMap()
+            var tmp : [Any] = []
+            for k in self.lastAllocation! {
+                tmp.append(k.toMap())
+            }
+            map["lastAllocation"] = tmp
         }
         return map
     }
@@ -6371,10 +6403,18 @@ public class ResidentResourceAllocationStatus : Tea.TeaModel {
         if let value = dict["lastAllocatedTime"] as? String {
             self.lastAllocatedTime = value
         }
-        if let value = dict["lastAllocation"] as? [String: Any?] {
-            var model = ResidentResourceAllocation()
-            model.fromMap(value)
-            self.lastAllocation = model
+        if let value = dict["lastAllocation"] as? [Any?] {
+            var tmp : [ResidentResourceAllocation] = []
+            for v in value {
+                if v != nil {
+                    var model = ResidentResourceAllocation()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.lastAllocation = tmp
         }
     }
 }
@@ -6942,15 +6982,21 @@ public class SLSTriggerLogConfig : Tea.TeaModel {
 }
 
 public class ScalingConfigStatus : Tea.TeaModel {
-    public var functionName: String?
+    public var currentError: String?
 
-    public var qualifier: String?
+    public var currentInstances: Int64?
 
-    public var residentConfig: ResidentConfig?
+    public var functionArn: String?
 
-    public var resourceType: String?
+    public var horizontalScalingPolicies: [ScalingPolicy]?
 
-    public var scalingStatus: ScalingStatus?
+    public var minInstances: Int64?
+
+    public var residentPoolId: String?
+
+    public var scheduledPolicies: [ScheduledPolicy]?
+
+    public var targetInstances: Int64?
 
     public override init() {
         super.init()
@@ -6962,50 +7008,90 @@ public class ScalingConfigStatus : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.residentConfig?.validate()
-        try self.scalingStatus?.validate()
     }
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
-        if self.functionName != nil {
-            map["functionName"] = self.functionName!
+        if self.currentError != nil {
+            map["currentError"] = self.currentError!
         }
-        if self.qualifier != nil {
-            map["qualifier"] = self.qualifier!
+        if self.currentInstances != nil {
+            map["currentInstances"] = self.currentInstances!
         }
-        if self.residentConfig != nil {
-            map["residentConfig"] = self.residentConfig?.toMap()
+        if self.functionArn != nil {
+            map["functionArn"] = self.functionArn!
         }
-        if self.resourceType != nil {
-            map["resourceType"] = self.resourceType!
+        if self.horizontalScalingPolicies != nil {
+            var tmp : [Any] = []
+            for k in self.horizontalScalingPolicies! {
+                tmp.append(k.toMap())
+            }
+            map["horizontalScalingPolicies"] = tmp
         }
-        if self.scalingStatus != nil {
-            map["scalingStatus"] = self.scalingStatus?.toMap()
+        if self.minInstances != nil {
+            map["minInstances"] = self.minInstances!
+        }
+        if self.residentPoolId != nil {
+            map["residentPoolId"] = self.residentPoolId!
+        }
+        if self.scheduledPolicies != nil {
+            var tmp : [Any] = []
+            for k in self.scheduledPolicies! {
+                tmp.append(k.toMap())
+            }
+            map["scheduledPolicies"] = tmp
+        }
+        if self.targetInstances != nil {
+            map["targetInstances"] = self.targetInstances!
         }
         return map
     }
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
-        if let value = dict["functionName"] as? String {
-            self.functionName = value
+        if let value = dict["currentError"] as? String {
+            self.currentError = value
         }
-        if let value = dict["qualifier"] as? String {
-            self.qualifier = value
+        if let value = dict["currentInstances"] as? Int64 {
+            self.currentInstances = value
         }
-        if let value = dict["residentConfig"] as? [String: Any?] {
-            var model = ResidentConfig()
-            model.fromMap(value)
-            self.residentConfig = model
+        if let value = dict["functionArn"] as? String {
+            self.functionArn = value
         }
-        if let value = dict["resourceType"] as? String {
-            self.resourceType = value
+        if let value = dict["horizontalScalingPolicies"] as? [Any?] {
+            var tmp : [ScalingPolicy] = []
+            for v in value {
+                if v != nil {
+                    var model = ScalingPolicy()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.horizontalScalingPolicies = tmp
         }
-        if let value = dict["scalingStatus"] as? [String: Any?] {
-            var model = ScalingStatus()
-            model.fromMap(value)
-            self.scalingStatus = model
+        if let value = dict["minInstances"] as? Int64 {
+            self.minInstances = value
+        }
+        if let value = dict["residentPoolId"] as? String {
+            self.residentPoolId = value
+        }
+        if let value = dict["scheduledPolicies"] as? [Any?] {
+            var tmp : [ScheduledPolicy] = []
+            for v in value {
+                if v != nil {
+                    var model = ScheduledPolicy()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.scheduledPolicies = tmp
+        }
+        if let value = dict["targetInstances"] as? Int64 {
+            self.targetInstances = value
         }
     }
 }
@@ -8767,6 +8853,8 @@ public class UpdateFunctionInput : Tea.TeaModel {
 public class UpdateResidentResourcePoolInput : Tea.TeaModel {
     public var name: String?
 
+    public var useScaling: Bool?
+
     public override init() {
         super.init()
     }
@@ -8784,6 +8872,9 @@ public class UpdateResidentResourcePoolInput : Tea.TeaModel {
         if self.name != nil {
             map["name"] = self.name!
         }
+        if self.useScaling != nil {
+            map["useScaling"] = self.useScaling!
+        }
         return map
     }
 
@@ -8791,6 +8882,9 @@ public class UpdateResidentResourcePoolInput : Tea.TeaModel {
         guard let dict else { return }
         if let value = dict["name"] as? String {
             self.name = value
+        }
+        if let value = dict["useScaling"] as? Bool {
+            self.useScaling = value
         }
     }
 }
@@ -9981,6 +10075,76 @@ public class DeleteProvisionConfigResponse : Tea.TeaModel {
     }
 }
 
+public class DeleteScalingConfigRequest : Tea.TeaModel {
+    public var qualifier: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.qualifier != nil {
+            map["qualifier"] = self.qualifier!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["qualifier"] as? String {
+            self.qualifier = value
+        }
+    }
+}
+
+public class DeleteScalingConfigResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+    }
+}
+
 public class DeleteTriggerResponse : Tea.TeaModel {
     public var headers: [String: String]?
 
@@ -10990,6 +11154,87 @@ public class GetProvisionConfigResponse : Tea.TeaModel {
         }
         if let value = dict["body"] as? [String: Any?] {
             var model = ProvisionConfig()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
+public class GetScalingConfigRequest : Tea.TeaModel {
+    public var qualifier: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.qualifier != nil {
+            map["qualifier"] = self.qualifier!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["qualifier"] as? String {
+            self.qualifier = value
+        }
+    }
+}
+
+public class GetScalingConfigResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: ScalingConfigStatus?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = ScalingConfigStatus()
             model.fromMap(value)
             self.body = model
         }
@@ -12610,6 +12855,103 @@ public class ListProvisionConfigsResponse : Tea.TeaModel {
     }
 }
 
+public class ListScalingConfigsRequest : Tea.TeaModel {
+    public var functionName: String?
+
+    public var limit: Int32?
+
+    public var nextToken: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.functionName != nil {
+            map["functionName"] = self.functionName!
+        }
+        if self.limit != nil {
+            map["limit"] = self.limit!
+        }
+        if self.nextToken != nil {
+            map["nextToken"] = self.nextToken!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["functionName"] as? String {
+            self.functionName = value
+        }
+        if let value = dict["limit"] as? Int32 {
+            self.limit = value
+        }
+        if let value = dict["nextToken"] as? String {
+            self.nextToken = value
+        }
+    }
+}
+
+public class ListScalingConfigsResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: ListScalingConfigsOutput?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = ListScalingConfigsOutput()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
 public class ListTagResourcesRequest : Tea.TeaModel {
     public class Tag : Tea.TeaModel {
         public var key: String?
@@ -13409,6 +13751,98 @@ public class PutProvisionConfigResponse : Tea.TeaModel {
         }
         if let value = dict["body"] as? [String: Any?] {
             var model = ProvisionConfig()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
+public class PutScalingConfigRequest : Tea.TeaModel {
+    public var body: PutScalingConfigInput?
+
+    public var qualifier: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        if self.qualifier != nil {
+            map["qualifier"] = self.qualifier!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = PutScalingConfigInput()
+            model.fromMap(value)
+            self.body = model
+        }
+        if let value = dict["qualifier"] as? String {
+            self.qualifier = value
+        }
+    }
+}
+
+public class PutScalingConfigResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: ScalingConfigStatus?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = ScalingConfigStatus()
             model.fromMap(value)
             self.body = model
         }
