@@ -4733,6 +4733,8 @@ public class ListIpamPoolsResponseBody : Tea.TeaModel {
 
         public var autoImport: Bool?
 
+        public var cidrs: [String]?
+
         public var createTime: String?
 
         public var hasSubPool: Bool?
@@ -4798,6 +4800,9 @@ public class ListIpamPoolsResponseBody : Tea.TeaModel {
             }
             if self.autoImport != nil {
                 map["AutoImport"] = self.autoImport!
+            }
+            if self.cidrs != nil {
+                map["Cidrs"] = self.cidrs!
             }
             if self.createTime != nil {
                 map["CreateTime"] = self.createTime!
@@ -4879,6 +4884,9 @@ public class ListIpamPoolsResponseBody : Tea.TeaModel {
             }
             if let value = dict["AutoImport"] as? Bool {
                 self.autoImport = value
+            }
+            if let value = dict["Cidrs"] as? [String] {
+                self.cidrs = value
             }
             if let value = dict["CreateTime"] as? String {
                 self.createTime = value
