@@ -4864,6 +4864,8 @@ public class InitializeRequest : Tea.TeaModel {
 
     public var authorize: String?
 
+    public var autoRegistration: String?
+
     public var callbackToken: String?
 
     public var callbackUrl: String?
@@ -4894,9 +4896,15 @@ public class InitializeRequest : Tea.TeaModel {
 
     public var experienceCode: String?
 
+    public var faceGroupCodes: String?
+
     public var facePictureBase64: String?
 
     public var facePictureUrl: String?
+
+    public var faceRegisterGroupCode: String?
+
+    public var faceVerifyThreshold: String?
 
     public var idFaceQuality: String?
 
@@ -4926,7 +4934,11 @@ public class InitializeRequest : Tea.TeaModel {
 
     public var productFlow: String?
 
+    public var returnFaces: String?
+
     public var returnUrl: String?
+
+    public var saveFacePicture: String?
 
     public var sceneCode: String?
 
@@ -4940,7 +4952,13 @@ public class InitializeRequest : Tea.TeaModel {
 
     public var styleConfig: String?
 
+    public var targetFacePicture: String?
+
+    public var targetFacePictureUrl: String?
+
     public var useNFC: String?
+
+    public var verifyModel: String?
 
     public override init() {
         super.init()
@@ -4961,6 +4979,9 @@ public class InitializeRequest : Tea.TeaModel {
         }
         if self.authorize != nil {
             map["Authorize"] = self.authorize!
+        }
+        if self.autoRegistration != nil {
+            map["AutoRegistration"] = self.autoRegistration!
         }
         if self.callbackToken != nil {
             map["CallbackToken"] = self.callbackToken!
@@ -5007,11 +5028,20 @@ public class InitializeRequest : Tea.TeaModel {
         if self.experienceCode != nil {
             map["ExperienceCode"] = self.experienceCode!
         }
+        if self.faceGroupCodes != nil {
+            map["FaceGroupCodes"] = self.faceGroupCodes!
+        }
         if self.facePictureBase64 != nil {
             map["FacePictureBase64"] = self.facePictureBase64!
         }
         if self.facePictureUrl != nil {
             map["FacePictureUrl"] = self.facePictureUrl!
+        }
+        if self.faceRegisterGroupCode != nil {
+            map["FaceRegisterGroupCode"] = self.faceRegisterGroupCode!
+        }
+        if self.faceVerifyThreshold != nil {
+            map["FaceVerifyThreshold"] = self.faceVerifyThreshold!
         }
         if self.idFaceQuality != nil {
             map["IdFaceQuality"] = self.idFaceQuality!
@@ -5055,8 +5085,14 @@ public class InitializeRequest : Tea.TeaModel {
         if self.productFlow != nil {
             map["ProductFlow"] = self.productFlow!
         }
+        if self.returnFaces != nil {
+            map["ReturnFaces"] = self.returnFaces!
+        }
         if self.returnUrl != nil {
             map["ReturnUrl"] = self.returnUrl!
+        }
+        if self.saveFacePicture != nil {
+            map["SaveFacePicture"] = self.saveFacePicture!
         }
         if self.sceneCode != nil {
             map["SceneCode"] = self.sceneCode!
@@ -5076,8 +5112,17 @@ public class InitializeRequest : Tea.TeaModel {
         if self.styleConfig != nil {
             map["StyleConfig"] = self.styleConfig!
         }
+        if self.targetFacePicture != nil {
+            map["TargetFacePicture"] = self.targetFacePicture!
+        }
+        if self.targetFacePictureUrl != nil {
+            map["TargetFacePictureUrl"] = self.targetFacePictureUrl!
+        }
         if self.useNFC != nil {
             map["UseNFC"] = self.useNFC!
+        }
+        if self.verifyModel != nil {
+            map["VerifyModel"] = self.verifyModel!
         }
         return map
     }
@@ -5089,6 +5134,9 @@ public class InitializeRequest : Tea.TeaModel {
         }
         if let value = dict["Authorize"] as? String {
             self.authorize = value
+        }
+        if let value = dict["AutoRegistration"] as? String {
+            self.autoRegistration = value
         }
         if let value = dict["CallbackToken"] as? String {
             self.callbackToken = value
@@ -5135,11 +5183,20 @@ public class InitializeRequest : Tea.TeaModel {
         if let value = dict["ExperienceCode"] as? String {
             self.experienceCode = value
         }
+        if let value = dict["FaceGroupCodes"] as? String {
+            self.faceGroupCodes = value
+        }
         if let value = dict["FacePictureBase64"] as? String {
             self.facePictureBase64 = value
         }
         if let value = dict["FacePictureUrl"] as? String {
             self.facePictureUrl = value
+        }
+        if let value = dict["FaceRegisterGroupCode"] as? String {
+            self.faceRegisterGroupCode = value
+        }
+        if let value = dict["FaceVerifyThreshold"] as? String {
+            self.faceVerifyThreshold = value
         }
         if let value = dict["IdFaceQuality"] as? String {
             self.idFaceQuality = value
@@ -5183,8 +5240,14 @@ public class InitializeRequest : Tea.TeaModel {
         if let value = dict["ProductFlow"] as? String {
             self.productFlow = value
         }
+        if let value = dict["ReturnFaces"] as? String {
+            self.returnFaces = value
+        }
         if let value = dict["ReturnUrl"] as? String {
             self.returnUrl = value
+        }
+        if let value = dict["SaveFacePicture"] as? String {
+            self.saveFacePicture = value
         }
         if let value = dict["SceneCode"] as? String {
             self.sceneCode = value
@@ -5204,8 +5267,17 @@ public class InitializeRequest : Tea.TeaModel {
         if let value = dict["StyleConfig"] as? String {
             self.styleConfig = value
         }
+        if let value = dict["TargetFacePicture"] as? String {
+            self.targetFacePicture = value
+        }
+        if let value = dict["TargetFacePictureUrl"] as? String {
+            self.targetFacePictureUrl = value
+        }
         if let value = dict["UseNFC"] as? String {
             self.useNFC = value
+        }
+        if let value = dict["VerifyModel"] as? String {
+            self.verifyModel = value
         }
     }
 }
@@ -5214,6 +5286,8 @@ public class InitializeShrinkRequest : Tea.TeaModel {
     public var appQualityCheck: String?
 
     public var authorize: String?
+
+    public var autoRegistration: String?
 
     public var callbackToken: String?
 
@@ -5245,9 +5319,15 @@ public class InitializeShrinkRequest : Tea.TeaModel {
 
     public var experienceCode: String?
 
+    public var faceGroupCodes: String?
+
     public var facePictureBase64: String?
 
     public var facePictureUrl: String?
+
+    public var faceRegisterGroupCode: String?
+
+    public var faceVerifyThreshold: String?
 
     public var idFaceQuality: String?
 
@@ -5277,7 +5357,11 @@ public class InitializeShrinkRequest : Tea.TeaModel {
 
     public var productFlow: String?
 
+    public var returnFaces: String?
+
     public var returnUrl: String?
+
+    public var saveFacePicture: String?
 
     public var sceneCode: String?
 
@@ -5291,7 +5375,13 @@ public class InitializeShrinkRequest : Tea.TeaModel {
 
     public var styleConfig: String?
 
+    public var targetFacePicture: String?
+
+    public var targetFacePictureUrl: String?
+
     public var useNFC: String?
+
+    public var verifyModel: String?
 
     public override init() {
         super.init()
@@ -5312,6 +5402,9 @@ public class InitializeShrinkRequest : Tea.TeaModel {
         }
         if self.authorize != nil {
             map["Authorize"] = self.authorize!
+        }
+        if self.autoRegistration != nil {
+            map["AutoRegistration"] = self.autoRegistration!
         }
         if self.callbackToken != nil {
             map["CallbackToken"] = self.callbackToken!
@@ -5358,11 +5451,20 @@ public class InitializeShrinkRequest : Tea.TeaModel {
         if self.experienceCode != nil {
             map["ExperienceCode"] = self.experienceCode!
         }
+        if self.faceGroupCodes != nil {
+            map["FaceGroupCodes"] = self.faceGroupCodes!
+        }
         if self.facePictureBase64 != nil {
             map["FacePictureBase64"] = self.facePictureBase64!
         }
         if self.facePictureUrl != nil {
             map["FacePictureUrl"] = self.facePictureUrl!
+        }
+        if self.faceRegisterGroupCode != nil {
+            map["FaceRegisterGroupCode"] = self.faceRegisterGroupCode!
+        }
+        if self.faceVerifyThreshold != nil {
+            map["FaceVerifyThreshold"] = self.faceVerifyThreshold!
         }
         if self.idFaceQuality != nil {
             map["IdFaceQuality"] = self.idFaceQuality!
@@ -5406,8 +5508,14 @@ public class InitializeShrinkRequest : Tea.TeaModel {
         if self.productFlow != nil {
             map["ProductFlow"] = self.productFlow!
         }
+        if self.returnFaces != nil {
+            map["ReturnFaces"] = self.returnFaces!
+        }
         if self.returnUrl != nil {
             map["ReturnUrl"] = self.returnUrl!
+        }
+        if self.saveFacePicture != nil {
+            map["SaveFacePicture"] = self.saveFacePicture!
         }
         if self.sceneCode != nil {
             map["SceneCode"] = self.sceneCode!
@@ -5427,8 +5535,17 @@ public class InitializeShrinkRequest : Tea.TeaModel {
         if self.styleConfig != nil {
             map["StyleConfig"] = self.styleConfig!
         }
+        if self.targetFacePicture != nil {
+            map["TargetFacePicture"] = self.targetFacePicture!
+        }
+        if self.targetFacePictureUrl != nil {
+            map["TargetFacePictureUrl"] = self.targetFacePictureUrl!
+        }
         if self.useNFC != nil {
             map["UseNFC"] = self.useNFC!
+        }
+        if self.verifyModel != nil {
+            map["VerifyModel"] = self.verifyModel!
         }
         return map
     }
@@ -5440,6 +5557,9 @@ public class InitializeShrinkRequest : Tea.TeaModel {
         }
         if let value = dict["Authorize"] as? String {
             self.authorize = value
+        }
+        if let value = dict["AutoRegistration"] as? String {
+            self.autoRegistration = value
         }
         if let value = dict["CallbackToken"] as? String {
             self.callbackToken = value
@@ -5486,11 +5606,20 @@ public class InitializeShrinkRequest : Tea.TeaModel {
         if let value = dict["ExperienceCode"] as? String {
             self.experienceCode = value
         }
+        if let value = dict["FaceGroupCodes"] as? String {
+            self.faceGroupCodes = value
+        }
         if let value = dict["FacePictureBase64"] as? String {
             self.facePictureBase64 = value
         }
         if let value = dict["FacePictureUrl"] as? String {
             self.facePictureUrl = value
+        }
+        if let value = dict["FaceRegisterGroupCode"] as? String {
+            self.faceRegisterGroupCode = value
+        }
+        if let value = dict["FaceVerifyThreshold"] as? String {
+            self.faceVerifyThreshold = value
         }
         if let value = dict["IdFaceQuality"] as? String {
             self.idFaceQuality = value
@@ -5534,8 +5663,14 @@ public class InitializeShrinkRequest : Tea.TeaModel {
         if let value = dict["ProductFlow"] as? String {
             self.productFlow = value
         }
+        if let value = dict["ReturnFaces"] as? String {
+            self.returnFaces = value
+        }
         if let value = dict["ReturnUrl"] as? String {
             self.returnUrl = value
+        }
+        if let value = dict["SaveFacePicture"] as? String {
+            self.saveFacePicture = value
         }
         if let value = dict["SceneCode"] as? String {
             self.sceneCode = value
@@ -5555,8 +5690,17 @@ public class InitializeShrinkRequest : Tea.TeaModel {
         if let value = dict["StyleConfig"] as? String {
             self.styleConfig = value
         }
+        if let value = dict["TargetFacePicture"] as? String {
+            self.targetFacePicture = value
+        }
+        if let value = dict["TargetFacePictureUrl"] as? String {
+            self.targetFacePictureUrl = value
+        }
         if let value = dict["UseNFC"] as? String {
             self.useNFC = value
+        }
+        if let value = dict["VerifyModel"] as? String {
+            self.verifyModel = value
         }
     }
 }
