@@ -1532,6 +1532,37 @@ public class CustomParams : Tea.TeaModel {
     }
 }
 
+public class CustomPrompt : Tea.TeaModel {
+    public var roleDefinition: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.roleDefinition != nil {
+            map["RoleDefinition"] = self.roleDefinition!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["RoleDefinition"] as? String {
+            self.roleDefinition = value
+        }
+    }
+}
+
 public class DataIngestion : Tea.TeaModel {
     public class Actions : Tea.TeaModel {
         public var fastFailPolicy: FastFailPolicy?
@@ -1866,6 +1897,8 @@ public class Dataset : Tea.TeaModel {
 
     public var updateTime: String?
 
+    public var workflowParameters: [WorkflowParameter]?
+
     public override init() {
         super.init()
     }
@@ -1922,6 +1955,13 @@ public class Dataset : Tea.TeaModel {
         if self.updateTime != nil {
             map["UpdateTime"] = self.updateTime!
         }
+        if self.workflowParameters != nil {
+            var tmp : [Any] = []
+            for k in self.workflowParameters! {
+                tmp.append(k.toMap())
+            }
+            map["WorkflowParameters"] = tmp
+        }
         return map
     }
 
@@ -1968,6 +2008,19 @@ public class Dataset : Tea.TeaModel {
         }
         if let value = dict["UpdateTime"] as? String {
             self.updateTime = value
+        }
+        if let value = dict["WorkflowParameters"] as? [Any?] {
+            var tmp : [WorkflowParameter] = []
+            for v in value {
+                if v != nil {
+                    var model = WorkflowParameter()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.workflowParameters = tmp
         }
     }
 }
@@ -4042,6 +4095,45 @@ public class ImageScore : Tea.TeaModel {
         guard let dict else { return }
         if let value = dict["OverallQualityScore"] as? Double {
             self.overallQualityScore = value
+        }
+    }
+}
+
+public class ImageURL : Tea.TeaModel {
+    public var thumbnail: String?
+
+    public var URL: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.thumbnail != nil {
+            map["Thumbnail"] = self.thumbnail!
+        }
+        if self.URL != nil {
+            map["URL"] = self.URL!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["Thumbnail"] as? String {
+            self.thumbnail = value
+        }
+        if let value = dict["URL"] as? String {
+            self.URL = value
         }
     }
 }
@@ -6545,6 +6637,8 @@ public class Story : Tea.TeaModel {
 public class StreamOptions : Tea.TeaModel {
     public var incrementalOutput: Bool?
 
+    public var needReturnFinalResult: Bool?
+
     public override init() {
         super.init()
     }
@@ -6562,6 +6656,9 @@ public class StreamOptions : Tea.TeaModel {
         if self.incrementalOutput != nil {
             map["IncrementalOutput"] = self.incrementalOutput!
         }
+        if self.needReturnFinalResult != nil {
+            map["NeedReturnFinalResult"] = self.needReturnFinalResult!
+        }
         return map
     }
 
@@ -6569,6 +6666,9 @@ public class StreamOptions : Tea.TeaModel {
         guard let dict else { return }
         if let value = dict["IncrementalOutput"] as? Bool {
             self.incrementalOutput = value
+        }
+        if let value = dict["NeedReturnFinalResult"] as? Bool {
+            self.needReturnFinalResult = value
         }
     }
 }
