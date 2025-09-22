@@ -17,7 +17,7 @@ English | [简体中文](README-CN.md)
 To integrate `AlibabacloudAnyTrans20250707` into your Xcode project using [Carthage](https://github.com/Carthage/Carthage), specify it in your `Cartfile`:
 
 ```ogdl
-github "alibabacloud-sdk-swift/anytrans-20250707" "1.1.2"
+github "alibabacloud-sdk-swift/anytrans-20250707" "1.1.3"
 ```
 
 ### Swift Package Manager
@@ -26,7 +26,7 @@ To integrate `AlibabacloudAnyTrans20250707` into your Xcode project using [Swift
 
 ```swift
 dependencies: [
-    .package(url: "https://github.com/alibabacloud-sdk-swift/anytrans-20250707.git", from: "1.1.2")
+    .package(url: "https://github.com/alibabacloud-sdk-swift/anytrans-20250707.git", from: "1.1.3")
 ]
 ```
 
