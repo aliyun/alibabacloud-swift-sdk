@@ -365,6 +365,40 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func imageQueueModerationWithOptions(_ request: ImageQueueModerationRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ImageQueueModerationResponse {
+        try TeaUtils.Client.validateModel(request)
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.service)) {
+            body["Service"] = request.service ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.serviceParameters)) {
+            body["ServiceParameters"] = request.serviceParameters ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "ImageQueueModeration",
+            "version": "2022-03-02",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(ImageQueueModerationResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func imageQueueModeration(_ request: ImageQueueModerationRequest) async throws -> ImageQueueModerationResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await imageQueueModerationWithOptions(request as! ImageQueueModerationRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func manualCallbackWithOptions(_ request: ManualCallbackRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ManualCallbackResponse {
         try TeaUtils.Client.validateModel(request)
         var body: [String: Any] = [:]
