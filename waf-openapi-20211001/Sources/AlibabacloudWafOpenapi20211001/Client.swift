@@ -6851,6 +6851,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func describeTemplateResourcesWithOptions(_ request: DescribeTemplateResourcesRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DescribeTemplateResourcesResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.assetApi)) {
+            query["AssetApi"] = request.assetApi ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.instanceId)) {
             query["InstanceId"] = request.instanceId ?? "";
         }
@@ -9058,6 +9061,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func modifyTemplateResourcesWithOptions(_ request: ModifyTemplateResourcesRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ModifyTemplateResourcesResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.bindAssets)) {
+            query["BindAssets"] = request.bindAssets ?? [];
+        }
         if (!TeaUtils.Client.isUnset(request.bindResourceGroups)) {
             query["BindResourceGroups"] = request.bindResourceGroups ?? [];
         }
@@ -9075,6 +9081,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.templateId)) {
             query["TemplateId"] = request.templateId!;
+        }
+        if (!TeaUtils.Client.isUnset(request.unbindAssets)) {
+            query["UnbindAssets"] = request.unbindAssets ?? [];
         }
         if (!TeaUtils.Client.isUnset(request.unbindResourceGroups)) {
             query["UnbindResourceGroups"] = request.unbindResourceGroups ?? [];

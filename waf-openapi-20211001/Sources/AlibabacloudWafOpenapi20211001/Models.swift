@@ -37496,6 +37496,8 @@ public class DescribeTemplateResourceCountRequest : Tea.TeaModel {
 
 public class DescribeTemplateResourceCountResponseBody : Tea.TeaModel {
     public class ResourceCount : Tea.TeaModel {
+        public var assetCount: Int32?
+
         public var groupCount: Int32?
 
         public var singleCount: Int32?
@@ -37516,6 +37518,9 @@ public class DescribeTemplateResourceCountResponseBody : Tea.TeaModel {
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
+            if self.assetCount != nil {
+                map["AssetCount"] = self.assetCount!
+            }
             if self.groupCount != nil {
                 map["GroupCount"] = self.groupCount!
             }
@@ -37530,6 +37535,9 @@ public class DescribeTemplateResourceCountResponseBody : Tea.TeaModel {
 
         public override func fromMap(_ dict: [String: Any?]?) -> Void {
             guard let dict else { return }
+            if let value = dict["AssetCount"] as? Int32 {
+                self.assetCount = value
+            }
             if let value = dict["GroupCount"] as? Int32 {
                 self.groupCount = value
             }
@@ -37644,6 +37652,8 @@ public class DescribeTemplateResourceCountResponse : Tea.TeaModel {
 }
 
 public class DescribeTemplateResourcesRequest : Tea.TeaModel {
+    public var assetApi: String?
+
     public var instanceId: String?
 
     public var maxResults: Int32?
@@ -37674,6 +37684,9 @@ public class DescribeTemplateResourcesRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.assetApi != nil {
+            map["AssetApi"] = self.assetApi!
+        }
         if self.instanceId != nil {
             map["InstanceId"] = self.instanceId!
         }
@@ -37703,6 +37716,9 @@ public class DescribeTemplateResourcesRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["AssetApi"] as? String {
+            self.assetApi = value
+        }
         if let value = dict["InstanceId"] as? String {
             self.instanceId = value
         }
@@ -46880,6 +46896,8 @@ public class ModifyResourceLogStatusResponse : Tea.TeaModel {
 }
 
 public class ModifyTemplateResourcesRequest : Tea.TeaModel {
+    public var bindAssets: [String]?
+
     public var bindResourceGroups: [String]?
 
     public var bindResources: [String]?
@@ -46891,6 +46909,8 @@ public class ModifyTemplateResourcesRequest : Tea.TeaModel {
     public var resourceManagerResourceGroupId: String?
 
     public var templateId: Int64?
+
+    public var unbindAssets: [String]?
 
     public var unbindResourceGroups: [String]?
 
@@ -46910,6 +46930,9 @@ public class ModifyTemplateResourcesRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.bindAssets != nil {
+            map["BindAssets"] = self.bindAssets!
+        }
         if self.bindResourceGroups != nil {
             map["BindResourceGroups"] = self.bindResourceGroups!
         }
@@ -46928,6 +46951,9 @@ public class ModifyTemplateResourcesRequest : Tea.TeaModel {
         if self.templateId != nil {
             map["TemplateId"] = self.templateId!
         }
+        if self.unbindAssets != nil {
+            map["UnbindAssets"] = self.unbindAssets!
+        }
         if self.unbindResourceGroups != nil {
             map["UnbindResourceGroups"] = self.unbindResourceGroups!
         }
@@ -46939,6 +46965,9 @@ public class ModifyTemplateResourcesRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["BindAssets"] as? [String] {
+            self.bindAssets = value
+        }
         if let value = dict["BindResourceGroups"] as? [String] {
             self.bindResourceGroups = value
         }
@@ -46956,6 +46985,9 @@ public class ModifyTemplateResourcesRequest : Tea.TeaModel {
         }
         if let value = dict["TemplateId"] as? Int64 {
             self.templateId = value
+        }
+        if let value = dict["UnbindAssets"] as? [String] {
+            self.unbindAssets = value
         }
         if let value = dict["UnbindResourceGroups"] as? [String] {
             self.unbindResourceGroups = value
