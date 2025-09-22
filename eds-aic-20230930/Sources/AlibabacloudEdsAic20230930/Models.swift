@@ -12924,6 +12924,158 @@ public class ExpandDataVolumeResponse : Tea.TeaModel {
     }
 }
 
+public class ExpandPhoneDataVolumeRequest : Tea.TeaModel {
+    public var autoPay: Bool?
+
+    public var bizRegionId: String?
+
+    public var instanceIds: [String]?
+
+    public var phoneDataVolume: Int32?
+
+    public var promotionId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.autoPay != nil {
+            map["AutoPay"] = self.autoPay!
+        }
+        if self.bizRegionId != nil {
+            map["BizRegionId"] = self.bizRegionId!
+        }
+        if self.instanceIds != nil {
+            map["InstanceIds"] = self.instanceIds!
+        }
+        if self.phoneDataVolume != nil {
+            map["PhoneDataVolume"] = self.phoneDataVolume!
+        }
+        if self.promotionId != nil {
+            map["PromotionId"] = self.promotionId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["AutoPay"] as? Bool {
+            self.autoPay = value
+        }
+        if let value = dict["BizRegionId"] as? String {
+            self.bizRegionId = value
+        }
+        if let value = dict["InstanceIds"] as? [String] {
+            self.instanceIds = value
+        }
+        if let value = dict["PhoneDataVolume"] as? Int32 {
+            self.phoneDataVolume = value
+        }
+        if let value = dict["PromotionId"] as? String {
+            self.promotionId = value
+        }
+    }
+}
+
+public class ExpandPhoneDataVolumeResponseBody : Tea.TeaModel {
+    public var orderId: String?
+
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.orderId != nil {
+            map["OrderId"] = self.orderId!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["OrderId"] as? String {
+            self.orderId = value
+        }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+    }
+}
+
+public class ExpandPhoneDataVolumeResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: ExpandPhoneDataVolumeResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = ExpandPhoneDataVolumeResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
 public class FetchFileRequest : Tea.TeaModel {
     public var androidInstanceIdList: [String]?
 
@@ -17690,9 +17842,49 @@ public class RunCommandRequest : Tea.TeaModel {
 }
 
 public class RunCommandResponseBody : Tea.TeaModel {
+    public class RunCommandInfos : Tea.TeaModel {
+        public var instanceId: String?
+
+        public var invokeId: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.instanceId != nil {
+                map["InstanceId"] = self.instanceId!
+            }
+            if self.invokeId != nil {
+                map["InvokeId"] = self.invokeId!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["InstanceId"] as? String {
+                self.instanceId = value
+            }
+            if let value = dict["InvokeId"] as? String {
+                self.invokeId = value
+            }
+        }
+    }
     public var invokeId: String?
 
     public var requestId: String?
+
+    public var runCommandInfos: [RunCommandResponseBody.RunCommandInfos]?
 
     public override init() {
         super.init()
@@ -17714,6 +17906,13 @@ public class RunCommandResponseBody : Tea.TeaModel {
         if self.requestId != nil {
             map["RequestId"] = self.requestId!
         }
+        if self.runCommandInfos != nil {
+            var tmp : [Any] = []
+            for k in self.runCommandInfos! {
+                tmp.append(k.toMap())
+            }
+            map["RunCommandInfos"] = tmp
+        }
         return map
     }
 
@@ -17724,6 +17923,19 @@ public class RunCommandResponseBody : Tea.TeaModel {
         }
         if let value = dict["RequestId"] as? String {
             self.requestId = value
+        }
+        if let value = dict["RunCommandInfos"] as? [Any?] {
+            var tmp : [RunCommandResponseBody.RunCommandInfos] = []
+            for v in value {
+                if v != nil {
+                    var model = RunCommandResponseBody.RunCommandInfos()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.runCommandInfos = tmp
         }
     }
 }
