@@ -3054,6 +3054,8 @@ public class CreateDataFlowTaskRequest : Tea.TeaModel {
 
     public var taskAction: String?
 
+    public var transferFileListPath: String?
+
     public override init() {
         super.init()
     }
@@ -3107,6 +3109,9 @@ public class CreateDataFlowTaskRequest : Tea.TeaModel {
         if self.taskAction != nil {
             map["TaskAction"] = self.taskAction!
         }
+        if self.transferFileListPath != nil {
+            map["TransferFileListPath"] = self.transferFileListPath!
+        }
         return map
     }
 
@@ -3150,6 +3155,9 @@ public class CreateDataFlowTaskRequest : Tea.TeaModel {
         }
         if let value = dict["TaskAction"] as? String {
             self.taskAction = value
+        }
+        if let value = dict["TransferFileListPath"] as? String {
+            self.transferFileListPath = value
         }
     }
 }
@@ -10331,6 +10339,8 @@ public class DescribeDataFlowTasksResponseBody : Tea.TeaModel {
 
             public var taskId: String?
 
+            public var transferFileListPath: String?
+
             public override init() {
                 super.init()
             }
@@ -10413,6 +10423,9 @@ public class DescribeDataFlowTasksResponseBody : Tea.TeaModel {
                 if self.taskId != nil {
                     map["TaskId"] = self.taskId!
                 }
+                if self.transferFileListPath != nil {
+                    map["TransferFileListPath"] = self.transferFileListPath!
+                }
                 return map
             }
 
@@ -10487,6 +10500,9 @@ public class DescribeDataFlowTasksResponseBody : Tea.TeaModel {
                 }
                 if let value = dict["TaskId"] as? String {
                     self.taskId = value
+                }
+                if let value = dict["TransferFileListPath"] as? String {
+                    self.transferFileListPath = value
                 }
             }
         }
