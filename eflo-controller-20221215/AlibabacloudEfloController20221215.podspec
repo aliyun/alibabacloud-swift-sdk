@@ -1,7 +1,7 @@
 Pod::Spec.new do |spec|
 
   spec.name         = "AlibabacloudEfloController20221215"
-  spec.version      = "2.9.5"
+  spec.version      = "2.9.6"
   spec.license      = "Apache 2.0"
   spec.summary      = "Alibaba Cloud eflo-controller (20221215) SDK Library for Swift"
   spec.homepage     = "https://github.com/alibabacloud-sdk-swift/eflo-controller-20221215" 

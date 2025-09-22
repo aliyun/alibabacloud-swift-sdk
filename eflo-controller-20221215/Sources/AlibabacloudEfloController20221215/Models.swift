@@ -1255,11 +1255,15 @@ public class CreateClusterRequest : Tea.TeaModel {
         }
         public class Nodes : Tea.TeaModel {
             public class DataDisk : Tea.TeaModel {
+                public var burstingEnabled: Bool?
+
                 public var category: String?
 
                 public var deleteWithNode: Bool?
 
                 public var performanceLevel: String?
+
+                public var provisionedIops: Int64?
 
                 public var size: Int32?
 
@@ -1277,6 +1281,9 @@ public class CreateClusterRequest : Tea.TeaModel {
 
                 public override func toMap() -> [String : Any] {
                     var map = super.toMap()
+                    if self.burstingEnabled != nil {
+                        map["BurstingEnabled"] = self.burstingEnabled!
+                    }
                     if self.category != nil {
                         map["Category"] = self.category!
                     }
@@ -1286,6 +1293,9 @@ public class CreateClusterRequest : Tea.TeaModel {
                     if self.performanceLevel != nil {
                         map["PerformanceLevel"] = self.performanceLevel!
                     }
+                    if self.provisionedIops != nil {
+                        map["ProvisionedIops"] = self.provisionedIops!
+                    }
                     if self.size != nil {
                         map["Size"] = self.size!
                     }
@@ -1294,6 +1304,9 @@ public class CreateClusterRequest : Tea.TeaModel {
 
                 public override func fromMap(_ dict: [String: Any?]?) -> Void {
                     guard let dict else { return }
+                    if let value = dict["BurstingEnabled"] as? Bool {
+                        self.burstingEnabled = value
+                    }
                     if let value = dict["Category"] as? String {
                         self.category = value
                     }
@@ -1302,6 +1315,9 @@ public class CreateClusterRequest : Tea.TeaModel {
                     }
                     if let value = dict["PerformanceLevel"] as? String {
                         self.performanceLevel = value
+                    }
+                    if let value = dict["ProvisionedIops"] as? Int64 {
+                        self.provisionedIops = value
                     }
                     if let value = dict["Size"] as? Int32 {
                         self.size = value
@@ -8432,11 +8448,15 @@ public class ExtendClusterRequest : Tea.TeaModel {
         }
         public class Nodes : Tea.TeaModel {
             public class DataDisk : Tea.TeaModel {
+                public var burstingEnabled: Bool?
+
                 public var category: String?
 
                 public var deleteWithNode: Bool?
 
                 public var performanceLevel: String?
+
+                public var provisionedIops: Int64?
 
                 public var size: Int32?
 
@@ -8454,6 +8474,9 @@ public class ExtendClusterRequest : Tea.TeaModel {
 
                 public override func toMap() -> [String : Any] {
                     var map = super.toMap()
+                    if self.burstingEnabled != nil {
+                        map["BurstingEnabled"] = self.burstingEnabled!
+                    }
                     if self.category != nil {
                         map["Category"] = self.category!
                     }
@@ -8463,6 +8486,9 @@ public class ExtendClusterRequest : Tea.TeaModel {
                     if self.performanceLevel != nil {
                         map["PerformanceLevel"] = self.performanceLevel!
                     }
+                    if self.provisionedIops != nil {
+                        map["ProvisionedIops"] = self.provisionedIops!
+                    }
                     if self.size != nil {
                         map["Size"] = self.size!
                     }
@@ -8471,6 +8497,9 @@ public class ExtendClusterRequest : Tea.TeaModel {
 
                 public override func fromMap(_ dict: [String: Any?]?) -> Void {
                     guard let dict else { return }
+                    if let value = dict["BurstingEnabled"] as? Bool {
+                        self.burstingEnabled = value
+                    }
                     if let value = dict["Category"] as? String {
                         self.category = value
                     }
@@ -8479,6 +8508,9 @@ public class ExtendClusterRequest : Tea.TeaModel {
                     }
                     if let value = dict["PerformanceLevel"] as? String {
                         self.performanceLevel = value
+                    }
+                    if let value = dict["ProvisionedIops"] as? Int64 {
+                        self.provisionedIops = value
                     }
                     if let value = dict["Size"] as? Int32 {
                         self.size = value
