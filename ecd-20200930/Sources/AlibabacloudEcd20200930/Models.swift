@@ -5760,6 +5760,8 @@ public class CreateAndBindNasFileSystemResponse : Tea.TeaModel {
 public class CreateAutoSnapshotPolicyRequest : Tea.TeaModel {
     public var cronExpression: String?
 
+    public var diskType: String?
+
     public var policyName: String?
 
     public var regionId: String?
@@ -5783,6 +5785,9 @@ public class CreateAutoSnapshotPolicyRequest : Tea.TeaModel {
         if self.cronExpression != nil {
             map["CronExpression"] = self.cronExpression!
         }
+        if self.diskType != nil {
+            map["DiskType"] = self.diskType!
+        }
         if self.policyName != nil {
             map["PolicyName"] = self.policyName!
         }
@@ -5799,6 +5804,9 @@ public class CreateAutoSnapshotPolicyRequest : Tea.TeaModel {
         guard let dict else { return }
         if let value = dict["CronExpression"] as? String {
             self.cronExpression = value
+        }
+        if let value = dict["DiskType"] as? String {
+            self.diskType = value
         }
         if let value = dict["PolicyName"] as? String {
             self.policyName = value
@@ -10984,6 +10992,8 @@ public class CreateDesktopsRequest : Tea.TeaModel {
 
     public var bundleModels: [CreateDesktopsRequest.BundleModels]?
 
+    public var channelCookie: String?
+
     public var chargeType: String?
 
     public var desktopAttachment: CreateDesktopsRequest.DesktopAttachment?
@@ -11083,6 +11093,9 @@ public class CreateDesktopsRequest : Tea.TeaModel {
                 tmp.append(k.toMap())
             }
             map["BundleModels"] = tmp
+        }
+        if self.channelCookie != nil {
+            map["ChannelCookie"] = self.channelCookie!
         }
         if self.chargeType != nil {
             map["ChargeType"] = self.chargeType!
@@ -11221,6 +11234,9 @@ public class CreateDesktopsRequest : Tea.TeaModel {
                 }
             }
             self.bundleModels = tmp
+        }
+        if let value = dict["ChannelCookie"] as? String {
+            self.channelCookie = value
         }
         if let value = dict["ChargeType"] as? String {
             self.chargeType = value
@@ -11651,6 +11667,8 @@ public class CreateDesktopsShrinkRequest : Tea.TeaModel {
 
     public var bundleModels: [CreateDesktopsShrinkRequest.BundleModels]?
 
+    public var channelCookie: String?
+
     public var chargeType: String?
 
     public var desktopAttachmentShrink: String?
@@ -11749,6 +11767,9 @@ public class CreateDesktopsShrinkRequest : Tea.TeaModel {
                 tmp.append(k.toMap())
             }
             map["BundleModels"] = tmp
+        }
+        if self.channelCookie != nil {
+            map["ChannelCookie"] = self.channelCookie!
         }
         if self.chargeType != nil {
             map["ChargeType"] = self.chargeType!
@@ -11887,6 +11908,9 @@ public class CreateDesktopsShrinkRequest : Tea.TeaModel {
                 }
             }
             self.bundleModels = tmp
+        }
+        if let value = dict["ChannelCookie"] as? String {
+            self.channelCookie = value
         }
         if let value = dict["ChargeType"] as? String {
             self.chargeType = value
@@ -13549,6 +13573,8 @@ public class CreateNetworkPackageRequest : Tea.TeaModel {
 
     public var bandwidth: Int32?
 
+    public var channelCookie: String?
+
     public var internetChargeType: String?
 
     public var officeSiteId: String?
@@ -13588,6 +13614,9 @@ public class CreateNetworkPackageRequest : Tea.TeaModel {
         if self.bandwidth != nil {
             map["Bandwidth"] = self.bandwidth!
         }
+        if self.channelCookie != nil {
+            map["ChannelCookie"] = self.channelCookie!
+        }
         if self.internetChargeType != nil {
             map["InternetChargeType"] = self.internetChargeType!
         }
@@ -13625,6 +13654,9 @@ public class CreateNetworkPackageRequest : Tea.TeaModel {
         }
         if let value = dict["Bandwidth"] as? Int32 {
             self.bandwidth = value
+        }
+        if let value = dict["ChannelCookie"] as? String {
+            self.channelCookie = value
         }
         if let value = dict["InternetChargeType"] as? String {
             self.internetChargeType = value
@@ -20373,6 +20405,8 @@ public class DescribeAutoSnapshotPolicyResponseBody : Tea.TeaModel {
 
         public var desktopNum: Int32?
 
+        public var diskType: String?
+
         public var policyId: String?
 
         public var policyName: String?
@@ -20408,6 +20442,9 @@ public class DescribeAutoSnapshotPolicyResponseBody : Tea.TeaModel {
             if self.desktopNum != nil {
                 map["DesktopNum"] = self.desktopNum!
             }
+            if self.diskType != nil {
+                map["DiskType"] = self.diskType!
+            }
             if self.policyId != nil {
                 map["PolicyId"] = self.policyId!
             }
@@ -20439,6 +20476,9 @@ public class DescribeAutoSnapshotPolicyResponseBody : Tea.TeaModel {
             }
             if let value = dict["DesktopNum"] as? Int32 {
                 self.desktopNum = value
+            }
+            if let value = dict["DiskType"] as? String {
+                self.diskType = value
             }
             if let value = dict["PolicyId"] as? String {
                 self.policyId = value
@@ -55224,6 +55264,8 @@ public class ModifyAclEntriesResponse : Tea.TeaModel {
 public class ModifyAutoSnapshotPolicyRequest : Tea.TeaModel {
     public var cronExpression: String?
 
+    public var diskType: String?
+
     public var policyId: String?
 
     public var policyName: String?
@@ -55249,6 +55291,9 @@ public class ModifyAutoSnapshotPolicyRequest : Tea.TeaModel {
         if self.cronExpression != nil {
             map["CronExpression"] = self.cronExpression!
         }
+        if self.diskType != nil {
+            map["DiskType"] = self.diskType!
+        }
         if self.policyId != nil {
             map["PolicyId"] = self.policyId!
         }
@@ -55268,6 +55313,9 @@ public class ModifyAutoSnapshotPolicyRequest : Tea.TeaModel {
         guard let dict else { return }
         if let value = dict["CronExpression"] as? String {
             self.cronExpression = value
+        }
+        if let value = dict["DiskType"] as? String {
+            self.diskType = value
         }
         if let value = dict["PolicyId"] as? String {
             self.policyId = value
