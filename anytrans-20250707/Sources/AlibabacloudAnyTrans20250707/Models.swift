@@ -4327,6 +4327,748 @@ public class SubmitLongTextTranslateTaskResponse : Tea.TeaModel {
     }
 }
 
+public class TermEditRequest : Tea.TeaModel {
+    public class Ext : Tea.TeaModel {
+        public class Terms : Tea.TeaModel {
+            public var src: String?
+
+            public var termId: String?
+
+            public var tgt: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.src != nil {
+                    map["src"] = self.src!
+                }
+                if self.termId != nil {
+                    map["termId"] = self.termId!
+                }
+                if self.tgt != nil {
+                    map["tgt"] = self.tgt!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["src"] as? String {
+                    self.src = value
+                }
+                if let value = dict["termId"] as? String {
+                    self.termId = value
+                }
+                if let value = dict["tgt"] as? String {
+                    self.tgt = value
+                }
+            }
+        }
+        public var terms: [TermEditRequest.Ext.Terms]?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.terms != nil {
+                var tmp : [Any] = []
+                for k in self.terms! {
+                    tmp.append(k.toMap())
+                }
+                map["terms"] = tmp
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["terms"] as? [Any?] {
+                var tmp : [TermEditRequest.Ext.Terms] = []
+                for v in value {
+                    if v != nil {
+                        var model = TermEditRequest.Ext.Terms()
+                        if v != nil {
+                            model.fromMap(v as? [String: Any?])
+                        }
+                        tmp.append(model)
+                    }
+                }
+                self.terms = tmp
+            }
+        }
+    }
+    public var action: String?
+
+    public var ext: TermEditRequest.Ext?
+
+    public var scene: String?
+
+    public var sourceLanguage: String?
+
+    public var targetLanguage: String?
+
+    public var workspaceId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.ext?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.action != nil {
+            map["action"] = self.action!
+        }
+        if self.ext != nil {
+            map["ext"] = self.ext?.toMap()
+        }
+        if self.scene != nil {
+            map["scene"] = self.scene!
+        }
+        if self.sourceLanguage != nil {
+            map["sourceLanguage"] = self.sourceLanguage!
+        }
+        if self.targetLanguage != nil {
+            map["targetLanguage"] = self.targetLanguage!
+        }
+        if self.workspaceId != nil {
+            map["workspaceId"] = self.workspaceId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["action"] as? String {
+            self.action = value
+        }
+        if let value = dict["ext"] as? [String: Any?] {
+            var model = TermEditRequest.Ext()
+            model.fromMap(value)
+            self.ext = model
+        }
+        if let value = dict["scene"] as? String {
+            self.scene = value
+        }
+        if let value = dict["sourceLanguage"] as? String {
+            self.sourceLanguage = value
+        }
+        if let value = dict["targetLanguage"] as? String {
+            self.targetLanguage = value
+        }
+        if let value = dict["workspaceId"] as? String {
+            self.workspaceId = value
+        }
+    }
+}
+
+public class TermEditShrinkRequest : Tea.TeaModel {
+    public var action: String?
+
+    public var extShrink: String?
+
+    public var scene: String?
+
+    public var sourceLanguage: String?
+
+    public var targetLanguage: String?
+
+    public var workspaceId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.action != nil {
+            map["action"] = self.action!
+        }
+        if self.extShrink != nil {
+            map["ext"] = self.extShrink!
+        }
+        if self.scene != nil {
+            map["scene"] = self.scene!
+        }
+        if self.sourceLanguage != nil {
+            map["sourceLanguage"] = self.sourceLanguage!
+        }
+        if self.targetLanguage != nil {
+            map["targetLanguage"] = self.targetLanguage!
+        }
+        if self.workspaceId != nil {
+            map["workspaceId"] = self.workspaceId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["action"] as? String {
+            self.action = value
+        }
+        if let value = dict["ext"] as? String {
+            self.extShrink = value
+        }
+        if let value = dict["scene"] as? String {
+            self.scene = value
+        }
+        if let value = dict["sourceLanguage"] as? String {
+            self.sourceLanguage = value
+        }
+        if let value = dict["targetLanguage"] as? String {
+            self.targetLanguage = value
+        }
+        if let value = dict["workspaceId"] as? String {
+            self.workspaceId = value
+        }
+    }
+}
+
+public class TermEditResponseBody : Tea.TeaModel {
+    public class Data : Tea.TeaModel {
+        public class Terms : Tea.TeaModel {
+            public var src: String?
+
+            public var termId: String?
+
+            public var tgt: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.src != nil {
+                    map["src"] = self.src!
+                }
+                if self.termId != nil {
+                    map["termId"] = self.termId!
+                }
+                if self.tgt != nil {
+                    map["tgt"] = self.tgt!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["src"] as? String {
+                    self.src = value
+                }
+                if let value = dict["termId"] as? String {
+                    self.termId = value
+                }
+                if let value = dict["tgt"] as? String {
+                    self.tgt = value
+                }
+            }
+        }
+        public var failCount: Int64?
+
+        public var terms: [TermEditResponseBody.Data.Terms]?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.failCount != nil {
+                map["failCount"] = self.failCount!
+            }
+            if self.terms != nil {
+                var tmp : [Any] = []
+                for k in self.terms! {
+                    tmp.append(k.toMap())
+                }
+                map["terms"] = tmp
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["failCount"] as? Int64 {
+                self.failCount = value
+            }
+            if let value = dict["terms"] as? [Any?] {
+                var tmp : [TermEditResponseBody.Data.Terms] = []
+                for v in value {
+                    if v != nil {
+                        var model = TermEditResponseBody.Data.Terms()
+                        if v != nil {
+                            model.fromMap(v as? [String: Any?])
+                        }
+                        tmp.append(model)
+                    }
+                }
+                self.terms = tmp
+            }
+        }
+    }
+    public var code: String?
+
+    public var data: TermEditResponseBody.Data?
+
+    public var httpStatusCode: String?
+
+    public var message: String?
+
+    public var requestId: String?
+
+    public var success: Bool?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.data?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.code != nil {
+            map["code"] = self.code!
+        }
+        if self.data != nil {
+            map["data"] = self.data?.toMap()
+        }
+        if self.httpStatusCode != nil {
+            map["httpStatusCode"] = self.httpStatusCode!
+        }
+        if self.message != nil {
+            map["message"] = self.message!
+        }
+        if self.requestId != nil {
+            map["requestId"] = self.requestId!
+        }
+        if self.success != nil {
+            map["success"] = self.success!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["code"] as? String {
+            self.code = value
+        }
+        if let value = dict["data"] as? [String: Any?] {
+            var model = TermEditResponseBody.Data()
+            model.fromMap(value)
+            self.data = model
+        }
+        if let value = dict["httpStatusCode"] as? String {
+            self.httpStatusCode = value
+        }
+        if let value = dict["message"] as? String {
+            self.message = value
+        }
+        if let value = dict["requestId"] as? String {
+            self.requestId = value
+        }
+        if let value = dict["success"] as? Bool {
+            self.success = value
+        }
+    }
+}
+
+public class TermEditResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: TermEditResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = TermEditResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
+public class TermQueryRequest : Tea.TeaModel {
+    public var scene: String?
+
+    public var sourceLanguage: String?
+
+    public var targetLanguage: String?
+
+    public var text: String?
+
+    public var workspaceId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.scene != nil {
+            map["scene"] = self.scene!
+        }
+        if self.sourceLanguage != nil {
+            map["sourceLanguage"] = self.sourceLanguage!
+        }
+        if self.targetLanguage != nil {
+            map["targetLanguage"] = self.targetLanguage!
+        }
+        if self.text != nil {
+            map["text"] = self.text!
+        }
+        if self.workspaceId != nil {
+            map["workspaceId"] = self.workspaceId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["scene"] as? String {
+            self.scene = value
+        }
+        if let value = dict["sourceLanguage"] as? String {
+            self.sourceLanguage = value
+        }
+        if let value = dict["targetLanguage"] as? String {
+            self.targetLanguage = value
+        }
+        if let value = dict["text"] as? String {
+            self.text = value
+        }
+        if let value = dict["workspaceId"] as? String {
+            self.workspaceId = value
+        }
+    }
+}
+
+public class TermQueryResponseBody : Tea.TeaModel {
+    public class Data : Tea.TeaModel {
+        public class Terms : Tea.TeaModel {
+            public var src: String?
+
+            public var termId: String?
+
+            public var tgt: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.src != nil {
+                    map["src"] = self.src!
+                }
+                if self.termId != nil {
+                    map["termId"] = self.termId!
+                }
+                if self.tgt != nil {
+                    map["tgt"] = self.tgt!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["src"] as? String {
+                    self.src = value
+                }
+                if let value = dict["termId"] as? String {
+                    self.termId = value
+                }
+                if let value = dict["tgt"] as? String {
+                    self.tgt = value
+                }
+            }
+        }
+        public var failCount: Int64?
+
+        public var terms: [TermQueryResponseBody.Data.Terms]?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.failCount != nil {
+                map["failCount"] = self.failCount!
+            }
+            if self.terms != nil {
+                var tmp : [Any] = []
+                for k in self.terms! {
+                    tmp.append(k.toMap())
+                }
+                map["terms"] = tmp
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["failCount"] as? Int64 {
+                self.failCount = value
+            }
+            if let value = dict["terms"] as? [Any?] {
+                var tmp : [TermQueryResponseBody.Data.Terms] = []
+                for v in value {
+                    if v != nil {
+                        var model = TermQueryResponseBody.Data.Terms()
+                        if v != nil {
+                            model.fromMap(v as? [String: Any?])
+                        }
+                        tmp.append(model)
+                    }
+                }
+                self.terms = tmp
+            }
+        }
+    }
+    public var code: String?
+
+    public var data: TermQueryResponseBody.Data?
+
+    public var httpStatusCode: String?
+
+    public var message: String?
+
+    public var requestId: String?
+
+    public var success: Bool?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.data?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.code != nil {
+            map["code"] = self.code!
+        }
+        if self.data != nil {
+            map["data"] = self.data?.toMap()
+        }
+        if self.httpStatusCode != nil {
+            map["httpStatusCode"] = self.httpStatusCode!
+        }
+        if self.message != nil {
+            map["message"] = self.message!
+        }
+        if self.requestId != nil {
+            map["requestId"] = self.requestId!
+        }
+        if self.success != nil {
+            map["success"] = self.success!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["code"] as? String {
+            self.code = value
+        }
+        if let value = dict["data"] as? [String: Any?] {
+            var model = TermQueryResponseBody.Data()
+            model.fromMap(value)
+            self.data = model
+        }
+        if let value = dict["httpStatusCode"] as? String {
+            self.httpStatusCode = value
+        }
+        if let value = dict["message"] as? String {
+            self.message = value
+        }
+        if let value = dict["requestId"] as? String {
+            self.requestId = value
+        }
+        if let value = dict["success"] as? Bool {
+            self.success = value
+        }
+    }
+}
+
+public class TermQueryResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: TermQueryResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = TermQueryResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
 public class TextTranslateRequest : Tea.TeaModel {
     public class Ext : Tea.TeaModel {
         public class Examples : Tea.TeaModel {
