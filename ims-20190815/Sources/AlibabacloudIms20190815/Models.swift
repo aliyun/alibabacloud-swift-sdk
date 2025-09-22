@@ -2413,6 +2413,8 @@ public class CreateOIDCProviderResponse : Tea.TeaModel {
 }
 
 public class CreateSAMLProviderRequest : Tea.TeaModel {
+    public var authnSignAlgo: String?
+
     public var description_: String?
 
     public var encodedSAMLMetadataDocument: String?
@@ -2433,6 +2435,9 @@ public class CreateSAMLProviderRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.authnSignAlgo != nil {
+            map["AuthnSignAlgo"] = self.authnSignAlgo!
+        }
         if self.description_ != nil {
             map["Description"] = self.description_!
         }
@@ -2447,6 +2452,9 @@ public class CreateSAMLProviderRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["AuthnSignAlgo"] as? String {
+            self.authnSignAlgo = value
+        }
         if let value = dict["Description"] as? String {
             self.description_ = value
         }
@@ -2462,6 +2470,8 @@ public class CreateSAMLProviderRequest : Tea.TeaModel {
 public class CreateSAMLProviderResponseBody : Tea.TeaModel {
     public class SAMLProvider : Tea.TeaModel {
         public var arn: String?
+
+        public var authnSignAlgo: String?
 
         public var createDate: String?
 
@@ -2488,6 +2498,9 @@ public class CreateSAMLProviderResponseBody : Tea.TeaModel {
             if self.arn != nil {
                 map["Arn"] = self.arn!
             }
+            if self.authnSignAlgo != nil {
+                map["AuthnSignAlgo"] = self.authnSignAlgo!
+            }
             if self.createDate != nil {
                 map["CreateDate"] = self.createDate!
             }
@@ -2507,6 +2520,9 @@ public class CreateSAMLProviderResponseBody : Tea.TeaModel {
             guard let dict else { return }
             if let value = dict["Arn"] as? String {
                 self.arn = value
+            }
+            if let value = dict["AuthnSignAlgo"] as? String {
+                self.authnSignAlgo = value
             }
             if let value = dict["CreateDate"] as? String {
                 self.createDate = value
@@ -8954,6 +8970,8 @@ public class GetSAMLProviderResponseBody : Tea.TeaModel {
     public class SAMLProvider : Tea.TeaModel {
         public var arn: String?
 
+        public var authnSignAlgo: String?
+
         public var createDate: String?
 
         public var description_: String?
@@ -8981,6 +8999,9 @@ public class GetSAMLProviderResponseBody : Tea.TeaModel {
             if self.arn != nil {
                 map["Arn"] = self.arn!
             }
+            if self.authnSignAlgo != nil {
+                map["AuthnSignAlgo"] = self.authnSignAlgo!
+            }
             if self.createDate != nil {
                 map["CreateDate"] = self.createDate!
             }
@@ -9003,6 +9024,9 @@ public class GetSAMLProviderResponseBody : Tea.TeaModel {
             guard let dict else { return }
             if let value = dict["Arn"] as? String {
                 self.arn = value
+            }
+            if let value = dict["AuthnSignAlgo"] as? String {
+                self.authnSignAlgo = value
             }
             if let value = dict["CreateDate"] as? String {
                 self.createDate = value
@@ -10242,6 +10266,8 @@ public class GetUserMFAInfoResponse : Tea.TeaModel {
 
 public class GetUserSsoSettingsResponseBody : Tea.TeaModel {
     public class UserSsoSettings : Tea.TeaModel {
+        public var authnSignAlgo: String?
+
         public var auxiliaryDomain: String?
 
         public var metadataDocument: String?
@@ -10264,6 +10290,9 @@ public class GetUserSsoSettingsResponseBody : Tea.TeaModel {
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
+            if self.authnSignAlgo != nil {
+                map["AuthnSignAlgo"] = self.authnSignAlgo!
+            }
             if self.auxiliaryDomain != nil {
                 map["AuxiliaryDomain"] = self.auxiliaryDomain!
             }
@@ -10281,6 +10310,9 @@ public class GetUserSsoSettingsResponseBody : Tea.TeaModel {
 
         public override func fromMap(_ dict: [String: Any?]?) -> Void {
             guard let dict else { return }
+            if let value = dict["AuthnSignAlgo"] as? String {
+                self.authnSignAlgo = value
+            }
             if let value = dict["AuxiliaryDomain"] as? String {
                 self.auxiliaryDomain = value
             }
@@ -18514,6 +18546,8 @@ public class SetSecurityPreferenceResponse : Tea.TeaModel {
 }
 
 public class SetUserSsoSettingsRequest : Tea.TeaModel {
+    public var authnSignAlgo: String?
+
     public var auxiliaryDomain: String?
 
     public var metadataDocument: String?
@@ -18536,6 +18570,9 @@ public class SetUserSsoSettingsRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.authnSignAlgo != nil {
+            map["AuthnSignAlgo"] = self.authnSignAlgo!
+        }
         if self.auxiliaryDomain != nil {
             map["AuxiliaryDomain"] = self.auxiliaryDomain!
         }
@@ -18553,6 +18590,9 @@ public class SetUserSsoSettingsRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["AuthnSignAlgo"] as? String {
+            self.authnSignAlgo = value
+        }
         if let value = dict["AuxiliaryDomain"] as? String {
             self.auxiliaryDomain = value
         }
@@ -18570,6 +18610,8 @@ public class SetUserSsoSettingsRequest : Tea.TeaModel {
 
 public class SetUserSsoSettingsResponseBody : Tea.TeaModel {
     public class UserSsoSettings : Tea.TeaModel {
+        public var authnSignAlgo: String?
+
         public var auxiliaryDomain: String?
 
         public var metadataDocument: String?
@@ -18592,6 +18634,9 @@ public class SetUserSsoSettingsResponseBody : Tea.TeaModel {
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
+            if self.authnSignAlgo != nil {
+                map["AuthnSignAlgo"] = self.authnSignAlgo!
+            }
             if self.auxiliaryDomain != nil {
                 map["AuxiliaryDomain"] = self.auxiliaryDomain!
             }
@@ -18609,6 +18654,9 @@ public class SetUserSsoSettingsResponseBody : Tea.TeaModel {
 
         public override func fromMap(_ dict: [String: Any?]?) -> Void {
             guard let dict else { return }
+            if let value = dict["AuthnSignAlgo"] as? String {
+                self.authnSignAlgo = value
+            }
             if let value = dict["AuxiliaryDomain"] as? String {
                 self.auxiliaryDomain = value
             }
@@ -20907,6 +20955,8 @@ public class UpdatePasskeyResponse : Tea.TeaModel {
 }
 
 public class UpdateSAMLProviderRequest : Tea.TeaModel {
+    public var authnSignAlgo: String?
+
     public var newDescription: String?
 
     public var newEncodedSAMLMetadataDocument: String?
@@ -20927,6 +20977,9 @@ public class UpdateSAMLProviderRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.authnSignAlgo != nil {
+            map["AuthnSignAlgo"] = self.authnSignAlgo!
+        }
         if self.newDescription != nil {
             map["NewDescription"] = self.newDescription!
         }
@@ -20941,6 +20994,9 @@ public class UpdateSAMLProviderRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["AuthnSignAlgo"] as? String {
+            self.authnSignAlgo = value
+        }
         if let value = dict["NewDescription"] as? String {
             self.newDescription = value
         }
@@ -20956,6 +21012,8 @@ public class UpdateSAMLProviderRequest : Tea.TeaModel {
 public class UpdateSAMLProviderResponseBody : Tea.TeaModel {
     public class SAMLProvider : Tea.TeaModel {
         public var arn: String?
+
+        public var authnSignAlgo: String?
 
         public var createDate: String?
 
@@ -20982,6 +21040,9 @@ public class UpdateSAMLProviderResponseBody : Tea.TeaModel {
             if self.arn != nil {
                 map["Arn"] = self.arn!
             }
+            if self.authnSignAlgo != nil {
+                map["AuthnSignAlgo"] = self.authnSignAlgo!
+            }
             if self.createDate != nil {
                 map["CreateDate"] = self.createDate!
             }
@@ -21001,6 +21062,9 @@ public class UpdateSAMLProviderResponseBody : Tea.TeaModel {
             guard let dict else { return }
             if let value = dict["Arn"] as? String {
                 self.arn = value
+            }
+            if let value = dict["AuthnSignAlgo"] as? String {
+                self.authnSignAlgo = value
             }
             if let value = dict["CreateDate"] as? String {
                 self.createDate = value

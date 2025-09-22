@@ -452,6 +452,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func createSAMLProviderWithOptions(_ request: CreateSAMLProviderRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> CreateSAMLProviderResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.authnSignAlgo)) {
+            query["AuthnSignAlgo"] = request.authnSignAlgo ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.description_)) {
             query["Description"] = request.description_ ?? "";
         }
@@ -2824,6 +2827,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func setUserSsoSettingsWithOptions(_ request: SetUserSsoSettingsRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> SetUserSsoSettingsResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.authnSignAlgo)) {
+            query["AuthnSignAlgo"] = request.authnSignAlgo ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.auxiliaryDomain)) {
             query["AuxiliaryDomain"] = request.auxiliaryDomain ?? "";
         }
@@ -3310,6 +3316,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func updateSAMLProviderWithOptions(_ request: UpdateSAMLProviderRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> UpdateSAMLProviderResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.authnSignAlgo)) {
+            query["AuthnSignAlgo"] = request.authnSignAlgo ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.newDescription)) {
             query["NewDescription"] = request.newDescription ?? "";
         }
