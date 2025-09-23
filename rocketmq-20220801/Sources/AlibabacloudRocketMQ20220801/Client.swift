@@ -700,6 +700,77 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func executeMigrationOperationWithOptions(_ migrationId: String, _ stageType: String, _ operationId: String, _ request: ExecuteMigrationOperationRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> ExecuteMigrationOperationResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.instanceId)) {
+            query["instanceId"] = request.instanceId ?? "";
+        }
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.operationParam)) {
+            body["operationParam"] = request.operationParam!;
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String],
+            "query": AlibabaCloudOpenApiUtil.Client.query(query),
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "ExecuteMigrationOperation",
+            "version": "2022-08-01",
+            "protocol": "HTTPS",
+            "pathname": "/migrations/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(migrationId)) + "/stages/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(stageType)) + "/operations/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(operationId)) + "/execute",
+            "method": "POST",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(ExecuteMigrationOperationResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func executeMigrationOperation(_ migrationId: String, _ stageType: String, _ operationId: String, _ request: ExecuteMigrationOperationRequest) async throws -> ExecuteMigrationOperationResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await executeMigrationOperationWithOptions(migrationId as! String, stageType as! String, operationId as! String, request as! ExecuteMigrationOperationRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func finishMigrationStageWithOptions(_ migrationId: String, _ stageType: String, _ request: FinishMigrationStageRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> FinishMigrationStageResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.instanceId)) {
+            query["instanceId"] = request.instanceId ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String],
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "FinishMigrationStage",
+            "version": "2022-08-01",
+            "protocol": "HTTPS",
+            "pathname": "/migrations/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(migrationId)) + "/stages/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(stageType)) + "/finish",
+            "method": "POST",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(FinishMigrationStageResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func finishMigrationStage(_ migrationId: String, _ stageType: String, _ request: FinishMigrationStageRequest) async throws -> FinishMigrationStageResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await finishMigrationStageWithOptions(migrationId as! String, stageType as! String, request as! FinishMigrationStageRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func getConsumerGroupWithOptions(_ instanceId: String, _ consumerGroupId: String, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> GetConsumerGroupResponse {
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "headers": headers as! [String: String]
@@ -1613,6 +1684,51 @@ open class Client : AlibabacloudOpenApi.Client {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         var headers: [String: String] = [:]
         return try await listMetricMetaWithOptions(request as! ListMetricMetaRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func listMigrationOperationsWithOptions(_ migrationId: String, _ stageType: String, _ request: ListMigrationOperationsRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> ListMigrationOperationsResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.filter)) {
+            query["filter"] = request.filter ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.instanceId)) {
+            query["instanceId"] = request.instanceId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.operationType)) {
+            query["operationType"] = request.operationType ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.pageNumber)) {
+            query["pageNumber"] = request.pageNumber!;
+        }
+        if (!TeaUtils.Client.isUnset(request.pageSize)) {
+            query["pageSize"] = request.pageSize!;
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String],
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "ListMigrationOperations",
+            "version": "2022-08-01",
+            "protocol": "HTTPS",
+            "pathname": "/migrations/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(migrationId)) + "/stages/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(stageType)) + "/operations",
+            "method": "GET",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(ListMigrationOperationsResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func listMigrationOperations(_ migrationId: String, _ stageType: String, _ request: ListMigrationOperationsRequest) async throws -> ListMigrationOperationsResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await listMigrationOperationsWithOptions(migrationId as! String, stageType as! String, request as! ListMigrationOperationsRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
