@@ -937,6 +937,8 @@ public class CreateFunctionInput : Tea.TeaModel {
 
     public var handler: String?
 
+    public var idleTimeout: Int32?
+
     public var instanceConcurrency: Int32?
 
     public var instanceIsolationMode: String?
@@ -1036,6 +1038,9 @@ public class CreateFunctionInput : Tea.TeaModel {
         }
         if self.handler != nil {
             map["handler"] = self.handler!
+        }
+        if self.idleTimeout != nil {
+            map["idleTimeout"] = self.idleTimeout!
         }
         if self.instanceConcurrency != nil {
             map["instanceConcurrency"] = self.instanceConcurrency!
@@ -1148,6 +1153,9 @@ public class CreateFunctionInput : Tea.TeaModel {
         }
         if let value = dict["handler"] as? String {
             self.handler = value
+        }
+        if let value = dict["idleTimeout"] as? Int32 {
+            self.idleTimeout = value
         }
         if let value = dict["instanceConcurrency"] as? Int32 {
             self.instanceConcurrency = value
@@ -2687,6 +2695,8 @@ public class Function : Tea.TeaModel {
 
     public var handler: String?
 
+    public var idleTimeout: Int32?
+
     public var instanceConcurrency: Int32?
 
     public var instanceIsolationMode: String?
@@ -2814,6 +2824,9 @@ public class Function : Tea.TeaModel {
         }
         if self.handler != nil {
             map["handler"] = self.handler!
+        }
+        if self.idleTimeout != nil {
+            map["idleTimeout"] = self.idleTimeout!
         }
         if self.instanceConcurrency != nil {
             map["instanceConcurrency"] = self.instanceConcurrency!
@@ -2964,6 +2977,9 @@ public class Function : Tea.TeaModel {
         }
         if let value = dict["handler"] as? String {
             self.handler = value
+        }
+        if let value = dict["idleTimeout"] as? Int32 {
+            self.idleTimeout = value
         }
         if let value = dict["instanceConcurrency"] as? Int32 {
             self.instanceConcurrency = value
@@ -8790,6 +8806,8 @@ public class UpdateFunctionInput : Tea.TeaModel {
 
     public var handler: String?
 
+    public var idleTimeout: Int32?
+
     public var instanceConcurrency: Int32?
 
     public var instanceIsolationMode: String?
@@ -8882,6 +8900,9 @@ public class UpdateFunctionInput : Tea.TeaModel {
         }
         if self.handler != nil {
             map["handler"] = self.handler!
+        }
+        if self.idleTimeout != nil {
+            map["idleTimeout"] = self.idleTimeout!
         }
         if self.instanceConcurrency != nil {
             map["instanceConcurrency"] = self.instanceConcurrency!
@@ -8981,6 +9002,9 @@ public class UpdateFunctionInput : Tea.TeaModel {
         }
         if let value = dict["handler"] as? String {
             self.handler = value
+        }
+        if let value = dict["idleTimeout"] as? Int32 {
+            self.idleTimeout = value
         }
         if let value = dict["instanceConcurrency"] as? Int32 {
             self.instanceConcurrency = value
