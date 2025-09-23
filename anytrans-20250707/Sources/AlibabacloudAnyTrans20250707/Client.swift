@@ -35,6 +35,9 @@ open class Client : AlibabacloudOpenApi.Client {
             request.textShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.text, "text", "json")
         }
         var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.appName)) {
+            body["appName"] = request.appName ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.extShrink)) {
             body["ext"] = request.extShrink ?? "";
         }

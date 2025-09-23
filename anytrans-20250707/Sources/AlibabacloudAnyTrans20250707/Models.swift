@@ -7,6 +7,36 @@ import AlibabacloudEndpointUtil
 
 public class BatchTranslateRequest : Tea.TeaModel {
     public class Ext : Tea.TeaModel {
+        public class Config : Tea.TeaModel {
+            public var skipCsiCheck: Bool?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.skipCsiCheck != nil {
+                    map["skipCsiCheck"] = self.skipCsiCheck!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["skipCsiCheck"] as? Bool {
+                    self.skipCsiCheck = value
+                }
+            }
+        }
         public class Examples : Tea.TeaModel {
             public var src: String?
 
@@ -129,6 +159,8 @@ public class BatchTranslateRequest : Tea.TeaModel {
                 }
             }
         }
+        public var config: BatchTranslateRequest.Ext.Config?
+
         public var domainHint: String?
 
         public var examples: [BatchTranslateRequest.Ext.Examples]?
@@ -149,11 +181,15 @@ public class BatchTranslateRequest : Tea.TeaModel {
         }
 
         public override func validate() throws -> Void {
+            try self.config?.validate()
             try self.textTransform?.validate()
         }
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
+            if self.config != nil {
+                map["config"] = self.config?.toMap()
+            }
             if self.domainHint != nil {
                 map["domainHint"] = self.domainHint!
             }
@@ -182,6 +218,11 @@ public class BatchTranslateRequest : Tea.TeaModel {
 
         public override func fromMap(_ dict: [String: Any?]?) -> Void {
             guard let dict else { return }
+            if let value = dict["config"] as? [String: Any?] {
+                var model = BatchTranslateRequest.Ext.Config()
+                model.fromMap(value)
+                self.config = model
+            }
             if let value = dict["domainHint"] as? String {
                 self.domainHint = value
             }
@@ -221,6 +262,8 @@ public class BatchTranslateRequest : Tea.TeaModel {
             }
         }
     }
+    public var appName: String?
+
     public var ext: BatchTranslateRequest.Ext?
 
     public var format: String?
@@ -250,6 +293,9 @@ public class BatchTranslateRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.appName != nil {
+            map["appName"] = self.appName!
+        }
         if self.ext != nil {
             map["ext"] = self.ext?.toMap()
         }
@@ -276,6 +322,9 @@ public class BatchTranslateRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["appName"] as? String {
+            self.appName = value
+        }
         if let value = dict["ext"] as? [String: Any?] {
             var model = BatchTranslateRequest.Ext()
             model.fromMap(value)
@@ -303,6 +352,8 @@ public class BatchTranslateRequest : Tea.TeaModel {
 }
 
 public class BatchTranslateShrinkRequest : Tea.TeaModel {
+    public var appName: String?
+
     public var extShrink: String?
 
     public var format: String?
@@ -331,6 +382,9 @@ public class BatchTranslateShrinkRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.appName != nil {
+            map["appName"] = self.appName!
+        }
         if self.extShrink != nil {
             map["ext"] = self.extShrink!
         }
@@ -357,6 +411,9 @@ public class BatchTranslateShrinkRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["appName"] as? String {
+            self.appName = value
+        }
         if let value = dict["ext"] as? String {
             self.extShrink = value
         }
@@ -2177,44 +2234,6 @@ public class GetLongTextTranslateTaskResponse : Tea.TeaModel {
 
 public class SubmitDocTranslateTaskRequest : Tea.TeaModel {
     public class Ext : Tea.TeaModel {
-        public class Examples : Tea.TeaModel {
-            public var src: String?
-
-            public var tgt: String?
-
-            public override init() {
-                super.init()
-            }
-
-            public init(_ dict: [String: Any]) {
-                super.init()
-                self.fromMap(dict)
-            }
-
-            public override func validate() throws -> Void {
-            }
-
-            public override func toMap() -> [String : Any] {
-                var map = super.toMap()
-                if self.src != nil {
-                    map["src"] = self.src!
-                }
-                if self.tgt != nil {
-                    map["tgt"] = self.tgt!
-                }
-                return map
-            }
-
-            public override func fromMap(_ dict: [String: Any?]?) -> Void {
-                guard let dict else { return }
-                if let value = dict["src"] as? String {
-                    self.src = value
-                }
-                if let value = dict["tgt"] as? String {
-                    self.tgt = value
-                }
-            }
-        }
         public class Terminologies : Tea.TeaModel {
             public var src: String?
 
@@ -2253,61 +2272,9 @@ public class SubmitDocTranslateTaskRequest : Tea.TeaModel {
                 }
             }
         }
-        public class TextTransform : Tea.TeaModel {
-            public var toLower: Bool?
-
-            public var toTitle: Bool?
-
-            public var toUpper: Bool?
-
-            public override init() {
-                super.init()
-            }
-
-            public init(_ dict: [String: Any]) {
-                super.init()
-                self.fromMap(dict)
-            }
-
-            public override func validate() throws -> Void {
-            }
-
-            public override func toMap() -> [String : Any] {
-                var map = super.toMap()
-                if self.toLower != nil {
-                    map["toLower"] = self.toLower!
-                }
-                if self.toTitle != nil {
-                    map["toTitle"] = self.toTitle!
-                }
-                if self.toUpper != nil {
-                    map["toUpper"] = self.toUpper!
-                }
-                return map
-            }
-
-            public override func fromMap(_ dict: [String: Any?]?) -> Void {
-                guard let dict else { return }
-                if let value = dict["toLower"] as? Bool {
-                    self.toLower = value
-                }
-                if let value = dict["toTitle"] as? Bool {
-                    self.toTitle = value
-                }
-                if let value = dict["toUpper"] as? Bool {
-                    self.toUpper = value
-                }
-            }
-        }
         public var domainHint: String?
 
-        public var examples: [SubmitDocTranslateTaskRequest.Ext.Examples]?
-
-        public var sensitives: [String]?
-
         public var terminologies: [SubmitDocTranslateTaskRequest.Ext.Terminologies]?
-
-        public var textTransform: SubmitDocTranslateTaskRequest.Ext.TextTransform?
 
         public override init() {
             super.init()
@@ -2319,23 +2286,12 @@ public class SubmitDocTranslateTaskRequest : Tea.TeaModel {
         }
 
         public override func validate() throws -> Void {
-            try self.textTransform?.validate()
         }
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
             if self.domainHint != nil {
                 map["domainHint"] = self.domainHint!
-            }
-            if self.examples != nil {
-                var tmp : [Any] = []
-                for k in self.examples! {
-                    tmp.append(k.toMap())
-                }
-                map["examples"] = tmp
-            }
-            if self.sensitives != nil {
-                map["sensitives"] = self.sensitives!
             }
             if self.terminologies != nil {
                 var tmp : [Any] = []
@@ -2344,9 +2300,6 @@ public class SubmitDocTranslateTaskRequest : Tea.TeaModel {
                 }
                 map["terminologies"] = tmp
             }
-            if self.textTransform != nil {
-                map["textTransform"] = self.textTransform?.toMap()
-            }
             return map
         }
 
@@ -2354,22 +2307,6 @@ public class SubmitDocTranslateTaskRequest : Tea.TeaModel {
             guard let dict else { return }
             if let value = dict["domainHint"] as? String {
                 self.domainHint = value
-            }
-            if let value = dict["examples"] as? [Any?] {
-                var tmp : [SubmitDocTranslateTaskRequest.Ext.Examples] = []
-                for v in value {
-                    if v != nil {
-                        var model = SubmitDocTranslateTaskRequest.Ext.Examples()
-                        if v != nil {
-                            model.fromMap(v as? [String: Any?])
-                        }
-                        tmp.append(model)
-                    }
-                }
-                self.examples = tmp
-            }
-            if let value = dict["sensitives"] as? [String] {
-                self.sensitives = value
             }
             if let value = dict["terminologies"] as? [Any?] {
                 var tmp : [SubmitDocTranslateTaskRequest.Ext.Terminologies] = []
@@ -2383,11 +2320,6 @@ public class SubmitDocTranslateTaskRequest : Tea.TeaModel {
                     }
                 }
                 self.terminologies = tmp
-            }
-            if let value = dict["textTransform"] as? [String: Any?] {
-                var model = SubmitDocTranslateTaskRequest.Ext.TextTransform()
-                model.fromMap(value)
-                self.textTransform = model
             }
         }
     }
@@ -2715,6 +2647,36 @@ public class SubmitDocTranslateTaskResponse : Tea.TeaModel {
 
 public class SubmitHtmlTranslateTaskRequest : Tea.TeaModel {
     public class Ext : Tea.TeaModel {
+        public class Config : Tea.TeaModel {
+            public var skipCsiCheck: Bool?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.skipCsiCheck != nil {
+                    map["skipCsiCheck"] = self.skipCsiCheck!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["skipCsiCheck"] as? Bool {
+                    self.skipCsiCheck = value
+                }
+            }
+        }
         public class Examples : Tea.TeaModel {
             public var src: String?
 
@@ -2837,6 +2799,8 @@ public class SubmitHtmlTranslateTaskRequest : Tea.TeaModel {
                 }
             }
         }
+        public var config: SubmitHtmlTranslateTaskRequest.Ext.Config?
+
         public var domainHint: String?
 
         public var examples: [SubmitHtmlTranslateTaskRequest.Ext.Examples]?
@@ -2857,11 +2821,15 @@ public class SubmitHtmlTranslateTaskRequest : Tea.TeaModel {
         }
 
         public override func validate() throws -> Void {
+            try self.config?.validate()
             try self.textTransform?.validate()
         }
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
+            if self.config != nil {
+                map["config"] = self.config?.toMap()
+            }
             if self.domainHint != nil {
                 map["domainHint"] = self.domainHint!
             }
@@ -2890,6 +2858,11 @@ public class SubmitHtmlTranslateTaskRequest : Tea.TeaModel {
 
         public override func fromMap(_ dict: [String: Any?]?) -> Void {
             guard let dict else { return }
+            if let value = dict["config"] as? [String: Any?] {
+                var model = SubmitHtmlTranslateTaskRequest.Ext.Config()
+                model.fromMap(value)
+                self.config = model
+            }
             if let value = dict["domainHint"] as? String {
                 self.domainHint = value
             }
@@ -3791,6 +3764,36 @@ public class SubmitImageTranslateTaskResponse : Tea.TeaModel {
 
 public class SubmitLongTextTranslateTaskRequest : Tea.TeaModel {
     public class Ext : Tea.TeaModel {
+        public class Config : Tea.TeaModel {
+            public var skipCsiCheck: Bool?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.skipCsiCheck != nil {
+                    map["skipCsiCheck"] = self.skipCsiCheck!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["skipCsiCheck"] as? Bool {
+                    self.skipCsiCheck = value
+                }
+            }
+        }
         public class Examples : Tea.TeaModel {
             public var src: String?
 
@@ -3913,6 +3916,8 @@ public class SubmitLongTextTranslateTaskRequest : Tea.TeaModel {
                 }
             }
         }
+        public var config: SubmitLongTextTranslateTaskRequest.Ext.Config?
+
         public var domainHint: String?
 
         public var examples: [SubmitLongTextTranslateTaskRequest.Ext.Examples]?
@@ -3933,11 +3938,15 @@ public class SubmitLongTextTranslateTaskRequest : Tea.TeaModel {
         }
 
         public override func validate() throws -> Void {
+            try self.config?.validate()
             try self.textTransform?.validate()
         }
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
+            if self.config != nil {
+                map["config"] = self.config?.toMap()
+            }
             if self.domainHint != nil {
                 map["domainHint"] = self.domainHint!
             }
@@ -3966,6 +3975,11 @@ public class SubmitLongTextTranslateTaskRequest : Tea.TeaModel {
 
         public override func fromMap(_ dict: [String: Any?]?) -> Void {
             guard let dict else { return }
+            if let value = dict["config"] as? [String: Any?] {
+                var model = SubmitLongTextTranslateTaskRequest.Ext.Config()
+                model.fromMap(value)
+                self.config = model
+            }
             if let value = dict["domainHint"] as? String {
                 self.domainHint = value
             }
@@ -5071,6 +5085,36 @@ public class TermQueryResponse : Tea.TeaModel {
 
 public class TextTranslateRequest : Tea.TeaModel {
     public class Ext : Tea.TeaModel {
+        public class Config : Tea.TeaModel {
+            public var skipCsiCheck: Bool?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.skipCsiCheck != nil {
+                    map["skipCsiCheck"] = self.skipCsiCheck!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["skipCsiCheck"] as? Bool {
+                    self.skipCsiCheck = value
+                }
+            }
+        }
         public class Examples : Tea.TeaModel {
             public var src: String?
 
@@ -5193,6 +5237,8 @@ public class TextTranslateRequest : Tea.TeaModel {
                 }
             }
         }
+        public var config: TextTranslateRequest.Ext.Config?
+
         public var domainHint: String?
 
         public var examples: [TextTranslateRequest.Ext.Examples]?
@@ -5213,11 +5259,15 @@ public class TextTranslateRequest : Tea.TeaModel {
         }
 
         public override func validate() throws -> Void {
+            try self.config?.validate()
             try self.textTransform?.validate()
         }
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
+            if self.config != nil {
+                map["config"] = self.config?.toMap()
+            }
             if self.domainHint != nil {
                 map["domainHint"] = self.domainHint!
             }
@@ -5246,6 +5296,11 @@ public class TextTranslateRequest : Tea.TeaModel {
 
         public override func fromMap(_ dict: [String: Any?]?) -> Void {
             guard let dict else { return }
+            if let value = dict["config"] as? [String: Any?] {
+                var model = TextTranslateRequest.Ext.Config()
+                model.fromMap(value)
+                self.config = model
+            }
             if let value = dict["domainHint"] as? String {
                 self.domainHint = value
             }
