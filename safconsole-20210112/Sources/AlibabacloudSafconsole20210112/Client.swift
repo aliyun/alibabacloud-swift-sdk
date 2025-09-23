@@ -61,6 +61,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func sendFeedbackWithOptions(_ request: SendFeedbackRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> SendFeedbackResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.reason)) {
+            query["Reason"] = request.reason ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.riskLabel)) {
             query["RiskLabel"] = request.riskLabel ?? "";
         }
