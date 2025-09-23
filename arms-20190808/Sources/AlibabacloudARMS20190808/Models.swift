@@ -61697,6 +61697,8 @@ public class OpenXtraceDefaultSLRResponse : Tea.TeaModel {
 }
 
 public class QueryAppMetadataRequest : Tea.TeaModel {
+    public var endTimeMs: Int64?
+
     public var metaIds: String?
 
     public var metaType: String?
@@ -61704,6 +61706,8 @@ public class QueryAppMetadataRequest : Tea.TeaModel {
     public var pid: String?
 
     public var regionId: String?
+
+    public var startTimeMs: Int64?
 
     public override init() {
         super.init()
@@ -61719,6 +61723,9 @@ public class QueryAppMetadataRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.endTimeMs != nil {
+            map["EndTimeMs"] = self.endTimeMs!
+        }
         if self.metaIds != nil {
             map["MetaIds"] = self.metaIds!
         }
@@ -61731,11 +61738,17 @@ public class QueryAppMetadataRequest : Tea.TeaModel {
         if self.regionId != nil {
             map["RegionId"] = self.regionId!
         }
+        if self.startTimeMs != nil {
+            map["StartTimeMs"] = self.startTimeMs!
+        }
         return map
     }
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["EndTimeMs"] as? Int64 {
+            self.endTimeMs = value
+        }
         if let value = dict["MetaIds"] as? String {
             self.metaIds = value
         }
@@ -61747,6 +61760,9 @@ public class QueryAppMetadataRequest : Tea.TeaModel {
         }
         if let value = dict["RegionId"] as? String {
             self.regionId = value
+        }
+        if let value = dict["StartTimeMs"] as? Int64 {
+            self.startTimeMs = value
         }
     }
 }
