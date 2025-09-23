@@ -333,7 +333,7 @@ public class ChangeResourceGroupRequest : Tea.TeaModel {
 }
 
 public class ChangeResourceGroupResponseBody : Tea.TeaModel {
-    public var code: Int64?
+    public var code: String?
 
     public var data: String?
 
@@ -372,7 +372,7 @@ public class ChangeResourceGroupResponseBody : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
-        if let value = dict["Code"] as? Int64 {
+        if let value = dict["Code"] as? String {
             self.code = value
         }
         if let value = dict["Data"] as? String {
@@ -704,7 +704,7 @@ public class CreateApplicationShrinkRequest : Tea.TeaModel {
 }
 
 public class CreateApplicationResponseBody : Tea.TeaModel {
-    public var code: Int32?
+    public var code: String?
 
     public var data: String?
 
@@ -743,7 +743,7 @@ public class CreateApplicationResponseBody : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
-        if let value = dict["Code"] as? Int32 {
+        if let value = dict["Code"] as? String {
             self.code = value
         }
         if let value = dict["Data"] as? String {
@@ -919,7 +919,7 @@ public class CreateTaskShrinkRequest : Tea.TeaModel {
 }
 
 public class CreateTaskResponseBody : Tea.TeaModel {
-    public var code: Int32?
+    public var code: String?
 
     public var data: Int32?
 
@@ -958,7 +958,7 @@ public class CreateTaskResponseBody : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
-        if let value = dict["Code"] as? Int32 {
+        if let value = dict["Code"] as? String {
             self.code = value
         }
         if let value = dict["Data"] as? Int32 {
@@ -1063,7 +1063,7 @@ public class DeleteApplicationRequest : Tea.TeaModel {
 }
 
 public class DeleteApplicationResponseBody : Tea.TeaModel {
-    public var code: Int32?
+    public var code: String?
 
     public var message: String?
 
@@ -1097,7 +1097,7 @@ public class DeleteApplicationResponseBody : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
-        if let value = dict["Code"] as? Int32 {
+        if let value = dict["Code"] as? String {
             self.code = value
         }
         if let value = dict["Message"] as? String {
@@ -1207,7 +1207,7 @@ public class DeployApplicationRequest : Tea.TeaModel {
 }
 
 public class DeployApplicationResponseBody : Tea.TeaModel {
-    public var code: Int32?
+    public var code: String?
 
     public var data: Int64?
 
@@ -1246,7 +1246,7 @@ public class DeployApplicationResponseBody : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
-        if let value = dict["Code"] as? Int32 {
+        if let value = dict["Code"] as? String {
             self.code = value
         }
         if let value = dict["Data"] as? Int64 {
@@ -1454,7 +1454,7 @@ public class ExecuteOperationASyncShrinkRequest : Tea.TeaModel {
 }
 
 public class ExecuteOperationASyncResponseBody : Tea.TeaModel {
-    public var code: Int32?
+    public var code: String?
 
     public var data: String?
 
@@ -1493,7 +1493,7 @@ public class ExecuteOperationASyncResponseBody : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
-        if let value = dict["Code"] as? Int32 {
+        if let value = dict["Code"] as? String {
             self.code = value
         }
         if let value = dict["Data"] as? String {
@@ -1755,7 +1755,7 @@ public class ExecuteOperationSyncResponseBody : Tea.TeaModel {
             }
         }
     }
-    public var code: Int32?
+    public var code: String?
 
     public var data: ExecuteOperationSyncResponseBody.Data?
 
@@ -1795,7 +1795,7 @@ public class ExecuteOperationSyncResponseBody : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
-        if let value = dict["Code"] as? Int32 {
+        if let value = dict["Code"] as? String {
             self.code = value
         }
         if let value = dict["Data"] as? [String: Any?] {
@@ -1948,7 +1948,7 @@ public class ExecuteTaskResponseBody : Tea.TeaModel {
             }
         }
     }
-    public var code: Int32?
+    public var code: String?
 
     public var data: ExecuteTaskResponseBody.Data?
 
@@ -1988,7 +1988,7 @@ public class ExecuteTaskResponseBody : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
-        if let value = dict["Code"] as? Int32 {
+        if let value = dict["Code"] as? String {
             self.code = value
         }
         if let value = dict["Data"] as? [String: Any?] {
@@ -2918,7 +2918,7 @@ public class GetApplicationVariablesResponseBody : Tea.TeaModel {
             }
         }
     }
-    public var code: Int32?
+    public var code: String?
 
     public var data: [GetApplicationVariablesResponseBody.Data]?
 
@@ -2961,7 +2961,7 @@ public class GetApplicationVariablesResponseBody : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
-        if let value = dict["Code"] as? Int32 {
+        if let value = dict["Code"] as? String {
             self.code = value
         }
         if let value = dict["Data"] as? [Any?] {
@@ -3138,7 +3138,7 @@ public class GetApplicationVariables4FailResponseBody : Tea.TeaModel {
             }
         }
     }
-    public var code: Int32?
+    public var code: String?
 
     public var data: [GetApplicationVariables4FailResponseBody.Data]?
 
@@ -3181,7 +3181,7 @@ public class GetApplicationVariables4FailResponseBody : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
-        if let value = dict["Code"] as? Int32 {
+        if let value = dict["Code"] as? String {
             self.code = value
         }
         if let value = dict["Data"] as? [Any?] {
@@ -3350,7 +3350,7 @@ public class GetExecuteOperationResultResponseBody : Tea.TeaModel {
             }
         }
     }
-    public var code: Int32?
+    public var code: String?
 
     public var data: GetExecuteOperationResultResponseBody.Data?
 
@@ -3390,7 +3390,7 @@ public class GetExecuteOperationResultResponseBody : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
-        if let value = dict["Code"] as? Int32 {
+        if let value = dict["Code"] as? String {
             self.code = value
         }
         if let value = dict["Data"] as? [String: Any?] {
@@ -4804,7 +4804,7 @@ public class GetTaskResponseBody : Tea.TeaModel {
             }
         }
     }
-    public var code: Int32?
+    public var code: String?
 
     public var data: GetTaskResponseBody.Data?
 
@@ -4844,7 +4844,7 @@ public class GetTaskResponseBody : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
-        if let value = dict["Code"] as? Int32 {
+        if let value = dict["Code"] as? String {
             self.code = value
         }
         if let value = dict["Data"] as? [String: Any?] {
@@ -5121,7 +5121,7 @@ public class GetTemplateResponseBody : Tea.TeaModel {
             }
         }
     }
-    public var code: Int32?
+    public var code: String?
 
     public var data: GetTemplateResponseBody.Data?
 
@@ -5161,7 +5161,7 @@ public class GetTemplateResponseBody : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
-        if let value = dict["Code"] as? Int32 {
+        if let value = dict["Code"] as? String {
             self.code = value
         }
         if let value = dict["Data"] as? [String: Any?] {
@@ -5330,7 +5330,7 @@ public class GetTokenResponseBody : Tea.TeaModel {
             }
         }
     }
-    public var code: Int32?
+    public var code: String?
 
     public var data: GetTokenResponseBody.Data?
 
@@ -5370,7 +5370,7 @@ public class GetTokenResponseBody : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
-        if let value = dict["Code"] as? Int32 {
+        if let value = dict["Code"] as? String {
             self.code = value
         }
         if let value = dict["Data"] as? [String: Any?] {
@@ -5739,7 +5739,7 @@ public class ListApplicationResponseBody : Tea.TeaModel {
             }
         }
     }
-    public var code: Int32?
+    public var code: String?
 
     public var data: [ListApplicationResponseBody.Data]?
 
@@ -5792,7 +5792,7 @@ public class ListApplicationResponseBody : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
-        if let value = dict["Code"] as? Int32 {
+        if let value = dict["Code"] as? String {
             self.code = value
         }
         if let value = dict["Data"] as? [Any?] {
@@ -6731,7 +6731,7 @@ public class ListTemplateResponseBody : Tea.TeaModel {
             }
         }
     }
-    public var code: Int32?
+    public var code: String?
 
     public var data: [ListTemplateResponseBody.Data]?
 
@@ -6784,7 +6784,7 @@ public class ListTemplateResponseBody : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
-        if let value = dict["Code"] as? Int32 {
+        if let value = dict["Code"] as? String {
             self.code = value
         }
         if let value = dict["Data"] as? [Any?] {
@@ -7711,7 +7711,7 @@ public class ReConfigApplicationRequest : Tea.TeaModel {
 }
 
 public class ReConfigApplicationResponseBody : Tea.TeaModel {
-    public var code: Int32?
+    public var code: String?
 
     public var message: String?
 
@@ -7745,7 +7745,7 @@ public class ReConfigApplicationResponseBody : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
-        if let value = dict["Code"] as? Int32 {
+        if let value = dict["Code"] as? String {
             self.code = value
         }
         if let value = dict["Message"] as? String {
@@ -7855,7 +7855,7 @@ public class ReleaseApplicationRequest : Tea.TeaModel {
 }
 
 public class ReleaseApplicationResponseBody : Tea.TeaModel {
-    public var code: Int32?
+    public var code: String?
 
     public var data: Int64?
 
@@ -7894,7 +7894,7 @@ public class ReleaseApplicationResponseBody : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
-        if let value = dict["Code"] as? Int32 {
+        if let value = dict["Code"] as? String {
             self.code = value
         }
         if let value = dict["Data"] as? Int64 {
@@ -8007,7 +8007,7 @@ public class ValidateApplicationRequest : Tea.TeaModel {
 }
 
 public class ValidateApplicationResponseBody : Tea.TeaModel {
-    public var code: Int32?
+    public var code: String?
 
     public var data: String?
 
@@ -8046,7 +8046,7 @@ public class ValidateApplicationResponseBody : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
-        if let value = dict["Code"] as? Int32 {
+        if let value = dict["Code"] as? String {
             self.code = value
         }
         if let value = dict["Data"] as? String {
@@ -8159,7 +8159,7 @@ public class ValuateApplicationRequest : Tea.TeaModel {
 }
 
 public class ValuateApplicationResponseBody : Tea.TeaModel {
-    public var code: Int32?
+    public var code: String?
 
     public var data: Int64?
 
@@ -8198,7 +8198,7 @@ public class ValuateApplicationResponseBody : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
-        if let value = dict["Code"] as? Int32 {
+        if let value = dict["Code"] as? String {
             self.code = value
         }
         if let value = dict["Data"] as? Int64 {
