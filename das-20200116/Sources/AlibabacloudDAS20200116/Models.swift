@@ -10216,9 +10216,15 @@ public class DescribeSlowLogRecordsResponseBody : Tea.TeaModel {
 
             public var CPUTimeSeconds: Double?
 
+            public var clientIp: String?
+
+            public var cmd: String?
+
             public var command: String?
 
             public var DBName: String?
+
+            public var dbId: String?
 
             public var dbInstanceName: String?
 
@@ -10244,6 +10250,10 @@ public class DescribeSlowLogRecordsResponseBody : Tea.TeaModel {
 
             public var namespace: String?
 
+            public var nodeId: String?
+
+            public var originTime: String?
+
             public var physicalIOReads: Int64?
 
             public var psql: String?
@@ -10256,6 +10266,10 @@ public class DescribeSlowLogRecordsResponseBody : Tea.TeaModel {
 
             public var queryTimeSeconds: Double?
 
+            public var requestSize: Int64?
+
+            public var responseSize: Int64?
+
             public var returnItemNumbers: String?
 
             public var returnNum: String?
@@ -10267,6 +10281,8 @@ public class DescribeSlowLogRecordsResponseBody : Tea.TeaModel {
             public var rowsExamined: Int64?
 
             public var rowsSent: Int64?
+
+            public var rt: Int64?
 
             public var SQLText: String?
 
@@ -10319,11 +10335,20 @@ public class DescribeSlowLogRecordsResponseBody : Tea.TeaModel {
                 if self.CPUTimeSeconds != nil {
                     map["CPUTimeSeconds"] = self.CPUTimeSeconds!
                 }
+                if self.clientIp != nil {
+                    map["ClientIp"] = self.clientIp!
+                }
+                if self.cmd != nil {
+                    map["Cmd"] = self.cmd!
+                }
                 if self.command != nil {
                     map["Command"] = self.command!
                 }
                 if self.DBName != nil {
                     map["DBName"] = self.DBName!
+                }
+                if self.dbId != nil {
+                    map["DbId"] = self.dbId!
                 }
                 if self.dbInstanceName != nil {
                     map["DbInstanceName"] = self.dbInstanceName!
@@ -10361,6 +10386,12 @@ public class DescribeSlowLogRecordsResponseBody : Tea.TeaModel {
                 if self.namespace != nil {
                     map["Namespace"] = self.namespace!
                 }
+                if self.nodeId != nil {
+                    map["NodeId"] = self.nodeId!
+                }
+                if self.originTime != nil {
+                    map["OriginTime"] = self.originTime!
+                }
                 if self.physicalIOReads != nil {
                     map["PhysicalIOReads"] = self.physicalIOReads!
                 }
@@ -10379,6 +10410,12 @@ public class DescribeSlowLogRecordsResponseBody : Tea.TeaModel {
                 if self.queryTimeSeconds != nil {
                     map["QueryTimeSeconds"] = self.queryTimeSeconds!
                 }
+                if self.requestSize != nil {
+                    map["RequestSize"] = self.requestSize!
+                }
+                if self.responseSize != nil {
+                    map["ResponseSize"] = self.responseSize!
+                }
                 if self.returnItemNumbers != nil {
                     map["ReturnItemNumbers"] = self.returnItemNumbers!
                 }
@@ -10396,6 +10433,9 @@ public class DescribeSlowLogRecordsResponseBody : Tea.TeaModel {
                 }
                 if self.rowsSent != nil {
                     map["RowsSent"] = self.rowsSent!
+                }
+                if self.rt != nil {
+                    map["Rt"] = self.rt!
                 }
                 if self.SQLText != nil {
                     map["SQLText"] = self.SQLText!
@@ -10450,11 +10490,20 @@ public class DescribeSlowLogRecordsResponseBody : Tea.TeaModel {
                 if let value = dict["CPUTimeSeconds"] as? Double {
                     self.CPUTimeSeconds = value
                 }
+                if let value = dict["ClientIp"] as? String {
+                    self.clientIp = value
+                }
+                if let value = dict["Cmd"] as? String {
+                    self.cmd = value
+                }
                 if let value = dict["Command"] as? String {
                     self.command = value
                 }
                 if let value = dict["DBName"] as? String {
                     self.DBName = value
+                }
+                if let value = dict["DbId"] as? String {
+                    self.dbId = value
                 }
                 if let value = dict["DbInstanceName"] as? String {
                     self.dbInstanceName = value
@@ -10492,6 +10541,12 @@ public class DescribeSlowLogRecordsResponseBody : Tea.TeaModel {
                 if let value = dict["Namespace"] as? String {
                     self.namespace = value
                 }
+                if let value = dict["NodeId"] as? String {
+                    self.nodeId = value
+                }
+                if let value = dict["OriginTime"] as? String {
+                    self.originTime = value
+                }
                 if let value = dict["PhysicalIOReads"] as? Int64 {
                     self.physicalIOReads = value
                 }
@@ -10510,6 +10565,12 @@ public class DescribeSlowLogRecordsResponseBody : Tea.TeaModel {
                 if let value = dict["QueryTimeSeconds"] as? Double {
                     self.queryTimeSeconds = value
                 }
+                if let value = dict["RequestSize"] as? Int64 {
+                    self.requestSize = value
+                }
+                if let value = dict["ResponseSize"] as? Int64 {
+                    self.responseSize = value
+                }
                 if let value = dict["ReturnItemNumbers"] as? String {
                     self.returnItemNumbers = value
                 }
@@ -10527,6 +10588,9 @@ public class DescribeSlowLogRecordsResponseBody : Tea.TeaModel {
                 }
                 if let value = dict["RowsSent"] as? Int64 {
                     self.rowsSent = value
+                }
+                if let value = dict["Rt"] as? Int64 {
+                    self.rt = value
                 }
                 if let value = dict["SQLText"] as? String {
                     self.SQLText = value
@@ -11287,6 +11351,10 @@ public class DescribeSlowLogStatisticResponseBody : Tea.TeaModel {
 
                 public var avgQueryTimeSeconds: Double?
 
+                public var avgRequestSize: Double?
+
+                public var avgResponseSize: Double?
+
                 public var avgReturnNum: Double?
 
                 public var avgRows: Double?
@@ -11297,11 +11365,17 @@ public class DescribeSlowLogStatisticResponseBody : Tea.TeaModel {
 
                 public var avgRowsSent: Double?
 
+                public var avgRt: Double?
+
                 public var avgScnt: Double?
 
                 public var CPUTime: Double?
 
                 public var CPUTimeSeconds: Double?
+
+                public var clientIp: String?
+
+                public var cmd: String?
 
                 public var command: String?
 
@@ -11312,6 +11386,8 @@ public class DescribeSlowLogStatisticResponseBody : Tea.TeaModel {
                 public var DBName: String?
 
                 public var database: String?
+
+                public var dbId: String?
 
                 public var dbInstanceName: String?
 
@@ -11369,6 +11445,10 @@ public class DescribeSlowLogStatisticResponseBody : Tea.TeaModel {
 
                 public var maxQueryTimeSeconds: Double?
 
+                public var maxRequestSize: Double?
+
+                public var maxResponseSize: Double?
+
                 public var maxReturnNum: Int64?
 
                 public var maxRows: Int64?
@@ -11378,6 +11458,8 @@ public class DescribeSlowLogStatisticResponseBody : Tea.TeaModel {
                 public var maxRowsExamined: Int64?
 
                 public var maxRowsSent: Int64?
+
+                public var maxRt: Double?
 
                 public var maxScnt: Int64?
 
@@ -11436,6 +11518,8 @@ public class DescribeSlowLogStatisticResponseBody : Tea.TeaModel {
                 public var threadId: String?
 
                 public var timestamp: Int64?
+
+                public var totalCount: Int64?
 
                 public var trend: [DescribeSlowLogStatisticResponseBody.Data.Data.Logs.Trend]?
 
@@ -11499,6 +11583,12 @@ public class DescribeSlowLogStatisticResponseBody : Tea.TeaModel {
                     if self.avgQueryTimeSeconds != nil {
                         map["AvgQueryTimeSeconds"] = self.avgQueryTimeSeconds!
                     }
+                    if self.avgRequestSize != nil {
+                        map["AvgRequestSize"] = self.avgRequestSize!
+                    }
+                    if self.avgResponseSize != nil {
+                        map["AvgResponseSize"] = self.avgResponseSize!
+                    }
                     if self.avgReturnNum != nil {
                         map["AvgReturnNum"] = self.avgReturnNum!
                     }
@@ -11514,6 +11604,9 @@ public class DescribeSlowLogStatisticResponseBody : Tea.TeaModel {
                     if self.avgRowsSent != nil {
                         map["AvgRowsSent"] = self.avgRowsSent!
                     }
+                    if self.avgRt != nil {
+                        map["AvgRt"] = self.avgRt!
+                    }
                     if self.avgScnt != nil {
                         map["AvgScnt"] = self.avgScnt!
                     }
@@ -11522,6 +11615,12 @@ public class DescribeSlowLogStatisticResponseBody : Tea.TeaModel {
                     }
                     if self.CPUTimeSeconds != nil {
                         map["CPUTimeSeconds"] = self.CPUTimeSeconds!
+                    }
+                    if self.clientIp != nil {
+                        map["ClientIp"] = self.clientIp!
+                    }
+                    if self.cmd != nil {
+                        map["Cmd"] = self.cmd!
                     }
                     if self.command != nil {
                         map["Command"] = self.command!
@@ -11537,6 +11636,9 @@ public class DescribeSlowLogStatisticResponseBody : Tea.TeaModel {
                     }
                     if self.database != nil {
                         map["Database"] = self.database!
+                    }
+                    if self.dbId != nil {
+                        map["DbId"] = self.dbId!
                     }
                     if self.dbInstanceName != nil {
                         map["DbInstanceName"] = self.dbInstanceName!
@@ -11622,6 +11724,12 @@ public class DescribeSlowLogStatisticResponseBody : Tea.TeaModel {
                     if self.maxQueryTimeSeconds != nil {
                         map["MaxQueryTimeSeconds"] = self.maxQueryTimeSeconds!
                     }
+                    if self.maxRequestSize != nil {
+                        map["MaxRequestSize"] = self.maxRequestSize!
+                    }
+                    if self.maxResponseSize != nil {
+                        map["MaxResponseSize"] = self.maxResponseSize!
+                    }
                     if self.maxReturnNum != nil {
                         map["MaxReturnNum"] = self.maxReturnNum!
                     }
@@ -11636,6 +11744,9 @@ public class DescribeSlowLogStatisticResponseBody : Tea.TeaModel {
                     }
                     if self.maxRowsSent != nil {
                         map["MaxRowsSent"] = self.maxRowsSent!
+                    }
+                    if self.maxRt != nil {
+                        map["MaxRt"] = self.maxRt!
                     }
                     if self.maxScnt != nil {
                         map["MaxScnt"] = self.maxScnt!
@@ -11724,6 +11835,9 @@ public class DescribeSlowLogStatisticResponseBody : Tea.TeaModel {
                     if self.timestamp != nil {
                         map["Timestamp"] = self.timestamp!
                     }
+                    if self.totalCount != nil {
+                        map["TotalCount"] = self.totalCount!
+                    }
                     if self.trend != nil {
                         var tmp : [Any] = []
                         for k in self.trend! {
@@ -11781,6 +11895,12 @@ public class DescribeSlowLogStatisticResponseBody : Tea.TeaModel {
                     if let value = dict["AvgQueryTimeSeconds"] as? Double {
                         self.avgQueryTimeSeconds = value
                     }
+                    if let value = dict["AvgRequestSize"] as? Double {
+                        self.avgRequestSize = value
+                    }
+                    if let value = dict["AvgResponseSize"] as? Double {
+                        self.avgResponseSize = value
+                    }
                     if let value = dict["AvgReturnNum"] as? Double {
                         self.avgReturnNum = value
                     }
@@ -11796,6 +11916,9 @@ public class DescribeSlowLogStatisticResponseBody : Tea.TeaModel {
                     if let value = dict["AvgRowsSent"] as? Double {
                         self.avgRowsSent = value
                     }
+                    if let value = dict["AvgRt"] as? Double {
+                        self.avgRt = value
+                    }
                     if let value = dict["AvgScnt"] as? Double {
                         self.avgScnt = value
                     }
@@ -11804,6 +11927,12 @@ public class DescribeSlowLogStatisticResponseBody : Tea.TeaModel {
                     }
                     if let value = dict["CPUTimeSeconds"] as? Double {
                         self.CPUTimeSeconds = value
+                    }
+                    if let value = dict["ClientIp"] as? String {
+                        self.clientIp = value
+                    }
+                    if let value = dict["Cmd"] as? String {
+                        self.cmd = value
                     }
                     if let value = dict["Command"] as? String {
                         self.command = value
@@ -11819,6 +11948,9 @@ public class DescribeSlowLogStatisticResponseBody : Tea.TeaModel {
                     }
                     if let value = dict["Database"] as? String {
                         self.database = value
+                    }
+                    if let value = dict["DbId"] as? String {
+                        self.dbId = value
                     }
                     if let value = dict["DbInstanceName"] as? String {
                         self.dbInstanceName = value
@@ -11906,6 +12038,12 @@ public class DescribeSlowLogStatisticResponseBody : Tea.TeaModel {
                     if let value = dict["MaxQueryTimeSeconds"] as? Double {
                         self.maxQueryTimeSeconds = value
                     }
+                    if let value = dict["MaxRequestSize"] as? Double {
+                        self.maxRequestSize = value
+                    }
+                    if let value = dict["MaxResponseSize"] as? Double {
+                        self.maxResponseSize = value
+                    }
                     if let value = dict["MaxReturnNum"] as? Int64 {
                         self.maxReturnNum = value
                     }
@@ -11920,6 +12058,9 @@ public class DescribeSlowLogStatisticResponseBody : Tea.TeaModel {
                     }
                     if let value = dict["MaxRowsSent"] as? Int64 {
                         self.maxRowsSent = value
+                    }
+                    if let value = dict["MaxRt"] as? Double {
+                        self.maxRt = value
                     }
                     if let value = dict["MaxScnt"] as? Int64 {
                         self.maxScnt = value
@@ -12009,6 +12150,9 @@ public class DescribeSlowLogStatisticResponseBody : Tea.TeaModel {
                     }
                     if let value = dict["Timestamp"] as? Int64 {
                         self.timestamp = value
+                    }
+                    if let value = dict["TotalCount"] as? Int64 {
+                        self.totalCount = value
                     }
                     if let value = dict["Trend"] as? [Any?] {
                         var tmp : [DescribeSlowLogStatisticResponseBody.Data.Data.Logs.Trend] = []
