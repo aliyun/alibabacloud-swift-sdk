@@ -70853,6 +70853,8 @@ public class ListSmartVoiceGroupsResponseBody : Tea.TeaModel {
 
             public var voice: String?
 
+            public var voiceSource: String?
+
             public var voiceType: String?
 
             public var voiceUrl: String?
@@ -70889,6 +70891,9 @@ public class ListSmartVoiceGroupsResponseBody : Tea.TeaModel {
                 if self.voice != nil {
                     map["Voice"] = self.voice!
                 }
+                if self.voiceSource != nil {
+                    map["VoiceSource"] = self.voiceSource!
+                }
                 if self.voiceType != nil {
                     map["VoiceType"] = self.voiceType!
                 }
@@ -70917,6 +70922,9 @@ public class ListSmartVoiceGroupsResponseBody : Tea.TeaModel {
                 }
                 if let value = dict["Voice"] as? String {
                     self.voice = value
+                }
+                if let value = dict["VoiceSource"] as? String {
+                    self.voiceSource = value
                 }
                 if let value = dict["VoiceType"] as? String {
                     self.voiceType = value
