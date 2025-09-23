@@ -88,14 +88,23 @@ open class Client : AlibabacloudOpenApi.Client {
             query["Tag"] = request.tag ?? [];
         }
         var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.chargeType)) {
+            body["ChargeType"] = request.chargeType ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.clusterName)) {
             body["ClusterName"] = request.clusterName ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.clusterSpec)) {
             body["ClusterSpec"] = request.clusterSpec ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.duration)) {
+            body["Duration"] = request.duration!;
+        }
         if (!TeaUtils.Client.isUnset(request.engineType)) {
             body["EngineType"] = request.engineType ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.pricingCycle)) {
+            body["PricingCycle"] = request.pricingCycle ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.vSwitchesShrink)) {
             body["VSwitches"] = request.vSwitchesShrink ?? "";

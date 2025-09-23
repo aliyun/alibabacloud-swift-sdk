@@ -323,11 +323,17 @@ public class CreateClusterRequest : Tea.TeaModel {
             }
         }
     }
+    public var chargeType: String?
+
     public var clusterName: String?
 
     public var clusterSpec: String?
 
+    public var duration: Int32?
+
     public var engineType: String?
+
+    public var pricingCycle: String?
 
     public var tag: [CreateClusterRequest.Tag]?
 
@@ -349,14 +355,23 @@ public class CreateClusterRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.chargeType != nil {
+            map["ChargeType"] = self.chargeType!
+        }
         if self.clusterName != nil {
             map["ClusterName"] = self.clusterName!
         }
         if self.clusterSpec != nil {
             map["ClusterSpec"] = self.clusterSpec!
         }
+        if self.duration != nil {
+            map["Duration"] = self.duration!
+        }
         if self.engineType != nil {
             map["EngineType"] = self.engineType!
+        }
+        if self.pricingCycle != nil {
+            map["PricingCycle"] = self.pricingCycle!
         }
         if self.tag != nil {
             var tmp : [Any] = []
@@ -380,14 +395,23 @@ public class CreateClusterRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["ChargeType"] as? String {
+            self.chargeType = value
+        }
         if let value = dict["ClusterName"] as? String {
             self.clusterName = value
         }
         if let value = dict["ClusterSpec"] as? String {
             self.clusterSpec = value
         }
+        if let value = dict["Duration"] as? Int32 {
+            self.duration = value
+        }
         if let value = dict["EngineType"] as? String {
             self.engineType = value
+        }
+        if let value = dict["PricingCycle"] as? String {
+            self.pricingCycle = value
         }
         if let value = dict["Tag"] as? [Any?] {
             var tmp : [CreateClusterRequest.Tag] = []
@@ -460,11 +484,17 @@ public class CreateClusterShrinkRequest : Tea.TeaModel {
             }
         }
     }
+    public var chargeType: String?
+
     public var clusterName: String?
 
     public var clusterSpec: String?
 
+    public var duration: Int32?
+
     public var engineType: String?
+
+    public var pricingCycle: String?
 
     public var tag: [CreateClusterShrinkRequest.Tag]?
 
@@ -486,14 +516,23 @@ public class CreateClusterShrinkRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.chargeType != nil {
+            map["ChargeType"] = self.chargeType!
+        }
         if self.clusterName != nil {
             map["ClusterName"] = self.clusterName!
         }
         if self.clusterSpec != nil {
             map["ClusterSpec"] = self.clusterSpec!
         }
+        if self.duration != nil {
+            map["Duration"] = self.duration!
+        }
         if self.engineType != nil {
             map["EngineType"] = self.engineType!
+        }
+        if self.pricingCycle != nil {
+            map["PricingCycle"] = self.pricingCycle!
         }
         if self.tag != nil {
             var tmp : [Any] = []
@@ -513,14 +552,23 @@ public class CreateClusterShrinkRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["ChargeType"] as? String {
+            self.chargeType = value
+        }
         if let value = dict["ClusterName"] as? String {
             self.clusterName = value
         }
         if let value = dict["ClusterSpec"] as? String {
             self.clusterSpec = value
         }
+        if let value = dict["Duration"] as? Int32 {
+            self.duration = value
+        }
         if let value = dict["EngineType"] as? String {
             self.engineType = value
+        }
+        if let value = dict["PricingCycle"] as? String {
+            self.pricingCycle = value
         }
         if let value = dict["Tag"] as? [Any?] {
             var tmp : [CreateClusterShrinkRequest.Tag] = []
@@ -3699,11 +3747,15 @@ public class GetJobExecutionProgressResponseBody : Tea.TeaModel {
                 }
             }
         }
+        public var endTime: String?
+
         public var jobDescription: String?
 
         public var rootProgress: GetJobExecutionProgressResponseBody.Data.RootProgress?
 
         public var shardingProgress: [GetJobExecutionProgressResponseBody.Data.ShardingProgress]?
+
+        public var startTime: String?
 
         public var taskProgress: [GetJobExecutionProgressResponseBody.Data.TaskProgress]?
 
@@ -3727,6 +3779,9 @@ public class GetJobExecutionProgressResponseBody : Tea.TeaModel {
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
+            if self.endTime != nil {
+                map["EndTime"] = self.endTime!
+            }
             if self.jobDescription != nil {
                 map["JobDescription"] = self.jobDescription!
             }
@@ -3739,6 +3794,9 @@ public class GetJobExecutionProgressResponseBody : Tea.TeaModel {
                     tmp.append(k.toMap())
                 }
                 map["ShardingProgress"] = tmp
+            }
+            if self.startTime != nil {
+                map["StartTime"] = self.startTime!
             }
             if self.taskProgress != nil {
                 var tmp : [Any] = []
@@ -3762,6 +3820,9 @@ public class GetJobExecutionProgressResponseBody : Tea.TeaModel {
 
         public override func fromMap(_ dict: [String: Any?]?) -> Void {
             guard let dict else { return }
+            if let value = dict["EndTime"] as? String {
+                self.endTime = value
+            }
             if let value = dict["JobDescription"] as? String {
                 self.jobDescription = value
             }
@@ -3782,6 +3843,9 @@ public class GetJobExecutionProgressResponseBody : Tea.TeaModel {
                     }
                 }
                 self.shardingProgress = tmp
+            }
+            if let value = dict["StartTime"] as? String {
+                self.startTime = value
             }
             if let value = dict["TaskProgress"] as? [Any?] {
                 var tmp : [GetJobExecutionProgressResponseBody.Data.TaskProgress] = []
@@ -5483,9 +5547,13 @@ public class ListAppNamesResponseBody : Tea.TeaModel {
 
         public var appName: String?
 
+        public var appType: Int32?
+
         public var id: Int64?
 
         public var title: String?
+
+        public var workerRegistry: String?
 
         public override init() {
             super.init()
@@ -5507,11 +5575,17 @@ public class ListAppNamesResponseBody : Tea.TeaModel {
             if self.appName != nil {
                 map["AppName"] = self.appName!
             }
+            if self.appType != nil {
+                map["AppType"] = self.appType!
+            }
             if self.id != nil {
                 map["Id"] = self.id!
             }
             if self.title != nil {
                 map["Title"] = self.title!
+            }
+            if self.workerRegistry != nil {
+                map["WorkerRegistry"] = self.workerRegistry!
             }
             return map
         }
@@ -5524,11 +5598,17 @@ public class ListAppNamesResponseBody : Tea.TeaModel {
             if let value = dict["AppName"] as? String {
                 self.appName = value
             }
+            if let value = dict["AppType"] as? Int32 {
+                self.appType = value
+            }
             if let value = dict["Id"] as? Int64 {
                 self.id = value
             }
             if let value = dict["Title"] as? String {
                 self.title = value
+            }
+            if let value = dict["WorkerRegistry"] as? String {
+                self.workerRegistry = value
             }
         }
     }
@@ -5752,6 +5832,8 @@ public class ListAppsResponseBody : Tea.TeaModel {
 
             public var updater: String?
 
+            public var workerRegistry: String?
+
             public override init() {
                 super.init()
             }
@@ -5808,6 +5890,9 @@ public class ListAppsResponseBody : Tea.TeaModel {
                 if self.updater != nil {
                     map["Updater"] = self.updater!
                 }
+                if self.workerRegistry != nil {
+                    map["WorkerRegistry"] = self.workerRegistry!
+                }
                 return map
             }
 
@@ -5854,6 +5939,9 @@ public class ListAppsResponseBody : Tea.TeaModel {
                 }
                 if let value = dict["Updater"] as? String {
                     self.updater = value
+                }
+                if let value = dict["WorkerRegistry"] as? String {
+                    self.workerRegistry = value
                 }
             }
         }
