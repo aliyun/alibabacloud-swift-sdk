@@ -259,6 +259,8 @@ public class Connection : Tea.TeaModel {
         }
     }
     public class ResourceMeta : Tea.TeaModel {
+        public var extra: String?
+
         public var instanceId: String?
 
         public var instanceName: String?
@@ -277,6 +279,9 @@ public class Connection : Tea.TeaModel {
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
+            if self.extra != nil {
+                map["Extra"] = self.extra!
+            }
             if self.instanceId != nil {
                 map["InstanceId"] = self.instanceId!
             }
@@ -288,6 +293,9 @@ public class Connection : Tea.TeaModel {
 
         public override func fromMap(_ dict: [String: Any?]?) -> Void {
             guard let dict else { return }
+            if let value = dict["Extra"] as? String {
+                self.extra = value
+            }
             if let value = dict["InstanceId"] as? String {
                 self.instanceId = value
             }
@@ -440,6 +448,50 @@ public class Connection : Tea.TeaModel {
 }
 
 public class Dataset : Tea.TeaModel {
+    public class SharingConfig : Tea.TeaModel {
+        public var sharedTo: [DatasetShareRelationship]?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.sharedTo != nil {
+                var tmp : [Any] = []
+                for k in self.sharedTo! {
+                    tmp.append(k.toMap())
+                }
+                map["SharedTo"] = tmp
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["SharedTo"] as? [Any?] {
+                var tmp : [DatasetShareRelationship] = []
+                for v in value {
+                    if v != nil {
+                        var model = DatasetShareRelationship()
+                        if v != nil {
+                            model.fromMap(v as? [String: Any?])
+                        }
+                        tmp.append(model)
+                    }
+                }
+                self.sharedTo = tmp
+            }
+        }
+    }
     public var accessibility: String?
 
     public var dataSourceType: String?
@@ -458,6 +510,8 @@ public class Dataset : Tea.TeaModel {
 
     public var importInfo: String?
 
+    public var isShared: Bool?
+
     public var labels: [Label]?
 
     public var latestVersion: DatasetVersion?
@@ -475,6 +529,10 @@ public class Dataset : Tea.TeaModel {
     public var property: String?
 
     public var providerType: String?
+
+    public var sharedFrom: DatasetShareRelationship?
+
+    public var sharingConfig: Dataset.SharingConfig?
 
     public var sourceDatasetId: String?
 
@@ -503,6 +561,8 @@ public class Dataset : Tea.TeaModel {
 
     public override func validate() throws -> Void {
         try self.latestVersion?.validate()
+        try self.sharedFrom?.validate()
+        try self.sharingConfig?.validate()
     }
 
     public override func toMap() -> [String : Any] {
@@ -534,6 +594,9 @@ public class Dataset : Tea.TeaModel {
         if self.importInfo != nil {
             map["ImportInfo"] = self.importInfo!
         }
+        if self.isShared != nil {
+            map["IsShared"] = self.isShared!
+        }
         if self.labels != nil {
             var tmp : [Any] = []
             for k in self.labels! {
@@ -564,6 +627,12 @@ public class Dataset : Tea.TeaModel {
         }
         if self.providerType != nil {
             map["ProviderType"] = self.providerType!
+        }
+        if self.sharedFrom != nil {
+            map["SharedFrom"] = self.sharedFrom?.toMap()
+        }
+        if self.sharingConfig != nil {
+            map["SharingConfig"] = self.sharingConfig?.toMap()
         }
         if self.sourceDatasetId != nil {
             map["SourceDatasetId"] = self.sourceDatasetId!
@@ -621,6 +690,9 @@ public class Dataset : Tea.TeaModel {
         if let value = dict["ImportInfo"] as? String {
             self.importInfo = value
         }
+        if let value = dict["IsShared"] as? Bool {
+            self.isShared = value
+        }
         if let value = dict["Labels"] as? [Any?] {
             var tmp : [Label] = []
             for v in value {
@@ -659,6 +731,16 @@ public class Dataset : Tea.TeaModel {
         }
         if let value = dict["ProviderType"] as? String {
             self.providerType = value
+        }
+        if let value = dict["SharedFrom"] as? [String: Any?] {
+            var model = DatasetShareRelationship()
+            model.fromMap(value)
+            self.sharedFrom = model
+        }
+        if let value = dict["SharingConfig"] as? [String: Any?] {
+            var model = Dataset.SharingConfig()
+            model.fromMap(value)
+            self.sharingConfig = model
         }
         if let value = dict["SourceDatasetId"] as? String {
             self.sourceDatasetId = value
@@ -1457,6 +1539,8 @@ public class DatasetJobConfig : Tea.TeaModel {
 
     public var datasetJobConfigId: String?
 
+    public var datasetVersion: String?
+
     public var modifyTime: String?
 
     public var workspaceId: String?
@@ -1487,6 +1571,9 @@ public class DatasetJobConfig : Tea.TeaModel {
         if self.datasetJobConfigId != nil {
             map["DatasetJobConfigId"] = self.datasetJobConfigId!
         }
+        if self.datasetVersion != nil {
+            map["DatasetVersion"] = self.datasetVersion!
+        }
         if self.modifyTime != nil {
             map["ModifyTime"] = self.modifyTime!
         }
@@ -1509,6 +1596,9 @@ public class DatasetJobConfig : Tea.TeaModel {
         }
         if let value = dict["DatasetJobConfigId"] as? String {
             self.datasetJobConfigId = value
+        }
+        if let value = dict["DatasetVersion"] as? String {
+            self.datasetVersion = value
         }
         if let value = dict["ModifyTime"] as? String {
             self.modifyTime = value
@@ -1554,6 +1644,101 @@ public class DatasetLabel : Tea.TeaModel {
         }
         if let value = dict["Value"] as? String {
             self.value = value
+        }
+    }
+}
+
+public class DatasetShareRelationship : Tea.TeaModel {
+    public var allowedMountAccessLevels: [String]?
+
+    public var expiresAt: String?
+
+    public var isSecureMode: Bool?
+
+    public var sharedAt: String?
+
+    public var sourceTenantId: String?
+
+    public var sourceWorkspaceId: String?
+
+    public var status: String?
+
+    public var tenantId: String?
+
+    public var workspaceId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.allowedMountAccessLevels != nil {
+            map["AllowedMountAccessLevels"] = self.allowedMountAccessLevels!
+        }
+        if self.expiresAt != nil {
+            map["ExpiresAt"] = self.expiresAt!
+        }
+        if self.isSecureMode != nil {
+            map["IsSecureMode"] = self.isSecureMode!
+        }
+        if self.sharedAt != nil {
+            map["SharedAt"] = self.sharedAt!
+        }
+        if self.sourceTenantId != nil {
+            map["SourceTenantId"] = self.sourceTenantId!
+        }
+        if self.sourceWorkspaceId != nil {
+            map["SourceWorkspaceId"] = self.sourceWorkspaceId!
+        }
+        if self.status != nil {
+            map["Status"] = self.status!
+        }
+        if self.tenantId != nil {
+            map["TenantId"] = self.tenantId!
+        }
+        if self.workspaceId != nil {
+            map["WorkspaceId"] = self.workspaceId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["AllowedMountAccessLevels"] as? [String] {
+            self.allowedMountAccessLevels = value
+        }
+        if let value = dict["ExpiresAt"] as? String {
+            self.expiresAt = value
+        }
+        if let value = dict["IsSecureMode"] as? Bool {
+            self.isSecureMode = value
+        }
+        if let value = dict["SharedAt"] as? String {
+            self.sharedAt = value
+        }
+        if let value = dict["SourceTenantId"] as? String {
+            self.sourceTenantId = value
+        }
+        if let value = dict["SourceWorkspaceId"] as? String {
+            self.sourceWorkspaceId = value
+        }
+        if let value = dict["Status"] as? String {
+            self.status = value
+        }
+        if let value = dict["TenantId"] as? String {
+            self.tenantId = value
+        }
+        if let value = dict["WorkspaceId"] as? String {
+            self.workspaceId = value
         }
     }
 }
@@ -2111,6 +2296,8 @@ public class Model : Tea.TeaModel {
 
     public var gmtCreateTime: String?
 
+    public var gmtLatestVersionModifiedTime: String?
+
     public var gmtModifiedTime: String?
 
     public var labels: [Label]?
@@ -2132,6 +2319,8 @@ public class Model : Tea.TeaModel {
     public var origin: String?
 
     public var ownerId: String?
+
+    public var parameterSize: Int64?
 
     public var provider: String?
 
@@ -2170,6 +2359,9 @@ public class Model : Tea.TeaModel {
         if self.gmtCreateTime != nil {
             map["GmtCreateTime"] = self.gmtCreateTime!
         }
+        if self.gmtLatestVersionModifiedTime != nil {
+            map["GmtLatestVersionModifiedTime"] = self.gmtLatestVersionModifiedTime!
+        }
         if self.gmtModifiedTime != nil {
             map["GmtModifiedTime"] = self.gmtModifiedTime!
         }
@@ -2207,6 +2399,9 @@ public class Model : Tea.TeaModel {
         if self.ownerId != nil {
             map["OwnerId"] = self.ownerId!
         }
+        if self.parameterSize != nil {
+            map["ParameterSize"] = self.parameterSize!
+        }
         if self.provider != nil {
             map["Provider"] = self.provider!
         }
@@ -2242,6 +2437,9 @@ public class Model : Tea.TeaModel {
         }
         if let value = dict["GmtCreateTime"] as? String {
             self.gmtCreateTime = value
+        }
+        if let value = dict["GmtLatestVersionModifiedTime"] as? String {
+            self.gmtLatestVersionModifiedTime = value
         }
         if let value = dict["GmtModifiedTime"] as? String {
             self.gmtModifiedTime = value
@@ -2288,6 +2486,9 @@ public class Model : Tea.TeaModel {
         if let value = dict["OwnerId"] as? String {
             self.ownerId = value
         }
+        if let value = dict["ParameterSize"] as? Int64 {
+            self.parameterSize = value
+        }
         if let value = dict["Provider"] as? String {
             self.provider = value
         }
@@ -2317,9 +2518,49 @@ public class Model : Tea.TeaModel {
 }
 
 public class ModelVersion : Tea.TeaModel {
+    public class Labels : Tea.TeaModel {
+        public var key: String?
+
+        public var value: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.key != nil {
+                map["Key"] = self.key!
+            }
+            if self.value != nil {
+                map["Value"] = self.value!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["Key"] as? String {
+                self.key = value
+            }
+            if let value = dict["Value"] as? String {
+                self.value = value
+            }
+        }
+    }
     public var approvalStatus: String?
 
     public var compressionSpec: [String: Any]?
+
+    public var distillationSpec: [String: Any]?
 
     public var evaluationSpec: [String: Any]?
 
@@ -2335,7 +2576,7 @@ public class ModelVersion : Tea.TeaModel {
 
     public var inferenceSpec: [String: Any]?
 
-    public var labels: [Label]?
+    public var labels: [ModelVersion.Labels]?
 
     public var metrics: [String: Any]?
 
@@ -2376,6 +2617,9 @@ public class ModelVersion : Tea.TeaModel {
         }
         if self.compressionSpec != nil {
             map["CompressionSpec"] = self.compressionSpec!
+        }
+        if self.distillationSpec != nil {
+            map["DistillationSpec"] = self.distillationSpec!
         }
         if self.evaluationSpec != nil {
             map["EvaluationSpec"] = self.evaluationSpec!
@@ -2446,6 +2690,9 @@ public class ModelVersion : Tea.TeaModel {
         if let value = dict["CompressionSpec"] as? [String: Any] {
             self.compressionSpec = value
         }
+        if let value = dict["DistillationSpec"] as? [String: Any] {
+            self.distillationSpec = value
+        }
         if let value = dict["EvaluationSpec"] as? [String: Any] {
             self.evaluationSpec = value
         }
@@ -2468,10 +2715,10 @@ public class ModelVersion : Tea.TeaModel {
             self.inferenceSpec = value
         }
         if let value = dict["Labels"] as? [Any?] {
-            var tmp : [Label] = []
+            var tmp : [ModelVersion.Labels] = []
             for v in value {
                 if v != nil {
-                    var model = Label()
+                    var model = ModelVersion.Labels()
                     if v != nil {
                         model.fromMap(v as? [String: Any?])
                     }
@@ -4214,6 +4461,8 @@ public class CreateConnectionRequest : Tea.TeaModel {
         }
     }
     public class ResourceMeta : Tea.TeaModel {
+        public var extra: String?
+
         public var instanceId: String?
 
         public var instanceName: String?
@@ -4232,6 +4481,9 @@ public class CreateConnectionRequest : Tea.TeaModel {
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
+            if self.extra != nil {
+                map["Extra"] = self.extra!
+            }
             if self.instanceId != nil {
                 map["InstanceId"] = self.instanceId!
             }
@@ -4243,6 +4495,9 @@ public class CreateConnectionRequest : Tea.TeaModel {
 
         public override func fromMap(_ dict: [String: Any?]?) -> Void {
             guard let dict else { return }
+            if let value = dict["Extra"] as? String {
+                self.extra = value
+            }
             if let value = dict["InstanceId"] as? String {
                 self.instanceId = value
             }
@@ -5142,6 +5397,8 @@ public class CreateDatasetJobConfigRequest : Tea.TeaModel {
 
     public var configType: String?
 
+    public var datasetVersion: String?
+
     public var workspaceId: String?
 
     public override init() {
@@ -5164,6 +5421,9 @@ public class CreateDatasetJobConfigRequest : Tea.TeaModel {
         if self.configType != nil {
             map["ConfigType"] = self.configType!
         }
+        if self.datasetVersion != nil {
+            map["DatasetVersion"] = self.datasetVersion!
+        }
         if self.workspaceId != nil {
             map["WorkspaceId"] = self.workspaceId!
         }
@@ -5177,6 +5437,9 @@ public class CreateDatasetJobConfigRequest : Tea.TeaModel {
         }
         if let value = dict["ConfigType"] as? String {
             self.configType = value
+        }
+        if let value = dict["DatasetVersion"] as? String {
+            self.datasetVersion = value
         }
         if let value = dict["WorkspaceId"] as? String {
             self.workspaceId = value
@@ -6166,6 +6429,8 @@ public class CreateModelRequest : Tea.TeaModel {
 
     public var origin: String?
 
+    public var parameterSize: Int64?
+
     public var tag: [Label]?
 
     public var task: String?
@@ -6219,6 +6484,9 @@ public class CreateModelRequest : Tea.TeaModel {
         }
         if self.origin != nil {
             map["Origin"] = self.origin!
+        }
+        if self.parameterSize != nil {
+            map["ParameterSize"] = self.parameterSize!
         }
         if self.tag != nil {
             var tmp : [Any] = []
@@ -6277,6 +6545,9 @@ public class CreateModelRequest : Tea.TeaModel {
         }
         if let value = dict["Origin"] as? String {
             self.origin = value
+        }
+        if let value = dict["ParameterSize"] as? Int64 {
+            self.parameterSize = value
         }
         if let value = dict["Tag"] as? [Any?] {
             var tmp : [Label] = []
@@ -6520,6 +6791,8 @@ public class CreateModelVersionRequest : Tea.TeaModel {
 
     public var compressionSpec: [String: Any]?
 
+    public var distillationSpec: [String: Any]?
+
     public var evaluationSpec: [String: Any]?
 
     public var extraInfo: [String: Any]?
@@ -6567,6 +6840,9 @@ public class CreateModelVersionRequest : Tea.TeaModel {
         }
         if self.compressionSpec != nil {
             map["CompressionSpec"] = self.compressionSpec!
+        }
+        if self.distillationSpec != nil {
+            map["DistillationSpec"] = self.distillationSpec!
         }
         if self.evaluationSpec != nil {
             map["EvaluationSpec"] = self.evaluationSpec!
@@ -6624,6 +6900,9 @@ public class CreateModelVersionRequest : Tea.TeaModel {
         }
         if let value = dict["CompressionSpec"] as? [String: Any] {
             self.compressionSpec = value
+        }
+        if let value = dict["DistillationSpec"] as? [String: Any] {
+            self.distillationSpec = value
         }
         if let value = dict["EvaluationSpec"] as? [String: Any] {
             self.evaluationSpec = value
@@ -7093,6 +7372,8 @@ public class CreateProductOrdersResponseBody : Tea.TeaModel {
 
     public var orderId: String?
 
+    public var productIds: [String]?
+
     public var requestId: String?
 
     public override init() {
@@ -7118,6 +7399,9 @@ public class CreateProductOrdersResponseBody : Tea.TeaModel {
         if self.orderId != nil {
             map["OrderId"] = self.orderId!
         }
+        if self.productIds != nil {
+            map["ProductIds"] = self.productIds!
+        }
         if self.requestId != nil {
             map["RequestId"] = self.requestId!
         }
@@ -7134,6 +7418,9 @@ public class CreateProductOrdersResponseBody : Tea.TeaModel {
         }
         if let value = dict["OrderId"] as? String {
             self.orderId = value
+        }
+        if let value = dict["ProductIds"] as? [String] {
+            self.productIds = value
         }
         if let value = dict["RequestId"] as? String {
             self.requestId = value
@@ -10665,6 +10952,8 @@ public class GetConnectionResponseBody : Tea.TeaModel {
         }
     }
     public class ResourceMeta : Tea.TeaModel {
+        public var extra: String?
+
         public var instanceId: String?
 
         public var instanceName: String?
@@ -10683,6 +10972,9 @@ public class GetConnectionResponseBody : Tea.TeaModel {
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
+            if self.extra != nil {
+                map["Extra"] = self.extra!
+            }
             if self.instanceId != nil {
                 map["InstanceId"] = self.instanceId!
             }
@@ -10694,6 +10986,9 @@ public class GetConnectionResponseBody : Tea.TeaModel {
 
         public override func fromMap(_ dict: [String: Any?]?) -> Void {
             guard let dict else { return }
+            if let value = dict["Extra"] as? String {
+                self.extra = value
+            }
             if let value = dict["InstanceId"] as? String {
                 self.instanceId = value
             }
@@ -10904,6 +11199,50 @@ public class GetConnectionResponse : Tea.TeaModel {
 }
 
 public class GetDatasetResponseBody : Tea.TeaModel {
+    public class SharingConfig : Tea.TeaModel {
+        public var sharedTo: [DatasetShareRelationship]?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.sharedTo != nil {
+                var tmp : [Any] = []
+                for k in self.sharedTo! {
+                    tmp.append(k.toMap())
+                }
+                map["SharedTo"] = tmp
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["SharedTo"] as? [Any?] {
+                var tmp : [DatasetShareRelationship] = []
+                for v in value {
+                    if v != nil {
+                        var model = DatasetShareRelationship()
+                        if v != nil {
+                            model.fromMap(v as? [String: Any?])
+                        }
+                        tmp.append(model)
+                    }
+                }
+                self.sharedTo = tmp
+            }
+        }
+    }
     public var accessibility: String?
 
     public var dataSourceType: String?
@@ -10921,6 +11260,8 @@ public class GetDatasetResponseBody : Tea.TeaModel {
     public var gmtModifiedTime: String?
 
     public var importInfo: String?
+
+    public var isShared: Bool?
 
     public var labels: [Label]?
 
@@ -10943,6 +11284,10 @@ public class GetDatasetResponseBody : Tea.TeaModel {
     public var providerType: String?
 
     public var requestId: String?
+
+    public var sharedFrom: DatasetShareRelationship?
+
+    public var sharingConfig: GetDatasetResponseBody.SharingConfig?
 
     public var sourceDatasetId: String?
 
@@ -10971,6 +11316,8 @@ public class GetDatasetResponseBody : Tea.TeaModel {
 
     public override func validate() throws -> Void {
         try self.latestVersion?.validate()
+        try self.sharedFrom?.validate()
+        try self.sharingConfig?.validate()
     }
 
     public override func toMap() -> [String : Any] {
@@ -11001,6 +11348,9 @@ public class GetDatasetResponseBody : Tea.TeaModel {
         }
         if self.importInfo != nil {
             map["ImportInfo"] = self.importInfo!
+        }
+        if self.isShared != nil {
+            map["IsShared"] = self.isShared!
         }
         if self.labels != nil {
             var tmp : [Any] = []
@@ -11038,6 +11388,12 @@ public class GetDatasetResponseBody : Tea.TeaModel {
         }
         if self.requestId != nil {
             map["RequestId"] = self.requestId!
+        }
+        if self.sharedFrom != nil {
+            map["SharedFrom"] = self.sharedFrom?.toMap()
+        }
+        if self.sharingConfig != nil {
+            map["SharingConfig"] = self.sharingConfig?.toMap()
         }
         if self.sourceDatasetId != nil {
             map["SourceDatasetId"] = self.sourceDatasetId!
@@ -11095,6 +11451,9 @@ public class GetDatasetResponseBody : Tea.TeaModel {
         if let value = dict["ImportInfo"] as? String {
             self.importInfo = value
         }
+        if let value = dict["IsShared"] as? Bool {
+            self.isShared = value
+        }
         if let value = dict["Labels"] as? [Any?] {
             var tmp : [Label] = []
             for v in value {
@@ -11139,6 +11498,16 @@ public class GetDatasetResponseBody : Tea.TeaModel {
         }
         if let value = dict["RequestId"] as? String {
             self.requestId = value
+        }
+        if let value = dict["SharedFrom"] as? [String: Any?] {
+            var model = DatasetShareRelationship()
+            model.fromMap(value)
+            self.sharedFrom = model
+        }
+        if let value = dict["SharingConfig"] as? [String: Any?] {
+            var model = GetDatasetResponseBody.SharingConfig()
+            model.fromMap(value)
+            self.sharingConfig = model
         }
         if let value = dict["SourceDatasetId"] as? String {
             self.sourceDatasetId = value
@@ -12972,6 +13341,8 @@ public class GetModelResponseBody : Tea.TeaModel {
 
     public var gmtCreateTime: String?
 
+    public var gmtLatestVersionModifiedTime: String?
+
     public var gmtModifiedTime: String?
 
     public var labels: [Label]?
@@ -12993,6 +13364,8 @@ public class GetModelResponseBody : Tea.TeaModel {
     public var origin: String?
 
     public var ownerId: String?
+
+    public var parameterSize: Int64?
 
     public var provider: String?
 
@@ -13031,6 +13404,9 @@ public class GetModelResponseBody : Tea.TeaModel {
         if self.gmtCreateTime != nil {
             map["GmtCreateTime"] = self.gmtCreateTime!
         }
+        if self.gmtLatestVersionModifiedTime != nil {
+            map["GmtLatestVersionModifiedTime"] = self.gmtLatestVersionModifiedTime!
+        }
         if self.gmtModifiedTime != nil {
             map["GmtModifiedTime"] = self.gmtModifiedTime!
         }
@@ -13068,6 +13444,9 @@ public class GetModelResponseBody : Tea.TeaModel {
         if self.ownerId != nil {
             map["OwnerId"] = self.ownerId!
         }
+        if self.parameterSize != nil {
+            map["ParameterSize"] = self.parameterSize!
+        }
         if self.provider != nil {
             map["Provider"] = self.provider!
         }
@@ -13099,6 +13478,9 @@ public class GetModelResponseBody : Tea.TeaModel {
         }
         if let value = dict["GmtCreateTime"] as? String {
             self.gmtCreateTime = value
+        }
+        if let value = dict["GmtLatestVersionModifiedTime"] as? String {
+            self.gmtLatestVersionModifiedTime = value
         }
         if let value = dict["GmtModifiedTime"] as? String {
             self.gmtModifiedTime = value
@@ -13144,6 +13526,9 @@ public class GetModelResponseBody : Tea.TeaModel {
         }
         if let value = dict["OwnerId"] as? String {
             self.ownerId = value
+        }
+        if let value = dict["ParameterSize"] as? Int64 {
+            self.parameterSize = value
         }
         if let value = dict["Provider"] as? String {
             self.provider = value
@@ -13218,6 +13603,8 @@ public class GetModelVersionResponseBody : Tea.TeaModel {
 
     public var compressionSpec: [String: Any]?
 
+    public var distillationSpec: [String: Any]?
+
     public var evaluationSpec: [String: Any]?
 
     public var extraInfo: [String: Any]?
@@ -13275,6 +13662,9 @@ public class GetModelVersionResponseBody : Tea.TeaModel {
         }
         if self.compressionSpec != nil {
             map["CompressionSpec"] = self.compressionSpec!
+        }
+        if self.distillationSpec != nil {
+            map["DistillationSpec"] = self.distillationSpec!
         }
         if self.evaluationSpec != nil {
             map["EvaluationSpec"] = self.evaluationSpec!
@@ -13347,6 +13737,9 @@ public class GetModelVersionResponseBody : Tea.TeaModel {
         }
         if let value = dict["CompressionSpec"] as? [String: Any] {
             self.compressionSpec = value
+        }
+        if let value = dict["DistillationSpec"] as? [String: Any] {
+            self.distillationSpec = value
         }
         if let value = dict["EvaluationSpec"] as? [String: Any] {
             self.evaluationSpec = value
@@ -14574,6 +14967,8 @@ public class ListConnectionsRequest : Tea.TeaModel {
 
     public var connectionTypes: [String]?
 
+    public var creator: String?
+
     public var encryptOption: String?
 
     public var maxResults: Int32?
@@ -14614,6 +15009,9 @@ public class ListConnectionsRequest : Tea.TeaModel {
         }
         if self.connectionTypes != nil {
             map["ConnectionTypes"] = self.connectionTypes!
+        }
+        if self.creator != nil {
+            map["Creator"] = self.creator!
         }
         if self.encryptOption != nil {
             map["EncryptOption"] = self.encryptOption!
@@ -14656,6 +15054,9 @@ public class ListConnectionsRequest : Tea.TeaModel {
         if let value = dict["ConnectionTypes"] as? [String] {
             self.connectionTypes = value
         }
+        if let value = dict["Creator"] as? String {
+            self.creator = value
+        }
         if let value = dict["EncryptOption"] as? String {
             self.encryptOption = value
         }
@@ -14692,6 +15093,8 @@ public class ListConnectionsShrinkRequest : Tea.TeaModel {
     public var connectionName: String?
 
     public var connectionTypesShrink: String?
+
+    public var creator: String?
 
     public var encryptOption: String?
 
@@ -14734,6 +15137,9 @@ public class ListConnectionsShrinkRequest : Tea.TeaModel {
         if self.connectionTypesShrink != nil {
             map["ConnectionTypes"] = self.connectionTypesShrink!
         }
+        if self.creator != nil {
+            map["Creator"] = self.creator!
+        }
         if self.encryptOption != nil {
             map["EncryptOption"] = self.encryptOption!
         }
@@ -14774,6 +15180,9 @@ public class ListConnectionsShrinkRequest : Tea.TeaModel {
         }
         if let value = dict["ConnectionTypes"] as? String {
             self.connectionTypesShrink = value
+        }
+        if let value = dict["Creator"] as? String {
+            self.creator = value
         }
         if let value = dict["EncryptOption"] as? String {
             self.encryptOption = value
@@ -14947,6 +15356,10 @@ public class ListDatasetFileMetasRequest : Tea.TeaModel {
 
     public var pageSize: Int32?
 
+    public var queryContentTypeIncludeAny: [String]?
+
+    public var queryExpression: String?
+
     public var queryFileDir: String?
 
     public var queryFileName: String?
@@ -15013,6 +15426,12 @@ public class ListDatasetFileMetasRequest : Tea.TeaModel {
         }
         if self.pageSize != nil {
             map["PageSize"] = self.pageSize!
+        }
+        if self.queryContentTypeIncludeAny != nil {
+            map["QueryContentTypeIncludeAny"] = self.queryContentTypeIncludeAny!
+        }
+        if self.queryExpression != nil {
+            map["QueryExpression"] = self.queryExpression!
         }
         if self.queryFileDir != nil {
             map["QueryFileDir"] = self.queryFileDir!
@@ -15088,6 +15507,12 @@ public class ListDatasetFileMetasRequest : Tea.TeaModel {
         if let value = dict["PageSize"] as? Int32 {
             self.pageSize = value
         }
+        if let value = dict["QueryContentTypeIncludeAny"] as? [String] {
+            self.queryContentTypeIncludeAny = value
+        }
+        if let value = dict["QueryExpression"] as? String {
+            self.queryExpression = value
+        }
         if let value = dict["QueryFileDir"] as? String {
             self.queryFileDir = value
         }
@@ -15153,6 +15578,10 @@ public class ListDatasetFileMetasShrinkRequest : Tea.TeaModel {
     public var order: String?
 
     public var pageSize: Int32?
+
+    public var queryContentTypeIncludeAnyShrink: String?
+
+    public var queryExpression: String?
 
     public var queryFileDir: String?
 
@@ -15220,6 +15649,12 @@ public class ListDatasetFileMetasShrinkRequest : Tea.TeaModel {
         }
         if self.pageSize != nil {
             map["PageSize"] = self.pageSize!
+        }
+        if self.queryContentTypeIncludeAnyShrink != nil {
+            map["QueryContentTypeIncludeAny"] = self.queryContentTypeIncludeAnyShrink!
+        }
+        if self.queryExpression != nil {
+            map["QueryExpression"] = self.queryExpression!
         }
         if self.queryFileDir != nil {
             map["QueryFileDir"] = self.queryFileDir!
@@ -15294,6 +15729,12 @@ public class ListDatasetFileMetasShrinkRequest : Tea.TeaModel {
         }
         if let value = dict["PageSize"] as? Int32 {
             self.pageSize = value
+        }
+        if let value = dict["QueryContentTypeIncludeAny"] as? String {
+            self.queryContentTypeIncludeAnyShrink = value
+        }
+        if let value = dict["QueryExpression"] as? String {
+            self.queryExpression = value
         }
         if let value = dict["QueryFileDir"] as? String {
             self.queryFileDir = value
@@ -15500,6 +15941,8 @@ public class ListDatasetFileMetasResponse : Tea.TeaModel {
 public class ListDatasetJobConfigsRequest : Tea.TeaModel {
     public var configType: String?
 
+    public var datasetVersion: String?
+
     public var pageNumber: String?
 
     public var pageSize: String?
@@ -15523,6 +15966,9 @@ public class ListDatasetJobConfigsRequest : Tea.TeaModel {
         if self.configType != nil {
             map["ConfigType"] = self.configType!
         }
+        if self.datasetVersion != nil {
+            map["DatasetVersion"] = self.datasetVersion!
+        }
         if self.pageNumber != nil {
             map["PageNumber"] = self.pageNumber!
         }
@@ -15539,6 +15985,9 @@ public class ListDatasetJobConfigsRequest : Tea.TeaModel {
         guard let dict else { return }
         if let value = dict["ConfigType"] as? String {
             self.configType = value
+        }
+        if let value = dict["DatasetVersion"] as? String {
+            self.datasetVersion = value
         }
         if let value = dict["PageNumber"] as? String {
             self.pageNumber = value
@@ -15668,9 +16117,15 @@ public class ListDatasetJobsRequest : Tea.TeaModel {
 
     public var jobAction: String?
 
+    public var order: String?
+
     public var pageNumber: Int32?
 
     public var pageSize: Int32?
+
+    public var sortBy: String?
+
+    public var status: String?
 
     public var workspaceId: String?
 
@@ -15694,11 +16149,20 @@ public class ListDatasetJobsRequest : Tea.TeaModel {
         if self.jobAction != nil {
             map["JobAction"] = self.jobAction!
         }
+        if self.order != nil {
+            map["Order"] = self.order!
+        }
         if self.pageNumber != nil {
             map["PageNumber"] = self.pageNumber!
         }
         if self.pageSize != nil {
             map["PageSize"] = self.pageSize!
+        }
+        if self.sortBy != nil {
+            map["SortBy"] = self.sortBy!
+        }
+        if self.status != nil {
+            map["Status"] = self.status!
         }
         if self.workspaceId != nil {
             map["WorkspaceId"] = self.workspaceId!
@@ -15714,11 +16178,20 @@ public class ListDatasetJobsRequest : Tea.TeaModel {
         if let value = dict["JobAction"] as? String {
             self.jobAction = value
         }
+        if let value = dict["Order"] as? String {
+            self.order = value
+        }
         if let value = dict["PageNumber"] as? Int32 {
             self.pageNumber = value
         }
         if let value = dict["PageSize"] as? Int32 {
             self.pageSize = value
+        }
+        if let value = dict["SortBy"] as? String {
+            self.sortBy = value
+        }
+        if let value = dict["Status"] as? String {
+            self.status = value
         }
         if let value = dict["WorkspaceId"] as? String {
             self.workspaceId = value
@@ -16060,9 +16533,13 @@ public class ListDatasetVersionsResponse : Tea.TeaModel {
 }
 
 public class ListDatasetsRequest : Tea.TeaModel {
+    public var accessibility: String?
+
     public var dataSourceTypes: String?
 
     public var dataTypes: String?
+
+    public var edition: String?
 
     public var label: String?
 
@@ -16077,6 +16554,8 @@ public class ListDatasetsRequest : Tea.TeaModel {
     public var properties: String?
 
     public var provider: String?
+
+    public var shareScope: String?
 
     public var sortBy: String?
 
@@ -16102,11 +16581,17 @@ public class ListDatasetsRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.accessibility != nil {
+            map["Accessibility"] = self.accessibility!
+        }
         if self.dataSourceTypes != nil {
             map["DataSourceTypes"] = self.dataSourceTypes!
         }
         if self.dataTypes != nil {
             map["DataTypes"] = self.dataTypes!
+        }
+        if self.edition != nil {
+            map["Edition"] = self.edition!
         }
         if self.label != nil {
             map["Label"] = self.label!
@@ -16129,6 +16614,9 @@ public class ListDatasetsRequest : Tea.TeaModel {
         if self.provider != nil {
             map["Provider"] = self.provider!
         }
+        if self.shareScope != nil {
+            map["ShareScope"] = self.shareScope!
+        }
         if self.sortBy != nil {
             map["SortBy"] = self.sortBy!
         }
@@ -16149,11 +16637,17 @@ public class ListDatasetsRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["Accessibility"] as? String {
+            self.accessibility = value
+        }
         if let value = dict["DataSourceTypes"] as? String {
             self.dataSourceTypes = value
         }
         if let value = dict["DataTypes"] as? String {
             self.dataTypes = value
+        }
+        if let value = dict["Edition"] as? String {
+            self.edition = value
         }
         if let value = dict["Label"] as? String {
             self.label = value
@@ -16175,6 +16669,9 @@ public class ListDatasetsRequest : Tea.TeaModel {
         }
         if let value = dict["Provider"] as? String {
             self.provider = value
+        }
+        if let value = dict["ShareScope"] as? String {
+            self.shareScope = value
         }
         if let value = dict["SortBy"] as? String {
             self.sortBy = value
@@ -16689,6 +17186,134 @@ public class ListExperimentResponse : Tea.TeaModel {
         }
         if let value = dict["body"] as? [String: Any?] {
             var model = ListExperimentResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
+public class ListFeaturesRequest : Tea.TeaModel {
+    public var names: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.names != nil {
+            map["Names"] = self.names!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["Names"] as? String {
+            self.names = value
+        }
+    }
+}
+
+public class ListFeaturesResponseBody : Tea.TeaModel {
+    public var features: [String]?
+
+    public var requestId: String?
+
+    public var totalCount: Int64?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.features != nil {
+            map["Features"] = self.features!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.totalCount != nil {
+            map["TotalCount"] = self.totalCount!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["Features"] as? [String] {
+            self.features = value
+        }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+        if let value = dict["TotalCount"] as? Int64 {
+            self.totalCount = value
+        }
+    }
+}
+
+public class ListFeaturesResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: ListFeaturesResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = ListFeaturesResponseBody()
             model.fromMap(value)
             self.body = model
         }
@@ -17790,6 +18415,52 @@ public class ListModelVersionsResponse : Tea.TeaModel {
 }
 
 public class ListModelsRequest : Tea.TeaModel {
+    public class Conditions : Tea.TeaModel {
+        public var column: String?
+
+        public var operator_: String?
+
+        public var value: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.column != nil {
+                map["Column"] = self.column!
+            }
+            if self.operator_ != nil {
+                map["Operator"] = self.operator_!
+            }
+            if self.value != nil {
+                map["Value"] = self.value!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["Column"] as? String {
+                self.column = value
+            }
+            if let value = dict["Operator"] as? String {
+                self.operator_ = value
+            }
+            if let value = dict["Value"] as? String {
+                self.value = value
+            }
+        }
+    }
     public class Tag : Tea.TeaModel {
         public var key: String?
 
@@ -17829,6 +18500,8 @@ public class ListModelsRequest : Tea.TeaModel {
         }
     }
     public var collections: String?
+
+    public var conditions: [ListModelsRequest.Conditions]?
 
     public var domain: String?
 
@@ -17874,6 +18547,13 @@ public class ListModelsRequest : Tea.TeaModel {
         var map = super.toMap()
         if self.collections != nil {
             map["Collections"] = self.collections!
+        }
+        if self.conditions != nil {
+            var tmp : [Any] = []
+            for k in self.conditions! {
+                tmp.append(k.toMap())
+            }
+            map["Conditions"] = tmp
         }
         if self.domain != nil {
             map["Domain"] = self.domain!
@@ -17928,6 +18608,19 @@ public class ListModelsRequest : Tea.TeaModel {
         guard let dict else { return }
         if let value = dict["Collections"] as? String {
             self.collections = value
+        }
+        if let value = dict["Conditions"] as? [Any?] {
+            var tmp : [ListModelsRequest.Conditions] = []
+            for v in value {
+                if v != nil {
+                    var model = ListModelsRequest.Conditions()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.conditions = tmp
         }
         if let value = dict["Domain"] as? String {
             self.domain = value
@@ -17987,6 +18680,8 @@ public class ListModelsRequest : Tea.TeaModel {
 public class ListModelsShrinkRequest : Tea.TeaModel {
     public var collections: String?
 
+    public var conditionsShrink: String?
+
     public var domain: String?
 
     public var label: String?
@@ -18031,6 +18726,9 @@ public class ListModelsShrinkRequest : Tea.TeaModel {
         var map = super.toMap()
         if self.collections != nil {
             map["Collections"] = self.collections!
+        }
+        if self.conditionsShrink != nil {
+            map["Conditions"] = self.conditionsShrink!
         }
         if self.domain != nil {
             map["Domain"] = self.domain!
@@ -18081,6 +18779,9 @@ public class ListModelsShrinkRequest : Tea.TeaModel {
         guard let dict else { return }
         if let value = dict["Collections"] as? String {
             self.collections = value
+        }
+        if let value = dict["Conditions"] as? String {
+            self.conditionsShrink = value
         }
         if let value = dict["Domain"] as? String {
             self.domain = value
@@ -18494,7 +19195,7 @@ public class ListProductsResponseBody : Tea.TeaModel {
 
         public var productCode: String?
 
-        public var productInstanceId: String?
+        public var productId: String?
 
         public var purchaseUrl: String?
 
@@ -18521,8 +19222,8 @@ public class ListProductsResponseBody : Tea.TeaModel {
             if self.productCode != nil {
                 map["ProductCode"] = self.productCode!
             }
-            if self.productInstanceId != nil {
-                map["ProductInstanceId"] = self.productInstanceId!
+            if self.productId != nil {
+                map["ProductId"] = self.productId!
             }
             if self.purchaseUrl != nil {
                 map["PurchaseUrl"] = self.purchaseUrl!
@@ -18541,8 +19242,8 @@ public class ListProductsResponseBody : Tea.TeaModel {
             if let value = dict["ProductCode"] as? String {
                 self.productCode = value
             }
-            if let value = dict["ProductInstanceId"] as? String {
-                self.productInstanceId = value
+            if let value = dict["ProductId"] as? String {
+                self.productId = value
             }
             if let value = dict["PurchaseUrl"] as? String {
                 self.purchaseUrl = value
@@ -20274,6 +20975,8 @@ public class ListUserConfigsResponse : Tea.TeaModel {
 }
 
 public class ListWorkspaceUsersRequest : Tea.TeaModel {
+    public var userId: String?
+
     public var userName: String?
 
     public override init() {
@@ -20290,6 +20993,9 @@ public class ListWorkspaceUsersRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.userId != nil {
+            map["UserId"] = self.userId!
+        }
         if self.userName != nil {
             map["UserName"] = self.userName!
         }
@@ -20298,6 +21004,9 @@ public class ListWorkspaceUsersRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["UserId"] as? String {
+            self.userId = value
+        }
         if let value = dict["UserName"] as? String {
             self.userName = value
         }
@@ -22664,6 +23373,50 @@ public class UpdateConnectionResponse : Tea.TeaModel {
 }
 
 public class UpdateDatasetRequest : Tea.TeaModel {
+    public class SharingConfig : Tea.TeaModel {
+        public var sharedTo: [DatasetShareRelationship]?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.sharedTo != nil {
+                var tmp : [Any] = []
+                for k in self.sharedTo! {
+                    tmp.append(k.toMap())
+                }
+                map["SharedTo"] = tmp
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["SharedTo"] as? [Any?] {
+                var tmp : [DatasetShareRelationship] = []
+                for v in value {
+                    if v != nil {
+                        var model = DatasetShareRelationship()
+                        if v != nil {
+                            model.fromMap(v as? [String: Any?])
+                        }
+                        tmp.append(model)
+                    }
+                }
+                self.sharedTo = tmp
+            }
+        }
+    }
     public var description_: String?
 
     public var edition: String?
@@ -22673,6 +23426,8 @@ public class UpdateDatasetRequest : Tea.TeaModel {
     public var name: String?
 
     public var options: String?
+
+    public var sharingConfig: UpdateDatasetRequest.SharingConfig?
 
     public override init() {
         super.init()
@@ -22684,6 +23439,7 @@ public class UpdateDatasetRequest : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
+        try self.sharingConfig?.validate()
     }
 
     public override func toMap() -> [String : Any] {
@@ -22702,6 +23458,9 @@ public class UpdateDatasetRequest : Tea.TeaModel {
         }
         if self.options != nil {
             map["Options"] = self.options!
+        }
+        if self.sharingConfig != nil {
+            map["SharingConfig"] = self.sharingConfig?.toMap()
         }
         return map
     }
@@ -22722,6 +23481,11 @@ public class UpdateDatasetRequest : Tea.TeaModel {
         }
         if let value = dict["Options"] as? String {
             self.options = value
+        }
+        if let value = dict["SharingConfig"] as? [String: Any?] {
+            var model = UpdateDatasetRequest.SharingConfig()
+            model.fromMap(value)
+            self.sharingConfig = model
         }
     }
 }
@@ -23630,6 +24394,8 @@ public class UpdateModelRequest : Tea.TeaModel {
 
     public var origin: String?
 
+    public var parameterSize: Int64?
+
     public var task: String?
 
     public override init() {
@@ -23673,6 +24439,9 @@ public class UpdateModelRequest : Tea.TeaModel {
         if self.origin != nil {
             map["Origin"] = self.origin!
         }
+        if self.parameterSize != nil {
+            map["ParameterSize"] = self.parameterSize!
+        }
         if self.task != nil {
             map["Task"] = self.task!
         }
@@ -23707,6 +24476,9 @@ public class UpdateModelRequest : Tea.TeaModel {
         }
         if let value = dict["Origin"] as? String {
             self.origin = value
+        }
+        if let value = dict["ParameterSize"] as? Int64 {
+            self.parameterSize = value
         }
         if let value = dict["Task"] as? String {
             self.task = value
@@ -23800,6 +24572,8 @@ public class UpdateModelVersionRequest : Tea.TeaModel {
 
     public var compressionSpec: [String: Any]?
 
+    public var distillationSpec: [String: Any]?
+
     public var evaluationSpec: [String: Any]?
 
     public var extraInfo: [String: Any]?
@@ -23838,6 +24612,9 @@ public class UpdateModelVersionRequest : Tea.TeaModel {
         if self.compressionSpec != nil {
             map["CompressionSpec"] = self.compressionSpec!
         }
+        if self.distillationSpec != nil {
+            map["DistillationSpec"] = self.distillationSpec!
+        }
         if self.evaluationSpec != nil {
             map["EvaluationSpec"] = self.evaluationSpec!
         }
@@ -23875,6 +24652,9 @@ public class UpdateModelVersionRequest : Tea.TeaModel {
         }
         if let value = dict["CompressionSpec"] as? [String: Any] {
             self.compressionSpec = value
+        }
+        if let value = dict["DistillationSpec"] as? [String: Any] {
+            self.distillationSpec = value
         }
         if let value = dict["EvaluationSpec"] as? [String: Any] {
             self.evaluationSpec = value
