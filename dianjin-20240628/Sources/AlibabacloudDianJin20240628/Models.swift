@@ -1,9 +1,8 @@
 import Foundation
 import Tea
 import TeaUtils
-import AlibabaCloudOssSdk
-import AlibabacloudOpenPlatform20191219
-import AlibabaCloudOSSUtil
+import DarabonbaXML
+import AlibabaCloudCredentials
 import TeaFileForm
 import AlibabacloudOpenApi
 import AlibabaCloudOpenApiUtil
@@ -4952,6 +4951,375 @@ public class GetDialogDetailResponse : Tea.TeaModel {
         }
         if let value = dict["body"] as? [String: Any?] {
             var model = GetDialogDetailResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
+public class GetDialogLogRequest : Tea.TeaModel {
+    public var id: String?
+
+    public var sessionId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.id != nil {
+            map["id"] = self.id!
+        }
+        if self.sessionId != nil {
+            map["sessionId"] = self.sessionId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["id"] as? String {
+            self.id = value
+        }
+        if let value = dict["sessionId"] as? String {
+            self.sessionId = value
+        }
+    }
+}
+
+public class GetDialogLogResponseBody : Tea.TeaModel {
+    public class Data : Tea.TeaModel {
+        public class HitIntentionList : Tea.TeaModel {
+            public var description_: String?
+
+            public var intentionName: String?
+
+            public var intentionScript: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.description_ != nil {
+                    map["description"] = self.description_!
+                }
+                if self.intentionName != nil {
+                    map["intentionName"] = self.intentionName!
+                }
+                if self.intentionScript != nil {
+                    map["intentionScript"] = self.intentionScript!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["description"] as? String {
+                    self.description_ = value
+                }
+                if let value = dict["intentionName"] as? String {
+                    self.intentionName = value
+                }
+                if let value = dict["intentionScript"] as? String {
+                    self.intentionScript = value
+                }
+            }
+        }
+        public class IntentionList : Tea.TeaModel {
+            public var description_: String?
+
+            public var intentionName: String?
+
+            public var intentionScript: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.description_ != nil {
+                    map["description"] = self.description_!
+                }
+                if self.intentionName != nil {
+                    map["intentionName"] = self.intentionName!
+                }
+                if self.intentionScript != nil {
+                    map["intentionScript"] = self.intentionScript!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["description"] as? String {
+                    self.description_ = value
+                }
+                if let value = dict["intentionName"] as? String {
+                    self.intentionName = value
+                }
+                if let value = dict["intentionScript"] as? String {
+                    self.intentionScript = value
+                }
+            }
+        }
+        public var analysisProcess: String?
+
+        public var conversationList: String?
+
+        public var hitIntentionList: [GetDialogLogResponseBody.Data.HitIntentionList]?
+
+        public var intentionList: [GetDialogLogResponseBody.Data.IntentionList]?
+
+        public var modelCostTime: Int64?
+
+        public var recallList: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.analysisProcess != nil {
+                map["analysisProcess"] = self.analysisProcess!
+            }
+            if self.conversationList != nil {
+                map["conversationList"] = self.conversationList!
+            }
+            if self.hitIntentionList != nil {
+                var tmp : [Any] = []
+                for k in self.hitIntentionList! {
+                    tmp.append(k.toMap())
+                }
+                map["hitIntentionList"] = tmp
+            }
+            if self.intentionList != nil {
+                var tmp : [Any] = []
+                for k in self.intentionList! {
+                    tmp.append(k.toMap())
+                }
+                map["intentionList"] = tmp
+            }
+            if self.modelCostTime != nil {
+                map["modelCostTime"] = self.modelCostTime!
+            }
+            if self.recallList != nil {
+                map["recallList"] = self.recallList!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["analysisProcess"] as? String {
+                self.analysisProcess = value
+            }
+            if let value = dict["conversationList"] as? String {
+                self.conversationList = value
+            }
+            if let value = dict["hitIntentionList"] as? [Any?] {
+                var tmp : [GetDialogLogResponseBody.Data.HitIntentionList] = []
+                for v in value {
+                    if v != nil {
+                        var model = GetDialogLogResponseBody.Data.HitIntentionList()
+                        if v != nil {
+                            model.fromMap(v as? [String: Any?])
+                        }
+                        tmp.append(model)
+                    }
+                }
+                self.hitIntentionList = tmp
+            }
+            if let value = dict["intentionList"] as? [Any?] {
+                var tmp : [GetDialogLogResponseBody.Data.IntentionList] = []
+                for v in value {
+                    if v != nil {
+                        var model = GetDialogLogResponseBody.Data.IntentionList()
+                        if v != nil {
+                            model.fromMap(v as? [String: Any?])
+                        }
+                        tmp.append(model)
+                    }
+                }
+                self.intentionList = tmp
+            }
+            if let value = dict["modelCostTime"] as? Int64 {
+                self.modelCostTime = value
+            }
+            if let value = dict["recallList"] as? String {
+                self.recallList = value
+            }
+        }
+    }
+    public var cost: Int64?
+
+    public var data: GetDialogLogResponseBody.Data?
+
+    public var dataType: String?
+
+    public var errCode: String?
+
+    public var message: String?
+
+    public var requestId: String?
+
+    public var success: Bool?
+
+    public var time: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.data?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.cost != nil {
+            map["cost"] = self.cost!
+        }
+        if self.data != nil {
+            map["data"] = self.data?.toMap()
+        }
+        if self.dataType != nil {
+            map["dataType"] = self.dataType!
+        }
+        if self.errCode != nil {
+            map["errCode"] = self.errCode!
+        }
+        if self.message != nil {
+            map["message"] = self.message!
+        }
+        if self.requestId != nil {
+            map["requestId"] = self.requestId!
+        }
+        if self.success != nil {
+            map["success"] = self.success!
+        }
+        if self.time != nil {
+            map["time"] = self.time!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["cost"] as? Int64 {
+            self.cost = value
+        }
+        if let value = dict["data"] as? [String: Any?] {
+            var model = GetDialogLogResponseBody.Data()
+            model.fromMap(value)
+            self.data = model
+        }
+        if let value = dict["dataType"] as? String {
+            self.dataType = value
+        }
+        if let value = dict["errCode"] as? String {
+            self.errCode = value
+        }
+        if let value = dict["message"] as? String {
+            self.message = value
+        }
+        if let value = dict["requestId"] as? String {
+            self.requestId = value
+        }
+        if let value = dict["success"] as? Bool {
+            self.success = value
+        }
+        if let value = dict["time"] as? String {
+            self.time = value
+        }
+    }
+}
+
+public class GetDialogLogResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: GetDialogLogResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = GetDialogLogResponseBody()
             model.fromMap(value)
             self.body = model
         }
@@ -10989,6 +11357,8 @@ public class RealTimeDialogResponseBody : Tea.TeaModel {
 
             public var selfDirectedScriptFullContent: String?
 
+            public var skipCurrentRecognize: Bool?
+
             public override init() {
                 super.init()
             }
@@ -11036,6 +11406,9 @@ public class RealTimeDialogResponseBody : Tea.TeaModel {
                 if self.selfDirectedScriptFullContent != nil {
                     map["selfDirectedScriptFullContent"] = self.selfDirectedScriptFullContent!
                 }
+                if self.skipCurrentRecognize != nil {
+                    map["skipCurrentRecognize"] = self.skipCurrentRecognize!
+                }
                 return map
             }
 
@@ -11073,6 +11446,9 @@ public class RealTimeDialogResponseBody : Tea.TeaModel {
                 }
                 if let value = dict["selfDirectedScriptFullContent"] as? String {
                     self.selfDirectedScriptFullContent = value
+                }
+                if let value = dict["skipCurrentRecognize"] as? Bool {
+                    self.skipCurrentRecognize = value
                 }
             }
         }
@@ -11099,6 +11475,8 @@ public class RealTimeDialogResponseBody : Tea.TeaModel {
 
             public var selfDirectedScriptFullContent: String?
 
+            public var skipCurrentRecognize: Bool?
+
             public override init() {
                 super.init()
             }
@@ -11146,6 +11524,9 @@ public class RealTimeDialogResponseBody : Tea.TeaModel {
                 if self.selfDirectedScriptFullContent != nil {
                     map["selfDirectedScriptFullContent"] = self.selfDirectedScriptFullContent!
                 }
+                if self.skipCurrentRecognize != nil {
+                    map["skipCurrentRecognize"] = self.skipCurrentRecognize!
+                }
                 return map
             }
 
@@ -11183,6 +11564,9 @@ public class RealTimeDialogResponseBody : Tea.TeaModel {
                 }
                 if let value = dict["selfDirectedScriptFullContent"] as? String {
                     self.selfDirectedScriptFullContent = value
+                }
+                if let value = dict["skipCurrentRecognize"] as? Bool {
+                    self.skipCurrentRecognize = value
                 }
             }
         }
