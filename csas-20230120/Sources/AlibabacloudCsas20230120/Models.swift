@@ -12526,6 +12526,8 @@ public class GetApprovalProcessResponseBody : Tea.TeaModel {
             public class FieldMap : Tea.TeaModel {
                 public var displayField: String?
 
+                public var displayFieldValue: String?
+
                 public var systemField: String?
 
                 public override init() {
@@ -12545,6 +12547,9 @@ public class GetApprovalProcessResponseBody : Tea.TeaModel {
                     if self.displayField != nil {
                         map["DisplayField"] = self.displayField!
                     }
+                    if self.displayFieldValue != nil {
+                        map["DisplayFieldValue"] = self.displayFieldValue!
+                    }
                     if self.systemField != nil {
                         map["SystemField"] = self.systemField!
                     }
@@ -12555,6 +12560,9 @@ public class GetApprovalProcessResponseBody : Tea.TeaModel {
                     guard let dict else { return }
                     if let value = dict["DisplayField"] as? String {
                         self.displayField = value
+                    }
+                    if let value = dict["DisplayFieldValue"] as? String {
+                        self.displayFieldValue = value
                     }
                     if let value = dict["SystemField"] as? String {
                         self.systemField = value
@@ -12632,6 +12640,8 @@ public class GetApprovalProcessResponseBody : Tea.TeaModel {
             public class FieldMap : Tea.TeaModel {
                 public var displayField: String?
 
+                public var displayFieldValue: String?
+
                 public var systemField: String?
 
                 public override init() {
@@ -12651,6 +12661,9 @@ public class GetApprovalProcessResponseBody : Tea.TeaModel {
                     if self.displayField != nil {
                         map["DisplayField"] = self.displayField!
                     }
+                    if self.displayFieldValue != nil {
+                        map["DisplayFieldValue"] = self.displayFieldValue!
+                    }
                     if self.systemField != nil {
                         map["SystemField"] = self.systemField!
                     }
@@ -12661,6 +12674,9 @@ public class GetApprovalProcessResponseBody : Tea.TeaModel {
                     guard let dict else { return }
                     if let value = dict["DisplayField"] as? String {
                         self.displayField = value
+                    }
+                    if let value = dict["DisplayFieldValue"] as? String {
+                        self.displayFieldValue = value
                     }
                     if let value = dict["SystemField"] as? String {
                         self.systemField = value
@@ -12738,6 +12754,8 @@ public class GetApprovalProcessResponseBody : Tea.TeaModel {
             public class FieldMap : Tea.TeaModel {
                 public var displayField: String?
 
+                public var displayFieldValue: String?
+
                 public var systemField: String?
 
                 public override init() {
@@ -12757,6 +12775,9 @@ public class GetApprovalProcessResponseBody : Tea.TeaModel {
                     if self.displayField != nil {
                         map["DisplayField"] = self.displayField!
                     }
+                    if self.displayFieldValue != nil {
+                        map["DisplayFieldValue"] = self.displayFieldValue!
+                    }
                     if self.systemField != nil {
                         map["SystemField"] = self.systemField!
                     }
@@ -12767,6 +12788,9 @@ public class GetApprovalProcessResponseBody : Tea.TeaModel {
                     guard let dict else { return }
                     if let value = dict["DisplayField"] as? String {
                         self.displayField = value
+                    }
+                    if let value = dict["DisplayFieldValue"] as? String {
+                        self.displayFieldValue = value
                     }
                     if let value = dict["SystemField"] as? String {
                         self.systemField = value
@@ -12844,6 +12868,8 @@ public class GetApprovalProcessResponseBody : Tea.TeaModel {
             public class FieldMap : Tea.TeaModel {
                 public var displayField: String?
 
+                public var displayFieldValue: String?
+
                 public var systemField: String?
 
                 public override init() {
@@ -12863,6 +12889,9 @@ public class GetApprovalProcessResponseBody : Tea.TeaModel {
                     if self.displayField != nil {
                         map["DisplayField"] = self.displayField!
                     }
+                    if self.displayFieldValue != nil {
+                        map["DisplayFieldValue"] = self.displayFieldValue!
+                    }
                     if self.systemField != nil {
                         map["SystemField"] = self.systemField!
                     }
@@ -12873,6 +12902,9 @@ public class GetApprovalProcessResponseBody : Tea.TeaModel {
                     guard let dict else { return }
                     if let value = dict["DisplayField"] as? String {
                         self.displayField = value
+                    }
+                    if let value = dict["DisplayFieldValue"] as? String {
+                        self.displayFieldValue = value
                     }
                     if let value = dict["SystemField"] as? String {
                         self.systemField = value
@@ -12950,6 +12982,8 @@ public class GetApprovalProcessResponseBody : Tea.TeaModel {
             public class FieldMap : Tea.TeaModel {
                 public var displayField: String?
 
+                public var displayFieldValue: String?
+
                 public var systemField: String?
 
                 public override init() {
@@ -12969,6 +13003,9 @@ public class GetApprovalProcessResponseBody : Tea.TeaModel {
                     if self.displayField != nil {
                         map["DisplayField"] = self.displayField!
                     }
+                    if self.displayFieldValue != nil {
+                        map["DisplayFieldValue"] = self.displayFieldValue!
+                    }
                     if self.systemField != nil {
                         map["SystemField"] = self.systemField!
                     }
@@ -12979,6 +13016,9 @@ public class GetApprovalProcessResponseBody : Tea.TeaModel {
                     guard let dict else { return }
                     if let value = dict["DisplayField"] as? String {
                         self.displayField = value
+                    }
+                    if let value = dict["DisplayFieldValue"] as? String {
+                        self.displayFieldValue = value
                     }
                     if let value = dict["SystemField"] as? String {
                         self.systemField = value
@@ -13056,6 +13096,8 @@ public class GetApprovalProcessResponseBody : Tea.TeaModel {
             public class FieldMap : Tea.TeaModel {
                 public var displayField: String?
 
+                public var displayFieldValue: String?
+
                 public var systemField: String?
 
                 public override init() {
@@ -13075,6 +13117,9 @@ public class GetApprovalProcessResponseBody : Tea.TeaModel {
                     if self.displayField != nil {
                         map["DisplayField"] = self.displayField!
                     }
+                    if self.displayFieldValue != nil {
+                        map["DisplayFieldValue"] = self.displayFieldValue!
+                    }
                     if self.systemField != nil {
                         map["SystemField"] = self.systemField!
                     }
@@ -13085,6 +13130,9 @@ public class GetApprovalProcessResponseBody : Tea.TeaModel {
                     guard let dict else { return }
                     if let value = dict["DisplayField"] as? String {
                         self.displayField = value
+                    }
+                    if let value = dict["DisplayFieldValue"] as? String {
+                        self.displayFieldValue = value
                     }
                     if let value = dict["SystemField"] as? String {
                         self.systemField = value
@@ -13162,6 +13210,8 @@ public class GetApprovalProcessResponseBody : Tea.TeaModel {
             public class FieldMap : Tea.TeaModel {
                 public var displayField: String?
 
+                public var displayFieldValue: String?
+
                 public var systemField: String?
 
                 public override init() {
@@ -13181,6 +13231,9 @@ public class GetApprovalProcessResponseBody : Tea.TeaModel {
                     if self.displayField != nil {
                         map["DisplayField"] = self.displayField!
                     }
+                    if self.displayFieldValue != nil {
+                        map["DisplayFieldValue"] = self.displayFieldValue!
+                    }
                     if self.systemField != nil {
                         map["SystemField"] = self.systemField!
                     }
@@ -13191,6 +13244,9 @@ public class GetApprovalProcessResponseBody : Tea.TeaModel {
                     guard let dict else { return }
                     if let value = dict["DisplayField"] as? String {
                         self.displayField = value
+                    }
+                    if let value = dict["DisplayFieldValue"] as? String {
+                        self.displayFieldValue = value
                     }
                     if let value = dict["SystemField"] as? String {
                         self.systemField = value
@@ -13306,6 +13362,8 @@ public class GetApprovalProcessResponseBody : Tea.TeaModel {
             public class FieldMap : Tea.TeaModel {
                 public var displayField: String?
 
+                public var displayFieldValue: String?
+
                 public var systemField: String?
 
                 public override init() {
@@ -13325,6 +13383,9 @@ public class GetApprovalProcessResponseBody : Tea.TeaModel {
                     if self.displayField != nil {
                         map["DisplayField"] = self.displayField!
                     }
+                    if self.displayFieldValue != nil {
+                        map["DisplayFieldValue"] = self.displayFieldValue!
+                    }
                     if self.systemField != nil {
                         map["SystemField"] = self.systemField!
                     }
@@ -13335,6 +13396,9 @@ public class GetApprovalProcessResponseBody : Tea.TeaModel {
                     guard let dict else { return }
                     if let value = dict["DisplayField"] as? String {
                         self.displayField = value
+                    }
+                    if let value = dict["DisplayFieldValue"] as? String {
+                        self.displayFieldValue = value
                     }
                     if let value = dict["SystemField"] as? String {
                         self.systemField = value
@@ -13412,6 +13476,8 @@ public class GetApprovalProcessResponseBody : Tea.TeaModel {
             public class FieldMap : Tea.TeaModel {
                 public var displayField: String?
 
+                public var displayFieldValue: String?
+
                 public var systemField: String?
 
                 public override init() {
@@ -13431,6 +13497,9 @@ public class GetApprovalProcessResponseBody : Tea.TeaModel {
                     if self.displayField != nil {
                         map["DisplayField"] = self.displayField!
                     }
+                    if self.displayFieldValue != nil {
+                        map["DisplayFieldValue"] = self.displayFieldValue!
+                    }
                     if self.systemField != nil {
                         map["SystemField"] = self.systemField!
                     }
@@ -13441,6 +13510,9 @@ public class GetApprovalProcessResponseBody : Tea.TeaModel {
                     guard let dict else { return }
                     if let value = dict["DisplayField"] as? String {
                         self.displayField = value
+                    }
+                    if let value = dict["DisplayFieldValue"] as? String {
+                        self.displayFieldValue = value
                     }
                     if let value = dict["SystemField"] as? String {
                         self.systemField = value
@@ -31725,6 +31797,8 @@ public class UpdateApprovalProcessRequest : Tea.TeaModel {
             public class FieldMap : Tea.TeaModel {
                 public var displayField: String?
 
+                public var displayFieldValue: String?
+
                 public var systemField: String?
 
                 public override init() {
@@ -31744,6 +31818,9 @@ public class UpdateApprovalProcessRequest : Tea.TeaModel {
                     if self.displayField != nil {
                         map["DisplayField"] = self.displayField!
                     }
+                    if self.displayFieldValue != nil {
+                        map["DisplayFieldValue"] = self.displayFieldValue!
+                    }
                     if self.systemField != nil {
                         map["SystemField"] = self.systemField!
                     }
@@ -31754,6 +31831,9 @@ public class UpdateApprovalProcessRequest : Tea.TeaModel {
                     guard let dict else { return }
                     if let value = dict["DisplayField"] as? String {
                         self.displayField = value
+                    }
+                    if let value = dict["DisplayFieldValue"] as? String {
+                        self.displayFieldValue = value
                     }
                     if let value = dict["SystemField"] as? String {
                         self.systemField = value
@@ -31823,6 +31903,8 @@ public class UpdateApprovalProcessRequest : Tea.TeaModel {
             public class FieldMap : Tea.TeaModel {
                 public var displayField: String?
 
+                public var displayFieldValue: String?
+
                 public var systemField: String?
 
                 public override init() {
@@ -31842,6 +31924,9 @@ public class UpdateApprovalProcessRequest : Tea.TeaModel {
                     if self.displayField != nil {
                         map["DisplayField"] = self.displayField!
                     }
+                    if self.displayFieldValue != nil {
+                        map["DisplayFieldValue"] = self.displayFieldValue!
+                    }
                     if self.systemField != nil {
                         map["SystemField"] = self.systemField!
                     }
@@ -31852,6 +31937,9 @@ public class UpdateApprovalProcessRequest : Tea.TeaModel {
                     guard let dict else { return }
                     if let value = dict["DisplayField"] as? String {
                         self.displayField = value
+                    }
+                    if let value = dict["DisplayFieldValue"] as? String {
+                        self.displayFieldValue = value
                     }
                     if let value = dict["SystemField"] as? String {
                         self.systemField = value
@@ -31921,6 +32009,8 @@ public class UpdateApprovalProcessRequest : Tea.TeaModel {
             public class FieldMap : Tea.TeaModel {
                 public var displayField: String?
 
+                public var displayFieldValue: String?
+
                 public var systemField: String?
 
                 public override init() {
@@ -31940,6 +32030,9 @@ public class UpdateApprovalProcessRequest : Tea.TeaModel {
                     if self.displayField != nil {
                         map["DisplayField"] = self.displayField!
                     }
+                    if self.displayFieldValue != nil {
+                        map["DisplayFieldValue"] = self.displayFieldValue!
+                    }
                     if self.systemField != nil {
                         map["SystemField"] = self.systemField!
                     }
@@ -31950,6 +32043,9 @@ public class UpdateApprovalProcessRequest : Tea.TeaModel {
                     guard let dict else { return }
                     if let value = dict["DisplayField"] as? String {
                         self.displayField = value
+                    }
+                    if let value = dict["DisplayFieldValue"] as? String {
+                        self.displayFieldValue = value
                     }
                     if let value = dict["SystemField"] as? String {
                         self.systemField = value
@@ -32019,6 +32115,8 @@ public class UpdateApprovalProcessRequest : Tea.TeaModel {
             public class FieldMap : Tea.TeaModel {
                 public var displayField: String?
 
+                public var displayFieldValue: String?
+
                 public var systemField: String?
 
                 public override init() {
@@ -32038,6 +32136,9 @@ public class UpdateApprovalProcessRequest : Tea.TeaModel {
                     if self.displayField != nil {
                         map["DisplayField"] = self.displayField!
                     }
+                    if self.displayFieldValue != nil {
+                        map["DisplayFieldValue"] = self.displayFieldValue!
+                    }
                     if self.systemField != nil {
                         map["SystemField"] = self.systemField!
                     }
@@ -32048,6 +32149,9 @@ public class UpdateApprovalProcessRequest : Tea.TeaModel {
                     guard let dict else { return }
                     if let value = dict["DisplayField"] as? String {
                         self.displayField = value
+                    }
+                    if let value = dict["DisplayFieldValue"] as? String {
+                        self.displayFieldValue = value
                     }
                     if let value = dict["SystemField"] as? String {
                         self.systemField = value
@@ -32117,6 +32221,8 @@ public class UpdateApprovalProcessRequest : Tea.TeaModel {
             public class FieldMap : Tea.TeaModel {
                 public var displayField: String?
 
+                public var displayFieldValue: String?
+
                 public var systemField: String?
 
                 public override init() {
@@ -32136,6 +32242,9 @@ public class UpdateApprovalProcessRequest : Tea.TeaModel {
                     if self.displayField != nil {
                         map["DisplayField"] = self.displayField!
                     }
+                    if self.displayFieldValue != nil {
+                        map["DisplayFieldValue"] = self.displayFieldValue!
+                    }
                     if self.systemField != nil {
                         map["SystemField"] = self.systemField!
                     }
@@ -32146,6 +32255,9 @@ public class UpdateApprovalProcessRequest : Tea.TeaModel {
                     guard let dict else { return }
                     if let value = dict["DisplayField"] as? String {
                         self.displayField = value
+                    }
+                    if let value = dict["DisplayFieldValue"] as? String {
+                        self.displayFieldValue = value
                     }
                     if let value = dict["SystemField"] as? String {
                         self.systemField = value
@@ -32215,6 +32327,8 @@ public class UpdateApprovalProcessRequest : Tea.TeaModel {
             public class FieldMap : Tea.TeaModel {
                 public var displayField: String?
 
+                public var displayFieldValue: String?
+
                 public var systemField: String?
 
                 public override init() {
@@ -32234,6 +32348,9 @@ public class UpdateApprovalProcessRequest : Tea.TeaModel {
                     if self.displayField != nil {
                         map["DisplayField"] = self.displayField!
                     }
+                    if self.displayFieldValue != nil {
+                        map["DisplayFieldValue"] = self.displayFieldValue!
+                    }
                     if self.systemField != nil {
                         map["SystemField"] = self.systemField!
                     }
@@ -32244,6 +32361,9 @@ public class UpdateApprovalProcessRequest : Tea.TeaModel {
                     guard let dict else { return }
                     if let value = dict["DisplayField"] as? String {
                         self.displayField = value
+                    }
+                    if let value = dict["DisplayFieldValue"] as? String {
+                        self.displayFieldValue = value
                     }
                     if let value = dict["SystemField"] as? String {
                         self.systemField = value
@@ -32313,6 +32433,8 @@ public class UpdateApprovalProcessRequest : Tea.TeaModel {
             public class FieldMap : Tea.TeaModel {
                 public var displayField: String?
 
+                public var displayFieldValue: String?
+
                 public var systemField: String?
 
                 public override init() {
@@ -32332,6 +32454,9 @@ public class UpdateApprovalProcessRequest : Tea.TeaModel {
                     if self.displayField != nil {
                         map["DisplayField"] = self.displayField!
                     }
+                    if self.displayFieldValue != nil {
+                        map["DisplayFieldValue"] = self.displayFieldValue!
+                    }
                     if self.systemField != nil {
                         map["SystemField"] = self.systemField!
                     }
@@ -32342,6 +32467,9 @@ public class UpdateApprovalProcessRequest : Tea.TeaModel {
                     guard let dict else { return }
                     if let value = dict["DisplayField"] as? String {
                         self.displayField = value
+                    }
+                    if let value = dict["DisplayFieldValue"] as? String {
+                        self.displayFieldValue = value
                     }
                     if let value = dict["SystemField"] as? String {
                         self.systemField = value
@@ -32411,6 +32539,8 @@ public class UpdateApprovalProcessRequest : Tea.TeaModel {
             public class FieldMap : Tea.TeaModel {
                 public var displayField: String?
 
+                public var displayFieldValue: String?
+
                 public var systemField: String?
 
                 public override init() {
@@ -32430,6 +32560,9 @@ public class UpdateApprovalProcessRequest : Tea.TeaModel {
                     if self.displayField != nil {
                         map["DisplayField"] = self.displayField!
                     }
+                    if self.displayFieldValue != nil {
+                        map["DisplayFieldValue"] = self.displayFieldValue!
+                    }
                     if self.systemField != nil {
                         map["SystemField"] = self.systemField!
                     }
@@ -32440,6 +32573,9 @@ public class UpdateApprovalProcessRequest : Tea.TeaModel {
                     guard let dict else { return }
                     if let value = dict["DisplayField"] as? String {
                         self.displayField = value
+                    }
+                    if let value = dict["DisplayFieldValue"] as? String {
+                        self.displayFieldValue = value
                     }
                     if let value = dict["SystemField"] as? String {
                         self.systemField = value
@@ -32509,6 +32645,8 @@ public class UpdateApprovalProcessRequest : Tea.TeaModel {
             public class FieldMap : Tea.TeaModel {
                 public var displayField: String?
 
+                public var displayFieldValue: String?
+
                 public var systemField: String?
 
                 public override init() {
@@ -32528,6 +32666,9 @@ public class UpdateApprovalProcessRequest : Tea.TeaModel {
                     if self.displayField != nil {
                         map["DisplayField"] = self.displayField!
                     }
+                    if self.displayFieldValue != nil {
+                        map["DisplayFieldValue"] = self.displayFieldValue!
+                    }
                     if self.systemField != nil {
                         map["SystemField"] = self.systemField!
                     }
@@ -32538,6 +32679,9 @@ public class UpdateApprovalProcessRequest : Tea.TeaModel {
                     guard let dict else { return }
                     if let value = dict["DisplayField"] as? String {
                         self.displayField = value
+                    }
+                    if let value = dict["DisplayFieldValue"] as? String {
+                        self.displayFieldValue = value
                     }
                     if let value = dict["SystemField"] as? String {
                         self.systemField = value
