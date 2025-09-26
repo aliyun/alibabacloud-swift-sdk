@@ -37544,6 +37544,114 @@ public class GetPermApplyOrderDetailResponseBody : Tea.TeaModel {
                     }
                 }
             }
+            public class RowInfo : Tea.TeaModel {
+                public var columnName: String?
+
+                public var dbId: Int64?
+
+                public var logic: Bool?
+
+                public var matchMode: String?
+
+                public var rowGroupId: Int64?
+
+                public var schemaName: String?
+
+                public var tableName: String?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.columnName != nil {
+                        map["ColumnName"] = self.columnName!
+                    }
+                    if self.dbId != nil {
+                        map["DbId"] = self.dbId!
+                    }
+                    if self.logic != nil {
+                        map["Logic"] = self.logic!
+                    }
+                    if self.matchMode != nil {
+                        map["MatchMode"] = self.matchMode!
+                    }
+                    if self.rowGroupId != nil {
+                        map["RowGroupId"] = self.rowGroupId!
+                    }
+                    if self.schemaName != nil {
+                        map["SchemaName"] = self.schemaName!
+                    }
+                    if self.tableName != nil {
+                        map["TableName"] = self.tableName!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                    guard let dict else { return }
+                    if let value = dict["ColumnName"] as? String {
+                        self.columnName = value
+                    }
+                    if let value = dict["DbId"] as? Int64 {
+                        self.dbId = value
+                    }
+                    if let value = dict["Logic"] as? Bool {
+                        self.logic = value
+                    }
+                    if let value = dict["MatchMode"] as? String {
+                        self.matchMode = value
+                    }
+                    if let value = dict["RowGroupId"] as? Int64 {
+                        self.rowGroupId = value
+                    }
+                    if let value = dict["SchemaName"] as? String {
+                        self.schemaName = value
+                    }
+                    if let value = dict["TableName"] as? String {
+                        self.tableName = value
+                    }
+                }
+            }
+            public class RowValueInfo : Tea.TeaModel {
+                public var rowValue: String?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.rowValue != nil {
+                        map["RowValue"] = self.rowValue!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                    guard let dict else { return }
+                    if let value = dict["RowValue"] as? String {
+                        self.rowValue = value
+                    }
+                }
+            }
             public class TableInfo : Tea.TeaModel {
                 public var tableName: String?
 
@@ -37580,6 +37688,10 @@ public class GetPermApplyOrderDetailResponseBody : Tea.TeaModel {
 
             public var instanceInfo: GetPermApplyOrderDetailResponseBody.PermApplyOrderDetail.Resources.InstanceInfo?
 
+            public var rowInfo: GetPermApplyOrderDetailResponseBody.PermApplyOrderDetail.Resources.RowInfo?
+
+            public var rowValueInfo: GetPermApplyOrderDetailResponseBody.PermApplyOrderDetail.Resources.RowValueInfo?
+
             public var tableInfo: GetPermApplyOrderDetailResponseBody.PermApplyOrderDetail.Resources.TableInfo?
 
             public override init() {
@@ -37595,6 +37707,8 @@ public class GetPermApplyOrderDetailResponseBody : Tea.TeaModel {
                 try self.columnInfo?.validate()
                 try self.databaseInfo?.validate()
                 try self.instanceInfo?.validate()
+                try self.rowInfo?.validate()
+                try self.rowValueInfo?.validate()
                 try self.tableInfo?.validate()
             }
 
@@ -37608,6 +37722,12 @@ public class GetPermApplyOrderDetailResponseBody : Tea.TeaModel {
                 }
                 if self.instanceInfo != nil {
                     map["InstanceInfo"] = self.instanceInfo?.toMap()
+                }
+                if self.rowInfo != nil {
+                    map["RowInfo"] = self.rowInfo?.toMap()
+                }
+                if self.rowValueInfo != nil {
+                    map["RowValueInfo"] = self.rowValueInfo?.toMap()
                 }
                 if self.tableInfo != nil {
                     map["TableInfo"] = self.tableInfo?.toMap()
@@ -37631,6 +37751,16 @@ public class GetPermApplyOrderDetailResponseBody : Tea.TeaModel {
                     var model = GetPermApplyOrderDetailResponseBody.PermApplyOrderDetail.Resources.InstanceInfo()
                     model.fromMap(value)
                     self.instanceInfo = model
+                }
+                if let value = dict["RowInfo"] as? [String: Any?] {
+                    var model = GetPermApplyOrderDetailResponseBody.PermApplyOrderDetail.Resources.RowInfo()
+                    model.fromMap(value)
+                    self.rowInfo = model
+                }
+                if let value = dict["RowValueInfo"] as? [String: Any?] {
+                    var model = GetPermApplyOrderDetailResponseBody.PermApplyOrderDetail.Resources.RowValueInfo()
+                    model.fromMap(value)
+                    self.rowValueInfo = model
                 }
                 if let value = dict["TableInfo"] as? [String: Any?] {
                     var model = GetPermApplyOrderDetailResponseBody.PermApplyOrderDetail.Resources.TableInfo()
