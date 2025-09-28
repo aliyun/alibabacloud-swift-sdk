@@ -8,7 +8,6 @@ import AlibabacloudEndpointUtil
 open class Client : AlibabacloudOpenApi.Client {
     public override init(_ config: AlibabacloudOpenApi.Config) throws {
         try super.init(config)
-        self._signatureAlgorithm = "v2"
         self._endpointRule = "central"
         try checkConfig(config as! AlibabacloudOpenApi.Config)
         self._endpoint = try getEndpoint("dypnsapi", self._regionId ?? "", self._endpointRule ?? "", self._network ?? "", self._suffix ?? "", self._endpointMap ?? [:], self._endpoint ?? "")
@@ -627,110 +626,6 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func jyCreateVerifySchemeWithOptions(_ request: JyCreateVerifySchemeRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> JyCreateVerifySchemeResponse {
-        try TeaUtils.Client.validateModel(request)
-        var query: [String: Any] = [:]
-        if (!TeaUtils.Client.isUnset(request.appName)) {
-            query["AppName"] = request.appName ?? "";
-        }
-        if (!TeaUtils.Client.isUnset(request.bundleId)) {
-            query["BundleId"] = request.bundleId ?? "";
-        }
-        if (!TeaUtils.Client.isUnset(request.cmApiCode)) {
-            query["CmApiCode"] = request.cmApiCode!;
-        }
-        if (!TeaUtils.Client.isUnset(request.ctApiCode)) {
-            query["CtApiCode"] = request.ctApiCode!;
-        }
-        if (!TeaUtils.Client.isUnset(request.cuApiCode)) {
-            query["CuApiCode"] = request.cuApiCode!;
-        }
-        if (!TeaUtils.Client.isUnset(request.osType)) {
-            query["OsType"] = request.osType ?? "";
-        }
-        if (!TeaUtils.Client.isUnset(request.ownerId)) {
-            query["OwnerId"] = request.ownerId!;
-        }
-        if (!TeaUtils.Client.isUnset(request.packName)) {
-            query["PackName"] = request.packName ?? "";
-        }
-        if (!TeaUtils.Client.isUnset(request.packSign)) {
-            query["PackSign"] = request.packSign ?? "";
-        }
-        if (!TeaUtils.Client.isUnset(request.resourceOwnerAccount)) {
-            query["ResourceOwnerAccount"] = request.resourceOwnerAccount ?? "";
-        }
-        if (!TeaUtils.Client.isUnset(request.resourceOwnerId)) {
-            query["ResourceOwnerId"] = request.resourceOwnerId!;
-        }
-        if (!TeaUtils.Client.isUnset(request.schemeName)) {
-            query["SchemeName"] = request.schemeName ?? "";
-        }
-        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
-            "query": AlibabaCloudOpenApiUtil.Client.query(query)
-        ])
-        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
-            "action": "JyCreateVerifyScheme",
-            "version": "2017-05-25",
-            "protocol": "HTTPS",
-            "pathname": "/",
-            "method": "POST",
-            "authType": "AK",
-            "style": "RPC",
-            "reqBodyType": "formData",
-            "bodyType": "json"
-        ])
-        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
-        return Tea.TeaConverter.fromMap(JyCreateVerifySchemeResponse(), tmp)
-    }
-
-    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func jyCreateVerifyScheme(_ request: JyCreateVerifySchemeRequest) async throws -> JyCreateVerifySchemeResponse {
-        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
-        return try await jyCreateVerifySchemeWithOptions(request as! JyCreateVerifySchemeRequest, runtime as! TeaUtils.RuntimeOptions)
-    }
-
-    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func jyQueryAppInfoBySceneCodeWithOptions(_ request: JyQueryAppInfoBySceneCodeRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> JyQueryAppInfoBySceneCodeResponse {
-        try TeaUtils.Client.validateModel(request)
-        var query: [String: Any] = [:]
-        if (!TeaUtils.Client.isUnset(request.ownerId)) {
-            query["OwnerId"] = request.ownerId!;
-        }
-        if (!TeaUtils.Client.isUnset(request.resourceOwnerAccount)) {
-            query["ResourceOwnerAccount"] = request.resourceOwnerAccount ?? "";
-        }
-        if (!TeaUtils.Client.isUnset(request.resourceOwnerId)) {
-            query["ResourceOwnerId"] = request.resourceOwnerId!;
-        }
-        if (!TeaUtils.Client.isUnset(request.sceneCode)) {
-            query["SceneCode"] = request.sceneCode ?? "";
-        }
-        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
-            "query": AlibabaCloudOpenApiUtil.Client.query(query)
-        ])
-        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
-            "action": "JyQueryAppInfoBySceneCode",
-            "version": "2017-05-25",
-            "protocol": "HTTPS",
-            "pathname": "/",
-            "method": "POST",
-            "authType": "AK",
-            "style": "RPC",
-            "reqBodyType": "formData",
-            "bodyType": "json"
-        ])
-        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
-        return Tea.TeaConverter.fromMap(JyQueryAppInfoBySceneCodeResponse(), tmp)
-    }
-
-    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func jyQueryAppInfoBySceneCode(_ request: JyQueryAppInfoBySceneCodeRequest) async throws -> JyQueryAppInfoBySceneCodeResponse {
-        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
-        return try await jyQueryAppInfoBySceneCodeWithOptions(request as! JyQueryAppInfoBySceneCodeRequest, runtime as! TeaUtils.RuntimeOptions)
-    }
-
-    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func queryGateVerifyBillingPublicWithOptions(_ request: QueryGateVerifyBillingPublicRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> QueryGateVerifyBillingPublicResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
@@ -875,6 +770,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func sendSmsVerifyCodeWithOptions(_ request: SendSmsVerifyCodeRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> SendSmsVerifyCodeResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.autoRetry)) {
+            query["AutoRetry"] = request.autoRetry!;
+        }
         if (!TeaUtils.Client.isUnset(request.codeLength)) {
             query["CodeLength"] = request.codeLength!;
         }
