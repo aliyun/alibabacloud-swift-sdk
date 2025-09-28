@@ -1338,6 +1338,80 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func listIntegrationPoliciesWithOptions(_ tmpReq: ListIntegrationPoliciesRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> ListIntegrationPoliciesResponse {
+        try TeaUtils.Client.validateModel(tmpReq)
+        var request: ListIntegrationPoliciesShrinkRequest = ListIntegrationPoliciesShrinkRequest([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.tag)) {
+            request.tagShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.tag, "tag", "json")
+        }
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.addonName)) {
+            query["addonName"] = request.addonName ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.entityGroupIds)) {
+            query["entityGroupIds"] = request.entityGroupIds ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.filterRegionIds)) {
+            query["filterRegionIds"] = request.filterRegionIds ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.maxResults)) {
+            query["maxResults"] = request.maxResults!;
+        }
+        if (!TeaUtils.Client.isUnset(request.nextToken)) {
+            query["nextToken"] = request.nextToken ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.policyId)) {
+            query["policyId"] = request.policyId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.policyName)) {
+            query["policyName"] = request.policyName ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.policyType)) {
+            query["policyType"] = request.policyType ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.prometheusInstanceId)) {
+            query["prometheusInstanceId"] = request.prometheusInstanceId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.query)) {
+            query["query"] = request.query ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.resourceGroupId)) {
+            query["resourceGroupId"] = request.resourceGroupId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.tagShrink)) {
+            query["tag"] = request.tagShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.workspace)) {
+            query["workspace"] = request.workspace ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String],
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "ListIntegrationPolicies",
+            "version": "2024-03-30",
+            "protocol": "HTTPS",
+            "pathname": "/integration-policies",
+            "method": "GET",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(ListIntegrationPoliciesResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func listIntegrationPolicies(_ request: ListIntegrationPoliciesRequest) async throws -> ListIntegrationPoliciesResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await listIntegrationPoliciesWithOptions(request as! ListIntegrationPoliciesRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func listIntegrationPolicyCustomScrapeJobRulesWithOptions(_ policyId: String, _ request: ListIntegrationPolicyCustomScrapeJobRulesRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> ListIntegrationPolicyCustomScrapeJobRulesResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
@@ -1374,6 +1448,42 @@ open class Client : AlibabacloudOpenApi.Client {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         var headers: [String: String] = [:]
         return try await listIntegrationPolicyCustomScrapeJobRulesWithOptions(policyId as! String, request as! ListIntegrationPolicyCustomScrapeJobRulesRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func listIntegrationPolicyDashboardsWithOptions(_ policyId: String, _ request: ListIntegrationPolicyDashboardsRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> ListIntegrationPolicyDashboardsResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.addonName)) {
+            query["addonName"] = request.addonName ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.scene)) {
+            query["scene"] = request.scene ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String],
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "ListIntegrationPolicyDashboards",
+            "version": "2024-03-30",
+            "protocol": "HTTPS",
+            "pathname": "/integration-policies/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(policyId)) + "/dashboards",
+            "method": "GET",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(ListIntegrationPolicyDashboardsResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func listIntegrationPolicyDashboards(_ policyId: String, _ request: ListIntegrationPolicyDashboardsRequest) async throws -> ListIntegrationPolicyDashboardsResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await listIntegrationPolicyDashboardsWithOptions(policyId as! String, request as! ListIntegrationPolicyDashboardsRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
