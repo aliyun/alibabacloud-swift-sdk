@@ -1247,6 +1247,10 @@ public class CreateJobRequest : Tea.TeaModel {
 
                 public var disks: [CreateJobRequest.Tasks.TaskSpec.Resource.Disks]?
 
+                public var enableHT: Bool?
+
+                public var hostNamePrefix: String?
+
                 public var instanceTypes: [String]?
 
                 public var memory: Double?
@@ -1275,6 +1279,12 @@ public class CreateJobRequest : Tea.TeaModel {
                         }
                         map["Disks"] = tmp
                     }
+                    if self.enableHT != nil {
+                        map["EnableHT"] = self.enableHT!
+                    }
+                    if self.hostNamePrefix != nil {
+                        map["HostNamePrefix"] = self.hostNamePrefix!
+                    }
                     if self.instanceTypes != nil {
                         map["InstanceTypes"] = self.instanceTypes!
                     }
@@ -1301,6 +1311,12 @@ public class CreateJobRequest : Tea.TeaModel {
                             }
                         }
                         self.disks = tmp
+                    }
+                    if let value = dict["EnableHT"] as? Bool {
+                        self.enableHT = value
+                    }
+                    if let value = dict["HostNamePrefix"] as? String {
+                        self.hostNamePrefix = value
                     }
                     if let value = dict["InstanceTypes"] as? [String] {
                         self.instanceTypes = value
@@ -5002,6 +5018,10 @@ public class GetJobResponseBody : Tea.TeaModel {
 
                     public var disks: [GetJobResponseBody.JobInfo.Tasks.TaskSpec.Resource.Disks]?
 
+                    public var enableHT: Bool?
+
+                    public var hostNamePrefix: String?
+
                     public var instanceTypes: [String]?
 
                     public var memory: Int32?
@@ -5030,6 +5050,12 @@ public class GetJobResponseBody : Tea.TeaModel {
                             }
                             map["Disks"] = tmp
                         }
+                        if self.enableHT != nil {
+                            map["EnableHT"] = self.enableHT!
+                        }
+                        if self.hostNamePrefix != nil {
+                            map["HostNamePrefix"] = self.hostNamePrefix!
+                        }
                         if self.instanceTypes != nil {
                             map["InstanceTypes"] = self.instanceTypes!
                         }
@@ -5056,6 +5082,12 @@ public class GetJobResponseBody : Tea.TeaModel {
                                 }
                             }
                             self.disks = tmp
+                        }
+                        if let value = dict["EnableHT"] as? Bool {
+                            self.enableHT = value
+                        }
+                        if let value = dict["HostNamePrefix"] as? String {
+                            self.hostNamePrefix = value
                         }
                         if let value = dict["InstanceTypes"] as? [String] {
                             self.instanceTypes = value
@@ -6749,6 +6781,8 @@ public class ListExecutorsResponseBody : Tea.TeaModel {
                 }
             }
         }
+        public var allocationSpec: String?
+
         public var appName: String?
 
         public var arrayIndex: Int32?
@@ -6810,6 +6844,9 @@ public class ListExecutorsResponseBody : Tea.TeaModel {
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
+            if self.allocationSpec != nil {
+                map["AllocationSpec"] = self.allocationSpec!
+            }
             if self.appName != nil {
                 map["AppName"] = self.appName!
             }
@@ -6888,6 +6925,9 @@ public class ListExecutorsResponseBody : Tea.TeaModel {
 
         public override func fromMap(_ dict: [String: Any?]?) -> Void {
             guard let dict else { return }
+            if let value = dict["AllocationSpec"] as? String {
+                self.allocationSpec = value
+            }
             if let value = dict["AppName"] as? String {
                 self.appName = value
             }
@@ -7689,6 +7729,8 @@ public class ListJobExecutorsResponseBody : Tea.TeaModel {
                 }
             }
         }
+        public var allocationSpec: String?
+
         public var arrayIndex: Int32?
 
         public var blockDuration: Int32?
@@ -7731,6 +7773,9 @@ public class ListJobExecutorsResponseBody : Tea.TeaModel {
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
+            if self.allocationSpec != nil {
+                map["AllocationSpec"] = self.allocationSpec!
+            }
             if self.arrayIndex != nil {
                 map["ArrayIndex"] = self.arrayIndex!
             }
@@ -7782,6 +7827,9 @@ public class ListJobExecutorsResponseBody : Tea.TeaModel {
 
         public override func fromMap(_ dict: [String: Any?]?) -> Void {
             guard let dict else { return }
+            if let value = dict["AllocationSpec"] as? String {
+                self.allocationSpec = value
+            }
             if let value = dict["ArrayIndex"] as? Int32 {
                 self.arrayIndex = value
             }
