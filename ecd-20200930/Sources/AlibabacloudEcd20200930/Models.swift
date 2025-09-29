@@ -29707,6 +29707,8 @@ public class DescribeDesktopsResponseBody : Tea.TeaModel {
 
         public var resourceGroups: [DescribeDesktopsResponseBody.Desktops.ResourceGroups]?
 
+        public var serialNumber: String?
+
         public var sessionType: String?
 
         public var sessions: [DescribeDesktopsResponseBody.Desktops.Sessions]?
@@ -29916,6 +29918,9 @@ public class DescribeDesktopsResponseBody : Tea.TeaModel {
                     tmp.append(k.toMap())
                 }
                 map["ResourceGroups"] = tmp
+            }
+            if self.serialNumber != nil {
+                map["SerialNumber"] = self.serialNumber!
             }
             if self.sessionType != nil {
                 map["SessionType"] = self.sessionType!
@@ -30158,6 +30163,9 @@ public class DescribeDesktopsResponseBody : Tea.TeaModel {
                     }
                 }
                 self.resourceGroups = tmp
+            }
+            if let value = dict["SerialNumber"] as? String {
+                self.serialNumber = value
             }
             if let value = dict["SessionType"] as? String {
                 self.sessionType = value
