@@ -25312,6 +25312,8 @@ public class DescribeApplicationConfigResponseBody : Tea.TeaModel {
 
         public var customImageNetworkType: String?
 
+        public var deploymentName: String?
+
         public var diskSize: Int32?
 
         public var dotnet: String?
@@ -25530,6 +25532,9 @@ public class DescribeApplicationConfigResponseBody : Tea.TeaModel {
             }
             if self.customImageNetworkType != nil {
                 map["CustomImageNetworkType"] = self.customImageNetworkType!
+            }
+            if self.deploymentName != nil {
+                map["DeploymentName"] = self.deploymentName!
             }
             if self.diskSize != nil {
                 map["DiskSize"] = self.diskSize!
@@ -25849,6 +25854,9 @@ public class DescribeApplicationConfigResponseBody : Tea.TeaModel {
             }
             if let value = dict["CustomImageNetworkType"] as? String {
                 self.customImageNetworkType = value
+            }
+            if let value = dict["DeploymentName"] as? String {
+                self.deploymentName = value
             }
             if let value = dict["DiskSize"] as? Int32 {
                 self.diskSize = value
