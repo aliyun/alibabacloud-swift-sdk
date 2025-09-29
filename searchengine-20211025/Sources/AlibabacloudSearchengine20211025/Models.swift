@@ -4178,9 +4178,13 @@ public class CreateTableRequest : Tea.TeaModel {
 
             public var endpoint: String?
 
+            public var format: String?
+
             public var ossPath: String?
 
             public var partition: String?
+
+            public var path: String?
 
             public var project: String?
 
@@ -4222,11 +4226,17 @@ public class CreateTableRequest : Tea.TeaModel {
                 if self.endpoint != nil {
                     map["endpoint"] = self.endpoint!
                 }
+                if self.format != nil {
+                    map["format"] = self.format!
+                }
                 if self.ossPath != nil {
                     map["ossPath"] = self.ossPath!
                 }
                 if self.partition != nil {
                     map["partition"] = self.partition!
+                }
+                if self.path != nil {
+                    map["path"] = self.path!
                 }
                 if self.project != nil {
                     map["project"] = self.project!
@@ -4263,11 +4273,17 @@ public class CreateTableRequest : Tea.TeaModel {
                 if let value = dict["endpoint"] as? String {
                     self.endpoint = value
                 }
+                if let value = dict["format"] as? String {
+                    self.format = value
+                }
                 if let value = dict["ossPath"] as? String {
                     self.ossPath = value
                 }
                 if let value = dict["partition"] as? String {
                     self.partition = value
+                }
+                if let value = dict["path"] as? String {
+                    self.path = value
                 }
                 if let value = dict["project"] as? String {
                     self.project = value
@@ -24910,9 +24926,13 @@ public class ModifyTableRequest : Tea.TeaModel {
 
             public var endpoint: String?
 
+            public var format: String?
+
             public var ossPath: String?
 
             public var partition: String?
+
+            public var path: String?
 
             public var project: String?
 
@@ -24954,11 +24974,17 @@ public class ModifyTableRequest : Tea.TeaModel {
                 if self.endpoint != nil {
                     map["endpoint"] = self.endpoint!
                 }
+                if self.format != nil {
+                    map["format"] = self.format!
+                }
                 if self.ossPath != nil {
                     map["ossPath"] = self.ossPath!
                 }
                 if self.partition != nil {
                     map["partition"] = self.partition!
+                }
+                if self.path != nil {
+                    map["path"] = self.path!
                 }
                 if self.project != nil {
                     map["project"] = self.project!
@@ -24995,11 +25021,17 @@ public class ModifyTableRequest : Tea.TeaModel {
                 if let value = dict["endpoint"] as? String {
                     self.endpoint = value
                 }
+                if let value = dict["format"] as? String {
+                    self.format = value
+                }
                 if let value = dict["ossPath"] as? String {
                     self.ossPath = value
                 }
                 if let value = dict["partition"] as? String {
                     self.partition = value
+                }
+                if let value = dict["path"] as? String {
+                    self.path = value
                 }
                 if let value = dict["project"] as? String {
                     self.project = value
