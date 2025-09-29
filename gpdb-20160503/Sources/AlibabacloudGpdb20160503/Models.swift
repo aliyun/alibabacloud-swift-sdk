@@ -45234,6 +45234,8 @@ public class QueryCollectionDataRequest : Tea.TeaModel {
 
     public var includeMetadataFields: String?
 
+    public var includeSparseValues: Bool?
+
     public var includeValues: Bool?
 
     public var metrics: String?
@@ -45296,6 +45298,9 @@ public class QueryCollectionDataRequest : Tea.TeaModel {
         }
         if self.includeMetadataFields != nil {
             map["IncludeMetadataFields"] = self.includeMetadataFields!
+        }
+        if self.includeSparseValues != nil {
+            map["IncludeSparseValues"] = self.includeSparseValues!
         }
         if self.includeValues != nil {
             map["IncludeValues"] = self.includeValues!
@@ -45362,6 +45367,9 @@ public class QueryCollectionDataRequest : Tea.TeaModel {
         if let value = dict["IncludeMetadataFields"] as? String {
             self.includeMetadataFields = value
         }
+        if let value = dict["IncludeSparseValues"] as? Bool {
+            self.includeSparseValues = value
+        }
         if let value = dict["IncludeValues"] as? Bool {
             self.includeValues = value
         }
@@ -45423,6 +45431,8 @@ public class QueryCollectionDataShrinkRequest : Tea.TeaModel {
 
     public var includeMetadataFields: String?
 
+    public var includeSparseValues: Bool?
+
     public var includeValues: Bool?
 
     public var metrics: String?
@@ -45483,6 +45493,9 @@ public class QueryCollectionDataShrinkRequest : Tea.TeaModel {
         }
         if self.includeMetadataFields != nil {
             map["IncludeMetadataFields"] = self.includeMetadataFields!
+        }
+        if self.includeSparseValues != nil {
+            map["IncludeSparseValues"] = self.includeSparseValues!
         }
         if self.includeValues != nil {
             map["IncludeValues"] = self.includeValues!
@@ -45549,6 +45562,9 @@ public class QueryCollectionDataShrinkRequest : Tea.TeaModel {
         if let value = dict["IncludeMetadataFields"] as? String {
             self.includeMetadataFields = value
         }
+        if let value = dict["IncludeSparseValues"] as? Bool {
+            self.includeSparseValues = value
+        }
         if let value = dict["IncludeValues"] as? Bool {
             self.includeValues = value
         }
@@ -45594,6 +45610,110 @@ public class QueryCollectionDataShrinkRequest : Tea.TeaModel {
 public class QueryCollectionDataResponseBody : Tea.TeaModel {
     public class Matches : Tea.TeaModel {
         public class Match : Tea.TeaModel {
+            public class SparseValues : Tea.TeaModel {
+                public class Indices : Tea.TeaModel {
+                    public var indice: [Int32]?
+
+                    public override init() {
+                        super.init()
+                    }
+
+                    public init(_ dict: [String: Any]) {
+                        super.init()
+                        self.fromMap(dict)
+                    }
+
+                    public override func validate() throws -> Void {
+                    }
+
+                    public override func toMap() -> [String : Any] {
+                        var map = super.toMap()
+                        if self.indice != nil {
+                            map["Indice"] = self.indice!
+                        }
+                        return map
+                    }
+
+                    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                        guard let dict else { return }
+                        if let value = dict["Indice"] as? [Int32] {
+                            self.indice = value
+                        }
+                    }
+                }
+                public class Values : Tea.TeaModel {
+                    public var value: [Double]?
+
+                    public override init() {
+                        super.init()
+                    }
+
+                    public init(_ dict: [String: Any]) {
+                        super.init()
+                        self.fromMap(dict)
+                    }
+
+                    public override func validate() throws -> Void {
+                    }
+
+                    public override func toMap() -> [String : Any] {
+                        var map = super.toMap()
+                        if self.value != nil {
+                            map["Value"] = self.value!
+                        }
+                        return map
+                    }
+
+                    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                        guard let dict else { return }
+                        if let value = dict["Value"] as? [Double] {
+                            self.value = value
+                        }
+                    }
+                }
+                public var indices: QueryCollectionDataResponseBody.Matches.Match.SparseValues.Indices?
+
+                public var values: QueryCollectionDataResponseBody.Matches.Match.SparseValues.Values?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                    try self.indices?.validate()
+                    try self.values?.validate()
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.indices != nil {
+                        map["Indices"] = self.indices?.toMap()
+                    }
+                    if self.values != nil {
+                        map["Values"] = self.values?.toMap()
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                    guard let dict else { return }
+                    if let value = dict["Indices"] as? [String: Any?] {
+                        var model = QueryCollectionDataResponseBody.Matches.Match.SparseValues.Indices()
+                        model.fromMap(value)
+                        self.indices = model
+                    }
+                    if let value = dict["Values"] as? [String: Any?] {
+                        var model = QueryCollectionDataResponseBody.Matches.Match.SparseValues.Values()
+                        model.fromMap(value)
+                        self.values = model
+                    }
+                }
+            }
             public class Values : Tea.TeaModel {
                 public var value: [Double]?
 
@@ -45632,6 +45752,8 @@ public class QueryCollectionDataResponseBody : Tea.TeaModel {
 
             public var score: Double?
 
+            public var sparseValues: QueryCollectionDataResponseBody.Matches.Match.SparseValues?
+
             public var values: QueryCollectionDataResponseBody.Matches.Match.Values?
 
             public override init() {
@@ -45644,6 +45766,7 @@ public class QueryCollectionDataResponseBody : Tea.TeaModel {
             }
 
             public override func validate() throws -> Void {
+                try self.sparseValues?.validate()
                 try self.values?.validate()
             }
 
@@ -45660,6 +45783,9 @@ public class QueryCollectionDataResponseBody : Tea.TeaModel {
                 }
                 if self.score != nil {
                     map["Score"] = self.score!
+                }
+                if self.sparseValues != nil {
+                    map["SparseValues"] = self.sparseValues?.toMap()
                 }
                 if self.values != nil {
                     map["Values"] = self.values?.toMap()
@@ -45680,6 +45806,11 @@ public class QueryCollectionDataResponseBody : Tea.TeaModel {
                 }
                 if let value = dict["Score"] as? Double {
                     self.score = value
+                }
+                if let value = dict["SparseValues"] as? [String: Any?] {
+                    var model = QueryCollectionDataResponseBody.Matches.Match.SparseValues()
+                    model.fromMap(value)
+                    self.sparseValues = model
                 }
                 if let value = dict["Values"] as? [String: Any?] {
                     var model = QueryCollectionDataResponseBody.Matches.Match.Values()

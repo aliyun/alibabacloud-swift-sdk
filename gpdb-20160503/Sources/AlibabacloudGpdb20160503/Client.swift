@@ -8912,6 +8912,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.includeMetadataFields)) {
             query["IncludeMetadataFields"] = request.includeMetadataFields ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.includeSparseValues)) {
+            query["IncludeSparseValues"] = request.includeSparseValues!;
+        }
         if (!TeaUtils.Client.isUnset(request.includeValues)) {
             query["IncludeValues"] = request.includeValues!;
         }
