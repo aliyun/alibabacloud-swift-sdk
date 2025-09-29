@@ -368,6 +368,8 @@ public class BackupFileRequest : Tea.TeaModel {
 
     public var description_: String?
 
+    public var excludeSourceFilePathList: [String]?
+
     public var sourceAppList: [String]?
 
     public var sourceFilePathList: [String]?
@@ -405,6 +407,9 @@ public class BackupFileRequest : Tea.TeaModel {
         if self.description_ != nil {
             map["Description"] = self.description_!
         }
+        if self.excludeSourceFilePathList != nil {
+            map["ExcludeSourceFilePathList"] = self.excludeSourceFilePathList!
+        }
         if self.sourceAppList != nil {
             map["SourceAppList"] = self.sourceAppList!
         }
@@ -436,6 +441,9 @@ public class BackupFileRequest : Tea.TeaModel {
         }
         if let value = dict["Description"] as? String {
             self.description_ = value
+        }
+        if let value = dict["ExcludeSourceFilePathList"] as? [String] {
+            self.excludeSourceFilePathList = value
         }
         if let value = dict["SourceAppList"] as? [String] {
             self.sourceAppList = value
@@ -6333,6 +6341,8 @@ public class DescribeAndroidInstanceGroupsResponseBody : Tea.TeaModel {
 
         public var imageId: String?
 
+        public var imageVersion: String?
+
         public var installedAppList: String?
 
         public var instanceGroupId: String?
@@ -6435,6 +6445,9 @@ public class DescribeAndroidInstanceGroupsResponseBody : Tea.TeaModel {
             }
             if self.imageId != nil {
                 map["ImageId"] = self.imageId!
+            }
+            if self.imageVersion != nil {
+                map["ImageVersion"] = self.imageVersion!
             }
             if self.installedAppList != nil {
                 map["InstalledAppList"] = self.installedAppList!
@@ -6559,6 +6572,9 @@ public class DescribeAndroidInstanceGroupsResponseBody : Tea.TeaModel {
             }
             if let value = dict["ImageId"] as? String {
                 self.imageId = value
+            }
+            if let value = dict["ImageVersion"] as? String {
+                self.imageVersion = value
             }
             if let value = dict["InstalledAppList"] as? String {
                 self.installedAppList = value

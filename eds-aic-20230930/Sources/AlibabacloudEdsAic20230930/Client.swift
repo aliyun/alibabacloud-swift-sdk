@@ -113,6 +113,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.description_)) {
             query["Description"] = request.description_ ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.excludeSourceFilePathList)) {
+            query["ExcludeSourceFilePathList"] = request.excludeSourceFilePathList ?? [];
+        }
         if (!TeaUtils.Client.isUnset(request.sourceAppList)) {
             query["SourceAppList"] = request.sourceAppList ?? [];
         }
