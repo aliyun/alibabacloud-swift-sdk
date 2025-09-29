@@ -400,6 +400,37 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func credentialGetResultIntlWithOptions(_ request: CredentialGetResultIntlRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> CredentialGetResultIntlResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.transactionId)) {
+            query["TransactionId"] = request.transactionId ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "CredentialGetResultIntl",
+            "version": "2022-08-09",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(CredentialGetResultIntlResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func credentialGetResultIntl(_ request: CredentialGetResultIntlRequest) async throws -> CredentialGetResultIntlResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await credentialGetResultIntlWithOptions(request as! CredentialGetResultIntlRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func credentialRecognitionIntlWithOptions(_ request: CredentialRecognitionIntlRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> CredentialRecognitionIntlResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
@@ -445,6 +476,60 @@ open class Client : AlibabacloudOpenApi.Client {
     public func credentialRecognitionIntl(_ request: CredentialRecognitionIntlRequest) async throws -> CredentialRecognitionIntlResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         return try await credentialRecognitionIntlWithOptions(request as! CredentialRecognitionIntlRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func credentialSubmitIntlWithOptions(_ request: CredentialSubmitIntlRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> CredentialSubmitIntlResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.docType)) {
+            query["DocType"] = request.docType ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.fraudCheck)) {
+            query["FraudCheck"] = request.fraudCheck ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.merchantBizId)) {
+            query["MerchantBizId"] = request.merchantBizId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.ocrArea)) {
+            query["OcrArea"] = request.ocrArea ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.productCode)) {
+            query["ProductCode"] = request.productCode ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.sceneCode)) {
+            query["SceneCode"] = request.sceneCode ?? "";
+        }
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.credentialOcrPictureBase64)) {
+            body["CredentialOcrPictureBase64"] = request.credentialOcrPictureBase64 ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.credentialOcrPictureUrl)) {
+            body["CredentialOcrPictureUrl"] = request.credentialOcrPictureUrl ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query),
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "CredentialSubmitIntl",
+            "version": "2022-08-09",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(CredentialSubmitIntlResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func credentialSubmitIntl(_ request: CredentialSubmitIntlRequest) async throws -> CredentialSubmitIntlResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await credentialSubmitIntlWithOptions(request as! CredentialSubmitIntlRequest, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -968,6 +1053,67 @@ open class Client : AlibabacloudOpenApi.Client {
     public func faceCompare(_ request: FaceCompareRequest) async throws -> FaceCompareResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         return try await faceCompareWithOptions(request as! FaceCompareRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func faceCrossCompareIntlWithOptions(_ request: FaceCrossCompareIntlRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> FaceCrossCompareIntlResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.compareModel)) {
+            query["CompareModel"] = request.compareModel ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.faceVerifyThreshold)) {
+            query["FaceVerifyThreshold"] = request.faceVerifyThreshold ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.merchantBizId)) {
+            query["MerchantBizId"] = request.merchantBizId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.productCode)) {
+            query["ProductCode"] = request.productCode ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.sceneCode)) {
+            query["SceneCode"] = request.sceneCode ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.sourceAFacePicture)) {
+            query["SourceAFacePicture"] = request.sourceAFacePicture ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.sourceAFacePictureUrl)) {
+            query["SourceAFacePictureUrl"] = request.sourceAFacePictureUrl ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.sourceBFacePicture)) {
+            query["SourceBFacePicture"] = request.sourceBFacePicture ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.sourceBFacePictureUrl)) {
+            query["SourceBFacePictureUrl"] = request.sourceBFacePictureUrl ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.sourceCFacePicture)) {
+            query["SourceCFacePicture"] = request.sourceCFacePicture ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.sourceCFacePictureUrl)) {
+            query["SourceCFacePictureUrl"] = request.sourceCFacePictureUrl ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "FaceCrossCompareIntl",
+            "version": "2022-08-09",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(FaceCrossCompareIntlResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func faceCrossCompareIntl(_ request: FaceCrossCompareIntlRequest) async throws -> FaceCrossCompareIntlResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await faceCrossCompareIntlWithOptions(request as! FaceCrossCompareIntlRequest, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -1767,5 +1913,36 @@ open class Client : AlibabacloudOpenApi.Client {
     public func tempAccessTokenIntl(_ request: TempAccessTokenIntlRequest) async throws -> TempAccessTokenIntlResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         return try await tempAccessTokenIntlWithOptions(request as! TempAccessTokenIntlRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func tempOssUrlIntlWithOptions(_ request: TempOssUrlIntlRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> TempOssUrlIntlResponse {
+        try TeaUtils.Client.validateModel(request)
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.objectName)) {
+            body["ObjectName"] = request.objectName ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "TempOssUrlIntl",
+            "version": "2022-08-09",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(TempOssUrlIntlResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func tempOssUrlIntl(_ request: TempOssUrlIntlRequest) async throws -> TempOssUrlIntlResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await tempOssUrlIntlWithOptions(request as! TempOssUrlIntlRequest, runtime as! TeaUtils.RuntimeOptions)
     }
 }
