@@ -6237,6 +6237,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.chatConfigShrink)) {
             body["ChatConfig"] = request.chatConfigShrink ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.fileUrl)) {
+            body["FileUrl"] = request.fileUrl ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.modelId)) {
             body["ModelId"] = request.modelId ?? "";
         }

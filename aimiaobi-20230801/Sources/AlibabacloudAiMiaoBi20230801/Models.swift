@@ -37547,6 +37547,44 @@ public class ListSearchTaskDialogueDatasResponseBody : Tea.TeaModel {
             }
         }
     }
+    public class Audios : Tea.TeaModel {
+        public var fileUrl: String?
+
+        public var mediaId: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.fileUrl != nil {
+                map["FileUrl"] = self.fileUrl!
+            }
+            if self.mediaId != nil {
+                map["MediaId"] = self.mediaId!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["FileUrl"] as? String {
+                self.fileUrl = value
+            }
+            if let value = dict["MediaId"] as? String {
+                self.mediaId = value
+            }
+        }
+    }
     public class Images : Tea.TeaModel {
         public var fileUrl: String?
 
@@ -37641,6 +37679,8 @@ public class ListSearchTaskDialogueDatasResponseBody : Tea.TeaModel {
     }
     public var articles: [ListSearchTaskDialogueDatasResponseBody.Articles]?
 
+    public var audios: [ListSearchTaskDialogueDatasResponseBody.Audios]?
+
     public var code: String?
 
     public var httpStatusCode: Int32?
@@ -37685,6 +37725,13 @@ public class ListSearchTaskDialogueDatasResponseBody : Tea.TeaModel {
                 tmp.append(k.toMap())
             }
             map["Articles"] = tmp
+        }
+        if self.audios != nil {
+            var tmp : [Any] = []
+            for k in self.audios! {
+                tmp.append(k.toMap())
+            }
+            map["Audios"] = tmp
         }
         if self.code != nil {
             map["Code"] = self.code!
@@ -37747,6 +37794,19 @@ public class ListSearchTaskDialogueDatasResponseBody : Tea.TeaModel {
                 }
             }
             self.articles = tmp
+        }
+        if let value = dict["Audios"] as? [Any?] {
+            var tmp : [ListSearchTaskDialogueDatasResponseBody.Audios] = []
+            for v in value {
+                if v != nil {
+                    var model = ListSearchTaskDialogueDatasResponseBody.Audios()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.audios = tmp
         }
         if let value = dict["Code"] as? String {
             self.code = value
@@ -51518,6 +51578,8 @@ public class RunSearchGenerationRequest : Tea.TeaModel {
 
     public var chatConfig: RunSearchGenerationRequest.ChatConfig?
 
+    public var fileUrl: String?
+
     public var modelId: String?
 
     public var originalSessionId: String?
@@ -51550,6 +51612,9 @@ public class RunSearchGenerationRequest : Tea.TeaModel {
         if self.chatConfig != nil {
             map["ChatConfig"] = self.chatConfig?.toMap()
         }
+        if self.fileUrl != nil {
+            map["FileUrl"] = self.fileUrl!
+        }
         if self.modelId != nil {
             map["ModelId"] = self.modelId!
         }
@@ -51580,6 +51645,9 @@ public class RunSearchGenerationRequest : Tea.TeaModel {
             model.fromMap(value)
             self.chatConfig = model
         }
+        if let value = dict["FileUrl"] as? String {
+            self.fileUrl = value
+        }
         if let value = dict["ModelId"] as? String {
             self.modelId = value
         }
@@ -51602,6 +51670,8 @@ public class RunSearchGenerationShrinkRequest : Tea.TeaModel {
     public var agentContextShrink: String?
 
     public var chatConfigShrink: String?
+
+    public var fileUrl: String?
 
     public var modelId: String?
 
@@ -51633,6 +51703,9 @@ public class RunSearchGenerationShrinkRequest : Tea.TeaModel {
         if self.chatConfigShrink != nil {
             map["ChatConfig"] = self.chatConfigShrink!
         }
+        if self.fileUrl != nil {
+            map["FileUrl"] = self.fileUrl!
+        }
         if self.modelId != nil {
             map["ModelId"] = self.modelId!
         }
@@ -51658,6 +51731,9 @@ public class RunSearchGenerationShrinkRequest : Tea.TeaModel {
         }
         if let value = dict["ChatConfig"] as? String {
             self.chatConfigShrink = value
+        }
+        if let value = dict["FileUrl"] as? String {
+            self.fileUrl = value
         }
         if let value = dict["ModelId"] as? String {
             self.modelId = value
@@ -51777,8 +51853,523 @@ public class RunSearchGenerationResponseBody : Tea.TeaModel {
             public class AgentContext : Tea.TeaModel {
                 public class BizContext : Tea.TeaModel {
                     public class GeneratedContent : Tea.TeaModel {
+                        public class AudioSearchResult : Tea.TeaModel {
+                            public class SearchResult : Tea.TeaModel {
+                                public class Article : Tea.TeaModel {
+                                    public var docId: String?
+
+                                    public var docUuid: String?
+
+                                    public var searchSourceName: String?
+
+                                    public var summary: String?
+
+                                    public var title: String?
+
+                                    public var url: String?
+
+                                    public override init() {
+                                        super.init()
+                                    }
+
+                                    public init(_ dict: [String: Any]) {
+                                        super.init()
+                                        self.fromMap(dict)
+                                    }
+
+                                    public override func validate() throws -> Void {
+                                    }
+
+                                    public override func toMap() -> [String : Any] {
+                                        var map = super.toMap()
+                                        if self.docId != nil {
+                                            map["DocId"] = self.docId!
+                                        }
+                                        if self.docUuid != nil {
+                                            map["DocUuid"] = self.docUuid!
+                                        }
+                                        if self.searchSourceName != nil {
+                                            map["SearchSourceName"] = self.searchSourceName!
+                                        }
+                                        if self.summary != nil {
+                                            map["Summary"] = self.summary!
+                                        }
+                                        if self.title != nil {
+                                            map["Title"] = self.title!
+                                        }
+                                        if self.url != nil {
+                                            map["Url"] = self.url!
+                                        }
+                                        return map
+                                    }
+
+                                    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                                        guard let dict else { return }
+                                        if let value = dict["DocId"] as? String {
+                                            self.docId = value
+                                        }
+                                        if let value = dict["DocUuid"] as? String {
+                                            self.docUuid = value
+                                        }
+                                        if let value = dict["SearchSourceName"] as? String {
+                                            self.searchSourceName = value
+                                        }
+                                        if let value = dict["Summary"] as? String {
+                                            self.summary = value
+                                        }
+                                        if let value = dict["Title"] as? String {
+                                            self.title = value
+                                        }
+                                        if let value = dict["Url"] as? String {
+                                            self.url = value
+                                        }
+                                    }
+                                }
+                                public class ClipInfos : Tea.TeaModel {
+                                    public var from: Double?
+
+                                    public var score: Double?
+
+                                    public var text: String?
+
+                                    public var to: Double?
+
+                                    public var type: String?
+
+                                    public override init() {
+                                        super.init()
+                                    }
+
+                                    public init(_ dict: [String: Any]) {
+                                        super.init()
+                                        self.fromMap(dict)
+                                    }
+
+                                    public override func validate() throws -> Void {
+                                    }
+
+                                    public override func toMap() -> [String : Any] {
+                                        var map = super.toMap()
+                                        if self.from != nil {
+                                            map["From"] = self.from!
+                                        }
+                                        if self.score != nil {
+                                            map["Score"] = self.score!
+                                        }
+                                        if self.text != nil {
+                                            map["Text"] = self.text!
+                                        }
+                                        if self.to != nil {
+                                            map["To"] = self.to!
+                                        }
+                                        if self.type != nil {
+                                            map["Type"] = self.type!
+                                        }
+                                        return map
+                                    }
+
+                                    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                                        guard let dict else { return }
+                                        if let value = dict["From"] as? Double {
+                                            self.from = value
+                                        }
+                                        if let value = dict["Score"] as? Double {
+                                            self.score = value
+                                        }
+                                        if let value = dict["Text"] as? String {
+                                            self.text = value
+                                        }
+                                        if let value = dict["To"] as? Double {
+                                            self.to = value
+                                        }
+                                        if let value = dict["Type"] as? String {
+                                            self.type = value
+                                        }
+                                    }
+                                }
+                                public var article: RunSearchGenerationResponseBody.Payload.Output.AgentContext.BizContext.GeneratedContent.AudioSearchResult.SearchResult.Article?
+
+                                public var clipInfos: [RunSearchGenerationResponseBody.Payload.Output.AgentContext.BizContext.GeneratedContent.AudioSearchResult.SearchResult.ClipInfos]?
+
+                                public var fileUrl: String?
+
+                                public var mediaId: String?
+
+                                public var traceabilityId: String?
+
+                                public override init() {
+                                    super.init()
+                                }
+
+                                public init(_ dict: [String: Any]) {
+                                    super.init()
+                                    self.fromMap(dict)
+                                }
+
+                                public override func validate() throws -> Void {
+                                    try self.article?.validate()
+                                }
+
+                                public override func toMap() -> [String : Any] {
+                                    var map = super.toMap()
+                                    if self.article != nil {
+                                        map["Article"] = self.article?.toMap()
+                                    }
+                                    if self.clipInfos != nil {
+                                        var tmp : [Any] = []
+                                        for k in self.clipInfos! {
+                                            tmp.append(k.toMap())
+                                        }
+                                        map["ClipInfos"] = tmp
+                                    }
+                                    if self.fileUrl != nil {
+                                        map["FileUrl"] = self.fileUrl!
+                                    }
+                                    if self.mediaId != nil {
+                                        map["MediaId"] = self.mediaId!
+                                    }
+                                    if self.traceabilityId != nil {
+                                        map["TraceabilityId"] = self.traceabilityId!
+                                    }
+                                    return map
+                                }
+
+                                public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                                    guard let dict else { return }
+                                    if let value = dict["Article"] as? [String: Any?] {
+                                        var model = RunSearchGenerationResponseBody.Payload.Output.AgentContext.BizContext.GeneratedContent.AudioSearchResult.SearchResult.Article()
+                                        model.fromMap(value)
+                                        self.article = model
+                                    }
+                                    if let value = dict["ClipInfos"] as? [Any?] {
+                                        var tmp : [RunSearchGenerationResponseBody.Payload.Output.AgentContext.BizContext.GeneratedContent.AudioSearchResult.SearchResult.ClipInfos] = []
+                                        for v in value {
+                                            if v != nil {
+                                                var model = RunSearchGenerationResponseBody.Payload.Output.AgentContext.BizContext.GeneratedContent.AudioSearchResult.SearchResult.ClipInfos()
+                                                if v != nil {
+                                                    model.fromMap(v as? [String: Any?])
+                                                }
+                                                tmp.append(model)
+                                            }
+                                        }
+                                        self.clipInfos = tmp
+                                    }
+                                    if let value = dict["FileUrl"] as? String {
+                                        self.fileUrl = value
+                                    }
+                                    if let value = dict["MediaId"] as? String {
+                                        self.mediaId = value
+                                    }
+                                    if let value = dict["TraceabilityId"] as? String {
+                                        self.traceabilityId = value
+                                    }
+                                }
+                            }
+                            public var searchResult: [RunSearchGenerationResponseBody.Payload.Output.AgentContext.BizContext.GeneratedContent.AudioSearchResult.SearchResult]?
+
+                            public override init() {
+                                super.init()
+                            }
+
+                            public init(_ dict: [String: Any]) {
+                                super.init()
+                                self.fromMap(dict)
+                            }
+
+                            public override func validate() throws -> Void {
+                            }
+
+                            public override func toMap() -> [String : Any] {
+                                var map = super.toMap()
+                                if self.searchResult != nil {
+                                    var tmp : [Any] = []
+                                    for k in self.searchResult! {
+                                        tmp.append(k.toMap())
+                                    }
+                                    map["SearchResult"] = tmp
+                                }
+                                return map
+                            }
+
+                            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                                guard let dict else { return }
+                                if let value = dict["SearchResult"] as? [Any?] {
+                                    var tmp : [RunSearchGenerationResponseBody.Payload.Output.AgentContext.BizContext.GeneratedContent.AudioSearchResult.SearchResult] = []
+                                    for v in value {
+                                        if v != nil {
+                                            var model = RunSearchGenerationResponseBody.Payload.Output.AgentContext.BizContext.GeneratedContent.AudioSearchResult.SearchResult()
+                                            if v != nil {
+                                                model.fromMap(v as? [String: Any?])
+                                            }
+                                            tmp.append(model)
+                                        }
+                                    }
+                                    self.searchResult = tmp
+                                }
+                            }
+                        }
                         public class ClusterTopicResult : Tea.TeaModel {
                             public class ClusterTopics : Tea.TeaModel {
+                                public class AudioSearchResult : Tea.TeaModel {
+                                    public class SearchResult : Tea.TeaModel {
+                                        public class Article : Tea.TeaModel {
+                                            public var docId: String?
+
+                                            public var docUuid: String?
+
+                                            public var searchSourceName: String?
+
+                                            public var summary: String?
+
+                                            public var title: String?
+
+                                            public var url: String?
+
+                                            public override init() {
+                                                super.init()
+                                            }
+
+                                            public init(_ dict: [String: Any]) {
+                                                super.init()
+                                                self.fromMap(dict)
+                                            }
+
+                                            public override func validate() throws -> Void {
+                                            }
+
+                                            public override func toMap() -> [String : Any] {
+                                                var map = super.toMap()
+                                                if self.docId != nil {
+                                                    map["DocId"] = self.docId!
+                                                }
+                                                if self.docUuid != nil {
+                                                    map["DocUuid"] = self.docUuid!
+                                                }
+                                                if self.searchSourceName != nil {
+                                                    map["SearchSourceName"] = self.searchSourceName!
+                                                }
+                                                if self.summary != nil {
+                                                    map["Summary"] = self.summary!
+                                                }
+                                                if self.title != nil {
+                                                    map["Title"] = self.title!
+                                                }
+                                                if self.url != nil {
+                                                    map["Url"] = self.url!
+                                                }
+                                                return map
+                                            }
+
+                                            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                                                guard let dict else { return }
+                                                if let value = dict["DocId"] as? String {
+                                                    self.docId = value
+                                                }
+                                                if let value = dict["DocUuid"] as? String {
+                                                    self.docUuid = value
+                                                }
+                                                if let value = dict["SearchSourceName"] as? String {
+                                                    self.searchSourceName = value
+                                                }
+                                                if let value = dict["Summary"] as? String {
+                                                    self.summary = value
+                                                }
+                                                if let value = dict["Title"] as? String {
+                                                    self.title = value
+                                                }
+                                                if let value = dict["Url"] as? String {
+                                                    self.url = value
+                                                }
+                                            }
+                                        }
+                                        public class ClipInfos : Tea.TeaModel {
+                                            public var from: Double?
+
+                                            public var score: Double?
+
+                                            public var text: String?
+
+                                            public var to: Double?
+
+                                            public var type: String?
+
+                                            public override init() {
+                                                super.init()
+                                            }
+
+                                            public init(_ dict: [String: Any]) {
+                                                super.init()
+                                                self.fromMap(dict)
+                                            }
+
+                                            public override func validate() throws -> Void {
+                                            }
+
+                                            public override func toMap() -> [String : Any] {
+                                                var map = super.toMap()
+                                                if self.from != nil {
+                                                    map["From"] = self.from!
+                                                }
+                                                if self.score != nil {
+                                                    map["Score"] = self.score!
+                                                }
+                                                if self.text != nil {
+                                                    map["Text"] = self.text!
+                                                }
+                                                if self.to != nil {
+                                                    map["To"] = self.to!
+                                                }
+                                                if self.type != nil {
+                                                    map["Type"] = self.type!
+                                                }
+                                                return map
+                                            }
+
+                                            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                                                guard let dict else { return }
+                                                if let value = dict["From"] as? Double {
+                                                    self.from = value
+                                                }
+                                                if let value = dict["Score"] as? Double {
+                                                    self.score = value
+                                                }
+                                                if let value = dict["Text"] as? String {
+                                                    self.text = value
+                                                }
+                                                if let value = dict["To"] as? Double {
+                                                    self.to = value
+                                                }
+                                                if let value = dict["Type"] as? String {
+                                                    self.type = value
+                                                }
+                                            }
+                                        }
+                                        public var article: RunSearchGenerationResponseBody.Payload.Output.AgentContext.BizContext.GeneratedContent.ClusterTopicResult.ClusterTopics.AudioSearchResult.SearchResult.Article?
+
+                                        public var clipInfos: [RunSearchGenerationResponseBody.Payload.Output.AgentContext.BizContext.GeneratedContent.ClusterTopicResult.ClusterTopics.AudioSearchResult.SearchResult.ClipInfos]?
+
+                                        public var fileUrl: String?
+
+                                        public var mediaId: String?
+
+                                        public override init() {
+                                            super.init()
+                                        }
+
+                                        public init(_ dict: [String: Any]) {
+                                            super.init()
+                                            self.fromMap(dict)
+                                        }
+
+                                        public override func validate() throws -> Void {
+                                            try self.article?.validate()
+                                        }
+
+                                        public override func toMap() -> [String : Any] {
+                                            var map = super.toMap()
+                                            if self.article != nil {
+                                                map["Article"] = self.article?.toMap()
+                                            }
+                                            if self.clipInfos != nil {
+                                                var tmp : [Any] = []
+                                                for k in self.clipInfos! {
+                                                    tmp.append(k.toMap())
+                                                }
+                                                map["ClipInfos"] = tmp
+                                            }
+                                            if self.fileUrl != nil {
+                                                map["FileUrl"] = self.fileUrl!
+                                            }
+                                            if self.mediaId != nil {
+                                                map["MediaId"] = self.mediaId!
+                                            }
+                                            return map
+                                        }
+
+                                        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                                            guard let dict else { return }
+                                            if let value = dict["Article"] as? [String: Any?] {
+                                                var model = RunSearchGenerationResponseBody.Payload.Output.AgentContext.BizContext.GeneratedContent.ClusterTopicResult.ClusterTopics.AudioSearchResult.SearchResult.Article()
+                                                model.fromMap(value)
+                                                self.article = model
+                                            }
+                                            if let value = dict["ClipInfos"] as? [Any?] {
+                                                var tmp : [RunSearchGenerationResponseBody.Payload.Output.AgentContext.BizContext.GeneratedContent.ClusterTopicResult.ClusterTopics.AudioSearchResult.SearchResult.ClipInfos] = []
+                                                for v in value {
+                                                    if v != nil {
+                                                        var model = RunSearchGenerationResponseBody.Payload.Output.AgentContext.BizContext.GeneratedContent.ClusterTopicResult.ClusterTopics.AudioSearchResult.SearchResult.ClipInfos()
+                                                        if v != nil {
+                                                            model.fromMap(v as? [String: Any?])
+                                                        }
+                                                        tmp.append(model)
+                                                    }
+                                                }
+                                                self.clipInfos = tmp
+                                            }
+                                            if let value = dict["FileUrl"] as? String {
+                                                self.fileUrl = value
+                                            }
+                                            if let value = dict["MediaId"] as? String {
+                                                self.mediaId = value
+                                            }
+                                        }
+                                    }
+                                    public var current: Int32?
+
+                                    public var searchResult: RunSearchGenerationResponseBody.Payload.Output.AgentContext.BizContext.GeneratedContent.ClusterTopicResult.ClusterTopics.AudioSearchResult.SearchResult?
+
+                                    public var size: Int32?
+
+                                    public var total: Int32?
+
+                                    public override init() {
+                                        super.init()
+                                    }
+
+                                    public init(_ dict: [String: Any]) {
+                                        super.init()
+                                        self.fromMap(dict)
+                                    }
+
+                                    public override func validate() throws -> Void {
+                                        try self.searchResult?.validate()
+                                    }
+
+                                    public override func toMap() -> [String : Any] {
+                                        var map = super.toMap()
+                                        if self.current != nil {
+                                            map["Current"] = self.current!
+                                        }
+                                        if self.searchResult != nil {
+                                            map["SearchResult"] = self.searchResult?.toMap()
+                                        }
+                                        if self.size != nil {
+                                            map["Size"] = self.size!
+                                        }
+                                        if self.total != nil {
+                                            map["Total"] = self.total!
+                                        }
+                                        return map
+                                    }
+
+                                    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                                        guard let dict else { return }
+                                        if let value = dict["Current"] as? Int32 {
+                                            self.current = value
+                                        }
+                                        if let value = dict["SearchResult"] as? [String: Any?] {
+                                            var model = RunSearchGenerationResponseBody.Payload.Output.AgentContext.BizContext.GeneratedContent.ClusterTopicResult.ClusterTopics.AudioSearchResult.SearchResult()
+                                            model.fromMap(value)
+                                            self.searchResult = model
+                                        }
+                                        if let value = dict["Size"] as? Int32 {
+                                            self.size = value
+                                        }
+                                        if let value = dict["Total"] as? Int32 {
+                                            self.total = value
+                                        }
+                                    }
+                                }
                                 public class ImageSearchResult : Tea.TeaModel {
                                     public class SearchResult : Tea.TeaModel {
                                         public class Article : Tea.TeaModel {
@@ -52467,6 +53058,8 @@ public class RunSearchGenerationResponseBody : Tea.TeaModel {
                                         }
                                     }
                                 }
+                                public var audioSearchResult: RunSearchGenerationResponseBody.Payload.Output.AgentContext.BizContext.GeneratedContent.ClusterTopicResult.ClusterTopics.AudioSearchResult?
+
                                 public var imageSearchResult: RunSearchGenerationResponseBody.Payload.Output.AgentContext.BizContext.GeneratedContent.ClusterTopicResult.ClusterTopics.ImageSearchResult?
 
                                 public var textSearchResult: RunSearchGenerationResponseBody.Payload.Output.AgentContext.BizContext.GeneratedContent.ClusterTopicResult.ClusterTopics.TextSearchResult?
@@ -52485,6 +53078,7 @@ public class RunSearchGenerationResponseBody : Tea.TeaModel {
                                 }
 
                                 public override func validate() throws -> Void {
+                                    try self.audioSearchResult?.validate()
                                     try self.imageSearchResult?.validate()
                                     try self.textSearchResult?.validate()
                                     try self.videoSearchResult?.validate()
@@ -52492,6 +53086,9 @@ public class RunSearchGenerationResponseBody : Tea.TeaModel {
 
                                 public override func toMap() -> [String : Any] {
                                     var map = super.toMap()
+                                    if self.audioSearchResult != nil {
+                                        map["AudioSearchResult"] = self.audioSearchResult?.toMap()
+                                    }
                                     if self.imageSearchResult != nil {
                                         map["ImageSearchResult"] = self.imageSearchResult?.toMap()
                                     }
@@ -52509,6 +53106,11 @@ public class RunSearchGenerationResponseBody : Tea.TeaModel {
 
                                 public override func fromMap(_ dict: [String: Any?]?) -> Void {
                                     guard let dict else { return }
+                                    if let value = dict["AudioSearchResult"] as? [String: Any?] {
+                                        var model = RunSearchGenerationResponseBody.Payload.Output.AgentContext.BizContext.GeneratedContent.ClusterTopicResult.ClusterTopics.AudioSearchResult()
+                                        model.fromMap(value)
+                                        self.audioSearchResult = model
+                                    }
                                     if let value = dict["ImageSearchResult"] as? [String: Any?] {
                                         var model = RunSearchGenerationResponseBody.Payload.Output.AgentContext.BizContext.GeneratedContent.ClusterTopicResult.ClusterTopics.ImageSearchResult()
                                         model.fromMap(value)
@@ -53161,6 +53763,8 @@ public class RunSearchGenerationResponseBody : Tea.TeaModel {
 
                                 public var mediaId: String?
 
+                                public var traceabilityId: String?
+
                                 public override init() {
                                     super.init()
                                 }
@@ -53185,6 +53789,9 @@ public class RunSearchGenerationResponseBody : Tea.TeaModel {
                                     if self.mediaId != nil {
                                         map["MediaId"] = self.mediaId!
                                     }
+                                    if self.traceabilityId != nil {
+                                        map["TraceabilityId"] = self.traceabilityId!
+                                    }
                                     return map
                                 }
 
@@ -53200,6 +53807,9 @@ public class RunSearchGenerationResponseBody : Tea.TeaModel {
                                     }
                                     if let value = dict["MediaId"] as? String {
                                         self.mediaId = value
+                                    }
+                                    if let value = dict["TraceabilityId"] as? String {
+                                        self.traceabilityId = value
                                     }
                                 }
                             }
@@ -53640,6 +54250,8 @@ public class RunSearchGenerationResponseBody : Tea.TeaModel {
                                         }
                                     }
                                     public class NewsCoordinate : Tea.TeaModel {
+                                        public var mediaType: String?
+
                                         public var x: Int32?
 
                                         public var y: Int32?
@@ -53660,6 +54272,9 @@ public class RunSearchGenerationResponseBody : Tea.TeaModel {
 
                                         public override func toMap() -> [String : Any] {
                                             var map = super.toMap()
+                                            if self.mediaType != nil {
+                                                map["MediaType"] = self.mediaType!
+                                            }
                                             if self.x != nil {
                                                 map["X"] = self.x!
                                             }
@@ -53674,6 +54289,9 @@ public class RunSearchGenerationResponseBody : Tea.TeaModel {
 
                                         public override func fromMap(_ dict: [String: Any?]?) -> Void {
                                             guard let dict else { return }
+                                            if let value = dict["MediaType"] as? String {
+                                                self.mediaType = value
+                                            }
                                             if let value = dict["X"] as? Int32 {
                                                 self.x = value
                                             }
@@ -54561,6 +55179,8 @@ public class RunSearchGenerationResponseBody : Tea.TeaModel {
 
                                 public var title: String?
 
+                                public var traceabilityId: String?
+
                                 public var url: String?
 
                                 public override init() {
@@ -54604,6 +55224,9 @@ public class RunSearchGenerationResponseBody : Tea.TeaModel {
                                     if self.title != nil {
                                         map["Title"] = self.title!
                                     }
+                                    if self.traceabilityId != nil {
+                                        map["TraceabilityId"] = self.traceabilityId!
+                                    }
                                     if self.url != nil {
                                         map["Url"] = self.url!
                                     }
@@ -54638,6 +55261,9 @@ public class RunSearchGenerationResponseBody : Tea.TeaModel {
                                     }
                                     if let value = dict["Title"] as? String {
                                         self.title = value
+                                    }
+                                    if let value = dict["TraceabilityId"] as? String {
+                                        self.traceabilityId = value
                                     }
                                     if let value = dict["Url"] as? String {
                                         self.url = value
@@ -54761,6 +55387,8 @@ public class RunSearchGenerationResponseBody : Tea.TeaModel {
                                         }
                                     }
                                     public class NewsCoordinate : Tea.TeaModel {
+                                        public var mediaType: String?
+
                                         public var x: Int32?
 
                                         public var y: Int32?
@@ -54781,6 +55409,9 @@ public class RunSearchGenerationResponseBody : Tea.TeaModel {
 
                                         public override func toMap() -> [String : Any] {
                                             var map = super.toMap()
+                                            if self.mediaType != nil {
+                                                map["MediaType"] = self.mediaType!
+                                            }
                                             if self.x != nil {
                                                 map["X"] = self.x!
                                             }
@@ -54795,6 +55426,9 @@ public class RunSearchGenerationResponseBody : Tea.TeaModel {
 
                                         public override func fromMap(_ dict: [String: Any?]?) -> Void {
                                             guard let dict else { return }
+                                            if let value = dict["MediaType"] as? String {
+                                                self.mediaType = value
+                                            }
                                             if let value = dict["X"] as? Int32 {
                                                 self.x = value
                                             }
@@ -55756,6 +56390,8 @@ public class RunSearchGenerationResponseBody : Tea.TeaModel {
 
                                 public var mediaId: String?
 
+                                public var traceabilityId: String?
+
                                 public override init() {
                                     super.init()
                                 }
@@ -55787,6 +56423,9 @@ public class RunSearchGenerationResponseBody : Tea.TeaModel {
                                     if self.mediaId != nil {
                                         map["MediaId"] = self.mediaId!
                                     }
+                                    if self.traceabilityId != nil {
+                                        map["TraceabilityId"] = self.traceabilityId!
+                                    }
                                     return map
                                 }
 
@@ -55815,6 +56454,9 @@ public class RunSearchGenerationResponseBody : Tea.TeaModel {
                                     }
                                     if let value = dict["MediaId"] as? String {
                                         self.mediaId = value
+                                    }
+                                    if let value = dict["TraceabilityId"] as? String {
+                                        self.traceabilityId = value
                                     }
                                 }
                             }
@@ -55861,6 +56503,8 @@ public class RunSearchGenerationResponseBody : Tea.TeaModel {
                                 }
                             }
                         }
+                        public var audioSearchResult: RunSearchGenerationResponseBody.Payload.Output.AgentContext.BizContext.GeneratedContent.AudioSearchResult?
+
                         public var clusterTopicResult: RunSearchGenerationResponseBody.Payload.Output.AgentContext.BizContext.GeneratedContent.ClusterTopicResult?
 
                         public var excerptResult: RunSearchGenerationResponseBody.Payload.Output.AgentContext.BizContext.GeneratedContent.ExcerptResult?
@@ -55887,6 +56531,7 @@ public class RunSearchGenerationResponseBody : Tea.TeaModel {
                         }
 
                         public override func validate() throws -> Void {
+                            try self.audioSearchResult?.validate()
                             try self.clusterTopicResult?.validate()
                             try self.excerptResult?.validate()
                             try self.imageSearchResult?.validate()
@@ -55899,6 +56544,9 @@ public class RunSearchGenerationResponseBody : Tea.TeaModel {
 
                         public override func toMap() -> [String : Any] {
                             var map = super.toMap()
+                            if self.audioSearchResult != nil {
+                                map["AudioSearchResult"] = self.audioSearchResult?.toMap()
+                            }
                             if self.clusterTopicResult != nil {
                                 map["ClusterTopicResult"] = self.clusterTopicResult?.toMap()
                             }
@@ -55928,6 +56576,11 @@ public class RunSearchGenerationResponseBody : Tea.TeaModel {
 
                         public override func fromMap(_ dict: [String: Any?]?) -> Void {
                             guard let dict else { return }
+                            if let value = dict["AudioSearchResult"] as? [String: Any?] {
+                                var model = RunSearchGenerationResponseBody.Payload.Output.AgentContext.BizContext.GeneratedContent.AudioSearchResult()
+                                model.fromMap(value)
+                                self.audioSearchResult = model
+                            }
                             if let value = dict["ClusterTopicResult"] as? [String: Any?] {
                                 var model = RunSearchGenerationResponseBody.Payload.Output.AgentContext.BizContext.GeneratedContent.ClusterTopicResult()
                                 model.fromMap(value)
@@ -56187,7 +56840,347 @@ public class RunSearchGenerationResponseBody : Tea.TeaModel {
                     }
                 }
             }
+            public class Messages : Tea.TeaModel {
+                public class SearchResult : Tea.TeaModel {
+                    public class Audios : Tea.TeaModel {
+                        public var mediaId: String?
+
+                        public override init() {
+                            super.init()
+                        }
+
+                        public init(_ dict: [String: Any]) {
+                            super.init()
+                            self.fromMap(dict)
+                        }
+
+                        public override func validate() throws -> Void {
+                        }
+
+                        public override func toMap() -> [String : Any] {
+                            var map = super.toMap()
+                            if self.mediaId != nil {
+                                map["MediaId"] = self.mediaId!
+                            }
+                            return map
+                        }
+
+                        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                            guard let dict else { return }
+                            if let value = dict["MediaId"] as? String {
+                                self.mediaId = value
+                            }
+                        }
+                    }
+                    public class Images : Tea.TeaModel {
+                        public var mediaId: String?
+
+                        public override init() {
+                            super.init()
+                        }
+
+                        public init(_ dict: [String: Any]) {
+                            super.init()
+                            self.fromMap(dict)
+                        }
+
+                        public override func validate() throws -> Void {
+                        }
+
+                        public override func toMap() -> [String : Any] {
+                            var map = super.toMap()
+                            if self.mediaId != nil {
+                                map["MediaId"] = self.mediaId!
+                            }
+                            return map
+                        }
+
+                        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                            guard let dict else { return }
+                            if let value = dict["MediaId"] as? String {
+                                self.mediaId = value
+                            }
+                        }
+                    }
+                    public class Texts : Tea.TeaModel {
+                        public var docUuid: String?
+
+                        public override init() {
+                            super.init()
+                        }
+
+                        public init(_ dict: [String: Any]) {
+                            super.init()
+                            self.fromMap(dict)
+                        }
+
+                        public override func validate() throws -> Void {
+                        }
+
+                        public override func toMap() -> [String : Any] {
+                            var map = super.toMap()
+                            if self.docUuid != nil {
+                                map["DocUuid"] = self.docUuid!
+                            }
+                            return map
+                        }
+
+                        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                            guard let dict else { return }
+                            if let value = dict["DocUuid"] as? String {
+                                self.docUuid = value
+                            }
+                        }
+                    }
+                    public class Videos : Tea.TeaModel {
+                        public var mediaId: String?
+
+                        public override init() {
+                            super.init()
+                        }
+
+                        public init(_ dict: [String: Any]) {
+                            super.init()
+                            self.fromMap(dict)
+                        }
+
+                        public override func validate() throws -> Void {
+                        }
+
+                        public override func toMap() -> [String : Any] {
+                            var map = super.toMap()
+                            if self.mediaId != nil {
+                                map["MediaId"] = self.mediaId!
+                            }
+                            return map
+                        }
+
+                        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                            guard let dict else { return }
+                            if let value = dict["MediaId"] as? String {
+                                self.mediaId = value
+                            }
+                        }
+                    }
+                    public var audios: [RunSearchGenerationResponseBody.Payload.Output.Messages.SearchResult.Audios]?
+
+                    public var images: [RunSearchGenerationResponseBody.Payload.Output.Messages.SearchResult.Images]?
+
+                    public var multimodalSearchQuery: String?
+
+                    public var texts: [RunSearchGenerationResponseBody.Payload.Output.Messages.SearchResult.Texts]?
+
+                    public var videos: [RunSearchGenerationResponseBody.Payload.Output.Messages.SearchResult.Videos]?
+
+                    public override init() {
+                        super.init()
+                    }
+
+                    public init(_ dict: [String: Any]) {
+                        super.init()
+                        self.fromMap(dict)
+                    }
+
+                    public override func validate() throws -> Void {
+                    }
+
+                    public override func toMap() -> [String : Any] {
+                        var map = super.toMap()
+                        if self.audios != nil {
+                            var tmp : [Any] = []
+                            for k in self.audios! {
+                                tmp.append(k.toMap())
+                            }
+                            map["Audios"] = tmp
+                        }
+                        if self.images != nil {
+                            var tmp : [Any] = []
+                            for k in self.images! {
+                                tmp.append(k.toMap())
+                            }
+                            map["Images"] = tmp
+                        }
+                        if self.multimodalSearchQuery != nil {
+                            map["MultimodalSearchQuery"] = self.multimodalSearchQuery!
+                        }
+                        if self.texts != nil {
+                            var tmp : [Any] = []
+                            for k in self.texts! {
+                                tmp.append(k.toMap())
+                            }
+                            map["Texts"] = tmp
+                        }
+                        if self.videos != nil {
+                            var tmp : [Any] = []
+                            for k in self.videos! {
+                                tmp.append(k.toMap())
+                            }
+                            map["Videos"] = tmp
+                        }
+                        return map
+                    }
+
+                    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                        guard let dict else { return }
+                        if let value = dict["Audios"] as? [Any?] {
+                            var tmp : [RunSearchGenerationResponseBody.Payload.Output.Messages.SearchResult.Audios] = []
+                            for v in value {
+                                if v != nil {
+                                    var model = RunSearchGenerationResponseBody.Payload.Output.Messages.SearchResult.Audios()
+                                    if v != nil {
+                                        model.fromMap(v as? [String: Any?])
+                                    }
+                                    tmp.append(model)
+                                }
+                            }
+                            self.audios = tmp
+                        }
+                        if let value = dict["Images"] as? [Any?] {
+                            var tmp : [RunSearchGenerationResponseBody.Payload.Output.Messages.SearchResult.Images] = []
+                            for v in value {
+                                if v != nil {
+                                    var model = RunSearchGenerationResponseBody.Payload.Output.Messages.SearchResult.Images()
+                                    if v != nil {
+                                        model.fromMap(v as? [String: Any?])
+                                    }
+                                    tmp.append(model)
+                                }
+                            }
+                            self.images = tmp
+                        }
+                        if let value = dict["MultimodalSearchQuery"] as? String {
+                            self.multimodalSearchQuery = value
+                        }
+                        if let value = dict["Texts"] as? [Any?] {
+                            var tmp : [RunSearchGenerationResponseBody.Payload.Output.Messages.SearchResult.Texts] = []
+                            for v in value {
+                                if v != nil {
+                                    var model = RunSearchGenerationResponseBody.Payload.Output.Messages.SearchResult.Texts()
+                                    if v != nil {
+                                        model.fromMap(v as? [String: Any?])
+                                    }
+                                    tmp.append(model)
+                                }
+                            }
+                            self.texts = tmp
+                        }
+                        if let value = dict["Videos"] as? [Any?] {
+                            var tmp : [RunSearchGenerationResponseBody.Payload.Output.Messages.SearchResult.Videos] = []
+                            for v in value {
+                                if v != nil {
+                                    var model = RunSearchGenerationResponseBody.Payload.Output.Messages.SearchResult.Videos()
+                                    if v != nil {
+                                        model.fromMap(v as? [String: Any?])
+                                    }
+                                    tmp.append(model)
+                                }
+                            }
+                            self.videos = tmp
+                        }
+                    }
+                }
+                public var clarifications: Bool?
+
+                public var content: String?
+
+                public var generateFinished: Bool?
+
+                public var id: String?
+
+                public var nodeCode: String?
+
+                public var searchQueries: [String]?
+
+                public var searchQuery: String?
+
+                public var searchResult: [RunSearchGenerationResponseBody.Payload.Output.Messages.SearchResult]?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.clarifications != nil {
+                        map["Clarifications"] = self.clarifications!
+                    }
+                    if self.content != nil {
+                        map["Content"] = self.content!
+                    }
+                    if self.generateFinished != nil {
+                        map["GenerateFinished"] = self.generateFinished!
+                    }
+                    if self.id != nil {
+                        map["Id"] = self.id!
+                    }
+                    if self.nodeCode != nil {
+                        map["NodeCode"] = self.nodeCode!
+                    }
+                    if self.searchQueries != nil {
+                        map["SearchQueries"] = self.searchQueries!
+                    }
+                    if self.searchQuery != nil {
+                        map["SearchQuery"] = self.searchQuery!
+                    }
+                    if self.searchResult != nil {
+                        var tmp : [Any] = []
+                        for k in self.searchResult! {
+                            tmp.append(k.toMap())
+                        }
+                        map["SearchResult"] = tmp
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                    guard let dict else { return }
+                    if let value = dict["Clarifications"] as? Bool {
+                        self.clarifications = value
+                    }
+                    if let value = dict["Content"] as? String {
+                        self.content = value
+                    }
+                    if let value = dict["GenerateFinished"] as? Bool {
+                        self.generateFinished = value
+                    }
+                    if let value = dict["Id"] as? String {
+                        self.id = value
+                    }
+                    if let value = dict["NodeCode"] as? String {
+                        self.nodeCode = value
+                    }
+                    if let value = dict["SearchQueries"] as? [String] {
+                        self.searchQueries = value
+                    }
+                    if let value = dict["SearchQuery"] as? String {
+                        self.searchQuery = value
+                    }
+                    if let value = dict["SearchResult"] as? [Any?] {
+                        var tmp : [RunSearchGenerationResponseBody.Payload.Output.Messages.SearchResult] = []
+                        for v in value {
+                            if v != nil {
+                                var model = RunSearchGenerationResponseBody.Payload.Output.Messages.SearchResult()
+                                if v != nil {
+                                    model.fromMap(v as? [String: Any?])
+                                }
+                                tmp.append(model)
+                            }
+                        }
+                        self.searchResult = tmp
+                    }
+                }
+            }
             public var agentContext: RunSearchGenerationResponseBody.Payload.Output.AgentContext?
+
+            public var messages: [RunSearchGenerationResponseBody.Payload.Output.Messages]?
 
             public override init() {
                 super.init()
@@ -56207,6 +57200,13 @@ public class RunSearchGenerationResponseBody : Tea.TeaModel {
                 if self.agentContext != nil {
                     map["AgentContext"] = self.agentContext?.toMap()
                 }
+                if self.messages != nil {
+                    var tmp : [Any] = []
+                    for k in self.messages! {
+                        tmp.append(k.toMap())
+                    }
+                    map["Messages"] = tmp
+                }
                 return map
             }
 
@@ -56216,6 +57216,19 @@ public class RunSearchGenerationResponseBody : Tea.TeaModel {
                     var model = RunSearchGenerationResponseBody.Payload.Output.AgentContext()
                     model.fromMap(value)
                     self.agentContext = model
+                }
+                if let value = dict["Messages"] as? [Any?] {
+                    var tmp : [RunSearchGenerationResponseBody.Payload.Output.Messages] = []
+                    for v in value {
+                        if v != nil {
+                            var model = RunSearchGenerationResponseBody.Payload.Output.Messages()
+                            if v != nil {
+                                model.fromMap(v as? [String: Any?])
+                            }
+                            tmp.append(model)
+                        }
+                    }
+                    self.messages = tmp
                 }
             }
         }
