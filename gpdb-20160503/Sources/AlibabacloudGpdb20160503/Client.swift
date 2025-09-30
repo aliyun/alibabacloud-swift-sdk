@@ -367,6 +367,114 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func chatWithKnowledgeBaseWithOptions(_ tmpReq: ChatWithKnowledgeBaseRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ChatWithKnowledgeBaseResponse {
+        try TeaUtils.Client.validateModel(tmpReq)
+        var request: ChatWithKnowledgeBaseShrinkRequest = ChatWithKnowledgeBaseShrinkRequest([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.knowledgeParams)) {
+            request.knowledgeParamsShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.knowledgeParams, "KnowledgeParams", "json")
+        }
+        if (!TeaUtils.Client.isUnset(tmpReq.modelParams)) {
+            request.modelParamsShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.modelParams, "ModelParams", "json")
+        }
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.DBInstanceId)) {
+            query["DBInstanceId"] = request.DBInstanceId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.includeKnowledgeBaseResults)) {
+            query["IncludeKnowledgeBaseResults"] = request.includeKnowledgeBaseResults!;
+        }
+        if (!TeaUtils.Client.isUnset(request.knowledgeParamsShrink)) {
+            query["KnowledgeParams"] = request.knowledgeParamsShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.modelParamsShrink)) {
+            query["ModelParams"] = request.modelParamsShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.ownerId)) {
+            query["OwnerId"] = request.ownerId!;
+        }
+        if (!TeaUtils.Client.isUnset(request.promptParams)) {
+            query["PromptParams"] = request.promptParams ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "ChatWithKnowledgeBase",
+            "version": "2016-05-03",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(ChatWithKnowledgeBaseResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func chatWithKnowledgeBase(_ request: ChatWithKnowledgeBaseRequest) async throws -> ChatWithKnowledgeBaseResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await chatWithKnowledgeBaseWithOptions(request as! ChatWithKnowledgeBaseRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func chatWithKnowledgeBaseStreamWithOptions(_ tmpReq: ChatWithKnowledgeBaseStreamRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ChatWithKnowledgeBaseStreamResponse {
+        try TeaUtils.Client.validateModel(tmpReq)
+        var request: ChatWithKnowledgeBaseStreamShrinkRequest = ChatWithKnowledgeBaseStreamShrinkRequest([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.knowledgeParams)) {
+            request.knowledgeParamsShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.knowledgeParams, "KnowledgeParams", "json")
+        }
+        if (!TeaUtils.Client.isUnset(tmpReq.modelParams)) {
+            request.modelParamsShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.modelParams, "ModelParams", "json")
+        }
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.DBInstanceId)) {
+            query["DBInstanceId"] = request.DBInstanceId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.includeKnowledgeBaseResults)) {
+            query["IncludeKnowledgeBaseResults"] = request.includeKnowledgeBaseResults!;
+        }
+        if (!TeaUtils.Client.isUnset(request.knowledgeParamsShrink)) {
+            query["KnowledgeParams"] = request.knowledgeParamsShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.modelParamsShrink)) {
+            query["ModelParams"] = request.modelParamsShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.ownerId)) {
+            query["OwnerId"] = request.ownerId!;
+        }
+        if (!TeaUtils.Client.isUnset(request.promptParams)) {
+            query["PromptParams"] = request.promptParams ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "ChatWithKnowledgeBaseStream",
+            "version": "2016-05-03",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(ChatWithKnowledgeBaseStreamResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func chatWithKnowledgeBaseStream(_ request: ChatWithKnowledgeBaseStreamRequest) async throws -> ChatWithKnowledgeBaseStreamResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await chatWithKnowledgeBaseStreamWithOptions(request as! ChatWithKnowledgeBaseStreamRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func checkHadoopDataSourceWithOptions(_ request: CheckHadoopDataSourceRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> CheckHadoopDataSourceResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
