@@ -1697,4 +1697,45 @@ open class Client : AlibabacloudOpenApi.Client {
         var headers: [String: String] = [:]
         return try await updateVideoAnalysisTaskWithOptions(workspaceId as! String, request as! UpdateVideoAnalysisTaskRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
     }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func updateVideoAnalysisTasksWithOptions(_ workspaceId: String, _ tmpReq: UpdateVideoAnalysisTasksRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> UpdateVideoAnalysisTasksResponse {
+        try TeaUtils.Client.validateModel(tmpReq)
+        var request: UpdateVideoAnalysisTasksShrinkRequest = UpdateVideoAnalysisTasksShrinkRequest([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.taskIds)) {
+            request.taskIdsShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.taskIds, "taskIds", "json")
+        }
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.taskIdsShrink)) {
+            body["taskIds"] = request.taskIdsShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.taskStatus)) {
+            body["taskStatus"] = request.taskStatus ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String],
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "UpdateVideoAnalysisTasks",
+            "version": "2024-08-01",
+            "protocol": "HTTPS",
+            "pathname": "/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(workspaceId)) + "/quanmiao/lightapp/videoAnalysis/updateVideoAnalysisTasks",
+            "method": "PUT",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(UpdateVideoAnalysisTasksResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func updateVideoAnalysisTasks(_ workspaceId: String, _ request: UpdateVideoAnalysisTasksRequest) async throws -> UpdateVideoAnalysisTasksResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await updateVideoAnalysisTasksWithOptions(workspaceId as! String, request as! UpdateVideoAnalysisTasksRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
 }
