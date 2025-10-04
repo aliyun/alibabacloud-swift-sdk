@@ -325,6 +325,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.dataDisk)) {
             bodyFlat["DataDisk"] = request.dataDisk ?? [];
         }
+        if (!TeaUtils.Client.isUnset(request.idempotenceToken)) {
+            body["IdempotenceToken"] = request.idempotenceToken ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.imageId)) {
             body["ImageId"] = request.imageId ?? "";
         }
@@ -458,6 +461,37 @@ open class Client : AlibabacloudOpenApi.Client {
     public func deleteAppInstances(_ request: DeleteAppInstancesRequest) async throws -> DeleteAppInstancesResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         return try await deleteAppInstancesWithOptions(request as! DeleteAppInstancesRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func deleteWuyingServerWithOptions(_ request: DeleteWuyingServerRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DeleteWuyingServerResponse {
+        try TeaUtils.Client.validateModel(request)
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.wuyingServerId)) {
+            body["WuyingServerId"] = request.wuyingServerId ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "DeleteWuyingServer",
+            "version": "2021-09-01",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(DeleteWuyingServerResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func deleteWuyingServer(_ request: DeleteWuyingServerRequest) async throws -> DeleteWuyingServerResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await deleteWuyingServerWithOptions(request as! DeleteWuyingServerRequest, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)

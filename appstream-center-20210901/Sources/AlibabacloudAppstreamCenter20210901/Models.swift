@@ -2057,6 +2057,8 @@ public class CreateWuyingServerRequest : Tea.TeaModel {
 
     public var dataDisk: [CreateWuyingServerRequest.DataDisk]?
 
+    public var idempotenceToken: String?
+
     public var imageId: String?
 
     public var officeSiteId: String?
@@ -2118,6 +2120,9 @@ public class CreateWuyingServerRequest : Tea.TeaModel {
                 tmp.append(k.toMap())
             }
             map["DataDisk"] = tmp
+        }
+        if self.idempotenceToken != nil {
+            map["IdempotenceToken"] = self.idempotenceToken!
         }
         if self.imageId != nil {
             map["ImageId"] = self.imageId!
@@ -2190,6 +2195,9 @@ public class CreateWuyingServerRequest : Tea.TeaModel {
                 }
             }
             self.dataDisk = tmp
+        }
+        if let value = dict["IdempotenceToken"] as? String {
+            self.idempotenceToken = value
         }
         if let value = dict["ImageId"] as? String {
             self.imageId = value
@@ -2681,6 +2689,118 @@ public class DeleteAppInstancesResponse : Tea.TeaModel {
         }
         if let value = dict["body"] as? [String: Any?] {
             var model = DeleteAppInstancesResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
+public class DeleteWuyingServerRequest : Tea.TeaModel {
+    public var wuyingServerId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.wuyingServerId != nil {
+            map["WuyingServerId"] = self.wuyingServerId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["WuyingServerId"] as? String {
+            self.wuyingServerId = value
+        }
+    }
+}
+
+public class DeleteWuyingServerResponseBody : Tea.TeaModel {
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+    }
+}
+
+public class DeleteWuyingServerResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: DeleteWuyingServerResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = DeleteWuyingServerResponseBody()
             model.fromMap(value)
             self.body = model
         }
