@@ -669,6 +669,10 @@ public class GetErrorResponseBody : Tea.TeaModel {
 
         public var isBackTrace: Int32?
 
+        public var isJailbroken: Int32?
+
+        public var isSimulator: Int32?
+
         public var isSpeedVersion: Int32?
 
         public var isp: String?
@@ -1044,6 +1048,12 @@ public class GetErrorResponseBody : Tea.TeaModel {
             }
             if self.isBackTrace != nil {
                 map["IsBackTrace"] = self.isBackTrace!
+            }
+            if self.isJailbroken != nil {
+                map["IsJailbroken"] = self.isJailbroken!
+            }
+            if self.isSimulator != nil {
+                map["IsSimulator"] = self.isSimulator!
             }
             if self.isSpeedVersion != nil {
                 map["IsSpeedVersion"] = self.isSpeedVersion!
@@ -1475,6 +1485,12 @@ public class GetErrorResponseBody : Tea.TeaModel {
             }
             if let value = dict["IsBackTrace"] as? Int32 {
                 self.isBackTrace = value
+            }
+            if let value = dict["IsJailbroken"] as? Int32 {
+                self.isJailbroken = value
+            }
+            if let value = dict["IsSimulator"] as? Int32 {
+                self.isSimulator = value
             }
             if let value = dict["IsSpeedVersion"] as? Int32 {
                 self.isSpeedVersion = value
