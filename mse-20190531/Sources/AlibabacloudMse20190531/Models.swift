@@ -12684,6 +12684,8 @@ public class CreateNacosInstanceResponse : Tea.TeaModel {
 public class CreateNacosMcpServerRequest : Tea.TeaModel {
     public var acceptLanguage: String?
 
+    public var encryptToolSpec: Bool?
+
     public var endpointSpecification: String?
 
     public var instanceId: String?
@@ -12715,6 +12717,9 @@ public class CreateNacosMcpServerRequest : Tea.TeaModel {
         if self.acceptLanguage != nil {
             map["AcceptLanguage"] = self.acceptLanguage!
         }
+        if self.encryptToolSpec != nil {
+            map["EncryptToolSpec"] = self.encryptToolSpec!
+        }
         if self.endpointSpecification != nil {
             map["EndpointSpecification"] = self.endpointSpecification!
         }
@@ -12743,6 +12748,9 @@ public class CreateNacosMcpServerRequest : Tea.TeaModel {
         guard let dict else { return }
         if let value = dict["AcceptLanguage"] as? String {
             self.acceptLanguage = value
+        }
+        if let value = dict["EncryptToolSpec"] as? Bool {
+            self.encryptToolSpec = value
         }
         if let value = dict["EndpointSpecification"] as? String {
             self.endpointSpecification = value
@@ -34554,6 +34562,10 @@ public class GetNacosMcpServerResponseBody : Tea.TeaModel {
                     }
                 }
             }
+            public var securitySchemes: Any?
+
+            public var specificationType: String?
+
             public var tools: [GetNacosMcpServerResponseBody.Data.ToolSpec.Tools]?
 
             public var toolsMeta: [String: DataToolSpecToolsMetaValue]?
@@ -34572,6 +34584,12 @@ public class GetNacosMcpServerResponseBody : Tea.TeaModel {
 
             public override func toMap() -> [String : Any] {
                 var map = super.toMap()
+                if self.securitySchemes != nil {
+                    map["SecuritySchemes"] = self.securitySchemes!
+                }
+                if self.specificationType != nil {
+                    map["SpecificationType"] = self.specificationType!
+                }
                 if self.tools != nil {
                     var tmp : [Any] = []
                     for k in self.tools! {
@@ -34591,6 +34609,12 @@ public class GetNacosMcpServerResponseBody : Tea.TeaModel {
 
             public override func fromMap(_ dict: [String: Any?]?) -> Void {
                 guard let dict else { return }
+                if let value = dict["SecuritySchemes"] as? Any {
+                    self.securitySchemes = value
+                }
+                if let value = dict["SpecificationType"] as? String {
+                    self.specificationType = value
+                }
                 if let value = dict["Tools"] as? [Any?] {
                     var tmp : [GetNacosMcpServerResponseBody.Data.ToolSpec.Tools] = []
                     for v in value {
