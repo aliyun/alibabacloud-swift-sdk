@@ -7746,6 +7746,8 @@ public class GetConsumerProgressResponseBody : Tea.TeaModel {
             public class TopicList : Tea.TeaModel {
                 public class OffsetList : Tea.TeaModel {
                     public class OffsetList : Tea.TeaModel {
+                        public var accumulate: Int64?
+
                         public var brokerOffset: Int64?
 
                         public var clientId: String?
@@ -7774,6 +7776,9 @@ public class GetConsumerProgressResponseBody : Tea.TeaModel {
 
                         public override func toMap() -> [String : Any] {
                             var map = super.toMap()
+                            if self.accumulate != nil {
+                                map["Accumulate"] = self.accumulate!
+                            }
                             if self.brokerOffset != nil {
                                 map["BrokerOffset"] = self.brokerOffset!
                             }
@@ -7800,6 +7805,9 @@ public class GetConsumerProgressResponseBody : Tea.TeaModel {
 
                         public override func fromMap(_ dict: [String: Any?]?) -> Void {
                             guard let dict else { return }
+                            if let value = dict["Accumulate"] as? Int64 {
+                                self.accumulate = value
+                            }
                             if let value = dict["BrokerOffset"] as? Int64 {
                                 self.brokerOffset = value
                             }
