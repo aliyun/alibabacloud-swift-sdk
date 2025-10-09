@@ -2843,6 +2843,8 @@ public class JobSettings : Tea.TeaModel {
 
     public var jobReservedPolicy: String?
 
+    public var modelConfig: ModelConfig?
+
     public var oversoldType: String?
 
     public var pipelineId: String?
@@ -2862,6 +2864,7 @@ public class JobSettings : Tea.TeaModel {
 
     public override func validate() throws -> Void {
         try self.dataJuicerConfig?.validate()
+        try self.modelConfig?.validate()
     }
 
     public override func toMap() -> [String : Any] {
@@ -2916,6 +2919,9 @@ public class JobSettings : Tea.TeaModel {
         }
         if self.jobReservedPolicy != nil {
             map["JobReservedPolicy"] = self.jobReservedPolicy!
+        }
+        if self.modelConfig != nil {
+            map["ModelConfig"] = self.modelConfig?.toMap()
         }
         if self.oversoldType != nil {
             map["OversoldType"] = self.oversoldType!
@@ -2986,6 +2992,11 @@ public class JobSettings : Tea.TeaModel {
         }
         if let value = dict["JobReservedPolicy"] as? String {
             self.jobReservedPolicy = value
+        }
+        if let value = dict["ModelConfig"] as? [String: Any?] {
+            var model = ModelConfig()
+            model.fromMap(value)
+            self.modelConfig = model
         }
         if let value = dict["OversoldType"] as? String {
             self.oversoldType = value
@@ -3574,6 +3585,37 @@ public class Metric : Tea.TeaModel {
     }
 }
 
+public class ModelConfig : Tea.TeaModel {
+    public var modelName: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.modelName != nil {
+            map["ModelName"] = self.modelName!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["ModelName"] as? String {
+            self.modelName = value
+        }
+    }
+}
+
 public class NodeMetric : Tea.TeaModel {
     public var metrics: [Metric]?
 
@@ -3642,6 +3684,8 @@ public class PodItem : Tea.TeaModel {
 
     public var podId: String?
 
+    public var podIp: String?
+
     public var podUid: String?
 
     public var status: String?
@@ -3688,6 +3732,9 @@ public class PodItem : Tea.TeaModel {
         }
         if self.podId != nil {
             map["PodId"] = self.podId!
+        }
+        if self.podIp != nil {
+            map["PodIp"] = self.podIp!
         }
         if self.podUid != nil {
             map["PodUid"] = self.podUid!
@@ -3736,6 +3783,9 @@ public class PodItem : Tea.TeaModel {
         }
         if let value = dict["PodId"] as? String {
             self.podId = value
+        }
+        if let value = dict["PodIp"] as? String {
+            self.podIp = value
         }
         if let value = dict["PodUid"] as? String {
             self.podUid = value
