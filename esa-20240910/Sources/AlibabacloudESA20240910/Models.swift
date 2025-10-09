@@ -266,6 +266,217 @@ public class WafQuotaString : Tea.TeaModel {
     }
 }
 
+public class WafRatelimitCharacteristics : Tea.TeaModel {
+    public class Criteria : Tea.TeaModel {
+        public class Criteria : Tea.TeaModel {
+            public class Criteria : Tea.TeaModel {
+                public var matchType: String?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.matchType != nil {
+                        map["MatchType"] = self.matchType!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                    guard let dict else { return }
+                    if let value = dict["MatchType"] as? String {
+                        self.matchType = value
+                    }
+                }
+            }
+            public var criteria: [WafRatelimitCharacteristics.Criteria.Criteria.Criteria]?
+
+            public var logic: String?
+
+            public var matchType: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.criteria != nil {
+                    var tmp : [Any] = []
+                    for k in self.criteria! {
+                        tmp.append(k.toMap())
+                    }
+                    map["Criteria"] = tmp
+                }
+                if self.logic != nil {
+                    map["Logic"] = self.logic!
+                }
+                if self.matchType != nil {
+                    map["MatchType"] = self.matchType!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["Criteria"] as? [Any?] {
+                    var tmp : [WafRatelimitCharacteristics.Criteria.Criteria.Criteria] = []
+                    for v in value {
+                        if v != nil {
+                            var model = WafRatelimitCharacteristics.Criteria.Criteria.Criteria()
+                            if v != nil {
+                                model.fromMap(v as? [String: Any?])
+                            }
+                            tmp.append(model)
+                        }
+                    }
+                    self.criteria = tmp
+                }
+                if let value = dict["Logic"] as? String {
+                    self.logic = value
+                }
+                if let value = dict["MatchType"] as? String {
+                    self.matchType = value
+                }
+            }
+        }
+        public var criteria: [WafRatelimitCharacteristics.Criteria.Criteria]?
+
+        public var logic: String?
+
+        public var matchType: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.criteria != nil {
+                var tmp : [Any] = []
+                for k in self.criteria! {
+                    tmp.append(k.toMap())
+                }
+                map["Criteria"] = tmp
+            }
+            if self.logic != nil {
+                map["Logic"] = self.logic!
+            }
+            if self.matchType != nil {
+                map["MatchType"] = self.matchType!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["Criteria"] as? [Any?] {
+                var tmp : [WafRatelimitCharacteristics.Criteria.Criteria] = []
+                for v in value {
+                    if v != nil {
+                        var model = WafRatelimitCharacteristics.Criteria.Criteria()
+                        if v != nil {
+                            model.fromMap(v as? [String: Any?])
+                        }
+                        tmp.append(model)
+                    }
+                }
+                self.criteria = tmp
+            }
+            if let value = dict["Logic"] as? String {
+                self.logic = value
+            }
+            if let value = dict["MatchType"] as? String {
+                self.matchType = value
+            }
+        }
+    }
+    public var criteria: [WafRatelimitCharacteristics.Criteria]?
+
+    public var logic: String?
+
+    public var matchType: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.criteria != nil {
+            var tmp : [Any] = []
+            for k in self.criteria! {
+                tmp.append(k.toMap())
+            }
+            map["Criteria"] = tmp
+        }
+        if self.logic != nil {
+            map["Logic"] = self.logic!
+        }
+        if self.matchType != nil {
+            map["MatchType"] = self.matchType!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["Criteria"] as? [Any?] {
+            var tmp : [WafRatelimitCharacteristics.Criteria] = []
+            for v in value {
+                if v != nil {
+                    var model = WafRatelimitCharacteristics.Criteria()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.criteria = tmp
+        }
+        if let value = dict["Logic"] as? String {
+            self.logic = value
+        }
+        if let value = dict["MatchType"] as? String {
+            self.matchType = value
+        }
+    }
+}
+
 public class WafRuleConfig : Tea.TeaModel {
     public class Actions : Tea.TeaModel {
         public class Bypass : Tea.TeaModel {
@@ -822,7 +1033,7 @@ public class WafRuleConfig : Tea.TeaModel {
                 }
             }
         }
-        public var characteristics: WafRuleMatch2?
+        public var characteristics: WafRatelimitCharacteristics?
 
         public var interval: Int32?
 
@@ -869,7 +1080,7 @@ public class WafRuleConfig : Tea.TeaModel {
         public override func fromMap(_ dict: [String: Any?]?) -> Void {
             guard let dict else { return }
             if let value = dict["Characteristics"] as? [String: Any?] {
-                var model = WafRuleMatch2()
+                var model = WafRatelimitCharacteristics()
                 model.fromMap(value)
                 self.characteristics = model
             }
