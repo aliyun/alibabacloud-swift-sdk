@@ -860,12 +860,221 @@ public class QueryContext : Tea.TeaModel {
     }
 }
 
+public class ReadPageBody : Tea.TeaModel {
+    public class Readability : Tea.TeaModel {
+        public var excludeAllImages: Bool?
+
+        public var excludeAllLinks: Bool?
+
+        public var excludedTags: [String]?
+
+        public var readabilityMode: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.excludeAllImages != nil {
+                map["excludeAllImages"] = self.excludeAllImages!
+            }
+            if self.excludeAllLinks != nil {
+                map["excludeAllLinks"] = self.excludeAllLinks!
+            }
+            if self.excludedTags != nil {
+                map["excludedTags"] = self.excludedTags!
+            }
+            if self.readabilityMode != nil {
+                map["readabilityMode"] = self.readabilityMode!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["excludeAllImages"] as? Bool {
+                self.excludeAllImages = value
+            }
+            if let value = dict["excludeAllLinks"] as? Bool {
+                self.excludeAllLinks = value
+            }
+            if let value = dict["excludedTags"] as? [String] {
+                self.excludedTags = value
+            }
+            if let value = dict["readabilityMode"] as? String {
+                self.readabilityMode = value
+            }
+        }
+    }
+    public var formats: [String]?
+
+    public var location: String?
+
+    public var maxAge: Int32?
+
+    public var pageTimeout: Int32?
+
+    public var readability: ReadPageBody.Readability?
+
+    public var timeout: Int32?
+
+    public var url: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.readability?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.formats != nil {
+            map["formats"] = self.formats!
+        }
+        if self.location != nil {
+            map["location"] = self.location!
+        }
+        if self.maxAge != nil {
+            map["maxAge"] = self.maxAge!
+        }
+        if self.pageTimeout != nil {
+            map["pageTimeout"] = self.pageTimeout!
+        }
+        if self.readability != nil {
+            map["readability"] = self.readability?.toMap()
+        }
+        if self.timeout != nil {
+            map["timeout"] = self.timeout!
+        }
+        if self.url != nil {
+            map["url"] = self.url!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["formats"] as? [String] {
+            self.formats = value
+        }
+        if let value = dict["location"] as? String {
+            self.location = value
+        }
+        if let value = dict["maxAge"] as? Int32 {
+            self.maxAge = value
+        }
+        if let value = dict["pageTimeout"] as? Int32 {
+            self.pageTimeout = value
+        }
+        if let value = dict["readability"] as? [String: Any?] {
+            var model = ReadPageBody.Readability()
+            model.fromMap(value)
+            self.readability = model
+        }
+        if let value = dict["timeout"] as? Int32 {
+            self.timeout = value
+        }
+        if let value = dict["url"] as? String {
+            self.url = value
+        }
+    }
+}
+
+public class ReadPageItem : Tea.TeaModel {
+    public var errorMessage: String?
+
+    public var html: String?
+
+    public var markdown: String?
+
+    public var rawHtml: String?
+
+    public var statusCode: Int32?
+
+    public var text: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.errorMessage != nil {
+            map["errorMessage"] = self.errorMessage!
+        }
+        if self.html != nil {
+            map["html"] = self.html!
+        }
+        if self.markdown != nil {
+            map["markdown"] = self.markdown!
+        }
+        if self.rawHtml != nil {
+            map["rawHtml"] = self.rawHtml!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.text != nil {
+            map["text"] = self.text!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["errorMessage"] as? String {
+            self.errorMessage = value
+        }
+        if let value = dict["html"] as? String {
+            self.html = value
+        }
+        if let value = dict["markdown"] as? String {
+            self.markdown = value
+        }
+        if let value = dict["rawHtml"] as? String {
+            self.rawHtml = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["text"] as? String {
+            self.text = value
+        }
+    }
+}
+
 public class RequestContents : Tea.TeaModel {
     public var mainText: Bool?
 
     public var markdownText: Bool?
 
     public var rerankScore: Bool?
+
+    public var richMainBody: Bool?
 
     public var summary: Bool?
 
@@ -892,6 +1101,9 @@ public class RequestContents : Tea.TeaModel {
         if self.rerankScore != nil {
             map["rerankScore"] = self.rerankScore!
         }
+        if self.richMainBody != nil {
+            map["richMainBody"] = self.richMainBody!
+        }
         if self.summary != nil {
             map["summary"] = self.summary!
         }
@@ -908,6 +1120,9 @@ public class RequestContents : Tea.TeaModel {
         }
         if let value = dict["rerankScore"] as? Bool {
             self.rerankScore = value
+        }
+        if let value = dict["richMainBody"] as? Bool {
+            self.richMainBody = value
         }
         if let value = dict["summary"] as? Bool {
             self.summary = value
@@ -2368,6 +2583,8 @@ public class GenericSearchRequest : Tea.TeaModel {
 
     public var returnMarkdownText: Bool?
 
+    public var returnRichMainBody: Bool?
+
     public var returnSummary: Bool?
 
     public var sessionId: String?
@@ -2406,6 +2623,9 @@ public class GenericSearchRequest : Tea.TeaModel {
         if self.returnMarkdownText != nil {
             map["returnMarkdownText"] = self.returnMarkdownText!
         }
+        if self.returnRichMainBody != nil {
+            map["returnRichMainBody"] = self.returnRichMainBody!
+        }
         if self.returnSummary != nil {
             map["returnSummary"] = self.returnSummary!
         }
@@ -2437,6 +2657,9 @@ public class GenericSearchRequest : Tea.TeaModel {
         }
         if let value = dict["returnMarkdownText"] as? Bool {
             self.returnMarkdownText = value
+        }
+        if let value = dict["returnRichMainBody"] as? Bool {
+            self.returnRichMainBody = value
         }
         if let value = dict["returnSummary"] as? Bool {
             self.returnSummary = value
@@ -2688,6 +2911,148 @@ public class GlobalSearchResponse : Tea.TeaModel {
         }
         if let value = dict["body"] as? [String: Any?] {
             var model = GlobalSearchResult()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
+public class ReadPageBasicRequest : Tea.TeaModel {
+    public var body: ReadPageBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = ReadPageBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
+public class ReadPageBasicResponseBody : Tea.TeaModel {
+    public var data: ReadPageItem?
+
+    public var errorCode: String?
+
+    public var errorMessage: String?
+
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.data?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.data != nil {
+            map["data"] = self.data?.toMap()
+        }
+        if self.errorCode != nil {
+            map["errorCode"] = self.errorCode!
+        }
+        if self.errorMessage != nil {
+            map["errorMessage"] = self.errorMessage!
+        }
+        if self.requestId != nil {
+            map["requestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["data"] as? [String: Any?] {
+            var model = ReadPageItem()
+            model.fromMap(value)
+            self.data = model
+        }
+        if let value = dict["errorCode"] as? String {
+            self.errorCode = value
+        }
+        if let value = dict["errorMessage"] as? String {
+            self.errorMessage = value
+        }
+        if let value = dict["requestId"] as? String {
+            self.requestId = value
+        }
+    }
+}
+
+public class ReadPageBasicResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: ReadPageBasicResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = ReadPageBasicResponseBody()
             model.fromMap(value)
             self.body = model
         }
