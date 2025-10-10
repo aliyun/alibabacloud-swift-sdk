@@ -1198,6 +1198,8 @@ public class ScorePageItem : Tea.TeaModel {
 
     public var publishTime: Int64?
 
+    public var richMainBody: String?
+
     public var score: Double?
 
     public var siteLabel: String?
@@ -1267,6 +1269,9 @@ public class ScorePageItem : Tea.TeaModel {
         }
         if self.publishTime != nil {
             map["publishTime"] = self.publishTime!
+        }
+        if self.richMainBody != nil {
+            map["richMainBody"] = self.richMainBody!
         }
         if self.score != nil {
             map["score"] = self.score!
@@ -1339,6 +1344,9 @@ public class ScorePageItem : Tea.TeaModel {
         }
         if let value = dict["publishTime"] as? Int64 {
             self.publishTime = value
+        }
+        if let value = dict["richMainBody"] as? String {
+            self.richMainBody = value
         }
         if let value = dict["score"] as? Double {
             self.score = value
