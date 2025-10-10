@@ -4571,6 +4571,8 @@ public class DescribeDBInstanceAttributeResponseBody : Tea.TeaModel {
 
     public var resourceGroupId: String?
 
+    public var secGroupConnValid: String?
+
     public var serverless: Bool?
 
     public var status: String?
@@ -4674,6 +4676,9 @@ public class DescribeDBInstanceAttributeResponseBody : Tea.TeaModel {
         }
         if self.resourceGroupId != nil {
             map["ResourceGroupId"] = self.resourceGroupId!
+        }
+        if self.secGroupConnValid != nil {
+            map["SecGroupConnValid"] = self.secGroupConnValid!
         }
         if self.serverless != nil {
             map["Serverless"] = self.serverless!
@@ -4793,6 +4798,9 @@ public class DescribeDBInstanceAttributeResponseBody : Tea.TeaModel {
         }
         if let value = dict["ResourceGroupId"] as? String {
             self.resourceGroupId = value
+        }
+        if let value = dict["SecGroupConnValid"] as? String {
+            self.secGroupConnValid = value
         }
         if let value = dict["Serverless"] as? Bool {
             self.serverless = value
