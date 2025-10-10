@@ -973,45 +973,6 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func createEdgeMachineWithOptions(_ request: CreateEdgeMachineRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> CreateEdgeMachineResponse {
-        try TeaUtils.Client.validateModel(request)
-        var body: [String: Any] = [:]
-        if (!TeaUtils.Client.isUnset(request.hostname)) {
-            body["hostname"] = request.hostname ?? "";
-        }
-        if (!TeaUtils.Client.isUnset(request.model)) {
-            body["model"] = request.model ?? "";
-        }
-        if (!TeaUtils.Client.isUnset(request.sn)) {
-            body["sn"] = request.sn ?? "";
-        }
-        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
-            "headers": headers as! [String: String],
-            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
-        ])
-        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
-            "action": "CreateEdgeMachine",
-            "version": "2015-12-15",
-            "protocol": "HTTPS",
-            "pathname": "/edge_machines",
-            "method": "POST",
-            "authType": "AK",
-            "style": "ROA",
-            "reqBodyType": "json",
-            "bodyType": "json"
-        ])
-        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
-        return Tea.TeaConverter.fromMap(CreateEdgeMachineResponse(), tmp)
-    }
-
-    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func createEdgeMachine(_ request: CreateEdgeMachineRequest) async throws -> CreateEdgeMachineResponse {
-        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
-        var headers: [String: String] = [:]
-        return try await createEdgeMachineWithOptions(request as! CreateEdgeMachineRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
-    }
-
-    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func createKubernetesTriggerWithOptions(_ request: CreateKubernetesTriggerRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> CreateKubernetesTriggerResponse {
         try TeaUtils.Client.validateModel(request)
         var body: [String: Any] = [:]
@@ -1363,39 +1324,6 @@ open class Client : AlibabacloudOpenApi.Client {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         var headers: [String: String] = [:]
         return try await deleteClusterNodesWithOptions(ClusterId as! String, request as! DeleteClusterNodesRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
-    }
-
-    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func deleteEdgeMachineWithOptions(_ edgeMachineid: String, _ request: DeleteEdgeMachineRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> DeleteEdgeMachineResponse {
-        try TeaUtils.Client.validateModel(request)
-        var query: [String: Any] = [:]
-        if (!TeaUtils.Client.isUnset(request.force)) {
-            query["force"] = request.force ?? "";
-        }
-        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
-            "headers": headers as! [String: String],
-            "query": AlibabaCloudOpenApiUtil.Client.query(query)
-        ])
-        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
-            "action": "DeleteEdgeMachine",
-            "version": "2015-12-15",
-            "protocol": "HTTPS",
-            "pathname": "/edge_machines/%5Bedge_machineid%5D",
-            "method": "DELETE",
-            "authType": "AK",
-            "style": "ROA",
-            "reqBodyType": "json",
-            "bodyType": "none"
-        ])
-        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
-        return Tea.TeaConverter.fromMap(DeleteEdgeMachineResponse(), tmp)
-    }
-
-    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func deleteEdgeMachine(_ edgeMachineid: String, _ request: DeleteEdgeMachineRequest) async throws -> DeleteEdgeMachineResponse {
-        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
-        var headers: [String: String] = [:]
-        return try await deleteEdgeMachineWithOptions(edgeMachineid as! String, request as! DeleteEdgeMachineRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -2361,135 +2289,6 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func describeEdgeMachineActiveProcessWithOptions(_ edgeMachineid: String, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> DescribeEdgeMachineActiveProcessResponse {
-        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
-            "headers": headers as! [String: String]
-        ])
-        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
-            "action": "DescribeEdgeMachineActiveProcess",
-            "version": "2015-12-15",
-            "protocol": "HTTPS",
-            "pathname": "/edge_machines/%5Bedge_machineid%5D/activeprocess",
-            "method": "GET",
-            "authType": "AK",
-            "style": "ROA",
-            "reqBodyType": "json",
-            "bodyType": "json"
-        ])
-        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
-        return Tea.TeaConverter.fromMap(DescribeEdgeMachineActiveProcessResponse(), tmp)
-    }
-
-    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func describeEdgeMachineActiveProcess(_ edgeMachineid: String) async throws -> DescribeEdgeMachineActiveProcessResponse {
-        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
-        var headers: [String: String] = [:]
-        return try await describeEdgeMachineActiveProcessWithOptions(edgeMachineid as! String, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
-    }
-
-    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func describeEdgeMachineModelsWithOptions(_ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> DescribeEdgeMachineModelsResponse {
-        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
-            "headers": headers as! [String: String]
-        ])
-        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
-            "action": "DescribeEdgeMachineModels",
-            "version": "2015-12-15",
-            "protocol": "HTTPS",
-            "pathname": "/edge_machines/models",
-            "method": "GET",
-            "authType": "AK",
-            "style": "ROA",
-            "reqBodyType": "json",
-            "bodyType": "json"
-        ])
-        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
-        return Tea.TeaConverter.fromMap(DescribeEdgeMachineModelsResponse(), tmp)
-    }
-
-    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func describeEdgeMachineModels() async throws -> DescribeEdgeMachineModelsResponse {
-        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
-        var headers: [String: String] = [:]
-        return try await describeEdgeMachineModelsWithOptions(headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
-    }
-
-    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func describeEdgeMachineTunnelConfigDetailWithOptions(_ edgeMachineid: String, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> DescribeEdgeMachineTunnelConfigDetailResponse {
-        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
-            "headers": headers as! [String: String]
-        ])
-        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
-            "action": "DescribeEdgeMachineTunnelConfigDetail",
-            "version": "2015-12-15",
-            "protocol": "HTTPS",
-            "pathname": "/edge_machines/%5Bedge_machineid%5D/tunnelconfig",
-            "method": "POST",
-            "authType": "AK",
-            "style": "ROA",
-            "reqBodyType": "json",
-            "bodyType": "json"
-        ])
-        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
-        return Tea.TeaConverter.fromMap(DescribeEdgeMachineTunnelConfigDetailResponse(), tmp)
-    }
-
-    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func describeEdgeMachineTunnelConfigDetail(_ edgeMachineid: String) async throws -> DescribeEdgeMachineTunnelConfigDetailResponse {
-        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
-        var headers: [String: String] = [:]
-        return try await describeEdgeMachineTunnelConfigDetailWithOptions(edgeMachineid as! String, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
-    }
-
-    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func describeEdgeMachinesWithOptions(_ request: DescribeEdgeMachinesRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> DescribeEdgeMachinesResponse {
-        try TeaUtils.Client.validateModel(request)
-        var query: [String: Any] = [:]
-        if (!TeaUtils.Client.isUnset(request.hostname)) {
-            query["hostname"] = request.hostname ?? "";
-        }
-        if (!TeaUtils.Client.isUnset(request.lifeState)) {
-            query["life_state"] = request.lifeState ?? "";
-        }
-        if (!TeaUtils.Client.isUnset(request.model)) {
-            query["model"] = request.model ?? "";
-        }
-        if (!TeaUtils.Client.isUnset(request.onlineState)) {
-            query["online_state"] = request.onlineState ?? "";
-        }
-        if (!TeaUtils.Client.isUnset(request.pageNumber)) {
-            query["page_number"] = request.pageNumber!;
-        }
-        if (!TeaUtils.Client.isUnset(request.pageSize)) {
-            query["page_size"] = request.pageSize!;
-        }
-        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
-            "headers": headers as! [String: String],
-            "query": AlibabaCloudOpenApiUtil.Client.query(query)
-        ])
-        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
-            "action": "DescribeEdgeMachines",
-            "version": "2015-12-15",
-            "protocol": "HTTPS",
-            "pathname": "/edge_machines",
-            "method": "GET",
-            "authType": "AK",
-            "style": "ROA",
-            "reqBodyType": "json",
-            "bodyType": "json"
-        ])
-        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
-        return Tea.TeaConverter.fromMap(DescribeEdgeMachinesResponse(), tmp)
-    }
-
-    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func describeEdgeMachines(_ request: DescribeEdgeMachinesRequest) async throws -> DescribeEdgeMachinesResponse {
-        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
-        var headers: [String: String] = [:]
-        return try await describeEdgeMachinesWithOptions(request as! DescribeEdgeMachinesRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
-    }
-
-    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func describeEventsWithOptions(_ request: DescribeEventsRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> DescribeEventsResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
@@ -3126,45 +2925,6 @@ open class Client : AlibabacloudOpenApi.Client {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         var headers: [String: String] = [:]
         return try await describeUserQuotaWithOptions(headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
-    }
-
-    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func edgeClusterAddEdgeMachineWithOptions(_ clusterid: String, _ edgeMachineid: String, _ request: EdgeClusterAddEdgeMachineRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> EdgeClusterAddEdgeMachineResponse {
-        try TeaUtils.Client.validateModel(request)
-        var body: [String: Any] = [:]
-        if (!TeaUtils.Client.isUnset(request.expired)) {
-            body["expired"] = request.expired!;
-        }
-        if (!TeaUtils.Client.isUnset(request.nodepoolId)) {
-            body["nodepool_id"] = request.nodepoolId ?? "";
-        }
-        if (!TeaUtils.Client.isUnset(request.options)) {
-            body["options"] = request.options ?? "";
-        }
-        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
-            "headers": headers as! [String: String],
-            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
-        ])
-        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
-            "action": "EdgeClusterAddEdgeMachine",
-            "version": "2015-12-15",
-            "protocol": "HTTPS",
-            "pathname": "/clusters/%5Bclusterid%5D/attachedgemachine/%5Bedge_machineid%5D",
-            "method": "POST",
-            "authType": "AK",
-            "style": "ROA",
-            "reqBodyType": "json",
-            "bodyType": "json"
-        ])
-        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
-        return Tea.TeaConverter.fromMap(EdgeClusterAddEdgeMachineResponse(), tmp)
-    }
-
-    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func edgeClusterAddEdgeMachine(_ clusterid: String, _ edgeMachineid: String, _ request: EdgeClusterAddEdgeMachineRequest) async throws -> EdgeClusterAddEdgeMachineResponse {
-        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
-        var headers: [String: String] = [:]
-        return try await edgeClusterAddEdgeMachineWithOptions(clusterid as! String, edgeMachineid as! String, request as! EdgeClusterAddEdgeMachineRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -4023,39 +3783,6 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func modifyClusterConfigurationWithOptions(_ ClusterId: String, _ request: ModifyClusterConfigurationRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> ModifyClusterConfigurationResponse {
-        try TeaUtils.Client.validateModel(request)
-        var body: [String: Any] = [:]
-        if (!TeaUtils.Client.isUnset(request.customizeConfig)) {
-            body["customize_config"] = request.customizeConfig ?? [];
-        }
-        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
-            "headers": headers as! [String: String],
-            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
-        ])
-        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
-            "action": "ModifyClusterConfiguration",
-            "version": "2015-12-15",
-            "protocol": "HTTPS",
-            "pathname": "/clusters/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(ClusterId)) + "/configuration",
-            "method": "PUT",
-            "authType": "AK",
-            "style": "ROA",
-            "reqBodyType": "json",
-            "bodyType": "none"
-        ])
-        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
-        return Tea.TeaConverter.fromMap(ModifyClusterConfigurationResponse(), tmp)
-    }
-
-    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func modifyClusterConfiguration(_ ClusterId: String, _ request: ModifyClusterConfigurationRequest) async throws -> ModifyClusterConfigurationResponse {
-        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
-        var headers: [String: String] = [:]
-        return try await modifyClusterConfigurationWithOptions(ClusterId as! String, request as! ModifyClusterConfigurationRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
-    }
-
-    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func modifyClusterNodePoolWithOptions(_ ClusterId: String, _ NodepoolId: String, _ request: ModifyClusterNodePoolRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> ModifyClusterNodePoolResponse {
         try TeaUtils.Client.validateModel(request)
         var body: [String: Any] = [:]
@@ -4645,93 +4372,6 @@ open class Client : AlibabacloudOpenApi.Client {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         var headers: [String: String] = [:]
         return try await runClusterInspectWithOptions(clusterId as! String, request as! RunClusterInspectRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
-    }
-
-    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func scaleClusterWithOptions(_ ClusterId: String, _ request: ScaleClusterRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> ScaleClusterResponse {
-        try TeaUtils.Client.validateModel(request)
-        var body: [String: Any] = [:]
-        if (!TeaUtils.Client.isUnset(request.cloudMonitorFlags)) {
-            body["cloud_monitor_flags"] = request.cloudMonitorFlags!;
-        }
-        if (!TeaUtils.Client.isUnset(request.count)) {
-            body["count"] = request.count!;
-        }
-        if (!TeaUtils.Client.isUnset(request.cpuPolicy)) {
-            body["cpu_policy"] = request.cpuPolicy ?? "";
-        }
-        if (!TeaUtils.Client.isUnset(request.disableRollback)) {
-            body["disable_rollback"] = request.disableRollback!;
-        }
-        if (!TeaUtils.Client.isUnset(request.keyPair)) {
-            body["key_pair"] = request.keyPair ?? "";
-        }
-        if (!TeaUtils.Client.isUnset(request.loginPassword)) {
-            body["login_password"] = request.loginPassword ?? "";
-        }
-        if (!TeaUtils.Client.isUnset(request.tags)) {
-            body["tags"] = request.tags ?? [];
-        }
-        if (!TeaUtils.Client.isUnset(request.taints)) {
-            body["taints"] = request.taints ?? [];
-        }
-        if (!TeaUtils.Client.isUnset(request.vswitchIds)) {
-            body["vswitch_ids"] = request.vswitchIds ?? [];
-        }
-        if (!TeaUtils.Client.isUnset(request.workerAutoRenew)) {
-            body["worker_auto_renew"] = request.workerAutoRenew!;
-        }
-        if (!TeaUtils.Client.isUnset(request.workerAutoRenewPeriod)) {
-            body["worker_auto_renew_period"] = request.workerAutoRenewPeriod!;
-        }
-        if (!TeaUtils.Client.isUnset(request.workerDataDisk)) {
-            body["worker_data_disk"] = request.workerDataDisk!;
-        }
-        if (!TeaUtils.Client.isUnset(request.workerDataDisks)) {
-            body["worker_data_disks"] = request.workerDataDisks ?? [];
-        }
-        if (!TeaUtils.Client.isUnset(request.workerInstanceChargeType)) {
-            body["worker_instance_charge_type"] = request.workerInstanceChargeType ?? "";
-        }
-        if (!TeaUtils.Client.isUnset(request.workerInstanceTypes)) {
-            body["worker_instance_types"] = request.workerInstanceTypes ?? [];
-        }
-        if (!TeaUtils.Client.isUnset(request.workerPeriod)) {
-            body["worker_period"] = request.workerPeriod!;
-        }
-        if (!TeaUtils.Client.isUnset(request.workerPeriodUnit)) {
-            body["worker_period_unit"] = request.workerPeriodUnit ?? "";
-        }
-        if (!TeaUtils.Client.isUnset(request.workerSystemDiskCategory)) {
-            body["worker_system_disk_category"] = request.workerSystemDiskCategory ?? "";
-        }
-        if (!TeaUtils.Client.isUnset(request.workerSystemDiskSize)) {
-            body["worker_system_disk_size"] = request.workerSystemDiskSize!;
-        }
-        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
-            "headers": headers as! [String: String],
-            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
-        ])
-        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
-            "action": "ScaleCluster",
-            "version": "2015-12-15",
-            "protocol": "HTTPS",
-            "pathname": "/clusters/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(ClusterId)),
-            "method": "PUT",
-            "authType": "AK",
-            "style": "ROA",
-            "reqBodyType": "json",
-            "bodyType": "json"
-        ])
-        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
-        return Tea.TeaConverter.fromMap(ScaleClusterResponse(), tmp)
-    }
-
-    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func scaleCluster(_ ClusterId: String, _ request: ScaleClusterRequest) async throws -> ScaleClusterResponse {
-        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
-        var headers: [String: String] = [:]
-        return try await scaleClusterWithOptions(ClusterId as! String, request as! ScaleClusterRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
