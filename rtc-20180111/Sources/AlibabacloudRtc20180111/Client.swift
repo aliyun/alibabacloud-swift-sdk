@@ -116,8 +116,17 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(tmpReq.agentSilenceConfig)) {
             request.agentSilenceConfigShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.agentSilenceConfig, "AgentSilenceConfig", "json")
         }
+        if (!TeaUtils.Client.isUnset(tmpReq.ambientSoundConfig)) {
+            request.ambientSoundConfigShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.ambientSoundConfig, "AmbientSoundConfig", "json")
+        }
         if (!TeaUtils.Client.isUnset(tmpReq.asrConfig)) {
             request.asrConfigShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.asrConfig, "AsrConfig", "json")
+        }
+        if (!TeaUtils.Client.isUnset(tmpReq.backChannelConfig)) {
+            request.backChannelConfigShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.backChannelConfig, "BackChannelConfig", "json")
+        }
+        if (!TeaUtils.Client.isUnset(tmpReq.interruptConfig)) {
+            request.interruptConfigShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.interruptConfig, "InterruptConfig", "json")
         }
         if (!TeaUtils.Client.isUnset(tmpReq.llmConfig)) {
             request.llmConfigShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.llmConfig, "LlmConfig", "json")
@@ -129,17 +138,26 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.agentSilenceConfigShrink)) {
             query["AgentSilenceConfig"] = request.agentSilenceConfigShrink ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.ambientSoundConfigShrink)) {
+            query["AmbientSoundConfig"] = request.ambientSoundConfigShrink ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.appId)) {
             query["AppId"] = request.appId ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.asrConfigShrink)) {
             query["AsrConfig"] = request.asrConfigShrink ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.backChannelConfigShrink)) {
+            query["BackChannelConfig"] = request.backChannelConfigShrink ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.chatMode)) {
             query["ChatMode"] = request.chatMode!;
         }
         if (!TeaUtils.Client.isUnset(request.greeting)) {
             query["Greeting"] = request.greeting ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.interruptConfigShrink)) {
+            query["InterruptConfig"] = request.interruptConfigShrink ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.interruptMode)) {
             query["InterruptMode"] = request.interruptMode!;
@@ -3404,8 +3422,17 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(tmpReq.agentSilenceConfig)) {
             request.agentSilenceConfigShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.agentSilenceConfig, "AgentSilenceConfig", "json")
         }
+        if (!TeaUtils.Client.isUnset(tmpReq.ambientSoundConfig)) {
+            request.ambientSoundConfigShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.ambientSoundConfig, "AmbientSoundConfig", "json")
+        }
         if (!TeaUtils.Client.isUnset(tmpReq.asrConfig)) {
             request.asrConfigShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.asrConfig, "AsrConfig", "json")
+        }
+        if (!TeaUtils.Client.isUnset(tmpReq.backChannelConfig)) {
+            request.backChannelConfigShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.backChannelConfig, "BackChannelConfig", "json")
+        }
+        if (!TeaUtils.Client.isUnset(tmpReq.interruptConfig)) {
+            request.interruptConfigShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.interruptConfig, "InterruptConfig", "json")
         }
         if (!TeaUtils.Client.isUnset(tmpReq.llmConfig)) {
             request.llmConfigShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.llmConfig, "LlmConfig", "json")
@@ -3417,11 +3444,17 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.agentSilenceConfigShrink)) {
             query["AgentSilenceConfig"] = request.agentSilenceConfigShrink ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.ambientSoundConfigShrink)) {
+            query["AmbientSoundConfig"] = request.ambientSoundConfigShrink ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.appId)) {
             query["AppId"] = request.appId ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.asrConfigShrink)) {
             query["AsrConfig"] = request.asrConfigShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.backChannelConfigShrink)) {
+            query["BackChannelConfig"] = request.backChannelConfigShrink ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.chatMode)) {
             query["ChatMode"] = request.chatMode!;
@@ -3431,6 +3464,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.id)) {
             query["Id"] = request.id ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.interruptConfigShrink)) {
+            query["InterruptConfig"] = request.interruptConfigShrink ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.interruptMode)) {
             query["InterruptMode"] = request.interruptMode!;
@@ -3821,11 +3857,19 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func notifyAgentWithOptions(_ request: NotifyAgentRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> NotifyAgentResponse {
-        try TeaUtils.Client.validateModel(request)
+    public func notifyAgentWithOptions(_ tmpReq: NotifyAgentRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> NotifyAgentResponse {
+        try TeaUtils.Client.validateModel(tmpReq)
+        var request: NotifyAgentShrinkRequest = NotifyAgentShrinkRequest([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.backgroundMusic)) {
+            request.backgroundMusicShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.backgroundMusic, "BackgroundMusic", "json")
+        }
         var query: [String: Any] = [:]
         if (!TeaUtils.Client.isUnset(request.appId)) {
             query["AppId"] = request.appId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.backgroundMusicShrink)) {
+            query["BackgroundMusic"] = request.backgroundMusicShrink ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.channelId)) {
             query["ChannelId"] = request.channelId ?? "";

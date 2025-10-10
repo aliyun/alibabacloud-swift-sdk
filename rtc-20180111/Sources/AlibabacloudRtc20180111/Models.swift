@@ -600,6 +600,44 @@ public class CreateAppAgentTemplateRequest : Tea.TeaModel {
             }
         }
     }
+    public class AmbientSoundConfig : Tea.TeaModel {
+        public var soundId: String?
+
+        public var volume: Int32?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.soundId != nil {
+                map["SoundId"] = self.soundId!
+            }
+            if self.volume != nil {
+                map["Volume"] = self.volume!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["SoundId"] as? String {
+                self.soundId = value
+            }
+            if let value = dict["Volume"] as? Int32 {
+                self.volume = value
+            }
+        }
+    }
     public class AsrConfig : Tea.TeaModel {
         public class VadConfig : Tea.TeaModel {
             public var interruptSpeechDuration: Int32?
@@ -744,6 +782,66 @@ public class CreateAppAgentTemplateRequest : Tea.TeaModel {
                     }
                 }
                 self.wordWeights = tmp
+            }
+        }
+    }
+    public class BackChannelConfig : Tea.TeaModel {
+        public var userTurnEnd: Bool?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.userTurnEnd != nil {
+                map["UserTurnEnd"] = self.userTurnEnd!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["UserTurnEnd"] as? Bool {
+                self.userTurnEnd = value
+            }
+        }
+    }
+    public class InterruptConfig : Tea.TeaModel {
+        public var semanticsInterrupt: Bool?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.semanticsInterrupt != nil {
+                map["SemanticsInterrupt"] = self.semanticsInterrupt!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["SemanticsInterrupt"] as? Bool {
+                self.semanticsInterrupt = value
             }
         }
     }
@@ -937,13 +1035,19 @@ public class CreateAppAgentTemplateRequest : Tea.TeaModel {
     }
     public var agentSilenceConfig: CreateAppAgentTemplateRequest.AgentSilenceConfig?
 
+    public var ambientSoundConfig: CreateAppAgentTemplateRequest.AmbientSoundConfig?
+
     public var appId: String?
 
     public var asrConfig: CreateAppAgentTemplateRequest.AsrConfig?
 
+    public var backChannelConfig: CreateAppAgentTemplateRequest.BackChannelConfig?
+
     public var chatMode: Int32?
 
     public var greeting: String?
+
+    public var interruptConfig: CreateAppAgentTemplateRequest.InterruptConfig?
 
     public var interruptMode: Int32?
 
@@ -966,7 +1070,10 @@ public class CreateAppAgentTemplateRequest : Tea.TeaModel {
 
     public override func validate() throws -> Void {
         try self.agentSilenceConfig?.validate()
+        try self.ambientSoundConfig?.validate()
         try self.asrConfig?.validate()
+        try self.backChannelConfig?.validate()
+        try self.interruptConfig?.validate()
         try self.llmConfig?.validate()
         try self.ttsConfig?.validate()
     }
@@ -976,17 +1083,26 @@ public class CreateAppAgentTemplateRequest : Tea.TeaModel {
         if self.agentSilenceConfig != nil {
             map["AgentSilenceConfig"] = self.agentSilenceConfig?.toMap()
         }
+        if self.ambientSoundConfig != nil {
+            map["AmbientSoundConfig"] = self.ambientSoundConfig?.toMap()
+        }
         if self.appId != nil {
             map["AppId"] = self.appId!
         }
         if self.asrConfig != nil {
             map["AsrConfig"] = self.asrConfig?.toMap()
         }
+        if self.backChannelConfig != nil {
+            map["BackChannelConfig"] = self.backChannelConfig?.toMap()
+        }
         if self.chatMode != nil {
             map["ChatMode"] = self.chatMode!
         }
         if self.greeting != nil {
             map["Greeting"] = self.greeting!
+        }
+        if self.interruptConfig != nil {
+            map["InterruptConfig"] = self.interruptConfig?.toMap()
         }
         if self.interruptMode != nil {
             map["InterruptMode"] = self.interruptMode!
@@ -1013,6 +1129,11 @@ public class CreateAppAgentTemplateRequest : Tea.TeaModel {
             model.fromMap(value)
             self.agentSilenceConfig = model
         }
+        if let value = dict["AmbientSoundConfig"] as? [String: Any?] {
+            var model = CreateAppAgentTemplateRequest.AmbientSoundConfig()
+            model.fromMap(value)
+            self.ambientSoundConfig = model
+        }
         if let value = dict["AppId"] as? String {
             self.appId = value
         }
@@ -1021,11 +1142,21 @@ public class CreateAppAgentTemplateRequest : Tea.TeaModel {
             model.fromMap(value)
             self.asrConfig = model
         }
+        if let value = dict["BackChannelConfig"] as? [String: Any?] {
+            var model = CreateAppAgentTemplateRequest.BackChannelConfig()
+            model.fromMap(value)
+            self.backChannelConfig = model
+        }
         if let value = dict["ChatMode"] as? Int32 {
             self.chatMode = value
         }
         if let value = dict["Greeting"] as? String {
             self.greeting = value
+        }
+        if let value = dict["InterruptConfig"] as? [String: Any?] {
+            var model = CreateAppAgentTemplateRequest.InterruptConfig()
+            model.fromMap(value)
+            self.interruptConfig = model
         }
         if let value = dict["InterruptMode"] as? Int32 {
             self.interruptMode = value
@@ -1052,13 +1183,19 @@ public class CreateAppAgentTemplateRequest : Tea.TeaModel {
 public class CreateAppAgentTemplateShrinkRequest : Tea.TeaModel {
     public var agentSilenceConfigShrink: String?
 
+    public var ambientSoundConfigShrink: String?
+
     public var appId: String?
 
     public var asrConfigShrink: String?
 
+    public var backChannelConfigShrink: String?
+
     public var chatMode: Int32?
 
     public var greeting: String?
+
+    public var interruptConfigShrink: String?
 
     public var interruptMode: Int32?
 
@@ -1087,17 +1224,26 @@ public class CreateAppAgentTemplateShrinkRequest : Tea.TeaModel {
         if self.agentSilenceConfigShrink != nil {
             map["AgentSilenceConfig"] = self.agentSilenceConfigShrink!
         }
+        if self.ambientSoundConfigShrink != nil {
+            map["AmbientSoundConfig"] = self.ambientSoundConfigShrink!
+        }
         if self.appId != nil {
             map["AppId"] = self.appId!
         }
         if self.asrConfigShrink != nil {
             map["AsrConfig"] = self.asrConfigShrink!
         }
+        if self.backChannelConfigShrink != nil {
+            map["BackChannelConfig"] = self.backChannelConfigShrink!
+        }
         if self.chatMode != nil {
             map["ChatMode"] = self.chatMode!
         }
         if self.greeting != nil {
             map["Greeting"] = self.greeting!
+        }
+        if self.interruptConfigShrink != nil {
+            map["InterruptConfig"] = self.interruptConfigShrink!
         }
         if self.interruptMode != nil {
             map["InterruptMode"] = self.interruptMode!
@@ -1122,17 +1268,26 @@ public class CreateAppAgentTemplateShrinkRequest : Tea.TeaModel {
         if let value = dict["AgentSilenceConfig"] as? String {
             self.agentSilenceConfigShrink = value
         }
+        if let value = dict["AmbientSoundConfig"] as? String {
+            self.ambientSoundConfigShrink = value
+        }
         if let value = dict["AppId"] as? String {
             self.appId = value
         }
         if let value = dict["AsrConfig"] as? String {
             self.asrConfigShrink = value
         }
+        if let value = dict["BackChannelConfig"] as? String {
+            self.backChannelConfigShrink = value
+        }
         if let value = dict["ChatMode"] as? Int32 {
             self.chatMode = value
         }
         if let value = dict["Greeting"] as? String {
             self.greeting = value
+        }
+        if let value = dict["InterruptConfig"] as? String {
+            self.interruptConfigShrink = value
         }
         if let value = dict["InterruptMode"] as? Int32 {
             self.interruptMode = value
@@ -4925,6 +5080,44 @@ public class DescribeAppAgentTemplatesResponseBody : Tea.TeaModel {
                 }
             }
         }
+        public class AmbientSoundConfig : Tea.TeaModel {
+            public var soundId: String?
+
+            public var volume: Int32?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.soundId != nil {
+                    map["SoundId"] = self.soundId!
+                }
+                if self.volume != nil {
+                    map["Volume"] = self.volume!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["SoundId"] as? String {
+                    self.soundId = value
+                }
+                if let value = dict["Volume"] as? Int32 {
+                    self.volume = value
+                }
+            }
+        }
         public class AsrConfig : Tea.TeaModel {
             public class VadConfig : Tea.TeaModel {
                 public var interruptSpeechDuration: Int32?
@@ -5077,6 +5270,66 @@ public class DescribeAppAgentTemplatesResponseBody : Tea.TeaModel {
                         }
                     }
                     self.wordWeights = tmp
+                }
+            }
+        }
+        public class BackChannelConfig : Tea.TeaModel {
+            public var userTurnEnd: Bool?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.userTurnEnd != nil {
+                    map["UserTurnEnd"] = self.userTurnEnd!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["UserTurnEnd"] as? Bool {
+                    self.userTurnEnd = value
+                }
+            }
+        }
+        public class InterruptConfig : Tea.TeaModel {
+            public var semanticsInterrupt: Bool?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.semanticsInterrupt != nil {
+                    map["SemanticsInterrupt"] = self.semanticsInterrupt!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["SemanticsInterrupt"] as? Bool {
+                    self.semanticsInterrupt = value
                 }
             }
         }
@@ -5286,7 +5539,11 @@ public class DescribeAppAgentTemplatesResponseBody : Tea.TeaModel {
         }
         public var agentSilenceConfig: DescribeAppAgentTemplatesResponseBody.Templates.AgentSilenceConfig?
 
+        public var ambientSoundConfig: DescribeAppAgentTemplatesResponseBody.Templates.AmbientSoundConfig?
+
         public var asrConfig: DescribeAppAgentTemplatesResponseBody.Templates.AsrConfig?
+
+        public var backChannelConfig: DescribeAppAgentTemplatesResponseBody.Templates.BackChannelConfig?
 
         public var chatMode: Int32?
 
@@ -5295,6 +5552,8 @@ public class DescribeAppAgentTemplatesResponseBody : Tea.TeaModel {
         public var greeting: String?
 
         public var id: String?
+
+        public var interruptConfig: DescribeAppAgentTemplatesResponseBody.Templates.InterruptConfig?
 
         public var interruptMode: Int32?
 
@@ -5317,7 +5576,10 @@ public class DescribeAppAgentTemplatesResponseBody : Tea.TeaModel {
 
         public override func validate() throws -> Void {
             try self.agentSilenceConfig?.validate()
+            try self.ambientSoundConfig?.validate()
             try self.asrConfig?.validate()
+            try self.backChannelConfig?.validate()
+            try self.interruptConfig?.validate()
             try self.llmConfig?.validate()
             try self.ttsConfig?.validate()
         }
@@ -5327,8 +5589,14 @@ public class DescribeAppAgentTemplatesResponseBody : Tea.TeaModel {
             if self.agentSilenceConfig != nil {
                 map["AgentSilenceConfig"] = self.agentSilenceConfig?.toMap()
             }
+            if self.ambientSoundConfig != nil {
+                map["AmbientSoundConfig"] = self.ambientSoundConfig?.toMap()
+            }
             if self.asrConfig != nil {
                 map["AsrConfig"] = self.asrConfig?.toMap()
+            }
+            if self.backChannelConfig != nil {
+                map["BackChannelConfig"] = self.backChannelConfig?.toMap()
             }
             if self.chatMode != nil {
                 map["ChatMode"] = self.chatMode!
@@ -5341,6 +5609,9 @@ public class DescribeAppAgentTemplatesResponseBody : Tea.TeaModel {
             }
             if self.id != nil {
                 map["Id"] = self.id!
+            }
+            if self.interruptConfig != nil {
+                map["InterruptConfig"] = self.interruptConfig?.toMap()
             }
             if self.interruptMode != nil {
                 map["InterruptMode"] = self.interruptMode!
@@ -5367,10 +5638,20 @@ public class DescribeAppAgentTemplatesResponseBody : Tea.TeaModel {
                 model.fromMap(value)
                 self.agentSilenceConfig = model
             }
+            if let value = dict["AmbientSoundConfig"] as? [String: Any?] {
+                var model = DescribeAppAgentTemplatesResponseBody.Templates.AmbientSoundConfig()
+                model.fromMap(value)
+                self.ambientSoundConfig = model
+            }
             if let value = dict["AsrConfig"] as? [String: Any?] {
                 var model = DescribeAppAgentTemplatesResponseBody.Templates.AsrConfig()
                 model.fromMap(value)
                 self.asrConfig = model
+            }
+            if let value = dict["BackChannelConfig"] as? [String: Any?] {
+                var model = DescribeAppAgentTemplatesResponseBody.Templates.BackChannelConfig()
+                model.fromMap(value)
+                self.backChannelConfig = model
             }
             if let value = dict["ChatMode"] as? Int32 {
                 self.chatMode = value
@@ -5383,6 +5664,11 @@ public class DescribeAppAgentTemplatesResponseBody : Tea.TeaModel {
             }
             if let value = dict["Id"] as? String {
                 self.id = value
+            }
+            if let value = dict["InterruptConfig"] as? [String: Any?] {
+                var model = DescribeAppAgentTemplatesResponseBody.Templates.InterruptConfig()
+                model.fromMap(value)
+                self.interruptConfig = model
             }
             if let value = dict["InterruptMode"] as? Int32 {
                 self.interruptMode = value
@@ -22717,6 +23003,44 @@ public class ModifyAppAgentTemplateRequest : Tea.TeaModel {
             }
         }
     }
+    public class AmbientSoundConfig : Tea.TeaModel {
+        public var soundId: String?
+
+        public var volume: Int32?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.soundId != nil {
+                map["SoundId"] = self.soundId!
+            }
+            if self.volume != nil {
+                map["Volume"] = self.volume!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["SoundId"] as? String {
+                self.soundId = value
+            }
+            if let value = dict["Volume"] as? Int32 {
+                self.volume = value
+            }
+        }
+    }
     public class AsrConfig : Tea.TeaModel {
         public class VadConfig : Tea.TeaModel {
             public var interruptSpeechDuration: Int32?
@@ -22869,6 +23193,66 @@ public class ModifyAppAgentTemplateRequest : Tea.TeaModel {
                     }
                 }
                 self.wordWeights = tmp
+            }
+        }
+    }
+    public class BackChannelConfig : Tea.TeaModel {
+        public var userTurnEnd: Bool?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.userTurnEnd != nil {
+                map["UserTurnEnd"] = self.userTurnEnd!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["UserTurnEnd"] as? Bool {
+                self.userTurnEnd = value
+            }
+        }
+    }
+    public class InterruptConfig : Tea.TeaModel {
+        public var semanticsInterrupt: Bool?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.semanticsInterrupt != nil {
+                map["SemanticsInterrupt"] = self.semanticsInterrupt!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["SemanticsInterrupt"] as? Bool {
+                self.semanticsInterrupt = value
             }
         }
     }
@@ -23062,15 +23446,21 @@ public class ModifyAppAgentTemplateRequest : Tea.TeaModel {
     }
     public var agentSilenceConfig: ModifyAppAgentTemplateRequest.AgentSilenceConfig?
 
+    public var ambientSoundConfig: ModifyAppAgentTemplateRequest.AmbientSoundConfig?
+
     public var appId: String?
 
     public var asrConfig: ModifyAppAgentTemplateRequest.AsrConfig?
+
+    public var backChannelConfig: ModifyAppAgentTemplateRequest.BackChannelConfig?
 
     public var chatMode: Int32?
 
     public var greeting: String?
 
     public var id: String?
+
+    public var interruptConfig: ModifyAppAgentTemplateRequest.InterruptConfig?
 
     public var interruptMode: Int32?
 
@@ -23093,7 +23483,10 @@ public class ModifyAppAgentTemplateRequest : Tea.TeaModel {
 
     public override func validate() throws -> Void {
         try self.agentSilenceConfig?.validate()
+        try self.ambientSoundConfig?.validate()
         try self.asrConfig?.validate()
+        try self.backChannelConfig?.validate()
+        try self.interruptConfig?.validate()
         try self.llmConfig?.validate()
         try self.ttsConfig?.validate()
     }
@@ -23103,11 +23496,17 @@ public class ModifyAppAgentTemplateRequest : Tea.TeaModel {
         if self.agentSilenceConfig != nil {
             map["AgentSilenceConfig"] = self.agentSilenceConfig?.toMap()
         }
+        if self.ambientSoundConfig != nil {
+            map["AmbientSoundConfig"] = self.ambientSoundConfig?.toMap()
+        }
         if self.appId != nil {
             map["AppId"] = self.appId!
         }
         if self.asrConfig != nil {
             map["AsrConfig"] = self.asrConfig?.toMap()
+        }
+        if self.backChannelConfig != nil {
+            map["BackChannelConfig"] = self.backChannelConfig?.toMap()
         }
         if self.chatMode != nil {
             map["ChatMode"] = self.chatMode!
@@ -23117,6 +23516,9 @@ public class ModifyAppAgentTemplateRequest : Tea.TeaModel {
         }
         if self.id != nil {
             map["Id"] = self.id!
+        }
+        if self.interruptConfig != nil {
+            map["InterruptConfig"] = self.interruptConfig?.toMap()
         }
         if self.interruptMode != nil {
             map["InterruptMode"] = self.interruptMode!
@@ -23143,6 +23545,11 @@ public class ModifyAppAgentTemplateRequest : Tea.TeaModel {
             model.fromMap(value)
             self.agentSilenceConfig = model
         }
+        if let value = dict["AmbientSoundConfig"] as? [String: Any?] {
+            var model = ModifyAppAgentTemplateRequest.AmbientSoundConfig()
+            model.fromMap(value)
+            self.ambientSoundConfig = model
+        }
         if let value = dict["AppId"] as? String {
             self.appId = value
         }
@@ -23150,6 +23557,11 @@ public class ModifyAppAgentTemplateRequest : Tea.TeaModel {
             var model = ModifyAppAgentTemplateRequest.AsrConfig()
             model.fromMap(value)
             self.asrConfig = model
+        }
+        if let value = dict["BackChannelConfig"] as? [String: Any?] {
+            var model = ModifyAppAgentTemplateRequest.BackChannelConfig()
+            model.fromMap(value)
+            self.backChannelConfig = model
         }
         if let value = dict["ChatMode"] as? Int32 {
             self.chatMode = value
@@ -23159,6 +23571,11 @@ public class ModifyAppAgentTemplateRequest : Tea.TeaModel {
         }
         if let value = dict["Id"] as? String {
             self.id = value
+        }
+        if let value = dict["InterruptConfig"] as? [String: Any?] {
+            var model = ModifyAppAgentTemplateRequest.InterruptConfig()
+            model.fromMap(value)
+            self.interruptConfig = model
         }
         if let value = dict["InterruptMode"] as? Int32 {
             self.interruptMode = value
@@ -23185,15 +23602,21 @@ public class ModifyAppAgentTemplateRequest : Tea.TeaModel {
 public class ModifyAppAgentTemplateShrinkRequest : Tea.TeaModel {
     public var agentSilenceConfigShrink: String?
 
+    public var ambientSoundConfigShrink: String?
+
     public var appId: String?
 
     public var asrConfigShrink: String?
+
+    public var backChannelConfigShrink: String?
 
     public var chatMode: Int32?
 
     public var greeting: String?
 
     public var id: String?
+
+    public var interruptConfigShrink: String?
 
     public var interruptMode: Int32?
 
@@ -23222,11 +23645,17 @@ public class ModifyAppAgentTemplateShrinkRequest : Tea.TeaModel {
         if self.agentSilenceConfigShrink != nil {
             map["AgentSilenceConfig"] = self.agentSilenceConfigShrink!
         }
+        if self.ambientSoundConfigShrink != nil {
+            map["AmbientSoundConfig"] = self.ambientSoundConfigShrink!
+        }
         if self.appId != nil {
             map["AppId"] = self.appId!
         }
         if self.asrConfigShrink != nil {
             map["AsrConfig"] = self.asrConfigShrink!
+        }
+        if self.backChannelConfigShrink != nil {
+            map["BackChannelConfig"] = self.backChannelConfigShrink!
         }
         if self.chatMode != nil {
             map["ChatMode"] = self.chatMode!
@@ -23236,6 +23665,9 @@ public class ModifyAppAgentTemplateShrinkRequest : Tea.TeaModel {
         }
         if self.id != nil {
             map["Id"] = self.id!
+        }
+        if self.interruptConfigShrink != nil {
+            map["InterruptConfig"] = self.interruptConfigShrink!
         }
         if self.interruptMode != nil {
             map["InterruptMode"] = self.interruptMode!
@@ -23260,11 +23692,17 @@ public class ModifyAppAgentTemplateShrinkRequest : Tea.TeaModel {
         if let value = dict["AgentSilenceConfig"] as? String {
             self.agentSilenceConfigShrink = value
         }
+        if let value = dict["AmbientSoundConfig"] as? String {
+            self.ambientSoundConfigShrink = value
+        }
         if let value = dict["AppId"] as? String {
             self.appId = value
         }
         if let value = dict["AsrConfig"] as? String {
             self.asrConfigShrink = value
+        }
+        if let value = dict["BackChannelConfig"] as? String {
+            self.backChannelConfigShrink = value
         }
         if let value = dict["ChatMode"] as? Int32 {
             self.chatMode = value
@@ -23274,6 +23712,9 @@ public class ModifyAppAgentTemplateShrinkRequest : Tea.TeaModel {
         }
         if let value = dict["Id"] as? String {
             self.id = value
+        }
+        if let value = dict["InterruptConfig"] as? String {
+            self.interruptConfigShrink = value
         }
         if let value = dict["InterruptMode"] as? Int32 {
             self.interruptMode = value
@@ -25315,7 +25756,137 @@ public class ModifyMPULayoutResponse : Tea.TeaModel {
 }
 
 public class NotifyAgentRequest : Tea.TeaModel {
+    public class BackgroundMusic : Tea.TeaModel {
+        public var format: String?
+
+        public var url: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.format != nil {
+                map["format"] = self.format!
+            }
+            if self.url != nil {
+                map["url"] = self.url!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["format"] as? String {
+                self.format = value
+            }
+            if let value = dict["url"] as? String {
+                self.url = value
+            }
+        }
+    }
     public var appId: String?
+
+    public var backgroundMusic: NotifyAgentRequest.BackgroundMusic?
+
+    public var channelId: String?
+
+    public var customAttribute: String?
+
+    public var interruptable: Bool?
+
+    public var message: String?
+
+    public var priority: Int32?
+
+    public var taskId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.backgroundMusic?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.appId != nil {
+            map["AppId"] = self.appId!
+        }
+        if self.backgroundMusic != nil {
+            map["BackgroundMusic"] = self.backgroundMusic?.toMap()
+        }
+        if self.channelId != nil {
+            map["ChannelId"] = self.channelId!
+        }
+        if self.customAttribute != nil {
+            map["CustomAttribute"] = self.customAttribute!
+        }
+        if self.interruptable != nil {
+            map["Interruptable"] = self.interruptable!
+        }
+        if self.message != nil {
+            map["Message"] = self.message!
+        }
+        if self.priority != nil {
+            map["Priority"] = self.priority!
+        }
+        if self.taskId != nil {
+            map["TaskId"] = self.taskId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["AppId"] as? String {
+            self.appId = value
+        }
+        if let value = dict["BackgroundMusic"] as? [String: Any?] {
+            var model = NotifyAgentRequest.BackgroundMusic()
+            model.fromMap(value)
+            self.backgroundMusic = model
+        }
+        if let value = dict["ChannelId"] as? String {
+            self.channelId = value
+        }
+        if let value = dict["CustomAttribute"] as? String {
+            self.customAttribute = value
+        }
+        if let value = dict["Interruptable"] as? Bool {
+            self.interruptable = value
+        }
+        if let value = dict["Message"] as? String {
+            self.message = value
+        }
+        if let value = dict["Priority"] as? Int32 {
+            self.priority = value
+        }
+        if let value = dict["TaskId"] as? String {
+            self.taskId = value
+        }
+    }
+}
+
+public class NotifyAgentShrinkRequest : Tea.TeaModel {
+    public var appId: String?
+
+    public var backgroundMusicShrink: String?
 
     public var channelId: String?
 
@@ -25346,6 +25917,9 @@ public class NotifyAgentRequest : Tea.TeaModel {
         if self.appId != nil {
             map["AppId"] = self.appId!
         }
+        if self.backgroundMusicShrink != nil {
+            map["BackgroundMusic"] = self.backgroundMusicShrink!
+        }
         if self.channelId != nil {
             map["ChannelId"] = self.channelId!
         }
@@ -25371,6 +25945,9 @@ public class NotifyAgentRequest : Tea.TeaModel {
         guard let dict else { return }
         if let value = dict["AppId"] as? String {
             self.appId = value
+        }
+        if let value = dict["BackgroundMusic"] as? String {
+            self.backgroundMusicShrink = value
         }
         if let value = dict["ChannelId"] as? String {
             self.channelId = value
@@ -26164,6 +26741,104 @@ public class StartAgentRequest : Tea.TeaModel {
                 }
             }
         }
+        public class AmbientSoundConfig : Tea.TeaModel {
+            public var soundId: String?
+
+            public var volume: Int32?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.soundId != nil {
+                    map["SoundId"] = self.soundId!
+                }
+                if self.volume != nil {
+                    map["Volume"] = self.volume!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["SoundId"] as? String {
+                    self.soundId = value
+                }
+                if let value = dict["Volume"] as? Int32 {
+                    self.volume = value
+                }
+            }
+        }
+        public class BackChannelConfig : Tea.TeaModel {
+            public var userTurnEnd: Bool?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.userTurnEnd != nil {
+                    map["UserTurnEnd"] = self.userTurnEnd!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["UserTurnEnd"] as? Bool {
+                    self.userTurnEnd = value
+                }
+            }
+        }
+        public class InterruptConfig : Tea.TeaModel {
+            public var semanticsInterrupt: Bool?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.semanticsInterrupt != nil {
+                    map["SemanticsInterrupt"] = self.semanticsInterrupt!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["SemanticsInterrupt"] as? Bool {
+                    self.semanticsInterrupt = value
+                }
+            }
+        }
         public class LLMConfig : Tea.TeaModel {
             public var apiKey: String?
 
@@ -26364,9 +27039,15 @@ public class StartAgentRequest : Tea.TeaModel {
 
         public var agentSilenceConfig: StartAgentRequest.VoiceChatConfig.AgentSilenceConfig?
 
+        public var ambientSoundConfig: StartAgentRequest.VoiceChatConfig.AmbientSoundConfig?
+
+        public var backChannelConfig: StartAgentRequest.VoiceChatConfig.BackChannelConfig?
+
         public var chatMode: Int32?
 
         public var greeting: String?
+
+        public var interruptConfig: StartAgentRequest.VoiceChatConfig.InterruptConfig?
 
         public var interruptMode: Int32?
 
@@ -26386,6 +27067,9 @@ public class StartAgentRequest : Tea.TeaModel {
         public override func validate() throws -> Void {
             try self.ASRConfig?.validate()
             try self.agentSilenceConfig?.validate()
+            try self.ambientSoundConfig?.validate()
+            try self.backChannelConfig?.validate()
+            try self.interruptConfig?.validate()
             try self.LLMConfig?.validate()
             try self.TTSConfig?.validate()
         }
@@ -26398,11 +27082,20 @@ public class StartAgentRequest : Tea.TeaModel {
             if self.agentSilenceConfig != nil {
                 map["AgentSilenceConfig"] = self.agentSilenceConfig?.toMap()
             }
+            if self.ambientSoundConfig != nil {
+                map["AmbientSoundConfig"] = self.ambientSoundConfig?.toMap()
+            }
+            if self.backChannelConfig != nil {
+                map["BackChannelConfig"] = self.backChannelConfig?.toMap()
+            }
             if self.chatMode != nil {
                 map["ChatMode"] = self.chatMode!
             }
             if self.greeting != nil {
                 map["Greeting"] = self.greeting!
+            }
+            if self.interruptConfig != nil {
+                map["InterruptConfig"] = self.interruptConfig?.toMap()
             }
             if self.interruptMode != nil {
                 map["InterruptMode"] = self.interruptMode!
@@ -26428,11 +27121,26 @@ public class StartAgentRequest : Tea.TeaModel {
                 model.fromMap(value)
                 self.agentSilenceConfig = model
             }
+            if let value = dict["AmbientSoundConfig"] as? [String: Any?] {
+                var model = StartAgentRequest.VoiceChatConfig.AmbientSoundConfig()
+                model.fromMap(value)
+                self.ambientSoundConfig = model
+            }
+            if let value = dict["BackChannelConfig"] as? [String: Any?] {
+                var model = StartAgentRequest.VoiceChatConfig.BackChannelConfig()
+                model.fromMap(value)
+                self.backChannelConfig = model
+            }
             if let value = dict["ChatMode"] as? Int32 {
                 self.chatMode = value
             }
             if let value = dict["Greeting"] as? String {
                 self.greeting = value
+            }
+            if let value = dict["InterruptConfig"] as? [String: Any?] {
+                var model = StartAgentRequest.VoiceChatConfig.InterruptConfig()
+                model.fromMap(value)
+                self.interruptConfig = model
             }
             if let value = dict["InterruptMode"] as? Int32 {
                 self.interruptMode = value
