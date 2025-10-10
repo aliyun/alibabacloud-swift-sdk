@@ -1366,9 +1366,13 @@ public class CreateInstanceRequest : Tea.TeaModel {
     public class ProductInfo : Tea.TeaModel {
         public var autoScaling: Bool?
 
+        public var capacityType: String?
+
         public var messageRetentionTime: Int32?
 
         public var msgProcessSpec: String?
+
+        public var provisionedCapacity: Int64?
 
         public var sendReceiveRatio: Double?
 
@@ -1393,11 +1397,17 @@ public class CreateInstanceRequest : Tea.TeaModel {
             if self.autoScaling != nil {
                 map["autoScaling"] = self.autoScaling!
             }
+            if self.capacityType != nil {
+                map["capacityType"] = self.capacityType!
+            }
             if self.messageRetentionTime != nil {
                 map["messageRetentionTime"] = self.messageRetentionTime!
             }
             if self.msgProcessSpec != nil {
                 map["msgProcessSpec"] = self.msgProcessSpec!
+            }
+            if self.provisionedCapacity != nil {
+                map["provisionedCapacity"] = self.provisionedCapacity!
             }
             if self.sendReceiveRatio != nil {
                 map["sendReceiveRatio"] = self.sendReceiveRatio!
@@ -1416,11 +1426,17 @@ public class CreateInstanceRequest : Tea.TeaModel {
             if let value = dict["autoScaling"] as? Bool {
                 self.autoScaling = value
             }
+            if let value = dict["capacityType"] as? String {
+                self.capacityType = value
+            }
             if let value = dict["messageRetentionTime"] as? Int32 {
                 self.messageRetentionTime = value
             }
             if let value = dict["msgProcessSpec"] as? String {
                 self.msgProcessSpec = value
+            }
+            if let value = dict["provisionedCapacity"] as? Int64 {
+                self.provisionedCapacity = value
             }
             if let value = dict["sendReceiveRatio"] as? Double {
                 self.sendReceiveRatio = value
@@ -7002,9 +7018,13 @@ public class GetInstanceResponseBody : Tea.TeaModel {
         public class ProductInfo : Tea.TeaModel {
             public var autoScaling: Bool?
 
+            public var capacityType: String?
+
             public var messageRetentionTime: Int32?
 
             public var msgProcessSpec: String?
+
+            public var provisionedCapacity: Int64?
 
             public var sendReceiveRatio: Double?
 
@@ -7033,11 +7053,17 @@ public class GetInstanceResponseBody : Tea.TeaModel {
                 if self.autoScaling != nil {
                     map["autoScaling"] = self.autoScaling!
                 }
+                if self.capacityType != nil {
+                    map["capacityType"] = self.capacityType!
+                }
                 if self.messageRetentionTime != nil {
                     map["messageRetentionTime"] = self.messageRetentionTime!
                 }
                 if self.msgProcessSpec != nil {
                     map["msgProcessSpec"] = self.msgProcessSpec!
+                }
+                if self.provisionedCapacity != nil {
+                    map["provisionedCapacity"] = self.provisionedCapacity!
                 }
                 if self.sendReceiveRatio != nil {
                     map["sendReceiveRatio"] = self.sendReceiveRatio!
@@ -7062,11 +7088,17 @@ public class GetInstanceResponseBody : Tea.TeaModel {
                 if let value = dict["autoScaling"] as? Bool {
                     self.autoScaling = value
                 }
+                if let value = dict["capacityType"] as? String {
+                    self.capacityType = value
+                }
                 if let value = dict["messageRetentionTime"] as? Int32 {
                     self.messageRetentionTime = value
                 }
                 if let value = dict["msgProcessSpec"] as? String {
                     self.msgProcessSpec = value
+                }
+                if let value = dict["provisionedCapacity"] as? Int64 {
+                    self.provisionedCapacity = value
                 }
                 if let value = dict["sendReceiveRatio"] as? Double {
                     self.sendReceiveRatio = value
@@ -13579,6 +13611,8 @@ public class ListInstancesResponseBody : Tea.TeaModel {
     public class Data : Tea.TeaModel {
         public class List : Tea.TeaModel {
             public class ProductInfo : Tea.TeaModel {
+                public var capacityType: String?
+
                 public var traceOn: Bool?
 
                 public override init() {
@@ -13595,6 +13629,9 @@ public class ListInstancesResponseBody : Tea.TeaModel {
 
                 public override func toMap() -> [String : Any] {
                     var map = super.toMap()
+                    if self.capacityType != nil {
+                        map["capacityType"] = self.capacityType!
+                    }
                     if self.traceOn != nil {
                         map["traceOn"] = self.traceOn!
                     }
@@ -13603,6 +13640,9 @@ public class ListInstancesResponseBody : Tea.TeaModel {
 
                 public override func fromMap(_ dict: [String: Any?]?) -> Void {
                     guard let dict else { return }
+                    if let value = dict["capacityType"] as? String {
+                        self.capacityType = value
+                    }
                     if let value = dict["traceOn"] as? Bool {
                         self.traceOn = value
                     }
