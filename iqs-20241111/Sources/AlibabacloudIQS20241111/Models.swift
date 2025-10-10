@@ -1547,6 +1547,8 @@ public class UnifiedPageItem : Tea.TeaModel {
 
     public var rerankScore: Double?
 
+    public var richMainBody: String?
+
     public var snippet: String?
 
     public var summary: String?
@@ -1594,6 +1596,9 @@ public class UnifiedPageItem : Tea.TeaModel {
         if self.rerankScore != nil {
             map["rerankScore"] = self.rerankScore!
         }
+        if self.richMainBody != nil {
+            map["richMainBody"] = self.richMainBody!
+        }
         if self.snippet != nil {
             map["snippet"] = self.snippet!
         }
@@ -1634,6 +1639,9 @@ public class UnifiedPageItem : Tea.TeaModel {
         }
         if let value = dict["rerankScore"] as? Double {
             self.rerankScore = value
+        }
+        if let value = dict["richMainBody"] as? String {
+            self.richMainBody = value
         }
         if let value = dict["snippet"] as? String {
             self.snippet = value
