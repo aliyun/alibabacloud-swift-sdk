@@ -1342,6 +1342,8 @@ public class DescribeAuditLogsRequest : Tea.TeaModel {
 
     public var loadWhiteList: Bool?
 
+    public var logSource: String?
+
     public var memberAccount: String?
 
     public var message: String?
@@ -1355,6 +1357,8 @@ public class DescribeAuditLogsRequest : Tea.TeaModel {
     public var productCode: String?
 
     public var productId: Int64?
+
+    public var ruleAggQuery: Bool?
 
     public var ruleCategory: String?
 
@@ -1418,6 +1422,9 @@ public class DescribeAuditLogsRequest : Tea.TeaModel {
         if self.loadWhiteList != nil {
             map["LoadWhiteList"] = self.loadWhiteList!
         }
+        if self.logSource != nil {
+            map["LogSource"] = self.logSource!
+        }
         if self.memberAccount != nil {
             map["MemberAccount"] = self.memberAccount!
         }
@@ -1438,6 +1445,9 @@ public class DescribeAuditLogsRequest : Tea.TeaModel {
         }
         if self.productId != nil {
             map["ProductId"] = self.productId!
+        }
+        if self.ruleAggQuery != nil {
+            map["RuleAggQuery"] = self.ruleAggQuery!
         }
         if self.ruleCategory != nil {
             map["RuleCategory"] = self.ruleCategory!
@@ -1498,6 +1508,9 @@ public class DescribeAuditLogsRequest : Tea.TeaModel {
         if let value = dict["LoadWhiteList"] as? Bool {
             self.loadWhiteList = value
         }
+        if let value = dict["LogSource"] as? String {
+            self.logSource = value
+        }
         if let value = dict["MemberAccount"] as? String {
             self.memberAccount = value
         }
@@ -1518,6 +1531,9 @@ public class DescribeAuditLogsRequest : Tea.TeaModel {
         }
         if let value = dict["ProductId"] as? Int64 {
             self.productId = value
+        }
+        if let value = dict["RuleAggQuery"] as? Bool {
+            self.ruleAggQuery = value
         }
         if let value = dict["RuleCategory"] as? String {
             self.ruleCategory = value
@@ -1566,11 +1582,15 @@ public class DescribeAuditLogsResponseBody : Tea.TeaModel {
 
         public var inWhiteList: Bool?
 
+        public var instanceAuditStatus: String?
+
         public var instanceDescription: String?
 
         public var instanceName: String?
 
         public var ipType: String?
+
+        public var logSource: String?
 
         public var logTime: Int64?
 
@@ -1658,6 +1678,9 @@ public class DescribeAuditLogsResponseBody : Tea.TeaModel {
             if self.inWhiteList != nil {
                 map["InWhiteList"] = self.inWhiteList!
             }
+            if self.instanceAuditStatus != nil {
+                map["InstanceAuditStatus"] = self.instanceAuditStatus!
+            }
             if self.instanceDescription != nil {
                 map["InstanceDescription"] = self.instanceDescription!
             }
@@ -1666,6 +1689,9 @@ public class DescribeAuditLogsResponseBody : Tea.TeaModel {
             }
             if self.ipType != nil {
                 map["IpType"] = self.ipType!
+            }
+            if self.logSource != nil {
+                map["LogSource"] = self.logSource!
             }
             if self.logTime != nil {
                 map["LogTime"] = self.logTime!
@@ -1762,6 +1788,9 @@ public class DescribeAuditLogsResponseBody : Tea.TeaModel {
             if let value = dict["InWhiteList"] as? Bool {
                 self.inWhiteList = value
             }
+            if let value = dict["InstanceAuditStatus"] as? String {
+                self.instanceAuditStatus = value
+            }
             if let value = dict["InstanceDescription"] as? String {
                 self.instanceDescription = value
             }
@@ -1770,6 +1799,9 @@ public class DescribeAuditLogsResponseBody : Tea.TeaModel {
             }
             if let value = dict["IpType"] as? String {
                 self.ipType = value
+            }
+            if let value = dict["LogSource"] as? String {
+                self.logSource = value
             }
             if let value = dict["LogTime"] as? Int64 {
                 self.logTime = value
