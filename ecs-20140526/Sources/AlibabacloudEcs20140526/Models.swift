@@ -7076,6 +7076,44 @@ public class CreateAutoProvisioningGroupRequest : Tea.TeaModel {
                 }
             }
         }
+        public class CpuOptions : Tea.TeaModel {
+            public var core: Int32?
+
+            public var threadsPerCore: Int32?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.core != nil {
+                    map["Core"] = self.core!
+                }
+                if self.threadsPerCore != nil {
+                    map["ThreadsPerCore"] = self.threadsPerCore!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["Core"] as? Int32 {
+                    self.core = value
+                }
+                if let value = dict["ThreadsPerCore"] as? Int32 {
+                    self.threadsPerCore = value
+                }
+            }
+        }
         public class ImageOptions : Tea.TeaModel {
             public var loginAsNonRoot: Bool?
 
@@ -7210,6 +7248,8 @@ public class CreateAutoProvisioningGroupRequest : Tea.TeaModel {
 
         public var autoRenewPeriod: Int32?
 
+        public var cpuOptions: CreateAutoProvisioningGroupRequest.LaunchConfiguration.CpuOptions?
+
         public var imageOptions: CreateAutoProvisioningGroupRequest.LaunchConfiguration.ImageOptions?
 
         public var period: Int32?
@@ -7233,6 +7273,7 @@ public class CreateAutoProvisioningGroupRequest : Tea.TeaModel {
 
         public override func validate() throws -> Void {
             try self.systemDisk?.validate()
+            try self.cpuOptions?.validate()
             try self.imageOptions?.validate()
             try self.schedulerOptions?.validate()
         }
@@ -7349,6 +7390,9 @@ public class CreateAutoProvisioningGroupRequest : Tea.TeaModel {
             }
             if self.autoRenewPeriod != nil {
                 map["AutoRenewPeriod"] = self.autoRenewPeriod!
+            }
+            if self.cpuOptions != nil {
+                map["CpuOptions"] = self.cpuOptions?.toMap()
             }
             if self.imageOptions != nil {
                 map["ImageOptions"] = self.imageOptions?.toMap()
@@ -7503,6 +7547,11 @@ public class CreateAutoProvisioningGroupRequest : Tea.TeaModel {
             }
             if let value = dict["AutoRenewPeriod"] as? Int32 {
                 self.autoRenewPeriod = value
+            }
+            if let value = dict["CpuOptions"] as? [String: Any?] {
+                var model = CreateAutoProvisioningGroupRequest.LaunchConfiguration.CpuOptions()
+                model.fromMap(value)
+                self.cpuOptions = model
             }
             if let value = dict["ImageOptions"] as? [String: Any?] {
                 var model = CreateAutoProvisioningGroupRequest.LaunchConfiguration.ImageOptions()
@@ -8529,6 +8578,44 @@ public class CreateAutoProvisioningGroupShrinkRequest : Tea.TeaModel {
                 }
             }
         }
+        public class CpuOptions : Tea.TeaModel {
+            public var core: Int32?
+
+            public var threadsPerCore: Int32?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.core != nil {
+                    map["Core"] = self.core!
+                }
+                if self.threadsPerCore != nil {
+                    map["ThreadsPerCore"] = self.threadsPerCore!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["Core"] as? Int32 {
+                    self.core = value
+                }
+                if let value = dict["ThreadsPerCore"] as? Int32 {
+                    self.threadsPerCore = value
+                }
+            }
+        }
         public class ImageOptions : Tea.TeaModel {
             public var loginAsNonRoot: Bool?
 
@@ -8663,6 +8750,8 @@ public class CreateAutoProvisioningGroupShrinkRequest : Tea.TeaModel {
 
         public var autoRenewPeriod: Int32?
 
+        public var cpuOptions: CreateAutoProvisioningGroupShrinkRequest.LaunchConfiguration.CpuOptions?
+
         public var imageOptions: CreateAutoProvisioningGroupShrinkRequest.LaunchConfiguration.ImageOptions?
 
         public var period: Int32?
@@ -8686,6 +8775,7 @@ public class CreateAutoProvisioningGroupShrinkRequest : Tea.TeaModel {
 
         public override func validate() throws -> Void {
             try self.systemDisk?.validate()
+            try self.cpuOptions?.validate()
             try self.imageOptions?.validate()
             try self.schedulerOptions?.validate()
         }
@@ -8802,6 +8892,9 @@ public class CreateAutoProvisioningGroupShrinkRequest : Tea.TeaModel {
             }
             if self.autoRenewPeriod != nil {
                 map["AutoRenewPeriod"] = self.autoRenewPeriod!
+            }
+            if self.cpuOptions != nil {
+                map["CpuOptions"] = self.cpuOptions?.toMap()
             }
             if self.imageOptions != nil {
                 map["ImageOptions"] = self.imageOptions?.toMap()
@@ -8956,6 +9049,11 @@ public class CreateAutoProvisioningGroupShrinkRequest : Tea.TeaModel {
             }
             if let value = dict["AutoRenewPeriod"] as? Int32 {
                 self.autoRenewPeriod = value
+            }
+            if let value = dict["CpuOptions"] as? [String: Any?] {
+                var model = CreateAutoProvisioningGroupShrinkRequest.LaunchConfiguration.CpuOptions()
+                model.fromMap(value)
+                self.cpuOptions = model
             }
             if let value = dict["ImageOptions"] as? [String: Any?] {
                 var model = CreateAutoProvisioningGroupShrinkRequest.LaunchConfiguration.ImageOptions()
@@ -69270,6 +69368,8 @@ public class DescribeManagedInstancesRequest : Tea.TeaModel {
 
     public var instanceName: String?
 
+    public var machineId: String?
+
     public var maxResults: Int32?
 
     public var nextToken: String?
@@ -69319,6 +69419,9 @@ public class DescribeManagedInstancesRequest : Tea.TeaModel {
         }
         if self.instanceName != nil {
             map["InstanceName"] = self.instanceName!
+        }
+        if self.machineId != nil {
+            map["MachineId"] = self.machineId!
         }
         if self.maxResults != nil {
             map["MaxResults"] = self.maxResults!
@@ -69376,6 +69479,9 @@ public class DescribeManagedInstancesRequest : Tea.TeaModel {
         }
         if let value = dict["InstanceName"] as? String {
             self.instanceName = value
+        }
+        if let value = dict["MachineId"] as? String {
+            self.machineId = value
         }
         if let value = dict["MaxResults"] as? Int32 {
             self.maxResults = value
