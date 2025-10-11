@@ -2867,6 +2867,318 @@ public class DeepfakeDetectIntlResponse : Tea.TeaModel {
     }
 }
 
+public class DeepfakeDetectIntlStreamRequest : Tea.TeaModel {
+    public var faceBase64: String?
+
+    public var faceFile: String?
+
+    public var faceInputType: String?
+
+    public var faceUrl: String?
+
+    public var merchantBizId: String?
+
+    public var productCode: String?
+
+    public var sceneCode: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.faceBase64 != nil {
+            map["FaceBase64"] = self.faceBase64!
+        }
+        if self.faceFile != nil {
+            map["FaceFile"] = self.faceFile!
+        }
+        if self.faceInputType != nil {
+            map["FaceInputType"] = self.faceInputType!
+        }
+        if self.faceUrl != nil {
+            map["FaceUrl"] = self.faceUrl!
+        }
+        if self.merchantBizId != nil {
+            map["MerchantBizId"] = self.merchantBizId!
+        }
+        if self.productCode != nil {
+            map["ProductCode"] = self.productCode!
+        }
+        if self.sceneCode != nil {
+            map["SceneCode"] = self.sceneCode!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["FaceBase64"] as? String {
+            self.faceBase64 = value
+        }
+        if let value = dict["FaceFile"] as? String {
+            self.faceFile = value
+        }
+        if let value = dict["FaceInputType"] as? String {
+            self.faceInputType = value
+        }
+        if let value = dict["FaceUrl"] as? String {
+            self.faceUrl = value
+        }
+        if let value = dict["MerchantBizId"] as? String {
+            self.merchantBizId = value
+        }
+        if let value = dict["ProductCode"] as? String {
+            self.productCode = value
+        }
+        if let value = dict["SceneCode"] as? String {
+            self.sceneCode = value
+        }
+    }
+}
+
+public class DeepfakeDetectIntlStreamAdvanceRequest : Tea.TeaModel {
+    public var faceBase64: String?
+
+    public var faceFileObject: InputStream?
+
+    public var faceInputType: String?
+
+    public var faceUrl: String?
+
+    public var merchantBizId: String?
+
+    public var productCode: String?
+
+    public var sceneCode: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.faceBase64 != nil {
+            map["FaceBase64"] = self.faceBase64!
+        }
+        if self.faceFileObject != nil {
+            map["FaceFile"] = self.faceFileObject!
+        }
+        if self.faceInputType != nil {
+            map["FaceInputType"] = self.faceInputType!
+        }
+        if self.faceUrl != nil {
+            map["FaceUrl"] = self.faceUrl!
+        }
+        if self.merchantBizId != nil {
+            map["MerchantBizId"] = self.merchantBizId!
+        }
+        if self.productCode != nil {
+            map["ProductCode"] = self.productCode!
+        }
+        if self.sceneCode != nil {
+            map["SceneCode"] = self.sceneCode!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["FaceBase64"] as? String {
+            self.faceBase64 = value
+        }
+        if let value = dict["FaceFile"] as? InputStream {
+            self.faceFileObject = value
+        }
+        if let value = dict["FaceInputType"] as? String {
+            self.faceInputType = value
+        }
+        if let value = dict["FaceUrl"] as? String {
+            self.faceUrl = value
+        }
+        if let value = dict["MerchantBizId"] as? String {
+            self.merchantBizId = value
+        }
+        if let value = dict["ProductCode"] as? String {
+            self.productCode = value
+        }
+        if let value = dict["SceneCode"] as? String {
+            self.sceneCode = value
+        }
+    }
+}
+
+public class DeepfakeDetectIntlStreamResponseBody : Tea.TeaModel {
+    public class ResultObject : Tea.TeaModel {
+        public var result: String?
+
+        public var riskScore: [String: String]?
+
+        public var riskTag: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.result != nil {
+                map["Result"] = self.result!
+            }
+            if self.riskScore != nil {
+                map["RiskScore"] = self.riskScore!
+            }
+            if self.riskTag != nil {
+                map["RiskTag"] = self.riskTag!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["Result"] as? String {
+                self.result = value
+            }
+            if let value = dict["RiskScore"] as? [String: String] {
+                self.riskScore = value
+            }
+            if let value = dict["RiskTag"] as? String {
+                self.riskTag = value
+            }
+        }
+    }
+    public var code: String?
+
+    public var message: String?
+
+    public var requestId: String?
+
+    public var resultObject: DeepfakeDetectIntlStreamResponseBody.ResultObject?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.resultObject?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.code != nil {
+            map["Code"] = self.code!
+        }
+        if self.message != nil {
+            map["Message"] = self.message!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.resultObject != nil {
+            map["ResultObject"] = self.resultObject?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["Code"] as? String {
+            self.code = value
+        }
+        if let value = dict["Message"] as? String {
+            self.message = value
+        }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+        if let value = dict["ResultObject"] as? [String: Any?] {
+            var model = DeepfakeDetectIntlStreamResponseBody.ResultObject()
+            model.fromMap(value)
+            self.resultObject = model
+        }
+    }
+}
+
+public class DeepfakeDetectIntlStreamResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: DeepfakeDetectIntlStreamResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = DeepfakeDetectIntlStreamResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
 public class DeleteFaceGroupRequest : Tea.TeaModel {
     public var id: String?
 

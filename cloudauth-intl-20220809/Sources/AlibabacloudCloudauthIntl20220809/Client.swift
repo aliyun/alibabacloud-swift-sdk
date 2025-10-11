@@ -710,6 +710,139 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func deepfakeDetectIntlStreamWithOptions(_ request: DeepfakeDetectIntlStreamRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DeepfakeDetectIntlStreamResponse {
+        try TeaUtils.Client.validateModel(request)
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.faceBase64)) {
+            body["FaceBase64"] = request.faceBase64 ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.faceFile)) {
+            body["FaceFile"] = request.faceFile ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.faceInputType)) {
+            body["FaceInputType"] = request.faceInputType ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.faceUrl)) {
+            body["FaceUrl"] = request.faceUrl ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.merchantBizId)) {
+            body["MerchantBizId"] = request.merchantBizId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.productCode)) {
+            body["ProductCode"] = request.productCode ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.sceneCode)) {
+            body["SceneCode"] = request.sceneCode ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "DeepfakeDetectIntlStream",
+            "version": "2022-08-09",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(DeepfakeDetectIntlStreamResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func deepfakeDetectIntlStream(_ request: DeepfakeDetectIntlStreamRequest) async throws -> DeepfakeDetectIntlStreamResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await deepfakeDetectIntlStreamWithOptions(request as! DeepfakeDetectIntlStreamRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func deepfakeDetectIntlStreamAdvance(_ request: DeepfakeDetectIntlStreamAdvanceRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DeepfakeDetectIntlStreamResponse {
+        var credentialModel: AlibabaCloudCredentials.CredentialModel? = nil
+        if (TeaUtils.Client.isUnset(self._credential)) {
+            throw Tea.ReuqestError([
+                "code": "InvalidCredentials",
+                "message": "Please set up the credentials correctly. If you are setting them through environment variables, please ensure that ALIBABA_CLOUD_ACCESS_KEY_ID and ALIBABA_CLOUD_ACCESS_KEY_SECRET are set correctly. See https://help.aliyun.com/zh/sdk/developer-reference/configure-the-alibaba-cloud-accesskey-environment-variable-on-linux-macos-and-windows-systems for more details."
+            ])
+        }
+        credentialModel = try await self._credential!.getCredential()
+        var accessKeyId: String = credentialModel.accessKeyId ?? ""
+        var accessKeySecret: String = credentialModel.accessKeySecret ?? ""
+        var securityToken: String = credentialModel.securityToken ?? ""
+        var credentialType: String = credentialModel.type ?? ""
+        var openPlatformEndpoint: String = self._openPlatformEndpoint ?? ""
+        if (TeaUtils.Client.empty(openPlatformEndpoint)) {
+            openPlatformEndpoint = "openplatform.aliyuncs.com"
+        }
+        if (TeaUtils.Client.isUnset(credentialType)) {
+            credentialType = "access_key"
+        }
+        var authConfig: AlibabacloudOpenApi.Config = AlibabacloudOpenApi.Config([
+            "accessKeyId": accessKeyId as! String,
+            "accessKeySecret": accessKeySecret as! String,
+            "securityToken": securityToken as! String,
+            "type": credentialType as! String,
+            "endpoint": openPlatformEndpoint as! String,
+            "protocol": self._protocol ?? "",
+            "regionId": self._regionId ?? ""
+        ])
+        var authClient: AlibabacloudOpenApi.Client = try AlibabacloudOpenApi.Client(authConfig)
+        var authRequest: [String: String] = [
+            "Product": "Cloudauth-intl",
+            "RegionId": self._regionId ?? ""
+        ]
+        var authReq: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(authRequest)
+        ])
+        var authParams: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "AuthorizeFileUpload",
+            "version": "2019-12-19",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "GET",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var authResponse: [String: Any] = [:]
+        var fileObj: TeaFileForm.FileField = TeaFileForm.FileField([:])
+        var ossHeader: [String: Any] = [:]
+        var tmpBody: [String: Any] = [:]
+        var useAccelerate: Bool = false
+        var authResponseBody: [String: String] = [:]
+        var deepfakeDetectIntlStreamReq: DeepfakeDetectIntlStreamRequest = DeepfakeDetectIntlStreamRequest([:])
+        AlibabaCloudOpenApiUtil.Client.convert(request, deepfakeDetectIntlStreamReq)
+        if (!TeaUtils.Client.isUnset(request.faceFileObject)) {
+            var tmpResp0: Any = try await authClient.callApi(authParams as! AlibabacloudOpenApi.Params, authReq as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+            authResponse = try TeaUtils.Client.assertAsMap(tmpResp0)
+            tmpBody = try TeaUtils.Client.assertAsMap(authResponse["body"])
+            useAccelerate = try TeaUtils.Client.assertAsBoolean(tmpBody["UseAccelerate"])
+            authResponseBody = TeaUtils.Client.stringifyMapValue(tmpBody)
+            fileObj = TeaFileForm.FileField([
+                "filename": authResponseBody["ObjectKey"] ?? "",
+                "content": request.faceFileObject!,
+                "contentType": ""
+            ])
+            ossHeader = [
+                "host": (authResponseBody["Bucket"] ?? "") + "." + (AlibabaCloudOpenApiUtil.Client.getEndpoint(authResponseBody["Endpoint"], useAccelerate, self._endpointType)),
+                "OSSAccessKeyId": authResponseBody["AccessKeyId"] ?? "",
+                "policy": authResponseBody["EncodedPolicy"] ?? "",
+                "Signature": authResponseBody["Signature"] ?? "",
+                "key": authResponseBody["ObjectKey"] ?? "",
+                "file": fileObj as! TeaFileForm.FileField,
+                "success_action_status": "201"
+            ]
+            try await _postOSSObject(authResponseBody["Bucket"] ?? "", ossHeader as! [String: Any])
+            deepfakeDetectIntlStreamReq.faceFile = "http://" + (authResponseBody["Bucket"] ?? "") + "." + (authResponseBody["Endpoint"] ?? "") + "/" + (authResponseBody["ObjectKey"] ?? "")
+        }
+        var deepfakeDetectIntlStreamResp: DeepfakeDetectIntlStreamResponse = try await deepfakeDetectIntlStreamWithOptions(deepfakeDetectIntlStreamReq as! DeepfakeDetectIntlStreamRequest, runtime as! TeaUtils.RuntimeOptions)
+        return deepfakeDetectIntlStreamResp as! DeepfakeDetectIntlStreamResponse
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func deleteFaceGroupWithOptions(_ request: DeleteFaceGroupRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DeleteFaceGroupResponse {
         try TeaUtils.Client.validateModel(request)
         var body: [String: Any] = [:]
