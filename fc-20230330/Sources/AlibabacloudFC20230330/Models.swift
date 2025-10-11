@@ -923,6 +923,8 @@ public class CreateFunctionInput : Tea.TeaModel {
 
     public var description_: String?
 
+    public var disableInjectCredentials: String?
+
     public var disableOndemand: Bool?
 
     public var diskSize: Int32?
@@ -956,6 +958,8 @@ public class CreateFunctionInput : Tea.TeaModel {
     public var nasConfig: NASConfig?
 
     public var ossMountConfig: OSSMountConfig?
+
+    public var polarFsConfig: PolarFsConfig?
 
     public var resourceGroupId: String?
 
@@ -994,6 +998,7 @@ public class CreateFunctionInput : Tea.TeaModel {
         try self.logConfig?.validate()
         try self.nasConfig?.validate()
         try self.ossMountConfig?.validate()
+        try self.polarFsConfig?.validate()
         try self.tracingConfig?.validate()
         try self.vpcConfig?.validate()
     }
@@ -1017,6 +1022,9 @@ public class CreateFunctionInput : Tea.TeaModel {
         }
         if self.description_ != nil {
             map["description"] = self.description_!
+        }
+        if self.disableInjectCredentials != nil {
+            map["disableInjectCredentials"] = self.disableInjectCredentials!
         }
         if self.disableOndemand != nil {
             map["disableOndemand"] = self.disableOndemand!
@@ -1068,6 +1076,9 @@ public class CreateFunctionInput : Tea.TeaModel {
         }
         if self.ossMountConfig != nil {
             map["ossMountConfig"] = self.ossMountConfig?.toMap()
+        }
+        if self.polarFsConfig != nil {
+            map["polarFsConfig"] = self.polarFsConfig?.toMap()
         }
         if self.resourceGroupId != nil {
             map["resourceGroupId"] = self.resourceGroupId!
@@ -1131,6 +1142,9 @@ public class CreateFunctionInput : Tea.TeaModel {
         if let value = dict["description"] as? String {
             self.description_ = value
         }
+        if let value = dict["disableInjectCredentials"] as? String {
+            self.disableInjectCredentials = value
+        }
         if let value = dict["disableOndemand"] as? Bool {
             self.disableOndemand = value
         }
@@ -1191,6 +1205,11 @@ public class CreateFunctionInput : Tea.TeaModel {
             var model = OSSMountConfig()
             model.fromMap(value)
             self.ossMountConfig = model
+        }
+        if let value = dict["polarFsConfig"] as? [String: Any?] {
+            var model = PolarFsConfig()
+            model.fromMap(value)
+            self.polarFsConfig = model
         }
         if let value = dict["resourceGroupId"] as? String {
             self.resourceGroupId = value
@@ -1295,6 +1314,8 @@ public class CreateLayerVersionInput : Tea.TeaModel {
 }
 
 public class CreateSessionInput : Tea.TeaModel {
+    public var nasConfig: NASConfig?
+
     public var sessionIdleTimeoutInSeconds: Int64?
 
     public var sessionTTLInSeconds: Int64?
@@ -1309,10 +1330,14 @@ public class CreateSessionInput : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
+        try self.nasConfig?.validate()
     }
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.nasConfig != nil {
+            map["nasConfig"] = self.nasConfig?.toMap()
+        }
         if self.sessionIdleTimeoutInSeconds != nil {
             map["sessionIdleTimeoutInSeconds"] = self.sessionIdleTimeoutInSeconds!
         }
@@ -1324,6 +1349,11 @@ public class CreateSessionInput : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["nasConfig"] as? [String: Any?] {
+            var model = NASConfig()
+            model.fromMap(value)
+            self.nasConfig = model
+        }
         if let value = dict["sessionIdleTimeoutInSeconds"] as? Int64 {
             self.sessionIdleTimeoutInSeconds = value
         }
@@ -2677,6 +2707,8 @@ public class Function : Tea.TeaModel {
 
     public var description_: String?
 
+    public var disableInjectCredentials: String?
+
     public var disableOndemand: Bool?
 
     public var diskSize: Int32?
@@ -2725,6 +2757,8 @@ public class Function : Tea.TeaModel {
 
     public var ossMountConfig: OSSMountConfig?
 
+    public var polarFsConfig: PolarFsConfig?
+
     public var resourceGroupId: String?
 
     public var role: String?
@@ -2768,6 +2802,7 @@ public class Function : Tea.TeaModel {
         try self.logConfig?.validate()
         try self.nasConfig?.validate()
         try self.ossMountConfig?.validate()
+        try self.polarFsConfig?.validate()
         try self.tracingConfig?.validate()
         try self.vpcConfig?.validate()
     }
@@ -2797,6 +2832,9 @@ public class Function : Tea.TeaModel {
         }
         if self.description_ != nil {
             map["description"] = self.description_!
+        }
+        if self.disableInjectCredentials != nil {
+            map["disableInjectCredentials"] = self.disableInjectCredentials!
         }
         if self.disableOndemand != nil {
             map["disableOndemand"] = self.disableOndemand!
@@ -2874,6 +2912,9 @@ public class Function : Tea.TeaModel {
         if self.ossMountConfig != nil {
             map["ossMountConfig"] = self.ossMountConfig?.toMap()
         }
+        if self.polarFsConfig != nil {
+            map["polarFsConfig"] = self.polarFsConfig?.toMap()
+        }
         if self.resourceGroupId != nil {
             map["resourceGroupId"] = self.resourceGroupId!
         }
@@ -2948,6 +2989,9 @@ public class Function : Tea.TeaModel {
         }
         if let value = dict["description"] as? String {
             self.description_ = value
+        }
+        if let value = dict["disableInjectCredentials"] as? String {
+            self.disableInjectCredentials = value
         }
         if let value = dict["disableOndemand"] as? Bool {
             self.disableOndemand = value
@@ -3042,6 +3086,11 @@ public class Function : Tea.TeaModel {
             var model = OSSMountConfig()
             model.fromMap(value)
             self.ossMountConfig = model
+        }
+        if let value = dict["polarFsConfig"] as? [String: Any?] {
+            var model = PolarFsConfig()
+            model.fromMap(value)
+            self.polarFsConfig = model
         }
         if let value = dict["resourceGroupId"] as? String {
             self.resourceGroupId = value
@@ -5604,6 +5653,114 @@ public class PathConfig : Tea.TeaModel {
     }
 }
 
+public class PolarFsConfig : Tea.TeaModel {
+    public var groupId: Int32?
+
+    public var mountPoints: [PolarFsMountConfig]?
+
+    public var userId: Int32?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.groupId != nil {
+            map["groupId"] = self.groupId!
+        }
+        if self.mountPoints != nil {
+            var tmp : [Any] = []
+            for k in self.mountPoints! {
+                tmp.append(k.toMap())
+            }
+            map["mountPoints"] = tmp
+        }
+        if self.userId != nil {
+            map["userId"] = self.userId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["groupId"] as? Int32 {
+            self.groupId = value
+        }
+        if let value = dict["mountPoints"] as? [Any?] {
+            var tmp : [PolarFsMountConfig] = []
+            for v in value {
+                if v != nil {
+                    var model = PolarFsMountConfig()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.mountPoints = tmp
+        }
+        if let value = dict["userId"] as? Int32 {
+            self.userId = value
+        }
+    }
+}
+
+public class PolarFsMountConfig : Tea.TeaModel {
+    public var instanceId: String?
+
+    public var mountDir: String?
+
+    public var remoteDir: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.instanceId != nil {
+            map["instanceId"] = self.instanceId!
+        }
+        if self.mountDir != nil {
+            map["mountDir"] = self.mountDir!
+        }
+        if self.remoteDir != nil {
+            map["remoteDir"] = self.remoteDir!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["instanceId"] as? String {
+            self.instanceId = value
+        }
+        if let value = dict["mountDir"] as? String {
+            self.mountDir = value
+        }
+        if let value = dict["remoteDir"] as? String {
+            self.remoteDir = value
+        }
+    }
+}
+
 public class ProvisionConfig : Tea.TeaModel {
     public var alwaysAllocateCPU: Bool?
 
@@ -7481,6 +7638,8 @@ public class Session : Tea.TeaModel {
 
     public var lastModifiedTime: String?
 
+    public var nasConfig: NASConfig?
+
     public var qualifier: String?
 
     public var sessionAffinityType: String?
@@ -7503,6 +7662,7 @@ public class Session : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
+        try self.nasConfig?.validate()
     }
 
     public override func toMap() -> [String : Any] {
@@ -7518,6 +7678,9 @@ public class Session : Tea.TeaModel {
         }
         if self.lastModifiedTime != nil {
             map["lastModifiedTime"] = self.lastModifiedTime!
+        }
+        if self.nasConfig != nil {
+            map["nasConfig"] = self.nasConfig?.toMap()
         }
         if self.qualifier != nil {
             map["qualifier"] = self.qualifier!
@@ -7553,6 +7716,11 @@ public class Session : Tea.TeaModel {
         }
         if let value = dict["lastModifiedTime"] as? String {
             self.lastModifiedTime = value
+        }
+        if let value = dict["nasConfig"] as? [String: Any?] {
+            var model = NASConfig()
+            model.fromMap(value)
+            self.nasConfig = model
         }
         if let value = dict["qualifier"] as? String {
             self.qualifier = value
@@ -8794,6 +8962,8 @@ public class UpdateFunctionInput : Tea.TeaModel {
 
     public var description_: String?
 
+    public var disableInjectCredentials: String?
+
     public var disableOndemand: Bool?
 
     public var diskSize: Int32?
@@ -8825,6 +8995,8 @@ public class UpdateFunctionInput : Tea.TeaModel {
     public var nasConfig: NASConfig?
 
     public var ossMountConfig: OSSMountConfig?
+
+    public var polarFsConfig: PolarFsConfig?
 
     public var role: String?
 
@@ -8859,6 +9031,7 @@ public class UpdateFunctionInput : Tea.TeaModel {
         try self.logConfig?.validate()
         try self.nasConfig?.validate()
         try self.ossMountConfig?.validate()
+        try self.polarFsConfig?.validate()
         try self.tracingConfig?.validate()
         try self.vpcConfig?.validate()
     }
@@ -8882,6 +9055,9 @@ public class UpdateFunctionInput : Tea.TeaModel {
         }
         if self.description_ != nil {
             map["description"] = self.description_!
+        }
+        if self.disableInjectCredentials != nil {
+            map["disableInjectCredentials"] = self.disableInjectCredentials!
         }
         if self.disableOndemand != nil {
             map["disableOndemand"] = self.disableOndemand!
@@ -8930,6 +9106,9 @@ public class UpdateFunctionInput : Tea.TeaModel {
         }
         if self.ossMountConfig != nil {
             map["ossMountConfig"] = self.ossMountConfig?.toMap()
+        }
+        if self.polarFsConfig != nil {
+            map["polarFsConfig"] = self.polarFsConfig?.toMap()
         }
         if self.role != nil {
             map["role"] = self.role!
@@ -8982,6 +9161,9 @@ public class UpdateFunctionInput : Tea.TeaModel {
         }
         if let value = dict["description"] as? String {
             self.description_ = value
+        }
+        if let value = dict["disableInjectCredentials"] as? String {
+            self.disableInjectCredentials = value
         }
         if let value = dict["disableOndemand"] as? Bool {
             self.disableOndemand = value
@@ -9040,6 +9222,11 @@ public class UpdateFunctionInput : Tea.TeaModel {
             var model = OSSMountConfig()
             model.fromMap(value)
             self.ossMountConfig = model
+        }
+        if let value = dict["polarFsConfig"] as? [String: Any?] {
+            var model = PolarFsConfig()
+            model.fromMap(value)
+            self.polarFsConfig = model
         }
         if let value = dict["role"] as? String {
             self.role = value
