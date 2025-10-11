@@ -6761,6 +6761,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(tmpReq.miniDocs)) {
             request.miniDocsShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.miniDocs, "MiniDocs", "json")
         }
+        if (!TeaUtils.Client.isUnset(tmpReq.outlineList)) {
+            request.outlineListShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.outlineList, "OutlineList", "json")
+        }
         if (!TeaUtils.Client.isUnset(tmpReq.outlines)) {
             request.outlinesShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.outlines, "Outlines", "json")
         }
@@ -6795,6 +6798,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.miniDocsShrink)) {
             body["MiniDocs"] = request.miniDocsShrink ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.outlineListShrink)) {
+            body["OutlineList"] = request.outlineListShrink ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.outlinesShrink)) {
             body["Outlines"] = request.outlinesShrink ?? "";
         }
@@ -6809,6 +6815,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.sessionId)) {
             body["SessionId"] = request.sessionId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.sourceTraceMethod)) {
+            body["SourceTraceMethod"] = request.sourceTraceMethod ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.step)) {
             body["Step"] = request.step ?? "";

@@ -5,6 +5,491 @@ import AlibabacloudOpenApi
 import AlibabaCloudOpenApiUtil
 import AlibabacloudEndpointUtil
 
+public class GenerateTraceability : Tea.TeaModel {
+    public class News : Tea.TeaModel {
+        public var index: Int32?
+
+        public var pubTime: String?
+
+        public var searchSource: String?
+
+        public var searchSourceName: String?
+
+        public var title: String?
+
+        public var url: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.index != nil {
+                map["Index"] = self.index!
+            }
+            if self.pubTime != nil {
+                map["PubTime"] = self.pubTime!
+            }
+            if self.searchSource != nil {
+                map["SearchSource"] = self.searchSource!
+            }
+            if self.searchSourceName != nil {
+                map["SearchSourceName"] = self.searchSourceName!
+            }
+            if self.title != nil {
+                map["Title"] = self.title!
+            }
+            if self.url != nil {
+                map["Url"] = self.url!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["Index"] as? Int32 {
+                self.index = value
+            }
+            if let value = dict["PubTime"] as? String {
+                self.pubTime = value
+            }
+            if let value = dict["SearchSource"] as? String {
+                self.searchSource = value
+            }
+            if let value = dict["SearchSourceName"] as? String {
+                self.searchSourceName = value
+            }
+            if let value = dict["Title"] as? String {
+                self.title = value
+            }
+            if let value = dict["Url"] as? String {
+                self.url = value
+            }
+        }
+    }
+    public var news: [GenerateTraceability.News]?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.news != nil {
+            var tmp : [Any] = []
+            for k in self.news! {
+                tmp.append(k.toMap())
+            }
+            map["News"] = tmp
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["News"] as? [Any?] {
+            var tmp : [GenerateTraceability.News] = []
+            for v in value {
+                if v != nil {
+                    var model = GenerateTraceability.News()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.news = tmp
+        }
+    }
+}
+
+public class OutlineSearchResult : Tea.TeaModel {
+    public var articles: [OutlineWritingArticle]?
+
+    public var outline: String?
+
+    public var outlineId: String?
+
+    public var primaryOutline: String?
+
+    public var query: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.articles != nil {
+            var tmp : [Any] = []
+            for k in self.articles! {
+                tmp.append(k.toMap())
+            }
+            map["Articles"] = tmp
+        }
+        if self.outline != nil {
+            map["Outline"] = self.outline!
+        }
+        if self.outlineId != nil {
+            map["OutlineId"] = self.outlineId!
+        }
+        if self.primaryOutline != nil {
+            map["PrimaryOutline"] = self.primaryOutline!
+        }
+        if self.query != nil {
+            map["Query"] = self.query!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["Articles"] as? [Any?] {
+            var tmp : [OutlineWritingArticle] = []
+            for v in value {
+                if v != nil {
+                    var model = OutlineWritingArticle()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.articles = tmp
+        }
+        if let value = dict["Outline"] as? String {
+            self.outline = value
+        }
+        if let value = dict["OutlineId"] as? String {
+            self.outlineId = value
+        }
+        if let value = dict["PrimaryOutline"] as? String {
+            self.primaryOutline = value
+        }
+        if let value = dict["Query"] as? String {
+            self.query = value
+        }
+    }
+}
+
+public class OutlineWritingArticle : Tea.TeaModel {
+    public var content: String?
+
+    public var outline: String?
+
+    public var primaryOutline: String?
+
+    public var pubTime: String?
+
+    public var searchSource: String?
+
+    public var searchSourceName: String?
+
+    public var title: String?
+
+    public var url: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.content != nil {
+            map["Content"] = self.content!
+        }
+        if self.outline != nil {
+            map["Outline"] = self.outline!
+        }
+        if self.primaryOutline != nil {
+            map["PrimaryOutline"] = self.primaryOutline!
+        }
+        if self.pubTime != nil {
+            map["PubTime"] = self.pubTime!
+        }
+        if self.searchSource != nil {
+            map["SearchSource"] = self.searchSource!
+        }
+        if self.searchSourceName != nil {
+            map["SearchSourceName"] = self.searchSourceName!
+        }
+        if self.title != nil {
+            map["Title"] = self.title!
+        }
+        if self.url != nil {
+            map["Url"] = self.url!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["Content"] as? String {
+            self.content = value
+        }
+        if let value = dict["Outline"] as? String {
+            self.outline = value
+        }
+        if let value = dict["PrimaryOutline"] as? String {
+            self.primaryOutline = value
+        }
+        if let value = dict["PubTime"] as? String {
+            self.pubTime = value
+        }
+        if let value = dict["SearchSource"] as? String {
+            self.searchSource = value
+        }
+        if let value = dict["SearchSourceName"] as? String {
+            self.searchSourceName = value
+        }
+        if let value = dict["Title"] as? String {
+            self.title = value
+        }
+        if let value = dict["Url"] as? String {
+            self.url = value
+        }
+    }
+}
+
+public class TopicSelection : Tea.TeaModel {
+    public class Outlines : Tea.TeaModel {
+        public var outline: String?
+
+        public var summary: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.outline != nil {
+                map["Outline"] = self.outline!
+            }
+            if self.summary != nil {
+                map["Summary"] = self.summary!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["Outline"] as? String {
+                self.outline = value
+            }
+            if let value = dict["Summary"] as? String {
+                self.summary = value
+            }
+        }
+    }
+    public var outlines: [TopicSelection.Outlines]?
+
+    public var point: String?
+
+    public var summary: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.outlines != nil {
+            var tmp : [Any] = []
+            for k in self.outlines! {
+                tmp.append(k.toMap())
+            }
+            map["Outlines"] = tmp
+        }
+        if self.point != nil {
+            map["Point"] = self.point!
+        }
+        if self.summary != nil {
+            map["Summary"] = self.summary!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["Outlines"] as? [Any?] {
+            var tmp : [TopicSelection.Outlines] = []
+            for v in value {
+                if v != nil {
+                    var model = TopicSelection.Outlines()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.outlines = tmp
+        }
+        if let value = dict["Point"] as? String {
+            self.point = value
+        }
+        if let value = dict["Summary"] as? String {
+            self.summary = value
+        }
+    }
+}
+
+public class WritingOutline : Tea.TeaModel {
+    public var articles: [OutlineWritingArticle]?
+
+    public var children: [WritingOutline]?
+
+    public var outline: String?
+
+    public var outlineId: String?
+
+    public var searchKeyWordList: [String]?
+
+    public var wordCount: String?
+
+    public var writingTips: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.articles != nil {
+            var tmp : [Any] = []
+            for k in self.articles! {
+                tmp.append(k.toMap())
+            }
+            map["Articles"] = tmp
+        }
+        if self.children != nil {
+            var tmp : [Any] = []
+            for k in self.children! {
+                tmp.append(k.toMap())
+            }
+            map["Children"] = tmp
+        }
+        if self.outline != nil {
+            map["Outline"] = self.outline!
+        }
+        if self.outlineId != nil {
+            map["OutlineId"] = self.outlineId!
+        }
+        if self.searchKeyWordList != nil {
+            map["SearchKeyWordList"] = self.searchKeyWordList!
+        }
+        if self.wordCount != nil {
+            map["WordCount"] = self.wordCount!
+        }
+        if self.writingTips != nil {
+            map["WritingTips"] = self.writingTips!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["Articles"] as? [Any?] {
+            var tmp : [OutlineWritingArticle] = []
+            for v in value {
+                if v != nil {
+                    var model = OutlineWritingArticle()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.articles = tmp
+        }
+        if let value = dict["Children"] as? [Any?] {
+            var tmp : [WritingOutline] = []
+            for v in value {
+                if v != nil {
+                    var model = WritingOutline()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.children = tmp
+        }
+        if let value = dict["Outline"] as? String {
+            self.outline = value
+        }
+        if let value = dict["OutlineId"] as? String {
+            self.outlineId = value
+        }
+        if let value = dict["SearchKeyWordList"] as? [String] {
+            self.searchKeyWordList = value
+        }
+        if let value = dict["WordCount"] as? String {
+            self.wordCount = value
+        }
+        if let value = dict["WritingTips"] as? String {
+            self.writingTips = value
+        }
+    }
+}
+
 public class WritingStyleTemplateDefine : Tea.TeaModel {
     public class Example : Tea.TeaModel {
         public var key: String?
@@ -63333,6 +63818,8 @@ public class RunWritingV2Request : Tea.TeaModel {
 
     public var miniDocs: [RunWritingV2Request.MiniDocs]?
 
+    public var outlineList: [WritingOutline]?
+
     public var outlines: [RunWritingV2Request.Outlines]?
 
     public var prompt: String?
@@ -63342,6 +63829,8 @@ public class RunWritingV2Request : Tea.TeaModel {
     public var searchSources: [RunWritingV2Request.SearchSources]?
 
     public var sessionId: String?
+
+    public var sourceTraceMethod: String?
 
     public var step: String?
 
@@ -63402,6 +63891,13 @@ public class RunWritingV2Request : Tea.TeaModel {
             }
             map["MiniDocs"] = tmp
         }
+        if self.outlineList != nil {
+            var tmp : [Any] = []
+            for k in self.outlineList! {
+                tmp.append(k.toMap())
+            }
+            map["OutlineList"] = tmp
+        }
         if self.outlines != nil {
             var tmp : [Any] = []
             for k in self.outlines! {
@@ -63424,6 +63920,9 @@ public class RunWritingV2Request : Tea.TeaModel {
         }
         if self.sessionId != nil {
             map["SessionId"] = self.sessionId!
+        }
+        if self.sourceTraceMethod != nil {
+            map["SourceTraceMethod"] = self.sourceTraceMethod!
         }
         if self.step != nil {
             map["Step"] = self.step!
@@ -63499,6 +63998,19 @@ public class RunWritingV2Request : Tea.TeaModel {
             }
             self.miniDocs = tmp
         }
+        if let value = dict["OutlineList"] as? [Any?] {
+            var tmp : [WritingOutline] = []
+            for v in value {
+                if v != nil {
+                    var model = WritingOutline()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.outlineList = tmp
+        }
         if let value = dict["Outlines"] as? [Any?] {
             var tmp : [RunWritingV2Request.Outlines] = []
             for v in value {
@@ -63533,6 +64045,9 @@ public class RunWritingV2Request : Tea.TeaModel {
         }
         if let value = dict["SessionId"] as? String {
             self.sessionId = value
+        }
+        if let value = dict["SourceTraceMethod"] as? String {
+            self.sourceTraceMethod = value
         }
         if let value = dict["Step"] as? String {
             self.step = value
@@ -63586,6 +64101,8 @@ public class RunWritingV2ShrinkRequest : Tea.TeaModel {
 
     public var miniDocsShrink: String?
 
+    public var outlineListShrink: String?
+
     public var outlinesShrink: String?
 
     public var prompt: String?
@@ -63595,6 +64112,8 @@ public class RunWritingV2ShrinkRequest : Tea.TeaModel {
     public var searchSourcesShrink: String?
 
     public var sessionId: String?
+
+    public var sourceTraceMethod: String?
 
     public var step: String?
 
@@ -63647,6 +64166,9 @@ public class RunWritingV2ShrinkRequest : Tea.TeaModel {
         if self.miniDocsShrink != nil {
             map["MiniDocs"] = self.miniDocsShrink!
         }
+        if self.outlineListShrink != nil {
+            map["OutlineList"] = self.outlineListShrink!
+        }
         if self.outlinesShrink != nil {
             map["Outlines"] = self.outlinesShrink!
         }
@@ -63661,6 +64183,9 @@ public class RunWritingV2ShrinkRequest : Tea.TeaModel {
         }
         if self.sessionId != nil {
             map["SessionId"] = self.sessionId!
+        }
+        if self.sourceTraceMethod != nil {
+            map["SourceTraceMethod"] = self.sourceTraceMethod!
         }
         if self.step != nil {
             map["Step"] = self.step!
@@ -63712,6 +64237,9 @@ public class RunWritingV2ShrinkRequest : Tea.TeaModel {
         if let value = dict["MiniDocs"] as? String {
             self.miniDocsShrink = value
         }
+        if let value = dict["OutlineList"] as? String {
+            self.outlineListShrink = value
+        }
         if let value = dict["Outlines"] as? String {
             self.outlinesShrink = value
         }
@@ -63726,6 +64254,9 @@ public class RunWritingV2ShrinkRequest : Tea.TeaModel {
         }
         if let value = dict["SessionId"] as? String {
             self.sessionId = value
+        }
+        if let value = dict["SourceTraceMethod"] as? String {
+            self.sourceTraceMethod = value
         }
         if let value = dict["Step"] as? String {
             self.step = value
@@ -63947,11 +64478,19 @@ public class RunWritingV2ResponseBody : Tea.TeaModel {
             }
             public var articles: [RunWritingV2ResponseBody.Payload.Output.Articles]?
 
+            public var generateTraceability: GenerateTraceability?
+
             public var miniDoc: [String]?
+
+            public var outlines: [WritingOutline]?
 
             public var searchQuery: String?
 
+            public var searchResult: OutlineSearchResult?
+
             public var text: String?
+
+            public var title: String?
 
             public override init() {
                 super.init()
@@ -63963,6 +64502,8 @@ public class RunWritingV2ResponseBody : Tea.TeaModel {
             }
 
             public override func validate() throws -> Void {
+                try self.generateTraceability?.validate()
+                try self.searchResult?.validate()
             }
 
             public override func toMap() -> [String : Any] {
@@ -63974,14 +64515,30 @@ public class RunWritingV2ResponseBody : Tea.TeaModel {
                     }
                     map["Articles"] = tmp
                 }
+                if self.generateTraceability != nil {
+                    map["GenerateTraceability"] = self.generateTraceability?.toMap()
+                }
                 if self.miniDoc != nil {
                     map["MiniDoc"] = self.miniDoc!
+                }
+                if self.outlines != nil {
+                    var tmp : [Any] = []
+                    for k in self.outlines! {
+                        tmp.append(k.toMap())
+                    }
+                    map["Outlines"] = tmp
                 }
                 if self.searchQuery != nil {
                     map["SearchQuery"] = self.searchQuery!
                 }
+                if self.searchResult != nil {
+                    map["SearchResult"] = self.searchResult?.toMap()
+                }
                 if self.text != nil {
                     map["Text"] = self.text!
+                }
+                if self.title != nil {
+                    map["Title"] = self.title!
                 }
                 return map
             }
@@ -64001,14 +64558,40 @@ public class RunWritingV2ResponseBody : Tea.TeaModel {
                     }
                     self.articles = tmp
                 }
+                if let value = dict["GenerateTraceability"] as? [String: Any?] {
+                    var model = GenerateTraceability()
+                    model.fromMap(value)
+                    self.generateTraceability = model
+                }
                 if let value = dict["MiniDoc"] as? [String] {
                     self.miniDoc = value
+                }
+                if let value = dict["Outlines"] as? [Any?] {
+                    var tmp : [WritingOutline] = []
+                    for v in value {
+                        if v != nil {
+                            var model = WritingOutline()
+                            if v != nil {
+                                model.fromMap(v as? [String: Any?])
+                            }
+                            tmp.append(model)
+                        }
+                    }
+                    self.outlines = tmp
                 }
                 if let value = dict["SearchQuery"] as? String {
                     self.searchQuery = value
                 }
+                if let value = dict["SearchResult"] as? [String: Any?] {
+                    var model = OutlineSearchResult()
+                    model.fromMap(value)
+                    self.searchResult = model
+                }
                 if let value = dict["Text"] as? String {
                     self.text = value
+                }
+                if let value = dict["Title"] as? String {
+                    self.title = value
                 }
             }
         }
