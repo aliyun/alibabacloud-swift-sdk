@@ -18373,6 +18373,12 @@ public class DescribeUdmSnapshotsResponseBody : Tea.TeaModel {
 
         public var advancedRetentionType: String?
 
+        public var archiveErrorMessage: String?
+
+        public var archiveStatus: String?
+
+        public var archiveTriggerTime: Int64?
+
         public var backupType: String?
 
         public var bytesTotal: Int64?
@@ -18439,6 +18445,15 @@ public class DescribeUdmSnapshotsResponseBody : Tea.TeaModel {
             }
             if self.advancedRetentionType != nil {
                 map["AdvancedRetentionType"] = self.advancedRetentionType!
+            }
+            if self.archiveErrorMessage != nil {
+                map["ArchiveErrorMessage"] = self.archiveErrorMessage!
+            }
+            if self.archiveStatus != nil {
+                map["ArchiveStatus"] = self.archiveStatus!
+            }
+            if self.archiveTriggerTime != nil {
+                map["ArchiveTriggerTime"] = self.archiveTriggerTime!
             }
             if self.backupType != nil {
                 map["BackupType"] = self.backupType!
@@ -18519,6 +18534,15 @@ public class DescribeUdmSnapshotsResponseBody : Tea.TeaModel {
             }
             if let value = dict["AdvancedRetentionType"] as? String {
                 self.advancedRetentionType = value
+            }
+            if let value = dict["ArchiveErrorMessage"] as? String {
+                self.archiveErrorMessage = value
+            }
+            if let value = dict["ArchiveStatus"] as? String {
+                self.archiveStatus = value
+            }
+            if let value = dict["ArchiveTriggerTime"] as? Int64 {
+                self.archiveTriggerTime = value
             }
             if let value = dict["BackupType"] as? String {
                 self.backupType = value
