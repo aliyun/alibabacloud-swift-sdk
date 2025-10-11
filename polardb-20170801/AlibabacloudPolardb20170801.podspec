@@ -1,7 +1,7 @@
 Pod::Spec.new do |spec|
 
   spec.name         = "AlibabacloudPolardb20170801"
-  spec.version      = "4.11.0"
+  spec.version      = "4.12.0"
   spec.license      = "Apache 2.0"
   spec.summary      = "Alibaba Cloud ApsaraDB for POLARDB (20170801) SDK Library for Swift"
   spec.homepage     = "https://github.com/alibabacloud-sdk-swift/polardb-20170801" 

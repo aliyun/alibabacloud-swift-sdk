@@ -693,6 +693,158 @@ public class AddSQLRateLimitingRulesResponse : Tea.TeaModel {
     }
 }
 
+public class AttachApplicationPolarFSRequest : Tea.TeaModel {
+    public var applicationId: String?
+
+    public var polarFSAccessKeyId: String?
+
+    public var polarFSAccessKeySecret: String?
+
+    public var polarFSInstanceId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.applicationId != nil {
+            map["ApplicationId"] = self.applicationId!
+        }
+        if self.polarFSAccessKeyId != nil {
+            map["PolarFSAccessKeyId"] = self.polarFSAccessKeyId!
+        }
+        if self.polarFSAccessKeySecret != nil {
+            map["PolarFSAccessKeySecret"] = self.polarFSAccessKeySecret!
+        }
+        if self.polarFSInstanceId != nil {
+            map["PolarFSInstanceId"] = self.polarFSInstanceId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["ApplicationId"] as? String {
+            self.applicationId = value
+        }
+        if let value = dict["PolarFSAccessKeyId"] as? String {
+            self.polarFSAccessKeyId = value
+        }
+        if let value = dict["PolarFSAccessKeySecret"] as? String {
+            self.polarFSAccessKeySecret = value
+        }
+        if let value = dict["PolarFSInstanceId"] as? String {
+            self.polarFSInstanceId = value
+        }
+    }
+}
+
+public class AttachApplicationPolarFSResponseBody : Tea.TeaModel {
+    public var applicationId: String?
+
+    public var polarFSInstanceId: String?
+
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.applicationId != nil {
+            map["ApplicationId"] = self.applicationId!
+        }
+        if self.polarFSInstanceId != nil {
+            map["PolarFSInstanceId"] = self.polarFSInstanceId!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["ApplicationId"] as? String {
+            self.applicationId = value
+        }
+        if let value = dict["PolarFSInstanceId"] as? String {
+            self.polarFSInstanceId = value
+        }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+    }
+}
+
+public class AttachApplicationPolarFSResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: AttachApplicationPolarFSResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = AttachApplicationPolarFSResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
 public class CancelActiveOperationTasksRequest : Tea.TeaModel {
     public var ownerAccount: String?
 
@@ -2935,6 +3087,777 @@ public class CreateActivationCodeResponse : Tea.TeaModel {
         }
         if let value = dict["body"] as? [String: Any?] {
             var model = CreateActivationCodeResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
+public class CreateApplicationRequest : Tea.TeaModel {
+    public class Components : Tea.TeaModel {
+        public var componentClass: String?
+
+        public var componentMaxReplica: Int64?
+
+        public var componentReplica: Int64?
+
+        public var componentType: String?
+
+        public var securityGroups: String?
+
+        public var securityIPArrayName: String?
+
+        public var securityIPList: String?
+
+        public var securityIPType: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.componentClass != nil {
+                map["ComponentClass"] = self.componentClass!
+            }
+            if self.componentMaxReplica != nil {
+                map["ComponentMaxReplica"] = self.componentMaxReplica!
+            }
+            if self.componentReplica != nil {
+                map["ComponentReplica"] = self.componentReplica!
+            }
+            if self.componentType != nil {
+                map["ComponentType"] = self.componentType!
+            }
+            if self.securityGroups != nil {
+                map["SecurityGroups"] = self.securityGroups!
+            }
+            if self.securityIPArrayName != nil {
+                map["SecurityIPArrayName"] = self.securityIPArrayName!
+            }
+            if self.securityIPList != nil {
+                map["SecurityIPList"] = self.securityIPList!
+            }
+            if self.securityIPType != nil {
+                map["SecurityIPType"] = self.securityIPType!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["ComponentClass"] as? String {
+                self.componentClass = value
+            }
+            if let value = dict["ComponentMaxReplica"] as? Int64 {
+                self.componentMaxReplica = value
+            }
+            if let value = dict["ComponentReplica"] as? Int64 {
+                self.componentReplica = value
+            }
+            if let value = dict["ComponentType"] as? String {
+                self.componentType = value
+            }
+            if let value = dict["SecurityGroups"] as? String {
+                self.securityGroups = value
+            }
+            if let value = dict["SecurityIPArrayName"] as? String {
+                self.securityIPArrayName = value
+            }
+            if let value = dict["SecurityIPList"] as? String {
+                self.securityIPList = value
+            }
+            if let value = dict["SecurityIPType"] as? String {
+                self.securityIPType = value
+            }
+        }
+    }
+    public class Endpoints : Tea.TeaModel {
+        public var description_: String?
+
+        public var endpointType: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.description_ != nil {
+                map["Description"] = self.description_!
+            }
+            if self.endpointType != nil {
+                map["EndpointType"] = self.endpointType!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["Description"] as? String {
+                self.description_ = value
+            }
+            if let value = dict["EndpointType"] as? String {
+                self.endpointType = value
+            }
+        }
+    }
+    public var applicationType: String?
+
+    public var architecture: String?
+
+    public var autoRenew: Bool?
+
+    public var components: [CreateApplicationRequest.Components]?
+
+    public var DBClusterId: String?
+
+    public var description_: String?
+
+    public var dryRun: Bool?
+
+    public var endpoints: [CreateApplicationRequest.Endpoints]?
+
+    public var payType: String?
+
+    public var period: String?
+
+    public var polarFSInstanceId: String?
+
+    public var regionId: String?
+
+    public var resourceGroupId: String?
+
+    public var usedTime: String?
+
+    public var vSwitchId: String?
+
+    public var zoneId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.applicationType != nil {
+            map["ApplicationType"] = self.applicationType!
+        }
+        if self.architecture != nil {
+            map["Architecture"] = self.architecture!
+        }
+        if self.autoRenew != nil {
+            map["AutoRenew"] = self.autoRenew!
+        }
+        if self.components != nil {
+            var tmp : [Any] = []
+            for k in self.components! {
+                tmp.append(k.toMap())
+            }
+            map["Components"] = tmp
+        }
+        if self.DBClusterId != nil {
+            map["DBClusterId"] = self.DBClusterId!
+        }
+        if self.description_ != nil {
+            map["Description"] = self.description_!
+        }
+        if self.dryRun != nil {
+            map["DryRun"] = self.dryRun!
+        }
+        if self.endpoints != nil {
+            var tmp : [Any] = []
+            for k in self.endpoints! {
+                tmp.append(k.toMap())
+            }
+            map["Endpoints"] = tmp
+        }
+        if self.payType != nil {
+            map["PayType"] = self.payType!
+        }
+        if self.period != nil {
+            map["Period"] = self.period!
+        }
+        if self.polarFSInstanceId != nil {
+            map["PolarFSInstanceId"] = self.polarFSInstanceId!
+        }
+        if self.regionId != nil {
+            map["RegionId"] = self.regionId!
+        }
+        if self.resourceGroupId != nil {
+            map["ResourceGroupId"] = self.resourceGroupId!
+        }
+        if self.usedTime != nil {
+            map["UsedTime"] = self.usedTime!
+        }
+        if self.vSwitchId != nil {
+            map["VSwitchId"] = self.vSwitchId!
+        }
+        if self.zoneId != nil {
+            map["ZoneId"] = self.zoneId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["ApplicationType"] as? String {
+            self.applicationType = value
+        }
+        if let value = dict["Architecture"] as? String {
+            self.architecture = value
+        }
+        if let value = dict["AutoRenew"] as? Bool {
+            self.autoRenew = value
+        }
+        if let value = dict["Components"] as? [Any?] {
+            var tmp : [CreateApplicationRequest.Components] = []
+            for v in value {
+                if v != nil {
+                    var model = CreateApplicationRequest.Components()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.components = tmp
+        }
+        if let value = dict["DBClusterId"] as? String {
+            self.DBClusterId = value
+        }
+        if let value = dict["Description"] as? String {
+            self.description_ = value
+        }
+        if let value = dict["DryRun"] as? Bool {
+            self.dryRun = value
+        }
+        if let value = dict["Endpoints"] as? [Any?] {
+            var tmp : [CreateApplicationRequest.Endpoints] = []
+            for v in value {
+                if v != nil {
+                    var model = CreateApplicationRequest.Endpoints()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.endpoints = tmp
+        }
+        if let value = dict["PayType"] as? String {
+            self.payType = value
+        }
+        if let value = dict["Period"] as? String {
+            self.period = value
+        }
+        if let value = dict["PolarFSInstanceId"] as? String {
+            self.polarFSInstanceId = value
+        }
+        if let value = dict["RegionId"] as? String {
+            self.regionId = value
+        }
+        if let value = dict["ResourceGroupId"] as? String {
+            self.resourceGroupId = value
+        }
+        if let value = dict["UsedTime"] as? String {
+            self.usedTime = value
+        }
+        if let value = dict["VSwitchId"] as? String {
+            self.vSwitchId = value
+        }
+        if let value = dict["ZoneId"] as? String {
+            self.zoneId = value
+        }
+    }
+}
+
+public class CreateApplicationShrinkRequest : Tea.TeaModel {
+    public var applicationType: String?
+
+    public var architecture: String?
+
+    public var autoRenew: Bool?
+
+    public var componentsShrink: String?
+
+    public var DBClusterId: String?
+
+    public var description_: String?
+
+    public var dryRun: Bool?
+
+    public var endpointsShrink: String?
+
+    public var payType: String?
+
+    public var period: String?
+
+    public var polarFSInstanceId: String?
+
+    public var regionId: String?
+
+    public var resourceGroupId: String?
+
+    public var usedTime: String?
+
+    public var vSwitchId: String?
+
+    public var zoneId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.applicationType != nil {
+            map["ApplicationType"] = self.applicationType!
+        }
+        if self.architecture != nil {
+            map["Architecture"] = self.architecture!
+        }
+        if self.autoRenew != nil {
+            map["AutoRenew"] = self.autoRenew!
+        }
+        if self.componentsShrink != nil {
+            map["Components"] = self.componentsShrink!
+        }
+        if self.DBClusterId != nil {
+            map["DBClusterId"] = self.DBClusterId!
+        }
+        if self.description_ != nil {
+            map["Description"] = self.description_!
+        }
+        if self.dryRun != nil {
+            map["DryRun"] = self.dryRun!
+        }
+        if self.endpointsShrink != nil {
+            map["Endpoints"] = self.endpointsShrink!
+        }
+        if self.payType != nil {
+            map["PayType"] = self.payType!
+        }
+        if self.period != nil {
+            map["Period"] = self.period!
+        }
+        if self.polarFSInstanceId != nil {
+            map["PolarFSInstanceId"] = self.polarFSInstanceId!
+        }
+        if self.regionId != nil {
+            map["RegionId"] = self.regionId!
+        }
+        if self.resourceGroupId != nil {
+            map["ResourceGroupId"] = self.resourceGroupId!
+        }
+        if self.usedTime != nil {
+            map["UsedTime"] = self.usedTime!
+        }
+        if self.vSwitchId != nil {
+            map["VSwitchId"] = self.vSwitchId!
+        }
+        if self.zoneId != nil {
+            map["ZoneId"] = self.zoneId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["ApplicationType"] as? String {
+            self.applicationType = value
+        }
+        if let value = dict["Architecture"] as? String {
+            self.architecture = value
+        }
+        if let value = dict["AutoRenew"] as? Bool {
+            self.autoRenew = value
+        }
+        if let value = dict["Components"] as? String {
+            self.componentsShrink = value
+        }
+        if let value = dict["DBClusterId"] as? String {
+            self.DBClusterId = value
+        }
+        if let value = dict["Description"] as? String {
+            self.description_ = value
+        }
+        if let value = dict["DryRun"] as? Bool {
+            self.dryRun = value
+        }
+        if let value = dict["Endpoints"] as? String {
+            self.endpointsShrink = value
+        }
+        if let value = dict["PayType"] as? String {
+            self.payType = value
+        }
+        if let value = dict["Period"] as? String {
+            self.period = value
+        }
+        if let value = dict["PolarFSInstanceId"] as? String {
+            self.polarFSInstanceId = value
+        }
+        if let value = dict["RegionId"] as? String {
+            self.regionId = value
+        }
+        if let value = dict["ResourceGroupId"] as? String {
+            self.resourceGroupId = value
+        }
+        if let value = dict["UsedTime"] as? String {
+            self.usedTime = value
+        }
+        if let value = dict["VSwitchId"] as? String {
+            self.vSwitchId = value
+        }
+        if let value = dict["ZoneId"] as? String {
+            self.zoneId = value
+        }
+    }
+}
+
+public class CreateApplicationResponseBody : Tea.TeaModel {
+    public class Components : Tea.TeaModel {
+        public var componentId: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.componentId != nil {
+                map["ComponentId"] = self.componentId!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["ComponentId"] as? String {
+                self.componentId = value
+            }
+        }
+    }
+    public var applicationId: String?
+
+    public var components: [CreateApplicationResponseBody.Components]?
+
+    public var description_: String?
+
+    public var orderId: String?
+
+    public var requestId: String?
+
+    public var resourceAvailable: Bool?
+
+    public var resourceGroupId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.applicationId != nil {
+            map["ApplicationId"] = self.applicationId!
+        }
+        if self.components != nil {
+            var tmp : [Any] = []
+            for k in self.components! {
+                tmp.append(k.toMap())
+            }
+            map["Components"] = tmp
+        }
+        if self.description_ != nil {
+            map["Description"] = self.description_!
+        }
+        if self.orderId != nil {
+            map["OrderId"] = self.orderId!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.resourceAvailable != nil {
+            map["ResourceAvailable"] = self.resourceAvailable!
+        }
+        if self.resourceGroupId != nil {
+            map["ResourceGroupId"] = self.resourceGroupId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["ApplicationId"] as? String {
+            self.applicationId = value
+        }
+        if let value = dict["Components"] as? [Any?] {
+            var tmp : [CreateApplicationResponseBody.Components] = []
+            for v in value {
+                if v != nil {
+                    var model = CreateApplicationResponseBody.Components()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.components = tmp
+        }
+        if let value = dict["Description"] as? String {
+            self.description_ = value
+        }
+        if let value = dict["OrderId"] as? String {
+            self.orderId = value
+        }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+        if let value = dict["ResourceAvailable"] as? Bool {
+            self.resourceAvailable = value
+        }
+        if let value = dict["ResourceGroupId"] as? String {
+            self.resourceGroupId = value
+        }
+    }
+}
+
+public class CreateApplicationResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: CreateApplicationResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = CreateApplicationResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
+public class CreateApplicationEndpointAddressRequest : Tea.TeaModel {
+    public var applicationId: String?
+
+    public var endpointId: String?
+
+    public var netType: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.applicationId != nil {
+            map["ApplicationId"] = self.applicationId!
+        }
+        if self.endpointId != nil {
+            map["EndpointId"] = self.endpointId!
+        }
+        if self.netType != nil {
+            map["NetType"] = self.netType!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["ApplicationId"] as? String {
+            self.applicationId = value
+        }
+        if let value = dict["EndpointId"] as? String {
+            self.endpointId = value
+        }
+        if let value = dict["NetType"] as? String {
+            self.netType = value
+        }
+    }
+}
+
+public class CreateApplicationEndpointAddressResponseBody : Tea.TeaModel {
+    public var applicationId: String?
+
+    public var endpointId: String?
+
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.applicationId != nil {
+            map["ApplicationId"] = self.applicationId!
+        }
+        if self.endpointId != nil {
+            map["EndpointId"] = self.endpointId!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["ApplicationId"] as? String {
+            self.applicationId = value
+        }
+        if let value = dict["EndpointId"] as? String {
+            self.endpointId = value
+        }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+    }
+}
+
+public class CreateApplicationEndpointAddressResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: CreateApplicationEndpointAddressResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = CreateApplicationEndpointAddressResponseBody()
             model.fromMap(value)
             self.body = model
         }
@@ -7326,6 +8249,126 @@ public class CreateStoragePlanResponse : Tea.TeaModel {
     }
 }
 
+public class DeleteAIDBClusterRequest : Tea.TeaModel {
+    public var DBClusterId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.DBClusterId != nil {
+            map["DBClusterId"] = self.DBClusterId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["DBClusterId"] as? String {
+            self.DBClusterId = value
+        }
+    }
+}
+
+public class DeleteAIDBClusterResponseBody : Tea.TeaModel {
+    public var DBClusterId: String?
+
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.DBClusterId != nil {
+            map["DBClusterId"] = self.DBClusterId!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["DBClusterId"] as? String {
+            self.DBClusterId = value
+        }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+    }
+}
+
+public class DeleteAIDBClusterResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: DeleteAIDBClusterResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = DeleteAIDBClusterResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
 public class DeleteAccountRequest : Tea.TeaModel {
     public var accountName: String?
 
@@ -7584,6 +8627,150 @@ public class DeleteApplicationResponse : Tea.TeaModel {
         }
         if let value = dict["body"] as? [String: Any?] {
             var model = DeleteApplicationResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
+public class DeleteApplicationEndpointAddressRequest : Tea.TeaModel {
+    public var applicationId: String?
+
+    public var endpointId: String?
+
+    public var netType: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.applicationId != nil {
+            map["ApplicationId"] = self.applicationId!
+        }
+        if self.endpointId != nil {
+            map["EndpointId"] = self.endpointId!
+        }
+        if self.netType != nil {
+            map["NetType"] = self.netType!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["ApplicationId"] as? String {
+            self.applicationId = value
+        }
+        if let value = dict["EndpointId"] as? String {
+            self.endpointId = value
+        }
+        if let value = dict["NetType"] as? String {
+            self.netType = value
+        }
+    }
+}
+
+public class DeleteApplicationEndpointAddressResponseBody : Tea.TeaModel {
+    public var applicationId: String?
+
+    public var endpointId: String?
+
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.applicationId != nil {
+            map["ApplicationId"] = self.applicationId!
+        }
+        if self.endpointId != nil {
+            map["EndpointId"] = self.endpointId!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["ApplicationId"] as? String {
+            self.applicationId = value
+        }
+        if let value = dict["EndpointId"] as? String {
+            self.endpointId = value
+        }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+    }
+}
+
+public class DeleteApplicationEndpointAddressResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: DeleteApplicationEndpointAddressResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = DeleteApplicationEndpointAddressResponseBody()
             model.fromMap(value)
             self.body = model
         }
@@ -10868,6 +12055,8 @@ public class DescribeAIDBClusterAttributeResponseBody : Tea.TeaModel {
 
     public var payType: String?
 
+    public var publicIp: String?
+
     public var regionId: String?
 
     public var requestId: String?
@@ -10955,6 +12144,9 @@ public class DescribeAIDBClusterAttributeResponseBody : Tea.TeaModel {
         }
         if self.payType != nil {
             map["PayType"] = self.payType!
+        }
+        if self.publicIp != nil {
+            map["PublicIp"] = self.publicIp!
         }
         if self.regionId != nil {
             map["RegionId"] = self.regionId!
@@ -11059,6 +12251,9 @@ public class DescribeAIDBClusterAttributeResponseBody : Tea.TeaModel {
         }
         if let value = dict["PayType"] as? String {
             self.payType = value
+        }
+        if let value = dict["PublicIp"] as? String {
+            self.publicIp = value
         }
         if let value = dict["RegionId"] as? String {
             self.regionId = value
@@ -13927,6 +15122,1850 @@ public class DescribeActiveOperationTasksResponse : Tea.TeaModel {
         }
         if let value = dict["body"] as? [String: Any?] {
             var model = DescribeActiveOperationTasksResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
+public class DescribeApplicationAttributeRequest : Tea.TeaModel {
+    public var applicationId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.applicationId != nil {
+            map["ApplicationId"] = self.applicationId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["ApplicationId"] as? String {
+            self.applicationId = value
+        }
+    }
+}
+
+public class DescribeApplicationAttributeResponseBody : Tea.TeaModel {
+    public class Components : Tea.TeaModel {
+        public class SecurityGroups : Tea.TeaModel {
+            public var netType: String?
+
+            public var regionId: String?
+
+            public var securityGroupId: String?
+
+            public var securityGroupName: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.netType != nil {
+                    map["NetType"] = self.netType!
+                }
+                if self.regionId != nil {
+                    map["RegionId"] = self.regionId!
+                }
+                if self.securityGroupId != nil {
+                    map["SecurityGroupId"] = self.securityGroupId!
+                }
+                if self.securityGroupName != nil {
+                    map["SecurityGroupName"] = self.securityGroupName!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["NetType"] as? String {
+                    self.netType = value
+                }
+                if let value = dict["RegionId"] as? String {
+                    self.regionId = value
+                }
+                if let value = dict["SecurityGroupId"] as? String {
+                    self.securityGroupId = value
+                }
+                if let value = dict["SecurityGroupName"] as? String {
+                    self.securityGroupName = value
+                }
+            }
+        }
+        public class SecurityIPArrays : Tea.TeaModel {
+            public var securityIPArrayName: String?
+
+            public var securityIPArrayTag: String?
+
+            public var securityIPList: String?
+
+            public var securityIPNetType: String?
+
+            public var securityIPType: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.securityIPArrayName != nil {
+                    map["SecurityIPArrayName"] = self.securityIPArrayName!
+                }
+                if self.securityIPArrayTag != nil {
+                    map["SecurityIPArrayTag"] = self.securityIPArrayTag!
+                }
+                if self.securityIPList != nil {
+                    map["SecurityIPList"] = self.securityIPList!
+                }
+                if self.securityIPNetType != nil {
+                    map["SecurityIPNetType"] = self.securityIPNetType!
+                }
+                if self.securityIPType != nil {
+                    map["SecurityIPType"] = self.securityIPType!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["SecurityIPArrayName"] as? String {
+                    self.securityIPArrayName = value
+                }
+                if let value = dict["SecurityIPArrayTag"] as? String {
+                    self.securityIPArrayTag = value
+                }
+                if let value = dict["SecurityIPList"] as? String {
+                    self.securityIPList = value
+                }
+                if let value = dict["SecurityIPNetType"] as? String {
+                    self.securityIPNetType = value
+                }
+                if let value = dict["SecurityIPType"] as? String {
+                    self.securityIPType = value
+                }
+            }
+        }
+        public class Topology : Tea.TeaModel {
+            public var children: [String]?
+
+            public var layer: String?
+
+            public var parents: [String]?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.children != nil {
+                    map["Children"] = self.children!
+                }
+                if self.layer != nil {
+                    map["Layer"] = self.layer!
+                }
+                if self.parents != nil {
+                    map["Parents"] = self.parents!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["Children"] as? [String] {
+                    self.children = value
+                }
+                if let value = dict["Layer"] as? String {
+                    self.layer = value
+                }
+                if let value = dict["Parents"] as? [String] {
+                    self.parents = value
+                }
+            }
+        }
+        public var componentClass: String?
+
+        public var componentClassDescription: String?
+
+        public var componentId: String?
+
+        public var componentMaxReplica: Int64?
+
+        public var componentReplica: Int64?
+
+        public var componentReplicaGroupName: String?
+
+        public var componentType: String?
+
+        public var securityGroups: [DescribeApplicationAttributeResponseBody.Components.SecurityGroups]?
+
+        public var securityIPArrays: [DescribeApplicationAttributeResponseBody.Components.SecurityIPArrays]?
+
+        public var status: String?
+
+        public var topology: DescribeApplicationAttributeResponseBody.Components.Topology?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+            try self.topology?.validate()
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.componentClass != nil {
+                map["ComponentClass"] = self.componentClass!
+            }
+            if self.componentClassDescription != nil {
+                map["ComponentClassDescription"] = self.componentClassDescription!
+            }
+            if self.componentId != nil {
+                map["ComponentId"] = self.componentId!
+            }
+            if self.componentMaxReplica != nil {
+                map["ComponentMaxReplica"] = self.componentMaxReplica!
+            }
+            if self.componentReplica != nil {
+                map["ComponentReplica"] = self.componentReplica!
+            }
+            if self.componentReplicaGroupName != nil {
+                map["ComponentReplicaGroupName"] = self.componentReplicaGroupName!
+            }
+            if self.componentType != nil {
+                map["ComponentType"] = self.componentType!
+            }
+            if self.securityGroups != nil {
+                var tmp : [Any] = []
+                for k in self.securityGroups! {
+                    tmp.append(k.toMap())
+                }
+                map["SecurityGroups"] = tmp
+            }
+            if self.securityIPArrays != nil {
+                var tmp : [Any] = []
+                for k in self.securityIPArrays! {
+                    tmp.append(k.toMap())
+                }
+                map["SecurityIPArrays"] = tmp
+            }
+            if self.status != nil {
+                map["Status"] = self.status!
+            }
+            if self.topology != nil {
+                map["Topology"] = self.topology?.toMap()
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["ComponentClass"] as? String {
+                self.componentClass = value
+            }
+            if let value = dict["ComponentClassDescription"] as? String {
+                self.componentClassDescription = value
+            }
+            if let value = dict["ComponentId"] as? String {
+                self.componentId = value
+            }
+            if let value = dict["ComponentMaxReplica"] as? Int64 {
+                self.componentMaxReplica = value
+            }
+            if let value = dict["ComponentReplica"] as? Int64 {
+                self.componentReplica = value
+            }
+            if let value = dict["ComponentReplicaGroupName"] as? String {
+                self.componentReplicaGroupName = value
+            }
+            if let value = dict["ComponentType"] as? String {
+                self.componentType = value
+            }
+            if let value = dict["SecurityGroups"] as? [Any?] {
+                var tmp : [DescribeApplicationAttributeResponseBody.Components.SecurityGroups] = []
+                for v in value {
+                    if v != nil {
+                        var model = DescribeApplicationAttributeResponseBody.Components.SecurityGroups()
+                        if v != nil {
+                            model.fromMap(v as? [String: Any?])
+                        }
+                        tmp.append(model)
+                    }
+                }
+                self.securityGroups = tmp
+            }
+            if let value = dict["SecurityIPArrays"] as? [Any?] {
+                var tmp : [DescribeApplicationAttributeResponseBody.Components.SecurityIPArrays] = []
+                for v in value {
+                    if v != nil {
+                        var model = DescribeApplicationAttributeResponseBody.Components.SecurityIPArrays()
+                        if v != nil {
+                            model.fromMap(v as? [String: Any?])
+                        }
+                        tmp.append(model)
+                    }
+                }
+                self.securityIPArrays = tmp
+            }
+            if let value = dict["Status"] as? String {
+                self.status = value
+            }
+            if let value = dict["Topology"] as? [String: Any?] {
+                var model = DescribeApplicationAttributeResponseBody.Components.Topology()
+                model.fromMap(value)
+                self.topology = model
+            }
+        }
+    }
+    public class Endpoints : Tea.TeaModel {
+        public var description_: String?
+
+        public var endpointId: String?
+
+        public var IP: String?
+
+        public var netType: String?
+
+        public var port: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.description_ != nil {
+                map["Description"] = self.description_!
+            }
+            if self.endpointId != nil {
+                map["EndpointId"] = self.endpointId!
+            }
+            if self.IP != nil {
+                map["IP"] = self.IP!
+            }
+            if self.netType != nil {
+                map["NetType"] = self.netType!
+            }
+            if self.port != nil {
+                map["Port"] = self.port!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["Description"] as? String {
+                self.description_ = value
+            }
+            if let value = dict["EndpointId"] as? String {
+                self.endpointId = value
+            }
+            if let value = dict["IP"] as? String {
+                self.IP = value
+            }
+            if let value = dict["NetType"] as? String {
+                self.netType = value
+            }
+            if let value = dict["Port"] as? String {
+                self.port = value
+            }
+        }
+    }
+    public class SecurityGroups : Tea.TeaModel {
+        public var netType: String?
+
+        public var regionId: String?
+
+        public var securityGroupId: String?
+
+        public var securityGroupName: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.netType != nil {
+                map["NetType"] = self.netType!
+            }
+            if self.regionId != nil {
+                map["RegionId"] = self.regionId!
+            }
+            if self.securityGroupId != nil {
+                map["SecurityGroupId"] = self.securityGroupId!
+            }
+            if self.securityGroupName != nil {
+                map["SecurityGroupName"] = self.securityGroupName!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["NetType"] as? String {
+                self.netType = value
+            }
+            if let value = dict["RegionId"] as? String {
+                self.regionId = value
+            }
+            if let value = dict["SecurityGroupId"] as? String {
+                self.securityGroupId = value
+            }
+            if let value = dict["SecurityGroupName"] as? String {
+                self.securityGroupName = value
+            }
+        }
+    }
+    public class SecurityIPArrays : Tea.TeaModel {
+        public var securityIPArrayName: String?
+
+        public var securityIPArrayTag: String?
+
+        public var securityIPList: String?
+
+        public var securityIPNetType: String?
+
+        public var securityIPType: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.securityIPArrayName != nil {
+                map["SecurityIPArrayName"] = self.securityIPArrayName!
+            }
+            if self.securityIPArrayTag != nil {
+                map["SecurityIPArrayTag"] = self.securityIPArrayTag!
+            }
+            if self.securityIPList != nil {
+                map["SecurityIPList"] = self.securityIPList!
+            }
+            if self.securityIPNetType != nil {
+                map["SecurityIPNetType"] = self.securityIPNetType!
+            }
+            if self.securityIPType != nil {
+                map["SecurityIPType"] = self.securityIPType!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["SecurityIPArrayName"] as? String {
+                self.securityIPArrayName = value
+            }
+            if let value = dict["SecurityIPArrayTag"] as? String {
+                self.securityIPArrayTag = value
+            }
+            if let value = dict["SecurityIPList"] as? String {
+                self.securityIPList = value
+            }
+            if let value = dict["SecurityIPNetType"] as? String {
+                self.securityIPNetType = value
+            }
+            if let value = dict["SecurityIPType"] as? String {
+                self.securityIPType = value
+            }
+        }
+    }
+    public var applicationId: String?
+
+    public var applicationType: String?
+
+    public var architecture: String?
+
+    public var components: [DescribeApplicationAttributeResponseBody.Components]?
+
+    public var creationTime: String?
+
+    public var DBClusterId: String?
+
+    public var description_: String?
+
+    public var endpoints: [DescribeApplicationAttributeResponseBody.Endpoints]?
+
+    public var expireTime: String?
+
+    public var expired: Bool?
+
+    public var lockMode: String?
+
+    public var maintainEndTime: String?
+
+    public var maintainStartTime: String?
+
+    public var payType: String?
+
+    public var polarFSInstanceId: String?
+
+    public var regionId: String?
+
+    public var requestId: String?
+
+    public var securityGroups: [DescribeApplicationAttributeResponseBody.SecurityGroups]?
+
+    public var securityIPArrays: [DescribeApplicationAttributeResponseBody.SecurityIPArrays]?
+
+    public var status: String?
+
+    public var upgradeAvailable: String?
+
+    public var VPCId: String?
+
+    public var vSwitchId: String?
+
+    public var version: String?
+
+    public var zoneId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.applicationId != nil {
+            map["ApplicationId"] = self.applicationId!
+        }
+        if self.applicationType != nil {
+            map["ApplicationType"] = self.applicationType!
+        }
+        if self.architecture != nil {
+            map["Architecture"] = self.architecture!
+        }
+        if self.components != nil {
+            var tmp : [Any] = []
+            for k in self.components! {
+                tmp.append(k.toMap())
+            }
+            map["Components"] = tmp
+        }
+        if self.creationTime != nil {
+            map["CreationTime"] = self.creationTime!
+        }
+        if self.DBClusterId != nil {
+            map["DBClusterId"] = self.DBClusterId!
+        }
+        if self.description_ != nil {
+            map["Description"] = self.description_!
+        }
+        if self.endpoints != nil {
+            var tmp : [Any] = []
+            for k in self.endpoints! {
+                tmp.append(k.toMap())
+            }
+            map["Endpoints"] = tmp
+        }
+        if self.expireTime != nil {
+            map["ExpireTime"] = self.expireTime!
+        }
+        if self.expired != nil {
+            map["Expired"] = self.expired!
+        }
+        if self.lockMode != nil {
+            map["LockMode"] = self.lockMode!
+        }
+        if self.maintainEndTime != nil {
+            map["MaintainEndTime"] = self.maintainEndTime!
+        }
+        if self.maintainStartTime != nil {
+            map["MaintainStartTime"] = self.maintainStartTime!
+        }
+        if self.payType != nil {
+            map["PayType"] = self.payType!
+        }
+        if self.polarFSInstanceId != nil {
+            map["PolarFSInstanceId"] = self.polarFSInstanceId!
+        }
+        if self.regionId != nil {
+            map["RegionId"] = self.regionId!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.securityGroups != nil {
+            var tmp : [Any] = []
+            for k in self.securityGroups! {
+                tmp.append(k.toMap())
+            }
+            map["SecurityGroups"] = tmp
+        }
+        if self.securityIPArrays != nil {
+            var tmp : [Any] = []
+            for k in self.securityIPArrays! {
+                tmp.append(k.toMap())
+            }
+            map["SecurityIPArrays"] = tmp
+        }
+        if self.status != nil {
+            map["Status"] = self.status!
+        }
+        if self.upgradeAvailable != nil {
+            map["UpgradeAvailable"] = self.upgradeAvailable!
+        }
+        if self.VPCId != nil {
+            map["VPCId"] = self.VPCId!
+        }
+        if self.vSwitchId != nil {
+            map["VSwitchId"] = self.vSwitchId!
+        }
+        if self.version != nil {
+            map["Version"] = self.version!
+        }
+        if self.zoneId != nil {
+            map["ZoneId"] = self.zoneId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["ApplicationId"] as? String {
+            self.applicationId = value
+        }
+        if let value = dict["ApplicationType"] as? String {
+            self.applicationType = value
+        }
+        if let value = dict["Architecture"] as? String {
+            self.architecture = value
+        }
+        if let value = dict["Components"] as? [Any?] {
+            var tmp : [DescribeApplicationAttributeResponseBody.Components] = []
+            for v in value {
+                if v != nil {
+                    var model = DescribeApplicationAttributeResponseBody.Components()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.components = tmp
+        }
+        if let value = dict["CreationTime"] as? String {
+            self.creationTime = value
+        }
+        if let value = dict["DBClusterId"] as? String {
+            self.DBClusterId = value
+        }
+        if let value = dict["Description"] as? String {
+            self.description_ = value
+        }
+        if let value = dict["Endpoints"] as? [Any?] {
+            var tmp : [DescribeApplicationAttributeResponseBody.Endpoints] = []
+            for v in value {
+                if v != nil {
+                    var model = DescribeApplicationAttributeResponseBody.Endpoints()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.endpoints = tmp
+        }
+        if let value = dict["ExpireTime"] as? String {
+            self.expireTime = value
+        }
+        if let value = dict["Expired"] as? Bool {
+            self.expired = value
+        }
+        if let value = dict["LockMode"] as? String {
+            self.lockMode = value
+        }
+        if let value = dict["MaintainEndTime"] as? String {
+            self.maintainEndTime = value
+        }
+        if let value = dict["MaintainStartTime"] as? String {
+            self.maintainStartTime = value
+        }
+        if let value = dict["PayType"] as? String {
+            self.payType = value
+        }
+        if let value = dict["PolarFSInstanceId"] as? String {
+            self.polarFSInstanceId = value
+        }
+        if let value = dict["RegionId"] as? String {
+            self.regionId = value
+        }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+        if let value = dict["SecurityGroups"] as? [Any?] {
+            var tmp : [DescribeApplicationAttributeResponseBody.SecurityGroups] = []
+            for v in value {
+                if v != nil {
+                    var model = DescribeApplicationAttributeResponseBody.SecurityGroups()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.securityGroups = tmp
+        }
+        if let value = dict["SecurityIPArrays"] as? [Any?] {
+            var tmp : [DescribeApplicationAttributeResponseBody.SecurityIPArrays] = []
+            for v in value {
+                if v != nil {
+                    var model = DescribeApplicationAttributeResponseBody.SecurityIPArrays()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.securityIPArrays = tmp
+        }
+        if let value = dict["Status"] as? String {
+            self.status = value
+        }
+        if let value = dict["UpgradeAvailable"] as? String {
+            self.upgradeAvailable = value
+        }
+        if let value = dict["VPCId"] as? String {
+            self.VPCId = value
+        }
+        if let value = dict["VSwitchId"] as? String {
+            self.vSwitchId = value
+        }
+        if let value = dict["Version"] as? String {
+            self.version = value
+        }
+        if let value = dict["ZoneId"] as? String {
+            self.zoneId = value
+        }
+    }
+}
+
+public class DescribeApplicationAttributeResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: DescribeApplicationAttributeResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = DescribeApplicationAttributeResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
+public class DescribeApplicationParametersRequest : Tea.TeaModel {
+    public var applicationId: String?
+
+    public var componentIdList: [String]?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.applicationId != nil {
+            map["ApplicationId"] = self.applicationId!
+        }
+        if self.componentIdList != nil {
+            map["ComponentIdList"] = self.componentIdList!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["ApplicationId"] as? String {
+            self.applicationId = value
+        }
+        if let value = dict["ComponentIdList"] as? [String] {
+            self.componentIdList = value
+        }
+    }
+}
+
+public class DescribeApplicationParametersShrinkRequest : Tea.TeaModel {
+    public var applicationId: String?
+
+    public var componentIdListShrink: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.applicationId != nil {
+            map["ApplicationId"] = self.applicationId!
+        }
+        if self.componentIdListShrink != nil {
+            map["ComponentIdList"] = self.componentIdListShrink!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["ApplicationId"] as? String {
+            self.applicationId = value
+        }
+        if let value = dict["ComponentIdList"] as? String {
+            self.componentIdListShrink = value
+        }
+    }
+}
+
+public class DescribeApplicationParametersResponseBody : Tea.TeaModel {
+    public class ParameterTemplates : Tea.TeaModel {
+        public class ComponentParameterTemplates : Tea.TeaModel {
+            public class Parameters : Tea.TeaModel {
+                public var default_: String?
+
+                public var description_: String?
+
+                public var name: String?
+
+                public var needRestart: Bool?
+
+                public var pattern: String?
+
+                public var readOnly: Bool?
+
+                public var type: String?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.default_ != nil {
+                        map["Default"] = self.default_!
+                    }
+                    if self.description_ != nil {
+                        map["Description"] = self.description_!
+                    }
+                    if self.name != nil {
+                        map["Name"] = self.name!
+                    }
+                    if self.needRestart != nil {
+                        map["NeedRestart"] = self.needRestart!
+                    }
+                    if self.pattern != nil {
+                        map["Pattern"] = self.pattern!
+                    }
+                    if self.readOnly != nil {
+                        map["ReadOnly"] = self.readOnly!
+                    }
+                    if self.type != nil {
+                        map["Type"] = self.type!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                    guard let dict else { return }
+                    if let value = dict["Default"] as? String {
+                        self.default_ = value
+                    }
+                    if let value = dict["Description"] as? String {
+                        self.description_ = value
+                    }
+                    if let value = dict["Name"] as? String {
+                        self.name = value
+                    }
+                    if let value = dict["NeedRestart"] as? Bool {
+                        self.needRestart = value
+                    }
+                    if let value = dict["Pattern"] as? String {
+                        self.pattern = value
+                    }
+                    if let value = dict["ReadOnly"] as? Bool {
+                        self.readOnly = value
+                    }
+                    if let value = dict["Type"] as? String {
+                        self.type = value
+                    }
+                }
+            }
+            public var componentId: String?
+
+            public var componentType: String?
+
+            public var parameters: [DescribeApplicationParametersResponseBody.ParameterTemplates.ComponentParameterTemplates.Parameters]?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.componentId != nil {
+                    map["ComponentId"] = self.componentId!
+                }
+                if self.componentType != nil {
+                    map["ComponentType"] = self.componentType!
+                }
+                if self.parameters != nil {
+                    var tmp : [Any] = []
+                    for k in self.parameters! {
+                        tmp.append(k.toMap())
+                    }
+                    map["Parameters"] = tmp
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["ComponentId"] as? String {
+                    self.componentId = value
+                }
+                if let value = dict["ComponentType"] as? String {
+                    self.componentType = value
+                }
+                if let value = dict["Parameters"] as? [Any?] {
+                    var tmp : [DescribeApplicationParametersResponseBody.ParameterTemplates.ComponentParameterTemplates.Parameters] = []
+                    for v in value {
+                        if v != nil {
+                            var model = DescribeApplicationParametersResponseBody.ParameterTemplates.ComponentParameterTemplates.Parameters()
+                            if v != nil {
+                                model.fromMap(v as? [String: Any?])
+                            }
+                            tmp.append(model)
+                        }
+                    }
+                    self.parameters = tmp
+                }
+            }
+        }
+        public var componentParameterTemplates: [DescribeApplicationParametersResponseBody.ParameterTemplates.ComponentParameterTemplates]?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.componentParameterTemplates != nil {
+                var tmp : [Any] = []
+                for k in self.componentParameterTemplates! {
+                    tmp.append(k.toMap())
+                }
+                map["ComponentParameterTemplates"] = tmp
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["ComponentParameterTemplates"] as? [Any?] {
+                var tmp : [DescribeApplicationParametersResponseBody.ParameterTemplates.ComponentParameterTemplates] = []
+                for v in value {
+                    if v != nil {
+                        var model = DescribeApplicationParametersResponseBody.ParameterTemplates.ComponentParameterTemplates()
+                        if v != nil {
+                            model.fromMap(v as? [String: Any?])
+                        }
+                        tmp.append(model)
+                    }
+                }
+                self.componentParameterTemplates = tmp
+            }
+        }
+    }
+    public class Parameters : Tea.TeaModel {
+        public class ComponentParameters : Tea.TeaModel {
+            public class Parameters : Tea.TeaModel {
+                public var default_: String?
+
+                public var description_: String?
+
+                public var name: String?
+
+                public var needRestart: Bool?
+
+                public var pattern: String?
+
+                public var readOnly: Bool?
+
+                public var status: String?
+
+                public var type: String?
+
+                public var value: String?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.default_ != nil {
+                        map["Default"] = self.default_!
+                    }
+                    if self.description_ != nil {
+                        map["Description"] = self.description_!
+                    }
+                    if self.name != nil {
+                        map["Name"] = self.name!
+                    }
+                    if self.needRestart != nil {
+                        map["NeedRestart"] = self.needRestart!
+                    }
+                    if self.pattern != nil {
+                        map["Pattern"] = self.pattern!
+                    }
+                    if self.readOnly != nil {
+                        map["ReadOnly"] = self.readOnly!
+                    }
+                    if self.status != nil {
+                        map["Status"] = self.status!
+                    }
+                    if self.type != nil {
+                        map["Type"] = self.type!
+                    }
+                    if self.value != nil {
+                        map["Value"] = self.value!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                    guard let dict else { return }
+                    if let value = dict["Default"] as? String {
+                        self.default_ = value
+                    }
+                    if let value = dict["Description"] as? String {
+                        self.description_ = value
+                    }
+                    if let value = dict["Name"] as? String {
+                        self.name = value
+                    }
+                    if let value = dict["NeedRestart"] as? Bool {
+                        self.needRestart = value
+                    }
+                    if let value = dict["Pattern"] as? String {
+                        self.pattern = value
+                    }
+                    if let value = dict["ReadOnly"] as? Bool {
+                        self.readOnly = value
+                    }
+                    if let value = dict["Status"] as? String {
+                        self.status = value
+                    }
+                    if let value = dict["Type"] as? String {
+                        self.type = value
+                    }
+                    if let value = dict["Value"] as? String {
+                        self.value = value
+                    }
+                }
+            }
+            public var componentId: String?
+
+            public var componentType: String?
+
+            public var parameters: [DescribeApplicationParametersResponseBody.Parameters.ComponentParameters.Parameters]?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.componentId != nil {
+                    map["ComponentId"] = self.componentId!
+                }
+                if self.componentType != nil {
+                    map["ComponentType"] = self.componentType!
+                }
+                if self.parameters != nil {
+                    var tmp : [Any] = []
+                    for k in self.parameters! {
+                        tmp.append(k.toMap())
+                    }
+                    map["Parameters"] = tmp
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["ComponentId"] as? String {
+                    self.componentId = value
+                }
+                if let value = dict["ComponentType"] as? String {
+                    self.componentType = value
+                }
+                if let value = dict["Parameters"] as? [Any?] {
+                    var tmp : [DescribeApplicationParametersResponseBody.Parameters.ComponentParameters.Parameters] = []
+                    for v in value {
+                        if v != nil {
+                            var model = DescribeApplicationParametersResponseBody.Parameters.ComponentParameters.Parameters()
+                            if v != nil {
+                                model.fromMap(v as? [String: Any?])
+                            }
+                            tmp.append(model)
+                        }
+                    }
+                    self.parameters = tmp
+                }
+            }
+        }
+        public var componentParameters: [DescribeApplicationParametersResponseBody.Parameters.ComponentParameters]?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.componentParameters != nil {
+                var tmp : [Any] = []
+                for k in self.componentParameters! {
+                    tmp.append(k.toMap())
+                }
+                map["ComponentParameters"] = tmp
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["ComponentParameters"] as? [Any?] {
+                var tmp : [DescribeApplicationParametersResponseBody.Parameters.ComponentParameters] = []
+                for v in value {
+                    if v != nil {
+                        var model = DescribeApplicationParametersResponseBody.Parameters.ComponentParameters()
+                        if v != nil {
+                            model.fromMap(v as? [String: Any?])
+                        }
+                        tmp.append(model)
+                    }
+                }
+                self.componentParameters = tmp
+            }
+        }
+    }
+    public var parameterTemplates: DescribeApplicationParametersResponseBody.ParameterTemplates?
+
+    public var parameters: DescribeApplicationParametersResponseBody.Parameters?
+
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.parameterTemplates?.validate()
+        try self.parameters?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.parameterTemplates != nil {
+            map["ParameterTemplates"] = self.parameterTemplates?.toMap()
+        }
+        if self.parameters != nil {
+            map["Parameters"] = self.parameters?.toMap()
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["ParameterTemplates"] as? [String: Any?] {
+            var model = DescribeApplicationParametersResponseBody.ParameterTemplates()
+            model.fromMap(value)
+            self.parameterTemplates = model
+        }
+        if let value = dict["Parameters"] as? [String: Any?] {
+            var model = DescribeApplicationParametersResponseBody.Parameters()
+            model.fromMap(value)
+            self.parameters = model
+        }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+    }
+}
+
+public class DescribeApplicationParametersResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: DescribeApplicationParametersResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = DescribeApplicationParametersResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
+public class DescribeApplicationsRequest : Tea.TeaModel {
+    public var applicationIds: String?
+
+    public var DBClusterId: String?
+
+    public var pageNumber: Int32?
+
+    public var pageSize: Int32?
+
+    public var regionId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.applicationIds != nil {
+            map["ApplicationIds"] = self.applicationIds!
+        }
+        if self.DBClusterId != nil {
+            map["DBClusterId"] = self.DBClusterId!
+        }
+        if self.pageNumber != nil {
+            map["PageNumber"] = self.pageNumber!
+        }
+        if self.pageSize != nil {
+            map["PageSize"] = self.pageSize!
+        }
+        if self.regionId != nil {
+            map["RegionId"] = self.regionId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["ApplicationIds"] as? String {
+            self.applicationIds = value
+        }
+        if let value = dict["DBClusterId"] as? String {
+            self.DBClusterId = value
+        }
+        if let value = dict["PageNumber"] as? Int32 {
+            self.pageNumber = value
+        }
+        if let value = dict["PageSize"] as? Int32 {
+            self.pageSize = value
+        }
+        if let value = dict["RegionId"] as? String {
+            self.regionId = value
+        }
+    }
+}
+
+public class DescribeApplicationsResponseBody : Tea.TeaModel {
+    public class Items : Tea.TeaModel {
+        public class Applications : Tea.TeaModel {
+            public class Endpoints : Tea.TeaModel {
+                public class Endpoint : Tea.TeaModel {
+                    public var IP: String?
+
+                    public var netType: String?
+
+                    public var port: String?
+
+                    public override init() {
+                        super.init()
+                    }
+
+                    public init(_ dict: [String: Any]) {
+                        super.init()
+                        self.fromMap(dict)
+                    }
+
+                    public override func validate() throws -> Void {
+                    }
+
+                    public override func toMap() -> [String : Any] {
+                        var map = super.toMap()
+                        if self.IP != nil {
+                            map["IP"] = self.IP!
+                        }
+                        if self.netType != nil {
+                            map["NetType"] = self.netType!
+                        }
+                        if self.port != nil {
+                            map["Port"] = self.port!
+                        }
+                        return map
+                    }
+
+                    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                        guard let dict else { return }
+                        if let value = dict["IP"] as? String {
+                            self.IP = value
+                        }
+                        if let value = dict["NetType"] as? String {
+                            self.netType = value
+                        }
+                        if let value = dict["Port"] as? String {
+                            self.port = value
+                        }
+                    }
+                }
+                public var endpoint: [DescribeApplicationsResponseBody.Items.Applications.Endpoints.Endpoint]?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.endpoint != nil {
+                        var tmp : [Any] = []
+                        for k in self.endpoint! {
+                            tmp.append(k.toMap())
+                        }
+                        map["endpoint"] = tmp
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                    guard let dict else { return }
+                    if let value = dict["endpoint"] as? [Any?] {
+                        var tmp : [DescribeApplicationsResponseBody.Items.Applications.Endpoints.Endpoint] = []
+                        for v in value {
+                            if v != nil {
+                                var model = DescribeApplicationsResponseBody.Items.Applications.Endpoints.Endpoint()
+                                if v != nil {
+                                    model.fromMap(v as? [String: Any?])
+                                }
+                                tmp.append(model)
+                            }
+                        }
+                        self.endpoint = tmp
+                    }
+                }
+            }
+            public var applicationId: String?
+
+            public var applicationType: String?
+
+            public var creationTime: String?
+
+            public var description_: String?
+
+            public var endpoints: DescribeApplicationsResponseBody.Items.Applications.Endpoints?
+
+            public var engineVersion: String?
+
+            public var expireTime: String?
+
+            public var expired: String?
+
+            public var payType: String?
+
+            public var polarFSInstanceId: String?
+
+            public var regionId: String?
+
+            public var status: String?
+
+            public var zoneId: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+                try self.endpoints?.validate()
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.applicationId != nil {
+                    map["ApplicationId"] = self.applicationId!
+                }
+                if self.applicationType != nil {
+                    map["ApplicationType"] = self.applicationType!
+                }
+                if self.creationTime != nil {
+                    map["CreationTime"] = self.creationTime!
+                }
+                if self.description_ != nil {
+                    map["Description"] = self.description_!
+                }
+                if self.endpoints != nil {
+                    map["Endpoints"] = self.endpoints?.toMap()
+                }
+                if self.engineVersion != nil {
+                    map["EngineVersion"] = self.engineVersion!
+                }
+                if self.expireTime != nil {
+                    map["ExpireTime"] = self.expireTime!
+                }
+                if self.expired != nil {
+                    map["Expired"] = self.expired!
+                }
+                if self.payType != nil {
+                    map["PayType"] = self.payType!
+                }
+                if self.polarFSInstanceId != nil {
+                    map["PolarFSInstanceId"] = self.polarFSInstanceId!
+                }
+                if self.regionId != nil {
+                    map["RegionId"] = self.regionId!
+                }
+                if self.status != nil {
+                    map["Status"] = self.status!
+                }
+                if self.zoneId != nil {
+                    map["ZoneId"] = self.zoneId!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["ApplicationId"] as? String {
+                    self.applicationId = value
+                }
+                if let value = dict["ApplicationType"] as? String {
+                    self.applicationType = value
+                }
+                if let value = dict["CreationTime"] as? String {
+                    self.creationTime = value
+                }
+                if let value = dict["Description"] as? String {
+                    self.description_ = value
+                }
+                if let value = dict["Endpoints"] as? [String: Any?] {
+                    var model = DescribeApplicationsResponseBody.Items.Applications.Endpoints()
+                    model.fromMap(value)
+                    self.endpoints = model
+                }
+                if let value = dict["EngineVersion"] as? String {
+                    self.engineVersion = value
+                }
+                if let value = dict["ExpireTime"] as? String {
+                    self.expireTime = value
+                }
+                if let value = dict["Expired"] as? String {
+                    self.expired = value
+                }
+                if let value = dict["PayType"] as? String {
+                    self.payType = value
+                }
+                if let value = dict["PolarFSInstanceId"] as? String {
+                    self.polarFSInstanceId = value
+                }
+                if let value = dict["RegionId"] as? String {
+                    self.regionId = value
+                }
+                if let value = dict["Status"] as? String {
+                    self.status = value
+                }
+                if let value = dict["ZoneId"] as? String {
+                    self.zoneId = value
+                }
+            }
+        }
+        public var applications: [DescribeApplicationsResponseBody.Items.Applications]?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.applications != nil {
+                var tmp : [Any] = []
+                for k in self.applications! {
+                    tmp.append(k.toMap())
+                }
+                map["Applications"] = tmp
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["Applications"] as? [Any?] {
+                var tmp : [DescribeApplicationsResponseBody.Items.Applications] = []
+                for v in value {
+                    if v != nil {
+                        var model = DescribeApplicationsResponseBody.Items.Applications()
+                        if v != nil {
+                            model.fromMap(v as? [String: Any?])
+                        }
+                        tmp.append(model)
+                    }
+                }
+                self.applications = tmp
+            }
+        }
+    }
+    public var items: DescribeApplicationsResponseBody.Items?
+
+    public var pageNumber: Int32?
+
+    public var pageRecordCount: Int32?
+
+    public var requestId: String?
+
+    public var totalRecordCount: Int32?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.items?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.items != nil {
+            map["Items"] = self.items?.toMap()
+        }
+        if self.pageNumber != nil {
+            map["PageNumber"] = self.pageNumber!
+        }
+        if self.pageRecordCount != nil {
+            map["PageRecordCount"] = self.pageRecordCount!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.totalRecordCount != nil {
+            map["TotalRecordCount"] = self.totalRecordCount!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["Items"] as? [String: Any?] {
+            var model = DescribeApplicationsResponseBody.Items()
+            model.fromMap(value)
+            self.items = model
+        }
+        if let value = dict["PageNumber"] as? Int32 {
+            self.pageNumber = value
+        }
+        if let value = dict["PageRecordCount"] as? Int32 {
+            self.pageRecordCount = value
+        }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+        if let value = dict["TotalRecordCount"] as? Int32 {
+            self.totalRecordCount = value
+        }
+    }
+}
+
+public class DescribeApplicationsResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: DescribeApplicationsResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = DescribeApplicationsResponseBody()
             model.fromMap(value)
             self.body = model
         }
@@ -47737,6 +50776,553 @@ public class ModifyActiveOperationTasksResponse : Tea.TeaModel {
         }
         if let value = dict["body"] as? [String: Any?] {
             var model = ModifyActiveOperationTasksResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
+public class ModifyApplicationDescriptionRequest : Tea.TeaModel {
+    public var applicationId: String?
+
+    public var description_: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.applicationId != nil {
+            map["ApplicationId"] = self.applicationId!
+        }
+        if self.description_ != nil {
+            map["Description"] = self.description_!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["ApplicationId"] as? String {
+            self.applicationId = value
+        }
+        if let value = dict["Description"] as? String {
+            self.description_ = value
+        }
+    }
+}
+
+public class ModifyApplicationDescriptionResponseBody : Tea.TeaModel {
+    public var applicationId: String?
+
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.applicationId != nil {
+            map["ApplicationId"] = self.applicationId!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["ApplicationId"] as? String {
+            self.applicationId = value
+        }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+    }
+}
+
+public class ModifyApplicationDescriptionResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: ModifyApplicationDescriptionResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = ModifyApplicationDescriptionResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
+public class ModifyApplicationParameterRequest : Tea.TeaModel {
+    public class Parameters : Tea.TeaModel {
+        public var parameterName: String?
+
+        public var parameterValue: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.parameterName != nil {
+                map["ParameterName"] = self.parameterName!
+            }
+            if self.parameterValue != nil {
+                map["ParameterValue"] = self.parameterValue!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["ParameterName"] as? String {
+                self.parameterName = value
+            }
+            if let value = dict["ParameterValue"] as? String {
+                self.parameterValue = value
+            }
+        }
+    }
+    public var applicationId: String?
+
+    public var parameterName: String?
+
+    public var parameterValue: String?
+
+    public var parameters: [ModifyApplicationParameterRequest.Parameters]?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.applicationId != nil {
+            map["ApplicationId"] = self.applicationId!
+        }
+        if self.parameterName != nil {
+            map["ParameterName"] = self.parameterName!
+        }
+        if self.parameterValue != nil {
+            map["ParameterValue"] = self.parameterValue!
+        }
+        if self.parameters != nil {
+            var tmp : [Any] = []
+            for k in self.parameters! {
+                tmp.append(k.toMap())
+            }
+            map["Parameters"] = tmp
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["ApplicationId"] as? String {
+            self.applicationId = value
+        }
+        if let value = dict["ParameterName"] as? String {
+            self.parameterName = value
+        }
+        if let value = dict["ParameterValue"] as? String {
+            self.parameterValue = value
+        }
+        if let value = dict["Parameters"] as? [Any?] {
+            var tmp : [ModifyApplicationParameterRequest.Parameters] = []
+            for v in value {
+                if v != nil {
+                    var model = ModifyApplicationParameterRequest.Parameters()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.parameters = tmp
+        }
+    }
+}
+
+public class ModifyApplicationParameterShrinkRequest : Tea.TeaModel {
+    public var applicationId: String?
+
+    public var parameterName: String?
+
+    public var parameterValue: String?
+
+    public var parametersShrink: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.applicationId != nil {
+            map["ApplicationId"] = self.applicationId!
+        }
+        if self.parameterName != nil {
+            map["ParameterName"] = self.parameterName!
+        }
+        if self.parameterValue != nil {
+            map["ParameterValue"] = self.parameterValue!
+        }
+        if self.parametersShrink != nil {
+            map["Parameters"] = self.parametersShrink!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["ApplicationId"] as? String {
+            self.applicationId = value
+        }
+        if let value = dict["ParameterName"] as? String {
+            self.parameterName = value
+        }
+        if let value = dict["ParameterValue"] as? String {
+            self.parameterValue = value
+        }
+        if let value = dict["Parameters"] as? String {
+            self.parametersShrink = value
+        }
+    }
+}
+
+public class ModifyApplicationParameterResponseBody : Tea.TeaModel {
+    public var applicationId: String?
+
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.applicationId != nil {
+            map["ApplicationId"] = self.applicationId!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["ApplicationId"] as? String {
+            self.applicationId = value
+        }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+    }
+}
+
+public class ModifyApplicationParameterResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: ModifyApplicationParameterResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = ModifyApplicationParameterResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
+public class ModifyApplicationWhitelistRequest : Tea.TeaModel {
+    public var applicationId: String?
+
+    public var componentId: String?
+
+    public var modifyMode: String?
+
+    public var securityGroups: String?
+
+    public var securityIPArrayName: String?
+
+    public var securityIPList: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.applicationId != nil {
+            map["ApplicationId"] = self.applicationId!
+        }
+        if self.componentId != nil {
+            map["ComponentId"] = self.componentId!
+        }
+        if self.modifyMode != nil {
+            map["ModifyMode"] = self.modifyMode!
+        }
+        if self.securityGroups != nil {
+            map["SecurityGroups"] = self.securityGroups!
+        }
+        if self.securityIPArrayName != nil {
+            map["SecurityIPArrayName"] = self.securityIPArrayName!
+        }
+        if self.securityIPList != nil {
+            map["SecurityIPList"] = self.securityIPList!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["ApplicationId"] as? String {
+            self.applicationId = value
+        }
+        if let value = dict["ComponentId"] as? String {
+            self.componentId = value
+        }
+        if let value = dict["ModifyMode"] as? String {
+            self.modifyMode = value
+        }
+        if let value = dict["SecurityGroups"] as? String {
+            self.securityGroups = value
+        }
+        if let value = dict["SecurityIPArrayName"] as? String {
+            self.securityIPArrayName = value
+        }
+        if let value = dict["SecurityIPList"] as? String {
+            self.securityIPList = value
+        }
+    }
+}
+
+public class ModifyApplicationWhitelistResponseBody : Tea.TeaModel {
+    public var applicationId: String?
+
+    public var componentId: String?
+
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.applicationId != nil {
+            map["ApplicationId"] = self.applicationId!
+        }
+        if self.componentId != nil {
+            map["ComponentId"] = self.componentId!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["ApplicationId"] as? String {
+            self.applicationId = value
+        }
+        if let value = dict["ComponentId"] as? String {
+            self.componentId = value
+        }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+    }
+}
+
+public class ModifyApplicationWhitelistResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: ModifyApplicationWhitelistResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = ModifyApplicationWhitelistResponseBody()
             model.fromMap(value)
             self.body = model
         }
