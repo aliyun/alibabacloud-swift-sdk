@@ -2513,6 +2513,8 @@ public class GetDeliveryChannelResponseBody : Tea.TeaModel {
                 }
             }
         }
+        public var enabled: String?
+
         public var slsProperties: GetDeliveryChannelResponseBody.ResourceChangeDelivery.SlsProperties?
 
         public var targetArn: String?
@@ -2534,6 +2536,9 @@ public class GetDeliveryChannelResponseBody : Tea.TeaModel {
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
+            if self.enabled != nil {
+                map["Enabled"] = self.enabled!
+            }
             if self.slsProperties != nil {
                 map["SlsProperties"] = self.slsProperties?.toMap()
             }
@@ -2548,6 +2553,9 @@ public class GetDeliveryChannelResponseBody : Tea.TeaModel {
 
         public override func fromMap(_ dict: [String: Any?]?) -> Void {
             guard let dict else { return }
+            if let value = dict["Enabled"] as? String {
+                self.enabled = value
+            }
             if let value = dict["SlsProperties"] as? [String: Any?] {
                 var model = GetDeliveryChannelResponseBody.ResourceChangeDelivery.SlsProperties()
                 model.fromMap(value)
@@ -2596,6 +2604,8 @@ public class GetDeliveryChannelResponseBody : Tea.TeaModel {
 
         public var deliveryTime: String?
 
+        public var enabled: String?
+
         public var slsProperties: GetDeliveryChannelResponseBody.ResourceSnapshotDelivery.SlsProperties?
 
         public var targetArn: String?
@@ -2623,6 +2633,9 @@ public class GetDeliveryChannelResponseBody : Tea.TeaModel {
             if self.deliveryTime != nil {
                 map["DeliveryTime"] = self.deliveryTime!
             }
+            if self.enabled != nil {
+                map["Enabled"] = self.enabled!
+            }
             if self.slsProperties != nil {
                 map["SlsProperties"] = self.slsProperties?.toMap()
             }
@@ -2642,6 +2655,9 @@ public class GetDeliveryChannelResponseBody : Tea.TeaModel {
             }
             if let value = dict["DeliveryTime"] as? String {
                 self.deliveryTime = value
+            }
+            if let value = dict["Enabled"] as? String {
+                self.enabled = value
             }
             if let value = dict["SlsProperties"] as? [String: Any?] {
                 var model = GetDeliveryChannelResponseBody.ResourceSnapshotDelivery.SlsProperties()
@@ -3248,6 +3264,8 @@ public class GetMultiAccountDeliveryChannelResponseBody : Tea.TeaModel {
                 }
             }
         }
+        public var enabled: String?
+
         public var slsProperties: GetMultiAccountDeliveryChannelResponseBody.ResourceChangeDelivery.SlsProperties?
 
         public var targetArn: String?
@@ -3269,6 +3287,9 @@ public class GetMultiAccountDeliveryChannelResponseBody : Tea.TeaModel {
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
+            if self.enabled != nil {
+                map["Enabled"] = self.enabled!
+            }
             if self.slsProperties != nil {
                 map["SlsProperties"] = self.slsProperties?.toMap()
             }
@@ -3283,6 +3304,9 @@ public class GetMultiAccountDeliveryChannelResponseBody : Tea.TeaModel {
 
         public override func fromMap(_ dict: [String: Any?]?) -> Void {
             guard let dict else { return }
+            if let value = dict["Enabled"] as? String {
+                self.enabled = value
+            }
             if let value = dict["SlsProperties"] as? [String: Any?] {
                 var model = GetMultiAccountDeliveryChannelResponseBody.ResourceChangeDelivery.SlsProperties()
                 model.fromMap(value)
@@ -3331,6 +3355,8 @@ public class GetMultiAccountDeliveryChannelResponseBody : Tea.TeaModel {
 
         public var deliveryTime: String?
 
+        public var enabled: String?
+
         public var slsProperties: GetMultiAccountDeliveryChannelResponseBody.ResourceSnapshotDelivery.SlsProperties?
 
         public var targetArn: String?
@@ -3358,6 +3384,9 @@ public class GetMultiAccountDeliveryChannelResponseBody : Tea.TeaModel {
             if self.deliveryTime != nil {
                 map["DeliveryTime"] = self.deliveryTime!
             }
+            if self.enabled != nil {
+                map["Enabled"] = self.enabled!
+            }
             if self.slsProperties != nil {
                 map["SlsProperties"] = self.slsProperties?.toMap()
             }
@@ -3377,6 +3406,9 @@ public class GetMultiAccountDeliveryChannelResponseBody : Tea.TeaModel {
             }
             if let value = dict["DeliveryTime"] as? String {
                 self.deliveryTime = value
+            }
+            if let value = dict["Enabled"] as? String {
+                self.enabled = value
             }
             if let value = dict["SlsProperties"] as? [String: Any?] {
                 var model = GetMultiAccountDeliveryChannelResponseBody.ResourceSnapshotDelivery.SlsProperties()
