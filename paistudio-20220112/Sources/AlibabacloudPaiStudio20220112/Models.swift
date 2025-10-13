@@ -3913,6 +3913,8 @@ public class Quota : Tea.TeaModel {
 
     public var gmtModifiedTime: String?
 
+    public var hyperZones: [String]?
+
     public var labels: [Label]?
 
     public var latestOperationId: String?
@@ -3942,6 +3944,8 @@ public class Quota : Tea.TeaModel {
     public var status: String?
 
     public var subQuotas: [QuotaIdName]?
+
+    public var version: String?
 
     public var workspaces: [WorkspaceIdName]?
 
@@ -3976,6 +3980,9 @@ public class Quota : Tea.TeaModel {
         }
         if self.gmtModifiedTime != nil {
             map["GmtModifiedTime"] = self.gmtModifiedTime!
+        }
+        if self.hyperZones != nil {
+            map["HyperZones"] = self.hyperZones!
         }
         if self.labels != nil {
             var tmp : [Any] = []
@@ -4030,6 +4037,9 @@ public class Quota : Tea.TeaModel {
             }
             map["SubQuotas"] = tmp
         }
+        if self.version != nil {
+            map["Version"] = self.version!
+        }
         if self.workspaces != nil {
             var tmp : [Any] = []
             for k in self.workspaces! {
@@ -4056,6 +4066,9 @@ public class Quota : Tea.TeaModel {
         }
         if let value = dict["GmtModifiedTime"] as? String {
             self.gmtModifiedTime = value
+        }
+        if let value = dict["HyperZones"] as? [String] {
+            self.hyperZones = value
         }
         if let value = dict["Labels"] as? [Any?] {
             var tmp : [Label] = []
@@ -4127,6 +4140,9 @@ public class Quota : Tea.TeaModel {
                 }
             }
             self.subQuotas = tmp
+        }
+        if let value = dict["Version"] as? String {
+            self.version = value
         }
         if let value = dict["Workspaces"] as? [Any?] {
             var tmp : [WorkspaceIdName] = []
@@ -5496,6 +5512,8 @@ public class ResourceGroup : Tea.TeaModel {
 
     public var userVpc: UserVpc?
 
+    public var version: String?
+
     public var workspaceID: String?
 
     public override init() {
@@ -5534,6 +5552,9 @@ public class ResourceGroup : Tea.TeaModel {
         if self.userVpc != nil {
             map["UserVpc"] = self.userVpc?.toMap()
         }
+        if self.version != nil {
+            map["Version"] = self.version!
+        }
         if self.workspaceID != nil {
             map["WorkspaceID"] = self.workspaceID!
         }
@@ -5564,6 +5585,9 @@ public class ResourceGroup : Tea.TeaModel {
             var model = UserVpc()
             model.fromMap(value)
             self.userVpc = model
+        }
+        if let value = dict["Version"] as? String {
+            self.version = value
         }
         if let value = dict["WorkspaceID"] as? String {
             self.workspaceID = value
@@ -8036,6 +8060,8 @@ public class CreateResourceGroupRequest : Tea.TeaModel {
 
     public var userVpc: UserVpc?
 
+    public var version: String?
+
     public override init() {
         super.init()
     }
@@ -8073,6 +8099,9 @@ public class CreateResourceGroupRequest : Tea.TeaModel {
         if self.userVpc != nil {
             map["UserVpc"] = self.userVpc?.toMap()
         }
+        if self.version != nil {
+            map["Version"] = self.version!
+        }
         return map
     }
 
@@ -8107,6 +8136,9 @@ public class CreateResourceGroupRequest : Tea.TeaModel {
             var model = UserVpc()
             model.fromMap(value)
             self.userVpc = model
+        }
+        if let value = dict["Version"] as? String {
+            self.version = value
         }
     }
 }
@@ -10516,6 +10548,8 @@ public class GetQuotaResponseBody : Tea.TeaModel {
 
     public var gmtModifiedTime: String?
 
+    public var hyperZones: [String]?
+
     public var labels: [Label]?
 
     public var latestOperationId: String?
@@ -10547,6 +10581,8 @@ public class GetQuotaResponseBody : Tea.TeaModel {
     public var status: String?
 
     public var subQuotas: [QuotaIdName]?
+
+    public var version: String?
 
     public var workspaces: [WorkspaceIdName]?
 
@@ -10581,6 +10617,9 @@ public class GetQuotaResponseBody : Tea.TeaModel {
         }
         if self.gmtModifiedTime != nil {
             map["GmtModifiedTime"] = self.gmtModifiedTime!
+        }
+        if self.hyperZones != nil {
+            map["HyperZones"] = self.hyperZones!
         }
         if self.labels != nil {
             var tmp : [Any] = []
@@ -10638,6 +10677,9 @@ public class GetQuotaResponseBody : Tea.TeaModel {
             }
             map["SubQuotas"] = tmp
         }
+        if self.version != nil {
+            map["Version"] = self.version!
+        }
         if self.workspaces != nil {
             var tmp : [Any] = []
             for k in self.workspaces! {
@@ -10664,6 +10706,9 @@ public class GetQuotaResponseBody : Tea.TeaModel {
         }
         if let value = dict["GmtModifiedTime"] as? String {
             self.gmtModifiedTime = value
+        }
+        if let value = dict["HyperZones"] as? [String] {
+            self.hyperZones = value
         }
         if let value = dict["Labels"] as? [Any?] {
             var tmp : [Label] = []
@@ -10738,6 +10783,9 @@ public class GetQuotaResponseBody : Tea.TeaModel {
                 }
             }
             self.subQuotas = tmp
+        }
+        if let value = dict["Version"] as? String {
+            self.version = value
         }
         if let value = dict["Workspaces"] as? [Any?] {
             var tmp : [WorkspaceIdName] = []
@@ -11000,6 +11048,8 @@ public class GetResourceGroupResponseBody : Tea.TeaModel {
 
     public var userVpc: UserVpc?
 
+    public var version: String?
+
     public var workspaceID: String?
 
     public override init() {
@@ -11060,6 +11110,9 @@ public class GetResourceGroupResponseBody : Tea.TeaModel {
         if self.userVpc != nil {
             map["UserVpc"] = self.userVpc?.toMap()
         }
+        if self.version != nil {
+            map["Version"] = self.version!
+        }
         if self.workspaceID != nil {
             map["WorkspaceID"] = self.workspaceID!
         }
@@ -11118,6 +11171,9 @@ public class GetResourceGroupResponseBody : Tea.TeaModel {
             var model = UserVpc()
             model.fromMap(value)
             self.userVpc = model
+        }
+        if let value = dict["Version"] as? String {
+            self.version = value
         }
         if let value = dict["WorkspaceID"] as? String {
             self.workspaceID = value
@@ -14593,11 +14649,15 @@ public class ListNodesRequest : Tea.TeaModel {
 
     public var availabilityZone: String?
 
+    public var cliqueID: String?
+
     public var filterByQuotaId: String?
 
     public var filterByResourceGroupIds: String?
 
     public var GPUType: String?
+
+    public var hyperNode: String?
 
     public var hyperZone: String?
 
@@ -14610,6 +14670,8 @@ public class ListNodesRequest : Tea.TeaModel {
     public var nodeTypes: String?
 
     public var order: String?
+
+    public var orderInstanceIds: String?
 
     public var orderStatuses: String?
 
@@ -14649,6 +14711,9 @@ public class ListNodesRequest : Tea.TeaModel {
         if self.availabilityZone != nil {
             map["AvailabilityZone"] = self.availabilityZone!
         }
+        if self.cliqueID != nil {
+            map["CliqueID"] = self.cliqueID!
+        }
         if self.filterByQuotaId != nil {
             map["FilterByQuotaId"] = self.filterByQuotaId!
         }
@@ -14657,6 +14722,9 @@ public class ListNodesRequest : Tea.TeaModel {
         }
         if self.GPUType != nil {
             map["GPUType"] = self.GPUType!
+        }
+        if self.hyperNode != nil {
+            map["HyperNode"] = self.hyperNode!
         }
         if self.hyperZone != nil {
             map["HyperZone"] = self.hyperZone!
@@ -14675,6 +14743,9 @@ public class ListNodesRequest : Tea.TeaModel {
         }
         if self.order != nil {
             map["Order"] = self.order!
+        }
+        if self.orderInstanceIds != nil {
+            map["OrderInstanceIds"] = self.orderInstanceIds!
         }
         if self.orderStatuses != nil {
             map["OrderStatuses"] = self.orderStatuses!
@@ -14714,6 +14785,9 @@ public class ListNodesRequest : Tea.TeaModel {
         if let value = dict["AvailabilityZone"] as? String {
             self.availabilityZone = value
         }
+        if let value = dict["CliqueID"] as? String {
+            self.cliqueID = value
+        }
         if let value = dict["FilterByQuotaId"] as? String {
             self.filterByQuotaId = value
         }
@@ -14722,6 +14796,9 @@ public class ListNodesRequest : Tea.TeaModel {
         }
         if let value = dict["GPUType"] as? String {
             self.GPUType = value
+        }
+        if let value = dict["HyperNode"] as? String {
+            self.hyperNode = value
         }
         if let value = dict["HyperZone"] as? String {
             self.hyperZone = value
@@ -14740,6 +14817,9 @@ public class ListNodesRequest : Tea.TeaModel {
         }
         if let value = dict["Order"] as? String {
             self.order = value
+        }
+        if let value = dict["OrderInstanceIds"] as? String {
+            self.orderInstanceIds = value
         }
         if let value = dict["OrderStatuses"] as? String {
             self.orderStatuses = value
@@ -15207,6 +15287,8 @@ public class ListQuotasRequest : Tea.TeaModel {
 
     public var verbose: Bool?
 
+    public var versions: String?
+
     public var workspaceIds: String?
 
     public var workspaceName: String?
@@ -15264,6 +15346,9 @@ public class ListQuotasRequest : Tea.TeaModel {
         if self.verbose != nil {
             map["Verbose"] = self.verbose!
         }
+        if self.versions != nil {
+            map["Versions"] = self.versions!
+        }
         if self.workspaceIds != nil {
             map["WorkspaceIds"] = self.workspaceIds!
         }
@@ -15313,6 +15398,9 @@ public class ListQuotasRequest : Tea.TeaModel {
         }
         if let value = dict["Verbose"] as? Bool {
             self.verbose = value
+        }
+        if let value = dict["Versions"] as? String {
+            self.versions = value
         }
         if let value = dict["WorkspaceIds"] as? String {
             self.workspaceIds = value
@@ -15695,6 +15783,8 @@ public class ListResourceGroupsRequest : Tea.TeaModel {
 
     public var status: String?
 
+    public var versions: String?
+
     public override init() {
         super.init()
     }
@@ -15742,6 +15832,9 @@ public class ListResourceGroupsRequest : Tea.TeaModel {
         if self.status != nil {
             map["Status"] = self.status!
         }
+        if self.versions != nil {
+            map["Versions"] = self.versions!
+        }
         return map
     }
 
@@ -15779,6 +15872,9 @@ public class ListResourceGroupsRequest : Tea.TeaModel {
         }
         if let value = dict["Status"] as? String {
             self.status = value
+        }
+        if let value = dict["Versions"] as? String {
+            self.versions = value
         }
     }
 }
