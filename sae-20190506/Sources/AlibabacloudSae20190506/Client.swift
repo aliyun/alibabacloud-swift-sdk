@@ -1844,6 +1844,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.acrAssumeRoleArn)) {
             query["AcrAssumeRoleArn"] = request.acrAssumeRoleArn ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.albIngressReadinessGate)) {
+            query["AlbIngressReadinessGate"] = request.albIngressReadinessGate ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.appId)) {
             query["AppId"] = request.appId ?? "";
         }

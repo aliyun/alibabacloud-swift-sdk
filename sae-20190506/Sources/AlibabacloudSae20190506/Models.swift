@@ -22758,6 +22758,8 @@ public class DeployApplicationRequest : Tea.TeaModel {
 
     public var acrInstanceId: String?
 
+    public var albIngressReadinessGate: String?
+
     public var appId: String?
 
     public var associateEip: Bool?
@@ -22927,6 +22929,9 @@ public class DeployApplicationRequest : Tea.TeaModel {
         }
         if self.acrInstanceId != nil {
             map["AcrInstanceId"] = self.acrInstanceId!
+        }
+        if self.albIngressReadinessGate != nil {
+            map["AlbIngressReadinessGate"] = self.albIngressReadinessGate!
         }
         if self.appId != nil {
             map["AppId"] = self.appId!
@@ -23171,6 +23176,9 @@ public class DeployApplicationRequest : Tea.TeaModel {
         }
         if let value = dict["AcrInstanceId"] as? String {
             self.acrInstanceId = value
+        }
+        if let value = dict["AlbIngressReadinessGate"] as? String {
+            self.albIngressReadinessGate = value
         }
         if let value = dict["AppId"] as? String {
             self.appId = value
@@ -23425,6 +23433,8 @@ public class DeployApplicationShrinkRequest : Tea.TeaModel {
 
     public var acrInstanceId: String?
 
+    public var albIngressReadinessGate: String?
+
     public var appId: String?
 
     public var associateEip: Bool?
@@ -23594,6 +23604,9 @@ public class DeployApplicationShrinkRequest : Tea.TeaModel {
         }
         if self.acrInstanceId != nil {
             map["AcrInstanceId"] = self.acrInstanceId!
+        }
+        if self.albIngressReadinessGate != nil {
+            map["AlbIngressReadinessGate"] = self.albIngressReadinessGate!
         }
         if self.appId != nil {
             map["AppId"] = self.appId!
@@ -23830,6 +23843,9 @@ public class DeployApplicationShrinkRequest : Tea.TeaModel {
         }
         if let value = dict["AcrInstanceId"] as? String {
             self.acrInstanceId = value
+        }
+        if let value = dict["AlbIngressReadinessGate"] as? String {
+            self.albIngressReadinessGate = value
         }
         if let value = dict["AppId"] as? String {
             self.appId = value
@@ -25483,6 +25499,8 @@ public class DescribeApplicationConfigResponseBody : Tea.TeaModel {
 
         public var acrInstanceId: String?
 
+        public var albIngressReadinessGate: String?
+
         public var appDescription: String?
 
         public var appId: String?
@@ -25684,6 +25702,9 @@ public class DescribeApplicationConfigResponseBody : Tea.TeaModel {
             }
             if self.acrInstanceId != nil {
                 map["AcrInstanceId"] = self.acrInstanceId!
+            }
+            if self.albIngressReadinessGate != nil {
+                map["AlbIngressReadinessGate"] = self.albIngressReadinessGate!
             }
             if self.appDescription != nil {
                 map["AppDescription"] = self.appDescription!
@@ -26000,6 +26021,9 @@ public class DescribeApplicationConfigResponseBody : Tea.TeaModel {
             }
             if let value = dict["AcrInstanceId"] as? String {
                 self.acrInstanceId = value
+            }
+            if let value = dict["AlbIngressReadinessGate"] as? String {
+                self.albIngressReadinessGate = value
             }
             if let value = dict["AppDescription"] as? String {
                 self.appDescription = value
