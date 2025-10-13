@@ -315,6 +315,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.autoRenew)) {
             body["AutoRenew"] = request.autoRenew!;
         }
+        if (!TeaUtils.Client.isUnset(request.bandwidth)) {
+            body["Bandwidth"] = request.bandwidth!;
+        }
         if (!TeaUtils.Client.isUnset(request.bizRegionId)) {
             body["BizRegionId"] = request.bizRegionId ?? "";
         }
@@ -330,6 +333,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.imageId)) {
             body["ImageId"] = request.imageId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.networkStrategyType)) {
+            body["NetworkStrategyType"] = request.networkStrategyType ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.officeSiteId)) {
             body["OfficeSiteId"] = request.officeSiteId ?? "";
@@ -492,6 +498,40 @@ open class Client : AlibabacloudOpenApi.Client {
     public func deleteWuyingServer(_ request: DeleteWuyingServerRequest) async throws -> DeleteWuyingServerResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         return try await deleteWuyingServerWithOptions(request as! DeleteWuyingServerRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func describeWuyingServerEipInfoWithOptions(_ request: DescribeWuyingServerEipInfoRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DescribeWuyingServerEipInfoResponse {
+        try TeaUtils.Client.validateModel(request)
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.isp)) {
+            body["Isp"] = request.isp ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.wuyingServerId)) {
+            body["WuyingServerId"] = request.wuyingServerId ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "DescribeWuyingServerEipInfo",
+            "version": "2021-09-01",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(DescribeWuyingServerEipInfoResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func describeWuyingServerEipInfo(_ request: DescribeWuyingServerEipInfoRequest) async throws -> DescribeWuyingServerEipInfoResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await describeWuyingServerEipInfoWithOptions(request as! DescribeWuyingServerEipInfoRequest, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
