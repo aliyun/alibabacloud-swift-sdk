@@ -441,6 +441,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.chargeType)) {
             body["chargeType"] = request.chargeType ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.gatewayEdition)) {
+            body["gatewayEdition"] = request.gatewayEdition ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.gatewayType)) {
             body["gatewayType"] = request.gatewayType ?? "";
         }
@@ -518,6 +521,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.enableAuth)) {
             body["enableAuth"] = request.enableAuth!;
+        }
+        if (!TeaUtils.Client.isUnset(request.firstByteTimeout)) {
+            body["firstByteTimeout"] = request.firstByteTimeout!;
         }
         if (!TeaUtils.Client.isUnset(request.ingressConfig)) {
             body["ingressConfig"] = request.ingressConfig!;
@@ -654,6 +660,69 @@ open class Client : AlibabacloudOpenApi.Client {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         var headers: [String: String] = [:]
         return try await createHttpApiRouteWithOptions(httpApiId as! String, request as! CreateHttpApiRouteRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func createMcpServerWithOptions(_ request: CreateMcpServerRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> CreateMcpServerResponse {
+        try TeaUtils.Client.validateModel(request)
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.assembledSources)) {
+            body["assembledSources"] = request.assembledSources ?? [];
+        }
+        if (!TeaUtils.Client.isUnset(request.backendConfig)) {
+            body["backendConfig"] = request.backendConfig!;
+        }
+        if (!TeaUtils.Client.isUnset(request.description_)) {
+            body["description"] = request.description_ ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.domainIds)) {
+            body["domainIds"] = request.domainIds ?? [];
+        }
+        if (!TeaUtils.Client.isUnset(request.exposedUriPath)) {
+            body["exposedUriPath"] = request.exposedUriPath ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.gatewayId)) {
+            body["gatewayId"] = request.gatewayId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.match)) {
+            body["match"] = request.match!;
+        }
+        if (!TeaUtils.Client.isUnset(request.mcpStatisticsEnable)) {
+            body["mcpStatisticsEnable"] = request.mcpStatisticsEnable!;
+        }
+        if (!TeaUtils.Client.isUnset(request.name)) {
+            body["name"] = request.name ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.protocol_)) {
+            body["protocol"] = request.protocol_ ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.type)) {
+            body["type"] = request.type ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String],
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "CreateMcpServer",
+            "version": "2024-03-27",
+            "protocol": "HTTPS",
+            "pathname": "/v1/mcp-servers",
+            "method": "POST",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(CreateMcpServerResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func createMcpServer(_ request: CreateMcpServerRequest) async throws -> CreateMcpServerResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await createMcpServerWithOptions(request as! CreateMcpServerRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -1086,6 +1155,33 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func deleteMcpServerWithOptions(_ mcpServerId: String, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> DeleteMcpServerResponse {
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String]
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "DeleteMcpServer",
+            "version": "2024-03-27",
+            "protocol": "HTTPS",
+            "pathname": "/v1/mcp-servers/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(mcpServerId)),
+            "method": "DELETE",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(DeleteMcpServerResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func deleteMcpServer(_ mcpServerId: String) async throws -> DeleteMcpServerResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await deleteMcpServerWithOptions(mcpServerId as! String, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func deletePluginAttachmentWithOptions(_ pluginAttachmentId: String, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> DeletePluginAttachmentResponse {
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "headers": headers as! [String: String]
@@ -1230,6 +1326,33 @@ open class Client : AlibabacloudOpenApi.Client {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         var headers: [String: String] = [:]
         return try await deployHttpApiWithOptions(httpApiId as! String, request as! DeployHttpApiRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func deployMcpServerWithOptions(_ mcpServerId: String, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> DeployMcpServerResponse {
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String]
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "DeployMcpServer",
+            "version": "2024-03-27",
+            "protocol": "HTTPS",
+            "pathname": "/v1/mcp-servers/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(mcpServerId)) + "/deploy",
+            "method": "POST",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(DeployMcpServerResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func deployMcpServer(_ mcpServerId: String) async throws -> DeployMcpServerResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await deployMcpServerWithOptions(mcpServerId as! String, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -1553,6 +1676,33 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getMcpServerWithOptions(_ mcpServerId: String, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> GetMcpServerResponse {
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String]
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "GetMcpServer",
+            "version": "2024-03-27",
+            "protocol": "HTTPS",
+            "pathname": "/v1/mcp-servers/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(mcpServerId)),
+            "method": "GET",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(GetMcpServerResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getMcpServer(_ mcpServerId: String) async throws -> GetMcpServerResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await getMcpServerWithOptions(mcpServerId as! String, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func getPluginAttachmentWithOptions(_ pluginAttachmentId: String, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> GetPluginAttachmentResponse {
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "headers": headers as! [String: String]
@@ -1731,13 +1881,16 @@ open class Client : AlibabacloudOpenApi.Client {
         try TeaUtils.Client.validateModel(request)
         var body: [String: Any] = [:]
         if (!TeaUtils.Client.isUnset(request.deployConfigs)) {
-            body["deployConfigs"] = request.deployConfigs!;
+            body["deployConfigs"] = request.deployConfigs ?? [];
         }
         if (!TeaUtils.Client.isUnset(request.description_)) {
             body["description"] = request.description_ ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.dryRun)) {
             body["dryRun"] = request.dryRun!;
+        }
+        if (!TeaUtils.Client.isUnset(request.gatewayId)) {
+            body["gatewayId"] = request.gatewayId ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.mcpRouteId)) {
             body["mcpRouteId"] = request.mcpRouteId ?? "";
@@ -1790,6 +1943,42 @@ open class Client : AlibabacloudOpenApi.Client {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         var headers: [String: String] = [:]
         return try await importHttpApiWithOptions(request as! ImportHttpApiRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func installPluginWithOptions(_ request: InstallPluginRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> InstallPluginResponse {
+        try TeaUtils.Client.validateModel(request)
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.gatewayIds)) {
+            body["gatewayIds"] = request.gatewayIds ?? [];
+        }
+        if (!TeaUtils.Client.isUnset(request.pluginClassId)) {
+            body["pluginClassId"] = request.pluginClassId ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String],
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "InstallPlugin",
+            "version": "2024-03-27",
+            "protocol": "HTTPS",
+            "pathname": "/v1/plugins/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(InstallPluginResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func installPlugin(_ request: InstallPluginRequest) async throws -> InstallPluginResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await installPluginWithOptions(request as! InstallPluginRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -2002,6 +2191,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.consumerAuthorizationRuleId)) {
             query["consumerAuthorizationRuleId"] = request.consumerAuthorizationRuleId ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.enableAuth)) {
+            query["enableAuth"] = request.enableAuth!;
+        }
         if (!TeaUtils.Client.isUnset(request.forDeploy)) {
             query["forDeploy"] = request.forDeploy!;
         }
@@ -2212,6 +2404,57 @@ open class Client : AlibabacloudOpenApi.Client {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         var headers: [String: String] = [:]
         return try await listHttpApisWithOptions(request as! ListHttpApisRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func listMcpServersWithOptions(_ request: ListMcpServersRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> ListMcpServersResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.createFromTypes)) {
+            query["createFromTypes"] = request.createFromTypes ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.deployStatuses)) {
+            query["deployStatuses"] = request.deployStatuses ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.gatewayId)) {
+            query["gatewayId"] = request.gatewayId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.nameLike)) {
+            query["nameLike"] = request.nameLike ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.pageNumber)) {
+            query["pageNumber"] = request.pageNumber!;
+        }
+        if (!TeaUtils.Client.isUnset(request.pageSize)) {
+            query["pageSize"] = request.pageSize!;
+        }
+        if (!TeaUtils.Client.isUnset(request.type)) {
+            query["type"] = request.type ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String],
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "ListMcpServers",
+            "version": "2024-03-27",
+            "protocol": "HTTPS",
+            "pathname": "/v1/mcp-servers",
+            "method": "GET",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(ListMcpServersResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func listMcpServers(_ request: ListMcpServersRequest) async throws -> ListMcpServersResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await listMcpServersWithOptions(request as! ListMcpServersRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -2668,6 +2911,33 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func unDeployMcpServerWithOptions(_ mcpServerId: String, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> UnDeployMcpServerResponse {
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String]
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "UnDeployMcpServer",
+            "version": "2024-03-27",
+            "protocol": "HTTPS",
+            "pathname": "/v1/mcp-servers/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(mcpServerId)) + "/undeploy",
+            "method": "POST",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(UnDeployMcpServerResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func unDeployMcpServer(_ mcpServerId: String) async throws -> UnDeployMcpServerResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await unDeployMcpServerWithOptions(mcpServerId as! String, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func undeployHttpApiWithOptions(_ httpApiId: String, _ request: UndeployHttpApiRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> UndeployHttpApiResponse {
         try TeaUtils.Client.validateModel(request)
         var body: [String: Any] = [:]
@@ -2707,6 +2977,33 @@ open class Client : AlibabacloudOpenApi.Client {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         var headers: [String: String] = [:]
         return try await undeployHttpApiWithOptions(httpApiId as! String, request as! UndeployHttpApiRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func uninstallPluginWithOptions(_ pluginId: String, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> UninstallPluginResponse {
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String]
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "UninstallPlugin",
+            "version": "2024-03-27",
+            "protocol": "HTTPS",
+            "pathname": "/v1/plugins/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(pluginId)),
+            "method": "DELETE",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(UninstallPluginResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func uninstallPlugin(_ pluginId: String) async throws -> UninstallPluginResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await uninstallPluginWithOptions(pluginId as! String, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -3031,6 +3328,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.enableAuth)) {
             body["enableAuth"] = request.enableAuth!;
         }
+        if (!TeaUtils.Client.isUnset(request.firstByteTimeout)) {
+            body["firstByteTimeout"] = request.firstByteTimeout!;
+        }
         if (!TeaUtils.Client.isUnset(request.ingressConfig)) {
             body["ingressConfig"] = request.ingressConfig!;
         }
@@ -3157,6 +3457,63 @@ open class Client : AlibabacloudOpenApi.Client {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         var headers: [String: String] = [:]
         return try await updateHttpApiRouteWithOptions(httpApiId as! String, routeId as! String, request as! UpdateHttpApiRouteRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func updateMcpServerWithOptions(_ mcpServerId: String, _ request: UpdateMcpServerRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> UpdateMcpServerResponse {
+        try TeaUtils.Client.validateModel(request)
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.assembledSources)) {
+            body["assembledSources"] = request.assembledSources ?? [];
+        }
+        if (!TeaUtils.Client.isUnset(request.backendConfig)) {
+            body["backendConfig"] = request.backendConfig!;
+        }
+        if (!TeaUtils.Client.isUnset(request.description_)) {
+            body["description"] = request.description_ ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.domainIds)) {
+            body["domainIds"] = request.domainIds ?? [];
+        }
+        if (!TeaUtils.Client.isUnset(request.exposedUriPath)) {
+            body["exposedUriPath"] = request.exposedUriPath ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.match)) {
+            body["match"] = request.match!;
+        }
+        if (!TeaUtils.Client.isUnset(request.mcpStatisticsEnable)) {
+            body["mcpStatisticsEnable"] = request.mcpStatisticsEnable!;
+        }
+        if (!TeaUtils.Client.isUnset(request.protocol_)) {
+            body["protocol"] = request.protocol_ ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.type)) {
+            body["type"] = request.type ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String],
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "UpdateMcpServer",
+            "version": "2024-03-27",
+            "protocol": "HTTPS",
+            "pathname": "/v1/mcp-servers/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(mcpServerId)),
+            "method": "PUT",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(UpdateMcpServerResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func updateMcpServer(_ mcpServerId: String, _ request: UpdateMcpServerRequest) async throws -> UpdateMcpServerResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await updateMcpServerWithOptions(mcpServerId as! String, request as! UpdateMcpServerRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
