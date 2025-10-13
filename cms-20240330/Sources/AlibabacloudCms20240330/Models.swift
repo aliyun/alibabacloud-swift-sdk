@@ -53,6 +53,44 @@ public class AddonMeta : Tea.TeaModel {
         }
     }
     public class Environments : Tea.TeaModel {
+        public class CommonSchemaRefs : Tea.TeaModel {
+            public var group: String?
+
+            public var version: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.group != nil {
+                    map["group"] = self.group!
+                }
+                if self.version != nil {
+                    map["version"] = self.version!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["group"] as? String {
+                    self.group = value
+                }
+                if let value = dict["version"] as? String {
+                    self.version = value
+                }
+            }
+        }
         public class Dependencies : Tea.TeaModel {
             public var clusterTypes: [String]?
 
@@ -351,6 +389,8 @@ public class AddonMeta : Tea.TeaModel {
                 }
             }
         }
+        public var commonSchemaRefs: [AddonMeta.Environments.CommonSchemaRefs]?
+
         public var dependencies: AddonMeta.Environments.Dependencies?
 
         public var description_: String?
@@ -381,6 +421,13 @@ public class AddonMeta : Tea.TeaModel {
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
+            if self.commonSchemaRefs != nil {
+                var tmp : [Any] = []
+                for k in self.commonSchemaRefs! {
+                    tmp.append(k.toMap())
+                }
+                map["commonSchemaRefs"] = tmp
+            }
             if self.dependencies != nil {
                 map["dependencies"] = self.dependencies?.toMap()
             }
@@ -407,6 +454,19 @@ public class AddonMeta : Tea.TeaModel {
 
         public override func fromMap(_ dict: [String: Any?]?) -> Void {
             guard let dict else { return }
+            if let value = dict["commonSchemaRefs"] as? [Any?] {
+                var tmp : [AddonMeta.Environments.CommonSchemaRefs] = []
+                for v in value {
+                    if v != nil {
+                        var model = AddonMeta.Environments.CommonSchemaRefs()
+                        if v != nil {
+                            model.fromMap(v as? [String: Any?])
+                        }
+                        tmp.append(model)
+                    }
+                }
+                self.commonSchemaRefs = tmp
+            }
             if let value = dict["dependencies"] as? [String: Any?] {
                 var model = AddonMeta.Environments.Dependencies()
                 model.fromMap(value)
@@ -8453,6 +8513,8 @@ public class CreateIntegrationPolicyRequest : Tea.TeaModel {
 
         public var clusterId: String?
 
+        public var disablePolicyShare: Bool?
+
         public var entityGroupId: String?
 
         public var vpcId: String?
@@ -8477,6 +8539,9 @@ public class CreateIntegrationPolicyRequest : Tea.TeaModel {
             if self.clusterId != nil {
                 map["clusterId"] = self.clusterId!
             }
+            if self.disablePolicyShare != nil {
+                map["disablePolicyShare"] = self.disablePolicyShare!
+            }
             if self.entityGroupId != nil {
                 map["entityGroupId"] = self.entityGroupId!
             }
@@ -8493,6 +8558,9 @@ public class CreateIntegrationPolicyRequest : Tea.TeaModel {
             }
             if let value = dict["clusterId"] as? String {
                 self.clusterId = value
+            }
+            if let value = dict["disablePolicyShare"] as? Bool {
+                self.disablePolicyShare = value
             }
             if let value = dict["entityGroupId"] as? String {
                 self.entityGroupId = value
