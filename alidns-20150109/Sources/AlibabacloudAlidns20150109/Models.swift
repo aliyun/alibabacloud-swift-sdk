@@ -4404,6 +4404,8 @@ public class CreateCloudGtmAddressPoolResponse : Tea.TeaModel {
 public class CreateCloudGtmInstanceConfigRequest : Tea.TeaModel {
     public var acceptLanguage: String?
 
+    public var chargeType: String?
+
     public var clientToken: String?
 
     public var enableStatus: String?
@@ -4438,6 +4440,9 @@ public class CreateCloudGtmInstanceConfigRequest : Tea.TeaModel {
         var map = super.toMap()
         if self.acceptLanguage != nil {
             map["AcceptLanguage"] = self.acceptLanguage!
+        }
+        if self.chargeType != nil {
+            map["ChargeType"] = self.chargeType!
         }
         if self.clientToken != nil {
             map["ClientToken"] = self.clientToken!
@@ -4474,6 +4479,9 @@ public class CreateCloudGtmInstanceConfigRequest : Tea.TeaModel {
         if let value = dict["AcceptLanguage"] as? String {
             self.acceptLanguage = value
         }
+        if let value = dict["ChargeType"] as? String {
+            self.chargeType = value
+        }
         if let value = dict["ClientToken"] as? String {
             self.clientToken = value
         }
@@ -4507,6 +4515,8 @@ public class CreateCloudGtmInstanceConfigRequest : Tea.TeaModel {
 public class CreateCloudGtmInstanceConfigResponseBody : Tea.TeaModel {
     public var configId: Bool?
 
+    public var instanceId: String?
+
     public var requestId: String?
 
     public var success: Bool?
@@ -4528,6 +4538,9 @@ public class CreateCloudGtmInstanceConfigResponseBody : Tea.TeaModel {
         if self.configId != nil {
             map["ConfigId"] = self.configId!
         }
+        if self.instanceId != nil {
+            map["InstanceId"] = self.instanceId!
+        }
         if self.requestId != nil {
             map["RequestId"] = self.requestId!
         }
@@ -4541,6 +4554,9 @@ public class CreateCloudGtmInstanceConfigResponseBody : Tea.TeaModel {
         guard let dict else { return }
         if let value = dict["ConfigId"] as? Bool {
             self.configId = value
+        }
+        if let value = dict["InstanceId"] as? String {
+            self.instanceId = value
         }
         if let value = dict["RequestId"] as? String {
             self.requestId = value
@@ -40661,6 +40677,8 @@ public class ListCloudGtmInstanceConfigsResponse : Tea.TeaModel {
 public class ListCloudGtmInstancesRequest : Tea.TeaModel {
     public var acceptLanguage: String?
 
+    public var chargeType: String?
+
     public var clientToken: String?
 
     public var instanceId: String?
@@ -40688,6 +40706,9 @@ public class ListCloudGtmInstancesRequest : Tea.TeaModel {
         if self.acceptLanguage != nil {
             map["AcceptLanguage"] = self.acceptLanguage!
         }
+        if self.chargeType != nil {
+            map["ChargeType"] = self.chargeType!
+        }
         if self.clientToken != nil {
             map["ClientToken"] = self.clientToken!
         }
@@ -40711,6 +40732,9 @@ public class ListCloudGtmInstancesRequest : Tea.TeaModel {
         if let value = dict["AcceptLanguage"] as? String {
             self.acceptLanguage = value
         }
+        if let value = dict["ChargeType"] as? String {
+            self.chargeType = value
+        }
         if let value = dict["ClientToken"] as? String {
             self.clientToken = value
         }
@@ -40732,6 +40756,8 @@ public class ListCloudGtmInstancesRequest : Tea.TeaModel {
 public class ListCloudGtmInstancesResponseBody : Tea.TeaModel {
     public class Instances : Tea.TeaModel {
         public class Instance : Tea.TeaModel {
+            public var chargeType: String?
+
             public var commodityCode: String?
 
             public var createTime: String?
@@ -40778,6 +40804,9 @@ public class ListCloudGtmInstancesResponseBody : Tea.TeaModel {
 
             public override func toMap() -> [String : Any] {
                 var map = super.toMap()
+                if self.chargeType != nil {
+                    map["ChargeType"] = self.chargeType!
+                }
                 if self.commodityCode != nil {
                     map["CommodityCode"] = self.commodityCode!
                 }
@@ -40831,6 +40860,9 @@ public class ListCloudGtmInstancesResponseBody : Tea.TeaModel {
 
             public override func fromMap(_ dict: [String: Any?]?) -> Void {
                 guard let dict else { return }
+                if let value = dict["ChargeType"] as? String {
+                    self.chargeType = value
+                }
                 if let value = dict["CommodityCode"] as? String {
                     self.commodityCode = value
                 }
@@ -47682,6 +47714,8 @@ public class SearchCloudGtmInstanceConfigsResponse : Tea.TeaModel {
 public class SearchCloudGtmInstancesRequest : Tea.TeaModel {
     public var acceptLanguage: String?
 
+    public var chargeType: String?
+
     public var clientToken: String?
 
     public var instanceId: String?
@@ -47709,6 +47743,9 @@ public class SearchCloudGtmInstancesRequest : Tea.TeaModel {
         if self.acceptLanguage != nil {
             map["AcceptLanguage"] = self.acceptLanguage!
         }
+        if self.chargeType != nil {
+            map["ChargeType"] = self.chargeType!
+        }
         if self.clientToken != nil {
             map["ClientToken"] = self.clientToken!
         }
@@ -47732,6 +47769,9 @@ public class SearchCloudGtmInstancesRequest : Tea.TeaModel {
         if let value = dict["AcceptLanguage"] as? String {
             self.acceptLanguage = value
         }
+        if let value = dict["ChargeType"] as? String {
+            self.chargeType = value
+        }
         if let value = dict["ClientToken"] as? String {
             self.clientToken = value
         }
@@ -47753,6 +47793,8 @@ public class SearchCloudGtmInstancesRequest : Tea.TeaModel {
 public class SearchCloudGtmInstancesResponseBody : Tea.TeaModel {
     public class Instances : Tea.TeaModel {
         public class Instance : Tea.TeaModel {
+            public var chargeType: String?
+
             public var commodityCode: String?
 
             public var createTime: String?
@@ -47799,6 +47841,9 @@ public class SearchCloudGtmInstancesResponseBody : Tea.TeaModel {
 
             public override func toMap() -> [String : Any] {
                 var map = super.toMap()
+                if self.chargeType != nil {
+                    map["ChargeType"] = self.chargeType!
+                }
                 if self.commodityCode != nil {
                     map["CommodityCode"] = self.commodityCode!
                 }
@@ -47852,6 +47897,9 @@ public class SearchCloudGtmInstancesResponseBody : Tea.TeaModel {
 
             public override func fromMap(_ dict: [String: Any?]?) -> Void {
                 guard let dict else { return }
+                if let value = dict["ChargeType"] as? String {
+                    self.chargeType = value
+                }
                 if let value = dict["CommodityCode"] as? String {
                     self.commodityCode = value
                 }
