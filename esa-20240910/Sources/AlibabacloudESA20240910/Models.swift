@@ -4926,7 +4926,13 @@ public class BatchGetExpressionFieldsRequest : Tea.TeaModel {
     }
     public var expressions: [BatchGetExpressionFieldsRequest.Expressions]?
 
+    public var instanceId: String?
+
+    public var kind: String?
+
     public var phase: String?
+
+    public var planNameEn: String?
 
     public var siteId: Int64?
 
@@ -4951,8 +4957,17 @@ public class BatchGetExpressionFieldsRequest : Tea.TeaModel {
             }
             map["Expressions"] = tmp
         }
+        if self.instanceId != nil {
+            map["InstanceId"] = self.instanceId!
+        }
+        if self.kind != nil {
+            map["Kind"] = self.kind!
+        }
         if self.phase != nil {
             map["Phase"] = self.phase!
+        }
+        if self.planNameEn != nil {
+            map["PlanNameEn"] = self.planNameEn!
         }
         if self.siteId != nil {
             map["SiteId"] = self.siteId!
@@ -4975,8 +4990,17 @@ public class BatchGetExpressionFieldsRequest : Tea.TeaModel {
             }
             self.expressions = tmp
         }
+        if let value = dict["InstanceId"] as? String {
+            self.instanceId = value
+        }
+        if let value = dict["Kind"] as? String {
+            self.kind = value
+        }
         if let value = dict["Phase"] as? String {
             self.phase = value
+        }
+        if let value = dict["PlanNameEn"] as? String {
+            self.planNameEn = value
         }
         if let value = dict["SiteId"] as? Int64 {
             self.siteId = value
@@ -4987,7 +5011,13 @@ public class BatchGetExpressionFieldsRequest : Tea.TeaModel {
 public class BatchGetExpressionFieldsShrinkRequest : Tea.TeaModel {
     public var expressionsShrink: String?
 
+    public var instanceId: String?
+
+    public var kind: String?
+
     public var phase: String?
+
+    public var planNameEn: String?
 
     public var siteId: Int64?
 
@@ -5008,8 +5038,17 @@ public class BatchGetExpressionFieldsShrinkRequest : Tea.TeaModel {
         if self.expressionsShrink != nil {
             map["Expressions"] = self.expressionsShrink!
         }
+        if self.instanceId != nil {
+            map["InstanceId"] = self.instanceId!
+        }
+        if self.kind != nil {
+            map["Kind"] = self.kind!
+        }
         if self.phase != nil {
             map["Phase"] = self.phase!
+        }
+        if self.planNameEn != nil {
+            map["PlanNameEn"] = self.planNameEn!
         }
         if self.siteId != nil {
             map["SiteId"] = self.siteId!
@@ -5022,8 +5061,17 @@ public class BatchGetExpressionFieldsShrinkRequest : Tea.TeaModel {
         if let value = dict["Expressions"] as? String {
             self.expressionsShrink = value
         }
+        if let value = dict["InstanceId"] as? String {
+            self.instanceId = value
+        }
+        if let value = dict["Kind"] as? String {
+            self.kind = value
+        }
         if let value = dict["Phase"] as? String {
             self.phase = value
+        }
+        if let value = dict["PlanNameEn"] as? String {
+            self.planNameEn = value
         }
         if let value = dict["SiteId"] as? Int64 {
             self.siteId = value
@@ -66650,6 +66698,120 @@ public class ListVideoProcessingsResponse : Tea.TeaModel {
 }
 
 public class ListWafManagedRulesRequest : Tea.TeaModel {
+    public class ManagedRuleset : Tea.TeaModel {
+        public class ManagedRules : Tea.TeaModel {
+            public var action: String?
+
+            public var id: Int64?
+
+            public var status: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.action != nil {
+                    map["Action"] = self.action!
+                }
+                if self.id != nil {
+                    map["Id"] = self.id!
+                }
+                if self.status != nil {
+                    map["Status"] = self.status!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["Action"] as? String {
+                    self.action = value
+                }
+                if let value = dict["Id"] as? Int64 {
+                    self.id = value
+                }
+                if let value = dict["Status"] as? String {
+                    self.status = value
+                }
+            }
+        }
+        public var action: String?
+
+        public var attackType: Int32?
+
+        public var managedRules: [ListWafManagedRulesRequest.ManagedRuleset.ManagedRules]?
+
+        public var protectionLevel: Int32?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.action != nil {
+                map["Action"] = self.action!
+            }
+            if self.attackType != nil {
+                map["AttackType"] = self.attackType!
+            }
+            if self.managedRules != nil {
+                var tmp : [Any] = []
+                for k in self.managedRules! {
+                    tmp.append(k.toMap())
+                }
+                map["ManagedRules"] = tmp
+            }
+            if self.protectionLevel != nil {
+                map["ProtectionLevel"] = self.protectionLevel!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["Action"] as? String {
+                self.action = value
+            }
+            if let value = dict["AttackType"] as? Int32 {
+                self.attackType = value
+            }
+            if let value = dict["ManagedRules"] as? [Any?] {
+                var tmp : [ListWafManagedRulesRequest.ManagedRuleset.ManagedRules] = []
+                for v in value {
+                    if v != nil {
+                        var model = ListWafManagedRulesRequest.ManagedRuleset.ManagedRules()
+                        if v != nil {
+                            model.fromMap(v as? [String: Any?])
+                        }
+                        tmp.append(model)
+                    }
+                }
+                self.managedRules = tmp
+            }
+            if let value = dict["ProtectionLevel"] as? Int32 {
+                self.protectionLevel = value
+            }
+        }
+    }
     public class QueryArgs : Tea.TeaModel {
         public var action: String?
 
@@ -66708,7 +66870,11 @@ public class ListWafManagedRulesRequest : Tea.TeaModel {
 
     public var id: Int64?
 
+    public var instanceId: String?
+
     public var language: String?
+
+    public var managedRuleset: ListWafManagedRulesRequest.ManagedRuleset?
 
     public var pageNumber: Int32?
 
@@ -66730,6 +66896,7 @@ public class ListWafManagedRulesRequest : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
+        try self.managedRuleset?.validate()
         try self.queryArgs?.validate()
     }
 
@@ -66741,8 +66908,14 @@ public class ListWafManagedRulesRequest : Tea.TeaModel {
         if self.id != nil {
             map["Id"] = self.id!
         }
+        if self.instanceId != nil {
+            map["InstanceId"] = self.instanceId!
+        }
         if self.language != nil {
             map["Language"] = self.language!
+        }
+        if self.managedRuleset != nil {
+            map["ManagedRuleset"] = self.managedRuleset?.toMap()
         }
         if self.pageNumber != nil {
             map["PageNumber"] = self.pageNumber!
@@ -66770,8 +66943,16 @@ public class ListWafManagedRulesRequest : Tea.TeaModel {
         if let value = dict["Id"] as? Int64 {
             self.id = value
         }
+        if let value = dict["InstanceId"] as? String {
+            self.instanceId = value
+        }
         if let value = dict["Language"] as? String {
             self.language = value
+        }
+        if let value = dict["ManagedRuleset"] as? [String: Any?] {
+            var model = ListWafManagedRulesRequest.ManagedRuleset()
+            model.fromMap(value)
+            self.managedRuleset = model
         }
         if let value = dict["PageNumber"] as? Int32 {
             self.pageNumber = value
@@ -66798,7 +66979,11 @@ public class ListWafManagedRulesShrinkRequest : Tea.TeaModel {
 
     public var id: Int64?
 
+    public var instanceId: String?
+
     public var language: String?
+
+    public var managedRulesetShrink: String?
 
     public var pageNumber: Int32?
 
@@ -66830,8 +67015,14 @@ public class ListWafManagedRulesShrinkRequest : Tea.TeaModel {
         if self.id != nil {
             map["Id"] = self.id!
         }
+        if self.instanceId != nil {
+            map["InstanceId"] = self.instanceId!
+        }
         if self.language != nil {
             map["Language"] = self.language!
+        }
+        if self.managedRulesetShrink != nil {
+            map["ManagedRuleset"] = self.managedRulesetShrink!
         }
         if self.pageNumber != nil {
             map["PageNumber"] = self.pageNumber!
@@ -66859,8 +67050,14 @@ public class ListWafManagedRulesShrinkRequest : Tea.TeaModel {
         if let value = dict["Id"] as? Int64 {
             self.id = value
         }
+        if let value = dict["InstanceId"] as? String {
+            self.instanceId = value
+        }
         if let value = dict["Language"] as? String {
             self.language = value
+        }
+        if let value = dict["ManagedRuleset"] as? String {
+            self.managedRulesetShrink = value
         }
         if let value = dict["PageNumber"] as? Int32 {
             self.pageNumber = value
@@ -68331,6 +68528,8 @@ public class ListWafTemplateRulesRequest : Tea.TeaModel {
             }
         }
     }
+    public var instanceId: String?
+
     public var phase: String?
 
     public var queryArgs: ListWafTemplateRulesRequest.QueryArgs?
@@ -68352,6 +68551,9 @@ public class ListWafTemplateRulesRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.instanceId != nil {
+            map["InstanceId"] = self.instanceId!
+        }
         if self.phase != nil {
             map["Phase"] = self.phase!
         }
@@ -68366,6 +68568,9 @@ public class ListWafTemplateRulesRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["InstanceId"] as? String {
+            self.instanceId = value
+        }
         if let value = dict["Phase"] as? String {
             self.phase = value
         }
@@ -68381,6 +68586,8 @@ public class ListWafTemplateRulesRequest : Tea.TeaModel {
 }
 
 public class ListWafTemplateRulesShrinkRequest : Tea.TeaModel {
+    public var instanceId: String?
+
     public var phase: String?
 
     public var queryArgsShrink: String?
@@ -68401,6 +68608,9 @@ public class ListWafTemplateRulesShrinkRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.instanceId != nil {
+            map["InstanceId"] = self.instanceId!
+        }
         if self.phase != nil {
             map["Phase"] = self.phase!
         }
@@ -68415,6 +68625,9 @@ public class ListWafTemplateRulesShrinkRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["InstanceId"] as? String {
+            self.instanceId = value
+        }
         if let value = dict["Phase"] as? String {
             self.phase = value
         }
@@ -68596,6 +68809,8 @@ public class ListWafTemplateRulesResponse : Tea.TeaModel {
 }
 
 public class ListWafUsageOfRulesRequest : Tea.TeaModel {
+    public var instanceId: String?
+
     public var phase: String?
 
     public var siteId: Int64?
@@ -68614,6 +68829,9 @@ public class ListWafUsageOfRulesRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.instanceId != nil {
+            map["InstanceId"] = self.instanceId!
+        }
         if self.phase != nil {
             map["Phase"] = self.phase!
         }
@@ -68625,6 +68843,9 @@ public class ListWafUsageOfRulesRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["InstanceId"] as? String {
+            self.instanceId = value
+        }
         if let value = dict["Phase"] as? String {
             self.phase = value
         }
@@ -68681,6 +68902,10 @@ public class ListWafUsageOfRulesResponseBody : Tea.TeaModel {
             }
         }
     }
+    public var batchConfigUsage: Int64?
+
+    public var instanceUsage: Int64?
+
     public var requestId: String?
 
     public var sites: [ListWafUsageOfRulesResponseBody.Sites]?
@@ -68699,6 +68924,12 @@ public class ListWafUsageOfRulesResponseBody : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.batchConfigUsage != nil {
+            map["BatchConfigUsage"] = self.batchConfigUsage!
+        }
+        if self.instanceUsage != nil {
+            map["InstanceUsage"] = self.instanceUsage!
+        }
         if self.requestId != nil {
             map["RequestId"] = self.requestId!
         }
@@ -68714,6 +68945,12 @@ public class ListWafUsageOfRulesResponseBody : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["BatchConfigUsage"] as? Int64 {
+            self.batchConfigUsage = value
+        }
+        if let value = dict["InstanceUsage"] as? Int64 {
+            self.instanceUsage = value
+        }
         if let value = dict["RequestId"] as? String {
             self.requestId = value
         }

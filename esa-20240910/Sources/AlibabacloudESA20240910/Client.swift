@@ -413,12 +413,21 @@ open class Client : AlibabacloudOpenApi.Client {
             request.expressionsShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.expressions, "Expressions", "json")
         }
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.instanceId)) {
+            query["InstanceId"] = request.instanceId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.planNameEn)) {
+            query["PlanNameEn"] = request.planNameEn ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.siteId)) {
             query["SiteId"] = request.siteId!;
         }
         var body: [String: Any] = [:]
         if (!TeaUtils.Client.isUnset(request.expressionsShrink)) {
             body["Expressions"] = request.expressionsShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.kind)) {
+            body["Kind"] = request.kind ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.phase)) {
             body["Phase"] = request.phase ?? "";
@@ -9641,6 +9650,9 @@ open class Client : AlibabacloudOpenApi.Client {
         try TeaUtils.Client.validateModel(tmpReq)
         var request: ListWafManagedRulesShrinkRequest = ListWafManagedRulesShrinkRequest([:])
         AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.managedRuleset)) {
+            request.managedRulesetShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.managedRuleset, "ManagedRuleset", "json")
+        }
         if (!TeaUtils.Client.isUnset(tmpReq.queryArgs)) {
             request.queryArgsShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.queryArgs, "QueryArgs", "json")
         }
@@ -9651,8 +9663,14 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.id)) {
             query["Id"] = request.id!;
         }
+        if (!TeaUtils.Client.isUnset(request.instanceId)) {
+            query["InstanceId"] = request.instanceId ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.language)) {
             query["Language"] = request.language ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.managedRulesetShrink)) {
+            query["ManagedRuleset"] = request.managedRulesetShrink ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.pageNumber)) {
             query["PageNumber"] = request.pageNumber!;
@@ -9841,6 +9859,9 @@ open class Client : AlibabacloudOpenApi.Client {
             request.queryArgsShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.queryArgs, "QueryArgs", "json")
         }
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.instanceId)) {
+            query["InstanceId"] = request.instanceId ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.phase)) {
             query["Phase"] = request.phase ?? "";
         }
@@ -9878,6 +9899,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func listWafUsageOfRulesWithOptions(_ request: ListWafUsageOfRulesRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ListWafUsageOfRulesResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.instanceId)) {
+            query["InstanceId"] = request.instanceId ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.phase)) {
             query["Phase"] = request.phase ?? "";
         }
