@@ -74894,7 +74894,7 @@ public class InvokeAssistantResponseBody : Tea.TeaModel {
             }
             public class DingNormalCard : Tea.TeaModel {
                 public class CardData : Tea.TeaModel {
-                    public var cardParamMap: [String: Any]?
+                    public var cardParamMap: Any?
 
                     public override init() {
                         super.init()
@@ -74918,7 +74918,7 @@ public class InvokeAssistantResponseBody : Tea.TeaModel {
 
                     public override func fromMap(_ dict: [String: Any?]?) -> Void {
                         guard let dict else { return }
-                        if let value = dict["cardParamMap"] as? [String: Any] {
+                        if let value = dict["cardParamMap"] as? Any {
                             self.cardParamMap = value
                         }
                     }
