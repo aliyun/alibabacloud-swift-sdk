@@ -39838,6 +39838,8 @@ public class DescribeSiteMonitorAttributeResponseBody : Tea.TeaModel {
 
             public var retryDelay: Int32?
 
+            public var safeLink: Int32?
+
             public var screenShot: Bool?
 
             public var scrollEnd: Bool?
@@ -40023,6 +40025,9 @@ public class DescribeSiteMonitorAttributeResponseBody : Tea.TeaModel {
                 }
                 if self.retryDelay != nil {
                     map["retry_delay"] = self.retryDelay!
+                }
+                if self.safeLink != nil {
+                    map["safe_link"] = self.safeLink!
                 }
                 if self.screenShot != nil {
                     map["screen_shot"] = self.screenShot!
@@ -40219,6 +40224,9 @@ public class DescribeSiteMonitorAttributeResponseBody : Tea.TeaModel {
                 }
                 if let value = dict["retry_delay"] as? Int32 {
                     self.retryDelay = value
+                }
+                if let value = dict["safe_link"] as? Int32 {
+                    self.safeLink = value
                 }
                 if let value = dict["screen_shot"] as? Bool {
                     self.screenShot = value
