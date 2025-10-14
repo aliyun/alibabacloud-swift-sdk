@@ -23996,6 +23996,8 @@ public class DescribeEnsEipAddressesRequest : Tea.TeaModel {
 
     public var ensRegionIds: [String]?
 
+    public var icmpReplyEnabled: Bool?
+
     public var pageNumber: Int32?
 
     public var pageSize: Int32?
@@ -24037,6 +24039,9 @@ public class DescribeEnsEipAddressesRequest : Tea.TeaModel {
         if self.ensRegionIds != nil {
             map["EnsRegionIds"] = self.ensRegionIds!
         }
+        if self.icmpReplyEnabled != nil {
+            map["IcmpReplyEnabled"] = self.icmpReplyEnabled!
+        }
         if self.pageNumber != nil {
             map["PageNumber"] = self.pageNumber!
         }
@@ -24071,6 +24076,9 @@ public class DescribeEnsEipAddressesRequest : Tea.TeaModel {
         }
         if let value = dict["EnsRegionIds"] as? [String] {
             self.ensRegionIds = value
+        }
+        if let value = dict["IcmpReplyEnabled"] as? Bool {
+            self.icmpReplyEnabled = value
         }
         if let value = dict["PageNumber"] as? Int32 {
             self.pageNumber = value
@@ -24197,6 +24205,8 @@ public class DescribeEnsEipAddressesResponseBody : Tea.TeaModel {
 
             public var ensRegionId: String?
 
+            public var icmpReplyEnabled: Bool?
+
             public var instanceId: String?
 
             public var instanceType: String?
@@ -24250,6 +24260,9 @@ public class DescribeEnsEipAddressesResponseBody : Tea.TeaModel {
                 if self.ensRegionId != nil {
                     map["EnsRegionId"] = self.ensRegionId!
                 }
+                if self.icmpReplyEnabled != nil {
+                    map["IcmpReplyEnabled"] = self.icmpReplyEnabled!
+                }
                 if self.instanceId != nil {
                     map["InstanceId"] = self.instanceId!
                 }
@@ -24302,6 +24315,9 @@ public class DescribeEnsEipAddressesResponseBody : Tea.TeaModel {
                 }
                 if let value = dict["EnsRegionId"] as? String {
                     self.ensRegionId = value
+                }
+                if let value = dict["IcmpReplyEnabled"] as? Bool {
+                    self.icmpReplyEnabled = value
                 }
                 if let value = dict["InstanceId"] as? String {
                     self.instanceId = value

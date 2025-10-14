@@ -4420,6 +4420,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.ensRegionIds)) {
             query["EnsRegionIds"] = request.ensRegionIds ?? [];
         }
+        if (!TeaUtils.Client.isUnset(request.icmpReplyEnabled)) {
+            query["IcmpReplyEnabled"] = request.icmpReplyEnabled!;
+        }
         if (!TeaUtils.Client.isUnset(request.pageNumber)) {
             query["PageNumber"] = request.pageNumber!;
         }
