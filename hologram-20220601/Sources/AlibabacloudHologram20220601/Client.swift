@@ -63,6 +63,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func createHoloWarehouseWithOptions(_ instanceId: String, _ request: CreateHoloWarehouseRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> CreateHoloWarehouseResponse {
         try TeaUtils.Client.validateModel(request)
         var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.clusterCount)) {
+            body["clusterCount"] = request.clusterCount!;
+        }
         if (!TeaUtils.Client.isUnset(request.cpu)) {
             body["cpu"] = request.cpu ?? "";
         }
@@ -837,6 +840,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func scaleHoloWarehouseWithOptions(_ instanceId: String, _ request: ScaleHoloWarehouseRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> ScaleHoloWarehouseResponse {
         try TeaUtils.Client.validateModel(request)
         var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.clusterCount)) {
+            body["clusterCount"] = request.clusterCount!;
+        }
         if (!TeaUtils.Client.isUnset(request.cpu)) {
             body["cpu"] = request.cpu!;
         }

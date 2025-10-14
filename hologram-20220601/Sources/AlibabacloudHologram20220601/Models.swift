@@ -134,6 +134,8 @@ public class ChangeResourceGroupResponse : Tea.TeaModel {
 }
 
 public class CreateHoloWarehouseRequest : Tea.TeaModel {
+    public var clusterCount: Int64?
+
     public var cpu: String?
 
     public var name: String?
@@ -152,6 +154,9 @@ public class CreateHoloWarehouseRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.clusterCount != nil {
+            map["clusterCount"] = self.clusterCount!
+        }
         if self.cpu != nil {
             map["cpu"] = self.cpu!
         }
@@ -163,6 +168,9 @@ public class CreateHoloWarehouseRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["clusterCount"] as? Int64 {
+            self.clusterCount = value
+        }
         if let value = dict["cpu"] as? String {
             self.cpu = value
         }
@@ -2264,13 +2272,25 @@ public class GetRootCertificateResponse : Tea.TeaModel {
 public class GetWarehouseDetailResponseBody : Tea.TeaModel {
     public class WarehouseDetail : Tea.TeaModel {
         public class WarehouseList : Tea.TeaModel {
+            public var autoScaleType: String?
+
+            public var clusterCount: String?
+
+            public var clusterCpu: String?
+
             public var cpu: Int64?
 
             public var defaultWarehouse: Bool?
 
             public var elasticCpu: Int64?
 
+            public var elasticType: String?
+
             public var id: Int64?
+
+            public var initClusterCount: String?
+
+            public var maxClusterCount: String?
 
             public var mem: Int64?
 
@@ -2296,6 +2316,15 @@ public class GetWarehouseDetailResponseBody : Tea.TeaModel {
 
             public override func toMap() -> [String : Any] {
                 var map = super.toMap()
+                if self.autoScaleType != nil {
+                    map["AutoScaleType"] = self.autoScaleType!
+                }
+                if self.clusterCount != nil {
+                    map["ClusterCount"] = self.clusterCount!
+                }
+                if self.clusterCpu != nil {
+                    map["ClusterCpu"] = self.clusterCpu!
+                }
                 if self.cpu != nil {
                     map["Cpu"] = self.cpu!
                 }
@@ -2305,8 +2334,17 @@ public class GetWarehouseDetailResponseBody : Tea.TeaModel {
                 if self.elasticCpu != nil {
                     map["ElasticCpu"] = self.elasticCpu!
                 }
+                if self.elasticType != nil {
+                    map["ElasticType"] = self.elasticType!
+                }
                 if self.id != nil {
                     map["Id"] = self.id!
+                }
+                if self.initClusterCount != nil {
+                    map["InitClusterCount"] = self.initClusterCount!
+                }
+                if self.maxClusterCount != nil {
+                    map["MaxClusterCount"] = self.maxClusterCount!
                 }
                 if self.mem != nil {
                     map["Mem"] = self.mem!
@@ -2328,6 +2366,15 @@ public class GetWarehouseDetailResponseBody : Tea.TeaModel {
 
             public override func fromMap(_ dict: [String: Any?]?) -> Void {
                 guard let dict else { return }
+                if let value = dict["AutoScaleType"] as? String {
+                    self.autoScaleType = value
+                }
+                if let value = dict["ClusterCount"] as? String {
+                    self.clusterCount = value
+                }
+                if let value = dict["ClusterCpu"] as? String {
+                    self.clusterCpu = value
+                }
                 if let value = dict["Cpu"] as? Int64 {
                     self.cpu = value
                 }
@@ -2337,8 +2384,17 @@ public class GetWarehouseDetailResponseBody : Tea.TeaModel {
                 if let value = dict["ElasticCpu"] as? Int64 {
                     self.elasticCpu = value
                 }
+                if let value = dict["ElasticType"] as? String {
+                    self.elasticType = value
+                }
                 if let value = dict["Id"] as? Int64 {
                     self.id = value
+                }
+                if let value = dict["InitClusterCount"] as? String {
+                    self.initClusterCount = value
+                }
+                if let value = dict["MaxClusterCount"] as? String {
+                    self.maxClusterCount = value
                 }
                 if let value = dict["Mem"] as? Int64 {
                     self.mem = value
@@ -2357,6 +2413,8 @@ public class GetWarehouseDetailResponseBody : Tea.TeaModel {
                 }
             }
         }
+        public var autoElasticCpu: String?
+
         public var remainingCpu: String?
 
         public var reservedCpu: String?
@@ -2379,6 +2437,9 @@ public class GetWarehouseDetailResponseBody : Tea.TeaModel {
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
+            if self.autoElasticCpu != nil {
+                map["AutoElasticCpu"] = self.autoElasticCpu!
+            }
             if self.remainingCpu != nil {
                 map["RemainingCpu"] = self.remainingCpu!
             }
@@ -2400,6 +2461,9 @@ public class GetWarehouseDetailResponseBody : Tea.TeaModel {
 
         public override func fromMap(_ dict: [String: Any?]?) -> Void {
             guard let dict else { return }
+            if let value = dict["AutoElasticCpu"] as? String {
+                self.autoElasticCpu = value
+            }
             if let value = dict["RemainingCpu"] as? String {
                 self.remainingCpu = value
             }
@@ -4601,6 +4665,8 @@ public class ResumeInstanceResponse : Tea.TeaModel {
 }
 
 public class ScaleHoloWarehouseRequest : Tea.TeaModel {
+    public var clusterCount: Int64?
+
     public var cpu: Int64?
 
     public var name: String?
@@ -4619,6 +4685,9 @@ public class ScaleHoloWarehouseRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.clusterCount != nil {
+            map["clusterCount"] = self.clusterCount!
+        }
         if self.cpu != nil {
             map["cpu"] = self.cpu!
         }
@@ -4630,6 +4699,9 @@ public class ScaleHoloWarehouseRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["clusterCount"] as? Int64 {
+            self.clusterCount = value
+        }
         if let value = dict["cpu"] as? Int64 {
             self.cpu = value
         }
