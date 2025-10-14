@@ -1,7 +1,7 @@
 Pod::Spec.new do |spec|
 
   spec.name         = "AlibabacloudAnyTrans20250707"
-  spec.version      = "2.0.0"
+  spec.version      = "2.0.1"
   spec.license      = "Apache 2.0"
   spec.summary      = "Alibaba Cloud AnyTrans (20250707) SDK Library for Swift"
   spec.homepage     = "https://github.com/alibabacloud-sdk-swift/anytrans-20250707" 

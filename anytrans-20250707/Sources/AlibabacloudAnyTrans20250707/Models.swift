@@ -2234,6 +2234,36 @@ public class GetLongTextTranslateTaskResponse : Tea.TeaModel {
 
 public class SubmitDocTranslateTaskRequest : Tea.TeaModel {
     public class Ext : Tea.TeaModel {
+        public class Config : Tea.TeaModel {
+            public var skipImgTrans: Bool?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.skipImgTrans != nil {
+                    map["skipImgTrans"] = self.skipImgTrans!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["skipImgTrans"] as? Bool {
+                    self.skipImgTrans = value
+                }
+            }
+        }
         public class Terminologies : Tea.TeaModel {
             public var src: String?
 
@@ -2272,6 +2302,8 @@ public class SubmitDocTranslateTaskRequest : Tea.TeaModel {
                 }
             }
         }
+        public var config: SubmitDocTranslateTaskRequest.Ext.Config?
+
         public var domainHint: String?
 
         public var terminologies: [SubmitDocTranslateTaskRequest.Ext.Terminologies]?
@@ -2286,10 +2318,14 @@ public class SubmitDocTranslateTaskRequest : Tea.TeaModel {
         }
 
         public override func validate() throws -> Void {
+            try self.config?.validate()
         }
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
+            if self.config != nil {
+                map["config"] = self.config?.toMap()
+            }
             if self.domainHint != nil {
                 map["domainHint"] = self.domainHint!
             }
@@ -2305,6 +2341,11 @@ public class SubmitDocTranslateTaskRequest : Tea.TeaModel {
 
         public override func fromMap(_ dict: [String: Any?]?) -> Void {
             guard let dict else { return }
+            if let value = dict["config"] as? [String: Any?] {
+                var model = SubmitDocTranslateTaskRequest.Ext.Config()
+                model.fromMap(value)
+                self.config = model
+            }
             if let value = dict["domainHint"] as? String {
                 self.domainHint = value
             }
