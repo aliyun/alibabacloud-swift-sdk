@@ -17549,6 +17549,8 @@ public class ListIntegrationPoliciesResponseBody : Tea.TeaModel {
             }
         }
         public class ManagedInfo : Tea.TeaModel {
+            public var eniId: String?
+
             public var securityGroupId: String?
 
             public var vswitchId: String?
@@ -17567,6 +17569,9 @@ public class ListIntegrationPoliciesResponseBody : Tea.TeaModel {
 
             public override func toMap() -> [String : Any] {
                 var map = super.toMap()
+                if self.eniId != nil {
+                    map["eniId"] = self.eniId!
+                }
                 if self.securityGroupId != nil {
                     map["securityGroupId"] = self.securityGroupId!
                 }
@@ -17578,6 +17583,9 @@ public class ListIntegrationPoliciesResponseBody : Tea.TeaModel {
 
             public override func fromMap(_ dict: [String: Any?]?) -> Void {
                 guard let dict else { return }
+                if let value = dict["eniId"] as? String {
+                    self.eniId = value
+                }
                 if let value = dict["securityGroupId"] as? String {
                     self.securityGroupId = value
                 }
