@@ -3074,6 +3074,95 @@ public class BookShrinkRequest : Tea.TeaModel {
 public class BookResponseBody : Tea.TeaModel {
     public class Data : Tea.TeaModel {
         public class OrderList : Tea.TeaModel {
+            public class OrderAttribute : Tea.TeaModel {
+                public class AbaPayLockRateInfo : Tea.TeaModel {
+                    public var payIntendedAmount: String?
+
+                    public var payIntendedCurrencyCode: String?
+
+                    public var quotationCurrencyCode: String?
+
+                    public var toPayCurrencyRate: String?
+
+                    public override init() {
+                        super.init()
+                    }
+
+                    public init(_ dict: [String: Any]) {
+                        super.init()
+                        self.fromMap(dict)
+                    }
+
+                    public override func validate() throws -> Void {
+                    }
+
+                    public override func toMap() -> [String : Any] {
+                        var map = super.toMap()
+                        if self.payIntendedAmount != nil {
+                            map["pay_intended_amount"] = self.payIntendedAmount!
+                        }
+                        if self.payIntendedCurrencyCode != nil {
+                            map["pay_intended_currency_code"] = self.payIntendedCurrencyCode!
+                        }
+                        if self.quotationCurrencyCode != nil {
+                            map["quotation_currency_code"] = self.quotationCurrencyCode!
+                        }
+                        if self.toPayCurrencyRate != nil {
+                            map["to_pay_currency_rate"] = self.toPayCurrencyRate!
+                        }
+                        return map
+                    }
+
+                    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                        guard let dict else { return }
+                        if let value = dict["pay_intended_amount"] as? String {
+                            self.payIntendedAmount = value
+                        }
+                        if let value = dict["pay_intended_currency_code"] as? String {
+                            self.payIntendedCurrencyCode = value
+                        }
+                        if let value = dict["quotation_currency_code"] as? String {
+                            self.quotationCurrencyCode = value
+                        }
+                        if let value = dict["to_pay_currency_rate"] as? String {
+                            self.toPayCurrencyRate = value
+                        }
+                    }
+                }
+                public var abaPayLockRateInfo: BookResponseBody.Data.OrderList.OrderAttribute.AbaPayLockRateInfo?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                    try self.abaPayLockRateInfo?.validate()
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.abaPayLockRateInfo != nil {
+                        map["aba_pay_lock_rate_info"] = self.abaPayLockRateInfo?.toMap()
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                    guard let dict else { return }
+                    if let value = dict["aba_pay_lock_rate_info"] as? [String: Any?] {
+                        var model = BookResponseBody.Data.OrderList.OrderAttribute.AbaPayLockRateInfo()
+                        model.fromMap(value)
+                        self.abaPayLockRateInfo = model
+                    }
+                }
+            }
+            public var orderAttribute: BookResponseBody.Data.OrderList.OrderAttribute?
+
             public var orderNum: Int64?
 
             public override init() {
@@ -3086,10 +3175,14 @@ public class BookResponseBody : Tea.TeaModel {
             }
 
             public override func validate() throws -> Void {
+                try self.orderAttribute?.validate()
             }
 
             public override func toMap() -> [String : Any] {
                 var map = super.toMap()
+                if self.orderAttribute != nil {
+                    map["order_attribute"] = self.orderAttribute?.toMap()
+                }
                 if self.orderNum != nil {
                     map["order_num"] = self.orderNum!
                 }
@@ -3098,6 +3191,11 @@ public class BookResponseBody : Tea.TeaModel {
 
             public override func fromMap(_ dict: [String: Any?]?) -> Void {
                 guard let dict else { return }
+                if let value = dict["order_attribute"] as? [String: Any?] {
+                    var model = BookResponseBody.Data.OrderList.OrderAttribute()
+                    model.fromMap(value)
+                    self.orderAttribute = model
+                }
                 if let value = dict["order_num"] as? Int64 {
                     self.orderNum = value
                 }
@@ -3148,6 +3246,95 @@ public class BookResponseBody : Tea.TeaModel {
     }
     public class ErrorData : Tea.TeaModel {
         public class OrderList : Tea.TeaModel {
+            public class OrderAttribute : Tea.TeaModel {
+                public class AbaPayLockRateInfo : Tea.TeaModel {
+                    public var payIntendedAmount: String?
+
+                    public var payIntendedCurrencyCode: String?
+
+                    public var quotationCurrencyCode: String?
+
+                    public var toPayCurrencyRate: String?
+
+                    public override init() {
+                        super.init()
+                    }
+
+                    public init(_ dict: [String: Any]) {
+                        super.init()
+                        self.fromMap(dict)
+                    }
+
+                    public override func validate() throws -> Void {
+                    }
+
+                    public override func toMap() -> [String : Any] {
+                        var map = super.toMap()
+                        if self.payIntendedAmount != nil {
+                            map["pay_intended_amount"] = self.payIntendedAmount!
+                        }
+                        if self.payIntendedCurrencyCode != nil {
+                            map["pay_intended_currency_code"] = self.payIntendedCurrencyCode!
+                        }
+                        if self.quotationCurrencyCode != nil {
+                            map["quotation_currency_code"] = self.quotationCurrencyCode!
+                        }
+                        if self.toPayCurrencyRate != nil {
+                            map["to_pay_currency_rate"] = self.toPayCurrencyRate!
+                        }
+                        return map
+                    }
+
+                    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                        guard let dict else { return }
+                        if let value = dict["pay_intended_amount"] as? String {
+                            self.payIntendedAmount = value
+                        }
+                        if let value = dict["pay_intended_currency_code"] as? String {
+                            self.payIntendedCurrencyCode = value
+                        }
+                        if let value = dict["quotation_currency_code"] as? String {
+                            self.quotationCurrencyCode = value
+                        }
+                        if let value = dict["to_pay_currency_rate"] as? String {
+                            self.toPayCurrencyRate = value
+                        }
+                    }
+                }
+                public var abaPayLockRateInfo: BookResponseBody.ErrorData.OrderList.OrderAttribute.AbaPayLockRateInfo?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                    try self.abaPayLockRateInfo?.validate()
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.abaPayLockRateInfo != nil {
+                        map["aba_pay_lock_rate_info"] = self.abaPayLockRateInfo?.toMap()
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                    guard let dict else { return }
+                    if let value = dict["aba_pay_lock_rate_info"] as? [String: Any?] {
+                        var model = BookResponseBody.ErrorData.OrderList.OrderAttribute.AbaPayLockRateInfo()
+                        model.fromMap(value)
+                        self.abaPayLockRateInfo = model
+                    }
+                }
+            }
+            public var orderAttribute: BookResponseBody.ErrorData.OrderList.OrderAttribute?
+
             public var orderNum: Int64?
 
             public override init() {
@@ -3160,10 +3347,14 @@ public class BookResponseBody : Tea.TeaModel {
             }
 
             public override func validate() throws -> Void {
+                try self.orderAttribute?.validate()
             }
 
             public override func toMap() -> [String : Any] {
                 var map = super.toMap()
+                if self.orderAttribute != nil {
+                    map["order_attribute"] = self.orderAttribute?.toMap()
+                }
                 if self.orderNum != nil {
                     map["order_num"] = self.orderNum!
                 }
@@ -3172,6 +3363,11 @@ public class BookResponseBody : Tea.TeaModel {
 
             public override func fromMap(_ dict: [String: Any?]?) -> Void {
                 guard let dict else { return }
+                if let value = dict["order_attribute"] as? [String: Any?] {
+                    var model = BookResponseBody.ErrorData.OrderList.OrderAttribute()
+                    model.fromMap(value)
+                    self.orderAttribute = model
+                }
                 if let value = dict["order_num"] as? Int64 {
                     self.orderNum = value
                 }
@@ -4671,6 +4867,8 @@ public class ChangeConfirmResponseBody : Tea.TeaModel {
     public class Data : Tea.TeaModel {
         public var payAmount: Double?
 
+        public var payTime: Int64?
+
         public var transactionNo: String?
 
         public override init() {
@@ -4690,6 +4888,9 @@ public class ChangeConfirmResponseBody : Tea.TeaModel {
             if self.payAmount != nil {
                 map["pay_amount"] = self.payAmount!
             }
+            if self.payTime != nil {
+                map["pay_time"] = self.payTime!
+            }
             if self.transactionNo != nil {
                 map["transaction_no"] = self.transactionNo!
             }
@@ -4700,6 +4901,9 @@ public class ChangeConfirmResponseBody : Tea.TeaModel {
             guard let dict else { return }
             if let value = dict["pay_amount"] as? Double {
                 self.payAmount = value
+            }
+            if let value = dict["pay_time"] as? Int64 {
+                self.payTime = value
             }
             if let value = dict["transaction_no"] as? String {
                 self.transactionNo = value
@@ -17727,6 +17931,8 @@ public class TicketingResponseBody : Tea.TeaModel {
     public class Data : Tea.TeaModel {
         public var orderNum: Int64?
 
+        public var payTime: Int64?
+
         public var transactionNo: String?
 
         public override init() {
@@ -17746,6 +17952,9 @@ public class TicketingResponseBody : Tea.TeaModel {
             if self.orderNum != nil {
                 map["order_num"] = self.orderNum!
             }
+            if self.payTime != nil {
+                map["pay_time"] = self.payTime!
+            }
             if self.transactionNo != nil {
                 map["transaction_no"] = self.transactionNo!
             }
@@ -17756,6 +17965,9 @@ public class TicketingResponseBody : Tea.TeaModel {
             guard let dict else { return }
             if let value = dict["order_num"] as? Int64 {
                 self.orderNum = value
+            }
+            if let value = dict["pay_time"] as? Int64 {
+                self.payTime = value
             }
             if let value = dict["transaction_no"] as? String {
                 self.transactionNo = value
