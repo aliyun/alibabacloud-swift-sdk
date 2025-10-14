@@ -3495,6 +3495,8 @@ public class BuildAICoachScriptRecordResponseBody : Tea.TeaModel {
 
     public var requestId: String?
 
+    public var scriptRecordId: String?
+
     public var success: Bool?
 
     public override init() {
@@ -3524,6 +3526,9 @@ public class BuildAICoachScriptRecordResponseBody : Tea.TeaModel {
         if self.requestId != nil {
             map["requestId"] = self.requestId!
         }
+        if self.scriptRecordId != nil {
+            map["scriptRecordId"] = self.scriptRecordId!
+        }
         if self.success != nil {
             map["success"] = self.success!
         }
@@ -3545,6 +3550,9 @@ public class BuildAICoachScriptRecordResponseBody : Tea.TeaModel {
         }
         if let value = dict["requestId"] as? String {
             self.requestId = value
+        }
+        if let value = dict["scriptRecordId"] as? String {
+            self.scriptRecordId = value
         }
         if let value = dict["success"] as? Bool {
             self.success = value
