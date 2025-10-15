@@ -5233,6 +5233,12 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.memory)) {
             query["Memory"] = request.memory ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.resourceType)) {
+            query["ResourceType"] = request.resourceType ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.vSwitchId)) {
+            query["VSwitchId"] = request.vSwitchId ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.autoEnableApplicationScalingRule)) {
             query["autoEnableApplicationScalingRule"] = request.autoEnableApplicationScalingRule!;
         }

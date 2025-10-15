@@ -52816,6 +52816,10 @@ public class RescaleApplicationVerticallyRequest : Tea.TeaModel {
 
     public var memory: String?
 
+    public var resourceType: String?
+
+    public var vSwitchId: String?
+
     public var autoEnableApplicationScalingRule: Bool?
 
     public var minReadyInstanceRatio: Int32?
@@ -52848,6 +52852,12 @@ public class RescaleApplicationVerticallyRequest : Tea.TeaModel {
         if self.memory != nil {
             map["Memory"] = self.memory!
         }
+        if self.resourceType != nil {
+            map["ResourceType"] = self.resourceType!
+        }
+        if self.vSwitchId != nil {
+            map["VSwitchId"] = self.vSwitchId!
+        }
         if self.autoEnableApplicationScalingRule != nil {
             map["autoEnableApplicationScalingRule"] = self.autoEnableApplicationScalingRule!
         }
@@ -52873,6 +52883,12 @@ public class RescaleApplicationVerticallyRequest : Tea.TeaModel {
         }
         if let value = dict["Memory"] as? String {
             self.memory = value
+        }
+        if let value = dict["ResourceType"] as? String {
+            self.resourceType = value
+        }
+        if let value = dict["VSwitchId"] as? String {
+            self.vSwitchId = value
         }
         if let value = dict["autoEnableApplicationScalingRule"] as? Bool {
             self.autoEnableApplicationScalingRule = value
