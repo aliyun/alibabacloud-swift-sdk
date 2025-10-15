@@ -359,6 +359,8 @@ public class GetConnectionTicketResponseBody : Tea.TeaModel {
 
     public var appInstancePersistentId: String?
 
+    public var avatarId: String?
+
     public var bindQueueInfo: GetConnectionTicketResponseBody.BindQueueInfo?
 
     public var code: String?
@@ -366,6 +368,8 @@ public class GetConnectionTicketResponseBody : Tea.TeaModel {
     public var loginToken: String?
 
     public var message: String?
+
+    public var nextPollIntervalMs: Int32?
 
     public var osType: String?
 
@@ -410,6 +414,9 @@ public class GetConnectionTicketResponseBody : Tea.TeaModel {
         if self.appInstancePersistentId != nil {
             map["AppInstancePersistentId"] = self.appInstancePersistentId!
         }
+        if self.avatarId != nil {
+            map["AvatarId"] = self.avatarId!
+        }
         if self.bindQueueInfo != nil {
             map["BindQueueInfo"] = self.bindQueueInfo?.toMap()
         }
@@ -421,6 +428,9 @@ public class GetConnectionTicketResponseBody : Tea.TeaModel {
         }
         if self.message != nil {
             map["Message"] = self.message!
+        }
+        if self.nextPollIntervalMs != nil {
+            map["NextPollIntervalMs"] = self.nextPollIntervalMs!
         }
         if self.osType != nil {
             map["OsType"] = self.osType!
@@ -463,6 +473,9 @@ public class GetConnectionTicketResponseBody : Tea.TeaModel {
         if let value = dict["AppInstancePersistentId"] as? String {
             self.appInstancePersistentId = value
         }
+        if let value = dict["AvatarId"] as? String {
+            self.avatarId = value
+        }
         if let value = dict["BindQueueInfo"] as? [String: Any?] {
             var model = GetConnectionTicketResponseBody.BindQueueInfo()
             model.fromMap(value)
@@ -476,6 +489,9 @@ public class GetConnectionTicketResponseBody : Tea.TeaModel {
         }
         if let value = dict["Message"] as? String {
             self.message = value
+        }
+        if let value = dict["NextPollIntervalMs"] as? Int32 {
+            self.nextPollIntervalMs = value
         }
         if let value = dict["OsType"] as? String {
             self.osType = value
