@@ -15629,6 +15629,408 @@ public class RunChatResultGenerationResponse : Tea.TeaModel {
     }
 }
 
+public class RunDialogAnalysisRequest : Tea.TeaModel {
+    public var sessionId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.sessionId != nil {
+            map["sessionId"] = self.sessionId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["sessionId"] as? String {
+            self.sessionId = value
+        }
+    }
+}
+
+public class RunDialogAnalysisResponseBody : Tea.TeaModel {
+    public class Data : Tea.TeaModel {
+        public class DialogAnalysisRespList : Tea.TeaModel {
+            public class AnalysisResp : Tea.TeaModel {
+                public class DialogLabels : Tea.TeaModel {
+                    public var name: String?
+
+                    public var value: String?
+
+                    public override init() {
+                        super.init()
+                    }
+
+                    public init(_ dict: [String: Any]) {
+                        super.init()
+                        self.fromMap(dict)
+                    }
+
+                    public override func validate() throws -> Void {
+                    }
+
+                    public override func toMap() -> [String : Any] {
+                        var map = super.toMap()
+                        if self.name != nil {
+                            map["name"] = self.name!
+                        }
+                        if self.value != nil {
+                            map["value"] = self.value!
+                        }
+                        return map
+                    }
+
+                    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                        guard let dict else { return }
+                        if let value = dict["name"] as? String {
+                            self.name = value
+                        }
+                        if let value = dict["value"] as? String {
+                            self.value = value
+                        }
+                    }
+                }
+                public var dialogExecPlan: String?
+
+                public var dialogLabels: [RunDialogAnalysisResponseBody.Data.DialogAnalysisRespList.AnalysisResp.DialogLabels]?
+
+                public var dialogOpenAnalysis: [String: Any]?
+
+                public var dialogProcessAnalysis: [String: Any]?
+
+                public var dialogSop: String?
+
+                public var dialogSummary: String?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.dialogExecPlan != nil {
+                        map["dialogExecPlan"] = self.dialogExecPlan!
+                    }
+                    if self.dialogLabels != nil {
+                        var tmp : [Any] = []
+                        for k in self.dialogLabels! {
+                            tmp.append(k.toMap())
+                        }
+                        map["dialogLabels"] = tmp
+                    }
+                    if self.dialogOpenAnalysis != nil {
+                        map["dialogOpenAnalysis"] = self.dialogOpenAnalysis!
+                    }
+                    if self.dialogProcessAnalysis != nil {
+                        map["dialogProcessAnalysis"] = self.dialogProcessAnalysis!
+                    }
+                    if self.dialogSop != nil {
+                        map["dialogSop"] = self.dialogSop!
+                    }
+                    if self.dialogSummary != nil {
+                        map["dialogSummary"] = self.dialogSummary!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                    guard let dict else { return }
+                    if let value = dict["dialogExecPlan"] as? String {
+                        self.dialogExecPlan = value
+                    }
+                    if let value = dict["dialogLabels"] as? [Any?] {
+                        var tmp : [RunDialogAnalysisResponseBody.Data.DialogAnalysisRespList.AnalysisResp.DialogLabels] = []
+                        for v in value {
+                            if v != nil {
+                                var model = RunDialogAnalysisResponseBody.Data.DialogAnalysisRespList.AnalysisResp.DialogLabels()
+                                if v != nil {
+                                    model.fromMap(v as? [String: Any?])
+                                }
+                                tmp.append(model)
+                            }
+                        }
+                        self.dialogLabels = tmp
+                    }
+                    if let value = dict["dialogOpenAnalysis"] as? [String: Any] {
+                        self.dialogOpenAnalysis = value
+                    }
+                    if let value = dict["dialogProcessAnalysis"] as? [String: Any] {
+                        self.dialogProcessAnalysis = value
+                    }
+                    if let value = dict["dialogSop"] as? String {
+                        self.dialogSop = value
+                    }
+                    if let value = dict["dialogSummary"] as? String {
+                        self.dialogSummary = value
+                    }
+                }
+            }
+            public var analysisResp: RunDialogAnalysisResponseBody.Data.DialogAnalysisRespList.AnalysisResp?
+
+            public var failNode: [String]?
+
+            public var gmtCreate: String?
+
+            public var sessionId: String?
+
+            public var status: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+                try self.analysisResp?.validate()
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.analysisResp != nil {
+                    map["analysisResp"] = self.analysisResp?.toMap()
+                }
+                if self.failNode != nil {
+                    map["failNode"] = self.failNode!
+                }
+                if self.gmtCreate != nil {
+                    map["gmtCreate"] = self.gmtCreate!
+                }
+                if self.sessionId != nil {
+                    map["sessionId"] = self.sessionId!
+                }
+                if self.status != nil {
+                    map["status"] = self.status!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["analysisResp"] as? [String: Any?] {
+                    var model = RunDialogAnalysisResponseBody.Data.DialogAnalysisRespList.AnalysisResp()
+                    model.fromMap(value)
+                    self.analysisResp = model
+                }
+                if let value = dict["failNode"] as? [String] {
+                    self.failNode = value
+                }
+                if let value = dict["gmtCreate"] as? String {
+                    self.gmtCreate = value
+                }
+                if let value = dict["sessionId"] as? String {
+                    self.sessionId = value
+                }
+                if let value = dict["status"] as? String {
+                    self.status = value
+                }
+            }
+        }
+        public var dialogAnalysisRespList: [RunDialogAnalysisResponseBody.Data.DialogAnalysisRespList]?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.dialogAnalysisRespList != nil {
+                var tmp : [Any] = []
+                for k in self.dialogAnalysisRespList! {
+                    tmp.append(k.toMap())
+                }
+                map["dialogAnalysisRespList"] = tmp
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["dialogAnalysisRespList"] as? [Any?] {
+                var tmp : [RunDialogAnalysisResponseBody.Data.DialogAnalysisRespList] = []
+                for v in value {
+                    if v != nil {
+                        var model = RunDialogAnalysisResponseBody.Data.DialogAnalysisRespList()
+                        if v != nil {
+                            model.fromMap(v as? [String: Any?])
+                        }
+                        tmp.append(model)
+                    }
+                }
+                self.dialogAnalysisRespList = tmp
+            }
+        }
+    }
+    public var cost: Int64?
+
+    public var data: RunDialogAnalysisResponseBody.Data?
+
+    public var dataType: String?
+
+    public var errCode: String?
+
+    public var message: String?
+
+    public var requestId: String?
+
+    public var success: Bool?
+
+    public var time: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.data?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.cost != nil {
+            map["cost"] = self.cost!
+        }
+        if self.data != nil {
+            map["data"] = self.data?.toMap()
+        }
+        if self.dataType != nil {
+            map["dataType"] = self.dataType!
+        }
+        if self.errCode != nil {
+            map["errCode"] = self.errCode!
+        }
+        if self.message != nil {
+            map["message"] = self.message!
+        }
+        if self.requestId != nil {
+            map["requestId"] = self.requestId!
+        }
+        if self.success != nil {
+            map["success"] = self.success!
+        }
+        if self.time != nil {
+            map["time"] = self.time!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["cost"] as? Int64 {
+            self.cost = value
+        }
+        if let value = dict["data"] as? [String: Any?] {
+            var model = RunDialogAnalysisResponseBody.Data()
+            model.fromMap(value)
+            self.data = model
+        }
+        if let value = dict["dataType"] as? String {
+            self.dataType = value
+        }
+        if let value = dict["errCode"] as? String {
+            self.errCode = value
+        }
+        if let value = dict["message"] as? String {
+            self.message = value
+        }
+        if let value = dict["requestId"] as? String {
+            self.requestId = value
+        }
+        if let value = dict["success"] as? Bool {
+            self.success = value
+        }
+        if let value = dict["time"] as? String {
+            self.time = value
+        }
+    }
+}
+
+public class RunDialogAnalysisResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: RunDialogAnalysisResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = RunDialogAnalysisResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
 public class RunLibraryChatGenerationRequest : Tea.TeaModel {
     public class QueryCriteria : Tea.TeaModel {
         public class And : Tea.TeaModel {
