@@ -16763,6 +16763,8 @@ public class ListIntegrationPoliciesRequest : Tea.TeaModel {
     }
     public var addonName: String?
 
+    public var bindResourceId: String?
+
     public var entityGroupIds: String?
 
     public var filterRegionIds: String?
@@ -16803,6 +16805,9 @@ public class ListIntegrationPoliciesRequest : Tea.TeaModel {
         var map = super.toMap()
         if self.addonName != nil {
             map["addonName"] = self.addonName!
+        }
+        if self.bindResourceId != nil {
+            map["bindResourceId"] = self.bindResourceId!
         }
         if self.entityGroupIds != nil {
             map["entityGroupIds"] = self.entityGroupIds!
@@ -16851,6 +16856,9 @@ public class ListIntegrationPoliciesRequest : Tea.TeaModel {
         guard let dict else { return }
         if let value = dict["addonName"] as? String {
             self.addonName = value
+        }
+        if let value = dict["bindResourceId"] as? String {
+            self.bindResourceId = value
         }
         if let value = dict["entityGroupIds"] as? String {
             self.entityGroupIds = value
@@ -16904,6 +16912,8 @@ public class ListIntegrationPoliciesRequest : Tea.TeaModel {
 public class ListIntegrationPoliciesShrinkRequest : Tea.TeaModel {
     public var addonName: String?
 
+    public var bindResourceId: String?
+
     public var entityGroupIds: String?
 
     public var filterRegionIds: String?
@@ -16944,6 +16954,9 @@ public class ListIntegrationPoliciesShrinkRequest : Tea.TeaModel {
         var map = super.toMap()
         if self.addonName != nil {
             map["addonName"] = self.addonName!
+        }
+        if self.bindResourceId != nil {
+            map["bindResourceId"] = self.bindResourceId!
         }
         if self.entityGroupIds != nil {
             map["entityGroupIds"] = self.entityGroupIds!
@@ -16988,6 +17001,9 @@ public class ListIntegrationPoliciesShrinkRequest : Tea.TeaModel {
         guard let dict else { return }
         if let value = dict["addonName"] as? String {
             self.addonName = value
+        }
+        if let value = dict["bindResourceId"] as? String {
+            self.bindResourceId = value
         }
         if let value = dict["entityGroupIds"] as? String {
             self.entityGroupIds = value
@@ -18350,6 +18366,8 @@ public class ListIntegrationPolicyDashboardsResponseBody : Tea.TeaModel {
     public class Dashboards : Tea.TeaModel {
         public var folderUid: String?
 
+        public var name: String?
+
         public var region: String?
 
         public var tags: [String]?
@@ -18377,6 +18395,9 @@ public class ListIntegrationPolicyDashboardsResponseBody : Tea.TeaModel {
             if self.folderUid != nil {
                 map["folderUid"] = self.folderUid!
             }
+            if self.name != nil {
+                map["name"] = self.name!
+            }
             if self.region != nil {
                 map["region"] = self.region!
             }
@@ -18399,6 +18420,9 @@ public class ListIntegrationPolicyDashboardsResponseBody : Tea.TeaModel {
             guard let dict else { return }
             if let value = dict["folderUid"] as? String {
                 self.folderUid = value
+            }
+            if let value = dict["name"] as? String {
+                self.name = value
             }
             if let value = dict["region"] as? String {
                 self.region = value

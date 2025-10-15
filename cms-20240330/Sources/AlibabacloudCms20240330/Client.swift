@@ -1349,6 +1349,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.addonName)) {
             query["addonName"] = request.addonName ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.bindResourceId)) {
+            query["bindResourceId"] = request.bindResourceId ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.entityGroupIds)) {
             query["entityGroupIds"] = request.entityGroupIds ?? "";
         }
