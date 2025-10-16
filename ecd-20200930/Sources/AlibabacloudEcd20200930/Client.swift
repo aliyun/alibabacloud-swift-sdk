@@ -2645,6 +2645,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.snapshotPolicyId)) {
             query["SnapshotPolicyId"] = request.snapshotPolicyId ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.subnetId)) {
+            query["SubnetId"] = request.subnetId ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.tag)) {
             query["Tag"] = request.tag ?? [];
         }
@@ -11628,6 +11631,52 @@ open class Client : AlibabacloudOpenApi.Client {
     public func modifyResourceCenterPolicy(_ request: ModifyResourceCenterPolicyRequest) async throws -> ModifyResourceCenterPolicyResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         return try await modifyResourceCenterPolicyWithOptions(request as! ModifyResourceCenterPolicyRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func modifySecurityGroupAttributeWithOptions(_ request: ModifySecurityGroupAttributeRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ModifySecurityGroupAttributeResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.authorizeEgress)) {
+            query["AuthorizeEgress"] = request.authorizeEgress ?? [];
+        }
+        if (!TeaUtils.Client.isUnset(request.authorizeIngress)) {
+            query["AuthorizeIngress"] = request.authorizeIngress ?? [];
+        }
+        if (!TeaUtils.Client.isUnset(request.officeSiteId)) {
+            query["OfficeSiteId"] = request.officeSiteId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.regionId)) {
+            query["RegionId"] = request.regionId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.revokeEgress)) {
+            query["RevokeEgress"] = request.revokeEgress ?? [];
+        }
+        if (!TeaUtils.Client.isUnset(request.revokeIngress)) {
+            query["RevokeIngress"] = request.revokeIngress ?? [];
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "ModifySecurityGroupAttribute",
+            "version": "2020-09-30",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(ModifySecurityGroupAttributeResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func modifySecurityGroupAttribute(_ request: ModifySecurityGroupAttributeRequest) async throws -> ModifySecurityGroupAttributeResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await modifySecurityGroupAttributeWithOptions(request as! ModifySecurityGroupAttributeRequest, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
