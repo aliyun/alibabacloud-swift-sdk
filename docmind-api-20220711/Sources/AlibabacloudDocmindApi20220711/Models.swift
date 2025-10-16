@@ -4249,6 +4249,8 @@ public class SubmitDocParserJobRequest : Tea.TeaModel {
 
     public var multimediaParameters: SubmitDocParserJobRequest.MultimediaParameters?
 
+    public var needHeaderFooter: Bool?
+
     public var option: String?
 
     public var ossBucket: String?
@@ -4303,6 +4305,9 @@ public class SubmitDocParserJobRequest : Tea.TeaModel {
         if self.multimediaParameters != nil {
             map["MultimediaParameters"] = self.multimediaParameters?.toMap()
         }
+        if self.needHeaderFooter != nil {
+            map["NeedHeaderFooter"] = self.needHeaderFooter!
+        }
         if self.option != nil {
             map["Option"] = self.option!
         }
@@ -4355,6 +4360,9 @@ public class SubmitDocParserJobRequest : Tea.TeaModel {
             var model = SubmitDocParserJobRequest.MultimediaParameters()
             model.fromMap(value)
             self.multimediaParameters = model
+        }
+        if let value = dict["NeedHeaderFooter"] as? Bool {
+            self.needHeaderFooter = value
         }
         if let value = dict["Option"] as? String {
             self.option = value
@@ -4515,6 +4523,8 @@ public class SubmitDocParserJobAdvanceRequest : Tea.TeaModel {
 
     public var multimediaParameters: SubmitDocParserJobAdvanceRequest.MultimediaParameters?
 
+    public var needHeaderFooter: Bool?
+
     public var option: String?
 
     public var ossBucket: String?
@@ -4569,6 +4579,9 @@ public class SubmitDocParserJobAdvanceRequest : Tea.TeaModel {
         if self.multimediaParameters != nil {
             map["MultimediaParameters"] = self.multimediaParameters?.toMap()
         }
+        if self.needHeaderFooter != nil {
+            map["NeedHeaderFooter"] = self.needHeaderFooter!
+        }
         if self.option != nil {
             map["Option"] = self.option!
         }
@@ -4622,6 +4635,9 @@ public class SubmitDocParserJobAdvanceRequest : Tea.TeaModel {
             model.fromMap(value)
             self.multimediaParameters = model
         }
+        if let value = dict["NeedHeaderFooter"] as? Bool {
+            self.needHeaderFooter = value
+        }
         if let value = dict["Option"] as? String {
             self.option = value
         }
@@ -4658,6 +4674,8 @@ public class SubmitDocParserJobShrinkRequest : Tea.TeaModel {
     public var llmEnhancement: Bool?
 
     public var multimediaParametersShrink: String?
+
+    public var needHeaderFooter: Bool?
 
     public var option: String?
 
@@ -4710,6 +4728,9 @@ public class SubmitDocParserJobShrinkRequest : Tea.TeaModel {
         if self.multimediaParametersShrink != nil {
             map["MultimediaParameters"] = self.multimediaParametersShrink!
         }
+        if self.needHeaderFooter != nil {
+            map["NeedHeaderFooter"] = self.needHeaderFooter!
+        }
         if self.option != nil {
             map["Option"] = self.option!
         }
@@ -4756,6 +4777,9 @@ public class SubmitDocParserJobShrinkRequest : Tea.TeaModel {
         }
         if let value = dict["MultimediaParameters"] as? String {
             self.multimediaParametersShrink = value
+        }
+        if let value = dict["NeedHeaderFooter"] as? Bool {
+            self.needHeaderFooter = value
         }
         if let value = dict["Option"] as? String {
             self.option = value

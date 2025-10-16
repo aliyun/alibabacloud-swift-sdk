@@ -1328,6 +1328,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.multimediaParametersShrink)) {
             query["MultimediaParameters"] = request.multimediaParametersShrink ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.needHeaderFooter)) {
+            query["NeedHeaderFooter"] = request.needHeaderFooter!;
+        }
         if (!TeaUtils.Client.isUnset(request.option)) {
             query["Option"] = request.option ?? "";
         }
