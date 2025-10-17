@@ -17,7 +17,7 @@
 要使用 [Carthage](https://github.com/Carthage/Carthage) 将 `AlibabacloudRtc20180111` 集成到你的 Xcode 项目中，需要在 `Cartfile` 中定义以下内容:
 
 ```ogdl
-github "alibabacloud-sdk-swift/rtc-20180111" "5.2.4"
+github "alibabacloud-sdk-swift/rtc-20180111" "5.2.5"
 ```
 
 ### Swift 包管理工具
@@ -26,7 +26,7 @@ github "alibabacloud-sdk-swift/rtc-20180111" "5.2.4"
 
 ```swift
 dependencies: [
-    .package(url: "https://github.com/alibabacloud-sdk-swift/rtc-20180111.git", from: "5.2.4")
+    .package(url: "https://github.com/alibabacloud-sdk-swift/rtc-20180111.git", from: "5.2.5")
 ]
 ```
 

@@ -29805,6 +29805,8 @@ public class StartCloudRecordRequest : Tea.TeaModel {
                 }
             }
         }
+        public var avMerge: Bool?
+
         public var specifiedStreams: [StartCloudRecordRequest.SingleStreamingRecord.SpecifiedStreams]?
 
         public var transcodingParameters: StartCloudRecordRequest.SingleStreamingRecord.TranscodingParameters?
@@ -29824,6 +29826,9 @@ public class StartCloudRecordRequest : Tea.TeaModel {
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
+            if self.avMerge != nil {
+                map["AvMerge"] = self.avMerge!
+            }
             if self.specifiedStreams != nil {
                 var tmp : [Any] = []
                 for k in self.specifiedStreams! {
@@ -29839,6 +29844,9 @@ public class StartCloudRecordRequest : Tea.TeaModel {
 
         public override func fromMap(_ dict: [String: Any?]?) -> Void {
             guard let dict else { return }
+            if let value = dict["AvMerge"] as? Bool {
+                self.avMerge = value
+            }
             if let value = dict["SpecifiedStreams"] as? [Any?] {
                 var tmp : [StartCloudRecordRequest.SingleStreamingRecord.SpecifiedStreams] = []
                 for v in value {
