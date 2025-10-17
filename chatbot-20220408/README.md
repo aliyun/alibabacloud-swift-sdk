@@ -17,7 +17,7 @@ English | [简体中文](README-CN.md)
 To integrate `AlibabacloudChatbot20220408` into your Xcode project using [Carthage](https://github.com/Carthage/Carthage), specify it in your `Cartfile`:
 
 ```ogdl
-github "alibabacloud-sdk-swift/chatbot-20220408" "2.3.0"
+github "alibabacloud-sdk-swift/chatbot-20220408" "2.3.1"
 ```
 
 ### Swift Package Manager
@@ -26,7 +26,7 @@ To integrate `AlibabacloudChatbot20220408` into your Xcode project using [Swift 
 
 ```swift
 dependencies: [
-    .package(url: "https://github.com/alibabacloud-sdk-swift/chatbot-20220408.git", from: "2.3.0")
+    .package(url: "https://github.com/alibabacloud-sdk-swift/chatbot-20220408.git", from: "2.3.1")
 ]
 ```
 
