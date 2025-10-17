@@ -878,6 +878,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.displayName)) {
             query["DisplayName"] = request.displayName ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.displayNameSearchMode)) {
+            query["DisplayNameSearchMode"] = request.displayNameSearchMode ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.endTime)) {
             query["EndTime"] = request.endTime ?? "";
         }

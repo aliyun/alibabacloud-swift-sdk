@@ -9552,6 +9552,8 @@ public class ListJobsRequest : Tea.TeaModel {
 
     public var displayName: String?
 
+    public var displayNameSearchMode: String?
+
     public var endTime: String?
 
     public var fromAllWorkspaces: Bool?
@@ -9619,6 +9621,9 @@ public class ListJobsRequest : Tea.TeaModel {
         }
         if self.displayName != nil {
             map["DisplayName"] = self.displayName!
+        }
+        if self.displayNameSearchMode != nil {
+            map["DisplayNameSearchMode"] = self.displayNameSearchMode!
         }
         if self.endTime != nil {
             map["EndTime"] = self.endTime!
@@ -9700,6 +9705,9 @@ public class ListJobsRequest : Tea.TeaModel {
         if let value = dict["DisplayName"] as? String {
             self.displayName = value
         }
+        if let value = dict["DisplayNameSearchMode"] as? String {
+            self.displayNameSearchMode = value
+        }
         if let value = dict["EndTime"] as? String {
             self.endTime = value
         }
@@ -9775,6 +9783,8 @@ public class ListJobsShrinkRequest : Tea.TeaModel {
 
     public var displayName: String?
 
+    public var displayNameSearchMode: String?
+
     public var endTime: String?
 
     public var fromAllWorkspaces: Bool?
@@ -9842,6 +9852,9 @@ public class ListJobsShrinkRequest : Tea.TeaModel {
         }
         if self.displayName != nil {
             map["DisplayName"] = self.displayName!
+        }
+        if self.displayNameSearchMode != nil {
+            map["DisplayNameSearchMode"] = self.displayNameSearchMode!
         }
         if self.endTime != nil {
             map["EndTime"] = self.endTime!
@@ -9922,6 +9935,9 @@ public class ListJobsShrinkRequest : Tea.TeaModel {
         }
         if let value = dict["DisplayName"] as? String {
             self.displayName = value
+        }
+        if let value = dict["DisplayNameSearchMode"] as? String {
+            self.displayNameSearchMode = value
         }
         if let value = dict["EndTime"] as? String {
             self.endTime = value
