@@ -14210,6 +14210,8 @@ public class CreateImagePipelineRequest : Tea.TeaModel {
             }
         }
         public class Features : Tea.TeaModel {
+            public var imdsSupport: String?
+
             public var nvmeSupport: String?
 
             public override init() {
@@ -14226,6 +14228,9 @@ public class CreateImagePipelineRequest : Tea.TeaModel {
 
             public override func toMap() -> [String : Any] {
                 var map = super.toMap()
+                if self.imdsSupport != nil {
+                    map["ImdsSupport"] = self.imdsSupport!
+                }
                 if self.nvmeSupport != nil {
                     map["NvmeSupport"] = self.nvmeSupport!
                 }
@@ -14234,8 +14239,49 @@ public class CreateImagePipelineRequest : Tea.TeaModel {
 
             public override func fromMap(_ dict: [String: Any?]?) -> Void {
                 guard let dict else { return }
+                if let value = dict["ImdsSupport"] as? String {
+                    self.imdsSupport = value
+                }
                 if let value = dict["NvmeSupport"] as? String {
                     self.nvmeSupport = value
+                }
+            }
+        }
+        public class ImportImageTags : Tea.TeaModel {
+            public var key: String?
+
+            public var value: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.key != nil {
+                    map["Key"] = self.key!
+                }
+                if self.value != nil {
+                    map["Value"] = self.value!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["Key"] as? String {
+                    self.key = value
+                }
+                if let value = dict["Value"] as? String {
+                    self.value = value
                 }
             }
         }
@@ -14243,9 +14289,15 @@ public class CreateImagePipelineRequest : Tea.TeaModel {
 
         public var bootMode: String?
 
+        public var description_: String?
+
         public var diskDeviceMappings: [CreateImagePipelineRequest.ImportImageOptions.DiskDeviceMappings]?
 
         public var features: CreateImagePipelineRequest.ImportImageOptions.Features?
+
+        public var imageName: String?
+
+        public var importImageTags: [CreateImagePipelineRequest.ImportImageOptions.ImportImageTags]?
 
         public var licenseType: String?
 
@@ -14254,6 +14306,10 @@ public class CreateImagePipelineRequest : Tea.TeaModel {
         public var platform: String?
 
         public var retainImportedImage: Bool?
+
+        public var retentionStrategy: String?
+
+        public var roleName: String?
 
         public override init() {
             super.init()
@@ -14276,6 +14332,9 @@ public class CreateImagePipelineRequest : Tea.TeaModel {
             if self.bootMode != nil {
                 map["BootMode"] = self.bootMode!
             }
+            if self.description_ != nil {
+                map["Description"] = self.description_!
+            }
             if self.diskDeviceMappings != nil {
                 var tmp : [Any] = []
                 for k in self.diskDeviceMappings! {
@@ -14285,6 +14344,16 @@ public class CreateImagePipelineRequest : Tea.TeaModel {
             }
             if self.features != nil {
                 map["Features"] = self.features?.toMap()
+            }
+            if self.imageName != nil {
+                map["ImageName"] = self.imageName!
+            }
+            if self.importImageTags != nil {
+                var tmp : [Any] = []
+                for k in self.importImageTags! {
+                    tmp.append(k.toMap())
+                }
+                map["ImportImageTags"] = tmp
             }
             if self.licenseType != nil {
                 map["LicenseType"] = self.licenseType!
@@ -14298,6 +14367,12 @@ public class CreateImagePipelineRequest : Tea.TeaModel {
             if self.retainImportedImage != nil {
                 map["RetainImportedImage"] = self.retainImportedImage!
             }
+            if self.retentionStrategy != nil {
+                map["RetentionStrategy"] = self.retentionStrategy!
+            }
+            if self.roleName != nil {
+                map["RoleName"] = self.roleName!
+            }
             return map
         }
 
@@ -14308,6 +14383,9 @@ public class CreateImagePipelineRequest : Tea.TeaModel {
             }
             if let value = dict["BootMode"] as? String {
                 self.bootMode = value
+            }
+            if let value = dict["Description"] as? String {
+                self.description_ = value
             }
             if let value = dict["DiskDeviceMappings"] as? [Any?] {
                 var tmp : [CreateImagePipelineRequest.ImportImageOptions.DiskDeviceMappings] = []
@@ -14327,6 +14405,22 @@ public class CreateImagePipelineRequest : Tea.TeaModel {
                 model.fromMap(value)
                 self.features = model
             }
+            if let value = dict["ImageName"] as? String {
+                self.imageName = value
+            }
+            if let value = dict["ImportImageTags"] as? [Any?] {
+                var tmp : [CreateImagePipelineRequest.ImportImageOptions.ImportImageTags] = []
+                for v in value {
+                    if v != nil {
+                        var model = CreateImagePipelineRequest.ImportImageOptions.ImportImageTags()
+                        if v != nil {
+                            model.fromMap(v as? [String: Any?])
+                        }
+                        tmp.append(model)
+                    }
+                }
+                self.importImageTags = tmp
+            }
             if let value = dict["LicenseType"] as? String {
                 self.licenseType = value
             }
@@ -14338,6 +14432,12 @@ public class CreateImagePipelineRequest : Tea.TeaModel {
             }
             if let value = dict["RetainImportedImage"] as? Bool {
                 self.retainImportedImage = value
+            }
+            if let value = dict["RetentionStrategy"] as? String {
+                self.retentionStrategy = value
+            }
+            if let value = dict["RoleName"] as? String {
+                self.roleName = value
             }
         }
     }
@@ -52427,6 +52527,8 @@ public class DescribeImagePipelinesResponseBody : Tea.TeaModel {
                     }
                 }
                 public class Features : Tea.TeaModel {
+                    public var imdsSupport: String?
+
                     public var nvmeSupport: String?
 
                     public override init() {
@@ -52443,6 +52545,9 @@ public class DescribeImagePipelinesResponseBody : Tea.TeaModel {
 
                     public override func toMap() -> [String : Any] {
                         var map = super.toMap()
+                        if self.imdsSupport != nil {
+                            map["ImdsSupport"] = self.imdsSupport!
+                        }
                         if self.nvmeSupport != nil {
                             map["NvmeSupport"] = self.nvmeSupport!
                         }
@@ -52451,8 +52556,93 @@ public class DescribeImagePipelinesResponseBody : Tea.TeaModel {
 
                     public override func fromMap(_ dict: [String: Any?]?) -> Void {
                         guard let dict else { return }
+                        if let value = dict["ImdsSupport"] as? String {
+                            self.imdsSupport = value
+                        }
                         if let value = dict["NvmeSupport"] as? String {
                             self.nvmeSupport = value
+                        }
+                    }
+                }
+                public class ImportImageTags : Tea.TeaModel {
+                    public class ImportImageTag : Tea.TeaModel {
+                        public var key: String?
+
+                        public var value: String?
+
+                        public override init() {
+                            super.init()
+                        }
+
+                        public init(_ dict: [String: Any]) {
+                            super.init()
+                            self.fromMap(dict)
+                        }
+
+                        public override func validate() throws -> Void {
+                        }
+
+                        public override func toMap() -> [String : Any] {
+                            var map = super.toMap()
+                            if self.key != nil {
+                                map["Key"] = self.key!
+                            }
+                            if self.value != nil {
+                                map["Value"] = self.value!
+                            }
+                            return map
+                        }
+
+                        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                            guard let dict else { return }
+                            if let value = dict["Key"] as? String {
+                                self.key = value
+                            }
+                            if let value = dict["Value"] as? String {
+                                self.value = value
+                            }
+                        }
+                    }
+                    public var importImageTag: [DescribeImagePipelinesResponseBody.ImagePipeline.ImagePipelineSet.ImportImageOptions.ImportImageTags.ImportImageTag]?
+
+                    public override init() {
+                        super.init()
+                    }
+
+                    public init(_ dict: [String: Any]) {
+                        super.init()
+                        self.fromMap(dict)
+                    }
+
+                    public override func validate() throws -> Void {
+                    }
+
+                    public override func toMap() -> [String : Any] {
+                        var map = super.toMap()
+                        if self.importImageTag != nil {
+                            var tmp : [Any] = []
+                            for k in self.importImageTag! {
+                                tmp.append(k.toMap())
+                            }
+                            map["ImportImageTag"] = tmp
+                        }
+                        return map
+                    }
+
+                    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                        guard let dict else { return }
+                        if let value = dict["ImportImageTag"] as? [Any?] {
+                            var tmp : [DescribeImagePipelinesResponseBody.ImagePipeline.ImagePipelineSet.ImportImageOptions.ImportImageTags.ImportImageTag] = []
+                            for v in value {
+                                if v != nil {
+                                    var model = DescribeImagePipelinesResponseBody.ImagePipeline.ImagePipelineSet.ImportImageOptions.ImportImageTags.ImportImageTag()
+                                    if v != nil {
+                                        model.fromMap(v as? [String: Any?])
+                                    }
+                                    tmp.append(model)
+                                }
+                            }
+                            self.importImageTag = tmp
                         }
                     }
                 }
@@ -52460,9 +52650,15 @@ public class DescribeImagePipelinesResponseBody : Tea.TeaModel {
 
                 public var bootMode: String?
 
+                public var description_: String?
+
                 public var diskDeviceMappings: DescribeImagePipelinesResponseBody.ImagePipeline.ImagePipelineSet.ImportImageOptions.DiskDeviceMappings?
 
                 public var features: DescribeImagePipelinesResponseBody.ImagePipeline.ImagePipelineSet.ImportImageOptions.Features?
+
+                public var imageName: String?
+
+                public var importImageTags: DescribeImagePipelinesResponseBody.ImagePipeline.ImagePipelineSet.ImportImageOptions.ImportImageTags?
 
                 public var licenseType: String?
 
@@ -52471,6 +52667,10 @@ public class DescribeImagePipelinesResponseBody : Tea.TeaModel {
                 public var platform: String?
 
                 public var retainImportedImage: Bool?
+
+                public var retentionStrategy: String?
+
+                public var roleName: String?
 
                 public override init() {
                     super.init()
@@ -52484,6 +52684,7 @@ public class DescribeImagePipelinesResponseBody : Tea.TeaModel {
                 public override func validate() throws -> Void {
                     try self.diskDeviceMappings?.validate()
                     try self.features?.validate()
+                    try self.importImageTags?.validate()
                 }
 
                 public override func toMap() -> [String : Any] {
@@ -52494,11 +52695,20 @@ public class DescribeImagePipelinesResponseBody : Tea.TeaModel {
                     if self.bootMode != nil {
                         map["BootMode"] = self.bootMode!
                     }
+                    if self.description_ != nil {
+                        map["Description"] = self.description_!
+                    }
                     if self.diskDeviceMappings != nil {
                         map["DiskDeviceMappings"] = self.diskDeviceMappings?.toMap()
                     }
                     if self.features != nil {
                         map["Features"] = self.features?.toMap()
+                    }
+                    if self.imageName != nil {
+                        map["ImageName"] = self.imageName!
+                    }
+                    if self.importImageTags != nil {
+                        map["ImportImageTags"] = self.importImageTags?.toMap()
                     }
                     if self.licenseType != nil {
                         map["LicenseType"] = self.licenseType!
@@ -52512,6 +52722,12 @@ public class DescribeImagePipelinesResponseBody : Tea.TeaModel {
                     if self.retainImportedImage != nil {
                         map["RetainImportedImage"] = self.retainImportedImage!
                     }
+                    if self.retentionStrategy != nil {
+                        map["RetentionStrategy"] = self.retentionStrategy!
+                    }
+                    if self.roleName != nil {
+                        map["RoleName"] = self.roleName!
+                    }
                     return map
                 }
 
@@ -52523,6 +52739,9 @@ public class DescribeImagePipelinesResponseBody : Tea.TeaModel {
                     if let value = dict["BootMode"] as? String {
                         self.bootMode = value
                     }
+                    if let value = dict["Description"] as? String {
+                        self.description_ = value
+                    }
                     if let value = dict["DiskDeviceMappings"] as? [String: Any?] {
                         var model = DescribeImagePipelinesResponseBody.ImagePipeline.ImagePipelineSet.ImportImageOptions.DiskDeviceMappings()
                         model.fromMap(value)
@@ -52532,6 +52751,14 @@ public class DescribeImagePipelinesResponseBody : Tea.TeaModel {
                         var model = DescribeImagePipelinesResponseBody.ImagePipeline.ImagePipelineSet.ImportImageOptions.Features()
                         model.fromMap(value)
                         self.features = model
+                    }
+                    if let value = dict["ImageName"] as? String {
+                        self.imageName = value
+                    }
+                    if let value = dict["ImportImageTags"] as? [String: Any?] {
+                        var model = DescribeImagePipelinesResponseBody.ImagePipeline.ImagePipelineSet.ImportImageOptions.ImportImageTags()
+                        model.fromMap(value)
+                        self.importImageTags = model
                     }
                     if let value = dict["LicenseType"] as? String {
                         self.licenseType = value
@@ -52544,6 +52771,12 @@ public class DescribeImagePipelinesResponseBody : Tea.TeaModel {
                     }
                     if let value = dict["RetainImportedImage"] as? Bool {
                         self.retainImportedImage = value
+                    }
+                    if let value = dict["RetentionStrategy"] as? String {
+                        self.retentionStrategy = value
+                    }
+                    if let value = dict["RoleName"] as? String {
+                        self.roleName = value
                     }
                 }
             }
