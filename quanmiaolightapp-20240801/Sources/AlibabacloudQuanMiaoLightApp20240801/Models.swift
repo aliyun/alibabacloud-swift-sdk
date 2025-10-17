@@ -12436,6 +12436,8 @@ public class RunVideoAnalysisRequest : Tea.TeaModel {
 
     public var splitInterval: Int32?
 
+    public var splitType: String?
+
     public var taskId: String?
 
     public var textProcessTasks: [RunVideoAnalysisRequest.TextProcessTasks]?
@@ -12505,6 +12507,9 @@ public class RunVideoAnalysisRequest : Tea.TeaModel {
         }
         if self.splitInterval != nil {
             map["splitInterval"] = self.splitInterval!
+        }
+        if self.splitType != nil {
+            map["splitType"] = self.splitType!
         }
         if self.taskId != nil {
             map["taskId"] = self.taskId!
@@ -12584,6 +12589,9 @@ public class RunVideoAnalysisRequest : Tea.TeaModel {
         if let value = dict["splitInterval"] as? Int32 {
             self.splitInterval = value
         }
+        if let value = dict["splitType"] as? String {
+            self.splitType = value
+        }
         if let value = dict["taskId"] as? String {
             self.taskId = value
         }
@@ -12661,6 +12669,8 @@ public class RunVideoAnalysisShrinkRequest : Tea.TeaModel {
 
     public var splitInterval: Int32?
 
+    public var splitType: String?
+
     public var taskId: String?
 
     public var textProcessTasksShrink: String?
@@ -12729,6 +12739,9 @@ public class RunVideoAnalysisShrinkRequest : Tea.TeaModel {
         if self.splitInterval != nil {
             map["splitInterval"] = self.splitInterval!
         }
+        if self.splitType != nil {
+            map["splitType"] = self.splitType!
+        }
         if self.taskId != nil {
             map["taskId"] = self.taskId!
         }
@@ -12796,6 +12809,9 @@ public class RunVideoAnalysisShrinkRequest : Tea.TeaModel {
         }
         if let value = dict["splitInterval"] as? Int32 {
             self.splitInterval = value
+        }
+        if let value = dict["splitType"] as? String {
+            self.splitType = value
         }
         if let value = dict["taskId"] as? String {
             self.taskId = value
@@ -16129,6 +16145,8 @@ public class SubmitVideoAnalysisTaskRequest : Tea.TeaModel {
 
     public var splitInterval: Int32?
 
+    public var splitType: String?
+
     public var textProcessTasks: [SubmitVideoAnalysisTaskRequest.TextProcessTasks]?
 
     public var videoCaptionInfo: SubmitVideoAnalysisTaskRequest.VideoCaptionInfo?
@@ -16196,6 +16214,9 @@ public class SubmitVideoAnalysisTaskRequest : Tea.TeaModel {
         }
         if self.splitInterval != nil {
             map["splitInterval"] = self.splitInterval!
+        }
+        if self.splitType != nil {
+            map["splitType"] = self.splitType!
         }
         if self.textProcessTasks != nil {
             var tmp : [Any] = []
@@ -16272,6 +16293,9 @@ public class SubmitVideoAnalysisTaskRequest : Tea.TeaModel {
         if let value = dict["splitInterval"] as? Int32 {
             self.splitInterval = value
         }
+        if let value = dict["splitType"] as? String {
+            self.splitType = value
+        }
         if let value = dict["textProcessTasks"] as? [Any?] {
             var tmp : [SubmitVideoAnalysisTaskRequest.TextProcessTasks] = []
             for v in value {
@@ -16346,6 +16370,8 @@ public class SubmitVideoAnalysisTaskShrinkRequest : Tea.TeaModel {
 
     public var splitInterval: Int32?
 
+    public var splitType: String?
+
     public var textProcessTasksShrink: String?
 
     public var videoCaptionInfoShrink: String?
@@ -16412,6 +16438,9 @@ public class SubmitVideoAnalysisTaskShrinkRequest : Tea.TeaModel {
         if self.splitInterval != nil {
             map["splitInterval"] = self.splitInterval!
         }
+        if self.splitType != nil {
+            map["splitType"] = self.splitType!
+        }
         if self.textProcessTasksShrink != nil {
             map["textProcessTasks"] = self.textProcessTasksShrink!
         }
@@ -16476,6 +16505,9 @@ public class SubmitVideoAnalysisTaskShrinkRequest : Tea.TeaModel {
         }
         if let value = dict["splitInterval"] as? Int32 {
             self.splitInterval = value
+        }
+        if let value = dict["splitType"] as? String {
+            self.splitType = value
         }
         if let value = dict["textProcessTasks"] as? String {
             self.textProcessTasksShrink = value
