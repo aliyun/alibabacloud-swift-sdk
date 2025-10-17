@@ -17,7 +17,7 @@
 要使用 [Carthage](https://github.com/Carthage/Carthage) 将 `AlibabacloudEfloController20221215` 集成到你的 Xcode 项目中，需要在 `Cartfile` 中定义以下内容:
 
 ```ogdl
-github "alibabacloud-sdk-swift/eflo-controller-20221215" "2.9.6"
+github "alibabacloud-sdk-swift/eflo-controller-20221215" "2.9.7"
 ```
 
 ### Swift 包管理工具
@@ -26,7 +26,7 @@ github "alibabacloud-sdk-swift/eflo-controller-20221215" "2.9.6"
 
 ```swift
 dependencies: [
-    .package(url: "https://github.com/alibabacloud-sdk-swift/eflo-controller-20221215.git", from: "2.9.6")
+    .package(url: "https://github.com/alibabacloud-sdk-swift/eflo-controller-20221215.git", from: "2.9.7")
 ]
 ```
 

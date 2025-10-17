@@ -4487,9 +4487,13 @@ public class DescribeClusterResponseBody : Tea.TeaModel {
 
     public var resourceGroupId: String?
 
+    public var securityGroupId: String?
+
     public var taskId: String?
 
     public var updateTime: String?
+
+    public var vSwitchId: String?
 
     public var vpcId: String?
 
@@ -4557,11 +4561,17 @@ public class DescribeClusterResponseBody : Tea.TeaModel {
         if self.resourceGroupId != nil {
             map["ResourceGroupId"] = self.resourceGroupId!
         }
+        if self.securityGroupId != nil {
+            map["SecurityGroupId"] = self.securityGroupId!
+        }
         if self.taskId != nil {
             map["TaskId"] = self.taskId!
         }
         if self.updateTime != nil {
             map["UpdateTime"] = self.updateTime!
+        }
+        if self.vSwitchId != nil {
+            map["VSwitchId"] = self.vSwitchId!
         }
         if self.vpcId != nil {
             map["VpcId"] = self.vpcId!
@@ -4628,11 +4638,17 @@ public class DescribeClusterResponseBody : Tea.TeaModel {
         if let value = dict["ResourceGroupId"] as? String {
             self.resourceGroupId = value
         }
+        if let value = dict["SecurityGroupId"] as? String {
+            self.securityGroupId = value
+        }
         if let value = dict["TaskId"] as? String {
             self.taskId = value
         }
         if let value = dict["UpdateTime"] as? String {
             self.updateTime = value
+        }
+        if let value = dict["VSwitchId"] as? String {
+            self.vSwitchId = value
         }
         if let value = dict["VpcId"] as? String {
             self.vpcId = value
