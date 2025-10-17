@@ -4583,6 +4583,8 @@ public class GetConnectionTicketRequest : Tea.TeaModel {
             }
         }
     }
+    public var accessType: String?
+
     public var clientId: String?
 
     public var clientOS: String?
@@ -4627,6 +4629,9 @@ public class GetConnectionTicketRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.accessType != nil {
+            map["AccessType"] = self.accessType!
+        }
         if self.clientId != nil {
             map["ClientId"] = self.clientId!
         }
@@ -4681,6 +4686,9 @@ public class GetConnectionTicketRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["AccessType"] as? String {
+            self.accessType = value
+        }
         if let value = dict["ClientId"] as? String {
             self.clientId = value
         }
@@ -4740,6 +4748,8 @@ public class GetConnectionTicketRequest : Tea.TeaModel {
 }
 
 public class GetConnectionTicketResponseBody : Tea.TeaModel {
+    public var p2PToken: String?
+
     public var requestId: String?
 
     public var taskCode: String?
@@ -4766,6 +4776,9 @@ public class GetConnectionTicketResponseBody : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.p2PToken != nil {
+            map["P2PToken"] = self.p2PToken!
+        }
         if self.requestId != nil {
             map["RequestId"] = self.requestId!
         }
@@ -4789,6 +4802,9 @@ public class GetConnectionTicketResponseBody : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["P2PToken"] as? String {
+            self.p2PToken = value
+        }
         if let value = dict["RequestId"] as? String {
             self.requestId = value
         }
