@@ -1007,6 +1007,10 @@ open class Client : AlibabacloudOpenApi.Client {
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func docOcrMaxWithOptions(_ request: DocOcrMaxRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DocOcrMaxResponse {
         try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.ocrValueStandard)) {
+            query["OcrValueStandard"] = request.ocrValueStandard ?? "";
+        }
         var body: [String: Any] = [:]
         if (!TeaUtils.Client.isUnset(request.docPage)) {
             body["DocPage"] = request.docPage ?? "";
@@ -1048,6 +1052,7 @@ open class Client : AlibabacloudOpenApi.Client {
             body["Spoof"] = request.spoof ?? "";
         }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query),
             "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
         ])
         var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([

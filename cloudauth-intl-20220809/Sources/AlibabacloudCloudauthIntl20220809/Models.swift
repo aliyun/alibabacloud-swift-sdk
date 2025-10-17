@@ -3936,6 +3936,8 @@ public class DocOcrMaxRequest : Tea.TeaModel {
 
     public var ocrModel: String?
 
+    public var ocrValueStandard: String?
+
     public var productCode: String?
 
     public var prompt: String?
@@ -3985,6 +3987,9 @@ public class DocOcrMaxRequest : Tea.TeaModel {
         if self.ocrModel != nil {
             map["OcrModel"] = self.ocrModel!
         }
+        if self.ocrValueStandard != nil {
+            map["OcrValueStandard"] = self.ocrValueStandard!
+        }
         if self.productCode != nil {
             map["ProductCode"] = self.productCode!
         }
@@ -4028,6 +4033,9 @@ public class DocOcrMaxRequest : Tea.TeaModel {
         }
         if let value = dict["OcrModel"] as? String {
             self.ocrModel = value
+        }
+        if let value = dict["OcrValueStandard"] as? String {
+            self.ocrValueStandard = value
         }
         if let value = dict["ProductCode"] as? String {
             self.productCode = value
