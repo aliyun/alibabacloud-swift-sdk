@@ -25509,6 +25509,8 @@ public class DescribeDesktopGroupSessionsResponseBody : Tea.TeaModel {
                 }
             }
         }
+        public var accountType: String?
+
         public var clientIp: String?
 
         public var clientOS: String?
@@ -25520,6 +25522,8 @@ public class DescribeDesktopGroupSessionsResponseBody : Tea.TeaModel {
         public var desktopGroupName: String?
 
         public var desktopId: String?
+
+        public var directoryType: String?
 
         public var endUserApplyCoordinateTime: Int64?
 
@@ -25564,6 +25568,9 @@ public class DescribeDesktopGroupSessionsResponseBody : Tea.TeaModel {
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
+            if self.accountType != nil {
+                map["AccountType"] = self.accountType!
+            }
             if self.clientIp != nil {
                 map["ClientIp"] = self.clientIp!
             }
@@ -25581,6 +25588,9 @@ public class DescribeDesktopGroupSessionsResponseBody : Tea.TeaModel {
             }
             if self.desktopId != nil {
                 map["DesktopId"] = self.desktopId!
+            }
+            if self.directoryType != nil {
+                map["DirectoryType"] = self.directoryType!
             }
             if self.endUserApplyCoordinateTime != nil {
                 map["EndUserApplyCoordinateTime"] = self.endUserApplyCoordinateTime!
@@ -25629,6 +25639,9 @@ public class DescribeDesktopGroupSessionsResponseBody : Tea.TeaModel {
 
         public override func fromMap(_ dict: [String: Any?]?) -> Void {
             guard let dict else { return }
+            if let value = dict["AccountType"] as? String {
+                self.accountType = value
+            }
             if let value = dict["ClientIp"] as? String {
                 self.clientIp = value
             }
@@ -25646,6 +25659,9 @@ public class DescribeDesktopGroupSessionsResponseBody : Tea.TeaModel {
             }
             if let value = dict["DesktopId"] as? String {
                 self.desktopId = value
+            }
+            if let value = dict["DirectoryType"] as? String {
+                self.directoryType = value
             }
             if let value = dict["EndUserApplyCoordinateTime"] as? Int64 {
                 self.endUserApplyCoordinateTime = value
@@ -28048,6 +28064,8 @@ public class DescribeDesktopSessionsResponseBody : Tea.TeaModel {
                 }
             }
         }
+        public var accountType: String?
+
         public var clientIp: String?
 
         public var clientOS: String?
@@ -28057,6 +28075,8 @@ public class DescribeDesktopSessionsResponseBody : Tea.TeaModel {
         public var desktopId: String?
 
         public var desktopName: String?
+
+        public var directoryType: String?
 
         public var endUserApplyCoordinateTime: Int64?
 
@@ -28105,6 +28125,9 @@ public class DescribeDesktopSessionsResponseBody : Tea.TeaModel {
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
+            if self.accountType != nil {
+                map["AccountType"] = self.accountType!
+            }
             if self.clientIp != nil {
                 map["ClientIp"] = self.clientIp!
             }
@@ -28119,6 +28142,9 @@ public class DescribeDesktopSessionsResponseBody : Tea.TeaModel {
             }
             if self.desktopName != nil {
                 map["DesktopName"] = self.desktopName!
+            }
+            if self.directoryType != nil {
+                map["DirectoryType"] = self.directoryType!
             }
             if self.endUserApplyCoordinateTime != nil {
                 map["EndUserApplyCoordinateTime"] = self.endUserApplyCoordinateTime!
@@ -28177,6 +28203,9 @@ public class DescribeDesktopSessionsResponseBody : Tea.TeaModel {
 
         public override func fromMap(_ dict: [String: Any?]?) -> Void {
             guard let dict else { return }
+            if let value = dict["AccountType"] as? String {
+                self.accountType = value
+            }
             if let value = dict["ClientIp"] as? String {
                 self.clientIp = value
             }
@@ -28191,6 +28220,9 @@ public class DescribeDesktopSessionsResponseBody : Tea.TeaModel {
             }
             if let value = dict["DesktopName"] as? String {
                 self.desktopName = value
+            }
+            if let value = dict["DirectoryType"] as? String {
+                self.directoryType = value
             }
             if let value = dict["EndUserApplyCoordinateTime"] as? Int64 {
                 self.endUserApplyCoordinateTime = value
