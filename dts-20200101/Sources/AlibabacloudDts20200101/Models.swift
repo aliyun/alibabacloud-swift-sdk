@@ -40123,6 +40123,622 @@ public class ListDedicatedClusterResponse : Tea.TeaModel {
     }
 }
 
+public class ListJobStepRequest : Tea.TeaModel {
+    public var dtsJobId: String?
+
+    public var regionId: String?
+
+    public var resourceGroupId: String?
+
+    public var zeroEtlJob: Bool?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.dtsJobId != nil {
+            map["DtsJobId"] = self.dtsJobId!
+        }
+        if self.regionId != nil {
+            map["RegionId"] = self.regionId!
+        }
+        if self.resourceGroupId != nil {
+            map["ResourceGroupId"] = self.resourceGroupId!
+        }
+        if self.zeroEtlJob != nil {
+            map["ZeroEtlJob"] = self.zeroEtlJob!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["DtsJobId"] as? String {
+            self.dtsJobId = value
+        }
+        if let value = dict["RegionId"] as? String {
+            self.regionId = value
+        }
+        if let value = dict["ResourceGroupId"] as? String {
+            self.resourceGroupId = value
+        }
+        if let value = dict["ZeroEtlJob"] as? Bool {
+            self.zeroEtlJob = value
+        }
+    }
+}
+
+public class ListJobStepResponseBody : Tea.TeaModel {
+    public class JobSteps : Tea.TeaModel {
+        public class ErrorDetails : Tea.TeaModel {
+            public var errorCode: String?
+
+            public var helpUrl: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.errorCode != nil {
+                    map["ErrorCode"] = self.errorCode!
+                }
+                if self.helpUrl != nil {
+                    map["HelpUrl"] = self.helpUrl!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["ErrorCode"] as? String {
+                    self.errorCode = value
+                }
+                if let value = dict["HelpUrl"] as? String {
+                    self.helpUrl = value
+                }
+            }
+        }
+        public class SubJobSteps : Tea.TeaModel {
+            public class ErrorDetails : Tea.TeaModel {
+                public var errorCode: String?
+
+                public var helpUrl: String?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.errorCode != nil {
+                        map["ErrorCode"] = self.errorCode!
+                    }
+                    if self.helpUrl != nil {
+                        map["HelpUrl"] = self.helpUrl!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                    guard let dict else { return }
+                    if let value = dict["ErrorCode"] as? String {
+                        self.errorCode = value
+                    }
+                    if let value = dict["HelpUrl"] as? String {
+                        self.helpUrl = value
+                    }
+                }
+            }
+            public var bootTime: String?
+
+            public var code: String?
+
+            public var createTime: String?
+
+            public var errMsg: String?
+
+            public var errorDetails: [ListJobStepResponseBody.JobSteps.SubJobSteps.ErrorDetails]?
+
+            public var finishTime: String?
+
+            public var incLatencyMilliseconds: String?
+
+            public var incLatencySeconds: Int64?
+
+            public var jobStepId: String?
+
+            public var jobStepName: String?
+
+            public var modifyTime: String?
+
+            public var needAcceleration: Bool?
+
+            public var progress: Int32?
+
+            public var serial: Int32?
+
+            public var state: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.bootTime != nil {
+                    map["BootTime"] = self.bootTime!
+                }
+                if self.code != nil {
+                    map["Code"] = self.code!
+                }
+                if self.createTime != nil {
+                    map["CreateTime"] = self.createTime!
+                }
+                if self.errMsg != nil {
+                    map["ErrMsg"] = self.errMsg!
+                }
+                if self.errorDetails != nil {
+                    var tmp : [Any] = []
+                    for k in self.errorDetails! {
+                        tmp.append(k.toMap())
+                    }
+                    map["ErrorDetails"] = tmp
+                }
+                if self.finishTime != nil {
+                    map["FinishTime"] = self.finishTime!
+                }
+                if self.incLatencyMilliseconds != nil {
+                    map["IncLatencyMilliseconds"] = self.incLatencyMilliseconds!
+                }
+                if self.incLatencySeconds != nil {
+                    map["IncLatencySeconds"] = self.incLatencySeconds!
+                }
+                if self.jobStepId != nil {
+                    map["JobStepId"] = self.jobStepId!
+                }
+                if self.jobStepName != nil {
+                    map["JobStepName"] = self.jobStepName!
+                }
+                if self.modifyTime != nil {
+                    map["ModifyTime"] = self.modifyTime!
+                }
+                if self.needAcceleration != nil {
+                    map["NeedAcceleration"] = self.needAcceleration!
+                }
+                if self.progress != nil {
+                    map["Progress"] = self.progress!
+                }
+                if self.serial != nil {
+                    map["Serial"] = self.serial!
+                }
+                if self.state != nil {
+                    map["State"] = self.state!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["BootTime"] as? String {
+                    self.bootTime = value
+                }
+                if let value = dict["Code"] as? String {
+                    self.code = value
+                }
+                if let value = dict["CreateTime"] as? String {
+                    self.createTime = value
+                }
+                if let value = dict["ErrMsg"] as? String {
+                    self.errMsg = value
+                }
+                if let value = dict["ErrorDetails"] as? [Any?] {
+                    var tmp : [ListJobStepResponseBody.JobSteps.SubJobSteps.ErrorDetails] = []
+                    for v in value {
+                        if v != nil {
+                            var model = ListJobStepResponseBody.JobSteps.SubJobSteps.ErrorDetails()
+                            if v != nil {
+                                model.fromMap(v as? [String: Any?])
+                            }
+                            tmp.append(model)
+                        }
+                    }
+                    self.errorDetails = tmp
+                }
+                if let value = dict["FinishTime"] as? String {
+                    self.finishTime = value
+                }
+                if let value = dict["IncLatencyMilliseconds"] as? String {
+                    self.incLatencyMilliseconds = value
+                }
+                if let value = dict["IncLatencySeconds"] as? Int64 {
+                    self.incLatencySeconds = value
+                }
+                if let value = dict["JobStepId"] as? String {
+                    self.jobStepId = value
+                }
+                if let value = dict["JobStepName"] as? String {
+                    self.jobStepName = value
+                }
+                if let value = dict["ModifyTime"] as? String {
+                    self.modifyTime = value
+                }
+                if let value = dict["NeedAcceleration"] as? Bool {
+                    self.needAcceleration = value
+                }
+                if let value = dict["Progress"] as? Int32 {
+                    self.progress = value
+                }
+                if let value = dict["Serial"] as? Int32 {
+                    self.serial = value
+                }
+                if let value = dict["State"] as? String {
+                    self.state = value
+                }
+            }
+        }
+        public var bootTime: String?
+
+        public var code: String?
+
+        public var createTime: String?
+
+        public var errMsg: String?
+
+        public var errorDetails: [ListJobStepResponseBody.JobSteps.ErrorDetails]?
+
+        public var finishTime: String?
+
+        public var incLatencyMilliseconds: Int64?
+
+        public var incLatencySeconds: Int64?
+
+        public var jobStepId: String?
+
+        public var jobStepName: String?
+
+        public var modifyTime: String?
+
+        public var needAcceleration: Bool?
+
+        public var progress: Int32?
+
+        public var serial: Int32?
+
+        public var state: String?
+
+        public var subJobCount: Int32?
+
+        public var subJobSteps: [ListJobStepResponseBody.JobSteps.SubJobSteps]?
+
+        public var redisPhaseType: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.bootTime != nil {
+                map["BootTime"] = self.bootTime!
+            }
+            if self.code != nil {
+                map["Code"] = self.code!
+            }
+            if self.createTime != nil {
+                map["CreateTime"] = self.createTime!
+            }
+            if self.errMsg != nil {
+                map["ErrMsg"] = self.errMsg!
+            }
+            if self.errorDetails != nil {
+                var tmp : [Any] = []
+                for k in self.errorDetails! {
+                    tmp.append(k.toMap())
+                }
+                map["ErrorDetails"] = tmp
+            }
+            if self.finishTime != nil {
+                map["FinishTime"] = self.finishTime!
+            }
+            if self.incLatencyMilliseconds != nil {
+                map["IncLatencyMilliseconds"] = self.incLatencyMilliseconds!
+            }
+            if self.incLatencySeconds != nil {
+                map["IncLatencySeconds"] = self.incLatencySeconds!
+            }
+            if self.jobStepId != nil {
+                map["JobStepId"] = self.jobStepId!
+            }
+            if self.jobStepName != nil {
+                map["JobStepName"] = self.jobStepName!
+            }
+            if self.modifyTime != nil {
+                map["ModifyTime"] = self.modifyTime!
+            }
+            if self.needAcceleration != nil {
+                map["NeedAcceleration"] = self.needAcceleration!
+            }
+            if self.progress != nil {
+                map["Progress"] = self.progress!
+            }
+            if self.serial != nil {
+                map["Serial"] = self.serial!
+            }
+            if self.state != nil {
+                map["State"] = self.state!
+            }
+            if self.subJobCount != nil {
+                map["SubJobCount"] = self.subJobCount!
+            }
+            if self.subJobSteps != nil {
+                var tmp : [Any] = []
+                for k in self.subJobSteps! {
+                    tmp.append(k.toMap())
+                }
+                map["SubJobSteps"] = tmp
+            }
+            if self.redisPhaseType != nil {
+                map["redisPhaseType"] = self.redisPhaseType!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["BootTime"] as? String {
+                self.bootTime = value
+            }
+            if let value = dict["Code"] as? String {
+                self.code = value
+            }
+            if let value = dict["CreateTime"] as? String {
+                self.createTime = value
+            }
+            if let value = dict["ErrMsg"] as? String {
+                self.errMsg = value
+            }
+            if let value = dict["ErrorDetails"] as? [Any?] {
+                var tmp : [ListJobStepResponseBody.JobSteps.ErrorDetails] = []
+                for v in value {
+                    if v != nil {
+                        var model = ListJobStepResponseBody.JobSteps.ErrorDetails()
+                        if v != nil {
+                            model.fromMap(v as? [String: Any?])
+                        }
+                        tmp.append(model)
+                    }
+                }
+                self.errorDetails = tmp
+            }
+            if let value = dict["FinishTime"] as? String {
+                self.finishTime = value
+            }
+            if let value = dict["IncLatencyMilliseconds"] as? Int64 {
+                self.incLatencyMilliseconds = value
+            }
+            if let value = dict["IncLatencySeconds"] as? Int64 {
+                self.incLatencySeconds = value
+            }
+            if let value = dict["JobStepId"] as? String {
+                self.jobStepId = value
+            }
+            if let value = dict["JobStepName"] as? String {
+                self.jobStepName = value
+            }
+            if let value = dict["ModifyTime"] as? String {
+                self.modifyTime = value
+            }
+            if let value = dict["NeedAcceleration"] as? Bool {
+                self.needAcceleration = value
+            }
+            if let value = dict["Progress"] as? Int32 {
+                self.progress = value
+            }
+            if let value = dict["Serial"] as? Int32 {
+                self.serial = value
+            }
+            if let value = dict["State"] as? String {
+                self.state = value
+            }
+            if let value = dict["SubJobCount"] as? Int32 {
+                self.subJobCount = value
+            }
+            if let value = dict["SubJobSteps"] as? [Any?] {
+                var tmp : [ListJobStepResponseBody.JobSteps.SubJobSteps] = []
+                for v in value {
+                    if v != nil {
+                        var model = ListJobStepResponseBody.JobSteps.SubJobSteps()
+                        if v != nil {
+                            model.fromMap(v as? [String: Any?])
+                        }
+                        tmp.append(model)
+                    }
+                }
+                self.subJobSteps = tmp
+            }
+            if let value = dict["redisPhaseType"] as? String {
+                self.redisPhaseType = value
+            }
+        }
+    }
+    public var code: String?
+
+    public var httpStatusCode: Int32?
+
+    public var jobSteps: [ListJobStepResponseBody.JobSteps]?
+
+    public var requestId: String?
+
+    public var success: Bool?
+
+    public var useV2API: Bool?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.code != nil {
+            map["Code"] = self.code!
+        }
+        if self.httpStatusCode != nil {
+            map["HttpStatusCode"] = self.httpStatusCode!
+        }
+        if self.jobSteps != nil {
+            var tmp : [Any] = []
+            for k in self.jobSteps! {
+                tmp.append(k.toMap())
+            }
+            map["JobSteps"] = tmp
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.success != nil {
+            map["Success"] = self.success!
+        }
+        if self.useV2API != nil {
+            map["UseV2API"] = self.useV2API!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["Code"] as? String {
+            self.code = value
+        }
+        if let value = dict["HttpStatusCode"] as? Int32 {
+            self.httpStatusCode = value
+        }
+        if let value = dict["JobSteps"] as? [Any?] {
+            var tmp : [ListJobStepResponseBody.JobSteps] = []
+            for v in value {
+                if v != nil {
+                    var model = ListJobStepResponseBody.JobSteps()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.jobSteps = tmp
+        }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+        if let value = dict["Success"] as? Bool {
+            self.success = value
+        }
+        if let value = dict["UseV2API"] as? Bool {
+            self.useV2API = value
+        }
+    }
+}
+
+public class ListJobStepResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: ListJobStepResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = ListJobStepResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
 public class ListTagResourcesRequest : Tea.TeaModel {
     public class Tag : Tea.TeaModel {
         public var key: String?
@@ -43500,6 +44116,198 @@ public class ModifyGadInstanceNameResponse : Tea.TeaModel {
         }
         if let value = dict["body"] as? [String: Any?] {
             var model = ModifyGadInstanceNameResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
+public class ModifyJobStepCheckpointRequest : Tea.TeaModel {
+    public var dtsJobId: String?
+
+    public var jobStepId: String?
+
+    public var newCheckPoint: Int64?
+
+    public var regionId: String?
+
+    public var resourceGroupId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.dtsJobId != nil {
+            map["DtsJobId"] = self.dtsJobId!
+        }
+        if self.jobStepId != nil {
+            map["JobStepId"] = self.jobStepId!
+        }
+        if self.newCheckPoint != nil {
+            map["NewCheckPoint"] = self.newCheckPoint!
+        }
+        if self.regionId != nil {
+            map["RegionId"] = self.regionId!
+        }
+        if self.resourceGroupId != nil {
+            map["ResourceGroupId"] = self.resourceGroupId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["DtsJobId"] as? String {
+            self.dtsJobId = value
+        }
+        if let value = dict["JobStepId"] as? String {
+            self.jobStepId = value
+        }
+        if let value = dict["NewCheckPoint"] as? Int64 {
+            self.newCheckPoint = value
+        }
+        if let value = dict["RegionId"] as? String {
+            self.regionId = value
+        }
+        if let value = dict["ResourceGroupId"] as? String {
+            self.resourceGroupId = value
+        }
+    }
+}
+
+public class ModifyJobStepCheckpointResponseBody : Tea.TeaModel {
+    public var code: String?
+
+    public var dynamicMessage: String?
+
+    public var errCode: String?
+
+    public var errMessage: String?
+
+    public var httpStatusCode: Int32?
+
+    public var requestId: String?
+
+    public var success: Bool?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.code != nil {
+            map["Code"] = self.code!
+        }
+        if self.dynamicMessage != nil {
+            map["DynamicMessage"] = self.dynamicMessage!
+        }
+        if self.errCode != nil {
+            map["ErrCode"] = self.errCode!
+        }
+        if self.errMessage != nil {
+            map["ErrMessage"] = self.errMessage!
+        }
+        if self.httpStatusCode != nil {
+            map["HttpStatusCode"] = self.httpStatusCode!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.success != nil {
+            map["Success"] = self.success!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["Code"] as? String {
+            self.code = value
+        }
+        if let value = dict["DynamicMessage"] as? String {
+            self.dynamicMessage = value
+        }
+        if let value = dict["ErrCode"] as? String {
+            self.errCode = value
+        }
+        if let value = dict["ErrMessage"] as? String {
+            self.errMessage = value
+        }
+        if let value = dict["HttpStatusCode"] as? Int32 {
+            self.httpStatusCode = value
+        }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+        if let value = dict["Success"] as? Bool {
+            self.success = value
+        }
+    }
+}
+
+public class ModifyJobStepCheckpointResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: ModifyJobStepCheckpointResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = ModifyJobStepCheckpointResponseBody()
             model.fromMap(value)
             self.body = model
         }
