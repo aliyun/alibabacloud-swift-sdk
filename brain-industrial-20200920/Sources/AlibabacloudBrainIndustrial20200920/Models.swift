@@ -1378,9 +1378,13 @@ public class CreateEssOptJobResponse : Tea.TeaModel {
 public class CreateLoadForecastByFileUrlJobRequest : Tea.TeaModel {
     public var businessKey: String?
 
+    public var dataMode: String?
+
     public var deviceType: String?
 
     public var duration: Int32?
+
+    public var forecastHorizon: String?
 
     public var freq: String?
 
@@ -1415,11 +1419,17 @@ public class CreateLoadForecastByFileUrlJobRequest : Tea.TeaModel {
         if self.businessKey != nil {
             map["BusinessKey"] = self.businessKey!
         }
+        if self.dataMode != nil {
+            map["DataMode"] = self.dataMode!
+        }
         if self.deviceType != nil {
             map["DeviceType"] = self.deviceType!
         }
         if self.duration != nil {
             map["Duration"] = self.duration!
+        }
+        if self.forecastHorizon != nil {
+            map["ForecastHorizon"] = self.forecastHorizon!
         }
         if self.freq != nil {
             map["Freq"] = self.freq!
@@ -1453,11 +1463,17 @@ public class CreateLoadForecastByFileUrlJobRequest : Tea.TeaModel {
         if let value = dict["BusinessKey"] as? String {
             self.businessKey = value
         }
+        if let value = dict["DataMode"] as? String {
+            self.dataMode = value
+        }
         if let value = dict["DeviceType"] as? String {
             self.deviceType = value
         }
         if let value = dict["Duration"] as? Int32 {
             self.duration = value
+        }
+        if let value = dict["ForecastHorizon"] as? String {
+            self.forecastHorizon = value
         }
         if let value = dict["Freq"] as? String {
             self.freq = value
@@ -1770,9 +1786,13 @@ public class CreateLoadForecastJobRequest : Tea.TeaModel {
     }
     public var businessKey: String?
 
+    public var dataMode: String?
+
     public var deviceType: String?
 
     public var duration: Int32?
+
+    public var forecastHorizon: String?
 
     public var freq: String?
 
@@ -1803,11 +1823,17 @@ public class CreateLoadForecastJobRequest : Tea.TeaModel {
         if self.businessKey != nil {
             map["BusinessKey"] = self.businessKey!
         }
+        if self.dataMode != nil {
+            map["DataMode"] = self.dataMode!
+        }
         if self.deviceType != nil {
             map["DeviceType"] = self.deviceType!
         }
         if self.duration != nil {
             map["Duration"] = self.duration!
+        }
+        if self.forecastHorizon != nil {
+            map["ForecastHorizon"] = self.forecastHorizon!
         }
         if self.freq != nil {
             map["Freq"] = self.freq!
@@ -1839,11 +1865,17 @@ public class CreateLoadForecastJobRequest : Tea.TeaModel {
         if let value = dict["BusinessKey"] as? String {
             self.businessKey = value
         }
+        if let value = dict["DataMode"] as? String {
+            self.dataMode = value
+        }
         if let value = dict["DeviceType"] as? String {
             self.deviceType = value
         }
         if let value = dict["Duration"] as? Int32 {
             self.duration = value
+        }
+        if let value = dict["ForecastHorizon"] as? String {
+            self.forecastHorizon = value
         }
         if let value = dict["Freq"] as? String {
             self.freq = value
@@ -1879,9 +1911,13 @@ public class CreateLoadForecastJobRequest : Tea.TeaModel {
 public class CreateLoadForecastJobShrinkRequest : Tea.TeaModel {
     public var businessKey: String?
 
+    public var dataMode: String?
+
     public var deviceType: String?
 
     public var duration: Int32?
+
+    public var forecastHorizon: String?
 
     public var freq: String?
 
@@ -1912,11 +1948,17 @@ public class CreateLoadForecastJobShrinkRequest : Tea.TeaModel {
         if self.businessKey != nil {
             map["BusinessKey"] = self.businessKey!
         }
+        if self.dataMode != nil {
+            map["DataMode"] = self.dataMode!
+        }
         if self.deviceType != nil {
             map["DeviceType"] = self.deviceType!
         }
         if self.duration != nil {
             map["Duration"] = self.duration!
+        }
+        if self.forecastHorizon != nil {
+            map["ForecastHorizon"] = self.forecastHorizon!
         }
         if self.freq != nil {
             map["Freq"] = self.freq!
@@ -1944,11 +1986,17 @@ public class CreateLoadForecastJobShrinkRequest : Tea.TeaModel {
         if let value = dict["BusinessKey"] as? String {
             self.businessKey = value
         }
+        if let value = dict["DataMode"] as? String {
+            self.dataMode = value
+        }
         if let value = dict["DeviceType"] as? String {
             self.deviceType = value
         }
         if let value = dict["Duration"] as? Int32 {
             self.duration = value
+        }
+        if let value = dict["ForecastHorizon"] as? String {
+            self.forecastHorizon = value
         }
         if let value = dict["Freq"] as? String {
             self.freq = value
@@ -2263,9 +2311,13 @@ public class CreatePowerForecastByFileUrlJobRequest : Tea.TeaModel {
     }
     public var businessKey: String?
 
+    public var dataMode: String?
+
     public var deviceType: String?
 
     public var duration: Int32?
+
+    public var forecastHorizon: String?
 
     public var freq: String?
 
@@ -2303,11 +2355,17 @@ public class CreatePowerForecastByFileUrlJobRequest : Tea.TeaModel {
         if self.businessKey != nil {
             map["BusinessKey"] = self.businessKey!
         }
+        if self.dataMode != nil {
+            map["DataMode"] = self.dataMode!
+        }
         if self.deviceType != nil {
             map["DeviceType"] = self.deviceType!
         }
         if self.duration != nil {
             map["Duration"] = self.duration!
+        }
+        if self.forecastHorizon != nil {
+            map["ForecastHorizon"] = self.forecastHorizon!
         }
         if self.freq != nil {
             map["Freq"] = self.freq!
@@ -2344,11 +2402,17 @@ public class CreatePowerForecastByFileUrlJobRequest : Tea.TeaModel {
         if let value = dict["BusinessKey"] as? String {
             self.businessKey = value
         }
+        if let value = dict["DataMode"] as? String {
+            self.dataMode = value
+        }
         if let value = dict["DeviceType"] as? String {
             self.deviceType = value
         }
         if let value = dict["Duration"] as? Int32 {
             self.duration = value
+        }
+        if let value = dict["ForecastHorizon"] as? String {
+            self.forecastHorizon = value
         }
         if let value = dict["Freq"] as? String {
             self.freq = value
@@ -2385,9 +2449,13 @@ public class CreatePowerForecastByFileUrlJobRequest : Tea.TeaModel {
 public class CreatePowerForecastByFileUrlJobShrinkRequest : Tea.TeaModel {
     public var businessKey: String?
 
+    public var dataMode: String?
+
     public var deviceType: String?
 
     public var duration: Int32?
+
+    public var forecastHorizon: String?
 
     public var freq: String?
 
@@ -2424,11 +2492,17 @@ public class CreatePowerForecastByFileUrlJobShrinkRequest : Tea.TeaModel {
         if self.businessKey != nil {
             map["BusinessKey"] = self.businessKey!
         }
+        if self.dataMode != nil {
+            map["DataMode"] = self.dataMode!
+        }
         if self.deviceType != nil {
             map["DeviceType"] = self.deviceType!
         }
         if self.duration != nil {
             map["Duration"] = self.duration!
+        }
+        if self.forecastHorizon != nil {
+            map["ForecastHorizon"] = self.forecastHorizon!
         }
         if self.freq != nil {
             map["Freq"] = self.freq!
@@ -2465,11 +2539,17 @@ public class CreatePowerForecastByFileUrlJobShrinkRequest : Tea.TeaModel {
         if let value = dict["BusinessKey"] as? String {
             self.businessKey = value
         }
+        if let value = dict["DataMode"] as? String {
+            self.dataMode = value
+        }
         if let value = dict["DeviceType"] as? String {
             self.deviceType = value
         }
         if let value = dict["Duration"] as? Int32 {
             self.duration = value
+        }
+        if let value = dict["ForecastHorizon"] as? String {
+            self.forecastHorizon = value
         }
         if let value = dict["Freq"] as? String {
             self.freq = value
@@ -2831,9 +2911,13 @@ public class CreatePowerForecastJobRequest : Tea.TeaModel {
     }
     public var businessKey: String?
 
+    public var dataMode: String?
+
     public var deviceType: String?
 
     public var duration: Int32?
+
+    public var forecastHorizon: String?
 
     public var freq: String?
 
@@ -2867,11 +2951,17 @@ public class CreatePowerForecastJobRequest : Tea.TeaModel {
         if self.businessKey != nil {
             map["BusinessKey"] = self.businessKey!
         }
+        if self.dataMode != nil {
+            map["DataMode"] = self.dataMode!
+        }
         if self.deviceType != nil {
             map["DeviceType"] = self.deviceType!
         }
         if self.duration != nil {
             map["Duration"] = self.duration!
+        }
+        if self.forecastHorizon != nil {
+            map["ForecastHorizon"] = self.forecastHorizon!
         }
         if self.freq != nil {
             map["Freq"] = self.freq!
@@ -2906,11 +2996,17 @@ public class CreatePowerForecastJobRequest : Tea.TeaModel {
         if let value = dict["BusinessKey"] as? String {
             self.businessKey = value
         }
+        if let value = dict["DataMode"] as? String {
+            self.dataMode = value
+        }
         if let value = dict["DeviceType"] as? String {
             self.deviceType = value
         }
         if let value = dict["Duration"] as? Int32 {
             self.duration = value
+        }
+        if let value = dict["ForecastHorizon"] as? String {
+            self.forecastHorizon = value
         }
         if let value = dict["Freq"] as? String {
             self.freq = value
@@ -2951,9 +3047,13 @@ public class CreatePowerForecastJobRequest : Tea.TeaModel {
 public class CreatePowerForecastJobShrinkRequest : Tea.TeaModel {
     public var businessKey: String?
 
+    public var dataMode: String?
+
     public var deviceType: String?
 
     public var duration: Int32?
+
+    public var forecastHorizon: String?
 
     public var freq: String?
 
@@ -2986,11 +3086,17 @@ public class CreatePowerForecastJobShrinkRequest : Tea.TeaModel {
         if self.businessKey != nil {
             map["BusinessKey"] = self.businessKey!
         }
+        if self.dataMode != nil {
+            map["DataMode"] = self.dataMode!
+        }
         if self.deviceType != nil {
             map["DeviceType"] = self.deviceType!
         }
         if self.duration != nil {
             map["Duration"] = self.duration!
+        }
+        if self.forecastHorizon != nil {
+            map["ForecastHorizon"] = self.forecastHorizon!
         }
         if self.freq != nil {
             map["Freq"] = self.freq!
@@ -3021,11 +3127,17 @@ public class CreatePowerForecastJobShrinkRequest : Tea.TeaModel {
         if let value = dict["BusinessKey"] as? String {
             self.businessKey = value
         }
+        if let value = dict["DataMode"] as? String {
+            self.dataMode = value
+        }
         if let value = dict["DeviceType"] as? String {
             self.deviceType = value
         }
         if let value = dict["Duration"] as? Int32 {
             self.duration = value
+        }
+        if let value = dict["ForecastHorizon"] as? String {
+            self.forecastHorizon = value
         }
         if let value = dict["Freq"] as? String {
             self.freq = value
