@@ -1,7 +1,7 @@
 Pod::Spec.new do |spec|
 
   spec.name         = "AlibabacloudEmrServerlessSpark20230808"
-  spec.version      = "1.13.0"
+  spec.version      = "1.14.0"
   spec.license      = "Apache 2.0"
   spec.summary      = "Alibaba Cloud emr-serverless-spark (20230808) SDK Library for Swift"
   spec.homepage     = "https://github.com/alibabacloud-sdk-swift/emr-serverless-spark-20230808" 
