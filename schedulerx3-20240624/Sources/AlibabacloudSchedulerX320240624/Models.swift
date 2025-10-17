@@ -4217,7 +4217,11 @@ public class GetLogRequest : Tea.TeaModel {
 
     public var reverse: Bool?
 
+    public var scheduleTime: Int64?
+
     public var startTime: Int64?
+
+    public var workerAddr: String?
 
     public override init() {
         super.init()
@@ -4263,8 +4267,14 @@ public class GetLogRequest : Tea.TeaModel {
         if self.reverse != nil {
             map["Reverse"] = self.reverse!
         }
+        if self.scheduleTime != nil {
+            map["ScheduleTime"] = self.scheduleTime!
+        }
         if self.startTime != nil {
             map["StartTime"] = self.startTime!
+        }
+        if self.workerAddr != nil {
+            map["WorkerAddr"] = self.workerAddr!
         }
         return map
     }
@@ -4301,8 +4311,14 @@ public class GetLogRequest : Tea.TeaModel {
         if let value = dict["Reverse"] as? Bool {
             self.reverse = value
         }
+        if let value = dict["ScheduleTime"] as? Int64 {
+            self.scheduleTime = value
+        }
         if let value = dict["StartTime"] as? Int64 {
             self.startTime = value
+        }
+        if let value = dict["WorkerAddr"] as? String {
+            self.workerAddr = value
         }
     }
 }

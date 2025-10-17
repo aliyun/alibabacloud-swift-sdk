@@ -1,7 +1,7 @@
 Pod::Spec.new do |spec|
 
   spec.name         = "AlibabacloudSchedulerX320240624"
-  spec.version      = "1.3.2"
+  spec.version      = "1.3.3"
   spec.license      = "Apache 2.0"
   spec.summary      = "Alibaba Cloud SchedulerX3 (20240624) SDK Library for Swift"
   spec.homepage     = "https://github.com/alibabacloud-sdk-swift/schedulerx3-20240624" 
