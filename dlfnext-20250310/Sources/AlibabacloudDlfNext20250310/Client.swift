@@ -1608,6 +1608,45 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func listPartitionsWithOptions(_ catalogId: String, _ database: String, _ table: String, _ request: ListPartitionsRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> ListPartitionsResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.maxResults)) {
+            query["maxResults"] = request.maxResults!;
+        }
+        if (!TeaUtils.Client.isUnset(request.pageToken)) {
+            query["pageToken"] = request.pageToken ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.partitionNamePattern)) {
+            query["partitionNamePattern"] = request.partitionNamePattern ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String],
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "ListPartitions",
+            "version": "2025-03-10",
+            "protocol": "HTTPS",
+            "pathname": "/dlf/v1/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(catalogId)) + "/databases/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(database)) + "/tables/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(table)) + "/partitions",
+            "method": "GET",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(ListPartitionsResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func listPartitions(_ catalogId: String, _ database: String, _ table: String, _ request: ListPartitionsRequest) async throws -> ListPartitionsResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await listPartitionsWithOptions(catalogId as! String, database as! String, table as! String, request as! ListPartitionsRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func listPermissionsWithOptions(_ catalogId: String, _ request: ListPermissionsRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> ListPermissionsResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
