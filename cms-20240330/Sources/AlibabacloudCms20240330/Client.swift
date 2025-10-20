@@ -1460,6 +1460,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.addonName)) {
             query["addonName"] = request.addonName ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.language)) {
+            query["language"] = request.language ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.scene)) {
             query["scene"] = request.scene ?? "";
         }

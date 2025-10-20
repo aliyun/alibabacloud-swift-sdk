@@ -1478,6 +1478,10 @@ public class AlertRuleCondition : Tea.TeaModel {
         }
         public var aggregate: String?
 
+        public var baseUnit: String?
+
+        public var displayUnit: String?
+
         public var oper: String?
 
         public var value: Double?
@@ -1505,6 +1509,12 @@ public class AlertRuleCondition : Tea.TeaModel {
             if self.aggregate != nil {
                 map["aggregate"] = self.aggregate!
             }
+            if self.baseUnit != nil {
+                map["baseUnit"] = self.baseUnit!
+            }
+            if self.displayUnit != nil {
+                map["displayUnit"] = self.displayUnit!
+            }
             if self.oper != nil {
                 map["oper"] = self.oper!
             }
@@ -1531,6 +1541,12 @@ public class AlertRuleCondition : Tea.TeaModel {
             guard let dict else { return }
             if let value = dict["aggregate"] as? String {
                 self.aggregate = value
+            }
+            if let value = dict["baseUnit"] as? String {
+                self.baseUnit = value
+            }
+            if let value = dict["displayUnit"] as? String {
+                self.displayUnit = value
             }
             if let value = dict["oper"] as? String {
                 self.oper = value
@@ -18326,6 +18342,8 @@ public class ListIntegrationPolicyCustomScrapeJobRulesResponse : Tea.TeaModel {
 public class ListIntegrationPolicyDashboardsRequest : Tea.TeaModel {
     public var addonName: String?
 
+    public var language: String?
+
     public var scene: String?
 
     public override init() {
@@ -18345,6 +18363,9 @@ public class ListIntegrationPolicyDashboardsRequest : Tea.TeaModel {
         if self.addonName != nil {
             map["addonName"] = self.addonName!
         }
+        if self.language != nil {
+            map["language"] = self.language!
+        }
         if self.scene != nil {
             map["scene"] = self.scene!
         }
@@ -18356,6 +18377,9 @@ public class ListIntegrationPolicyDashboardsRequest : Tea.TeaModel {
         if let value = dict["addonName"] as? String {
             self.addonName = value
         }
+        if let value = dict["language"] as? String {
+            self.language = value
+        }
         if let value = dict["scene"] as? String {
             self.scene = value
         }
@@ -18364,6 +18388,8 @@ public class ListIntegrationPolicyDashboardsRequest : Tea.TeaModel {
 
 public class ListIntegrationPolicyDashboardsResponseBody : Tea.TeaModel {
     public class Dashboards : Tea.TeaModel {
+        public var engine: String?
+
         public var folderUid: String?
 
         public var name: String?
@@ -18392,6 +18418,9 @@ public class ListIntegrationPolicyDashboardsResponseBody : Tea.TeaModel {
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
+            if self.engine != nil {
+                map["engine"] = self.engine!
+            }
             if self.folderUid != nil {
                 map["folderUid"] = self.folderUid!
             }
@@ -18418,6 +18447,9 @@ public class ListIntegrationPolicyDashboardsResponseBody : Tea.TeaModel {
 
         public override func fromMap(_ dict: [String: Any?]?) -> Void {
             guard let dict else { return }
+            if let value = dict["engine"] as? String {
+                self.engine = value
+            }
             if let value = dict["folderUid"] as? String {
                 self.folderUid = value
             }
