@@ -410,6 +410,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.serverInstanceType)) {
             body["ServerInstanceType"] = request.serverInstanceType ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.serverPortRange)) {
+            body["ServerPortRange"] = request.serverPortRange ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.systemDiskCategory)) {
             body["SystemDiskCategory"] = request.systemDiskCategory ?? "";
         }
@@ -522,6 +525,37 @@ open class Client : AlibabacloudOpenApi.Client {
     public func deleteAppInstances(_ request: DeleteAppInstancesRequest) async throws -> DeleteAppInstancesResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         return try await deleteAppInstancesWithOptions(request as! DeleteAppInstancesRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func deleteImageWithOptions(_ request: DeleteImageRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DeleteImageResponse {
+        try TeaUtils.Client.validateModel(request)
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.imageId)) {
+            body["ImageId"] = request.imageId ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "DeleteImage",
+            "version": "2021-09-01",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(DeleteImageResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func deleteImage(_ request: DeleteImageRequest) async throws -> DeleteImageResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await deleteImageWithOptions(request as! DeleteImageRequest, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -1997,6 +2031,52 @@ open class Client : AlibabacloudOpenApi.Client {
     public func restartWuyingServer(_ request: RestartWuyingServerRequest) async throws -> RestartWuyingServerResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         return try await restartWuyingServerWithOptions(request as! RestartWuyingServerRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func startTaskForDistributeImageWithOptions(_ request: StartTaskForDistributeImageRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> StartTaskForDistributeImageResponse {
+        try TeaUtils.Client.validateModel(request)
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.destinationRegionList)) {
+            body["DestinationRegionList"] = request.destinationRegionList ?? [];
+        }
+        if (!TeaUtils.Client.isUnset(request.imageId)) {
+            body["ImageId"] = request.imageId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.productType)) {
+            body["ProductType"] = request.productType ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.retryType)) {
+            body["RetryType"] = request.retryType ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.sourceRegion)) {
+            body["SourceRegion"] = request.sourceRegion ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.versionId)) {
+            body["VersionId"] = request.versionId ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "StartTaskForDistributeImage",
+            "version": "2021-09-01",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(StartTaskForDistributeImageResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func startTaskForDistributeImage(_ request: StartTaskForDistributeImageRequest) async throws -> StartTaskForDistributeImageResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await startTaskForDistributeImageWithOptions(request as! StartTaskForDistributeImageRequest, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
