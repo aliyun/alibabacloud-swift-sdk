@@ -7884,7 +7884,11 @@ public class CreateMemoryRequest : Tea.TeaModel {
 
     public var name: String?
 
+    public var permanent: Bool?
+
     public var shortTtl: Int32?
+
+    public var strategy: [String]?
 
     public override init() {
         super.init()
@@ -7906,8 +7910,14 @@ public class CreateMemoryRequest : Tea.TeaModel {
         if self.name != nil {
             map["name"] = self.name!
         }
+        if self.permanent != nil {
+            map["permanent"] = self.permanent!
+        }
         if self.shortTtl != nil {
             map["shortTtl"] = self.shortTtl!
+        }
+        if self.strategy != nil {
+            map["strategy"] = self.strategy!
         }
         return map
     }
@@ -7920,14 +7930,52 @@ public class CreateMemoryRequest : Tea.TeaModel {
         if let value = dict["name"] as? String {
             self.name = value
         }
+        if let value = dict["permanent"] as? Bool {
+            self.permanent = value
+        }
         if let value = dict["shortTtl"] as? Int32 {
             self.shortTtl = value
+        }
+        if let value = dict["strategy"] as? [String] {
+            self.strategy = value
         }
     }
 }
 
 public class CreateMemoryResponseBody : Tea.TeaModel {
+    public class Data : Tea.TeaModel {
+        public var cmsWorkspaceName: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.cmsWorkspaceName != nil {
+                map["cmsWorkspaceName"] = self.cmsWorkspaceName!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["cmsWorkspaceName"] as? String {
+                self.cmsWorkspaceName = value
+            }
+        }
+    }
     public var code: String?
+
+    public var data: CreateMemoryResponseBody.Data?
 
     public var requestId: String?
 
@@ -7941,12 +7989,16 @@ public class CreateMemoryResponseBody : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
+        try self.data?.validate()
     }
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
         if self.code != nil {
             map["code"] = self.code!
+        }
+        if self.data != nil {
+            map["data"] = self.data?.toMap()
         }
         if self.requestId != nil {
             map["requestId"] = self.requestId!
@@ -7958,6 +8010,11 @@ public class CreateMemoryResponseBody : Tea.TeaModel {
         guard let dict else { return }
         if let value = dict["code"] as? String {
             self.code = value
+        }
+        if let value = dict["data"] as? [String: Any?] {
+            var model = CreateMemoryResponseBody.Data()
+            model.fromMap(value)
+            self.data = model
         }
         if let value = dict["requestId"] as? String {
             self.requestId = value
@@ -8733,13 +8790,19 @@ public class GetCodeInterpreterResponse : Tea.TeaModel {
 
 public class GetMemoryResponseBody : Tea.TeaModel {
     public class Data : Tea.TeaModel {
+        public var cmsWorkspaceName: String?
+
         public var createTime: Int32?
 
         public var longTtl: Int32?
 
         public var name: String?
 
+        public var permanent: Bool?
+
         public var shortTtl: Int32?
+
+        public var strategy: [String]?
 
         public override init() {
             super.init()
@@ -8755,6 +8818,9 @@ public class GetMemoryResponseBody : Tea.TeaModel {
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
+            if self.cmsWorkspaceName != nil {
+                map["cmsWorkspaceName"] = self.cmsWorkspaceName!
+            }
             if self.createTime != nil {
                 map["createTime"] = self.createTime!
             }
@@ -8764,14 +8830,23 @@ public class GetMemoryResponseBody : Tea.TeaModel {
             if self.name != nil {
                 map["name"] = self.name!
             }
+            if self.permanent != nil {
+                map["permanent"] = self.permanent!
+            }
             if self.shortTtl != nil {
                 map["shortTtl"] = self.shortTtl!
+            }
+            if self.strategy != nil {
+                map["strategy"] = self.strategy!
             }
             return map
         }
 
         public override func fromMap(_ dict: [String: Any?]?) -> Void {
             guard let dict else { return }
+            if let value = dict["cmsWorkspaceName"] as? String {
+                self.cmsWorkspaceName = value
+            }
             if let value = dict["createTime"] as? Int32 {
                 self.createTime = value
             }
@@ -8781,8 +8856,14 @@ public class GetMemoryResponseBody : Tea.TeaModel {
             if let value = dict["name"] as? String {
                 self.name = value
             }
+            if let value = dict["permanent"] as? Bool {
+                self.permanent = value
+            }
             if let value = dict["shortTtl"] as? Int32 {
                 self.shortTtl = value
+            }
+            if let value = dict["strategy"] as? [String] {
+                self.strategy = value
             }
         }
     }
@@ -10848,7 +10929,11 @@ public class UpdateAgentRuntimeEndpointResponse : Tea.TeaModel {
 public class UpdateMemoryRequest : Tea.TeaModel {
     public var longTtl: Int32?
 
+    public var permanent: Bool?
+
     public var shortTtl: Int32?
+
+    public var strategy: [String]?
 
     public override init() {
         super.init()
@@ -10867,8 +10952,14 @@ public class UpdateMemoryRequest : Tea.TeaModel {
         if self.longTtl != nil {
             map["longTtl"] = self.longTtl!
         }
+        if self.permanent != nil {
+            map["permanent"] = self.permanent!
+        }
         if self.shortTtl != nil {
             map["shortTtl"] = self.shortTtl!
+        }
+        if self.strategy != nil {
+            map["strategy"] = self.strategy!
         }
         return map
     }
@@ -10878,14 +10969,52 @@ public class UpdateMemoryRequest : Tea.TeaModel {
         if let value = dict["longTtl"] as? Int32 {
             self.longTtl = value
         }
+        if let value = dict["permanent"] as? Bool {
+            self.permanent = value
+        }
         if let value = dict["shortTtl"] as? Int32 {
             self.shortTtl = value
+        }
+        if let value = dict["strategy"] as? [String] {
+            self.strategy = value
         }
     }
 }
 
 public class UpdateMemoryResponseBody : Tea.TeaModel {
+    public class Data : Tea.TeaModel {
+        public var cmsWorkspaceName: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.cmsWorkspaceName != nil {
+                map["cmsWorkspaceName"] = self.cmsWorkspaceName!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["cmsWorkspaceName"] as? String {
+                self.cmsWorkspaceName = value
+            }
+        }
+    }
     public var code: String?
+
+    public var data: UpdateMemoryResponseBody.Data?
 
     public var requestId: String?
 
@@ -10899,12 +11028,16 @@ public class UpdateMemoryResponseBody : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
+        try self.data?.validate()
     }
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
         if self.code != nil {
             map["code"] = self.code!
+        }
+        if self.data != nil {
+            map["data"] = self.data?.toMap()
         }
         if self.requestId != nil {
             map["requestId"] = self.requestId!
@@ -10916,6 +11049,11 @@ public class UpdateMemoryResponseBody : Tea.TeaModel {
         guard let dict else { return }
         if let value = dict["code"] as? String {
             self.code = value
+        }
+        if let value = dict["data"] as? [String: Any?] {
+            var model = UpdateMemoryResponseBody.Data()
+            model.fromMap(value)
+            self.data = model
         }
         if let value = dict["requestId"] as? String {
             self.requestId = value

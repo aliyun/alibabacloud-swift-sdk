@@ -149,8 +149,14 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.name)) {
             body["name"] = request.name ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.permanent)) {
+            body["permanent"] = request.permanent!;
+        }
         if (!TeaUtils.Client.isUnset(request.shortTtl)) {
             body["shortTtl"] = request.shortTtl!;
+        }
+        if (!TeaUtils.Client.isUnset(request.strategy)) {
+            body["strategy"] = request.strategy ?? [];
         }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "headers": headers as! [String: String],
@@ -1015,16 +1021,22 @@ open class Client : AlibabacloudOpenApi.Client {
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func updateMemoryWithOptions(_ memoryName: String, _ request: UpdateMemoryRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> UpdateMemoryResponse {
         try TeaUtils.Client.validateModel(request)
-        var query: [String: Any] = [:]
+        var body: [String: Any] = [:]
         if (!TeaUtils.Client.isUnset(request.longTtl)) {
-            query["longTtl"] = request.longTtl!;
+            body["longTtl"] = request.longTtl!;
+        }
+        if (!TeaUtils.Client.isUnset(request.permanent)) {
+            body["permanent"] = request.permanent!;
         }
         if (!TeaUtils.Client.isUnset(request.shortTtl)) {
-            query["shortTtl"] = request.shortTtl!;
+            body["shortTtl"] = request.shortTtl!;
+        }
+        if (!TeaUtils.Client.isUnset(request.strategy)) {
+            body["strategy"] = request.strategy ?? [];
         }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "headers": headers as! [String: String],
-            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
         ])
         var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
             "action": "UpdateMemory",
