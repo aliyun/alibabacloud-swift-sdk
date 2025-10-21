@@ -376,6 +376,66 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getVideoDetectShotConfigWithOptions(_ workspaceId: String, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> GetVideoDetectShotConfigResponse {
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String]
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "GetVideoDetectShotConfig",
+            "version": "2024-08-01",
+            "protocol": "HTTPS",
+            "pathname": "/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(workspaceId)) + "/quanmiao/lightapp/videoAnalysis/getVideoDetectShotConfig",
+            "method": "GET",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(GetVideoDetectShotConfigResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getVideoDetectShotConfig(_ workspaceId: String) async throws -> GetVideoDetectShotConfigResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await getVideoDetectShotConfigWithOptions(workspaceId as! String, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getVideoDetectShotTaskWithOptions(_ workspaceId: String, _ request: GetVideoDetectShotTaskRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> GetVideoDetectShotTaskResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.taskId)) {
+            query["taskId"] = request.taskId ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String],
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "GetVideoDetectShotTask",
+            "version": "2024-08-01",
+            "protocol": "HTTPS",
+            "pathname": "/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(workspaceId)) + "/quanmiao/lightapp/getVideoDetectShotTask",
+            "method": "GET",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(GetVideoDetectShotTaskResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getVideoDetectShotTask(_ workspaceId: String, _ request: GetVideoDetectShotTaskRequest) async throws -> GetVideoDetectShotTaskResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await getVideoDetectShotTaskWithOptions(workspaceId as! String, request as! GetVideoDetectShotTaskRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func hotNewsRecommendWithOptions(_ workspaceId: String, _ request: HotNewsRecommendRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> HotNewsRecommendResponse {
         try TeaUtils.Client.validateModel(request)
         var body: [String: Any] = [:]
@@ -1328,6 +1388,86 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func runVideoDetectShotWithOptions(_ workspaceId: String, _ tmpReq: RunVideoDetectShotRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> RunVideoDetectShotResponse {
+        try TeaUtils.Client.validateModel(tmpReq)
+        var request: RunVideoDetectShotShrinkRequest = RunVideoDetectShotShrinkRequest([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.options)) {
+            request.optionsShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.options, "options", "json")
+        }
+        if (!TeaUtils.Client.isUnset(tmpReq.recognitionOptions)) {
+            request.recognitionOptionsShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.recognitionOptions, "recognitionOptions", "json")
+        }
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.intelliSimpPrompt)) {
+            body["intelliSimpPrompt"] = request.intelliSimpPrompt ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.intelliSimpPromptTemplateId)) {
+            body["intelliSimpPromptTemplateId"] = request.intelliSimpPromptTemplateId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.language)) {
+            body["language"] = request.language ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.modelCustomPromptTemplateId)) {
+            body["modelCustomPromptTemplateId"] = request.modelCustomPromptTemplateId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.modelId)) {
+            body["modelId"] = request.modelId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.modelVlCustomPromptTemplateId)) {
+            body["modelVlCustomPromptTemplateId"] = request.modelVlCustomPromptTemplateId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.optionsShrink)) {
+            body["options"] = request.optionsShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.originalSessionId)) {
+            body["originalSessionId"] = request.originalSessionId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.preModelId)) {
+            body["preModelId"] = request.preModelId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.prompt)) {
+            body["prompt"] = request.prompt ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.recognitionOptionsShrink)) {
+            body["recognitionOptions"] = request.recognitionOptionsShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.taskId)) {
+            body["taskId"] = request.taskId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.videoUrl)) {
+            body["videoUrl"] = request.videoUrl ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.vlPrompt)) {
+            body["vlPrompt"] = request.vlPrompt ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String],
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "RunVideoDetectShot",
+            "version": "2024-08-01",
+            "protocol": "HTTPS",
+            "pathname": "/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(workspaceId)) + "/quanmiao/lightapp/runVideoDetectShot",
+            "method": "POST",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(RunVideoDetectShotResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func runVideoDetectShot(_ workspaceId: String, _ request: RunVideoDetectShotRequest) async throws -> RunVideoDetectShotResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await runVideoDetectShotWithOptions(workspaceId as! String, request as! RunVideoDetectShotRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func submitEnterpriseVocAnalysisTaskWithOptions(_ workspaceId: String, _ tmpReq: SubmitEnterpriseVocAnalysisTaskRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> SubmitEnterpriseVocAnalysisTaskResponse {
         try TeaUtils.Client.validateModel(tmpReq)
         var request: SubmitEnterpriseVocAnalysisTaskShrinkRequest = SubmitEnterpriseVocAnalysisTaskShrinkRequest([:])
@@ -1636,6 +1776,89 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func submitVideoDetectShotTaskWithOptions(_ workspaceId: String, _ tmpReq: SubmitVideoDetectShotTaskRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> SubmitVideoDetectShotTaskResponse {
+        try TeaUtils.Client.validateModel(tmpReq)
+        var request: SubmitVideoDetectShotTaskShrinkRequest = SubmitVideoDetectShotTaskShrinkRequest([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.options)) {
+            request.optionsShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.options, "options", "json")
+        }
+        if (!TeaUtils.Client.isUnset(tmpReq.recognitionOptions)) {
+            request.recognitionOptionsShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.recognitionOptions, "recognitionOptions", "json")
+        }
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.deduplicationId)) {
+            body["deduplicationId"] = request.deduplicationId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.intelliSimpPrompt)) {
+            body["intelliSimpPrompt"] = request.intelliSimpPrompt ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.intelliSimpPromptTemplateId)) {
+            body["intelliSimpPromptTemplateId"] = request.intelliSimpPromptTemplateId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.language)) {
+            body["language"] = request.language ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.modelCustomPromptTemplateId)) {
+            body["modelCustomPromptTemplateId"] = request.modelCustomPromptTemplateId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.modelId)) {
+            body["modelId"] = request.modelId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.modelVlCustomPromptTemplateId)) {
+            body["modelVlCustomPromptTemplateId"] = request.modelVlCustomPromptTemplateId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.optionsShrink)) {
+            body["options"] = request.optionsShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.originalSessionId)) {
+            body["originalSessionId"] = request.originalSessionId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.preModelId)) {
+            body["preModelId"] = request.preModelId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.prompt)) {
+            body["prompt"] = request.prompt ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.recognitionOptionsShrink)) {
+            body["recognitionOptions"] = request.recognitionOptionsShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.taskId)) {
+            body["taskId"] = request.taskId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.videoUrl)) {
+            body["videoUrl"] = request.videoUrl ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.vlPrompt)) {
+            body["vlPrompt"] = request.vlPrompt ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String],
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "SubmitVideoDetectShotTask",
+            "version": "2024-08-01",
+            "protocol": "HTTPS",
+            "pathname": "/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(workspaceId)) + "/quanmiao/lightapp/submitVideoDetectShotTask",
+            "method": "POST",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(SubmitVideoDetectShotTaskResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func submitVideoDetectShotTask(_ workspaceId: String, _ request: SubmitVideoDetectShotTaskRequest) async throws -> SubmitVideoDetectShotTaskResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await submitVideoDetectShotTaskWithOptions(workspaceId as! String, request as! SubmitVideoDetectShotTaskRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func updateVideoAnalysisConfigWithOptions(_ workspaceId: String, _ request: UpdateVideoAnalysisConfigRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> UpdateVideoAnalysisConfigResponse {
         try TeaUtils.Client.validateModel(request)
         var body: [String: Any] = [:]
@@ -1743,5 +1966,74 @@ open class Client : AlibabacloudOpenApi.Client {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         var headers: [String: String] = [:]
         return try await updateVideoAnalysisTasksWithOptions(workspaceId as! String, request as! UpdateVideoAnalysisTasksRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func updateVideoDetectShotConfigWithOptions(_ workspaceId: String, _ request: UpdateVideoDetectShotConfigRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> UpdateVideoDetectShotConfigResponse {
+        try TeaUtils.Client.validateModel(request)
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.asyncConcurrency)) {
+            body["asyncConcurrency"] = request.asyncConcurrency!;
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String],
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "UpdateVideoDetectShotConfig",
+            "version": "2024-08-01",
+            "protocol": "HTTPS",
+            "pathname": "/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(workspaceId)) + "/quanmiao/lightapp/videoAnalysis/updateVideoDetectShotConfig",
+            "method": "PUT",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(UpdateVideoDetectShotConfigResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func updateVideoDetectShotConfig(_ workspaceId: String, _ request: UpdateVideoDetectShotConfigRequest) async throws -> UpdateVideoDetectShotConfigResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await updateVideoDetectShotConfigWithOptions(workspaceId as! String, request as! UpdateVideoDetectShotConfigRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func updateVideoDetectShotTaskWithOptions(_ workspaceId: String, _ request: UpdateVideoDetectShotTaskRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> UpdateVideoDetectShotTaskResponse {
+        try TeaUtils.Client.validateModel(request)
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.taskId)) {
+            body["taskId"] = request.taskId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.taskStatus)) {
+            body["taskStatus"] = request.taskStatus ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String],
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "UpdateVideoDetectShotTask",
+            "version": "2024-08-01",
+            "protocol": "HTTPS",
+            "pathname": "/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(workspaceId)) + "/quanmiao/lightapp/updateVideoDetectShotTask",
+            "method": "PUT",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(UpdateVideoDetectShotTaskResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func updateVideoDetectShotTask(_ workspaceId: String, _ request: UpdateVideoDetectShotTaskRequest) async throws -> UpdateVideoDetectShotTaskResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await updateVideoDetectShotTaskWithOptions(workspaceId as! String, request as! UpdateVideoDetectShotTaskRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
     }
 }
