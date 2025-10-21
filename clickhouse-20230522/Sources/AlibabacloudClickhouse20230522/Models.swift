@@ -764,7 +764,7 @@ public class CreateDBInstanceRequest : Tea.TeaModel {
 
     public var sourceDBInstanceId: String?
 
-    public var storageQuota: String?
+    public var storageQuota: Int64?
 
     public var storageType: String?
 
@@ -912,7 +912,7 @@ public class CreateDBInstanceRequest : Tea.TeaModel {
         if let value = dict["SourceDBInstanceId"] as? String {
             self.sourceDBInstanceId = value
         }
-        if let value = dict["StorageQuota"] as? String {
+        if let value = dict["StorageQuota"] as? Int64 {
             self.storageQuota = value
         }
         if let value = dict["StorageType"] as? String {
@@ -961,7 +961,7 @@ public class CreateDBInstanceShrinkRequest : Tea.TeaModel {
 
     public var sourceDBInstanceId: String?
 
-    public var storageQuota: String?
+    public var storageQuota: Int64?
 
     public var storageType: String?
 
@@ -1095,7 +1095,7 @@ public class CreateDBInstanceShrinkRequest : Tea.TeaModel {
         if let value = dict["SourceDBInstanceId"] as? String {
             self.sourceDBInstanceId = value
         }
-        if let value = dict["StorageQuota"] as? String {
+        if let value = dict["StorageQuota"] as? Int64 {
             self.storageQuota = value
         }
         if let value = dict["StorageType"] as? String {
@@ -3299,6 +3299,8 @@ public class DescribeDBInstanceAttributeResponseBody : Tea.TeaModel {
 
         public var chargeType: String?
 
+        public var clickObserveServiceStatus: String?
+
         public var createTime: String?
 
         public var DBInstanceId: String?
@@ -3390,6 +3392,9 @@ public class DescribeDBInstanceAttributeResponseBody : Tea.TeaModel {
             }
             if self.chargeType != nil {
                 map["ChargeType"] = self.chargeType!
+            }
+            if self.clickObserveServiceStatus != nil {
+                map["ClickObserveServiceStatus"] = self.clickObserveServiceStatus!
             }
             if self.createTime != nil {
                 map["CreateTime"] = self.createTime!
@@ -3518,6 +3523,9 @@ public class DescribeDBInstanceAttributeResponseBody : Tea.TeaModel {
             }
             if let value = dict["ChargeType"] as? String {
                 self.chargeType = value
+            }
+            if let value = dict["ClickObserveServiceStatus"] as? String {
+                self.clickObserveServiceStatus = value
             }
             if let value = dict["CreateTime"] as? String {
                 self.createTime = value
@@ -7596,7 +7604,7 @@ public class ModifyDBInstanceClassRequest : Tea.TeaModel {
 
     public var scaleMin: Int64?
 
-    public var storageQuota: String?
+    public var storageQuota: Int64?
 
     public var storageType: String?
 
@@ -7667,7 +7675,7 @@ public class ModifyDBInstanceClassRequest : Tea.TeaModel {
         if let value = dict["ScaleMin"] as? Int64 {
             self.scaleMin = value
         }
-        if let value = dict["StorageQuota"] as? String {
+        if let value = dict["StorageQuota"] as? Int64 {
             self.storageQuota = value
         }
         if let value = dict["StorageType"] as? String {

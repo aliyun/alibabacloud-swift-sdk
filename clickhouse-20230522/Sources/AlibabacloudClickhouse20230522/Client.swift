@@ -264,7 +264,7 @@ open class Client : AlibabacloudOpenApi.Client {
             query["SourceDBInstanceId"] = request.sourceDBInstanceId ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.storageQuota)) {
-            query["StorageQuota"] = request.storageQuota ?? "";
+            query["StorageQuota"] = request.storageQuota!;
         }
         if (!TeaUtils.Client.isUnset(request.storageType)) {
             query["StorageType"] = request.storageType ?? "";
@@ -1321,7 +1321,7 @@ open class Client : AlibabacloudOpenApi.Client {
             query["ScaleMin"] = request.scaleMin!;
         }
         if (!TeaUtils.Client.isUnset(request.storageQuota)) {
-            query["StorageQuota"] = request.storageQuota ?? "";
+            query["StorageQuota"] = request.storageQuota!;
         }
         if (!TeaUtils.Client.isUnset(request.storageType)) {
             query["StorageType"] = request.storageType ?? "";
