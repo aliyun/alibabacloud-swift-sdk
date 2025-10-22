@@ -3429,6 +3429,182 @@ public class ListUserSolutionsResponse : Tea.TeaModel {
     }
 }
 
+public class OperateCallCenterForPartnerRequest : Tea.TeaModel {
+    public var bizType: String?
+
+    public var callAction: String?
+
+    public var employeeCode: String?
+
+    public var request: String?
+
+    public var tenantId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.bizType != nil {
+            map["BizType"] = self.bizType!
+        }
+        if self.callAction != nil {
+            map["CallAction"] = self.callAction!
+        }
+        if self.employeeCode != nil {
+            map["EmployeeCode"] = self.employeeCode!
+        }
+        if self.request != nil {
+            map["Request"] = self.request!
+        }
+        if self.tenantId != nil {
+            map["TenantId"] = self.tenantId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["BizType"] as? String {
+            self.bizType = value
+        }
+        if let value = dict["CallAction"] as? String {
+            self.callAction = value
+        }
+        if let value = dict["EmployeeCode"] as? String {
+            self.employeeCode = value
+        }
+        if let value = dict["Request"] as? String {
+            self.request = value
+        }
+        if let value = dict["TenantId"] as? String {
+            self.tenantId = value
+        }
+    }
+}
+
+public class OperateCallCenterForPartnerResponseBody : Tea.TeaModel {
+    public var data: String?
+
+    public var errorCode: String?
+
+    public var errorMsg: String?
+
+    public var requestId: String?
+
+    public var success: Bool?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.data != nil {
+            map["Data"] = self.data!
+        }
+        if self.errorCode != nil {
+            map["ErrorCode"] = self.errorCode!
+        }
+        if self.errorMsg != nil {
+            map["ErrorMsg"] = self.errorMsg!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.success != nil {
+            map["Success"] = self.success!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["Data"] as? String {
+            self.data = value
+        }
+        if let value = dict["ErrorCode"] as? String {
+            self.errorCode = value
+        }
+        if let value = dict["ErrorMsg"] as? String {
+            self.errorMsg = value
+        }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+        if let value = dict["Success"] as? Bool {
+            self.success = value
+        }
+    }
+}
+
+public class OperateCallCenterForPartnerResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: OperateCallCenterForPartnerResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = OperateCallCenterForPartnerResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
 public class OperateProduceForPartnerRequest : Tea.TeaModel {
     public var bizId: String?
 
@@ -5084,6 +5260,230 @@ public class QueryUserNeedAuthResponse : Tea.TeaModel {
         }
         if let value = dict["body"] as? [String: Any?] {
             var model = QueryUserNeedAuthResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
+public class RecordCallCenterEventForPartnerRequest : Tea.TeaModel {
+    public var bizId: String?
+
+    public var bizType: String?
+
+    public var callAction: String?
+
+    public var callee: String?
+
+    public var caller: String?
+
+    public var connId: String?
+
+    public var contactId: String?
+
+    public var jobId: String?
+
+    public var relatedId: Int64?
+
+    public var secretMobile: String?
+
+    public var skillType: Int32?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.bizId != nil {
+            map["BizId"] = self.bizId!
+        }
+        if self.bizType != nil {
+            map["BizType"] = self.bizType!
+        }
+        if self.callAction != nil {
+            map["CallAction"] = self.callAction!
+        }
+        if self.callee != nil {
+            map["Callee"] = self.callee!
+        }
+        if self.caller != nil {
+            map["Caller"] = self.caller!
+        }
+        if self.connId != nil {
+            map["ConnId"] = self.connId!
+        }
+        if self.contactId != nil {
+            map["ContactId"] = self.contactId!
+        }
+        if self.jobId != nil {
+            map["JobId"] = self.jobId!
+        }
+        if self.relatedId != nil {
+            map["RelatedId"] = self.relatedId!
+        }
+        if self.secretMobile != nil {
+            map["SecretMobile"] = self.secretMobile!
+        }
+        if self.skillType != nil {
+            map["SkillType"] = self.skillType!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["BizId"] as? String {
+            self.bizId = value
+        }
+        if let value = dict["BizType"] as? String {
+            self.bizType = value
+        }
+        if let value = dict["CallAction"] as? String {
+            self.callAction = value
+        }
+        if let value = dict["Callee"] as? String {
+            self.callee = value
+        }
+        if let value = dict["Caller"] as? String {
+            self.caller = value
+        }
+        if let value = dict["ConnId"] as? String {
+            self.connId = value
+        }
+        if let value = dict["ContactId"] as? String {
+            self.contactId = value
+        }
+        if let value = dict["JobId"] as? String {
+            self.jobId = value
+        }
+        if let value = dict["RelatedId"] as? Int64 {
+            self.relatedId = value
+        }
+        if let value = dict["SecretMobile"] as? String {
+            self.secretMobile = value
+        }
+        if let value = dict["SkillType"] as? Int32 {
+            self.skillType = value
+        }
+    }
+}
+
+public class RecordCallCenterEventForPartnerResponseBody : Tea.TeaModel {
+    public var data: Bool?
+
+    public var errorCode: String?
+
+    public var errorMsg: String?
+
+    public var requestId: String?
+
+    public var success: Bool?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.data != nil {
+            map["Data"] = self.data!
+        }
+        if self.errorCode != nil {
+            map["ErrorCode"] = self.errorCode!
+        }
+        if self.errorMsg != nil {
+            map["ErrorMsg"] = self.errorMsg!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.success != nil {
+            map["Success"] = self.success!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["Data"] as? Bool {
+            self.data = value
+        }
+        if let value = dict["ErrorCode"] as? String {
+            self.errorCode = value
+        }
+        if let value = dict["ErrorMsg"] as? String {
+            self.errorMsg = value
+        }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+        if let value = dict["Success"] as? Bool {
+            self.success = value
+        }
+    }
+}
+
+public class RecordCallCenterEventForPartnerResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: RecordCallCenterEventForPartnerResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = RecordCallCenterEventForPartnerResponseBody()
             model.fromMap(value)
             self.body = model
         }
