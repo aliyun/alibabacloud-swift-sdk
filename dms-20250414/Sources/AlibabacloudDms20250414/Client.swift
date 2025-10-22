@@ -970,6 +970,51 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getNotebookAndSubmitTaskWithOptions(_ request: GetNotebookAndSubmitTaskRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> GetNotebookAndSubmitTaskResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.workspaceId)) {
+            query["WorkspaceId"] = request.workspaceId ?? "";
+        }
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.params)) {
+            body["Params"] = request.params ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.path)) {
+            body["Path"] = request.path ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.retry)) {
+            body["Retry"] = request.retry!;
+        }
+        if (!TeaUtils.Client.isUnset(request.sessionId)) {
+            body["SessionId"] = request.sessionId ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query),
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "GetNotebookAndSubmitTask",
+            "version": "2025-04-14",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(GetNotebookAndSubmitTaskResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getNotebookAndSubmitTask(_ request: GetNotebookAndSubmitTaskRequest) async throws -> GetNotebookAndSubmitTaskResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await getNotebookAndSubmitTaskWithOptions(request as! GetNotebookAndSubmitTaskRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func listAirflowsWithOptions(_ request: ListAirflowsRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ListAirflowsResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
