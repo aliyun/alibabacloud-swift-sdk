@@ -2033,6 +2033,566 @@ public class DescribeInstancesResponse : Tea.TeaModel {
     }
 }
 
+public class DescribeNodeGroupsRequest : Tea.TeaModel {
+    public var clusterId: String?
+
+    public var pageNumber: Int32?
+
+    public var pageSize: Int32?
+
+    public var componentType: String?
+
+    public var instanceId: String?
+
+    public var nodeGroupIds: [String]?
+
+    public var nodeGroupName: String?
+
+    public var status: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.clusterId != nil {
+            map["ClusterId"] = self.clusterId!
+        }
+        if self.pageNumber != nil {
+            map["PageNumber"] = self.pageNumber!
+        }
+        if self.pageSize != nil {
+            map["PageSize"] = self.pageSize!
+        }
+        if self.componentType != nil {
+            map["componentType"] = self.componentType!
+        }
+        if self.instanceId != nil {
+            map["instanceId"] = self.instanceId!
+        }
+        if self.nodeGroupIds != nil {
+            map["nodeGroupIds"] = self.nodeGroupIds!
+        }
+        if self.nodeGroupName != nil {
+            map["nodeGroupName"] = self.nodeGroupName!
+        }
+        if self.status != nil {
+            map["status"] = self.status!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["ClusterId"] as? String {
+            self.clusterId = value
+        }
+        if let value = dict["PageNumber"] as? Int32 {
+            self.pageNumber = value
+        }
+        if let value = dict["PageSize"] as? Int32 {
+            self.pageSize = value
+        }
+        if let value = dict["componentType"] as? String {
+            self.componentType = value
+        }
+        if let value = dict["instanceId"] as? String {
+            self.instanceId = value
+        }
+        if let value = dict["nodeGroupIds"] as? [String] {
+            self.nodeGroupIds = value
+        }
+        if let value = dict["nodeGroupName"] as? String {
+            self.nodeGroupName = value
+        }
+        if let value = dict["status"] as? String {
+            self.status = value
+        }
+    }
+}
+
+public class DescribeNodeGroupsResponseBody : Tea.TeaModel {
+    public class Data : Tea.TeaModel {
+        public class NodeInfo : Tea.TeaModel {
+            public var nodeId: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.nodeId != nil {
+                    map["NodeId"] = self.nodeId!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["NodeId"] as? String {
+                    self.nodeId = value
+                }
+            }
+        }
+        public var accountStatus: String?
+
+        public var architecture: String?
+
+        public var beginTime: Int64?
+
+        public var billingInstanceId: String?
+
+        public var commodityCode: String?
+
+        public var componentType: String?
+
+        public var cu: Int32?
+
+        public var defaultGroup: Bool?
+
+        public var description_: String?
+
+        public var diskNumber: Int32?
+
+        public var elasticNodeNumber: Int32?
+
+        public var enablePublicNetwork: Bool?
+
+        public var endpoint: String?
+
+        public var expireTime: Int64?
+
+        public var httpPort: Int32?
+
+        public var instanceId: String?
+
+        public var localStorageInstanceType: String?
+
+        public var memoryCpuRatio: Int32?
+
+        public var nodeGroupId: String?
+
+        public var nodeGroupName: String?
+
+        public var nodeInfo: [DescribeNodeGroupsResponseBody.Data.NodeInfo]?
+
+        public var payType: String?
+
+        public var publicAddress: String?
+
+        public var regionId: String?
+
+        public var residentNodeNumber: Int32?
+
+        public var runningTime: Int64?
+
+        public var specType: String?
+
+        public var status: String?
+
+        public var storagePerformanceLevel: String?
+
+        public var storageSize: Int32?
+
+        public var targetElasticNodeNumber: Int32?
+
+        public var zoneId: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.accountStatus != nil {
+                map["AccountStatus"] = self.accountStatus!
+            }
+            if self.architecture != nil {
+                map["Architecture"] = self.architecture!
+            }
+            if self.beginTime != nil {
+                map["BeginTime"] = self.beginTime!
+            }
+            if self.billingInstanceId != nil {
+                map["BillingInstanceId"] = self.billingInstanceId!
+            }
+            if self.commodityCode != nil {
+                map["CommodityCode"] = self.commodityCode!
+            }
+            if self.componentType != nil {
+                map["ComponentType"] = self.componentType!
+            }
+            if self.cu != nil {
+                map["Cu"] = self.cu!
+            }
+            if self.defaultGroup != nil {
+                map["DefaultGroup"] = self.defaultGroup!
+            }
+            if self.description_ != nil {
+                map["Description"] = self.description_!
+            }
+            if self.diskNumber != nil {
+                map["DiskNumber"] = self.diskNumber!
+            }
+            if self.elasticNodeNumber != nil {
+                map["ElasticNodeNumber"] = self.elasticNodeNumber!
+            }
+            if self.enablePublicNetwork != nil {
+                map["EnablePublicNetwork"] = self.enablePublicNetwork!
+            }
+            if self.endpoint != nil {
+                map["Endpoint"] = self.endpoint!
+            }
+            if self.expireTime != nil {
+                map["ExpireTime"] = self.expireTime!
+            }
+            if self.httpPort != nil {
+                map["HttpPort"] = self.httpPort!
+            }
+            if self.instanceId != nil {
+                map["InstanceId"] = self.instanceId!
+            }
+            if self.localStorageInstanceType != nil {
+                map["LocalStorageInstanceType"] = self.localStorageInstanceType!
+            }
+            if self.memoryCpuRatio != nil {
+                map["MemoryCpuRatio"] = self.memoryCpuRatio!
+            }
+            if self.nodeGroupId != nil {
+                map["NodeGroupId"] = self.nodeGroupId!
+            }
+            if self.nodeGroupName != nil {
+                map["NodeGroupName"] = self.nodeGroupName!
+            }
+            if self.nodeInfo != nil {
+                var tmp : [Any] = []
+                for k in self.nodeInfo! {
+                    tmp.append(k.toMap())
+                }
+                map["NodeInfo"] = tmp
+            }
+            if self.payType != nil {
+                map["PayType"] = self.payType!
+            }
+            if self.publicAddress != nil {
+                map["PublicAddress"] = self.publicAddress!
+            }
+            if self.regionId != nil {
+                map["RegionId"] = self.regionId!
+            }
+            if self.residentNodeNumber != nil {
+                map["ResidentNodeNumber"] = self.residentNodeNumber!
+            }
+            if self.runningTime != nil {
+                map["RunningTime"] = self.runningTime!
+            }
+            if self.specType != nil {
+                map["SpecType"] = self.specType!
+            }
+            if self.status != nil {
+                map["Status"] = self.status!
+            }
+            if self.storagePerformanceLevel != nil {
+                map["StoragePerformanceLevel"] = self.storagePerformanceLevel!
+            }
+            if self.storageSize != nil {
+                map["StorageSize"] = self.storageSize!
+            }
+            if self.targetElasticNodeNumber != nil {
+                map["TargetElasticNodeNumber"] = self.targetElasticNodeNumber!
+            }
+            if self.zoneId != nil {
+                map["ZoneId"] = self.zoneId!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["AccountStatus"] as? String {
+                self.accountStatus = value
+            }
+            if let value = dict["Architecture"] as? String {
+                self.architecture = value
+            }
+            if let value = dict["BeginTime"] as? Int64 {
+                self.beginTime = value
+            }
+            if let value = dict["BillingInstanceId"] as? String {
+                self.billingInstanceId = value
+            }
+            if let value = dict["CommodityCode"] as? String {
+                self.commodityCode = value
+            }
+            if let value = dict["ComponentType"] as? String {
+                self.componentType = value
+            }
+            if let value = dict["Cu"] as? Int32 {
+                self.cu = value
+            }
+            if let value = dict["DefaultGroup"] as? Bool {
+                self.defaultGroup = value
+            }
+            if let value = dict["Description"] as? String {
+                self.description_ = value
+            }
+            if let value = dict["DiskNumber"] as? Int32 {
+                self.diskNumber = value
+            }
+            if let value = dict["ElasticNodeNumber"] as? Int32 {
+                self.elasticNodeNumber = value
+            }
+            if let value = dict["EnablePublicNetwork"] as? Bool {
+                self.enablePublicNetwork = value
+            }
+            if let value = dict["Endpoint"] as? String {
+                self.endpoint = value
+            }
+            if let value = dict["ExpireTime"] as? Int64 {
+                self.expireTime = value
+            }
+            if let value = dict["HttpPort"] as? Int32 {
+                self.httpPort = value
+            }
+            if let value = dict["InstanceId"] as? String {
+                self.instanceId = value
+            }
+            if let value = dict["LocalStorageInstanceType"] as? String {
+                self.localStorageInstanceType = value
+            }
+            if let value = dict["MemoryCpuRatio"] as? Int32 {
+                self.memoryCpuRatio = value
+            }
+            if let value = dict["NodeGroupId"] as? String {
+                self.nodeGroupId = value
+            }
+            if let value = dict["NodeGroupName"] as? String {
+                self.nodeGroupName = value
+            }
+            if let value = dict["NodeInfo"] as? [Any?] {
+                var tmp : [DescribeNodeGroupsResponseBody.Data.NodeInfo] = []
+                for v in value {
+                    if v != nil {
+                        var model = DescribeNodeGroupsResponseBody.Data.NodeInfo()
+                        if v != nil {
+                            model.fromMap(v as? [String: Any?])
+                        }
+                        tmp.append(model)
+                    }
+                }
+                self.nodeInfo = tmp
+            }
+            if let value = dict["PayType"] as? String {
+                self.payType = value
+            }
+            if let value = dict["PublicAddress"] as? String {
+                self.publicAddress = value
+            }
+            if let value = dict["RegionId"] as? String {
+                self.regionId = value
+            }
+            if let value = dict["ResidentNodeNumber"] as? Int32 {
+                self.residentNodeNumber = value
+            }
+            if let value = dict["RunningTime"] as? Int64 {
+                self.runningTime = value
+            }
+            if let value = dict["SpecType"] as? String {
+                self.specType = value
+            }
+            if let value = dict["Status"] as? String {
+                self.status = value
+            }
+            if let value = dict["StoragePerformanceLevel"] as? String {
+                self.storagePerformanceLevel = value
+            }
+            if let value = dict["StorageSize"] as? Int32 {
+                self.storageSize = value
+            }
+            if let value = dict["TargetElasticNodeNumber"] as? Int32 {
+                self.targetElasticNodeNumber = value
+            }
+            if let value = dict["ZoneId"] as? String {
+                self.zoneId = value
+            }
+        }
+    }
+    public var accessDeniedDetail: String?
+
+    public var data: [DescribeNodeGroupsResponseBody.Data]?
+
+    public var errCode: String?
+
+    public var errMessage: String?
+
+    public var httpStatusCode: Int32?
+
+    public var requestId: String?
+
+    public var success: Bool?
+
+    public var total: Int32?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.accessDeniedDetail != nil {
+            map["AccessDeniedDetail"] = self.accessDeniedDetail!
+        }
+        if self.data != nil {
+            var tmp : [Any] = []
+            for k in self.data! {
+                tmp.append(k.toMap())
+            }
+            map["Data"] = tmp
+        }
+        if self.errCode != nil {
+            map["ErrCode"] = self.errCode!
+        }
+        if self.errMessage != nil {
+            map["ErrMessage"] = self.errMessage!
+        }
+        if self.httpStatusCode != nil {
+            map["HttpStatusCode"] = self.httpStatusCode!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.success != nil {
+            map["Success"] = self.success!
+        }
+        if self.total != nil {
+            map["Total"] = self.total!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["AccessDeniedDetail"] as? String {
+            self.accessDeniedDetail = value
+        }
+        if let value = dict["Data"] as? [Any?] {
+            var tmp : [DescribeNodeGroupsResponseBody.Data] = []
+            for v in value {
+                if v != nil {
+                    var model = DescribeNodeGroupsResponseBody.Data()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.data = tmp
+        }
+        if let value = dict["ErrCode"] as? String {
+            self.errCode = value
+        }
+        if let value = dict["ErrMessage"] as? String {
+            self.errMessage = value
+        }
+        if let value = dict["HttpStatusCode"] as? Int32 {
+            self.httpStatusCode = value
+        }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+        if let value = dict["Success"] as? Bool {
+            self.success = value
+        }
+        if let value = dict["Total"] as? Int32 {
+            self.total = value
+        }
+    }
+}
+
+public class DescribeNodeGroupsResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: DescribeNodeGroupsResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = DescribeNodeGroupsResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
 public class ModifyCuRequest : Tea.TeaModel {
     public var fastMode: Bool?
 
