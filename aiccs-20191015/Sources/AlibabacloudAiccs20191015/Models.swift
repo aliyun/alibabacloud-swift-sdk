@@ -31515,6 +31515,8 @@ public class QueryAiCallDetailPageRequest : Tea.TeaModel {
 
     public var minConversationDuration: Int64?
 
+    public var outId: String?
+
     public var ownerId: Int64?
 
     public var pageNo: Int64?
@@ -31571,6 +31573,9 @@ public class QueryAiCallDetailPageRequest : Tea.TeaModel {
         if self.minConversationDuration != nil {
             map["MinConversationDuration"] = self.minConversationDuration!
         }
+        if self.outId != nil {
+            map["OutId"] = self.outId!
+        }
         if self.ownerId != nil {
             map["OwnerId"] = self.ownerId!
         }
@@ -31626,6 +31631,9 @@ public class QueryAiCallDetailPageRequest : Tea.TeaModel {
         }
         if let value = dict["MinConversationDuration"] as? Int64 {
             self.minConversationDuration = value
+        }
+        if let value = dict["OutId"] as? String {
+            self.outId = value
         }
         if let value = dict["OwnerId"] as? Int64 {
             self.ownerId = value
@@ -31686,6 +31694,8 @@ public class QueryAiCallDetailPageResponseBody : Tea.TeaModel {
 
             public var recordingFilePath: String?
 
+            public var status: Int64?
+
             public var taskId: String?
 
             public override init() {
@@ -31741,6 +31751,9 @@ public class QueryAiCallDetailPageResponseBody : Tea.TeaModel {
                 if self.recordingFilePath != nil {
                     map["RecordingFilePath"] = self.recordingFilePath!
                 }
+                if self.status != nil {
+                    map["Status"] = self.status!
+                }
                 if self.taskId != nil {
                     map["TaskId"] = self.taskId!
                 }
@@ -31787,6 +31800,9 @@ public class QueryAiCallDetailPageResponseBody : Tea.TeaModel {
                 }
                 if let value = dict["RecordingFilePath"] as? String {
                     self.recordingFilePath = value
+                }
+                if let value = dict["Status"] as? Int64 {
+                    self.status = value
                 }
                 if let value = dict["TaskId"] as? String {
                     self.taskId = value
@@ -33014,13 +33030,39 @@ public class QueryConversationDetailInfoResponseBody : Tea.TeaModel {
                 }
             }
         }
+        public var callId: String?
+
+        public var callResult: String?
+
+        public var calledPhone: String?
+
+        public var callerPhone: String?
+
         public var conversationRecord: String?
+
+        public var duration: Int64?
+
+        public var failedReason: String?
+
+        public var hangupDirection: String?
+
+        public var majorIntent: String?
+
+        public var outId: String?
 
         public var outputTags: [QueryConversationDetailInfoResponseBody.Data.OutputTags]?
 
         public var pickUpTime: Int64?
 
         public var recordingFileDownloadUrl: String?
+
+        public var releaseTime: Int64?
+
+        public var startCallTime: Int64?
+
+        public var statusCode: String?
+
+        public var statusMsg: String?
 
         public var variables: [QueryConversationDetailInfoResponseBody.Data.Variables]?
 
@@ -33038,8 +33080,35 @@ public class QueryConversationDetailInfoResponseBody : Tea.TeaModel {
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
+            if self.callId != nil {
+                map["CallId"] = self.callId!
+            }
+            if self.callResult != nil {
+                map["CallResult"] = self.callResult!
+            }
+            if self.calledPhone != nil {
+                map["CalledPhone"] = self.calledPhone!
+            }
+            if self.callerPhone != nil {
+                map["CallerPhone"] = self.callerPhone!
+            }
             if self.conversationRecord != nil {
                 map["ConversationRecord"] = self.conversationRecord!
+            }
+            if self.duration != nil {
+                map["Duration"] = self.duration!
+            }
+            if self.failedReason != nil {
+                map["FailedReason"] = self.failedReason!
+            }
+            if self.hangupDirection != nil {
+                map["HangupDirection"] = self.hangupDirection!
+            }
+            if self.majorIntent != nil {
+                map["MajorIntent"] = self.majorIntent!
+            }
+            if self.outId != nil {
+                map["OutId"] = self.outId!
             }
             if self.outputTags != nil {
                 var tmp : [Any] = []
@@ -33054,6 +33123,18 @@ public class QueryConversationDetailInfoResponseBody : Tea.TeaModel {
             if self.recordingFileDownloadUrl != nil {
                 map["RecordingFileDownloadUrl"] = self.recordingFileDownloadUrl!
             }
+            if self.releaseTime != nil {
+                map["ReleaseTime"] = self.releaseTime!
+            }
+            if self.startCallTime != nil {
+                map["StartCallTime"] = self.startCallTime!
+            }
+            if self.statusCode != nil {
+                map["StatusCode"] = self.statusCode!
+            }
+            if self.statusMsg != nil {
+                map["StatusMsg"] = self.statusMsg!
+            }
             if self.variables != nil {
                 var tmp : [Any] = []
                 for k in self.variables! {
@@ -33066,8 +33147,35 @@ public class QueryConversationDetailInfoResponseBody : Tea.TeaModel {
 
         public override func fromMap(_ dict: [String: Any?]?) -> Void {
             guard let dict else { return }
+            if let value = dict["CallId"] as? String {
+                self.callId = value
+            }
+            if let value = dict["CallResult"] as? String {
+                self.callResult = value
+            }
+            if let value = dict["CalledPhone"] as? String {
+                self.calledPhone = value
+            }
+            if let value = dict["CallerPhone"] as? String {
+                self.callerPhone = value
+            }
             if let value = dict["ConversationRecord"] as? String {
                 self.conversationRecord = value
+            }
+            if let value = dict["Duration"] as? Int64 {
+                self.duration = value
+            }
+            if let value = dict["FailedReason"] as? String {
+                self.failedReason = value
+            }
+            if let value = dict["HangupDirection"] as? String {
+                self.hangupDirection = value
+            }
+            if let value = dict["MajorIntent"] as? String {
+                self.majorIntent = value
+            }
+            if let value = dict["OutId"] as? String {
+                self.outId = value
             }
             if let value = dict["OutputTags"] as? [Any?] {
                 var tmp : [QueryConversationDetailInfoResponseBody.Data.OutputTags] = []
@@ -33087,6 +33195,18 @@ public class QueryConversationDetailInfoResponseBody : Tea.TeaModel {
             }
             if let value = dict["RecordingFileDownloadUrl"] as? String {
                 self.recordingFileDownloadUrl = value
+            }
+            if let value = dict["ReleaseTime"] as? Int64 {
+                self.releaseTime = value
+            }
+            if let value = dict["StartCallTime"] as? Int64 {
+                self.startCallTime = value
+            }
+            if let value = dict["StatusCode"] as? String {
+                self.statusCode = value
+            }
+            if let value = dict["StatusMsg"] as? String {
+                self.statusMsg = value
             }
             if let value = dict["Variables"] as? [Any?] {
                 var tmp : [QueryConversationDetailInfoResponseBody.Data.Variables] = []
