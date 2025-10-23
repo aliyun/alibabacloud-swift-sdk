@@ -846,6 +846,44 @@ public class GetInstanceDetailResponseBody : Tea.TeaModel {
                 }
             }
         }
+        public class VSwitches : Tea.TeaModel {
+            public var vswId: String?
+
+            public var zoneId: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.vswId != nil {
+                    map["VswId"] = self.vswId!
+                }
+                if self.zoneId != nil {
+                    map["ZoneId"] = self.zoneId!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["VswId"] as? String {
+                    self.vswId = value
+                }
+                if let value = dict["ZoneId"] as? String {
+                    self.zoneId = value
+                }
+            }
+        }
         public var aclId: String?
 
         public var beginTime: Int64?
@@ -867,6 +905,8 @@ public class GetInstanceDetailResponseBody : Tea.TeaModel {
         public var instanceStatus: String?
 
         public var measureConfig: GetInstanceDetailResponseBody.Data.MeasureConfig?
+
+        public var multiZoneMode: String?
 
         public var nodeType: String?
 
@@ -891,6 +931,8 @@ public class GetInstanceDetailResponseBody : Tea.TeaModel {
         public var templateVersion: String?
 
         public var userConfig: String?
+
+        public var vSwitches: [GetInstanceDetailResponseBody.Data.VSwitches]?
 
         public var version: String?
 
@@ -949,6 +991,9 @@ public class GetInstanceDetailResponseBody : Tea.TeaModel {
             if self.measureConfig != nil {
                 map["MeasureConfig"] = self.measureConfig?.toMap()
             }
+            if self.multiZoneMode != nil {
+                map["MultiZoneMode"] = self.multiZoneMode!
+            }
             if self.nodeType != nil {
                 map["NodeType"] = self.nodeType!
             }
@@ -988,6 +1033,13 @@ public class GetInstanceDetailResponseBody : Tea.TeaModel {
             }
             if self.userConfig != nil {
                 map["UserConfig"] = self.userConfig!
+            }
+            if self.vSwitches != nil {
+                var tmp : [Any] = []
+                for k in self.vSwitches! {
+                    tmp.append(k.toMap())
+                }
+                map["VSwitches"] = tmp
             }
             if self.version != nil {
                 map["Version"] = self.version!
@@ -1043,6 +1095,9 @@ public class GetInstanceDetailResponseBody : Tea.TeaModel {
                 model.fromMap(value)
                 self.measureConfig = model
             }
+            if let value = dict["MultiZoneMode"] as? String {
+                self.multiZoneMode = value
+            }
             if let value = dict["NodeType"] as? String {
                 self.nodeType = value
             }
@@ -1088,6 +1143,19 @@ public class GetInstanceDetailResponseBody : Tea.TeaModel {
             }
             if let value = dict["UserConfig"] as? String {
                 self.userConfig = value
+            }
+            if let value = dict["VSwitches"] as? [Any?] {
+                var tmp : [GetInstanceDetailResponseBody.Data.VSwitches] = []
+                for v in value {
+                    if v != nil {
+                        var model = GetInstanceDetailResponseBody.Data.VSwitches()
+                        if v != nil {
+                            model.fromMap(v as? [String: Any?])
+                        }
+                        tmp.append(model)
+                    }
+                }
+                self.vSwitches = tmp
             }
             if let value = dict["Version"] as? String {
                 self.version = value
