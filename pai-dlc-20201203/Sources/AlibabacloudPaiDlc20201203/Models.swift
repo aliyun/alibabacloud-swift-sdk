@@ -234,6 +234,10 @@ public class AssumeUserInfo : Tea.TeaModel {
 }
 
 public class AutoScalingSpec : Tea.TeaModel {
+    public var maxReplicas: Int32?
+
+    public var minReplicas: Int32?
+
     public var scalingStrategy: String?
 
     public override init() {
@@ -250,6 +254,12 @@ public class AutoScalingSpec : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.maxReplicas != nil {
+            map["MaxReplicas"] = self.maxReplicas!
+        }
+        if self.minReplicas != nil {
+            map["MinReplicas"] = self.minReplicas!
+        }
         if self.scalingStrategy != nil {
             map["ScalingStrategy"] = self.scalingStrategy!
         }
@@ -258,6 +268,12 @@ public class AutoScalingSpec : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["MaxReplicas"] as? Int32 {
+            self.maxReplicas = value
+        }
+        if let value = dict["MinReplicas"] as? Int32 {
+            self.minReplicas = value
+        }
         if let value = dict["ScalingStrategy"] as? String {
             self.scalingStrategy = value
         }
@@ -2311,6 +2327,8 @@ public class JobItem : Tea.TeaModel {
 
     public var jobMaxRunningTimeMinutes: Int64?
 
+    public var jobReplicaStatuses: JobReplicaStatus?
+
     public var jobSpecs: [JobSpec]?
 
     public var jobType: String?
@@ -2392,6 +2410,7 @@ public class JobItem : Tea.TeaModel {
         try self.codeSource?.validate()
         try self.credentialConfig?.validate()
         try self.elasticSpec?.validate()
+        try self.jobReplicaStatuses?.validate()
         try self.settings?.validate()
         try self.userVpc?.validate()
     }
@@ -2467,6 +2486,9 @@ public class JobItem : Tea.TeaModel {
         }
         if self.jobMaxRunningTimeMinutes != nil {
             map["JobMaxRunningTimeMinutes"] = self.jobMaxRunningTimeMinutes!
+        }
+        if self.jobReplicaStatuses != nil {
+            map["JobReplicaStatuses"] = self.jobReplicaStatuses?.toMap()
         }
         if self.jobSpecs != nil {
             var tmp : [Any] = []
@@ -2669,6 +2691,11 @@ public class JobItem : Tea.TeaModel {
         if let value = dict["JobMaxRunningTimeMinutes"] as? Int64 {
             self.jobMaxRunningTimeMinutes = value
         }
+        if let value = dict["JobReplicaStatuses"] as? [String: Any?] {
+            var model = JobReplicaStatus()
+            model.fromMap(value)
+            self.jobReplicaStatuses = model
+        }
         if let value = dict["JobSpecs"] as? [Any?] {
             var tmp : [JobSpec] = []
             for v in value {
@@ -2804,6 +2831,45 @@ public class JobItem : Tea.TeaModel {
         }
         if let value = dict["WorkspaceName"] as? String {
             self.workspaceName = value
+        }
+    }
+}
+
+public class JobReplicaStatus : Tea.TeaModel {
+    public var active: Int32?
+
+    public var type: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.active != nil {
+            map["Active"] = self.active!
+        }
+        if self.type != nil {
+            map["Type"] = self.type!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["Active"] as? Int32 {
+            self.active = value
+        }
+        if let value = dict["Type"] as? String {
+            self.type = value
         }
     }
 }
@@ -7315,6 +7381,8 @@ public class GetJobResponseBody : Tea.TeaModel {
 
     public var jobId: String?
 
+    public var jobReplicaStatuses: [JobReplicaStatus]?
+
     public var jobSpecs: [JobSpec]?
 
     public var jobType: String?
@@ -7439,6 +7507,13 @@ public class GetJobResponseBody : Tea.TeaModel {
         }
         if self.jobId != nil {
             map["JobId"] = self.jobId!
+        }
+        if self.jobReplicaStatuses != nil {
+            var tmp : [Any] = []
+            for k in self.jobReplicaStatuses! {
+                tmp.append(k.toMap())
+            }
+            map["JobReplicaStatuses"] = tmp
         }
         if self.jobSpecs != nil {
             var tmp : [Any] = []
@@ -7602,6 +7677,19 @@ public class GetJobResponseBody : Tea.TeaModel {
         }
         if let value = dict["JobId"] as? String {
             self.jobId = value
+        }
+        if let value = dict["JobReplicaStatuses"] as? [Any?] {
+            var tmp : [JobReplicaStatus] = []
+            for v in value {
+                if v != nil {
+                    var model = JobReplicaStatus()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.jobReplicaStatuses = tmp
         }
         if let value = dict["JobSpecs"] as? [Any?] {
             var tmp : [JobSpec] = []
