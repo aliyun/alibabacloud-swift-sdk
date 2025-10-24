@@ -17,7 +17,7 @@ English | [简体中文](README-CN.md)
 To integrate `AlibabacloudMts20140618` into your Xcode project using [Carthage](https://github.com/Carthage/Carthage), specify it in your `Cartfile`:
 
 ```ogdl
-github "alibabacloud-sdk-swift/mts-20140618" "4.0.0"
+github "alibabacloud-sdk-swift/mts-20140618" "4.0.1"
 ```
 
 ### Swift Package Manager
@@ -26,7 +26,7 @@ To integrate `AlibabacloudMts20140618` into your Xcode project using [Swift Pack
 
 ```swift
 dependencies: [
-    .package(url: "https://github.com/alibabacloud-sdk-swift/mts-20140618.git", from: "4.0.0")
+    .package(url: "https://github.com/alibabacloud-sdk-swift/mts-20140618.git", from: "4.0.1")
 ]
 ```
 

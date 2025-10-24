@@ -3853,6 +3853,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.async)) {
             query["Async"] = request.async!;
         }
+        if (!TeaUtils.Client.isUnset(request.config)) {
+            query["Config"] = request.config ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.input)) {
             query["Input"] = request.input ?? "";
         }
