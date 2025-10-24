@@ -9544,6 +9544,46 @@ public class EnrichResponseBody : Tea.TeaModel {
                 }
             }
             public class SolutionAttribute : Tea.TeaModel {
+                public class IssueTimeInfo : Tea.TeaModel {
+                    public var issueTicketType: Int32?
+
+                    public var issueTimeLimit: Int32?
+
+                    public override init() {
+                        super.init()
+                    }
+
+                    public init(_ dict: [String: Any]) {
+                        super.init()
+                        self.fromMap(dict)
+                    }
+
+                    public override func validate() throws -> Void {
+                    }
+
+                    public override func toMap() -> [String : Any] {
+                        var map = super.toMap()
+                        if self.issueTicketType != nil {
+                            map["issue_ticket_type"] = self.issueTicketType!
+                        }
+                        if self.issueTimeLimit != nil {
+                            map["issue_time_limit"] = self.issueTimeLimit!
+                        }
+                        return map
+                    }
+
+                    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                        guard let dict else { return }
+                        if let value = dict["issue_ticket_type"] as? Int32 {
+                            self.issueTicketType = value
+                        }
+                        if let value = dict["issue_time_limit"] as? Int32 {
+                            self.issueTimeLimit = value
+                        }
+                    }
+                }
+                public var issueTimeInfo: EnrichResponseBody.Data.SolutionList.SolutionAttribute.IssueTimeInfo?
+
                 public var supplySourceType: String?
 
                 public override init() {
@@ -9556,10 +9596,14 @@ public class EnrichResponseBody : Tea.TeaModel {
                 }
 
                 public override func validate() throws -> Void {
+                    try self.issueTimeInfo?.validate()
                 }
 
                 public override func toMap() -> [String : Any] {
                     var map = super.toMap()
+                    if self.issueTimeInfo != nil {
+                        map["issue_time_info"] = self.issueTimeInfo?.toMap()
+                    }
                     if self.supplySourceType != nil {
                         map["supply_source_type"] = self.supplySourceType!
                     }
@@ -9568,6 +9612,11 @@ public class EnrichResponseBody : Tea.TeaModel {
 
                 public override func fromMap(_ dict: [String: Any?]?) -> Void {
                     guard let dict else { return }
+                    if let value = dict["issue_time_info"] as? [String: Any?] {
+                        var model = EnrichResponseBody.Data.SolutionList.SolutionAttribute.IssueTimeInfo()
+                        model.fromMap(value)
+                        self.issueTimeInfo = model
+                    }
                     if let value = dict["supply_source_type"] as? String {
                         self.supplySourceType = value
                     }
@@ -9586,10 +9635,6 @@ public class EnrichResponseBody : Tea.TeaModel {
             public var infantTax: Double?
 
             public var journeyList: [EnrichResponseBody.Data.SolutionList.JourneyList]?
-
-            public var productTypeDescription: String?
-
-            public var refundTicketCouponDescription: String?
 
             public var segmentBaggageCheckInInfoList: [EnrichResponseBody.Data.SolutionList.SegmentBaggageCheckInInfoList]?
 
@@ -9640,12 +9685,6 @@ public class EnrichResponseBody : Tea.TeaModel {
                         tmp.append(k.toMap())
                     }
                     map["journey_list"] = tmp
-                }
-                if self.productTypeDescription != nil {
-                    map["product_type_description"] = self.productTypeDescription!
-                }
-                if self.refundTicketCouponDescription != nil {
-                    map["refund_ticket_coupon_description"] = self.refundTicketCouponDescription!
                 }
                 if self.segmentBaggageCheckInInfoList != nil {
                     var tmp : [Any] = []
@@ -9709,12 +9748,6 @@ public class EnrichResponseBody : Tea.TeaModel {
                         }
                     }
                     self.journeyList = tmp
-                }
-                if let value = dict["product_type_description"] as? String {
-                    self.productTypeDescription = value
-                }
-                if let value = dict["refund_ticket_coupon_description"] as? String {
-                    self.refundTicketCouponDescription = value
                 }
                 if let value = dict["segment_baggage_check_in_info_list"] as? [Any?] {
                     var tmp : [EnrichResponseBody.Data.SolutionList.SegmentBaggageCheckInInfoList] = []
@@ -12505,6 +12538,85 @@ public class OrderDetailResponseBody : Tea.TeaModel {
                     }
                 }
             }
+            public class SolutionAttribute : Tea.TeaModel {
+                public class IssueTimeInfo : Tea.TeaModel {
+                    public var issueTicketType: Int32?
+
+                    public var issueTimeLimit: Int32?
+
+                    public override init() {
+                        super.init()
+                    }
+
+                    public init(_ dict: [String: Any]) {
+                        super.init()
+                        self.fromMap(dict)
+                    }
+
+                    public override func validate() throws -> Void {
+                    }
+
+                    public override func toMap() -> [String : Any] {
+                        var map = super.toMap()
+                        if self.issueTicketType != nil {
+                            map["issue_ticket_type"] = self.issueTicketType!
+                        }
+                        if self.issueTimeLimit != nil {
+                            map["issue_time_limit"] = self.issueTimeLimit!
+                        }
+                        return map
+                    }
+
+                    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                        guard let dict else { return }
+                        if let value = dict["issue_ticket_type"] as? Int32 {
+                            self.issueTicketType = value
+                        }
+                        if let value = dict["issue_time_limit"] as? Int32 {
+                            self.issueTimeLimit = value
+                        }
+                    }
+                }
+                public var issueTimeInfo: OrderDetailResponseBody.Data.Solution.SolutionAttribute.IssueTimeInfo?
+
+                public var supplySourceType: String?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                    try self.issueTimeInfo?.validate()
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.issueTimeInfo != nil {
+                        map["issue_time_info"] = self.issueTimeInfo?.toMap()
+                    }
+                    if self.supplySourceType != nil {
+                        map["supply_source_type"] = self.supplySourceType!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                    guard let dict else { return }
+                    if let value = dict["issue_time_info"] as? [String: Any?] {
+                        var model = OrderDetailResponseBody.Data.Solution.SolutionAttribute.IssueTimeInfo()
+                        model.fromMap(value)
+                        self.issueTimeInfo = model
+                    }
+                    if let value = dict["supply_source_type"] as? String {
+                        self.supplySourceType = value
+                    }
+                }
+            }
             public var adultPrice: Double?
 
             public var adultTax: Double?
@@ -12529,6 +12641,8 @@ public class OrderDetailResponseBody : Tea.TeaModel {
 
             public var segmentRefundChangeRuleMappingList: [OrderDetailResponseBody.Data.Solution.SegmentRefundChangeRuleMappingList]?
 
+            public var solutionAttribute: OrderDetailResponseBody.Data.Solution.SolutionAttribute?
+
             public var solutionId: String?
 
             public override init() {
@@ -12541,6 +12655,7 @@ public class OrderDetailResponseBody : Tea.TeaModel {
             }
 
             public override func validate() throws -> Void {
+                try self.solutionAttribute?.validate()
             }
 
             public override func toMap() -> [String : Any] {
@@ -12596,6 +12711,9 @@ public class OrderDetailResponseBody : Tea.TeaModel {
                         tmp.append(k.toMap())
                     }
                     map["segment_refund_change_rule_mapping_list"] = tmp
+                }
+                if self.solutionAttribute != nil {
+                    map["solution_attribute"] = self.solutionAttribute?.toMap()
                 }
                 if self.solutionId != nil {
                     map["solution_id"] = self.solutionId!
@@ -12680,6 +12798,11 @@ public class OrderDetailResponseBody : Tea.TeaModel {
                         }
                     }
                     self.segmentRefundChangeRuleMappingList = tmp
+                }
+                if let value = dict["solution_attribute"] as? [String: Any?] {
+                    var model = OrderDetailResponseBody.Data.Solution.SolutionAttribute()
+                    model.fromMap(value)
+                    self.solutionAttribute = model
                 }
                 if let value = dict["solution_id"] as? String {
                     self.solutionId = value
@@ -14302,6 +14425,85 @@ public class PricingResponseBody : Tea.TeaModel {
                     }
                 }
             }
+            public class SolutionAttribute : Tea.TeaModel {
+                public class IssueTimeInfo : Tea.TeaModel {
+                    public var issueTicketType: Int32?
+
+                    public var issueTimeLimit: Int32?
+
+                    public override init() {
+                        super.init()
+                    }
+
+                    public init(_ dict: [String: Any]) {
+                        super.init()
+                        self.fromMap(dict)
+                    }
+
+                    public override func validate() throws -> Void {
+                    }
+
+                    public override func toMap() -> [String : Any] {
+                        var map = super.toMap()
+                        if self.issueTicketType != nil {
+                            map["issue_ticket_type"] = self.issueTicketType!
+                        }
+                        if self.issueTimeLimit != nil {
+                            map["issue_time_limit"] = self.issueTimeLimit!
+                        }
+                        return map
+                    }
+
+                    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                        guard let dict else { return }
+                        if let value = dict["issue_ticket_type"] as? Int32 {
+                            self.issueTicketType = value
+                        }
+                        if let value = dict["issue_time_limit"] as? Int32 {
+                            self.issueTimeLimit = value
+                        }
+                    }
+                }
+                public var issueTimeInfo: PricingResponseBody.Data.Solution.SolutionAttribute.IssueTimeInfo?
+
+                public var supplySourceType: String?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                    try self.issueTimeInfo?.validate()
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.issueTimeInfo != nil {
+                        map["issue_time_info"] = self.issueTimeInfo?.toMap()
+                    }
+                    if self.supplySourceType != nil {
+                        map["supply_source_type"] = self.supplySourceType!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                    guard let dict else { return }
+                    if let value = dict["issue_time_info"] as? [String: Any?] {
+                        var model = PricingResponseBody.Data.Solution.SolutionAttribute.IssueTimeInfo()
+                        model.fromMap(value)
+                        self.issueTimeInfo = model
+                    }
+                    if let value = dict["supply_source_type"] as? String {
+                        self.supplySourceType = value
+                    }
+                }
+            }
             public var adultPrice: Double?
 
             public var adultTax: Double?
@@ -14326,6 +14528,8 @@ public class PricingResponseBody : Tea.TeaModel {
 
             public var segmentRefundChangeRuleMappingList: [PricingResponseBody.Data.Solution.SegmentRefundChangeRuleMappingList]?
 
+            public var solutionAttribute: PricingResponseBody.Data.Solution.SolutionAttribute?
+
             public var solutionId: String?
 
             public override init() {
@@ -14338,6 +14542,7 @@ public class PricingResponseBody : Tea.TeaModel {
             }
 
             public override func validate() throws -> Void {
+                try self.solutionAttribute?.validate()
             }
 
             public override func toMap() -> [String : Any] {
@@ -14393,6 +14598,9 @@ public class PricingResponseBody : Tea.TeaModel {
                         tmp.append(k.toMap())
                     }
                     map["segment_refund_change_rule_mapping_list"] = tmp
+                }
+                if self.solutionAttribute != nil {
+                    map["solution_attribute"] = self.solutionAttribute?.toMap()
                 }
                 if self.solutionId != nil {
                     map["solution_id"] = self.solutionId!
@@ -14477,6 +14685,11 @@ public class PricingResponseBody : Tea.TeaModel {
                         }
                     }
                     self.segmentRefundChangeRuleMappingList = tmp
+                }
+                if let value = dict["solution_attribute"] as? [String: Any?] {
+                    var model = PricingResponseBody.Data.Solution.SolutionAttribute()
+                    model.fromMap(value)
+                    self.solutionAttribute = model
                 }
                 if let value = dict["solution_id"] as? String {
                     self.solutionId = value
@@ -17454,6 +17667,46 @@ public class SearchResponseBody : Tea.TeaModel {
                 }
             }
             public class SolutionAttribute : Tea.TeaModel {
+                public class IssueTimeInfo : Tea.TeaModel {
+                    public var issueTicketType: Int32?
+
+                    public var issueTimeLimit: Int32?
+
+                    public override init() {
+                        super.init()
+                    }
+
+                    public init(_ dict: [String: Any]) {
+                        super.init()
+                        self.fromMap(dict)
+                    }
+
+                    public override func validate() throws -> Void {
+                    }
+
+                    public override func toMap() -> [String : Any] {
+                        var map = super.toMap()
+                        if self.issueTicketType != nil {
+                            map["issue_ticket_type"] = self.issueTicketType!
+                        }
+                        if self.issueTimeLimit != nil {
+                            map["issue_time_limit"] = self.issueTimeLimit!
+                        }
+                        return map
+                    }
+
+                    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                        guard let dict else { return }
+                        if let value = dict["issue_ticket_type"] as? Int32 {
+                            self.issueTicketType = value
+                        }
+                        if let value = dict["issue_time_limit"] as? Int32 {
+                            self.issueTimeLimit = value
+                        }
+                    }
+                }
+                public var issueTimeInfo: SearchResponseBody.Data.SolutionList.SolutionAttribute.IssueTimeInfo?
+
                 public var supplySourceType: String?
 
                 public override init() {
@@ -17466,10 +17719,14 @@ public class SearchResponseBody : Tea.TeaModel {
                 }
 
                 public override func validate() throws -> Void {
+                    try self.issueTimeInfo?.validate()
                 }
 
                 public override func toMap() -> [String : Any] {
                     var map = super.toMap()
+                    if self.issueTimeInfo != nil {
+                        map["issue_time_info"] = self.issueTimeInfo?.toMap()
+                    }
                     if self.supplySourceType != nil {
                         map["supply_source_type"] = self.supplySourceType!
                     }
@@ -17478,6 +17735,11 @@ public class SearchResponseBody : Tea.TeaModel {
 
                 public override func fromMap(_ dict: [String: Any?]?) -> Void {
                     guard let dict else { return }
+                    if let value = dict["issue_time_info"] as? [String: Any?] {
+                        var model = SearchResponseBody.Data.SolutionList.SolutionAttribute.IssueTimeInfo()
+                        model.fromMap(value)
+                        self.issueTimeInfo = model
+                    }
                     if let value = dict["supply_source_type"] as? String {
                         self.supplySourceType = value
                     }
@@ -17496,10 +17758,6 @@ public class SearchResponseBody : Tea.TeaModel {
             public var infantTax: Double?
 
             public var journeyList: [SearchResponseBody.Data.SolutionList.JourneyList]?
-
-            public var productTypeDescription: String?
-
-            public var refundTicketCouponDescription: String?
 
             public var segmentBaggageCheckInInfoList: [SearchResponseBody.Data.SolutionList.SegmentBaggageCheckInInfoList]?
 
@@ -17550,12 +17808,6 @@ public class SearchResponseBody : Tea.TeaModel {
                         tmp.append(k.toMap())
                     }
                     map["journey_list"] = tmp
-                }
-                if self.productTypeDescription != nil {
-                    map["product_type_description"] = self.productTypeDescription!
-                }
-                if self.refundTicketCouponDescription != nil {
-                    map["refund_ticket_coupon_description"] = self.refundTicketCouponDescription!
                 }
                 if self.segmentBaggageCheckInInfoList != nil {
                     var tmp : [Any] = []
@@ -17619,12 +17871,6 @@ public class SearchResponseBody : Tea.TeaModel {
                         }
                     }
                     self.journeyList = tmp
-                }
-                if let value = dict["product_type_description"] as? String {
-                    self.productTypeDescription = value
-                }
-                if let value = dict["refund_ticket_coupon_description"] as? String {
-                    self.refundTicketCouponDescription = value
                 }
                 if let value = dict["segment_baggage_check_in_info_list"] as? [Any?] {
                     var tmp : [SearchResponseBody.Data.SolutionList.SegmentBaggageCheckInInfoList] = []
