@@ -17831,6 +17831,8 @@ public class CreateIngressRequest : Tea.TeaModel {
 
     public var description_: String?
 
+    public var enableGzip: Bool?
+
     public var enableXForwardedFor: Bool?
 
     public var enableXForwardedForClientSrcPort: Bool?
@@ -17894,6 +17896,9 @@ public class CreateIngressRequest : Tea.TeaModel {
         }
         if self.description_ != nil {
             map["Description"] = self.description_!
+        }
+        if self.enableGzip != nil {
+            map["EnableGzip"] = self.enableGzip!
         }
         if self.enableXForwardedFor != nil {
             map["EnableXForwardedFor"] = self.enableXForwardedFor!
@@ -17965,6 +17970,9 @@ public class CreateIngressRequest : Tea.TeaModel {
         }
         if let value = dict["Description"] as? String {
             self.description_ = value
+        }
+        if let value = dict["EnableGzip"] as? Bool {
+            self.enableGzip = value
         }
         if let value = dict["EnableXForwardedFor"] as? Bool {
             self.enableXForwardedFor = value
@@ -22824,6 +22832,10 @@ public class DeployApplicationRequest : Tea.TeaModel {
 
     public var liveness: String?
 
+    public var maxSurgeInstanceRatio: Int32?
+
+    public var maxSurgeInstances: Int32?
+
     public var memory: Int32?
 
     public var microRegistration: String?
@@ -23032,6 +23044,12 @@ public class DeployApplicationRequest : Tea.TeaModel {
         }
         if self.liveness != nil {
             map["Liveness"] = self.liveness!
+        }
+        if self.maxSurgeInstanceRatio != nil {
+            map["MaxSurgeInstanceRatio"] = self.maxSurgeInstanceRatio!
+        }
+        if self.maxSurgeInstances != nil {
+            map["MaxSurgeInstances"] = self.maxSurgeInstances!
         }
         if self.memory != nil {
             map["Memory"] = self.memory!
@@ -23286,6 +23304,12 @@ public class DeployApplicationRequest : Tea.TeaModel {
         if let value = dict["Liveness"] as? String {
             self.liveness = value
         }
+        if let value = dict["MaxSurgeInstanceRatio"] as? Int32 {
+            self.maxSurgeInstanceRatio = value
+        }
+        if let value = dict["MaxSurgeInstances"] as? Int32 {
+            self.maxSurgeInstances = value
+        }
         if let value = dict["Memory"] as? Int32 {
             self.memory = value
         }
@@ -23499,6 +23523,10 @@ public class DeployApplicationShrinkRequest : Tea.TeaModel {
 
     public var liveness: String?
 
+    public var maxSurgeInstanceRatio: Int32?
+
+    public var maxSurgeInstances: Int32?
+
     public var memory: Int32?
 
     public var microRegistration: String?
@@ -23703,6 +23731,12 @@ public class DeployApplicationShrinkRequest : Tea.TeaModel {
         }
         if self.liveness != nil {
             map["Liveness"] = self.liveness!
+        }
+        if self.maxSurgeInstanceRatio != nil {
+            map["MaxSurgeInstanceRatio"] = self.maxSurgeInstanceRatio!
+        }
+        if self.maxSurgeInstances != nil {
+            map["MaxSurgeInstances"] = self.maxSurgeInstances!
         }
         if self.memory != nil {
             map["Memory"] = self.memory!
@@ -23942,6 +23976,12 @@ public class DeployApplicationShrinkRequest : Tea.TeaModel {
         }
         if let value = dict["Liveness"] as? String {
             self.liveness = value
+        }
+        if let value = dict["MaxSurgeInstanceRatio"] as? Int32 {
+            self.maxSurgeInstanceRatio = value
+        }
+        if let value = dict["MaxSurgeInstances"] as? Int32 {
+            self.maxSurgeInstances = value
         }
         if let value = dict["Memory"] as? Int32 {
             self.memory = value
@@ -25581,6 +25621,10 @@ public class DescribeApplicationConfigResponseBody : Tea.TeaModel {
 
         public var liveness: String?
 
+        public var maxSurgeInstanceRatio: Int32?
+
+        public var maxSurgeInstances: Int32?
+
         public var memory: Int32?
 
         public var microRegistration: String?
@@ -25837,6 +25881,12 @@ public class DescribeApplicationConfigResponseBody : Tea.TeaModel {
             }
             if self.liveness != nil {
                 map["Liveness"] = self.liveness!
+            }
+            if self.maxSurgeInstanceRatio != nil {
+                map["MaxSurgeInstanceRatio"] = self.maxSurgeInstanceRatio!
+            }
+            if self.maxSurgeInstances != nil {
+                map["MaxSurgeInstances"] = self.maxSurgeInstances!
             }
             if self.memory != nil {
                 map["Memory"] = self.memory!
@@ -26174,6 +26224,12 @@ public class DescribeApplicationConfigResponseBody : Tea.TeaModel {
             }
             if let value = dict["Liveness"] as? String {
                 self.liveness = value
+            }
+            if let value = dict["MaxSurgeInstanceRatio"] as? Int32 {
+                self.maxSurgeInstanceRatio = value
+            }
+            if let value = dict["MaxSurgeInstances"] as? Int32 {
+                self.maxSurgeInstances = value
             }
             if let value = dict["Memory"] as? Int32 {
                 self.memory = value
@@ -33785,6 +33841,8 @@ public class DescribeIngressResponseBody : Tea.TeaModel {
 
         public var description_: String?
 
+        public var enableGzip: Bool?
+
         public var enableXForwardedFor: Bool?
 
         public var enableXForwardedForClientSrcPort: Bool?
@@ -33852,6 +33910,9 @@ public class DescribeIngressResponseBody : Tea.TeaModel {
             }
             if self.description_ != nil {
                 map["Description"] = self.description_!
+            }
+            if self.enableGzip != nil {
+                map["EnableGzip"] = self.enableGzip!
             }
             if self.enableXForwardedFor != nil {
                 map["EnableXForwardedFor"] = self.enableXForwardedFor!
@@ -33934,6 +33995,9 @@ public class DescribeIngressResponseBody : Tea.TeaModel {
             }
             if let value = dict["Description"] as? String {
                 self.description_ = value
+            }
+            if let value = dict["EnableGzip"] as? Bool {
+                self.enableGzip = value
             }
             if let value = dict["EnableXForwardedFor"] as? Bool {
                 self.enableXForwardedFor = value
@@ -56921,6 +56985,8 @@ public class UpdateIngressRequest : Tea.TeaModel {
 
     public var description_: String?
 
+    public var enableGzip: Bool?
+
     public var enableXForwardedFor: Bool?
 
     public var enableXForwardedForClientSrcPort: Bool?
@@ -56975,6 +57041,9 @@ public class UpdateIngressRequest : Tea.TeaModel {
         }
         if self.description_ != nil {
             map["Description"] = self.description_!
+        }
+        if self.enableGzip != nil {
+            map["EnableGzip"] = self.enableGzip!
         }
         if self.enableXForwardedFor != nil {
             map["EnableXForwardedFor"] = self.enableXForwardedFor!
@@ -57034,6 +57103,9 @@ public class UpdateIngressRequest : Tea.TeaModel {
         }
         if let value = dict["Description"] as? String {
             self.description_ = value
+        }
+        if let value = dict["EnableGzip"] as? Bool {
+            self.enableGzip = value
         }
         if let value = dict["EnableXForwardedFor"] as? Bool {
             self.enableXForwardedFor = value
