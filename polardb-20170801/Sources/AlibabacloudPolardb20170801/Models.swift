@@ -24184,6 +24184,8 @@ public class DescribeDBClusterAttributeResponseBody : Tea.TeaModel {
 
     public var SQLSize: Int64?
 
+    public var searchClusterStatus: String?
+
     public var searchCompressStorageUsed: Int64?
 
     public var searchStorageUsed: Int64?
@@ -24387,6 +24389,9 @@ public class DescribeDBClusterAttributeResponseBody : Tea.TeaModel {
         }
         if self.SQLSize != nil {
             map["SQLSize"] = self.SQLSize!
+        }
+        if self.searchClusterStatus != nil {
+            map["SearchClusterStatus"] = self.searchClusterStatus!
         }
         if self.searchCompressStorageUsed != nil {
             map["SearchCompressStorageUsed"] = self.searchCompressStorageUsed!
@@ -24610,6 +24615,9 @@ public class DescribeDBClusterAttributeResponseBody : Tea.TeaModel {
         }
         if let value = dict["SQLSize"] as? Int64 {
             self.SQLSize = value
+        }
+        if let value = dict["SearchClusterStatus"] as? String {
+            self.searchClusterStatus = value
         }
         if let value = dict["SearchCompressStorageUsed"] as? Int64 {
             self.searchCompressStorageUsed = value
