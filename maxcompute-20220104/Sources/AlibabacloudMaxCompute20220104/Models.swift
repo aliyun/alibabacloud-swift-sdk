@@ -751,6 +751,10 @@ public class CreateMmsJobRequest : Tea.TeaModel {
 
     public var dstSchemaName: String?
 
+    public var enableDataMigration: Bool?
+
+    public var enableSchemaMigration: Bool?
+
     public var enableVerification: Bool?
 
     public var eta: String?
@@ -807,6 +811,12 @@ public class CreateMmsJobRequest : Tea.TeaModel {
         }
         if self.dstSchemaName != nil {
             map["dstSchemaName"] = self.dstSchemaName!
+        }
+        if self.enableDataMigration != nil {
+            map["enableDataMigration"] = self.enableDataMigration!
+        }
+        if self.enableSchemaMigration != nil {
+            map["enableSchemaMigration"] = self.enableSchemaMigration!
         }
         if self.enableVerification != nil {
             map["enableVerification"] = self.enableVerification!
@@ -872,6 +882,12 @@ public class CreateMmsJobRequest : Tea.TeaModel {
         }
         if let value = dict["dstSchemaName"] as? String {
             self.dstSchemaName = value
+        }
+        if let value = dict["enableDataMigration"] as? Bool {
+            self.enableDataMigration = value
+        }
+        if let value = dict["enableSchemaMigration"] as? Bool {
+            self.enableSchemaMigration = value
         }
         if let value = dict["enableVerification"] as? Bool {
             self.enableVerification = value
@@ -4432,6 +4448,10 @@ public class GetMmsDataSourceResponseBody : Tea.TeaModel {
 
         public var dbNum: Int32?
 
+        public var dstProject: String?
+
+        public var dstProjects: [String]?
+
         public var errMsg: String?
 
         public var id: Int64?
@@ -4497,6 +4517,12 @@ public class GetMmsDataSourceResponseBody : Tea.TeaModel {
             }
             if self.dbNum != nil {
                 map["dbNum"] = self.dbNum!
+            }
+            if self.dstProject != nil {
+                map["dstProject"] = self.dstProject!
+            }
+            if self.dstProjects != nil {
+                map["dstProjects"] = self.dstProjects!
             }
             if self.errMsg != nil {
                 map["errMsg"] = self.errMsg!
@@ -4578,6 +4604,12 @@ public class GetMmsDataSourceResponseBody : Tea.TeaModel {
             }
             if let value = dict["dbNum"] as? Int32 {
                 self.dbNum = value
+            }
+            if let value = dict["dstProject"] as? String {
+                self.dstProject = value
+            }
+            if let value = dict["dstProjects"] as? [String] {
+                self.dstProjects = value
             }
             if let value = dict["errMsg"] as? String {
                 self.errMsg = value
@@ -4730,6 +4762,10 @@ public class GetMmsDbResponseBody : Tea.TeaModel {
     public class Data : Tea.TeaModel {
         public var description_: String?
 
+        public var dstName: String?
+
+        public var dstProjectName: String?
+
         public var extra: String?
 
         public var id: Int64?
@@ -4788,6 +4824,12 @@ public class GetMmsDbResponseBody : Tea.TeaModel {
             var map = super.toMap()
             if self.description_ != nil {
                 map["description"] = self.description_!
+            }
+            if self.dstName != nil {
+                map["dstName"] = self.dstName!
+            }
+            if self.dstProjectName != nil {
+                map["dstProjectName"] = self.dstProjectName!
             }
             if self.extra != nil {
                 map["extra"] = self.extra!
@@ -4859,6 +4901,12 @@ public class GetMmsDbResponseBody : Tea.TeaModel {
             guard let dict else { return }
             if let value = dict["description"] as? String {
                 self.description_ = value
+            }
+            if let value = dict["dstName"] as? String {
+                self.dstName = value
+            }
+            if let value = dict["dstProjectName"] as? String {
+                self.dstProjectName = value
             }
             if let value = dict["extra"] as? String {
                 self.extra = value
@@ -5579,6 +5627,14 @@ public class GetMmsPartitionResponseBody : Tea.TeaModel {
 
         public var dbName: String?
 
+        public var dstProjectName: String?
+
+        public var dstSchemaName: String?
+
+        public var dstTableName: String?
+
+        public var dstValue: String?
+
         public var id: Int64?
 
         public var lastDdlTime: String?
@@ -5616,10 +5672,22 @@ public class GetMmsPartitionResponseBody : Tea.TeaModel {
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
             if self.dbId != nil {
-                map["DbId"] = self.dbId!
+                map["dbId"] = self.dbId!
             }
             if self.dbName != nil {
                 map["dbName"] = self.dbName!
+            }
+            if self.dstProjectName != nil {
+                map["dstProjectName"] = self.dstProjectName!
+            }
+            if self.dstSchemaName != nil {
+                map["dstSchemaName"] = self.dstSchemaName!
+            }
+            if self.dstTableName != nil {
+                map["dstTableName"] = self.dstTableName!
+            }
+            if self.dstValue != nil {
+                map["dstValue"] = self.dstValue!
             }
             if self.id != nil {
                 map["id"] = self.id!
@@ -5659,11 +5727,23 @@ public class GetMmsPartitionResponseBody : Tea.TeaModel {
 
         public override func fromMap(_ dict: [String: Any?]?) -> Void {
             guard let dict else { return }
-            if let value = dict["DbId"] as? Int64 {
+            if let value = dict["dbId"] as? Int64 {
                 self.dbId = value
             }
             if let value = dict["dbName"] as? String {
                 self.dbName = value
+            }
+            if let value = dict["dstProjectName"] as? String {
+                self.dstProjectName = value
+            }
+            if let value = dict["dstSchemaName"] as? String {
+                self.dstSchemaName = value
+            }
+            if let value = dict["dstTableName"] as? String {
+                self.dstTableName = value
+            }
+            if let value = dict["dstValue"] as? String {
+                self.dstValue = value
             }
             if let value = dict["id"] as? Int64 {
                 self.id = value
@@ -6003,6 +6083,12 @@ public class GetMmsTableResponseBody : Tea.TeaModel {
 
         public var dbName: String?
 
+        public var dstName: String?
+
+        public var dstProjectName: String?
+
+        public var dstSchemaName: String?
+
         public var extra: String?
 
         public var hasPartitions: Bool?
@@ -6067,6 +6153,15 @@ public class GetMmsTableResponseBody : Tea.TeaModel {
             }
             if self.dbName != nil {
                 map["dbName"] = self.dbName!
+            }
+            if self.dstName != nil {
+                map["dstName"] = self.dstName!
+            }
+            if self.dstProjectName != nil {
+                map["dstProjectName"] = self.dstProjectName!
+            }
+            if self.dstSchemaName != nil {
+                map["dstSchemaName"] = self.dstSchemaName!
             }
             if self.extra != nil {
                 map["extra"] = self.extra!
@@ -6144,6 +6239,15 @@ public class GetMmsTableResponseBody : Tea.TeaModel {
             }
             if let value = dict["dbName"] as? String {
                 self.dbName = value
+            }
+            if let value = dict["dstName"] as? String {
+                self.dstName = value
+            }
+            if let value = dict["dstProjectName"] as? String {
+                self.dstProjectName = value
+            }
+            if let value = dict["dstSchemaName"] as? String {
+                self.dstSchemaName = value
             }
             if let value = dict["extra"] as? String {
                 self.extra = value
@@ -17161,6 +17265,10 @@ public class ListMmsDataSourcesResponseBody : Tea.TeaModel {
 
             public var dbNum: Int32?
 
+            public var dstProject: String?
+
+            public var dstProjects: [String]?
+
             public var errMsg: String?
 
             public var id: Int64?
@@ -17226,6 +17334,12 @@ public class ListMmsDataSourcesResponseBody : Tea.TeaModel {
                 }
                 if self.dbNum != nil {
                     map["dbNum"] = self.dbNum!
+                }
+                if self.dstProject != nil {
+                    map["dstProject"] = self.dstProject!
+                }
+                if self.dstProjects != nil {
+                    map["dstProjects"] = self.dstProjects!
                 }
                 if self.errMsg != nil {
                     map["errMsg"] = self.errMsg!
@@ -17307,6 +17421,12 @@ public class ListMmsDataSourcesResponseBody : Tea.TeaModel {
                 }
                 if let value = dict["dbNum"] as? Int32 {
                     self.dbNum = value
+                }
+                if let value = dict["dstProject"] as? String {
+                    self.dstProject = value
+                }
+                if let value = dict["dstProjects"] as? [String] {
+                    self.dstProjects = value
                 }
                 if let value = dict["errMsg"] as? String {
                     self.errMsg = value
@@ -17706,6 +17826,10 @@ public class ListMmsDbsResponseBody : Tea.TeaModel {
 
             public var description_: String?
 
+            public var dstName: String?
+
+            public var dstProjectName: String?
+
             public var extra: String?
 
             public var id: Int64?
@@ -17772,6 +17896,12 @@ public class ListMmsDbsResponseBody : Tea.TeaModel {
                 }
                 if self.description_ != nil {
                     map["description"] = self.description_!
+                }
+                if self.dstName != nil {
+                    map["dstName"] = self.dstName!
+                }
+                if self.dstProjectName != nil {
+                    map["dstProjectName"] = self.dstProjectName!
                 }
                 if self.extra != nil {
                     map["extra"] = self.extra!
@@ -17852,6 +17982,12 @@ public class ListMmsDbsResponseBody : Tea.TeaModel {
                 }
                 if let value = dict["description"] as? String {
                     self.description_ = value
+                }
+                if let value = dict["dstName"] as? String {
+                    self.dstName = value
+                }
+                if let value = dict["dstProjectName"] as? String {
+                    self.dstProjectName = value
                 }
                 if let value = dict["extra"] as? String {
                     self.extra = value
@@ -18725,6 +18861,8 @@ public class ListMmsPartitionsRequest : Tea.TeaModel {
 
     public var status: [String]?
 
+    public var tableId: Int64?
+
     public var tableName: String?
 
     public var updated: Bool?
@@ -18770,6 +18908,9 @@ public class ListMmsPartitionsRequest : Tea.TeaModel {
         if self.status != nil {
             map["status"] = self.status!
         }
+        if self.tableId != nil {
+            map["tableId"] = self.tableId!
+        }
         if self.tableName != nil {
             map["tableName"] = self.tableName!
         }
@@ -18809,6 +18950,9 @@ public class ListMmsPartitionsRequest : Tea.TeaModel {
         }
         if let value = dict["status"] as? [String] {
             self.status = value
+        }
+        if let value = dict["tableId"] as? Int64 {
+            self.tableId = value
         }
         if let value = dict["tableName"] as? String {
             self.tableName = value
@@ -18885,6 +19029,8 @@ public class ListMmsPartitionsShrinkRequest : Tea.TeaModel {
 
     public var statusShrink: String?
 
+    public var tableId: Int64?
+
     public var tableName: String?
 
     public var updated: Bool?
@@ -18930,6 +19076,9 @@ public class ListMmsPartitionsShrinkRequest : Tea.TeaModel {
         if self.statusShrink != nil {
             map["status"] = self.statusShrink!
         }
+        if self.tableId != nil {
+            map["tableId"] = self.tableId!
+        }
         if self.tableName != nil {
             map["tableName"] = self.tableName!
         }
@@ -18970,6 +19119,9 @@ public class ListMmsPartitionsShrinkRequest : Tea.TeaModel {
         if let value = dict["status"] as? String {
             self.statusShrink = value
         }
+        if let value = dict["tableId"] as? Int64 {
+            self.tableId = value
+        }
         if let value = dict["tableName"] as? String {
             self.tableName = value
         }
@@ -18988,6 +19140,14 @@ public class ListMmsPartitionsResponseBody : Tea.TeaModel {
             public var dbId: Int64?
 
             public var dbName: String?
+
+            public var dstProjectName: String?
+
+            public var dstSchemaName: String?
+
+            public var dstTableName: String?
+
+            public var dstValue: String?
 
             public var id: Int64?
 
@@ -19026,10 +19186,22 @@ public class ListMmsPartitionsResponseBody : Tea.TeaModel {
             public override func toMap() -> [String : Any] {
                 var map = super.toMap()
                 if self.dbId != nil {
-                    map["DbId"] = self.dbId!
+                    map["dbId"] = self.dbId!
                 }
                 if self.dbName != nil {
                     map["dbName"] = self.dbName!
+                }
+                if self.dstProjectName != nil {
+                    map["dstProjectName"] = self.dstProjectName!
+                }
+                if self.dstSchemaName != nil {
+                    map["dstSchemaName"] = self.dstSchemaName!
+                }
+                if self.dstTableName != nil {
+                    map["dstTableName"] = self.dstTableName!
+                }
+                if self.dstValue != nil {
+                    map["dstValue"] = self.dstValue!
                 }
                 if self.id != nil {
                     map["id"] = self.id!
@@ -19069,11 +19241,23 @@ public class ListMmsPartitionsResponseBody : Tea.TeaModel {
 
             public override func fromMap(_ dict: [String: Any?]?) -> Void {
                 guard let dict else { return }
-                if let value = dict["DbId"] as? Int64 {
+                if let value = dict["dbId"] as? Int64 {
                     self.dbId = value
                 }
                 if let value = dict["dbName"] as? String {
                     self.dbName = value
+                }
+                if let value = dict["dstProjectName"] as? String {
+                    self.dstProjectName = value
+                }
+                if let value = dict["dstSchemaName"] as? String {
+                    self.dstSchemaName = value
+                }
+                if let value = dict["dstTableName"] as? String {
+                    self.dstTableName = value
+                }
+                if let value = dict["dstValue"] as? String {
+                    self.dstValue = value
                 }
                 if let value = dict["id"] as? Int64 {
                     self.id = value
@@ -19321,6 +19505,12 @@ public class ListMmsTablesRequest : Tea.TeaModel {
 
     public var dbName: String?
 
+    public var dstName: String?
+
+    public var dstProjectName: String?
+
+    public var dstSchemaName: String?
+
     public var hasPartitions: Bool?
 
     public var lastDdlTimeEnd: String?
@@ -19362,6 +19552,15 @@ public class ListMmsTablesRequest : Tea.TeaModel {
         }
         if self.dbName != nil {
             map["dbName"] = self.dbName!
+        }
+        if self.dstName != nil {
+            map["dstName"] = self.dstName!
+        }
+        if self.dstProjectName != nil {
+            map["dstProjectName"] = self.dstProjectName!
+        }
+        if self.dstSchemaName != nil {
+            map["dstSchemaName"] = self.dstSchemaName!
         }
         if self.hasPartitions != nil {
             map["hasPartitions"] = self.hasPartitions!
@@ -19405,6 +19604,15 @@ public class ListMmsTablesRequest : Tea.TeaModel {
         }
         if let value = dict["dbName"] as? String {
             self.dbName = value
+        }
+        if let value = dict["dstName"] as? String {
+            self.dstName = value
+        }
+        if let value = dict["dstProjectName"] as? String {
+            self.dstProjectName = value
+        }
+        if let value = dict["dstSchemaName"] as? String {
+            self.dstSchemaName = value
         }
         if let value = dict["hasPartitions"] as? Bool {
             self.hasPartitions = value
@@ -19489,6 +19697,12 @@ public class ListMmsTablesShrinkRequest : Tea.TeaModel {
 
     public var dbName: String?
 
+    public var dstName: String?
+
+    public var dstProjectName: String?
+
+    public var dstSchemaName: String?
+
     public var hasPartitions: Bool?
 
     public var lastDdlTimeEnd: String?
@@ -19530,6 +19744,15 @@ public class ListMmsTablesShrinkRequest : Tea.TeaModel {
         }
         if self.dbName != nil {
             map["dbName"] = self.dbName!
+        }
+        if self.dstName != nil {
+            map["dstName"] = self.dstName!
+        }
+        if self.dstProjectName != nil {
+            map["dstProjectName"] = self.dstProjectName!
+        }
+        if self.dstSchemaName != nil {
+            map["dstSchemaName"] = self.dstSchemaName!
         }
         if self.hasPartitions != nil {
             map["hasPartitions"] = self.hasPartitions!
@@ -19573,6 +19796,15 @@ public class ListMmsTablesShrinkRequest : Tea.TeaModel {
         }
         if let value = dict["dbName"] as? String {
             self.dbName = value
+        }
+        if let value = dict["dstName"] as? String {
+            self.dstName = value
+        }
+        if let value = dict["dstProjectName"] as? String {
+            self.dstProjectName = value
+        }
+        if let value = dict["dstSchemaName"] as? String {
+            self.dstSchemaName = value
         }
         if let value = dict["hasPartitions"] as? Bool {
             self.hasPartitions = value
@@ -19817,6 +20049,12 @@ public class ListMmsTablesResponseBody : Tea.TeaModel {
 
             public var dbName: String?
 
+            public var dstName: String?
+
+            public var dstProjectName: String?
+
+            public var dstSchemaName: String?
+
             public var extra: String?
 
             public var hasPartitions: Bool?
@@ -19881,6 +20119,15 @@ public class ListMmsTablesResponseBody : Tea.TeaModel {
                 }
                 if self.dbName != nil {
                     map["dbName"] = self.dbName!
+                }
+                if self.dstName != nil {
+                    map["dstName"] = self.dstName!
+                }
+                if self.dstProjectName != nil {
+                    map["dstProjectName"] = self.dstProjectName!
+                }
+                if self.dstSchemaName != nil {
+                    map["dstSchemaName"] = self.dstSchemaName!
                 }
                 if self.extra != nil {
                     map["extra"] = self.extra!
@@ -19958,6 +20205,15 @@ public class ListMmsTablesResponseBody : Tea.TeaModel {
                 }
                 if let value = dict["dbName"] as? String {
                     self.dbName = value
+                }
+                if let value = dict["dstName"] as? String {
+                    self.dstName = value
+                }
+                if let value = dict["dstProjectName"] as? String {
+                    self.dstProjectName = value
+                }
+                if let value = dict["dstSchemaName"] as? String {
+                    self.dstSchemaName = value
                 }
                 if let value = dict["extra"] as? String {
                     self.extra = value
@@ -22461,6 +22717,8 @@ public class ListQuotasResponseBody : Tea.TeaModel {
                     }
                 }
                 public class Parameter : Tea.TeaModel {
+                    public var adhocSlot: Int64?
+
                     public var elasticReservedCU: Int64?
 
                     public var enablePriority: Bool?
@@ -22474,6 +22732,8 @@ public class ListQuotasResponseBody : Tea.TeaModel {
                     public var schedulerType: String?
 
                     public var singleJobCULimit: Int64?
+
+                    public var slotNum: Int64?
 
                     public override init() {
                         super.init()
@@ -22489,6 +22749,9 @@ public class ListQuotasResponseBody : Tea.TeaModel {
 
                     public override func toMap() -> [String : Any] {
                         var map = super.toMap()
+                        if self.adhocSlot != nil {
+                            map["adhocSlot"] = self.adhocSlot!
+                        }
                         if self.elasticReservedCU != nil {
                             map["elasticReservedCU"] = self.elasticReservedCU!
                         }
@@ -22510,11 +22773,17 @@ public class ListQuotasResponseBody : Tea.TeaModel {
                         if self.singleJobCULimit != nil {
                             map["singleJobCULimit"] = self.singleJobCULimit!
                         }
+                        if self.slotNum != nil {
+                            map["slotNum"] = self.slotNum!
+                        }
                         return map
                     }
 
                     public override func fromMap(_ dict: [String: Any?]?) -> Void {
                         guard let dict else { return }
+                        if let value = dict["adhocSlot"] as? Int64 {
+                            self.adhocSlot = value
+                        }
                         if let value = dict["elasticReservedCU"] as? Int64 {
                             self.elasticReservedCU = value
                         }
@@ -22535,6 +22804,9 @@ public class ListQuotasResponseBody : Tea.TeaModel {
                         }
                         if let value = dict["singleJobCULimit"] as? Int64 {
                             self.singleJobCULimit = value
+                        }
+                        if let value = dict["slotNum"] as? Int64 {
+                            self.slotNum = value
                         }
                     }
                 }
@@ -23365,6 +23637,8 @@ public class ListQuotasResponseBody : Tea.TeaModel {
                 }
             }
             public class Parameter : Tea.TeaModel {
+                public var adhocSlot: Int64?
+
                 public var elasticReservedCU: Int64?
 
                 public var enablePriority: Bool?
@@ -23373,11 +23647,17 @@ public class ListQuotasResponseBody : Tea.TeaModel {
 
                 public var maxCU: Int64?
 
+                public var maxGu: Int64?
+
                 public var minCU: Int64?
+
+                public var minGu: Int64?
 
                 public var schedulerType: String?
 
                 public var singleJobCULimit: Int64?
+
+                public var slotNum: Int64?
 
                 public override init() {
                     super.init()
@@ -23393,6 +23673,9 @@ public class ListQuotasResponseBody : Tea.TeaModel {
 
                 public override func toMap() -> [String : Any] {
                     var map = super.toMap()
+                    if self.adhocSlot != nil {
+                        map["adhocSlot"] = self.adhocSlot!
+                    }
                     if self.elasticReservedCU != nil {
                         map["elasticReservedCU"] = self.elasticReservedCU!
                     }
@@ -23405,8 +23688,14 @@ public class ListQuotasResponseBody : Tea.TeaModel {
                     if self.maxCU != nil {
                         map["maxCU"] = self.maxCU!
                     }
+                    if self.maxGu != nil {
+                        map["maxGu"] = self.maxGu!
+                    }
                     if self.minCU != nil {
                         map["minCU"] = self.minCU!
+                    }
+                    if self.minGu != nil {
+                        map["minGu"] = self.minGu!
                     }
                     if self.schedulerType != nil {
                         map["schedulerType"] = self.schedulerType!
@@ -23414,11 +23703,17 @@ public class ListQuotasResponseBody : Tea.TeaModel {
                     if self.singleJobCULimit != nil {
                         map["singleJobCULimit"] = self.singleJobCULimit!
                     }
+                    if self.slotNum != nil {
+                        map["slotNum"] = self.slotNum!
+                    }
                     return map
                 }
 
                 public override func fromMap(_ dict: [String: Any?]?) -> Void {
                     guard let dict else { return }
+                    if let value = dict["adhocSlot"] as? Int64 {
+                        self.adhocSlot = value
+                    }
                     if let value = dict["elasticReservedCU"] as? Int64 {
                         self.elasticReservedCU = value
                     }
@@ -23431,14 +23726,23 @@ public class ListQuotasResponseBody : Tea.TeaModel {
                     if let value = dict["maxCU"] as? Int64 {
                         self.maxCU = value
                     }
+                    if let value = dict["maxGu"] as? Int64 {
+                        self.maxGu = value
+                    }
                     if let value = dict["minCU"] as? Int64 {
                         self.minCU = value
+                    }
+                    if let value = dict["minGu"] as? Int64 {
+                        self.minGu = value
                     }
                     if let value = dict["schedulerType"] as? String {
                         self.schedulerType = value
                     }
                     if let value = dict["singleJobCULimit"] as? Int64 {
                         self.singleJobCULimit = value
+                    }
+                    if let value = dict["slotNum"] as? Int64 {
+                        self.slotNum = value
                     }
                 }
             }
@@ -29188,6 +29492,299 @@ public class QueryQuotaResponse : Tea.TeaModel {
         }
         if let value = dict["body"] as? [String: Any?] {
             var model = QueryQuotaResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
+public class QueryQuotaMetricRequest : Tea.TeaModel {
+    public var interval: Int64?
+
+    public var nickname: String?
+
+    public var subQuotaNickname: String?
+
+    public var endTime: Int64?
+
+    public var startTime: Int64?
+
+    public var strategy: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.interval != nil {
+            map["interval"] = self.interval!
+        }
+        if self.nickname != nil {
+            map["nickname"] = self.nickname!
+        }
+        if self.subQuotaNickname != nil {
+            map["subQuotaNickname"] = self.subQuotaNickname!
+        }
+        if self.endTime != nil {
+            map["endTime"] = self.endTime!
+        }
+        if self.startTime != nil {
+            map["startTime"] = self.startTime!
+        }
+        if self.strategy != nil {
+            map["strategy"] = self.strategy!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["interval"] as? Int64 {
+            self.interval = value
+        }
+        if let value = dict["nickname"] as? String {
+            self.nickname = value
+        }
+        if let value = dict["subQuotaNickname"] as? String {
+            self.subQuotaNickname = value
+        }
+        if let value = dict["endTime"] as? Int64 {
+            self.endTime = value
+        }
+        if let value = dict["startTime"] as? Int64 {
+            self.startTime = value
+        }
+        if let value = dict["strategy"] as? String {
+            self.strategy = value
+        }
+    }
+}
+
+public class QueryQuotaMetricResponseBody : Tea.TeaModel {
+    public class Data : Tea.TeaModel {
+        public class Metrics : Tea.TeaModel {
+            public var metric: [String: String]?
+
+            public var values: [[Double]]?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.metric != nil {
+                    map["metric"] = self.metric!
+                }
+                if self.values != nil {
+                    map["values"] = self.values!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["metric"] as? [String: String] {
+                    self.metric = value
+                }
+                if let value = dict["values"] as? [[Double]] {
+                    self.values = value
+                }
+            }
+        }
+        public var category: String?
+
+        public var metrics: [QueryQuotaMetricResponseBody.Data.Metrics]?
+
+        public var name: String?
+
+        public var period: Int64?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.category != nil {
+                map["category"] = self.category!
+            }
+            if self.metrics != nil {
+                var tmp : [Any] = []
+                for k in self.metrics! {
+                    tmp.append(k.toMap())
+                }
+                map["metrics"] = tmp
+            }
+            if self.name != nil {
+                map["name"] = self.name!
+            }
+            if self.period != nil {
+                map["period"] = self.period!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["category"] as? String {
+                self.category = value
+            }
+            if let value = dict["metrics"] as? [Any?] {
+                var tmp : [QueryQuotaMetricResponseBody.Data.Metrics] = []
+                for v in value {
+                    if v != nil {
+                        var model = QueryQuotaMetricResponseBody.Data.Metrics()
+                        if v != nil {
+                            model.fromMap(v as? [String: Any?])
+                        }
+                        tmp.append(model)
+                    }
+                }
+                self.metrics = tmp
+            }
+            if let value = dict["name"] as? String {
+                self.name = value
+            }
+            if let value = dict["period"] as? Int64 {
+                self.period = value
+            }
+        }
+    }
+    public var data: QueryQuotaMetricResponseBody.Data?
+
+    public var errorCode: String?
+
+    public var errorMsg: String?
+
+    public var httpCode: Int32?
+
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.data?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.data != nil {
+            map["data"] = self.data?.toMap()
+        }
+        if self.errorCode != nil {
+            map["errorCode"] = self.errorCode!
+        }
+        if self.errorMsg != nil {
+            map["errorMsg"] = self.errorMsg!
+        }
+        if self.httpCode != nil {
+            map["httpCode"] = self.httpCode!
+        }
+        if self.requestId != nil {
+            map["requestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["data"] as? [String: Any?] {
+            var model = QueryQuotaMetricResponseBody.Data()
+            model.fromMap(value)
+            self.data = model
+        }
+        if let value = dict["errorCode"] as? String {
+            self.errorCode = value
+        }
+        if let value = dict["errorMsg"] as? String {
+            self.errorMsg = value
+        }
+        if let value = dict["httpCode"] as? Int32 {
+            self.httpCode = value
+        }
+        if let value = dict["requestId"] as? String {
+            self.requestId = value
+        }
+    }
+}
+
+public class QueryQuotaMetricResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: QueryQuotaMetricResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = QueryQuotaMetricResponseBody()
             model.fromMap(value)
             self.body = model
         }

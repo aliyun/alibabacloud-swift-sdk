@@ -224,6 +224,12 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.dstSchemaName)) {
             body["dstSchemaName"] = request.dstSchemaName ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.enableDataMigration)) {
+            body["enableDataMigration"] = request.enableDataMigration!;
+        }
+        if (!TeaUtils.Client.isUnset(request.enableSchemaMigration)) {
+            body["enableSchemaMigration"] = request.enableSchemaMigration!;
+        }
         if (!TeaUtils.Client.isUnset(request.enableVerification)) {
             body["enableVerification"] = request.enableVerification!;
         }
@@ -2115,6 +2121,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.statusShrink)) {
             query["status"] = request.statusShrink ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.tableId)) {
+            query["tableId"] = request.tableId!;
+        }
         if (!TeaUtils.Client.isUnset(request.tableName)) {
             query["tableName"] = request.tableName ?? "";
         }
@@ -2167,6 +2176,15 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.dbName)) {
             query["dbName"] = request.dbName ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.dstName)) {
+            query["dstName"] = request.dstName ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.dstProjectName)) {
+            query["dstProjectName"] = request.dstProjectName ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.dstSchemaName)) {
+            query["dstSchemaName"] = request.dstSchemaName ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.hasPartitions)) {
             query["hasPartitions"] = request.hasPartitions!;
@@ -2949,6 +2967,56 @@ open class Client : AlibabacloudOpenApi.Client {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         var headers: [String: String] = [:]
         return try await queryQuotaWithOptions(nickname as! String, request as! QueryQuotaRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func queryQuotaMetricWithOptions(_ metric: String, _ request: QueryQuotaMetricRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> QueryQuotaMetricResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.endTime)) {
+            query["endTime"] = request.endTime!;
+        }
+        if (!TeaUtils.Client.isUnset(request.startTime)) {
+            query["startTime"] = request.startTime!;
+        }
+        if (!TeaUtils.Client.isUnset(request.strategy)) {
+            query["strategy"] = request.strategy ?? "";
+        }
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.interval)) {
+            body["interval"] = request.interval!;
+        }
+        if (!TeaUtils.Client.isUnset(request.nickname)) {
+            body["nickname"] = request.nickname ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.subQuotaNickname)) {
+            body["subQuotaNickname"] = request.subQuotaNickname ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String],
+            "query": AlibabaCloudOpenApiUtil.Client.query(query),
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "QueryQuotaMetric",
+            "version": "2022-01-04",
+            "protocol": "HTTPS",
+            "pathname": "/api/v1/observations/quota/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(metric)),
+            "method": "POST",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(QueryQuotaMetricResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func queryQuotaMetric(_ metric: String, _ request: QueryQuotaMetricRequest) async throws -> QueryQuotaMetricResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await queryQuotaMetricWithOptions(metric as! String, request as! QueryQuotaMetricRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
