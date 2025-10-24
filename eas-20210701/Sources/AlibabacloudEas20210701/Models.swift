@@ -11612,11 +11612,21 @@ public class ListAclPolicyResponse : Tea.TeaModel {
 public class ListBenchmarkTaskRequest : Tea.TeaModel {
     public var filter: String?
 
+    public var modelId: String?
+
+    public var order: String?
+
     public var pageNumber: String?
 
     public var pageSize: String?
 
+    public var requestMethod: String?
+
     public var serviceName: String?
+
+    public var sort: String?
+
+    public var status: String?
 
     public override init() {
         super.init()
@@ -11635,14 +11645,29 @@ public class ListBenchmarkTaskRequest : Tea.TeaModel {
         if self.filter != nil {
             map["Filter"] = self.filter!
         }
+        if self.modelId != nil {
+            map["ModelId"] = self.modelId!
+        }
+        if self.order != nil {
+            map["Order"] = self.order!
+        }
         if self.pageNumber != nil {
             map["PageNumber"] = self.pageNumber!
         }
         if self.pageSize != nil {
             map["PageSize"] = self.pageSize!
         }
+        if self.requestMethod != nil {
+            map["RequestMethod"] = self.requestMethod!
+        }
         if self.serviceName != nil {
             map["ServiceName"] = self.serviceName!
+        }
+        if self.sort != nil {
+            map["Sort"] = self.sort!
+        }
+        if self.status != nil {
+            map["Status"] = self.status!
         }
         return map
     }
@@ -11652,14 +11677,29 @@ public class ListBenchmarkTaskRequest : Tea.TeaModel {
         if let value = dict["Filter"] as? String {
             self.filter = value
         }
+        if let value = dict["ModelId"] as? String {
+            self.modelId = value
+        }
+        if let value = dict["Order"] as? String {
+            self.order = value
+        }
         if let value = dict["PageNumber"] as? String {
             self.pageNumber = value
         }
         if let value = dict["PageSize"] as? String {
             self.pageSize = value
         }
+        if let value = dict["RequestMethod"] as? String {
+            self.requestMethod = value
+        }
         if let value = dict["ServiceName"] as? String {
             self.serviceName = value
+        }
+        if let value = dict["Sort"] as? String {
+            self.sort = value
+        }
+        if let value = dict["Status"] as? String {
+            self.status = value
         }
     }
 }
@@ -12983,9 +13023,15 @@ public class ListGatewayIntranetSupportedZoneResponse : Tea.TeaModel {
 public class ListGroupsRequest : Tea.TeaModel {
     public var filter: String?
 
+    public var order: String?
+
     public var pageNumber: String?
 
     public var pageSize: String?
+
+    public var sort: String?
+
+    public var trafficMode: String?
 
     public var workspaceId: String?
 
@@ -13006,11 +13052,20 @@ public class ListGroupsRequest : Tea.TeaModel {
         if self.filter != nil {
             map["Filter"] = self.filter!
         }
+        if self.order != nil {
+            map["Order"] = self.order!
+        }
         if self.pageNumber != nil {
             map["PageNumber"] = self.pageNumber!
         }
         if self.pageSize != nil {
             map["PageSize"] = self.pageSize!
+        }
+        if self.sort != nil {
+            map["Sort"] = self.sort!
+        }
+        if self.trafficMode != nil {
+            map["TrafficMode"] = self.trafficMode!
         }
         if self.workspaceId != nil {
             map["WorkspaceId"] = self.workspaceId!
@@ -13023,11 +13078,20 @@ public class ListGroupsRequest : Tea.TeaModel {
         if let value = dict["Filter"] as? String {
             self.filter = value
         }
+        if let value = dict["Order"] as? String {
+            self.order = value
+        }
         if let value = dict["PageNumber"] as? String {
             self.pageNumber = value
         }
         if let value = dict["PageSize"] as? String {
             self.pageSize = value
+        }
+        if let value = dict["Sort"] as? String {
+            self.sort = value
+        }
+        if let value = dict["TrafficMode"] as? String {
+            self.trafficMode = value
         }
         if let value = dict["WorkspaceId"] as? String {
             self.workspaceId = value

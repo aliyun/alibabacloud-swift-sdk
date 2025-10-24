@@ -2102,14 +2102,29 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.filter)) {
             query["Filter"] = request.filter ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.modelId)) {
+            query["ModelId"] = request.modelId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.order)) {
+            query["Order"] = request.order ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.pageNumber)) {
             query["PageNumber"] = request.pageNumber ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.pageSize)) {
             query["PageSize"] = request.pageSize ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.requestMethod)) {
+            query["RequestMethod"] = request.requestMethod ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.serviceName)) {
             query["ServiceName"] = request.serviceName ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.sort)) {
+            query["Sort"] = request.sort ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.status)) {
+            query["Status"] = request.status ?? "";
         }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "headers": headers as! [String: String],
@@ -2321,11 +2336,20 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.filter)) {
             query["Filter"] = request.filter ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.order)) {
+            query["Order"] = request.order ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.pageNumber)) {
             query["PageNumber"] = request.pageNumber ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.pageSize)) {
             query["PageSize"] = request.pageSize ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.sort)) {
+            query["Sort"] = request.sort ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.trafficMode)) {
+            query["TrafficMode"] = request.trafficMode ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.workspaceId)) {
             query["WorkspaceId"] = request.workspaceId ?? "";
