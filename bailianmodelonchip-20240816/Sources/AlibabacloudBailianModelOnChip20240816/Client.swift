@@ -24,6 +24,39 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func activeInteractionCreateWithOptions(_ request: ActiveInteractionCreateRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> ActiveInteractionCreateResponse {
+        try TeaUtils.Client.validateModel(request)
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.image)) {
+            body["image"] = request.image ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String],
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "ActiveInteractionCreate",
+            "version": "2024-08-16",
+            "protocol": "HTTPS",
+            "pathname": "/open/api/v1/active/interaction/create",
+            "method": "POST",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(ActiveInteractionCreateResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func activeInteractionCreate(_ request: ActiveInteractionCreateRequest) async throws -> ActiveInteractionCreateResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await activeInteractionCreateWithOptions(request as! ActiveInteractionCreateRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func deviceRegisterWithOptions(_ request: DeviceRegisterRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> DeviceRegisterResponse {
         try TeaUtils.Client.validateModel(request)
         var body: [String: Any] = [:]
