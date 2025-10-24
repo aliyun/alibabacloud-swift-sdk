@@ -17,7 +17,7 @@
 要使用 [Carthage](https://github.com/Carthage/Carthage) 将 `AlibabacloudEcd20200930` 集成到你的 Xcode 项目中，需要在 `Cartfile` 中定义以下内容:
 
 ```ogdl
-github "alibabacloud-sdk-swift/ecd-20200930" "3.8.1"
+github "alibabacloud-sdk-swift/ecd-20200930" "3.9.0"
 ```
 
 ### Swift 包管理工具
@@ -26,7 +26,7 @@ github "alibabacloud-sdk-swift/ecd-20200930" "3.8.1"
 
 ```swift
 dependencies: [
-    .package(url: "https://github.com/alibabacloud-sdk-swift/ecd-20200930.git", from: "3.8.1")
+    .package(url: "https://github.com/alibabacloud-sdk-swift/ecd-20200930.git", from: "3.9.0")
 ]
 ```
 

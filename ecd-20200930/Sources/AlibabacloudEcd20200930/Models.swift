@@ -15339,6 +15339,10 @@ public class CreateRouteTableResponse : Tea.TeaModel {
 }
 
 public class CreateSimpleOfficeSiteRequest : Tea.TeaModel {
+    public var accountType: String?
+
+    public var authorityHost: String?
+
     public var bandwidth: Int32?
 
     public var cenId: String?
@@ -15347,9 +15351,15 @@ public class CreateSimpleOfficeSiteRequest : Tea.TeaModel {
 
     public var cidrBlock: String?
 
+    public var clientId: String?
+
+    public var clientSecret: String?
+
     public var cloudBoxOfficeSite: Bool?
 
     public var desktopAccessType: String?
+
+    public var domainName: String?
 
     public var enableAdminAccess: Bool?
 
@@ -15360,6 +15370,8 @@ public class CreateSimpleOfficeSiteRequest : Tea.TeaModel {
     public var officeSiteName: String?
 
     public var regionId: String?
+
+    public var tenantId: String?
 
     public var vSwitchId: [String]?
 
@@ -15381,6 +15393,12 @@ public class CreateSimpleOfficeSiteRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.accountType != nil {
+            map["AccountType"] = self.accountType!
+        }
+        if self.authorityHost != nil {
+            map["AuthorityHost"] = self.authorityHost!
+        }
         if self.bandwidth != nil {
             map["Bandwidth"] = self.bandwidth!
         }
@@ -15393,11 +15411,20 @@ public class CreateSimpleOfficeSiteRequest : Tea.TeaModel {
         if self.cidrBlock != nil {
             map["CidrBlock"] = self.cidrBlock!
         }
+        if self.clientId != nil {
+            map["ClientId"] = self.clientId!
+        }
+        if self.clientSecret != nil {
+            map["ClientSecret"] = self.clientSecret!
+        }
         if self.cloudBoxOfficeSite != nil {
             map["CloudBoxOfficeSite"] = self.cloudBoxOfficeSite!
         }
         if self.desktopAccessType != nil {
             map["DesktopAccessType"] = self.desktopAccessType!
+        }
+        if self.domainName != nil {
+            map["DomainName"] = self.domainName!
         }
         if self.enableAdminAccess != nil {
             map["EnableAdminAccess"] = self.enableAdminAccess!
@@ -15414,6 +15441,9 @@ public class CreateSimpleOfficeSiteRequest : Tea.TeaModel {
         if self.regionId != nil {
             map["RegionId"] = self.regionId!
         }
+        if self.tenantId != nil {
+            map["TenantId"] = self.tenantId!
+        }
         if self.vSwitchId != nil {
             map["VSwitchId"] = self.vSwitchId!
         }
@@ -15428,6 +15458,12 @@ public class CreateSimpleOfficeSiteRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["AccountType"] as? String {
+            self.accountType = value
+        }
+        if let value = dict["AuthorityHost"] as? String {
+            self.authorityHost = value
+        }
         if let value = dict["Bandwidth"] as? Int32 {
             self.bandwidth = value
         }
@@ -15440,11 +15476,20 @@ public class CreateSimpleOfficeSiteRequest : Tea.TeaModel {
         if let value = dict["CidrBlock"] as? String {
             self.cidrBlock = value
         }
+        if let value = dict["ClientId"] as? String {
+            self.clientId = value
+        }
+        if let value = dict["ClientSecret"] as? String {
+            self.clientSecret = value
+        }
         if let value = dict["CloudBoxOfficeSite"] as? Bool {
             self.cloudBoxOfficeSite = value
         }
         if let value = dict["DesktopAccessType"] as? String {
             self.desktopAccessType = value
+        }
+        if let value = dict["DomainName"] as? String {
+            self.domainName = value
         }
         if let value = dict["EnableAdminAccess"] as? Bool {
             self.enableAdminAccess = value
@@ -15460,6 +15505,9 @@ public class CreateSimpleOfficeSiteRequest : Tea.TeaModel {
         }
         if let value = dict["RegionId"] as? String {
             self.regionId = value
+        }
+        if let value = dict["TenantId"] as? String {
+            self.tenantId = value
         }
         if let value = dict["VSwitchId"] as? [String] {
             self.vSwitchId = value
@@ -26140,6 +26188,8 @@ public class DescribeDesktopGroupsResponseBody : Tea.TeaModel {
                 }
             }
         }
+        public var accountType: String?
+
         public var bindAmount: Int64?
 
         public var buyDesktopsCount: Int32?
@@ -26169,6 +26219,8 @@ public class DescribeDesktopGroupsResponseBody : Tea.TeaModel {
         public var desktopType: String?
 
         public var endUserCount: Int32?
+
+        public var entraDomainName: String?
 
         public var expiredTime: String?
 
@@ -26264,6 +26316,9 @@ public class DescribeDesktopGroupsResponseBody : Tea.TeaModel {
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
+            if self.accountType != nil {
+                map["AccountType"] = self.accountType!
+            }
             if self.bindAmount != nil {
                 map["BindAmount"] = self.bindAmount!
             }
@@ -26312,6 +26367,9 @@ public class DescribeDesktopGroupsResponseBody : Tea.TeaModel {
             }
             if self.endUserCount != nil {
                 map["EndUserCount"] = self.endUserCount!
+            }
+            if self.entraDomainName != nil {
+                map["EntraDomainName"] = self.entraDomainName!
             }
             if self.expiredTime != nil {
                 map["ExpiredTime"] = self.expiredTime!
@@ -26442,6 +26500,9 @@ public class DescribeDesktopGroupsResponseBody : Tea.TeaModel {
 
         public override func fromMap(_ dict: [String: Any?]?) -> Void {
             guard let dict else { return }
+            if let value = dict["AccountType"] as? String {
+                self.accountType = value
+            }
             if let value = dict["BindAmount"] as? Int64 {
                 self.bindAmount = value
             }
@@ -26496,6 +26557,9 @@ public class DescribeDesktopGroupsResponseBody : Tea.TeaModel {
             }
             if let value = dict["EndUserCount"] as? Int32 {
                 self.endUserCount = value
+            }
+            if let value = dict["EntraDomainName"] as? String {
+                self.entraDomainName = value
             }
             if let value = dict["ExpiredTime"] as? String {
                 self.expiredTime = value
@@ -29651,6 +29715,8 @@ public class DescribeDesktopsResponseBody : Tea.TeaModel {
                 }
             }
         }
+        public var accountType: String?
+
         public var bindAmount: Int32?
 
         public var bundleId: String?
@@ -29694,6 +29760,8 @@ public class DescribeDesktopsResponseBody : Tea.TeaModel {
         public var downgradedTimes: Int64?
 
         public var endUserIds: [String]?
+
+        public var entraDomainName: String?
 
         public var expiredTime: String?
 
@@ -29799,6 +29867,9 @@ public class DescribeDesktopsResponseBody : Tea.TeaModel {
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
+            if self.accountType != nil {
+                map["AccountType"] = self.accountType!
+            }
             if self.bindAmount != nil {
                 map["BindAmount"] = self.bindAmount!
             }
@@ -29872,6 +29943,9 @@ public class DescribeDesktopsResponseBody : Tea.TeaModel {
             }
             if self.endUserIds != nil {
                 map["EndUserIds"] = self.endUserIds!
+            }
+            if self.entraDomainName != nil {
+                map["EntraDomainName"] = self.entraDomainName!
             }
             if self.expiredTime != nil {
                 map["ExpiredTime"] = self.expiredTime!
@@ -30022,6 +30096,9 @@ public class DescribeDesktopsResponseBody : Tea.TeaModel {
 
         public override func fromMap(_ dict: [String: Any?]?) -> Void {
             guard let dict else { return }
+            if let value = dict["AccountType"] as? String {
+                self.accountType = value
+            }
             if let value = dict["BindAmount"] as? Int32 {
                 self.bindAmount = value
             }
@@ -30107,6 +30184,9 @@ public class DescribeDesktopsResponseBody : Tea.TeaModel {
             }
             if let value = dict["EndUserIds"] as? [String] {
                 self.endUserIds = value
+            }
+            if let value = dict["EntraDomainName"] as? String {
+                self.entraDomainName = value
             }
             if let value = dict["ExpiredTime"] as? String {
                 self.expiredTime = value
@@ -34080,6 +34160,586 @@ public class DescribeFotaTasksResponse : Tea.TeaModel {
         }
         if let value = dict["body"] as? [String: Any?] {
             var model = DescribeFotaTasksResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
+public class DescribeGlobalDesktopRecordsRequest : Tea.TeaModel {
+    public var desktopId: [String]?
+
+    public var desktopName: String?
+
+    public var desktopType: String?
+
+    public var endTime: String?
+
+    public var endUserId: String?
+
+    public var officeSiteId: String?
+
+    public var orderBy: String?
+
+    public var pageNumber: Int32?
+
+    public var pageSize: Int32?
+
+    public var regionId: String?
+
+    public var resourceGroupId: String?
+
+    public var scope: String?
+
+    public var sortType: String?
+
+    public var startTime: String?
+
+    public var subPayType: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.desktopId != nil {
+            map["DesktopId"] = self.desktopId!
+        }
+        if self.desktopName != nil {
+            map["DesktopName"] = self.desktopName!
+        }
+        if self.desktopType != nil {
+            map["DesktopType"] = self.desktopType!
+        }
+        if self.endTime != nil {
+            map["EndTime"] = self.endTime!
+        }
+        if self.endUserId != nil {
+            map["EndUserId"] = self.endUserId!
+        }
+        if self.officeSiteId != nil {
+            map["OfficeSiteId"] = self.officeSiteId!
+        }
+        if self.orderBy != nil {
+            map["OrderBy"] = self.orderBy!
+        }
+        if self.pageNumber != nil {
+            map["PageNumber"] = self.pageNumber!
+        }
+        if self.pageSize != nil {
+            map["PageSize"] = self.pageSize!
+        }
+        if self.regionId != nil {
+            map["RegionId"] = self.regionId!
+        }
+        if self.resourceGroupId != nil {
+            map["ResourceGroupId"] = self.resourceGroupId!
+        }
+        if self.scope != nil {
+            map["Scope"] = self.scope!
+        }
+        if self.sortType != nil {
+            map["SortType"] = self.sortType!
+        }
+        if self.startTime != nil {
+            map["StartTime"] = self.startTime!
+        }
+        if self.subPayType != nil {
+            map["SubPayType"] = self.subPayType!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["DesktopId"] as? [String] {
+            self.desktopId = value
+        }
+        if let value = dict["DesktopName"] as? String {
+            self.desktopName = value
+        }
+        if let value = dict["DesktopType"] as? String {
+            self.desktopType = value
+        }
+        if let value = dict["EndTime"] as? String {
+            self.endTime = value
+        }
+        if let value = dict["EndUserId"] as? String {
+            self.endUserId = value
+        }
+        if let value = dict["OfficeSiteId"] as? String {
+            self.officeSiteId = value
+        }
+        if let value = dict["OrderBy"] as? String {
+            self.orderBy = value
+        }
+        if let value = dict["PageNumber"] as? Int32 {
+            self.pageNumber = value
+        }
+        if let value = dict["PageSize"] as? Int32 {
+            self.pageSize = value
+        }
+        if let value = dict["RegionId"] as? String {
+            self.regionId = value
+        }
+        if let value = dict["ResourceGroupId"] as? String {
+            self.resourceGroupId = value
+        }
+        if let value = dict["Scope"] as? String {
+            self.scope = value
+        }
+        if let value = dict["SortType"] as? String {
+            self.sortType = value
+        }
+        if let value = dict["StartTime"] as? String {
+            self.startTime = value
+        }
+        if let value = dict["SubPayType"] as? String {
+            self.subPayType = value
+        }
+    }
+}
+
+public class DescribeGlobalDesktopRecordsResponseBody : Tea.TeaModel {
+    public class Sessions : Tea.TeaModel {
+        public class ResourceGroups : Tea.TeaModel {
+            public var resourceGroupId: String?
+
+            public var resourceGroupName: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.resourceGroupId != nil {
+                    map["ResourceGroupId"] = self.resourceGroupId!
+                }
+                if self.resourceGroupName != nil {
+                    map["ResourceGroupName"] = self.resourceGroupName!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["ResourceGroupId"] as? String {
+                    self.resourceGroupId = value
+                }
+                if let value = dict["ResourceGroupName"] as? String {
+                    self.resourceGroupName = value
+                }
+            }
+        }
+        public class Sessions : Tea.TeaModel {
+            public var endUserId: String?
+
+            public var establishmentTime: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.endUserId != nil {
+                    map["EndUserId"] = self.endUserId!
+                }
+                if self.establishmentTime != nil {
+                    map["EstablishmentTime"] = self.establishmentTime!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["EndUserId"] as? String {
+                    self.endUserId = value
+                }
+                if let value = dict["EstablishmentTime"] as? String {
+                    self.establishmentTime = value
+                }
+            }
+        }
+        public var connectionStatus: String?
+
+        public var cpu: Int32?
+
+        public var desktopGroupId: String?
+
+        public var desktopGroupName: String?
+
+        public var desktopId: String?
+
+        public var desktopName: String?
+
+        public var desktopStatus: String?
+
+        public var endUserId: String?
+
+        public var endUserIds: [String]?
+
+        public var gpuSpec: String?
+
+        public var latestConnectionTime: Int64?
+
+        public var memory: Int64?
+
+        public var officeSiteId: String?
+
+        public var officeSiteName: String?
+
+        public var osType: String?
+
+        public var platform: String?
+
+        public var protocolType: String?
+
+        public var regionId: String?
+
+        public var resourceGroups: [DescribeGlobalDesktopRecordsResponseBody.Sessions.ResourceGroups]?
+
+        public var sessionIdleTime: Int64?
+
+        public var sessions: [DescribeGlobalDesktopRecordsResponseBody.Sessions.Sessions]?
+
+        public var statusChangeTime: Int64?
+
+        public var subPayType: String?
+
+        public var totalConnectionTime: Int64?
+
+        public var upTime: Int64?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.connectionStatus != nil {
+                map["ConnectionStatus"] = self.connectionStatus!
+            }
+            if self.cpu != nil {
+                map["Cpu"] = self.cpu!
+            }
+            if self.desktopGroupId != nil {
+                map["DesktopGroupId"] = self.desktopGroupId!
+            }
+            if self.desktopGroupName != nil {
+                map["DesktopGroupName"] = self.desktopGroupName!
+            }
+            if self.desktopId != nil {
+                map["DesktopId"] = self.desktopId!
+            }
+            if self.desktopName != nil {
+                map["DesktopName"] = self.desktopName!
+            }
+            if self.desktopStatus != nil {
+                map["DesktopStatus"] = self.desktopStatus!
+            }
+            if self.endUserId != nil {
+                map["EndUserId"] = self.endUserId!
+            }
+            if self.endUserIds != nil {
+                map["EndUserIds"] = self.endUserIds!
+            }
+            if self.gpuSpec != nil {
+                map["GpuSpec"] = self.gpuSpec!
+            }
+            if self.latestConnectionTime != nil {
+                map["LatestConnectionTime"] = self.latestConnectionTime!
+            }
+            if self.memory != nil {
+                map["Memory"] = self.memory!
+            }
+            if self.officeSiteId != nil {
+                map["OfficeSiteId"] = self.officeSiteId!
+            }
+            if self.officeSiteName != nil {
+                map["OfficeSiteName"] = self.officeSiteName!
+            }
+            if self.osType != nil {
+                map["OsType"] = self.osType!
+            }
+            if self.platform != nil {
+                map["Platform"] = self.platform!
+            }
+            if self.protocolType != nil {
+                map["ProtocolType"] = self.protocolType!
+            }
+            if self.regionId != nil {
+                map["RegionId"] = self.regionId!
+            }
+            if self.resourceGroups != nil {
+                var tmp : [Any] = []
+                for k in self.resourceGroups! {
+                    tmp.append(k.toMap())
+                }
+                map["ResourceGroups"] = tmp
+            }
+            if self.sessionIdleTime != nil {
+                map["SessionIdleTime"] = self.sessionIdleTime!
+            }
+            if self.sessions != nil {
+                var tmp : [Any] = []
+                for k in self.sessions! {
+                    tmp.append(k.toMap())
+                }
+                map["Sessions"] = tmp
+            }
+            if self.statusChangeTime != nil {
+                map["StatusChangeTime"] = self.statusChangeTime!
+            }
+            if self.subPayType != nil {
+                map["SubPayType"] = self.subPayType!
+            }
+            if self.totalConnectionTime != nil {
+                map["TotalConnectionTime"] = self.totalConnectionTime!
+            }
+            if self.upTime != nil {
+                map["UpTime"] = self.upTime!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["ConnectionStatus"] as? String {
+                self.connectionStatus = value
+            }
+            if let value = dict["Cpu"] as? Int32 {
+                self.cpu = value
+            }
+            if let value = dict["DesktopGroupId"] as? String {
+                self.desktopGroupId = value
+            }
+            if let value = dict["DesktopGroupName"] as? String {
+                self.desktopGroupName = value
+            }
+            if let value = dict["DesktopId"] as? String {
+                self.desktopId = value
+            }
+            if let value = dict["DesktopName"] as? String {
+                self.desktopName = value
+            }
+            if let value = dict["DesktopStatus"] as? String {
+                self.desktopStatus = value
+            }
+            if let value = dict["EndUserId"] as? String {
+                self.endUserId = value
+            }
+            if let value = dict["EndUserIds"] as? [String] {
+                self.endUserIds = value
+            }
+            if let value = dict["GpuSpec"] as? String {
+                self.gpuSpec = value
+            }
+            if let value = dict["LatestConnectionTime"] as? Int64 {
+                self.latestConnectionTime = value
+            }
+            if let value = dict["Memory"] as? Int64 {
+                self.memory = value
+            }
+            if let value = dict["OfficeSiteId"] as? String {
+                self.officeSiteId = value
+            }
+            if let value = dict["OfficeSiteName"] as? String {
+                self.officeSiteName = value
+            }
+            if let value = dict["OsType"] as? String {
+                self.osType = value
+            }
+            if let value = dict["Platform"] as? String {
+                self.platform = value
+            }
+            if let value = dict["ProtocolType"] as? String {
+                self.protocolType = value
+            }
+            if let value = dict["RegionId"] as? String {
+                self.regionId = value
+            }
+            if let value = dict["ResourceGroups"] as? [Any?] {
+                var tmp : [DescribeGlobalDesktopRecordsResponseBody.Sessions.ResourceGroups] = []
+                for v in value {
+                    if v != nil {
+                        var model = DescribeGlobalDesktopRecordsResponseBody.Sessions.ResourceGroups()
+                        if v != nil {
+                            model.fromMap(v as? [String: Any?])
+                        }
+                        tmp.append(model)
+                    }
+                }
+                self.resourceGroups = tmp
+            }
+            if let value = dict["SessionIdleTime"] as? Int64 {
+                self.sessionIdleTime = value
+            }
+            if let value = dict["Sessions"] as? [Any?] {
+                var tmp : [DescribeGlobalDesktopRecordsResponseBody.Sessions.Sessions] = []
+                for v in value {
+                    if v != nil {
+                        var model = DescribeGlobalDesktopRecordsResponseBody.Sessions.Sessions()
+                        if v != nil {
+                            model.fromMap(v as? [String: Any?])
+                        }
+                        tmp.append(model)
+                    }
+                }
+                self.sessions = tmp
+            }
+            if let value = dict["StatusChangeTime"] as? Int64 {
+                self.statusChangeTime = value
+            }
+            if let value = dict["SubPayType"] as? String {
+                self.subPayType = value
+            }
+            if let value = dict["TotalConnectionTime"] as? Int64 {
+                self.totalConnectionTime = value
+            }
+            if let value = dict["UpTime"] as? Int64 {
+                self.upTime = value
+            }
+        }
+    }
+    public var requestId: String?
+
+    public var sessions: [DescribeGlobalDesktopRecordsResponseBody.Sessions]?
+
+    public var totalCount: Int32?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.sessions != nil {
+            var tmp : [Any] = []
+            for k in self.sessions! {
+                tmp.append(k.toMap())
+            }
+            map["Sessions"] = tmp
+        }
+        if self.totalCount != nil {
+            map["TotalCount"] = self.totalCount!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+        if let value = dict["Sessions"] as? [Any?] {
+            var tmp : [DescribeGlobalDesktopRecordsResponseBody.Sessions] = []
+            for v in value {
+                if v != nil {
+                    var model = DescribeGlobalDesktopRecordsResponseBody.Sessions()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.sessions = tmp
+        }
+        if let value = dict["TotalCount"] as? Int32 {
+            self.totalCount = value
+        }
+    }
+}
+
+public class DescribeGlobalDesktopRecordsResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: DescribeGlobalDesktopRecordsResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = DescribeGlobalDesktopRecordsResponseBody()
             model.fromMap(value)
             self.body = model
         }
@@ -38167,7 +38827,11 @@ public class DescribeOfficeSitesResponseBody : Tea.TeaModel {
 
         public var acceleratorId: String?
 
+        public var accountType: String?
+
         public var adHostname: String?
+
+        public var authorityHost: String?
 
         public var backupDCHostname: String?
 
@@ -38180,6 +38844,10 @@ public class DescribeOfficeSitesResponseBody : Tea.TeaModel {
         public var cenId: String?
 
         public var cidrBlock: String?
+
+        public var clientId: String?
+
+        public var clientSecret: String?
 
         public var cloudBoxOfficeSite: Bool?
 
@@ -38265,6 +38933,8 @@ public class DescribeOfficeSitesResponseBody : Tea.TeaModel {
 
         public var subnetMode: String?
 
+        public var tenantId: String?
+
         public var totalEdsCount: Int64?
 
         public var totalEdsCountForGroup: Int64?
@@ -38303,8 +38973,14 @@ public class DescribeOfficeSitesResponseBody : Tea.TeaModel {
             if self.acceleratorId != nil {
                 map["AcceleratorId"] = self.acceleratorId!
             }
+            if self.accountType != nil {
+                map["AccountType"] = self.accountType!
+            }
             if self.adHostname != nil {
                 map["AdHostname"] = self.adHostname!
+            }
+            if self.authorityHost != nil {
+                map["AuthorityHost"] = self.authorityHost!
             }
             if self.backupDCHostname != nil {
                 map["BackupDCHostname"] = self.backupDCHostname!
@@ -38323,6 +38999,12 @@ public class DescribeOfficeSitesResponseBody : Tea.TeaModel {
             }
             if self.cidrBlock != nil {
                 map["CidrBlock"] = self.cidrBlock!
+            }
+            if self.clientId != nil {
+                map["ClientId"] = self.clientId!
+            }
+            if self.clientSecret != nil {
+                map["ClientSecret"] = self.clientSecret!
             }
             if self.cloudBoxOfficeSite != nil {
                 map["CloudBoxOfficeSite"] = self.cloudBoxOfficeSite!
@@ -38458,6 +39140,9 @@ public class DescribeOfficeSitesResponseBody : Tea.TeaModel {
             if self.subnetMode != nil {
                 map["SubnetMode"] = self.subnetMode!
             }
+            if self.tenantId != nil {
+                map["TenantId"] = self.tenantId!
+            }
             if self.totalEdsCount != nil {
                 map["TotalEdsCount"] = self.totalEdsCount!
             }
@@ -38500,8 +39185,14 @@ public class DescribeOfficeSitesResponseBody : Tea.TeaModel {
             if let value = dict["AcceleratorId"] as? String {
                 self.acceleratorId = value
             }
+            if let value = dict["AccountType"] as? String {
+                self.accountType = value
+            }
             if let value = dict["AdHostname"] as? String {
                 self.adHostname = value
+            }
+            if let value = dict["AuthorityHost"] as? String {
+                self.authorityHost = value
             }
             if let value = dict["BackupDCHostname"] as? String {
                 self.backupDCHostname = value
@@ -38520,6 +39211,12 @@ public class DescribeOfficeSitesResponseBody : Tea.TeaModel {
             }
             if let value = dict["CidrBlock"] as? String {
                 self.cidrBlock = value
+            }
+            if let value = dict["ClientId"] as? String {
+                self.clientId = value
+            }
+            if let value = dict["ClientSecret"] as? String {
+                self.clientSecret = value
             }
             if let value = dict["CloudBoxOfficeSite"] as? Bool {
                 self.cloudBoxOfficeSite = value
@@ -38666,6 +39363,9 @@ public class DescribeOfficeSitesResponseBody : Tea.TeaModel {
             }
             if let value = dict["SubnetMode"] as? String {
                 self.subnetMode = value
+            }
+            if let value = dict["TenantId"] as? String {
+                self.tenantId = value
             }
             if let value = dict["TotalEdsCount"] as? Int64 {
                 self.totalEdsCount = value
@@ -61796,7 +62496,15 @@ public class ModifyNetworkPackageEnabledResponse : Tea.TeaModel {
 }
 
 public class ModifyOfficeSiteAttributeRequest : Tea.TeaModel {
+    public var authorityHost: String?
+
+    public var clientId: String?
+
+    public var clientSecret: String?
+
     public var desktopAccessType: String?
+
+    public var domainName: String?
 
     public var enableAdminAccess: Bool?
 
@@ -61809,6 +62517,8 @@ public class ModifyOfficeSiteAttributeRequest : Tea.TeaModel {
     public var officeSiteName: String?
 
     public var regionId: String?
+
+    public var tenantId: String?
 
     public override init() {
         super.init()
@@ -61824,8 +62534,20 @@ public class ModifyOfficeSiteAttributeRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.authorityHost != nil {
+            map["AuthorityHost"] = self.authorityHost!
+        }
+        if self.clientId != nil {
+            map["ClientId"] = self.clientId!
+        }
+        if self.clientSecret != nil {
+            map["ClientSecret"] = self.clientSecret!
+        }
         if self.desktopAccessType != nil {
             map["DesktopAccessType"] = self.desktopAccessType!
+        }
+        if self.domainName != nil {
+            map["DomainName"] = self.domainName!
         }
         if self.enableAdminAccess != nil {
             map["EnableAdminAccess"] = self.enableAdminAccess!
@@ -61845,13 +62567,28 @@ public class ModifyOfficeSiteAttributeRequest : Tea.TeaModel {
         if self.regionId != nil {
             map["RegionId"] = self.regionId!
         }
+        if self.tenantId != nil {
+            map["TenantId"] = self.tenantId!
+        }
         return map
     }
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["AuthorityHost"] as? String {
+            self.authorityHost = value
+        }
+        if let value = dict["ClientId"] as? String {
+            self.clientId = value
+        }
+        if let value = dict["ClientSecret"] as? String {
+            self.clientSecret = value
+        }
         if let value = dict["DesktopAccessType"] as? String {
             self.desktopAccessType = value
+        }
+        if let value = dict["DomainName"] as? String {
+            self.domainName = value
         }
         if let value = dict["EnableAdminAccess"] as? Bool {
             self.enableAdminAccess = value
@@ -61870,6 +62607,9 @@ public class ModifyOfficeSiteAttributeRequest : Tea.TeaModel {
         }
         if let value = dict["RegionId"] as? String {
             self.regionId = value
+        }
+        if let value = dict["TenantId"] as? String {
+            self.tenantId = value
         }
     }
 }
