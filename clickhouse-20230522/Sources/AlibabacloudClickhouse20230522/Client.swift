@@ -70,6 +70,46 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func changeResourceGroupWithOptions(_ request: ChangeResourceGroupRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ChangeResourceGroupResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.resourceGroupId)) {
+            query["ResourceGroupId"] = request.resourceGroupId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.resourceId)) {
+            query["ResourceId"] = request.resourceId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.resourceRegionId)) {
+            query["ResourceRegionId"] = request.resourceRegionId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.resourceType)) {
+            query["ResourceType"] = request.resourceType ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "ChangeResourceGroup",
+            "version": "2023-05-22",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(ChangeResourceGroupResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func changeResourceGroup(_ request: ChangeResourceGroupRequest) async throws -> ChangeResourceGroupResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await changeResourceGroupWithOptions(request as! ChangeResourceGroupRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func createAccountWithOptions(_ tmpReq: CreateAccountRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> CreateAccountResponse {
         try TeaUtils.Client.validateModel(tmpReq)
         var request: CreateAccountShrinkRequest = CreateAccountShrinkRequest([:])
@@ -306,6 +346,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func createEndpointWithOptions(_ request: CreateEndpointRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> CreateEndpointResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.computingGroupId)) {
+            query["ComputingGroupId"] = request.computingGroupId ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.connectionPrefix)) {
             query["ConnectionPrefix"] = request.connectionPrefix ?? "";
         }
@@ -491,6 +534,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func deleteEndpointWithOptions(_ request: DeleteEndpointRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DeleteEndpointResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.computingGroupId)) {
+            query["ComputingGroupId"] = request.computingGroupId ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.connectionString)) {
             query["ConnectionString"] = request.connectionString ?? "";
         }
@@ -907,6 +953,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func describeProcessListWithOptions(_ request: DescribeProcessListRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DescribeProcessListResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.computingGroupId)) {
+            query["ComputingGroupId"] = request.computingGroupId ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.DBInstanceId)) {
             query["DBInstanceId"] = request.DBInstanceId ?? "";
         }
@@ -996,6 +1045,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func describeSlowLogRecordsWithOptions(_ request: DescribeSlowLogRecordsRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DescribeSlowLogRecordsResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.computingGroupId)) {
+            query["ComputingGroupId"] = request.computingGroupId ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.DBInstanceId)) {
             query["DBInstanceId"] = request.DBInstanceId ?? "";
         }
@@ -1045,6 +1097,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func describeSlowLogTrendWithOptions(_ request: DescribeSlowLogTrendRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DescribeSlowLogTrendResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.computingGroupId)) {
+            query["ComputingGroupId"] = request.computingGroupId ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.DBInstanceId)) {
             query["DBInstanceId"] = request.DBInstanceId ?? "";
         }
@@ -1091,6 +1146,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func killProcessWithOptions(_ request: KillProcessRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> KillProcessResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.computingGroupId)) {
+            query["ComputingGroupId"] = request.computingGroupId ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.DBInstanceId)) {
             query["DBInstanceId"] = request.DBInstanceId ?? "";
         }
@@ -1299,6 +1357,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func modifyDBInstanceClassWithOptions(_ request: ModifyDBInstanceClassRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ModifyDBInstanceClassResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.computingGroupId)) {
+            query["ComputingGroupId"] = request.computingGroupId ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.DBInstanceId)) {
             query["DBInstanceId"] = request.DBInstanceId ?? "";
         }
@@ -1391,6 +1452,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func modifyDBInstanceConnectionStringWithOptions(_ request: ModifyDBInstanceConnectionStringRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ModifyDBInstanceConnectionStringResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.computingGroupId)) {
+            query["ComputingGroupId"] = request.computingGroupId ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.connectionString)) {
             query["ConnectionString"] = request.connectionString ?? "";
         }

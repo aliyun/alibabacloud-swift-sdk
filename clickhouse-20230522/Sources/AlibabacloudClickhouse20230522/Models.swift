@@ -5,6 +5,142 @@ import AlibabacloudOpenApi
 import AlibabaCloudOpenApiUtil
 import AlibabacloudEndpointUtil
 
+public class ChangeResourceGroupRequest : Tea.TeaModel {
+    public var resourceGroupId: String?
+
+    public var resourceId: String?
+
+    public var resourceRegionId: String?
+
+    public var resourceType: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.resourceGroupId != nil {
+            map["ResourceGroupId"] = self.resourceGroupId!
+        }
+        if self.resourceId != nil {
+            map["ResourceId"] = self.resourceId!
+        }
+        if self.resourceRegionId != nil {
+            map["ResourceRegionId"] = self.resourceRegionId!
+        }
+        if self.resourceType != nil {
+            map["ResourceType"] = self.resourceType!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["ResourceGroupId"] as? String {
+            self.resourceGroupId = value
+        }
+        if let value = dict["ResourceId"] as? String {
+            self.resourceId = value
+        }
+        if let value = dict["ResourceRegionId"] as? String {
+            self.resourceRegionId = value
+        }
+        if let value = dict["ResourceType"] as? String {
+            self.resourceType = value
+        }
+    }
+}
+
+public class ChangeResourceGroupResponseBody : Tea.TeaModel {
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+    }
+}
+
+public class ChangeResourceGroupResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: ChangeResourceGroupResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = ChangeResourceGroupResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
 public class CreateAccountRequest : Tea.TeaModel {
     public class DmlAuthSetting : Tea.TeaModel {
         public var allowDatabases: [String]?
@@ -1252,6 +1388,8 @@ public class CreateDBInstanceResponse : Tea.TeaModel {
 }
 
 public class CreateEndpointRequest : Tea.TeaModel {
+    public var computingGroupId: String?
+
     public var connectionPrefix: String?
 
     public var DBInstanceId: String?
@@ -1274,6 +1412,9 @@ public class CreateEndpointRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.computingGroupId != nil {
+            map["ComputingGroupId"] = self.computingGroupId!
+        }
         if self.connectionPrefix != nil {
             map["ConnectionPrefix"] = self.connectionPrefix!
         }
@@ -1291,6 +1432,9 @@ public class CreateEndpointRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["ComputingGroupId"] as? String {
+            self.computingGroupId = value
+        }
         if let value = dict["ConnectionPrefix"] as? String {
             self.connectionPrefix = value
         }
@@ -2031,6 +2175,8 @@ public class DeleteDBInstanceResponse : Tea.TeaModel {
 }
 
 public class DeleteEndpointRequest : Tea.TeaModel {
+    public var computingGroupId: String?
+
     public var connectionString: String?
 
     public var DBInstanceId: String?
@@ -2053,6 +2199,9 @@ public class DeleteEndpointRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.computingGroupId != nil {
+            map["ComputingGroupId"] = self.computingGroupId!
+        }
         if self.connectionString != nil {
             map["ConnectionString"] = self.connectionString!
         }
@@ -2070,6 +2219,9 @@ public class DeleteEndpointRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["ComputingGroupId"] as? String {
+            self.computingGroupId = value
+        }
         if let value = dict["ConnectionString"] as? String {
             self.connectionString = value
         }
@@ -5423,6 +5575,8 @@ public class DescribeEndpointsResponse : Tea.TeaModel {
 }
 
 public class DescribeProcessListRequest : Tea.TeaModel {
+    public var computingGroupId: String?
+
     public var DBInstanceId: String?
 
     public var initialQueryId: String?
@@ -5455,6 +5609,9 @@ public class DescribeProcessListRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.computingGroupId != nil {
+            map["ComputingGroupId"] = self.computingGroupId!
+        }
         if self.DBInstanceId != nil {
             map["DBInstanceId"] = self.DBInstanceId!
         }
@@ -5487,6 +5644,9 @@ public class DescribeProcessListRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["ComputingGroupId"] as? String {
+            self.computingGroupId = value
+        }
         if let value = dict["DBInstanceId"] as? String {
             self.DBInstanceId = value
         }
@@ -6001,6 +6161,8 @@ public class DescribeSecurityIPListResponse : Tea.TeaModel {
 }
 
 public class DescribeSlowLogRecordsRequest : Tea.TeaModel {
+    public var computingGroupId: String?
+
     public var DBInstanceId: String?
 
     public var endTime: String?
@@ -6029,6 +6191,9 @@ public class DescribeSlowLogRecordsRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.computingGroupId != nil {
+            map["ComputingGroupId"] = self.computingGroupId!
+        }
         if self.DBInstanceId != nil {
             map["DBInstanceId"] = self.DBInstanceId!
         }
@@ -6055,6 +6220,9 @@ public class DescribeSlowLogRecordsRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["ComputingGroupId"] as? String {
+            self.computingGroupId = value
+        }
         if let value = dict["DBInstanceId"] as? String {
             self.DBInstanceId = value
         }
@@ -6350,6 +6518,8 @@ public class DescribeSlowLogRecordsResponse : Tea.TeaModel {
 }
 
 public class DescribeSlowLogTrendRequest : Tea.TeaModel {
+    public var computingGroupId: String?
+
     public var DBInstanceId: String?
 
     public var endTime: String?
@@ -6376,6 +6546,9 @@ public class DescribeSlowLogTrendRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.computingGroupId != nil {
+            map["ComputingGroupId"] = self.computingGroupId!
+        }
         if self.DBInstanceId != nil {
             map["DBInstanceId"] = self.DBInstanceId!
         }
@@ -6399,6 +6572,9 @@ public class DescribeSlowLogTrendRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["ComputingGroupId"] as? String {
+            self.computingGroupId = value
+        }
         if let value = dict["DBInstanceId"] as? String {
             self.DBInstanceId = value
         }
@@ -6635,6 +6811,8 @@ public class DescribeSlowLogTrendResponse : Tea.TeaModel {
 }
 
 public class KillProcessRequest : Tea.TeaModel {
+    public var computingGroupId: String?
+
     public var DBInstanceId: String?
 
     public var initialQueryId: String?
@@ -6655,6 +6833,9 @@ public class KillProcessRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.computingGroupId != nil {
+            map["ComputingGroupId"] = self.computingGroupId!
+        }
         if self.DBInstanceId != nil {
             map["DBInstanceId"] = self.DBInstanceId!
         }
@@ -6669,6 +6850,9 @@ public class KillProcessRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["ComputingGroupId"] as? String {
+            self.computingGroupId = value
+        }
         if let value = dict["DBInstanceId"] as? String {
             self.DBInstanceId = value
         }
@@ -7590,6 +7774,8 @@ public class ModifyDBInstanceAttributeResponse : Tea.TeaModel {
 }
 
 public class ModifyDBInstanceClassRequest : Tea.TeaModel {
+    public var computingGroupId: String?
+
     public var DBInstanceId: String?
 
     public var nodeCount: Int32?
@@ -7622,6 +7808,9 @@ public class ModifyDBInstanceClassRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.computingGroupId != nil {
+            map["ComputingGroupId"] = self.computingGroupId!
+        }
         if self.DBInstanceId != nil {
             map["DBInstanceId"] = self.DBInstanceId!
         }
@@ -7654,6 +7843,9 @@ public class ModifyDBInstanceClassRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["ComputingGroupId"] as? String {
+            self.computingGroupId = value
+        }
         if let value = dict["DBInstanceId"] as? String {
             self.DBInstanceId = value
         }
@@ -7686,6 +7878,8 @@ public class ModifyDBInstanceClassRequest : Tea.TeaModel {
 
 public class ModifyDBInstanceClassResponseBody : Tea.TeaModel {
     public class Data : Tea.TeaModel {
+        public var computingGroupId: String?
+
         public var DBInstanceID: Int64?
 
         public var DBInstanceName: String?
@@ -7710,6 +7904,9 @@ public class ModifyDBInstanceClassResponseBody : Tea.TeaModel {
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
+            if self.computingGroupId != nil {
+                map["ComputingGroupId"] = self.computingGroupId!
+            }
             if self.DBInstanceID != nil {
                 map["DBInstanceID"] = self.DBInstanceID!
             }
@@ -7730,6 +7927,9 @@ public class ModifyDBInstanceClassResponseBody : Tea.TeaModel {
 
         public override func fromMap(_ dict: [String: Any?]?) -> Void {
             guard let dict else { return }
+            if let value = dict["ComputingGroupId"] as? String {
+                self.computingGroupId = value
+            }
             if let value = dict["DBInstanceID"] as? Int64 {
                 self.DBInstanceID = value
             }
@@ -8008,6 +8208,8 @@ public class ModifyDBInstanceConfigResponse : Tea.TeaModel {
 }
 
 public class ModifyDBInstanceConnectionStringRequest : Tea.TeaModel {
+    public var computingGroupId: String?
+
     public var connectionString: String?
 
     public var connectionStringPrefix: String?
@@ -8034,6 +8236,9 @@ public class ModifyDBInstanceConnectionStringRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.computingGroupId != nil {
+            map["ComputingGroupId"] = self.computingGroupId!
+        }
         if self.connectionString != nil {
             map["ConnectionString"] = self.connectionString!
         }
@@ -8057,6 +8262,9 @@ public class ModifyDBInstanceConnectionStringRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["ComputingGroupId"] as? String {
+            self.computingGroupId = value
+        }
         if let value = dict["ConnectionString"] as? String {
             self.connectionString = value
         }
