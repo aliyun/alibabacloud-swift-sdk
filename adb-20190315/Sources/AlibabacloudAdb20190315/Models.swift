@@ -7132,6 +7132,8 @@ public class DescribeAuditLogRecordsResponseBody : Tea.TeaModel {
 
         public var executeTime: String?
 
+        public var executeTimestamp: Int64?
+
         public var hostAddress: String?
 
         public var processID: String?
@@ -7169,6 +7171,9 @@ public class DescribeAuditLogRecordsResponseBody : Tea.TeaModel {
             if self.executeTime != nil {
                 map["ExecuteTime"] = self.executeTime!
             }
+            if self.executeTimestamp != nil {
+                map["ExecuteTimestamp"] = self.executeTimestamp!
+            }
             if self.hostAddress != nil {
                 map["HostAddress"] = self.hostAddress!
             }
@@ -7203,6 +7208,9 @@ public class DescribeAuditLogRecordsResponseBody : Tea.TeaModel {
             }
             if let value = dict["ExecuteTime"] as? String {
                 self.executeTime = value
+            }
+            if let value = dict["ExecuteTimestamp"] as? Int64 {
+                self.executeTimestamp = value
             }
             if let value = dict["HostAddress"] as? String {
                 self.hostAddress = value
