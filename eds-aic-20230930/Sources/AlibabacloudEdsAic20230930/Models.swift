@@ -9944,6 +9944,8 @@ public class DescribeImageListRequest : Tea.TeaModel {
 
     public var status: String?
 
+    public var systemType: String?
+
     public override init() {
         super.init()
     }
@@ -9989,6 +9991,9 @@ public class DescribeImageListRequest : Tea.TeaModel {
         if self.status != nil {
             map["Status"] = self.status!
         }
+        if self.systemType != nil {
+            map["SystemType"] = self.systemType!
+        }
         return map
     }
 
@@ -10030,6 +10035,9 @@ public class DescribeImageListRequest : Tea.TeaModel {
         }
         if let value = dict["Status"] as? String {
             self.status = value
+        }
+        if let value = dict["SystemType"] as? String {
+            self.systemType = value
         }
     }
 }

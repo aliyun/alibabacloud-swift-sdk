@@ -1471,6 +1471,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.instanceType)) {
             query["InstanceType"] = request.instanceType ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.systemType)) {
+            query["SystemType"] = request.systemType ?? "";
+        }
         var body: [String: Any] = [:]
         if (!TeaUtils.Client.isUnset(request.imageId)) {
             body["ImageId"] = request.imageId ?? "";
