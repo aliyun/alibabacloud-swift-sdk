@@ -160,6 +160,8 @@ public class PushTask : Tea.TeaModel {
 
                     public var importance: Int32?
 
+                    public var liveNotificationPayload: String?
+
                     public var receiptId: String?
 
                     public var urgency: String?
@@ -184,6 +186,9 @@ public class PushTask : Tea.TeaModel {
                         if self.importance != nil {
                             map["Importance"] = self.importance!
                         }
+                        if self.liveNotificationPayload != nil {
+                            map["LiveNotificationPayload"] = self.liveNotificationPayload!
+                        }
                         if self.receiptId != nil {
                             map["ReceiptId"] = self.receiptId!
                         }
@@ -201,6 +206,9 @@ public class PushTask : Tea.TeaModel {
                         if let value = dict["Importance"] as? Int32 {
                             self.importance = value
                         }
+                        if let value = dict["LiveNotificationPayload"] as? String {
+                            self.liveNotificationPayload = value
+                        }
                         if let value = dict["ReceiptId"] as? String {
                             self.receiptId = value
                         }
@@ -209,10 +217,46 @@ public class PushTask : Tea.TeaModel {
                         }
                     }
                 }
+                public class Meizu : Tea.TeaModel {
+                    public var noticeMsgType: Int32?
+
+                    public override init() {
+                        super.init()
+                    }
+
+                    public init(_ dict: [String: Any]) {
+                        super.init()
+                        self.fromMap(dict)
+                    }
+
+                    public override func validate() throws -> Void {
+                    }
+
+                    public override func toMap() -> [String : Any] {
+                        var map = super.toMap()
+                        if self.noticeMsgType != nil {
+                            map["NoticeMsgType"] = self.noticeMsgType!
+                        }
+                        return map
+                    }
+
+                    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                        guard let dict else { return }
+                        if let value = dict["NoticeMsgType"] as? Int32 {
+                            self.noticeMsgType = value
+                        }
+                    }
+                }
                 public class Oppo : Tea.TeaModel {
                     public var category: String?
 
                     public var notifyLevel: Int64?
+
+                    public var privateContentParameters: String?
+
+                    public var privateMsgTemplateId: String?
+
+                    public var privateTitleParameters: String?
 
                     public override init() {
                         super.init()
@@ -234,6 +278,15 @@ public class PushTask : Tea.TeaModel {
                         if self.notifyLevel != nil {
                             map["NotifyLevel"] = self.notifyLevel!
                         }
+                        if self.privateContentParameters != nil {
+                            map["PrivateContentParameters"] = self.privateContentParameters!
+                        }
+                        if self.privateMsgTemplateId != nil {
+                            map["PrivateMsgTemplateId"] = self.privateMsgTemplateId!
+                        }
+                        if self.privateTitleParameters != nil {
+                            map["PrivateTitleParameters"] = self.privateTitleParameters!
+                        }
                         return map
                     }
 
@@ -244,6 +297,15 @@ public class PushTask : Tea.TeaModel {
                         }
                         if let value = dict["NotifyLevel"] as? Int64 {
                             self.notifyLevel = value
+                        }
+                        if let value = dict["PrivateContentParameters"] as? String {
+                            self.privateContentParameters = value
+                        }
+                        if let value = dict["PrivateMsgTemplateId"] as? String {
+                            self.privateMsgTemplateId = value
+                        }
+                        if let value = dict["PrivateTitleParameters"] as? String {
+                            self.privateTitleParameters = value
                         }
                     }
                 }
@@ -329,6 +391,8 @@ public class PushTask : Tea.TeaModel {
 
                 public var huawei: PushTask.Notification.Android.Options.Huawei?
 
+                public var meizu: PushTask.Notification.Android.Options.Meizu?
+
                 public var oppo: PushTask.Notification.Android.Options.Oppo?
 
                 public var vivo: PushTask.Notification.Android.Options.Vivo?
@@ -348,6 +412,7 @@ public class PushTask : Tea.TeaModel {
                     try self.accs?.validate()
                     try self.honor?.validate()
                     try self.huawei?.validate()
+                    try self.meizu?.validate()
                     try self.oppo?.validate()
                     try self.vivo?.validate()
                     try self.xiaomi?.validate()
@@ -363,6 +428,9 @@ public class PushTask : Tea.TeaModel {
                     }
                     if self.huawei != nil {
                         map["Huawei"] = self.huawei?.toMap()
+                    }
+                    if self.meizu != nil {
+                        map["Meizu"] = self.meizu?.toMap()
                     }
                     if self.oppo != nil {
                         map["Oppo"] = self.oppo?.toMap()
@@ -392,6 +460,11 @@ public class PushTask : Tea.TeaModel {
                         var model = PushTask.Notification.Android.Options.Huawei()
                         model.fromMap(value)
                         self.huawei = model
+                    }
+                    if let value = dict["Meizu"] as? [String: Any?] {
+                        var model = PushTask.Notification.Android.Options.Meizu()
+                        model.fromMap(value)
+                        self.meizu = model
                     }
                     if let value = dict["Oppo"] as? [String: Any?] {
                         var model = PushTask.Notification.Android.Options.Oppo()
@@ -573,6 +646,8 @@ public class PushTask : Tea.TeaModel {
 
             public var inboxContent: [String]?
 
+            public var liveViewPayload: String?
+
             public var notifyId: Int32?
 
             public var receiptId: String?
@@ -626,6 +701,9 @@ public class PushTask : Tea.TeaModel {
                 if self.inboxContent != nil {
                     map["InboxContent"] = self.inboxContent!
                 }
+                if self.liveViewPayload != nil {
+                    map["LiveViewPayload"] = self.liveViewPayload!
+                }
                 if self.notifyId != nil {
                     map["NotifyId"] = self.notifyId!
                 }
@@ -675,6 +753,9 @@ public class PushTask : Tea.TeaModel {
                 }
                 if let value = dict["InboxContent"] as? [String] {
                     self.inboxContent = value
+                }
+                if let value = dict["LiveViewPayload"] as? String {
+                    self.liveViewPayload = value
                 }
                 if let value = dict["NotifyId"] as? Int32 {
                     self.notifyId = value
@@ -4011,6 +4092,203 @@ public class MassPushResponse : Tea.TeaModel {
     }
 }
 
+public class MassPushV2Request : Tea.TeaModel {
+    public var appKey: Int64?
+
+    public var idempotentToken: String?
+
+    public var pushTasks: [PushTask]?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.appKey != nil {
+            map["AppKey"] = self.appKey!
+        }
+        if self.idempotentToken != nil {
+            map["IdempotentToken"] = self.idempotentToken!
+        }
+        if self.pushTasks != nil {
+            var tmp : [Any] = []
+            for k in self.pushTasks! {
+                tmp.append(k.toMap())
+            }
+            map["PushTasks"] = tmp
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["AppKey"] as? Int64 {
+            self.appKey = value
+        }
+        if let value = dict["IdempotentToken"] as? String {
+            self.idempotentToken = value
+        }
+        if let value = dict["PushTasks"] as? [Any?] {
+            var tmp : [PushTask] = []
+            for v in value {
+                if v != nil {
+                    var model = PushTask()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.pushTasks = tmp
+        }
+    }
+}
+
+public class MassPushV2ShrinkRequest : Tea.TeaModel {
+    public var appKey: Int64?
+
+    public var idempotentToken: String?
+
+    public var pushTasksShrink: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.appKey != nil {
+            map["AppKey"] = self.appKey!
+        }
+        if self.idempotentToken != nil {
+            map["IdempotentToken"] = self.idempotentToken!
+        }
+        if self.pushTasksShrink != nil {
+            map["PushTasks"] = self.pushTasksShrink!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["AppKey"] as? Int64 {
+            self.appKey = value
+        }
+        if let value = dict["IdempotentToken"] as? String {
+            self.idempotentToken = value
+        }
+        if let value = dict["PushTasks"] as? String {
+            self.pushTasksShrink = value
+        }
+    }
+}
+
+public class MassPushV2ResponseBody : Tea.TeaModel {
+    public var messageIds: [String]?
+
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.messageIds != nil {
+            map["MessageIds"] = self.messageIds!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["MessageIds"] as? [String] {
+            self.messageIds = value
+        }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+    }
+}
+
+public class MassPushV2Response : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: MassPushV2ResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = MassPushV2ResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
 public class PushRequest : Tea.TeaModel {
     public var androidActivity: String?
 
@@ -6620,6 +6898,192 @@ public class PushNoticeToiOSResponse : Tea.TeaModel {
         }
         if let value = dict["body"] as? [String: Any?] {
             var model = PushNoticeToiOSResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
+public class PushV2Request : Tea.TeaModel {
+    public var appKey: Int64?
+
+    public var idempotentToken: String?
+
+    public var pushTask: PushTask?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.pushTask?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.appKey != nil {
+            map["AppKey"] = self.appKey!
+        }
+        if self.idempotentToken != nil {
+            map["IdempotentToken"] = self.idempotentToken!
+        }
+        if self.pushTask != nil {
+            map["PushTask"] = self.pushTask?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["AppKey"] as? Int64 {
+            self.appKey = value
+        }
+        if let value = dict["IdempotentToken"] as? String {
+            self.idempotentToken = value
+        }
+        if let value = dict["PushTask"] as? [String: Any?] {
+            var model = PushTask()
+            model.fromMap(value)
+            self.pushTask = model
+        }
+    }
+}
+
+public class PushV2ShrinkRequest : Tea.TeaModel {
+    public var appKey: Int64?
+
+    public var idempotentToken: String?
+
+    public var pushTaskShrink: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.appKey != nil {
+            map["AppKey"] = self.appKey!
+        }
+        if self.idempotentToken != nil {
+            map["IdempotentToken"] = self.idempotentToken!
+        }
+        if self.pushTaskShrink != nil {
+            map["PushTask"] = self.pushTaskShrink!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["AppKey"] as? Int64 {
+            self.appKey = value
+        }
+        if let value = dict["IdempotentToken"] as? String {
+            self.idempotentToken = value
+        }
+        if let value = dict["PushTask"] as? String {
+            self.pushTaskShrink = value
+        }
+    }
+}
+
+public class PushV2ResponseBody : Tea.TeaModel {
+    public var messageId: String?
+
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.messageId != nil {
+            map["MessageId"] = self.messageId!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["MessageId"] as? String {
+            self.messageId = value
+        }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+    }
+}
+
+public class PushV2Response : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: PushV2ResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = PushV2ResponseBody()
             model.fromMap(value)
             self.body = model
         }

@@ -495,6 +495,48 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func massPushV2WithOptions(_ tmpReq: MassPushV2Request, _ runtime: TeaUtils.RuntimeOptions) async throws -> MassPushV2Response {
+        try TeaUtils.Client.validateModel(tmpReq)
+        var request: MassPushV2ShrinkRequest = MassPushV2ShrinkRequest([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.pushTasks)) {
+            request.pushTasksShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.pushTasks, "PushTasks", "json")
+        }
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.appKey)) {
+            query["AppKey"] = request.appKey!;
+        }
+        if (!TeaUtils.Client.isUnset(request.idempotentToken)) {
+            query["IdempotentToken"] = request.idempotentToken ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.pushTasksShrink)) {
+            query["PushTasks"] = request.pushTasksShrink ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "MassPushV2",
+            "version": "2016-08-01",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(MassPushV2Response(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func massPushV2(_ request: MassPushV2Request) async throws -> MassPushV2Response {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await massPushV2WithOptions(request as! MassPushV2Request, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func pushWithOptions(_ tmpReq: PushRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> PushResponse {
         try TeaUtils.Client.validateModel(tmpReq)
         var request: PushShrinkRequest = PushShrinkRequest([:])
@@ -1066,6 +1108,48 @@ open class Client : AlibabacloudOpenApi.Client {
     public func pushNoticeToiOS(_ request: PushNoticeToiOSRequest) async throws -> PushNoticeToiOSResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         return try await pushNoticeToiOSWithOptions(request as! PushNoticeToiOSRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func pushV2WithOptions(_ tmpReq: PushV2Request, _ runtime: TeaUtils.RuntimeOptions) async throws -> PushV2Response {
+        try TeaUtils.Client.validateModel(tmpReq)
+        var request: PushV2ShrinkRequest = PushV2ShrinkRequest([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.pushTask)) {
+            request.pushTaskShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.pushTask, "PushTask", "json")
+        }
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.appKey)) {
+            query["AppKey"] = request.appKey!;
+        }
+        if (!TeaUtils.Client.isUnset(request.idempotentToken)) {
+            query["IdempotentToken"] = request.idempotentToken ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.pushTaskShrink)) {
+            query["PushTask"] = request.pushTaskShrink ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "PushV2",
+            "version": "2016-08-01",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(PushV2Response(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func pushV2(_ request: PushV2Request) async throws -> PushV2Response {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await pushV2WithOptions(request as! PushV2Request, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
