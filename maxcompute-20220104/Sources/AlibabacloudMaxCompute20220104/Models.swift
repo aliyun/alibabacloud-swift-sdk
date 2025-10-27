@@ -22719,6 +22719,8 @@ public class ListQuotasResponseBody : Tea.TeaModel {
                 public class Parameter : Tea.TeaModel {
                     public var adhocSlot: Int64?
 
+                    public var autoScaleCPULimit: Int64?
+
                     public var elasticReservedCU: Int64?
 
                     public var enablePriority: Bool?
@@ -22727,7 +22729,11 @@ public class ListQuotasResponseBody : Tea.TeaModel {
 
                     public var maxCU: Int64?
 
+                    public var maxGu: Int64?
+
                     public var minCU: Int64?
+
+                    public var minGu: Int64?
 
                     public var schedulerType: String?
 
@@ -22752,6 +22758,9 @@ public class ListQuotasResponseBody : Tea.TeaModel {
                         if self.adhocSlot != nil {
                             map["adhocSlot"] = self.adhocSlot!
                         }
+                        if self.autoScaleCPULimit != nil {
+                            map["autoScaleCPULimit"] = self.autoScaleCPULimit!
+                        }
                         if self.elasticReservedCU != nil {
                             map["elasticReservedCU"] = self.elasticReservedCU!
                         }
@@ -22764,8 +22773,14 @@ public class ListQuotasResponseBody : Tea.TeaModel {
                         if self.maxCU != nil {
                             map["maxCU"] = self.maxCU!
                         }
+                        if self.maxGu != nil {
+                            map["maxGu"] = self.maxGu!
+                        }
                         if self.minCU != nil {
                             map["minCU"] = self.minCU!
+                        }
+                        if self.minGu != nil {
+                            map["minGu"] = self.minGu!
                         }
                         if self.schedulerType != nil {
                             map["schedulerType"] = self.schedulerType!
@@ -22784,6 +22799,9 @@ public class ListQuotasResponseBody : Tea.TeaModel {
                         if let value = dict["adhocSlot"] as? Int64 {
                             self.adhocSlot = value
                         }
+                        if let value = dict["autoScaleCPULimit"] as? Int64 {
+                            self.autoScaleCPULimit = value
+                        }
                         if let value = dict["elasticReservedCU"] as? Int64 {
                             self.elasticReservedCU = value
                         }
@@ -22796,8 +22814,14 @@ public class ListQuotasResponseBody : Tea.TeaModel {
                         if let value = dict["maxCU"] as? Int64 {
                             self.maxCU = value
                         }
+                        if let value = dict["maxGu"] as? Int64 {
+                            self.maxGu = value
+                        }
                         if let value = dict["minCU"] as? Int64 {
                             self.minCU = value
+                        }
+                        if let value = dict["minGu"] as? Int64 {
+                            self.minGu = value
                         }
                         if let value = dict["schedulerType"] as? String {
                             self.schedulerType = value
@@ -23639,6 +23663,8 @@ public class ListQuotasResponseBody : Tea.TeaModel {
             public class Parameter : Tea.TeaModel {
                 public var adhocSlot: Int64?
 
+                public var autoScaleCPULimit: Int64?
+
                 public var elasticReservedCU: Int64?
 
                 public var enablePriority: Bool?
@@ -23675,6 +23701,9 @@ public class ListQuotasResponseBody : Tea.TeaModel {
                     var map = super.toMap()
                     if self.adhocSlot != nil {
                         map["adhocSlot"] = self.adhocSlot!
+                    }
+                    if self.autoScaleCPULimit != nil {
+                        map["autoScaleCPULimit"] = self.autoScaleCPULimit!
                     }
                     if self.elasticReservedCU != nil {
                         map["elasticReservedCU"] = self.elasticReservedCU!
@@ -23713,6 +23742,9 @@ public class ListQuotasResponseBody : Tea.TeaModel {
                     guard let dict else { return }
                     if let value = dict["adhocSlot"] as? Int64 {
                         self.adhocSlot = value
+                    }
+                    if let value = dict["autoScaleCPULimit"] as? Int64 {
+                        self.autoScaleCPULimit = value
                     }
                     if let value = dict["elasticReservedCU"] as? Int64 {
                         self.elasticReservedCU = value
