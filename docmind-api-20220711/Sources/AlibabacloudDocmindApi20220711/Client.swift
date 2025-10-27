@@ -170,9 +170,17 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func getDocParserResultWithOptions(_ request: GetDocParserResultRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> GetDocParserResultResponse {
-        try TeaUtils.Client.validateModel(request)
+    public func getDocParserResultWithOptions(_ tmpReq: GetDocParserResultRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> GetDocParserResultResponse {
+        try TeaUtils.Client.validateModel(tmpReq)
+        var request: GetDocParserResultShrinkRequest = GetDocParserResultShrinkRequest([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.excludeFields)) {
+            request.excludeFieldsShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.excludeFields, "ExcludeFields", "simple")
+        }
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.excludeFieldsShrink)) {
+            query["ExcludeFields"] = request.excludeFieldsShrink ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.id)) {
             query["Id"] = request.id ?? "";
         }

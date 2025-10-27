@@ -256,6 +256,8 @@ public class AyncTradeDocumentPackageExtractSmartAppResponse : Tea.TeaModel {
 }
 
 public class GetDocParserResultRequest : Tea.TeaModel {
+    public var excludeFields: [String]?
+
     public var id: String?
 
     public var layoutNum: Int32?
@@ -276,6 +278,9 @@ public class GetDocParserResultRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.excludeFields != nil {
+            map["ExcludeFields"] = self.excludeFields!
+        }
         if self.id != nil {
             map["Id"] = self.id!
         }
@@ -290,6 +295,64 @@ public class GetDocParserResultRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["ExcludeFields"] as? [String] {
+            self.excludeFields = value
+        }
+        if let value = dict["Id"] as? String {
+            self.id = value
+        }
+        if let value = dict["LayoutNum"] as? Int32 {
+            self.layoutNum = value
+        }
+        if let value = dict["LayoutStepSize"] as? Int32 {
+            self.layoutStepSize = value
+        }
+    }
+}
+
+public class GetDocParserResultShrinkRequest : Tea.TeaModel {
+    public var excludeFieldsShrink: String?
+
+    public var id: String?
+
+    public var layoutNum: Int32?
+
+    public var layoutStepSize: Int32?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.excludeFieldsShrink != nil {
+            map["ExcludeFields"] = self.excludeFieldsShrink!
+        }
+        if self.id != nil {
+            map["Id"] = self.id!
+        }
+        if self.layoutNum != nil {
+            map["LayoutNum"] = self.layoutNum!
+        }
+        if self.layoutStepSize != nil {
+            map["LayoutStepSize"] = self.layoutStepSize!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["ExcludeFields"] as? String {
+            self.excludeFieldsShrink = value
+        }
         if let value = dict["Id"] as? String {
             self.id = value
         }
