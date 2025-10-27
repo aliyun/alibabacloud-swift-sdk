@@ -696,6 +696,8 @@ public class CreateAppGroupRequest : Tea.TeaModel {
 
     public var namespaceSource: String?
 
+    public var notificationPolicyName: String?
+
     public var regionId: String?
 
     public var scheduleBusyWorkers: Bool?
@@ -753,6 +755,9 @@ public class CreateAppGroupRequest : Tea.TeaModel {
         if self.namespaceSource != nil {
             map["NamespaceSource"] = self.namespaceSource!
         }
+        if self.notificationPolicyName != nil {
+            map["NotificationPolicyName"] = self.notificationPolicyName!
+        }
         if self.regionId != nil {
             map["RegionId"] = self.regionId!
         }
@@ -802,6 +807,9 @@ public class CreateAppGroupRequest : Tea.TeaModel {
         }
         if let value = dict["NamespaceSource"] as? String {
             self.namespaceSource = value
+        }
+        if let value = dict["NotificationPolicyName"] as? String {
+            self.notificationPolicyName = value
         }
         if let value = dict["RegionId"] as? String {
             self.regionId = value
@@ -4586,6 +4594,8 @@ public class GetAppGroupResponseBody : Tea.TeaModel {
 
         public var namespace: String?
 
+        public var notificationPolicyName: String?
+
         public override init() {
             super.init()
         }
@@ -4630,6 +4640,9 @@ public class GetAppGroupResponseBody : Tea.TeaModel {
             if self.namespace != nil {
                 map["Namespace"] = self.namespace!
             }
+            if self.notificationPolicyName != nil {
+                map["NotificationPolicyName"] = self.notificationPolicyName!
+            }
             return map
         }
 
@@ -4664,6 +4677,9 @@ public class GetAppGroupResponseBody : Tea.TeaModel {
             }
             if let value = dict["Namespace"] as? String {
                 self.namespace = value
+            }
+            if let value = dict["NotificationPolicyName"] as? String {
+                self.notificationPolicyName = value
             }
         }
     }
@@ -12384,6 +12400,8 @@ public class UpdateAppGroupRequest : Tea.TeaModel {
 
     public var namespace: String?
 
+    public var notificationPolicyName: String?
+
     public var regionId: String?
 
     public override init() {
@@ -12421,6 +12439,9 @@ public class UpdateAppGroupRequest : Tea.TeaModel {
         if self.namespace != nil {
             map["Namespace"] = self.namespace!
         }
+        if self.notificationPolicyName != nil {
+            map["NotificationPolicyName"] = self.notificationPolicyName!
+        }
         if self.regionId != nil {
             map["RegionId"] = self.regionId!
         }
@@ -12449,6 +12470,9 @@ public class UpdateAppGroupRequest : Tea.TeaModel {
         }
         if let value = dict["Namespace"] as? String {
             self.namespace = value
+        }
+        if let value = dict["NotificationPolicyName"] as? String {
+            self.notificationPolicyName = value
         }
         if let value = dict["RegionId"] as? String {
             self.regionId = value
