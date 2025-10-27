@@ -7332,6 +7332,8 @@ public class CreateCenterPolicyRequest : Tea.TeaModel {
 
     public var endUserGroupCoordinate: String?
 
+    public var externalDrive: String?
+
     public var fileMigrate: String?
 
     public var fileTransferAddress: String?
@@ -7636,6 +7638,9 @@ public class CreateCenterPolicyRequest : Tea.TeaModel {
         }
         if self.endUserGroupCoordinate != nil {
             map["EndUserGroupCoordinate"] = self.endUserGroupCoordinate!
+        }
+        if self.externalDrive != nil {
+            map["ExternalDrive"] = self.externalDrive!
         }
         if self.fileMigrate != nil {
             map["FileMigrate"] = self.fileMigrate!
@@ -8071,6 +8076,9 @@ public class CreateCenterPolicyRequest : Tea.TeaModel {
         }
         if let value = dict["EndUserGroupCoordinate"] as? String {
             self.endUserGroupCoordinate = value
+        }
+        if let value = dict["ExternalDrive"] as? String {
+            self.externalDrive = value
         }
         if let value = dict["FileMigrate"] as? String {
             self.fileMigrate = value
@@ -40133,6 +40141,8 @@ public class DescribePolicyGroupsResponseBody : Tea.TeaModel {
 
         public var endUserGroupCoordinate: String?
 
+        public var externalDrive: String?
+
         public var fileMigrate: String?
 
         public var fileTransfer: String?
@@ -40435,6 +40445,9 @@ public class DescribePolicyGroupsResponseBody : Tea.TeaModel {
             }
             if self.endUserGroupCoordinate != nil {
                 map["EndUserGroupCoordinate"] = self.endUserGroupCoordinate!
+            }
+            if self.externalDrive != nil {
+                map["ExternalDrive"] = self.externalDrive!
             }
             if self.fileMigrate != nil {
                 map["FileMigrate"] = self.fileMigrate!
@@ -40866,6 +40879,9 @@ public class DescribePolicyGroupsResponseBody : Tea.TeaModel {
             }
             if let value = dict["EndUserGroupCoordinate"] as? String {
                 self.endUserGroupCoordinate = value
+            }
+            if let value = dict["ExternalDrive"] as? String {
+                self.externalDrive = value
             }
             if let value = dict["FileMigrate"] as? String {
                 self.fileMigrate = value
@@ -57483,6 +57499,8 @@ public class ModifyCenterPolicyRequest : Tea.TeaModel {
 
     public var endUserGroupCoordinate: String?
 
+    public var externalDrive: String?
+
     public var fileMigrate: String?
 
     public var fileTransferAddress: String?
@@ -57793,6 +57811,9 @@ public class ModifyCenterPolicyRequest : Tea.TeaModel {
         }
         if self.endUserGroupCoordinate != nil {
             map["EndUserGroupCoordinate"] = self.endUserGroupCoordinate!
+        }
+        if self.externalDrive != nil {
+            map["ExternalDrive"] = self.externalDrive!
         }
         if self.fileMigrate != nil {
             map["FileMigrate"] = self.fileMigrate!
@@ -58245,6 +58266,9 @@ public class ModifyCenterPolicyRequest : Tea.TeaModel {
         }
         if let value = dict["EndUserGroupCoordinate"] as? String {
             self.endUserGroupCoordinate = value
+        }
+        if let value = dict["ExternalDrive"] as? String {
+            self.externalDrive = value
         }
         if let value = dict["FileMigrate"] as? String {
             self.fileMigrate = value

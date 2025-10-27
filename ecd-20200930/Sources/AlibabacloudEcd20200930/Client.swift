@@ -1769,6 +1769,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.endUserGroupCoordinate)) {
             query["EndUserGroupCoordinate"] = request.endUserGroupCoordinate ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.externalDrive)) {
+            query["ExternalDrive"] = request.externalDrive ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.fileMigrate)) {
             query["FileMigrate"] = request.fileMigrate ?? "";
         }
@@ -10009,6 +10012,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.endUserGroupCoordinate)) {
             query["EndUserGroupCoordinate"] = request.endUserGroupCoordinate ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.externalDrive)) {
+            query["ExternalDrive"] = request.externalDrive ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.fileMigrate)) {
             query["FileMigrate"] = request.fileMigrate ?? "";
