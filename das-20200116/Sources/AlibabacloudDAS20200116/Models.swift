@@ -9252,6 +9252,8 @@ public class DescribeSlowLogHistogramAsyncResponseBody : Tea.TeaModel {
 
                     public var insRole: String?
 
+                    public var totalCount: Int64?
+
                     public override init() {
                         super.init()
                     }
@@ -9275,6 +9277,9 @@ public class DescribeSlowLogHistogramAsyncResponseBody : Tea.TeaModel {
                         if self.insRole != nil {
                             map["InsRole"] = self.insRole!
                         }
+                        if self.totalCount != nil {
+                            map["TotalCount"] = self.totalCount!
+                        }
                         return map
                     }
 
@@ -9289,13 +9294,20 @@ public class DescribeSlowLogHistogramAsyncResponseBody : Tea.TeaModel {
                         if let value = dict["InsRole"] as? String {
                             self.insRole = value
                         }
+                        if let value = dict["TotalCount"] as? Int64 {
+                            self.totalCount = value
+                        }
                     }
                 }
                 public var count: [Int64]?
 
                 public var insItems: [DescribeSlowLogHistogramAsyncResponseBody.Data.Data.Item.InsItems]?
 
+                public var insRole: String?
+
                 public var nodeId: String?
+
+                public var totalCount: Int64?
 
                 public override init() {
                     super.init()
@@ -9321,8 +9333,14 @@ public class DescribeSlowLogHistogramAsyncResponseBody : Tea.TeaModel {
                         }
                         map["InsItems"] = tmp
                     }
+                    if self.insRole != nil {
+                        map["InsRole"] = self.insRole!
+                    }
                     if self.nodeId != nil {
                         map["NodeId"] = self.nodeId!
+                    }
+                    if self.totalCount != nil {
+                        map["TotalCount"] = self.totalCount!
                     }
                     return map
                 }
@@ -9345,8 +9363,14 @@ public class DescribeSlowLogHistogramAsyncResponseBody : Tea.TeaModel {
                         }
                         self.insItems = tmp
                     }
+                    if let value = dict["InsRole"] as? String {
+                        self.insRole = value
+                    }
                     if let value = dict["NodeId"] as? String {
                         self.nodeId = value
+                    }
+                    if let value = dict["TotalCount"] as? Int64 {
+                        self.totalCount = value
                     }
                 }
             }
@@ -9451,6 +9475,8 @@ public class DescribeSlowLogHistogramAsyncResponseBody : Tea.TeaModel {
             public var scnt: [Int64]?
 
             public var total: Int64?
+
+            public var totalCount: Int64?
 
             public var ts: [Int64]?
 
@@ -9627,6 +9653,9 @@ public class DescribeSlowLogHistogramAsyncResponseBody : Tea.TeaModel {
                 if self.total != nil {
                     map["Total"] = self.total!
                 }
+                if self.totalCount != nil {
+                    map["TotalCount"] = self.totalCount!
+                }
                 if self.ts != nil {
                     map["Ts"] = self.ts!
                 }
@@ -9800,6 +9829,9 @@ public class DescribeSlowLogHistogramAsyncResponseBody : Tea.TeaModel {
                 }
                 if let value = dict["Total"] as? Int64 {
                     self.total = value
+                }
+                if let value = dict["TotalCount"] as? Int64 {
+                    self.totalCount = value
                 }
                 if let value = dict["Ts"] as? [Int64] {
                     self.ts = value
