@@ -798,6 +798,150 @@ public class ForwardInfoResponse : Tea.TeaModel {
     }
 }
 
+public class CreateDiagnosisRequest : Tea.TeaModel {
+    public var gmtFailureTime: String?
+
+    public var instanceId: String?
+
+    public var problemCategory: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.gmtFailureTime != nil {
+            map["GmtFailureTime"] = self.gmtFailureTime!
+        }
+        if self.instanceId != nil {
+            map["InstanceId"] = self.instanceId!
+        }
+        if self.problemCategory != nil {
+            map["ProblemCategory"] = self.problemCategory!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["GmtFailureTime"] as? String {
+            self.gmtFailureTime = value
+        }
+        if let value = dict["InstanceId"] as? String {
+            self.instanceId = value
+        }
+        if let value = dict["ProblemCategory"] as? String {
+            self.problemCategory = value
+        }
+    }
+}
+
+public class CreateDiagnosisResponseBody : Tea.TeaModel {
+    public var reasonCode: String?
+
+    public var reasonMessage: String?
+
+    public var solutionMessage: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.reasonCode != nil {
+            map["ReasonCode"] = self.reasonCode!
+        }
+        if self.reasonMessage != nil {
+            map["ReasonMessage"] = self.reasonMessage!
+        }
+        if self.solutionMessage != nil {
+            map["SolutionMessage"] = self.solutionMessage!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["ReasonCode"] as? String {
+            self.reasonCode = value
+        }
+        if let value = dict["ReasonMessage"] as? String {
+            self.reasonMessage = value
+        }
+        if let value = dict["SolutionMessage"] as? String {
+            self.solutionMessage = value
+        }
+    }
+}
+
+public class CreateDiagnosisResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: CreateDiagnosisResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = CreateDiagnosisResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
 public class CreateIdleInstanceCullerRequest : Tea.TeaModel {
     public var cpuPercentThreshold: Int32?
 
