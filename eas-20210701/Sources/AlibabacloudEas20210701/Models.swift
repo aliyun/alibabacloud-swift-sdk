@@ -230,6 +230,8 @@ public class Instance : Tea.TeaModel {
 
     public var instanceType: String?
 
+    public var isLatest: Bool?
+
     public var isSpot: Bool?
 
     public var isolated: Bool?
@@ -304,6 +306,9 @@ public class Instance : Tea.TeaModel {
         }
         if self.instanceType != nil {
             map["InstanceType"] = self.instanceType!
+        }
+        if self.isLatest != nil {
+            map["IsLatest"] = self.isLatest!
         }
         if self.isSpot != nil {
             map["IsSpot"] = self.isSpot!
@@ -387,6 +392,9 @@ public class Instance : Tea.TeaModel {
         }
         if let value = dict["InstanceType"] as? String {
             self.instanceType = value
+        }
+        if let value = dict["IsLatest"] as? Bool {
+            self.isLatest = value
         }
         if let value = dict["IsSpot"] as? Bool {
             self.isSpot = value
