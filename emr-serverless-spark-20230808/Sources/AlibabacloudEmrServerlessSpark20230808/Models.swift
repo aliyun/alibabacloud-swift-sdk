@@ -5292,6 +5292,8 @@ public class EditWorkspaceQueueRequest : Tea.TeaModel {
     public class ResourceSpec : Tea.TeaModel {
         public var cu: Int64?
 
+        public var maxCu: Int64?
+
         public override init() {
             super.init()
         }
@@ -5309,6 +5311,9 @@ public class EditWorkspaceQueueRequest : Tea.TeaModel {
             if self.cu != nil {
                 map["cu"] = self.cu!
             }
+            if self.maxCu != nil {
+                map["maxCu"] = self.maxCu!
+            }
             return map
         }
 
@@ -5316,6 +5321,9 @@ public class EditWorkspaceQueueRequest : Tea.TeaModel {
             guard let dict else { return }
             if let value = dict["cu"] as? Int64 {
                 self.cu = value
+            }
+            if let value = dict["maxCu"] as? Int64 {
+                self.maxCu = value
             }
         }
     }
@@ -5924,6 +5932,8 @@ public class GetJobRunResponseBody : Tea.TeaModel {
 
         public var name: String?
 
+        public var notebookAccessUrl: String?
+
         public var releaseVersion: String?
 
         public var resourceOwnerId: String?
@@ -5992,6 +6002,9 @@ public class GetJobRunResponseBody : Tea.TeaModel {
             }
             if self.name != nil {
                 map["name"] = self.name!
+            }
+            if self.notebookAccessUrl != nil {
+                map["notebookAccessUrl"] = self.notebookAccessUrl!
             }
             if self.releaseVersion != nil {
                 map["releaseVersion"] = self.releaseVersion!
@@ -6067,6 +6080,9 @@ public class GetJobRunResponseBody : Tea.TeaModel {
             }
             if let value = dict["name"] as? String {
                 self.name = value
+            }
+            if let value = dict["notebookAccessUrl"] as? String {
+                self.notebookAccessUrl = value
             }
             if let value = dict["releaseVersion"] as? String {
                 self.releaseVersion = value
@@ -9362,6 +9378,8 @@ public class ListJobRunsResponseBody : Tea.TeaModel {
 
         public var releaseVersion: String?
 
+        public var resourceQueueId: String?
+
         public var state: String?
 
         public var stateChangeReason: ListJobRunsResponseBody.JobRuns.StateChangeReason?
@@ -9435,6 +9453,9 @@ public class ListJobRunsResponseBody : Tea.TeaModel {
             }
             if self.releaseVersion != nil {
                 map["releaseVersion"] = self.releaseVersion!
+            }
+            if self.resourceQueueId != nil {
+                map["resourceQueueId"] = self.resourceQueueId!
             }
             if self.state != nil {
                 map["state"] = self.state!
@@ -9513,6 +9534,9 @@ public class ListJobRunsResponseBody : Tea.TeaModel {
             }
             if let value = dict["releaseVersion"] as? String {
                 self.releaseVersion = value
+            }
+            if let value = dict["resourceQueueId"] as? String {
+                self.resourceQueueId = value
             }
             if let value = dict["state"] as? String {
                 self.state = value
@@ -10196,11 +10220,15 @@ public class ListKyuubiSparkApplicationsResponseBody : Tea.TeaModel {
 
         public var exitReason: String?
 
+        public var kyuubiServiceId: String?
+
         public var latestSqlStatementStatus: String?
 
         public var mbSeconds: Int64?
 
         public var resourceQueueId: String?
+
+        public var runLog: RunLog?
 
         public var startTime: String?
 
@@ -10220,6 +10248,7 @@ public class ListKyuubiSparkApplicationsResponseBody : Tea.TeaModel {
         }
 
         public override func validate() throws -> Void {
+            try self.runLog?.validate()
         }
 
         public override func toMap() -> [String : Any] {
@@ -10239,6 +10268,9 @@ public class ListKyuubiSparkApplicationsResponseBody : Tea.TeaModel {
             if self.exitReason != nil {
                 map["exitReason"] = self.exitReason!
             }
+            if self.kyuubiServiceId != nil {
+                map["kyuubiServiceId"] = self.kyuubiServiceId!
+            }
             if self.latestSqlStatementStatus != nil {
                 map["latestSqlStatementStatus"] = self.latestSqlStatementStatus!
             }
@@ -10247,6 +10279,9 @@ public class ListKyuubiSparkApplicationsResponseBody : Tea.TeaModel {
             }
             if self.resourceQueueId != nil {
                 map["resourceQueueId"] = self.resourceQueueId!
+            }
+            if self.runLog != nil {
+                map["runLog"] = self.runLog?.toMap()
             }
             if self.startTime != nil {
                 map["startTime"] = self.startTime!
@@ -10280,6 +10315,9 @@ public class ListKyuubiSparkApplicationsResponseBody : Tea.TeaModel {
             if let value = dict["exitReason"] as? String {
                 self.exitReason = value
             }
+            if let value = dict["kyuubiServiceId"] as? String {
+                self.kyuubiServiceId = value
+            }
             if let value = dict["latestSqlStatementStatus"] as? String {
                 self.latestSqlStatementStatus = value
             }
@@ -10288,6 +10326,11 @@ public class ListKyuubiSparkApplicationsResponseBody : Tea.TeaModel {
             }
             if let value = dict["resourceQueueId"] as? String {
                 self.resourceQueueId = value
+            }
+            if let value = dict["runLog"] as? [String: Any?] {
+                var model = RunLog()
+                model.fromMap(value)
+                self.runLog = model
             }
             if let value = dict["startTime"] as? String {
                 self.startTime = value
@@ -13316,6 +13359,8 @@ public class ListWorkspaceQueuesResponseBody : Tea.TeaModel {
 
         public var paymentType: String?
 
+        public var preheat: Bool?
+
         public var properties: String?
 
         public var queueName: String?
@@ -13370,6 +13415,9 @@ public class ListWorkspaceQueuesResponseBody : Tea.TeaModel {
             }
             if self.paymentType != nil {
                 map["paymentType"] = self.paymentType!
+            }
+            if self.preheat != nil {
+                map["preheat"] = self.preheat!
             }
             if self.properties != nil {
                 map["properties"] = self.properties!
@@ -13430,6 +13478,9 @@ public class ListWorkspaceQueuesResponseBody : Tea.TeaModel {
             }
             if let value = dict["paymentType"] as? String {
                 self.paymentType = value
+            }
+            if let value = dict["preheat"] as? Bool {
+                self.preheat = value
             }
             if let value = dict["properties"] as? String {
                 self.properties = value
