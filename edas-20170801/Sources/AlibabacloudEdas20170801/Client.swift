@@ -8,7 +8,6 @@ import AlibabacloudEndpointUtil
 open class Client : AlibabacloudOpenApi.Client {
     public override init(_ config: AlibabacloudOpenApi.Config) throws {
         try super.init(config)
-        self._signatureAlgorithm = "v2"
         self._endpointRule = "regional"
         self._endpointMap = [
             "ap-northeast-2-pop": "edas.ap-northeast-1.aliyuncs.com",
@@ -849,7 +848,7 @@ open class Client : AlibabacloudOpenApi.Client {
             query["Name"] = request.name ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.servicePorts)) {
-            query["ServicePorts"] = request.servicePorts ?? [:];
+            query["ServicePorts"] = request.servicePorts ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.type)) {
             query["Type"] = request.type ?? "";
@@ -2875,9 +2874,6 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.enableUrlCheck)) {
             query["EnableUrlCheck"] = request.enableUrlCheck!;
-        }
-        if (!TeaUtils.Client.isUnset(request.healthCheckURL)) {
-            query["HealthCheckURL"] = request.healthCheckURL ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.healthCheckUrl)) {
             query["HealthCheckUrl"] = request.healthCheckUrl ?? "";
@@ -6771,7 +6767,7 @@ open class Client : AlibabacloudOpenApi.Client {
             query["Name"] = request.name ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.servicePorts)) {
-            query["ServicePorts"] = request.servicePorts ?? [:];
+            query["ServicePorts"] = request.servicePorts ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.type)) {
             query["Type"] = request.type ?? "";
@@ -6863,6 +6859,51 @@ open class Client : AlibabacloudOpenApi.Client {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         var headers: [String: String] = [:]
         return try await updateK8sSlbWithOptions(request as! UpdateK8sSlbRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func updateLocalitySettingWithOptions(_ request: UpdateLocalitySettingRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> UpdateLocalitySettingResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.appId)) {
+            query["AppId"] = request.appId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.enabled)) {
+            query["Enabled"] = request.enabled!;
+        }
+        if (!TeaUtils.Client.isUnset(request.namespaceId)) {
+            query["NamespaceId"] = request.namespaceId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.region)) {
+            query["Region"] = request.region ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.threshold)) {
+            query["Threshold"] = request.threshold!;
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String],
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "UpdateLocalitySetting",
+            "version": "2017-08-01",
+            "protocol": "HTTPS",
+            "pathname": "/pop/sp/applications/locality/setting",
+            "method": "POST",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(UpdateLocalitySettingResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func updateLocalitySetting(_ request: UpdateLocalitySettingRequest) async throws -> UpdateLocalitySettingResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await updateLocalitySettingWithOptions(request as! UpdateLocalitySettingRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
