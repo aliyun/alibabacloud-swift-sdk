@@ -21181,6 +21181,8 @@ public class ListWorkspacesRequest : Tea.TeaModel {
 
     public var status: String?
 
+    public var userId: String?
+
     public var verbose: Bool?
 
     public var workspaceIds: String?
@@ -21228,6 +21230,9 @@ public class ListWorkspacesRequest : Tea.TeaModel {
         if self.status != nil {
             map["Status"] = self.status!
         }
+        if self.userId != nil {
+            map["UserId"] = self.userId!
+        }
         if self.verbose != nil {
             map["Verbose"] = self.verbose!
         }
@@ -21268,6 +21273,9 @@ public class ListWorkspacesRequest : Tea.TeaModel {
         }
         if let value = dict["Status"] as? String {
             self.status = value
+        }
+        if let value = dict["UserId"] as? String {
+            self.userId = value
         }
         if let value = dict["Verbose"] as? Bool {
             self.verbose = value
