@@ -1306,6 +1306,8 @@ public class CreateFlowLogRequest : Tea.TeaModel {
 
     public var tag: [CreateFlowLogRequest.Tag]?
 
+    public var targetSlsRegionId: String?
+
     public var version: String?
 
     public override init() {
@@ -1365,6 +1367,9 @@ public class CreateFlowLogRequest : Tea.TeaModel {
             }
             map["Tag"] = tmp
         }
+        if self.targetSlsRegionId != nil {
+            map["TargetSlsRegionId"] = self.targetSlsRegionId!
+        }
         if self.version != nil {
             map["Version"] = self.version!
         }
@@ -1421,6 +1426,9 @@ public class CreateFlowLogRequest : Tea.TeaModel {
                 }
             }
             self.tag = tmp
+        }
+        if let value = dict["TargetSlsRegionId"] as? String {
+            self.targetSlsRegionId = value
         }
         if let value = dict["Version"] as? String {
             self.version = value

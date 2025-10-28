@@ -324,6 +324,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.tag)) {
             query["Tag"] = request.tag ?? [];
         }
+        if (!TeaUtils.Client.isUnset(request.targetSlsRegionId)) {
+            query["TargetSlsRegionId"] = request.targetSlsRegionId ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.version)) {
             query["Version"] = request.version ?? "";
         }
