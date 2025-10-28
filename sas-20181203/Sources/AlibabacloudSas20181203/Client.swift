@@ -7598,6 +7598,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.checkWarningId)) {
             query["CheckWarningId"] = request.checkWarningId!;
         }
+        if (!TeaUtils.Client.isUnset(request.containerName)) {
+            query["ContainerName"] = request.containerName ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.lang)) {
             query["Lang"] = request.lang ?? "";
         }
