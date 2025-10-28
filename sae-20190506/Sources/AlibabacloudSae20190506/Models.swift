@@ -36685,6 +36685,8 @@ public class DescribeNamespaceResourcesResponseBody : Tea.TeaModel {
 
         public var securityGroupId: String?
 
+        public var slsConfigs: String?
+
         public var tenantId: String?
 
         public var userId: String?
@@ -36750,6 +36752,9 @@ public class DescribeNamespaceResourcesResponseBody : Tea.TeaModel {
             if self.securityGroupId != nil {
                 map["SecurityGroupId"] = self.securityGroupId!
             }
+            if self.slsConfigs != nil {
+                map["SlsConfigs"] = self.slsConfigs!
+            }
             if self.tenantId != nil {
                 map["TenantId"] = self.tenantId!
             }
@@ -36811,6 +36816,9 @@ public class DescribeNamespaceResourcesResponseBody : Tea.TeaModel {
             }
             if let value = dict["SecurityGroupId"] as? String {
                 self.securityGroupId = value
+            }
+            if let value = dict["SlsConfigs"] as? String {
+                self.slsConfigs = value
             }
             if let value = dict["TenantId"] as? String {
                 self.tenantId = value
