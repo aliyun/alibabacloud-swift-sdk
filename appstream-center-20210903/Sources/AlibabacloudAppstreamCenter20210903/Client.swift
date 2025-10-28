@@ -635,6 +635,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.appInstanceId)) {
             body["AppInstanceId"] = request.appInstanceId ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.appInstancePersistentId)) {
+            body["AppInstancePersistentId"] = request.appInstancePersistentId ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.clientId)) {
             body["ClientId"] = request.clientId ?? "";
         }

@@ -2486,6 +2486,8 @@ public class UnbindRequest : Tea.TeaModel {
 
     public var appInstanceId: String?
 
+    public var appInstancePersistentId: String?
+
     public var clientId: String?
 
     public var clientIp: String?
@@ -2528,6 +2530,9 @@ public class UnbindRequest : Tea.TeaModel {
         }
         if self.appInstanceId != nil {
             map["AppInstanceId"] = self.appInstanceId!
+        }
+        if self.appInstancePersistentId != nil {
+            map["AppInstancePersistentId"] = self.appInstancePersistentId!
         }
         if self.clientId != nil {
             map["ClientId"] = self.clientId!
@@ -2572,6 +2577,9 @@ public class UnbindRequest : Tea.TeaModel {
         }
         if let value = dict["AppInstanceId"] as? String {
             self.appInstanceId = value
+        }
+        if let value = dict["AppInstancePersistentId"] as? String {
+            self.appInstancePersistentId = value
         }
         if let value = dict["ClientId"] as? String {
             self.clientId = value
