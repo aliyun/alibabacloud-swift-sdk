@@ -62,6 +62,78 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func createBackgroundPicWithOptions(_ request: CreateBackgroundPicRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> CreateBackgroundPicResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.filename)) {
+            query["filename"] = request.filename ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.ossKey)) {
+            query["ossKey"] = request.ossKey ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String],
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "CreateBackgroundPic",
+            "version": "2025-05-27",
+            "protocol": "HTTPS",
+            "pathname": "/openapi/chat/createBackgroundPic",
+            "method": "POST",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(CreateBackgroundPicResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func createBackgroundPic(_ request: CreateBackgroundPicRequest) async throws -> CreateBackgroundPicResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await createBackgroundPicWithOptions(request as! CreateBackgroundPicRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func createChatConfigWithOptions(_ request: CreateChatConfigRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> CreateChatConfigResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.avatarId)) {
+            query["avatarId"] = request.avatarId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.backgroundId)) {
+            query["backgroundId"] = request.backgroundId ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String],
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "CreateChatConfig",
+            "version": "2025-05-27",
+            "protocol": "HTTPS",
+            "pathname": "/openapi/chat/createChatConfig",
+            "method": "POST",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(CreateChatConfigResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func createChatConfig(_ request: CreateChatConfigRequest) async throws -> CreateChatConfigResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await createChatConfigWithOptions(request as! CreateChatConfigRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func createChatSessionWithOptions(_ id: String, _ request: CreateChatSessionRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> CreateChatSessionResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
@@ -98,6 +170,93 @@ open class Client : AlibabacloudOpenApi.Client {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         var headers: [String: String] = [:]
         return try await createChatSessionWithOptions(id as! String, request as! CreateChatSessionRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func createNoTrainPicAvatarWithOptions(_ request: CreateNoTrainPicAvatarRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> CreateNoTrainPicAvatarResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.expressiveness)) {
+            query["expressiveness"] = request.expressiveness ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.gender)) {
+            query["gender"] = request.gender ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.generateAssets)) {
+            query["generateAssets"] = request.generateAssets!;
+        }
+        if (!TeaUtils.Client.isUnset(request.imageOssPath)) {
+            query["imageOssPath"] = request.imageOssPath ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.jwtToken)) {
+            query["jwtToken"] = request.jwtToken ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.name)) {
+            query["name"] = request.name ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.transparent)) {
+            query["transparent"] = request.transparent!;
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String],
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "CreateNoTrainPicAvatar",
+            "version": "2025-05-27",
+            "protocol": "HTTPS",
+            "pathname": "/openapi/chat/createNoTrainPicAvatar",
+            "method": "POST",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(CreateNoTrainPicAvatarResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func createNoTrainPicAvatar(_ request: CreateNoTrainPicAvatarRequest) async throws -> CreateNoTrainPicAvatarResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await createNoTrainPicAvatarWithOptions(request as! CreateNoTrainPicAvatarRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getUploadPolicyWithOptions(_ request: GetUploadPolicyRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> GetUploadPolicyResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.jwtToken)) {
+            query["jwtToken"] = request.jwtToken ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.type)) {
+            query["type"] = request.type ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String],
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "GetUploadPolicy",
+            "version": "2025-05-27",
+            "protocol": "HTTPS",
+            "pathname": "/openapi/chat/getUploadPolicy",
+            "method": "GET",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(GetUploadPolicyResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getUploadPolicy(_ request: GetUploadPolicyRequest) async throws -> GetUploadPolicyResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await getUploadPolicyWithOptions(request as! GetUploadPolicyRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
