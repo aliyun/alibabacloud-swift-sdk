@@ -23445,6 +23445,8 @@ public class GetCreateWorkflowInstancesResultResponseBody : Tea.TeaModel {
 
         public var workflowInstanceIds: [Int64]?
 
+        public var workflowTaskInstanceIds: [Int64]?
+
         public override init() {
             super.init()
         }
@@ -23468,6 +23470,9 @@ public class GetCreateWorkflowInstancesResultResponseBody : Tea.TeaModel {
             if self.workflowInstanceIds != nil {
                 map["WorkflowInstanceIds"] = self.workflowInstanceIds!
             }
+            if self.workflowTaskInstanceIds != nil {
+                map["WorkflowTaskInstanceIds"] = self.workflowTaskInstanceIds!
+            }
             return map
         }
 
@@ -23481,6 +23486,9 @@ public class GetCreateWorkflowInstancesResultResponseBody : Tea.TeaModel {
             }
             if let value = dict["WorkflowInstanceIds"] as? [Int64] {
                 self.workflowInstanceIds = value
+            }
+            if let value = dict["WorkflowTaskInstanceIds"] as? [Int64] {
+                self.workflowTaskInstanceIds = value
             }
         }
     }
@@ -39917,6 +39925,8 @@ public class GetWorkflowInstanceResponseBody : Tea.TeaModel {
 
         public var name: String?
 
+        public var owner: String?
+
         public var projectId: Int64?
 
         public var startedTime: Int64?
@@ -39930,6 +39940,8 @@ public class GetWorkflowInstanceResponseBody : Tea.TeaModel {
         public var workflowId: Int64?
 
         public var workflowParameters: String?
+
+        public var workflowTaskInstanceId: Int64?
 
         public override init() {
             super.init()
@@ -39972,6 +39984,9 @@ public class GetWorkflowInstanceResponseBody : Tea.TeaModel {
             if self.name != nil {
                 map["Name"] = self.name!
             }
+            if self.owner != nil {
+                map["Owner"] = self.owner!
+            }
             if self.projectId != nil {
                 map["ProjectId"] = self.projectId!
             }
@@ -39996,6 +40011,9 @@ public class GetWorkflowInstanceResponseBody : Tea.TeaModel {
             }
             if self.workflowParameters != nil {
                 map["WorkflowParameters"] = self.workflowParameters!
+            }
+            if self.workflowTaskInstanceId != nil {
+                map["WorkflowTaskInstanceId"] = self.workflowTaskInstanceId!
             }
             return map
         }
@@ -40029,6 +40047,9 @@ public class GetWorkflowInstanceResponseBody : Tea.TeaModel {
             if let value = dict["Name"] as? String {
                 self.name = value
             }
+            if let value = dict["Owner"] as? String {
+                self.owner = value
+            }
             if let value = dict["ProjectId"] as? Int64 {
                 self.projectId = value
             }
@@ -40059,6 +40080,9 @@ public class GetWorkflowInstanceResponseBody : Tea.TeaModel {
             }
             if let value = dict["WorkflowParameters"] as? String {
                 self.workflowParameters = value
+            }
+            if let value = dict["WorkflowTaskInstanceId"] as? Int64 {
+                self.workflowTaskInstanceId = value
             }
         }
     }
@@ -70932,6 +70956,8 @@ public class ListWorkflowInstancesResponseBody : Tea.TeaModel {
 
             public var name: String?
 
+            public var owner: String?
+
             public var projectId: Int64?
 
             public var startedTime: Int64?
@@ -70945,6 +70971,8 @@ public class ListWorkflowInstancesResponseBody : Tea.TeaModel {
             public var workflowId: Int64?
 
             public var workflowParameters: String?
+
+            public var workflowTaskInstanceId: Int64?
 
             public override init() {
                 super.init()
@@ -70987,6 +71015,9 @@ public class ListWorkflowInstancesResponseBody : Tea.TeaModel {
                 if self.name != nil {
                     map["Name"] = self.name!
                 }
+                if self.owner != nil {
+                    map["Owner"] = self.owner!
+                }
                 if self.projectId != nil {
                     map["ProjectId"] = self.projectId!
                 }
@@ -71011,6 +71042,9 @@ public class ListWorkflowInstancesResponseBody : Tea.TeaModel {
                 }
                 if self.workflowParameters != nil {
                     map["WorkflowParameters"] = self.workflowParameters!
+                }
+                if self.workflowTaskInstanceId != nil {
+                    map["WorkflowTaskInstanceId"] = self.workflowTaskInstanceId!
                 }
                 return map
             }
@@ -71044,6 +71078,9 @@ public class ListWorkflowInstancesResponseBody : Tea.TeaModel {
                 if let value = dict["Name"] as? String {
                     self.name = value
                 }
+                if let value = dict["Owner"] as? String {
+                    self.owner = value
+                }
                 if let value = dict["ProjectId"] as? Int64 {
                     self.projectId = value
                 }
@@ -71074,6 +71111,9 @@ public class ListWorkflowInstancesResponseBody : Tea.TeaModel {
                 }
                 if let value = dict["WorkflowParameters"] as? String {
                     self.workflowParameters = value
+                }
+                if let value = dict["WorkflowTaskInstanceId"] as? Int64 {
+                    self.workflowTaskInstanceId = value
                 }
             }
         }
