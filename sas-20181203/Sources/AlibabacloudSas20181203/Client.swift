@@ -22925,6 +22925,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.isAgree)) {
             query["IsAgree"] = request.isAgree!;
         }
+        if (!TeaUtils.Client.isUnset(request.isConfirmed)) {
+            query["IsConfirmed"] = request.isConfirmed!;
+        }
         if (!TeaUtils.Client.isUnset(request.isImmediate)) {
             query["IsImmediate"] = request.isImmediate!;
         }
