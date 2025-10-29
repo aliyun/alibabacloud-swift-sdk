@@ -1605,9 +1605,13 @@ public class IcebergSnapshot : Tea.TeaModel {
 
     public var id: Int64?
 
+    public var idString: String?
+
     public var operation: String?
 
     public var parentId: Int64?
+
+    public var parentIdString: String?
 
     public var schemaId: Int64?
 
@@ -1637,11 +1641,17 @@ public class IcebergSnapshot : Tea.TeaModel {
         if self.id != nil {
             map["id"] = self.id!
         }
+        if self.idString != nil {
+            map["idString"] = self.idString!
+        }
         if self.operation != nil {
             map["operation"] = self.operation!
         }
         if self.parentId != nil {
             map["parentId"] = self.parentId!
+        }
+        if self.parentIdString != nil {
+            map["parentIdString"] = self.parentIdString!
         }
         if self.schemaId != nil {
             map["schemaId"] = self.schemaId!
@@ -1666,11 +1676,17 @@ public class IcebergSnapshot : Tea.TeaModel {
         if let value = dict["id"] as? Int64 {
             self.id = value
         }
+        if let value = dict["idString"] as? String {
+            self.idString = value
+        }
         if let value = dict["operation"] as? String {
             self.operation = value
         }
         if let value = dict["parentId"] as? Int64 {
             self.parentId = value
+        }
+        if let value = dict["parentIdString"] as? String {
+            self.parentIdString = value
         }
         if let value = dict["schemaId"] as? Int64 {
             self.schemaId = value
@@ -3174,13 +3190,21 @@ public class Snapshot : Tea.TeaModel {
 
     public var id: Int64?
 
+    public var idString: String?
+
     public var indexManifest: String?
 
     public var logOffsets: [String: Int64]?
 
+    public var parentIdString: String?
+
     public var schemaId: Int64?
 
+    public var sequenceNumber: Int64?
+
     public var statistics: String?
+
+    public var summary: [String: String]?
 
     public var timeMillis: Int64?
 
@@ -3231,17 +3255,29 @@ public class Snapshot : Tea.TeaModel {
         if self.id != nil {
             map["id"] = self.id!
         }
+        if self.idString != nil {
+            map["idString"] = self.idString!
+        }
         if self.indexManifest != nil {
             map["indexManifest"] = self.indexManifest!
         }
         if self.logOffsets != nil {
             map["logOffsets"] = self.logOffsets!
         }
+        if self.parentIdString != nil {
+            map["parentIdString"] = self.parentIdString!
+        }
         if self.schemaId != nil {
             map["schemaId"] = self.schemaId!
         }
+        if self.sequenceNumber != nil {
+            map["sequenceNumber"] = self.sequenceNumber!
+        }
         if self.statistics != nil {
             map["statistics"] = self.statistics!
+        }
+        if self.summary != nil {
+            map["summary"] = self.summary!
         }
         if self.timeMillis != nil {
             map["timeMillis"] = self.timeMillis!
@@ -3287,17 +3323,29 @@ public class Snapshot : Tea.TeaModel {
         if let value = dict["id"] as? Int64 {
             self.id = value
         }
+        if let value = dict["idString"] as? String {
+            self.idString = value
+        }
         if let value = dict["indexManifest"] as? String {
             self.indexManifest = value
         }
         if let value = dict["logOffsets"] as? [String: Int64] {
             self.logOffsets = value
         }
+        if let value = dict["parentIdString"] as? String {
+            self.parentIdString = value
+        }
         if let value = dict["schemaId"] as? Int64 {
             self.schemaId = value
         }
+        if let value = dict["sequenceNumber"] as? Int64 {
+            self.sequenceNumber = value
+        }
         if let value = dict["statistics"] as? String {
             self.statistics = value
+        }
+        if let value = dict["summary"] as? [String: String] {
+            self.summary = value
         }
         if let value = dict["timeMillis"] as? Int64 {
             self.timeMillis = value
@@ -3319,6 +3367,8 @@ public class Table : Tea.TeaModel {
 
     public var createdBy: String?
 
+    public var icebergTableMetadata: IcebergTableMetadata?
+
     public var id: String?
 
     public var isExternal: Bool?
@@ -3339,6 +3389,8 @@ public class Table : Tea.TeaModel {
 
     public var storageClass: String?
 
+    public var type: String?
+
     public var updatedAt: Int64?
 
     public var updatedBy: String?
@@ -3353,6 +3405,7 @@ public class Table : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
+        try self.icebergTableMetadata?.validate()
         try self.schema?.validate()
     }
 
@@ -3363,6 +3416,9 @@ public class Table : Tea.TeaModel {
         }
         if self.createdBy != nil {
             map["createdBy"] = self.createdBy!
+        }
+        if self.icebergTableMetadata != nil {
+            map["icebergTableMetadata"] = self.icebergTableMetadata?.toMap()
         }
         if self.id != nil {
             map["id"] = self.id!
@@ -3394,6 +3450,9 @@ public class Table : Tea.TeaModel {
         if self.storageClass != nil {
             map["storageClass"] = self.storageClass!
         }
+        if self.type != nil {
+            map["type"] = self.type!
+        }
         if self.updatedAt != nil {
             map["updatedAt"] = self.updatedAt!
         }
@@ -3410,6 +3469,11 @@ public class Table : Tea.TeaModel {
         }
         if let value = dict["createdBy"] as? String {
             self.createdBy = value
+        }
+        if let value = dict["icebergTableMetadata"] as? [String: Any?] {
+            var model = IcebergTableMetadata()
+            model.fromMap(value)
+            self.icebergTableMetadata = model
         }
         if let value = dict["id"] as? String {
             self.id = value
@@ -3442,6 +3506,9 @@ public class Table : Tea.TeaModel {
         }
         if let value = dict["storageClass"] as? String {
             self.storageClass = value
+        }
+        if let value = dict["type"] as? String {
+            self.type = value
         }
         if let value = dict["updatedAt"] as? Int64 {
             self.updatedAt = value
@@ -7113,6 +7180,56 @@ public class GetTableResponse : Tea.TeaModel {
         }
         if let value = dict["body"] as? [String: Any?] {
             var model = Table()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
+public class GetTableCompactionResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: TableCompaction?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = TableCompaction()
             model.fromMap(value)
             self.body = model
         }
