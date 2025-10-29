@@ -5281,6 +5281,8 @@ public class RecordCallCenterEventForPartnerRequest : Tea.TeaModel {
 
     public var contactId: String?
 
+    public var employeeCode: String?
+
     public var jobId: String?
 
     public var relatedId: Int64?
@@ -5288,6 +5290,8 @@ public class RecordCallCenterEventForPartnerRequest : Tea.TeaModel {
     public var secretMobile: String?
 
     public var skillType: Int32?
+
+    public var tenantId: String?
 
     public override init() {
         super.init()
@@ -5324,6 +5328,9 @@ public class RecordCallCenterEventForPartnerRequest : Tea.TeaModel {
         if self.contactId != nil {
             map["ContactId"] = self.contactId!
         }
+        if self.employeeCode != nil {
+            map["EmployeeCode"] = self.employeeCode!
+        }
         if self.jobId != nil {
             map["JobId"] = self.jobId!
         }
@@ -5335,6 +5342,9 @@ public class RecordCallCenterEventForPartnerRequest : Tea.TeaModel {
         }
         if self.skillType != nil {
             map["SkillType"] = self.skillType!
+        }
+        if self.tenantId != nil {
+            map["TenantId"] = self.tenantId!
         }
         return map
     }
@@ -5362,6 +5372,9 @@ public class RecordCallCenterEventForPartnerRequest : Tea.TeaModel {
         if let value = dict["ContactId"] as? String {
             self.contactId = value
         }
+        if let value = dict["EmployeeCode"] as? String {
+            self.employeeCode = value
+        }
         if let value = dict["JobId"] as? String {
             self.jobId = value
         }
@@ -5373,6 +5386,9 @@ public class RecordCallCenterEventForPartnerRequest : Tea.TeaModel {
         }
         if let value = dict["SkillType"] as? Int32 {
             self.skillType = value
+        }
+        if let value = dict["TenantId"] as? String {
+            self.tenantId = value
         }
     }
 }
