@@ -111,9 +111,17 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func genericSearchWithOptions(_ request: GenericSearchRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> GenericSearchResponse {
-        try TeaUtils.Client.validateModel(request)
+    public func genericSearchWithOptions(_ tmpReq: GenericSearchRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> GenericSearchResponse {
+        try TeaUtils.Client.validateModel(tmpReq)
+        var request: GenericSearchShrinkRequest = GenericSearchShrinkRequest([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.advancedParams)) {
+            request.advancedParamsShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.advancedParams, "advancedParams", "json")
+        }
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.advancedParamsShrink)) {
+            query["advancedParams"] = request.advancedParamsShrink ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.enableRerank)) {
             query["enableRerank"] = request.enableRerank!;
         }
@@ -275,6 +283,35 @@ open class Client : AlibabacloudOpenApi.Client {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         var headers: [String: String] = [:]
         return try await readPageBasicWithOptions(request as! ReadPageBasicRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func readPageScrapeWithOptions(_ request: ReadPageScrapeRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> ReadPageScrapeResponse {
+        try TeaUtils.Client.validateModel(request)
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String],
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(request.body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "ReadPageScrape",
+            "version": "2024-11-11",
+            "protocol": "HTTPS",
+            "pathname": "/linked-retrieval/linked-retrieval-entry/v1/iqs/readpage/scrape",
+            "method": "POST",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(ReadPageScrapeResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func readPageScrape(_ request: ReadPageScrapeRequest) async throws -> ReadPageScrapeResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await readPageScrapeWithOptions(request as! ReadPageScrapeRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
