@@ -712,6 +712,141 @@ public class AiServiceConfig : Tea.TeaModel {
     }
 }
 
+public class ApigLLMModel : Tea.TeaModel {
+    public var address: String?
+
+    public var apiKey: String?
+
+    public var createdTime: String?
+
+    public var desc: String?
+
+    public var gatewayId: String?
+
+    public var modelId: String?
+
+    public var models: String?
+
+    public var modelsWeight: String?
+
+    public var name: String?
+
+    public var provider: String?
+
+    public var targetId: String?
+
+    public var tenantId: String?
+
+    public var type: String?
+
+    public var updateTime: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.address != nil {
+            map["address"] = self.address!
+        }
+        if self.apiKey != nil {
+            map["apiKey"] = self.apiKey!
+        }
+        if self.createdTime != nil {
+            map["createdTime"] = self.createdTime!
+        }
+        if self.desc != nil {
+            map["desc"] = self.desc!
+        }
+        if self.gatewayId != nil {
+            map["gatewayId"] = self.gatewayId!
+        }
+        if self.modelId != nil {
+            map["modelId"] = self.modelId!
+        }
+        if self.models != nil {
+            map["models"] = self.models!
+        }
+        if self.modelsWeight != nil {
+            map["modelsWeight"] = self.modelsWeight!
+        }
+        if self.name != nil {
+            map["name"] = self.name!
+        }
+        if self.provider != nil {
+            map["provider"] = self.provider!
+        }
+        if self.targetId != nil {
+            map["targetId"] = self.targetId!
+        }
+        if self.tenantId != nil {
+            map["tenantId"] = self.tenantId!
+        }
+        if self.type != nil {
+            map["type"] = self.type!
+        }
+        if self.updateTime != nil {
+            map["updateTime"] = self.updateTime!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["address"] as? String {
+            self.address = value
+        }
+        if let value = dict["apiKey"] as? String {
+            self.apiKey = value
+        }
+        if let value = dict["createdTime"] as? String {
+            self.createdTime = value
+        }
+        if let value = dict["desc"] as? String {
+            self.desc = value
+        }
+        if let value = dict["gatewayId"] as? String {
+            self.gatewayId = value
+        }
+        if let value = dict["modelId"] as? String {
+            self.modelId = value
+        }
+        if let value = dict["models"] as? String {
+            self.models = value
+        }
+        if let value = dict["modelsWeight"] as? String {
+            self.modelsWeight = value
+        }
+        if let value = dict["name"] as? String {
+            self.name = value
+        }
+        if let value = dict["provider"] as? String {
+            self.provider = value
+        }
+        if let value = dict["targetId"] as? String {
+            self.targetId = value
+        }
+        if let value = dict["tenantId"] as? String {
+            self.tenantId = value
+        }
+        if let value = dict["type"] as? String {
+            self.type = value
+        }
+        if let value = dict["updateTime"] as? String {
+            self.updateTime = value
+        }
+    }
+}
+
 public class AttachPolicyConfig : Tea.TeaModel {
     public var className: String?
 
@@ -1387,6 +1522,10 @@ public class CodeConfiguration : Tea.TeaModel {
 
     public var language: String?
 
+    public var ossBucketName: String?
+
+    public var ossObjectName: String?
+
     public var zipFile: String?
 
     public override init() {
@@ -1412,6 +1551,12 @@ public class CodeConfiguration : Tea.TeaModel {
         if self.language != nil {
             map["language"] = self.language!
         }
+        if self.ossBucketName != nil {
+            map["ossBucketName"] = self.ossBucketName!
+        }
+        if self.ossObjectName != nil {
+            map["ossObjectName"] = self.ossObjectName!
+        }
         if self.zipFile != nil {
             map["zipFile"] = self.zipFile!
         }
@@ -1428,6 +1573,12 @@ public class CodeConfiguration : Tea.TeaModel {
         }
         if let value = dict["language"] as? String {
             self.language = value
+        }
+        if let value = dict["ossBucketName"] as? String {
+            self.ossBucketName = value
+        }
+        if let value = dict["ossObjectName"] as? String {
+            self.ossObjectName = value
         }
         if let value = dict["zipFile"] as? String {
             self.zipFile = value
@@ -2189,6 +2340,85 @@ public class CreateAgentRuntimeVersionInput : Tea.TeaModel {
         guard let dict else { return }
         if let value = dict["description"] as? String {
             self.description_ = value
+        }
+    }
+}
+
+public class CreateApigLLMModelInput : Tea.TeaModel {
+    public var address: String?
+
+    public var apiKey: String?
+
+    public var desc: String?
+
+    public var models: [String]?
+
+    public var name: String?
+
+    public var provider: String?
+
+    public var type: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.address != nil {
+            map["address"] = self.address!
+        }
+        if self.apiKey != nil {
+            map["apiKey"] = self.apiKey!
+        }
+        if self.desc != nil {
+            map["desc"] = self.desc!
+        }
+        if self.models != nil {
+            map["models"] = self.models!
+        }
+        if self.name != nil {
+            map["name"] = self.name!
+        }
+        if self.provider != nil {
+            map["provider"] = self.provider!
+        }
+        if self.type != nil {
+            map["type"] = self.type!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["address"] as? String {
+            self.address = value
+        }
+        if let value = dict["apiKey"] as? String {
+            self.apiKey = value
+        }
+        if let value = dict["desc"] as? String {
+            self.desc = value
+        }
+        if let value = dict["models"] as? [String] {
+            self.models = value
+        }
+        if let value = dict["name"] as? String {
+            self.name = value
+        }
+        if let value = dict["provider"] as? String {
+            self.provider = value
+        }
+        if let value = dict["type"] as? String {
+            self.type = value
         }
     }
 }
@@ -7062,6 +7292,85 @@ public class UpdateAgentRuntimeInput : Tea.TeaModel {
         }
         if let value = dict["sessionIdleTimeoutSeconds"] as? Int32 {
             self.sessionIdleTimeoutSeconds = value
+        }
+    }
+}
+
+public class UpdateApigLLMModelInput : Tea.TeaModel {
+    public var address: String?
+
+    public var apiKey: String?
+
+    public var desc: String?
+
+    public var models: [String]?
+
+    public var name: String?
+
+    public var provider: String?
+
+    public var type: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.address != nil {
+            map["address"] = self.address!
+        }
+        if self.apiKey != nil {
+            map["apiKey"] = self.apiKey!
+        }
+        if self.desc != nil {
+            map["desc"] = self.desc!
+        }
+        if self.models != nil {
+            map["models"] = self.models!
+        }
+        if self.name != nil {
+            map["name"] = self.name!
+        }
+        if self.provider != nil {
+            map["provider"] = self.provider!
+        }
+        if self.type != nil {
+            map["type"] = self.type!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["address"] as? String {
+            self.address = value
+        }
+        if let value = dict["apiKey"] as? String {
+            self.apiKey = value
+        }
+        if let value = dict["desc"] as? String {
+            self.desc = value
+        }
+        if let value = dict["models"] as? [String] {
+            self.models = value
+        }
+        if let value = dict["name"] as? String {
+            self.name = value
+        }
+        if let value = dict["provider"] as? String {
+            self.provider = value
+        }
+        if let value = dict["type"] as? String {
+            self.type = value
         }
     }
 }
