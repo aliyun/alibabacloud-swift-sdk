@@ -13830,6 +13830,8 @@ public class DescribeAIDBClusterAttributeResponseBody : Tea.TeaModel {
 
         public var memorySize: String?
 
+        public var publicIp: String?
+
         public var VNodeId: String?
 
         public var VPCId: String?
@@ -13882,6 +13884,9 @@ public class DescribeAIDBClusterAttributeResponseBody : Tea.TeaModel {
             }
             if self.memorySize != nil {
                 map["MemorySize"] = self.memorySize!
+            }
+            if self.publicIp != nil {
+                map["PublicIp"] = self.publicIp!
             }
             if self.VNodeId != nil {
                 map["VNodeId"] = self.VNodeId!
@@ -13936,6 +13941,9 @@ public class DescribeAIDBClusterAttributeResponseBody : Tea.TeaModel {
             }
             if let value = dict["MemorySize"] as? String {
                 self.memorySize = value
+            }
+            if let value = dict["PublicIp"] as? String {
+                self.publicIp = value
             }
             if let value = dict["VNodeId"] as? String {
                 self.VNodeId = value
