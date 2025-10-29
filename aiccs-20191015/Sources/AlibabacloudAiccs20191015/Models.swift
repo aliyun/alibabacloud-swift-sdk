@@ -31498,6 +31498,403 @@ public class MakeDoubleCallResponse : Tea.TeaModel {
     }
 }
 
+public class PageQueryAgentListRequest : Tea.TeaModel {
+    public var agentId: String?
+
+    public var agentName: String?
+
+    public var ownerId: Int64?
+
+    public var pageNo: Int64?
+
+    public var pageSize: Int64?
+
+    public var resourceOwnerAccount: String?
+
+    public var resourceOwnerId: Int64?
+
+    public var status: Int64?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.agentId != nil {
+            map["AgentId"] = self.agentId!
+        }
+        if self.agentName != nil {
+            map["AgentName"] = self.agentName!
+        }
+        if self.ownerId != nil {
+            map["OwnerId"] = self.ownerId!
+        }
+        if self.pageNo != nil {
+            map["PageNo"] = self.pageNo!
+        }
+        if self.pageSize != nil {
+            map["PageSize"] = self.pageSize!
+        }
+        if self.resourceOwnerAccount != nil {
+            map["ResourceOwnerAccount"] = self.resourceOwnerAccount!
+        }
+        if self.resourceOwnerId != nil {
+            map["ResourceOwnerId"] = self.resourceOwnerId!
+        }
+        if self.status != nil {
+            map["Status"] = self.status!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["AgentId"] as? String {
+            self.agentId = value
+        }
+        if let value = dict["AgentName"] as? String {
+            self.agentName = value
+        }
+        if let value = dict["OwnerId"] as? Int64 {
+            self.ownerId = value
+        }
+        if let value = dict["PageNo"] as? Int64 {
+            self.pageNo = value
+        }
+        if let value = dict["PageSize"] as? Int64 {
+            self.pageSize = value
+        }
+        if let value = dict["ResourceOwnerAccount"] as? String {
+            self.resourceOwnerAccount = value
+        }
+        if let value = dict["ResourceOwnerId"] as? Int64 {
+            self.resourceOwnerId = value
+        }
+        if let value = dict["Status"] as? Int64 {
+            self.status = value
+        }
+    }
+}
+
+public class PageQueryAgentListResponseBody : Tea.TeaModel {
+    public class Data : Tea.TeaModel {
+        public class List : Tea.TeaModel {
+            public var agentId: String?
+
+            public var agentName: String?
+
+            public var applicationCode: String?
+
+            public var auditReason: String?
+
+            public var buildFailReason: String?
+
+            public var businessTypeName: String?
+
+            public var createTime: String?
+
+            public var description_: String?
+
+            public var lastOnlineTime: String?
+
+            public var modifyTime: String?
+
+            public var status: Int64?
+
+            public var withConfig: Bool?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.agentId != nil {
+                    map["AgentId"] = self.agentId!
+                }
+                if self.agentName != nil {
+                    map["AgentName"] = self.agentName!
+                }
+                if self.applicationCode != nil {
+                    map["ApplicationCode"] = self.applicationCode!
+                }
+                if self.auditReason != nil {
+                    map["AuditReason"] = self.auditReason!
+                }
+                if self.buildFailReason != nil {
+                    map["BuildFailReason"] = self.buildFailReason!
+                }
+                if self.businessTypeName != nil {
+                    map["BusinessTypeName"] = self.businessTypeName!
+                }
+                if self.createTime != nil {
+                    map["CreateTime"] = self.createTime!
+                }
+                if self.description_ != nil {
+                    map["Description"] = self.description_!
+                }
+                if self.lastOnlineTime != nil {
+                    map["LastOnlineTime"] = self.lastOnlineTime!
+                }
+                if self.modifyTime != nil {
+                    map["ModifyTime"] = self.modifyTime!
+                }
+                if self.status != nil {
+                    map["Status"] = self.status!
+                }
+                if self.withConfig != nil {
+                    map["WithConfig"] = self.withConfig!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["AgentId"] as? String {
+                    self.agentId = value
+                }
+                if let value = dict["AgentName"] as? String {
+                    self.agentName = value
+                }
+                if let value = dict["ApplicationCode"] as? String {
+                    self.applicationCode = value
+                }
+                if let value = dict["AuditReason"] as? String {
+                    self.auditReason = value
+                }
+                if let value = dict["BuildFailReason"] as? String {
+                    self.buildFailReason = value
+                }
+                if let value = dict["BusinessTypeName"] as? String {
+                    self.businessTypeName = value
+                }
+                if let value = dict["CreateTime"] as? String {
+                    self.createTime = value
+                }
+                if let value = dict["Description"] as? String {
+                    self.description_ = value
+                }
+                if let value = dict["LastOnlineTime"] as? String {
+                    self.lastOnlineTime = value
+                }
+                if let value = dict["ModifyTime"] as? String {
+                    self.modifyTime = value
+                }
+                if let value = dict["Status"] as? Int64 {
+                    self.status = value
+                }
+                if let value = dict["WithConfig"] as? Bool {
+                    self.withConfig = value
+                }
+            }
+        }
+        public var list: [PageQueryAgentListResponseBody.Data.List]?
+
+        public var pageNo: Int64?
+
+        public var pageSize: Int64?
+
+        public var total: Int64?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.list != nil {
+                var tmp : [Any] = []
+                for k in self.list! {
+                    tmp.append(k.toMap())
+                }
+                map["List"] = tmp
+            }
+            if self.pageNo != nil {
+                map["PageNo"] = self.pageNo!
+            }
+            if self.pageSize != nil {
+                map["PageSize"] = self.pageSize!
+            }
+            if self.total != nil {
+                map["Total"] = self.total!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["List"] as? [Any?] {
+                var tmp : [PageQueryAgentListResponseBody.Data.List] = []
+                for v in value {
+                    if v != nil {
+                        var model = PageQueryAgentListResponseBody.Data.List()
+                        if v != nil {
+                            model.fromMap(v as? [String: Any?])
+                        }
+                        tmp.append(model)
+                    }
+                }
+                self.list = tmp
+            }
+            if let value = dict["PageNo"] as? Int64 {
+                self.pageNo = value
+            }
+            if let value = dict["PageSize"] as? Int64 {
+                self.pageSize = value
+            }
+            if let value = dict["Total"] as? Int64 {
+                self.total = value
+            }
+        }
+    }
+    public var accessDeniedDetail: String?
+
+    public var code: String?
+
+    public var data: PageQueryAgentListResponseBody.Data?
+
+    public var message: String?
+
+    public var requestId: String?
+
+    public var success: Bool?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.data?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.accessDeniedDetail != nil {
+            map["AccessDeniedDetail"] = self.accessDeniedDetail!
+        }
+        if self.code != nil {
+            map["Code"] = self.code!
+        }
+        if self.data != nil {
+            map["Data"] = self.data?.toMap()
+        }
+        if self.message != nil {
+            map["Message"] = self.message!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.success != nil {
+            map["Success"] = self.success!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["AccessDeniedDetail"] as? String {
+            self.accessDeniedDetail = value
+        }
+        if let value = dict["Code"] as? String {
+            self.code = value
+        }
+        if let value = dict["Data"] as? [String: Any?] {
+            var model = PageQueryAgentListResponseBody.Data()
+            model.fromMap(value)
+            self.data = model
+        }
+        if let value = dict["Message"] as? String {
+            self.message = value
+        }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+        if let value = dict["Success"] as? Bool {
+            self.success = value
+        }
+    }
+}
+
+public class PageQueryAgentListResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: PageQueryAgentListResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = PageQueryAgentListResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
 public class QueryAiCallDetailPageRequest : Tea.TeaModel {
     public var batchId: String?
 
@@ -32835,6 +33232,1192 @@ public class QueryAiCallTaskPageResponse : Tea.TeaModel {
         }
         if let value = dict["body"] as? [String: Any?] {
             var model = QueryAiCallTaskPageResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
+public class QueryAiVoiceAgentDetailRequest : Tea.TeaModel {
+    public var agentId: String?
+
+    public var ownerId: Int64?
+
+    public var resourceOwnerAccount: String?
+
+    public var resourceOwnerId: Int64?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.agentId != nil {
+            map["AgentId"] = self.agentId!
+        }
+        if self.ownerId != nil {
+            map["OwnerId"] = self.ownerId!
+        }
+        if self.resourceOwnerAccount != nil {
+            map["ResourceOwnerAccount"] = self.resourceOwnerAccount!
+        }
+        if self.resourceOwnerId != nil {
+            map["ResourceOwnerId"] = self.resourceOwnerId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["AgentId"] as? String {
+            self.agentId = value
+        }
+        if let value = dict["OwnerId"] as? Int64 {
+            self.ownerId = value
+        }
+        if let value = dict["ResourceOwnerAccount"] as? String {
+            self.resourceOwnerAccount = value
+        }
+        if let value = dict["ResourceOwnerId"] as? Int64 {
+            self.resourceOwnerId = value
+        }
+    }
+}
+
+public class QueryAiVoiceAgentDetailResponseBody : Tea.TeaModel {
+    public class Data : Tea.TeaModel {
+        public class AiVoiceAgentCallConfig : Tea.TeaModel {
+            public class EventConfig : Tea.TeaModel {
+                public var callAssistantHangup: Bool?
+
+                public var callAssistantRecognize: Bool?
+
+                public var muteActive: Bool?
+
+                public var muteDuration: Int64?
+
+                public var muteHangupNum: Int64?
+
+                public var sessionTimeout: Int64?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.callAssistantHangup != nil {
+                        map["CallAssistantHangup"] = self.callAssistantHangup!
+                    }
+                    if self.callAssistantRecognize != nil {
+                        map["CallAssistantRecognize"] = self.callAssistantRecognize!
+                    }
+                    if self.muteActive != nil {
+                        map["MuteActive"] = self.muteActive!
+                    }
+                    if self.muteDuration != nil {
+                        map["MuteDuration"] = self.muteDuration!
+                    }
+                    if self.muteHangupNum != nil {
+                        map["MuteHangupNum"] = self.muteHangupNum!
+                    }
+                    if self.sessionTimeout != nil {
+                        map["SessionTimeout"] = self.sessionTimeout!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                    guard let dict else { return }
+                    if let value = dict["CallAssistantHangup"] as? Bool {
+                        self.callAssistantHangup = value
+                    }
+                    if let value = dict["CallAssistantRecognize"] as? Bool {
+                        self.callAssistantRecognize = value
+                    }
+                    if let value = dict["MuteActive"] as? Bool {
+                        self.muteActive = value
+                    }
+                    if let value = dict["MuteDuration"] as? Int64 {
+                        self.muteDuration = value
+                    }
+                    if let value = dict["MuteHangupNum"] as? Int64 {
+                        self.muteHangupNum = value
+                    }
+                    if let value = dict["SessionTimeout"] as? Int64 {
+                        self.sessionTimeout = value
+                    }
+                }
+            }
+            public class TtsConfig : Tea.TeaModel {
+                public var ttsSpeed: Int64?
+
+                public var ttsStyle: String?
+
+                public var ttsVolume: Int64?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.ttsSpeed != nil {
+                        map["TtsSpeed"] = self.ttsSpeed!
+                    }
+                    if self.ttsStyle != nil {
+                        map["TtsStyle"] = self.ttsStyle!
+                    }
+                    if self.ttsVolume != nil {
+                        map["TtsVolume"] = self.ttsVolume!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                    guard let dict else { return }
+                    if let value = dict["TtsSpeed"] as? Int64 {
+                        self.ttsSpeed = value
+                    }
+                    if let value = dict["TtsStyle"] as? String {
+                        self.ttsStyle = value
+                    }
+                    if let value = dict["TtsVolume"] as? Int64 {
+                        self.ttsVolume = value
+                    }
+                }
+            }
+            public var eventConfig: QueryAiVoiceAgentDetailResponseBody.Data.AiVoiceAgentCallConfig.EventConfig?
+
+            public var ttsConfig: QueryAiVoiceAgentDetailResponseBody.Data.AiVoiceAgentCallConfig.TtsConfig?
+
+            public var vocabId: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+                try self.eventConfig?.validate()
+                try self.ttsConfig?.validate()
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.eventConfig != nil {
+                    map["EventConfig"] = self.eventConfig?.toMap()
+                }
+                if self.ttsConfig != nil {
+                    map["TtsConfig"] = self.ttsConfig?.toMap()
+                }
+                if self.vocabId != nil {
+                    map["VocabId"] = self.vocabId!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["EventConfig"] as? [String: Any?] {
+                    var model = QueryAiVoiceAgentDetailResponseBody.Data.AiVoiceAgentCallConfig.EventConfig()
+                    model.fromMap(value)
+                    self.eventConfig = model
+                }
+                if let value = dict["TtsConfig"] as? [String: Any?] {
+                    var model = QueryAiVoiceAgentDetailResponseBody.Data.AiVoiceAgentCallConfig.TtsConfig()
+                    model.fromMap(value)
+                    self.ttsConfig = model
+                }
+                if let value = dict["VocabId"] as? String {
+                    self.vocabId = value
+                }
+            }
+        }
+        public class AiVoiceAgentModelConfig : Tea.TeaModel {
+            public class ChildTaskList : Tea.TeaModel {
+                public var childTaskDescription: String?
+
+                public var childTaskName: String?
+
+                public var id: String?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.childTaskDescription != nil {
+                        map["ChildTaskDescription"] = self.childTaskDescription!
+                    }
+                    if self.childTaskName != nil {
+                        map["ChildTaskName"] = self.childTaskName!
+                    }
+                    if self.id != nil {
+                        map["Id"] = self.id!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                    guard let dict else { return }
+                    if let value = dict["ChildTaskDescription"] as? String {
+                        self.childTaskDescription = value
+                    }
+                    if let value = dict["ChildTaskName"] as? String {
+                        self.childTaskName = value
+                    }
+                    if let value = dict["Id"] as? String {
+                        self.id = value
+                    }
+                }
+            }
+            public class CustomExceptionList : Tea.TeaModel {
+                public var exceptionSign: Bool?
+
+                public var exceptionType: String?
+
+                public var reply: String?
+
+                public var supportBreak: Bool?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.exceptionSign != nil {
+                        map["ExceptionSign"] = self.exceptionSign!
+                    }
+                    if self.exceptionType != nil {
+                        map["ExceptionType"] = self.exceptionType!
+                    }
+                    if self.reply != nil {
+                        map["Reply"] = self.reply!
+                    }
+                    if self.supportBreak != nil {
+                        map["SupportBreak"] = self.supportBreak!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                    guard let dict else { return }
+                    if let value = dict["ExceptionSign"] as? Bool {
+                        self.exceptionSign = value
+                    }
+                    if let value = dict["ExceptionType"] as? String {
+                        self.exceptionType = value
+                    }
+                    if let value = dict["Reply"] as? String {
+                        self.reply = value
+                    }
+                    if let value = dict["SupportBreak"] as? Bool {
+                        self.supportBreak = value
+                    }
+                }
+            }
+            public class MainPurpose : Tea.TeaModel {
+                public class MainPurposeEnum : Tea.TeaModel {
+                    public var description_: String?
+
+                    public var id: String?
+
+                    public var value: String?
+
+                    public override init() {
+                        super.init()
+                    }
+
+                    public init(_ dict: [String: Any]) {
+                        super.init()
+                        self.fromMap(dict)
+                    }
+
+                    public override func validate() throws -> Void {
+                    }
+
+                    public override func toMap() -> [String : Any] {
+                        var map = super.toMap()
+                        if self.description_ != nil {
+                            map["Description"] = self.description_!
+                        }
+                        if self.id != nil {
+                            map["Id"] = self.id!
+                        }
+                        if self.value != nil {
+                            map["Value"] = self.value!
+                        }
+                        return map
+                    }
+
+                    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                        guard let dict else { return }
+                        if let value = dict["Description"] as? String {
+                            self.description_ = value
+                        }
+                        if let value = dict["Id"] as? String {
+                            self.id = value
+                        }
+                        if let value = dict["Value"] as? String {
+                            self.value = value
+                        }
+                    }
+                }
+                public var id: String?
+
+                public var mainPurposeDescription: String?
+
+                public var mainPurposeEnum: [QueryAiVoiceAgentDetailResponseBody.Data.AiVoiceAgentModelConfig.MainPurpose.MainPurposeEnum]?
+
+                public var mainPurposeName: String?
+
+                public var mainPurposeType: String?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.id != nil {
+                        map["Id"] = self.id!
+                    }
+                    if self.mainPurposeDescription != nil {
+                        map["MainPurposeDescription"] = self.mainPurposeDescription!
+                    }
+                    if self.mainPurposeEnum != nil {
+                        var tmp : [Any] = []
+                        for k in self.mainPurposeEnum! {
+                            tmp.append(k.toMap())
+                        }
+                        map["MainPurposeEnum"] = tmp
+                    }
+                    if self.mainPurposeName != nil {
+                        map["MainPurposeName"] = self.mainPurposeName!
+                    }
+                    if self.mainPurposeType != nil {
+                        map["MainPurposeType"] = self.mainPurposeType!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                    guard let dict else { return }
+                    if let value = dict["Id"] as? String {
+                        self.id = value
+                    }
+                    if let value = dict["MainPurposeDescription"] as? String {
+                        self.mainPurposeDescription = value
+                    }
+                    if let value = dict["MainPurposeEnum"] as? [Any?] {
+                        var tmp : [QueryAiVoiceAgentDetailResponseBody.Data.AiVoiceAgentModelConfig.MainPurpose.MainPurposeEnum] = []
+                        for v in value {
+                            if v != nil {
+                                var model = QueryAiVoiceAgentDetailResponseBody.Data.AiVoiceAgentModelConfig.MainPurpose.MainPurposeEnum()
+                                if v != nil {
+                                    model.fromMap(v as? [String: Any?])
+                                }
+                                tmp.append(model)
+                            }
+                        }
+                        self.mainPurposeEnum = tmp
+                    }
+                    if let value = dict["MainPurposeName"] as? String {
+                        self.mainPurposeName = value
+                    }
+                    if let value = dict["MainPurposeType"] as? String {
+                        self.mainPurposeType = value
+                    }
+                }
+            }
+            public class OutputTagConfig : Tea.TeaModel {
+                public class OutputTagEnum : Tea.TeaModel {
+                    public var description_: String?
+
+                    public var id: String?
+
+                    public var value: String?
+
+                    public override init() {
+                        super.init()
+                    }
+
+                    public init(_ dict: [String: Any]) {
+                        super.init()
+                        self.fromMap(dict)
+                    }
+
+                    public override func validate() throws -> Void {
+                    }
+
+                    public override func toMap() -> [String : Any] {
+                        var map = super.toMap()
+                        if self.description_ != nil {
+                            map["Description"] = self.description_!
+                        }
+                        if self.id != nil {
+                            map["Id"] = self.id!
+                        }
+                        if self.value != nil {
+                            map["Value"] = self.value!
+                        }
+                        return map
+                    }
+
+                    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                        guard let dict else { return }
+                        if let value = dict["Description"] as? String {
+                            self.description_ = value
+                        }
+                        if let value = dict["Id"] as? String {
+                            self.id = value
+                        }
+                        if let value = dict["Value"] as? String {
+                            self.value = value
+                        }
+                    }
+                }
+                public var id: String?
+
+                public var outputTagDescription: String?
+
+                public var outputTagEnum: [QueryAiVoiceAgentDetailResponseBody.Data.AiVoiceAgentModelConfig.OutputTagConfig.OutputTagEnum]?
+
+                public var outputTagName: String?
+
+                public var outputTagType: String?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.id != nil {
+                        map["Id"] = self.id!
+                    }
+                    if self.outputTagDescription != nil {
+                        map["OutputTagDescription"] = self.outputTagDescription!
+                    }
+                    if self.outputTagEnum != nil {
+                        var tmp : [Any] = []
+                        for k in self.outputTagEnum! {
+                            tmp.append(k.toMap())
+                        }
+                        map["OutputTagEnum"] = tmp
+                    }
+                    if self.outputTagName != nil {
+                        map["OutputTagName"] = self.outputTagName!
+                    }
+                    if self.outputTagType != nil {
+                        map["OutputTagType"] = self.outputTagType!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                    guard let dict else { return }
+                    if let value = dict["Id"] as? String {
+                        self.id = value
+                    }
+                    if let value = dict["OutputTagDescription"] as? String {
+                        self.outputTagDescription = value
+                    }
+                    if let value = dict["OutputTagEnum"] as? [Any?] {
+                        var tmp : [QueryAiVoiceAgentDetailResponseBody.Data.AiVoiceAgentModelConfig.OutputTagConfig.OutputTagEnum] = []
+                        for v in value {
+                            if v != nil {
+                                var model = QueryAiVoiceAgentDetailResponseBody.Data.AiVoiceAgentModelConfig.OutputTagConfig.OutputTagEnum()
+                                if v != nil {
+                                    model.fromMap(v as? [String: Any?])
+                                }
+                                tmp.append(model)
+                            }
+                        }
+                        self.outputTagEnum = tmp
+                    }
+                    if let value = dict["OutputTagName"] as? String {
+                        self.outputTagName = value
+                    }
+                    if let value = dict["OutputTagType"] as? String {
+                        self.outputTagType = value
+                    }
+                }
+            }
+            public class PhoneTagConfig : Tea.TeaModel {
+                public class PhoneTagEnum : Tea.TeaModel {
+                    public var description_: String?
+
+                    public var id: String?
+
+                    public var value: String?
+
+                    public override init() {
+                        super.init()
+                    }
+
+                    public init(_ dict: [String: Any]) {
+                        super.init()
+                        self.fromMap(dict)
+                    }
+
+                    public override func validate() throws -> Void {
+                    }
+
+                    public override func toMap() -> [String : Any] {
+                        var map = super.toMap()
+                        if self.description_ != nil {
+                            map["Description"] = self.description_!
+                        }
+                        if self.id != nil {
+                            map["Id"] = self.id!
+                        }
+                        if self.value != nil {
+                            map["Value"] = self.value!
+                        }
+                        return map
+                    }
+
+                    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                        guard let dict else { return }
+                        if let value = dict["Description"] as? String {
+                            self.description_ = value
+                        }
+                        if let value = dict["Id"] as? String {
+                            self.id = value
+                        }
+                        if let value = dict["Value"] as? String {
+                            self.value = value
+                        }
+                    }
+                }
+                public var id: String?
+
+                public var phoneTagDescription: String?
+
+                public var phoneTagEnum: [QueryAiVoiceAgentDetailResponseBody.Data.AiVoiceAgentModelConfig.PhoneTagConfig.PhoneTagEnum]?
+
+                public var phoneTagKey: String?
+
+                public var phoneTagName: String?
+
+                public var phoneTagRequired: Bool?
+
+                public var phoneTagType: String?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.id != nil {
+                        map["Id"] = self.id!
+                    }
+                    if self.phoneTagDescription != nil {
+                        map["PhoneTagDescription"] = self.phoneTagDescription!
+                    }
+                    if self.phoneTagEnum != nil {
+                        var tmp : [Any] = []
+                        for k in self.phoneTagEnum! {
+                            tmp.append(k.toMap())
+                        }
+                        map["PhoneTagEnum"] = tmp
+                    }
+                    if self.phoneTagKey != nil {
+                        map["PhoneTagKey"] = self.phoneTagKey!
+                    }
+                    if self.phoneTagName != nil {
+                        map["PhoneTagName"] = self.phoneTagName!
+                    }
+                    if self.phoneTagRequired != nil {
+                        map["PhoneTagRequired"] = self.phoneTagRequired!
+                    }
+                    if self.phoneTagType != nil {
+                        map["PhoneTagType"] = self.phoneTagType!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                    guard let dict else { return }
+                    if let value = dict["Id"] as? String {
+                        self.id = value
+                    }
+                    if let value = dict["PhoneTagDescription"] as? String {
+                        self.phoneTagDescription = value
+                    }
+                    if let value = dict["PhoneTagEnum"] as? [Any?] {
+                        var tmp : [QueryAiVoiceAgentDetailResponseBody.Data.AiVoiceAgentModelConfig.PhoneTagConfig.PhoneTagEnum] = []
+                        for v in value {
+                            if v != nil {
+                                var model = QueryAiVoiceAgentDetailResponseBody.Data.AiVoiceAgentModelConfig.PhoneTagConfig.PhoneTagEnum()
+                                if v != nil {
+                                    model.fromMap(v as? [String: Any?])
+                                }
+                                tmp.append(model)
+                            }
+                        }
+                        self.phoneTagEnum = tmp
+                    }
+                    if let value = dict["PhoneTagKey"] as? String {
+                        self.phoneTagKey = value
+                    }
+                    if let value = dict["PhoneTagName"] as? String {
+                        self.phoneTagName = value
+                    }
+                    if let value = dict["PhoneTagRequired"] as? Bool {
+                        self.phoneTagRequired = value
+                    }
+                    if let value = dict["PhoneTagType"] as? String {
+                        self.phoneTagType = value
+                    }
+                }
+            }
+            public var basicTaskDescription: String?
+
+            public var businessType: Int64?
+
+            public var childTaskList: [QueryAiVoiceAgentDetailResponseBody.Data.AiVoiceAgentModelConfig.ChildTaskList]?
+
+            public var customExceptionEnable: Bool?
+
+            public var customExceptionFileId: String?
+
+            public var customExceptionFileName: String?
+
+            public var customExceptionList: [QueryAiVoiceAgentDetailResponseBody.Data.AiVoiceAgentModelConfig.CustomExceptionList]?
+
+            public var customExceptionUrlPath: String?
+
+            public var customExceptionVoiceStyle: Int64?
+
+            public var flowDesc: String?
+
+            public var knowledgeDocIdList: [String]?
+
+            public var knowledgeDocNameList: [String]?
+
+            public var knowledgeDocOriginalNameList: [String]?
+
+            public var knowledgeEnable: Bool?
+
+            public var knowledgeId: String?
+
+            public var mainPurpose: QueryAiVoiceAgentDetailResponseBody.Data.AiVoiceAgentModelConfig.MainPurpose?
+
+            public var outputTagConfig: [QueryAiVoiceAgentDetailResponseBody.Data.AiVoiceAgentModelConfig.OutputTagConfig]?
+
+            public var phoneTagConfig: [QueryAiVoiceAgentDetailResponseBody.Data.AiVoiceAgentModelConfig.PhoneTagConfig]?
+
+            public var prologue: String?
+
+            public var sysRole: String?
+
+            public var taskType: String?
+
+            public var userRole: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+                try self.mainPurpose?.validate()
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.basicTaskDescription != nil {
+                    map["BasicTaskDescription"] = self.basicTaskDescription!
+                }
+                if self.businessType != nil {
+                    map["BusinessType"] = self.businessType!
+                }
+                if self.childTaskList != nil {
+                    var tmp : [Any] = []
+                    for k in self.childTaskList! {
+                        tmp.append(k.toMap())
+                    }
+                    map["ChildTaskList"] = tmp
+                }
+                if self.customExceptionEnable != nil {
+                    map["CustomExceptionEnable"] = self.customExceptionEnable!
+                }
+                if self.customExceptionFileId != nil {
+                    map["CustomExceptionFileId"] = self.customExceptionFileId!
+                }
+                if self.customExceptionFileName != nil {
+                    map["CustomExceptionFileName"] = self.customExceptionFileName!
+                }
+                if self.customExceptionList != nil {
+                    var tmp : [Any] = []
+                    for k in self.customExceptionList! {
+                        tmp.append(k.toMap())
+                    }
+                    map["CustomExceptionList"] = tmp
+                }
+                if self.customExceptionUrlPath != nil {
+                    map["CustomExceptionUrlPath"] = self.customExceptionUrlPath!
+                }
+                if self.customExceptionVoiceStyle != nil {
+                    map["CustomExceptionVoiceStyle"] = self.customExceptionVoiceStyle!
+                }
+                if self.flowDesc != nil {
+                    map["FlowDesc"] = self.flowDesc!
+                }
+                if self.knowledgeDocIdList != nil {
+                    map["KnowledgeDocIdList"] = self.knowledgeDocIdList!
+                }
+                if self.knowledgeDocNameList != nil {
+                    map["KnowledgeDocNameList"] = self.knowledgeDocNameList!
+                }
+                if self.knowledgeDocOriginalNameList != nil {
+                    map["KnowledgeDocOriginalNameList"] = self.knowledgeDocOriginalNameList!
+                }
+                if self.knowledgeEnable != nil {
+                    map["KnowledgeEnable"] = self.knowledgeEnable!
+                }
+                if self.knowledgeId != nil {
+                    map["KnowledgeId"] = self.knowledgeId!
+                }
+                if self.mainPurpose != nil {
+                    map["MainPurpose"] = self.mainPurpose?.toMap()
+                }
+                if self.outputTagConfig != nil {
+                    var tmp : [Any] = []
+                    for k in self.outputTagConfig! {
+                        tmp.append(k.toMap())
+                    }
+                    map["OutputTagConfig"] = tmp
+                }
+                if self.phoneTagConfig != nil {
+                    var tmp : [Any] = []
+                    for k in self.phoneTagConfig! {
+                        tmp.append(k.toMap())
+                    }
+                    map["PhoneTagConfig"] = tmp
+                }
+                if self.prologue != nil {
+                    map["Prologue"] = self.prologue!
+                }
+                if self.sysRole != nil {
+                    map["SysRole"] = self.sysRole!
+                }
+                if self.taskType != nil {
+                    map["TaskType"] = self.taskType!
+                }
+                if self.userRole != nil {
+                    map["UserRole"] = self.userRole!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["BasicTaskDescription"] as? String {
+                    self.basicTaskDescription = value
+                }
+                if let value = dict["BusinessType"] as? Int64 {
+                    self.businessType = value
+                }
+                if let value = dict["ChildTaskList"] as? [Any?] {
+                    var tmp : [QueryAiVoiceAgentDetailResponseBody.Data.AiVoiceAgentModelConfig.ChildTaskList] = []
+                    for v in value {
+                        if v != nil {
+                            var model = QueryAiVoiceAgentDetailResponseBody.Data.AiVoiceAgentModelConfig.ChildTaskList()
+                            if v != nil {
+                                model.fromMap(v as? [String: Any?])
+                            }
+                            tmp.append(model)
+                        }
+                    }
+                    self.childTaskList = tmp
+                }
+                if let value = dict["CustomExceptionEnable"] as? Bool {
+                    self.customExceptionEnable = value
+                }
+                if let value = dict["CustomExceptionFileId"] as? String {
+                    self.customExceptionFileId = value
+                }
+                if let value = dict["CustomExceptionFileName"] as? String {
+                    self.customExceptionFileName = value
+                }
+                if let value = dict["CustomExceptionList"] as? [Any?] {
+                    var tmp : [QueryAiVoiceAgentDetailResponseBody.Data.AiVoiceAgentModelConfig.CustomExceptionList] = []
+                    for v in value {
+                        if v != nil {
+                            var model = QueryAiVoiceAgentDetailResponseBody.Data.AiVoiceAgentModelConfig.CustomExceptionList()
+                            if v != nil {
+                                model.fromMap(v as? [String: Any?])
+                            }
+                            tmp.append(model)
+                        }
+                    }
+                    self.customExceptionList = tmp
+                }
+                if let value = dict["CustomExceptionUrlPath"] as? String {
+                    self.customExceptionUrlPath = value
+                }
+                if let value = dict["CustomExceptionVoiceStyle"] as? Int64 {
+                    self.customExceptionVoiceStyle = value
+                }
+                if let value = dict["FlowDesc"] as? String {
+                    self.flowDesc = value
+                }
+                if let value = dict["KnowledgeDocIdList"] as? [String] {
+                    self.knowledgeDocIdList = value
+                }
+                if let value = dict["KnowledgeDocNameList"] as? [String] {
+                    self.knowledgeDocNameList = value
+                }
+                if let value = dict["KnowledgeDocOriginalNameList"] as? [String] {
+                    self.knowledgeDocOriginalNameList = value
+                }
+                if let value = dict["KnowledgeEnable"] as? Bool {
+                    self.knowledgeEnable = value
+                }
+                if let value = dict["KnowledgeId"] as? String {
+                    self.knowledgeId = value
+                }
+                if let value = dict["MainPurpose"] as? [String: Any?] {
+                    var model = QueryAiVoiceAgentDetailResponseBody.Data.AiVoiceAgentModelConfig.MainPurpose()
+                    model.fromMap(value)
+                    self.mainPurpose = model
+                }
+                if let value = dict["OutputTagConfig"] as? [Any?] {
+                    var tmp : [QueryAiVoiceAgentDetailResponseBody.Data.AiVoiceAgentModelConfig.OutputTagConfig] = []
+                    for v in value {
+                        if v != nil {
+                            var model = QueryAiVoiceAgentDetailResponseBody.Data.AiVoiceAgentModelConfig.OutputTagConfig()
+                            if v != nil {
+                                model.fromMap(v as? [String: Any?])
+                            }
+                            tmp.append(model)
+                        }
+                    }
+                    self.outputTagConfig = tmp
+                }
+                if let value = dict["PhoneTagConfig"] as? [Any?] {
+                    var tmp : [QueryAiVoiceAgentDetailResponseBody.Data.AiVoiceAgentModelConfig.PhoneTagConfig] = []
+                    for v in value {
+                        if v != nil {
+                            var model = QueryAiVoiceAgentDetailResponseBody.Data.AiVoiceAgentModelConfig.PhoneTagConfig()
+                            if v != nil {
+                                model.fromMap(v as? [String: Any?])
+                            }
+                            tmp.append(model)
+                        }
+                    }
+                    self.phoneTagConfig = tmp
+                }
+                if let value = dict["Prologue"] as? String {
+                    self.prologue = value
+                }
+                if let value = dict["SysRole"] as? String {
+                    self.sysRole = value
+                }
+                if let value = dict["TaskType"] as? String {
+                    self.taskType = value
+                }
+                if let value = dict["UserRole"] as? String {
+                    self.userRole = value
+                }
+            }
+        }
+        public var agentId: Int64?
+
+        public var agentName: String?
+
+        public var aiVoiceAgentCallConfig: QueryAiVoiceAgentDetailResponseBody.Data.AiVoiceAgentCallConfig?
+
+        public var aiVoiceAgentModelConfig: QueryAiVoiceAgentDetailResponseBody.Data.AiVoiceAgentModelConfig?
+
+        public var businessTypeName: String?
+
+        public var description_: String?
+
+        public var knowledgeName: String?
+
+        public var status: Int64?
+
+        public var voiceStyleName: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+            try self.aiVoiceAgentCallConfig?.validate()
+            try self.aiVoiceAgentModelConfig?.validate()
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.agentId != nil {
+                map["AgentId"] = self.agentId!
+            }
+            if self.agentName != nil {
+                map["AgentName"] = self.agentName!
+            }
+            if self.aiVoiceAgentCallConfig != nil {
+                map["AiVoiceAgentCallConfig"] = self.aiVoiceAgentCallConfig?.toMap()
+            }
+            if self.aiVoiceAgentModelConfig != nil {
+                map["AiVoiceAgentModelConfig"] = self.aiVoiceAgentModelConfig?.toMap()
+            }
+            if self.businessTypeName != nil {
+                map["BusinessTypeName"] = self.businessTypeName!
+            }
+            if self.description_ != nil {
+                map["Description"] = self.description_!
+            }
+            if self.knowledgeName != nil {
+                map["KnowledgeName"] = self.knowledgeName!
+            }
+            if self.status != nil {
+                map["Status"] = self.status!
+            }
+            if self.voiceStyleName != nil {
+                map["VoiceStyleName"] = self.voiceStyleName!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["AgentId"] as? Int64 {
+                self.agentId = value
+            }
+            if let value = dict["AgentName"] as? String {
+                self.agentName = value
+            }
+            if let value = dict["AiVoiceAgentCallConfig"] as? [String: Any?] {
+                var model = QueryAiVoiceAgentDetailResponseBody.Data.AiVoiceAgentCallConfig()
+                model.fromMap(value)
+                self.aiVoiceAgentCallConfig = model
+            }
+            if let value = dict["AiVoiceAgentModelConfig"] as? [String: Any?] {
+                var model = QueryAiVoiceAgentDetailResponseBody.Data.AiVoiceAgentModelConfig()
+                model.fromMap(value)
+                self.aiVoiceAgentModelConfig = model
+            }
+            if let value = dict["BusinessTypeName"] as? String {
+                self.businessTypeName = value
+            }
+            if let value = dict["Description"] as? String {
+                self.description_ = value
+            }
+            if let value = dict["KnowledgeName"] as? String {
+                self.knowledgeName = value
+            }
+            if let value = dict["Status"] as? Int64 {
+                self.status = value
+            }
+            if let value = dict["VoiceStyleName"] as? String {
+                self.voiceStyleName = value
+            }
+        }
+    }
+    public var accessDeniedDetail: String?
+
+    public var code: String?
+
+    public var data: QueryAiVoiceAgentDetailResponseBody.Data?
+
+    public var message: String?
+
+    public var requestId: String?
+
+    public var success: Bool?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.data?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.accessDeniedDetail != nil {
+            map["AccessDeniedDetail"] = self.accessDeniedDetail!
+        }
+        if self.code != nil {
+            map["Code"] = self.code!
+        }
+        if self.data != nil {
+            map["Data"] = self.data?.toMap()
+        }
+        if self.message != nil {
+            map["Message"] = self.message!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.success != nil {
+            map["Success"] = self.success!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["AccessDeniedDetail"] as? String {
+            self.accessDeniedDetail = value
+        }
+        if let value = dict["Code"] as? String {
+            self.code = value
+        }
+        if let value = dict["Data"] as? [String: Any?] {
+            var model = QueryAiVoiceAgentDetailResponseBody.Data()
+            model.fromMap(value)
+            self.data = model
+        }
+        if let value = dict["Message"] as? String {
+            self.message = value
+        }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+        if let value = dict["Success"] as? Bool {
+            self.success = value
+        }
+    }
+}
+
+public class QueryAiVoiceAgentDetailResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: QueryAiVoiceAgentDetailResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = QueryAiVoiceAgentDetailResponseBody()
             model.fromMap(value)
             self.body = model
         }
