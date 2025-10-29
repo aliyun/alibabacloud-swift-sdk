@@ -2137,6 +2137,8 @@ public class AddCustomLiveStreamTranscodeRequest : Tea.TeaModel {
 
     public var bitrateWithSource: String?
 
+    public var deInterlaced: Bool?
+
     public var domain: String?
 
     public var encryptParameters: String?
@@ -2209,6 +2211,9 @@ public class AddCustomLiveStreamTranscodeRequest : Tea.TeaModel {
         }
         if self.bitrateWithSource != nil {
             map["BitrateWithSource"] = self.bitrateWithSource!
+        }
+        if self.deInterlaced != nil {
+            map["DeInterlaced"] = self.deInterlaced!
         }
         if self.domain != nil {
             map["Domain"] = self.domain!
@@ -2292,6 +2297,9 @@ public class AddCustomLiveStreamTranscodeRequest : Tea.TeaModel {
         }
         if let value = dict["BitrateWithSource"] as? String {
             self.bitrateWithSource = value
+        }
+        if let value = dict["DeInterlaced"] as? Bool {
+            self.deInterlaced = value
         }
         if let value = dict["Domain"] as? String {
             self.domain = value
@@ -54948,6 +54956,8 @@ public class DescribeLiveStreamTranscodeInfoResponseBody : Tea.TeaModel {
 
                 public var bitrateWithSource: [String: Any]?
 
+                public var deInterlaced: Bool?
+
                 public var extWithSource: [String: Any]?
 
                 public var FPS: Int32?
@@ -55004,6 +55014,9 @@ public class DescribeLiveStreamTranscodeInfoResponseBody : Tea.TeaModel {
                     }
                     if self.bitrateWithSource != nil {
                         map["BitrateWithSource"] = self.bitrateWithSource!
+                    }
+                    if self.deInterlaced != nil {
+                        map["DeInterlaced"] = self.deInterlaced!
                     }
                     if self.extWithSource != nil {
                         map["ExtWithSource"] = self.extWithSource!
@@ -55063,6 +55076,9 @@ public class DescribeLiveStreamTranscodeInfoResponseBody : Tea.TeaModel {
                     }
                     if let value = dict["BitrateWithSource"] as? [String: Any] {
                         self.bitrateWithSource = value
+                    }
+                    if let value = dict["DeInterlaced"] as? Bool {
+                        self.deInterlaced = value
                     }
                     if let value = dict["ExtWithSource"] as? [String: Any] {
                         self.extWithSource = value
@@ -84523,6 +84539,197 @@ public class PublishLiveStagingConfigToProductionResponse : Tea.TeaModel {
     }
 }
 
+public class PutRecordStorageLifeCycleRequest : Tea.TeaModel {
+    public var streamIds: [String]?
+
+    public var tag: String?
+
+    public var unixTimestamp: Int64?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.streamIds != nil {
+            map["StreamIds"] = self.streamIds!
+        }
+        if self.tag != nil {
+            map["Tag"] = self.tag!
+        }
+        if self.unixTimestamp != nil {
+            map["UnixTimestamp"] = self.unixTimestamp!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["StreamIds"] as? [String] {
+            self.streamIds = value
+        }
+        if let value = dict["Tag"] as? String {
+            self.tag = value
+        }
+        if let value = dict["UnixTimestamp"] as? Int64 {
+            self.unixTimestamp = value
+        }
+    }
+}
+
+public class PutRecordStorageLifeCycleShrinkRequest : Tea.TeaModel {
+    public var streamIdsShrink: String?
+
+    public var tag: String?
+
+    public var unixTimestamp: Int64?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.streamIdsShrink != nil {
+            map["StreamIds"] = self.streamIdsShrink!
+        }
+        if self.tag != nil {
+            map["Tag"] = self.tag!
+        }
+        if self.unixTimestamp != nil {
+            map["UnixTimestamp"] = self.unixTimestamp!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["StreamIds"] as? String {
+            self.streamIdsShrink = value
+        }
+        if let value = dict["Tag"] as? String {
+            self.tag = value
+        }
+        if let value = dict["UnixTimestamp"] as? Int64 {
+            self.unixTimestamp = value
+        }
+    }
+}
+
+public class PutRecordStorageLifeCycleResponseBody : Tea.TeaModel {
+    public var code: Int32?
+
+    public var msg: String?
+
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.code != nil {
+            map["Code"] = self.code!
+        }
+        if self.msg != nil {
+            map["Msg"] = self.msg!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["Code"] as? Int32 {
+            self.code = value
+        }
+        if let value = dict["Msg"] as? String {
+            self.msg = value
+        }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+    }
+}
+
+public class PutRecordStorageLifeCycleResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: PutRecordStorageLifeCycleResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = PutRecordStorageLifeCycleResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
 public class QueryLiveDomainMultiStreamListRequest : Tea.TeaModel {
     public var domain: String?
 
@@ -96677,6 +96884,8 @@ public class UpdateCustomLiveStreamTranscodeRequest : Tea.TeaModel {
 
     public var bitrateWithSource: String?
 
+    public var deInterlaced: Bool?
+
     public var domain: String?
 
     public var encryptParameters: String?
@@ -96743,6 +96952,9 @@ public class UpdateCustomLiveStreamTranscodeRequest : Tea.TeaModel {
         }
         if self.bitrateWithSource != nil {
             map["BitrateWithSource"] = self.bitrateWithSource!
+        }
+        if self.deInterlaced != nil {
+            map["DeInterlaced"] = self.deInterlaced!
         }
         if self.domain != nil {
             map["Domain"] = self.domain!
@@ -96817,6 +97029,9 @@ public class UpdateCustomLiveStreamTranscodeRequest : Tea.TeaModel {
         }
         if let value = dict["BitrateWithSource"] as? String {
             self.bitrateWithSource = value
+        }
+        if let value = dict["DeInterlaced"] as? Bool {
+            self.deInterlaced = value
         }
         if let value = dict["Domain"] as? String {
             self.domain = value

@@ -489,6 +489,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.bitrateWithSource)) {
             query["BitrateWithSource"] = request.bitrateWithSource ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.deInterlaced)) {
+            query["DeInterlaced"] = request.deInterlaced!;
+        }
         if (!TeaUtils.Client.isUnset(request.domain)) {
             query["Domain"] = request.domain ?? "";
         }
@@ -15391,6 +15394,48 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func putRecordStorageLifeCycleWithOptions(_ tmpReq: PutRecordStorageLifeCycleRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> PutRecordStorageLifeCycleResponse {
+        try TeaUtils.Client.validateModel(tmpReq)
+        var request: PutRecordStorageLifeCycleShrinkRequest = PutRecordStorageLifeCycleShrinkRequest([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.streamIds)) {
+            request.streamIdsShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.streamIds, "StreamIds", "json")
+        }
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.streamIdsShrink)) {
+            body["StreamIds"] = request.streamIdsShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.tag)) {
+            body["Tag"] = request.tag ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.unixTimestamp)) {
+            body["UnixTimestamp"] = request.unixTimestamp!;
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "PutRecordStorageLifeCycle",
+            "version": "2016-11-01",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(PutRecordStorageLifeCycleResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func putRecordStorageLifeCycle(_ request: PutRecordStorageLifeCycleRequest) async throws -> PutRecordStorageLifeCycleResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await putRecordStorageLifeCycleWithOptions(request as! PutRecordStorageLifeCycleRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func queryLiveDomainMultiStreamListWithOptions(_ request: QueryLiveDomainMultiStreamListRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> QueryLiveDomainMultiStreamListResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: String] = AlibabaCloudOpenApiUtil.Client.query(TeaUtils.Client.toMap(request))
@@ -18042,6 +18087,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.bitrateWithSource)) {
             query["BitrateWithSource"] = request.bitrateWithSource ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.deInterlaced)) {
+            query["DeInterlaced"] = request.deInterlaced!;
         }
         if (!TeaUtils.Client.isUnset(request.domain)) {
             query["Domain"] = request.domain ?? "";
