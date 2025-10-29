@@ -517,6 +517,258 @@ public class AddFirewallRulesResponse : Tea.TeaModel {
     }
 }
 
+public class AddPolarFsQuotaRequest : Tea.TeaModel {
+    public class Quotas : Tea.TeaModel {
+        public var accessTTL: Int64?
+
+        public var changeTTL: Int64?
+
+        public var description_: String?
+
+        public var enabled: Bool?
+
+        public var exclude: String?
+
+        public var fileCountLimit: Int64?
+
+        public var include: String?
+
+        public var name: String?
+
+        public var priority: Int32?
+
+        public var sizeLimit: Int64?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.accessTTL != nil {
+                map["AccessTTL"] = self.accessTTL!
+            }
+            if self.changeTTL != nil {
+                map["ChangeTTL"] = self.changeTTL!
+            }
+            if self.description_ != nil {
+                map["Description"] = self.description_!
+            }
+            if self.enabled != nil {
+                map["Enabled"] = self.enabled!
+            }
+            if self.exclude != nil {
+                map["Exclude"] = self.exclude!
+            }
+            if self.fileCountLimit != nil {
+                map["FileCountLimit"] = self.fileCountLimit!
+            }
+            if self.include != nil {
+                map["Include"] = self.include!
+            }
+            if self.name != nil {
+                map["Name"] = self.name!
+            }
+            if self.priority != nil {
+                map["Priority"] = self.priority!
+            }
+            if self.sizeLimit != nil {
+                map["SizeLimit"] = self.sizeLimit!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["AccessTTL"] as? Int64 {
+                self.accessTTL = value
+            }
+            if let value = dict["ChangeTTL"] as? Int64 {
+                self.changeTTL = value
+            }
+            if let value = dict["Description"] as? String {
+                self.description_ = value
+            }
+            if let value = dict["Enabled"] as? Bool {
+                self.enabled = value
+            }
+            if let value = dict["Exclude"] as? String {
+                self.exclude = value
+            }
+            if let value = dict["FileCountLimit"] as? Int64 {
+                self.fileCountLimit = value
+            }
+            if let value = dict["Include"] as? String {
+                self.include = value
+            }
+            if let value = dict["Name"] as? String {
+                self.name = value
+            }
+            if let value = dict["Priority"] as? Int32 {
+                self.priority = value
+            }
+            if let value = dict["SizeLimit"] as? Int64 {
+                self.sizeLimit = value
+            }
+        }
+    }
+    public var DBClusterId: String?
+
+    public var polarFsInstanceId: String?
+
+    public var quotas: [AddPolarFsQuotaRequest.Quotas]?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.DBClusterId != nil {
+            map["DBClusterId"] = self.DBClusterId!
+        }
+        if self.polarFsInstanceId != nil {
+            map["PolarFsInstanceId"] = self.polarFsInstanceId!
+        }
+        if self.quotas != nil {
+            var tmp : [Any] = []
+            for k in self.quotas! {
+                tmp.append(k.toMap())
+            }
+            map["Quotas"] = tmp
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["DBClusterId"] as? String {
+            self.DBClusterId = value
+        }
+        if let value = dict["PolarFsInstanceId"] as? String {
+            self.polarFsInstanceId = value
+        }
+        if let value = dict["Quotas"] as? [Any?] {
+            var tmp : [AddPolarFsQuotaRequest.Quotas] = []
+            for v in value {
+                if v != nil {
+                    var model = AddPolarFsQuotaRequest.Quotas()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.quotas = tmp
+        }
+    }
+}
+
+public class AddPolarFsQuotaResponseBody : Tea.TeaModel {
+    public var polarFsInstanceId: String?
+
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.polarFsInstanceId != nil {
+            map["PolarFsInstanceId"] = self.polarFsInstanceId!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["PolarFsInstanceId"] as? String {
+            self.polarFsInstanceId = value
+        }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+    }
+}
+
+public class AddPolarFsQuotaResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: AddPolarFsQuotaResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = AddPolarFsQuotaResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
 public class AddSQLRateLimitingRulesRequest : Tea.TeaModel {
     public var DBClusterId: String?
 
@@ -1167,6 +1419,150 @@ public class CancelCronJobPolicyServerlessResponse : Tea.TeaModel {
         }
         if let value = dict["body"] as? [String: Any?] {
             var model = CancelCronJobPolicyServerlessResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
+public class CancelPolarFsFileQuotaRequest : Tea.TeaModel {
+    public var DBClusterId: String?
+
+    public var filePathIds: String?
+
+    public var polarFsInstanceId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.DBClusterId != nil {
+            map["DBClusterId"] = self.DBClusterId!
+        }
+        if self.filePathIds != nil {
+            map["FilePathIds"] = self.filePathIds!
+        }
+        if self.polarFsInstanceId != nil {
+            map["PolarFsInstanceId"] = self.polarFsInstanceId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["DBClusterId"] as? String {
+            self.DBClusterId = value
+        }
+        if let value = dict["FilePathIds"] as? String {
+            self.filePathIds = value
+        }
+        if let value = dict["PolarFsInstanceId"] as? String {
+            self.polarFsInstanceId = value
+        }
+    }
+}
+
+public class CancelPolarFsFileQuotaResponseBody : Tea.TeaModel {
+    public var filePathIds: String?
+
+    public var polarFsInstanceId: String?
+
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.filePathIds != nil {
+            map["FilePathIds"] = self.filePathIds!
+        }
+        if self.polarFsInstanceId != nil {
+            map["PolarFsInstanceId"] = self.polarFsInstanceId!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["FilePathIds"] as? String {
+            self.filePathIds = value
+        }
+        if let value = dict["PolarFsInstanceId"] as? String {
+            self.polarFsInstanceId = value
+        }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+    }
+}
+
+public class CancelPolarFsFileQuotaResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: CancelPolarFsFileQuotaResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = CancelPolarFsFileQuotaResponseBody()
             model.fromMap(value)
             self.body = model
         }
@@ -12927,6 +13323,194 @@ public class DeleteParameterGroupResponse : Tea.TeaModel {
         }
         if let value = dict["body"] as? [String: Any?] {
             var model = DeleteParameterGroupResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
+public class DeletePolarFsQuotaRequest : Tea.TeaModel {
+    public class Quotas : Tea.TeaModel {
+        public var id: String?
+
+        public var name: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.id != nil {
+                map["Id"] = self.id!
+            }
+            if self.name != nil {
+                map["Name"] = self.name!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["Id"] as? String {
+                self.id = value
+            }
+            if let value = dict["Name"] as? String {
+                self.name = value
+            }
+        }
+    }
+    public var DBClusterId: String?
+
+    public var polarFsInstanceId: String?
+
+    public var quotas: [DeletePolarFsQuotaRequest.Quotas]?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.DBClusterId != nil {
+            map["DBClusterId"] = self.DBClusterId!
+        }
+        if self.polarFsInstanceId != nil {
+            map["PolarFsInstanceId"] = self.polarFsInstanceId!
+        }
+        if self.quotas != nil {
+            var tmp : [Any] = []
+            for k in self.quotas! {
+                tmp.append(k.toMap())
+            }
+            map["Quotas"] = tmp
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["DBClusterId"] as? String {
+            self.DBClusterId = value
+        }
+        if let value = dict["PolarFsInstanceId"] as? String {
+            self.polarFsInstanceId = value
+        }
+        if let value = dict["Quotas"] as? [Any?] {
+            var tmp : [DeletePolarFsQuotaRequest.Quotas] = []
+            for v in value {
+                if v != nil {
+                    var model = DeletePolarFsQuotaRequest.Quotas()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.quotas = tmp
+        }
+    }
+}
+
+public class DeletePolarFsQuotaResponseBody : Tea.TeaModel {
+    public var polarFsInstanceId: String?
+
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.polarFsInstanceId != nil {
+            map["PolarFsInstanceId"] = self.polarFsInstanceId!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["PolarFsInstanceId"] as? String {
+            self.polarFsInstanceId = value
+        }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+    }
+}
+
+public class DeletePolarFsQuotaResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: DeletePolarFsQuotaResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = DeletePolarFsQuotaResponseBody()
             model.fromMap(value)
             self.body = model
         }
@@ -46150,6 +46734,715 @@ public class DescribePendingMaintenanceActionsResponse : Tea.TeaModel {
     }
 }
 
+public class DescribePolarFsAttributeRequest : Tea.TeaModel {
+    public var DBClusterId: String?
+
+    public var polarFsInstanceId: String?
+
+    public var queryFuseMountInfo: Bool?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.DBClusterId != nil {
+            map["DBClusterId"] = self.DBClusterId!
+        }
+        if self.polarFsInstanceId != nil {
+            map["PolarFsInstanceId"] = self.polarFsInstanceId!
+        }
+        if self.queryFuseMountInfo != nil {
+            map["QueryFuseMountInfo"] = self.queryFuseMountInfo!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["DBClusterId"] as? String {
+            self.DBClusterId = value
+        }
+        if let value = dict["PolarFsInstanceId"] as? String {
+            self.polarFsInstanceId = value
+        }
+        if let value = dict["QueryFuseMountInfo"] as? Bool {
+            self.queryFuseMountInfo = value
+        }
+    }
+}
+
+public class DescribePolarFsAttributeResponseBody : Tea.TeaModel {
+    public class MountInfo : Tea.TeaModel {
+        public var polarDbProxy: String?
+
+        public var polarFsCluster: String?
+
+        public var token: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.polarDbProxy != nil {
+                map["PolarDbProxy"] = self.polarDbProxy!
+            }
+            if self.polarFsCluster != nil {
+                map["PolarFsCluster"] = self.polarFsCluster!
+            }
+            if self.token != nil {
+                map["Token"] = self.token!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["PolarDbProxy"] as? String {
+                self.polarDbProxy = value
+            }
+            if let value = dict["PolarFsCluster"] as? String {
+                self.polarFsCluster = value
+            }
+            if let value = dict["Token"] as? String {
+                self.token = value
+            }
+        }
+    }
+    public var acceleratedStorageSpace: Double?
+
+    public var acceleratingEnable: String?
+
+    public var bandwidth: Double?
+
+    public var bandwidthBaseLine: Double?
+
+    public var category: String?
+
+    public var clientDownloadPath: String?
+
+    public var createTime: String?
+
+    public var DBType: String?
+
+    public var expireTime: String?
+
+    public var expired: String?
+
+    public var lockMode: String?
+
+    public var metaUrl: String?
+
+    public var minorVersion: String?
+
+    public var mountInfo: DescribePolarFsAttributeResponseBody.MountInfo?
+
+    public var payType: String?
+
+    public var polarFsInstanceDescription: String?
+
+    public var polarFsInstanceId: String?
+
+    public var polarFsStatus: String?
+
+    public var polarFsType: String?
+
+    public var polarFsVersion: String?
+
+    public var regionId: String?
+
+    public var relativeDbClusterId: String?
+
+    public var requestId: String?
+
+    public var securityGroupId: String?
+
+    public var storageSpace: Double?
+
+    public var storageType: String?
+
+    public var storageUsed: Double?
+
+    public var VPCId: String?
+
+    public var vSwitchId: String?
+
+    public var zoneId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.mountInfo?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.acceleratedStorageSpace != nil {
+            map["AcceleratedStorageSpace"] = self.acceleratedStorageSpace!
+        }
+        if self.acceleratingEnable != nil {
+            map["AcceleratingEnable"] = self.acceleratingEnable!
+        }
+        if self.bandwidth != nil {
+            map["Bandwidth"] = self.bandwidth!
+        }
+        if self.bandwidthBaseLine != nil {
+            map["BandwidthBaseLine"] = self.bandwidthBaseLine!
+        }
+        if self.category != nil {
+            map["Category"] = self.category!
+        }
+        if self.clientDownloadPath != nil {
+            map["ClientDownloadPath"] = self.clientDownloadPath!
+        }
+        if self.createTime != nil {
+            map["CreateTime"] = self.createTime!
+        }
+        if self.DBType != nil {
+            map["DBType"] = self.DBType!
+        }
+        if self.expireTime != nil {
+            map["ExpireTime"] = self.expireTime!
+        }
+        if self.expired != nil {
+            map["Expired"] = self.expired!
+        }
+        if self.lockMode != nil {
+            map["LockMode"] = self.lockMode!
+        }
+        if self.metaUrl != nil {
+            map["MetaUrl"] = self.metaUrl!
+        }
+        if self.minorVersion != nil {
+            map["MinorVersion"] = self.minorVersion!
+        }
+        if self.mountInfo != nil {
+            map["MountInfo"] = self.mountInfo?.toMap()
+        }
+        if self.payType != nil {
+            map["PayType"] = self.payType!
+        }
+        if self.polarFsInstanceDescription != nil {
+            map["PolarFsInstanceDescription"] = self.polarFsInstanceDescription!
+        }
+        if self.polarFsInstanceId != nil {
+            map["PolarFsInstanceId"] = self.polarFsInstanceId!
+        }
+        if self.polarFsStatus != nil {
+            map["PolarFsStatus"] = self.polarFsStatus!
+        }
+        if self.polarFsType != nil {
+            map["PolarFsType"] = self.polarFsType!
+        }
+        if self.polarFsVersion != nil {
+            map["PolarFsVersion"] = self.polarFsVersion!
+        }
+        if self.regionId != nil {
+            map["RegionId"] = self.regionId!
+        }
+        if self.relativeDbClusterId != nil {
+            map["RelativeDbClusterId"] = self.relativeDbClusterId!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.securityGroupId != nil {
+            map["SecurityGroupId"] = self.securityGroupId!
+        }
+        if self.storageSpace != nil {
+            map["StorageSpace"] = self.storageSpace!
+        }
+        if self.storageType != nil {
+            map["StorageType"] = self.storageType!
+        }
+        if self.storageUsed != nil {
+            map["StorageUsed"] = self.storageUsed!
+        }
+        if self.VPCId != nil {
+            map["VPCId"] = self.VPCId!
+        }
+        if self.vSwitchId != nil {
+            map["VSwitchId"] = self.vSwitchId!
+        }
+        if self.zoneId != nil {
+            map["ZoneId"] = self.zoneId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["AcceleratedStorageSpace"] as? Double {
+            self.acceleratedStorageSpace = value
+        }
+        if let value = dict["AcceleratingEnable"] as? String {
+            self.acceleratingEnable = value
+        }
+        if let value = dict["Bandwidth"] as? Double {
+            self.bandwidth = value
+        }
+        if let value = dict["BandwidthBaseLine"] as? Double {
+            self.bandwidthBaseLine = value
+        }
+        if let value = dict["Category"] as? String {
+            self.category = value
+        }
+        if let value = dict["ClientDownloadPath"] as? String {
+            self.clientDownloadPath = value
+        }
+        if let value = dict["CreateTime"] as? String {
+            self.createTime = value
+        }
+        if let value = dict["DBType"] as? String {
+            self.DBType = value
+        }
+        if let value = dict["ExpireTime"] as? String {
+            self.expireTime = value
+        }
+        if let value = dict["Expired"] as? String {
+            self.expired = value
+        }
+        if let value = dict["LockMode"] as? String {
+            self.lockMode = value
+        }
+        if let value = dict["MetaUrl"] as? String {
+            self.metaUrl = value
+        }
+        if let value = dict["MinorVersion"] as? String {
+            self.minorVersion = value
+        }
+        if let value = dict["MountInfo"] as? [String: Any?] {
+            var model = DescribePolarFsAttributeResponseBody.MountInfo()
+            model.fromMap(value)
+            self.mountInfo = model
+        }
+        if let value = dict["PayType"] as? String {
+            self.payType = value
+        }
+        if let value = dict["PolarFsInstanceDescription"] as? String {
+            self.polarFsInstanceDescription = value
+        }
+        if let value = dict["PolarFsInstanceId"] as? String {
+            self.polarFsInstanceId = value
+        }
+        if let value = dict["PolarFsStatus"] as? String {
+            self.polarFsStatus = value
+        }
+        if let value = dict["PolarFsType"] as? String {
+            self.polarFsType = value
+        }
+        if let value = dict["PolarFsVersion"] as? String {
+            self.polarFsVersion = value
+        }
+        if let value = dict["RegionId"] as? String {
+            self.regionId = value
+        }
+        if let value = dict["RelativeDbClusterId"] as? String {
+            self.relativeDbClusterId = value
+        }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+        if let value = dict["SecurityGroupId"] as? String {
+            self.securityGroupId = value
+        }
+        if let value = dict["StorageSpace"] as? Double {
+            self.storageSpace = value
+        }
+        if let value = dict["StorageType"] as? String {
+            self.storageType = value
+        }
+        if let value = dict["StorageUsed"] as? Double {
+            self.storageUsed = value
+        }
+        if let value = dict["VPCId"] as? String {
+            self.VPCId = value
+        }
+        if let value = dict["VSwitchId"] as? String {
+            self.vSwitchId = value
+        }
+        if let value = dict["ZoneId"] as? String {
+            self.zoneId = value
+        }
+    }
+}
+
+public class DescribePolarFsAttributeResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: DescribePolarFsAttributeResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = DescribePolarFsAttributeResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
+public class DescribePolarFsQuotaRequest : Tea.TeaModel {
+    public var DBClusterId: String?
+
+    public var polarFsInstanceId: String?
+
+    public var regionId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.DBClusterId != nil {
+            map["DBClusterId"] = self.DBClusterId!
+        }
+        if self.polarFsInstanceId != nil {
+            map["PolarFsInstanceId"] = self.polarFsInstanceId!
+        }
+        if self.regionId != nil {
+            map["RegionId"] = self.regionId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["DBClusterId"] as? String {
+            self.DBClusterId = value
+        }
+        if let value = dict["PolarFsInstanceId"] as? String {
+            self.polarFsInstanceId = value
+        }
+        if let value = dict["RegionId"] as? String {
+            self.regionId = value
+        }
+    }
+}
+
+public class DescribePolarFsQuotaResponseBody : Tea.TeaModel {
+    public class PolicyItems : Tea.TeaModel {
+        public var accessTTL: Int64?
+
+        public var changeTTL: Int64?
+
+        public var description_: String?
+
+        public var enabled: Bool?
+
+        public var exclude: String?
+
+        public var fileCountLimit: Int64?
+
+        public var id: Int64?
+
+        public var include: String?
+
+        public var name: String?
+
+        public var priority: Int32?
+
+        public var sizeLimit: Int64?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.accessTTL != nil {
+                map["AccessTTL"] = self.accessTTL!
+            }
+            if self.changeTTL != nil {
+                map["ChangeTTL"] = self.changeTTL!
+            }
+            if self.description_ != nil {
+                map["Description"] = self.description_!
+            }
+            if self.enabled != nil {
+                map["Enabled"] = self.enabled!
+            }
+            if self.exclude != nil {
+                map["Exclude"] = self.exclude!
+            }
+            if self.fileCountLimit != nil {
+                map["FileCountLimit"] = self.fileCountLimit!
+            }
+            if self.id != nil {
+                map["Id"] = self.id!
+            }
+            if self.include != nil {
+                map["Include"] = self.include!
+            }
+            if self.name != nil {
+                map["Name"] = self.name!
+            }
+            if self.priority != nil {
+                map["Priority"] = self.priority!
+            }
+            if self.sizeLimit != nil {
+                map["SizeLimit"] = self.sizeLimit!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["AccessTTL"] as? Int64 {
+                self.accessTTL = value
+            }
+            if let value = dict["ChangeTTL"] as? Int64 {
+                self.changeTTL = value
+            }
+            if let value = dict["Description"] as? String {
+                self.description_ = value
+            }
+            if let value = dict["Enabled"] as? Bool {
+                self.enabled = value
+            }
+            if let value = dict["Exclude"] as? String {
+                self.exclude = value
+            }
+            if let value = dict["FileCountLimit"] as? Int64 {
+                self.fileCountLimit = value
+            }
+            if let value = dict["Id"] as? Int64 {
+                self.id = value
+            }
+            if let value = dict["Include"] as? String {
+                self.include = value
+            }
+            if let value = dict["Name"] as? String {
+                self.name = value
+            }
+            if let value = dict["Priority"] as? Int32 {
+                self.priority = value
+            }
+            if let value = dict["SizeLimit"] as? Int64 {
+                self.sizeLimit = value
+            }
+        }
+    }
+    public var pageNumber: String?
+
+    public var pageRecordCount: String?
+
+    public var pageSize: String?
+
+    public var polarFsInstanceId: String?
+
+    public var policyItems: [DescribePolarFsQuotaResponseBody.PolicyItems]?
+
+    public var requestId: String?
+
+    public var totalRecordCount: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.pageNumber != nil {
+            map["PageNumber"] = self.pageNumber!
+        }
+        if self.pageRecordCount != nil {
+            map["PageRecordCount"] = self.pageRecordCount!
+        }
+        if self.pageSize != nil {
+            map["PageSize"] = self.pageSize!
+        }
+        if self.polarFsInstanceId != nil {
+            map["PolarFsInstanceId"] = self.polarFsInstanceId!
+        }
+        if self.policyItems != nil {
+            var tmp : [Any] = []
+            for k in self.policyItems! {
+                tmp.append(k.toMap())
+            }
+            map["PolicyItems"] = tmp
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.totalRecordCount != nil {
+            map["TotalRecordCount"] = self.totalRecordCount!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["PageNumber"] as? String {
+            self.pageNumber = value
+        }
+        if let value = dict["PageRecordCount"] as? String {
+            self.pageRecordCount = value
+        }
+        if let value = dict["PageSize"] as? String {
+            self.pageSize = value
+        }
+        if let value = dict["PolarFsInstanceId"] as? String {
+            self.polarFsInstanceId = value
+        }
+        if let value = dict["PolicyItems"] as? [Any?] {
+            var tmp : [DescribePolarFsQuotaResponseBody.PolicyItems] = []
+            for v in value {
+                if v != nil {
+                    var model = DescribePolarFsQuotaResponseBody.PolicyItems()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.policyItems = tmp
+        }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+        if let value = dict["TotalRecordCount"] as? String {
+            self.totalRecordCount = value
+        }
+    }
+}
+
+public class DescribePolarFsQuotaResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: DescribePolarFsQuotaResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = DescribePolarFsQuotaResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
 public class DescribePolarSQLCollectorPolicyRequest : Tea.TeaModel {
     public var DBClusterId: String?
 
@@ -69218,6 +70511,210 @@ public class RevokeAccountPrivilegeZonalResponse : Tea.TeaModel {
         }
         if let value = dict["body"] as? [String: Any?] {
             var model = RevokeAccountPrivilegeZonalResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
+public class SetPolarFsFileQuotaRequest : Tea.TeaModel {
+    public class FilePathQuotas : Tea.TeaModel {
+        public var filePathId: String?
+
+        public var maxDepth: Int32?
+
+        public var quotaIds: String?
+
+        public var strategy: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.filePathId != nil {
+                map["FilePathId"] = self.filePathId!
+            }
+            if self.maxDepth != nil {
+                map["MaxDepth"] = self.maxDepth!
+            }
+            if self.quotaIds != nil {
+                map["QuotaIds"] = self.quotaIds!
+            }
+            if self.strategy != nil {
+                map["Strategy"] = self.strategy!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["FilePathId"] as? String {
+                self.filePathId = value
+            }
+            if let value = dict["MaxDepth"] as? Int32 {
+                self.maxDepth = value
+            }
+            if let value = dict["QuotaIds"] as? String {
+                self.quotaIds = value
+            }
+            if let value = dict["Strategy"] as? String {
+                self.strategy = value
+            }
+        }
+    }
+    public var DBClusterId: String?
+
+    public var filePathQuotas: [SetPolarFsFileQuotaRequest.FilePathQuotas]?
+
+    public var polarFsInstanceId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.DBClusterId != nil {
+            map["DBClusterId"] = self.DBClusterId!
+        }
+        if self.filePathQuotas != nil {
+            var tmp : [Any] = []
+            for k in self.filePathQuotas! {
+                tmp.append(k.toMap())
+            }
+            map["FilePathQuotas"] = tmp
+        }
+        if self.polarFsInstanceId != nil {
+            map["PolarFsInstanceId"] = self.polarFsInstanceId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["DBClusterId"] as? String {
+            self.DBClusterId = value
+        }
+        if let value = dict["FilePathQuotas"] as? [Any?] {
+            var tmp : [SetPolarFsFileQuotaRequest.FilePathQuotas] = []
+            for v in value {
+                if v != nil {
+                    var model = SetPolarFsFileQuotaRequest.FilePathQuotas()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.filePathQuotas = tmp
+        }
+        if let value = dict["PolarFsInstanceId"] as? String {
+            self.polarFsInstanceId = value
+        }
+    }
+}
+
+public class SetPolarFsFileQuotaResponseBody : Tea.TeaModel {
+    public var polarFsInstanceId: String?
+
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.polarFsInstanceId != nil {
+            map["PolarFsInstanceId"] = self.polarFsInstanceId!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["PolarFsInstanceId"] as? String {
+            self.polarFsInstanceId = value
+        }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+    }
+}
+
+public class SetPolarFsFileQuotaResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: SetPolarFsFileQuotaResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = SetPolarFsFileQuotaResponseBody()
             model.fromMap(value)
             self.body = model
         }
