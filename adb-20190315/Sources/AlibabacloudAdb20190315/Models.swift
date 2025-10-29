@@ -10394,6 +10394,8 @@ public class DescribeConnectionCountRecordsRequest : Tea.TeaModel {
 
     public var ownerId: Int64?
 
+    public var regionId: String?
+
     public var resourceOwnerAccount: String?
 
     public var resourceOwnerId: Int64?
@@ -10421,6 +10423,9 @@ public class DescribeConnectionCountRecordsRequest : Tea.TeaModel {
         if self.ownerId != nil {
             map["OwnerId"] = self.ownerId!
         }
+        if self.regionId != nil {
+            map["RegionId"] = self.regionId!
+        }
         if self.resourceOwnerAccount != nil {
             map["ResourceOwnerAccount"] = self.resourceOwnerAccount!
         }
@@ -10440,6 +10445,9 @@ public class DescribeConnectionCountRecordsRequest : Tea.TeaModel {
         }
         if let value = dict["OwnerId"] as? Int64 {
             self.ownerId = value
+        }
+        if let value = dict["RegionId"] as? String {
+            self.regionId = value
         }
         if let value = dict["ResourceOwnerAccount"] as? String {
             self.resourceOwnerAccount = value
