@@ -117808,6 +117808,8 @@ public class ReleaseDedicatedHostRequest : Tea.TeaModel {
 
     public var resourceOwnerId: Int64?
 
+    public var terminateSubscription: Bool?
+
     public override init() {
         super.init()
     }
@@ -117840,6 +117842,9 @@ public class ReleaseDedicatedHostRequest : Tea.TeaModel {
         if self.resourceOwnerId != nil {
             map["ResourceOwnerId"] = self.resourceOwnerId!
         }
+        if self.terminateSubscription != nil {
+            map["TerminateSubscription"] = self.terminateSubscription!
+        }
         return map
     }
 
@@ -117862,6 +117867,9 @@ public class ReleaseDedicatedHostRequest : Tea.TeaModel {
         }
         if let value = dict["ResourceOwnerId"] as? Int64 {
             self.resourceOwnerId = value
+        }
+        if let value = dict["TerminateSubscription"] as? Bool {
+            self.terminateSubscription = value
         }
     }
 }
