@@ -6,9 +6,9 @@ import AlibabaCloudOpenApiUtil
 import AlibabacloudEndpointUtil
 
 public class JobStatusDetailValue : Tea.TeaModel {
-    public var jobResult: String?
-
     public var comment: String?
+
+    public var jobResult: String?
 
     public var timeStamps: String?
 
@@ -26,11 +26,11 @@ public class JobStatusDetailValue : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
-        if self.jobResult != nil {
-            map["jobResult"] = self.jobResult!
-        }
         if self.comment != nil {
             map["comment"] = self.comment!
+        }
+        if self.jobResult != nil {
+            map["jobResult"] = self.jobResult!
         }
         if self.timeStamps != nil {
             map["timeStamps"] = self.timeStamps!
@@ -40,11 +40,11 @@ public class JobStatusDetailValue : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
-        if let value = dict["jobResult"] as? String {
-            self.jobResult = value
-        }
         if let value = dict["comment"] as? String {
             self.comment = value
+        }
+        if let value = dict["jobResult"] as? String {
+            self.jobResult = value
         }
         if let value = dict["timeStamps"] as? String {
             self.timeStamps = value
@@ -4641,7 +4641,11 @@ public class GetJobResponseBody : Tea.TeaModel {
 
         public var jobId: String?
 
+        public var logFile: [String: Any]?
+
         public var output: String?
+
+        public var outputJsonPlan: Any?
 
         public var parameters: [String: String]?
 
@@ -4701,8 +4705,14 @@ public class GetJobResponseBody : Tea.TeaModel {
             if self.jobId != nil {
                 map["jobId"] = self.jobId!
             }
+            if self.logFile != nil {
+                map["logFile"] = self.logFile!
+            }
             if self.output != nil {
                 map["output"] = self.output!
+            }
+            if self.outputJsonPlan != nil {
+                map["outputJsonPlan"] = self.outputJsonPlan!
             }
             if self.parameters != nil {
                 map["parameters"] = self.parameters!
@@ -4770,8 +4780,14 @@ public class GetJobResponseBody : Tea.TeaModel {
             if let value = dict["jobId"] as? String {
                 self.jobId = value
             }
+            if let value = dict["logFile"] as? [String: Any] {
+                self.logFile = value
+            }
             if let value = dict["output"] as? String {
                 self.output = value
+            }
+            if let value = dict["outputJsonPlan"] as? Any {
+                self.outputJsonPlan = value
             }
             if let value = dict["parameters"] as? [String: String] {
                 self.parameters = value
@@ -9399,6 +9415,8 @@ public class ListModulesRequest : Tea.TeaModel {
 
     public var keyword: String?
 
+    public var moduleName: String?
+
     public var pageNumber: Int32?
 
     public var pageSize: Int32?
@@ -9427,6 +9445,9 @@ public class ListModulesRequest : Tea.TeaModel {
         if self.keyword != nil {
             map["keyword"] = self.keyword!
         }
+        if self.moduleName != nil {
+            map["moduleName"] = self.moduleName!
+        }
         if self.pageNumber != nil {
             map["pageNumber"] = self.pageNumber!
         }
@@ -9453,6 +9474,9 @@ public class ListModulesRequest : Tea.TeaModel {
         }
         if let value = dict["keyword"] as? String {
             self.keyword = value
+        }
+        if let value = dict["moduleName"] as? String {
+            self.moduleName = value
         }
         if let value = dict["pageNumber"] as? Int32 {
             self.pageNumber = value
@@ -9484,6 +9508,8 @@ public class ListModulesShrinkRequest : Tea.TeaModel {
 
     public var keyword: String?
 
+    public var moduleName: String?
+
     public var pageNumber: Int32?
 
     public var pageSize: Int32?
@@ -9512,6 +9538,9 @@ public class ListModulesShrinkRequest : Tea.TeaModel {
         if self.keyword != nil {
             map["keyword"] = self.keyword!
         }
+        if self.moduleName != nil {
+            map["moduleName"] = self.moduleName!
+        }
         if self.pageNumber != nil {
             map["pageNumber"] = self.pageNumber!
         }
@@ -9534,6 +9563,9 @@ public class ListModulesShrinkRequest : Tea.TeaModel {
         }
         if let value = dict["keyword"] as? String {
             self.keyword = value
+        }
+        if let value = dict["moduleName"] as? String {
+            self.moduleName = value
         }
         if let value = dict["pageNumber"] as? Int32 {
             self.pageNumber = value
