@@ -40026,6 +40026,8 @@ public class DescribeVulnerabilityProtectedListRequest : Tea.TeaModel {
 
     public var pageSize: String?
 
+    public var ruleTag: String?
+
     public var sortKey: String?
 
     public var sourceIp: String?
@@ -40082,6 +40084,9 @@ public class DescribeVulnerabilityProtectedListRequest : Tea.TeaModel {
         if self.pageSize != nil {
             map["PageSize"] = self.pageSize!
         }
+        if self.ruleTag != nil {
+            map["RuleTag"] = self.ruleTag!
+        }
         if self.sortKey != nil {
             map["SortKey"] = self.sortKey!
         }
@@ -40137,6 +40142,9 @@ public class DescribeVulnerabilityProtectedListRequest : Tea.TeaModel {
         }
         if let value = dict["PageSize"] as? String {
             self.pageSize = value
+        }
+        if let value = dict["RuleTag"] as? String {
+            self.ruleTag = value
         }
         if let value = dict["SortKey"] as? String {
             self.sortKey = value
@@ -40288,6 +40296,8 @@ public class DescribeVulnerabilityProtectedListResponseBody : Tea.TeaModel {
 
         public var resourceList: [DescribeVulnerabilityProtectedListResponseBody.VulnList.ResourceList]?
 
+        public var ruleTag: String?
+
         public var virtualPatcheIds: String?
 
         public var vulnKey: String?
@@ -40365,6 +40375,9 @@ public class DescribeVulnerabilityProtectedListResponseBody : Tea.TeaModel {
                     tmp.append(k.toMap())
                 }
                 map["ResourceList"] = tmp
+            }
+            if self.ruleTag != nil {
+                map["RuleTag"] = self.ruleTag!
             }
             if self.virtualPatcheIds != nil {
                 map["VirtualPatcheIds"] = self.virtualPatcheIds!
@@ -40446,6 +40459,9 @@ public class DescribeVulnerabilityProtectedListResponseBody : Tea.TeaModel {
                     }
                 }
                 self.resourceList = tmp
+            }
+            if let value = dict["RuleTag"] as? String {
+                self.ruleTag = value
             }
             if let value = dict["VirtualPatcheIds"] as? String {
                 self.virtualPatcheIds = value
