@@ -15811,6 +15811,10 @@ public class GetGatewayResponseBody : Tea.TeaModel {
 
             public var gatewayDefault: Bool?
 
+            public var ipv4Addresses: [String]?
+
+            public var ipv6Addresses: [String]?
+
             public var loadBalancerId: String?
 
             public var mode: String?
@@ -15847,6 +15851,12 @@ public class GetGatewayResponseBody : Tea.TeaModel {
                 if self.gatewayDefault != nil {
                     map["gatewayDefault"] = self.gatewayDefault!
                 }
+                if self.ipv4Addresses != nil {
+                    map["ipv4Addresses"] = self.ipv4Addresses!
+                }
+                if self.ipv6Addresses != nil {
+                    map["ipv6Addresses"] = self.ipv6Addresses!
+                }
                 if self.loadBalancerId != nil {
                     map["loadBalancerId"] = self.loadBalancerId!
                 }
@@ -15882,6 +15892,12 @@ public class GetGatewayResponseBody : Tea.TeaModel {
                 }
                 if let value = dict["gatewayDefault"] as? Bool {
                     self.gatewayDefault = value
+                }
+                if let value = dict["ipv4Addresses"] as? [String] {
+                    self.ipv4Addresses = value
+                }
+                if let value = dict["ipv6Addresses"] as? [String] {
+                    self.ipv6Addresses = value
                 }
                 if let value = dict["loadBalancerId"] as? String {
                     self.loadBalancerId = value
@@ -22322,6 +22338,8 @@ public class ListMcpServersResponseBody : Tea.TeaModel {
                     }
                 }
             }
+            public var apiId: String?
+
             public var assembledSources: [ListMcpServersResponseBody.Data.Items.AssembledSources]?
 
             public var backend: Backend?
@@ -22379,6 +22397,9 @@ public class ListMcpServersResponseBody : Tea.TeaModel {
 
             public override func toMap() -> [String : Any] {
                 var map = super.toMap()
+                if self.apiId != nil {
+                    map["apiId"] = self.apiId!
+                }
                 if self.assembledSources != nil {
                     var tmp : [Any] = []
                     for k in self.assembledSources! {
@@ -22452,6 +22473,9 @@ public class ListMcpServersResponseBody : Tea.TeaModel {
 
             public override func fromMap(_ dict: [String: Any?]?) -> Void {
                 guard let dict else { return }
+                if let value = dict["apiId"] as? String {
+                    self.apiId = value
+                }
                 if let value = dict["assembledSources"] as? [Any?] {
                     var tmp : [ListMcpServersResponseBody.Data.Items.AssembledSources] = []
                     for v in value {
