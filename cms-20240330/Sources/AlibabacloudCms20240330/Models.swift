@@ -8533,6 +8533,8 @@ public class CreateIntegrationPolicyRequest : Tea.TeaModel {
 
         public var entityGroupId: String?
 
+        public var entityUserId: String?
+
         public var vpcId: String?
 
         public override init() {
@@ -8561,6 +8563,9 @@ public class CreateIntegrationPolicyRequest : Tea.TeaModel {
             if self.entityGroupId != nil {
                 map["entityGroupId"] = self.entityGroupId!
             }
+            if self.entityUserId != nil {
+                map["entityUserId"] = self.entityUserId!
+            }
             if self.vpcId != nil {
                 map["vpcId"] = self.vpcId!
             }
@@ -8580,6 +8585,9 @@ public class CreateIntegrationPolicyRequest : Tea.TeaModel {
             }
             if let value = dict["entityGroupId"] as? String {
                 self.entityGroupId = value
+            }
+            if let value = dict["entityUserId"] as? String {
+                self.entityUserId = value
             }
             if let value = dict["vpcId"] as? String {
                 self.vpcId = value
@@ -12759,6 +12767,8 @@ public class GetIntegrationPolicyResponseBody : Tea.TeaModel {
         }
         public var bindResource: GetIntegrationPolicyResponseBody.Policy.BindResource?
 
+        public var csUmodelStatus: Bool?
+
         public var entityGroup: GetIntegrationPolicyResponseBody.Policy.EntityGroup?
 
         public var managedInfo: GetIntegrationPolicyResponseBody.Policy.ManagedInfo?
@@ -12798,6 +12808,9 @@ public class GetIntegrationPolicyResponseBody : Tea.TeaModel {
             var map = super.toMap()
             if self.bindResource != nil {
                 map["bindResource"] = self.bindResource?.toMap()
+            }
+            if self.csUmodelStatus != nil {
+                map["csUmodelStatus"] = self.csUmodelStatus!
             }
             if self.entityGroup != nil {
                 map["entityGroup"] = self.entityGroup?.toMap()
@@ -12842,6 +12855,9 @@ public class GetIntegrationPolicyResponseBody : Tea.TeaModel {
                 var model = GetIntegrationPolicyResponseBody.Policy.BindResource()
                 model.fromMap(value)
                 self.bindResource = model
+            }
+            if let value = dict["csUmodelStatus"] as? Bool {
+                self.csUmodelStatus = value
             }
             if let value = dict["entityGroup"] as? [String: Any?] {
                 var model = GetIntegrationPolicyResponseBody.Policy.EntityGroup()
@@ -17704,7 +17720,11 @@ public class ListIntegrationPoliciesResponseBody : Tea.TeaModel {
         }
         public var bindResource: ListIntegrationPoliciesResponseBody.Policies.BindResource?
 
+        public var csUmodelStatus: Bool?
+
         public var entityGroup: ListIntegrationPoliciesResponseBody.Policies.EntityGroup?
+
+        public var feePackage: String?
 
         public var managedInfo: ListIntegrationPoliciesResponseBody.Policies.ManagedInfo?
 
@@ -17747,8 +17767,14 @@ public class ListIntegrationPoliciesResponseBody : Tea.TeaModel {
             if self.bindResource != nil {
                 map["bindResource"] = self.bindResource?.toMap()
             }
+            if self.csUmodelStatus != nil {
+                map["csUmodelStatus"] = self.csUmodelStatus!
+            }
             if self.entityGroup != nil {
                 map["entityGroup"] = self.entityGroup?.toMap()
+            }
+            if self.feePackage != nil {
+                map["feePackage"] = self.feePackage!
             }
             if self.managedInfo != nil {
                 map["managedInfo"] = self.managedInfo?.toMap()
@@ -17794,10 +17820,16 @@ public class ListIntegrationPoliciesResponseBody : Tea.TeaModel {
                 model.fromMap(value)
                 self.bindResource = model
             }
+            if let value = dict["csUmodelStatus"] as? Bool {
+                self.csUmodelStatus = value
+            }
             if let value = dict["entityGroup"] as? [String: Any?] {
                 var model = ListIntegrationPoliciesResponseBody.Policies.EntityGroup()
                 model.fromMap(value)
                 self.entityGroup = model
+            }
+            if let value = dict["feePackage"] as? String {
+                self.feePackage = value
             }
             if let value = dict["managedInfo"] as? [String: Any?] {
                 var model = ListIntegrationPoliciesResponseBody.Policies.ManagedInfo()
