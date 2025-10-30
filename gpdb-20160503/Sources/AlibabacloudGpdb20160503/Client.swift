@@ -396,6 +396,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.promptParams)) {
             query["PromptParams"] = request.promptParams ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.regionId)) {
+            query["RegionId"] = request.regionId ?? "";
+        }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "query": AlibabaCloudOpenApiUtil.Client.query(query)
         ])
@@ -449,6 +452,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.promptParams)) {
             query["PromptParams"] = request.promptParams ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.regionId)) {
+            query["RegionId"] = request.regionId ?? "";
         }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "query": AlibabaCloudOpenApiUtil.Client.query(query)
@@ -9151,6 +9157,12 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.namespacePassword)) {
             query["NamespacePassword"] = request.namespacePassword ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.offset)) {
+            query["Offset"] = request.offset!;
+        }
+        if (!TeaUtils.Client.isUnset(request.orderBy)) {
+            query["OrderBy"] = request.orderBy ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.ownerId)) {
             query["OwnerId"] = request.ownerId!;
         }
@@ -9283,6 +9295,69 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         var queryContentResp: QueryContentResponse = try await queryContentWithOptions(queryContentReq as! QueryContentRequest, runtime as! TeaUtils.RuntimeOptions)
         return queryContentResp as! QueryContentResponse
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func queryKnowledgeBasesContentWithOptions(_ tmpReq: QueryKnowledgeBasesContentRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> QueryKnowledgeBasesContentResponse {
+        try TeaUtils.Client.validateModel(tmpReq)
+        var request: QueryKnowledgeBasesContentShrinkRequest = QueryKnowledgeBasesContentShrinkRequest([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.mergeMethodArgs)) {
+            request.mergeMethodArgsShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.mergeMethodArgs, "MergeMethodArgs", "json")
+        }
+        if (!TeaUtils.Client.isUnset(tmpReq.sourceCollection)) {
+            request.sourceCollectionShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.sourceCollection, "SourceCollection", "json")
+        }
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.content)) {
+            query["Content"] = request.content ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.DBInstanceId)) {
+            query["DBInstanceId"] = request.DBInstanceId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.mergeMethod)) {
+            query["MergeMethod"] = request.mergeMethod ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.mergeMethodArgsShrink)) {
+            query["MergeMethodArgs"] = request.mergeMethodArgsShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.ownerId)) {
+            query["OwnerId"] = request.ownerId!;
+        }
+        if (!TeaUtils.Client.isUnset(request.regionId)) {
+            query["RegionId"] = request.regionId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.rerankFactor)) {
+            query["RerankFactor"] = request.rerankFactor!;
+        }
+        if (!TeaUtils.Client.isUnset(request.sourceCollectionShrink)) {
+            query["SourceCollection"] = request.sourceCollectionShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.topK)) {
+            query["TopK"] = request.topK!;
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "QueryKnowledgeBasesContent",
+            "version": "2016-05-03",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(QueryKnowledgeBasesContentResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func queryKnowledgeBasesContent(_ request: QueryKnowledgeBasesContentRequest) async throws -> QueryKnowledgeBasesContentResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await queryKnowledgeBasesContentWithOptions(request as! QueryKnowledgeBasesContentRequest, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
