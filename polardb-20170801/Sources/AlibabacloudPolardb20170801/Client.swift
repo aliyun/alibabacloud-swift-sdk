@@ -13189,9 +13189,17 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func modifyLogBackupPolicyWithOptions(_ request: ModifyLogBackupPolicyRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ModifyLogBackupPolicyResponse {
-        try TeaUtils.Client.validateModel(request)
+    public func modifyLogBackupPolicyWithOptions(_ tmpReq: ModifyLogBackupPolicyRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ModifyLogBackupPolicyResponse {
+        try TeaUtils.Client.validateModel(tmpReq)
+        var request: ModifyLogBackupPolicyShrinkRequest = ModifyLogBackupPolicyShrinkRequest([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.advancedLogPolicies)) {
+            request.advancedLogPoliciesShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.advancedLogPolicies, "AdvancedLogPolicies", "json")
+        }
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.advancedLogPoliciesShrink)) {
+            query["AdvancedLogPolicies"] = request.advancedLogPoliciesShrink ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.DBClusterId)) {
             query["DBClusterId"] = request.DBClusterId ?? "";
         }

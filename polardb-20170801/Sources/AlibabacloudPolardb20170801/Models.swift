@@ -44436,6 +44436,8 @@ public class DescribeMetaListResponseBody : Tea.TeaModel {
     public class Items : Tea.TeaModel {
         public var database: String?
 
+        public var size: [Int64]?
+
         public var tables: [String]?
 
         public override init() {
@@ -44455,6 +44457,9 @@ public class DescribeMetaListResponseBody : Tea.TeaModel {
             if self.database != nil {
                 map["Database"] = self.database!
             }
+            if self.size != nil {
+                map["Size"] = self.size!
+            }
             if self.tables != nil {
                 map["Tables"] = self.tables!
             }
@@ -44465,6 +44470,9 @@ public class DescribeMetaListResponseBody : Tea.TeaModel {
             guard let dict else { return }
             if let value = dict["Database"] as? String {
                 self.database = value
+            }
+            if let value = dict["Size"] as? [Int64] {
+                self.size = value
             }
             if let value = dict["Tables"] as? [String] {
                 self.tables = value
@@ -67206,6 +67214,102 @@ public class ModifyGlobalSecurityIPGroupRelationResponse : Tea.TeaModel {
 }
 
 public class ModifyLogBackupPolicyRequest : Tea.TeaModel {
+    public class AdvancedLogPolicies : Tea.TeaModel {
+        public var actionType: String?
+
+        public var destRegion: String?
+
+        public var destType: String?
+
+        public var enableLogBackup: Int32?
+
+        public var logRetentionType: String?
+
+        public var logRetentionValue: String?
+
+        public var policyId: String?
+
+        public var srcRegion: String?
+
+        public var srcType: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.actionType != nil {
+                map["ActionType"] = self.actionType!
+            }
+            if self.destRegion != nil {
+                map["DestRegion"] = self.destRegion!
+            }
+            if self.destType != nil {
+                map["DestType"] = self.destType!
+            }
+            if self.enableLogBackup != nil {
+                map["EnableLogBackup"] = self.enableLogBackup!
+            }
+            if self.logRetentionType != nil {
+                map["LogRetentionType"] = self.logRetentionType!
+            }
+            if self.logRetentionValue != nil {
+                map["LogRetentionValue"] = self.logRetentionValue!
+            }
+            if self.policyId != nil {
+                map["PolicyId"] = self.policyId!
+            }
+            if self.srcRegion != nil {
+                map["SrcRegion"] = self.srcRegion!
+            }
+            if self.srcType != nil {
+                map["SrcType"] = self.srcType!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["ActionType"] as? String {
+                self.actionType = value
+            }
+            if let value = dict["DestRegion"] as? String {
+                self.destRegion = value
+            }
+            if let value = dict["DestType"] as? String {
+                self.destType = value
+            }
+            if let value = dict["EnableLogBackup"] as? Int32 {
+                self.enableLogBackup = value
+            }
+            if let value = dict["LogRetentionType"] as? String {
+                self.logRetentionType = value
+            }
+            if let value = dict["LogRetentionValue"] as? String {
+                self.logRetentionValue = value
+            }
+            if let value = dict["PolicyId"] as? String {
+                self.policyId = value
+            }
+            if let value = dict["SrcRegion"] as? String {
+                self.srcRegion = value
+            }
+            if let value = dict["SrcType"] as? String {
+                self.srcType = value
+            }
+        }
+    }
+    public var advancedLogPolicies: [ModifyLogBackupPolicyRequest.AdvancedLogPolicies]?
+
     public var DBClusterId: String?
 
     public var logBackupAnotherRegionRegion: String?
@@ -67236,6 +67340,13 @@ public class ModifyLogBackupPolicyRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.advancedLogPolicies != nil {
+            var tmp : [Any] = []
+            for k in self.advancedLogPolicies! {
+                tmp.append(k.toMap())
+            }
+            map["AdvancedLogPolicies"] = tmp
+        }
         if self.DBClusterId != nil {
             map["DBClusterId"] = self.DBClusterId!
         }
@@ -67265,6 +67376,114 @@ public class ModifyLogBackupPolicyRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["AdvancedLogPolicies"] as? [Any?] {
+            var tmp : [ModifyLogBackupPolicyRequest.AdvancedLogPolicies] = []
+            for v in value {
+                if v != nil {
+                    var model = ModifyLogBackupPolicyRequest.AdvancedLogPolicies()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.advancedLogPolicies = tmp
+        }
+        if let value = dict["DBClusterId"] as? String {
+            self.DBClusterId = value
+        }
+        if let value = dict["LogBackupAnotherRegionRegion"] as? String {
+            self.logBackupAnotherRegionRegion = value
+        }
+        if let value = dict["LogBackupAnotherRegionRetentionPeriod"] as? String {
+            self.logBackupAnotherRegionRetentionPeriod = value
+        }
+        if let value = dict["LogBackupRetentionPeriod"] as? String {
+            self.logBackupRetentionPeriod = value
+        }
+        if let value = dict["OwnerAccount"] as? String {
+            self.ownerAccount = value
+        }
+        if let value = dict["OwnerId"] as? Int64 {
+            self.ownerId = value
+        }
+        if let value = dict["ResourceOwnerAccount"] as? String {
+            self.resourceOwnerAccount = value
+        }
+        if let value = dict["ResourceOwnerId"] as? Int64 {
+            self.resourceOwnerId = value
+        }
+    }
+}
+
+public class ModifyLogBackupPolicyShrinkRequest : Tea.TeaModel {
+    public var advancedLogPoliciesShrink: String?
+
+    public var DBClusterId: String?
+
+    public var logBackupAnotherRegionRegion: String?
+
+    public var logBackupAnotherRegionRetentionPeriod: String?
+
+    public var logBackupRetentionPeriod: String?
+
+    public var ownerAccount: String?
+
+    public var ownerId: Int64?
+
+    public var resourceOwnerAccount: String?
+
+    public var resourceOwnerId: Int64?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.advancedLogPoliciesShrink != nil {
+            map["AdvancedLogPolicies"] = self.advancedLogPoliciesShrink!
+        }
+        if self.DBClusterId != nil {
+            map["DBClusterId"] = self.DBClusterId!
+        }
+        if self.logBackupAnotherRegionRegion != nil {
+            map["LogBackupAnotherRegionRegion"] = self.logBackupAnotherRegionRegion!
+        }
+        if self.logBackupAnotherRegionRetentionPeriod != nil {
+            map["LogBackupAnotherRegionRetentionPeriod"] = self.logBackupAnotherRegionRetentionPeriod!
+        }
+        if self.logBackupRetentionPeriod != nil {
+            map["LogBackupRetentionPeriod"] = self.logBackupRetentionPeriod!
+        }
+        if self.ownerAccount != nil {
+            map["OwnerAccount"] = self.ownerAccount!
+        }
+        if self.ownerId != nil {
+            map["OwnerId"] = self.ownerId!
+        }
+        if self.resourceOwnerAccount != nil {
+            map["ResourceOwnerAccount"] = self.resourceOwnerAccount!
+        }
+        if self.resourceOwnerId != nil {
+            map["ResourceOwnerId"] = self.resourceOwnerId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["AdvancedLogPolicies"] as? String {
+            self.advancedLogPoliciesShrink = value
+        }
         if let value = dict["DBClusterId"] as? String {
             self.DBClusterId = value
         }
