@@ -42427,9 +42427,57 @@ public class DescribeSafDeOrderRequest : Tea.TeaModel {
 
 public class DescribeSafDeOrderResponseBody : Tea.TeaModel {
     public class ResultObject : Tea.TeaModel {
+        public class Regions : Tea.TeaModel {
+            public var expirationDate: Int64?
+
+            public var region: String?
+
+            public var specification: Int32?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.expirationDate != nil {
+                    map["expirationDate"] = self.expirationDate!
+                }
+                if self.region != nil {
+                    map["region"] = self.region!
+                }
+                if self.specification != nil {
+                    map["specification"] = self.specification!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["expirationDate"] as? Int64 {
+                    self.expirationDate = value
+                }
+                if let value = dict["region"] as? String {
+                    self.region = value
+                }
+                if let value = dict["specification"] as? Int32 {
+                    self.specification = value
+                }
+            }
+        }
         public var expirationDate: Int64?
 
         public var openUserType: Int32?
+
+        public var regions: [DescribeSafDeOrderResponseBody.ResultObject.Regions]?
 
         public override init() {
             super.init()
@@ -42451,6 +42499,13 @@ public class DescribeSafDeOrderResponseBody : Tea.TeaModel {
             if self.openUserType != nil {
                 map["openUserType"] = self.openUserType!
             }
+            if self.regions != nil {
+                var tmp : [Any] = []
+                for k in self.regions! {
+                    tmp.append(k.toMap())
+                }
+                map["regions"] = tmp
+            }
             return map
         }
 
@@ -42461,6 +42516,19 @@ public class DescribeSafDeOrderResponseBody : Tea.TeaModel {
             }
             if let value = dict["openUserType"] as? Int32 {
                 self.openUserType = value
+            }
+            if let value = dict["regions"] as? [Any?] {
+                var tmp : [DescribeSafDeOrderResponseBody.ResultObject.Regions] = []
+                for v in value {
+                    if v != nil {
+                        var model = DescribeSafDeOrderResponseBody.ResultObject.Regions()
+                        if v != nil {
+                            model.fromMap(v as? [String: Any?])
+                        }
+                        tmp.append(model)
+                    }
+                }
+                self.regions = tmp
             }
         }
     }
