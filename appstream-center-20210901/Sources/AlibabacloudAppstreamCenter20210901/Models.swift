@@ -12650,6 +12650,10 @@ public class ModifyBrowserInstanceGroupRequest : Tea.TeaModel {
 
         public var html5FileTransfer: String?
 
+        public var noOperationDisconnect: String?
+
+        public var noOperationDisconnectTime: Int32?
+
         public var policyId: String?
 
         public var policyVersion: String?
@@ -12687,6 +12691,12 @@ public class ModifyBrowserInstanceGroupRequest : Tea.TeaModel {
             if self.html5FileTransfer != nil {
                 map["Html5FileTransfer"] = self.html5FileTransfer!
             }
+            if self.noOperationDisconnect != nil {
+                map["NoOperationDisconnect"] = self.noOperationDisconnect!
+            }
+            if self.noOperationDisconnectTime != nil {
+                map["NoOperationDisconnectTime"] = self.noOperationDisconnectTime!
+            }
             if self.policyId != nil {
                 map["PolicyId"] = self.policyId!
             }
@@ -12717,6 +12727,12 @@ public class ModifyBrowserInstanceGroupRequest : Tea.TeaModel {
             }
             if let value = dict["Html5FileTransfer"] as? String {
                 self.html5FileTransfer = value
+            }
+            if let value = dict["NoOperationDisconnect"] as? String {
+                self.noOperationDisconnect = value
+            }
+            if let value = dict["NoOperationDisconnectTime"] as? Int32 {
+                self.noOperationDisconnectTime = value
             }
             if let value = dict["PolicyId"] as? String {
                 self.policyId = value
