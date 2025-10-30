@@ -2421,6 +2421,8 @@ public class Node : Tea.TeaModel {
 
     public var allocatableMemory: String?
 
+    public var ancestorQuotaWorkloadNum: Int64?
+
     public var availabilityZone: String?
 
     public var boundQuotas: [QuotaIdName]?
@@ -2428,6 +2430,8 @@ public class Node : Tea.TeaModel {
     public var CPU: String?
 
     public var creatorId: String?
+
+    public var descendantQuotaWorkloadNum: Int64?
 
     public var GPU: String?
 
@@ -2479,6 +2483,8 @@ public class Node : Tea.TeaModel {
 
     public var resourceGroupName: String?
 
+    public var selfQuotaWorkloadNum: Int64?
+
     public var systemReservedCPU: String?
 
     public var systemReservedMemory: String?
@@ -2510,6 +2516,9 @@ public class Node : Tea.TeaModel {
         if self.allocatableMemory != nil {
             map["AllocatableMemory"] = self.allocatableMemory!
         }
+        if self.ancestorQuotaWorkloadNum != nil {
+            map["AncestorQuotaWorkloadNum"] = self.ancestorQuotaWorkloadNum!
+        }
         if self.availabilityZone != nil {
             map["AvailabilityZone"] = self.availabilityZone!
         }
@@ -2525,6 +2534,9 @@ public class Node : Tea.TeaModel {
         }
         if self.creatorId != nil {
             map["CreatorId"] = self.creatorId!
+        }
+        if self.descendantQuotaWorkloadNum != nil {
+            map["DescendantQuotaWorkloadNum"] = self.descendantQuotaWorkloadNum!
         }
         if self.GPU != nil {
             map["GPU"] = self.GPU!
@@ -2601,6 +2613,9 @@ public class Node : Tea.TeaModel {
         if self.resourceGroupName != nil {
             map["ResourceGroupName"] = self.resourceGroupName!
         }
+        if self.selfQuotaWorkloadNum != nil {
+            map["SelfQuotaWorkloadNum"] = self.selfQuotaWorkloadNum!
+        }
         if self.systemReservedCPU != nil {
             map["SystemReservedCPU"] = self.systemReservedCPU!
         }
@@ -2631,6 +2646,9 @@ public class Node : Tea.TeaModel {
         if let value = dict["AllocatableMemory"] as? String {
             self.allocatableMemory = value
         }
+        if let value = dict["AncestorQuotaWorkloadNum"] as? Int64 {
+            self.ancestorQuotaWorkloadNum = value
+        }
         if let value = dict["AvailabilityZone"] as? String {
             self.availabilityZone = value
         }
@@ -2652,6 +2670,9 @@ public class Node : Tea.TeaModel {
         }
         if let value = dict["CreatorId"] as? String {
             self.creatorId = value
+        }
+        if let value = dict["DescendantQuotaWorkloadNum"] as? Int64 {
+            self.descendantQuotaWorkloadNum = value
         }
         if let value = dict["GPU"] as? String {
             self.GPU = value
@@ -2727,6 +2748,9 @@ public class Node : Tea.TeaModel {
         }
         if let value = dict["ResourceGroupName"] as? String {
             self.resourceGroupName = value
+        }
+        if let value = dict["SelfQuotaWorkloadNum"] as? Int64 {
+            self.selfQuotaWorkloadNum = value
         }
         if let value = dict["SystemReservedCPU"] as? String {
             self.systemReservedCPU = value
