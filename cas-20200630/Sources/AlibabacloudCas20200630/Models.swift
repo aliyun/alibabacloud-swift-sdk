@@ -6,6 +6,44 @@ import AlibabaCloudOpenApiUtil
 import AlibabacloudEndpointUtil
 
 public class CreateClientCertificateRequest : Tea.TeaModel {
+    public class Tags : Tea.TeaModel {
+        public var key: String?
+
+        public var value: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.key != nil {
+                map["Key"] = self.key!
+            }
+            if self.value != nil {
+                map["Value"] = self.value!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["Key"] as? String {
+                self.key = value
+            }
+            if let value = dict["Value"] as? String {
+                self.value = value
+            }
+        }
+    }
     public var afterTime: Int64?
 
     public var algorithm: String?
@@ -32,11 +70,15 @@ public class CreateClientCertificateRequest : Tea.TeaModel {
 
     public var parentIdentifier: String?
 
+    public var resourceGroupId: String?
+
     public var sanType: Int32?
 
     public var sanValue: String?
 
     public var state: String?
+
+    public var tags: [CreateClientCertificateRequest.Tags]?
 
     public var years: Int32?
 
@@ -93,6 +135,9 @@ public class CreateClientCertificateRequest : Tea.TeaModel {
         if self.parentIdentifier != nil {
             map["ParentIdentifier"] = self.parentIdentifier!
         }
+        if self.resourceGroupId != nil {
+            map["ResourceGroupId"] = self.resourceGroupId!
+        }
         if self.sanType != nil {
             map["SanType"] = self.sanType!
         }
@@ -101,6 +146,13 @@ public class CreateClientCertificateRequest : Tea.TeaModel {
         }
         if self.state != nil {
             map["State"] = self.state!
+        }
+        if self.tags != nil {
+            var tmp : [Any] = []
+            for k in self.tags! {
+                tmp.append(k.toMap())
+            }
+            map["Tags"] = tmp
         }
         if self.years != nil {
             map["Years"] = self.years!
@@ -149,6 +201,9 @@ public class CreateClientCertificateRequest : Tea.TeaModel {
         if let value = dict["ParentIdentifier"] as? String {
             self.parentIdentifier = value
         }
+        if let value = dict["ResourceGroupId"] as? String {
+            self.resourceGroupId = value
+        }
         if let value = dict["SanType"] as? Int32 {
             self.sanType = value
         }
@@ -157,6 +212,19 @@ public class CreateClientCertificateRequest : Tea.TeaModel {
         }
         if let value = dict["State"] as? String {
             self.state = value
+        }
+        if let value = dict["Tags"] as? [Any?] {
+            var tmp : [CreateClientCertificateRequest.Tags] = []
+            for v in value {
+                if v != nil {
+                    var model = CreateClientCertificateRequest.Tags()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.tags = tmp
         }
         if let value = dict["Years"] as? Int32 {
             self.years = value
@@ -278,6 +346,44 @@ public class CreateClientCertificateResponse : Tea.TeaModel {
 }
 
 public class CreateClientCertificateWithCsrRequest : Tea.TeaModel {
+    public class Tags : Tea.TeaModel {
+        public var key: String?
+
+        public var value: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.key != nil {
+                map["Key"] = self.key!
+            }
+            if self.value != nil {
+                map["Value"] = self.value!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["Key"] as? String {
+                self.key = value
+            }
+            if let value = dict["Value"] as? String {
+                self.value = value
+            }
+        }
+    }
     public var afterTime: Int64?
 
     public var algorithm: String?
@@ -306,11 +412,15 @@ public class CreateClientCertificateWithCsrRequest : Tea.TeaModel {
 
     public var parentIdentifier: String?
 
+    public var resourceGroupId: String?
+
     public var sanType: Int32?
 
     public var sanValue: String?
 
     public var state: String?
+
+    public var tags: [CreateClientCertificateWithCsrRequest.Tags]?
 
     public var years: Int32?
 
@@ -370,6 +480,9 @@ public class CreateClientCertificateWithCsrRequest : Tea.TeaModel {
         if self.parentIdentifier != nil {
             map["ParentIdentifier"] = self.parentIdentifier!
         }
+        if self.resourceGroupId != nil {
+            map["ResourceGroupId"] = self.resourceGroupId!
+        }
         if self.sanType != nil {
             map["SanType"] = self.sanType!
         }
@@ -378,6 +491,13 @@ public class CreateClientCertificateWithCsrRequest : Tea.TeaModel {
         }
         if self.state != nil {
             map["State"] = self.state!
+        }
+        if self.tags != nil {
+            var tmp : [Any] = []
+            for k in self.tags! {
+                tmp.append(k.toMap())
+            }
+            map["Tags"] = tmp
         }
         if self.years != nil {
             map["Years"] = self.years!
@@ -429,6 +549,9 @@ public class CreateClientCertificateWithCsrRequest : Tea.TeaModel {
         if let value = dict["ParentIdentifier"] as? String {
             self.parentIdentifier = value
         }
+        if let value = dict["ResourceGroupId"] as? String {
+            self.resourceGroupId = value
+        }
         if let value = dict["SanType"] as? Int32 {
             self.sanType = value
         }
@@ -437,6 +560,19 @@ public class CreateClientCertificateWithCsrRequest : Tea.TeaModel {
         }
         if let value = dict["State"] as? String {
             self.state = value
+        }
+        if let value = dict["Tags"] as? [Any?] {
+            var tmp : [CreateClientCertificateWithCsrRequest.Tags] = []
+            for v in value {
+                if v != nil {
+                    var model = CreateClientCertificateWithCsrRequest.Tags()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.tags = tmp
         }
         if let value = dict["Years"] as? Int32 {
             self.years = value
@@ -951,6 +1087,44 @@ public class CreateCustomCertificateRequest : Tea.TeaModel {
             }
         }
     }
+    public class Tags : Tea.TeaModel {
+        public var key: String?
+
+        public var value: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.key != nil {
+                map["Key"] = self.key!
+            }
+            if self.value != nil {
+                map["Value"] = self.value!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["Key"] as? String {
+                self.key = value
+            }
+            if let value = dict["Value"] as? String {
+                self.value = value
+            }
+        }
+    }
     public var apiPassthrough: CreateCustomCertificateRequest.ApiPassthrough?
 
     public var csr: String?
@@ -960,6 +1134,10 @@ public class CreateCustomCertificateRequest : Tea.TeaModel {
     public var immediately: Int32?
 
     public var parentIdentifier: String?
+
+    public var resourceGroupId: String?
+
+    public var tags: [CreateCustomCertificateRequest.Tags]?
 
     public var validity: String?
 
@@ -993,6 +1171,16 @@ public class CreateCustomCertificateRequest : Tea.TeaModel {
         if self.parentIdentifier != nil {
             map["ParentIdentifier"] = self.parentIdentifier!
         }
+        if self.resourceGroupId != nil {
+            map["ResourceGroupId"] = self.resourceGroupId!
+        }
+        if self.tags != nil {
+            var tmp : [Any] = []
+            for k in self.tags! {
+                tmp.append(k.toMap())
+            }
+            map["Tags"] = tmp
+        }
         if self.validity != nil {
             map["Validity"] = self.validity!
         }
@@ -1017,6 +1205,22 @@ public class CreateCustomCertificateRequest : Tea.TeaModel {
         }
         if let value = dict["ParentIdentifier"] as? String {
             self.parentIdentifier = value
+        }
+        if let value = dict["ResourceGroupId"] as? String {
+            self.resourceGroupId = value
+        }
+        if let value = dict["Tags"] as? [Any?] {
+            var tmp : [CreateCustomCertificateRequest.Tags] = []
+            for v in value {
+                if v != nil {
+                    var model = CreateCustomCertificateRequest.Tags()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.tags = tmp
         }
         if let value = dict["Validity"] as? String {
             self.validity = value
@@ -1290,11 +1494,53 @@ public class CreateExternalCACertificateRequest : Tea.TeaModel {
             }
         }
     }
+    public class Tags : Tea.TeaModel {
+        public var key: String?
+
+        public var value: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.key != nil {
+                map["Key"] = self.key!
+            }
+            if self.value != nil {
+                map["Value"] = self.value!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["Key"] as? String {
+                self.key = value
+            }
+            if let value = dict["Value"] as? String {
+                self.value = value
+            }
+        }
+    }
     public var apiPassthrough: CreateExternalCACertificateRequest.ApiPassthrough?
 
     public var csr: String?
 
     public var instanceId: String?
+
+    public var resourceGroupId: String?
+
+    public var tags: [CreateExternalCACertificateRequest.Tags]?
 
     public var validity: String?
 
@@ -1322,6 +1568,16 @@ public class CreateExternalCACertificateRequest : Tea.TeaModel {
         if self.instanceId != nil {
             map["InstanceId"] = self.instanceId!
         }
+        if self.resourceGroupId != nil {
+            map["ResourceGroupId"] = self.resourceGroupId!
+        }
+        if self.tags != nil {
+            var tmp : [Any] = []
+            for k in self.tags! {
+                tmp.append(k.toMap())
+            }
+            map["Tags"] = tmp
+        }
         if self.validity != nil {
             map["Validity"] = self.validity!
         }
@@ -1341,6 +1597,22 @@ public class CreateExternalCACertificateRequest : Tea.TeaModel {
         if let value = dict["InstanceId"] as? String {
             self.instanceId = value
         }
+        if let value = dict["ResourceGroupId"] as? String {
+            self.resourceGroupId = value
+        }
+        if let value = dict["Tags"] as? [Any?] {
+            var tmp : [CreateExternalCACertificateRequest.Tags] = []
+            for v in value {
+                if v != nil {
+                    var model = CreateExternalCACertificateRequest.Tags()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.tags = tmp
+        }
         if let value = dict["Validity"] as? String {
             self.validity = value
         }
@@ -1348,11 +1620,53 @@ public class CreateExternalCACertificateRequest : Tea.TeaModel {
 }
 
 public class CreateExternalCACertificateShrinkRequest : Tea.TeaModel {
+    public class Tags : Tea.TeaModel {
+        public var key: String?
+
+        public var value: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.key != nil {
+                map["Key"] = self.key!
+            }
+            if self.value != nil {
+                map["Value"] = self.value!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["Key"] as? String {
+                self.key = value
+            }
+            if let value = dict["Value"] as? String {
+                self.value = value
+            }
+        }
+    }
     public var apiPassthroughShrink: String?
 
     public var csr: String?
 
     public var instanceId: String?
+
+    public var resourceGroupId: String?
+
+    public var tags: [CreateExternalCACertificateShrinkRequest.Tags]?
 
     public var validity: String?
 
@@ -1379,6 +1693,16 @@ public class CreateExternalCACertificateShrinkRequest : Tea.TeaModel {
         if self.instanceId != nil {
             map["InstanceId"] = self.instanceId!
         }
+        if self.resourceGroupId != nil {
+            map["ResourceGroupId"] = self.resourceGroupId!
+        }
+        if self.tags != nil {
+            var tmp : [Any] = []
+            for k in self.tags! {
+                tmp.append(k.toMap())
+            }
+            map["Tags"] = tmp
+        }
         if self.validity != nil {
             map["Validity"] = self.validity!
         }
@@ -1395,6 +1719,22 @@ public class CreateExternalCACertificateShrinkRequest : Tea.TeaModel {
         }
         if let value = dict["InstanceId"] as? String {
             self.instanceId = value
+        }
+        if let value = dict["ResourceGroupId"] as? String {
+            self.resourceGroupId = value
+        }
+        if let value = dict["Tags"] as? [Any?] {
+            var tmp : [CreateExternalCACertificateShrinkRequest.Tags] = []
+            for v in value {
+                if v != nil {
+                    var model = CreateExternalCACertificateShrinkRequest.Tags()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.tags = tmp
         }
         if let value = dict["Validity"] as? String {
             self.validity = value
@@ -1620,6 +1960,44 @@ public class CreateRevokeClientCertificateResponse : Tea.TeaModel {
 }
 
 public class CreateRootCACertificateRequest : Tea.TeaModel {
+    public class Tags : Tea.TeaModel {
+        public var key: String?
+
+        public var value: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.key != nil {
+                map["Key"] = self.key!
+            }
+            if self.value != nil {
+                map["Value"] = self.value!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["Key"] as? String {
+                self.key = value
+            }
+            if let value = dict["Value"] as? String {
+                self.value = value
+            }
+        }
+    }
     public var algorithm: String?
 
     public var clientToken: String?
@@ -1634,7 +2012,11 @@ public class CreateRootCACertificateRequest : Tea.TeaModel {
 
     public var organizationUnit: String?
 
+    public var resourceGroupId: String?
+
     public var state: String?
+
+    public var tags: [CreateRootCACertificateRequest.Tags]?
 
     public var years: Int32?
 
@@ -1673,8 +2055,18 @@ public class CreateRootCACertificateRequest : Tea.TeaModel {
         if self.organizationUnit != nil {
             map["OrganizationUnit"] = self.organizationUnit!
         }
+        if self.resourceGroupId != nil {
+            map["ResourceGroupId"] = self.resourceGroupId!
+        }
         if self.state != nil {
             map["State"] = self.state!
+        }
+        if self.tags != nil {
+            var tmp : [Any] = []
+            for k in self.tags! {
+                tmp.append(k.toMap())
+            }
+            map["Tags"] = tmp
         }
         if self.years != nil {
             map["Years"] = self.years!
@@ -1705,8 +2097,24 @@ public class CreateRootCACertificateRequest : Tea.TeaModel {
         if let value = dict["OrganizationUnit"] as? String {
             self.organizationUnit = value
         }
+        if let value = dict["ResourceGroupId"] as? String {
+            self.resourceGroupId = value
+        }
         if let value = dict["State"] as? String {
             self.state = value
+        }
+        if let value = dict["Tags"] as? [Any?] {
+            var tmp : [CreateRootCACertificateRequest.Tags] = []
+            for v in value {
+                if v != nil {
+                    var model = CreateRootCACertificateRequest.Tags()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.tags = tmp
         }
         if let value = dict["Years"] as? Int32 {
             self.years = value
@@ -1820,6 +2228,44 @@ public class CreateRootCACertificateResponse : Tea.TeaModel {
 }
 
 public class CreateServerCertificateRequest : Tea.TeaModel {
+    public class Tags : Tea.TeaModel {
+        public var key: String?
+
+        public var value: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.key != nil {
+                map["Key"] = self.key!
+            }
+            if self.value != nil {
+                map["Value"] = self.value!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["Key"] as? String {
+                self.key = value
+            }
+            if let value = dict["Value"] as? String {
+                self.value = value
+            }
+        }
+    }
     public var afterTime: Int64?
 
     public var algorithm: String?
@@ -1848,7 +2294,11 @@ public class CreateServerCertificateRequest : Tea.TeaModel {
 
     public var parentIdentifier: String?
 
+    public var resourceGroupId: String?
+
     public var state: String?
+
+    public var tags: [CreateServerCertificateRequest.Tags]?
 
     public var years: Int32?
 
@@ -1908,8 +2358,18 @@ public class CreateServerCertificateRequest : Tea.TeaModel {
         if self.parentIdentifier != nil {
             map["ParentIdentifier"] = self.parentIdentifier!
         }
+        if self.resourceGroupId != nil {
+            map["ResourceGroupId"] = self.resourceGroupId!
+        }
         if self.state != nil {
             map["State"] = self.state!
+        }
+        if self.tags != nil {
+            var tmp : [Any] = []
+            for k in self.tags! {
+                tmp.append(k.toMap())
+            }
+            map["Tags"] = tmp
         }
         if self.years != nil {
             map["Years"] = self.years!
@@ -1961,8 +2421,24 @@ public class CreateServerCertificateRequest : Tea.TeaModel {
         if let value = dict["ParentIdentifier"] as? String {
             self.parentIdentifier = value
         }
+        if let value = dict["ResourceGroupId"] as? String {
+            self.resourceGroupId = value
+        }
         if let value = dict["State"] as? String {
             self.state = value
+        }
+        if let value = dict["Tags"] as? [Any?] {
+            var tmp : [CreateServerCertificateRequest.Tags] = []
+            for v in value {
+                if v != nil {
+                    var model = CreateServerCertificateRequest.Tags()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.tags = tmp
         }
         if let value = dict["Years"] as? Int32 {
             self.years = value
@@ -2084,6 +2560,44 @@ public class CreateServerCertificateResponse : Tea.TeaModel {
 }
 
 public class CreateServerCertificateWithCsrRequest : Tea.TeaModel {
+    public class Tags : Tea.TeaModel {
+        public var key: String?
+
+        public var value: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.key != nil {
+                map["Key"] = self.key!
+            }
+            if self.value != nil {
+                map["Value"] = self.value!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["Key"] as? String {
+                self.key = value
+            }
+            if let value = dict["Value"] as? String {
+                self.value = value
+            }
+        }
+    }
     public var afterTime: Int64?
 
     public var algorithm: String?
@@ -2114,7 +2628,11 @@ public class CreateServerCertificateWithCsrRequest : Tea.TeaModel {
 
     public var parentIdentifier: String?
 
+    public var resourceGroupId: String?
+
     public var state: String?
+
+    public var tags: [CreateServerCertificateWithCsrRequest.Tags]?
 
     public var years: Int32?
 
@@ -2177,8 +2695,18 @@ public class CreateServerCertificateWithCsrRequest : Tea.TeaModel {
         if self.parentIdentifier != nil {
             map["ParentIdentifier"] = self.parentIdentifier!
         }
+        if self.resourceGroupId != nil {
+            map["ResourceGroupId"] = self.resourceGroupId!
+        }
         if self.state != nil {
             map["State"] = self.state!
+        }
+        if self.tags != nil {
+            var tmp : [Any] = []
+            for k in self.tags! {
+                tmp.append(k.toMap())
+            }
+            map["Tags"] = tmp
         }
         if self.years != nil {
             map["Years"] = self.years!
@@ -2233,8 +2761,24 @@ public class CreateServerCertificateWithCsrRequest : Tea.TeaModel {
         if let value = dict["ParentIdentifier"] as? String {
             self.parentIdentifier = value
         }
+        if let value = dict["ResourceGroupId"] as? String {
+            self.resourceGroupId = value
+        }
         if let value = dict["State"] as? String {
             self.state = value
+        }
+        if let value = dict["Tags"] as? [Any?] {
+            var tmp : [CreateServerCertificateWithCsrRequest.Tags] = []
+            for v in value {
+                if v != nil {
+                    var model = CreateServerCertificateWithCsrRequest.Tags()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.tags = tmp
         }
         if let value = dict["Years"] as? Int32 {
             self.years = value
@@ -2356,7 +2900,47 @@ public class CreateServerCertificateWithCsrResponse : Tea.TeaModel {
 }
 
 public class CreateSubCACertificateRequest : Tea.TeaModel {
+    public class Tags : Tea.TeaModel {
+        public var key: String?
+
+        public var value: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.key != nil {
+                map["Key"] = self.key!
+            }
+            if self.value != nil {
+                map["Value"] = self.value!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["Key"] as? String {
+                self.key = value
+            }
+            if let value = dict["Value"] as? String {
+                self.value = value
+            }
+        }
+    }
     public var algorithm: String?
+
+    public var clientToken: String?
 
     public var commonName: String?
 
@@ -2378,7 +2962,11 @@ public class CreateSubCACertificateRequest : Tea.TeaModel {
 
     public var pathLenConstraint: Int32?
 
+    public var resourceGroupId: String?
+
     public var state: String?
+
+    public var tags: [CreateSubCACertificateRequest.Tags]?
 
     public var years: Int32?
 
@@ -2398,6 +2986,9 @@ public class CreateSubCACertificateRequest : Tea.TeaModel {
         var map = super.toMap()
         if self.algorithm != nil {
             map["Algorithm"] = self.algorithm!
+        }
+        if self.clientToken != nil {
+            map["ClientToken"] = self.clientToken!
         }
         if self.commonName != nil {
             map["CommonName"] = self.commonName!
@@ -2429,8 +3020,18 @@ public class CreateSubCACertificateRequest : Tea.TeaModel {
         if self.pathLenConstraint != nil {
             map["PathLenConstraint"] = self.pathLenConstraint!
         }
+        if self.resourceGroupId != nil {
+            map["ResourceGroupId"] = self.resourceGroupId!
+        }
         if self.state != nil {
             map["State"] = self.state!
+        }
+        if self.tags != nil {
+            var tmp : [Any] = []
+            for k in self.tags! {
+                tmp.append(k.toMap())
+            }
+            map["Tags"] = tmp
         }
         if self.years != nil {
             map["Years"] = self.years!
@@ -2442,6 +3043,9 @@ public class CreateSubCACertificateRequest : Tea.TeaModel {
         guard let dict else { return }
         if let value = dict["Algorithm"] as? String {
             self.algorithm = value
+        }
+        if let value = dict["ClientToken"] as? String {
+            self.clientToken = value
         }
         if let value = dict["CommonName"] as? String {
             self.commonName = value
@@ -2473,8 +3077,24 @@ public class CreateSubCACertificateRequest : Tea.TeaModel {
         if let value = dict["PathLenConstraint"] as? Int32 {
             self.pathLenConstraint = value
         }
+        if let value = dict["ResourceGroupId"] as? String {
+            self.resourceGroupId = value
+        }
         if let value = dict["State"] as? String {
             self.state = value
+        }
+        if let value = dict["Tags"] as? [Any?] {
+            var tmp : [CreateSubCACertificateRequest.Tags] = []
+            for v in value {
+                if v != nil {
+                    var model = CreateSubCACertificateRequest.Tags()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.tags = tmp
         }
         if let value = dict["Years"] as? Int32 {
             self.years = value
@@ -2732,6 +3352,44 @@ public class DescribeCACertificateRequest : Tea.TeaModel {
 
 public class DescribeCACertificateResponseBody : Tea.TeaModel {
     public class Certificate : Tea.TeaModel {
+        public class Tags : Tea.TeaModel {
+            public var tagKey: String?
+
+            public var tagValue: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.tagKey != nil {
+                    map["TagKey"] = self.tagKey!
+                }
+                if self.tagValue != nil {
+                    map["TagValue"] = self.tagValue!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["TagKey"] as? String {
+                    self.tagKey = value
+                }
+                if let value = dict["TagValue"] as? String {
+                    self.tagValue = value
+                }
+            }
+        }
         public var afterDate: Int64?
 
         public var algorithm: String?
@@ -2776,6 +3434,8 @@ public class DescribeCACertificateResponseBody : Tea.TeaModel {
 
         public var parentIdentifier: String?
 
+        public var resourceGroupId: String?
+
         public var sans: String?
 
         public var serialNumber: String?
@@ -2789,6 +3449,8 @@ public class DescribeCACertificateResponseBody : Tea.TeaModel {
         public var status: String?
 
         public var subjectDN: String?
+
+        public var tags: [DescribeCACertificateResponseBody.Certificate.Tags]?
 
         public var x509Certificate: String?
 
@@ -2874,6 +3536,9 @@ public class DescribeCACertificateResponseBody : Tea.TeaModel {
             if self.parentIdentifier != nil {
                 map["ParentIdentifier"] = self.parentIdentifier!
             }
+            if self.resourceGroupId != nil {
+                map["ResourceGroupId"] = self.resourceGroupId!
+            }
             if self.sans != nil {
                 map["Sans"] = self.sans!
             }
@@ -2894,6 +3559,13 @@ public class DescribeCACertificateResponseBody : Tea.TeaModel {
             }
             if self.subjectDN != nil {
                 map["SubjectDN"] = self.subjectDN!
+            }
+            if self.tags != nil {
+                var tmp : [Any] = []
+                for k in self.tags! {
+                    tmp.append(k.toMap())
+                }
+                map["Tags"] = tmp
             }
             if self.x509Certificate != nil {
                 map["X509Certificate"] = self.x509Certificate!
@@ -2972,6 +3644,9 @@ public class DescribeCACertificateResponseBody : Tea.TeaModel {
             if let value = dict["ParentIdentifier"] as? String {
                 self.parentIdentifier = value
             }
+            if let value = dict["ResourceGroupId"] as? String {
+                self.resourceGroupId = value
+            }
             if let value = dict["Sans"] as? String {
                 self.sans = value
             }
@@ -2992,6 +3667,19 @@ public class DescribeCACertificateResponseBody : Tea.TeaModel {
             }
             if let value = dict["SubjectDN"] as? String {
                 self.subjectDN = value
+            }
+            if let value = dict["Tags"] as? [Any?] {
+                var tmp : [DescribeCACertificateResponseBody.Certificate.Tags] = []
+                for v in value {
+                    if v != nil {
+                        var model = DescribeCACertificateResponseBody.Certificate.Tags()
+                        if v != nil {
+                            model.fromMap(v as? [String: Any?])
+                        }
+                        tmp.append(model)
+                    }
+                }
+                self.tags = tmp
             }
             if let value = dict["X509Certificate"] as? String {
                 self.x509Certificate = value
@@ -3200,6 +3888,8 @@ public class DescribeCACertificateListRequest : Tea.TeaModel {
 
     public var issuerType: String?
 
+    public var resourceGroupId: String?
+
     public var showSize: Int32?
 
     public var validStatus: String?
@@ -3233,6 +3923,9 @@ public class DescribeCACertificateListRequest : Tea.TeaModel {
         if self.issuerType != nil {
             map["IssuerType"] = self.issuerType!
         }
+        if self.resourceGroupId != nil {
+            map["ResourceGroupId"] = self.resourceGroupId!
+        }
         if self.showSize != nil {
             map["ShowSize"] = self.showSize!
         }
@@ -3258,6 +3951,9 @@ public class DescribeCACertificateListRequest : Tea.TeaModel {
         }
         if let value = dict["IssuerType"] as? String {
             self.issuerType = value
+        }
+        if let value = dict["ResourceGroupId"] as? String {
+            self.resourceGroupId = value
         }
         if let value = dict["ShowSize"] as? Int32 {
             self.showSize = value
@@ -3299,6 +3995,8 @@ public class DescribeCACertificateListResponseBody : Tea.TeaModel {
         public var organizationUnit: String?
 
         public var parentIdentifier: String?
+
+        public var resourceGroupId: String?
 
         public var sans: String?
 
@@ -3379,6 +4077,9 @@ public class DescribeCACertificateListResponseBody : Tea.TeaModel {
             if self.parentIdentifier != nil {
                 map["ParentIdentifier"] = self.parentIdentifier!
             }
+            if self.resourceGroupId != nil {
+                map["ResourceGroupId"] = self.resourceGroupId!
+            }
             if self.sans != nil {
                 map["Sans"] = self.sans!
             }
@@ -3458,6 +4159,9 @@ public class DescribeCACertificateListResponseBody : Tea.TeaModel {
             }
             if let value = dict["ParentIdentifier"] as? String {
                 self.parentIdentifier = value
+            }
+            if let value = dict["ResourceGroupId"] as? String {
+                self.resourceGroupId = value
             }
             if let value = dict["Sans"] as? String {
                 self.sans = value
@@ -3786,6 +4490,44 @@ public class DescribeClientCertificateRequest : Tea.TeaModel {
 
 public class DescribeClientCertificateResponseBody : Tea.TeaModel {
     public class Certificate : Tea.TeaModel {
+        public class Tags : Tea.TeaModel {
+            public var tagKey: String?
+
+            public var tagValue: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.tagKey != nil {
+                    map["TagKey"] = self.tagKey!
+                }
+                if self.tagValue != nil {
+                    map["TagValue"] = self.tagValue!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["TagKey"] as? String {
+                    self.tagKey = value
+                }
+                if let value = dict["TagValue"] as? String {
+                    self.tagValue = value
+                }
+            }
+        }
         public var afterDate: Int64?
 
         public var algorithm: String?
@@ -3814,6 +4556,8 @@ public class DescribeClientCertificateResponseBody : Tea.TeaModel {
 
         public var parentIdentifier: String?
 
+        public var resourceGroupId: String?
+
         public var sans: String?
 
         public var serialNumber: String?
@@ -3827,6 +4571,8 @@ public class DescribeClientCertificateResponseBody : Tea.TeaModel {
         public var status: String?
 
         public var subjectDN: String?
+
+        public var tags: [DescribeClientCertificateResponseBody.Certificate.Tags]?
 
         public var x509Certificate: String?
 
@@ -3886,6 +4632,9 @@ public class DescribeClientCertificateResponseBody : Tea.TeaModel {
             if self.parentIdentifier != nil {
                 map["ParentIdentifier"] = self.parentIdentifier!
             }
+            if self.resourceGroupId != nil {
+                map["ResourceGroupId"] = self.resourceGroupId!
+            }
             if self.sans != nil {
                 map["Sans"] = self.sans!
             }
@@ -3906,6 +4655,13 @@ public class DescribeClientCertificateResponseBody : Tea.TeaModel {
             }
             if self.subjectDN != nil {
                 map["SubjectDN"] = self.subjectDN!
+            }
+            if self.tags != nil {
+                var tmp : [Any] = []
+                for k in self.tags! {
+                    tmp.append(k.toMap())
+                }
+                map["Tags"] = tmp
             }
             if self.x509Certificate != nil {
                 map["X509Certificate"] = self.x509Certificate!
@@ -3957,6 +4713,9 @@ public class DescribeClientCertificateResponseBody : Tea.TeaModel {
             if let value = dict["ParentIdentifier"] as? String {
                 self.parentIdentifier = value
             }
+            if let value = dict["ResourceGroupId"] as? String {
+                self.resourceGroupId = value
+            }
             if let value = dict["Sans"] as? String {
                 self.sans = value
             }
@@ -3977,6 +4736,19 @@ public class DescribeClientCertificateResponseBody : Tea.TeaModel {
             }
             if let value = dict["SubjectDN"] as? String {
                 self.subjectDN = value
+            }
+            if let value = dict["Tags"] as? [Any?] {
+                var tmp : [DescribeClientCertificateResponseBody.Certificate.Tags] = []
+                for v in value {
+                    if v != nil {
+                        var model = DescribeClientCertificateResponseBody.Certificate.Tags()
+                        if v != nil {
+                            model.fromMap(v as? [String: Any?])
+                        }
+                        tmp.append(model)
+                    }
+                }
+                self.tags = tmp
             }
             if let value = dict["X509Certificate"] as? String {
                 self.x509Certificate = value
@@ -4907,6 +5679,8 @@ public class ListClientCertificateRequest : Tea.TeaModel {
 
     public var identifier: String?
 
+    public var resourceGroupId: String?
+
     public var showSize: Int32?
 
     public override init() {
@@ -4929,6 +5703,9 @@ public class ListClientCertificateRequest : Tea.TeaModel {
         if self.identifier != nil {
             map["Identifier"] = self.identifier!
         }
+        if self.resourceGroupId != nil {
+            map["ResourceGroupId"] = self.resourceGroupId!
+        }
         if self.showSize != nil {
             map["ShowSize"] = self.showSize!
         }
@@ -4942,6 +5719,9 @@ public class ListClientCertificateRequest : Tea.TeaModel {
         }
         if let value = dict["Identifier"] as? String {
             self.identifier = value
+        }
+        if let value = dict["ResourceGroupId"] as? String {
+            self.resourceGroupId = value
         }
         if let value = dict["ShowSize"] as? Int32 {
             self.showSize = value
@@ -4978,6 +5758,8 @@ public class ListClientCertificateResponseBody : Tea.TeaModel {
         public var organizationUnit: String?
 
         public var parentIdentifier: String?
+
+        public var resourceGroupId: String?
 
         public var sans: String?
 
@@ -5051,6 +5833,9 @@ public class ListClientCertificateResponseBody : Tea.TeaModel {
             if self.parentIdentifier != nil {
                 map["ParentIdentifier"] = self.parentIdentifier!
             }
+            if self.resourceGroupId != nil {
+                map["ResourceGroupId"] = self.resourceGroupId!
+            }
             if self.sans != nil {
                 map["Sans"] = self.sans!
             }
@@ -5121,6 +5906,9 @@ public class ListClientCertificateResponseBody : Tea.TeaModel {
             }
             if let value = dict["ParentIdentifier"] as? String {
                 self.parentIdentifier = value
+            }
+            if let value = dict["ResourceGroupId"] as? String {
+                self.resourceGroupId = value
             }
             if let value = dict["Sans"] as? String {
                 self.sans = value
