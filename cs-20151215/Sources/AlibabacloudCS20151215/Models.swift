@@ -19549,19 +19549,397 @@ public class DescribePolicyDetailsResponse : Tea.TeaModel {
 }
 
 public class DescribePolicyGovernanceInClusterResponseBody : Tea.TeaModel {
+    public class Violation : Tea.TeaModel {
+        public class TotalViolations : Tea.TeaModel {
+            public class Deny : Tea.TeaModel {
+                public var severity: String?
+
+                public var violations: String?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.severity != nil {
+                        map["severity"] = self.severity!
+                    }
+                    if self.violations != nil {
+                        map["violations"] = self.violations!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                    guard let dict else { return }
+                    if let value = dict["severity"] as? String {
+                        self.severity = value
+                    }
+                    if let value = dict["violations"] as? String {
+                        self.violations = value
+                    }
+                }
+            }
+            public class Warn : Tea.TeaModel {
+                public var severity: String?
+
+                public var violations: Int64?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.severity != nil {
+                        map["severity"] = self.severity!
+                    }
+                    if self.violations != nil {
+                        map["violations"] = self.violations!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                    guard let dict else { return }
+                    if let value = dict["severity"] as? String {
+                        self.severity = value
+                    }
+                    if let value = dict["violations"] as? Int64 {
+                        self.violations = value
+                    }
+                }
+            }
+            public var deny: [DescribePolicyGovernanceInClusterResponseBody.Violation.TotalViolations.Deny]?
+
+            public var warn: [DescribePolicyGovernanceInClusterResponseBody.Violation.TotalViolations.Warn]?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.deny != nil {
+                    var tmp : [Any] = []
+                    for k in self.deny! {
+                        tmp.append(k.toMap())
+                    }
+                    map["deny"] = tmp
+                }
+                if self.warn != nil {
+                    var tmp : [Any] = []
+                    for k in self.warn! {
+                        tmp.append(k.toMap())
+                    }
+                    map["warn"] = tmp
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["deny"] as? [Any?] {
+                    var tmp : [DescribePolicyGovernanceInClusterResponseBody.Violation.TotalViolations.Deny] = []
+                    for v in value {
+                        if v != nil {
+                            var model = DescribePolicyGovernanceInClusterResponseBody.Violation.TotalViolations.Deny()
+                            if v != nil {
+                                model.fromMap(v as? [String: Any?])
+                            }
+                            tmp.append(model)
+                        }
+                    }
+                    self.deny = tmp
+                }
+                if let value = dict["warn"] as? [Any?] {
+                    var tmp : [DescribePolicyGovernanceInClusterResponseBody.Violation.TotalViolations.Warn] = []
+                    for v in value {
+                        if v != nil {
+                            var model = DescribePolicyGovernanceInClusterResponseBody.Violation.TotalViolations.Warn()
+                            if v != nil {
+                                model.fromMap(v as? [String: Any?])
+                            }
+                            tmp.append(model)
+                        }
+                    }
+                    self.warn = tmp
+                }
+            }
+        }
+        public class Violations : Tea.TeaModel {
+            public class Deny : Tea.TeaModel {
+                public var policyDescription: String?
+
+                public var policyName: String?
+
+                public var severity: String?
+
+                public var violations: Int64?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.policyDescription != nil {
+                        map["policyDescription"] = self.policyDescription!
+                    }
+                    if self.policyName != nil {
+                        map["policyName"] = self.policyName!
+                    }
+                    if self.severity != nil {
+                        map["severity"] = self.severity!
+                    }
+                    if self.violations != nil {
+                        map["violations"] = self.violations!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                    guard let dict else { return }
+                    if let value = dict["policyDescription"] as? String {
+                        self.policyDescription = value
+                    }
+                    if let value = dict["policyName"] as? String {
+                        self.policyName = value
+                    }
+                    if let value = dict["severity"] as? String {
+                        self.severity = value
+                    }
+                    if let value = dict["violations"] as? Int64 {
+                        self.violations = value
+                    }
+                }
+            }
+            public class Warn : Tea.TeaModel {
+                public var policyDescription: String?
+
+                public var policyName: String?
+
+                public var severity: String?
+
+                public var violations: Int64?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.policyDescription != nil {
+                        map["policyDescription"] = self.policyDescription!
+                    }
+                    if self.policyName != nil {
+                        map["policyName"] = self.policyName!
+                    }
+                    if self.severity != nil {
+                        map["severity"] = self.severity!
+                    }
+                    if self.violations != nil {
+                        map["violations"] = self.violations!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                    guard let dict else { return }
+                    if let value = dict["policyDescription"] as? String {
+                        self.policyDescription = value
+                    }
+                    if let value = dict["policyName"] as? String {
+                        self.policyName = value
+                    }
+                    if let value = dict["severity"] as? String {
+                        self.severity = value
+                    }
+                    if let value = dict["violations"] as? Int64 {
+                        self.violations = value
+                    }
+                }
+            }
+            public var deny: [DescribePolicyGovernanceInClusterResponseBody.Violation.Violations.Deny]?
+
+            public var warn: [DescribePolicyGovernanceInClusterResponseBody.Violation.Violations.Warn]?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.deny != nil {
+                    var tmp : [Any] = []
+                    for k in self.deny! {
+                        tmp.append(k.toMap())
+                    }
+                    map["deny"] = tmp
+                }
+                if self.warn != nil {
+                    var tmp : [Any] = []
+                    for k in self.warn! {
+                        tmp.append(k.toMap())
+                    }
+                    map["warn"] = tmp
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["deny"] as? [Any?] {
+                    var tmp : [DescribePolicyGovernanceInClusterResponseBody.Violation.Violations.Deny] = []
+                    for v in value {
+                        if v != nil {
+                            var model = DescribePolicyGovernanceInClusterResponseBody.Violation.Violations.Deny()
+                            if v != nil {
+                                model.fromMap(v as? [String: Any?])
+                            }
+                            tmp.append(model)
+                        }
+                    }
+                    self.deny = tmp
+                }
+                if let value = dict["warn"] as? [Any?] {
+                    var tmp : [DescribePolicyGovernanceInClusterResponseBody.Violation.Violations.Warn] = []
+                    for v in value {
+                        if v != nil {
+                            var model = DescribePolicyGovernanceInClusterResponseBody.Violation.Violations.Warn()
+                            if v != nil {
+                                model.fromMap(v as? [String: Any?])
+                            }
+                            tmp.append(model)
+                        }
+                    }
+                    self.warn = tmp
+                }
+            }
+        }
+        public var totalViolations: DescribePolicyGovernanceInClusterResponseBody.Violation.TotalViolations?
+
+        public var violations: DescribePolicyGovernanceInClusterResponseBody.Violation.Violations?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+            try self.totalViolations?.validate()
+            try self.violations?.validate()
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.totalViolations != nil {
+                map["totalViolations"] = self.totalViolations?.toMap()
+            }
+            if self.violations != nil {
+                map["violations"] = self.violations?.toMap()
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["totalViolations"] as? [String: Any?] {
+                var model = DescribePolicyGovernanceInClusterResponseBody.Violation.TotalViolations()
+                model.fromMap(value)
+                self.totalViolations = model
+            }
+            if let value = dict["violations"] as? [String: Any?] {
+                var model = DescribePolicyGovernanceInClusterResponseBody.Violation.Violations()
+                model.fromMap(value)
+                self.violations = model
+            }
+        }
+    }
     public class AdmitLog : Tea.TeaModel {
-        public class Log : Tea.TeaModel {
+        public class Logs : Tea.TeaModel {
             public var clusterId: String?
+
+            public var constraintAction: String?
+
+            public var constraintApiVersion: String?
+
+            public var constraintCategory: String?
+
+            public var constraintGroup: String?
 
             public var constraintKind: String?
 
-            public var msg: String?
+            public var constraintName: String?
+
+            public var eventMsg: String?
+
+            public var eventType: String?
+
+            public var requestUid: String?
+
+            public var requestUserinfo: String?
+
+            public var requestUsername: String?
 
             public var resourceKind: String?
 
             public var resourceName: String?
 
-            public var resourceNamespace: String?
+            public var time: String?
 
             public override init() {
                 super.init()
@@ -19580,11 +19958,38 @@ public class DescribePolicyGovernanceInClusterResponseBody : Tea.TeaModel {
                 if self.clusterId != nil {
                     map["cluster_id"] = self.clusterId!
                 }
+                if self.constraintAction != nil {
+                    map["constraint_action"] = self.constraintAction!
+                }
+                if self.constraintApiVersion != nil {
+                    map["constraint_api_version"] = self.constraintApiVersion!
+                }
+                if self.constraintCategory != nil {
+                    map["constraint_category"] = self.constraintCategory!
+                }
+                if self.constraintGroup != nil {
+                    map["constraint_group"] = self.constraintGroup!
+                }
                 if self.constraintKind != nil {
                     map["constraint_kind"] = self.constraintKind!
                 }
-                if self.msg != nil {
-                    map["msg"] = self.msg!
+                if self.constraintName != nil {
+                    map["constraint_name"] = self.constraintName!
+                }
+                if self.eventMsg != nil {
+                    map["event_msg"] = self.eventMsg!
+                }
+                if self.eventType != nil {
+                    map["event_type"] = self.eventType!
+                }
+                if self.requestUid != nil {
+                    map["request_uid"] = self.requestUid!
+                }
+                if self.requestUserinfo != nil {
+                    map["request_userinfo"] = self.requestUserinfo!
+                }
+                if self.requestUsername != nil {
+                    map["request_username"] = self.requestUsername!
                 }
                 if self.resourceKind != nil {
                     map["resource_kind"] = self.resourceKind!
@@ -19592,8 +19997,8 @@ public class DescribePolicyGovernanceInClusterResponseBody : Tea.TeaModel {
                 if self.resourceName != nil {
                     map["resource_name"] = self.resourceName!
                 }
-                if self.resourceNamespace != nil {
-                    map["resource_namespace"] = self.resourceNamespace!
+                if self.time != nil {
+                    map["time"] = self.time!
                 }
                 return map
             }
@@ -19603,11 +20008,38 @@ public class DescribePolicyGovernanceInClusterResponseBody : Tea.TeaModel {
                 if let value = dict["cluster_id"] as? String {
                     self.clusterId = value
                 }
+                if let value = dict["constraint_action"] as? String {
+                    self.constraintAction = value
+                }
+                if let value = dict["constraint_api_version"] as? String {
+                    self.constraintApiVersion = value
+                }
+                if let value = dict["constraint_category"] as? String {
+                    self.constraintCategory = value
+                }
+                if let value = dict["constraint_group"] as? String {
+                    self.constraintGroup = value
+                }
                 if let value = dict["constraint_kind"] as? String {
                     self.constraintKind = value
                 }
-                if let value = dict["msg"] as? String {
-                    self.msg = value
+                if let value = dict["constraint_name"] as? String {
+                    self.constraintName = value
+                }
+                if let value = dict["event_msg"] as? String {
+                    self.eventMsg = value
+                }
+                if let value = dict["event_type"] as? String {
+                    self.eventType = value
+                }
+                if let value = dict["request_uid"] as? String {
+                    self.requestUid = value
+                }
+                if let value = dict["request_userinfo"] as? String {
+                    self.requestUserinfo = value
+                }
+                if let value = dict["request_username"] as? String {
+                    self.requestUsername = value
                 }
                 if let value = dict["resource_kind"] as? String {
                     self.resourceKind = value
@@ -19615,14 +20047,18 @@ public class DescribePolicyGovernanceInClusterResponseBody : Tea.TeaModel {
                 if let value = dict["resource_name"] as? String {
                     self.resourceName = value
                 }
-                if let value = dict["resource_namespace"] as? String {
-                    self.resourceNamespace = value
+                if let value = dict["time"] as? String {
+                    self.time = value
                 }
             }
         }
         public var count: Int64?
 
-        public var log: DescribePolicyGovernanceInClusterResponseBody.AdmitLog.Log?
+        public var logProject: String?
+
+        public var logStore: String?
+
+        public var logs: [DescribePolicyGovernanceInClusterResponseBody.AdmitLog.Logs]?
 
         public var progress: String?
 
@@ -19636,7 +20072,6 @@ public class DescribePolicyGovernanceInClusterResponseBody : Tea.TeaModel {
         }
 
         public override func validate() throws -> Void {
-            try self.log?.validate()
         }
 
         public override func toMap() -> [String : Any] {
@@ -19644,8 +20079,18 @@ public class DescribePolicyGovernanceInClusterResponseBody : Tea.TeaModel {
             if self.count != nil {
                 map["count"] = self.count!
             }
-            if self.log != nil {
-                map["log"] = self.log?.toMap()
+            if self.logProject != nil {
+                map["log_project"] = self.logProject!
+            }
+            if self.logStore != nil {
+                map["log_store"] = self.logStore!
+            }
+            if self.logs != nil {
+                var tmp : [Any] = []
+                for k in self.logs! {
+                    tmp.append(k.toMap())
+                }
+                map["logs"] = tmp
             }
             if self.progress != nil {
                 map["progress"] = self.progress!
@@ -19658,10 +20103,24 @@ public class DescribePolicyGovernanceInClusterResponseBody : Tea.TeaModel {
             if let value = dict["count"] as? Int64 {
                 self.count = value
             }
-            if let value = dict["log"] as? [String: Any?] {
-                var model = DescribePolicyGovernanceInClusterResponseBody.AdmitLog.Log()
-                model.fromMap(value)
-                self.log = model
+            if let value = dict["log_project"] as? String {
+                self.logProject = value
+            }
+            if let value = dict["log_store"] as? String {
+                self.logStore = value
+            }
+            if let value = dict["logs"] as? [Any?] {
+                var tmp : [DescribePolicyGovernanceInClusterResponseBody.AdmitLog.Logs] = []
+                for v in value {
+                    if v != nil {
+                        var model = DescribePolicyGovernanceInClusterResponseBody.AdmitLog.Logs()
+                        if v != nil {
+                            model.fromMap(v as? [String: Any?])
+                        }
+                        tmp.append(model)
+                    }
+                }
+                self.logs = tmp
             }
             if let value = dict["progress"] as? String {
                 self.progress = value
@@ -19714,285 +20173,11 @@ public class DescribePolicyGovernanceInClusterResponseBody : Tea.TeaModel {
             }
         }
     }
-    public class TotalViolations : Tea.TeaModel {
-        public class Deny : Tea.TeaModel {
-            public var severity: String?
+    public var violation: DescribePolicyGovernanceInClusterResponseBody.Violation?
 
-            public var violations: Int64?
-
-            public override init() {
-                super.init()
-            }
-
-            public init(_ dict: [String: Any]) {
-                super.init()
-                self.fromMap(dict)
-            }
-
-            public override func validate() throws -> Void {
-            }
-
-            public override func toMap() -> [String : Any] {
-                var map = super.toMap()
-                if self.severity != nil {
-                    map["severity"] = self.severity!
-                }
-                if self.violations != nil {
-                    map["violations"] = self.violations!
-                }
-                return map
-            }
-
-            public override func fromMap(_ dict: [String: Any?]?) -> Void {
-                guard let dict else { return }
-                if let value = dict["severity"] as? String {
-                    self.severity = value
-                }
-                if let value = dict["violations"] as? Int64 {
-                    self.violations = value
-                }
-            }
-        }
-        public class Warn : Tea.TeaModel {
-            public var severity: String?
-
-            public var violations: Int64?
-
-            public override init() {
-                super.init()
-            }
-
-            public init(_ dict: [String: Any]) {
-                super.init()
-                self.fromMap(dict)
-            }
-
-            public override func validate() throws -> Void {
-            }
-
-            public override func toMap() -> [String : Any] {
-                var map = super.toMap()
-                if self.severity != nil {
-                    map["severity"] = self.severity!
-                }
-                if self.violations != nil {
-                    map["violations"] = self.violations!
-                }
-                return map
-            }
-
-            public override func fromMap(_ dict: [String: Any?]?) -> Void {
-                guard let dict else { return }
-                if let value = dict["severity"] as? String {
-                    self.severity = value
-                }
-                if let value = dict["violations"] as? Int64 {
-                    self.violations = value
-                }
-            }
-        }
-        public var deny: DescribePolicyGovernanceInClusterResponseBody.TotalViolations.Deny?
-
-        public var warn: DescribePolicyGovernanceInClusterResponseBody.TotalViolations.Warn?
-
-        public override init() {
-            super.init()
-        }
-
-        public init(_ dict: [String: Any]) {
-            super.init()
-            self.fromMap(dict)
-        }
-
-        public override func validate() throws -> Void {
-            try self.deny?.validate()
-            try self.warn?.validate()
-        }
-
-        public override func toMap() -> [String : Any] {
-            var map = super.toMap()
-            if self.deny != nil {
-                map["deny"] = self.deny?.toMap()
-            }
-            if self.warn != nil {
-                map["warn"] = self.warn?.toMap()
-            }
-            return map
-        }
-
-        public override func fromMap(_ dict: [String: Any?]?) -> Void {
-            guard let dict else { return }
-            if let value = dict["deny"] as? [String: Any?] {
-                var model = DescribePolicyGovernanceInClusterResponseBody.TotalViolations.Deny()
-                model.fromMap(value)
-                self.deny = model
-            }
-            if let value = dict["warn"] as? [String: Any?] {
-                var model = DescribePolicyGovernanceInClusterResponseBody.TotalViolations.Warn()
-                model.fromMap(value)
-                self.warn = model
-            }
-        }
-    }
-    public class Violations : Tea.TeaModel {
-        public class Deny : Tea.TeaModel {
-            public var policyDescription: String?
-
-            public var policyName: String?
-
-            public var severity: String?
-
-            public var violations: Int64?
-
-            public override init() {
-                super.init()
-            }
-
-            public init(_ dict: [String: Any]) {
-                super.init()
-                self.fromMap(dict)
-            }
-
-            public override func validate() throws -> Void {
-            }
-
-            public override func toMap() -> [String : Any] {
-                var map = super.toMap()
-                if self.policyDescription != nil {
-                    map["policyDescription"] = self.policyDescription!
-                }
-                if self.policyName != nil {
-                    map["policyName"] = self.policyName!
-                }
-                if self.severity != nil {
-                    map["severity"] = self.severity!
-                }
-                if self.violations != nil {
-                    map["violations"] = self.violations!
-                }
-                return map
-            }
-
-            public override func fromMap(_ dict: [String: Any?]?) -> Void {
-                guard let dict else { return }
-                if let value = dict["policyDescription"] as? String {
-                    self.policyDescription = value
-                }
-                if let value = dict["policyName"] as? String {
-                    self.policyName = value
-                }
-                if let value = dict["severity"] as? String {
-                    self.severity = value
-                }
-                if let value = dict["violations"] as? Int64 {
-                    self.violations = value
-                }
-            }
-        }
-        public class Warn : Tea.TeaModel {
-            public var policyDescription: String?
-
-            public var policyName: String?
-
-            public var severity: String?
-
-            public var violations: Int64?
-
-            public override init() {
-                super.init()
-            }
-
-            public init(_ dict: [String: Any]) {
-                super.init()
-                self.fromMap(dict)
-            }
-
-            public override func validate() throws -> Void {
-            }
-
-            public override func toMap() -> [String : Any] {
-                var map = super.toMap()
-                if self.policyDescription != nil {
-                    map["policyDescription"] = self.policyDescription!
-                }
-                if self.policyName != nil {
-                    map["policyName"] = self.policyName!
-                }
-                if self.severity != nil {
-                    map["severity"] = self.severity!
-                }
-                if self.violations != nil {
-                    map["violations"] = self.violations!
-                }
-                return map
-            }
-
-            public override func fromMap(_ dict: [String: Any?]?) -> Void {
-                guard let dict else { return }
-                if let value = dict["policyDescription"] as? String {
-                    self.policyDescription = value
-                }
-                if let value = dict["policyName"] as? String {
-                    self.policyName = value
-                }
-                if let value = dict["severity"] as? String {
-                    self.severity = value
-                }
-                if let value = dict["violations"] as? Int64 {
-                    self.violations = value
-                }
-            }
-        }
-        public var deny: DescribePolicyGovernanceInClusterResponseBody.Violations.Deny?
-
-        public var warn: DescribePolicyGovernanceInClusterResponseBody.Violations.Warn?
-
-        public override init() {
-            super.init()
-        }
-
-        public init(_ dict: [String: Any]) {
-            super.init()
-            self.fromMap(dict)
-        }
-
-        public override func validate() throws -> Void {
-            try self.deny?.validate()
-            try self.warn?.validate()
-        }
-
-        public override func toMap() -> [String : Any] {
-            var map = super.toMap()
-            if self.deny != nil {
-                map["deny"] = self.deny?.toMap()
-            }
-            if self.warn != nil {
-                map["warn"] = self.warn?.toMap()
-            }
-            return map
-        }
-
-        public override func fromMap(_ dict: [String: Any?]?) -> Void {
-            guard let dict else { return }
-            if let value = dict["deny"] as? [String: Any?] {
-                var model = DescribePolicyGovernanceInClusterResponseBody.Violations.Deny()
-                model.fromMap(value)
-                self.deny = model
-            }
-            if let value = dict["warn"] as? [String: Any?] {
-                var model = DescribePolicyGovernanceInClusterResponseBody.Violations.Warn()
-                model.fromMap(value)
-                self.warn = model
-            }
-        }
-    }
     public var admitLog: DescribePolicyGovernanceInClusterResponseBody.AdmitLog?
 
     public var onState: [DescribePolicyGovernanceInClusterResponseBody.OnState]?
-
-    public var totalViolations: DescribePolicyGovernanceInClusterResponseBody.TotalViolations?
-
-    public var violations: DescribePolicyGovernanceInClusterResponseBody.Violations?
 
     public override init() {
         super.init()
@@ -20004,13 +20189,15 @@ public class DescribePolicyGovernanceInClusterResponseBody : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
+        try self.violation?.validate()
         try self.admitLog?.validate()
-        try self.totalViolations?.validate()
-        try self.violations?.validate()
     }
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.violation != nil {
+            map["Violation"] = self.violation?.toMap()
+        }
         if self.admitLog != nil {
             map["admit_log"] = self.admitLog?.toMap()
         }
@@ -20021,17 +20208,16 @@ public class DescribePolicyGovernanceInClusterResponseBody : Tea.TeaModel {
             }
             map["on_state"] = tmp
         }
-        if self.totalViolations != nil {
-            map["totalViolations"] = self.totalViolations?.toMap()
-        }
-        if self.violations != nil {
-            map["violations"] = self.violations?.toMap()
-        }
         return map
     }
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["Violation"] as? [String: Any?] {
+            var model = DescribePolicyGovernanceInClusterResponseBody.Violation()
+            model.fromMap(value)
+            self.violation = model
+        }
         if let value = dict["admit_log"] as? [String: Any?] {
             var model = DescribePolicyGovernanceInClusterResponseBody.AdmitLog()
             model.fromMap(value)
@@ -20049,16 +20235,6 @@ public class DescribePolicyGovernanceInClusterResponseBody : Tea.TeaModel {
                 }
             }
             self.onState = tmp
-        }
-        if let value = dict["totalViolations"] as? [String: Any?] {
-            var model = DescribePolicyGovernanceInClusterResponseBody.TotalViolations()
-            model.fromMap(value)
-            self.totalViolations = model
-        }
-        if let value = dict["violations"] as? [String: Any?] {
-            var model = DescribePolicyGovernanceInClusterResponseBody.Violations()
-            model.fromMap(value)
-            self.violations = model
         }
     }
 }
