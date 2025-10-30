@@ -149,6 +149,134 @@ public class AddApplicationAccountToUserResponse : Tea.TeaModel {
     }
 }
 
+public class AddCustomPrivacyPoliciesToBrandRequest : Tea.TeaModel {
+    public var brandId: String?
+
+    public var customPrivacyPolicyIds: [String]?
+
+    public var instanceId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.brandId != nil {
+            map["BrandId"] = self.brandId!
+        }
+        if self.customPrivacyPolicyIds != nil {
+            map["CustomPrivacyPolicyIds"] = self.customPrivacyPolicyIds!
+        }
+        if self.instanceId != nil {
+            map["InstanceId"] = self.instanceId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["BrandId"] as? String {
+            self.brandId = value
+        }
+        if let value = dict["CustomPrivacyPolicyIds"] as? [String] {
+            self.customPrivacyPolicyIds = value
+        }
+        if let value = dict["InstanceId"] as? String {
+            self.instanceId = value
+        }
+    }
+}
+
+public class AddCustomPrivacyPoliciesToBrandResponseBody : Tea.TeaModel {
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+    }
+}
+
+public class AddCustomPrivacyPoliciesToBrandResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: AddCustomPrivacyPoliciesToBrandResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = AddCustomPrivacyPoliciesToBrandResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
 public class AddUserToOrganizationalUnitsRequest : Tea.TeaModel {
     public var instanceId: String?
 
@@ -2146,6 +2274,286 @@ public class CreateConditionalAccessPolicyResponse : Tea.TeaModel {
         }
         if let value = dict["body"] as? [String: Any?] {
             var model = CreateConditionalAccessPolicyResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
+public class CreateCustomPrivacyPolicyRequest : Tea.TeaModel {
+    public class CustomPrivacyPolicyContents : Tea.TeaModel {
+        public class CustomPrivacyPolicyItems : Tea.TeaModel {
+            public var customPrivacyPolicyItemName: String?
+
+            public var customPrivacyPolicyItemUrl: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.customPrivacyPolicyItemName != nil {
+                    map["CustomPrivacyPolicyItemName"] = self.customPrivacyPolicyItemName!
+                }
+                if self.customPrivacyPolicyItemUrl != nil {
+                    map["CustomPrivacyPolicyItemUrl"] = self.customPrivacyPolicyItemUrl!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["CustomPrivacyPolicyItemName"] as? String {
+                    self.customPrivacyPolicyItemName = value
+                }
+                if let value = dict["CustomPrivacyPolicyItemUrl"] as? String {
+                    self.customPrivacyPolicyItemUrl = value
+                }
+            }
+        }
+        public var customPrivacyPolicyItems: [CreateCustomPrivacyPolicyRequest.CustomPrivacyPolicyContents.CustomPrivacyPolicyItems]?
+
+        public var customPrivacyPolicyTip: String?
+
+        public var languageCode: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.customPrivacyPolicyItems != nil {
+                var tmp : [Any] = []
+                for k in self.customPrivacyPolicyItems! {
+                    tmp.append(k.toMap())
+                }
+                map["CustomPrivacyPolicyItems"] = tmp
+            }
+            if self.customPrivacyPolicyTip != nil {
+                map["CustomPrivacyPolicyTip"] = self.customPrivacyPolicyTip!
+            }
+            if self.languageCode != nil {
+                map["LanguageCode"] = self.languageCode!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["CustomPrivacyPolicyItems"] as? [Any?] {
+                var tmp : [CreateCustomPrivacyPolicyRequest.CustomPrivacyPolicyContents.CustomPrivacyPolicyItems] = []
+                for v in value {
+                    if v != nil {
+                        var model = CreateCustomPrivacyPolicyRequest.CustomPrivacyPolicyContents.CustomPrivacyPolicyItems()
+                        if v != nil {
+                            model.fromMap(v as? [String: Any?])
+                        }
+                        tmp.append(model)
+                    }
+                }
+                self.customPrivacyPolicyItems = tmp
+            }
+            if let value = dict["CustomPrivacyPolicyTip"] as? String {
+                self.customPrivacyPolicyTip = value
+            }
+            if let value = dict["LanguageCode"] as? String {
+                self.languageCode = value
+            }
+        }
+    }
+    public var clientToken: String?
+
+    public var customPrivacyPolicyContents: [CreateCustomPrivacyPolicyRequest.CustomPrivacyPolicyContents]?
+
+    public var customPrivacyPolicyName: String?
+
+    public var defaultLanguageCode: String?
+
+    public var instanceId: String?
+
+    public var status: String?
+
+    public var userConsentType: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.clientToken != nil {
+            map["ClientToken"] = self.clientToken!
+        }
+        if self.customPrivacyPolicyContents != nil {
+            var tmp : [Any] = []
+            for k in self.customPrivacyPolicyContents! {
+                tmp.append(k.toMap())
+            }
+            map["CustomPrivacyPolicyContents"] = tmp
+        }
+        if self.customPrivacyPolicyName != nil {
+            map["CustomPrivacyPolicyName"] = self.customPrivacyPolicyName!
+        }
+        if self.defaultLanguageCode != nil {
+            map["DefaultLanguageCode"] = self.defaultLanguageCode!
+        }
+        if self.instanceId != nil {
+            map["InstanceId"] = self.instanceId!
+        }
+        if self.status != nil {
+            map["Status"] = self.status!
+        }
+        if self.userConsentType != nil {
+            map["UserConsentType"] = self.userConsentType!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["ClientToken"] as? String {
+            self.clientToken = value
+        }
+        if let value = dict["CustomPrivacyPolicyContents"] as? [Any?] {
+            var tmp : [CreateCustomPrivacyPolicyRequest.CustomPrivacyPolicyContents] = []
+            for v in value {
+                if v != nil {
+                    var model = CreateCustomPrivacyPolicyRequest.CustomPrivacyPolicyContents()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.customPrivacyPolicyContents = tmp
+        }
+        if let value = dict["CustomPrivacyPolicyName"] as? String {
+            self.customPrivacyPolicyName = value
+        }
+        if let value = dict["DefaultLanguageCode"] as? String {
+            self.defaultLanguageCode = value
+        }
+        if let value = dict["InstanceId"] as? String {
+            self.instanceId = value
+        }
+        if let value = dict["Status"] as? String {
+            self.status = value
+        }
+        if let value = dict["UserConsentType"] as? String {
+            self.userConsentType = value
+        }
+    }
+}
+
+public class CreateCustomPrivacyPolicyResponseBody : Tea.TeaModel {
+    public var customPrivacyPolicyId: String?
+
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.customPrivacyPolicyId != nil {
+            map["CustomPrivacyPolicyId"] = self.customPrivacyPolicyId!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["CustomPrivacyPolicyId"] as? String {
+            self.customPrivacyPolicyId = value
+        }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+    }
+}
+
+public class CreateCustomPrivacyPolicyResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: CreateCustomPrivacyPolicyResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = CreateCustomPrivacyPolicyResponseBody()
             model.fromMap(value)
             self.body = model
         }
@@ -6024,6 +6432,126 @@ public class DeleteConditionalAccessPolicyResponse : Tea.TeaModel {
     }
 }
 
+public class DeleteCustomPrivacyPolicyRequest : Tea.TeaModel {
+    public var customPrivacyPolicyId: String?
+
+    public var instanceId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.customPrivacyPolicyId != nil {
+            map["CustomPrivacyPolicyId"] = self.customPrivacyPolicyId!
+        }
+        if self.instanceId != nil {
+            map["InstanceId"] = self.instanceId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["CustomPrivacyPolicyId"] as? String {
+            self.customPrivacyPolicyId = value
+        }
+        if let value = dict["InstanceId"] as? String {
+            self.instanceId = value
+        }
+    }
+}
+
+public class DeleteCustomPrivacyPolicyResponseBody : Tea.TeaModel {
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+    }
+}
+
+public class DeleteCustomPrivacyPolicyResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: DeleteCustomPrivacyPolicyResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = DeleteCustomPrivacyPolicyResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
 public class DeleteDomainRequest : Tea.TeaModel {
     public var domainId: String?
 
@@ -8448,6 +8976,126 @@ public class DisableConditionalAccessPolicyResponse : Tea.TeaModel {
     }
 }
 
+public class DisableCustomPrivacyPolicyRequest : Tea.TeaModel {
+    public var customPrivacyPolicyId: String?
+
+    public var instanceId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.customPrivacyPolicyId != nil {
+            map["CustomPrivacyPolicyId"] = self.customPrivacyPolicyId!
+        }
+        if self.instanceId != nil {
+            map["InstanceId"] = self.instanceId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["CustomPrivacyPolicyId"] as? String {
+            self.customPrivacyPolicyId = value
+        }
+        if let value = dict["InstanceId"] as? String {
+            self.instanceId = value
+        }
+    }
+}
+
+public class DisableCustomPrivacyPolicyResponseBody : Tea.TeaModel {
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+    }
+}
+
+public class DisableCustomPrivacyPolicyResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: DisableCustomPrivacyPolicyResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = DisableCustomPrivacyPolicyResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
 public class DisableDomainProxyTokenRequest : Tea.TeaModel {
     public var domainId: String?
 
@@ -10266,6 +10914,126 @@ public class EnableConditionalAccessPolicyResponse : Tea.TeaModel {
         }
         if let value = dict["body"] as? [String: Any?] {
             var model = EnableConditionalAccessPolicyResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
+public class EnableCustomPrivacyPolicyRequest : Tea.TeaModel {
+    public var customPrivacyPolicyId: String?
+
+    public var instanceId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.customPrivacyPolicyId != nil {
+            map["CustomPrivacyPolicyId"] = self.customPrivacyPolicyId!
+        }
+        if self.instanceId != nil {
+            map["InstanceId"] = self.instanceId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["CustomPrivacyPolicyId"] as? String {
+            self.customPrivacyPolicyId = value
+        }
+        if let value = dict["InstanceId"] as? String {
+            self.instanceId = value
+        }
+    }
+}
+
+public class EnableCustomPrivacyPolicyResponseBody : Tea.TeaModel {
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+    }
+}
+
+public class EnableCustomPrivacyPolicyResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: EnableCustomPrivacyPolicyResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = EnableCustomPrivacyPolicyResponseBody()
             model.fromMap(value)
             self.body = model
         }
@@ -14160,6 +14928,327 @@ public class GetConditionalAccessPolicyResponse : Tea.TeaModel {
         }
         if let value = dict["body"] as? [String: Any?] {
             var model = GetConditionalAccessPolicyResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
+public class GetCustomPrivacyPolicyRequest : Tea.TeaModel {
+    public var customPrivacyPolicyId: String?
+
+    public var instanceId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.customPrivacyPolicyId != nil {
+            map["CustomPrivacyPolicyId"] = self.customPrivacyPolicyId!
+        }
+        if self.instanceId != nil {
+            map["InstanceId"] = self.instanceId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["CustomPrivacyPolicyId"] as? String {
+            self.customPrivacyPolicyId = value
+        }
+        if let value = dict["InstanceId"] as? String {
+            self.instanceId = value
+        }
+    }
+}
+
+public class GetCustomPrivacyPolicyResponseBody : Tea.TeaModel {
+    public class CustomPrivacyPolicy : Tea.TeaModel {
+        public class CustomPrivacyPolicyContents : Tea.TeaModel {
+            public class CustomPrivacyPolicyItems : Tea.TeaModel {
+                public var customPrivacyPolicyItemName: String?
+
+                public var customPrivacyPolicyItemUrl: String?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.customPrivacyPolicyItemName != nil {
+                        map["CustomPrivacyPolicyItemName"] = self.customPrivacyPolicyItemName!
+                    }
+                    if self.customPrivacyPolicyItemUrl != nil {
+                        map["CustomPrivacyPolicyItemUrl"] = self.customPrivacyPolicyItemUrl!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                    guard let dict else { return }
+                    if let value = dict["CustomPrivacyPolicyItemName"] as? String {
+                        self.customPrivacyPolicyItemName = value
+                    }
+                    if let value = dict["CustomPrivacyPolicyItemUrl"] as? String {
+                        self.customPrivacyPolicyItemUrl = value
+                    }
+                }
+            }
+            public var customPrivacyPolicyItems: [GetCustomPrivacyPolicyResponseBody.CustomPrivacyPolicy.CustomPrivacyPolicyContents.CustomPrivacyPolicyItems]?
+
+            public var customPrivacyPolicyTip: String?
+
+            public var languageCode: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.customPrivacyPolicyItems != nil {
+                    var tmp : [Any] = []
+                    for k in self.customPrivacyPolicyItems! {
+                        tmp.append(k.toMap())
+                    }
+                    map["CustomPrivacyPolicyItems"] = tmp
+                }
+                if self.customPrivacyPolicyTip != nil {
+                    map["CustomPrivacyPolicyTip"] = self.customPrivacyPolicyTip!
+                }
+                if self.languageCode != nil {
+                    map["LanguageCode"] = self.languageCode!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["CustomPrivacyPolicyItems"] as? [Any?] {
+                    var tmp : [GetCustomPrivacyPolicyResponseBody.CustomPrivacyPolicy.CustomPrivacyPolicyContents.CustomPrivacyPolicyItems] = []
+                    for v in value {
+                        if v != nil {
+                            var model = GetCustomPrivacyPolicyResponseBody.CustomPrivacyPolicy.CustomPrivacyPolicyContents.CustomPrivacyPolicyItems()
+                            if v != nil {
+                                model.fromMap(v as? [String: Any?])
+                            }
+                            tmp.append(model)
+                        }
+                    }
+                    self.customPrivacyPolicyItems = tmp
+                }
+                if let value = dict["CustomPrivacyPolicyTip"] as? String {
+                    self.customPrivacyPolicyTip = value
+                }
+                if let value = dict["LanguageCode"] as? String {
+                    self.languageCode = value
+                }
+            }
+        }
+        public var customPrivacyPolicyContents: [GetCustomPrivacyPolicyResponseBody.CustomPrivacyPolicy.CustomPrivacyPolicyContents]?
+
+        public var customPrivacyPolicyId: String?
+
+        public var customPrivacyPolicyName: String?
+
+        public var defaultLanguageCode: String?
+
+        public var instanceId: String?
+
+        public var status: String?
+
+        public var userConsentType: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.customPrivacyPolicyContents != nil {
+                var tmp : [Any] = []
+                for k in self.customPrivacyPolicyContents! {
+                    tmp.append(k.toMap())
+                }
+                map["CustomPrivacyPolicyContents"] = tmp
+            }
+            if self.customPrivacyPolicyId != nil {
+                map["CustomPrivacyPolicyId"] = self.customPrivacyPolicyId!
+            }
+            if self.customPrivacyPolicyName != nil {
+                map["CustomPrivacyPolicyName"] = self.customPrivacyPolicyName!
+            }
+            if self.defaultLanguageCode != nil {
+                map["DefaultLanguageCode"] = self.defaultLanguageCode!
+            }
+            if self.instanceId != nil {
+                map["InstanceId"] = self.instanceId!
+            }
+            if self.status != nil {
+                map["Status"] = self.status!
+            }
+            if self.userConsentType != nil {
+                map["UserConsentType"] = self.userConsentType!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["CustomPrivacyPolicyContents"] as? [Any?] {
+                var tmp : [GetCustomPrivacyPolicyResponseBody.CustomPrivacyPolicy.CustomPrivacyPolicyContents] = []
+                for v in value {
+                    if v != nil {
+                        var model = GetCustomPrivacyPolicyResponseBody.CustomPrivacyPolicy.CustomPrivacyPolicyContents()
+                        if v != nil {
+                            model.fromMap(v as? [String: Any?])
+                        }
+                        tmp.append(model)
+                    }
+                }
+                self.customPrivacyPolicyContents = tmp
+            }
+            if let value = dict["CustomPrivacyPolicyId"] as? String {
+                self.customPrivacyPolicyId = value
+            }
+            if let value = dict["CustomPrivacyPolicyName"] as? String {
+                self.customPrivacyPolicyName = value
+            }
+            if let value = dict["DefaultLanguageCode"] as? String {
+                self.defaultLanguageCode = value
+            }
+            if let value = dict["InstanceId"] as? String {
+                self.instanceId = value
+            }
+            if let value = dict["Status"] as? String {
+                self.status = value
+            }
+            if let value = dict["UserConsentType"] as? String {
+                self.userConsentType = value
+            }
+        }
+    }
+    public var customPrivacyPolicy: GetCustomPrivacyPolicyResponseBody.CustomPrivacyPolicy?
+
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.customPrivacyPolicy?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.customPrivacyPolicy != nil {
+            map["CustomPrivacyPolicy"] = self.customPrivacyPolicy?.toMap()
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["CustomPrivacyPolicy"] as? [String: Any?] {
+            var model = GetCustomPrivacyPolicyResponseBody.CustomPrivacyPolicy()
+            model.fromMap(value)
+            self.customPrivacyPolicy = model
+        }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+    }
+}
+
+public class GetCustomPrivacyPolicyResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: GetCustomPrivacyPolicyResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = GetCustomPrivacyPolicyResponseBody()
             model.fromMap(value)
             self.body = model
         }
@@ -27811,6 +28900,502 @@ public class ListConditionalAccessPoliciesForUserResponse : Tea.TeaModel {
     }
 }
 
+public class ListCustomPrivacyPoliciesRequest : Tea.TeaModel {
+    public var customPrivacyPolicyNameStartsWith: String?
+
+    public var instanceId: String?
+
+    public var maxResults: Int64?
+
+    public var nextToken: String?
+
+    public var previousToken: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.customPrivacyPolicyNameStartsWith != nil {
+            map["CustomPrivacyPolicyNameStartsWith"] = self.customPrivacyPolicyNameStartsWith!
+        }
+        if self.instanceId != nil {
+            map["InstanceId"] = self.instanceId!
+        }
+        if self.maxResults != nil {
+            map["MaxResults"] = self.maxResults!
+        }
+        if self.nextToken != nil {
+            map["NextToken"] = self.nextToken!
+        }
+        if self.previousToken != nil {
+            map["PreviousToken"] = self.previousToken!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["CustomPrivacyPolicyNameStartsWith"] as? String {
+            self.customPrivacyPolicyNameStartsWith = value
+        }
+        if let value = dict["InstanceId"] as? String {
+            self.instanceId = value
+        }
+        if let value = dict["MaxResults"] as? Int64 {
+            self.maxResults = value
+        }
+        if let value = dict["NextToken"] as? String {
+            self.nextToken = value
+        }
+        if let value = dict["PreviousToken"] as? String {
+            self.previousToken = value
+        }
+    }
+}
+
+public class ListCustomPrivacyPoliciesResponseBody : Tea.TeaModel {
+    public class CustomPrivacyPolicies : Tea.TeaModel {
+        public var customPrivacyPolicyId: String?
+
+        public var customPrivacyPolicyName: String?
+
+        public var defaultLanguageCode: String?
+
+        public var instanceId: String?
+
+        public var status: String?
+
+        public var userConsentType: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.customPrivacyPolicyId != nil {
+                map["CustomPrivacyPolicyId"] = self.customPrivacyPolicyId!
+            }
+            if self.customPrivacyPolicyName != nil {
+                map["CustomPrivacyPolicyName"] = self.customPrivacyPolicyName!
+            }
+            if self.defaultLanguageCode != nil {
+                map["DefaultLanguageCode"] = self.defaultLanguageCode!
+            }
+            if self.instanceId != nil {
+                map["InstanceId"] = self.instanceId!
+            }
+            if self.status != nil {
+                map["Status"] = self.status!
+            }
+            if self.userConsentType != nil {
+                map["UserConsentType"] = self.userConsentType!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["CustomPrivacyPolicyId"] as? String {
+                self.customPrivacyPolicyId = value
+            }
+            if let value = dict["CustomPrivacyPolicyName"] as? String {
+                self.customPrivacyPolicyName = value
+            }
+            if let value = dict["DefaultLanguageCode"] as? String {
+                self.defaultLanguageCode = value
+            }
+            if let value = dict["InstanceId"] as? String {
+                self.instanceId = value
+            }
+            if let value = dict["Status"] as? String {
+                self.status = value
+            }
+            if let value = dict["UserConsentType"] as? String {
+                self.userConsentType = value
+            }
+        }
+    }
+    public var customPrivacyPolicies: [ListCustomPrivacyPoliciesResponseBody.CustomPrivacyPolicies]?
+
+    public var maxResults: Int64?
+
+    public var nextToken: String?
+
+    public var previousToken: String?
+
+    public var requestId: String?
+
+    public var totalCount: Int64?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.customPrivacyPolicies != nil {
+            var tmp : [Any] = []
+            for k in self.customPrivacyPolicies! {
+                tmp.append(k.toMap())
+            }
+            map["CustomPrivacyPolicies"] = tmp
+        }
+        if self.maxResults != nil {
+            map["MaxResults"] = self.maxResults!
+        }
+        if self.nextToken != nil {
+            map["NextToken"] = self.nextToken!
+        }
+        if self.previousToken != nil {
+            map["PreviousToken"] = self.previousToken!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.totalCount != nil {
+            map["TotalCount"] = self.totalCount!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["CustomPrivacyPolicies"] as? [Any?] {
+            var tmp : [ListCustomPrivacyPoliciesResponseBody.CustomPrivacyPolicies] = []
+            for v in value {
+                if v != nil {
+                    var model = ListCustomPrivacyPoliciesResponseBody.CustomPrivacyPolicies()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.customPrivacyPolicies = tmp
+        }
+        if let value = dict["MaxResults"] as? Int64 {
+            self.maxResults = value
+        }
+        if let value = dict["NextToken"] as? String {
+            self.nextToken = value
+        }
+        if let value = dict["PreviousToken"] as? String {
+            self.previousToken = value
+        }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+        if let value = dict["TotalCount"] as? Int64 {
+            self.totalCount = value
+        }
+    }
+}
+
+public class ListCustomPrivacyPoliciesResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: ListCustomPrivacyPoliciesResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = ListCustomPrivacyPoliciesResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
+public class ListCustomPrivacyPoliciesForBrandRequest : Tea.TeaModel {
+    public var brandId: String?
+
+    public var instanceId: String?
+
+    public var maxResults: Int64?
+
+    public var nextToken: String?
+
+    public var previousToken: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.brandId != nil {
+            map["BrandId"] = self.brandId!
+        }
+        if self.instanceId != nil {
+            map["InstanceId"] = self.instanceId!
+        }
+        if self.maxResults != nil {
+            map["MaxResults"] = self.maxResults!
+        }
+        if self.nextToken != nil {
+            map["NextToken"] = self.nextToken!
+        }
+        if self.previousToken != nil {
+            map["PreviousToken"] = self.previousToken!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["BrandId"] as? String {
+            self.brandId = value
+        }
+        if let value = dict["InstanceId"] as? String {
+            self.instanceId = value
+        }
+        if let value = dict["MaxResults"] as? Int64 {
+            self.maxResults = value
+        }
+        if let value = dict["NextToken"] as? String {
+            self.nextToken = value
+        }
+        if let value = dict["PreviousToken"] as? String {
+            self.previousToken = value
+        }
+    }
+}
+
+public class ListCustomPrivacyPoliciesForBrandResponseBody : Tea.TeaModel {
+    public class BrandCustomPrivacyPolicies : Tea.TeaModel {
+        public var customPrivacyPolicyId: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.customPrivacyPolicyId != nil {
+                map["CustomPrivacyPolicyId"] = self.customPrivacyPolicyId!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["CustomPrivacyPolicyId"] as? String {
+                self.customPrivacyPolicyId = value
+            }
+        }
+    }
+    public var brandCustomPrivacyPolicies: [ListCustomPrivacyPoliciesForBrandResponseBody.BrandCustomPrivacyPolicies]?
+
+    public var maxResults: Int64?
+
+    public var nextToken: String?
+
+    public var previousToken: String?
+
+    public var requestId: String?
+
+    public var totalCount: Int64?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.brandCustomPrivacyPolicies != nil {
+            var tmp : [Any] = []
+            for k in self.brandCustomPrivacyPolicies! {
+                tmp.append(k.toMap())
+            }
+            map["BrandCustomPrivacyPolicies"] = tmp
+        }
+        if self.maxResults != nil {
+            map["MaxResults"] = self.maxResults!
+        }
+        if self.nextToken != nil {
+            map["NextToken"] = self.nextToken!
+        }
+        if self.previousToken != nil {
+            map["PreviousToken"] = self.previousToken!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.totalCount != nil {
+            map["TotalCount"] = self.totalCount!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["BrandCustomPrivacyPolicies"] as? [Any?] {
+            var tmp : [ListCustomPrivacyPoliciesForBrandResponseBody.BrandCustomPrivacyPolicies] = []
+            for v in value {
+                if v != nil {
+                    var model = ListCustomPrivacyPoliciesForBrandResponseBody.BrandCustomPrivacyPolicies()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.brandCustomPrivacyPolicies = tmp
+        }
+        if let value = dict["MaxResults"] as? Int64 {
+            self.maxResults = value
+        }
+        if let value = dict["NextToken"] as? String {
+            self.nextToken = value
+        }
+        if let value = dict["PreviousToken"] as? String {
+            self.previousToken = value
+        }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+        if let value = dict["TotalCount"] as? Int64 {
+            self.totalCount = value
+        }
+    }
+}
+
+public class ListCustomPrivacyPoliciesForBrandResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: ListCustomPrivacyPoliciesForBrandResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = ListCustomPrivacyPoliciesForBrandResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
 public class ListDomainProxyTokensRequest : Tea.TeaModel {
     public var domainId: String?
 
@@ -36802,6 +38387,134 @@ public class RemoveApplicationAccountFromUserResponse : Tea.TeaModel {
     }
 }
 
+public class RemoveCustomPrivacyPoliciesFromBrandRequest : Tea.TeaModel {
+    public var brandId: String?
+
+    public var customPrivacyPolicyIds: [String]?
+
+    public var instanceId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.brandId != nil {
+            map["BrandId"] = self.brandId!
+        }
+        if self.customPrivacyPolicyIds != nil {
+            map["CustomPrivacyPolicyIds"] = self.customPrivacyPolicyIds!
+        }
+        if self.instanceId != nil {
+            map["InstanceId"] = self.instanceId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["BrandId"] as? String {
+            self.brandId = value
+        }
+        if let value = dict["CustomPrivacyPolicyIds"] as? [String] {
+            self.customPrivacyPolicyIds = value
+        }
+        if let value = dict["InstanceId"] as? String {
+            self.instanceId = value
+        }
+    }
+}
+
+public class RemoveCustomPrivacyPoliciesFromBrandResponseBody : Tea.TeaModel {
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+    }
+}
+
+public class RemoveCustomPrivacyPoliciesFromBrandResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: RemoveCustomPrivacyPoliciesFromBrandResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = RemoveCustomPrivacyPoliciesFromBrandResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
 public class RemoveUserFromOrganizationalUnitsRequest : Tea.TeaModel {
     public var instanceId: String?
 
@@ -42232,6 +43945,270 @@ public class UpdateConditionalAccessPolicyDescriptionResponse : Tea.TeaModel {
         }
         if let value = dict["body"] as? [String: Any?] {
             var model = UpdateConditionalAccessPolicyDescriptionResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
+public class UpdateCustomPrivacyPolicyRequest : Tea.TeaModel {
+    public class CustomPrivacyPolicyContents : Tea.TeaModel {
+        public class CustomPrivacyPolicyItems : Tea.TeaModel {
+            public var customPrivacyPolicyItemName: String?
+
+            public var customPrivacyPolicyItemUrl: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.customPrivacyPolicyItemName != nil {
+                    map["CustomPrivacyPolicyItemName"] = self.customPrivacyPolicyItemName!
+                }
+                if self.customPrivacyPolicyItemUrl != nil {
+                    map["CustomPrivacyPolicyItemUrl"] = self.customPrivacyPolicyItemUrl!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["CustomPrivacyPolicyItemName"] as? String {
+                    self.customPrivacyPolicyItemName = value
+                }
+                if let value = dict["CustomPrivacyPolicyItemUrl"] as? String {
+                    self.customPrivacyPolicyItemUrl = value
+                }
+            }
+        }
+        public var customPrivacyPolicyItems: [UpdateCustomPrivacyPolicyRequest.CustomPrivacyPolicyContents.CustomPrivacyPolicyItems]?
+
+        public var customPrivacyPolicyTip: String?
+
+        public var languageCode: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.customPrivacyPolicyItems != nil {
+                var tmp : [Any] = []
+                for k in self.customPrivacyPolicyItems! {
+                    tmp.append(k.toMap())
+                }
+                map["CustomPrivacyPolicyItems"] = tmp
+            }
+            if self.customPrivacyPolicyTip != nil {
+                map["CustomPrivacyPolicyTip"] = self.customPrivacyPolicyTip!
+            }
+            if self.languageCode != nil {
+                map["LanguageCode"] = self.languageCode!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["CustomPrivacyPolicyItems"] as? [Any?] {
+                var tmp : [UpdateCustomPrivacyPolicyRequest.CustomPrivacyPolicyContents.CustomPrivacyPolicyItems] = []
+                for v in value {
+                    if v != nil {
+                        var model = UpdateCustomPrivacyPolicyRequest.CustomPrivacyPolicyContents.CustomPrivacyPolicyItems()
+                        if v != nil {
+                            model.fromMap(v as? [String: Any?])
+                        }
+                        tmp.append(model)
+                    }
+                }
+                self.customPrivacyPolicyItems = tmp
+            }
+            if let value = dict["CustomPrivacyPolicyTip"] as? String {
+                self.customPrivacyPolicyTip = value
+            }
+            if let value = dict["LanguageCode"] as? String {
+                self.languageCode = value
+            }
+        }
+    }
+    public var customPrivacyPolicyContents: [UpdateCustomPrivacyPolicyRequest.CustomPrivacyPolicyContents]?
+
+    public var customPrivacyPolicyId: String?
+
+    public var customPrivacyPolicyName: String?
+
+    public var defaultLanguageCode: String?
+
+    public var instanceId: String?
+
+    public var userConsentType: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.customPrivacyPolicyContents != nil {
+            var tmp : [Any] = []
+            for k in self.customPrivacyPolicyContents! {
+                tmp.append(k.toMap())
+            }
+            map["CustomPrivacyPolicyContents"] = tmp
+        }
+        if self.customPrivacyPolicyId != nil {
+            map["CustomPrivacyPolicyId"] = self.customPrivacyPolicyId!
+        }
+        if self.customPrivacyPolicyName != nil {
+            map["CustomPrivacyPolicyName"] = self.customPrivacyPolicyName!
+        }
+        if self.defaultLanguageCode != nil {
+            map["DefaultLanguageCode"] = self.defaultLanguageCode!
+        }
+        if self.instanceId != nil {
+            map["InstanceId"] = self.instanceId!
+        }
+        if self.userConsentType != nil {
+            map["UserConsentType"] = self.userConsentType!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["CustomPrivacyPolicyContents"] as? [Any?] {
+            var tmp : [UpdateCustomPrivacyPolicyRequest.CustomPrivacyPolicyContents] = []
+            for v in value {
+                if v != nil {
+                    var model = UpdateCustomPrivacyPolicyRequest.CustomPrivacyPolicyContents()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.customPrivacyPolicyContents = tmp
+        }
+        if let value = dict["CustomPrivacyPolicyId"] as? String {
+            self.customPrivacyPolicyId = value
+        }
+        if let value = dict["CustomPrivacyPolicyName"] as? String {
+            self.customPrivacyPolicyName = value
+        }
+        if let value = dict["DefaultLanguageCode"] as? String {
+            self.defaultLanguageCode = value
+        }
+        if let value = dict["InstanceId"] as? String {
+            self.instanceId = value
+        }
+        if let value = dict["UserConsentType"] as? String {
+            self.userConsentType = value
+        }
+    }
+}
+
+public class UpdateCustomPrivacyPolicyResponseBody : Tea.TeaModel {
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+    }
+}
+
+public class UpdateCustomPrivacyPolicyResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: UpdateCustomPrivacyPolicyResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = UpdateCustomPrivacyPolicyResponseBody()
             model.fromMap(value)
             self.body = model
         }
