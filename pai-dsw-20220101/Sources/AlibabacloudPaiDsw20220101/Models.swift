@@ -3599,11 +3599,59 @@ public class GetInstanceResponseBody : Tea.TeaModel {
         }
     }
     public class CloudDisks : Tea.TeaModel {
+        public class Status : Tea.TeaModel {
+            public var available: Int64?
+
+            public var capacity: Int64?
+
+            public var usage: Int64?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.available != nil {
+                    map["Available"] = self.available!
+                }
+                if self.capacity != nil {
+                    map["Capacity"] = self.capacity!
+                }
+                if self.usage != nil {
+                    map["Usage"] = self.usage!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["Available"] as? Int64 {
+                    self.available = value
+                }
+                if let value = dict["Capacity"] as? Int64 {
+                    self.capacity = value
+                }
+                if let value = dict["Usage"] as? Int64 {
+                    self.usage = value
+                }
+            }
+        }
         public var capacity: String?
 
         public var mountPath: String?
 
         public var path: String?
+
+        public var status: GetInstanceResponseBody.CloudDisks.Status?
 
         public var subType: String?
 
@@ -3617,6 +3665,7 @@ public class GetInstanceResponseBody : Tea.TeaModel {
         }
 
         public override func validate() throws -> Void {
+            try self.status?.validate()
         }
 
         public override func toMap() -> [String : Any] {
@@ -3629,6 +3678,9 @@ public class GetInstanceResponseBody : Tea.TeaModel {
             }
             if self.path != nil {
                 map["Path"] = self.path!
+            }
+            if self.status != nil {
+                map["Status"] = self.status?.toMap()
             }
             if self.subType != nil {
                 map["SubType"] = self.subType!
@@ -3646,6 +3698,11 @@ public class GetInstanceResponseBody : Tea.TeaModel {
             }
             if let value = dict["Path"] as? String {
                 self.path = value
+            }
+            if let value = dict["Status"] as? [String: Any?] {
+                var model = GetInstanceResponseBody.CloudDisks.Status()
+                model.fromMap(value)
+                self.status = model
             }
             if let value = dict["SubType"] as? String {
                 self.subType = value
