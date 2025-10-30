@@ -2689,6 +2689,8 @@ public class ListEvaluationMetadataRequest : Tea.TeaModel {
 
     public var regionId: String?
 
+    public var topicCode: String?
+
     public override init() {
         super.init()
     }
@@ -2712,6 +2714,9 @@ public class ListEvaluationMetadataRequest : Tea.TeaModel {
         if self.regionId != nil {
             map["RegionId"] = self.regionId!
         }
+        if self.topicCode != nil {
+            map["TopicCode"] = self.topicCode!
+        }
         return map
     }
 
@@ -2725,6 +2730,9 @@ public class ListEvaluationMetadataRequest : Tea.TeaModel {
         }
         if let value = dict["RegionId"] as? String {
             self.regionId = value
+        }
+        if let value = dict["TopicCode"] as? String {
+            self.topicCode = value
         }
     }
 }
@@ -3074,6 +3082,8 @@ public class ListEvaluationMetadataResponseBody : Tea.TeaModel {
 
             public var stage: String?
 
+            public var topicCode: String?
+
             public override init() {
                 super.init()
             }
@@ -3117,6 +3127,9 @@ public class ListEvaluationMetadataResponseBody : Tea.TeaModel {
                 if self.stage != nil {
                     map["Stage"] = self.stage!
                 }
+                if self.topicCode != nil {
+                    map["TopicCode"] = self.topicCode!
+                }
                 return map
             }
 
@@ -3152,6 +3165,9 @@ public class ListEvaluationMetadataResponseBody : Tea.TeaModel {
                 }
                 if let value = dict["Stage"] as? String {
                     self.stage = value
+                }
+                if let value = dict["TopicCode"] as? String {
+                    self.topicCode = value
                 }
             }
         }
@@ -3687,6 +3703,8 @@ public class ListEvaluationResultsRequest : Tea.TeaModel {
 
     public var snapshotId: String?
 
+    public var topicCode: String?
+
     public override init() {
         super.init()
     }
@@ -3723,6 +3741,9 @@ public class ListEvaluationResultsRequest : Tea.TeaModel {
         if self.snapshotId != nil {
             map["SnapshotId"] = self.snapshotId!
         }
+        if self.topicCode != nil {
+            map["TopicCode"] = self.topicCode!
+        }
         return map
     }
 
@@ -3755,6 +3776,9 @@ public class ListEvaluationResultsRequest : Tea.TeaModel {
         }
         if let value = dict["SnapshotId"] as? String {
             self.snapshotId = value
+        }
+        if let value = dict["TopicCode"] as? String {
+            self.topicCode = value
         }
     }
 }
@@ -3868,6 +3892,8 @@ public class ListEvaluationResultsResponseBody : Tea.TeaModel {
 
             public var id: String?
 
+            public var potentialScoreIncrease: Double?
+
             public var resourcesSummary: ListEvaluationResultsResponseBody.Results.MetricResults.ResourcesSummary?
 
             public var result: Double?
@@ -3905,6 +3931,9 @@ public class ListEvaluationResultsResponseBody : Tea.TeaModel {
                 if self.id != nil {
                     map["Id"] = self.id!
                 }
+                if self.potentialScoreIncrease != nil {
+                    map["PotentialScoreIncrease"] = self.potentialScoreIncrease!
+                }
                 if self.resourcesSummary != nil {
                     map["ResourcesSummary"] = self.resourcesSummary?.toMap()
                 }
@@ -3937,6 +3966,9 @@ public class ListEvaluationResultsResponseBody : Tea.TeaModel {
                 }
                 if let value = dict["Id"] as? String {
                     self.id = value
+                }
+                if let value = dict["PotentialScoreIncrease"] as? Double {
+                    self.potentialScoreIncrease = value
                 }
                 if let value = dict["ResourcesSummary"] as? [String: Any?] {
                     var model = ListEvaluationResultsResponseBody.Results.MetricResults.ResourcesSummary()
