@@ -267,6 +267,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.DBInstanceDescription)) {
             query["DBInstanceDescription"] = request.DBInstanceDescription ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.DBTimeZone)) {
+            query["DBTimeZone"] = request.DBTimeZone ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.deploySchema)) {
             query["DeploySchema"] = request.deploySchema ?? "";
         }

@@ -876,6 +876,8 @@ public class CreateDBInstanceRequest : Tea.TeaModel {
 
     public var DBInstanceDescription: String?
 
+    public var DBTimeZone: String?
+
     public var deploySchema: String?
 
     public var engine: String?
@@ -932,6 +934,9 @@ public class CreateDBInstanceRequest : Tea.TeaModel {
         }
         if self.DBInstanceDescription != nil {
             map["DBInstanceDescription"] = self.DBInstanceDescription!
+        }
+        if self.DBTimeZone != nil {
+            map["DBTimeZone"] = self.DBTimeZone!
         }
         if self.deploySchema != nil {
             map["DeploySchema"] = self.deploySchema!
@@ -1001,6 +1006,9 @@ public class CreateDBInstanceRequest : Tea.TeaModel {
         }
         if let value = dict["DBInstanceDescription"] as? String {
             self.DBInstanceDescription = value
+        }
+        if let value = dict["DBTimeZone"] as? String {
+            self.DBTimeZone = value
         }
         if let value = dict["DeploySchema"] as? String {
             self.deploySchema = value
@@ -1073,6 +1081,8 @@ public class CreateDBInstanceShrinkRequest : Tea.TeaModel {
 
     public var DBInstanceDescription: String?
 
+    public var DBTimeZone: String?
+
     public var deploySchema: String?
 
     public var engine: String?
@@ -1129,6 +1139,9 @@ public class CreateDBInstanceShrinkRequest : Tea.TeaModel {
         }
         if self.DBInstanceDescription != nil {
             map["DBInstanceDescription"] = self.DBInstanceDescription!
+        }
+        if self.DBTimeZone != nil {
+            map["DBTimeZone"] = self.DBTimeZone!
         }
         if self.deploySchema != nil {
             map["DeploySchema"] = self.deploySchema!
@@ -1194,6 +1207,9 @@ public class CreateDBInstanceShrinkRequest : Tea.TeaModel {
         }
         if let value = dict["DBInstanceDescription"] as? String {
             self.DBInstanceDescription = value
+        }
+        if let value = dict["DBTimeZone"] as? String {
+            self.DBTimeZone = value
         }
         if let value = dict["DeploySchema"] as? String {
             self.deploySchema = value
