@@ -5,6 +5,393 @@ import AlibabacloudOpenApi
 import AlibabaCloudOpenApiUtil
 import AlibabacloudEndpointUtil
 
+public class InstanceDetail : Tea.TeaModel {
+    public class Components : Tea.TeaModel {
+        public var cuNum: Int32?
+
+        public var cuType: String?
+
+        public var diskSizeType: String?
+
+        public var replica: Int32?
+
+        public var type: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.cuNum != nil {
+                map["cuNum"] = self.cuNum!
+            }
+            if self.cuType != nil {
+                map["cuType"] = self.cuType!
+            }
+            if self.diskSizeType != nil {
+                map["diskSizeType"] = self.diskSizeType!
+            }
+            if self.replica != nil {
+                map["replica"] = self.replica!
+            }
+            if self.type != nil {
+                map["type"] = self.type!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["cuNum"] as? Int32 {
+                self.cuNum = value
+            }
+            if let value = dict["cuType"] as? String {
+                self.cuType = value
+            }
+            if let value = dict["diskSizeType"] as? String {
+                self.diskSizeType = value
+            }
+            if let value = dict["replica"] as? Int32 {
+                self.replica = value
+            }
+            if let value = dict["type"] as? String {
+                self.type = value
+            }
+        }
+    }
+    public class Tags : Tea.TeaModel {
+        public var key: String?
+
+        public var value: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.key != nil {
+                map["key"] = self.key!
+            }
+            if self.value != nil {
+                map["value"] = self.value!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["key"] as? String {
+                self.key = value
+            }
+            if let value = dict["value"] as? String {
+                self.value = value
+            }
+        }
+    }
+    public class VSwitchIds : Tea.TeaModel {
+        public var vswId: String?
+
+        public var zoneId: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.vswId != nil {
+                map["vswId"] = self.vswId!
+            }
+            if self.zoneId != nil {
+                map["zoneId"] = self.zoneId!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["vswId"] as? String {
+                self.vswId = value
+            }
+            if let value = dict["zoneId"] as? String {
+                self.zoneId = value
+            }
+        }
+    }
+    public var autoBackup: Bool?
+
+    public var components: [InstanceDetail.Components]?
+
+    public var configuration: String?
+
+    public var createTime: String?
+
+    public var dbVersion: String?
+
+    public var encrypted: Bool?
+
+    public var expireTime: String?
+
+    public var ha: Bool?
+
+    public var instanceId: String?
+
+    public var instanceName: String?
+
+    public var kmsKeyId: String?
+
+    public var multiZoneMode: String?
+
+    public var orderId: String?
+
+    public var paymentType: String?
+
+    public var regionId: String?
+
+    public var resourceGroupId: String?
+
+    public var runningTime: Int64?
+
+    public var securityGroupIds: [String]?
+
+    public var status: String?
+
+    public var tags: [InstanceDetail.Tags]?
+
+    public var vSwitchIds: [InstanceDetail.VSwitchIds]?
+
+    public var vpcId: String?
+
+    public var zoneId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.autoBackup != nil {
+            map["autoBackup"] = self.autoBackup!
+        }
+        if self.components != nil {
+            var tmp : [Any] = []
+            for k in self.components! {
+                tmp.append(k.toMap())
+            }
+            map["components"] = tmp
+        }
+        if self.configuration != nil {
+            map["configuration"] = self.configuration!
+        }
+        if self.createTime != nil {
+            map["createTime"] = self.createTime!
+        }
+        if self.dbVersion != nil {
+            map["dbVersion"] = self.dbVersion!
+        }
+        if self.encrypted != nil {
+            map["encrypted"] = self.encrypted!
+        }
+        if self.expireTime != nil {
+            map["expireTime"] = self.expireTime!
+        }
+        if self.ha != nil {
+            map["ha"] = self.ha!
+        }
+        if self.instanceId != nil {
+            map["instanceId"] = self.instanceId!
+        }
+        if self.instanceName != nil {
+            map["instanceName"] = self.instanceName!
+        }
+        if self.kmsKeyId != nil {
+            map["kmsKeyId"] = self.kmsKeyId!
+        }
+        if self.multiZoneMode != nil {
+            map["multiZoneMode"] = self.multiZoneMode!
+        }
+        if self.orderId != nil {
+            map["orderId"] = self.orderId!
+        }
+        if self.paymentType != nil {
+            map["paymentType"] = self.paymentType!
+        }
+        if self.regionId != nil {
+            map["regionId"] = self.regionId!
+        }
+        if self.resourceGroupId != nil {
+            map["resourceGroupId"] = self.resourceGroupId!
+        }
+        if self.runningTime != nil {
+            map["runningTime"] = self.runningTime!
+        }
+        if self.securityGroupIds != nil {
+            map["securityGroupIds"] = self.securityGroupIds!
+        }
+        if self.status != nil {
+            map["status"] = self.status!
+        }
+        if self.tags != nil {
+            var tmp : [Any] = []
+            for k in self.tags! {
+                tmp.append(k.toMap())
+            }
+            map["tags"] = tmp
+        }
+        if self.vSwitchIds != nil {
+            var tmp : [Any] = []
+            for k in self.vSwitchIds! {
+                tmp.append(k.toMap())
+            }
+            map["vSwitchIds"] = tmp
+        }
+        if self.vpcId != nil {
+            map["vpcId"] = self.vpcId!
+        }
+        if self.zoneId != nil {
+            map["zoneId"] = self.zoneId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["autoBackup"] as? Bool {
+            self.autoBackup = value
+        }
+        if let value = dict["components"] as? [Any?] {
+            var tmp : [InstanceDetail.Components] = []
+            for v in value {
+                if v != nil {
+                    var model = InstanceDetail.Components()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.components = tmp
+        }
+        if let value = dict["configuration"] as? String {
+            self.configuration = value
+        }
+        if let value = dict["createTime"] as? String {
+            self.createTime = value
+        }
+        if let value = dict["dbVersion"] as? String {
+            self.dbVersion = value
+        }
+        if let value = dict["encrypted"] as? Bool {
+            self.encrypted = value
+        }
+        if let value = dict["expireTime"] as? String {
+            self.expireTime = value
+        }
+        if let value = dict["ha"] as? Bool {
+            self.ha = value
+        }
+        if let value = dict["instanceId"] as? String {
+            self.instanceId = value
+        }
+        if let value = dict["instanceName"] as? String {
+            self.instanceName = value
+        }
+        if let value = dict["kmsKeyId"] as? String {
+            self.kmsKeyId = value
+        }
+        if let value = dict["multiZoneMode"] as? String {
+            self.multiZoneMode = value
+        }
+        if let value = dict["orderId"] as? String {
+            self.orderId = value
+        }
+        if let value = dict["paymentType"] as? String {
+            self.paymentType = value
+        }
+        if let value = dict["regionId"] as? String {
+            self.regionId = value
+        }
+        if let value = dict["resourceGroupId"] as? String {
+            self.resourceGroupId = value
+        }
+        if let value = dict["runningTime"] as? Int64 {
+            self.runningTime = value
+        }
+        if let value = dict["securityGroupIds"] as? [String] {
+            self.securityGroupIds = value
+        }
+        if let value = dict["status"] as? String {
+            self.status = value
+        }
+        if let value = dict["tags"] as? [Any?] {
+            var tmp : [InstanceDetail.Tags] = []
+            for v in value {
+                if v != nil {
+                    var model = InstanceDetail.Tags()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.tags = tmp
+        }
+        if let value = dict["vSwitchIds"] as? [Any?] {
+            var tmp : [InstanceDetail.VSwitchIds] = []
+            for v in value {
+                if v != nil {
+                    var model = InstanceDetail.VSwitchIds()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.vSwitchIds = tmp
+        }
+        if let value = dict["vpcId"] as? String {
+            self.vpcId = value
+        }
+        if let value = dict["zoneId"] as? String {
+            self.zoneId = value
+        }
+    }
+}
+
 public class CreateDefaultRoleResponseBody : Tea.TeaModel {
     public var accessDeniedDetail: String?
 
@@ -898,11 +1285,15 @@ public class GetInstanceDetailResponseBody : Tea.TeaModel {
 
         public var enableHa: Bool?
 
+        public var encrypted: String?
+
         public var expireTime: Int64?
 
         public var instanceId: String?
 
         public var instanceStatus: String?
+
+        public var kmsKeyId: String?
 
         public var measureConfig: GetInstanceDetailResponseBody.Data.MeasureConfig?
 
@@ -979,6 +1370,9 @@ public class GetInstanceDetailResponseBody : Tea.TeaModel {
             if self.enableHa != nil {
                 map["EnableHa"] = self.enableHa!
             }
+            if self.encrypted != nil {
+                map["Encrypted"] = self.encrypted!
+            }
             if self.expireTime != nil {
                 map["ExpireTime"] = self.expireTime!
             }
@@ -987,6 +1381,9 @@ public class GetInstanceDetailResponseBody : Tea.TeaModel {
             }
             if self.instanceStatus != nil {
                 map["InstanceStatus"] = self.instanceStatus!
+            }
+            if self.kmsKeyId != nil {
+                map["KmsKeyId"] = self.kmsKeyId!
             }
             if self.measureConfig != nil {
                 map["MeasureConfig"] = self.measureConfig?.toMap()
@@ -1081,6 +1478,9 @@ public class GetInstanceDetailResponseBody : Tea.TeaModel {
             if let value = dict["EnableHa"] as? Bool {
                 self.enableHa = value
             }
+            if let value = dict["Encrypted"] as? String {
+                self.encrypted = value
+            }
             if let value = dict["ExpireTime"] as? Int64 {
                 self.expireTime = value
             }
@@ -1089,6 +1489,9 @@ public class GetInstanceDetailResponseBody : Tea.TeaModel {
             }
             if let value = dict["InstanceStatus"] as? String {
                 self.instanceStatus = value
+            }
+            if let value = dict["KmsKeyId"] as? String {
+                self.kmsKeyId = value
             }
             if let value = dict["MeasureConfig"] as? [String: Any?] {
                 var model = GetInstanceDetailResponseBody.Data.MeasureConfig()
