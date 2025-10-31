@@ -1373,6 +1373,10 @@ public class CreateDetectionRuleRequest : Tea.TeaModel {
 
     public var detectionRuleStatus: String?
 
+    public var detectionRuleTemplateId: String?
+
+    public var detectionRuleTemplateVersion: String?
+
     public var detectionRuleType: String?
 
     public var entityMappings: String?
@@ -1459,6 +1463,12 @@ public class CreateDetectionRuleRequest : Tea.TeaModel {
         }
         if self.detectionRuleStatus != nil {
             map["DetectionRuleStatus"] = self.detectionRuleStatus!
+        }
+        if self.detectionRuleTemplateId != nil {
+            map["DetectionRuleTemplateId"] = self.detectionRuleTemplateId!
+        }
+        if self.detectionRuleTemplateVersion != nil {
+            map["DetectionRuleTemplateVersion"] = self.detectionRuleTemplateVersion!
         }
         if self.detectionRuleType != nil {
             map["DetectionRuleType"] = self.detectionRuleType!
@@ -1554,6 +1564,12 @@ public class CreateDetectionRuleRequest : Tea.TeaModel {
         }
         if let value = dict["DetectionRuleStatus"] as? String {
             self.detectionRuleStatus = value
+        }
+        if let value = dict["DetectionRuleTemplateId"] as? String {
+            self.detectionRuleTemplateId = value
+        }
+        if let value = dict["DetectionRuleTemplateVersion"] as? String {
+            self.detectionRuleTemplateVersion = value
         }
         if let value = dict["DetectionRuleType"] as? String {
             self.detectionRuleType = value
@@ -11821,6 +11837,8 @@ public class ListIncidentsResponseBody : Tea.TeaModel {
 
         public var incidentStatus: Int32?
 
+        public var incidentTags: String?
+
         public var incidentUuid: String?
 
         public var relateAlertCount: Int32?
@@ -11857,6 +11875,9 @@ public class ListIncidentsResponseBody : Tea.TeaModel {
             if self.incidentStatus != nil {
                 map["IncidentStatus"] = self.incidentStatus!
             }
+            if self.incidentTags != nil {
+                map["IncidentTags"] = self.incidentTags!
+            }
             if self.incidentUuid != nil {
                 map["IncidentUuid"] = self.incidentUuid!
             }
@@ -11888,6 +11909,9 @@ public class ListIncidentsResponseBody : Tea.TeaModel {
             }
             if let value = dict["IncidentStatus"] as? Int32 {
                 self.incidentStatus = value
+            }
+            if let value = dict["IncidentTags"] as? String {
+                self.incidentTags = value
             }
             if let value = dict["IncidentUuid"] as? String {
                 self.incidentUuid = value

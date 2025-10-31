@@ -331,6 +331,12 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.detectionRuleStatus)) {
             body["DetectionRuleStatus"] = request.detectionRuleStatus ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.detectionRuleTemplateId)) {
+            body["DetectionRuleTemplateId"] = request.detectionRuleTemplateId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.detectionRuleTemplateVersion)) {
+            body["DetectionRuleTemplateVersion"] = request.detectionRuleTemplateVersion ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.detectionRuleType)) {
             body["DetectionRuleType"] = request.detectionRuleType ?? "";
         }
