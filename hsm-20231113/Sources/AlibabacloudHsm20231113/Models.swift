@@ -3721,6 +3721,10 @@ public class GetInstanceRequest : Tea.TeaModel {
 
 public class GetInstanceResponseBody : Tea.TeaModel {
     public class Instance : Tea.TeaModel {
+        public var certification: String?
+
+        public var certificationUrl: String?
+
         public var clusterId: String?
 
         public var clusterName: String?
@@ -3775,6 +3779,12 @@ public class GetInstanceResponseBody : Tea.TeaModel {
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
+            if self.certification != nil {
+                map["Certification"] = self.certification!
+            }
+            if self.certificationUrl != nil {
+                map["CertificationUrl"] = self.certificationUrl!
+            }
             if self.clusterId != nil {
                 map["ClusterId"] = self.clusterId!
             }
@@ -3840,6 +3850,12 @@ public class GetInstanceResponseBody : Tea.TeaModel {
 
         public override func fromMap(_ dict: [String: Any?]?) -> Void {
             guard let dict else { return }
+            if let value = dict["Certification"] as? String {
+                self.certification = value
+            }
+            if let value = dict["CertificationUrl"] as? String {
+                self.certificationUrl = value
+            }
             if let value = dict["ClusterId"] as? String {
                 self.clusterId = value
             }
