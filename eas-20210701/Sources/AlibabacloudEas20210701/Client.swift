@@ -997,6 +997,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(tmpReq.keys)) {
             request.keysShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.keys, "Keys", "simple")
         }
+        if (!TeaUtils.Client.isUnset(tmpReq.labelKeys)) {
+            request.labelKeysShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.labelKeys, "LabelKeys", "json")
+        }
         var query: [String: Any] = [:]
         if (!TeaUtils.Client.isUnset(request.allInstances)) {
             query["AllInstances"] = request.allInstances!;
@@ -1006,6 +1009,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.keysShrink)) {
             query["Keys"] = request.keysShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.labelKeysShrink)) {
+            query["LabelKeys"] = request.labelKeysShrink ?? "";
         }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "headers": headers as! [String: String],
@@ -1224,9 +1230,15 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(tmpReq.keys)) {
             request.keysShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.keys, "Keys", "simple")
         }
+        if (!TeaUtils.Client.isUnset(tmpReq.labelKeys)) {
+            request.labelKeysShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.labelKeys, "LabelKeys", "json")
+        }
         var query: [String: Any] = [:]
         if (!TeaUtils.Client.isUnset(request.keysShrink)) {
             query["Keys"] = request.keysShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.labelKeysShrink)) {
+            query["LabelKeys"] = request.labelKeysShrink ?? "";
         }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "headers": headers as! [String: String],

@@ -6010,6 +6010,8 @@ public class DeleteResourceInstanceLabelRequest : Tea.TeaModel {
 
     public var keys: [String]?
 
+    public var labelKeys: [String]?
+
     public override init() {
         super.init()
     }
@@ -6033,6 +6035,9 @@ public class DeleteResourceInstanceLabelRequest : Tea.TeaModel {
         if self.keys != nil {
             map["Keys"] = self.keys!
         }
+        if self.labelKeys != nil {
+            map["LabelKeys"] = self.labelKeys!
+        }
         return map
     }
 
@@ -6047,6 +6052,9 @@ public class DeleteResourceInstanceLabelRequest : Tea.TeaModel {
         if let value = dict["Keys"] as? [String] {
             self.keys = value
         }
+        if let value = dict["LabelKeys"] as? [String] {
+            self.labelKeys = value
+        }
     }
 }
 
@@ -6056,6 +6064,8 @@ public class DeleteResourceInstanceLabelShrinkRequest : Tea.TeaModel {
     public var instanceIdsShrink: String?
 
     public var keysShrink: String?
+
+    public var labelKeysShrink: String?
 
     public override init() {
         super.init()
@@ -6080,6 +6090,9 @@ public class DeleteResourceInstanceLabelShrinkRequest : Tea.TeaModel {
         if self.keysShrink != nil {
             map["Keys"] = self.keysShrink!
         }
+        if self.labelKeysShrink != nil {
+            map["LabelKeys"] = self.labelKeysShrink!
+        }
         return map
     }
 
@@ -6093,6 +6106,9 @@ public class DeleteResourceInstanceLabelShrinkRequest : Tea.TeaModel {
         }
         if let value = dict["Keys"] as? String {
             self.keysShrink = value
+        }
+        if let value = dict["LabelKeys"] as? String {
+            self.labelKeysShrink = value
         }
     }
 }
@@ -6809,6 +6825,8 @@ public class DeleteServiceInstancesResponse : Tea.TeaModel {
 public class DeleteServiceLabelRequest : Tea.TeaModel {
     public var keys: [String]?
 
+    public var labelKeys: [String]?
+
     public override init() {
         super.init()
     }
@@ -6826,6 +6844,9 @@ public class DeleteServiceLabelRequest : Tea.TeaModel {
         if self.keys != nil {
             map["Keys"] = self.keys!
         }
+        if self.labelKeys != nil {
+            map["LabelKeys"] = self.labelKeys!
+        }
         return map
     }
 
@@ -6834,11 +6855,16 @@ public class DeleteServiceLabelRequest : Tea.TeaModel {
         if let value = dict["Keys"] as? [String] {
             self.keys = value
         }
+        if let value = dict["LabelKeys"] as? [String] {
+            self.labelKeys = value
+        }
     }
 }
 
 public class DeleteServiceLabelShrinkRequest : Tea.TeaModel {
     public var keysShrink: String?
+
+    public var labelKeysShrink: String?
 
     public override init() {
         super.init()
@@ -6857,6 +6883,9 @@ public class DeleteServiceLabelShrinkRequest : Tea.TeaModel {
         if self.keysShrink != nil {
             map["Keys"] = self.keysShrink!
         }
+        if self.labelKeysShrink != nil {
+            map["LabelKeys"] = self.labelKeysShrink!
+        }
         return map
     }
 
@@ -6864,6 +6893,9 @@ public class DeleteServiceLabelShrinkRequest : Tea.TeaModel {
         guard let dict else { return }
         if let value = dict["Keys"] as? String {
             self.keysShrink = value
+        }
+        if let value = dict["LabelKeys"] as? String {
+            self.labelKeysShrink = value
         }
     }
 }
