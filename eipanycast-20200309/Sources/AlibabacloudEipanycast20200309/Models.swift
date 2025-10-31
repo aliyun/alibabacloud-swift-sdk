@@ -6,6 +6,44 @@ import AlibabaCloudOpenApiUtil
 import AlibabacloudEndpointUtil
 
 public class AllocateAnycastEipAddressRequest : Tea.TeaModel {
+    public class Tag : Tea.TeaModel {
+        public var key: String?
+
+        public var value: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.key != nil {
+                map["Key"] = self.key!
+            }
+            if self.value != nil {
+                map["Value"] = self.value!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["Key"] as? String {
+                self.key = value
+            }
+            if let value = dict["Value"] as? String {
+                self.value = value
+            }
+        }
+    }
     public var bandwidth: String?
 
     public var clientToken: String?
@@ -21,6 +59,8 @@ public class AllocateAnycastEipAddressRequest : Tea.TeaModel {
     public var resourceGroupId: String?
 
     public var serviceLocation: String?
+
+    public var tag: [AllocateAnycastEipAddressRequest.Tag]?
 
     public override init() {
         super.init()
@@ -60,6 +100,13 @@ public class AllocateAnycastEipAddressRequest : Tea.TeaModel {
         if self.serviceLocation != nil {
             map["ServiceLocation"] = self.serviceLocation!
         }
+        if self.tag != nil {
+            var tmp : [Any] = []
+            for k in self.tag! {
+                tmp.append(k.toMap())
+            }
+            map["Tag"] = tmp
+        }
         return map
     }
 
@@ -88,6 +135,19 @@ public class AllocateAnycastEipAddressRequest : Tea.TeaModel {
         }
         if let value = dict["ServiceLocation"] as? String {
             self.serviceLocation = value
+        }
+        if let value = dict["Tag"] as? [Any?] {
+            var tmp : [AllocateAnycastEipAddressRequest.Tag] = []
+            for v in value {
+                if v != nil {
+                    var model = AllocateAnycastEipAddressRequest.Tag()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.tag = tmp
         }
     }
 }
