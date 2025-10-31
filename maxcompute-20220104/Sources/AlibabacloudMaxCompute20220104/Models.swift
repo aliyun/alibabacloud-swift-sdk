@@ -7161,6 +7161,10 @@ public class GetPackageResponse : Tea.TeaModel {
 public class GetProjectRequest : Tea.TeaModel {
     public var verbose: Bool?
 
+    public var withQuotaProductType: Bool?
+
+    public var withStorageTierInfo: Bool?
+
     public override init() {
         super.init()
     }
@@ -7178,6 +7182,12 @@ public class GetProjectRequest : Tea.TeaModel {
         if self.verbose != nil {
             map["verbose"] = self.verbose!
         }
+        if self.withQuotaProductType != nil {
+            map["withQuotaProductType"] = self.withQuotaProductType!
+        }
+        if self.withStorageTierInfo != nil {
+            map["withStorageTierInfo"] = self.withStorageTierInfo!
+        }
         return map
     }
 
@@ -7185,6 +7195,12 @@ public class GetProjectRequest : Tea.TeaModel {
         guard let dict else { return }
         if let value = dict["verbose"] as? Bool {
             self.verbose = value
+        }
+        if let value = dict["withQuotaProductType"] as? Bool {
+            self.withQuotaProductType = value
+        }
+        if let value = dict["withStorageTierInfo"] as? Bool {
+            self.withStorageTierInfo = value
         }
     }
 }
@@ -18266,6 +18282,8 @@ public class ListMmsJobsRequest : Tea.TeaModel {
 
     public var stopped: Int64?
 
+    public var timerId: Int64?
+
     public override init() {
         super.init()
     }
@@ -18311,6 +18329,9 @@ public class ListMmsJobsRequest : Tea.TeaModel {
         if self.stopped != nil {
             map["stopped"] = self.stopped!
         }
+        if self.timerId != nil {
+            map["timerId"] = self.timerId!
+        }
         return map
     }
 
@@ -18347,6 +18368,9 @@ public class ListMmsJobsRequest : Tea.TeaModel {
         }
         if let value = dict["stopped"] as? Int64 {
             self.stopped = value
+        }
+        if let value = dict["timerId"] as? Int64 {
+            self.timerId = value
         }
     }
 }
