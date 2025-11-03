@@ -15942,6 +15942,10 @@ public class UnBindXBResponse : Tea.TeaModel {
 }
 
 public class UnbindSubs700Request : Tea.TeaModel {
+    public var industrialId: String?
+
+    public var orderId: String?
+
     public var ownerId: Int64?
 
     public var poolKey: String?
@@ -15968,6 +15972,12 @@ public class UnbindSubs700Request : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.industrialId != nil {
+            map["IndustrialId"] = self.industrialId!
+        }
+        if self.orderId != nil {
+            map["OrderId"] = self.orderId!
+        }
         if self.ownerId != nil {
             map["OwnerId"] = self.ownerId!
         }
@@ -15991,6 +16001,12 @@ public class UnbindSubs700Request : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["IndustrialId"] as? String {
+            self.industrialId = value
+        }
+        if let value = dict["OrderId"] as? String {
+            self.orderId = value
+        }
         if let value = dict["OwnerId"] as? Int64 {
             self.ownerId = value
         }

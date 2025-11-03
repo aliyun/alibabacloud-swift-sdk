@@ -2982,6 +2982,12 @@ open class Client : AlibabacloudOpenApi.Client {
     public func unbindSubs700WithOptions(_ request: UnbindSubs700Request, _ runtime: TeaUtils.RuntimeOptions) async throws -> UnbindSubs700Response {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.industrialId)) {
+            query["IndustrialId"] = request.industrialId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.orderId)) {
+            query["OrderId"] = request.orderId ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.ownerId)) {
             query["OwnerId"] = request.ownerId!;
         }
