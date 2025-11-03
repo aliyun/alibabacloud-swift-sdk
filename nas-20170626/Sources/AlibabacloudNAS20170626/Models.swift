@@ -1974,6 +1974,44 @@ public class CreateAccessGroupResponse : Tea.TeaModel {
 }
 
 public class CreateAccessPointRequest : Tea.TeaModel {
+    public class Tag : Tea.TeaModel {
+        public var key: String?
+
+        public var value: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.key != nil {
+                map["Key"] = self.key!
+            }
+            if self.value != nil {
+                map["Value"] = self.value!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["Key"] as? String {
+                self.key = value
+            }
+            if let value = dict["Value"] as? String {
+                self.value = value
+            }
+        }
+    }
     public var accessGroup: String?
 
     public var accessPointName: String?
@@ -1995,6 +2033,8 @@ public class CreateAccessPointRequest : Tea.TeaModel {
     public var posixUserId: Int32?
 
     public var rootDirectory: String?
+
+    public var tag: [CreateAccessPointRequest.Tag]?
 
     public var vpcId: String?
 
@@ -2047,6 +2087,13 @@ public class CreateAccessPointRequest : Tea.TeaModel {
         if self.rootDirectory != nil {
             map["RootDirectory"] = self.rootDirectory!
         }
+        if self.tag != nil {
+            var tmp : [Any] = []
+            for k in self.tag! {
+                tmp.append(k.toMap())
+            }
+            map["Tag"] = tmp
+        }
         if self.vpcId != nil {
             map["VpcId"] = self.vpcId!
         }
@@ -2090,6 +2137,19 @@ public class CreateAccessPointRequest : Tea.TeaModel {
         }
         if let value = dict["RootDirectory"] as? String {
             self.rootDirectory = value
+        }
+        if let value = dict["Tag"] as? [Any?] {
+            var tmp : [CreateAccessPointRequest.Tag] = []
+            for v in value {
+                if v != nil {
+                    var model = CreateAccessPointRequest.Tag()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.tag = tmp
         }
         if let value = dict["VpcId"] as? String {
             self.vpcId = value
@@ -7811,6 +7871,44 @@ public class DescribeAccessPointResponseBody : Tea.TeaModel {
                 }
             }
         }
+        public class Tags : Tea.TeaModel {
+            public var key: String?
+
+            public var value: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.key != nil {
+                    map["Key"] = self.key!
+                }
+                if self.value != nil {
+                    map["Value"] = self.value!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["Key"] as? String {
+                    self.key = value
+                }
+                if let value = dict["Value"] as? String {
+                    self.value = value
+                }
+            }
+        }
         public var ARN: String?
 
         public var accessGroup: String?
@@ -7840,6 +7938,8 @@ public class DescribeAccessPointResponseBody : Tea.TeaModel {
         public var rootPathStatus: String?
 
         public var status: String?
+
+        public var tags: [DescribeAccessPointResponseBody.AccessPoint.Tags]?
 
         public var vSwitchId: String?
 
@@ -7906,6 +8006,13 @@ public class DescribeAccessPointResponseBody : Tea.TeaModel {
             if self.status != nil {
                 map["Status"] = self.status!
             }
+            if self.tags != nil {
+                var tmp : [Any] = []
+                for k in self.tags! {
+                    tmp.append(k.toMap())
+                }
+                map["Tags"] = tmp
+            }
             if self.vSwitchId != nil {
                 map["VSwitchId"] = self.vSwitchId!
             }
@@ -7965,6 +8072,19 @@ public class DescribeAccessPointResponseBody : Tea.TeaModel {
             }
             if let value = dict["Status"] as? String {
                 self.status = value
+            }
+            if let value = dict["Tags"] as? [Any?] {
+                var tmp : [DescribeAccessPointResponseBody.AccessPoint.Tags] = []
+                for v in value {
+                    if v != nil {
+                        var model = DescribeAccessPointResponseBody.AccessPoint.Tags()
+                        if v != nil {
+                            model.fromMap(v as? [String: Any?])
+                        }
+                        tmp.append(model)
+                    }
+                }
+                self.tags = tmp
             }
             if let value = dict["VSwitchId"] as? String {
                 self.vSwitchId = value
@@ -8066,6 +8186,44 @@ public class DescribeAccessPointResponse : Tea.TeaModel {
 }
 
 public class DescribeAccessPointsRequest : Tea.TeaModel {
+    public class Tag : Tea.TeaModel {
+        public var key: String?
+
+        public var value: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.key != nil {
+                map["Key"] = self.key!
+            }
+            if self.value != nil {
+                map["Value"] = self.value!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["Key"] as? String {
+                self.key = value
+            }
+            if let value = dict["Value"] as? String {
+                self.value = value
+            }
+        }
+    }
     public var accessGroup: String?
 
     public var fileSystemId: String?
@@ -8073,6 +8231,8 @@ public class DescribeAccessPointsRequest : Tea.TeaModel {
     public var maxResults: Int32?
 
     public var nextToken: String?
+
+    public var tag: [DescribeAccessPointsRequest.Tag]?
 
     public override init() {
         super.init()
@@ -8100,6 +8260,13 @@ public class DescribeAccessPointsRequest : Tea.TeaModel {
         if self.nextToken != nil {
             map["NextToken"] = self.nextToken!
         }
+        if self.tag != nil {
+            var tmp : [Any] = []
+            for k in self.tag! {
+                tmp.append(k.toMap())
+            }
+            map["Tag"] = tmp
+        }
         return map
     }
 
@@ -8116,6 +8283,19 @@ public class DescribeAccessPointsRequest : Tea.TeaModel {
         }
         if let value = dict["NextToken"] as? String {
             self.nextToken = value
+        }
+        if let value = dict["Tag"] as? [Any?] {
+            var tmp : [DescribeAccessPointsRequest.Tag] = []
+            for v in value {
+                if v != nil {
+                    var model = DescribeAccessPointsRequest.Tag()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.tag = tmp
         }
     }
 }
@@ -8214,6 +8394,44 @@ public class DescribeAccessPointsResponseBody : Tea.TeaModel {
                 }
             }
         }
+        public class Tags : Tea.TeaModel {
+            public var key: String?
+
+            public var value: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.key != nil {
+                    map["Key"] = self.key!
+                }
+                if self.value != nil {
+                    map["Value"] = self.value!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["Key"] as? String {
+                    self.key = value
+                }
+                if let value = dict["Value"] as? String {
+                    self.value = value
+                }
+            }
+        }
         public var ARN: String?
 
         public var accessGroup: String?
@@ -8241,6 +8459,8 @@ public class DescribeAccessPointsResponseBody : Tea.TeaModel {
         public var rootPathStatus: String?
 
         public var status: String?
+
+        public var tags: [DescribeAccessPointsResponseBody.AccessPoints.Tags]?
 
         public var vSwitchId: String?
 
@@ -8304,6 +8524,13 @@ public class DescribeAccessPointsResponseBody : Tea.TeaModel {
             if self.status != nil {
                 map["Status"] = self.status!
             }
+            if self.tags != nil {
+                var tmp : [Any] = []
+                for k in self.tags! {
+                    tmp.append(k.toMap())
+                }
+                map["Tags"] = tmp
+            }
             if self.vSwitchId != nil {
                 map["VSwitchId"] = self.vSwitchId!
             }
@@ -8360,6 +8587,19 @@ public class DescribeAccessPointsResponseBody : Tea.TeaModel {
             }
             if let value = dict["Status"] as? String {
                 self.status = value
+            }
+            if let value = dict["Tags"] as? [Any?] {
+                var tmp : [DescribeAccessPointsResponseBody.AccessPoints.Tags] = []
+                for v in value {
+                    if v != nil {
+                        var model = DescribeAccessPointsResponseBody.AccessPoints.Tags()
+                        if v != nil {
+                            model.fromMap(v as? [String: Any?])
+                        }
+                        tmp.append(model)
+                    }
+                }
+                self.tags = tmp
             }
             if let value = dict["VSwitchId"] as? String {
                 self.vSwitchId = value
