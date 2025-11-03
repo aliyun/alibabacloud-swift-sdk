@@ -7737,6 +7737,8 @@ public class DeployK8sApplicationRequest : Tea.TeaModel {
 
     public var runtimeClassName: String?
 
+    public var securityContext: String?
+
     public var sidecars: String?
 
     public var slsConfigs: String?
@@ -7941,6 +7943,9 @@ public class DeployK8sApplicationRequest : Tea.TeaModel {
         }
         if self.runtimeClassName != nil {
             map["RuntimeClassName"] = self.runtimeClassName!
+        }
+        if self.securityContext != nil {
+            map["SecurityContext"] = self.securityContext!
         }
         if self.sidecars != nil {
             map["Sidecars"] = self.sidecars!
@@ -8150,6 +8155,9 @@ public class DeployK8sApplicationRequest : Tea.TeaModel {
         }
         if let value = dict["RuntimeClassName"] as? String {
             self.runtimeClassName = value
+        }
+        if let value = dict["SecurityContext"] as? String {
+            self.securityContext = value
         }
         if let value = dict["Sidecars"] as? String {
             self.sidecars = value
@@ -9330,6 +9338,215 @@ public class DescribeApplicationScalingRulesResponse : Tea.TeaModel {
         }
         if let value = dict["body"] as? [String: Any?] {
             var model = DescribeApplicationScalingRulesResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
+public class DescribeLocalitySettingRequest : Tea.TeaModel {
+    public var appId: String?
+
+    public var namespaceId: String?
+
+    public var region: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.appId != nil {
+            map["AppId"] = self.appId!
+        }
+        if self.namespaceId != nil {
+            map["NamespaceId"] = self.namespaceId!
+        }
+        if self.region != nil {
+            map["Region"] = self.region!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["AppId"] as? String {
+            self.appId = value
+        }
+        if let value = dict["NamespaceId"] as? String {
+            self.namespaceId = value
+        }
+        if let value = dict["Region"] as? String {
+            self.region = value
+        }
+    }
+}
+
+public class DescribeLocalitySettingResponseBody : Tea.TeaModel {
+    public class Data : Tea.TeaModel {
+        public var enabled: Bool?
+
+        public var threshold: Double?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.enabled != nil {
+                map["Enabled"] = self.enabled!
+            }
+            if self.threshold != nil {
+                map["Threshold"] = self.threshold!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["Enabled"] as? Bool {
+                self.enabled = value
+            }
+            if let value = dict["Threshold"] as? Double {
+                self.threshold = value
+            }
+        }
+    }
+    public var code: Int32?
+
+    public var data: DescribeLocalitySettingResponseBody.Data?
+
+    public var httpStatusCode: Int32?
+
+    public var message: String?
+
+    public var requestId: String?
+
+    public var success: Bool?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.data?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.code != nil {
+            map["Code"] = self.code!
+        }
+        if self.data != nil {
+            map["Data"] = self.data?.toMap()
+        }
+        if self.httpStatusCode != nil {
+            map["HttpStatusCode"] = self.httpStatusCode!
+        }
+        if self.message != nil {
+            map["Message"] = self.message!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.success != nil {
+            map["Success"] = self.success!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["Code"] as? Int32 {
+            self.code = value
+        }
+        if let value = dict["Data"] as? [String: Any?] {
+            var model = DescribeLocalitySettingResponseBody.Data()
+            model.fromMap(value)
+            self.data = model
+        }
+        if let value = dict["HttpStatusCode"] as? Int32 {
+            self.httpStatusCode = value
+        }
+        if let value = dict["Message"] as? String {
+            self.message = value
+        }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+        if let value = dict["Success"] as? Bool {
+            self.success = value
+        }
+    }
+}
+
+public class DescribeLocalitySettingResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: DescribeLocalitySettingResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = DescribeLocalitySettingResponseBody()
             model.fromMap(value)
             self.body = model
         }
@@ -13373,6 +13590,8 @@ public class GetK8sApplicationResponseBody : Tea.TeaModel {
 
             public var requestMem: Int32?
 
+            public var securityContext: String?
+
             public var slbInfo: String?
 
             public var tomcatVersion: String?
@@ -13491,6 +13710,9 @@ public class GetK8sApplicationResponseBody : Tea.TeaModel {
                 if self.requestMem != nil {
                     map["RequestMem"] = self.requestMem!
                 }
+                if self.securityContext != nil {
+                    map["SecurityContext"] = self.securityContext!
+                }
                 if self.slbInfo != nil {
                     map["SlbInfo"] = self.slbInfo!
                 }
@@ -13604,6 +13826,9 @@ public class GetK8sApplicationResponseBody : Tea.TeaModel {
                 }
                 if let value = dict["RequestMem"] as? Int32 {
                     self.requestMem = value
+                }
+                if let value = dict["SecurityContext"] as? String {
+                    self.securityContext = value
                 }
                 if let value = dict["SlbInfo"] as? String {
                     self.slbInfo = value
@@ -19639,6 +19864,8 @@ public class InsertK8sApplicationRequest : Tea.TeaModel {
 
     public var secretName: String?
 
+    public var securityContext: String?
+
     public var serviceConfigs: String?
 
     public var sidecars: String?
@@ -19894,6 +20121,9 @@ public class InsertK8sApplicationRequest : Tea.TeaModel {
         }
         if self.secretName != nil {
             map["SecretName"] = self.secretName!
+        }
+        if self.securityContext != nil {
+            map["SecurityContext"] = self.securityContext!
         }
         if self.serviceConfigs != nil {
             map["ServiceConfigs"] = self.serviceConfigs!
@@ -20154,6 +20384,9 @@ public class InsertK8sApplicationRequest : Tea.TeaModel {
         }
         if let value = dict["SecretName"] as? String {
             self.secretName = value
+        }
+        if let value = dict["SecurityContext"] as? String {
+            self.securityContext = value
         }
         if let value = dict["ServiceConfigs"] as? String {
             self.serviceConfigs = value

@@ -1726,6 +1726,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.runtimeClassName)) {
             query["RuntimeClassName"] = request.runtimeClassName ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.securityContext)) {
+            query["SecurityContext"] = request.securityContext ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.sidecars)) {
             query["Sidecars"] = request.sidecars ?? "";
         }
@@ -1858,6 +1861,45 @@ open class Client : AlibabacloudOpenApi.Client {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         var headers: [String: String] = [:]
         return try await describeApplicationScalingRulesWithOptions(request as! DescribeApplicationScalingRulesRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func describeLocalitySettingWithOptions(_ request: DescribeLocalitySettingRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> DescribeLocalitySettingResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.appId)) {
+            query["AppId"] = request.appId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.namespaceId)) {
+            query["NamespaceId"] = request.namespaceId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.region)) {
+            query["Region"] = request.region ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String],
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "DescribeLocalitySetting",
+            "version": "2017-08-01",
+            "protocol": "HTTPS",
+            "pathname": "/pop/sp/applications/locality/setting",
+            "method": "GET",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(DescribeLocalitySettingResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func describeLocalitySetting(_ request: DescribeLocalitySettingRequest) async throws -> DescribeLocalitySettingResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await describeLocalitySettingWithOptions(request as! DescribeLocalitySettingRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -3288,6 +3330,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.secretName)) {
             query["SecretName"] = request.secretName ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.securityContext)) {
+            query["SecurityContext"] = request.securityContext ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.serviceConfigs)) {
             query["ServiceConfigs"] = request.serviceConfigs ?? "";
