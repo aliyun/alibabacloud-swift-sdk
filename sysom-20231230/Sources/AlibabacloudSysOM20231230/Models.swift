@@ -454,6 +454,8 @@ public class CreateAlertStrategyRequest : Tea.TeaModel {
     }
     public var enabled: Bool?
 
+    public var k8sLabel: Bool?
+
     public var name: String?
 
     public var strategy: CreateAlertStrategyRequest.Strategy?
@@ -476,6 +478,9 @@ public class CreateAlertStrategyRequest : Tea.TeaModel {
         if self.enabled != nil {
             map["enabled"] = self.enabled!
         }
+        if self.k8sLabel != nil {
+            map["k8sLabel"] = self.k8sLabel!
+        }
         if self.name != nil {
             map["name"] = self.name!
         }
@@ -489,6 +494,9 @@ public class CreateAlertStrategyRequest : Tea.TeaModel {
         guard let dict else { return }
         if let value = dict["enabled"] as? Bool {
             self.enabled = value
+        }
+        if let value = dict["k8sLabel"] as? Bool {
+            self.k8sLabel = value
         }
         if let value = dict["name"] as? String {
             self.name = value
@@ -1808,6 +1816,8 @@ public class GetAgentTaskResponseBody : Tea.TeaModel {
         }
         public var jobs: [GetAgentTaskResponseBody.Data.Jobs]?
 
+        public var status: String?
+
         public var taskId: String?
 
         public override init() {
@@ -1831,6 +1841,9 @@ public class GetAgentTaskResponseBody : Tea.TeaModel {
                 }
                 map["jobs"] = tmp
             }
+            if self.status != nil {
+                map["status"] = self.status!
+            }
             if self.taskId != nil {
                 map["task_id"] = self.taskId!
             }
@@ -1851,6 +1864,9 @@ public class GetAgentTaskResponseBody : Tea.TeaModel {
                     }
                 }
                 self.jobs = tmp
+            }
+            if let value = dict["status"] as? String {
+                self.status = value
             }
             if let value = dict["task_id"] as? String {
                 self.taskId = value
@@ -2041,6 +2057,8 @@ public class GetAlertStrategyResponseBody : Tea.TeaModel {
 
         public var id: Int64?
 
+        public var k8sLabel: Bool?
+
         public var name: String?
 
         public var strategy: GetAlertStrategyResponseBody.Data.Strategy?
@@ -2073,6 +2091,9 @@ public class GetAlertStrategyResponseBody : Tea.TeaModel {
             if self.id != nil {
                 map["id"] = self.id!
             }
+            if self.k8sLabel != nil {
+                map["k8sLabel"] = self.k8sLabel!
+            }
             if self.name != nil {
                 map["name"] = self.name!
             }
@@ -2098,6 +2119,9 @@ public class GetAlertStrategyResponseBody : Tea.TeaModel {
             }
             if let value = dict["id"] as? Int64 {
                 self.id = value
+            }
+            if let value = dict["k8sLabel"] as? Bool {
+                self.k8sLabel = value
             }
             if let value = dict["name"] as? String {
                 self.name = value
@@ -8329,6 +8353,8 @@ public class ListAlertStrategiesResponseBody : Tea.TeaModel {
 
         public var id: Int64?
 
+        public var k8sLabel: Bool?
+
         public var name: String?
 
         public var strategy: ListAlertStrategiesResponseBody.Data.Strategy?
@@ -8361,6 +8387,9 @@ public class ListAlertStrategiesResponseBody : Tea.TeaModel {
             if self.id != nil {
                 map["id"] = self.id!
             }
+            if self.k8sLabel != nil {
+                map["k8sLabel"] = self.k8sLabel!
+            }
             if self.name != nil {
                 map["name"] = self.name!
             }
@@ -8386,6 +8415,9 @@ public class ListAlertStrategiesResponseBody : Tea.TeaModel {
             }
             if let value = dict["id"] as? Int64 {
                 self.id = value
+            }
+            if let value = dict["k8sLabel"] as? Bool {
+                self.k8sLabel = value
             }
             if let value = dict["name"] as? String {
                 self.name = value
@@ -13422,6 +13454,8 @@ public class UpdateAlertStrategyRequest : Tea.TeaModel {
 
     public var id: Int64?
 
+    public var k8sLabel: Bool?
+
     public var name: String?
 
     public var strategy: UpdateAlertStrategyRequest.Strategy?
@@ -13447,6 +13481,9 @@ public class UpdateAlertStrategyRequest : Tea.TeaModel {
         if self.id != nil {
             map["id"] = self.id!
         }
+        if self.k8sLabel != nil {
+            map["k8sLabel"] = self.k8sLabel!
+        }
         if self.name != nil {
             map["name"] = self.name!
         }
@@ -13463,6 +13500,9 @@ public class UpdateAlertStrategyRequest : Tea.TeaModel {
         }
         if let value = dict["id"] as? Int64 {
             self.id = value
+        }
+        if let value = dict["k8sLabel"] as? Bool {
+            self.k8sLabel = value
         }
         if let value = dict["name"] as? String {
             self.name = value
