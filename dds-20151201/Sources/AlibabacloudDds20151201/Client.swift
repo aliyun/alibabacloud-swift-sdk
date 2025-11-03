@@ -2020,6 +2020,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.backupId)) {
             query["BackupId"] = request.backupId ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.backupJobId)) {
+            query["BackupJobId"] = request.backupJobId ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.DBInstanceId)) {
             query["DBInstanceId"] = request.DBInstanceId ?? "";
         }
@@ -2043,6 +2046,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.pageSize)) {
             query["PageSize"] = request.pageSize!;
+        }
+        if (!TeaUtils.Client.isUnset(request.resourceGroupId)) {
+            query["ResourceGroupId"] = request.resourceGroupId ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.resourceOwnerAccount)) {
             query["ResourceOwnerAccount"] = request.resourceOwnerAccount ?? "";
@@ -2087,6 +2093,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.backupId)) {
             query["BackupId"] = request.backupId ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.backupJobId)) {
+            query["BackupJobId"] = request.backupJobId ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.DBInstanceId)) {
             query["DBInstanceId"] = request.DBInstanceId ?? "";
         }
@@ -2110,6 +2119,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.pageSize)) {
             query["PageSize"] = request.pageSize!;
+        }
+        if (!TeaUtils.Client.isUnset(request.resourceGroupId)) {
+            query["ResourceGroupId"] = request.resourceGroupId ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.resourceOwnerAccount)) {
             query["ResourceOwnerAccount"] = request.resourceOwnerAccount ?? "";
@@ -5225,6 +5237,15 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.resourceOwnerId)) {
             query["ResourceOwnerId"] = request.resourceOwnerId!;
+        }
+        if (!TeaUtils.Client.isUnset(request.searchNodeClass)) {
+            query["SearchNodeClass"] = request.searchNodeClass ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.searchNodeCount)) {
+            query["SearchNodeCount"] = request.searchNodeCount!;
+        }
+        if (!TeaUtils.Client.isUnset(request.searchNodeStorage)) {
+            query["SearchNodeStorage"] = request.searchNodeStorage!;
         }
         if (!TeaUtils.Client.isUnset(request.targetHiddenZoneId)) {
             query["TargetHiddenZoneId"] = request.targetHiddenZoneId ?? "";

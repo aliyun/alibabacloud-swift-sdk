@@ -1279,6 +1279,8 @@ public class CreateBackupRequest : Tea.TeaModel {
 public class CreateBackupResponseBody : Tea.TeaModel {
     public var backupId: String?
 
+    public var backupJobId: String?
+
     public var requestId: String?
 
     public override init() {
@@ -1298,6 +1300,9 @@ public class CreateBackupResponseBody : Tea.TeaModel {
         if self.backupId != nil {
             map["BackupId"] = self.backupId!
         }
+        if self.backupJobId != nil {
+            map["BackupJobId"] = self.backupJobId!
+        }
         if self.requestId != nil {
             map["RequestId"] = self.requestId!
         }
@@ -1308,6 +1313,9 @@ public class CreateBackupResponseBody : Tea.TeaModel {
         guard let dict else { return }
         if let value = dict["BackupId"] as? String {
             self.backupId = value
+        }
+        if let value = dict["BackupJobId"] as? String {
+            self.backupJobId = value
         }
         if let value = dict["RequestId"] as? String {
             self.requestId = value
@@ -8776,6 +8784,8 @@ public class DescribeBackupTasksResponse : Tea.TeaModel {
 public class DescribeBackupsRequest : Tea.TeaModel {
     public var backupId: String?
 
+    public var backupJobId: String?
+
     public var DBInstanceId: String?
 
     public var destRegion: String?
@@ -8791,6 +8801,8 @@ public class DescribeBackupsRequest : Tea.TeaModel {
     public var pageNumber: Int32?
 
     public var pageSize: Int32?
+
+    public var resourceGroupId: String?
 
     public var resourceOwnerAccount: String?
 
@@ -8817,6 +8829,9 @@ public class DescribeBackupsRequest : Tea.TeaModel {
         if self.backupId != nil {
             map["BackupId"] = self.backupId!
         }
+        if self.backupJobId != nil {
+            map["BackupJobId"] = self.backupJobId!
+        }
         if self.DBInstanceId != nil {
             map["DBInstanceId"] = self.DBInstanceId!
         }
@@ -8841,6 +8856,9 @@ public class DescribeBackupsRequest : Tea.TeaModel {
         if self.pageSize != nil {
             map["PageSize"] = self.pageSize!
         }
+        if self.resourceGroupId != nil {
+            map["ResourceGroupId"] = self.resourceGroupId!
+        }
         if self.resourceOwnerAccount != nil {
             map["ResourceOwnerAccount"] = self.resourceOwnerAccount!
         }
@@ -8860,6 +8878,9 @@ public class DescribeBackupsRequest : Tea.TeaModel {
         guard let dict else { return }
         if let value = dict["BackupId"] as? String {
             self.backupId = value
+        }
+        if let value = dict["BackupJobId"] as? String {
+            self.backupJobId = value
         }
         if let value = dict["DBInstanceId"] as? String {
             self.DBInstanceId = value
@@ -8884,6 +8905,9 @@ public class DescribeBackupsRequest : Tea.TeaModel {
         }
         if let value = dict["PageSize"] as? Int32 {
             self.pageSize = value
+        }
+        if let value = dict["ResourceGroupId"] as? String {
+            self.resourceGroupId = value
         }
         if let value = dict["ResourceOwnerAccount"] as? String {
             self.resourceOwnerAccount = value
@@ -9221,6 +9245,8 @@ public class DescribeBackupsResponse : Tea.TeaModel {
 public class DescribeClusterBackupsRequest : Tea.TeaModel {
     public var backupId: String?
 
+    public var backupJobId: String?
+
     public var DBInstanceId: String?
 
     public var destRegion: String?
@@ -9236,6 +9262,8 @@ public class DescribeClusterBackupsRequest : Tea.TeaModel {
     public var pageNo: Int32?
 
     public var pageSize: Int32?
+
+    public var resourceGroupId: String?
 
     public var resourceOwnerAccount: String?
 
@@ -9262,6 +9290,9 @@ public class DescribeClusterBackupsRequest : Tea.TeaModel {
         if self.backupId != nil {
             map["BackupId"] = self.backupId!
         }
+        if self.backupJobId != nil {
+            map["BackupJobId"] = self.backupJobId!
+        }
         if self.DBInstanceId != nil {
             map["DBInstanceId"] = self.DBInstanceId!
         }
@@ -9286,6 +9317,9 @@ public class DescribeClusterBackupsRequest : Tea.TeaModel {
         if self.pageSize != nil {
             map["PageSize"] = self.pageSize!
         }
+        if self.resourceGroupId != nil {
+            map["ResourceGroupId"] = self.resourceGroupId!
+        }
         if self.resourceOwnerAccount != nil {
             map["ResourceOwnerAccount"] = self.resourceOwnerAccount!
         }
@@ -9305,6 +9339,9 @@ public class DescribeClusterBackupsRequest : Tea.TeaModel {
         guard let dict else { return }
         if let value = dict["BackupId"] as? String {
             self.backupId = value
+        }
+        if let value = dict["BackupJobId"] as? String {
+            self.backupJobId = value
         }
         if let value = dict["DBInstanceId"] as? String {
             self.DBInstanceId = value
@@ -9329,6 +9366,9 @@ public class DescribeClusterBackupsRequest : Tea.TeaModel {
         }
         if let value = dict["PageSize"] as? Int32 {
             self.pageSize = value
+        }
+        if let value = dict["ResourceGroupId"] as? String {
+            self.resourceGroupId = value
         }
         if let value = dict["ResourceOwnerAccount"] as? String {
             self.resourceOwnerAccount = value
@@ -9821,6 +9861,8 @@ public class DescribeClusterRecoverTimeRequest : Tea.TeaModel {
 
     public var ownerId: Int64?
 
+    public var resourceGroupId: String?
+
     public var resourceOwnerAccount: String?
 
     public var resourceOwnerId: Int64?
@@ -9853,6 +9895,9 @@ public class DescribeClusterRecoverTimeRequest : Tea.TeaModel {
         if self.ownerId != nil {
             map["OwnerId"] = self.ownerId!
         }
+        if self.resourceGroupId != nil {
+            map["ResourceGroupId"] = self.resourceGroupId!
+        }
         if self.resourceOwnerAccount != nil {
             map["ResourceOwnerAccount"] = self.resourceOwnerAccount!
         }
@@ -9878,6 +9923,9 @@ public class DescribeClusterRecoverTimeRequest : Tea.TeaModel {
         }
         if let value = dict["OwnerId"] as? Int64 {
             self.ownerId = value
+        }
+        if let value = dict["ResourceGroupId"] as? String {
+            self.resourceGroupId = value
         }
         if let value = dict["ResourceOwnerAccount"] as? String {
             self.resourceOwnerAccount = value
@@ -10934,6 +10982,12 @@ public class DescribeDBInstanceAttributeResponseBody : Tea.TeaModel {
 
             public var resourceGroupId: String?
 
+            public var searchNodeClass: String?
+
+            public var searchNodeCount: Int32?
+
+            public var searchNodeStorage: Int32?
+
             public var secondaryZoneId: String?
 
             public var shardList: DescribeDBInstanceAttributeResponseBody.DBInstances.DBInstance.ShardList?
@@ -11099,6 +11153,15 @@ public class DescribeDBInstanceAttributeResponseBody : Tea.TeaModel {
                 }
                 if self.resourceGroupId != nil {
                     map["ResourceGroupId"] = self.resourceGroupId!
+                }
+                if self.searchNodeClass != nil {
+                    map["SearchNodeClass"] = self.searchNodeClass!
+                }
+                if self.searchNodeCount != nil {
+                    map["SearchNodeCount"] = self.searchNodeCount!
+                }
+                if self.searchNodeStorage != nil {
+                    map["SearchNodeStorage"] = self.searchNodeStorage!
                 }
                 if self.secondaryZoneId != nil {
                     map["SecondaryZoneId"] = self.secondaryZoneId!
@@ -11269,6 +11332,15 @@ public class DescribeDBInstanceAttributeResponseBody : Tea.TeaModel {
                 }
                 if let value = dict["ResourceGroupId"] as? String {
                     self.resourceGroupId = value
+                }
+                if let value = dict["SearchNodeClass"] as? String {
+                    self.searchNodeClass = value
+                }
+                if let value = dict["SearchNodeCount"] as? Int32 {
+                    self.searchNodeCount = value
+                }
+                if let value = dict["SearchNodeStorage"] as? Int32 {
+                    self.searchNodeStorage = value
                 }
                 if let value = dict["SecondaryZoneId"] as? String {
                     self.secondaryZoneId = value
@@ -16559,6 +16631,8 @@ public class DescribeInstanceRecoverTimeRequest : Tea.TeaModel {
 
     public var ownerId: Int64?
 
+    public var resourceGroupId: String?
+
     public var resourceOwnerAccount: String?
 
     public var resourceOwnerId: Int64?
@@ -16593,6 +16667,9 @@ public class DescribeInstanceRecoverTimeRequest : Tea.TeaModel {
         if self.ownerId != nil {
             map["OwnerId"] = self.ownerId!
         }
+        if self.resourceGroupId != nil {
+            map["ResourceGroupId"] = self.resourceGroupId!
+        }
         if self.resourceOwnerAccount != nil {
             map["ResourceOwnerAccount"] = self.resourceOwnerAccount!
         }
@@ -16621,6 +16698,9 @@ public class DescribeInstanceRecoverTimeRequest : Tea.TeaModel {
         }
         if let value = dict["OwnerId"] as? Int64 {
             self.ownerId = value
+        }
+        if let value = dict["ResourceGroupId"] as? String {
+            self.resourceGroupId = value
         }
         if let value = dict["ResourceOwnerAccount"] as? String {
             self.resourceOwnerAccount = value
@@ -28618,6 +28698,12 @@ public class ModifyDBInstanceSpecRequest : Tea.TeaModel {
 
     public var resourceOwnerId: Int64?
 
+    public var searchNodeClass: String?
+
+    public var searchNodeCount: Int64?
+
+    public var searchNodeStorage: Int64?
+
     public var targetHiddenZoneId: String?
 
     public var targetSecondaryZoneId: String?
@@ -28685,6 +28771,15 @@ public class ModifyDBInstanceSpecRequest : Tea.TeaModel {
         if self.resourceOwnerId != nil {
             map["ResourceOwnerId"] = self.resourceOwnerId!
         }
+        if self.searchNodeClass != nil {
+            map["SearchNodeClass"] = self.searchNodeClass!
+        }
+        if self.searchNodeCount != nil {
+            map["SearchNodeCount"] = self.searchNodeCount!
+        }
+        if self.searchNodeStorage != nil {
+            map["SearchNodeStorage"] = self.searchNodeStorage!
+        }
         if self.targetHiddenZoneId != nil {
             map["TargetHiddenZoneId"] = self.targetHiddenZoneId!
         }
@@ -28746,6 +28841,15 @@ public class ModifyDBInstanceSpecRequest : Tea.TeaModel {
         }
         if let value = dict["ResourceOwnerId"] as? Int64 {
             self.resourceOwnerId = value
+        }
+        if let value = dict["SearchNodeClass"] as? String {
+            self.searchNodeClass = value
+        }
+        if let value = dict["SearchNodeCount"] as? Int64 {
+            self.searchNodeCount = value
+        }
+        if let value = dict["SearchNodeStorage"] as? Int64 {
+            self.searchNodeStorage = value
         }
         if let value = dict["TargetHiddenZoneId"] as? String {
             self.targetHiddenZoneId = value
