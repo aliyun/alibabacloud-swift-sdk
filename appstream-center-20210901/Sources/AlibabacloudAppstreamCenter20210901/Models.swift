@@ -4372,6 +4372,8 @@ public class GetConnectionTicketRequest : Tea.TeaModel {
 
     public var endUserId: String?
 
+    public var environmentConfig: String?
+
     public var productType: String?
 
     public var taskId: String?
@@ -4420,6 +4422,9 @@ public class GetConnectionTicketRequest : Tea.TeaModel {
         if self.endUserId != nil {
             map["EndUserId"] = self.endUserId!
         }
+        if self.environmentConfig != nil {
+            map["EnvironmentConfig"] = self.environmentConfig!
+        }
         if self.productType != nil {
             map["ProductType"] = self.productType!
         }
@@ -4460,6 +4465,9 @@ public class GetConnectionTicketRequest : Tea.TeaModel {
         }
         if let value = dict["EndUserId"] as? String {
             self.endUserId = value
+        }
+        if let value = dict["EnvironmentConfig"] as? String {
+            self.environmentConfig = value
         }
         if let value = dict["ProductType"] as? String {
             self.productType = value
