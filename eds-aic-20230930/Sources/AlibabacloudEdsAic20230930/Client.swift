@@ -745,6 +745,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.ossBucketName)) {
             query["OssBucketName"] = request.ossBucketName ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.screenshotId)) {
+            query["ScreenshotId"] = request.screenshotId ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.skipCheckPolicyConfig)) {
             query["SkipCheckPolicyConfig"] = request.skipCheckPolicyConfig ?? "";
         }

@@ -4523,6 +4523,8 @@ public class CreateScreenshotRequest : Tea.TeaModel {
 
     public var ossBucketName: String?
 
+    public var screenshotId: String?
+
     public var skipCheckPolicyConfig: String?
 
     public override init() {
@@ -4545,6 +4547,9 @@ public class CreateScreenshotRequest : Tea.TeaModel {
         if self.ossBucketName != nil {
             map["OssBucketName"] = self.ossBucketName!
         }
+        if self.screenshotId != nil {
+            map["ScreenshotId"] = self.screenshotId!
+        }
         if self.skipCheckPolicyConfig != nil {
             map["SkipCheckPolicyConfig"] = self.skipCheckPolicyConfig!
         }
@@ -4559,6 +4564,9 @@ public class CreateScreenshotRequest : Tea.TeaModel {
         if let value = dict["OssBucketName"] as? String {
             self.ossBucketName = value
         }
+        if let value = dict["ScreenshotId"] as? String {
+            self.screenshotId = value
+        }
         if let value = dict["SkipCheckPolicyConfig"] as? String {
             self.skipCheckPolicyConfig = value
         }
@@ -4568,6 +4576,8 @@ public class CreateScreenshotRequest : Tea.TeaModel {
 public class CreateScreenshotResponseBody : Tea.TeaModel {
     public class Tasks : Tea.TeaModel {
         public var androidInstanceId: String?
+
+        public var screenshotId: String?
 
         public var taskId: String?
 
@@ -4588,6 +4598,9 @@ public class CreateScreenshotResponseBody : Tea.TeaModel {
             if self.androidInstanceId != nil {
                 map["AndroidInstanceId"] = self.androidInstanceId!
             }
+            if self.screenshotId != nil {
+                map["ScreenshotId"] = self.screenshotId!
+            }
             if self.taskId != nil {
                 map["TaskId"] = self.taskId!
             }
@@ -4598,6 +4611,9 @@ public class CreateScreenshotResponseBody : Tea.TeaModel {
             guard let dict else { return }
             if let value = dict["AndroidInstanceId"] as? String {
                 self.androidInstanceId = value
+            }
+            if let value = dict["ScreenshotId"] as? String {
+                self.screenshotId = value
             }
             if let value = dict["TaskId"] as? String {
                 self.taskId = value
@@ -6267,6 +6283,96 @@ public class DescribeAndroidInstanceGroupsRequest : Tea.TeaModel {
 
 public class DescribeAndroidInstanceGroupsResponseBody : Tea.TeaModel {
     public class InstanceGroupModel : Tea.TeaModel {
+        public class BindQosRules : Tea.TeaModel {
+            public class InstanceQosRule : Tea.TeaModel {
+                public var instanceId: String?
+
+                public var qosRuleId: String?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.instanceId != nil {
+                        map["InstanceId"] = self.instanceId!
+                    }
+                    if self.qosRuleId != nil {
+                        map["QosRuleId"] = self.qosRuleId!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                    guard let dict else { return }
+                    if let value = dict["InstanceId"] as? String {
+                        self.instanceId = value
+                    }
+                    if let value = dict["QosRuleId"] as? String {
+                        self.qosRuleId = value
+                    }
+                }
+            }
+            public var instanceQosRule: [DescribeAndroidInstanceGroupsResponseBody.InstanceGroupModel.BindQosRules.InstanceQosRule]?
+
+            public var totalCount: Int32?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.instanceQosRule != nil {
+                    var tmp : [Any] = []
+                    for k in self.instanceQosRule! {
+                        tmp.append(k.toMap())
+                    }
+                    map["InstanceQosRule"] = tmp
+                }
+                if self.totalCount != nil {
+                    map["totalCount"] = self.totalCount!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["InstanceQosRule"] as? [Any?] {
+                    var tmp : [DescribeAndroidInstanceGroupsResponseBody.InstanceGroupModel.BindQosRules.InstanceQosRule] = []
+                    for v in value {
+                        if v != nil {
+                            var model = DescribeAndroidInstanceGroupsResponseBody.InstanceGroupModel.BindQosRules.InstanceQosRule()
+                            if v != nil {
+                                model.fromMap(v as? [String: Any?])
+                            }
+                            tmp.append(model)
+                        }
+                    }
+                    self.instanceQosRule = tmp
+                }
+                if let value = dict["totalCount"] as? Int32 {
+                    self.totalCount = value
+                }
+            }
+        }
         public class Disks : Tea.TeaModel {
             public var diskSize: Int32?
 
@@ -6355,6 +6461,8 @@ public class DescribeAndroidInstanceGroupsResponseBody : Tea.TeaModel {
 
         public var bandwidthPackageType: String?
 
+        public var bindQosRules: DescribeAndroidInstanceGroupsResponseBody.InstanceGroupModel.BindQosRules?
+
         public var chargeType: String?
 
         public var cpu: String?
@@ -6415,6 +6523,8 @@ public class DescribeAndroidInstanceGroupsResponseBody : Tea.TeaModel {
 
         public var vSwitchId: String?
 
+        public var zoneId: String?
+
         public override init() {
             super.init()
         }
@@ -6425,6 +6535,7 @@ public class DescribeAndroidInstanceGroupsResponseBody : Tea.TeaModel {
         }
 
         public override func validate() throws -> Void {
+            try self.bindQosRules?.validate()
         }
 
         public override func toMap() -> [String : Any] {
@@ -6446,6 +6557,9 @@ public class DescribeAndroidInstanceGroupsResponseBody : Tea.TeaModel {
             }
             if self.bandwidthPackageType != nil {
                 map["BandwidthPackageType"] = self.bandwidthPackageType!
+            }
+            if self.bindQosRules != nil {
+                map["BindQosRules"] = self.bindQosRules?.toMap()
             }
             if self.chargeType != nil {
                 map["ChargeType"] = self.chargeType!
@@ -6545,6 +6659,9 @@ public class DescribeAndroidInstanceGroupsResponseBody : Tea.TeaModel {
             if self.vSwitchId != nil {
                 map["VSwitchId"] = self.vSwitchId!
             }
+            if self.zoneId != nil {
+                map["ZoneId"] = self.zoneId!
+            }
             return map
         }
 
@@ -6567,6 +6684,11 @@ public class DescribeAndroidInstanceGroupsResponseBody : Tea.TeaModel {
             }
             if let value = dict["BandwidthPackageType"] as? String {
                 self.bandwidthPackageType = value
+            }
+            if let value = dict["BindQosRules"] as? [String: Any?] {
+                var model = DescribeAndroidInstanceGroupsResponseBody.InstanceGroupModel.BindQosRules()
+                model.fromMap(value)
+                self.bindQosRules = model
             }
             if let value = dict["ChargeType"] as? String {
                 self.chargeType = value
@@ -6677,6 +6799,9 @@ public class DescribeAndroidInstanceGroupsResponseBody : Tea.TeaModel {
             }
             if let value = dict["VSwitchId"] as? String {
                 self.vSwitchId = value
+            }
+            if let value = dict["ZoneId"] as? String {
+                self.zoneId = value
             }
         }
     }
