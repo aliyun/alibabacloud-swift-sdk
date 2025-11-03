@@ -214,6 +214,53 @@ public class RepoConfiguration : Tea.TeaModel {
     }
 }
 
+public class RouteItem : Tea.TeaModel {
+    public var endpointType: String?
+
+    public var instanceDomain: String?
+
+    public var storageDomain: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.endpointType != nil {
+            map["EndpointType"] = self.endpointType!
+        }
+        if self.instanceDomain != nil {
+            map["InstanceDomain"] = self.instanceDomain!
+        }
+        if self.storageDomain != nil {
+            map["StorageDomain"] = self.storageDomain!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["EndpointType"] as? String {
+            self.endpointType = value
+        }
+        if let value = dict["InstanceDomain"] as? String {
+            self.instanceDomain = value
+        }
+        if let value = dict["StorageDomain"] as? String {
+            self.storageDomain = value
+        }
+    }
+}
+
 public class CancelArtifactBuildTaskRequest : Tea.TeaModel {
     public var buildTaskId: String?
 
@@ -7704,6 +7751,8 @@ public class GetArtifactSubscriptionRuleResponseBody : Tea.TeaModel {
 
     public var ruleId: String?
 
+    public var sourceDomain: String?
+
     public var sourceNamespaceName: String?
 
     public var sourceProvider: String?
@@ -7764,6 +7813,9 @@ public class GetArtifactSubscriptionRuleResponseBody : Tea.TeaModel {
         if self.ruleId != nil {
             map["RuleId"] = self.ruleId!
         }
+        if self.sourceDomain != nil {
+            map["SourceDomain"] = self.sourceDomain!
+        }
         if self.sourceNamespaceName != nil {
             map["SourceNamespaceName"] = self.sourceNamespaceName!
         }
@@ -7819,6 +7871,9 @@ public class GetArtifactSubscriptionRuleResponseBody : Tea.TeaModel {
         }
         if let value = dict["RuleId"] as? String {
             self.ruleId = value
+        }
+        if let value = dict["SourceDomain"] as? String {
+            self.sourceDomain = value
         }
         if let value = dict["SourceNamespaceName"] as? String {
             self.sourceNamespaceName = value
@@ -13565,6 +13620,8 @@ public class ListArtifactSubscriptionRuleResponseBody : Tea.TeaModel {
 
         public var ruleId: String?
 
+        public var sourceDomain: String?
+
         public var sourceNamespaceName: String?
 
         public var sourceProvider: String?
@@ -13616,6 +13673,9 @@ public class ListArtifactSubscriptionRuleResponseBody : Tea.TeaModel {
             if self.ruleId != nil {
                 map["RuleId"] = self.ruleId!
             }
+            if self.sourceDomain != nil {
+                map["SourceDomain"] = self.sourceDomain!
+            }
             if self.sourceNamespaceName != nil {
                 map["SourceNamespaceName"] = self.sourceNamespaceName!
             }
@@ -13662,6 +13722,9 @@ public class ListArtifactSubscriptionRuleResponseBody : Tea.TeaModel {
             }
             if let value = dict["RuleId"] as? String {
                 self.ruleId = value
+            }
+            if let value = dict["SourceDomain"] as? String {
+                self.sourceDomain = value
             }
             if let value = dict["SourceNamespaceName"] as? String {
                 self.sourceNamespaceName = value
