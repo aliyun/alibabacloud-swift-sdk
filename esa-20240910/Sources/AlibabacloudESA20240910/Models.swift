@@ -12146,6 +12146,8 @@ public class CreateOriginPoolResponse : Tea.TeaModel {
 }
 
 public class CreateOriginProtectionRequest : Tea.TeaModel {
+    public var autoConfirmIPList: String?
+
     public var siteId: Int64?
 
     public override init() {
@@ -12162,6 +12164,9 @@ public class CreateOriginProtectionRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.autoConfirmIPList != nil {
+            map["AutoConfirmIPList"] = self.autoConfirmIPList!
+        }
         if self.siteId != nil {
             map["SiteId"] = self.siteId!
         }
@@ -12170,6 +12175,9 @@ public class CreateOriginProtectionRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["AutoConfirmIPList"] as? String {
+            self.autoConfirmIPList = value
+        }
         if let value = dict["SiteId"] as? Int64 {
             self.siteId = value
         }
@@ -40387,6 +40395,773 @@ public class GetOriginProtectionResponseBody : Tea.TeaModel {
             }
         }
     }
+    public class RegionalCurrentIPWhitelist : Tea.TeaModel {
+        public class RegionalIPv4 : Tea.TeaModel {
+            public var cidr: String?
+
+            public var region: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.cidr != nil {
+                    map["Cidr"] = self.cidr!
+                }
+                if self.region != nil {
+                    map["Region"] = self.region!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["Cidr"] as? String {
+                    self.cidr = value
+                }
+                if let value = dict["Region"] as? String {
+                    self.region = value
+                }
+            }
+        }
+        public class RegionalIPv6 : Tea.TeaModel {
+            public var cidr: String?
+
+            public var region: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.cidr != nil {
+                    map["Cidr"] = self.cidr!
+                }
+                if self.region != nil {
+                    map["Region"] = self.region!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["Cidr"] as? String {
+                    self.cidr = value
+                }
+                if let value = dict["Region"] as? String {
+                    self.region = value
+                }
+            }
+        }
+        public var regionalIPv4: [GetOriginProtectionResponseBody.RegionalCurrentIPWhitelist.RegionalIPv4]?
+
+        public var regionalIPv6: [GetOriginProtectionResponseBody.RegionalCurrentIPWhitelist.RegionalIPv6]?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.regionalIPv4 != nil {
+                var tmp : [Any] = []
+                for k in self.regionalIPv4! {
+                    tmp.append(k.toMap())
+                }
+                map["RegionalIPv4"] = tmp
+            }
+            if self.regionalIPv6 != nil {
+                var tmp : [Any] = []
+                for k in self.regionalIPv6! {
+                    tmp.append(k.toMap())
+                }
+                map["RegionalIPv6"] = tmp
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["RegionalIPv4"] as? [Any?] {
+                var tmp : [GetOriginProtectionResponseBody.RegionalCurrentIPWhitelist.RegionalIPv4] = []
+                for v in value {
+                    if v != nil {
+                        var model = GetOriginProtectionResponseBody.RegionalCurrentIPWhitelist.RegionalIPv4()
+                        if v != nil {
+                            model.fromMap(v as? [String: Any?])
+                        }
+                        tmp.append(model)
+                    }
+                }
+                self.regionalIPv4 = tmp
+            }
+            if let value = dict["RegionalIPv6"] as? [Any?] {
+                var tmp : [GetOriginProtectionResponseBody.RegionalCurrentIPWhitelist.RegionalIPv6] = []
+                for v in value {
+                    if v != nil {
+                        var model = GetOriginProtectionResponseBody.RegionalCurrentIPWhitelist.RegionalIPv6()
+                        if v != nil {
+                            model.fromMap(v as? [String: Any?])
+                        }
+                        tmp.append(model)
+                    }
+                }
+                self.regionalIPv6 = tmp
+            }
+        }
+    }
+    public class RegionalDiffIPWhitelist : Tea.TeaModel {
+        public class AddedIPRegionWhitelist : Tea.TeaModel {
+            public class RegionalIPv4 : Tea.TeaModel {
+                public var cidr: String?
+
+                public var region: String?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.cidr != nil {
+                        map["Cidr"] = self.cidr!
+                    }
+                    if self.region != nil {
+                        map["Region"] = self.region!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                    guard let dict else { return }
+                    if let value = dict["Cidr"] as? String {
+                        self.cidr = value
+                    }
+                    if let value = dict["Region"] as? String {
+                        self.region = value
+                    }
+                }
+            }
+            public class RegionalIPv6 : Tea.TeaModel {
+                public var cidr: String?
+
+                public var region: String?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.cidr != nil {
+                        map["Cidr"] = self.cidr!
+                    }
+                    if self.region != nil {
+                        map["Region"] = self.region!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                    guard let dict else { return }
+                    if let value = dict["Cidr"] as? String {
+                        self.cidr = value
+                    }
+                    if let value = dict["Region"] as? String {
+                        self.region = value
+                    }
+                }
+            }
+            public var regionalIPv4: [GetOriginProtectionResponseBody.RegionalDiffIPWhitelist.AddedIPRegionWhitelist.RegionalIPv4]?
+
+            public var regionalIPv6: [GetOriginProtectionResponseBody.RegionalDiffIPWhitelist.AddedIPRegionWhitelist.RegionalIPv6]?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.regionalIPv4 != nil {
+                    var tmp : [Any] = []
+                    for k in self.regionalIPv4! {
+                        tmp.append(k.toMap())
+                    }
+                    map["RegionalIPv4"] = tmp
+                }
+                if self.regionalIPv6 != nil {
+                    var tmp : [Any] = []
+                    for k in self.regionalIPv6! {
+                        tmp.append(k.toMap())
+                    }
+                    map["RegionalIPv6"] = tmp
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["RegionalIPv4"] as? [Any?] {
+                    var tmp : [GetOriginProtectionResponseBody.RegionalDiffIPWhitelist.AddedIPRegionWhitelist.RegionalIPv4] = []
+                    for v in value {
+                        if v != nil {
+                            var model = GetOriginProtectionResponseBody.RegionalDiffIPWhitelist.AddedIPRegionWhitelist.RegionalIPv4()
+                            if v != nil {
+                                model.fromMap(v as? [String: Any?])
+                            }
+                            tmp.append(model)
+                        }
+                    }
+                    self.regionalIPv4 = tmp
+                }
+                if let value = dict["RegionalIPv6"] as? [Any?] {
+                    var tmp : [GetOriginProtectionResponseBody.RegionalDiffIPWhitelist.AddedIPRegionWhitelist.RegionalIPv6] = []
+                    for v in value {
+                        if v != nil {
+                            var model = GetOriginProtectionResponseBody.RegionalDiffIPWhitelist.AddedIPRegionWhitelist.RegionalIPv6()
+                            if v != nil {
+                                model.fromMap(v as? [String: Any?])
+                            }
+                            tmp.append(model)
+                        }
+                    }
+                    self.regionalIPv6 = tmp
+                }
+            }
+        }
+        public class NoChangeIpWhitelist : Tea.TeaModel {
+            public class RegionalIPv4 : Tea.TeaModel {
+                public var cidr: String?
+
+                public var region: String?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.cidr != nil {
+                        map["Cidr"] = self.cidr!
+                    }
+                    if self.region != nil {
+                        map["Region"] = self.region!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                    guard let dict else { return }
+                    if let value = dict["Cidr"] as? String {
+                        self.cidr = value
+                    }
+                    if let value = dict["Region"] as? String {
+                        self.region = value
+                    }
+                }
+            }
+            public class RegionalIPv6 : Tea.TeaModel {
+                public var cidr: String?
+
+                public var region: String?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.cidr != nil {
+                        map["Cidr"] = self.cidr!
+                    }
+                    if self.region != nil {
+                        map["Region"] = self.region!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                    guard let dict else { return }
+                    if let value = dict["Cidr"] as? String {
+                        self.cidr = value
+                    }
+                    if let value = dict["Region"] as? String {
+                        self.region = value
+                    }
+                }
+            }
+            public var regionalIPv4: [GetOriginProtectionResponseBody.RegionalDiffIPWhitelist.NoChangeIpWhitelist.RegionalIPv4]?
+
+            public var regionalIPv6: [GetOriginProtectionResponseBody.RegionalDiffIPWhitelist.NoChangeIpWhitelist.RegionalIPv6]?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.regionalIPv4 != nil {
+                    var tmp : [Any] = []
+                    for k in self.regionalIPv4! {
+                        tmp.append(k.toMap())
+                    }
+                    map["RegionalIPv4"] = tmp
+                }
+                if self.regionalIPv6 != nil {
+                    var tmp : [Any] = []
+                    for k in self.regionalIPv6! {
+                        tmp.append(k.toMap())
+                    }
+                    map["RegionalIPv6"] = tmp
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["RegionalIPv4"] as? [Any?] {
+                    var tmp : [GetOriginProtectionResponseBody.RegionalDiffIPWhitelist.NoChangeIpWhitelist.RegionalIPv4] = []
+                    for v in value {
+                        if v != nil {
+                            var model = GetOriginProtectionResponseBody.RegionalDiffIPWhitelist.NoChangeIpWhitelist.RegionalIPv4()
+                            if v != nil {
+                                model.fromMap(v as? [String: Any?])
+                            }
+                            tmp.append(model)
+                        }
+                    }
+                    self.regionalIPv4 = tmp
+                }
+                if let value = dict["RegionalIPv6"] as? [Any?] {
+                    var tmp : [GetOriginProtectionResponseBody.RegionalDiffIPWhitelist.NoChangeIpWhitelist.RegionalIPv6] = []
+                    for v in value {
+                        if v != nil {
+                            var model = GetOriginProtectionResponseBody.RegionalDiffIPWhitelist.NoChangeIpWhitelist.RegionalIPv6()
+                            if v != nil {
+                                model.fromMap(v as? [String: Any?])
+                            }
+                            tmp.append(model)
+                        }
+                    }
+                    self.regionalIPv6 = tmp
+                }
+            }
+        }
+        public class RemovedIPRegionWhitelist : Tea.TeaModel {
+            public class RegionalIPv4 : Tea.TeaModel {
+                public var cidr: String?
+
+                public var region: String?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.cidr != nil {
+                        map["Cidr"] = self.cidr!
+                    }
+                    if self.region != nil {
+                        map["Region"] = self.region!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                    guard let dict else { return }
+                    if let value = dict["Cidr"] as? String {
+                        self.cidr = value
+                    }
+                    if let value = dict["Region"] as? String {
+                        self.region = value
+                    }
+                }
+            }
+            public class RegionalIPv6 : Tea.TeaModel {
+                public var cidr: String?
+
+                public var region: String?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.cidr != nil {
+                        map["Cidr"] = self.cidr!
+                    }
+                    if self.region != nil {
+                        map["Region"] = self.region!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                    guard let dict else { return }
+                    if let value = dict["Cidr"] as? String {
+                        self.cidr = value
+                    }
+                    if let value = dict["Region"] as? String {
+                        self.region = value
+                    }
+                }
+            }
+            public var regionalIPv4: [GetOriginProtectionResponseBody.RegionalDiffIPWhitelist.RemovedIPRegionWhitelist.RegionalIPv4]?
+
+            public var regionalIPv6: [GetOriginProtectionResponseBody.RegionalDiffIPWhitelist.RemovedIPRegionWhitelist.RegionalIPv6]?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.regionalIPv4 != nil {
+                    var tmp : [Any] = []
+                    for k in self.regionalIPv4! {
+                        tmp.append(k.toMap())
+                    }
+                    map["RegionalIPv4"] = tmp
+                }
+                if self.regionalIPv6 != nil {
+                    var tmp : [Any] = []
+                    for k in self.regionalIPv6! {
+                        tmp.append(k.toMap())
+                    }
+                    map["RegionalIPv6"] = tmp
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["RegionalIPv4"] as? [Any?] {
+                    var tmp : [GetOriginProtectionResponseBody.RegionalDiffIPWhitelist.RemovedIPRegionWhitelist.RegionalIPv4] = []
+                    for v in value {
+                        if v != nil {
+                            var model = GetOriginProtectionResponseBody.RegionalDiffIPWhitelist.RemovedIPRegionWhitelist.RegionalIPv4()
+                            if v != nil {
+                                model.fromMap(v as? [String: Any?])
+                            }
+                            tmp.append(model)
+                        }
+                    }
+                    self.regionalIPv4 = tmp
+                }
+                if let value = dict["RegionalIPv6"] as? [Any?] {
+                    var tmp : [GetOriginProtectionResponseBody.RegionalDiffIPWhitelist.RemovedIPRegionWhitelist.RegionalIPv6] = []
+                    for v in value {
+                        if v != nil {
+                            var model = GetOriginProtectionResponseBody.RegionalDiffIPWhitelist.RemovedIPRegionWhitelist.RegionalIPv6()
+                            if v != nil {
+                                model.fromMap(v as? [String: Any?])
+                            }
+                            tmp.append(model)
+                        }
+                    }
+                    self.regionalIPv6 = tmp
+                }
+            }
+        }
+        public var addedIPRegionWhitelist: GetOriginProtectionResponseBody.RegionalDiffIPWhitelist.AddedIPRegionWhitelist?
+
+        public var noChangeIpWhitelist: GetOriginProtectionResponseBody.RegionalDiffIPWhitelist.NoChangeIpWhitelist?
+
+        public var removedIPRegionWhitelist: GetOriginProtectionResponseBody.RegionalDiffIPWhitelist.RemovedIPRegionWhitelist?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+            try self.addedIPRegionWhitelist?.validate()
+            try self.noChangeIpWhitelist?.validate()
+            try self.removedIPRegionWhitelist?.validate()
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.addedIPRegionWhitelist != nil {
+                map["AddedIPRegionWhitelist"] = self.addedIPRegionWhitelist?.toMap()
+            }
+            if self.noChangeIpWhitelist != nil {
+                map["NoChangeIpWhitelist"] = self.noChangeIpWhitelist?.toMap()
+            }
+            if self.removedIPRegionWhitelist != nil {
+                map["RemovedIPRegionWhitelist"] = self.removedIPRegionWhitelist?.toMap()
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["AddedIPRegionWhitelist"] as? [String: Any?] {
+                var model = GetOriginProtectionResponseBody.RegionalDiffIPWhitelist.AddedIPRegionWhitelist()
+                model.fromMap(value)
+                self.addedIPRegionWhitelist = model
+            }
+            if let value = dict["NoChangeIpWhitelist"] as? [String: Any?] {
+                var model = GetOriginProtectionResponseBody.RegionalDiffIPWhitelist.NoChangeIpWhitelist()
+                model.fromMap(value)
+                self.noChangeIpWhitelist = model
+            }
+            if let value = dict["RemovedIPRegionWhitelist"] as? [String: Any?] {
+                var model = GetOriginProtectionResponseBody.RegionalDiffIPWhitelist.RemovedIPRegionWhitelist()
+                model.fromMap(value)
+                self.removedIPRegionWhitelist = model
+            }
+        }
+    }
+    public class RegionalLatestIPWhitelist : Tea.TeaModel {
+        public class RegionalIPv4 : Tea.TeaModel {
+            public var cidr: String?
+
+            public var region: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.cidr != nil {
+                    map["Cidr"] = self.cidr!
+                }
+                if self.region != nil {
+                    map["Region"] = self.region!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["Cidr"] as? String {
+                    self.cidr = value
+                }
+                if let value = dict["Region"] as? String {
+                    self.region = value
+                }
+            }
+        }
+        public class RegionalIPv6 : Tea.TeaModel {
+            public var cidr: String?
+
+            public var region: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.cidr != nil {
+                    map["Cidr"] = self.cidr!
+                }
+                if self.region != nil {
+                    map["Region"] = self.region!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["Cidr"] as? String {
+                    self.cidr = value
+                }
+                if let value = dict["Region"] as? String {
+                    self.region = value
+                }
+            }
+        }
+        public var regionalIPv4: [GetOriginProtectionResponseBody.RegionalLatestIPWhitelist.RegionalIPv4]?
+
+        public var regionalIPv6: [GetOriginProtectionResponseBody.RegionalLatestIPWhitelist.RegionalIPv6]?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.regionalIPv4 != nil {
+                var tmp : [Any] = []
+                for k in self.regionalIPv4! {
+                    tmp.append(k.toMap())
+                }
+                map["RegionalIPv4"] = tmp
+            }
+            if self.regionalIPv6 != nil {
+                var tmp : [Any] = []
+                for k in self.regionalIPv6! {
+                    tmp.append(k.toMap())
+                }
+                map["RegionalIPv6"] = tmp
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["RegionalIPv4"] as? [Any?] {
+                var tmp : [GetOriginProtectionResponseBody.RegionalLatestIPWhitelist.RegionalIPv4] = []
+                for v in value {
+                    if v != nil {
+                        var model = GetOriginProtectionResponseBody.RegionalLatestIPWhitelist.RegionalIPv4()
+                        if v != nil {
+                            model.fromMap(v as? [String: Any?])
+                        }
+                        tmp.append(model)
+                    }
+                }
+                self.regionalIPv4 = tmp
+            }
+            if let value = dict["RegionalIPv6"] as? [Any?] {
+                var tmp : [GetOriginProtectionResponseBody.RegionalLatestIPWhitelist.RegionalIPv6] = []
+                for v in value {
+                    if v != nil {
+                        var model = GetOriginProtectionResponseBody.RegionalLatestIPWhitelist.RegionalIPv6()
+                        if v != nil {
+                            model.fromMap(v as? [String: Any?])
+                        }
+                        tmp.append(model)
+                    }
+                }
+                self.regionalIPv6 = tmp
+            }
+        }
+    }
+    public var autoConfirmIPList: String?
+
     public var currentIPWhitelist: GetOriginProtectionResponseBody.CurrentIPWhitelist?
 
     public var diffIPWhitelist: GetOriginProtectionResponseBody.DiffIPWhitelist?
@@ -40398,6 +41173,12 @@ public class GetOriginProtectionResponseBody : Tea.TeaModel {
     public var originConverge: String?
 
     public var originProtection: String?
+
+    public var regionalCurrentIPWhitelist: GetOriginProtectionResponseBody.RegionalCurrentIPWhitelist?
+
+    public var regionalDiffIPWhitelist: GetOriginProtectionResponseBody.RegionalDiffIPWhitelist?
+
+    public var regionalLatestIPWhitelist: GetOriginProtectionResponseBody.RegionalLatestIPWhitelist?
 
     public var requestId: String?
 
@@ -40416,10 +41197,16 @@ public class GetOriginProtectionResponseBody : Tea.TeaModel {
         try self.currentIPWhitelist?.validate()
         try self.diffIPWhitelist?.validate()
         try self.latestIPWhitelist?.validate()
+        try self.regionalCurrentIPWhitelist?.validate()
+        try self.regionalDiffIPWhitelist?.validate()
+        try self.regionalLatestIPWhitelist?.validate()
     }
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.autoConfirmIPList != nil {
+            map["AutoConfirmIPList"] = self.autoConfirmIPList!
+        }
         if self.currentIPWhitelist != nil {
             map["CurrentIPWhitelist"] = self.currentIPWhitelist?.toMap()
         }
@@ -40438,6 +41225,15 @@ public class GetOriginProtectionResponseBody : Tea.TeaModel {
         if self.originProtection != nil {
             map["OriginProtection"] = self.originProtection!
         }
+        if self.regionalCurrentIPWhitelist != nil {
+            map["RegionalCurrentIPWhitelist"] = self.regionalCurrentIPWhitelist?.toMap()
+        }
+        if self.regionalDiffIPWhitelist != nil {
+            map["RegionalDiffIPWhitelist"] = self.regionalDiffIPWhitelist?.toMap()
+        }
+        if self.regionalLatestIPWhitelist != nil {
+            map["RegionalLatestIPWhitelist"] = self.regionalLatestIPWhitelist?.toMap()
+        }
         if self.requestId != nil {
             map["RequestId"] = self.requestId!
         }
@@ -40449,6 +41245,9 @@ public class GetOriginProtectionResponseBody : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["AutoConfirmIPList"] as? String {
+            self.autoConfirmIPList = value
+        }
         if let value = dict["CurrentIPWhitelist"] as? [String: Any?] {
             var model = GetOriginProtectionResponseBody.CurrentIPWhitelist()
             model.fromMap(value)
@@ -40472,6 +41271,21 @@ public class GetOriginProtectionResponseBody : Tea.TeaModel {
         }
         if let value = dict["OriginProtection"] as? String {
             self.originProtection = value
+        }
+        if let value = dict["RegionalCurrentIPWhitelist"] as? [String: Any?] {
+            var model = GetOriginProtectionResponseBody.RegionalCurrentIPWhitelist()
+            model.fromMap(value)
+            self.regionalCurrentIPWhitelist = model
+        }
+        if let value = dict["RegionalDiffIPWhitelist"] as? [String: Any?] {
+            var model = GetOriginProtectionResponseBody.RegionalDiffIPWhitelist()
+            model.fromMap(value)
+            self.regionalDiffIPWhitelist = model
+        }
+        if let value = dict["RegionalLatestIPWhitelist"] as? [String: Any?] {
+            var model = GetOriginProtectionResponseBody.RegionalLatestIPWhitelist()
+            model.fromMap(value)
+            self.regionalLatestIPWhitelist = model
         }
         if let value = dict["RequestId"] as? String {
             self.requestId = value
@@ -79405,6 +80219,8 @@ public class UpdateOriginPoolResponse : Tea.TeaModel {
 }
 
 public class UpdateOriginProtectionRequest : Tea.TeaModel {
+    public var autoConfirmIPList: String?
+
     public var originConverge: String?
 
     public var siteId: Int64?
@@ -79423,6 +80239,9 @@ public class UpdateOriginProtectionRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.autoConfirmIPList != nil {
+            map["AutoConfirmIPList"] = self.autoConfirmIPList!
+        }
         if self.originConverge != nil {
             map["OriginConverge"] = self.originConverge!
         }
@@ -79434,6 +80253,9 @@ public class UpdateOriginProtectionRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["AutoConfirmIPList"] as? String {
+            self.autoConfirmIPList = value
+        }
         if let value = dict["OriginConverge"] as? String {
             self.originConverge = value
         }

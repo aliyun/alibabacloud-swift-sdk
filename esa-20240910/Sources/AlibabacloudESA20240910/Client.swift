@@ -1968,6 +1968,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func createOriginProtectionWithOptions(_ request: CreateOriginProtectionRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> CreateOriginProtectionResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.autoConfirmIPList)) {
+            query["AutoConfirmIPList"] = request.autoConfirmIPList ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.siteId)) {
             query["SiteId"] = request.siteId!;
         }
@@ -12255,6 +12258,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func updateOriginProtectionWithOptions(_ request: UpdateOriginProtectionRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> UpdateOriginProtectionResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.autoConfirmIPList)) {
+            query["AutoConfirmIPList"] = request.autoConfirmIPList ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.originConverge)) {
             query["OriginConverge"] = request.originConverge ?? "";
         }
