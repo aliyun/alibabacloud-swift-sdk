@@ -303,6 +303,8 @@ public class AiServiceConfig : Tea.TeaModel {
             }
         }
     }
+    public var apiKeyGenerateMode: String?
+
     public var address: String?
 
     public var apiKeys: [String]?
@@ -333,6 +335,9 @@ public class AiServiceConfig : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.apiKeyGenerateMode != nil {
+            map["ApiKeyGenerateMode"] = self.apiKeyGenerateMode!
+        }
         if self.address != nil {
             map["address"] = self.address!
         }
@@ -359,6 +364,9 @@ public class AiServiceConfig : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["ApiKeyGenerateMode"] as? String {
+            self.apiKeyGenerateMode = value
+        }
         if let value = dict["address"] as? String {
             self.address = value
         }
@@ -2364,6 +2372,8 @@ public class HttpApiApiInfo : Tea.TeaModel {
 
     public var ingressInfo: HttpApiApiInfo.IngressInfo?
 
+    public var modelCategory: String?
+
     public var name: String?
 
     public var protocols: [String]?
@@ -2435,6 +2445,9 @@ public class HttpApiApiInfo : Tea.TeaModel {
         }
         if self.ingressInfo != nil {
             map["ingressInfo"] = self.ingressInfo?.toMap()
+        }
+        if self.modelCategory != nil {
+            map["modelCategory"] = self.modelCategory!
         }
         if self.name != nil {
             map["name"] = self.name!
@@ -2520,6 +2533,9 @@ public class HttpApiApiInfo : Tea.TeaModel {
             var model = HttpApiApiInfo.IngressInfo()
             model.fromMap(value)
             self.ingressInfo = model
+        }
+        if let value = dict["modelCategory"] as? String {
+            self.modelCategory = value
         }
         if let value = dict["name"] as? String {
             self.name = value
@@ -5365,6 +5381,8 @@ public class HttpRoute : Tea.TeaModel {
     }
     public var backend: Backend?
 
+    public var builtin: String?
+
     public var createTimestamp: Int64?
 
     public var deployStatus: String?
@@ -5407,6 +5425,9 @@ public class HttpRoute : Tea.TeaModel {
         var map = super.toMap()
         if self.backend != nil {
             map["backend"] = self.backend?.toMap()
+        }
+        if self.builtin != nil {
+            map["builtin"] = self.builtin!
         }
         if self.createTimestamp != nil {
             map["createTimestamp"] = self.createTimestamp!
@@ -5454,6 +5475,9 @@ public class HttpRoute : Tea.TeaModel {
             var model = Backend()
             model.fromMap(value)
             self.backend = model
+        }
+        if let value = dict["builtin"] as? String {
+            self.builtin = value
         }
         if let value = dict["createTimestamp"] as? Int64 {
             self.createTimestamp = value
