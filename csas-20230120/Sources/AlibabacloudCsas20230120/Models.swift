@@ -4802,6 +4802,8 @@ public class CreateEnterpriseAcceleratePolicyRequest : Tea.TeaModel {
 }
 
 public class CreateEnterpriseAcceleratePolicyResponseBody : Tea.TeaModel {
+    public var eapId: String?
+
     public var requestId: String?
 
     public override init() {
@@ -4818,6 +4820,9 @@ public class CreateEnterpriseAcceleratePolicyResponseBody : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.eapId != nil {
+            map["EapId"] = self.eapId!
+        }
         if self.requestId != nil {
             map["RequestId"] = self.requestId!
         }
@@ -4826,6 +4831,9 @@ public class CreateEnterpriseAcceleratePolicyResponseBody : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["EapId"] as? String {
+            self.eapId = value
+        }
         if let value = dict["RequestId"] as? String {
             self.requestId = value
         }
@@ -20909,6 +20917,8 @@ public class ListConnectorsResponseBody : Tea.TeaModel {
                 }
             }
         }
+        public var accelerateStatus: String?
+
         public var applications: [ListConnectorsResponseBody.Connectors.Applications]?
 
         public var clusterIP: String?
@@ -20946,6 +20956,9 @@ public class ListConnectorsResponseBody : Tea.TeaModel {
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
+            if self.accelerateStatus != nil {
+                map["AccelerateStatus"] = self.accelerateStatus!
+            }
             if self.applications != nil {
                 var tmp : [Any] = []
                 for k in self.applications! {
@@ -20992,6 +21005,9 @@ public class ListConnectorsResponseBody : Tea.TeaModel {
 
         public override func fromMap(_ dict: [String: Any?]?) -> Void {
             guard let dict else { return }
+            if let value = dict["AccelerateStatus"] as? String {
+                self.accelerateStatus = value
+            }
             if let value = dict["Applications"] as? [Any?] {
                 var tmp : [ListConnectorsResponseBody.Connectors.Applications] = []
                 for v in value {
