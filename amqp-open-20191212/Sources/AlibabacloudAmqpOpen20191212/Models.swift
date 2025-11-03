@@ -694,6 +694,44 @@ public class CreateExchangeResponse : Tea.TeaModel {
 }
 
 public class CreateInstanceRequest : Tea.TeaModel {
+    public class Tags : Tea.TeaModel {
+        public var key: String?
+
+        public var value: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.key != nil {
+                map["Key"] = self.key!
+            }
+            if self.value != nil {
+                map["Value"] = self.value!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["Key"] as? String {
+                self.key = value
+            }
+            if let value = dict["Value"] as? String {
+                self.value = value
+            }
+        }
+    }
     public var autoRenew: Bool?
 
     public var autoRenewPeriod: Int32?
@@ -739,6 +777,8 @@ public class CreateInstanceRequest : Tea.TeaModel {
     public var supportEip: Bool?
 
     public var supportTracing: Bool?
+
+    public var tags: [CreateInstanceRequest.Tags]?
 
     public var tracingStorageTime: Int32?
 
@@ -825,6 +865,13 @@ public class CreateInstanceRequest : Tea.TeaModel {
         if self.supportTracing != nil {
             map["SupportTracing"] = self.supportTracing!
         }
+        if self.tags != nil {
+            var tmp : [Any] = []
+            for k in self.tags! {
+                tmp.append(k.toMap())
+            }
+            map["Tags"] = tmp
+        }
         if self.tracingStorageTime != nil {
             map["TracingStorageTime"] = self.tracingStorageTime!
         }
@@ -901,6 +948,242 @@ public class CreateInstanceRequest : Tea.TeaModel {
         }
         if let value = dict["SupportTracing"] as? Bool {
             self.supportTracing = value
+        }
+        if let value = dict["Tags"] as? [Any?] {
+            var tmp : [CreateInstanceRequest.Tags] = []
+            for v in value {
+                if v != nil {
+                    var model = CreateInstanceRequest.Tags()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.tags = tmp
+        }
+        if let value = dict["TracingStorageTime"] as? Int32 {
+            self.tracingStorageTime = value
+        }
+    }
+}
+
+public class CreateInstanceShrinkRequest : Tea.TeaModel {
+    public var autoRenew: Bool?
+
+    public var autoRenewPeriod: Int32?
+
+    public var clientToken: String?
+
+    public var edition: String?
+
+    public var encryptedInstance: Bool?
+
+    public var instanceName: String?
+
+    public var instanceType: String?
+
+    public var kmsKeyId: String?
+
+    public var maxConnections: Int32?
+
+    public var maxEipTps: Int64?
+
+    public var maxPrivateTps: Int64?
+
+    public var paymentType: String?
+
+    public var period: Int32?
+
+    public var periodCycle: String?
+
+    public var provisionedCapacity: Int32?
+
+    public var queueCapacity: Int32?
+
+    public var renewStatus: String?
+
+    public var renewalDurationUnit: String?
+
+    public var resourceGroupId: String?
+
+    public var serverlessChargeType: String?
+
+    public var storageSize: Int32?
+
+    public var supportEip: Bool?
+
+    public var supportTracing: Bool?
+
+    public var tagsShrink: String?
+
+    public var tracingStorageTime: Int32?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.autoRenew != nil {
+            map["AutoRenew"] = self.autoRenew!
+        }
+        if self.autoRenewPeriod != nil {
+            map["AutoRenewPeriod"] = self.autoRenewPeriod!
+        }
+        if self.clientToken != nil {
+            map["ClientToken"] = self.clientToken!
+        }
+        if self.edition != nil {
+            map["Edition"] = self.edition!
+        }
+        if self.encryptedInstance != nil {
+            map["EncryptedInstance"] = self.encryptedInstance!
+        }
+        if self.instanceName != nil {
+            map["InstanceName"] = self.instanceName!
+        }
+        if self.instanceType != nil {
+            map["InstanceType"] = self.instanceType!
+        }
+        if self.kmsKeyId != nil {
+            map["KmsKeyId"] = self.kmsKeyId!
+        }
+        if self.maxConnections != nil {
+            map["MaxConnections"] = self.maxConnections!
+        }
+        if self.maxEipTps != nil {
+            map["MaxEipTps"] = self.maxEipTps!
+        }
+        if self.maxPrivateTps != nil {
+            map["MaxPrivateTps"] = self.maxPrivateTps!
+        }
+        if self.paymentType != nil {
+            map["PaymentType"] = self.paymentType!
+        }
+        if self.period != nil {
+            map["Period"] = self.period!
+        }
+        if self.periodCycle != nil {
+            map["PeriodCycle"] = self.periodCycle!
+        }
+        if self.provisionedCapacity != nil {
+            map["ProvisionedCapacity"] = self.provisionedCapacity!
+        }
+        if self.queueCapacity != nil {
+            map["QueueCapacity"] = self.queueCapacity!
+        }
+        if self.renewStatus != nil {
+            map["RenewStatus"] = self.renewStatus!
+        }
+        if self.renewalDurationUnit != nil {
+            map["RenewalDurationUnit"] = self.renewalDurationUnit!
+        }
+        if self.resourceGroupId != nil {
+            map["ResourceGroupId"] = self.resourceGroupId!
+        }
+        if self.serverlessChargeType != nil {
+            map["ServerlessChargeType"] = self.serverlessChargeType!
+        }
+        if self.storageSize != nil {
+            map["StorageSize"] = self.storageSize!
+        }
+        if self.supportEip != nil {
+            map["SupportEip"] = self.supportEip!
+        }
+        if self.supportTracing != nil {
+            map["SupportTracing"] = self.supportTracing!
+        }
+        if self.tagsShrink != nil {
+            map["Tags"] = self.tagsShrink!
+        }
+        if self.tracingStorageTime != nil {
+            map["TracingStorageTime"] = self.tracingStorageTime!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["AutoRenew"] as? Bool {
+            self.autoRenew = value
+        }
+        if let value = dict["AutoRenewPeriod"] as? Int32 {
+            self.autoRenewPeriod = value
+        }
+        if let value = dict["ClientToken"] as? String {
+            self.clientToken = value
+        }
+        if let value = dict["Edition"] as? String {
+            self.edition = value
+        }
+        if let value = dict["EncryptedInstance"] as? Bool {
+            self.encryptedInstance = value
+        }
+        if let value = dict["InstanceName"] as? String {
+            self.instanceName = value
+        }
+        if let value = dict["InstanceType"] as? String {
+            self.instanceType = value
+        }
+        if let value = dict["KmsKeyId"] as? String {
+            self.kmsKeyId = value
+        }
+        if let value = dict["MaxConnections"] as? Int32 {
+            self.maxConnections = value
+        }
+        if let value = dict["MaxEipTps"] as? Int64 {
+            self.maxEipTps = value
+        }
+        if let value = dict["MaxPrivateTps"] as? Int64 {
+            self.maxPrivateTps = value
+        }
+        if let value = dict["PaymentType"] as? String {
+            self.paymentType = value
+        }
+        if let value = dict["Period"] as? Int32 {
+            self.period = value
+        }
+        if let value = dict["PeriodCycle"] as? String {
+            self.periodCycle = value
+        }
+        if let value = dict["ProvisionedCapacity"] as? Int32 {
+            self.provisionedCapacity = value
+        }
+        if let value = dict["QueueCapacity"] as? Int32 {
+            self.queueCapacity = value
+        }
+        if let value = dict["RenewStatus"] as? String {
+            self.renewStatus = value
+        }
+        if let value = dict["RenewalDurationUnit"] as? String {
+            self.renewalDurationUnit = value
+        }
+        if let value = dict["ResourceGroupId"] as? String {
+            self.resourceGroupId = value
+        }
+        if let value = dict["ServerlessChargeType"] as? String {
+            self.serverlessChargeType = value
+        }
+        if let value = dict["StorageSize"] as? Int32 {
+            self.storageSize = value
+        }
+        if let value = dict["SupportEip"] as? Bool {
+            self.supportEip = value
+        }
+        if let value = dict["SupportTracing"] as? Bool {
+            self.supportTracing = value
+        }
+        if let value = dict["Tags"] as? String {
+            self.tagsShrink = value
         }
         if let value = dict["TracingStorageTime"] as? Int32 {
             self.tracingStorageTime = value
