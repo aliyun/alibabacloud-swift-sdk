@@ -18439,6 +18439,8 @@ public class UpdateServiceCronScalerResponse : Tea.TeaModel {
 }
 
 public class UpdateServiceInstanceRequest : Tea.TeaModel {
+    public var hibernate: Bool?
+
     public var isolate: Bool?
 
     public override init() {
@@ -18455,6 +18457,9 @@ public class UpdateServiceInstanceRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.hibernate != nil {
+            map["Hibernate"] = self.hibernate!
+        }
         if self.isolate != nil {
             map["Isolate"] = self.isolate!
         }
@@ -18463,6 +18468,9 @@ public class UpdateServiceInstanceRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["Hibernate"] as? Bool {
+            self.hibernate = value
+        }
         if let value = dict["Isolate"] as? Bool {
             self.isolate = value
         }

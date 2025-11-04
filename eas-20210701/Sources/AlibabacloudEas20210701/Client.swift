@@ -3570,6 +3570,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func updateServiceInstanceWithOptions(_ ClusterId: String, _ ServiceName: String, _ InstanceName: String, _ request: UpdateServiceInstanceRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> UpdateServiceInstanceResponse {
         try TeaUtils.Client.validateModel(request)
         var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.hibernate)) {
+            body["Hibernate"] = request.hibernate!;
+        }
         if (!TeaUtils.Client.isUnset(request.isolate)) {
             body["Isolate"] = request.isolate!;
         }
