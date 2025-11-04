@@ -4231,174 +4231,6 @@ public class CreateMajorProtectionBlackIpResponse : Tea.TeaModel {
     }
 }
 
-public class CreateMajorProtectionBlackIpV2Request : Tea.TeaModel {
-    public var description_: String?
-
-    public var expiredTime: Int64?
-
-    public var instanceId: String?
-
-    public var ipList: String?
-
-    public var regionId: String?
-
-    public var resourceManagerResourceGroupId: String?
-
-    public var ruleId: Int64?
-
-    public var templateId: Int64?
-
-    public override init() {
-        super.init()
-    }
-
-    public init(_ dict: [String: Any]) {
-        super.init()
-        self.fromMap(dict)
-    }
-
-    public override func validate() throws -> Void {
-    }
-
-    public override func toMap() -> [String : Any] {
-        var map = super.toMap()
-        if self.description_ != nil {
-            map["Description"] = self.description_!
-        }
-        if self.expiredTime != nil {
-            map["ExpiredTime"] = self.expiredTime!
-        }
-        if self.instanceId != nil {
-            map["InstanceId"] = self.instanceId!
-        }
-        if self.ipList != nil {
-            map["IpList"] = self.ipList!
-        }
-        if self.regionId != nil {
-            map["RegionId"] = self.regionId!
-        }
-        if self.resourceManagerResourceGroupId != nil {
-            map["ResourceManagerResourceGroupId"] = self.resourceManagerResourceGroupId!
-        }
-        if self.ruleId != nil {
-            map["RuleId"] = self.ruleId!
-        }
-        if self.templateId != nil {
-            map["TemplateId"] = self.templateId!
-        }
-        return map
-    }
-
-    public override func fromMap(_ dict: [String: Any?]?) -> Void {
-        guard let dict else { return }
-        if let value = dict["Description"] as? String {
-            self.description_ = value
-        }
-        if let value = dict["ExpiredTime"] as? Int64 {
-            self.expiredTime = value
-        }
-        if let value = dict["InstanceId"] as? String {
-            self.instanceId = value
-        }
-        if let value = dict["IpList"] as? String {
-            self.ipList = value
-        }
-        if let value = dict["RegionId"] as? String {
-            self.regionId = value
-        }
-        if let value = dict["ResourceManagerResourceGroupId"] as? String {
-            self.resourceManagerResourceGroupId = value
-        }
-        if let value = dict["RuleId"] as? Int64 {
-            self.ruleId = value
-        }
-        if let value = dict["TemplateId"] as? Int64 {
-            self.templateId = value
-        }
-    }
-}
-
-public class CreateMajorProtectionBlackIpV2ResponseBody : Tea.TeaModel {
-    public var requestId: String?
-
-    public override init() {
-        super.init()
-    }
-
-    public init(_ dict: [String: Any]) {
-        super.init()
-        self.fromMap(dict)
-    }
-
-    public override func validate() throws -> Void {
-    }
-
-    public override func toMap() -> [String : Any] {
-        var map = super.toMap()
-        if self.requestId != nil {
-            map["RequestId"] = self.requestId!
-        }
-        return map
-    }
-
-    public override func fromMap(_ dict: [String: Any?]?) -> Void {
-        guard let dict else { return }
-        if let value = dict["RequestId"] as? String {
-            self.requestId = value
-        }
-    }
-}
-
-public class CreateMajorProtectionBlackIpV2Response : Tea.TeaModel {
-    public var headers: [String: String]?
-
-    public var statusCode: Int32?
-
-    public var body: CreateMajorProtectionBlackIpV2ResponseBody?
-
-    public override init() {
-        super.init()
-    }
-
-    public init(_ dict: [String: Any]) {
-        super.init()
-        self.fromMap(dict)
-    }
-
-    public override func validate() throws -> Void {
-        try self.body?.validate()
-    }
-
-    public override func toMap() -> [String : Any] {
-        var map = super.toMap()
-        if self.headers != nil {
-            map["headers"] = self.headers!
-        }
-        if self.statusCode != nil {
-            map["statusCode"] = self.statusCode!
-        }
-        if self.body != nil {
-            map["body"] = self.body?.toMap()
-        }
-        return map
-    }
-
-    public override func fromMap(_ dict: [String: Any?]?) -> Void {
-        guard let dict else { return }
-        if let value = dict["headers"] as? [String: String] {
-            self.headers = value
-        }
-        if let value = dict["statusCode"] as? Int32 {
-            self.statusCode = value
-        }
-        if let value = dict["body"] as? [String: Any?] {
-            var model = CreateMajorProtectionBlackIpV2ResponseBody()
-            model.fromMap(value)
-            self.body = model
-        }
-    }
-}
-
 public class CreateMemberAccountsRequest : Tea.TeaModel {
     public var instanceId: String?
 
@@ -5132,6 +4964,8 @@ public class DeleteApisecEventsRequest : Tea.TeaModel {
 
     public var eventIds: [String]?
 
+    public var eventScope: String?
+
     public var instanceId: String?
 
     public var regionId: String?
@@ -5158,6 +4992,9 @@ public class DeleteApisecEventsRequest : Tea.TeaModel {
         if self.eventIds != nil {
             map["EventIds"] = self.eventIds!
         }
+        if self.eventScope != nil {
+            map["EventScope"] = self.eventScope!
+        }
         if self.instanceId != nil {
             map["InstanceId"] = self.instanceId!
         }
@@ -5177,6 +5014,9 @@ public class DeleteApisecEventsRequest : Tea.TeaModel {
         }
         if let value = dict["EventIds"] as? [String] {
             self.eventIds = value
+        }
+        if let value = dict["EventScope"] as? String {
+            self.eventScope = value
         }
         if let value = dict["InstanceId"] as? String {
             self.instanceId = value
@@ -8662,6 +8502,8 @@ public class DescribeApisecApiResourcesResponseBody : Tea.TeaModel {
     public class Data : Tea.TeaModel {
         public var abnormalNum: Int64?
 
+        public var accountEventNum: Int64?
+
         public var allCnt: Int64?
 
         public var apiFormat: String?
@@ -8722,6 +8564,9 @@ public class DescribeApisecApiResourcesResponseBody : Tea.TeaModel {
             var map = super.toMap()
             if self.abnormalNum != nil {
                 map["AbnormalNum"] = self.abnormalNum!
+            }
+            if self.accountEventNum != nil {
+                map["AccountEventNum"] = self.accountEventNum!
             }
             if self.allCnt != nil {
                 map["AllCnt"] = self.allCnt!
@@ -8796,6 +8641,9 @@ public class DescribeApisecApiResourcesResponseBody : Tea.TeaModel {
             guard let dict else { return }
             if let value = dict["AbnormalNum"] as? Int64 {
                 self.abnormalNum = value
+            }
+            if let value = dict["AccountEventNum"] as? Int64 {
+                self.accountEventNum = value
             }
             if let value = dict["AllCnt"] as? Int64 {
                 self.allCnt = value
@@ -9203,6 +9051,262 @@ public class DescribeApisecAssetTrendResponse : Tea.TeaModel {
     }
 }
 
+public class DescribeApisecEventDetailRequest : Tea.TeaModel {
+    public var clusterId: String?
+
+    public var detailType: String?
+
+    public var eventId: String?
+
+    public var eventScope: String?
+
+    public var instanceId: String?
+
+    public var regionId: String?
+
+    public var resourceManagerResourceGroupId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.clusterId != nil {
+            map["ClusterId"] = self.clusterId!
+        }
+        if self.detailType != nil {
+            map["DetailType"] = self.detailType!
+        }
+        if self.eventId != nil {
+            map["EventId"] = self.eventId!
+        }
+        if self.eventScope != nil {
+            map["EventScope"] = self.eventScope!
+        }
+        if self.instanceId != nil {
+            map["InstanceId"] = self.instanceId!
+        }
+        if self.regionId != nil {
+            map["RegionId"] = self.regionId!
+        }
+        if self.resourceManagerResourceGroupId != nil {
+            map["ResourceManagerResourceGroupId"] = self.resourceManagerResourceGroupId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["ClusterId"] as? String {
+            self.clusterId = value
+        }
+        if let value = dict["DetailType"] as? String {
+            self.detailType = value
+        }
+        if let value = dict["EventId"] as? String {
+            self.eventId = value
+        }
+        if let value = dict["EventScope"] as? String {
+            self.eventScope = value
+        }
+        if let value = dict["InstanceId"] as? String {
+            self.instanceId = value
+        }
+        if let value = dict["RegionId"] as? String {
+            self.regionId = value
+        }
+        if let value = dict["ResourceManagerResourceGroupId"] as? String {
+            self.resourceManagerResourceGroupId = value
+        }
+    }
+}
+
+public class DescribeApisecEventDetailResponseBody : Tea.TeaModel {
+    public var attackCnt: String?
+
+    public var attackerList: [String]?
+
+    public var detailValue: String?
+
+    public var endTs: String?
+
+    public var eventId: String?
+
+    public var eventLevel: String?
+
+    public var eventScope: String?
+
+    public var eventTag: String?
+
+    public var note: String?
+
+    public var origin: String?
+
+    public var requestId: String?
+
+    public var startTs: String?
+
+    public var userStatus: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.attackCnt != nil {
+            map["AttackCnt"] = self.attackCnt!
+        }
+        if self.attackerList != nil {
+            map["AttackerList"] = self.attackerList!
+        }
+        if self.detailValue != nil {
+            map["DetailValue"] = self.detailValue!
+        }
+        if self.endTs != nil {
+            map["EndTs"] = self.endTs!
+        }
+        if self.eventId != nil {
+            map["EventId"] = self.eventId!
+        }
+        if self.eventLevel != nil {
+            map["EventLevel"] = self.eventLevel!
+        }
+        if self.eventScope != nil {
+            map["EventScope"] = self.eventScope!
+        }
+        if self.eventTag != nil {
+            map["EventTag"] = self.eventTag!
+        }
+        if self.note != nil {
+            map["Note"] = self.note!
+        }
+        if self.origin != nil {
+            map["Origin"] = self.origin!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.startTs != nil {
+            map["StartTs"] = self.startTs!
+        }
+        if self.userStatus != nil {
+            map["UserStatus"] = self.userStatus!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["AttackCnt"] as? String {
+            self.attackCnt = value
+        }
+        if let value = dict["AttackerList"] as? [String] {
+            self.attackerList = value
+        }
+        if let value = dict["DetailValue"] as? String {
+            self.detailValue = value
+        }
+        if let value = dict["EndTs"] as? String {
+            self.endTs = value
+        }
+        if let value = dict["EventId"] as? String {
+            self.eventId = value
+        }
+        if let value = dict["EventLevel"] as? String {
+            self.eventLevel = value
+        }
+        if let value = dict["EventScope"] as? String {
+            self.eventScope = value
+        }
+        if let value = dict["EventTag"] as? String {
+            self.eventTag = value
+        }
+        if let value = dict["Note"] as? String {
+            self.note = value
+        }
+        if let value = dict["Origin"] as? String {
+            self.origin = value
+        }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+        if let value = dict["StartTs"] as? String {
+            self.startTs = value
+        }
+        if let value = dict["UserStatus"] as? String {
+            self.userStatus = value
+        }
+    }
+}
+
+public class DescribeApisecEventDetailResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: DescribeApisecEventDetailResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = DescribeApisecEventDetailResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
 public class DescribeApisecEventDomainStatisticRequest : Tea.TeaModel {
     public var clusterId: String?
 
@@ -9472,6 +9576,8 @@ public class DescribeApisecEventDomainStatisticResponse : Tea.TeaModel {
 }
 
 public class DescribeApisecEventsRequest : Tea.TeaModel {
+    public var account: String?
+
     public var apiFormat: String?
 
     public var apiId: String?
@@ -9487,6 +9593,8 @@ public class DescribeApisecEventsRequest : Tea.TeaModel {
     public var eventId: String?
 
     public var eventLevel: String?
+
+    public var eventScope: String?
 
     public var eventTag: String?
 
@@ -9526,6 +9634,9 @@ public class DescribeApisecEventsRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.account != nil {
+            map["Account"] = self.account!
+        }
         if self.apiFormat != nil {
             map["ApiFormat"] = self.apiFormat!
         }
@@ -9549,6 +9660,9 @@ public class DescribeApisecEventsRequest : Tea.TeaModel {
         }
         if self.eventLevel != nil {
             map["EventLevel"] = self.eventLevel!
+        }
+        if self.eventScope != nil {
+            map["EventScope"] = self.eventScope!
         }
         if self.eventTag != nil {
             map["EventTag"] = self.eventTag!
@@ -9591,6 +9705,9 @@ public class DescribeApisecEventsRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["Account"] as? String {
+            self.account = value
+        }
         if let value = dict["ApiFormat"] as? String {
             self.apiFormat = value
         }
@@ -9614,6 +9731,9 @@ public class DescribeApisecEventsRequest : Tea.TeaModel {
         }
         if let value = dict["EventLevel"] as? String {
             self.eventLevel = value
+        }
+        if let value = dict["EventScope"] as? String {
+            self.eventScope = value
         }
         if let value = dict["EventTag"] as? String {
             self.eventTag = value
@@ -9673,6 +9793,8 @@ public class DescribeApisecEventsResponseBody : Tea.TeaModel {
         public var attackIpInfo: String?
 
         public var attackIps: [String]?
+
+        public var attackerList: [String]?
 
         public var endTs: Int64?
 
@@ -9744,6 +9866,9 @@ public class DescribeApisecEventsResponseBody : Tea.TeaModel {
             }
             if self.attackIps != nil {
                 map["AttackIps"] = self.attackIps!
+            }
+            if self.attackerList != nil {
+                map["AttackerList"] = self.attackerList!
             }
             if self.endTs != nil {
                 map["EndTs"] = self.endTs!
@@ -9821,6 +9946,9 @@ public class DescribeApisecEventsResponseBody : Tea.TeaModel {
             }
             if let value = dict["AttackIps"] as? [String] {
                 self.attackIps = value
+            }
+            if let value = dict["AttackerList"] as? [String] {
+                self.attackerList = value
             }
             if let value = dict["EndTs"] as? Int64 {
                 self.endTs = value
@@ -11860,6 +11988,8 @@ public class DescribeApisecStatisticsRequest : Tea.TeaModel {
 
 public class DescribeApisecStatisticsResponseBody : Tea.TeaModel {
     public class Data : Tea.TeaModel {
+        public var account: Int64?
+
         public var actioned: Int64?
 
         public var api: Int64?
@@ -11912,6 +12042,9 @@ public class DescribeApisecStatisticsResponseBody : Tea.TeaModel {
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
+            if self.account != nil {
+                map["Account"] = self.account!
+            }
             if self.actioned != nil {
                 map["Actioned"] = self.actioned!
             }
@@ -11974,6 +12107,9 @@ public class DescribeApisecStatisticsResponseBody : Tea.TeaModel {
 
         public override func fromMap(_ dict: [String: Any?]?) -> Void {
             guard let dict else { return }
+            if let value = dict["Account"] as? Int64 {
+                self.account = value
+            }
             if let value = dict["Actioned"] as? Int64 {
                 self.actioned = value
             }
@@ -38601,6 +38737,8 @@ public class DescribeSensitiveOutboundTrendResponse : Tea.TeaModel {
 }
 
 public class DescribeSensitiveRequestLogRequest : Tea.TeaModel {
+    public var account: String?
+
     public var apiFormat: String?
 
     public var clientIP: String?
@@ -38641,6 +38779,9 @@ public class DescribeSensitiveRequestLogRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.account != nil {
+            map["Account"] = self.account!
+        }
         if self.apiFormat != nil {
             map["ApiFormat"] = self.apiFormat!
         }
@@ -38685,6 +38826,9 @@ public class DescribeSensitiveRequestLogRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["Account"] as? String {
+            self.account = value
+        }
         if let value = dict["ApiFormat"] as? String {
             self.apiFormat = value
         }
@@ -38729,6 +38873,8 @@ public class DescribeSensitiveRequestLogRequest : Tea.TeaModel {
 
 public class DescribeSensitiveRequestLogResponseBody : Tea.TeaModel {
     public class Data : Tea.TeaModel {
+        public var account: String?
+
         public var apiFormat: String?
 
         public var apiId: String?
@@ -38761,6 +38907,9 @@ public class DescribeSensitiveRequestLogResponseBody : Tea.TeaModel {
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
+            if self.account != nil {
+                map["Account"] = self.account!
+            }
             if self.apiFormat != nil {
                 map["ApiFormat"] = self.apiFormat!
             }
@@ -38793,6 +38942,9 @@ public class DescribeSensitiveRequestLogResponseBody : Tea.TeaModel {
 
         public override func fromMap(_ dict: [String: Any?]?) -> Void {
             guard let dict else { return }
+            if let value = dict["Account"] as? String {
+                self.account = value
+            }
             if let value = dict["ApiFormat"] as? String {
                 self.apiFormat = value
             }
@@ -41327,6 +41479,8 @@ public class DescribeUserAssetResponse : Tea.TeaModel {
 public class DescribeUserEventTrendRequest : Tea.TeaModel {
     public var clusterId: String?
 
+    public var eventScope: String?
+
     public var instanceId: String?
 
     public var regionId: String?
@@ -41350,6 +41504,9 @@ public class DescribeUserEventTrendRequest : Tea.TeaModel {
         if self.clusterId != nil {
             map["ClusterId"] = self.clusterId!
         }
+        if self.eventScope != nil {
+            map["EventScope"] = self.eventScope!
+        }
         if self.instanceId != nil {
             map["InstanceId"] = self.instanceId!
         }
@@ -41366,6 +41523,9 @@ public class DescribeUserEventTrendRequest : Tea.TeaModel {
         guard let dict else { return }
         if let value = dict["ClusterId"] as? String {
             self.clusterId = value
+        }
+        if let value = dict["EventScope"] as? String {
+            self.eventScope = value
         }
         if let value = dict["InstanceId"] as? String {
             self.instanceId = value
@@ -41549,6 +41709,8 @@ public class DescribeUserEventTypeRequest : Tea.TeaModel {
 
     public var endTime: Int64?
 
+    public var eventScope: String?
+
     public var instanceId: String?
 
     public var regionId: String?
@@ -41579,6 +41741,9 @@ public class DescribeUserEventTypeRequest : Tea.TeaModel {
         if self.endTime != nil {
             map["EndTime"] = self.endTime!
         }
+        if self.eventScope != nil {
+            map["EventScope"] = self.eventScope!
+        }
         if self.instanceId != nil {
             map["InstanceId"] = self.instanceId!
         }
@@ -41604,6 +41769,9 @@ public class DescribeUserEventTypeRequest : Tea.TeaModel {
         }
         if let value = dict["EndTime"] as? Int64 {
             self.endTime = value
+        }
+        if let value = dict["EventScope"] as? String {
+            self.eventScope = value
         }
         if let value = dict["InstanceId"] as? String {
             self.instanceId = value
@@ -44248,6 +44416,8 @@ public class ModifyApisecEventsRequest : Tea.TeaModel {
 
     public var eventIds: [String]?
 
+    public var eventScope: String?
+
     public var instanceId: String?
 
     public var note: String?
@@ -44278,6 +44448,9 @@ public class ModifyApisecEventsRequest : Tea.TeaModel {
         if self.eventIds != nil {
             map["EventIds"] = self.eventIds!
         }
+        if self.eventScope != nil {
+            map["EventScope"] = self.eventScope!
+        }
         if self.instanceId != nil {
             map["InstanceId"] = self.instanceId!
         }
@@ -44303,6 +44476,9 @@ public class ModifyApisecEventsRequest : Tea.TeaModel {
         }
         if let value = dict["EventIds"] as? [String] {
             self.eventIds = value
+        }
+        if let value = dict["EventScope"] as? String {
+            self.eventScope = value
         }
         if let value = dict["InstanceId"] as? String {
             self.instanceId = value
