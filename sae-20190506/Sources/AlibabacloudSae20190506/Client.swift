@@ -353,6 +353,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.acrAssumeRoleArn)) {
             query["AcrAssumeRoleArn"] = request.acrAssumeRoleArn ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.agentVersion)) {
+            query["AgentVersion"] = request.agentVersion ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.appDescription)) {
             query["AppDescription"] = request.appDescription ?? "";
         }
@@ -397,6 +400,12 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.enableEbpf)) {
             query["EnableEbpf"] = request.enableEbpf ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.enableNamespaceAgentVersion)) {
+            query["EnableNamespaceAgentVersion"] = request.enableNamespaceAgentVersion!;
+        }
+        if (!TeaUtils.Client.isUnset(request.enableNamespaceSlsConfig)) {
+            query["EnableNamespaceSlsConfig"] = request.enableNamespaceSlsConfig!;
         }
         if (!TeaUtils.Client.isUnset(request.enableNewArms)) {
             query["EnableNewArms"] = request.enableNewArms!;
@@ -1847,6 +1856,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.acrAssumeRoleArn)) {
             query["AcrAssumeRoleArn"] = request.acrAssumeRoleArn ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.agentVersion)) {
+            query["AgentVersion"] = request.agentVersion ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.albIngressReadinessGate)) {
             query["AlbIngressReadinessGate"] = request.albIngressReadinessGate ?? "";
         }
@@ -1894,6 +1906,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.enableGreyTagRoute)) {
             query["EnableGreyTagRoute"] = request.enableGreyTagRoute!;
+        }
+        if (!TeaUtils.Client.isUnset(request.enableNamespaceAgentVersion)) {
+            query["EnableNamespaceAgentVersion"] = request.enableNamespaceAgentVersion!;
         }
         if (!TeaUtils.Client.isUnset(request.enableNewArms)) {
             query["EnableNewArms"] = request.enableNewArms!;

@@ -15246,6 +15246,8 @@ public class CreateApplicationRequest : Tea.TeaModel {
 
     public var acrInstanceId: String?
 
+    public var agentVersion: String?
+
     public var appDescription: String?
 
     public var appName: String?
@@ -15283,6 +15285,10 @@ public class CreateApplicationRequest : Tea.TeaModel {
     public var enableCpuBurst: Bool?
 
     public var enableEbpf: String?
+
+    public var enableNamespaceAgentVersion: Bool?
+
+    public var enableNamespaceSlsConfig: Bool?
 
     public var enableNewArms: Bool?
 
@@ -15424,6 +15430,9 @@ public class CreateApplicationRequest : Tea.TeaModel {
         if self.acrInstanceId != nil {
             map["AcrInstanceId"] = self.acrInstanceId!
         }
+        if self.agentVersion != nil {
+            map["AgentVersion"] = self.agentVersion!
+        }
         if self.appDescription != nil {
             map["AppDescription"] = self.appDescription!
         }
@@ -15480,6 +15489,12 @@ public class CreateApplicationRequest : Tea.TeaModel {
         }
         if self.enableEbpf != nil {
             map["EnableEbpf"] = self.enableEbpf!
+        }
+        if self.enableNamespaceAgentVersion != nil {
+            map["EnableNamespaceAgentVersion"] = self.enableNamespaceAgentVersion!
+        }
+        if self.enableNamespaceSlsConfig != nil {
+            map["EnableNamespaceSlsConfig"] = self.enableNamespaceSlsConfig!
         }
         if self.enableNewArms != nil {
             map["EnableNewArms"] = self.enableNewArms!
@@ -15680,6 +15695,9 @@ public class CreateApplicationRequest : Tea.TeaModel {
         if let value = dict["AcrInstanceId"] as? String {
             self.acrInstanceId = value
         }
+        if let value = dict["AgentVersion"] as? String {
+            self.agentVersion = value
+        }
         if let value = dict["AppDescription"] as? String {
             self.appDescription = value
         }
@@ -15736,6 +15754,12 @@ public class CreateApplicationRequest : Tea.TeaModel {
         }
         if let value = dict["EnableEbpf"] as? String {
             self.enableEbpf = value
+        }
+        if let value = dict["EnableNamespaceAgentVersion"] as? Bool {
+            self.enableNamespaceAgentVersion = value
+        }
+        if let value = dict["EnableNamespaceSlsConfig"] as? Bool {
+            self.enableNamespaceSlsConfig = value
         }
         if let value = dict["EnableNewArms"] as? Bool {
             self.enableNewArms = value
@@ -15945,6 +15969,8 @@ public class CreateApplicationShrinkRequest : Tea.TeaModel {
 
     public var acrInstanceId: String?
 
+    public var agentVersion: String?
+
     public var appDescription: String?
 
     public var appName: String?
@@ -15982,6 +16008,10 @@ public class CreateApplicationShrinkRequest : Tea.TeaModel {
     public var enableCpuBurst: Bool?
 
     public var enableEbpf: String?
+
+    public var enableNamespaceAgentVersion: Bool?
+
+    public var enableNamespaceSlsConfig: Bool?
 
     public var enableNewArms: Bool?
 
@@ -16123,6 +16153,9 @@ public class CreateApplicationShrinkRequest : Tea.TeaModel {
         if self.acrInstanceId != nil {
             map["AcrInstanceId"] = self.acrInstanceId!
         }
+        if self.agentVersion != nil {
+            map["AgentVersion"] = self.agentVersion!
+        }
         if self.appDescription != nil {
             map["AppDescription"] = self.appDescription!
         }
@@ -16179,6 +16212,12 @@ public class CreateApplicationShrinkRequest : Tea.TeaModel {
         }
         if self.enableEbpf != nil {
             map["EnableEbpf"] = self.enableEbpf!
+        }
+        if self.enableNamespaceAgentVersion != nil {
+            map["EnableNamespaceAgentVersion"] = self.enableNamespaceAgentVersion!
+        }
+        if self.enableNamespaceSlsConfig != nil {
+            map["EnableNamespaceSlsConfig"] = self.enableNamespaceSlsConfig!
         }
         if self.enableNewArms != nil {
             map["EnableNewArms"] = self.enableNewArms!
@@ -16371,6 +16410,9 @@ public class CreateApplicationShrinkRequest : Tea.TeaModel {
         if let value = dict["AcrInstanceId"] as? String {
             self.acrInstanceId = value
         }
+        if let value = dict["AgentVersion"] as? String {
+            self.agentVersion = value
+        }
         if let value = dict["AppDescription"] as? String {
             self.appDescription = value
         }
@@ -16427,6 +16469,12 @@ public class CreateApplicationShrinkRequest : Tea.TeaModel {
         }
         if let value = dict["EnableEbpf"] as? String {
             self.enableEbpf = value
+        }
+        if let value = dict["EnableNamespaceAgentVersion"] as? Bool {
+            self.enableNamespaceAgentVersion = value
+        }
+        if let value = dict["EnableNamespaceSlsConfig"] as? Bool {
+            self.enableNamespaceSlsConfig = value
         }
         if let value = dict["EnableNewArms"] as? Bool {
             self.enableNewArms = value
@@ -22766,6 +22814,8 @@ public class DeployApplicationRequest : Tea.TeaModel {
 
     public var acrInstanceId: String?
 
+    public var agentVersion: String?
+
     public var albIngressReadinessGate: String?
 
     public var appId: String?
@@ -22803,6 +22853,8 @@ public class DeployApplicationRequest : Tea.TeaModel {
     public var enableCpuBurst: Bool?
 
     public var enableGreyTagRoute: Bool?
+
+    public var enableNamespaceAgentVersion: Bool?
 
     public var enableNewArms: Bool?
 
@@ -22942,6 +22994,9 @@ public class DeployApplicationRequest : Tea.TeaModel {
         if self.acrInstanceId != nil {
             map["AcrInstanceId"] = self.acrInstanceId!
         }
+        if self.agentVersion != nil {
+            map["AgentVersion"] = self.agentVersion!
+        }
         if self.albIngressReadinessGate != nil {
             map["AlbIngressReadinessGate"] = self.albIngressReadinessGate!
         }
@@ -22998,6 +23053,9 @@ public class DeployApplicationRequest : Tea.TeaModel {
         }
         if self.enableGreyTagRoute != nil {
             map["EnableGreyTagRoute"] = self.enableGreyTagRoute!
+        }
+        if self.enableNamespaceAgentVersion != nil {
+            map["EnableNamespaceAgentVersion"] = self.enableNamespaceAgentVersion!
         }
         if self.enableNewArms != nil {
             map["EnableNewArms"] = self.enableNewArms!
@@ -23195,6 +23253,9 @@ public class DeployApplicationRequest : Tea.TeaModel {
         if let value = dict["AcrInstanceId"] as? String {
             self.acrInstanceId = value
         }
+        if let value = dict["AgentVersion"] as? String {
+            self.agentVersion = value
+        }
         if let value = dict["AlbIngressReadinessGate"] as? String {
             self.albIngressReadinessGate = value
         }
@@ -23251,6 +23312,9 @@ public class DeployApplicationRequest : Tea.TeaModel {
         }
         if let value = dict["EnableGreyTagRoute"] as? Bool {
             self.enableGreyTagRoute = value
+        }
+        if let value = dict["EnableNamespaceAgentVersion"] as? Bool {
+            self.enableNamespaceAgentVersion = value
         }
         if let value = dict["EnableNewArms"] as? Bool {
             self.enableNewArms = value
@@ -23457,6 +23521,8 @@ public class DeployApplicationShrinkRequest : Tea.TeaModel {
 
     public var acrInstanceId: String?
 
+    public var agentVersion: String?
+
     public var albIngressReadinessGate: String?
 
     public var appId: String?
@@ -23494,6 +23560,8 @@ public class DeployApplicationShrinkRequest : Tea.TeaModel {
     public var enableCpuBurst: Bool?
 
     public var enableGreyTagRoute: Bool?
+
+    public var enableNamespaceAgentVersion: Bool?
 
     public var enableNewArms: Bool?
 
@@ -23633,6 +23701,9 @@ public class DeployApplicationShrinkRequest : Tea.TeaModel {
         if self.acrInstanceId != nil {
             map["AcrInstanceId"] = self.acrInstanceId!
         }
+        if self.agentVersion != nil {
+            map["AgentVersion"] = self.agentVersion!
+        }
         if self.albIngressReadinessGate != nil {
             map["AlbIngressReadinessGate"] = self.albIngressReadinessGate!
         }
@@ -23689,6 +23760,9 @@ public class DeployApplicationShrinkRequest : Tea.TeaModel {
         }
         if self.enableGreyTagRoute != nil {
             map["EnableGreyTagRoute"] = self.enableGreyTagRoute!
+        }
+        if self.enableNamespaceAgentVersion != nil {
+            map["EnableNamespaceAgentVersion"] = self.enableNamespaceAgentVersion!
         }
         if self.enableNewArms != nil {
             map["EnableNewArms"] = self.enableNewArms!
@@ -23878,6 +23952,9 @@ public class DeployApplicationShrinkRequest : Tea.TeaModel {
         if let value = dict["AcrInstanceId"] as? String {
             self.acrInstanceId = value
         }
+        if let value = dict["AgentVersion"] as? String {
+            self.agentVersion = value
+        }
         if let value = dict["AlbIngressReadinessGate"] as? String {
             self.albIngressReadinessGate = value
         }
@@ -23934,6 +24011,9 @@ public class DeployApplicationShrinkRequest : Tea.TeaModel {
         }
         if let value = dict["EnableGreyTagRoute"] as? Bool {
             self.enableGreyTagRoute = value
+        }
+        if let value = dict["EnableNamespaceAgentVersion"] as? Bool {
+            self.enableNamespaceAgentVersion = value
         }
         if let value = dict["EnableNewArms"] as? Bool {
             self.enableNewArms = value
@@ -25539,6 +25619,8 @@ public class DescribeApplicationConfigResponseBody : Tea.TeaModel {
 
         public var acrInstanceId: String?
 
+        public var agentVersion: String?
+
         public var albIngressReadinessGate: String?
 
         public var appDescription: String?
@@ -25588,6 +25670,8 @@ public class DescribeApplicationConfigResponseBody : Tea.TeaModel {
         public var enableGreyTagRoute: Bool?
 
         public var enableIdle: Bool?
+
+        public var enableNamespaceAgentVersion: Bool?
 
         public var enableNewArms: Bool?
 
@@ -25747,6 +25831,9 @@ public class DescribeApplicationConfigResponseBody : Tea.TeaModel {
             if self.acrInstanceId != nil {
                 map["AcrInstanceId"] = self.acrInstanceId!
             }
+            if self.agentVersion != nil {
+                map["AgentVersion"] = self.agentVersion!
+            }
             if self.albIngressReadinessGate != nil {
                 map["AlbIngressReadinessGate"] = self.albIngressReadinessGate!
             }
@@ -25829,6 +25916,9 @@ public class DescribeApplicationConfigResponseBody : Tea.TeaModel {
             }
             if self.enableIdle != nil {
                 map["EnableIdle"] = self.enableIdle!
+            }
+            if self.enableNamespaceAgentVersion != nil {
+                map["EnableNamespaceAgentVersion"] = self.enableNamespaceAgentVersion!
             }
             if self.enableNewArms != nil {
                 map["EnableNewArms"] = self.enableNewArms!
@@ -26072,6 +26162,9 @@ public class DescribeApplicationConfigResponseBody : Tea.TeaModel {
             if let value = dict["AcrInstanceId"] as? String {
                 self.acrInstanceId = value
             }
+            if let value = dict["AgentVersion"] as? String {
+                self.agentVersion = value
+            }
             if let value = dict["AlbIngressReadinessGate"] as? String {
                 self.albIngressReadinessGate = value
             }
@@ -26166,6 +26259,9 @@ public class DescribeApplicationConfigResponseBody : Tea.TeaModel {
             }
             if let value = dict["EnableIdle"] as? Bool {
                 self.enableIdle = value
+            }
+            if let value = dict["EnableNamespaceAgentVersion"] as? Bool {
+                self.enableNamespaceAgentVersion = value
             }
             if let value = dict["EnableNewArms"] as? Bool {
                 self.enableNewArms = value
@@ -36667,6 +36763,8 @@ public class DescribeNamespaceResourcesRequest : Tea.TeaModel {
 
 public class DescribeNamespaceResourcesResponseBody : Tea.TeaModel {
     public class Data : Tea.TeaModel {
+        public var apmJavaAgentVersion: String?
+
         public var appCount: Int64?
 
         public var belongRegion: String?
@@ -36721,6 +36819,9 @@ public class DescribeNamespaceResourcesResponseBody : Tea.TeaModel {
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
+            if self.apmJavaAgentVersion != nil {
+                map["ApmJavaAgentVersion"] = self.apmJavaAgentVersion!
+            }
             if self.appCount != nil {
                 map["AppCount"] = self.appCount!
             }
@@ -36786,6 +36887,9 @@ public class DescribeNamespaceResourcesResponseBody : Tea.TeaModel {
 
         public override func fromMap(_ dict: [String: Any?]?) -> Void {
             guard let dict else { return }
+            if let value = dict["ApmJavaAgentVersion"] as? String {
+                self.apmJavaAgentVersion = value
+            }
             if let value = dict["AppCount"] as? Int64 {
                 self.appCount = value
             }
