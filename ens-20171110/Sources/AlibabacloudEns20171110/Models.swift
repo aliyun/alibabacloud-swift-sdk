@@ -35181,6 +35181,8 @@ public class DescribeInstancesRequest : Tea.TeaModel {
             }
         }
     }
+    public var eipAddresses: [String]?
+
     public var ensRegionId: String?
 
     public var ensRegionIds: String?
@@ -35235,6 +35237,9 @@ public class DescribeInstancesRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.eipAddresses != nil {
+            map["EipAddresses"] = self.eipAddresses!
+        }
         if self.ensRegionId != nil {
             map["EnsRegionId"] = self.ensRegionId!
         }
@@ -35304,6 +35309,9 @@ public class DescribeInstancesRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["EipAddresses"] as? [String] {
+            self.eipAddresses = value
+        }
         if let value = dict["EnsRegionId"] as? String {
             self.ensRegionId = value
         }
@@ -35378,6 +35386,8 @@ public class DescribeInstancesRequest : Tea.TeaModel {
 }
 
 public class DescribeInstancesShrinkRequest : Tea.TeaModel {
+    public var eipAddressesShrink: String?
+
     public var ensRegionId: String?
 
     public var ensRegionIds: String?
@@ -35432,6 +35442,9 @@ public class DescribeInstancesShrinkRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.eipAddressesShrink != nil {
+            map["EipAddresses"] = self.eipAddressesShrink!
+        }
         if self.ensRegionId != nil {
             map["EnsRegionId"] = self.ensRegionId!
         }
@@ -35497,6 +35510,9 @@ public class DescribeInstancesShrinkRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["EipAddresses"] as? String {
+            self.eipAddressesShrink = value
+        }
         if let value = dict["EnsRegionId"] as? String {
             self.ensRegionId = value
         }
