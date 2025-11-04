@@ -20426,6 +20426,231 @@ public class GetDBInstanceConnectivityDiagnosisResponse : Tea.TeaModel {
     }
 }
 
+public class GetDasAgentSSERequest : Tea.TeaModel {
+    public var agentId: String?
+
+    public var instanceId: String?
+
+    public var query: String?
+
+    public var sessionId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.agentId != nil {
+            map["AgentId"] = self.agentId!
+        }
+        if self.instanceId != nil {
+            map["InstanceId"] = self.instanceId!
+        }
+        if self.query != nil {
+            map["Query"] = self.query!
+        }
+        if self.sessionId != nil {
+            map["SessionId"] = self.sessionId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["AgentId"] as? String {
+            self.agentId = value
+        }
+        if let value = dict["InstanceId"] as? String {
+            self.instanceId = value
+        }
+        if let value = dict["Query"] as? String {
+            self.query = value
+        }
+        if let value = dict["SessionId"] as? String {
+            self.sessionId = value
+        }
+    }
+}
+
+public class GetDasAgentSSEResponseBody : Tea.TeaModel {
+    public class Metadata : Tea.TeaModel {
+        public var charCount: Int64?
+
+        public var code: Int32?
+
+        public var requestId: String?
+
+        public var toolName: String?
+
+        public var toolParams: [String]?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.charCount != nil {
+                map["CharCount"] = self.charCount!
+            }
+            if self.code != nil {
+                map["Code"] = self.code!
+            }
+            if self.requestId != nil {
+                map["RequestId"] = self.requestId!
+            }
+            if self.toolName != nil {
+                map["ToolName"] = self.toolName!
+            }
+            if self.toolParams != nil {
+                map["ToolParams"] = self.toolParams!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["CharCount"] as? Int64 {
+                self.charCount = value
+            }
+            if let value = dict["Code"] as? Int32 {
+                self.code = value
+            }
+            if let value = dict["RequestId"] as? String {
+                self.requestId = value
+            }
+            if let value = dict["ToolName"] as? String {
+                self.toolName = value
+            }
+            if let value = dict["ToolParams"] as? [String] {
+                self.toolParams = value
+            }
+        }
+    }
+    public var answer: String?
+
+    public var event: String?
+
+    public var id: String?
+
+    public var metadata: GetDasAgentSSEResponseBody.Metadata?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.metadata?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.answer != nil {
+            map["Answer"] = self.answer!
+        }
+        if self.event != nil {
+            map["Event"] = self.event!
+        }
+        if self.id != nil {
+            map["Id"] = self.id!
+        }
+        if self.metadata != nil {
+            map["Metadata"] = self.metadata?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["Answer"] as? String {
+            self.answer = value
+        }
+        if let value = dict["Event"] as? String {
+            self.event = value
+        }
+        if let value = dict["Id"] as? String {
+            self.id = value
+        }
+        if let value = dict["Metadata"] as? [String: Any?] {
+            var model = GetDasAgentSSEResponseBody.Metadata()
+            model.fromMap(value)
+            self.metadata = model
+        }
+    }
+}
+
+public class GetDasAgentSSEResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: GetDasAgentSSEResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = GetDasAgentSSEResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
 public class GetDasProServiceUsageRequest : Tea.TeaModel {
     public var instanceId: String?
 
