@@ -2433,6 +2433,10 @@ public class Node : Tea.TeaModel {
 
     public var descendantQuotaWorkloadNum: Int64?
 
+    public var diskCapacity: Int64?
+
+    public var diskPL: String?
+
     public var GPU: String?
 
     public var GPUMemory: String?
@@ -2537,6 +2541,12 @@ public class Node : Tea.TeaModel {
         }
         if self.descendantQuotaWorkloadNum != nil {
             map["DescendantQuotaWorkloadNum"] = self.descendantQuotaWorkloadNum!
+        }
+        if self.diskCapacity != nil {
+            map["DiskCapacity"] = self.diskCapacity!
+        }
+        if self.diskPL != nil {
+            map["DiskPL"] = self.diskPL!
         }
         if self.GPU != nil {
             map["GPU"] = self.GPU!
@@ -2673,6 +2683,12 @@ public class Node : Tea.TeaModel {
         }
         if let value = dict["DescendantQuotaWorkloadNum"] as? Int64 {
             self.descendantQuotaWorkloadNum = value
+        }
+        if let value = dict["DiskCapacity"] as? Int64 {
+            self.diskCapacity = value
+        }
+        if let value = dict["DiskPL"] as? String {
+            self.diskPL = value
         }
         if let value = dict["GPU"] as? String {
             self.GPU = value
@@ -3236,6 +3252,8 @@ public class NodeSpec : Tea.TeaModel {
 
     public var count: Int64?
 
+    public var hyperType: String?
+
     public var type: String?
 
     public override init() {
@@ -3259,6 +3277,9 @@ public class NodeSpec : Tea.TeaModel {
         if self.count != nil {
             map["Count"] = self.count!
         }
+        if self.hyperType != nil {
+            map["HyperType"] = self.hyperType!
+        }
         if self.type != nil {
             map["Type"] = self.type!
         }
@@ -3274,6 +3295,9 @@ public class NodeSpec : Tea.TeaModel {
         }
         if let value = dict["Count"] as? Int64 {
             self.count = value
+        }
+        if let value = dict["HyperType"] as? String {
+            self.hyperType = value
         }
         if let value = dict["Type"] as? String {
             self.type = value
@@ -14715,6 +14739,8 @@ public class ListNodesRequest : Tea.TeaModel {
 
     public var verbose: Bool?
 
+    public var workspaceId: String?
+
     public override init() {
         super.init()
     }
@@ -14798,6 +14824,9 @@ public class ListNodesRequest : Tea.TeaModel {
         if self.verbose != nil {
             map["Verbose"] = self.verbose!
         }
+        if self.workspaceId != nil {
+            map["WorkspaceId"] = self.workspaceId!
+        }
         return map
     }
 
@@ -14871,6 +14900,9 @@ public class ListNodesRequest : Tea.TeaModel {
         }
         if let value = dict["Verbose"] as? Bool {
             self.verbose = value
+        }
+        if let value = dict["WorkspaceId"] as? String {
+            self.workspaceId = value
         }
     }
 }
