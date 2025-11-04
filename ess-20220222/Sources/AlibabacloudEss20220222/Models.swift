@@ -8938,7 +8938,11 @@ public class CreateScalingGroupRequest : Tea.TeaModel {
 
     public var allocationStrategy: String?
 
+    public var autoRebalance: Bool?
+
     public var azBalance: Bool?
+
+    public var balanceMode: String?
 
     public var capacityOptions: CreateScalingGroupRequest.CapacityOptions?
 
@@ -9053,8 +9057,14 @@ public class CreateScalingGroupRequest : Tea.TeaModel {
         if self.allocationStrategy != nil {
             map["AllocationStrategy"] = self.allocationStrategy!
         }
+        if self.autoRebalance != nil {
+            map["AutoRebalance"] = self.autoRebalance!
+        }
         if self.azBalance != nil {
             map["AzBalance"] = self.azBalance!
+        }
+        if self.balanceMode != nil {
+            map["BalanceMode"] = self.balanceMode!
         }
         if self.capacityOptions != nil {
             map["CapacityOptions"] = self.capacityOptions?.toMap()
@@ -9237,8 +9247,14 @@ public class CreateScalingGroupRequest : Tea.TeaModel {
         if let value = dict["AllocationStrategy"] as? String {
             self.allocationStrategy = value
         }
+        if let value = dict["AutoRebalance"] as? Bool {
+            self.autoRebalance = value
+        }
         if let value = dict["AzBalance"] as? Bool {
             self.azBalance = value
+        }
+        if let value = dict["BalanceMode"] as? String {
+            self.balanceMode = value
         }
         if let value = dict["CapacityOptions"] as? [String: Any?] {
             var model = CreateScalingGroupRequest.CapacityOptions()
@@ -24539,7 +24555,11 @@ public class DescribeScalingGroupsResponseBody : Tea.TeaModel {
 
         public var allocationStrategy: String?
 
+        public var autoRebalance: Bool?
+
         public var azBalance: Bool?
+
+        public var balanceMode: String?
 
         public var capacityOptions: DescribeScalingGroupsResponseBody.ScalingGroups.CapacityOptions?
 
@@ -24688,8 +24708,14 @@ public class DescribeScalingGroupsResponseBody : Tea.TeaModel {
             if self.allocationStrategy != nil {
                 map["AllocationStrategy"] = self.allocationStrategy!
             }
+            if self.autoRebalance != nil {
+                map["AutoRebalance"] = self.autoRebalance!
+            }
             if self.azBalance != nil {
                 map["AzBalance"] = self.azBalance!
+            }
+            if self.balanceMode != nil {
+                map["BalanceMode"] = self.balanceMode!
             }
             if self.capacityOptions != nil {
                 map["CapacityOptions"] = self.capacityOptions?.toMap()
@@ -24916,8 +24942,14 @@ public class DescribeScalingGroupsResponseBody : Tea.TeaModel {
             if let value = dict["AllocationStrategy"] as? String {
                 self.allocationStrategy = value
             }
+            if let value = dict["AutoRebalance"] as? Bool {
+                self.autoRebalance = value
+            }
             if let value = dict["AzBalance"] as? Bool {
                 self.azBalance = value
+            }
+            if let value = dict["BalanceMode"] as? String {
+                self.balanceMode = value
             }
             if let value = dict["CapacityOptions"] as? [String: Any?] {
                 var model = DescribeScalingGroupsResponseBody.ScalingGroups.CapacityOptions()
@@ -36808,7 +36840,11 @@ public class ModifyScalingGroupRequest : Tea.TeaModel {
 
     public var allocationStrategy: String?
 
+    public var autoRebalance: Bool?
+
     public var azBalance: Bool?
+
+    public var balanceMode: String?
 
     public var capacityOptions: ModifyScalingGroupRequest.CapacityOptions?
 
@@ -36893,8 +36929,14 @@ public class ModifyScalingGroupRequest : Tea.TeaModel {
         if self.allocationStrategy != nil {
             map["AllocationStrategy"] = self.allocationStrategy!
         }
+        if self.autoRebalance != nil {
+            map["AutoRebalance"] = self.autoRebalance!
+        }
         if self.azBalance != nil {
             map["AzBalance"] = self.azBalance!
+        }
+        if self.balanceMode != nil {
+            map["BalanceMode"] = self.balanceMode!
         }
         if self.capacityOptions != nil {
             map["CapacityOptions"] = self.capacityOptions?.toMap()
@@ -37004,8 +37046,14 @@ public class ModifyScalingGroupRequest : Tea.TeaModel {
         if let value = dict["AllocationStrategy"] as? String {
             self.allocationStrategy = value
         }
+        if let value = dict["AutoRebalance"] as? Bool {
+            self.autoRebalance = value
+        }
         if let value = dict["AzBalance"] as? Bool {
             self.azBalance = value
+        }
+        if let value = dict["BalanceMode"] as? String {
+            self.balanceMode = value
         }
         if let value = dict["CapacityOptions"] as? [String: Any?] {
             var model = ModifyScalingGroupRequest.CapacityOptions()

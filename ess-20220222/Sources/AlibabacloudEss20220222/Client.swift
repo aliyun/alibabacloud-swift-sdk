@@ -1235,8 +1235,14 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.allocationStrategy)) {
             query["AllocationStrategy"] = request.allocationStrategy ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.autoRebalance)) {
+            query["AutoRebalance"] = request.autoRebalance!;
+        }
         if (!TeaUtils.Client.isUnset(request.azBalance)) {
             query["AzBalance"] = request.azBalance!;
+        }
+        if (!TeaUtils.Client.isUnset(request.balanceMode)) {
+            query["BalanceMode"] = request.balanceMode ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.capacityOptions)) {
             query["CapacityOptions"] = request.capacityOptions!;
@@ -4562,8 +4568,14 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.allocationStrategy)) {
             query["AllocationStrategy"] = request.allocationStrategy ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.autoRebalance)) {
+            query["AutoRebalance"] = request.autoRebalance!;
+        }
         if (!TeaUtils.Client.isUnset(request.azBalance)) {
             query["AzBalance"] = request.azBalance!;
+        }
+        if (!TeaUtils.Client.isUnset(request.balanceMode)) {
+            query["BalanceMode"] = request.balanceMode ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.capacityOptions)) {
             query["CapacityOptions"] = request.capacityOptions!;
