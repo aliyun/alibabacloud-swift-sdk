@@ -5349,6 +5349,8 @@ public class DescribeEndpointsResponseBody : Tea.TeaModel {
                     }
                 }
             }
+            public var computingGroupId: String?
+
             public var connectionString: String?
 
             public var IPAddress: String?
@@ -5379,6 +5381,9 @@ public class DescribeEndpointsResponseBody : Tea.TeaModel {
 
             public override func toMap() -> [String : Any] {
                 var map = super.toMap()
+                if self.computingGroupId != nil {
+                    map["ComputingGroupId"] = self.computingGroupId!
+                }
                 if self.connectionString != nil {
                     map["ConnectionString"] = self.connectionString!
                 }
@@ -5412,6 +5417,9 @@ public class DescribeEndpointsResponseBody : Tea.TeaModel {
 
             public override func fromMap(_ dict: [String: Any?]?) -> Void {
                 guard let dict else { return }
+                if let value = dict["ComputingGroupId"] as? String {
+                    self.computingGroupId = value
+                }
                 if let value = dict["ConnectionString"] as? String {
                     self.connectionString = value
                 }
