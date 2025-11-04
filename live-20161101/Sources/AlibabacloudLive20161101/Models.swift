@@ -5321,6 +5321,10 @@ public class AddLiveRecordNotifyConfigRequest : Tea.TeaModel {
 
     public var needStatusNotify: Bool?
 
+    public var notifyAuthKey: String?
+
+    public var notifyReqAuth: Bool?
+
     public var notifyUrl: String?
 
     public var onDemandUrl: String?
@@ -5349,6 +5353,12 @@ public class AddLiveRecordNotifyConfigRequest : Tea.TeaModel {
         if self.needStatusNotify != nil {
             map["NeedStatusNotify"] = self.needStatusNotify!
         }
+        if self.notifyAuthKey != nil {
+            map["NotifyAuthKey"] = self.notifyAuthKey!
+        }
+        if self.notifyReqAuth != nil {
+            map["NotifyReqAuth"] = self.notifyReqAuth!
+        }
         if self.notifyUrl != nil {
             map["NotifyUrl"] = self.notifyUrl!
         }
@@ -5371,6 +5381,12 @@ public class AddLiveRecordNotifyConfigRequest : Tea.TeaModel {
         }
         if let value = dict["NeedStatusNotify"] as? Bool {
             self.needStatusNotify = value
+        }
+        if let value = dict["NotifyAuthKey"] as? String {
+            self.notifyAuthKey = value
+        }
+        if let value = dict["NotifyReqAuth"] as? Bool {
+            self.notifyReqAuth = value
         }
         if let value = dict["NotifyUrl"] as? String {
             self.notifyUrl = value
@@ -47844,6 +47860,10 @@ public class DescribeLiveRecordNotifyConfigResponseBody : Tea.TeaModel {
 
         public var needStatusNotify: Bool?
 
+        public var notifyAuthKey: String?
+
+        public var notifyReqAuth: Bool?
+
         public var notifyUrl: String?
 
         public var onDemandUrl: String?
@@ -47868,6 +47888,12 @@ public class DescribeLiveRecordNotifyConfigResponseBody : Tea.TeaModel {
             if self.needStatusNotify != nil {
                 map["NeedStatusNotify"] = self.needStatusNotify!
             }
+            if self.notifyAuthKey != nil {
+                map["NotifyAuthKey"] = self.notifyAuthKey!
+            }
+            if self.notifyReqAuth != nil {
+                map["NotifyReqAuth"] = self.notifyReqAuth!
+            }
             if self.notifyUrl != nil {
                 map["NotifyUrl"] = self.notifyUrl!
             }
@@ -47884,6 +47910,12 @@ public class DescribeLiveRecordNotifyConfigResponseBody : Tea.TeaModel {
             }
             if let value = dict["NeedStatusNotify"] as? Bool {
                 self.needStatusNotify = value
+            }
+            if let value = dict["NotifyAuthKey"] as? String {
+                self.notifyAuthKey = value
+            }
+            if let value = dict["NotifyReqAuth"] as? Bool {
+                self.notifyReqAuth = value
             }
             if let value = dict["NotifyUrl"] as? String {
                 self.notifyUrl = value
@@ -48097,6 +48129,8 @@ public class DescribeLiveRecordNotifyRecordsResponseBody : Tea.TeaModel {
 
         public var notifyContent: String?
 
+        public var notifyHeader: String?
+
         public var notifyResponse: String?
 
         public var notifyResult: String?
@@ -48135,6 +48169,9 @@ public class DescribeLiveRecordNotifyRecordsResponseBody : Tea.TeaModel {
             if self.notifyContent != nil {
                 map["NotifyContent"] = self.notifyContent!
             }
+            if self.notifyHeader != nil {
+                map["NotifyHeader"] = self.notifyHeader!
+            }
             if self.notifyResponse != nil {
                 map["NotifyResponse"] = self.notifyResponse!
             }
@@ -48169,6 +48206,9 @@ public class DescribeLiveRecordNotifyRecordsResponseBody : Tea.TeaModel {
             }
             if let value = dict["NotifyContent"] as? String {
                 self.notifyContent = value
+            }
+            if let value = dict["NotifyHeader"] as? String {
+                self.notifyHeader = value
             }
             if let value = dict["NotifyResponse"] as? String {
                 self.notifyResponse = value
@@ -101076,6 +101116,10 @@ public class UpdateLiveRecordNotifyConfigRequest : Tea.TeaModel {
 
     public var needStatusNotify: Bool?
 
+    public var notifyAuthKey: String?
+
+    public var notifyReqAuth: Bool?
+
     public var notifyUrl: String?
 
     public var onDemandUrl: String?
@@ -101104,6 +101148,12 @@ public class UpdateLiveRecordNotifyConfigRequest : Tea.TeaModel {
         if self.needStatusNotify != nil {
             map["NeedStatusNotify"] = self.needStatusNotify!
         }
+        if self.notifyAuthKey != nil {
+            map["NotifyAuthKey"] = self.notifyAuthKey!
+        }
+        if self.notifyReqAuth != nil {
+            map["NotifyReqAuth"] = self.notifyReqAuth!
+        }
         if self.notifyUrl != nil {
             map["NotifyUrl"] = self.notifyUrl!
         }
@@ -101126,6 +101176,12 @@ public class UpdateLiveRecordNotifyConfigRequest : Tea.TeaModel {
         }
         if let value = dict["NeedStatusNotify"] as? Bool {
             self.needStatusNotify = value
+        }
+        if let value = dict["NotifyAuthKey"] as? String {
+            self.notifyAuthKey = value
+        }
+        if let value = dict["NotifyReqAuth"] as? Bool {
+            self.notifyReqAuth = value
         }
         if let value = dict["NotifyUrl"] as? String {
             self.notifyUrl = value
