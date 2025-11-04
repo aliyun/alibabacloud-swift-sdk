@@ -50237,6 +50237,8 @@ public class DescribeSlowLogsResponseBody : Tea.TeaModel {
 
             public var maxExecutionTime: Int64?
 
+            public var maxExecutionTimeMs: String?
+
             public var maxLockTime: Int64?
 
             public var parseMaxRowCount: Int64?
@@ -50282,6 +50284,9 @@ public class DescribeSlowLogsResponseBody : Tea.TeaModel {
                 }
                 if self.maxExecutionTime != nil {
                     map["MaxExecutionTime"] = self.maxExecutionTime!
+                }
+                if self.maxExecutionTimeMs != nil {
+                    map["MaxExecutionTimeMs"] = self.maxExecutionTimeMs!
                 }
                 if self.maxLockTime != nil {
                     map["MaxLockTime"] = self.maxLockTime!
@@ -50329,6 +50334,9 @@ public class DescribeSlowLogsResponseBody : Tea.TeaModel {
                 }
                 if let value = dict["MaxExecutionTime"] as? Int64 {
                     self.maxExecutionTime = value
+                }
+                if let value = dict["MaxExecutionTimeMs"] as? String {
+                    self.maxExecutionTimeMs = value
                 }
                 if let value = dict["MaxLockTime"] as? Int64 {
                     self.maxLockTime = value
