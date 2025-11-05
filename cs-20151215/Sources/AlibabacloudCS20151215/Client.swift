@@ -934,6 +934,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.maxNodes)) {
             body["max_nodes"] = request.maxNodes!;
         }
+        if (!TeaUtils.Client.isUnset(request.nodeComponents)) {
+            body["node_components"] = request.nodeComponents ?? [];
+        }
         if (!TeaUtils.Client.isUnset(request.nodeConfig)) {
             body["node_config"] = request.nodeConfig!;
         }
@@ -3538,6 +3541,45 @@ open class Client : AlibabacloudOpenApi.Client {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         var headers: [String: String] = [:]
         return try await listOperationPlansWithOptions(request as! ListOperationPlansRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func listOperationPlansForRegionWithOptions(_ regionId: String, _ request: ListOperationPlansForRegionRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> ListOperationPlansForRegionResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.clusterId)) {
+            query["cluster_id"] = request.clusterId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.state)) {
+            query["state"] = request.state ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.type)) {
+            query["type"] = request.type ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String],
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "ListOperationPlansForRegion",
+            "version": "2015-12-15",
+            "protocol": "HTTPS",
+            "pathname": "/regions/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(regionId)) + "/operation/plans",
+            "method": "GET",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(ListOperationPlansForRegionResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func listOperationPlansForRegion(_ regionId: String, _ request: ListOperationPlansForRegionRequest) async throws -> ListOperationPlansForRegionResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await listOperationPlansForRegionWithOptions(regionId as! String, request as! ListOperationPlansForRegionRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
