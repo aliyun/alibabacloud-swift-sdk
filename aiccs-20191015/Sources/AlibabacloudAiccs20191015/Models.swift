@@ -25275,6 +25275,318 @@ public class HotlineSessionQueryResponse : Tea.TeaModel {
     }
 }
 
+public class ImportOneTaskPhoneNumberRequest : Tea.TeaModel {
+    public var outId: String?
+
+    public var ownerId: Int64?
+
+    public var phoneNumber: String?
+
+    public var resourceOwnerAccount: String?
+
+    public var resourceOwnerId: Int64?
+
+    public var taskId: Int64?
+
+    public var variables: [String: Any]?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.outId != nil {
+            map["OutId"] = self.outId!
+        }
+        if self.ownerId != nil {
+            map["OwnerId"] = self.ownerId!
+        }
+        if self.phoneNumber != nil {
+            map["PhoneNumber"] = self.phoneNumber!
+        }
+        if self.resourceOwnerAccount != nil {
+            map["ResourceOwnerAccount"] = self.resourceOwnerAccount!
+        }
+        if self.resourceOwnerId != nil {
+            map["ResourceOwnerId"] = self.resourceOwnerId!
+        }
+        if self.taskId != nil {
+            map["TaskId"] = self.taskId!
+        }
+        if self.variables != nil {
+            map["Variables"] = self.variables!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["OutId"] as? String {
+            self.outId = value
+        }
+        if let value = dict["OwnerId"] as? Int64 {
+            self.ownerId = value
+        }
+        if let value = dict["PhoneNumber"] as? String {
+            self.phoneNumber = value
+        }
+        if let value = dict["ResourceOwnerAccount"] as? String {
+            self.resourceOwnerAccount = value
+        }
+        if let value = dict["ResourceOwnerId"] as? Int64 {
+            self.resourceOwnerId = value
+        }
+        if let value = dict["TaskId"] as? Int64 {
+            self.taskId = value
+        }
+        if let value = dict["Variables"] as? [String: Any] {
+            self.variables = value
+        }
+    }
+}
+
+public class ImportOneTaskPhoneNumberShrinkRequest : Tea.TeaModel {
+    public var outId: String?
+
+    public var ownerId: Int64?
+
+    public var phoneNumber: String?
+
+    public var resourceOwnerAccount: String?
+
+    public var resourceOwnerId: Int64?
+
+    public var taskId: Int64?
+
+    public var variablesShrink: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.outId != nil {
+            map["OutId"] = self.outId!
+        }
+        if self.ownerId != nil {
+            map["OwnerId"] = self.ownerId!
+        }
+        if self.phoneNumber != nil {
+            map["PhoneNumber"] = self.phoneNumber!
+        }
+        if self.resourceOwnerAccount != nil {
+            map["ResourceOwnerAccount"] = self.resourceOwnerAccount!
+        }
+        if self.resourceOwnerId != nil {
+            map["ResourceOwnerId"] = self.resourceOwnerId!
+        }
+        if self.taskId != nil {
+            map["TaskId"] = self.taskId!
+        }
+        if self.variablesShrink != nil {
+            map["Variables"] = self.variablesShrink!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["OutId"] as? String {
+            self.outId = value
+        }
+        if let value = dict["OwnerId"] as? Int64 {
+            self.ownerId = value
+        }
+        if let value = dict["PhoneNumber"] as? String {
+            self.phoneNumber = value
+        }
+        if let value = dict["ResourceOwnerAccount"] as? String {
+            self.resourceOwnerAccount = value
+        }
+        if let value = dict["ResourceOwnerId"] as? Int64 {
+            self.resourceOwnerId = value
+        }
+        if let value = dict["TaskId"] as? Int64 {
+            self.taskId = value
+        }
+        if let value = dict["Variables"] as? String {
+            self.variablesShrink = value
+        }
+    }
+}
+
+public class ImportOneTaskPhoneNumberResponseBody : Tea.TeaModel {
+    public class Data : Tea.TeaModel {
+        public var detailId: Int64?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.detailId != nil {
+                map["DetailId"] = self.detailId!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["DetailId"] as? Int64 {
+                self.detailId = value
+            }
+        }
+    }
+    public var accessDeniedDetail: String?
+
+    public var code: String?
+
+    public var data: ImportOneTaskPhoneNumberResponseBody.Data?
+
+    public var message: String?
+
+    public var requestId: String?
+
+    public var success: Bool?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.data?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.accessDeniedDetail != nil {
+            map["AccessDeniedDetail"] = self.accessDeniedDetail!
+        }
+        if self.code != nil {
+            map["Code"] = self.code!
+        }
+        if self.data != nil {
+            map["Data"] = self.data?.toMap()
+        }
+        if self.message != nil {
+            map["Message"] = self.message!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.success != nil {
+            map["Success"] = self.success!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["AccessDeniedDetail"] as? String {
+            self.accessDeniedDetail = value
+        }
+        if let value = dict["Code"] as? String {
+            self.code = value
+        }
+        if let value = dict["Data"] as? [String: Any?] {
+            var model = ImportOneTaskPhoneNumberResponseBody.Data()
+            model.fromMap(value)
+            self.data = model
+        }
+        if let value = dict["Message"] as? String {
+            self.message = value
+        }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+        if let value = dict["Success"] as? Bool {
+            self.success = value
+        }
+    }
+}
+
+public class ImportOneTaskPhoneNumberResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: ImportOneTaskPhoneNumberResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = ImportOneTaskPhoneNumberResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
 public class ImportTaskNumberDatasRequest : Tea.TeaModel {
     public var dataType: String?
 
@@ -31902,6 +32214,8 @@ public class QueryAiCallDetailPageRequest : Tea.TeaModel {
 
     public var calledNumber: String?
 
+    public var detailIds: [Int64]?
+
     public var endCallingTime: Int64?
 
     public var endImportedTime: Int64?
@@ -31954,6 +32268,9 @@ public class QueryAiCallDetailPageRequest : Tea.TeaModel {
         }
         if self.calledNumber != nil {
             map["CalledNumber"] = self.calledNumber!
+        }
+        if self.detailIds != nil {
+            map["DetailIds"] = self.detailIds!
         }
         if self.endCallingTime != nil {
             map["EndCallingTime"] = self.endCallingTime!
@@ -32013,6 +32330,184 @@ public class QueryAiCallDetailPageRequest : Tea.TeaModel {
         }
         if let value = dict["CalledNumber"] as? String {
             self.calledNumber = value
+        }
+        if let value = dict["DetailIds"] as? [Int64] {
+            self.detailIds = value
+        }
+        if let value = dict["EndCallingTime"] as? Int64 {
+            self.endCallingTime = value
+        }
+        if let value = dict["EndImportedTime"] as? Int64 {
+            self.endImportedTime = value
+        }
+        if let value = dict["MajorIntent"] as? String {
+            self.majorIntent = value
+        }
+        if let value = dict["MaxConversationDuration"] as? Int64 {
+            self.maxConversationDuration = value
+        }
+        if let value = dict["MinConversationDuration"] as? Int64 {
+            self.minConversationDuration = value
+        }
+        if let value = dict["OutId"] as? String {
+            self.outId = value
+        }
+        if let value = dict["OwnerId"] as? Int64 {
+            self.ownerId = value
+        }
+        if let value = dict["PageNo"] as? Int64 {
+            self.pageNo = value
+        }
+        if let value = dict["PageSize"] as? Int64 {
+            self.pageSize = value
+        }
+        if let value = dict["ResourceOwnerAccount"] as? String {
+            self.resourceOwnerAccount = value
+        }
+        if let value = dict["ResourceOwnerId"] as? Int64 {
+            self.resourceOwnerId = value
+        }
+        if let value = dict["StartCallingTime"] as? Int64 {
+            self.startCallingTime = value
+        }
+        if let value = dict["StartImportedTime"] as? Int64 {
+            self.startImportedTime = value
+        }
+        if let value = dict["Status"] as? Int64 {
+            self.status = value
+        }
+        if let value = dict["TaskId"] as? String {
+            self.taskId = value
+        }
+    }
+}
+
+public class QueryAiCallDetailPageShrinkRequest : Tea.TeaModel {
+    public var batchId: String?
+
+    public var callResult: String?
+
+    public var calledNumber: String?
+
+    public var detailIdsShrink: String?
+
+    public var endCallingTime: Int64?
+
+    public var endImportedTime: Int64?
+
+    public var majorIntent: String?
+
+    public var maxConversationDuration: Int64?
+
+    public var minConversationDuration: Int64?
+
+    public var outId: String?
+
+    public var ownerId: Int64?
+
+    public var pageNo: Int64?
+
+    public var pageSize: Int64?
+
+    public var resourceOwnerAccount: String?
+
+    public var resourceOwnerId: Int64?
+
+    public var startCallingTime: Int64?
+
+    public var startImportedTime: Int64?
+
+    public var status: Int64?
+
+    public var taskId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.batchId != nil {
+            map["BatchId"] = self.batchId!
+        }
+        if self.callResult != nil {
+            map["CallResult"] = self.callResult!
+        }
+        if self.calledNumber != nil {
+            map["CalledNumber"] = self.calledNumber!
+        }
+        if self.detailIdsShrink != nil {
+            map["DetailIds"] = self.detailIdsShrink!
+        }
+        if self.endCallingTime != nil {
+            map["EndCallingTime"] = self.endCallingTime!
+        }
+        if self.endImportedTime != nil {
+            map["EndImportedTime"] = self.endImportedTime!
+        }
+        if self.majorIntent != nil {
+            map["MajorIntent"] = self.majorIntent!
+        }
+        if self.maxConversationDuration != nil {
+            map["MaxConversationDuration"] = self.maxConversationDuration!
+        }
+        if self.minConversationDuration != nil {
+            map["MinConversationDuration"] = self.minConversationDuration!
+        }
+        if self.outId != nil {
+            map["OutId"] = self.outId!
+        }
+        if self.ownerId != nil {
+            map["OwnerId"] = self.ownerId!
+        }
+        if self.pageNo != nil {
+            map["PageNo"] = self.pageNo!
+        }
+        if self.pageSize != nil {
+            map["PageSize"] = self.pageSize!
+        }
+        if self.resourceOwnerAccount != nil {
+            map["ResourceOwnerAccount"] = self.resourceOwnerAccount!
+        }
+        if self.resourceOwnerId != nil {
+            map["ResourceOwnerId"] = self.resourceOwnerId!
+        }
+        if self.startCallingTime != nil {
+            map["StartCallingTime"] = self.startCallingTime!
+        }
+        if self.startImportedTime != nil {
+            map["StartImportedTime"] = self.startImportedTime!
+        }
+        if self.status != nil {
+            map["Status"] = self.status!
+        }
+        if self.taskId != nil {
+            map["TaskId"] = self.taskId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["BatchId"] as? String {
+            self.batchId = value
+        }
+        if let value = dict["CallResult"] as? String {
+            self.callResult = value
+        }
+        if let value = dict["CalledNumber"] as? String {
+            self.calledNumber = value
+        }
+        if let value = dict["DetailIds"] as? String {
+            self.detailIdsShrink = value
         }
         if let value = dict["EndCallingTime"] as? Int64 {
             self.endCallingTime = value
@@ -42664,6 +43159,8 @@ public class UpdateAiCallTaskRequest : Tea.TeaModel {
 
     public var startType: String?
 
+    public var taskCps: Int64?
+
     public var taskId: String?
 
     public var taskName: String?
@@ -42716,6 +43213,9 @@ public class UpdateAiCallTaskRequest : Tea.TeaModel {
         if self.startType != nil {
             map["StartType"] = self.startType!
         }
+        if self.taskCps != nil {
+            map["TaskCps"] = self.taskCps!
+        }
         if self.taskId != nil {
             map["TaskId"] = self.taskId!
         }
@@ -42763,6 +43263,9 @@ public class UpdateAiCallTaskRequest : Tea.TeaModel {
         if let value = dict["StartType"] as? String {
             self.startType = value
         }
+        if let value = dict["TaskCps"] as? Int64 {
+            self.taskCps = value
+        }
         if let value = dict["TaskId"] as? String {
             self.taskId = value
         }
@@ -42798,6 +43301,8 @@ public class UpdateAiCallTaskShrinkRequest : Tea.TeaModel {
     public var resourceOwnerId: Int64?
 
     public var startType: String?
+
+    public var taskCps: Int64?
 
     public var taskId: String?
 
@@ -42851,6 +43356,9 @@ public class UpdateAiCallTaskShrinkRequest : Tea.TeaModel {
         if self.startType != nil {
             map["StartType"] = self.startType!
         }
+        if self.taskCps != nil {
+            map["TaskCps"] = self.taskCps!
+        }
         if self.taskId != nil {
             map["TaskId"] = self.taskId!
         }
@@ -42897,6 +43405,9 @@ public class UpdateAiCallTaskShrinkRequest : Tea.TeaModel {
         }
         if let value = dict["StartType"] as? String {
             self.startType = value
+        }
+        if let value = dict["TaskCps"] as? Int64 {
+            self.taskCps = value
         }
         if let value = dict["TaskId"] as? String {
             self.taskId = value

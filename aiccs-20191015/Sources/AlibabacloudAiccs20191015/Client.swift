@@ -4078,6 +4078,60 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func importOneTaskPhoneNumberWithOptions(_ tmpReq: ImportOneTaskPhoneNumberRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ImportOneTaskPhoneNumberResponse {
+        try TeaUtils.Client.validateModel(tmpReq)
+        var request: ImportOneTaskPhoneNumberShrinkRequest = ImportOneTaskPhoneNumberShrinkRequest([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.variables)) {
+            request.variablesShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.variables, "Variables", "json")
+        }
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.outId)) {
+            query["OutId"] = request.outId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.ownerId)) {
+            query["OwnerId"] = request.ownerId!;
+        }
+        if (!TeaUtils.Client.isUnset(request.phoneNumber)) {
+            query["PhoneNumber"] = request.phoneNumber ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.resourceOwnerAccount)) {
+            query["ResourceOwnerAccount"] = request.resourceOwnerAccount ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.resourceOwnerId)) {
+            query["ResourceOwnerId"] = request.resourceOwnerId!;
+        }
+        if (!TeaUtils.Client.isUnset(request.taskId)) {
+            query["TaskId"] = request.taskId!;
+        }
+        if (!TeaUtils.Client.isUnset(request.variablesShrink)) {
+            query["Variables"] = request.variablesShrink ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "ImportOneTaskPhoneNumber",
+            "version": "2019-10-15",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(ImportOneTaskPhoneNumberResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func importOneTaskPhoneNumber(_ request: ImportOneTaskPhoneNumberRequest) async throws -> ImportOneTaskPhoneNumberResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await importOneTaskPhoneNumberWithOptions(request as! ImportOneTaskPhoneNumberRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func importTaskNumberDatasWithOptions(_ tmpReq: ImportTaskNumberDatasRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ImportTaskNumberDatasResponse {
         try TeaUtils.Client.validateModel(tmpReq)
         var request: ImportTaskNumberDatasShrinkRequest = ImportTaskNumberDatasShrinkRequest([:])
@@ -5105,8 +5159,13 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func queryAiCallDetailPageWithOptions(_ request: QueryAiCallDetailPageRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> QueryAiCallDetailPageResponse {
-        try TeaUtils.Client.validateModel(request)
+    public func queryAiCallDetailPageWithOptions(_ tmpReq: QueryAiCallDetailPageRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> QueryAiCallDetailPageResponse {
+        try TeaUtils.Client.validateModel(tmpReq)
+        var request: QueryAiCallDetailPageShrinkRequest = QueryAiCallDetailPageShrinkRequest([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.detailIds)) {
+            request.detailIdsShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.detailIds, "DetailIds", "json")
+        }
         var query: [String: Any] = [:]
         if (!TeaUtils.Client.isUnset(request.batchId)) {
             query["BatchId"] = request.batchId ?? "";
@@ -5116,6 +5175,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.calledNumber)) {
             query["CalledNumber"] = request.calledNumber ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.detailIdsShrink)) {
+            query["DetailIds"] = request.detailIdsShrink ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.endCallingTime)) {
             query["EndCallingTime"] = request.endCallingTime!;
@@ -6935,6 +6997,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.startType)) {
             query["StartType"] = request.startType ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.taskCps)) {
+            query["TaskCps"] = request.taskCps!;
         }
         if (!TeaUtils.Client.isUnset(request.taskId)) {
             query["TaskId"] = request.taskId ?? "";
