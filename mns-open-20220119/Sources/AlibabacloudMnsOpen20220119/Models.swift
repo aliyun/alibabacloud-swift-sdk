@@ -3961,9 +3961,13 @@ public class GetTopicAttributesResponseBody : Tea.TeaModel {
 
         public var tags: [GetTopicAttributesResponseBody.Data.Tags]?
 
+        public var topicInnerUrl: String?
+
         public var topicName: String?
 
         public var topicType: String?
+
+        public var topicUrl: String?
 
         public override init() {
             super.init()
@@ -4004,11 +4008,17 @@ public class GetTopicAttributesResponseBody : Tea.TeaModel {
                 }
                 map["Tags"] = tmp
             }
+            if self.topicInnerUrl != nil {
+                map["TopicInnerUrl"] = self.topicInnerUrl!
+            }
             if self.topicName != nil {
                 map["TopicName"] = self.topicName!
             }
             if self.topicType != nil {
                 map["TopicType"] = self.topicType!
+            }
+            if self.topicUrl != nil {
+                map["TopicUrl"] = self.topicUrl!
             }
             return map
         }
@@ -4046,11 +4056,17 @@ public class GetTopicAttributesResponseBody : Tea.TeaModel {
                 }
                 self.tags = tmp
             }
+            if let value = dict["TopicInnerUrl"] as? String {
+                self.topicInnerUrl = value
+            }
             if let value = dict["TopicName"] as? String {
                 self.topicName = value
             }
             if let value = dict["TopicType"] as? String {
                 self.topicType = value
+            }
+            if let value = dict["TopicUrl"] as? String {
+                self.topicUrl = value
             }
         }
     }
