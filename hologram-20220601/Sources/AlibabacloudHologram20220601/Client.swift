@@ -483,6 +483,135 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func grantDatabasePermissionWithOptions(_ instanceId: String, _ request: GrantDatabasePermissionRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> GrantDatabasePermissionResponse {
+        try TeaUtils.Client.validateModel(request)
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.databaseName)) {
+            body["databaseName"] = request.databaseName ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.privileges)) {
+            body["privileges"] = request.privileges ?? [];
+        }
+        if (!TeaUtils.Client.isUnset(request.userName)) {
+            body["userName"] = request.userName ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String],
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "GrantDatabasePermission",
+            "version": "2022-06-01",
+            "protocol": "HTTPS",
+            "pathname": "/api/v1/instances/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(instanceId)) + "/grantDatabasePermission",
+            "method": "POST",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(GrantDatabasePermissionResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func grantDatabasePermission(_ instanceId: String, _ request: GrantDatabasePermissionRequest) async throws -> GrantDatabasePermissionResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await grantDatabasePermissionWithOptions(instanceId as! String, request as! GrantDatabasePermissionRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func grantSchemaPermissionWithOptions(_ instanceId: String, _ request: GrantSchemaPermissionRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> GrantSchemaPermissionResponse {
+        try TeaUtils.Client.validateModel(request)
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.databaseName)) {
+            body["databaseName"] = request.databaseName ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.privileges)) {
+            body["privileges"] = request.privileges ?? [];
+        }
+        if (!TeaUtils.Client.isUnset(request.schemaName)) {
+            body["schemaName"] = request.schemaName ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.userName)) {
+            body["userName"] = request.userName ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String],
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "GrantSchemaPermission",
+            "version": "2022-06-01",
+            "protocol": "HTTPS",
+            "pathname": "/api/v1/instances/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(instanceId)) + "/grantSchemaPermission",
+            "method": "POST",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(GrantSchemaPermissionResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func grantSchemaPermission(_ instanceId: String, _ request: GrantSchemaPermissionRequest) async throws -> GrantSchemaPermissionResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await grantSchemaPermissionWithOptions(instanceId as! String, request as! GrantSchemaPermissionRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func grantTablePermissionWithOptions(_ instanceId: String, _ request: GrantTablePermissionRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> GrantTablePermissionResponse {
+        try TeaUtils.Client.validateModel(request)
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.allTable)) {
+            body["allTable"] = request.allTable!;
+        }
+        if (!TeaUtils.Client.isUnset(request.databaseName)) {
+            body["databaseName"] = request.databaseName ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.privileges)) {
+            body["privileges"] = request.privileges ?? [];
+        }
+        if (!TeaUtils.Client.isUnset(request.schemaName)) {
+            body["schemaName"] = request.schemaName ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.tableName)) {
+            body["tableName"] = request.tableName ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.userName)) {
+            body["userName"] = request.userName ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String],
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "GrantTablePermission",
+            "version": "2022-06-01",
+            "protocol": "HTTPS",
+            "pathname": "/api/v1/instances/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(instanceId)) + "/grantTablePermission",
+            "method": "POST",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(GrantTablePermissionResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func grantTablePermission(_ instanceId: String, _ request: GrantTablePermissionRequest) async throws -> GrantTablePermissionResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await grantTablePermissionWithOptions(instanceId as! String, request as! GrantTablePermissionRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func listBackupDataWithOptions(_ request: ListBackupDataRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> ListBackupDataResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
@@ -516,6 +645,39 @@ open class Client : AlibabacloudOpenApi.Client {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         var headers: [String: String] = [:]
         return try await listBackupDataWithOptions(request as! ListBackupDataRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func listDatabasesWithOptions(_ instanceId: String, _ request: ListDatabasesRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> ListDatabasesResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.external)) {
+            query["external"] = request.external!;
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String],
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "ListDatabases",
+            "version": "2022-06-01",
+            "protocol": "HTTPS",
+            "pathname": "/api/v1/instances/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(instanceId)) + "/listDatabases",
+            "method": "GET",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(ListDatabasesResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func listDatabases(_ instanceId: String, _ request: ListDatabasesRequest) async throws -> ListDatabasesResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await listDatabasesWithOptions(instanceId as! String, request as! ListDatabasesRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -834,6 +996,135 @@ open class Client : AlibabacloudOpenApi.Client {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         var headers: [String: String] = [:]
         return try await resumeInstanceWithOptions(instanceId as! String, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func revokeDatabasePermissionWithOptions(_ instanceId: String, _ request: RevokeDatabasePermissionRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> RevokeDatabasePermissionResponse {
+        try TeaUtils.Client.validateModel(request)
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.databaseName)) {
+            body["databaseName"] = request.databaseName ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.privileges)) {
+            body["privileges"] = request.privileges ?? [];
+        }
+        if (!TeaUtils.Client.isUnset(request.userName)) {
+            body["userName"] = request.userName ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String],
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "RevokeDatabasePermission",
+            "version": "2022-06-01",
+            "protocol": "HTTPS",
+            "pathname": "/api/v1/instances/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(instanceId)) + "/revokeDatabasePermission",
+            "method": "PUT",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(RevokeDatabasePermissionResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func revokeDatabasePermission(_ instanceId: String, _ request: RevokeDatabasePermissionRequest) async throws -> RevokeDatabasePermissionResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await revokeDatabasePermissionWithOptions(instanceId as! String, request as! RevokeDatabasePermissionRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func revokeSchemaPermissionWithOptions(_ instanceId: String, _ request: RevokeSchemaPermissionRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> RevokeSchemaPermissionResponse {
+        try TeaUtils.Client.validateModel(request)
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.databaseName)) {
+            body["databaseName"] = request.databaseName ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.privileges)) {
+            body["privileges"] = request.privileges ?? [];
+        }
+        if (!TeaUtils.Client.isUnset(request.schemaName)) {
+            body["schemaName"] = request.schemaName ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.userName)) {
+            body["userName"] = request.userName ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String],
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "RevokeSchemaPermission",
+            "version": "2022-06-01",
+            "protocol": "HTTPS",
+            "pathname": "/api/v1/instances/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(instanceId)) + "/revokeSchemaPermission",
+            "method": "PUT",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(RevokeSchemaPermissionResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func revokeSchemaPermission(_ instanceId: String, _ request: RevokeSchemaPermissionRequest) async throws -> RevokeSchemaPermissionResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await revokeSchemaPermissionWithOptions(instanceId as! String, request as! RevokeSchemaPermissionRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func revokeTablePermissionWithOptions(_ instanceId: String, _ request: RevokeTablePermissionRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> RevokeTablePermissionResponse {
+        try TeaUtils.Client.validateModel(request)
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.allTable)) {
+            body["allTable"] = request.allTable!;
+        }
+        if (!TeaUtils.Client.isUnset(request.databaseName)) {
+            body["databaseName"] = request.databaseName ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.privileges)) {
+            body["privileges"] = request.privileges ?? [];
+        }
+        if (!TeaUtils.Client.isUnset(request.schemaName)) {
+            body["schemaName"] = request.schemaName ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.tableName)) {
+            body["tableName"] = request.tableName ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.userName)) {
+            body["userName"] = request.userName ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String],
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "RevokeTablePermission",
+            "version": "2022-06-01",
+            "protocol": "HTTPS",
+            "pathname": "/api/v1/instances/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(instanceId)) + "/revokeTablePermission",
+            "method": "PUT",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(RevokeTablePermissionResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func revokeTablePermission(_ instanceId: String, _ request: RevokeTablePermissionRequest) async throws -> RevokeTablePermissionResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await revokeTablePermissionWithOptions(instanceId as! String, request as! RevokeTablePermissionRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
