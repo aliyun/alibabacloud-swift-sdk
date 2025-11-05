@@ -481,80 +481,6 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func cdnMigrateRegisterWithOptions(_ request: CdnMigrateRegisterRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> CdnMigrateRegisterResponse {
-        try TeaUtils.Client.validateModel(request)
-        var query: [String: Any] = [:]
-        if (!TeaUtils.Client.isUnset(request.domainName)) {
-            query["DomainName"] = request.domainName ?? "";
-        }
-        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
-            "query": AlibabaCloudOpenApiUtil.Client.query(query)
-        ])
-        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
-            "action": "CdnMigrateRegister",
-            "version": "2018-05-10",
-            "protocol": "HTTPS",
-            "pathname": "/",
-            "method": "POST",
-            "authType": "AK",
-            "style": "RPC",
-            "reqBodyType": "formData",
-            "bodyType": "json"
-        ])
-        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
-        return Tea.TeaConverter.fromMap(CdnMigrateRegisterResponse(), tmp)
-    }
-
-    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func cdnMigrateRegister(_ request: CdnMigrateRegisterRequest) async throws -> CdnMigrateRegisterResponse {
-        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
-        return try await cdnMigrateRegisterWithOptions(request as! CdnMigrateRegisterRequest, runtime as! TeaUtils.RuntimeOptions)
-    }
-
-    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func changeCdnDomainToDcdnWithOptions(_ request: ChangeCdnDomainToDcdnRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ChangeCdnDomainToDcdnResponse {
-        try TeaUtils.Client.validateModel(request)
-        var query: [String: Any] = [:]
-        if (!TeaUtils.Client.isUnset(request.domainName)) {
-            query["DomainName"] = request.domainName ?? "";
-        }
-        if (!TeaUtils.Client.isUnset(request.operation)) {
-            query["Operation"] = request.operation ?? "";
-        }
-        if (!TeaUtils.Client.isUnset(request.ownerAccount)) {
-            query["OwnerAccount"] = request.ownerAccount ?? "";
-        }
-        if (!TeaUtils.Client.isUnset(request.ownerId)) {
-            query["OwnerId"] = request.ownerId!;
-        }
-        if (!TeaUtils.Client.isUnset(request.securityToken)) {
-            query["SecurityToken"] = request.securityToken ?? "";
-        }
-        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
-            "query": AlibabaCloudOpenApiUtil.Client.query(query)
-        ])
-        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
-            "action": "ChangeCdnDomainToDcdn",
-            "version": "2018-05-10",
-            "protocol": "HTTPS",
-            "pathname": "/",
-            "method": "POST",
-            "authType": "AK",
-            "style": "RPC",
-            "reqBodyType": "formData",
-            "bodyType": "json"
-        ])
-        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
-        return Tea.TeaConverter.fromMap(ChangeCdnDomainToDcdnResponse(), tmp)
-    }
-
-    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func changeCdnDomainToDcdn(_ request: ChangeCdnDomainToDcdnRequest) async throws -> ChangeCdnDomainToDcdnResponse {
-        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
-        return try await changeCdnDomainToDcdnWithOptions(request as! ChangeCdnDomainToDcdnRequest, runtime as! TeaUtils.RuntimeOptions)
-    }
-
-    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func checkCdnDomainExistWithOptions(_ request: CheckCdnDomainExistRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> CheckCdnDomainExistResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
@@ -1853,37 +1779,6 @@ open class Client : AlibabacloudOpenApi.Client {
     public func describeCdnHttpsDomainList(_ request: DescribeCdnHttpsDomainListRequest) async throws -> DescribeCdnHttpsDomainListResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         return try await describeCdnHttpsDomainListWithOptions(request as! DescribeCdnHttpsDomainListRequest, runtime as! TeaUtils.RuntimeOptions)
-    }
-
-    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func describeCdnMigrateRegisterStatusWithOptions(_ request: DescribeCdnMigrateRegisterStatusRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DescribeCdnMigrateRegisterStatusResponse {
-        try TeaUtils.Client.validateModel(request)
-        var query: [String: Any] = [:]
-        if (!TeaUtils.Client.isUnset(request.domainName)) {
-            query["DomainName"] = request.domainName ?? "";
-        }
-        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
-            "query": AlibabaCloudOpenApiUtil.Client.query(query)
-        ])
-        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
-            "action": "DescribeCdnMigrateRegisterStatus",
-            "version": "2018-05-10",
-            "protocol": "HTTPS",
-            "pathname": "/",
-            "method": "POST",
-            "authType": "AK",
-            "style": "RPC",
-            "reqBodyType": "formData",
-            "bodyType": "json"
-        ])
-        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
-        return Tea.TeaConverter.fromMap(DescribeCdnMigrateRegisterStatusResponse(), tmp)
-    }
-
-    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func describeCdnMigrateRegisterStatus(_ request: DescribeCdnMigrateRegisterStatusRequest) async throws -> DescribeCdnMigrateRegisterStatusResponse {
-        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
-        return try await describeCdnMigrateRegisterStatusWithOptions(request as! DescribeCdnMigrateRegisterStatusRequest, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)

@@ -1790,286 +1790,6 @@ public class BatchUpdateCdnDomainResponse : Tea.TeaModel {
     }
 }
 
-public class CdnMigrateRegisterRequest : Tea.TeaModel {
-    public var domainName: String?
-
-    public override init() {
-        super.init()
-    }
-
-    public init(_ dict: [String: Any]) {
-        super.init()
-        self.fromMap(dict)
-    }
-
-    public override func validate() throws -> Void {
-    }
-
-    public override func toMap() -> [String : Any] {
-        var map = super.toMap()
-        if self.domainName != nil {
-            map["DomainName"] = self.domainName!
-        }
-        return map
-    }
-
-    public override func fromMap(_ dict: [String: Any?]?) -> Void {
-        guard let dict else { return }
-        if let value = dict["DomainName"] as? String {
-            self.domainName = value
-        }
-    }
-}
-
-public class CdnMigrateRegisterResponseBody : Tea.TeaModel {
-    public var domainName: String?
-
-    public var requestId: String?
-
-    public var status: String?
-
-    public override init() {
-        super.init()
-    }
-
-    public init(_ dict: [String: Any]) {
-        super.init()
-        self.fromMap(dict)
-    }
-
-    public override func validate() throws -> Void {
-    }
-
-    public override func toMap() -> [String : Any] {
-        var map = super.toMap()
-        if self.domainName != nil {
-            map["DomainName"] = self.domainName!
-        }
-        if self.requestId != nil {
-            map["RequestId"] = self.requestId!
-        }
-        if self.status != nil {
-            map["Status"] = self.status!
-        }
-        return map
-    }
-
-    public override func fromMap(_ dict: [String: Any?]?) -> Void {
-        guard let dict else { return }
-        if let value = dict["DomainName"] as? String {
-            self.domainName = value
-        }
-        if let value = dict["RequestId"] as? String {
-            self.requestId = value
-        }
-        if let value = dict["Status"] as? String {
-            self.status = value
-        }
-    }
-}
-
-public class CdnMigrateRegisterResponse : Tea.TeaModel {
-    public var headers: [String: String]?
-
-    public var statusCode: Int32?
-
-    public var body: CdnMigrateRegisterResponseBody?
-
-    public override init() {
-        super.init()
-    }
-
-    public init(_ dict: [String: Any]) {
-        super.init()
-        self.fromMap(dict)
-    }
-
-    public override func validate() throws -> Void {
-        try self.body?.validate()
-    }
-
-    public override func toMap() -> [String : Any] {
-        var map = super.toMap()
-        if self.headers != nil {
-            map["headers"] = self.headers!
-        }
-        if self.statusCode != nil {
-            map["statusCode"] = self.statusCode!
-        }
-        if self.body != nil {
-            map["body"] = self.body?.toMap()
-        }
-        return map
-    }
-
-    public override func fromMap(_ dict: [String: Any?]?) -> Void {
-        guard let dict else { return }
-        if let value = dict["headers"] as? [String: String] {
-            self.headers = value
-        }
-        if let value = dict["statusCode"] as? Int32 {
-            self.statusCode = value
-        }
-        if let value = dict["body"] as? [String: Any?] {
-            var model = CdnMigrateRegisterResponseBody()
-            model.fromMap(value)
-            self.body = model
-        }
-    }
-}
-
-public class ChangeCdnDomainToDcdnRequest : Tea.TeaModel {
-    public var domainName: String?
-
-    public var operation: String?
-
-    public var ownerAccount: String?
-
-    public var ownerId: Int64?
-
-    public var securityToken: String?
-
-    public override init() {
-        super.init()
-    }
-
-    public init(_ dict: [String: Any]) {
-        super.init()
-        self.fromMap(dict)
-    }
-
-    public override func validate() throws -> Void {
-    }
-
-    public override func toMap() -> [String : Any] {
-        var map = super.toMap()
-        if self.domainName != nil {
-            map["DomainName"] = self.domainName!
-        }
-        if self.operation != nil {
-            map["Operation"] = self.operation!
-        }
-        if self.ownerAccount != nil {
-            map["OwnerAccount"] = self.ownerAccount!
-        }
-        if self.ownerId != nil {
-            map["OwnerId"] = self.ownerId!
-        }
-        if self.securityToken != nil {
-            map["SecurityToken"] = self.securityToken!
-        }
-        return map
-    }
-
-    public override func fromMap(_ dict: [String: Any?]?) -> Void {
-        guard let dict else { return }
-        if let value = dict["DomainName"] as? String {
-            self.domainName = value
-        }
-        if let value = dict["Operation"] as? String {
-            self.operation = value
-        }
-        if let value = dict["OwnerAccount"] as? String {
-            self.ownerAccount = value
-        }
-        if let value = dict["OwnerId"] as? Int64 {
-            self.ownerId = value
-        }
-        if let value = dict["SecurityToken"] as? String {
-            self.securityToken = value
-        }
-    }
-}
-
-public class ChangeCdnDomainToDcdnResponseBody : Tea.TeaModel {
-    public var content: [String: Any]?
-
-    public var requestId: String?
-
-    public override init() {
-        super.init()
-    }
-
-    public init(_ dict: [String: Any]) {
-        super.init()
-        self.fromMap(dict)
-    }
-
-    public override func validate() throws -> Void {
-    }
-
-    public override func toMap() -> [String : Any] {
-        var map = super.toMap()
-        if self.content != nil {
-            map["Content"] = self.content!
-        }
-        if self.requestId != nil {
-            map["RequestId"] = self.requestId!
-        }
-        return map
-    }
-
-    public override func fromMap(_ dict: [String: Any?]?) -> Void {
-        guard let dict else { return }
-        if let value = dict["Content"] as? [String: Any] {
-            self.content = value
-        }
-        if let value = dict["RequestId"] as? String {
-            self.requestId = value
-        }
-    }
-}
-
-public class ChangeCdnDomainToDcdnResponse : Tea.TeaModel {
-    public var headers: [String: String]?
-
-    public var statusCode: Int32?
-
-    public var body: ChangeCdnDomainToDcdnResponseBody?
-
-    public override init() {
-        super.init()
-    }
-
-    public init(_ dict: [String: Any]) {
-        super.init()
-        self.fromMap(dict)
-    }
-
-    public override func validate() throws -> Void {
-        try self.body?.validate()
-    }
-
-    public override func toMap() -> [String : Any] {
-        var map = super.toMap()
-        if self.headers != nil {
-            map["headers"] = self.headers!
-        }
-        if self.statusCode != nil {
-            map["statusCode"] = self.statusCode!
-        }
-        if self.body != nil {
-            map["body"] = self.body?.toMap()
-        }
-        return map
-    }
-
-    public override func fromMap(_ dict: [String: Any?]?) -> Void {
-        guard let dict else { return }
-        if let value = dict["headers"] as? [String: String] {
-            self.headers = value
-        }
-        if let value = dict["statusCode"] as? Int32 {
-            self.statusCode = value
-        }
-        if let value = dict["body"] as? [String: Any?] {
-            var model = ChangeCdnDomainToDcdnResponseBody()
-            model.fromMap(value)
-            self.body = model
-        }
-    }
-}
-
 public class CheckCdnDomainExistRequest : Tea.TeaModel {
     public var domainName: String?
 
@@ -5875,7 +5595,271 @@ public class DescribeCdnDeliverListRequest : Tea.TeaModel {
 }
 
 public class DescribeCdnDeliverListResponseBody : Tea.TeaModel {
-    public var content: String?
+    public class Content : Tea.TeaModel {
+        public class Data : Tea.TeaModel {
+            public class Deliver : Tea.TeaModel {
+                public class Email : Tea.TeaModel {
+                    public var to: [String]?
+
+                    public override init() {
+                        super.init()
+                    }
+
+                    public init(_ dict: [String: Any]) {
+                        super.init()
+                        self.fromMap(dict)
+                    }
+
+                    public override func validate() throws -> Void {
+                    }
+
+                    public override func toMap() -> [String : Any] {
+                        var map = super.toMap()
+                        if self.to != nil {
+                            map["to"] = self.to!
+                        }
+                        return map
+                    }
+
+                    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                        guard let dict else { return }
+                        if let value = dict["to"] as? [String] {
+                            self.to = value
+                        }
+                    }
+                }
+                public var email: DescribeCdnDeliverListResponseBody.Content.Data.Deliver.Email?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                    try self.email?.validate()
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.email != nil {
+                        map["email"] = self.email?.toMap()
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                    guard let dict else { return }
+                    if let value = dict["email"] as? [String: Any?] {
+                        var model = DescribeCdnDeliverListResponseBody.Content.Data.Deliver.Email()
+                        model.fromMap(value)
+                        self.email = model
+                    }
+                }
+            }
+            public class Reports : Tea.TeaModel {
+                public var reportId: Int64?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.reportId != nil {
+                        map["reportId"] = self.reportId!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                    guard let dict else { return }
+                    if let value = dict["reportId"] as? Int64 {
+                        self.reportId = value
+                    }
+                }
+            }
+            public var createTime: String?
+
+            public var crontab: String?
+
+            public var deliver: DescribeCdnDeliverListResponseBody.Content.Data.Deliver?
+
+            public var deliverId: Int64?
+
+            public var dmList: [String]?
+
+            public var frequency: String?
+
+            public var name: String?
+
+            public var reports: [DescribeCdnDeliverListResponseBody.Content.Data.Reports]?
+
+            public var status: String?
+
+            public var timeEndFormat: String?
+
+            public var timeFromFormat: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+                try self.deliver?.validate()
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.createTime != nil {
+                    map["createTime"] = self.createTime!
+                }
+                if self.crontab != nil {
+                    map["crontab"] = self.crontab!
+                }
+                if self.deliver != nil {
+                    map["deliver"] = self.deliver?.toMap()
+                }
+                if self.deliverId != nil {
+                    map["deliverId"] = self.deliverId!
+                }
+                if self.dmList != nil {
+                    map["dmList"] = self.dmList!
+                }
+                if self.frequency != nil {
+                    map["frequency"] = self.frequency!
+                }
+                if self.name != nil {
+                    map["name"] = self.name!
+                }
+                if self.reports != nil {
+                    var tmp : [Any] = []
+                    for k in self.reports! {
+                        tmp.append(k.toMap())
+                    }
+                    map["reports"] = tmp
+                }
+                if self.status != nil {
+                    map["status"] = self.status!
+                }
+                if self.timeEndFormat != nil {
+                    map["timeEndFormat"] = self.timeEndFormat!
+                }
+                if self.timeFromFormat != nil {
+                    map["timeFromFormat"] = self.timeFromFormat!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["createTime"] as? String {
+                    self.createTime = value
+                }
+                if let value = dict["crontab"] as? String {
+                    self.crontab = value
+                }
+                if let value = dict["deliver"] as? [String: Any?] {
+                    var model = DescribeCdnDeliverListResponseBody.Content.Data.Deliver()
+                    model.fromMap(value)
+                    self.deliver = model
+                }
+                if let value = dict["deliverId"] as? Int64 {
+                    self.deliverId = value
+                }
+                if let value = dict["dmList"] as? [String] {
+                    self.dmList = value
+                }
+                if let value = dict["frequency"] as? String {
+                    self.frequency = value
+                }
+                if let value = dict["name"] as? String {
+                    self.name = value
+                }
+                if let value = dict["reports"] as? [Any?] {
+                    var tmp : [DescribeCdnDeliverListResponseBody.Content.Data.Reports] = []
+                    for v in value {
+                        if v != nil {
+                            var model = DescribeCdnDeliverListResponseBody.Content.Data.Reports()
+                            if v != nil {
+                                model.fromMap(v as? [String: Any?])
+                            }
+                            tmp.append(model)
+                        }
+                    }
+                    self.reports = tmp
+                }
+                if let value = dict["status"] as? String {
+                    self.status = value
+                }
+                if let value = dict["timeEndFormat"] as? String {
+                    self.timeEndFormat = value
+                }
+                if let value = dict["timeFromFormat"] as? String {
+                    self.timeFromFormat = value
+                }
+            }
+        }
+        public var data: [DescribeCdnDeliverListResponseBody.Content.Data]?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.data != nil {
+                var tmp : [Any] = []
+                for k in self.data! {
+                    tmp.append(k.toMap())
+                }
+                map["data"] = tmp
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["data"] as? [Any?] {
+                var tmp : [DescribeCdnDeliverListResponseBody.Content.Data] = []
+                for v in value {
+                    if v != nil {
+                        var model = DescribeCdnDeliverListResponseBody.Content.Data()
+                        if v != nil {
+                            model.fromMap(v as? [String: Any?])
+                        }
+                        tmp.append(model)
+                    }
+                }
+                self.data = tmp
+            }
+        }
+    }
+    public var content: DescribeCdnDeliverListResponseBody.Content?
 
     public var requestId: String?
 
@@ -5889,12 +5873,13 @@ public class DescribeCdnDeliverListResponseBody : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
+        try self.content?.validate()
     }
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
         if self.content != nil {
-            map["Content"] = self.content!
+            map["Content"] = self.content?.toMap()
         }
         if self.requestId != nil {
             map["RequestId"] = self.requestId!
@@ -5904,8 +5889,10 @@ public class DescribeCdnDeliverListResponseBody : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
-        if let value = dict["Content"] as? String {
-            self.content = value
+        if let value = dict["Content"] as? [String: Any?] {
+            var model = DescribeCdnDeliverListResponseBody.Content()
+            model.fromMap(value)
+            self.content = model
         }
         if let value = dict["RequestId"] as? String {
             self.requestId = value
@@ -9074,134 +9061,6 @@ public class DescribeCdnHttpsDomainListResponse : Tea.TeaModel {
     }
 }
 
-public class DescribeCdnMigrateRegisterStatusRequest : Tea.TeaModel {
-    public var domainName: String?
-
-    public override init() {
-        super.init()
-    }
-
-    public init(_ dict: [String: Any]) {
-        super.init()
-        self.fromMap(dict)
-    }
-
-    public override func validate() throws -> Void {
-    }
-
-    public override func toMap() -> [String : Any] {
-        var map = super.toMap()
-        if self.domainName != nil {
-            map["DomainName"] = self.domainName!
-        }
-        return map
-    }
-
-    public override func fromMap(_ dict: [String: Any?]?) -> Void {
-        guard let dict else { return }
-        if let value = dict["DomainName"] as? String {
-            self.domainName = value
-        }
-    }
-}
-
-public class DescribeCdnMigrateRegisterStatusResponseBody : Tea.TeaModel {
-    public var domainName: String?
-
-    public var requestId: String?
-
-    public var status: String?
-
-    public override init() {
-        super.init()
-    }
-
-    public init(_ dict: [String: Any]) {
-        super.init()
-        self.fromMap(dict)
-    }
-
-    public override func validate() throws -> Void {
-    }
-
-    public override func toMap() -> [String : Any] {
-        var map = super.toMap()
-        if self.domainName != nil {
-            map["DomainName"] = self.domainName!
-        }
-        if self.requestId != nil {
-            map["RequestId"] = self.requestId!
-        }
-        if self.status != nil {
-            map["Status"] = self.status!
-        }
-        return map
-    }
-
-    public override func fromMap(_ dict: [String: Any?]?) -> Void {
-        guard let dict else { return }
-        if let value = dict["DomainName"] as? String {
-            self.domainName = value
-        }
-        if let value = dict["RequestId"] as? String {
-            self.requestId = value
-        }
-        if let value = dict["Status"] as? String {
-            self.status = value
-        }
-    }
-}
-
-public class DescribeCdnMigrateRegisterStatusResponse : Tea.TeaModel {
-    public var headers: [String: String]?
-
-    public var statusCode: Int32?
-
-    public var body: DescribeCdnMigrateRegisterStatusResponseBody?
-
-    public override init() {
-        super.init()
-    }
-
-    public init(_ dict: [String: Any]) {
-        super.init()
-        self.fromMap(dict)
-    }
-
-    public override func validate() throws -> Void {
-        try self.body?.validate()
-    }
-
-    public override func toMap() -> [String : Any] {
-        var map = super.toMap()
-        if self.headers != nil {
-            map["headers"] = self.headers!
-        }
-        if self.statusCode != nil {
-            map["statusCode"] = self.statusCode!
-        }
-        if self.body != nil {
-            map["body"] = self.body?.toMap()
-        }
-        return map
-    }
-
-    public override func fromMap(_ dict: [String: Any?]?) -> Void {
-        guard let dict else { return }
-        if let value = dict["headers"] as? [String: String] {
-            self.headers = value
-        }
-        if let value = dict["statusCode"] as? Int32 {
-            self.statusCode = value
-        }
-        if let value = dict["body"] as? [String: Any?] {
-            var model = DescribeCdnMigrateRegisterStatusResponseBody()
-            model.fromMap(value)
-            self.body = model
-        }
-    }
-}
-
 public class DescribeCdnOrderCommodityCodeRequest : Tea.TeaModel {
     public var commodityCode: String?
 
@@ -9724,7 +9583,195 @@ public class DescribeCdnReportRequest : Tea.TeaModel {
 }
 
 public class DescribeCdnReportResponseBody : Tea.TeaModel {
-    public var content: [String: Any]?
+    public class Content : Tea.TeaModel {
+        public class Data : Tea.TeaModel {
+            public class Deliver : Tea.TeaModel {
+                public class Report : Tea.TeaModel {
+                    public var format: String?
+
+                    public var header: [String]?
+
+                    public var outLine: Int64?
+
+                    public var outSize: Int64?
+
+                    public var shape: String?
+
+                    public var title: String?
+
+                    public override init() {
+                        super.init()
+                    }
+
+                    public init(_ dict: [String: Any]) {
+                        super.init()
+                        self.fromMap(dict)
+                    }
+
+                    public override func validate() throws -> Void {
+                    }
+
+                    public override func toMap() -> [String : Any] {
+                        var map = super.toMap()
+                        if self.format != nil {
+                            map["format"] = self.format!
+                        }
+                        if self.header != nil {
+                            map["header"] = self.header!
+                        }
+                        if self.outLine != nil {
+                            map["outLine"] = self.outLine!
+                        }
+                        if self.outSize != nil {
+                            map["outSize"] = self.outSize!
+                        }
+                        if self.shape != nil {
+                            map["shape"] = self.shape!
+                        }
+                        if self.title != nil {
+                            map["title"] = self.title!
+                        }
+                        return map
+                    }
+
+                    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                        guard let dict else { return }
+                        if let value = dict["format"] as? String {
+                            self.format = value
+                        }
+                        if let value = dict["header"] as? [String] {
+                            self.header = value
+                        }
+                        if let value = dict["outLine"] as? Int64 {
+                            self.outLine = value
+                        }
+                        if let value = dict["outSize"] as? Int64 {
+                            self.outSize = value
+                        }
+                        if let value = dict["shape"] as? String {
+                            self.shape = value
+                        }
+                        if let value = dict["title"] as? String {
+                            self.title = value
+                        }
+                    }
+                }
+                public var report: DescribeCdnReportResponseBody.Content.Data.Deliver.Report?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                    try self.report?.validate()
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.report != nil {
+                        map["report"] = self.report?.toMap()
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                    guard let dict else { return }
+                    if let value = dict["report"] as? [String: Any?] {
+                        var model = DescribeCdnReportResponseBody.Content.Data.Deliver.Report()
+                        model.fromMap(value)
+                        self.report = model
+                    }
+                }
+            }
+            public var data: [[String: String]]?
+
+            public var deliver: DescribeCdnReportResponseBody.Content.Data.Deliver?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+                try self.deliver?.validate()
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.data != nil {
+                    map["data"] = self.data!
+                }
+                if self.deliver != nil {
+                    map["deliver"] = self.deliver?.toMap()
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["data"] as? [[String: String]] {
+                    self.data = value
+                }
+                if let value = dict["deliver"] as? [String: Any?] {
+                    var model = DescribeCdnReportResponseBody.Content.Data.Deliver()
+                    model.fromMap(value)
+                    self.deliver = model
+                }
+            }
+        }
+        public var data: [DescribeCdnReportResponseBody.Content.Data]?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.data != nil {
+                var tmp : [Any] = []
+                for k in self.data! {
+                    tmp.append(k.toMap())
+                }
+                map["data"] = tmp
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["data"] as? [Any?] {
+                var tmp : [DescribeCdnReportResponseBody.Content.Data] = []
+                for v in value {
+                    if v != nil {
+                        var model = DescribeCdnReportResponseBody.Content.Data()
+                        if v != nil {
+                            model.fromMap(v as? [String: Any?])
+                        }
+                        tmp.append(model)
+                    }
+                }
+                self.data = tmp
+            }
+        }
+    }
+    public var content: DescribeCdnReportResponseBody.Content?
 
     public var requestId: String?
 
@@ -9738,12 +9785,13 @@ public class DescribeCdnReportResponseBody : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
+        try self.content?.validate()
     }
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
         if self.content != nil {
-            map["Content"] = self.content!
+            map["Content"] = self.content?.toMap()
         }
         if self.requestId != nil {
             map["RequestId"] = self.requestId!
@@ -9753,8 +9801,10 @@ public class DescribeCdnReportResponseBody : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
-        if let value = dict["Content"] as? [String: Any] {
-            self.content = value
+        if let value = dict["Content"] as? [String: Any?] {
+            var model = DescribeCdnReportResponseBody.Content()
+            model.fromMap(value)
+            self.content = model
         }
         if let value = dict["RequestId"] as? String {
             self.requestId = value
@@ -9844,7 +9894,195 @@ public class DescribeCdnReportListRequest : Tea.TeaModel {
 }
 
 public class DescribeCdnReportListResponseBody : Tea.TeaModel {
-    public var content: String?
+    public class Content : Tea.TeaModel {
+        public class Data : Tea.TeaModel {
+            public class Deliver : Tea.TeaModel {
+                public class Report : Tea.TeaModel {
+                    public var format: String?
+
+                    public var header: [String]?
+
+                    public var outLine: Int64?
+
+                    public var outSize: Int64?
+
+                    public var shape: String?
+
+                    public var title: String?
+
+                    public override init() {
+                        super.init()
+                    }
+
+                    public init(_ dict: [String: Any]) {
+                        super.init()
+                        self.fromMap(dict)
+                    }
+
+                    public override func validate() throws -> Void {
+                    }
+
+                    public override func toMap() -> [String : Any] {
+                        var map = super.toMap()
+                        if self.format != nil {
+                            map["format"] = self.format!
+                        }
+                        if self.header != nil {
+                            map["header"] = self.header!
+                        }
+                        if self.outLine != nil {
+                            map["outLine"] = self.outLine!
+                        }
+                        if self.outSize != nil {
+                            map["outSize"] = self.outSize!
+                        }
+                        if self.shape != nil {
+                            map["shape"] = self.shape!
+                        }
+                        if self.title != nil {
+                            map["title"] = self.title!
+                        }
+                        return map
+                    }
+
+                    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                        guard let dict else { return }
+                        if let value = dict["format"] as? String {
+                            self.format = value
+                        }
+                        if let value = dict["header"] as? [String] {
+                            self.header = value
+                        }
+                        if let value = dict["outLine"] as? Int64 {
+                            self.outLine = value
+                        }
+                        if let value = dict["outSize"] as? Int64 {
+                            self.outSize = value
+                        }
+                        if let value = dict["shape"] as? String {
+                            self.shape = value
+                        }
+                        if let value = dict["title"] as? String {
+                            self.title = value
+                        }
+                    }
+                }
+                public var report: DescribeCdnReportListResponseBody.Content.Data.Deliver.Report?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                    try self.report?.validate()
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.report != nil {
+                        map["report"] = self.report?.toMap()
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                    guard let dict else { return }
+                    if let value = dict["report"] as? [String: Any?] {
+                        var model = DescribeCdnReportListResponseBody.Content.Data.Deliver.Report()
+                        model.fromMap(value)
+                        self.report = model
+                    }
+                }
+            }
+            public var deliver: DescribeCdnReportListResponseBody.Content.Data.Deliver?
+
+            public var reportId: Int64?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+                try self.deliver?.validate()
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.deliver != nil {
+                    map["deliver"] = self.deliver?.toMap()
+                }
+                if self.reportId != nil {
+                    map["reportId"] = self.reportId!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["deliver"] as? [String: Any?] {
+                    var model = DescribeCdnReportListResponseBody.Content.Data.Deliver()
+                    model.fromMap(value)
+                    self.deliver = model
+                }
+                if let value = dict["reportId"] as? Int64 {
+                    self.reportId = value
+                }
+            }
+        }
+        public var data: [DescribeCdnReportListResponseBody.Content.Data]?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.data != nil {
+                var tmp : [Any] = []
+                for k in self.data! {
+                    tmp.append(k.toMap())
+                }
+                map["data"] = tmp
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["data"] as? [Any?] {
+                var tmp : [DescribeCdnReportListResponseBody.Content.Data] = []
+                for v in value {
+                    if v != nil {
+                        var model = DescribeCdnReportListResponseBody.Content.Data()
+                        if v != nil {
+                            model.fromMap(v as? [String: Any?])
+                        }
+                        tmp.append(model)
+                    }
+                }
+                self.data = tmp
+            }
+        }
+    }
+    public var content: DescribeCdnReportListResponseBody.Content?
 
     public var requestId: String?
 
@@ -9858,12 +10096,13 @@ public class DescribeCdnReportListResponseBody : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
+        try self.content?.validate()
     }
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
         if self.content != nil {
-            map["Content"] = self.content!
+            map["Content"] = self.content?.toMap()
         }
         if self.requestId != nil {
             map["RequestId"] = self.requestId!
@@ -9873,8 +10112,10 @@ public class DescribeCdnReportListResponseBody : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
-        if let value = dict["Content"] as? String {
-            self.content = value
+        if let value = dict["Content"] as? [String: Any?] {
+            var model = DescribeCdnReportListResponseBody.Content()
+            model.fromMap(value)
+            self.content = model
         }
         if let value = dict["RequestId"] as? String {
             self.requestId = value
@@ -11210,7 +11451,129 @@ public class DescribeCdnServiceResponse : Tea.TeaModel {
 }
 
 public class DescribeCdnSubListResponseBody : Tea.TeaModel {
-    public var content: String?
+    public class Content : Tea.TeaModel {
+        public class Data : Tea.TeaModel {
+            public var createTime: String?
+
+            public var domains: [String]?
+
+            public var effectiveEnd: String?
+
+            public var effectiveFrom: String?
+
+            public var reportId: [Int64]?
+
+            public var status: String?
+
+            public var subId: Int64?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.createTime != nil {
+                    map["createTime"] = self.createTime!
+                }
+                if self.domains != nil {
+                    map["domains"] = self.domains!
+                }
+                if self.effectiveEnd != nil {
+                    map["effectiveEnd"] = self.effectiveEnd!
+                }
+                if self.effectiveFrom != nil {
+                    map["effectiveFrom"] = self.effectiveFrom!
+                }
+                if self.reportId != nil {
+                    map["reportId"] = self.reportId!
+                }
+                if self.status != nil {
+                    map["status"] = self.status!
+                }
+                if self.subId != nil {
+                    map["subId"] = self.subId!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["createTime"] as? String {
+                    self.createTime = value
+                }
+                if let value = dict["domains"] as? [String] {
+                    self.domains = value
+                }
+                if let value = dict["effectiveEnd"] as? String {
+                    self.effectiveEnd = value
+                }
+                if let value = dict["effectiveFrom"] as? String {
+                    self.effectiveFrom = value
+                }
+                if let value = dict["reportId"] as? [Int64] {
+                    self.reportId = value
+                }
+                if let value = dict["status"] as? String {
+                    self.status = value
+                }
+                if let value = dict["subId"] as? Int64 {
+                    self.subId = value
+                }
+            }
+        }
+        public var data: [DescribeCdnSubListResponseBody.Content.Data]?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.data != nil {
+                var tmp : [Any] = []
+                for k in self.data! {
+                    tmp.append(k.toMap())
+                }
+                map["data"] = tmp
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["data"] as? [Any?] {
+                var tmp : [DescribeCdnSubListResponseBody.Content.Data] = []
+                for v in value {
+                    if v != nil {
+                        var model = DescribeCdnSubListResponseBody.Content.Data()
+                        if v != nil {
+                            model.fromMap(v as? [String: Any?])
+                        }
+                        tmp.append(model)
+                    }
+                }
+                self.data = tmp
+            }
+        }
+    }
+    public var content: DescribeCdnSubListResponseBody.Content?
 
     public var requestId: String?
 
@@ -11224,12 +11587,13 @@ public class DescribeCdnSubListResponseBody : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
+        try self.content?.validate()
     }
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
         if self.content != nil {
-            map["Content"] = self.content!
+            map["Content"] = self.content?.toMap()
         }
         if self.requestId != nil {
             map["RequestId"] = self.requestId!
@@ -11239,8 +11603,10 @@ public class DescribeCdnSubListResponseBody : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
-        if let value = dict["Content"] as? String {
-            self.content = value
+        if let value = dict["Content"] as? [String: Any?] {
+            var model = DescribeCdnSubListResponseBody.Content()
+            model.fromMap(value)
+            self.content = model
         }
         if let value = dict["RequestId"] as? String {
             self.requestId = value
