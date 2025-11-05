@@ -21086,7 +21086,13 @@ public class DescribeNatFirewallListResponseBody : Tea.TeaModel {
 
         public var proxyName: String?
 
+        public var proxyNetworkInterfaceId: String?
+
+        public var proxyRouteTableId: String?
+
         public var proxyStatus: String?
+
+        public var proxyVSwitchId: String?
 
         public var regionId: String?
 
@@ -21138,8 +21144,17 @@ public class DescribeNatFirewallListResponseBody : Tea.TeaModel {
             if self.proxyName != nil {
                 map["ProxyName"] = self.proxyName!
             }
+            if self.proxyNetworkInterfaceId != nil {
+                map["ProxyNetworkInterfaceId"] = self.proxyNetworkInterfaceId!
+            }
+            if self.proxyRouteTableId != nil {
+                map["ProxyRouteTableId"] = self.proxyRouteTableId!
+            }
             if self.proxyStatus != nil {
                 map["ProxyStatus"] = self.proxyStatus!
+            }
+            if self.proxyVSwitchId != nil {
+                map["ProxyVSwitchId"] = self.proxyVSwitchId!
             }
             if self.regionId != nil {
                 map["RegionId"] = self.regionId!
@@ -21192,8 +21207,17 @@ public class DescribeNatFirewallListResponseBody : Tea.TeaModel {
             if let value = dict["ProxyName"] as? String {
                 self.proxyName = value
             }
+            if let value = dict["ProxyNetworkInterfaceId"] as? String {
+                self.proxyNetworkInterfaceId = value
+            }
+            if let value = dict["ProxyRouteTableId"] as? String {
+                self.proxyRouteTableId = value
+            }
             if let value = dict["ProxyStatus"] as? String {
                 self.proxyStatus = value
+            }
+            if let value = dict["ProxyVSwitchId"] as? String {
+                self.proxyVSwitchId = value
             }
             if let value = dict["RegionId"] as? String {
                 self.regionId = value
