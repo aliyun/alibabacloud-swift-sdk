@@ -30165,6 +30165,210 @@ public class ExportRecordsResponse : Tea.TeaModel {
     }
 }
 
+public class GetApiSchemaUsageRequest : Tea.TeaModel {
+    public var siteId: Int64?
+
+    public var siteVersion: Int32?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.siteId != nil {
+            map["SiteId"] = self.siteId!
+        }
+        if self.siteVersion != nil {
+            map["SiteVersion"] = self.siteVersion!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["SiteId"] as? Int64 {
+            self.siteId = value
+        }
+        if let value = dict["SiteVersion"] as? Int32 {
+            self.siteVersion = value
+        }
+    }
+}
+
+public class GetApiSchemaUsageResponseBody : Tea.TeaModel {
+    public class Usages : Tea.TeaModel {
+        public var id: Int64?
+
+        public var name: String?
+
+        public var usage: Int32?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.id != nil {
+                map["Id"] = self.id!
+            }
+            if self.name != nil {
+                map["Name"] = self.name!
+            }
+            if self.usage != nil {
+                map["Usage"] = self.usage!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["Id"] as? Int64 {
+                self.id = value
+            }
+            if let value = dict["Name"] as? String {
+                self.name = value
+            }
+            if let value = dict["Usage"] as? Int32 {
+                self.usage = value
+            }
+        }
+    }
+    public var instanceId: String?
+
+    public var instanceUsage: Int32?
+
+    public var requestId: String?
+
+    public var usages: [GetApiSchemaUsageResponseBody.Usages]?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.instanceId != nil {
+            map["InstanceId"] = self.instanceId!
+        }
+        if self.instanceUsage != nil {
+            map["InstanceUsage"] = self.instanceUsage!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.usages != nil {
+            var tmp : [Any] = []
+            for k in self.usages! {
+                tmp.append(k.toMap())
+            }
+            map["Usages"] = tmp
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["InstanceId"] as? String {
+            self.instanceId = value
+        }
+        if let value = dict["InstanceUsage"] as? Int32 {
+            self.instanceUsage = value
+        }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+        if let value = dict["Usages"] as? [Any?] {
+            var tmp : [GetApiSchemaUsageResponseBody.Usages] = []
+            for v in value {
+                if v != nil {
+                    var model = GetApiSchemaUsageResponseBody.Usages()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.usages = tmp
+        }
+    }
+}
+
+public class GetApiSchemaUsageResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: GetApiSchemaUsageResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = GetApiSchemaUsageResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
 public class GetCacheReserveSpecificationResponseBody : Tea.TeaModel {
     public var cacheReserveCapacity: [String]?
 
@@ -66416,6 +66620,8 @@ public class ListUserRatePlanInstancesRequest : Tea.TeaModel {
 
     public var pageSize: Int32?
 
+    public var planType: String?
+
     public var remainingExpireDays: Int32?
 
     public var sortBy: String?
@@ -66452,6 +66658,9 @@ public class ListUserRatePlanInstancesRequest : Tea.TeaModel {
         if self.pageSize != nil {
             map["PageSize"] = self.pageSize!
         }
+        if self.planType != nil {
+            map["PlanType"] = self.planType!
+        }
         if self.remainingExpireDays != nil {
             map["RemainingExpireDays"] = self.remainingExpireDays!
         }
@@ -66483,6 +66692,9 @@ public class ListUserRatePlanInstancesRequest : Tea.TeaModel {
         }
         if let value = dict["PageSize"] as? Int32 {
             self.pageSize = value
+        }
+        if let value = dict["PlanType"] as? String {
+            self.planType = value
         }
         if let value = dict["RemainingExpireDays"] as? Int32 {
             self.remainingExpireDays = value
