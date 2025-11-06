@@ -13234,7 +13234,47 @@ public class DescribeAssetStatisticResponseBody : Tea.TeaModel {
                 }
             }
         }
+        public class CfwTotalGeneralInstanceRegionStatistic : Tea.TeaModel {
+            public var memberList: [String]?
+
+            public var regionNo: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.memberList != nil {
+                    map["MemberList"] = self.memberList!
+                }
+                if self.regionNo != nil {
+                    map["RegionNo"] = self.regionNo!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["MemberList"] as? [String] {
+                    self.memberList = value
+                }
+                if let value = dict["RegionNo"] as? String {
+                    self.regionNo = value
+                }
+            }
+        }
         public var cfwGeneralInstanceRegionStatistic: [DescribeAssetStatisticResponseBody.GeneralInstanceSpecStatistic.CfwGeneralInstanceRegionStatistic]?
+
+        public var cfwTotalGeneralInstanceRegionStatistic: [DescribeAssetStatisticResponseBody.GeneralInstanceSpecStatistic.CfwTotalGeneralInstanceRegionStatistic]?
 
         public var totalCfwGeneralInstanceCnt: Int32?
 
@@ -13268,6 +13308,13 @@ public class DescribeAssetStatisticResponseBody : Tea.TeaModel {
                     tmp.append(k.toMap())
                 }
                 map["CfwGeneralInstanceRegionStatistic"] = tmp
+            }
+            if self.cfwTotalGeneralInstanceRegionStatistic != nil {
+                var tmp : [Any] = []
+                for k in self.cfwTotalGeneralInstanceRegionStatistic! {
+                    tmp.append(k.toMap())
+                }
+                map["CfwTotalGeneralInstanceRegionStatistic"] = tmp
             }
             if self.totalCfwGeneralInstanceCnt != nil {
                 map["TotalCfwGeneralInstanceCnt"] = self.totalCfwGeneralInstanceCnt!
@@ -13304,6 +13351,19 @@ public class DescribeAssetStatisticResponseBody : Tea.TeaModel {
                     }
                 }
                 self.cfwGeneralInstanceRegionStatistic = tmp
+            }
+            if let value = dict["CfwTotalGeneralInstanceRegionStatistic"] as? [Any?] {
+                var tmp : [DescribeAssetStatisticResponseBody.GeneralInstanceSpecStatistic.CfwTotalGeneralInstanceRegionStatistic] = []
+                for v in value {
+                    if v != nil {
+                        var model = DescribeAssetStatisticResponseBody.GeneralInstanceSpecStatistic.CfwTotalGeneralInstanceRegionStatistic()
+                        if v != nil {
+                            model.fromMap(v as? [String: Any?])
+                        }
+                        tmp.append(model)
+                    }
+                }
+                self.cfwTotalGeneralInstanceRegionStatistic = tmp
             }
             if let value = dict["TotalCfwGeneralInstanceCnt"] as? Int32 {
                 self.totalCfwGeneralInstanceCnt = value
