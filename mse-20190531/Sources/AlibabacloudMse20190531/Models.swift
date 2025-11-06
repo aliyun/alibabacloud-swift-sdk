@@ -34566,6 +34566,8 @@ public class GetNacosMcpServerResponseBody : Tea.TeaModel {
 
             public var specificationType: String?
 
+            public var toolDecryptStatus: String?
+
             public var tools: [GetNacosMcpServerResponseBody.Data.ToolSpec.Tools]?
 
             public var toolsMeta: [String: DataToolSpecToolsMetaValue]?
@@ -34589,6 +34591,9 @@ public class GetNacosMcpServerResponseBody : Tea.TeaModel {
                 }
                 if self.specificationType != nil {
                     map["SpecificationType"] = self.specificationType!
+                }
+                if self.toolDecryptStatus != nil {
+                    map["ToolDecryptStatus"] = self.toolDecryptStatus!
                 }
                 if self.tools != nil {
                     var tmp : [Any] = []
@@ -34614,6 +34619,9 @@ public class GetNacosMcpServerResponseBody : Tea.TeaModel {
                 }
                 if let value = dict["SpecificationType"] as? String {
                     self.specificationType = value
+                }
+                if let value = dict["ToolDecryptStatus"] as? String {
+                    self.toolDecryptStatus = value
                 }
                 if let value = dict["Tools"] as? [Any?] {
                     var tmp : [GetNacosMcpServerResponseBody.Data.ToolSpec.Tools] = []
