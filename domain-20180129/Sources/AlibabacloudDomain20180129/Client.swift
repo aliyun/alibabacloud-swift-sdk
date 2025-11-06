@@ -1667,6 +1667,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.queryType)) {
             query["QueryType"] = request.queryType ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.registrar)) {
+            query["Registrar"] = request.registrar ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.resourceGroupId)) {
             query["ResourceGroupId"] = request.resourceGroupId ?? "";
         }
@@ -1744,6 +1747,45 @@ open class Client : AlibabacloudOpenApi.Client {
     public func queryDomainRealNameVerificationInfo(_ request: QueryDomainRealNameVerificationInfoRequest) async throws -> QueryDomainRealNameVerificationInfoResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         return try await queryDomainRealNameVerificationInfoWithOptions(request as! QueryDomainRealNameVerificationInfoRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func queryDomainRealTimePriceWithOptions(_ tmpReq: QueryDomainRealTimePriceRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> QueryDomainRealTimePriceResponse {
+        try TeaUtils.Client.validateModel(tmpReq)
+        var request: QueryDomainRealTimePriceShrinkRequest = QueryDomainRealTimePriceShrinkRequest([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.domainItem)) {
+            request.domainItemShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.domainItem, "DomainItem", "json")
+        }
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.currency)) {
+            query["Currency"] = request.currency ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.domainItemShrink)) {
+            query["DomainItem"] = request.domainItemShrink ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "QueryDomainRealTimePrice",
+            "version": "2018-01-29",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(QueryDomainRealTimePriceResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func queryDomainRealTimePrice(_ request: QueryDomainRealTimePriceRequest) async throws -> QueryDomainRealTimePriceResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await queryDomainRealTimePriceWithOptions(request as! QueryDomainRealTimePriceRequest, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -3273,14 +3315,8 @@ open class Client : AlibabacloudOpenApi.Client {
     public func saveBatchTaskForTransferOutByAuthorizationCodeWithOptions(_ request: SaveBatchTaskForTransferOutByAuthorizationCodeRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> SaveBatchTaskForTransferOutByAuthorizationCodeResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
-        if (!TeaUtils.Client.isUnset(request.long)) {
-            query["Long"] = request.long ?? "";
-        }
         if (!TeaUtils.Client.isUnset(request.transferOutParamList)) {
             query["TransferOutParamList"] = request.transferOutParamList ?? [];
-        }
-        if (!TeaUtils.Client.isUnset(request.userClientIp)) {
-            query["UserClientIp"] = request.userClientIp ?? "";
         }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "query": AlibabaCloudOpenApiUtil.Client.query(query)
@@ -4842,12 +4878,6 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.domainName)) {
             query["DomainName"] = request.domainName ?? "";
-        }
-        if (!TeaUtils.Client.isUnset(request.lang)) {
-            query["Lang"] = request.lang ?? "";
-        }
-        if (!TeaUtils.Client.isUnset(request.userClientIp)) {
-            query["UserClientIp"] = request.userClientIp ?? "";
         }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "query": AlibabaCloudOpenApiUtil.Client.query(query)
