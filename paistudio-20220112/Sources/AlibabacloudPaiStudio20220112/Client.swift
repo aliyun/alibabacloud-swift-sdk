@@ -191,6 +191,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.allocateStrategy)) {
             body["AllocateStrategy"] = request.allocateStrategy ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.clusterSpec)) {
+            body["ClusterSpec"] = request.clusterSpec!;
+        }
         if (!TeaUtils.Client.isUnset(request.description_)) {
             body["Description"] = request.description_ ?? "";
         }
@@ -1419,6 +1422,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func listQuotasWithOptions(_ request: ListQuotasRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> ListQuotasResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.clusterType)) {
+            query["ClusterType"] = request.clusterType ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.hasResource)) {
             query["HasResource"] = request.hasResource ?? "";
         }

@@ -1049,6 +1049,67 @@ public class ChannelProperty : Tea.TeaModel {
     }
 }
 
+public class ClusterSpec : Tea.TeaModel {
+    public var clusterType: String?
+
+    public var dataSources: [DataSource]?
+
+    public var image: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.clusterType != nil {
+            map["ClusterType"] = self.clusterType!
+        }
+        if self.dataSources != nil {
+            var tmp : [Any] = []
+            for k in self.dataSources! {
+                tmp.append(k.toMap())
+            }
+            map["DataSources"] = tmp
+        }
+        if self.image != nil {
+            map["Image"] = self.image!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["ClusterType"] as? String {
+            self.clusterType = value
+        }
+        if let value = dict["DataSources"] as? [Any?] {
+            var tmp : [DataSource] = []
+            for v in value {
+                if v != nil {
+                    var model = DataSource()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.dataSources = tmp
+        }
+        if let value = dict["Image"] as? String {
+            self.image = value
+        }
+    }
+}
+
 public class ComponentSpec : Tea.TeaModel {
     public var codeDir: Location?
 
@@ -1260,6 +1321,53 @@ public class ConditionExpression : Tea.TeaModel {
         }
         if let value = dict["Values"] as? [String] {
             self.values = value
+        }
+    }
+}
+
+public class DataSource : Tea.TeaModel {
+    public var dataSourceId: String?
+
+    public var mountPath: String?
+
+    public var uri: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.dataSourceId != nil {
+            map["DataSourceId"] = self.dataSourceId!
+        }
+        if self.mountPath != nil {
+            map["MountPath"] = self.mountPath!
+        }
+        if self.uri != nil {
+            map["Uri"] = self.uri!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["DataSourceId"] as? String {
+            self.dataSourceId = value
+        }
+        if let value = dict["MountPath"] as? String {
+            self.mountPath = value
+        }
+        if let value = dict["Uri"] as? String {
+            self.uri = value
         }
     }
 }
@@ -3973,6 +4081,8 @@ public class Quota : Tea.TeaModel {
 
     public var queueStrategy: String?
 
+    public var quotaCluster: QuotaCluster?
+
     public var quotaConfig: QuotaConfig?
 
     public var quotaDetails: QuotaDetails?
@@ -4008,6 +4118,7 @@ public class Quota : Tea.TeaModel {
 
     public override func validate() throws -> Void {
         try self.min?.validate()
+        try self.quotaCluster?.validate()
         try self.quotaConfig?.validate()
         try self.quotaDetails?.validate()
     }
@@ -4050,6 +4161,9 @@ public class Quota : Tea.TeaModel {
         }
         if self.queueStrategy != nil {
             map["QueueStrategy"] = self.queueStrategy!
+        }
+        if self.quotaCluster != nil {
+            map["QuotaCluster"] = self.quotaCluster?.toMap()
         }
         if self.quotaConfig != nil {
             map["QuotaConfig"] = self.quotaConfig?.toMap()
@@ -4145,6 +4259,11 @@ public class Quota : Tea.TeaModel {
         if let value = dict["QueueStrategy"] as? String {
             self.queueStrategy = value
         }
+        if let value = dict["QuotaCluster"] as? [String: Any?] {
+            var model = QuotaCluster()
+            model.fromMap(value)
+            self.quotaCluster = model
+        }
         if let value = dict["QuotaConfig"] as? [String: Any?] {
             var model = QuotaConfig()
             model.fromMap(value)
@@ -4204,6 +4323,83 @@ public class Quota : Tea.TeaModel {
                 }
             }
             self.workspaces = tmp
+        }
+    }
+}
+
+public class QuotaCluster : Tea.TeaModel {
+    public var clusterType: String?
+
+    public var dataSources: [DataSource]?
+
+    public var endpoints: [String: String]?
+
+    public var image: String?
+
+    public var status: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.clusterType != nil {
+            map["ClusterType"] = self.clusterType!
+        }
+        if self.dataSources != nil {
+            var tmp : [Any] = []
+            for k in self.dataSources! {
+                tmp.append(k.toMap())
+            }
+            map["DataSources"] = tmp
+        }
+        if self.endpoints != nil {
+            map["Endpoints"] = self.endpoints!
+        }
+        if self.image != nil {
+            map["Image"] = self.image!
+        }
+        if self.status != nil {
+            map["Status"] = self.status!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["ClusterType"] as? String {
+            self.clusterType = value
+        }
+        if let value = dict["DataSources"] as? [Any?] {
+            var tmp : [DataSource] = []
+            for v in value {
+                if v != nil {
+                    var model = DataSource()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.dataSources = tmp
+        }
+        if let value = dict["Endpoints"] as? [String: String] {
+            self.endpoints = value
+        }
+        if let value = dict["Image"] as? String {
+            self.image = value
+        }
+        if let value = dict["Status"] as? String {
+            self.status = value
         }
     }
 }
@@ -7848,6 +8044,8 @@ public class CreateInstanceWebTerminalResponse : Tea.TeaModel {
 public class CreateQuotaRequest : Tea.TeaModel {
     public var allocateStrategy: String?
 
+    public var clusterSpec: ClusterSpec?
+
     public var description_: String?
 
     public var labels: [Label]?
@@ -7876,6 +8074,7 @@ public class CreateQuotaRequest : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
+        try self.clusterSpec?.validate()
         try self.min?.validate()
         try self.quotaConfig?.validate()
     }
@@ -7884,6 +8083,9 @@ public class CreateQuotaRequest : Tea.TeaModel {
         var map = super.toMap()
         if self.allocateStrategy != nil {
             map["AllocateStrategy"] = self.allocateStrategy!
+        }
+        if self.clusterSpec != nil {
+            map["ClusterSpec"] = self.clusterSpec?.toMap()
         }
         if self.description_ != nil {
             map["Description"] = self.description_!
@@ -7923,6 +8125,11 @@ public class CreateQuotaRequest : Tea.TeaModel {
         guard let dict else { return }
         if let value = dict["AllocateStrategy"] as? String {
             self.allocateStrategy = value
+        }
+        if let value = dict["ClusterSpec"] as? [String: Any?] {
+            var model = ClusterSpec()
+            model.fromMap(value)
+            self.clusterSpec = model
         }
         if let value = dict["Description"] as? String {
             self.description_ = value
@@ -10608,6 +10815,8 @@ public class GetQuotaResponseBody : Tea.TeaModel {
 
     public var queueStrategy: String?
 
+    public var quotaCluster: QuotaCluster?
+
     public var quotaConfig: QuotaConfig?
 
     public var quotaDetails: QuotaDetails?
@@ -10645,6 +10854,7 @@ public class GetQuotaResponseBody : Tea.TeaModel {
 
     public override func validate() throws -> Void {
         try self.min?.validate()
+        try self.quotaCluster?.validate()
         try self.quotaConfig?.validate()
         try self.quotaDetails?.validate()
     }
@@ -10687,6 +10897,9 @@ public class GetQuotaResponseBody : Tea.TeaModel {
         }
         if self.queueStrategy != nil {
             map["QueueStrategy"] = self.queueStrategy!
+        }
+        if self.quotaCluster != nil {
+            map["QuotaCluster"] = self.quotaCluster?.toMap()
         }
         if self.quotaConfig != nil {
             map["QuotaConfig"] = self.quotaConfig?.toMap()
@@ -10784,6 +10997,11 @@ public class GetQuotaResponseBody : Tea.TeaModel {
         }
         if let value = dict["QueueStrategy"] as? String {
             self.queueStrategy = value
+        }
+        if let value = dict["QuotaCluster"] as? [String: Any?] {
+            var model = QuotaCluster()
+            model.fromMap(value)
+            self.quotaCluster = model
         }
         if let value = dict["QuotaConfig"] as? [String: Any?] {
             var model = QuotaConfig()
@@ -15317,6 +15535,8 @@ public class ListQuotaWorkloadsResponse : Tea.TeaModel {
 }
 
 public class ListQuotasRequest : Tea.TeaModel {
+    public var clusterType: String?
+
     public var hasResource: String?
 
     public var labels: String?
@@ -15363,6 +15583,9 @@ public class ListQuotasRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.clusterType != nil {
+            map["ClusterType"] = self.clusterType!
+        }
         if self.hasResource != nil {
             map["HasResource"] = self.hasResource!
         }
@@ -15416,6 +15639,9 @@ public class ListQuotasRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["ClusterType"] as? String {
+            self.clusterType = value
+        }
         if let value = dict["HasResource"] as? String {
             self.hasResource = value
         }
