@@ -783,6 +783,71 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func createImageBuildWithOptions(_ request: CreateImageBuildRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> CreateImageBuildResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.clientToken)) {
+            query["ClientToken"] = request.clientToken ?? "";
+        }
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.accessibility)) {
+            body["Accessibility"] = request.accessibility ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.buildConfig)) {
+            body["BuildConfig"] = request.buildConfig!;
+        }
+        if (!TeaUtils.Client.isUnset(request.image)) {
+            body["Image"] = request.image!;
+        }
+        if (!TeaUtils.Client.isUnset(request.imageBuildJobName)) {
+            body["ImageBuildJobName"] = request.imageBuildJobName ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.overwriteImageTag)) {
+            body["OverwriteImageTag"] = request.overwriteImageTag!;
+        }
+        if (!TeaUtils.Client.isUnset(request.regionId)) {
+            body["RegionId"] = request.regionId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.resource)) {
+            body["Resource"] = request.resource!;
+        }
+        if (!TeaUtils.Client.isUnset(request.targetRegistry)) {
+            body["TargetRegistry"] = request.targetRegistry!;
+        }
+        if (!TeaUtils.Client.isUnset(request.userVpc)) {
+            body["UserVpc"] = request.userVpc!;
+        }
+        if (!TeaUtils.Client.isUnset(request.workspaceId)) {
+            body["WorkspaceId"] = request.workspaceId ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String],
+            "query": AlibabaCloudOpenApiUtil.Client.query(query),
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "CreateImageBuild",
+            "version": "2021-02-04",
+            "protocol": "HTTPS",
+            "pathname": "/api/v1/imagebuilds",
+            "method": "POST",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(CreateImageBuildResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func createImageBuild(_ request: CreateImageBuildRequest) async throws -> CreateImageBuildResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await createImageBuildWithOptions(request as! CreateImageBuildRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func createMemberWithOptions(_ WorkspaceId: String, _ request: CreateMemberRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> CreateMemberResponse {
         try TeaUtils.Client.validateModel(request)
         var body: [String: Any] = [:]
