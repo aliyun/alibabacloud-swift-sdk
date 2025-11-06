@@ -4973,6 +4973,8 @@ public class CreateDocParserJobRequest : Tea.TeaModel {
 
     public var fileUrl: String?
 
+    public var ragInstanceId: String?
+
     public var regionId: String?
 
     public var resourceGroupId: String?
@@ -4999,6 +5001,9 @@ public class CreateDocParserJobRequest : Tea.TeaModel {
         if self.fileUrl != nil {
             map["FileUrl"] = self.fileUrl!
         }
+        if self.ragInstanceId != nil {
+            map["RagInstanceId"] = self.ragInstanceId!
+        }
         if self.regionId != nil {
             map["RegionId"] = self.regionId!
         }
@@ -5019,6 +5024,9 @@ public class CreateDocParserJobRequest : Tea.TeaModel {
         if let value = dict["FileUrl"] as? String {
             self.fileUrl = value
         }
+        if let value = dict["RagInstanceId"] as? String {
+            self.ragInstanceId = value
+        }
         if let value = dict["RegionId"] as? String {
             self.regionId = value
         }
@@ -5035,6 +5043,8 @@ public class CreateDocParserJobAdvanceRequest : Tea.TeaModel {
     public var fileName: String?
 
     public var fileUrlObject: InputStream?
+
+    public var ragInstanceId: String?
 
     public var regionId: String?
 
@@ -5062,6 +5072,9 @@ public class CreateDocParserJobAdvanceRequest : Tea.TeaModel {
         if self.fileUrlObject != nil {
             map["FileUrl"] = self.fileUrlObject!
         }
+        if self.ragInstanceId != nil {
+            map["RagInstanceId"] = self.ragInstanceId!
+        }
         if self.regionId != nil {
             map["RegionId"] = self.regionId!
         }
@@ -5081,6 +5094,9 @@ public class CreateDocParserJobAdvanceRequest : Tea.TeaModel {
         }
         if let value = dict["FileUrl"] as? InputStream {
             self.fileUrlObject = value
+        }
+        if let value = dict["RagInstanceId"] as? String {
+            self.ragInstanceId = value
         }
         if let value = dict["RegionId"] as? String {
             self.regionId = value
@@ -11894,6 +11910,8 @@ public class DescribeDedicatedClusterMonitorRuleResponse : Tea.TeaModel {
 public class DescribeDocParserJobResultRequest : Tea.TeaModel {
     public var dtsJobId: String?
 
+    public var ragInstanceId: String?
+
     public var regionId: String?
 
     public var resourceGroupId: String?
@@ -11915,6 +11933,9 @@ public class DescribeDocParserJobResultRequest : Tea.TeaModel {
         if self.dtsJobId != nil {
             map["DtsJobId"] = self.dtsJobId!
         }
+        if self.ragInstanceId != nil {
+            map["RagInstanceId"] = self.ragInstanceId!
+        }
         if self.regionId != nil {
             map["RegionId"] = self.regionId!
         }
@@ -11928,6 +11949,9 @@ public class DescribeDocParserJobResultRequest : Tea.TeaModel {
         guard let dict else { return }
         if let value = dict["DtsJobId"] as? String {
             self.dtsJobId = value
+        }
+        if let value = dict["RagInstanceId"] as? String {
+            self.ragInstanceId = value
         }
         if let value = dict["RegionId"] as? String {
             self.regionId = value
@@ -12138,6 +12162,8 @@ public class DescribeDocParserJobResultResponse : Tea.TeaModel {
 public class DescribeDocParserJobStatusRequest : Tea.TeaModel {
     public var dtsJobId: String?
 
+    public var ragInstanceId: String?
+
     public var regionId: String?
 
     public var resourceGroupId: String?
@@ -12159,6 +12185,9 @@ public class DescribeDocParserJobStatusRequest : Tea.TeaModel {
         if self.dtsJobId != nil {
             map["DtsJobId"] = self.dtsJobId!
         }
+        if self.ragInstanceId != nil {
+            map["RagInstanceId"] = self.ragInstanceId!
+        }
         if self.regionId != nil {
             map["RegionId"] = self.regionId!
         }
@@ -12172,6 +12201,9 @@ public class DescribeDocParserJobStatusRequest : Tea.TeaModel {
         guard let dict else { return }
         if let value = dict["DtsJobId"] as? String {
             self.dtsJobId = value
+        }
+        if let value = dict["RagInstanceId"] as? String {
+            self.ragInstanceId = value
         }
         if let value = dict["RegionId"] as? String {
             self.regionId = value
