@@ -13816,6 +13816,8 @@ public class DescribeAIDBClusterAttributeResponseBody : Tea.TeaModel {
 
         public var cpuCores: String?
 
+        public var creationTime: String?
+
         public var DBNodeClass: String?
 
         public var DBNodeDescription: String?
@@ -13863,6 +13865,9 @@ public class DescribeAIDBClusterAttributeResponseBody : Tea.TeaModel {
             }
             if self.cpuCores != nil {
                 map["CpuCores"] = self.cpuCores!
+            }
+            if self.creationTime != nil {
+                map["CreationTime"] = self.creationTime!
             }
             if self.DBNodeClass != nil {
                 map["DBNodeClass"] = self.DBNodeClass!
@@ -13920,6 +13925,9 @@ public class DescribeAIDBClusterAttributeResponseBody : Tea.TeaModel {
             }
             if let value = dict["CpuCores"] as? String {
                 self.cpuCores = value
+            }
+            if let value = dict["CreationTime"] as? String {
+                self.creationTime = value
             }
             if let value = dict["DBNodeClass"] as? String {
                 self.DBNodeClass = value
