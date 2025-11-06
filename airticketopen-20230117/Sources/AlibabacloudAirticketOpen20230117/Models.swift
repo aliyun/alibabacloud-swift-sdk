@@ -22,6 +22,22 @@ public class DataSolutionListSegmentBaggageMappingListPassengerBaggageAllowanceM
 
     public var isAllCarryOnWeight: Bool?
 
+    public var carryLength: Int32?
+
+    public var carryWidth: Int32?
+
+    public var carryHeight: Int32?
+
+    public var carrySumOfLengthWidthHeight: Int32?
+
+    public var length: Int32?
+
+    public var width: Int32?
+
+    public var height: Int32?
+
+    public var sumOfLengthWidthHeight: Int32?
+
     public override init() {
         super.init()
     }
@@ -60,6 +76,30 @@ public class DataSolutionListSegmentBaggageMappingListPassengerBaggageAllowanceM
         if self.isAllCarryOnWeight != nil {
             map["is_all_carry_on_weight"] = self.isAllCarryOnWeight!
         }
+        if self.carryLength != nil {
+            map["carry_length"] = self.carryLength!
+        }
+        if self.carryWidth != nil {
+            map["carry_width"] = self.carryWidth!
+        }
+        if self.carryHeight != nil {
+            map["carry_height"] = self.carryHeight!
+        }
+        if self.carrySumOfLengthWidthHeight != nil {
+            map["carry_sum_of_length_width_height"] = self.carrySumOfLengthWidthHeight!
+        }
+        if self.length != nil {
+            map["length"] = self.length!
+        }
+        if self.width != nil {
+            map["width"] = self.width!
+        }
+        if self.height != nil {
+            map["height"] = self.height!
+        }
+        if self.sumOfLengthWidthHeight != nil {
+            map["sum_of_length_width_height"] = self.sumOfLengthWidthHeight!
+        }
         return map
     }
 
@@ -88,6 +128,30 @@ public class DataSolutionListSegmentBaggageMappingListPassengerBaggageAllowanceM
         }
         if let value = dict["is_all_carry_on_weight"] as? Bool {
             self.isAllCarryOnWeight = value
+        }
+        if let value = dict["carry_length"] as? Int32 {
+            self.carryLength = value
+        }
+        if let value = dict["carry_width"] as? Int32 {
+            self.carryWidth = value
+        }
+        if let value = dict["carry_height"] as? Int32 {
+            self.carryHeight = value
+        }
+        if let value = dict["carry_sum_of_length_width_height"] as? Int32 {
+            self.carrySumOfLengthWidthHeight = value
+        }
+        if let value = dict["length"] as? Int32 {
+            self.length = value
+        }
+        if let value = dict["width"] as? Int32 {
+            self.width = value
+        }
+        if let value = dict["height"] as? Int32 {
+            self.height = value
+        }
+        if let value = dict["sum_of_length_width_height"] as? Int32 {
+            self.sumOfLengthWidthHeight = value
         }
     }
 }
@@ -8857,6 +8921,8 @@ public class EnrichRequest : Tea.TeaModel {
 
             public var departureCity: String?
 
+            public var departureDate: String?
+
             public var departureTime: String?
 
             public var marketingFlightNo: String?
@@ -8893,6 +8959,9 @@ public class EnrichRequest : Tea.TeaModel {
                 if self.departureCity != nil {
                     map["departure_city"] = self.departureCity!
                 }
+                if self.departureDate != nil {
+                    map["departure_date"] = self.departureDate!
+                }
                 if self.departureTime != nil {
                     map["departure_time"] = self.departureTime!
                 }
@@ -8921,6 +8990,9 @@ public class EnrichRequest : Tea.TeaModel {
                 }
                 if let value = dict["departure_city"] as? String {
                     self.departureCity = value
+                }
+                if let value = dict["departure_date"] as? String {
+                    self.departureDate = value
                 }
                 if let value = dict["departure_time"] as? String {
                     self.departureTime = value
