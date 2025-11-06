@@ -271,6 +271,42 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func createFaultInjectionWithOptions(_ ClusterId: String, _ ServiceName: String, _ InstanceName: String, _ request: CreateFaultInjectionRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> CreateFaultInjectionResponse {
+        try TeaUtils.Client.validateModel(request)
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.faultArgs)) {
+            body["FaultArgs"] = request.faultArgs!;
+        }
+        if (!TeaUtils.Client.isUnset(request.faultType)) {
+            body["FaultType"] = request.faultType ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String],
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "CreateFaultInjection",
+            "version": "2021-07-01",
+            "protocol": "HTTPS",
+            "pathname": "/api/v2/services/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(ClusterId)) + "/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(ServiceName)) + "/instances/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(InstanceName)) + "/faults",
+            "method": "POST",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(CreateFaultInjectionResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func createFaultInjection(_ ClusterId: String, _ ServiceName: String, _ InstanceName: String, _ request: CreateFaultInjectionRequest) async throws -> CreateFaultInjectionResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await createFaultInjectionWithOptions(ClusterId as! String, ServiceName as! String, InstanceName as! String, request as! CreateFaultInjectionRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func createGatewayWithOptions(_ request: CreateGatewayRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> CreateGatewayResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
@@ -829,6 +865,33 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func deleteFaultInjectionWithOptions(_ ClusterId: String, _ ServiceName: String, _ InstanceName: String, _ FaultType: String, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> DeleteFaultInjectionResponse {
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String]
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "DeleteFaultInjection",
+            "version": "2021-07-01",
+            "protocol": "HTTPS",
+            "pathname": "/api/v2/services/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(ClusterId)) + "/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(ServiceName)) + "/instances/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(InstanceName)) + "/faults/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(FaultType)),
+            "method": "DELETE",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(DeleteFaultInjectionResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func deleteFaultInjection(_ ClusterId: String, _ ServiceName: String, _ InstanceName: String, _ FaultType: String) async throws -> DeleteFaultInjectionResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await deleteFaultInjectionWithOptions(ClusterId as! String, ServiceName as! String, InstanceName as! String, FaultType as! String, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func deleteGatewayWithOptions(_ ClusterId: String, _ GatewayId: String, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> DeleteGatewayResponse {
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "headers": headers as! [String: String]
@@ -1192,6 +1255,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.instanceList)) {
             query["InstanceList"] = request.instanceList ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.isReplica)) {
+            query["IsReplica"] = request.isReplica!;
         }
         if (!TeaUtils.Client.isUnset(request.softRestart)) {
             query["SoftRestart"] = request.softRestart!;
@@ -2632,6 +2698,33 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func listServiceInstanceFaultInjectionInfoWithOptions(_ ClusterId: String, _ ServiceName: String, _ InstanceName: String, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> ListServiceInstanceFaultInjectionInfoResponse {
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String]
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "ListServiceInstanceFaultInjectionInfo",
+            "version": "2021-07-01",
+            "protocol": "HTTPS",
+            "pathname": "/api/v2/services/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(ClusterId)) + "/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(ServiceName)) + "/instances/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(InstanceName)) + "/faults",
+            "method": "GET",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(ListServiceInstanceFaultInjectionInfoResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func listServiceInstanceFaultInjectionInfo(_ ClusterId: String, _ ServiceName: String, _ InstanceName: String) async throws -> ListServiceInstanceFaultInjectionInfoResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await listServiceInstanceFaultInjectionInfoWithOptions(ClusterId as! String, ServiceName as! String, InstanceName as! String, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func listServiceInstancesWithOptions(_ ClusterId: String, _ ServiceName: String, _ request: ListServiceInstancesRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> ListServiceInstancesResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
@@ -2656,6 +2749,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.isSpot)) {
             query["IsSpot"] = request.isSpot!;
         }
+        if (!TeaUtils.Client.isUnset(request.listReplica)) {
+            query["ListReplica"] = request.listReplica!;
+        }
         if (!TeaUtils.Client.isUnset(request.memberType)) {
             query["MemberType"] = request.memberType ?? "";
         }
@@ -2667,6 +2763,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.pageSize)) {
             query["PageSize"] = request.pageSize!;
+        }
+        if (!TeaUtils.Client.isUnset(request.replicaName)) {
+            query["ReplicaName"] = request.replicaName ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.resourceType)) {
             query["ResourceType"] = request.resourceType ?? "";
@@ -3569,7 +3668,14 @@ open class Client : AlibabacloudOpenApi.Client {
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func updateServiceInstanceWithOptions(_ ClusterId: String, _ ServiceName: String, _ InstanceName: String, _ request: UpdateServiceInstanceRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> UpdateServiceInstanceResponse {
         try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.isReplica)) {
+            query["IsReplica"] = request.isReplica!;
+        }
         var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.detach)) {
+            body["Detach"] = request.detach!;
+        }
         if (!TeaUtils.Client.isUnset(request.hibernate)) {
             body["Hibernate"] = request.hibernate!;
         }
@@ -3578,6 +3684,7 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "headers": headers as! [String: String],
+            "query": AlibabaCloudOpenApiUtil.Client.query(query),
             "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
         ])
         var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
