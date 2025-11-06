@@ -10201,6 +10201,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func describeExposedStatisticsDetailWithOptions(_ request: DescribeExposedStatisticsDetailRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DescribeExposedStatisticsDetailResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.criteria)) {
+            query["Criteria"] = request.criteria ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.currentPage)) {
             query["CurrentPage"] = request.currentPage!;
         }
@@ -10218,6 +10221,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.statisticsTypeInstanceValue)) {
             query["StatisticsTypeInstanceValue"] = request.statisticsTypeInstanceValue ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.uuid)) {
+            query["Uuid"] = request.uuid ?? "";
         }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "query": AlibabaCloudOpenApiUtil.Client.query(query)
@@ -19623,6 +19629,9 @@ open class Client : AlibabacloudOpenApi.Client {
         var query: [String: Any] = [:]
         if (!TeaUtils.Client.isUnset(request.eventId)) {
             query["EventId"] = request.eventId!;
+        }
+        if (!TeaUtils.Client.isUnset(request.eventSource)) {
+            query["EventSource"] = request.eventSource ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.lang)) {
             query["Lang"] = request.lang ?? "";
