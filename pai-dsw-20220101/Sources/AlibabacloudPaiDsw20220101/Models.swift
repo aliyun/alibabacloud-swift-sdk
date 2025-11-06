@@ -798,6 +798,61 @@ public class ForwardInfoResponse : Tea.TeaModel {
     }
 }
 
+public class ServiceConfig : Tea.TeaModel {
+    public var codeServerAuth: String?
+
+    public var codeServerPassword: String?
+
+    public var jupyterServerAuth: String?
+
+    public var jupyterServerPassword: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.codeServerAuth != nil {
+            map["CodeServerAuth"] = self.codeServerAuth!
+        }
+        if self.codeServerPassword != nil {
+            map["CodeServerPassword"] = self.codeServerPassword!
+        }
+        if self.jupyterServerAuth != nil {
+            map["JupyterServerAuth"] = self.jupyterServerAuth!
+        }
+        if self.jupyterServerPassword != nil {
+            map["JupyterServerPassword"] = self.jupyterServerPassword!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["CodeServerAuth"] as? String {
+            self.codeServerAuth = value
+        }
+        if let value = dict["CodeServerPassword"] as? String {
+            self.codeServerPassword = value
+        }
+        if let value = dict["JupyterServerAuth"] as? String {
+            self.jupyterServerAuth = value
+        }
+        if let value = dict["JupyterServerPassword"] as? String {
+            self.jupyterServerPassword = value
+        }
+    }
+}
+
 public class CreateDiagnosisRequest : Tea.TeaModel {
     public var gmtFailureTime: String?
 
@@ -4300,6 +4355,8 @@ public class GetInstanceResponseBody : Tea.TeaModel {
 
         public var forwardInfos: [ForwardInfoResponse]?
 
+        public var ip: String?
+
         public var securityGroupId: String?
 
         public var vSwitchId: String?
@@ -4336,6 +4393,9 @@ public class GetInstanceResponseBody : Tea.TeaModel {
                     tmp.append(k.toMap())
                 }
                 map["ForwardInfos"] = tmp
+            }
+            if self.ip != nil {
+                map["Ip"] = self.ip!
             }
             if self.securityGroupId != nil {
                 map["SecurityGroupId"] = self.securityGroupId!
@@ -4374,6 +4434,9 @@ public class GetInstanceResponseBody : Tea.TeaModel {
                     }
                 }
                 self.forwardInfos = tmp
+            }
+            if let value = dict["Ip"] as? String {
+                self.ip = value
             }
             if let value = dict["SecurityGroupId"] as? String {
                 self.securityGroupId = value
@@ -4464,6 +4527,8 @@ public class GetInstanceResponseBody : Tea.TeaModel {
 
     public var resourceName: String?
 
+    public var serviceConfig: ServiceConfig?
+
     public var status: String?
 
     public var success: Bool?
@@ -4506,6 +4571,7 @@ public class GetInstanceResponseBody : Tea.TeaModel {
         try self.latestSnapshot?.validate()
         try self.nodeErrorRecovery?.validate()
         try self.requestedResource?.validate()
+        try self.serviceConfig?.validate()
         try self.userVpc?.validate()
     }
 
@@ -4643,6 +4709,9 @@ public class GetInstanceResponseBody : Tea.TeaModel {
         }
         if self.resourceName != nil {
             map["ResourceName"] = self.resourceName!
+        }
+        if self.serviceConfig != nil {
+            map["ServiceConfig"] = self.serviceConfig?.toMap()
         }
         if self.status != nil {
             map["Status"] = self.status!
@@ -4861,6 +4930,11 @@ public class GetInstanceResponseBody : Tea.TeaModel {
         }
         if let value = dict["ResourceName"] as? String {
             self.resourceName = value
+        }
+        if let value = dict["ServiceConfig"] as? [String: Any?] {
+            var model = ServiceConfig()
+            model.fromMap(value)
+            self.serviceConfig = model
         }
         if let value = dict["Status"] as? String {
             self.status = value
@@ -9268,6 +9342,8 @@ public class ListInstancesResponseBody : Tea.TeaModel {
 
             public var forwardInfos: [ForwardInfoResponse]?
 
+            public var ip: String?
+
             public var securityGroupId: String?
 
             public var vSwitchId: String?
@@ -9304,6 +9380,9 @@ public class ListInstancesResponseBody : Tea.TeaModel {
                         tmp.append(k.toMap())
                     }
                     map["ForwardInfos"] = tmp
+                }
+                if self.ip != nil {
+                    map["Ip"] = self.ip!
                 }
                 if self.securityGroupId != nil {
                     map["SecurityGroupId"] = self.securityGroupId!
@@ -9342,6 +9421,9 @@ public class ListInstancesResponseBody : Tea.TeaModel {
                         }
                     }
                     self.forwardInfos = tmp
+                }
+                if let value = dict["Ip"] as? String {
+                    self.ip = value
                 }
                 if let value = dict["SecurityGroupId"] as? String {
                     self.securityGroupId = value
@@ -9424,6 +9506,8 @@ public class ListInstancesResponseBody : Tea.TeaModel {
 
         public var resourceName: String?
 
+        public var serviceConfig: ServiceConfig?
+
         public var status: String?
 
         public var tags: [ListInstancesResponseBody.Instances.Tags]?
@@ -9461,6 +9545,7 @@ public class ListInstancesResponseBody : Tea.TeaModel {
             try self.instanceShutdownTimer?.validate()
             try self.latestSnapshot?.validate()
             try self.requestedResource?.validate()
+            try self.serviceConfig?.validate()
             try self.userVpc?.validate()
         }
 
@@ -9586,6 +9671,9 @@ public class ListInstancesResponseBody : Tea.TeaModel {
             }
             if self.resourceName != nil {
                 map["ResourceName"] = self.resourceName!
+            }
+            if self.serviceConfig != nil {
+                map["ServiceConfig"] = self.serviceConfig?.toMap()
             }
             if self.status != nil {
                 map["Status"] = self.status!
@@ -9784,6 +9872,11 @@ public class ListInstancesResponseBody : Tea.TeaModel {
             }
             if let value = dict["ResourceName"] as? String {
                 self.resourceName = value
+            }
+            if let value = dict["ServiceConfig"] as? [String: Any?] {
+                var model = ServiceConfig()
+                model.fromMap(value)
+                self.serviceConfig = model
             }
             if let value = dict["Status"] as? String {
                 self.status = value
