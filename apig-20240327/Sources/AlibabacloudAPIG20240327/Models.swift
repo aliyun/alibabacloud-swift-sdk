@@ -2350,6 +2350,8 @@ public class HttpApiApiInfo : Tea.TeaModel {
             }
         }
     }
+    public var agentProtocols: [String]?
+
     public var aiProtocols: [String]?
 
     public var authConfig: AuthConfig?
@@ -2401,6 +2403,9 @@ public class HttpApiApiInfo : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.agentProtocols != nil {
+            map["agentProtocols"] = self.agentProtocols!
+        }
         if self.aiProtocols != nil {
             map["aiProtocols"] = self.aiProtocols!
         }
@@ -2469,6 +2474,9 @@ public class HttpApiApiInfo : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["agentProtocols"] as? [String] {
+            self.agentProtocols = value
+        }
         if let value = dict["aiProtocols"] as? [String] {
             self.aiProtocols = value
         }
@@ -10994,6 +11002,8 @@ public class CreateMcpServerRequest : Tea.TeaModel {
 
     public var backendConfig: CreateMcpServerRequest.BackendConfig?
 
+    public var createFromType: String?
+
     public var description_: String?
 
     public var domainIds: [String]?
@@ -11037,6 +11047,9 @@ public class CreateMcpServerRequest : Tea.TeaModel {
         }
         if self.backendConfig != nil {
             map["backendConfig"] = self.backendConfig?.toMap()
+        }
+        if self.createFromType != nil {
+            map["createFromType"] = self.createFromType!
         }
         if self.description_ != nil {
             map["description"] = self.description_!
@@ -11087,6 +11100,9 @@ public class CreateMcpServerRequest : Tea.TeaModel {
             var model = CreateMcpServerRequest.BackendConfig()
             model.fromMap(value)
             self.backendConfig = model
+        }
+        if let value = dict["createFromType"] as? String {
+            self.createFromType = value
         }
         if let value = dict["description"] as? String {
             self.description_ = value
@@ -27982,6 +27998,8 @@ public class UpdateMcpServerRequest : Tea.TeaModel {
 
     public var backendConfig: UpdateMcpServerRequest.BackendConfig?
 
+    public var createFromType: String?
+
     public var description_: String?
 
     public var domainIds: [String]?
@@ -28021,6 +28039,9 @@ public class UpdateMcpServerRequest : Tea.TeaModel {
         }
         if self.backendConfig != nil {
             map["backendConfig"] = self.backendConfig?.toMap()
+        }
+        if self.createFromType != nil {
+            map["createFromType"] = self.createFromType!
         }
         if self.description_ != nil {
             map["description"] = self.description_!
@@ -28065,6 +28086,9 @@ public class UpdateMcpServerRequest : Tea.TeaModel {
             var model = UpdateMcpServerRequest.BackendConfig()
             model.fromMap(value)
             self.backendConfig = model
+        }
+        if let value = dict["createFromType"] as? String {
+            self.createFromType = value
         }
         if let value = dict["description"] as? String {
             self.description_ = value
