@@ -148,4 +148,45 @@ open class Client : AlibabacloudOpenApi.Client {
         var headers: [String: String] = [:]
         return try await getTokenWithOptions(request as! GetTokenRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
     }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func modelTypeDetermineWithOptions(_ tmpReq: ModelTypeDetermineRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> ModelTypeDetermineResponse {
+        try TeaUtils.Client.validateModel(tmpReq)
+        var request: ModelTypeDetermineShrinkRequest = ModelTypeDetermineShrinkRequest([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.history)) {
+            request.historyShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.history, "history", "json")
+        }
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.historyShrink)) {
+            body["history"] = request.historyShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.inputText)) {
+            body["inputText"] = request.inputText ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String],
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "ModelTypeDetermine",
+            "version": "2024-08-16",
+            "protocol": "HTTPS",
+            "pathname": "/open/api/v1/model/type/determine",
+            "method": "POST",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(ModelTypeDetermineResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func modelTypeDetermine(_ request: ModelTypeDetermineRequest) async throws -> ModelTypeDetermineResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await modelTypeDetermineWithOptions(request as! ModelTypeDetermineRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
 }
