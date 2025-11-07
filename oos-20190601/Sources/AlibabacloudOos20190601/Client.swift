@@ -150,6 +150,110 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func checkGitRepoFileExistsWithOptions(_ request: CheckGitRepoFileExistsRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> CheckGitRepoFileExistsResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.branch)) {
+            query["Branch"] = request.branch ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.clientToken)) {
+            query["ClientToken"] = request.clientToken ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.filePath)) {
+            query["FilePath"] = request.filePath ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.orgId)) {
+            query["OrgId"] = request.orgId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.owner)) {
+            query["Owner"] = request.owner ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.platform)) {
+            query["Platform"] = request.platform ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.regionId)) {
+            query["RegionId"] = request.regionId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.repoFullName)) {
+            query["RepoFullName"] = request.repoFullName ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.repoId)) {
+            query["RepoId"] = request.repoId!;
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "CheckGitRepoFileExists",
+            "version": "2019-06-01",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(CheckGitRepoFileExistsResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func checkGitRepoFileExists(_ request: CheckGitRepoFileExistsRequest) async throws -> CheckGitRepoFileExistsResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await checkGitRepoFileExistsWithOptions(request as! CheckGitRepoFileExistsRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func checkGitRepositoryExistsWithOptions(_ request: CheckGitRepositoryExistsRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> CheckGitRepositoryExistsResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.clientToken)) {
+            query["ClientToken"] = request.clientToken ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.orgId)) {
+            query["OrgId"] = request.orgId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.owner)) {
+            query["Owner"] = request.owner ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.platform)) {
+            query["Platform"] = request.platform ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.regionId)) {
+            query["RegionId"] = request.regionId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.repoFullName)) {
+            query["RepoFullName"] = request.repoFullName ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.repoId)) {
+            query["RepoId"] = request.repoId!;
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "CheckGitRepositoryExists",
+            "version": "2019-06-01",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(CheckGitRepositoryExistsResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func checkGitRepositoryExists(_ request: CheckGitRepositoryExistsRequest) async throws -> CheckGitRepositoryExistsResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await checkGitRepositoryExistsWithOptions(request as! CheckGitRepositoryExistsRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func continueDeployApplicationGroupWithOptions(_ request: ContinueDeployApplicationGroupRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ContinueDeployApplicationGroupResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
@@ -305,6 +409,67 @@ open class Client : AlibabacloudOpenApi.Client {
     public func createApplicationGroup(_ request: CreateApplicationGroupRequest) async throws -> CreateApplicationGroupResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         return try await createApplicationGroupWithOptions(request as! CreateApplicationGroupRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func createGitRepositoryWithOptions(_ request: CreateGitRepositoryRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> CreateGitRepositoryResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.clientToken)) {
+            query["ClientToken"] = request.clientToken ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.isPrivate)) {
+            query["IsPrivate"] = request.isPrivate!;
+        }
+        if (!TeaUtils.Client.isUnset(request.orgId)) {
+            query["OrgId"] = request.orgId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.owner)) {
+            query["Owner"] = request.owner ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.platform)) {
+            query["Platform"] = request.platform ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.regionId)) {
+            query["RegionId"] = request.regionId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.sourceRepoBranch)) {
+            query["SourceRepoBranch"] = request.sourceRepoBranch ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.sourceRepoName)) {
+            query["SourceRepoName"] = request.sourceRepoName ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.sourceRepoOwner)) {
+            query["SourceRepoOwner"] = request.sourceRepoOwner ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.targetRepoName)) {
+            query["TargetRepoName"] = request.targetRepoName ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.targetRepoOwner)) {
+            query["TargetRepoOwner"] = request.targetRepoOwner ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "CreateGitRepository",
+            "version": "2019-06-01",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(CreateGitRepositoryResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func createGitRepository(_ request: CreateGitRepositoryRequest) async throws -> CreateGitRepositoryResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await createGitRepositoryWithOptions(request as! CreateGitRepositoryRequest, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -1086,6 +1251,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.regionId)) {
             query["RegionId"] = request.regionId ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.revisionId)) {
+            query["RevisionId"] = request.revisionId ?? "";
+        }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "query": AlibabaCloudOpenApiUtil.Client.query(query)
         ])
@@ -1382,6 +1550,101 @@ open class Client : AlibabacloudOpenApi.Client {
     public func getExecutionTemplate(_ request: GetExecutionTemplateRequest) async throws -> GetExecutionTemplateResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         return try await getExecutionTemplateWithOptions(request as! GetExecutionTemplateRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getGitBranchWithOptions(_ request: GetGitBranchRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> GetGitBranchResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.branch)) {
+            query["Branch"] = request.branch ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.orgId)) {
+            query["OrgId"] = request.orgId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.owner)) {
+            query["Owner"] = request.owner ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.platform)) {
+            query["Platform"] = request.platform ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.regionId)) {
+            query["RegionId"] = request.regionId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.repoFullName)) {
+            query["RepoFullName"] = request.repoFullName ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.repoId)) {
+            query["RepoId"] = request.repoId!;
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "GetGitBranch",
+            "version": "2019-06-01",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(GetGitBranchResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getGitBranch(_ request: GetGitBranchRequest) async throws -> GetGitBranchResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await getGitBranchWithOptions(request as! GetGitBranchRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getGitRepositoryWithOptions(_ request: GetGitRepositoryRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> GetGitRepositoryResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.orgId)) {
+            query["OrgId"] = request.orgId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.owner)) {
+            query["Owner"] = request.owner ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.platform)) {
+            query["Platform"] = request.platform ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.regionId)) {
+            query["RegionId"] = request.regionId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.repoFullName)) {
+            query["RepoFullName"] = request.repoFullName ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.repoId)) {
+            query["RepoId"] = request.repoId!;
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "GetGitRepository",
+            "version": "2019-06-01",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(GetGitRepositoryResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getGitRepository(_ request: GetGitRepositoryRequest) async throws -> GetGitRepositoryResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await getGitRepositoryWithOptions(request as! GetGitRepositoryRequest, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -2178,6 +2441,245 @@ open class Client : AlibabacloudOpenApi.Client {
     public func listExecutions(_ request: ListExecutionsRequest) async throws -> ListExecutionsResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         return try await listExecutionsWithOptions(request as! ListExecutionsRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func listGitAccountsWithOptions(_ request: ListGitAccountsRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ListGitAccountsResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.clientToken)) {
+            query["ClientToken"] = request.clientToken ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.platform)) {
+            query["Platform"] = request.platform ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.regionId)) {
+            query["RegionId"] = request.regionId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.roleName)) {
+            query["RoleName"] = request.roleName ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "ListGitAccounts",
+            "version": "2019-06-01",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(ListGitAccountsResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func listGitAccounts(_ request: ListGitAccountsRequest) async throws -> ListGitAccountsResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await listGitAccountsWithOptions(request as! ListGitAccountsRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func listGitBranchesWithOptions(_ request: ListGitBranchesRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ListGitBranchesResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.clientToken)) {
+            query["ClientToken"] = request.clientToken ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.orgId)) {
+            query["OrgId"] = request.orgId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.owner)) {
+            query["Owner"] = request.owner ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.platform)) {
+            query["Platform"] = request.platform ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.regionId)) {
+            query["RegionId"] = request.regionId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.repoFullName)) {
+            query["RepoFullName"] = request.repoFullName ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.repoId)) {
+            query["RepoId"] = request.repoId!;
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "ListGitBranches",
+            "version": "2019-06-01",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(ListGitBranchesResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func listGitBranches(_ request: ListGitBranchesRequest) async throws -> ListGitBranchesResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await listGitBranchesWithOptions(request as! ListGitBranchesRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func listGitOrganizationsWithOptions(_ request: ListGitOrganizationsRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ListGitOrganizationsResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.clientToken)) {
+            query["ClientToken"] = request.clientToken ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.owner)) {
+            query["Owner"] = request.owner ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.platform)) {
+            query["Platform"] = request.platform ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.regionId)) {
+            query["RegionId"] = request.regionId ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "ListGitOrganizations",
+            "version": "2019-06-01",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(ListGitOrganizationsResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func listGitOrganizations(_ request: ListGitOrganizationsRequest) async throws -> ListGitOrganizationsResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await listGitOrganizationsWithOptions(request as! ListGitOrganizationsRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func listGitRepositoriesWithOptions(_ request: ListGitRepositoriesRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ListGitRepositoriesResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.clientToken)) {
+            query["ClientToken"] = request.clientToken ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.orgId)) {
+            query["OrgId"] = request.orgId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.orgName)) {
+            query["OrgName"] = request.orgName ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.owner)) {
+            query["Owner"] = request.owner ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.pageNumber)) {
+            query["PageNumber"] = request.pageNumber!;
+        }
+        if (!TeaUtils.Client.isUnset(request.pageSize)) {
+            query["PageSize"] = request.pageSize!;
+        }
+        if (!TeaUtils.Client.isUnset(request.platform)) {
+            query["Platform"] = request.platform ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.regionId)) {
+            query["RegionId"] = request.regionId ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "ListGitRepositories",
+            "version": "2019-06-01",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(ListGitRepositoriesResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func listGitRepositories(_ request: ListGitRepositoriesRequest) async throws -> ListGitRepositoriesResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await listGitRepositoriesWithOptions(request as! ListGitRepositoriesRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func listGitRepositoryContentsWithOptions(_ request: ListGitRepositoryContentsRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ListGitRepositoryContentsResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.branch)) {
+            query["Branch"] = request.branch ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.clientToken)) {
+            query["ClientToken"] = request.clientToken ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.contentType)) {
+            query["ContentType"] = request.contentType ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.orgId)) {
+            query["OrgId"] = request.orgId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.owner)) {
+            query["Owner"] = request.owner ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.path)) {
+            query["Path"] = request.path ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.platform)) {
+            query["Platform"] = request.platform ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.regionId)) {
+            query["RegionId"] = request.regionId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.repoFullName)) {
+            query["RepoFullName"] = request.repoFullName ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.repoId)) {
+            query["RepoId"] = request.repoId!;
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "ListGitRepositoryContents",
+            "version": "2019-06-01",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(ListGitRepositoryContentsResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func listGitRepositoryContents(_ request: ListGitRepositoryContentsRequest) async throws -> ListGitRepositoryContentsResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await listGitRepositoryContentsWithOptions(request as! ListGitRepositoryContentsRequest, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -3703,6 +4205,9 @@ open class Client : AlibabacloudOpenApi.Client {
             request.parametersShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.parameters, "Parameters", "json")
         }
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.configurationInfo)) {
+            query["ConfigurationInfo"] = request.configurationInfo ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.configureAction)) {
             query["ConfigureAction"] = request.configureAction ?? "";
         }
