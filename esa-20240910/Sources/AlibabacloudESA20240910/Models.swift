@@ -11861,6 +11861,8 @@ public class CreateOriginPoolRequest : Tea.TeaModel {
 
         public var header: Any?
 
+        public var ipVersionPolicy: String?
+
         public var name: String?
 
         public var type: String?
@@ -11894,6 +11896,9 @@ public class CreateOriginPoolRequest : Tea.TeaModel {
             if self.header != nil {
                 map["Header"] = self.header!
             }
+            if self.ipVersionPolicy != nil {
+                map["IpVersionPolicy"] = self.ipVersionPolicy!
+            }
             if self.name != nil {
                 map["Name"] = self.name!
             }
@@ -11921,6 +11926,9 @@ public class CreateOriginPoolRequest : Tea.TeaModel {
             }
             if let value = dict["Header"] as? Any {
                 self.header = value
+            }
+            if let value = dict["IpVersionPolicy"] as? String {
+                self.ipVersionPolicy = value
             }
             if let value = dict["Name"] as? String {
                 self.name = value
@@ -39881,6 +39889,8 @@ public class GetOriginPoolResponseBody : Tea.TeaModel {
 
         public var id: Int64?
 
+        public var ipVersionPolicy: String?
+
         public var name: String?
 
         public var type: String?
@@ -39917,6 +39927,9 @@ public class GetOriginPoolResponseBody : Tea.TeaModel {
             if self.id != nil {
                 map["Id"] = self.id!
             }
+            if self.ipVersionPolicy != nil {
+                map["IpVersionPolicy"] = self.ipVersionPolicy!
+            }
             if self.name != nil {
                 map["Name"] = self.name!
             }
@@ -39947,6 +39960,9 @@ public class GetOriginPoolResponseBody : Tea.TeaModel {
             }
             if let value = dict["Id"] as? Int64 {
                 self.id = value
+            }
+            if let value = dict["IpVersionPolicy"] as? String {
+                self.ipVersionPolicy = value
             }
             if let value = dict["Name"] as? String {
                 self.name = value
@@ -60020,6 +60036,8 @@ public class ListOriginPoolsResponseBody : Tea.TeaModel {
 
             public var id: Int64?
 
+            public var ipVersionPolicy: String?
+
             public var name: String?
 
             public var type: String?
@@ -60056,6 +60074,9 @@ public class ListOriginPoolsResponseBody : Tea.TeaModel {
                 if self.id != nil {
                     map["Id"] = self.id!
                 }
+                if self.ipVersionPolicy != nil {
+                    map["IpVersionPolicy"] = self.ipVersionPolicy!
+                }
                 if self.name != nil {
                     map["Name"] = self.name!
                 }
@@ -60086,6 +60107,9 @@ public class ListOriginPoolsResponseBody : Tea.TeaModel {
                 }
                 if let value = dict["Id"] as? Int64 {
                     self.id = value
+                }
+                if let value = dict["IpVersionPolicy"] as? String {
+                    self.ipVersionPolicy = value
                 }
                 if let value = dict["Name"] as? String {
                     self.name = value
@@ -80146,6 +80170,8 @@ public class UpdateOriginPoolRequest : Tea.TeaModel {
 
         public var header: Any?
 
+        public var ipVersionPolicy: String?
+
         public var name: String?
 
         public var type: String?
@@ -80179,6 +80205,9 @@ public class UpdateOriginPoolRequest : Tea.TeaModel {
             if self.header != nil {
                 map["Header"] = self.header!
             }
+            if self.ipVersionPolicy != nil {
+                map["IpVersionPolicy"] = self.ipVersionPolicy!
+            }
             if self.name != nil {
                 map["Name"] = self.name!
             }
@@ -80206,6 +80235,9 @@ public class UpdateOriginPoolRequest : Tea.TeaModel {
             }
             if let value = dict["Header"] as? Any {
                 self.header = value
+            }
+            if let value = dict["IpVersionPolicy"] as? String {
+                self.ipVersionPolicy = value
             }
             if let value = dict["Name"] as? String {
                 self.name = value
