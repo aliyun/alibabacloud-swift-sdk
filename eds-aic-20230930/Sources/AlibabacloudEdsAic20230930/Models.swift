@@ -11033,6 +11033,8 @@ public class DescribeMetricLastResponseBody : Tea.TeaModel {
             public class DataPoints : Tea.TeaModel {
                 public var average: Double?
 
+                public var gpuId: String?
+
                 public var maximum: Double?
 
                 public var minimum: Double?
@@ -11056,6 +11058,9 @@ public class DescribeMetricLastResponseBody : Tea.TeaModel {
                     if self.average != nil {
                         map["Average"] = self.average!
                     }
+                    if self.gpuId != nil {
+                        map["GpuId"] = self.gpuId!
+                    }
                     if self.maximum != nil {
                         map["Maximum"] = self.maximum!
                     }
@@ -11072,6 +11077,9 @@ public class DescribeMetricLastResponseBody : Tea.TeaModel {
                     guard let dict else { return }
                     if let value = dict["Average"] as? Double {
                         self.average = value
+                    }
+                    if let value = dict["GpuId"] as? String {
+                        self.gpuId = value
                     }
                     if let value = dict["Maximum"] as? Double {
                         self.maximum = value
