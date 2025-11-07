@@ -57213,6 +57213,8 @@ public class DescribeLiveStreamsNotifyRecordsResponseBody : Tea.TeaModel {
 
             public var notifyContent: String?
 
+            public var notifyHeader: String?
+
             public var notifyResponse: String?
 
             public var notifyResult: String?
@@ -57251,6 +57253,9 @@ public class DescribeLiveStreamsNotifyRecordsResponseBody : Tea.TeaModel {
                 if self.notifyContent != nil {
                     map["NotifyContent"] = self.notifyContent!
                 }
+                if self.notifyHeader != nil {
+                    map["NotifyHeader"] = self.notifyHeader!
+                }
                 if self.notifyResponse != nil {
                     map["NotifyResponse"] = self.notifyResponse!
                 }
@@ -57285,6 +57290,9 @@ public class DescribeLiveStreamsNotifyRecordsResponseBody : Tea.TeaModel {
                 }
                 if let value = dict["NotifyContent"] as? String {
                     self.notifyContent = value
+                }
+                if let value = dict["NotifyHeader"] as? String {
+                    self.notifyHeader = value
                 }
                 if let value = dict["NotifyResponse"] as? String {
                     self.notifyResponse = value
