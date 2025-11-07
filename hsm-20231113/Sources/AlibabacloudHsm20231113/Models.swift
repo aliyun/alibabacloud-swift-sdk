@@ -3755,6 +3755,8 @@ public class GetInstanceResponseBody : Tea.TeaModel {
 
         public var tenantIsolationType: String?
 
+        public var tpsEnabled: Int32?
+
         public var vSwitchId: String?
 
         public var vendor: String?
@@ -3830,6 +3832,9 @@ public class GetInstanceResponseBody : Tea.TeaModel {
             if self.tenantIsolationType != nil {
                 map["TenantIsolationType"] = self.tenantIsolationType!
             }
+            if self.tpsEnabled != nil {
+                map["TpsEnabled"] = self.tpsEnabled!
+            }
             if self.vSwitchId != nil {
                 map["VSwitchId"] = self.vSwitchId!
             }
@@ -3900,6 +3905,9 @@ public class GetInstanceResponseBody : Tea.TeaModel {
             }
             if let value = dict["TenantIsolationType"] as? String {
                 self.tenantIsolationType = value
+            }
+            if let value = dict["TpsEnabled"] as? Int32 {
+                self.tpsEnabled = value
             }
             if let value = dict["VSwitchId"] as? String {
                 self.vSwitchId = value
