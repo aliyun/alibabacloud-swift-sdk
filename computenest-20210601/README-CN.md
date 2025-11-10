@@ -17,7 +17,7 @@
 要使用 [Carthage](https://github.com/Carthage/Carthage) 将 `AlibabacloudComputeNest20210601` 集成到你的 Xcode 项目中，需要在 `Cartfile` 中定义以下内容:
 
 ```ogdl
-github "alibabacloud-sdk-swift/computenest-20210601" "3.3.1"
+github "alibabacloud-sdk-swift/computenest-20210601" "3.3.2"
 ```
 
 ### Swift 包管理工具
@@ -26,7 +26,7 @@ github "alibabacloud-sdk-swift/computenest-20210601" "3.3.1"
 
 ```swift
 dependencies: [
-    .package(url: "https://github.com/alibabacloud-sdk-swift/computenest-20210601.git", from: "3.3.1")
+    .package(url: "https://github.com/alibabacloud-sdk-swift/computenest-20210601.git", from: "3.3.2")
 ]
 ```
 

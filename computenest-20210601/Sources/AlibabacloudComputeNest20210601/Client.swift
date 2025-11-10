@@ -33,6 +33,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.needDelete)) {
             query["NeedDelete"] = request.needDelete!;
         }
+        if (!TeaUtils.Client.isUnset(request.regionId)) {
+            query["RegionId"] = request.regionId ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.serviceId)) {
             query["ServiceId"] = request.serviceId ?? "";
         }
@@ -367,6 +370,9 @@ open class Client : AlibabacloudOpenApi.Client {
         var query: [String: Any] = [:]
         if (!TeaUtils.Client.isUnset(request.clientToken)) {
             query["ClientToken"] = request.clientToken ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.regionId)) {
+            query["RegionId"] = request.regionId ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.serviceId)) {
             query["ServiceId"] = request.serviceId ?? "";
@@ -1388,6 +1394,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.nextToken)) {
             query["NextToken"] = request.nextToken ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.regionId)) {
+            query["RegionId"] = request.regionId ?? "";
+        }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "query": AlibabaCloudOpenApiUtil.Client.query(query)
         ])
@@ -1871,6 +1880,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.enableOperation)) {
             query["EnableOperation"] = request.enableOperation!;
         }
+        if (!TeaUtils.Client.isUnset(request.grantedPermission)) {
+            query["GrantedPermission"] = request.grantedPermission!;
+        }
         if (!TeaUtils.Client.isUnset(request.regionId)) {
             query["RegionId"] = request.regionId ?? "";
         }
@@ -1969,6 +1981,9 @@ open class Client : AlibabacloudOpenApi.Client {
         var query: [String: Any] = [:]
         if (!TeaUtils.Client.isUnset(request.clientToken)) {
             query["ClientToken"] = request.clientToken ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.regionId)) {
+            query["RegionId"] = request.regionId ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.serviceId)) {
             query["ServiceId"] = request.serviceId ?? "";
