@@ -4196,6 +4196,8 @@ public class GetAccountResponseBody : Tea.TeaModel {
 
         public var resourceDirectoryPath: String?
 
+        public var secureMobilePhone: String?
+
         public var status: String?
 
         public var tags: [GetAccountResponseBody.Account.Tags]?
@@ -4255,6 +4257,9 @@ public class GetAccountResponseBody : Tea.TeaModel {
             if self.resourceDirectoryPath != nil {
                 map["ResourceDirectoryPath"] = self.resourceDirectoryPath!
             }
+            if self.secureMobilePhone != nil {
+                map["SecureMobilePhone"] = self.secureMobilePhone!
+            }
             if self.status != nil {
                 map["Status"] = self.status!
             }
@@ -4311,6 +4316,9 @@ public class GetAccountResponseBody : Tea.TeaModel {
             }
             if let value = dict["ResourceDirectoryPath"] as? String {
                 self.resourceDirectoryPath = value
+            }
+            if let value = dict["SecureMobilePhone"] as? String {
+                self.secureMobilePhone = value
             }
             if let value = dict["Status"] as? String {
                 self.status = value
