@@ -12134,6 +12134,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.repoNamespace)) {
             query["RepoNamespace"] = request.repoNamespace ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.selected)) {
+            query["Selected"] = request.selected!;
+        }
         if (!TeaUtils.Client.isUnset(request.targetType)) {
             query["TargetType"] = request.targetType ?? "";
         }
