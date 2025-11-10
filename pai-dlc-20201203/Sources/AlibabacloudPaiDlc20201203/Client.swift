@@ -1160,6 +1160,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.accessibility)) {
             body["Accessibility"] = request.accessibility ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.jobSpecs)) {
+            body["JobSpecs"] = request.jobSpecs ?? [];
+        }
         if (!TeaUtils.Client.isUnset(request.priority)) {
             body["Priority"] = request.priority!;
         }

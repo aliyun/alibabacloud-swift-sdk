@@ -234,11 +234,75 @@ public class AssumeUserInfo : Tea.TeaModel {
 }
 
 public class AutoScalingSpec : Tea.TeaModel {
+    public var autoscalingMetricSpec: AutoscalingMetricSpec?
+
     public var maxReplicas: Int32?
 
     public var minReplicas: Int32?
 
+    public var podsToDelete: [String]?
+
     public var scalingStrategy: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.autoscalingMetricSpec?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.autoscalingMetricSpec != nil {
+            map["AutoscalingMetricSpec"] = self.autoscalingMetricSpec?.toMap()
+        }
+        if self.maxReplicas != nil {
+            map["MaxReplicas"] = self.maxReplicas!
+        }
+        if self.minReplicas != nil {
+            map["MinReplicas"] = self.minReplicas!
+        }
+        if self.podsToDelete != nil {
+            map["PodsToDelete"] = self.podsToDelete!
+        }
+        if self.scalingStrategy != nil {
+            map["ScalingStrategy"] = self.scalingStrategy!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["AutoscalingMetricSpec"] as? [String: Any?] {
+            var model = AutoscalingMetricSpec()
+            model.fromMap(value)
+            self.autoscalingMetricSpec = model
+        }
+        if let value = dict["MaxReplicas"] as? Int32 {
+            self.maxReplicas = value
+        }
+        if let value = dict["MinReplicas"] as? Int32 {
+            self.minReplicas = value
+        }
+        if let value = dict["PodsToDelete"] as? [String] {
+            self.podsToDelete = value
+        }
+        if let value = dict["ScalingStrategy"] as? String {
+            self.scalingStrategy = value
+        }
+    }
+}
+
+public class AutoscalingMetricSpec : Tea.TeaModel {
+    public var metricName: String?
+
+    public var targetValue: Int32?
 
     public override init() {
         super.init()
@@ -254,28 +318,22 @@ public class AutoScalingSpec : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
-        if self.maxReplicas != nil {
-            map["MaxReplicas"] = self.maxReplicas!
+        if self.metricName != nil {
+            map["MetricName"] = self.metricName!
         }
-        if self.minReplicas != nil {
-            map["MinReplicas"] = self.minReplicas!
-        }
-        if self.scalingStrategy != nil {
-            map["ScalingStrategy"] = self.scalingStrategy!
+        if self.targetValue != nil {
+            map["TargetValue"] = self.targetValue!
         }
         return map
     }
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
-        if let value = dict["MaxReplicas"] as? Int32 {
-            self.maxReplicas = value
+        if let value = dict["MetricName"] as? String {
+            self.metricName = value
         }
-        if let value = dict["MinReplicas"] as? Int32 {
-            self.minReplicas = value
-        }
-        if let value = dict["ScalingStrategy"] as? String {
-            self.scalingStrategy = value
+        if let value = dict["TargetValue"] as? Int32 {
+            self.targetValue = value
         }
     }
 }
@@ -10830,6 +10888,8 @@ public class StopTensorboardResponse : Tea.TeaModel {
 public class UpdateJobRequest : Tea.TeaModel {
     public var accessibility: String?
 
+    public var jobSpecs: [JobSpec]?
+
     public var priority: Int32?
 
     public override init() {
@@ -10849,6 +10909,13 @@ public class UpdateJobRequest : Tea.TeaModel {
         if self.accessibility != nil {
             map["Accessibility"] = self.accessibility!
         }
+        if self.jobSpecs != nil {
+            var tmp : [Any] = []
+            for k in self.jobSpecs! {
+                tmp.append(k.toMap())
+            }
+            map["JobSpecs"] = tmp
+        }
         if self.priority != nil {
             map["Priority"] = self.priority!
         }
@@ -10859,6 +10926,19 @@ public class UpdateJobRequest : Tea.TeaModel {
         guard let dict else { return }
         if let value = dict["Accessibility"] as? String {
             self.accessibility = value
+        }
+        if let value = dict["JobSpecs"] as? [Any?] {
+            var tmp : [JobSpec] = []
+            for v in value {
+                if v != nil {
+                    var model = JobSpec()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.jobSpecs = tmp
         }
         if let value = dict["Priority"] as? Int32 {
             self.priority = value
