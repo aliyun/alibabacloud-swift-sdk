@@ -5,6 +5,45 @@ import AlibabacloudOpenApi
 import AlibabaCloudOpenApiUtil
 import AlibabacloudEndpointUtil
 
+public class DataLiteTopicLagMapValue : Tea.TeaModel {
+    public var readyCount: Int64?
+
+    public var deliveryDuration: Int64?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.readyCount != nil {
+            map["readyCount"] = self.readyCount!
+        }
+        if self.deliveryDuration != nil {
+            map["deliveryDuration"] = self.deliveryDuration!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["readyCount"] as? Int64 {
+            self.readyCount = value
+        }
+        if let value = dict["deliveryDuration"] as? Int64 {
+            self.deliveryDuration = value
+        }
+    }
+}
+
 public class DataTopicLagMapValue : Tea.TeaModel {
     public var readyCount: Int64?
 
@@ -573,7 +612,11 @@ public class CreateConsumerGroupRequest : Tea.TeaModel {
 
     public var maxReceiveTps: Int64?
 
+    public var messageModel: String?
+
     public var remark: String?
+
+    public var topicName: String?
 
     public override init() {
         super.init()
@@ -599,8 +642,14 @@ public class CreateConsumerGroupRequest : Tea.TeaModel {
         if self.maxReceiveTps != nil {
             map["maxReceiveTps"] = self.maxReceiveTps!
         }
+        if self.messageModel != nil {
+            map["messageModel"] = self.messageModel!
+        }
         if self.remark != nil {
             map["remark"] = self.remark!
+        }
+        if self.topicName != nil {
+            map["topicName"] = self.topicName!
         }
         return map
     }
@@ -618,8 +667,14 @@ public class CreateConsumerGroupRequest : Tea.TeaModel {
         if let value = dict["maxReceiveTps"] as? Int64 {
             self.maxReceiveTps = value
         }
+        if let value = dict["messageModel"] as? String {
+            self.messageModel = value
+        }
         if let value = dict["remark"] as? String {
             self.remark = value
+        }
+        if let value = dict["topicName"] as? String {
+            self.topicName = value
         }
     }
 }
@@ -2363,6 +2418,8 @@ public class CreateInstanceIpWhitelistResponse : Tea.TeaModel {
 }
 
 public class CreateTopicRequest : Tea.TeaModel {
+    public var liteTopicExpiration: Int64?
+
     public var maxSendTps: Int64?
 
     public var messageType: String?
@@ -2383,6 +2440,9 @@ public class CreateTopicRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.liteTopicExpiration != nil {
+            map["liteTopicExpiration"] = self.liteTopicExpiration!
+        }
         if self.maxSendTps != nil {
             map["maxSendTps"] = self.maxSendTps!
         }
@@ -2397,6 +2457,9 @@ public class CreateTopicRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["liteTopicExpiration"] as? Int64 {
+            self.liteTopicExpiration = value
+        }
         if let value = dict["maxSendTps"] as? Int64 {
             self.maxSendTps = value
         }
@@ -4547,6 +4610,216 @@ public class FinishMigrationStageResponse : Tea.TeaModel {
     }
 }
 
+public class GetConsumeTimespanResponseBody : Tea.TeaModel {
+    public class Data : Tea.TeaModel {
+        public var consumeTimestamp: Int64?
+
+        public var consumerGroupId: String?
+
+        public var instanceId: String?
+
+        public var maxTimestamp: Int64?
+
+        public var minTimestamp: Int64?
+
+        public var topicName: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.consumeTimestamp != nil {
+                map["consumeTimestamp"] = self.consumeTimestamp!
+            }
+            if self.consumerGroupId != nil {
+                map["consumerGroupId"] = self.consumerGroupId!
+            }
+            if self.instanceId != nil {
+                map["instanceId"] = self.instanceId!
+            }
+            if self.maxTimestamp != nil {
+                map["maxTimestamp"] = self.maxTimestamp!
+            }
+            if self.minTimestamp != nil {
+                map["minTimestamp"] = self.minTimestamp!
+            }
+            if self.topicName != nil {
+                map["topicName"] = self.topicName!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["consumeTimestamp"] as? Int64 {
+                self.consumeTimestamp = value
+            }
+            if let value = dict["consumerGroupId"] as? String {
+                self.consumerGroupId = value
+            }
+            if let value = dict["instanceId"] as? String {
+                self.instanceId = value
+            }
+            if let value = dict["maxTimestamp"] as? Int64 {
+                self.maxTimestamp = value
+            }
+            if let value = dict["minTimestamp"] as? Int64 {
+                self.minTimestamp = value
+            }
+            if let value = dict["topicName"] as? String {
+                self.topicName = value
+            }
+        }
+    }
+    public var code: String?
+
+    public var data: GetConsumeTimespanResponseBody.Data?
+
+    public var dynamicCode: String?
+
+    public var dynamicMessage: String?
+
+    public var httpStatusCode: Int32?
+
+    public var message: String?
+
+    public var requestId: String?
+
+    public var success: Bool?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.data?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.code != nil {
+            map["code"] = self.code!
+        }
+        if self.data != nil {
+            map["data"] = self.data?.toMap()
+        }
+        if self.dynamicCode != nil {
+            map["dynamicCode"] = self.dynamicCode!
+        }
+        if self.dynamicMessage != nil {
+            map["dynamicMessage"] = self.dynamicMessage!
+        }
+        if self.httpStatusCode != nil {
+            map["httpStatusCode"] = self.httpStatusCode!
+        }
+        if self.message != nil {
+            map["message"] = self.message!
+        }
+        if self.requestId != nil {
+            map["requestId"] = self.requestId!
+        }
+        if self.success != nil {
+            map["success"] = self.success!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["code"] as? String {
+            self.code = value
+        }
+        if let value = dict["data"] as? [String: Any?] {
+            var model = GetConsumeTimespanResponseBody.Data()
+            model.fromMap(value)
+            self.data = model
+        }
+        if let value = dict["dynamicCode"] as? String {
+            self.dynamicCode = value
+        }
+        if let value = dict["dynamicMessage"] as? String {
+            self.dynamicMessage = value
+        }
+        if let value = dict["httpStatusCode"] as? Int32 {
+            self.httpStatusCode = value
+        }
+        if let value = dict["message"] as? String {
+            self.message = value
+        }
+        if let value = dict["requestId"] as? String {
+            self.requestId = value
+        }
+        if let value = dict["success"] as? Bool {
+            self.success = value
+        }
+    }
+}
+
+public class GetConsumeTimespanResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: GetConsumeTimespanResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = GetConsumeTimespanResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
 public class GetConsumerGroupResponseBody : Tea.TeaModel {
     public class Data : Tea.TeaModel {
         public class ConsumeRetryPolicy : Tea.TeaModel {
@@ -4615,11 +4888,15 @@ public class GetConsumerGroupResponseBody : Tea.TeaModel {
 
         public var maxReceiveTps: Int64?
 
+        public var messageModel: String?
+
         public var regionId: String?
 
         public var remark: String?
 
         public var status: String?
+
+        public var topicName: String?
 
         public var updateTime: String?
 
@@ -4656,6 +4933,9 @@ public class GetConsumerGroupResponseBody : Tea.TeaModel {
             if self.maxReceiveTps != nil {
                 map["maxReceiveTps"] = self.maxReceiveTps!
             }
+            if self.messageModel != nil {
+                map["messageModel"] = self.messageModel!
+            }
             if self.regionId != nil {
                 map["regionId"] = self.regionId!
             }
@@ -4664,6 +4944,9 @@ public class GetConsumerGroupResponseBody : Tea.TeaModel {
             }
             if self.status != nil {
                 map["status"] = self.status!
+            }
+            if self.topicName != nil {
+                map["topicName"] = self.topicName!
             }
             if self.updateTime != nil {
                 map["updateTime"] = self.updateTime!
@@ -4693,6 +4976,9 @@ public class GetConsumerGroupResponseBody : Tea.TeaModel {
             if let value = dict["maxReceiveTps"] as? Int64 {
                 self.maxReceiveTps = value
             }
+            if let value = dict["messageModel"] as? String {
+                self.messageModel = value
+            }
             if let value = dict["regionId"] as? String {
                 self.regionId = value
             }
@@ -4701,6 +4987,9 @@ public class GetConsumerGroupResponseBody : Tea.TeaModel {
             }
             if let value = dict["status"] as? String {
                 self.status = value
+            }
+            if let value = dict["topicName"] as? String {
+                self.topicName = value
             }
             if let value = dict["updateTime"] as? String {
                 self.updateTime = value
@@ -4847,6 +5136,8 @@ public class GetConsumerGroupResponse : Tea.TeaModel {
 }
 
 public class GetConsumerGroupLagRequest : Tea.TeaModel {
+    public var liteTopicName: String?
+
     public var topicName: String?
 
     public override init() {
@@ -4863,6 +5154,9 @@ public class GetConsumerGroupLagRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.liteTopicName != nil {
+            map["liteTopicName"] = self.liteTopicName!
+        }
         if self.topicName != nil {
             map["topicName"] = self.topicName!
         }
@@ -4871,6 +5165,9 @@ public class GetConsumerGroupLagRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["liteTopicName"] as? String {
+            self.liteTopicName = value
+        }
         if let value = dict["topicName"] as? String {
             self.topicName = value
         }
@@ -4937,9 +5234,13 @@ public class GetConsumerGroupLagResponseBody : Tea.TeaModel {
 
         public var instanceId: String?
 
+        public var liteTopicLagMap: [String: DataLiteTopicLagMapValue]?
+
         public var regionId: String?
 
         public var topicLagMap: [String: DataTopicLagMapValue]?
+
+        public var topicName: String?
 
         public var totalLag: GetConsumerGroupLagResponseBody.Data.TotalLag?
 
@@ -4964,6 +5265,13 @@ public class GetConsumerGroupLagResponseBody : Tea.TeaModel {
             if self.instanceId != nil {
                 map["instanceId"] = self.instanceId!
             }
+            if self.liteTopicLagMap != nil {
+                var tmp : [String: Any] = [:]
+                for (k, v) in self.liteTopicLagMap! {
+                    tmp[k] = v.toMap()
+                }
+                map["liteTopicLagMap"] = tmp
+            }
             if self.regionId != nil {
                 map["regionId"] = self.regionId!
             }
@@ -4973,6 +5281,9 @@ public class GetConsumerGroupLagResponseBody : Tea.TeaModel {
                     tmp[k] = v.toMap()
                 }
                 map["topicLagMap"] = tmp
+            }
+            if self.topicName != nil {
+                map["topicName"] = self.topicName!
             }
             if self.totalLag != nil {
                 map["totalLag"] = self.totalLag?.toMap()
@@ -4988,6 +5299,17 @@ public class GetConsumerGroupLagResponseBody : Tea.TeaModel {
             if let value = dict["instanceId"] as? String {
                 self.instanceId = value
             }
+            if let value = dict["liteTopicLagMap"] as? [String: Any?] {
+                var tmp : [String: DataLiteTopicLagMapValue] = [:]
+                for (k, v) in value {
+                    if v != nil {
+                        var model = DataLiteTopicLagMapValue()
+                        model.fromMap(v as? [String: Any?])
+                        tmp[k] = model
+                    }
+                }
+                self.liteTopicLagMap = tmp
+            }
             if let value = dict["regionId"] as? String {
                 self.regionId = value
             }
@@ -5001,6 +5323,9 @@ public class GetConsumerGroupLagResponseBody : Tea.TeaModel {
                     }
                 }
                 self.topicLagMap = tmp
+            }
+            if let value = dict["topicName"] as? String {
+                self.topicName = value
             }
             if let value = dict["totalLag"] as? [String: Any?] {
                 var model = GetConsumerGroupLagResponseBody.Data.TotalLag()
@@ -8381,6 +8706,8 @@ public class GetMessageDetailResponseBody : Tea.TeaModel {
 
         public var instanceId: String?
 
+        public var liteTopicName: String?
+
         public var messageGroup: String?
 
         public var messageId: String?
@@ -8431,6 +8758,9 @@ public class GetMessageDetailResponseBody : Tea.TeaModel {
             }
             if self.instanceId != nil {
                 map["instanceId"] = self.instanceId!
+            }
+            if self.liteTopicName != nil {
+                map["liteTopicName"] = self.liteTopicName!
             }
             if self.messageGroup != nil {
                 map["messageGroup"] = self.messageGroup!
@@ -8484,6 +8814,9 @@ public class GetMessageDetailResponseBody : Tea.TeaModel {
             }
             if let value = dict["instanceId"] as? String {
                 self.instanceId = value
+            }
+            if let value = dict["liteTopicName"] as? String {
+                self.liteTopicName = value
             }
             if let value = dict["messageGroup"] as? String {
                 self.messageGroup = value
@@ -8665,6 +8998,8 @@ public class GetTopicResponseBody : Tea.TeaModel {
 
         public var instanceId: String?
 
+        public var liteTopicExpiration: Int64?
+
         public var maxSendTps: Int64?
 
         public var messageType: String?
@@ -8699,6 +9034,9 @@ public class GetTopicResponseBody : Tea.TeaModel {
             if self.instanceId != nil {
                 map["instanceId"] = self.instanceId!
             }
+            if self.liteTopicExpiration != nil {
+                map["liteTopicExpiration"] = self.liteTopicExpiration!
+            }
             if self.maxSendTps != nil {
                 map["maxSendTps"] = self.maxSendTps!
             }
@@ -8730,6 +9068,9 @@ public class GetTopicResponseBody : Tea.TeaModel {
             }
             if let value = dict["instanceId"] as? String {
                 self.instanceId = value
+            }
+            if let value = dict["liteTopicExpiration"] as? Int64 {
+                self.liteTopicExpiration = value
             }
             if let value = dict["maxSendTps"] as? Int64 {
                 self.maxSendTps = value
@@ -9312,6 +9653,8 @@ public class GetTraceResponseBody : Tea.TeaModel {
 
             public var instanceId: String?
 
+            public var liteTopicName: String?
+
             public var messageGroup: String?
 
             public var messageId: String?
@@ -9359,6 +9702,9 @@ public class GetTraceResponseBody : Tea.TeaModel {
                 }
                 if self.instanceId != nil {
                     map["instanceId"] = self.instanceId!
+                }
+                if self.liteTopicName != nil {
+                    map["liteTopicName"] = self.liteTopicName!
                 }
                 if self.messageGroup != nil {
                     map["messageGroup"] = self.messageGroup!
@@ -9409,6 +9755,9 @@ public class GetTraceResponseBody : Tea.TeaModel {
                 }
                 if let value = dict["instanceId"] as? String {
                     self.instanceId = value
+                }
+                if let value = dict["liteTopicName"] as? String {
+                    self.liteTopicName = value
                 }
                 if let value = dict["messageGroup"] as? String {
                     self.messageGroup = value
@@ -10035,6 +10384,45 @@ public class ListAvailableZonesResponse : Tea.TeaModel {
     }
 }
 
+public class ListConsumerConnectionsRequest : Tea.TeaModel {
+    public var liteTopicName: String?
+
+    public var topicName: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.liteTopicName != nil {
+            map["liteTopicName"] = self.liteTopicName!
+        }
+        if self.topicName != nil {
+            map["topicName"] = self.topicName!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["liteTopicName"] as? String {
+            self.liteTopicName = value
+        }
+        if let value = dict["topicName"] as? String {
+            self.topicName = value
+        }
+    }
+}
+
 public class ListConsumerConnectionsResponseBody : Tea.TeaModel {
     public class Data : Tea.TeaModel {
         public class Connections : Tea.TeaModel {
@@ -10639,11 +11027,15 @@ public class ListConsumerGroupsResponseBody : Tea.TeaModel {
 
             public var maxReceiveTps: Int64?
 
+            public var messageModel: String?
+
             public var regionId: String?
 
             public var remark: String?
 
             public var status: String?
+
+            public var topicName: String?
 
             public var updateTime: String?
 
@@ -10673,6 +11065,9 @@ public class ListConsumerGroupsResponseBody : Tea.TeaModel {
                 if self.maxReceiveTps != nil {
                     map["maxReceiveTps"] = self.maxReceiveTps!
                 }
+                if self.messageModel != nil {
+                    map["messageModel"] = self.messageModel!
+                }
                 if self.regionId != nil {
                     map["regionId"] = self.regionId!
                 }
@@ -10681,6 +11076,9 @@ public class ListConsumerGroupsResponseBody : Tea.TeaModel {
                 }
                 if self.status != nil {
                     map["status"] = self.status!
+                }
+                if self.topicName != nil {
+                    map["topicName"] = self.topicName!
                 }
                 if self.updateTime != nil {
                     map["updateTime"] = self.updateTime!
@@ -10702,6 +11100,9 @@ public class ListConsumerGroupsResponseBody : Tea.TeaModel {
                 if let value = dict["maxReceiveTps"] as? Int64 {
                     self.maxReceiveTps = value
                 }
+                if let value = dict["messageModel"] as? String {
+                    self.messageModel = value
+                }
                 if let value = dict["regionId"] as? String {
                     self.regionId = value
                 }
@@ -10710,6 +11111,9 @@ public class ListConsumerGroupsResponseBody : Tea.TeaModel {
                 }
                 if let value = dict["status"] as? String {
                     self.status = value
+                }
+                if let value = dict["topicName"] as? String {
+                    self.topicName = value
                 }
                 if let value = dict["updateTime"] as? String {
                     self.updateTime = value
@@ -14101,6 +14505,8 @@ public class ListInstancesResponse : Tea.TeaModel {
 public class ListMessagesRequest : Tea.TeaModel {
     public var endTime: String?
 
+    public var liteTopicName: String?
+
     public var messageId: String?
 
     public var messageKey: String?
@@ -14130,6 +14536,9 @@ public class ListMessagesRequest : Tea.TeaModel {
         if self.endTime != nil {
             map["endTime"] = self.endTime!
         }
+        if self.liteTopicName != nil {
+            map["liteTopicName"] = self.liteTopicName!
+        }
         if self.messageId != nil {
             map["messageId"] = self.messageId!
         }
@@ -14155,6 +14564,9 @@ public class ListMessagesRequest : Tea.TeaModel {
         guard let dict else { return }
         if let value = dict["endTime"] as? String {
             self.endTime = value
+        }
+        if let value = dict["liteTopicName"] as? String {
+            self.liteTopicName = value
         }
         if let value = dict["messageId"] as? String {
             self.messageId = value
@@ -14189,6 +14601,8 @@ public class ListMessagesResponseBody : Tea.TeaModel {
             public var bornTime: String?
 
             public var instanceId: String?
+
+            public var liteTopicName: String?
 
             public var messageGroup: String?
 
@@ -14239,6 +14653,9 @@ public class ListMessagesResponseBody : Tea.TeaModel {
                 if self.instanceId != nil {
                     map["instanceId"] = self.instanceId!
                 }
+                if self.liteTopicName != nil {
+                    map["liteTopicName"] = self.liteTopicName!
+                }
                 if self.messageGroup != nil {
                     map["messageGroup"] = self.messageGroup!
                 }
@@ -14288,6 +14705,9 @@ public class ListMessagesResponseBody : Tea.TeaModel {
                 }
                 if let value = dict["instanceId"] as? String {
                     self.instanceId = value
+                }
+                if let value = dict["liteTopicName"] as? String {
+                    self.liteTopicName = value
                 }
                 if let value = dict["messageGroup"] as? String {
                     self.messageGroup = value
@@ -15275,6 +15695,510 @@ public class ListMigrationOperationsResponse : Tea.TeaModel {
     }
 }
 
+public class ListMigrationsRequest : Tea.TeaModel {
+    public var filter: String?
+
+    public var migrationType: String?
+
+    public var pageNumber: Int32?
+
+    public var pageSize: Int32?
+
+    public var resourceGroupId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.filter != nil {
+            map["filter"] = self.filter!
+        }
+        if self.migrationType != nil {
+            map["migrationType"] = self.migrationType!
+        }
+        if self.pageNumber != nil {
+            map["pageNumber"] = self.pageNumber!
+        }
+        if self.pageSize != nil {
+            map["pageSize"] = self.pageSize!
+        }
+        if self.resourceGroupId != nil {
+            map["resourceGroupId"] = self.resourceGroupId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["filter"] as? String {
+            self.filter = value
+        }
+        if let value = dict["migrationType"] as? String {
+            self.migrationType = value
+        }
+        if let value = dict["pageNumber"] as? Int32 {
+            self.pageNumber = value
+        }
+        if let value = dict["pageSize"] as? Int32 {
+            self.pageSize = value
+        }
+        if let value = dict["resourceGroupId"] as? String {
+            self.resourceGroupId = value
+        }
+    }
+}
+
+public class ListMigrationsResponseBody : Tea.TeaModel {
+    public class Data : Tea.TeaModel {
+        public class List : Tea.TeaModel {
+            public class CurrentStage : Tea.TeaModel {
+                public var stageData: Any?
+
+                public var stageStatus: String?
+
+                public var stageType: String?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.stageData != nil {
+                        map["stageData"] = self.stageData!
+                    }
+                    if self.stageStatus != nil {
+                        map["stageStatus"] = self.stageStatus!
+                    }
+                    if self.stageType != nil {
+                        map["stageType"] = self.stageType!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                    guard let dict else { return }
+                    if let value = dict["stageData"] as? Any {
+                        self.stageData = value
+                    }
+                    if let value = dict["stageStatus"] as? String {
+                        self.stageStatus = value
+                    }
+                    if let value = dict["stageType"] as? String {
+                        self.stageType = value
+                    }
+                }
+            }
+            public class MigrationSource : Tea.TeaModel {
+                public var sourceData: Any?
+
+                public var sourceType: String?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.sourceData != nil {
+                        map["sourceData"] = self.sourceData!
+                    }
+                    if self.sourceType != nil {
+                        map["sourceType"] = self.sourceType!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                    guard let dict else { return }
+                    if let value = dict["sourceData"] as? Any {
+                        self.sourceData = value
+                    }
+                    if let value = dict["sourceType"] as? String {
+                        self.sourceType = value
+                    }
+                }
+            }
+            public class MigrationTarget : Tea.TeaModel {
+                public var targetData: Any?
+
+                public var targetType: String?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.targetData != nil {
+                        map["targetData"] = self.targetData!
+                    }
+                    if self.targetType != nil {
+                        map["targetType"] = self.targetType!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                    guard let dict else { return }
+                    if let value = dict["targetData"] as? Any {
+                        self.targetData = value
+                    }
+                    if let value = dict["targetType"] as? String {
+                        self.targetType = value
+                    }
+                }
+            }
+            public var createTime: String?
+
+            public var currentStage: ListMigrationsResponseBody.Data.List.CurrentStage?
+
+            public var migrationId: Int64?
+
+            public var migrationName: String?
+
+            public var migrationSource: ListMigrationsResponseBody.Data.List.MigrationSource?
+
+            public var migrationStatus: String?
+
+            public var migrationTarget: ListMigrationsResponseBody.Data.List.MigrationTarget?
+
+            public var migrationType: String?
+
+            public var updateTime: String?
+
+            public var userId: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+                try self.currentStage?.validate()
+                try self.migrationSource?.validate()
+                try self.migrationTarget?.validate()
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.createTime != nil {
+                    map["createTime"] = self.createTime!
+                }
+                if self.currentStage != nil {
+                    map["currentStage"] = self.currentStage?.toMap()
+                }
+                if self.migrationId != nil {
+                    map["migrationId"] = self.migrationId!
+                }
+                if self.migrationName != nil {
+                    map["migrationName"] = self.migrationName!
+                }
+                if self.migrationSource != nil {
+                    map["migrationSource"] = self.migrationSource?.toMap()
+                }
+                if self.migrationStatus != nil {
+                    map["migrationStatus"] = self.migrationStatus!
+                }
+                if self.migrationTarget != nil {
+                    map["migrationTarget"] = self.migrationTarget?.toMap()
+                }
+                if self.migrationType != nil {
+                    map["migrationType"] = self.migrationType!
+                }
+                if self.updateTime != nil {
+                    map["updateTime"] = self.updateTime!
+                }
+                if self.userId != nil {
+                    map["userId"] = self.userId!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["createTime"] as? String {
+                    self.createTime = value
+                }
+                if let value = dict["currentStage"] as? [String: Any?] {
+                    var model = ListMigrationsResponseBody.Data.List.CurrentStage()
+                    model.fromMap(value)
+                    self.currentStage = model
+                }
+                if let value = dict["migrationId"] as? Int64 {
+                    self.migrationId = value
+                }
+                if let value = dict["migrationName"] as? String {
+                    self.migrationName = value
+                }
+                if let value = dict["migrationSource"] as? [String: Any?] {
+                    var model = ListMigrationsResponseBody.Data.List.MigrationSource()
+                    model.fromMap(value)
+                    self.migrationSource = model
+                }
+                if let value = dict["migrationStatus"] as? String {
+                    self.migrationStatus = value
+                }
+                if let value = dict["migrationTarget"] as? [String: Any?] {
+                    var model = ListMigrationsResponseBody.Data.List.MigrationTarget()
+                    model.fromMap(value)
+                    self.migrationTarget = model
+                }
+                if let value = dict["migrationType"] as? String {
+                    self.migrationType = value
+                }
+                if let value = dict["updateTime"] as? String {
+                    self.updateTime = value
+                }
+                if let value = dict["userId"] as? String {
+                    self.userId = value
+                }
+            }
+        }
+        public var list: [ListMigrationsResponseBody.Data.List]?
+
+        public var pageNumber: Int64?
+
+        public var pageSize: Int64?
+
+        public var totalCount: Int64?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.list != nil {
+                var tmp : [Any] = []
+                for k in self.list! {
+                    tmp.append(k.toMap())
+                }
+                map["list"] = tmp
+            }
+            if self.pageNumber != nil {
+                map["pageNumber"] = self.pageNumber!
+            }
+            if self.pageSize != nil {
+                map["pageSize"] = self.pageSize!
+            }
+            if self.totalCount != nil {
+                map["totalCount"] = self.totalCount!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["list"] as? [Any?] {
+                var tmp : [ListMigrationsResponseBody.Data.List] = []
+                for v in value {
+                    if v != nil {
+                        var model = ListMigrationsResponseBody.Data.List()
+                        if v != nil {
+                            model.fromMap(v as? [String: Any?])
+                        }
+                        tmp.append(model)
+                    }
+                }
+                self.list = tmp
+            }
+            if let value = dict["pageNumber"] as? Int64 {
+                self.pageNumber = value
+            }
+            if let value = dict["pageSize"] as? Int64 {
+                self.pageSize = value
+            }
+            if let value = dict["totalCount"] as? Int64 {
+                self.totalCount = value
+            }
+        }
+    }
+    public var code: String?
+
+    public var data: ListMigrationsResponseBody.Data?
+
+    public var dynamicCode: String?
+
+    public var dynamicMessage: String?
+
+    public var httpStatusCode: Int32?
+
+    public var message: String?
+
+    public var requestId: String?
+
+    public var success: Bool?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.data?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.code != nil {
+            map["code"] = self.code!
+        }
+        if self.data != nil {
+            map["data"] = self.data?.toMap()
+        }
+        if self.dynamicCode != nil {
+            map["dynamicCode"] = self.dynamicCode!
+        }
+        if self.dynamicMessage != nil {
+            map["dynamicMessage"] = self.dynamicMessage!
+        }
+        if self.httpStatusCode != nil {
+            map["httpStatusCode"] = self.httpStatusCode!
+        }
+        if self.message != nil {
+            map["message"] = self.message!
+        }
+        if self.requestId != nil {
+            map["requestId"] = self.requestId!
+        }
+        if self.success != nil {
+            map["success"] = self.success!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["code"] as? String {
+            self.code = value
+        }
+        if let value = dict["data"] as? [String: Any?] {
+            var model = ListMigrationsResponseBody.Data()
+            model.fromMap(value)
+            self.data = model
+        }
+        if let value = dict["dynamicCode"] as? String {
+            self.dynamicCode = value
+        }
+        if let value = dict["dynamicMessage"] as? String {
+            self.dynamicMessage = value
+        }
+        if let value = dict["httpStatusCode"] as? Int32 {
+            self.httpStatusCode = value
+        }
+        if let value = dict["message"] as? String {
+            self.message = value
+        }
+        if let value = dict["requestId"] as? String {
+            self.requestId = value
+        }
+        if let value = dict["success"] as? Bool {
+            self.success = value
+        }
+    }
+}
+
+public class ListMigrationsResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: ListMigrationsResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = ListMigrationsResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
 public class ListRegionsResponseBody : Tea.TeaModel {
     public class Data : Tea.TeaModel {
         public class Tags : Tea.TeaModel {
@@ -16251,6 +17175,8 @@ public class ListTopicsResponseBody : Tea.TeaModel {
 
             public var instanceId: String?
 
+            public var liteTopicExpiration: Int64?
+
             public var maxSendTps: Int64?
 
             public var messageType: String?
@@ -16285,6 +17211,9 @@ public class ListTopicsResponseBody : Tea.TeaModel {
                 if self.instanceId != nil {
                     map["instanceId"] = self.instanceId!
                 }
+                if self.liteTopicExpiration != nil {
+                    map["liteTopicExpiration"] = self.liteTopicExpiration!
+                }
                 if self.maxSendTps != nil {
                     map["maxSendTps"] = self.maxSendTps!
                 }
@@ -16316,6 +17245,9 @@ public class ListTopicsResponseBody : Tea.TeaModel {
                 }
                 if let value = dict["instanceId"] as? String {
                     self.instanceId = value
+                }
+                if let value = dict["liteTopicExpiration"] as? Int64 {
+                    self.liteTopicExpiration = value
                 }
                 if let value = dict["maxSendTps"] as? Int64 {
                     self.maxSendTps = value
@@ -16549,6 +17481,8 @@ public class ListTopicsResponse : Tea.TeaModel {
 public class ListTracesRequest : Tea.TeaModel {
     public var endTime: String?
 
+    public var liteTopicName: String?
+
     public var messageId: String?
 
     public var messageKey: String?
@@ -16578,6 +17512,9 @@ public class ListTracesRequest : Tea.TeaModel {
         if self.endTime != nil {
             map["endTime"] = self.endTime!
         }
+        if self.liteTopicName != nil {
+            map["liteTopicName"] = self.liteTopicName!
+        }
         if self.messageId != nil {
             map["messageId"] = self.messageId!
         }
@@ -16603,6 +17540,9 @@ public class ListTracesRequest : Tea.TeaModel {
         guard let dict else { return }
         if let value = dict["endTime"] as? String {
             self.endTime = value
+        }
+        if let value = dict["liteTopicName"] as? String {
+            self.liteTopicName = value
         }
         if let value = dict["messageId"] as? String {
             self.messageId = value
@@ -19561,6 +20501,8 @@ public class UpdateInstanceAclResponse : Tea.TeaModel {
 }
 
 public class UpdateTopicRequest : Tea.TeaModel {
+    public var liteTopicExpiration: Int64?
+
     public var maxSendTps: Int64?
 
     public var remark: String?
@@ -19579,6 +20521,9 @@ public class UpdateTopicRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.liteTopicExpiration != nil {
+            map["liteTopicExpiration"] = self.liteTopicExpiration!
+        }
         if self.maxSendTps != nil {
             map["maxSendTps"] = self.maxSendTps!
         }
@@ -19590,6 +20535,9 @@ public class UpdateTopicRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["liteTopicExpiration"] as? Int64 {
+            self.liteTopicExpiration = value
+        }
         if let value = dict["maxSendTps"] as? Int64 {
             self.maxSendTps = value
         }
@@ -19913,6 +20861,8 @@ public class VerifyConsumeMessageResponse : Tea.TeaModel {
 }
 
 public class VerifySendMessageRequest : Tea.TeaModel {
+    public var liteTopicName: String?
+
     public var message: String?
 
     public var messageKey: String?
@@ -19933,6 +20883,9 @@ public class VerifySendMessageRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.liteTopicName != nil {
+            map["liteTopicName"] = self.liteTopicName!
+        }
         if self.message != nil {
             map["message"] = self.message!
         }
@@ -19947,6 +20900,9 @@ public class VerifySendMessageRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["liteTopicName"] as? String {
+            self.liteTopicName = value
+        }
         if let value = dict["message"] as? String {
             self.message = value
         }
