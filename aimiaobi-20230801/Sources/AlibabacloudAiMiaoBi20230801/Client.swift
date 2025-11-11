@@ -44,6 +44,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.termsDesc)) {
             body["TermsDesc"] = request.termsDesc ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.termsName)) {
+            body["TermsName"] = request.termsName ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.workspaceId)) {
             body["WorkspaceId"] = request.workspaceId ?? "";
         }
@@ -727,6 +730,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func deleteAuditNoteWithOptions(_ request: DeleteAuditNoteRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DeleteAuditNoteResponse {
         try TeaUtils.Client.validateModel(request)
         var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.noteId)) {
+            body["NoteId"] = request.noteId ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.workspaceId)) {
             body["WorkspaceId"] = request.workspaceId ?? "";
         }
@@ -1246,6 +1252,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func downloadAuditNoteWithOptions(_ request: DownloadAuditNoteRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DownloadAuditNoteResponse {
         try TeaUtils.Client.validateModel(request)
         var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.noteId)) {
+            body["NoteId"] = request.noteId ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.taskId)) {
             body["TaskId"] = request.taskId ?? "";
         }
@@ -2158,6 +2167,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func getAvailableAuditNotesWithOptions(_ request: GetAvailableAuditNotesRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> GetAvailableAuditNotesResponse {
         try TeaUtils.Client.validateModel(request)
         var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.noteId)) {
+            body["NoteId"] = request.noteId ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.workspaceId)) {
             body["WorkspaceId"] = request.workspaceId ?? "";
         }
@@ -3620,6 +3632,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.nextToken)) {
             body["NextToken"] = request.nextToken ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.termsName)) {
+            body["TermsName"] = request.termsName ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.workspaceId)) {
             body["WorkspaceId"] = request.workspaceId ?? "";
@@ -7247,6 +7262,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.fileKey)) {
             body["FileKey"] = request.fileKey ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.noteId)) {
+            body["NoteId"] = request.noteId ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.workspaceId)) {
             body["WorkspaceId"] = request.workspaceId ?? "";
         }
@@ -7645,6 +7663,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func submitExportTermsTaskWithOptions(_ request: SubmitExportTermsTaskRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> SubmitExportTermsTaskResponse {
         try TeaUtils.Client.validateModel(request)
         var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.termsName)) {
+            body["TermsName"] = request.termsName ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.workspaceId)) {
             body["WorkspaceId"] = request.workspaceId ?? "";
         }
@@ -7713,6 +7734,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.fileKey)) {
             body["FileKey"] = request.fileKey ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.termsName)) {
+            body["TermsName"] = request.termsName ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.workspaceId)) {
             body["WorkspaceId"] = request.workspaceId ?? "";
         }
@@ -7758,8 +7782,14 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.imageUrlListShrink)) {
             body["ImageUrlList"] = request.imageUrlListShrink ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.noteId)) {
+            body["NoteId"] = request.noteId ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.subCodesShrink)) {
             body["SubCodes"] = request.subCodesShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.termsName)) {
+            body["TermsName"] = request.termsName ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.text)) {
             body["Text"] = request.text ?? "";

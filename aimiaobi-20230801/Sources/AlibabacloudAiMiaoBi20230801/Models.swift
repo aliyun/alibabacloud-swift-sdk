@@ -894,6 +894,8 @@ public class AddAuditTermsRequest : Tea.TeaModel {
 
     public var termsDesc: String?
 
+    public var termsName: String?
+
     public var workspaceId: String?
 
     public override init() {
@@ -922,6 +924,9 @@ public class AddAuditTermsRequest : Tea.TeaModel {
         if self.termsDesc != nil {
             map["TermsDesc"] = self.termsDesc!
         }
+        if self.termsName != nil {
+            map["TermsName"] = self.termsName!
+        }
         if self.workspaceId != nil {
             map["WorkspaceId"] = self.workspaceId!
         }
@@ -942,6 +947,9 @@ public class AddAuditTermsRequest : Tea.TeaModel {
         if let value = dict["TermsDesc"] as? String {
             self.termsDesc = value
         }
+        if let value = dict["TermsName"] as? String {
+            self.termsName = value
+        }
         if let value = dict["WorkspaceId"] as? String {
             self.workspaceId = value
         }
@@ -956,6 +964,8 @@ public class AddAuditTermsShrinkRequest : Tea.TeaModel {
     public var suggestWord: String?
 
     public var termsDesc: String?
+
+    public var termsName: String?
 
     public var workspaceId: String?
 
@@ -985,6 +995,9 @@ public class AddAuditTermsShrinkRequest : Tea.TeaModel {
         if self.termsDesc != nil {
             map["TermsDesc"] = self.termsDesc!
         }
+        if self.termsName != nil {
+            map["TermsName"] = self.termsName!
+        }
         if self.workspaceId != nil {
             map["WorkspaceId"] = self.workspaceId!
         }
@@ -1004,6 +1017,9 @@ public class AddAuditTermsShrinkRequest : Tea.TeaModel {
         }
         if let value = dict["TermsDesc"] as? String {
             self.termsDesc = value
+        }
+        if let value = dict["TermsName"] as? String {
+            self.termsName = value
         }
         if let value = dict["WorkspaceId"] as? String {
             self.workspaceId = value
@@ -6017,6 +6033,8 @@ public class CreateTokenResponse : Tea.TeaModel {
 }
 
 public class DeleteAuditNoteRequest : Tea.TeaModel {
+    public var noteId: String?
+
     public var workspaceId: String?
 
     public override init() {
@@ -6033,6 +6051,9 @@ public class DeleteAuditNoteRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.noteId != nil {
+            map["NoteId"] = self.noteId!
+        }
         if self.workspaceId != nil {
             map["WorkspaceId"] = self.workspaceId!
         }
@@ -6041,6 +6062,9 @@ public class DeleteAuditNoteRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["NoteId"] as? String {
+            self.noteId = value
+        }
         if let value = dict["WorkspaceId"] as? String {
             self.workspaceId = value
         }
@@ -8555,6 +8579,8 @@ public class DocumentExtractionResponse : Tea.TeaModel {
 }
 
 public class DownloadAuditNoteRequest : Tea.TeaModel {
+    public var noteId: String?
+
     public var taskId: String?
 
     public var workspaceId: String?
@@ -8573,6 +8599,9 @@ public class DownloadAuditNoteRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.noteId != nil {
+            map["NoteId"] = self.noteId!
+        }
         if self.taskId != nil {
             map["TaskId"] = self.taskId!
         }
@@ -8584,6 +8613,9 @@ public class DownloadAuditNoteRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["NoteId"] as? String {
+            self.noteId = value
+        }
         if let value = dict["TaskId"] as? String {
             self.taskId = value
         }
@@ -14122,6 +14154,8 @@ public class GetAutoClipsTaskInfoResponse : Tea.TeaModel {
 }
 
 public class GetAvailableAuditNotesRequest : Tea.TeaModel {
+    public var noteId: String?
+
     public var workspaceId: String?
 
     public override init() {
@@ -14138,6 +14172,9 @@ public class GetAvailableAuditNotesRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.noteId != nil {
+            map["NoteId"] = self.noteId!
+        }
         if self.workspaceId != nil {
             map["WorkspaceId"] = self.workspaceId!
         }
@@ -14146,6 +14183,9 @@ public class GetAvailableAuditNotesRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["NoteId"] as? String {
+            self.noteId = value
+        }
         if let value = dict["WorkspaceId"] as? String {
             self.workspaceId = value
         }
@@ -29110,6 +29150,8 @@ public class ListAuditTermsRequest : Tea.TeaModel {
 
     public var nextToken: String?
 
+    public var termsName: String?
+
     public var workspaceId: String?
 
     public override init() {
@@ -29132,6 +29174,9 @@ public class ListAuditTermsRequest : Tea.TeaModel {
         if self.nextToken != nil {
             map["NextToken"] = self.nextToken!
         }
+        if self.termsName != nil {
+            map["TermsName"] = self.termsName!
+        }
         if self.workspaceId != nil {
             map["WorkspaceId"] = self.workspaceId!
         }
@@ -29145,6 +29190,9 @@ public class ListAuditTermsRequest : Tea.TeaModel {
         }
         if let value = dict["NextToken"] as? String {
             self.nextToken = value
+        }
+        if let value = dict["TermsName"] as? String {
+            self.termsName = value
         }
         if let value = dict["WorkspaceId"] as? String {
             self.workspaceId = value
@@ -29163,6 +29211,8 @@ public class ListAuditTermsResponseBody : Tea.TeaModel {
         public var suggestWord: String?
 
         public var termsDesc: String?
+
+        public var termsName: String?
 
         public override init() {
             super.init()
@@ -29193,6 +29243,9 @@ public class ListAuditTermsResponseBody : Tea.TeaModel {
             if self.termsDesc != nil {
                 map["TermsDesc"] = self.termsDesc!
             }
+            if self.termsName != nil {
+                map["TermsName"] = self.termsName!
+            }
             return map
         }
 
@@ -29212,6 +29265,9 @@ public class ListAuditTermsResponseBody : Tea.TeaModel {
             }
             if let value = dict["TermsDesc"] as? String {
                 self.termsDesc = value
+            }
+            if let value = dict["TermsName"] as? String {
+                self.termsName = value
             }
         }
     }
@@ -66967,6 +67023,8 @@ public class SubmitAsyncTaskResponse : Tea.TeaModel {
 public class SubmitAuditNoteRequest : Tea.TeaModel {
     public var fileKey: String?
 
+    public var noteId: String?
+
     public var workspaceId: String?
 
     public override init() {
@@ -66986,6 +67044,9 @@ public class SubmitAuditNoteRequest : Tea.TeaModel {
         if self.fileKey != nil {
             map["FileKey"] = self.fileKey!
         }
+        if self.noteId != nil {
+            map["NoteId"] = self.noteId!
+        }
         if self.workspaceId != nil {
             map["WorkspaceId"] = self.workspaceId!
         }
@@ -66996,6 +67057,9 @@ public class SubmitAuditNoteRequest : Tea.TeaModel {
         guard let dict else { return }
         if let value = dict["FileKey"] as? String {
             self.fileKey = value
+        }
+        if let value = dict["NoteId"] as? String {
+            self.noteId = value
         }
         if let value = dict["WorkspaceId"] as? String {
             self.workspaceId = value
@@ -70009,6 +70073,8 @@ public class SubmitEnterpriseVocAnalysisTaskResponse : Tea.TeaModel {
 }
 
 public class SubmitExportTermsTaskRequest : Tea.TeaModel {
+    public var termsName: String?
+
     public var workspaceId: String?
 
     public override init() {
@@ -70025,6 +70091,9 @@ public class SubmitExportTermsTaskRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.termsName != nil {
+            map["TermsName"] = self.termsName!
+        }
         if self.workspaceId != nil {
             map["WorkspaceId"] = self.workspaceId!
         }
@@ -70033,6 +70102,9 @@ public class SubmitExportTermsTaskRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["TermsName"] as? String {
+            self.termsName = value
+        }
         if let value = dict["WorkspaceId"] as? String {
             self.workspaceId = value
         }
@@ -70356,6 +70428,8 @@ public class SubmitFactAuditUrlResponse : Tea.TeaModel {
 public class SubmitImportTermsTaskRequest : Tea.TeaModel {
     public var fileKey: String?
 
+    public var termsName: String?
+
     public var workspaceId: String?
 
     public override init() {
@@ -70375,6 +70449,9 @@ public class SubmitImportTermsTaskRequest : Tea.TeaModel {
         if self.fileKey != nil {
             map["FileKey"] = self.fileKey!
         }
+        if self.termsName != nil {
+            map["TermsName"] = self.termsName!
+        }
         if self.workspaceId != nil {
             map["WorkspaceId"] = self.workspaceId!
         }
@@ -70385,6 +70462,9 @@ public class SubmitImportTermsTaskRequest : Tea.TeaModel {
         guard let dict else { return }
         if let value = dict["FileKey"] as? String {
             self.fileKey = value
+        }
+        if let value = dict["TermsName"] as? String {
+            self.termsName = value
         }
         if let value = dict["WorkspaceId"] as? String {
             self.workspaceId = value
@@ -70625,7 +70705,11 @@ public class SubmitSmartAuditRequest : Tea.TeaModel {
     }
     public var imageUrlList: [SubmitSmartAuditRequest.ImageUrlList]?
 
+    public var noteId: String?
+
     public var subCodes: [String]?
+
+    public var termsName: String?
 
     public var text: String?
 
@@ -70654,8 +70738,14 @@ public class SubmitSmartAuditRequest : Tea.TeaModel {
             }
             map["ImageUrlList"] = tmp
         }
+        if self.noteId != nil {
+            map["NoteId"] = self.noteId!
+        }
         if self.subCodes != nil {
             map["SubCodes"] = self.subCodes!
+        }
+        if self.termsName != nil {
+            map["TermsName"] = self.termsName!
         }
         if self.text != nil {
             map["Text"] = self.text!
@@ -70688,8 +70778,14 @@ public class SubmitSmartAuditRequest : Tea.TeaModel {
             }
             self.imageUrlList = tmp
         }
+        if let value = dict["NoteId"] as? String {
+            self.noteId = value
+        }
         if let value = dict["SubCodes"] as? [String] {
             self.subCodes = value
+        }
+        if let value = dict["TermsName"] as? String {
+            self.termsName = value
         }
         if let value = dict["Text"] as? String {
             self.text = value
@@ -70716,7 +70812,11 @@ public class SubmitSmartAuditRequest : Tea.TeaModel {
 public class SubmitSmartAuditShrinkRequest : Tea.TeaModel {
     public var imageUrlListShrink: String?
 
+    public var noteId: String?
+
     public var subCodesShrink: String?
+
+    public var termsName: String?
 
     public var text: String?
 
@@ -70741,8 +70841,14 @@ public class SubmitSmartAuditShrinkRequest : Tea.TeaModel {
         if self.imageUrlListShrink != nil {
             map["ImageUrlList"] = self.imageUrlListShrink!
         }
+        if self.noteId != nil {
+            map["NoteId"] = self.noteId!
+        }
         if self.subCodesShrink != nil {
             map["SubCodes"] = self.subCodesShrink!
+        }
+        if self.termsName != nil {
+            map["TermsName"] = self.termsName!
         }
         if self.text != nil {
             map["Text"] = self.text!
@@ -70761,8 +70867,14 @@ public class SubmitSmartAuditShrinkRequest : Tea.TeaModel {
         if let value = dict["ImageUrlList"] as? String {
             self.imageUrlListShrink = value
         }
+        if let value = dict["NoteId"] as? String {
+            self.noteId = value
+        }
         if let value = dict["SubCodes"] as? String {
             self.subCodesShrink = value
+        }
+        if let value = dict["TermsName"] as? String {
+            self.termsName = value
         }
         if let value = dict["Text"] as? String {
             self.text = value
