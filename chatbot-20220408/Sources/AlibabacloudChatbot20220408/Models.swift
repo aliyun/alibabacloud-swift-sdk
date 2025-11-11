@@ -8842,6 +8842,8 @@ public class DescribeFaqResponseBody : Tea.TeaModel {
 
         public var solutionId: Int64?
 
+        public var tagIdList: [Int64]?
+
         public override init() {
             super.init()
         }
@@ -8877,6 +8879,9 @@ public class DescribeFaqResponseBody : Tea.TeaModel {
             if self.solutionId != nil {
                 map["SolutionId"] = self.solutionId!
             }
+            if self.tagIdList != nil {
+                map["TagIdList"] = self.tagIdList!
+            }
             return map
         }
 
@@ -8902,6 +8907,9 @@ public class DescribeFaqResponseBody : Tea.TeaModel {
             }
             if let value = dict["SolutionId"] as? Int64 {
                 self.solutionId = value
+            }
+            if let value = dict["TagIdList"] as? [Int64] {
+                self.tagIdList = value
             }
         }
     }
