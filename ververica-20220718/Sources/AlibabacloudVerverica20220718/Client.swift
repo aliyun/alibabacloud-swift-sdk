@@ -1762,6 +1762,46 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getPreSignedUrlForPutObjectWithOptions(_ namespace: String, _ request: GetPreSignedUrlForPutObjectRequest, _ headers: GetPreSignedUrlForPutObjectHeaders, _ runtime: TeaUtils.RuntimeOptions) async throws -> GetPreSignedUrlForPutObjectResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.fileName)) {
+            query["fileName"] = request.fileName ?? "";
+        }
+        var realHeaders: [String: String] = [:]
+        if (!TeaUtils.Client.isUnset(headers.commonHeaders)) {
+            realHeaders = headers.commonHeaders ?? [:]
+        }
+        if (!TeaUtils.Client.isUnset(headers.workspace)) {
+            realHeaders["workspace"] = TeaUtils.Client.toJSONString(headers.workspace);
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": realHeaders as! [String: String],
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "GetPreSignedUrlForPutObject",
+            "version": "2022-07-18",
+            "protocol": "HTTPS",
+            "pathname": "/artifacts/v2/namespaces/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(namespace)) + "/getPreSignedUrlForPutObject",
+            "method": "GET",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(GetPreSignedUrlForPutObjectResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getPreSignedUrlForPutObject(_ namespace: String, _ request: GetPreSignedUrlForPutObjectRequest) async throws -> GetPreSignedUrlForPutObjectResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: GetPreSignedUrlForPutObjectHeaders = GetPreSignedUrlForPutObjectHeaders([:])
+        return try await getPreSignedUrlForPutObjectWithOptions(namespace as! String, request as! GetPreSignedUrlForPutObjectRequest, headers as! GetPreSignedUrlForPutObjectHeaders, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func getSavepointWithOptions(_ namespace: String, _ savepointId: String, _ headers: GetSavepointHeaders, _ runtime: TeaUtils.RuntimeOptions) async throws -> GetSavepointResponse {
         var realHeaders: [String: String] = [:]
         if (!TeaUtils.Client.isUnset(headers.commonHeaders)) {
