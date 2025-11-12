@@ -51980,7 +51980,15 @@ public class RunSearchGenerationRequest : Tea.TeaModel {
 
             public var multimodalSearchTypes: [String]?
 
+            public var searchAudioMinScore: Double?
+
+            public var searchImageMinScore: Double?
+
             public var searchSources: [RunSearchGenerationRequest.ChatConfig.SearchParam.SearchSources]?
+
+            public var searchTextMinScore: Double?
+
+            public var searchVideoMinScore: Double?
 
             public var startTime: Int64?
 
@@ -52004,12 +52012,24 @@ public class RunSearchGenerationRequest : Tea.TeaModel {
                 if self.multimodalSearchTypes != nil {
                     map["MultimodalSearchTypes"] = self.multimodalSearchTypes!
                 }
+                if self.searchAudioMinScore != nil {
+                    map["SearchAudioMinScore"] = self.searchAudioMinScore!
+                }
+                if self.searchImageMinScore != nil {
+                    map["SearchImageMinScore"] = self.searchImageMinScore!
+                }
                 if self.searchSources != nil {
                     var tmp : [Any] = []
                     for k in self.searchSources! {
                         tmp.append(k.toMap())
                     }
                     map["SearchSources"] = tmp
+                }
+                if self.searchTextMinScore != nil {
+                    map["SearchTextMinScore"] = self.searchTextMinScore!
+                }
+                if self.searchVideoMinScore != nil {
+                    map["SearchVideoMinScore"] = self.searchVideoMinScore!
                 }
                 if self.startTime != nil {
                     map["StartTime"] = self.startTime!
@@ -52025,6 +52045,12 @@ public class RunSearchGenerationRequest : Tea.TeaModel {
                 if let value = dict["MultimodalSearchTypes"] as? [String] {
                     self.multimodalSearchTypes = value
                 }
+                if let value = dict["SearchAudioMinScore"] as? Double {
+                    self.searchAudioMinScore = value
+                }
+                if let value = dict["SearchImageMinScore"] as? Double {
+                    self.searchImageMinScore = value
+                }
                 if let value = dict["SearchSources"] as? [Any?] {
                     var tmp : [RunSearchGenerationRequest.ChatConfig.SearchParam.SearchSources] = []
                     for v in value {
@@ -52038,6 +52064,12 @@ public class RunSearchGenerationRequest : Tea.TeaModel {
                     }
                     self.searchSources = tmp
                 }
+                if let value = dict["SearchTextMinScore"] as? Double {
+                    self.searchTextMinScore = value
+                }
+                if let value = dict["SearchVideoMinScore"] as? Double {
+                    self.searchVideoMinScore = value
+                }
                 if let value = dict["StartTime"] as? Int64 {
                     self.startTime = value
                 }
@@ -52050,6 +52082,10 @@ public class RunSearchGenerationRequest : Tea.TeaModel {
         public var generateLevel: String?
 
         public var generateTechnology: String?
+
+        public var modelCustomPromptTemplate: String?
+
+        public var modelCustomVlPromptTemplate: String?
 
         public var searchModels: [String]?
 
@@ -52082,6 +52118,12 @@ public class RunSearchGenerationRequest : Tea.TeaModel {
             if self.generateTechnology != nil {
                 map["GenerateTechnology"] = self.generateTechnology!
             }
+            if self.modelCustomPromptTemplate != nil {
+                map["ModelCustomPromptTemplate"] = self.modelCustomPromptTemplate!
+            }
+            if self.modelCustomVlPromptTemplate != nil {
+                map["ModelCustomVlPromptTemplate"] = self.modelCustomVlPromptTemplate!
+            }
             if self.searchModels != nil {
                 map["SearchModels"] = self.searchModels!
             }
@@ -52104,6 +52146,12 @@ public class RunSearchGenerationRequest : Tea.TeaModel {
             }
             if let value = dict["GenerateTechnology"] as? String {
                 self.generateTechnology = value
+            }
+            if let value = dict["ModelCustomPromptTemplate"] as? String {
+                self.modelCustomPromptTemplate = value
+            }
+            if let value = dict["ModelCustomVlPromptTemplate"] as? String {
+                self.modelCustomVlPromptTemplate = value
             }
             if let value = dict["SearchModels"] as? [String] {
                 self.searchModels = value
