@@ -558,6 +558,53 @@ public class AllocateStrategySpec : Tea.TeaModel {
     }
 }
 
+public class AssignNodeSpec : Tea.TeaModel {
+    public var antiAffinityNodeNames: String?
+
+    public var enableAssignNode: Bool?
+
+    public var nodeNames: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.antiAffinityNodeNames != nil {
+            map["AntiAffinityNodeNames"] = self.antiAffinityNodeNames!
+        }
+        if self.enableAssignNode != nil {
+            map["EnableAssignNode"] = self.enableAssignNode!
+        }
+        if self.nodeNames != nil {
+            map["NodeNames"] = self.nodeNames!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["AntiAffinityNodeNames"] as? String {
+            self.antiAffinityNodeNames = value
+        }
+        if let value = dict["EnableAssignNode"] as? Bool {
+            self.enableAssignNode = value
+        }
+        if let value = dict["NodeNames"] as? String {
+            self.nodeNames = value
+        }
+    }
+}
+
 public class BindingPolicy : Tea.TeaModel {
     public var excludeNodes: [String]?
 
@@ -10764,6 +10811,8 @@ public class GetNodeMetricsResponse : Tea.TeaModel {
 public class GetQuotaRequest : Tea.TeaModel {
     public var verbose: Bool?
 
+    public var withNodeMeta: Bool?
+
     public override init() {
         super.init()
     }
@@ -10781,6 +10830,9 @@ public class GetQuotaRequest : Tea.TeaModel {
         if self.verbose != nil {
             map["Verbose"] = self.verbose!
         }
+        if self.withNodeMeta != nil {
+            map["WithNodeMeta"] = self.withNodeMeta!
+        }
         return map
     }
 
@@ -10788,6 +10840,9 @@ public class GetQuotaRequest : Tea.TeaModel {
         guard let dict else { return }
         if let value = dict["Verbose"] as? Bool {
             self.verbose = value
+        }
+        if let value = dict["WithNodeMeta"] as? Bool {
+            self.withNodeMeta = value
         }
     }
 }

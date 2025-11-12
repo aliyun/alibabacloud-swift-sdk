@@ -746,6 +746,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.verbose)) {
             query["Verbose"] = request.verbose!;
         }
+        if (!TeaUtils.Client.isUnset(request.withNodeMeta)) {
+            query["WithNodeMeta"] = request.withNodeMeta!;
+        }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "headers": headers as! [String: String],
             "query": AlibabaCloudOpenApiUtil.Client.query(query)
