@@ -37069,6 +37069,8 @@ public class DescribeMonitoringAgentStatusesResponseBody : Tea.TeaModel {
 
             public var instanceId: String?
 
+            public var loongCollectorStatus: String?
+
             public var osMonitorConfig: String?
 
             public var osMonitorErrorCode: String?
@@ -37104,6 +37106,9 @@ public class DescribeMonitoringAgentStatusesResponseBody : Tea.TeaModel {
                 if self.instanceId != nil {
                     map["InstanceId"] = self.instanceId!
                 }
+                if self.loongCollectorStatus != nil {
+                    map["LoongCollectorStatus"] = self.loongCollectorStatus!
+                }
                 if self.osMonitorConfig != nil {
                     map["OsMonitorConfig"] = self.osMonitorConfig!
                 }
@@ -37135,6 +37140,9 @@ public class DescribeMonitoringAgentStatusesResponseBody : Tea.TeaModel {
                 }
                 if let value = dict["InstanceId"] as? String {
                     self.instanceId = value
+                }
+                if let value = dict["LoongCollectorStatus"] as? String {
+                    self.loongCollectorStatus = value
                 }
                 if let value = dict["OsMonitorConfig"] as? String {
                     self.osMonitorConfig = value
