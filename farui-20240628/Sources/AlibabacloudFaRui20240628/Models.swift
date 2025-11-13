@@ -11,6 +11,8 @@ import AlibabacloudEndpointUtil
 public class CreateTextFileRequest : Tea.TeaModel {
     public var clientToken: String?
 
+    public var contractId: String?
+
     public var createTime: String?
 
     public var textFileName: String?
@@ -34,6 +36,9 @@ public class CreateTextFileRequest : Tea.TeaModel {
         if self.clientToken != nil {
             map["ClientToken"] = self.clientToken!
         }
+        if self.contractId != nil {
+            map["ContractId"] = self.contractId!
+        }
         if self.createTime != nil {
             map["CreateTime"] = self.createTime!
         }
@@ -51,6 +56,9 @@ public class CreateTextFileRequest : Tea.TeaModel {
         if let value = dict["ClientToken"] as? String {
             self.clientToken = value
         }
+        if let value = dict["ContractId"] as? String {
+            self.contractId = value
+        }
         if let value = dict["CreateTime"] as? String {
             self.createTime = value
         }
@@ -65,6 +73,8 @@ public class CreateTextFileRequest : Tea.TeaModel {
 
 public class CreateTextFileAdvanceRequest : Tea.TeaModel {
     public var clientToken: String?
+
+    public var contractId: String?
 
     public var createTime: String?
 
@@ -89,6 +99,9 @@ public class CreateTextFileAdvanceRequest : Tea.TeaModel {
         if self.clientToken != nil {
             map["ClientToken"] = self.clientToken!
         }
+        if self.contractId != nil {
+            map["ContractId"] = self.contractId!
+        }
         if self.createTime != nil {
             map["CreateTime"] = self.createTime!
         }
@@ -106,6 +119,9 @@ public class CreateTextFileAdvanceRequest : Tea.TeaModel {
         if let value = dict["ClientToken"] as? String {
             self.clientToken = value
         }
+        if let value = dict["ContractId"] as? String {
+            self.contractId = value
+        }
         if let value = dict["CreateTime"] as? String {
             self.createTime = value
         }
@@ -120,6 +136,8 @@ public class CreateTextFileAdvanceRequest : Tea.TeaModel {
 
 public class CreateTextFileResponseBody : Tea.TeaModel {
     public class Data : Tea.TeaModel {
+        public var contractId: String?
+
         public var textFileId: String?
 
         public var textFileName: String?
@@ -140,6 +158,9 @@ public class CreateTextFileResponseBody : Tea.TeaModel {
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
+            if self.contractId != nil {
+                map["ContractId"] = self.contractId!
+            }
             if self.textFileId != nil {
                 map["TextFileId"] = self.textFileId!
             }
@@ -154,6 +175,9 @@ public class CreateTextFileResponseBody : Tea.TeaModel {
 
         public override func fromMap(_ dict: [String: Any?]?) -> Void {
             guard let dict else { return }
+            if let value = dict["ContractId"] as? String {
+                self.contractId = value
+            }
             if let value = dict["TextFileId"] as? String {
                 self.textFileId = value
             }
@@ -673,6 +697,8 @@ public class RunContractResultGenerationResponseBody : Tea.TeaModel {
 
                 public var riskExplain: String?
 
+                public var standardOriginalContent: String?
+
                 public override init() {
                     super.init()
                 }
@@ -705,6 +731,9 @@ public class RunContractResultGenerationResponseBody : Tea.TeaModel {
                     if self.riskExplain != nil {
                         map["riskExplain"] = self.riskExplain!
                     }
+                    if self.standardOriginalContent != nil {
+                        map["standardOriginalContent"] = self.standardOriginalContent!
+                    }
                     return map
                 }
 
@@ -727,6 +756,9 @@ public class RunContractResultGenerationResponseBody : Tea.TeaModel {
                     }
                     if let value = dict["riskExplain"] as? String {
                         self.riskExplain = value
+                    }
+                    if let value = dict["standardOriginalContent"] as? String {
+                        self.standardOriginalContent = value
                     }
                 }
             }
