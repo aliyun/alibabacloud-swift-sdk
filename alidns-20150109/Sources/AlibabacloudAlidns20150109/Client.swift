@@ -9689,6 +9689,98 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func updateRspDomainServerHoldStatusOteWithOptions(_ request: UpdateRspDomainServerHoldStatusOteRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> UpdateRspDomainServerHoldStatusOteResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.clientToken)) {
+            query["ClientToken"] = request.clientToken ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.domainName)) {
+            query["DomainName"] = request.domainName ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.operatorId)) {
+            query["OperatorId"] = request.operatorId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.operatorType)) {
+            query["OperatorType"] = request.operatorType ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.serverHoldStatus)) {
+            query["ServerHoldStatus"] = request.serverHoldStatus ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.statusMsg)) {
+            query["StatusMsg"] = request.statusMsg ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "UpdateRspDomainServerHoldStatusOte",
+            "version": "2015-01-09",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(UpdateRspDomainServerHoldStatusOteResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func updateRspDomainServerHoldStatusOte(_ request: UpdateRspDomainServerHoldStatusOteRequest) async throws -> UpdateRspDomainServerHoldStatusOteResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await updateRspDomainServerHoldStatusOteWithOptions(request as! UpdateRspDomainServerHoldStatusOteRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func updateRspDomainStatusOteWithOptions(_ request: UpdateRspDomainStatusOteRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> UpdateRspDomainStatusOteResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.addStatusList)) {
+            query["AddStatusList"] = request.addStatusList ?? [];
+        }
+        if (!TeaUtils.Client.isUnset(request.clientToken)) {
+            query["ClientToken"] = request.clientToken ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.deleteStatusList)) {
+            query["DeleteStatusList"] = request.deleteStatusList ?? [];
+        }
+        if (!TeaUtils.Client.isUnset(request.domainName)) {
+            query["DomainName"] = request.domainName ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.operatorId)) {
+            query["OperatorId"] = request.operatorId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.operatorType)) {
+            query["OperatorType"] = request.operatorType ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "UpdateRspDomainStatusOte",
+            "version": "2015-01-09",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(UpdateRspDomainStatusOteResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func updateRspDomainStatusOte(_ request: UpdateRspDomainStatusOteRequest) async throws -> UpdateRspDomainStatusOteResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await updateRspDomainStatusOteWithOptions(request as! UpdateRspDomainStatusOteRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func validateDnsGtmCnameRrCanUseWithOptions(_ request: ValidateDnsGtmCnameRrCanUseRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ValidateDnsGtmCnameRrCanUseResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
