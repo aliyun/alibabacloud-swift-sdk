@@ -1320,6 +1320,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(tmpReq.caseList)) {
             request.caseListShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.caseList, "CaseList", "json")
         }
+        if (!TeaUtils.Client.isUnset(tmpReq.numberList)) {
+            request.numberListShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.numberList, "NumberList", "json")
+        }
         var query: [String: Any] = [:]
         if (!TeaUtils.Client.isUnset(request.callableTime)) {
             query["CallableTime"] = request.callableTime ?? "";
@@ -1339,6 +1342,12 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.executingUntilTimeout)) {
             query["ExecutingUntilTimeout"] = request.executingUntilTimeout!;
         }
+        if (!TeaUtils.Client.isUnset(request.flashSmsParameters)) {
+            query["FlashSmsParameters"] = request.flashSmsParameters ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.instGroupId)) {
+            query["InstGroupId"] = request.instGroupId ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.instanceId)) {
             query["InstanceId"] = request.instanceId ?? "";
         }
@@ -1350,6 +1359,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.name)) {
             query["Name"] = request.name ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.numberListShrink)) {
+            query["NumberList"] = request.numberListShrink ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.queueId)) {
             query["QueueId"] = request.queueId ?? "";

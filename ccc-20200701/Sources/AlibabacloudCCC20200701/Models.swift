@@ -3704,7 +3704,55 @@ public class AppendCasesShrinkRequest : Tea.TeaModel {
 }
 
 public class AppendCasesResponseBody : Tea.TeaModel {
+    public class Data : Tea.TeaModel {
+        public var customVariables: String?
+
+        public var phoneNumber: String?
+
+        public var referenceId: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.customVariables != nil {
+                map["CustomVariables"] = self.customVariables!
+            }
+            if self.phoneNumber != nil {
+                map["PhoneNumber"] = self.phoneNumber!
+            }
+            if self.referenceId != nil {
+                map["ReferenceId"] = self.referenceId!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["CustomVariables"] as? String {
+                self.customVariables = value
+            }
+            if let value = dict["PhoneNumber"] as? String {
+                self.phoneNumber = value
+            }
+            if let value = dict["ReferenceId"] as? String {
+                self.referenceId = value
+            }
+        }
+    }
     public var code: String?
+
+    public var data: [AppendCasesResponseBody.Data]?
 
     public var httpStatusCode: String?
 
@@ -3729,6 +3777,13 @@ public class AppendCasesResponseBody : Tea.TeaModel {
         if self.code != nil {
             map["Code"] = self.code!
         }
+        if self.data != nil {
+            var tmp : [Any] = []
+            for k in self.data! {
+                tmp.append(k.toMap())
+            }
+            map["Data"] = tmp
+        }
         if self.httpStatusCode != nil {
             map["HttpStatusCode"] = self.httpStatusCode!
         }
@@ -3745,6 +3800,19 @@ public class AppendCasesResponseBody : Tea.TeaModel {
         guard let dict else { return }
         if let value = dict["Code"] as? String {
             self.code = value
+        }
+        if let value = dict["Data"] as? [Any?] {
+            var tmp : [AppendCasesResponseBody.Data] = []
+            for v in value {
+                if v != nil {
+                    var model = AppendCasesResponseBody.Data()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.data = tmp
         }
         if let value = dict["HttpStatusCode"] as? String {
             self.httpStatusCode = value
@@ -8963,6 +9031,10 @@ public class CreateCampaignRequest : Tea.TeaModel {
 
     public var executingUntilTimeout: Bool?
 
+    public var flashSmsParameters: String?
+
+    public var instGroupId: String?
+
     public var instanceId: String?
 
     public var maxAttemptCount: Int64?
@@ -8970,6 +9042,8 @@ public class CreateCampaignRequest : Tea.TeaModel {
     public var minAttemptInterval: Int64?
 
     public var name: String?
+
+    public var numberList: [String]?
 
     public var queueId: String?
 
@@ -9019,6 +9093,12 @@ public class CreateCampaignRequest : Tea.TeaModel {
         if self.executingUntilTimeout != nil {
             map["ExecutingUntilTimeout"] = self.executingUntilTimeout!
         }
+        if self.flashSmsParameters != nil {
+            map["FlashSmsParameters"] = self.flashSmsParameters!
+        }
+        if self.instGroupId != nil {
+            map["InstGroupId"] = self.instGroupId!
+        }
         if self.instanceId != nil {
             map["InstanceId"] = self.instanceId!
         }
@@ -9030,6 +9110,9 @@ public class CreateCampaignRequest : Tea.TeaModel {
         }
         if self.name != nil {
             map["Name"] = self.name!
+        }
+        if self.numberList != nil {
+            map["NumberList"] = self.numberList!
         }
         if self.queueId != nil {
             map["QueueId"] = self.queueId!
@@ -9082,6 +9165,12 @@ public class CreateCampaignRequest : Tea.TeaModel {
         if let value = dict["ExecutingUntilTimeout"] as? Bool {
             self.executingUntilTimeout = value
         }
+        if let value = dict["FlashSmsParameters"] as? String {
+            self.flashSmsParameters = value
+        }
+        if let value = dict["InstGroupId"] as? String {
+            self.instGroupId = value
+        }
         if let value = dict["InstanceId"] as? String {
             self.instanceId = value
         }
@@ -9093,6 +9182,9 @@ public class CreateCampaignRequest : Tea.TeaModel {
         }
         if let value = dict["Name"] as? String {
             self.name = value
+        }
+        if let value = dict["NumberList"] as? [String] {
+            self.numberList = value
         }
         if let value = dict["QueueId"] as? String {
             self.queueId = value
@@ -9128,6 +9220,10 @@ public class CreateCampaignShrinkRequest : Tea.TeaModel {
 
     public var executingUntilTimeout: Bool?
 
+    public var flashSmsParameters: String?
+
+    public var instGroupId: String?
+
     public var instanceId: String?
 
     public var maxAttemptCount: Int64?
@@ -9135,6 +9231,8 @@ public class CreateCampaignShrinkRequest : Tea.TeaModel {
     public var minAttemptInterval: Int64?
 
     public var name: String?
+
+    public var numberListShrink: String?
 
     public var queueId: String?
 
@@ -9180,6 +9278,12 @@ public class CreateCampaignShrinkRequest : Tea.TeaModel {
         if self.executingUntilTimeout != nil {
             map["ExecutingUntilTimeout"] = self.executingUntilTimeout!
         }
+        if self.flashSmsParameters != nil {
+            map["FlashSmsParameters"] = self.flashSmsParameters!
+        }
+        if self.instGroupId != nil {
+            map["InstGroupId"] = self.instGroupId!
+        }
         if self.instanceId != nil {
             map["InstanceId"] = self.instanceId!
         }
@@ -9191,6 +9295,9 @@ public class CreateCampaignShrinkRequest : Tea.TeaModel {
         }
         if self.name != nil {
             map["Name"] = self.name!
+        }
+        if self.numberListShrink != nil {
+            map["NumberList"] = self.numberListShrink!
         }
         if self.queueId != nil {
             map["QueueId"] = self.queueId!
@@ -9233,6 +9340,12 @@ public class CreateCampaignShrinkRequest : Tea.TeaModel {
         if let value = dict["ExecutingUntilTimeout"] as? Bool {
             self.executingUntilTimeout = value
         }
+        if let value = dict["FlashSmsParameters"] as? String {
+            self.flashSmsParameters = value
+        }
+        if let value = dict["InstGroupId"] as? String {
+            self.instGroupId = value
+        }
         if let value = dict["InstanceId"] as? String {
             self.instanceId = value
         }
@@ -9244,6 +9357,9 @@ public class CreateCampaignShrinkRequest : Tea.TeaModel {
         }
         if let value = dict["Name"] as? String {
             self.name = value
+        }
+        if let value = dict["NumberList"] as? String {
+            self.numberListShrink = value
         }
         if let value = dict["QueueId"] as? String {
             self.queueId = value
@@ -21402,6 +21518,44 @@ public class GetInstanceResponseBody : Tea.TeaModel {
                 }
             }
         }
+        public class ChatbotBusinessUnit : Tea.TeaModel {
+            public var unitId: Int64?
+
+            public var unitKey: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.unitId != nil {
+                    map["UnitId"] = self.unitId!
+                }
+                if self.unitKey != nil {
+                    map["UnitKey"] = self.unitKey!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["UnitId"] as? Int64 {
+                    self.unitId = value
+                }
+                if let value = dict["UnitKey"] as? String {
+                    self.unitKey = value
+                }
+            }
+        }
         public class NumberList : Tea.TeaModel {
             public class SkillGroups : Tea.TeaModel {
                 public var description_: String?
@@ -21590,7 +21744,11 @@ public class GetInstanceResponseBody : Tea.TeaModel {
         }
         public var adminList: [GetInstanceResponseBody.Data.AdminList]?
 
+        public var agentType: String?
+
         public var aliyunUid: String?
+
+        public var chatbotBusinessUnit: GetInstanceResponseBody.Data.ChatbotBusinessUnit?
 
         public var consoleUrl: String?
 
@@ -21616,6 +21774,7 @@ public class GetInstanceResponseBody : Tea.TeaModel {
         }
 
         public override func validate() throws -> Void {
+            try self.chatbotBusinessUnit?.validate()
         }
 
         public override func toMap() -> [String : Any] {
@@ -21627,8 +21786,14 @@ public class GetInstanceResponseBody : Tea.TeaModel {
                 }
                 map["AdminList"] = tmp
             }
+            if self.agentType != nil {
+                map["AgentType"] = self.agentType!
+            }
             if self.aliyunUid != nil {
                 map["AliyunUid"] = self.aliyunUid!
+            }
+            if self.chatbotBusinessUnit != nil {
+                map["ChatbotBusinessUnit"] = self.chatbotBusinessUnit?.toMap()
             }
             if self.consoleUrl != nil {
                 map["ConsoleUrl"] = self.consoleUrl!
@@ -21673,8 +21838,16 @@ public class GetInstanceResponseBody : Tea.TeaModel {
                 }
                 self.adminList = tmp
             }
+            if let value = dict["AgentType"] as? String {
+                self.agentType = value
+            }
             if let value = dict["AliyunUid"] as? String {
                 self.aliyunUid = value
+            }
+            if let value = dict["ChatbotBusinessUnit"] as? [String: Any?] {
+                var model = GetInstanceResponseBody.Data.ChatbotBusinessUnit()
+                model.fromMap(value)
+                self.chatbotBusinessUnit = model
             }
             if let value = dict["ConsoleUrl"] as? String {
                 self.consoleUrl = value
