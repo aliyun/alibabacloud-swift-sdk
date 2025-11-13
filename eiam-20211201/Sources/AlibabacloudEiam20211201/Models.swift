@@ -3972,6 +3972,10 @@ public class CreateIdentityProviderRequest : Tea.TeaModel {
 
         public var organizationUnitObjectClass: String?
 
+        public var organizationalUnitRdn: String?
+
+        public var passwordSyncStatus: String?
+
         public var startTlsStatus: String?
 
         public var userLoginIdentifier: String?
@@ -3979,6 +3983,8 @@ public class CreateIdentityProviderRequest : Tea.TeaModel {
         public var userObjectClass: String?
 
         public var userObjectClassCustomFilter: String?
+
+        public var userRdn: String?
 
         public override init() {
             super.init()
@@ -4027,6 +4033,12 @@ public class CreateIdentityProviderRequest : Tea.TeaModel {
             if self.organizationUnitObjectClass != nil {
                 map["OrganizationUnitObjectClass"] = self.organizationUnitObjectClass!
             }
+            if self.organizationalUnitRdn != nil {
+                map["OrganizationalUnitRdn"] = self.organizationalUnitRdn!
+            }
+            if self.passwordSyncStatus != nil {
+                map["PasswordSyncStatus"] = self.passwordSyncStatus!
+            }
             if self.startTlsStatus != nil {
                 map["StartTlsStatus"] = self.startTlsStatus!
             }
@@ -4038,6 +4050,9 @@ public class CreateIdentityProviderRequest : Tea.TeaModel {
             }
             if self.userObjectClassCustomFilter != nil {
                 map["UserObjectClassCustomFilter"] = self.userObjectClassCustomFilter!
+            }
+            if self.userRdn != nil {
+                map["UserRdn"] = self.userRdn!
             }
             return map
         }
@@ -4077,6 +4092,12 @@ public class CreateIdentityProviderRequest : Tea.TeaModel {
             if let value = dict["OrganizationUnitObjectClass"] as? String {
                 self.organizationUnitObjectClass = value
             }
+            if let value = dict["OrganizationalUnitRdn"] as? String {
+                self.organizationalUnitRdn = value
+            }
+            if let value = dict["PasswordSyncStatus"] as? String {
+                self.passwordSyncStatus = value
+            }
             if let value = dict["StartTlsStatus"] as? String {
                 self.startTlsStatus = value
             }
@@ -4088,6 +4109,9 @@ public class CreateIdentityProviderRequest : Tea.TeaModel {
             }
             if let value = dict["UserObjectClassCustomFilter"] as? String {
                 self.userObjectClassCustomFilter = value
+            }
+            if let value = dict["UserRdn"] as? String {
+                self.userRdn = value
             }
         }
     }
@@ -4428,6 +4452,52 @@ public class CreateIdentityProviderRequest : Tea.TeaModel {
         }
     }
     public class UdPushConfig : Tea.TeaModel {
+        public class PeriodicSyncConfig : Tea.TeaModel {
+            public var periodicSyncCron: String?
+
+            public var periodicSyncTimes: [Int32]?
+
+            public var periodicSyncType: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.periodicSyncCron != nil {
+                    map["PeriodicSyncCron"] = self.periodicSyncCron!
+                }
+                if self.periodicSyncTimes != nil {
+                    map["PeriodicSyncTimes"] = self.periodicSyncTimes!
+                }
+                if self.periodicSyncType != nil {
+                    map["PeriodicSyncType"] = self.periodicSyncType!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["PeriodicSyncCron"] as? String {
+                    self.periodicSyncCron = value
+                }
+                if let value = dict["PeriodicSyncTimes"] as? [Int32] {
+                    self.periodicSyncTimes = value
+                }
+                if let value = dict["PeriodicSyncType"] as? String {
+                    self.periodicSyncType = value
+                }
+            }
+        }
         public class UdSyncScopeConfigs : Tea.TeaModel {
             public var sourceScopes: [String]?
 
@@ -4468,6 +4538,8 @@ public class CreateIdentityProviderRequest : Tea.TeaModel {
         }
         public var incrementalCallbackStatus: String?
 
+        public var periodicSyncConfig: CreateIdentityProviderRequest.UdPushConfig.PeriodicSyncConfig?
+
         public var periodicSyncStatus: String?
 
         public var udSyncScopeConfigs: [CreateIdentityProviderRequest.UdPushConfig.UdSyncScopeConfigs]?
@@ -4482,12 +4554,16 @@ public class CreateIdentityProviderRequest : Tea.TeaModel {
         }
 
         public override func validate() throws -> Void {
+            try self.periodicSyncConfig?.validate()
         }
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
             if self.incrementalCallbackStatus != nil {
                 map["IncrementalCallbackStatus"] = self.incrementalCallbackStatus!
+            }
+            if self.periodicSyncConfig != nil {
+                map["PeriodicSyncConfig"] = self.periodicSyncConfig?.toMap()
             }
             if self.periodicSyncStatus != nil {
                 map["PeriodicSyncStatus"] = self.periodicSyncStatus!
@@ -4506,6 +4582,11 @@ public class CreateIdentityProviderRequest : Tea.TeaModel {
             guard let dict else { return }
             if let value = dict["IncrementalCallbackStatus"] as? String {
                 self.incrementalCallbackStatus = value
+            }
+            if let value = dict["PeriodicSyncConfig"] as? [String: Any?] {
+                var model = CreateIdentityProviderRequest.UdPushConfig.PeriodicSyncConfig()
+                model.fromMap(value)
+                self.periodicSyncConfig = model
             }
             if let value = dict["PeriodicSyncStatus"] as? String {
                 self.periodicSyncStatus = value
@@ -31860,6 +31941,8 @@ public class ListGroupsForUserResponse : Tea.TeaModel {
 }
 
 public class ListIdentityProvidersRequest : Tea.TeaModel {
+    public var direction: String?
+
     public var instanceId: String?
 
     public var pageNumber: Int64?
@@ -31880,6 +31963,9 @@ public class ListIdentityProvidersRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.direction != nil {
+            map["Direction"] = self.direction!
+        }
         if self.instanceId != nil {
             map["InstanceId"] = self.instanceId!
         }
@@ -31894,6 +31980,9 @@ public class ListIdentityProvidersRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["Direction"] as? String {
+            self.direction = value
+        }
         if let value = dict["InstanceId"] as? String {
             self.instanceId = value
         }
