@@ -4527,6 +4527,92 @@ public class DescribeDBInstanceAttributeResponseBody : Tea.TeaModel {
             }
         }
     }
+    public class VirtualClusterList : Tea.TeaModel {
+        public var activeClusterId: String?
+
+        public var activeClusterName: String?
+
+        public var createdTime: String?
+
+        public var dbClusterId: String?
+
+        public var dbClusterName: String?
+
+        public var standbyClusterId: String?
+
+        public var standbyClusterName: String?
+
+        public var status: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.activeClusterId != nil {
+                map["ActiveClusterId"] = self.activeClusterId!
+            }
+            if self.activeClusterName != nil {
+                map["ActiveClusterName"] = self.activeClusterName!
+            }
+            if self.createdTime != nil {
+                map["CreatedTime"] = self.createdTime!
+            }
+            if self.dbClusterId != nil {
+                map["DbClusterId"] = self.dbClusterId!
+            }
+            if self.dbClusterName != nil {
+                map["DbClusterName"] = self.dbClusterName!
+            }
+            if self.standbyClusterId != nil {
+                map["StandbyClusterId"] = self.standbyClusterId!
+            }
+            if self.standbyClusterName != nil {
+                map["StandbyClusterName"] = self.standbyClusterName!
+            }
+            if self.status != nil {
+                map["Status"] = self.status!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["ActiveClusterId"] as? String {
+                self.activeClusterId = value
+            }
+            if let value = dict["ActiveClusterName"] as? String {
+                self.activeClusterName = value
+            }
+            if let value = dict["CreatedTime"] as? String {
+                self.createdTime = value
+            }
+            if let value = dict["DbClusterId"] as? String {
+                self.dbClusterId = value
+            }
+            if let value = dict["DbClusterName"] as? String {
+                self.dbClusterName = value
+            }
+            if let value = dict["StandbyClusterId"] as? String {
+                self.standbyClusterId = value
+            }
+            if let value = dict["StandbyClusterName"] as? String {
+                self.standbyClusterName = value
+            }
+            if let value = dict["Status"] as? String {
+                self.status = value
+            }
+        }
+    }
     public var canUpgradeVersions: [String]?
 
     public var chargeType: String?
@@ -4584,6 +4670,8 @@ public class DescribeDBInstanceAttributeResponseBody : Tea.TeaModel {
     public var tags: [DescribeDBInstanceAttributeResponseBody.Tags]?
 
     public var vSwitchId: String?
+
+    public var virtualClusterList: [DescribeDBInstanceAttributeResponseBody.VirtualClusterList]?
 
     public var vpcId: String?
 
@@ -4701,6 +4789,13 @@ public class DescribeDBInstanceAttributeResponseBody : Tea.TeaModel {
         }
         if self.vSwitchId != nil {
             map["VSwitchId"] = self.vSwitchId!
+        }
+        if self.virtualClusterList != nil {
+            var tmp : [Any] = []
+            for k in self.virtualClusterList! {
+                tmp.append(k.toMap())
+            }
+            map["VirtualClusterList"] = tmp
         }
         if self.vpcId != nil {
             map["VpcId"] = self.vpcId!
@@ -4829,6 +4924,19 @@ public class DescribeDBInstanceAttributeResponseBody : Tea.TeaModel {
         }
         if let value = dict["VSwitchId"] as? String {
             self.vSwitchId = value
+        }
+        if let value = dict["VirtualClusterList"] as? [Any?] {
+            var tmp : [DescribeDBInstanceAttributeResponseBody.VirtualClusterList] = []
+            for v in value {
+                if v != nil {
+                    var model = DescribeDBInstanceAttributeResponseBody.VirtualClusterList()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.virtualClusterList = tmp
         }
         if let value = dict["VpcId"] as? String {
             self.vpcId = value
