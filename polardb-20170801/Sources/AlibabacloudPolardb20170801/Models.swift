@@ -17954,6 +17954,8 @@ public class DescribeApplicationAttributeResponseBody : Tea.TeaModel {
 
         public var port: String?
 
+        public var portDescription: String?
+
         public override init() {
             super.init()
         }
@@ -17983,6 +17985,9 @@ public class DescribeApplicationAttributeResponseBody : Tea.TeaModel {
             if self.port != nil {
                 map["Port"] = self.port!
             }
+            if self.portDescription != nil {
+                map["PortDescription"] = self.portDescription!
+            }
             return map
         }
 
@@ -18002,6 +18007,9 @@ public class DescribeApplicationAttributeResponseBody : Tea.TeaModel {
             }
             if let value = dict["Port"] as? String {
                 self.port = value
+            }
+            if let value = dict["PortDescription"] as? String {
+                self.portDescription = value
             }
         }
     }
