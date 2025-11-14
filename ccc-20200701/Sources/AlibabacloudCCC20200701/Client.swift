@@ -7512,6 +7512,51 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func modifyCampaignNumbersWithOptions(_ tmpReq: ModifyCampaignNumbersRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ModifyCampaignNumbersResponse {
+        try TeaUtils.Client.validateModel(tmpReq)
+        var request: ModifyCampaignNumbersShrinkRequest = ModifyCampaignNumbersShrinkRequest([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.numberList)) {
+            request.numberListShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.numberList, "NumberList", "json")
+        }
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.campaignId)) {
+            query["CampaignId"] = request.campaignId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.instGroupId)) {
+            query["InstGroupId"] = request.instGroupId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.instanceId)) {
+            query["InstanceId"] = request.instanceId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.numberListShrink)) {
+            query["NumberList"] = request.numberListShrink ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "ModifyCampaignNumbers",
+            "version": "2020-07-01",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(ModifyCampaignNumbersResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func modifyCampaignNumbers(_ request: ModifyCampaignNumbersRequest) async throws -> ModifyCampaignNumbersResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await modifyCampaignNumbersWithOptions(request as! ModifyCampaignNumbersRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func modifyCustomCallTaggingWithOptions(_ request: ModifyCustomCallTaggingRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ModifyCustomCallTaggingResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
