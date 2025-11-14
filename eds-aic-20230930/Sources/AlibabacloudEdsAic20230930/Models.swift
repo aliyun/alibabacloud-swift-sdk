@@ -8381,6 +8381,8 @@ public class DescribeBackupFilesRequest : Tea.TeaModel {
 
     public var nextToken: String?
 
+    public var saleMode: String?
+
     public var startTime: String?
 
     public var statusList: [String]?
@@ -8432,6 +8434,9 @@ public class DescribeBackupFilesRequest : Tea.TeaModel {
         if self.nextToken != nil {
             map["NextToken"] = self.nextToken!
         }
+        if self.saleMode != nil {
+            map["SaleMode"] = self.saleMode!
+        }
         if self.startTime != nil {
             map["StartTime"] = self.startTime!
         }
@@ -8475,6 +8480,9 @@ public class DescribeBackupFilesRequest : Tea.TeaModel {
         }
         if let value = dict["NextToken"] as? String {
             self.nextToken = value
+        }
+        if let value = dict["SaleMode"] as? String {
+            self.saleMode = value
         }
         if let value = dict["StartTime"] as? String {
             self.startTime = value
