@@ -17,7 +17,7 @@
 要使用 [Carthage](https://github.com/Carthage/Carthage) 将 `AlibabacloudWss20211221` 集成到你的 Xcode 项目中，需要在 `Cartfile` 中定义以下内容:
 
 ```ogdl
-github "alibabacloud-sdk-swift/wss-20211221" "1.2.3"
+github "alibabacloud-sdk-swift/wss-20211221" "1.2.4"
 ```
 
 ### Swift 包管理工具
@@ -26,7 +26,7 @@ github "alibabacloud-sdk-swift/wss-20211221" "1.2.3"
 
 ```swift
 dependencies: [
-    .package(url: "https://github.com/alibabacloud-sdk-swift/wss-20211221.git", from: "1.2.3")
+    .package(url: "https://github.com/alibabacloud-sdk-swift/wss-20211221.git", from: "1.2.4")
 ]
 ```
 

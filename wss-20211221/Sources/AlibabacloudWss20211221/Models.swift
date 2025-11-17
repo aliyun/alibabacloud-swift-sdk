@@ -965,6 +965,8 @@ public class DescribeMultiPriceRequest : Tea.TeaModel {
 
         public var resourceType: String?
 
+        public var savingPlanPeriod: String?
+
         public override init() {
             super.init()
         }
@@ -1007,6 +1009,9 @@ public class DescribeMultiPriceRequest : Tea.TeaModel {
             if self.resourceType != nil {
                 map["ResourceType"] = self.resourceType!
             }
+            if self.savingPlanPeriod != nil {
+                map["SavingPlanPeriod"] = self.savingPlanPeriod!
+            }
             return map
         }
 
@@ -1045,6 +1050,9 @@ public class DescribeMultiPriceRequest : Tea.TeaModel {
             }
             if let value = dict["ResourceType"] as? String {
                 self.resourceType = value
+            }
+            if let value = dict["SavingPlanPeriod"] as? String {
+                self.savingPlanPeriod = value
             }
         }
     }
@@ -1131,6 +1139,8 @@ public class DescribeMultiPriceResponseBody : Tea.TeaModel {
 
                     public var originalPrice: Double?
 
+                    public var savingPlanDiscountPrice: Double?
+
                     public var tradePrice: Double?
 
                     public override init() {
@@ -1162,6 +1172,9 @@ public class DescribeMultiPriceResponseBody : Tea.TeaModel {
                         if self.originalPrice != nil {
                             map["OriginalPrice"] = self.originalPrice!
                         }
+                        if self.savingPlanDiscountPrice != nil {
+                            map["SavingPlanDiscountPrice"] = self.savingPlanDiscountPrice!
+                        }
                         if self.tradePrice != nil {
                             map["TradePrice"] = self.tradePrice!
                         }
@@ -1185,6 +1198,9 @@ public class DescribeMultiPriceResponseBody : Tea.TeaModel {
                         if let value = dict["OriginalPrice"] as? Double {
                             self.originalPrice = value
                         }
+                        if let value = dict["SavingPlanDiscountPrice"] as? Double {
+                            self.savingPlanDiscountPrice = value
+                        }
                         if let value = dict["TradePrice"] as? Double {
                             self.tradePrice = value
                         }
@@ -1196,6 +1212,8 @@ public class DescribeMultiPriceResponseBody : Tea.TeaModel {
                     public var originalPrice: Double?
 
                     public var resourceType: String?
+
+                    public var savingPlanRecommendPrice: Double?
 
                     public var tradePrice: Double?
 
@@ -1222,6 +1240,9 @@ public class DescribeMultiPriceResponseBody : Tea.TeaModel {
                         if self.resourceType != nil {
                             map["ResourceType"] = self.resourceType!
                         }
+                        if self.savingPlanRecommendPrice != nil {
+                            map["SavingPlanRecommendPrice"] = self.savingPlanRecommendPrice!
+                        }
                         if self.tradePrice != nil {
                             map["TradePrice"] = self.tradePrice!
                         }
@@ -1238,6 +1259,9 @@ public class DescribeMultiPriceResponseBody : Tea.TeaModel {
                         }
                         if let value = dict["ResourceType"] as? String {
                             self.resourceType = value
+                        }
+                        if let value = dict["SavingPlanRecommendPrice"] as? Double {
+                            self.savingPlanRecommendPrice = value
                         }
                         if let value = dict["TradePrice"] as? Double {
                             self.tradePrice = value
