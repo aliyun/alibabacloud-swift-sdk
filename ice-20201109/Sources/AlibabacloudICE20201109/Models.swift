@@ -70363,6 +70363,8 @@ public class ListRecognitionEntitiesResponse : Tea.TeaModel {
 public class ListRecognitionLibsRequest : Tea.TeaModel {
     public var algorithm: String?
 
+    public var libId: String?
+
     public var ownerAccount: String?
 
     public var ownerId: Int64?
@@ -70392,6 +70394,9 @@ public class ListRecognitionLibsRequest : Tea.TeaModel {
         if self.algorithm != nil {
             map["Algorithm"] = self.algorithm!
         }
+        if self.libId != nil {
+            map["LibId"] = self.libId!
+        }
         if self.ownerAccount != nil {
             map["OwnerAccount"] = self.ownerAccount!
         }
@@ -70417,6 +70422,9 @@ public class ListRecognitionLibsRequest : Tea.TeaModel {
         guard let dict else { return }
         if let value = dict["Algorithm"] as? String {
             self.algorithm = value
+        }
+        if let value = dict["LibId"] as? String {
+            self.libId = value
         }
         if let value = dict["OwnerAccount"] as? String {
             self.ownerAccount = value
@@ -70650,6 +70658,8 @@ public class ListRecognitionSamplesRequest : Tea.TeaModel {
 
     public var entityId: String?
 
+    public var entityName: String?
+
     public var libId: String?
 
     public var ownerAccount: String?
@@ -70684,6 +70694,9 @@ public class ListRecognitionSamplesRequest : Tea.TeaModel {
         if self.entityId != nil {
             map["EntityId"] = self.entityId!
         }
+        if self.entityName != nil {
+            map["EntityName"] = self.entityName!
+        }
         if self.libId != nil {
             map["LibId"] = self.libId!
         }
@@ -70716,6 +70729,9 @@ public class ListRecognitionSamplesRequest : Tea.TeaModel {
         if let value = dict["EntityId"] as? String {
             self.entityId = value
         }
+        if let value = dict["EntityName"] as? String {
+            self.entityName = value
+        }
         if let value = dict["LibId"] as? String {
             self.libId = value
         }
@@ -70743,7 +70759,11 @@ public class ListRecognitionSamplesRequest : Tea.TeaModel {
 public class ListRecognitionSamplesResponseBody : Tea.TeaModel {
     public class Samples : Tea.TeaModel {
         public class Sample : Tea.TeaModel {
+            public var entityId: String?
+
             public var imageUrl: String?
+
+            public var libId: String?
 
             public var sampleId: String?
 
@@ -70761,8 +70781,14 @@ public class ListRecognitionSamplesResponseBody : Tea.TeaModel {
 
             public override func toMap() -> [String : Any] {
                 var map = super.toMap()
+                if self.entityId != nil {
+                    map["EntityId"] = self.entityId!
+                }
                 if self.imageUrl != nil {
                     map["ImageUrl"] = self.imageUrl!
+                }
+                if self.libId != nil {
+                    map["LibId"] = self.libId!
                 }
                 if self.sampleId != nil {
                     map["SampleId"] = self.sampleId!
@@ -70772,8 +70798,14 @@ public class ListRecognitionSamplesResponseBody : Tea.TeaModel {
 
             public override func fromMap(_ dict: [String: Any?]?) -> Void {
                 guard let dict else { return }
+                if let value = dict["EntityId"] as? String {
+                    self.entityId = value
+                }
                 if let value = dict["ImageUrl"] as? String {
                     self.imageUrl = value
+                }
+                if let value = dict["LibId"] as? String {
+                    self.libId = value
                 }
                 if let value = dict["SampleId"] as? String {
                     self.sampleId = value
@@ -99790,6 +99822,8 @@ public class SubmitSmarttagJobRequest : Tea.TeaModel {
 
     public var scheduleConfig: SubmitSmarttagJobRequest.ScheduleConfig?
 
+    public var templateConfig: String?
+
     public var templateId: String?
 
     public var title: String?
@@ -99833,6 +99867,9 @@ public class SubmitSmarttagJobRequest : Tea.TeaModel {
         if self.scheduleConfig != nil {
             map["ScheduleConfig"] = self.scheduleConfig?.toMap()
         }
+        if self.templateConfig != nil {
+            map["TemplateConfig"] = self.templateConfig!
+        }
         if self.templateId != nil {
             map["TemplateId"] = self.templateId!
         }
@@ -99872,6 +99909,9 @@ public class SubmitSmarttagJobRequest : Tea.TeaModel {
             model.fromMap(value)
             self.scheduleConfig = model
         }
+        if let value = dict["TemplateConfig"] as? String {
+            self.templateConfig = value
+        }
         if let value = dict["TemplateId"] as? String {
             self.templateId = value
         }
@@ -99898,6 +99938,8 @@ public class SubmitSmarttagJobShrinkRequest : Tea.TeaModel {
     public var params: String?
 
     public var scheduleConfigShrink: String?
+
+    public var templateConfig: String?
 
     public var templateId: String?
 
@@ -99940,6 +99982,9 @@ public class SubmitSmarttagJobShrinkRequest : Tea.TeaModel {
         if self.scheduleConfigShrink != nil {
             map["ScheduleConfig"] = self.scheduleConfigShrink!
         }
+        if self.templateConfig != nil {
+            map["TemplateConfig"] = self.templateConfig!
+        }
         if self.templateId != nil {
             map["TemplateId"] = self.templateId!
         }
@@ -99974,6 +100019,9 @@ public class SubmitSmarttagJobShrinkRequest : Tea.TeaModel {
         }
         if let value = dict["ScheduleConfig"] as? String {
             self.scheduleConfigShrink = value
+        }
+        if let value = dict["TemplateConfig"] as? String {
+            self.templateConfig = value
         }
         if let value = dict["TemplateId"] as? String {
             self.templateId = value
@@ -108770,6 +108818,8 @@ public class SubmitVideoCognitionJobRequest : Tea.TeaModel {
 
     public var params: String?
 
+    public var templateConfig: String?
+
     public var templateId: String?
 
     public var title: String?
@@ -108797,6 +108847,9 @@ public class SubmitVideoCognitionJobRequest : Tea.TeaModel {
         if self.params != nil {
             map["Params"] = self.params!
         }
+        if self.templateConfig != nil {
+            map["TemplateConfig"] = self.templateConfig!
+        }
         if self.templateId != nil {
             map["TemplateId"] = self.templateId!
         }
@@ -108819,6 +108872,9 @@ public class SubmitVideoCognitionJobRequest : Tea.TeaModel {
         if let value = dict["Params"] as? String {
             self.params = value
         }
+        if let value = dict["TemplateConfig"] as? String {
+            self.templateConfig = value
+        }
         if let value = dict["TemplateId"] as? String {
             self.templateId = value
         }
@@ -108835,6 +108891,8 @@ public class SubmitVideoCognitionJobShrinkRequest : Tea.TeaModel {
     public var inputShrink: String?
 
     public var params: String?
+
+    public var templateConfig: String?
 
     public var templateId: String?
 
@@ -108862,6 +108920,9 @@ public class SubmitVideoCognitionJobShrinkRequest : Tea.TeaModel {
         if self.params != nil {
             map["Params"] = self.params!
         }
+        if self.templateConfig != nil {
+            map["TemplateConfig"] = self.templateConfig!
+        }
         if self.templateId != nil {
             map["TemplateId"] = self.templateId!
         }
@@ -108881,6 +108942,9 @@ public class SubmitVideoCognitionJobShrinkRequest : Tea.TeaModel {
         }
         if let value = dict["Params"] as? String {
             self.params = value
+        }
+        if let value = dict["TemplateConfig"] as? String {
+            self.templateConfig = value
         }
         if let value = dict["TemplateId"] as? String {
             self.templateId = value
