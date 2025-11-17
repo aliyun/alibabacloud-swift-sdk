@@ -569,6 +569,8 @@ public class CreateFeatureEntityRequest : Tea.TeaModel {
 
     public var name: String?
 
+    public var parentFeatureEntityId: String?
+
     public var projectId: String?
 
     public override init() {
@@ -591,6 +593,9 @@ public class CreateFeatureEntityRequest : Tea.TeaModel {
         if self.name != nil {
             map["Name"] = self.name!
         }
+        if self.parentFeatureEntityId != nil {
+            map["ParentFeatureEntityId"] = self.parentFeatureEntityId!
+        }
         if self.projectId != nil {
             map["ProjectId"] = self.projectId!
         }
@@ -604,6 +609,9 @@ public class CreateFeatureEntityRequest : Tea.TeaModel {
         }
         if let value = dict["Name"] as? String {
             self.name = value
+        }
+        if let value = dict["ParentFeatureEntityId"] as? String {
+            self.parentFeatureEntityId = value
         }
         if let value = dict["ProjectId"] as? String {
             self.projectId = value
@@ -3236,6 +3244,12 @@ public class GetFeatureEntityResponseBody : Tea.TeaModel {
 
     public var owner: String?
 
+    public var parentFeatureEntityId: String?
+
+    public var parentFeatureEntityName: String?
+
+    public var parentJoinId: String?
+
     public var projectId: String?
 
     public var projectName: String?
@@ -3268,6 +3282,15 @@ public class GetFeatureEntityResponseBody : Tea.TeaModel {
         if self.owner != nil {
             map["Owner"] = self.owner!
         }
+        if self.parentFeatureEntityId != nil {
+            map["ParentFeatureEntityId"] = self.parentFeatureEntityId!
+        }
+        if self.parentFeatureEntityName != nil {
+            map["ParentFeatureEntityName"] = self.parentFeatureEntityName!
+        }
+        if self.parentJoinId != nil {
+            map["ParentJoinId"] = self.parentJoinId!
+        }
         if self.projectId != nil {
             map["ProjectId"] = self.projectId!
         }
@@ -3293,6 +3316,15 @@ public class GetFeatureEntityResponseBody : Tea.TeaModel {
         }
         if let value = dict["Owner"] as? String {
             self.owner = value
+        }
+        if let value = dict["ParentFeatureEntityId"] as? String {
+            self.parentFeatureEntityId = value
+        }
+        if let value = dict["ParentFeatureEntityName"] as? String {
+            self.parentFeatureEntityName = value
+        }
+        if let value = dict["ParentJoinId"] as? String {
+            self.parentJoinId = value
         }
         if let value = dict["ProjectId"] as? String {
             self.projectId = value
@@ -6965,6 +6997,8 @@ public class ListFeatureEntitiesRequest : Tea.TeaModel {
 
     public var pageSize: Int32?
 
+    public var parentFeatureEntityId: String?
+
     public var projectId: String?
 
     public var sortBy: String?
@@ -7001,6 +7035,9 @@ public class ListFeatureEntitiesRequest : Tea.TeaModel {
         if self.pageSize != nil {
             map["PageSize"] = self.pageSize!
         }
+        if self.parentFeatureEntityId != nil {
+            map["ParentFeatureEntityId"] = self.parentFeatureEntityId!
+        }
         if self.projectId != nil {
             map["ProjectId"] = self.projectId!
         }
@@ -7030,6 +7067,9 @@ public class ListFeatureEntitiesRequest : Tea.TeaModel {
         if let value = dict["PageSize"] as? Int32 {
             self.pageSize = value
         }
+        if let value = dict["ParentFeatureEntityId"] as? String {
+            self.parentFeatureEntityId = value
+        }
         if let value = dict["ProjectId"] as? String {
             self.projectId = value
         }
@@ -7051,6 +7091,8 @@ public class ListFeatureEntitiesShrinkRequest : Tea.TeaModel {
     public var pageNumber: Int32?
 
     public var pageSize: Int32?
+
+    public var parentFeatureEntityId: String?
 
     public var projectId: String?
 
@@ -7088,6 +7130,9 @@ public class ListFeatureEntitiesShrinkRequest : Tea.TeaModel {
         if self.pageSize != nil {
             map["PageSize"] = self.pageSize!
         }
+        if self.parentFeatureEntityId != nil {
+            map["ParentFeatureEntityId"] = self.parentFeatureEntityId!
+        }
         if self.projectId != nil {
             map["ProjectId"] = self.projectId!
         }
@@ -7117,6 +7162,9 @@ public class ListFeatureEntitiesShrinkRequest : Tea.TeaModel {
         if let value = dict["PageSize"] as? Int32 {
             self.pageSize = value
         }
+        if let value = dict["ParentFeatureEntityId"] as? String {
+            self.parentFeatureEntityId = value
+        }
         if let value = dict["ProjectId"] as? String {
             self.projectId = value
         }
@@ -7137,6 +7185,12 @@ public class ListFeatureEntitiesResponseBody : Tea.TeaModel {
         public var name: String?
 
         public var owner: String?
+
+        public var parentFeatureEntityId: String?
+
+        public var parentFeatureEntityName: String?
+
+        public var parentJoinId: String?
 
         public var projectId: String?
 
@@ -7171,6 +7225,15 @@ public class ListFeatureEntitiesResponseBody : Tea.TeaModel {
             if self.owner != nil {
                 map["Owner"] = self.owner!
             }
+            if self.parentFeatureEntityId != nil {
+                map["ParentFeatureEntityId"] = self.parentFeatureEntityId!
+            }
+            if self.parentFeatureEntityName != nil {
+                map["ParentFeatureEntityName"] = self.parentFeatureEntityName!
+            }
+            if self.parentJoinId != nil {
+                map["ParentJoinId"] = self.parentJoinId!
+            }
             if self.projectId != nil {
                 map["ProjectId"] = self.projectId!
             }
@@ -7196,6 +7259,15 @@ public class ListFeatureEntitiesResponseBody : Tea.TeaModel {
             }
             if let value = dict["Owner"] as? String {
                 self.owner = value
+            }
+            if let value = dict["ParentFeatureEntityId"] as? String {
+                self.parentFeatureEntityId = value
+            }
+            if let value = dict["ParentFeatureEntityName"] as? String {
+                self.parentFeatureEntityName = value
+            }
+            if let value = dict["ParentJoinId"] as? String {
+                self.parentJoinId = value
             }
             if let value = dict["ProjectId"] as? String {
                 self.projectId = value
@@ -10007,7 +10079,11 @@ public class ListProjectFeatureViewsResponseBody : Tea.TeaModel {
 
         public var features: [ListProjectFeatureViewsResponseBody.FeatureViews.Features]?
 
+        public var joinId: String?
+
         public var name: String?
+
+        public var parentJoinId: String?
 
         public var type: String?
 
@@ -10035,8 +10111,14 @@ public class ListProjectFeatureViewsResponseBody : Tea.TeaModel {
                 }
                 map["Features"] = tmp
             }
+            if self.joinId != nil {
+                map["JoinId"] = self.joinId!
+            }
             if self.name != nil {
                 map["Name"] = self.name!
+            }
+            if self.parentJoinId != nil {
+                map["ParentJoinId"] = self.parentJoinId!
             }
             if self.type != nil {
                 map["Type"] = self.type!
@@ -10062,8 +10144,14 @@ public class ListProjectFeatureViewsResponseBody : Tea.TeaModel {
                 }
                 self.features = tmp
             }
+            if let value = dict["JoinId"] as? String {
+                self.joinId = value
+            }
             if let value = dict["Name"] as? String {
                 self.name = value
+            }
+            if let value = dict["ParentJoinId"] as? String {
+                self.parentJoinId = value
             }
             if let value = dict["Type"] as? String {
                 self.type = value
