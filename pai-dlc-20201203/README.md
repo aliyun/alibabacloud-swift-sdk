@@ -17,7 +17,7 @@ English | [简体中文](README-CN.md)
 To integrate `AlibabacloudPaiDlc20201203` into your Xcode project using [Carthage](https://github.com/Carthage/Carthage), specify it in your `Cartfile`:
 
 ```ogdl
-github "alibabacloud-sdk-swift/pai-dlc-20201203" "1.3.4"
+github "alibabacloud-sdk-swift/pai-dlc-20201203" "1.3.5"
 ```
 
 ### Swift Package Manager
@@ -26,7 +26,7 @@ To integrate `AlibabacloudPaiDlc20201203` into your Xcode project using [Swift P
 
 ```swift
 dependencies: [
-    .package(url: "https://github.com/alibabacloud-sdk-swift/pai-dlc-20201203.git", from: "1.3.4")
+    .package(url: "https://github.com/alibabacloud-sdk-swift/pai-dlc-20201203.git", from: "1.3.5")
 ]
 ```
 

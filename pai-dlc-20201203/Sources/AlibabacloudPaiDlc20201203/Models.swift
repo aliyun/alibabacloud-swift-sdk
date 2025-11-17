@@ -3810,6 +3810,8 @@ public class PodItem : Tea.TeaModel {
 
     public var podIp: String?
 
+    public var podIps: [PodNetworkInterface]?
+
     public var podUid: String?
 
     public var status: String?
@@ -3859,6 +3861,13 @@ public class PodItem : Tea.TeaModel {
         }
         if self.podIp != nil {
             map["PodIp"] = self.podIp!
+        }
+        if self.podIps != nil {
+            var tmp : [Any] = []
+            for k in self.podIps! {
+                tmp.append(k.toMap())
+            }
+            map["PodIps"] = tmp
         }
         if self.podUid != nil {
             map["PodUid"] = self.podUid!
@@ -3910,6 +3919,19 @@ public class PodItem : Tea.TeaModel {
         }
         if let value = dict["PodIp"] as? String {
             self.podIp = value
+        }
+        if let value = dict["PodIps"] as? [Any?] {
+            var tmp : [PodNetworkInterface] = []
+            for v in value {
+                if v != nil {
+                    var model = PodNetworkInterface()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.podIps = tmp
         }
         if let value = dict["PodUid"] as? String {
             self.podUid = value
@@ -3975,6 +3997,45 @@ public class PodMetric : Tea.TeaModel {
         }
         if let value = dict["PodId"] as? String {
             self.podId = value
+        }
+    }
+}
+
+public class PodNetworkInterface : Tea.TeaModel {
+    public var interfaceName: String?
+
+    public var ip: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.interfaceName != nil {
+            map["InterfaceName"] = self.interfaceName!
+        }
+        if self.ip != nil {
+            map["Ip"] = self.ip!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["InterfaceName"] as? String {
+            self.interfaceName = value
+        }
+        if let value = dict["Ip"] as? String {
+            self.ip = value
         }
     }
 }
