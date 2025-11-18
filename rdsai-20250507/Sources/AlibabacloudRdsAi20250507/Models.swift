@@ -579,11 +579,15 @@ public class DescribeAppInstanceAttributeResponseBody : Tea.TeaModel {
 
     public var DBInstanceName: String?
 
+    public var eipStatus: String?
+
     public var instanceClass: String?
 
     public var instanceMinorVersion: String?
 
     public var instanceName: String?
+
+    public var natStatus: String?
 
     public var publicConnectionString: String?
 
@@ -622,6 +626,9 @@ public class DescribeAppInstanceAttributeResponseBody : Tea.TeaModel {
         if self.DBInstanceName != nil {
             map["DBInstanceName"] = self.DBInstanceName!
         }
+        if self.eipStatus != nil {
+            map["EipStatus"] = self.eipStatus!
+        }
         if self.instanceClass != nil {
             map["InstanceClass"] = self.instanceClass!
         }
@@ -630,6 +637,9 @@ public class DescribeAppInstanceAttributeResponseBody : Tea.TeaModel {
         }
         if self.instanceName != nil {
             map["InstanceName"] = self.instanceName!
+        }
+        if self.natStatus != nil {
+            map["NatStatus"] = self.natStatus!
         }
         if self.publicConnectionString != nil {
             map["PublicConnectionString"] = self.publicConnectionString!
@@ -666,6 +676,9 @@ public class DescribeAppInstanceAttributeResponseBody : Tea.TeaModel {
         if let value = dict["DBInstanceName"] as? String {
             self.DBInstanceName = value
         }
+        if let value = dict["EipStatus"] as? String {
+            self.eipStatus = value
+        }
         if let value = dict["InstanceClass"] as? String {
             self.instanceClass = value
         }
@@ -674,6 +687,9 @@ public class DescribeAppInstanceAttributeResponseBody : Tea.TeaModel {
         }
         if let value = dict["InstanceName"] as? String {
             self.instanceName = value
+        }
+        if let value = dict["NatStatus"] as? String {
+            self.natStatus = value
         }
         if let value = dict["PublicConnectionString"] as? String {
             self.publicConnectionString = value
@@ -2467,6 +2483,150 @@ public class ModifyInstanceAuthConfigResponse : Tea.TeaModel {
         }
         if let value = dict["body"] as? [String: Any?] {
             var model = ModifyInstanceAuthConfigResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
+public class ModifyInstanceConfigRequest : Tea.TeaModel {
+    public var clientToken: String?
+
+    public var configName: String?
+
+    public var configValue: String?
+
+    public var instanceName: String?
+
+    public var regionId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.clientToken != nil {
+            map["ClientToken"] = self.clientToken!
+        }
+        if self.configName != nil {
+            map["ConfigName"] = self.configName!
+        }
+        if self.configValue != nil {
+            map["ConfigValue"] = self.configValue!
+        }
+        if self.instanceName != nil {
+            map["InstanceName"] = self.instanceName!
+        }
+        if self.regionId != nil {
+            map["RegionId"] = self.regionId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["ClientToken"] as? String {
+            self.clientToken = value
+        }
+        if let value = dict["ConfigName"] as? String {
+            self.configName = value
+        }
+        if let value = dict["ConfigValue"] as? String {
+            self.configValue = value
+        }
+        if let value = dict["InstanceName"] as? String {
+            self.instanceName = value
+        }
+        if let value = dict["RegionId"] as? String {
+            self.regionId = value
+        }
+    }
+}
+
+public class ModifyInstanceConfigResponseBody : Tea.TeaModel {
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+    }
+}
+
+public class ModifyInstanceConfigResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: ModifyInstanceConfigResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = ModifyInstanceConfigResponseBody()
             model.fromMap(value)
             self.body = model
         }
