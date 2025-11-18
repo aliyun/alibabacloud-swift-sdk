@@ -531,6 +531,8 @@ public class FindIdpListByLoginIdentifierResponse : Tea.TeaModel {
 }
 
 public class GetLoginTokenRequest : Tea.TeaModel {
+    public var areaSite: String?
+
     public var authenticationCode: String?
 
     public var availableFeatures: [String: String]?
@@ -619,6 +621,9 @@ public class GetLoginTokenRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.areaSite != nil {
+            map["AreaSite"] = self.areaSite!
+        }
         if self.authenticationCode != nil {
             map["AuthenticationCode"] = self.authenticationCode!
         }
@@ -735,6 +740,9 @@ public class GetLoginTokenRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["AreaSite"] as? String {
+            self.areaSite = value
+        }
         if let value = dict["AuthenticationCode"] as? String {
             self.authenticationCode = value
         }
@@ -850,6 +858,8 @@ public class GetLoginTokenRequest : Tea.TeaModel {
 }
 
 public class GetLoginTokenShrinkRequest : Tea.TeaModel {
+    public var areaSite: String?
+
     public var authenticationCode: String?
 
     public var availableFeaturesShrink: String?
@@ -938,6 +948,9 @@ public class GetLoginTokenShrinkRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.areaSite != nil {
+            map["AreaSite"] = self.areaSite!
+        }
         if self.authenticationCode != nil {
             map["AuthenticationCode"] = self.authenticationCode!
         }
@@ -1054,6 +1067,9 @@ public class GetLoginTokenShrinkRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["AreaSite"] as? String {
+            self.areaSite = value
+        }
         if let value = dict["AuthenticationCode"] as? String {
             self.authenticationCode = value
         }

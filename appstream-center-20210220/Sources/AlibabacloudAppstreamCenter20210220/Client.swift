@@ -94,6 +94,9 @@ open class Client : AlibabacloudOpenApi.Client {
             request.availableFeaturesShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.availableFeatures, "AvailableFeatures", "json")
         }
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.areaSite)) {
+            query["AreaSite"] = request.areaSite ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.authenticationCode)) {
             query["AuthenticationCode"] = request.authenticationCode ?? "";
         }
