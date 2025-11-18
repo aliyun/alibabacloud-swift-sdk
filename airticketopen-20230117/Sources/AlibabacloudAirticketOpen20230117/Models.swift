@@ -596,6 +596,22 @@ public class DataBaggageAllowanceMapValue : Tea.TeaModel {
 
     public var isAllCarryOnWeight: Bool?
 
+    public var carryLength: Int32?
+
+    public var carryWidth: Int32?
+
+    public var carryHeight: Int32?
+
+    public var carrySumOfLengthWidthHeight: Int32?
+
+    public var length: Int32?
+
+    public var width: Int32?
+
+    public var height: Int32?
+
+    public var sumOfLengthWidthHeight: Int32?
+
     public override init() {
         super.init()
     }
@@ -634,6 +650,30 @@ public class DataBaggageAllowanceMapValue : Tea.TeaModel {
         if self.isAllCarryOnWeight != nil {
             map["is_all_carry_on_weight"] = self.isAllCarryOnWeight!
         }
+        if self.carryLength != nil {
+            map["carry_length"] = self.carryLength!
+        }
+        if self.carryWidth != nil {
+            map["carry_width"] = self.carryWidth!
+        }
+        if self.carryHeight != nil {
+            map["carry_height"] = self.carryHeight!
+        }
+        if self.carrySumOfLengthWidthHeight != nil {
+            map["carry_sum_of_length_width_height"] = self.carrySumOfLengthWidthHeight!
+        }
+        if self.length != nil {
+            map["length"] = self.length!
+        }
+        if self.width != nil {
+            map["width"] = self.width!
+        }
+        if self.height != nil {
+            map["height"] = self.height!
+        }
+        if self.sumOfLengthWidthHeight != nil {
+            map["sum_of_length_width_height"] = self.sumOfLengthWidthHeight!
+        }
         return map
     }
 
@@ -662,6 +702,30 @@ public class DataBaggageAllowanceMapValue : Tea.TeaModel {
         }
         if let value = dict["is_all_carry_on_weight"] as? Bool {
             self.isAllCarryOnWeight = value
+        }
+        if let value = dict["carry_length"] as? Int32 {
+            self.carryLength = value
+        }
+        if let value = dict["carry_width"] as? Int32 {
+            self.carryWidth = value
+        }
+        if let value = dict["carry_height"] as? Int32 {
+            self.carryHeight = value
+        }
+        if let value = dict["carry_sum_of_length_width_height"] as? Int32 {
+            self.carrySumOfLengthWidthHeight = value
+        }
+        if let value = dict["length"] as? Int32 {
+            self.length = value
+        }
+        if let value = dict["width"] as? Int32 {
+            self.width = value
+        }
+        if let value = dict["height"] as? Int32 {
+            self.height = value
+        }
+        if let value = dict["sum_of_length_width_height"] as? Int32 {
+            self.sumOfLengthWidthHeight = value
         }
     }
 }
@@ -1106,6 +1170,22 @@ public class DataSolutionSegmentBaggageMappingListPassengerBaggageAllowanceMappi
 
     public var isAllCarryOnWeight: Bool?
 
+    public var carryLength: Int32?
+
+    public var carryWidth: Int32?
+
+    public var carryHeight: Int32?
+
+    public var carrySumOfLengthWidthHeight: Int32?
+
+    public var length: Int32?
+
+    public var width: Int32?
+
+    public var height: Int32?
+
+    public var sumOfLengthWidthHeight: Int32?
+
     public override init() {
         super.init()
     }
@@ -1144,6 +1224,30 @@ public class DataSolutionSegmentBaggageMappingListPassengerBaggageAllowanceMappi
         if self.isAllCarryOnWeight != nil {
             map["is_all_carry_on_weight"] = self.isAllCarryOnWeight!
         }
+        if self.carryLength != nil {
+            map["carry_length"] = self.carryLength!
+        }
+        if self.carryWidth != nil {
+            map["carry_width"] = self.carryWidth!
+        }
+        if self.carryHeight != nil {
+            map["carry_height"] = self.carryHeight!
+        }
+        if self.carrySumOfLengthWidthHeight != nil {
+            map["carry_sum_of_length_width_height"] = self.carrySumOfLengthWidthHeight!
+        }
+        if self.length != nil {
+            map["length"] = self.length!
+        }
+        if self.width != nil {
+            map["width"] = self.width!
+        }
+        if self.height != nil {
+            map["height"] = self.height!
+        }
+        if self.sumOfLengthWidthHeight != nil {
+            map["sum_of_length_width_height"] = self.sumOfLengthWidthHeight!
+        }
         return map
     }
 
@@ -1172,6 +1276,30 @@ public class DataSolutionSegmentBaggageMappingListPassengerBaggageAllowanceMappi
         }
         if let value = dict["is_all_carry_on_weight"] as? Bool {
             self.isAllCarryOnWeight = value
+        }
+        if let value = dict["carry_length"] as? Int32 {
+            self.carryLength = value
+        }
+        if let value = dict["carry_width"] as? Int32 {
+            self.carryWidth = value
+        }
+        if let value = dict["carry_height"] as? Int32 {
+            self.carryHeight = value
+        }
+        if let value = dict["carry_sum_of_length_width_height"] as? Int32 {
+            self.carrySumOfLengthWidthHeight = value
+        }
+        if let value = dict["length"] as? Int32 {
+            self.length = value
+        }
+        if let value = dict["width"] as? Int32 {
+            self.width = value
+        }
+        if let value = dict["height"] as? Int32 {
+            self.height = value
+        }
+        if let value = dict["sum_of_length_width_height"] as? Int32 {
+            self.sumOfLengthWidthHeight = value
         }
     }
 }
@@ -12703,10 +12831,6 @@ public class OrderDetailResponseBody : Tea.TeaModel {
 
             public var journeyList: [OrderDetailResponseBody.Data.Solution.JourneyList]?
 
-            public var productTypeDescription: String?
-
-            public var refundTicketCouponDescription: String?
-
             public var segmentBaggageCheckInInfoList: [OrderDetailResponseBody.Data.Solution.SegmentBaggageCheckInInfoList]?
 
             public var segmentBaggageMappingList: [OrderDetailResponseBody.Data.Solution.SegmentBaggageMappingList]?
@@ -12756,12 +12880,6 @@ public class OrderDetailResponseBody : Tea.TeaModel {
                         tmp.append(k.toMap())
                     }
                     map["journey_list"] = tmp
-                }
-                if self.productTypeDescription != nil {
-                    map["product_type_description"] = self.productTypeDescription!
-                }
-                if self.refundTicketCouponDescription != nil {
-                    map["refund_ticket_coupon_description"] = self.refundTicketCouponDescription!
                 }
                 if self.segmentBaggageCheckInInfoList != nil {
                     var tmp : [Any] = []
@@ -12825,12 +12943,6 @@ public class OrderDetailResponseBody : Tea.TeaModel {
                         }
                     }
                     self.journeyList = tmp
-                }
-                if let value = dict["product_type_description"] as? String {
-                    self.productTypeDescription = value
-                }
-                if let value = dict["refund_ticket_coupon_description"] as? String {
-                    self.refundTicketCouponDescription = value
                 }
                 if let value = dict["segment_baggage_check_in_info_list"] as? [Any?] {
                     var tmp : [OrderDetailResponseBody.Data.Solution.SegmentBaggageCheckInInfoList] = []
@@ -14590,10 +14702,6 @@ public class PricingResponseBody : Tea.TeaModel {
 
             public var journeyList: [PricingResponseBody.Data.Solution.JourneyList]?
 
-            public var productTypeDescription: String?
-
-            public var refundTicketCouponDescription: String?
-
             public var segmentBaggageCheckInInfoList: [PricingResponseBody.Data.Solution.SegmentBaggageCheckInInfoList]?
 
             public var segmentBaggageMappingList: [PricingResponseBody.Data.Solution.SegmentBaggageMappingList]?
@@ -14643,12 +14751,6 @@ public class PricingResponseBody : Tea.TeaModel {
                         tmp.append(k.toMap())
                     }
                     map["journey_list"] = tmp
-                }
-                if self.productTypeDescription != nil {
-                    map["product_type_description"] = self.productTypeDescription!
-                }
-                if self.refundTicketCouponDescription != nil {
-                    map["refund_ticket_coupon_description"] = self.refundTicketCouponDescription!
                 }
                 if self.segmentBaggageCheckInInfoList != nil {
                     var tmp : [Any] = []
@@ -14712,12 +14814,6 @@ public class PricingResponseBody : Tea.TeaModel {
                         }
                     }
                     self.journeyList = tmp
-                }
-                if let value = dict["product_type_description"] as? String {
-                    self.productTypeDescription = value
-                }
-                if let value = dict["refund_ticket_coupon_description"] as? String {
-                    self.refundTicketCouponDescription = value
                 }
                 if let value = dict["segment_baggage_check_in_info_list"] as? [Any?] {
                     var tmp : [PricingResponseBody.Data.Solution.SegmentBaggageCheckInInfoList] = []
@@ -18161,6 +18257,1140 @@ public class SearchResponse : Tea.TeaModel {
         }
         if let value = dict["body"] as? [String: Any?] {
             var model = SearchResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
+public class StandardSearchHeaders : Tea.TeaModel {
+    public var commonHeaders: [String: String]?
+
+    public var xAcsAirticketAccessToken: String?
+
+    public var xAcsAirticketLanguage: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.commonHeaders != nil {
+            map["commonHeaders"] = self.commonHeaders!
+        }
+        if self.xAcsAirticketAccessToken != nil {
+            map["x-acs-airticket-access-token"] = self.xAcsAirticketAccessToken!
+        }
+        if self.xAcsAirticketLanguage != nil {
+            map["x-acs-airticket-language"] = self.xAcsAirticketLanguage!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["commonHeaders"] as? [String: String] {
+            self.commonHeaders = value
+        }
+        if let value = dict["x-acs-airticket-access-token"] as? String {
+            self.xAcsAirticketAccessToken = value
+        }
+        if let value = dict["x-acs-airticket-language"] as? String {
+            self.xAcsAirticketLanguage = value
+        }
+    }
+}
+
+public class StandardSearchRequest : Tea.TeaModel {
+    public class AirLegs : Tea.TeaModel {
+        public var arrivalAirportList: [String]?
+
+        public var arrivalCity: String?
+
+        public var departureAirportList: [String]?
+
+        public var departureCity: String?
+
+        public var departureDate: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.arrivalAirportList != nil {
+                map["arrival_airport_list"] = self.arrivalAirportList!
+            }
+            if self.arrivalCity != nil {
+                map["arrival_city"] = self.arrivalCity!
+            }
+            if self.departureAirportList != nil {
+                map["departure_airport_list"] = self.departureAirportList!
+            }
+            if self.departureCity != nil {
+                map["departure_city"] = self.departureCity!
+            }
+            if self.departureDate != nil {
+                map["departure_date"] = self.departureDate!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["arrival_airport_list"] as? [String] {
+                self.arrivalAirportList = value
+            }
+            if let value = dict["arrival_city"] as? String {
+                self.arrivalCity = value
+            }
+            if let value = dict["departure_airport_list"] as? [String] {
+                self.departureAirportList = value
+            }
+            if let value = dict["departure_city"] as? String {
+                self.departureCity = value
+            }
+            if let value = dict["departure_date"] as? String {
+                self.departureDate = value
+            }
+        }
+    }
+    public class SearchControlOptions : Tea.TeaModel {
+        public var airlineExcludedList: [String]?
+
+        public var airlinePreferList: [String]?
+
+        public var serviceQuality: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.airlineExcludedList != nil {
+                map["airline_excluded_list"] = self.airlineExcludedList!
+            }
+            if self.airlinePreferList != nil {
+                map["airline_prefer_list"] = self.airlinePreferList!
+            }
+            if self.serviceQuality != nil {
+                map["service_quality"] = self.serviceQuality!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["airline_excluded_list"] as? [String] {
+                self.airlineExcludedList = value
+            }
+            if let value = dict["airline_prefer_list"] as? [String] {
+                self.airlinePreferList = value
+            }
+            if let value = dict["service_quality"] as? String {
+                self.serviceQuality = value
+            }
+        }
+    }
+    public var adults: Int32?
+
+    public var airLegs: [StandardSearchRequest.AirLegs]?
+
+    public var cabinClass: String?
+
+    public var children: Int32?
+
+    public var infants: Int32?
+
+    public var searchControlOptions: StandardSearchRequest.SearchControlOptions?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.searchControlOptions?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.adults != nil {
+            map["adults"] = self.adults!
+        }
+        if self.airLegs != nil {
+            var tmp : [Any] = []
+            for k in self.airLegs! {
+                tmp.append(k.toMap())
+            }
+            map["air_legs"] = tmp
+        }
+        if self.cabinClass != nil {
+            map["cabin_class"] = self.cabinClass!
+        }
+        if self.children != nil {
+            map["children"] = self.children!
+        }
+        if self.infants != nil {
+            map["infants"] = self.infants!
+        }
+        if self.searchControlOptions != nil {
+            map["search_control_options"] = self.searchControlOptions?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["adults"] as? Int32 {
+            self.adults = value
+        }
+        if let value = dict["air_legs"] as? [Any?] {
+            var tmp : [StandardSearchRequest.AirLegs] = []
+            for v in value {
+                if v != nil {
+                    var model = StandardSearchRequest.AirLegs()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.airLegs = tmp
+        }
+        if let value = dict["cabin_class"] as? String {
+            self.cabinClass = value
+        }
+        if let value = dict["children"] as? Int32 {
+            self.children = value
+        }
+        if let value = dict["infants"] as? Int32 {
+            self.infants = value
+        }
+        if let value = dict["search_control_options"] as? [String: Any?] {
+            var model = StandardSearchRequest.SearchControlOptions()
+            model.fromMap(value)
+            self.searchControlOptions = model
+        }
+    }
+}
+
+public class StandardSearchShrinkRequest : Tea.TeaModel {
+    public var adults: Int32?
+
+    public var airLegsShrink: String?
+
+    public var cabinClass: String?
+
+    public var children: Int32?
+
+    public var infants: Int32?
+
+    public var searchControlOptionsShrink: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.adults != nil {
+            map["adults"] = self.adults!
+        }
+        if self.airLegsShrink != nil {
+            map["air_legs"] = self.airLegsShrink!
+        }
+        if self.cabinClass != nil {
+            map["cabin_class"] = self.cabinClass!
+        }
+        if self.children != nil {
+            map["children"] = self.children!
+        }
+        if self.infants != nil {
+            map["infants"] = self.infants!
+        }
+        if self.searchControlOptionsShrink != nil {
+            map["search_control_options"] = self.searchControlOptionsShrink!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["adults"] as? Int32 {
+            self.adults = value
+        }
+        if let value = dict["air_legs"] as? String {
+            self.airLegsShrink = value
+        }
+        if let value = dict["cabin_class"] as? String {
+            self.cabinClass = value
+        }
+        if let value = dict["children"] as? Int32 {
+            self.children = value
+        }
+        if let value = dict["infants"] as? Int32 {
+            self.infants = value
+        }
+        if let value = dict["search_control_options"] as? String {
+            self.searchControlOptionsShrink = value
+        }
+    }
+}
+
+public class StandardSearchResponseBody : Tea.TeaModel {
+    public class Data : Tea.TeaModel {
+        public class SolutionList : Tea.TeaModel {
+            public class JourneyList : Tea.TeaModel {
+                public class SegmentList : Tea.TeaModel {
+                    public var arrivalAirport: String?
+
+                    public var arrivalCity: String?
+
+                    public var arrivalTerminal: String?
+
+                    public var arrivalTime: String?
+
+                    public var availability: String?
+
+                    public var cabin: String?
+
+                    public var cabinClass: String?
+
+                    public var codeShare: Bool?
+
+                    public var departureAirport: String?
+
+                    public var departureCity: String?
+
+                    public var departureTerminal: String?
+
+                    public var departureTime: String?
+
+                    public var equipType: String?
+
+                    public var flightDuration: Int32?
+
+                    public var marketingAirline: String?
+
+                    public var marketingFlightNo: String?
+
+                    public var marketingFlightNoInt: Int32?
+
+                    public var operatingAirline: String?
+
+                    public var operatingFlightNo: String?
+
+                    public var segmentId: String?
+
+                    public var stopCityList: String?
+
+                    public var stopQuantity: Int32?
+
+                    public override init() {
+                        super.init()
+                    }
+
+                    public init(_ dict: [String: Any]) {
+                        super.init()
+                        self.fromMap(dict)
+                    }
+
+                    public override func validate() throws -> Void {
+                    }
+
+                    public override func toMap() -> [String : Any] {
+                        var map = super.toMap()
+                        if self.arrivalAirport != nil {
+                            map["arrival_airport"] = self.arrivalAirport!
+                        }
+                        if self.arrivalCity != nil {
+                            map["arrival_city"] = self.arrivalCity!
+                        }
+                        if self.arrivalTerminal != nil {
+                            map["arrival_terminal"] = self.arrivalTerminal!
+                        }
+                        if self.arrivalTime != nil {
+                            map["arrival_time"] = self.arrivalTime!
+                        }
+                        if self.availability != nil {
+                            map["availability"] = self.availability!
+                        }
+                        if self.cabin != nil {
+                            map["cabin"] = self.cabin!
+                        }
+                        if self.cabinClass != nil {
+                            map["cabin_class"] = self.cabinClass!
+                        }
+                        if self.codeShare != nil {
+                            map["code_share"] = self.codeShare!
+                        }
+                        if self.departureAirport != nil {
+                            map["departure_airport"] = self.departureAirport!
+                        }
+                        if self.departureCity != nil {
+                            map["departure_city"] = self.departureCity!
+                        }
+                        if self.departureTerminal != nil {
+                            map["departure_terminal"] = self.departureTerminal!
+                        }
+                        if self.departureTime != nil {
+                            map["departure_time"] = self.departureTime!
+                        }
+                        if self.equipType != nil {
+                            map["equip_type"] = self.equipType!
+                        }
+                        if self.flightDuration != nil {
+                            map["flight_duration"] = self.flightDuration!
+                        }
+                        if self.marketingAirline != nil {
+                            map["marketing_airline"] = self.marketingAirline!
+                        }
+                        if self.marketingFlightNo != nil {
+                            map["marketing_flight_no"] = self.marketingFlightNo!
+                        }
+                        if self.marketingFlightNoInt != nil {
+                            map["marketing_flight_no_int"] = self.marketingFlightNoInt!
+                        }
+                        if self.operatingAirline != nil {
+                            map["operating_airline"] = self.operatingAirline!
+                        }
+                        if self.operatingFlightNo != nil {
+                            map["operating_flight_no"] = self.operatingFlightNo!
+                        }
+                        if self.segmentId != nil {
+                            map["segment_id"] = self.segmentId!
+                        }
+                        if self.stopCityList != nil {
+                            map["stop_city_list"] = self.stopCityList!
+                        }
+                        if self.stopQuantity != nil {
+                            map["stop_quantity"] = self.stopQuantity!
+                        }
+                        return map
+                    }
+
+                    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                        guard let dict else { return }
+                        if let value = dict["arrival_airport"] as? String {
+                            self.arrivalAirport = value
+                        }
+                        if let value = dict["arrival_city"] as? String {
+                            self.arrivalCity = value
+                        }
+                        if let value = dict["arrival_terminal"] as? String {
+                            self.arrivalTerminal = value
+                        }
+                        if let value = dict["arrival_time"] as? String {
+                            self.arrivalTime = value
+                        }
+                        if let value = dict["availability"] as? String {
+                            self.availability = value
+                        }
+                        if let value = dict["cabin"] as? String {
+                            self.cabin = value
+                        }
+                        if let value = dict["cabin_class"] as? String {
+                            self.cabinClass = value
+                        }
+                        if let value = dict["code_share"] as? Bool {
+                            self.codeShare = value
+                        }
+                        if let value = dict["departure_airport"] as? String {
+                            self.departureAirport = value
+                        }
+                        if let value = dict["departure_city"] as? String {
+                            self.departureCity = value
+                        }
+                        if let value = dict["departure_terminal"] as? String {
+                            self.departureTerminal = value
+                        }
+                        if let value = dict["departure_time"] as? String {
+                            self.departureTime = value
+                        }
+                        if let value = dict["equip_type"] as? String {
+                            self.equipType = value
+                        }
+                        if let value = dict["flight_duration"] as? Int32 {
+                            self.flightDuration = value
+                        }
+                        if let value = dict["marketing_airline"] as? String {
+                            self.marketingAirline = value
+                        }
+                        if let value = dict["marketing_flight_no"] as? String {
+                            self.marketingFlightNo = value
+                        }
+                        if let value = dict["marketing_flight_no_int"] as? Int32 {
+                            self.marketingFlightNoInt = value
+                        }
+                        if let value = dict["operating_airline"] as? String {
+                            self.operatingAirline = value
+                        }
+                        if let value = dict["operating_flight_no"] as? String {
+                            self.operatingFlightNo = value
+                        }
+                        if let value = dict["segment_id"] as? String {
+                            self.segmentId = value
+                        }
+                        if let value = dict["stop_city_list"] as? String {
+                            self.stopCityList = value
+                        }
+                        if let value = dict["stop_quantity"] as? Int32 {
+                            self.stopQuantity = value
+                        }
+                    }
+                }
+                public var segmentList: [StandardSearchResponseBody.Data.SolutionList.JourneyList.SegmentList]?
+
+                public var transferCount: Int32?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.segmentList != nil {
+                        var tmp : [Any] = []
+                        for k in self.segmentList! {
+                            tmp.append(k.toMap())
+                        }
+                        map["segment_list"] = tmp
+                    }
+                    if self.transferCount != nil {
+                        map["transfer_count"] = self.transferCount!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                    guard let dict else { return }
+                    if let value = dict["segment_list"] as? [Any?] {
+                        var tmp : [StandardSearchResponseBody.Data.SolutionList.JourneyList.SegmentList] = []
+                        for v in value {
+                            if v != nil {
+                                var model = StandardSearchResponseBody.Data.SolutionList.JourneyList.SegmentList()
+                                if v != nil {
+                                    model.fromMap(v as? [String: Any?])
+                                }
+                                tmp.append(model)
+                            }
+                        }
+                        self.segmentList = tmp
+                    }
+                    if let value = dict["transfer_count"] as? Int32 {
+                        self.transferCount = value
+                    }
+                }
+            }
+            public class SegmentBaggageCheckInInfoList : Tea.TeaModel {
+                public var luggageDirectInfoType: Int32?
+
+                public var segmentIdList: [String]?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.luggageDirectInfoType != nil {
+                        map["luggage_direct_info_type"] = self.luggageDirectInfoType!
+                    }
+                    if self.segmentIdList != nil {
+                        map["segment_id_list"] = self.segmentIdList!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                    guard let dict else { return }
+                    if let value = dict["luggage_direct_info_type"] as? Int32 {
+                        self.luggageDirectInfoType = value
+                    }
+                    if let value = dict["segment_id_list"] as? [String] {
+                        self.segmentIdList = value
+                    }
+                }
+            }
+            public class SegmentBaggageMappingList : Tea.TeaModel {
+                public var passengerBaggageAllowanceMapping: [String: DataSolutionListSegmentBaggageMappingListPassengerBaggageAllowanceMappingValue]?
+
+                public var segmentIdList: [String]?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.passengerBaggageAllowanceMapping != nil {
+                        var tmp : [String: Any] = [:]
+                        for (k, v) in self.passengerBaggageAllowanceMapping! {
+                            tmp[k] = v.toMap()
+                        }
+                        map["passenger_baggage_allowance_mapping"] = tmp
+                    }
+                    if self.segmentIdList != nil {
+                        map["segment_id_list"] = self.segmentIdList!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                    guard let dict else { return }
+                    if let value = dict["passenger_baggage_allowance_mapping"] as? [String: Any?] {
+                        var tmp : [String: DataSolutionListSegmentBaggageMappingListPassengerBaggageAllowanceMappingValue] = [:]
+                        for (k, v) in value {
+                            if v != nil {
+                                var model = DataSolutionListSegmentBaggageMappingListPassengerBaggageAllowanceMappingValue()
+                                model.fromMap(v as? [String: Any?])
+                                tmp[k] = model
+                            }
+                        }
+                        self.passengerBaggageAllowanceMapping = tmp
+                    }
+                    if let value = dict["segment_id_list"] as? [String] {
+                        self.segmentIdList = value
+                    }
+                }
+            }
+            public class SegmentRefundChangeRuleMappingList : Tea.TeaModel {
+                public var refundChangeRuleMap: [String: DataSolutionListSegmentRefundChangeRuleMappingListRefundChangeRuleMapValue]?
+
+                public var segmentIdList: [String]?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.refundChangeRuleMap != nil {
+                        var tmp : [String: Any] = [:]
+                        for (k, v) in self.refundChangeRuleMap! {
+                            tmp[k] = v.toMap()
+                        }
+                        map["refund_change_rule_map"] = tmp
+                    }
+                    if self.segmentIdList != nil {
+                        map["segment_id_list"] = self.segmentIdList!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                    guard let dict else { return }
+                    if let value = dict["refund_change_rule_map"] as? [String: Any?] {
+                        var tmp : [String: DataSolutionListSegmentRefundChangeRuleMappingListRefundChangeRuleMapValue] = [:]
+                        for (k, v) in value {
+                            if v != nil {
+                                var model = DataSolutionListSegmentRefundChangeRuleMappingListRefundChangeRuleMapValue()
+                                model.fromMap(v as? [String: Any?])
+                                tmp[k] = model
+                            }
+                        }
+                        self.refundChangeRuleMap = tmp
+                    }
+                    if let value = dict["segment_id_list"] as? [String] {
+                        self.segmentIdList = value
+                    }
+                }
+            }
+            public class SolutionAttribute : Tea.TeaModel {
+                public class IssueTimeInfo : Tea.TeaModel {
+                    public var issueTicketType: Int32?
+
+                    public var issueTimeLimit: Int32?
+
+                    public override init() {
+                        super.init()
+                    }
+
+                    public init(_ dict: [String: Any]) {
+                        super.init()
+                        self.fromMap(dict)
+                    }
+
+                    public override func validate() throws -> Void {
+                    }
+
+                    public override func toMap() -> [String : Any] {
+                        var map = super.toMap()
+                        if self.issueTicketType != nil {
+                            map["issue_ticket_type"] = self.issueTicketType!
+                        }
+                        if self.issueTimeLimit != nil {
+                            map["issue_time_limit"] = self.issueTimeLimit!
+                        }
+                        return map
+                    }
+
+                    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                        guard let dict else { return }
+                        if let value = dict["issue_ticket_type"] as? Int32 {
+                            self.issueTicketType = value
+                        }
+                        if let value = dict["issue_time_limit"] as? Int32 {
+                            self.issueTimeLimit = value
+                        }
+                    }
+                }
+                public var issueTimeInfo: StandardSearchResponseBody.Data.SolutionList.SolutionAttribute.IssueTimeInfo?
+
+                public var supplySourceType: String?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                    try self.issueTimeInfo?.validate()
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.issueTimeInfo != nil {
+                        map["issue_time_info"] = self.issueTimeInfo?.toMap()
+                    }
+                    if self.supplySourceType != nil {
+                        map["supply_source_type"] = self.supplySourceType!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                    guard let dict else { return }
+                    if let value = dict["issue_time_info"] as? [String: Any?] {
+                        var model = StandardSearchResponseBody.Data.SolutionList.SolutionAttribute.IssueTimeInfo()
+                        model.fromMap(value)
+                        self.issueTimeInfo = model
+                    }
+                    if let value = dict["supply_source_type"] as? String {
+                        self.supplySourceType = value
+                    }
+                }
+            }
+            public var adultPrice: Double?
+
+            public var adultTax: Double?
+
+            public var childPrice: Double?
+
+            public var childTax: Double?
+
+            public var infantPrice: Double?
+
+            public var infantTax: Double?
+
+            public var journeyList: [StandardSearchResponseBody.Data.SolutionList.JourneyList]?
+
+            public var segmentBaggageCheckInInfoList: [StandardSearchResponseBody.Data.SolutionList.SegmentBaggageCheckInInfoList]?
+
+            public var segmentBaggageMappingList: [StandardSearchResponseBody.Data.SolutionList.SegmentBaggageMappingList]?
+
+            public var segmentRefundChangeRuleMappingList: [StandardSearchResponseBody.Data.SolutionList.SegmentRefundChangeRuleMappingList]?
+
+            public var solutionAttribute: StandardSearchResponseBody.Data.SolutionList.SolutionAttribute?
+
+            public var solutionId: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+                try self.solutionAttribute?.validate()
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.adultPrice != nil {
+                    map["adult_price"] = self.adultPrice!
+                }
+                if self.adultTax != nil {
+                    map["adult_tax"] = self.adultTax!
+                }
+                if self.childPrice != nil {
+                    map["child_price"] = self.childPrice!
+                }
+                if self.childTax != nil {
+                    map["child_tax"] = self.childTax!
+                }
+                if self.infantPrice != nil {
+                    map["infant_price"] = self.infantPrice!
+                }
+                if self.infantTax != nil {
+                    map["infant_tax"] = self.infantTax!
+                }
+                if self.journeyList != nil {
+                    var tmp : [Any] = []
+                    for k in self.journeyList! {
+                        tmp.append(k.toMap())
+                    }
+                    map["journey_list"] = tmp
+                }
+                if self.segmentBaggageCheckInInfoList != nil {
+                    var tmp : [Any] = []
+                    for k in self.segmentBaggageCheckInInfoList! {
+                        tmp.append(k.toMap())
+                    }
+                    map["segment_baggage_check_in_info_list"] = tmp
+                }
+                if self.segmentBaggageMappingList != nil {
+                    var tmp : [Any] = []
+                    for k in self.segmentBaggageMappingList! {
+                        tmp.append(k.toMap())
+                    }
+                    map["segment_baggage_mapping_list"] = tmp
+                }
+                if self.segmentRefundChangeRuleMappingList != nil {
+                    var tmp : [Any] = []
+                    for k in self.segmentRefundChangeRuleMappingList! {
+                        tmp.append(k.toMap())
+                    }
+                    map["segment_refund_change_rule_mapping_list"] = tmp
+                }
+                if self.solutionAttribute != nil {
+                    map["solution_attribute"] = self.solutionAttribute?.toMap()
+                }
+                if self.solutionId != nil {
+                    map["solution_id"] = self.solutionId!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["adult_price"] as? Double {
+                    self.adultPrice = value
+                }
+                if let value = dict["adult_tax"] as? Double {
+                    self.adultTax = value
+                }
+                if let value = dict["child_price"] as? Double {
+                    self.childPrice = value
+                }
+                if let value = dict["child_tax"] as? Double {
+                    self.childTax = value
+                }
+                if let value = dict["infant_price"] as? Double {
+                    self.infantPrice = value
+                }
+                if let value = dict["infant_tax"] as? Double {
+                    self.infantTax = value
+                }
+                if let value = dict["journey_list"] as? [Any?] {
+                    var tmp : [StandardSearchResponseBody.Data.SolutionList.JourneyList] = []
+                    for v in value {
+                        if v != nil {
+                            var model = StandardSearchResponseBody.Data.SolutionList.JourneyList()
+                            if v != nil {
+                                model.fromMap(v as? [String: Any?])
+                            }
+                            tmp.append(model)
+                        }
+                    }
+                    self.journeyList = tmp
+                }
+                if let value = dict["segment_baggage_check_in_info_list"] as? [Any?] {
+                    var tmp : [StandardSearchResponseBody.Data.SolutionList.SegmentBaggageCheckInInfoList] = []
+                    for v in value {
+                        if v != nil {
+                            var model = StandardSearchResponseBody.Data.SolutionList.SegmentBaggageCheckInInfoList()
+                            if v != nil {
+                                model.fromMap(v as? [String: Any?])
+                            }
+                            tmp.append(model)
+                        }
+                    }
+                    self.segmentBaggageCheckInInfoList = tmp
+                }
+                if let value = dict["segment_baggage_mapping_list"] as? [Any?] {
+                    var tmp : [StandardSearchResponseBody.Data.SolutionList.SegmentBaggageMappingList] = []
+                    for v in value {
+                        if v != nil {
+                            var model = StandardSearchResponseBody.Data.SolutionList.SegmentBaggageMappingList()
+                            if v != nil {
+                                model.fromMap(v as? [String: Any?])
+                            }
+                            tmp.append(model)
+                        }
+                    }
+                    self.segmentBaggageMappingList = tmp
+                }
+                if let value = dict["segment_refund_change_rule_mapping_list"] as? [Any?] {
+                    var tmp : [StandardSearchResponseBody.Data.SolutionList.SegmentRefundChangeRuleMappingList] = []
+                    for v in value {
+                        if v != nil {
+                            var model = StandardSearchResponseBody.Data.SolutionList.SegmentRefundChangeRuleMappingList()
+                            if v != nil {
+                                model.fromMap(v as? [String: Any?])
+                            }
+                            tmp.append(model)
+                        }
+                    }
+                    self.segmentRefundChangeRuleMappingList = tmp
+                }
+                if let value = dict["solution_attribute"] as? [String: Any?] {
+                    var model = StandardSearchResponseBody.Data.SolutionList.SolutionAttribute()
+                    model.fromMap(value)
+                    self.solutionAttribute = model
+                }
+                if let value = dict["solution_id"] as? String {
+                    self.solutionId = value
+                }
+            }
+        }
+        public var solutionList: [StandardSearchResponseBody.Data.SolutionList]?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.solutionList != nil {
+                var tmp : [Any] = []
+                for k in self.solutionList! {
+                    tmp.append(k.toMap())
+                }
+                map["solution_list"] = tmp
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["solution_list"] as? [Any?] {
+                var tmp : [StandardSearchResponseBody.Data.SolutionList] = []
+                for v in value {
+                    if v != nil {
+                        var model = StandardSearchResponseBody.Data.SolutionList()
+                        if v != nil {
+                            model.fromMap(v as? [String: Any?])
+                        }
+                        tmp.append(model)
+                    }
+                }
+                self.solutionList = tmp
+            }
+        }
+    }
+    public var requestId: String?
+
+    public var data: StandardSearchResponseBody.Data?
+
+    public var errorCode: String?
+
+    public var errorData: Any?
+
+    public var errorMsg: String?
+
+    public var status: Int32?
+
+    public var success: Bool?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.data?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.data != nil {
+            map["data"] = self.data?.toMap()
+        }
+        if self.errorCode != nil {
+            map["error_code"] = self.errorCode!
+        }
+        if self.errorData != nil {
+            map["error_data"] = self.errorData!
+        }
+        if self.errorMsg != nil {
+            map["error_msg"] = self.errorMsg!
+        }
+        if self.status != nil {
+            map["status"] = self.status!
+        }
+        if self.success != nil {
+            map["success"] = self.success!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+        if let value = dict["data"] as? [String: Any?] {
+            var model = StandardSearchResponseBody.Data()
+            model.fromMap(value)
+            self.data = model
+        }
+        if let value = dict["error_code"] as? String {
+            self.errorCode = value
+        }
+        if let value = dict["error_data"] as? Any {
+            self.errorData = value
+        }
+        if let value = dict["error_msg"] as? String {
+            self.errorMsg = value
+        }
+        if let value = dict["status"] as? Int32 {
+            self.status = value
+        }
+        if let value = dict["success"] as? Bool {
+            self.success = value
+        }
+    }
+}
+
+public class StandardSearchResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: StandardSearchResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = StandardSearchResponseBody()
             model.fromMap(value)
             self.body = model
         }

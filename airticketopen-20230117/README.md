@@ -17,7 +17,7 @@ English | [简体中文](README-CN.md)
 To integrate `AlibabacloudAirticketOpen20230117` into your Xcode project using [Carthage](https://github.com/Carthage/Carthage), specify it in your `Cartfile`:
 
 ```ogdl
-github "alibabacloud-sdk-swift/airticketopen-20230117" "2.3.7"
+github "alibabacloud-sdk-swift/airticketopen-20230117" "3.0.0"
 ```
 
 ### Swift Package Manager
@@ -26,7 +26,7 @@ To integrate `AlibabacloudAirticketOpen20230117` into your Xcode project using [
 
 ```swift
 dependencies: [
-    .package(url: "https://github.com/alibabacloud-sdk-swift/airticketopen-20230117.git", from: "2.3.7")
+    .package(url: "https://github.com/alibabacloud-sdk-swift/airticketopen-20230117.git", from: "3.0.0")
 ]
 ```
 

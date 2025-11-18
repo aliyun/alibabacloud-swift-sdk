@@ -1182,6 +1182,72 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func standardSearchWithOptions(_ tmpReq: StandardSearchRequest, _ headers: StandardSearchHeaders, _ runtime: TeaUtils.RuntimeOptions) async throws -> StandardSearchResponse {
+        try TeaUtils.Client.validateModel(tmpReq)
+        var request: StandardSearchShrinkRequest = StandardSearchShrinkRequest([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.airLegs)) {
+            request.airLegsShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.airLegs, "air_legs", "json")
+        }
+        if (!TeaUtils.Client.isUnset(tmpReq.searchControlOptions)) {
+            request.searchControlOptionsShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.searchControlOptions, "search_control_options", "json")
+        }
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.adults)) {
+            body["adults"] = request.adults!;
+        }
+        if (!TeaUtils.Client.isUnset(request.airLegsShrink)) {
+            body["air_legs"] = request.airLegsShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.cabinClass)) {
+            body["cabin_class"] = request.cabinClass ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.children)) {
+            body["children"] = request.children!;
+        }
+        if (!TeaUtils.Client.isUnset(request.infants)) {
+            body["infants"] = request.infants!;
+        }
+        if (!TeaUtils.Client.isUnset(request.searchControlOptionsShrink)) {
+            body["search_control_options"] = request.searchControlOptionsShrink ?? "";
+        }
+        var realHeaders: [String: String] = [:]
+        if (!TeaUtils.Client.isUnset(headers.commonHeaders)) {
+            realHeaders = headers.commonHeaders ?? [:]
+        }
+        if (!TeaUtils.Client.isUnset(headers.xAcsAirticketAccessToken)) {
+            realHeaders["x-acs-airticket-access-token"] = TeaUtils.Client.toJSONString(headers.xAcsAirticketAccessToken);
+        }
+        if (!TeaUtils.Client.isUnset(headers.xAcsAirticketLanguage)) {
+            realHeaders["x-acs-airticket-language"] = TeaUtils.Client.toJSONString(headers.xAcsAirticketLanguage);
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": realHeaders as! [String: String],
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "StandardSearch",
+            "version": "2023-01-17",
+            "protocol": "HTTPS",
+            "pathname": "/airticket/v1/trade/action-standardsearch",
+            "method": "POST",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(StandardSearchResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func standardSearch(_ request: StandardSearchRequest) async throws -> StandardSearchResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: StandardSearchHeaders = StandardSearchHeaders([:])
+        return try await standardSearchWithOptions(request as! StandardSearchRequest, headers as! StandardSearchHeaders, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func ticketingWithOptions(_ request: TicketingRequest, _ headers: TicketingHeaders, _ runtime: TeaUtils.RuntimeOptions) async throws -> TicketingResponse {
         try TeaUtils.Client.validateModel(request)
         var body: [String: Any] = [:]
