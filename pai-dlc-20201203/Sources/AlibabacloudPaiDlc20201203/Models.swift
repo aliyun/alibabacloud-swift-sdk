@@ -6976,6 +6976,8 @@ public class GetJobResponseBody : Tea.TeaModel {
     }
     public class Pods : Tea.TeaModel {
         public class HistoryPods : Tea.TeaModel {
+            public var duration: Double?
+
             public var gmtCreateTime: String?
 
             public var gmtFinishTime: String?
@@ -6984,7 +6986,11 @@ public class GetJobResponseBody : Tea.TeaModel {
 
             public var ip: String?
 
+            public var nodeName: String?
+
             public var podId: String?
+
+            public var podIps: [PodNetworkInterface]?
 
             public var podUid: String?
 
@@ -7010,6 +7016,9 @@ public class GetJobResponseBody : Tea.TeaModel {
 
             public override func toMap() -> [String : Any] {
                 var map = super.toMap()
+                if self.duration != nil {
+                    map["Duration"] = self.duration!
+                }
                 if self.gmtCreateTime != nil {
                     map["GmtCreateTime"] = self.gmtCreateTime!
                 }
@@ -7022,8 +7031,18 @@ public class GetJobResponseBody : Tea.TeaModel {
                 if self.ip != nil {
                     map["Ip"] = self.ip!
                 }
+                if self.nodeName != nil {
+                    map["NodeName"] = self.nodeName!
+                }
                 if self.podId != nil {
                     map["PodId"] = self.podId!
+                }
+                if self.podIps != nil {
+                    var tmp : [Any] = []
+                    for k in self.podIps! {
+                        tmp.append(k.toMap())
+                    }
+                    map["PodIps"] = tmp
                 }
                 if self.podUid != nil {
                     map["PodUid"] = self.podUid!
@@ -7045,6 +7064,9 @@ public class GetJobResponseBody : Tea.TeaModel {
 
             public override func fromMap(_ dict: [String: Any?]?) -> Void {
                 guard let dict else { return }
+                if let value = dict["Duration"] as? Double {
+                    self.duration = value
+                }
                 if let value = dict["GmtCreateTime"] as? String {
                     self.gmtCreateTime = value
                 }
@@ -7057,8 +7079,24 @@ public class GetJobResponseBody : Tea.TeaModel {
                 if let value = dict["Ip"] as? String {
                     self.ip = value
                 }
+                if let value = dict["NodeName"] as? String {
+                    self.nodeName = value
+                }
                 if let value = dict["PodId"] as? String {
                     self.podId = value
+                }
+                if let value = dict["PodIps"] as? [Any?] {
+                    var tmp : [PodNetworkInterface] = []
+                    for v in value {
+                        if v != nil {
+                            var model = PodNetworkInterface()
+                            if v != nil {
+                                model.fromMap(v as? [String: Any?])
+                            }
+                            tmp.append(model)
+                        }
+                    }
+                    self.podIps = tmp
                 }
                 if let value = dict["PodUid"] as? String {
                     self.podUid = value
@@ -7077,6 +7115,8 @@ public class GetJobResponseBody : Tea.TeaModel {
                 }
             }
         }
+        public var duration: Double?
+
         public var gmtCreateTime: String?
 
         public var gmtFinishTime: String?
@@ -7087,7 +7127,11 @@ public class GetJobResponseBody : Tea.TeaModel {
 
         public var ip: String?
 
+        public var nodeName: String?
+
         public var podId: String?
+
+        public var podIps: [PodNetworkInterface]?
 
         public var podUid: String?
 
@@ -7113,6 +7157,9 @@ public class GetJobResponseBody : Tea.TeaModel {
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
+            if self.duration != nil {
+                map["Duration"] = self.duration!
+            }
             if self.gmtCreateTime != nil {
                 map["GmtCreateTime"] = self.gmtCreateTime!
             }
@@ -7132,8 +7179,18 @@ public class GetJobResponseBody : Tea.TeaModel {
             if self.ip != nil {
                 map["Ip"] = self.ip!
             }
+            if self.nodeName != nil {
+                map["NodeName"] = self.nodeName!
+            }
             if self.podId != nil {
                 map["PodId"] = self.podId!
+            }
+            if self.podIps != nil {
+                var tmp : [Any] = []
+                for k in self.podIps! {
+                    tmp.append(k.toMap())
+                }
+                map["PodIps"] = tmp
             }
             if self.podUid != nil {
                 map["PodUid"] = self.podUid!
@@ -7155,6 +7212,9 @@ public class GetJobResponseBody : Tea.TeaModel {
 
         public override func fromMap(_ dict: [String: Any?]?) -> Void {
             guard let dict else { return }
+            if let value = dict["Duration"] as? Double {
+                self.duration = value
+            }
             if let value = dict["GmtCreateTime"] as? String {
                 self.gmtCreateTime = value
             }
@@ -7180,8 +7240,24 @@ public class GetJobResponseBody : Tea.TeaModel {
             if let value = dict["Ip"] as? String {
                 self.ip = value
             }
+            if let value = dict["NodeName"] as? String {
+                self.nodeName = value
+            }
             if let value = dict["PodId"] as? String {
                 self.podId = value
+            }
+            if let value = dict["PodIps"] as? [Any?] {
+                var tmp : [PodNetworkInterface] = []
+                for v in value {
+                    if v != nil {
+                        var model = PodNetworkInterface()
+                        if v != nil {
+                            model.fromMap(v as? [String: Any?])
+                        }
+                        tmp.append(model)
+                    }
+                }
+                self.podIps = tmp
             }
             if let value = dict["PodUid"] as? String {
                 self.podUid = value
