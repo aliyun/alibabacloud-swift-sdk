@@ -3647,7 +3647,7 @@ public class AddImageRequest : Tea.TeaModel {
 
     public var name: String?
 
-    public var size: Int32?
+    public var size: Int64?
 
     public var sourceId: String?
 
@@ -3736,7 +3736,7 @@ public class AddImageRequest : Tea.TeaModel {
         if let value = dict["Name"] as? String {
             self.name = value
         }
-        if let value = dict["Size"] as? Int32 {
+        if let value = dict["Size"] as? Int64 {
             self.size = value
         }
         if let value = dict["SourceId"] as? String {
@@ -13538,7 +13538,7 @@ public class GetImageResponseBody : Tea.TeaModel {
 
     public var requestId: String?
 
-    public var size: Int32?
+    public var size: Int64?
 
     public var sourceId: String?
 
@@ -13650,7 +13650,7 @@ public class GetImageResponseBody : Tea.TeaModel {
         if let value = dict["RequestId"] as? String {
             self.requestId = value
         }
-        if let value = dict["Size"] as? Int32 {
+        if let value = dict["Size"] as? Int64 {
             self.size = value
         }
         if let value = dict["SourceId"] as? String {
@@ -18263,7 +18263,7 @@ public class ListImagesResponseBody : Tea.TeaModel {
 
         public var parentUserId: String?
 
-        public var size: Int32?
+        public var size: Int64?
 
         public var sourceId: String?
 
@@ -18375,7 +18375,7 @@ public class ListImagesResponseBody : Tea.TeaModel {
             if let value = dict["ParentUserId"] as? String {
                 self.parentUserId = value
             }
-            if let value = dict["Size"] as? Int32 {
+            if let value = dict["Size"] as? Int64 {
                 self.size = value
             }
             if let value = dict["SourceId"] as? String {
