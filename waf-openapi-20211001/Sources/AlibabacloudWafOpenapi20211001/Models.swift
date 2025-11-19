@@ -5112,6 +5112,8 @@ public class DeleteApisecEventsResponse : Tea.TeaModel {
 }
 
 public class DeleteCloudResourceRequest : Tea.TeaModel {
+    public var cloudResourceId: String?
+
     public var instanceId: String?
 
     public var port: Int32?
@@ -5138,6 +5140,9 @@ public class DeleteCloudResourceRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.cloudResourceId != nil {
+            map["CloudResourceId"] = self.cloudResourceId!
+        }
         if self.instanceId != nil {
             map["InstanceId"] = self.instanceId!
         }
@@ -5161,6 +5166,9 @@ public class DeleteCloudResourceRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["CloudResourceId"] as? String {
+            self.cloudResourceId = value
+        }
         if let value = dict["InstanceId"] as? String {
             self.instanceId = value
         }
@@ -6966,6 +6974,8 @@ public class DescribeAbnormalCloudResourcesResponseBody : Tea.TeaModel {
                 }
             }
         }
+        public var cloudResourceId: String?
+
         public var details: [DescribeAbnormalCloudResourcesResponseBody.AbnormalCloudResources.Details]?
 
         public var reason: String?
@@ -6992,6 +7002,9 @@ public class DescribeAbnormalCloudResourcesResponseBody : Tea.TeaModel {
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
+            if self.cloudResourceId != nil {
+                map["CloudResourceId"] = self.cloudResourceId!
+            }
             if self.details != nil {
                 var tmp : [Any] = []
                 for k in self.details! {
@@ -7019,6 +7032,9 @@ public class DescribeAbnormalCloudResourcesResponseBody : Tea.TeaModel {
 
         public override func fromMap(_ dict: [String: Any?]?) -> Void {
             guard let dict else { return }
+            if let value = dict["CloudResourceId"] as? String {
+                self.cloudResourceId = value
+            }
             if let value = dict["Details"] as? [Any?] {
                 var tmp : [DescribeAbnormalCloudResourcesResponseBody.AbnormalCloudResources.Details] = []
                 for v in value {
@@ -14336,6 +14352,8 @@ public class DescribeCloudResourceAccessPortDetailsResponseBody : Tea.TeaModel {
 
         public var cipherSuite: Int32?
 
+        public var cloudResourceId: String?
+
         public var customCiphers: [String]?
 
         public var enableTLSv3: Bool?
@@ -14397,6 +14415,9 @@ public class DescribeCloudResourceAccessPortDetailsResponseBody : Tea.TeaModel {
             }
             if self.cipherSuite != nil {
                 map["CipherSuite"] = self.cipherSuite!
+            }
+            if self.cloudResourceId != nil {
+                map["CloudResourceId"] = self.cloudResourceId!
             }
             if self.customCiphers != nil {
                 map["CustomCiphers"] = self.customCiphers!
@@ -14483,6 +14504,9 @@ public class DescribeCloudResourceAccessPortDetailsResponseBody : Tea.TeaModel {
             }
             if let value = dict["CipherSuite"] as? Int32 {
                 self.cipherSuite = value
+            }
+            if let value = dict["CloudResourceId"] as? String {
+                self.cloudResourceId = value
             }
             if let value = dict["CustomCiphers"] as? [String] {
                 self.customCiphers = value
@@ -45496,6 +45520,8 @@ public class ModifyCloudResourceRequest : Tea.TeaModel {
             }
         }
     }
+    public var cloudResourceId: String?
+
     public var instanceId: String?
 
     public var listen: ModifyCloudResourceRequest.Listen?
@@ -45522,6 +45548,9 @@ public class ModifyCloudResourceRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.cloudResourceId != nil {
+            map["CloudResourceId"] = self.cloudResourceId!
+        }
         if self.instanceId != nil {
             map["InstanceId"] = self.instanceId!
         }
@@ -45542,6 +45571,9 @@ public class ModifyCloudResourceRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["CloudResourceId"] as? String {
+            self.cloudResourceId = value
+        }
         if let value = dict["InstanceId"] as? String {
             self.instanceId = value
         }
@@ -45565,6 +45597,8 @@ public class ModifyCloudResourceRequest : Tea.TeaModel {
 }
 
 public class ModifyCloudResourceShrinkRequest : Tea.TeaModel {
+    public var cloudResourceId: String?
+
     public var instanceId: String?
 
     public var listenShrink: String?
@@ -45589,6 +45623,9 @@ public class ModifyCloudResourceShrinkRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.cloudResourceId != nil {
+            map["CloudResourceId"] = self.cloudResourceId!
+        }
         if self.instanceId != nil {
             map["InstanceId"] = self.instanceId!
         }
@@ -45609,6 +45646,9 @@ public class ModifyCloudResourceShrinkRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["CloudResourceId"] as? String {
+            self.cloudResourceId = value
+        }
         if let value = dict["InstanceId"] as? String {
             self.instanceId = value
         }
@@ -45757,6 +45797,8 @@ public class ModifyCloudResourceCertRequest : Tea.TeaModel {
     }
     public var certificates: [ModifyCloudResourceCertRequest.Certificates]?
 
+    public var cloudResourceId: String?
+
     public var instanceId: String?
 
     public var port: Int32?
@@ -45787,6 +45829,9 @@ public class ModifyCloudResourceCertRequest : Tea.TeaModel {
                 tmp.append(k.toMap())
             }
             map["Certificates"] = tmp
+        }
+        if self.cloudResourceId != nil {
+            map["CloudResourceId"] = self.cloudResourceId!
         }
         if self.instanceId != nil {
             map["InstanceId"] = self.instanceId!
@@ -45820,6 +45865,9 @@ public class ModifyCloudResourceCertRequest : Tea.TeaModel {
                 }
             }
             self.certificates = tmp
+        }
+        if let value = dict["CloudResourceId"] as? String {
+            self.cloudResourceId = value
         }
         if let value = dict["InstanceId"] as? String {
             self.instanceId = value
@@ -51407,6 +51455,8 @@ public class ModifyUserWafLogStatusResponse : Tea.TeaModel {
 }
 
 public class ReCreateCloudResourceRequest : Tea.TeaModel {
+    public var cloudResourceId: String?
+
     public var instanceId: String?
 
     public var port: Int32?
@@ -51433,6 +51483,9 @@ public class ReCreateCloudResourceRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.cloudResourceId != nil {
+            map["CloudResourceId"] = self.cloudResourceId!
+        }
         if self.instanceId != nil {
             map["InstanceId"] = self.instanceId!
         }
@@ -51456,6 +51509,9 @@ public class ReCreateCloudResourceRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["CloudResourceId"] as? String {
+            self.cloudResourceId = value
+        }
         if let value = dict["InstanceId"] as? String {
             self.instanceId = value
         }

@@ -1169,6 +1169,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func deleteCloudResourceWithOptions(_ request: DeleteCloudResourceRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DeleteCloudResourceResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.cloudResourceId)) {
+            query["CloudResourceId"] = request.cloudResourceId ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.instanceId)) {
             query["InstanceId"] = request.instanceId ?? "";
         }
@@ -8569,6 +8572,9 @@ open class Client : AlibabacloudOpenApi.Client {
             request.redirectShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.redirect, "Redirect", "json")
         }
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.cloudResourceId)) {
+            query["CloudResourceId"] = request.cloudResourceId ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.instanceId)) {
             query["InstanceId"] = request.instanceId ?? "";
         }
@@ -8614,6 +8620,9 @@ open class Client : AlibabacloudOpenApi.Client {
         var query: [String: Any] = [:]
         if (!TeaUtils.Client.isUnset(request.certificates)) {
             query["Certificates"] = request.certificates ?? [];
+        }
+        if (!TeaUtils.Client.isUnset(request.cloudResourceId)) {
+            query["CloudResourceId"] = request.cloudResourceId ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.instanceId)) {
             query["InstanceId"] = request.instanceId ?? "";
@@ -10126,6 +10135,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func reCreateCloudResourceWithOptions(_ request: ReCreateCloudResourceRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ReCreateCloudResourceResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.cloudResourceId)) {
+            query["CloudResourceId"] = request.cloudResourceId ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.instanceId)) {
             query["InstanceId"] = request.instanceId ?? "";
         }
