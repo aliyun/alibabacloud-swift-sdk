@@ -11086,6 +11086,8 @@ public class ListClusterNodesResponseBody : Tea.TeaModel {
 
         public var nodeId: String?
 
+        public var nodeType: String?
+
         public var operatingState: String?
 
         public var sn: String?
@@ -11159,6 +11161,9 @@ public class ListClusterNodesResponseBody : Tea.TeaModel {
             }
             if self.nodeId != nil {
                 map["NodeId"] = self.nodeId!
+            }
+            if self.nodeType != nil {
+                map["NodeType"] = self.nodeType!
             }
             if self.operatingState != nil {
                 map["OperatingState"] = self.operatingState!
@@ -11241,6 +11246,9 @@ public class ListClusterNodesResponseBody : Tea.TeaModel {
             }
             if let value = dict["NodeId"] as? String {
                 self.nodeId = value
+            }
+            if let value = dict["NodeType"] as? String {
+                self.nodeType = value
             }
             if let value = dict["OperatingState"] as? String {
                 self.operatingState = value
