@@ -4408,6 +4408,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.sipUserPassword)) {
             query["SipUserPassword"] = request.sipUserPassword ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.taskId)) {
+            query["TaskId"] = request.taskId ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.uid)) {
             query["Uid"] = request.uid ?? "";
         }

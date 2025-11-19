@@ -30578,6 +30578,8 @@ public class RtcSipInviteMemberRequest : Tea.TeaModel {
 
     public var sipUserPassword: String?
 
+    public var taskId: String?
+
     public var uid: String?
 
     public override init() {
@@ -30633,6 +30635,9 @@ public class RtcSipInviteMemberRequest : Tea.TeaModel {
         if self.sipUserPassword != nil {
             map["SipUserPassword"] = self.sipUserPassword!
         }
+        if self.taskId != nil {
+            map["TaskId"] = self.taskId!
+        }
         if self.uid != nil {
             map["Uid"] = self.uid!
         }
@@ -30679,6 +30684,9 @@ public class RtcSipInviteMemberRequest : Tea.TeaModel {
         }
         if let value = dict["SipUserPassword"] as? String {
             self.sipUserPassword = value
+        }
+        if let value = dict["TaskId"] as? String {
+            self.taskId = value
         }
         if let value = dict["Uid"] as? String {
             self.uid = value
