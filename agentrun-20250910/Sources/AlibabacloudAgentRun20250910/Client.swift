@@ -149,9 +149,6 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.name)) {
             body["name"] = request.name ?? "";
         }
-        if (!TeaUtils.Client.isUnset(request.permanent)) {
-            body["permanent"] = request.permanent!;
-        }
         if (!TeaUtils.Client.isUnset(request.shortTtl)) {
             body["shortTtl"] = request.shortTtl!;
         }
@@ -581,6 +578,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.pageSize)) {
             query["pageSize"] = request.pageSize!;
         }
+        if (!TeaUtils.Client.isUnset(request.searchMode)) {
+            query["searchMode"] = request.searchMode ?? "";
+        }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "headers": headers as! [String: String],
             "query": AlibabaCloudOpenApiUtil.Client.query(query)
@@ -655,6 +655,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.pageSize)) {
             query["pageSize"] = request.pageSize!;
+        }
+        if (!TeaUtils.Client.isUnset(request.searchMode)) {
+            query["searchMode"] = request.searchMode ?? "";
         }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "headers": headers as! [String: String],
@@ -767,14 +770,14 @@ open class Client : AlibabacloudOpenApi.Client {
     public func listMemoryWithOptions(_ request: ListMemoryRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> ListMemoryResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
-        if (!TeaUtils.Client.isUnset(request.namePrefix)) {
-            query["namePrefix"] = request.namePrefix ?? "";
-        }
         if (!TeaUtils.Client.isUnset(request.pageNumber)) {
             query["pageNumber"] = request.pageNumber!;
         }
         if (!TeaUtils.Client.isUnset(request.pageSize)) {
             query["pageSize"] = request.pageSize!;
+        }
+        if (!TeaUtils.Client.isUnset(request.pattern)) {
+            query["pattern"] = request.pattern ?? "";
         }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "headers": headers as! [String: String],
@@ -1024,9 +1027,6 @@ open class Client : AlibabacloudOpenApi.Client {
         var body: [String: Any] = [:]
         if (!TeaUtils.Client.isUnset(request.longTtl)) {
             body["longTtl"] = request.longTtl!;
-        }
-        if (!TeaUtils.Client.isUnset(request.permanent)) {
-            body["permanent"] = request.permanent!;
         }
         if (!TeaUtils.Client.isUnset(request.shortTtl)) {
             body["shortTtl"] = request.shortTtl!;
