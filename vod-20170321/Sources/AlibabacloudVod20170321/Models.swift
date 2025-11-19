@@ -2886,6 +2886,8 @@ public class BatchGetMediaInfosResponseBody : Tea.TeaModel {
 
             public var duration: String?
 
+            public var fileMD5: String?
+
             public var fileName: String?
 
             public var fileURL: String?
@@ -2933,6 +2935,9 @@ public class BatchGetMediaInfosResponseBody : Tea.TeaModel {
                 }
                 if self.duration != nil {
                     map["Duration"] = self.duration!
+                }
+                if self.fileMD5 != nil {
+                    map["FileMD5"] = self.fileMD5!
                 }
                 if self.fileName != nil {
                     map["FileName"] = self.fileName!
@@ -2991,6 +2996,9 @@ public class BatchGetMediaInfosResponseBody : Tea.TeaModel {
                 }
                 if let value = dict["Duration"] as? String {
                     self.duration = value
+                }
+                if let value = dict["FileMD5"] as? String {
+                    self.fileMD5 = value
                 }
                 if let value = dict["FileName"] as? String {
                     self.fileName = value
@@ -31117,6 +31125,8 @@ public class GetMezzanineInfoResponseBody : Tea.TeaModel {
 
         public var duration: String?
 
+        public var fileMD5: String?
+
         public var fileName: String?
 
         public var fileURL: String?
@@ -31174,6 +31184,9 @@ public class GetMezzanineInfoResponseBody : Tea.TeaModel {
             }
             if self.duration != nil {
                 map["Duration"] = self.duration!
+            }
+            if self.fileMD5 != nil {
+                map["FileMD5"] = self.fileMD5!
             }
             if self.fileName != nil {
                 map["FileName"] = self.fileName!
@@ -31247,6 +31260,9 @@ public class GetMezzanineInfoResponseBody : Tea.TeaModel {
             }
             if let value = dict["Duration"] as? String {
                 self.duration = value
+            }
+            if let value = dict["FileMD5"] as? String {
+                self.fileMD5 = value
             }
             if let value = dict["FileName"] as? String {
                 self.fileName = value
