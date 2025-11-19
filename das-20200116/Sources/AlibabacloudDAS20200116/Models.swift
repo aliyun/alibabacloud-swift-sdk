@@ -2329,6 +2329,283 @@ public class CreateRequestDiagnosisResponse : Tea.TeaModel {
     }
 }
 
+public class CreateSecurityIPGroupRequest : Tea.TeaModel {
+    public var GIpList: String?
+
+    public var globalIgName: String?
+
+    public var regionName: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.GIpList != nil {
+            map["GIpList"] = self.GIpList!
+        }
+        if self.globalIgName != nil {
+            map["GlobalIgName"] = self.globalIgName!
+        }
+        if self.regionName != nil {
+            map["RegionName"] = self.regionName!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["GIpList"] as? String {
+            self.GIpList = value
+        }
+        if let value = dict["GlobalIgName"] as? String {
+            self.globalIgName = value
+        }
+        if let value = dict["RegionName"] as? String {
+            self.regionName = value
+        }
+    }
+}
+
+public class CreateSecurityIPGroupResponseBody : Tea.TeaModel {
+    public class Data : Tea.TeaModel {
+        public class GlobalSecurityIPGroup : Tea.TeaModel {
+            public var GIpList: String?
+
+            public var globalIgName: String?
+
+            public var globalSecurityGroupId: String?
+
+            public var regionId: String?
+
+            public var securityIpType: String?
+
+            public var whitelistNetType: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.GIpList != nil {
+                    map["GIpList"] = self.GIpList!
+                }
+                if self.globalIgName != nil {
+                    map["GlobalIgName"] = self.globalIgName!
+                }
+                if self.globalSecurityGroupId != nil {
+                    map["GlobalSecurityGroupId"] = self.globalSecurityGroupId!
+                }
+                if self.regionId != nil {
+                    map["RegionId"] = self.regionId!
+                }
+                if self.securityIpType != nil {
+                    map["SecurityIpType"] = self.securityIpType!
+                }
+                if self.whitelistNetType != nil {
+                    map["WhitelistNetType"] = self.whitelistNetType!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["GIpList"] as? String {
+                    self.GIpList = value
+                }
+                if let value = dict["GlobalIgName"] as? String {
+                    self.globalIgName = value
+                }
+                if let value = dict["GlobalSecurityGroupId"] as? String {
+                    self.globalSecurityGroupId = value
+                }
+                if let value = dict["RegionId"] as? String {
+                    self.regionId = value
+                }
+                if let value = dict["SecurityIpType"] as? String {
+                    self.securityIpType = value
+                }
+                if let value = dict["WhitelistNetType"] as? String {
+                    self.whitelistNetType = value
+                }
+            }
+        }
+        public var globalSecurityIPGroup: [CreateSecurityIPGroupResponseBody.Data.GlobalSecurityIPGroup]?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.globalSecurityIPGroup != nil {
+                var tmp : [Any] = []
+                for k in self.globalSecurityIPGroup! {
+                    tmp.append(k.toMap())
+                }
+                map["GlobalSecurityIPGroup"] = tmp
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["GlobalSecurityIPGroup"] as? [Any?] {
+                var tmp : [CreateSecurityIPGroupResponseBody.Data.GlobalSecurityIPGroup] = []
+                for v in value {
+                    if v != nil {
+                        var model = CreateSecurityIPGroupResponseBody.Data.GlobalSecurityIPGroup()
+                        if v != nil {
+                            model.fromMap(v as? [String: Any?])
+                        }
+                        tmp.append(model)
+                    }
+                }
+                self.globalSecurityIPGroup = tmp
+            }
+        }
+    }
+    public var code: String?
+
+    public var data: CreateSecurityIPGroupResponseBody.Data?
+
+    public var message: String?
+
+    public var requestId: String?
+
+    public var success: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.data?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.code != nil {
+            map["Code"] = self.code!
+        }
+        if self.data != nil {
+            map["Data"] = self.data?.toMap()
+        }
+        if self.message != nil {
+            map["Message"] = self.message!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.success != nil {
+            map["Success"] = self.success!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["Code"] as? String {
+            self.code = value
+        }
+        if let value = dict["Data"] as? [String: Any?] {
+            var model = CreateSecurityIPGroupResponseBody.Data()
+            model.fromMap(value)
+            self.data = model
+        }
+        if let value = dict["Message"] as? String {
+            self.message = value
+        }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+        if let value = dict["Success"] as? String {
+            self.success = value
+        }
+    }
+}
+
+public class CreateSecurityIPGroupResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: CreateSecurityIPGroupResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = CreateSecurityIPGroupResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
 public class CreateSqlLogTaskRequest : Tea.TeaModel {
     public class Filters : Tea.TeaModel {
         public var key: String?
@@ -3017,6 +3294,235 @@ public class DeleteCloudBenchTaskResponse : Tea.TeaModel {
         }
         if let value = dict["body"] as? [String: Any?] {
             var model = DeleteCloudBenchTaskResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
+public class DeleteSecurityIPGroupRequest : Tea.TeaModel {
+    public var globalSecurityGroupId: String?
+
+    public var regionName: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.globalSecurityGroupId != nil {
+            map["GlobalSecurityGroupId"] = self.globalSecurityGroupId!
+        }
+        if self.regionName != nil {
+            map["RegionName"] = self.regionName!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["GlobalSecurityGroupId"] as? String {
+            self.globalSecurityGroupId = value
+        }
+        if let value = dict["RegionName"] as? String {
+            self.regionName = value
+        }
+    }
+}
+
+public class DeleteSecurityIPGroupResponseBody : Tea.TeaModel {
+    public class Data : Tea.TeaModel {
+        public class GlobalSecurityIPGroup : Tea.TeaModel {
+            public var globalSecurityGroupId: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.globalSecurityGroupId != nil {
+                    map["GlobalSecurityGroupId"] = self.globalSecurityGroupId!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["GlobalSecurityGroupId"] as? String {
+                    self.globalSecurityGroupId = value
+                }
+            }
+        }
+        public var globalSecurityIPGroup: [DeleteSecurityIPGroupResponseBody.Data.GlobalSecurityIPGroup]?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.globalSecurityIPGroup != nil {
+                var tmp : [Any] = []
+                for k in self.globalSecurityIPGroup! {
+                    tmp.append(k.toMap())
+                }
+                map["GlobalSecurityIPGroup"] = tmp
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["GlobalSecurityIPGroup"] as? [Any?] {
+                var tmp : [DeleteSecurityIPGroupResponseBody.Data.GlobalSecurityIPGroup] = []
+                for v in value {
+                    if v != nil {
+                        var model = DeleteSecurityIPGroupResponseBody.Data.GlobalSecurityIPGroup()
+                        if v != nil {
+                            model.fromMap(v as? [String: Any?])
+                        }
+                        tmp.append(model)
+                    }
+                }
+                self.globalSecurityIPGroup = tmp
+            }
+        }
+    }
+    public var code: String?
+
+    public var data: DeleteSecurityIPGroupResponseBody.Data?
+
+    public var message: String?
+
+    public var requestId: String?
+
+    public var success: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.data?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.code != nil {
+            map["Code"] = self.code!
+        }
+        if self.data != nil {
+            map["Data"] = self.data?.toMap()
+        }
+        if self.message != nil {
+            map["Message"] = self.message!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.success != nil {
+            map["Success"] = self.success!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["Code"] as? String {
+            self.code = value
+        }
+        if let value = dict["Data"] as? [String: Any?] {
+            var model = DeleteSecurityIPGroupResponseBody.Data()
+            model.fromMap(value)
+            self.data = model
+        }
+        if let value = dict["Message"] as? String {
+            self.message = value
+        }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+        if let value = dict["Success"] as? String {
+            self.success = value
+        }
+    }
+}
+
+public class DeleteSecurityIPGroupResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: DeleteSecurityIPGroupResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = DeleteSecurityIPGroupResponseBody()
             model.fromMap(value)
             self.body = model
         }
@@ -9120,6 +9626,628 @@ public class DescribeQueryExplainResponse : Tea.TeaModel {
         }
         if let value = dict["body"] as? [String: Any?] {
             var model = DescribeQueryExplainResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
+public class DescribeSecurityIPGroupRequest : Tea.TeaModel {
+    public var regionName: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.regionName != nil {
+            map["RegionName"] = self.regionName!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["RegionName"] as? String {
+            self.regionName = value
+        }
+    }
+}
+
+public class DescribeSecurityIPGroupResponseBody : Tea.TeaModel {
+    public class Data : Tea.TeaModel {
+        public class SecurityIpGroups : Tea.TeaModel {
+            public class EngineInfoList : Tea.TeaModel {
+                public var engineName: String?
+
+                public var instanceIds: [String]?
+
+                public var instanceNum: Int32?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.engineName != nil {
+                        map["EngineName"] = self.engineName!
+                    }
+                    if self.instanceIds != nil {
+                        map["InstanceIds"] = self.instanceIds!
+                    }
+                    if self.instanceNum != nil {
+                        map["InstanceNum"] = self.instanceNum!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                    guard let dict else { return }
+                    if let value = dict["EngineName"] as? String {
+                        self.engineName = value
+                    }
+                    if let value = dict["InstanceIds"] as? [String] {
+                        self.instanceIds = value
+                    }
+                    if let value = dict["InstanceNum"] as? Int32 {
+                        self.instanceNum = value
+                    }
+                }
+            }
+            public var dbInstances: [String]?
+
+            public var engineInfoList: [DescribeSecurityIPGroupResponseBody.Data.SecurityIpGroups.EngineInfoList]?
+
+            public var GEcsSgIdList: String?
+
+            public var GIpList: String?
+
+            public var globalIgName: String?
+
+            public var globalSecurityGroupId: String?
+
+            public var regionId: String?
+
+            public var securityIpType: String?
+
+            public var uid: String?
+
+            public var userId: String?
+
+            public var whitelistNetType: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.dbInstances != nil {
+                    map["DbInstances"] = self.dbInstances!
+                }
+                if self.engineInfoList != nil {
+                    var tmp : [Any] = []
+                    for k in self.engineInfoList! {
+                        tmp.append(k.toMap())
+                    }
+                    map["EngineInfoList"] = tmp
+                }
+                if self.GEcsSgIdList != nil {
+                    map["GEcsSgIdList"] = self.GEcsSgIdList!
+                }
+                if self.GIpList != nil {
+                    map["GIpList"] = self.GIpList!
+                }
+                if self.globalIgName != nil {
+                    map["GlobalIgName"] = self.globalIgName!
+                }
+                if self.globalSecurityGroupId != nil {
+                    map["GlobalSecurityGroupId"] = self.globalSecurityGroupId!
+                }
+                if self.regionId != nil {
+                    map["RegionId"] = self.regionId!
+                }
+                if self.securityIpType != nil {
+                    map["SecurityIpType"] = self.securityIpType!
+                }
+                if self.uid != nil {
+                    map["Uid"] = self.uid!
+                }
+                if self.userId != nil {
+                    map["UserId"] = self.userId!
+                }
+                if self.whitelistNetType != nil {
+                    map["WhitelistNetType"] = self.whitelistNetType!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["DbInstances"] as? [String] {
+                    self.dbInstances = value
+                }
+                if let value = dict["EngineInfoList"] as? [Any?] {
+                    var tmp : [DescribeSecurityIPGroupResponseBody.Data.SecurityIpGroups.EngineInfoList] = []
+                    for v in value {
+                        if v != nil {
+                            var model = DescribeSecurityIPGroupResponseBody.Data.SecurityIpGroups.EngineInfoList()
+                            if v != nil {
+                                model.fromMap(v as? [String: Any?])
+                            }
+                            tmp.append(model)
+                        }
+                    }
+                    self.engineInfoList = tmp
+                }
+                if let value = dict["GEcsSgIdList"] as? String {
+                    self.GEcsSgIdList = value
+                }
+                if let value = dict["GIpList"] as? String {
+                    self.GIpList = value
+                }
+                if let value = dict["GlobalIgName"] as? String {
+                    self.globalIgName = value
+                }
+                if let value = dict["GlobalSecurityGroupId"] as? String {
+                    self.globalSecurityGroupId = value
+                }
+                if let value = dict["RegionId"] as? String {
+                    self.regionId = value
+                }
+                if let value = dict["SecurityIpType"] as? String {
+                    self.securityIpType = value
+                }
+                if let value = dict["Uid"] as? String {
+                    self.uid = value
+                }
+                if let value = dict["UserId"] as? String {
+                    self.userId = value
+                }
+                if let value = dict["WhitelistNetType"] as? String {
+                    self.whitelistNetType = value
+                }
+            }
+        }
+        public var securityIpGroups: [DescribeSecurityIPGroupResponseBody.Data.SecurityIpGroups]?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.securityIpGroups != nil {
+                var tmp : [Any] = []
+                for k in self.securityIpGroups! {
+                    tmp.append(k.toMap())
+                }
+                map["SecurityIpGroups"] = tmp
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["SecurityIpGroups"] as? [Any?] {
+                var tmp : [DescribeSecurityIPGroupResponseBody.Data.SecurityIpGroups] = []
+                for v in value {
+                    if v != nil {
+                        var model = DescribeSecurityIPGroupResponseBody.Data.SecurityIpGroups()
+                        if v != nil {
+                            model.fromMap(v as? [String: Any?])
+                        }
+                        tmp.append(model)
+                    }
+                }
+                self.securityIpGroups = tmp
+            }
+        }
+    }
+    public var code: String?
+
+    public var data: DescribeSecurityIPGroupResponseBody.Data?
+
+    public var message: String?
+
+    public var requestId: String?
+
+    public var success: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.data?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.code != nil {
+            map["Code"] = self.code!
+        }
+        if self.data != nil {
+            map["Data"] = self.data?.toMap()
+        }
+        if self.message != nil {
+            map["Message"] = self.message!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.success != nil {
+            map["Success"] = self.success!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["Code"] as? String {
+            self.code = value
+        }
+        if let value = dict["Data"] as? [String: Any?] {
+            var model = DescribeSecurityIPGroupResponseBody.Data()
+            model.fromMap(value)
+            self.data = model
+        }
+        if let value = dict["Message"] as? String {
+            self.message = value
+        }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+        if let value = dict["Success"] as? String {
+            self.success = value
+        }
+    }
+}
+
+public class DescribeSecurityIPGroupResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: DescribeSecurityIPGroupResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = DescribeSecurityIPGroupResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
+public class DescribeSecurityIPGroupRelationRequest : Tea.TeaModel {
+    public var instanceId: String?
+
+    public var regionName: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.instanceId != nil {
+            map["InstanceId"] = self.instanceId!
+        }
+        if self.regionName != nil {
+            map["RegionName"] = self.regionName!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["InstanceId"] as? String {
+            self.instanceId = value
+        }
+        if let value = dict["RegionName"] as? String {
+            self.regionName = value
+        }
+    }
+}
+
+public class DescribeSecurityIPGroupRelationResponseBody : Tea.TeaModel {
+    public class Data : Tea.TeaModel {
+        public class GlobalSecurityIPGroupRel : Tea.TeaModel {
+            public var GIpList: String?
+
+            public var globalIgName: String?
+
+            public var globalSecurityGroupId: String?
+
+            public var regionId: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.GIpList != nil {
+                    map["GIpList"] = self.GIpList!
+                }
+                if self.globalIgName != nil {
+                    map["GlobalIgName"] = self.globalIgName!
+                }
+                if self.globalSecurityGroupId != nil {
+                    map["GlobalSecurityGroupId"] = self.globalSecurityGroupId!
+                }
+                if self.regionId != nil {
+                    map["RegionId"] = self.regionId!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["GIpList"] as? String {
+                    self.GIpList = value
+                }
+                if let value = dict["GlobalIgName"] as? String {
+                    self.globalIgName = value
+                }
+                if let value = dict["GlobalSecurityGroupId"] as? String {
+                    self.globalSecurityGroupId = value
+                }
+                if let value = dict["RegionId"] as? String {
+                    self.regionId = value
+                }
+            }
+        }
+        public var globalSecurityIPGroupRel: [DescribeSecurityIPGroupRelationResponseBody.Data.GlobalSecurityIPGroupRel]?
+
+        public var instanceId: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.globalSecurityIPGroupRel != nil {
+                var tmp : [Any] = []
+                for k in self.globalSecurityIPGroupRel! {
+                    tmp.append(k.toMap())
+                }
+                map["GlobalSecurityIPGroupRel"] = tmp
+            }
+            if self.instanceId != nil {
+                map["InstanceId"] = self.instanceId!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["GlobalSecurityIPGroupRel"] as? [Any?] {
+                var tmp : [DescribeSecurityIPGroupRelationResponseBody.Data.GlobalSecurityIPGroupRel] = []
+                for v in value {
+                    if v != nil {
+                        var model = DescribeSecurityIPGroupRelationResponseBody.Data.GlobalSecurityIPGroupRel()
+                        if v != nil {
+                            model.fromMap(v as? [String: Any?])
+                        }
+                        tmp.append(model)
+                    }
+                }
+                self.globalSecurityIPGroupRel = tmp
+            }
+            if let value = dict["InstanceId"] as? String {
+                self.instanceId = value
+            }
+        }
+    }
+    public var code: String?
+
+    public var data: DescribeSecurityIPGroupRelationResponseBody.Data?
+
+    public var message: String?
+
+    public var requestId: String?
+
+    public var success: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.data?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.code != nil {
+            map["Code"] = self.code!
+        }
+        if self.data != nil {
+            map["Data"] = self.data?.toMap()
+        }
+        if self.message != nil {
+            map["Message"] = self.message!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.success != nil {
+            map["Success"] = self.success!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["Code"] as? String {
+            self.code = value
+        }
+        if let value = dict["Data"] as? [String: Any?] {
+            var model = DescribeSecurityIPGroupRelationResponseBody.Data()
+            model.fromMap(value)
+            self.data = model
+        }
+        if let value = dict["Message"] as? String {
+            self.message = value
+        }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+        if let value = dict["Success"] as? String {
+            self.success = value
+        }
+    }
+}
+
+public class DescribeSecurityIPGroupRelationResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: DescribeSecurityIPGroupRelationResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = DescribeSecurityIPGroupRelationResponseBody()
             model.fromMap(value)
             self.body = model
         }
@@ -37245,6 +38373,560 @@ public class ModifyAutoScalingConfigResponse : Tea.TeaModel {
         }
         if let value = dict["body"] as? [String: Any?] {
             var model = ModifyAutoScalingConfigResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
+public class ModifySecurityIPGroupRequest : Tea.TeaModel {
+    public var GIpList: String?
+
+    public var globalIgName: String?
+
+    public var globalSecurityGroupId: String?
+
+    public var regionName: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.GIpList != nil {
+            map["GIpList"] = self.GIpList!
+        }
+        if self.globalIgName != nil {
+            map["GlobalIgName"] = self.globalIgName!
+        }
+        if self.globalSecurityGroupId != nil {
+            map["GlobalSecurityGroupId"] = self.globalSecurityGroupId!
+        }
+        if self.regionName != nil {
+            map["RegionName"] = self.regionName!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["GIpList"] as? String {
+            self.GIpList = value
+        }
+        if let value = dict["GlobalIgName"] as? String {
+            self.globalIgName = value
+        }
+        if let value = dict["GlobalSecurityGroupId"] as? String {
+            self.globalSecurityGroupId = value
+        }
+        if let value = dict["RegionName"] as? String {
+            self.regionName = value
+        }
+    }
+}
+
+public class ModifySecurityIPGroupResponseBody : Tea.TeaModel {
+    public class Data : Tea.TeaModel {
+        public class GlobalSecurityIPGroup : Tea.TeaModel {
+            public var GIpList: String?
+
+            public var globalIgName: String?
+
+            public var globalSecurityGroupId: String?
+
+            public var regionId: String?
+
+            public var securityIpType: String?
+
+            public var whitelistNetType: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.GIpList != nil {
+                    map["GIpList"] = self.GIpList!
+                }
+                if self.globalIgName != nil {
+                    map["GlobalIgName"] = self.globalIgName!
+                }
+                if self.globalSecurityGroupId != nil {
+                    map["GlobalSecurityGroupId"] = self.globalSecurityGroupId!
+                }
+                if self.regionId != nil {
+                    map["RegionId"] = self.regionId!
+                }
+                if self.securityIpType != nil {
+                    map["SecurityIpType"] = self.securityIpType!
+                }
+                if self.whitelistNetType != nil {
+                    map["WhitelistNetType"] = self.whitelistNetType!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["GIpList"] as? String {
+                    self.GIpList = value
+                }
+                if let value = dict["GlobalIgName"] as? String {
+                    self.globalIgName = value
+                }
+                if let value = dict["GlobalSecurityGroupId"] as? String {
+                    self.globalSecurityGroupId = value
+                }
+                if let value = dict["RegionId"] as? String {
+                    self.regionId = value
+                }
+                if let value = dict["SecurityIpType"] as? String {
+                    self.securityIpType = value
+                }
+                if let value = dict["WhitelistNetType"] as? String {
+                    self.whitelistNetType = value
+                }
+            }
+        }
+        public var globalSecurityIPGroup: [ModifySecurityIPGroupResponseBody.Data.GlobalSecurityIPGroup]?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.globalSecurityIPGroup != nil {
+                var tmp : [Any] = []
+                for k in self.globalSecurityIPGroup! {
+                    tmp.append(k.toMap())
+                }
+                map["GlobalSecurityIPGroup"] = tmp
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["GlobalSecurityIPGroup"] as? [Any?] {
+                var tmp : [ModifySecurityIPGroupResponseBody.Data.GlobalSecurityIPGroup] = []
+                for v in value {
+                    if v != nil {
+                        var model = ModifySecurityIPGroupResponseBody.Data.GlobalSecurityIPGroup()
+                        if v != nil {
+                            model.fromMap(v as? [String: Any?])
+                        }
+                        tmp.append(model)
+                    }
+                }
+                self.globalSecurityIPGroup = tmp
+            }
+        }
+    }
+    public var code: String?
+
+    public var data: ModifySecurityIPGroupResponseBody.Data?
+
+    public var message: String?
+
+    public var requestId: String?
+
+    public var success: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.data?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.code != nil {
+            map["Code"] = self.code!
+        }
+        if self.data != nil {
+            map["Data"] = self.data?.toMap()
+        }
+        if self.message != nil {
+            map["Message"] = self.message!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.success != nil {
+            map["Success"] = self.success!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["Code"] as? String {
+            self.code = value
+        }
+        if let value = dict["Data"] as? [String: Any?] {
+            var model = ModifySecurityIPGroupResponseBody.Data()
+            model.fromMap(value)
+            self.data = model
+        }
+        if let value = dict["Message"] as? String {
+            self.message = value
+        }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+        if let value = dict["Success"] as? String {
+            self.success = value
+        }
+    }
+}
+
+public class ModifySecurityIPGroupResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: ModifySecurityIPGroupResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = ModifySecurityIPGroupResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
+public class ModifySecurityIPGroupRelationRequest : Tea.TeaModel {
+    public var globalSecurityGroupId: String?
+
+    public var instanceId: String?
+
+    public var regionName: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.globalSecurityGroupId != nil {
+            map["GlobalSecurityGroupId"] = self.globalSecurityGroupId!
+        }
+        if self.instanceId != nil {
+            map["InstanceId"] = self.instanceId!
+        }
+        if self.regionName != nil {
+            map["RegionName"] = self.regionName!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["GlobalSecurityGroupId"] as? String {
+            self.globalSecurityGroupId = value
+        }
+        if let value = dict["InstanceId"] as? String {
+            self.instanceId = value
+        }
+        if let value = dict["RegionName"] as? String {
+            self.regionName = value
+        }
+    }
+}
+
+public class ModifySecurityIPGroupRelationResponseBody : Tea.TeaModel {
+    public class Data : Tea.TeaModel {
+        public class GlobalSecurityIPGroupRel : Tea.TeaModel {
+            public var GIpList: String?
+
+            public var globalIgName: String?
+
+            public var globalSecurityGroupId: String?
+
+            public var regionId: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.GIpList != nil {
+                    map["GIpList"] = self.GIpList!
+                }
+                if self.globalIgName != nil {
+                    map["GlobalIgName"] = self.globalIgName!
+                }
+                if self.globalSecurityGroupId != nil {
+                    map["GlobalSecurityGroupId"] = self.globalSecurityGroupId!
+                }
+                if self.regionId != nil {
+                    map["RegionId"] = self.regionId!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["GIpList"] as? String {
+                    self.GIpList = value
+                }
+                if let value = dict["GlobalIgName"] as? String {
+                    self.globalIgName = value
+                }
+                if let value = dict["GlobalSecurityGroupId"] as? String {
+                    self.globalSecurityGroupId = value
+                }
+                if let value = dict["RegionId"] as? String {
+                    self.regionId = value
+                }
+            }
+        }
+        public var globalSecurityIPGroupRel: [ModifySecurityIPGroupRelationResponseBody.Data.GlobalSecurityIPGroupRel]?
+
+        public var instanceId: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.globalSecurityIPGroupRel != nil {
+                var tmp : [Any] = []
+                for k in self.globalSecurityIPGroupRel! {
+                    tmp.append(k.toMap())
+                }
+                map["GlobalSecurityIPGroupRel"] = tmp
+            }
+            if self.instanceId != nil {
+                map["InstanceId"] = self.instanceId!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["GlobalSecurityIPGroupRel"] as? [Any?] {
+                var tmp : [ModifySecurityIPGroupRelationResponseBody.Data.GlobalSecurityIPGroupRel] = []
+                for v in value {
+                    if v != nil {
+                        var model = ModifySecurityIPGroupRelationResponseBody.Data.GlobalSecurityIPGroupRel()
+                        if v != nil {
+                            model.fromMap(v as? [String: Any?])
+                        }
+                        tmp.append(model)
+                    }
+                }
+                self.globalSecurityIPGroupRel = tmp
+            }
+            if let value = dict["InstanceId"] as? String {
+                self.instanceId = value
+            }
+        }
+    }
+    public var code: String?
+
+    public var data: ModifySecurityIPGroupRelationResponseBody.Data?
+
+    public var message: String?
+
+    public var requestId: String?
+
+    public var success: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.data?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.code != nil {
+            map["Code"] = self.code!
+        }
+        if self.data != nil {
+            map["Data"] = self.data?.toMap()
+        }
+        if self.message != nil {
+            map["Message"] = self.message!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.success != nil {
+            map["Success"] = self.success!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["Code"] as? String {
+            self.code = value
+        }
+        if let value = dict["Data"] as? [String: Any?] {
+            var model = ModifySecurityIPGroupRelationResponseBody.Data()
+            model.fromMap(value)
+            self.data = model
+        }
+        if let value = dict["Message"] as? String {
+            self.message = value
+        }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+        if let value = dict["Success"] as? String {
+            self.success = value
+        }
+    }
+}
+
+public class ModifySecurityIPGroupRelationResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: ModifySecurityIPGroupRelationResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = ModifySecurityIPGroupRelationResponseBody()
             model.fromMap(value)
             self.body = model
         }

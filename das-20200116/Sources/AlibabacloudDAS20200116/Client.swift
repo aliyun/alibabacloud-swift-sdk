@@ -492,6 +492,43 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func createSecurityIPGroupWithOptions(_ request: CreateSecurityIPGroupRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> CreateSecurityIPGroupResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.GIpList)) {
+            query["GIpList"] = request.GIpList ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.globalIgName)) {
+            query["GlobalIgName"] = request.globalIgName ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.regionName)) {
+            query["RegionName"] = request.regionName ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "CreateSecurityIPGroup",
+            "version": "2020-01-16",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(CreateSecurityIPGroupResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func createSecurityIPGroup(_ request: CreateSecurityIPGroupRequest) async throws -> CreateSecurityIPGroupResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await createSecurityIPGroupWithOptions(request as! CreateSecurityIPGroupRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func createSqlLogTaskWithOptions(_ request: CreateSqlLogTaskRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> CreateSqlLogTaskResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
@@ -614,6 +651,40 @@ open class Client : AlibabacloudOpenApi.Client {
     public func deleteCloudBenchTask(_ request: DeleteCloudBenchTaskRequest) async throws -> DeleteCloudBenchTaskResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         return try await deleteCloudBenchTaskWithOptions(request as! DeleteCloudBenchTaskRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func deleteSecurityIPGroupWithOptions(_ request: DeleteSecurityIPGroupRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DeleteSecurityIPGroupResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.globalSecurityGroupId)) {
+            query["GlobalSecurityGroupId"] = request.globalSecurityGroupId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.regionName)) {
+            query["RegionName"] = request.regionName ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "DeleteSecurityIPGroup",
+            "version": "2020-01-16",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(DeleteSecurityIPGroupResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func deleteSecurityIPGroup(_ request: DeleteSecurityIPGroupRequest) async throws -> DeleteSecurityIPGroupResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await deleteSecurityIPGroupWithOptions(request as! DeleteSecurityIPGroupRequest, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -1129,6 +1200,71 @@ open class Client : AlibabacloudOpenApi.Client {
     public func describeQueryExplain(_ request: DescribeQueryExplainRequest) async throws -> DescribeQueryExplainResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         return try await describeQueryExplainWithOptions(request as! DescribeQueryExplainRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func describeSecurityIPGroupWithOptions(_ request: DescribeSecurityIPGroupRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DescribeSecurityIPGroupResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.regionName)) {
+            query["RegionName"] = request.regionName ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "DescribeSecurityIPGroup",
+            "version": "2020-01-16",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(DescribeSecurityIPGroupResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func describeSecurityIPGroup(_ request: DescribeSecurityIPGroupRequest) async throws -> DescribeSecurityIPGroupResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await describeSecurityIPGroupWithOptions(request as! DescribeSecurityIPGroupRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func describeSecurityIPGroupRelationWithOptions(_ request: DescribeSecurityIPGroupRelationRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DescribeSecurityIPGroupRelationResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.instanceId)) {
+            query["InstanceId"] = request.instanceId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.regionName)) {
+            query["RegionName"] = request.regionName ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "DescribeSecurityIPGroupRelation",
+            "version": "2020-01-16",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(DescribeSecurityIPGroupRelationResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func describeSecurityIPGroupRelation(_ request: DescribeSecurityIPGroupRelationRequest) async throws -> DescribeSecurityIPGroupRelationResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await describeSecurityIPGroupRelationWithOptions(request as! DescribeSecurityIPGroupRelationRequest, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -4276,6 +4412,83 @@ open class Client : AlibabacloudOpenApi.Client {
     public func modifyAutoScalingConfig(_ request: ModifyAutoScalingConfigRequest) async throws -> ModifyAutoScalingConfigResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         return try await modifyAutoScalingConfigWithOptions(request as! ModifyAutoScalingConfigRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func modifySecurityIPGroupWithOptions(_ request: ModifySecurityIPGroupRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ModifySecurityIPGroupResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.GIpList)) {
+            query["GIpList"] = request.GIpList ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.globalIgName)) {
+            query["GlobalIgName"] = request.globalIgName ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.globalSecurityGroupId)) {
+            query["GlobalSecurityGroupId"] = request.globalSecurityGroupId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.regionName)) {
+            query["RegionName"] = request.regionName ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "ModifySecurityIPGroup",
+            "version": "2020-01-16",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(ModifySecurityIPGroupResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func modifySecurityIPGroup(_ request: ModifySecurityIPGroupRequest) async throws -> ModifySecurityIPGroupResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await modifySecurityIPGroupWithOptions(request as! ModifySecurityIPGroupRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func modifySecurityIPGroupRelationWithOptions(_ request: ModifySecurityIPGroupRelationRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ModifySecurityIPGroupRelationResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.globalSecurityGroupId)) {
+            query["GlobalSecurityGroupId"] = request.globalSecurityGroupId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.instanceId)) {
+            query["InstanceId"] = request.instanceId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.regionName)) {
+            query["RegionName"] = request.regionName ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "ModifySecurityIPGroupRelation",
+            "version": "2020-01-16",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(ModifySecurityIPGroupRelationResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func modifySecurityIPGroupRelation(_ request: ModifySecurityIPGroupRelationRequest) async throws -> ModifySecurityIPGroupRelationResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await modifySecurityIPGroupRelationWithOptions(request as! ModifySecurityIPGroupRelationRequest, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
