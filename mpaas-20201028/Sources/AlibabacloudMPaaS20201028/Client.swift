@@ -5278,6 +5278,10 @@ open class Client : AlibabacloudOpenApi.Client {
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func startUserAppAsyncEnhanceInMsaWithOptions(_ request: StartUserAppAsyncEnhanceInMsaRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> StartUserAppAsyncEnhanceInMsaResponse {
         try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.newShieldConfig)) {
+            query["NewShieldConfig"] = request.newShieldConfig ?? "";
+        }
         var body: [String: Any] = [:]
         if (!TeaUtils.Client.isUnset(request.apkProtector)) {
             body["ApkProtector"] = request.apkProtector!;
@@ -5336,10 +5340,14 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.useAShield)) {
             body["UseAShield"] = request.useAShield!;
         }
+        if (!TeaUtils.Client.isUnset(request.useYShield)) {
+            body["UseYShield"] = request.useYShield!;
+        }
         if (!TeaUtils.Client.isUnset(request.workspaceId)) {
             body["WorkspaceId"] = request.workspaceId ?? "";
         }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query),
             "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
         ])
         var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
@@ -5766,6 +5774,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.tenantId)) {
             body["TenantId"] = request.tenantId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.useYShield)) {
+            body["UseYShield"] = request.useYShield!;
         }
         if (!TeaUtils.Client.isUnset(request.workspaceId)) {
             body["WorkspaceId"] = request.workspaceId ?? "";

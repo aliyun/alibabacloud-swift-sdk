@@ -38026,6 +38026,8 @@ public class StartUserAppAsyncEnhanceInMsaRequest : Tea.TeaModel {
 
     public var nativeHook: Int32?
 
+    public var newShieldConfig: String?
+
     public var packageTampered: Int32?
 
     public var root: Int32?
@@ -38041,6 +38043,8 @@ public class StartUserAppAsyncEnhanceInMsaRequest : Tea.TeaModel {
     public var totalSwitch: Bool?
 
     public var useAShield: Bool?
+
+    public var useYShield: Bool?
 
     public var workspaceId: String?
 
@@ -38091,6 +38095,9 @@ public class StartUserAppAsyncEnhanceInMsaRequest : Tea.TeaModel {
         if self.nativeHook != nil {
             map["NativeHook"] = self.nativeHook!
         }
+        if self.newShieldConfig != nil {
+            map["NewShieldConfig"] = self.newShieldConfig!
+        }
         if self.packageTampered != nil {
             map["PackageTampered"] = self.packageTampered!
         }
@@ -38114,6 +38121,9 @@ public class StartUserAppAsyncEnhanceInMsaRequest : Tea.TeaModel {
         }
         if self.useAShield != nil {
             map["UseAShield"] = self.useAShield!
+        }
+        if self.useYShield != nil {
+            map["UseYShield"] = self.useYShield!
         }
         if self.workspaceId != nil {
             map["WorkspaceId"] = self.workspaceId!
@@ -38156,6 +38166,9 @@ public class StartUserAppAsyncEnhanceInMsaRequest : Tea.TeaModel {
         if let value = dict["NativeHook"] as? Int32 {
             self.nativeHook = value
         }
+        if let value = dict["NewShieldConfig"] as? String {
+            self.newShieldConfig = value
+        }
         if let value = dict["PackageTampered"] as? Int32 {
             self.packageTampered = value
         }
@@ -38179,6 +38192,9 @@ public class StartUserAppAsyncEnhanceInMsaRequest : Tea.TeaModel {
         }
         if let value = dict["UseAShield"] as? Bool {
             self.useAShield = value
+        }
+        if let value = dict["UseYShield"] as? Bool {
+            self.useYShield = value
         }
         if let value = dict["WorkspaceId"] as? String {
             self.workspaceId = value
@@ -40581,6 +40597,8 @@ public class UploadUserAppToMsaRequest : Tea.TeaModel {
 
     public var tenantId: String?
 
+    public var useYShield: Bool?
+
     public var workspaceId: String?
 
     public override init() {
@@ -40609,6 +40627,9 @@ public class UploadUserAppToMsaRequest : Tea.TeaModel {
         if self.tenantId != nil {
             map["TenantId"] = self.tenantId!
         }
+        if self.useYShield != nil {
+            map["UseYShield"] = self.useYShield!
+        }
         if self.workspaceId != nil {
             map["WorkspaceId"] = self.workspaceId!
         }
@@ -40628,6 +40649,9 @@ public class UploadUserAppToMsaRequest : Tea.TeaModel {
         }
         if let value = dict["TenantId"] as? String {
             self.tenantId = value
+        }
+        if let value = dict["UseYShield"] as? Bool {
+            self.useYShield = value
         }
         if let value = dict["WorkspaceId"] as? String {
             self.workspaceId = value
