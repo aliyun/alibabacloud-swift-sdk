@@ -21741,6 +21741,306 @@ public class InstallBackupClientsResponse : Tea.TeaModel {
     }
 }
 
+public class ListProtectedResourcesRequest : Tea.TeaModel {
+    public var createdByProduct: String?
+
+    public var maxResults: Int32?
+
+    public var nextToken: String?
+
+    public var resourceId: String?
+
+    public var skip: Int32?
+
+    public var sourceType: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.createdByProduct != nil {
+            map["CreatedByProduct"] = self.createdByProduct!
+        }
+        if self.maxResults != nil {
+            map["MaxResults"] = self.maxResults!
+        }
+        if self.nextToken != nil {
+            map["NextToken"] = self.nextToken!
+        }
+        if self.resourceId != nil {
+            map["ResourceId"] = self.resourceId!
+        }
+        if self.skip != nil {
+            map["Skip"] = self.skip!
+        }
+        if self.sourceType != nil {
+            map["SourceType"] = self.sourceType!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["CreatedByProduct"] as? String {
+            self.createdByProduct = value
+        }
+        if let value = dict["MaxResults"] as? Int32 {
+            self.maxResults = value
+        }
+        if let value = dict["NextToken"] as? String {
+            self.nextToken = value
+        }
+        if let value = dict["ResourceId"] as? String {
+            self.resourceId = value
+        }
+        if let value = dict["Skip"] as? Int32 {
+            self.skip = value
+        }
+        if let value = dict["SourceType"] as? String {
+            self.sourceType = value
+        }
+    }
+}
+
+public class ListProtectedResourcesResponseBody : Tea.TeaModel {
+    public class ProtectedResources : Tea.TeaModel {
+        public var createdByProduct: String?
+
+        public var protectedDataSize: Int64?
+
+        public var protectedResourceId: String?
+
+        public var resourceId: String?
+
+        public var resourceOwnerId: Int64?
+
+        public var snapshotCount: Int64?
+
+        public var sourceType: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.createdByProduct != nil {
+                map["CreatedByProduct"] = self.createdByProduct!
+            }
+            if self.protectedDataSize != nil {
+                map["ProtectedDataSize"] = self.protectedDataSize!
+            }
+            if self.protectedResourceId != nil {
+                map["ProtectedResourceId"] = self.protectedResourceId!
+            }
+            if self.resourceId != nil {
+                map["ResourceId"] = self.resourceId!
+            }
+            if self.resourceOwnerId != nil {
+                map["ResourceOwnerId"] = self.resourceOwnerId!
+            }
+            if self.snapshotCount != nil {
+                map["SnapshotCount"] = self.snapshotCount!
+            }
+            if self.sourceType != nil {
+                map["SourceType"] = self.sourceType!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["CreatedByProduct"] as? String {
+                self.createdByProduct = value
+            }
+            if let value = dict["ProtectedDataSize"] as? Int64 {
+                self.protectedDataSize = value
+            }
+            if let value = dict["ProtectedResourceId"] as? String {
+                self.protectedResourceId = value
+            }
+            if let value = dict["ResourceId"] as? String {
+                self.resourceId = value
+            }
+            if let value = dict["ResourceOwnerId"] as? Int64 {
+                self.resourceOwnerId = value
+            }
+            if let value = dict["SnapshotCount"] as? Int64 {
+                self.snapshotCount = value
+            }
+            if let value = dict["SourceType"] as? String {
+                self.sourceType = value
+            }
+        }
+    }
+    public var code: String?
+
+    public var maxResults: Int32?
+
+    public var message: String?
+
+    public var nextToken: String?
+
+    public var protectedResources: [ListProtectedResourcesResponseBody.ProtectedResources]?
+
+    public var requestId: String?
+
+    public var success: Bool?
+
+    public var totalCount: Int32?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.code != nil {
+            map["Code"] = self.code!
+        }
+        if self.maxResults != nil {
+            map["MaxResults"] = self.maxResults!
+        }
+        if self.message != nil {
+            map["Message"] = self.message!
+        }
+        if self.nextToken != nil {
+            map["NextToken"] = self.nextToken!
+        }
+        if self.protectedResources != nil {
+            var tmp : [Any] = []
+            for k in self.protectedResources! {
+                tmp.append(k.toMap())
+            }
+            map["ProtectedResources"] = tmp
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.success != nil {
+            map["Success"] = self.success!
+        }
+        if self.totalCount != nil {
+            map["TotalCount"] = self.totalCount!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["Code"] as? String {
+            self.code = value
+        }
+        if let value = dict["MaxResults"] as? Int32 {
+            self.maxResults = value
+        }
+        if let value = dict["Message"] as? String {
+            self.message = value
+        }
+        if let value = dict["NextToken"] as? String {
+            self.nextToken = value
+        }
+        if let value = dict["ProtectedResources"] as? [Any?] {
+            var tmp : [ListProtectedResourcesResponseBody.ProtectedResources] = []
+            for v in value {
+                if v != nil {
+                    var model = ListProtectedResourcesResponseBody.ProtectedResources()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.protectedResources = tmp
+        }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+        if let value = dict["Success"] as? Bool {
+            self.success = value
+        }
+        if let value = dict["TotalCount"] as? Int32 {
+            self.totalCount = value
+        }
+    }
+}
+
+public class ListProtectedResourcesResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: ListProtectedResourcesResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = ListProtectedResourcesResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
 public class OpenHbrServiceResponseBody : Tea.TeaModel {
     public var orderId: String?
 
