@@ -15472,6 +15472,8 @@ public class UpdateUserResponse : Tea.TeaModel {
 }
 
 public class ValidateEmailRequest : Tea.TeaModel {
+    public var checkGraylist: Bool?
+
     public var email: String?
 
     public var timeout: Int64?
@@ -15490,6 +15492,9 @@ public class ValidateEmailRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.checkGraylist != nil {
+            map["CheckGraylist"] = self.checkGraylist!
+        }
         if self.email != nil {
             map["Email"] = self.email!
         }
@@ -15501,6 +15506,9 @@ public class ValidateEmailRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["CheckGraylist"] as? Bool {
+            self.checkGraylist = value
+        }
         if let value = dict["Email"] as? String {
             self.email = value
         }
