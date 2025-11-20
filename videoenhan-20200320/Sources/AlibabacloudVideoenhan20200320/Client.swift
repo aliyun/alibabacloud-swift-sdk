@@ -18,40 +18,88 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func _postOSSObject(_ bucketName: String, _ data: [String: Any]) async throws -> [String: Any] {
-        var _request: Tea.TeaRequest = Tea.TeaRequest()
-        var form: [String: Any] = try TeaUtils.Client.assertAsMap(data)
-        var boundary: String = TeaFileForm.Client.getBoundary()
-        var host: String = try TeaUtils.Client.assertAsString(form["host"])
-        _request.protocol_ = "HTTPS"
-        _request.method = "POST"
-        _request.pathname = "/"
-        _request.headers = [
-            "host": host as! String,
-            "date": TeaUtils.Client.getDateUTCString(),
-            "user-agent": TeaUtils.Client.getUserAgent("")
+    public func _postOSSObject(_ bucketName: String, _ data: [String: Any], _ runtime: TeaUtils.RuntimeOptions) async throws -> [String: Any] {
+        try runtime.validate()
+        var _runtime: [String: Any] = [
+            "timeouted": "retry",
+            "key": TeaUtils.Client.defaultString(runtime.key, self._key),
+            "cert": TeaUtils.Client.defaultString(runtime.cert, self._cert),
+            "ca": TeaUtils.Client.defaultString(runtime.ca, self._ca),
+            "readTimeout": TeaUtils.Client.defaultNumber(runtime.readTimeout, self._readTimeout),
+            "connectTimeout": TeaUtils.Client.defaultNumber(runtime.connectTimeout, self._connectTimeout),
+            "httpProxy": TeaUtils.Client.defaultString(runtime.httpProxy, self._httpProxy),
+            "httpsProxy": TeaUtils.Client.defaultString(runtime.httpsProxy, self._httpsProxy),
+            "noProxy": TeaUtils.Client.defaultString(runtime.noProxy, self._noProxy),
+            "socks5Proxy": TeaUtils.Client.defaultString(runtime.socks5Proxy, self._socks5Proxy),
+            "socks5NetWork": TeaUtils.Client.defaultString(runtime.socks5NetWork, self._socks5NetWork),
+            "maxIdleConns": TeaUtils.Client.defaultNumber(runtime.maxIdleConns, self._maxIdleConns),
+            "retry": [
+                "retryable": runtime.autoretry!,
+                "maxAttempts": TeaUtils.Client.defaultNumber(runtime.maxAttempts, 3)
+            ],
+            "backoff": [
+                "policy": TeaUtils.Client.defaultString(runtime.backoffPolicy, "no"),
+                "period": TeaUtils.Client.defaultNumber(runtime.backoffPeriod, 1)
+            ],
+            "ignoreSSL": AlibabacloudOpenApi.Client.defaultAny(runtime.ignoreSSL, false),
+            "tlsMinVersion": self._tlsMinVersion ?? ""
         ]
-        _request.headers["content-type"] = "multipart/form-data; boundary=" + (boundary as! String);
-        _request.body = TeaFileForm.Client.toFileForm(form, boundary)
-        var _lastRequest: Tea.TeaRequest = _request
-        var _response: Tea.TeaResponse = try await Tea.TeaCore.doAction(_request)
-        var respMap: [String: Any]? = nil
-        var bodyStr: String = try await TeaUtils.Client.readAsString(_response.body)
-        if (TeaUtils.Client.is4xx(_response.statusCode) || TeaUtils.Client.is5xx(_response.statusCode)) {
-            respMap = DarabonbaXML.Client.parseXml(bodyStr, nil)
-            var err: [String: Any] = try TeaUtils.Client.assertAsMap(respMap["Error"])
-            throw Tea.ReuqestError([
-                "code": err["Code"]!,
-                "message": err["Message"]!,
-                "data": [
-                    "httpCode": _response.statusCode,
-                    "requestId": err["RequestId"]!,
-                    "hostId": err["HostId"]!
+        var _lastRequest: Tea.TeaRequest? = nil
+        var _lastException: Tea.TeaError? = nil
+        var _now: Int32 = Tea.TeaCore.timeNow()
+        var _retryTimes: Int32 = 0
+        while (Tea.TeaCore.allowRetry(_runtime["retry"], _retryTimes, _now)) {
+            if (_retryTimes > 0) {
+                var _backoffTime: Int32 = Tea.TeaCore.getBackoffTime(_runtime["backoff"], _retryTimes)
+                if (_backoffTime > 0) {
+                    Tea.TeaCore.sleep(_backoffTime)
+                }
+            }
+            _retryTimes = _retryTimes + 1
+            do {
+                var _request: Tea.TeaRequest = Tea.TeaRequest()
+                var form: [String: Any] = try TeaUtils.Client.assertAsMap(data)
+                var boundary: String = TeaFileForm.Client.getBoundary()
+                var host: String = try TeaUtils.Client.assertAsString(form["host"])
+                _request.protocol_ = "HTTPS"
+                _request.method = "POST"
+                _request.pathname = "/"
+                _request.headers = [
+                    "host": host as! String,
+                    "date": TeaUtils.Client.getDateUTCString(),
+                    "user-agent": TeaUtils.Client.getUserAgent("")
                 ]
-            ])
+                _request.headers["content-type"] = "multipart/form-data; boundary=" + (boundary as! String);
+                _request.body = TeaFileForm.Client.toFileForm(form, boundary)
+                _lastRequest = _request
+                var _response: Tea.TeaResponse = try await Tea.TeaCore.doAction(_request, _runtime)
+                var respMap: [String: Any]? = nil
+                var bodyStr: String = try await TeaUtils.Client.readAsString(_response.body)
+                if (TeaUtils.Client.is4xx(_response.statusCode) || TeaUtils.Client.is5xx(_response.statusCode)) {
+                    respMap = DarabonbaXML.Client.parseXml(bodyStr, nil)
+                    var err: [String: Any] = try TeaUtils.Client.assertAsMap(respMap["Error"])
+                    throw Tea.ReuqestError([
+                        "code": err["Code"]!,
+                        "message": err["Message"]!,
+                        "data": [
+                            "httpCode": _response.statusCode,
+                            "requestId": err["RequestId"]!,
+                            "hostId": err["HostId"]!
+                        ]
+                    ])
+                }
+                respMap = DarabonbaXML.Client.parseXml(bodyStr, nil)
+                return Tea.TeaConverter.merge([:], respMap)
+            }
+            catch {
+                if (Tea.TeaCore.isRetryable(error)) {
+                    _lastException = error as! Tea.RetryableError
+                    continue
+                }
+                throw error
+            }
         }
-        respMap = DarabonbaXML.Client.parseXml(bodyStr, nil)
-        return Tea.TeaConverter.merge([:], respMap)
+        throw Tea.UnretryableError(_lastRequest, _lastException)
     }
 
     public func getEndpoint(_ productId: String, _ regionId: String, _ endpointRule: String, _ network: String, _ suffix: String, _ endpointMap: [String: String], _ endpoint: String) throws -> String {
@@ -62,248 +110,6 @@ open class Client : AlibabacloudOpenApi.Client {
             return endpointMap[regionId as! String] ?? ""
         }
         return try AlibabacloudEndpointUtil.Client.getEndpointRules(productId, regionId, endpointRule, network, suffix)
-    }
-
-    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func abstractEcommerceVideoWithOptions(_ request: AbstractEcommerceVideoRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> AbstractEcommerceVideoResponse {
-        try TeaUtils.Client.validateModel(request)
-        var body: [String: Any] = [:]
-        if (!TeaUtils.Client.isUnset(request.duration)) {
-            body["Duration"] = request.duration!;
-        }
-        if (!TeaUtils.Client.isUnset(request.height)) {
-            body["Height"] = request.height!;
-        }
-        if (!TeaUtils.Client.isUnset(request.videoUrl)) {
-            body["VideoUrl"] = request.videoUrl ?? "";
-        }
-        if (!TeaUtils.Client.isUnset(request.width)) {
-            body["Width"] = request.width!;
-        }
-        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
-            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
-        ])
-        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
-            "action": "AbstractEcommerceVideo",
-            "version": "2020-03-20",
-            "protocol": "HTTPS",
-            "pathname": "/",
-            "method": "POST",
-            "authType": "AK",
-            "style": "RPC",
-            "reqBodyType": "formData",
-            "bodyType": "json"
-        ])
-        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
-        return Tea.TeaConverter.fromMap(AbstractEcommerceVideoResponse(), tmp)
-    }
-
-    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func abstractEcommerceVideo(_ request: AbstractEcommerceVideoRequest) async throws -> AbstractEcommerceVideoResponse {
-        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
-        return try await abstractEcommerceVideoWithOptions(request as! AbstractEcommerceVideoRequest, runtime as! TeaUtils.RuntimeOptions)
-    }
-
-    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func abstractEcommerceVideoAdvance(_ request: AbstractEcommerceVideoAdvanceRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> AbstractEcommerceVideoResponse {
-        var credentialModel: AlibabaCloudCredentials.CredentialModel? = nil
-        if (TeaUtils.Client.isUnset(self._credential)) {
-            throw Tea.ReuqestError([
-                "code": "InvalidCredentials",
-                "message": "Please set up the credentials correctly. If you are setting them through environment variables, please ensure that ALIBABA_CLOUD_ACCESS_KEY_ID and ALIBABA_CLOUD_ACCESS_KEY_SECRET are set correctly. See https://help.aliyun.com/zh/sdk/developer-reference/configure-the-alibaba-cloud-accesskey-environment-variable-on-linux-macos-and-windows-systems for more details."
-            ])
-        }
-        credentialModel = try await self._credential!.getCredential()
-        var accessKeyId: String = credentialModel.accessKeyId ?? ""
-        var accessKeySecret: String = credentialModel.accessKeySecret ?? ""
-        var securityToken: String = credentialModel.securityToken ?? ""
-        var credentialType: String = credentialModel.type ?? ""
-        var openPlatformEndpoint: String = self._openPlatformEndpoint ?? ""
-        if (TeaUtils.Client.empty(openPlatformEndpoint)) {
-            openPlatformEndpoint = "openplatform.aliyuncs.com"
-        }
-        if (TeaUtils.Client.isUnset(credentialType)) {
-            credentialType = "access_key"
-        }
-        var authConfig: AlibabacloudOpenApi.Config = AlibabacloudOpenApi.Config([
-            "accessKeyId": accessKeyId as! String,
-            "accessKeySecret": accessKeySecret as! String,
-            "securityToken": securityToken as! String,
-            "type": credentialType as! String,
-            "endpoint": openPlatformEndpoint as! String,
-            "protocol": self._protocol ?? "",
-            "regionId": self._regionId ?? ""
-        ])
-        var authClient: AlibabacloudOpenApi.Client = try AlibabacloudOpenApi.Client(authConfig)
-        var authRequest: [String: String] = [
-            "Product": "videoenhan",
-            "RegionId": self._regionId ?? ""
-        ]
-        var authReq: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
-            "query": AlibabaCloudOpenApiUtil.Client.query(authRequest)
-        ])
-        var authParams: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
-            "action": "AuthorizeFileUpload",
-            "version": "2019-12-19",
-            "protocol": "HTTPS",
-            "pathname": "/",
-            "method": "GET",
-            "authType": "AK",
-            "style": "RPC",
-            "reqBodyType": "formData",
-            "bodyType": "json"
-        ])
-        var authResponse: [String: Any] = [:]
-        var fileObj: TeaFileForm.FileField = TeaFileForm.FileField([:])
-        var ossHeader: [String: Any] = [:]
-        var tmpBody: [String: Any] = [:]
-        var useAccelerate: Bool = false
-        var authResponseBody: [String: String] = [:]
-        var abstractEcommerceVideoReq: AbstractEcommerceVideoRequest = AbstractEcommerceVideoRequest([:])
-        AlibabaCloudOpenApiUtil.Client.convert(request, abstractEcommerceVideoReq)
-        if (!TeaUtils.Client.isUnset(request.videoUrlObject)) {
-            var tmpResp0: Any = try await authClient.callApi(authParams as! AlibabacloudOpenApi.Params, authReq as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
-            authResponse = try TeaUtils.Client.assertAsMap(tmpResp0)
-            tmpBody = try TeaUtils.Client.assertAsMap(authResponse["body"])
-            useAccelerate = try TeaUtils.Client.assertAsBoolean(tmpBody["UseAccelerate"])
-            authResponseBody = TeaUtils.Client.stringifyMapValue(tmpBody)
-            fileObj = TeaFileForm.FileField([
-                "filename": authResponseBody["ObjectKey"] ?? "",
-                "content": request.videoUrlObject!,
-                "contentType": ""
-            ])
-            ossHeader = [
-                "host": (authResponseBody["Bucket"] ?? "") + "." + (AlibabaCloudOpenApiUtil.Client.getEndpoint(authResponseBody["Endpoint"], useAccelerate, self._endpointType)),
-                "OSSAccessKeyId": authResponseBody["AccessKeyId"] ?? "",
-                "policy": authResponseBody["EncodedPolicy"] ?? "",
-                "Signature": authResponseBody["Signature"] ?? "",
-                "key": authResponseBody["ObjectKey"] ?? "",
-                "file": fileObj as! TeaFileForm.FileField,
-                "success_action_status": "201"
-            ]
-            try await _postOSSObject(authResponseBody["Bucket"] ?? "", ossHeader as! [String: Any])
-            abstractEcommerceVideoReq.videoUrl = "http://" + (authResponseBody["Bucket"] ?? "") + "." + (authResponseBody["Endpoint"] ?? "") + "/" + (authResponseBody["ObjectKey"] ?? "")
-        }
-        var abstractEcommerceVideoResp: AbstractEcommerceVideoResponse = try await abstractEcommerceVideoWithOptions(abstractEcommerceVideoReq as! AbstractEcommerceVideoRequest, runtime as! TeaUtils.RuntimeOptions)
-        return abstractEcommerceVideoResp as! AbstractEcommerceVideoResponse
-    }
-
-    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func abstractFilmVideoWithOptions(_ request: AbstractFilmVideoRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> AbstractFilmVideoResponse {
-        try TeaUtils.Client.validateModel(request)
-        var body: [String: Any] = [:]
-        if (!TeaUtils.Client.isUnset(request.length)) {
-            body["Length"] = request.length!;
-        }
-        if (!TeaUtils.Client.isUnset(request.videoUrl)) {
-            body["VideoUrl"] = request.videoUrl ?? "";
-        }
-        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
-            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
-        ])
-        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
-            "action": "AbstractFilmVideo",
-            "version": "2020-03-20",
-            "protocol": "HTTPS",
-            "pathname": "/",
-            "method": "POST",
-            "authType": "AK",
-            "style": "RPC",
-            "reqBodyType": "formData",
-            "bodyType": "json"
-        ])
-        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
-        return Tea.TeaConverter.fromMap(AbstractFilmVideoResponse(), tmp)
-    }
-
-    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func abstractFilmVideo(_ request: AbstractFilmVideoRequest) async throws -> AbstractFilmVideoResponse {
-        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
-        return try await abstractFilmVideoWithOptions(request as! AbstractFilmVideoRequest, runtime as! TeaUtils.RuntimeOptions)
-    }
-
-    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func abstractFilmVideoAdvance(_ request: AbstractFilmVideoAdvanceRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> AbstractFilmVideoResponse {
-        var credentialModel: AlibabaCloudCredentials.CredentialModel? = nil
-        if (TeaUtils.Client.isUnset(self._credential)) {
-            throw Tea.ReuqestError([
-                "code": "InvalidCredentials",
-                "message": "Please set up the credentials correctly. If you are setting them through environment variables, please ensure that ALIBABA_CLOUD_ACCESS_KEY_ID and ALIBABA_CLOUD_ACCESS_KEY_SECRET are set correctly. See https://help.aliyun.com/zh/sdk/developer-reference/configure-the-alibaba-cloud-accesskey-environment-variable-on-linux-macos-and-windows-systems for more details."
-            ])
-        }
-        credentialModel = try await self._credential!.getCredential()
-        var accessKeyId: String = credentialModel.accessKeyId ?? ""
-        var accessKeySecret: String = credentialModel.accessKeySecret ?? ""
-        var securityToken: String = credentialModel.securityToken ?? ""
-        var credentialType: String = credentialModel.type ?? ""
-        var openPlatformEndpoint: String = self._openPlatformEndpoint ?? ""
-        if (TeaUtils.Client.empty(openPlatformEndpoint)) {
-            openPlatformEndpoint = "openplatform.aliyuncs.com"
-        }
-        if (TeaUtils.Client.isUnset(credentialType)) {
-            credentialType = "access_key"
-        }
-        var authConfig: AlibabacloudOpenApi.Config = AlibabacloudOpenApi.Config([
-            "accessKeyId": accessKeyId as! String,
-            "accessKeySecret": accessKeySecret as! String,
-            "securityToken": securityToken as! String,
-            "type": credentialType as! String,
-            "endpoint": openPlatformEndpoint as! String,
-            "protocol": self._protocol ?? "",
-            "regionId": self._regionId ?? ""
-        ])
-        var authClient: AlibabacloudOpenApi.Client = try AlibabacloudOpenApi.Client(authConfig)
-        var authRequest: [String: String] = [
-            "Product": "videoenhan",
-            "RegionId": self._regionId ?? ""
-        ]
-        var authReq: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
-            "query": AlibabaCloudOpenApiUtil.Client.query(authRequest)
-        ])
-        var authParams: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
-            "action": "AuthorizeFileUpload",
-            "version": "2019-12-19",
-            "protocol": "HTTPS",
-            "pathname": "/",
-            "method": "GET",
-            "authType": "AK",
-            "style": "RPC",
-            "reqBodyType": "formData",
-            "bodyType": "json"
-        ])
-        var authResponse: [String: Any] = [:]
-        var fileObj: TeaFileForm.FileField = TeaFileForm.FileField([:])
-        var ossHeader: [String: Any] = [:]
-        var tmpBody: [String: Any] = [:]
-        var useAccelerate: Bool = false
-        var authResponseBody: [String: String] = [:]
-        var abstractFilmVideoReq: AbstractFilmVideoRequest = AbstractFilmVideoRequest([:])
-        AlibabaCloudOpenApiUtil.Client.convert(request, abstractFilmVideoReq)
-        if (!TeaUtils.Client.isUnset(request.videoUrlObject)) {
-            var tmpResp0: Any = try await authClient.callApi(authParams as! AlibabacloudOpenApi.Params, authReq as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
-            authResponse = try TeaUtils.Client.assertAsMap(tmpResp0)
-            tmpBody = try TeaUtils.Client.assertAsMap(authResponse["body"])
-            useAccelerate = try TeaUtils.Client.assertAsBoolean(tmpBody["UseAccelerate"])
-            authResponseBody = TeaUtils.Client.stringifyMapValue(tmpBody)
-            fileObj = TeaFileForm.FileField([
-                "filename": authResponseBody["ObjectKey"] ?? "",
-                "content": request.videoUrlObject!,
-                "contentType": ""
-            ])
-            ossHeader = [
-                "host": (authResponseBody["Bucket"] ?? "") + "." + (AlibabaCloudOpenApiUtil.Client.getEndpoint(authResponseBody["Endpoint"], useAccelerate, self._endpointType)),
-                "OSSAccessKeyId": authResponseBody["AccessKeyId"] ?? "",
-                "policy": authResponseBody["EncodedPolicy"] ?? "",
-                "Signature": authResponseBody["Signature"] ?? "",
-                "key": authResponseBody["ObjectKey"] ?? "",
-                "file": fileObj as! TeaFileForm.FileField,
-                "success_action_status": "201"
-            ]
-            try await _postOSSObject(authResponseBody["Bucket"] ?? "", ossHeader as! [String: Any])
-            abstractFilmVideoReq.videoUrl = "http://" + (authResponseBody["Bucket"] ?? "") + "." + (authResponseBody["Endpoint"] ?? "") + "/" + (authResponseBody["ObjectKey"] ?? "")
-        }
-        var abstractFilmVideoResp: AbstractFilmVideoResponse = try await abstractFilmVideoWithOptions(abstractFilmVideoReq as! AbstractFilmVideoRequest, runtime as! TeaUtils.RuntimeOptions)
-        return abstractFilmVideoResp as! AbstractFilmVideoResponse
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -417,7 +223,7 @@ open class Client : AlibabacloudOpenApi.Client {
                 "file": fileObj as! TeaFileForm.FileField,
                 "success_action_status": "201"
             ]
-            try await _postOSSObject(authResponseBody["Bucket"] ?? "", ossHeader as! [String: Any])
+            try await _postOSSObject(authResponseBody["Bucket"] ?? "", ossHeader as! [String: Any], runtime as! TeaUtils.RuntimeOptions)
             addFaceVideoTemplateReq.videoURL = "http://" + (authResponseBody["Bucket"] ?? "") + "." + (authResponseBody["Endpoint"] ?? "") + "/" + (authResponseBody["ObjectKey"] ?? "")
         }
         var addFaceVideoTemplateResp: AddFaceVideoTemplateResponse = try await addFaceVideoTemplateWithOptions(addFaceVideoTemplateReq as! AddFaceVideoTemplateRequest, runtime as! TeaUtils.RuntimeOptions)
@@ -544,7 +350,7 @@ open class Client : AlibabacloudOpenApi.Client {
                 "file": fileObj as! TeaFileForm.FileField,
                 "success_action_status": "201"
             ]
-            try await _postOSSObject(authResponseBody["Bucket"] ?? "", ossHeader as! [String: Any])
+            try await _postOSSObject(authResponseBody["Bucket"] ?? "", ossHeader as! [String: Any], runtime as! TeaUtils.RuntimeOptions)
             adjustVideoColorReq.videoUrl = "http://" + (authResponseBody["Bucket"] ?? "") + "." + (authResponseBody["Endpoint"] ?? "") + "/" + (authResponseBody["ObjectKey"] ?? "")
         }
         var adjustVideoColorResp: AdjustVideoColorResponse = try await adjustVideoColorWithOptions(adjustVideoColorReq as! AdjustVideoColorRequest, runtime as! TeaUtils.RuntimeOptions)
@@ -683,135 +489,11 @@ open class Client : AlibabacloudOpenApi.Client {
                 "file": fileObj as! TeaFileForm.FileField,
                 "success_action_status": "201"
             ]
-            try await _postOSSObject(authResponseBody["Bucket"] ?? "", ossHeader as! [String: Any])
+            try await _postOSSObject(authResponseBody["Bucket"] ?? "", ossHeader as! [String: Any], runtime as! TeaUtils.RuntimeOptions)
             changeVideoSizeReq.videoUrl = "http://" + (authResponseBody["Bucket"] ?? "") + "." + (authResponseBody["Endpoint"] ?? "") + "/" + (authResponseBody["ObjectKey"] ?? "")
         }
         var changeVideoSizeResp: ChangeVideoSizeResponse = try await changeVideoSizeWithOptions(changeVideoSizeReq as! ChangeVideoSizeRequest, runtime as! TeaUtils.RuntimeOptions)
         return changeVideoSizeResp as! ChangeVideoSizeResponse
-    }
-
-    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func convertHdrVideoWithOptions(_ request: ConvertHdrVideoRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ConvertHdrVideoResponse {
-        try TeaUtils.Client.validateModel(request)
-        var body: [String: Any] = [:]
-        if (!TeaUtils.Client.isUnset(request.bitrate)) {
-            body["Bitrate"] = request.bitrate!;
-        }
-        if (!TeaUtils.Client.isUnset(request.HDRFormat)) {
-            body["HDRFormat"] = request.HDRFormat ?? "";
-        }
-        if (!TeaUtils.Client.isUnset(request.maxIlluminance)) {
-            body["MaxIlluminance"] = request.maxIlluminance!;
-        }
-        if (!TeaUtils.Client.isUnset(request.videoURL)) {
-            body["VideoURL"] = request.videoURL ?? "";
-        }
-        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
-            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
-        ])
-        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
-            "action": "ConvertHdrVideo",
-            "version": "2020-03-20",
-            "protocol": "HTTPS",
-            "pathname": "/",
-            "method": "POST",
-            "authType": "AK",
-            "style": "RPC",
-            "reqBodyType": "formData",
-            "bodyType": "json"
-        ])
-        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
-        return Tea.TeaConverter.fromMap(ConvertHdrVideoResponse(), tmp)
-    }
-
-    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func convertHdrVideo(_ request: ConvertHdrVideoRequest) async throws -> ConvertHdrVideoResponse {
-        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
-        return try await convertHdrVideoWithOptions(request as! ConvertHdrVideoRequest, runtime as! TeaUtils.RuntimeOptions)
-    }
-
-    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func convertHdrVideoAdvance(_ request: ConvertHdrVideoAdvanceRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ConvertHdrVideoResponse {
-        var credentialModel: AlibabaCloudCredentials.CredentialModel? = nil
-        if (TeaUtils.Client.isUnset(self._credential)) {
-            throw Tea.ReuqestError([
-                "code": "InvalidCredentials",
-                "message": "Please set up the credentials correctly. If you are setting them through environment variables, please ensure that ALIBABA_CLOUD_ACCESS_KEY_ID and ALIBABA_CLOUD_ACCESS_KEY_SECRET are set correctly. See https://help.aliyun.com/zh/sdk/developer-reference/configure-the-alibaba-cloud-accesskey-environment-variable-on-linux-macos-and-windows-systems for more details."
-            ])
-        }
-        credentialModel = try await self._credential!.getCredential()
-        var accessKeyId: String = credentialModel.accessKeyId ?? ""
-        var accessKeySecret: String = credentialModel.accessKeySecret ?? ""
-        var securityToken: String = credentialModel.securityToken ?? ""
-        var credentialType: String = credentialModel.type ?? ""
-        var openPlatformEndpoint: String = self._openPlatformEndpoint ?? ""
-        if (TeaUtils.Client.empty(openPlatformEndpoint)) {
-            openPlatformEndpoint = "openplatform.aliyuncs.com"
-        }
-        if (TeaUtils.Client.isUnset(credentialType)) {
-            credentialType = "access_key"
-        }
-        var authConfig: AlibabacloudOpenApi.Config = AlibabacloudOpenApi.Config([
-            "accessKeyId": accessKeyId as! String,
-            "accessKeySecret": accessKeySecret as! String,
-            "securityToken": securityToken as! String,
-            "type": credentialType as! String,
-            "endpoint": openPlatformEndpoint as! String,
-            "protocol": self._protocol ?? "",
-            "regionId": self._regionId ?? ""
-        ])
-        var authClient: AlibabacloudOpenApi.Client = try AlibabacloudOpenApi.Client(authConfig)
-        var authRequest: [String: String] = [
-            "Product": "videoenhan",
-            "RegionId": self._regionId ?? ""
-        ]
-        var authReq: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
-            "query": AlibabaCloudOpenApiUtil.Client.query(authRequest)
-        ])
-        var authParams: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
-            "action": "AuthorizeFileUpload",
-            "version": "2019-12-19",
-            "protocol": "HTTPS",
-            "pathname": "/",
-            "method": "GET",
-            "authType": "AK",
-            "style": "RPC",
-            "reqBodyType": "formData",
-            "bodyType": "json"
-        ])
-        var authResponse: [String: Any] = [:]
-        var fileObj: TeaFileForm.FileField = TeaFileForm.FileField([:])
-        var ossHeader: [String: Any] = [:]
-        var tmpBody: [String: Any] = [:]
-        var useAccelerate: Bool = false
-        var authResponseBody: [String: String] = [:]
-        var convertHdrVideoReq: ConvertHdrVideoRequest = ConvertHdrVideoRequest([:])
-        AlibabaCloudOpenApiUtil.Client.convert(request, convertHdrVideoReq)
-        if (!TeaUtils.Client.isUnset(request.videoURLObject)) {
-            var tmpResp0: Any = try await authClient.callApi(authParams as! AlibabacloudOpenApi.Params, authReq as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
-            authResponse = try TeaUtils.Client.assertAsMap(tmpResp0)
-            tmpBody = try TeaUtils.Client.assertAsMap(authResponse["body"])
-            useAccelerate = try TeaUtils.Client.assertAsBoolean(tmpBody["UseAccelerate"])
-            authResponseBody = TeaUtils.Client.stringifyMapValue(tmpBody)
-            fileObj = TeaFileForm.FileField([
-                "filename": authResponseBody["ObjectKey"] ?? "",
-                "content": request.videoURLObject!,
-                "contentType": ""
-            ])
-            ossHeader = [
-                "host": (authResponseBody["Bucket"] ?? "") + "." + (AlibabaCloudOpenApiUtil.Client.getEndpoint(authResponseBody["Endpoint"], useAccelerate, self._endpointType)),
-                "OSSAccessKeyId": authResponseBody["AccessKeyId"] ?? "",
-                "policy": authResponseBody["EncodedPolicy"] ?? "",
-                "Signature": authResponseBody["Signature"] ?? "",
-                "key": authResponseBody["ObjectKey"] ?? "",
-                "file": fileObj as! TeaFileForm.FileField,
-                "success_action_status": "201"
-            ]
-            try await _postOSSObject(authResponseBody["Bucket"] ?? "", ossHeader as! [String: Any])
-            convertHdrVideoReq.videoURL = "http://" + (authResponseBody["Bucket"] ?? "") + "." + (authResponseBody["Endpoint"] ?? "") + "/" + (authResponseBody["ObjectKey"] ?? "")
-        }
-        var convertHdrVideoResp: ConvertHdrVideoResponse = try await convertHdrVideoWithOptions(convertHdrVideoReq as! ConvertHdrVideoRequest, runtime as! TeaUtils.RuntimeOptions)
-        return convertHdrVideoResp as! ConvertHdrVideoResponse
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -953,7 +635,7 @@ open class Client : AlibabacloudOpenApi.Client {
                 "file": fileObj as! TeaFileForm.FileField,
                 "success_action_status": "201"
             ]
-            try await _postOSSObject(authResponseBody["Bucket"] ?? "", ossHeader as! [String: Any])
+            try await _postOSSObject(authResponseBody["Bucket"] ?? "", ossHeader as! [String: Any], runtime as! TeaUtils.RuntimeOptions)
             enhancePortraitVideoReq.videoUrl = "http://" + (authResponseBody["Bucket"] ?? "") + "." + (authResponseBody["Endpoint"] ?? "") + "/" + (authResponseBody["ObjectKey"] ?? "")
         }
         var enhancePortraitVideoResp: EnhancePortraitVideoResponse = try await enhancePortraitVideoWithOptions(enhancePortraitVideoReq as! EnhancePortraitVideoRequest, runtime as! TeaUtils.RuntimeOptions)
@@ -1086,7 +768,7 @@ open class Client : AlibabacloudOpenApi.Client {
                 "file": fileObj as! TeaFileForm.FileField,
                 "success_action_status": "201"
             ]
-            try await _postOSSObject(authResponseBody["Bucket"] ?? "", ossHeader as! [String: Any])
+            try await _postOSSObject(authResponseBody["Bucket"] ?? "", ossHeader as! [String: Any], runtime as! TeaUtils.RuntimeOptions)
             enhanceVideoQualityReq.videoURL = "http://" + (authResponseBody["Bucket"] ?? "") + "." + (authResponseBody["Endpoint"] ?? "") + "/" + (authResponseBody["ObjectKey"] ?? "")
         }
         var enhanceVideoQualityResp: EnhanceVideoQualityResponse = try await enhanceVideoQualityWithOptions(enhanceVideoQualityReq as! EnhanceVideoQualityRequest, runtime as! TeaUtils.RuntimeOptions)
@@ -1204,7 +886,7 @@ open class Client : AlibabacloudOpenApi.Client {
                 "file": fileObj as! TeaFileForm.FileField,
                 "success_action_status": "201"
             ]
-            try await _postOSSObject(authResponseBody["Bucket"] ?? "", ossHeader as! [String: Any])
+            try await _postOSSObject(authResponseBody["Bucket"] ?? "", ossHeader as! [String: Any], runtime as! TeaUtils.RuntimeOptions)
             eraseVideoLogoReq.videoUrl = "http://" + (authResponseBody["Bucket"] ?? "") + "." + (authResponseBody["Endpoint"] ?? "") + "/" + (authResponseBody["ObjectKey"] ?? "")
         }
         var eraseVideoLogoResp: EraseVideoLogoResponse = try await eraseVideoLogoWithOptions(eraseVideoLogoReq as! EraseVideoLogoRequest, runtime as! TeaUtils.RuntimeOptions)
@@ -1331,7 +1013,7 @@ open class Client : AlibabacloudOpenApi.Client {
                 "file": fileObj as! TeaFileForm.FileField,
                 "success_action_status": "201"
             ]
-            try await _postOSSObject(authResponseBody["Bucket"] ?? "", ossHeader as! [String: Any])
+            try await _postOSSObject(authResponseBody["Bucket"] ?? "", ossHeader as! [String: Any], runtime as! TeaUtils.RuntimeOptions)
             eraseVideoSubtitlesReq.videoUrl = "http://" + (authResponseBody["Bucket"] ?? "") + "." + (authResponseBody["Endpoint"] ?? "") + "/" + (authResponseBody["ObjectKey"] ?? "")
         }
         var eraseVideoSubtitlesResp: EraseVideoSubtitlesResponse = try await eraseVideoSubtitlesWithOptions(eraseVideoSubtitlesReq as! EraseVideoSubtitlesRequest, runtime as! TeaUtils.RuntimeOptions)
@@ -1449,7 +1131,7 @@ open class Client : AlibabacloudOpenApi.Client {
                 "file": fileObj as! TeaFileForm.FileField,
                 "success_action_status": "201"
             ]
-            try await _postOSSObject(authResponseBody["Bucket"] ?? "", ossHeader as! [String: Any])
+            try await _postOSSObject(authResponseBody["Bucket"] ?? "", ossHeader as! [String: Any], runtime as! TeaUtils.RuntimeOptions)
             generateHumanAnimeStyleVideoReq.videoUrl = "http://" + (authResponseBody["Bucket"] ?? "") + "." + (authResponseBody["Endpoint"] ?? "") + "/" + (authResponseBody["ObjectKey"] ?? "")
         }
         var generateHumanAnimeStyleVideoResp: GenerateHumanAnimeStyleVideoResponse = try await generateHumanAnimeStyleVideoWithOptions(generateHumanAnimeStyleVideoReq as! GenerateHumanAnimeStyleVideoRequest, runtime as! TeaUtils.RuntimeOptions)
@@ -1597,7 +1279,7 @@ open class Client : AlibabacloudOpenApi.Client {
                         "file": fileObj as! TeaFileForm.FileField,
                         "success_action_status": "201"
                     ]
-                    try await _postOSSObject(authResponseBody["Bucket"] ?? "", ossHeader as! [String: Any])
+                    try await _postOSSObject(authResponseBody["Bucket"] ?? "", ossHeader as! [String: Any], runtime as! TeaUtils.RuntimeOptions)
                     var tmp: GenerateVideoRequest.FileList = generateVideoReq.fileList[i0]
                     tmp.fileUrl = "http://" + (authResponseBody["Bucket"] ?? "") + "." + (authResponseBody["Endpoint"] ?? "") + "/" + (authResponseBody["ObjectKey"] ?? "")
                     i0 = DarabonbaNumber.Client.ltoi(DarabonbaNumber.Client.add(DarabonbaNumber.Client.itol(i0), DarabonbaNumber.Client.itol(1)))
@@ -1753,7 +1435,7 @@ open class Client : AlibabacloudOpenApi.Client {
                 "file": fileObj as! TeaFileForm.FileField,
                 "success_action_status": "201"
             ]
-            try await _postOSSObject(authResponseBody["Bucket"] ?? "", ossHeader as! [String: Any])
+            try await _postOSSObject(authResponseBody["Bucket"] ?? "", ossHeader as! [String: Any], runtime as! TeaUtils.RuntimeOptions)
             interpolateVideoFrameReq.videoURL = "http://" + (authResponseBody["Bucket"] ?? "") + "." + (authResponseBody["Endpoint"] ?? "") + "/" + (authResponseBody["ObjectKey"] ?? "")
         }
         var interpolateVideoFrameResp: InterpolateVideoFrameResponse = try await interpolateVideoFrameWithOptions(interpolateVideoFrameReq as! InterpolateVideoFrameRequest, runtime as! TeaUtils.RuntimeOptions)
@@ -1880,7 +1562,7 @@ open class Client : AlibabacloudOpenApi.Client {
                 "file": fileObj as! TeaFileForm.FileField,
                 "success_action_status": "201"
             ]
-            try await _postOSSObject(authResponseBody["Bucket"] ?? "", ossHeader as! [String: Any])
+            try await _postOSSObject(authResponseBody["Bucket"] ?? "", ossHeader as! [String: Any], runtime as! TeaUtils.RuntimeOptions)
             mergeVideoFaceReq.referenceURL = "http://" + (authResponseBody["Bucket"] ?? "") + "." + (authResponseBody["Endpoint"] ?? "") + "/" + (authResponseBody["ObjectKey"] ?? "")
         }
         if (!TeaUtils.Client.isUnset(request.videoURLObject)) {
@@ -1903,7 +1585,7 @@ open class Client : AlibabacloudOpenApi.Client {
                 "file": fileObj as! TeaFileForm.FileField,
                 "success_action_status": "201"
             ]
-            try await _postOSSObject(authResponseBody["Bucket"] ?? "", ossHeader as! [String: Any])
+            try await _postOSSObject(authResponseBody["Bucket"] ?? "", ossHeader as! [String: Any], runtime as! TeaUtils.RuntimeOptions)
             mergeVideoFaceReq.videoURL = "http://" + (authResponseBody["Bucket"] ?? "") + "." + (authResponseBody["Endpoint"] ?? "") + "/" + (authResponseBody["ObjectKey"] ?? "")
         }
         var mergeVideoFaceResp: MergeVideoFaceResponse = try await mergeVideoFaceWithOptions(mergeVideoFaceReq as! MergeVideoFaceRequest, runtime as! TeaUtils.RuntimeOptions)
@@ -2033,7 +1715,7 @@ open class Client : AlibabacloudOpenApi.Client {
                 "file": fileObj as! TeaFileForm.FileField,
                 "success_action_status": "201"
             ]
-            try await _postOSSObject(authResponseBody["Bucket"] ?? "", ossHeader as! [String: Any])
+            try await _postOSSObject(authResponseBody["Bucket"] ?? "", ossHeader as! [String: Any], runtime as! TeaUtils.RuntimeOptions)
             mergeVideoModelFaceReq.faceImageURL = "http://" + (authResponseBody["Bucket"] ?? "") + "." + (authResponseBody["Endpoint"] ?? "") + "/" + (authResponseBody["ObjectKey"] ?? "")
         }
         var mergeVideoModelFaceResp: MergeVideoModelFaceResponse = try await mergeVideoModelFaceWithOptions(mergeVideoModelFaceReq as! MergeVideoModelFaceRequest, runtime as! TeaUtils.RuntimeOptions)
@@ -2075,121 +1757,6 @@ open class Client : AlibabacloudOpenApi.Client {
     public func queryFaceVideoTemplate(_ request: QueryFaceVideoTemplateRequest) async throws -> QueryFaceVideoTemplateResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         return try await queryFaceVideoTemplateWithOptions(request as! QueryFaceVideoTemplateRequest, runtime as! TeaUtils.RuntimeOptions)
-    }
-
-    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func reduceVideoNoiseWithOptions(_ request: ReduceVideoNoiseRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ReduceVideoNoiseResponse {
-        try TeaUtils.Client.validateModel(request)
-        var body: [String: Any] = [:]
-        if (!TeaUtils.Client.isUnset(request.videoUrl)) {
-            body["VideoUrl"] = request.videoUrl ?? "";
-        }
-        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
-            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
-        ])
-        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
-            "action": "ReduceVideoNoise",
-            "version": "2020-03-20",
-            "protocol": "HTTPS",
-            "pathname": "/",
-            "method": "POST",
-            "authType": "AK",
-            "style": "RPC",
-            "reqBodyType": "formData",
-            "bodyType": "json"
-        ])
-        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
-        return Tea.TeaConverter.fromMap(ReduceVideoNoiseResponse(), tmp)
-    }
-
-    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func reduceVideoNoise(_ request: ReduceVideoNoiseRequest) async throws -> ReduceVideoNoiseResponse {
-        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
-        return try await reduceVideoNoiseWithOptions(request as! ReduceVideoNoiseRequest, runtime as! TeaUtils.RuntimeOptions)
-    }
-
-    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func reduceVideoNoiseAdvance(_ request: ReduceVideoNoiseAdvanceRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ReduceVideoNoiseResponse {
-        var credentialModel: AlibabaCloudCredentials.CredentialModel? = nil
-        if (TeaUtils.Client.isUnset(self._credential)) {
-            throw Tea.ReuqestError([
-                "code": "InvalidCredentials",
-                "message": "Please set up the credentials correctly. If you are setting them through environment variables, please ensure that ALIBABA_CLOUD_ACCESS_KEY_ID and ALIBABA_CLOUD_ACCESS_KEY_SECRET are set correctly. See https://help.aliyun.com/zh/sdk/developer-reference/configure-the-alibaba-cloud-accesskey-environment-variable-on-linux-macos-and-windows-systems for more details."
-            ])
-        }
-        credentialModel = try await self._credential!.getCredential()
-        var accessKeyId: String = credentialModel.accessKeyId ?? ""
-        var accessKeySecret: String = credentialModel.accessKeySecret ?? ""
-        var securityToken: String = credentialModel.securityToken ?? ""
-        var credentialType: String = credentialModel.type ?? ""
-        var openPlatformEndpoint: String = self._openPlatformEndpoint ?? ""
-        if (TeaUtils.Client.empty(openPlatformEndpoint)) {
-            openPlatformEndpoint = "openplatform.aliyuncs.com"
-        }
-        if (TeaUtils.Client.isUnset(credentialType)) {
-            credentialType = "access_key"
-        }
-        var authConfig: AlibabacloudOpenApi.Config = AlibabacloudOpenApi.Config([
-            "accessKeyId": accessKeyId as! String,
-            "accessKeySecret": accessKeySecret as! String,
-            "securityToken": securityToken as! String,
-            "type": credentialType as! String,
-            "endpoint": openPlatformEndpoint as! String,
-            "protocol": self._protocol ?? "",
-            "regionId": self._regionId ?? ""
-        ])
-        var authClient: AlibabacloudOpenApi.Client = try AlibabacloudOpenApi.Client(authConfig)
-        var authRequest: [String: String] = [
-            "Product": "videoenhan",
-            "RegionId": self._regionId ?? ""
-        ]
-        var authReq: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
-            "query": AlibabaCloudOpenApiUtil.Client.query(authRequest)
-        ])
-        var authParams: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
-            "action": "AuthorizeFileUpload",
-            "version": "2019-12-19",
-            "protocol": "HTTPS",
-            "pathname": "/",
-            "method": "GET",
-            "authType": "AK",
-            "style": "RPC",
-            "reqBodyType": "formData",
-            "bodyType": "json"
-        ])
-        var authResponse: [String: Any] = [:]
-        var fileObj: TeaFileForm.FileField = TeaFileForm.FileField([:])
-        var ossHeader: [String: Any] = [:]
-        var tmpBody: [String: Any] = [:]
-        var useAccelerate: Bool = false
-        var authResponseBody: [String: String] = [:]
-        var reduceVideoNoiseReq: ReduceVideoNoiseRequest = ReduceVideoNoiseRequest([:])
-        AlibabaCloudOpenApiUtil.Client.convert(request, reduceVideoNoiseReq)
-        if (!TeaUtils.Client.isUnset(request.videoUrlObject)) {
-            var tmpResp0: Any = try await authClient.callApi(authParams as! AlibabacloudOpenApi.Params, authReq as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
-            authResponse = try TeaUtils.Client.assertAsMap(tmpResp0)
-            tmpBody = try TeaUtils.Client.assertAsMap(authResponse["body"])
-            useAccelerate = try TeaUtils.Client.assertAsBoolean(tmpBody["UseAccelerate"])
-            authResponseBody = TeaUtils.Client.stringifyMapValue(tmpBody)
-            fileObj = TeaFileForm.FileField([
-                "filename": authResponseBody["ObjectKey"] ?? "",
-                "content": request.videoUrlObject!,
-                "contentType": ""
-            ])
-            ossHeader = [
-                "host": (authResponseBody["Bucket"] ?? "") + "." + (AlibabaCloudOpenApiUtil.Client.getEndpoint(authResponseBody["Endpoint"], useAccelerate, self._endpointType)),
-                "OSSAccessKeyId": authResponseBody["AccessKeyId"] ?? "",
-                "policy": authResponseBody["EncodedPolicy"] ?? "",
-                "Signature": authResponseBody["Signature"] ?? "",
-                "key": authResponseBody["ObjectKey"] ?? "",
-                "file": fileObj as! TeaFileForm.FileField,
-                "success_action_status": "201"
-            ]
-            try await _postOSSObject(authResponseBody["Bucket"] ?? "", ossHeader as! [String: Any])
-            reduceVideoNoiseReq.videoUrl = "http://" + (authResponseBody["Bucket"] ?? "") + "." + (authResponseBody["Endpoint"] ?? "") + "/" + (authResponseBody["ObjectKey"] ?? "")
-        }
-        var reduceVideoNoiseResp: ReduceVideoNoiseResponse = try await reduceVideoNoiseWithOptions(reduceVideoNoiseReq as! ReduceVideoNoiseRequest, runtime as! TeaUtils.RuntimeOptions)
-        return reduceVideoNoiseResp as! ReduceVideoNoiseResponse
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -2303,131 +1870,10 @@ open class Client : AlibabacloudOpenApi.Client {
                 "file": fileObj as! TeaFileForm.FileField,
                 "success_action_status": "201"
             ]
-            try await _postOSSObject(authResponseBody["Bucket"] ?? "", ossHeader as! [String: Any])
+            try await _postOSSObject(authResponseBody["Bucket"] ?? "", ossHeader as! [String: Any], runtime as! TeaUtils.RuntimeOptions)
             superResolveVideoReq.videoUrl = "http://" + (authResponseBody["Bucket"] ?? "") + "." + (authResponseBody["Endpoint"] ?? "") + "/" + (authResponseBody["ObjectKey"] ?? "")
         }
         var superResolveVideoResp: SuperResolveVideoResponse = try await superResolveVideoWithOptions(superResolveVideoReq as! SuperResolveVideoRequest, runtime as! TeaUtils.RuntimeOptions)
         return superResolveVideoResp as! SuperResolveVideoResponse
-    }
-
-    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func toneSdrVideoWithOptions(_ request: ToneSdrVideoRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ToneSdrVideoResponse {
-        try TeaUtils.Client.validateModel(request)
-        var body: [String: Any] = [:]
-        if (!TeaUtils.Client.isUnset(request.bitrate)) {
-            body["Bitrate"] = request.bitrate!;
-        }
-        if (!TeaUtils.Client.isUnset(request.recolorModel)) {
-            body["RecolorModel"] = request.recolorModel ?? "";
-        }
-        if (!TeaUtils.Client.isUnset(request.videoURL)) {
-            body["VideoURL"] = request.videoURL ?? "";
-        }
-        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
-            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
-        ])
-        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
-            "action": "ToneSdrVideo",
-            "version": "2020-03-20",
-            "protocol": "HTTPS",
-            "pathname": "/",
-            "method": "POST",
-            "authType": "AK",
-            "style": "RPC",
-            "reqBodyType": "formData",
-            "bodyType": "json"
-        ])
-        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
-        return Tea.TeaConverter.fromMap(ToneSdrVideoResponse(), tmp)
-    }
-
-    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func toneSdrVideo(_ request: ToneSdrVideoRequest) async throws -> ToneSdrVideoResponse {
-        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
-        return try await toneSdrVideoWithOptions(request as! ToneSdrVideoRequest, runtime as! TeaUtils.RuntimeOptions)
-    }
-
-    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func toneSdrVideoAdvance(_ request: ToneSdrVideoAdvanceRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ToneSdrVideoResponse {
-        var credentialModel: AlibabaCloudCredentials.CredentialModel? = nil
-        if (TeaUtils.Client.isUnset(self._credential)) {
-            throw Tea.ReuqestError([
-                "code": "InvalidCredentials",
-                "message": "Please set up the credentials correctly. If you are setting them through environment variables, please ensure that ALIBABA_CLOUD_ACCESS_KEY_ID and ALIBABA_CLOUD_ACCESS_KEY_SECRET are set correctly. See https://help.aliyun.com/zh/sdk/developer-reference/configure-the-alibaba-cloud-accesskey-environment-variable-on-linux-macos-and-windows-systems for more details."
-            ])
-        }
-        credentialModel = try await self._credential!.getCredential()
-        var accessKeyId: String = credentialModel.accessKeyId ?? ""
-        var accessKeySecret: String = credentialModel.accessKeySecret ?? ""
-        var securityToken: String = credentialModel.securityToken ?? ""
-        var credentialType: String = credentialModel.type ?? ""
-        var openPlatformEndpoint: String = self._openPlatformEndpoint ?? ""
-        if (TeaUtils.Client.empty(openPlatformEndpoint)) {
-            openPlatformEndpoint = "openplatform.aliyuncs.com"
-        }
-        if (TeaUtils.Client.isUnset(credentialType)) {
-            credentialType = "access_key"
-        }
-        var authConfig: AlibabacloudOpenApi.Config = AlibabacloudOpenApi.Config([
-            "accessKeyId": accessKeyId as! String,
-            "accessKeySecret": accessKeySecret as! String,
-            "securityToken": securityToken as! String,
-            "type": credentialType as! String,
-            "endpoint": openPlatformEndpoint as! String,
-            "protocol": self._protocol ?? "",
-            "regionId": self._regionId ?? ""
-        ])
-        var authClient: AlibabacloudOpenApi.Client = try AlibabacloudOpenApi.Client(authConfig)
-        var authRequest: [String: String] = [
-            "Product": "videoenhan",
-            "RegionId": self._regionId ?? ""
-        ]
-        var authReq: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
-            "query": AlibabaCloudOpenApiUtil.Client.query(authRequest)
-        ])
-        var authParams: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
-            "action": "AuthorizeFileUpload",
-            "version": "2019-12-19",
-            "protocol": "HTTPS",
-            "pathname": "/",
-            "method": "GET",
-            "authType": "AK",
-            "style": "RPC",
-            "reqBodyType": "formData",
-            "bodyType": "json"
-        ])
-        var authResponse: [String: Any] = [:]
-        var fileObj: TeaFileForm.FileField = TeaFileForm.FileField([:])
-        var ossHeader: [String: Any] = [:]
-        var tmpBody: [String: Any] = [:]
-        var useAccelerate: Bool = false
-        var authResponseBody: [String: String] = [:]
-        var toneSdrVideoReq: ToneSdrVideoRequest = ToneSdrVideoRequest([:])
-        AlibabaCloudOpenApiUtil.Client.convert(request, toneSdrVideoReq)
-        if (!TeaUtils.Client.isUnset(request.videoURLObject)) {
-            var tmpResp0: Any = try await authClient.callApi(authParams as! AlibabacloudOpenApi.Params, authReq as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
-            authResponse = try TeaUtils.Client.assertAsMap(tmpResp0)
-            tmpBody = try TeaUtils.Client.assertAsMap(authResponse["body"])
-            useAccelerate = try TeaUtils.Client.assertAsBoolean(tmpBody["UseAccelerate"])
-            authResponseBody = TeaUtils.Client.stringifyMapValue(tmpBody)
-            fileObj = TeaFileForm.FileField([
-                "filename": authResponseBody["ObjectKey"] ?? "",
-                "content": request.videoURLObject!,
-                "contentType": ""
-            ])
-            ossHeader = [
-                "host": (authResponseBody["Bucket"] ?? "") + "." + (AlibabaCloudOpenApiUtil.Client.getEndpoint(authResponseBody["Endpoint"], useAccelerate, self._endpointType)),
-                "OSSAccessKeyId": authResponseBody["AccessKeyId"] ?? "",
-                "policy": authResponseBody["EncodedPolicy"] ?? "",
-                "Signature": authResponseBody["Signature"] ?? "",
-                "key": authResponseBody["ObjectKey"] ?? "",
-                "file": fileObj as! TeaFileForm.FileField,
-                "success_action_status": "201"
-            ]
-            try await _postOSSObject(authResponseBody["Bucket"] ?? "", ossHeader as! [String: Any])
-            toneSdrVideoReq.videoURL = "http://" + (authResponseBody["Bucket"] ?? "") + "." + (authResponseBody["Endpoint"] ?? "") + "/" + (authResponseBody["ObjectKey"] ?? "")
-        }
-        var toneSdrVideoResp: ToneSdrVideoResponse = try await toneSdrVideoWithOptions(toneSdrVideoReq as! ToneSdrVideoRequest, runtime as! TeaUtils.RuntimeOptions)
-        return toneSdrVideoResp as! ToneSdrVideoResponse
     }
 }
