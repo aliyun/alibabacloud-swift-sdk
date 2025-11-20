@@ -1773,6 +1773,71 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func copyDentryByNodeIdWithOptions(_ tmpReq: CopyDentryByNodeIdRequest, _ tmpHeader: CopyDentryByNodeIdHeaders, _ runtime: TeaUtils.RuntimeOptions) async throws -> CopyDentryByNodeIdResponse {
+        try TeaUtils.Client.validateModel(tmpReq)
+        var request: CopyDentryByNodeIdShrinkRequest = CopyDentryByNodeIdShrinkRequest([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        var headers: CopyDentryByNodeIdShrinkHeaders = CopyDentryByNodeIdShrinkHeaders([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpHeader, headers)
+        if (!TeaUtils.Client.isUnset(tmpHeader.accountContext)) {
+            headers.accountContextShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpHeader.accountContext, "AccountContext", "json")
+        }
+        if (!TeaUtils.Client.isUnset(tmpReq.tenantContext)) {
+            request.tenantContextShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.tenantContext, "TenantContext", "json")
+        }
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.dentryUuid)) {
+            body["DentryUuid"] = request.dentryUuid ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.name)) {
+            body["Name"] = request.name ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.tenantContextShrink)) {
+            body["TenantContext"] = request.tenantContextShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.toNextNodeId)) {
+            body["ToNextNodeId"] = request.toNextNodeId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.toParentNodeId)) {
+            body["ToParentNodeId"] = request.toParentNodeId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.toPrevNodeId)) {
+            body["ToPrevNodeId"] = request.toPrevNodeId ?? "";
+        }
+        var realHeaders: [String: String] = [:]
+        if (!TeaUtils.Client.isUnset(headers.commonHeaders)) {
+            realHeaders = headers.commonHeaders ?? [:]
+        }
+        if (!TeaUtils.Client.isUnset(headers.accountContextShrink)) {
+            realHeaders["AccountContext"] = TeaUtils.Client.toJSONString(headers.accountContextShrink);
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": realHeaders as! [String: String],
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "CopyDentryByNodeId",
+            "version": "2023-04-26",
+            "protocol": "HTTPS",
+            "pathname": "/dingtalk/v2/documents/copyDentryByNodeId",
+            "method": "POST",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(CopyDentryByNodeIdResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func copyDentryByNodeId(_ request: CopyDentryByNodeIdRequest) async throws -> CopyDentryByNodeIdResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: CopyDentryByNodeIdHeaders = CopyDentryByNodeIdHeaders([:])
+        return try await copyDentryByNodeIdWithOptions(request as! CopyDentryByNodeIdRequest, headers as! CopyDentryByNodeIdHeaders, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func createAlidingAssistantWithOptions(_ tmpReq: CreateAlidingAssistantRequest, _ tmpHeader: CreateAlidingAssistantHeaders, _ runtime: TeaUtils.RuntimeOptions) async throws -> CreateAlidingAssistantResponse {
         try TeaUtils.Client.validateModel(tmpReq)
         var request: CreateAlidingAssistantShrinkRequest = CreateAlidingAssistantShrinkRequest([:])

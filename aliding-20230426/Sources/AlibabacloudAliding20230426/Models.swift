@@ -13070,6 +13070,429 @@ public class CopyDentryResponse : Tea.TeaModel {
     }
 }
 
+public class CopyDentryByNodeIdHeaders : Tea.TeaModel {
+    public class AccountContext : Tea.TeaModel {
+        public var accountId: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.accountId != nil {
+                map["accountId"] = self.accountId!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["accountId"] as? String {
+                self.accountId = value
+            }
+        }
+    }
+    public var commonHeaders: [String: String]?
+
+    public var accountContext: CopyDentryByNodeIdHeaders.AccountContext?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.accountContext?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.commonHeaders != nil {
+            map["commonHeaders"] = self.commonHeaders!
+        }
+        if self.accountContext != nil {
+            map["AccountContext"] = self.accountContext?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["commonHeaders"] as? [String: String] {
+            self.commonHeaders = value
+        }
+        if let value = dict["AccountContext"] as? [String: Any?] {
+            var model = CopyDentryByNodeIdHeaders.AccountContext()
+            model.fromMap(value)
+            self.accountContext = model
+        }
+    }
+}
+
+public class CopyDentryByNodeIdShrinkHeaders : Tea.TeaModel {
+    public var commonHeaders: [String: String]?
+
+    public var accountContextShrink: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.commonHeaders != nil {
+            map["commonHeaders"] = self.commonHeaders!
+        }
+        if self.accountContextShrink != nil {
+            map["AccountContext"] = self.accountContextShrink!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["commonHeaders"] as? [String: String] {
+            self.commonHeaders = value
+        }
+        if let value = dict["AccountContext"] as? String {
+            self.accountContextShrink = value
+        }
+    }
+}
+
+public class CopyDentryByNodeIdRequest : Tea.TeaModel {
+    public class TenantContext : Tea.TeaModel {
+        public var tenantId: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.tenantId != nil {
+                map["tenantId"] = self.tenantId!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["tenantId"] as? String {
+                self.tenantId = value
+            }
+        }
+    }
+    public var dentryUuid: String?
+
+    public var name: String?
+
+    public var tenantContext: CopyDentryByNodeIdRequest.TenantContext?
+
+    public var toNextNodeId: String?
+
+    public var toParentNodeId: String?
+
+    public var toPrevNodeId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.tenantContext?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.dentryUuid != nil {
+            map["DentryUuid"] = self.dentryUuid!
+        }
+        if self.name != nil {
+            map["Name"] = self.name!
+        }
+        if self.tenantContext != nil {
+            map["TenantContext"] = self.tenantContext?.toMap()
+        }
+        if self.toNextNodeId != nil {
+            map["ToNextNodeId"] = self.toNextNodeId!
+        }
+        if self.toParentNodeId != nil {
+            map["ToParentNodeId"] = self.toParentNodeId!
+        }
+        if self.toPrevNodeId != nil {
+            map["ToPrevNodeId"] = self.toPrevNodeId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["DentryUuid"] as? String {
+            self.dentryUuid = value
+        }
+        if let value = dict["Name"] as? String {
+            self.name = value
+        }
+        if let value = dict["TenantContext"] as? [String: Any?] {
+            var model = CopyDentryByNodeIdRequest.TenantContext()
+            model.fromMap(value)
+            self.tenantContext = model
+        }
+        if let value = dict["ToNextNodeId"] as? String {
+            self.toNextNodeId = value
+        }
+        if let value = dict["ToParentNodeId"] as? String {
+            self.toParentNodeId = value
+        }
+        if let value = dict["ToPrevNodeId"] as? String {
+            self.toPrevNodeId = value
+        }
+    }
+}
+
+public class CopyDentryByNodeIdShrinkRequest : Tea.TeaModel {
+    public var dentryUuid: String?
+
+    public var name: String?
+
+    public var tenantContextShrink: String?
+
+    public var toNextNodeId: String?
+
+    public var toParentNodeId: String?
+
+    public var toPrevNodeId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.dentryUuid != nil {
+            map["DentryUuid"] = self.dentryUuid!
+        }
+        if self.name != nil {
+            map["Name"] = self.name!
+        }
+        if self.tenantContextShrink != nil {
+            map["TenantContext"] = self.tenantContextShrink!
+        }
+        if self.toNextNodeId != nil {
+            map["ToNextNodeId"] = self.toNextNodeId!
+        }
+        if self.toParentNodeId != nil {
+            map["ToParentNodeId"] = self.toParentNodeId!
+        }
+        if self.toPrevNodeId != nil {
+            map["ToPrevNodeId"] = self.toPrevNodeId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["DentryUuid"] as? String {
+            self.dentryUuid = value
+        }
+        if let value = dict["Name"] as? String {
+            self.name = value
+        }
+        if let value = dict["TenantContext"] as? String {
+            self.tenantContextShrink = value
+        }
+        if let value = dict["ToNextNodeId"] as? String {
+            self.toNextNodeId = value
+        }
+        if let value = dict["ToParentNodeId"] as? String {
+            self.toParentNodeId = value
+        }
+        if let value = dict["ToPrevNodeId"] as? String {
+            self.toPrevNodeId = value
+        }
+    }
+}
+
+public class CopyDentryByNodeIdResponseBody : Tea.TeaModel {
+    public var contentType: String?
+
+    public var createdTime: Int64?
+
+    public var dentryUuid: String?
+
+    public var extension_: String?
+
+    public var requestId: String?
+
+    public var spaceId: String?
+
+    public var vendorRequestId: String?
+
+    public var vendorType: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.contentType != nil {
+            map["contentType"] = self.contentType!
+        }
+        if self.createdTime != nil {
+            map["createdTime"] = self.createdTime!
+        }
+        if self.dentryUuid != nil {
+            map["dentryUuid"] = self.dentryUuid!
+        }
+        if self.extension_ != nil {
+            map["extension"] = self.extension_!
+        }
+        if self.requestId != nil {
+            map["requestId"] = self.requestId!
+        }
+        if self.spaceId != nil {
+            map["spaceId"] = self.spaceId!
+        }
+        if self.vendorRequestId != nil {
+            map["vendorRequestId"] = self.vendorRequestId!
+        }
+        if self.vendorType != nil {
+            map["vendorType"] = self.vendorType!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["contentType"] as? String {
+            self.contentType = value
+        }
+        if let value = dict["createdTime"] as? Int64 {
+            self.createdTime = value
+        }
+        if let value = dict["dentryUuid"] as? String {
+            self.dentryUuid = value
+        }
+        if let value = dict["extension"] as? String {
+            self.extension_ = value
+        }
+        if let value = dict["requestId"] as? String {
+            self.requestId = value
+        }
+        if let value = dict["spaceId"] as? String {
+            self.spaceId = value
+        }
+        if let value = dict["vendorRequestId"] as? String {
+            self.vendorRequestId = value
+        }
+        if let value = dict["vendorType"] as? String {
+            self.vendorType = value
+        }
+    }
+}
+
+public class CopyDentryByNodeIdResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: CopyDentryByNodeIdResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = CopyDentryByNodeIdResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
 public class CreateAlidingAssistantHeaders : Tea.TeaModel {
     public class AccountContext : Tea.TeaModel {
         public var accountId: String?
