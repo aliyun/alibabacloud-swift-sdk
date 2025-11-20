@@ -3402,6 +3402,8 @@ public class DescribePackageOrdersResponse : Tea.TeaModel {
 }
 
 public class GenerateWuyingServerSceneUrlRequest : Tea.TeaModel {
+    public var apiKey: String?
+
     public var clientId: String?
 
     public var clientIp: String?
@@ -3442,6 +3444,9 @@ public class GenerateWuyingServerSceneUrlRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.apiKey != nil {
+            map["ApiKey"] = self.apiKey!
+        }
         if self.clientId != nil {
             map["ClientId"] = self.clientId!
         }
@@ -3486,6 +3491,9 @@ public class GenerateWuyingServerSceneUrlRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["ApiKey"] as? String {
+            self.apiKey = value
+        }
         if let value = dict["ClientId"] as? String {
             self.clientId = value
         }

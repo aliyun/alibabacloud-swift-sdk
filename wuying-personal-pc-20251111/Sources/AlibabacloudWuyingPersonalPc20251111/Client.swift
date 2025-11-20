@@ -459,6 +459,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func generateWuyingServerSceneUrlWithOptions(_ request: GenerateWuyingServerSceneUrlRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> GenerateWuyingServerSceneUrlResponse {
         try TeaUtils.Client.validateModel(request)
         var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.apiKey)) {
+            body["ApiKey"] = request.apiKey ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.clientId)) {
             body["ClientId"] = request.clientId ?? "";
         }
