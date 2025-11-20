@@ -20237,6 +20237,393 @@ public class ListEnvironmentsResponse : Tea.TeaModel {
     }
 }
 
+public class ListGatewayFeaturesResponseBody : Tea.TeaModel {
+    public class Data : Tea.TeaModel {
+        public class Items : Tea.TeaModel {
+            public class Definition : Tea.TeaModel {
+                public class ValueOptions : Tea.TeaModel {
+                    public var key: String?
+
+                    public var label: String?
+
+                    public override init() {
+                        super.init()
+                    }
+
+                    public init(_ dict: [String: Any]) {
+                        super.init()
+                        self.fromMap(dict)
+                    }
+
+                    public override func validate() throws -> Void {
+                    }
+
+                    public override func toMap() -> [String : Any] {
+                        var map = super.toMap()
+                        if self.key != nil {
+                            map["key"] = self.key!
+                        }
+                        if self.label != nil {
+                            map["label"] = self.label!
+                        }
+                        return map
+                    }
+
+                    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                        guard let dict else { return }
+                        if let value = dict["key"] as? String {
+                            self.key = value
+                        }
+                        if let value = dict["label"] as? String {
+                            self.label = value
+                        }
+                    }
+                }
+                public var defaultValue: String?
+
+                public var description_: String?
+
+                public var displayName: String?
+
+                public var group: String?
+
+                public var inputType: String?
+
+                public var maxLength: Int32?
+
+                public var maxValue: String?
+
+                public var minLength: Int32?
+
+                public var minValue: String?
+
+                public var name: String?
+
+                public var readOnly: Bool?
+
+                public var regex: String?
+
+                public var valueOptions: [ListGatewayFeaturesResponseBody.Data.Items.Definition.ValueOptions]?
+
+                public var valueType: String?
+
+                public var valueUnit: String?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.defaultValue != nil {
+                        map["defaultValue"] = self.defaultValue!
+                    }
+                    if self.description_ != nil {
+                        map["description"] = self.description_!
+                    }
+                    if self.displayName != nil {
+                        map["displayName"] = self.displayName!
+                    }
+                    if self.group != nil {
+                        map["group"] = self.group!
+                    }
+                    if self.inputType != nil {
+                        map["inputType"] = self.inputType!
+                    }
+                    if self.maxLength != nil {
+                        map["maxLength"] = self.maxLength!
+                    }
+                    if self.maxValue != nil {
+                        map["maxValue"] = self.maxValue!
+                    }
+                    if self.minLength != nil {
+                        map["minLength"] = self.minLength!
+                    }
+                    if self.minValue != nil {
+                        map["minValue"] = self.minValue!
+                    }
+                    if self.name != nil {
+                        map["name"] = self.name!
+                    }
+                    if self.readOnly != nil {
+                        map["readOnly"] = self.readOnly!
+                    }
+                    if self.regex != nil {
+                        map["regex"] = self.regex!
+                    }
+                    if self.valueOptions != nil {
+                        var tmp : [Any] = []
+                        for k in self.valueOptions! {
+                            tmp.append(k.toMap())
+                        }
+                        map["valueOptions"] = tmp
+                    }
+                    if self.valueType != nil {
+                        map["valueType"] = self.valueType!
+                    }
+                    if self.valueUnit != nil {
+                        map["valueUnit"] = self.valueUnit!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                    guard let dict else { return }
+                    if let value = dict["defaultValue"] as? String {
+                        self.defaultValue = value
+                    }
+                    if let value = dict["description"] as? String {
+                        self.description_ = value
+                    }
+                    if let value = dict["displayName"] as? String {
+                        self.displayName = value
+                    }
+                    if let value = dict["group"] as? String {
+                        self.group = value
+                    }
+                    if let value = dict["inputType"] as? String {
+                        self.inputType = value
+                    }
+                    if let value = dict["maxLength"] as? Int32 {
+                        self.maxLength = value
+                    }
+                    if let value = dict["maxValue"] as? String {
+                        self.maxValue = value
+                    }
+                    if let value = dict["minLength"] as? Int32 {
+                        self.minLength = value
+                    }
+                    if let value = dict["minValue"] as? String {
+                        self.minValue = value
+                    }
+                    if let value = dict["name"] as? String {
+                        self.name = value
+                    }
+                    if let value = dict["readOnly"] as? Bool {
+                        self.readOnly = value
+                    }
+                    if let value = dict["regex"] as? String {
+                        self.regex = value
+                    }
+                    if let value = dict["valueOptions"] as? [Any?] {
+                        var tmp : [ListGatewayFeaturesResponseBody.Data.Items.Definition.ValueOptions] = []
+                        for v in value {
+                            if v != nil {
+                                var model = ListGatewayFeaturesResponseBody.Data.Items.Definition.ValueOptions()
+                                if v != nil {
+                                    model.fromMap(v as? [String: Any?])
+                                }
+                                tmp.append(model)
+                            }
+                        }
+                        self.valueOptions = tmp
+                    }
+                    if let value = dict["valueType"] as? String {
+                        self.valueType = value
+                    }
+                    if let value = dict["valueUnit"] as? String {
+                        self.valueUnit = value
+                    }
+                }
+            }
+            public var definition: ListGatewayFeaturesResponseBody.Data.Items.Definition?
+
+            public var value: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+                try self.definition?.validate()
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.definition != nil {
+                    map["definition"] = self.definition?.toMap()
+                }
+                if self.value != nil {
+                    map["value"] = self.value!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["definition"] as? [String: Any?] {
+                    var model = ListGatewayFeaturesResponseBody.Data.Items.Definition()
+                    model.fromMap(value)
+                    self.definition = model
+                }
+                if let value = dict["value"] as? String {
+                    self.value = value
+                }
+            }
+        }
+        public var items: [ListGatewayFeaturesResponseBody.Data.Items]?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.items != nil {
+                var tmp : [Any] = []
+                for k in self.items! {
+                    tmp.append(k.toMap())
+                }
+                map["items"] = tmp
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["items"] as? [Any?] {
+                var tmp : [ListGatewayFeaturesResponseBody.Data.Items] = []
+                for v in value {
+                    if v != nil {
+                        var model = ListGatewayFeaturesResponseBody.Data.Items()
+                        if v != nil {
+                            model.fromMap(v as? [String: Any?])
+                        }
+                        tmp.append(model)
+                    }
+                }
+                self.items = tmp
+            }
+        }
+    }
+    public var code: String?
+
+    public var data: ListGatewayFeaturesResponseBody.Data?
+
+    public var message: String?
+
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.data?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.code != nil {
+            map["code"] = self.code!
+        }
+        if self.data != nil {
+            map["data"] = self.data?.toMap()
+        }
+        if self.message != nil {
+            map["message"] = self.message!
+        }
+        if self.requestId != nil {
+            map["requestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["code"] as? String {
+            self.code = value
+        }
+        if let value = dict["data"] as? [String: Any?] {
+            var model = ListGatewayFeaturesResponseBody.Data()
+            model.fromMap(value)
+            self.data = model
+        }
+        if let value = dict["message"] as? String {
+            self.message = value
+        }
+        if let value = dict["requestId"] as? String {
+            self.requestId = value
+        }
+    }
+}
+
+public class ListGatewayFeaturesResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: ListGatewayFeaturesResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = ListGatewayFeaturesResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
 public class ListGatewaysRequest : Tea.TeaModel {
     public class Tag : Tea.TeaModel {
         public var key: String?
