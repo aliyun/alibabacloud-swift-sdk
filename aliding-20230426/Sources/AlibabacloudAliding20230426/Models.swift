@@ -76635,6 +76635,8 @@ public class InvokeSkillHeaders : Tea.TeaModel {
     public class AccountContext : Tea.TeaModel {
         public var accountId: String?
 
+        public var ssoTicket: String?
+
         public override init() {
             super.init()
         }
@@ -76652,6 +76654,9 @@ public class InvokeSkillHeaders : Tea.TeaModel {
             if self.accountId != nil {
                 map["accountId"] = self.accountId!
             }
+            if self.ssoTicket != nil {
+                map["ssoTicket"] = self.ssoTicket!
+            }
             return map
         }
 
@@ -76659,6 +76664,9 @@ public class InvokeSkillHeaders : Tea.TeaModel {
             guard let dict else { return }
             if let value = dict["accountId"] as? String {
                 self.accountId = value
+            }
+            if let value = dict["ssoTicket"] as? String {
+                self.ssoTicket = value
             }
         }
     }
@@ -76749,6 +76757,8 @@ public class InvokeSkillRequest : Tea.TeaModel {
 
     public var stream: Bool?
 
+    public var sourceIdOfAssistantId: String?
+
     public override init() {
         super.init()
     }
@@ -76772,6 +76782,9 @@ public class InvokeSkillRequest : Tea.TeaModel {
         if self.stream != nil {
             map["Stream"] = self.stream!
         }
+        if self.sourceIdOfAssistantId != nil {
+            map["sourceIdOfAssistantId"] = self.sourceIdOfAssistantId!
+        }
         return map
     }
 
@@ -76786,6 +76799,9 @@ public class InvokeSkillRequest : Tea.TeaModel {
         if let value = dict["Stream"] as? Bool {
             self.stream = value
         }
+        if let value = dict["sourceIdOfAssistantId"] as? String {
+            self.sourceIdOfAssistantId = value
+        }
     }
 }
 
@@ -76795,6 +76811,8 @@ public class InvokeSkillShrinkRequest : Tea.TeaModel {
     public var skillId: String?
 
     public var stream: Bool?
+
+    public var sourceIdOfAssistantId: String?
 
     public override init() {
         super.init()
@@ -76819,6 +76837,9 @@ public class InvokeSkillShrinkRequest : Tea.TeaModel {
         if self.stream != nil {
             map["Stream"] = self.stream!
         }
+        if self.sourceIdOfAssistantId != nil {
+            map["sourceIdOfAssistantId"] = self.sourceIdOfAssistantId!
+        }
         return map
     }
 
@@ -76832,6 +76853,9 @@ public class InvokeSkillShrinkRequest : Tea.TeaModel {
         }
         if let value = dict["Stream"] as? Bool {
             self.stream = value
+        }
+        if let value = dict["sourceIdOfAssistantId"] as? String {
+            self.sourceIdOfAssistantId = value
         }
     }
 }

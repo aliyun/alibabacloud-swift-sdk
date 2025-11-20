@@ -9648,6 +9648,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.stream)) {
             body["Stream"] = request.stream!;
         }
+        if (!TeaUtils.Client.isUnset(request.sourceIdOfAssistantId)) {
+            body["sourceIdOfAssistantId"] = request.sourceIdOfAssistantId ?? "";
+        }
         var realHeaders: [String: String] = [:]
         if (!TeaUtils.Client.isUnset(headers.commonHeaders)) {
             realHeaders = headers.commonHeaders ?? [:]
