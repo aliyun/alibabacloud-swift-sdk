@@ -8,7 +8,6 @@ import AlibabacloudEndpointUtil
 open class Client : AlibabacloudOpenApi.Client {
     public override init(_ config: AlibabacloudOpenApi.Config) throws {
         try super.init(config)
-        self._signatureAlgorithm = "v2"
         self._endpointRule = "central"
         try checkConfig(config as! AlibabacloudOpenApi.Config)
         self._endpoint = try getEndpoint("servicemesh", self._regionId ?? "", self._endpointRule ?? "", self._network ?? "", self._suffix ?? "", self._endpointMap ?? [:], self._endpoint ?? "")
@@ -31,8 +30,14 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.clusterId)) {
             body["ClusterId"] = request.clusterId ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.discoveryOnly)) {
+            body["DiscoveryOnly"] = request.discoveryOnly!;
+        }
         if (!TeaUtils.Client.isUnset(request.ignoreNamespaceCheck)) {
             body["IgnoreNamespaceCheck"] = request.ignoreNamespaceCheck!;
+        }
+        if (!TeaUtils.Client.isUnset(request.kubeconfig)) {
+            body["Kubeconfig"] = request.kubeconfig ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.serviceMeshId)) {
             body["ServiceMeshId"] = request.serviceMeshId ?? "";
@@ -331,6 +336,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.CRAggregationEnabled)) {
             body["CRAggregationEnabled"] = request.CRAggregationEnabled!;
         }
+        if (!TeaUtils.Client.isUnset(request.certChain)) {
+            body["CertChain"] = request.certChain ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.chargeType)) {
             body["ChargeType"] = request.chargeType ?? "";
         }
@@ -366,6 +374,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.edition)) {
             body["Edition"] = request.edition ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.enableACMG)) {
+            body["EnableACMG"] = request.enableACMG!;
         }
         if (!TeaUtils.Client.isUnset(request.enableAmbient)) {
             body["EnableAmbient"] = request.enableAmbient!;
@@ -468,6 +479,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.pilotLoadBalancerSpec)) {
             body["PilotLoadBalancerSpec"] = request.pilotLoadBalancerSpec ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.playgroundScene)) {
+            body["PlaygroundScene"] = request.playgroundScene ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.prometheusUrl)) {
             body["PrometheusUrl"] = request.prometheusUrl ?? "";
@@ -594,6 +608,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.ingressGatewayName)) {
             body["IngressGatewayName"] = request.ingressGatewayName ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.ingressGatewayNamespace)) {
+            body["IngressGatewayNamespace"] = request.ingressGatewayNamespace ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.ingressType)) {
             body["IngressType"] = request.ingressType ?? "";
@@ -1084,6 +1101,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.k8sClusterId)) {
             query["K8sClusterId"] = request.k8sClusterId ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.reAddPrometheusIntegration)) {
+            query["ReAddPrometheusIntegration"] = request.reAddPrometheusIntegration ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.serviceMeshId)) {
             query["ServiceMeshId"] = request.serviceMeshId ?? "";
         }
@@ -1538,6 +1558,37 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func describeMeshMultiClusterNetworkWithOptions(_ request: DescribeMeshMultiClusterNetworkRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DescribeMeshMultiClusterNetworkResponse {
+        try TeaUtils.Client.validateModel(request)
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.serviceMeshId)) {
+            body["ServiceMeshId"] = request.serviceMeshId ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "DescribeMeshMultiClusterNetwork",
+            "version": "2020-01-11",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(DescribeMeshMultiClusterNetworkResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func describeMeshMultiClusterNetwork(_ request: DescribeMeshMultiClusterNetworkRequest) async throws -> DescribeMeshMultiClusterNetworkResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await describeMeshMultiClusterNetworkWithOptions(request as! DescribeMeshMultiClusterNetworkRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func describeMetadataWithOptions(_ runtime: TeaUtils.RuntimeOptions) async throws -> DescribeMetadataResponse {
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([:])
         var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
@@ -1633,8 +1684,14 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.k8sClusterId)) {
             body["K8sClusterId"] = request.k8sClusterId ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.lbType)) {
+            body["LbType"] = request.lbType ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.networkType)) {
             body["NetworkType"] = request.networkType ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.serviceMeshId)) {
+            body["ServiceMeshId"] = request.serviceMeshId ?? "";
         }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
@@ -2728,6 +2785,46 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func modifyPilotEipResourceWithOptions(_ request: ModifyPilotEipResourceRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ModifyPilotEipResourceResponse {
+        try TeaUtils.Client.validateModel(request)
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.eipId)) {
+            body["EipId"] = request.eipId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.isCanary)) {
+            body["IsCanary"] = request.isCanary!;
+        }
+        if (!TeaUtils.Client.isUnset(request.operation)) {
+            body["Operation"] = request.operation ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.serviceMeshId)) {
+            body["ServiceMeshId"] = request.serviceMeshId ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "ModifyPilotEipResource",
+            "version": "2020-01-11",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(ModifyPilotEipResourceResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func modifyPilotEipResource(_ request: ModifyPilotEipResourceRequest) async throws -> ModifyPilotEipResourceResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await modifyPilotEipResourceWithOptions(request as! ModifyPilotEipResourceRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func modifyServiceMeshNameWithOptions(_ request: ModifyServiceMeshNameRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ModifyServiceMeshNameResponse {
         try TeaUtils.Client.validateModel(request)
         var body: [String: Any] = [:]
@@ -3135,6 +3232,43 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func updateGuestClusterConfigWithOptions(_ request: UpdateGuestClusterConfigRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> UpdateGuestClusterConfigResponse {
+        try TeaUtils.Client.validateModel(request)
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.guestClusterId)) {
+            body["GuestClusterId"] = request.guestClusterId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.SMCEnabled)) {
+            body["SMCEnabled"] = request.SMCEnabled!;
+        }
+        if (!TeaUtils.Client.isUnset(request.serviceMeshId)) {
+            body["ServiceMeshId"] = request.serviceMeshId ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "UpdateGuestClusterConfig",
+            "version": "2020-01-11",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(UpdateGuestClusterConfigResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func updateGuestClusterConfig(_ request: UpdateGuestClusterConfigRequest) async throws -> UpdateGuestClusterConfigResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await updateGuestClusterConfigWithOptions(request as! UpdateGuestClusterConfigRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func updateIstioGatewayRoutesWithOptions(_ tmpReq: UpdateIstioGatewayRoutesRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> UpdateIstioGatewayRoutesResponse {
         try TeaUtils.Client.validateModel(tmpReq)
         var request: UpdateIstioGatewayRoutesShrinkRequest = UpdateIstioGatewayRoutesShrinkRequest([:])
@@ -3338,6 +3472,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.accessLogSidecarEnabled)) {
             query["AccessLogSidecarEnabled"] = request.accessLogSidecarEnabled!;
         }
+        if (!TeaUtils.Client.isUnset(request.labelsForOffloadedWorkloads)) {
+            query["LabelsForOffloadedWorkloads"] = request.labelsForOffloadedWorkloads ?? "";
+        }
         var body: [String: Any] = [:]
         if (!TeaUtils.Client.isUnset(request.accessLogEnabled)) {
             body["AccessLogEnabled"] = request.accessLogEnabled!;
@@ -3374,6 +3511,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.CRAggregationEnabled)) {
             body["CRAggregationEnabled"] = request.CRAggregationEnabled!;
+        }
+        if (!TeaUtils.Client.isUnset(request.certChain)) {
+            body["CertChain"] = request.certChain ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.clusterSpec)) {
             body["ClusterSpec"] = request.clusterSpec ?? "";
@@ -3437,6 +3577,15 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.excludeOutboundPorts)) {
             body["ExcludeOutboundPorts"] = request.excludeOutboundPorts ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.existingCaCert)) {
+            body["ExistingCaCert"] = request.existingCaCert ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.existingCaKey)) {
+            body["ExistingCaKey"] = request.existingCaKey ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.existingRootCaCert)) {
+            body["ExistingRootCaCert"] = request.existingRootCaCert ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.filterGatewayClusterConfig)) {
             body["FilterGatewayClusterConfig"] = request.filterGatewayClusterConfig!;
@@ -3543,6 +3692,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.outboundTrafficPolicy)) {
             body["OutboundTrafficPolicy"] = request.outboundTrafficPolicy ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.pilotEnableQuicListeners)) {
+            body["PilotEnableQuicListeners"] = request.pilotEnableQuicListeners!;
+        }
         if (!TeaUtils.Client.isUnset(request.prometheusUrl)) {
             body["PrometheusUrl"] = request.prometheusUrl ?? "";
         }
@@ -3575,6 +3727,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.redisFilterEnabled)) {
             body["RedisFilterEnabled"] = request.redisFilterEnabled!;
+        }
+        if (!TeaUtils.Client.isUnset(request.SMCEnabled)) {
+            body["SMCEnabled"] = request.SMCEnabled!;
         }
         if (!TeaUtils.Client.isUnset(request.serviceMeshId)) {
             body["ServiceMeshId"] = request.serviceMeshId ?? "";
@@ -3621,6 +3776,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.tracingOnExtZipkinLimitMemory)) {
             body["TracingOnExtZipkinLimitMemory"] = request.tracingOnExtZipkinLimitMemory ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.tracingOnExtZipkinReplicaCount)) {
+            body["TracingOnExtZipkinReplicaCount"] = request.tracingOnExtZipkinReplicaCount ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.tracingOnExtZipkinRequestCPU)) {
             body["TracingOnExtZipkinRequestCPU"] = request.tracingOnExtZipkinRequestCPU ?? "";
         }
@@ -3656,8 +3814,52 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func updateNamespaceScopeSidecarConfigWithOptions(_ request: UpdateNamespaceScopeSidecarConfigRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> UpdateNamespaceScopeSidecarConfigResponse {
-        try TeaUtils.Client.validateModel(request)
+    public func updateMeshMultiClusterNetworkWithOptions(_ tmpReq: UpdateMeshMultiClusterNetworkRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> UpdateMeshMultiClusterNetworkResponse {
+        try TeaUtils.Client.validateModel(tmpReq)
+        var request: UpdateMeshMultiClusterNetworkShrinkRequest = UpdateMeshMultiClusterNetworkShrinkRequest([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.multiClusterNetworks)) {
+            request.multiClusterNetworksShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.multiClusterNetworks, "MultiClusterNetworks", "json")
+        }
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.multiClusterNetworksShrink)) {
+            body["MultiClusterNetworks"] = request.multiClusterNetworksShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.serviceMeshId)) {
+            body["ServiceMeshId"] = request.serviceMeshId ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "UpdateMeshMultiClusterNetwork",
+            "version": "2020-01-11",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(UpdateMeshMultiClusterNetworkResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func updateMeshMultiClusterNetwork(_ request: UpdateMeshMultiClusterNetworkRequest) async throws -> UpdateMeshMultiClusterNetworkResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await updateMeshMultiClusterNetworkWithOptions(request as! UpdateMeshMultiClusterNetworkRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func updateNamespaceScopeSidecarConfigWithOptions(_ tmpReq: UpdateNamespaceScopeSidecarConfigRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> UpdateNamespaceScopeSidecarConfigResponse {
+        try TeaUtils.Client.validateModel(tmpReq)
+        var request: UpdateNamespaceScopeSidecarConfigShrinkRequest = UpdateNamespaceScopeSidecarConfigShrinkRequest([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.scaledSidecarResource)) {
+            request.scaledSidecarResourceShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.scaledSidecarResource, "ScaledSidecarResource", "json")
+        }
         var body: [String: Any] = [:]
         if (!TeaUtils.Client.isUnset(request.concurrency)) {
             body["Concurrency"] = request.concurrency!;
@@ -3748,6 +3950,15 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.readinessPeriodSeconds)) {
             body["ReadinessPeriodSeconds"] = request.readinessPeriodSeconds!;
+        }
+        if (!TeaUtils.Client.isUnset(request.runtimeValues)) {
+            body["RuntimeValues"] = request.runtimeValues ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.SMCEnabled)) {
+            body["SMCEnabled"] = request.SMCEnabled!;
+        }
+        if (!TeaUtils.Client.isUnset(request.scaledSidecarResourceShrink)) {
+            body["ScaledSidecarResource"] = request.scaledSidecarResourceShrink ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.serviceMeshId)) {
             body["ServiceMeshId"] = request.serviceMeshId ?? "";
@@ -3862,11 +4073,20 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.groupName)) {
             body["GroupName"] = request.groupName ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.ingressRoutingStrategy)) {
+            body["IngressRoutingStrategy"] = request.ingressRoutingStrategy ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.serviceLevelFallbackTarget)) {
+            body["ServiceLevelFallbackTarget"] = request.serviceLevelFallbackTarget ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.serviceMeshId)) {
             body["ServiceMeshId"] = request.serviceMeshId ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.servicesList)) {
             body["ServicesList"] = request.servicesList ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.weightedIngressRule)) {
+            body["WeightedIngressRule"] = request.weightedIngressRule ?? "";
         }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
