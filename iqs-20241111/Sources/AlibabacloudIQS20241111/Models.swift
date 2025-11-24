@@ -1354,6 +1354,8 @@ public class ScorePageItem : Tea.TeaModel {
 
     public var title: String?
 
+    public var websiteAuthorityScore: Int32?
+
     public override init() {
         super.init()
     }
@@ -1432,6 +1434,9 @@ public class ScorePageItem : Tea.TeaModel {
         if self.title != nil {
             map["title"] = self.title!
         }
+        if self.websiteAuthorityScore != nil {
+            map["websiteAuthorityScore"] = self.websiteAuthorityScore!
+        }
         return map
     }
 
@@ -1506,6 +1511,9 @@ public class ScorePageItem : Tea.TeaModel {
         }
         if let value = dict["title"] as? String {
             self.title = value
+        }
+        if let value = dict["websiteAuthorityScore"] as? Int32 {
+            self.websiteAuthorityScore = value
         }
     }
 }
@@ -1699,6 +1707,8 @@ public class UnifiedPageItem : Tea.TeaModel {
 
     public var title: String?
 
+    public var websiteAuthorityScore: Int32?
+
     public override init() {
         super.init()
     }
@@ -1752,6 +1762,9 @@ public class UnifiedPageItem : Tea.TeaModel {
         if self.title != nil {
             map["title"] = self.title!
         }
+        if self.websiteAuthorityScore != nil {
+            map["websiteAuthorityScore"] = self.websiteAuthorityScore!
+        }
         return map
     }
 
@@ -1795,6 +1808,9 @@ public class UnifiedPageItem : Tea.TeaModel {
         }
         if let value = dict["title"] as? String {
             self.title = value
+        }
+        if let value = dict["websiteAuthorityScore"] as? Int32 {
+            self.websiteAuthorityScore = value
         }
     }
 }
