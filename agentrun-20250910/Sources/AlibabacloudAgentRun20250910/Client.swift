@@ -612,6 +612,33 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func deleteSandboxWithOptions(_ sandboxId: String, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> DeleteSandboxResponse {
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String]
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "DeleteSandbox",
+            "version": "2025-09-10",
+            "protocol": "HTTPS",
+            "pathname": "/2025-09-10/sandboxes/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(sandboxId)),
+            "method": "DELETE",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(DeleteSandboxResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func deleteSandbox(_ sandboxId: String) async throws -> DeleteSandboxResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await deleteSandboxWithOptions(sandboxId as! String, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func deleteTemplateWithOptions(_ templateName: String, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> DeleteTemplateResponse {
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "headers": headers as! [String: String]
@@ -1590,6 +1617,12 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.pageSize)) {
             query["pageSize"] = request.pageSize!;
         }
+        if (!TeaUtils.Client.isUnset(request.status)) {
+            query["status"] = request.status ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.templateName)) {
+            query["templateName"] = request.templateName ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.templateType)) {
             query["templateType"] = request.templateType ?? "";
         }
@@ -1702,8 +1735,8 @@ open class Client : AlibabacloudOpenApi.Client {
             "action": "StopSandbox",
             "version": "2025-09-10",
             "protocol": "HTTPS",
-            "pathname": "/2025-09-10/sandboxes/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(sandboxId)),
-            "method": "DELETE",
+            "pathname": "/2025-09-10/sandboxes/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(sandboxId)) + "/stop",
+            "method": "POST",
             "authType": "AK",
             "style": "ROA",
             "reqBodyType": "json",

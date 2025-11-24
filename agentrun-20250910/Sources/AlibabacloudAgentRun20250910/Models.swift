@@ -3404,6 +3404,8 @@ public class CreateModelServiceInput : Tea.TeaModel {
 }
 
 public class CreateSandboxInput : Tea.TeaModel {
+    public var sandboxId: String?
+
     public var sandboxIdleTimeoutSeconds: Int32?
 
     public var templateName: String?
@@ -3422,6 +3424,9 @@ public class CreateSandboxInput : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.sandboxId != nil {
+            map["sandboxId"] = self.sandboxId!
+        }
         if self.sandboxIdleTimeoutSeconds != nil {
             map["sandboxIdleTimeoutSeconds"] = self.sandboxIdleTimeoutSeconds!
         }
@@ -3433,6 +3438,9 @@ public class CreateSandboxInput : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
+        if let value = dict["sandboxId"] as? String {
+            self.sandboxId = value
+        }
         if let value = dict["sandboxIdleTimeoutSeconds"] as? Int32 {
             self.sandboxIdleTimeoutSeconds = value
         }
@@ -9410,8 +9418,6 @@ public class RoutingConfiguration : Tea.TeaModel {
 }
 
 public class Sandbox : Tea.TeaModel {
-    public var sandboxIdleTTLInSeconds: Int32?
-
     public var createdAt: String?
 
     public var endedAt: String?
@@ -9423,6 +9429,8 @@ public class Sandbox : Tea.TeaModel {
     public var sandboxArn: String?
 
     public var sandboxId: String?
+
+    public var sandboxIdleTTLInSeconds: Int32?
 
     public var sandboxIdleTimeoutSeconds: Int32?
 
@@ -9446,9 +9454,6 @@ public class Sandbox : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
-        if self.sandboxIdleTTLInSeconds != nil {
-            map["SandboxIdleTTLInSeconds"] = self.sandboxIdleTTLInSeconds!
-        }
         if self.createdAt != nil {
             map["createdAt"] = self.createdAt!
         }
@@ -9467,6 +9472,9 @@ public class Sandbox : Tea.TeaModel {
         if self.sandboxId != nil {
             map["sandboxId"] = self.sandboxId!
         }
+        if self.sandboxIdleTTLInSeconds != nil {
+            map["sandboxIdleTTLInSeconds"] = self.sandboxIdleTTLInSeconds!
+        }
         if self.sandboxIdleTimeoutSeconds != nil {
             map["sandboxIdleTimeoutSeconds"] = self.sandboxIdleTimeoutSeconds!
         }
@@ -9484,9 +9492,6 @@ public class Sandbox : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any?]?) -> Void {
         guard let dict else { return }
-        if let value = dict["SandboxIdleTTLInSeconds"] as? Int32 {
-            self.sandboxIdleTTLInSeconds = value
-        }
         if let value = dict["createdAt"] as? String {
             self.createdAt = value
         }
@@ -9504,6 +9509,9 @@ public class Sandbox : Tea.TeaModel {
         }
         if let value = dict["sandboxId"] as? String {
             self.sandboxId = value
+        }
+        if let value = dict["sandboxIdleTTLInSeconds"] as? Int32 {
+            self.sandboxIdleTTLInSeconds = value
         }
         if let value = dict["sandboxIdleTimeoutSeconds"] as? Int32 {
             self.sandboxIdleTimeoutSeconds = value
@@ -9934,6 +9942,56 @@ public class StopCodeInterpreterSessionResult : Tea.TeaModel {
         guard let dict else { return }
         if let value = dict["code"] as? String {
             self.code = value
+        }
+        if let value = dict["requestId"] as? String {
+            self.requestId = value
+        }
+    }
+}
+
+public class StopSandboxResult : Tea.TeaModel {
+    public var code: String?
+
+    public var data: Sandbox?
+
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.data?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.code != nil {
+            map["code"] = self.code!
+        }
+        if self.data != nil {
+            map["data"] = self.data?.toMap()
+        }
+        if self.requestId != nil {
+            map["requestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["code"] as? String {
+            self.code = value
+        }
+        if let value = dict["data"] as? [String: Any?] {
+            var model = Sandbox()
+            model.fromMap(value)
+            self.data = model
         }
         if let value = dict["requestId"] as? String {
             self.requestId = value
@@ -13632,6 +13690,56 @@ public class DeleteModelServiceResponse : Tea.TeaModel {
     }
 }
 
+public class DeleteSandboxResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: DeleteSandboxResult?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = DeleteSandboxResult()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
 public class DeleteTemplateResponse : Tea.TeaModel {
     public var headers: [String: String]?
 
@@ -16737,6 +16845,10 @@ public class ListTemplatesRequest : Tea.TeaModel {
 
     public var pageSize: Int32?
 
+    public var status: String?
+
+    public var templateName: String?
+
     public var templateType: String?
 
     public override init() {
@@ -16759,6 +16871,12 @@ public class ListTemplatesRequest : Tea.TeaModel {
         if self.pageSize != nil {
             map["pageSize"] = self.pageSize!
         }
+        if self.status != nil {
+            map["status"] = self.status!
+        }
+        if self.templateName != nil {
+            map["templateName"] = self.templateName!
+        }
         if self.templateType != nil {
             map["templateType"] = self.templateType!
         }
@@ -16772,6 +16890,12 @@ public class ListTemplatesRequest : Tea.TeaModel {
         }
         if let value = dict["pageSize"] as? Int32 {
             self.pageSize = value
+        }
+        if let value = dict["status"] as? String {
+            self.status = value
+        }
+        if let value = dict["templateName"] as? String {
+            self.templateName = value
         }
         if let value = dict["templateType"] as? String {
             self.templateType = value
@@ -17176,7 +17300,7 @@ public class StopSandboxResponse : Tea.TeaModel {
 
     public var statusCode: Int32?
 
-    public var body: DeleteSandboxResult?
+    public var body: StopSandboxResult?
 
     public override init() {
         super.init()
@@ -17214,7 +17338,7 @@ public class StopSandboxResponse : Tea.TeaModel {
             self.statusCode = value
         }
         if let value = dict["body"] as? [String: Any?] {
-            var model = DeleteSandboxResult()
+            var model = StopSandboxResult()
             model.fromMap(value)
             self.body = model
         }
