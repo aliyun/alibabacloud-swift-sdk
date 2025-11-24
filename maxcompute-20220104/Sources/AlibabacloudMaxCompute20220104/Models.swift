@@ -33214,6 +33214,119 @@ public class UpdateProjectIpWhiteListResponse : Tea.TeaModel {
     }
 }
 
+public class UpdateProjectModelTierResponseBody : Tea.TeaModel {
+    public var data: String?
+
+    public var errorCode: String?
+
+    public var errorMsg: String?
+
+    public var httpCode: Int32?
+
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.data != nil {
+            map["data"] = self.data!
+        }
+        if self.errorCode != nil {
+            map["errorCode"] = self.errorCode!
+        }
+        if self.errorMsg != nil {
+            map["errorMsg"] = self.errorMsg!
+        }
+        if self.httpCode != nil {
+            map["httpCode"] = self.httpCode!
+        }
+        if self.requestId != nil {
+            map["requestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["data"] as? String {
+            self.data = value
+        }
+        if let value = dict["errorCode"] as? String {
+            self.errorCode = value
+        }
+        if let value = dict["errorMsg"] as? String {
+            self.errorMsg = value
+        }
+        if let value = dict["httpCode"] as? Int32 {
+            self.httpCode = value
+        }
+        if let value = dict["requestId"] as? String {
+            self.requestId = value
+        }
+    }
+}
+
+public class UpdateProjectModelTierResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: UpdateProjectModelTierResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = UpdateProjectModelTierResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
 public class UpdateQuotaPlanRequest : Tea.TeaModel {
     public var body: String?
 
