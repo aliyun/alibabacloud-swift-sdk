@@ -432,6 +432,10 @@ public class DescribeAttacksResponseBody : Tea.TeaModel {
 
         public var data: String?
 
+        public var handleStatus: Int32?
+
+        public var handleTimestamp: Int64?
+
         public var headers: String?
 
         public var hostId: String?
@@ -541,6 +545,12 @@ public class DescribeAttacksResponseBody : Tea.TeaModel {
             }
             if self.data != nil {
                 map["Data"] = self.data!
+            }
+            if self.handleStatus != nil {
+                map["HandleStatus"] = self.handleStatus!
+            }
+            if self.handleTimestamp != nil {
+                map["HandleTimestamp"] = self.handleTimestamp!
             }
             if self.headers != nil {
                 map["Headers"] = self.headers!
@@ -679,6 +689,12 @@ public class DescribeAttacksResponseBody : Tea.TeaModel {
             }
             if let value = dict["Data"] as? String {
                 self.data = value
+            }
+            if let value = dict["HandleStatus"] as? Int32 {
+                self.handleStatus = value
+            }
+            if let value = dict["HandleTimestamp"] as? Int64 {
+                self.handleTimestamp = value
             }
             if let value = dict["Headers"] as? String {
                 self.headers = value
