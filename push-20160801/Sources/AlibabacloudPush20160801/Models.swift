@@ -250,6 +250,10 @@ public class PushTask : Tea.TeaModel {
                 public class Oppo : Tea.TeaModel {
                     public var category: String?
 
+                    public var deleteIntentData: String?
+
+                    public var intelligentIntent: String?
+
                     public var notifyLevel: Int64?
 
                     public var privateContentParameters: String?
@@ -275,6 +279,12 @@ public class PushTask : Tea.TeaModel {
                         if self.category != nil {
                             map["Category"] = self.category!
                         }
+                        if self.deleteIntentData != nil {
+                            map["DeleteIntentData"] = self.deleteIntentData!
+                        }
+                        if self.intelligentIntent != nil {
+                            map["IntelligentIntent"] = self.intelligentIntent!
+                        }
                         if self.notifyLevel != nil {
                             map["NotifyLevel"] = self.notifyLevel!
                         }
@@ -294,6 +304,12 @@ public class PushTask : Tea.TeaModel {
                         guard let dict else { return }
                         if let value = dict["Category"] as? String {
                             self.category = value
+                        }
+                        if let value = dict["DeleteIntentData"] as? String {
+                            self.deleteIntentData = value
+                        }
+                        if let value = dict["IntelligentIntent"] as? String {
+                            self.intelligentIntent = value
                         }
                         if let value = dict["NotifyLevel"] as? Int64 {
                             self.notifyLevel = value
@@ -3117,6 +3133,12 @@ public class MassPushRequest : Tea.TeaModel {
 
         public var androidOpenUrl: String?
 
+        public var androidOppoDeleteIntentData: String?
+
+        public var androidOppoIntelligentIntent: String?
+
+        public var androidOppoIntentEnv: Int32?
+
         public var androidOppoPrivateContentParameters: [String: String]?
 
         public var androidOppoPrivateMsgTemplateId: String?
@@ -3374,6 +3396,15 @@ public class MassPushRequest : Tea.TeaModel {
             }
             if self.androidOpenUrl != nil {
                 map["AndroidOpenUrl"] = self.androidOpenUrl!
+            }
+            if self.androidOppoDeleteIntentData != nil {
+                map["AndroidOppoDeleteIntentData"] = self.androidOppoDeleteIntentData!
+            }
+            if self.androidOppoIntelligentIntent != nil {
+                map["AndroidOppoIntelligentIntent"] = self.androidOppoIntelligentIntent!
+            }
+            if self.androidOppoIntentEnv != nil {
+                map["AndroidOppoIntentEnv"] = self.androidOppoIntentEnv!
             }
             if self.androidOppoPrivateContentParameters != nil {
                 map["AndroidOppoPrivateContentParameters"] = self.androidOppoPrivateContentParameters!
@@ -3694,6 +3725,15 @@ public class MassPushRequest : Tea.TeaModel {
             }
             if let value = dict["AndroidOpenUrl"] as? String {
                 self.androidOpenUrl = value
+            }
+            if let value = dict["AndroidOppoDeleteIntentData"] as? String {
+                self.androidOppoDeleteIntentData = value
+            }
+            if let value = dict["AndroidOppoIntelligentIntent"] as? String {
+                self.androidOppoIntelligentIntent = value
+            }
+            if let value = dict["AndroidOppoIntentEnv"] as? Int32 {
+                self.androidOppoIntentEnv = value
             }
             if let value = dict["AndroidOppoPrivateContentParameters"] as? [String: String] {
                 self.androidOppoPrivateContentParameters = value
@@ -4358,6 +4398,12 @@ public class PushRequest : Tea.TeaModel {
 
     public var androidOpenUrl: String?
 
+    public var androidOppoDeleteIntentData: String?
+
+    public var androidOppoIntelligentIntent: String?
+
+    public var androidOppoIntentEnv: Int32?
+
     public var androidOppoPrivateContentParameters: [String: String]?
 
     public var androidOppoPrivateMsgTemplateId: String?
@@ -4629,6 +4675,15 @@ public class PushRequest : Tea.TeaModel {
         }
         if self.androidOpenUrl != nil {
             map["AndroidOpenUrl"] = self.androidOpenUrl!
+        }
+        if self.androidOppoDeleteIntentData != nil {
+            map["AndroidOppoDeleteIntentData"] = self.androidOppoDeleteIntentData!
+        }
+        if self.androidOppoIntelligentIntent != nil {
+            map["AndroidOppoIntelligentIntent"] = self.androidOppoIntelligentIntent!
+        }
+        if self.androidOppoIntentEnv != nil {
+            map["AndroidOppoIntentEnv"] = self.androidOppoIntentEnv!
         }
         if self.androidOppoPrivateContentParameters != nil {
             map["AndroidOppoPrivateContentParameters"] = self.androidOppoPrivateContentParameters!
@@ -4971,6 +5026,15 @@ public class PushRequest : Tea.TeaModel {
         if let value = dict["AndroidOpenUrl"] as? String {
             self.androidOpenUrl = value
         }
+        if let value = dict["AndroidOppoDeleteIntentData"] as? String {
+            self.androidOppoDeleteIntentData = value
+        }
+        if let value = dict["AndroidOppoIntelligentIntent"] as? String {
+            self.androidOppoIntelligentIntent = value
+        }
+        if let value = dict["AndroidOppoIntentEnv"] as? Int32 {
+            self.androidOppoIntentEnv = value
+        }
         if let value = dict["AndroidOppoPrivateContentParameters"] as? [String: String] {
             self.androidOppoPrivateContentParameters = value
         }
@@ -5277,6 +5341,12 @@ public class PushShrinkRequest : Tea.TeaModel {
 
     public var androidOpenUrl: String?
 
+    public var androidOppoDeleteIntentData: String?
+
+    public var androidOppoIntelligentIntent: String?
+
+    public var androidOppoIntentEnv: Int32?
+
     public var androidOppoPrivateContentParametersShrink: String?
 
     public var androidOppoPrivateMsgTemplateId: String?
@@ -5548,6 +5618,15 @@ public class PushShrinkRequest : Tea.TeaModel {
         }
         if self.androidOpenUrl != nil {
             map["AndroidOpenUrl"] = self.androidOpenUrl!
+        }
+        if self.androidOppoDeleteIntentData != nil {
+            map["AndroidOppoDeleteIntentData"] = self.androidOppoDeleteIntentData!
+        }
+        if self.androidOppoIntelligentIntent != nil {
+            map["AndroidOppoIntelligentIntent"] = self.androidOppoIntelligentIntent!
+        }
+        if self.androidOppoIntentEnv != nil {
+            map["AndroidOppoIntentEnv"] = self.androidOppoIntentEnv!
         }
         if self.androidOppoPrivateContentParametersShrink != nil {
             map["AndroidOppoPrivateContentParameters"] = self.androidOppoPrivateContentParametersShrink!
@@ -5889,6 +5968,15 @@ public class PushShrinkRequest : Tea.TeaModel {
         }
         if let value = dict["AndroidOpenUrl"] as? String {
             self.androidOpenUrl = value
+        }
+        if let value = dict["AndroidOppoDeleteIntentData"] as? String {
+            self.androidOppoDeleteIntentData = value
+        }
+        if let value = dict["AndroidOppoIntelligentIntent"] as? String {
+            self.androidOppoIntelligentIntent = value
+        }
+        if let value = dict["AndroidOppoIntentEnv"] as? Int32 {
+            self.androidOppoIntentEnv = value
         }
         if let value = dict["AndroidOppoPrivateContentParameters"] as? String {
             self.androidOppoPrivateContentParametersShrink = value

@@ -650,6 +650,15 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.androidOpenUrl)) {
             query["AndroidOpenUrl"] = request.androidOpenUrl ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.androidOppoDeleteIntentData)) {
+            query["AndroidOppoDeleteIntentData"] = request.androidOppoDeleteIntentData ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.androidOppoIntelligentIntent)) {
+            query["AndroidOppoIntelligentIntent"] = request.androidOppoIntelligentIntent ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.androidOppoIntentEnv)) {
+            query["AndroidOppoIntentEnv"] = request.androidOppoIntentEnv!;
+        }
         if (!TeaUtils.Client.isUnset(request.androidOppoPrivateContentParametersShrink)) {
             query["AndroidOppoPrivateContentParameters"] = request.androidOppoPrivateContentParametersShrink ?? "";
         }
