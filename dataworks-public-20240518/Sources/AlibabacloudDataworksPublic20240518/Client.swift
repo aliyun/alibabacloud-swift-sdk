@@ -7323,6 +7323,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.bizdate)) {
             body["Bizdate"] = request.bizdate!;
         }
+        if (!TeaUtils.Client.isUnset(request.filter)) {
+            body["Filter"] = request.filter ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.id)) {
             body["Id"] = request.id!;
         }
@@ -7370,6 +7373,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.triggerType)) {
             body["TriggerType"] = request.triggerType ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.unifiedWorkflowInstanceId)) {
+            body["UnifiedWorkflowInstanceId"] = request.unifiedWorkflowInstanceId!;
         }
         if (!TeaUtils.Client.isUnset(request.workflowId)) {
             body["WorkflowId"] = request.workflowId!;
@@ -7596,9 +7602,15 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(tmpReq.ids)) {
             request.idsShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.ids, "Ids", "json")
         }
+        if (!TeaUtils.Client.isUnset(tmpReq.tags)) {
+            request.tagsShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.tags, "Tags", "json")
+        }
         var body: [String: Any] = [:]
         if (!TeaUtils.Client.isUnset(request.bizDate)) {
             body["BizDate"] = request.bizDate!;
+        }
+        if (!TeaUtils.Client.isUnset(request.filter)) {
+            body["Filter"] = request.filter ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.idsShrink)) {
             body["Ids"] = request.idsShrink ?? "";
@@ -7621,8 +7633,14 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.sortBy)) {
             body["SortBy"] = request.sortBy ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.tagsShrink)) {
+            body["Tags"] = request.tagsShrink ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.type)) {
             body["Type"] = request.type ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.unifiedWorkflowInstanceId)) {
+            body["UnifiedWorkflowInstanceId"] = request.unifiedWorkflowInstanceId!;
         }
         if (!TeaUtils.Client.isUnset(request.workflowId)) {
             body["WorkflowId"] = request.workflowId!;
@@ -7659,6 +7677,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(tmpReq.ids)) {
             request.idsShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.ids, "Ids", "json")
         }
+        if (!TeaUtils.Client.isUnset(tmpReq.tags)) {
+            request.tagsShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.tags, "Tags", "json")
+        }
         var body: [String: Any] = [:]
         if (!TeaUtils.Client.isUnset(request.envType)) {
             body["EnvType"] = request.envType ?? "";
@@ -7683,6 +7704,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.sortBy)) {
             body["SortBy"] = request.sortBy ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.tagsShrink)) {
+            body["Tags"] = request.tagsShrink ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.triggerType)) {
             body["TriggerType"] = request.triggerType ?? "";

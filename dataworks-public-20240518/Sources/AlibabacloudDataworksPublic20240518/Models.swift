@@ -24116,6 +24116,8 @@ public class GetCreateWorkflowInstancesResultResponseBody : Tea.TeaModel {
 
         public var status: String?
 
+        public var unifiedWorkflowInstanceIds: [Int64]?
+
         public var workflowInstanceIds: [Int64]?
 
         public var workflowTaskInstanceIds: [Int64]?
@@ -24140,6 +24142,9 @@ public class GetCreateWorkflowInstancesResultResponseBody : Tea.TeaModel {
             if self.status != nil {
                 map["Status"] = self.status!
             }
+            if self.unifiedWorkflowInstanceIds != nil {
+                map["UnifiedWorkflowInstanceIds"] = self.unifiedWorkflowInstanceIds!
+            }
             if self.workflowInstanceIds != nil {
                 map["WorkflowInstanceIds"] = self.workflowInstanceIds!
             }
@@ -24156,6 +24161,9 @@ public class GetCreateWorkflowInstancesResultResponseBody : Tea.TeaModel {
             }
             if let value = dict["Status"] as? String {
                 self.status = value
+            }
+            if let value = dict["UnifiedWorkflowInstanceIds"] as? [Int64] {
+                self.unifiedWorkflowInstanceIds = value
             }
             if let value = dict["WorkflowInstanceIds"] as? [Int64] {
                 self.workflowInstanceIds = value
@@ -38935,6 +38943,8 @@ public class GetTaskInstanceResponseBody : Tea.TeaModel {
 
         public var triggerType: String?
 
+        public var unifiedWorkflowInstanceId: Int64?
+
         public var waitingResourceTime: Int64?
 
         public var waitingTriggerTime: Int64?
@@ -39066,6 +39076,9 @@ public class GetTaskInstanceResponseBody : Tea.TeaModel {
             }
             if self.triggerType != nil {
                 map["TriggerType"] = self.triggerType!
+            }
+            if self.unifiedWorkflowInstanceId != nil {
+                map["UnifiedWorkflowInstanceId"] = self.unifiedWorkflowInstanceId!
             }
             if self.waitingResourceTime != nil {
                 map["WaitingResourceTime"] = self.waitingResourceTime!
@@ -39207,6 +39220,9 @@ public class GetTaskInstanceResponseBody : Tea.TeaModel {
             }
             if let value = dict["TriggerType"] as? String {
                 self.triggerType = value
+            }
+            if let value = dict["UnifiedWorkflowInstanceId"] as? Int64 {
+                self.unifiedWorkflowInstanceId = value
             }
             if let value = dict["WaitingResourceTime"] as? Int64 {
                 self.waitingResourceTime = value
@@ -40610,6 +40626,8 @@ public class GetWorkflowInstanceResponseBody : Tea.TeaModel {
 
         public var type: String?
 
+        public var unifiedWorkflowInstanceId: Int64?
+
         public var workflowId: Int64?
 
         public var workflowParameters: String?
@@ -40679,6 +40697,9 @@ public class GetWorkflowInstanceResponseBody : Tea.TeaModel {
             if self.type != nil {
                 map["Type"] = self.type!
             }
+            if self.unifiedWorkflowInstanceId != nil {
+                map["UnifiedWorkflowInstanceId"] = self.unifiedWorkflowInstanceId!
+            }
             if self.workflowId != nil {
                 map["WorkflowId"] = self.workflowId!
             }
@@ -40747,6 +40768,9 @@ public class GetWorkflowInstanceResponseBody : Tea.TeaModel {
             }
             if let value = dict["Type"] as? String {
                 self.type = value
+            }
+            if let value = dict["UnifiedWorkflowInstanceId"] as? Int64 {
+                self.unifiedWorkflowInstanceId = value
             }
             if let value = dict["WorkflowId"] as? Int64 {
                 self.workflowId = value
@@ -67770,6 +67794,8 @@ public class ListTaskInstanceOperationLogsResponse : Tea.TeaModel {
 public class ListTaskInstancesRequest : Tea.TeaModel {
     public var bizdate: Int64?
 
+    public var filter: String?
+
     public var id: Int64?
 
     public var ids: [Int64]?
@@ -67802,6 +67828,8 @@ public class ListTaskInstancesRequest : Tea.TeaModel {
 
     public var triggerType: String?
 
+    public var unifiedWorkflowInstanceId: Int64?
+
     public var workflowId: Int64?
 
     public var workflowInstanceId: Int64?
@@ -67824,6 +67852,9 @@ public class ListTaskInstancesRequest : Tea.TeaModel {
         var map = super.toMap()
         if self.bizdate != nil {
             map["Bizdate"] = self.bizdate!
+        }
+        if self.filter != nil {
+            map["Filter"] = self.filter!
         }
         if self.id != nil {
             map["Id"] = self.id!
@@ -67873,6 +67904,9 @@ public class ListTaskInstancesRequest : Tea.TeaModel {
         if self.triggerType != nil {
             map["TriggerType"] = self.triggerType!
         }
+        if self.unifiedWorkflowInstanceId != nil {
+            map["UnifiedWorkflowInstanceId"] = self.unifiedWorkflowInstanceId!
+        }
         if self.workflowId != nil {
             map["WorkflowId"] = self.workflowId!
         }
@@ -67889,6 +67923,9 @@ public class ListTaskInstancesRequest : Tea.TeaModel {
         guard let dict else { return }
         if let value = dict["Bizdate"] as? Int64 {
             self.bizdate = value
+        }
+        if let value = dict["Filter"] as? String {
+            self.filter = value
         }
         if let value = dict["Id"] as? Int64 {
             self.id = value
@@ -67938,6 +67975,9 @@ public class ListTaskInstancesRequest : Tea.TeaModel {
         if let value = dict["TriggerType"] as? String {
             self.triggerType = value
         }
+        if let value = dict["UnifiedWorkflowInstanceId"] as? Int64 {
+            self.unifiedWorkflowInstanceId = value
+        }
         if let value = dict["WorkflowId"] as? Int64 {
             self.workflowId = value
         }
@@ -67952,6 +67992,8 @@ public class ListTaskInstancesRequest : Tea.TeaModel {
 
 public class ListTaskInstancesShrinkRequest : Tea.TeaModel {
     public var bizdate: Int64?
+
+    public var filter: String?
 
     public var id: Int64?
 
@@ -67985,6 +68027,8 @@ public class ListTaskInstancesShrinkRequest : Tea.TeaModel {
 
     public var triggerType: String?
 
+    public var unifiedWorkflowInstanceId: Int64?
+
     public var workflowId: Int64?
 
     public var workflowInstanceId: Int64?
@@ -68007,6 +68051,9 @@ public class ListTaskInstancesShrinkRequest : Tea.TeaModel {
         var map = super.toMap()
         if self.bizdate != nil {
             map["Bizdate"] = self.bizdate!
+        }
+        if self.filter != nil {
+            map["Filter"] = self.filter!
         }
         if self.id != nil {
             map["Id"] = self.id!
@@ -68056,6 +68103,9 @@ public class ListTaskInstancesShrinkRequest : Tea.TeaModel {
         if self.triggerType != nil {
             map["TriggerType"] = self.triggerType!
         }
+        if self.unifiedWorkflowInstanceId != nil {
+            map["UnifiedWorkflowInstanceId"] = self.unifiedWorkflowInstanceId!
+        }
         if self.workflowId != nil {
             map["WorkflowId"] = self.workflowId!
         }
@@ -68072,6 +68122,9 @@ public class ListTaskInstancesShrinkRequest : Tea.TeaModel {
         guard let dict else { return }
         if let value = dict["Bizdate"] as? Int64 {
             self.bizdate = value
+        }
+        if let value = dict["Filter"] as? String {
+            self.filter = value
         }
         if let value = dict["Id"] as? Int64 {
             self.id = value
@@ -68120,6 +68173,9 @@ public class ListTaskInstancesShrinkRequest : Tea.TeaModel {
         }
         if let value = dict["TriggerType"] as? String {
             self.triggerType = value
+        }
+        if let value = dict["UnifiedWorkflowInstanceId"] as? Int64 {
+            self.unifiedWorkflowInstanceId = value
         }
         if let value = dict["WorkflowId"] as? Int64 {
             self.workflowId = value
@@ -68308,6 +68364,8 @@ public class ListTaskInstancesResponseBody : Tea.TeaModel {
 
             public var triggerType: String?
 
+            public var unifiedWorkflowInstanceId: Int64?
+
             public var waitingResourceTime: Int64?
 
             public var waitingTriggerTime: Int64?
@@ -68424,6 +68482,9 @@ public class ListTaskInstancesResponseBody : Tea.TeaModel {
                 if self.triggerType != nil {
                     map["TriggerType"] = self.triggerType!
                 }
+                if self.unifiedWorkflowInstanceId != nil {
+                    map["UnifiedWorkflowInstanceId"] = self.unifiedWorkflowInstanceId!
+                }
                 if self.waitingResourceTime != nil {
                     map["WaitingResourceTime"] = self.waitingResourceTime!
                 }
@@ -68539,6 +68600,9 @@ public class ListTaskInstancesResponseBody : Tea.TeaModel {
                 }
                 if let value = dict["TriggerType"] as? String {
                     self.triggerType = value
+                }
+                if let value = dict["UnifiedWorkflowInstanceId"] as? Int64 {
+                    self.unifiedWorkflowInstanceId = value
                 }
                 if let value = dict["WaitingResourceTime"] as? Int64 {
                     self.waitingResourceTime = value
@@ -72268,6 +72332,8 @@ public class ListWorkflowDefinitionsResponse : Tea.TeaModel {
 public class ListWorkflowInstancesRequest : Tea.TeaModel {
     public var bizDate: Int64?
 
+    public var filter: String?
+
     public var ids: [Int64]?
 
     public var name: String?
@@ -72282,7 +72348,11 @@ public class ListWorkflowInstancesRequest : Tea.TeaModel {
 
     public var sortBy: String?
 
+    public var tags: [String]?
+
     public var type: String?
+
+    public var unifiedWorkflowInstanceId: Int64?
 
     public var workflowId: Int64?
 
@@ -72302,6 +72372,9 @@ public class ListWorkflowInstancesRequest : Tea.TeaModel {
         var map = super.toMap()
         if self.bizDate != nil {
             map["BizDate"] = self.bizDate!
+        }
+        if self.filter != nil {
+            map["Filter"] = self.filter!
         }
         if self.ids != nil {
             map["Ids"] = self.ids!
@@ -72324,8 +72397,14 @@ public class ListWorkflowInstancesRequest : Tea.TeaModel {
         if self.sortBy != nil {
             map["SortBy"] = self.sortBy!
         }
+        if self.tags != nil {
+            map["Tags"] = self.tags!
+        }
         if self.type != nil {
             map["Type"] = self.type!
+        }
+        if self.unifiedWorkflowInstanceId != nil {
+            map["UnifiedWorkflowInstanceId"] = self.unifiedWorkflowInstanceId!
         }
         if self.workflowId != nil {
             map["WorkflowId"] = self.workflowId!
@@ -72337,6 +72416,9 @@ public class ListWorkflowInstancesRequest : Tea.TeaModel {
         guard let dict else { return }
         if let value = dict["BizDate"] as? Int64 {
             self.bizDate = value
+        }
+        if let value = dict["Filter"] as? String {
+            self.filter = value
         }
         if let value = dict["Ids"] as? [Int64] {
             self.ids = value
@@ -72359,8 +72441,14 @@ public class ListWorkflowInstancesRequest : Tea.TeaModel {
         if let value = dict["SortBy"] as? String {
             self.sortBy = value
         }
+        if let value = dict["Tags"] as? [String] {
+            self.tags = value
+        }
         if let value = dict["Type"] as? String {
             self.type = value
+        }
+        if let value = dict["UnifiedWorkflowInstanceId"] as? Int64 {
+            self.unifiedWorkflowInstanceId = value
         }
         if let value = dict["WorkflowId"] as? Int64 {
             self.workflowId = value
@@ -72370,6 +72458,8 @@ public class ListWorkflowInstancesRequest : Tea.TeaModel {
 
 public class ListWorkflowInstancesShrinkRequest : Tea.TeaModel {
     public var bizDate: Int64?
+
+    public var filter: String?
 
     public var idsShrink: String?
 
@@ -72385,7 +72475,11 @@ public class ListWorkflowInstancesShrinkRequest : Tea.TeaModel {
 
     public var sortBy: String?
 
+    public var tagsShrink: String?
+
     public var type: String?
+
+    public var unifiedWorkflowInstanceId: Int64?
 
     public var workflowId: Int64?
 
@@ -72405,6 +72499,9 @@ public class ListWorkflowInstancesShrinkRequest : Tea.TeaModel {
         var map = super.toMap()
         if self.bizDate != nil {
             map["BizDate"] = self.bizDate!
+        }
+        if self.filter != nil {
+            map["Filter"] = self.filter!
         }
         if self.idsShrink != nil {
             map["Ids"] = self.idsShrink!
@@ -72427,8 +72524,14 @@ public class ListWorkflowInstancesShrinkRequest : Tea.TeaModel {
         if self.sortBy != nil {
             map["SortBy"] = self.sortBy!
         }
+        if self.tagsShrink != nil {
+            map["Tags"] = self.tagsShrink!
+        }
         if self.type != nil {
             map["Type"] = self.type!
+        }
+        if self.unifiedWorkflowInstanceId != nil {
+            map["UnifiedWorkflowInstanceId"] = self.unifiedWorkflowInstanceId!
         }
         if self.workflowId != nil {
             map["WorkflowId"] = self.workflowId!
@@ -72440,6 +72543,9 @@ public class ListWorkflowInstancesShrinkRequest : Tea.TeaModel {
         guard let dict else { return }
         if let value = dict["BizDate"] as? Int64 {
             self.bizDate = value
+        }
+        if let value = dict["Filter"] as? String {
+            self.filter = value
         }
         if let value = dict["Ids"] as? String {
             self.idsShrink = value
@@ -72462,8 +72568,14 @@ public class ListWorkflowInstancesShrinkRequest : Tea.TeaModel {
         if let value = dict["SortBy"] as? String {
             self.sortBy = value
         }
+        if let value = dict["Tags"] as? String {
+            self.tagsShrink = value
+        }
         if let value = dict["Type"] as? String {
             self.type = value
+        }
+        if let value = dict["UnifiedWorkflowInstanceId"] as? Int64 {
+            self.unifiedWorkflowInstanceId = value
         }
         if let value = dict["WorkflowId"] as? Int64 {
             self.workflowId = value
@@ -72542,6 +72654,8 @@ public class ListWorkflowInstancesResponseBody : Tea.TeaModel {
 
             public var type: String?
 
+            public var unifiedWorkflowInstanceId: Int64?
+
             public var workflowId: Int64?
 
             public var workflowParameters: String?
@@ -72611,6 +72725,9 @@ public class ListWorkflowInstancesResponseBody : Tea.TeaModel {
                 if self.type != nil {
                     map["Type"] = self.type!
                 }
+                if self.unifiedWorkflowInstanceId != nil {
+                    map["UnifiedWorkflowInstanceId"] = self.unifiedWorkflowInstanceId!
+                }
                 if self.workflowId != nil {
                     map["WorkflowId"] = self.workflowId!
                 }
@@ -72679,6 +72796,9 @@ public class ListWorkflowInstancesResponseBody : Tea.TeaModel {
                 }
                 if let value = dict["Type"] as? String {
                     self.type = value
+                }
+                if let value = dict["UnifiedWorkflowInstanceId"] as? Int64 {
+                    self.unifiedWorkflowInstanceId = value
                 }
                 if let value = dict["WorkflowId"] as? Int64 {
                     self.workflowId = value
@@ -72866,6 +72986,8 @@ public class ListWorkflowsRequest : Tea.TeaModel {
 
     public var sortBy: String?
 
+    public var tags: [String]?
+
     public var triggerType: String?
 
     public override init() {
@@ -72906,6 +73028,9 @@ public class ListWorkflowsRequest : Tea.TeaModel {
         if self.sortBy != nil {
             map["SortBy"] = self.sortBy!
         }
+        if self.tags != nil {
+            map["Tags"] = self.tags!
+        }
         if self.triggerType != nil {
             map["TriggerType"] = self.triggerType!
         }
@@ -72938,6 +73063,9 @@ public class ListWorkflowsRequest : Tea.TeaModel {
         if let value = dict["SortBy"] as? String {
             self.sortBy = value
         }
+        if let value = dict["Tags"] as? [String] {
+            self.tags = value
+        }
         if let value = dict["TriggerType"] as? String {
             self.triggerType = value
         }
@@ -72960,6 +73088,8 @@ public class ListWorkflowsShrinkRequest : Tea.TeaModel {
     public var projectId: Int64?
 
     public var sortBy: String?
+
+    public var tagsShrink: String?
 
     public var triggerType: String?
 
@@ -73001,6 +73131,9 @@ public class ListWorkflowsShrinkRequest : Tea.TeaModel {
         if self.sortBy != nil {
             map["SortBy"] = self.sortBy!
         }
+        if self.tagsShrink != nil {
+            map["Tags"] = self.tagsShrink!
+        }
         if self.triggerType != nil {
             map["TriggerType"] = self.triggerType!
         }
@@ -73032,6 +73165,9 @@ public class ListWorkflowsShrinkRequest : Tea.TeaModel {
         }
         if let value = dict["SortBy"] as? String {
             self.sortBy = value
+        }
+        if let value = dict["Tags"] as? String {
+            self.tagsShrink = value
         }
         if let value = dict["TriggerType"] as? String {
             self.triggerType = value
