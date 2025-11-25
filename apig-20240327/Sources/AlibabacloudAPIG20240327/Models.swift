@@ -20900,6 +20900,10 @@ public class ListGatewaysResponseBody : Tea.TeaModel {
 
                 public var gatewayDefault: Bool?
 
+                public var ipv4Addresses: [String]?
+
+                public var ipv6Addresses: [String]?
+
                 public var loadBalancerId: String?
 
                 public var mode: String?
@@ -20936,6 +20940,12 @@ public class ListGatewaysResponseBody : Tea.TeaModel {
                     if self.gatewayDefault != nil {
                         map["gatewayDefault"] = self.gatewayDefault!
                     }
+                    if self.ipv4Addresses != nil {
+                        map["ipv4Addresses"] = self.ipv4Addresses!
+                    }
+                    if self.ipv6Addresses != nil {
+                        map["ipv6Addresses"] = self.ipv6Addresses!
+                    }
                     if self.loadBalancerId != nil {
                         map["loadBalancerId"] = self.loadBalancerId!
                     }
@@ -20971,6 +20981,12 @@ public class ListGatewaysResponseBody : Tea.TeaModel {
                     }
                     if let value = dict["gatewayDefault"] as? Bool {
                         self.gatewayDefault = value
+                    }
+                    if let value = dict["ipv4Addresses"] as? [String] {
+                        self.ipv4Addresses = value
+                    }
+                    if let value = dict["ipv6Addresses"] as? [String] {
+                        self.ipv6Addresses = value
                     }
                     if let value = dict["loadBalancerId"] as? String {
                         self.loadBalancerId = value
