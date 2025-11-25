@@ -7005,6 +7005,441 @@ public class DescribeBlockStatusResponse : Tea.TeaModel {
     }
 }
 
+public class DescribeCdnLinkageRulesRequest : Tea.TeaModel {
+    public var domain: String?
+
+    public var pageNumber: Int32?
+
+    public var pageSize: Int32?
+
+    public var resourceGroupId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.domain != nil {
+            map["Domain"] = self.domain!
+        }
+        if self.pageNumber != nil {
+            map["PageNumber"] = self.pageNumber!
+        }
+        if self.pageSize != nil {
+            map["PageSize"] = self.pageSize!
+        }
+        if self.resourceGroupId != nil {
+            map["ResourceGroupId"] = self.resourceGroupId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["Domain"] as? String {
+            self.domain = value
+        }
+        if let value = dict["PageNumber"] as? Int32 {
+            self.pageNumber = value
+        }
+        if let value = dict["PageSize"] as? Int32 {
+            self.pageSize = value
+        }
+        if let value = dict["ResourceGroupId"] as? String {
+            self.resourceGroupId = value
+        }
+    }
+}
+
+public class DescribeCdnLinkageRulesResponseBody : Tea.TeaModel {
+    public class SchedulerRules : Tea.TeaModel {
+        public class CdnLinkageRule : Tea.TeaModel {
+            public class Param : Tea.TeaModel {
+                public class ParamData : Tea.TeaModel {
+                    public var accessQps: Int64?
+
+                    public var upstreamQps: Int64?
+
+                    public override init() {
+                        super.init()
+                    }
+
+                    public init(_ dict: [String: Any]) {
+                        super.init()
+                        self.fromMap(dict)
+                    }
+
+                    public override func validate() throws -> Void {
+                    }
+
+                    public override func toMap() -> [String : Any] {
+                        var map = super.toMap()
+                        if self.accessQps != nil {
+                            map["AccessQps"] = self.accessQps!
+                        }
+                        if self.upstreamQps != nil {
+                            map["UpstreamQps"] = self.upstreamQps!
+                        }
+                        return map
+                    }
+
+                    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                        guard let dict else { return }
+                        if let value = dict["AccessQps"] as? Int64 {
+                            self.accessQps = value
+                        }
+                        if let value = dict["UpstreamQps"] as? Int64 {
+                            self.upstreamQps = value
+                        }
+                    }
+                }
+                public var paramData: DescribeCdnLinkageRulesResponseBody.SchedulerRules.CdnLinkageRule.Param.ParamData?
+
+                public var paramType: String?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                    try self.paramData?.validate()
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.paramData != nil {
+                        map["ParamData"] = self.paramData?.toMap()
+                    }
+                    if self.paramType != nil {
+                        map["ParamType"] = self.paramType!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                    guard let dict else { return }
+                    if let value = dict["ParamData"] as? [String: Any?] {
+                        var model = DescribeCdnLinkageRulesResponseBody.SchedulerRules.CdnLinkageRule.Param.ParamData()
+                        model.fromMap(value)
+                        self.paramData = model
+                    }
+                    if let value = dict["ParamType"] as? String {
+                        self.paramType = value
+                    }
+                }
+            }
+            public class Rules : Tea.TeaModel {
+                public var priority: Int32?
+
+                public var regionId: String?
+
+                public var status: Int32?
+
+                public var type: String?
+
+                public var value: String?
+
+                public var valueType: Int32?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.priority != nil {
+                        map["Priority"] = self.priority!
+                    }
+                    if self.regionId != nil {
+                        map["RegionId"] = self.regionId!
+                    }
+                    if self.status != nil {
+                        map["Status"] = self.status!
+                    }
+                    if self.type != nil {
+                        map["Type"] = self.type!
+                    }
+                    if self.value != nil {
+                        map["Value"] = self.value!
+                    }
+                    if self.valueType != nil {
+                        map["ValueType"] = self.valueType!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                    guard let dict else { return }
+                    if let value = dict["Priority"] as? Int32 {
+                        self.priority = value
+                    }
+                    if let value = dict["RegionId"] as? String {
+                        self.regionId = value
+                    }
+                    if let value = dict["Status"] as? Int32 {
+                        self.status = value
+                    }
+                    if let value = dict["Type"] as? String {
+                        self.type = value
+                    }
+                    if let value = dict["Value"] as? String {
+                        self.value = value
+                    }
+                    if let value = dict["ValueType"] as? Int32 {
+                        self.valueType = value
+                    }
+                }
+            }
+            public var cname: String?
+
+            public var param: DescribeCdnLinkageRulesResponseBody.SchedulerRules.CdnLinkageRule.Param?
+
+            public var ruleName: String?
+
+            public var rules: [DescribeCdnLinkageRulesResponseBody.SchedulerRules.CdnLinkageRule.Rules]?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+                try self.param?.validate()
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.cname != nil {
+                    map["Cname"] = self.cname!
+                }
+                if self.param != nil {
+                    map["Param"] = self.param?.toMap()
+                }
+                if self.ruleName != nil {
+                    map["RuleName"] = self.ruleName!
+                }
+                if self.rules != nil {
+                    var tmp : [Any] = []
+                    for k in self.rules! {
+                        tmp.append(k.toMap())
+                    }
+                    map["Rules"] = tmp
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["Cname"] as? String {
+                    self.cname = value
+                }
+                if let value = dict["Param"] as? [String: Any?] {
+                    var model = DescribeCdnLinkageRulesResponseBody.SchedulerRules.CdnLinkageRule.Param()
+                    model.fromMap(value)
+                    self.param = model
+                }
+                if let value = dict["RuleName"] as? String {
+                    self.ruleName = value
+                }
+                if let value = dict["Rules"] as? [Any?] {
+                    var tmp : [DescribeCdnLinkageRulesResponseBody.SchedulerRules.CdnLinkageRule.Rules] = []
+                    for v in value {
+                        if v != nil {
+                            var model = DescribeCdnLinkageRulesResponseBody.SchedulerRules.CdnLinkageRule.Rules()
+                            if v != nil {
+                                model.fromMap(v as? [String: Any?])
+                            }
+                            tmp.append(model)
+                        }
+                    }
+                    self.rules = tmp
+                }
+            }
+        }
+        public var cdnLinkageEnable: Int32?
+
+        public var cdnLinkageRule: DescribeCdnLinkageRulesResponseBody.SchedulerRules.CdnLinkageRule?
+
+        public var domain: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+            try self.cdnLinkageRule?.validate()
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.cdnLinkageEnable != nil {
+                map["CdnLinkageEnable"] = self.cdnLinkageEnable!
+            }
+            if self.cdnLinkageRule != nil {
+                map["CdnLinkageRule"] = self.cdnLinkageRule?.toMap()
+            }
+            if self.domain != nil {
+                map["Domain"] = self.domain!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["CdnLinkageEnable"] as? Int32 {
+                self.cdnLinkageEnable = value
+            }
+            if let value = dict["CdnLinkageRule"] as? [String: Any?] {
+                var model = DescribeCdnLinkageRulesResponseBody.SchedulerRules.CdnLinkageRule()
+                model.fromMap(value)
+                self.cdnLinkageRule = model
+            }
+            if let value = dict["Domain"] as? String {
+                self.domain = value
+            }
+        }
+    }
+    public var requestId: String?
+
+    public var schedulerRules: [DescribeCdnLinkageRulesResponseBody.SchedulerRules]?
+
+    public var totalCount: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.schedulerRules != nil {
+            var tmp : [Any] = []
+            for k in self.schedulerRules! {
+                tmp.append(k.toMap())
+            }
+            map["SchedulerRules"] = tmp
+        }
+        if self.totalCount != nil {
+            map["TotalCount"] = self.totalCount!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+        if let value = dict["SchedulerRules"] as? [Any?] {
+            var tmp : [DescribeCdnLinkageRulesResponseBody.SchedulerRules] = []
+            for v in value {
+                if v != nil {
+                    var model = DescribeCdnLinkageRulesResponseBody.SchedulerRules()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.schedulerRules = tmp
+        }
+        if let value = dict["TotalCount"] as? String {
+            self.totalCount = value
+        }
+    }
+}
+
+public class DescribeCdnLinkageRulesResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: DescribeCdnLinkageRulesResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = DescribeCdnLinkageRulesResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
 public class DescribeCertsRequest : Tea.TeaModel {
     public var domain: String?
 
