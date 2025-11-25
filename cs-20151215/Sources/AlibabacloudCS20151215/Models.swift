@@ -6859,6 +6859,8 @@ public class CreateClusterNodePoolRequest : Tea.TeaModel {
 
         public var systemDiskSize: Int64?
 
+        public var systemDiskSnapshotPolicyId: String?
+
         public var tags: [CreateClusterNodePoolRequest.ScalingGroup.Tags]?
 
         public var vswitchIds: [String]?
@@ -7029,6 +7031,9 @@ public class CreateClusterNodePoolRequest : Tea.TeaModel {
             }
             if self.systemDiskSize != nil {
                 map["system_disk_size"] = self.systemDiskSize!
+            }
+            if self.systemDiskSnapshotPolicyId != nil {
+                map["system_disk_snapshot_policy_id"] = self.systemDiskSnapshotPolicyId!
             }
             if self.tags != nil {
                 var tmp : [Any] = []
@@ -7218,6 +7223,9 @@ public class CreateClusterNodePoolRequest : Tea.TeaModel {
             }
             if let value = dict["system_disk_size"] as? Int64 {
                 self.systemDiskSize = value
+            }
+            if let value = dict["system_disk_snapshot_policy_id"] as? String {
+                self.systemDiskSnapshotPolicyId = value
             }
             if let value = dict["tags"] as? [Any?] {
                 var tmp : [CreateClusterNodePoolRequest.ScalingGroup.Tags] = []
@@ -12795,6 +12803,8 @@ public class DescribeClusterNodePoolDetailResponseBody : Tea.TeaModel {
 
         public var systemDiskSize: Int64?
 
+        public var systemDiskSnapshotPolicyId: String?
+
         public var tags: [Tag]?
 
         public var vswitchIds: [String]?
@@ -12971,6 +12981,9 @@ public class DescribeClusterNodePoolDetailResponseBody : Tea.TeaModel {
             }
             if self.systemDiskSize != nil {
                 map["system_disk_size"] = self.systemDiskSize!
+            }
+            if self.systemDiskSnapshotPolicyId != nil {
+                map["system_disk_snapshot_policy_id"] = self.systemDiskSnapshotPolicyId!
             }
             if self.tags != nil {
                 var tmp : [Any] = []
@@ -13167,6 +13180,9 @@ public class DescribeClusterNodePoolDetailResponseBody : Tea.TeaModel {
             if let value = dict["system_disk_size"] as? Int64 {
                 self.systemDiskSize = value
             }
+            if let value = dict["system_disk_snapshot_policy_id"] as? String {
+                self.systemDiskSnapshotPolicyId = value
+            }
             if let value = dict["tags"] as? [Any?] {
                 var tmp : [Tag] = []
                 for v in value {
@@ -13186,6 +13202,70 @@ public class DescribeClusterNodePoolDetailResponseBody : Tea.TeaModel {
         }
     }
     public class Status : Tea.TeaModel {
+        public class Conditions : Tea.TeaModel {
+            public var lastTransitionTime: String?
+
+            public var message: String?
+
+            public var reason: String?
+
+            public var status: String?
+
+            public var type: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.lastTransitionTime != nil {
+                    map["last_transition_time"] = self.lastTransitionTime!
+                }
+                if self.message != nil {
+                    map["message"] = self.message!
+                }
+                if self.reason != nil {
+                    map["reason"] = self.reason!
+                }
+                if self.status != nil {
+                    map["status"] = self.status!
+                }
+                if self.type != nil {
+                    map["type"] = self.type!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["last_transition_time"] as? String {
+                    self.lastTransitionTime = value
+                }
+                if let value = dict["message"] as? String {
+                    self.message = value
+                }
+                if let value = dict["reason"] as? String {
+                    self.reason = value
+                }
+                if let value = dict["status"] as? String {
+                    self.status = value
+                }
+                if let value = dict["type"] as? String {
+                    self.type = value
+                }
+            }
+        }
+        public var conditions: [DescribeClusterNodePoolDetailResponseBody.Status.Conditions]?
+
         public var failedNodes: Int64?
 
         public var healthyNodes: Int64?
@@ -13216,6 +13296,13 @@ public class DescribeClusterNodePoolDetailResponseBody : Tea.TeaModel {
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
+            if self.conditions != nil {
+                var tmp : [Any] = []
+                for k in self.conditions! {
+                    tmp.append(k.toMap())
+                }
+                map["conditions"] = tmp
+            }
             if self.failedNodes != nil {
                 map["failed_nodes"] = self.failedNodes!
             }
@@ -13245,6 +13332,19 @@ public class DescribeClusterNodePoolDetailResponseBody : Tea.TeaModel {
 
         public override func fromMap(_ dict: [String: Any?]?) -> Void {
             guard let dict else { return }
+            if let value = dict["conditions"] as? [Any?] {
+                var tmp : [DescribeClusterNodePoolDetailResponseBody.Status.Conditions] = []
+                for v in value {
+                    if v != nil {
+                        var model = DescribeClusterNodePoolDetailResponseBody.Status.Conditions()
+                        if v != nil {
+                            model.fromMap(v as? [String: Any?])
+                        }
+                        tmp.append(model)
+                    }
+                }
+                self.conditions = tmp
+            }
             if let value = dict["failed_nodes"] as? Int64 {
                 self.failedNodes = value
             }
@@ -14587,6 +14687,8 @@ public class DescribeClusterNodePoolsResponseBody : Tea.TeaModel {
 
             public var systemDiskSize: Int64?
 
+            public var systemDiskSnapshotPolicyId: String?
+
             public var tags: [Tag]?
 
             public var vswitchIds: [String]?
@@ -14759,6 +14861,9 @@ public class DescribeClusterNodePoolsResponseBody : Tea.TeaModel {
                 }
                 if self.systemDiskSize != nil {
                     map["system_disk_size"] = self.systemDiskSize!
+                }
+                if self.systemDiskSnapshotPolicyId != nil {
+                    map["system_disk_snapshot_policy_id"] = self.systemDiskSnapshotPolicyId!
                 }
                 if self.tags != nil {
                     var tmp : [Any] = []
@@ -14949,6 +15054,9 @@ public class DescribeClusterNodePoolsResponseBody : Tea.TeaModel {
                 }
                 if let value = dict["system_disk_size"] as? Int64 {
                     self.systemDiskSize = value
+                }
+                if let value = dict["system_disk_snapshot_policy_id"] as? String {
+                    self.systemDiskSnapshotPolicyId = value
                 }
                 if let value = dict["tags"] as? [Any?] {
                     var tmp : [Tag] = []
@@ -26539,6 +26647,44 @@ public class ListOperationPlansForRegionRequest : Tea.TeaModel {
 
 public class ListOperationPlansForRegionResponseBody : Tea.TeaModel {
     public class Plans : Tea.TeaModel {
+        public class StateReason : Tea.TeaModel {
+            public var code: String?
+
+            public var message: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.code != nil {
+                    map["code"] = self.code!
+                }
+                if self.message != nil {
+                    map["message"] = self.message!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["code"] as? String {
+                    self.code = value
+                }
+                if let value = dict["message"] as? String {
+                    self.message = value
+                }
+            }
+        }
         public var clusterId: String?
 
         public var created: String?
@@ -26550,6 +26696,8 @@ public class ListOperationPlansForRegionResponseBody : Tea.TeaModel {
         public var startTime: String?
 
         public var state: String?
+
+        public var stateReason: ListOperationPlansForRegionResponseBody.Plans.StateReason?
 
         public var targetId: String?
 
@@ -26569,6 +26717,7 @@ public class ListOperationPlansForRegionResponseBody : Tea.TeaModel {
         }
 
         public override func validate() throws -> Void {
+            try self.stateReason?.validate()
         }
 
         public override func toMap() -> [String : Any] {
@@ -26590,6 +26739,9 @@ public class ListOperationPlansForRegionResponseBody : Tea.TeaModel {
             }
             if self.state != nil {
                 map["state"] = self.state!
+            }
+            if self.stateReason != nil {
+                map["state_reason"] = self.stateReason?.toMap()
             }
             if self.targetId != nil {
                 map["target_id"] = self.targetId!
@@ -26625,6 +26777,11 @@ public class ListOperationPlansForRegionResponseBody : Tea.TeaModel {
             }
             if let value = dict["state"] as? String {
                 self.state = value
+            }
+            if let value = dict["state_reason"] as? [String: Any?] {
+                var model = ListOperationPlansForRegionResponseBody.Plans.StateReason()
+                model.fromMap(value)
+                self.stateReason = model
             }
             if let value = dict["target_id"] as? String {
                 self.targetId = value
@@ -28893,6 +29050,8 @@ public class ModifyClusterNodePoolRequest : Tea.TeaModel {
 
         public var systemDiskSize: Int64?
 
+        public var systemDiskSnapshotPolicyId: String?
+
         public var tags: [Tag]?
 
         public var vswitchIds: [String]?
@@ -29041,6 +29200,9 @@ public class ModifyClusterNodePoolRequest : Tea.TeaModel {
             }
             if self.systemDiskSize != nil {
                 map["system_disk_size"] = self.systemDiskSize!
+            }
+            if self.systemDiskSnapshotPolicyId != nil {
+                map["system_disk_snapshot_policy_id"] = self.systemDiskSnapshotPolicyId!
             }
             if self.tags != nil {
                 var tmp : [Any] = []
@@ -29207,6 +29369,9 @@ public class ModifyClusterNodePoolRequest : Tea.TeaModel {
             }
             if let value = dict["system_disk_size"] as? Int64 {
                 self.systemDiskSize = value
+            }
+            if let value = dict["system_disk_snapshot_policy_id"] as? String {
+                self.systemDiskSnapshotPolicyId = value
             }
             if let value = dict["tags"] as? [Any?] {
                 var tmp : [Tag] = []
