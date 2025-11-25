@@ -15611,6 +15611,8 @@ public class ListJobInfosRequest : Tea.TeaModel {
 
     public var extNodeIdList: [String]?
 
+    public var extNodeNameList: [String]?
+
     public var from: Int64?
 
     public var instanceIdList: [String]?
@@ -15632,6 +15634,8 @@ public class ListJobInfosRequest : Tea.TeaModel {
     public var sortOrderList: [String]?
 
     public var statusList: [String]?
+
+    public var taskNameList: [String]?
 
     public var to: Int64?
 
@@ -15667,6 +15671,9 @@ public class ListJobInfosRequest : Tea.TeaModel {
         if self.extNodeIdList != nil {
             map["extNodeIdList"] = self.extNodeIdList!
         }
+        if self.extNodeNameList != nil {
+            map["extNodeNameList"] = self.extNodeNameList!
+        }
         if self.from != nil {
             map["from"] = self.from!
         }
@@ -15700,6 +15707,9 @@ public class ListJobInfosRequest : Tea.TeaModel {
         if self.statusList != nil {
             map["statusList"] = self.statusList!
         }
+        if self.taskNameList != nil {
+            map["taskNameList"] = self.taskNameList!
+        }
         if self.to != nil {
             map["to"] = self.to!
         }
@@ -15731,6 +15741,9 @@ public class ListJobInfosRequest : Tea.TeaModel {
         }
         if let value = dict["extNodeIdList"] as? [String] {
             self.extNodeIdList = value
+        }
+        if let value = dict["extNodeNameList"] as? [String] {
+            self.extNodeNameList = value
         }
         if let value = dict["from"] as? Int64 {
             self.from = value
@@ -15764,6 +15777,9 @@ public class ListJobInfosRequest : Tea.TeaModel {
         }
         if let value = dict["statusList"] as? [String] {
             self.statusList = value
+        }
+        if let value = dict["taskNameList"] as? [String] {
+            self.taskNameList = value
         }
         if let value = dict["to"] as? Int64 {
             self.to = value
@@ -15872,9 +15888,13 @@ public class ListJobInfosResponseBody : Tea.TeaModel {
 
             public var extNodeId: String?
 
+            public var extNodeName: String?
+
             public var extNodeOnDuty: String?
 
             public var extPlantFrom: String?
+
+            public var extPlatformId: String?
 
             public var inputBytes: Double?
 
@@ -15914,6 +15934,8 @@ public class ListJobInfosResponseBody : Tea.TeaModel {
 
             public var tags: String?
 
+            public var taskName: String?
+
             public var tenantId: String?
 
             public var totalTime: Int64?
@@ -15949,11 +15971,17 @@ public class ListJobInfosResponseBody : Tea.TeaModel {
                 if self.extNodeId != nil {
                     map["extNodeId"] = self.extNodeId!
                 }
+                if self.extNodeName != nil {
+                    map["extNodeName"] = self.extNodeName!
+                }
                 if self.extNodeOnDuty != nil {
                     map["extNodeOnDuty"] = self.extNodeOnDuty!
                 }
                 if self.extPlantFrom != nil {
                     map["extPlantFrom"] = self.extPlantFrom!
+                }
+                if self.extPlatformId != nil {
+                    map["extPlatformId"] = self.extPlatformId!
                 }
                 if self.inputBytes != nil {
                     map["inputBytes"] = self.inputBytes!
@@ -16016,6 +16044,9 @@ public class ListJobInfosResponseBody : Tea.TeaModel {
                 if self.tags != nil {
                     map["tags"] = self.tags!
                 }
+                if self.taskName != nil {
+                    map["taskName"] = self.taskName!
+                }
                 if self.tenantId != nil {
                     map["tenantId"] = self.tenantId!
                 }
@@ -16045,11 +16076,17 @@ public class ListJobInfosResponseBody : Tea.TeaModel {
                 if let value = dict["extNodeId"] as? String {
                     self.extNodeId = value
                 }
+                if let value = dict["extNodeName"] as? String {
+                    self.extNodeName = value
+                }
                 if let value = dict["extNodeOnDuty"] as? String {
                     self.extNodeOnDuty = value
                 }
                 if let value = dict["extPlantFrom"] as? String {
                     self.extPlantFrom = value
+                }
+                if let value = dict["extPlatformId"] as? String {
+                    self.extPlatformId = value
                 }
                 if let value = dict["inputBytes"] as? Double {
                     self.inputBytes = value
@@ -16117,6 +16154,9 @@ public class ListJobInfosResponseBody : Tea.TeaModel {
                 }
                 if let value = dict["tags"] as? String {
                     self.tags = value
+                }
+                if let value = dict["taskName"] as? String {
+                    self.taskName = value
                 }
                 if let value = dict["tenantId"] as? String {
                     self.tenantId = value
@@ -16794,6 +16834,8 @@ public class ListJobSnapshotInfosResponseBody : Tea.TeaModel {
 
             public var extPlantFrom: String?
 
+            public var extPlatformId: String?
+
             public var instanceId: String?
 
             public var jobOwner: String?
@@ -16873,6 +16915,9 @@ public class ListJobSnapshotInfosResponseBody : Tea.TeaModel {
                 }
                 if self.extPlantFrom != nil {
                     map["extPlantFrom"] = self.extPlantFrom!
+                }
+                if self.extPlatformId != nil {
+                    map["extPlatformId"] = self.extPlatformId!
                 }
                 if self.instanceId != nil {
                     map["instanceId"] = self.instanceId!
@@ -16968,6 +17013,9 @@ public class ListJobSnapshotInfosResponseBody : Tea.TeaModel {
                 }
                 if let value = dict["extPlantFrom"] as? String {
                     self.extPlantFrom = value
+                }
+                if let value = dict["extPlatformId"] as? String {
+                    self.extPlatformId = value
                 }
                 if let value = dict["instanceId"] as? String {
                     self.instanceId = value
