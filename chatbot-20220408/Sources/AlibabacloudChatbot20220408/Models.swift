@@ -15620,11 +15620,51 @@ public class ListTongyiConversationLogsRequest : Tea.TeaModel {
 }
 
 public class ListTongyiConversationLogsResponseBody : Tea.TeaModel {
+    public class SessionFlowDebugInfo : Tea.TeaModel {
+        public var apiParams: [String: Any]?
+
+        public var slotParams: [String: Any]?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.apiParams != nil {
+                map["ApiParams"] = self.apiParams!
+            }
+            if self.slotParams != nil {
+                map["SlotParams"] = self.slotParams!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["ApiParams"] as? [String: Any] {
+                self.apiParams = value
+            }
+            if let value = dict["SlotParams"] as? [String: Any] {
+                self.slotParams = value
+            }
+        }
+    }
     public var costTime: String?
 
     public var datas: [[String: Any]]?
 
     public var requestId: String?
+
+    public var sessionFlowDebugInfo: ListTongyiConversationLogsResponseBody.SessionFlowDebugInfo?
 
     public override init() {
         super.init()
@@ -15636,6 +15676,7 @@ public class ListTongyiConversationLogsResponseBody : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
+        try self.sessionFlowDebugInfo?.validate()
     }
 
     public override func toMap() -> [String : Any] {
@@ -15648,6 +15689,9 @@ public class ListTongyiConversationLogsResponseBody : Tea.TeaModel {
         }
         if self.requestId != nil {
             map["RequestId"] = self.requestId!
+        }
+        if self.sessionFlowDebugInfo != nil {
+            map["SessionFlowDebugInfo"] = self.sessionFlowDebugInfo?.toMap()
         }
         return map
     }
@@ -15662,6 +15706,11 @@ public class ListTongyiConversationLogsResponseBody : Tea.TeaModel {
         }
         if let value = dict["RequestId"] as? String {
             self.requestId = value
+        }
+        if let value = dict["SessionFlowDebugInfo"] as? [String: Any?] {
+            var model = ListTongyiConversationLogsResponseBody.SessionFlowDebugInfo()
+            model.fromMap(value)
+            self.sessionFlowDebugInfo = model
         }
     }
 }

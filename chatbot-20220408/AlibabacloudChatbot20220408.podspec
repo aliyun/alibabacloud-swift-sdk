@@ -1,7 +1,7 @@
 Pod::Spec.new do |spec|
 
   spec.name         = "AlibabacloudChatbot20220408"
-  spec.version      = "2.4.1"
+  spec.version      = "2.4.2"
   spec.license      = "Apache 2.0"
   spec.summary      = "Alibaba Cloud Chatbot (20220408) SDK Library for Swift"
   spec.homepage     = "https://github.com/alibabacloud-sdk-swift/chatbot-20220408" 
