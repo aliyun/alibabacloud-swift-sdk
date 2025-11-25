@@ -3575,9 +3575,13 @@ public class ModifyNodeNumberRequest : Tea.TeaModel {
 
     public var nodeGroupId: String?
 
+    public var parallelism: Int32?
+
     public var promotionOptionNo: String?
 
     public var target: Int32?
+
+    public var terminationGracePeriodSeconds: Int32?
 
     public override init() {
         super.init()
@@ -3599,11 +3603,17 @@ public class ModifyNodeNumberRequest : Tea.TeaModel {
         if self.nodeGroupId != nil {
             map["NodeGroupId"] = self.nodeGroupId!
         }
+        if self.parallelism != nil {
+            map["Parallelism"] = self.parallelism!
+        }
         if self.promotionOptionNo != nil {
             map["PromotionOptionNo"] = self.promotionOptionNo!
         }
         if self.target != nil {
             map["Target"] = self.target!
+        }
+        if self.terminationGracePeriodSeconds != nil {
+            map["TerminationGracePeriodSeconds"] = self.terminationGracePeriodSeconds!
         }
         return map
     }
@@ -3616,11 +3626,17 @@ public class ModifyNodeNumberRequest : Tea.TeaModel {
         if let value = dict["NodeGroupId"] as? String {
             self.nodeGroupId = value
         }
+        if let value = dict["Parallelism"] as? Int32 {
+            self.parallelism = value
+        }
         if let value = dict["PromotionOptionNo"] as? String {
             self.promotionOptionNo = value
         }
         if let value = dict["Target"] as? Int32 {
             self.target = value
+        }
+        if let value = dict["TerminationGracePeriodSeconds"] as? Int32 {
+            self.terminationGracePeriodSeconds = value
         }
     }
 }

@@ -541,11 +541,17 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.nodeGroupId)) {
             query["NodeGroupId"] = request.nodeGroupId ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.parallelism)) {
+            query["Parallelism"] = request.parallelism!;
+        }
         if (!TeaUtils.Client.isUnset(request.promotionOptionNo)) {
             query["PromotionOptionNo"] = request.promotionOptionNo ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.target)) {
             query["Target"] = request.target!;
+        }
+        if (!TeaUtils.Client.isUnset(request.terminationGracePeriodSeconds)) {
+            query["TerminationGracePeriodSeconds"] = request.terminationGracePeriodSeconds!;
         }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "headers": headers as! [String: String],
