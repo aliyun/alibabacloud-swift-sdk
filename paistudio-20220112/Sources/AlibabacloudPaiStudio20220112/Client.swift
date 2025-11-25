@@ -314,6 +314,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.algorithmVersion)) {
             body["AlgorithmVersion"] = request.algorithmVersion ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.assignNodeSpec)) {
+            body["AssignNodeSpec"] = request.assignNodeSpec!;
+        }
         if (!TeaUtils.Client.isUnset(request.codeDir)) {
             body["CodeDir"] = request.codeDir!;
         }

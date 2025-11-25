@@ -9049,6 +9049,8 @@ public class CreateTrainingJobRequest : Tea.TeaModel {
 
     public var algorithmVersion: String?
 
+    public var assignNodeSpec: AssignNodeSpec?
+
     public var codeDir: Location?
 
     public var computeResource: CreateTrainingJobRequest.ComputeResource?
@@ -9094,6 +9096,7 @@ public class CreateTrainingJobRequest : Tea.TeaModel {
 
     public override func validate() throws -> Void {
         try self.algorithmSpec?.validate()
+        try self.assignNodeSpec?.validate()
         try self.codeDir?.validate()
         try self.computeResource?.validate()
         try self.experimentConfig?.validate()
@@ -9115,6 +9118,9 @@ public class CreateTrainingJobRequest : Tea.TeaModel {
         }
         if self.algorithmVersion != nil {
             map["AlgorithmVersion"] = self.algorithmVersion!
+        }
+        if self.assignNodeSpec != nil {
+            map["AssignNodeSpec"] = self.assignNodeSpec?.toMap()
         }
         if self.codeDir != nil {
             map["CodeDir"] = self.codeDir?.toMap()
@@ -9201,6 +9207,11 @@ public class CreateTrainingJobRequest : Tea.TeaModel {
         }
         if let value = dict["AlgorithmVersion"] as? String {
             self.algorithmVersion = value
+        }
+        if let value = dict["AssignNodeSpec"] as? [String: Any?] {
+            var model = AssignNodeSpec()
+            model.fromMap(value)
+            self.assignNodeSpec = model
         }
         if let value = dict["CodeDir"] as? [String: Any?] {
             var model = Location()
@@ -13454,6 +13465,8 @@ public class GetTrainingJobResponseBody : Tea.TeaModel {
 
     public var algorithmVersion: String?
 
+    public var assignNodeSpec: AssignNodeSpec?
+
     public var computeResource: GetTrainingJobResponseBody.ComputeResource?
 
     public var duration: Int64?
@@ -13529,6 +13542,7 @@ public class GetTrainingJobResponseBody : Tea.TeaModel {
 
     public override func validate() throws -> Void {
         try self.algorithmSpec?.validate()
+        try self.assignNodeSpec?.validate()
         try self.computeResource?.validate()
         try self.experimentConfig?.validate()
         try self.latestProgress?.validate()
@@ -13554,6 +13568,9 @@ public class GetTrainingJobResponseBody : Tea.TeaModel {
         }
         if self.algorithmVersion != nil {
             map["AlgorithmVersion"] = self.algorithmVersion!
+        }
+        if self.assignNodeSpec != nil {
+            map["AssignNodeSpec"] = self.assignNodeSpec?.toMap()
         }
         if self.computeResource != nil {
             map["ComputeResource"] = self.computeResource?.toMap()
@@ -13700,6 +13717,11 @@ public class GetTrainingJobResponseBody : Tea.TeaModel {
         }
         if let value = dict["AlgorithmVersion"] as? String {
             self.algorithmVersion = value
+        }
+        if let value = dict["AssignNodeSpec"] as? [String: Any?] {
+            var model = AssignNodeSpec()
+            model.fromMap(value)
+            self.assignNodeSpec = model
         }
         if let value = dict["ComputeResource"] as? [String: Any?] {
             var model = GetTrainingJobResponseBody.ComputeResource()
@@ -18329,6 +18351,8 @@ public class ListTrainingJobsResponseBody : Tea.TeaModel {
 
         public var algorithmVersion: String?
 
+        public var assignNodeSpec: AssignNodeSpec?
+
         public var computeResource: ListTrainingJobsResponseBody.TrainingJobs.ComputeResource?
 
         public var dlcJobId: String?
@@ -18387,6 +18411,7 @@ public class ListTrainingJobsResponseBody : Tea.TeaModel {
         }
 
         public override func validate() throws -> Void {
+            try self.assignNodeSpec?.validate()
             try self.computeResource?.validate()
             try self.experimentConfig?.validate()
             try self.scheduler?.validate()
@@ -18403,6 +18428,9 @@ public class ListTrainingJobsResponseBody : Tea.TeaModel {
             }
             if self.algorithmVersion != nil {
                 map["AlgorithmVersion"] = self.algorithmVersion!
+            }
+            if self.assignNodeSpec != nil {
+                map["AssignNodeSpec"] = self.assignNodeSpec?.toMap()
             }
             if self.computeResource != nil {
                 map["ComputeResource"] = self.computeResource?.toMap()
@@ -18509,6 +18537,11 @@ public class ListTrainingJobsResponseBody : Tea.TeaModel {
             }
             if let value = dict["AlgorithmVersion"] as? String {
                 self.algorithmVersion = value
+            }
+            if let value = dict["AssignNodeSpec"] as? [String: Any?] {
+                var model = AssignNodeSpec()
+                model.fromMap(value)
+                self.assignNodeSpec = model
             }
             if let value = dict["ComputeResource"] as? [String: Any?] {
                 var model = ListTrainingJobsResponseBody.TrainingJobs.ComputeResource()
