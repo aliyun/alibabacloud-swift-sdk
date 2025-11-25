@@ -32335,6 +32335,8 @@ public class StartCloudNoteRequest : Tea.TeaModel {
                 }
             }
         }
+        public var asrCallback: Bool?
+
         public var enabled: Bool?
 
         public var translation: StartCloudNoteRequest.RealtimeSubtitle.Translation?
@@ -32354,6 +32356,9 @@ public class StartCloudNoteRequest : Tea.TeaModel {
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
+            if self.asrCallback != nil {
+                map["AsrCallback"] = self.asrCallback!
+            }
             if self.enabled != nil {
                 map["Enabled"] = self.enabled!
             }
@@ -32365,6 +32370,9 @@ public class StartCloudNoteRequest : Tea.TeaModel {
 
         public override func fromMap(_ dict: [String: Any?]?) -> Void {
             guard let dict else { return }
+            if let value = dict["AsrCallback"] as? Bool {
+                self.asrCallback = value
+            }
             if let value = dict["Enabled"] as? Bool {
                 self.enabled = value
             }
