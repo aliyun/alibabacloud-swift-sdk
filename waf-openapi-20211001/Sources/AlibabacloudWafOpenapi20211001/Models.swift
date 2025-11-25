@@ -965,6 +965,8 @@ public class CreateCloudResourceRequest : Tea.TeaModel {
 
         public var keepaliveTimeout: Int32?
 
+        public var maxBodySize: Int32?
+
         public var readTimeout: Int32?
 
         public var requestHeaders: [CreateCloudResourceRequest.Redirect.RequestHeaders]?
@@ -999,6 +1001,9 @@ public class CreateCloudResourceRequest : Tea.TeaModel {
             }
             if self.keepaliveTimeout != nil {
                 map["KeepaliveTimeout"] = self.keepaliveTimeout!
+            }
+            if self.maxBodySize != nil {
+                map["MaxBodySize"] = self.maxBodySize!
             }
             if self.readTimeout != nil {
                 map["ReadTimeout"] = self.readTimeout!
@@ -1035,6 +1040,9 @@ public class CreateCloudResourceRequest : Tea.TeaModel {
             }
             if let value = dict["KeepaliveTimeout"] as? Int32 {
                 self.keepaliveTimeout = value
+            }
+            if let value = dict["MaxBodySize"] as? Int32 {
+                self.maxBodySize = value
             }
             if let value = dict["ReadTimeout"] as? Int32 {
                 self.readTimeout = value
@@ -2677,6 +2685,8 @@ public class CreateDomainRequest : Tea.TeaModel {
 
         public var loadbalance: String?
 
+        public var maxBodySize: Int32?
+
         public var readTimeout: Int32?
 
         public var requestHeaders: [CreateDomainRequest.Redirect.RequestHeaders]?
@@ -2748,6 +2758,9 @@ public class CreateDomainRequest : Tea.TeaModel {
             }
             if self.loadbalance != nil {
                 map["Loadbalance"] = self.loadbalance!
+            }
+            if self.maxBodySize != nil {
+                map["MaxBodySize"] = self.maxBodySize!
             }
             if self.readTimeout != nil {
                 map["ReadTimeout"] = self.readTimeout!
@@ -2833,6 +2846,9 @@ public class CreateDomainRequest : Tea.TeaModel {
             }
             if let value = dict["Loadbalance"] as? String {
                 self.loadbalance = value
+            }
+            if let value = dict["MaxBodySize"] as? Int32 {
+                self.maxBodySize = value
             }
             if let value = dict["ReadTimeout"] as? Int32 {
                 self.readTimeout = value
@@ -14368,6 +14384,8 @@ public class DescribeCloudResourceAccessPortDetailsResponseBody : Tea.TeaModel {
 
         public var logHeaders: [DescribeCloudResourceAccessPortDetailsResponseBody.AccessPortDetails.LogHeaders]?
 
+        public var maxBodySize: Int32?
+
         public var ownerUserId: String?
 
         public var port: Int32?
@@ -14443,6 +14461,9 @@ public class DescribeCloudResourceAccessPortDetailsResponseBody : Tea.TeaModel {
                     tmp.append(k.toMap())
                 }
                 map["LogHeaders"] = tmp
+            }
+            if self.maxBodySize != nil {
+                map["MaxBodySize"] = self.maxBodySize!
             }
             if self.ownerUserId != nil {
                 map["OwnerUserId"] = self.ownerUserId!
@@ -14538,6 +14559,9 @@ public class DescribeCloudResourceAccessPortDetailsResponseBody : Tea.TeaModel {
                     }
                 }
                 self.logHeaders = tmp
+            }
+            if let value = dict["MaxBodySize"] as? Int32 {
+                self.maxBodySize = value
             }
             if let value = dict["OwnerUserId"] as? String {
                 self.ownerUserId = value
@@ -21077,6 +21101,8 @@ public class DescribeDomainDetailResponseBody : Tea.TeaModel {
 
         public var loadbalance: String?
 
+        public var maxBodySize: Int32?
+
         public var readTimeout: Int32?
 
         public var requestHeaders: [DescribeDomainDetailResponseBody.Redirect.RequestHeaders]?
@@ -21157,6 +21183,9 @@ public class DescribeDomainDetailResponseBody : Tea.TeaModel {
             }
             if self.loadbalance != nil {
                 map["Loadbalance"] = self.loadbalance!
+            }
+            if self.maxBodySize != nil {
+                map["MaxBodySize"] = self.maxBodySize!
             }
             if self.readTimeout != nil {
                 map["ReadTimeout"] = self.readTimeout!
@@ -21262,6 +21291,9 @@ public class DescribeDomainDetailResponseBody : Tea.TeaModel {
             }
             if let value = dict["Loadbalance"] as? String {
                 self.loadbalance = value
+            }
+            if let value = dict["MaxBodySize"] as? Int32 {
+                self.maxBodySize = value
             }
             if let value = dict["ReadTimeout"] as? Int32 {
                 self.readTimeout = value
@@ -45419,6 +45451,8 @@ public class ModifyCloudResourceRequest : Tea.TeaModel {
 
         public var keepaliveTimeout: Int32?
 
+        public var maxBodySize: Int32?
+
         public var readTimeout: Int32?
 
         public var requestHeaders: [ModifyCloudResourceRequest.Redirect.RequestHeaders]?
@@ -45453,6 +45487,9 @@ public class ModifyCloudResourceRequest : Tea.TeaModel {
             }
             if self.keepaliveTimeout != nil {
                 map["KeepaliveTimeout"] = self.keepaliveTimeout!
+            }
+            if self.maxBodySize != nil {
+                map["MaxBodySize"] = self.maxBodySize!
             }
             if self.readTimeout != nil {
                 map["ReadTimeout"] = self.readTimeout!
@@ -45489,6 +45526,9 @@ public class ModifyCloudResourceRequest : Tea.TeaModel {
             }
             if let value = dict["KeepaliveTimeout"] as? Int32 {
                 self.keepaliveTimeout = value
+            }
+            if let value = dict["MaxBodySize"] as? Int32 {
+                self.maxBodySize = value
             }
             if let value = dict["ReadTimeout"] as? Int32 {
                 self.readTimeout = value
@@ -47716,6 +47756,8 @@ public class ModifyDomainRequest : Tea.TeaModel {
 
         public var loadbalance: String?
 
+        public var maxBodySize: Int32?
+
         public var readTimeout: Int32?
 
         public var requestHeaders: [ModifyDomainRequest.Redirect.RequestHeaders]?
@@ -47787,6 +47829,9 @@ public class ModifyDomainRequest : Tea.TeaModel {
             }
             if self.loadbalance != nil {
                 map["Loadbalance"] = self.loadbalance!
+            }
+            if self.maxBodySize != nil {
+                map["MaxBodySize"] = self.maxBodySize!
             }
             if self.readTimeout != nil {
                 map["ReadTimeout"] = self.readTimeout!
@@ -47872,6 +47917,9 @@ public class ModifyDomainRequest : Tea.TeaModel {
             }
             if let value = dict["Loadbalance"] as? String {
                 self.loadbalance = value
+            }
+            if let value = dict["MaxBodySize"] as? Int32 {
+                self.maxBodySize = value
             }
             if let value = dict["ReadTimeout"] as? Int32 {
                 self.readTimeout = value
