@@ -10265,6 +10265,8 @@ public class DescribeComponentPropetiesRequest : Tea.TeaModel {
 
     public var regionId: String?
 
+    public var storageType: String?
+
     public override init() {
         super.init()
     }
@@ -10288,6 +10290,9 @@ public class DescribeComponentPropetiesRequest : Tea.TeaModel {
         if self.regionId != nil {
             map["RegionId"] = self.regionId!
         }
+        if self.storageType != nil {
+            map["StorageType"] = self.storageType!
+        }
         return map
     }
 
@@ -10301,6 +10306,9 @@ public class DescribeComponentPropetiesRequest : Tea.TeaModel {
         }
         if let value = dict["RegionId"] as? String {
             self.regionId = value
+        }
+        if let value = dict["StorageType"] as? String {
+            self.storageType = value
         }
     }
 }
