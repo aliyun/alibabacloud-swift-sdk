@@ -14141,6 +14141,8 @@ public class DescribeAIDBClusterAttributeResponseBody : Tea.TeaModel {
 
     public var internalIp: String?
 
+    public var KVCacheInstanceId: String?
+
     public var kubeClusterId: String?
 
     public var lockMode: String?
@@ -14225,6 +14227,9 @@ public class DescribeAIDBClusterAttributeResponseBody : Tea.TeaModel {
         }
         if self.internalIp != nil {
             map["InternalIp"] = self.internalIp!
+        }
+        if self.KVCacheInstanceId != nil {
+            map["KVCacheInstanceId"] = self.KVCacheInstanceId!
         }
         if self.kubeClusterId != nil {
             map["KubeClusterId"] = self.kubeClusterId!
@@ -14332,6 +14337,9 @@ public class DescribeAIDBClusterAttributeResponseBody : Tea.TeaModel {
         }
         if let value = dict["InternalIp"] as? String {
             self.internalIp = value
+        }
+        if let value = dict["KVCacheInstanceId"] as? String {
+            self.KVCacheInstanceId = value
         }
         if let value = dict["KubeClusterId"] as? String {
             self.kubeClusterId = value
@@ -46868,6 +46876,8 @@ public class DescribePolarFsAttributeResponseBody : Tea.TeaModel {
 
     public var bandwidthBaseLine: Double?
 
+    public var bucketId: String?
+
     public var category: String?
 
     public var clientDownloadPath: String?
@@ -46879,6 +46889,8 @@ public class DescribePolarFsAttributeResponseBody : Tea.TeaModel {
     public var expireTime: String?
 
     public var expired: String?
+
+    public var fileSystemId: String?
 
     public var lockMode: String?
 
@@ -46903,6 +46915,8 @@ public class DescribePolarFsAttributeResponseBody : Tea.TeaModel {
     public var regionId: String?
 
     public var relativeDbClusterId: String?
+
+    public var relativePfsClusterId: String?
 
     public var requestId: String?
 
@@ -46947,6 +46961,9 @@ public class DescribePolarFsAttributeResponseBody : Tea.TeaModel {
         if self.bandwidthBaseLine != nil {
             map["BandwidthBaseLine"] = self.bandwidthBaseLine!
         }
+        if self.bucketId != nil {
+            map["BucketId"] = self.bucketId!
+        }
         if self.category != nil {
             map["Category"] = self.category!
         }
@@ -46964,6 +46981,9 @@ public class DescribePolarFsAttributeResponseBody : Tea.TeaModel {
         }
         if self.expired != nil {
             map["Expired"] = self.expired!
+        }
+        if self.fileSystemId != nil {
+            map["FileSystemId"] = self.fileSystemId!
         }
         if self.lockMode != nil {
             map["LockMode"] = self.lockMode!
@@ -47000,6 +47020,9 @@ public class DescribePolarFsAttributeResponseBody : Tea.TeaModel {
         }
         if self.relativeDbClusterId != nil {
             map["RelativeDbClusterId"] = self.relativeDbClusterId!
+        }
+        if self.relativePfsClusterId != nil {
+            map["RelativePfsClusterId"] = self.relativePfsClusterId!
         }
         if self.requestId != nil {
             map["RequestId"] = self.requestId!
@@ -47042,6 +47065,9 @@ public class DescribePolarFsAttributeResponseBody : Tea.TeaModel {
         if let value = dict["BandwidthBaseLine"] as? Double {
             self.bandwidthBaseLine = value
         }
+        if let value = dict["BucketId"] as? String {
+            self.bucketId = value
+        }
         if let value = dict["Category"] as? String {
             self.category = value
         }
@@ -47059,6 +47085,9 @@ public class DescribePolarFsAttributeResponseBody : Tea.TeaModel {
         }
         if let value = dict["Expired"] as? String {
             self.expired = value
+        }
+        if let value = dict["FileSystemId"] as? String {
+            self.fileSystemId = value
         }
         if let value = dict["LockMode"] as? String {
             self.lockMode = value
@@ -47097,6 +47126,9 @@ public class DescribePolarFsAttributeResponseBody : Tea.TeaModel {
         }
         if let value = dict["RelativeDbClusterId"] as? String {
             self.relativeDbClusterId = value
+        }
+        if let value = dict["RelativePfsClusterId"] as? String {
+            self.relativePfsClusterId = value
         }
         if let value = dict["RequestId"] as? String {
             self.requestId = value
