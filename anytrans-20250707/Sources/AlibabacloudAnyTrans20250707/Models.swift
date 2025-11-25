@@ -717,6 +717,718 @@ public class BatchTranslateResponse : Tea.TeaModel {
     }
 }
 
+public class BatchTranslateForHtmlRequest : Tea.TeaModel {
+    public class Ext : Tea.TeaModel {
+        public class Config : Tea.TeaModel {
+            public var skipCsiCheck: Bool?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.skipCsiCheck != nil {
+                    map["skipCsiCheck"] = self.skipCsiCheck!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["skipCsiCheck"] as? Bool {
+                    self.skipCsiCheck = value
+                }
+            }
+        }
+        public class Examples : Tea.TeaModel {
+            public var src: String?
+
+            public var tgt: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.src != nil {
+                    map["src"] = self.src!
+                }
+                if self.tgt != nil {
+                    map["tgt"] = self.tgt!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["src"] as? String {
+                    self.src = value
+                }
+                if let value = dict["tgt"] as? String {
+                    self.tgt = value
+                }
+            }
+        }
+        public class Terminologies : Tea.TeaModel {
+            public var src: String?
+
+            public var tgt: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.src != nil {
+                    map["src"] = self.src!
+                }
+                if self.tgt != nil {
+                    map["tgt"] = self.tgt!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["src"] as? String {
+                    self.src = value
+                }
+                if let value = dict["tgt"] as? String {
+                    self.tgt = value
+                }
+            }
+        }
+        public class TextTransform : Tea.TeaModel {
+            public var toLower: Bool?
+
+            public var toTitle: Bool?
+
+            public var toUpper: Bool?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.toLower != nil {
+                    map["toLower"] = self.toLower!
+                }
+                if self.toTitle != nil {
+                    map["toTitle"] = self.toTitle!
+                }
+                if self.toUpper != nil {
+                    map["toUpper"] = self.toUpper!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["toLower"] as? Bool {
+                    self.toLower = value
+                }
+                if let value = dict["toTitle"] as? Bool {
+                    self.toTitle = value
+                }
+                if let value = dict["toUpper"] as? Bool {
+                    self.toUpper = value
+                }
+            }
+        }
+        public var config: BatchTranslateForHtmlRequest.Ext.Config?
+
+        public var domainHint: String?
+
+        public var examples: [BatchTranslateForHtmlRequest.Ext.Examples]?
+
+        public var sensitives: [String]?
+
+        public var terminologies: [BatchTranslateForHtmlRequest.Ext.Terminologies]?
+
+        public var textTransform: BatchTranslateForHtmlRequest.Ext.TextTransform?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+            try self.config?.validate()
+            try self.textTransform?.validate()
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.config != nil {
+                map["config"] = self.config?.toMap()
+            }
+            if self.domainHint != nil {
+                map["domainHint"] = self.domainHint!
+            }
+            if self.examples != nil {
+                var tmp : [Any] = []
+                for k in self.examples! {
+                    tmp.append(k.toMap())
+                }
+                map["examples"] = tmp
+            }
+            if self.sensitives != nil {
+                map["sensitives"] = self.sensitives!
+            }
+            if self.terminologies != nil {
+                var tmp : [Any] = []
+                for k in self.terminologies! {
+                    tmp.append(k.toMap())
+                }
+                map["terminologies"] = tmp
+            }
+            if self.textTransform != nil {
+                map["textTransform"] = self.textTransform?.toMap()
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["config"] as? [String: Any?] {
+                var model = BatchTranslateForHtmlRequest.Ext.Config()
+                model.fromMap(value)
+                self.config = model
+            }
+            if let value = dict["domainHint"] as? String {
+                self.domainHint = value
+            }
+            if let value = dict["examples"] as? [Any?] {
+                var tmp : [BatchTranslateForHtmlRequest.Ext.Examples] = []
+                for v in value {
+                    if v != nil {
+                        var model = BatchTranslateForHtmlRequest.Ext.Examples()
+                        if v != nil {
+                            model.fromMap(v as? [String: Any?])
+                        }
+                        tmp.append(model)
+                    }
+                }
+                self.examples = tmp
+            }
+            if let value = dict["sensitives"] as? [String] {
+                self.sensitives = value
+            }
+            if let value = dict["terminologies"] as? [Any?] {
+                var tmp : [BatchTranslateForHtmlRequest.Ext.Terminologies] = []
+                for v in value {
+                    if v != nil {
+                        var model = BatchTranslateForHtmlRequest.Ext.Terminologies()
+                        if v != nil {
+                            model.fromMap(v as? [String: Any?])
+                        }
+                        tmp.append(model)
+                    }
+                }
+                self.terminologies = tmp
+            }
+            if let value = dict["textTransform"] as? [String: Any?] {
+                var model = BatchTranslateForHtmlRequest.Ext.TextTransform()
+                model.fromMap(value)
+                self.textTransform = model
+            }
+        }
+    }
+    public var appName: String?
+
+    public var ext: BatchTranslateForHtmlRequest.Ext?
+
+    public var format: String?
+
+    public var scene: String?
+
+    public var sourceLanguage: String?
+
+    public var targetLanguage: String?
+
+    public var text: [String: Any]?
+
+    public var workspaceId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.ext?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.appName != nil {
+            map["appName"] = self.appName!
+        }
+        if self.ext != nil {
+            map["ext"] = self.ext?.toMap()
+        }
+        if self.format != nil {
+            map["format"] = self.format!
+        }
+        if self.scene != nil {
+            map["scene"] = self.scene!
+        }
+        if self.sourceLanguage != nil {
+            map["sourceLanguage"] = self.sourceLanguage!
+        }
+        if self.targetLanguage != nil {
+            map["targetLanguage"] = self.targetLanguage!
+        }
+        if self.text != nil {
+            map["text"] = self.text!
+        }
+        if self.workspaceId != nil {
+            map["workspaceId"] = self.workspaceId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["appName"] as? String {
+            self.appName = value
+        }
+        if let value = dict["ext"] as? [String: Any?] {
+            var model = BatchTranslateForHtmlRequest.Ext()
+            model.fromMap(value)
+            self.ext = model
+        }
+        if let value = dict["format"] as? String {
+            self.format = value
+        }
+        if let value = dict["scene"] as? String {
+            self.scene = value
+        }
+        if let value = dict["sourceLanguage"] as? String {
+            self.sourceLanguage = value
+        }
+        if let value = dict["targetLanguage"] as? String {
+            self.targetLanguage = value
+        }
+        if let value = dict["text"] as? [String: Any] {
+            self.text = value
+        }
+        if let value = dict["workspaceId"] as? String {
+            self.workspaceId = value
+        }
+    }
+}
+
+public class BatchTranslateForHtmlShrinkRequest : Tea.TeaModel {
+    public var appName: String?
+
+    public var extShrink: String?
+
+    public var format: String?
+
+    public var scene: String?
+
+    public var sourceLanguage: String?
+
+    public var targetLanguage: String?
+
+    public var textShrink: String?
+
+    public var workspaceId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.appName != nil {
+            map["appName"] = self.appName!
+        }
+        if self.extShrink != nil {
+            map["ext"] = self.extShrink!
+        }
+        if self.format != nil {
+            map["format"] = self.format!
+        }
+        if self.scene != nil {
+            map["scene"] = self.scene!
+        }
+        if self.sourceLanguage != nil {
+            map["sourceLanguage"] = self.sourceLanguage!
+        }
+        if self.targetLanguage != nil {
+            map["targetLanguage"] = self.targetLanguage!
+        }
+        if self.textShrink != nil {
+            map["text"] = self.textShrink!
+        }
+        if self.workspaceId != nil {
+            map["workspaceId"] = self.workspaceId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["appName"] as? String {
+            self.appName = value
+        }
+        if let value = dict["ext"] as? String {
+            self.extShrink = value
+        }
+        if let value = dict["format"] as? String {
+            self.format = value
+        }
+        if let value = dict["scene"] as? String {
+            self.scene = value
+        }
+        if let value = dict["sourceLanguage"] as? String {
+            self.sourceLanguage = value
+        }
+        if let value = dict["targetLanguage"] as? String {
+            self.targetLanguage = value
+        }
+        if let value = dict["text"] as? String {
+            self.textShrink = value
+        }
+        if let value = dict["workspaceId"] as? String {
+            self.workspaceId = value
+        }
+    }
+}
+
+public class BatchTranslateForHtmlResponseBody : Tea.TeaModel {
+    public class Data : Tea.TeaModel {
+        public class TranslationList : Tea.TeaModel {
+            public class Usage : Tea.TeaModel {
+                public var inputTokens: Int64?
+
+                public var outputTokens: Int64?
+
+                public var totalTokens: Int64?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.inputTokens != nil {
+                        map["inputTokens"] = self.inputTokens!
+                    }
+                    if self.outputTokens != nil {
+                        map["outputTokens"] = self.outputTokens!
+                    }
+                    if self.totalTokens != nil {
+                        map["totalTokens"] = self.totalTokens!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                    guard let dict else { return }
+                    if let value = dict["inputTokens"] as? Int64 {
+                        self.inputTokens = value
+                    }
+                    if let value = dict["outputTokens"] as? Int64 {
+                        self.outputTokens = value
+                    }
+                    if let value = dict["totalTokens"] as? Int64 {
+                        self.totalTokens = value
+                    }
+                }
+            }
+            public var code: Int64?
+
+            public var index: String?
+
+            public var message: String?
+
+            public var translation: String?
+
+            public var usage: BatchTranslateForHtmlResponseBody.Data.TranslationList.Usage?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+                try self.usage?.validate()
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.code != nil {
+                    map["code"] = self.code!
+                }
+                if self.index != nil {
+                    map["index"] = self.index!
+                }
+                if self.message != nil {
+                    map["message"] = self.message!
+                }
+                if self.translation != nil {
+                    map["translation"] = self.translation!
+                }
+                if self.usage != nil {
+                    map["usage"] = self.usage?.toMap()
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                guard let dict else { return }
+                if let value = dict["code"] as? Int64 {
+                    self.code = value
+                }
+                if let value = dict["index"] as? String {
+                    self.index = value
+                }
+                if let value = dict["message"] as? String {
+                    self.message = value
+                }
+                if let value = dict["translation"] as? String {
+                    self.translation = value
+                }
+                if let value = dict["usage"] as? [String: Any?] {
+                    var model = BatchTranslateForHtmlResponseBody.Data.TranslationList.Usage()
+                    model.fromMap(value)
+                    self.usage = model
+                }
+            }
+        }
+        public var translationList: [BatchTranslateForHtmlResponseBody.Data.TranslationList]?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.translationList != nil {
+                var tmp : [Any] = []
+                for k in self.translationList! {
+                    tmp.append(k.toMap())
+                }
+                map["translationList"] = tmp
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["translationList"] as? [Any?] {
+                var tmp : [BatchTranslateForHtmlResponseBody.Data.TranslationList] = []
+                for v in value {
+                    if v != nil {
+                        var model = BatchTranslateForHtmlResponseBody.Data.TranslationList()
+                        if v != nil {
+                            model.fromMap(v as? [String: Any?])
+                        }
+                        tmp.append(model)
+                    }
+                }
+                self.translationList = tmp
+            }
+        }
+    }
+    public var code: String?
+
+    public var data: BatchTranslateForHtmlResponseBody.Data?
+
+    public var httpStatusCode: String?
+
+    public var message: String?
+
+    public var requestId: String?
+
+    public var success: Bool?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.data?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.code != nil {
+            map["code"] = self.code!
+        }
+        if self.data != nil {
+            map["data"] = self.data?.toMap()
+        }
+        if self.httpStatusCode != nil {
+            map["httpStatusCode"] = self.httpStatusCode!
+        }
+        if self.message != nil {
+            map["message"] = self.message!
+        }
+        if self.requestId != nil {
+            map["requestId"] = self.requestId!
+        }
+        if self.success != nil {
+            map["success"] = self.success!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["code"] as? String {
+            self.code = value
+        }
+        if let value = dict["data"] as? [String: Any?] {
+            var model = BatchTranslateForHtmlResponseBody.Data()
+            model.fromMap(value)
+            self.data = model
+        }
+        if let value = dict["httpStatusCode"] as? String {
+            self.httpStatusCode = value
+        }
+        if let value = dict["message"] as? String {
+            self.message = value
+        }
+        if let value = dict["requestId"] as? String {
+            self.requestId = value
+        }
+        if let value = dict["success"] as? Bool {
+            self.success = value
+        }
+    }
+}
+
+public class BatchTranslateForHtmlResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: BatchTranslateForHtmlResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = BatchTranslateForHtmlResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
 public class GetDocTranslateTaskRequest : Tea.TeaModel {
     public var taskId: String?
 
@@ -2689,6 +3401,8 @@ public class SubmitDocTranslateTaskResponse : Tea.TeaModel {
 public class SubmitHtmlTranslateTaskRequest : Tea.TeaModel {
     public class Ext : Tea.TeaModel {
         public class Config : Tea.TeaModel {
+            public var callbackUrl: String?
+
             public var skipCsiCheck: Bool?
 
             public override init() {
@@ -2705,6 +3419,9 @@ public class SubmitHtmlTranslateTaskRequest : Tea.TeaModel {
 
             public override func toMap() -> [String : Any] {
                 var map = super.toMap()
+                if self.callbackUrl != nil {
+                    map["callbackUrl"] = self.callbackUrl!
+                }
                 if self.skipCsiCheck != nil {
                     map["skipCsiCheck"] = self.skipCsiCheck!
                 }
@@ -2713,6 +3430,9 @@ public class SubmitHtmlTranslateTaskRequest : Tea.TeaModel {
 
             public override func fromMap(_ dict: [String: Any?]?) -> Void {
                 guard let dict else { return }
+                if let value = dict["callbackUrl"] as? String {
+                    self.callbackUrl = value
+                }
                 if let value = dict["skipCsiCheck"] as? Bool {
                     self.skipCsiCheck = value
                 }
@@ -5278,6 +5998,8 @@ public class TextTranslateRequest : Tea.TeaModel {
                 }
             }
         }
+        public var agent: String?
+
         public var config: TextTranslateRequest.Ext.Config?
 
         public var domainHint: String?
@@ -5306,6 +6028,9 @@ public class TextTranslateRequest : Tea.TeaModel {
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
+            if self.agent != nil {
+                map["agent"] = self.agent!
+            }
             if self.config != nil {
                 map["config"] = self.config?.toMap()
             }
@@ -5337,6 +6062,9 @@ public class TextTranslateRequest : Tea.TeaModel {
 
         public override func fromMap(_ dict: [String: Any?]?) -> Void {
             guard let dict else { return }
+            if let value = dict["agent"] as? String {
+                self.agent = value
+            }
             if let value = dict["config"] as? [String: Any?] {
                 var model = TextTranslateRequest.Ext.Config()
                 model.fromMap(value)
