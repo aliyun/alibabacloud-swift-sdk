@@ -2119,6 +2119,384 @@ public class CancelJobRunResponse : Tea.TeaModel {
     }
 }
 
+public class CancelKyuubiSparkApplicationRequest : Tea.TeaModel {
+    public var regionId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.regionId != nil {
+            map["regionId"] = self.regionId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["regionId"] as? String {
+            self.regionId = value
+        }
+    }
+}
+
+public class CancelKyuubiSparkApplicationResponseBody : Tea.TeaModel {
+    public class Body : Tea.TeaModel {
+        public var applicationId: String?
+
+        public var success: Bool?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.applicationId != nil {
+                map["applicationId"] = self.applicationId!
+            }
+            if self.success != nil {
+                map["success"] = self.success!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["applicationId"] as? String {
+                self.applicationId = value
+            }
+            if let value = dict["success"] as? Bool {
+                self.success = value
+            }
+        }
+    }
+    public var body: CancelKyuubiSparkApplicationResponseBody.Body?
+
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        if self.requestId != nil {
+            map["requestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = CancelKyuubiSparkApplicationResponseBody.Body()
+            model.fromMap(value)
+            self.body = model
+        }
+        if let value = dict["requestId"] as? String {
+            self.requestId = value
+        }
+    }
+}
+
+public class CancelKyuubiSparkApplicationResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: CancelKyuubiSparkApplicationResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = CancelKyuubiSparkApplicationResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
+public class CreateKyuubiServiceRequest : Tea.TeaModel {
+    public var computeInstance: String?
+
+    public var kyuubiConfigs: String?
+
+    public var kyuubiReleaseVersion: String?
+
+    public var name: String?
+
+    public var publicEndpointEnabled: Bool?
+
+    public var queue: String?
+
+    public var releaseVersion: String?
+
+    public var replica: Int32?
+
+    public var sparkConfigs: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.computeInstance != nil {
+            map["computeInstance"] = self.computeInstance!
+        }
+        if self.kyuubiConfigs != nil {
+            map["kyuubiConfigs"] = self.kyuubiConfigs!
+        }
+        if self.kyuubiReleaseVersion != nil {
+            map["kyuubiReleaseVersion"] = self.kyuubiReleaseVersion!
+        }
+        if self.name != nil {
+            map["name"] = self.name!
+        }
+        if self.publicEndpointEnabled != nil {
+            map["publicEndpointEnabled"] = self.publicEndpointEnabled!
+        }
+        if self.queue != nil {
+            map["queue"] = self.queue!
+        }
+        if self.releaseVersion != nil {
+            map["releaseVersion"] = self.releaseVersion!
+        }
+        if self.replica != nil {
+            map["replica"] = self.replica!
+        }
+        if self.sparkConfigs != nil {
+            map["sparkConfigs"] = self.sparkConfigs!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["computeInstance"] as? String {
+            self.computeInstance = value
+        }
+        if let value = dict["kyuubiConfigs"] as? String {
+            self.kyuubiConfigs = value
+        }
+        if let value = dict["kyuubiReleaseVersion"] as? String {
+            self.kyuubiReleaseVersion = value
+        }
+        if let value = dict["name"] as? String {
+            self.name = value
+        }
+        if let value = dict["publicEndpointEnabled"] as? Bool {
+            self.publicEndpointEnabled = value
+        }
+        if let value = dict["queue"] as? String {
+            self.queue = value
+        }
+        if let value = dict["releaseVersion"] as? String {
+            self.releaseVersion = value
+        }
+        if let value = dict["replica"] as? Int32 {
+            self.replica = value
+        }
+        if let value = dict["sparkConfigs"] as? String {
+            self.sparkConfigs = value
+        }
+    }
+}
+
+public class CreateKyuubiServiceResponseBody : Tea.TeaModel {
+    public class Data : Tea.TeaModel {
+        public var kyuubiServiceId: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.kyuubiServiceId != nil {
+                map["kyuubiServiceId"] = self.kyuubiServiceId!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["kyuubiServiceId"] as? String {
+                self.kyuubiServiceId = value
+            }
+        }
+    }
+    public var data: CreateKyuubiServiceResponseBody.Data?
+
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.data?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.data != nil {
+            map["data"] = self.data?.toMap()
+        }
+        if self.requestId != nil {
+            map["requestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["data"] as? [String: Any?] {
+            var model = CreateKyuubiServiceResponseBody.Data()
+            model.fromMap(value)
+            self.data = model
+        }
+        if let value = dict["requestId"] as? String {
+            self.requestId = value
+        }
+    }
+}
+
+public class CreateKyuubiServiceResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: CreateKyuubiServiceResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = CreateKyuubiServiceResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
 public class CreateKyuubiTokenRequest : Tea.TeaModel {
     public class AutoExpireConfiguration : Tea.TeaModel {
         public var enable: Bool?
@@ -4920,6 +5298,95 @@ public class CreateWorkspaceResponse : Tea.TeaModel {
     }
 }
 
+public class DeleteKyuubiServiceResponseBody : Tea.TeaModel {
+    public var data: Any?
+
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.data != nil {
+            map["data"] = self.data!
+        }
+        if self.requestId != nil {
+            map["requestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["data"] as? Any {
+            self.data = value
+        }
+        if let value = dict["requestId"] as? String {
+            self.requestId = value
+        }
+    }
+}
+
+public class DeleteKyuubiServiceResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: DeleteKyuubiServiceResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = DeleteKyuubiServiceResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
 public class DeleteKyuubiTokenRequest : Tea.TeaModel {
     public var regionId: String?
 
@@ -5467,6 +5934,182 @@ public class EditWorkspaceQueueResponse : Tea.TeaModel {
         }
         if let value = dict["body"] as? [String: Any?] {
             var model = EditWorkspaceQueueResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
+public class GenerateTaskCodesRequest : Tea.TeaModel {
+    public var genNum: Int32?
+
+    public var productNamespace: String?
+
+    public var regionId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.genNum != nil {
+            map["genNum"] = self.genNum!
+        }
+        if self.productNamespace != nil {
+            map["productNamespace"] = self.productNamespace!
+        }
+        if self.regionId != nil {
+            map["regionId"] = self.regionId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["genNum"] as? Int32 {
+            self.genNum = value
+        }
+        if let value = dict["productNamespace"] as? String {
+            self.productNamespace = value
+        }
+        if let value = dict["regionId"] as? String {
+            self.regionId = value
+        }
+    }
+}
+
+public class GenerateTaskCodesResponseBody : Tea.TeaModel {
+    public var code: Int32?
+
+    public var data: [Int64]?
+
+    public var failed: Bool?
+
+    public var httpStatusCode: Int32?
+
+    public var msg: String?
+
+    public var requestId: String?
+
+    public var success: Bool?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.code != nil {
+            map["code"] = self.code!
+        }
+        if self.data != nil {
+            map["data"] = self.data!
+        }
+        if self.failed != nil {
+            map["failed"] = self.failed!
+        }
+        if self.httpStatusCode != nil {
+            map["httpStatusCode"] = self.httpStatusCode!
+        }
+        if self.msg != nil {
+            map["msg"] = self.msg!
+        }
+        if self.requestId != nil {
+            map["requestId"] = self.requestId!
+        }
+        if self.success != nil {
+            map["success"] = self.success!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["code"] as? Int32 {
+            self.code = value
+        }
+        if let value = dict["data"] as? [Int64] {
+            self.data = value
+        }
+        if let value = dict["failed"] as? Bool {
+            self.failed = value
+        }
+        if let value = dict["httpStatusCode"] as? Int32 {
+            self.httpStatusCode = value
+        }
+        if let value = dict["msg"] as? String {
+            self.msg = value
+        }
+        if let value = dict["requestId"] as? String {
+            self.requestId = value
+        }
+        if let value = dict["success"] as? Bool {
+            self.success = value
+        }
+    }
+}
+
+public class GenerateTaskCodesResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: GenerateTaskCodesResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = GenerateTaskCodesResponseBody()
             model.fromMap(value)
             self.body = model
         }
@@ -6210,6 +6853,248 @@ public class GetJobRunResponse : Tea.TeaModel {
         }
         if let value = dict["body"] as? [String: Any?] {
             var model = GetJobRunResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
+public class GetKyuubiServiceResponseBody : Tea.TeaModel {
+    public class Data : Tea.TeaModel {
+        public var computeInstance: String?
+
+        public var createTime: String?
+
+        public var creator: String?
+
+        public var innerEndpoint: String?
+
+        public var kyuubiConfigs: String?
+
+        public var kyuubiReleaseVersion: String?
+
+        public var kyuubiServiceId: String?
+
+        public var name: String?
+
+        public var publicEndpoint: String?
+
+        public var publicEndpointEnabled: Bool?
+
+        public var queue: String?
+
+        public var releaseVersion: String?
+
+        public var replica: Int32?
+
+        public var sparkConfigs: String?
+
+        public var startTime: String?
+
+        public var state: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.computeInstance != nil {
+                map["computeInstance"] = self.computeInstance!
+            }
+            if self.createTime != nil {
+                map["createTime"] = self.createTime!
+            }
+            if self.creator != nil {
+                map["creator"] = self.creator!
+            }
+            if self.innerEndpoint != nil {
+                map["innerEndpoint"] = self.innerEndpoint!
+            }
+            if self.kyuubiConfigs != nil {
+                map["kyuubiConfigs"] = self.kyuubiConfigs!
+            }
+            if self.kyuubiReleaseVersion != nil {
+                map["kyuubiReleaseVersion"] = self.kyuubiReleaseVersion!
+            }
+            if self.kyuubiServiceId != nil {
+                map["kyuubiServiceId"] = self.kyuubiServiceId!
+            }
+            if self.name != nil {
+                map["name"] = self.name!
+            }
+            if self.publicEndpoint != nil {
+                map["publicEndpoint"] = self.publicEndpoint!
+            }
+            if self.publicEndpointEnabled != nil {
+                map["publicEndpointEnabled"] = self.publicEndpointEnabled!
+            }
+            if self.queue != nil {
+                map["queue"] = self.queue!
+            }
+            if self.releaseVersion != nil {
+                map["releaseVersion"] = self.releaseVersion!
+            }
+            if self.replica != nil {
+                map["replica"] = self.replica!
+            }
+            if self.sparkConfigs != nil {
+                map["sparkConfigs"] = self.sparkConfigs!
+            }
+            if self.startTime != nil {
+                map["startTime"] = self.startTime!
+            }
+            if self.state != nil {
+                map["state"] = self.state!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["computeInstance"] as? String {
+                self.computeInstance = value
+            }
+            if let value = dict["createTime"] as? String {
+                self.createTime = value
+            }
+            if let value = dict["creator"] as? String {
+                self.creator = value
+            }
+            if let value = dict["innerEndpoint"] as? String {
+                self.innerEndpoint = value
+            }
+            if let value = dict["kyuubiConfigs"] as? String {
+                self.kyuubiConfigs = value
+            }
+            if let value = dict["kyuubiReleaseVersion"] as? String {
+                self.kyuubiReleaseVersion = value
+            }
+            if let value = dict["kyuubiServiceId"] as? String {
+                self.kyuubiServiceId = value
+            }
+            if let value = dict["name"] as? String {
+                self.name = value
+            }
+            if let value = dict["publicEndpoint"] as? String {
+                self.publicEndpoint = value
+            }
+            if let value = dict["publicEndpointEnabled"] as? Bool {
+                self.publicEndpointEnabled = value
+            }
+            if let value = dict["queue"] as? String {
+                self.queue = value
+            }
+            if let value = dict["releaseVersion"] as? String {
+                self.releaseVersion = value
+            }
+            if let value = dict["replica"] as? Int32 {
+                self.replica = value
+            }
+            if let value = dict["sparkConfigs"] as? String {
+                self.sparkConfigs = value
+            }
+            if let value = dict["startTime"] as? String {
+                self.startTime = value
+            }
+            if let value = dict["state"] as? String {
+                self.state = value
+            }
+        }
+    }
+    public var data: GetKyuubiServiceResponseBody.Data?
+
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.data?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.data != nil {
+            map["data"] = self.data?.toMap()
+        }
+        if self.requestId != nil {
+            map["requestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["data"] as? [String: Any?] {
+            var model = GetKyuubiServiceResponseBody.Data()
+            model.fromMap(value)
+            self.data = model
+        }
+        if let value = dict["requestId"] as? String {
+            self.requestId = value
+        }
+    }
+}
+
+public class GetKyuubiServiceResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: GetKyuubiServiceResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = GetKyuubiServiceResponseBody()
             model.fromMap(value)
             self.body = model
         }
@@ -14862,6 +15747,95 @@ public class StartJobRunResponse : Tea.TeaModel {
     }
 }
 
+public class StartKyuubiServiceResponseBody : Tea.TeaModel {
+    public var data: Any?
+
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.data != nil {
+            map["data"] = self.data!
+        }
+        if self.requestId != nil {
+            map["requestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["data"] as? Any {
+            self.data = value
+        }
+        if let value = dict["requestId"] as? String {
+            self.requestId = value
+        }
+    }
+}
+
+public class StartKyuubiServiceResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: StartKyuubiServiceResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = StartKyuubiServiceResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
 public class StartLivyComputeRequest : Tea.TeaModel {
     public var regionId: String?
 
@@ -15366,6 +16340,95 @@ public class StartSessionClusterResponse : Tea.TeaModel {
     }
 }
 
+public class StopKyuubiServiceResponseBody : Tea.TeaModel {
+    public var data: Any?
+
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.data != nil {
+            map["data"] = self.data!
+        }
+        if self.requestId != nil {
+            map["requestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["data"] as? Any {
+            self.data = value
+        }
+        if let value = dict["requestId"] as? String {
+            self.requestId = value
+        }
+    }
+}
+
+public class StopKyuubiServiceResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: StopKyuubiServiceResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = StopKyuubiServiceResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
 public class StopLivyComputeRequest : Tea.TeaModel {
     public var regionId: String?
 
@@ -15736,6 +16799,198 @@ public class TerminateSqlStatementResponse : Tea.TeaModel {
         }
         if let value = dict["body"] as? [String: Any?] {
             var model = TerminateSqlStatementResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
+public class UpdateKyuubiServiceRequest : Tea.TeaModel {
+    public var computeInstance: String?
+
+    public var kyuubiConfigs: String?
+
+    public var kyuubiReleaseVersion: String?
+
+    public var name: String?
+
+    public var publicEndpointEnabled: Bool?
+
+    public var queue: String?
+
+    public var releaseVersion: String?
+
+    public var replica: Int32?
+
+    public var restart: Bool?
+
+    public var sparkConfigs: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.computeInstance != nil {
+            map["computeInstance"] = self.computeInstance!
+        }
+        if self.kyuubiConfigs != nil {
+            map["kyuubiConfigs"] = self.kyuubiConfigs!
+        }
+        if self.kyuubiReleaseVersion != nil {
+            map["kyuubiReleaseVersion"] = self.kyuubiReleaseVersion!
+        }
+        if self.name != nil {
+            map["name"] = self.name!
+        }
+        if self.publicEndpointEnabled != nil {
+            map["publicEndpointEnabled"] = self.publicEndpointEnabled!
+        }
+        if self.queue != nil {
+            map["queue"] = self.queue!
+        }
+        if self.releaseVersion != nil {
+            map["releaseVersion"] = self.releaseVersion!
+        }
+        if self.replica != nil {
+            map["replica"] = self.replica!
+        }
+        if self.restart != nil {
+            map["restart"] = self.restart!
+        }
+        if self.sparkConfigs != nil {
+            map["sparkConfigs"] = self.sparkConfigs!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["computeInstance"] as? String {
+            self.computeInstance = value
+        }
+        if let value = dict["kyuubiConfigs"] as? String {
+            self.kyuubiConfigs = value
+        }
+        if let value = dict["kyuubiReleaseVersion"] as? String {
+            self.kyuubiReleaseVersion = value
+        }
+        if let value = dict["name"] as? String {
+            self.name = value
+        }
+        if let value = dict["publicEndpointEnabled"] as? Bool {
+            self.publicEndpointEnabled = value
+        }
+        if let value = dict["queue"] as? String {
+            self.queue = value
+        }
+        if let value = dict["releaseVersion"] as? String {
+            self.releaseVersion = value
+        }
+        if let value = dict["replica"] as? Int32 {
+            self.replica = value
+        }
+        if let value = dict["restart"] as? Bool {
+            self.restart = value
+        }
+        if let value = dict["sparkConfigs"] as? String {
+            self.sparkConfigs = value
+        }
+    }
+}
+
+public class UpdateKyuubiServiceResponseBody : Tea.TeaModel {
+    public var data: Any?
+
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.data != nil {
+            map["data"] = self.data!
+        }
+        if self.requestId != nil {
+            map["requestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["data"] as? Any {
+            self.data = value
+        }
+        if let value = dict["requestId"] as? String {
+            self.requestId = value
+        }
+    }
+}
+
+public class UpdateKyuubiServiceResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: UpdateKyuubiServiceResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = UpdateKyuubiServiceResponseBody()
             model.fromMap(value)
             self.body = model
         }
