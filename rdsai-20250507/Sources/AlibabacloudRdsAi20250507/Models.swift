@@ -70,6 +70,8 @@ public class CreateAppInstanceRequest : Tea.TeaModel {
 
     public var instanceClass: String?
 
+    public var publicEndpointEnabled: Bool?
+
     public var publicNetworkAccessEnabled: Bool?
 
     public var RAGEnabled: Bool?
@@ -120,6 +122,9 @@ public class CreateAppInstanceRequest : Tea.TeaModel {
         if self.instanceClass != nil {
             map["InstanceClass"] = self.instanceClass!
         }
+        if self.publicEndpointEnabled != nil {
+            map["PublicEndpointEnabled"] = self.publicEndpointEnabled!
+        }
         if self.publicNetworkAccessEnabled != nil {
             map["PublicNetworkAccessEnabled"] = self.publicNetworkAccessEnabled!
         }
@@ -166,6 +171,9 @@ public class CreateAppInstanceRequest : Tea.TeaModel {
         if let value = dict["InstanceClass"] as? String {
             self.instanceClass = value
         }
+        if let value = dict["PublicEndpointEnabled"] as? Bool {
+            self.publicEndpointEnabled = value
+        }
         if let value = dict["PublicNetworkAccessEnabled"] as? Bool {
             self.publicNetworkAccessEnabled = value
         }
@@ -199,6 +207,8 @@ public class CreateAppInstanceShrinkRequest : Tea.TeaModel {
     public var databasePassword: String?
 
     public var instanceClass: String?
+
+    public var publicEndpointEnabled: Bool?
 
     public var publicNetworkAccessEnabled: Bool?
 
@@ -249,6 +259,9 @@ public class CreateAppInstanceShrinkRequest : Tea.TeaModel {
         if self.instanceClass != nil {
             map["InstanceClass"] = self.instanceClass!
         }
+        if self.publicEndpointEnabled != nil {
+            map["PublicEndpointEnabled"] = self.publicEndpointEnabled!
+        }
         if self.publicNetworkAccessEnabled != nil {
             map["PublicNetworkAccessEnabled"] = self.publicNetworkAccessEnabled!
         }
@@ -292,6 +305,9 @@ public class CreateAppInstanceShrinkRequest : Tea.TeaModel {
         }
         if let value = dict["InstanceClass"] as? String {
             self.instanceClass = value
+        }
+        if let value = dict["PublicEndpointEnabled"] as? Bool {
+            self.publicEndpointEnabled = value
         }
         if let value = dict["PublicNetworkAccessEnabled"] as? Bool {
             self.publicNetworkAccessEnabled = value
@@ -3482,6 +3498,8 @@ public class ModifyInstanceStorageConfigResponse : Tea.TeaModel {
 public class ResetInstancePasswordRequest : Tea.TeaModel {
     public var dashboardPassword: String?
 
+    public var databasePassword: String?
+
     public var instanceName: String?
 
     public var regionId: String?
@@ -3503,6 +3521,9 @@ public class ResetInstancePasswordRequest : Tea.TeaModel {
         if self.dashboardPassword != nil {
             map["DashboardPassword"] = self.dashboardPassword!
         }
+        if self.databasePassword != nil {
+            map["DatabasePassword"] = self.databasePassword!
+        }
         if self.instanceName != nil {
             map["InstanceName"] = self.instanceName!
         }
@@ -3516,6 +3537,9 @@ public class ResetInstancePasswordRequest : Tea.TeaModel {
         guard let dict else { return }
         if let value = dict["DashboardPassword"] as? String {
             self.dashboardPassword = value
+        }
+        if let value = dict["DatabasePassword"] as? String {
+            self.databasePassword = value
         }
         if let value = dict["InstanceName"] as? String {
             self.instanceName = value
