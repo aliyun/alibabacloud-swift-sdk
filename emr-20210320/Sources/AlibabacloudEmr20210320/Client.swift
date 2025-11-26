@@ -526,11 +526,20 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.clusterId)) {
             query["ClusterId"] = request.clusterId ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.configScope)) {
+            query["ConfigScope"] = request.configScope ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.exportMode)) {
             query["ExportMode"] = request.exportMode ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.fileFormat)) {
             query["FileFormat"] = request.fileFormat ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.nodeGroupIds)) {
+            query["NodeGroupIds"] = request.nodeGroupIds ?? [];
+        }
+        if (!TeaUtils.Client.isUnset(request.nodeIds)) {
+            query["NodeIds"] = request.nodeIds ?? [];
         }
         if (!TeaUtils.Client.isUnset(request.regionId)) {
             query["RegionId"] = request.regionId ?? "";
@@ -3370,6 +3379,55 @@ open class Client : AlibabacloudOpenApi.Client {
     public func updateClusterAttribute(_ request: UpdateClusterAttributeRequest) async throws -> UpdateClusterAttributeResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         return try await updateClusterAttributeWithOptions(request as! UpdateClusterAttributeRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func updateClusterAutoRenewWithOptions(_ request: UpdateClusterAutoRenewRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> UpdateClusterAutoRenewResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.autoRenewInstances)) {
+            query["AutoRenewInstances"] = request.autoRenewInstances ?? [];
+        }
+        if (!TeaUtils.Client.isUnset(request.clusterAutoRenew)) {
+            query["ClusterAutoRenew"] = request.clusterAutoRenew!;
+        }
+        if (!TeaUtils.Client.isUnset(request.clusterAutoRenewDuration)) {
+            query["ClusterAutoRenewDuration"] = request.clusterAutoRenewDuration!;
+        }
+        if (!TeaUtils.Client.isUnset(request.clusterAutoRenewDurationUnit)) {
+            query["ClusterAutoRenewDurationUnit"] = request.clusterAutoRenewDurationUnit ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.clusterId)) {
+            query["ClusterId"] = request.clusterId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.regionId)) {
+            query["RegionId"] = request.regionId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.renewAllInstances)) {
+            query["RenewAllInstances"] = request.renewAllInstances!;
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "UpdateClusterAutoRenew",
+            "version": "2021-03-20",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(UpdateClusterAutoRenewResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func updateClusterAutoRenew(_ request: UpdateClusterAutoRenewRequest) async throws -> UpdateClusterAutoRenewResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await updateClusterAutoRenewWithOptions(request as! UpdateClusterAutoRenewRequest, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)

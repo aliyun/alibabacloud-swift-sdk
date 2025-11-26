@@ -2420,6 +2420,45 @@ public class ClusterSummary : Tea.TeaModel {
     }
 }
 
+public class CollationTimeZone : Tea.TeaModel {
+    public var currentTimeOffset: String?
+
+    public var timeZone: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.currentTimeOffset != nil {
+            map["CurrentTimeOffset"] = self.currentTimeOffset!
+        }
+        if self.timeZone != nil {
+            map["TimeZone"] = self.timeZone!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["CurrentTimeOffset"] as? String {
+            self.currentTimeOffset = value
+        }
+        if let value = dict["TimeZone"] as? String {
+            self.timeZone = value
+        }
+    }
+}
+
 public class ComponentInstanceSelector : Tea.TeaModel {
     public class ComponentInstances : Tea.TeaModel {
         public var applicationName: String?
@@ -3975,6 +4014,8 @@ public class DRPlanConfigurationDetail : Tea.TeaModel {
 
     public var scalingPolicies: [ScalingPolicy]?
 
+    public var scalingTimeZone: String?
+
     public var securityMode: String?
 
     public var subscriptionConfig: SubscriptionConfig?
@@ -4071,6 +4112,9 @@ public class DRPlanConfigurationDetail : Tea.TeaModel {
                 tmp.append(k.toMap())
             }
             map["ScalingPolicies"] = tmp
+        }
+        if self.scalingTimeZone != nil {
+            map["ScalingTimeZone"] = self.scalingTimeZone!
         }
         if self.securityMode != nil {
             map["SecurityMode"] = self.securityMode!
@@ -4197,6 +4241,9 @@ public class DRPlanConfigurationDetail : Tea.TeaModel {
                 }
             }
             self.scalingPolicies = tmp
+        }
+        if let value = dict["ScalingTimeZone"] as? String {
+            self.scalingTimeZone = value
         }
         if let value = dict["SecurityMode"] as? String {
             self.securityMode = value
@@ -11866,9 +11913,15 @@ public class ExportApplicationConfigsRequest : Tea.TeaModel {
 
     public var clusterId: String?
 
+    public var configScope: String?
+
     public var exportMode: String?
 
     public var fileFormat: String?
+
+    public var nodeGroupIds: [String]?
+
+    public var nodeIds: [String]?
 
     public var regionId: String?
 
@@ -11896,11 +11949,20 @@ public class ExportApplicationConfigsRequest : Tea.TeaModel {
         if self.clusterId != nil {
             map["ClusterId"] = self.clusterId!
         }
+        if self.configScope != nil {
+            map["ConfigScope"] = self.configScope!
+        }
         if self.exportMode != nil {
             map["ExportMode"] = self.exportMode!
         }
         if self.fileFormat != nil {
             map["FileFormat"] = self.fileFormat!
+        }
+        if self.nodeGroupIds != nil {
+            map["NodeGroupIds"] = self.nodeGroupIds!
+        }
+        if self.nodeIds != nil {
+            map["NodeIds"] = self.nodeIds!
         }
         if self.regionId != nil {
             map["RegionId"] = self.regionId!
@@ -11926,11 +11988,20 @@ public class ExportApplicationConfigsRequest : Tea.TeaModel {
         if let value = dict["ClusterId"] as? String {
             self.clusterId = value
         }
+        if let value = dict["ConfigScope"] as? String {
+            self.configScope = value
+        }
         if let value = dict["ExportMode"] as? String {
             self.exportMode = value
         }
         if let value = dict["FileFormat"] as? String {
             self.fileFormat = value
+        }
+        if let value = dict["NodeGroupIds"] as? [String] {
+            self.nodeGroupIds = value
+        }
+        if let value = dict["NodeIds"] as? [String] {
+            self.nodeIds = value
         }
         if let value = dict["RegionId"] as? String {
             self.regionId = value
@@ -13028,6 +13099,8 @@ public class GetAutoScalingPolicyResponseBody : Tea.TeaModel {
 
             public var adjustmentValue: Int32?
 
+            public var collationTimeZone: CollationTimeZone?
+
             public var metricsTrigger: MetricsTrigger?
 
             public var ruleName: String?
@@ -13046,6 +13119,7 @@ public class GetAutoScalingPolicyResponseBody : Tea.TeaModel {
             }
 
             public override func validate() throws -> Void {
+                try self.collationTimeZone?.validate()
                 try self.metricsTrigger?.validate()
                 try self.timeTrigger?.validate()
             }
@@ -13060,6 +13134,9 @@ public class GetAutoScalingPolicyResponseBody : Tea.TeaModel {
                 }
                 if self.adjustmentValue != nil {
                     map["AdjustmentValue"] = self.adjustmentValue!
+                }
+                if self.collationTimeZone != nil {
+                    map["CollationTimeZone"] = self.collationTimeZone?.toMap()
                 }
                 if self.metricsTrigger != nil {
                     map["MetricsTrigger"] = self.metricsTrigger?.toMap()
@@ -13086,6 +13163,11 @@ public class GetAutoScalingPolicyResponseBody : Tea.TeaModel {
                 }
                 if let value = dict["AdjustmentValue"] as? Int32 {
                     self.adjustmentValue = value
+                }
+                if let value = dict["CollationTimeZone"] as? [String: Any?] {
+                    var model = CollationTimeZone()
+                    model.fromMap(value)
+                    self.collationTimeZone = model
                 }
                 if let value = dict["MetricsTrigger"] as? [String: Any?] {
                     var model = MetricsTrigger()
@@ -13677,6 +13759,8 @@ public class GetClusterCloneMetaResponseBody : Tea.TeaModel {
 
         public var clusterType: String?
 
+        public var collationTimeZone: CollationTimeZone?
+
         public var deletionProtection: Bool?
 
         public var deployMode: String?
@@ -13715,6 +13799,7 @@ public class GetClusterCloneMetaResponseBody : Tea.TeaModel {
         }
 
         public override func validate() throws -> Void {
+            try self.collationTimeZone?.validate()
             try self.nodeAttributes?.validate()
             try self.subscriptionConfig?.validate()
         }
@@ -13753,6 +13838,9 @@ public class GetClusterCloneMetaResponseBody : Tea.TeaModel {
             }
             if self.clusterType != nil {
                 map["ClusterType"] = self.clusterType!
+            }
+            if self.collationTimeZone != nil {
+                map["CollationTimeZone"] = self.collationTimeZone?.toMap()
             }
             if self.deletionProtection != nil {
                 map["DeletionProtection"] = self.deletionProtection!
@@ -13863,6 +13951,11 @@ public class GetClusterCloneMetaResponseBody : Tea.TeaModel {
             }
             if let value = dict["ClusterType"] as? String {
                 self.clusterType = value
+            }
+            if let value = dict["CollationTimeZone"] as? [String: Any?] {
+                var model = CollationTimeZone()
+                model.fromMap(value)
+                self.collationTimeZone = model
             }
             if let value = dict["DeletionProtection"] as? Bool {
                 self.deletionProtection = value
@@ -57653,6 +57746,188 @@ public class UpdateClusterAttributeResponse : Tea.TeaModel {
         }
         if let value = dict["body"] as? [String: Any?] {
             var model = UpdateClusterAttributeResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
+public class UpdateClusterAutoRenewRequest : Tea.TeaModel {
+    public var autoRenewInstances: [AutoRenewInstance]?
+
+    public var clusterAutoRenew: Bool?
+
+    public var clusterAutoRenewDuration: Int32?
+
+    public var clusterAutoRenewDurationUnit: String?
+
+    public var clusterId: String?
+
+    public var regionId: String?
+
+    public var renewAllInstances: Bool?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.autoRenewInstances != nil {
+            var tmp : [Any] = []
+            for k in self.autoRenewInstances! {
+                tmp.append(k.toMap())
+            }
+            map["AutoRenewInstances"] = tmp
+        }
+        if self.clusterAutoRenew != nil {
+            map["ClusterAutoRenew"] = self.clusterAutoRenew!
+        }
+        if self.clusterAutoRenewDuration != nil {
+            map["ClusterAutoRenewDuration"] = self.clusterAutoRenewDuration!
+        }
+        if self.clusterAutoRenewDurationUnit != nil {
+            map["ClusterAutoRenewDurationUnit"] = self.clusterAutoRenewDurationUnit!
+        }
+        if self.clusterId != nil {
+            map["ClusterId"] = self.clusterId!
+        }
+        if self.regionId != nil {
+            map["RegionId"] = self.regionId!
+        }
+        if self.renewAllInstances != nil {
+            map["RenewAllInstances"] = self.renewAllInstances!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["AutoRenewInstances"] as? [Any?] {
+            var tmp : [AutoRenewInstance] = []
+            for v in value {
+                if v != nil {
+                    var model = AutoRenewInstance()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.autoRenewInstances = tmp
+        }
+        if let value = dict["ClusterAutoRenew"] as? Bool {
+            self.clusterAutoRenew = value
+        }
+        if let value = dict["ClusterAutoRenewDuration"] as? Int32 {
+            self.clusterAutoRenewDuration = value
+        }
+        if let value = dict["ClusterAutoRenewDurationUnit"] as? String {
+            self.clusterAutoRenewDurationUnit = value
+        }
+        if let value = dict["ClusterId"] as? String {
+            self.clusterId = value
+        }
+        if let value = dict["RegionId"] as? String {
+            self.regionId = value
+        }
+        if let value = dict["RenewAllInstances"] as? Bool {
+            self.renewAllInstances = value
+        }
+    }
+}
+
+public class UpdateClusterAutoRenewResponseBody : Tea.TeaModel {
+    public var requestId: String?
+
+    public var success: Bool?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.success != nil {
+            map["Success"] = self.success!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+        if let value = dict["Success"] as? Bool {
+            self.success = value
+        }
+    }
+}
+
+public class UpdateClusterAutoRenewResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: UpdateClusterAutoRenewResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = UpdateClusterAutoRenewResponseBody()
             model.fromMap(value)
             self.body = model
         }
