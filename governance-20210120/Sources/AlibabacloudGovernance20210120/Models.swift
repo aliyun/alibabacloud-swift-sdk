@@ -3816,6 +3816,36 @@ public class ListEvaluationResultsResponseBody : Tea.TeaModel {
                     }
                 }
             }
+            public class AvailableRemediation : Tea.TeaModel {
+                public var remediationTemplateId: String?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.remediationTemplateId != nil {
+                        map["RemediationTemplateId"] = self.remediationTemplateId!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any?]?) -> Void {
+                    guard let dict else { return }
+                    if let value = dict["RemediationTemplateId"] as? String {
+                        self.remediationTemplateId = value
+                    }
+                }
+            }
             public class ErrorInfo : Tea.TeaModel {
                 public var code: String?
 
@@ -3886,6 +3916,8 @@ public class ListEvaluationResultsResponseBody : Tea.TeaModel {
             }
             public var accountSummary: ListEvaluationResultsResponseBody.Results.MetricResults.AccountSummary?
 
+            public var availableRemediation: [ListEvaluationResultsResponseBody.Results.MetricResults.AvailableRemediation]?
+
             public var errorInfo: ListEvaluationResultsResponseBody.Results.MetricResults.ErrorInfo?
 
             public var evaluationTime: String?
@@ -3922,6 +3954,13 @@ public class ListEvaluationResultsResponseBody : Tea.TeaModel {
                 if self.accountSummary != nil {
                     map["AccountSummary"] = self.accountSummary?.toMap()
                 }
+                if self.availableRemediation != nil {
+                    var tmp : [Any] = []
+                    for k in self.availableRemediation! {
+                        tmp.append(k.toMap())
+                    }
+                    map["AvailableRemediation"] = tmp
+                }
                 if self.errorInfo != nil {
                     map["ErrorInfo"] = self.errorInfo?.toMap()
                 }
@@ -3955,6 +3994,19 @@ public class ListEvaluationResultsResponseBody : Tea.TeaModel {
                     var model = ListEvaluationResultsResponseBody.Results.MetricResults.AccountSummary()
                     model.fromMap(value)
                     self.accountSummary = model
+                }
+                if let value = dict["AvailableRemediation"] as? [Any?] {
+                    var tmp : [ListEvaluationResultsResponseBody.Results.MetricResults.AvailableRemediation] = []
+                    for v in value {
+                        if v != nil {
+                            var model = ListEvaluationResultsResponseBody.Results.MetricResults.AvailableRemediation()
+                            if v != nil {
+                                model.fromMap(v as? [String: Any?])
+                            }
+                            tmp.append(model)
+                        }
+                    }
+                    self.availableRemediation = tmp
                 }
                 if let value = dict["ErrorInfo"] as? [String: Any?] {
                     var model = ListEvaluationResultsResponseBody.Results.MetricResults.ErrorInfo()
