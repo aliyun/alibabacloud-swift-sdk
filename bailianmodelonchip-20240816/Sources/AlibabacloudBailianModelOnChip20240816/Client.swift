@@ -57,6 +57,39 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func activeInteractionEuCreateWithOptions(_ request: ActiveInteractionEuCreateRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> ActiveInteractionEuCreateResponse {
+        try TeaUtils.Client.validateModel(request)
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.image)) {
+            body["image"] = request.image ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String],
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "ActiveInteractionEuCreate",
+            "version": "2024-08-16",
+            "protocol": "HTTPS",
+            "pathname": "/open/api/eu/active/interaction/create",
+            "method": "POST",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(ActiveInteractionEuCreateResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func activeInteractionEuCreate(_ request: ActiveInteractionEuCreateRequest) async throws -> ActiveInteractionEuCreateResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await activeInteractionEuCreateWithOptions(request as! ActiveInteractionEuCreateRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func deviceRegisterWithOptions(_ request: DeviceRegisterRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> DeviceRegisterResponse {
         try TeaUtils.Client.validateModel(request)
         var body: [String: Any] = [:]
@@ -188,5 +221,44 @@ open class Client : AlibabacloudOpenApi.Client {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         var headers: [String: String] = [:]
         return try await modelTypeDetermineWithOptions(request as! ModelTypeDetermineRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func omniRealtimeConversationEUWithOptions(_ request: OmniRealtimeConversationEURequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> OmniRealtimeConversationEUResponse {
+        try TeaUtils.Client.validateModel(request)
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.inputAudio)) {
+            body["inputAudio"] = request.inputAudio ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.userPrompt)) {
+            body["userPrompt"] = request.userPrompt ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.voice)) {
+            body["voice"] = request.voice ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String],
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "OmniRealtimeConversationEU",
+            "version": "2024-08-16",
+            "protocol": "HTTPS",
+            "pathname": "/open/api/eu/active/interaction/audio",
+            "method": "POST",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(OmniRealtimeConversationEUResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func omniRealtimeConversationEU(_ request: OmniRealtimeConversationEURequest) async throws -> OmniRealtimeConversationEUResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await omniRealtimeConversationEUWithOptions(request as! OmniRealtimeConversationEURequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
     }
 }
