@@ -1110,6 +1110,174 @@ public class SinkHttpsParameters : Tea.TeaModel {
     }
 }
 
+public class SinkOSSParameters : Tea.TeaModel {
+    public class ContentTransform : Tea.TeaModel {
+        public var form: String?
+
+        public var template: String?
+
+        public var value: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.form != nil {
+                map["Form"] = self.form!
+            }
+            if self.template != nil {
+                map["Template"] = self.template!
+            }
+            if self.value != nil {
+                map["Value"] = self.value!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["Form"] as? String {
+                self.form = value
+            }
+            if let value = dict["Template"] as? String {
+                self.template = value
+            }
+            if let value = dict["Value"] as? String {
+                self.value = value
+            }
+        }
+    }
+    public var bucketName: String?
+
+    public var compressionType: String?
+
+    public var contentTransform: SinkOSSParameters.ContentTransform?
+
+    public var endpoint: String?
+
+    public var pathFormat: String?
+
+    public var regionId: String?
+
+    public var roleArn: String?
+
+    public var rotateIntervalMs: String?
+
+    public var rotateSizeBytes: String?
+
+    public var SSLEnabled: Bool?
+
+    public var taskConcurrency: String?
+
+    public var timeZone: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.contentTransform?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.bucketName != nil {
+            map["BucketName"] = self.bucketName!
+        }
+        if self.compressionType != nil {
+            map["CompressionType"] = self.compressionType!
+        }
+        if self.contentTransform != nil {
+            map["ContentTransform"] = self.contentTransform?.toMap()
+        }
+        if self.endpoint != nil {
+            map["Endpoint"] = self.endpoint!
+        }
+        if self.pathFormat != nil {
+            map["PathFormat"] = self.pathFormat!
+        }
+        if self.regionId != nil {
+            map["RegionId"] = self.regionId!
+        }
+        if self.roleArn != nil {
+            map["RoleArn"] = self.roleArn!
+        }
+        if self.rotateIntervalMs != nil {
+            map["RotateIntervalMs"] = self.rotateIntervalMs!
+        }
+        if self.rotateSizeBytes != nil {
+            map["RotateSizeBytes"] = self.rotateSizeBytes!
+        }
+        if self.SSLEnabled != nil {
+            map["SSLEnabled"] = self.SSLEnabled!
+        }
+        if self.taskConcurrency != nil {
+            map["TaskConcurrency"] = self.taskConcurrency!
+        }
+        if self.timeZone != nil {
+            map["TimeZone"] = self.timeZone!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["BucketName"] as? String {
+            self.bucketName = value
+        }
+        if let value = dict["CompressionType"] as? String {
+            self.compressionType = value
+        }
+        if let value = dict["ContentTransform"] as? [String: Any?] {
+            var model = SinkOSSParameters.ContentTransform()
+            model.fromMap(value)
+            self.contentTransform = model
+        }
+        if let value = dict["Endpoint"] as? String {
+            self.endpoint = value
+        }
+        if let value = dict["PathFormat"] as? String {
+            self.pathFormat = value
+        }
+        if let value = dict["RegionId"] as? String {
+            self.regionId = value
+        }
+        if let value = dict["RoleArn"] as? String {
+            self.roleArn = value
+        }
+        if let value = dict["RotateIntervalMs"] as? String {
+            self.rotateIntervalMs = value
+        }
+        if let value = dict["RotateSizeBytes"] as? String {
+            self.rotateSizeBytes = value
+        }
+        if let value = dict["SSLEnabled"] as? Bool {
+            self.SSLEnabled = value
+        }
+        if let value = dict["TaskConcurrency"] as? String {
+            self.taskConcurrency = value
+        }
+        if let value = dict["TimeZone"] as? String {
+            self.timeZone = value
+        }
+    }
+}
+
 public class SourceMySQLParameters : Tea.TeaModel {
     public var databaseName: String?
 
@@ -1215,6 +1383,133 @@ public class SourceMySQLParameters : Tea.TeaModel {
         }
         if let value = dict["RegionId"] as? String {
             self.regionId = value
+        }
+        if let value = dict["SecurityGroupId"] as? String {
+            self.securityGroupId = value
+        }
+        if let value = dict["SnapshotMode"] as? String {
+            self.snapshotMode = value
+        }
+        if let value = dict["TableNames"] as? String {
+            self.tableNames = value
+        }
+        if let value = dict["User"] as? String {
+            self.user = value
+        }
+        if let value = dict["VSwitchIds"] as? String {
+            self.vSwitchIds = value
+        }
+        if let value = dict["VpcId"] as? String {
+            self.vpcId = value
+        }
+    }
+}
+
+public class SourcePostgreSQLParameters : Tea.TeaModel {
+    public var databaseName: String?
+
+    public var hostName: String?
+
+    public var networkType: String?
+
+    public var password: String?
+
+    public var port: Int32?
+
+    public var regionId: String?
+
+    public var schemaName: String?
+
+    public var securityGroupId: String?
+
+    public var snapshotMode: String?
+
+    public var tableNames: String?
+
+    public var user: String?
+
+    public var vSwitchIds: String?
+
+    public var vpcId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.databaseName != nil {
+            map["DatabaseName"] = self.databaseName!
+        }
+        if self.hostName != nil {
+            map["HostName"] = self.hostName!
+        }
+        if self.networkType != nil {
+            map["NetworkType"] = self.networkType!
+        }
+        if self.password != nil {
+            map["Password"] = self.password!
+        }
+        if self.port != nil {
+            map["Port"] = self.port!
+        }
+        if self.regionId != nil {
+            map["RegionId"] = self.regionId!
+        }
+        if self.schemaName != nil {
+            map["SchemaName"] = self.schemaName!
+        }
+        if self.securityGroupId != nil {
+            map["SecurityGroupId"] = self.securityGroupId!
+        }
+        if self.snapshotMode != nil {
+            map["SnapshotMode"] = self.snapshotMode!
+        }
+        if self.tableNames != nil {
+            map["TableNames"] = self.tableNames!
+        }
+        if self.user != nil {
+            map["User"] = self.user!
+        }
+        if self.vSwitchIds != nil {
+            map["VSwitchIds"] = self.vSwitchIds!
+        }
+        if self.vpcId != nil {
+            map["VpcId"] = self.vpcId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["DatabaseName"] as? String {
+            self.databaseName = value
+        }
+        if let value = dict["HostName"] as? String {
+            self.hostName = value
+        }
+        if let value = dict["NetworkType"] as? String {
+            self.networkType = value
+        }
+        if let value = dict["Password"] as? String {
+            self.password = value
+        }
+        if let value = dict["Port"] as? Int32 {
+            self.port = value
+        }
+        if let value = dict["RegionId"] as? String {
+            self.regionId = value
+        }
+        if let value = dict["SchemaName"] as? String {
+            self.schemaName = value
         }
         if let value = dict["SecurityGroupId"] as? String {
             self.securityGroupId = value
@@ -10685,6 +10980,8 @@ public class CreateEventStreamingRequest : Tea.TeaModel {
 
         public var sinkMNSParameters: CreateEventStreamingRequest.Sink.SinkMNSParameters?
 
+        public var sinkOSSParameters: SinkOSSParameters?
+
         public var sinkOpenSourceRabbitMQParameters: CreateEventStreamingRequest.Sink.SinkOpenSourceRabbitMQParameters?
 
         public var sinkPrometheusParameters: CreateEventStreamingRequest.Sink.SinkPrometheusParameters?
@@ -10722,6 +11019,7 @@ public class CreateEventStreamingRequest : Tea.TeaModel {
             try self.sinkHttpsParameters?.validate()
             try self.sinkKafkaParameters?.validate()
             try self.sinkMNSParameters?.validate()
+            try self.sinkOSSParameters?.validate()
             try self.sinkOpenSourceRabbitMQParameters?.validate()
             try self.sinkPrometheusParameters?.validate()
             try self.sinkRabbitMQParameters?.validate()
@@ -10776,6 +11074,9 @@ public class CreateEventStreamingRequest : Tea.TeaModel {
             }
             if self.sinkMNSParameters != nil {
                 map["SinkMNSParameters"] = self.sinkMNSParameters?.toMap()
+            }
+            if self.sinkOSSParameters != nil {
+                map["SinkOSSParameters"] = self.sinkOSSParameters?.toMap()
             }
             if self.sinkOpenSourceRabbitMQParameters != nil {
                 map["SinkOpenSourceRabbitMQParameters"] = self.sinkOpenSourceRabbitMQParameters?.toMap()
@@ -10874,6 +11175,11 @@ public class CreateEventStreamingRequest : Tea.TeaModel {
                 var model = CreateEventStreamingRequest.Sink.SinkMNSParameters()
                 model.fromMap(value)
                 self.sinkMNSParameters = model
+            }
+            if let value = dict["SinkOSSParameters"] as? [String: Any?] {
+                var model = SinkOSSParameters()
+                model.fromMap(value)
+                self.sinkOSSParameters = model
             }
             if let value = dict["SinkOpenSourceRabbitMQParameters"] as? [String: Any?] {
                 var model = CreateEventStreamingRequest.Sink.SinkOpenSourceRabbitMQParameters()
@@ -12205,6 +12511,8 @@ public class CreateEventStreamingRequest : Tea.TeaModel {
 
         public var sourceOpenSourceRabbitMQParameters: CreateEventStreamingRequest.Source.SourceOpenSourceRabbitMQParameters?
 
+        public var sourcePostgreSQLParameters: SourcePostgreSQLParameters?
+
         public var sourcePrometheusParameters: CreateEventStreamingRequest.Source.SourcePrometheusParameters?
 
         public var sourceRabbitMQParameters: CreateEventStreamingRequest.Source.SourceRabbitMQParameters?
@@ -12237,6 +12545,7 @@ public class CreateEventStreamingRequest : Tea.TeaModel {
             try self.sourceMySQLParameters?.validate()
             try self.sourceOSSParameters?.validate()
             try self.sourceOpenSourceRabbitMQParameters?.validate()
+            try self.sourcePostgreSQLParameters?.validate()
             try self.sourcePrometheusParameters?.validate()
             try self.sourceRabbitMQParameters?.validate()
             try self.sourceRocketMQCheckpointParameters?.validate()
@@ -12281,6 +12590,9 @@ public class CreateEventStreamingRequest : Tea.TeaModel {
             }
             if self.sourceOpenSourceRabbitMQParameters != nil {
                 map["SourceOpenSourceRabbitMQParameters"] = self.sourceOpenSourceRabbitMQParameters?.toMap()
+            }
+            if self.sourcePostgreSQLParameters != nil {
+                map["SourcePostgreSQLParameters"] = self.sourcePostgreSQLParameters?.toMap()
             }
             if self.sourcePrometheusParameters != nil {
                 map["SourcePrometheusParameters"] = self.sourcePrometheusParameters?.toMap()
@@ -12361,6 +12673,11 @@ public class CreateEventStreamingRequest : Tea.TeaModel {
                 var model = CreateEventStreamingRequest.Source.SourceOpenSourceRabbitMQParameters()
                 model.fromMap(value)
                 self.sourceOpenSourceRabbitMQParameters = model
+            }
+            if let value = dict["SourcePostgreSQLParameters"] as? [String: Any?] {
+                var model = SourcePostgreSQLParameters()
+                model.fromMap(value)
+                self.sourcePostgreSQLParameters = model
             }
             if let value = dict["SourcePrometheusParameters"] as? [String: Any?] {
                 var model = CreateEventStreamingRequest.Source.SourcePrometheusParameters()
@@ -24006,6 +24323,8 @@ public class GetEventStreamingResponseBody : Tea.TeaModel {
 
             public var sinkMNSParameters: GetEventStreamingResponseBody.Data.Sink.SinkMNSParameters?
 
+            public var sinkOSSParameters: SinkOSSParameters?
+
             public var sinkOpenSourceRabbitMQParameters: GetEventStreamingResponseBody.Data.Sink.SinkOpenSourceRabbitMQParameters?
 
             public var sinkRabbitMQParameters: GetEventStreamingResponseBody.Data.Sink.SinkRabbitMQParameters?
@@ -24041,6 +24360,7 @@ public class GetEventStreamingResponseBody : Tea.TeaModel {
                 try self.sinkHttpsParameters?.validate()
                 try self.sinkKafkaParameters?.validate()
                 try self.sinkMNSParameters?.validate()
+                try self.sinkOSSParameters?.validate()
                 try self.sinkOpenSourceRabbitMQParameters?.validate()
                 try self.sinkRabbitMQParameters?.validate()
                 try self.sinkRocketMQCheckpointParameters?.validate()
@@ -24094,6 +24414,9 @@ public class GetEventStreamingResponseBody : Tea.TeaModel {
                 }
                 if self.sinkMNSParameters != nil {
                     map["SinkMNSParameters"] = self.sinkMNSParameters?.toMap()
+                }
+                if self.sinkOSSParameters != nil {
+                    map["SinkOSSParameters"] = self.sinkOSSParameters?.toMap()
                 }
                 if self.sinkOpenSourceRabbitMQParameters != nil {
                     map["SinkOpenSourceRabbitMQParameters"] = self.sinkOpenSourceRabbitMQParameters?.toMap()
@@ -24189,6 +24512,11 @@ public class GetEventStreamingResponseBody : Tea.TeaModel {
                     var model = GetEventStreamingResponseBody.Data.Sink.SinkMNSParameters()
                     model.fromMap(value)
                     self.sinkMNSParameters = model
+                }
+                if let value = dict["SinkOSSParameters"] as? [String: Any?] {
+                    var model = SinkOSSParameters()
+                    model.fromMap(value)
+                    self.sinkOSSParameters = model
                 }
                 if let value = dict["SinkOpenSourceRabbitMQParameters"] as? [String: Any?] {
                     var model = GetEventStreamingResponseBody.Data.Sink.SinkOpenSourceRabbitMQParameters()
@@ -25531,6 +25859,8 @@ public class GetEventStreamingResponseBody : Tea.TeaModel {
 
             public var sourceOpenSourceRabbitMQParameters: GetEventStreamingResponseBody.Data.Source.SourceOpenSourceRabbitMQParameters?
 
+            public var sourcePostgreSQLParameters: SourcePostgreSQLParameters?
+
             public var sourcePrometheusParameters: GetEventStreamingResponseBody.Data.Source.SourcePrometheusParameters?
 
             public var sourceRabbitMQParameters: GetEventStreamingResponseBody.Data.Source.SourceRabbitMQParameters?
@@ -25563,6 +25893,7 @@ public class GetEventStreamingResponseBody : Tea.TeaModel {
                 try self.sourceMySQLParameters?.validate()
                 try self.sourceOSSParameters?.validate()
                 try self.sourceOpenSourceRabbitMQParameters?.validate()
+                try self.sourcePostgreSQLParameters?.validate()
                 try self.sourcePrometheusParameters?.validate()
                 try self.sourceRabbitMQParameters?.validate()
                 try self.sourceRocketMQCheckpointParameters?.validate()
@@ -25607,6 +25938,9 @@ public class GetEventStreamingResponseBody : Tea.TeaModel {
                 }
                 if self.sourceOpenSourceRabbitMQParameters != nil {
                     map["SourceOpenSourceRabbitMQParameters"] = self.sourceOpenSourceRabbitMQParameters?.toMap()
+                }
+                if self.sourcePostgreSQLParameters != nil {
+                    map["SourcePostgreSQLParameters"] = self.sourcePostgreSQLParameters?.toMap()
                 }
                 if self.sourcePrometheusParameters != nil {
                     map["SourcePrometheusParameters"] = self.sourcePrometheusParameters?.toMap()
@@ -25687,6 +26021,11 @@ public class GetEventStreamingResponseBody : Tea.TeaModel {
                     var model = GetEventStreamingResponseBody.Data.Source.SourceOpenSourceRabbitMQParameters()
                     model.fromMap(value)
                     self.sourceOpenSourceRabbitMQParameters = model
+                }
+                if let value = dict["SourcePostgreSQLParameters"] as? [String: Any?] {
+                    var model = SourcePostgreSQLParameters()
+                    model.fromMap(value)
+                    self.sourcePostgreSQLParameters = model
                 }
                 if let value = dict["SourcePrometheusParameters"] as? [String: Any?] {
                     var model = GetEventStreamingResponseBody.Data.Source.SourcePrometheusParameters()
@@ -34192,6 +34531,8 @@ public class ListEventStreamingsResponseBody : Tea.TeaModel {
 
                 public var sinkMNSParameters: ListEventStreamingsResponseBody.Data.EventStreamings.Sink.SinkMNSParameters?
 
+                public var sinkOSSParameters: SinkOSSParameters?
+
                 public var sinkOpenSourceRabbitMQParameters: ListEventStreamingsResponseBody.Data.EventStreamings.Sink.SinkOpenSourceRabbitMQParameters?
 
                 public var sinkRabbitMQParameters: ListEventStreamingsResponseBody.Data.EventStreamings.Sink.SinkRabbitMQParameters?
@@ -34225,6 +34566,7 @@ public class ListEventStreamingsResponseBody : Tea.TeaModel {
                     try self.sinkHttpsParameters?.validate()
                     try self.sinkKafkaParameters?.validate()
                     try self.sinkMNSParameters?.validate()
+                    try self.sinkOSSParameters?.validate()
                     try self.sinkOpenSourceRabbitMQParameters?.validate()
                     try self.sinkRabbitMQParameters?.validate()
                     try self.sinkRocketMQCheckpointParameters?.validate()
@@ -34272,6 +34614,9 @@ public class ListEventStreamingsResponseBody : Tea.TeaModel {
                     }
                     if self.sinkMNSParameters != nil {
                         map["SinkMNSParameters"] = self.sinkMNSParameters?.toMap()
+                    }
+                    if self.sinkOSSParameters != nil {
+                        map["SinkOSSParameters"] = self.sinkOSSParameters?.toMap()
                     }
                     if self.sinkOpenSourceRabbitMQParameters != nil {
                         map["SinkOpenSourceRabbitMQParameters"] = self.sinkOpenSourceRabbitMQParameters?.toMap()
@@ -34357,6 +34702,11 @@ public class ListEventStreamingsResponseBody : Tea.TeaModel {
                         var model = ListEventStreamingsResponseBody.Data.EventStreamings.Sink.SinkMNSParameters()
                         model.fromMap(value)
                         self.sinkMNSParameters = model
+                    }
+                    if let value = dict["SinkOSSParameters"] as? [String: Any?] {
+                        var model = SinkOSSParameters()
+                        model.fromMap(value)
+                        self.sinkOSSParameters = model
                     }
                     if let value = dict["SinkOpenSourceRabbitMQParameters"] as? [String: Any?] {
                         var model = ListEventStreamingsResponseBody.Data.EventStreamings.Sink.SinkOpenSourceRabbitMQParameters()
@@ -35563,6 +35913,8 @@ public class ListEventStreamingsResponseBody : Tea.TeaModel {
 
                 public var sourceOpenSourceRabbitMQParameters: ListEventStreamingsResponseBody.Data.EventStreamings.Source.SourceOpenSourceRabbitMQParameters?
 
+                public var sourcePostgreSQLParameters: SourcePostgreSQLParameters?
+
                 public var sourcePrometheusParameters: ListEventStreamingsResponseBody.Data.EventStreamings.Source.SourcePrometheusParameters?
 
                 public var sourceRabbitMQParameters: ListEventStreamingsResponseBody.Data.EventStreamings.Source.SourceRabbitMQParameters?
@@ -35594,6 +35946,7 @@ public class ListEventStreamingsResponseBody : Tea.TeaModel {
                     try self.sourceMySQLParameters?.validate()
                     try self.sourceOSSParameters?.validate()
                     try self.sourceOpenSourceRabbitMQParameters?.validate()
+                    try self.sourcePostgreSQLParameters?.validate()
                     try self.sourcePrometheusParameters?.validate()
                     try self.sourceRabbitMQParameters?.validate()
                     try self.sourceRocketMQCheckpointParameters?.validate()
@@ -35635,6 +35988,9 @@ public class ListEventStreamingsResponseBody : Tea.TeaModel {
                     }
                     if self.sourceOpenSourceRabbitMQParameters != nil {
                         map["SourceOpenSourceRabbitMQParameters"] = self.sourceOpenSourceRabbitMQParameters?.toMap()
+                    }
+                    if self.sourcePostgreSQLParameters != nil {
+                        map["SourcePostgreSQLParameters"] = self.sourcePostgreSQLParameters?.toMap()
                     }
                     if self.sourcePrometheusParameters != nil {
                         map["SourcePrometheusParameters"] = self.sourcePrometheusParameters?.toMap()
@@ -35710,6 +36066,11 @@ public class ListEventStreamingsResponseBody : Tea.TeaModel {
                         var model = ListEventStreamingsResponseBody.Data.EventStreamings.Source.SourceOpenSourceRabbitMQParameters()
                         model.fromMap(value)
                         self.sourceOpenSourceRabbitMQParameters = model
+                    }
+                    if let value = dict["SourcePostgreSQLParameters"] as? [String: Any?] {
+                        var model = SourcePostgreSQLParameters()
+                        model.fromMap(value)
+                        self.sourcePostgreSQLParameters = model
                     }
                     if let value = dict["SourcePrometheusParameters"] as? [String: Any?] {
                         var model = ListEventStreamingsResponseBody.Data.EventStreamings.Source.SourcePrometheusParameters()
@@ -49553,6 +49914,8 @@ public class UpdateEventStreamingRequest : Tea.TeaModel {
 
         public var sinkMNSParameters: UpdateEventStreamingRequest.Sink.SinkMNSParameters?
 
+        public var sinkOSSParameters: SinkOSSParameters?
+
         public var sinkOpenSourceRabbitMQParameters: UpdateEventStreamingRequest.Sink.SinkOpenSourceRabbitMQParameters?
 
         public var sinkPrometheusParameters: UpdateEventStreamingRequest.Sink.SinkPrometheusParameters?
@@ -49590,6 +49953,7 @@ public class UpdateEventStreamingRequest : Tea.TeaModel {
             try self.sinkHttpsParameters?.validate()
             try self.sinkKafkaParameters?.validate()
             try self.sinkMNSParameters?.validate()
+            try self.sinkOSSParameters?.validate()
             try self.sinkOpenSourceRabbitMQParameters?.validate()
             try self.sinkPrometheusParameters?.validate()
             try self.sinkRabbitMQParameters?.validate()
@@ -49644,6 +50008,9 @@ public class UpdateEventStreamingRequest : Tea.TeaModel {
             }
             if self.sinkMNSParameters != nil {
                 map["SinkMNSParameters"] = self.sinkMNSParameters?.toMap()
+            }
+            if self.sinkOSSParameters != nil {
+                map["SinkOSSParameters"] = self.sinkOSSParameters?.toMap()
             }
             if self.sinkOpenSourceRabbitMQParameters != nil {
                 map["SinkOpenSourceRabbitMQParameters"] = self.sinkOpenSourceRabbitMQParameters?.toMap()
@@ -49742,6 +50109,11 @@ public class UpdateEventStreamingRequest : Tea.TeaModel {
                 var model = UpdateEventStreamingRequest.Sink.SinkMNSParameters()
                 model.fromMap(value)
                 self.sinkMNSParameters = model
+            }
+            if let value = dict["SinkOSSParameters"] as? [String: Any?] {
+                var model = SinkOSSParameters()
+                model.fromMap(value)
+                self.sinkOSSParameters = model
             }
             if let value = dict["SinkOpenSourceRabbitMQParameters"] as? [String: Any?] {
                 var model = UpdateEventStreamingRequest.Sink.SinkOpenSourceRabbitMQParameters()
@@ -51049,6 +51421,8 @@ public class UpdateEventStreamingRequest : Tea.TeaModel {
 
         public var sourceOpenSourceRabbitMQParameters: UpdateEventStreamingRequest.Source.SourceOpenSourceRabbitMQParameters?
 
+        public var sourcePostgreSQLParameters: SourcePostgreSQLParameters?
+
         public var sourcePrometheusParameters: UpdateEventStreamingRequest.Source.SourcePrometheusParameters?
 
         public var sourceRabbitMQParameters: UpdateEventStreamingRequest.Source.SourceRabbitMQParameters?
@@ -51081,6 +51455,7 @@ public class UpdateEventStreamingRequest : Tea.TeaModel {
             try self.sourceMySQLParameters?.validate()
             try self.sourceOSSParameters?.validate()
             try self.sourceOpenSourceRabbitMQParameters?.validate()
+            try self.sourcePostgreSQLParameters?.validate()
             try self.sourcePrometheusParameters?.validate()
             try self.sourceRabbitMQParameters?.validate()
             try self.sourceRocketMQCheckpointParameters?.validate()
@@ -51125,6 +51500,9 @@ public class UpdateEventStreamingRequest : Tea.TeaModel {
             }
             if self.sourceOpenSourceRabbitMQParameters != nil {
                 map["SourceOpenSourceRabbitMQParameters"] = self.sourceOpenSourceRabbitMQParameters?.toMap()
+            }
+            if self.sourcePostgreSQLParameters != nil {
+                map["SourcePostgreSQLParameters"] = self.sourcePostgreSQLParameters?.toMap()
             }
             if self.sourcePrometheusParameters != nil {
                 map["SourcePrometheusParameters"] = self.sourcePrometheusParameters?.toMap()
@@ -51205,6 +51583,11 @@ public class UpdateEventStreamingRequest : Tea.TeaModel {
                 var model = UpdateEventStreamingRequest.Source.SourceOpenSourceRabbitMQParameters()
                 model.fromMap(value)
                 self.sourceOpenSourceRabbitMQParameters = model
+            }
+            if let value = dict["SourcePostgreSQLParameters"] as? [String: Any?] {
+                var model = SourcePostgreSQLParameters()
+                model.fromMap(value)
+                self.sourcePostgreSQLParameters = model
             }
             if let value = dict["SourcePrometheusParameters"] as? [String: Any?] {
                 var model = UpdateEventStreamingRequest.Source.SourcePrometheusParameters()
