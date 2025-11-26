@@ -7109,6 +7109,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.DBName)) {
             query["DBName"] = request.DBName ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.extensionName)) {
+            query["ExtensionName"] = request.extensionName ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.ownerAccount)) {
             query["OwnerAccount"] = request.ownerAccount ?? "";
         }

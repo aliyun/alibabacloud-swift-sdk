@@ -39327,6 +39327,8 @@ public class DescribeExtensionsRequest : Tea.TeaModel {
 
     public var DBName: String?
 
+    public var extensionName: String?
+
     public var ownerAccount: String?
 
     public var ownerId: Int64?
@@ -39355,6 +39357,9 @@ public class DescribeExtensionsRequest : Tea.TeaModel {
         if self.DBName != nil {
             map["DBName"] = self.DBName!
         }
+        if self.extensionName != nil {
+            map["ExtensionName"] = self.extensionName!
+        }
         if self.ownerAccount != nil {
             map["OwnerAccount"] = self.ownerAccount!
         }
@@ -39377,6 +39382,9 @@ public class DescribeExtensionsRequest : Tea.TeaModel {
         }
         if let value = dict["DBName"] as? String {
             self.DBName = value
+        }
+        if let value = dict["ExtensionName"] as? String {
+            self.extensionName = value
         }
         if let value = dict["OwnerAccount"] as? String {
             self.ownerAccount = value
