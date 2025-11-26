@@ -67514,6 +67514,287 @@ public class QueryMonitorResponse : Tea.TeaModel {
     }
 }
 
+public class QueryNacosGrayConfigRequest : Tea.TeaModel {
+    public var acceptLanguage: String?
+
+    public var dataId: String?
+
+    public var grayName: String?
+
+    public var group: String?
+
+    public var instanceId: String?
+
+    public var namespaceId: String?
+
+    public var regionId: String?
+
+    public var requestPars: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.acceptLanguage != nil {
+            map["AcceptLanguage"] = self.acceptLanguage!
+        }
+        if self.dataId != nil {
+            map["DataId"] = self.dataId!
+        }
+        if self.grayName != nil {
+            map["GrayName"] = self.grayName!
+        }
+        if self.group != nil {
+            map["Group"] = self.group!
+        }
+        if self.instanceId != nil {
+            map["InstanceId"] = self.instanceId!
+        }
+        if self.namespaceId != nil {
+            map["NamespaceId"] = self.namespaceId!
+        }
+        if self.regionId != nil {
+            map["RegionId"] = self.regionId!
+        }
+        if self.requestPars != nil {
+            map["RequestPars"] = self.requestPars!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["AcceptLanguage"] as? String {
+            self.acceptLanguage = value
+        }
+        if let value = dict["DataId"] as? String {
+            self.dataId = value
+        }
+        if let value = dict["GrayName"] as? String {
+            self.grayName = value
+        }
+        if let value = dict["Group"] as? String {
+            self.group = value
+        }
+        if let value = dict["InstanceId"] as? String {
+            self.instanceId = value
+        }
+        if let value = dict["NamespaceId"] as? String {
+            self.namespaceId = value
+        }
+        if let value = dict["RegionId"] as? String {
+            self.regionId = value
+        }
+        if let value = dict["RequestPars"] as? String {
+            self.requestPars = value
+        }
+    }
+}
+
+public class QueryNacosGrayConfigResponseBody : Tea.TeaModel {
+    public class Data : Tea.TeaModel {
+        public var appName: String?
+
+        public var content: String?
+
+        public var dataId: String?
+
+        public var grayRule: String?
+
+        public var grayRuleName: String?
+
+        public var grayRulePriority: String?
+
+        public var grayType: String?
+
+        public var group: String?
+
+        public var lastModified: String?
+
+        public var md5: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.appName != nil {
+                map["AppName"] = self.appName!
+            }
+            if self.content != nil {
+                map["Content"] = self.content!
+            }
+            if self.dataId != nil {
+                map["DataId"] = self.dataId!
+            }
+            if self.grayRule != nil {
+                map["GrayRule"] = self.grayRule!
+            }
+            if self.grayRuleName != nil {
+                map["GrayRuleName"] = self.grayRuleName!
+            }
+            if self.grayRulePriority != nil {
+                map["GrayRulePriority"] = self.grayRulePriority!
+            }
+            if self.grayType != nil {
+                map["GrayType"] = self.grayType!
+            }
+            if self.group != nil {
+                map["Group"] = self.group!
+            }
+            if self.lastModified != nil {
+                map["LastModified"] = self.lastModified!
+            }
+            if self.md5 != nil {
+                map["Md5"] = self.md5!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["AppName"] as? String {
+                self.appName = value
+            }
+            if let value = dict["Content"] as? String {
+                self.content = value
+            }
+            if let value = dict["DataId"] as? String {
+                self.dataId = value
+            }
+            if let value = dict["GrayRule"] as? String {
+                self.grayRule = value
+            }
+            if let value = dict["GrayRuleName"] as? String {
+                self.grayRuleName = value
+            }
+            if let value = dict["GrayRulePriority"] as? String {
+                self.grayRulePriority = value
+            }
+            if let value = dict["GrayType"] as? String {
+                self.grayType = value
+            }
+            if let value = dict["Group"] as? String {
+                self.group = value
+            }
+            if let value = dict["LastModified"] as? String {
+                self.lastModified = value
+            }
+            if let value = dict["Md5"] as? String {
+                self.md5 = value
+            }
+        }
+    }
+    public var data: QueryNacosGrayConfigResponseBody.Data?
+
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.data?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.data != nil {
+            map["Data"] = self.data?.toMap()
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["Data"] as? [String: Any?] {
+            var model = QueryNacosGrayConfigResponseBody.Data()
+            model.fromMap(value)
+            self.data = model
+        }
+        if let value = dict["RequestId"] as? String {
+            self.requestId = value
+        }
+    }
+}
+
+public class QueryNacosGrayConfigResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: QueryNacosGrayConfigResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["headers"] as? [String: String] {
+            self.headers = value
+        }
+        if let value = dict["statusCode"] as? Int32 {
+            self.statusCode = value
+        }
+        if let value = dict["body"] as? [String: Any?] {
+            var model = QueryNacosGrayConfigResponseBody()
+            model.fromMap(value)
+            self.body = model
+        }
+    }
+}
+
 public class QueryNamespaceRequest : Tea.TeaModel {
     public var acceptLanguage: String?
 
