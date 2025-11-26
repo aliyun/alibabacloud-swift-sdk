@@ -1752,6 +1752,8 @@ public class GetInstanceResponseBody : Tea.TeaModel {
 
         public var enableHiveAccess: String?
 
+        public var enableSSL: Bool?
+
         public var enableServerless: Bool?
 
         public var endpoints: [GetInstanceResponseBody.Instance.Endpoints]?
@@ -1833,6 +1835,9 @@ public class GetInstanceResponseBody : Tea.TeaModel {
             }
             if self.enableHiveAccess != nil {
                 map["EnableHiveAccess"] = self.enableHiveAccess!
+            }
+            if self.enableSSL != nil {
+                map["EnableSSL"] = self.enableSSL!
             }
             if self.enableServerless != nil {
                 map["EnableServerless"] = self.enableServerless!
@@ -1936,6 +1941,9 @@ public class GetInstanceResponseBody : Tea.TeaModel {
             }
             if let value = dict["EnableHiveAccess"] as? String {
                 self.enableHiveAccess = value
+            }
+            if let value = dict["EnableSSL"] as? Bool {
+                self.enableSSL = value
             }
             if let value = dict["EnableServerless"] as? Bool {
                 self.enableServerless = value
@@ -3858,6 +3866,8 @@ public class ListInstancesResponseBody : Tea.TeaModel {
 
         public var enableHiveAccess: String?
 
+        public var enableSSL: String?
+
         public var endpoints: [ListInstancesResponseBody.InstanceList.Endpoints]?
 
         public var expirationTime: String?
@@ -3910,6 +3920,9 @@ public class ListInstancesResponseBody : Tea.TeaModel {
             }
             if self.enableHiveAccess != nil {
                 map["EnableHiveAccess"] = self.enableHiveAccess!
+            }
+            if self.enableSSL != nil {
+                map["EnableSSL"] = self.enableSSL!
             }
             if self.endpoints != nil {
                 var tmp : [Any] = []
@@ -3977,6 +3990,9 @@ public class ListInstancesResponseBody : Tea.TeaModel {
             }
             if let value = dict["EnableHiveAccess"] as? String {
                 self.enableHiveAccess = value
+            }
+            if let value = dict["EnableSSL"] as? String {
+                self.enableSSL = value
             }
             if let value = dict["Endpoints"] as? [Any?] {
                 var tmp : [ListInstancesResponseBody.InstanceList.Endpoints] = []
