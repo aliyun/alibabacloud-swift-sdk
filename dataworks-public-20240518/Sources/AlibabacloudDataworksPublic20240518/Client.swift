@@ -1461,6 +1461,42 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func createIdentifyCredentialWithOptions(_ tmpReq: CreateIdentifyCredentialRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> CreateIdentifyCredentialResponse {
+        try TeaUtils.Client.validateModel(tmpReq)
+        var request: CreateIdentifyCredentialShrinkRequest = CreateIdentifyCredentialShrinkRequest([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.identifyCredential)) {
+            request.identifyCredentialShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.identifyCredential, "IdentifyCredential", "json")
+        }
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.identifyCredentialShrink)) {
+            body["IdentifyCredential"] = request.identifyCredentialShrink ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "CreateIdentifyCredential",
+            "version": "2024-05-18",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(CreateIdentifyCredentialResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func createIdentifyCredential(_ request: CreateIdentifyCredentialRequest) async throws -> CreateIdentifyCredentialResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await createIdentifyCredentialWithOptions(request as! CreateIdentifyCredentialRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func createLineageRelationshipWithOptions(_ tmpReq: CreateLineageRelationshipRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> CreateLineageRelationshipResponse {
         try TeaUtils.Client.validateModel(tmpReq)
         var request: CreateLineageRelationshipShrinkRequest = CreateLineageRelationshipShrinkRequest([:])
