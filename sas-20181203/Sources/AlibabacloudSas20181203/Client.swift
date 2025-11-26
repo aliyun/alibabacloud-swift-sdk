@@ -1401,6 +1401,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.removedCheck)) {
             query["RemovedCheck"] = request.removedCheck ?? [];
         }
+        if (!TeaUtils.Client.isUnset(request.resourceDirectoryAccountId)) {
+            query["ResourceDirectoryAccountId"] = request.resourceDirectoryAccountId!;
+        }
         if (!TeaUtils.Client.isUnset(request.standardIds)) {
             query["StandardIds"] = request.standardIds ?? [];
         }
