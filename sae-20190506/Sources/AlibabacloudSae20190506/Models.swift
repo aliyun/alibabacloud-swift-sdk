@@ -52996,6 +52996,8 @@ public class RescaleApplicationVerticallyRequest : Tea.TeaModel {
 
     public var cpu: String?
 
+    public var deploy: Bool?
+
     public var diskSize: String?
 
     public var memory: String?
@@ -53030,6 +53032,9 @@ public class RescaleApplicationVerticallyRequest : Tea.TeaModel {
         if self.cpu != nil {
             map["Cpu"] = self.cpu!
         }
+        if self.deploy != nil {
+            map["Deploy"] = self.deploy!
+        }
         if self.diskSize != nil {
             map["DiskSize"] = self.diskSize!
         }
@@ -53061,6 +53066,9 @@ public class RescaleApplicationVerticallyRequest : Tea.TeaModel {
         }
         if let value = dict["Cpu"] as? String {
             self.cpu = value
+        }
+        if let value = dict["Deploy"] as? Bool {
+            self.deploy = value
         }
         if let value = dict["DiskSize"] as? String {
             self.diskSize = value
@@ -56503,6 +56511,8 @@ public class UpdateApplicationScalingRuleResponse : Tea.TeaModel {
 public class UpdateApplicationVswitchesRequest : Tea.TeaModel {
     public var appId: String?
 
+    public var deploy: Bool?
+
     public var vSwitchId: String?
 
     public override init() {
@@ -56522,6 +56532,9 @@ public class UpdateApplicationVswitchesRequest : Tea.TeaModel {
         if self.appId != nil {
             map["AppId"] = self.appId!
         }
+        if self.deploy != nil {
+            map["Deploy"] = self.deploy!
+        }
         if self.vSwitchId != nil {
             map["VSwitchId"] = self.vSwitchId!
         }
@@ -56532,6 +56545,9 @@ public class UpdateApplicationVswitchesRequest : Tea.TeaModel {
         guard let dict else { return }
         if let value = dict["AppId"] as? String {
             self.appId = value
+        }
+        if let value = dict["Deploy"] as? Bool {
+            self.deploy = value
         }
         if let value = dict["VSwitchId"] as? String {
             self.vSwitchId = value

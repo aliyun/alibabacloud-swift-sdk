@@ -5254,6 +5254,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.cpu)) {
             query["Cpu"] = request.cpu ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.deploy)) {
+            query["Deploy"] = request.deploy!;
+        }
         if (!TeaUtils.Client.isUnset(request.diskSize)) {
             query["DiskSize"] = request.diskSize ?? "";
         }
@@ -5937,6 +5940,9 @@ open class Client : AlibabacloudOpenApi.Client {
         var query: [String: Any] = [:]
         if (!TeaUtils.Client.isUnset(request.appId)) {
             query["AppId"] = request.appId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.deploy)) {
+            query["Deploy"] = request.deploy!;
         }
         if (!TeaUtils.Client.isUnset(request.vSwitchId)) {
             query["VSwitchId"] = request.vSwitchId ?? "";
