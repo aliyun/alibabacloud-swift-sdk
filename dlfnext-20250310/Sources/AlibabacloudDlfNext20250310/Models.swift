@@ -2467,6 +2467,8 @@ public class Permission : Tea.TeaModel {
 
     public var database: String?
 
+    public var expireTime: String?
+
     public var function: String?
 
     public var principal: String?
@@ -2501,6 +2503,9 @@ public class Permission : Tea.TeaModel {
         if self.database != nil {
             map["database"] = self.database!
         }
+        if self.expireTime != nil {
+            map["expireTime"] = self.expireTime!
+        }
         if self.function != nil {
             map["function"] = self.function!
         }
@@ -2532,6 +2537,9 @@ public class Permission : Tea.TeaModel {
         if let value = dict["database"] as? String {
             self.database = value
         }
+        if let value = dict["expireTime"] as? String {
+            self.expireTime = value
+        }
         if let value = dict["function"] as? String {
             self.function = value
         }
@@ -2546,6 +2554,85 @@ public class Permission : Tea.TeaModel {
         }
         if let value = dict["view"] as? String {
             self.view = value
+        }
+    }
+}
+
+public class PrepayResource : Tea.TeaModel {
+    public var catalogId: String?
+
+    public var catalogName: String?
+
+    public var cu: Int32?
+
+    public var expireTime: Int64?
+
+    public var gmtCreate: Int64?
+
+    public var instanceId: String?
+
+    public var instanceStatus: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.catalogId != nil {
+            map["catalogId"] = self.catalogId!
+        }
+        if self.catalogName != nil {
+            map["catalogName"] = self.catalogName!
+        }
+        if self.cu != nil {
+            map["cu"] = self.cu!
+        }
+        if self.expireTime != nil {
+            map["expireTime"] = self.expireTime!
+        }
+        if self.gmtCreate != nil {
+            map["gmtCreate"] = self.gmtCreate!
+        }
+        if self.instanceId != nil {
+            map["instanceId"] = self.instanceId!
+        }
+        if self.instanceStatus != nil {
+            map["instanceStatus"] = self.instanceStatus!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any?]?) -> Void {
+        guard let dict else { return }
+        if let value = dict["catalogId"] as? String {
+            self.catalogId = value
+        }
+        if let value = dict["catalogName"] as? String {
+            self.catalogName = value
+        }
+        if let value = dict["cu"] as? Int32 {
+            self.cu = value
+        }
+        if let value = dict["expireTime"] as? Int64 {
+            self.expireTime = value
+        }
+        if let value = dict["gmtCreate"] as? Int64 {
+            self.gmtCreate = value
+        }
+        if let value = dict["instanceId"] as? String {
+            self.instanceId = value
+        }
+        if let value = dict["instanceStatus"] as? String {
+            self.instanceStatus = value
         }
     }
 }
@@ -7698,6 +7785,8 @@ public class ListCatalogsResponseBody : Tea.TeaModel {
 
     public var nextPageToken: String?
 
+    public var prepayResource: [PrepayResource]?
+
     public override init() {
         super.init()
     }
@@ -7722,6 +7811,13 @@ public class ListCatalogsResponseBody : Tea.TeaModel {
         if self.nextPageToken != nil {
             map["nextPageToken"] = self.nextPageToken!
         }
+        if self.prepayResource != nil {
+            var tmp : [Any] = []
+            for k in self.prepayResource! {
+                tmp.append(k.toMap())
+            }
+            map["prepayResource"] = tmp
+        }
         return map
     }
 
@@ -7742,6 +7838,19 @@ public class ListCatalogsResponseBody : Tea.TeaModel {
         }
         if let value = dict["nextPageToken"] as? String {
             self.nextPageToken = value
+        }
+        if let value = dict["prepayResource"] as? [Any?] {
+            var tmp : [PrepayResource] = []
+            for v in value {
+                if v != nil {
+                    var model = PrepayResource()
+                    if v != nil {
+                        model.fromMap(v as? [String: Any?])
+                    }
+                    tmp.append(model)
+                }
+            }
+            self.prepayResource = tmp
         }
     }
 }
