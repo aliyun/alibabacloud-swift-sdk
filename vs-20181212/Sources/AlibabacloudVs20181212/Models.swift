@@ -15558,6 +15558,60 @@ public class DescribeRenderingInstanceResponseBody : Tea.TeaModel {
             }
         }
     }
+    public class ResourceAttributes : Tea.TeaModel {
+        public var edgeMediaService: String?
+
+        public var inAccess: String?
+
+        public var outAccess: String?
+
+        public var zone: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.edgeMediaService != nil {
+                map["EdgeMediaService"] = self.edgeMediaService!
+            }
+            if self.inAccess != nil {
+                map["InAccess"] = self.inAccess!
+            }
+            if self.outAccess != nil {
+                map["OutAccess"] = self.outAccess!
+            }
+            if self.zone != nil {
+                map["Zone"] = self.zone!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any?]?) -> Void {
+            guard let dict else { return }
+            if let value = dict["EdgeMediaService"] as? String {
+                self.edgeMediaService = value
+            }
+            if let value = dict["InAccess"] as? String {
+                self.inAccess = value
+            }
+            if let value = dict["OutAccess"] as? String {
+                self.outAccess = value
+            }
+            if let value = dict["Zone"] as? String {
+                self.zone = value
+            }
+        }
+    }
     public class SystemInfo : Tea.TeaModel {
         public var frequency: Int32?
 
@@ -15620,6 +15674,8 @@ public class DescribeRenderingInstanceResponseBody : Tea.TeaModel {
 
     public var requestId: String?
 
+    public var resourceAttributes: DescribeRenderingInstanceResponseBody.ResourceAttributes?
+
     public var storageSize: Int32?
 
     public var systemInfo: DescribeRenderingInstanceResponseBody.SystemInfo?
@@ -15636,6 +15692,7 @@ public class DescribeRenderingInstanceResponseBody : Tea.TeaModel {
     public override func validate() throws -> Void {
         try self.configInfo?.validate()
         try self.renderingStatus?.validate()
+        try self.resourceAttributes?.validate()
         try self.systemInfo?.validate()
     }
 
@@ -15684,6 +15741,9 @@ public class DescribeRenderingInstanceResponseBody : Tea.TeaModel {
         }
         if self.requestId != nil {
             map["RequestId"] = self.requestId!
+        }
+        if self.resourceAttributes != nil {
+            map["ResourceAttributes"] = self.resourceAttributes?.toMap()
         }
         if self.storageSize != nil {
             map["StorageSize"] = self.storageSize!
@@ -15755,6 +15815,11 @@ public class DescribeRenderingInstanceResponseBody : Tea.TeaModel {
         }
         if let value = dict["RequestId"] as? String {
             self.requestId = value
+        }
+        if let value = dict["ResourceAttributes"] as? [String: Any?] {
+            var model = DescribeRenderingInstanceResponseBody.ResourceAttributes()
+            model.fromMap(value)
+            self.resourceAttributes = model
         }
         if let value = dict["StorageSize"] as? Int32 {
             self.storageSize = value
